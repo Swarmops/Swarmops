@@ -222,25 +222,28 @@
         <DialogCode>
             <h2>Work in progress...</h2>
             <div id="divTabsEditPerson" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
-                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: WORK IN PROGRESS</h2>
+                <div title="<img src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Account</h2>
                 </div>
-                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Security</h2>
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Preferences</h2>
                 </div>
-                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                <div title="<img src='/Images/PageIcons/iconshock-money-calculator-128px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment Channels</h2>
                 </div>
-                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                <div title="<img src='/Images/PageIcons/iconshock-moneybag-128px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment History</h2>
                 </div>
-                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                <div title="<img src='/Images/PageIcons/iconshock-award-96px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Role and Responsibility</h2>
                 </div>
-                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: System Log</h2>
                 </div>
-                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Officer Notes</h2>
                 </div>
             </div>
