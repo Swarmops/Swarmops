@@ -224,9 +224,23 @@
             <div id="divTabsEditPerson" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
                 <div title="<img src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Account</h2>
+                    <div class="entryFields">...</div>
+                    <div class="entryLabels">
+                        Name<br/>
+                        Mail
+                    </div>
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Security</h2>
+                    <div class="entryFields">...</div>
+                    <div class="entryLabels">
+                        Current Password<br/>
+                        New Password<br/>
+                        New Password Again<br/>
+                        &nbsp;<br/>
+                        <h2>TWO FACTOR AUTHENTICATION</h2>
+                        Enable BitId (bitcoin signature login)
+                    </div>
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Preferences</h2>
@@ -237,7 +251,7 @@
                 <div title="<img src='/Images/PageIcons/iconshock-moneybag-128px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment History</h2>
                 </div>
-                <div title="<img src='/Images/PageIcons/iconshock-foreman-128px.png' height='64' width='64' />">
+                <div title="<img src='/Images/Icons/iconshock-foreman-128px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Role and Responsibility</h2>
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-logfile-256px.png' height='64' width='64' />">

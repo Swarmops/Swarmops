@@ -636,11 +636,21 @@ body.rtl .button-orange {
 	box-shadow: 0 1px 3px 1px #1C397E;
 }
 
+div.modal .entryFields {
+    margin-right: 3px;
+}
+
 body.rtl .entryFields {
     float: left;
     padding-left: 8px;
     padding-right: 10px;
 }
+
+body.rtl div.modal .entryFields {
+    margin-right: inherit;
+    margin-left: 3px;
+}
+
 
 
 .entryFields input:not(.buttonAccentColor), .entryFields textarea, .entryFields select 
