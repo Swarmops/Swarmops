@@ -240,10 +240,10 @@
                 <div title="<img src='/Images/PageIcons/iconshock-award-96px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Role and Responsibility</h2>
                 </div>
-                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' height='64' width='64' />">
+                <div title="<img src='/Images/Icons/iconshock-logfile-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: System Log</h2>
                 </div>
-                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' height='64' width='64' />">
+                <div title="<img src='/Images/Icons/iconshock-notes-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Officer Notes</h2>
                 </div>
             </div>
