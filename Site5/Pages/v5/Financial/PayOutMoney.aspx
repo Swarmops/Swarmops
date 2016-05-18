@@ -244,7 +244,7 @@
             </thead>
         </table>
     </div>  
-    <div id="divOcrView" style="display:none">
+    <div id="divOcrView">
         <h2><asp:Label runat="server" ID="LabelPayOutMoneyOcrHeader" Text="XYZ Costs In Ocr View" /></h2>
         <table id="TablePayableCostsOcr" class="easyui-datagrid" style="width:680px;height:500px"
             data-options="rownumbers:false,singleSelect:false,fit:false,fitColumns:true,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-PayableCostsOcr.aspx'"
