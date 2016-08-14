@@ -179,7 +179,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             FinancialAccount budget = payable.Budget;
 
             if (budget.OrganizationId != authData.CurrentOrganization.Identity ||
-                budget.OwnerPersonId != authData.CurrentUser.Identity)
+                (budget.OwnerPersonId != authData.CurrentUser.Identity &&
+                budget.OwnerPersonId != Person.NobodyId))
             {
                 throw new UnauthorizedAccessException();
             }
