@@ -341,6 +341,12 @@
             _master_PersonEditLoading = true;
 
             // Clear fields, mark disabled until data retrieved
+            <%= this.MasterEditPersonName.ClientID %>_disableClear();
+            <%= this.MasterEditPersonMail.ClientID %>_disableClear();
+            <%= this.MasterEditPersonPhone.ClientID %>_disableClear();
+            <%= this.MasterEditPersonTwitterId.ClientID %>_disableClear();
+
+            $('span.spanModalEditingPersonName').text("Loading");  // TODO: Localize
 
             <%=this.ModalMasterEditPerson.ClientID%>_open();
 
@@ -350,6 +356,8 @@
 
             SwarmopsJS.ajaxCall('/Automation/SwarmFunctions.aspx/GetPersonEditorData', personEditorData, function(data) {
                 if (data.Success) {
+                    $('span.spanModalEditingPersonName').text(data.Name);
+
                     <%= this.MasterEditPersonName.ClientID %>_initialize(data.Name);
                     <%= this.MasterEditPersonMail.ClientID %>_initialize(data.Mail);
                     <%= this.MasterEditPersonPhone.ClientID %>_initialize(data.Phone);

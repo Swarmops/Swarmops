@@ -78,6 +78,19 @@
 
     });
 
+    function <%=this.ClientID%>_disable() {
+        $('#<%=this.TextInput.ClientID%>').attr ('disabled', 'disabled');
+    }
+
+    function <%=this.ClientID%>_disableClear() {
+        <%=this.ClientID%>_disable();
+        <%=this.ClientID%>_clear();
+    }
+
+    function <%=this.ClientID%>_enable() {
+        $('#<%=this.TextInput.ClientID%>').removeAttr('disabled');
+    }
+
     function <%=this.ClientID%>_clear() {
         $('#<%=this.TextInput.ClientID%>').val('');
     }
@@ -87,8 +100,9 @@
     }
 
     function <%=this.ClientID%>_initialize(initValue) {
-        $('#<%=this.TextInput.ClientID%>').val(initValue);
         _initVal_<%=this.TextInput.ClientID%> = initValue;
+        <%=this.ClientID%>_setValue(initValue);
+        <%=this.ClientID%>_enable();
     }
 
 
