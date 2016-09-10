@@ -266,7 +266,7 @@ namespace Swarmops.Logic.Financial
                 {
                     BasicPayout basicPayout = new BasicPayout (0, organization.Identity, string.Empty,
                         invoice.PayToAccount,
-                        invoice.Ocr.Length > 0 ? "OCR " + invoice.Ocr : "Ref# " + invoice.InvoiceReference,
+                        invoice.Ocr.Length > 0 ? invoice.Ocr : invoice.InvoiceReference, // prefer OCR (automatic) over Reference (manual)
                         (Int64) (invoice.Amount*100),
                         invoice.DueDate, false, DateTime.Now, 0);
                     Payout payout = Payout.FromBasic (basicPayout);

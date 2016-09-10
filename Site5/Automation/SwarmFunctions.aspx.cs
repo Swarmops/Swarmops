@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Activities.Statements;
 using System.Collections.Generic;
+using System.EnterpriseServices.Internal;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -209,6 +210,51 @@ namespace Swarmops.Frontend.Automation
 
             GetAuthenticationDataAndCulture();
             return new AjaxCallResult {Success = true, DisplayMessage = Geography.FromIdentity (geographyId).Name};
+        }
+
+        public class PersonEditorData : AjaxCallResult
+        {
+            // Personal Details tab
+
+            public string Name;
+            public string Mail;
+            public string Phone;
+            public string TwitterId;
+
+            // Accounts tab
+
+            // (no data)
+
+            // other tabs - fill in as we go
+        }
+
+        [WebMethod]
+        public static PersonEditorData GetPersonEditorData (int personId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            bool self = false;
+
+            if (personId == 0) // request self record
+            {
+                self = true; // may make use of this later
+                personId = authData.CurrentUser.Identity;
+            }
+
+            Person person = Person.FromIdentity (personId);
+
+            if (!authData.Authority.CanSeePerson (person))
+            {
+                throw new ArgumentException(); // can't see the requested person, for whatever reason
+            }
+
+            return new PersonEditorData
+            {
+                Success = true,
+                Name = person.Name,
+                Mail = person.Mail,
+                Phone = person.Phone,
+                TwitterId = person.TwitterId
+            };
         }
     }
 }

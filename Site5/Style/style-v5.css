@@ -638,6 +638,7 @@ body.rtl .button-orange {
 
 div.modal .entryFields {
     margin-right: 3px;
+    margin-bottom: 10px;
 }
 
 body.rtl .entryFields {

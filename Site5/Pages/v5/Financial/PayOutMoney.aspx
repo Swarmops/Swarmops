@@ -196,6 +196,8 @@
                     }
                 }
             );
+
+            
         });
 
         var gridsLoaded = 0;

@@ -220,60 +220,153 @@
         
     <Swarmops5:ModalDialog ID="ModalMasterEditPerson" runat="server">
         <DialogCode>
-            <h2>Work in progress...</h2>
             <div id="divTabsEditPerson" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
                 <div title="<img src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Account</h2>
-                    <div class="entryFields">...</div>
+                    <div class="entryFields">
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonName" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonMail" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonPhone" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonTwitterId" runat="server" />
+                    </div>
                     <div class="entryLabels">
                         Name<br/>
-                        Mail
+                        Mail<br/>
+                        Phone<br/>
+                        Twitter<br/>
                     </div>
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Security</h2>
                     <div class="entryFields">...</div>
                     <div class="entryLabels">
-                        Current Password<br/>
                         New Password<br/>
                         New Password Again<br/>
-                        &nbsp;<br/>
-                        <h2>TWO FACTOR AUTHENTICATION</h2>
-                        Enable BitId (bitcoin signature login)
+                        Enable BitId (bitcoin signature login)<br/>
+                        Enter current password to save
                     </div>
                 </div>
-                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' height='64' width='64' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Preferences</h2>
-                </div>
-                <div title="<img src='/Images/PageIcons/iconshock-money-calculator-128px.png' height='64' width='64' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment Channels</h2>
-                </div>
-                <div title="<img src='/Images/PageIcons/iconshock-moneybag-128px.png' height='64' width='64' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment History</h2>
-                </div>
+                <!--
                 <div title="<img src='/Images/Icons/iconshock-foreman-128px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Role and Responsibility</h2>
+                    TODO
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-mail-256px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Mail Account</h2>
+                    <div class="divEntryFields">
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonOrgMail" runat="server" />&#8203;<br/>
+                    </div>
+                    <div class="entryLabels">
+                        Organization mail account<br/>
+                        Reset mail server password
+                    </div>
+                </div>
+
+                <div title="<img src='/Images/Icons/iconshock-location-256px.png' width='64' height='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Address</h2>
+                    <div class="entryFields">...</div>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonCountry" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonStreet1" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonStreet2" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonPostalCodeCity" runat="server" />
+                    <div class="entryLabels">
+                        Country<br/>
+                        Street 1<br/>
+                        Street 2<br/>
+                        Postal code, city
+                    </div>
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Mail Preferences</h2>
+                    <div class="entryFields">
+                        Switch1
+                        Switch2
+                        Switch3
+                        Switch4
+                    </div>
+                    <div class="entryLabels">
+                        Recieve mail from local leaders<br/>
+                        Receive organization newsletters<br/>
+                        Receive membership accounting info<br/>
+                        Receive security alerts
+                    </div>
+                </div>
+                <div title="<img src='/Images/PageIcons/iconshock-moneybag-128px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment Channels</h2>
+                    <div class="entryFields">
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonLegacyBankClearing" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonLegacyBankAccount" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonLegacyBankHolder" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonLegacyBitcoinAddress" runat="server" />&#8203;<br/>
+                        Switch1&#8203;<br/>
+                        Switch2
+                    </div>
+                    <div class="entryLabels">
+                        Legacy bank SWIFT/BIC/clearing<br/>
+                        Legacy bank IBAN/account<br/>
+                        Account holder name<br/>
+                        Bitcoin address<br/>
+                        Prefer bitcoin for expenses/advances<br/>
+                        Prefer bitcoin for salaries
+                    </div>
+                </div>
+                <div title="<img src='/Images/PageIcons/iconshock-money-calculator-128px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment History</h2>
+                    TABLE
+                </div>
+                <div title="<img src='/Images/PageIcons/iconshock-award-96px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Achievements</h2>
+                    TABLE
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-logfile-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: System Log</h2>
+                    TABLE
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-notes-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Officer Notes</h2>
-                </div>
+                    FREETEXT FIELD
+                </div>-->
             </div>
         </DialogCode>
     </Swarmops5:ModalDialog>
         
     <script type="text/javascript" language="javascript">
+        
+        // This JavaScript block is for the Master Modal Person Editor.
+
         function masterBeginEditPerson(personId) {
+            _master_PersonEditedId = personId;
+
             // Disable saving on change
-            // Clear fields
+            _master_PersonEditLoading = true;
+
+            // Clear fields, mark disabled until data retrieved
+
             <%=this.ModalMasterEditPerson.ClientID%>_open();
+
+            var personEditorData = {
+                personId: personId
+            };
+
+            SwarmopsJS.ajaxCall('/Automation/SwarmFunctions.aspx/GetPersonEditorData', personEditorData, function(data) {
+                if (data.Success) {
+                    <%= this.MasterEditPersonName.ClientID %>_initialize(data.Name);
+                    <%= this.MasterEditPersonMail.ClientID %>_initialize(data.Mail);
+                    <%= this.MasterEditPersonPhone.ClientID %>_initialize(data.Phone);
+                    <%= this.MasterEditPersonTwitterId.ClientID %>_initialize(data.TwitterId);
+                } else {
+                    alert('Call to SwarmFunctions.aspx failed');
+                }
+            });
+
             // Begin ajax query for data
 
             // If success, populate; enable saving on change
             // If secvio, notify
         }
+
+        var _master_PersonEditedId = -1;  // no person: zero means "self"
+        var _master_PersonEditLoading = false;
 
     </script>
 	

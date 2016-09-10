@@ -78,6 +78,21 @@
 
     });
 
+    function <%=this.ClientID%>_clear() {
+        $('#<%=this.TextInput.ClientID%>').val('');
+    }
+
+    function <%=this.ClientID%>_setValue(newValue) {
+        $('#<%=this.TextInput.ClientID%>').val(newValue);
+    }
+
+    function <%=this.ClientID%>_initialize(initValue) {
+        $('#<%=this.TextInput.ClientID%>').val(initValue);
+        _initVal_<%=this.TextInput.ClientID%> = initValue;
+    }
+
+
+
 </script>
 
 <asp:TextBox ID="TextInput" runat="server" />

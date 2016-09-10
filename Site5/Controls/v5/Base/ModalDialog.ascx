@@ -59,8 +59,8 @@
 </div>
 
 
-<div id="<%=this.ClientID %>_hiddenInitArea" class="box modal" style="visibility:hidden">
-    <div class="divInitializedContent">
+<div id="<%=this.ClientID %>_hiddenInitArea" class="box modal" style="visibility:hidden; width: 960px"> <!-- width necessary for correct init -->
+    <div class="divInitializedContent" >
         <asp:PlaceHolder runat="server" ID="PlaceHolderDialog" />
     </div>
 </div>
