@@ -45,7 +45,7 @@ namespace Swarmops.Frontend.Controls.v5.Base
         public string Placeholder { get; set; }
 
         // Ajax result codes and classes
-
+        /*
         public const int CodeUnknown = 0;
         public const int CodeSuccess = 1;
         public const int CodeChanged = 2;
@@ -57,6 +57,6 @@ namespace Swarmops.Frontend.Controls.v5.Base
             public int ResultCode { get; set; }
             public string DisplayMessage { get; set; } // may be empty
             public string NewData { get; set; }
-        };
+        };*/
     }
 }

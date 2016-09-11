@@ -218,13 +218,13 @@
    
     <!-- assorted popups, for use by all pages -->
         
-    <Swarmops5:ModalDialog ID="ModalMasterEditPerson" runat="server">
+    <Swarmops5:ModalDialog ID="ModalMasterEditPerson" OnClientClose="masterEndEditPerson" runat="server">
         <DialogCode>
             <div id="divTabsEditPerson" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
                 <div title="<img src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Account</h2>
                     <div class="entryFields">
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonName" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonName" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Name" AjaxCallbackUrl="/Automation/SwarmFunctions.aspx/SetPersonEditorData" />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonMail" runat="server" />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonPhone" runat="server" />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonTwitterId" runat="server" />
@@ -346,13 +346,16 @@
             <%= this.MasterEditPersonPhone.ClientID %>_disableClear();
             <%= this.MasterEditPersonTwitterId.ClientID %>_disableClear();
 
-            $('span.spanModalEditingPersonName').text("Loading");  // TODO: Localize
+            $('span.spanModalEditingPersonName').text(decodeURIComponent('<%=Uri.EscapeDataString(Resources.Global.Global_LoadingPlaceholderShort)%>'));
 
             <%=this.ModalMasterEditPerson.ClientID%>_open();
 
             var personEditorData = {
                 personId: personId
             };
+
+            _master_PersonEditLoading = false;
+            _master_PersonEditedId = personId;
 
             SwarmopsJS.ajaxCall('/Automation/SwarmFunctions.aspx/GetPersonEditorData', personEditorData, function(data) {
                 if (data.Success) {
@@ -362,8 +365,10 @@
                     <%= this.MasterEditPersonMail.ClientID %>_initialize(data.Mail);
                     <%= this.MasterEditPersonPhone.ClientID %>_initialize(data.Phone);
                     <%= this.MasterEditPersonTwitterId.ClientID %>_initialize(data.TwitterId);
+
+                    _master_PersonEditLoading = false;
                 } else {
-                    alert('Call to SwarmFunctions.aspx failed');
+                    alert('Server error: Call to SwarmFunctions.aspx failed');
                 }
             });
 
@@ -375,6 +380,14 @@
 
         var _master_PersonEditedId = -1;  // no person: zero means "self"
         var _master_PersonEditLoading = false;
+
+        function masterPersonEditorOnFieldChange(newValue, fieldName) {
+            alert("Field Change: " + fieldName + " changed to '" + newValue + "'");
+        }
+
+        function masterEndEditPerson() {
+            alert("EndEditPerson");
+        }
 
     </script>
 	

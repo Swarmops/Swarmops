@@ -306,6 +306,21 @@ public class AjaxCallResult
 }
 
 
+public class AjaxInputCallResult: AjaxCallResult
+{
+    /// <summary>
+    /// Must always be set if Success is true, and contain canonically formatted new value
+    /// </summary>
+    public string NewValue { get; set; }
+    /// <summary>
+    /// When Success is false, valid FailReason values are "AccessDenied", "ServerError" and "InvalidFormat"
+    /// </summary>
+    public string FailReason { get; set; }
+
+    public const string ErrorAccessDenied = "AccessDenied";
+    public const string ErrorServerError = "ServerError";
+    public const string ErrorInvalidFormat = "InvalidFormat";
+}
 
 
 

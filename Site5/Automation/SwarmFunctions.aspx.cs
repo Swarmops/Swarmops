@@ -256,5 +256,17 @@ namespace Swarmops.Frontend.Automation
                 TwitterId = person.TwitterId
             };
         }
+
+        [WebMethod]
+        public static AjaxInputCallResult SetPersonEditorData(string newValue, string cookie)
+        {
+            return new AjaxInputCallResult
+            {
+                Success = true,
+                NewValue = "The change call was successful"
+            };
+            throw new NotImplementedException();
+        }
+
     }
 }

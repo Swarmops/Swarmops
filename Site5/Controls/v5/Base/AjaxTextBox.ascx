@@ -5,7 +5,7 @@
 
         var _initVal_<%=this.TextInput.ClientID%> = $('#<%=this.TextInput.ClientID%>').val();
 
-        $('#<%=this.TextInput.ClientID%>').blur(function () {
+        $('#<%=this.TextInput.ClientID%>').blur(function() {
 
             var currentValue = $('#<%=this.TextInput.ClientID%>').val();
 
@@ -17,66 +17,59 @@
                 // The AJAX call expects the following function prototype:
                 //
                 // [WebMethod]
-                // public static AjaxTextBox.CallbackResult FunctionName (string newValue, string cookie);
+                // public static AjaxInputCallbackResult FunctionName (string newValue, string cookie);
                 //
                 // The page must include IncludedControls.JsonParameters and IncludedControls.ColorAnimation among its script.
-                //
-                // The AJAX return value expects this structure:
-                //
-                // msg.d {
-                //   int ResultCode; // 0 - Unknown, 1 - Success, 2 - [Value was] Changed, 3 - Invalid [value], 4 - NoPermission
-                //   string NewData; // string as it should be displayed after change - overrides input and current value
-                // };
 
                 $(this).css('background-color', '#FFFFE0');
-                $.ajax({
-                    type: "POST",
-                    url: "<%=this.AjaxCallbackUrl%>",
-                    data: $.toJSON(jsonData),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: $.proxy(function (msg) {
-                        if (msg.d.ResultCode == 3 || msg.d.ResultCode == 4) { // Invalid or NoPermission
-                            if (msg.d.DisplayMessage != null)
-                            {
-                                alertify.error (msg.d.DisplayMessage);
-                            }
-                            else
-                            {
+                SwarmopsJS.ajaxCall(
+                    "<%=this.AjaxCallbackUrl%>",
+                    jsonData,
+                    $.proxy(function(msg) {
+                        if (msg.Success == false) {
+                            if (msg.DisplayMessage != null) {
+                                alertify.error(msg.DisplayMessage);
+                            } else {
                                 alertify.error("There was an error attempting to set this value."); // TODO: Localize
                             }
                             $(this).css('background-color', '#FFA0A0');
-                        } else {  // msg.d.Result should be Changed or Success here
-                            if (msg.d.DisplayMessage != null)
-                            {
-                                alertify.log (msg.d.DisplayMessage);
+                        } else {
+                            if (msg.DisplayMessage != null) {
+                                alertify.log(msg.DisplayMessage);
                             }
                             $(this).css('background-color', '#E0FFE0');
-                            _initVal_<%=this.TextInput.ClientID%> = msg.d.NewData;
+                            _initVal_<%=this.TextInput.ClientID%> = msg.NewValue;
                         }
                         $(this).val(_initVal_<%=this.TextInput.ClientID%>);
                         $(this).animate({ backgroundColor: "#FFFFFF" }, 250);
                         <%
 
-                            if (!string.IsNullOrEmpty (this.OnChange))
+                            if (!string.IsNullOrEmpty(this.OnChange))
                             {
-                                Response.Write (this.OnChange + "(msg.d.NewData);");  // JavaScript callback on successful change
+                                if (string.IsNullOrEmpty (this.Cookie))
+                                {
+                                    Response.Write (this.OnChange + "(msg.NewValue);"); // JavaScript callback on successful change
+                                }
+                                else
+                                {
+                                    Response.Write (this.OnChange + "(msg.NewValue, '" + this.Cookie + "');"); // JavaScript callback on successful change
+                                }
                             }
     
                         %>
                     }, this),
-                    error: $.proxy(function (msg) {
+                    $.proxy(function(msg) {
                         alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
-                        $(this).val (_initVal_<%=this.TextInput.ClientID%>);
+                        $(this).val(_initVal_<%=this.TextInput.ClientID%>);
                         $(this).css('background-color', '#FFA0A0');
                         $(this).animate({ backgroundColor: "#FFFFFF" }, 250);
                     }, this)
-                });
+                );
             }
-
         });
 
     });
+
 
     function <%=this.ClientID%>_disable() {
         $('#<%=this.TextInput.ClientID%>').attr ('disabled', 'disabled');

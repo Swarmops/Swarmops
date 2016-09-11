@@ -194,14 +194,15 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
 
         [WebMethod]
-        static public AjaxTextBox.CallbackResult StoreCallback(string newValue, string cookie)
+        static public AjaxInputCallResult StoreCallback(string newValue, string cookie)
         {
-            AjaxTextBox.CallbackResult result = new AjaxTextBox.CallbackResult();
+            AjaxInputCallResult result = new AjaxInputCallResult();
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (!authData.Authority.HasAccess (new Access (AccessAspect.Administration, AccessType.Write)))
             {
-                result.ResultCode = AjaxTextBox.CodeNoPermission;
+                result.Success = false; // this is default on init, but let's be explicit about it
+                result.FailReason = AjaxInputCallResult.ErrorAccessDenied;
                 return result; // fail silently
             }
 
@@ -226,7 +227,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                             catch (FormatException)
                             {
                                 result.DisplayMessage = Resources.Pages.Admin.SystemSettings_Error_SmtpHostPort;
-                                result.ResultCode = AjaxTextBox.CodeInvalid;
+                                result.FailReason = AjaxInputCallResult.ErrorInvalidFormat;
+                                result.Success = false;
                                 return result; // return early
                             }
                         }
@@ -238,13 +240,14 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                         OutboundComm.CreateNotification(Organization.Sandbox, Logic.Communications.Payload.NotificationResource.System_MailServerTest);
 
-                        result.ResultCode = AjaxTextBox.CodeChanged;
-                        result.NewData = FormatSmtpAccessString (user, pass, host, port);
+                        result.Success = true;
+                        result.NewValue = FormatSmtpAccessString (user, pass, host, port);
                         result.DisplayMessage = Resources.Pages.Admin.SystemSettings_TestMailSent;
                     }
                     else
                     {
-                        result.ResultCode = AjaxTextBox.CodeInvalid;
+                        result.Success = false;
+                        result.FailReason = AjaxInputCallResult.ErrorInvalidFormat;
                         result.DisplayMessage = Resources.Pages.Admin.SystemSettings_Error_SmtpSyntax;
                     }
                     break;
@@ -261,26 +264,26 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                     SystemSettings.ExternalUrl = newValue;
 
-                    result.NewData = newValue;
-                    result.ResultCode = AjaxTextBox.CodeSuccess;
+                    result.NewValue = newValue;
+                    result.Success = true;
                     break;
 
                 case "InstallationName":
-                    result.NewData = newValue.Trim();
-                    result.ResultCode = AjaxTextBox.CodeSuccess;
-                    SystemSettings.InstallationName = result.NewData;
+                    result.NewValue = newValue.Trim();
+                    result.Success = true;
+                    SystemSettings.InstallationName = result.NewValue;
                     break;
 
                 case "AdminSender":
-                    result.NewData = newValue.Trim();
-                    result.ResultCode = AjaxTextBox.CodeSuccess;
-                    SystemSettings.InstallationName = result.NewData;
+                    result.NewValue = newValue.Trim();
+                    result.Success = true;
+                    SystemSettings.InstallationName = result.NewValue;
                     break;
 
                 case "AdminAddress":
-                    result.NewData = newValue.Trim();
-                    result.ResultCode = AjaxTextBox.CodeSuccess;
-                    SystemSettings.AdminNotificationAddress = result.NewData;
+                    result.NewValue = newValue.Trim();
+                    result.Success = true;
+                    SystemSettings.AdminNotificationAddress = result.NewValue;
                     break;
 
                 case "WebsocketServer":
@@ -291,14 +294,15 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         {
                             throw new ArgumentException();
                         }
-                        result.ResultCode = AjaxTextBox.CodeSuccess;
-                        result.NewData = newValue.Trim();
+                        result.NewValue = newValue.Trim();
+                        result.Success = true;
                         SystemSettings.WebsocketPortServer = newPort;
                     }
                     catch (Exception)
                     {
-                        result.ResultCode = AjaxTextBox.CodeInvalid;
-                        result.NewData = SystemSettings.WebsocketPortServer.ToString(CultureInfo.InvariantCulture);
+                        result.Success = false;
+                        result.FailReason = AjaxInputCallResult.ErrorInvalidFormat;
+                        result.NewValue = SystemSettings.WebsocketPortServer.ToString(CultureInfo.InvariantCulture);
                     }
                     break;
 
@@ -311,14 +315,15 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                             throw new ArgumentException();
                         }
 
-                        result.ResultCode = AjaxTextBox.CodeSuccess;
-                        result.NewData = newValue.Trim();
+                        result.NewValue = newValue.Trim();
+                        result.Success = true;
                         SystemSettings.WebsocketPortClient = newPort;
                     }
                     catch (Exception)
                     {
-                        result.ResultCode = AjaxTextBox.CodeInvalid;
-                        result.NewData = SystemSettings.WebsocketPortClient.ToString(CultureInfo.InvariantCulture);
+                        result.Success = false;
+                        result.FailReason = AjaxInputCallResult.ErrorInvalidFormat;
+                        result.NewValue = SystemSettings.WebsocketPortClient.ToString(CultureInfo.InvariantCulture);
                     }
                     break;
 

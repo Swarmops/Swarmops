@@ -396,47 +396,48 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
 
         [WebMethod]
-        static public AjaxTextBox.CallbackResult StoreCallback(string newValue, string cookie)
+        static public AjaxInputCallResult StoreCallback(string newValue, string cookie)
         {
-            AjaxTextBox.CallbackResult result = new AjaxTextBox.CallbackResult();
+            AjaxInputCallResult result = new AjaxInputCallResult();
             AuthenticationData authenticationData = GetAuthenticationDataAndCulture();
 
             if (!authenticationData.Authority.HasAccess (new Access (authenticationData.CurrentOrganization, AccessAspect.Administration, AccessType.Write)))
             {
-                result.ResultCode = AjaxTextBox.CodeNoPermission;
+                result.Success = false; // this is the default on initialization, but let's be explicit about it
+                result.FailReason = AjaxInputCallResult.ErrorAccessDenied;
                 return result;
             }
 
             switch (cookie)
             {
                 case "VanityDomain":
-                    result.NewData = newValue.Trim();
-                    result.ResultCode = AjaxTextBox.CodeSuccess;
-                    authenticationData.CurrentOrganization.VanityDomain = result.NewData;
+                    result.Success = true;
+                    result.NewValue = newValue.Trim();
+                    authenticationData.CurrentOrganization.VanityDomain = result.NewValue;
                     break;
 
                 case "OpenLedgersDomain":
-                    result.NewData = newValue.Trim();
-                    result.ResultCode = AjaxTextBox.CodeSuccess;
-                    authenticationData.CurrentOrganization.OpenLedgersDomain = result.NewData;
+                    result.Success = true;
+                    result.NewValue = newValue.Trim();
+                    authenticationData.CurrentOrganization.OpenLedgersDomain = result.NewValue;
                     break;
 
                 case "PaypalAccountAddress":
-                    result.NewData = newValue.Trim();
-                    result.ResultCode = AjaxTextBox.CodeSuccess;
-                    authenticationData.CurrentOrganization.PaypalAccountMailAddress = result.NewData;
+                    result.Success = true;
+                    result.NewValue = newValue.Trim();
+                    authenticationData.CurrentOrganization.PaypalAccountMailAddress = result.NewValue;
                     break;
 
                 case "GovernmentRegistrationId":
-                    result.NewData = newValue.Trim();
-                    result.ResultCode = AjaxTextBox.CodeSuccess;
-                    authenticationData.CurrentOrganization.GovernmentRegistrationId = result.NewData;
+                    result.Success = true;
+                    result.NewValue = newValue.Trim();
+                    authenticationData.CurrentOrganization.GovernmentRegistrationId = result.NewValue;
                     break;
 
                 case "TaxPaymentOcr":
-                    result.NewData = newValue.Trim();
-                    result.ResultCode = AjaxTextBox.CodeSuccess;
-                    authenticationData.CurrentOrganization.TaxPaymentOcr = result.NewData;
+                    result.Success = true;
+                    result.NewValue = newValue.Trim();
+                    authenticationData.CurrentOrganization.TaxPaymentOcr = result.NewValue;
                     break;
 
                 default:
