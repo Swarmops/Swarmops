@@ -216,10 +216,10 @@ namespace Swarmops.Frontend.Automation
         {
             // Personal Details tab
 
-            public string Name;
-            public string Mail;
-            public string Phone;
-            public string TwitterId;
+            public string Name { get; set; }
+            public string Mail { get; set; }
+            public string Phone { get; set; }
+            public string TwitterId { get; set; }
 
             // Accounts tab
 
