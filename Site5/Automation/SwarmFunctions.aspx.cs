@@ -232,8 +232,6 @@ namespace Swarmops.Frontend.Automation
         [WebMethod]
         public static PersonEditorData GetPersonEditorData (int personId)
         {
-            return null;
-
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             bool self = false;
 
