@@ -299,6 +299,7 @@ public class AuthenticationData
 }
 
 
+[Serializable]
 public class AjaxCallResult
 {
     public bool Success { get; set; }
@@ -306,6 +307,7 @@ public class AjaxCallResult
 }
 
 
+[Serializable]
 public class AjaxInputCallResult: AjaxCallResult
 {
     /// <summary>

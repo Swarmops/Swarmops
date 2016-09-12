@@ -212,6 +212,7 @@ namespace Swarmops.Frontend.Automation
             return new AjaxCallResult {Success = true, DisplayMessage = Geography.FromIdentity (geographyId).Name};
         }
 
+        [Serializable]
         public class PersonEditorData : AjaxCallResult
         {
             // Personal Details tab
@@ -231,6 +232,8 @@ namespace Swarmops.Frontend.Automation
         [WebMethod]
         public static PersonEditorData GetPersonEditorData (int personId)
         {
+            return null;
+
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             bool self = false;
 

@@ -358,7 +358,7 @@
             _master_PersonEditedId = personId;
 
             SwarmopsJS.ajaxCall('/Automation/SwarmFunctions.aspx/GetPersonEditorData', personEditorData, function(data) {
-                if (data.Success) {
+                if (data != null && data.Success) {
                     $('span.spanModalEditingPersonName').text(data.Name);
 
                     <%= this.MasterEditPersonName.ClientID %>_initialize(data.Name);
