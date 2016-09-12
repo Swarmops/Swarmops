@@ -351,7 +351,7 @@
             <%=this.ModalMasterEditPerson.ClientID%>_open();
 
             var personEditorData = {
-                personId: personId
+                personId: parseInt(personId)  // parseInt to force passing integer over JSON
             };
 
             _master_PersonEditLoading = false;

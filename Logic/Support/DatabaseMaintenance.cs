@@ -85,7 +85,7 @@ namespace Swarmops.Logic.Support
                         sql = client.DownloadString (fileName);
                     }
                 }
-                catch (Exception)
+                catch (Exception outerException)
                 {
                     Console.WriteLine(" trying fallback...");
 
@@ -99,9 +99,19 @@ namespace Swarmops.Logic.Support
                             sql = client.DownloadString(fileName);
                         }
                     }
-                    catch (Exception)
+                    catch (Exception middleException)
                     {
-                        OutboundComm.CreateNotification(null, NotificationResource.System_DatabaseUpgradeFailed);
+                        try
+                        {
+                            OutboundComm.CreateNotification (null, NotificationResource.System_DatabaseUpgradeFailed);
+                        }
+                        catch (ArgumentException)
+                        {
+                            // if this happens during setup:
+
+                            throw new Exception ("Failed fetching upgrade packages:\r\n" + middleException.ToString() +
+                                                 "\r\n" + outerException.ToString());
+                        }
                         Console.WriteLine(" FAILED! Aborting.");
 
                         return;
