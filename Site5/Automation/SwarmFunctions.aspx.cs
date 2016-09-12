@@ -258,12 +258,12 @@ namespace Swarmops.Frontend.Automation
         }
 
         [WebMethod]
-        public static AjaxInputCallResult SetPersonEditorData(string newValue, string cookie)
+        public static AjaxInputCallResult SetPersonEditorData(int personId, string field, string newValue)
         {
             return new AjaxInputCallResult
             {
                 Success = true,
-                NewValue = "The change call was successful"
+                NewValue = field + ": The change call was successful"
             };
             throw new NotImplementedException();
         }

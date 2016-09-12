@@ -224,10 +224,10 @@
                 <div title="<img src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Account</h2>
                     <div class="entryFields">
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonName" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Name" AjaxCallbackUrl="/Automation/SwarmFunctions.aspx/SetPersonEditorData" />&#8203;<br/>
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonMail" runat="server" />&#8203;<br/>
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonPhone" runat="server" />&#8203;<br/>
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonTwitterId" runat="server" />
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonName" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Name" AjaxCallbackUrl="" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonMail" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Mail" AjaxCallbackUrl=""  />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonPhone" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Phone" AjaxCallbackUrl=""  />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonTwitterId" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="TwitterId" AjaxCallbackUrl=""  />
                     </div>
                     <div class="entryLabels">
                         Name<br/>
@@ -367,6 +367,14 @@
                     <%= this.MasterEditPersonTwitterId.ClientID %>_initialize(data.TwitterId);
 
                     _master_PersonEditLoading = false;
+
+                    // TEST CODE BELOW
+
+
+                    masterPersonEditorOnFieldChange("YAY1", "Name", '<%=this.MasterEditPersonName.ClientID%>');
+                    masterPersonEditorOnFieldChange("YAY2", "Mail", '<%=this.MasterEditPersonMail.ClientID%>');
+                    masterPersonEditorOnFieldChange("YAY3", "Phone", '<%=this.MasterEditPersonPhone.ClientID%>');
+
                 } else {
                     alert('Server error: Call to SwarmFunctions.aspx failed');
                 }
@@ -381,8 +389,33 @@
         var _master_PersonEditedId = -1;  // no person: zero means "self"
         var _master_PersonEditLoading = false;
 
-        function masterPersonEditorOnFieldChange(newValue, fieldName) {
-            alert("Field Change: " + fieldName + " changed to '" + newValue + "'");
+        function masterPersonEditorOnFieldChange(newValue, fieldName, controlName) {
+            // Do the AJAX call from here, as we need to also pass along the person ID of the person edited
+            // (the AjaxTextBox auto-callback is disabled for this reason, code duplicated here)
+
+            var jsonData = {
+                personId: _master_PersonEditedId,
+                field: fieldName,
+                newValue: newValue
+            };
+
+            SwarmopsJS.ajaxCall(
+
+                // HACK: Possible race condition for "controlName" here in some environments?
+
+               "/Automation/SwarmFunctions.aspx/SetPersonEditorData",
+               jsonData,
+               function(result) {
+                   window[controlName + "_updateSuccessAnimate"](result.NewValue);
+               },
+               function(result) {
+                   window[controlName + "_updateFailAnimate"](result.NewValue);
+               });
+
+
+
+            //alert("Field Change: " + fieldName + " changed to '" + newValue + "'");
+
         }
 
         function masterEndEditPerson() {
