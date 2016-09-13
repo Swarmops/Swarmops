@@ -79,7 +79,7 @@ namespace Swarmops.Pages.Security
 
             // If this is the Dev Sandbox, autologin
 
-            if (requestHost == "dev.swarmops.com" &&
+            if ((requestHost == "sandbox.swarmops.com" || requestHost == "dev.swarmops.com") &&
                 PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox) &&
                 Request.QueryString["SuppressAutologin"] != "true")
             {
