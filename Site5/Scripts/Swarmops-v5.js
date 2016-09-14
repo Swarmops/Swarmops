@@ -139,7 +139,7 @@ if (typeof $.fn.combotree != 'undefined') {
                     var t = $(this).combotree('tree');
                     var nodes = t.tree('getChildren');
                     if (!nodes.length) {
-                        return
+                        return;
                     }
                     var node = t.tree('getSelected');
                     if (!node) {
@@ -156,14 +156,14 @@ if (typeof $.fn.combotree != 'undefined') {
                             while (index < nodes.length - 1) {
                                 index++;
                                 if ($(nodes[index].target).is(':visible')) {
-                                    break
+                                    break;
                                 }
                             }
                         } else {
                             while (index > 0) {
                                 index--;
                                 if ($(nodes[index].target).is(':visible')) {
-                                    break
+                                    break;
                                 }
                             }
                         }
