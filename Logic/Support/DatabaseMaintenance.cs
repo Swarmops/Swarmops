@@ -89,6 +89,10 @@ namespace Swarmops.Logic.Support
                 {
                     Console.WriteLine(" trying fallback...");
 
+                    // Because Mono installs with an insufficient certificate store, we must disable certificate checking before accessing github
+
+                    SupportFunctions.DisableSslCertificateChecks();
+
                     fileName = String.Format("https://raw.githubusercontent.com/Swarmops/Swarmops/master/Database/Schemata/upgrade-{0:D4}.sql",
                         currentDbVersion);
 

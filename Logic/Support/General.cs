@@ -18,6 +18,8 @@ namespace Swarmops.Logic.Support
 
             // This disables certificate checking completely and accepts ALL certificates.
 
+            // TODO: Does this install a new handler every time it's been called? How do you verify that this short-circuit is in place?
+
             System.Net.ServicePointManager.ServerCertificateValidationCallback +=
                 (sender, certificate, chain, sslPolicyErrors) => true;
         }
