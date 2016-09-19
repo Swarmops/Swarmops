@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Net;
 using System.Text;
 
 using Exortech.NetReflector;
@@ -29,6 +31,12 @@ namespace ccnet.SharedLabeller.CruiseControl.plugin
         /// </summary>
         [ReflectorProperty("prefixFile", Required = false)]
         public string PrefixFile { get; set; }
+
+        /// <summary>
+        /// Url with string to be put in front of all labels. Loaded if File is not found.
+        /// </summary>
+        [ReflectorProperty("prefixUrlFallback", Required = false)]
+        public string PrefixUrlFallback { get; set; }
 
         /// <summary>
         /// If true, the label will be incremented even if the build fails. Otherwise it will only be incremented if the build succeeds. 
@@ -64,11 +72,30 @@ namespace ccnet.SharedLabeller.CruiseControl.plugin
         public string Generate(IIntegrationResult integrationResult)
         {
             ThoughtWorks.CruiseControl.Core.Util.Log.Debug("About to read label prefix file. Filename: {0}", PrefixFile);
-            string prefix = System.IO.File.ReadAllText(PrefixFile).Trim();
+            string prefix;
+
+            try
+            {
+                prefix = System.IO.File.ReadAllText(PrefixFile).Trim();
+            }
+            catch (Exception)
+            {
+                // This disables certificate checking completely and accepts ALL certificates.
+
+                System.Net.ServicePointManager.ServerCertificateValidationCallback +=
+                    (sender, certificate, chain, sslPolicyErrors) => true;
+
+                using (WebClient client = new WebClient())
+                {
+                    prefix = client.DownloadString (PrefixUrlFallback).Trim();
+
+                    // May throw
+                }
+            }
 
             if (ShouldIncrementLabel(integrationResult.LastIntegration))
             {
-                return prefix + "+" + this.GetLabel();
+                return prefix + "--" + this.GetLabel();
             }
             else
             {
