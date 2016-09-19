@@ -1,5 +1,6 @@
 <%@ Application Language="C#" %>
 <%@ Import Namespace="System.IO" %>
+<%@ Import Namespace="System.Collections.Generic" %>
 
 
 <script runat="server">
@@ -10,7 +11,6 @@
 
         // Set supported cultures
         HttpContext.Current.Application["Cultures"] = new[] {"sv-SE", "en-US", "en-GB", "de-DE", "de-AT", "fi-FI"};
-
         HttpContext.Current.Application["UserRoleCache"] = new Dictionary<int, string[]>();
     }
 
