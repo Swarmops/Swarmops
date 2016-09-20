@@ -1,5 +1,17 @@
 #!/bin/bash
 
-cd /home/prod/Smallwebs/Activizr-repo/
-reprepro includedeb squeeze $1
-cd /home/packager/swarmops/
+if ["$#" -ne 2 ]; then
+    echo "Usage: update-repos <filename> <releasename1,releasename2,...>"
+    echo "Example: update-repos internal-latest.deb trusty,xenial,jessie"
+    exit 1
+fi
+
+cd /var/www/packages.swarmops.com
+
+for debianRelease in each $(echo $2 | tr ",")
+do
+    echo "Publishing package for $debianRelease..."
+    reprepro includedeb $debianRelease $1
+done
+
+cd /home/builder/swarmops/packaging

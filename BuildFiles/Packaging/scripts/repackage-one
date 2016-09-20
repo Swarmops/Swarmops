@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Directory structure is supposed to be /home/builder/swarmops/packaging/...
+# Builds in /home/builder/swarmops/{buildtype}
+# Home folder for script is /home/builder/swarmops/packaging
+
 DEPLOYDIR=usr/share/swarmops
 
 # Check parameters
@@ -23,21 +27,21 @@ fi
 
 if [ "$1" == "frontend" ]; then
   echo "Packaging frontend...";
-  SOURCEDIR=/home/packager/lastbuild/swarmops/$DROPFOLDER/frontend
+  SOURCEDIR=/home/builder/swarmops/builds/$DROPFOLDER/frontend
   TARGETDIR=frontend
   PACKAGE=frontend
   INCLUDEDB=no
   COPYFILES=yes
 elif [ "$1" == "backend" ]; then
   echo "Packaging backend..."
-  SOURCEDIR=/home/packager/lastbuild/swarmops/$DROPFOLDER/backend
+  SOURCEDIR=/home/builder/swarmops/builds/$DROPFOLDER/backend
   TARGETDIR=backend
   PACKAGE=backend
   INCLUDEDB=no
   COPYFILES=yes
 elif [ "$1" == "extscripts" ]; then
   echo "Packaging external scripts..."
-  SOURCEDIR=/home/prod/Smallwebs/HostedScripts
+  SOURCEDIR=/home/builder/swarmops/sources/external-scripts
   TARGETDIR=frontend/Scripts/ExternalScripts
   PACKAGE=external-scripts
   COPYFILES=yes
@@ -56,11 +60,13 @@ fi
 
 PACKAGENAME=$PACKAGE$CONTROLSUFFIX
 
-cp ../lastbuild/swarmops/$DROPFOLDER/BuildIdentity.txt ./BuildIdentity.txt
-cp ../lastbuild/swarmops/$DROPFOLDER/CommitIdentity.txt ./CommitIdentity.txt
+mkdir -p $DROPFOLDER
 
-BUILDID=$(cat BuildIdentity.txt | tr -d ' \r')
-COMMITID=$(cat CommitIdentity.txt | tr -d ' \r')
+cp ../builds/$DROPFOLDER/BuildIdentity.txt $DROPFOLDER/BuildIdentity.txt
+cp ../builds/$DROPFOLDER/CommitIdentity.txt $DROPFOLDER/CommitIdentity.txt
+
+BUILDID=$(cat $DROPFOLDER/BuildIdentity.txt | sed 's/--/\+/' | tr -d ' \r')
+COMMITID=$(cat $DROPFOLDER/CommitIdentity.txt | tr -d ' \r')
 
 BUILDID=$(echo $BUILDID)-$(echo $COMMITID | cut -c 1-7)
 
@@ -73,14 +79,14 @@ echo ""
 #rm /home/packaging/lastbuild/BuildDropped.txt
 
 # Remove previous package files, if any
-if [ -d debian ]; then
-  rm -rf debian
+if [ -d $DROPFOLDER/payload ]; then
+  rm -rf $DROPFOLDER/payload
 fi
 
 # Init build
-mkdir debian
-mkdir debian/DEBIAN
-cd debian
+mkdir -p $DROPFOLDER/payload
+mkdir -p $DROPFOLDER/payload/DEBIAN
+cd $DROPFOLDER/payload
 
 
 if [ "$COPYFILES" == "yes" ]; then
@@ -92,6 +98,8 @@ if [ "$COPYFILES" == "yes" ]; then
   if [ "$1" == "extscripts" ]; then
     rm -rf $DEPLOYDIR/$TARGETDIR/staging
   fi
+
+  # LEAVE FOR THE NIGHT: Verify that the etcinitd files are copied on Backend build
 
   if [ -d $SOURCEDIR/etcinitd ]; then
     echo "Adding /etc/init.d files..."
@@ -111,14 +119,14 @@ fi
 echo "Copying template files into repo..."
 if [ "$INCLUDEDB" == "yes" ]; then
   mkdir -p etc/swarmops
-  cp ../templates/database.config.template etc/swarmops/database.config
+  cp ../../templates/database.config.template etc/swarmops/database.config
 fi
-cp ../templates/control-$PACKAGENAME.template DEBIAN/control
-cp ../templates/conffiles-$PACKAGE.template DEBIAN/conffiles
+cp ../../templates/control-$PACKAGENAME.template DEBIAN/control
+cp ../../templates/conffiles-$PACKAGE.template DEBIAN/conffiles
 
 if [ -e "../templates/prerm-$PACKAGE.template" ]; then
   echo "Adding $PACKAGE prerm script..."
-  cp ../templates/prerm-$PACKAGE.template DEBIAN/prerm
+  cp ../../templates/prerm-$PACKAGE.template DEBIAN/prerm
   chmod +x DEBIAN/prerm
 else
   if [ -e "DEBIAN/prerm" ]; then
@@ -129,7 +137,7 @@ fi
 
 if [ -e "../templates/postinst-$PACKAGE.template" ]; then
   echo "Adding $PACKAGE postinst script..."
-  cp ../templates/postinst-$PACKAGE.template DEBIAN/postinst
+  cp ../../templates/postinst-$PACKAGE.template DEBIAN/postinst
   chmod +x DEBIAN/postinst
 else
   if [ -e "DEBIAN/postinst" ]; then
@@ -140,7 +148,7 @@ fi
 
 if [ -e "../templates/preinst-$PACKAGE.template" ]; then
   echo "Adding $PACKAGE preinst script..."
-  cp ../templates/preinst-$PACKAGE.template DEBIAN/preinst
+  cp ../../templates/preinst-$PACKAGE.template DEBIAN/preinst
   chmod +x DEBIAN/preinst
 else
   if [ -e "DEBIAN/preinst" ]; then
@@ -161,29 +169,31 @@ fi
 
 # Calculating new checksums
 echo "Creating MD5 checksum file..."
-../scripts/create-md5
+../../scripts/create-md5
 
 echo "Creating package 'swarmops-$PACKAGENAME-latest.deb'..."
-cd ..
+cd ../..
 if [ -e swarmops-$PACKAGENAME-latest.deb ]; then
   rm swarmops-$PACKAGENAME-latest.deb
 fi
-fakeroot dpkg-deb --build debian
-mv debian.deb swarmops-$PACKAGENAME-latest.deb
-cp swarmops-$PACKAGENAME-latest.deb /home/prod/Smallwebs/Activizr-repo
+#fakeroot dpkg-deb --build debian   # what's "debian" here?
+#mv debian.deb swarmops-$PACKAGENAME-latest.deb  # what's "debian.deb"? where's the name come from?
+#cp swarmops-$PACKAGENAME-latest.deb /home/prod/Smallwebs/Activizr-repo   # THIS FOLDER
 
 echo "Updating repositories..."
-scripts/update-repos swarmops-$PACKAGENAME-latest.deb
+#scripts/update-repos swarmops-$PACKAGENAME-latest.deb squeeze,trusty,xenial,jessie
+
+# TODO: FIX INTERNAL INSTALL
 
 if [ "$2" == "" ]; then
-  echo "Installing INTERNAL BUILD on swarmops-dev for testing..."
-  sudo dpkg -i --force-confdef swarmops-$PACKAGENAME-latest.deb
+  #echo "Installing INTERNAL BUILD on swarmops-dev for testing..."
+  #sudo dpkg -i --force-confdef swarmops-$PACKAGENAME-latest.deb
 fi
 
 echo "Cleaning up..."
 
-rm swarmops-$PACKAGENAME-latest.deb
-rm -rf debian
-rm BuildIdentity.txt
-rm CommitIdentity.txt
+#rm swarmops-$PACKAGENAME-latest.deb
+rm -rf $DROPFOLDER/payload
+rm $DROPFOLDER/BuildIdentity.txt
+rm $DROPFOLDER/CommitIdentity.txt
 
