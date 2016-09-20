@@ -176,23 +176,23 @@ cd ../..
 if [ -e swarmops-$PACKAGENAME-latest.deb ]; then
   rm swarmops-$PACKAGENAME-latest.deb
 fi
-#fakeroot dpkg-deb --build debian   # what's "debian" here?
-#mv debian.deb swarmops-$PACKAGENAME-latest.deb  # what's "debian.deb"? where's the name come from?
-#cp swarmops-$PACKAGENAME-latest.deb /home/prod/Smallwebs/Activizr-repo   # THIS FOLDER
+fakeroot dpkg-deb --build $DROPFOLDER/payload
+mv $DROPFOLDER/payload.deb swarmops-$PACKAGENAME-latest.deb
+cp swarmops-$PACKAGENAME-latest.deb /var/www/packages.swarmops.com
 
 echo "Updating repositories..."
-#scripts/update-repos swarmops-$PACKAGENAME-latest.deb squeeze,trusty,xenial,jessie
+scripts/update-repos swarmops-$PACKAGENAME-latest.deb squeeze,trusty,xenial,jessie
 
 # TODO: FIX INTERNAL INSTALL
 
-if [ "$2" == "" ]; then
+#if [ "$2" == "" ]; then
   #echo "Installing INTERNAL BUILD on swarmops-dev for testing..."
   #sudo dpkg -i --force-confdef swarmops-$PACKAGENAME-latest.deb
-fi
+#fi
 
 echo "Cleaning up..."
 
-#rm swarmops-$PACKAGENAME-latest.deb
+rm swarmops-$PACKAGENAME-latest.deb
 rm -rf $DROPFOLDER/payload
 rm $DROPFOLDER/BuildIdentity.txt
 rm $DROPFOLDER/CommitIdentity.txt

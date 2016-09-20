@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ["$#" -ne 2 ]; then
+if [ "$#" -ne "2" ]; then
     echo "Usage: update-repos <filename> <releasename1,releasename2,...>"
     echo "Example: update-repos internal-latest.deb trusty,xenial,jessie"
     exit 1
@@ -8,10 +8,13 @@ fi
 
 cd /var/www/packages.swarmops.com
 
-for debianRelease in $(echo $2 | tr ",")
+IFS=',' read -r -a distros <<< "$2"
+
+for debianRelease in "${distros[@]}"
 do
     echo "Publishing package for $debianRelease..."
     reprepro includedeb $debianRelease $1
 done
 
 cd /home/builder/swarmops/packaging
+unset IFS
