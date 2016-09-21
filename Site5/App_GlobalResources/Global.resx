@@ -729,4 +729,8 @@
     <value>Total</value>
     <comment>Used as footer in tables, summarizing something</comment>
   </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>This field cannot be empty.</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
 </root>
