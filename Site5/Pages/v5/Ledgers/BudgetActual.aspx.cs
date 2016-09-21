@@ -1,4 +1,5 @@
 ﻿using System;
+using Resources;
 using System.Globalization;
 using Swarmops.Logic.Security;
 
