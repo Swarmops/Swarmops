@@ -9,12 +9,13 @@ fi
 cd /var/www/packages.swarmops.com
 
 IFS=',' read -r -a distros <<< "$2"
+unset IFS
 
 for debianRelease in "${distros[@]}"
 do
     echo "Publishing package for $debianRelease..."
-    reprepro --component contrib includedeb $debianRelease $1 	
+    # reprepro --component contrib includedeb $debianRelease $1 	
 done
 
 cd /home/builder/swarmops/packaging
-unset IFS
+
