@@ -54,7 +54,7 @@ echo "Notifying developers that new build has packaged for test/deployment..."
 
 if [ "$DROPFOLDER" == "internal" ]; then
   PACKAGELABEL="internal"
-  echo "$(cat ../lastbuild/swarmops/internal/CommitMessage.txt)" > deploymsg.txt
+  echo "$(cat ../builds/swarmops/internal/CommitMessages.txt)" > deploymsg.txt
   echo "" >> deploymsg.txt
   echo "The packages (swarmops-frontend-internal, swarmops-backend-internal) are available from repositories now, and can be tested at the Dev Sandbox as usual. Last 3 commits listed above." >> deploymsg.txt
   
