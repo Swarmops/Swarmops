@@ -54,14 +54,14 @@ echo "Notifying developers that new build has packaged for test/deployment..."
 
 if [ "$DROPFOLDER" == "internal" ]; then
   PACKAGELABEL="internal"
-  echo "$(cat ../builds/swarmops/internal/CommitMessages.txt)" > deploymsg.txt
+  echo "$(cat ../builds/internal/CommitMessages.txt)" > deploymsg.txt
   echo "" >> deploymsg.txt
   echo "The packages (swarmops-frontend-internal, swarmops-backend-internal) are available from repositories now, and can be tested at the Dev Sandbox as usual. Last 3 commits listed above." >> deploymsg.txt
   
   # Do not mail for internal releases, for now
 
 else
-  PACKAGELABEL="$DROPFOLDER $(cat ../lastbuild/swarmops/$DROPFOLDER/frontend/SprintName.txt | tr -d '\n\r')"
+  PACKAGELABEL="$DROPFOLDER $(cat ../builds/$DROPFOLDER/frontend/SprintName.txt | tr -d '\n\r')"
   echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt-get upgrade. Yay, we made another sprint!" > deploymsg.txt
   mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops $BUILDID ($PACKAGELABEL) packaged." "swarmops.developers@groups.facebook.com" < deploymsg.txt
 fi
