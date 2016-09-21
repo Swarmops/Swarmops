@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using Resources;
-using Resources.Pages;
+using System.Globalization;
 using Swarmops.Logic.Security;
 
 public partial class Pages_v5_Ledgers_BudgetActual : PageV5Base
@@ -15,8 +14,8 @@ public partial class Pages_v5_Ledgers_BudgetActual : PageV5Base
         }
 
         PageIcon = "iconshock-abacus";
-        PageTitle = Ledgers.BudgetActual_PageTitle;
-        InfoBoxLiteral = Ledgers.BudgetActual_Info;
+        PageTitle = Resources.Pages.Ledgers.BudgetActual_PageTitle;
+        InfoBoxLiteral = Resources.Pages.Ledgers.BudgetActual_Info;
 
         // Security: If the org has open ledgers, then anyone may read. Otherwise, Financials.Read.
 
@@ -51,15 +50,15 @@ public partial class Pages_v5_Ledgers_BudgetActual : PageV5Base
     {
         int year = DateTime.UtcNow.Year;
 
-        this.LabelContentHeader.Text = string.Format (Ledgers.BudgetActual_ContentHeader,
+        this.LabelContentHeader.Text = string.Format (Resources.Pages.Ledgers.BudgetActual_ContentHeader,
             CurrentOrganization.Name);
         this.LiteralHeaderLastYearActual.Text = Global.Financial_Actuals + @" " + (year - 1).ToString(CultureInfo.InvariantCulture);
         this.LiteralHeaderBudget.Text = Global.Financial_Budget + @" " + year.ToString(CultureInfo.InvariantCulture); ;
         this.LiteralHeaderActual.Text = Global.Financial_Actuals + @" " + Global.Financial_YTD;
-        this.LiteralHeaderExpected.Text = Ledgers.BudgetActual_ExpectedYtd;
+        this.LiteralHeaderExpected.Text = Resources.Pages.Ledgers.BudgetActual_ExpectedYtd;
         this.LiteralActual.Text = Global.Financial_Actuals;
         this.LiteralBudget.Text = Global.Financial_Budget;
-        this.LiteralHeaderAccountName.Text = Ledgers.ProfitLossStatement_AccountName;
+        this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.ProfitLossStatement_AccountName;
         this.LiteralHeaderFlags.Text = Global.Global_Flags;
     }
 }

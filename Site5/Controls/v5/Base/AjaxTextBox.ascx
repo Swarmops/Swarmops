@@ -10,6 +10,8 @@
 
             var currentValue = $('#<%=this.TextInput.ClientID%>').val();
 
+            alert(currentValue + "\r\n" + _initVal_<%=this.TextInput.ClientID%>);
+
             if (currentValue != _initVal_<%=this.TextInput.ClientID%>) {
                 var jsonData = {};
                 jsonData.newValue = currentValue;
@@ -116,6 +118,7 @@
 
     function <%=this.ClientID%>_initialize(initValue) {
         _initVal_<%=this.TextInput.ClientID%> = initValue;
+        alert(initValue);
         <%=this.ClientID%>_setValue(initValue);
         <%=this.ClientID%>_enable();
     }

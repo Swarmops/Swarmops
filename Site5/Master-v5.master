@@ -368,13 +368,6 @@
 
                     _master_PersonEditLoading = false;
 
-                    // TEST CODE BELOW
-
-
-                    masterPersonEditorOnFieldChange("YAY1", "Name", '<%=this.MasterEditPersonName.ClientID%>');
-                    masterPersonEditorOnFieldChange("YAY2", "Mail", '<%=this.MasterEditPersonMail.ClientID%>');
-                    masterPersonEditorOnFieldChange("YAY3", "Phone", '<%=this.MasterEditPersonPhone.ClientID%>');
-
                 } else {
                     alert('Server error: Call to SwarmFunctions.aspx failed');
                 }
