@@ -3,7 +3,7 @@ using System.ServiceModel.Security;
 using System.Web;
 using System.Web.Services;
 using Resources;
-using Resources.Pages;
+
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -67,7 +67,7 @@ namespace Swarmops.Frontend.Pages.Swarm
             // Create result and return it
 
             result.AssignedId = payout.Identity;
-            result.DisplayMessage = String.Format (Financial.PayOutMoney_PayoutCreated, payout.Identity,
+            result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
                 payout.Recipient);
 
             result.DisplayMessage = HttpUtility.UrlEncode (result.DisplayMessage).Replace ("+", "%20");
@@ -88,7 +88,7 @@ namespace Swarmops.Frontend.Pages.Swarm
                 // this payout has already been settled, or picked up for settling
 
                 result.Success = false;
-                result.DisplayMessage = String.Format (Financial.PayOutMoney_PayoutCannotUndo,
+                result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
                     databaseId);
 
                 return result;
@@ -97,7 +97,7 @@ namespace Swarmops.Frontend.Pages.Swarm
             payout.UndoPayout();
 
             result.DisplayMessage =
-                HttpUtility.UrlEncode (String.Format (Financial.PayOutMoney_PayoutUndone, databaseId))
+                HttpUtility.UrlEncode (String.Format (Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId))
                     .Replace ("+", "%20");
             result.Success = true;
             return result;
