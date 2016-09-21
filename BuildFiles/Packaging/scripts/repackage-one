@@ -190,5 +190,6 @@ scripts/update-repos swarmops-$PACKAGENAME-latest.deb squeeze,trusty,xenial,jess
 echo "Cleaning up..."
 
 rm swarmops-$PACKAGENAME-latest.deb
+rm /var/www/packages.swarmops.com/swarmops-$PACKAGENAME-latest.deb
 rm -rf $DROPFOLDER/payload
 
