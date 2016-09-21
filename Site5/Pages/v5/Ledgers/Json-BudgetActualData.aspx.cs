@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using Resources.Pages;
 using Swarmops.Common.Enums;
+using Resources;
 using Swarmops.Logic.Financial;
 
 public partial class Pages_v5_Ledgers_Json_BudgetActualData : DataV5Base
@@ -63,7 +63,7 @@ public partial class Pages_v5_Ledgers_Json_BudgetActualData : DataV5Base
 
     private string WriteFooter (AnnualReportNode totals)
     {
-        string result = string.Format ("\"name\":\"{0}\"", Ledgers.ProfitLossStatement_Results);
+        string result = string.Format ("\"name\":\"{0}\"", Resources.Pages.Ledgers.ProfitLossStatement_Results);
 
         result += string.Format(CultureInfo.CurrentCulture, ",\"lastYearActual\":\"{0:N0}\"",
             (double)totals.PreviousYear / -100.0);
