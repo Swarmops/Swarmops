@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Activities.Statements;
 using System.Collections.Generic;
-using System.EnterpriseServices.Internal;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -261,12 +259,53 @@ namespace Swarmops.Frontend.Automation
         [WebMethod]
         public static AjaxInputCallResult SetPersonEditorData(int personId, string field, string newValue)
         {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            bool self = false;
+
+            if (personId == 0) // request self record
+            {
+                self = true; // may make use of this later
+                personId = authData.CurrentUser.Identity;
+            }
+
+            if (string.IsNullOrEmpty (newValue))
+            {
+                if (field != "TwitterId") // These fields may be set to empty; default is disallow
+                {
+                    return new AjaxInputCallResult
+                    {
+                        Success = false,
+                        DisplayMessage = Resources.Global.Global_FieldCannotBeEmpty,
+                        FailReason = AjaxInputCallResult.ErrorInvalidFormat,
+                        NewValue = GetPersonValue (personId, field)
+                    };
+                }
+            }
+
             return new AjaxInputCallResult
             {
                 Success = true,
                 NewValue = field + ": The change call was successful"
             };
             throw new NotImplementedException();
+        }
+
+        private static string GetPersonValue (int personId, string field)
+        {
+            Person person = Person.FromIdentity (personId);
+            switch (field)
+            {
+                case "Name":
+                    return person.Name;
+                case "Mail":
+                    return person.Mail;
+                case "Phone":
+                    return person.Phone;
+                case "TwitterId":
+                    return person.TwitterId;
+                default:
+                    throw new NotImplementedException();
+            }
         }
 
     }
