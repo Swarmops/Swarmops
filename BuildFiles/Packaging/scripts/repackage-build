@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #Update schemata
-cd /home/prod/Smallwebs/Activizr-repo/schemata
+cd /var/www/packages.swarmops.com/schemata
 echo "Checking for updates to schema..."
 svn update
 
-cd /home/packager/swarmops
+cd /home/builder/swarmops/packaging
 
 #Update all files, including this one. Runpos will remain same in possible new version
 echo "Checking for updates to packaging process..."
@@ -21,7 +21,7 @@ elif [ "$1" == "sprint" ]; then
   echo "Packaging END-OF-SPRINT for normal deployments."
 elif [ "$1" == "" ]; then
   DROPFOLDER=internal
-  echo "internal" > ../lastbuild/swarmops/internal/frontend/SprintName.txt
+  echo "internal" > ../builds/internal/frontend/SprintName.txt
   echo "Packaging internal test build."
 else
   echo "Syntax: repackage-build [sprint|release]"
@@ -29,8 +29,11 @@ else
   exit 1;
 fi
 
-BUILDID=$(cat ../lastbuild/swarmops/$DROPFOLDER/BuildIdentity.txt | tr -d ' \r')
-COMMITID=$(cat ../lastbuild/swarmops/$DROPFOLDER/CommitIdentity.txt | tr -d ' \r')
+cp ../builds/$DROPFOLDER/BuildIdentity.txt $DROPFOLDER/BuildIdentity.txt
+cp ../builds/$DROPFOLDER/CommitIdentity.txt $DROPFOLDER/CommitIdentity.txt
+
+BUILDID=$(cat $DROPFOLDER/BuildIdentity.txt | tr -d ' \r')
+COMMITID=$(cat $DROPFOLDER/CommitIdentity.txt | tr -d ' \r')
 
 BUILDID=$(echo $BUILDID)-$(echo $COMMITID | cut -c 1-7)
 
@@ -44,8 +47,7 @@ scripts/repackage-one backend $1
 scripts/repackage-one common $1
 
 if [ "$DROPFOLDER" != "internal" ]; then
-  cp -R /home/prod/Smallwebs/HostedScripts/staging/* /home/prod/Smallwebs/HostedScripts/.
-  scripts/repackage-one extscripts sprint
+  scripts/repackage-one extscripts $DROPFOLDER
 fi
 
 echo "Notifying developers that new build has packaged for test/deployment..."
@@ -55,14 +57,19 @@ if [ "$DROPFOLDER" == "internal" ]; then
   echo "$(cat ../lastbuild/swarmops/internal/CommitMessage.txt)" > deploymsg.txt
   echo "" >> deploymsg.txt
   echo "The packages (swarmops-frontend-internal, swarmops-backend-internal) are available from repositories now, and can be tested at the Dev Sandbox as usual. Last 3 commits listed above." >> deploymsg.txt
+  
+  # Do not mail for internal releases, for now
+
 else
   PACKAGELABEL="$DROPFOLDER $(cat ../lastbuild/swarmops/$DROPFOLDER/frontend/SprintName.txt | tr -d '\n\r')"
   echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt-get upgrade. Yay, we made another sprint!" > deploymsg.txt
+  mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops $BUILDID ($PACKAGELABEL) packaged." "swarmops.developers@groups.facebook.com" < deploymsg.txt
 fi
 
 # TODO: Add build messages to deploy message, at least for internal build
 
-mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops $BUILDID ($PACKAGELABEL) packaged." "swarmops.developers@groups.facebook.com" < deploymsg.txt
-
 rm deploymsg.txt
+rm $DROPFOLDER/BuildIdentity.txt
+rm $DROPFOLDER/CommitIdentity.txt
+
 

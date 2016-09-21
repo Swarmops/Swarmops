@@ -62,9 +62,6 @@ PACKAGENAME=$PACKAGE$CONTROLSUFFIX
 
 mkdir -p $DROPFOLDER
 
-cp ../builds/$DROPFOLDER/BuildIdentity.txt $DROPFOLDER/BuildIdentity.txt
-cp ../builds/$DROPFOLDER/CommitIdentity.txt $DROPFOLDER/CommitIdentity.txt
-
 BUILDID=$(cat $DROPFOLDER/BuildIdentity.txt | sed 's/--/\+/' | tr -d ' \r')
 COMMITID=$(cat $DROPFOLDER/CommitIdentity.txt | tr -d ' \r')
 
@@ -194,6 +191,4 @@ echo "Cleaning up..."
 
 rm swarmops-$PACKAGENAME-latest.deb
 rm -rf $DROPFOLDER/payload
-rm $DROPFOLDER/BuildIdentity.txt
-rm $DROPFOLDER/CommitIdentity.txt
 
