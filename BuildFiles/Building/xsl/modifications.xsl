@@ -7,21 +7,18 @@
     <xsl:variable name="modification.list" select="/cruisecontrol/modifications/modification"/>
 
     <xsl:template match="/">
+        <hr size="1" width="98%" align="left" color="#888888"/>
         <table class="section-table" cellpadding="2" cellspacing="0" border="0" width="98%">
             <!-- Modifications -->
             <tr>
                 <td class="sectionheader" colspan="5">
-                    <br/><span style="font-size:125%"><b>MODIFICATIONS SINCE LAST BUILD</b> (<xsl:value-of select="count($modification.list)"/>)</span>
+                    <span style="font-weight:bold;font-size:125%">MODIFICATIONS SINCE LAST BUILD (<xsl:value-of select="count($modification.list)"/>)</span>
                 </td>
             </tr>
 
             <xsl:apply-templates select="$modification.list">
                 <xsl:sort select="date" order="descending" data-type="text" />
             </xsl:apply-templates>
-
-            <xsl:if test="count($modification.list) = 0">
-                <tr><td>None since last build.</td></tr>
-            </xsl:if>
             
         </table>
     </xsl:template>

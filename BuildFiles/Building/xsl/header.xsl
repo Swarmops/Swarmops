@@ -10,7 +10,7 @@
         <table class="section-table" cellpadding="2" cellspacing="0" border="0">
 
             <xsl:if test="/cruisecontrol/exception">
-                <tr><td class="header-title" colspan="2"><span style="font-size:160%;color:#600;font-weight:bold">BUILD EXCEPTION</span></td></tr>
+                <tr><td class="header-title" colspan="2"><span style="font-weight:bold;font-size:160%;color:#800">BUILD EXCEPTION</span></td></tr>
                 <tr>
                     <td class="header-label" valign="top"><nobr>Error Message:</nobr></td>
                     <td class="header-data-error"><xsl:value-of select="/cruisecontrol/exception"/></td>
@@ -18,23 +18,31 @@
             </xsl:if>
             
             <xsl:if test="/cruisecontrol/build/@error">
-                <tr><td class="header-title" colspan="2"><span style="font-size:150%;color:#600;font-weight:bold">BUILD FAILED</span></td></tr>
+                <tr><td class="header-title" colspan="2"><span style="font-weight:bold;font-size:160%;color:#400">BUILD FAILED</span></td></tr>
             </xsl:if>
             
             <xsl:if test="not (/cruisecontrol/build/@error) and not (/cruisecontrol/exception)">
-                <tr><td class="header-title" colspan="2"><span style="font-size:150%;color:#080;font-weight:bold">BUILD SUCCESSFUL</span></td></tr>
+                <tr><td class="header-title" colspan="2"><span style="font-weight:bold;font-size:160%;color:#040">BUILD SUCCESSFUL</span></td></tr>
             </xsl:if>
 
-			<tr>
+            <tr>
                 <td class="header-label"><nobr>Project:</nobr></td>
                 <td class="header-data"><xsl:value-of select="/cruisecontrol/@project"/></td>
-			</tr>
+			</tr>                        <tr>
+                <td class="header-label"><nobr>Build ID:</nobr></td>
+                <td class="header-data"><xsl:value-of select="substring-before(/cruisecontrol/integrationProperties/CCNetLabel,'--')"/>+<xsl:value-of select="/cruisecontrol/integrationProperties/CCNetNumericLabel" /></td>
+                        </tr>
+            
             <tr>
-                <td class="header-label"><nobr>Date of build:</nobr></td>
+                <td class="header-label"><nobr>Built for:</nobr></td>
+                <td class="header-data">trusty xenial jessie</td>
+            </tr>
+            <tr>
+                <td class="header-label"><nobr>Time of build:</nobr></td>
                 <td class="header-data"><xsl:value-of select="/cruisecontrol/build/@date"/></td>
             </tr>
             <tr>
-                <td class="header-label"><nobr>Running time:</nobr></td>
+                <td class="header-label"><nobr>Build time elapsed:</nobr></td>
                 <td class="header-data"><xsl:value-of select="/cruisecontrol/build/@buildtime"/></td>
             </tr>
             <tr>
