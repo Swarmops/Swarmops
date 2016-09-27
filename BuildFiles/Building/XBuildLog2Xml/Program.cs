@@ -33,7 +33,7 @@ namespace XBuildLog2Xml
             };
 
             const string projectStartRegex = "Building target \"Compile\" in project \"[a-zA-Z/]+/(?<projectName>[A-Za-z0-9\\-]+)\\.csproj\"";
-            const string messageRegex = "(?<fileName>[A-Za-z\\-_0-9]+).cs\\((?<lineNumber>[0-9]+),[0-9]+\\): (?<messageType>[a-z]+) CS(?<messageCode>[0-9]{4}): (?<messageText>.+)";
+            const string messageRegex = "(?<fileName>[A-Za-z\\-_0-9\\.]+).cs\\((?<lineNumber>[0-9]+),[0-9]+\\): (?<messageType>[a-z]+) CS(?<messageCode>[0-9]{4}): (?<messageText>.+)";
 
             Regex regexProject = new Regex (projectStartRegex, RegexOptions.Compiled);
             Regex regexMessage = new Regex (messageRegex, RegexOptions.Compiled);
