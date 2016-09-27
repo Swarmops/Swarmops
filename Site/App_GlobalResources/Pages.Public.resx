@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Signup_ActivationActive" xml:space="preserve">
+    <value>If you wish to engage further, you can make yourself available for calls-to-action, at no obligation whatsoever to show up, attend, or take part in any particular one of them.</value>
+  </data>
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>{0} At Opportunity</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationLevel" xml:space="preserve">
+    <value>How much do you wish to engage?</value>
+  </data>
+  <data name="Signup_ActivationLevelText" xml:space="preserve">
+    <value>There are many different levels you can engage at in {0}. Select your intended level below (which you can change at will later, of course):</value>
+    <comment>{0} is the org name.</comment>
+  </data>
+  <data name="Signup_ActivationPassive" xml:space="preserve">
+    <value>This is the default level, and means you'll take normal part in the organization as a grassroots {0}.</value>
+    <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
+  </data>
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>Regular {0}</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationVolunteer" xml:space="preserve">
+    <value>If you wish to volunteer for taking formal responsibility for some part of the organization, helping out where it's needed most, it's obviously most welcome. (You'll get a selection of positions to volunteer for on the next page.)</value>
+  </data>
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>Officer Volunteer</value>
+  </data>
+  <data name="Signup_DashboardMessage" xml:space="preserve">
+    <value>Welcome! This is the &lt;em&gt;Dashboard,&lt;/em&gt; where you can access internal functionality of {0}. You will get more information in mail shortly.&lt;br/&gt;&lt;br/&gt;
+
+If you volunteered for taking formal responsibility, somebody (probably also a volunteer, like yourself) will contact you to discuss more about the opportunities available.</value>
+  </data>
+  <data name="Signup_Error_MailExists" xml:space="preserve">
+    <value>You have already signed up to this Swarmops server. Please use the Reset Password function from the login screen instead of creating a new account.</value>
+  </data>
+  <data name="Signup_Error_NeedPassword" xml:space="preserve">
+    <value>Please select and retype a password.</value>
+  </data>
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>The two password copies do not match.</value>
+  </data>
+  <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
+    <value>Please select your desired activity level.</value>
+  </data>
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>Please select at least one position.</value>
+  </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>Fees and Costs</value>
+  </data>
+  <data name="Signup_FeeRenewalText" xml:space="preserve">
+    <value>There is no cost whatsoever to sign up for a {0} {1}. However, there will be a fee to renew your {1} when it expires on {2}. That fee is currently {3} {4:N2}, and you're under no obligation to renew.</value>
+    <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
+  </data>
+  <data name="Signup_FeeText" xml:space="preserve">
+    <value>The {0} fee is {1} {2:N2} for {3}. You will get an invoice at the end of this process. (You can terminate your {0} at any time.) </value>
+    <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>Finalize Signup</value>
+  </data>
+  <data name="Signup_MailLoginKey" xml:space="preserve">
+    <value>Your logon (your mail)</value>
+  </data>
+  <data name="Signup_NoFeeText" xml:space="preserve">
+    <value>There is no cost whatsoever in signing up for a {0} with {2}, nor any cost to renew when it expires on {1}. In addition, you may terminate your {0} at any time.</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
+  </data>
+  <data name="Signup_Password1" xml:space="preserve">
+    <value>Choose a password</value>
+  </data>
+  <data name="Signup_Password2" xml:space="preserve">
+    <value>Repeat that password</value>
+  </data>
+  <data name="Signup_SigningUp" xml:space="preserve">
+    <value>Signing up for {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_Step1Header" xml:space="preserve">
+    <value>Welcome!</value>
+  </data>
+  <data name="Signup_Step1Text" xml:space="preserve">
+    <value>A short introduction</value>
+  </data>
+  <data name="Signup_Step2Header" xml:space="preserve">
+    <value>About you</value>
+  </data>
+  <data name="Signup_Step2Text" xml:space="preserve">
+    <value>Tell us a little about yourself?</value>
+  </data>
+  <data name="Signup_Step3Header" xml:space="preserve">
+    <value>Create logon</value>
+  </data>
+  <data name="Signup_Step3Text" xml:space="preserve">
+    <value>Pick a password</value>
+  </data>
+  <data name="Signup_Step4Header" xml:space="preserve">
+    <value>Activity 1</value>
+  </data>
+  <data name="Signup_Step4Text" xml:space="preserve">
+    <value>How much do you wish to engage?</value>
+  </data>
+  <data name="Signup_Step5Header" xml:space="preserve">
+    <value>Activity 2</value>
+  </data>
+  <data name="Signup_Step5Text" xml:space="preserve">
+    <value>What would you like to engage in?</value>
+  </data>
+  <data name="Signup_Step6Header" xml:space="preserve">
+    <value>Complete</value>
+  </data>
+  <data name="Signup_Step6Header_Payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="Signup_Step6Text" xml:space="preserve">
+    <value>All done. Let's login!</value>
+  </data>
+  <data name="Signup_Step6Text_Payment" xml:space="preserve">
+    <value>Let's pay the {0} fee and complete!</value>
+    <comment>The {0} is Membership, Ambassadorship, etc. The Regularship label for this organization.</comment>
+  </data>
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>Complete signup.</value>
+  </data>
+  <data name="Signup_VolunteerHeader" xml:space="preserve">
+    <value>What position are you interested in?</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>Highest Geography Available</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="Signup_VolunteerText" xml:space="preserve">
+    <value>Check the position you'd like to volunteer/apply for. You can check several.</value>
+  </data>
+  <data name="Signup_Welcome" xml:space="preserve">
+    <value>Welcome to {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_YourLogon" xml:space="preserve">
+    <value>Your Logon</value>
+  </data>
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>Please select a password to log on to Swarmops (this system). You will be able to replace this with a Twitter, Facebook, or BitID login for convenience later.</value>
+  </data>
+  <data name="Signup_YourName" xml:space="preserve">
+    <value>Your name</value>
+  </data>
+</root>

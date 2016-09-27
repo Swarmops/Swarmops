@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $(cat /etc/hostname) != 'swarmops-build' ]; then
+  echo "This script will only run on the build machine."
+  exit 1
+fi
+
+find -iname '*.??-??.resx' -exec cp {} . \;
+
