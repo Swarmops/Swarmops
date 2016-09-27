@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CurrentUserInfo_Logout" xml:space="preserve">
+    <value>Uitloggen</value>
+    <comment>Causes signoff and de-authentication</comment>
+  </data>
+  <data name="CurrentUserInfo_Preferences" xml:space="preserve">
+    <value>Voorkeuren</value>
+    <comment>Tooltip on hover over wrench icon</comment>
+  </data>
+  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
+    <value>Kies taal</value>
+    <comment>Shown as header of language list pop-up</comment>
+  </data>
+  <data name="Dashboard_Info_Temporary" xml:space="preserve">
+    <value>Dit is een standaardpagina. Het enige item beschikbaar is bewegingsregistratie voor vergaderingen.</value>
+    <comment>Temporary</comment>
+  </data>
+  <data name="Dashboard_Main_Temporary" xml:space="preserve">
+    <value>Dit is de standaardpagina (het dashboard). In de tijd wordt dit een echt nette pagina met nummers en graphics en spullen. Voor nu, ga in plaats daarvan naar de vergadering pagina's.</value>
+    <comment>Temporary display while there is no dashboard.</comment>
+  </data>
+  <data name="Dashboard_PageTitle" xml:space="preserve">
+    <value>Dashboard</value>
+    <comment>Title of default page</comment>
+  </data>
+  <data name="Financial_Actuals" xml:space="preserve">
+    <value>Werkelijke waarden</value>
+  </data>
+  <data name="Financial_ActualsPreliminary" xml:space="preserve">
+    <value>Werkelijke waarden (prel)</value>
+  </data>
+  <data name="Financial_ActualsToDate" xml:space="preserve">
+    <value>Werkelijke waarden vanaf vorig jaareinde</value>
+  </data>
+  <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
+    <value>Boekhouding Account</value>
+  </data>
+  <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
+    <value>Rekening</value>
+  </data>
+  <data name="Financial_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="Financial_CashAdvance" xml:space="preserve">
+    <value>Voorschot</value>
+  </data>
+  <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
+    <value>Kasvoorschot #{0}</value>
+  </data>
+  <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
+    <value>Contant geld voorschotten {0}</value>
+  </data>
+  <data name="Financial_ExpenseClaim" xml:space="preserve">
+    <value>Kosten</value>
+  </data>
+  
+  <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
+    <value>Kosten {0}</value>
+  </data>
+  <data name="Financial_InvoiceInbound" xml:space="preserve">
+    <value>Factuur</value>
+  </data>
+  <data name="Financial_InvoiceOutbound" xml:space="preserve">
+    <value>Factuur</value>
+  </data>
+  <data name="Financial_Parley" xml:space="preserve">
+    <value>Conferentie</value>
+  </data>
+  <data name="Financial_Salary" xml:space="preserve">
+    <value>Salaris</value>
+  </data>
+  <data name="Financial_SalarySpecification" xml:space="preserve">
+    <value>Salaris voor {0:yyyy-MMM}</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_TaxesSpecification" xml:space="preserve">
+    <value>Belasting voor salarissen {0}</value>
+  </data>
+  <data name="Financial_TaxSpecification" xml:space="preserve">
+    <value>Belasting voor salaris #{0}</value>
+  </data>
+  
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>Jaarlijkse resultaat</value>
+  </data>
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>Zo snel mogelijk</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
+  </data>
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>ANNULEREN</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
+  <data name="Global_Change" xml:space="preserve">
+    <value>Wijzigen?</value>
+    <comment>Link after describing what the user is looking at, allowing a change.</comment>
+  </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>Klik op de afbeelding om te vergroten.</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>Bevestig</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>--Selecteer Begroting/Account--</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>-- Selecteer organisatie --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>Ga naar...</value>
+    <comment>Link after describing something.</comment>
+  </data>
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>Niemand</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>Eigenaar</value>
+  </data>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>Bestand wordt verwerkt...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
+  </data>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>Bestand uploaden</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
+  </data>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Bestand uploaden naar Swarmops</value>
+    <comment>Used as header above upload sections.</comment>
+  </data>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>Selecteer a.u.b. een bestand dat u wilt uploaden.</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
+  </data>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>U bent momenteel aangemeld bij &lt;strong&gt;{0}&lt;/strong&gt;. Zou u willen overstappen naar een andere organisatie?</value>
+  </data>
+  <data name="Sidebar_Actions" xml:space="preserve">
+    <value>Acties</value>
+    <comment>List of shortcuts to likely actions</comment>
+  </data>
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>Geen voorgestelde acties op dit punt.</value>
+    <comment>No shortcuts from this page right now.</comment>
+  </data>
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>Informatie</value>
+    <comment>Information about current page</comment>
+  </data>
+  <data name="Sidebar_Todo" xml:space="preserve">
+    <value>Nog te doen</value>
+    <comment>List of todo items</comment>
+  </data>
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>Geen dringende actie items nu.</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
+  </data>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>Actie-items komen hier.</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
+  </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>Voorschotten</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>Vooruitbetalingen in contanten</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>Kosten</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>Onkostenvergoedingen</value>
+  </data>
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>Facturen</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>Inkomende facturen</value>
+  </data>
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>Facturen</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>Uitgaande facturen</value>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>N/B</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>Niet van toepassing</value>
+  </data>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>Vanaf nu</value>
+  </data>
+  <data name="Global_Today" xml:space="preserve">
+    <value>Vandaag</value>
+  </data>
+  
+  <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
+    <value>Project</value>
+    <comment>Tagging costs/income to projects</comment>
+  </data>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>Gerelateerde</value>
+    <comment>List of shortcuts to related actions to current one</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</root>

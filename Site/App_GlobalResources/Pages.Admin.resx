@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
+    <value>This is a QR code for bitcoin echo testing for {0}. Read it from your phone's bitcoin wallet to perform the echo test, or donate from your computer directly to [{1}] (that's a bitcoin address). The amount (less miner fees) will be sent back to you in the next auto-payment cycle which runs every five minutes.</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
+    <value>Received {0} {1:N2} ({2:N0} microcoins or "bits"). They will be sent back shortly (less miner fee).</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
+    <value>Received {0} microcoins ("bits"). They will be sent back shortly (less miner fee).</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>This is a bitcoin echo test. It tests the hotwallet. If you send a small amount here, it will be sent back to you.</value>
+  </data>
+  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
+    <value>Waiting for transaction...</value>
+  </data>
+  <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
+    <value>Transaction detected, verifying...</value>
+  </data>
+  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
+    <value>Bitcoin Echo Test for {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
+    <value>Activists will be called</value>
+  </data>
+  <data name="CreateOrganization_AsRoot" xml:space="preserve">
+    <value>Root-level organization</value>
+  </data>
+  <data name="CreateOrganization_ChildOfX" xml:space="preserve">
+    <value>Child of {0}</value>
+    <comment>"Create org as..."</comment>
+  </data>
+  <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
+    <value>Create new organization as...</value>
+  </data>
+  <data name="CreateOrganization_Info" xml:space="preserve">
+    <value>You can create a new organization either as a new standalone organization, or as a child organization of the current one. (Everybody with responsibilities in a parent organization automatically has corresponding rights and privileges in all its children.)</value>
+  </data>
+  <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
+    <value>Operating currency</value>
+  </data>
+  <data name="CreateOrganization_NewOrgName" xml:space="preserve">
+    <value>The new organization's name</value>
+  </data>
+  <data name="CreateOrganization_PageTitle" xml:space="preserve">
+    <value>Create New Organization</value>
+  </data>
+  <data name="CreateOrganization_RegularTitle" xml:space="preserve">
+    <value>Regular people will be called</value>
+    <comment>This can be "members", etc.</comment>
+  </data>
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>The new organization has been created. You have been given an initial two-year {0} in the organization, so you can work with it and set it up properly. To switch to working with your new organization, use the control panel top right.</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
+  <data name="CreateOrganization_Titles" xml:space="preserve">
+    <value>Default position titles at start</value>
+  </data>
+  <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
+    <value>Commercial</value>
+  </data>
+  <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
+    <value>Nonprofit</value>
+  </data>
+  <data name="EditOrganization_Info" xml:space="preserve">
+    <value>&lt;strong&gt;WORK IN PROGRESS.&lt;/strong&gt; Most of these options don't save yet.</value>
+  </data>
+  <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
+    <value>{0} numbering</value>
+    <comment>The {0} is the membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_OpenLedgersDomain" xml:space="preserve">
+    <value>Open Ledgers Domain</value>
+  </data>
+  <data name="EditOrganization_PageTitle" xml:space="preserve">
+    <value>Edit Organization</value>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsOrg" xml:space="preserve">
+    <value>People become {0} of</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsWhen" xml:space="preserve">
+    <value>People become {0} when</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationChurn" xml:space="preserve">
+    <value>{0} ends when</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationCost" xml:space="preserve">
+    <value>Initial {0} cost (in {1})</value>
+    <comment>The {0} is membership, etc. The {1} is the operating currency.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationDuration" xml:space="preserve">
+    <value>One {0} lasts</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_RenewalDateEffect" xml:space="preserve">
+    <value>Renewed period counts from</value>
+  </data>
+  <data name="EditOrganization_RenewalReminders" xml:space="preserve">
+    <value>Remind to renew</value>
+  </data>
+  <data name="EditOrganization_RenewalsAffect" xml:space="preserve">
+    <value>Renewals affect</value>
+    <comment>(options: all organizations, one org at a time)</comment>
+  </data>
+  <data name="EditOrganization_RenewalsCost" xml:space="preserve">
+    <value>Renewal cost (in {0})</value>
+    <comment>The {0} is the operating currency (USD etc).</comment>
+  </data>
+  <data name="EditOrganization_VanityDomain" xml:space="preserve">
+    <value>Organization Vanity Domain</value>
+  </data>
+  <data name="OrgStaffing_Header_ExecutivePositions" xml:space="preserve">
+    <value>Executive Positions For {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>Local Builder Positions (At Every Geography)</value>
+  </data>
+  <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
+    <value>Staff Payroll</value>
+  </data>
+  <data name="OrgStaffing_Header_StrategicPositions" xml:space="preserve">
+    <value>Strategic Positions For {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
+    <value>Volunteers Awaiting Response</value>
+  </data>
+  <data name="OrgStaffing_Info" xml:space="preserve">
+    <value>Set the staffing structure for this organization, as well as its staffing at the strategic (board) and executive (C-level or equivalent) levels. You can also manage waiting volunteers and the payroll from here.</value>
+  </data>
+  <data name="OrgStaffing_PageTitle" xml:space="preserve">
+    <value>Organization Staffing</value>
+  </data>
+  <data name="SystemSettings_AdminAddress" xml:space="preserve">
+    <value>Admin Notifications From Address</value>
+  </data>
+  <data name="SystemSettings_AdminSender" xml:space="preserve">
+    <value>Admin Notifications From Name</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
+    <value>SMTP Port must be numeric. Unable to parse host:port.</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
+    <value>Unable to parse user, pass, host, and/or port. (Only host is required.)</value>
+  </data>
+  <data name="SystemSettings_ExternalUrl" xml:space="preserve">
+    <value>Externally Accessible URL</value>
+  </data>
+  <data name="SystemSettings_Header_CorrespondenceTxSettings" xml:space="preserve">
+    <value>Correspondence Transmission Settings</value>
+  </data>
+  <data name="SystemSettings_Header_SystemAdministrators" xml:space="preserve">
+    <value>System Administrators</value>
+  </data>
+  <data name="SystemSettings_Info" xml:space="preserve">
+    <value>Various technical settings for this Swarmops installation. Not specific to any organization or person, but installation-wide.</value>
+  </data>
+  <data name="SystemSettings_InstallationName" xml:space="preserve">
+    <value>Installation Name</value>
+  </data>
+  <data name="SystemSettings_PageTitle" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
+  <data name="SystemSettings_SmtpServer" xml:space="preserve">
+    <value>SMTP Server (user:pass@host:port)</value>
+  </data>
+  <data name="SystemSettings_TestMailSent" xml:space="preserve">
+    <value>Swarmops has sent you a test mail to verify your new SMTP server settings.</value>
+  </data>
+  <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
+    <value>You really, really, REALLY should use HTTPS for a website like this. But you knew that already, didn't you?</value>
+  </data>
+  <data name="SystemSettings_WebsocketHostname" xml:space="preserve">
+    <value>WebSocket Hostname</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortClient" xml:space="preserve">
+    <value>WebSocket Port (Client)</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortServer" xml:space="preserve">
+    <value>WebSocket Port (Server)</value>
+  </data>
+</root>

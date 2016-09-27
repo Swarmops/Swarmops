@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CurrentUserInfo_Logout" xml:space="preserve">
+    <value>Выйти</value>
+    <comment>Causes signoff and de-authentication</comment>
+  </data>
+  <data name="CurrentUserInfo_Preferences" xml:space="preserve">
+    <value>Настройки</value>
+    <comment>Tooltip on hover over wrench icon</comment>
+  </data>
+  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
+    <value>Выбрать язык</value>
+    <comment>Shown as header of language list pop-up</comment>
+  </data>
+  
+  
+  <data name="Dashboard_PageTitle" xml:space="preserve">
+    <value>Личный кабинет</value>
+    <comment>Title of default page</comment>
+  </data>
+  <data name="Financial_Actuals" xml:space="preserve">
+    <value>Фактические данные</value>
+  </data>
+  <data name="Financial_ActualsPreliminary" xml:space="preserve">
+    <value>Фактические данные (предварительно)</value>
+  </data>
+  <data name="Financial_ActualsToDate" xml:space="preserve">
+    <value>Фактические данные за год</value>
+  </data>
+  <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
+    <value>Бухгалтерские счета</value>
+  </data>
+  <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
+    <value>Счет</value>
+  </data>
+  <data name="Financial_Budget" xml:space="preserve">
+    <value>Бюджет</value>
+  </data>
+  <data name="Financial_CashAdvance" xml:space="preserve">
+    <value>Аванс</value>
+  </data>
+  <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
+    <value>Денежный аванс #{0}</value>
+  </data>
+  <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
+    <value>Денежные авансы {0}</value>
+  </data>
+  <data name="Financial_ExpenseClaim" xml:space="preserve">
+    <value>Расходы</value>
+  </data>
+  
+  <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
+    <value>Расходы {0}</value>
+  </data>
+  <data name="Financial_InvoiceInbound" xml:space="preserve">
+    <value>Счет-фактура</value>
+  </data>
+  <data name="Financial_InvoiceOutbound" xml:space="preserve">
+    <value>Счет-фактура</value>
+  </data>
+  <data name="Financial_Parley" xml:space="preserve">
+    <value>Конференция</value>
+  </data>
+  <data name="Financial_Salary" xml:space="preserve">
+    <value>Зарплата</value>
+  </data>
+  <data name="Financial_SalarySpecification" xml:space="preserve">
+    <value>Зарплата за {0:гггг-МММ}</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_TaxesSpecification" xml:space="preserve">
+    <value>Налог на оклады {0}</value>
+  </data>
+  <data name="Financial_TaxSpecification" xml:space="preserve">
+    <value>Налог на оклад #{0}</value>
+  </data>
+  <data name="Financial_TheTaxMan" xml:space="preserve">
+    <value>Сборщик налогов</value>
+    <comment>Used as recipient for taxes.</comment>
+  </data>
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>Годовой результат</value>
+  </data>
+  
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>Отмена</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
+  <data name="Global_Change" xml:space="preserve">
+    <value>Изменить?</value>
+    <comment>Link after describing what the user is looking at, allowing a change.</comment>
+  </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>Нажмите на изображение, чтобы увеличить.</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>Подтвердить</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>--Выберите счет/бюджет--</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>--Выберите Организацию--</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>Перейти туда...</value>
+    <comment>Link after describing something.</comment>
+  </data>
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>Никто</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>Обработка файла...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
+  </data>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>Загрузить файл</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
+  </data>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Загрузить файл в Swarmops</value>
+    <comment>Used as header above upload sections.</comment>
+  </data>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>Пожалуйста, выберите файл для загрузки.</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
+  </data>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>Вы в настоящее время вошли в &lt;strong&gt;{0}&lt;/strong&gt;. Вы желаете переключиться на другую организацию?</value>
+  </data>
+  <data name="Sidebar_Actions" xml:space="preserve">
+    <value>Действия</value>
+    <comment>List of shortcuts to likely actions</comment>
+  </data>
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>Не предлагаемых действий для этой точки.</value>
+    <comment>No shortcuts from this page right now.</comment>
+  </data>
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>Информация</value>
+    <comment>Information about current page</comment>
+  </data>
+  <data name="Sidebar_Todo" xml:space="preserve">
+    <value>Список дел
+</value>
+    <comment>List of todo items</comment>
+  </data>
+  
+  
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>Авансы</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>Денежные авансы</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>Расходы</value>
+  </data>
+  
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>Счета-фактуры</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>Входящие счет-фактуры</value>
+  </data>
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>Счета-фактуры</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>Исходящие счета-фактуры</value>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>Не применимо</value>
+  </data>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>На сегодняшний день</value>
+  </data>
+  <data name="Global_Today" xml:space="preserve">
+    <value>Сегодня</value>
+  </data>
+  
+  <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
+    <value>Проект</value>
+    <comment>Tagging costs/income to projects</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>Срок сдачи</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>Поставщик</value>
+  </data>
+  <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
+    <value>Английский (США)</value>
+    <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>Нет</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Да</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>Активы</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>Расходы</value>
+  </data>
+  
+  
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>-- Выберите --</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_Missing" xml:space="preserve">
+    <value>- отсутствует -</value>
+    <comment>When a record or similar is missing. Used in grids.</comment>
+  </data>
+  <data name="Global_Multiple" xml:space="preserve">
+    <value>- несколько -</value>
+    <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
+  <data name="Global_Off" xml:space="preserve">
+    <value>Выкл</value>
+    <comment>Off (as opposed to On)</comment>
+  </data>
+  <data name="Global_On" xml:space="preserve">
+    <value>Вкл</value>
+    <comment>On (as opposed to Off)</comment>
+  </data>
+  <data name="Global_Organization_Commercial" xml:space="preserve">
+    <value>Коммерческая</value>
+    <comment>A commercial organization (for-profit enterprise)</comment>
+  </data>
+  <data name="Global_Organization_Governmental" xml:space="preserve">
+    <value>Государственная</value>
+    <comment>Organization that's part of government somehow</comment>
+  </data>
+  <data name="Global_Organization_Nonprofit" xml:space="preserve">
+    <value>Некоммерческая</value>
+    <comment>Non-profit (activist, political parties)</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>Географическое местоположение</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
+  <data name="Global_Action" xml:space="preserve">
+    <value>Действие</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>Электронная почта</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>Название</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>Примечания</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Phone" xml:space="preserve">
+    <value>Телефон</value>
+    <comment>Somebody's telephone number. Mobile assumed.</comment>
+  </data>
+  <data name="Global_Custom" xml:space="preserve">
+    <value>Пользовательское</value>
+    <comment>As in "show me the advanced options"</comment>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>Создать</value>
+    <comment>Like "Create Organization"</comment>
+  </data>
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Global_Description" xml:space="preserve">
+    <value>Описание</value>
+    <comment>As a general header of any description field</comment>
+  </data>
+  <data name="Global_Q1" xml:space="preserve">
+    <value>1 Квартал</value>
+    <comment>First quarter of the year</comment>
+  </data>
+  <data name="Global_Q2" xml:space="preserve">
+    <value>2 Квартал</value>
+    <comment>Second quarter of the year</comment>
+  </data>
+  <data name="Global_Q3" xml:space="preserve">
+    <value>3 Квартал</value>
+    <comment>Third quarter of the year</comment>
+  </data>
+  <data name="Global_Q4" xml:space="preserve">
+    <value>4 Квартал</value>
+    <comment>Fourth quarter of the year</comment>
+  </data>
+  
+  <data name="Ledgers_Balance" xml:space="preserve">
+    <value>Баланс</value>
+    <comment>As in 'account balance', not as in staying upright</comment>
+  </data>
+  
+  
+  <data name="Global_Organization" xml:space="preserve">
+    <value>Организация</value>
+  </data>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>Жен.</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>Муж.</value>
+    <comment>Legal gender</comment>
+  </data>
+  
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>ММ/ДД/ГГГГ</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  </data>
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>МММ д, ГГГГ</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>пятилетка</value>
+  </data>
+  
+  
+  
+  
+  <data name="Global_Address" xml:space="preserve">
+    <value>Адрес</value>
+    <comment>As in physical location</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>Страна</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>Дата рождения</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
+  </data>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>Почтовый индекс</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</root>

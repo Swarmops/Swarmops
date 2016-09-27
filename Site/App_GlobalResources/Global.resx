@@ -1,0 +1,736 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CurrentUserInfo_Logout" xml:space="preserve">
+    <value>Logout</value>
+    <comment>Causes signoff and de-authentication</comment>
+  </data>
+  <data name="CurrentUserInfo_Preferences" xml:space="preserve">
+    <value>Preferences</value>
+    <comment>Tooltip on hover over wrench icon</comment>
+  </data>
+  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
+    <value>Select Language</value>
+    <comment>Shown as header of language list pop-up</comment>
+  </data>
+  <data name="Dashboard_Info_Temporary" xml:space="preserve">
+    <value>This is a default page. The only item available is motion registration for meetings.</value>
+    <comment>Temporary</comment>
+  </data>
+  <data name="Dashboard_Main_Temporary" xml:space="preserve">
+    <value>This is the default page (the dashboard). In time, this will become a really neat page with numbers and graphics and stuff. For now, go to the meeting pages instead.</value>
+    <comment>Temporary display while there is no dashboard.</comment>
+  </data>
+  <data name="Dashboard_PageTitle" xml:space="preserve">
+    <value>Dashboard</value>
+    <comment>Title of default page</comment>
+  </data>
+  <data name="Financial_Actuals" xml:space="preserve">
+    <value>Actuals</value>
+  </data>
+  <data name="Financial_ActualsPreliminary" xml:space="preserve">
+    <value>Actuals (prel)</value>
+  </data>
+  <data name="Financial_ActualsToDate" xml:space="preserve">
+    <value>Actuals YTD</value>
+  </data>
+  <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
+    <value>Bookkeeping Account</value>
+  </data>
+  <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Financial_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="Financial_CashAdvance" xml:space="preserve">
+    <value>Advance</value>
+  </data>
+  <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
+    <value>Cash Advance #{0}</value>
+  </data>
+  <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
+    <value>Cash Advances {0}</value>
+  </data>
+  <data name="Financial_ExpenseClaim" xml:space="preserve">
+    <value>Expense</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
+    <value>Expense #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
+    <value>Expenses {0}</value>
+  </data>
+  <data name="Financial_InvoiceInbound" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="Financial_InvoiceOutbound" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="Financial_Parley" xml:space="preserve">
+    <value>Conference</value>
+  </data>
+  <data name="Financial_Salary" xml:space="preserve">
+    <value>Salary</value>
+  </data>
+  <data name="Financial_SalarySpecification" xml:space="preserve">
+    <value>Salary for {0:yyyy-MMM}</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_TaxesSpecification" xml:space="preserve">
+    <value>Tax for salaries {0}</value>
+  </data>
+  <data name="Financial_TaxSpecification" xml:space="preserve">
+    <value>Tax for salary #{0}</value>
+  </data>
+  <data name="Financial_TheTaxMan" xml:space="preserve">
+    <value>The Tax Man</value>
+    <comment>Used as recipient for taxes.</comment>
+  </data>
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>Yearly result</value>
+  </data>
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>ASAP</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
+  </data>
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
+  <data name="Global_Change" xml:space="preserve">
+    <value>Change?</value>
+    <comment>Link after describing what the user is looking at, allowing a change.</comment>
+  </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>Click image to enlarge.</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>Confirm</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>-- Select Budget/Account --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>-- Select Organization --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>Go there...</value>
+    <comment>Link after describing something.</comment>
+  </data>
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>Nobody</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>Processing File...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
+  </data>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>Upload File</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
+  </data>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Upload File To Swarmops</value>
+    <comment>Used as header above upload sections.</comment>
+  </data>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>Please select a file to upload.</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
+  </data>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>You are currently logged into &lt;strong&gt;{0}&lt;/strong&gt;. Would you like to switch to another organization?</value>
+  </data>
+  <data name="Sidebar_Actions" xml:space="preserve">
+    <value>Actions</value>
+    <comment>List of shortcuts to likely actions</comment>
+  </data>
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>No suggested actions at this point.</value>
+    <comment>No shortcuts from this page right now.</comment>
+  </data>
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>Info</value>
+    <comment>Information about current page</comment>
+  </data>
+  <data name="Sidebar_Todo" xml:space="preserve">
+    <value>To do</value>
+    <comment>List of todo items</comment>
+  </data>
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>No urgent action items right now.</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
+  </data>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>Action items will go here.</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
+  </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>Advances</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>Cash Advances</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>Expense Claims</value>
+  </data>
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>Invoices</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>Inbound Invoices</value>
+  </data>
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>Invoices</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>Outbound Invoices</value>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>Not Applicable</value>
+  </data>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>As Of Now</value>
+  </data>
+  <data name="Global_Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
+    <value>Cost Type</value>
+    <comment>Second-dimension bookkeeping</comment>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
+    <value>Project</value>
+    <comment>Tagging costs/income to projects</comment>
+  </data>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>Related</value>
+    <comment>List of shortcuts to related actions to current one</comment>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>Expense #{0:N0} (minus advance #{1:N0})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>Expense #{0:N0} (minus advances)</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>Expenses {0} (minus advance #{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>Expenses {0} (minus advances)</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>Expense Claim #{0:N0} by {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>Inbound Invoice #{0:N0} from {1}</value>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>Receipt Image {0} of {1}</value>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>Image {0} of {1}</value>
+  </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>Due Date</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
+    <value>English (US)</value>
+    <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>No</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Yes</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>Assets</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>Liabilities</value>
+  </data>
+  <data name="Financial_Income" xml:space="preserve">
+    <value>Revenue</value>
+  </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>-- Select one --</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_Missing" xml:space="preserve">
+    <value>- missing -</value>
+    <comment>When a record or similar is missing. Used in grids.</comment>
+  </data>
+  <data name="Global_Multiple" xml:space="preserve">
+    <value>- multiple -</value>
+    <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
+  <data name="Global_Off" xml:space="preserve">
+    <value>Off</value>
+    <comment>Off (as opposed to On)</comment>
+  </data>
+  <data name="Global_On" xml:space="preserve">
+    <value>On</value>
+    <comment>On (as opposed to Off)</comment>
+  </data>
+  <data name="Global_Organization_Commercial" xml:space="preserve">
+    <value>Commercial</value>
+    <comment>A commercial organization (for-profit enterprise)</comment>
+  </data>
+  <data name="Global_Organization_Governmental" xml:space="preserve">
+    <value>Governmental</value>
+    <comment>Organization that's part of government somehow</comment>
+  </data>
+  <data name="Global_Organization_Nonprofit" xml:space="preserve">
+    <value>Non-profit</value>
+    <comment>Non-profit (activist, political parties)</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>Geography</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
+  <data name="Global_Action" xml:space="preserve">
+    <value>Action</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>Mail</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>Name</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>Notes</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Phone" xml:space="preserve">
+    <value>Phone</value>
+    <comment>Somebody's telephone number. Mobile assumed.</comment>
+  </data>
+  <data name="Global_Custom" xml:space="preserve">
+    <value>Custom</value>
+    <comment>As in "show me the advanced options"</comment>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>Create</value>
+    <comment>Like "Create Organization"</comment>
+  </data>
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Global_Description" xml:space="preserve">
+    <value>Description</value>
+    <comment>As a general header of any description field</comment>
+  </data>
+  <data name="Global_Q1" xml:space="preserve">
+    <value>Q1</value>
+    <comment>First quarter of the year</comment>
+  </data>
+  <data name="Global_Q2" xml:space="preserve">
+    <value>Q2</value>
+    <comment>Second quarter of the year</comment>
+  </data>
+  <data name="Global_Q3" xml:space="preserve">
+    <value>Q3</value>
+    <comment>Third quarter of the year</comment>
+  </data>
+  <data name="Global_Q4" xml:space="preserve">
+    <value>Q4</value>
+    <comment>Fourth quarter of the year</comment>
+  </data>
+  <data name="Global_Timestamp" xml:space="preserve">
+    <value>Timestamp</value>
+  </data>
+  <data name="Ledgers_Balance" xml:space="preserve">
+    <value>Balance</value>
+    <comment>As in 'account balance', not as in staying upright</comment>
+  </data>
+  <data name="Ledgers_Credit" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="Ledgers_Debit" xml:space="preserve">
+    <value>Debit</value>
+  </data>
+  <data name="Global_Organization" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>Female</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>Male</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_UnknownUndisclosed" xml:space="preserve">
+    <value>Unknown or Undisclosed</value>
+    <comment>Used for gender et al</comment>
+  </data>
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>MM/DD/YYYY</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  </data>
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>MMM d, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>five-year</value>
+  </data>
+  <data name="Timespan_Forever" xml:space="preserve">
+    <value>lifetime</value>
+    <comment>Like "a lifetime membership"</comment>
+  </data>
+  <data name="Timespan_OneMonth" xml:space="preserve">
+    <value>one-month</value>
+  </data>
+  <data name="Timespan_OneYear" xml:space="preserve">
+    <value>one-year</value>
+  </data>
+  <data name="Timespan_TwoYears" xml:space="preserve">
+    <value>two-year</value>
+    <comment>Like "a two-year membership"</comment>
+  </data>
+  <data name="Global_Address" xml:space="preserve">
+    <value>Address</value>
+    <comment>As in physical location</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>Country</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>Date of Birth</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
+  </data>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>There was a general, unspecified error contacting the Swarmops server. Is the network still operational and the server available?</value>
+  </data>
+  <data name="Global_Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="Global_View" xml:space="preserve">
+    <value>View</value>
+    <comment>As in "inspect"</comment>
+  </data>
+  <data name="Global_Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="Global_YearMonth" xml:space="preserve">
+    <value>Year/Month</value>
+  </data>
+  <data name="Global_YearX" xml:space="preserve">
+    <value>Year {0}</value>
+    <comment>As in "the year X".</comment>
+  </data>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>define to enable</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Cash Advance #{0:N0} for {1}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>Cash Advance #{0:N0} Payback</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>Cash Advances {0} Payback</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Cash Advances {0} for {1}</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>Expense Claim #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>Expense Claims {0} by {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>Inbound Invoice #{0:N0}</value>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>System</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>Salaries {0} for {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>Salary Taxes for {0:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>Salary #{0:N0} for {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>Salary #{0:N0} for {1:yyyy-MMM} for {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>Salary #{0:N0}</value>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>Taxes for Salary #{0:N0} for {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>Account</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>Amount</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Global_Add" xml:space="preserve">
+    <value>Add</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(several)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>-- Several - select --</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>Options</value>
+    <comment>For various page-specific checkboxes etc</comment>
+  </data>
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...loading...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(no match)</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>Working...</value>
+  </data>
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>Unable to connect WebSocket. Live updates will not be available.</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>Swarmops does not understand your currency amount. (One thousand money and zero cents are written like "{0:N2}".) Try again?</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>No reason was specified.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>No urgent action items. Yay!</value>
+  </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>Min / Max</value>
+    <comment>note the spaces</comment>
+  </data>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>Assigned Person</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>It seems another user beat you to this operation; the database changed while you were looking. Please examine the changed conditions and retry what you were trying to do.</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>Type a name...</value>
+  </data>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>One month</value>
+  </data>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>One year</value>
+  </data>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>Six months</value>
+  </data>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>Three months</value>
+  </data>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>Two months</value>
+  </data>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>Two years</value>
+  </data>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>Until termination</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
+  </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>YTD</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>Flags</value>
+    <comment>As in a table column header</comment>
+  </data>
+  <data name="Global_Total" xml:space="preserve">
+    <value>Total</value>
+    <comment>Used as footer in tables, summarizing something</comment>
+  </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>This field cannot be empty.</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+</root>
