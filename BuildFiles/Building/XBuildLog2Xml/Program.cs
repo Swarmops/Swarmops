@@ -129,20 +129,25 @@ namespace XBuildLog2Xml
                 {
                     if (result.WarningsTotal + result.ErrorsTotal > 0)
                     {
-                        xmlWriter.WriteStartElement ("project");
-                        xmlWriter.WriteAttributeString ("name", result.ProjectName);
-
-                        if (result.ErrorsTotal > 0)
+                        if (result.ErrorsTotal > 0 && sumErrors > 0) // write only errors if there are any errors
                         {
+                            xmlWriter.WriteStartElement ("project");
+                            xmlWriter.WriteAttributeString ("name", result.ProjectName);
+
                             WriteXmlBuildMessages (xmlWriter, result.Errors);
-                        }
-                        else
-                        {
-                            WriteXmlBuildMessages (xmlWriter, result.CodeWarnings);
-                            WriteXmlBuildMessages (xmlWriter, result.EnvironmentWarnings);
-                        }
 
-                        xmlWriter.WriteEndElement();
+                            xmlWriter.WriteEndElement();
+                        }
+                        else if (result.WarningsTotal > 0 && sumErrors == 0)  // if there are no errors in ANY project, write the warnings for all projects
+                        {
+                            xmlWriter.WriteStartElement("project");
+                            xmlWriter.WriteAttributeString("name", result.ProjectName);
+
+                            WriteXmlBuildMessages(xmlWriter, result.CodeWarnings);
+                            WriteXmlBuildMessages(xmlWriter, result.EnvironmentWarnings);
+
+                            xmlWriter.WriteEndElement();
+                        }
                     }
                 }
 
