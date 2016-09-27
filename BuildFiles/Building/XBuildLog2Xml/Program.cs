@@ -22,6 +22,7 @@ namespace XBuildLog2Xml
                 logFileName = "E:\\Temp\\" + logFileName;
             }
 
+            Dictionary<string,bool> errorDupeCheck = new Dictionary<string, bool>();
             List<ProjectResult> projectResults = new List<ProjectResult>();
             int sumWarningsCode = 0;
             int sumWarningsEnvironment = 0;
@@ -85,9 +86,17 @@ namespace XBuildLog2Xml
                         }
                         else
                         {
-                            sumErrors++;
-                            newMessage.Type = MessageType.Error;
-                            currentProject.Errors.Add (newMessage);
+                            string errorKey = newMessage.Description + newMessage.File + newMessage.Line.ToString();
+
+                            if (!errorDupeCheck.ContainsKey (errorKey))
+                            {
+                                // Errors are duplicated in the MSBuild summary, so need a dupecheck
+
+                                sumErrors++;
+                                newMessage.Type = MessageType.Error;
+                                currentProject.Errors.Add(newMessage);
+                                errorDupeCheck[errorKey] = true;
+                            }
                         }
                     }
                     else if (line.Contains ("error"))
