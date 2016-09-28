@@ -18,6 +18,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 Site5-Deployment/
+Site-Deployment/
 
 # Roslyn cache directories
 *.ide/
@@ -193,3 +194,4 @@ External Dependencies/*
 
 #The hotwallet keyfiles should obviously never be checked in
 Site5/hotwallet*
+Site/hotwallet*
