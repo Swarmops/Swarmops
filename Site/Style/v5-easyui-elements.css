@@ -1,0 +1,166 @@
+﻿/* COMBO BOX */
+
+.combo{
+	display:inline-block;
+	white-space:nowrap;
+	font-size:12px;
+	margin:0;
+	padding:0;
+	/*border:1px solid #A4BED4;*/
+	background:transparent;
+}
+.combo-text{
+	_font-size:12px;
+	_border:0px;
+	_line-height:20px;
+	_height:20px;
+	_padding:0px;
+	_height:18px;
+	_line-height:18px;
+}
+.combo-arrow{
+	background:#FFFFFF url('/Images/Abstract/easyui-elements-downarrow.gif') no-repeat 3px 4px;
+	width:18px;
+	height:20px !important;
+	overflow:hidden;
+	display:inline-block;
+	vertical-align:top;
+	position: relative;
+	top: 8px;
+	left: 3px;
+	border-radius: 5px;
+	cursor:pointer;
+	opacity:0.4;
+	filter:alpha(opacity=40);
+}
+
+body.rtl .combo-arrow {
+    left: inherit;
+    right: 3px;
+}
+
+
+/* overrides when controls are used in page headers as part of a H2 */
+
+.content h2 span span.combo {
+    padding-left: 4px !important;
+    padding-top: 0;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 0 0 3px 0 #dddddd inset;
+    cursor: default;
+}
+
+.content h2 span span.combo:hover {
+    border: 1px solid #aaaaaa;
+    box-shadow: 0 0 3px 0 #bbbbbb inset;
+}
+
+.content > h2 > span > span.combo > input.combo-text {
+    height: 20px !important;
+    line-height: 20px !important;
+    border: 0 !important;
+}
+
+
+.content h2 span span.combo span span.combo-arrow{
+    top: 0px !important;
+    left: 0px !important;
+}
+
+
+
+
+.combo-arrow-hover{
+	opacity:0.7;
+	filter:alpha(opacity=70);
+}
+.combo-panel
+{
+	font-size: 14px;
+	margin: 0px 0px 0px 5px;
+	padding: 8px 2px;
+	list-style-type: none;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0px 1px 4px 1px #1C397E inset, 0 1px 4px 1px #1c397e;
+	
+	overflow:auto;
+}
+
+.combo-panel > .combobox-item {
+    font-size: 20px;
+    padding: 0 8px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    font-weight: lighter;
+}
+
+.combo-panel > .combobox-item-selected {
+    font-weight: 400;
+    border-top: 1px solid #c8d9ff;
+    border-bottom: 1px solid #c8d9ff;
+    background: #e4ecff;
+}
+
+.combo-panel > .treenode-item-selected {
+    background: #e4ecff;
+}
+
+.combo-panel > ul.tree > li > div.tree-node:first-child {
+    padding-left: 4px;
+}
+
+div.combobox-item {
+	cursor: pointer;
+}
+
+/* TREE */
+
+.tree
+{
+}
+
+.tree-node-hover, .tree-node-selected{
+	background: #E4ECFF;
+	box-shadow: 0px 0px 4px 1px #C8D9FF inset;
+}
+
+
+.tree-icon.tree-folder.countryNode {
+    display: none; /* suppress display of node, when country flag is displayed */
+}
+
+
+/* TABS */
+
+
+.tabs-header { /* overrides */
+    background: transparent;
+    border: none;
+    padding-top: 0;
+}
+
+
+.tabs {
+    padding: 0;
+    padding-top: 2px;
+    border-color: #CCC;
+}
+
+.tabs-panels {
+    border: none;
+    padding-top: 5px;
+}
+
+.tabs li a.tabs-inner {
+    width: 64px !important;
+    padding: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    border-right: 1px solid #DDD;
+    margin-right: 5px;
+}

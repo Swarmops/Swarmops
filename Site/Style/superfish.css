@@ -1,0 +1,223 @@
+/*** ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.sf-menu li {
+	position: relative;
+}
+
+.sf-menu ul {
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: 0;
+	z-index: 9990;
+}
+
+body.rtl .sf-menu ul { /* RTL override */
+    left: inherit;
+    right: 0;
+}
+
+.sf-menu > li {
+	float: left;
+}
+
+body.rtl .sf-menu > li {  /* RTL override */
+	float: right;
+}
+
+
+.sf-menu li:hover > ul,
+.sf-menu li.sfHover > ul
+{
+    display: block;
+    box-shadow: 0px 1px 1px 1px #1C397E, 0px 1px 5px 1px #A2BEFF;
+}
+
+
+.sf-menu a {
+	display: block;
+	position: relative;
+}
+
+.sf-menu ul ul {
+	top: 0;
+	left: 100%;
+}
+
+body.rtl .sf-menu ul ul {  /* RTL override*/
+    left: inherit;
+	right: 100%;
+}
+
+
+
+/*** SWARMOPS SKIN - HEAVILY MODIFIED FROM SUPERFISH DISTRO ***/
+
+.sf-menu {
+	float: left;
+	margin-left: 14px;
+}
+
+body.rtl .sf-menu {
+	float: right;
+    margin-left: inherit;
+	margin-right: 14px;
+}
+
+.sf-menu ul {
+	box-shadow: 2px 2px 6px rgba(0,0,0,.2);
+	min-width: 12em; /* allow long menu items to determine submenu width */
+	*width: 12em; /* no auto sub width for IE7, see white-space comment below */
+}
+
+.sf-menu a {
+	padding: .75em 1em;
+	text-decoration: none;
+	zoom: 1; /* IE7 */
+}
+.sf-menu a {
+	color: white;
+    font-size: 120%;
+}
+
+.sf-menu ul a
+{
+    padding: 2px 10px 8px 12px;
+}
+
+body.rtl .sf-menu ul a
+{
+    padding: 2px 12px 8px 10px;
+}
+
+
+.sf-menu a:hover, .sf-menu li.sfHover > a
+{
+    color: #7F5500;
+}
+
+.sf-menu ul a
+{
+    font-size: 120%;
+    color: #476EC7;
+}
+
+.sf-menu ul a:hover, sf-menu ul li.sfHover > a
+{
+    color: white;
+    text-shadow: #FFEDC8 0 0 2px;
+}
+
+.sf-menu ul li hr
+{
+    position: relative;
+    top: -6px;
+}
+
+.sf-menu ul li img
+{
+    position: relative;
+    top: 4px;
+    left: -4px;
+}
+
+body.rtl .sf-menu ul li img
+{
+    left: 4px;
+}
+
+
+.sf-menu li {
+	background: transparent;
+	white-space: nowrap; /* no need for Supersubs plugin */
+	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
+	/*-webkit-transition: background .2s;
+	transition: background .2s; */
+}
+.sf-menu ul li {
+	background: #E4ECFF;
+}
+
+.sf-menu li.Submenu li.Submenu {  /* default: LTR website */
+    background: #E4ECFF url('/Style/Images/menu-arrow-right.png') no-repeat right top;
+}
+
+body.rtl .sf-menu li.Submenu li.Submenu { /* Right-to-left override */
+    background: #E4ECFF url('/Style/Images/menu-arrow-left.png') no-repeat left top;
+}
+
+/* -- commented out
+.sf-menu ul ul li {
+	background: #FF00FF;
+}*/
+
+.sf-menu li:not(.Separator):hover,
+.sf-menu li.sfHover
+ {
+    /* Same as Sidebar.Orange */
+	background-color: #FFBC37;
+	background: linear-gradient(#FFC145, #F0AB22);
+	transition: none;
+    box-shadow: #C78B15 0 0px 2px 0px inset;
+	/* text-shadow: #C78B15 0px 0px 3px, #C78B15 0px 0px 3px; */
+ }
+
+
+.sf-menu ul li:not(.Separator):hover,
+.sf-menu ul li.sfHover {
+	background-color: #FFBC37;
+	background: linear-gradient(#FFC145, #F0AB22);
+	/* only transition out, not in */
+	transition: none;
+}
+
+.sf-menu li.Submenu li.Submenu:hover {
+    background: #FFBC37 url('/Style/Images/menu-arrow-right-white.png') no-repeat right top;  /* how combine gradient with image? */
+}
+
+body.rtl .sf-menu li.Submenu li.Submenu:hover {
+    background: #FFBC37 url('/Style/Images/menu-arrow-left-white.png') no-repeat left top;  /* how combine gradient with image? */
+}
+
+
+/*** arrows (for all except IE7) **/
+.sf-menu ul ul.sf-arrows .sf-with-ul {
+	padding-right: 2.5em;
+	*padding-right: 1em; /* no CSS arrows for IE7 (lack pseudo-elements) */
+}
+/* styling for both css and generated arrows */
+ul.sf-menu ul .sf-arrows .sf-with-ul:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	margin-top: -3px;
+	height: 0;
+	width: 0;
+	/* order of following 3 rules important for fallbacks to work */
+	border: 5px solid transparent;
+	border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+	border-top-color: rgba(255,255,255,.5);
+}
+.sf-arrows > li > .sf-with-ul:focus:after,
+.sf-arrows > li:hover > .sf-with-ul:after,
+.sf-arrows > .sfHover > .sf-with-ul:after {
+	border-top-color: white; /* IE8 fallback colour */
+}
+/* styling for right-facing arrows */
+.sf-arrows ul .sf-with-ul:after {
+	margin-top: -5px;
+	margin-right: -3px;
+	border-color: transparent;
+	border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+	border-left-color: rgba(255,255,255,.5);
+}
+.sf-arrows ul li > .sf-with-ul:focus:after,
+.sf-arrows ul li:hover > .sf-with-ul:after,
+.sf-arrows ul .sfHover > .sf-with-ul:after {
+	border-left-color: white;
+}
