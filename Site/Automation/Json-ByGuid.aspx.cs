@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Web.Services;
 using Swarmops.Logic.Cache;
-using Swarmops.Common;
+using Swarmops.Frontend;
 
 namespace Swarmops.Frontend.Automation
 {
-    public partial class Json_ByGuid : DataV5Base
+    public partial class Json_ByGuid : Swarmops.Frontend.DataV5Base
     {
         protected void Page_Load (object sender, EventArgs e)
         {

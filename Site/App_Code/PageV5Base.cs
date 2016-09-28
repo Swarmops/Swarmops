@@ -3,13 +3,12 @@ using System.Security;
 using System.Web;
 using System.Web.UI;
 using Swarmops.Common.Enums;
-using Swarmops.Database;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
-namespace Swarmops.Common
+namespace Swarmops.Frontend
 {
     /// <summary>
     ///     Base class to use for all data generators (JSON, etc). It supplies identification and localization.
@@ -111,7 +110,7 @@ namespace Swarmops.Common
 
             // Check necessary database revision
 
-            if (this.DbVersionRequired > SwarmDb.DbVersion)
+            if (this.DbVersionRequired > SupportFunctions.DatabaseSchemaVersion)
             {
                 Response.Redirect ("/Pages/v5/Security/DatabaseUpgradeRequired.aspx");
             }

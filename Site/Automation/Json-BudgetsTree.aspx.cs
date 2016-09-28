@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using Swarmops.Logic.Financial;
+using Swarmops.Frontend;
 
 namespace Swarmops.Frontend.Automation
 {

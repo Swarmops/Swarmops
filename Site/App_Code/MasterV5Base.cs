@@ -4,7 +4,7 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
-namespace Swarmops.Common
+namespace Swarmops.Frontend
 {
 
     /// <summary>

@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Swarmops.Database;
 
 namespace Swarmops.Logic.Support
 {
@@ -86,5 +87,10 @@ namespace Swarmops.Logic.Support
             return directIp;
         }
 
+
+        public static int DatabaseSchemaVersion
+        {
+            get { return SwarmDb.DbVersion; }
+        }
     }
 }
