@@ -72,6 +72,47 @@
     <Content Include="Automation\Json-SearchPeoplePattern.aspx" />
     <Content Include="Automation\Json-TransactionTagsTree.aspx" />
     <Content Include="Automation\SwarmFunctions.aspx" />
+    <Content Include="Controls\v5\Base\AjaxTextBox.ascx" />
+    <Content Include="Controls\v5\Base\ComboGeographies.ascx" />
+    <Content Include="Controls\v5\Base\DropDown.ascx" />
+    <Content Include="Controls\v5\Base\FileUpload.ascx" />
+    <Content Include="Controls\v5\Base\MainMenu.ascx" />
+    <Content Include="Controls\v5\Base\ModalDialog.ascx" />
+    <Compile Include="Controls\v5\Base\AjaxTextBox.ascx.designer.cs">
+      <DependentUpon>AjaxTextBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\Base\ComboGeographies.ascx.designer.cs">
+      <DependentUpon>ComboGeographies.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\Base\DropDown.ascx.designer.cs">
+      <DependentUpon>DropDown.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\Base\FileUpload.ascx.designer.cs">
+      <DependentUpon>FileUpload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\Base\MainMenu.ascx.designer.cs">
+      <DependentUpon>MainMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\Base\ModalDialog.ascx.designer.cs">
+      <DependentUpon>ModalDialog.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\Base\WebUserControlTest.ascx.cs">
+      <DependentUpon>WebUserControlTest.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Base\WebUserControlTest.ascx.designer.cs">
+      <DependentUpon>WebUserControlTest.ascx</DependentUpon>
+    </Compile>
+    <Content Include="Controls\v5\Financial\ComboBudgets.ascx" />
+    <Content Include="Controls\v5\Financial\ComboIncomeCostType.ascx" />
+    <Content Include="Controls\v5\Financial\CurrencyTextBox.ascx" />
+    <Content Include="Controls\v5\Swarm\AjaxComboPeople.ascx" />
+    <Content Include="Controls\v5\Swarm\ComboPeople.ascx" />
+    <Content Include="Controls\v5\Swarm\PersonDetailPopup.ascx" />
+    <Content Include="Controls\v5\Swarm\TreePositions.ascx" />
+    <Content Include="Controls\v5\UI\ExternalScripts.ascx" />
+    <Content Include="Controls\v5\UI\IncludedScripts.ascx" />
+    <Content Include="Controls\v5\Base\WebUserControlTest.ascx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -1317,12 +1358,90 @@
       <DependentUpon>SwarmFunctions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Controls\v5\Base\AjaxTextBox.ascx.cs">
+      <DependentUpon>AjaxTextBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Base\ComboGeographies.ascx.cs">
+      <DependentUpon>ComboGeographies.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Base\DropDown.ascx.cs">
+      <DependentUpon>DropDown.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Base\FileUpload.ascx.cs">
+      <DependentUpon>FileUpload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\Base\MainMenu.ascx.cs">
+      <DependentUpon>MainMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Base\ModalDialog.ascx.cs">
+      <DependentUpon>ModalDialog.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Financial\ComboBudgets.ascx.cs">
+      <DependentUpon>ComboBudgets.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Financial\ComboIncomeCostType.ascx.cs">
+      <DependentUpon>ComboIncomeCostType.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Financial\CurrencyTextBox.ascx.cs">
+      <DependentUpon>CurrencyTextBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Financial\CurrencyTextBox.ascx.designer.cs">
+      <DependentUpon>CurrencyTextBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\Swarm\AjaxComboPeople.ascx.cs">
+      <DependentUpon>AjaxComboPeople.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Swarm\AjaxComboPeople.ascx.designer.cs">
+      <DependentUpon>AjaxComboPeople.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\Swarm\ComboPeople.ascx.cs">
+      <DependentUpon>ComboPeople.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Swarm\PersonDetailPopup.ascx.cs">
+      <DependentUpon>PersonDetailPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Swarm\PersonDetailPopup.ascx.designer.cs">
+      <DependentUpon>PersonDetailPopup.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\Swarm\TreePositions.ascx.cs">
+      <DependentUpon>TreePositions.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Swarm\TreePositions.ascx.designer.cs">
+      <DependentUpon>TreePositions.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\UI\ExternalScripts.ascx.cs">
+      <DependentUpon>ExternalScripts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\UI\ExternalScripts.ascx.designer.cs">
+      <DependentUpon>ExternalScripts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\UI\IncludedScripts.ascx.cs">
+      <DependentUpon>IncludedScripts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\UI\IncludedScripts.ascx.designer.cs">
+      <DependentUpon>IncludedScripts.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\deploy-mono-folderfix" />
     <Content Include="Automation\UploadFileHandler.ashx" />
     <Content Include="Automation\web.config" />
+    <Content Include="Controls\v5\UI\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
