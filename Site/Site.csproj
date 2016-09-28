@@ -58,6 +58,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="apache-default-config.txt" />
     <Content Include="Automation\FieldValidation.aspx" />
     <Content Include="Automation\FinancialFunctions.aspx" />
     <Content Include="Automation\Formatting.aspx" />
@@ -113,8 +115,301 @@
     <Content Include="Controls\v5\UI\ExternalScripts.ascx" />
     <Content Include="Controls\v5\UI\IncludedScripts.ascx" />
     <Content Include="Controls\v5\Base\WebUserControlTest.ascx" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Images\Abstract\ajaxloader-48x36px.gif" />
+    <Content Include="Images\Abstract\ajaxloader-blackcircle.gif" />
+    <Content Include="Images\Abstract\ajaxloader-large.gif" />
+    <Content Include="Images\Abstract\ajaxloader-medium.gif" />
+    <Content Include="Images\Abstract\easyui-elements-downarrow.gif" />
+    <Content Include="Images\Abstract\swarmops-progressbar-animation.gif" />
+    <Content Include="Images\Flags\ae-24px.png" />
+    <Content Include="Images\Flags\ae-64px.png" />
+    <Content Include="Images\Flags\Arabic-24px.png" />
+    <Content Include="Images\Flags\Arabic-64px.png" />
+    <Content Include="Images\Flags\at-24px.png" />
+    <Content Include="Images\Flags\be-24px.png" />
+    <Content Include="Images\Flags\bg-24px.png" />
+    <Content Include="Images\Flags\br-24px.png" />
+    <Content Include="Images\Flags\br-64px.png" />
+    <Content Include="Images\Flags\ch-24px.png" />
+    <Content Include="Images\Flags\cn-24px.png" />
+    <Content Include="Images\Flags\cn-64px.png" />
+    <Content Include="Images\Flags\cy-24px.png" />
+    <Content Include="Images\Flags\cz-24px.png" />
+    <Content Include="Images\Flags\de-24px.png" />
+    <Content Include="Images\Flags\de-64px.png" />
+    <Content Include="Images\Flags\dk-24px.png" />
+    <Content Include="Images\Flags\dk-64px.png" />
+    <Content Include="Images\Flags\ee-24px.png" />
+    <Content Include="Images\Flags\es-24px.png" />
+    <Content Include="Images\Flags\es-64px.png" />
+    <Content Include="Images\Flags\fi-24px.png" />
+    <Content Include="Images\Flags\fi-64px.png" />
+    <Content Include="Images\Flags\FlagsLicense.txt" />
+    <Content Include="Images\Flags\fr-24px.png" />
+    <Content Include="Images\Flags\fr-64px.png" />
+    <Content Include="Images\Flags\gh-24px.png" />
+    <Content Include="Images\Flags\gh-64px.png" />
+    <Content Include="Images\Flags\gr-24px.png" />
+    <Content Include="Images\Flags\hr-24px.png" />
+    <Content Include="Images\Flags\hu-24px.png" />
+    <Content Include="Images\Flags\ie-24px.png" />
+    <Content Include="Images\Flags\in-24px.png" />
+    <Content Include="Images\Flags\in-64px.png" />
+    <Content Include="Images\Flags\is-24px.png" />
+    <Content Include="Images\Flags\is-64px.png" />
+    <Content Include="Images\Flags\it-24px.png" />
+    <Content Include="Images\Flags\it-64px.png" />
+    <Content Include="Images\Flags\lt-24px.png" />
+    <Content Include="Images\Flags\lu-24px.png" />
+    <Content Include="Images\Flags\lv-24px.png" />
+    <Content Include="Images\Flags\mt-24px.png" />
+    <Content Include="Images\Flags\nl-24px.png" />
+    <Content Include="Images\Flags\nl-64px.png" />
+    <Content Include="Images\Flags\no-24px.png" />
+    <Content Include="Images\Flags\no-64px.png" />
+    <Content Include="Images\Flags\pl-24px.png" />
+    <Content Include="Images\Flags\pl-64px.png" />
+    <Content Include="Images\Flags\pt-24px.png" />
+    <Content Include="Images\Flags\pt-64px.png" />
+    <Content Include="Images\Flags\ro-24px.png" />
+    <Content Include="Images\Flags\ru-24px.png" />
+    <Content Include="Images\Flags\ru-64px.png" />
+    <Content Include="Images\Flags\se-24px.png" />
+    <Content Include="Images\Flags\se-64px.png" />
+    <Content Include="Images\Flags\si-24px.png" />
+    <Content Include="Images\Flags\sk-24px.png" />
+    <Content Include="Images\Flags\txl-24px.png" />
+    <Content Include="Images\Flags\txl-64px.png" />
+    <Content Include="Images\Flags\uk-24px.png" />
+    <Content Include="Images\Flags\uk-64px.png" />
+    <Content Include="Images\Flags\us-24px.png" />
+    <Content Include="Images\Icons\bitcoin-icon-128px.png" />
+    <Content Include="Images\Icons\bitcoin-icon-16px.png" />
+    <Content Include="Images\Icons\iconshock-add-16px.png" />
+    <Content Include="Images\Icons\iconshock-add-96px.png" />
+    <Content Include="Images\Icons\iconshock-balloon-no-128x96px-disabled.png" />
+    <Content Include="Images\Icons\iconshock-balloon-no-128x96px-hot-disabled.png" />
+    <Content Include="Images\Icons\iconshock-balloon-no-128x96px-hot.png" />
+    <Content Include="Images\Icons\iconshock-balloon-no-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-balloon-no-16px-disabled.png" />
+    <Content Include="Images\Icons\iconshock-balloon-no-16px-hot.png" />
+    <Content Include="Images\Icons\iconshock-balloon-no-16px.png" />
+    <Content Include="Images\Icons\iconshock-balloon-undo-128x96px-hot.png" />
+    <Content Include="Images\Icons\iconshock-balloon-undo-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-balloon-undo-16px-hot.png" />
+    <Content Include="Images\Icons\iconshock-balloon-undo-16px.png" />
+    <Content Include="Images\Icons\iconshock-balloon-yes-128x96px-disabled.png" />
+    <Content Include="Images\Icons\iconshock-balloon-yes-128x96px-gold.png" />
+    <Content Include="Images\Icons\iconshock-balloon-yes-128x96px-hot-disabled.png" />
+    <Content Include="Images\Icons\iconshock-balloon-yes-128x96px-hot-gold.png" />
+    <Content Include="Images\Icons\iconshock-balloon-yes-128x96px-hot.png" />
+    <Content Include="Images\Icons\iconshock-balloon-yes-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-balloon-yes-16px-disabled-hot.png" />
+    <Content Include="Images\Icons\iconshock-balloon-yes-16px-disabled.png" />
+    <Content Include="Images\Icons\iconshock-balloon-yes-16px-hot.png" />
+    <Content Include="Images\Icons\iconshock-balloon-yes-16px.png" />
+    <Content Include="Images\Icons\iconshock-briefcase-16px.png" />
+    <Content Include="Images\Icons\iconshock-buildings-256px.png" />
+    <Content Include="Images\Icons\iconshock-cashregister-96px.png" />
+    <Content Include="Images\Icons\iconshock-colorswatch-64px.png" />
+    <Content Include="Images\Icons\iconshock-contacts-64px.png" />
+    <Content Include="Images\Icons\iconshock-cross-12px.png" />
+    <Content Include="Images\Icons\iconshock-cross-16px.png" />
+    <Content Include="Images\Icons\iconshock-cross-96px.png" />
+    <Content Include="Images\Icons\iconshock-databaseconnect-16px.png" />
+    <Content Include="Images\Icons\iconshock-disconnect-16px-hot.png" />
+    <Content Include="Images\Icons\iconshock-disconnect-16px.png" />
+    <Content Include="Images\Icons\iconshock-disconnect-96px.png" />
+    <Content Include="Images\Icons\iconshock-diskette-upload-32px.png" />
+    <Content Include="Images\Icons\iconshock-downarrow-16px.png" />
+    <Content Include="Images\Icons\iconshock-downarrow-40px.png" />
+    <Content Include="Images\Icons\iconshock-executive-128px.png" />
+    <Content Include="Images\Icons\iconshock-flag-white-16px.png" />
+    <Content Include="Images\Icons\iconshock-flag-white-256px.png" />
+    <Content Include="Images\Icons\iconshock-folder-plain-128px.png" />
+    <Content Include="Images\Icons\iconshock-folder-postits-white-128px.png" />
+    <Content Include="Images\Icons\iconshock-folder-subfolder-blue.png" />
+    <Content Include="Images\Icons\iconshock-foreman-128px.png" />
+    <Content Include="Images\Icons\iconshock-gamepad-16px.png" />
+    <Content Include="Images\Icons\iconshock-general-128px.png" />
+    <Content Include="Images\Icons\iconshock-glass-16px-hot.png" />
+    <Content Include="Images\Icons\iconshock-glass-16px.png" />
+    <Content Include="Images\Icons\iconshock-green-tick-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-greentick-16px-desat-light.png" />
+    <Content Include="Images\Icons\iconshock-greentick-16px-desat.png" />
+    <Content Include="Images\Icons\iconshock-greentick-16px.png" />
+    <Content Include="Images\Icons\iconshock-group-diversified-64px.png" />
+    <Content Include="Images\Icons\iconshock-group-diversified-source.png" />
+    <Content Include="Images\Icons\iconshock-invoice-32px.png" />
+    <Content Include="Images\Icons\iconshock-invoice-greentick-32px.png" />
+    <Content Include="Images\Icons\iconshock-invoice-redcross-32px.png" />
+    <Content Include="Images\Icons\iconshock-location-256px.png" />
+    <Content Include="Images\Icons\iconshock-lock-16px.png" />
+    <Content Include="Images\Icons\iconshock-lock-256px.png" />
+    <Content Include="Images\Icons\iconshock-logfile-256px.png" />
+    <Content Include="Images\Icons\iconshock-magnifyingglass-16px.png" />
+    <Content Include="Images\Icons\iconshock-magnifyingglass-24px.png" />
+    <Content Include="Images\Icons\iconshock-magnifyingglass-40px.png" />
+    <Content Include="Images\Icons\iconshock-magnifyingglass-96px.png" />
+    <Content Include="Images\Icons\iconshock-mail-256px.png" />
+    <Content Include="Images\Icons\iconshock-mail-open-64px.png" />
+    <Content Include="Images\Icons\iconshock-notes-256px.png" />
+    <Content Include="Images\Icons\iconshock-red-cross-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-red-cross-circled-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-redcross-16px-desat-light.png" />
+    <Content Include="Images\Icons\iconshock-redcross-16px-desat.png" />
+    <Content Include="Images\Icons\iconshock-redcross-16px.png" />
+    <Content Include="Images\Icons\iconshock-redshirt-128px.png" />
+    <Content Include="Images\Icons\iconshock-search-16px.png" />
+    <Content Include="Images\Icons\iconshock-search-24px.png" />
+    <Content Include="Images\Icons\iconshock-settings-16px.png" />
+    <Content Include="Images\Icons\iconshock-soldier-128px.png" />
+    <Content Include="Images\Icons\iconshock-star-gold-64px.png" />
+    <Content Include="Images\Icons\iconshock-switch-red-64px-hot.png" />
+    <Content Include="Images\Icons\iconshock-switch-red-64px.png" />
+    <Content Include="Images\Icons\iconshock-user-16px.png" />
+    <Content Include="Images\Icons\iconshock-warning-16px.png" />
+    <Content Include="Images\Icons\iconshock-warning-16x12px.png" />
+    <Content Include="Images\Icons\iconshock-warning-24px.png" />
+    <Content Include="Images\Icons\iconshock-warning-96px.png" />
+    <Content Include="Images\Icons\iconshock-warning-red-128px.png" />
+    <Content Include="Images\Icons\iconshock-warning-red-16px.png" />
+    <Content Include="Images\Icons\iconshock-warning-red-16x12px.png" />
+    <Content Include="Images\Icons\iconshock-warning-red-24x16px.png" />
+    <Content Include="Images\Icons\iconshock-warning-red-96px.png" />
+    <Content Include="Images\Icons\iconshock-workchair-16px.png" />
+    <Content Include="Images\Icons\iconshock-wrench-16px-hot.png" />
+    <Content Include="Images\Icons\iconshock-wrench-16px.png" />
+    <Content Include="Images\Icons\undo-16px.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-bankgirose-full.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-bankgirose-small.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-paypal-full.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-paypal-small.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-payson-full.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-payson-small.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-seb-bankgirofil-full.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-seb-bankgirofil-small.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-seb-kontoutdrag-full.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-seb-kontoutdrag-small.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-type-bankgirose.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-type-paypal.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-type-payson.png" />
+    <Content Include="Images\Ledgers\uploadbankfiles-type-seb.png" />
+    <Content Include="Images\Logo-Stock.png" />
+    <Content Include="Images\Other\clipart-panda-free-sandbox-icon-64px.png" />
+    <Content Include="Images\PageIcons\iconshock-abacus-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-abacus-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-assets-128px.png" />
+    <Content Include="Images\PageIcons\iconshock-award-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-balance-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-balance-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-bank-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-bank-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-bargraph-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-battery-drill-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-battery-drill-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-box-cog-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-box-cog-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-cabinet-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-cabinet-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-calculator-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-calculator-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-calculator-lock-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-calculator-lock-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-cashflow-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-cashinhand-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-cashregister-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-cashregister-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-coins-cross-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-coinstacks-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-components-128px.png" />
+    <Content Include="Images\PageIcons\iconshock-database-star-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-disconnect-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-documents-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-gift-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-gift-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-gold-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-gold-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-group-diversified-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-group-search-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-ignitionkey-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-ignitionkey-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-invoice-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-invoice-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-invoice-greentick-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-invoice-greentick-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-language-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-ledger-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-ledger-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-ledger-inspect-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-ledger-inspect-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-ledger-lock-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-ledger-lock-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-meeting-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-meeting-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-meeting-add-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-meeting-add-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-messages-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-money-calculator-128px.png" />
+    <Content Include="Images\PageIcons\iconshock-money-envelope-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-money-envelope-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-moneyback-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-moneyback-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-moneybag-128px.png" />
+    <Content Include="Images\PageIcons\iconshock-moneybag-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-moneybag-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-moneybag-generic-256px.png" />
+    <Content Include="Images\PageIcons\iconshock-motion-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-motion-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-motion-add-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-motion-add-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-motion-amendment-add-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-motion-amendment-add-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-motion-amendments-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-motion-amendments-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-motion-amendments-vote-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-motions-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-motions-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-openbook-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-openbook-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-organization-add-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-organizations-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-organizations-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-organizations-config-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-organizations-config-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-payout-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-payout-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-piechart-documents-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-reports-charts-128px.png" />
+    <Content Include="Images\PageIcons\iconshock-scales-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-scales-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-scales-items-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-select-language-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-send-money-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-send-money-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-stamped-paper-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-stamped-paper-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-steering-wheel-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-tester-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-tester-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-three-buildings-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-treasure-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-treasure-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-user-add-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-user-add-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-vote-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-vote-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-walletmoney-16px.png" />
+    <Content Include="Images\PageIcons\iconshock-walletmoney-40px.png" />
+    <Content Include="Images\PageIcons\swarmops-builder-40px.png" />
+    <Content Include="Images\PageIcons\transparency-16px.png" />
+    <Content Include="Images\replacing-stock-logo-with-custom-logo-howto.txt" />
+    <Content Include="MainMenu-v5.xml" />
+    <Content Include="SprintName.txt" />
+    <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\CommonV5.cs" />
@@ -1372,6 +1667,7 @@
     </Compile>
     <Compile Include="Controls\v5\Base\FileUpload.ascx.cs">
       <DependentUpon>FileUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\v5\Base\MainMenu.ascx.cs">
       <DependentUpon>MainMenu.ascx</DependentUpon>
@@ -1435,6 +1731,20 @@
     <Compile Include="Controls\v5\UI\IncludedScripts.ascx.designer.cs">
       <DependentUpon>IncludedScripts.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master-v5.master.cs">
+      <DependentUpon>Master-v5.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master-v5.master.designer.cs">
+      <DependentUpon>Master-v5.master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1442,11 +1752,17 @@
     <Content Include="Automation\UploadFileHandler.ashx" />
     <Content Include="Automation\web.config" />
     <Content Include="Controls\v5\UI\web.config" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Images\web.config" />
+    <Content Include="machineKey.config" />
+    <Content Include="database.config" />
+    <Content Include="Master-v5.master" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Autobuild.pubxml" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -2426,7 +2742,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>1158</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:1653/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

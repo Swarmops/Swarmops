@@ -1,0 +1,16 @@
+# Ignore all database.config files - they contain sensitive information about developer's
+# working environment, and should never be committed to repository.
+#
+# A developer can have multiple templates ignored by naming all of them something starting
+# with "database.config", like "database.config.staging", and copy them to database.config
+# manually as needed.
+
+database.config*
+Database.config*
+Database.Config*
+database.Config*
+
+
+# Ignore Experimental scripts (used to evaluate/debug new versions of script packages)
+
+Scripts/Experimental/*

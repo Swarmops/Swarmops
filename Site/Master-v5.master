@@ -1,0 +1,429 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.MasterV5" Codebehind="Master-v5.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <!-- jQuery and plugins -->
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.tmpl.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.color.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.animate-shadow.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.qtip.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/hoverIntent.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/superfish.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js" ></script>
+
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:light,regular,500,bold' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
+    
+    <!-- page title -->
+	<title>Swarmops</title>
+
+	<!-- style sheet, followed by script style sheets -->
+    <asp:PlaceHolder ID="NeededForCacheMarkToParse1" runat="server">
+        <link href="/Style/style-v5.css?CacheId=<%= _cacheVersionMark %>" rel="stylesheet" type="text/css" />
+    </asp:PlaceHolder>
+    <link href="/Style/jquery.qtip.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/alertify.core.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/alertify.default.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/superfish.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+    
+    <!-- external packages that are commonly used (on practically all pages) -->
+    <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
+    <asp:PlaceHolder ID="NeededForCacheMarkToParse2" runat="server">
+        <link href="/Style/v5-easyui-overrides.css?CacheId=<%= _cacheVersionMark %>" rel="stylesheet" type="text/css" />
+    </asp:PlaceHolder>
+    
+    <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
+    <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js?CacheId=<%= _cacheVersionMark %>" ></script>
+
+    <!-- additional scripts etc from individual pages -->
+    <Swarmops5:IncludedScripts ID="IncludedScripts" runat="server" />
+    
+    <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />
+    <asp:Literal ID="LiteralCrowdinScript" runat="server" Text="" />
+
+    <!-- initialize all jQuery stuff -->
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {/*
+            $('#LinkChangeOrganizations').qtip(
+	        {
+	            id: 'TooltipModalOrganizationChanger', // Since we're only creating one modal, give it an ID so we can style it
+	            content: {
+	                text: $('#DivModalOrganizationChanger'),
+	                title: {
+	                    text: 'Switch Organizations',
+	                    button: true
+	                }
+	            },
+	            position: {
+	                my: 'center', // ...at the center of the viewport
+	                at: 'center',
+	                target: $(window)
+	            },
+	            show: {
+	                event: 'click', // Show it on click...
+	                ready: false, // Show it immediately on page load.. force them to login!
+	                modal: {
+	                    on: true,
+
+	                    // Don't let users exit the modal in any way
+	                    blur: true, escape: true
+	                }
+	            },
+	            hide: false,
+	            style: {
+	                classes: 'qtip-light qtip-rounded qtip-modal',
+	                tip: false
+	            }
+	        });*/
+
+            $("a[rel*=leanModal]").leanModal();
+
+            $("#MainMenuContainer").superfish({
+                delay:       1000,                            // one second delay on mouseout
+                animation:   {opacity:'show',height:'show'},  // fade-in and slide-down animation
+                speed:       'fast',                          // faster animation speed
+            });
+
+            <asp:Literal runat="server" ID="LiteralDocumentReadyHook" />
+
+        });
+        	
+    </script>
+    
+    <!-- initialize tooltips -->
+    
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $('#divTabsEditPerson').tabs();
+
+            $('.hasTooltip').qtip({
+                content: {
+                    attr: 'title',
+                    title: function(api) {
+                        // Retrieve content from custom attribute of the elements.
+                        return $(this).attr('rel');
+                    },
+                    style: {
+                        classes: 'ui-tooltip-blue ui-tooltip-shadow'
+                    }
+                }
+            });
+        });
+    </script>
+
+</head>
+    <body <asp:Literal ID="LiteralBodyAttributes" runat="server" />>
+    <form id="form1" runat="server">
+	<script type="text/javascript">
+	    //Put your JavaScript code here.
+	</script>
+	
+    <!-- Main menu, dynamically constructed -->
+
+	<div class="center980px">
+	    <div class="currentuserinfo">
+	        <div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><a href="javascript:masterBeginEditPerson(0);"><asp:Label ID="LabelCurrentUserName" runat="server" /></a> | </div>
+	        <div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><span class="hasTooltip" rel="Logged into <%=this.CurrentOrganization.Name %>" title="Click here to switch to another organization."><a href="/Security/ChangeOrganizations" id="LinkChangeOrganizations"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /></a></span> |&nbsp;</div>
+            <div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left" id="divUserPreferences"><asp:Label ID="LabelPreferences" runat="server" /> | </div>
+            <div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div>
+            <a href="/User/SelectLanguage"><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></a>
+	    </div>
+        <div class="logoimage"><a href="/"><asp:Image runat="server" ID="ImageLogo" AlternateText="Swarmops Logo"/></a></div>
+        <div class="break"></div>
+        <div class="topmenu">
+            <div class="topSearchBox"><asp:TextBox ID="SearchBox" runat="server" /></div>
+            <Swarmops5:MainMenu ID="MainMenu" runat="server" />
+        </div>
+        
+        <div class="mainbar">
+            <!--<div id="page-icon-encaps"><asp:Image ID="IconPage" runat="server" ImageUrl="~/Images/PageIcons/iconshock-steering-wheel-40px.png" /></div><h1><asp:Label ID="LabelPageTitle" Text="Dashboard" runat="server" /></h1>-->
+        
+        <div class="box">
+            <div class="content">
+               <asp:ContentPlaceHolder ID="PlaceHolderMain" runat="server" />
+            </div>
+        </div>
+        
+        </div>
+        
+
+
+        <div class="sidebar">
+            
+            <h2 class="blue"><asp:Label ID="LabelSidebarInfo" runat="server" /><span class="arrow"></span></h2>
+    
+            <div class="box">
+                <div class="content">
+                <asp:Literal ID="LiteralSidebarInfo" runat="server" />
+                </div>
+            </div>
+    
+            <h2 class="blue"><asp:Label ID="LabelSidebarActions" runat="server" /><span class="arrow"></span></h2>
+    
+            <div class="box">
+                <div class="content">
+                    <div class="link-row-encaps" onclick="document.location='/Pages/v5/Governance/Vote.aspx';" >
+                        <div class="link-row-icon" style="background-image:url('/Images/PageIcons/iconshock-vote-16px.png')"></div>
+                        <asp:Label ID="LabelActionPlaceholder1" runat="server" />
+                    </div>
+                    <div class="link-row-encaps" onclick="document.location='/Pages/v5/Governance/ListMotions.aspx';" >
+                        <div class="link-row-icon" style="background-image:url('/Images/PageIcons/iconshock-motions-16px.png')"></div>
+                        <asp:Label ID="LabelActionPlaceholder2" runat="server" />
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="blue">Report Bugs<span class="arrow"></span></h2>
+    
+            <div class="box" style="background-image:url('/Images/Icons/iconshock-warning-96px.png'); background-size: 24px 24px; background-repeat: no-repeat;">
+                <div class="content">
+                    <div class="link-row-encaps" onclick="var win=window.open('https://github.com/Swarmops/Swarmops/issues/new', '_blank'); win.focus();" >
+                        <div class="link-row-icon"></div>
+                        Report a Swarmops bug (on Github)
+                    </div>
+                </div>
+            </div>
+            
+
+            <asp:ContentPlaceHolder ID="PlaceHolderSide" runat="server" />
+    
+            <div id="divDashboardTodo">
+
+                <h2 class="orange"><asp:Label ID="LabelSidebarTodo" runat="server" /><span class="arrow"></span></h2>
+    
+                <div class="box">
+                    <div class="content">
+                        <asp:Repeater runat="server" ID="RepeaterTodoItems"><ItemTemplate>
+                        <div class="link-row-encaps" onclick="<%# DataBinder.Eval(Container.DataItem, "OnClick") %>" >
+                            <div class="link-row-icon" style="background-image:url('<%# DataBinder.Eval(Container.DataItem, "Icon") %>')"></div>
+                            <asp:Label ID="Label1" Text='<%# DataBinder.Eval(Container.DataItem, "Description") %>' runat="server" />
+                        </div>
+                        </ItemTemplate></asp:Repeater>
+                        <asp:Label ID="LabelNoTodoItems" runat="server" Visible="False" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+	</div>
+   
+    <!-- assorted popups, for use by all pages -->
+        
+    <Swarmops5:ModalDialog ID="ModalMasterEditPerson" OnClientClose="masterEndEditPerson" runat="server">
+        <DialogCode>
+            <div id="divTabsEditPerson" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
+                <div title="<img src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Account</h2>
+                    <div class="entryFields">
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonName" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Name" AjaxCallbackUrl="" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonMail" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Mail" AjaxCallbackUrl=""  />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonPhone" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Phone" AjaxCallbackUrl=""  />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonTwitterId" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="TwitterId" AjaxCallbackUrl=""  />
+                    </div>
+                    <div class="entryLabels">
+                        Name<br/>
+                        Mail<br/>
+                        Phone<br/>
+                        Twitter<br/>
+                    </div>
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Security</h2>
+                    <div class="entryFields">...</div>
+                    <div class="entryLabels">
+                        New Password<br/>
+                        New Password Again<br/>
+                        Enable BitId (bitcoin signature login)<br/>
+                        Enter current password to save
+                    </div>
+                </div>
+                <!--
+                <div title="<img src='/Images/Icons/iconshock-foreman-128px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Role and Responsibility</h2>
+                    TODO
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-mail-256px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Mail Account</h2>
+                    <div class="divEntryFields">
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonOrgMail" runat="server" />&#8203;<br/>
+                    </div>
+                    <div class="entryLabels">
+                        Organization mail account<br/>
+                        Reset mail server password
+                    </div>
+                </div>
+
+                <div title="<img src='/Images/Icons/iconshock-location-256px.png' width='64' height='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Address</h2>
+                    <div class="entryFields">...</div>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonCountry" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonStreet1" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonStreet2" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonPostalCodeCity" runat="server" />
+                    <div class="entryLabels">
+                        Country<br/>
+                        Street 1<br/>
+                        Street 2<br/>
+                        Postal code, city
+                    </div>
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Mail Preferences</h2>
+                    <div class="entryFields">
+                        Switch1
+                        Switch2
+                        Switch3
+                        Switch4
+                    </div>
+                    <div class="entryLabels">
+                        Recieve mail from local leaders<br/>
+                        Receive organization newsletters<br/>
+                        Receive membership accounting info<br/>
+                        Receive security alerts
+                    </div>
+                </div>
+                <div title="<img src='/Images/PageIcons/iconshock-moneybag-128px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment Channels</h2>
+                    <div class="entryFields">
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonLegacyBankClearing" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonLegacyBankAccount" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonLegacyBankHolder" runat="server" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonLegacyBitcoinAddress" runat="server" />&#8203;<br/>
+                        Switch1&#8203;<br/>
+                        Switch2
+                    </div>
+                    <div class="entryLabels">
+                        Legacy bank SWIFT/BIC/clearing<br/>
+                        Legacy bank IBAN/account<br/>
+                        Account holder name<br/>
+                        Bitcoin address<br/>
+                        Prefer bitcoin for expenses/advances<br/>
+                        Prefer bitcoin for salaries
+                    </div>
+                </div>
+                <div title="<img src='/Images/PageIcons/iconshock-money-calculator-128px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment History</h2>
+                    TABLE
+                </div>
+                <div title="<img src='/Images/PageIcons/iconshock-award-96px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Achievements</h2>
+                    TABLE
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-logfile-256px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: System Log</h2>
+                    TABLE
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-notes-256px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Officer Notes</h2>
+                    FREETEXT FIELD
+                </div>-->
+            </div>
+        </DialogCode>
+    </Swarmops5:ModalDialog>
+        
+    <script type="text/javascript" language="javascript">
+        
+        // This JavaScript block is for the Master Modal Person Editor.
+
+        function masterBeginEditPerson(personId) {
+            _master_PersonEditedId = personId;
+
+            // Disable saving on change
+            _master_PersonEditLoading = true;
+
+            // Clear fields, mark disabled until data retrieved
+            <%= this.MasterEditPersonName.ClientID %>_disableClear();
+            <%= this.MasterEditPersonMail.ClientID %>_disableClear();
+            <%= this.MasterEditPersonPhone.ClientID %>_disableClear();
+            <%= this.MasterEditPersonTwitterId.ClientID %>_disableClear();
+
+            $('span.spanModalEditingPersonName').text(decodeURIComponent('<%=Uri.EscapeDataString(Resources.Global.Global_LoadingPlaceholderShort)%>'));
+
+            <%=this.ModalMasterEditPerson.ClientID%>_open();
+
+            var personEditorData = {
+                personId: parseInt(personId)  // parseInt to force passing integer over JSON
+            };
+
+            _master_PersonEditLoading = false;
+            _master_PersonEditedId = personId;
+
+            SwarmopsJS.ajaxCall('/Automation/SwarmFunctions.aspx/GetPersonEditorData', personEditorData, function(data) {
+                if (data != null && data.Success) {
+                    $('span.spanModalEditingPersonName').text(data.Name);
+
+                    <%= this.MasterEditPersonName.ClientID %>_initialize(data.Name);
+                    <%= this.MasterEditPersonMail.ClientID %>_initialize(data.Mail);
+                    <%= this.MasterEditPersonPhone.ClientID %>_initialize(data.Phone);
+                    <%= this.MasterEditPersonTwitterId.ClientID %>_initialize(data.TwitterId);
+
+                    _master_PersonEditLoading = false;
+
+                } else {
+                    alert('Server error: Call to SwarmFunctions.aspx failed');
+                }
+            });
+
+            // Begin ajax query for data
+
+            // If success, populate; enable saving on change
+            // If secvio, notify
+        }
+
+        var _master_PersonEditedId = -1;  // no person: zero means "self"
+        var _master_PersonEditLoading = false;
+
+        function masterPersonEditorOnFieldChange(newValue, fieldName, controlName) {
+            // Do the AJAX call from here, as we need to also pass along the person ID of the person edited
+            // (the AjaxTextBox auto-callback is disabled for this reason, code duplicated here)
+
+            var jsonData = {
+                personId: _master_PersonEditedId,
+                field: fieldName,
+                newValue: newValue
+            };
+
+            SwarmopsJS.ajaxCall(
+
+                // HACK: Possible race condition for "controlName" here in some environments?
+
+               "/Automation/SwarmFunctions.aspx/SetPersonEditorData",
+               jsonData,
+               function(result) {
+                   window[controlName + "_updateSuccessAnimate"](result.NewValue);
+               },
+               function(result) {
+                   window[controlName + "_updateFailAnimate"](result.NewValue);
+               });
+
+
+
+            //alert("Field Change: " + fieldName + " changed to '" + newValue + "'");
+
+        }
+
+        function masterEndEditPerson() {
+            alert("EndEditPerson");
+        }
+
+    </script>
+	
+	</form>
+
+    <!-- some javascript in footer -->
+    
+    <script language="javascript" type="text/javascript" src="/Scripts/alertify.min.js" ></script>
+   
+</body>
+</html>
+
+
