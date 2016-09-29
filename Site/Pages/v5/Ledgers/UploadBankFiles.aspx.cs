@@ -10,6 +10,7 @@ using Resources;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
+using Swarmops.Frontend;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;

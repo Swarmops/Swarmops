@@ -1,4 +1,5 @@
 ﻿using System;
+using Swarmops.Frontend;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 

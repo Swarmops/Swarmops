@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Mime;
 using Swarmops.Common.Enums;
+using Swarmops.Frontend;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Runtime.Versioning;
-using System.ServiceModel.Security;
+using System.Security;
 using System.Threading;
 using System.Web;
 using System.Web.Services;
@@ -135,9 +134,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelRadioDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionDeny;
             this.LabelRadioRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionRebudget;
 
-            this.LiteralButtonCorrect.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount; // these may be flagged red by Resharper. That's Resharper being wrong.
-            this.LiteralButtonDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonDeny;
-            this.LiteralButtonRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonRebudget;
+            this.LiteralButtonCorrect.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount); 
+            this.LiteralButtonDeny.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonDeny);
+            this.LiteralButtonRebudget.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonRebudget);
 
             this.LabelModalDenyHeader.Text = Resources.Pages.Financial.AttestCosts_Modal_Header;
             this.LabelWhatProblem.Text = Resources.Pages.Financial.AttestCosts_Modal_WhatIsProblem;
@@ -377,7 +376,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     if (advance.Budget.OwnerPersonId != authData.CurrentUser.Identity &&
                         advance.Budget.OwnerPersonId != Person.NobodyId)
                     {
-                        throw new SecurityAccessDeniedException ("Called without attestation privileges");
+                        throw new SecurityException ("Called without attestation privileges");
                     }
 
                     attestableItem = advance;
@@ -396,7 +395,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     if (expense.Budget.OwnerPersonId != authData.CurrentUser.Identity &&
                         expense.Budget.OwnerPersonId != Person.NobodyId)
                     {
-                        throw new SecurityAccessDeniedException ("Called without attestation privileges");
+                        throw new SecurityException ("Called without attestation privileges");
                     }
 
                     attestableItem = expense;
@@ -415,7 +414,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     if (invoice.Budget.OwnerPersonId != authData.CurrentUser.Identity &&
                         invoice.Budget.OwnerPersonId != Person.NobodyId)
                     {
-                        throw new SecurityAccessDeniedException ("Called without attestation privileges");
+                        throw new SecurityException ("Called without attestation privileges");
                     }
 
                     attestableItem = invoice;
@@ -434,7 +433,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     if (salary.PayrollItem.Budget.OwnerPersonId != authData.CurrentUser.Identity &&
                         salary.PayrollItem.Budget.OwnerPersonId != Person.NobodyId)
                     {
-                        throw new SecurityAccessDeniedException ("Called without attestation privileges");
+                        throw new SecurityException ("Called without attestation privileges");
                     }
 
                     attestableItem = salary;
@@ -453,7 +452,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     if (parley.Budget.OwnerPersonId != authData.CurrentUser.Identity &&
                         parley.Budget.OwnerPersonId != Person.NobodyId)
                     {
-                        throw new SecurityAccessDeniedException ("Called without attestation privileges");
+                        throw new SecurityException ("Called without attestation privileges");
                     }
 
                     attestableItem = parley;

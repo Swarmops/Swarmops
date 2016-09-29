@@ -1,1 +1,1 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Json-ValidatableReceipts.aspx.cs" Inherits="Pages_v5_Finance_Json_ValidatableReceipts" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Pages_v5_Finance_Json_ValidatableReceipts" Codebehind="Json-ValidatableReceipts.aspx.cs" %>

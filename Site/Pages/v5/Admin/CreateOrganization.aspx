@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="CreateOrganization.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Admin.CreateOrganization" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Admin.CreateOrganization" Codebehind="CreateOrganization.aspx.cs" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <script type="text/javascript">

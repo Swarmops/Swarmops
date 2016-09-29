@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="BitcoinEchoTest.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Admin.BitcoinEchoTest" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Admin.BitcoinEchoTest" Codebehind="BitcoinEchoTest.aspx.cs" %>
 <%@ Import Namespace="Swarmops.Logic.Support" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">

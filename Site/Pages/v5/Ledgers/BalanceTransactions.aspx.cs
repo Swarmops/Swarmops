@@ -41,15 +41,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             this.LabelDescribeBalance.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribeBalance;
             this.LabelRadioBalance.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioBalance;
-            this.LiteralButtonBalance.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonBalance;
 
             this.LabelDescribePayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePayout;
             this.LabelDescribePayoutForeign.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePayoutForeign;
             this.LabelRadioPayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayout;
             this.LabelRadioPayoutForeign.Text =
                 String.Format(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayoutForeign, 5);
-            this.LiteralButtonPayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayout;
-            this.LiteralButtonPayoutForeign.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayout;
+
+            this.LiteralButtonBalance.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonBalance);
+            this.LiteralButtonPayout.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayout);
+            this.LiteralButtonPayoutForeign.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayout);
         }
 
 

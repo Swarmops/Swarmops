@@ -19,6 +19,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +42,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NBitcoin, Version=2.1.4.7, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NBitcoin.dll</HintPath>
+    </Reference>
+    <Reference Include="NGeoIP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NGeoIP.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -58,8 +68,506 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\v5\Admin\BitcoinEchoTest.aspx.cs">
+      <DependentUpon>BitcoinEchoTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\BitcoinEchoTest.aspx.designer.cs">
+      <DependentUpon>BitcoinEchoTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\CreateOrganization.aspx.cs">
+      <DependentUpon>CreateOrganization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\CreateOrganization.aspx.designer.cs">
+      <DependentUpon>CreateOrganization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\PopulateCountry1.aspx.cs">
+      <DependentUpon>PopulateCountry1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\PopulateCountry1.aspx.designer.cs">
+      <DependentUpon>PopulateCountry1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\PopulateCountry2.aspx.cs">
+      <DependentUpon>PopulateCountry2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\PopulateCountry2.aspx.designer.cs">
+      <DependentUpon>PopulateCountry2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\PopulateFakePeople.aspx.cs">
+      <DependentUpon>PopulateFakePeople.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\PopulateFakePeople.aspx.designer.cs">
+      <DependentUpon>PopulateFakePeople.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\Temp-SetOrganizationAdminAccess.aspx.cs">
+      <DependentUpon>Temp-SetOrganizationAdminAccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\Temp-SetOrganizationAdminAccess.aspx.designer.cs">
+      <DependentUpon>Temp-SetOrganizationAdminAccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\TemporaryHack.aspx.cs">
+      <DependentUpon>TemporaryHack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\TemporaryHack.aspx.designer.cs">
+      <DependentUpon>TemporaryHack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\OrgSettings.aspx.cs">
+      <DependentUpon>OrgSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\OrgSettings.aspx.designer.cs">
+      <DependentUpon>OrgSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\OrgStaffing.aspx.cs">
+      <DependentUpon>OrgStaffing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\OrgStaffing.aspx.designer.cs">
+      <DependentUpon>OrgStaffing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\SystemSettings.aspx.cs">
+      <DependentUpon>SystemSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\SystemSettings.aspx.designer.cs">
+      <DependentUpon>SystemSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Comms\SendMassMessage.aspx.cs">
+      <DependentUpon>SendMassMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Comms\SendMassMessage.aspx.designer.cs">
+      <DependentUpon>SendMassMessage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\AttestCosts.aspx.cs">
+      <DependentUpon>AttestCosts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\AttestCosts.aspx.designer.cs">
+      <DependentUpon>AttestCosts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\BitcoinHotwalletNotEnabled.aspx.cs">
+      <DependentUpon>BitcoinHotwalletNotEnabled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\BitcoinHotwalletNotEnabled.aspx.designer.cs">
+      <DependentUpon>BitcoinHotwalletNotEnabled.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\CreateInboundInvoice.aspx.cs">
+      <DependentUpon>CreateInboundInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\CreateInboundInvoice.aspx.designer.cs">
+      <DependentUpon>CreateInboundInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\Donate.aspx.cs">
+      <DependentUpon>Donate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\Donate.aspx.designer.cs">
+      <DependentUpon>Donate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\EconomyNotEnabled.aspx.cs">
+      <DependentUpon>EconomyNotEnabled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\EconomyNotEnabled.aspx.designer.cs">
+      <DependentUpon>EconomyNotEnabled.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\FileExpenseClaim.aspx.cs">
+      <DependentUpon>FileExpenseClaim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\FileExpenseClaim.aspx.designer.cs">
+      <DependentUpon>FileExpenseClaim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\Json-AttestableCosts.aspx.cs">
+      <DependentUpon>Json-AttestableCosts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\Json-AttestableCosts.aspx.designer.cs">
+      <DependentUpon>Json-AttestableCosts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\Json-PayableCosts.aspx.cs">
+      <DependentUpon>Json-PayableCosts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\Json-PayableCosts.aspx.designer.cs">
+      <DependentUpon>Json-PayableCosts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\Json-PayableCostsOcr.aspx.cs">
+      <DependentUpon>Json-PayableCostsOcr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\Json-PayableCostsOcr.aspx.designer.cs">
+      <DependentUpon>Json-PayableCostsOcr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\Json-ValidatableReceipts.aspx.cs">
+      <DependentUpon>Json-ValidatableReceipts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\Json-ValidatableReceipts.aspx.designer.cs">
+      <DependentUpon>Json-ValidatableReceipts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\PayOutMoney.aspx.cs">
+      <DependentUpon>PayOutMoney.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\PayOutMoney.aspx.designer.cs">
+      <DependentUpon>PayOutMoney.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\RequestCashAdvance.aspx.cs">
+      <DependentUpon>RequestCashAdvance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\RequestCashAdvance.aspx.designer.cs">
+      <DependentUpon>RequestCashAdvance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\ValidateReceipts.aspx.cs">
+      <DependentUpon>ValidateReceipts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\ValidateReceipts.aspx.designer.cs">
+      <DependentUpon>ValidateReceipts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\AccountPlan.aspx.cs">
+      <DependentUpon>AccountPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\AccountPlan.aspx.designer.cs">
+      <DependentUpon>AccountPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\BalanceSheet.aspx.cs">
+      <DependentUpon>BalanceSheet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\BalanceSheet.aspx.designer.cs">
+      <DependentUpon>BalanceSheet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\BalanceTransactions.aspx.cs">
+      <DependentUpon>BalanceTransactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\BalanceTransactions.aspx.designer.cs">
+      <DependentUpon>BalanceTransactions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\BitcoinHotwallet.aspx.cs">
+      <DependentUpon>BitcoinHotwallet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\BitcoinHotwallet.aspx.designer.cs">
+      <DependentUpon>BitcoinHotwallet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\BudgetActual.aspx.cs">
+      <DependentUpon>BudgetActual.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\BudgetActual.aspx.designer.cs">
+      <DependentUpon>BudgetActual.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\CloseLedgers.aspx.cs">
+      <DependentUpon>CloseLedgers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\CloseLedgers.aspx.designer.cs">
+      <DependentUpon>CloseLedgers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Csv-BalanceData.aspx.cs">
+      <DependentUpon>Csv-BalanceData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Csv-BalanceData.aspx.designer.cs">
+      <DependentUpon>Csv-BalanceData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Csv-ProfitLossData.aspx.cs">
+      <DependentUpon>Csv-ProfitLossData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Csv-ProfitLossData.aspx.designer.cs">
+      <DependentUpon>Csv-ProfitLossData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\DebugLedgers.aspx.cs">
+      <DependentUpon>DebugLedgers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\DebugLedgers.aspx.designer.cs">
+      <DependentUpon>DebugLedgers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\InspectLedgers.aspx.cs">
+      <DependentUpon>InspectLedgers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\InspectLedgers.aspx.designer.cs">
+      <DependentUpon>InspectLedgers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-AccountPlanData.aspx.cs">
+      <DependentUpon>Json-AccountPlanData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-AccountPlanData.aspx.designer.cs">
+      <DependentUpon>Json-AccountPlanData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-BalanceSheetData.aspx.cs">
+      <DependentUpon>Json-BalanceSheetData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-BalanceSheetData.aspx.designer.cs">
+      <DependentUpon>Json-BalanceSheetData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-BitcoinHotwalletData.aspx.cs">
+      <DependentUpon>Json-BitcoinHotwalletData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-BitcoinHotwalletData.aspx.designer.cs">
+      <DependentUpon>Json-BitcoinHotwalletData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-BudgetActualData.aspx.cs">
+      <DependentUpon>Json-BudgetActualData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-BudgetActualData.aspx.designer.cs">
+      <DependentUpon>Json-BudgetActualData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-InspectLedgerData.aspx.cs">
+      <DependentUpon>Json-InspectLedgerData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-InspectLedgerData.aspx.designer.cs">
+      <DependentUpon>Json-InspectLedgerData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-InspectLedgerTxData.aspx.cs">
+      <DependentUpon>Json-InspectLedgerTxData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-InspectLedgerTxData.aspx.designer.cs">
+      <DependentUpon>Json-InspectLedgerTxData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-OutstandingAccounts.aspx.cs">
+      <DependentUpon>Json-OutstandingAccounts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-OutstandingAccounts.aspx.designer.cs">
+      <DependentUpon>Json-OutstandingAccounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-ProfitLossData.aspx.cs">
+      <DependentUpon>Json-ProfitLossData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-ProfitLossData.aspx.designer.cs">
+      <DependentUpon>Json-ProfitLossData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-ResyncPreview.aspx.cs">
+      <DependentUpon>Json-ResyncPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-ResyncPreview.aspx.designer.cs">
+      <DependentUpon>Json-ResyncPreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-UnbalancedTransactions.aspx.cs">
+      <DependentUpon>Json-UnbalancedTransactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-UnbalancedTransactions.aspx.designer.cs">
+      <DependentUpon>Json-UnbalancedTransactions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\ProfitLossStatement.aspx.cs">
+      <DependentUpon>ProfitLossStatement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\ProfitLossStatement.aspx.designer.cs">
+      <DependentUpon>ProfitLossStatement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\ResyncExternalAccount.aspx.cs">
+      <DependentUpon>ResyncExternalAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\ResyncExternalAccount.aspx.designer.cs">
+      <DependentUpon>ResyncExternalAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\TaxForms\Json-Payroll-TaxFormData.aspx.cs">
+      <DependentUpon>Json-Payroll-TaxFormData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\TaxForms\Json-Payroll-TaxFormData.aspx.designer.cs">
+      <DependentUpon>Json-Payroll-TaxFormData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\TaxForms\PayrollForms.aspx.cs">
+      <DependentUpon>PayrollForms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\TaxForms\PayrollForms.aspx.designer.cs">
+      <DependentUpon>PayrollForms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\UploadBankFiles.aspx.cs">
+      <DependentUpon>UploadBankFiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\UploadBankFiles.aspx.designer.cs">
+      <DependentUpon>UploadBankFiles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\ViewOutstandingAccounts.aspx.cs">
+      <DependentUpon>ViewOutstandingAccounts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\ViewOutstandingAccounts.aspx.designer.cs">
+      <DependentUpon>ViewOutstandingAccounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Public\Initialize.aspx.cs">
+      <DependentUpon>Initialize.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Public\Initialize.aspx.designer.cs">
+      <DependentUpon>Initialize.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Public\Json-SignupVolunteerPositions.aspx.cs">
+      <DependentUpon>Json-SignupVolunteerPositions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Public\Json-SignupVolunteerPositions.aspx.designer.cs">
+      <DependentUpon>Json-SignupVolunteerPositions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Public\Signup.aspx.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Public\Signup.aspx.designer.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Security\AccessDenied.aspx.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Security\AccessDenied.aspx.designer.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Security\ChangeOrganizations.aspx.cs">
+      <DependentUpon>ChangeOrganizations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Security\ChangeOrganizations.aspx.designer.cs">
+      <DependentUpon>ChangeOrganizations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Security\ChangeOrganizationsAdvanced.aspx.cs">
+      <DependentUpon>ChangeOrganizationsAdvanced.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Security\ChangeOrganizationsAdvanced.aspx.designer.cs">
+      <DependentUpon>ChangeOrganizationsAdvanced.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Security\DatabaseUpgradeRequired.aspx.cs">
+      <DependentUpon>DatabaseUpgradeRequired.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Security\DatabaseUpgradeRequired.aspx.designer.cs">
+      <DependentUpon>DatabaseUpgradeRequired.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Security\Json-AccessibleOrganizationsTree.aspx.cs">
+      <DependentUpon>Json-AccessibleOrganizationsTree.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Security\Json-AccessibleOrganizationsTree.aspx.designer.cs">
+      <DependentUpon>Json-AccessibleOrganizationsTree.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Security\SetCurrentOrganization.aspx.cs">
+      <DependentUpon>SetCurrentOrganization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Security\SetCurrentOrganization.aspx.designer.cs">
+      <DependentUpon>SetCurrentOrganization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Support\StreamUpload.aspx.cs">
+      <DependentUpon>StreamUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Support\StreamUpload.aspx.designer.cs">
+      <DependentUpon>StreamUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Swarm\AddPerson.aspx.cs">
+      <DependentUpon>AddPerson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Swarm\AddPerson.aspx.designer.cs">
+      <DependentUpon>AddPerson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Swarm\Json-ListFindPeople.aspx.cs">
+      <DependentUpon>Json-ListFindPeople.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Swarm\Json-ListFindPeople.aspx.designer.cs">
+      <DependentUpon>Json-ListFindPeople.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Swarm\ListFindPeople.aspx.cs">
+      <DependentUpon>ListFindPeople.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Swarm\ListFindPeople.aspx.designer.cs">
+      <DependentUpon>ListFindPeople.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Swarm\LocalOrganization.aspx.cs">
+      <DependentUpon>LocalOrganization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Swarm\LocalOrganization.aspx.designer.cs">
+      <DependentUpon>LocalOrganization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\User\SelectLanguage.aspx.cs">
+      <DependentUpon>SelectLanguage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\User\SelectLanguage.aspx.designer.cs">
+      <DependentUpon>SelectLanguage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\User\SetCulture.aspx.cs">
+      <DependentUpon>SetCulture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\User\SetCulture.aspx.designer.cs">
+      <DependentUpon>SetCulture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\FinalizeLogin.aspx.cs">
+      <DependentUpon>FinalizeLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\FinalizeLogin.aspx.designer.cs">
+      <DependentUpon>FinalizeLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\Login-Old.aspx.cs">
+      <DependentUpon>Login-Old.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\Login-Old.aspx.designer.cs">
+      <DependentUpon>Login-Old.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\RequestPasswordReset.aspx.cs">
+      <DependentUpon>RequestPasswordReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\RequestPasswordReset.aspx.designer.cs">
+      <DependentUpon>RequestPasswordReset.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tests\TestBookkeepingIntegrity.aspx.cs">
       <DependentUpon>TestBookkeepingIntegrity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Tests\TestBookkeepingIntegrity.aspx.designer.cs">
       <DependentUpon>TestBookkeepingIntegrity.aspx</DependentUpon>
@@ -414,6 +922,73 @@
     <Content Include="Images\PageIcons\transparency-16px.png" />
     <Content Include="Images\replacing-stock-logo-with-custom-logo-howto.txt" />
     <Content Include="MainMenu-v5.xml" />
+    <Content Include="Pages\v5\Admin\BitcoinEchoTest.aspx" />
+    <Content Include="Pages\v5\Admin\CreateOrganization.aspx" />
+    <Content Include="Pages\v5\Admin\Hacks\PopulateCountry1.aspx" />
+    <Content Include="Pages\v5\Admin\Hacks\PopulateCountry2.aspx" />
+    <Content Include="Pages\v5\Admin\Hacks\PopulateFakePeople.aspx" />
+    <Content Include="Pages\v5\Admin\Hacks\Temp-SetOrganizationAdminAccess.aspx" />
+    <Content Include="Pages\v5\Admin\Hacks\TemporaryHack.aspx" />
+    <Content Include="Pages\v5\Admin\OrgSettings.aspx" />
+    <Content Include="Pages\v5\Admin\OrgStaffing.aspx" />
+    <Content Include="Pages\v5\Admin\SystemSettings.aspx" />
+    <Content Include="Pages\v5\Comms\SendMassMessage.aspx" />
+    <Content Include="Pages\v5\Financial\AttestCosts.aspx" />
+    <Content Include="Pages\v5\Financial\BitcoinHotwalletNotEnabled.aspx" />
+    <Content Include="Pages\v5\Financial\CreateInboundInvoice.aspx" />
+    <Content Include="Pages\v5\Financial\Donate.aspx" />
+    <Content Include="Pages\v5\Financial\EconomyNotEnabled.aspx" />
+    <Content Include="Pages\v5\Financial\FileExpenseClaim.aspx" />
+    <Content Include="Pages\v5\Financial\Json-AttestableCosts.aspx" />
+    <Content Include="Pages\v5\Financial\Json-PayableCosts.aspx" />
+    <Content Include="Pages\v5\Financial\Json-PayableCostsOcr.aspx" />
+    <Content Include="Pages\v5\Financial\Json-ValidatableReceipts.aspx" />
+    <Content Include="Pages\v5\Financial\PayOutMoney.aspx" />
+    <Content Include="Pages\v5\Financial\RequestCashAdvance.aspx" />
+    <Content Include="Pages\v5\Financial\ValidateReceipts.aspx" />
+    <Content Include="Pages\v5\Ledgers\AccountPlan.aspx" />
+    <Content Include="Pages\v5\Ledgers\BalanceSheet.aspx" />
+    <Content Include="Pages\v5\Ledgers\BalanceTransactions.aspx" />
+    <Content Include="Pages\v5\Ledgers\BitcoinHotwallet.aspx" />
+    <Content Include="Pages\v5\Ledgers\BudgetActual.aspx" />
+    <Content Include="Pages\v5\Ledgers\CloseLedgers.aspx" />
+    <Content Include="Pages\v5\Ledgers\Csv-BalanceData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Csv-ProfitLossData.aspx" />
+    <Content Include="Pages\v5\Ledgers\DebugLedgers.aspx" />
+    <Content Include="Pages\v5\Ledgers\InspectLedgers.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-AccountPlanData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-BalanceSheetData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-BitcoinHotwalletData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-BudgetActualData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-InspectLedgerData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-InspectLedgerTxData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-OutstandingAccounts.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-ProfitLossData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-ResyncPreview.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-UnbalancedTransactions.aspx" />
+    <Content Include="Pages\v5\Ledgers\ProfitLossStatement.aspx" />
+    <Content Include="Pages\v5\Ledgers\ResyncExternalAccount.aspx" />
+    <Content Include="Pages\v5\Ledgers\TaxForms\Json-Payroll-TaxFormData.aspx" />
+    <Content Include="Pages\v5\Ledgers\TaxForms\PayrollForms.aspx" />
+    <Content Include="Pages\v5\Ledgers\UploadBankFiles.aspx" />
+    <Content Include="Pages\v5\Ledgers\ViewOutstandingAccounts.aspx" />
+    <Content Include="Pages\v5\Public\Initialize.aspx" />
+    <Content Include="Pages\v5\Public\Json-SignupVolunteerPositions.aspx" />
+    <Content Include="Pages\v5\Public\Signup.aspx" />
+    <Content Include="Pages\v5\Public\WizardStyle.css" />
+    <Content Include="Pages\v5\Security\AccessDenied.aspx" />
+    <Content Include="Pages\v5\Security\ChangeOrganizations.aspx" />
+    <Content Include="Pages\v5\Security\ChangeOrganizationsAdvanced.aspx" />
+    <Content Include="Pages\v5\Security\DatabaseUpgradeRequired.aspx" />
+    <Content Include="Pages\v5\Security\Json-AccessibleOrganizationsTree.aspx" />
+    <Content Include="Pages\v5\Security\SetCurrentOrganization.aspx" />
+    <Content Include="Pages\v5\Support\StreamUpload.aspx" />
+    <Content Include="Pages\v5\Swarm\AddPerson.aspx" />
+    <Content Include="Pages\v5\Swarm\Json-ListFindPeople.aspx" />
+    <Content Include="Pages\v5\Swarm\ListFindPeople.aspx" />
+    <Content Include="Pages\v5\Swarm\LocalOrganization.aspx" />
+    <Content Include="Pages\v5\User\SelectLanguage.aspx" />
+    <Content Include="Pages\v5\User\SetCulture.aspx" />
     <Content Include="Scripts\alertify.min.js" />
     <Content Include="Scripts\crowdin-jipt.js" />
     <Content Include="Scripts\Experimental\easyui\changelog.txt" />
@@ -1128,6 +1703,23 @@
     <Content Include="Scripts\ScriptLicenses.txt" />
     <Content Include="Scripts\superfish.js" />
     <Content Include="Scripts\Swarmops-v5.js" />
+    <Content Include="Security\FinalizeLogin.aspx" />
+    <Content Include="Security\Images\blue-ball-64px.png" />
+    <Content Include="Security\Images\iconshock-cross-12px.png" />
+    <Content Include="Security\Images\iconshock-fingerprint-scanner-40px.png" />
+    <Content Include="Security\Images\iconshock-fingerprint-scanner-unlock-64px.png" />
+    <Content Include="Security\Images\iconshock-foreign-key-16px-hot-offset.png" />
+    <Content Include="Security\Images\iconshock-foreign-key-16px-hot.png" />
+    <Content Include="Security\Images\iconshock-foreign-key-16px-offset.png" />
+    <Content Include="Security\Images\iconshock-foreign-key-16px.png" />
+    <Content Include="Security\Images\iconshock-foreign-key-24px-hot.png" />
+    <Content Include="Security\Images\iconshock-foreign-key-24px.png" />
+    <Content Include="Security\Images\iconshock-greentick-16px.png" />
+    <Content Include="Security\Images\Swarmops-Logo.png" />
+    <Content Include="Security\Login-Old.aspx" />
+    <Content Include="Security\Login.aspx" />
+    <Content Include="Security\RequestPasswordReset.aspx" />
+    <Content Include="Security\ResetPassword.aspx" />
     <Content Include="SprintName.txt" />
     <Content Include="Style\alertify.core.css" />
     <Content Include="Style\alertify.default.css" />
@@ -2498,6 +3090,8 @@
     <Content Include="database.config" />
     <Content Include="Master-v5.master" />
     <Content Include="packages.config" />
+    <Content Include="Pages\v5\Public\GeoLookupHelpers.js.include" />
+    <Content Include="Pages\v5\Public\web.config" />
     <None Include="Properties\PublishProfiles\Autobuild.pubxml" />
     <Content Include="Scripts\Experimental\easyui\demo\accordion\datagrid_data1.json" />
     <Content Include="Scripts\Experimental\easyui\demo\combobox\combobox_data1.json" />
@@ -2521,6 +3115,7 @@
     <Content Include="Scripts\Experimental\easyui\demo\tree\tree_data2.json" />
     <Content Include="Scripts\web.config" />
     <Content Include="Style\web.config" />
+    <Content Include="Security\web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -3483,6 +4078,10 @@
       <Project>{bbf83512-8486-469e-9d7b-c3c1b78c3f4d}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{3a5b5f19-51a5-48ce-a82e-97d5c189e5cb}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Interface\Interface.csproj">
       <Project>{ba24faf7-d518-49e8-952a-45595682877e}</Project>
       <Name>Interface</Name>
@@ -3517,6 +4116,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

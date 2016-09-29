@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ServiceModel.Security;
+using System.Security;
 using System.Web;
 using System.Web.Services;
 using Resources;
@@ -54,7 +54,7 @@ namespace Swarmops.Frontend.Pages.Swarm
                 !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Financials,
                     AccessType.Write)))
             {
-                throw new SecurityAccessDeniedException ("Insufficient privileges for operation");
+                throw new SecurityException("Insufficient privileges for operation");
             }
 
             ConfirmPayoutResult result = new ConfirmPayoutResult();

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="CloseLedgers.aspx.cs" Inherits="Pages_v5_Ledgers_CloseLedgers" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Pages_v5_Ledgers_CloseLedgers" Codebehind="CloseLedgers.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 </asp:Content>

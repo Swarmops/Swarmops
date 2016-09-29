@@ -92,5 +92,15 @@ namespace Swarmops.Logic.Support
         {
             get { return SwarmDb.DbVersion; }
         }
+
+        public static bool DatabaseConfigured
+        {
+            get { return SwarmDb.Configuration.IsConfigured(); }
+        }
+
+        public static void LogException (string source, Exception exception)
+        {
+            SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry (DateTime.UtcNow, source, exception);
+        }
     }
 }

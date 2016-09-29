@@ -6,10 +6,10 @@ using System.Web;
 using System.Web.Services;
 using Resources;
 using Swarmops.Common.Enums;
-using Swarmops.Database;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
@@ -356,8 +356,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
             catch (Exception weirdException)
             {
-                SwarmDb.GetDatabaseForWriting()
-                    .CreateExceptionLogEntry(DateTime.UtcNow, "AccountPlan-SetInitBalance", weirdException);
+                SupportFunctions.LogException ("AccountPlan-SetInitBalance", weirdException);
 
                 throw;
             }
@@ -423,11 +422,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
             catch (Exception weirdException)
             {
-                // Exceptions are happening here in deployment ONLY. We're logging it to find which one and why.
-                // TODO: This really needs to be in Logic. DO NOT DO NOT DO NOT call Database layer directly from Site layer.
-
-                SwarmDb.GetDatabaseForWriting()
-                    .CreateExceptionLogEntry (DateTime.UtcNow, "AccountPlan-SetBudget", weirdException);
+                SupportFunctions.LogException ("AccountPlan-SetBudget", weirdException);
 
                 throw;
             }

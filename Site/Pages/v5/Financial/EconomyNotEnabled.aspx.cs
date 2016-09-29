@@ -1,4 +1,5 @@
 ﻿using System;
+using Swarmops.Frontend;
 
 public partial class Pages_v5_Finance_EconomyNotEnabled : PageV5Base
 {

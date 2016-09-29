@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Resources.Pages;
 using Swarmops.Common.Enums;
+using Swarmops.Frontend;
 using Swarmops.Logic.Financial;
 
 public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base

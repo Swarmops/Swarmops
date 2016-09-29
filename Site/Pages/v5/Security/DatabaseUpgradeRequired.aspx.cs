@@ -1,5 +1,6 @@
 ﻿using System;
 using Resources.Pages;
+using Swarmops.Frontend;
 
 public partial class Security_DatabaseUpgradeRequired : PageV5Base
 {

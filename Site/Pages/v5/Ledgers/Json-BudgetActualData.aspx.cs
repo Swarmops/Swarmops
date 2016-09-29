@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Swarmops.Common.Enums;
 using Resources;
+using Swarmops.Frontend;
 using Swarmops.Logic.Financial;
 
 public partial class Pages_v5_Ledgers_Json_BudgetActualData : DataV5Base

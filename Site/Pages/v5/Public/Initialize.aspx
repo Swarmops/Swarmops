@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Initialize.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Public.Initialize" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Public.Initialize" Codebehind="Initialize.aspx.cs" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

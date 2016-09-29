@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="InspectLedgers.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.InspectLedgers" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.InspectLedgers" Codebehind="InspectLedgers.aspx.cs" %>
 <%@ Import Namespace="Resources" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="CurrencyTextBox" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
@@ -85,6 +85,10 @@
             currentYear = $('#<%= DropYears.ClientID %>').val();
 
             $('div.datagrid').css('opacity', 0.4);
+
+            $('#ButtonAddTransactionRow').val(buttonAddRowValue);
+
+            // end of document.ready
         });
 
         var accountId = 0;
@@ -257,6 +261,8 @@
 
         var closedLedgers = false;
 
+        var buttonAddRowValue = " " + SwarmopsJS.unescape('<asp:Literal ID="LiteralAddRowButton" runat="server" />') + " ";
+
     </script>
 
 
@@ -336,7 +342,7 @@
                 
             <div id="divEditTransaction">
                 <h2><asp:Label ID="LabelAddTransactionRowsHeader" runat="server" /></h2>
-                <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" runat="server" /> <span class="elementFloatFar"><input id="ButtonAddTransactionRow" type="button" value=' <asp:Literal ID="LiteralAddRowButton" runat="server" /> '/></span></h2></span>
+                <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" runat="server" /> <span class="elementFloatFar"><input id="ButtonAddTransactionRow" type="button" value='#AddRow#'/></span></h2></span>
                     
             </div>
             <div id="divTransactionTracking">

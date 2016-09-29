@@ -1,4 +1,5 @@
 ﻿using System;
+using Swarmops.Frontend;
 using Swarmops.Logic.Security;
 
 public partial class Pages_v5_Finance_BitcoinHotwalletNotEnabled : PageV5Base

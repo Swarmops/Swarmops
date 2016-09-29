@@ -101,7 +101,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 this.LabelAddRowAmount.Text = Global.Financial_Amount;
                 this.LiteralErrorAddRowSelectAccount.Text =
                     Resources.Pages.Ledgers.InspectLedgers_TxDetail_ErrorAddRowNoAccount;
-                this.LiteralAddRowButton.Text = Global.Global_Add;
+                this.LiteralAddRowButton.Text = JavascriptEscape(Global.Global_Add);
             }
             else // read access, at a minimum of AccessAspect.Bookkeeping
             {

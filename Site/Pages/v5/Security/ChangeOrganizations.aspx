@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="ChangeOrganizations.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Security.ChangeOrganizations" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Security.ChangeOrganizations" Codebehind="ChangeOrganizations.aspx.cs" %>
 <%@ Import Namespace="Swarmops.Logic.Support" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">

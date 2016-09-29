@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="BitcoinHotwalletNotEnabled.aspx.cs" Inherits="Pages_v5_Finance_BitcoinHotwalletNotEnabled" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Pages_v5_Finance_BitcoinHotwalletNotEnabled" Codebehind="BitcoinHotwalletNotEnabled.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 </asp:Content>

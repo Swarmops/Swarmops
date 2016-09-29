@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TemporaryHack.aspx.cs" Inherits="Pages_v5_Admin_Hacks_TemporaryHack" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Pages_v5_Admin_Hacks_TemporaryHack" Codebehind="TemporaryHack.aspx.cs" %>
 
 <!DOCTYPE html>
 

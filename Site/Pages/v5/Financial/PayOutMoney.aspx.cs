@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using System.ServiceModel.Security;
+using System.Security;
 using System.Web;
 using System.Web.Services;
 using Swarmops.Common.Enums;
@@ -74,7 +74,7 @@ namespace Swarmops.Frontend.Pages.Financial
             if (
                 !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
             {
-                throw new SecurityAccessDeniedException ("Insufficient privileges for operation");
+                throw new SecurityException ("Insufficient privileges for operation");
             }
 
             ConfirmPayoutResult result = new ConfirmPayoutResult();
@@ -101,7 +101,7 @@ namespace Swarmops.Frontend.Pages.Financial
             if (
                 !authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials)))
             {
-                throw new SecurityAccessDeniedException("Insufficient privileges for operation");
+                throw new SecurityException("Insufficient privileges for operation");
             }
 
             UndoPayoutResult result = new UndoPayoutResult();

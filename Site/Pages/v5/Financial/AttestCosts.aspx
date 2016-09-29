@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="AttestCosts.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Financial.AttestCosts" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Financial.AttestCosts" Codebehind="AttestCosts.aspx.cs" %>
 <%@ Register src="~/Controls/v5/Base/ModalDialog.ascx" tagname="ModalDialog" tagprefix="Swarmops5" %>
 <%@ Register src="~/Controls/v5/Financial/ComboBudgets.ascx" tagname="ComboBudgets" tagprefix="Swarmops5" %>
 <%@ Register src="~/Controls/v5/Financial/CurrencyTextBox.ascx" tagname="CurrencyTextBox" tagprefix="Swarmops5" %>
@@ -261,6 +261,10 @@
                 $('div#radioOption' + pickedButtonName).slideDown();
             });
 
+            $('#buttonExecuteRebudget').val(buttonRebudgetValue);
+            $('#buttonExecuteDeny').val(buttonDenyValue);
+            $('#buttonExecuteCorrectedAmount').val(buttonCorrectValue);
+
 
             // If we're running with admin privileges, allow overdraft override
 
@@ -414,6 +418,7 @@
                 }, $('#IconDenied' + recordId)));
         }
 
+        
 
         function onRebudgetRecord() {
             var newAccountId = <%=this.DropBudgetsRebudget.ClientID%>_val();
@@ -474,6 +479,10 @@
         var approvalOverdraftIcon = '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png';
         var approvalOverdraftIconHover = approvalOverdraftIconHover;
 
+        var buttonRebudgetValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonRebudget" runat="server" Text="RebudgetXYZ" />');
+        var buttonDenyValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonDeny" runat="server" Text="RebudgetXYZ" />');
+        var buttonCorrectValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonCorrect" runat="server" Text="AmountXYZ" />');
+
     </script>
     
      <style type="text/css">
@@ -525,7 +534,7 @@
             <div id="radioOptionDeny" class="radioOption">
                 <div class="entryFields">
                     <asp:TextBox ID="TextDenyReason" runat="server" TextMode="MultiLine" Rows="3" Placeholder="My hovercraft is full of eels" />&#8203;<br/>
-                    <input type="button" value='<asp:Literal ID="LiteralButtonDeny" runat="server" Text="RebudgetXYZ" />' class="buttonAccentColor" onclick="onDenyRecord(); return false;" id="buttonExecuteDeny"/>
+                    <input type="button" value='#Deny#' class="buttonAccentColor" onclick="onDenyRecord(); return false;" id="buttonExecuteDeny"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeDeny" Text="Optional explanation to submitter: XYZ" />
@@ -536,7 +545,7 @@
             <div id="radioOptionCorrect" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:CurrencyTextBox ID="TextCorrectAmount" runat="server" />&#8203;<br/>
-                    <input type="button" value='<asp:Literal ID="LiteralButtonCorrect" runat="server" Text="AmountXYZ" />' class="buttonAccentColor" onclick="onAttestCorrectedAmount(); return false;" id="buttonExecuteCorrectedAmount"/>
+                    <input type="button" value='#Correct#' class="buttonAccentColor" onclick="onAttestCorrectedAmount(); return false;" id="buttonExecuteCorrectedAmount"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeCorrect" Text="What amount are you attesting instead (SEK)? XYZ" />
@@ -547,7 +556,7 @@
             <div id="radioOptionRebudget" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:ComboBudgets ID="DropBudgetsRebudget" runat="server" ListType="Expensable" />&#8203;<br/>
-                    <input type="button" value='<asp:Literal ID="LiteralButtonRebudget" runat="server" Text="RebudgetXYZ" />' class="buttonAccentColor" onclick="onRebudgetRecord(); return false;" id="buttonExecuteRebudget"/>
+                    <input type="button" value='#Rebudget#' class="buttonAccentColor" onclick="onRebudgetRecord(); return false;" id="buttonExecuteRebudget"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeRebudget" Text="Move the record to this budget: XYZ" />

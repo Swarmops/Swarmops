@@ -1,5 +1,6 @@
 ﻿using System;
 using Swarmops.Common.Enums;
+using Swarmops.Frontend;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 

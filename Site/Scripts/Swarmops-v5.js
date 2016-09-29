@@ -2,6 +2,14 @@
     var publicSymbols = {},
         initFunctions = [];
 
+
+    publicSymbols.unescape = unescape;
+    function unescape(data) {
+        return decodeURIComponent(data);
+    }
+
+
+
     publicSymbols.formatInteger = formatInteger;
     function formatInteger (number, callbackSuccess, callbackError) 
     {

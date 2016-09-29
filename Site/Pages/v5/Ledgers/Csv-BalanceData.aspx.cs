@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using Resources.Pages;
 using Swarmops.Common.Enums;
+using Swarmops.Frontend;
 using Swarmops.Logic.Financial;
-using Swarmops.Logic.Structure;
+
 
 public partial class Pages_v5_Ledgers_Csv_BalanceData : DataV5Base
 {

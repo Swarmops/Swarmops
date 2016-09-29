@@ -1,5 +1,6 @@
 ﻿using System;
 using Resources.Pages;
+using Swarmops.Frontend;
 using Swarmops.Logic.Security;
 
 public partial class Security_AccessDenied : PageV5Base

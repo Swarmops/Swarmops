@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using Resources;
+using Swarmops.Frontend;
 using Swarmops.Logic.Security;
 
 public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base

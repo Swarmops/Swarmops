@@ -1,1 +1,1 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Json-InspectLedgerTxData.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.Json_InspectLedgerTxData" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.Json_InspectLedgerTxData" Codebehind="Json-InspectLedgerTxData.aspx.cs" %>

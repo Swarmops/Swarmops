@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="BalanceTransactions.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.BalanceTransactions" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.BalanceTransactions" Codebehind="BalanceTransactions.aspx.cs" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="DropDown" Src="~/Controls/v5/Base/DropDown.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ModalDialog" Src="~/Controls/v5/Base/ModalDialog.ascx" %>
@@ -25,6 +25,10 @@
                 $('div.radioOption').slideUp();
                 $('div#radioOption' + pickedButtonName).slideDown();
             });
+
+            $('#buttonExecuteBalance').val(buttonBalanceValue);
+            $('#buttonExecutePayout').val(buttonPayoutValue);
+            $('#buttonExecutePayoutForeign').val(buttonPayoutForeignValue);
         });
 
         var transactionId = 0;
@@ -117,6 +121,10 @@
             }
         }
 
+        var buttonBalanceValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonBalance" runat="server" Text="BalanceXYZ" />');
+        var buttonPayoutValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonPayout" runat="server" Text="MatchXYZ" />');
+        var buttonPayoutForeignValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonPayoutForeign" runat="server" Text="MatchXYZ" />');
+
     </script>
     
     <style type="text/css">
@@ -170,7 +178,7 @@
             <div id="radioOptionBalance" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" ListType="All" />&#8203;<br/>
-                    <input type="button" value='<asp:Literal ID="LiteralButtonBalance" runat="server" Text="BalanceXYZ" />' class="buttonAccentColor" onclick="onBalanceTransaction(); return false;" id="buttonExecuteBalance"/>
+                    <input type="button" value='#Balance#' class="buttonAccentColor" onclick="onBalanceTransaction(); return false;" id="buttonExecuteBalance"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeBalance" Text="Balance the difference against XYZ" />
@@ -181,7 +189,7 @@
             <div id="radioOptionPayout" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:DropDown ID="DropOpenPayouts" runat="server" ListType="All" />&#8203;<br/>
-                    <input type="button" value='<asp:Literal ID="LiteralButtonPayout" runat="server" Text="MatchXYZ" />' class="buttonAccentColor" onclick="onMatchOpenPayout(); return false;" id="buttonExecutePayout"/>
+                    <input type="button" value='#Payout#' class="buttonAccentColor" onclick="onMatchOpenPayout(); return false;" id="buttonExecutePayout"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribePayout" Text="Match to payout XYZ" />
@@ -191,7 +199,7 @@
             <div id="radioOptionPayoutForeign" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:DropDown ID="DropOpenPayoutsForeign" runat="server" ListType="All" />&#8203;<br/>
-                    <input type="button" value='<asp:Literal ID="LiteralButtonPayoutForeign" runat="server" Text="MatchXYZ" />' class="buttonAccentColor" onclick="onMatchOpenPayoutForeign(); return false;" id="buttonExecutePayoutForeign"/>
+                    <input type="button" value='#PayoutForeign#' class="buttonAccentColor" onclick="onMatchOpenPayoutForeign(); return false;" id="buttonExecutePayoutForeign"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribePayoutForeign" Text="Match to payout XYZ" />
