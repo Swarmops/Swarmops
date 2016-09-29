@@ -44,11 +44,11 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NBitcoin, Version=2.1.4.7, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\NBitcoin.dll</HintPath>
+      <HintPath>bin/NBitcoin.dll</HintPath>
     </Reference>
     <Reference Include="NGeoIP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\NGeoIP.dll</HintPath>
+      <HintPath>bin/NGeoIP.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
