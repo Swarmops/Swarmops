@@ -136,6 +136,7 @@ publish/
 *.nupkg
 # The packages folder can be ignored because of Package Restore
 **/[Pp]ackages/*
+[Pp]ackages/
 # except build/, which is used as an MSBuild target.
 !**/[Pp]ackages/build/
 # If using the old MSBuild-Integrated Package Restore, uncomment this:
@@ -195,3 +196,6 @@ External Dependencies/*
 #The hotwallet keyfiles should obviously never be checked in
 Site5/hotwallet*
 Site/hotwallet*
+
+#Ignore user preferences
+*.userprefs
