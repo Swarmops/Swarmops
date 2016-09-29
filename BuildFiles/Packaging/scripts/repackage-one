@@ -110,6 +110,8 @@ if [ "$COPYFILES" == "yes" ]; then
     mv $DEPLOYDIR/$TARGETDIR/machineKey.config etc/swarmops/.
     sed -i 's/\"machineKey.config\"/\"..\/..\/..\/..\/etc\/swarmops\/machineKey.config\"/g' $DEPLOYDIR/$TARGETDIR/web.config
     echo "UNINITIALIZED" > etc/swarmops/symmetricKey.config
+    echo "Removing all source files..."
+    rm -r $DEPLOYDIR/$TARGETDIR/*.cs
   fi
 fi
 
