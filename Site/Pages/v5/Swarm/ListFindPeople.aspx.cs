@@ -41,6 +41,8 @@ namespace Swarmops.Frontend.Pages.Swarm
             this.LabelGridHeaderName.Text = Global.Global_Name;
             this.LabelGridHeaderPhone.Text = Global.Global_Phone;
             this.LabelGridHeaderNotes.Text = Global.Global_Notes;
+
+            this.LiteralNoticeTooManyHits.Text = JavascriptEscape(Resources.Pages.Swarm.ListFindPeople_TooManyHits);
         }
 
         [WebMethod]
