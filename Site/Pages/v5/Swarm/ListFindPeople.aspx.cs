@@ -72,7 +72,7 @@ namespace Swarmops.Frontend.Pages.Swarm
             result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
                 payout.Recipient);
 
-            result.DisplayMessage = HttpUtility.UrlEncode (result.DisplayMessage).Replace ("+", "%20");
+            result.DisplayMessage = CommonV5.JavascriptEscape(result.DisplayMessage);
 
             return result;
         }
