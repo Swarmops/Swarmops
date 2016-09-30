@@ -14,7 +14,7 @@ using Swarmops.Common.Exceptions;
 
 namespace Swarmops.Frontend.Automation
 {
-    public partial class SwarmFunctions : DataV5Base
+    public partial class SwarmFunctions : Swarmops.Frontend.DataV5Base
     {
         protected void Page_Load (object sender, EventArgs e)
         {
