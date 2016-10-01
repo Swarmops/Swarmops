@@ -65,7 +65,7 @@
                             %>
                         }, this),
                         $.proxy(function(msg) {
-                            alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
+                            alertify.error(SwarmopsJS.unescape('<%= this.Localized_AjaxCallException %>'));
                             $(this).val(_initVal_<%=this.TextInput.ClientID%>);
                             $(this).css('background-color', '#FFA0A0');
                             $(this).animate({ backgroundColor: "#FFFFFF" }, 250);
