@@ -45,6 +45,11 @@ rm web.Release.config
 rm packages.condig
 
 
+# Remove debug-time code now precompiled
+
+rm -rf App_Code
+
+
 cd ..
 
 
