@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# This file is to be run in the build directory, after publication of the finished build there.
+
+# FRONTEND FIXES
+# Remove all source files and re-reference aspx, ascx files to refer to the compiled Swarmops.Frontend assembly instead.
+
+cd frontend
+
+find . -iname '*.asp?.*.cs' -delete
+find . -iname '*.asp?.cs' -delete
+
+find . -iname '*.as?x' -exec perl -pi -e 's/[Cc]ode[Bb]ehind=\".*?\"//g;' {} \;
+find . -iname '*.as?x' -exec perl -pi -e 's/[Cc]ode[Ff]ile=\".*?\"//g;' {} \;
+find . -iname '*.as?x' -exec perl -pi -e 's/[Ii]nherits=\"(.*?)\"/Inherits="$1, Swarmops.Frontend"/g;' {} \;
+
+cd ..
+
+
+
