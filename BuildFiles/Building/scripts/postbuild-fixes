@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# This file is to be run in the build directory, after publication of the finished build there.
+
+# ===================================================
+#                   FRONTEND FIXES
+# ===================================================
+
+# Remove all source files and re-reference aspx, ascx
+# files to refer to the compiled Swarmops.Frontend
+# assembly instead.
+
+
+cd frontend
+
+# Rereference ASCX, ASPX files
+
+find . -iname '*.asp?.*.cs' -delete
+find . -iname '*.asp?.cs' -delete
+
+find . -iname '*.as?x' -exec perl -pi -e 's/[Cc]ode[Bb]ehind=\".*?\"//g;' {} \;
+find . -iname '*.as?x' -exec perl -pi -e 's/[Cc]ode[Ff]ile=\".*?\"//g;' {} \;
+find . -iname '*.as?x' -exec perl -pi -e 's/[Ii]nherits=\"(.*?)\"/Inherits="$1, Swarmops.Frontend"/g;' {} \;
+
+
+# Rereference Master(s)
+
+find . -iname '*.master.*.cs' -delete
+find . -iname '*.master.cs' -delete
+
+find . -iname '*.master' -exec perl -pi -e 's/[Cc]ode[Bb]ehind=\".*?\"//g;' {} \;
+find . -iname '*.master' -exec perl -pi -e 's/[Cc]ode[Ff]ile=\".*?\"//g;' {} \;
+find . -iname '*.master' -exec perl -pi -e 's/[Ii]nherits=\"(.*?)\"/Inherits="$1, Swarmops.Frontend"/g;' {} \;
+
+
+# Remove template configs, project files, and other
+# build artifacts from deployment package
+
+rm -rf obj
+
+find . -iname '*.csproj' -delete
+
+rm web.Debug.config
+rm web.Release.config
+rm packages.condig
+
+
+cd ..
+
+
+
