@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Swarmops.Frontend.Controls.Base
 {
-    public partial class AjaxTextBox : System.Web.UI.UserControl
+    public partial class AjaxTextBox : ControlV5Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {
