@@ -106,13 +106,13 @@ namespace Swarmops.Frontend.Pages.Comms
         };
 
         // ReSharper disable once InconsistentNaming
-        public string Literal_SendMessageResult
+        public string Localized_SendMessageResult
         {
             get { return JavascriptEscape (Resources.Pages.Comms.SendMassMessage_SendMessageResult); }
         }
 
         // ReSharper disable once InconsistentNaming
-        public string Literal_TestMessageResult
+        public string Localized_TestMessageResult
         {
             get { return JavascriptEscape (Resources.Pages.Comms.SendMassMessage_TestMessageResult); }
         }

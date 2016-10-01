@@ -32,12 +32,12 @@
         }
 
         function onClickSend() {
-            alertify.alert(SwarmopsJS.unescape('<%= this.Literal_SendMessageResult %>'));
+            alertify.alert(SwarmopsJS.unescape('<%= this.Localized_SendMessageResult %>'));
             return false;
         }
 
         function onClickTest() {
-            alertify.alert(SwarmopsJS.unescape('<%= this.Literal_TestMessageResult %>'));
+            alertify.alert(SwarmopsJS.unescape('<%= this.Localized_TestMessageResult %>'));
             return false;
         }
 
