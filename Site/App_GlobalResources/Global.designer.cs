@@ -142,6 +142,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an unspecified error attempting to set this value..
+        /// </summary>
+        internal static string Error_UnspecifiedAjaxSetValue {
+            get {
+                return ResourceManager.GetString("Error_UnspecifiedAjaxSetValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account.
         /// </summary>
         internal static string Financial_Account {

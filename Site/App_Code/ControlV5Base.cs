@@ -61,5 +61,10 @@ namespace Swarmops.Frontend
         {
             get { return JavascriptEscape (Resources.Global.Error_AjaxCallException); }
         }
+
+        public string Localized_AjaxGeneralErrorSettingValue
+        {
+            get { return JavascriptEscape (Resources.Global.Error_UnspecifiedAjaxSetValue); }
+        }
     }
 }

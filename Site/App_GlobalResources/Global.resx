@@ -733,4 +733,7 @@
     <value>This field cannot be empty.</value>
     <comment>Displayed as error when emptying fields like your name</comment>
   </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>There was an unspecified error attempting to set this value.</value>
+  </data>
 </root>

@@ -36,7 +36,7 @@
                                 if (msg.DisplayMessage != null) {
                                     alertify.error(msg.DisplayMessage);
                                 } else {
-                                    alertify.error("There was an error attempting to set this value."); // TODO: Localize
+                                    alertify.error(SwarmopsJS.unescape('<%= this.Localized_AjaxGeneralErrorSettingValue %>'));
                                 }
                                 $(this).css('background-color', '#FFA0A0');
                             } else {
