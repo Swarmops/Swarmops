@@ -407,6 +407,7 @@ namespace Swarmops.Frontend
 
         // Localized strings for accessing from aspx page
 
+        // ReSharper disable once InconsistentNaming
         public string Localized_LoadingPlaceholderShort
         {
             get { return CommonV5.JavascriptEscape (Resources.Global.Global_LoadingPlaceholderShort); }

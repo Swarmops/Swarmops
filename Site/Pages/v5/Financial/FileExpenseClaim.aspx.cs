@@ -128,15 +128,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelBankAccount.Text = Resources.Pages.Financial.FileExpenseClaim_BankAccount;
             this.LabelHeaderImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderReceiptImages;
             this.LabelImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_UploadRecieptImages;
-
-            this.LiteralErrorAmount.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount;
-            this.LiteralErrorPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Purpose;
-            this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
-            this.LiteralErrorBankName.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName;
-            this.LiteralErrorBankClearing.Text =
-                Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
-            this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount;
-            this.LiteralErrorDocuments.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents;
         }
 
 
@@ -226,5 +217,51 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             public int TagSetId { get; set; }
             public string TagSetLocalizedName { get; set; }
         }
+
+
+        // ASPX localizations
+
+
+        // ReSharper disable InconsistentNaming
+        public string Localized_ValidationError_MissingTag
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_MissingTag); }
+        }
+
+        public string Localized_ValidationError_BankAccount
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount); }
+        }
+
+        public string Localized_ValidationError_BankClearing
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing); }
+        }
+
+        public string Localized_ValidationError_BankName
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName); }
+        }
+
+        public string Localized_ValidationError_Purpose
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_Purpose); }
+        }
+
+        public string Localized_ValidationError_Budget
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget); }
+        }
+
+        public string Localized_ValidationError_Amount
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount); }
+        }
+
+        public string Localized_ValidationError_Documents
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents); }
+        }
+
     }
 }

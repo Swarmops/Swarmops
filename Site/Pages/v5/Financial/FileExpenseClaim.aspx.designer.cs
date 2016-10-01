@@ -22,42 +22,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Repeater RepeaterTagDropScript;
         
         /// <summary>
-        /// LiteralErrorBankAccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorBankAccount;
-        
-        /// <summary>
-        /// LiteralErrorBankClearing control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorBankClearing;
-        
-        /// <summary>
-        /// LiteralErrorBankName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorBankName;
-        
-        /// <summary>
-        /// LiteralErrorBudget control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorBudget;
-        
-        /// <summary>
         /// RepeaterErrorCheckTags control.
         /// </summary>
         /// <remarks>
@@ -65,33 +29,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterErrorCheckTags;
-        
-        /// <summary>
-        /// LiteralErrorPurpose control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorPurpose;
-        
-        /// <summary>
-        /// LiteralErrorAmount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorAmount;
-        
-        /// <summary>
-        /// LiteralErrorDocuments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorDocuments;
         
         /// <summary>
         /// BoxTitle control.
