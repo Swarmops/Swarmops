@@ -32,12 +32,12 @@
         }
 
         function onClickSend() {
-            alertify.alert("<%= Resources.Pages.Comms.SendMassMessage_SendMessageResult %>");
+            alertify.alert(SwarmopsJS.unescape('<%= this.Literal_SendMessageResult %>'));
             return false;
         }
 
         function onClickTest() {
-            alertify.alert("<%= Resources.Pages.Comms.SendMassMessage_TestMessageResult %>");
+            alertify.alert(SwarmopsJS.unescape('<%= this.Literal_TestMessageResult %>'));
             return false;
         }
 
