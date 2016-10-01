@@ -257,7 +257,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         public string Localized_ValidationError_Amount
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount); }
+            get { return JavascriptEscape(String.Format(Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount, CurrentOrganization.Currency.DisplayCode)); }
         }
 
         public string Localized_ValidationError_Documents

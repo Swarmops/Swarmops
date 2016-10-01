@@ -585,6 +585,25 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>The receipts for Expense Claim #{0:N0} for {1} {2:N2} have been validated.</value>
   </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Create</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Please enter the amount of money (in {0}) the invoice requests.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Please specify a budget to charge.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Please upload one or more documents of the original invoice.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Please select an option.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Please describe what this purchase was.</value>
+  </data>
   <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
     <value>Request</value>
     <comment>Could also be "file" (as verb) or equivalent</comment>

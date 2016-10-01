@@ -35,23 +35,23 @@
         function validateFields() {
             var isValid = true;
 
-            isValid = validateTextField('#<%=this.TextAccount.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorBankAccount" />") && isValid;
+            isValid = validateTextField('#<%=this.TextAccount.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ValidationError_BankAccount %>')) && isValid;
 
             if ($('#<%=this.ComboBudgets.ClientID %>_DropBudgets').combotree('tree').tree('getSelected') == null) {
                 isValid = false;
                 $('#<%=this.ComboBudgets.ClientID %>_SpanBudgets').addClass("entryError");
-                alertify.error("<asp:Literal runat="server" ID="LiteralErrorBudget" />");
+                alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Budget %>'));
             }
 
             <asp:Repeater ID="RepeaterErrorCheckTags" runat="server"><ItemTemplate>
                 if ($('#DropTags<%# Eval("TagSetId") %>').combotree('tree').tree('getSelected') == null) {
                     isValid = false;
                     $('#SpanDropTags<%# Eval("TagSetId") %>').addClass("entryError");
-                    alertify.error('<%=Resources.Pages.Financial.FileExpenseClaim_ValidationError_MissingTag.Replace("'", "''") %>');
+                    alertify.error(SwarmopsJS.unescape('<%=this.Localized_ValidationError_MissingTag %>'));
                 }
             </ItemTemplate></asp:Repeater>
 
-            isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorPurpose" />") && isValid;
+            isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ValidationError_Purpose %>')) && isValid;
 
             var jsonData = {};
             jsonData.amount = $('#<%=this.CurrencyAmount.ClientID %>_Input').val();
@@ -67,7 +67,7 @@
                     if (msg.d != true) {
                         isValid = false;
                         $('#<%=CurrencyAmount.ClientID %>_Input').addClass("entryError");
-                        alertify.error("<asp:Literal runat="server" ID="LiteralErrorAmount" />");
+                        alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Amount %>'));
                         $('#<%=CurrencyAmount.ClientID %>_Input').focus();
                     }
                 }
@@ -84,7 +84,7 @@
                     if (msg.d != true) {
                         isValid = false;
                         $('#TextAmount').addClass("entryError");
-                        alertify.error("<asp:Literal runat="server" ID="LiteralErrorDocuments" />");
+                        alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Documents %>'));
                     }
                 }
             });
@@ -104,7 +104,7 @@
         }
 
 
-        var successMessage = unescape('<asp:Literal runat="server" ID="LiteralSuccess" />');
+        var successMessage = SwarmopsJS.unescape(<%= this.Localized_ForGreatJustice %>);
 
     </script>
 </asp:Content>

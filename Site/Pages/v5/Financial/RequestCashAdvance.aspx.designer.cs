@@ -13,60 +13,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
     public partial class RequestCashAdvance {
         
         /// <summary>
-        /// LiteralErrorBankAccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorBankAccount;
-        
-        /// <summary>
-        /// LiteralErrorBankClearing control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorBankClearing;
-        
-        /// <summary>
-        /// LiteralErrorBankName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorBankName;
-        
-        /// <summary>
-        /// LiteralErrorBudget control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorBudget;
-        
-        /// <summary>
-        /// LiteralErrorPurpose control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorPurpose;
-        
-        /// <summary>
-        /// LiteralErrorAmount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorAmount;
-        
-        /// <summary>
         /// BoxTitle control.
         /// </summary>
         /// <remarks>

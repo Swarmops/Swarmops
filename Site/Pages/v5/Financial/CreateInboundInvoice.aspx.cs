@@ -122,12 +122,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelReference.Text = Resources.Pages.Financial.CreateInboundInvoice_Reference;
             this.LabelAccount.Text = Resources.Pages.Financial.CreateInboundInvoice_SupplierAccount;
 
-            this.LiteralErrorAmount.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount;
-            // TODO: Validation errors
-            this.LiteralErrorPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Purpose;
-            this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
-            this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Account;
-            this.LiteralErrorDocuments.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents;
+            this.ButtonCreate.Text = Resources.Pages.Financial.CreateInboundInvoice_ButtonCreate;
         }
 
 
@@ -186,9 +181,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Display success message
 
-            this.LiteralSuccess.Text = HttpUtility.UrlEncode (
-                String.Format (Resources.Pages.Financial.CreateInboundInvoice_SuccessMessage,
-                    invoice.Identity)).Replace ("+", "%20");
+            invoiceId = invoice.Identity; // a property returns the localized string
 
             // Reset all fields for next invoice
 
@@ -206,10 +199,55 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
 
+        private int invoiceId = 0;
+
+
         protected class TagSetDataSourceItem
         {
             public int TagSetId { get; set; }
             public string TagSetLocalizedName { get; set; }
         }
+
+        // ReSharper disable InconsistentNaming
+        public string Localized_ForGreatJustice
+        {
+            get
+            {
+                return
+                    JavascriptEscape (String.Format (Resources.Pages.Financial.CreateInboundInvoice_SuccessMessage,
+                        invoiceId));
+            }
+        }
+
+        public string Localized_ValidationError_MissingTag
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_MissingTag); }
+        }
+
+        public string Localized_ValidationError_Account
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Account); }
+        }
+
+        public string Localized_ValidationError_Purpose
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Purpose); }
+        }
+
+        public string Localized_ValidationError_Budget
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Budget); }
+        }
+
+        public string Localized_ValidationError_Amount
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Amount); }
+        }
+
+        public string Localized_ValidationError_Documents
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Documents); }
+        }
+
     }
 }

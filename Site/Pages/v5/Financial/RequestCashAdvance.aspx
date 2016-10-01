@@ -9,16 +9,17 @@
         function validateFields() {
             var isValid = true;
             
-            isValid = validateTextField('#<%=this.TextAccount.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorBankAccount" />") && isValid;
-            isValid = validateTextField('#<%=this.TextClearing.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorBankClearing" />") && isValid;
-            isValid = validateTextField('#<%=this.TextBank.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorBankName" />") && isValid;
+            isValid = validateTextField('#<%=this.TextAccount.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ValidationError_BankAccount %>')) && isValid;
+            isValid = validateTextField('#<%=this.TextClearing.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ValidationError_BankClearing %>')) && isValid;
+            isValid = validateTextField('#<%=this.TextBank.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ValidationError_BankName %>')) && isValid;
 
             if ($('#<%=this.ComboBudgets.ClientID %>_DropBudgets').combotree('tree').tree('getSelected') == null) {
                 isValid = false;
-                alertify.error("<asp:Literal runat="server" ID="LiteralErrorBudget" />");
+                $('#<%=this.ComboBudgets.ClientID %>_SpanBudgets').addClass("entryError");
+                alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Budget %>'));
             }
 
-            isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorPurpose" />") && isValid;
+            isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ValidationError_Purpose %>')) && isValid;
 
             var jsonData = {};
             jsonData.amount = $('#<%=this.TextAmount.ClientID %>_Input').val();
@@ -33,7 +34,7 @@
                 success: function (msg) {
                     if (msg.d != true) {
                         isValid = false;
-                        alertify.error("<asp:Literal runat="server" ID="LiteralErrorAmount" />");
+                        alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Amount %>'));
                         $('#<%=this.TextAmount.ClientID %>_Input').addClass("entryError").focus();
                     }
                 }

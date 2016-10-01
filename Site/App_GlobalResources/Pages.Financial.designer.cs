@@ -502,6 +502,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        internal static string CreateInboundInvoice_ButtonCreate {
+            get {
+                return ResourceManager.GetString("CreateInboundInvoice_ButtonCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string CreateInboundInvoice_Description {
@@ -606,6 +615,51 @@ namespace Resources.Pages {
         internal static string CreateInboundInvoice_ValidationError_Account {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_ValidationError_Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the amount of money (in {0}) the invoice requests..
+        /// </summary>
+        internal static string CreateInboundInvoice_ValidationError_Amount {
+            get {
+                return ResourceManager.GetString("CreateInboundInvoice_ValidationError_Amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please specify a budget to charge..
+        /// </summary>
+        internal static string CreateInboundInvoice_ValidationError_Budget {
+            get {
+                return ResourceManager.GetString("CreateInboundInvoice_ValidationError_Budget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please upload one or more documents of the original invoice..
+        /// </summary>
+        internal static string CreateInboundInvoice_ValidationError_Documents {
+            get {
+                return ResourceManager.GetString("CreateInboundInvoice_ValidationError_Documents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select an option..
+        /// </summary>
+        internal static string CreateInboundInvoice_ValidationError_MissingTag {
+            get {
+                return ResourceManager.GetString("CreateInboundInvoice_ValidationError_MissingTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please describe what this purchase was..
+        /// </summary>
+        internal static string CreateInboundInvoice_ValidationError_Purpose {
+            get {
+                return ResourceManager.GetString("CreateInboundInvoice_ValidationError_Purpose", resourceCulture);
             }
         }
         

@@ -48,14 +48,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelBankName.Text = Resources.Pages.Financial.RequestCashAdvance_BankName;
             this.LabelBankClearing.Text = Resources.Pages.Financial.RequestCashAdvance_BankClearing;
             this.LabelBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_BankAccount;
-
-            this.LiteralErrorAmount.Text = String.Format(Resources.Pages.Financial.RequestCashAdvance_ValidationError_Amount, CurrentOrganization.Currency.DisplayCode);
-            this.LiteralErrorPurpose.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Purpose;
-            this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
-            this.LiteralErrorBankName.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName;
-            this.LiteralErrorBankClearing.Text =
-                Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
-            this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount;
         }
 
 
@@ -113,6 +105,39 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // Redirect to dashboard
 
             Response.Redirect ("/", true);
+        }
+
+
+        // ReSharper disable InconsistentNaming
+
+        public string Localized_ValidationError_BankAccount
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount); }
+        }
+
+        public string Localized_ValidationError_BankClearing
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing); }
+        }
+
+        public string Localized_ValidationError_BankName
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName); }
+        }
+
+        public string Localized_ValidationError_Purpose
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_Purpose); }
+        }
+
+        public string Localized_ValidationError_Budget
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget); }
+        }
+
+        public string Localized_ValidationError_Amount
+        {
+            get { return JavascriptEscape(String.Format(Resources.Pages.Financial.RequestCashAdvance_ValidationError_Amount, CurrentOrganization.Currency.DisplayCode)); }
         }
     }
 }
