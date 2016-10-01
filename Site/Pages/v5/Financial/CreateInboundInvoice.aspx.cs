@@ -181,7 +181,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Display success message
 
-            invoiceId = invoice.Identity; // a property returns the localized string
+            this._invoiceId = invoice.Identity; // a property returns the localized string
 
             // Reset all fields for next invoice
 
@@ -199,7 +199,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
 
-        private int invoiceId = 0;
+        private int _invoiceId = 0;
 
 
         protected class TagSetDataSourceItem
@@ -215,7 +215,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 return
                     JavascriptEscape (String.Format (Resources.Pages.Financial.CreateInboundInvoice_SuccessMessage,
-                        invoiceId));
+                        this._invoiceId));
             }
         }
 
