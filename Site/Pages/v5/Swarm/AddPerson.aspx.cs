@@ -67,12 +67,6 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
         private void Localize()
         {
-            this.LiteralErrorCity.Text = Resources.Pages.Swarm.AddPerson_ErrorCity;
-            this.LiteralErrorMail.Text = Resources.Pages.Swarm.AddPerson_ErrorMail;
-            this.LiteralErrorName.Text = Resources.Pages.Swarm.AddPerson_ErrorName;
-            this.LiteralErrorStreet.Text = Resources.Pages.Swarm.AddPerson_ErrorStreet;
-            this.LiteralErrorDate.Text = Resources.Pages.Swarm.AddPerson_ErrorDate;
-
             this.LabelName.Text = Resources.Global.Global_Name;
             this.LabelCountry.Text = Resources.Global.Global_Country;
             this.LabelMail.Text = Resources.Global.Global_Mail;
@@ -138,6 +132,37 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
             this.TextName.Focus();
             this.LiteralLoadAlert.Text = Resources.Pages.Swarm.AddPerson_PersonSuccessfullyRegistered;
+        }
+
+
+        // ReSharper disable once InconsistentNaming
+        public string Localized_ErrorDate
+        {
+            get { return JavascriptEscape(Resources.Pages.Swarm.AddPerson_ErrorDate); }
+        }
+
+        // ReSharper disable once InconsistentNaming
+        public string Localized_ErrorMail
+        {
+            get { return JavascriptEscape(Resources.Pages.Swarm.AddPerson_ErrorMail); }
+        }
+
+        // ReSharper disable once InconsistentNaming
+        public string Localized_ErrorCity
+        {
+            get { return JavascriptEscape(Resources.Pages.Swarm.AddPerson_ErrorCity); }
+        }
+
+        // ReSharper disable once InconsistentNaming
+        public string Localized_ErrorStreet
+        {
+            get { return JavascriptEscape(Resources.Pages.Swarm.AddPerson_ErrorStreet); }
+        }
+
+        // ReSharper disable once InconsistentNaming
+        public string Localized_ErrorName
+        {
+            get { return JavascriptEscape(Resources.Pages.Swarm.AddPerson_ErrorName); }
         }
     }
 }

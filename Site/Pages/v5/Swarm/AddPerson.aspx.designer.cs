@@ -13,51 +13,6 @@ namespace Swarmops.Frontend.Pages.v5.Swarm {
     public partial class AddPerson {
         
         /// <summary>
-        /// LiteralErrorDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorDate;
-        
-        /// <summary>
-        /// LiteralErrorCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorCity;
-        
-        /// <summary>
-        /// LiteralErrorStreet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorStreet;
-        
-        /// <summary>
-        /// LiteralErrorMail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorMail;
-        
-        /// <summary>
-        /// LiteralErrorName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorName;
-        
-        /// <summary>
         /// LiteralLoadAlert control.
         /// </summary>
         /// <remarks>

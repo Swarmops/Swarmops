@@ -149,17 +149,17 @@
                         if (msg.d != true) {
                             isValid = false;
                             $('#<%= TextDateOfBirth.ClientID %>').addClass("entryError");
-                            alertify.error("<asp:Literal runat="server" ID="LiteralErrorDate" />");
+                            alertify.error(SwarmopsJS.unescape('<%= this.Localized_ErrorDate %>'));
                             $('#<%=this.TextDateOfBirth.ClientID %>').focus();
                         }
                     }
                 });
             }
 
-            isValid = ValidateTextField('#<%= TextCity.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorCity" />") && isValid;
-            isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorStreet" />") && isValid;
-            isValid = ValidateTextField('#<%= TextMail.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorMail" />") && isValid;
-            isValid = ValidateTextField('#<%= TextName.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorName" />") && isValid; // TODO: Actually validate geography?
+            isValid = ValidateTextField('#<%= TextCity.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ErrorCity %>')) && isValid;
+            isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ErrorStreet %>')) && isValid;
+            isValid = ValidateTextField('#<%= TextMail.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ErrorMail %>')) && isValid;
+            isValid = ValidateTextField('#<%= TextName.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ErrorName %>')) && isValid; // TODO: Actually validate geography?
 
             return isValid;
         }
