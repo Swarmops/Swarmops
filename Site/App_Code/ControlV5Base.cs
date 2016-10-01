@@ -57,11 +57,13 @@ namespace Swarmops.Frontend
 
 
 
+        // ReSharper disable once InconsistentNaming
         public string Localized_AjaxCallException
         {
             get { return JavascriptEscape (Resources.Global.Error_AjaxCallException); }
         }
 
+        // ReSharper disable once InconsistentNaming
         public string Localized_AjaxGeneralErrorSettingValue
         {
             get { return JavascriptEscape (Resources.Global.Error_UnspecifiedAjaxSetValue); }
