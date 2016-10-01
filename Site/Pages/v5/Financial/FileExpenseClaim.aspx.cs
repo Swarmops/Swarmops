@@ -128,6 +128,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelBankAccount.Text = Resources.Pages.Financial.FileExpenseClaim_BankAccount;
             this.LabelHeaderImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderReceiptImages;
             this.LabelImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_UploadRecieptImages;
+
+            this.ButtonRequest.Text = Resources.Pages.Financial.FileExpenseClaim_ButtonRequest;
         }
 
 

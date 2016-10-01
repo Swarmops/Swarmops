@@ -736,6 +736,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request.
+        /// </summary>
+        internal static string FileExpenseClaim_ButtonRequest {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_ButtonRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cost Type.
         /// </summary>
         internal static string FileExpenseClaim_CostType {
@@ -1146,6 +1155,15 @@ namespace Resources.Pages {
         internal static string RequestCashAdvance_Budget {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_Budget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request.
+        /// </summary>
+        internal static string RequestCashAdvance_ButtonRequest {
+            get {
+                return ResourceManager.GetString("RequestCashAdvance_ButtonRequest", resourceCulture);
             }
         }
         

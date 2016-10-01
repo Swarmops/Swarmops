@@ -585,4 +585,11 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>The receipts for Expense Claim #{0:N0} for {1} {2:N2} have been validated.</value>
   </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Request</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Request</value>
+  </data>
 </root>
