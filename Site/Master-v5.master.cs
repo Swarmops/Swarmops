@@ -403,5 +403,13 @@ namespace Swarmops.Frontend
             this.LiteralCrowdinScript.Text = crowdinCode;
             // Page.ClientScript.RegisterStartupScript(this.GetType(), "crowdin", crowdinCode, false);
         }
+
+
+        // Localized strings for accessing from aspx page
+
+        public string Localized_LoadingPlaceholderShort
+        {
+            get { return CommonV5.JavascriptEscape (Resources.Global.Global_LoadingPlaceholderShort); }
+        }
     }
 }

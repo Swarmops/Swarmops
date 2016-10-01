@@ -346,7 +346,7 @@
             <%= this.MasterEditPersonPhone.ClientID %>_disableClear();
             <%= this.MasterEditPersonTwitterId.ClientID %>_disableClear();
 
-            $('span.spanModalEditingPersonName').text(decodeURIComponent('<%=Uri.EscapeDataString(Resources.Global.Global_LoadingPlaceholderShort)%>'));
+            $('span.spanModalEditingPersonName').text(SwarmopsJS.unescape('<%= this.Localized_LoadingPlaceholderShort %>'));
 
             <%=this.ModalMasterEditPerson.ClientID%>_open();
 
