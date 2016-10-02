@@ -385,7 +385,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Local Builder Positions (At Every Geography).
+        ///   Looks up a localized string similar to Local Positions (At Every Geography).
         /// </summary>
         internal static string OrgStaffing_Header_LocalDefaultPositions {
             get {

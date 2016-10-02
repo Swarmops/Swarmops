@@ -242,7 +242,7 @@
     <comment>The {0} is the org name.</comment>
   </data>
   <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
-    <value>Local Builder Positions (At Every Geography)</value>
+    <value>Local Positions (At Every Geography)</value>
   </data>
   <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
     <value>Staff Payroll</value>
