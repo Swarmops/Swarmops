@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Swarmops.Frontend.Pages.v5.Ledgers {
+namespace Swarmops.Frontend.Pages.Ledgers {
     
     
     public partial class BalanceSheet {

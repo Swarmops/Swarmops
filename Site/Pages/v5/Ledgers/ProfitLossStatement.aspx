@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Pages_v5_Ledgers_ProfitLossStatement" Codebehind="ProfitLossStatement.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Ledgers.ProfitLossStatement" Codebehind="ProfitLossStatement.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 
@@ -28,7 +28,7 @@
 	                var selectedYear = $('#<%=DropYears.ClientID %>').val();
 
 	                $('div#linkDownloadReport').attr("onclick", "document.location='Csv-ProfitLossData.aspx?Year=" + selectedYear + "';");
-	                $('#spanDownloadText').text('<%=Resources.Pages.Ledgers.ProfitLossStatement_DownloadFileName %>' + selectedYear + "-<%=DateTime.Today.ToString("yyyyMMdd") %>.csv");
+	                $('#spanDownloadText').text(SwarmopsJS.unescape('<%= this.Localized_DownloadFileName %>') + selectedYear + "-<%=DateTime.Today.ToString("yyyyMMdd") %>.csv");
 	                
                     if (selectedYear == currentYear) 
                     {

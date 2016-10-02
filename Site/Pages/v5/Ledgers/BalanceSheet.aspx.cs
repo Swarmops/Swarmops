@@ -2,7 +2,7 @@
 using System.Globalization;
 using Swarmops.Logic.Security;
 
-namespace Swarmops.Frontend.Pages.v5.Ledgers
+namespace Swarmops.Frontend.Pages.Ledgers
 {
     public partial class BalanceSheet : PageV5Base
     {
@@ -10,7 +10,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             if (!CurrentOrganization.IsEconomyEnabled)
             {
-                Response.Redirect ("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
+                Response.Redirect ("/Financial/EconomyNotEnabled", true);
                 return;
             }
 
@@ -59,5 +59,24 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LiteralHeaderYtd.Text = Resources.Pages.Ledgers.BalanceSheet_Current;
             this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.BalanceSheet_AccountName;
         }
+
+        // Localized strings for direct access from ASPX
+
+        // ReSharper disable InconsistentNaming
+        public string Localized_StartYear
+        {
+            get { return JavascriptEscape(Resources.Pages.Ledgers.BalanceSheet_StartYear); }
+        }
+
+        public string Localized_EndYear
+        {
+            get { return JavascriptEscape(Resources.Pages.Ledgers.BalanceSheet_EndYear); }
+        }
+
+        public string Localized_DownloadFileName
+        {
+            get { return JavascriptEscape(Resources.Pages.Ledgers.BalanceSheet_DownloadFileName); }
+        }
+
     }
 }

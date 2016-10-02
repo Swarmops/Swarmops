@@ -7,97 +7,99 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-
-public partial class Pages_v5_Ledgers_ProfitLossStatement {
+namespace Swarmops.Frontend.Pages.Ledgers {
     
-    /// <summary>
-    /// LabelContentHeader control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label LabelContentHeader;
     
-    /// <summary>
-    /// DropYears control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList DropYears;
-    
-    /// <summary>
-    /// LiteralHeaderAccountName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Literal LiteralHeaderAccountName;
-    
-    /// <summary>
-    /// LiteralHeaderLastYear control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Literal LiteralHeaderLastYear;
-    
-    /// <summary>
-    /// LiteralHeaderQ1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Literal LiteralHeaderQ1;
-    
-    /// <summary>
-    /// LiteralHeaderQ2 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Literal LiteralHeaderQ2;
-    
-    /// <summary>
-    /// LiteralHeaderQ3 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Literal LiteralHeaderQ3;
-    
-    /// <summary>
-    /// LiteralHeaderQ4 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Literal LiteralHeaderQ4;
-    
-    /// <summary>
-    /// LiteralHeaderYtd control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Literal LiteralHeaderYtd;
-    
-    /// <summary>
-    /// LabelSidebarDownload control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label LabelSidebarDownload;
+    public partial class ProfitLossStatement {
+        
+        /// <summary>
+        /// LabelContentHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelContentHeader;
+        
+        /// <summary>
+        /// DropYears control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropYears;
+        
+        /// <summary>
+        /// LiteralHeaderAccountName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralHeaderAccountName;
+        
+        /// <summary>
+        /// LiteralHeaderLastYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralHeaderLastYear;
+        
+        /// <summary>
+        /// LiteralHeaderQ1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralHeaderQ1;
+        
+        /// <summary>
+        /// LiteralHeaderQ2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralHeaderQ2;
+        
+        /// <summary>
+        /// LiteralHeaderQ3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralHeaderQ3;
+        
+        /// <summary>
+        /// LiteralHeaderQ4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralHeaderQ4;
+        
+        /// <summary>
+        /// LiteralHeaderYtd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralHeaderYtd;
+        
+        /// <summary>
+        /// LabelSidebarDownload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelSidebarDownload;
+    }
 }

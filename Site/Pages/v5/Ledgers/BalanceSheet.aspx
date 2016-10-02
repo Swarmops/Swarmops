@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.BalanceSheet" Codebehind="BalanceSheet.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Ledgers.BalanceSheet" Codebehind="BalanceSheet.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 	<script type="text/javascript">
@@ -27,8 +27,8 @@
 	                var selectedYear = $('#<%=DropYears.ClientID %>').val();
 
 	                $('div#linkDownloadReport').attr("onclick", "document.location='Csv-BalanceData.aspx?Year=" + selectedYear + "';");
-	                $('#spanDownloadText').text('<%=Resources.Pages.Ledgers.BalanceSheet_DownloadFileName %>' + selectedYear + "-<%=DateTime.Today.ToString("yyyyMMdd") %>.csv");
-                    $('#headerStartYear').text('<%=Resources.Pages.Ledgers.BalanceSheet_StartYear %>'.replace('XXXX',selectedYear));
+	                $('#spanDownloadText').text(SwarmopsJS.unescape('<%= this.Localized_DownloadFileName %>') + selectedYear + "-<%=DateTime.Today.ToString("yyyyMMdd") %>.csv");
+                    $('#headerStartYear').text(SwarmopsJS.unescape('<%= this.Localized_StartYear %>'.replace('XXXX',selectedYear)));
               
                     if (selectedYear == currentYear) 
                     {
@@ -37,7 +37,7 @@
                     }
                     else
                     {
-                        $('#previousYtd').text('<%=Resources.Pages.Ledgers.BalanceSheet_EndYear %>'.replace('XXXX', selectedYear));
+                        $('#previousYtd').text(SwarmopsJS.unescape('<%= this.Localized_EndYear %>'.replace('XXXX', selectedYear)));
 
                         $('span.currentYearHeader').hide();
                         $('span.previousYearsHeader').show();
