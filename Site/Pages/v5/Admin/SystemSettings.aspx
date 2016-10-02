@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Admin.SystemSettingsPage" Codebehind="SystemSettings.aspx.cs" %>
-<%@ Import Namespace="Resources" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Admin.SystemSettingsPage" Codebehind="SystemSettings.aspx.cs" %>
 <%@ Register tagPrefix="Swarmops5" tagName="AjaxTextBox" src="~/Controls/v5/Base/AjaxTextBox.ascx"  %>
 <%@ Register tagPrefix="Swarmops5" tagName="TreePositions" src="~/Controls/v5/Swarm/TreePositions.ascx"  %>
 <%@ Register tagPrefix="Swarmops5" tagName="DropDown" src="~/Controls/v5/Base/DropDown.ascx" %>
@@ -13,8 +12,8 @@
             setTimeout(function() {
 
                 $('.EditCheck').switchbutton({
-                    checkedLabel: '<%= Global.Global_On.ToUpperInvariant() %>',
-                    uncheckedLabel: '<%= Global.Global_Off.ToUpperInvariant() %>',
+                    checkedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOn_Upper %>'),
+                    uncheckedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOff_Upper %>'),
                 }).change(function() {
 
                     if (suppressSwitchResponse) {
@@ -80,7 +79,7 @@
 
             // Also, nag an admin who tries to create an unsecure website
             if (newText.length >= 7 && newText.substring(0,7) == 'http://') {
-                alertify.log("<%=Resources.Pages.Admin.SystemSettings_Warning_Insecure %>");
+                alertify.log(SwarmopsJS.unescape('<%= this.Localized_Warning_Insecure %>'));
             }
         }
 

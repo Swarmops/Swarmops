@@ -12,7 +12,7 @@ using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
-namespace Swarmops.Frontend.Pages.v5.Admin
+namespace Swarmops.Frontend.Pages.Admin
 {
     public partial class OrgSettings : PageV5Base
     {

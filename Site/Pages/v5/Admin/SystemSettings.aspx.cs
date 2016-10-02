@@ -18,7 +18,7 @@ using Swarmops.Logic.Communications;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
-namespace Swarmops.Frontend.Pages.v5.Admin
+namespace Swarmops.Frontend.Pages.Admin
 {
     public partial class SystemSettingsPage : PageV5Base // different classname to not collide with Logic.Structure.SystemSettings
     {
@@ -347,6 +347,13 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         public class InitialSystemData
         {
             public bool RequireSsl;
+        }
+
+
+        // ReSharper disable InconsistentNaming
+        public string Localized_Warning_Insecure
+        {
+            get { return JavascriptEscape (Resources.Pages.Admin.SystemSettings_Warning_Insecure); }
         }
     }
 

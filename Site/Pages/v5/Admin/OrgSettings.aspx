@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Admin.OrgSettings" Codebehind="OrgSettings.aspx.cs" %>
-<%@ Import Namespace="Resources" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Admin.OrgSettings" Codebehind="OrgSettings.aspx.cs" %>
+<%@ Import Namespace="Swarmops.Frontend" %>
 <%@ Register tagPrefix="Swarmops5" tagName="FileUpload" src="~/Controls/v5/Base/FileUpload.ascx"  %>
 <%@ Register tagPrefix="Swarmops5" tagName="DropDown" src="~/Controls/v5/Base/DropDown.ascx" %>
 <%@ Register tagPrefix="Swarmops5" tagName="AjaxTextBox" src="~/Controls/v5/Base/AjaxTextBox.ascx" %>
@@ -11,8 +11,8 @@
             $('#divTabs').tabs();
 
             $('.EditCheck').switchbutton({
-                checkedLabel: '<%= Global.Global_On.ToUpperInvariant() %>',
-                uncheckedLabel: '<%= Global.Global_Off.ToUpperInvariant() %>',
+                checkedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOn_Upper %>'),
+                uncheckedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOff_Upper %>'),
             }).change(function() {
 
                 if (suppressSwitchResponse) {

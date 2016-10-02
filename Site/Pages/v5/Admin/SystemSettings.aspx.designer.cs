@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Swarmops.Frontend.Pages.v5.Admin {
+namespace Swarmops.Frontend.Pages.Admin {
     
     
     public partial class SystemSettingsPage {
