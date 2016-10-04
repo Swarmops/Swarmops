@@ -118,7 +118,6 @@
 
     function <%=this.ClientID%>_initialize(initValue) {
         _initVal_<%=this.TextInput.ClientID%> = initValue;
-        alert(initValue);
         <%=this.ClientID%>_setValue(initValue);
         <%=this.ClientID%>_enable();
     }

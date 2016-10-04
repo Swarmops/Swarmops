@@ -1745,17 +1745,17 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\CommonV5.cs" />
-    <Compile Include="App_Code\ControlV5Base.cs">
+    <Compile Include="Bases\CommonV5.cs" />
+    <Compile Include="Bases\ControlV5Base.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Code\DataV5Base.cs">
+    <Compile Include="Bases\DataV5Base.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Code\MasterV5Base.cs">
+    <Compile Include="Bases\MasterV5Base.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Code\PageV5Base.cs">
+    <Compile Include="Bases\PageV5Base.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App_GlobalResources\af-ZA\Controls.Swarm.af-ZA.designer.cs">
@@ -3087,7 +3087,9 @@
     <Content Include="Controls\v5\UI\web.config" />
     <Content Include="Images\web.config" />
     <Content Include="machineKey.config" />
-    <Content Include="database.config" />
+    <Content Include="database.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Master-v5.master" />
     <Content Include="packages.config" />
     <Content Include="Pages\v5\Public\GeoLookupHelpers.js.include" />
