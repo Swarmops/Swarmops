@@ -221,7 +221,7 @@
     <Swarmops5:ModalDialog ID="ModalMasterEditPerson" OnClientClose="masterEndEditPerson" runat="server">
         <DialogCode>
             <div id="divTabsEditPerson" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
-                <div title="<img src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
+                <div title="<img id='imgFirstTabMasterEditPerson' src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Account</h2>
                     <div class="entryFields">
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonName" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Name" AjaxCallbackUrl="" />&#8203;<br/>
@@ -348,7 +348,11 @@
 
             $('span.spanModalEditingPersonName').text(SwarmopsJS.unescape('<%= this.Localized_LoadingPlaceholderShort %>'));
 
+            // Open the Modal
             <%=this.ModalMasterEditPerson.ClientID%>_open();
+
+            // Switch to first tab (another tab may have been open while editing earlier)
+            $('#imgFirstTabMasterEditPerson').click(); // what the actual fuck, easyui, why isn't there a tab change method?
 
             var personEditorData = {
                 personId: parseInt(personId)  // parseInt to force passing integer over JSON
@@ -386,6 +390,10 @@
             // Do the AJAX call from here, as we need to also pass along the person ID of the person edited
             // (the AjaxTextBox auto-callback is disabled for this reason, code duplicated here)
 
+            if (_master_PersonEditLoading) {
+                return; // defensive coding
+            }
+
             var jsonData = {
                 personId: _master_PersonEditedId,
                 field: fieldName,
@@ -412,7 +420,7 @@
         }
 
         function masterEndEditPerson() {
-            alert("EndEditPerson");
+            _master_PersonEditedId = -1; // no person being edited anymore
         }
 
     </script>
