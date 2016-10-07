@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Web;
@@ -227,6 +228,18 @@ namespace Swarmops.Frontend
             this.LinkLogout.Text = Global.CurrentUserInfo_Logout;
             this.LabelPreferences.Text = Global.CurrentUserInfo_Preferences;
             // this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(Resources.Global.Master_SwitchOrganizationDialog, _currentOrganization.Name);
+
+            this.MasterLabelEditPersonHeaderAccount.Text = Resources.Global.Master_EditPersonHeaderAccount;
+            this.MasterLabelEditPersonHeaderSecurityProvisioning.Text =
+                Resources.Global.Master_EditPersonHeaderSecurityProvisioning;
+            this.MasterLabelEditPersonMail.Text = Resources.Global.Global_Mail;
+            this.MasterLabelEditPersonName.Text = Resources.Global.Global_Name;
+            this.MasterLabelEditPersonPhone.Text = Resources.Global.Global_Phone;
+            this.MasterLabelEditPersonResetPassword.Text = Resources.Global.Master_EditPersonResetPasswordLabel;
+            this.MasterLabelEditPersonSecurity2FASwitch.Text = Resources.Global.Master_EditPerson2FAEnable;
+            this.MasterLabelEditPersonTwitter.Text = Resources.Global.Global_TwitterId;
+
+
         }
 
         protected string _cacheVersionMark;  // this is just a cache buster for style sheets on new versions
@@ -405,12 +418,17 @@ namespace Swarmops.Frontend
         }
 
 
-        // Localized strings for accessing from aspx page
+        // Localized strings for accessing from aspx pages
 
-        // ReSharper disable once InconsistentNaming
+        // ReSharper disable InconsistentNaming    <-- because the Localized_ prefix isn't appreciated
         public string Localized_LoadingPlaceholderShort
         {
             get { return CommonV5.JavascriptEscape (Resources.Global.Global_LoadingPlaceholderShort); }
+        }
+
+        public string Localized_MasterPersonEditResetPasswordButton
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordButton); }
         }
     }
 }

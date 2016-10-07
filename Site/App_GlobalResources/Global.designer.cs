@@ -1294,6 +1294,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Twitter ID.
+        /// </summary>
+        internal static string Global_TwitterId {
+            get {
+                return ResourceManager.GetString("Global_TwitterId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown or Undisclosed.
         /// </summary>
         internal static string Global_UnknownUndisclosed {
@@ -1434,6 +1443,51 @@ namespace Resources {
         internal static string Ledgers_Debit {
             get {
                 return ResourceManager.GetString("Ledgers_Debit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2FA (disabling quarantines login).
+        /// </summary>
+        internal static string Master_EditPerson2FAEnable {
+            get {
+                return ResourceManager.GetString("Master_EditPerson2FAEnable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account.
+        /// </summary>
+        internal static string Master_EditPersonHeaderAccount {
+            get {
+                return ResourceManager.GetString("Master_EditPersonHeaderAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security Provisioning.
+        /// </summary>
+        internal static string Master_EditPersonHeaderSecurityProvisioning {
+            get {
+                return ResourceManager.GetString("Master_EditPersonHeaderSecurityProvisioning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset password.
+        /// </summary>
+        internal static string Master_EditPersonResetPasswordButton {
+            get {
+                return ResourceManager.GetString("Master_EditPersonResetPasswordButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail a password-reset link.
+        /// </summary>
+        internal static string Master_EditPersonResetPasswordLabel {
+            get {
+                return ResourceManager.GetString("Master_EditPersonResetPasswordLabel", resourceCulture);
             }
         }
         

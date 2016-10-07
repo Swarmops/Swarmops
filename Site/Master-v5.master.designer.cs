@@ -283,6 +283,15 @@ namespace Swarmops.Frontend {
         protected global::Swarmops.Frontend.Controls.Base.ModalDialog ModalMasterEditPerson;
         
         /// <summary>
+        /// MasterLabelEditPersonHeaderAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonHeaderAccount;
+        
+        /// <summary>
         /// MasterEditPersonName control.
         /// </summary>
         /// <remarks>
@@ -317,6 +326,69 @@ namespace Swarmops.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox MasterEditPersonTwitterId;
+        
+        /// <summary>
+        /// MasterLabelEditPersonName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonName;
+        
+        /// <summary>
+        /// MasterLabelEditPersonMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonMail;
+        
+        /// <summary>
+        /// MasterLabelEditPersonPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonPhone;
+        
+        /// <summary>
+        /// MasterLabelEditPersonTwitter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonTwitter;
+        
+        /// <summary>
+        /// MasterLabelEditPersonHeaderSecurityProvisioning control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonHeaderSecurityProvisioning;
+        
+        /// <summary>
+        /// MasterLabelEditPersonResetPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonResetPassword;
+        
+        /// <summary>
+        /// MasterLabelEditPersonSecurity2FASwitch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonSecurity2FASwitch;
         
         /// <summary>
         /// MasterEditPersonOrgMail control.

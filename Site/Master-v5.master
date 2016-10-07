@@ -222,7 +222,7 @@
         <DialogCode>
             <div id="divTabsEditPerson" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
                 <div title="<img id='imgFirstTabMasterEditPerson' src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Account</h2>
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label runat="server" ID="MasterLabelEditPersonHeaderAccount"></asp:Label></h2>
                     <div class="entryFields">
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonName" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Name" AjaxCallbackUrl="" />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonMail" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Mail" AjaxCallbackUrl=""  />&#8203;<br/>
@@ -230,13 +230,13 @@
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonTwitterId" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="TwitterId" AjaxCallbackUrl=""  />
                     </div>
                     <div class="entryLabels">
-                        Name<br/>
-                        Mail<br/>
-                        Phone<br/>
-                        Twitter<br/>
+                        <asp:Label runat="server" ID="MasterLabelEditPersonName" /><br/>
+                        <asp:Label runat="server" ID="MasterLabelEditPersonMail" /><br/>
+                        <asp:Label runat="server" ID="MasterLabelEditPersonPhone" /><br/>
+                        <asp:Label runat="server" ID="MasterLabelEditPersonTwitter" /><br/>
                     </div>
                 </div>
-                <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
+                <!--<div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Security (your own)</h2>
                     <div class="entryFields">...</div>
                     <div class="entryLabels">
@@ -245,16 +245,16 @@
                         Enable BitId (bitcoin signature login)<br/>
                         Enter current password to save
                     </div>
-                </div>
+                </div>-->
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Security provisioning</h2>
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label ID="MasterLabelEditPersonHeaderSecurityProvisioning" runat="server" /></h2>
                     <div class="entryFields">
                         <input type="button" value="#SendResetMail#" />&#8203;<br/>
-                        <input type="switch" todo="true"/>
+                        <input type="input" todo="true"/>
                     </div>
                     <div class="entryLabels">
-                        Mail a password-reset link<br/>
-                        2FA (disabling sets login quarantine)
+                        <asp:Label runat="server" ID="MasterLabelEditPersonResetPassword" /><br/>
+                        <asp:Label runat="server" ID="MasterLabelEditPersonSecurity2FASwitch" />
                     </div>
                 </div>
                 <!--

@@ -736,4 +736,23 @@
   <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
     <value>There was an unspecified error attempting to set this value.</value>
   </data>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>Twitter ID</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>2FA (disabling quarantines login)</value>
+    <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
+  </data>
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>Security Provisioning</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>Mail a password-reset link</value>
+  </data>
 </root>

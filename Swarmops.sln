@@ -38,30 +38,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{39D954
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site", "Site\Site.csproj", "{A36F6B67-4B17-419A-9200-C247EA6B88A2}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Site5", "Site5\", "{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		ProjectReferences = "{3A5B5F19-51A5-48CE-A82E-97D5C189E5CB}|Swarmops.Database.dll;{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}|Swarmops.Basic.dll;{13E59551-34AC-43DC-9A03-EF5E4721DC61}|Swarmops.Logic.dll;{C540570C-20E0-4979-84EB-8833810DDDF6}|Swarmops.Utility.dll;{BBF83512-8486-469E-9D7B-C3C1B78C3F4D}|Swarmops.Common.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/Precompiled"
-		Debug.AspNetCompiler.PhysicalPath = "Site5\"
-		Debug.AspNetCompiler.TargetPath = "Precompiled\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/Precompiled"
-		Release.AspNetCompiler.PhysicalPath = "Site5\"
-		Release.AspNetCompiler.TargetPath = "Precompiled\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "8081"
-		VWDDynamicPort = "false"
-		VWDVirtualPath = "/"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{BA24FAF7-D518-49E8-952A-45595682877E}"
 EndProject
 Global
@@ -209,21 +185,6 @@ Global
 		{A36F6B67-4B17-419A-9200-C247EA6B88A2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A36F6B67-4B17-419A-9200-C247EA6B88A2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A36F6B67-4B17-419A-9200-C247EA6B88A2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Autobuild|.NET.ActiveCfg = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Autobuild|Any CPU.ActiveCfg = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Autobuild|Any CPU.Build.0 = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Autobuild|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Autobuild|Mixed Platforms.Build.0 = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Release|.NET.ActiveCfg = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{BA24FAF7-D518-49E8-952A-45595682877E}.Autobuild|.NET.ActiveCfg = Release|Any CPU
 		{BA24FAF7-D518-49E8-952A-45595682877E}.Autobuild|Any CPU.ActiveCfg = Release|Any CPU
 		{BA24FAF7-D518-49E8-952A-45595682877E}.Autobuild|Any CPU.Build.0 = Release|Any CPU
