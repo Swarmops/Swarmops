@@ -237,13 +237,24 @@
                     </div>
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Security</h2>
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Security (your own)</h2>
                     <div class="entryFields">...</div>
                     <div class="entryLabels">
                         New Password<br/>
                         New Password Again<br/>
                         Enable BitId (bitcoin signature login)<br/>
                         Enter current password to save
+                    </div>
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Security provisioning</h2>
+                    <div class="entryFields">
+                        <input type="button" value="#SendResetMail#" />&#8203;<br/>
+                        <input type="switch" todo="true"/>
+                    </div>
+                    <div class="entryLabels">
+                        Mail a password-reset link<br/>
+                        2FA (disabling sets login quarantine)
                     </div>
                 </div>
                 <!--
@@ -373,18 +384,17 @@
                     _master_PersonEditLoading = false;
 
                 } else {
+                    // If secvio, notify
+
                     alert('Server error: Call to SwarmFunctions.aspx failed');
                 }
             });
 
-            // Begin ajax query for data
-
-            // If success, populate; enable saving on change
-            // If secvio, notify
         }
 
         var _master_PersonEditedId = -1;  // no person: zero means "self"
         var _master_PersonEditLoading = false;
+
 
         function masterPersonEditorOnFieldChange(newValue, fieldName, controlName) {
             // Do the AJAX call from here, as we need to also pass along the person ID of the person edited
@@ -407,9 +417,19 @@
                "/Automation/SwarmFunctions.aspx/SetPersonEditorData",
                jsonData,
                function(result) {
-                   window[controlName + "_updateSuccessAnimate"](result.NewValue);
+                   console.log(result);
+                   if (result.Success) {
+                       window[controlName + "_updateSuccessAnimate"](result.NewValue);
+                   } else {
+                       window[controlName + "_updateFailAnimate"](result.NewValue);
+                       if (result.DisplayMessage != '') {
+                           alertify.error(SwarmopsJS.unescape(result.DisplayMessage));
+                       }
+                   }
                },
                function(result) {
+                   console.log(result);
+                   alert('fail');
                    window[controlName + "_updateFailAnimate"](result.NewValue);
                });
 

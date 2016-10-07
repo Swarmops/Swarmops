@@ -1,16 +1,16 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="True" CodeBehind="AjaxTextBox.ascx.cs" Inherits="Swarmops.Frontend.Controls.Base.AjaxTextBox" %>
 
+<%-- ReSharper disable HeuristicallyUnreachableCode --%>
 <%-- ReSharper disable once ConditionIsAlwaysConst --%>
 <script type="text/javascript">
-    $(document).ready(function () {
 
-        var _initVal_<%=this.TextInput.ClientID%> = $('#<%=this.TextInput.ClientID%>').val();
+    var _initVal_<%=this.TextInput.ClientID%> = $('#<%=this.TextInput.ClientID%>').val();
+
+    $(document).ready(function () {
 
         $('#<%=this.TextInput.ClientID%>').blur(function() {
 
             var currentValue = $('#<%=this.TextInput.ClientID%>').val();
-
-            alert(currentValue + "\r\n" + _initVal_<%=this.TextInput.ClientID%>);
 
             if (currentValue != _initVal_<%=this.TextInput.ClientID%>) {
                 var jsonData = {};
@@ -24,7 +24,7 @@
                 //
                 // The page must include IncludedControls.JsonParameters and IncludedControls.ColorAnimation among its script.
 
-                $(this).css('background-color', '#FFFFE0');
+                $(this).css('background-color', '#FFFFA0');
 
                 if ("" != "<%=this.AjaxCallbackUrl%>") { // if there's a direct callback AJAX url
 
@@ -84,13 +84,13 @@
 
     function <%=this.ClientID%>_updateSuccessAnimate(newValue) {
         $('#<%=this.TextInput.ClientID%>').css('background-color', '#E0FFE0');
-        $('#<%=this.TextInput.ClientID%>').animate({ backgroundColor: "#FFFFFF" }, 250);
+        $('#<%=this.TextInput.ClientID%>').animate({ backgroundColor: "#FFFFFF" }, 500);
         <%=this.ClientID%>_initialize(newValue);
     }
 
     function <%=this.ClientID%>_updateFailAnimate(newValue) {
         $('#<%=this.TextInput.ClientID%>').css('background-color', '#FFA0A0');
-        $('#<%=this.TextInput.ClientID%>').animate({ backgroundColor: "#FFFFFF" }, 250);
+        $('#<%=this.TextInput.ClientID%>').animate({ backgroundColor: "#FFFFFF" }, 1000);
         <%=this.ClientID%>_initialize(newValue);
     }
 

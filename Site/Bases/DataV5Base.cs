@@ -174,7 +174,7 @@ namespace Swarmops.Frontend
             return input.Replace ("\"", "\\\"").Replace ("  ", " ").Trim();
         }
 
-        public string JavascriptEscape (string input)
+        public static string JavascriptEscape (string input)
         {
             return CommonV5.JavascriptEscape (input);
         }

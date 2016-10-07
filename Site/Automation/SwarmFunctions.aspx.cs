@@ -10,11 +10,12 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 using Swarmops.Common.Exceptions;
+using Swarmops.Frontend;
 
 
 namespace Swarmops.Frontend.Automation
 {
-    public partial class SwarmFunctions : Swarmops.Frontend.DataV5Base
+    public partial class SwarmFunctions : DataV5Base
     {
         protected void Page_Load (object sender, EventArgs e)
         {
@@ -276,7 +277,7 @@ namespace Swarmops.Frontend.Automation
                     return new AjaxInputCallResult
                     {
                         Success = false,
-                        DisplayMessage = Resources.Global.Global_FieldCannotBeEmpty,
+                        DisplayMessage = JavascriptEscape(Resources.Global.Global_FieldCannotBeEmpty),
                         FailReason = AjaxInputCallResult.ErrorInvalidFormat,
                         NewValue = GetPersonValue (personId, field)
                     };
