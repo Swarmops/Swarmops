@@ -12,7 +12,7 @@ unzip activizr.zip
 echo "Deploying..."
 
 cp -r Logic/* ../../Logic/Resources/
-cp -r Site/* ../../Site5/App_GlobalResources/
+cp -r Site/* ../../Site/App_GlobalResources/
 rm -rf Logic
 rm -rf Site
 rm activizr.zip
