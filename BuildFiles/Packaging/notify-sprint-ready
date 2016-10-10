@@ -1,34 +1,4 @@
 #!/bin/bash
 
-# This script is intended to be run as a cron job. It looks for the file 
-# /home/packager/lastbuild/swarmops/internal/BuildDropped.txt
-# and if that file exists, it launches an internal build.
-
-# It also watches for the completion of a sprint/release build and informs
-# when it is ready for deployment, but does not actually package those.
-
-if [ -e /home/packager/lastbuild/swarmops/sprint/BuildDropped.txt ]; then
-  rm /home/packager/lastbuild/swarmops/sprint/BuildDropped.txt
-  SPRINTNAME=$(cat /home/packager/lastbuild/swarmops/sprint/frontend/SprintName.txt | tr -d '\r\n')
-  BUILDID=$(cat /home/packager/lastbuild/swarmops/sprint/BuildIdentity.txt | tr -d ' \r\n')
-  COMMITID=$(cat /home/packager/lastbuild/swarmops/sprint/CommitIdentity.txt | tr -d ' \r\n')
-  BUILDID=$(echo $BUILDID)-$(echo $COMMITID | cut -c 1-7)
-
-  mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops SPRINT $SPRINTNAME ($BUILDID) ready." "rick.falkvinge@pirateacademy.eu" < /home/packager/swarmops/templates/mail-sprint-ready.txt
-
-fi
-
-
-
-if [ ! -e /home/packager/lastbuild/swarmops/internal/BuildDropped.txt ]; then
-  exit 0;
-fi
-
-# When we get here, a build was dropped, so remove the flag and launch an internal build
-
-rm /home/packager/lastbuild/swarmops/internal/BuildDropped.txt
-cd /home/packager/swarmops
-scripts/repackage-build
-
-exit 0;
+mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops SPRINT $SPRINTNAME ($BUILDID) ready." "rick.falkvinge@pirateacademy.eu" < /home/builder/swarmops/packaging/templates/mail-sprint-ready.txt
 
