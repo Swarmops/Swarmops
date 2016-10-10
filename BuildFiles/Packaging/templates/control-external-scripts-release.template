@@ -1,0 +1,10 @@
+Package: swarmops-frontend-external-scripts
+Version: --BuildNumber--
+Architecture: all
+Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
+Homepage: http://swarmops.com/
+Description: Swarmops External Scripts
+ Swarmops is a swarm activist administration system.
+ This package contains external, nonrequired scripts that
+ can be installed alongside Swarmops Frontend for
+ convenience and/or other considerations.
