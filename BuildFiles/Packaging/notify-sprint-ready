@@ -1,4 +1,10 @@
 #!/bin/bash
 
+BUILDID=$(cat /home/builder/swarmops/builds/sprint/BuildIdentity.txt | tr -d ' \r')
+COMMITID=$(cat /home/builder/swarmops/builds/sprint/CommitIdentity.txt | tr -d ' \r')
+
+BUILDID=$(echo $BUILDID)-$(echo $COMMITID | cut -c 1-7)
+SPRINTNAME=$(cat /home/builder/swarmops/builds/sprint/frontend/SprintName.txt | tr -d ' \r')
+
 mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops SPRINT $SPRINTNAME ($BUILDID) ready." "rick.falkvinge@pirateacademy.eu" < /home/builder/swarmops/packaging/templates/mail-sprint-ready.txt
 
