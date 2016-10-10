@@ -287,7 +287,7 @@ namespace Swarmops.Frontend.Automation
             return new AjaxInputCallResult
             {
                 Success = true,
-                NewValue = field + ": The change call was successful"
+                NewValue = field + ": (Work in progress) call successful"
             };
             throw new NotImplementedException();
         }
