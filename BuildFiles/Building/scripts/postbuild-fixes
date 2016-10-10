@@ -42,7 +42,7 @@ find . -iname '*.csproj' -delete
 
 rm web.Debug.config
 rm web.Release.config
-rm packages.condig
+rm packages.config
 
 
 # Remove debug-time code now precompiled
