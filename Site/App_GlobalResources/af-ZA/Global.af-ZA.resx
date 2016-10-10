@@ -729,4 +729,30 @@
     <value>crwdns6556438:0crwdne6556438:0</value>
     <comment>Used as footer in tables, summarizing something</comment>
   </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>crwdns6556470:0crwdne6556470:0</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>crwdns6556471:0crwdne6556471:0</value>
+  </data>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>crwdns6556472:0crwdne6556472:0</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>crwdns6556473:0crwdne6556473:0</value>
+    <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
+  </data>
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>crwdns6556474:0crwdne6556474:0</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>crwdns6556475:0crwdne6556475:0</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>crwdns6556476:0crwdne6556476:0</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>crwdns6556477:0crwdne6556477:0</value>
+  </data>
 </root>

@@ -233,6 +233,7 @@
   <data name="Cost_OfficeSpace" xml:space="preserve">
     <value>Kontorslokaler, underhåll</value>
   </data>
+  
   <data name="Cost_PublicTransit" xml:space="preserve">
     <value>Kollektivtrafik</value>
     <comment>The local kind within a city or limited area.</comment>

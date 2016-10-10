@@ -219,9 +219,7 @@
     <value>Ledande befattningar för {0}</value>
     <comment>The {0} is the org name.</comment>
   </data>
-  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
-    <value>Lokala uppbyggarbefattningar (vid varje geografi)</value>
-  </data>
+  
   <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
     <value>Lönelista</value>
   </data>

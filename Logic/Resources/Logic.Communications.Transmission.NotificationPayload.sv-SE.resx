@@ -307,9 +307,9 @@ Men om det var du själv som ändrade lösenordet just nu, och därmed ligger ba
     <value>[[InstallationName]] Lösenordet har ändrats</value>
   </data>
   <data name="Password_ResetByCrew_Body" xml:space="preserve">
-    <value>Funktionärer i [OrganizationName] har utfärdat en återställningsbiljett för ditt lösenotd, förmodligen på din begäran. Denna biljett är giltig i 24 timmar.
+    <value>Funktionärer i [OrganizationName] har utfärdat en återställningsbiljett för ditt lösenord, förmodligen på din begäran. Denna biljett är giltig i 24 timmar.
 
-Följ länken nedan för att återställa ditt lösenord och, om du hade tvåfaktorsautenticering tidigare, återställa det också:
+Följ länken nedan för att återställa ditt lösenord och, om du hade tvåfaktorsautentisering tidigare, återställa det också:
 
 [ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
 

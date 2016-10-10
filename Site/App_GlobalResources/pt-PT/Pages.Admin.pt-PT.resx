@@ -239,9 +239,7 @@
     <value>Posições Executivas Para {0}</value>
     <comment>The {0} is the org name.</comment>
   </data>
-  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
-    <value>Posições Locais de Construtor (Em Todas As Área Geográfica)</value>
-  </data>
+  
   <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
     <value>Folha de Pagamento de Pessoal</value>
   </data>

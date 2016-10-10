@@ -233,6 +233,9 @@
   <data name="Cost_OfficeSpace" xml:space="preserve">
     <value>crwdns6556462:0crwdne6556462:0</value>
   </data>
+  <data name="Cost_OfficeSupplies" xml:space="preserve">
+    <value>crwdns6556469:0crwdne6556469:0</value>
+  </data>
   <data name="Cost_PublicTransit" xml:space="preserve">
     <value>crwdns6556463:0crwdne6556463:0</value>
     <comment>The local kind within a city or limited area.</comment>

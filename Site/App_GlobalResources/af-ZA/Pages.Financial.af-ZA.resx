@@ -585,4 +585,30 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>crwdns6555360:0{0:N0}crwdnd6555360:0{1}crwdnd6555360:0{2:N2}crwdne6555360:0</value>
   </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>crwdns6556479:0crwdne6556479:0</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>crwdns6556480:0{0}crwdne6556480:0</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>crwdns6556481:0crwdne6556481:0</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>crwdns6556482:0crwdne6556482:0</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>crwdns6556483:0crwdne6556483:0</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>crwdns6556484:0crwdne6556484:0</value>
+  </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>crwdns6556485:0crwdne6556485:0</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>crwdns6556486:0crwdne6556486:0</value>
+  </data>
 </root>

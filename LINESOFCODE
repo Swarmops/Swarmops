@@ -81,7 +81,7 @@
     288 ./Logic/Resources/Logic.Financial.Payout.Designer.cs
     261 ./Logic/Resources/Logic.Structure.Geography.Designer.cs
     882 ./Logic/Resources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
-    648 ./Logic/Resources/Logic.Financial.FinancialAccount.Designer.cs
+    657 ./Logic/Resources/Logic.Financial.FinancialAccount.Designer.cs
     198 ./Logic/Resources/Logic.Swarm.DashboardTodos.Designer.cs
      81 ./Logic/Resources/Logic.Communications.Transmission.MailPayload.Designer.cs
      90 ./Logic/Resources/Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs
@@ -121,7 +121,7 @@
     210 ./Logic/Structure/Geography.cs
      47 ./Logic/Structure/Cities.cs
     259 ./Logic/Structure/GeographyUpdate.cs
-   1028 ./Logic/Structure/Organization.cs
+   1029 ./Logic/Structure/Organization.cs
      33 ./Logic/Structure/PostalCodes.cs
      36 ./Logic/Structure/GeographyStatisticsOverTime.cs
      53 ./Logic/Structure/City.cs
@@ -230,7 +230,7 @@
     434 ./Logic/Support/CheckDigit.cs
      51 ./Logic/Support/PWEvents.cs
     238 ./Logic/Support/Formatting.cs
-     88 ./Logic/Support/General.cs
+    106 ./Logic/Support/General.cs
      66 ./Logic/Support/LogicServices.cs
      25 ./Logic/Support/Optimizations.cs
      69 ./Logic/Support/BlockchainTransaction.cs
@@ -254,7 +254,7 @@
      22 ./Logic/Support/LogEntries/FinancialActionBase.cs
      21 ./Logic/Support/LogEntries/SecurityActionBase.cs
      27 ./Logic/Support/LogEntries/PayoutCreatedLogEntry.cs
-     18 ./Logic/Support/LogEntries/PositionActionBase.cs
+     13 ./Logic/Support/LogEntries/PositionActionBase.cs
      29 ./Logic/Support/LogEntries/PasswordResetRequestLogEntry.cs
      27 ./Logic/Support/UrlTranslations.cs
      22 ./Logic/Support/PirateWebDebug.cs
@@ -267,10 +267,15 @@
      76 ./Logic/Support/Documents.cs
      61 ./Logic/Support/SwarmopsLogEntry.cs
      52 ./Logic/Support/PayloadBase.cs
-    156 ./Logic/Support/DatabaseMaintenance.cs
+    170 ./Logic/Support/DatabaseMaintenance.cs
      75 ./Logic/Support/SerializableDictionary.cs
+    116 ./BuildFiles/Building/MsBuildToCCNet/Project.cs
+     32 ./BuildFiles/Building/MsBuildToCCNet/Properties/AssemblyInfo.cs
+    241 ./BuildFiles/Building/MsBuildToCCNet/Logger.cs
      36 ./BuildFiles/Building/SharedLabeller/Properties/AssemblyInfo.cs
-    132 ./BuildFiles/Building/SharedLabeller/SharedLabeller.cs
+    159 ./BuildFiles/Building/SharedLabeller/SharedLabeller.cs
+    256 ./BuildFiles/Building/XBuildLog2Xml/Program.cs
+     36 ./BuildFiles/Building/XBuildLog2Xml/Properties/AssemblyInfo.cs
      19 ./Interface/DataObjects/ExpensePayoutsDataObject.cs
     192 ./Interface/DataObjects/OrganizationRolesDataObject.cs
     131 ./Interface/DataObjects/ListPersonDataSource.cs
@@ -372,6 +377,542 @@
      28 ./Utility/Special/UrlTranslator.cs
      33 ./Utility/ExceptionMail.cs
      83 ./Utility/Migrations/PeopleOptionalData.cs
+     15 ./Site/Default.aspx.designer.cs
+      0 ./Site/Automation/Json-GeographiesTree.aspx
+     69 ./Site/Automation/FinancialFunctions.aspx.cs
+    159 ./Site/Automation/Json-FinancialAccountsTree.aspx.cs
+      1 ./Site/Automation/Json-PositionsTree.aspx
+      1 ./Site/Automation/FieldValidation.aspx
+    412 ./Site/Automation/UploadFileHandler.ashx
+     42 ./Site/Automation/Formatting.aspx.cs
+    169 ./Site/Automation/FieldValidation.aspx.cs
+      1 ./Site/Automation/SwarmFunctions.aspx
+    284 ./Site/Automation/Json-PositionsTree.aspx.cs
+      0 ./Site/Automation/Json-FinancialAccountsTree.aspx
+     29 ./Site/Automation/Json-ByGuid.aspx.cs
+     57 ./Site/Automation/Json-AvailableCurrencies.aspx.cs
+      0 ./Site/Automation/Json-BudgetsTree.aspx
+    313 ./Site/Automation/SwarmFunctions.aspx.cs
+     96 ./Site/Automation/Json-TransactionTagsTree.aspx.cs
+    136 ./Site/Automation/Json-GeographiesTree.aspx.cs
+     59 ./Site/Automation/GetGeographyData.asmx
+      1 ./Site/Automation/Json-SearchPeoplePattern.aspx
+     49 ./Site/Automation/Json-SearchPeoplePattern.aspx.cs
+      1 ./Site/Automation/Formatting.aspx
+      3 ./Site/Automation/FinancialFunctions.aspx
+     43 ./Site/Automation/GetFinancialData.asmx
+      0 ./Site/Automation/Json-AvailableCurrencies.aspx
+    129 ./Site/Automation/Json-BudgetsTree.aspx.cs
+      1 ./Site/Automation/Json-ByGuid.aspx
+      1 ./Site/Automation/Json-TransactionTagsTree.aspx
+      0 ./Site/App_GlobalResources/fr-FR/Pages.Governance.fr-FR.designer.cs
+      0 ./Site/App_GlobalResources/fr-FR/Pages.Ledgers.fr-FR.designer.cs
+      0 ./Site/App_GlobalResources/fr-FR/Global.fr-FR.designer.cs
+      0 ./Site/App_GlobalResources/fr-FR/Pages.People.fr-FR.designer.cs
+      0 ./Site/App_GlobalResources/fr-FR/Pages.Admin.fr-FR.designer.cs
+      0 ./Site/App_GlobalResources/fr-FR/Pages.Security.fr-FR.designer.cs
+      0 ./Site/App_GlobalResources/fr-FR/Pages.Comms.fr-FR.designer.cs
+      0 ./Site/App_GlobalResources/fr-FR/Menu5.fr-FR.designer.cs
+      0 ./Site/App_GlobalResources/fr-FR/Pages.Public.fr-FR.designer.cs
+      0 ./Site/App_GlobalResources/fr-FR/Pages.Swarm.fr-FR.designer.cs
+      0 ./Site/App_GlobalResources/fr-FR/Pages.Financial.fr-FR.designer.cs
+      0 ./Site/App_GlobalResources/fr-FR/Controls.Swarm.fr-FR.designer.cs
+   1719 ./Site/App_GlobalResources/Global.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Pages.Ledgers.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Global.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Controls.Swarm.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Pages.Security.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Pages.Comms.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Pages.Swarm.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Pages.Admin.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Menu5.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Pages.Financial.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Pages.People.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Pages.Governance.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/hi-IN/Pages.Public.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/el-GR/Pages.Admin.el-GR.designer.cs
+      0 ./Site/App_GlobalResources/el-GR/Pages.Security.el-GR.designer.cs
+      0 ./Site/App_GlobalResources/el-GR/Pages.Swarm.el-GR.designer.cs
+      0 ./Site/App_GlobalResources/el-GR/Global.el-GR.designer.cs
+      0 ./Site/App_GlobalResources/el-GR/Pages.Governance.el-GR.designer.cs
+      0 ./Site/App_GlobalResources/el-GR/Menu5.el-GR.designer.cs
+      0 ./Site/App_GlobalResources/el-GR/Pages.Public.el-GR.designer.cs
+      0 ./Site/App_GlobalResources/el-GR/Pages.Financial.el-GR.designer.cs
+      0 ./Site/App_GlobalResources/el-GR/Pages.Ledgers.el-GR.designer.cs
+      0 ./Site/App_GlobalResources/el-GR/Controls.Swarm.el-GR.designer.cs
+      0 ./Site/App_GlobalResources/el-GR/Pages.Comms.el-GR.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Pages.Governance.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Pages.Security.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Pages.Ledgers.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Controls.Swarm.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Pages.People.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Pages.Admin.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Pages.Swarm.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Pages.Financial.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Pages.Comms.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Pages.Public.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Global.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/ru-RU/Menu5.ru-RU.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Global.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Pages.Comms.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Pages.Swarm.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Pages.Public.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Menu5.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Pages.Ledgers.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Pages.Security.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Pages.Admin.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Pages.People.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Controls.Swarm.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Pages.Governance.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/pl-PL/Pages.Financial.pl-PL.designer.cs
+      0 ./Site/App_GlobalResources/ar-SA/Controls.Swarm.ar-SA.designer.cs
+      0 ./Site/App_GlobalResources/ar-SA/Pages.Public.ar-SA.designer.cs
+      0 ./Site/App_GlobalResources/ar-SA/Pages.Ledgers.ar-SA.designer.cs
+      0 ./Site/App_GlobalResources/ar-SA/Pages.Admin.ar-SA.designer.cs
+      0 ./Site/App_GlobalResources/ar-SA/Global.ar-SA.designer.cs
+      0 ./Site/App_GlobalResources/ar-SA/Pages.Comms.ar-SA.designer.cs
+      0 ./Site/App_GlobalResources/ar-SA/Pages.Governance.ar-SA.designer.cs
+      0 ./Site/App_GlobalResources/ar-SA/Pages.Swarm.ar-SA.designer.cs
+      0 ./Site/App_GlobalResources/ar-SA/Pages.Security.ar-SA.designer.cs
+      0 ./Site/App_GlobalResources/ar-SA/Pages.Financial.ar-SA.designer.cs
+      0 ./Site/App_GlobalResources/ar-SA/Menu5.ar-SA.designer.cs
+    479 ./Site/App_GlobalResources/Pages.Public.designer.cs
+    514 ./Site/App_GlobalResources/Pages.Security.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Pages.Comms.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Pages.Governance.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Pages.Security.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Pages.Ledgers.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Pages.Admin.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Pages.Financial.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Pages.People.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Pages.Public.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Controls.Swarm.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Global.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Pages.Swarm.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/nb-NO/Menu5.nb-NO.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Pages.People.is-IS.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Pages.Financial.is-IS.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Pages.Public.is-IS.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Pages.Governance.is-IS.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Pages.Admin.is-IS.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Pages.Swarm.is-IS.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Pages.Ledgers.is-IS.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Pages.Comms.is-IS.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Global.is-IS.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Menu5.is-IS.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Controls.Swarm.is-IS.designer.cs
+      0 ./Site/App_GlobalResources/is-IS/Pages.Security.is-IS.designer.cs
+    585 ./Site/App_GlobalResources/Pages.Admin.designer.cs
+   1810 ./Site/App_GlobalResources/Pages.Ledgers.designer.cs
+   1386 ./Site/App_GlobalResources/Pages.Financial.designer.cs
+    279 ./Site/App_GlobalResources/Pages.Swarm.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Pages.Swarm.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Global.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Controls.Swarm.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Pages.Governance.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Pages.Ledgers.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Pages.Financial.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Menu5.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Pages.Public.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Pages.People.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Pages.Admin.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Pages.Comms.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/de-DE/Pages.Security.de-DE.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Pages.Governance.nl-NL.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Pages.Public.nl-NL.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Pages.Ledgers.nl-NL.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Pages.Swarm.nl-NL.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Pages.Security.nl-NL.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Controls.Swarm.nl-NL.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Pages.Financial.nl-NL.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Pages.People.nl-NL.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Pages.Comms.nl-NL.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Menu5.nl-NL.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Global.nl-NL.designer.cs
+      0 ./Site/App_GlobalResources/nl-NL/Pages.Admin.nl-NL.designer.cs
+    162 ./Site/App_GlobalResources/Pages.Comms.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Pages.Security.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Pages.Swarm.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Pages.Ledgers.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Pages.Governance.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Pages.Financial.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Menu5.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Pages.Admin.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Pages.People.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Controls.Swarm.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Pages.Comms.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Global.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/sv-SE/Pages.Public.sv-SE.designer.cs
+      0 ./Site/App_GlobalResources/pt-PT/Controls.Swarm.pt-PT.designer.cs
+      0 ./Site/App_GlobalResources/pt-PT/Pages.Admin.pt-PT.designer.cs
+      0 ./Site/App_GlobalResources/pt-PT/Pages.Financial.pt-PT.designer.cs
+      0 ./Site/App_GlobalResources/pt-PT/Menu5.pt-PT.designer.cs
+      0 ./Site/App_GlobalResources/pt-PT/Pages.Swarm.pt-PT.designer.cs
+      0 ./Site/App_GlobalResources/pt-PT/Pages.Ledgers.pt-PT.designer.cs
+      0 ./Site/App_GlobalResources/pt-PT/Pages.Security.pt-PT.designer.cs
+      0 ./Site/App_GlobalResources/pt-PT/Pages.Comms.pt-PT.designer.cs
+      0 ./Site/App_GlobalResources/pt-PT/Global.pt-PT.designer.cs
+      0 ./Site/App_GlobalResources/pt-PT/Pages.Public.pt-PT.designer.cs
+      0 ./Site/App_GlobalResources/pt-PT/Pages.Governance.pt-PT.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Pages.People.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Menu5.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Pages.Security.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Pages.Admin.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Pages.Swarm.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Pages.Public.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Pages.Ledgers.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Controls.Swarm.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Pages.Comms.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Pages.Financial.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Global.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/es-ES/Pages.Governance.es-ES.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Menu5.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Pages.Admin.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Pages.Ledgers.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Pages.Public.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Controls.Swarm.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Global.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Pages.Financial.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Pages.People.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Pages.Security.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Pages.Swarm.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Pages.Governance.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/zh-CN/Pages.Comms.zh-CN.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Pages.People.fi-FI.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Pages.Governance.fi-FI.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Pages.Swarm.fi-FI.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Menu5.fi-FI.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Pages.Security.fi-FI.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Pages.Ledgers.fi-FI.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Pages.Admin.fi-FI.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Pages.Financial.fi-FI.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Pages.Public.fi-FI.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Global.fi-FI.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Pages.Comms.fi-FI.designer.cs
+      0 ./Site/App_GlobalResources/fi-FI/Controls.Swarm.fi-FI.designer.cs
+    756 ./Site/App_GlobalResources/Pages.Governance.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Controls.Swarm.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Pages.Admin.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Pages.Ledgers.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Global.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Menu5.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Pages.Public.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Pages.Swarm.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Pages.People.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Pages.Security.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Pages.Governance.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Pages.Financial.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/af-ZA/Pages.Comms.af-ZA.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Global.da-DK.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Pages.Swarm.da-DK.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Pages.Public.da-DK.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Pages.Admin.da-DK.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Pages.Security.da-DK.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Pages.Ledgers.da-DK.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Pages.Financial.da-DK.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Pages.People.da-DK.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Pages.Governance.da-DK.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Controls.Swarm.da-DK.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Pages.Comms.da-DK.designer.cs
+      0 ./Site/App_GlobalResources/da-DK/Menu5.da-DK.designer.cs
+    981 ./Site/App_GlobalResources/Menu5.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Pages.Ledgers.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Menu5.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Pages.Governance.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Pages.Financial.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Pages.Security.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Pages.Swarm.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Pages.Public.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Pages.People.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Global.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Controls.Swarm.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Pages.Comms.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/it-IT/Pages.Admin.it-IT.designer.cs
+    270 ./Site/App_GlobalResources/Controls.Swarm.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Pages.Ledgers.pt-BR.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Pages.Admin.pt-BR.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Controls.Swarm.pt-BR.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Pages.People.pt-BR.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Menu5.pt-BR.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Pages.Public.pt-BR.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Pages.Swarm.pt-BR.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Global.pt-BR.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Pages.Financial.pt-BR.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Pages.Governance.pt-BR.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Pages.Comms.pt-BR.designer.cs
+      0 ./Site/App_GlobalResources/pt-BR/Pages.Security.pt-BR.designer.cs
+     33 ./Site/Tests/TestBookkeepingIntegrity.aspx
+     80 ./Site/Tests/TestBookkeepingIntegrity.aspx.cs
+     94 ./Site/Tests/TestBookkeepingIntegrity.aspx.designer.cs
+     72 ./Site/Controls/v5/Financial/CurrencyTextBox.ascx.cs
+     67 ./Site/Controls/v5/Financial/ComboBudgets.ascx
+     50 ./Site/Controls/v5/Financial/ComboBudgets.ascx.cs
+      1 ./Site/Controls/v5/Financial/ComboIncomeCostType.ascx
+     42 ./Site/Controls/v5/Financial/CurrencyTextBox.ascx.designer.cs
+      8 ./Site/Controls/v5/Financial/ComboIncomeCostType.ascx.cs
+      4 ./Site/Controls/v5/Financial/CurrencyTextBox.ascx
+     19 ./Site/Controls/v5/Swarm/ComboPeople.ascx.cs
+     28 ./Site/Controls/v5/Swarm/AjaxComboPeople.ascx.cs
+     26 ./Site/Controls/v5/Swarm/PersonDetailPopup.ascx
+     65 ./Site/Controls/v5/Swarm/TreePositions.ascx.cs
+     33 ./Site/Controls/v5/Swarm/AjaxComboPeople.ascx.designer.cs
+    149 ./Site/Controls/v5/Swarm/PersonDetailPopup.ascx.cs
+    205 ./Site/Controls/v5/Swarm/TreePositions.ascx
+    105 ./Site/Controls/v5/Swarm/PersonDetailPopup.ascx.designer.cs
+    132 ./Site/Controls/v5/Swarm/ComboPeople.ascx
+     50 ./Site/Controls/v5/Swarm/AjaxComboPeople.ascx
+    177 ./Site/Controls/v5/Swarm/TreePositions.ascx.designer.cs
+     24 ./Site/Controls/v5/UI/ExternalScripts.ascx.designer.cs
+      5 ./Site/Controls/v5/UI/ExternalScripts.ascx
+     42 ./Site/Controls/v5/UI/IncludedScripts.ascx.cs
+     24 ./Site/Controls/v5/UI/IncludedScripts.ascx.designer.cs
+     76 ./Site/Controls/v5/UI/ExternalScripts.ascx.cs
+      5 ./Site/Controls/v5/UI/IncludedScripts.ascx
+     15 ./Site/Controls/v5/Base/ComboGeographies.ascx.designer.cs
+     34 ./Site/Controls/v5/Base/ModalDialog.ascx.cs
+     24 ./Site/Controls/v5/Base/WebUserControlTest.ascx.designer.cs
+    129 ./Site/Controls/v5/Base/AjaxTextBox.ascx
+     61 ./Site/Controls/v5/Base/AjaxTextBox.ascx.cs
+     35 ./Site/Controls/v5/Base/ComboGeographies.ascx.cs
+     16 ./Site/Controls/v5/Base/WebUserControlTest.ascx.cs
+     24 ./Site/Controls/v5/Base/AjaxTextBox.ascx.designer.cs
+     37 ./Site/Controls/v5/Base/DropDown.ascx.cs
+    190 ./Site/Controls/v5/Base/MainMenu.ascx.cs
+     65 ./Site/Controls/v5/Base/ModalDialog.ascx
+     24 ./Site/Controls/v5/Base/DropDown.ascx.designer.cs
+     62 ./Site/Controls/v5/Base/ComboGeographies.ascx
+     15 ./Site/Controls/v5/Base/MainMenu.ascx.designer.cs
+     85 ./Site/Controls/v5/Base/DropDown.ascx
+     24 ./Site/Controls/v5/Base/FileUpload.ascx.designer.cs
+      1 ./Site/Controls/v5/Base/MainMenu.ascx
+      2 ./Site/Controls/v5/Base/WebUserControlTest.ascx
+     24 ./Site/Controls/v5/Base/ModalDialog.ascx.designer.cs
+     69 ./Site/Controls/v5/Base/FileUpload.ascx
+     82 ./Site/Controls/v5/Base/FileUpload.ascx.cs
+    334 ./Site/Pages/v5/Public/Signup.aspx.cs
+    764 ./Site/Pages/v5/Public/Signup.aspx
+      1 ./Site/Pages/v5/Public/Json-SignupVolunteerPositions.aspx
+     15 ./Site/Pages/v5/Public/Json-SignupVolunteerPositions.aspx.designer.cs
+    811 ./Site/Pages/v5/Public/Initialize.aspx
+     73 ./Site/Pages/v5/Public/Json-SignupVolunteerPositions.aspx.cs
+    744 ./Site/Pages/v5/Public/Signup.aspx.designer.cs
+    825 ./Site/Pages/v5/Public/Initialize.aspx.cs
+    348 ./Site/Pages/v5/Public/Initialize.aspx.designer.cs
+      1 ./Site/Pages/v5/Financial/Json-ValidatableReceipts.aspx
+    268 ./Site/Pages/v5/Financial/FileExpenseClaim.aspx.cs
+     15 ./Site/Pages/v5/Financial/Json-PayableCostsOcr.aspx.designer.cs
+     13 ./Site/Pages/v5/Financial/Json-AttestableCosts.aspx.designer.cs
+     13 ./Site/Pages/v5/Financial/EconomyNotEnabled.aspx.designer.cs
+    183 ./Site/Pages/v5/Financial/ValidateReceipts.aspx
+    222 ./Site/Pages/v5/Financial/FileExpenseClaim.aspx.designer.cs
+    240 ./Site/Pages/v5/Financial/CreateInboundInvoice.aspx.designer.cs
+     13 ./Site/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx.designer.cs
+     11 ./Site/Pages/v5/Financial/EconomyNotEnabled.aspx.cs
+    123 ./Site/Pages/v5/Financial/ValidateReceipts.aspx.designer.cs
+    220 ./Site/Pages/v5/Financial/ValidateReceipts.aspx.cs
+     15 ./Site/Pages/v5/Financial/Json-PayableCosts.aspx.designer.cs
+    186 ./Site/Pages/v5/Financial/Donate.aspx.cs
+    125 ./Site/Pages/v5/Financial/Json-PayableCostsOcr.aspx.cs
+    150 ./Site/Pages/v5/Financial/RequestCashAdvance.aspx.designer.cs
+     14 ./Site/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx.cs
+    105 ./Site/Pages/v5/Financial/Donate.aspx.designer.cs
+     89 ./Site/Pages/v5/Financial/RequestCashAdvance.aspx
+    252 ./Site/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
+     13 ./Site/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx
+    282 ./Site/Pages/v5/Financial/PayOutMoney.aspx
+      1 ./Site/Pages/v5/Financial/Json-AttestableCosts.aspx
+    599 ./Site/Pages/v5/Financial/AttestCosts.aspx.cs
+      1 ./Site/Pages/v5/Financial/Json-PayableCosts.aspx
+    149 ./Site/Pages/v5/Financial/FileExpenseClaim.aspx
+    168 ./Site/Pages/v5/Financial/PayOutMoney.aspx.designer.cs
+    142 ./Site/Pages/v5/Financial/RequestCashAdvance.aspx.cs
+     74 ./Site/Pages/v5/Financial/Json-ValidatableReceipts.aspx.cs
+    139 ./Site/Pages/v5/Financial/PayOutMoney.aspx.cs
+      1 ./Site/Pages/v5/Financial/Json-PayableCostsOcr.aspx
+    279 ./Site/Pages/v5/Financial/Json-AttestableCosts.aspx.cs
+     13 ./Site/Pages/v5/Financial/Json-ValidatableReceipts.aspx.designer.cs
+    582 ./Site/Pages/v5/Financial/AttestCosts.aspx
+    143 ./Site/Pages/v5/Financial/Json-PayableCosts.aspx.cs
+    100 ./Site/Pages/v5/Financial/Donate.aspx
+    312 ./Site/Pages/v5/Financial/AttestCosts.aspx.designer.cs
+     13 ./Site/Pages/v5/Financial/EconomyNotEnabled.aspx
+    157 ./Site/Pages/v5/Financial/CreateInboundInvoice.aspx
+    141 ./Site/Pages/v5/Admin/CreateOrganization.aspx.designer.cs
+    438 ./Site/Pages/v5/Admin/OrgSettings.aspx.designer.cs
+    265 ./Site/Pages/v5/Admin/OrgSettings.aspx
+     87 ./Site/Pages/v5/Admin/OrgStaffing.aspx.designer.cs
+    101 ./Site/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx.cs
+    106 ./Site/Pages/v5/Admin/Hacks/PopulateCountry2.aspx
+     24 ./Site/Pages/v5/Admin/Hacks/PopulateCountry1.aspx.designer.cs
+    151 ./Site/Pages/v5/Admin/Hacks/PopulateCountry2.aspx.cs
+     73 ./Site/Pages/v5/Admin/Hacks/TemporaryHack.aspx.cs
+     22 ./Site/Pages/v5/Admin/Hacks/TemporaryHack.aspx.designer.cs
+    106 ./Site/Pages/v5/Admin/Hacks/PopulateCountry1.aspx
+     28 ./Site/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx
+     16 ./Site/Pages/v5/Admin/Hacks/TemporaryHack.aspx
+     60 ./Site/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx.designer.cs
+    163 ./Site/Pages/v5/Admin/Hacks/PopulateCountry1.aspx.cs
+     24 ./Site/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx.designer.cs
+    106 ./Site/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx
+     59 ./Site/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx.cs
+     24 ./Site/Pages/v5/Admin/Hacks/PopulateCountry2.aspx.designer.cs
+     89 ./Site/Pages/v5/Admin/OrgStaffing.aspx.cs
+     47 ./Site/Pages/v5/Admin/OrgStaffing.aspx
+    152 ./Site/Pages/v5/Admin/SystemSettings.aspx
+    154 ./Site/Pages/v5/Admin/CreateOrganization.aspx.cs
+    175 ./Site/Pages/v5/Admin/BitcoinEchoTest.aspx.cs
+    105 ./Site/Pages/v5/Admin/BitcoinEchoTest.aspx.designer.cs
+    359 ./Site/Pages/v5/Admin/SystemSettings.aspx.cs
+    477 ./Site/Pages/v5/Admin/OrgSettings.aspx.cs
+    100 ./Site/Pages/v5/Admin/BitcoinEchoTest.aspx
+     44 ./Site/Pages/v5/Admin/CreateOrganization.aspx
+    186 ./Site/Pages/v5/Admin/SystemSettings.aspx.designer.cs
+      1 ./Site/Pages/v5/Security/SetCurrentOrganization.aspx
+     31 ./Site/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx
+     18 ./Site/Pages/v5/Security/AccessDenied.aspx.cs
+     82 ./Site/Pages/v5/Security/ChangeOrganizations.aspx
+      1 ./Site/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx
+     90 ./Site/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx.cs
+     33 ./Site/Pages/v5/Security/ChangeOrganizations.aspx.designer.cs
+     40 ./Site/Pages/v5/Security/AccessDenied.aspx.designer.cs
+     15 ./Site/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx.designer.cs
+     51 ./Site/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx.designer.cs
+     65 ./Site/Pages/v5/Security/ChangeOrganizations.aspx.cs
+     15 ./Site/Pages/v5/Security/DatabaseUpgradeRequired.aspx.cs
+     64 ./Site/Pages/v5/Security/SetCurrentOrganization.aspx.cs
+     17 ./Site/Pages/v5/Security/AccessDenied.aspx
+     13 ./Site/Pages/v5/Security/DatabaseUpgradeRequired.aspx
+     15 ./Site/Pages/v5/Security/SetCurrentOrganization.aspx.designer.cs
+     40 ./Site/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx.cs
+     40 ./Site/Pages/v5/Security/DatabaseUpgradeRequired.aspx.designer.cs
+     85 ./Site/Pages/v5/User/SelectLanguage.aspx.cs
+     15 ./Site/Pages/v5/User/SetCulture.aspx.designer.cs
+     24 ./Site/Pages/v5/User/SelectLanguage.aspx.designer.cs
+    113 ./Site/Pages/v5/User/SelectLanguage.aspx
+     32 ./Site/Pages/v5/User/SetCulture.aspx.cs
+      1 ./Site/Pages/v5/User/SetCulture.aspx
+     63 ./Site/Pages/v5/Comms/SendMassMessage.aspx
+    119 ./Site/Pages/v5/Comms/SendMassMessage.aspx.cs
+     87 ./Site/Pages/v5/Comms/SendMassMessage.aspx.designer.cs
+    114 ./Site/Pages/v5/Swarm/ListFindPeople.aspx.designer.cs
+     15 ./Site/Pages/v5/Swarm/Json-ListFindPeople.aspx.designer.cs
+    167 ./Site/Pages/v5/Swarm/AddPerson.aspx.cs
+      1 ./Site/Pages/v5/Swarm/Json-ListFindPeople.aspx
+     33 ./Site/Pages/v5/Swarm/LocalOrganization.aspx.designer.cs
+    258 ./Site/Pages/v5/Swarm/AddPerson.aspx.designer.cs
+     27 ./Site/Pages/v5/Swarm/LocalOrganization.aspx
+     65 ./Site/Pages/v5/Swarm/Json-ListFindPeople.aspx.cs
+    204 ./Site/Pages/v5/Swarm/ListFindPeople.aspx
+     76 ./Site/Pages/v5/Swarm/LocalOrganization.aspx.cs
+    228 ./Site/Pages/v5/Swarm/AddPerson.aspx
+    124 ./Site/Pages/v5/Swarm/ListFindPeople.aspx.cs
+      2 ./Site/Pages/v5/Support/StreamUpload.aspx
+    189 ./Site/Pages/v5/Support/StreamUpload.aspx.cs
+     15 ./Site/Pages/v5/Support/StreamUpload.aspx.designer.cs
+    495 ./Site/Pages/v5/Ledgers/AccountPlan.aspx.cs
+      1 ./Site/Pages/v5/Ledgers/Csv-ProfitLossData.aspx
+     13 ./Site/Pages/v5/Ledgers/DebugLedgers.aspx.designer.cs
+     13 ./Site/Pages/v5/Ledgers/Csv-ProfitLossData.aspx.designer.cs
+     92 ./Site/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx
+     96 ./Site/Pages/v5/Ledgers/BalanceSheet.aspx.designer.cs
+    303 ./Site/Pages/v5/Ledgers/AccountPlan.aspx.designer.cs
+     60 ./Site/Pages/v5/Ledgers/BitcoinHotwallet.aspx.designer.cs
+      1 ./Site/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx
+      1 ./Site/Pages/v5/Ledgers/Json-UnbalancedTransactions.aspx
+      1 ./Site/Pages/v5/Ledgers/Json-BalanceSheetData.aspx
+     43 ./Site/Pages/v5/Ledgers/BitcoinHotwallet.aspx.cs
+      0 ./Site/Pages/v5/Ledgers/Json-InspectLedgerData.aspx
+    303 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx.designer.cs
+     15 ./Site/Pages/v5/Ledgers/Json-BitcoinHotwalletData.aspx.designer.cs
+      1 ./Site/Pages/v5/Ledgers/Json-BitcoinHotwalletData.aspx
+     15 ./Site/Pages/v5/Ledgers/Json-InspectLedgerTxData.aspx.designer.cs
+     13 ./Site/Pages/v5/Ledgers/Json-ProfitLossData.aspx.designer.cs
+    241 ./Site/Pages/v5/Ledgers/BalanceTransactions.aspx
+    105 ./Site/Pages/v5/Ledgers/ProfitLossStatement.aspx.designer.cs
+     65 ./Site/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx.cs
+    451 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx.cs
+    114 ./Site/Pages/v5/Ledgers/BalanceSheet.aspx
+     15 ./Site/Pages/v5/Ledgers/Json-AccountPlanData.aspx.designer.cs
+    267 ./Site/Pages/v5/Ledgers/BalanceTransactions.aspx.designer.cs
+      1 ./Site/Pages/v5/Ledgers/Json-AccountPlanData.aspx
+   1279 ./Site/Pages/v5/Ledgers/UploadBankFiles.aspx.cs
+    104 ./Site/Pages/v5/Ledgers/Json-InspectLedgerTxData.aspx.cs
+    279 ./Site/Pages/v5/Ledgers/BalanceTransactions.aspx.cs
+      0 ./Site/Pages/v5/Ledgers/Json-InspectLedgerTxData.aspx
+     64 ./Site/Pages/v5/Ledgers/BudgetActual.aspx.cs
+    267 ./Site/Pages/v5/Ledgers/ResyncExternalAccount.aspx
+     96 ./Site/Pages/v5/Ledgers/UploadBankFiles.aspx.designer.cs
+     53 ./Site/Pages/v5/Ledgers/Json-UnbalancedTransactions.aspx.cs
+    436 ./Site/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx.cs
+     15 ./Site/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx.designer.cs
+      1 ./Site/Pages/v5/Ledgers/Json-ProfitLossData.aspx
+     71 ./Site/Pages/v5/Ledgers/ProfitLossStatement.aspx.cs
+    126 ./Site/Pages/v5/Ledgers/Json-BalanceSheetData.aspx.cs
+    117 ./Site/Pages/v5/Ledgers/ProfitLossStatement.aspx
+      1 ./Site/Pages/v5/Ledgers/Json-ResyncPreview.aspx
+     31 ./Site/Pages/v5/Ledgers/DebugLedgers.aspx.cs
+    145 ./Site/Pages/v5/Ledgers/CloseLedgers.aspx.cs
+    738 ./Site/Pages/v5/Ledgers/ResyncExternalAccount.aspx.cs
+    137 ./Site/Pages/v5/Ledgers/Json-BitcoinHotwalletData.aspx.cs
+    144 ./Site/Pages/v5/Ledgers/Json-BudgetActualData.aspx.cs
+     15 ./Site/Pages/v5/Ledgers/Json-ResyncPreview.aspx.designer.cs
+     33 ./Site/Pages/v5/Ledgers/ResyncExternalAccount.aspx.designer.cs
+     15 ./Site/Pages/v5/Ledgers/TaxForms/Json-Payroll-TaxFormData.aspx.designer.cs
+     49 ./Site/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx.cs
+     96 ./Site/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx.designer.cs
+    106 ./Site/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx
+    215 ./Site/Pages/v5/Ledgers/TaxForms/Json-Payroll-TaxFormData.aspx.cs
+      1 ./Site/Pages/v5/Ledgers/TaxForms/Json-Payroll-TaxFormData.aspx
+      1 ./Site/Pages/v5/Ledgers/Json-BudgetActualData.aspx
+     13 ./Site/Pages/v5/Ledgers/Csv-BalanceData.aspx.designer.cs
+    275 ./Site/Pages/v5/Ledgers/Json-AccountPlanData.aspx.cs
+    105 ./Site/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx.designer.cs
+     81 ./Site/Pages/v5/Ledgers/BalanceSheet.aspx.cs
+      1 ./Site/Pages/v5/Ledgers/Csv-BalanceData.aspx
+     70 ./Site/Pages/v5/Ledgers/BitcoinHotwallet.aspx
+     15 ./Site/Pages/v5/Ledgers/Json-UnbalancedTransactions.aspx.designer.cs
+     15 ./Site/Pages/v5/Ledgers/Json-InspectLedgerData.aspx.designer.cs
+     13 ./Site/Pages/v5/Ledgers/Json-BudgetActualData.aspx.designer.cs
+    361 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx
+     67 ./Site/Pages/v5/Ledgers/CloseLedgers.aspx.designer.cs
+    205 ./Site/Pages/v5/Ledgers/UploadBankFiles.aspx
+    203 ./Site/Pages/v5/Ledgers/Json-InspectLedgerData.aspx.cs
+    666 ./Site/Pages/v5/Ledgers/AccountPlan.aspx
+    308 ./Site/Pages/v5/Ledgers/Json-ResyncPreview.aspx.cs
+     15 ./Site/Pages/v5/Ledgers/Json-BalanceSheetData.aspx.designer.cs
+     22 ./Site/Pages/v5/Ledgers/CloseLedgers.aspx
+    103 ./Site/Pages/v5/Ledgers/BudgetActual.aspx.designer.cs
+     11 ./Site/Pages/v5/Ledgers/DebugLedgers.aspx
+     93 ./Site/Pages/v5/Ledgers/Csv-BalanceData.aspx.cs
+     97 ./Site/Pages/v5/Ledgers/Csv-ProfitLossData.aspx.cs
+    107 ./Site/Pages/v5/Ledgers/BudgetActual.aspx
+    142 ./Site/Pages/v5/Ledgers/Json-ProfitLossData.aspx.cs
+     35 ./Site/Properties/AssemblyInfo.cs
+    148 ./Site/Security/ResetPassword.aspx.cs
+    248 ./Site/Security/Login.aspx
+    105 ./Site/Security/Login-Old.aspx.cs
+     94 ./Site/Security/RequestPasswordReset.aspx.cs
+    195 ./Site/Security/ResetPassword.aspx.designer.cs
+    447 ./Site/Security/Login.aspx.cs
+    135 ./Site/Security/RequestPasswordReset.aspx
+     15 ./Site/Security/FinalizeLogin.aspx.designer.cs
+     26 ./Site/Security/FinalizeLogin.aspx.cs
+    249 ./Site/Security/Login.aspx.designer.cs
+     53 ./Site/Security/Login-Old.aspx
+    141 ./Site/Security/RequestPasswordReset.aspx.designer.cs
+    149 ./Site/Security/ResetPassword.aspx
+     87 ./Site/Security/Login-Old.aspx.designer.cs
+      0 ./Site/Security/FinalizeLogin.aspx
+     37 ./Site/Default.aspx.cs
+     66 ./Site/Bases/MasterV5Base.cs
+    181 ./Site/Bases/DataV5Base.cs
+     71 ./Site/Bases/ControlV5Base.cs
+    404 ./Site/Bases/CommonV5.cs
+    193 ./Site/Bases/PageV5Base.cs
+     19 ./Site/Default.aspx
+    433 ./Site/Master-v5.master.cs
+    122 ./Site/Global.asax
+    474 ./Site/Master-v5.master.designer.cs
      23 ./Site-Data/Data/DisplayInternalPollVoters.aspx
      16 ./Site-Data/Data/BallotsData.aspx
       1 ./Site-Data/Data/GetPublicKeyForAddress.aspx
@@ -465,7 +1006,7 @@
      28 ./Site5/Automation/Json-ByGuid.aspx.cs
      57 ./Site5/Automation/Json-AvailableCurrencies.aspx.cs
       0 ./Site5/Automation/Json-BudgetsTree.aspx
-    213 ./Site5/Automation/SwarmFunctions.aspx.cs
+    311 ./Site5/Automation/SwarmFunctions.aspx.cs
      96 ./Site5/Automation/Json-TransactionTagsTree.aspx.cs
     136 ./Site5/Automation/Json-GeographiesTree.aspx.cs
      59 ./Site5/Automation/GetGeographyData.asmx
@@ -499,11 +1040,11 @@
      76 ./Site5/Controls/v5/UI/ExternalScripts.ascx.cs
       5 ./Site5/Controls/v5/UI/IncludedScripts.ascx
      34 ./Site5/Controls/v5/Base/ModalDialog.ascx.cs
-     83 ./Site5/Controls/v5/Base/AjaxTextBox.ascx
+    130 ./Site5/Controls/v5/Base/AjaxTextBox.ascx
      61 ./Site5/Controls/v5/Base/AjaxTextBox.ascx.cs
      34 ./Site5/Controls/v5/Base/ComboGeographies.ascx.cs
      37 ./Site5/Controls/v5/Base/DropDown.ascx.cs
-    189 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
+    190 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
      65 ./Site5/Controls/v5/Base/ModalDialog.ascx
      62 ./Site5/Controls/v5/Base/ComboGeographies.ascx
      85 ./Site5/Controls/v5/Base/DropDown.ascx
@@ -511,9 +1052,9 @@
      68 ./Site5/Controls/v5/Base/FileUpload.ascx
      81 ./Site5/Controls/v5/Base/FileUpload.ascx.cs
      61 ./Site5/App_Code/MasterV5Base.cs
-    177 ./Site5/App_Code/DataV5Base.cs
+    179 ./Site5/App_Code/DataV5Base.cs
      55 ./Site5/App_Code/ControlV5Base.cs
-    380 ./Site5/App_Code/CommonV5.cs
+    397 ./Site5/App_Code/CommonV5.cs
     177 ./Site5/App_Code/PageV5Base.cs
     334 ./Site5/Pages/v5/Public/Signup.aspx.cs
     764 ./Site5/Pages/v5/Public/Signup.aspx
@@ -526,13 +1067,13 @@
     183 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx
      10 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx.cs
     220 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx.cs
-    187 ./Site5/Pages/v5/Financial/Donate.aspx.cs
+    186 ./Site5/Pages/v5/Financial/Donate.aspx.cs
     125 ./Site5/Pages/v5/Financial/Json-PayableCostsOcr.aspx.cs
      13 ./Site5/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx.cs
      88 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx
     214 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
      13 ./Site5/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx
-    280 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
+    282 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
       1 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx
     600 ./Site5/Pages/v5/Financial/AttestCosts.aspx.cs
       1 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx
@@ -563,8 +1104,8 @@
     153 ./Site5/Pages/v5/Admin/SystemSettings.aspx
     154 ./Site5/Pages/v5/Admin/CreateOrganization.aspx.cs
     176 ./Site5/Pages/v5/Admin/BitcoinEchoTest.aspx.cs
-    347 ./Site5/Pages/v5/Admin/SystemSettings.aspx.cs
-    476 ./Site5/Pages/v5/Admin/OrgSettings.aspx.cs
+    352 ./Site5/Pages/v5/Admin/SystemSettings.aspx.cs
+    477 ./Site5/Pages/v5/Admin/OrgSettings.aspx.cs
     100 ./Site5/Pages/v5/Admin/BitcoinEchoTest.aspx
      44 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
       1 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx
@@ -595,7 +1136,7 @@
     117 ./Site5/Pages/v5/Swarm/ListFindPeople.aspx.cs
       2 ./Site5/Pages/v5/Support/StreamUpload.aspx
     188 ./Site5/Pages/v5/Support/StreamUpload.aspx.cs
-    490 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx.cs
+    500 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx
      92 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx
@@ -613,12 +1154,12 @@
     104 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerTxData.aspx.cs
     278 ./Site5/Pages/v5/Ledgers/BalanceTransactions.aspx.cs
       0 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerTxData.aspx
-     64 ./Site5/Pages/v5/Ledgers/BudgetActual.aspx.cs
+     63 ./Site5/Pages/v5/Ledgers/BudgetActual.aspx.cs
     267 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx
      53 ./Site5/Pages/v5/Ledgers/Json-UnbalancedTransactions.aspx.cs
     436 ./Site5/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Json-ProfitLossData.aspx
-     61 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx.cs
+     60 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx.cs
     126 ./Site5/Pages/v5/Ledgers/Json-BalanceSheetData.aspx.cs
     117 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-ResyncPreview.aspx
@@ -639,7 +1180,7 @@
     355 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx
     205 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx
     203 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerData.aspx.cs
-    664 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx
+    666 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx
     308 ./Site5/Pages/v5/Ledgers/Json-ResyncPreview.aspx.cs
      22 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx
      11 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx
@@ -840,4 +1381,4 @@
     131 ./Database/Database-OrganizationFinancialAccounts.cs
      87 ./Database/Database-OutboundMailRecipients.cs
     105 ./Database/Database-Activists.cs
- 120741 total
+ 165700 total

@@ -328,15 +328,38 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>Ange leverantörens bankkonto eller motsvarande.</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Donate_Explain" xml:space="preserve">
+    <value>Detta är en QR-kod för donationer till {0}. Läs den från telefonens bitcoinplånbok för att göra en donation, eller donera från datorn direkt till [{1}] (det där är en bitcoinadress).</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="Donate_FundsReceived" xml:space="preserve">
+    <value>Tog emot {0} {1:N2} ({2:N0} mikrocoins eller "bitar"). Tack!</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedNative" xml:space="preserve">
+    <value>Tog emot {0} mikrocoins ("bitar"). Tack!</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="Donate_Info" xml:space="preserve">
+    <value>Om du vill donera till organisationen, kan du göra det här.</value>
+  </data>
+  <data name="Donate_PageTitle" xml:space="preserve">
+    <value>Donera</value>
+  </data>
+  <data name="Donate_StatusInitial" xml:space="preserve">
+    <value>Väntar på transaktion...</value>
+  </data>
+  <data name="Donate_TransactionDetected" xml:space="preserve">
+    <value>Transaktion noterad, verifierar...</value>
+  </data>
+  <data name="Donate_TxLabel" xml:space="preserve">
+    <value>Donation till {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Donate_TxLabel_Loan" xml:space="preserve">
+    <value>Lån till {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
   <data name="FileExpenseClaim_Amount" xml:space="preserve">
     <value>Belopp för utläggsanspråk (i {0})</value>
     <comment>{0} is the currency.</comment>
@@ -562,4 +585,12 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Kvittona för utläggsanspråk #{0:N0} på {1} {2:N2} har godkänts.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

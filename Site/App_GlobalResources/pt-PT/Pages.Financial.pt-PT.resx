@@ -429,4 +429,12 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Os recibos da Reivindicação de Despesa #{0:N0} para {1} {2:N2} foram validados.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
 </root>
