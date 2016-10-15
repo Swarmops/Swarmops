@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;
 using Swarmops.Common.Exceptions;
 using Swarmops.Frontend;
@@ -284,12 +286,64 @@ namespace Swarmops.Frontend.Automation
                 }
             }
 
+            // TODO: Verify authority to see and change personal data
+
+            Person affectedPerson = Person.FromIdentity (personId);
+
+            if (!self)
+            {
+                if (!authData.Authority.CanSeePerson (affectedPerson) ||
+                    !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, affectedPerson.Geography,
+                        AccessAspect.PersonalData)))
+                {
+                    throw new UnauthorizedAccessException();
+                }
+            }
+
+            string oldValue;
+
+            switch (field)
+            {
+                case "Name":
+                    oldValue = affectedPerson.Name;
+                    affectedPerson.Name = newValue;
+                    break;
+                case "Mail":
+                    oldValue = affectedPerson.Mail;
+                    affectedPerson.Mail = newValue;
+                    break;
+                case "Phone":
+                    oldValue = affectedPerson.Phone;
+                    affectedPerson.Phone = newValue;
+                    break;
+                case "TwitterId":
+                    oldValue = affectedPerson.TwitterId;
+                    affectedPerson.TwitterId = newValue;
+                    break;
+                default:
+                    throw new ArgumentException("Unrecognized field in /Automation/SwarmFunctions.SetPersonEditorData");
+            }
+
+            SwarmopsLogEntry logEntry = SwarmopsLog.CreateEntry (affectedPerson, new PersonalDataChangedLogEntry
+            {
+                ActingPersonId = authData.CurrentUser.PersonId,
+                AffectedPersonId = affectedPerson.PersonId,
+                Field = field,
+                IpAddress = HttpContext.Current.Request.UserHostAddress,
+                OldValue = oldValue,
+                NewValue = newValue
+            });
+
+            if (!self)
+            {
+                logEntry.CreateAffectedObject (authData.CurrentUser);
+            }
+
             return new AjaxInputCallResult
             {
                 Success = true,
-                NewValue = field + ": (Work in progress) call successful"
+                NewValue = newValue
             };
-            throw new NotImplementedException();
         }
 
         private static string GetPersonValue (int personId, string field)

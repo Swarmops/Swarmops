@@ -85,8 +85,6 @@ namespace Swarmops.Database
 
         public int CreateSwarmopsLogEntry (int personId, string entryType, string entryXml)
         {
-            DateTime now = DateTime.UtcNow;
-
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
