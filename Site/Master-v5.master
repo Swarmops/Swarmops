@@ -420,10 +420,13 @@
                    console.log(result);
                    if (result.Success) {
                        window[controlName + "_updateSuccessAnimate"](result.NewValue);
+                       if (result.DisplayMessage != '') {
+                           alertify.log(result.DisplayMessage);
+                       }
                    } else {
                        window[controlName + "_updateFailAnimate"](result.NewValue);
                        if (result.DisplayMessage != '') {
-                           alertify.error(SwarmopsJS.unescape(result.DisplayMessage));
+                           alertify.error(result.DisplayMessage);
                        }
                    }
                },

@@ -755,4 +755,8 @@
   <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
     <value>Mail a password-reset link</value>
   </data>
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>This doesn't look like a valid phone number, but we're storing it as written here.</value>
+    <comment>Trigges as a notice if phone misses a regexp.</comment>
+  </data>
 </root>

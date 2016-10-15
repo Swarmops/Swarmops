@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -263,6 +264,11 @@ namespace Swarmops.Frontend.Automation
         [WebMethod]
         public static AjaxInputCallResult SetPersonEditorData(int personId, string field, string newValue)
         {
+            if (newValue == null || field == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             bool self = false;
 
@@ -279,7 +285,7 @@ namespace Swarmops.Frontend.Automation
                     return new AjaxInputCallResult
                     {
                         Success = false,
-                        DisplayMessage = JavascriptEscape(Resources.Global.Global_FieldCannotBeEmpty),
+                        DisplayMessage = Resources.Global.Global_FieldCannotBeEmpty,
                         FailReason = AjaxInputCallResult.ErrorInvalidFormat,
                         NewValue = GetPersonValue (personId, field)
                     };
@@ -301,6 +307,8 @@ namespace Swarmops.Frontend.Automation
             }
 
             string oldValue;
+            string displayMessage = string.Empty;
+            newValue = newValue.Trim().Replace ("  ", " ");
 
             switch (field)
             {
@@ -315,8 +323,17 @@ namespace Swarmops.Frontend.Automation
                 case "Phone":
                     oldValue = affectedPerson.Phone;
                     affectedPerson.Phone = newValue;
+                    if (!Regex.IsMatch (newValue, @"^[0-9 \(\)\-\+]+$"))
+                    {
+                        // using characters not typically seen in a phone number? Warn
+                        displayMessage = Resources.Global.Master_EditPersonWarning_Phone;
+                    }
                     break;
                 case "TwitterId":
+                    if (newValue.StartsWith ("@"))
+                    {
+                        newValue = newValue.Substring (1);
+                    }
                     oldValue = affectedPerson.TwitterId;
                     affectedPerson.TwitterId = newValue;
                     break;
@@ -329,7 +346,7 @@ namespace Swarmops.Frontend.Automation
                 ActingPersonId = authData.CurrentUser.PersonId,
                 AffectedPersonId = affectedPerson.PersonId,
                 Field = field,
-                IpAddress = HttpContext.Current.Request.UserHostAddress,
+                IpAddress = SupportFunctions.GetMostLikelyRemoteIPAddress(),
                 OldValue = oldValue,
                 NewValue = newValue
             });
@@ -342,7 +359,8 @@ namespace Swarmops.Frontend.Automation
             return new AjaxInputCallResult
             {
                 Success = true,
-                NewValue = newValue
+                NewValue = newValue,
+                DisplayMessage = displayMessage
             };
         }
 

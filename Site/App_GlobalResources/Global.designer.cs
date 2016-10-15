@@ -1492,6 +1492,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This doesn&apos;t look like a valid phone number, but we&apos;re storing it as written here..
+        /// </summary>
+        internal static string Master_EditPersonWarning_Phone {
+            get {
+                return ResourceManager.GetString("Master_EditPersonWarning_Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are currently logged into &lt;strong&gt;{0}&lt;/strong&gt;. Would you like to switch to another organization?.
         /// </summary>
         internal static string Master_SwitchOrganizationDialog {
