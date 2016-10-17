@@ -465,8 +465,14 @@
                 }
             });
 
-            alertify.confirm('<strong>' + SwarmopsJS.unescape('<%=this.Localized_MasterPersonEditResetPasswordConfirm_Header%>') + '</strong><br/><br/>' + SwarmopsJS.unescape('<%=this.Localized_MasterPersonEditResetPasswordConfirm_Text%>'), function () { alert("Ding!"); }, function () { // cancel, do nothing 
-            });
+            alertify.confirm('<strong>' + SwarmopsJS.unescape('<%=this.Localized_MasterPersonEditResetPasswordConfirm_Header%>') + '</strong><br/><br/>' + SwarmopsJS.unescape('<%=this.Localized_MasterPersonEditResetPasswordConfirm_Text%>'), 
+                function (response) { 
+                    if (response) {
+                        alert("Success!");
+                    } else {
+                        alert("Cancel");
+                    }
+                }); 
         }
 
 

@@ -433,7 +433,7 @@ namespace Swarmops.Frontend
 
         public string Localized_MasterPersonEditResetPasswordConfirm_Header
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordConfirm_Header); }
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordConfirm_Header.ToUpperInvariant()); }
         }
 
         public string Localized_MasterPersonEditResetPasswordConfirm_Text
@@ -443,7 +443,7 @@ namespace Swarmops.Frontend
 
         public string Localized_MasterPersonEditResetPasswordProhibited_Header
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordProhibited_Header); }
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordProhibited_Header.ToUpperInvariant()); }
         }
 
         public string Localized_MasterPersonEditResetPasswordProhibited_Text

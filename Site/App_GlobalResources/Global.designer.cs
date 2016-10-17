@@ -1492,7 +1492,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You&apos;re resetting a user password. This user will receive a reset link by mail, which they can click to reset their Swarmops password.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Never do this unless specifically asked for assistance with this by the user.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Proceed with password reset procedure?.
+        ///   Looks up a localized string similar to You&apos;re resetting a user password. This user will receive a reset link by mail, which they can follow to reset their Swarmops password.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Never do this unless specifically asked for assistance with this by the user.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Proceed with password reset procedure?.
         /// </summary>
         internal static string Master_EditPersonResetPasswordConfirm_Text {
             get {

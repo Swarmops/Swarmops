@@ -763,7 +763,7 @@
     <value>Reset User Password?</value>
   </data>
   <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
-    <value>You're resetting a user password. This user will receive a reset link by mail, which they can click to reset their Swarmops password.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Never do this unless specifically asked for assistance with this by the user.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Proceed with password reset procedure?</value>
+    <value>You're resetting a user password. This user will receive a reset link by mail, which they can follow to reset their Swarmops password.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Never do this unless specifically asked for assistance with this by the user.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Proceed with password reset procedure?</value>
   </data>
   <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
     <value>Password Reset Prohibited</value>
