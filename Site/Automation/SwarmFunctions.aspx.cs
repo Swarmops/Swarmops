@@ -272,11 +272,15 @@ namespace Swarmops.Frontend.Automation
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             bool self = false;
 
+            // Are we modifying ourselves?
+
             if (personId == 0) // request self record
             {
                 self = true; // may make use of this later
                 personId = authData.CurrentUser.Identity;
             }
+
+            // Preliminary input validation
 
             if (string.IsNullOrEmpty (newValue))
             {
@@ -292,7 +296,7 @@ namespace Swarmops.Frontend.Automation
                 }
             }
 
-            // TODO: Verify authority to see and change personal data
+            // Verify authority to see and change personal data
 
             Person affectedPerson = Person.FromIdentity (personId);
 
@@ -308,7 +312,10 @@ namespace Swarmops.Frontend.Automation
 
             string oldValue;
             string displayMessage = string.Empty;
-            newValue = newValue.Trim().Replace ("  ", " ");
+            while (newValue.Contains ("  "))
+            {
+                newValue = newValue.Trim().Replace ("  ", " "); // double, triple, quadruple spaces reduced to one
+            }
 
             switch (field)
             {

@@ -430,5 +430,36 @@ namespace Swarmops.Frontend
         {
             get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordButton); }
         }
+
+        public string Localized_MasterPersonEditResetPasswordConfirm_Header
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordConfirm_Header); }
+        }
+
+        public string Localized_MasterPersonEditResetPasswordConfirm_Text
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordConfirm_Text); }
+        }
+
+        public string Localized_MasterPersonEditResetPasswordProhibited_Header
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordProhibited_Header); }
+        }
+
+        public string Localized_MasterPersonEditResetPasswordProhibited_Text
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordProhibited_Text); }
+        }
+
+        public string Localized_Cancel
+        {
+            get { return CommonV5.JavascriptEscape (Resources.Global.Global_Cancel); }
+        }
+
+        public string Localized_Confirm
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Global_Confirm); }
+        }
+
     }
 }

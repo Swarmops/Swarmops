@@ -680,6 +680,10 @@ body.rtl div.modal .entryFields {
 	box-shadow: 0px 0px 4px 2px #1C397E inset;
 }
 
+.entryFields > input[type=button] {
+    width: 324px;
+}
+
 
 .entryLabels 
 {

@@ -756,7 +756,22 @@
     <value>Mail a password-reset link</value>
   </data>
   <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
-    <value>This doesn't look like a valid phone number, but we're storing it as written here.</value>
-    <comment>Trigges as a notice if phone misses a regexp.</comment>
+    <value>This doesn't look like a valid phone number, but we're storing it as written here nonetheless.</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>Reset User Password?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>You're resetting a user password. This user will receive a reset link by mail, which they can click to reset their Swarmops password.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Never do this unless specifically asked for assistance with this by the user.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Proceed with password reset procedure?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>Password Reset Prohibited</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>This user's mail address was recently changed (less than a week ago). For security reasons, a password reset link cannot and will not be sent to such a newly changed mail address.</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>A password reset link was sent to this user.</value>
   </data>
 </root>

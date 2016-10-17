@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.MasterV5" Codebehind="Master-v5.master.cs" %>
+<%@ Import Namespace="System.Runtime.CompilerServices" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -50,8 +51,11 @@
     <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />
     <asp:Literal ID="LiteralCrowdinScript" runat="server" Text="" />
 
-    <!-- initialize all jQuery stuff -->
+    <!-- initialize all jQuery stuff and localize -->
     <script language="javascript" type="text/javascript">
+
+        var localizedMasterEditResetPasswordButton = SwarmopsJS.unescape('<%= this.Localized_MasterPersonEditResetPasswordButton %>');
+
         $(document).ready(function () {/*
             $('#LinkChangeOrganizations').qtip(
 	        {
@@ -93,10 +97,13 @@
                 speed:       'fast',                          // faster animation speed
             });
 
+            $('#masterPersonEditButtonResetPassword').val(localizedMasterEditResetPasswordButton);
+
+
             <asp:Literal runat="server" ID="LiteralDocumentReadyHook" />
 
         });
-        	
+
     </script>
     
     <!-- initialize tooltips -->
@@ -131,7 +138,7 @@
 
 	<div class="center980px">
 	    <div class="currentuserinfo">
-	        <div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><a href="javascript:masterBeginEditPerson(0);"><asp:Label ID="LabelCurrentUserName" runat="server" /></a> | </div>
+	        <div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><a href="javascript:masterBeginEditPerson(0);"><span class="spanUser<%=this.CurrentUser.Identity %>Name spanUser0Name"><asp:Label ID="LabelCurrentUserName" runat="server" /></span></a> | </div>
 	        <div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><span class="hasTooltip" rel="Logged into <%=this.CurrentOrganization.Name %>" title="Click here to switch to another organization."><a href="/Security/ChangeOrganizations" id="LinkChangeOrganizations"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /></a></span> |&nbsp;</div>
             <div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left" id="divUserPreferences"><asp:Label ID="LabelPreferences" runat="server" /> | </div>
             <div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div>
@@ -249,7 +256,7 @@
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label ID="MasterLabelEditPersonHeaderSecurityProvisioning" runat="server" /></h2>
                     <div class="entryFields">
-                        <input type="button" value="#SendResetMail#" />&#8203;<br/>
+                        <input type="button" id="masterPersonEditButtonResetPassword" onclick="masterPersonEditorConfirmResetPassword(); return false;" value="#SendResetMail#" />&#8203;<br/>
                         <input type="input" todo="true"/>
                     </div>
                     <div class="entryLabels">
@@ -414,27 +421,30 @@
 
                 // HACK: Possible race condition for "controlName" here in some environments?
 
-               "/Automation/SwarmFunctions.aspx/SetPersonEditorData",
-               jsonData,
-               function(result) {
-                   console.log(result);
-                   if (result.Success) {
-                       window[controlName + "_updateSuccessAnimate"](result.NewValue);
-                       if (result.DisplayMessage != '') {
-                           alertify.log(result.DisplayMessage);
-                       }
-                   } else {
-                       window[controlName + "_updateFailAnimate"](result.NewValue);
-                       if (result.DisplayMessage != '') {
-                           alertify.error(result.DisplayMessage);
-                       }
-                   }
-               },
-               function(result) {
-                   console.log(result);
-                   alert('fail');
-                   window[controlName + "_updateFailAnimate"](result.NewValue);
-               });
+                "/Automation/SwarmFunctions.aspx/SetPersonEditorData",
+                jsonData,
+                function(result) {
+                    console.log(result);
+                    if (result.Success) {
+                        window[controlName + "_updateSuccessAnimate"](result.NewValue);
+                        if (result.DisplayMessage != '') {
+                            alertify.log(result.DisplayMessage);
+                        }
+                        if (fieldName == "Name") {
+                            $('span.spanUser' + _master_PersonEditedId + 'Name').text(result.NewValue);
+                        }
+                    } else {
+                        window[controlName + "_updateFailAnimate"](result.NewValue);
+                        if (result.DisplayMessage != '') {
+                            alertify.error(result.DisplayMessage);
+                        }
+                    }
+                },
+                function(result) {
+                    console.log(result);
+                    alert('fail');
+                    window[controlName + "_updateFailAnimate"](result.NewValue);
+                });
 
 
 
@@ -445,6 +455,21 @@
         function masterEndEditPerson() {
             _master_PersonEditedId = -1; // no person being edited anymore
         }
+
+
+        function masterPersonEditorConfirmResetPassword() {
+            alertify.set({
+                labels: {
+                    ok: SwarmopsJS.unescape('<%=this.Localized_Confirm%>'),
+                    cancel: SwarmopsJS.unescape('<%=this.Localized_Cancel%>')
+                }
+            });
+
+            alertify.confirm('<strong>' + SwarmopsJS.unescape('<%=this.Localized_MasterPersonEditResetPasswordConfirm_Header%>') + '</strong><br/><br/>' + SwarmopsJS.unescape('<%=this.Localized_MasterPersonEditResetPasswordConfirm_Text%>'), function () { alert("Ding!"); }, function () { // cancel, do nothing 
+            });
+        }
+
+
 
     </script>
 	

@@ -1483,6 +1483,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset User Password?.
+        /// </summary>
+        internal static string Master_EditPersonResetPasswordConfirm_Header {
+            get {
+                return ResourceManager.GetString("Master_EditPersonResetPasswordConfirm_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;re resetting a user password. This user will receive a reset link by mail, which they can click to reset their Swarmops password.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Never do this unless specifically asked for assistance with this by the user.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Proceed with password reset procedure?.
+        /// </summary>
+        internal static string Master_EditPersonResetPasswordConfirm_Text {
+            get {
+                return ResourceManager.GetString("Master_EditPersonResetPasswordConfirm_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mail a password-reset link.
         /// </summary>
         internal static string Master_EditPersonResetPasswordLabel {
@@ -1492,7 +1510,34 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This doesn&apos;t look like a valid phone number, but we&apos;re storing it as written here..
+        ///   Looks up a localized string similar to Password Reset Prohibited.
+        /// </summary>
+        internal static string Master_EditPersonResetPasswordProhibited_Header {
+            get {
+                return ResourceManager.GetString("Master_EditPersonResetPasswordProhibited_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user&apos;s mail address was recently changed (less than a week ago). For security reasons, a password reset link cannot and will not be sent to such a newly changed mail address..
+        /// </summary>
+        internal static string Master_EditPersonResetPasswordProhibited_Text {
+            get {
+                return ResourceManager.GetString("Master_EditPersonResetPasswordProhibited_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A password reset link was sent to this user..
+        /// </summary>
+        internal static string Master_EditPersonResetPassword_ResetLinkSent {
+            get {
+                return ResourceManager.GetString("Master_EditPersonResetPassword_ResetLinkSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This doesn&apos;t look like a valid phone number, but we&apos;re storing it as written here nonetheless..
         /// </summary>
         internal static string Master_EditPersonWarning_Phone {
             get {
