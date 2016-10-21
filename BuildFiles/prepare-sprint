@@ -10,7 +10,7 @@ cd ..
 #Update lines-of-code count
 cd ..
 BuildFiles/update-kaylock-count
-tail -n 1 LINESOFCODE | cut -c 2-7 | xargs printf "%'d" | xargs -I {} sed -i 's/<!--KaylockCount-->.*<!--EndKaylock-->/<!--KaylockCount-->{}<!--EndKaylock-->/' Site5/Default.aspx
+tail -n 1 LINESOFCODE | cut -c 2-7 | xargs printf "%'d" | xargs -I {} sed -i 's/<!--KaylockCount-->.*<!--EndKaylock-->/<!--KaylockCount-->{}<!--EndKaylock-->/' Site/Default.aspx
 cd BuildFiles
 
 #After this, a manual git push should be done
