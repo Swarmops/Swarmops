@@ -166,7 +166,7 @@ fi
 
 cd ../..
 
-scripts/repackage-build-package-distro $DROPFOLDER $PACKAGENAME squeeze,trusty,xenial,jessie $PACKAGE
+scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER squeeze,trusty,xenial,jessie $PACKAGE
 
 
 # TODO: FIX INTERNAL INSTALL?
