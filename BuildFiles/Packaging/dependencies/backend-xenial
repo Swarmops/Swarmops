@@ -1,1 +1,1 @@
-libmono-corlib4.5-cil (>= 3.2.8),libmono-posix4.5-cil (>= 3.2.8),libmono-system-data4.5-cil (>= 3.2.8),libmono-system-web-http4.5-cil (>= 3.2.8),libmono-system-numerics4.5-cil
+libmono-corlib4.5-cil (>= 3.2.8),libmono-posix4.0-cil (>= 3.2.8),libmono-system-data4.0-cil (>= 3.2.8),libmono-system-web-http4.0-cil (>= 3.2.8),libmono-system-numerics4.0-cil
