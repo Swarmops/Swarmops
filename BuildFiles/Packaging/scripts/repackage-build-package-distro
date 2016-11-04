@@ -29,7 +29,7 @@ do
   cp $DROPFOLDER/payload/DEBIAN/control $DROPFOLDER/controlbackup
   sed -i "s/--Dependencies--/$DEPENDENCIES/g" $DROPFOLDER/payload/DEBIAN/control
 
-  read -p "Press [Enter] key to make create checksums..."
+# read -p "Press [Enter] key to make create checksums..."
 
   # Calculating new checksums
   echo "Creating MD5 checksum file ($DISTRO)..."
