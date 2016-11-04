@@ -8,6 +8,7 @@ PACKAGENAME=$1
 DROPFOLDER=$2
 DISTROS=$3
 PACKAGE=$4
+BUILDID=$5
 
 IFS=',' read -r -a distros <<< "$DISTROS"
 unset IFS
@@ -30,6 +31,9 @@ do
   sed -i "s/--Dependencies--/$DEPENDENCIES/g" $DROPFOLDER/payload/DEBIAN/control
 
 # read -p "Press [Enter] key to make create checksums..."
+
+  echo "Setting build number $BUILDID-$DISTRO..."
+  sed -i "s/--BuildNumber--/$BUILDID-$DISTRO/g" DEBIAN/control
 
   # Calculating new checksums
   echo "Creating MD5 checksum file ($DISTRO)..."

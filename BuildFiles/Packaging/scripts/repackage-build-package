@@ -158,8 +158,6 @@ echo "Converting CRLF line endings in scripts to LF-only..."
 dos2unix -q DEBIAN/*
 dos2unix -q etc/init.d/*
 
-echo "Setting build number $BUILDID..."
-sed -i "s/--BuildNumber--/$BUILDID/g" DEBIAN/control
 if [ -e $DEPLOYDIR/$TARGETDIR ]; then
   echo $BUILDID > $DEPLOYDIR/$TARGETDIR/BuildIdentity.txt
 fi
@@ -167,7 +165,7 @@ fi
 cd ../..
 
 
-scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER squeeze,trusty,xenial,jessie $PACKAGE
+scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER squeeze,trusty,xenial,jessie $PACKAGE $BUILDID
 
 
 # TODO: FIX INTERNAL INSTALL?
