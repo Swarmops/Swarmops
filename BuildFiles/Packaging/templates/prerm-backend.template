@@ -1,5 +1,13 @@
 #! /bin/bash
 
-update-rc.d -f swarmops-backend remove > /dev/null
-/etc/init.d/swarmops-backend stop
+# Different paths for systemd and upstart
+
+if [ -z $(pidof systemd) ]; then
+  update-rc.d -f swarmops-backend remove > /dev/null
+  /etc/init.d/swarmops-backend stop
+else
+  systemctl stop swarmops-backend
+  systemctl disable swarmops-backend
+fi
+
 

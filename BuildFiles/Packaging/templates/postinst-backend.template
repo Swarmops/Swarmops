@@ -5,8 +5,16 @@
 mkdir -p /var/lib/swarmops/upload
 #todo: check for database upgrade
 
-#start the daemon
-/etc/init.d/swarmops-backend start
+#if we're running systemd, use systemd;
+#otherwise, use upstart
 
-#register the daemon
-update-rc.d swarmops-backend defaults 90 10 > /dev/null
+if [ -z $(pidof systemd) ]; then
+  #start the daemon
+  /etc/init.d/swarmops-backend start
+  #register the daemon
+  update-rc.d swarmops-backend defaults 90 10 > /dev/null
+else
+  systemctl enable swarmops-backend
+  systemctl start swarmops-backend
+fi
+
