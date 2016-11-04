@@ -179,6 +179,5 @@ scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER squeeze,trusty,x
 
 echo "Cleaning up..."
 
-rm /var/www/packages.swarmops.com/swarmops-$PACKAGENAME-latest.deb
 rm -rf $DROPFOLDER/payload
 
