@@ -1,0 +1,12 @@
+[Unit]
+Description=Swarmops Backend
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/mono /usr/share/swarmops/backend/Swarmops.Backend.exe
+WorkingDirectory=/usr/share/swarmops/backend
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
