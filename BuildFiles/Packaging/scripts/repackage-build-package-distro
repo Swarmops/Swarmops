@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Directory structure is supposed to be /home/builder/swarmops/packaging/...
+# Builds in /home/builder/swarmops/{buildtype}
+# Home folder for script is /home/builder/swarmops/packaging
+
+$PACKAGENAME=$1
+$DROPFOLDER=$2
+$DISTROS=$3
+
+IFS=',' read -r -a distros <<< "$DISTROS"
+unset IFS
+
+for DISTRO in "${distros[@]}"
+do
+  echo "Packaging for $DISTRO..."
+
+  # Calculating new checksums
+  echo "Creating MD5 checksum file ($DISTRO)..."
+  scripts/create-md5
+
+  echo "Creating package 'swarmops-$PACKAGENAME-$DISTRO-latest.deb'..."
+  if [ -e swarmops-$PACKAGENAME-latest.deb ]; then
+    rm swarmops-$PACKAGENAME-latest.deb
+  fi
+  fakeroot dpkg-deb --build $DROPFOLDER/payload
+  mv $DROPFOLDER/payload.deb swarmops-$PACKAGENAME-$DISTRO-latest.deb
+  cp swarmops-$PACKAGENAME-$DISTRO-latest.deb /var/www/packages.swarmops.com
+
+  echo "Updating repositories ($DISTRO)..."
+  scripts/update-repos swarmops-$PACKAGENAME-$DISTRO-latest.deb $DISTRO
+
+rm swarmops-$PACKAGENAME-$DISTRO-latest.deb
+
+done
+
+

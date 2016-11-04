@@ -164,23 +164,12 @@ if [ -e $DEPLOYDIR/$TARGETDIR ]; then
   echo $BUILDID > $DEPLOYDIR/$TARGETDIR/BuildIdentity.txt
 fi
 
-# Calculating new checksums
-echo "Creating MD5 checksum file..."
-../../scripts/create-md5
-
-echo "Creating package 'swarmops-$PACKAGENAME-latest.deb'..."
 cd ../..
-if [ -e swarmops-$PACKAGENAME-latest.deb ]; then
-  rm swarmops-$PACKAGENAME-latest.deb
-fi
-fakeroot dpkg-deb --build $DROPFOLDER/payload
-mv $DROPFOLDER/payload.deb swarmops-$PACKAGENAME-latest.deb
-cp swarmops-$PACKAGENAME-latest.deb /var/www/packages.swarmops.com
 
-echo "Updating repositories..."
-scripts/update-repos swarmops-$PACKAGENAME-latest.deb squeeze,trusty,xenial,jessie
+scripts/repackage-build-package-distro $DROPFOLDER $PACKAGENAME squeeze,trusty,xenial,jessie
 
-# TODO: FIX INTERNAL INSTALL
+
+# TODO: FIX INTERNAL INSTALL?
 
 #if [ "$2" == "" ]; then
   #echo "Installing INTERNAL BUILD on swarmops-dev for testing..."
@@ -189,7 +178,6 @@ scripts/update-repos swarmops-$PACKAGENAME-latest.deb squeeze,trusty,xenial,jess
 
 echo "Cleaning up..."
 
-rm swarmops-$PACKAGENAME-latest.deb
 rm /var/www/packages.swarmops.com/swarmops-$PACKAGENAME-latest.deb
 rm -rf $DROPFOLDER/payload
 
