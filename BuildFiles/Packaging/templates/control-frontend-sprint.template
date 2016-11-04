@@ -2,7 +2,7 @@ Package: swarmops-frontend
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
-Depends: swarmops-common (>= --BuildNumber--), swarmops-frontend-external-scripts (>= --BuildNumber--), apache2 (>= 2.2.20), mono-apache-server4 (>= 3.0.11), libapache2-mod-mono (>= 2.11), libgdiplus (>= 2.11), imagemagick, ghostscript
+Depends: swarmops-common (>= --BuildNumber--), swarmops-frontend-external-scripts (>= --BuildNumber--), --Dependencies--
 Conflicts: swarmops-frontend-internal,swarmops-frontend-stable
 Homepage: http://swarmops.com/
 Description: Swarmops Frontend

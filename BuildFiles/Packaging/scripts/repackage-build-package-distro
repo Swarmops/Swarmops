@@ -7,6 +7,7 @@
 $PACKAGENAME=$1
 $DROPFOLDER=$2
 $DISTROS=$3
+$PACKAGE=$4
 
 IFS=',' read -r -a distros <<< "$DISTROS"
 unset IFS
@@ -15,9 +16,20 @@ for DISTRO in "${distros[@]}"
 do
   echo "Packaging for $DISTRO..."
 
+  if [ -e dependencies/$PACKAGE-$DISTRO ]; then
+    DEPENDENCIES=$(cat dependencies/$PACKAGE-$DISTRO | tr -d ' \r')
+  else
+    DEPENDENCIES=$(cat dependencies/$PACKAGE-default | tr -d ' \r')
+  fi
+
+  cp $DROPFOLDER/payload/DEBIAN/control $DROPFOLDER/controlbackup
+  sed -i "s/--Dependencies--/$DEPENDENCIES/g" $DROPFOLDER/payload/DEBIAN/control
+
   # Calculating new checksums
   echo "Creating MD5 checksum file ($DISTRO)..."
-  scripts/create-md5
+  cd $DROPFOLDER/payload
+  ../../scripts/create-md5
+  cd ../..
 
   echo "Creating package 'swarmops-$PACKAGENAME-$DISTRO-latest.deb'..."
   if [ -e swarmops-$PACKAGENAME-latest.deb ]; then
@@ -30,7 +42,10 @@ do
   echo "Updating repositories ($DISTRO)..."
   scripts/update-repos swarmops-$PACKAGENAME-$DISTRO-latest.deb $DISTRO
 
-rm swarmops-$PACKAGENAME-$DISTRO-latest.deb
+  echo "Restoring control file, cleaning up ($DISTRO)..."
+  cp $DROPFOLDER/controlbackup $DROPFOLDER/payload/DEBIAN/control
+  rm $DROPFOLDER/controlbackup
+  rm swarmops-$PACKAGENAME-$DISTRO-latest.deb
 
 done
 
