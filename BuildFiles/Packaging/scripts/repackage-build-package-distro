@@ -4,10 +4,10 @@
 # Builds in /home/builder/swarmops/{buildtype}
 # Home folder for script is /home/builder/swarmops/packaging
 
-$PACKAGENAME=$1
-$DROPFOLDER=$2
-$DISTROS=$3
-$PACKAGE=$4
+PACKAGENAME=$1
+DROPFOLDER=$2
+DISTROS=$3
+PACKAGE=$4
 
 IFS=',' read -r -a distros <<< "$DISTROS"
 unset IFS
