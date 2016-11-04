@@ -103,12 +103,14 @@ if [ "$COPYFILES" == "yes" ]; then
     mkdir -p etc/init.d
     cp $SOURCEDIR/etcinitd/* etc/init.d/.
     chmod +x etc/init.d/*
+    ls -la etc/init.d
   fi
 
   if [ -d $SOURCEDIR/etcsystemd ]; then
     echo "Adding /lib/systemd files..."
     mkdir -p lib/systemd/system
-    cp $SOURCEDIR/etcsystemd/* lib/systemd/system
+    cp $SOURCEDIR/etcsystemd/* lib/systemd/system/.
+    ls -la lib/systemd/system
   fi
 
   if [ "$1" == "frontend" ]; then
