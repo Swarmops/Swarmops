@@ -33,7 +33,7 @@ do
 # read -p "Press [Enter] key to make create checksums..."
 
   echo "Setting build number $BUILDID-$DISTRO..."
-  sed -i "s/--BuildNumber--/$BUILDID-$DISTRO/g" DEBIAN/control
+  sed -i "s/--BuildNumber--/$BUILDID-$DISTRO/g" $DROPFOLDER/payload/DEBIAN/control
 
   # Calculating new checksums
   echo "Creating MD5 checksum file ($DISTRO)..."
