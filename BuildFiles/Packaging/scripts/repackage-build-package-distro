@@ -22,6 +22,8 @@ do
     DEPENDENCIES=$(cat dependencies/$PACKAGE-default | tr -d ' \r')
   fi
 
+  echo "Dependencies: $DEPENDENCIES"
+
   cp $DROPFOLDER/payload/DEBIAN/control $DROPFOLDER/controlbackup
   sed -i "s/--Dependencies--/$DEPENDENCIES/g" $DROPFOLDER/payload/DEBIAN/control
 
@@ -32,6 +34,9 @@ do
   cd ../..
 
   echo "Creating package 'swarmops-$PACKAGENAME-$DISTRO-latest.deb'..."
+  if [ -e swarmops-$PACKAGENAME-$DISTRO-latest.deb ]; then
+    rm swarmops-$PACKAGENAME-$DISTRO-latest.deb
+  fi
   if [ -e swarmops-$PACKAGENAME-latest.deb ]; then
     rm swarmops-$PACKAGENAME-latest.deb
   fi
