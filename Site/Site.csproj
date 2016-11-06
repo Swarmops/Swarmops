@@ -530,6 +530,9 @@
     <Compile Include="Pages\v5\User\SetCulture.aspx.designer.cs">
       <DependentUpon>SetCulture.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Plugins-Stock\Taxes\SE\MonthlyTaxForm-SE.aspx.cs">
+      <DependentUpon>MonthlyTaxForm-SE.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Security\FinalizeLogin.aspx.cs">
       <DependentUpon>FinalizeLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -989,6 +992,9 @@
     <Content Include="Pages\v5\Swarm\LocalOrganization.aspx" />
     <Content Include="Pages\v5\User\SelectLanguage.aspx" />
     <Content Include="Pages\v5\User\SetCulture.aspx" />
+    <Content Include="Plugins-Stock\Taxes\SE\MonthlyTaxForm-SE-2010.png" />
+    <Content Include="Plugins-Stock\Taxes\SE\MonthlyTaxForm-SE-2015.png" />
+    <Content Include="Plugins-Stock\Taxes\SE\MonthlyTaxForm-SE.aspx" />
     <Content Include="Scripts\alertify.min.js" />
     <Content Include="Scripts\crowdin-jipt.js" />
     <Content Include="Scripts\Experimental\easyui\changelog.txt" />
