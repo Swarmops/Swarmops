@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.UI;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
+using Swarmops.Frontend;
 
 namespace Swarmops.Plugins.Stock.TaxForms
 {
