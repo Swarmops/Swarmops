@@ -331,10 +331,10 @@
     <value>Board Members</value>
   </data>
   <data name="Position_Strategic_Observer" xml:space="preserve">
-    <value>Observer</value>
+    <value>Board Observer</value>
   </data>
   <data name="Position_Strategic_Observer_Plural" xml:space="preserve">
-    <value>Observers</value>
+    <value>Board Observers</value>
   </data>
   <data name="Position_System_SysadminAssistantReadOnly" xml:space="preserve">
     <value>Sysadmin Assistant (Read-only)</value>
