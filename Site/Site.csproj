@@ -1715,6 +1715,8 @@
     <Content Include="Scripts\jquery.fileupload\vendor\jquery.ui.widget.js" />
     <Content Include="Scripts\jquery.json.min.js" />
     <Content Include="Scripts\jquery.leanModal.min.js" />
+    <Content Include="Scripts\jquery.qrcode.js" />
+    <Content Include="Scripts\jquery.qrcode.min.js" />
     <Content Include="Scripts\jquery.qtip.js" />
     <Content Include="Scripts\jquery.qtip.min.js" />
     <Content Include="Scripts\jquery.smartWizard-2.0.js" />
@@ -1724,6 +1726,8 @@
     <Content Include="Scripts\jquery.switchButton.js" />
     <Content Include="Scripts\jquery.tmpl.js" />
     <Content Include="Scripts\jquery.ui.widget.min.js" />
+    <Content Include="Scripts\qrcode.js" />
+    <Content Include="Scripts\qrcode.min.js" />
     <Content Include="Scripts\ScriptLicenses.txt" />
     <Content Include="Scripts\superfish.js" />
     <Content Include="Scripts\Swarmops-v5.js" />
@@ -3139,6 +3143,8 @@
     <Content Include="Scripts\web.config" />
     <Content Include="Style\web.config" />
     <Content Include="Security\web.config" />
+    <Content Include="Scripts\qrcode.min.js.map" />
+    <Content Include="Scripts\jquery.qrcode.min.js.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
