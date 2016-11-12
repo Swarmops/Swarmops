@@ -80,9 +80,11 @@ chown www-data:www-data /etc/swarmops/symmetricKey.config
 if [ -e /tmp/swarmops-restart-apache.flag ]; then
   /etc/init.d/apache2 start
   rm /tmp/swarmops-restart-apache.flag
+else
+  # Actually, _always_ restart Apache - something isn't right otherwise
+  /etc/init.d/apache2 restart
 fi
 
 
 # Always end a frontend update with an Apache reload to clear caches
-
-/etc/init.d/apache2 reload
+# /etc/init.d/apache2 reload
