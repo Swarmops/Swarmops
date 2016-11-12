@@ -2,7 +2,7 @@
 
 # Rename resources, but only for the non-compiled web version
 
-cd Site5
+cd Boneyard/Site5
 
 find . -iname 'Pages*.resx' -exec rename 's/Pages\.([A-Za-z_\.\-]+)\.resx/Pages_$1\.resx/' {} \;
 find . -iname 'Controls*.resx' -exec rename 's/Controls\.([A-Za-z_\.\-]+)\.resx/Controls_$1\.resx/' {} \;
@@ -11,5 +11,5 @@ find . -iname '*.cs' -exec perl -pi -e 's/Resources.Pages.([A-Za-z\.]+)/Resource
 find . -iname '*.aspx' -exec perl -pi -e 's/Resources.Pages.([A-Za-z\.]+)/Resources.Pages_$1/g;' {} \;
 find . -iname '*.cs' -exec perl -pi -e 's/Resources.Controls.([A-Za-z\.]+)/Resources.Controls_$1/g;' {} \;
 
-cd ..
+cd ../..
 
