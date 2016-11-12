@@ -13,3 +13,8 @@ find . -iname '*.cs' -exec perl -pi -e 's/Resources.Controls.([A-Za-z\.]+)/Resou
 
 cd ../..
 
+
+# Restore packages, command line version
+
+mono .nuget/NuGet.exe restore Swarmops.sln
+
