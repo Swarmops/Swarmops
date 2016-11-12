@@ -236,7 +236,9 @@ namespace Swarmops.Frontend.Automation
         public static PersonEditorData GetPersonEditorData (int personId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
+            #pragma warning disable 219
             bool self = false;
+            #pragma warning restore 219
 
             if (personId == 0) // request self record
             {

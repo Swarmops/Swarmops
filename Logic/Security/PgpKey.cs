@@ -1,3 +1,5 @@
+/* ---- TODO: Replace this file with BouncyCastle.OpenPGP classes
+
 using System;
 using Starksoft.Cryptography.OpenPGP;
 using Swarmops.Logic.Structure;
@@ -38,3 +40,5 @@ namespace Swarmops.Logic.Security
         }
     }
 }
+
+--- */
