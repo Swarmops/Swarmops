@@ -257,7 +257,8 @@
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label ID="MasterLabelEditPersonHeaderSecurityProvisioning" runat="server" /></h2>
                     <div class="entryFields">
                         <input type="button" id="masterPersonEditButtonResetPassword" onclick="masterPersonEditorConfirmResetPassword(); return false;" value="#SendResetMail#" />&#8203;<br/>
-                        <input type="input" todo="true"/>
+                        <label for="MasterCheckEditPersonEnable2FA"><asp:Label ID="MasterLabelEditPersonSecurity2FA" runat="server" Text="Bitcoin Cold"/></label><div class="CheckboxContainer"><input type="checkbox" rel="MasterPersonEdit2FA" class="EditCheck" id="MasterCheckEditPersonEnable2FA"/></div><br/>
+
                     </div>
                     <div class="entryLabels">
                         <asp:Label runat="server" ID="MasterLabelEditPersonResetPassword" /><br/>
@@ -351,6 +352,12 @@
     <script type="text/javascript" language="javascript">
         
         // This JavaScript block is for the Master Modal Person Editor.
+
+        $(document).ready(function() {
+            $('.EditCheck').switchbutton({
+                checkedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOn_Upper %>'),
+                uncheckedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOff_Upper %>'),
+            }).change(function() {        });
 
         function masterBeginEditPerson(personId) {
             _master_PersonEditedId = personId;
