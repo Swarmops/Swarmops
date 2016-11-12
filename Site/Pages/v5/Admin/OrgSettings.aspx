@@ -12,7 +12,7 @@
 
             $('.EditCheck').switchbutton({
                 checkedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOn_Upper %>'),
-                uncheckedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOff_Upper %>'),
+                uncheckedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOff_Upper %>')
             }).change(function() {
 
                 if (suppressSwitchResponse) {

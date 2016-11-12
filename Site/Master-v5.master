@@ -356,8 +356,9 @@
         $(document).ready(function() {
             $('.EditCheck').switchbutton({
                 checkedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOn_Upper %>'),
-                uncheckedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOff_Upper %>'),
-            }).change(function() {        });
+                uncheckedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOff_Upper %>')
+            }).change(function() {});
+        });
 
         function masterBeginEditPerson(personId) {
             _master_PersonEditedId = personId;
