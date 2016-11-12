@@ -9,6 +9,7 @@ using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Satoshis = NBitcoin.Money;
 
 namespace Swarmops.Logic.Financial
 {
@@ -64,7 +65,7 @@ namespace Swarmops.Logic.Financial
                 return workCopy[lastSufficientIndex].Unspents.AsInputs;
             }
 
-            throw new NotEnoughFundsException(); // Serving as a placeholder for now, also testing the notification
+            throw new NotEnoughFundsException("Insufficient funds", "Group argument", new Satoshis (satoshisRequired)); // Serving as a placeholder for now, also testing the notification
 
             throw new NotImplementedException("This fundfinding path is not completed"); // TODO
         }

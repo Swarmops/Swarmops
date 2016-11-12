@@ -10,7 +10,7 @@ namespace Swarmops.Logic.Special
     {
         public DummyBitcoin()
         {
-            Address = new BitcoinAddress ("abcdefgh");
+            Address = new BitcoinPubKeyAddress ("abcdefgh");
         }
 
         public static BitcoinAddress Address { get; set; }

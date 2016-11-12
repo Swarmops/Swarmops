@@ -194,7 +194,7 @@ namespace Swarmops.Pages.Security
 
         protected void ProcessRespondBitId (BitIdCredentials credentials, HttpResponse response)
         {
-            BitcoinAddress testAddress = new BitcoinAddress (credentials.address);
+            BitcoinPubKeyAddress testAddress = new BitcoinPubKeyAddress (credentials.address);
             if (testAddress.VerifyMessage (credentials.uri, credentials.signature))
             {
                 // woooooo

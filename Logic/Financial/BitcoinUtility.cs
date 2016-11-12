@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using NBitcoin;
-using NBitcoin.BouncyCastle.Asn1.Ocsp;
 using Newtonsoft.Json.Linq;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
@@ -293,7 +292,7 @@ namespace Swarmops.Logic.Financial
                 return BitcoinTransactionInputs.FromSingle (lowestSingleSufficientInput);
             }
 
-            throw new NotEnoughFundsException();
+            throw new NotEnoughFundsException("Insufficient funds", "group argument", new Satoshis(satoshis));
 
             // Slightly more complex checking (TODO)
         }
@@ -588,7 +587,7 @@ namespace Swarmops.Logic.Financial
         {
             try
             {
-                BitcoinAddress singleAddress = new BitcoinAddress (address, Network.Main);
+                BitcoinAddress singleAddress = new BitcoinPubKeyAddress (address, Network.Main);
                 return true;
             }
                 // ReSharper disable once EmptyGeneralCatchClause
@@ -688,7 +687,7 @@ namespace Swarmops.Logic.Financial
 
             if (bitcoinTestAddress.StartsWith("1")) // regular address
             {
-                txBuilder = txBuilder.Send(new BitcoinAddress(bitcoinTestAddress),
+                txBuilder = txBuilder.Send(new BitcoinPubKeyAddress(bitcoinTestAddress),
                     new Satoshis(satoshis));
             }
             else if (bitcoinTestAddress.StartsWith("3")) // multisig
@@ -704,7 +703,7 @@ namespace Swarmops.Logic.Financial
 
             // Set change address to wallet slush
 
-            txBuilder.SetChange(new BitcoinAddress(changeAddress.Address));
+            txBuilder.SetChange(new BitcoinPubKeyAddress(changeAddress.Address));
 
             // Add fee
 
@@ -782,7 +781,7 @@ namespace Swarmops.Logic.Financial
                             N = source.TransactionOutputIndex
                         },
                         new TxOut (new NBitcoin.Money (source.Satoshis),
-                            new BitcoinAddress (source.BitcoinAddress, Network.Main)));
+                            new BitcoinPubKeyAddress (source.BitcoinAddress, Network.Main)));
             }
         }
     }

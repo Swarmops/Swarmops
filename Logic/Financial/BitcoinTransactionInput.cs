@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Financial
                             N = (uint) input.TransactionOutputIndex
                         },
                         new TxOut (new Satoshis (input.AmountSatoshis),
-                            new BitcoinAddress (input.BitcoinAddress, Network.Main))));
+                            new BitcoinPubKeyAddress (input.BitcoinAddress, Network.Main))));
                 }
 
                 return coinList.ToArray();

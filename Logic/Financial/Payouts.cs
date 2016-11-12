@@ -666,7 +666,7 @@ namespace Swarmops.Logic.Financial
 
                     if (payout.RecipientPerson.BitcoinPayoutAddress.StartsWith ("1")) // regular address
                     {
-                        txBuilder = txBuilder.Send (new BitcoinAddress (payout.RecipientPerson.BitcoinPayoutAddress),
+                        txBuilder = txBuilder.Send (new BitcoinPubKeyAddress (payout.RecipientPerson.BitcoinPayoutAddress),
                             new Satoshis (satoshiPayoutLookup[payout.ProtoIdentity]));
                     }
                     else if (payout.RecipientPerson.BitcoinPayoutAddress.StartsWith ("3")) // multisig
@@ -686,7 +686,7 @@ namespace Swarmops.Logic.Financial
 
                 // Set change address to wallet slush
 
-                txBuilder.SetChange (new BitcoinAddress (changeAddress.Address));
+                txBuilder.SetChange (new BitcoinPubKeyAddress (changeAddress.Address));
 
                 // Add fee
 
