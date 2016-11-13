@@ -96,8 +96,6 @@ if [ "$COPYFILES" == "yes" ]; then
     rm -rf $DEPLOYDIR/$TARGETDIR/staging
   fi
 
-  # LEAVE FOR THE NIGHT: Verify that the etcinitd files are copied on Backend build
-
   if [ -d $SOURCEDIR/etcinitd ]; then
     echo "Adding /etc/init.d files..."
     mkdir -p etc/init.d
@@ -130,7 +128,7 @@ fi
 cp ../../templates/control-$PACKAGENAME.template DEBIAN/control
 cp ../../templates/conffiles-$PACKAGE.template DEBIAN/conffiles
 
-if [ -e "../templates/prerm-$PACKAGE.template" ]; then
+if [ -e "../../templates/prerm-$PACKAGE.template" ]; then
   echo "Adding $PACKAGE prerm script..."
   cp ../../templates/prerm-$PACKAGE.template DEBIAN/prerm
   chmod +x DEBIAN/prerm
@@ -141,7 +139,7 @@ else
   fi
 fi
 
-if [ -e "../templates/postinst-$PACKAGE.template" ]; then
+if [ -e "../../templates/postinst-$PACKAGE.template" ]; then
   echo "Adding $PACKAGE postinst script..."
   cp ../../templates/postinst-$PACKAGE.template DEBIAN/postinst
   chmod +x DEBIAN/postinst
@@ -152,7 +150,7 @@ else
   fi
 fi
 
-if [ -e "../templates/preinst-$PACKAGE.template" ]; then
+if [ -e "../../templates/preinst-$PACKAGE.template" ]; then
   echo "Adding $PACKAGE preinst script..."
   cp ../../templates/preinst-$PACKAGE.template DEBIAN/preinst
   chmod +x DEBIAN/preinst

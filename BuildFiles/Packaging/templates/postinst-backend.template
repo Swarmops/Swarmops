@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#echo "Swarmops post-installation script running"
+#echo "DEBUG: Executing post-installation script, swarmops-backend"
+
 #make sure some directories exist
 mkdir -p /var/lib/swarmops/upload
 #todo: check for database upgrade
@@ -17,4 +18,6 @@ else
   systemctl enable swarmops-backend
   systemctl start swarmops-backend
 fi
+
+echo "DEBUG: Exiting post-install script, swarmops-backend"
 
