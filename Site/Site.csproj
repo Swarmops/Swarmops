@@ -1725,6 +1725,8 @@
     <Content Include="Scripts\jquery.snipe.js" />
     <Content Include="Scripts\jquery.switchButton.js" />
     <Content Include="Scripts\jquery.tmpl.js" />
+    <Content Include="Scripts\jquery.toggles.js" />
+    <Content Include="Scripts\jquery.toggles.min.js" />
     <Content Include="Scripts\jquery.ui.widget.min.js" />
     <Content Include="Scripts\qrcode.js" />
     <Content Include="Scripts\qrcode.min.js" />
@@ -1765,6 +1767,7 @@
     <Content Include="Style\jquery.qtip.css" />
     <Content Include="Style\jquery.qtip.min.css" />
     <Content Include="Style\jquery.switchButton.css" />
+    <Content Include="Style\jquery.toggles.css" />
     <Content Include="Style\style-v5.css" />
     <Content Include="Style\superfish.css" />
     <Content Include="Style\v5-easyui-elements.css" />
