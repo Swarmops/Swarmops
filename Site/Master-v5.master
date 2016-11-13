@@ -259,7 +259,7 @@
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label ID="MasterLabelEditPersonHeaderSecurityProvisioning" runat="server" /></h2>
                     <div class="entryFields">
                         <input type="button" id="masterPersonEditButtonResetPassword" onclick="masterPersonEditorConfirmResetPassword(); return false;" value="#SendResetMail#" />&#8203;<br/>
-                        <label for="MasterCheckEditPersonEnable2FA"><asp:Label ID="MasterLabelEditPersonSecurity2FA" runat="server" Text="Bitcoin Cold"/></label><div class="toggle-iphone"><input type="checkbox" rel="MasterPersonEdit2FA" class="EditCheck" id="MasterCheckEditPersonEnable2FA"/></div><br/>
+                        <label for="MasterCheckEditPersonEnable2FA"><asp:Label ID="MasterLabelEditPersonSecurity2FA" runat="server" Text="Bitcoin Cold"/></label><div class="MasterToggles toggle-iphone"><input type="checkbox" rel="MasterPersonEdit2FA" class="EditCheck" id="MasterCheckEditPersonEnable2FA"/></div><br/>
 
                     </div>
                     <div class="entryLabels">
