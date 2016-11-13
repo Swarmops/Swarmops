@@ -19,5 +19,5 @@ else
   systemctl start swarmops-backend
 fi
 
-echo "DEBUG: Exiting post-install script, swarmops-backend"
+#echo "DEBUG: Exiting post-install script, swarmops-backend"
 

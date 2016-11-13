@@ -4,7 +4,7 @@
 # (It's very rude to shut down services without asking first like this, but even more rude of the lib-mod-mono
 # installer to just bloody hang.)
 
-echo "DEBUG: Executing pre-install script, swarmops-frontend"
+#echo "DEBUG: Executing pre-install script, swarmops-frontend"
 
 if [ ! -e /etc/swarmops/database.config ]; then
   if [ -e /etc/init.d/apache2 ]; then
@@ -16,5 +16,5 @@ if [ ! -e /etc/swarmops/database.config ]; then
   fi
 fi
 
-echo "DEBUG: Exiting pre-install script, swarmops-frontend"
+#echo "DEBUG: Exiting pre-install script, swarmops-frontend"
 
