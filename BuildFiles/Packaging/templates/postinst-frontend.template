@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "DEBUG: Executing post-install script, swarmops-frontend"
+
 # make sure the upload folder exists and is writeable by www-data
 # do not make any changes to an already existing folder
 
@@ -88,3 +90,5 @@ fi
 
 # Always end a frontend update with an Apache reload to clear caches
 # /etc/init.d/apache2 reload
+
+echo "DEBUG: Exiting post-install script, swarmops-frontend"

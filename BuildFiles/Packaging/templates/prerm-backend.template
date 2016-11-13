@@ -1,5 +1,7 @@
 #! /bin/bash
 
+echo "DEBUG: Executing pre-remove script, swarmops-backend"
+
 # Different paths for systemd and upstart
 
 if [ -z $(pidof systemd) ]; then
@@ -10,4 +12,4 @@ else
   systemctl disable swarmops-backend
 fi
 
-
+echo "DEBUG: Exiting pre-remove script, swarmops-backend"
