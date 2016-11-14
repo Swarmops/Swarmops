@@ -259,7 +259,7 @@
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label ID="MasterLabelEditPersonHeaderSecurityProvisioning" runat="server" /></h2>
                     <div class="entryFields">
                         <input type="button" id="masterPersonEditButtonResetPassword" onclick="masterPersonEditorConfirmResetPassword(); return false;" value="#SendResetMail#" />&#8203;<br/>
-                        <label for="MasterCheckEditPersonEnable2FA"><asp:Label ID="MasterLabelEditPersonSecurity2FA" runat="server" Text="Bitcoin Cold"/></label><div class="MasterToggles toggle-padding toggle-iphone"><input type="checkbox" rel="MasterPersonEdit2FA" class="EditCheck" id="MasterCheckEditPersonEnable2FA"/></div><br/>
+                        <Swarmops5:AjaxToggleSlider ID="MasterToggleEditPerson2FA" runat="server" Label="2FALabel" Cookie="2FA" AjaxCallbackUrl="" OnChange="masterPersonEditorOnToggle"/>
 
                     </div>
                     <div class="entryLabels">
@@ -355,15 +355,6 @@
         
         // This JavaScript block is for the Master Modal Person Editor.
 
-        $(document).ready(function() {
-            $('.MasterToggles').toggles(
-                { text: {
-                    on: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOn_Upper %>'),
-                    off: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOff_Upper %>')
-                }
-            }).change(function() {});
-        });
-
         function masterBeginEditPerson(personId) {
             _master_PersonEditedId = personId;
 
@@ -415,6 +406,15 @@
         var _master_PersonEditLoading = false;
 
 
+        function masterPersonEditorOnToggle(newValue, fieldName, controlName) {
+            // Do the AJAX call from here, as we need to also pass along the person ID of the person edited
+            // (the AjaxToggleSlider auto-callback is disabled for this reason)
+
+
+            alert("Field Change: " + fieldName + " changed to '" + newValue + "'");
+        }
+
+
         function masterPersonEditorOnFieldChange(newValue, fieldName, controlName) {
             // Do the AJAX call from here, as we need to also pass along the person ID of the person edited
             // (the AjaxTextBox auto-callback is disabled for this reason, code duplicated here)
@@ -457,10 +457,6 @@
                     alert('fail');
                     window[controlName + "_updateFailAnimate"](result.NewValue);
                 });
-
-
-
-            //alert("Field Change: " + fieldName + " changed to '" + newValue + "'");
 
         }
 

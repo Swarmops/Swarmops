@@ -64,18 +64,7 @@ namespace Swarmops.Frontend
         }
 
 
-        // Common localizations
 
-        // ReSharper disable InconsistentNaming
-        public string Localized_SwitchLabelOn_Upper
-        {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Global_On.ToUpperInvariant()); }
-        }
-
-        public string Localized_SwitchLabelOff_Upper
-        {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Global_Off.ToUpperInvariant()); }
-        }
     }
 
 }

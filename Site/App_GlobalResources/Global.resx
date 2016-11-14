@@ -740,7 +740,7 @@
     <value>Twitter ID</value>
   </data>
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
-    <value>2FA (disabling quarantines login)</value>
+    <value>Two-factor authentication (disabling quarantines login)</value>
     <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
   </data>
   <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
