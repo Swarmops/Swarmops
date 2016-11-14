@@ -99,6 +99,27 @@ namespace Swarmops.Frontend
             return result;
         }
 
+        public static Authority InitAuthority()
+        {
+            try
+            {
+                Authority authority = CommonV5.GetAuthenticationDataAndCulture(HttpContext.Current).Authority;
+                return authority;
+            }
+            catch (Exception)
+            {
+                // if this fails FOR WHATEVER REASON then we're not authenticated
+                System.Web.Security.FormsAuthentication.SignOut();
+
+                if (!HttpContext.Current.Request.Path.ToLowerInvariant().StartsWith("/security/login"))
+                {
+                    // If we're not already on the login page, put us on the login page leading to Dashboard
+                    HttpContext.Current.Response.Redirect("/");
+                }
+                return null;
+            }
+        }
+
         public static string JavascriptEscape (string input)
         {
             if (String.IsNullOrEmpty (input))

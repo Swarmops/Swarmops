@@ -1,6 +1,6 @@
 ﻿.toggle-padding {
-    padding-top: 8px;
-    padding-right: 8px;
+    padding-top: 6px;
+    padding-right: 6px;
     float: right;
     height: 25px;
     width: 80px;
@@ -8,7 +8,7 @@
 
 body.rtl .toggle-padding {
     padding-right: inherit;
-    padding-left: 8px;
+    padding-left: 6px;
     float: left;
 }
 

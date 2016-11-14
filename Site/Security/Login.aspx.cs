@@ -162,6 +162,13 @@ namespace Swarmops.Pages.Security
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
 
+            _cacheVersionMark = Logic.Support.Formatting.SwarmopsVersion;
+            if (_cacheVersionMark.StartsWith("Debug"))
+            {
+                _cacheVersionMark = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.ffff");
+            }
+            _cacheVersionMark = SHA1.Hash(_cacheVersionMark).Replace(" ", "").Substring(0, 8);
+
             Localize();
 
             // Generate BitID tokens
@@ -191,6 +198,8 @@ namespace Swarmops.Pages.Security
                 "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" + HttpUtility.UrlEncode (bitIdUri);
         }
 
+
+        protected string _cacheVersionMark; // CSS cache buster
 
         protected void ProcessRespondBitId (BitIdCredentials credentials, HttpResponse response)
         {

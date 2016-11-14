@@ -35,18 +35,7 @@ namespace Swarmops.Frontend
 
         protected override void OnInit (EventArgs e)
         {
-            try
-            {
-                this._authority = CommonV5.GetAuthenticationDataAndCulture (HttpContext.Current).Authority;
-            }
-            catch (Exception)
-            {
-                // if this fails FOR WHATEVER REASON then we're not authenticated
-                this._authority = null;
-                FormsAuthentication.SignOut();
-                Response.Redirect ("/");
-            }
-
+            this._authority = CommonV5.InitAuthority();
             base.OnInit (e);
         }
 

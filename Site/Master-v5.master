@@ -29,7 +29,7 @@
 
 	<!-- style sheet, followed by script style sheets -->
     <asp:PlaceHolder ID="NeededForCacheMarkToParse1" runat="server">
-        <link href="/Style/style-v5.css?CacheId=<%= _cacheVersionMark %>" rel="stylesheet" type="text/css" />
+        <link href="/Style/style-v5.css?CacheId=<%= this._cacheVersionMark %>" rel="stylesheet" type="text/css" />
     </asp:PlaceHolder>
     <link href="/Style/jquery.qtip.css" rel="stylesheet" type="text/css" />
     <link href="/Style/jquery.toggles.css" rel="stylesheet" type="text/css" />
@@ -41,11 +41,11 @@
     <!-- external packages that are commonly used (on practically all pages) -->
     <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
     <asp:PlaceHolder ID="NeededForCacheMarkToParse2" runat="server">
-        <link href="/Style/v5-easyui-overrides.css?CacheId=<%= _cacheVersionMark %>" rel="stylesheet" type="text/css" />
+        <link href="/Style/v5-easyui-overrides.css?CacheId=<%= this._cacheVersionMark %>" rel="stylesheet" type="text/css" />
     </asp:PlaceHolder>
     
     <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
-    <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js?CacheId=<%= _cacheVersionMark %>" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js?CacheId=<%= this._cacheVersionMark %>" ></script>
 
     <!-- additional scripts etc from individual pages -->
     <Swarmops5:IncludedScripts ID="IncludedScripts" runat="server" />

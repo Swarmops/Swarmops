@@ -85,6 +85,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\v5\Base\AjaxToggleSlider.ascx.cs">
+      <DependentUpon>AjaxToggleSlider.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Base\AjaxToggleSlider.ascx.designer.cs">
+      <DependentUpon>AjaxToggleSlider.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Admin\BitcoinEchoTest.aspx.cs">
       <DependentUpon>BitcoinEchoTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -610,6 +617,7 @@
     <Content Include="Automation\Json-TransactionTagsTree.aspx" />
     <Content Include="Automation\SwarmFunctions.aspx" />
     <Content Include="Controls\v5\Base\AjaxTextBox.ascx" />
+    <Content Include="Controls\v5\Base\AjaxToggleSlider.ascx" />
     <Content Include="Controls\v5\Base\ComboGeographies.ascx" />
     <Content Include="Controls\v5\Base\DropDown.ascx" />
     <Content Include="Controls\v5\Base\FileUpload.ascx" />
@@ -4155,6 +4163,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

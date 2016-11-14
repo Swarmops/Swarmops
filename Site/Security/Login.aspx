@@ -6,21 +6,46 @@
 <head id="Head1" runat="server">
 
     <!-- jQuery and plugins -->
-    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
-    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.tmpl.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.toggles.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.color.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.animate-shadow.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.qtip.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/hoverIntent.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/superfish.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js" ></script>
 
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:light,regular,500,bold' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
-
-    <!-- page title -->
-	<title>Swarmops Alpha - Login</title>
-
-    <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
+    
+	<!-- style sheet, followed by script style sheets -->
+    <asp:PlaceHolder ID="NeededForCacheMarkToParse1" runat="server">
+        <link href="/Style/style-v5.css?CacheId=<%= _cacheVersionMark %>" rel="stylesheet" type="text/css" />
+    </asp:PlaceHolder>
+    <link href="/Style/jquery.qtip.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/jquery.toggles.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.core.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.default.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/superfish.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+    
+    <!-- external packages that are commonly used (on practically all pages) -->
+    <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
+    <asp:PlaceHolder ID="NeededForCacheMarkToParse2" runat="server">
+        <link href="/Style/v5-easyui-overrides.css?CacheId=<%= _cacheVersionMark %>" rel="stylesheet" type="text/css" />
+    </asp:PlaceHolder>
+    
+    <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
+    <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js?CacheId=<%= _cacheVersionMark %>" ></script>
+
+    <!-- page title -->
+
+	<title>Swarmops Alpha - Login</title>
 
     <!-- custom styles -->
     

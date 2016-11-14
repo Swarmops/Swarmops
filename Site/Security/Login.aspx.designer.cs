@@ -22,6 +22,33 @@ namespace Swarmops.Pages.Security {
         protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
         
         /// <summary>
+        /// NeededForCacheMarkToParse1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder NeededForCacheMarkToParse1;
+        
+        /// <summary>
+        /// ExternalScriptEasyUI control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.UI.ExternalScripts ExternalScriptEasyUI;
+        
+        /// <summary>
+        /// NeededForCacheMarkToParse2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder NeededForCacheMarkToParse2;
+        
+        /// <summary>
         /// form2 control.
         /// </summary>
         /// <remarks>
