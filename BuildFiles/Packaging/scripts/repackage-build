@@ -58,6 +58,9 @@ if [ "$DROPFOLDER" == "internal" ]; then
   echo "" >> deploymsg.txt
   echo "The packages (swarmops-frontend-internal, swarmops-backend-internal) are available from repositories now, and can be tested at the Dev Sandbox as usual. Last 3 commits listed above." >> deploymsg.txt
   
+  echo "Installing unattended on Sandbox..."
+  cat scripts/remote-update-sandbox | ssh swarmops-sandbox /bin/bash
+
   # Do not mail for internal releases, for now
 
 else
