@@ -461,5 +461,22 @@ namespace Swarmops.Frontend
             get { return CommonV5.JavascriptEscape(Resources.Global.Global_Confirm); }
         }
 
+        public string Localized_MasterPersonEdit_CannotProvision2FA
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPerson2FAEnable_CannotProvision); }
+        }
+
+        public string Localized_MasterPersonEdit_ConfirmRemove2FAProvision
+        {
+            get
+            {
+                return CommonV5.JavascriptEscape(Resources.Global.Master_EditPerson2FAEnable_ConfirmRemoveProvision);
+            }
+        }
+
+        public string Localized_MasterPersonEdit_ConfirmRemove2FAOwn
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPerson2FAEnable_ConfirmRemoveOwn); }
+        }
     }
 }

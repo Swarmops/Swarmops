@@ -259,7 +259,7 @@
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label ID="MasterLabelEditPersonHeaderSecurityProvisioning" runat="server" /></h2>
                     <div class="entryFields">
                         <input type="button" id="masterPersonEditButtonResetPassword" onclick="masterPersonEditorConfirmResetPassword(); return false;" value="#SendResetMail#" />&#8203;<br/>
-                        <Swarmops5:AjaxToggleSlider ID="MasterToggleEditPerson2FA" runat="server" Label="2FALabel" Cookie="2FA" AjaxCallbackUrl="" OnChange="masterPersonEditorOnToggle"/>
+                        <Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FAProvisioning" runat="server" Label="2FALabel" Cookie="2FA" AjaxCallbackUrl="" OnChange="masterPersonEditor2FAProvisionToggle"/>
 
                     </div>
                     <div class="entryLabels">
@@ -412,6 +412,18 @@
 
 
             alert("Field Change: " + fieldName + " changed to '" + newValue + "'");
+        }
+
+
+        function masterPersonEditor2FAProvisionToggle(newValue, fieldName, controlName) {
+            if (newValue) { // it's a boolean, so "if true" meaning if the slider is "on"
+                // 2FA can't be provisioned true, only installed by the user
+
+                <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(false);
+                alertify.alert(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_CannotProvision2FA%>'));
+            } else {
+                // We're turning 2FA _OFF_ for someone else - are we really sure we want to do this?
+            }
         }
 
 

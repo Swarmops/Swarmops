@@ -18,8 +18,6 @@
             })
             .on('toggle', function(e, active) 
             {
-                alert(active);
-
                 if (active != _initVal_<%=this.SliderCheckbox.ClientID%>) {
                     var jsonData = {};
                     jsonData.newValue = active;
@@ -100,12 +98,12 @@
     }
 
     function <%=this.ClientID%>_setValue(newValue) {
-        $('#<%=this.SliderCheckbox.ClientID%>').val(newValue);
+        $('#<%=this.ClientID%>_sliderContainer').toggles({ on: newValue });
     }
 
     function <%=this.ClientID%>_initialize(initValue) {
         _initVal_<%=this.SliderCheckbox.ClientID%> = initValue;
-        <%=this.ClientID%>_setValue(initValue);
+        $('#<%=this.ClientID%>_sliderContainer').toggles({ on: initValue });
         <%=this.ClientID%>_enable();
     }
 

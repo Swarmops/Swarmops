@@ -1456,6 +1456,51 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;CANNOT PROVISION 2FA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You cannot turn on two-factor authentication for someone else. They must do it by themselves, thereby being alone in having their secret keys..
+        /// </summary>
+        internal static string Master_EditPerson2FAEnable_CannotProvision {
+            get {
+                return ResourceManager.GetString("Master_EditPerson2FAEnable_CannotProvision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two-factor authentication has been disabled. You must now log in with a regular password..
+        /// </summary>
+        internal static string Master_EditPerson2FAEnable_ConfirmingRemovedOwn {
+            get {
+                return ResourceManager.GetString("Master_EditPerson2FAEnable_ConfirmingRemovedOwn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two-factor authentication was removed for this user. They must now log in with a regular password..
+        /// </summary>
+        internal static string Master_EditPerson2FAEnable_ConfirmingRemovedProvision {
+            get {
+                return ResourceManager.GetString("Master_EditPerson2FAEnable_ConfirmingRemovedProvision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;DISABLE TWO-FACTOR AUTHENTICATION?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is not recommended. Two-factor authentication significantly raises the security of your account, in addition to making it much easier to log in if you&apos;re using BitID.&lt;br/&gt;&lt;br/&gt;Remove 2FA and fall back to password-only authentication?.
+        /// </summary>
+        internal static string Master_EditPerson2FAEnable_ConfirmRemoveOwn {
+            get {
+                return ResourceManager.GetString("Master_EditPerson2FAEnable_ConfirmRemoveOwn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;REMOVE TWO-FACTOR AUTHENTICATION?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Only do this if you have been requested to turn off 2FA for this user, by this user themselves, &lt;strong&gt;and&lt;/strong&gt; you are absolutely, positively sure that the request came from the person whose security you are disabling (as per the verification policy of the organization).&lt;br/&gt;&lt;br/&gt;Proceed with removing this user&apos;s security? They will fall back to password-only security..
+        /// </summary>
+        internal static string Master_EditPerson2FAEnable_ConfirmRemoveProvision {
+            get {
+                return ResourceManager.GetString("Master_EditPerson2FAEnable_ConfirmRemoveProvision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account.
         /// </summary>
         internal static string Master_EditPersonHeaderAccount {
@@ -1699,6 +1744,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to One day.
+        /// </summary>
+        internal static string Timespan_Selection_OneDay {
+            get {
+                return ResourceManager.GetString("Timespan_Selection_OneDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to One month.
         /// </summary>
         internal static string Timespan_Selection_OneMonth {
@@ -1713,6 +1767,15 @@ namespace Resources {
         internal static string Timespan_Selection_OneYear {
             get {
                 return ResourceManager.GetString("Timespan_Selection_OneYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seven days.
+        /// </summary>
+        internal static string Timespan_Selection_SevenDays {
+            get {
+                return ResourceManager.GetString("Timespan_Selection_SevenDays", resourceCulture);
             }
         }
         
@@ -1735,11 +1798,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Two days.
+        /// </summary>
+        internal static string Timespan_Selection_TwoDays {
+            get {
+                return ResourceManager.GetString("Timespan_Selection_TwoDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Two months.
         /// </summary>
         internal static string Timespan_Selection_TwoMonths {
             get {
                 return ResourceManager.GetString("Timespan_Selection_TwoMonths", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two weeks.
+        /// </summary>
+        internal static string Timespan_Selection_TwoWeeks {
+            get {
+                return ResourceManager.GetString("Timespan_Selection_TwoWeeks", resourceCulture);
             }
         }
         

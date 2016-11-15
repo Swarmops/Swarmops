@@ -774,4 +774,34 @@
   <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
     <value>A password reset link was sent to this user.</value>
   </data>
+  <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
+    <value>&lt;strong&gt;CANNOT PROVISION 2FA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You cannot turn on two-factor authentication for someone else. They must do it by themselves, thereby being alone in having their secret keys.</value>
+    <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedOwn" xml:space="preserve">
+    <value>Two-factor authentication has been disabled. You must now log in with a regular password.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedProvision" xml:space="preserve">
+    <value>Two-factor authentication was removed for this user. They must now log in with a regular password.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveOwn" xml:space="preserve">
+    <value>&lt;strong&gt;DISABLE TWO-FACTOR AUTHENTICATION?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is not recommended. Two-factor authentication significantly raises the security of your account, in addition to making it much easier to log in if you're using BitID.&lt;br/&gt;&lt;br/&gt;Remove 2FA and fall back to password-only authentication?</value>
+    <comment>Displayed when removing 2FA for yourself</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
+    <value>&lt;strong&gt;REMOVE TWO-FACTOR AUTHENTICATION?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Only do this if you have been requested to turn off 2FA for this user, by this user themselves, &lt;strong&gt;and&lt;/strong&gt; you are absolutely, positively sure that the request came from the person whose security you are disabling (as per the verification policy of the organization).&lt;br/&gt;&lt;br/&gt;Proceed with removing this user's security? They will fall back to password-only security.</value>
+    <comment>Displayed when removing 2FA for someone else</comment>
+  </data>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>One day</value>
+  </data>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>Seven days</value>
+  </data>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>Two days</value>
+  </data>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>Two weeks</value>
+  </data>
 </root>
