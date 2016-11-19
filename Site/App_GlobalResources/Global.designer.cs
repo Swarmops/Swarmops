@@ -691,6 +691,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Two-factor authentication.
+        /// </summary>
+        internal static string Global_2FA {
+            get {
+                return ResourceManager.GetString("Global_2FA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two-factor auth.
+        /// </summary>
+        internal static string Global_2FA_Short {
+            get {
+                return ResourceManager.GetString("Global_2FA_Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2FA.
+        /// </summary>
+        internal static string Global_2FA_Shorter {
+            get {
+                return ResourceManager.GetString("Global_2FA_Shorter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Action.
         /// </summary>
         internal static string Global_Action {
@@ -1497,6 +1524,15 @@ namespace Resources {
         internal static string Master_EditPerson2FAEnable_ConfirmRemoveProvision {
             get {
                 return ResourceManager.GetString("Master_EditPerson2FAEnable_ConfirmRemoveProvision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two-factor authentication was not removed and is still active..
+        /// </summary>
+        internal static string Master_EditPerson2FAEnable_NotRemoved {
+            get {
+                return ResourceManager.GetString("Master_EditPerson2FAEnable_NotRemoved", resourceCulture);
             }
         }
         

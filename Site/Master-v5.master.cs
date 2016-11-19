@@ -478,5 +478,10 @@ namespace Swarmops.Frontend
         {
             get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPerson2FAEnable_ConfirmRemoveOwn); }
         }
+
+        public string Localized_MasterPersonEdit_Cancelled2FARemoval
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPerson2FAEnable_NotRemoved); }
+        }
     }
 }

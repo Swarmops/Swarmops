@@ -7,7 +7,18 @@
     var _initVal_<%=this.TextInput.ClientID%> = $('#<%=this.TextInput.ClientID%>').val();
 
     $(document).ready(function () {
+        $('#<%=this.TextInput.ClientID%>').keydown(function (e) {
+            // reset timer if set
+            if (<%=this.ClientID%>_onChangingTimer != null) {
+                clearTimeout(<%=this.ClientID%>_onChangingTimer);
+                <%=this.ClientID%>_onChangingTimer = setTimeout(function() { <%=this.ClientID%>_fireOnChanging(); }, 500);
+            } else {
+                // otherwise set new timer with a more generous timeout on keydown in general
+                <%=this.ClientID%>_onChangingTimer = setTimeout(function () { <%=this.ClientID%>_fireOnChanging(); }, 500);
+            }
+        });
 
+        // OnChange event, AjaxCallback event
         $('#<%=this.TextInput.ClientID%>').blur(function() {
 
             var currentValue = $('#<%=this.TextInput.ClientID%>').val();
@@ -81,6 +92,21 @@
         });
 
     });
+
+    function <%=this.ClientID%>_fireOnChanging() {
+        <%=this.ClientID%>_onChangingTimer = null;
+
+        alertify.log("FireOnChanging");
+
+        <%
+            if (string.IsNullOrEmpty(this.OnChanging))
+            {
+                Response.Write(this.OnChanging + "(" + this.TextInput.ClientID + ".val(), '" + this.Cookie + "', '" + this.ClientID + "');"); // cookie may be empty and that's ok 
+            }
+        %>
+    }
+
+    var <%=this.ClientID%>_onChangingTimer = null;
 
     function <%=this.ClientID%>_updateSuccessAnimate(newValue) {
         $('#<%=this.TextInput.ClientID%>').css('background-color', '#E0FFE0');

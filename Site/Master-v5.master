@@ -245,16 +245,22 @@
                         <asp:Label runat="server" ID="MasterLabelEditPersonTwitter" /><br/>
                     </div>
                 </div>
-                <!--<div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Security (your own)</h2>
-                    <div class="entryFields">...</div>
-                    <div class="entryLabels">
-                        New Password<br/>
-                        New Password Again<br/>
-                        Enable BitId (bitcoin signature login)<br/>
-                        Enter current password to save
+                <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label runat="server" ID="MasterLabelEditPersonHeaderSecurity" Text="#Security#"/></h2>
+                    <div class="entryFields">
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonCurrentPassword" runat="server" OnChanging="masterPersonEditorOnSecurityPasswordChanging" Cookie="CurrentPassword" AjaxCallbackUrl="" />&#8203;<br/>
+                        <div class="divMasterPersonEditSecurityRolldown" style="display:none"><Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FA" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="2FA" AjaxCallbackUrl=""  />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword1" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Phone" AjaxCallbackUrl=""  />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword2" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="TwitterId" AjaxCallbackUrl=""  />
+                        </div>
                     </div>
-                </div>-->
+                    <div class="entryLabels">
+                        Type current password to enable changes<br/>
+                        <div class="divMasterPersonEditSecurityRolldown" style="display:none">Enable BitId (bitcoin signature login)<br/>
+                        Set new password<br/>
+                        Retype new password</div>
+                    </div>
+                </div>
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label ID="MasterLabelEditPersonHeaderSecurityProvisioning" runat="server" /></h2>
                     <div class="entryFields">
@@ -355,6 +361,9 @@
         
         // This JavaScript block is for the Master Modal Person Editor.
 
+        $(document).ready(function() {
+        });
+
         function masterBeginEditPerson(personId) {
             _master_PersonEditedId = personId;
 
@@ -368,6 +377,8 @@
             <%= this.MasterEditPersonTwitterId.ClientID %>_disableClear();
 
             $('span.spanModalEditingPersonName').text(SwarmopsJS.unescape('<%= this.Localized_LoadingPlaceholderShort %>'));
+
+            $('div.divMasterPersonEditSecurityRolldown').hide();
 
             // Open the Modal
             <%=this.ModalMasterEditPerson.ClientID%>_open();
@@ -390,6 +401,8 @@
                     <%= this.MasterEditPersonMail.ClientID %>_initialize(data.Mail);
                     <%= this.MasterEditPersonPhone.ClientID %>_initialize(data.Phone);
                     <%= this.MasterEditPersonTwitterId.ClientID %>_initialize(data.TwitterId);
+
+                    <%=this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(true); // TODO: Based on data.2FA
 
                     _master_PersonEditLoading = false;
 
@@ -422,9 +435,39 @@
                 <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(false);
                 alertify.alert(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_CannotProvision2FA%>'));
             } else {
-                // We're turning 2FA _OFF_ for someone else - are we really sure we want to do this?
+                alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_ConfirmRemove2FAProvision%>'), 
+                    function (response) { 
+                        if (response) {
+                            alert("Success!");
+                        } else {
+                            <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(true);
+                            alertify.log(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_Cancelled2FARemoval%>'));
+                        }
+                    }); 
             }
         }
+
+        function masterPersonEditor2FAToggle(newValue, fieldName, controlName) {
+            if (newValue) { // it's a boolean, so "if true" meaning if the slider is "on"
+                // The user is requesting to enable 2FA. For now, we only use BitId.
+
+                <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(false);
+                alertify.alert(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_CannotProvision2FA%>'));
+            } else {
+                // The user is requesting their 2FA be removed
+                alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_ConfirmRemove2FAOwn%>'), 
+                    function (response) { 
+                        if (response) {
+                            // TODO: Enter password as a security measure (or check against entered)
+                            alert("Success!");
+                        } else {
+                            <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(true);
+                            alertify.log(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_Cancelled2FARemoval%>'));
+                        }
+                    }); 
+            }
+        }
+
 
 
         function masterPersonEditorOnFieldChange(newValue, fieldName, controlName) {
@@ -490,7 +533,7 @@
                     if (response) {
                         alert("Success!");
                     } else {
-                        alert("Cancel");
+                        // Possibly notify user in small log format that cancellation is acknowledged
                     }
                 }); 
         }

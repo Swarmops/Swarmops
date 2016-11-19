@@ -774,6 +774,15 @@
   <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
     <value>A password reset link was sent to this user.</value>
   </data>
+  <data name="Global_2FA" xml:space="preserve">
+    <value>Two-factor authentication</value>
+  </data>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>Two-factor auth</value>
+  </data>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>2FA</value>
+  </data>
   <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
     <value>&lt;strong&gt;CANNOT PROVISION 2FA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You cannot turn on two-factor authentication for someone else. They must do it by themselves, thereby being alone in having their secret keys.</value>
     <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
@@ -791,6 +800,9 @@
   <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
     <value>&lt;strong&gt;REMOVE TWO-FACTOR AUTHENTICATION?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Only do this if you have been requested to turn off 2FA for this user, by this user themselves, &lt;strong&gt;and&lt;/strong&gt; you are absolutely, positively sure that the request came from the person whose security you are disabling (as per the verification policy of the organization).&lt;br/&gt;&lt;br/&gt;Proceed with removing this user's security? They will fall back to password-only security.</value>
     <comment>Displayed when removing 2FA for someone else</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
+    <value>Two-factor authentication was not removed and is still active.</value>
   </data>
   <data name="Timespan_Selection_OneDay" xml:space="preserve">
     <value>One day</value>

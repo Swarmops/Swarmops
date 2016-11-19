@@ -28,6 +28,7 @@ namespace Swarmops.Frontend.Controls.Base
 
         public string Cookie { set; get; }
         public string OnChange { get; set; }
+        public string OnChanging { get; set; }
         public string AjaxCallbackUrl { set; get; }
 
         public string CssClass
