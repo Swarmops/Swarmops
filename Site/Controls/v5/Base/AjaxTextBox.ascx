@@ -96,12 +96,10 @@
     function <%=this.ClientID%>_fireOnChanging() {
         <%=this.ClientID%>_onChangingTimer = null;
 
-        alertify.log("FireOnChanging");
-
         <%
-            if (string.IsNullOrEmpty(this.OnChanging))
+            if (!string.IsNullOrEmpty(this.OnChanging))
             {
-                Response.Write(this.OnChanging + "(" + this.TextInput.ClientID + ".val(), '" + this.Cookie + "', '" + this.ClientID + "');"); // cookie may be empty and that's ok 
+                Response.Write(this.OnChanging + "($('#" + this.TextInput.ClientID + "').val(), '" + this.Cookie + "', '" + this.ClientID + "');"); // cookie may be empty and that's ok 
             }
         %>
     }

@@ -12,6 +12,7 @@ namespace Swarmops.Frontend.Controls.Base
         protected void Page_Load(object sender, EventArgs e)
         {
             this.TextInput.Attributes["Placeholder"] = this.Placeholder;
+            this.TextInput.TextMode = this.Mode;
         }
 
         public string Text
@@ -30,6 +31,7 @@ namespace Swarmops.Frontend.Controls.Base
         public string OnChange { get; set; }
         public string OnChanging { get; set; }
         public string AjaxCallbackUrl { set; get; }
+        public TextBoxMode Mode { get; set; }
 
         public string CssClass
         {

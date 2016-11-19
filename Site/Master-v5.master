@@ -248,10 +248,10 @@
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label runat="server" ID="MasterLabelEditPersonHeaderSecurity" Text="#Security#"/></h2>
                     <div class="entryFields">
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonCurrentPassword" runat="server" OnChanging="masterPersonEditorOnSecurityPasswordChanging" Cookie="CurrentPassword" AjaxCallbackUrl="" />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonCurrentPassword" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityPasswordChanging" Cookie="CurrentPassword" AjaxCallbackUrl="" />&#8203;<br/>
                         <div class="divMasterPersonEditSecurityRolldown" style="display:none"><Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FA" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="2FA" AjaxCallbackUrl=""  />&#8203;<br/>
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword1" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Phone" AjaxCallbackUrl=""  />&#8203;<br/>
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword2" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="TwitterId" AjaxCallbackUrl=""  />
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword1" runat="server" Mode="Password" OnChange="masterPersonEditorOnFieldChange" Cookie="Phone" AjaxCallbackUrl=""  />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword2" runat="server" Mode="Password" OnChange="masterPersonEditorOnFieldChange" Cookie="TwitterId" AjaxCallbackUrl=""  />
                         </div>
                     </div>
                     <div class="entryLabels">
@@ -364,6 +364,23 @@
         $(document).ready(function() {
         });
 
+        var _master_PersonEditor_SecurityShowing = false;
+
+        function masterPersonEditorOnSecurityPasswordChanging(newValue, cookie, controlName) {
+
+            if (newValue == "foobar") {
+                if (!_master_PersonEditor_SecurityShowing) {
+                    $('div.divMasterPersonEditSecurityRolldown').slideDown();
+                    _master_PersonEditor_SecurityShowing = true;
+                }
+            } else {
+                if (_master_PersonEditor_SecurityShowing) {
+                    $('div.divMasterPersonEditSecurityRolldown').slideUp();
+                    _master_PersonEditor_SecurityShowing = false;
+                }
+            }
+        }
+
         function masterBeginEditPerson(personId) {
             _master_PersonEditedId = personId;
 
@@ -379,6 +396,7 @@
             $('span.spanModalEditingPersonName').text(SwarmopsJS.unescape('<%= this.Localized_LoadingPlaceholderShort %>'));
 
             $('div.divMasterPersonEditSecurityRolldown').hide();
+            _master_PersonEditor_SecurityShowing = false;
 
             // Open the Modal
             <%=this.ModalMasterEditPerson.ClientID%>_open();
