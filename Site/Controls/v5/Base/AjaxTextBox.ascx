@@ -34,8 +34,14 @@
                 // public static AjaxInputCallbackResult FunctionName (string newValue, string cookie);
                 //
                 // The page must include IncludedControls.JsonParameters and IncludedControls.ColorAnimation among its script.
+                
+                <%
+                    if (!string.IsNullOrEmpty(this.OnChange) || !string.IsNullOrEmpty(this.AjaxCallbackUrl))
+                    {
+                        Response.Write("$(this).css('background-color', '#FFFFA0');"); // set background yellow indicating processing
+                    }
+                %>
 
-                $(this).css('background-color', '#FFFFA0');
 
                 if ("" != "<%=this.AjaxCallbackUrl%>") { // if there's a direct callback AJAX url
 
@@ -49,16 +55,16 @@
                                 } else {
                                     alertify.error(SwarmopsJS.unescape('<%= this.Localized_AjaxGeneralErrorSettingValue %>'));
                                 }
-                                $(this).css('background-color', '#FFA0A0');
+                                $(this).css('background-color', '#FFA0A0'); // set background red indicating error
                             } else {
                                 if (msg.DisplayMessage != null) {
                                     alertify.log(msg.DisplayMessage);
                                 }
-                                $(this).css('background-color', '#E0FFE0');
+                                $(this).css('background-color', '#E0FFE0'); // set background green indicating success
                                 _initVal_<%=this.TextInput.ClientID%> = msg.NewValue;
                             }
                             $(this).val(_initVal_<%=this.TextInput.ClientID%>);
-                            $(this).animate({ backgroundColor: "#FFFFFF" }, 250);
+                            $(this).animate({ backgroundColor: "#FFFFFF" }, 250); // animate background back to white
                             <%
 
                                 if (!string.IsNullOrEmpty(this.OnChange))
@@ -116,6 +122,10 @@
         $('#<%=this.TextInput.ClientID%>').css('background-color', '#FFA0A0');
         $('#<%=this.TextInput.ClientID%>').animate({ backgroundColor: "#FFFFFF" }, 1000);
         <%=this.ClientID%>_initialize(newValue);
+    }
+
+    function <%=this.ClientID%>_updateProgressAnimate() {
+        $('#<%=this.TextInput.ClientID%>').css('background-color', '#FFFFA0');
     }
 
 

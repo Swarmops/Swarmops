@@ -246,7 +246,7 @@
                     </div>
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label runat="server" ID="MasterLabelEditPersonHeaderSecurity" Text="#Security#"/></h2>
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label runat="server" ID="MasterLabelEditPersonHeaderSecurity" Text="#Your Security#"/></h2>
                     <div class="entryFields">
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonCurrentPassword" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityPasswordChanging" Cookie="CurrentPassword" AjaxCallbackUrl="" />&#8203;<br/>
                         <div class="divMasterPersonEditSecurityRolldown" style="display:none"><Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FA" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="2FA" AjaxCallbackUrl=""  />&#8203;<br/>
@@ -392,6 +392,10 @@
             <%= this.MasterEditPersonMail.ClientID %>_disableClear();
             <%= this.MasterEditPersonPhone.ClientID %>_disableClear();
             <%= this.MasterEditPersonTwitterId.ClientID %>_disableClear();
+
+            <%= this.MasterEditPersonCurrentPassword.ClientID %>_clear();
+            <%= this.MasterEditPersonNewPassword1.ClientID %>_clear();
+            <%= this.MasterEditPersonNewPassword2.ClientID %>_clear();
 
             $('span.spanModalEditingPersonName').text(SwarmopsJS.unescape('<%= this.Localized_LoadingPlaceholderShort %>'));
 

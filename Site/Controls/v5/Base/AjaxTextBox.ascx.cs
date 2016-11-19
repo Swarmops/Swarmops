@@ -12,7 +12,7 @@ namespace Swarmops.Frontend.Controls.Base
         protected void Page_Load(object sender, EventArgs e)
         {
             this.TextInput.Attributes["Placeholder"] = this.Placeholder;
-            this.TextInput.TextMode = this.Mode;
+            this.TextInput.TextMode = this.Mode; // Defaults to SingleLine, so will work uninitialized
         }
 
         public string Text
