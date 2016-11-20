@@ -398,7 +398,7 @@ namespace Swarmops.Frontend.Automation
 
             // We can only verify password for personId zero (the self)
 
-            if (personId != 0)
+            if (personId != 0 && personId != authData.CurrentUser.Identity)
             {
                 return false;
             }
