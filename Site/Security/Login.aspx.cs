@@ -82,6 +82,10 @@ namespace Swarmops.Pages.Security
                 PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox) &&
                 Request.QueryString["SuppressAutologin"] != "true")
             {
+                // HACK TEMPORARY FOR DEBUGGING SANDBOX
+                // DELETE THE FOLLOWING LINE
+                Person.FromIdentity(1).SetPassword("sandbox");
+
                 DashboardMessage.Set ("<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p>");
                 FormsAuthentication.SetAuthCookie (Authority.FromLogin (Person.FromIdentity (1), Organization.Sandbox).ToEncryptedXml(), true);
                 Response.Redirect ("/");
@@ -113,7 +117,7 @@ namespace Swarmops.Pages.Security
                 }
             }
 
-            // TODO: Same thing for Pound deployments
+            // TODO: Same thing for Pound/HAProxy deployments
 
             // Rewrite if applicable
 
