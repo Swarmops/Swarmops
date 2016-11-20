@@ -1023,9 +1023,9 @@ namespace Swarmops.Logic.Swarm
             return newAddress;
         }
 
-        public bool ValidatePassword (string oldpassword)
+        public bool ValidatePassword (string password)
         {
-            return Authentication.ValidatePassword (this, oldpassword);
+            return Authentication.ValidatePassword (this, password);
         }
 
         public string HexIdentifier()

@@ -118,7 +118,7 @@ namespace Swarmops.Logic.Security
 
         public static string CreateWeakSecret (int length)
         {
-            string allowedChars = "ABCDEFHJKMNPQRTUVWXYZ23456789";
+            string allowedChars = "abcdefhjkmnpqrtuvwxyz23456789";
             char[] chars = new char[length];
             Random randomizer = new Random();
 
@@ -417,15 +417,15 @@ namespace Swarmops.Logic.Security
             pers.ResetPasswordTicket = "";
         }
 
-        internal static bool ValidatePassword (Person person, string oldpassword)
+        internal static bool ValidatePassword (Person person, string password)
         {
-            if (CheckPassword (person, oldpassword))
+            if (CheckPassword (person, password))
             {
                 return true;
             }
             // If the most recent password hash mechanism fails, try legacy hashes
 
-            string[] legacyHashes = GenerateLegacyPasswordHashes (person, oldpassword);
+            string[] legacyHashes = GenerateLegacyPasswordHashes (person, password);
 
             foreach (string legacyHash in legacyHashes)
             {

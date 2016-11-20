@@ -391,5 +391,19 @@ namespace Swarmops.Frontend.Automation
             }
         }
 
+        [WebMethod]
+        public static bool ValidatePassword(int personId, string password)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            // We can only verify password for personId zero (the self)
+
+            if (personId != 0)
+            {
+                return false;
+            }
+
+            return authData.CurrentUser.ValidatePassword(password);
+        }
     }
 }
