@@ -8,13 +8,24 @@
 
     $(document).ready(function () {
         $('#<%=this.TextInput.ClientID%>').keydown(function (e) {
-            // reset timer if set
-            if (<%=this.ClientID%>_onChangingTimer != null) {
-                clearTimeout(<%=this.ClientID%>_onChangingTimer);
-                <%=this.ClientID%>_onChangingTimer = setTimeout(function() { <%=this.ClientID%>_fireOnChanging(); }, 500);
-            } else {
-                // otherwise set new timer with a more generous timeout on keydown in general
-                <%=this.ClientID%>_onChangingTimer = setTimeout(function () { <%=this.ClientID%>_fireOnChanging(); }, 500);
+
+            if (e.keyCode != 9) { // tab key
+
+                // reset timer if set
+                if (<%=this.ClientID%>_onChangingTimer != null) {
+                    clearTimeout(<%=this.ClientID%>_onChangingTimer);
+                    <%=this.ClientID%>_onChangingTimer = setTimeout(function() { <%=this.ClientID%>_fireOnChanging(); }, 500);
+                } else {
+                    // otherwise set new timer with a more generous timeout on keydown in general
+                    <%=this.ClientID%>_onChangingTimer = setTimeout(function() { <%=this.ClientID%>_fireOnChanging(); }, 500);
+                }
+
+                <%
+                    if (!string.IsNullOrEmpty(this.OnKeyDown))
+                    {
+                        Response.Write(this.OnKeyDown + "(e.keyCode);"); 
+                    }
+                %>
             }
         });
 
