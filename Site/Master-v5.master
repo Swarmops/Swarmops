@@ -380,7 +380,7 @@
             }
 
             SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/ValidatePassword", jsonData, function(result) {
-                if (result.d) {
+                if (result) {
                     $('div.divMasterPersonEditSecurityRolldown').slideDown();
                     _master_PersonEditor_SecurityShowing = true;
                 }
