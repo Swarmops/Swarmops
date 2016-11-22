@@ -329,7 +329,7 @@ namespace Swarmops.Common.Enums
         BitcoinPayoutAddress,
 
         /// <summary>
-        /// When the bitcoin address was set (to enable quarantine)
+        /// When the bitcoin address was set (to enable payout quarantine)
         /// </summary>
         BitcoinPayoutAddressTimeSet,
 
@@ -381,6 +381,21 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// When (if) the org pays taxes, what number to put on the payment to identify the sender
         /// </summary>
-        OrgTaxPaymentOcr
+        OrgTaxPaymentOcr,
+
+        /// <summary>
+        /// Prohibit any financial payouts or withdrawals before this time (UTC).
+        /// </summary>
+        QuarantineWithdrawalsUntil,
+
+        /// <summary>
+        /// Prohibit any login before this time (UTC).
+        /// </summary>
+        QuarantineLoginsUntil,
+
+        /// <summary>
+        /// Prohibit all active sessions until this time (UTC).
+        /// </summary>
+        QuarantineSessionsUntil
     }
 }

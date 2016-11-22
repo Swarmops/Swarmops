@@ -409,6 +409,8 @@
     <Compile Include="Swarm\PaymentCode.cs" />
     <Compile Include="Swarm\People.cs" />
     <Compile Include="Swarm\Person.cs" />
+    <Compile Include="Swarm\PersonQuarantine.cs" />
+    <Compile Include="Swarm\PersonQuarantines.cs" />
     <Compile Include="Swarm\PersonRole.cs" />
     <Compile Include="Swarm\Position.cs" />
     <Compile Include="Swarm\PositionAssignment.cs" />

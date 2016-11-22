@@ -1181,6 +1181,15 @@ namespace Swarmops.Logic.Swarm
             return Volunteer.Create (this);
         }
 
+
+        public PersonQuarantines Quarantines
+        {
+            get
+            {
+                return new PersonQuarantines(this);
+            }
+        }
+
         // A couple of special cases
 
         public const int OpenLedgersIdentity = -1;

@@ -161,6 +161,10 @@
         $('#<%=this.TextInput.ClientID%>').val(newValue);
     }
 
+    function <%=this.ClientID%>_val() {
+        return $('#<%=this.TextInput.ClientID%>').val();
+    }
+
     function <%=this.ClientID%>_initialize(initValue) {
         _initVal_<%=this.TextInput.ClientID%> = initValue;
         <%=this.ClientID%>_setValue(initValue);

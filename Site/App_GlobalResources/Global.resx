@@ -816,4 +816,13 @@
   <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
     <value>Two weeks</value>
   </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
+    <value>Unable to set new password: The old password is incorrect.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_TooWeak" xml:space="preserve">
+    <value>Unable to set new password: The new password is too weak. Use a stronger password.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
+    <value>&lt;strong&gt;PASSWORD CHANGED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You have successfully changed your password. As a security measure, all withdrawals are now in quarantine for the next 48 hours.&lt;br/&gt;&lt;br/&gt;If you can, please enable BitID two-factor authentication.</value>
+  </data>
 </root>

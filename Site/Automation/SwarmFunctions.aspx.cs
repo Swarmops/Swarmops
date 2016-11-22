@@ -405,5 +405,59 @@ namespace Swarmops.Frontend.Automation
 
             return authData.CurrentUser.ValidatePassword(password);
         }
+
+        [WebMethod]
+        public static AjaxCallResult ChangePassword(int personId, string oldPassword, string newPassword)
+        {
+            if (!ValidatePassword(personId, oldPassword))
+            {
+                // oldPassword field isn't correct
+
+                // TODO: LOG THIS, THIS SHOULD NOT HAPPEN (UI FILTERING THIS CASE)
+
+                // TODO: ALSO NOTIFY SECURITY OFFICERS
+
+                // TODO: THROTTLE AND BLACKLIST?
+
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = Resources.Global.Master_EditPersonNewPassword_CannotChange_SecurityError
+                };
+            }
+
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (authData.CurrentUser.Identity != personId)
+            {
+                // TODO: Same thing with this case
+
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = Resources.Global.Master_EditPersonNewPassword_CannotChange_SecurityError
+                };
+            }
+
+            if (newPassword.Length < 6) // TODO: Make per-installation and per-organization policy for this
+            {
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = Resources.Global.Master_EditPersonNewPassword_CannotChange_TooWeak
+                };
+            }
+
+            authData.CurrentUser.SetPassword(newPassword);
+            // TODO: LOG
+            // TODO: NOTIFY
+            authData.CurrentUser.Quarantines.Withdrawal.QuarantineFor(new TimeSpan(2, 0, 0, 0)); // Quarantine for two days
+
+            return new AjaxCallResult
+            {
+                Success = true,
+                DisplayMessage = Resources.Global.Master_EditPersonNewPassword_Changed
+            };
+        }
     }
 }

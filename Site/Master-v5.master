@@ -250,8 +250,8 @@
                     <div class="entryFields">
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonCurrentPassword" runat="server" Mode="Password" OnKeyDown="masterPersonEditorOnSecurityPasswordKeyDown" OnChanging="masterPersonEditorOnSecurityPasswordChanging" Cookie="CurrentPassword" AjaxCallbackUrl="" />&#8203;<br/>
                         <div class="divMasterPersonEditSecurityRolldown" style="display:none"><Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FA" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="2FA" AjaxCallbackUrl=""  />&#8203;<br/>
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword1" runat="server" Mode="Password" OnChange="masterPersonEditorOnFieldChange" Cookie="Phone" AjaxCallbackUrl=""  />&#8203;<br/>
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword2" runat="server" Mode="Password" OnChange="masterPersonEditorOnFieldChange" Cookie="TwitterId" AjaxCallbackUrl=""  />
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword1" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityNewPasswordChanging" Cookie="Password1" AjaxCallbackUrl=""  />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword2" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityNewPasswordChanging" Cookie="Password2" AjaxCallbackUrl=""  />
                         </div>
                     </div>
                     <div class="entryLabels">
@@ -392,6 +392,45 @@
                     _master_PersonEditor_SecurityShowing = true;
                 }
             });
+        }
+
+        function masterPersonEditorOnSecurityNewPasswordChanging(newValue, cookie, controlName) {
+            if (cookie == "Password2") {
+                // only validate as result of second field. May result in bad UX if somebody fills in fields in wrong order.
+
+                if (newValue == <%=this.MasterEditPersonNewPassword1%>_val() && newValue.length >= 6) // short minimum, but policy settings could override
+                {
+                    // Newpasswords match, attempt to change the password
+                    <%=this.MasterEditPersonNewPassword1%>_updateProgressAnimate();
+                    <%=this.MasterEditPersonNewPassword2%>_updateProgressAnimate();
+
+                    var jsonData = {
+                        personId: _master_PersonEditedId,
+                        oldPassword: <%=this.MasterEditPersonCurrentPassword%>_val(),
+                        newPassword: newValue
+                    };
+
+                    SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/ChangePassword", jsonData, function(result) {
+                        if (result.Success) // if password was changed
+                        {
+                            if (result.DisplayMessage.length > 0) {
+                                alertify.dialog(result.DisplayMessage);
+                            }
+                            <%=this.MasterEditPersonNewPassword1%>_updateSuccessAnimate();
+                            <%=this.MasterEditPersonNewPassword2%>_updateSuccessAnimate();
+                            <%=this.MasterEditPersonNewPassword1%>_clear();
+                            <%=this.MasterEditPersonNewPassword2%>_clear();
+                            <%=this.MasterEditPersonCurrentPassword%>_initialize(newValue); // move new password to current
+                            <%=this.MasterEditPersonCurrentPassword%>_updateSuccessAnimate();
+                        } else {
+                            alertify.error(result.DisplayMessage);
+
+                            <%=this.MasterEditPersonNewPassword1%>_updateFailAnimate();
+                            <%=this.MasterEditPersonNewPassword2%>_updateFailAnimate();
+                        }
+                    });
+                }
+            }
         }
 
         function masterBeginEditPerson(personId) {

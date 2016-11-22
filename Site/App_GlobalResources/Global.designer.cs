@@ -1555,6 +1555,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to set new password: The old password is incorrect..
+        /// </summary>
+        internal static string Master_EditPersonNewPassword_CannotChange_SecurityError {
+            get {
+                return ResourceManager.GetString("Master_EditPersonNewPassword_CannotChange_SecurityError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to set new password: The new password is too weak. Use a stronger password..
+        /// </summary>
+        internal static string Master_EditPersonNewPassword_CannotChange_TooWeak {
+            get {
+                return ResourceManager.GetString("Master_EditPersonNewPassword_CannotChange_TooWeak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;PASSWORD CHANGED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You have successfully changed your password. As a security measure, all withdrawals are now in quarantine for the next 48 hours.&lt;br/&gt;&lt;br/&gt;If you can, please enable BitID two-factor authentication..
+        /// </summary>
+        internal static string Master_EditPersonNewPassword_Changed {
+            get {
+                return ResourceManager.GetString("Master_EditPersonNewPassword_Changed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset password.
         /// </summary>
         internal static string Master_EditPersonResetPasswordButton {
