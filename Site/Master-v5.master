@@ -414,7 +414,7 @@
                         if (result.Success) // if password was changed
                         {
                             if (result.DisplayMessage.length > 0) {
-                                alertify.dialog(result.DisplayMessage);
+                                alertify.alert(result.DisplayMessage);
                             }
                             <%=this.MasterEditPersonNewPassword1.ClientID%>_updateSuccessAnimate();
                             <%=this.MasterEditPersonNewPassword2.ClientID%>_updateSuccessAnimate();
