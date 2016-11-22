@@ -157,6 +157,10 @@
         $('#<%=this.TextInput.ClientID%>').val('');
     }
 
+    function <%=this.ClientID%>_focus() {
+        $('#<%=this.TextInput.ClientID%>').focus();
+    }
+
     function <%=this.ClientID%>_setValue(newValue) {
         $('#<%=this.TextInput.ClientID%>').val(newValue);
     }

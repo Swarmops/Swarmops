@@ -428,7 +428,7 @@ namespace Swarmops.Frontend.Automation
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            if (authData.CurrentUser.Identity != personId)
+            if (authData.CurrentUser.Identity != personId && personId != 0)
             {
                 // TODO: Same thing with this case
 
