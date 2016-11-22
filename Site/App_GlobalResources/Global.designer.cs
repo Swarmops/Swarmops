@@ -1573,7 +1573,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;strong&gt;PASSWORD CHANGED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You have successfully changed your password. As a security measure, all withdrawals are now in quarantine for the next 48 hours.&lt;br/&gt;&lt;br/&gt;If you can, please enable BitID two-factor authentication..
+        ///   Looks up a localized string similar to &lt;strong&gt;PASSWORD CHANGED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You have successfully changed your password. As a security measure, all withdrawals are now in quarantine for the next 48 hours..
         /// </summary>
         internal static string Master_EditPersonNewPassword_Changed {
             get {
@@ -1650,6 +1650,15 @@ namespace Resources {
         internal static string Master_EditPersonWarning_Phone {
             get {
                 return ResourceManager.GetString("Master_EditPersonWarning_Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you can, please enable BitID two-factor authentication..
+        /// </summary>
+        internal static string Master_EditPerson_PleaseEnable2FA {
+            get {
+                return ResourceManager.GetString("Master_EditPerson_PleaseEnable2FA", resourceCulture);
             }
         }
         

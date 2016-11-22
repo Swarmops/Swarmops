@@ -524,5 +524,14 @@ namespace Swarmops.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox MasterEditPersonLegacyBitcoinAddress;
+        
+        /// <summary>
+        /// ModalMasterEnableBitId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.ModalDialog ModalMasterEnableBitId;
     }
 }

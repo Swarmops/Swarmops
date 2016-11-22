@@ -225,6 +225,10 @@ namespace Swarmops.Frontend.Automation
             public string Phone { get; set; }
             public string TwitterId { get; set; }
 
+            // Security tab
+
+            public bool TwoFactorActive { get; set; }
+
             // Accounts tab
 
             // (no data)
@@ -259,7 +263,8 @@ namespace Swarmops.Frontend.Automation
                 Name = person.Name,
                 Mail = person.Mail,
                 Phone = person.Phone,
-                TwitterId = person.TwitterId
+                TwitterId = person.TwitterId,
+                TwoFactorActive = !string.IsNullOrEmpty(person.BitIdAddress)
             };
         }
 
@@ -453,10 +458,17 @@ namespace Swarmops.Frontend.Automation
             // TODO: NOTIFY
             authData.CurrentUser.Quarantines.Withdrawal.QuarantineFor(new TimeSpan(2, 0, 0, 0)); // Quarantine for two days
 
+            string displayMessage = Resources.Global.Master_EditPersonNewPassword_Changed;
+
+            if (string.IsNullOrEmpty(authData.CurrentUser.BitIdAddress))
+            {
+                displayMessage += @"<br/><br/>" + Resources.Global.Master_EditPerson_PleaseEnable2FA;
+            }
+
             return new AjaxCallResult
             {
                 Success = true,
-                DisplayMessage = Resources.Global.Master_EditPersonNewPassword_Changed
+                DisplayMessage = displayMessage
             };
         }
     }
