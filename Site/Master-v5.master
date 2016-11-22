@@ -513,6 +513,7 @@
 
 
         function masterPersonEditor2FAToggle(newValue, fieldName, controlName) {
+            alert("2FA Field Change: " + fieldName + " changed to '" + newValue + "'");
             if (newValue) // this is a boolean, so "== true" is implicit
             {
                 <%= this.ModalMasterEnableBitId.ClientID %>_open();
@@ -522,6 +523,7 @@
 
 
         function masterPersonEditor2FAProvisionToggle(newValue, fieldName, controlName) {
+            alert("2FA Provisioning Field Change: " + fieldName + " changed to '" + newValue + "'");
             if (newValue) { // it's a boolean, so "if true" meaning if the slider is "on"
                 // 2FA can't be provisioned true, only installed by the user
 
