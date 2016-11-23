@@ -362,7 +362,9 @@
     <Swarmops5:ModalDialog ID="ModalMasterEnableBitId" runat="server">
         <DialogCode>
             <h2>Scan this code to enable BitId login</h2>
-            <div id="divBitIdEnable" style="height:400px"></div>
+            <div id="divBitIdEnable" style="height: 400px; margin: 50px; float:left"></div>Info: blah blah blah
+            Todo: Blah blah blah
+            Where to get: blah blah blah
         </DialogCode>
     </Swarmops5:ModalDialog>
         
@@ -514,11 +516,10 @@
 
 
         function masterPersonEditor2FAToggle(newValue, fieldName, controlName) {
-            alertify.log("2FA Field Change: " + fieldName + " changed to '" + newValue + "'");
             if (newValue) // this is a boolean, so "== true" is implicit
             {
                 <%= this.ModalMasterEnableBitId.ClientID %>_open();
-                $('div.divBitIdEnable').qrcode({ text: "https://falkvinge.net/" });
+                $('div#divBitIdEnable').qrcode({ text: "https://falkvinge.net/", size: 400, quiet: 4 });
             } 
             else 
             {             // The user is requesting their 2FA be removed
@@ -537,7 +538,6 @@
 
 
         function masterPersonEditor2FAProvisionToggle(newValue, fieldName, controlName) {
-            alertify.log("2FA Provisioning Field Change: " + fieldName + " changed to '" + newValue + "'");
             if (newValue) { // it's a boolean, so "if true" meaning if the slider is "on"
                 // 2FA can't be provisioned true, only installed by the user
 
@@ -547,7 +547,7 @@
                 alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_ConfirmRemove2FAProvision%>'), 
                     function (response) { 
                         if (response) {
-                            alert("Success!");
+                            alert("Success!"); // TODO: REMOVE 2FA, LOG REMOVAL, NOTIFY REMOVAL TO USER, NOTIFY REMOVAL TO CHAIN
                         } else {
                             <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(true);
                             alertify.log(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_Cancelled2FARemoval%>'));
