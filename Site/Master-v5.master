@@ -18,7 +18,8 @@
     <script language="javascript" type="text/javascript" src="/Scripts/hoverIntent.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/superfish.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.qrcode.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/qrcode.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.qrcode.min.js"></script>
      
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
@@ -517,7 +518,20 @@
             if (newValue) // this is a boolean, so "== true" is implicit
             {
                 <%= this.ModalMasterEnableBitId.ClientID %>_open();
-                $('div.divBitIdEnable').qrcode({ text: "https://falkvinge.net/ " });
+                $('div.divBitIdEnable').qrcode({ text: "https://falkvinge.net/" });
+            } 
+            else 
+            {             // The user is requesting their 2FA be removed
+                alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_ConfirmRemove2FAOwn%>'), 
+                    function (response) { 
+                        if (response) {
+                            // TODO: Enter password as a security measure (or check against entered)
+                            alert("Success!");
+                        } else {
+                            <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(true);
+                            alertify.log(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_Cancelled2FARemoval%>'));
+                        }
+                    }); 
             }
         }
 
@@ -541,29 +555,7 @@
                     }); 
             }
         }
-
-        function masterPersonEditor2FAToggle(newValue, fieldName, controlName) {
-            if (newValue) { // it's a boolean, so "if true" meaning if the slider is "on"
-                // The user is requesting to enable 2FA. For now, we only use BitId.
-
-                <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(false);
-                alertify.alert(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_CannotProvision2FA%>'));
-            } else {
-                // The user is requesting their 2FA be removed
-                alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_ConfirmRemove2FAOwn%>'), 
-                    function (response) { 
-                        if (response) {
-                            // TODO: Enter password as a security measure (or check against entered)
-                            alert("Success!");
-                        } else {
-                            <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(true);
-                            alertify.log(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_Cancelled2FARemoval%>'));
-                        }
-                    }); 
-            }
-        }
-
-
+        
 
         function masterPersonEditorOnFieldChange(newValue, fieldName, controlName) {
             // Do the AJAX call from here, as we need to also pass along the person ID of the person edited
