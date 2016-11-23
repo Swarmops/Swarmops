@@ -203,4 +203,3 @@ Site/hotwallet*
 *.csproj.[Dd]ot[Ss]ettings
 
 #Packages provided by NuGet
-Site/Scripts/*qrcode*

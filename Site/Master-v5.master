@@ -519,7 +519,7 @@
             if (newValue) // this is a boolean, so "== true" is implicit
             {
                 <%= this.ModalMasterEnableBitId.ClientID %>_open();
-                $('div#divBitIdEnable').qrcode({ text: "https://falkvinge.net/", size: 400, quiet: 4 });
+                $('div#divBitIdEnable').qrcode({ text: "https://falkvinge.net/", size:400, quiet: 4 });
             } 
             else 
             {             // The user is requesting their 2FA be removed
