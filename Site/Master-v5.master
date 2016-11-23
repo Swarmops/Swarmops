@@ -250,7 +250,7 @@
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label runat="server" ID="MasterLabelEditPersonHeaderSecurity" Text="#Your Security#"/></h2>
                     <div class="entryFields">
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonCurrentPassword" runat="server" Mode="Password" OnKeyDown="masterPersonEditorOnSecurityPasswordKeyDown" OnChanging="masterPersonEditorOnSecurityPasswordChanging" Cookie="CurrentPassword" AjaxCallbackUrl="" />&#8203;<br/>
-                        <div class="divMasterPersonEditSecurityRolldown" style="display:none">&#8203;<br/>
+                        <div class="divMasterPersonEditSecurityRolldown" style="display:none"><Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FA" runat="server" Label="BitID Two-factor auth" OnChange="masterPersonEditor2FAToggle" Cookie="2FA" AjaxCallbackUrl=""  />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword1" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityNewPasswordChanging" Cookie="Password1" AjaxCallbackUrl=""  />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword2" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityNewPasswordChanging" Cookie="Password2" AjaxCallbackUrl=""  />
                         </div>
@@ -485,7 +485,7 @@
                     <%= this.MasterEditPersonPhone.ClientID %>_initialize(data.Phone);
                     <%= this.MasterEditPersonTwitterId.ClientID %>_initialize(data.TwitterId);
 
-                    
+                    <%= this.MasterEditPerson2FA.ClientID%>_initialize(data.TwoFactorActive);
                     <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(data.TwoFactorActive);
 
                     _master_PersonEditLoading = false;

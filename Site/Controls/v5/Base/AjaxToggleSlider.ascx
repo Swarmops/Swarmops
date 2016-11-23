@@ -104,12 +104,12 @@
     }
 
     function <%=this.ClientID%>_setValue(newValue) {
-        $('#<%=this.ClientID%>_sliderContainer').toggles({ on: newValue }, true, true);
+        $('#<%=this.ClientID%>_sliderContainer').data('toggles').toggle(newValue, true, true);
     }
 
     function <%=this.ClientID%>_initialize(initValue) {
         _initVal_<%=this.SliderCheckbox.ClientID%> = initValue;
-        $('#<%=this.ClientID%>_sliderContainer').toggles({ on: initValue }, true, true);
+        <%=this.ClientID%>_setValue(initValue);
         <%=this.ClientID%>_enable();
     }
 
