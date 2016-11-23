@@ -382,15 +382,6 @@ namespace Swarmops.Frontend {
         protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox MasterEditPersonCurrentPassword;
         
         /// <summary>
-        /// MasterEditPerson2FA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider MasterEditPerson2FA;
-        
-        /// <summary>
         /// MasterEditPersonNewPassword1 control.
         /// </summary>
         /// <remarks>

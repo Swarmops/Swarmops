@@ -250,7 +250,7 @@
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label runat="server" ID="MasterLabelEditPersonHeaderSecurity" Text="#Your Security#"/></h2>
                     <div class="entryFields">
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonCurrentPassword" runat="server" Mode="Password" OnKeyDown="masterPersonEditorOnSecurityPasswordKeyDown" OnChanging="masterPersonEditorOnSecurityPasswordChanging" Cookie="CurrentPassword" AjaxCallbackUrl="" />&#8203;<br/>
-                        <div class="divMasterPersonEditSecurityRolldown" style="display:none"><Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FA" runat="server" OnChange="masterPersonEditor2FAToggle" Cookie="2FA" AjaxCallbackUrl=""  />&#8203;<br/>
+                        <div class="divMasterPersonEditSecurityRolldown" style="display:none">&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword1" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityNewPasswordChanging" Cookie="Password1" AjaxCallbackUrl=""  />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword2" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityNewPasswordChanging" Cookie="Password2" AjaxCallbackUrl=""  />
                         </div>
@@ -266,7 +266,7 @@
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label ID="MasterLabelEditPersonHeaderSecurityProvisioning" runat="server" /></h2>
                     <div class="entryFields">
                         <input type="button" id="masterPersonEditButtonResetPassword" onclick="masterPersonEditorConfirmResetPassword(); return false;" value="#SendResetMail#" />&#8203;<br/>
-                        <Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FAProvisioning" runat="server" Label="2FALabel" Cookie="2FA" AjaxCallbackUrl="" OnChange="masterPersonEditor2FAProvisionToggle"/>
+                        <Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FAProvisioning" runat="server" Label="BitID enable" Cookie="2FAProvision" AjaxCallbackUrl="" OnChange="masterPersonEditor2FAProvisionToggle"/>
 
                     </div>
                     <div class="entryLabels">
@@ -485,7 +485,7 @@
                     <%= this.MasterEditPersonPhone.ClientID %>_initialize(data.Phone);
                     <%= this.MasterEditPersonTwitterId.ClientID %>_initialize(data.TwitterId);
 
-                    <%= this.MasterEditPerson2FA.ClientID%>_initialize(data.TwoFactorActive);
+                    
                     <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(data.TwoFactorActive);
 
                     _master_PersonEditLoading = false;
@@ -508,12 +508,12 @@
             // (the AjaxToggleSlider auto-callback is disabled for this reason)
 
 
-            alert("Field Change: " + fieldName + " changed to '" + newValue + "'");
+            alertify.log("Field Change: " + fieldName + " changed to '" + newValue + "'");
         }
 
 
         function masterPersonEditor2FAToggle(newValue, fieldName, controlName) {
-            alert("2FA Field Change: " + fieldName + " changed to '" + newValue + "'");
+            alertify.log("2FA Field Change: " + fieldName + " changed to '" + newValue + "'");
             if (newValue) // this is a boolean, so "== true" is implicit
             {
                 <%= this.ModalMasterEnableBitId.ClientID %>_open();
@@ -523,11 +523,11 @@
 
 
         function masterPersonEditor2FAProvisionToggle(newValue, fieldName, controlName) {
-            alert("2FA Provisioning Field Change: " + fieldName + " changed to '" + newValue + "'");
+            alertify.log("2FA Provisioning Field Change: " + fieldName + " changed to '" + newValue + "'");
             if (newValue) { // it's a boolean, so "if true" meaning if the slider is "on"
                 // 2FA can't be provisioned true, only installed by the user
 
-                <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(false);
+                setTimeout(function() { <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(false); }, 500);
                 alertify.alert(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_CannotProvision2FA%>'));
             } else {
                 alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_ConfirmRemove2FAProvision%>'), 

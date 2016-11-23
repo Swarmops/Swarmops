@@ -6,6 +6,8 @@
 
     $(document).ready(function () {
 
+            alertify.log("Initialize <%=this.Cookie%>");
+
         $('#<%=this.ClientID%>_sliderContainer').toggles(
             { 
                 on: <%= this.InitialValue.ToString().ToLower() %>, 
@@ -16,12 +18,11 @@
                     off: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOff_Upper %>')
                 } 
             })
-            .on('toggle', function(e, active) 
-            {
+            .on('toggle', function(e, active) {
+                alertify.log("Toggle: <%=this.Cookie%> " + active);
+
                 if (active != _initVal_<%=this.SliderCheckbox.ClientID%>) {
-                    var jsonData = {};
-                    jsonData.newValue = active;
-                    jsonData.cookie = '<%=this.Cookie%>';
+                    alertify.log("Change detect");
 
                     // The AJAX call expects the following function prototype:
                     //
@@ -33,6 +34,10 @@
                     // $(this).css('background-color', '#FFFFA0'); -- TODO: Find a way to mark ongoing update for slider
 
                     if ("" != "<%=this.AjaxCallbackUrl%>") { // if there's a direct callback AJAX url
+
+                        var jsonData = {};
+                        jsonData.newValue = active;
+                        jsonData.cookie = '<%=this.Cookie%>';
 
                         SwarmopsJS.ajaxCall(
                             "<%=this.AjaxCallbackUrl%>",
@@ -80,6 +85,7 @@
                     } else {
                         // if there's no AJAX callback URL given, the javascript handler must take care of it
                         // Resharper marks this code as unused because it falsely thinks the if condition above is always true
+                        alertify.log("Calling <%=this.OnChange%>()");
                         _initVal_<%=this.SliderCheckbox.ClientID%> = active;
                         <%=this.OnChange%> (active, '<%=this.Cookie%>', '<%=this.ClientID%>'); // JavaScript callback on successful change
                     }
@@ -98,12 +104,12 @@
     }
 
     function <%=this.ClientID%>_setValue(newValue) {
-        $('#<%=this.ClientID%>_sliderContainer').toggles({ on: newValue });
+        $('#<%=this.ClientID%>_sliderContainer').toggles({ on: newValue }, true, true);
     }
 
     function <%=this.ClientID%>_initialize(initValue) {
         _initVal_<%=this.SliderCheckbox.ClientID%> = initValue;
-        $('#<%=this.ClientID%>_sliderContainer').toggles({ on: initValue });
+        $('#<%=this.ClientID%>_sliderContainer').toggles({ on: initValue }, true, true);
         <%=this.ClientID%>_enable();
     }
 
