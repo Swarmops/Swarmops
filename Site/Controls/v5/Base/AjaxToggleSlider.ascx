@@ -6,8 +6,6 @@
 
     $(document).ready(function () {
 
-            alertify.log("Initialize <%=this.Cookie%>");
-
         $('#<%=this.ClientID%>_sliderContainer').toggles(
             { 
                 on: <%= this.InitialValue.ToString().ToLower() %>, 
@@ -19,10 +17,8 @@
                 } 
             })
             .on('toggle', function(e, active) {
-                alertify.log("Toggle: <%=this.Cookie%> " + active);
 
                 if (active != _initVal_<%=this.SliderCheckbox.ClientID%>) {
-                    alertify.log("Change detect");
 
                     // The AJAX call expects the following function prototype:
                     //
@@ -85,7 +81,7 @@
                     } else {
                         // if there's no AJAX callback URL given, the javascript handler must take care of it
                         // Resharper marks this code as unused because it falsely thinks the if condition above is always true
-                        alertify.log("Calling <%=this.OnChange%>()");
+
                         _initVal_<%=this.SliderCheckbox.ClientID%> = active;
                         <%=this.OnChange%> (active, '<%=this.Cookie%>', '<%=this.ClientID%>'); // JavaScript callback on successful change
                     }
