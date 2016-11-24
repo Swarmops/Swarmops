@@ -255,30 +255,30 @@ namespace Swarmops.Pages.Security
         }
 
         [WebMethod]
-        public static bool TestLogin (string uriEncoded, string nonce)
+        public static bool TestLogin(string uriEncoded, string nonce)
         {
             try
             {
-                string uri = HttpUtility.UrlDecode (uriEncoded);
+                string uri = HttpUtility.UrlDecode(uriEncoded);
 
                 // a little sloppy nonce and uri checking rather than full parsing
                 // TODO: Full URI parse, the above is not enough
-                if (!uri.Contains (nonce) || !uri.Contains (HttpContext.Current.Request.Url.Host))
+                if (!uri.Contains(nonce) || !uri.Contains(HttpContext.Current.Request.Url.Host))
                 {
                     throw new ArgumentException();
                 }
 
-                string result = (string) GuidCache.Get (uri + "-LoggedOn");
-                if (string.IsNullOrEmpty (result))
+                string result = (string)GuidCache.Get(uri + "-LoggedOn");
+                if (string.IsNullOrEmpty(result))
                 {
                     return false;
                 }
 
                 // We have a successful login when we get here
 
-                GuidCache.Delete (uri + "-Logon");
-                GuidCache.Delete (uri + "-LoggedOn");
-                GuidCache.Set (nonce + "-Identity", result);
+                GuidCache.Delete(uri + "-Logon");
+                GuidCache.Delete(uri + "-LoggedOn");
+                GuidCache.Set(nonce + "-Identity", result);
 
                 return true;
             }
@@ -289,6 +289,7 @@ namespace Swarmops.Pages.Security
                 throw;
             }
         }
+
 
         [WebMethod]
         // ReSharper disable once InconsistentNaming

@@ -11,6 +11,7 @@ using System.Web.Security;
 using System.Web.UI;
 using Resources;
 using Swarmops.Interface.Support;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -482,6 +483,59 @@ namespace Swarmops.Frontend
         public string Localized_MasterPersonEdit_Cancelled2FARemoval
         {
             get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPerson2FAEnable_NotRemoved); }
+        }
+
+        public string Localized_BitIdRegister_Fail
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_BitIdRegister_Fail); }
+        }
+
+        public string Localized_BitIdRegister_Sidebar
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Master_BitIdRegister_Sidebar); }
+        }
+
+
+        public string GenerateBitIdToken
+        {
+            get
+            {
+                string cloudFlareVisitorScheme = this.Request.Headers["CF-Visitor"];
+                bool cloudFlareSsl = false;
+
+                if (!string.IsNullOrEmpty(cloudFlareVisitorScheme))
+                {
+                    if (cloudFlareVisitorScheme.Contains("\"scheme\":\"https\""))
+                    {
+                        cloudFlareSsl = true;
+                    }
+                }
+
+                Guid guid = Guid.NewGuid();
+                string guidString = guid.ToString().Replace("-", "");
+
+                this.bitIdNonce = guidString + DateTime.UtcNow.Ticks.ToString("x8");
+
+                string hostName = this.Request.Url.Host;
+
+                string bitIdUri = "bitid://" + hostName + "/Security/Login.aspx?x=" + this.bitIdNonce;
+
+                if (this.Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl)
+                {
+                    bitIdUri += "&u=1";
+                }
+
+                GuidCache.Set(bitIdUri + "-Intent", "Register");  // Intent: register BitID
+
+                return bitIdUri;
+            }
+        }
+
+        private string bitIdNonce;
+
+        public string GenerateBitIdNonce
+        {
+            get { return this.bitIdNonce; }
         }
     }
 }

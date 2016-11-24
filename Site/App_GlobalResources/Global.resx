@@ -816,6 +816,23 @@
   <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
     <value>Two weeks</value>
   </data>
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>&lt;strong&gt;BITID SUCCESSFULLY ENABLED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;When logging on to this system from now on, you need to use the BitId application you just used to scan the code.</value>
+  </data>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>BitID two-factor authentication has not been enabled.</value>
+  </data>
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>&lt;h3&gt;What is this?&lt;/h3&gt;
+                &lt;p&gt;BitID is a way to log on securely with less hassle than entering a password. Its simplicitly cannot be explained, only experienced, and it is a two-factor authentication since it uses your phone.&lt;/p&gt;
+                &lt;h3&gt;Doesn't this require my phone to be protected also?&lt;/h3&gt;
+                &lt;p&gt;Well, yes. It's your phone and your phone's access protection. But your phone should always be access protected.&lt;/p&gt;
+                &lt;h3&gt;Do I need an app for this?&lt;/h3&gt;
+                &lt;p&gt;Maybe. Some mobile bitcoin wallets have BitID built in. The most common one hasn't. If yours doesn't, look for an app called "BitID Authenticator" or similar.&lt;/p&gt;
+                &lt;h3&gt;How do I enable BitID?&lt;/h3&gt;
+                &lt;p&gt;Just use the phone app to scan this code. After that, you can scan a similar code to log in.&lt;/p&gt;</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
+  </data>
   <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
     <value>Unable to set new password: The old password is incorrect.</value>
   </data>

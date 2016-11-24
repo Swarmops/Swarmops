@@ -359,12 +359,13 @@
         </DialogCode>
     </Swarmops5:ModalDialog>
         
-    <Swarmops5:ModalDialog ID="ModalMasterEnableBitId" runat="server">
+    <Swarmops5:ModalDialog ID="ModalMasterEnableBitId" runat="server" OnClientClose="onBitIdRegisterFail">
         <DialogCode>
             <h2>Scan this code to enable BitId login</h2>
-            <div id="divBitIdEnable" style="height: 400px; margin: 50px; float:left"></div>Info: blah blah blah
-            Todo: Blah blah blah
-            Where to get: blah blah blah
+            <div id="divBitIdEnable" style="height: 280px; margin: 50px; float:left"></div>
+            <div class="modal-sidebar" style="margin-top:50px">
+                
+            </div>
         </DialogCode>
     </Swarmops5:ModalDialog>
         
@@ -519,7 +520,7 @@
             if (newValue) // this is a boolean, so "== true" is implicit
             {
                 <%= this.ModalMasterEnableBitId.ClientID %>_open();
-                $('div#divBitIdEnable').qrcode({ text: "https://falkvinge.net/", size:400, quiet: 4 });
+                onBitIdRegisterOpen();
             } 
             else 
             {             // The user is requesting their 2FA be removed
@@ -625,6 +626,45 @@
                 }); 
         }
 
+
+        function onBitIdRegisterOpen() {
+            $('div#divBitIdEnable').empty();
+            $('div#divBitIdEnable').qrcode({ text: "<%=this.GenerateBitIdToken%>", size:400, quiet: 4 });
+            $('div#divBitIdEnable .modal-sidebar').html(SwarmopsJS.unescape('<%=this.Localized_BitIdRegister_Sidebar%>'));
+
+            _master_bitIdRecheckTimer = setTimeout(onBitIdRegisterRecheck, 5000); // First check after 5s
+        }
+
+        function onBitIdRegisterFail() {
+            if (_master_bitIdRecheckTimer != null) {
+                clearTimeout(_master_bitIdRecheckTimer);
+                _master_bitIdRecheckTimer = null;
+            }
+
+            if (_master_PersonEditedId == 0) // editing self
+            {
+                <%=this.MasterEditPerson2FA.ClientID%>_initialize(false);
+                alertify.log(SwarmopsJS.unescape('<%=this.Localized_BitIdRegister_Fail%>'));
+            }
+        }
+
+        function onBitIdRegisterRecheck() {
+            SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/TestBitIdRegister", {}, function(result) {
+                if (result.Success) {
+                    _master_bitIdRecheckTimer = null;
+                    <%=this.ModalMasterEnableBitId%>_close();
+                    alertify.alert(result.DisplayMessage);
+                } else {
+                    // not ready yet
+                    _master_bitIdRecheckTimer = setTimeout(onBitIdRegisterRecheck, 2000);
+                }
+            }, function() {
+                // errorfunction: set new check even in case of failure
+                _master_bitIdRecheckTimer = setTimeout(onBitIdRegisterRecheck, 2000);
+            });
+        }
+
+        var _master_bitIdRecheckTimer = null;
 
 
     </script>

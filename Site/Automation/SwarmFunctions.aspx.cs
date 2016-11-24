@@ -14,6 +14,7 @@ using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;
 using Swarmops.Common.Exceptions;
 using Swarmops.Frontend;
+using Swarmops.Logic.Cache;
 
 
 namespace Swarmops.Frontend.Automation
@@ -471,5 +472,28 @@ namespace Swarmops.Frontend.Automation
                 DisplayMessage = displayMessage
             };
         }
+
+        [WebMethod]
+        public static AjaxCallResult TestBitIdRegister()
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (!string.IsNullOrEmpty(authData.CurrentUser.BitIdAddress))
+            {
+                return new AjaxCallResult
+                {
+                    Success = true,
+                    DisplayMessage = Resources.Global.Master_BitIdRegistered
+                };
+            }
+            else
+            {
+                return new AjaxCallResult
+                {
+                    Success = false
+                };
+            }
+        }
+
     }
 }
