@@ -525,7 +525,7 @@ namespace Swarmops.Frontend
                     bitIdUri += "&u=1";
                 }
 
-                GuidCache.Set(bitIdUri + "-Intent", "Register");  // Intent: register BitID
+                GuidCache.Set(bitIdUri + "-Intent", "Register-" + CurrentUser.Identity.ToString(CultureInfo.InvariantCulture));  // Intent: register BitID
 
                 return bitIdUri;
             }

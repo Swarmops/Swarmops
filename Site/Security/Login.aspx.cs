@@ -203,7 +203,6 @@ namespace Swarmops.Pages.Security
 
         protected static void ProcessRespondBitId (BitIdCredentials credentials, HttpResponse response)
         {
-            AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             BitcoinPubKeyAddress testAddress = new BitcoinPubKeyAddress (credentials.address);
             if (testAddress.VerifyMessage (credentials.uri, credentials.signature))
@@ -212,18 +211,22 @@ namespace Swarmops.Pages.Security
 
                 try
                 {
-                    if (authData.CurrentUser != null)
+                    // Test for registration
+
+                    string intent = GuidCache.Get(credentials.uri + "-Intent") as string;
+
+                    if (!string.IsNullOrEmpty(intent))
                     {
-                        if ((string) GuidCache.Get (credentials.uri + "-Intent") == "Register")
+                        if (intent.StartsWith("Register"))
                         {
-                            // the currently logged-on user desires to register this address
-                            // so set currentUser bitid
-                            authData.CurrentUser.BitIdAddress = credentials.address;
-                            // Then go do something else, I guess? Flag somehow to original page
-                            // that the op is completed?
-                            GuidCache.Set (credentials.uri + "-Intent", "Complete");
+                            int personId = Int32.Parse(intent.Substring("Register-".Length));
+                            Person person = Person.FromIdentity(personId);
+                            person.BitIdAddress = credentials.address;
+                            GuidCache.Set(credentials.uri + "-Intent", "Complete");
                         }
                     }
+
+                    // Otherwise, test for logon
 
                     if (GuidCache.Get (credentials.uri + "-Logon") as string == "Unauth")
                     {
