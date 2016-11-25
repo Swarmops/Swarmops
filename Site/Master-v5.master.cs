@@ -518,7 +518,7 @@ namespace Swarmops.Frontend
 
                 string hostName = this.Request.Url.Host;
 
-                string bitIdUri = "bitid://" + hostName + "/Security/Login.aspx?x=" + this.bitIdNonce;
+                string bitIdUri = "bitid://" + hostName + "/Security/Login.aspx/BitIdLogin?x=" + this.bitIdNonce;
 
                 if (this.Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl)
                 {

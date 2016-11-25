@@ -201,8 +201,10 @@ namespace Swarmops.Pages.Security
 
         protected string _cacheVersionMark; // CSS cache buster
 
-        protected void ProcessRespondBitId (BitIdCredentials credentials, HttpResponse response)
+        protected static void ProcessRespondBitId (BitIdCredentials credentials, HttpResponse response)
         {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
             BitcoinPubKeyAddress testAddress = new BitcoinPubKeyAddress (credentials.address);
             if (testAddress.VerifyMessage (credentials.uri, credentials.signature))
             {
@@ -210,13 +212,13 @@ namespace Swarmops.Pages.Security
 
                 try
                 {
-                    if (CurrentUser != null)
+                    if (authData.CurrentUser != null)
                     {
                         if ((string) GuidCache.Get (credentials.uri + "-Intent") == "Register")
                         {
                             // the currently logged-on user desires to register this address
                             // so set currentUser bitid
-                            CurrentUser.BitIdAddress = credentials.address;
+                            authData.CurrentUser.BitIdAddress = credentials.address;
                             // Then go do something else, I guess? Flag somehow to original page
                             // that the op is completed?
                             GuidCache.Set (credentials.uri + "-Intent", "Complete");
@@ -347,6 +349,19 @@ namespace Swarmops.Pages.Security
             return "Fail";
         }
 
+
+        [WebMethod]
+        public static void BitIdLogin(string address, string signature, string uri)
+        {
+            BitIdCredentials credentials = new BitIdCredentials
+            {
+                address = address,
+                signature = signature,
+                uri = uri
+            };
+
+            ProcessRespondBitId(credentials, HttpContext.Current.Response);
+        }
 
         protected override void OnPreInit (EventArgs e)
         {
