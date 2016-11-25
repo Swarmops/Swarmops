@@ -496,6 +496,11 @@ namespace Swarmops.Frontend
         }
 
 
+        public string Localized_GenericAjaxError
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Error_AjaxCallException); }
+        }
+
         public string GenerateBitIdToken
         {
             get

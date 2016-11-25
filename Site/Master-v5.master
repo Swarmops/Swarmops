@@ -529,7 +529,8 @@
                         if (response) {
                             var jsonData =
                             {
-                                password: <%=this.MasterEditPersonCurrentPassword.ClientID%>_value()
+                                personId: _master_PersonEditedId,
+                                password: <%=this.MasterEditPersonCurrentPassword.ClientID%>_val()
                             }
                             SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/RemoveBitId", jsonData, function(result) {
                                 if (result.Success) {
@@ -544,6 +545,11 @@
                             <%= this.MasterEditPerson2FA.ClientID %>_initialize(true);
                             alertify.log(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_Cancelled2FARemoval%>'));
                         }
+                    },
+                    function response() {
+                        // onerror
+                        <%= this.MasterEditPerson2FA.ClientID %>_initialize(true);
+                        alertify.error(SwarmopsJS.unescape('<%=this.Localized_GenericAjaxError%>'));
                     }); 
             }
         }
@@ -664,7 +670,7 @@
                 alertify.log(result.Success);
                 if (result.Success) {
                     _master_bitIdRecheckTimer = null;
-                    <%=this.ModalMasterEnableBitId%>_close();
+                    <%=this.ModalMasterEnableBitId.ClientID%>_close();
                     alertify.alert(result.DisplayMessage);
                 } else {
                     // not ready yet
