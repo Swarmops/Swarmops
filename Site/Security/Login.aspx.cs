@@ -180,7 +180,7 @@ namespace Swarmops.Pages.Security
 
             string hostName = Request.Url.Host;
 
-            string bitIdUri = "bitid://" + hostName + "/Security/Login.aspx?x=" + nonce;
+            string bitIdUri = "bitid://" + hostName + "/Security/Login.aspx/BitIdLogin?x=" + nonce;
 
             if (Request.Url.ToString().StartsWith ("http://") && !cloudFlareSsl)
             {

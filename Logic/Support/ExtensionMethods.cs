@@ -15,7 +15,7 @@ namespace System.Web.ExtensionMethods
         public static void SetJson (this HttpResponse response)
         {
             response.ContentType = "application/json";
-            response.CacheControl = "no-store, no-cache, must-revalidate, post-check=0, pre-check=0"; // IE dumbfixes
+            response.CacheControl = "no-cache";
             response.AddHeader ("Last-Modified", DateTime.UtcNow.ToString (CultureInfo.InvariantCulture));
             response.AddHeader ("Pragma", "no-cache");
         }
