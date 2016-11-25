@@ -629,7 +629,7 @@
 
         function onBitIdRegisterOpen() {
             $('div#divBitIdEnable').empty();
-            $('div#divBitIdEnable').qrcode({ text: "<%=this.GenerateBitIdToken%>", size:400, quiet: 4 });
+            $('div#divBitIdEnable').qrcode({ text: "<%=this.GenerateBitIdToken%>", size:400, quiet: 4, ecLevel: 'L' });
             $('div#divBitIdEnable + div.modal-sidebar').html(SwarmopsJS.unescape('<%=this.Localized_BitIdRegister_Sidebar%>'));
 
             _master_bitIdRecheckTimer = setTimeout(onBitIdRegisterRecheck, 5000); // First check after 5s
