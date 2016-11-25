@@ -495,6 +495,7 @@ namespace Swarmops.Frontend.Automation
             }
         }
 
+        [WebMethod]
         public static AjaxCallResult RemoveBitId(int personId, string password)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
