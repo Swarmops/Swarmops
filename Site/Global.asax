@@ -1,6 +1,7 @@
 <%@ Application Language="C#" %>
 <%@ Import Namespace="System.IO" %>
 <%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="System.Web.ExtensionMethods" %>
 <%@ Import Namespace="Swarmops.Database" %>
 <%@ Import Namespace="Swarmops.Logic.Support" %>
 
@@ -26,6 +27,7 @@
         Exception exc = this.Server.GetLastError();
 
         Persistence.Key["LastUncaughtException"] = exc.ToString();
+        Persistence.Key["LastUncaughtExceptionRequest"] = Request.ToRaw();
         SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry (DateTime.UtcNow, "Application", exc);  // TODO: Move to Logic
         // Code that runs when an unhandled error occurs
     }
