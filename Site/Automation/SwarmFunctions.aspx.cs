@@ -495,5 +495,45 @@ namespace Swarmops.Frontend.Automation
             }
         }
 
+        public static AjaxCallResult RemoveBitId(int personId, string password)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (personId == 0) // self
+            {
+                personId = authData.CurrentUser.Identity;
+
+                if (!ValidatePassword(personId, password))
+                {
+                    // oldPassword field isn't correct
+
+                    // TODO: LOG THIS, THIS SHOULD NOT HAPPEN (UI FILTERING THIS CASE)
+
+                    // TODO: ALSO NOTIFY SECURITY OFFICERS
+
+                    // TODO: THROTTLE AND BLACKLIST?
+
+                    return new AjaxCallResult
+                    {
+                        Success = false,
+                        DisplayMessage = Resources.Global.Master_EditPersonNewPassword_CannotChange_SecurityError
+                    };
+                }
+
+                authData.CurrentUser.BitIdAddress = string.Empty;
+
+                return new AjaxCallResult {Success = true};
+            }
+            else
+            {
+                // Validate rights to remove BitId
+                // Log, notify, and chainnotify
+
+                throw new NotImplementedException();
+            }
+
+
+        }
+
     }
 }

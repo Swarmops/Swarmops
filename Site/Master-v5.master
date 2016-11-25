@@ -527,10 +527,21 @@
                 alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_ConfirmRemove2FAOwn%>'), 
                     function (response) { 
                         if (response) {
-                            // TODO: Enter password as a security measure (or check against entered)
-                            alert("Success!");
+                            var jsonData =
+                            {
+                                password: <%=this.MasterEditPersonCurrentPassword.ClientID%>_value()
+                            }
+                            SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/RemoveBitId", jsonData, function(result) {
+                                if (result.Success) {
+                                    // Success: UX feedback is slider in "off" position
+                                } else {
+                                    alertify.error(result.DisplayMessage);
+                                    <%= this.MasterEditPerson2FA.ClientID %>_initialize(true);
+                                }
+
+                            });
                         } else {
-                            <%= this.MasterEditPerson2FAProvisioning.ClientID %>_initialize(true);
+                            <%= this.MasterEditPerson2FA.ClientID %>_initialize(true);
                             alertify.log(SwarmopsJS.unescape('<%=this.Localized_MasterPersonEdit_Cancelled2FARemoval%>'));
                         }
                     }); 
@@ -650,6 +661,7 @@
 
         function onBitIdRegisterRecheck() {
             SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/TestBitIdRegister", {}, function(result) {
+                alertify.log(result.Success);
                 if (result.Success) {
                     _master_bitIdRecheckTimer = null;
                     <%=this.ModalMasterEnableBitId%>_close();
