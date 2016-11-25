@@ -658,7 +658,7 @@
                 _master_bitIdRecheckTimer = null;
             }
 
-            if (_master_PersonEditedId == 0) // editing self
+            if (_master_PersonEditedId == 0 && !_master_bitIdRegisterSuccess) // editing self
             {
                 <%=this.MasterEditPerson2FA.ClientID%>_initialize(false);
                 alertify.log(SwarmopsJS.unescape('<%=this.Localized_BitIdRegister_Fail%>'));
@@ -670,7 +670,9 @@
                 alertify.log(result.Success);
                 if (result.Success) {
                     _master_bitIdRecheckTimer = null;
+                    _master_bitIdRegisterSuccess = true; // suppress failure from close event below
                     <%=this.ModalMasterEnableBitId.ClientID%>_close();
+                    _master_bitIdRegisterSuccess = false;
                     alertify.alert(result.DisplayMessage);
                 } else {
                     // not ready yet
@@ -683,6 +685,7 @@
         }
 
         var _master_bitIdRecheckTimer = null;
+        var _master_bitIdRegisterSuccess = false;
 
 
     </script>
