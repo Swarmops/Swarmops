@@ -42,6 +42,9 @@ namespace Swarmops.Frontend.Pages.Swarm
 
             List<string> jsonPeople = new List<string>();
 
+            string editPersonTemplate =
+                "\"actions\":\"<a href='javascript:masterBeginEditPerson({0})'><img src='/Images/Icons/iconshock-wrench-16px.png' height='16' width='16' /></a>\"";
+
             foreach (Person person in matches)
             {
                 string onePerson = '{' +
@@ -52,7 +55,10 @@ namespace Swarmops.Frontend.Pages.Swarm
                                        person.GetSecureAvatarLink (16),
                                        JsonSanitize (person.Geography.Name),
                                        JsonSanitize (person.Mail),
-                                       JsonSanitize (person.Phone)) + '}';
+                                       JsonSanitize (person.Phone)) + "," +
+                                    String.Format(
+                                        editPersonTemplate, person.Identity)
+                                       + '}';
                 jsonPeople.Add (onePerson);
             }
 
