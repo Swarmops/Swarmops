@@ -257,10 +257,10 @@
                         </div>
                     </div>
                     <div class="entryLabels">
-                        Type current password to enable changes<br/>
-                        <div class="divMasterPersonEditSecurityRolldown" style="display:none">Enable BitId (bitcoin signature login)<br/>
-                        Set new password<br/>
-                        Retype new password</div>
+                        <asp:Label ID="MasterLabelEditPersonCurrentPerson" runat="server" Text="#Type current password to enable changes#"/><br/>
+                        <div class="divMasterPersonEditSecurityRolldown" style="display: none"><asp:Label runat="server" ID="MasterLabelEditPerson2FA" Text="#2FALoc#"/><br/>
+                            <asp:Label runat="server" ID="MasterLabelEditPersonNewPassword1"/><br/>
+                            <asp:Label runat="server" ID="MasterLabelEditPersonNewPassword2"/></div>
                     </div>
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
@@ -272,7 +272,7 @@
                     </div>
                     <div class="entryLabels">
                         <asp:Label runat="server" ID="MasterLabelEditPersonResetPassword" /><br/>
-                        <asp:Label runat="server" ID="MasterLabelEditPersonSecurity2FASwitch" />
+                        <asp:Label runat="server" ID="MasterLabelEditPerson2FAProvisioning" />
                     </div>
                 </div>
                 <!--
@@ -361,7 +361,7 @@
         
     <Swarmops5:ModalDialog ID="ModalMasterEnableBitId" runat="server" OnClientClose="onBitIdRegisterFail">
         <DialogCode>
-            <h2>Scan this code to enable BitId login</h2>
+            <h2><asp:Label runat="server" ID="MasterLabelBitIdRegisterHeader"/></h2>
             <div id="divBitIdEnable" style="height: 280px; margin: 50px; float:left"></div>
             <div class="modal-sidebar" style="margin-top:50px">
                 
@@ -476,6 +476,19 @@
             var personEditorData = {
                 personId: parseInt(personId)  // parseInt to force passing integer over JSON
             };
+
+            if (personId == 0) // self
+            {
+                // Show security, hide security provisioning
+                $('#divTabsEditPerson').tabs('disableTab', 2);
+                $('#divTabsEditPerson').tabs('enableTab', 1);
+            } else {
+                // other way around
+                $('#divTabsEditPerson').tabs('disableTab', 1);
+                $('#divTabsEditPerson').tabs('enableTab', 2);
+                
+            }
+            $('#div').tabs();
 
             _master_PersonEditLoading = false;
             _master_PersonEditedId = personId;
@@ -667,7 +680,7 @@
 
         function onBitIdRegisterRecheck() {
             SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/TestBitIdRegister", {}, function(result) {
-                alertify.log(result.Success);
+
                 if (result.Success) {
                     _master_bitIdRecheckTimer = null;
                     _master_bitIdRegisterSuccess = true; // suppress failure from close event below

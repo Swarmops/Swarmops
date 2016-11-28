@@ -739,8 +739,8 @@
   <data name="Global_TwitterId" xml:space="preserve">
     <value>Twitter ID</value>
   </data>
-  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
-    <value>Two-factor authentication (disabling quarantines login)</value>
+  <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
+    <value>BitID Two-factor authentication (disabling quarantines login)</value>
     <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
   </data>
   <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
@@ -817,10 +817,13 @@
     <value>Two weeks</value>
   </data>
   <data name="Master_BitIdRegistered" xml:space="preserve">
-    <value>&lt;strong&gt;BITID SUCCESSFULLY ENABLED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;When logging on to this system from now on, you need to use the BitId application you just used to scan the code.</value>
+    <value>&lt;strong&gt;BITID TWO-FACTOR AUTHENTICATION SUCCESSFULLY ENABLED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;When logging on to this system from now on, you need to use the BitId application you just used to scan the code.</value>
   </data>
   <data name="Master_BitIdRegister_Fail" xml:space="preserve">
     <value>BitID two-factor authentication has not been enabled.</value>
+  </data>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>Scan this code to enable BitID</value>
   </data>
   <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
     <value>&lt;h3&gt;What is this?&lt;/h3&gt;
@@ -830,8 +833,26 @@
                 &lt;h3&gt;Do I need an app for this?&lt;/h3&gt;
                 &lt;p&gt;Maybe. Some mobile bitcoin wallets have BitID built in. The most common one hasn't. If yours doesn't, look for an app called "BitID Authenticator" or similar.&lt;/p&gt;
                 &lt;h3&gt;How do I enable BitID?&lt;/h3&gt;
-                &lt;p&gt;Just use the phone app to scan this code. After that, you can scan a similar code to log in.&lt;/p&gt;</value>
+                &lt;p&gt;Just use the phone app to scan this code. After that, you can scan a similar code to log in to this system.&lt;/p&gt;</value>
     <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>BitID (bitcoin signature) two-factor authentication</value>
+  </data>
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value>BitID two-factor auth</value>
+  </data>
+  <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
+    <value>Type current password to enable changes</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
+    <value>Your Security</value>
+  </data>
+  <data name="Master_EditPersonNewPassword1" xml:space="preserve">
+    <value>Set new password</value>
+  </data>
+  <data name="Master_EditPersonNewPassword2" xml:space="preserve">
+    <value>Retype new password</value>
   </data>
   <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
     <value>Unable to set new password: The old password is incorrect.</value>

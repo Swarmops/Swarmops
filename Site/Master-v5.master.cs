@@ -231,16 +231,25 @@ namespace Swarmops.Frontend
             // this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(Resources.Global.Master_SwitchOrganizationDialog, _currentOrganization.Name);
 
             this.MasterLabelEditPersonHeaderAccount.Text = Resources.Global.Master_EditPersonHeaderAccount;
-            this.MasterLabelEditPersonHeaderSecurityProvisioning.Text =
-                Resources.Global.Master_EditPersonHeaderSecurityProvisioning;
             this.MasterLabelEditPersonMail.Text = Resources.Global.Global_Mail;
             this.MasterLabelEditPersonName.Text = Resources.Global.Global_Name;
             this.MasterLabelEditPersonPhone.Text = Resources.Global.Global_Phone;
-            this.MasterLabelEditPersonResetPassword.Text = Resources.Global.Master_EditPersonResetPasswordLabel;
-            this.MasterLabelEditPersonSecurity2FASwitch.Text = Resources.Global.Master_EditPerson2FAEnable;
             this.MasterLabelEditPersonTwitter.Text = Resources.Global.Global_TwitterId;
 
+            this.MasterLabelEditPersonHeaderSecurity.Text = Resources.Global.Master_EditPersonHeaderSecurity;
+            this.MasterLabelEditPerson2FA.Text = Resources.Global.Master_EditPerson2FAEnable;
+            this.MasterLabelEditPersonNewPassword1.Text = Resources.Global.Master_EditPersonNewPassword1;
+            this.MasterLabelEditPersonNewPassword1.Text = Resources.Global.Master_EditPersonNewPassword1;
+            this.MasterEditPerson2FA.Label = Resources.Global.Master_EditPerson2FAEnableShort;
 
+            this.MasterLabelEditPersonHeaderSecurityProvisioning.Text =
+                Resources.Global.Master_EditPersonHeaderSecurityProvisioning;
+            this.MasterEditPerson2FAProvisioning.Label = Resources.Global.Master_EditPerson2FAEnableShort;
+            this.MasterLabelEditPersonResetPassword.Text = Resources.Global.Master_EditPersonResetPasswordLabel;
+            this.MasterLabelEditPerson2FAProvisioning.Text = Resources.Global.Master_EditPerson2FAEnable;
+
+
+            this.MasterLabelBitIdRegisterHeader.Text = Resources.Global.Master_BitIdRegister_Header;
         }
 
         protected string _cacheVersionMark;  // this is just a cache buster for style sheets on new versions
@@ -500,6 +509,8 @@ namespace Swarmops.Frontend
         {
             get { return CommonV5.JavascriptEscape(Resources.Global.Error_AjaxCallException); }
         }
+
+
 
         public string GenerateBitIdToken
         {

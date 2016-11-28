@@ -409,6 +409,42 @@ namespace Swarmops.Frontend {
         protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox MasterEditPersonNewPassword2;
         
         /// <summary>
+        /// MasterLabelEditPersonCurrentPerson control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonCurrentPerson;
+        
+        /// <summary>
+        /// MasterLabelEditPerson2FA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPerson2FA;
+        
+        /// <summary>
+        /// MasterLabelEditPersonNewPassword1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonNewPassword1;
+        
+        /// <summary>
+        /// MasterLabelEditPersonNewPassword2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonNewPassword2;
+        
+        /// <summary>
         /// MasterLabelEditPersonHeaderSecurityProvisioning control.
         /// </summary>
         /// <remarks>
@@ -436,13 +472,13 @@ namespace Swarmops.Frontend {
         protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonResetPassword;
         
         /// <summary>
-        /// MasterLabelEditPersonSecurity2FASwitch control.
+        /// MasterLabelEditPerson2FAProvisioning control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonSecurity2FASwitch;
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPerson2FAProvisioning;
         
         /// <summary>
         /// MasterEditPersonOrgMail control.
@@ -533,5 +569,14 @@ namespace Swarmops.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Swarmops.Frontend.Controls.Base.ModalDialog ModalMasterEnableBitId;
+        
+        /// <summary>
+        /// MasterLabelBitIdRegisterHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelBitIdRegisterHeader;
     }
 }

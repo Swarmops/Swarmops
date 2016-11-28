@@ -1474,7 +1474,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;strong&gt;BITID SUCCESSFULLY ENABLED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;When logging on to this system from now on, you need to use the BitId application you just used to scan the code..
+        ///   Looks up a localized string similar to &lt;strong&gt;BITID TWO-FACTOR AUTHENTICATION SUCCESSFULLY ENABLED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;When logging on to this system from now on, you need to use the BitId application you just used to scan the code..
         /// </summary>
         internal static string Master_BitIdRegistered {
             get {
@@ -1488,6 +1488,15 @@ namespace Resources {
         internal static string Master_BitIdRegister_Fail {
             get {
                 return ResourceManager.GetString("Master_BitIdRegister_Fail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan this code to enable BitID.
+        /// </summary>
+        internal static string Master_BitIdRegister_Header {
+            get {
+                return ResourceManager.GetString("Master_BitIdRegister_Header", resourceCulture);
             }
         }
         
@@ -1506,11 +1515,29 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Two-factor authentication (disabling quarantines login).
+        ///   Looks up a localized string similar to BitID (bitcoin signature) two-factor authentication.
         /// </summary>
         internal static string Master_EditPerson2FAEnable {
             get {
                 return ResourceManager.GetString("Master_EditPerson2FAEnable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BitID Two-factor authentication (disabling quarantines login).
+        /// </summary>
+        internal static string Master_EditPerson2FAEnableProvisioning {
+            get {
+                return ResourceManager.GetString("Master_EditPerson2FAEnableProvisioning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BitID two-factor auth.
+        /// </summary>
+        internal static string Master_EditPerson2FAEnableShort {
+            get {
+                return ResourceManager.GetString("Master_EditPerson2FAEnableShort", resourceCulture);
             }
         }
         
@@ -1569,6 +1596,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type current password to enable changes.
+        /// </summary>
+        internal static string Master_EditPersonCurrentPassword {
+            get {
+                return ResourceManager.GetString("Master_EditPersonCurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account.
         /// </summary>
         internal static string Master_EditPersonHeaderAccount {
@@ -1578,11 +1614,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Security.
+        /// </summary>
+        internal static string Master_EditPersonHeaderSecurity {
+            get {
+                return ResourceManager.GetString("Master_EditPersonHeaderSecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Security Provisioning.
         /// </summary>
         internal static string Master_EditPersonHeaderSecurityProvisioning {
             get {
                 return ResourceManager.GetString("Master_EditPersonHeaderSecurityProvisioning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set new password.
+        /// </summary>
+        internal static string Master_EditPersonNewPassword1 {
+            get {
+                return ResourceManager.GetString("Master_EditPersonNewPassword1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retype new password.
+        /// </summary>
+        internal static string Master_EditPersonNewPassword2 {
+            get {
+                return ResourceManager.GetString("Master_EditPersonNewPassword2", resourceCulture);
             }
         }
         
