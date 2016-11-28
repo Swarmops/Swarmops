@@ -49,7 +49,7 @@ namespace Swarmops.Frontend.Pages.Swarm
             {
                 string onePerson = '{' +
                                    String.Format (
-                                       "\"id\":\"{0}\",\"name\":\"{1}\",\"avatar16Url\":\"{2}\",\"geographyName\":\"{3}\",\"mail\":\"{4}\",\"phone\":\"{5}\"",
+                                       "\"id\":\"{0}\",\"name\":\"<span class='spanUser{0}Name'>{1}</span>\",\"avatar16Url\":\"{2}\",\"geographyName\":\"{3}\",\"mail\":\"{4}\",\"phone\":\"{5}\"",
                                        person.Identity,
                                        JsonSanitize (person.Canonical),
                                        person.GetSecureAvatarLink (16),
