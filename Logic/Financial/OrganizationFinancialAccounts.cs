@@ -94,6 +94,7 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount CostsBitcoinFees
         {
             get { return this[OrganizationFinancialAccountType.CostsBitcoinFees]; }
+            set { this[OrganizationFinancialAccountType.CostsBitcoinFees] = value; }
         }
 
         public FinancialAccount CostsAllocatedFunds
