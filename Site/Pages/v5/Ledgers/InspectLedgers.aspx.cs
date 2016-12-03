@@ -448,5 +448,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                                        identifiableObject.GetType().Name);
             }
         }
+        
+        /// <summary>
+        /// DropBudgets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field. Moved from designer file to code-behind file.
+        /// </remarks>
+        protected Swarmops.Controls.Financial.ComboBudgets DropBudgets;
     }
 }
