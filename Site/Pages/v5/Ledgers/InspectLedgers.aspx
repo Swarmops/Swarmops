@@ -58,14 +58,17 @@
                     // Dynamic reloading screws up resizing for some reason, so we'll have to resize the tx grid manually.
 
                     var heightBody = $('div#<%=this.DialogEditTx.ClientID%>_divModalCover table.datagrid-btable').height();
-                    $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-body').height(heightBody);
 
-                    var heightHeaders = $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-header').height();
-                    $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-view').height(heightBody + heightHeaders + 20); // +20 adds some margin on the bottom. It's an arbitrary number.
-                    $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-wrap').height(heightBody + heightHeaders + 20);
+                    if (heightBody != null) 
+                    {
+                        $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-body').height(heightBody);
 
-                    $('div#<%=this.DialogEditTx.ClientID%>_divModalBox').height($('div#<%=this.DialogEditTx.ClientID%>_divModalBox div.content').height() + 20);
+                        var heightHeaders = $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-header').height();
+                        $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-view').height(heightBody + heightHeaders + 20); // +20 adds some margin on the bottom. It's an arbitrary number.
+                        $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-wrap').height(heightBody + heightHeaders + 20);
 
+                        $('div#<%=this.DialogEditTx.ClientID%>_divModalBox').height($('div#<%=this.DialogEditTx.ClientID%>_divModalBox div.content').height() + 20);
+                    }
                 }
             });
 
@@ -188,7 +191,7 @@
         function onInspectTransaction(transactionId) {
             window.scrollTo(0, 0);
             $('body').css('overflow-y', 'hidden');
-            $('#<%=this.DialogEditTx.ClientID%>_divModalCover').fadeIn();
+            <%=this.DialogEditTx.ClientID%>_open();
             SwarmopsJS.formatInteger(transactionId, function(result) { $('span#spanModalTransactionId').text(result); });
 
             $('#gridTransaction').datagrid({ url: 'Json-InspectLedgerTxData.aspx?TxId=' + transactionId });

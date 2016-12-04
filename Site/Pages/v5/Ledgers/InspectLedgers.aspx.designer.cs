@@ -84,7 +84,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelHeaderInspect;
         
-       
+        /// <summary>
+        /// DropBudgets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Controls.Financial.ComboBudgets DropBudgets;
+        
         /// <summary>
         /// LabelHeaderInspectFor control.
         /// </summary>
