@@ -237,8 +237,9 @@ namespace Swarmops.Frontend
 
             this.MasterLabelEditPersonHeaderSecurity.Text = Resources.Global.Master_EditPersonHeaderSecurity;
             this.MasterLabelEditPerson2FA.Text = Resources.Global.Master_EditPerson2FAEnable;
+            this.MasterEditPersonCurrentPassword.Text = Resources.Global.Master_EditPersonCurrentPassword;
             this.MasterLabelEditPersonNewPassword1.Text = Resources.Global.Master_EditPersonNewPassword1;
-            this.MasterLabelEditPersonNewPassword1.Text = Resources.Global.Master_EditPersonNewPassword1;
+            this.MasterLabelEditPersonNewPassword2.Text = Resources.Global.Master_EditPersonNewPassword2;
             this.MasterEditPerson2FA.Label = Resources.Global.Master_EditPerson2FAEnableShort;
 
             this.MasterLabelEditPersonHeaderSecurityProvisioning.Text =
