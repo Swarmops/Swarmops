@@ -144,7 +144,7 @@ namespace Swarmops.Pages.v5.Support
 
                     hasPermission = true;
                 }
-                    break;
+                break;
             }
 
             if (!hasPermission)
