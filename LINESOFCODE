@@ -26,7 +26,7 @@
      12 ./Logic/Financial/BankDataReaders/TabSeparatedValuesReader.cs
     121 ./Logic/Financial/HotBitcoinAddress.cs
      27 ./Logic/Financial/FinancialTransactionTagType.cs
-    273 ./Logic/Financial/OrganizationFinancialAccounts.cs
+    274 ./Logic/Financial/OrganizationFinancialAccounts.cs
     196 ./Logic/Financial/ExternalBankDataProfile.cs
      30 ./Logic/Financial/FinancialAccountRow.cs
      58 ./Logic/Financial/HotBitcoinAddressUnspents.cs
@@ -46,7 +46,7 @@
     270 ./Logic/Financial/InboundInvoice.cs
      15 ./Logic/Financial/FinancialTransactionTagSets.cs
       9 ./Logic/Financial/FinancialTransactionTagSetTypesStock.cs
-    789 ./Logic/Financial/BitcoinUtility.cs
+    788 ./Logic/Financial/BitcoinUtility.cs
      22 ./Logic/Financial/FinancialValidation.cs
     107 ./Logic/Financial/ExchangeRateSnapshot.cs
      43 ./Logic/Financial/PaymentInformation.cs
@@ -65,7 +65,7 @@
      17 ./Logic/Financial/StockBankDataReaders.cs
     343 ./Logic/Financial/OutboundInvoice.cs
      90 ./Logic/Financial/InboundInvoices.cs
-     91 ./Logic/Financial/HotBitcoinAddresses.cs
+     92 ./Logic/Financial/HotBitcoinAddresses.cs
      15 ./Logic/Financial/ExchangeRateSnapshots.cs
      12 ./Logic/Financial/IAttestable.cs
      21 ./Logic/Financial/PayrollAdjustments.cs
@@ -87,7 +87,7 @@
      90 ./Logic/Resources/Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs
     927 ./Logic/Resources/Logic.Swarm.ParticipantTitle.Designer.cs
      58 ./Logic/AssemblyInfo.cs
-    136 ./Logic/Communications/Payload/ParticipantMailPayload.cs
+    135 ./Logic/Communications/Payload/ParticipantMailPayload.cs
     228 ./Logic/Communications/Payload/NotificationPayload.cs
      22 ./Logic/Communications/Payload/PayloadEnvelope.cs
    1285 ./Logic/Communications/TypedMailTemplate.cs
@@ -150,7 +150,7 @@
     623 ./Logic/Security/Authentication.cs
      29 ./Logic/Security/SHA1.cs
     204 ./Logic/Security/PermissionSet.cs
-     39 ./Logic/Security/PgpKey.cs
+     43 ./Logic/Security/PgpKey.cs
     806 ./Logic/Security/Authorization.cs
       9 ./Logic/Security/InternalLoginTicket.cs
     110 ./Logic/Security/Accesses.cs
@@ -167,17 +167,19 @@
      71 ./Logic/Swarm/PersonRole.cs
     107 ./Logic/Swarm/PositionAssignment.cs
      59 ./Logic/Swarm/ParticipantTitle.cs
-   1188 ./Logic/Swarm/Person.cs
+   1197 ./Logic/Swarm/Person.cs
     291 ./Logic/Swarm/DashboardTodos.cs
      52 ./Logic/Swarm/ExternalActivity.cs
     149 ./Logic/Swarm/ExternalIdentity.cs
     234 ./Logic/Swarm/Participation.cs
      83 ./Logic/Swarm/PaymentCode.cs
      88 ./Logic/Swarm/Volunteers.cs
+     34 ./Logic/Swarm/PersonQuarantines.cs
      20 ./Logic/Swarm/ChurnDataPoint.cs
      66 ./Logic/Swarm/RoleLookup.cs
     125 ./Logic/Swarm/ChurnData.cs
     248 ./Logic/Swarm/Positions.cs
+     53 ./Logic/Swarm/PersonQuarantine.cs
     273 ./Logic/Swarm/Position.cs
     264 ./Logic/Swarm/Roles.cs
     124 ./Logic/Swarm/ParleyAttendee.cs
@@ -249,6 +251,7 @@
      33 ./Logic/Support/LogEntries/InboundInvoiceCreatedLogEntry.cs
      30 ./Logic/Support/LogEntries/CashAdvanceRequestedLogEntry.cs
      23 ./Logic/Support/LogEntries/VolunteerForPositionLogEntry.cs
+     19 ./Logic/Support/LogEntries/PersonalDataChangedLogEntry.cs
      26 ./Logic/Support/LogEntries/PasswordResetLogEntry.cs
      32 ./Logic/Support/LogEntries/PersonAddedLogEntry.cs
      22 ./Logic/Support/LogEntries/FinancialActionBase.cs
@@ -289,6 +292,85 @@
     161 ./Interface/Objects/MainMenuItem.cs
     104 ./Interface/Objects/OrganizationMetadata.cs
      40 ./Interface/Support/DashboardMessage.cs
+     23 ./Boneyard/Site-Data/Data/DisplayInternalPollVoters.aspx
+     16 ./Boneyard/Site-Data/Data/BallotsData.aspx
+      1 ./Boneyard/Site-Data/Data/GetPublicKeyForAddress.aspx
+     55 ./Boneyard/Site-Data/Data/DisplayInternalPollVoters.aspx.cs
+     94 ./Boneyard/Site-Data/Data/BallotsData.aspx.cs
+     55 ./Boneyard/Site-Data/Data/DisplayInternalPollVotes.aspx.cs
+     22 ./Boneyard/Site-Data/Data/DisplayInternalPollVotes.aspx
+     59 ./Boneyard/Site-Data/Data/GetPublicKeyForAddress.aspx.cs
+      2 ./Boneyard/Site-Data/Maps/CityOrganizationStrength.aspx
+     21 ./Boneyard/Site-Data/Maps/CityOrganizationStrength.aspx.cs
+      2 ./Boneyard/Site-Data/Maps/CircuitOrganizationStrength.aspx
+      2 ./Boneyard/Site-Data/Maps/OrganizationalUptake.aspx
+     21 ./Boneyard/Site-Data/Maps/CircuitOrganizationStrength.aspx.cs
+     21 ./Boneyard/Site-Data/Maps/OrganizationalUptake.aspx.cs
+     16 ./Boneyard/Site-Data/Default.aspx.cs
+     16 ./Boneyard/Site-Data/Default.aspx
+     50 ./Boneyard/Site-Data/Rss/Activism.aspx.cs
+      3 ./Boneyard/Site-Data/Rss/Activism.aspx
+    115 ./Boneyard/Site-Data/Xml/GeographyAccess.aspx.cs
+      1 ./Boneyard/Site-Data/Xml/Roles.aspx
+    164 ./Boneyard/Site-Data/Xml/ValbokData.aspx.cs
+      1 ./Boneyard/Site-Data/Xml/CombinedGeoMemberStats.aspx
+    104 ./Boneyard/Site-Data/Xml/Roles.aspx.cs
+    186 ./Boneyard/Site-Data/Xml/Ansvariga.aspx.cs
+      3 ./Boneyard/Site-Data/Xml/Ansvariga.aspx
+      3 ./Boneyard/Site-Data/Xml/GeographyAccess.aspx
+     31 ./Boneyard/Site-Data/Xml/CombinedGeoMemberStats.aspx.cs
+    101 ./Boneyard/Site-Data/Xml/Budgets.aspx.cs
+      3 ./Boneyard/Site-Data/Xml/Budgets.aspx
+      1 ./Boneyard/Site-Data/Xml/ValbokData.aspx
+      2 ./Boneyard/Site-Data/Forms/DisplayOutboundInvoice.aspx
+     83 ./Boneyard/Site-Data/Forms/DisplayOutboundInvoice.aspx.cs
+      4 ./Boneyard/Site-Data/Handlers/DisplayActivism.aspx
+      4 ./Boneyard/Site-Data/Handlers/DisplayPortrait.aspx
+     80 ./Boneyard/Site-Data/Handlers/DisplayPortrait.aspx.cs
+    183 ./Boneyard/Site-Data/Handlers/DisplayActivism.aspx.cs
+     15 ./Boneyard/Site-Data/Charts/MediaCompetitivePie.aspx
+    158 ./Boneyard/Site-Data/Charts/FinancialAssetHistory.aspx.cs
+     15 ./Boneyard/Site-Data/Charts/GenderDistributionHistory.aspx
+    209 ./Boneyard/Site-Data/Charts/MailResponseTimes.aspx.cs
+    164 ./Boneyard/Site-Data/Charts/TopRecruitmentDates.aspx.cs
+    550 ./Boneyard/Site-Data/Charts/RelativeDistroStatus.aspx.cs
+    128 ./Boneyard/Site-Data/Charts/MailQueueFreshness.aspx.cs
+     15 ./Boneyard/Site-Data/Charts/MemberCountHistory.aspx
+     15 ./Boneyard/Site-Data/Charts/FinancialAssetHistory.aspx
+    139 ./Boneyard/Site-Data/Charts/RecentDonations.aspx.cs
+    228 ./Boneyard/Site-Data/Charts/GenderDistributionHistory.aspx.cs
+     15 ./Boneyard/Site-Data/Charts/MediaCompetitiveTimeline.aspx
+     16 ./Boneyard/Site-Data/Charts/GeographicMemberRanking.aspx
+     15 ./Boneyard/Site-Data/Charts/RecentDonations.aspx
+    212 ./Boneyard/Site-Data/Charts/VotingDayBallotDistroStatus.aspx.cs
+    182 ./Boneyard/Site-Data/Charts/MediaCompetitiveTimeline.aspx.cs
+    300 ./Boneyard/Site-Data/Charts/MemberCountHistory.aspx.cs
+    152 ./Boneyard/Site-Data/Charts/VotingDayBallotDistroStatus.aspx
+    148 ./Boneyard/Site-Data/Charts/BlogInfluencePie.aspx.cs
+    115 ./Boneyard/Site-Data/Charts/DonationHistory.aspx.cs
+     16 ./Boneyard/Site-Data/Charts/InternalPollTurnoutPerCircuit.aspx
+    218 ./Boneyard/Site-Data/Charts/MediaCompetitivePie.aspx.cs
+     15 ./Boneyard/Site-Data/Charts/MembersAgesGenders.aspx
+     41 ./Boneyard/Site-Data/Charts/RelativeDistroStatus.aspx
+    199 ./Boneyard/Site-Data/Charts/InternalPollTurnoutPerCircuit.aspx.cs
+     15 ./Boneyard/Site-Data/Charts/BlogInfluencePie.aspx
+     15 ./Boneyard/Site-Data/Charts/MailResponseTimes.aspx
+     15 ./Boneyard/Site-Data/Charts/TopRecruitmentDates.aspx
+    207 ./Boneyard/Site-Data/Charts/GeographicMemberRanking.aspx.cs
+     16 ./Boneyard/Site-Data/Charts/Activism2010PerCircuit.aspx
+    180 ./Boneyard/Site-Data/Charts/MembersAgesGenders.aspx.cs
+     15 ./Boneyard/Site-Data/Charts/MailQueueFreshness.aspx
+     15 ./Boneyard/Site-Data/Charts/DonationHistory.aspx
+    166 ./Boneyard/Site-Data/Charts/Activism2010PerCircuit.aspx.cs
+     47 ./Boneyard/Site-Data/PhpIncludes/BallotCoverage.aspx.cs
+     80 ./Boneyard/Site-Data/PhpIncludes/InternalPollCandidateCount.aspx
+     24 ./Boneyard/Site-Data/PhpIncludes/RecentDonations.aspx
+      0 ./Boneyard/Site-Data/PhpIncludes/BallotCoverage.aspx
+     27 ./Boneyard/Site-Data/PhpIncludes/MemberCount.aspx
+     21 ./Boneyard/Site-Data/HtmlIncludes/InternalPollCandidates.aspx
+     71 ./Boneyard/Site-Data/HtmlIncludes/DisplayLatestActivism.aspx.cs
+     32 ./Boneyard/Site-Data/HtmlIncludes/InternalPollCandidates.aspx.cs
+      3 ./Boneyard/Site-Data/HtmlIncludes/DisplayLatestActivism.aspx
      22 ./Tests/DummyTest.cs
      76 ./Tests/FindConflictingReferences.cs
      27 ./Tests/Financial/BitcoinUtilityTest.cs
@@ -309,7 +391,7 @@
      52 ./Common/Enums/PositionType.cs
      19 ./Common/Enums/InvalidMembershipType.cs
      45 ./Common/Enums/MembershipPaymentStatus.cs
-    385 ./Common/Enums/ObjectOptionalDataType.cs
+    400 ./Common/Enums/ObjectOptionalDataType.cs
      46 ./Common/Enums/DocumentType.cs
      16 ./Common/Enums/PoliticalAffiliation.cs
      19 ./Common/Enums/ExternalIdentityType.cs
@@ -392,7 +474,7 @@
      29 ./Site/Automation/Json-ByGuid.aspx.cs
      57 ./Site/Automation/Json-AvailableCurrencies.aspx.cs
       0 ./Site/Automation/Json-BudgetsTree.aspx
-    313 ./Site/Automation/SwarmFunctions.aspx.cs
+    539 ./Site/Automation/SwarmFunctions.aspx.cs
      96 ./Site/Automation/Json-TransactionTagsTree.aspx.cs
     136 ./Site/Automation/Json-GeographiesTree.aspx.cs
      59 ./Site/Automation/GetGeographyData.asmx
@@ -417,7 +499,7 @@
       0 ./Site/App_GlobalResources/fr-FR/Pages.Swarm.fr-FR.designer.cs
       0 ./Site/App_GlobalResources/fr-FR/Pages.Financial.fr-FR.designer.cs
       0 ./Site/App_GlobalResources/fr-FR/Controls.Swarm.fr-FR.designer.cs
-   1719 ./Site/App_GlobalResources/Global.designer.cs
+   2021 ./Site/App_GlobalResources/Global.designer.cs
       0 ./Site/App_GlobalResources/hi-IN/Pages.Ledgers.hi-IN.designer.cs
       0 ./Site/App_GlobalResources/hi-IN/Global.hi-IN.designer.cs
       0 ./Site/App_GlobalResources/hi-IN/Controls.Swarm.hi-IN.designer.cs
@@ -669,10 +751,12 @@
      76 ./Site/Controls/v5/UI/ExternalScripts.ascx.cs
       5 ./Site/Controls/v5/UI/IncludedScripts.ascx
      15 ./Site/Controls/v5/Base/ComboGeographies.ascx.designer.cs
+     33 ./Site/Controls/v5/Base/AjaxToggleSlider.ascx.designer.cs
      34 ./Site/Controls/v5/Base/ModalDialog.ascx.cs
      24 ./Site/Controls/v5/Base/WebUserControlTest.ascx.designer.cs
-    129 ./Site/Controls/v5/Base/AjaxTextBox.ascx
-     61 ./Site/Controls/v5/Base/AjaxTextBox.ascx.cs
+    182 ./Site/Controls/v5/Base/AjaxTextBox.ascx
+     65 ./Site/Controls/v5/Base/AjaxTextBox.ascx.cs
+     35 ./Site/Controls/v5/Base/AjaxToggleSlider.ascx.cs
      35 ./Site/Controls/v5/Base/ComboGeographies.ascx.cs
      16 ./Site/Controls/v5/Base/WebUserControlTest.ascx.cs
      24 ./Site/Controls/v5/Base/AjaxTextBox.ascx.designer.cs
@@ -687,6 +771,7 @@
       1 ./Site/Controls/v5/Base/MainMenu.ascx
       2 ./Site/Controls/v5/Base/WebUserControlTest.ascx
      24 ./Site/Controls/v5/Base/ModalDialog.ascx.designer.cs
+    117 ./Site/Controls/v5/Base/AjaxToggleSlider.ascx
      69 ./Site/Controls/v5/Base/FileUpload.ascx
      82 ./Site/Controls/v5/Base/FileUpload.ascx.cs
     334 ./Site/Pages/v5/Public/Signup.aspx.cs
@@ -801,7 +886,7 @@
      33 ./Site/Pages/v5/Swarm/LocalOrganization.aspx.designer.cs
     258 ./Site/Pages/v5/Swarm/AddPerson.aspx.designer.cs
      27 ./Site/Pages/v5/Swarm/LocalOrganization.aspx
-     65 ./Site/Pages/v5/Swarm/Json-ListFindPeople.aspx.cs
+     71 ./Site/Pages/v5/Swarm/Json-ListFindPeople.aspx.cs
     204 ./Site/Pages/v5/Swarm/ListFindPeople.aspx
      76 ./Site/Pages/v5/Swarm/LocalOrganization.aspx.cs
     228 ./Site/Pages/v5/Swarm/AddPerson.aspx
@@ -830,7 +915,7 @@
     241 ./Site/Pages/v5/Ledgers/BalanceTransactions.aspx
     105 ./Site/Pages/v5/Ledgers/ProfitLossStatement.aspx.designer.cs
      65 ./Site/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx.cs
-    451 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx.cs
+    453 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx.cs
     114 ./Site/Pages/v5/Ledgers/BalanceSheet.aspx
      15 ./Site/Pages/v5/Ledgers/Json-AccountPlanData.aspx.designer.cs
     267 ./Site/Pages/v5/Ledgers/BalanceTransactions.aspx.designer.cs
@@ -873,7 +958,7 @@
      15 ./Site/Pages/v5/Ledgers/Json-UnbalancedTransactions.aspx.designer.cs
      15 ./Site/Pages/v5/Ledgers/Json-InspectLedgerData.aspx.designer.cs
      13 ./Site/Pages/v5/Ledgers/Json-BudgetActualData.aspx.designer.cs
-    361 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx
+    363 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx
      67 ./Site/Pages/v5/Ledgers/CloseLedgers.aspx.designer.cs
     205 ./Site/Pages/v5/Ledgers/UploadBankFiles.aspx
     203 ./Site/Pages/v5/Ledgers/Json-InspectLedgerData.aspx.cs
@@ -889,321 +974,32 @@
     142 ./Site/Pages/v5/Ledgers/Json-ProfitLossData.aspx.cs
      35 ./Site/Properties/AssemblyInfo.cs
     148 ./Site/Security/ResetPassword.aspx.cs
-    248 ./Site/Security/Login.aspx
+    273 ./Site/Security/Login.aspx
     105 ./Site/Security/Login-Old.aspx.cs
      94 ./Site/Security/RequestPasswordReset.aspx.cs
     195 ./Site/Security/ResetPassword.aspx.designer.cs
-    447 ./Site/Security/Login.aspx.cs
+    475 ./Site/Security/Login.aspx.cs
     135 ./Site/Security/RequestPasswordReset.aspx
      15 ./Site/Security/FinalizeLogin.aspx.designer.cs
      26 ./Site/Security/FinalizeLogin.aspx.cs
-    249 ./Site/Security/Login.aspx.designer.cs
+    276 ./Site/Security/Login.aspx.designer.cs
      53 ./Site/Security/Login-Old.aspx
     141 ./Site/Security/RequestPasswordReset.aspx.designer.cs
     149 ./Site/Security/ResetPassword.aspx
      87 ./Site/Security/Login-Old.aspx.designer.cs
       0 ./Site/Security/FinalizeLogin.aspx
      37 ./Site/Default.aspx.cs
-     66 ./Site/Bases/MasterV5Base.cs
+     69 ./Site/Bases/MasterV5Base.cs
     181 ./Site/Bases/DataV5Base.cs
-     71 ./Site/Bases/ControlV5Base.cs
-    404 ./Site/Bases/CommonV5.cs
+     60 ./Site/Bases/ControlV5Base.cs
+    425 ./Site/Bases/CommonV5.cs
     193 ./Site/Bases/PageV5Base.cs
      19 ./Site/Default.aspx
-    433 ./Site/Master-v5.master.cs
-    122 ./Site/Global.asax
-    474 ./Site/Master-v5.master.designer.cs
-     23 ./Site-Data/Data/DisplayInternalPollVoters.aspx
-     16 ./Site-Data/Data/BallotsData.aspx
-      1 ./Site-Data/Data/GetPublicKeyForAddress.aspx
-     55 ./Site-Data/Data/DisplayInternalPollVoters.aspx.cs
-     94 ./Site-Data/Data/BallotsData.aspx.cs
-     55 ./Site-Data/Data/DisplayInternalPollVotes.aspx.cs
-     22 ./Site-Data/Data/DisplayInternalPollVotes.aspx
-     59 ./Site-Data/Data/GetPublicKeyForAddress.aspx.cs
-      2 ./Site-Data/Maps/CityOrganizationStrength.aspx
-     21 ./Site-Data/Maps/CityOrganizationStrength.aspx.cs
-      2 ./Site-Data/Maps/CircuitOrganizationStrength.aspx
-      2 ./Site-Data/Maps/OrganizationalUptake.aspx
-     21 ./Site-Data/Maps/CircuitOrganizationStrength.aspx.cs
-     21 ./Site-Data/Maps/OrganizationalUptake.aspx.cs
-     16 ./Site-Data/Default.aspx.cs
-     16 ./Site-Data/Default.aspx
-     50 ./Site-Data/Rss/Activism.aspx.cs
-      3 ./Site-Data/Rss/Activism.aspx
-    115 ./Site-Data/Xml/GeographyAccess.aspx.cs
-      1 ./Site-Data/Xml/Roles.aspx
-    164 ./Site-Data/Xml/ValbokData.aspx.cs
-      1 ./Site-Data/Xml/CombinedGeoMemberStats.aspx
-    104 ./Site-Data/Xml/Roles.aspx.cs
-    186 ./Site-Data/Xml/Ansvariga.aspx.cs
-      3 ./Site-Data/Xml/Ansvariga.aspx
-      3 ./Site-Data/Xml/GeographyAccess.aspx
-     31 ./Site-Data/Xml/CombinedGeoMemberStats.aspx.cs
-    101 ./Site-Data/Xml/Budgets.aspx.cs
-      3 ./Site-Data/Xml/Budgets.aspx
-      1 ./Site-Data/Xml/ValbokData.aspx
-      2 ./Site-Data/Forms/DisplayOutboundInvoice.aspx
-     83 ./Site-Data/Forms/DisplayOutboundInvoice.aspx.cs
-      4 ./Site-Data/Handlers/DisplayActivism.aspx
-      4 ./Site-Data/Handlers/DisplayPortrait.aspx
-     80 ./Site-Data/Handlers/DisplayPortrait.aspx.cs
-    183 ./Site-Data/Handlers/DisplayActivism.aspx.cs
-     15 ./Site-Data/Charts/MediaCompetitivePie.aspx
-    158 ./Site-Data/Charts/FinancialAssetHistory.aspx.cs
-     15 ./Site-Data/Charts/GenderDistributionHistory.aspx
-    209 ./Site-Data/Charts/MailResponseTimes.aspx.cs
-    164 ./Site-Data/Charts/TopRecruitmentDates.aspx.cs
-    550 ./Site-Data/Charts/RelativeDistroStatus.aspx.cs
-    128 ./Site-Data/Charts/MailQueueFreshness.aspx.cs
-     15 ./Site-Data/Charts/MemberCountHistory.aspx
-     15 ./Site-Data/Charts/FinancialAssetHistory.aspx
-    139 ./Site-Data/Charts/RecentDonations.aspx.cs
-    228 ./Site-Data/Charts/GenderDistributionHistory.aspx.cs
-     15 ./Site-Data/Charts/MediaCompetitiveTimeline.aspx
-     16 ./Site-Data/Charts/GeographicMemberRanking.aspx
-     15 ./Site-Data/Charts/RecentDonations.aspx
-    212 ./Site-Data/Charts/VotingDayBallotDistroStatus.aspx.cs
-    182 ./Site-Data/Charts/MediaCompetitiveTimeline.aspx.cs
-    300 ./Site-Data/Charts/MemberCountHistory.aspx.cs
-    152 ./Site-Data/Charts/VotingDayBallotDistroStatus.aspx
-    148 ./Site-Data/Charts/BlogInfluencePie.aspx.cs
-    115 ./Site-Data/Charts/DonationHistory.aspx.cs
-     16 ./Site-Data/Charts/InternalPollTurnoutPerCircuit.aspx
-    218 ./Site-Data/Charts/MediaCompetitivePie.aspx.cs
-     15 ./Site-Data/Charts/MembersAgesGenders.aspx
-     41 ./Site-Data/Charts/RelativeDistroStatus.aspx
-    199 ./Site-Data/Charts/InternalPollTurnoutPerCircuit.aspx.cs
-     15 ./Site-Data/Charts/BlogInfluencePie.aspx
-     15 ./Site-Data/Charts/MailResponseTimes.aspx
-     15 ./Site-Data/Charts/TopRecruitmentDates.aspx
-    207 ./Site-Data/Charts/GeographicMemberRanking.aspx.cs
-     16 ./Site-Data/Charts/Activism2010PerCircuit.aspx
-    180 ./Site-Data/Charts/MembersAgesGenders.aspx.cs
-     15 ./Site-Data/Charts/MailQueueFreshness.aspx
-     15 ./Site-Data/Charts/DonationHistory.aspx
-    166 ./Site-Data/Charts/Activism2010PerCircuit.aspx.cs
-     47 ./Site-Data/PhpIncludes/BallotCoverage.aspx.cs
-     80 ./Site-Data/PhpIncludes/InternalPollCandidateCount.aspx
-     24 ./Site-Data/PhpIncludes/RecentDonations.aspx
-      0 ./Site-Data/PhpIncludes/BallotCoverage.aspx
-     27 ./Site-Data/PhpIncludes/MemberCount.aspx
-     21 ./Site-Data/HtmlIncludes/InternalPollCandidates.aspx
-     71 ./Site-Data/HtmlIncludes/DisplayLatestActivism.aspx.cs
-     32 ./Site-Data/HtmlIncludes/InternalPollCandidates.aspx.cs
-      3 ./Site-Data/HtmlIncludes/DisplayLatestActivism.aspx
-      0 ./Site5/Automation/Json-GeographiesTree.aspx
-     70 ./Site5/Automation/FinancialFunctions.aspx.cs
-    159 ./Site5/Automation/Json-FinancialAccountsTree.aspx.cs
-      1 ./Site5/Automation/Json-PositionsTree.aspx
-      1 ./Site5/Automation/FieldValidation.aspx
-    412 ./Site5/Automation/UploadFileHandler.ashx
-     42 ./Site5/Automation/Formatting.aspx.cs
-    168 ./Site5/Automation/FieldValidation.aspx.cs
-      1 ./Site5/Automation/SwarmFunctions.aspx
-    284 ./Site5/Automation/Json-PositionsTree.aspx.cs
-      0 ./Site5/Automation/Json-FinancialAccountsTree.aspx
-     28 ./Site5/Automation/Json-ByGuid.aspx.cs
-     57 ./Site5/Automation/Json-AvailableCurrencies.aspx.cs
-      0 ./Site5/Automation/Json-BudgetsTree.aspx
-    311 ./Site5/Automation/SwarmFunctions.aspx.cs
-     96 ./Site5/Automation/Json-TransactionTagsTree.aspx.cs
-    136 ./Site5/Automation/Json-GeographiesTree.aspx.cs
-     59 ./Site5/Automation/GetGeographyData.asmx
-      1 ./Site5/Automation/Json-SearchPeoplePattern.aspx
-     49 ./Site5/Automation/Json-SearchPeoplePattern.aspx.cs
-      1 ./Site5/Automation/Formatting.aspx
-      3 ./Site5/Automation/FinancialFunctions.aspx
-     43 ./Site5/Automation/GetFinancialData.asmx
-      0 ./Site5/Automation/Json-AvailableCurrencies.aspx
-    128 ./Site5/Automation/Json-BudgetsTree.aspx.cs
-      1 ./Site5/Automation/Json-ByGuid.aspx
-      1 ./Site5/Automation/Json-TransactionTagsTree.aspx
-     33 ./Site5/Tests/TestBookkeepingIntegrity.aspx
-     79 ./Site5/Tests/TestBookkeepingIntegrity.aspx.cs
-     72 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx.cs
-     67 ./Site5/Controls/v5/Financial/ComboBudgets.ascx
-     49 ./Site5/Controls/v5/Financial/ComboBudgets.ascx.cs
-      1 ./Site5/Controls/v5/Financial/ComboIncomeCostType.ascx
-      8 ./Site5/Controls/v5/Financial/ComboIncomeCostType.ascx.cs
-      4 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx
-     18 ./Site5/Controls/v5/Swarm/ComboPeople.ascx.cs
-     28 ./Site5/Controls/v5/Swarm/AjaxComboPeople.ascx.cs
-     26 ./Site5/Controls/v5/Swarm/PersonDetailPopup.ascx
-     65 ./Site5/Controls/v5/Swarm/TreePositions.ascx.cs
-    148 ./Site5/Controls/v5/Swarm/PersonDetailPopup.ascx.cs
-    202 ./Site5/Controls/v5/Swarm/TreePositions.ascx
-    132 ./Site5/Controls/v5/Swarm/ComboPeople.ascx
-     50 ./Site5/Controls/v5/Swarm/AjaxComboPeople.ascx
-      5 ./Site5/Controls/v5/UI/ExternalScripts.ascx
-     42 ./Site5/Controls/v5/UI/IncludedScripts.ascx.cs
-     76 ./Site5/Controls/v5/UI/ExternalScripts.ascx.cs
-      5 ./Site5/Controls/v5/UI/IncludedScripts.ascx
-     34 ./Site5/Controls/v5/Base/ModalDialog.ascx.cs
-    130 ./Site5/Controls/v5/Base/AjaxTextBox.ascx
-     61 ./Site5/Controls/v5/Base/AjaxTextBox.ascx.cs
-     34 ./Site5/Controls/v5/Base/ComboGeographies.ascx.cs
-     37 ./Site5/Controls/v5/Base/DropDown.ascx.cs
-    190 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
-     65 ./Site5/Controls/v5/Base/ModalDialog.ascx
-     62 ./Site5/Controls/v5/Base/ComboGeographies.ascx
-     85 ./Site5/Controls/v5/Base/DropDown.ascx
-      1 ./Site5/Controls/v5/Base/MainMenu.ascx
-     68 ./Site5/Controls/v5/Base/FileUpload.ascx
-     81 ./Site5/Controls/v5/Base/FileUpload.ascx.cs
-     61 ./Site5/App_Code/MasterV5Base.cs
-    179 ./Site5/App_Code/DataV5Base.cs
-     55 ./Site5/App_Code/ControlV5Base.cs
-    397 ./Site5/App_Code/CommonV5.cs
-    177 ./Site5/App_Code/PageV5Base.cs
-    334 ./Site5/Pages/v5/Public/Signup.aspx.cs
-    764 ./Site5/Pages/v5/Public/Signup.aspx
-      1 ./Site5/Pages/v5/Public/Json-SignupVolunteerPositions.aspx
-    811 ./Site5/Pages/v5/Public/Initialize.aspx
-     73 ./Site5/Pages/v5/Public/Json-SignupVolunteerPositions.aspx.cs
-    825 ./Site5/Pages/v5/Public/Initialize.aspx.cs
-      1 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx
-    229 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx.cs
-    183 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx
-     10 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx.cs
-    220 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx.cs
-    186 ./Site5/Pages/v5/Financial/Donate.aspx.cs
-    125 ./Site5/Pages/v5/Financial/Json-PayableCostsOcr.aspx.cs
-     13 ./Site5/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx.cs
-     88 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx
-    214 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
-     13 ./Site5/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx
-    282 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
-      1 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx
-    600 ./Site5/Pages/v5/Financial/AttestCosts.aspx.cs
-      1 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx
-    149 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx
-    117 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx.cs
-     73 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx.cs
-    139 ./Site5/Pages/v5/Financial/PayOutMoney.aspx.cs
-      1 ./Site5/Pages/v5/Financial/Json-PayableCostsOcr.aspx
-    278 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx.cs
-    573 ./Site5/Pages/v5/Financial/AttestCosts.aspx
-    143 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx.cs
-    100 ./Site5/Pages/v5/Financial/Donate.aspx
-     13 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx
-    157 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx
-    265 ./Site5/Pages/v5/Admin/OrgSettings.aspx
-    101 ./Site5/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx.cs
-    106 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry2.aspx
-    151 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry2.aspx.cs
-     73 ./Site5/Pages/v5/Admin/Hacks/TemporaryHack.aspx.cs
-    106 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry1.aspx
-     28 ./Site5/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx
-     16 ./Site5/Pages/v5/Admin/Hacks/TemporaryHack.aspx
-    163 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry1.aspx.cs
-    106 ./Site5/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx
-     59 ./Site5/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx.cs
-     89 ./Site5/Pages/v5/Admin/OrgStaffing.aspx.cs
-     47 ./Site5/Pages/v5/Admin/OrgStaffing.aspx
-    153 ./Site5/Pages/v5/Admin/SystemSettings.aspx
-    154 ./Site5/Pages/v5/Admin/CreateOrganization.aspx.cs
-    176 ./Site5/Pages/v5/Admin/BitcoinEchoTest.aspx.cs
-    352 ./Site5/Pages/v5/Admin/SystemSettings.aspx.cs
-    477 ./Site5/Pages/v5/Admin/OrgSettings.aspx.cs
-    100 ./Site5/Pages/v5/Admin/BitcoinEchoTest.aspx
-     44 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
-      1 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx
-     31 ./Site5/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx
-     17 ./Site5/Pages/v5/Security/AccessDenied.aspx.cs
-     82 ./Site5/Pages/v5/Security/ChangeOrganizations.aspx
-      1 ./Site5/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx
-     90 ./Site5/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx.cs
-     65 ./Site5/Pages/v5/Security/ChangeOrganizations.aspx.cs
-     14 ./Site5/Pages/v5/Security/DatabaseUpgradeRequired.aspx.cs
-     64 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx.cs
-     17 ./Site5/Pages/v5/Security/AccessDenied.aspx
-     13 ./Site5/Pages/v5/Security/DatabaseUpgradeRequired.aspx
-     40 ./Site5/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx.cs
-     85 ./Site5/Pages/v5/User/SelectLanguage.aspx.cs
-    113 ./Site5/Pages/v5/User/SelectLanguage.aspx
-     32 ./Site5/Pages/v5/User/SetCulture.aspx.cs
-      1 ./Site5/Pages/v5/User/SetCulture.aspx
-     63 ./Site5/Pages/v5/Comms/SendMassMessage.aspx
-    107 ./Site5/Pages/v5/Comms/SendMassMessage.aspx.cs
-    142 ./Site5/Pages/v5/Swarm/AddPerson.aspx.cs
-      1 ./Site5/Pages/v5/Swarm/Json-ListFindPeople.aspx
-     27 ./Site5/Pages/v5/Swarm/LocalOrganization.aspx
-     65 ./Site5/Pages/v5/Swarm/Json-ListFindPeople.aspx.cs
-    204 ./Site5/Pages/v5/Swarm/ListFindPeople.aspx
-     76 ./Site5/Pages/v5/Swarm/LocalOrganization.aspx.cs
-    228 ./Site5/Pages/v5/Swarm/AddPerson.aspx
-    117 ./Site5/Pages/v5/Swarm/ListFindPeople.aspx.cs
-      2 ./Site5/Pages/v5/Support/StreamUpload.aspx
-    188 ./Site5/Pages/v5/Support/StreamUpload.aspx.cs
-    500 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx.cs
-      1 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx
-     92 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx
-      1 ./Site5/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx
-      1 ./Site5/Pages/v5/Ledgers/Json-UnbalancedTransactions.aspx
-      1 ./Site5/Pages/v5/Ledgers/Json-BalanceSheetData.aspx
-     43 ./Site5/Pages/v5/Ledgers/BitcoinHotwallet.aspx.cs
-      0 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerData.aspx
-      1 ./Site5/Pages/v5/Ledgers/Json-BitcoinHotwalletData.aspx
-    233 ./Site5/Pages/v5/Ledgers/BalanceTransactions.aspx
-     65 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx.cs
-    451 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx.cs
-    114 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx
-      1 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx
-   1278 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx.cs
-    104 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerTxData.aspx.cs
-    278 ./Site5/Pages/v5/Ledgers/BalanceTransactions.aspx.cs
-      0 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerTxData.aspx
-     63 ./Site5/Pages/v5/Ledgers/BudgetActual.aspx.cs
-    267 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx
-     53 ./Site5/Pages/v5/Ledgers/Json-UnbalancedTransactions.aspx.cs
-    436 ./Site5/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx.cs
-      1 ./Site5/Pages/v5/Ledgers/Json-ProfitLossData.aspx
-     60 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx.cs
-    126 ./Site5/Pages/v5/Ledgers/Json-BalanceSheetData.aspx.cs
-    117 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx
-      1 ./Site5/Pages/v5/Ledgers/Json-ResyncPreview.aspx
-     30 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx.cs
-    144 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx.cs
-    738 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx.cs
-    137 ./Site5/Pages/v5/Ledgers/Json-BitcoinHotwalletData.aspx.cs
-    143 ./Site5/Pages/v5/Ledgers/Json-BudgetActualData.aspx.cs
-     49 ./Site5/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx.cs
-    106 ./Site5/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx
-    215 ./Site5/Pages/v5/Ledgers/TaxForms/Json-Payroll-TaxFormData.aspx.cs
-      1 ./Site5/Pages/v5/Ledgers/TaxForms/Json-Payroll-TaxFormData.aspx
-      1 ./Site5/Pages/v5/Ledgers/Json-BudgetActualData.aspx
-    275 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx.cs
-     62 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx.cs
-      1 ./Site5/Pages/v5/Ledgers/Csv-BalanceData.aspx
-     70 ./Site5/Pages/v5/Ledgers/BitcoinHotwallet.aspx
-    355 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx
-    205 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx
-    203 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerData.aspx.cs
-    666 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx
-    308 ./Site5/Pages/v5/Ledgers/Json-ResyncPreview.aspx.cs
-     22 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx
-     11 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx
-     92 ./Site5/Pages/v5/Ledgers/Csv-BalanceData.aspx.cs
-     96 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx.cs
-    107 ./Site5/Pages/v5/Ledgers/BudgetActual.aspx
-    141 ./Site5/Pages/v5/Ledgers/Json-ProfitLossData.aspx.cs
-    148 ./Site5/Security/ResetPassword.aspx.cs
-    248 ./Site5/Security/Login.aspx
-    106 ./Site5/Security/Login-Old.aspx.cs
-     93 ./Site5/Security/RequestPasswordReset.aspx.cs
-    448 ./Site5/Security/Login.aspx.cs
-    135 ./Site5/Security/RequestPasswordReset.aspx
-     26 ./Site5/Security/FinalizeLogin.aspx.cs
-     53 ./Site5/Security/Login-Old.aspx
-    149 ./Site5/Security/ResetPassword.aspx
-      0 ./Site5/Security/FinalizeLogin.aspx
-     31 ./Site5/Default.aspx.cs
-     19 ./Site5/Default.aspx
-    407 ./Site5/Master-v5.master.cs
-    314 ./Site5/Plugins-Stock/Taxes/SE/MonthlyTaxForm-SE.aspx.cs
-      1 ./Site5/Plugins-Stock/Taxes/SE/MonthlyTaxForm-SE.aspx
-    122 ./Site5/Global.asax
+    556 ./Site/Master-v5.master.cs
+    315 ./Site/Plugins-Stock/Taxes/SE/MonthlyTaxForm-SE.aspx.cs
+      1 ./Site/Plugins-Stock/Taxes/SE/MonthlyTaxForm-SE.aspx
+    130 ./Site/Global.asax
+    582 ./Site/Master-v5.master.designer.cs
     794 ./Backend/Program.cs
      66 ./Backend/CommsTransmitter.cs
      38 ./Backend/Properties/AssemblyInfo.cs
@@ -1373,7 +1169,7 @@
     206 ./Database/Database-Currencies.cs
     688 ./Database/Database-Payouts.cs
     187 ./Database/Database-Reporters.cs
-    204 ./Database/Database-SwarmopsLog.cs
+    202 ./Database/Database-SwarmopsLog.cs
     204 ./Database/Database-Motions.cs
     912 ./Database/Database-PayrollAdjustments.cs
     210 ./Database/Database-Events.cs
@@ -1381,4 +1177,4 @@
     131 ./Database/Database-OrganizationFinancialAccounts.cs
      87 ./Database/Database-OutboundMailRecipients.cs
     105 ./Database/Database-Activists.cs
- 165700 total
+ 140246 total
