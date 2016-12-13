@@ -257,7 +257,7 @@
                         </div>
                     </div>
                     <div class="entryLabels">
-                        <asp:Label ID="MasterLabelEditPersonCurrentPerson" runat="server" Text="#Type current password to enable changes#"/><br/>
+                        <asp:Label ID="MasterLabelEditPersonCurrentPassword" runat="server" Text="#Type current password to enable changes#"/><br/>
                         <div class="divMasterPersonEditSecurityRolldown" style="display: none"><asp:Label runat="server" ID="MasterLabelEditPerson2FA" Text="#2FALoc#"/><br/>
                             <asp:Label runat="server" ID="MasterLabelEditPersonNewPassword1"/><br/>
                             <asp:Label runat="server" ID="MasterLabelEditPersonNewPassword2"/></div>

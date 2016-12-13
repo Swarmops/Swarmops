@@ -409,13 +409,13 @@ namespace Swarmops.Frontend {
         protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox MasterEditPersonNewPassword2;
         
         /// <summary>
-        /// MasterLabelEditPersonCurrentPerson control.
+        /// MasterLabelEditPersonCurrentPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonCurrentPerson;
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonCurrentPassword;
         
         /// <summary>
         /// MasterLabelEditPerson2FA control.
