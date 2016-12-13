@@ -104,7 +104,7 @@
         }
 
 
-        var successMessage = SwarmopsJS.unescape(<%= this.Localized_ForGreatJustice %>);
+        var successMessage = SwarmopsJS.unescape('<%= this.Localized_ForGreatJustice %>');
 
     </script>
 </asp:Content>
