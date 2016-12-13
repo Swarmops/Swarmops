@@ -252,7 +252,6 @@ namespace Swarmops.Frontend.Automation
             }
 
             Person person = Person.FromIdentity (personId);
-            Participations partic = person.GetMemberships();
 
             if (!authData.Authority.CanSeePerson (person))
             {
