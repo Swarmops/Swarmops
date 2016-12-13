@@ -237,7 +237,7 @@ namespace Swarmops.Pages.Security
                         // TODO: Determine last logged-on organization. Right now, log on to Sandbox.
 
                         GuidCache.Set (credentials.uri + "-LoggedOn",
-                            person.Identity.ToString (CultureInfo.InvariantCulture) + ",1,,BitId 2FA");
+                            Authority.FromLogin(person, Organization.FromIdentity(person.LastLogonOrganizationId)).ToEncryptedXml());
                     }
                 }
                 catch (Exception e)
