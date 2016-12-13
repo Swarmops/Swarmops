@@ -53,7 +53,7 @@ namespace Swarmops.Frontend.Automation
                 !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Administration)))
             {
                 // Authority check for org-global
-                throw new UnauthorizedAccessException();G
+                throw new UnauthorizedAccessException();
             }
             if (
                 !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, geography,
