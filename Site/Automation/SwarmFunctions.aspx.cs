@@ -251,9 +251,9 @@ namespace Swarmops.Frontend.Automation
                 personId = authData.CurrentUser.Identity;
             }
 
-            throw new NotImplementedException();
-
             Person person = Person.FromIdentity (personId);
+
+            throw new NotImplementedException();
 
             if (!authData.Authority.CanSeePerson (person))
             {
