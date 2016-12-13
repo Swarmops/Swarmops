@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using MySql.Data.Types;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Common.Enums;
@@ -453,9 +454,27 @@ namespace Swarmops.Database
             int personId = reader.GetInt32 (1);
             int organizationId = reader.GetInt32 (2);
             bool active = reader.GetBoolean (3);
-            DateTime expires = reader.GetDateTime (4);
+            DateTime expires = DateTime.MaxValue;
+            try
+            {
+                expires = reader.GetDateTime(4);
+            }
+            catch (MySqlConversionException) // invalid MySql date is possible
+            {
+                // ignore exception
+            }
             DateTime memberSince = reader.GetDateTime (5);
-            DateTime dateTerminated = reader.GetDateTime (6);
+            DateTime dateTerminated = DateTime.MaxValue;
+
+            try
+            {
+                dateTerminated = reader.GetDateTime(6);
+            }
+            catch (MySqlConversionException)
+            {
+                // as above, ignore exception and go with DateTime.MaxValue
+            }
+            
             // bool terminatedAsInvalid = reader.GetBoolean(7);  Ignore this field for now
 
             return new BasicParticipation (membershipId, personId, organizationId, memberSince, expires, active,

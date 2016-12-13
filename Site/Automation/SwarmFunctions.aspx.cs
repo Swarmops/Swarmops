@@ -254,8 +254,6 @@ namespace Swarmops.Frontend.Automation
             Person person = Person.FromIdentity (personId);
             Participations partic = person.GetMemberships();
 
-            throw new NotImplementedException();
-
             if (!authData.Authority.CanSeePerson (person))
             {
                 throw new ArgumentException(); // can't see the requested person, for whatever reason
