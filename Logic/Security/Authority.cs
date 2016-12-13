@@ -468,8 +468,6 @@ namespace Swarmops.Logic.Security
                 }
             }
 
-            throw new NotImplementedException();
-
             // Is this Person a Participant of an org or sub-org where the current Authority
             // has organizationwide access? Case 2.
 
