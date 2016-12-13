@@ -316,6 +316,14 @@ namespace Swarmops.Pages.Security
                     Person authenticatedPerson = Authentication.Authenticate (credentialsLogin,
                         credentialsPass);
 
+                    if (!string.IsNullOrEmpty(authenticatedPerson.BitIdAddress))
+                    {
+                        // We can't logon with username/password combo; bitID is activated and so
+                        // require it.
+
+                        return "BitIdRequired";
+                    }
+
                     int lastOrgId = authenticatedPerson.LastLogonOrganizationId;
 
                     if (PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE) && (lastOrgId == 3 || lastOrgId == 0))
@@ -348,7 +356,7 @@ namespace Swarmops.Pages.Security
                     GuidCache.Set (logonUri + "-LoggedOn",
                         Authority.FromLogin (authenticatedPerson, Organization.FromIdentity (lastOrgId)).ToEncryptedXml());
 
-                    return "Success";  // Prepare here for "2FARequired" return code
+                    return "Success";  // Prepare here for "Additional2FARequired" return code
                 }
                 catch (UnauthorizedAccessException)
                 {
@@ -476,6 +484,11 @@ namespace Swarmops.Pages.Security
             // Lowercase for Json serializability to BitId spec.
             public string address { get; set; }
             public string signature { get; set; }
+        }
+
+        public string Localized_BitIdRequired_Dialog
+        {
+            get { return Resources.Pages.Security.Login_BitIdRequired_Dialog; }
         }
 
         // ReSharper restore InconsistentNaming

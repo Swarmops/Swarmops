@@ -182,6 +182,9 @@
   <data name="Login_BitIdEnabled" xml:space="preserve">
     <value>&lt;strong&gt;BitId two-factor authentication is now enabled.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;From now on, you can use your bitcoin wallet to log in (and will &lt;strong&gt;need&lt;/strong&gt; to do so). Thank you for enabling added security.&lt;br/&gt;&lt;br/&gt;Please remember to keep your phone secure with a password, too.</value>
   </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;BITID LOGIN REQUIRED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This login requires BitId authentication, as enabled by the account holder. You cannot log on with a username/password combination.</value>
+  </data>
   <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
     <value>2FA</value>
   </data>

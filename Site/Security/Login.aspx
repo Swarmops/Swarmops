@@ -115,6 +115,8 @@
     	                } else if (msg.d == "Fail") {
 	                        // inform user of bad credentials by means of a red cross on _both_ boxes
 	                        $('#TextLogin, #TextPass').css('background-image', "url('/Security/Images/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                    } else if (msg.d == "BitIdRequired") {
+	                        alertify.alert(SwarmopsJS.unescape('<%=this.Localized_BitIdRequired_Dialog%>'));
 	                    } else {
 	                        // wut?
 	                    }

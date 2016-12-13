@@ -19,7 +19,7 @@ namespace Resources.Pages {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option or rebuild the Visual Studio project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "11.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Security {
@@ -247,6 +247,15 @@ namespace Resources.Pages {
         internal static string Login_BitIdEnabled {
             get {
                 return ResourceManager.GetString("Login_BitIdEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;BITID LOGIN REQUIRED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This login requires BitId authentication, as enabled by the account holder. You cannot log on with a username/password combination..
+        /// </summary>
+        internal static string Login_BitIdRequired_Dialog {
+            get {
+                return ResourceManager.GetString("Login_BitIdRequired_Dialog", resourceCulture);
             }
         }
         
