@@ -1059,6 +1059,7 @@ namespace Swarmops.Logic.Swarm
         public bool MemberOfWithInherited (int orgId)
         {
             Participations participations = GetMemberships();
+
             foreach (Participation membership in participations)
             {
                 if (membership.Organization.IsOrInherits (orgId))
