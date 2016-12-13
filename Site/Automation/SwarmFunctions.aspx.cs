@@ -53,7 +53,7 @@ namespace Swarmops.Frontend.Automation
                 !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Administration)))
             {
                 // Authority check for org-global
-                throw new UnauthorizedAccessException();
+                throw new UnauthorizedAccessException();G
             }
             if (
                 !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, geography,
@@ -240,6 +240,8 @@ namespace Swarmops.Frontend.Automation
         [WebMethod]
         public static PersonEditorData GetPersonEditorData (int personId)
         {
+            throw new NotImplementedException();
+
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             #pragma warning disable 219
             bool self = false;

@@ -234,7 +234,13 @@ namespace Swarmops.Pages.Security
 
                         // TODO: If above throws, show friendly "unknown wallet" message
 
-                        // TODO: Determine last logged-on organization. Right now, log on to Sandbox.
+                        int lastOrgId = person.LastLogonOrganizationId;
+
+                        if (lastOrgId == 0)
+                        {
+                            lastOrgId = Organization.SandboxIdentity;
+                            person.LastLogonOrganizationId = lastOrgId;
+                        }
 
                         GuidCache.Set (credentials.uri + "-LoggedOn",
                             Authority.FromLogin(person, Organization.FromIdentity(person.LastLogonOrganizationId)).ToEncryptedXml());
@@ -320,6 +326,7 @@ namespace Swarmops.Pages.Security
                     else if (lastOrgId == 0)
                     {
                         lastOrgId = Organization.SandboxIdentity;
+                        authenticatedPerson.LastLogonOrganizationId = lastOrgId;
                     }
 
                     Authority testAuthority = Authority.FromLogin (authenticatedPerson,
