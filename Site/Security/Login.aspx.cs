@@ -488,7 +488,7 @@ namespace Swarmops.Pages.Security
 
         public string Localized_BitIdRequired_Dialog
         {
-            get { return Resources.Pages.Security.Login_BitIdRequired_Dialog; }
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Security.Login_BitIdRequired_Dialog); }
         }
 
         // ReSharper restore InconsistentNaming
