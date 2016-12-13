@@ -198,6 +198,9 @@ External Dependencies/*
 Site5/hotwallet*
 Site/hotwallet*
 
+#Ignore entire old site
+Site5/*
+
 #Ignore user preferences
 *.userprefs
 *.csproj.[Dd]ot[Ss]ettings
