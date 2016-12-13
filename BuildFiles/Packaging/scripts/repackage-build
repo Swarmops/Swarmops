@@ -47,7 +47,7 @@ scripts/repackage-build-package backend $1
 scripts/repackage-build-package common $1
 
 if [ "$DROPFOLDER" != "internal" ]; then
-  scripts/repackage-one extscripts $DROPFOLDER
+  scripts/repackage-build-package extscripts $DROPFOLDER
 fi
 
 echo "Notifying developers that new build has packaged for test/deployment..."
