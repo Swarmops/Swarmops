@@ -240,8 +240,6 @@ namespace Swarmops.Frontend.Automation
         [WebMethod]
         public static PersonEditorData GetPersonEditorData (int personId)
         {
-            throw new NotImplementedException();
-
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             #pragma warning disable 219
             bool self = false;
@@ -252,6 +250,8 @@ namespace Swarmops.Frontend.Automation
                 self = true; // may make use of this later
                 personId = authData.CurrentUser.Identity;
             }
+
+            throw new NotImplementedException();
 
             Person person = Person.FromIdentity (personId);
 
