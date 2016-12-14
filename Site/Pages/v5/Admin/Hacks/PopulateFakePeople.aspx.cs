@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
@@ -64,6 +65,46 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
 
             Random random = new Random();
 
+            // Fields:
+            // 0  Firstname
+            // 1  Lastname
+            // 2  Gender
+            // 3  Street
+            // 4  Postal
+            // 5  City
+            // 6  CountryCode
+            // 7  DOB
+            // 8  Phone
+            // 9  NationalID
+            // 10 Longitude
+            // 11 Latitude
+
+
+            // below is an N^2 loop but doesn't matter in such a small context
+
+            Dictionary<FakePersonFields,int> fieldNameLookup = new Dictionary<FakePersonFields, int>();
+            string[] headerParts = lines[0].Split('\t');
+
+            foreach (string fieldName in Enum.GetValues(typeof(FakePersonFields)))
+            {
+                bool found = false;
+                for (int index = 0; index < headerParts.Length; index++)
+                {
+                    if (headerParts[index].Trim() == fieldName)
+                    {
+                        fieldNameLookup[(FakePersonFields) Enum.Parse(typeof(FakePersonFields), fieldName)] = index;
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    throw new InvalidOperationException("Field key \"" + fieldName +
+                                                         "\" was not supplied or found in data file");
+                }
+            }
+
             foreach (string lineRaw in lines)
             {
                 count++;
@@ -75,6 +116,12 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
                     continue;
                 }
 
+                if (count == 1)
+                {
+                    // header line
+                    continue;
+                }
+
                 int percent = (count*99)/lines.Length;
                 if (percent == 0)
                 {
@@ -82,23 +129,41 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
                 }
                 GuidCache.Set (guid + "-Progress", percent);
 
-                string name = lineParts[0] + " " + lineParts[1];
-                PersonGender gender = lineParts[2] == "male" ? PersonGender.Male : PersonGender.Female;
-                DateTime dateOfBirth = DateTime.Parse (lineParts[7], new CultureInfo ("en-US"), DateTimeStyles.None);
-                Country country = Country.FromCode (lineParts[6]);
+                string name = lineParts[fieldNameLookup[FakePersonFields.GivenName]] + " " + lineParts[fieldNameLookup[FakePersonFields.Surname]];
+                PersonGender gender = lineParts[fieldNameLookup[FakePersonFields.Gender]] == "male" ? PersonGender.Male : PersonGender.Female;
+                DateTime dateOfBirth = DateTime.Parse (lineParts[fieldNameLookup[FakePersonFields.Birthday]], new CultureInfo ("en-US"), DateTimeStyles.None);
+                Country country = Country.FromCode (lineParts[fieldNameLookup[FakePersonFields.Country]]);
 
 
-                Person newPerson = Person.Create (name, string.Empty, string.Empty, lineParts[8], lineParts[3],
-                    lineParts[4].Replace (" ", ""), lineParts[5], lineParts[6], dateOfBirth, gender);
+                Person newPerson = Person.Create (name, string.Empty, string.Empty, lineParts[fieldNameLookup[FakePersonFields.TelephoneNumber]], lineParts[fieldNameLookup[FakePersonFields.StreetAddress]],
+                    lineParts[fieldNameLookup[FakePersonFields.ZipCode]].Replace (" ", ""), lineParts[fieldNameLookup[FakePersonFields.City]], lineParts[fieldNameLookup[FakePersonFields.Country]], dateOfBirth, gender);
 
-                newPerson.NationalIdNumber = lineParts[9];
-                newPerson.Longitude = lineParts[10];
-                newPerson.Latitude = lineParts[11];
+                newPerson.NationalIdNumber = lineParts[fieldNameLookup[FakePersonFields.NationalID]];
+                newPerson.Longitude = lineParts[fieldNameLookup[FakePersonFields.Longitude]];
+                newPerson.Latitude = lineParts[fieldNameLookup[FakePersonFields.Latitude]];
 
                 newPerson.AddParticipation (Organization.Sandbox, DateTime.Today.AddDays (3650 + random.Next (365)));
             }
 
             GuidCache.Set (guid + "-Progress", 100);
+        }
+
+        // ReSharper disable once InconsistentNaming
+
+        public enum FakePersonFields
+        {
+            GivenName,
+            Surname,
+            Gender,
+            StreetAddress,
+            ZipCode,
+            City,
+            Country,
+            Birthday,
+            TelephoneNumber,
+            NationalID,
+            Longitude,
+            Latitude
         }
     }
 }

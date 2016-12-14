@@ -19,7 +19,7 @@ namespace Resources.Pages {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option or rebuild the Visual Studio project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "11.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Admin {
@@ -214,7 +214,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The new organization has been created. You have been given an initial two-year {0} in the organization, so you can work with it and set it up properly. To switch to working with your new organization, use the control panel top right..
+        ///   Looks up a localized string similar to The new organization has been created. You have been given an initial ten-year {0} in the organization, so you can work with it and set it up properly. To switch to working with your new organization, use this control panel (available later under Admin / Organization Settings)..
         /// </summary>
         internal static string CreateOrganization_Success {
             get {

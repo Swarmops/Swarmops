@@ -175,7 +175,7 @@
     <comment>This can be "members", etc.</comment>
   </data>
   <data name="CreateOrganization_Success" xml:space="preserve">
-    <value>The new organization has been created. You have been given an initial two-year {0} in the organization, so you can work with it and set it up properly. To switch to working with your new organization, use the control panel top right.</value>
+    <value>The new organization has been created. You have been given an initial ten-year {0} in the organization, so you can work with it and set it up properly. To switch to working with your new organization, use this control panel (available later under Admin / Organization Settings).</value>
     <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
   </data>
   <data name="CreateOrganization_Titles" xml:space="preserve">
