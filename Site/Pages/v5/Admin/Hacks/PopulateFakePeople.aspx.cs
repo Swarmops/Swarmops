@@ -20,6 +20,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
             PageTitle = "Populate Data - Fake People";
             PageIcon = "iconshock-battery-drill";
             InfoBoxLiteral = "You've taken a wrong turn if you're even seeing this page. It's for development purposes.";
+
+            PageAccessRequired = new Access(AccessAspect.Administration);
         }
 
 
