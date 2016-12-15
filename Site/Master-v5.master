@@ -602,8 +602,15 @@
                         }
                         if (fieldName == "Name") {
                             $('span.spanUser' + _master_PersonEditedId + 'Name').text(result.NewValue);
+                            $('span.spanModalEditingPersonName').text(result.NewValue);
                         }
-                    } else {
+                        else if (fieldName == "Mail") {
+                            $('span.spanUser' + _master_PersonEditedId + 'Mail').text(result.NewValue);
+                        }
+                        else if (fieldName == "Phone") {
+                            $('span.spanUser' + _master_PersonEditedId + 'Phone').text(result.NewValue);
+                        }
+                } else {
                         window[controlName + "_updateFailAnimate"](result.NewValue);
                         if (result.DisplayMessage != '') {
                             alertify.error(result.DisplayMessage);
