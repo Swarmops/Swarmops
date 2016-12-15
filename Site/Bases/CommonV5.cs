@@ -337,6 +337,11 @@ namespace Swarmops.Frontend
     public class AjaxInputCallResult : AjaxCallResult
     {
         /// <summary>
+        /// This reflects the object Id sent for editing, to deal with async situations
+        /// </summary>
+        public int ObjectIdentity { get; set; }
+
+        /// <summary>
         /// Must always be set if Success is true, and contain canonically formatted new value
         /// </summary>
         public string NewValue { get; set; }

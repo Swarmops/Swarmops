@@ -509,7 +509,6 @@
             // Do the AJAX call from here, as we need to also pass along the person ID of the person edited
             // (the AjaxToggleSlider auto-callback is disabled for this reason)
 
-
             alertify.log("Field Change: " + fieldName + " changed to '" + newValue + "'");
         }
 
@@ -594,21 +593,20 @@
                 "/Automation/SwarmFunctions.aspx/SetPersonEditorData",
                 jsonData,
                 function(result) {
-                    console.log(result);
                     if (result.Success) {
                         window[controlName + "_updateSuccessAnimate"](result.NewValue);
                         if (result.DisplayMessage != '') {
                             alertify.log(result.DisplayMessage);
                         }
                         if (fieldName == "Name") {
-                            $('span.spanUser' + _master_PersonEditedId + 'Name').text(result.NewValue);
+                            $('span.spanUser' + result.ObjectIdentity + 'Name').text(result.NewValue);
                             $('span.spanModalEditingPersonName').text(result.NewValue);
                         }
                         else if (fieldName == "Mail") {
-                            $('span.spanUser' + _master_PersonEditedId + 'Mail').text(result.NewValue);
+                            $('span.spanUser' + result.ObjectIdentity + 'Mail').text(result.NewValue);
                         }
                         else if (fieldName == "Phone") {
-                            $('span.spanUser' + _master_PersonEditedId + 'Phone').text(result.NewValue);
+                            $('span.spanUser' + result.ObjectIdentity + 'Phone').text(result.NewValue);
                         }
                 } else {
                         window[controlName + "_updateFailAnimate"](result.NewValue);
@@ -618,8 +616,6 @@
                     }
                 },
                 function(result) {
-                    console.log(result);
-                    alert('fail');
                     window[controlName + "_updateFailAnimate"](result.NewValue);
                 });
 

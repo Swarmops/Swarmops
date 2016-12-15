@@ -297,6 +297,7 @@ namespace Swarmops.Frontend.Automation
                     return new AjaxInputCallResult
                     {
                         Success = false,
+                        ObjectIdentity = personId,
                         DisplayMessage = Resources.Global.Global_FieldCannotBeEmpty,
                         FailReason = AjaxInputCallResult.ErrorInvalidFormat,
                         NewValue = GetPersonValue (personId, field)
@@ -373,6 +374,7 @@ namespace Swarmops.Frontend.Automation
 
             return new AjaxInputCallResult
             {
+                ObjectIdentity = personId,
                 Success = true,
                 NewValue = newValue,
                 DisplayMessage = displayMessage
