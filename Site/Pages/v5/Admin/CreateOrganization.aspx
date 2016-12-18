@@ -8,7 +8,13 @@
         });
 
         function validateFields() {
-            return true; // TODO: validate the input fields
+            var newOrganizationName = $('#<%=this.TextOrganizationName.ClientID%>').val();
+            if (newOrganizationName.trim().length < 1) {
+                alertify.error(SwarmopsJS.unescape('<%=this.Localized_Error_OrganizationNameCannotBeEmpty%>'));
+                $('#<%=this.TextOrganizationName.ClientID%>').focus();
+                return false;
+            }
+            return true; 
         }
 
     </script>

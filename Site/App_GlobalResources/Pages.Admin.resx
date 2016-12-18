@@ -158,8 +158,14 @@
   <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
     <value>Create new organization as...</value>
   </data>
+  <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
+    <value>Organization name cannot be empty. You need to give the new organization a name!</value>
+  </data>
   <data name="CreateOrganization_Info" xml:space="preserve">
     <value>You can create a new organization either as a new standalone organization, or as a child organization of the current one. (Everybody with responsibilities in a parent organization automatically has corresponding rights and privileges in all its children.)</value>
+  </data>
+  <data name="CreateOrganization_NewOrganizationName" xml:space="preserve">
+    <value>New Organization Name</value>
   </data>
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
     <value>Operating currency</value>

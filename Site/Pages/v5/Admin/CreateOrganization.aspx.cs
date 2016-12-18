@@ -46,10 +46,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.DropCurrencies.Items.Clear();
             this.DropCreateChild.Items.Clear();
             this.DropPositionLabel.Items.Clear();
-            this.DropPersonLabel.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
-            this.DropActivistLabel.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
-            this.DropCurrencies.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
-            this.DropCreateChild.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
+            //this.DropPersonLabel.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
+            //this.DropActivistLabel.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
+            //this.DropCurrencies.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
+            //this.DropCreateChild.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
 
             this.DropPositionLabel.Items.Add (new ListItem(Resources.Pages.Admin.CreateOrganization_Titles_Nonprofit, "Nonprofit"));
             this.DropPositionLabel.Items.Add (new ListItem(Resources.Pages.Admin.CreateOrganization_Titles_Commercial, "Commercial"));
@@ -77,6 +77,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 this.DropPersonLabel.Items.Add (new ListItem (parts[0], parts[1]));
                 this.DropActivistLabel.Items.Add (new ListItem (parts[0], parts[1]));
             }
+
+            this.DropPersonLabel.SelectedValue = "Member";
+            this.DropActivistLabel.SelectedValue = "Activist";
             
             Currencies currencies = Currencies.GetAll();
 
@@ -87,6 +90,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 currencyStrings.Add (String.Format ("{0} {1}|{0}", currency.Code, currency.Name));
             }
 
+            this.TextOrganizationName.Attributes["Placeholder"] = Resources.Pages.Admin.CreateOrganization_NewOrganizationName;
+            this.TextOrganizationName.Focus();
+
             currencyStrings.Sort();
 
             foreach (string currencyString in currencyStrings)
@@ -95,6 +101,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                 this.DropCurrencies.Items.Add (new ListItem (parts[0], parts[1]));
             }
+            this.DropCurrencies.SelectedValue = "BTC";
         }
 
 
@@ -150,6 +157,18 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 "/Pages/v5/Security/SetCurrentOrganization.aspx?OrganizationId=" +
                 newOrganization.Identity.ToString (CultureInfo.InvariantCulture) +
                 "&ReturnUrl=/Admin/OrgSettings", true);
+        }
+
+        // ReSharper disable InconsistentNaming
+
+        public string Localized_Error_OrganizationNameCannotBeEmpty
+        {
+            get
+            {
+                return
+                    CommonV5.JavascriptEscape(
+                        Resources.Pages.Admin.CreateOrganization_Error_OrganizationNameCannotBeEmpty);
+            }
         }
     }
 }

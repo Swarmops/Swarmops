@@ -169,11 +169,29 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Organization name cannot be empty. You need to give the new organization a name!.
+        /// </summary>
+        internal static string CreateOrganization_Error_OrganizationNameCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("CreateOrganization_Error_OrganizationNameCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can create a new organization either as a new standalone organization, or as a child organization of the current one. (Everybody with responsibilities in a parent organization automatically has corresponding rights and privileges in all its children.).
         /// </summary>
         internal static string CreateOrganization_Info {
             get {
                 return ResourceManager.GetString("CreateOrganization_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Organization Name.
+        /// </summary>
+        internal static string CreateOrganization_NewOrganizationName {
+            get {
+                return ResourceManager.GetString("CreateOrganization_NewOrganizationName", resourceCulture);
             }
         }
         
