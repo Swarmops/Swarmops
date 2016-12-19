@@ -130,7 +130,7 @@
     <comment>Used if BTC is the org native currency.</comment>
   </data>
   <data name="BitcoinEchoTest_Info" xml:space="preserve">
-    <value>This is a bitcoin echo test. It tests the hotwallet. If you send a small amount here, it will be sent back to you.</value>
+    <value>This is a bitcoin echo test. It tests the hotwallet. If you send a small amount here, it will be sent back to you, minus the sendback transaction fee.</value>
   </data>
   <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
     <value>Donate</value>
@@ -159,7 +159,7 @@
     <value>Create new organization as...</value>
   </data>
   <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
-    <value>Organization name cannot be empty. You need to give the new organization a name!</value>
+    <value>Organization name cannot be empty. (You need to give the new organization a name!)</value>
   </data>
   <data name="CreateOrganization_Info" xml:space="preserve">
     <value>You can create a new organization either as a new standalone organization, or as a child organization of the current one. (Everybody with responsibilities in a parent organization automatically has corresponding rights and privileges in all its children.)</value>

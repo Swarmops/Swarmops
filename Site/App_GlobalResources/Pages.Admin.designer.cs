@@ -88,7 +88,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is a bitcoin echo test. It tests the hotwallet. If you send a small amount here, it will be sent back to you..
+        ///   Looks up a localized string similar to This is a bitcoin echo test. It tests the hotwallet. If you send a small amount here, it will be sent back to you, minus the sendback transaction fee..
         /// </summary>
         internal static string BitcoinEchoTest_Info {
             get {
@@ -169,7 +169,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Organization name cannot be empty. You need to give the new organization a name!.
+        ///   Looks up a localized string similar to Organization name cannot be empty. (You need to give the new organization a name!).
         /// </summary>
         internal static string CreateOrganization_Error_OrganizationNameCannotBeEmpty {
             get {
