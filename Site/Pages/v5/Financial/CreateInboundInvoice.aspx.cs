@@ -213,6 +213,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             get
             {
+                if (this._invoiceId == 0)
+                {
+                    return string.Empty;
+                }
+
                 return
                     JavascriptEscape (String.Format (Resources.Pages.Financial.CreateInboundInvoice_SuccessMessage,
                         this._invoiceId));
