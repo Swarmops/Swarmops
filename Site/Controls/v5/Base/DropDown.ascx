@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Controls.Base.DropDown" Codebehind="DropDown.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Controls.Base.DropDown" CodeFile="DropDown.ascx.cs" %>
 <%@ Import Namespace="System.Threading" %>
 
     <script language="javascript" type="text/javascript">

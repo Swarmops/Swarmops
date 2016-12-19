@@ -36,11 +36,11 @@ namespace Swarmops.Frontend.Pages.Comms
 
             this.DropRecipientClasses.Items.Clear();
             this.DropRecipientClasses.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
-            this.DropRecipientClasses.Items.Add (new ListItem ("[Regulars]", "1"));
-            this.DropRecipientClasses.Items.Add (new ListItem ("[Agents]", "2"));
+            this.DropRecipientClasses.Items.Add (new ListItem (Participant.Localized(CurrentOrganization.RegularLabel, TitleVariant.Plural), "1"));
+            this.DropRecipientClasses.Items.Add (new ListItem (Participant.Localized(CurrentOrganization.ActivistLabel, TitleVariant.Plural), "2"));
             // TODO: Room for dynamic membership types here
-            this.DropRecipientClasses.Items.Add (new ListItem ("Officers", "101"));
-            this.DropRecipientClasses.Items.Add (new ListItem ("Volunteers", "102"));
+            this.DropRecipientClasses.Items.Add (new ListItem (Global.Global_Officer_Plural, "101"));
+            this.DropRecipientClasses.Items.Add (new ListItem (Global.Global_Volunteer_Plural, "102"));
 
             this.ButtonSend.Text = Resources.Pages.Comms.SendMassMessage_SendMessage;
             this.ButtonTest.Text = Resources.Pages.Comms.SendMassMessage_TestMessage;

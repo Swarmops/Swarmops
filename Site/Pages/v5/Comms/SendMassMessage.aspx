@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Comms.SendMassMessage" Codebehind="SendMassMessage.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Comms.SendMassMessage" CodeFile="SendMassMessage.aspx.cs" %>
 <%@ Register src="~/Controls/v5/UI/ExternalScripts.ascx" tagname="ExternalScripts" tagprefix="Swarmops5" %>
 <%@ Register src="~/Controls/v5/Base/ComboGeographies.ascx" tagname="ComboGeographies" tagprefix="Swarmops5" %>
 
@@ -18,16 +18,9 @@
         var selectedGeographyId = 1;  // TODO: SET ROOT GEOGRAPHY BY AUTHORITY/ACCESS
 
         function onGeographyChange(newGeographyId) {
-            $.ajax({
-                type: "POST",
-                url: "/Pages/v5/Comms/SendMassMessage.aspx/GetRecipientCount",
-                data: "{'recipientTypeId': '" + $('#<%=this.DropRecipientClasses.ClientID %>').val() + "', 'geographyId':'" + newGeographyId + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (msg) {
-                    $('#spanRecipientCount').text(msg.d);
-                }
-            });
+            var recipientClass = $('#<%=this.DropRecipientClasses.ClientID %>').val();
+
+            updateRecipientCount(recipientClass, newGeographyId);
             selectedGeographyId = newGeographyId;
         }
 
@@ -41,12 +34,31 @@
             return false;
         }
 
+        function onRecipientChange(newRecipientClass) {
+            updateRecipientCount(newRecipientClass, selectedGeographyId);
+        }
+
+        function updateRecipientCount(recipientClass, geography) {
+            var jsonData = {
+                recipientTypeId: recipientClass,
+                geographyId: geography
+            };
+
+            SwarmopsJS.ajaxCall
+            ("/Pages/v5/Comms/SendMassMessage.aspx/GetRecipientCount",
+                jsonData,
+                function(result) {
+                    $('#spanRecipientCount').text(result);
+                });
+            
+        }
+
     </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div class="entryFields" style="padding-top:4px">
-        <asp:DropDownList runat="server" ID="DropRecipientClasses"/><br/>
+        <Swarmops5:DropDown runat="server" ID="DropRecipientClasses" OnClientChange="onRecipientChange"/>&thinsp;<br/>
         <Swarmops5:ComboGeographies ID="ComboGeographies" runat="server" OnClientSelect="onGeographyChange" />&thinsp;<br/>
     </div>
     <div class="entryLabels" style="padding-top:10px">

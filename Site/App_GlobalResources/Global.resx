@@ -866,4 +866,28 @@
   <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
     <value>If you can, please enable BitID two-factor authentication.</value>
   </data>
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>Officer</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>Officer</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>Officer</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>Officers</value>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>Volunteer</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>Volunteer</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>Volunteer</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>Volunteers</value>
+  </data>
 </root>

@@ -19,7 +19,7 @@ namespace Swarmops.Frontend.Pages.Comms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropRecipientClasses;
+        protected global::Swarmops.Frontend.Controls.Base.DropDown DropRecipientClasses;
         
         /// <summary>
         /// ComboGeographies control.

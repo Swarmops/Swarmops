@@ -1141,6 +1141,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Officer.
+        /// </summary>
+        internal static string Global_Officer_Female {
+            get {
+                return ResourceManager.GetString("Global_Officer_Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Officer.
+        /// </summary>
+        internal static string Global_Officer_Male {
+            get {
+                return ResourceManager.GetString("Global_Officer_Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Officer.
+        /// </summary>
+        internal static string Global_Officer_Neutral {
+            get {
+                return ResourceManager.GetString("Global_Officer_Neutral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Officers.
+        /// </summary>
+        internal static string Global_Officer_Plural {
+            get {
+                return ResourceManager.GetString("Global_Officer_Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On.
         /// </summary>
         internal static string Global_On {
@@ -1371,6 +1407,42 @@ namespace Resources {
         internal static string Global_View {
             get {
                 return ResourceManager.GetString("Global_View", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volunteer.
+        /// </summary>
+        internal static string Global_Volunteer_Female {
+            get {
+                return ResourceManager.GetString("Global_Volunteer_Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volunteer.
+        /// </summary>
+        internal static string Global_Volunteer_Male {
+            get {
+                return ResourceManager.GetString("Global_Volunteer_Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volunteer.
+        /// </summary>
+        internal static string Global_Volunteer_Neutral {
+            get {
+                return ResourceManager.GetString("Global_Volunteer_Neutral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volunteers.
+        /// </summary>
+        internal static string Global_Volunteer_Plural {
+            get {
+                return ResourceManager.GetString("Global_Volunteer_Plural", resourceCulture);
             }
         }
         
