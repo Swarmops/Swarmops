@@ -12,6 +12,7 @@ namespace Swarmops.Frontend.Controls.Financial
     {
         protected void Page_Load (object sender, EventArgs e)
         {
+            this.Input.Attributes["role"] = "note"; // disable Lastpass trying to autofill
         }
 
         public Int64 Cents
