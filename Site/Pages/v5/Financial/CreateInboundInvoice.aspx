@@ -114,14 +114,14 @@
     <h2><asp:Label ID="BoxTitle" runat="server"/></h2>
     <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
     <div class="entryFields">
-        <asp:TextBox runat="server" ID="TextSupplier" />&#8203;<br/>
-        <Swarmops5:CurrencyAmount runat="server" ID="CurrencyAmount" />&#8203;<br/>
-        <asp:TextBox runat="server" ID="TextPurpose" />&#8203;<br/>
-        <asp:TextBox runat="server" ID="TextDueDate" />&#8203;<br/>
-        <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />&nbsp;<br/>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextSupplier" /></div>
+        <Swarmops5:CurrencyAmount runat="server" ID="CurrencyAmount" />
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPurpose" /></div>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDueDate" /></div>
+        <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />
         <asp:Repeater ID="RepeaterTagDrop" runat="server"><ItemTemplate><span id="SpanDropTags<%# Eval("TagSetId") %>"><select class="easyui-combotree" url="/Automation/Json-TransactionTagsTree.aspx?TagSetId=<%# Eval("TagSetId") %>" name="DropTags<%# Eval("TagSetId") %>" id="DropTags<%# Eval("TagSetId") %>" animate="true" style="width:300px"></select></span>&nbsp;<br/></ItemTemplate></asp:Repeater>
 
-        &nbsp;<br/><!-- placeholder for label-side H2 -->
+       <div class="stacked-input-control"></div> <!-- placeholder for label-side H2 -->
         
         <!-- file upload begins here -->
         
@@ -129,9 +129,9 @@
 
         <!-- file upload ends -->
 
-        &nbsp;<br/><!-- placeholder for label-side H2 -->
-        <asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/>
-        <asp:TextBox runat="server" ID="TextReference" />&#8203;<br/>
+        <div class="stacked-input-control"></div> <!-- placeholder for label-side H2 -->
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextAccount" /></div>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextReference" /></div>
         <asp:Button ID="ButtonCreate" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return validateFields();" OnClick="ButtonCreate_Click" Text="Create"/>
     </div>
     <div class="entryLabels">

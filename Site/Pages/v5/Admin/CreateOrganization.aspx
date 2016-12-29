@@ -24,12 +24,12 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label ID="BoxTitle" runat="server" /></h2>
     <div class="entryFields">
-        <asp:TextBox runat="server" ID="TextOrganizationName" />&#8203;<br/>
-        <Swarmops5:DropDown runat="server" ID="DropCreateChild" />&#8203;<br/>
-        <Swarmops5:DropDown runat="server" ID="DropCurrencies"/>&#8203;<br/>
-        <Swarmops5:DropDown runat="server" ID="DropPersonLabel" />&#8203;<br/>
-        <Swarmops5:DropDown runat="server" ID="DropActivistLabel" />&#8203;<br/>
-        <Swarmops5:DropDown runat="server" ID="DropPositionLabel" />&#8203;<br/>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextOrganizationName" /></div>
+        <Swarmops5:DropDown runat="server" ID="DropCreateChild" />
+        <Swarmops5:DropDown runat="server" ID="DropCurrencies"/>
+        <Swarmops5:DropDown runat="server" ID="DropPersonLabel" />
+        <Swarmops5:DropDown runat="server" ID="DropActivistLabel" />
+        <Swarmops5:DropDown runat="server" ID="DropPositionLabel" />
         <asp:Button ID="ButtonCreate" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick=" return validateFields(); " OnClick="ButtonCreate_Click" Text="CreateXYZ"/>
     </div>
     <div class="entryLabels">

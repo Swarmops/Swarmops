@@ -168,16 +168,16 @@
         <div title="<img src='/Images/Icons/iconshock-contacts-64px.png' />">
             <h2>Participant policy</h2>
             <div class="entryFields">
-                <Swarmops5:DropDown ID="DropMembersWhen" CssClass="DropTemp" runat="server"/>&#8203;<br/>
-                <Swarmops5:DropDown ID="DropMembersWhere" CssClass="DropTemp" runat="server"/>&#8203;<br/>
-                <Swarmops5:DropDown ID="DropMembershipDuration" CssClass="DropTemp" runat="server"/>&#8203;<br/>
-                <Swarmops5:DropDown ID="DropMembersChurn" CssClass="DropTemp" runat="server"/>&#8203;<br/>
-                <asp:TextBox ID="TextMembershipCost" runat="server" CssClass="alignRight" Text="0" />&#8203;<br/>
-                <asp:TextBox ID="TextRenewalCost" runat="server" CssClass="alignRight" Text="0" />&#8203;<br/>
-                <Swarmops5:DropDown ID="DropRenewalDateEffect" CssClass="DropTemp" runat="server"/>&#8203;<br/>
-                <Swarmops5:DropDown ID="DropRenewalsAffect" CssClass="DropTemp" runat="server"/>&#8203;<br/>
-                <Swarmops5:DropDown ID="DropRenewalReminder" CssClass="DropTemp" runat="server"/>&#8203;<br/>
-                <Swarmops5:DropDown ID="DropMemberNumber" runat="server" />&#8203;<br/>
+                <Swarmops5:DropDown ID="DropMembersWhen" CssClass="DropTemp" runat="server"/>
+                <Swarmops5:DropDown ID="DropMembersWhere" CssClass="DropTemp" runat="server"/>
+                <Swarmops5:DropDown ID="DropMembershipDuration" CssClass="DropTemp" runat="server"/>
+                <Swarmops5:DropDown ID="DropMembersChurn" CssClass="DropTemp" runat="server"/>
+                <div class="stacked-input-control"><asp:TextBox ID="TextMembershipCost" runat="server" CssClass="alignRight" Text="0" /></div>
+                <div class="stacked-input-control"><asp:TextBox ID="TextRenewalCost" runat="server" CssClass="alignRight" Text="0" /></div>
+                <Swarmops5:DropDown ID="DropRenewalDateEffect" CssClass="DropTemp" runat="server"/>
+                <Swarmops5:DropDown ID="DropRenewalsAffect" CssClass="DropTemp" runat="server"/>
+                <Swarmops5:DropDown ID="DropRenewalReminder" CssClass="DropTemp" runat="server"/>
+                <Swarmops5:DropDown ID="DropMemberNumber" runat="server" />
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelParticipationEntry" runat="server" /><br/>
@@ -218,11 +218,11 @@
         <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' />">
             <h2>Mail transmission settings</h2>
             <div class="entryFields">
-                <asp:TextBox runat="server" ID="TextMailDomain" Text="example.com" />&#8203;<br/>
-                <asp:TextBox runat="server" ID="TextMailAccounting" Text="Accounting" />&#8203;<br/>
-                <asp:TextBox runat="server" ID="TextMailHR" Text="Human Resources" />&#8203;<br/>
-                <asp:TextBox runat="server" ID="TextMailOfficers" Text="Swarmops Notification" />&#8203;<br/>
-                <asp:TextBox runat="server" ID="TextSmtpServer" />&#8203;<br/>
+                <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextMailDomain" Text="example.com" /></div>
+                <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextMailAccounting" Text="Accounting" /></div>
+                <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextMailHR" Text="Human Resources" /></div>
+                <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextMailOfficers" Text="Swarmops Notification" /></div>
+                <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextSmtpServer" /></div>
             </div>
             <div class="entryLabels">
                 Mail Domain (e.g. swarmops.com)<br/>
@@ -235,9 +235,9 @@
         <div title="<img src='/Images/Icons/iconshock-buildings-256px.png' height='64' width='64' />">
             <h2>Regulatory stuff (optional)</h2>
             <div class="entryFields">
-                <Swarmops5:AjaxTextBox runat="server" ID="TextGovtRegistrationId" Text="SE1234567890"  Cookie="GovernmentRegistrationId" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />&#8203;<br/>
-                <Swarmops5:DropDown ID="DropTaxAuthority" CssClass="DropTemp" runat="server"/>&#8203;<br/>
-                <Swarmops5:AjaxTextBox runat="server" ID="TextTaxPaymentOcr" Text="1612345678900"  Cookie="TaxPaymentOcr" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextGovtRegistrationId" Text="SE1234567890"  Cookie="GovernmentRegistrationId" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />
+                <Swarmops5:DropDown ID="DropTaxAuthority" CssClass="DropTemp" runat="server"/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextTaxPaymentOcr" Text="1612345678900"  Cookie="TaxPaymentOcr" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />
             </div>
             <div class="entryLabels">
                 Org registration #<br/>
@@ -248,8 +248,8 @@
         <div title="<img src='/Images/Icons/iconshock-star-gold-64px.png' />">
             <h2>Premium Features</h2>
             <div class="entryFields">
-                <Swarmops5:AjaxTextBox runat="server" ID="TextVanityDomain" Cookie="VanityDomain" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />&#8203;<br/>
-                <Swarmops5:AjaxTextBox runat="server" ID="TextOpenLedgersDomain" Cookie="OpenLedgersDomain" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextVanityDomain" Cookie="VanityDomain" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />
+                <Swarmops5:AjaxTextBox runat="server" ID="TextOpenLedgersDomain" Cookie="OpenLedgersDomain" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelVanityDomain" runat="server" /><br/>

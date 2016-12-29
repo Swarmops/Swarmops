@@ -2,4 +2,4 @@
 
 <!-- TODO: Add nice autocomplete stuff -->
 
-<asp:TextBox ID="Input" runat="server" CssClass="alignRight" /><asp:HiddenField ID="NativeCurrency" runat="server"/><asp:HiddenField ID="NativeAmount" runat="server"/>
+<div class="stacked-input-control"><asp:TextBox ID="Input" runat="server" CssClass="alignRight" /><asp:HiddenField ID="NativeCurrency" runat="server"/><asp:HiddenField ID="NativeAmount" runat="server"/></div>
