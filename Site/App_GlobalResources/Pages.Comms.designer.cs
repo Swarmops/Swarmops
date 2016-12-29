@@ -19,7 +19,7 @@ namespace Resources.Pages {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option or rebuild the Visual Studio project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "11.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Comms {
@@ -88,6 +88,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type your message here. Standard markup like *bold*, _italic_, ==headers== and similar can be used. Two newlines begin a new paragraph. The mail will be sent as dual-mode cleartext and HTML..
+        /// </summary>
+        internal static string SendMassMessage_MessageHint {
+            get {
+                return ResourceManager.GetString("SendMassMessage_MessageHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This message would have been sent to the recipients. For the time being, this is a mock-up interface..
         /// </summary>
         internal static string SendMassMessage_MockMessageResult {
@@ -129,6 +138,15 @@ namespace Resources.Pages {
         internal static string SendMassMessage_SendMessageResult {
             get {
                 return ResourceManager.GetString("SendMassMessage_SendMessageResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subject.
+        /// </summary>
+        internal static string SendMassMessage_Subject {
+            get {
+                return ResourceManager.GetString("SendMassMessage_Subject", resourceCulture);
             }
         }
         

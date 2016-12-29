@@ -126,6 +126,9 @@
   <data name="SendMassMessage_Info" xml:space="preserve">
     <value>Send a message to a group of people in the organization. You can send the message by mail (good for newsletters and general information) or to their phones (very intrusive, and also costs a bit).</value>
   </data>
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>Type your message here. Standard markup like *bold*, _italic_, ==headers== and similar can be used. Two newlines begin a new paragraph. The mail will be sent as dual-mode cleartext and HTML.</value>
+  </data>
   <data name="SendMassMessage_MockMessageResult" xml:space="preserve">
     <value>This message would have been sent to the recipients. For the time being, this is a mock-up interface.</value>
   </data>
@@ -142,6 +145,10 @@
   </data>
   <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
     <value>Your message is now being distributed to recipients. You will be notified when transmission is complete.</value>
+  </data>
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>Subject</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
   </data>
   <data name="SendMassMessage_TestMessage" xml:space="preserve">
     <value>Test</value>

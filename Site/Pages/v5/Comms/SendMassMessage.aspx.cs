@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -33,6 +35,7 @@ namespace Swarmops.Frontend.Pages.Comms
             this.LabelGeography.Text = Resources.Pages.Comms.SendMassMessage_Geography;
             this.LabelRecipientType.Text = Resources.Pages.Comms.SendMassMessage_RecipientType;
             this.LabelHeaderMessage.Text = Resources.Pages.Comms.SendMassMessage_HeaderMessage;
+            this.LabelSubject.Text = Resources.Pages.Comms.SendMassMessage_Subject;
 
             this.DropRecipientClasses.Items.Clear();
             this.DropRecipientClasses.Items.Add (new ListItem (Participant.Localized(CurrentOrganization.RegularLabel, TitleVariant.Plural), "1"));
@@ -43,6 +46,7 @@ namespace Swarmops.Frontend.Pages.Comms
 
             this.ButtonSend.Text = Resources.Pages.Comms.SendMassMessage_SendMessage;
             this.ButtonTest.Text = Resources.Pages.Comms.SendMassMessage_TestMessage;
+            this.TextMessage.Attributes["Placeholder"] = Resources.Pages.Comms.SendMassMessage_MessageHint;
         }
 
         [WebMethod]
@@ -96,6 +100,13 @@ namespace Swarmops.Frontend.Pages.Comms
             }
 
             return result;
+        }
+
+        [WebMethod]
+        public static AjaxCallResult ExecuteSend(int recipientTypeId, int geographyId, string mode, string subject,
+            string body, string dummyMail, bool live)
+        {
+            return new AjaxCallResult {Success = false};
         }
 
         public struct ConfirmPayoutResult

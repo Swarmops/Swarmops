@@ -38,7 +38,7 @@ namespace Swarmops.Frontend.Pages.Comms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelRecipientType;
-        
+
         /// <summary>
         /// LabelGeography control.
         /// </summary>
@@ -47,7 +47,16 @@ namespace Swarmops.Frontend.Pages.Comms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelGeography;
-        
+
+        /// <summary>
+        /// LabelGeography control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelSubject;
+
         /// <summary>
         /// LabelHeaderMessage control.
         /// </summary>
