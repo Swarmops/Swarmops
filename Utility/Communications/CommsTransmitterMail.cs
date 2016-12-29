@@ -51,11 +51,23 @@ namespace Swarmops.Utility.Communications
                 throw new OutboundCommTransmitException("No valid mail address for " + person.Canonical);
             }
 
+            mail.Subject = (string)comm[CommRenderPart.Subject];
+            mail.SubjectEncoding = Encoding.UTF8;
+
             try
             {
                 mail.From = new MailAddress ((string) comm[CommRenderPart.SenderMail], (string) comm[CommRenderPart.SenderName],
                     Encoding.UTF8);
-                mail.To.Add (new MailAddress (person.Mail, person.Name));
+
+                // SPECIAL CASE for sandbox mails -- ugly code but wtf
+                if (person.Identity == 1 && PilotInstallationIds.DevelopmentSandbox == SystemSettings.InstallationId)
+                {
+                    mail.To.Add(new MailAddress("test@falkvinge.net", "Swarmops Sandbox Administrator"));
+                }
+                else // regular case to be used... like everywhere else except for the sandbox test
+                {
+                    mail.To.Add(new MailAddress(person.Mail, person.Name));
+                }
             }
             catch (FormatException e)
             {
@@ -71,9 +83,7 @@ namespace Swarmops.Utility.Communications
             string mailBodyHtml = comm.ContainsKey(CommRenderPart.BodyHtml)? (string)comm[CommRenderPart.BodyHtml]: string.Empty;
             mailBodyHtml = mailBodyHtml.Replace("[Addressee]", person.Canonical);
 
-            mail.Subject = (string)comm[CommRenderPart.Subject];
             mail.Body = mailBodyText;
-            mail.SubjectEncoding = Encoding.UTF8;
             mail.BodyEncoding = Encoding.UTF8;
 
             string smtpServer = _smtpServerCache;

@@ -158,7 +158,7 @@ namespace Swarmops.Logic.Communications
         }
 
 
-        public static OutboundComm CreateParticipantMail (string customSubject, string customBody, Participation participation,
+        public static OutboundComm CreateParticipantMail(string customSubject, string customBody, Participation participation,
             Person actingPerson)
         {
             List<Person> recipients = People.FromSingle(participation.Person);
@@ -172,6 +172,29 @@ namespace Swarmops.Logic.Communications
             foreach (Person person in recipients)
             {
                 comm.AddRecipient(person);
+            }
+
+            comm.Resolved = true;
+
+            return comm;
+        }
+
+        /// <summary>
+        /// This special function is only used when Sandbox sends a test mail, and needs a nonstandard mail address.
+        /// </summary>
+        public static OutboundComm CreateSandboxMail(string customSubject, string customBody, string sandboxMailAddress)
+        {
+            List<Person> recipients = People.FromSingle(Person.FromIdentity(1));
+
+            OutboundComm comm = OutboundComm.Create(null, null, Organization.Sandbox,
+                null /* resolver */, null,
+                CommTransmitterClass.CommsTransmitterMail,
+                new PayloadEnvelope(new ParticipantMailPayload(sandboxMailAddress + "|" + customSubject, customBody, recipients[0].GetMemberships()[0], recipients[0])).ToXml(),
+                OutboundCommPriority.Low);
+
+            foreach (Person person in recipients)
+            {
+                comm.AddRecipient(person); // needed for pickup
             }
 
             comm.Resolved = true;

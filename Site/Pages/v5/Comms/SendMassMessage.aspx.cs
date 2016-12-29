@@ -5,6 +5,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Logic.Communications;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
@@ -106,6 +107,8 @@ namespace Swarmops.Frontend.Pages.Comms
         public static AjaxCallResult ExecuteSend(int recipientTypeId, int geographyId, string mode, string subject,
             string body, string dummyMail, bool live)
         {
+            OutboundComm.CreateSandboxMail(subject, body, "test@falkvinge.net");
+
             return new AjaxCallResult {Success = false};
         }
 
