@@ -220,9 +220,9 @@
                 <div title="<img id='imgFirstTabMasterEditPerson' src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label runat="server" ID="MasterLabelEditPersonHeaderAccount"></asp:Label></h2>
                     <div class="entryFields">
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonName" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Name" AjaxCallbackUrl="" />&#8203;<br/>
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonMail" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Mail" AjaxCallbackUrl=""  />&#8203;<br/>
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonPhone" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Phone" AjaxCallbackUrl=""  />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonName" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Name" AjaxCallbackUrl="" />
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonMail" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Mail" AjaxCallbackUrl=""  />
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonPhone" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Phone" AjaxCallbackUrl=""  />
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonTwitterId" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="TwitterId" AjaxCallbackUrl=""  />
                     </div>
                     <div class="entryLabels">
@@ -235,9 +235,9 @@
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label runat="server" ID="MasterLabelEditPersonHeaderSecurity" Text="#Your Security#"/></h2>
                     <div class="entryFields">
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonCurrentPassword" runat="server" Mode="Password" OnKeyDown="masterPersonEditorOnSecurityPasswordKeyDown" OnChanging="masterPersonEditorOnSecurityPasswordChanging" Cookie="CurrentPassword" AjaxCallbackUrl="" />&#8203;<br/>
-                        <div class="divMasterPersonEditSecurityRolldown" style="display:none"><Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FA" runat="server" Label="BitID Two-factor auth" OnChange="masterPersonEditor2FAToggle" Cookie="2FA" AjaxCallbackUrl=""  />&#8203;<br/>
-                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword1" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityNewPasswordChanging" Cookie="Password1" AjaxCallbackUrl=""  />&#8203;<br/>
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonCurrentPassword" runat="server" Mode="Password" OnKeyDown="masterPersonEditorOnSecurityPasswordKeyDown" OnChanging="masterPersonEditorOnSecurityPasswordChanging" Cookie="CurrentPassword" AjaxCallbackUrl="" />
+                        <div class="divMasterPersonEditSecurityRolldown" style="display:none"><Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FA" runat="server" Label="BitID Two-factor auth" OnChange="masterPersonEditor2FAToggle" Cookie="2FA" AjaxCallbackUrl=""  />
+                        <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword1" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityNewPasswordChanging" Cookie="Password1" AjaxCallbackUrl=""  />
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword2" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityNewPasswordChanging" Cookie="Password2" AjaxCallbackUrl=""  />
                         </div>
                     </div>
