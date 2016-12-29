@@ -179,4 +179,4 @@
 
 </script>
 
-<asp:TextBox ID="TextInput" runat="server" />
+<div class="stacked-input-control"><asp:TextBox ID="TextInput" runat="server" /></div>

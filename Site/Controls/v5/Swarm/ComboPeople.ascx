@@ -130,4 +130,4 @@
 
 </script>
  
- <span id="<%=this.ClientID %>_SpanPeople" class="fakePlaceholderText"><select class="easyui-combobox comboperson" url="" name="DropPeople" id="<%=this.ClientID %>_DropPeople" animate="true" style="width:324px"></select></span>
+ <div class="stacked-input-control"><span id="<%=this.ClientID %>_SpanPeople" class="fakePlaceholderText"><select class="easyui-combobox comboperson" url="" name="DropPeople" id="<%=this.ClientID %>_DropPeople" animate="true" style="width:324px"></select></span></div>

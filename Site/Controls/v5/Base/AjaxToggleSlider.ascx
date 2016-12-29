@@ -113,5 +113,5 @@
 
 </script>
 
-<asp:Label runat="server" ID="ToggleSliderLabel"></asp:Label>
-<div class="toggle-iphone toggle-padding" id="<%=this.ClientID %>_sliderContainer"><asp:Checkbox ID="SliderCheckbox" runat="server"/></div>
+<div class="stacked-input-control"><asp:Label runat="server" ID="ToggleSliderLabel"></asp:Label>
+<div class="toggle-iphone toggle-padding" id="<%=this.ClientID %>_sliderContainer"><asp:Checkbox ID="SliderCheckbox" runat="server"/></div></div>

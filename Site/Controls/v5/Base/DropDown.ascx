@@ -82,4 +82,4 @@
     </script>
 
 
-<span id="<%=this.ClientID %>_SpanDrop"><asp:DropDownList ID="DropControl" runat="server" /></span>
+<div class="stacked-input-control"><span id="<%=this.ClientID %>_SpanDrop"><asp:DropDownList ID="DropControl" runat="server" /></span></div>

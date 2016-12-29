@@ -60,4 +60,4 @@
 
  </script>
  
- <span id="<%=this.ClientID %>_SpanGeographies"><select class="easyui-combotree" name="DropGeographies" id="<%=this.ClientID %>_DropGeographies" animate="true" style="width:324px"></select></span>
+ <div class="stacked-input-control"><span id="<%=this.ClientID %>_SpanGeographies"><select class="easyui-combotree" name="DropGeographies" id="<%=this.ClientID %>_DropGeographies" animate="true" style="width:324px"></select></span></div><%--  --%>

@@ -334,6 +334,13 @@ body.rtl .sidebar {
 }
 
 
+div.stacked-input-control {
+    height: 40px;
+    width: 100%;
+    overflow-y: hidden;
+}
+
+
 .content h3
 {
 	font-family: Ubuntu, Arial, Sans-Serif;

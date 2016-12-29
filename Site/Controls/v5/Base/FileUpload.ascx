@@ -65,5 +65,5 @@
 
 </script>
 
-<div class="buttonUploadFile"><input id="<%=this.ClientID %>_ButtonUploadVisible" class="ButtonSwarmopsUpload NoInputFocus" type="button" <%= this.HideTrigger? "style='display:none'" : string.Empty %> /><input id="<%=this.ClientID %>_ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;padding-top:4px;width:270px;margin-right:10px;float:right;border:none"><div id="<%=this.ClientID %>_DivUploadCount" style='display:none;overflow:hidden;height:'<%=this.DisplayCount < 9? 32: 64%>px'></div><div id="<%=this.ClientID %>_DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div>&#8203;<br/>
+<div class="stacked-input-control"><div class="buttonUploadFile"><input id="<%=this.ClientID %>_ButtonUploadVisible" class="ButtonSwarmopsUpload NoInputFocus" type="button" <%= this.HideTrigger? "style='display:none'" : string.Empty %> /><input id="<%=this.ClientID %>_ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;padding-top:4px;width:270px;margin-right:10px;float:right;border:none"><div id="<%=this.ClientID %>_DivUploadCount" style='display:none;overflow:hidden;height:'<%=this.DisplayCount < 9? 32: 64%>px'></div><div id="<%=this.ClientID %>_DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div></div>
 
