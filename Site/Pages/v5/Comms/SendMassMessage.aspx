@@ -13,7 +13,7 @@
                 onGeographyChange(selectedGeographyId); // does the same thing anyway
             });
 
-            updateRecipientCount(selectedReceipientClass, selectedGeographyId);
+            updateRecipientCount(selectedRecipientClass, selectedGeographyId);
 
             $('#<%=this.TextSubject.ClientID%>').focus();
 });
