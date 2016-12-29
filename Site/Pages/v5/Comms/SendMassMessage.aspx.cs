@@ -35,7 +35,6 @@ namespace Swarmops.Frontend.Pages.Comms
             this.LabelHeaderMessage.Text = Resources.Pages.Comms.SendMassMessage_HeaderMessage;
 
             this.DropRecipientClasses.Items.Clear();
-            this.DropRecipientClasses.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
             this.DropRecipientClasses.Items.Add (new ListItem (Participant.Localized(CurrentOrganization.RegularLabel, TitleVariant.Plural), "1"));
             this.DropRecipientClasses.Items.Add (new ListItem (Participant.Localized(CurrentOrganization.ActivistLabel, TitleVariant.Plural), "2"));
             // TODO: Room for dynamic membership types here
