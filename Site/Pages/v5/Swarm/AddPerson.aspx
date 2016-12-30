@@ -201,8 +201,8 @@
         <div class="stacked-input-control"></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div>
-        <div style="float: right; margin-right: 5px"><asp:TextBox runat="server" ID="TextPostal" /><asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-input-control" style="width: 40px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
-        <div class="stacked-input-control"><span id="spanDetectedGeo">...</span></div>
+        <div style="float: right; margin-right: 5px"><asp:TextBox runat="server" ID="TextPostal" /><asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-input-control stacked-text" style="width: 40px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
+        <div class="stacked-input-control stacked-text"><span id="spanDetectedGeo">...</span></div>
         <div class="stacked-input-control"></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
         <Swarmops5:DropDown runat="server" ID="DropGenders" />
@@ -216,7 +216,7 @@
         <h2><asp:Label ID="LabelHeaderAddresss" runat="server" /></h2>
         <asp:Label ID="LabelStreet1" runat="server" /><br />
         <asp:Label ID="LabelStreet2" runat="server" /><br />
-        <span id="spanLabelPostal" style="display: inline-block; overflow: hidden"><asp:Label ID="LabelPostalCode" runat="server" />,&nbsp;</span><span style="display: inline-block; overflow: hidden"><asp:Label runat="server" ID="LabelCity" /></span><br />
+        <span id="spanLabelPostal"><asp:Label ID="LabelPostalCode" runat="server" />,&nbsp;</span><asp:Label runat="server" ID="LabelCity" /><br />
         <span id="SpanGeoDetected"><asp:Label ID="LabelGeographyDetected" runat="server" /></span><span id="SpanGeoSelect" style="display: none"><asp:Label ID="LabelSelectGeography" runat="server" Text="XYZ Select Geography" /></span><br />
         <h2><asp:Label ID="LabelHeaderStatData" runat="server" /></h2>
         <asp:Label ID="LabelDateOfBirth" runat="server" /><br />

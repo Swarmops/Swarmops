@@ -696,6 +696,11 @@ body.rtl div.modal .entryFields {
     top: -3px;
 }
 
+.entryFields .stacked-text {
+    position: relative;
+    top: -6px;
+}
+
 .entryLabels 
 {
 	font-size: 18px;
