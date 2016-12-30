@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Swarm.AddPerson" Codebehind="AddPerson.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Swarm.AddPerson" CodeFile="AddPerson.aspx.cs" %>
 <%@ Register TagPrefix="Swarmops5" TagName="DropDown" Src="~/Controls/v5/Base/DropDown.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
@@ -194,18 +194,18 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
     <div class="entryFields">
-        <asp:TextBox runat="server" ID="TextName" />&#8203;<br/>
-        <Swarmops5:DropDown runat="server" OnClientChange=" UpdatePostalPrefix " ID="DropCountries"/>&#8203;<br/>        
-        <asp:TextBox runat="server" ID="TextMail" />&#8203;<br/>
-        <asp:TextBox runat="server" ID="TextPhone" />&#8203;<br/>
-        &nbsp;<br/>
-        <asp:TextBox runat="server" ID="TextStreet1" />&#8203;<br/>
-        <asp:TextBox runat="server" ID="TextStreet2" />&#8203;<br/>
-        <div style="float: right; margin-right: 5px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 40px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
-        <span id="spanDetectedGeo">...</span>&nbsp;<br/>
-        &nbsp;<br/>
-        <asp:TextBox runat="server" ID="TextDateOfBirth" />&#8203;<br/>
-        <Swarmops5:DropDown runat="server" ID="DropGenders" />&#8203;<br/>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextName" /></div>
+        <Swarmops5:DropDown runat="server" OnClientChange=" UpdatePostalPrefix " ID="DropCountries"/>        
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextMail" /></div>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPhone" /></div>
+        <div class="stacked-input-control"></div>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div>
+        <div style="float: right; margin-right: 5px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-input-control" style="width: 40px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
+        <div class="stacked-input-control"><span id="spanDetectedGeo">...</span></div>
+        <div class="stacked-input-control"></div>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
+        <Swarmops5:DropDown runat="server" ID="DropGenders" />
         <asp:Button ID="ButtonSubmit" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick=" return ValidateFields(); " OnClick="ButtonSubmit_Click" Text="Register"/>
     </div>
     <div class="entryLabels">

@@ -45,16 +45,16 @@
                                     } else {
                                         alertify.error(SwarmopsJS.unescape('<%= this.Localized_AjaxGeneralErrorSettingValue %>'));
                                     }
-                                    $(this).css('background-color', '#FFA0A0');
+                                    //$(this).css('background-color', '#FFA0A0');
                                 } else {
                                     if (msg.DisplayMessage != null) {
                                         alertify.log(msg.DisplayMessage);
                                     }
-                                    $(this).css('background-color', '#E0FFE0');
+                                    //$(this).css('background-color', '#E0FFE0');
                                     _initVal_<%=this.SliderCheckbox.ClientID%> = msg.NewValue;
                                 }
                                 $(this).val(msg.NewValue);
-                                $(this).animate({ backgroundColor: "#FFFFFF" }, 250);
+                                //$(this).animate({ backgroundColor: "#FFFFFF" }, 250);
                                 <%
 
                                     if (!string.IsNullOrEmpty(this.OnChange))
@@ -74,8 +74,8 @@
                             $.proxy(function(msg) {
                                 alertify.error(SwarmopsJS.unescape('<%= this.Localized_AjaxCallException %>'));
                                 $(this).val(_initVal_<%=this.SliderCheckbox.ClientID%>);
-                                $(this).css('background-color', '#FFA0A0');
-                                $(this).animate({ backgroundColor: "#FFFFFF" }, 250);
+                                //$(this).css('background-color', '#FFA0A0');
+                                //$(this).animate({ backgroundColor: "#FFFFFF" }, 250);
                             }, this)
                         );
                     } else {
@@ -113,5 +113,5 @@
 
 </script>
 
-<div class="stacked-input-control"><asp:Label runat="server" ID="ToggleSliderLabel"></asp:Label>
+<div class="stacked-input-control"><asp:Label runat="server" ID="ToggleSliderLabel" CssClass="toggleLabel"></asp:Label>
 <div class="toggle-iphone toggle-padding" id="<%=this.ClientID %>_sliderContainer"><asp:Checkbox ID="SliderCheckbox" runat="server"/></div></div>

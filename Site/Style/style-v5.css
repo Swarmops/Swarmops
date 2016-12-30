@@ -691,6 +691,10 @@ body.rtl div.modal .entryFields {
     width: 324px;
 }
 
+.entryFields span.toggleLabel {
+    position: relative;
+    top: -3px;
+}
 
 .entryLabels 
 {

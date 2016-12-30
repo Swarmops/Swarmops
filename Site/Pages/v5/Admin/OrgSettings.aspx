@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Admin.OrgSettings" Codebehind="OrgSettings.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Admin.OrgSettings" CodeFile="OrgSettings.aspx.cs" %>
 <%@ Import Namespace="Swarmops.Frontend" %>
 <%@ Register tagPrefix="Swarmops5" tagName="FileUpload" src="~/Controls/v5/Base/FileUpload.ascx"  %>
 <%@ Register tagPrefix="Swarmops5" tagName="DropDown" src="~/Controls/v5/Base/DropDown.ascx" %>
@@ -89,6 +89,7 @@
 
         function initializeSettings(orgSettings) {
             console.log(orgSettings);
+            <%=this.ToggleBitcoinCold.ClientID%>_initialize(orgSettings.AccountBitcoinCold);
             suppressSwitchResponse = true;
             $("#CheckEnableBitcoinCold").prop("checked", orgSettings.AccountBitcoinCold).change();
             $("#CheckEnableBitcoinHot").prop("checked", orgSettings.AccountBitcoinHot).change();
@@ -142,9 +143,12 @@
         <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
             <h2>Accounting Features</h2>
             <div class="entryFields">
+                <Swarmops5:AjaxToggleSlider ID="ToggleBitcoinCold" Cookie="BitcoinCold" Label="Bitcoin Cold" runat="server" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
+                <Swarmops5:AjaxToggleSlider ID="ToggleBitcoinHot" Cookie="BitcoinHot" Label="Bitcoin Hot" runat="server" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
+                <Swarmops5:AjaxTextBox ID="TextDaysCashReserves" runat="server" CssClass="bitcoinHotField alignRight" ReadOnly="true" Placeholder="60-90" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="BitcoinReserves"  />
                 <label for="CheckEnableBitcoinCold"><asp:Literal ID="LiteralLabelBitcoinColdShort" runat="server" Text="Bitcoin Cold"/></label><div class="CheckboxContainer"><input type="checkbox" rel="BitcoinCold" class="EditCheck" id="CheckEnableBitcoinCold"/></div><br/>
                 <label for="CheckEnableBitcoinHot"><asp:Literal ID="LiteralLabelBitcoinHotShort" runat="server" Text="Bitcoin Hot"/></label><div class="CheckboxContainer"><input type="checkbox" rel="BitcoinHot" class="EditCheck" id="CheckEnableBitcoinHot"/></div><br/>
-                <Swarmops5:AjaxTextBox ID="TextDaysCashReserves" runat="server" CssClass="bitcoinHotField alignRight" ReadOnly="true" Placeholder="60-90" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="BitcoinReserves"  />
+                <Swarmops5:AjaxTextBox ID="AjaxTextBox1" runat="server" CssClass="bitcoinHotField alignRight" ReadOnly="true" Placeholder="60-90" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="BitcoinReserves"  />
                 <label for="CheckEnablePaypal"><asp:Literal ID="Literal1" runat="server" Text="Paypal"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Paypal" class="EditCheck" id="CheckEnablePaypal"/></div><br/>
                 <Swarmops5:AjaxTextBox ID="TextPaypalAccountAddress" runat="server" Placeholder="paypal@example.org" CssClass="paypalAccountField" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="PaypalAccountAddress" />
                 <label for="CheckEnableForex"><asp:Literal ID="Literal2" runat="server" Text="Forex Profit/Loss"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Forex" class="EditCheck" id="CheckEnableForex"/></div><br/>
@@ -162,7 +166,7 @@
                 Enable Participant Financials?<br/>
             </div>
             <div id="divUseAccountPlan" style="display: none; width: 100%; text-align: center; margin-top: 20px; margin-bottom: 20px; border-top: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; border-bottom: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; background-color: <%= CommonV5.GetColor (ColorType.Base, ColorVariant.XLight) %>">
-                Use the <a href="/Pages/v5/Ledgers/AccountPlan.aspx">Account Plan</a> page to set detailed parameters for these accounts, once enabled.
+                Use the <a href="/Ledgers/AccountPlan">Account Plan</a> page to set detailed parameters for these accounts, once enabled.
             </div>
         </div>
         <div title="<img src='/Images/Icons/iconshock-contacts-64px.png' />">
