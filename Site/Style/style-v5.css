@@ -701,6 +701,14 @@ body.rtl div.modal .entryFields {
     top: -6px;
 }
 
+body:not(.rtl) .entryFields .small-margin-right {
+    margin-right: 5px;
+}
+
+body.rtl .entryFields .small-margin-right {
+    margin-left: 5px;
+}
+
 .entryLabels 
 {
 	font-size: 18px;
