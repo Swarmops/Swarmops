@@ -201,7 +201,7 @@
         <div class="stacked-input-control"></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div>
-        <div style="float: right; margin-right: 5px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-input-control" style="width: 40px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
+        <div style="float: right; margin-right: 5px"><asp:TextBox runat="server" ID="TextPostal" /><asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-input-control" style="width: 40px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
         <div class="stacked-input-control"><span id="spanDetectedGeo">...</span></div>
         <div class="stacked-input-control"></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
