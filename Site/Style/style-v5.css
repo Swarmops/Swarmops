@@ -753,14 +753,9 @@ body.rtl .entryLabels {
 {
 	margin-top: 10px;
 	line-height: 30px;
-	width: 100px;
 	white-space: nowrap;
-	overflow-x: hidden;
 }
 
-body.rtl .entryLabelsAdmin {
-    float: right;
-}
 
 .entryFieldsAdmin
 {
@@ -774,6 +769,7 @@ body.rtl .entryLabelsAdmin {
 	padding-bottom: 5px;
 	padding-left: 5px;
 	padding-right: 5px;
+    margin-right: 20px;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	
@@ -783,7 +779,9 @@ body.rtl .entryLabelsAdmin {
 }
 
 body.rtl .entryFieldsAdmin {
-    float: right;
+    float: left;
+    margin-right: inherit;
+    margin-left: 20px;
 }
 
 .entryValidationAdmin
