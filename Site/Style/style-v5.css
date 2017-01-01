@@ -719,7 +719,7 @@ body.rtl div.modal .entryFields {
 
 .entryFieldsAdmin .stacked-text, .entryFieldsAdmin .stacked-input-control .stacked-text {
     position: relative;
-    top: -2px;
+    top: -1px;
 }
 
 body:not(.rtl) .entryFields .small-margin-right {
