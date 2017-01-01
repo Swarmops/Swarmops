@@ -134,9 +134,10 @@
 
 	        $(document).ready(function () {
 
-	            // Set postal code to something really small for layout
+	            // Set postal code and city to something really small for initial layout
 
 	            $('#<%=this.TextPostal.ClientID%>').width(40);
+	            $('#<%=this.TextCity.ClientID%>').width(140);
 
                 // Guess country
 
@@ -624,7 +625,7 @@
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPhone" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div>
-                            <div class="stacked-input-control"><div class="elementFloatFar" style="margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 30px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div></div>
+                            <div class="stacked-input-control"><div class="elementFloatFar" style="margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 25px; overflow-x: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div></div>
                             <div class="stacked-input-control"><span id="spanDetectedGeo">...</span></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
                             <div class="stacked-input-control"><asp:DropDownList runat="server" ID="DropGenders" /></div>
