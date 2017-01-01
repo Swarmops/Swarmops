@@ -113,7 +113,6 @@
 
 
         .entryLabelsAdmin {
-            width: 236px;
             font-weight: 300;
         }
 
