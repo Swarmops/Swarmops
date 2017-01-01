@@ -60,9 +60,9 @@ namespace Swarmops.Frontend.Pages.Public
 
 
             // Override style widths - (this will cause problems with a future responsive design; come back here to fix that)
-
+            /*
             this.DropCountries.Style[HtmlTextWriterStyle.Width] = "204px";
-            this.DropGenders.Style[HtmlTextWriterStyle.Width] = "204px";
+            this.DropGenders.Style[HtmlTextWriterStyle.Width] = "204px";*/
 
             /*
             this.BoxTitle.Text = PageTitle = String.Format(Resources.Pages.Swarm.AddPerson_Title,

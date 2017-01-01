@@ -137,7 +137,13 @@
 	            // Set postal code and city to something really small for initial layout
 
 	            $('#<%=this.TextPostal.ClientID%>').width(40);
-	            $('#<%=this.TextCity.ClientID%>').width(140);
+	            $('#<%=this.TextCity.ClientID%>').width(100);
+
+	            // Set widths of dropdowns equal to textboxen
+
+	            var inputWidth = $('#<%=this.TextName.ClientID%>').width();
+	            $('#<%=this.DropCountries.ClientID%>').width(inputWidth);
+	            $('#<%=this.DropGenders.ClientID%>').width(inputWidth);
 
                 // Guess country
 
@@ -625,8 +631,8 @@
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPhone" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div>
-                            <div class="stacked-input-control"><div class="elementFloatFar"><asp:TextBox runat="server" ID="TextPostal" />&thinsp;<asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-text" style="width: 28px; overflow-x: hidden"><span id="spanCountryPrefix">XX</span>--</div></div>
-                            <div class="stacked-input-control"><span id="spanDetectedGeo">...</span></div>
+                            <div class="stacked-input-control"><div class="elementFloatFar"><asp:TextBox runat="server" ID="TextPostal" />&thinsp;<asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-text" style="width: 22px; overflow-x: hidden"><span id="spanCountryPrefix">XX</span>--</div></div>
+                            <div class="stacked-input-control"><span class="stacked-text" id="spanDetectedGeo">...</span></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
                             <div class="stacked-input-control"><asp:DropDownList runat="server" ID="DropGenders" /></div>
                         </div>
