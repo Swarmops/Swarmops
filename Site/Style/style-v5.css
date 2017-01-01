@@ -632,6 +632,14 @@ body.rtl .button-orange {
 
 /* ENTRY FIELDS */
 
+
+
+input, select {  /* this makes dropdowns and textboxen have the same width */
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
 .entryFields
 {
 	background: #A2BEFF;
@@ -704,12 +712,12 @@ body.rtl div.modal .entryFields {
     top: -3px;
 }
 
-.entryFields .stacked-text {
+.entryFields .stacked-text, .entryFields .stacked-input-control .stacked-text {
     position: relative;
     top: -6px;
 }
 
-.entryFieldsAdmin .stacked-text {
+.entryFieldsAdmin .stacked-text, .entryFieldsAdmin .stacked-input-control .stacked-text {
     position: relative;
     top: -2px;
 }
