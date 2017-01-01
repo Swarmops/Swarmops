@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Public.Signup" Codebehind="Signup.aspx.cs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Public.Signup" CodeFile="Signup.aspx.cs" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -608,6 +608,18 @@
                         <p>This is the organization's custom welcome text. It has not yet been written; it is set in Admin / Org Settings.</p><br/><br/>
                     </div>
   			        <div id="step-2">
+  			            <div class="entryFieldsAdmin">
+                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextName" /></div>
+                            <div class="stacked-input-control"><asp:DropDownList runat="server" ID="DropCountries"/></div>
+                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextMail" /></div>
+                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPhone" /></div>
+                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
+                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div>
+                            <div class="elementFloatFar" style="margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 30px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
+                            <div class="stacked-input-control"><span id="spanDetectedGeo">...</span></div>
+                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
+                            <div class="stacked-input-control"><asp:DropDownList runat="server" ID="DropGenders" /></div>
+                        </div>
                         <div class="entryLabelsAdmin">
                             <asp:Label ID="LabelName" runat="server" /><br />
                             <asp:Label ID="LabelCountry" runat="server" /><br />
@@ -620,18 +632,6 @@
                             <asp:Label ID="LabelDateOfBirth" runat="server" /><br />
                             <asp:Label ID="LabelLegalGender" runat="server" /><br />
                         </div>
-  			            <div class="entryFieldsAdmin" style="width:204px">
-                            <asp:TextBox runat="server" ID="TextName" />&#8203;<br/>
-                            <asp:DropDownList runat="server" ID="DropCountries"/>&#8203;<br/>        
-                            <asp:TextBox runat="server" ID="TextMail" />&#8203;<br/>
-                            <asp:TextBox runat="server" ID="TextPhone" />&#8203;<br/>
-                            <asp:TextBox runat="server" ID="TextStreet1" />&#8203;<br/>
-                            <asp:TextBox runat="server" ID="TextStreet2" />&#8203;<br/>
-                            <div class="elementFloatFar" style="margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 30px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
-                            <span id="spanDetectedGeo">...</span>&nbsp;<br/>
-                            <asp:TextBox runat="server" ID="TextDateOfBirth" />&#8203;<br/>
-                            <asp:DropDownList runat="server" ID="DropGenders" />&#8203;<br/>
-                        </div>
                     </div>                      
   			        <div id="step-3">
   			            <h2><asp:Label runat="server" ID="LabelYourLogon" /></h2>
@@ -642,9 +642,9 @@
                             <asp:Label ID="LabelPassword2" runat="server" /><br />
                         </div>
   			            <div class="entryFieldsAdmin" style="width:204px;overflow:hidden">
-  			                <span id="spanMailLoginKey" style="white-space:nowrap">...</span>&#8203;<br/>
-                            <asp:TextBox runat="server" ID="TextPassword1" TextMode="Password" />&#8203;<br/>
-                            <asp:TextBox runat="server" ID="TextPassword2" TextMode="Password" />&#8203;<br/>
+  			                <div class="stacked-input-control"><span id="spanMailLoginKey" style="white-space:nowrap">...</span></div>
+                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPassword1" TextMode="Password" /></div>
+                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPassword2" TextMode="Password" /></div>
                         </div>
                     </div>
                     <div id="step-4">

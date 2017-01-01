@@ -334,8 +334,14 @@ body.rtl .sidebar {
 }
 
 
-div.stacked-input-control {
+.entryFields div.stacked-input-control {
     height: 40px;
+    width: 100%;
+    overflow-y: hidden;
+}
+
+.entryFieldsAdmin div.stacked-input-control {
+    height: 30px;
     width: 100%;
     overflow-y: hidden;
 }
@@ -747,7 +753,6 @@ body.rtl .entryLabels {
 {
 	margin-top: 10px;
 	line-height: 30px;
-	float: left;
 	width: 100px;
 	white-space: nowrap;
 	overflow-x: hidden;
