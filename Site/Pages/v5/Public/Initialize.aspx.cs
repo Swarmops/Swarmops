@@ -47,9 +47,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 if (SwarmDb.Configuration.IsConfigured())
                 {
-                    /*
                     throw new InvalidOperationException (
-                        "This installation has already been initialized. Cannot re-initalize on top of existing installation.");*/
+                        "This installation has already been initialized. Cannot re-initalize on top of existing installation.");
                 }
 
                 this.TextCredentialsReadDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
