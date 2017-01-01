@@ -60,9 +60,11 @@ namespace Swarmops.Utility.Communications
                     Encoding.UTF8);
 
                 // SPECIAL CASE for sandbox mails -- ugly code but wtf
-                if (person.Identity == 1 && PilotInstallationIds.DevelopmentSandbox == SystemSettings.InstallationId)
+                if (person.Identity == 1 && PilotInstallationIds.DevelopmentSandbox == SystemSettings.InstallationId && mail.Subject.Contains("|"))
                 {
-                    mail.To.Add(new MailAddress("test@falkvinge.net", "Swarmops Sandbox Administrator"));
+                    string[] separated = mail.Subject.Split('|');
+                    mail.Subject = separated[1];
+                    mail.To.Add(new MailAddress(separated[0], "Swarmops Sandbox Administrator"));
                 }
                 else // regular case to be used... like everywhere else except for the sandbox test
                 {
