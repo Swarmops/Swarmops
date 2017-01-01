@@ -10,63 +10,6 @@
         $(document).ready(function() {
             $('#divTabs').tabs();
 
-            $('.EditCheck').switchbutton({
-                checkedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOn_Upper %>'),
-                uncheckedLabel: SwarmopsJS.unescape('<%= this.Localized_SwitchLabelOff_Upper %>')
-            }).change(function() {
-
-                if (suppressSwitchResponse) {
-                    return;
-                }
-
-                $('#divUseAccountPlan').slideDown().fadeIn();
-
-                var jsonData = {};
-                jsonData.switchName = $(this).attr("rel");
-                jsonData.switchValue = $(this).prop('checked');
-
-                $.ajax({
-                    type: "POST",
-                    url: "/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled",
-                    data: $.toJSON(jsonData),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function(msg) {
-                        if (msg.d.Success) {
-                            if (msg.d.DisplayMessage.length > 2) {  // the 2 is rather arbitrary. Read as "if defined".
-                                alertify.log(msg.d.DisplayMessage);
-                            }
-                            if (msg.d.RequireForex && !($('#CheckEnableForex').prop("checked"))) {
-                                $("#CheckEnableForex").prop("checked", true).change();
-                            }
-                            if (jsonData.switchName == "BitcoinHot") {
-                                if (jsonData.switchValue) {
-                                    $('.bitcoinHotField').fadeIn();
-                                } else {
-                                    $('.bitcoinHotField').fadeOut();
-                                }
-                            }
-                            if (jsonData.switchName == "Paypal") {
-                                if (jsonData.switchValue) {
-                                    $('.paypalAccountField').fadeIn();
-                                } else {
-                                    $('.paypalAccountField').fadeOut();
-                                }
-                            }
-                        } else {
-                            alertify.error(msg.d.DisplayMessage);
-                            if (msg.d.RequireForex && !($('#CheckEnableForex').prop("checked"))) {
-                                $("#CheckEnableForex").prop("checked", true).change();
-                            }
-                        }
-                    },
-                    error: function(msg) {
-                        // TODO: Reset switch, protest server unreachable
-                    }
-
-                });
-            });
-
             // Ask for initial data
 
             $.ajax({
@@ -90,18 +33,16 @@
         function initializeSettings(orgSettings) {
             console.log(orgSettings);
             <%=this.ToggleBitcoinCold.ClientID%>_initialize(orgSettings.AccountBitcoinCold);
-            suppressSwitchResponse = true;
-            $("#CheckEnableBitcoinCold").prop("checked", orgSettings.AccountBitcoinCold).change();
-            $("#CheckEnableBitcoinHot").prop("checked", orgSettings.AccountBitcoinHot).change();
-            $("#CheckEnablePaypal").prop("checked", orgSettings.AccountPaypal).change();
-            $("#CheckEnableForex").prop("checked", orgSettings.AccountsForex).change();
-            $("#CheckEnableVat").prop("checked", orgSettings.AccountsVat).change();
-            $("#CheckParticipantFinancials").prop("checked", orgSettings.ParticipantFinancials).change();
+            <%=this.ToggleBitcoinHot.ClientID%>_initialize(orgSettings.AccountBitcoinHot);
+            <%=this.TogglePaypal.ClientID%>_initialize(orgSettings.AccountPaypal);
+            <%=this.ToggleForex.ClientID%>_initialize(orgSettings.AccountsForex);
+            <%=this.ToggleVat.ClientID%>_initialize(orgSettings.AccountsVat);
+            <%=this.ToggleOpenFinancials.ClientID%>_initialize(orgSettings.ParticipantFinancials);
+
             $("#<%=this.TextPaypalAccountAddress.ClientID%>_TextInput").val(orgSettings.PaypalAccountAddress);
-            suppressSwitchResponse = false;
 
             if (orgSettings.AccountBitcoinHot) {
-                $('.bitcoinHotField').show();
+                /* $('.bitcoinHotField').show(); save for later */
             }
 
             if (orgSettings.AccountPaypal) {
@@ -117,7 +58,31 @@
         }
 
         var suppressSwitchResponse = false;
-        var organizationNativeBtc = <%=this.OrganizationNativeBtc%>;
+        var organizationBitcoinNative = <%=this.OrganizationBitcoinNative%>;
+
+        function onChangeBitcoinEnable(newValue, cookie) {
+            if (newValue && !organizationBitcoinNative) {
+                // Bitcoin has been enabled and the organization isn't bitcoin native
+
+                <%=this.ToggleForex.ClientID%>_setValueAndCallback(true);
+            }
+
+            if (cookie == "BitcoinHot") {
+                if (newValue) {
+                    /*$('.bitcoinHotField').show(); save for later */ 
+                } else {
+                    $('.bitcoinHotField').hide();
+                }
+            }
+        }
+
+        function onChangePaypalEnable(newValue) {
+            if (newValue) {
+                $('.paypalAccountField').show();
+            } else {
+                $('.paypalAccountField').hide();
+            }
+        }
 
     </script>
         
@@ -144,17 +109,14 @@
         <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
             <h2>Accounting Features</h2>
             <div class="entryFields">
-                <Swarmops5:AjaxToggleSlider ID="ToggleBitcoinCold" Cookie="BitcoinCold" Label="Bitcoin Cold" runat="server" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
-                <Swarmops5:AjaxToggleSlider ID="ToggleBitcoinHot" Cookie="BitcoinHot" Label="Bitcoin Hot" runat="server" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
-                <Swarmops5:AjaxTextBox ID="TextDaysCashReserves" runat="server" CssClass="bitcoinHotField alignRight" ReadOnly="true" Placeholder="60-90" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="BitcoinReserves"  />
-                <label for="CheckEnableBitcoinCold"><asp:Literal ID="LiteralLabelBitcoinColdShort" runat="server" Text="Bitcoin Cold"/></label><div class="CheckboxContainer"><input type="checkbox" rel="BitcoinCold" class="EditCheck" id="CheckEnableBitcoinCold"/></div><br/>
-                <label for="CheckEnableBitcoinHot"><asp:Literal ID="LiteralLabelBitcoinHotShort" runat="server" Text="Bitcoin Hot"/></label><div class="CheckboxContainer"><input type="checkbox" rel="BitcoinHot" class="EditCheck" id="CheckEnableBitcoinHot"/></div><br/>
-                <Swarmops5:AjaxTextBox ID="AjaxTextBox1" runat="server" CssClass="bitcoinHotField alignRight" ReadOnly="true" Placeholder="60-90" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="BitcoinReserves"  />
-                <label for="CheckEnablePaypal"><asp:Literal ID="Literal1" runat="server" Text="Paypal"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Paypal" class="EditCheck" id="CheckEnablePaypal"/></div><br/>
-                <Swarmops5:AjaxTextBox ID="TextPaypalAccountAddress" runat="server" Placeholder="paypal@example.org" CssClass="paypalAccountField" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="PaypalAccountAddress" />
-                <label for="CheckEnableForex"><asp:Literal ID="Literal2" runat="server" Text="Forex Profit/Loss"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Forex" class="EditCheck" id="CheckEnableForex"/></div><br/>
-                <label for="CheckEnableVat"><asp:Literal ID="Literal3" runat="server" Text="VAT In/Out"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Vat" class="EditCheck" id="CheckEnableVat"/></div><br/>
-                <label for="CheckOpenFinancials"><asp:Literal ID="Literal4" runat="server" Text="Participant Financials"/></label><div class="CheckboxContainer"><input type="checkbox" rel="ParticipantFinancials" class="EditCheck" id="CheckOpenFinancials"/></div><br/>
+                <Swarmops5:AjaxToggleSlider ID="ToggleBitcoinCold" Cookie="BitcoinCold" OnChange="onChangeBitcoinEnable" Label="Bitcoin Cold" runat="server" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
+                <Swarmops5:AjaxToggleSlider ID="ToggleBitcoinHot" Cookie="BitcoinHot" OnChange="onChangeBitcoinEnable" Label="Bitcoin Hot" runat="server" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
+                <div class="bitcoinHotField"><Swarmops5:AjaxTextBox ID="TextDaysCashReserves" runat="server" CssClass="alignRight" ReadOnly="true" Placeholder="60-90" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="BitcoinReserves"  /></div>
+                <Swarmops5:AjaxToggleSlider ID="TogglePaypal" runat="server" Cookie="Paypal" OnChange="onChangePaypalEnable" Label="Paypal"  AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
+                <div class="paypalAccountField"><Swarmops5:AjaxTextBox ID="TextPaypalAccountAddress" runat="server" Placeholder="paypal@example.org" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="PaypalAccountAddress" /></div>
+                <Swarmops5:AjaxToggleSlider ID="ToggleForex" runat="server" Cookie="Forex" Label="Forex Profit/Loss" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
+                <div style="display:none"><Swarmops5:AjaxToggleSlider ID="ToggleVat" Cookie="Vat" runat="server" Label="VAT In/Out" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/></div> <!-- disable until supported in invoicing -->
+                <Swarmops5:AjaxToggleSlider ID="ToggleOpenFinancials" Cookie="ParticipantFinancials" runat="server" Label="Participant Financials"  AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
             </div>
             <div class="entryLabels">
                 Enable bitcoin coldwallet tracking?<br/>
@@ -163,7 +125,7 @@
                 Enable Paypal tracking and IPN?<br/>
                 <span class="paypalAccountField">Paypal account mail address<br/></span>
                 Enable foreign currency accounts?<br/>
-                Enable Value Added Tax (VAT)?<br/>
+                <span style="display:none">Enable Value Added Tax (VAT)?<br/></span>
                 Enable Participant Financials?<br/>
             </div>
             <div id="divUseAccountPlan" style="display: none; width: 100%; text-align: center; margin-top: 20px; margin-bottom: 20px; border-top: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; border-bottom: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; background-color: <%= CommonV5.GetColor (ColorType.Base, ColorVariant.XLight) %>">

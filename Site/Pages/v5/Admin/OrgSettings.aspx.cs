@@ -110,7 +110,8 @@ namespace Swarmops.Frontend.Pages.Admin
             this.DropMemberNumber.Items.Add (new ListItem ("Local for each organzation", "Local"));
 
             this.DropTaxAuthority.Items.Clear();
-            this.DropTaxAuthority.Items.Add (new ListItem ("[SE] Sweden", "SE"));
+            this.DropTaxAuthority.Items.Add(new ListItem("[DE] Germany", "DE"));
+            this.DropTaxAuthority.Items.Add(new ListItem("[SE] Sweden", "SE"));
         }
 
         [WebMethod]
@@ -152,7 +153,7 @@ namespace Swarmops.Frontend.Pages.Admin
 
 
         [WebMethod]
-        public static CallResult SwitchToggled (string switchName, bool switchValue)
+        public static AjaxInputCallResult SwitchToggled (string cookie, bool newValue)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
@@ -161,21 +162,17 @@ namespace Swarmops.Frontend.Pages.Admin
                 return null; // just don't... don't anything, actually
             }
 
-            CallResult result = new CallResult();
+            AjaxInputCallResult result = new AjaxInputCallResult();
             result.Success = true;
+            result.NewValue = newValue? "true": "false";
 
             bool bitcoinNative = (authData.CurrentOrganization.Currency.Code == "BTC");
 
             FinancialAccounts workAccounts = new FinancialAccounts();
 
-            switch (switchName)
+            switch (cookie)
             {
                 case "BitcoinCold":
-
-                    if (switchValue && !bitcoinNative)
-                    {
-                        result.RequireForex = true;
-                    }
 
                     FinancialAccount coldAccount = authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold;
                     if (coldAccount == null)
@@ -200,11 +197,6 @@ namespace Swarmops.Frontend.Pages.Admin
                     }
                     break;
                 case "BitcoinHot":
-                    if (switchValue && !bitcoinNative)
-                    {
-                        result.RequireForex = true;
-                    }
-
                     FinancialAccount hotAccount = authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot;
                     if (hotAccount == null)
                     {
@@ -250,7 +242,7 @@ namespace Swarmops.Frontend.Pages.Admin
                             throw new InvalidOperationException();
                         }
 
-                        if (!bitcoinNative && switchValue == false &&
+                        if (!bitcoinNative && newValue == false &&
                             ((authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold != null &&
                               authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold.Active) ||
                              (authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot != null &&
@@ -259,9 +251,9 @@ namespace Swarmops.Frontend.Pages.Admin
                             // bitcoin is active, and we're not bitcoin native, so we're not turning off forex
 
                             result.Success = false;
+                            result.NewValue = "true";
                             result.DisplayMessage =
                                 "Cannot disable forex: bitcoin accounts are active in a non-bitcoin-native organization.";
-                            result.RequireForex = true;
                         }
                         else
                         {
@@ -317,7 +309,7 @@ namespace Swarmops.Frontend.Pages.Admin
                     }
                     break;
                 case "ParticipantFinancials":
-                    authData.CurrentOrganization.ParticipantFinancialsEnabled = switchValue;
+                    authData.CurrentOrganization.ParticipantFinancialsEnabled = newValue;
                     break;
                 default:
                     throw new NotImplementedException();
@@ -325,7 +317,7 @@ namespace Swarmops.Frontend.Pages.Admin
 
             if (workAccounts.Count > 0 && String.IsNullOrEmpty (result.DisplayMessage))
             {
-                if (switchValue) // switch has been turned on
+                if (newValue) // switch has been turned on
                 {
                     // accounts can always be re-enabled. This is not a create, it is a re-enable.
 
@@ -369,6 +361,7 @@ namespace Swarmops.Frontend.Pages.Admin
                         }
 
                         result.Success = false;
+                        result.NewValue = "true";
                     }
                     else
                     {
@@ -392,6 +385,15 @@ namespace Swarmops.Frontend.Pages.Admin
             }
 
             return result;
+        }
+
+
+        public string OrganizationBitcoinNative
+        {
+            get
+            {
+                return CurrentOrganization.Currency.IsBitcoin.ToString().ToLowerInvariant(); // the tostring, tolower makes 'False' into 'false' the way JS wants it
+            }
         }
 
 

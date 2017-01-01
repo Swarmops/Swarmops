@@ -23,7 +23,7 @@
                     // The AJAX call expects the following function prototype:
                     //
                     // [WebMethod]
-                    // public static AjaxInputCallbackResult FunctionName (bool newValue, string cookie);
+                    // public static AjaxInputCallResult FunctionName (bool newValue, string cookie);
                     //
                     // The page must include IncludedControls.JsonParameters and IncludedControls.ColorAnimation among its script.
 
@@ -61,11 +61,11 @@
                                     {
                                         if (string.IsNullOrEmpty (this.Cookie))
                                         {
-                                            Response.Write (this.OnChange + "(msg.NewValue);"); // JavaScript callback on successful change
+                                            Response.Write (this.OnChange + "(msg.NewValue === 'true');"); // JavaScript callback on successful change with boolean cast
                                         }
                                         else
                                         {
-                                            Response.Write (this.OnChange + "(msg.NewValue, '" + this.Cookie + "');"); // JavaScript callback on successful change
+                                            Response.Write (this.OnChange + "(msg.NewValue === 'true', '" + this.Cookie + "');"); // JavaScript callback on successful change
                                         }
                                     }
     
@@ -101,6 +101,10 @@
 
     function <%=this.ClientID%>_setValue(newValue) {
         $('#<%=this.ClientID%>_sliderContainer').data('toggles').toggle(newValue, true, true);
+    }
+
+    function <%=this.ClientID%>_setValueAndCallback(newValue) {
+        $('#<%=this.ClientID%>_sliderContainer').data('toggles').toggle(newValue);
     }
 
     function <%=this.ClientID%>_initialize(initValue) {
