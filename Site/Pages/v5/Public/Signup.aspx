@@ -116,6 +116,10 @@
             font-weight: 300;
         }
 
+        div.stepContainer div.content {
+            width: 100%;
+        }
+
     </style>
 
 </head>
