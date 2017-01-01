@@ -117,6 +117,7 @@
         }
 
         var suppressSwitchResponse = false;
+        var organizationNativeBtc = <%=this.OrganizationNativeBtc%>;
 
     </script>
         

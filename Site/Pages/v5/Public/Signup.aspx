@@ -142,8 +142,8 @@
 	            // Set widths of dropdowns equal to textboxen
 
 	            var inputWidth = $('#<%=this.TextName.ClientID%>').width();
-	            $('#<%=this.DropCountries.ClientID%>').width(inputWidth);
-	            $('#<%=this.DropGenders.ClientID%>').width(inputWidth);
+	            $('#<%=this.DropCountries.ClientID%>').width(inputWidth -14);
+	            $('#<%=this.DropGenders.ClientID%>').width(inputWidth -14);
 
                 // Guess country
 
