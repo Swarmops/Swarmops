@@ -131,6 +131,12 @@
 
 	        $(document).ready(function () {
 
+	            // Set postal code to something really small for layout
+
+	            $('#<%=this.TextPostal.ClientID%>').width(40);
+
+                // Guess country
+
 	            SwarmopsJS.ajaxCall("/Pages/v5/Public/Signup.aspx/GuessCountry", {}, function(result) {
 	                if (result.Success && result.DisplayMessage.length > 0) {
 	                    $('#<%=this.DropCountries.ClientID%>').val(result.DisplayMessage);
@@ -615,7 +621,7 @@
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPhone" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div>
-                            <div class="elementFloatFar" style="margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 30px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
+                            <div class="stacked-input-control"><div class="elementFloatFar" style="margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 30px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div></div>
                             <div class="stacked-input-control"><span id="spanDetectedGeo">...</span></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
                             <div class="stacked-input-control"><asp:DropDownList runat="server" ID="DropGenders" /></div>
@@ -627,7 +633,7 @@
                             <asp:Label ID="LabelPhone" runat="server" /><br />
                             <asp:Label ID="LabelStreet1" runat="server" /><br />
                             <asp:Label ID="LabelStreet2" runat="server" /><br />
-                            <span id="spanLabelPostal" style="display: inline-block; overflow: hidden"><asp:Label ID="LabelPostalCode" runat="server" />,&nbsp;</span><span style="display: inline-block; overflow: hidden"><asp:Label runat="server" ID="LabelCity" /></span><br />
+                            <span id="spanLabelPostal"><asp:Label ID="LabelPostalCode" runat="server" />,&nbsp;</span><asp:Label runat="server" ID="LabelCity" /><br />
                             <span id="SpanGeoDetected"><asp:Label ID="LabelGeographyDetected" runat="server" /></span><span id="SpanGeoSelect" style="display: none"><asp:Label ID="LabelSelectGeography" runat="server" Text="XYZ Select Geography" /></span><br />
                             <asp:Label ID="LabelDateOfBirth" runat="server" /><br />
                             <asp:Label ID="LabelLegalGender" runat="server" /><br />
