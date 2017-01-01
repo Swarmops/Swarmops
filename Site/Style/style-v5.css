@@ -338,12 +338,14 @@ body.rtl .sidebar {
     height: 40px;
     width: 100%;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .entryFieldsAdmin div.stacked-input-control {
     height: 30px;
     width: 100%;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 
@@ -705,6 +707,11 @@ body.rtl div.modal .entryFields {
 .entryFields .stacked-text {
     position: relative;
     top: -6px;
+}
+
+.entryFieldsAdmin .stacked-text {
+    position: relative;
+    top: -2px;
 }
 
 body:not(.rtl) .entryFields .small-margin-right {
