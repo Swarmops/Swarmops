@@ -36,10 +36,18 @@
         function onClickTest() {
 
             var body = $('#<%=this.TextMessage.ClientID%>').val().trim();
+            var subject = $('#<%=this.TextSubject.ClientID%>').val().trim();
 
             if (body.length < 2) // interpreted as empty
             {
                 alertify.alert("You should write a message body before sending your message."); // TODO: LOC
+                return false;
+            }
+
+            if (subject.length < 2) // interpreted as empty
+            {
+                // TODO: ADD TRANSMISSION MODUS / ONLY TRIGGER ON MODUS WITH SUBJECTS
+                alertify.alert("You should write a message subject to go with your message."); // TODO: LOC
                 return false;
             }
 
@@ -65,7 +73,7 @@
                 recipientTypeId: selectedRecipientClass,
                 geographyId: selectedGeographyId,
                 mode: "Mail",
-                subject: "Test Subject",
+                subject: subject,
                 body: body,
                 dummyMail: testMessageSandboxAddress,
                 live: false
@@ -83,7 +91,7 @@
             return false;
         }
 
-        function onRecipientChange(newRecipientClass) {
+        function onRecipientChange(oldClassIgnored, newRecipientClass) {
             selectedRecipientClass = newRecipientClass;
             updateRecipientCount(newRecipientClass, selectedGeographyId);
         }
