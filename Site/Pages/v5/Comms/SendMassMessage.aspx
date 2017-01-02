@@ -35,13 +35,31 @@
 
         function onClickTest() {
 
+            if (<%=this.RunningOnSandbox%> && testMessageSandboxAddress == '')
+            {
+                // Prompt for an address to send to
+                // This should preferably be in a mod on just Sandbox and not in code everywhere
+
+                alertify.prompt("You're currently using the Sandbox. Where would you like a test message sent?",
+                   function (evt, value) 
+                   { 
+                       testMessageSandboxAddress = value; // may need sanitation
+                       onClickTest(); // rerun with value set
+                   },
+                   function() {
+                    alertify.log('Canceled.');
+                });
+
+                return false; // do not process at this time, wait for async response
+            }
+
             var jsonData = {
                 recipientTypeId: selectedRecipientClass,
                 geographyId: selectedGeographyId,
                 mode: "Mail",
                 subject: "Test Subject",
                 body: "SHAKAZAM *IT WORKS*\r\n\r\nMaybe?",
-                dummyMail: "rick@falkvinge.net",
+                dummyMail: testMessageSandboxAddress,
                 live: false
             };
 
@@ -75,6 +93,8 @@
                 });
             
         }
+
+        var testMessageSandboxAddress = '';
 
     </script>
 

@@ -8,6 +8,7 @@ using Resources;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.Comms
@@ -117,6 +118,11 @@ namespace Swarmops.Frontend.Pages.Comms
             public int AssignedId;
             public string DisplayMessage;
         };
+
+        public string RunningOnSandbox
+        {
+            get { return PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox) ? "true" : "false"; }
+        }
 
         // ReSharper disable once InconsistentNaming
         public string Localized_SendMessageResult
