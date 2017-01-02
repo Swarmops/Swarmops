@@ -195,7 +195,7 @@
             <h2><asp:Label runat="server" ID="LabelModalHeader"/></h2>
             <div class="entryFields">
                 <Swarmops5Workaround:ComboPeople ID="DropPerson" runat="server" />
-                <div class="stacked-input-control"><asp:DropDownList ID="DropDuration" runat="server" /></div>
+                <Swarmops5:DropDown ID="DropDuration" runat="server" />
                 <input type="button" id="<%=this.ClientID %>_buttonAssign" class="buttonAccentColor" value="#Assign#" />
             </div>
             <div class="entryLabels">

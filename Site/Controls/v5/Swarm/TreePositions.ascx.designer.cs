@@ -154,7 +154,7 @@ namespace Swarmops.Frontend.Controls.Swarm {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDuration;
+        protected global::Swarmops.Frontend.Controls.Base.DropDown DropDuration;
         
         /// <summary>
         /// LabelAssignPersonTo control.
