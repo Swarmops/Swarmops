@@ -108,7 +108,7 @@ namespace Swarmops.Frontend.Pages.Comms
         public static AjaxCallResult ExecuteSend(int recipientTypeId, int geographyId, string mode, string subject,
             string body, string dummyMail, bool live)
         {
-            OutboundComm.CreateSandboxMail(subject, body, "test@falkvinge.net");
+            OutboundComm.CreateSandboxMail(subject, body, dummyMail);
 
             return new AjaxCallResult {Success = false};
         }

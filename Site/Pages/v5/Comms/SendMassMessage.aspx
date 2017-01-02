@@ -75,10 +75,11 @@
             ("/Pages/v5/Comms/SendMassMessage.aspx/ExecuteSend",
                 jsonData,
                 function (result) {
-                    $('#spanRecipientCount').text(result);
+                    if (result.Success) {
+                        alertify.alert(SwarmopsJS.unescape('<%= this.Localized_TestMessageResult %>'));
+                    }
                 });
 
-            alertify.alert(SwarmopsJS.unescape('<%= this.Localized_TestMessageResult %>'));
             return false;
         }
 

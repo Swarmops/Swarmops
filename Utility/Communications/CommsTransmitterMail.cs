@@ -59,9 +59,8 @@ namespace Swarmops.Utility.Communications
                 if (person.Identity == 1 && PilotInstallationIds.DevelopmentSandbox == SystemSettings.InstallationId && mail.Subject.Contains("|"))
                 {
                     string[] separated = mail.Subject.Split('|');
-                    mail.Subject = separated[1];
-                    BotLog.Write(0, "DEBUG", "'" + separated[0] + "'");
-                    mail.To.Add(new MailAddress("test@falkvinge.net", "Swarmops Sandbox Administrator"));
+                    mail.Subject = separated[0];
+                    mail.To.Add(new MailAddress(separated[1], "Swarmops Sandbox Administrator"));
                 }
                 else // regular case to be used... like everywhere else except for the sandbox test
                 {
