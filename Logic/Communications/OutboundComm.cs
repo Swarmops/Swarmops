@@ -235,6 +235,7 @@ namespace Swarmops.Logic.Communications
             if (organization != null)
             {
                 strings[NotificationString.OrganizationName] = organization.Name; // since we're sending the org anyway, kind of pointless to require callers to set this
+                //strings[NotificationString.OrganizationMailPrefix] = organization.MailPrefix; // TODO
 
                 // TODO: Change to org admins
             }

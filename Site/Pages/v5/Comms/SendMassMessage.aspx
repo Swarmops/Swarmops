@@ -66,7 +66,7 @@
                 geographyId: selectedGeographyId,
                 mode: "Mail",
                 subject: "Test Subject",
-                body: "SHAKAZAM *IT WORKS*\r\n\r\nMaybe?",
+                body: body,
                 dummyMail: testMessageSandboxAddress,
                 live: false
             };

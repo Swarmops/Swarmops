@@ -46,11 +46,6 @@ namespace Swarmops.Utility.Communications
 
             // This is a rather simple mail (no images or stuff like that)
 
-            if (string.IsNullOrWhiteSpace (person.Mail))
-            {
-                throw new OutboundCommTransmitException("No valid mail address for " + person.Canonical);
-            }
-
             mail.Subject = (string)comm[CommRenderPart.Subject];
             mail.SubjectEncoding = Encoding.UTF8;
 
@@ -64,10 +59,15 @@ namespace Swarmops.Utility.Communications
                 {
                     string[] separated = mail.Subject.Split('|');
                     mail.Subject = separated[1];
-                    mail.To.Add(new MailAddress(separated[0], "Swarmops Sandbox Administrator"));
+                    mail.To.Add(new MailAddress("test@falkvinge.net", "Swarmops Sandbox Administrator"));
                 }
                 else // regular case to be used... like everywhere else except for the sandbox test
                 {
+                    if (string.IsNullOrWhiteSpace(person.Mail))
+                    {
+                        throw new OutboundCommTransmitException("No valid mail address for " + person.Canonical);
+                    }
+
                     mail.To.Add(new MailAddress(person.Mail, person.Name));
                 }
             }
