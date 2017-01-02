@@ -1195,5 +1195,19 @@ namespace Swarmops.Logic.Swarm
 
         public const int OpenLedgersIdentity = -1;
 
+
+        public Participation ParticipationOf(Organization organization)
+        {
+            Participations participations = GetMemberships();
+            foreach (Participation participation in participations)
+            {
+                if (participation.OrganizationId == organization.Identity)
+                {
+                    return participation;
+                }
+            }
+
+            throw new InvalidOperationException("No valid participation for requested organization");
+        }
     }
 }

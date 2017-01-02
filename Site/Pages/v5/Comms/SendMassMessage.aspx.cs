@@ -108,9 +108,31 @@ namespace Swarmops.Frontend.Pages.Comms
         public static AjaxCallResult ExecuteSend(int recipientTypeId, int geographyId, string mode, string subject,
             string body, string dummyMail, bool live)
         {
-            OutboundComm.CreateSandboxMail(subject, body, dummyMail);
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            return new AjaxCallResult {Success = false};
+            if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+            {
+                if (authData.CurrentUser.Identity == 1)
+                {
+                    OutboundComm.CreateSandboxMail(subject, body, dummyMail);
+                    return new AjaxCallResult {Success = true};
+                }
+
+                return new AjaxCallResult {Success = false}; // wtf, this shouldn't happen
+            }
+            else if (!live)
+            {
+                // Test mail
+
+                OutboundComm.CreateParticipantMail(subject, body,
+                    authData.CurrentUser.ParticipationOf(authData.CurrentOrganization), authData.CurrentUser);
+
+                return new AjaxCallResult {Success = true};
+            }
+            else // Send live
+            {
+                throw new NotImplementedException();                 // TODO: Write resolver
+            }
         }
 
         public struct ConfirmPayoutResult
