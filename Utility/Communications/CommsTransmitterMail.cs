@@ -8,6 +8,7 @@ using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
+using Swarmops.Utility.BotCode;
 
 namespace Swarmops.Utility.Communications
 {
@@ -59,7 +60,8 @@ namespace Swarmops.Utility.Communications
                 {
                     string[] separated = mail.Subject.Split('|');
                     mail.Subject = separated[1];
-                    mail.To.Add(new MailAddress(separated[0], "Swarmops Sandbox Administrator"));
+                    BotLog.Write(0, "DEBUG", "'" + separated[0] + "'");
+                    mail.To.Add(new MailAddress("test@falkvinge.net", "Swarmops Sandbox Administrator"));
                 }
                 else // regular case to be used... like everywhere else except for the sandbox test
                 {
