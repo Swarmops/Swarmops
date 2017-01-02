@@ -37,7 +37,6 @@ namespace Swarmops.Frontend.Controls.Swarm
             this.LiteralButtonAssign.Text = Resources.Controls.Swarm.Positions_ButtonAssign;
 
             this.DropDuration.Items.Add (new ListItem(Resources.Global.Timespan_Selection_OneMonth, "1"));
-            throw new NotImplementedException();  // Debugging to find the Null Reference
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_TwoMonths, "2"));
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_ThreeMonths, "3"));
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_SixMonths, "6"));
