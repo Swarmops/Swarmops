@@ -36,6 +36,8 @@ namespace Swarmops.Frontend.Controls.Swarm
             this.LabelModalHeader.Text = String.Format (Resources.Controls.Swarm.Positions_ModalHeader, this.ClientID);
             this.LiteralButtonAssign.Text = Resources.Controls.Swarm.Positions_ButtonAssign;
 
+            throw new NotImplementedException();  // Debugging to find the Null Reference
+
             this.DropDuration.Items.Add (new ListItem(Resources.Global.Timespan_Selection_OneMonth, "1"));
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_TwoMonths, "2"));
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_ThreeMonths, "3"));
