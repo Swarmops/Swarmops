@@ -36,8 +36,6 @@ namespace Swarmops.Frontend.Controls.Swarm
             this.LabelModalHeader.Text = String.Format (Resources.Controls.Swarm.Positions_ModalHeader, this.ClientID);
             this.LiteralButtonAssign.Text = Resources.Controls.Swarm.Positions_ButtonAssign;
 
-            throw new NotImplementedException();  // Debugging to find the Null Reference
-
             this.DropDuration.Items.Add (new ListItem(Resources.Global.Timespan_Selection_OneMonth, "1"));
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_TwoMonths, "2"));
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_ThreeMonths, "3"));
@@ -45,6 +43,8 @@ namespace Swarmops.Frontend.Controls.Swarm
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_OneYear, "12"));
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_TwoYears, "24"));
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_UntilTermination, "-1"));
+
+            throw new NotImplementedException();  // Debugging to find the Null Reference
 
             this.LiteralTerminateNo.Text = JavascriptEscape (Resources.Controls.Swarm.Positions_TerminateNo);
             this.LiteralTerminateYes.Text = JavascriptEscape (Resources.Controls.Swarm.Positions_TerminateYes);
