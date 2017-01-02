@@ -95,7 +95,7 @@ namespace Swarmops.Logic.Communications.Payload
 
             RenderedComm result = new RenderedComm();
             result[CommRenderPart.BodyText] = body;
-            result[CommRenderPart.Subject] = subject;
+            result[CommRenderPart.Subject] = "[" + Strings[MailPayloadString.OrganizationName] + "] " + subject;
             result[CommRenderPart.SenderMail] = "admin@swarmops.com"; // TODO: FIX FIX FIX HACK
             result[CommRenderPart.SenderName] = "Swarmops Administrative";
 

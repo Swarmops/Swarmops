@@ -35,12 +35,20 @@
 
         function onClickTest() {
 
+            var body = $('#<%=this.TextMessage.ClientID%>').val().trim();
+
+            if (body.length < 2) // interpreted as empty
+            {
+                alertify.alert("You should write a message body before sending your message."); // TODO: LOC
+                return false;
+            }
+
             if (<%=this.RunningOnSandbox%> && testMessageSandboxAddress == '')
             {
                 // Prompt for an address to send to
                 // This should preferably be in a mod on just Sandbox and not in code everywhere
 
-                alertify.prompt("You're currently using the Sandbox. Where would you like a test message sent?",
+                alertify.prompt("You're currently using the Sandbox. Where would you like a test message sent?", // TODO: LOC
                    function (evt, value) 
                    { 
                        testMessageSandboxAddress = value; // may need sanitation
