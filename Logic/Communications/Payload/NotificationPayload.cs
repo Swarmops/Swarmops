@@ -128,6 +128,12 @@ namespace Swarmops.Logic.Communications.Payload
             result[CommRenderPart.SenderName] = SystemSettings.AdminNotificationSender; // TODO: Make dependent on an enum
             result[CommRenderPart.SenderMail] = SystemSettings.AdminNotificationAddress;
 
+            if (Strings.ContainsKey(NotificationString.OrganizationName))
+            {
+                result[CommRenderPart.Subject] = "[" + Strings[NotificationString.OrganizationName] + "] " +
+                                                 result[CommRenderPart.Subject];
+            }
+
             return result;
         }
 
