@@ -220,7 +220,7 @@ namespace Swarmops.Logic.Security
             {
                 // Check that a membership (or whatever this org calls it) exists, for this org or a parentline org
 
-                if (Person.MemberOfWithInherited(access.Organization))
+                if (Person.ParticipatesInOrganizationOrParent(access.Organization))
                 {
                     return true;
                 }
@@ -462,7 +462,7 @@ namespace Swarmops.Logic.Security
             {
                 // Still filter to the current Organization, even though we have systemwide access
 
-                if (person.MemberOfWithInherited(Organization))
+                if (person.ParticipatesInOrganizationOrParent(Organization))
                 {
                     return true;
                 }
@@ -474,7 +474,7 @@ namespace Swarmops.Logic.Security
             if (
                 HasAccess (new Access (Organization, aspect, AccessType.Read)))
             {
-                if (person.MemberOfWithInherited (Organization))
+                if (person.ParticipatesInOrganizationOrParent (Organization))
                 {
                     return true;
                 }
@@ -490,7 +490,7 @@ namespace Swarmops.Logic.Security
             if (
                 HasAccess (new Access (Organization, Position.Geography, aspect, AccessType.Read)))
             {
-                if (person.MemberOfWithInherited(Organization))
+                if (person.ParticipatesInOrganizationOrParent(Organization))
                 {
                     if (person.GeographyId == Position.GeographyId || person.Geography.Inherits (Position.Geography))
                     {

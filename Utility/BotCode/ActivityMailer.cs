@@ -50,7 +50,7 @@ namespace Swarmops.Utility.BotCode
                 {
                     Person person = role.Person;
 
-                    if (person.MemberOf(Organization.PPSE) && person.PartyEmail.Length > 0 && !dupeCheck.ContainsKey(person.Identity))
+                    if (person.ParticipatesInOrganization(Organization.PPSE) && person.PartyEmail.Length > 0 && !dupeCheck.ContainsKey(person.Identity))
                     {
                         dupeCheck[person.Identity] = true;
 

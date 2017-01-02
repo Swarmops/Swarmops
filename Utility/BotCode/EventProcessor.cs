@@ -728,7 +728,7 @@ namespace Swarmops.Utility.BotCode
             try
             {
                 person = Person.FromIdentity(newPwEvent.AffectedPersonId);
-                renewedMembership = person.GetRecentMembership(Membership.GracePeriod, newPwEvent.OrganizationId);
+                renewedMembership = person.GetRecentParticipation(Membership.GracePeriod, newPwEvent.OrganizationId);
                 if (renewedMembership != null)
                     foundExisting = true;
             }
@@ -2021,7 +2021,7 @@ namespace Swarmops.Utility.BotCode
         {
             Person person = Person.FromIdentity(newEvent.AffectedPersonId);
 
-            if (person.MemberOf(Organization.PPSE) && person.PartyEmail.Length > 0 &&
+            if (person.ParticipatesInOrganization(Organization.PPSE) && person.PartyEmail.Length > 0 &&
                 person.CryptoFingerprint.Length < 4)
             {
                 PgpKey.Generate(person, Organization.PPSE);

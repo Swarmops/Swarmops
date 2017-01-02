@@ -189,7 +189,7 @@ namespace Swarmops.Logic.Communications
             OutboundComm comm = OutboundComm.Create(null, null, Organization.Sandbox,
                 null /* resolver */, null,
                 CommTransmitterClass.CommsTransmitterMail,
-                new PayloadEnvelope(new ParticipantMailPayload(customSubject + "|" + sandboxMailAddress, customBody, recipients[0].GetMemberships()[0], recipients[0])).ToXml(),
+                new PayloadEnvelope(new ParticipantMailPayload(customSubject + "|" + sandboxMailAddress, customBody, recipients[0].GetParticipations()[0], recipients[0])).ToXml(),
                 OutboundCommPriority.Low);
 
             foreach (Person person in recipients)

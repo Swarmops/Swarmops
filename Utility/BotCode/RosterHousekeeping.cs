@@ -222,7 +222,7 @@ namespace Swarmops.Utility.BotCode
 
                     // Mail
 
-                    Participations personParticipations = person.GetMemberships();
+                    Participations personParticipations = person.GetParticipations();
                     Participations participationsToDelete = new Participations();
                     foreach (Participation personMembership in personParticipations)
                     {

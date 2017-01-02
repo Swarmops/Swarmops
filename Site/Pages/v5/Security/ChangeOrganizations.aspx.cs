@@ -31,7 +31,7 @@ namespace Swarmops.Frontend.Pages.v5.Security
 
         private void PopulateRepeater()
         {
-            Participations participations = CurrentUser.GetMemberships();
+            Participations participations = CurrentUser.GetParticipations();
 
             List<OrganizationParameters> availableOrganizations = new List<OrganizationParameters>();
             foreach (Participation membership in participations)

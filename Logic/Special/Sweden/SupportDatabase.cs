@@ -449,7 +449,7 @@ namespace Swarmops.Logic.Special.Sweden
 
                                 bool hasActiveMemberships = false;
 
-                                Participations participations = person.GetMemberships();
+                                Participations participations = person.GetParticipations();
 
                                 foreach (Participation membership in participations)
                                 {

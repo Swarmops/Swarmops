@@ -306,7 +306,7 @@ namespace Swarmops.Logic.Communications
                     foreach (BasicPerson bPerson in msg.People.Values)
                     {
                         person = Person.FromBasic(bPerson);
-                        if (person.GetRecentMemberships(Membership.GracePeriod).Count > 0)
+                        if (person.GetRecentParticipations(Membership.GracePeriod).Count > 0)
                         {
                             countOfMembers++;
                         }

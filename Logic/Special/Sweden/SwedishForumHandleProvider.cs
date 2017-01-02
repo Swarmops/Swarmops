@@ -61,7 +61,7 @@ namespace Swarmops.Logic.Special.Sweden
             {
                 person.SwedishForumAccountId = newHandleAccountId;
 
-                if (newHandleAccountId != 0  && person.MemberOf(Organization.PPSEid) )
+                if (newHandleAccountId != 0  && person.ParticipatesInOrganization(Organization.PPSEid) )
                 {
                     SwedishForumDatabase.GetDatabase().SetPartyMember(newHandleAccountId);
                 }

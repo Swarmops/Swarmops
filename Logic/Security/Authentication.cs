@@ -42,7 +42,7 @@ namespace Swarmops.Logic.Security
 
                 bool hasActiveMemberships = false;
 
-                Participations participations = candidate.GetMemberships();
+                Participations participations = candidate.GetParticipations();
 
                 foreach (Participation membership in participations)
                 {
@@ -331,7 +331,7 @@ namespace Swarmops.Logic.Security
                     links += "\r\n\r\n";
                     links += "#" + p.PersonId;
                     links += " [Member of:";
-                    Participations msList = p.GetMemberships();
+                    Participations msList = p.GetParticipations();
                     foreach (Participation ms in msList)
                     {
                         ++membershipCount;
@@ -504,7 +504,7 @@ namespace Swarmops.Logic.Security
                 string links = "";
                 foreach (Person p in candidatePeople)
                 {
-                    Participations msList = p.GetMemberships();
+                    Participations msList = p.GetParticipations();
                     if (msList.Count == 0 && p.IsActivist)
                     {
                         personIsActivist = true;

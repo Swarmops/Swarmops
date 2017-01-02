@@ -29,14 +29,14 @@ namespace Swarmops.Interface
             bool isMember = false;
             foreach (Organization org1 in organizations)
             {
-                if (person.MemberOf(org1)) isMember = true;
+                if (person.ParticipatesInOrganization(org1)) isMember = true;
             }
 
             if (!isMember)
             {
                 // if he/she used to be a member, use exmember icons
 
-                Memberships memberships = person.GetMemberships(true);
+                Memberships memberships = person.GetParticipations(true);
 
                 foreach (Membership membership in memberships)
                 {

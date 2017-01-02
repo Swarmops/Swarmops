@@ -127,7 +127,7 @@ namespace Swarmops.Pages.Security
                 lastOrgId = Organization.SandboxIdentity;
             }
 
-            if (!resetPerson.MemberOfWithInherited(lastOrgId))
+            if (!resetPerson.ParticipatesInOrganizationOrParent(lastOrgId))
             {
                 // If the person doesn't have access to the last organization (anymore), log on to Sandbox
 

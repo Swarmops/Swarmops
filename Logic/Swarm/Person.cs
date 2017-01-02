@@ -403,7 +403,7 @@ namespace Swarmops.Logic.Swarm
 
                 //not set, make a guess...
 
-                foreach (Participation ms in GetMemberships (false))
+                foreach (Participation ms in GetParticipations (false))
                 {
                     try
                     {
@@ -622,17 +622,17 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-        public Participations GetMemberships (bool includeTerminated)
+        public Participations GetParticipations (bool includeTerminated)
         {
             if (!includeTerminated)
             {
-                return GetMemberships();
+                return GetParticipations();
             }
 
             return Participations.FromArray (SwarmDb.GetDatabaseForReading().GetParticipations (this));
         }
 
-        public Participations GetMemberships()
+        public Participations GetParticipations()
         {
             return
                 Participations.FromArray (SwarmDb.GetDatabaseForReading()
@@ -646,11 +646,11 @@ namespace Swarmops.Logic.Swarm
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <param name="orgId"></param>
         /// <returns></returns>
-        public Participation GetRecentMembership (int gracePeriod, int orgId)
+        public Participation GetRecentParticipation (int gracePeriod, int orgId)
         {
             List<int> orgIdList = new List<int>();
             orgIdList.Add (orgId);
-            Participations mss = GetRecentMemberships (orgIdList, gracePeriod);
+            Participations mss = GetRecentParticipations (orgIdList, gracePeriod);
             foreach (Participation ms in mss)
             {
                 if (ms.OrganizationId == orgId)
@@ -664,10 +664,10 @@ namespace Swarmops.Logic.Swarm
         /// </summary>
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <returns></returns>
-        public Participations GetRecentMemberships (int gracePeriod)
+        public Participations GetRecentParticipations (int gracePeriod)
         {
             List<int> orgIdList = new List<int>();
-            return GetRecentMemberships (orgIdList, gracePeriod);
+            return GetRecentParticipations (orgIdList, gracePeriod);
         }
 
         /// <summary>
@@ -676,10 +676,10 @@ namespace Swarmops.Logic.Swarm
         /// <param name="orgs">List of ids. If empty, all orgs</param>
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <returns></returns>
-        public Participations GetRecentMemberships (Organizations orgs, int gracePeriod)
+        public Participations GetRecentParticipations (Organizations orgs, int gracePeriod)
         {
             List<int> orgIdList = new List<int> (orgs.Identities);
-            return GetRecentMemberships (orgIdList, gracePeriod);
+            return GetRecentParticipations (orgIdList, gracePeriod);
         }
 
         /// <summary>
@@ -688,9 +688,9 @@ namespace Swarmops.Logic.Swarm
         /// <param name="orgs">List of ids. If empty, all orgs</param>
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <returns></returns>
-        public Participations GetRecentMemberships (List<int> orgs, int gracePeriod)
+        public Participations GetRecentParticipations (List<int> orgs, int gracePeriod)
         {
-            Participations participations = GetMemberships (true);
+            Participations participations = GetParticipations (true);
             Dictionary<int, Participation> collectMembers = new Dictionary<int, Participation>();
 
             participations.Sort (
@@ -1036,14 +1036,14 @@ namespace Swarmops.Logic.Swarm
             return new string (array);
         }
 
-        public bool MemberOf (Organization organization)
+        public bool ParticipatesInOrganization (Organization organization)
         {
-            return MemberOf (organization.Identity);
+            return ParticipatesInOrganization (organization.Identity);
         }
 
-        public bool MemberOf (int orgId)
+        public bool ParticipatesInOrganization (int orgId)
         {
-            Participations participations = GetMemberships();
+            Participations participations = GetParticipations();
 
             foreach (Participation membership in participations)
             {
@@ -1056,9 +1056,9 @@ namespace Swarmops.Logic.Swarm
             return false;
         }
 
-        public bool MemberOfWithInherited (int orgId)
+        public bool ParticipatesInOrganizationOrParent (int orgId)
         {
-            Participations participations = GetMemberships();
+            Participations participations = GetParticipations();
 
             foreach (Participation membership in participations)
             {
@@ -1070,9 +1070,9 @@ namespace Swarmops.Logic.Swarm
             return false;
         }
 
-        public bool MemberOfWithInherited (Organization org)
+        public bool ParticipatesInOrganizationOrParent (Organization org)
         {
-            return MemberOfWithInherited (org.Identity);
+            return ParticipatesInOrganizationOrParent (org.Identity);
         }
 
         /* --- not used, commented out for usage of hardcoded org ids
@@ -1082,7 +1082,7 @@ namespace Swarmops.Logic.Swarm
             int[] partyOrgs = new int[] { Organization.PPSEid, Organization.PPDKid, Organization.PPFIid };
             foreach (int orgId in partyOrgs)
             {
-                if (this.MemberOf(orgId))
+                if (this.ParticipatesInOrganization(orgId))
                 {
                     return orgId;
                 }
@@ -1196,9 +1196,9 @@ namespace Swarmops.Logic.Swarm
         public const int OpenLedgersIdentity = -1;
 
 
-        public Participation ParticipationOf(Organization organization)
+        public Participation ParticipationOf (Organization organization)
         {
-            Participations participations = GetMemberships();
+            Participations participations = GetParticipations();
             foreach (Participation participation in participations)
             {
                 if (participation.OrganizationId == organization.Identity)

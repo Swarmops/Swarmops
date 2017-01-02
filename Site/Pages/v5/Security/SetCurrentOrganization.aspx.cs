@@ -31,7 +31,7 @@ namespace Swarmops.Frontend.Pages.v5.Security
                 suggestedOrganization = null;
             }
 
-            if (suggestedOrganization == null || !CurrentUser.MemberOf (suggestedOrganization))
+            if (suggestedOrganization == null || !CurrentUser.ParticipatesInOrganization (suggestedOrganization))
             {
                 // Some work here on PPSE pilot - we want everybody to be able to switch to Sandbox, which is #1
                 // except for in PPSE installation, where it is... #3 or something

@@ -308,7 +308,7 @@ namespace Swarmops.Logic.Special.Sweden
                             Person[] array = people.ToArray();
                             foreach (Person testPerson in array)
                             {
-                                if (testPerson.GetMemberships().Count == 0)
+                                if (testPerson.GetParticipations().Count == 0)
                                 {
                                     people.Remove (testPerson);
                                 }
@@ -853,7 +853,7 @@ namespace Swarmops.Logic.Special.Sweden
                             Person[] array = people.ToArray();
                             foreach (Person testPerson in array)
                             {
-                                if (testPerson.GetMemberships().Count == 0)
+                                if (testPerson.GetParticipations().Count == 0)
                                 {
                                     people.Remove (testPerson);
                                 }
