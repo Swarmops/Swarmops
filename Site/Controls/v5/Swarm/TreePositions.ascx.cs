@@ -17,7 +17,7 @@ namespace Swarmops.Frontend.Controls.Swarm
             ((PageV5Base) this.Page).RegisterControl (EasyUIControl.Tree | EasyUIControl.DataGrid);
         }
 
-        protected void Page_Load (object sender, EventArgs e)
+        protected void Page_PreRender (object sender, EventArgs e) // PreRender to make sure teh DropDuration control exists
         {
             this.DropPerson.Placeholder = Resources.Global.Swarm_TypeName;
             Localize();
