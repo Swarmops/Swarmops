@@ -75,6 +75,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
+using MySql.Data.Types;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Basic.Types.Swarm;
@@ -148,7 +149,15 @@ namespace Swarmops.Database
             int createdByPersonId = reader.GetInt32 (6);
             int createdByPositionId = reader.GetInt32 (7);
             bool active = reader.GetBoolean (8);
-            DateTime expiresDateTimeUtc = reader.GetDateTime (9);
+            DateTime expiresDateTimeUtc = new DateTime(9999, 12, 31);
+            try
+            {
+                expiresDateTimeUtc = reader.GetDateTime(9);
+            }
+            catch (MySqlConversionException)
+            {
+                // ignore exception if the MYSQL datetime is 0000-00-00
+            }
             DateTime terminatedDateTimeUtc = reader.GetDateTime (10);
             int terminatedByPersonId = reader.GetInt32 (11);
             int terminatedByPositionId = reader.GetInt32 (12);

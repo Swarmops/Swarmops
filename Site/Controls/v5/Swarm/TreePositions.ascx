@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Controls.Swarm.TreePositions" Codebehind="TreePositions.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Controls.Swarm.TreePositions" CodeFile="TreePositions.ascx.cs" %>
 <%@ Register TagPrefix="Swarmops5Workaround" TagName="ComboPeople" src="~/Controls/v5/Swarm/ComboPeople.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ModalDialog" src="~/Controls/v5/Base/ModalDialog.ascx" %>
 
@@ -194,8 +194,8 @@
         <DialogCode>
             <h2><asp:Label runat="server" ID="LabelModalHeader"/></h2>
             <div class="entryFields">
-                <Swarmops5Workaround:ComboPeople ID="DropPerson" runat="server" />&#8203;<br/>
-                <asp:DropDownList ID="DropDuration" runat="server" />&#8203;<br/>
+                <Swarmops5Workaround:ComboPeople ID="DropPerson" runat="server" />
+                <Swarmops5:DropDown ID="DropDuration" runat="server" />
                 <input type="button" id="<%=this.ClientID %>_buttonAssign" class="buttonAccentColor" value="#Assign#" />
             </div>
             <div class="entryLabels">
