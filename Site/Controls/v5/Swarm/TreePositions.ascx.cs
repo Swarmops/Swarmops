@@ -19,8 +19,8 @@ namespace Swarmops.Frontend.Controls.Swarm
 
         protected void Page_Load (object sender, EventArgs e)
         {
-            Localize();
             this.DropPerson.Placeholder = Resources.Global.Swarm_TypeName;
+            Localize();
         }
 
         private void Localize()
