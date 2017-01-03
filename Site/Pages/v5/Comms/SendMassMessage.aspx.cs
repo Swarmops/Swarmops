@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Resources;
 using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Resolution;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -131,7 +132,10 @@ namespace Swarmops.Frontend.Pages.Comms
             }
             else // Send live
             {
-                throw new NotImplementedException();                 // TODO: Write resolver
+                // TODO: change resolver to match selected group
+
+                OutboundComm.CreateParticipantMail(subject, body, authData.CurrentUser, authData.CurrentUser, authData.CurrentOrganization, Geography.FromIdentity(geographyId));
+                return new AjaxCallResult { Success = true };
             }
         }
 

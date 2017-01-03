@@ -29,12 +29,16 @@
         }
 
         function onClickSend() {
-            alertify.alert(SwarmopsJS.unescape('<%= this.Localized_SendMessageResult %>'));
+            onExecute(true);
             return false;
         }
 
         function onClickTest() {
+            onExecute(false);
+            return false;
+        }
 
+        function onExecute(live) {
             var body = $('#<%=this.TextMessage.ClientID%>').val().trim();
             var subject = $('#<%=this.TextSubject.ClientID%>').val().trim();
 
@@ -51,22 +55,20 @@
                 return false;
             }
 
-            if (<%=this.RunningOnSandbox%> && testMessageSandboxAddress == '')
-            {
+            if (<%=this.RunningOnSandbox%> && !live && testMessageSandboxAddress == '') {
                 // Prompt for an address to send to
                 // This should preferably be in a mod on just Sandbox and not in code everywhere
 
                 alertify.prompt("You're currently using the Sandbox. Where would you like a test message sent?", // TODO: LOC
-                   function (evt, value) 
-                   { 
-                       testMessageSandboxAddress = value; // may need sanitation
-                       onClickTest(); // rerun with value set
-                   },
-                   function() {
-                    alertify.log('Canceled.');
-                });
+                    function(evt, value) {
+                        testMessageSandboxAddress = value; // may need sanitation
+                        onClickTest(); // rerun with value set
+                    },
+                    function() {
+                        alertify.log('Canceled.');
+                    });
 
-                return false; // do not process at this time, wait for async response
+                return null; // do not process at this time, wait for async response
             }
 
             var jsonData = {
@@ -82,13 +84,17 @@
             SwarmopsJS.ajaxCall
             ("/Pages/v5/Comms/SendMassMessage.aspx/ExecuteSend",
                 jsonData,
-                function (result) {
+                function(result) {
                     if (result.Success) {
-                        alertify.alert(SwarmopsJS.unescape('<%= this.Localized_TestMessageResult %>'));
+                        if (live) { // race condition but won't probably ever trigger
+                            alertify.alert(SwarmopsJS.unescape('<%= this.Localized_TestMessageResult %>'));
+                        } else {
+                            alertify.alert(SwarmopsJS.unescape('<%= this.Localized_SendMessageResult %>'));
+                        }
                     }
                 });
 
-            return false;
+            return null;
         }
 
         function onRecipientChange(oldClassIgnored, newRecipientClass) {

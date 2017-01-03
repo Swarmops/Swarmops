@@ -37,7 +37,7 @@ namespace Swarmops.Backend
                             customStrings["GeographyName"] = ((IHasGeography) resolver).Geography.Name;
                         }
                             OutboundComm.CreateNotification(Organization.FromIdentity(comm.OrganizationId),
-                                NotificationResource.OutboundComm_Resolved, notifyStrings,
+                                NotificationResource.OutboundComm_Resolved, notifyStrings, customStrings,
                                 People.FromSingle(Person.FromIdentity(comm.SenderPersonId)));
                     }
 
@@ -76,22 +76,23 @@ namespace Swarmops.Backend
                 {
                     ICommsResolver resolver = FindResolver(comm);
 
-                    // "Your message to[GeographyName] has been sent to all scheduled recipients.Of the[RecipientCount] planned recipients, [RecipientsSuccess] succeeded
-                    // from Swarmops' horizon. (These can fail later for a number of reasons, from broken computers to hospitalized recipients.)
-                    // Time spent transmitting: [TransmissionTime]."
-
-                    // TODO: CONTINUE HERE
+                    // "Your message to [GeographyName] has been sent to all scheduled recipients. Of the [RecipientCount] planned recipients,
+                    // [RecipientsSuccess] succeeded from Swarmops' horizon. (These can fail later for a number of reasons, from broken
+                    // computers to hospitalized recipients.) Time spent transmitting: [TransmissionTime]."
 
                     NotificationStrings notifyStrings = new NotificationStrings();
                     NotificationCustomStrings customStrings = new NotificationCustomStrings();
                     notifyStrings[NotificationString.OrganizationName] = Organization.FromIdentity(comm.OrganizationId).Name;
                     customStrings["RecipientCount"] = comm.Recipients.Count.ToString("N0");
+                    customStrings["RecipientsSuccess"] = comm.RecipientsSuccess.ToString("N0");
+                    customStrings["TransmissionTime"] =
+                        (comm.ClosedDateTime - comm.StartTransmitDateTime).ToString("m min ss.ff sec");
                     if (resolver is IHasGeography)
                     {
-                        customStrings["Geography"] = ((IHasGeography)resolver).Geography.Name;
+                        customStrings["GeographyName"] = ((IHasGeography)resolver).Geography.Name;
                     }
                     OutboundComm.CreateNotification(Organization.FromIdentity(comm.OrganizationId),
-                        NotificationResource.OutboundComm_Resolved, notifyStrings,
+                        NotificationResource.OutboundComm_Sent, notifyStrings, customStrings,
                         People.FromSingle(Person.FromIdentity(comm.SenderPersonId)));
                 }
             }
