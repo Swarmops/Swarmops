@@ -72,7 +72,7 @@ namespace Swarmops.Utility.Communications
                     mail.To.Add(new MailAddress(person.Mail, person.Name));
                 }
             }
-            catch (FormatException e)
+            catch (ArgumentException e)
             {
                 // Address failure -- either sender or recipient
 
