@@ -78,7 +78,7 @@
                 subject: subject,
                 body: body,
                 dummyMail: testMessageSandboxAddress,
-                live: false
+                live: live
             };
 
             SwarmopsJS.ajaxCall
