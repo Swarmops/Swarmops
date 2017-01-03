@@ -29,7 +29,7 @@ namespace Swarmops.Basic.Types.Communications
             ClosedDateTime = closedDateTime;
             RecipientCount = recipientCount;
             RecipientsSuccess = recipientsSuccess;
-            RecipeintsFail = recipientsFail;
+            RecipientsFail = recipientsFail;
         }
 
 
@@ -39,7 +39,7 @@ namespace Swarmops.Basic.Types.Communications
             original.CreatedDateTime, original.ResolverDataXml, original.RecipientDataXml, original.Resolved,
             original.ResolvedDateTime, original.Priority, original.TransmitterClass, original.PayloadXml,
             original.Open, original.StartTransmitDateTime, original.ClosedDateTime, original.RecipientCount,
-            original.RecipientsSuccess, original.RecipeintsFail)
+            original.RecipientsSuccess, original.RecipientsFail)
         {
             // copy ctor    
         }
@@ -62,7 +62,7 @@ namespace Swarmops.Basic.Types.Communications
         public DateTime ClosedDateTime { get; protected set; }
         public int RecipientCount { get; protected set; }
         public int RecipientsSuccess { get; protected set; }
-        public int RecipeintsFail { get; protected set; }
+        public int RecipientsFail { get; protected set; }
 
         #region Implementation of IHasIdentity
 

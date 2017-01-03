@@ -320,7 +320,7 @@ Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to att
 This mail was sent to [Addressee] from [OrganizationName]. If you do not desire to receive these notifications in the future, please log on to [InstallationName] at [ExternalUrl] and modify your notification settings.</value>
   </data>
   <data name="OutboundComm_Resolved_Body" xml:space="preserve">
-    <value>Your message has been queued for delivery and the recipients have been resolved. Your mail will be sent to, or be attempted to sent to, [RecipientCount] people in [Geography] in [OrganizationName].</value>
+    <value>Your message has been queued for delivery and the recipients have been resolved. Your mail will be sent to, or be attempted to sent to, [RecipientCount] people in [GeographyName] in [OrganizationName].</value>
   </data>
   <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Comm recipients determined for [GeographyName]: [RecipientCount]</value>

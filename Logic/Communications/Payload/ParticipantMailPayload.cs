@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 //using Swarmops.Basic.Types.Common;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Support;
 
@@ -61,6 +62,18 @@ namespace Swarmops.Logic.Communications.Payload
             BodyTemplate = customBody;
             Strings[MailPayloadString.ActingPerson] = actingPerson.Name;
             Strings[MailPayloadString.OrganizationName] = participation.Organization.Name;
+        }
+
+
+        public ParticipantMailPayload(string customSubject, string customBody, Organization organization,
+            Person actingPerson)
+        {
+            Strings = new SerializableDictionary<MailPayloadString, string>();
+
+            SubjectTemplate = customSubject;
+            BodyTemplate = customBody;
+            Strings[MailPayloadString.ActingPerson] = actingPerson.Name;
+            Strings[MailPayloadString.OrganizationName] = organization.Name;
         }
 
 

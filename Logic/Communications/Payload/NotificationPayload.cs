@@ -192,7 +192,9 @@ namespace Swarmops.Logic.Communications.Payload
         BitcoinPayoutAddress_Changed,
         Salary_MonthlyStatement,
         Salary_Paid,
-        Salary_LastYearSummary
+        Salary_LastYearSummary,
+        OutboundComm_Resolved,
+        OutboundComm_Sent
     }
 
 // ReSharper restore InconsistentNaming

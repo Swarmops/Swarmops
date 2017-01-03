@@ -142,7 +142,7 @@ namespace Swarmops.Logic.Communications
             List<Person> recipients = People.FromSingle (participation.Person);
 
             OutboundComm comm = OutboundComm.Create (null, null, participation.Organization, 
-                null, null,
+                null /* resolver */, null /*recipientdata*/,
                 CommTransmitterClass.CommsTransmitterMail,
                 new PayloadEnvelope (new ParticipantMailPayload (mailType, participation, actingPerson)).ToXml(),
                 OutboundCommPriority.Low);
@@ -153,6 +153,21 @@ namespace Swarmops.Logic.Communications
             }
 
             comm.Resolved = true;
+
+            return comm;
+        }
+
+
+        public static OutboundComm CreateParticipantMail(string customSubject, string customBody, Person sender, Person from,
+            Organization organization, Geography geography)
+        {
+            ParticipantResolver resolver = new ParticipantResolver(organization, geography);
+
+            OutboundComm comm = OutboundComm.Create (sender, from, organization, 
+                resolver, null /*recipientdata*/,
+                CommTransmitterClass.CommsTransmitterMail,
+                new PayloadEnvelope(new ParticipantMailPayload(customSubject, customBody, organization, sender)).ToXml(),
+                OutboundCommPriority.Low);
 
             return comm;
         }
@@ -234,7 +249,7 @@ namespace Swarmops.Logic.Communications
 
             if (organization != null)
             {
-                strings[NotificationString.OrganizationName] = organization.Name; // since we're sending the org anyway, kind of pointless to require callers to set this
+                strings[NotificationString.OrganizationName] = organization.Name;
                 //strings[NotificationString.OrganizationMailPrefix] = organization.MailPrefix; // TODO
 
                 // TODO: Change to org admins

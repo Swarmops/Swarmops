@@ -112,6 +112,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Communications\IHasGeography.cs" />
     <Compile Include="Communications\Resolution\ParticipantResolver.cs" />
     <Compile Include="Communications\Resolution\ResolverEnvelope.cs" />
     <Compile Include="Financial\BitcoinTransactionInput.cs" />
