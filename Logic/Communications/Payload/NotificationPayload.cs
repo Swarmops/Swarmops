@@ -130,8 +130,7 @@ namespace Swarmops.Logic.Communications.Payload
 
             if (Strings.ContainsKey(NotificationString.OrganizationName))
             {
-                result[CommRenderPart.Subject] = "[" + Strings[NotificationString.OrganizationName] + "] " +
-                                                 result[CommRenderPart.Subject];
+                result[CommRenderPart.Subject] = result[CommRenderPart.Subject];
             }
 
             return result;
