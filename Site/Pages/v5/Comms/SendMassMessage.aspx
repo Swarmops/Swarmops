@@ -87,9 +87,9 @@
                 function(result) {
                     if (result.Success) {
                         if (live) { // race condition but won't probably ever trigger
-                            alertify.alert(SwarmopsJS.unescape('<%= this.Localized_TestMessageResult %>'));
-                        } else {
                             alertify.alert(SwarmopsJS.unescape('<%= this.Localized_SendMessageResult %>'));
+                        } else {
+                            alertify.alert(SwarmopsJS.unescape('<%= this.Localized_TestMessageResult %>'));
                         }
                     }
                 });
