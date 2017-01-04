@@ -31,7 +31,7 @@ namespace Swarmops.Backend
                     int recipientCount = comm.Recipients.Count;
                     BotLog.Write(2, "CommsTx", "--resolved to " + recipientCount.ToString("N0") + " recipients");
 
-                    if (recipientCount > 1)
+                    if (recipientCount > 1 && comm.SenderPersonId != 0)
                     {
                         // "Your message has been queued for delivery and the recipients have been resolved. 
                         // Your mail will be sent to, or be attempted to sent to, [RecipientCount] people in [Geography] in [OrganizationName]."
@@ -90,7 +90,7 @@ namespace Swarmops.Backend
                     OutboundComm reloadedComm = OutboundComm.FromIdentity(comm.Identity);
                         // object doesn't update as we get results
 
-                    if (comm.RecipientCount > 1)
+                    if (comm.RecipientCount > 1 && comm.SenderPersonId != 0)
                     {
                         BotLog.Write(2, "CommsTx", "--notifying");
 
