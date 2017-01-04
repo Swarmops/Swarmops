@@ -747,10 +747,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 Person newPerson = Person.Create (name, mail, password, string.Empty, string.Empty, string.Empty,
                     string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
-                newPerson.AddParticipation(Organization.Sandbox, DateTime.UtcNow.AddYears(100));
-                Authority firstAuthority = Authority.FromLogin(newPerson, Organization.Sandbox);
-
-                FormsAuthentication.SetAuthCookie(firstAuthority.ToEncryptedXml(), true);
+                newPerson.AddParticipation (Organization.Sandbox, DateTime.UtcNow.AddYears(100));
+                    // Add membership in Sandbox
 
                 // Initialize staffing to System and Sandbox with the new user
 
@@ -777,9 +775,32 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 }
             }
 
-            // We set an auth cookie earlier, so we should be able to just redirect
+            // Protect against race condition on a really really slow server: wait until there is a first person or 15 seconds have expired
 
-            Response.Redirect ("/", true);
+            DateTime utcTimeout = DateTime.UtcNow.AddSeconds (15);
+            People people = People.GetAll();
+            while (people.Count < 1 && DateTime.UtcNow < utcTimeout)
+            {
+                Thread.Sleep (500);
+                people = People.GetAll();
+            }
+
+            if (people.Count < 1)
+            {
+                throw new InvalidOperationException("First person has not been created despite 15-second timeout; cannot login");
+            }
+
+            // Get authenticated person
+
+            Person expectedPersonOne = Authentication.Authenticate ("1",
+                this.TextFirstUserPassword1.Text);
+
+            if (expectedPersonOne != null)
+            {
+                Authority firstAuthority = Authority.FromLogin(expectedPersonOne, Organization.Sandbox);
+                FormsAuthentication.RedirectFromLoginPage(firstAuthority.ToEncryptedXml(), true);
+                Response.Redirect ("/", true);
+            }
 
 
         }
