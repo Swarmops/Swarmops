@@ -6,6 +6,7 @@ using Swarmops.Utility.Communications;
 using System.Reflection;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
+using Swarmops.Utility.BotCode;
 
 namespace Swarmops.Backend
 {
@@ -17,13 +18,20 @@ namespace Swarmops.Backend
 
             foreach (OutboundComm comm in comms)
             {
+                BotLog.Write(1, "CommsTx", "OutboundComm #" + comm.Identity.ToString("N0"));
+
                 if (!comm.Resolved)
                 {
+                    BotLog.Write(2, "CommsTx", "--resolving");
+
                     ICommsResolver resolver = FindResolver(comm);
                     resolver.Resolve(comm);
                     comm.Resolved = true;
 
-                    if (comm.Recipients.Count > 1)
+                    int recipientCount = comm.Recipients.Count;
+                    BotLog.Write(2, "CommsTx", "--resolved to " + recipientCount.ToString("N0") + " recipients");
+
+                    if (recipientCount > 1)
                     {
                         // "Your message has been queued for delivery and the recipients have been resolved. 
                         // Your mail will be sent to, or be attempted to sent to, [RecipientCount] people in [Geography] in [OrganizationName]."
@@ -55,6 +63,8 @@ namespace Swarmops.Backend
                 OutboundCommRecipients recipients = comm.Recipients;
                 PayloadEnvelope envelope = PayloadEnvelope.FromXml (comm.PayloadXml);
 
+                BotLog.Write(2, "CommsTx", "--transmitting to " + recipients.Count.ToString("N0") + " recipients");
+
                 comm.StartTransmission();
 
                 foreach (OutboundCommRecipient recipient in recipients)
@@ -72,8 +82,12 @@ namespace Swarmops.Backend
 
                 comm.Open = false;
 
+                BotLog.Write(2, "CommsTx", "--closing");
+
                 if (comm.RecipientsFail + comm.RecipientsSuccess > 1)
                 {
+                    BotLog.Write(2, "CommsTx", "--notifying");
+
                     ICommsResolver resolver = FindResolver(comm);
 
                     // "Your message to [GeographyName] has been sent to all scheduled recipients. Of the [RecipientCount] planned recipients,
