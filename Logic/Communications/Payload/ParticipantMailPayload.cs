@@ -106,7 +106,7 @@ namespace Swarmops.Logic.Communications.Payload
                 }
             }
 
-            if (!subject.StartsWith("["))
+            if (!subject.StartsWith("[") && Strings.ContainsKey(MailPayloadString.OrganizationName))
             {
                 // This is a little defensive programming as some subjects start with [Organization] and some don't - fix that here
                 subject = "[" + Strings[MailPayloadString.OrganizationName] + "] " + subject;
