@@ -106,9 +106,15 @@ namespace Swarmops.Logic.Communications.Payload
                 }
             }
 
+            if (!subject.StartsWith("["))
+            {
+                // This is a little defensive programming as some subjects start with [Organization] and some don't - fix that here
+                subject = "[" + Strings[MailPayloadString.OrganizationName] + "] " + subject;
+            }
+
             RenderedComm result = new RenderedComm();
             result[CommRenderPart.BodyText] = body;
-            result[CommRenderPart.Subject] = "[" + Strings[MailPayloadString.OrganizationName] + "] " + subject;
+            result[CommRenderPart.Subject] = subject;
             result[CommRenderPart.SenderMail] = "admin@swarmops.com"; // TODO: FIX FIX FIX HACK
             result[CommRenderPart.SenderName] = "Swarmops Administrative";
 
