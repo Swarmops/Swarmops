@@ -145,13 +145,12 @@ namespace Swarmops.Frontend.Pages.Comms
             get { return PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox) ? "true" : "false"; }
         }
 
-        // ReSharper disable once InconsistentNaming
+        // ReSharper disable InconsistentNaming
         public string Localized_SendMessageResult
         {
             get { return JavascriptEscape (Resources.Pages.Comms.SendMassMessage_SendMessageResult); }
         }
 
-        // ReSharper disable once InconsistentNaming
         public string Localized_TestMessageResult
         {
             get { return JavascriptEscape (Resources.Pages.Comms.SendMassMessage_TestMessageResult); }

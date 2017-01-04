@@ -145,6 +145,9 @@
   <data name="SendMassMessage_RecipientType" xml:space="preserve">
     <value>Send a mass message to all</value>
   </data>
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>You're currently using the Sandbox. Where would you like a test message sent?</value>
+  </data>
   <data name="SendMassMessage_SendMessage" xml:space="preserve">
     <value>Send</value>
     <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
