@@ -115,8 +115,6 @@ namespace Swarmops.Frontend.Pages.Comms
             {
                 OutboundComm.CreateSandboxMail(subject, body, dummyMail);
                 return new AjaxCallResult {Success = true};
-
-                return new AjaxCallResult {Success = false}; // wtf, this shouldn't happen
             }
             else if (!live)
             {
