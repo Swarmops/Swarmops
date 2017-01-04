@@ -55,6 +55,7 @@ namespace Swarmops.Logic.Communications
                 {
                     SwarmDb.GetDatabaseForWriting().SetOutboundCommClosed (Identity);
                     base.Open = false;
+                    base.ClosedDateTime = DateTime.UtcNow;
                 }
                 else
                 {

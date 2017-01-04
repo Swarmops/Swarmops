@@ -49,6 +49,7 @@ namespace Swarmops.Backend
                                 People.FromSingle(Person.FromIdentity(comm.SenderPersonId)));
                     }
 
+                    comm.StartTransmission();
 
                     continue; // continue is not strictly necessary; could continue processing the same OutboundComm after resolution
                 }
@@ -64,8 +65,6 @@ namespace Swarmops.Backend
                 PayloadEnvelope envelope = PayloadEnvelope.FromXml (comm.PayloadXml);
 
                 BotLog.Write(2, "CommsTx", "--transmitting to " + recipients.Count.ToString("N0") + " recipients");
-
-                comm.StartTransmission();
 
                 foreach (OutboundCommRecipient recipient in recipients)
                 {
@@ -111,7 +110,7 @@ namespace Swarmops.Backend
                         TimeSpan totalTime = resolveTime + transmitTime;
 
                         customStrings["TransmissionTime"] = FormatTimespan(transmitTime);
-                        customStrings["ResolveTime"] = FormatTimespan(resolveTime);
+                        customStrings["ResolvingTime"] = FormatTimespan(resolveTime);
                         customStrings["TotalTime"] = FormatTimespan(totalTime);
                         if (resolver is IHasGeography)
                         {
