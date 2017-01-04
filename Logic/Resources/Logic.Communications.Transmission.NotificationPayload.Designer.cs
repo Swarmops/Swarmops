@@ -574,7 +574,9 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Your message to [GeographyName] has been sent to all scheduled recipients. Of the [RecipientCount] planned recipients, [RecipientsSuccess] succeeded from Swarmops&apos; horizon. (These can fail later for a number of reasons, from broken computers to hospitalized recipients.)
         ///
-        ///Time spent transmitting: [TransmissionTime]..
+        ///Time spent resolving: [ResolvingTime].
+        ///Time spent transmitting: [TransmissionTime].
+        ///Total time from comm creation to completion: [TotalTime]..
         /// </summary>
         internal static string OutboundComm_Sent_Body {
             get {

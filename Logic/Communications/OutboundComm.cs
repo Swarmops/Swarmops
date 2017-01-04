@@ -41,6 +41,11 @@ namespace Swarmops.Logic.Communications
             get { return OutboundCommRecipients.ForOutboundComm (this); }
         }
 
+        public OutboundCommRecipients GetRecipientBatch(int limit)
+        {
+            return OutboundCommRecipients.ForOutboundCommLimited(this, limit);
+        }
+
         public new bool Open
         {
             get { return base.Open; }

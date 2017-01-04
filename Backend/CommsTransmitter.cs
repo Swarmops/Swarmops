@@ -60,14 +60,12 @@ namespace Swarmops.Backend
 
                 ICommsTransmitter transmitter = new CommsTransmitterMail();
 
-                OutboundCommRecipients recipients = comm.Recipients;
+                OutboundCommRecipients recipients = comm.GetRecipientBatch(100);
                 PayloadEnvelope envelope = PayloadEnvelope.FromXml (comm.PayloadXml);
 
                 BotLog.Write(2, "CommsTx", "--transmitting to " + recipients.Count.ToString("N0") + " recipients");
 
                 comm.StartTransmission();
-                int success = 0;
-                int fail = 0;
 
                 foreach (OutboundCommRecipient recipient in recipients)
                 {
@@ -75,12 +73,10 @@ namespace Swarmops.Backend
                     {
                         transmitter.Transmit (envelope, recipient.Person);
                         recipient.CloseSuccess();
-                        success++;
                     }
                     catch (OutboundCommTransmitException e)
                     {
                         recipient.CloseFailed (e.Description);
-                        fail++;
                     }
                 }
 
@@ -88,7 +84,9 @@ namespace Swarmops.Backend
 
                 BotLog.Write(2, "CommsTx", "--closing");
 
-                if (success + fail > 1)
+                OutboundComm reloadedComm = OutboundComm.FromIdentity(comm.Identity); // object doesn't update as we get results
+
+                if (comm.RecipientCount > 1)
                 {
                     BotLog.Write(2, "CommsTx", "--notifying");
 
@@ -101,10 +99,16 @@ namespace Swarmops.Backend
                     NotificationStrings notifyStrings = new NotificationStrings();
                     NotificationCustomStrings customStrings = new NotificationCustomStrings();
                     notifyStrings[NotificationString.OrganizationName] = Organization.FromIdentity(comm.OrganizationId).Name;
-                    customStrings["RecipientCount"] = recipients.Count.ToString("N0");
-                    customStrings["RecipientsSuccess"] = success.ToString("N0");
-                    customStrings["TransmissionTime"] =
-                        (comm.ClosedDateTime - comm.StartTransmitDateTime).ToString("m min ss.ff sec");
+                    customStrings["RecipientCount"] = reloadedComm.RecipientCount.ToString("N0");
+                    customStrings["RecipientsSuccess"] = reloadedComm.RecipientsSuccess.ToString("N0");
+
+                    TimeSpan resolveTime = comm.StartTransmitDateTime - comm.CreatedDateTime;
+                    TimeSpan transmitTime = comm.ClosedDateTime - comm.StartTransmitDateTime;
+                    TimeSpan totalTime = resolveTime + transmitTime;
+
+                    customStrings["TransmissionTime"] = FormatTimespan(transmitTime);
+                    customStrings["ResolveTime"] = FormatTimespan(resolveTime);
+                    customStrings["TotalTime"] = FormatTimespan(totalTime);
                     if (resolver is IHasGeography)
                     {
                         customStrings["GeographyName"] = ((IHasGeography)resolver).Geography.Localized;
@@ -114,6 +118,11 @@ namespace Swarmops.Backend
                         People.FromSingle(Person.FromIdentity(comm.SenderPersonId)));
                 }
             }
+        }
+
+        internal static string FormatTimespan(TimeSpan span)
+        {
+            return String.Format("{0} min {1}.{2:D3} sec", span.TotalMinutes, span.Seconds, span.Milliseconds);
         }
 
         internal static ICommsResolver FindResolver(OutboundComm comm)

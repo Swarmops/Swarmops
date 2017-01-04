@@ -71,7 +71,7 @@ namespace Swarmops.Database
                         result = result.Concat (ConstructWhereClauseRecurse (tableName, partialCondition)).ToList();
                     }
                 }
-                else // iterate through attributes to find final hope of clue
+                else if (!(condition is RecordLimit)) // iterate through attributes to find final hope of clue
                 {
                     foreach (object attribute in condition.GetType().GetCustomAttributes (typeof (DbEnumField), true))
                     {
@@ -80,6 +80,10 @@ namespace Swarmops.Database
                             result.Add (tableName + "." + ((DbEnumField) attribute).FieldName + "=" + (int) condition);
                         }
                     }
+                }
+                else if (condition is RecordLimit)
+                {
+                    result.Add(" LIMIT " + (condition as RecordLimit).Limit);
                 }
             }
 
@@ -197,7 +201,14 @@ namespace Swarmops.Database
             {
                 if (!String.IsNullOrEmpty (clause))
                 {
-                    result += "AND " + clause;
+                    if (!clause.StartsWith("LIMIT"))
+                    {
+                        result += "AND " + clause;
+                    }
+                    else
+                    {
+                        result += clause;
+                    }
                 }
             }
 

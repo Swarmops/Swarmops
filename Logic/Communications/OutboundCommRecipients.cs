@@ -11,5 +11,10 @@ namespace Swarmops.Logic.Communications
         {
             return FromArray (SwarmDb.GetDatabaseForReading().GetOutboundCommRecipients (comm));
         }
+
+        public static OutboundCommRecipients ForOutboundCommLimited (OutboundComm comm, int limit)
+        {
+            return FromArray(SwarmDb.GetDatabaseForReading().GetOutboundCommRecipients(comm, new RecordLimit(limit)));
+        }
     }
 }
