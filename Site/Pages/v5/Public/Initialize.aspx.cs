@@ -747,7 +747,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 Person newPerson = Person.Create (name, mail, password, string.Empty, string.Empty, string.Empty,
                     string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
-                newPerson.AddParticipation(Organization.Sandbox, DateTime.MaxValue);
+                newPerson.AddParticipation(Organization.Sandbox, DateTime.UtcNow.AddYears(100));
                 Authority firstAuthority = Authority.FromLogin(newPerson, Organization.Sandbox);
 
                 FormsAuthentication.SetAuthCookie(firstAuthority.ToEncryptedXml(), true);
