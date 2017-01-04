@@ -61,6 +61,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You should write a message body before sending your message..
+        /// </summary>
+        internal static string SendMassMessage_Error_EmptyBody {
+            get {
+                return ResourceManager.GetString("SendMassMessage_Error_EmptyBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You should write a message subject to go with your message..
+        /// </summary>
+        internal static string SendMassMessage_Error_EmptySubject {
+            get {
+                return ResourceManager.GetString("SendMassMessage_Error_EmptySubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Who are located in.
         /// </summary>
         internal static string SendMassMessage_Geography {

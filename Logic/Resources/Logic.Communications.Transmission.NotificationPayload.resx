@@ -326,7 +326,7 @@ This mail was sent to [Addressee] from [OrganizationName]. If you do not desire 
     <value>[[OrganizationName]] Comm recipients determined for [GeographyName]: [RecipientCount]</value>
   </data>
   <data name="OutboundComm_Sent_Body" xml:space="preserve">
-    <value>Your message to [GeographyName] has been sent to all scheduled recipients. Of the [RecipientCount] planned recipients, [RecipientsSuccess] succeeded from Swarmops' horizon. (These can fail later for a number of reasons, from broken computers to hospitalized recipients.)
+    <value>Your message to [GeographyName] has been sent to all scheduled recipients. Out of the [RecipientCount] planned recipients, [RecipientsSuccess] succeeded as far as we can tell -- remember that mail can be undelivered or unread later for a number of reasons.
 
 Time spent resolving: [ResolvingTime].
 Time spent transmitting: [TransmissionTime].

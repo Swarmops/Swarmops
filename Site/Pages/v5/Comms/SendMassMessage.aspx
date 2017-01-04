@@ -44,14 +44,14 @@
 
             if (body.length < 2) // interpreted as empty
             {
-                alertify.alert("You should write a message body before sending your message."); // TODO: LOC
+                alertify.alert(SwarmopsJS.unescape('<%=this.Localized_Error_EmptyBody%>'));
                 return false;
             }
 
             if (subject.length < 2) // interpreted as empty
             {
                 // TODO: ADD TRANSMISSION MODUS / ONLY TRIGGER ON MODUS WITH SUBJECTS
-                alertify.alert("You should write a message subject to go with your message."); // TODO: LOC
+                alertify.alert(SwarmopsJS.unescape('<%=this.Localized_Error_EmptySubject%>'));
                 return false;
             }
 

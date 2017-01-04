@@ -156,5 +156,16 @@ namespace Swarmops.Frontend.Pages.Comms
         {
             get { return JavascriptEscape (Resources.Pages.Comms.SendMassMessage_TestMessageResult); }
         }
+
+        public string Localized_Error_EmptyBody
+        {
+            get { return JavascriptEscape(Resources.Pages.Comms.SendMassMessage_Error_EmptyBody); }
+        }
+
+        public string Localized_Error_EmptySubject
+        {
+            get { return JavascriptEscape(Resources.Pages.Comms.SendMassMessage_Error_EmptySubject); }
+        }
+
     }
 }

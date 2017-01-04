@@ -88,7 +88,8 @@ namespace Swarmops.Backend
                     BotLog.Write(2, "CommsTx", "--closing");
 
                     OutboundComm reloadedComm = OutboundComm.FromIdentity(comm.Identity);
-                        // object doesn't update as we get results
+                        // active object doesn't update as we get results, so need to load
+                        // from database to get final counts of successes and fails
 
                     if (comm.RecipientCount > 1 && comm.SenderPersonId != 0)
                     {

@@ -572,7 +572,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your message to [GeographyName] has been sent to all scheduled recipients. Of the [RecipientCount] planned recipients, [RecipientsSuccess] succeeded from Swarmops&apos; horizon. (These can fail later for a number of reasons, from broken computers to hospitalized recipients.)
+        ///   Looks up a localized string similar to Your message to [GeographyName] has been sent to all scheduled recipients. Out of the [RecipientCount] planned recipients, [RecipientsSuccess] succeeded as far as we can tell -- remember that mail can be undelivered or unread later for a number of reasons.
         ///
         ///Time spent resolving: [ResolvingTime].
         ///Time spent transmitting: [TransmissionTime].
