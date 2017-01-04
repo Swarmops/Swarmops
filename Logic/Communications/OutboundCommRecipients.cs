@@ -14,7 +14,7 @@ namespace Swarmops.Logic.Communications
 
         public static OutboundCommRecipients ForOutboundCommLimited (OutboundComm comm, int limit)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetOutboundCommRecipients(comm, new RecordLimit(limit)));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetOutboundCommRecipients(comm, DatabaseCondition.OpenTrue, new RecordLimit(limit)));
         }
     }
 }
