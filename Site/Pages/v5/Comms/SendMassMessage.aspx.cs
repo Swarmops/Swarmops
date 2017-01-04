@@ -167,5 +167,9 @@ namespace Swarmops.Frontend.Pages.Comms
             get { return JavascriptEscape(Resources.Pages.Comms.SendMassMessage_Error_EmptySubject); }
         }
 
+        public string Localized_Sandbox_EnterAddress
+        {
+            get { return JavascriptEscape(Resources.Pages.Comms.SendMassMessage_Sandbox_EnterAddress); }
+        }
     }
 }

@@ -142,6 +142,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You&apos;re currently using the Sandbox. Where would you like a test message sent?.
+        /// </summary>
+        internal static string SendMassMessage_Sandbox_EnterAddress {
+            get {
+                return ResourceManager.GetString("SendMassMessage_Sandbox_EnterAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send.
         /// </summary>
         internal static string SendMassMessage_SendMessage {

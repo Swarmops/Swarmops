@@ -59,13 +59,10 @@
                 // Prompt for an address to send to
                 // This should preferably be in a mod on just Sandbox and not in code everywhere
 
-                alertify.prompt("You're currently using the Sandbox. Where would you like a test message sent?", // TODO: LOC
+                alertify.prompt(SwarmopsJS.unescape('<%=this.Localized_Sandbox_EnterAddress%>'),
                     function(evt, value) {
                         testMessageSandboxAddress = value; // may need sanitation
                         onClickTest(); // rerun with value set
-                    },
-                    function() {
-                        alertify.log('Canceled.');
                     });
 
                 return null; // do not process at this time, wait for async response
