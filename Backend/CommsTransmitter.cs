@@ -42,7 +42,7 @@ namespace Swarmops.Backend
                         customStrings["RecipientCount"] = comm.Recipients.Count.ToString("N0");
                         if (resolver is IHasGeography)
                         {
-                            customStrings["GeographyName"] = ((IHasGeography) resolver).Geography.Name;
+                            customStrings["GeographyName"] = ((IHasGeography) resolver).Geography.Localized;
                         }
                             OutboundComm.CreateNotification(Organization.FromIdentity(comm.OrganizationId),
                                 NotificationResource.OutboundComm_Resolved, notifyStrings, customStrings,
@@ -66,6 +66,8 @@ namespace Swarmops.Backend
                 BotLog.Write(2, "CommsTx", "--transmitting to " + recipients.Count.ToString("N0") + " recipients");
 
                 comm.StartTransmission();
+                int success = 0;
+                int fail = 0;
 
                 foreach (OutboundCommRecipient recipient in recipients)
                 {
@@ -73,10 +75,12 @@ namespace Swarmops.Backend
                     {
                         transmitter.Transmit (envelope, recipient.Person);
                         recipient.CloseSuccess();
+                        success++;
                     }
                     catch (OutboundCommTransmitException e)
                     {
                         recipient.CloseFailed (e.Description);
+                        fail++;
                     }
                 }
 
@@ -84,7 +88,7 @@ namespace Swarmops.Backend
 
                 BotLog.Write(2, "CommsTx", "--closing");
 
-                if (comm.RecipientsFail + comm.RecipientsSuccess > 1)
+                if (success + fail > 1)
                 {
                     BotLog.Write(2, "CommsTx", "--notifying");
 
@@ -97,13 +101,13 @@ namespace Swarmops.Backend
                     NotificationStrings notifyStrings = new NotificationStrings();
                     NotificationCustomStrings customStrings = new NotificationCustomStrings();
                     notifyStrings[NotificationString.OrganizationName] = Organization.FromIdentity(comm.OrganizationId).Name;
-                    customStrings["RecipientCount"] = comm.Recipients.Count.ToString("N0");
-                    customStrings["RecipientsSuccess"] = comm.RecipientsSuccess.ToString("N0");
+                    customStrings["RecipientCount"] = recipients.Count.ToString("N0");
+                    customStrings["RecipientsSuccess"] = success.ToString("N0");
                     customStrings["TransmissionTime"] =
                         (comm.ClosedDateTime - comm.StartTransmitDateTime).ToString("m min ss.ff sec");
                     if (resolver is IHasGeography)
                     {
-                        customStrings["GeographyName"] = ((IHasGeography)resolver).Geography.Name;
+                        customStrings["GeographyName"] = ((IHasGeography)resolver).Geography.Localized;
                     }
                     OutboundComm.CreateNotification(Organization.FromIdentity(comm.OrganizationId),
                         NotificationResource.OutboundComm_Sent, notifyStrings, customStrings,

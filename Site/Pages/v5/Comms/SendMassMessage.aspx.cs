@@ -111,13 +111,10 @@ namespace Swarmops.Frontend.Pages.Comms
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+            if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox) && authData.CurrentUser.Identity == 1 && !live)
             {
-                if (authData.CurrentUser.Identity == 1)
-                {
-                    OutboundComm.CreateSandboxMail(subject, body, dummyMail);
-                    return new AjaxCallResult {Success = true};
-                }
+                OutboundComm.CreateSandboxMail(subject, body, dummyMail);
+                return new AjaxCallResult {Success = true};
 
                 return new AjaxCallResult {Success = false}; // wtf, this shouldn't happen
             }
