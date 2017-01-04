@@ -9,7 +9,7 @@ mkdir -p /var/lib/swarmops/upload
 #if we're running systemd, use systemd;
 #otherwise, use upstart
 
-if [ -z $(pidof systemd) ]; then
+if [ -z $(pidof -s systemd) ]; then
   #start the daemon
   /etc/init.d/swarmops-backend start
   #register the daemon
