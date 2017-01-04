@@ -76,7 +76,7 @@ CREATE TABLE `RolesAssigned` (
   `TerminatedByPersonId` INT NOT NULL DEFAULT 0,
   `TerminatedByRoleId` INT NOT NULL DEFAULT 0,
   `AssignmentNotes` TEXT NOT NULL,
-  `TerminationNotes` TEXT NOT NULL DEFAULT '',
+  `TerminationNotes` TEXT NOT NULL,
   PRIMARY KEY (`AssignedRoleId`),
   INDEX `Index_Org` (`OrganizationId` ASC),
   INDEX `Index_Geo` (`GeographyId` ASC),
@@ -224,8 +224,8 @@ CREATE PROCEDURE `CreateAssignedRole` (
 )
 BEGIN
 
-  INSERT INTO RolesAssigned (OrganizationId,GeographyId,RoleId,PersonId,ExpiresDateTimeUtc,CreatedDateTime,CreatedByPersonId,CreatedByRoleId,AssignmentNotes)
-    VALUES (organizationId, geographyId, roleId, personId, expiresDateTimeUtc, createdDateTime, createdByPersonId, createdByRoleId, assignmentNotes);
+  INSERT INTO RolesAssigned (OrganizationId,GeographyId,RoleId,PersonId,ExpiresDateTimeUtc,CreatedDateTime,CreatedByPersonId,CreatedByRoleId,AssignmentNotes,TerminationNotes)
+    VALUES (organizationId, geographyId, roleId, personId, expiresDateTimeUtc, createdDateTime, createdByPersonId, createdByRoleId, assignmentNotes,'');
 
   SELECT LAST_INSERT_ID() AS Identity;
 
