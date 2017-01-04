@@ -201,7 +201,7 @@ namespace Swarmops.Database
             {
                 if (!String.IsNullOrEmpty (clause))
                 {
-                    if (!clause.StartsWith("LIMIT"))
+                    if (!clause.StartsWith(" LIMIT"))
                     {
                         result += "AND " + clause;
                     }
