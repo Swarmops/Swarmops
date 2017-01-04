@@ -80,42 +80,47 @@ namespace Swarmops.Backend
                     }
                 }
 
-                comm.Open = false;
-
-                BotLog.Write(2, "CommsTx", "--closing");
-
-                OutboundComm reloadedComm = OutboundComm.FromIdentity(comm.Identity); // object doesn't update as we get results
-
-                if (comm.RecipientCount > 1)
+                if (recipients.Count < 100) // Was this the last batch?
                 {
-                    BotLog.Write(2, "CommsTx", "--notifying");
+                    comm.Open = false;
 
-                    ICommsResolver resolver = FindResolver(comm);
+                    BotLog.Write(2, "CommsTx", "--closing");
 
-                    // "Your message to [GeographyName] has been sent to all scheduled recipients. Of the [RecipientCount] planned recipients,
-                    // [RecipientsSuccess] succeeded from Swarmops' horizon. (These can fail later for a number of reasons, from broken
-                    // computers to hospitalized recipients.) Time spent transmitting: [TransmissionTime]."
+                    OutboundComm reloadedComm = OutboundComm.FromIdentity(comm.Identity);
+                        // object doesn't update as we get results
 
-                    NotificationStrings notifyStrings = new NotificationStrings();
-                    NotificationCustomStrings customStrings = new NotificationCustomStrings();
-                    notifyStrings[NotificationString.OrganizationName] = Organization.FromIdentity(comm.OrganizationId).Name;
-                    customStrings["RecipientCount"] = reloadedComm.RecipientCount.ToString("N0");
-                    customStrings["RecipientsSuccess"] = reloadedComm.RecipientsSuccess.ToString("N0");
-
-                    TimeSpan resolveTime = comm.StartTransmitDateTime - comm.CreatedDateTime;
-                    TimeSpan transmitTime = comm.ClosedDateTime - comm.StartTransmitDateTime;
-                    TimeSpan totalTime = resolveTime + transmitTime;
-
-                    customStrings["TransmissionTime"] = FormatTimespan(transmitTime);
-                    customStrings["ResolveTime"] = FormatTimespan(resolveTime);
-                    customStrings["TotalTime"] = FormatTimespan(totalTime);
-                    if (resolver is IHasGeography)
+                    if (comm.RecipientCount > 1)
                     {
-                        customStrings["GeographyName"] = ((IHasGeography)resolver).Geography.Localized;
+                        BotLog.Write(2, "CommsTx", "--notifying");
+
+                        ICommsResolver resolver = FindResolver(comm);
+
+                        // "Your message to [GeographyName] has been sent to all scheduled recipients. Of the [RecipientCount] planned recipients,
+                        // [RecipientsSuccess] succeeded from Swarmops' horizon. (These can fail later for a number of reasons, from broken
+                        // computers to hospitalized recipients.) Time spent transmitting: [TransmissionTime]."
+
+                        NotificationStrings notifyStrings = new NotificationStrings();
+                        NotificationCustomStrings customStrings = new NotificationCustomStrings();
+                        notifyStrings[NotificationString.OrganizationName] =
+                            Organization.FromIdentity(comm.OrganizationId).Name;
+                        customStrings["RecipientCount"] = reloadedComm.RecipientCount.ToString("N0");
+                        customStrings["RecipientsSuccess"] = reloadedComm.RecipientsSuccess.ToString("N0");
+
+                        TimeSpan resolveTime = comm.StartTransmitDateTime - comm.CreatedDateTime;
+                        TimeSpan transmitTime = comm.ClosedDateTime - comm.StartTransmitDateTime;
+                        TimeSpan totalTime = resolveTime + transmitTime;
+
+                        customStrings["TransmissionTime"] = FormatTimespan(transmitTime);
+                        customStrings["ResolveTime"] = FormatTimespan(resolveTime);
+                        customStrings["TotalTime"] = FormatTimespan(totalTime);
+                        if (resolver is IHasGeography)
+                        {
+                            customStrings["GeographyName"] = ((IHasGeography) resolver).Geography.Localized;
+                        }
+                        OutboundComm.CreateNotification(Organization.FromIdentity(comm.OrganizationId),
+                            NotificationResource.OutboundComm_Sent, notifyStrings, customStrings,
+                            People.FromSingle(Person.FromIdentity(comm.SenderPersonId)));
                     }
-                    OutboundComm.CreateNotification(Organization.FromIdentity(comm.OrganizationId),
-                        NotificationResource.OutboundComm_Sent, notifyStrings, customStrings,
-                        People.FromSingle(Person.FromIdentity(comm.SenderPersonId)));
                 }
             }
         }
