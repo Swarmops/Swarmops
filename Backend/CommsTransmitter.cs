@@ -61,7 +61,9 @@ namespace Swarmops.Backend
 
                 ICommsTransmitter transmitter = new CommsTransmitterMail();
 
-                OutboundCommRecipients recipients = comm.GetRecipientBatch(100);
+                const int batchSize = 1000;
+
+                OutboundCommRecipients recipients = comm.GetRecipientBatch(batchSize);
                 PayloadEnvelope envelope = PayloadEnvelope.FromXml (comm.PayloadXml);
 
                 BotLog.Write(2, "CommsTx", "--transmitting to " + recipients.Count.ToString("N0") + " recipients");
@@ -79,7 +81,7 @@ namespace Swarmops.Backend
                     }
                 }
 
-                if (recipients.Count < 100) // Was this the last batch?
+                if (recipients.Count < batchSize) // Was this the last batch?
                 {
                     comm.Open = false;
 
