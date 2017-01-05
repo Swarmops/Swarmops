@@ -652,15 +652,15 @@
   			        <div id="step-3">
   			            <h2><asp:Label runat="server" ID="LabelYourLogon" /></h2>
                         <p><asp:Label ID="LabelYourLogonText" runat="server" /></p>
-                        <div class="entryLabelsAdmin">
-                            <asp:Label ID="LabelLoginKey" runat="server" /><br />
-                            <asp:Label ID="LabelPassword1" runat="server" /><br />
-                            <asp:Label ID="LabelPassword2" runat="server" /><br />
-                        </div>
   			            <div class="entryFieldsAdmin" style="width:204px;overflow:hidden">
   			                <div class="stacked-input-control"><span id="spanMailLoginKey" style="white-space:nowrap">...</span></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPassword1" TextMode="Password" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPassword2" TextMode="Password" /></div>
+                        </div>
+                        <div class="entryLabelsAdmin">
+                            <asp:Label ID="LabelLoginKey" runat="server" /><br />
+                            <asp:Label ID="LabelPassword1" runat="server" /><br />
+                            <asp:Label ID="LabelPassword2" runat="server" /><br />
                         </div>
                     </div>
                     <div id="step-4">
