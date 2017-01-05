@@ -131,7 +131,12 @@ namespace Swarmops.Logic.Support
                 {
                     try
                     {
-                        SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand (sqlCommand.Trim().TrimEnd (';'));  // removes whitespace first, then any ; at the end (if left in by mistake)
+                        string trimmedCommand = sqlCommand.Trim().TrimEnd(';').Trim(); // removes whitespace first, then any ; at the end (if left in by mistake)
+
+                        if (!String.IsNullOrWhiteSpace(trimmedCommand))
+                        {
+                            SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(trimmedCommand);  
+                        }
                     }
                     catch (MySqlException exception)
                     {
