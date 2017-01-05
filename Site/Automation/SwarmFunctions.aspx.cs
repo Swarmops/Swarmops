@@ -261,10 +261,10 @@ namespace Swarmops.Frontend.Automation
             return new PersonEditorData
             {
                 Success = true,
-                Name = person.Name,
-                Mail = person.Mail,
-                Phone = person.Phone,
-                TwitterId = person.TwitterId,
+                Name = JavascriptEscape(person.Name),
+                Mail = JavascriptEscape(person.Mail),
+                Phone = JavascriptEscape(person.Phone),
+                TwitterId = JavascriptEscape(person.TwitterId),
                 TwoFactorActive = !string.IsNullOrEmpty(person.BitIdAddress)
             };
         }
