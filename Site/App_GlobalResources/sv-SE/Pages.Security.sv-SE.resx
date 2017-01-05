@@ -181,6 +181,9 @@
   <data name="Login_BitIdEnabled" xml:space="preserve">
     <value>&lt;strong&gt;Tvåfaktorslogin med BitId är nu påslaget.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Från och med nu kan du använda din bitcoinplånbok för att logga in (och &lt;strong&gt;behöver&lt;/strong&gt; göra det). Tack för att du ökar säkerheten.&lt;br/&gt;&lt;br/&gt;Kom ihåg att lösenordsskydda din telefon också om du inte redan gjort det.</value>
   </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;BITID-INLOGGNING KRÄVS&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Denna inloggning kräver tvåfaktorsautentisering med BitID. Du kan inte logga in med användarnamn och lösenord.</value>
+  </data>
   <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
     <value>2FA</value>
   </data>

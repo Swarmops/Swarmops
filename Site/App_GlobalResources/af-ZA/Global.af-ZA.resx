@@ -739,8 +739,8 @@
   <data name="Global_TwitterId" xml:space="preserve">
     <value>crwdns6556472:0crwdne6556472:0</value>
   </data>
-  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
-    <value>crwdns6556473:0crwdne6556473:0</value>
+  <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
+    <value>crwdns6556491:0crwdne6556491:0</value>
     <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
   </data>
   <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
@@ -754,5 +754,133 @@
   </data>
   <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
     <value>crwdns6556477:0crwdne6556477:0</value>
+  </data>
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>crwdns6556492:0crwdne6556492:0</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>crwdns6556493:0crwdne6556493:0</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>crwdns6556494:0crwdne6556494:0</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>crwdns6556495:0crwdne6556495:0</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>crwdns6556496:0crwdne6556496:0</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>crwdns6556497:0crwdne6556497:0</value>
+  </data>
+  <data name="Global_2FA" xml:space="preserve">
+    <value>crwdns6556498:0crwdne6556498:0</value>
+  </data>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>crwdns6556499:0crwdne6556499:0</value>
+  </data>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>crwdns6556500:0crwdne6556500:0</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
+    <value>crwdns6556501:0crwdne6556501:0</value>
+    <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedOwn" xml:space="preserve">
+    <value>crwdns6556502:0crwdne6556502:0</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedProvision" xml:space="preserve">
+    <value>crwdns6556503:0crwdne6556503:0</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveOwn" xml:space="preserve">
+    <value>crwdns6556504:0crwdne6556504:0</value>
+    <comment>Displayed when removing 2FA for yourself</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
+    <value>crwdns6556505:0crwdne6556505:0</value>
+    <comment>Displayed when removing 2FA for someone else</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
+    <value>crwdns6556506:0crwdne6556506:0</value>
+  </data>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>crwdns6556507:0crwdne6556507:0</value>
+  </data>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>crwdns6556508:0crwdne6556508:0</value>
+  </data>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>crwdns6556509:0crwdne6556509:0</value>
+  </data>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>crwdns6556510:0crwdne6556510:0</value>
+  </data>
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>crwdns6556511:0crwdne6556511:0</value>
+  </data>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>crwdns6556512:0crwdne6556512:0</value>
+  </data>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>crwdns6556513:0crwdne6556513:0</value>
+  </data>
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>crwdns6556514:0crwdne6556514:0</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>crwdns6556515:0crwdne6556515:0</value>
+  </data>
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value>crwdns6556516:0crwdne6556516:0</value>
+  </data>
+  <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
+    <value>crwdns6556517:0crwdne6556517:0</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
+    <value>crwdns6556518:0crwdne6556518:0</value>
+  </data>
+  <data name="Master_EditPersonNewPassword1" xml:space="preserve">
+    <value>crwdns6556519:0crwdne6556519:0</value>
+  </data>
+  <data name="Master_EditPersonNewPassword2" xml:space="preserve">
+    <value>crwdns6556520:0crwdne6556520:0</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
+    <value>crwdns6556521:0crwdne6556521:0</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_TooWeak" xml:space="preserve">
+    <value>crwdns6556522:0crwdne6556522:0</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
+    <value>crwdns6556523:0crwdne6556523:0</value>
+  </data>
+  <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
+    <value>crwdns6556524:0crwdne6556524:0</value>
+  </data>
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>crwdns6556525:0crwdne6556525:0</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>crwdns6556526:0crwdne6556526:0</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>crwdns6556527:0crwdne6556527:0</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>crwdns6556528:0crwdne6556528:0</value>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>crwdns6556529:0crwdne6556529:0</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>crwdns6556530:0crwdne6556530:0</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>crwdns6556531:0crwdne6556531:0</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>crwdns6556532:0crwdne6556532:0</value>
   </data>
 </root>

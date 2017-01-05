@@ -117,6 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  
+  
   <data name="SendMassMessage_Geography" xml:space="preserve">
     <value>Вы находитесь в</value>
   </data>
@@ -126,6 +128,7 @@
   <data name="SendMassMessage_Info" xml:space="preserve">
     <value>Отправьте сообщение группе людей в организации. Вы можете отправить сообщение по электронной почте (подойдет для ленты новостей и основной информации) или по СМС (что довольно дорого и навязчиво).</value>
   </data>
+  
   <data name="SendMassMessage_MockMessageResult" xml:space="preserve">
     <value>Это сообщение будет отправлено получателям. В настоящее время это макет интерфейса.</value>
   </data>
@@ -136,6 +139,7 @@
   <data name="SendMassMessage_RecipientType" xml:space="preserve">
     <value>Отправить всем массовое сообщение</value>
   </data>
+  
   <data name="SendMassMessage_SendMessage" xml:space="preserve">
     <value>ОТПР</value>
     <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
@@ -143,6 +147,7 @@
   <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
     <value>Ваше сообщение в данный момент рассылается получателям. Когда рассылка закончится, Вы будете оповещены.</value>
   </data>
+  
   <data name="SendMassMessage_TestMessage" xml:space="preserve">
     <value>Тест</value>
     <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>

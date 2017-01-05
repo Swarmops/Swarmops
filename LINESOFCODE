@@ -80,28 +80,29 @@
     351 ./Logic/Resources/Logic.Structure.Country.Designer.cs
     288 ./Logic/Resources/Logic.Financial.Payout.Designer.cs
     261 ./Logic/Resources/Logic.Structure.Geography.Designer.cs
-    882 ./Logic/Resources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
+    884 ./Logic/Resources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
     657 ./Logic/Resources/Logic.Financial.FinancialAccount.Designer.cs
     198 ./Logic/Resources/Logic.Swarm.DashboardTodos.Designer.cs
      81 ./Logic/Resources/Logic.Communications.Transmission.MailPayload.Designer.cs
      90 ./Logic/Resources/Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs
     927 ./Logic/Resources/Logic.Swarm.ParticipantTitle.Designer.cs
      58 ./Logic/AssemblyInfo.cs
-    135 ./Logic/Communications/Payload/ParticipantMailPayload.cs
-    228 ./Logic/Communications/Payload/NotificationPayload.cs
+    154 ./Logic/Communications/Payload/ParticipantMailPayload.cs
+    235 ./Logic/Communications/Payload/NotificationPayload.cs
      22 ./Logic/Communications/Payload/PayloadEnvelope.cs
    1285 ./Logic/Communications/TypedMailTemplate.cs
      46 ./Logic/Communications/PaperLetters.cs
+     14 ./Logic/Communications/IHasGeography.cs
      28 ./Logic/Communications/ICommsRenderer.cs
     126 ./Logic/Communications/OutboundMailRecipient.cs
     453 ./Logic/Communications/OutboundMail.cs
      15 ./Logic/Communications/ICommsTransmitter.cs
-    401 ./Logic/Communications/OutboundComm.cs
+    446 ./Logic/Communications/OutboundComm.cs
      85 ./Logic/Communications/CommunicationTurnaround.cs
      35 ./Logic/Communications/NewsletterFeeds.cs
     314 ./Logic/Communications/PhoneMessageTransmitter.cs
      28 ./Logic/Communications/Resolution/ResolverEnvelope.cs
-     40 ./Logic/Communications/Resolution/ParticipantResolver.cs
+     51 ./Logic/Communications/Resolution/ParticipantResolver.cs
      23 ./Logic/Communications/OutboundCommTransmitException.cs
     457 ./Logic/Communications/PhoneMessageReceiver.cs
      41 ./Logic/Communications/OutboundCommRecipient.cs
@@ -110,7 +111,7 @@
      12 ./Logic/Communications/ICommsResolver.cs
      27 ./Logic/Communications/CommunicationTurnarounds.cs
      74 ./Logic/Communications/PaperLetter.cs
-     14 ./Logic/Communications/OutboundCommRecipients.cs
+     19 ./Logic/Communications/OutboundCommRecipients.cs
      30 ./Logic/Communications/OutboundMails.cs
      13 ./Logic/Communications/OutboundComms.cs
      72 ./Logic/Communications/AutoMail.cs
@@ -167,7 +168,7 @@
      71 ./Logic/Swarm/PersonRole.cs
     107 ./Logic/Swarm/PositionAssignment.cs
      59 ./Logic/Swarm/ParticipantTitle.cs
-   1197 ./Logic/Swarm/Person.cs
+   1212 ./Logic/Swarm/Person.cs
     291 ./Logic/Swarm/DashboardTodos.cs
      52 ./Logic/Swarm/ExternalActivity.cs
     149 ./Logic/Swarm/ExternalIdentity.cs
@@ -270,7 +271,7 @@
      76 ./Logic/Support/Documents.cs
      61 ./Logic/Support/SwarmopsLogEntry.cs
      52 ./Logic/Support/PayloadBase.cs
-    170 ./Logic/Support/DatabaseMaintenance.cs
+    175 ./Logic/Support/DatabaseMaintenance.cs
      75 ./Logic/Support/SerializableDictionary.cs
     116 ./BuildFiles/Building/MsBuildToCCNet/Project.cs
      32 ./BuildFiles/Building/MsBuildToCCNet/Properties/AssemblyInfo.cs
@@ -445,7 +446,7 @@
      56 ./Utility/BotCode/BotLog.cs
      19 ./Utility/BotCode/InternalPollRandomizer.cs
     514 ./Utility/EventProcessor.cs
-    120 ./Utility/Communications/CommsTransmitterMail.cs
+    133 ./Utility/Communications/CommsTransmitterMail.cs
      75 ./Utility/Server/ExchangeCode.cs
     144 ./Utility/Server/ActiveDirectoryCode.cs
      37 ./Utility/Properties/AssemblyInfo.cs
@@ -474,7 +475,7 @@
      29 ./Site/Automation/Json-ByGuid.aspx.cs
      57 ./Site/Automation/Json-AvailableCurrencies.aspx.cs
       0 ./Site/Automation/Json-BudgetsTree.aspx
-    539 ./Site/Automation/SwarmFunctions.aspx.cs
+    541 ./Site/Automation/SwarmFunctions.aspx.cs
      96 ./Site/Automation/Json-TransactionTagsTree.aspx.cs
     136 ./Site/Automation/Json-GeographiesTree.aspx.cs
      59 ./Site/Automation/GetGeographyData.asmx
@@ -499,7 +500,7 @@
       0 ./Site/App_GlobalResources/fr-FR/Pages.Swarm.fr-FR.designer.cs
       0 ./Site/App_GlobalResources/fr-FR/Pages.Financial.fr-FR.designer.cs
       0 ./Site/App_GlobalResources/fr-FR/Controls.Swarm.fr-FR.designer.cs
-   2021 ./Site/App_GlobalResources/Global.designer.cs
+   2093 ./Site/App_GlobalResources/Global.designer.cs
       0 ./Site/App_GlobalResources/hi-IN/Pages.Ledgers.hi-IN.designer.cs
       0 ./Site/App_GlobalResources/hi-IN/Global.hi-IN.designer.cs
       0 ./Site/App_GlobalResources/hi-IN/Controls.Swarm.hi-IN.designer.cs
@@ -559,7 +560,7 @@
       0 ./Site/App_GlobalResources/ar-SA/Pages.Financial.ar-SA.designer.cs
       0 ./Site/App_GlobalResources/ar-SA/Menu5.ar-SA.designer.cs
     479 ./Site/App_GlobalResources/Pages.Public.designer.cs
-    514 ./Site/App_GlobalResources/Pages.Security.designer.cs
+    523 ./Site/App_GlobalResources/Pages.Security.designer.cs
       0 ./Site/App_GlobalResources/nb-NO/Pages.Comms.nb-NO.designer.cs
       0 ./Site/App_GlobalResources/nb-NO/Pages.Governance.nb-NO.designer.cs
       0 ./Site/App_GlobalResources/nb-NO/Pages.Security.nb-NO.designer.cs
@@ -584,7 +585,7 @@
       0 ./Site/App_GlobalResources/is-IS/Menu5.is-IS.designer.cs
       0 ./Site/App_GlobalResources/is-IS/Controls.Swarm.is-IS.designer.cs
       0 ./Site/App_GlobalResources/is-IS/Pages.Security.is-IS.designer.cs
-    585 ./Site/App_GlobalResources/Pages.Admin.designer.cs
+    603 ./Site/App_GlobalResources/Pages.Admin.designer.cs
    1810 ./Site/App_GlobalResources/Pages.Ledgers.designer.cs
    1386 ./Site/App_GlobalResources/Pages.Financial.designer.cs
     279 ./Site/App_GlobalResources/Pages.Swarm.designer.cs
@@ -612,7 +613,7 @@
       0 ./Site/App_GlobalResources/nl-NL/Menu5.nl-NL.designer.cs
       0 ./Site/App_GlobalResources/nl-NL/Global.nl-NL.designer.cs
       0 ./Site/App_GlobalResources/nl-NL/Pages.Admin.nl-NL.designer.cs
-    162 ./Site/App_GlobalResources/Pages.Comms.designer.cs
+    207 ./Site/App_GlobalResources/Pages.Comms.designer.cs
       0 ./Site/App_GlobalResources/sv-SE/Pages.Security.sv-SE.designer.cs
       0 ./Site/App_GlobalResources/sv-SE/Pages.Swarm.sv-SE.designer.cs
       0 ./Site/App_GlobalResources/sv-SE/Pages.Ledgers.sv-SE.designer.cs
@@ -726,7 +727,7 @@
      33 ./Site/Tests/TestBookkeepingIntegrity.aspx
      80 ./Site/Tests/TestBookkeepingIntegrity.aspx.cs
      94 ./Site/Tests/TestBookkeepingIntegrity.aspx.designer.cs
-     72 ./Site/Controls/v5/Financial/CurrencyTextBox.ascx.cs
+     73 ./Site/Controls/v5/Financial/CurrencyTextBox.ascx.cs
      67 ./Site/Controls/v5/Financial/ComboBudgets.ascx
      50 ./Site/Controls/v5/Financial/ComboBudgets.ascx.cs
       1 ./Site/Controls/v5/Financial/ComboIncomeCostType.ascx
@@ -771,14 +772,14 @@
       1 ./Site/Controls/v5/Base/MainMenu.ascx
       2 ./Site/Controls/v5/Base/WebUserControlTest.ascx
      24 ./Site/Controls/v5/Base/ModalDialog.ascx.designer.cs
-    117 ./Site/Controls/v5/Base/AjaxToggleSlider.ascx
+    121 ./Site/Controls/v5/Base/AjaxToggleSlider.ascx
      69 ./Site/Controls/v5/Base/FileUpload.ascx
      82 ./Site/Controls/v5/Base/FileUpload.ascx.cs
     334 ./Site/Pages/v5/Public/Signup.aspx.cs
-    764 ./Site/Pages/v5/Public/Signup.aspx
+    780 ./Site/Pages/v5/Public/Signup.aspx
       1 ./Site/Pages/v5/Public/Json-SignupVolunteerPositions.aspx
      15 ./Site/Pages/v5/Public/Json-SignupVolunteerPositions.aspx.designer.cs
-    811 ./Site/Pages/v5/Public/Initialize.aspx
+    812 ./Site/Pages/v5/Public/Initialize.aspx
      73 ./Site/Pages/v5/Public/Json-SignupVolunteerPositions.aspx.cs
     744 ./Site/Pages/v5/Public/Signup.aspx.designer.cs
     825 ./Site/Pages/v5/Public/Initialize.aspx.cs
@@ -802,7 +803,7 @@
      14 ./Site/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx.cs
     105 ./Site/Pages/v5/Financial/Donate.aspx.designer.cs
      89 ./Site/Pages/v5/Financial/RequestCashAdvance.aspx
-    252 ./Site/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
+    257 ./Site/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
      13 ./Site/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx
     282 ./Site/Pages/v5/Financial/PayOutMoney.aspx
       1 ./Site/Pages/v5/Financial/Json-AttestableCosts.aspx
@@ -823,10 +824,10 @@
      13 ./Site/Pages/v5/Financial/EconomyNotEnabled.aspx
     157 ./Site/Pages/v5/Financial/CreateInboundInvoice.aspx
     141 ./Site/Pages/v5/Admin/CreateOrganization.aspx.designer.cs
-    438 ./Site/Pages/v5/Admin/OrgSettings.aspx.designer.cs
-    265 ./Site/Pages/v5/Admin/OrgSettings.aspx
+    447 ./Site/Pages/v5/Admin/OrgSettings.aspx.designer.cs
+    232 ./Site/Pages/v5/Admin/OrgSettings.aspx
      87 ./Site/Pages/v5/Admin/OrgStaffing.aspx.designer.cs
-    101 ./Site/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx.cs
+    168 ./Site/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx.cs
     106 ./Site/Pages/v5/Admin/Hacks/PopulateCountry2.aspx
      24 ./Site/Pages/v5/Admin/Hacks/PopulateCountry1.aspx.designer.cs
     151 ./Site/Pages/v5/Admin/Hacks/PopulateCountry2.aspx.cs
@@ -844,13 +845,13 @@
      89 ./Site/Pages/v5/Admin/OrgStaffing.aspx.cs
      47 ./Site/Pages/v5/Admin/OrgStaffing.aspx
     152 ./Site/Pages/v5/Admin/SystemSettings.aspx
-    154 ./Site/Pages/v5/Admin/CreateOrganization.aspx.cs
+    173 ./Site/Pages/v5/Admin/CreateOrganization.aspx.cs
     175 ./Site/Pages/v5/Admin/BitcoinEchoTest.aspx.cs
     105 ./Site/Pages/v5/Admin/BitcoinEchoTest.aspx.designer.cs
     359 ./Site/Pages/v5/Admin/SystemSettings.aspx.cs
-    477 ./Site/Pages/v5/Admin/OrgSettings.aspx.cs
+    479 ./Site/Pages/v5/Admin/OrgSettings.aspx.cs
     100 ./Site/Pages/v5/Admin/BitcoinEchoTest.aspx
-     44 ./Site/Pages/v5/Admin/CreateOrganization.aspx
+     50 ./Site/Pages/v5/Admin/CreateOrganization.aspx
     186 ./Site/Pages/v5/Admin/SystemSettings.aspx.designer.cs
       1 ./Site/Pages/v5/Security/SetCurrentOrganization.aspx
      31 ./Site/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx
@@ -876,9 +877,9 @@
     113 ./Site/Pages/v5/User/SelectLanguage.aspx
      32 ./Site/Pages/v5/User/SetCulture.aspx.cs
       1 ./Site/Pages/v5/User/SetCulture.aspx
-     63 ./Site/Pages/v5/Comms/SendMassMessage.aspx
-    119 ./Site/Pages/v5/Comms/SendMassMessage.aspx.cs
-     87 ./Site/Pages/v5/Comms/SendMassMessage.aspx.designer.cs
+    140 ./Site/Pages/v5/Comms/SendMassMessage.aspx
+    173 ./Site/Pages/v5/Comms/SendMassMessage.aspx.cs
+     96 ./Site/Pages/v5/Comms/SendMassMessage.aspx.designer.cs
     114 ./Site/Pages/v5/Swarm/ListFindPeople.aspx.designer.cs
      15 ./Site/Pages/v5/Swarm/Json-ListFindPeople.aspx.designer.cs
     167 ./Site/Pages/v5/Swarm/AddPerson.aspx.cs
@@ -974,11 +975,11 @@
     142 ./Site/Pages/v5/Ledgers/Json-ProfitLossData.aspx.cs
      35 ./Site/Properties/AssemblyInfo.cs
     148 ./Site/Security/ResetPassword.aspx.cs
-    273 ./Site/Security/Login.aspx
+    275 ./Site/Security/Login.aspx
     105 ./Site/Security/Login-Old.aspx.cs
      94 ./Site/Security/RequestPasswordReset.aspx.cs
     195 ./Site/Security/ResetPassword.aspx.designer.cs
-    475 ./Site/Security/Login.aspx.cs
+    495 ./Site/Security/Login.aspx.cs
     135 ./Site/Security/RequestPasswordReset.aspx
      15 ./Site/Security/FinalizeLogin.aspx.designer.cs
      26 ./Site/Security/FinalizeLogin.aspx.cs
@@ -992,7 +993,7 @@
      69 ./Site/Bases/MasterV5Base.cs
     181 ./Site/Bases/DataV5Base.cs
      60 ./Site/Bases/ControlV5Base.cs
-    425 ./Site/Bases/CommonV5.cs
+    430 ./Site/Bases/CommonV5.cs
     193 ./Site/Bases/PageV5Base.cs
      19 ./Site/Default.aspx
     556 ./Site/Master-v5.master.cs
@@ -1001,7 +1002,7 @@
     130 ./Site/Global.asax
     582 ./Site/Master-v5.master.designer.cs
     794 ./Backend/Program.cs
-     66 ./Backend/CommsTransmitter.cs
+    150 ./Backend/CommsTransmitter.cs
      38 ./Backend/Properties/AssemblyInfo.cs
      28 ./Basic/EventTypesSources.cs
      43 ./Basic/Strings.cs
@@ -1116,15 +1117,16 @@
     239 ./Database/Database-ExchangeRates.cs
      79 ./Database/Database-PaymentCodes.cs
     174 ./Database/Database-ExternalIdentities.cs
-    667 ./Database/Database-Participation.cs
+    686 ./Database/Database-Participation.cs
     254 ./Database/Database-HotBitcoinAddresses.cs
     204 ./Database/Database-Salaries.cs
     133 ./Database/Database-MailTemplates.cs
+     20 ./Database/RecordLimit.cs
     964 ./Database/Database-PostalCodes.cs
     512 ./Database/Database-Organizations.cs
     561 ./Database/Database-Payments.cs
     436 ./Database/Database-Media.cs
-    255 ./Database/Database-Conditions.cs
+    266 ./Database/Database-Conditions.cs
      94 ./Database/Database-TaxLevels.cs
     119 ./Database/Database-ChurnData.cs
     142 ./Database/Database-InternalPollCandidates.cs
@@ -1146,7 +1148,7 @@
     166 ./Database/Database-InternalPolls.cs
     482 ./Database/Database-Geographies.cs
      44 ./Database/Database-ExternalCredentials.cs
-    526 ./Database/Database-OutboundCommRecipients.cs
+    527 ./Database/Database-OutboundCommRecipients.cs
      23 ./Database/Database-OutboundPhoneMessages.cs
     879 ./Database/Database-PaperLetters.cs
     197 ./Database/Database-Tests.cs
@@ -1160,7 +1162,7 @@
     528 ./Database/Database-FinancialTransactionTagSets.cs
     929 ./Database/Database-Payroll.cs
     224 ./Database/Database-Roles.cs
-    827 ./Database/Database-Positions.cs
+    836 ./Database/Database-Positions.cs
     375 ./Database/Database-OutboundMails.cs
     137 ./Database/Database-Optimizations.cs
     160 ./Database/Database-CommunicationTurnarounds.cs
@@ -1177,4 +1179,4 @@
     131 ./Database/Database-OrganizationFinancialAccounts.cs
      87 ./Database/Database-OutboundMailRecipients.cs
     105 ./Database/Database-Activists.cs
- 140246 total
+ 140936 total

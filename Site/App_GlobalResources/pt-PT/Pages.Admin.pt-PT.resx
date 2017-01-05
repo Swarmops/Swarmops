@@ -129,9 +129,7 @@
     <value>Recebidos {0} microcoins ("bits"). Irão ser devolvidas brevemente (menos taxa de minagem).</value>
     <comment>Used if BTC is the org native currency.</comment>
   </data>
-  <data name="BitcoinEchoTest_Info" xml:space="preserve">
-    <value>Este é um teste de eco bitcoin, para testar a conta corrente bitcoin. Se enviar uma pequena quantia para aqui, ela ser-lhe-á enviada de volta a si.</value>
-  </data>
+  
   <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
     <value>Doar</value>
   </data>
@@ -158,9 +156,11 @@
   <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
     <value>Criar nova organização como...</value>
   </data>
+  
   <data name="CreateOrganization_Info" xml:space="preserve">
     <value>Pode criar uma nova organização como uma nova organização independente ou como uma sub-organização dentro da actual. (Todas as pessoas com responsabilidades numa dada organização têm automaticamente os direitos e privilégios correspondentes em todas as sub-organizações.)</value>
   </data>
+  
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
     <value>Moeda de funcionamento</value>
   </data>
@@ -174,10 +174,7 @@
     <value>Pessoas regulares serão chamadas de</value>
     <comment>This can be "members", etc.</comment>
   </data>
-  <data name="CreateOrganization_Success" xml:space="preserve">
-    <value>A nova organização foi criada. Foi-lhe concedido um {0} de dois anos na organização, para que possa trabalhar nela e configurá-la corretamente. Para mudar para a sua nova organização, utilize o painel de controlo no canto superior direito.</value>
-    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
-  </data>
+  
   <data name="CreateOrganization_Titles" xml:space="preserve">
     <value>Títulos iniciais da posição, por omissão</value>
   </data>

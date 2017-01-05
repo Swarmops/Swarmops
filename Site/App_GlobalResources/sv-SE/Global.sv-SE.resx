@@ -719,13 +719,162 @@
     <value>Flaggor</value>
     <comment>As in a table column header</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_Total" xml:space="preserve">
+    <value>Summa</value>
+    <comment>Used as footer in tables, summarizing something</comment>
+  </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>Detta fält kan inte vara tomt.</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>Ett okänt fel inträffade när värdet skulle sättas.</value>
+  </data>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>Twitter-ID</value>
+  </data>
+  <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
+    <value>BitID tvåfaktorsautentisering (avstänging karantänar login)</value>
+    <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
+  </data>
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>Säkerhetshjälp</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>Återställ lösenord</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>Maila länk för återställning av lösenord</value>
+  </data>
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>Detta ser inte ut som ett giltigt telefonnummer, men vi lagrar det som skrivs här ändå.</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>Nollställ personens lösenord?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>Du nollställer ett lösenord. Den berörda personen kommer att få en återställningslänk i mail, som de kan använda för att sätta ett nytt lösenord till Swarmops.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Gör aldrig detta utan att uttryckligen ha ombetts av personen själv.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Vill du genomföra lösenordsnollställningen?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>Lösenordsnollställning är inte tillåtet</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>Den här användarens e-postadress har ändrats nyligen (för mindre än en vecka sedan). Av säkerhetsskäl, så skickas inte lösenordsnollställningslänkar till en nyligen ändrad mailadress.</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>En länk för återställning av lösenord har skickats till personen.</value>
+  </data>
+  <data name="Global_2FA" xml:space="preserve">
+    <value>Tvåfaktorsautentisering</value>
+  </data>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>Tvåfaktorsaut</value>
+  </data>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
+    <value>&lt;strong&gt;Kan INTE AKTIVERA 2FA&lt;/strong&gt; &lt;br/&gt; &lt;br/&gt;Du kan inte aktivera tvåfaktorsautentisering för någon annan. De måste göra det själva, för att därmed vara ensamma om att ha sina hemliga nycklar.</value>
+    <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedOwn" xml:space="preserve">
+    <value>Tvåfaktorsautentisering har stängts av. Du behöver nu logga in med ett vanligt lösenord.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedProvision" xml:space="preserve">
+    <value>Tvåfaktorsautentisering togs bort för denna person. De behöver nu logga in med ett vanligt lösenord.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveOwn" xml:space="preserve">
+    <value>&lt;strong&gt;STÄNG AV TVÅFAKTORSAUTENTISERING?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Detta rekommenderas inte. Tvåfaktorsautentisering höjer avsevärt säkerheten för ditt konto, förutom att göra det mycket lättare att logga in om du använder BitID.&lt;br/&gt;&lt;br/&gt;Ta bort 2FA och gå tillbaka till vanligt lösenord?</value>
+    <comment>Displayed when removing 2FA for yourself</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
+    <value>&lt;strong&gt;TA BORT TVÅFAKTORSAUTENTISERING?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Gör endast detta om du har fått en begäran att stänga av 2FA, av personen själv, &lt;strong&gt;och&lt;/strong&gt; du är hundraprocentigt absolut säker att den begäran faktiskt kom från personen vars säkerhet du stänger av (per organisationens kontroll- och säkerhetspolicy).&lt;br/&gt;&lt;br/&gt;Gå vidare med att reducera användarens säkerhet? De kommer endast att ha lösenordssäkerhet.</value>
+    <comment>Displayed when removing 2FA for someone else</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
+    <value>Tvåfaktorsautentisering har inte tagits bort, utan är fortfarande aktivt.</value>
+  </data>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>En dag</value>
+  </data>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>Sju dagar</value>
+  </data>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>Två dagar</value>
+  </data>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>Två veckor</value>
+  </data>
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>&lt;strong&gt;BITID TVÅFAKTORSAUTENTISERING AKTIVERAT&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;När du loggar på från och med nu, så behöver du använda BitId-appen du just använde för att scanna QR-koden.</value>
+  </data>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>BitID tvåfaktorsautentisering har inte aktiverats.</value>
+  </data>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>Skanna den här koden för att aktivera BitID</value>
+  </data>
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>&lt;h3&gt;Vad är detta?&lt;/h3&gt;&lt;p&gt;BitID är ett sätt att logga in säkert med mindre krångel än att ange ett lösenord. Dess enkelhet kan inte förklaras, bara upplevas, och det är en tvåfaktorsautentisering eftersom den använder din telefon.&lt;/p&gt;&lt;h3&gt;Kräver inte det att min telefon skyddas också?&lt;/h3&gt;&lt;p&gt;Tja, jo. Det är din telefon och din telefons tillgångsskydd. Men din telefon bör alltid ha någon form av skydd.&lt;/p&gt;                 &lt;h3&gt;Behöver jag en app för detta?&lt;/h3&gt;                 &lt;p&gt;Kanske. Vissa mobila bitcoinplånböcker har BitID inbyggt. Det vanligaste man det inte. Om din bitcoinplånbok inte har BitID, så leta efter en app som heter "BitID Authenticator" eller liknande.&lt;/p&gt;                 &lt;h3&gt;Hur aktiverar jag BitID?&lt;/h3&gt;                 &lt;p&gt;Använd appen på din mobil för att skanna den här koden. Efter det, så kan du skanna en liknande kod på inloggningsskärmen för att logga in.&lt;/p&gt;</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>BitID (bitcoinsignatur) tvåfaktorsautentisering</value>
+  </data>
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value>BitID tvåfaktorsaut</value>
+  </data>
+  <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
+    <value>Ange nuvarande lösenord för att se panelen</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
+    <value>Din säkerhet</value>
+  </data>
+  <data name="Master_EditPersonNewPassword1" xml:space="preserve">
+    <value>Skriv nytt lösenord</value>
+  </data>
+  <data name="Master_EditPersonNewPassword2" xml:space="preserve">
+    <value>Upprepa nytt lösenord</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
+    <value>Det går inte att byta lösenord: det gamla lösenordet är felaktigt.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_TooWeak" xml:space="preserve">
+    <value>Det går inte att byta lösenord: det nya lösenordet är för svagt. Använd ett starkare lösenord.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
+    <value>&lt;strong&gt;LÖSENORDET ÄNDRAT&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Du har bytt ditt lösenord. Som en säkerhetsåtgärd kan du inte göra några pengauttag de närmaste 48 timmarna.</value>
+  </data>
+  <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
+    <value>Om du har möjlighet, så aktivera BitID tvåfaktorsautentisering.</value>
+  </data>
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>Officer</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>Officer</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>Officer</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>Officerer</value>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>Volontär</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>Volontär</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>Volontär</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>Volontärer</value>
+  </data>
 </root>

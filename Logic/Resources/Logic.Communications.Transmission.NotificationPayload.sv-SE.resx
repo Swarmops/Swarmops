@@ -262,17 +262,11 @@ Logga in på [InstallationName] på [ExternalUrl]Financial/AttestCosts för att 
     <value>[[OrganizationName]] [Regularship] förnyat: [PersonName], [PersonGeography] [CountryCode] (manuell)</value>
   </data>
   
-  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
-    <value>Ditt meddelande har lagts i kö för leverans och mottagarlistan är upprättad. Ditt mail kommer att skickas till eller försökas skickas till [RecipientCount] personer i [Geography] i [OrganizationName].</value>
-  </data>
+  
   <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Mottagarlista upprättad för [GeographyName]: [RecipientCount]</value>
   </data>
-  <data name="OutboundComm_Sent_Body" xml:space="preserve">
-    <value>Ditt meddelande till [GeographyName] har skickats till alla på mottagarlistan. Av [RecipientCount] planerade addressater, så lyckades Swarmops skicka till [RecipientsSuccess]. (Dessa kan misslyckas senare på grund av olika orsaker, allt från trasiga datorer till sjuka mottagare.)
-
-Tid från order till sändningen var klar: [TransmissionTime].</value>
-  </data>
+  
   <data name="OutboundComm_Sent_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Meddelande sänt: [GeographyName]</value>
   </data>

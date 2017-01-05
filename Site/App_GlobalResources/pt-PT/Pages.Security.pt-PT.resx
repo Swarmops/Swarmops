@@ -182,6 +182,7 @@
   <data name="Login_BitIdEnabled" xml:space="preserve">
     <value>&lt;strong&gt;Autenticação de dois fatores BitId está agora ativa.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;A partir de agora, pode usar a sua carteira bitcoin para entrar (e irá &lt;strong&gt;necessitar&lt;/strong&gt; dela para fazê-lo). Obrigado por ativar segurança adicional.&lt;br/&gt;&lt;br/&gt;Por favor lembre-se de manter o seu telefone seguro com uma palavra-passe também.</value>
   </data>
+  
   <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
     <value>A2F</value>
   </data>

@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SendMassMessage_Error_EmptyBody" xml:space="preserve">
+    <value>crwdns6556537:0crwdne6556537:0</value>
+  </data>
+  <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
+    <value>crwdns6556538:0crwdne6556538:0</value>
+  </data>
   <data name="SendMassMessage_Geography" xml:space="preserve">
     <value>crwdns6555361:0crwdne6555361:0</value>
   </data>
@@ -125,6 +131,9 @@
   </data>
   <data name="SendMassMessage_Info" xml:space="preserve">
     <value>crwdns6555363:0crwdne6555363:0</value>
+  </data>
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>crwdns6556539:0crwdne6556539:0</value>
   </data>
   <data name="SendMassMessage_MockMessageResult" xml:space="preserve">
     <value>crwdns6555364:0crwdne6555364:0</value>
@@ -136,12 +145,19 @@
   <data name="SendMassMessage_RecipientType" xml:space="preserve">
     <value>crwdns6555366:0crwdne6555366:0</value>
   </data>
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>crwdns6556540:0crwdne6556540:0</value>
+  </data>
   <data name="SendMassMessage_SendMessage" xml:space="preserve">
     <value>crwdns6555367:0crwdne6555367:0</value>
     <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
   </data>
   <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
     <value>crwdns6555368:0crwdne6555368:0</value>
+  </data>
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>crwdns6556541:0crwdne6556541:0</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
   </data>
   <data name="SendMassMessage_TestMessage" xml:space="preserve">
     <value>crwdns6555369:0crwdne6555369:0</value>

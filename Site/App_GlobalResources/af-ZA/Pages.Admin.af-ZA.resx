@@ -130,7 +130,7 @@
     <comment>Used if BTC is the org native currency.</comment>
   </data>
   <data name="BitcoinEchoTest_Info" xml:space="preserve">
-    <value>crwdns6556400:0crwdne6556400:0</value>
+    <value>crwdns6556533:0crwdne6556533:0</value>
   </data>
   <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
     <value>crwdns6556401:0crwdne6556401:0</value>
@@ -158,8 +158,14 @@
   <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
     <value>crwdns6555023:0crwdne6555023:0</value>
   </data>
+  <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
+    <value>crwdns6556534:0crwdne6556534:0</value>
+  </data>
   <data name="CreateOrganization_Info" xml:space="preserve">
     <value>crwdns6555408:0crwdne6555408:0</value>
+  </data>
+  <data name="CreateOrganization_NewOrganizationName" xml:space="preserve">
+    <value>crwdns6556535:0crwdne6556535:0</value>
   </data>
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
     <value>crwdns6555025:0crwdne6555025:0</value>
@@ -175,7 +181,7 @@
     <comment>This can be "members", etc.</comment>
   </data>
   <data name="CreateOrganization_Success" xml:space="preserve">
-    <value>crwdns6555029:0{0}crwdne6555029:0</value>
+    <value>crwdns6556536:0{0}crwdne6556536:0</value>
     <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
   </data>
   <data name="CreateOrganization_Titles" xml:space="preserve">

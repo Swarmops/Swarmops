@@ -585,12 +585,30 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Kvittona för utläggsanspråk #{0:N0} på {1} {2:N2} har godkänts.</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Skapa</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Skriv in beloppet (i {0}) som fakturan begär.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Välj en budget att belasta.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Ladda upp ett eller flera dokument som visar den ursprungliga fakturan.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Vänligen välj ett alternativ.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Beskriv vad detta inköp var.</value>
+  </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Begär</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Begär</value>
+  </data>
 </root>

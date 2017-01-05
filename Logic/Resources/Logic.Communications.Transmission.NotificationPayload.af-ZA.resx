@@ -277,13 +277,13 @@
     <value>crwdns6556386:0[Addressee]crwdnd6556386:0[OrganizationName]crwdnd6556386:0[InstallationName]crwdnd6556386:0[ExternalUrl]crwdne6556386:0</value>
   </data>
   <data name="OutboundComm_Resolved_Body" xml:space="preserve">
-    <value>crwdns6555556:0[RecipientCount]crwdnd6555556:0[Geography]crwdnd6555556:0[OrganizationName]crwdne6555556:0</value>
+    <value>crwdns6556487:0[RecipientCount]crwdnd6556487:0[GeographyName]crwdnd6556487:0[OrganizationName]crwdne6556487:0</value>
   </data>
   <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
     <value>crwdns6555557:0[OrganizationName]crwdnd6555557:0[GeographyName]crwdnd6555557:0[RecipientCount]crwdne6555557:0</value>
   </data>
   <data name="OutboundComm_Sent_Body" xml:space="preserve">
-    <value>crwdns6555558:0[GeographyName]crwdnd6555558:0[RecipientCount]crwdnd6555558:0[RecipientsSuccess]crwdnd6555558:0[TransmissionTime]crwdne6555558:0</value>
+    <value>crwdns6556488:0[GeographyName]crwdnd6556488:0[RecipientCount]crwdnd6556488:0[RecipientsSuccess]crwdnd6556488:0[ResolvingTime]crwdnd6556488:0[TransmissionTime]crwdnd6556488:0[TotalTime]crwdne6556488:0</value>
   </data>
   <data name="OutboundComm_Sent_Subject" xml:space="preserve">
     <value>crwdns6555559:0[OrganizationName]crwdnd6555559:0[GeographyName]crwdne6555559:0</value>

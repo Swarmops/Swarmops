@@ -132,6 +132,8 @@
     <value>Создать новую организацию как...</value>
   </data>
   
+  
+  
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
     <value>Используемая денежная единица</value>
   </data>

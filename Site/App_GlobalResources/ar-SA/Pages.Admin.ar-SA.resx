@@ -138,9 +138,11 @@
   <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
     <value>إنشاء المنظمة الجديدة ك...</value>
   </data>
+  
   <data name="CreateOrganization_Info" xml:space="preserve">
     <value>يمكنك إنشاء منظمة جديدة كمنظمة مستقلة، أو كمنظمة وليدة من المنظمة الحالية. (جميع الأشخاص في المنظمة الأم مع مسؤولياتهم سيكون لهم نفس الصلاحيات والامتيازات في المنظمة الوليدة تلقائياً.)</value>
   </data>
+  
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
     <value>عملة المنظمة</value>
   </data>
@@ -154,10 +156,7 @@
     <value>الأشخاص العاديون سيتم تسميتهم</value>
     <comment>This can be "members", etc.</comment>
   </data>
-  <data name="CreateOrganization_Success" xml:space="preserve">
-    <value>لقد تم إنشاء المنظمة الجديدة. وتم منحك سنتين من الـ {0} في المنظمة حتى تتمكن من العمل عليها وتأسيسها على النحو المناسب. لتنتقل إلى العمل على منظمتك الجديدة، استخدم لوحة التحكم في أعلى الجزء الأيمن.</value>
-    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
-  </data>
+  
   
   
   

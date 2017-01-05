@@ -319,17 +319,11 @@ Por favor entre em [InstallationName] em [ExternalUrl]Financial/AttestCosts para
     <value>--
 Este email foi enviado a [Addressee] de [OrganizationName]. Caso no futuro deseje deixar de receber estas notificações, por favor entre em [InstallationName] em [ExternalUrl] e modifique as suas definições de notificação.</value>
   </data>
-  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
-    <value>A sua mensagem está em espera para ser entregue e os destinatários foram definidos. O seu correio será tentativamente enviado a [RecipientCount] pessoas em [Geography] de [OrganizationName].</value>
-  </data>
+  
   <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Destinatários de Comunicado determinados para [GeographyName]: [RecipientCount]</value>
   </data>
-  <data name="OutboundComm_Sent_Body" xml:space="preserve">
-    <value>A sua mensagem para [GeographyName] foi enviada a todos os destinatários planeados. Dos [RecipientCount] destinatários planeados, dos quais [RecipientsSuccess] com sucesso. (Estes podem falhar por várias razões, desde avarias de computador a destinatários hospitalizados.)
-
-Tempo gasto na transmissão: [TransmissionTime].</value>
-  </data>
+  
   <data name="OutboundComm_Sent_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Comunicado transmitido: [GeographyName]</value>
   </data>

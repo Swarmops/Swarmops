@@ -331,10 +331,10 @@
     <value>Styrelseledamöter</value>
   </data>
   <data name="Position_Strategic_Observer" xml:space="preserve">
-    <value>Observatör</value>
+    <value>Styrelseobservatör</value>
   </data>
   <data name="Position_Strategic_Observer_Plural" xml:space="preserve">
-    <value>Observatörer</value>
+    <value>Styrelseobservatörer</value>
   </data>
   <data name="Position_System_SysadminAssistantReadOnly" xml:space="preserve">
     <value>Systemadministratörsassistent (endast läsrättighet)</value>

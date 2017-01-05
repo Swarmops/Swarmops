@@ -181,6 +181,9 @@
   <data name="Login_BitIdEnabled" xml:space="preserve">
     <value>crwdns6555046:0crwdne6555046:0</value>
   </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>crwdns6556542:0crwdne6556542:0</value>
+  </data>
   <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
     <value>crwdns6555047:0crwdne6555047:0</value>
   </data>
