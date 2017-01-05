@@ -1,5 +1,6 @@
 ALTER TABLE `HotBitcoinAddresses` 
-ADD UNIQUE INDEX `Ix_Address` (`AddressString` ASC)
+DROP INDEX `Ix_Address`,
+ADD UNIQUE INDEX `Ix_AddressHash` (`AddressString` ASC)
 
 
 #
