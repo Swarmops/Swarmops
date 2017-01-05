@@ -253,7 +253,7 @@ namespace Swarmops.Frontend.Automation
 
             Person person = Person.FromIdentity (personId);
 
-            if (!authData.Authority.CanSeePerson (person))
+            if (!authData.Authority.CanSeePerson (person) && !self)
             {
                 throw new ArgumentException(); // can't see the requested person, for whatever reason
             }
@@ -261,10 +261,10 @@ namespace Swarmops.Frontend.Automation
             return new PersonEditorData
             {
                 Success = true,
-                Name = JavascriptEscape(person.Name),
-                Mail = JavascriptEscape(person.Mail),
-                Phone = JavascriptEscape(person.Phone),
-                TwitterId = JavascriptEscape(person.TwitterId),
+                Name = person.Name,
+                Mail = person.Mail,
+                Phone = person.Phone,
+                TwitterId = person.TwitterId,
                 TwoFactorActive = !string.IsNullOrEmpty(person.BitIdAddress)
             };
         }
