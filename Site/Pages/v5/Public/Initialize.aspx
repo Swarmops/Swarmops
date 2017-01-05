@@ -267,8 +267,9 @@
 	            else if (stepNumber == 3) {
 	                isValid = databaseInitComplete;
 	                
-                    if (isValid) {
-                        $('#<%=this.TextFirstUserName.ClientID %>').focus();
+	                if (isValid) {
+                        // Delay exec one second to give time for control to fade in
+                        setTimeout(function() { $('#<%=this.TextFirstUserName.ClientID %>').focus(); }, 1000);
                     }
 	            }
 	            else if (stepNumber == 4) {
