@@ -19,7 +19,7 @@ namespace Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option or rebuild the Visual Studio project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "11.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Menu5 {
@@ -129,6 +129,33 @@ namespace Resources {
         internal static string Menu5_Administration_SystemSettings {
             get {
                 return ResourceManager.GetString("Menu5_Administration_SystemSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Built on {0:MMM d, yyyy}.
+        /// </summary>
+        internal static string Menu5_Beta_BuildTime {
+            get {
+                return ResourceManager.GetString("Menu5_Beta_BuildTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:N0} lines of code.
+        /// </summary>
+        internal static string Menu5_Beta_LinesOfCode {
+            get {
+                return ResourceManager.GetString("Menu5_Beta_LinesOfCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report a Swarmops Bug (on Github).
+        /// </summary>
+        internal static string Menu5_Beta_ReportBug {
+            get {
+                return ResourceManager.GetString("Menu5_Beta_ReportBug", resourceCulture);
             }
         }
         

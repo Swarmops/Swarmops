@@ -14,6 +14,7 @@ namespace Swarmops.Logic.Support
     public static class Formatting
     {
         private static string _swarmopsVersion;
+        private static DateTime? _swarmopsBuildDateTime = null;
 
         public static string SwarmopsVersion
         {
@@ -70,6 +71,62 @@ namespace Swarmops.Logic.Support
                 }
 
                 return _swarmopsVersion;
+            }
+        }
+
+        public static DateTime SwarmopsBuildTime
+        {
+            get
+            {
+                if (_swarmopsBuildDateTime != null)
+                {
+                    return (DateTime) _swarmopsBuildDateTime;
+                }
+
+                if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    _swarmopsBuildDateTime = DateTime.Now;
+                    GuidCache.Set("_swarmopsBuildDateTime", _swarmopsBuildDateTime);
+                    return (DateTime) _swarmopsBuildDateTime;
+                }
+
+                // if we still don't have it, check the cache and possibly return
+
+                _swarmopsBuildDateTime = (DateTime?) GuidCache.Get("_swarmopsBuildDateTime");
+
+                if (_swarmopsBuildDateTime != null)
+                {
+                    return (DateTime) _swarmopsBuildDateTime;
+                }
+
+                try
+                {
+                    if (HttpContext.Current != null) // frontend: use friendly format
+                    {
+                        using (
+                            StreamReader reader =
+                                File.OpenText(HttpContext.Current.Request.MapPath("~/BuildDateTime.txt")))
+                        {
+                            _swarmopsBuildDateTime = DateTime.Parse(reader.ReadLine());
+                        }
+                    }
+                    else // backend: use build ID only
+                    {
+                        using (
+                            StreamReader reader =
+                                File.OpenText("/usr/share/swarmops/backend/BuildDateTime.txt"))
+                        {
+                            _swarmopsBuildDateTime = DateTime.Parse(reader.ReadLine());
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    _swarmopsBuildDateTime = DateTime.Now;
+                }
+
+                GuidCache.Set("_swarmopsBuildDateTime", _swarmopsBuildDateTime);
+                return (DateTime) _swarmopsBuildDateTime;
             }
         }
 

@@ -423,4 +423,14 @@
   <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
     <value>Bitcoin Hotwallet</value>
   </data>
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>Built on {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} lines of code</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Report a Swarmops Bug (on Github)</value>
+  </data>
 </root>

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Xml.Serialization;
 using Swarmops.Frontend;
 using Swarmops.Interface.Objects;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 
@@ -52,7 +53,20 @@ namespace Swarmops.Controls.Base
         protected override void Render (HtmlTextWriter output)
         {
             output.Write ("<ul id='MainMenuContainer' class='sf-menu'>");
-            output.Write(("<li class='Submenu' id='LiSwarmopsLogo'><div id='DivSwarmopsLogo'></div></li>")); // Swarmops logo
+
+            // Hard coded beta menu with build statistics, bug reporting option
+
+            output.Write(("<li class='Submenu' id='LiSwarmopsLogo'><div id='DivSwarmopsLogo'></div><ul>")); // Swarmops logo
+            output.Write("<li class='BuildNumber' dir='ltr'><a href='#builddata'><img src='/Images/PageIcons/swarmops-builder-40px.png' height='20' width='20' />" + Formatting.SwarmopsVersion + "</a></li>");
+            output.Write(
+                "<li class='Disabled' dir='ltr'><a href='#builddata'><img src='/Images/PageIcons/transparency-16px.png' height='20' width='20' />" +
+                String.Format(Resources.Menu5.Menu5_Beta_BuildTime, Formatting.SwarmopsBuildTime) + "</a></li>");
+            output.Write("<li class='Disabled' dir='ltr'><a href='#builddata'><img src='/Images/PageIcons/transparency-16px.png' height='20' width='20' />" + String.Format(Resources.Menu5.Menu5_Beta_LinesOfCode, @"<!--KaylockCount-->140,936<!--EndKaylock-->") + "</a></li>");
+            output.Write("<li class='Separator'>&nbsp;<hr/></li>");
+            output.Write("<li class='Link'><a target='_blank' href='https://github.com/Swarmops/Swarmops/issues/new'><img src='/Images/Icons/iconshock-warning-24px.png' height='20' width='20' />" + Resources.Menu5.Menu5_Beta_ReportBug + "</a></li>");
+            output.Write("</ul></li>"); // End of beta menu
+
+
             foreach (MainMenuItem menuItem in MainMenuData)
             {
                 WriteMenuItem (menuItem, output);
