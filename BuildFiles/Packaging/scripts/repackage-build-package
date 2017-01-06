@@ -166,7 +166,9 @@ dos2unix -q DEBIAN/*
 dos2unix -q etc/init.d/*
 
 if [ -e $DEPLOYDIR/$TARGETDIR ]; then
+  echo "Timestamping build..."
   echo $BUILDID > $DEPLOYDIR/$TARGETDIR/BuildIdentity.txt
+  date +"%Y-%m-%d %H:%M" > $DEPLOYDIR/$TARGETDIR/BuildDateTime.txt
 fi
 
 cd ../..
