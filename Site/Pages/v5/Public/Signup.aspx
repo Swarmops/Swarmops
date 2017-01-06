@@ -65,11 +65,11 @@
         }
 
         .swMain {
-            height: 490px !important;
+            height: 420px !important;
         }
 
         .stepContainer {
-            height: 450px !important;
+            height: 380px !important;
         }
 
         div.stepContainer > div.content {
@@ -144,13 +144,6 @@
 	            var inputWidth = $('#<%=this.TextName.ClientID%>').width();
 	            $('#<%=this.DropCountries.ClientID%>').width(inputWidth -14);
 	            $('#<%=this.DropGenders.ClientID%>').width(inputWidth -14);
-
-	            // If payment has been disabled, cross out that step in the menu
-
-	            if (disablePayment) {
-	                $('#wizard').smartWizard('disableStep', '6');
-	                $('a[rel="6"]').addClass("crossout").addClass("disabled");
-	            }
 
                 // Guess country
 
@@ -502,9 +495,9 @@
 	                    }
 
 	                } else if (stepNumber == 5) {
-	                    isValid = true; // assume true, make false as we go
+    	                isValid = true; // assume true, make false as we go
 
-	                    if ($('input:radio[name="ActivationLevel"]:checked').val() == "RadioActivationVolunteer") {
+    	                if ($('input:radio[name="ActivationLevel"]:checked').val() == "RadioActivationVolunteer") {
 	                        // if step 5 active...
 
 	                        selectedPositions = $('#tableVolunteerPositions').datagrid('getChecked');
@@ -517,11 +510,8 @@
 	                        $('a[rel="5"]').addClass("disabled").addClass("crossout");
 	                        selectedPositions = {};
 	                    }
-	                }
-	                else if (stepNumber == 6) {
-	                    // TODO: Payment functions
-	                    isValid = true;
-	                } else if (stepNumber == 7) {
+
+	                } else if (stepNumber == 6) {
     	                // This will never trigger in the stock signup - Finish doesn't trigger Validate
 	                }
 
@@ -568,8 +558,6 @@
 
     	    var suppressChecks = false;
     	    var selectedPositions = {};
-
-	        var disablePayment = true; // TODO: Set this dynamically once membership payment is complete
 
     	</script>
 	
@@ -632,13 +620,6 @@
                         <span class="stepDesc">
                             <asp:Label runat="server" ID="LabelStep6Header" /><br />
                             <small><asp:Label runat="server" ID="LabelStep6Text" /></small>
-                        </span>                   
-                    </a></li>
-  				        <li><a href="#step-7">
-                        <label class="stepNumber">7</label>
-                        <span class="stepDesc">
-                            <asp:Label runat="server" ID="LabelStep7Header" /><br />
-                            <small><asp:Label runat="server" ID="LabelStep7Text" /></small>
                         </span>                   
                     </a></li>
   			        </ul>
@@ -712,15 +693,12 @@
                           </table>
                           <p><asp:Label ID="LabelVolunteerLevelIntro" runat="server" /></p>
                     </div>
-                    <div id="step-6">
-                        <div id="PaymentStep"><!-- Todo --></div>
-                    </div>
-  			        <div id="step-7">
-  			            <div id="divStep7NoPayment">
+  			        <div id="step-6">
+  			            <div id="divStep6NoPayment">
                           <h2><asp:Label ID="LabelFinalizeSignupHeader" runat="server" /></h2>
                           <p>This is the organization-specific text shown for Signup Finalization. It is set in Admin / Org Settings. When the new person presses Finish, they will be entered into the organization, logged on, and sent to the Dashboard as a Beginner user.</p>
   			            </div>
-                          <div id="divStep7Payment" style="display:none"><!-- todo --></div>
+                          <div id="divStep6Payment" style="display:none"><!-- todo --></div>
                     </div>
       		    </div>
 

@@ -139,10 +139,8 @@ namespace Swarmops.Frontend.Pages.Public
             this.LabelStep4Text.Text = Resources.Pages.Public.Signup_Step4Text;
             this.LabelStep5Header.Text = Resources.Pages.Public.Signup_Step5Header;
             this.LabelStep5Text.Text = Resources.Pages.Public.Signup_Step5Text;
-            this.LabelStep6Header.Text = Resources.Pages.Public.Signup_Step6Header_Payment;
-            this.LabelStep6Text.Text = Resources.Pages.Public.Signup_Step6Text_Payment;
-            this.LabelStep7Header.Text = Resources.Pages.Public.Signup_Step6Header;
-            this.LabelStep7Text.Text = Resources.Pages.Public.Signup_Step6Text;
+            this.LabelStep6Header.Text = Resources.Pages.Public.Signup_Step6Header;
+            this.LabelStep6Text.Text = Resources.Pages.Public.Signup_Step6Text;
 
             this.LabelName.Text = Resources.Pages.Public.Signup_YourName;
             this.LabelCountry.Text = Resources.Global.Global_Country;
