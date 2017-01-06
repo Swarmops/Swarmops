@@ -213,7 +213,7 @@ body.rtl .topSearchBox input {
     background-size: 60px 68px;
 }
 
-#DivSwarmopsLogo:hover {
+#DivSwarmopsLogo:hover, .sfHover #DivSwarmopsLogo {
     background-position-y: 34px;
 }
 
