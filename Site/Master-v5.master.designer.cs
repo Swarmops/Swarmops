@@ -139,15 +139,6 @@ namespace Swarmops.Frontend {
         protected global::System.Web.UI.WebControls.Image ImageCultureIndicator;
         
         /// <summary>
-        /// ImageLogo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageLogo;
-        
-        /// <summary>
         /// SearchBox control.
         /// </summary>
         /// <remarks>
@@ -191,6 +182,15 @@ namespace Swarmops.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder PlaceHolderMain;
+        
+        /// <summary>
+        /// ImageLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImageLogo;
         
         /// <summary>
         /// LabelSidebarInfo control.

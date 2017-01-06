@@ -140,9 +140,6 @@ body.rtl div.currentuserinfo {
 {
 	height:38px;
 	width: 100%;
-	-moz-border-radius: 2em;
-	-webkit-border-radius: 2em;
-	border-radius: 2em;
 	background-color: #476EC7;
 	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5277CC', endColorstr='#3E66C2');  /* MSIE */
 	background: -moz-linear-gradient(top, #5277CC, #3E66C2);  /* Mozilla */
@@ -152,11 +149,7 @@ body.rtl div.currentuserinfo {
 	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
 
-	border: solid 1px #1C397E;
-	border-top-left-radius: 2em 2em;
-	border-top-right-radius: 2em 2em;
-	border-bottom-right-radius: 2em 2em;
-	border-bottom-left-radius: 2em 2em;
+	border-bottom: solid 1px #1C397E;
 }
 
 
@@ -184,7 +177,7 @@ body.rtl .topSearchBox {
 	width:150px;
 	-moz-border-radius: 2em;
 	-webkit-border-radius: 2em;
-	border-radius: 2em;
+	border-radius: 0.8em;
 	background: #E4ECFF;
 	height:24px;
 	-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .4);
@@ -209,14 +202,14 @@ body.rtl .topSearchBox input {
 	border:none;
 	z-index: 8000;
 	position: relative;
-	left: 20px;
+	left: 0px;
 	top: 7px;
 	font-weight: normal;
 }
 
 body.rtl #ctl00_MainMenu {
 	left: inherit;
-    right: 20px;
+    right: 0px;
 }
 
 body.rtl span.buildId {

@@ -67,7 +67,7 @@ namespace Swarmops.Frontend
 
             // Set logo image. If custom image is installed, use it instead.
 
-            this.ImageLogo.ImageUrl = "~/Images/Logo-Stock.png";
+            this.ImageLogo.ImageUrl = "~/Images/Other/swarmops-sandbox-logo--istockphoto.png";
             if (File.Exists (Server.MapPath ("~/Images/Logo-Custom.png")))
             {
                 this.ImageLogo.ImageUrl = "~/Images/Logo-Custom.png";

@@ -272,7 +272,7 @@ namespace Swarmops.Frontend.Pages.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelStep5Text;
-        
+
         /// <summary>
         /// LabelStep6Header control.
         /// </summary>
@@ -281,7 +281,7 @@ namespace Swarmops.Frontend.Pages.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelStep6Header;
-        
+
         /// <summary>
         /// LabelStep6Text control.
         /// </summary>
@@ -290,7 +290,25 @@ namespace Swarmops.Frontend.Pages.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelStep6Text;
-        
+
+        /// <summary>
+        /// LabelStep6Header control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelStep7Header;
+
+        /// <summary>
+        /// LabelStep6Text control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelStep7Text;
+
         /// <summary>
         /// LabelWelcomeHeader control.
         /// </summary>
@@ -740,5 +758,15 @@ namespace Swarmops.Frontend.Pages.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelSidebarTodo;
+
+
+        /// <summary>
+        /// Manually added control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImageLogo;
     }
 }

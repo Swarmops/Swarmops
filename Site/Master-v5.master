@@ -127,21 +127,21 @@
 	
     <!-- Main menu, dynamically constructed -->
 
-	<div class="center980px">
-	    <div class="currentuserinfo">
+	    <!--<div class="currentuserinfo">
 	        <div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><a href="javascript:masterBeginEditPerson(0);"><span class="spanUser<%=this.CurrentUser.Identity %>Name spanUser0Name"><asp:Label ID="LabelCurrentUserName" runat="server" /></span></a> | </div>
 	        <div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><span class="hasTooltip" rel="Logged into <%=this.CurrentOrganization.Name %>" title="Click here to switch to another organization."><a href="/Security/ChangeOrganizations" id="LinkChangeOrganizations"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /></a></span> |&nbsp;</div>
             <div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left" id="divUserPreferences"><asp:Label ID="LabelPreferences" runat="server" /> | </div>
             <div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div>
             <a href="/User/SelectLanguage"><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></a>
-	    </div>
-        <div class="logoimage"><a href="/"><asp:Image runat="server" ID="ImageLogo" AlternateText="Swarmops Logo"/></a></div>
-        <div class="break"></div>
+	    </div>-->
         <div class="topmenu">
-            <div class="topSearchBox"><asp:TextBox ID="SearchBox" runat="server" /></div>
-            <Swarmops5:MainMenu ID="MainMenu" runat="server" />
+            <div class="center980px">
+                <div class="topSearchBox"><asp:TextBox ID="SearchBox" runat="server" /></div>
+                <Swarmops5:MainMenu ID="MainMenu" runat="server" />
+            </div>
         </div>
         
+	<div class="center980px">
         <div class="mainbar">
             <!--<div id="page-icon-encaps"><asp:Image ID="IconPage" runat="server" ImageUrl="~/Images/PageIcons/iconshock-steering-wheel-40px.png" /></div><h1><asp:Label ID="LabelPageTitle" Text="Dashboard" runat="server" /></h1>-->
         
@@ -157,6 +157,12 @@
 
         <div class="sidebar">
             
+            <div class="box">
+                <div class="content">
+                    <asp:Image ID="ImageLogo" Width="220" runat="server"/>
+                </div>
+            </div>
+
             <h2 class="blue"><asp:Label ID="LabelSidebarInfo" runat="server" /><span class="arrow"></span></h2>
     
             <div class="box">
