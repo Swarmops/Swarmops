@@ -52,6 +52,7 @@ namespace Swarmops.Controls.Base
         protected override void Render (HtmlTextWriter output)
         {
             output.Write ("<ul id='MainMenuContainer' class='sf-menu'>");
+            output.Write(("<li class='Submenu' id='LiSwarmopsLogo'><div id='DivSwarmopsLogo'></div></li>")); // Swarmops logo
             foreach (MainMenuItem menuItem in MainMenuData)
             {
                 WriteMenuItem (menuItem, output);

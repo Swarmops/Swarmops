@@ -196,6 +196,27 @@ body.rtl .topSearchBox input {
 }
 
 
+#MainMenuContainer {
+    margin-left: -80px !important;
+}
+
+#MainMenuContainer #LiSwarmopsLogo {
+    margin-right: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#DivSwarmopsLogo {
+    width: 60px;
+    height: 34px;
+    background-image: url('/Images/logo-banner-dual-16x9.png');
+    background-size: 60px 68px;
+}
+
+#DivSwarmopsLogo:hover {
+    background-position-y: 34px;
+}
+
 #ctl00_MainMenu {
 	font: 14px/20px Ubuntu !important;
 	background-color: transparent;
