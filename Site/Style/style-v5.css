@@ -41,6 +41,7 @@ html, body
 	background-image: url('/Style/Images/background-shader.png');
 	background-repeat: repeat-x;
 	height: 100%;
+    background-position-y: 35px; /* move shading past top bar */
 }
 
 strong
