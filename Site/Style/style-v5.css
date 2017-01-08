@@ -184,15 +184,16 @@ body.rtl .topSearchBox {
 	-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .4);
 	-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .4);
 	box-shadow: inset 0 1px 3px rgba(0, 0, 0, .4);
-	padding-left: 26px;
+	padding-left: 30px;
 	background-image:url('/Images/Icons/iconshock-search-24px.png');
 	background-repeat:no-repeat;
 	font-family: Ubuntu, Liberation Sans, Arial, Helvetica, Sans-Serif;
+    font-size: 18px;
 }
 
 body.rtl .topSearchBox input {
     padding-left: inherit;
-    padding-right: 26px;
+    padding-right: 30px;
     background-position-x: right;
 }
 

@@ -115,6 +115,14 @@
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
             $('#divTabsEditPerson').tabs();
+
+            $('#<%=this.SearchBox.ClientID%>').focus(function() {
+                $('#<%=this.SearchBox.ClientID%>').animate({ width: "300px" });
+            });
+
+            $('#<%=this.SearchBox.ClientID%>').blur(function() {
+                $('#<%=this.SearchBox.ClientID%>').animate({ width: "150px" });
+            });
         });
     </script>
 
@@ -136,7 +144,7 @@
 	    </div>-->
         <div class="topmenu">
             <div class="center980px">
-                <div class="topSearchBox"><asp:TextBox ID="SearchBox" runat="server" /></div>
+                <div class="topSearchBox" id="divTopSearchBox"><asp:TextBox ID="SearchBox" runat="server" /></div>
                 <Swarmops5:MainMenu ID="MainMenu" runat="server" />
             </div>
         </div>
