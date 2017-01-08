@@ -8,7 +8,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    Random Odometer <div class="odometer">1,234.00</div>
+    Random Odometer <div class="odometer">1,234.01</div>
 
 
     <h2>Dashboard Placeholder</h2>
