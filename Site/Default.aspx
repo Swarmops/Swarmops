@@ -1,9 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Default" Codebehind="Default.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
+    <!-- Odometer -->
+    <script language="javascript" type="text/javascript" src="/Scripts/odometer.js" ></script>
+    <link href="/Style/odometer-theme-car.css" rel="stylesheet" type="text/css" />
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
+    Random Odometer <div class="odometer">1,234.00</div>
+
+
     <h2>Dashboard Placeholder</h2>
     <p>This system, <em>Swarmops,</em> is under heavy (re)construction. It has been the admin mainstay of the Swedish Pirate Party since 2006, and is being generalized to encompass any organization.</p>
     <p>What you see here is the new interface being rewritten on top of the already-running engine. It runs on Debian/Ubuntu servers for frontend and backend.</p>
