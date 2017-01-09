@@ -87,15 +87,13 @@
   border-radius: 0.34em;
   font-family: "Arimo", monospace;
   padding: 0.15em;
-  background: #000;
-  color: #eee0d3;
+  background: #476EC7;
+  color: #FFEDC8;
 }
 .odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-car .odometer-digit {
-  -moz-box-shadow: inset 0 0 0.3em rgba(0, 0, 0, 0.8);
-  -webkit-box-shadow: inset 0 0 0.3em rgba(0, 0, 0, 0.8);
-  box-shadow: inset 0 0 0.3em rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 0 0.3em #1C397E;
   background-size: 100%;
-  background-image: linear-gradient(to bottom, #333333 0%, #333333 40%, #101010 60%, #333333 80%, #333333 100%);
+  background-image: linear-gradient(to bottom, #476EC7 0%, #476EC7 40%, #1C397E 60%, #476EC7 80%, #476EC7 100%);
   padding: 0 0.15em;
 }
 .odometer.odometer-auto-theme .odometer-digit:first-child, .odometer.odometer-theme-car .odometer-digit:first-child {
@@ -103,13 +101,13 @@
   -webkit-border-radius: 0.2em;
   border-radius: 0.2em 0 0 0.2em;
 }
-.odometer.odometer-auto-theme .odometer-digit:last-child, .odometer.odometer-auto-theme .odometer-digit:nth-last-child(2), .odometer.odometer-theme-car .odometer-digit:last-child, .odometer.odometer-theme-car .odometer-digit:nth-last-child(2) {
+.odometer.odometer-auto-theme:not(.nocents) .odometer-digit:last-child, .odometer.odometer-auto-theme:not(.nocents) .odometer-digit:nth-last-child(2), .odometer.odometer-theme-car:not(.nocents) .odometer-digit:last-child, .odometer.odometer-theme-car:not(.nocents) .odometer-digit:nth-last-child(2) {
   -moz-border-radius: 0 0.2em 0.2em 0;
   -webkit-border-radius: 0;
   border-radius: 0 0.2em 0.2em 0;
   background-size: 100%;
-  background-image: linear-gradient(to bottom, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%);
-  background-color: #eee0d3;
+  background-image: linear-gradient(to bottom, #FFEDC8 0%, #FFEDC8 40%, #FFD580 60%, #FFEDC8 80%, #FFEDC8 100%);
+  background-color: #FFD580;
   color: #000;
 }
 .odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner, .odometer.odometer-theme-car .odometer-digit .odometer-digit-inner {

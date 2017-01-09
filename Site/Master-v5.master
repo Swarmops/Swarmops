@@ -1,5 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.MasterV5" Codebehind="Master-v5.master.cs" %>
 <%@ Import Namespace="System.Runtime.CompilerServices" %>
+<%@ Import Namespace="Swarmops.Frontend" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -140,10 +141,12 @@
 	        <div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><span class="hasTooltip" rel="Logged into <%=this.CurrentOrganization.Name %>" title="Click here to switch to another organization."><a href="/Security/ChangeOrganizations" id="LinkChangeOrganizations"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /></a></span> |&nbsp;</div>
             <div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left" id="divUserPreferences"><asp:Label ID="LabelPreferences" runat="server" /> | </div>
             <div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div>
-            <a href="/User/SelectLanguage"><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></a>
+            <a href="/User/SelectLanguage"><asp:Image ID="ImagekjjklCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></a>
 	    </div>-->
         <div class="topmenu">
             <div class="center980px">
+                <div class="elementFloatFar" style="padding-top: 10px;"><a href="/User/SelectLanguage"><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></a></div>
+                <div class="elementFloatFar" style="padding-top: 5px; padding-left: 3px; padding-right: 3px"><a href="javascript:masterBeginEditPerson(0);"><img src="/Images/Icons/iconshock-user-<%=CurrentUser.Gender.ToString().ToLower() %>.png" height="28"/></a></div>
                 <div class="topSearchBox" id="divTopSearchBox"><asp:TextBox ID="SearchBox" runat="server" /></div>
                 <Swarmops5:MainMenu ID="MainMenu" runat="server" />
             </div>
@@ -153,11 +156,15 @@
         <div class="mainbar">
             <!--<div id="page-icon-encaps"><asp:Image ID="IconPage" runat="server" ImageUrl="~/Images/PageIcons/iconshock-steering-wheel-40px.png" /></div><h1><asp:Label ID="LabelPageTitle" Text="Dashboard" runat="server" /></h1>-->
         
-        <div class="box">
-            <div class="content">
+            <% if (!(this.Page as PageV5Base).IsDashboard)
+               { %>
+            <div class="box">
+                <div class="content"> <% } %>
                <asp:ContentPlaceHolder ID="PlaceHolderMain" runat="server" />
-            </div>
-        </div>
+            <% if (!(this.Page as PageV5Base).IsDashboard)
+               { %>
+                </div>
+            </div> <% } %>
         
         </div>
         
@@ -165,11 +172,11 @@
 
         <div class="sidebar">
             
-            <div class="box">
-                <div class="content">
+        <div class="box">
+            <div class="content">
                     <asp:Image ID="ImageLogo" Width="220" runat="server"/>
-                </div>
             </div>
+        </div>
 
             <h2 class="blue"><asp:Label ID="LabelSidebarInfo" runat="server" /><span class="arrow"></span></h2>
     

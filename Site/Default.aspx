@@ -8,8 +8,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    Random Odometer <div class="odometer">1,234.01</div>
-
+    <div class="box" style="background-image: url(/Images/Other/member-background-istockphoto.jpg); background-size: 700px 110px"><div class="content">
+    <div class="odometer-wrapper"><div class="elementFloatFar odometer nocents">1,234.01</div><div class="odometer-label">Random Odometer (Testing new code)</div>
+    </div></div></div>
 
     <h2>Dashboard Placeholder</h2>
     <p>This system, <em>Swarmops,</em> is under heavy (re)construction. It has been the admin mainstay of the Swedish Pirate Party since 2006, and is being generalized to encompass any organization.</p>

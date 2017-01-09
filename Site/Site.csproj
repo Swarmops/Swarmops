@@ -814,6 +814,9 @@
     <Content Include="Images\Icons\iconshock-switch-red-64px-hot.png" />
     <Content Include="Images\Icons\iconshock-switch-red-64px.png" />
     <Content Include="Images\Icons\iconshock-user-16px.png" />
+    <Content Include="Images\Icons\iconshock-user-female.png" />
+    <Content Include="Images\Icons\iconshock-user-male.png" />
+    <Content Include="Images\Icons\iconshock-user-unknown.png" />
     <Content Include="Images\Icons\iconshock-warning-16px.png" />
     <Content Include="Images\Icons\iconshock-warning-16x12px.png" />
     <Content Include="Images\Icons\iconshock-warning-24px.png" />
@@ -843,6 +846,7 @@
     <Content Include="Images\Ledgers\uploadbankfiles-type-seb.png" />
     <Content Include="Images\Logo-Stock.png" />
     <Content Include="Images\Other\clipart-panda-free-sandbox-icon-64px.png" />
+    <Content Include="Images\Other\member-background-istockphoto.jpg" />
     <Content Include="Images\PageIcons\iconshock-abacus-16px.png" />
     <Content Include="Images\PageIcons\iconshock-abacus-40px.png" />
     <Content Include="Images\PageIcons\iconshock-assets-128px.png" />

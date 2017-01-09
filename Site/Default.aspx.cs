@@ -12,6 +12,7 @@ namespace Swarmops.Frontend
     {
         protected void Page_Load (object sender, EventArgs e)
         {
+            IsDashboard = true;
             PageTitle = Global.Dashboard_PageTitle;
             PageIcon = "iconshock-steering-wheel";
             this.PageAccessRequired = new Access (AccessAspect.Null, AccessType.Read);

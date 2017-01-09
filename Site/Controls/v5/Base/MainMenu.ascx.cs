@@ -56,7 +56,7 @@ namespace Swarmops.Controls.Base
 
             // Hard coded beta menu with build statistics, bug reporting option
 
-            output.Write(("<li class='Submenu' id='LiSwarmopsLogo'><div id='DivSwarmopsLogo'></div><ul>")); // Swarmops logo
+            output.Write(("<li class='Submenu' id='LiSwarmopsLogo'><a href='/'><div id='DivSwarmopsLogo'></div></a><ul>")); // Swarmops logo
             output.Write("<li class='BuildNumber' dir='ltr'><a href='#builddata'><img src='/Images/PageIcons/swarmops-builder-40px.png' height='20' width='20' />" + Formatting.SwarmopsVersion + "</a></li>");
             output.Write(
                 "<li class='Disabled' dir='ltr'><a href='#builddata'><img src='/Images/PageIcons/transparency-16px.png' height='20' width='20' />" +

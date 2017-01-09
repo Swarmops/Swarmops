@@ -17,6 +17,7 @@ namespace Swarmops.Frontend
     {
         public int DbVersionRequired = 0; // v5 mechanism
         public Access PageAccessRequired = null; // v5 mechanism
+        public bool IsDashboard = false; // if true, master doesn't box in
 
         protected new MasterV5Base Master
         {

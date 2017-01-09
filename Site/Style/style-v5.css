@@ -219,6 +219,10 @@ body.rtl .topSearchBox input {
     background-position-y: 34px;
 }
 
+li#LiSwarmopsLogo a.sf-with-ul {
+    padding: 0px !important;  /* override superfish superpadding */
+}
+
 #ctl00_MainMenu {
 	font: 14px/20px Ubuntu !important;
 	background-color: transparent;
@@ -239,7 +243,28 @@ body.rtl span.buildId {
     direction: ltr; /* parentheses freak out unless specified LTR */
 }
 
+/* DASHBOARD THINGS */
 
+.odometer {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.odometer-wrapper {
+    height: 30px;
+}
+
+.odometer-label {
+    font-size: 16px;
+    padding-top: 6px;
+    font-weight: 400;
+    padding-left: 4px;
+}
+
+body.rtl .odometer-label {
+    padding-left: inherit;
+    padding-right: 4px;
+}
 
 /* BARS AND BOXEN */
 
