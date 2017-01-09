@@ -88,7 +88,7 @@
                     value: this.innerText,
 
                     // Two decimals format
-                    format: '(<%= Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberGroupSeparator%>ddd).dd'
+                    format: '(<%= Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberGroupSeparator%>ddd).ddd'
                 });
             });
 

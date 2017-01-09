@@ -9,7 +9,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div class="box" style="background-image: url(/Images/Other/member-background-istockphoto.jpg); background-size: 700px 110px"><div class="content">
-    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-currency" id="odoGlobalParticipation">12345689.1</div><div class="odometer-label">Random Odometer (Testing new code)</div>
+    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-currency" id="odoGlobalParticipation">12345689.001</div><div class="odometer-label">Random Odometer (Testing new code)</div>
     </div></div></div>
 
     <h2>Dashboard Placeholder</h2>
