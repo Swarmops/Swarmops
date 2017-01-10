@@ -259,7 +259,7 @@ body.rtl span.buildId {
 .odometer {
     font-size: 20px;
     font-weight: 500;
-    dir: ltr; /* even in Arabic, numbers are always left-to-right */
+    direction: ltr; /* even in Arabic, numbers are always left-to-right */
 }
 
 .odometer-wrapper {
