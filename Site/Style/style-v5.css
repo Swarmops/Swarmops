@@ -198,14 +198,25 @@ body.rtl .topSearchBox input {
 }
 
 
-#MainMenuContainer {
+body:not(.rtl) #MainMenuContainer {
     margin-left: -75px !important;
 }
 
+body.rtl #MainMenuContainer {
+    margin-right: -75px !important;
+}
+
 #MainMenuContainer #LiSwarmopsLogo {
-    margin-right: 20px;
     padding-top: 2px;
     padding-bottom: 2px;
+}
+
+body:not(.rtl) #MainMenuContainer #LiSwarmopsLogo {
+    margin-right: 20px;
+}
+
+body.rtl #MainMenuContainer #LiSwarmopsLogo {
+    margin-left: 20px;
 }
 
 #DivSwarmopsLogo {
@@ -248,6 +259,7 @@ body.rtl span.buildId {
 .odometer {
     font-size: 20px;
     font-weight: 500;
+    dir: ltr; /* even in Arabic, numbers are always left-to-right */
 }
 
 .odometer-wrapper {
@@ -262,7 +274,7 @@ body.rtl span.buildId {
 }
 
 body.rtl .odometer-label {
-    padding-left: inherit;
+    padding-left: 0;
     padding-right: 4px;
 }
 
