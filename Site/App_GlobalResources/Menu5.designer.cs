@@ -394,7 +394,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manage my Budgets.
+        ///   Looks up a localized string similar to Manage My Budgets.
         /// </summary>
         internal static string Menu5_Financial_ManageBudgets {
             get {

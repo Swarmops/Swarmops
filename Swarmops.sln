@@ -1,5 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{13E59551-34AC-43DC-9A03-EF5E4721DC61}"
 	ProjectSection(ProjectDependencies) = postProject
 		{BBF83512-8486-469E-9D7B-C3C1B78C3F4D} = {BBF83512-8486-469E-9D7B-C3C1B78C3F4D}
@@ -39,6 +41,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site", "Site\Site.csproj", "{A36F6B67-4B17-419A-9200-C247EA6B88A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{BA24FAF7-D518-49E8-952A-45595682877E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend-Socket", "FrontSocket\Frontend-Socket.csproj", "{8424E871-028B-4BFA-B956-E575A8F413E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -200,6 +204,24 @@ Global
 		{BA24FAF7-D518-49E8-952A-45595682877E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BA24FAF7-D518-49E8-952A-45595682877E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{BA24FAF7-D518-49E8-952A-45595682877E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Autobuild|.NET.ActiveCfg = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Autobuild|.NET.Build.0 = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Autobuild|Any CPU.ActiveCfg = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Autobuild|Any CPU.Build.0 = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Autobuild|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Autobuild|Mixed Platforms.Build.0 = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Debug|.NET.Build.0 = Debug|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Release|.NET.ActiveCfg = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Release|.NET.Build.0 = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8424E871-028B-4BFA-B956-E575A8F413E2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
