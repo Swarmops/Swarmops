@@ -3,46 +3,22 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Security;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading;
-using Falconwing.Backend.SocketServices;
-using Falconwing.Basic;
-using Falconwing.Database;
-using Falconwing.Logic;
-using Falconwing.Logic.ExtensionMethods;
 using Mono.Unix;
 using Mono.Unix.Native;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Swarmops.Logic.ExtensionMethods;
 using WebSocketSharp.Server;
 
-namespace Falconwing.Backend
+namespace Swarmops.Frontend.Socket
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             // Disable SSL cert checking (because Mono doesn't have a cert repo, dammit)
-
-            ServicePointManager.ServerCertificateValidationCallback = delegate(
-                Object obj, X509Certificate certificate, X509Chain chain,
-                SslPolicyErrors errors)
-                {
-                    return (true);
-                };
-
-            if (args.Length > 0 && args[0].ToLowerInvariant() == "publish")
-            {
-                PublishStory();
-                return;
-            }
-
-            if (args.Length > 0 && args[0].ToLowerInvariant() == "test")
-            {
-                Story.FromIdentity (584).Facebook ();
-                return;
-            }
+            Swarmops.Logic.Support.SupportFunctions.DisableSslCertificateChecks();
 
             // Initiate main loop
 
@@ -53,17 +29,12 @@ namespace Falconwing.Backend
                 killSignals = new UnixSignal[] { new UnixSignal(Signum.SIGINT), new UnixSignal(Signum.SIGTERM) };
             }
 
-            Console.WriteLine(" * FWN-Internal Backend starting up.");
+            Console.WriteLine(" * Swarmops Frontend Socket Server starting up.");
 
-            Console.Write (" * FWN-Internal Backend initializing websockets...");
-
-            _socketServer = new WebSocketServer (15615);
-            //_socketServer.SslConfiguration.ServerCertificate = new X509Certificate2 ("/etc/fwn/fwn-ops-wss.pfx", "");
-            _socketServer.AddWebSocketService<EditingService> ("/Editing");
+            _socketServer = new WebSocketServer (12172); // TODO: Read from database
+            _socketServer.AddWebSocketService<SocketServices> ("/ws");
             // _socketServer.KeepClean = false; // as per the author's recommendation - this may be bad in the long run
             _socketServer.Start();
-
-            Console.WriteLine(" done.");
 
             DateTime cycleStartTime = DateTime.UtcNow;
             DateTime cycleEndTime;
@@ -159,7 +130,7 @@ namespace Falconwing.Backend
                     if (signalIndex < 250)
                     {
                         exitFlag = true;
-                        Console.WriteLine (" * FWN-Internal Backend caught signal " + killSignals[signalIndex].Signum + ", exiting");
+                        Console.WriteLine (" * Swarmops Frontend Socket Server caught signal " + killSignals[signalIndex].Signum + ", exiting");
                     }
 
                     utcNow = DateTime.UtcNow;
@@ -169,23 +140,10 @@ namespace Falconwing.Backend
             _socketServer.Stop();
             Thread.Sleep (2000);
 
-            Console.WriteLine(" * FWN-Internal Backend exiting");
+            Console.WriteLine(" * Swarmops Frontend Socket Server exiting");
         }
 
         private static WebSocketServer _socketServer; 
-
-        /*
-
-        static void SocketServer_NewMessageReceived (WebSocketSession session, string message)
-        {
-            // Replicate to everybody
-
-            foreach (var otherSession in session.AppServer.GetAllSessions())
-            {
-                otherSession.Send (message);
-            }
-        }*/
-
 
         private static void OnEveryTenSeconds()
         {
@@ -221,6 +179,7 @@ namespace Falconwing.Backend
 
         private static void CheckPriorityPublish()
         {
+            /*
             Stories candidateStories = Stories.GetGlobalPublicationQueue (1);
 
             if (candidateStories.Count > 0 && candidateStories[0].Priority > 50)
@@ -229,12 +188,13 @@ namespace Falconwing.Backend
                 candidateStories[0].Publish();
                 BroadcastPublication(candidateStories[0]);
                 _socketServer.WebSocketServices.Broadcast(GetQueueInfoJson());
-            }
+            }*/
         }
 
 
         private static void CheckPublish()
         {
+            /*
             DateTime lastPublishUtc = Stories.GetLastPublished (1)[0].PublishDateTimeUtc;
             int storyCount = Stories.GetGlobalPublicationQueueLength();
             DateTime nowUtc = DateTime.UtcNow;
@@ -262,11 +222,12 @@ namespace Falconwing.Backend
             {
                 PublishStory();
                 _socketServer.WebSocketServices.Broadcast(GetQueueInfoJson());
-            }
+            }*/
         }
 
         private static void CheckStoryAges()
         {
+            /*
             Stories stories = Stories.GetGlobalEditQueue (null);
             DateTime utcNow = DateTime.UtcNow;
 
@@ -310,7 +271,7 @@ namespace Falconwing.Backend
             if (storyTimedout)
             {
                 _socketServer.WebSocketServices.Broadcast (GetQueueInfoJson());
-            }
+            }*/
         }
 
 
@@ -324,9 +285,10 @@ namespace Falconwing.Backend
         }
 
 
-
+        /*
         private static void BroadcastEdit (StoryEdit edit, bool markSystem = true)
         {
+            
             JObject json = new JObject();
 
             json["messageType"] = "AddStoryEdit";
@@ -338,13 +300,16 @@ namespace Falconwing.Backend
             json["StoryId"] = edit.StoryId;
 
             _socketServer.WebSocketServices.Broadcast(json.ToString());
-        }
+        }*/
 
 
 
 
         public static string GetQueueInfoJson()
         {
+            throw new NotImplementedException();
+            
+            /*
             JObject response = new JObject();
             response["messageType"] = "QueueInfo";
             response["EditCount"] = FwnDb.GetDatabaseForReading().GetStoryGlobalEditQueueCount();
@@ -365,11 +330,14 @@ namespace Falconwing.Backend
                 response["PubExtent"] = "Empty!";
             }
 
-            return response.ToString();
+            return response.ToString();*/
         }
 
         private static string CountStoryExtent (int storyCount)
         {
+            throw new NotImplementedException();
+
+            /*
             if (storyCount == 0)
             {
                 return "Empty!";
@@ -388,12 +356,12 @@ namespace Falconwing.Backend
             {
                 return lastPublication.ToString ("HH:mm") + " UTC";
             }
-            return lastPublication.ToString ("ddd HH:mm") + " UTC";
+            return lastPublication.ToString ("ddd HH:mm") + " UTC";*/
         }
 
 
         private static void PublishStory()
-        {
+        {/*
             int dupeCheckCount = 2;
 
             Stories justPublishedStories = Stories.GetLastPublished (dupeCheckCount);
@@ -465,10 +433,10 @@ namespace Falconwing.Backend
                 Console.WriteLine (" Nothing in queue at all, actually.");
             }
 
-            return;
+            return;*/
         }
 
-
+        /*
         static void BroadcastPublication (Story story)
         {
             JObject json = new JObject();
@@ -476,11 +444,11 @@ namespace Falconwing.Backend
             json["StoryId"] = story.Identity;
 
             _socketServer.WebSocketServices.Broadcast (json.ToString());
-        }
+        }*/
 
 
         static void RecordStoryMetrics()
-        {
+        {/*
             // Get Facebook data for the most recent 25 stories
             // ------------------------------------------------
 
@@ -580,7 +548,7 @@ namespace Falconwing.Backend
                 }
             }
 
-            StoryChannel.SetFollowerCount (1, twitterFollowerCount);
+            StoryChannel.SetFollowerCount (1, twitterFollowerCount);*/
         }
     }
 }

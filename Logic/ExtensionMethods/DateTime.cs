@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Falconwing.Logic.ExtensionMethods
+namespace Swarmops.Logic.ExtensionMethods
 {
     public static partial class DummyWrapper
     {

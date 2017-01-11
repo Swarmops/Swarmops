@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace Falconwing.Logic.ExtensionMethods
+namespace Swarmops.Logic.ExtensionMethods
 {
     public static partial class DummyContainer
     {
