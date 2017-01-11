@@ -13,6 +13,9 @@ find . -iname '*.cs' -exec perl -pi -e 's/Resources.Controls.([A-Za-z\.]+)/Resou
 
 cd ../..
 
+# Update line count
+
+./update-kaylock-count
 
 # Restore packages, command line version
 
