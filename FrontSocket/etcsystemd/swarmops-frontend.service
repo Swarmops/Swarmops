@@ -3,7 +3,7 @@ Description=Swarmops Frontend
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/mono /usr/share/swarmops/frontend/Swarmops.Frontend.Socket.exe
+ExecStart=/usr/bin/mono /usr/share/swarmops/frontend/bin/Swarmops.Frontend.Socket.exe
 WorkingDirectory=/usr/share/swarmops/frontend
 Restart=on-abort
 
