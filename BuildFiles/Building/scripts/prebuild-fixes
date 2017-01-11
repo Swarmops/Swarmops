@@ -15,7 +15,7 @@ cd ../..
 
 # Update line count
 
-./update-kaylock-count
+BuildFiles/Building/scripts/update-kaylock-count
 
 # Restore packages, command line version
 
