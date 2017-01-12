@@ -2,7 +2,7 @@
 
 #echo "DEBUG: Executing post-install script, swarmops-frontend"
 
-adduser --system --group --quiet swarmopsfront
+adduser --system --group --no-create-home --quiet swarmopsfront
 
 # make sure the upload folder exists and is writeable by www-data
 # do not make any changes to an already existing folder
