@@ -565,13 +565,6 @@
     <Compile Include="Security\FinalizeLogin.aspx.designer.cs">
       <DependentUpon>FinalizeLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Security\Login-Old.aspx.cs">
-      <DependentUpon>Login-Old.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Security\Login-Old.aspx.designer.cs">
-      <DependentUpon>Login-Old.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Security\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1762,7 +1755,6 @@
     <Content Include="Security\Images\iconshock-foreign-key-24px.png" />
     <Content Include="Security\Images\iconshock-greentick-16px.png" />
     <Content Include="Security\Images\Swarmops-Logo.png" />
-    <Content Include="Security\Login-Old.aspx" />
     <Content Include="Security\Login.aspx" />
     <Content Include="Security\RequestPasswordReset.aspx" />
     <Content Include="Security\ResetPassword.aspx" />
