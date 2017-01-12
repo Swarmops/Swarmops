@@ -86,6 +86,9 @@ a2enmod --quiet proxy_wstunnel
 systemctl restart apache2
 
 
+systemctl enable swarmops-frontend
+systemctl start swarmops-frontend
+
 # Always end a frontend update with an Apache reload to clear caches
 # /etc/init.d/apache2 reload
 
