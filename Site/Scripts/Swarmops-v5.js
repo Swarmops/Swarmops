@@ -42,7 +42,7 @@ function _masterInitializeSocket(authenticationTicket) {
 }
 
 function getMasterSocketAddress() {
-    if (location.host.contains ("localhost")) { // Assume dev environment, go for sandbox socket
+    if (location.host.includes ("localhost")) { // Assume dev environment, go for sandbox socket
         return 'ws://sandbox.swarmops.com/ws/Master';
     } else {
         var protocol = ('https:' == document.location.protocol ? 'wss://' : 'ws://');

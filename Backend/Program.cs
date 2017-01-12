@@ -75,7 +75,7 @@ namespace Swarmops.Backend
 
                     Console.WriteLine ("Creating OutboundComm...");
 
-                    OutboundComm.CreateNotification (null, NotificationResource.System_Startup);
+                    OutboundComm.CreateNotification (null, NotificationResource.System_Startup_Backend);
 
                     Console.WriteLine ("Transmitting...");
 
@@ -166,7 +166,7 @@ namespace Swarmops.Backend
 
             // Tell sysop we're starting
 
-            OutboundComm.CreateNotification (null, NotificationResource.System_Startup);
+            OutboundComm.CreateNotification (null, NotificationResource.System_Startup_Backend);
 
             // Check for existence of installation ID. If not, create one. Warning: has privacy implications when communicated.
 

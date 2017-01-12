@@ -455,11 +455,17 @@ The upgrade will be retried every hour. Some functionality may be disabled until
   <data name="System_PublicRootReset_Subject" xml:space="preserve">
     <value>Swarmops: Hotwallet public root key reset</value>
   </data>
-  <data name="System_Startup_Body" xml:space="preserve">
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
     <value>Swarmops Backend version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks.</value>
   </data>
-  <data name="System_Startup_Subject" xml:space="preserve">
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
     <value>Swarmops Backend operational</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>Swarmops Frontend socket server version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks.</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>Swarmops Frontend operational</value>
   </data>
   <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
     <value>The Swarmops transmission engine on [HostName] has encountered an unknown payload type ([UnrecognizedPayloadType]). This should only happen at very rare occasions in conjunction with upgrades where an upgraded version has to take care of something that changed names in the process, itself a rare phenomenon.

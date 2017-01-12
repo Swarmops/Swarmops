@@ -8,6 +8,8 @@ using Mono.Unix;
 using Mono.Unix.Native;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.ExtensionMethods;
 using WebSocketSharp.Server;
 
@@ -30,6 +32,8 @@ namespace Swarmops.Frontend.Socket
             }
 
             Console.WriteLine(" * Swarmops Frontend Socket Server starting up.");
+
+            OutboundComm.CreateNotification(null, NotificationResource.System_Startup_Frontend);
 
             _socketServer = new WebSocketServer (12172); // TODO: Read from database
             _socketServer.AddWebSocketService<MasterServices> ("/Master");
