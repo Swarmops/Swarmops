@@ -99,7 +99,7 @@ if [ "$COPYFILES" == "yes" ]; then
   if [ -d $SOURCEDIR/libsystemd ]; then
     echo "Adding /lib/systemd files..."
     mkdir -p lib/systemd/system
-    cp $SOURCEDIR/etcsystemd/* lib/systemd/system/.
+    cp $SOURCEDIR/libsystemd/* lib/systemd/system/.
     ls -la lib/systemd/system
   fi
 
