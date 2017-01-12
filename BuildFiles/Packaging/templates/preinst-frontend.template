@@ -7,12 +7,10 @@
 #echo "DEBUG: Executing pre-install script, swarmops-frontend"
 
 if [ ! -e /etc/swarmops/database.config ]; then
-  if [ -e /etc/init.d/apache2 ]; then
-    if [ -z $(pidof -s apache2) ]; then
-      # Set a flag to postinst to restart Apache
-      echo foo > /tmp/swarmops-restart-apache.flag
-      /etc/init.d/apache2 stop
-    fi
+  if [ ! -z $(pidof -s apache2) ]; then
+    # Set a flag to postinst to restart Apache
+    echo foo > /tmp/swarmops-restart-apache.flag
+    systemctl stop apache2
   fi
 fi
 

@@ -96,15 +96,7 @@ if [ "$COPYFILES" == "yes" ]; then
     rm -rf $DEPLOYDIR/$TARGETDIR/staging
   fi
 
-  if [ -d $SOURCEDIR/etcinitd ]; then
-    echo "Adding /etc/init.d files..."
-    mkdir -p etc/init.d
-    cp $SOURCEDIR/etcinitd/* etc/init.d/.
-    chmod +x etc/init.d/*
-    ls -la etc/init.d
-  fi
-
-  if [ -d $SOURCEDIR/etcsystemd ]; then
+  if [ -d $SOURCEDIR/libsystemd ]; then
     echo "Adding /lib/systemd files..."
     mkdir -p lib/systemd/system
     cp $SOURCEDIR/etcsystemd/* lib/systemd/system/.
@@ -174,7 +166,7 @@ fi
 cd ../..
 
 
-scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER squeeze,trusty,xenial,jessie $PACKAGE $BUILDID
+scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER xenial,jessie,stretch $PACKAGE $BUILDID
 
 
 # TODO: FIX INTERNAL INSTALL?

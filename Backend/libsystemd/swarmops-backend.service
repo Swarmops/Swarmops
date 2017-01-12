@@ -6,6 +6,9 @@ After=network.target
 ExecStart=/usr/bin/mono /usr/share/swarmops/backend/Swarmops.Backend.exe
 WorkingDirectory=/usr/share/swarmops/backend
 Restart=on-abort
+User=swarmopsback
+Group=swarmopsback
+
 
 [Install]
 WantedBy=multi-user.target

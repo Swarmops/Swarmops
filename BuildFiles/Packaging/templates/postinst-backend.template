@@ -2,22 +2,12 @@
 
 #echo "DEBUG: Executing post-installation script, swarmops-backend"
 
-#make sure some directories exist
-mkdir -p /var/lib/swarmops/upload
-#todo: check for database upgrade
+adduser --system --group --quiet swarmopsback
 
-#if we're running systemd, use systemd;
-#otherwise, use upstart
+#Upstart deprecated; support systemd only
 
-if [ -z $(pidof -s systemd) ]; then
-  #start the daemon
-  /etc/init.d/swarmops-backend start
-  #register the daemon
-  update-rc.d swarmops-backend defaults 90 10 > /dev/null
-else
-  systemctl enable swarmops-backend
-  systemctl start swarmops-backend
-fi
+systemctl enable swarmops-backend
+systemctl start swarmops-backend
 
 #echo "DEBUG: Exiting post-install script, swarmops-backend"
 

@@ -2,14 +2,9 @@
 
 #echo "DEBUG: Executing pre-remove script, swarmops-backend"
 
-# Different paths for systemd and upstart
+# Support for Upstart deprecated; support systemd only
 
-if [ -z $(pidof systemd) ]; then
-  update-rc.d -f swarmops-backend remove > /dev/null
-  /etc/init.d/swarmops-backend stop
-else
-  systemctl stop swarmops-backend
-  systemctl disable swarmops-backend
-fi
+systemctl stop swarmops-backend
+systemctl disable swarmops-backend
 
 #echo "DEBUG: Exiting pre-remove script, swarmops-backend"

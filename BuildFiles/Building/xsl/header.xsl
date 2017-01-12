@@ -35,7 +35,7 @@
             
             <tr>
                 <td class="header-label"><nobr>Built for:</nobr></td>
-                <td class="header-data">trusty xenial jessie</td>
+                <td class="header-data">xenial jessie stretch</td>
             </tr>
             <tr>
                 <td class="header-label"><nobr>Time of build:</nobr></td>

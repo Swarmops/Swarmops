@@ -2,6 +2,8 @@
 
 #echo "DEBUG: Executing post-install script, swarmops-frontend"
 
+adduser --system --group --quiet swarmopsfront
+
 # make sure the upload folder exists and is writeable by www-data
 # do not make any changes to an already existing folder
 
@@ -77,15 +79,11 @@ chown www-data:www-data /etc/swarmops/database.config
 
 chown www-data:www-data /etc/swarmops/symmetricKey.config
 
-# if we stopped Apache in preinst (1st install), restart it
+# Enable required Apache mods and restart Apache
 
-if [ -e /tmp/swarmops-restart-apache.flag ]; then
-  /etc/init.d/apache2 start
-  rm /tmp/swarmops-restart-apache.flag
-else
-  # Actually, _always_ restart Apache - something isn't right otherwise
-  /etc/init.d/apache2 restart
-fi
+a2enmod --quiet proxy
+a2enmod --quiet proxy_wstunnel
+systemctl restart apache2
 
 
 # Always end a frontend update with an Apache reload to clear caches

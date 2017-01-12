@@ -6,6 +6,8 @@ After=network.target
 ExecStart=/usr/bin/mono /usr/share/swarmops/frontend/bin/Swarmops.Frontend.Socket.exe
 WorkingDirectory=/usr/share/swarmops/frontend
 Restart=on-abort
+User=swarmopsfront
+Group=swarmopsfront
 
 [Install]
 WantedBy=multi-user.target

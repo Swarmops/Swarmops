@@ -2,6 +2,10 @@ ServerName swarmops-frontend
 ServerAdmin swarmops-frontend@swarmops.com
 DocumentRoot /usr/share/swarmops/frontend/
 
+# Redirect websocket requests to Swarmops FrontSocket server
+ProxyRequests Off
+ProxyPass "/ws/" "ws:/localhost:12172"
+
 # Explicitly specify Mono version 4
 MonoServerPath swarmops-frontend "/usr/bin/mod-mono-server4"
 
