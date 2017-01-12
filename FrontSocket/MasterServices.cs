@@ -47,10 +47,14 @@ namespace Swarmops.Frontend.Socket
 
         protected override void OnOpen()
         {
+            Console.WriteLine(" * Attempted socket connection");
+
             string authBase64 = Context.QueryString["Auth"];
             authBase64 = Uri.UnescapeDataString (authBase64); // Defensive programming - % sign does not exist in base64 so this won't ever collapse a working encoding
 
             _authority = Authority.FromEncryptedXml (authBase64);
+
+            Console.WriteLine(" - - authenticated: " + _authority.Person.Canonical);
 
             base.OnOpen();
 
