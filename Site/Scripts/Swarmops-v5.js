@@ -1,4 +1,58 @@
-﻿var SwarmopsJS = (function() {
+﻿// ------------------- _masterSocket functions -----------------------
+
+var _masterSocket;
+var _masterSocketHeartbeatsLost;
+
+
+function _masterInitializeSocket(authenticationTicket) {
+    if (_masterSocket != null) {
+        _masterSocket.close();
+        _masterSocket = null;
+    }
+
+    alertify.log("Opening socket " + getMasterSocketAddress() + "...");
+
+    var socketUrl = getMasterSocketAddress() + "?Auth=" + authenticationTicket;
+
+    _masterSocket = new WebSocket(socketUrl);
+    _masterSocket.onopen = function(data) {
+        alertify.success('Socket Connected!');
+
+        if (_masterSocketHeartbeatsLost) {
+            // Reload all edits and the edit pool. If there are discrepancies, we can probably live with them. (Detect editing?)
+            alertify.log("Backend connection restored without interruption.");
+
+            _masterSocketHeartbeatsLost = false;
+        }
+
+        //watchHeartbeat();
+    };
+    _masterSocket.onclose = function(data) { alertify.log("Connection Lost"); };
+    _masterSocket.onerror = function(data) { alertify.log("Connection Error"); };
+    _masterSocket.onmessage = function(data) {
+        
+        console.log(data.data);
+
+        var message = $.parseJSON(data.data);
+
+        if (message.messageType == "Heartbeat") {
+            alertify.log("Master socket heartbeat");
+        }
+    };
+}
+
+function getMasterSocketAddress() {
+    if (location.host.contains ("localhost")) { // Assume dev environment, go for sandbox socket
+        return 'ws://sandbox.swarmops.com/ws/Master';
+    } else {
+        var protocol = ('https:' == document.location.protocol ? 'wss://' : 'ws://');
+        return protocol + location.host + "/ws/Master";
+    }
+}
+
+// ------------------- SwarmopsJS object ----------------------
+
+var SwarmopsJS = (function () {
     var publicSymbols = {},
         initFunctions = [];
 

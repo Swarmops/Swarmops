@@ -32,7 +32,7 @@ namespace Swarmops.Frontend.Socket
             Console.WriteLine(" * Swarmops Frontend Socket Server starting up.");
 
             _socketServer = new WebSocketServer (12172); // TODO: Read from database
-            _socketServer.AddWebSocketService<SocketServices> ("/ws");
+            _socketServer.AddWebSocketService<MasterServices> ("/Master");
             // _socketServer.KeepClean = false; // as per the author's recommendation - this may be bad in the long run
             _socketServer.Start();
 

@@ -142,10 +142,13 @@
 
     </script>
     
-    <!-- initialize tooltips -->
+    <!-- initialize socket, tabs, and search -->
     
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
+
+            _masterInitializeSocket('<%=CommonV5.JavascriptEscape(this.CurrentAuthority.ToEncryptedXml())%>');
+
             $('#divTabsEditPerson').tabs();
 
             $('#<%=this.SearchBox.ClientID%>').focus(function() {
