@@ -1,0 +1,10 @@
+#! /bin/bash
+
+#echo "DEBUG: Executing pre-remove script, swarmops-frontend"
+
+# Support for Upstart deprecated; support systemd only
+
+systemctl stop swarmops-frontend
+systemctl disable swarmops-frontend
+
+#echo "DEBUG: Exiting pre-remove script, swarmops-frontend"
