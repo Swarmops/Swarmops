@@ -41,8 +41,8 @@ function _masterInitializeSocket(authenticationTicket) {
         else if (message.messageType == "SandboxUpdate") {
             if (odoLocalParticipation != undefined) {  // Real ugly accessing specific page elements here, but it's temporary
                 odoLocalParticipation.innerHTML = message.local;
-                odoGlobalParticipation.innerHTML = 12345000 + message.local * 5;
-                odoActiveParticipation.innerHTML = 123000 + message.local * 5;
+                odoGlobalParticipation.innerHTML = 12345678 + message.local * 5;
+                odoActiveParticipation.innerHTML = 123412 + message.local * 5;
                 odoProfitLossToDate.innerHTML = (message.profit / 100.0) + 0.001;
             }
         }
