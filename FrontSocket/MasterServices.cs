@@ -34,7 +34,7 @@ namespace Swarmops.Frontend.Socket
             switch (serverRequest)
             {
                 case "UpdateQueueCounts":
-                    Sessions.Broadcast (Program.GetQueueInfoJson());
+                    Sessions.Broadcast (FrontendLoop.GetQueueInfoJson());
                     break;
                 case "Ping":
                     Sessions.Broadcast("{\"messageType\":\"Heartbeat\"}");
@@ -62,7 +62,7 @@ namespace Swarmops.Frontend.Socket
             {
                 Sessions.Broadcast ("{\"messageType\":\"EditorCount\"," +
                                     String.Format("\"editorCount\":\"{0}\"", Sessions.ActiveIDs.ToArray().Length) + '}');
-                Send(Program.GetQueueInfoJson());
+                Send(FrontendLoop.GetQueueInfoJson());
             }
         }
 

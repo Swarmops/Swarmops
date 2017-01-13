@@ -77,7 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommsTransmitter.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="BackendLoop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

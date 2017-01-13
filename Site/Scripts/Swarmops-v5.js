@@ -10,7 +10,7 @@ function _masterInitializeSocket(authenticationTicket) {
         _masterSocket = null;
     }
 
-    alertify.log("Opening socket " + getMasterSocketAddress() + "...");
+    alertify.log("DEBUG: Opening socket " + getMasterSocketAddress() + "...");
 
     var socketUrl = getMasterSocketAddress() + "?Auth=" + authenticationTicket;
 
@@ -37,6 +37,12 @@ function _masterInitializeSocket(authenticationTicket) {
 
         if (message.messageType == "Heartbeat") {
             alertify.log("Master socket heartbeat");
+        } 
+        else if (message.messageType == "SandboxUpdate") {
+            if (odoLocalParticipation != undefined) {  // Real ugly accessing specific page elements here, but it's temporary
+                odoLocalParticipation.innerHTML = message.local;
+                odoProfitLossToDate.innerHTML = (message.profit / 100.0) + 0.001;
+            }
         }
     };
 }
