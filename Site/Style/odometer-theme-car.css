@@ -112,7 +112,7 @@
 }
 
 
-.odometer.odometer-auto-theme:not(.nocents) .odometer-digit:nth-last-child(1) {
+.odometer.odometer-auto-theme:not(.nocents) .odometer-digit:last-child, .odometer.odometer-theme-car:not(.nocents) .odometer-digit:last-child {
     display: none;
 }
 
