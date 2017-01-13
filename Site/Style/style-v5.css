@@ -278,6 +278,13 @@ body.rtl .odometer-label {
     padding-right: 4px;
 }
 
+
+.odometer.odometer-auto-theme:not(.nocents) .odometer-digit:last-child, .odometer.odometer-auto-theme:not(.nocents) .odometer-digit:nth-last-child(1), .odometer.odometer-theme-car:not(.nocents) .odometer-digit:last-child, .odometer.odometer-theme-car:not(.nocents) .odometer-digit:nth-last-child(1) {
+    display: none;  /* redundant workaround for cent rounding - moved here to escape caching of styles; main file has a cache buster and others don't */
+}
+
+
+
 /* BARS AND BOXEN */
 
 .mainbar
