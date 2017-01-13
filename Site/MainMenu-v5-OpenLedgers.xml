@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMainMenuItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  
+    <!-- This file is maintained by hand. -->    
+  
+            <MainMenuItem>
+                <ResourceKey>Ledgers_BalanceSheet</ResourceKey>
+                <UserLevel>0</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <NavigateUrl>/Pages/v5/Ledgers/BalanceSheet.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+              <ResourceKey>Ledgers_ProfitLossStatement</ResourceKey>
+              <UserLevel>0</UserLevel>
+              <Permissions />
+              <ImageUrl />
+              <NavigateUrl>/Pages/v5/Ledgers/ProfitLossStatement.aspx</NavigateUrl>
+              <Type>Link</Type>
+              <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+              <ResourceKey>Ledgers_BudgetVsActual</ResourceKey>
+              <UserLevel>0</UserLevel>
+              <Permissions />
+              <ImageUrl />
+              <NavigateUrl>/Pages/v5/Ledgers/BudgetActual.aspx</NavigateUrl>
+              <Type>Link</Type>
+              <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+                <ResourceKey>Ledgers_InspectLedgers</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <NavigateUrl>/Pages/v5/Ledgers/InspectLedgers.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+
+</ArrayOfMainMenuItem>
