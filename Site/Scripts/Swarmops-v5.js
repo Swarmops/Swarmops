@@ -36,7 +36,7 @@ function _masterInitializeSocket(authenticationTicket) {
         var message = $.parseJSON(data.data);
 
         if (message.messageType == "Heartbeat") {
-            alertify.log("Master socket heartbeat");
+            //alertify.log("Master socket heartbeat");
         } 
         else if (message.messageType == "SandboxUpdate") {
             if (odoLocalParticipation != undefined) {  // Real ugly accessing specific page elements here, but it's temporary
