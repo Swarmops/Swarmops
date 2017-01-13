@@ -17,7 +17,7 @@
         
         <hr/>
 
-            <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-integer nocents" id="odoLocalParticipation">123689.001</div><div class="odometer-label">Current Participants Sollentuna</div>
+            <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-integer nocents" id="odoLocalParticipation">498.001</div><div class="odometer-label">Current Participants Sollentuna</div>
     </div>
 
 

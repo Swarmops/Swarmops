@@ -168,7 +168,7 @@ namespace Swarmops.Frontend.Socket
             if (_isSandbox)
             {
                 _sandboxDummy1 += new Random().Next(10) - 3;
-                _sandboxDummy1 += new Random().Next(1000) - 200;
+                _sandboxDummy2 += new Random().Next(1000) - 200;
 
                 JObject data = new JObject();
                 data["messageType"] = "SandboxUpdate";
