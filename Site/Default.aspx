@@ -9,10 +9,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div class="box" style="background-image: url(/Images/Other/member-background-istockphoto.jpg); background-size: 700px"><div class="content">
-    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-integer nocents" id="odoGlobalParticipation">12345689.001</div><div class="odometer-label">Current Participants (Testing new code)</div>
+    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-integer nocents" id="odoGlobalParticipation">123402500</div><div class="odometer-label">Current Participants (Testing new code)</div>
     </div>
         
-    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-integer nocents" id="odoActiveParticipation">123689.001</div><div class="odometer-label">Active Participants Last 30 Days (Testing new code)</div>
+    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-integer nocents" id="odoActiveParticipation">125498</div><div class="odometer-label">Active Participants Last 30 Days (Testing new code)</div>
     </div>
         
         <hr/>
@@ -24,7 +24,7 @@
     </div></div>
 
     <div class="box" style="background-image: url(/Images/Other/coins-background-istockphoto.jpg); background-size: 700px"><div class="content">
-    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-currency" id="odoProfitLossToDate">12345689.001</div><div class="odometer-label">Annual Profit To Date (Testing new code)</div>
+    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-currency" id="odoProfitLossToDate">0.001</div><div class="odometer-label">Annual Profit To Date (Testing new code)</div>
     </div></div></div>
     
     <div class="box"><div class="content">
