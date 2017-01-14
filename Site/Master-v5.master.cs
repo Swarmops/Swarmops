@@ -96,7 +96,7 @@ namespace Swarmops.Frontend
                 // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
                 if (!Request.Url.ToString().StartsWith ("http://dev.swarmops.com/") &&
-                    !Request.Url.ToString().StartsWith("http://sandbox.swarmops.com") &&
+                    !Request.Url.ToString().StartsWith("http://sandbox.swarmops.com/") &&
                     !Request.Url.ToString().StartsWith("http://localhost:"))
                 {
                     if (SystemSettings.RequireSsl)
