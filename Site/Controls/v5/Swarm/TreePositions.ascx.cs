@@ -61,6 +61,18 @@ namespace Swarmops.Frontend.Controls.Swarm
         public int GeographyId { get; set; }
         public string Cookie { get; set; }
 
+        public int Height { get; set; }
 
+        protected string HeightField
+        {
+            get
+            {
+                if (Height == 0)
+                {
+                    return string.Empty;
+                }
+                return String.Format(";height={0}px", Height);
+            }
+        }
     }
 }

@@ -457,6 +457,15 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Geographic Subleaders.
+        /// </summary>
+        internal static string Position_Geographic_ExpandingSubleaderNode {
+            get {
+                return ResourceManager.GetString("Position_Geographic_ExpandingSubleaderNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Information Leader.
         /// </summary>
         internal static string Position_Geographic_InfoLeader {

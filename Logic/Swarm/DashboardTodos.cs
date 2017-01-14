@@ -44,7 +44,7 @@ namespace Swarmops.Logic.Swarm
                     DashboardTodo todo = new DashboardTodo();
                     todo.Description = Logic_Swarm_DashboardTodos.Bitcoin_SetPayoutAddress;
 
-                    todo.Icon = "/Images/Icons/bitcoin-icon-16px.png";
+                    todo.Icon = "/Images/Icons/bitcoin-icon-256px.png";
                     todo.JavaScript = "alertify.prompt(decodeURIComponent('" +
                                       Uri.EscapeDataString (
                                           Logic_Swarm_DashboardTodos.Bitcoin_SetPayoutAddress_Prompt.Replace (

@@ -246,7 +246,7 @@
                     <div class="content">
                         <asp:Repeater runat="server" ID="RepeaterTodoItems"><ItemTemplate>
                         <div class="link-row-encaps" onclick="<%# DataBinder.Eval(Container.DataItem, "OnClick") %>" >
-                            <div class="link-row-icon" style="background-image:url('<%# DataBinder.Eval(Container.DataItem, "Icon") %>')"></div>
+                            <div class="link-row-icon" style="background-size: 16px; background-image:url('<%# DataBinder.Eval(Container.DataItem, "Icon") %>')"></div>
                             <asp:Label ID="Label1" Text='<%# DataBinder.Eval(Container.DataItem, "Description") %>' runat="server" />
                         </div>
                         </ItemTemplate></asp:Repeater>

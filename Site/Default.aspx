@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Default" Codebehind="Default.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Default" CodeFile="Default.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <!-- Odometer -->
@@ -9,7 +9,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div class="box" style="background-image: url(/Images/Other/member-background-istockphoto.jpg); background-size: 700px"><div class="content">
-    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-integer nocents" id="odoGlobalParticipation">123402500</div><div class="odometer-label">Current Participants (Testing new code)</div>
+    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-integer nocents" id="odoGlobalParticipation">12342500</div><div class="odometer-label">Current Participants (Testing new code)</div>
     </div>
         
     <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-integer nocents" id="odoActiveParticipation">125498</div><div class="odometer-label">Active Participants Last 30 Days (Testing new code)</div>
@@ -28,10 +28,10 @@
     </div></div></div>
     
     <div class="box"><div class="content">
-    <h2>Dashboard Placeholder</h2>
-    <p>Dashboard is being constructed in preparation for beta release. Lots of code are in testing (visible on the Sandbox).</p>
+      <h2><asp:Label ID="LabelHeaderLocal" runat="server" /></h2>
+      <Swarmops5:TreePositions ID="TreePositions" Level="Geography" runat="server" />
         
-        </div></div>
+     </div></div>
 </asp:Content>
 
 

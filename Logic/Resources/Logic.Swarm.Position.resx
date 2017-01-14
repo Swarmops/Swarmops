@@ -249,6 +249,10 @@
   <data name="Position_Geographic_Deputy_Plural" xml:space="preserve">
     <value>Deputies</value>
   </data>
+  <data name="Position_Geographic_ExpandingSubleaderNode" xml:space="preserve">
+    <value>Geographic Subleaders</value>
+    <comment>Leaders for geographies below the one displayed</comment>
+  </data>
   <data name="Position_Geographic_InfoLeader" xml:space="preserve">
     <value>Information Leader</value>
   </data>

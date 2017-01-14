@@ -50,7 +50,7 @@ function _masterInitializeSocket(authenticationTicket) {
 }
 
 function getMasterSocketAddress() {
-    if (location.host.includes ("localhost")) { // Assume dev environment, go for sandbox socket
+    if (location.host.indexOf ("localhost") >= 0) { // Assume dev environment, go for sandbox socket
         return 'ws://sandbox.swarmops.com/ws/Master';
     } else {
         var protocol = ('https:' == document.location.protocol ? 'wss://' : 'ws://');

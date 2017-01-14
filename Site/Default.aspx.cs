@@ -4,6 +4,7 @@ using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
+using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend
 {
@@ -28,12 +29,42 @@ namespace Swarmops.Frontend
             InfoBoxLiteral =
                 "This is a Dashboard placeholder. It will contain a snapshot of the state of things as soon as the basic functions are re-implemented in the new interface.";
 
+            InitializePositionPanel();
+
             // If Open Ledgers, redirect to Balance Sheet: Don't show Dashboard
 
             if (CurrentUser.Identity == Person.OpenLedgersIdentity)
             {
                 Response.Redirect ("/Ledgers/BalanceSheet");
             }
+        }
+
+        internal void InitializePositionPanel()
+        {
+            Geography displayGeography = CurrentUser.Geography;
+
+            if (CurrentAuthority.Position != null && CurrentAuthority.Position.Geography != CurrentUser.Geography)
+            {
+                if (CurrentAuthority.Position.Geography == null)
+                {
+                    displayGeography = Geography.Root;
+                }
+                else
+                {
+                    displayGeography = CurrentAuthority.Position.Geography;
+                }
+            }
+
+            if (displayGeography.Identity == Geography.RootIdentity)
+            {
+                this.LabelHeaderLocal.Text = Resources.Pages.Swarm.LocalOrganization_HeaderGlobal;
+            }
+            else
+            {
+                this.LabelHeaderLocal.Text = String.Format(Resources.Pages.Swarm.LocalOrganization_Header, displayGeography.Name);
+            }
+
+            this.TreePositions.GeographyId = displayGeography.Identity;
         }
     }
 }
