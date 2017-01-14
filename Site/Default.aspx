@@ -24,7 +24,7 @@
     </div></div>
 
     <div class="box" style="background-image: url(/Images/Other/coins-background-istockphoto.jpg); background-size: 700px"><div class="content">
-    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-currency" id="odoProfitLossToDate">500.001</div><div class="odometer-label">Annual Profit To Date (Testing new code)</div>
+    <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-currency" id="odoProfitLossToDate">0.001</div><div class="odometer-label">Annual Profit To Date (Testing new code)</div>
     </div></div></div>
     
     <div class="box"><div class="content">

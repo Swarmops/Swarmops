@@ -196,7 +196,7 @@ namespace Swarmops.Logic.Swarm
             string titleStringUntyped = type.ToString();
             string titleStringTyped = titleStringUntyped + "_" + title.ToString();
 
-            if (plural)
+            if (plural && title != PositionTitle.UxElement)
             {
                 titleStringUntyped += "_Plural";
                 titleStringTyped += "_Plural";

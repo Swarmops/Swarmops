@@ -154,6 +154,7 @@ namespace Swarmops.Frontend.Automation
                 if (localizedPositionName == null)
                 {
                     localizedPositionName = @"NULL (" + position.PositionType.ToString() + ")";
+                    string test = position.Localized();
                 }
 
                 if (assignments.Count > 0)

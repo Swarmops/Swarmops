@@ -33,7 +33,12 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// Totally customized and not stock localized - look up in PositionTitlesCustom table
         /// </summary>
-        Custom
+        Custom,
+
+        /// <summary>
+        /// These titles are not actual positions, but UX elements (categories, etc)
+        /// </summary>
+        UxElement
 
         // Expand with various title names
     }
