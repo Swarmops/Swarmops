@@ -720,7 +720,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 try
                 {
-                    personOne = Person.FromIdentity (1);
+                    personOne = Person.FromIdentity(1);
                     if (Debugger.IsAttached)
                     {
                         if (personOne.CityName != "Duckville" || personOne.Mail != "noreply@example.com")
@@ -745,23 +745,31 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 if (personOneExists || personOne != null)
                 {
-                    throw new InvalidOperationException ("Cannot run initialization processes again when initialized.");
+                    throw new InvalidOperationException("Cannot run initialization processes again when initialized.");
                 }
 
-                Person newPerson = Person.Create (name, mail, password, string.Empty, string.Empty, string.Empty,
+                Person newPerson = Person.Create(name, mail, password, string.Empty, string.Empty, string.Empty,
                     string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
-                newPerson.AddParticipation (Organization.Sandbox, DateTime.UtcNow.AddYears(100));
-                    // Add membership in Sandbox
+                newPerson.AddParticipation(Organization.Sandbox, DateTime.UtcNow.AddYears(10));
+                // Add membership in Sandbox
 
                 // Initialize staffing to System and Sandbox with the new user
 
                 Positions.CreateSysadminPositions();
-                Positions.CreateOrganizationDefaultPositions (Organization.Sandbox, PositionTitle.Default);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                throw;
+                try
+                {
+                    SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "Initialization", exception);
+                    throw;
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
             }
 
         }
