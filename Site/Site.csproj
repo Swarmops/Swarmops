@@ -683,6 +683,7 @@
     <Content Include="Images\Flags\es-64px.png" />
     <Content Include="Images\Flags\fi-24px.png" />
     <Content Include="Images\Flags\fi-64px.png" />
+    <Content Include="Images\Flags\flag-highlight-128px.png" />
     <Content Include="Images\Flags\FlagsLicense.txt" />
     <Content Include="Images\Flags\fr-24px.png" />
     <Content Include="Images\Flags\fr-64px.png" />

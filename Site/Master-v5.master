@@ -179,8 +179,8 @@
 	    </div>-->
         <div class="topmenu">
             <div class="center980px">
-                <div class="elementFloatFar" style="padding-top: 10px;"><a href="/User/SelectLanguage"><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></a></div>
-                <div class="elementFloatFar" style="padding-top: 5px; padding-left: 3px; padding-right: 3px"><a href="javascript:masterBeginEditPerson(0);"><img src="/Images/Icons/iconshock-user-<%=CurrentUser.Gender.ToString().ToLower() %>.png" height="28"/></a></div>
+                <a href="/User/SelectLanguage"><div id="DivMasterFlag" class="elementFloatFar"><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div></a>
+                <div class="elementFloatFar" style="padding-top: 5px; padding-left: 3px; padding-right: 3px"><a href="javascript:masterBeginEditPerson(0);"><div id="DivMasterUserIcon" style="background-image:url('/Images/Icons/iconshock-user-<%=CurrentUser.Gender.ToString().ToLower() %>.png')"></div></a></div>
                 <div class="topSearchBox" id="divTopSearchBox"><asp:TextBox ID="SearchBox" runat="server" /></div>
                 <Swarmops5:MainMenu ID="MainMenu" runat="server" />
             </div>

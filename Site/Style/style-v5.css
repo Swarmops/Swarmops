@@ -254,6 +254,28 @@ body.rtl span.buildId {
     direction: ltr; /* parentheses freak out unless specified LTR */
 }
 
+div#DivMasterUserIcon {
+    height: 28px;
+    width: 28px;
+    background-size: 28px;
+    background-position-y: 0;
+}
+
+div#DivMasterUserIcon:hover {
+    background-position-y: 28px;
+}
+
+div#DivMasterFlag {
+    margin-top: 6px;
+    padding-top: 4px;
+    background-image: url('/Images/Flags/flag-highlight-128px.png');
+    background-size:0
+}
+
+div#DivMasterFlag:hover {
+    background-size: 28px;
+}
+
 /* DASHBOARD THINGS */
 
 .odometer {
