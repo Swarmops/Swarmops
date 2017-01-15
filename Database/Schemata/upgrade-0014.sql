@@ -23,8 +23,8 @@ CREATE PROCEDURE `CreatePositionAssignment`(
 )
 BEGIN
 
-  INSERT INTO PositionAssignments (OrganizationId,GeographyId,PositionId,PersonId,ExpiresDateTimeUtc,CreatedDateTimeUtc,CreatedByPersonId,CreatedByPositionId,AssignmentNotes)
-    VALUES (organizationId, geographyId, positionId, personId, expiresDateTimeUtc, createdDateTimeUtc, createdByPersonId, createdByPositionId, assignmentNotes);
+  INSERT INTO PositionAssignments (OrganizationId,GeographyId,PositionId,PersonId,ExpiresDateTimeUtc,CreatedDateTimeUtc,CreatedByPersonId,CreatedByPositionId,AssignmentNotes,TerminationNotes)
+    VALUES (organizationId, geographyId, positionId, personId, expiresDateTimeUtc, createdDateTimeUtc, createdByPersonId, createdByPositionId, assignmentNotes,'');
 
   SELECT LAST_INSERT_ID() AS Identity;
 
