@@ -502,9 +502,13 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 // Create the sandbox
 
-                Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "swarmops.com", "Ops",
+                Organization sandbox = Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "swarmops.com", "Ops",
                     rootGeographyId, true,
-                    true, 0).EnableEconomy(Currency.FromCode("EUR"));
+                    true, 0);
+                
+                sandbox.EnableEconomy(Currency.FromCode("EUR"));
+
+                Positions.CreateOrganizationDefaultPositions(sandbox);
 
                 // Get the list of countries
 
