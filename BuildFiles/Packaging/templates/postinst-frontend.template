@@ -50,6 +50,10 @@ if [ ! -e /var/lib/swarmops/upload ]; then
         
     esac
 
+    dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
+has been installed. Please navigate to this host with a web browser to \
+complete the installation." 9 60
+
   else
 
 #   # Copying the unactivated Swarmops config to sites-available (option 3 above)
