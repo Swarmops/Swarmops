@@ -173,7 +173,7 @@
 
     </script>
 
-    <table id="<%=this.ClientID %>_tablePositions" title="" class="easyui-treegrid" style="width:680px;height:600px"  
+    <table id="<%=this.ClientID %>_tablePositions" title="" class="easyui-treegrid" style="width:680px<%=this.HeightField%>"  
         url="/Automation/Json-PositionsTree.aspx?Level=<%=this.Level%>&GeographyId=<%=this.GeographyId %>&Cookie=<%=this.Cookie %>"
         rownumbers="false"
         animate="true"

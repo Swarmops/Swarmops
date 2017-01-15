@@ -46,7 +46,8 @@ namespace Swarmops.Common.Enums
         Geographic_ActivismLeader,  /* dotreports to Operations */ 
         Geographic_ActivismLeaderAssistant,
         Geographic_OutreachLeader,  /* dotreports to Marketing */
-        Geographic_OutreachLeaderAssistant
+        Geographic_OutreachLeaderAssistant,
+        Geographic_ExpandingSubleaderNode  /* Just a UX element, not a position */
         // ReSharper restore InconsistentNaming
     }
 }

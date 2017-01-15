@@ -2,11 +2,11 @@ ServerName swarmops-frontend
 ServerAdmin swarmops-frontend@swarmops.com
 DocumentRoot /usr/share/swarmops/frontend/
 
-# Redirect websocket requests to Swarmops FrontSocket server
+# With mod_proxy enabled, kill the ability to make unsolicited proxy requests
 ProxyRequests Off
-ProxyPass "/ws/" "ws:/localhost:12172"
 
-# Explicitly specify Mono version 4
+# Point out application folder, explicitly specify Mono version 4
+MonoApplications swarmops-frontend "/:/usr/share/swarmops/frontend/"
 MonoServerPath swarmops-frontend "/usr/bin/mod-mono-server4"
 
 # Uncomment the line below to enable debugging:
@@ -15,16 +15,30 @@ MonoServerPath swarmops-frontend "/usr/bin/mod-mono-server4"
 # Uncomment the line below and enter FQDNs (one or more) for Swarmops if
 # running virtual hosts:
 # ServerAlias FQDN1 FQDN2 FQDN3 ...
-  
-MonoApplications swarmops-frontend "/:/usr/share/swarmops/frontend/"
-<Location "/">
+ 
+
+# Redirect websocket requests to Swarmops FrontSocket server
+
+<Location "/ws/">
   Allow from all
-  Order allow,deny
-  SetHandler mono
-  MonoSetServerAlias swarmops-frontend
-  SetOutputFilter DEFLATE
-  SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip dont-vary
+  ProxyPass "ws://localhost:12172/"
+  ProxyPassReverse "ws://localhost:12172/"
 </Location>
+
+# Trigger main handler only if Upgrade header is not [Ww]ebsocket
+# (because in that particular case, we're passing to socket above)
+
+<Location "/">
+  <If "! %{HTTP:Upgrade} =~ /[Ww]ebsocket/">
+    Allow from all
+    Order allow,deny
+    SetHandler mono
+    MonoSetServerAlias swarmops-frontend
+    SetOutputFilter DEFLATE
+    SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip dont-vary
+  </If>
+</Location>
+
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript
 </IfModule>

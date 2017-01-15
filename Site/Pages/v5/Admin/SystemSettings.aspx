@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Admin.SystemSettingsPage" Codebehind="SystemSettings.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Admin.SystemSettingsPage" CodeFile="SystemSettings.aspx.cs" %>
 <%@ Register tagPrefix="Swarmops5" tagName="AjaxTextBox" src="~/Controls/v5/Base/AjaxTextBox.ascx"  %>
 <%@ Register tagPrefix="Swarmops5" tagName="TreePositions" src="~/Controls/v5/Swarm/TreePositions.ascx"  %>
 <%@ Register tagPrefix="Swarmops5" tagName="DropDown" src="~/Controls/v5/Base/DropDown.ascx" %>
@@ -118,7 +118,7 @@
         </div>
         <div title="<img src='/Images/Icons/iconshock-group-diversified-64px.png' />">
             <h2><asp:Label ID="LabelHeaderSysops" runat="server" /></h2>
-            <Swarmops5:TreePositions ID="TreePositions" Level="SystemWide" runat="server" />
+            <Swarmops5:TreePositions ID="TreePositions" Level="SystemWide" runat="server" Height="600" />
         </div>
         <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' />">
             <h2><asp:Label ID="LabelHeaderCorrespondenceTransmission" runat="server" /></h2>

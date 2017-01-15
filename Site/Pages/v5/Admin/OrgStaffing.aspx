@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Admin.OrganizationStaffing" Codebehind="OrgStaffing.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Admin.OrganizationStaffing" CodeFile="OrgStaffing.aspx.cs" %>
 <%@ Register tagPrefix="Swarmops5" tagName="AjaxTextBox" src="~/Controls/v5/Base/AjaxTextBox.ascx"  %>
 <%@ Register tagPrefix="Swarmops5" tagName="TreePositions" src="~/Controls/v5/Swarm/TreePositions.ascx"  %>
 
@@ -20,15 +20,15 @@
     <div id="divTabs" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
         <div title="<img src='/Images/Icons/iconshock-general-128px.png' width='64' height='64' />">
             <h2><asp:Label ID="LabelHeaderStrategic" runat="server" /></h2>
-            <Swarmops5:TreePositions ID="TreePositionsStrategic" Level="OrganizationStrategic" Cookie="Strategic" runat="server" />
+            <Swarmops5:TreePositions ID="TreePositionsStrategic" Level="OrganizationStrategic" Cookie="Strategic" Height="600" runat="server" />
         </div>
         <div title="<img src='/Images/Icons/iconshock-executive-128px.png' width='64' height='64' />">
             <h2><asp:Label ID="LabelHeaderExecutive" runat="server" /></h2>
-            <Swarmops5:TreePositions ID="TreePositionsExecutive" Level="OrganizationExecutive" Cookie="Executive" runat="server" />
+            <Swarmops5:TreePositions ID="TreePositionsExecutive" Level="OrganizationExecutive" Cookie="Executive" Height="600" runat="server" />
         </div>
         <div title="<img src='/Images/Icons/iconshock-foreman-128px.png' width='64' height='64' />">
             <h2><asp:Label ID="LabelHeaderGeographicDefault" runat="server" /></h2>
-            <Swarmops5:TreePositions ID="TreePositionsGeographic" Level="GeographyDefault" Cookie="Local" runat="server" />
+            <Swarmops5:TreePositions ID="TreePositionsGeographic" Level="GeographyDefault" Cookie="Local" Height="600" runat="server" />
         </div>
         <div title="<img src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
             <h2><asp:Label ID="LabelHeaderVolunteers" runat="server" /></h2>

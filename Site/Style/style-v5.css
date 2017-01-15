@@ -254,6 +254,28 @@ body.rtl span.buildId {
     direction: ltr; /* parentheses freak out unless specified LTR */
 }
 
+div#DivMasterUserIcon {
+    height: 28px;
+    width: 28px;
+    background-size: 28px;
+    background-position-y: 0;
+}
+
+div#DivMasterUserIcon:hover {
+    background-position-y: 28px;
+}
+
+div#DivMasterFlag {
+    margin-top: 6px;
+    padding-top: 4px;
+    background-image: url('/Images/Flags/flag-highlight-128px.png');
+    background-size:0
+}
+
+div#DivMasterFlag:hover {
+    background-size: 28px;
+}
+
 /* DASHBOARD THINGS */
 
 .odometer {
@@ -277,6 +299,13 @@ body.rtl .odometer-label {
     padding-left: 0;
     padding-right: 4px;
 }
+
+
+.odometer.odometer-auto-theme:not(.nocents) .odometer-digit:last-child, .odometer.odometer-auto-theme:not(.nocents) .odometer-digit:nth-last-child(1), .odometer.odometer-theme-car:not(.nocents) .odometer-digit:last-child, .odometer.odometer-theme-car:not(.nocents) .odometer-digit:nth-last-child(1) {
+    display: none;  /* redundant workaround for cent rounding - moved here to escape caching of styles; main file has a cache buster and others don't */
+}
+
+
 
 /* BARS AND BOXEN */
 

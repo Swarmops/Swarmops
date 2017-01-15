@@ -130,6 +130,7 @@ namespace Swarmops.Frontend.Automation
                     nodeState = "closed";
                 }
 
+
                 string expires = string.Empty;
                 string action = string.Empty;
                 string assignedName = string.Empty;
@@ -153,6 +154,7 @@ namespace Swarmops.Frontend.Automation
                 if (localizedPositionName == null)
                 {
                     localizedPositionName = @"NULL (" + position.PositionType.ToString() + ")";
+                    string test = position.Localized();
                 }
 
                 if (assignments.Count > 0)
@@ -172,12 +174,35 @@ namespace Swarmops.Frontend.Automation
                                 assignments[0].PersonId == CurrentUser.Identity ? "self='true'" : string.Empty);
                     }
                 }
+                string element = string.Empty;
 
-                string element = string.Format("\"id\":\"{0}-1-{8}\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"expires\":\"{3}\",\"minMax\":\"{4} / {5}\",\"iconType\":\"{6}\",\"actions\":\"{7}\"", 
-                    position.Identity, JsonSanitize (localizedPositionName), JsonSanitize (assignedName), JsonSanitize (expires), position.MinCount, 
-                    position.MaxCount == 0? @"&infin;" : position.MaxCount.ToString(CultureInfo.InvariantCulture),
-                    position.MaxCount == 1? "Person" : "Group",
-                    action, position.GeographyId);
+                if (position.Identity > 0) // regular
+                {
+                    element =
+                        string.Format(
+                            "\"id\":\"{0}-1-{8}\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"expires\":\"{3}\",\"minMax\":\"{4} / {5}\",\"iconType\":\"{6}\",\"actions\":\"{7}\"",
+                            position.Identity, JsonSanitize(localizedPositionName), JsonSanitize(assignedName),
+                            JsonSanitize(expires), position.MinCount,
+                            position.MaxCount == 0
+                                ? @"&infin;"
+                                : position.MaxCount.ToString(CultureInfo.InvariantCulture),
+                            position.MaxCount == 1 ? "Person" : "Group",
+                            action, position.GeographyId);
+                }
+                else // UX element
+                {
+                    nodeState = "closed";
+                    element =
+                        string.Format(
+                            "\"id\":\"{0}-1-{8}\",\"positionTitle\":\"{1}\",\"assignedName\":\"\",\"expires\":\"\",\"minMax\":\"\",\"iconType\":\"{6}\",\"actions\":\"\"",
+                            position.Identity, JsonSanitize(localizedPositionName), JsonSanitize(assignedName),
+                            JsonSanitize(expires), position.MinCount,
+                            position.MaxCount == 0
+                                ? @"&infin;"
+                                : position.MaxCount.ToString(CultureInfo.InvariantCulture),
+                            position.MaxCount == 1 ? "Person" : "Group",
+                            action, position.GeographyId);
+                }
 
                 // TODO: Add all assignments after the first one right here
 

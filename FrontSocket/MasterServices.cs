@@ -11,9 +11,9 @@ using WebSocketSharp.Server;
 
 namespace Swarmops.Frontend.Socket
 { 
-    internal class SocketServices: WebSocketBehavior
+    internal class MasterServices: WebSocketBehavior
     {
-        public SocketServices()
+        public MasterServices()
         {
             base.IgnoreExtensions = true; // Necessary to suppress a Deflate exception that kills server otherwise
         }
@@ -34,7 +34,7 @@ namespace Swarmops.Frontend.Socket
             switch (serverRequest)
             {
                 case "UpdateQueueCounts":
-                    Sessions.Broadcast (Program.GetQueueInfoJson());
+                    Sessions.Broadcast (FrontendLoop.GetQueueInfoJson());
                     break;
                 case "Ping":
                     Sessions.Broadcast("{\"messageType\":\"Heartbeat\"}");
@@ -47,10 +47,14 @@ namespace Swarmops.Frontend.Socket
 
         protected override void OnOpen()
         {
+            Console.WriteLine(" * Attempted socket connection");
+
             string authBase64 = Context.QueryString["Auth"];
             authBase64 = Uri.UnescapeDataString (authBase64); // Defensive programming - % sign does not exist in base64 so this won't ever collapse a working encoding
 
             _authority = Authority.FromEncryptedXml (authBase64);
+
+            Console.WriteLine(" - - authenticated: " + _authority.Person.Canonical);
 
             base.OnOpen();
 
@@ -58,7 +62,7 @@ namespace Swarmops.Frontend.Socket
             {
                 Sessions.Broadcast ("{\"messageType\":\"EditorCount\"," +
                                     String.Format("\"editorCount\":\"{0}\"", Sessions.ActiveIDs.ToArray().Length) + '}');
-                Send(Program.GetQueueInfoJson());
+                Send(FrontendLoop.GetQueueInfoJson());
             }
         }
 

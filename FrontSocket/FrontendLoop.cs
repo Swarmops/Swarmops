@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Security;
@@ -8,15 +9,25 @@ using Mono.Unix;
 using Mono.Unix.Native;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.ExtensionMethods;
+using Swarmops.Logic.Support;
 using WebSocketSharp.Server;
 
 namespace Swarmops.Frontend.Socket
 {
-    internal class Program
+    internal class FrontendLoop
     {
         static void Main(string[] args)
         {
+            // Check if we're Sandbox
+
+            if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+            {
+                _isSandbox = true;
+            }
+
             // Disable SSL cert checking (because Mono doesn't have a cert repo, dammit)
             Swarmops.Logic.Support.SupportFunctions.DisableSslCertificateChecks();
 
@@ -31,8 +42,10 @@ namespace Swarmops.Frontend.Socket
 
             Console.WriteLine(" * Swarmops Frontend Socket Server starting up.");
 
+            OutboundComm.CreateNotification(null, NotificationResource.System_Startup_Frontend);
+
             _socketServer = new WebSocketServer (12172); // TODO: Read from database
-            _socketServer.AddWebSocketService<SocketServices> ("/ws");
+            _socketServer.AddWebSocketService<MasterServices> ("/Master");
             // _socketServer.KeepClean = false; // as per the author's recommendation - this may be bad in the long run
             _socketServer.Start();
 
@@ -143,11 +156,27 @@ namespace Swarmops.Frontend.Socket
             Console.WriteLine(" * Swarmops Frontend Socket Server exiting");
         }
 
-        private static WebSocketServer _socketServer; 
+        private static WebSocketServer _socketServer;
+        private static bool _isSandbox = false;
+        private static int _sandboxDummy1 = 500;
+        private static int _sandboxDummy2 = 50000;
 
         private static void OnEveryTenSeconds()
         {
             _socketServer.WebSocketServices.Broadcast ("{\"messageType\":\"Heartbeat\"}");
+
+            if (_isSandbox)
+            {
+                _sandboxDummy1 += new Random().Next(10) - 3;
+                _sandboxDummy2 += new Random().Next(1000) - 200;
+
+                JObject data = new JObject();
+                data["messageType"] = "SandboxUpdate";
+                data["local"] = _sandboxDummy1.ToString(CultureInfo.InvariantCulture);
+                data["profit"] = _sandboxDummy2.ToString(CultureInfo.InvariantCulture);
+
+                _socketServer.WebSocketServices.Broadcast(data.ToString());
+            }
         }
 
 

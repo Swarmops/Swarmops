@@ -565,13 +565,6 @@
     <Compile Include="Security\FinalizeLogin.aspx.designer.cs">
       <DependentUpon>FinalizeLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Security\Login-Old.aspx.cs">
-      <DependentUpon>Login-Old.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Security\Login-Old.aspx.designer.cs">
-      <DependentUpon>Login-Old.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Security\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -690,6 +683,7 @@
     <Content Include="Images\Flags\es-64px.png" />
     <Content Include="Images\Flags\fi-24px.png" />
     <Content Include="Images\Flags\fi-64px.png" />
+    <Content Include="Images\Flags\flag-highlight-128px.png" />
     <Content Include="Images\Flags\FlagsLicense.txt" />
     <Content Include="Images\Flags\fr-24px.png" />
     <Content Include="Images\Flags\fr-64px.png" />
@@ -731,8 +725,13 @@
     <Content Include="Images\Flags\us-24px.png" />
     <Content Include="Images\Icons\bitcoin-icon-128px.png" />
     <Content Include="Images\Icons\bitcoin-icon-16px.png" />
+    <Content Include="Images\Icons\bitcoin-icon-256px.png" />
     <Content Include="Images\Icons\iconshock-add-16px.png" />
     <Content Include="Images\Icons\iconshock-add-96px.png" />
+    <Content Include="Images\Icons\iconshock-balloon-128x96px-hot.png" />
+    <Content Include="Images\Icons\iconshock-balloon-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-balloon-defer-128x96px-hot.png" />
+    <Content Include="Images\Icons\iconshock-balloon-defer-128x96px.png" />
     <Content Include="Images\Icons\iconshock-balloon-no-128x96px-disabled.png" />
     <Content Include="Images\Icons\iconshock-balloon-no-128x96px-hot-disabled.png" />
     <Content Include="Images\Icons\iconshock-balloon-no-128x96px-hot.png" />
@@ -744,6 +743,8 @@
     <Content Include="Images\Icons\iconshock-balloon-undo-128x96px.png" />
     <Content Include="Images\Icons\iconshock-balloon-undo-16px-hot.png" />
     <Content Include="Images\Icons\iconshock-balloon-undo-16px.png" />
+    <Content Include="Images\Icons\iconshock-balloon-wrench-128x96px-hot.png" />
+    <Content Include="Images\Icons\iconshock-balloon-wrench-128x96px.png" />
     <Content Include="Images\Icons\iconshock-balloon-yes-128x96px-disabled.png" />
     <Content Include="Images\Icons\iconshock-balloon-yes-128x96px-gold.png" />
     <Content Include="Images\Icons\iconshock-balloon-yes-128x96px-hot-disabled.png" />
@@ -811,6 +812,12 @@
     <Content Include="Images\Icons\iconshock-settings-16px.png" />
     <Content Include="Images\Icons\iconshock-soldier-128px.png" />
     <Content Include="Images\Icons\iconshock-star-gold-64px.png" />
+    <Content Include="Images\Icons\iconshock-stars-1-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-stars-2-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-stars-3-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-stars-4-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-stars-5-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-stars-6-128x96px.png" />
     <Content Include="Images\Icons\iconshock-switch-red-64px-hot.png" />
     <Content Include="Images\Icons\iconshock-switch-red-64px.png" />
     <Content Include="Images\Icons\iconshock-user-16px.png" />
@@ -827,6 +834,7 @@
     <Content Include="Images\Icons\iconshock-warning-red-24x16px.png" />
     <Content Include="Images\Icons\iconshock-warning-red-96px.png" />
     <Content Include="Images\Icons\iconshock-workchair-16px.png" />
+    <Content Include="Images\Icons\iconshock-wrench-128x96px-centered.png" />
     <Content Include="Images\Icons\iconshock-wrench-16px-hot.png" />
     <Content Include="Images\Icons\iconshock-wrench-16px.png" />
     <Content Include="Images\Icons\undo-16px.png" />
@@ -1762,7 +1770,6 @@
     <Content Include="Security\Images\iconshock-foreign-key-24px.png" />
     <Content Include="Security\Images\iconshock-greentick-16px.png" />
     <Content Include="Security\Images\Swarmops-Logo.png" />
-    <Content Include="Security\Login-Old.aspx" />
     <Content Include="Security\Login.aspx" />
     <Content Include="Security\RequestPasswordReset.aspx" />
     <Content Include="Security\ResetPassword.aspx" />

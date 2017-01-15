@@ -144,7 +144,8 @@ namespace Swarmops.Logic.Communications.Payload
     public enum NotificationResource
     {
         Unknown = 0,
-        System_Startup,
+        System_Startup_Backend,
+        System_Startup_Frontend,
         System_Exception,
         System_DatabaseSchemaUpgraded,
         System_DatabaseUpgradeFailed,

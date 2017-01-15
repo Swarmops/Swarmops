@@ -846,18 +846,36 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops Backend version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks..
         /// </summary>
-        internal static string System_Startup_Body {
+        internal static string System_Startup_Backend_Body {
             get {
-                return ResourceManager.GetString("System_Startup_Body", resourceCulture);
+                return ResourceManager.GetString("System_Startup_Backend_Body", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Swarmops Backend operational.
         /// </summary>
-        internal static string System_Startup_Subject {
+        internal static string System_Startup_Backend_Subject {
             get {
-                return ResourceManager.GetString("System_Startup_Subject", resourceCulture);
+                return ResourceManager.GetString("System_Startup_Backend_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swarmops Frontend socket server version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks..
+        /// </summary>
+        internal static string System_Startup_Frontend_Body {
+            get {
+                return ResourceManager.GetString("System_Startup_Frontend_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swarmops Frontend operational.
+        /// </summary>
+        internal static string System_Startup_Frontend_Subject {
+            get {
+                return ResourceManager.GetString("System_Startup_Frontend_Subject", resourceCulture);
             }
         }
         
