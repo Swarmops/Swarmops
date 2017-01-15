@@ -550,7 +550,7 @@ namespace Swarmops.Database
         public int CreatePerson(string name, string email)
         {
             return CreatePerson (name, email, string.Empty, string.Empty, string.Empty, string.Empty, 0,
-                DateTime.MinValue, PersonGender.Unknown);
+                new DateTime(1800,1,1), PersonGender.Unknown);
         }
 
         protected void SetPersonBasicStringValue (int personId, string key, string newValue)

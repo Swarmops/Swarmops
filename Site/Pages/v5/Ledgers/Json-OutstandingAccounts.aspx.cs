@@ -61,12 +61,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             if (renderPresentTime)
             {
-                ledgerExpectedCents = balanceAccount.GetDeltaCents (DateTime.MinValue, DateTime.MaxValue);
+                ledgerExpectedCents = balanceAccount.GetDeltaCents (new DateTime (1800,1,1), DateTime.MaxValue);
                 // get ALL transactions
             }
             else
             {
-                ledgerExpectedCents = balanceAccount.GetDeltaCents (DateTime.MinValue, targetDateTime);
+                ledgerExpectedCents = balanceAccount.GetDeltaCents (new DateTime(1800,1,1), targetDateTime);
             }
 
             if (reverseLedgerSign)

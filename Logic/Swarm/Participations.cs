@@ -85,7 +85,7 @@ namespace Swarmops.Logic.Swarm
         public static Participations GetExpired (Organization organization)
         {
             return
-                FromArray (SwarmDb.GetDatabaseForReading().GetExpiringParticipations (organization, DateTime.MinValue,
+                FromArray (SwarmDb.GetDatabaseForReading().GetExpiringParticipations (organization, new DateTime(1800,1,1),
                     DateTime.Now));
         }
 
