@@ -29,17 +29,7 @@ if [ ! -e /var/lib/swarmops/upload ]; then
 
 #         # Forcing a stop/start cycle because of install dependency fuckups
 
-#         /etc/init.d/apache2 stop
-#         /etc/init.d/apache2 start
-
-#         # The install dependency fuckups have been mostly solved upstream,
-#         # so just reload instead of the stop/start cycle
-#
-#         # aka "we tried turning it off and on again already"
-
-          /etc/init.d/apache2 reload
-
-#         # If asked to start Apache2, we've already done so, so remove flag
+#         # If asked to start Apache2, we're always doing so, so remove flag
 
           if [ -e /tmp/swarmops-restart-apache.flag ]; then
             rm /tmp/swarmops-restart-apache.flag
