@@ -573,10 +573,13 @@
 	
     <!-- Main menu, dynamically constructed -->
 
-	<div class="center980px">
-        <div class="topmenu" style="margin-top: -4px; padding-top: 12px; color: white; font-family: Ubuntu; font-weight: 300; font-size: 24px; letter-spacing: 1px">
+    <div class="topmenu" style="margin-top: -4px; padding-top: 12px; color: white; font-family: Ubuntu; font-weight: 300; font-size: 24px; letter-spacing: 1px">
+        <div class="center980px">
             <span style="padding-left: 30px; padding-right: 30px">INITIALIZING SWARMOPS</span>
         </div>
+    </div>
+
+	<div class="center980px">
         
         <div class="mainbar">
             <!--<div id="page-icon-encaps"><asp:Image ID="IconPage" runat="server" ImageUrl="~/Images/PageIcons/iconshock-ignitionkey-40px.png" /></div><h1><asp:Label ID="LabelPageTitle" Text="Installation" runat="server" /></h1>-->
