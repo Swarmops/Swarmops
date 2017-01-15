@@ -2,8 +2,10 @@
 
 #echo "DEBUG: Executing post-install script, swarmops-frontend"
 
-adduser --system --group --no-create-home --quiet swarmopsfront
-usermod -a -G syslog swarmopsfront
+adduser --system --group --no-create-home --quiet swarmops
+usermod -a -G syslog swarmops
+
+mkdir -p /var/log/swarmops
 
 # make sure the upload folder exists and is writeable by www-data
 # do not make any changes to an already existing folder

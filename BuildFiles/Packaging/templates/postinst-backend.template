@@ -2,8 +2,10 @@
 
 #echo "DEBUG: Executing post-installation script, swarmops-backend"
 
-adduser --system --group --no-create-home --quiet swarmopsback
-usermod -a -G syslog swarmopsback
+adduser --system --group --no-create-home --quiet swarmops
+usermod -a -G syslog swarmops
+
+mkdir -p /var/log/swarmops
 
 #Upstart deprecated; support systemd only
 
