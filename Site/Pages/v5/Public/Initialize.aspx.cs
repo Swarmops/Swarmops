@@ -749,9 +749,9 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 }
 
                 Person newPerson = Person.Create(name, mail, password, string.Empty, string.Empty, string.Empty,
-                    string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
+                    string.Empty, string.Empty, new DateTime(1972,1,21), PersonGender.Unknown);
 
-                newPerson.AddParticipation(Organization.Sandbox, DateTime.UtcNow.AddYears(10));
+                newPerson.AddParticipation(Organization.Sandbox, DateTime.UtcNow.AddYears(100));
                 // Add membership in Sandbox
 
                 // Initialize staffing to System and Sandbox with the new user
