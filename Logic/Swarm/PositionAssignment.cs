@@ -83,7 +83,7 @@ namespace Swarmops.Logic.Swarm
             int positionAssignmentId = SwarmDb.GetDatabaseForWriting()
                 .CreatePositionAssignment (position.OrganizationId, geographyId, position.Identity, person.Identity,
                     createdByPersonId, createdByPositionId,
-                    expiresDateTimeUtc == null ? DateTime.MaxValue : (DateTime) expiresDateTimeUtc, assignmentNotes);
+                    expiresDateTimeUtc == null ? new DateTime(2200,1,1) : (DateTime) expiresDateTimeUtc, assignmentNotes);  // DateTime.MaxValue kills MySql layer
 
             return FromIdentityAggressive (positionAssignmentId);
         }

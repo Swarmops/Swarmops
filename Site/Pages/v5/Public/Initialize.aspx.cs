@@ -751,6 +751,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 Person newPerson = Person.Create(name, mail, password, string.Empty, string.Empty, string.Empty,
                     string.Empty, string.Empty, new DateTime(1972,1,21), PersonGender.Unknown);
 
+                SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "Initialization", new Exception("Tracepoint 1"));
+
                 newPerson.AddParticipation(Organization.Sandbox, DateTime.UtcNow.AddYears(25));
                 // Add membership in Sandbox
 
