@@ -93,7 +93,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 foreach (ExpenseClaim claim in claims)
                 {
-                    outstandingAccounts.Add (OutstandingAccount.FromExpenseClaim (claim, DateTime.MinValue));
+                    outstandingAccounts.Add (OutstandingAccount.FromExpenseClaim (claim, Constants.DateTimeLow));
                 }
                 foreach (Payout payout in payouts)
                 {
@@ -143,7 +143,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     // whetherthe transaction's date is on the other side of targetDateTime.
 
                     bool includeThisClaim = false;
-                    DateTime dateTimeClosed = DateTime.MinValue;
+                    DateTime dateTimeClosed = Constants.DateTimeLow;
 
                     if (claim.Open)
                     {

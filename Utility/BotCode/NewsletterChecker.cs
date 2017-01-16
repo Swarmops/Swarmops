@@ -55,7 +55,7 @@ namespace Swarmops.Utility.BotCode
                 RssReader reader = new RssReader(readerFeedUrl);
                 People recipients = null;
 
-                DateTime highWaterMark = DateTime.MinValue;
+                DateTime highWaterMark = Constants.DateTimeLow;
                 string persistenceKey = "Newsletter-Highwater-" + personId.ToString();
 
                 string highWaterMarkString = Persistence.Key[persistenceKey];
@@ -66,7 +66,7 @@ namespace Swarmops.Utility.BotCode
                 }
                 catch (FormatException)
                 {
-                    highWaterMark = DateTime.MinValue;
+                    highWaterMark = Constants.DateTimeLow;
                 }
                 catch (Exception e)
                 {

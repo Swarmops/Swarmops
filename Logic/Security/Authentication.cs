@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Swarm;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Support;
@@ -390,7 +391,7 @@ namespace Swarmops.Logic.Security
             {
                 throw new VerificationTicketWrongException ("No such code exists.");
             }
-            DateTime createdTime = DateTime.MinValue;
+            DateTime createdTime = Constants.DateTimeLow;
             DateTime.TryParseExact (storedParts[1].Trim(), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture,
                 DateTimeStyles.None, out createdTime);
 

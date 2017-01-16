@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Types;
+using Swarmops.Common;
 using Swarmops.Basic.Types.Structure;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
@@ -17,7 +18,7 @@ namespace Swarmops.Logic.Cache
 
         static GeographyCache()
         {
-            lastRefresh = DateTime.MinValue;
+            lastRefresh = Constants.DateTimeLow;
         }
 
         private static Dictionary<int, List<BasicGeography>> GetHashedGeographies()

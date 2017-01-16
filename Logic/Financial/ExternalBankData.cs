@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using Swarmops.Common;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
@@ -134,7 +135,7 @@ namespace Swarmops.Logic.Financial
                     throw new InvalidOperationException ("Cannot parse transactions file without at least a date field");
                 }
 
-                DateTime dateTime = DateTime.MinValue;
+                DateTime dateTime = Constants.DateTimeLow;
 
                 if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.Date))
                 {

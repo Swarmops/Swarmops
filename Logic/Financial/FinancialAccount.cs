@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Generics;
 using Swarmops.Database;
@@ -222,7 +223,7 @@ namespace Swarmops.Logic.Financial
                 int testYear = base.OpenedYear;
                 if (testYear < 1900) // not initialized
                 {
-                    DateTime firstTransactionDate = DateTime.MinValue;
+                    DateTime firstTransactionDate = Constants.DateTimeLow;
                     try
                     {
                         firstTransactionDate =

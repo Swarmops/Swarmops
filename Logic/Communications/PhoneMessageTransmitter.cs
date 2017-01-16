@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using Swarmops.Common;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Security;
 using Swarmops.Database;
@@ -15,7 +16,7 @@ namespace Swarmops.Logic.Communications
     public class PhoneMessageTransmitter
     {
         private static ServiceCredential credential; // credentials cache
-        private static DateTime lastLoad = DateTime.MinValue;
+        private static DateTime lastLoad = Constants.DateTimeLow;
         private static readonly object locker = new object();
 
         private static ServiceCredential Credential

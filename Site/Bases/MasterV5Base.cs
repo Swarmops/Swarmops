@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using Swarmops.Common;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
@@ -43,7 +44,7 @@ namespace Swarmops.Frontend
                 {
                     return new DateTime ((long) Session["MainMenu-v5_Enabling_TimeStamp"]);
                 }
-                return DateTime.MinValue;
+                return Constants.DateTimeLow;
             }
             set { Session["MainMenu-v5_Enabling_TimeStamp"] = value.Ticks; }
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using Swarmops.Common;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.System;
 
@@ -57,7 +58,7 @@ namespace Swarmops.Database
                             return reader.GetDateTime (0);
                         }
                     }
-                    return DateTime.MinValue;
+                    return Constants.DateTimeLow;
                 }
             }
         }

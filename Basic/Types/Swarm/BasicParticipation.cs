@@ -1,4 +1,5 @@
 using System;
+using Swarmops.Common;
 using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Basic.Types.Swarm
@@ -10,7 +11,7 @@ namespace Swarmops.Basic.Types.Swarm
             this.PersonId = personId;
             this.OrganizationId = organizationId;
             this.Active = true;
-            this.DateTerminated = DateTime.MinValue;
+            this.DateTerminated = Constants.DateTimeLow;
         }
 
         public BasicParticipation (int personId, int organizationId, DateTime memberSince, DateTime expires)

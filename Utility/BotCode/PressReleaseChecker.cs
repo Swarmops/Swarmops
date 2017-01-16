@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using NRss;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Media;
@@ -30,7 +31,7 @@ namespace Swarmops.Utility.BotCode
         {
             string persistenceKey = String.Format ("Pressrelease-Highwater-{0}", persistAsKey);
 
-            DateTime highWaterMark = DateTime.MinValue;
+            DateTime highWaterMark = Constants.DateTimeLow;
 
             RssReader reader = null;
 

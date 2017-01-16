@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Communications;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
 using Swarmops.Database;
@@ -100,8 +101,8 @@ namespace Swarmops.Logic.Communications
             return FromBasic (new BasicOutboundMail (0, MailAuthorType.Person, author.PersonId, title,
                 body, 99, mailType, organization.Identity,
                 geography.Identity, DateTime.Now,
-                DateTime.Now, false, false, false, DateTime.MinValue,
-                DateTime.MinValue, DateTime.MinValue, 0, 0, 0));
+                DateTime.Now, false, false, false, Constants.DateTimeLow,
+                Constants.DateTimeLow, Constants.DateTimeLow, 0, 0, 0));
         }
 
         /// <summary>

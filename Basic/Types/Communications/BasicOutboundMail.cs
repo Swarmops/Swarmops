@@ -1,4 +1,5 @@
 using System;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
 
@@ -57,7 +58,7 @@ namespace Swarmops.Basic.Types.Communications
             : this (outboundMailId, authorType, authorPersonId, title, body,
                 mailPriority, mailType, organizationId, geographyId,
                 createdDateTime, releaseDateTime,
-                false, false, false, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, 0, 0, 0)
+                false, false, false, Constants.DateTimeLow, Constants.DateTimeLow, Constants.DateTimeLow, 0, 0, 0)
         {
             // nothing more to do
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
+using Swarmops.Common;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 
@@ -18,7 +19,7 @@ namespace Swarmops.Logic.Cache
 
         static OrganizationCache()
         {
-            lastRefresh = DateTime.MinValue;
+            lastRefresh = Constants.DateTimeLow;
         }
 
         public static bool needsReload

@@ -1,6 +1,7 @@
 using System;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Swarm;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
@@ -13,7 +14,7 @@ namespace Swarmops.Logic.Swarm
         #region Creation and Construction
 
         private Volunteer()
-            : base (0, 0, 0, DateTime.MinValue, false, DateTime.MinValue, string.Empty)
+            : base (0, 0, 0, Constants.DateTimeLow, false, Constants.DateTimeLow, string.Empty)
         {
         }
 

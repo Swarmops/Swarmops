@@ -8,7 +8,7 @@ namespace Swarmops.Common
 {
     public class Constants
     {
-        // These constants are necessary because MySql keeps vomiting on DateTime.MinValue and DateTime.MaxValue, so we
+        // These constants are necessary because MySql keeps vomiting on Constants.DateTimeLow and DateTime.MaxValue, so we
         // need some other definition of endpoints of the valid DateTime space
 
         public static DateTime DateTimeLow

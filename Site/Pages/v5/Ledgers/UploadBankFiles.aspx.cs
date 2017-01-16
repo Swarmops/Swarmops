@@ -753,7 +753,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             string[] lines = contents.Split ('\n');
 
-            DateTime timestamp = DateTime.MinValue;
+            DateTime timestamp = Constants.DateTimeLow;
             int bgMaxVersion = 0;
 
             ImportedPaymentData result = new ImportedPaymentData();

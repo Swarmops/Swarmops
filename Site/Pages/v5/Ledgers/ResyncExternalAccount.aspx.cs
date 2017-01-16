@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Financial;
@@ -353,7 +354,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             // our own for this timestamp. There may be several transactions in the master file, but at least one should have
             // a post-transaction balance that matches our records, or something is much more broken.
 
-            long swarmopsCentsStart = account.GetDeltaCents (DateTime.MinValue, timeWalker.AddSeconds (1));
+            long swarmopsCentsStart = account.GetDeltaCents (Constants.DateTimeLow, timeWalker.AddSeconds (1));
 
             // At least one of the transactions for this timestamp should match.
 

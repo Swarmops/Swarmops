@@ -15,6 +15,7 @@ using System.Web;
 using System.Web.Configuration;
 using NBitcoin;
 using Newtonsoft.Json.Linq;
+using Swarmops.Common;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
@@ -637,7 +638,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        private static DateTime _lastFeeRefresh = DateTime.MinValue;
+        private static DateTime _lastFeeRefresh = Constants.DateTimeLow;
         private static Int64 _lastFeeSatoshis = 200 * 100; // 0.2 millibitcoins as default fee per 1000 bytes
 
         private const Int64 _satoshisPerBitcoin = 100 * 1000 * 1000; // written this way to improve readability - important constants

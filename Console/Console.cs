@@ -707,7 +707,7 @@ namespace Swarmops
 			{
 				bool foundActive = false;
 				bool foundMismatch = false;
-				DateTime expiry = DateTime.MinValue;
+				DateTime expiry = Constants.DateTimeLow;
 
 				Participations participations = person.GetMemberships();
 
@@ -1105,7 +1105,7 @@ namespace Swarmops
 				Person person = membership.Person;
 				Console.Write(person.Name + "... ");
 
-				if (person.Birthdate != DateTime.MinValue)
+				if (person.Birthdate != Constants.DateTimeLow)
 				{
 					Console.WriteLine(person.Birthdate.ToString("yyyy-MMM-dd") + "/" + person.Gender.ToString() + " ok");
 				}
@@ -1144,7 +1144,7 @@ namespace Swarmops
 					catch (Exception)
 					{
 						Console.WriteLine("FAIL");
-						//person.Birthdate = DateTime.MinValue;
+						//person.Birthdate = Constants.DateTimeLow;
 						//person.Gender = PersonGender.Unknown;
 					}
 

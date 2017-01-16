@@ -106,7 +106,7 @@ namespace Swarmops.Logic.Financial
 
                             BasicPayout basicPayout = new BasicPayout (0, organization.Identity, claim.Claimer.BankName,
                                 claim.Claimer.BankClearing + " / " + claim.Claimer.BankAccount, string.Empty, 0,
-                                DateTime.MinValue, false, DateTime.Now, 0);
+                                Constants.DateTimeLow, false, DateTime.Now, 0);
                             Payout payout = Payout.FromBasic (basicPayout);
                             payout.RecipientPerson = claim.Claimer;
 
@@ -211,7 +211,7 @@ namespace Swarmops.Logic.Financial
 
                     BasicPayout basicPayout = new BasicPayout (0, organization.Identity, advance.Person.BankName,
                         advance.Person.BankClearing + " / " + advance.Person.BankAccount, string.Empty, 0,
-                        DateTime.MinValue, false, DateTime.Now, 0);
+                        Constants.DateTimeLow, false, DateTime.Now, 0);
                     Payout payout = Payout.FromBasic (basicPayout);
                     payout.RecipientPerson = advance.Person;
 

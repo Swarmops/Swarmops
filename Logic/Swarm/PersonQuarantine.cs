@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Support;
 
@@ -29,7 +30,7 @@ namespace Swarmops.Logic.Swarm
                 }
                 else
                 {
-                    return DateTime.MinValue; // no quarantine active
+                    return Constants.DateTimeLow; // no quarantine active
                 }
             }
         }

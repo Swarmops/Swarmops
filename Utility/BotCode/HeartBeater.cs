@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Text;
+using Swarmops.Common;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Utility.BotCode
@@ -11,7 +12,7 @@ namespace Swarmops.Utility.BotCode
         private static readonly object lockObject = new object();
 
         private bool FlagRestartRequested;
-        private DateTime lastBeat = DateTime.MinValue;
+        private DateTime lastBeat = Constants.DateTimeLow;
         private string lastFilename = "";
 
         public bool WasKilled

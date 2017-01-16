@@ -1,4 +1,5 @@
 using System;
+using Swarmops.Common;
 using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Basic.Types
@@ -42,7 +43,7 @@ namespace Swarmops.Basic.Types
         }
 
         public BasicMediaEntry()
-            : this (0, 0, string.Empty, false, string.Empty, string.Empty, DateTime.MinValue)
+            : this (0, 0, string.Empty, false, string.Empty, string.Empty, Constants.DateTimeLow)
         {
         }
 

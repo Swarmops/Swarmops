@@ -4,6 +4,7 @@ using System.Net.Mail;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using Swarmops.Common;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Support;
@@ -20,7 +21,7 @@ namespace Swarmops.Utility.Communications
         private static int _smtpPortCache = 25;
         private static string _smtpUserCache = string.Empty;
         private static string _smtpPasswordCache = string.Empty;
-        private static DateTime _cacheReloadTime = DateTime.MinValue;
+        private static DateTime _cacheReloadTime = Constants.DateTimeLow;
 
         public void Transmit (PayloadEnvelope envelope, Person person)
         {
@@ -76,7 +77,7 @@ namespace Swarmops.Utility.Communications
             {
                 // Address failure -- either sender or recipient
 
-                _cacheReloadTime = DateTime.MinValue;
+                _cacheReloadTime = Constants.DateTimeLow;
                 throw new OutboundCommTransmitException ("Cannot send mail to " + person.Mail, e);
             }
 
@@ -111,7 +112,7 @@ namespace Swarmops.Utility.Communications
                 smtpServer = "localhost";
                 smtpPort = 25;
                 // For development use only - invalidate cache instead of this, forcing re-reload
-                _cacheReloadTime = DateTime.MinValue;
+                _cacheReloadTime = Constants.DateTimeLow;
             }
 
             SmtpClient mailClient = new SmtpClient (smtpServer, smtpPort);
@@ -126,7 +127,7 @@ namespace Swarmops.Utility.Communications
             }
             catch (Exception e)
             {
-                _cacheReloadTime = DateTime.MinValue;
+                _cacheReloadTime = Constants.DateTimeLow;
                 throw new OutboundCommTransmitException ("Cannot send mail to " + person.Mail, e);
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Swarmops.Common;
 
 namespace Swarmops.Logic.Cache
 {
@@ -21,7 +22,7 @@ namespace Swarmops.Logic.Cache
         static GuidCache()
         {
             _cache = new Dictionary<string, CachedObject>();
-            _nextGarbageCollect = DateTime.MinValue;
+            _nextGarbageCollect = Constants.DateTimeLow;
         }
 
         public static void Set (string guidString, object objectToCache)

@@ -1,4 +1,5 @@
 using System;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 
 namespace Swarmops.Logic.Swarm
@@ -16,7 +17,7 @@ namespace Swarmops.Logic.Swarm
 
         public MembershipEvent()
         {
-            this.DateTime = DateTime.MinValue;
+            this.DateTime = Constants.DateTimeLow;
             this.DeltaCount = 0;
             this.PersonId = 0;
             this.OrganizationId = 0;

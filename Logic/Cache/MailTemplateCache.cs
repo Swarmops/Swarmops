@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Communications;
+using Swarmops.Common;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 
@@ -9,7 +10,7 @@ namespace Swarmops.Logic.Cache
 {
     public class MailTemplateCache
     {
-        private static DateTime lastAccess = DateTime.MinValue;
+        private static DateTime lastAccess = Constants.DateTimeLow;
         private static readonly object loadCacheLock = new object();
         public static bool loadCache = true;
 
@@ -20,7 +21,7 @@ namespace Swarmops.Logic.Cache
 
         static MailTemplateCache()
         {
-            lastAccess = DateTime.MinValue;
+            lastAccess = Constants.DateTimeLow;
         }
 
         private static List<BasicMailTemplate> GetCachedTemplates (string templateName)

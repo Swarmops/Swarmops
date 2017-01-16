@@ -9,6 +9,7 @@ using NBitcoin;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
 using Swarmops.Basic.Types.Swarm;
+using Swarmops.Common;
 using Swarmops.Common.Attributes;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
@@ -609,7 +610,7 @@ namespace Swarmops.Logic.Swarm
             {
                 return
                     FromBasic (new BasicPerson (personId, string.Empty, "Open Ledgers", string.Empty, string.Empty,
-                        string.Empty, string.Empty, 0, string.Empty, 0, DateTime.MinValue, PersonGender.Unknown, ""));
+                        string.Empty, string.Empty, 0, string.Empty, 0, Constants.DateTimeLow, PersonGender.Unknown, ""));
             }
 
             throw new ArgumentException("No such PersonId: " + personId);

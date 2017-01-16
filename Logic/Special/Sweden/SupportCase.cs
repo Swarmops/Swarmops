@@ -1,4 +1,5 @@
 using System;
+using Swarmops.Common;
 using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Logic.Special.Sweden
@@ -16,7 +17,7 @@ namespace Swarmops.Logic.Special.Sweden
             this.SupportCaseId = identity;
             this.Title = title;
             this.Open = false;
-            this.DateTimeClosed = DateTime.MinValue;
+            this.DateTimeClosed = Constants.DateTimeLow;
             this.Email = string.Empty;
         }
 
