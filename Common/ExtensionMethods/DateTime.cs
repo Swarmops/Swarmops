@@ -5,11 +5,11 @@ namespace Swarmops.Common.ExtensionMethods
 {
     public static partial class DummyWrapper
     {
-        public static Int32 ToUnix (this DateTime source)
+        public static UInt64 ToUnix (this DateTime source)
         {
             // Assumes DateTime is already UTC
 
-            return (Int32)(source.Subtract(new DateTime(1970, 1, 1, 0, 0, 0,DateTimeKind.Utc))).TotalSeconds;
+            return (UInt64)(source.Subtract(new DateTime(1970, 1, 1, 0, 0, 0,DateTimeKind.Utc))).TotalSeconds;
         }
 
         public static bool IsHigh(this DateTime source)

@@ -121,8 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="etcinitd\etcinitd-swarmops-backend" />
-    <None Include="etcsystemd\swarmops-backend.service" />
+    <None Include="libsystemd\swarmops-backend.service" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

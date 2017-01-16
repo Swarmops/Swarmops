@@ -16,6 +16,7 @@
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:light,regular,500,bold' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:500' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
 
     <!-- page title -->
@@ -760,9 +761,20 @@
                         </div>
                     </div>
   			        <div id="step-5" style="display:none">
-                        <h2>All done - ready to login</h2>	
-                        <p>Your Swarmops installation is ready! Press Finish to log in as your new user and start using it.</p>
-                        <div style="display:none"><asp:Button UseSubmitBehavior="false" runat="server" ID="ButtonLogin" OnClick="ButtonLogin_Click" Text="This button is invisible."/></div>
+			            <div id="DivStartServers">
+                            <h2>Start the two server processes</h2>	
+                            <p><strong>Start the Swarmops Frontend server</strong></p>
+                            <p>The site needs a socket daemon to operate. Start the process now with the command:</p>
+                            <p><span style="font-family: Ubuntu Mono">systemctl start swarmops-frontend</span></p>
+                            <p><strong>Start the Swarmops Backend server</strong></p>
+                            <p>The site also needs a backend process, which can run on another machine. (If it does, like for security reasons, copy the file /etc/swarmops/database.config to that machine now.) To start the backend, run this now:</p>
+                            <p><span style="font-family: Ubuntu Mono">systemctl start swarmops-backend</span></p>
+                        </div>
+			            <div id="DivReadyLogin" style="display:none">
+                            <h2>All done - ready to login</h2>	
+                            <p>Your Swarmops installation is ready! Press Finish to log in as your new user and start using it.</p>
+                            <div style="display:none"><asp:Button UseSubmitBehavior="false" runat="server" ID="ButtonLogin" OnClick="ButtonLogin_Click" Text="This button is invisible."/></div>
+                        </div>
                     </div>
       		    </div>
 

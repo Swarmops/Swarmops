@@ -12,7 +12,9 @@ using System.Web.Services;
 using System.Web.SessionState;
 using System.Web.UI;
 using Resources;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
+using Swarmops.Common.ExtensionMethods;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
@@ -448,7 +450,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 DatabaseMaintenance.UpgradeSchemata();
                 Thread.Sleep (100);
 
-
                 // SECURITY: With schemata to hold them in place, initialize the encryption keys
 
                 Authentication.InitializeSymmetricDatabaseKey();
@@ -457,9 +458,10 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 // Set Geography at baseline (TODO: Ask for what baseline we got)
 
                 Persistence.Key["LastGeographyUpdateId"] = "0";
-                Persistence.Key["LastGeographyUpdate"] = "1900-01-01";
+                Persistence.Key["LastGeographyUpdate"] = Constants.DateTimeLow.ToString("yyyy-MM-dd");
 
                 // Set an installation ID
+                // Doubles as start signal to daemons (if installation ID exists, db is ready for processing)
 
                 Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
 
@@ -640,6 +642,31 @@ namespace Swarmops.Frontend.Pages.v5.Public
             }
 
             return false;
+        }
+
+        public class AjaxCallDaemonResult : AjaxCallResult
+        {
+            public bool Frontend { get; set; }
+            public bool Backend { get; set; }
+        }
+
+        [WebMethod]
+        public static AjaxCallDaemonResult GetDaemonStatus()
+        {
+            UInt64 unixNow = DateTime.UtcNow.ToUnix();
+
+            AjaxCallDaemonResult result = new AjaxCallDaemonResult();
+            if (SystemSettings.HeartbeatBackend + 60 > unixNow)
+            {
+                result.Backend = true; // backend heart is beating
+            }
+            if (SystemSettings.HeartbeatFrontend + 60 > unixNow)
+            {
+                result.Frontend = true; // frontend heart is beating
+            }
+
+            result.Success = true; // call as such succeeded
+            return result;
         }
 
         public static bool IsLocalhost()

@@ -21,6 +21,17 @@ namespace Swarmops.Frontend.Socket
     {
         static void Main(string[] args)
         {
+            // Are we running yet?
+
+            if (!SystemSettings.DatabaseInitialized)
+            {
+                // will restart the service every 30s until db initialized on OOBE
+                // also, the read of DatabaseInitialized can and will fail if
+                // we're not initalized enough to even have a database 
+
+                throw new InvalidOperationException(); 
+            }
+
             // Check if we're Sandbox
 
             if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
@@ -163,6 +174,8 @@ namespace Swarmops.Frontend.Socket
 
         private static void OnEveryTenSeconds()
         {
+            SystemSettings.HeartbeatFrontend = DateTime.UtcNow.ToUnix();
+
             _socketServer.WebSocketServices.Broadcast ("{\"messageType\":\"Heartbeat\"}");
 
             if (_isSandbox)

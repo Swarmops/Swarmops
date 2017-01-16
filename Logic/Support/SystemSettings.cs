@@ -222,6 +222,65 @@ namespace Swarmops.Logic.Support
         }
 
 
+        public static UInt64 HeartbeatBackend
+        {
+            get
+            {
+                string result = Persistence.Key["HeartbeatBackend"];
+                if (!string.IsNullOrEmpty(result))
+                {
+                    try
+                    {
+                        return UInt64.Parse(result);
+                    }
+                    catch (Exception)
+                    {
+                        return 0;
+                    }
+                }
+
+                return 0;
+            }
+            set
+            {
+                Persistence.Key["HeartbeatBackend"] = value.ToString(CultureInfo.InvariantCulture);
+            }
+        }
+
+
+
+        public static UInt64 HeartbeatFrontend
+        {
+            get
+            {
+                string result = Persistence.Key["HeartbeatFrontend"];
+                if (!string.IsNullOrEmpty(result))
+                {
+                    try
+                    {
+                        return UInt64.Parse(result);
+                    }
+                    catch (Exception)
+                    {
+                        return 0;
+                    }
+                }
+
+                return 0;
+            }
+            set
+            {
+                Persistence.Key["HeartbeatFrontend"] = value.ToString(CultureInfo.InvariantCulture);
+            }
+        }
+
+
+        public static bool DatabaseInitialized
+        {
+            get { return !String.IsNullOrEmpty(InstallationId); }
+        }
+
+
         public static string EtcFolder
         {
             get

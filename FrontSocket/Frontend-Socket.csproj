@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="etcsystemd\swarmops-frontend.service" />
+    <None Include="libsystemd\swarmops-frontend.service" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

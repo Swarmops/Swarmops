@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Threading;
 using Mono.Unix;
 using Mono.Unix.Native;
+using Swarmops.Common.ExtensionMethods;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
@@ -25,7 +26,18 @@ namespace Swarmops.Backend
 
         private static void Main (string[] args)
         {
-            // Checking for schemata upgrade first of all
+            // Are we running yet?
+
+            if (!SystemSettings.DatabaseInitialized)
+            {
+                // will restart the service every 30s until db initialized on OOBE
+                // also, the read of DatabaseInitialized can and will fail if
+                // we're not initalized enough to even have a database 
+
+                throw new InvalidOperationException();
+            }
+
+            // Checking for schemata upgrade first of all, after seeing that db exists
 
             DatabaseMaintenance.UpgradeSchemata();
 
@@ -315,6 +327,7 @@ namespace Swarmops.Backend
             {
                 BotLog.Write (0, "MainCycle", "Ten-second entry");
 
+                SystemSettings.HeartbeatBackend = (ulong) DateTime.UtcNow.ToUnix();
                 CommsTransmitter.Run();
 
                 try
