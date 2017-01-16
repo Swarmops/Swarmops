@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Swarmops.Logic.ExtensionMethods
+namespace Swarmops.Common.ExtensionMethods
 {
     public static partial class DummyWrapper
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace Swarmops.Logic.ExtensionMethods
+namespace Swarmops.Common.ExtensionMethods
 {
     public static partial class DummyContainer
     {

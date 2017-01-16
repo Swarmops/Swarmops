@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
-using Swarmops.Logic.ExtensionMethods;
+using Swarmops.Common.ExtensionMethods;
 using Swarmops.Logic.Support;
 using WebSocketSharp.Server;
 
