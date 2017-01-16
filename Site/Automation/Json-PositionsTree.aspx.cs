@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using Swarmops.Common.Enums;
+using Swarmops.Common.ExtensionMethods;
 using Swarmops.Common.Generics;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -160,9 +161,8 @@ namespace Swarmops.Frontend.Automation
                 if (assignments.Count > 0)
                 {
                     assignedName = assignments[0].Person.Canonical;
-                    int expireYear = assignments[0].ExpiresDateTimeUtc.Year;
-                    if (expireYear > 2000 && expireYear < 3000) // as in, "is defined"
-                    {
+                    if (assignments[0].ExpiresDateTimeUtc.IsDefined())
+                    { 
                         expires = assignments[0].ExpiresDateTimeUtc.ToString("yyyy-MMM-dd");
                     }
                     if (_assignable)

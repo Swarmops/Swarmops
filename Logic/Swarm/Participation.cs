@@ -9,6 +9,7 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using System.IO;
+using Swarmops.Common.ExtensionMethods;
 
 namespace Swarmops.Logic.Swarm
 {
@@ -58,7 +59,7 @@ namespace Swarmops.Logic.Swarm
             {
                 if (base.Expires != value)
                 {
-                    if (PersonId > 0 && OrganizationId > 0 && base.Expires != new DateTime (1900, 1, 1))
+                    if (PersonId > 0 && OrganizationId > 0 && base.Expires.IsDefined())
                     {
                         ChurnData.LogRetention (PersonId, OrganizationId, base.Expires);
                     }
@@ -203,7 +204,7 @@ namespace Swarmops.Logic.Swarm
 
 
                 //Added LogChurn here to make SURE they always are logged with the membership.
-                if (PersonId > 0 && OrganizationId > 0 && base.Expires != new DateTime (1900, 1, 1))
+                if (PersonId > 0 && OrganizationId > 0 && base.Expires.IsDefined())
                 {
                     ChurnData.LogChurn (PersonId, OrganizationId);
                 }
