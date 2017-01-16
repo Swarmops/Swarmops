@@ -176,7 +176,7 @@ namespace Swarmops.Frontend.Automation
                 }
                 string element = string.Empty;
 
-                if (position.Identity > 0) // regular
+                if (position.PositionTitle != PositionTitle.UxElement) // regular title type
                 {
                     element =
                         string.Format(
