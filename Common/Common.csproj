@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Attributes\DbEnumField.cs" />
     <Compile Include="Attributes\DbRecordType.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Enums\AddressValidationResult.cs" />
     <Compile Include="Enums\AutoMailType.cs" />
     <Compile Include="Enums\CommunicationType.cs" />
@@ -71,6 +72,9 @@
     <Compile Include="Enums\RoleTypeClass.cs" />
     <Compile Include="Exceptions\ConcurrencyException.cs" />
     <Compile Include="Exceptions\DatabaseConcurrencyException.cs" />
+    <Compile Include="ExtensionMethods\Bitmap.cs" />
+    <Compile Include="ExtensionMethods\Color.cs" />
+    <Compile Include="ExtensionMethods\DateTime.cs" />
     <Compile Include="Generics\Tree.cs" />
     <Compile Include="Interfaces\IEmailPerson.cs" />
     <Compile Include="Interfaces\IHandleProvider.cs" />

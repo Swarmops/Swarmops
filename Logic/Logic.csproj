@@ -115,9 +115,6 @@
     <Compile Include="Communications\IHasGeography.cs" />
     <Compile Include="Communications\Resolution\ParticipantResolver.cs" />
     <Compile Include="Communications\Resolution\ResolverEnvelope.cs" />
-    <Compile Include="ExtensionMethods\Bitmap.cs" />
-    <Compile Include="ExtensionMethods\Color.cs" />
-    <Compile Include="ExtensionMethods\DateTime.cs" />
     <Compile Include="Financial\BitcoinTransactionInput.cs" />
     <Compile Include="Financial\BitcoinUtility.cs" />
     <Compile Include="Financial\HotBitcoinAddress.cs" />
