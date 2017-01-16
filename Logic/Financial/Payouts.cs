@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using NBitcoin;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
@@ -284,7 +285,7 @@ namespace Swarmops.Logic.Financial
 
             Salaries salaries = Salaries.ForOrganization (organization);
             List<int> identityList = new List<int>();
-            DateTime payDay = DateTime.MaxValue;
+            DateTime payDay = Constants.DateTimeHigh;
 
             foreach (Salary salary in salaries)
             {

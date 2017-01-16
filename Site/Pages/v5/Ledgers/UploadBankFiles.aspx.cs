@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using Resources;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Frontend;
 using Swarmops.Logic.Cache;
@@ -976,8 +977,8 @@ namespace Swarmops.Site.Pages.Ledgers
 
             public ImportResults()
             {
-                this.EarliestTransaction = DateTime.MaxValue;
-                this.LatestTransaction = DateTime.MinValue;
+                this.EarliestTransaction = Constants.DateTimeHigh;
+                this.LatestTransaction = Constants.DateTimeLow;
             }
         }
 

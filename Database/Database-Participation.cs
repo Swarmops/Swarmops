@@ -5,6 +5,7 @@ using System.Data.Common;
 using MySql.Data.Types;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Swarm;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
 
@@ -454,7 +455,7 @@ namespace Swarmops.Database
             int personId = reader.GetInt32 (1);
             int organizationId = reader.GetInt32 (2);
             bool active = reader.GetBoolean (3);
-            DateTime expires = DateTime.MaxValue;
+            DateTime expires = Constants.DateTimeHigh;
             try
             {
                 expires = reader.GetDateTime(4);
@@ -472,7 +473,7 @@ namespace Swarmops.Database
             }
             catch (MySqlConversionException)
             {
-                // as above, ignore exception and go with DateTime.MaxValue
+                // as above, ignore exception and go with Constants.DateTimeHigh
             }
             
             // bool terminatedAsInvalid = reader.GetBoolean(7);  Ignore this field for now

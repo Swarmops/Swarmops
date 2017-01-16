@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NBitcoin;
 using Swarmops.Basic.Types.Swarm;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Security;
@@ -83,7 +84,7 @@ namespace Swarmops.Logic.Swarm
             int positionAssignmentId = SwarmDb.GetDatabaseForWriting()
                 .CreatePositionAssignment (position.OrganizationId, geographyId, position.Identity, person.Identity,
                     createdByPersonId, createdByPositionId,
-                    expiresDateTimeUtc == null ? new DateTime(2200,1,1) : (DateTime) expiresDateTimeUtc, assignmentNotes);  // DateTime.MaxValue kills MySql layer
+                    expiresDateTimeUtc == null ? Constants.DateTimeHigh : (DateTime) expiresDateTimeUtc, assignmentNotes);  // DateTime.MaxValue kills MySql layer
 
             return FromIdentityAggressive (positionAssignmentId);
         }

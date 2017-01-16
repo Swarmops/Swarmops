@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Resources;
+using Swarmops.Common;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
@@ -240,8 +241,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 // as determined by the ledger account Cash Advances - on targetDateTime.
 
                 bool includeThisAdvance = false;
-                DateTime dateTimePaidBack = DateTime.MinValue;
-                DateTime dateTimePaidOut = DateTime.MaxValue;
+                DateTime dateTimePaidBack = Constants.DateTimeLow;
+                DateTime dateTimePaidOut = Constants.DateTimeHigh;
 
 
                 if (!cashAdvance.PaidOut)
