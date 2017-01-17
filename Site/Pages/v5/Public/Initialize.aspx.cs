@@ -11,6 +11,7 @@ using System.Web.Security;
 using System.Web.Services;
 using System.Web.SessionState;
 using System.Web.UI;
+using NBitcoin.Protocol;
 using Resources;
 using Swarmops.Common;
 using Swarmops.Common.Enums;
@@ -781,12 +782,15 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "Initialization", new Exception("Tracepoint 1"));
 
-                newPerson.AddParticipation(Organization.Sandbox, DateTime.UtcNow.AddYears(25));
                 // Add membership in Sandbox
+                newPerson.AddParticipation(Organization.Sandbox, DateTime.UtcNow.AddYears(25));
 
                 // Initialize staffing to System and Sandbox with the new user
-
                 Positions.CreateSysadminPositions();
+
+                Positions.ForOrganization(Organization.Sandbox).AtLevel(PositionLevel.OrganizationExecutive)[0].Assign(
+                    newPerson, null /* assignedByPerson */, null /* assignedByPosition */, "Initial Sandbox executive",
+                    null /* expires */);
             }
             catch (Exception exception)
             {

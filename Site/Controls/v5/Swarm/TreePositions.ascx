@@ -134,9 +134,18 @@
 
                 // TODO: Check existing position for person; can't have two positions, at least not within same org
 
+                var jsonData = {
+                    personId: personId,
+                    positionId: current<%=this.ClientID%>PositionId,
+                    durationMonths: <%= this.DropDuration.ClientID%>_val(),
+                    geographyId: current<%=this.ClientID%>GeographyId
+                };
+
+                console.log(jsonData);
+
                 SwarmopsJS.ajaxCall(
                     "/Automation/SwarmFunctions.aspx/AssignPosition",
-                    { personId: personId, positionId: current<%=this.ClientID%>PositionId, durationMonths: $('#<%= this.DropDuration.ClientID%>').val(), geographyId: current<%=this.ClientID%>GeographyId },
+                    jsonData,
                     function (result) {
                         // Close modal and reload grid regardless of success or not
                         // (the only failure here should be a concurrency error, in which case

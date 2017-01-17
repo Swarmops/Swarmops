@@ -73,8 +73,38 @@ namespace Swarmops.Frontend.Automation
             }
 
             // Deliberate: no requirement for membership (or equivalent) in order to be assigned to position.
+            // Find the current user position used to assign.
 
-            Position currentUserPosition = authData.CurrentUser.PositionAssignment.Position; // excludes acting positions. May throw!
+            PositionAssignments currentUserAssignments = authData.CurrentUser.PositionAssignments;
+
+            // Get the one this user is currently using to assign - it's either a system level position,
+            // one with a parent organization (TODO), or one with this organization
+
+            Position activePosition = null;
+
+            foreach (PositionAssignment currentUserAssignment in currentUserAssignments)
+            {
+                if (currentUserAssignment.OrganizationId == 0 && currentUserAssignment.Active)
+                {
+                    activePosition = currentUserAssignment.Position;
+                    break; // a system-level active position has priority over org-level
+                }
+                if (currentUserAssignment.OrganizationId == authData.CurrentOrganization.Identity &&
+                    currentUserAssignment.Active)
+                {
+                    activePosition = currentUserAssignment.Position;
+                }
+            }
+
+            if (activePosition == null)
+            {
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = "Error: No authority to assign a position"
+                };
+            }
+
             DateTime? expiresUtc = null;
 
             if (durationMonths > 0)
@@ -84,7 +114,7 @@ namespace Swarmops.Frontend.Automation
 
             try
             {
-                PositionAssignment.Create (position, geography, person, authData.CurrentUser, currentUserPosition,
+                PositionAssignment.Create (position, geography, person, authData.CurrentUser, activePosition,
                     expiresUtc, string.Empty);
             }
             catch (DatabaseConcurrencyException)
