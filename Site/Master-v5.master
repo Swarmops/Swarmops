@@ -32,6 +32,9 @@
     
     <!-- page title -->
 	<title>Swarmops</title>
+    
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/Images/swarmops-logo-128px.png" type="image/png"/>
 
 	<!-- style sheet, followed by script style sheets -->
     <asp:PlaceHolder ID="NeededForCacheMarkToParse1" runat="server">

@@ -22,6 +22,9 @@
     <!-- page title -->
 	<title>Swarmops - Initialize Installation</title>
 
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/Images/swarmops-logo-128px.png" type="image/png"/>
+
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
     <link href="WizardStyle.css" rel="stylesheet" type="text/css" />
 
