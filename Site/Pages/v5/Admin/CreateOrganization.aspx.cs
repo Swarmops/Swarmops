@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Web;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Interface.Support;
 using Swarmops.Logic.Financial;
@@ -144,7 +145,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             Positions.CreateOrganizationDefaultPositions (newOrganization, titleType);
 
-            Participation.Create(CurrentUser, newOrganization, DateTime.UtcNow.AddYears(10));
+            Participation.Create(CurrentUser, newOrganization, Constants.DateTimeHigh);
+            Positions.ForOrganization(newOrganization).AtLevel(PositionLevel.OrganizationExecutive)[0].Assign(
+                CurrentUser, null /* assignedby */, null /* assigned by position */, "Initial executive", null
+                /* expires */);
 
             string successMessage = String.Format (Resources.Pages.Admin.CreateOrganization_Success,
                 Participant.Localized (peopleLabel, TitleVariant.Ship));
