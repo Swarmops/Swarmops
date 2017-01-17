@@ -36,28 +36,38 @@ if [ ! -e /var/lib/swarmops/upload ]; then
           if [ -e /tmp/swarmops-restart-apache.flag ]; then
             rm /tmp/swarmops-restart-apache.flag
           fi
+          dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
+has been installed. Please navigate to this host with a web browser to \
+complete the installation." 9 60
+
           ;;
 
       2 ) echo "Creating but not enabling the site 'swarmops'. Use a2ensite to enable."
           cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/swarmops.conf
+          dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
+has been installed but not activated. Examine the 'swarmops' site file and activate it with \
+a2ensite." 9 60
+
           ;;
 
       3 ) echo "Neither reconfiguring Apache nor creating configuration file."
           ;;
+          dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
+has been installed but not activated. When setting up web server directives, please pay \
+particular attention to the websocket requirements." 9 60
 
       * ) echo "Unknown return code - $dialog_selection"
           ;;
         
     esac
 
-    dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
-has been installed. Please navigate to this host with a web browser to \
-complete the installation." 9 60
-
   else
 
-#   # Copying the unactivated Swarmops config to sites-available (option 3 above)
+#   If not new Apache, copy the unactivated Swarmops config to sites-available (option 2 above)
     cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/swarmops.conf
+    dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
+has been installed but not activated. Examine/modify the 'swarmops.conf' site file and \
+activate it with a2ensite." 9 60
 
   fi
 
