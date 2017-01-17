@@ -30,7 +30,7 @@ namespace Swarmops.Backend
 
             if (!SystemSettings.DatabaseInitialized)
             {
-                // will restart the service every 30s until db initialized on OOBE
+                // will restart the service every 15s until db initialized on OOBE
                 // also, the read of DatabaseInitialized can and will fail if
                 // we're not initalized enough to even have a database 
 

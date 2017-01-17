@@ -7,7 +7,7 @@ User=root
 ExecStart=/usr/bin/mono /usr/share/swarmops/backend/Swarmops.Backend.exe
 WorkingDirectory=/usr/share/swarmops/backend
 Restart=on-failure
-RestartSec=30
+RestartSec=15
 
 
 [Install]
