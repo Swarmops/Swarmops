@@ -335,6 +335,7 @@
 	        // Disable Finish and Next
 
 	        $('a.buttonFinish').addClass("buttonDisabled");
+	        $('a.buttonFinish').hide(); // Hide Finish altogether (no value)
 	        DisableNext();
 
 	        // Run threading tests
