@@ -105,8 +105,6 @@ namespace Swarmops.Logic.Swarm
         {
             // first, verify there aren't actually any sysadmin positions. Defensive coding for the win.
 
-            SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "Initialization", new Exception("Tracepoint 2"));
-
             if (Positions.ForSystem().Count > 0)
             {
                 throw new InvalidOperationException ("Can't initialize sysadmin positions - already there");
@@ -114,22 +112,14 @@ namespace Swarmops.Logic.Swarm
 
             // Ok, so there are zero system-level positions. Create the Sysadmin positions.
 
-            SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "Initialization", new Exception("Tracepoint 3"));
-            
             Position sysadminPrincipal = Position.Create (PositionLevel.SystemWide, null /* createdByPerson*/, null /*createdByPosition*/, PositionType.System_SysadminMain,
                 PositionTitle.Default, false /*volunteerable*/, false /*overridable*/, null /*reportsTo*/, null /*dotReportsTo*/, 1 /*minCount*/, 1 /*maxCount*/);
-
-            SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "Initialization", new Exception("Tracepoint 4"));
 
             Position.Create(PositionLevel.SystemWide, null /* createdByPerson*/, null /*createdByPosition*/, PositionType.System_SysadminReadWrite, PositionTitle.Default,
                 false, false, sysadminPrincipal, null /*dotReportsTo*/, 0 /*minCount*/, 0 /*maxCount*/);
 
-            SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "Initialization", new Exception("Tracepoint 5"));
-
             Position.Create(PositionLevel.SystemWide, null /* createdByPerson*/, null /*createdByPosition*/, PositionType.System_SysadminAssistantReadOnly, PositionTitle.Default,
                 false, false, sysadminPrincipal, null /*dotReportsTo*/, 0 /*minCount*/, 0 /*maxCount*/);
-
-            SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "Initialization", new Exception("Tracepoint 6"));
 
             // If there's exactly one person in the system, we're undergoing Setup, so assign to Sysadmin Principal position.
             // Otherwise let grandfathering code handle it.
@@ -137,16 +127,10 @@ namespace Swarmops.Logic.Swarm
             People allPeople = People.GetAll();
             // calling People.GetAll() would be a killer on well-built-out systems, but this code only runs once, and in Setup
 
-            SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "Initialization", new Exception("Tracepoint 7"));
-
-
             if (allPeople.Count == 1)
             {
                 sysadminPrincipal.Assign (allPeople[0], null, null, "Assigned initial sysadmin", null);
             }
-
-            SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "Initialization", new Exception("Tracepoint 8"));
-
         }
 
         public static void CreateOrganizationDefaultPositions (Organization organization, PositionTitle titleType = PositionTitle.Default)
