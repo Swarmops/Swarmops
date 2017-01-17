@@ -573,9 +573,12 @@
 	    }
 
         function testDaemonHeartbeats() {
-            SwarmopsJS.ajaxCall("/Pages/v5/Public/Initalize.aspx/TestDaemonHeartbeats", {}, function(result) {
+            SwarmopsJS.ajaxCall("/Pages/v5/Public/Initialize.aspx/TestDaemonHeartbeats", {}, function (result) {
+
+                console.log(result);
+
                 if (!result.Success) {
-                    alertify.error("Unable to check for service heartbeat. Installation failure. :(");
+                    alert("Unable to check for service heartbeat. Installation failure. :(");
                     return;
                 }
 
