@@ -573,6 +573,7 @@
 	    }
 
         function testDaemonHeartbeats() {
+            $('a.buttonFinish').hide(); // insist on this (defensive coding)
             SwarmopsJS.ajaxCall("/Pages/v5/Public/Initialize.aspx/TestDaemonHeartbeats", {}, function (result) {
 
                 console.log(result);
@@ -586,7 +587,12 @@
                     // both hearts are beating, enable finish line
                     // TODO: Check for socket on frontend?
 
-                    $('div#DivStartServers').fadeOut(200, 'swing', function () { $('#DivReadyLogin').fadeIn(200); $('a.buttonFinish').removeClass("buttonDisabled"); });
+                    $('div#DivStartServers').fadeOut(200, 'swing',
+                        function () {
+                            $('#DivReadyLogin').fadeIn(200);
+                            $('a.buttonNext').hide();
+                            $('a.buttonFinish').show().removeClass("buttonDisabled");
+                        });
                     return; // do not reschedule another test
                 }
                 else if (result.Frontend) {
@@ -596,6 +602,7 @@
                     $('p#ProcessWaitBackendNotFrontend').fadeIn();
                 }
 
+                $('a.buttonFinish').addClass('buttonDisabled'); // insist disabled until success
                 setTimeout('testDaemonHeartbeats();', 2000); // repeat test until success
             });
 
