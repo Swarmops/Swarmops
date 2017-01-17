@@ -232,7 +232,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The new organization has been created. You have been given an initial ten-year {0} in the organization, so you can work with it and set it up properly. To configure the new organization, use this control panel (available under Admin / Organization Settings)..
+        ///   Looks up a localized string similar to The new organization has been created. You have been given an non-expiring {0} in the organization, and been placed as its highest executive for the time being, so you can work with it and set it up properly. To configure the new organization, use this control panel (available later under Admin / Organization Settings)..
         /// </summary>
         internal static string CreateOrganization_Success {
             get {
