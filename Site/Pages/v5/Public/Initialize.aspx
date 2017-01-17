@@ -48,6 +48,10 @@
             font-size: 200%;
             text-align: center;
         }
+        span.monotext {
+            font-family: Ubuntu Mono;
+            font-weight: 500;
+        }
     </style>
 
 </head>
@@ -314,8 +318,8 @@
 	                    SwarmopsJS.ajaxCall("/Pages/v5/Public/Initialize.aspx/CreateFirstUser",
 	                        jsonDataFirstUser,
 	                        function () {
-                                // To avoid a race condition, enable login/finish only when first user actually created
-	                            $('a.buttonFinish').removeClass("buttonDisabled");
+	                            // Once the first user has been created, start testing for daemons
+	                            testDaemonHeartbeats();
 	                        });
 	                }
 	            }
@@ -568,6 +572,33 @@
 	        setTimeout('$("#<%=this.TextCredentialsReadDatabase.ClientID %>").focus();', 250);
 	    }
 
+        function testDaemonHeartbeats() {
+            SwarmopsJS.ajaxCall("/Pages/v5/Public/Initalize.aspx/TestDaemonHeartbeats", {}, function(result) {
+                if (!result.Success) {
+                    alertify.error("Unable to check for service heartbeat. Installation failure. :(");
+                    return;
+                }
+
+                if (result.Frontend && result.Backend) {
+                    // both hearts are beating, enable finish line
+                    // TODO: Check for socket on frontend?
+
+                    $('div#DivStartServers').fadeOut(200, 'swing', function () { $('#DivReadyLogin').fadeIn(200); $('a.buttonFinish').removeClass("buttonDisabled"); });
+                    return; // do not reschedule another test
+                }
+                else if (result.Frontend) {
+                    $('p#ProcessWaitFrontendNotBackend').fadeIn();
+                }
+                else if (result.Backend) {
+                    $('p#ProcessWaitBackendNotFrontend').fadeIn();
+                }
+
+                setTimeout('testDaemonHeartbeats();', 2000); // repeat test until success
+            });
+
+
+        }
+
 	    var autoConfigMode = true;
 
 	</script>
@@ -760,15 +791,16 @@
                             Repeat password
                         </div>
                     </div>
-  			        <div id="step-5" style="display:none">
+  			        <div id="step-5">
 			            <div id="DivStartServers">
-                            <h2>Start the two server processes</h2>	
-                            <p><strong>Start the Swarmops Frontend server</strong></p>
-                            <p>The site needs a socket daemon to operate. Start the process now with the command:</p>
-                            <p><span style="font-family: Ubuntu Mono">systemctl start swarmops-frontend</span></p>
-                            <p><strong>Start the Swarmops Backend server</strong></p>
-                            <p>The site also needs a backend process, which can run on another machine. (If it does, like for security reasons, copy the file /etc/swarmops/database.config to that machine now.) To start the backend, run this now:</p>
-                            <p><span style="font-family: Ubuntu Mono">systemctl start swarmops-backend</span></p>
+                            <h2>Waiting for two server processes</h2>	
+                            <p>Swarmops needs two server processes called <span class="monotext">swarmops-backend</span> and <span class="monotext">swarmops-frontend</span>. 
+                                They will start automatically when they detect an initialized database, and we're now waiting for them to come online.</p>
+                            <p>The servers are expected to come online in 30 seconds or less.</p>
+                            <p><strong>If you're running the backend process on another machine</strong>, now is the time to copy the file <span class="monotext">/etc/swarmops/database.config</span>
+                                from this machine to where you installed <span class="monotext">swarmops-backend</span>, so the backend process will come online.</p>
+                            <p id="ProcessWaitFrontendNotBackend" style="display:none">The frontend server is now running and we're waiting for the backend.</p>
+                            <p id="ProcessWaitBackendNotFrontend" style="display:none">The backend server is now running and we're waiting for the frontend.</p>
                         </div>
 			            <div id="DivReadyLogin" style="display:none">
                             <h2>All done - ready to login</h2>	

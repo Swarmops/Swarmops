@@ -644,6 +644,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
             return false;
         }
 
+        [Serializable]
         public class AjaxCallDaemonResult : AjaxCallResult
         {
             public bool Frontend { get; set; }
@@ -651,7 +652,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
         }
 
         [WebMethod]
-        public static AjaxCallDaemonResult GetDaemonStatus()
+        public static AjaxCallDaemonResult TestDaemonHeartbeats()
         {
             UInt64 unixNow = DateTime.UtcNow.ToUnix();
 
