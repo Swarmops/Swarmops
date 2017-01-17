@@ -36,6 +36,7 @@ if [ ! -e /var/lib/swarmops/upload ]; then
           if [ -e /tmp/swarmops-restart-apache.flag ]; then
             rm /tmp/swarmops-restart-apache.flag
           fi
+          service apache2 reload
           dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
 has been installed. Please navigate to this host with a web browser to \
 complete the installation." 9 60
