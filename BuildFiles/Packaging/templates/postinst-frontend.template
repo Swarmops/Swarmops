@@ -39,7 +39,6 @@ if [ ! -e /var/lib/swarmops/upload ]; then
           dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
 has been installed. Please navigate to this host with a web browser to \
 complete the installation." 9 60
-
           ;;
 
       2 ) echo "Creating but not enabling the site 'swarmops'. Use a2ensite to enable."
@@ -47,14 +46,13 @@ complete the installation." 9 60
           dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
 has been installed but not activated. Examine the 'swarmops' site file and activate it with \
 a2ensite." 9 60
-
           ;;
 
       3 ) echo "Neither reconfiguring Apache nor creating configuration file."
-          ;;
           dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
 has been installed but not activated. When setting up web server directives, please pay \
 particular attention to the websocket requirements." 9 60
+          ;;
 
       * ) echo "Unknown return code - $dialog_selection"
           ;;
