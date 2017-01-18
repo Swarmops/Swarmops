@@ -37,9 +37,10 @@ namespace Swarmops.Frontend.Pages.Admin
                 this.TextInstallationName.Text = SystemSettings.InstallationName;
                 this.TextAdminAddress.Text = SystemSettings.AdminNotificationAddress;
                 this.TextAdminSender.Text = SystemSettings.AdminNotificationSender;
-                this.TextWebsocketHostname.Text = SystemSettings.WebsocketHostname;
-                this.TextWebsocketPortServer.Text = SystemSettings.WebsocketPortServer.ToString(CultureInfo.InvariantCulture);
-                this.TextWebsocketPortClient.Text = SystemSettings.WebsocketPortClient.ToString(CultureInfo.InvariantCulture);
+                this.TextBackendHostnameOverride.Text = SystemSettings.BackendHostnameOverride;
+                this.TextBackendHostnameOverride.Placeholder = SystemSettings.BackendHostname;
+                this.TextWebsocketPortFrontend.Text = SystemSettings.WebsocketPortFrontend.ToString(CultureInfo.InvariantCulture);
+                this.TextWebsocketPortBackend.Text = SystemSettings.WebsocketPortBackend.ToString(CultureInfo.InvariantCulture);
 
                 Localize();
             }
@@ -140,9 +141,9 @@ namespace Swarmops.Frontend.Pages.Admin
             this.LabelInstallationName.Text = Resources.Pages.Admin.SystemSettings_InstallationName;
             this.LabelAdminAddress.Text = Resources.Pages.Admin.SystemSettings_AdminAddress;
             this.LabelAdminSender.Text = Resources.Pages.Admin.SystemSettings_AdminSender;
-            this.LabelWebsocketHostname.Text = Resources.Pages.Admin.SystemSettings_WebsocketHostname;
-            this.LabelWebsocketPortServer.Text = Resources.Pages.Admin.SystemSettings_WebsocketPortServer;
-            this.LabelWebsocketPortClient.Text = Resources.Pages.Admin.SystemSettings_WebsocketPortClient;
+            this.LabelBackendHostnameOverride.Text = Resources.Pages.Admin.SystemSettings_BackendHostnameOverride;
+            this.LabelWebsocketPortFrontend.Text = Resources.Pages.Admin.SystemSettings_WebsocketPortFrontend;
+            this.LabelWebsocketPortBackend.Text = Resources.Pages.Admin.SystemSettings_WebsocketPortBackend;
         }
 
 
@@ -286,7 +287,13 @@ namespace Swarmops.Frontend.Pages.Admin
                     SystemSettings.AdminNotificationAddress = result.NewValue;
                     break;
 
-                case "WebsocketServer":
+                case "BackendHost":
+                    result.NewValue = newValue.Trim();
+                    result.Success = true;
+                    SystemSettings.BackendHostnameOverride = result.NewValue;
+                    break;
+
+                case "WebsocketFrontend":
                     try
                     {
                         int newPort = Int32.Parse(newValue);
@@ -296,17 +303,17 @@ namespace Swarmops.Frontend.Pages.Admin
                         }
                         result.NewValue = newValue.Trim();
                         result.Success = true;
-                        SystemSettings.WebsocketPortServer = newPort;
+                        SystemSettings.WebsocketPortFrontend = newPort;
                     }
                     catch (Exception)
                     {
                         result.Success = false;
                         result.FailReason = AjaxInputCallResult.ErrorInvalidFormat;
-                        result.NewValue = SystemSettings.WebsocketPortServer.ToString(CultureInfo.InvariantCulture);
+                        result.NewValue = SystemSettings.WebsocketPortFrontend.ToString(CultureInfo.InvariantCulture);
                     }
                     break;
 
-                case "WebsocketClient":
+                case "WebsocketBackend":
                     try
                     {
                         int newPort = Int32.Parse(newValue);
@@ -317,13 +324,13 @@ namespace Swarmops.Frontend.Pages.Admin
 
                         result.NewValue = newValue.Trim();
                         result.Success = true;
-                        SystemSettings.WebsocketPortClient = newPort;
+                        SystemSettings.WebsocketPortBackend = newPort;
                     }
                     catch (Exception)
                     {
                         result.Success = false;
                         result.FailReason = AjaxInputCallResult.ErrorInvalidFormat;
-                        result.NewValue = SystemSettings.WebsocketPortClient.ToString(CultureInfo.InvariantCulture);
+                        result.NewValue = SystemSettings.WebsocketPortBackend.ToString(CultureInfo.InvariantCulture);
                     }
                     break;
 

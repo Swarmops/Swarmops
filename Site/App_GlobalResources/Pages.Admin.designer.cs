@@ -475,6 +475,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backend Hostname Override.
+        /// </summary>
+        internal static string SystemSettings_BackendHostnameOverride {
+            get {
+                return ResourceManager.GetString("SystemSettings_BackendHostnameOverride", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SMTP Port must be numeric. Unable to parse host:port..
         /// </summary>
         internal static string SystemSettings_Error_SmtpHostPort {
@@ -574,29 +583,20 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WebSocket Hostname.
+        ///   Looks up a localized string similar to WebSocket Port (Backend).
         /// </summary>
-        internal static string SystemSettings_WebsocketHostname {
+        internal static string SystemSettings_WebsocketPortBackend {
             get {
-                return ResourceManager.GetString("SystemSettings_WebsocketHostname", resourceCulture);
+                return ResourceManager.GetString("SystemSettings_WebsocketPortBackend", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WebSocket Port (Client).
+        ///   Looks up a localized string similar to WebSocket Port (Frontend).
         /// </summary>
-        internal static string SystemSettings_WebsocketPortClient {
+        internal static string SystemSettings_WebsocketPortFrontend {
             get {
-                return ResourceManager.GetString("SystemSettings_WebsocketPortClient", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to WebSocket Port (Server).
-        /// </summary>
-        internal static string SystemSettings_WebsocketPortServer {
-            get {
-                return ResourceManager.GetString("SystemSettings_WebsocketPortServer", resourceCulture);
+                return ResourceManager.GetString("SystemSettings_WebsocketPortFrontend", resourceCulture);
             }
         }
     }

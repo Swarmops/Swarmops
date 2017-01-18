@@ -305,13 +305,13 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>You really, really, REALLY should use HTTPS for a website like this. But you knew that already, didn't you?</value>
   </data>
-  <data name="SystemSettings_WebsocketHostname" xml:space="preserve">
-    <value>WebSocket Hostname</value>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Backend Hostname Override</value>
   </data>
-  <data name="SystemSettings_WebsocketPortClient" xml:space="preserve">
-    <value>WebSocket Port (Client)</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>WebSocket Port (Frontend)</value>
   </data>
-  <data name="SystemSettings_WebsocketPortServer" xml:space="preserve">
-    <value>WebSocket Port (Server)</value>
+  <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
+    <value>WebSocket Port (Backend)</value>
   </data>
 </root>

@@ -91,7 +91,7 @@ namespace Swarmops.Frontend.Pages.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextWebsocketHostname;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextBackendHostnameOverride;
         
         /// <summary>
         /// TextWebsocketPortServer control.
@@ -100,7 +100,7 @@ namespace Swarmops.Frontend.Pages.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextWebsocketPortServer;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextWebsocketPortBackend;
         
         /// <summary>
         /// TextWebsocketPortClient control.
@@ -109,7 +109,7 @@ namespace Swarmops.Frontend.Pages.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextWebsocketPortClient;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextWebsocketPortFrontend;
         
         /// <summary>
         /// LabelSmtpServer control.
@@ -163,7 +163,7 @@ namespace Swarmops.Frontend.Pages.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelWebsocketHostname;
+        protected global::System.Web.UI.WebControls.Label LabelBackendHostnameOverride;
         
         /// <summary>
         /// LabelWebsocketPortServer control.
@@ -172,7 +172,7 @@ namespace Swarmops.Frontend.Pages.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelWebsocketPortServer;
+        protected global::System.Web.UI.WebControls.Label LabelWebsocketPortBackend;
         
         /// <summary>
         /// LabelWebsocketPortClient control.
@@ -181,6 +181,6 @@ namespace Swarmops.Frontend.Pages.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelWebsocketPortClient;
+        protected global::System.Web.UI.WebControls.Label LabelWebsocketPortFrontend;
     }
 }

@@ -128,9 +128,9 @@
                 <Swarmops5:AjaxTextBox runat="server" ID="TextExternalUrl" Cookie="ExtUrl" OnChange="onUrlChange" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="https://swarmops.example.com/" />
                 <Swarmops5:AjaxTextBox runat="server" ID="TextAdminSender" Cookie="AdminSender" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="Swarmops Admin" />
                 <Swarmops5:AjaxTextBox runat="server" ID="TextAdminAddress" Cookie="AdminAddress" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="swarmops-admin@example.com" />
-                <Swarmops5:AjaxTextBox runat="server" ID="TextWebsocketHostname" Cookie="WebsocketHost" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="12172" />
-                <Swarmops5:AjaxTextBox runat="server" ID="TextWebsocketPortServer" Cookie="WebsocketServer" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="12172" />
-                <Swarmops5:AjaxTextBox runat="server" ID="TextWebsocketPortClient" Cookie="WebsocketClient" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="12172" />
+                <Swarmops5:AjaxTextBox runat="server" ID="TextWebsocketPortFrontend" Cookie="WebsocketFrontend" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="12172" />
+                <Swarmops5:AjaxTextBox runat="server" ID="TextWebsocketPortBackend" Cookie="WebsocketBackend" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="10944" />
+                <Swarmops5:AjaxTextBox runat="server" ID="TextBackendHostnameOverride" Cookie="BackendHost" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" />
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelSmtpServer" runat="server" /><br/>
@@ -138,9 +138,9 @@
                 <asp:Label ID="LabelExternalUrl" runat="server" /><br />
                 <asp:Label ID="LabelAdminSender" runat="server" /><br />
                 <asp:Label ID="LabelAdminAddress" runat="server" /><br />
-                <asp:Label ID="LabelWebsocketHostname" runat="server" /><br />
-                <asp:Label ID="LabelWebsocketPortServer" runat="server" /><br />
-                <asp:Label ID="LabelWebsocketPortClient" runat="server" /><br />
+                <asp:Label ID="LabelWebsocketPortFrontend" runat="server" /><br />
+                <asp:Label ID="LabelWebsocketPortBackend" runat="server" /><br />
+                <asp:Label ID="LabelBackendHostnameOverride" runat="server" /><br />
             </div>
         </div>
     </div>

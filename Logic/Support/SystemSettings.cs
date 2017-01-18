@@ -73,22 +73,29 @@ namespace Swarmops.Logic.Support
             }
         }
 
-        static public string WebsocketHostname
+        static public string BackendHostnameOverride
         {
-            get { return Persistence.Key["WebsocketHostname"]; }
-            set { Persistence.Key["WebsocketHostname"] = value; }
+            get { return Persistence.Key["BackendHostnameOverride"]; }
+            set { Persistence.Key["BackendHostnameOverride"] = value; }
         }
 
-        static public int WebsocketPortServer
+
+        static public string BackendHostname
         {
-            get { return Int32.Parse(GetDefaultedPersistedKey("WebsocketPortServer", "12172")); }
-            set { Persistence.Key["WebsocketPortServer"] = value.ToString(CultureInfo.InvariantCulture); }
+            get { return Persistence.Key["BackendHostname"]; }
+            set { Persistence.Key["BackendHostname"] = value; }
         }
 
-        static public int WebsocketPortClient
+        static public int WebsocketPortFrontend
         {
-            get { return Int32.Parse(GetDefaultedPersistedKey("WebsocketPortClient", "12172")); }
-            set { Persistence.Key["WebsocketPortClient"] = value.ToString(CultureInfo.InvariantCulture); }
+            get { return Int32.Parse(GetDefaultedPersistedKey("WebsocketPortFrontend", "12172")); }
+            set { Persistence.Key["WebsocketPortFrontend"] = value.ToString(CultureInfo.InvariantCulture); }
+        }
+
+        static public int WebsocketPortBackend
+        {
+            get { return Int32.Parse(GetDefaultedPersistedKey("WebsocketPortBackend", "10944")); }
+            set { Persistence.Key["WebsocketPortBackend"] = value.ToString(CultureInfo.InvariantCulture); }
         }
 
         static public string ExternalUrl

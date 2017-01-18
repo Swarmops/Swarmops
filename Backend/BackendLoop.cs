@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Net;
 using System.Threading;
 using Mono.Unix;
 using Mono.Unix.Native;
@@ -42,6 +43,8 @@ namespace Swarmops.Backend
             DatabaseMaintenance.UpgradeSchemata();
 
             testMode = false;
+
+            SystemSettings.BackendHostname = Dns.GetHostName();
 
             UnixSignal[] killSignals = null;
 
