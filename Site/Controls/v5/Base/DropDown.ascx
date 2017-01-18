@@ -83,6 +83,6 @@
     </script>
 
 
-<% if (this.Direction == LayoutDirection.Vertical){ %><div class="stacked-input-control"><% } %>
+<% if (this.Layout == LayoutDirection.Vertical){ %><div class="stacked-input-control"><% } %>
     <span id="<%=this.ClientID %>_SpanDrop"><asp:DropDownList ID="DropControl" runat="server" /></span>
-<% if (this.Direction == LayoutDirection.Vertical) { %></div><% } %>
+<% if (this.Layout == LayoutDirection.Vertical) { %></div><% } %>
