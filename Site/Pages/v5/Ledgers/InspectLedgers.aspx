@@ -305,7 +305,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     
-    <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets ID="DropBudgets" OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
+    <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets Layout="Horizontal" ID="DropBudgets" OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
     
         <table id="gridLedgers" class="easyui-datagrid" style="width: 680px; height: 500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerData.aspx'"
@@ -344,7 +344,7 @@
                 
             <div id="divEditTransaction">
                 <h2><asp:Label ID="LabelAddTransactionRowsHeader" runat="server" /></h2>
-                <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" runat="server" /> <span class="elementFloatFar"><input id="ButtonAddTransactionRow" type="button" value='#AddRow#'/></span></h2></span>
+                <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" Layout="Horizontal" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" runat="server" /> <span class="elementFloatFar"><input id="ButtonAddTransactionRow" type="button" value='#AddRow#'/></span></h2></span>
                     
             </div>
             <div id="divTransactionTracking">

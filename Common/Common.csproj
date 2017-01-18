@@ -57,6 +57,7 @@
     <Compile Include="Enums\FinancialValidationType.cs" />
     <Compile Include="Enums\GeographyLevel.cs" />
     <Compile Include="Enums\InvalidMembershipType.cs" />
+    <Compile Include="Enums\LayoutDirection.cs" />
     <Compile Include="Enums\MailAuthorType.cs" />
     <Compile Include="Enums\MembershipPaymentStatus.cs" />
     <Compile Include="Enums\ObjectOptionalDataType.cs" />

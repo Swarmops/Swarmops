@@ -1,4 +1,5 @@
 ﻿using System;
+using Swarmops.Common.Enums;
 using Swarmops.Frontend;
 
 namespace Swarmops.Controls.Financial
@@ -44,8 +45,14 @@ namespace Swarmops.Controls.Financial
             ((PageV5Base) this.Page).RegisterControl (EasyUIControl.Tree | EasyUIControl.Combo | EasyUIControl.ComboBox);
         }
 
+        public LayoutDirection Layout { get; set; }
+
         protected void Page_Load (object sender, EventArgs e)
         {
+            if (this.Layout == LayoutDirection.Unknown)
+            {
+                this.Layout = LayoutDirection.Vertical;
+            }
         }
     }
 }

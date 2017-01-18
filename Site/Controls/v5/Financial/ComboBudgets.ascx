@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ComboBudgets.ascx.cs" Inherits="Swarmops.Controls.Financial.ComboBudgets" %>
 <%@ Import Namespace="System.Threading" %>
+<%@ Import Namespace="Swarmops.Common.Enums" %>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -65,4 +66,6 @@
 
  </script>
  
- <div class="stacked-input-control"><span id="<%=this.ClientID %>_SpanBudgets"><select class="easyui-combotree" url="<%=this.DataUrl %>" name="DropBudgets" id="<%=this.ClientID %>_DropBudgets" animate="true" style="width:324px"></select></span></div>
+ <% if (this.Layout == LayoutDirection.Vertical) { %><div class="stacked-input-control"><% } %>
+     <span id="<%=this.ClientID %>_SpanBudgets"><select class="easyui-combotree" url="<%=this.DataUrl %>" name="DropBudgets" id="<%=this.ClientID %>_DropBudgets" animate="true" style="width:324px"></select></span>
+ <% if (this.Layout == LayoutDirection.Vertical) { %></div><% } %>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Common.Enums;
 
 
 namespace Swarmops.Frontend.Controls.Base
@@ -31,8 +32,16 @@ namespace Swarmops.Frontend.Controls.Base
             get { return this.DropControl; }
         }
 
+        public LayoutDirection Layout { get; set; }
+
         protected void Page_Load (object sender, EventArgs e)
         {
+            if (this.Layout == LayoutDirection.Unknown)
+            {
+                this.Layout = LayoutDirection.Vertical;
+            }
         }
+
+
     }
 }

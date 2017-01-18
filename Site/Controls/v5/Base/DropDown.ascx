@@ -1,7 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Controls.Base.DropDown" CodeFile="DropDown.ascx.cs" %>
 <%@ Import Namespace="System.Threading" %>
+<%@ Import Namespace="Swarmops.Common.Enums" %>
 
-    <script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript">
         $(document).ready(function () {
             $('#<%=this.ClientID %>_DropControl').combobox({
                 editable: false,
@@ -82,4 +83,6 @@
     </script>
 
 
-<div class="stacked-input-control"><span id="<%=this.ClientID %>_SpanDrop"><asp:DropDownList ID="DropControl" runat="server" /></span></div>
+<% if (this.Direction == LayoutDirection.Vertical){ %><div class="stacked-input-control"><% } %>
+    <span id="<%=this.ClientID %>_SpanDrop"><asp:DropDownList ID="DropControl" runat="server" /></span>
+<% if (this.Direction == LayoutDirection.Vertical) { %></div><% } %>
