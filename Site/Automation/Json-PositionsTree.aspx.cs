@@ -224,10 +224,10 @@ namespace Swarmops.Frontend.Automation
                                 assignments[0].PersonId == CurrentUser.Identity ? "self='true'" : string.Empty);
                     }
 
-                    int expireYear = assignments[assignmentCount].ExpiresDateTimeUtc.Year;
-                    if (expireYear > 2000 && expireYear < 3000) // as in, "is defined"
+                    DateTime expiresUtc = assignments[assignmentCount].ExpiresDateTimeUtc;
+                    if (expiresUtc.IsDefined())
                     {
-                        expires = assignments[assignmentCount].ExpiresDateTimeUtc.ToString ("yyyy-MMM-dd");
+                        expires = expiresUtc.ToString ("yyyy-MMM-dd");
                     }
                     element =
                         String.Format (

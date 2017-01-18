@@ -19,7 +19,6 @@ namespace Swarmops.Frontend.Controls.Swarm
 
         protected void Page_Load (object sender, EventArgs e) // PreRender to make sure teh DropDuration control exists
         {
-            this.DropPerson.Placeholder = Resources.Global.Swarm_TypeName;
             Localize();
         }
 
