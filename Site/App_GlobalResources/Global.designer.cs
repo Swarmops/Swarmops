@@ -1947,6 +1947,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type a partial name....
+        /// </summary>
+        internal static string Swarm_TypePartialName {
+            get {
+                return ResourceManager.GetString("Swarm_TypePartialName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to five-year.
         /// </summary>
         internal static string Timespan_FiveYears {

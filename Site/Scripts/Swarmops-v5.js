@@ -10,25 +10,21 @@ function _masterInitializeSocket(authenticationTicket) {
         _masterSocket = null;
     }
 
-    alertify.log("DEBUG: Opening socket " + getMasterSocketAddress() + "...");
-
     var socketUrl = getMasterSocketAddress() + "?Auth=" + authenticationTicket;
 
     _masterSocket = new WebSocket(socketUrl);
     _masterSocket.onopen = function(data) {
-        alertify.success('Socket Connected!');
-
         if (_masterSocketHeartbeatsLost) {
             // Reload all edits and the edit pool. If there are discrepancies, we can probably live with them. (Detect editing?)
-            alertify.log("Backend connection restored without interruption.");
+            //alertify.log("Backend connection restored without interruption.");
 
             _masterSocketHeartbeatsLost = false;
         }
 
         //watchHeartbeat();
     };
-    _masterSocket.onclose = function(data) { alertify.log("Connection Lost"); };
-    _masterSocket.onerror = function(data) { alertify.log("Connection Error"); };
+    _masterSocket.onclose = function(data) { /* TODO: try reconnecting */ };
+    _masterSocket.onerror = function(data) { alertify.error("WARNING: Socket connection error - realtime updates will not be available"); };
     _masterSocket.onmessage = function(data) {
         
         console.log(data.data);

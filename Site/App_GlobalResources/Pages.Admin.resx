@@ -314,4 +314,18 @@
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>WebSocket Port (Backend)</value>
   </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Impersonate another user</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Impersonate</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Person to impersonate</value>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;This debugging tool allows you to impersonate another user to see and experience Swarmops as they do when logged in.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;WARNING:&lt;/strong&gt; This is a highly intrusive tool that should only be used for technical development and for requested support. Using this should not be taken lightly.&lt;/p&gt;
+&lt;p&gt;All impersonations are permanently logged, all and any actions taken while impersonated are traceable as such, and the impersonated user will be informed of the intrusion.&lt;/p&gt;</value>
+  </data>
 </root>

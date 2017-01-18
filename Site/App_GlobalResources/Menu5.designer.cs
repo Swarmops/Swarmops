@@ -88,6 +88,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Debug.
+        /// </summary>
+        internal static string Menu5_Administration_Debug {
+            get {
+                return ResourceManager.GetString("Menu5_Administration_Debug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Impersonate.
+        /// </summary>
+        internal static string Menu5_Administration_Debug_Impersonate {
+            get {
+                return ResourceManager.GetString("Menu5_Administration_Debug_Impersonate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Geography Tree.
         /// </summary>
         internal static string Menu5_Administration_GeographyTree {

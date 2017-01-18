@@ -519,6 +519,33 @@
           </MainMenuItem>
 
           <MainMenuItem>
+            <UserLevel>4</UserLevel>
+            <Type>Separator</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
+            <ResourceKey>Administration_Debug</ResourceKey>
+            <UserLevel>4</UserLevel>
+            <Permissions />
+            <ImageUrl>iconshock-battery-drill</ImageUrl>
+            <Type>Submenu</Type>
+            <Children>
+
+              <MainMenuItem>
+                <ResourceKey>Administration_Debug_Impersonate</ResourceKey>
+                <UserLevel>4</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-battery-drill</ImageUrl>
+                <NavigateUrl>/Pages/v5/Admin/CommenceImpersonation.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+              </MainMenuItem>
+
+            </Children>
+          </MainMenuItem>
+
+          <MainMenuItem>
             <UserLevel>1</UserLevel>
             <Type>Separator</Type>
             <Children />

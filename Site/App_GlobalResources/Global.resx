@@ -890,4 +890,7 @@
   <data name="Global_Volunteer_Plural" xml:space="preserve">
     <value>Volunteers</value>
   </data>
+  <data name="Swarm_TypePartialName" xml:space="preserve">
+    <value>Type a partial name...</value>
+  </data>
 </root>

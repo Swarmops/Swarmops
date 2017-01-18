@@ -15,6 +15,10 @@ namespace Swarmops.Controls.Swarm
 
         protected void Page_Load (object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(Placeholder))
+            {
+                Placeholder = Resources.Global.Swarm_TypePartialName;
+            }
         }
     }
 }

@@ -433,4 +433,10 @@
   <data name="Menu5_Beta_ReportBug" xml:space="preserve">
     <value>Report a Swarmops Bug (on Github)</value>
   </data>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Impersonate</value>
+  </data>
 </root>

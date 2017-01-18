@@ -133,6 +133,44 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Impersonate another user.
+        /// </summary>
+        internal static string CommenceImpersonation_Header {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Impersonate.
+        /// </summary>
+        internal static string CommenceImpersonation_Impersonate {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Impersonate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Person to impersonate.
+        /// </summary>
+        internal static string CommenceImpersonation_Person {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;This debugging tool allows you to impersonate another user to see and experience Swarmops as they do when logged in.&lt;/p&gt;
+        ///&lt;p&gt;&lt;strong&gt;WARNING:&lt;/strong&gt; This is a highly intrusive tool that should only be used for technical development and for requested support. Using this should not be taken lightly.&lt;/p&gt;
+        ///&lt;p&gt;All impersonations are permanently logged, all and any actions taken while impersonated are traceable as such, and the impersonated user will be informed of the intrusion.&lt;/p&gt;.
+        /// </summary>
+        internal static string CommenceImpersonation_Warning {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activists will be called.
         /// </summary>
         internal static string CreateOrganization_ActivistTitle {

@@ -106,6 +106,13 @@
     <Compile Include="Pages\v5\Admin\CreateOrganization.aspx.designer.cs">
       <DependentUpon>CreateOrganization.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Admin\CommenceImpersonation.aspx.cs">
+      <DependentUpon>CommenceImpersonation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\CommenceImpersonation.aspx.designer.cs">
+      <DependentUpon>CommenceImpersonation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Admin\Hacks\PopulateCountry1.aspx.cs">
       <DependentUpon>PopulateCountry1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -967,6 +974,7 @@
     <Content Include="MainMenu-v5.xml" />
     <Content Include="Pages\v5\Admin\BitcoinEchoTest.aspx" />
     <Content Include="Pages\v5\Admin\CreateOrganization.aspx" />
+    <Content Include="Pages\v5\Admin\CommenceImpersonation.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\PopulateCountry1.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\PopulateCountry2.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\PopulateFakePeople.aspx" />
