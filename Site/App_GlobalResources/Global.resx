@@ -890,6 +890,10 @@
   <data name="Global_Volunteer_Plural" xml:space="preserve">
     <value>Volunteers</value>
   </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>Go</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
   <data name="Swarm_TypePartialName" xml:space="preserve">
     <value>Type a partial name...</value>
   </data>

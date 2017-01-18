@@ -961,6 +961,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Go.
+        /// </summary>
+        internal static string Global_Go {
+            get {
+                return ResourceManager.GetString("Global_Go", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go there....
         /// </summary>
         internal static string Global_GoThere {

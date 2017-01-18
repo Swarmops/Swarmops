@@ -29,7 +29,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelImpersonationHeader.Text = Resources.Pages.Admin.CommenceImpersonation_Header;
             this.LiteralImpersonationWarning.Text = Resources.Pages.Admin.CommenceImpersonation_Warning;
             this.LabelPerson.Text = Resources.Pages.Admin.CommenceImpersonation_Person;
-            this.ButtonImpersonate.Text = Resources.Pages.Admin.CommenceImpersonation_Impersonate;
+            this.ButtonImpersonate.Text = Resources.Global.Global_Go;
         }
 
 
