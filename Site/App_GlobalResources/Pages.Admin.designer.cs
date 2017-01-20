@@ -151,11 +151,56 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATE PERSON?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is not to be taken lightly and may even be illegal depending on local laws.&lt;br/&gt;&lt;br/&gt;The purpose of this tool is to fix technical malfunctions. Everything is logged.&lt;br/&gt;&lt;br/&gt;Proceed?.
+        /// </summary>
+        internal static string CommenceImpersonation_Confirm {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATION TERMINATED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonation terminated at {0:HH:mm} UTC. You are acting as yourself again..
         /// </summary>
         internal static string CommenceImpersonation_Ended {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Ended", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATION DENIED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You may not impersonate somebody who is your direct manager..
+        /// </summary>
+        internal static string CommenceImpersonation_Error_Authority_Report {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Error_Authority_Report", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATION DENIED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You may not impersonate somebody else with system level access..
+        /// </summary>
+        internal static string CommenceImpersonation_Error_Authority_System {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Error_Authority_System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You need to select a person to impersonate..
+        /// </summary>
+        internal static string CommenceImpersonation_Error_SelectPerson {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Error_SelectPerson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you need to impersonate yourself, we suggest you log off Swarmops and seek other kind of assistance..
+        /// </summary>
+        internal static string CommenceImpersonation_Error_Self {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Error_Self", resourceCulture);
             }
         }
         

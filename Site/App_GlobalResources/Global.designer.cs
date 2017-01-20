@@ -1186,6 +1186,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        internal static string Global_Ok {
+            get {
+                return ResourceManager.GetString("Global_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On.
         /// </summary>
         internal static string Global_On {
@@ -1254,6 +1263,15 @@ namespace Resources {
         internal static string Global_PostalCode {
             get {
                 return ResourceManager.GetString("Global_PostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceed.
+        /// </summary>
+        internal static string Global_Proceed {
+            get {
+                return ResourceManager.GetString("Global_Proceed", resourceCulture);
             }
         }
         

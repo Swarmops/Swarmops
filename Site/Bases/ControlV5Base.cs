@@ -46,16 +46,30 @@ namespace Swarmops.Frontend
 
 
 
-        // ReSharper disable once InconsistentNaming
+        // ReSharper disable InconsistentNaming
         public string Localized_AjaxCallException
         {
             get { return JavascriptEscape (Resources.Global.Error_AjaxCallException); }
         }
 
-        // ReSharper disable once InconsistentNaming
         public string Localized_AjaxGeneralErrorSettingValue
         {
             get { return JavascriptEscape (Resources.Global.Error_UnspecifiedAjaxSetValue); }
+        }
+
+        public string Localized_ConfirmDialog_Ok
+        {
+            get { return JavascriptEscape(Resources.Global.Global_Ok); }
+        }
+
+        public string Localized_ConfirmDialog_Proceed
+        {
+            get { return JavascriptEscape(Resources.Global.Global_Proceed); }
+        }
+
+        public string Localized_ConfirmDialog_Cancel
+        {
+            get { return JavascriptEscape(Resources.Global.Global_Cancel); }
         }
     }
 }

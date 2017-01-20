@@ -189,6 +189,21 @@ namespace Swarmops.Frontend
             get { return JavascriptEscape(Resources.Global.Global_Off.ToUpperInvariant()); }
         }
 
+        public string Localized_ConfirmDialog_Ok
+        {
+            get { return JavascriptEscape(Resources.Global.Global_Ok); }
+        }
+
+        public string Localized_ConfirmDialog_Proceed
+        {
+            get { return JavascriptEscape(Resources.Global.Global_Proceed); }
+        }
+
+        public string Localized_ConfirmDialog_Cancel
+        {
+            get { return JavascriptEscape(Resources.Global.Global_Cancel); }
+        }
+
     }
 
 

@@ -894,6 +894,14 @@
     <value>Go</value>
     <comment>As in "execute", "run requested procedure"</comment>
   </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>Proceed</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  </data>
   <data name="Swarm_TypePartialName" xml:space="preserve">
     <value>Type a partial name...</value>
   </data>

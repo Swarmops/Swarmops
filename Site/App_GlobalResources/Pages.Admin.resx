@@ -322,9 +322,24 @@
     <value>You have an active impersonation session as {0}. &lt;a href="javascript:terminateImpersonation();"&gt;End impersonation.&lt;/a&gt;</value>
     <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
   </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONATE PERSON?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is not to be taken lightly and may even be illegal depending on local laws.&lt;br/&gt;&lt;br/&gt;The purpose of this tool is to fix technical malfunctions. Everything is logged.&lt;br/&gt;&lt;br/&gt;Proceed?</value>
+  </data>
   <data name="CommenceImpersonation_Ended" xml:space="preserve">
     <value>&lt;strong&gt;IMPERSONATION TERMINATED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonation terminated at {0:HH:mm} UTC. You are acting as yourself again.</value>
     <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONATION DENIED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You may not impersonate somebody who is your direct manager.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONATION DENIED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You may not impersonate somebody else with system level access.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>You need to select a person to impersonate.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>If you need to impersonate yourself, we suggest you log off Swarmops and seek other kind of assistance.</value>
   </data>
   <data name="CommenceImpersonation_Failed" xml:space="preserve">
     <value>&lt;strong&gt;IMPERSONATION DENIED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You do not seem to have sufficient privileges to impersonate somebody else.</value>

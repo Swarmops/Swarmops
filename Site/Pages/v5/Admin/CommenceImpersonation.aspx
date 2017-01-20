@@ -9,9 +9,40 @@
 
         $(document).ready(function () {
  
-
         });
         
+        function dialogBeginImpersonation() {
+            alertify.set({
+	            labels: {
+	                ok: SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_Proceed%>'),
+	                cancel: SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_Cancel%>')
+	            },
+	            buttonFocus: 'cancel'
+	        });
+
+	        alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_Text%>'),
+	            $.proxy(function (response) {
+	                if (response) {
+	                    var selectedPersonId = <%=this.ComboPeople.ClientID%>_selectedPersonId();
+	                    SwarmopsJS.ajaxCall("/Pages/v5/Admin/CommenceImpersonation.aspx/Commence",
+	                        { personId: selectedPersonId },
+	                        function(result) {
+	                            // if Success is true, we have a new auth cookie and should redir to Dashboard,
+	                            // otherwise, we should dialog the returned DisplayMessage
+	                            if (result.Success) {
+	                                document.location = "/"; // redirect
+	                            } else {
+	                                alert.dialog(result.DisplayMessage);
+	                            }
+
+
+	                        });
+	                } else {
+                        // Do nothing on cancel
+	                }
+	            }, this));
+        }
+
     </script>
 </asp:Content>
 

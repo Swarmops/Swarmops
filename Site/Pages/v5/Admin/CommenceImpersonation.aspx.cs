@@ -37,7 +37,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
 
         [WebMethod]
-        public static AjaxCallResult BeginImpersonation (int personId)
+        public static AjaxCallResult Commence (int personId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
@@ -80,11 +80,12 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
 
         // ReSharper disable InconsistentNaming
-        public string Localized_ValidationError_MissingTag
+        public string Localized_ConfirmDialog_Text
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_MissingTag); }
+            get { return JavascriptEscape(Resources.Pages.Admin.CommenceImpersonation_Confirm); }
         }
 
+        /*
         public string Localized_ValidationError_BankAccount
         {
             get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount); }
@@ -118,7 +119,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         public string Localized_ValidationError_Documents
         {
             get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents); }
-        }
+        }*/
 
     }
 }
