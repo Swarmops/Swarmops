@@ -202,6 +202,15 @@ namespace Swarmops.Frontend {
         protected global::System.Web.UI.WebControls.Image ImageLogo;
         
         /// <summary>
+        /// ImpersonationWarning control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Swarm.ImpersonationWarningBox ImpersonationWarning;
+        
+        /// <summary>
         /// LabelSidebarInfo control.
         /// </summary>
         /// <remarks>

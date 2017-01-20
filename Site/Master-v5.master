@@ -215,6 +215,8 @@
             </div>
         </div>
 
+            <Swarmops5:ImpersonationWarningBox runat="server" ID="ImpersonationWarning"/>
+
             <h2 class="blue"><asp:Label ID="LabelSidebarInfo" runat="server" /><span class="arrow"></span></h2>
     
             <div class="box">
