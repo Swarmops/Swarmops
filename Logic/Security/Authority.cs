@@ -89,7 +89,7 @@ namespace Swarmops.Logic.Security
 
         public Impersonation Impersonation { get; set; }
 
-        public bool ImpersonationActive { get { return Impersonation != null; } }
+        public bool ImpersonationActive { get { return Impersonation != null && Impersonation.ImpersonatedByPersonId != 0; } }
 
         public void SetOrganization (Organization organization)
         {
