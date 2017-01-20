@@ -133,6 +133,42 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Impersonation Active.
+        /// </summary>
+        internal static string CommenceImpersonation_Active_Header {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Active_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have an active impersonation session as {0}. &lt;a href=&quot;javascript:terminateImpersonation();&quot;&gt;End impersonation.&lt;/a&gt;.
+        /// </summary>
+        internal static string CommenceImpersonation_Active_Text {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Active_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATION TERMINATED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonation terminated at {0:HH:mm} UTC. You are acting as yourself again..
+        /// </summary>
+        internal static string CommenceImpersonation_Ended {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Ended", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATION DENIED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You do not seem to have sufficient privileges to impersonate somebody else..
+        /// </summary>
+        internal static string CommenceImpersonation_Failed {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Impersonate another user.
         /// </summary>
         internal static string CommenceImpersonation_Header {
@@ -156,6 +192,15 @@ namespace Resources.Pages {
         internal static string CommenceImpersonation_Person {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATION ACTIVE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonation started at {0:HH:mm} UTC. This is the Dashboard as the impersonated person sees it. .
+        /// </summary>
+        internal static string CommenceImpersonation_Success {
+            get {
+                return ResourceManager.GetString("CommenceImpersonation_Success", resourceCulture);
             }
         }
         

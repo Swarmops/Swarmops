@@ -92,6 +92,13 @@
     <Compile Include="Controls\v5\Base\AjaxToggleSlider.ascx.designer.cs">
       <DependentUpon>AjaxToggleSlider.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\v5\Swarm\ImpersonationWarningBox.ascx.cs">
+      <DependentUpon>ImpersonationWarningBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Swarm\ImpersonationWarningBox.ascx.designer.cs">
+      <DependentUpon>ImpersonationWarningBox.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Admin\BitcoinEchoTest.aspx.cs">
       <DependentUpon>BitcoinEchoTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -653,6 +660,7 @@
     <Content Include="Controls\v5\Financial\CurrencyTextBox.ascx" />
     <Content Include="Controls\v5\Swarm\AjaxComboPeople.ascx" />
     <Content Include="Controls\v5\Swarm\ComboPeople.ascx" />
+    <Content Include="Controls\v5\Swarm\ImpersonationWarningBox.ascx" />
     <Content Include="Controls\v5\Swarm\PersonDetailPopup.ascx" />
     <Content Include="Controls\v5\Swarm\TreePositions.ascx" />
     <Content Include="Controls\v5\UI\ExternalScripts.ascx" />

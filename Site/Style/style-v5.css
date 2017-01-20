@@ -1052,6 +1052,28 @@ body.rtl .sidebar h2 {
 	border-color: #C78B15;
 }
 
+
+.sidebar h2.orangeDark
+{
+	background-color: #C78B15;
+	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#CC9221', endColorstr='#BA800D');  /* MSIE */
+	background: -moz-linear-gradient(top, #CC9221, #BA800D);  /* Mozilla */
+	background: -webkit-gradient(linear, left top, left bottom, from(#CC9221), to(#BA800D)); /* Chrome, Safari */
+	text-shadow: #7F5500 0px 0px 3px, #7F5500 0px 0px 3px;
+	
+	border-color: #7F5500;
+}
+
+
+/* COLOR SCHEME
+
+   #A2BEFF #476EC7 #1C397E #C8D9FF #E4ECFF    -- blue (hue 240)
+   #FFBC37 #C78B15 #7F5500 #FFD580 #FFEDC8    -- orange (hue 60)
+  
+    base    dark    xdark   light   xlight
+*/
+
+
 .sidebar h2 span.arrow
 {
 	border-style: solid;

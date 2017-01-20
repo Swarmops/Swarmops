@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Resources;
 using System.Web;
+using System.Web.Security;
 using System.Web.Services;
 using Swarmops.Interface.Support;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.LogEntries;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Admin
 {
@@ -36,7 +39,42 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         [WebMethod]
         public static AjaxCallResult BeginImpersonation (int personId)
         {
-            throw new NotImplementedException();
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (!authData.Authority.HasSystemAccess())
+            {
+                // Restrict impersonation to system-level access for now: it's a debugging tool
+
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = CommonV5.JavascriptEscape(Resources.Pages.Admin.CommenceImpersonation_Failed)
+                };
+            }
+
+            // BEGIN IMPERSONATION
+
+            Person impersonatedPerson = Person.FromIdentity(personId);
+
+            SwarmopsLogEntry newEntry = SwarmopsLog.CreateEntry(impersonatedPerson,
+                new ImpersonationLogEntry {ImpersonatorPersonId = authData.CurrentUser.PersonId, Started = true});
+            newEntry.CreateAffectedObject(authData.CurrentUser); // link impersonator to log entry for searchability
+
+            // Someone who has system level access can always impersonate => no further access control at this time
+
+            // SECURITY CONSIDERATIONS: If somebody replaces/fires a superior? Trivially undoable at the database level
+
+            DateTime utcNow = DateTime.UtcNow;
+            Authority impersonatingAuthority = Authority.FromLogin(impersonatedPerson, authData.CurrentOrganization);
+            impersonatingAuthority.Impersonation = new Impersonation
+            {
+                ImpersonatedByPersonId = authData.CurrentUser.PersonId,
+                ImpersonationStarted = utcNow
+            };
+
+            FormsAuthentication.SetAuthCookie(impersonatingAuthority.ToEncryptedXml(), false);
+            HttpContext.Current.Response.AppendCookie(new HttpCookie("DashboardMessage", CommonV5.JavascriptEscape(String.Format(Resources.Pages.Admin.CommenceImpersonation_Success, utcNow))));
+            return new AjaxCallResult {Success = true};
         }
 
 

@@ -87,6 +87,10 @@ namespace Swarmops.Logic.Security
             get { return Organization.FromIdentity (_data.OrganizationId); }
         }
 
+        public Impersonation Impersonation { get; set; }
+
+        public bool ImpersonationActive { get { return Impersonation != null; } }
+
         public void SetOrganization (Organization organization)
         {
             // This changes the active organization. There may be a Primary Position in this
@@ -514,6 +518,8 @@ namespace Swarmops.Logic.Security
         public int PositionAssignmentId { get; set; }
         public DateTime LoginDateTimeUtc { get; set; }
         public Basic.Types.Common.SerializableDictionary<string,string> CustomData { get; set; }
+        public Impersonation ActiveImpersonation { get; set; }
+
 
         internal string ToXml()
         {

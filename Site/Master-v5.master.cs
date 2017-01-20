@@ -152,7 +152,7 @@ namespace Swarmops.Frontend
             if (dashMessage != null && dashMessage.Value.Length > 0)
             {
                 this.LiteralDocumentReadyHook.Text +=
-                    string.Format ("alertify.alert(decodeURIComponent('{0}'));", dashMessage.Value);
+                    string.Format ("alertify.alert(SwarmopsJS.unescape('{0}'));", dashMessage.Value);
                 DashboardMessage.Reset();
             }
             else

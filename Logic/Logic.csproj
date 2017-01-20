@@ -185,7 +185,9 @@
     <Compile Include="Communications\Payload\ParticipantMailPayload.cs" />
     <Compile Include="Communications\Payload\PayloadEnvelope.cs" />
     <Compile Include="Communications\Payload\NotificationPayload.cs" />
+    <Compile Include="Security\Impersonation.cs" />
     <Compile Include="Support\BlockchainTransaction.cs" />
+    <Compile Include="Support\LogEntries\ImpersonationLogEntry.cs" />
     <Compile Include="Support\LogEntries\PersonalDataChangedLogEntry.cs" />
     <Compile Include="Support\PayloadBase.cs" />
     <Compile Include="Financial\BankDataReaders\SEPaymentsBankgiroReader.cs" />

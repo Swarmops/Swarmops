@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -566,6 +567,45 @@ namespace Swarmops.Frontend.Automation
             }
 
 
+        }
+
+
+        [WebMethod]
+        public static AjaxCallResult TerminateImpersonation()
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (!authData.Authority.ImpersonationActive)
+            {
+                return new AjaxCallResult {Success = false}; // no impersonation active. Race condition?
+            }
+
+            int realUserPersonId = authData.Authority.Impersonation.ImpersonatedByPersonId;
+            Person impersonator = Person.FromIdentity(realUserPersonId);
+
+            // Terminate impersonation and set new authority cookie from the impersonator data.
+            // VERY SECURITY SENSITIVE: The identity as impersonator will be the new user.
+
+            // TODO: LOG LOG LOG LOG
+
+            SwarmopsLogEntry logEntry = SwarmopsLog.CreateEntry(authData.CurrentUser,
+                new ImpersonationLogEntry
+                {
+                    ImpersonatorPersonId = impersonator.Identity,
+                    Started = false
+                });
+            logEntry.CreateAffectedObject(impersonator); // link impersonator to log entry for searchability
+
+            DateTime utcNow = DateTime.UtcNow;
+
+            Authority authority =
+                Authority.FromLogin(impersonator, authData.CurrentOrganization);
+            FormsAuthentication.SetAuthCookie(authority.ToEncryptedXml(), false);
+            HttpContext.Current.Response.AppendCookie(new HttpCookie("DashboardMessage", String.Format(Resources.Pages.Admin.CommenceImpersonation_Ended, utcNow)));
+
+            // returning Success will force a reload, resetting dashboard to original user
+
+            return new AjaxCallResult {Success = true};
         }
 
     }

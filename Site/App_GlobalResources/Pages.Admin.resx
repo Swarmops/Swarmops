@@ -314,6 +314,21 @@
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>WebSocket Port (Backend)</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Impersonation Active</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>You have an active impersonation session as {0}. &lt;a href="javascript:terminateImpersonation();"&gt;End impersonation.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONATION TERMINATED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonation terminated at {0:HH:mm} UTC. You are acting as yourself again.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONATION DENIED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You do not seem to have sufficient privileges to impersonate somebody else.</value>
+  </data>
   <data name="CommenceImpersonation_Header" xml:space="preserve">
     <value>Impersonate another user</value>
   </data>
@@ -322,6 +337,10 @@
   </data>
   <data name="CommenceImpersonation_Person" xml:space="preserve">
     <value>Person to impersonate</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONATION ACTIVE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonation started at {0:HH:mm} UTC. This is the Dashboard as the impersonated person sees it. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
   </data>
   <data name="CommenceImpersonation_Warning" xml:space="preserve">
     <value>&lt;p&gt;This debugging tool allows you to impersonate another user to see and experience Swarmops as they do when logged in.&lt;/p&gt;
