@@ -150,6 +150,8 @@
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
 
+            alertify.log('<%=this.CurrentAuthority.Impersonation.ImpersonatedByPersonId%>');
+
             _masterInitializeSocket('<%=CommonV5.JavascriptEscape(this.CurrentAuthority.ToEncryptedXml())%>');
 
             $('#divTabsEditPerson').tabs();
