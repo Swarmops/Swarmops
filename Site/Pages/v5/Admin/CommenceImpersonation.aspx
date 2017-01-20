@@ -12,6 +12,12 @@
         });
         
         function dialogBeginImpersonation() {
+            var selectedPersonId = <%=this.ComboPeople.ClientID%>_selectedPersonId();
+            if (selectedPersonId < 1) {
+                alertify.log("You need to select a person."); // TODO: LOC
+                return false;
+            }
+	                    
             alertify.set({
 	            labels: {
 	                ok: SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_Proceed%>'),
@@ -23,7 +29,7 @@
 	        alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_Text%>'),
 	            $.proxy(function (response) {
 	                if (response) {
-	                    var selectedPersonId = <%=this.ComboPeople.ClientID%>_selectedPersonId();
+ 	                    selectedPersonId = <%=this.ComboPeople.ClientID%>_selectedPersonId();
 	                    SwarmopsJS.ajaxCall("/Pages/v5/Admin/CommenceImpersonation.aspx/Commence",
 	                        { personId: selectedPersonId },
 	                        function(result) {
@@ -38,13 +44,18 @@
 
 	                        });
 	                } else {
-                        // Do nothing on cancel
+	                    alertify.log("Canceled.");
+	                    // Do nothing on cancel
 	                }
 	            }, this));
+
+            return false; // prevent further processing of button
         }
 
     </script>
 </asp:Content>
+
+
 
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
