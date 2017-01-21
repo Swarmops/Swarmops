@@ -601,7 +601,7 @@ namespace Swarmops.Frontend.Automation
             Authority authority =
                 Authority.FromLogin(impersonator, authData.CurrentOrganization);
             FormsAuthentication.SetAuthCookie(authority.ToEncryptedXml(), false);
-            HttpContext.Current.Response.AppendCookie(new HttpCookie("DashboardMessage", String.Format(Resources.Pages.Admin.CommenceImpersonation_Ended, utcNow)));
+            HttpContext.Current.Response.AppendCookie(new HttpCookie("DashboardMessage", CommonV5.JavascriptEscape(String.Format(Resources.Pages.Admin.CommenceImpersonation_Ended, utcNow))));
 
             // returning Success will force a reload, resetting dashboard to original user
 

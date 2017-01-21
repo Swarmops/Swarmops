@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
@@ -87,7 +88,11 @@ namespace Swarmops.Logic.Security
             get { return Organization.FromIdentity (_data.OrganizationId); }
         }
 
-        public Impersonation Impersonation { get; set; }
+        public Impersonation Impersonation
+        {
+            get { return _data.ActiveImpersonation; }
+            set { _data.ActiveImpersonation = value; }
+        }
 
         public bool ImpersonationActive { get { return Impersonation != null && Impersonation.ImpersonatedByPersonId != 0; } }
 
