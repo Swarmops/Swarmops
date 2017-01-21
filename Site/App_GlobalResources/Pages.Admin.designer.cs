@@ -151,7 +151,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATE PERSON?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is not to be taken lightly and may even be illegal depending on local laws.&lt;br/&gt;&lt;br/&gt;The purpose of this tool is to fix technical malfunctions. Everything is logged.&lt;br/&gt;&lt;br/&gt;Proceed?.
+        ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATE PERSON?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is not to be taken lightly, and if you&apos;re not doing this for technical reasons, it may even be illegal depending on local laws.&lt;br/&gt;&lt;br/&gt;The purpose of this tool is to fix technical malfunctions. Everything is logged.&lt;br/&gt;&lt;br/&gt;Proceed?.
         /// </summary>
         internal static string CommenceImpersonation_Confirm {
             get {

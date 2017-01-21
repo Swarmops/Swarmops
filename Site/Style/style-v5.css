@@ -1098,6 +1098,11 @@ body.rtl .sidebar h2 span.arrow {
 	border-color: #F0AB22 transparent transparent transparent;
 }
 
+.sidebar h2.orangeDark span.arrow
+{
+	border-color: #BA800D transparent transparent transparent;
+}
+
 
 /* PROGRESS BARS*/
 

@@ -323,7 +323,7 @@
     <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
   </data>
   <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>&lt;strong&gt;IMPERSONATE PERSON?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is not to be taken lightly and may even be illegal depending on local laws.&lt;br/&gt;&lt;br/&gt;The purpose of this tool is to fix technical malfunctions. Everything is logged.&lt;br/&gt;&lt;br/&gt;Proceed?</value>
+    <value>&lt;strong&gt;IMPERSONATE PERSON?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is not to be taken lightly, and if you're not doing this for technical reasons, it may even be illegal depending on local laws.&lt;br/&gt;&lt;br/&gt;The purpose of this tool is to fix technical malfunctions. Everything is logged.&lt;br/&gt;&lt;br/&gt;Proceed?</value>
   </data>
   <data name="CommenceImpersonation_Ended" xml:space="preserve">
     <value>&lt;strong&gt;IMPERSONATION TERMINATED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonation terminated at {0:HH:mm} UTC. You are acting as yourself again.</value>
