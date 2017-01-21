@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.MasterV5" Codebehind="Master-v5.master.cs" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.MasterV5" CodeFile="Master-v5.master.cs" CodeBehind="Master-v5.master.cs" %>
 <%@ Import Namespace="System.Globalization" %>
 <%@ Import Namespace="System.Runtime.CompilerServices" %>
 <%@ Import Namespace="System.Threading" %>
@@ -150,8 +150,6 @@
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
 
-            alertify.log('DEBUG: <%=this.CurrentAuthority.Impersonation != null? this.CurrentAuthority.Impersonation.ImpersonatedByPersonId: -1%>');
-
             _masterInitializeSocket('<%=CommonV5.JavascriptEscape(this.CurrentAuthority.ToEncryptedXml())%>');
 
             $('#divTabsEditPerson').tabs();
@@ -213,7 +211,10 @@
             
         <div class="box">
             <div class="content">
+                <a href="/Security/ChangeOrganizations">
                     <asp:Image ID="ImageLogo" Width="220" runat="server"/>
+                    <asp:Label ID="LabelOrganizationName" runat="server"/>
+                </a>
             </div>
         </div>
 

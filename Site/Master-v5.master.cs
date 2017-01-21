@@ -65,12 +65,21 @@ namespace Swarmops.Frontend
 
             this.LiteralSidebarInfo.Text = CurrentPageInfoBoxLiteral;
 
-            // Set logo image. If custom image is installed, use it instead.
+            // Set logo image. If there is no logo image, use text.
 
-            this.ImageLogo.ImageUrl = "~/Images/Other/swarmops-sandbox-logo--istockphoto.png";
-            if (File.Exists (Server.MapPath ("~/Images/Logo-Custom.png")))
+            if (CurrentOrganization.Identity == Organization.SandboxIdentity)
             {
-                this.ImageLogo.ImageUrl = "~/Images/Logo-Custom.png";
+                this.ImageLogo.ImageUrl = "~/Images/Other/swarmops-sandbox-logo--istockphoto.png";
+                this.ImageLogo.Visible = true;
+                this.LabelOrganizationName.Visible = false;
+            }
+            else
+            {
+                // TODO: Check for corp image
+
+                this.ImageLogo.Visible = false;
+                this.LabelOrganizationName.Visible = true;
+                this.LabelOrganizationName.Text = CurrentOrganization.Name;
             }
 
             // Check for SSL and force it
