@@ -74,11 +74,12 @@ namespace Swarmops.Logic.Swarm
                 localizedLeaderTitle = geographyLeaderTemplate.Localized();
             }
 
-            // Add leader positions of the geographies immediately below (in two generations).
-
             Tree<Position> treeResult = result.Tree;
 
-            if (geography.ChildrenCount > 0) // Add subleaders if there are child geographies
+            // Add leader positions of the geographies immediately below (in two generations),
+            // but only if there are children of this geography
+
+            if (geography.ChildrenCount > 0)
             {
                 Tree<Geography> geoTree = geography.Tree;
 
