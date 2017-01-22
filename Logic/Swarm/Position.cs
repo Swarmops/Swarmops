@@ -154,7 +154,7 @@ namespace Swarmops.Logic.Swarm
             // This fakes a geography base. Used for locking a position to a specific geo. Not good architecture as it
             // creates a different meaning than the database one.
 
-            base.GeographyId = geography.Identity;
+            base.GeographyId = (geography==null? 0: geography.Identity);
         }
 
 
