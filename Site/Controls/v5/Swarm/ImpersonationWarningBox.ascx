@@ -18,11 +18,11 @@
             if (!_orangeFlashState) {
                 $('h2.flashheader').addClass("orangeDark").removeClass("orange");
                 _orangeFlashState = true;
-                setTimeout("flashOrangeHeader();", 500);
+                setTimeout("flashOrangeHeader();", 250);
             } else {
                 $('h2.flashheader').removeClass("orangeDark").addClass("orange");
                 _orangeFlashState = false;
-                setTimeout("flashOrangeHeader();", 1500);
+                setTimeout("flashOrangeHeader();", 1750);
             }
         }
 
