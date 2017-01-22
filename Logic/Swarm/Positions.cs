@@ -22,7 +22,9 @@ namespace Swarmops.Logic.Swarm
 
         public static Positions ForOrganization (Organization organization)
         {
-            return FromArray (SwarmDb.GetDatabaseForReading().GetPositions (organization));
+            Positions result = FromArray (SwarmDb.GetDatabaseForReading().GetPositions (organization));
+
+            return result;
         }
 
         public static Tree<Position> ForOrganizationGeography (Organization organization, Geography geography)
@@ -34,6 +36,23 @@ namespace Swarmops.Logic.Swarm
             if (geography.Identity == Geography.RootIdentity)
             {
                 result = ForOrganization (organization).AtLevel (PositionLevel.OrganizationExecutive);
+
+                if (result.Count == 0)
+                {
+                    // Empty! This should never happen.
+
+                    if (organization.Identity == Organization.SandboxIdentity)
+                    {
+                        // If this is Sandbox, then recreate the positions in defensive coding.
+
+                        Positions.CreateOrganizationDefaultPositions(organization);
+                        result = ForOrganization(organization).AtLevel(PositionLevel.OrganizationExecutive);
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Position set is empty. This should not happen.");
+                    }
+                }
             }
             else
             {
