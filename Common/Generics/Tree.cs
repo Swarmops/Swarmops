@@ -24,10 +24,11 @@ namespace Swarmops.Common.Generics
             get { return this._nodeLookup[identity]; }
         }
 
-        public static Tree<TNode> FromCollection (List<TNode> collection)
+        public static Tree<TNode> FromCollection (List<TNode> collection, IHasParentIdentity rootNode = null)
         {
             Dictionary<int, List<TreeNode<TNode>>> parentLookup = new Dictionary<int, List<TreeNode<TNode>>>();
             Tree<TNode> result = new Tree<TNode>();
+            int rootParentNodeId = (rootNode == null ? 0 : rootNode.ParentIdentity);
 
             // To construct a tree from a random collection, start by keying all parent identities into a dictionary
 
@@ -45,15 +46,15 @@ namespace Swarmops.Common.Generics
 
             // Then, recurse into that dictionary, starting at parentId zero which becomes the root level
 
-            result.RootNodes = ConstructRecurse (null, parentLookup);
+            result.RootNodes = ConstructRecurse (null, parentLookup, rootParentNodeId);
 
             return result;
         }
 
-        private static List<TreeNode<TNode>> ConstructRecurse (TreeNode<TNode> parent, Dictionary<int, List<TreeNode<TNode>>> parentLookup)
+        private static List<TreeNode<TNode>> ConstructRecurse (TreeNode<TNode> parent, Dictionary<int, List<TreeNode<TNode>>> parentLookup, int rootParentNodeId = 0)
         {
             List<TreeNode<TNode>> result = new List<TreeNode<TNode>>();
-            int nodeId = parent == null ? 0 : parent.Data.Identity;
+            int nodeId = parent == null ? rootParentNodeId : parent.Data.Identity;
 
             if (!parentLookup.ContainsKey (nodeId))
             {
@@ -63,7 +64,7 @@ namespace Swarmops.Common.Generics
             foreach (TreeNode<TNode> node in parentLookup[nodeId])
             {
                 node.Parent = parent;
-                node.Children = ConstructRecurse (node, parentLookup);
+                node.Children = ConstructRecurse (node, parentLookup, rootParentNodeId);
                 result.Add (node);
             }
 

@@ -70,7 +70,7 @@ namespace Swarmops.Logic.Structure
             get
             {
                 Geographies geographies = this.ThisAndBelow();
-                return Tree<Geography>.FromCollection (geographies);
+                return Tree<Geography>.FromCollection (geographies, this);
             }
         }
 

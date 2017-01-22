@@ -78,14 +78,19 @@ namespace Swarmops.Logic.Swarm
 
             Tree<Position> treeResult = result.Tree;
 
-            Tree<Geography> geoTree = geography.Tree;
+            if (geography.ChildrenCount > 0) // Add subleaders if there are child geographies
+            {
+                Tree<Geography> geoTree = geography.Tree;
 
-            Position expandingSubleaderNode =
-                Position.FromBasic(new BasicPosition(0, PositionLevel.GeographyDefault, organization.Identity, geography.Identity, 0, 0, 0, DateTime.Today,
-                    "Geographic_ExpandingSubleaderNode", "UxElement", false, true, false, false, false, 0, 0, 0, 0));  // UX element, not real position
-            TreeNode<Position> expandingNode = treeResult.RootNodes[0].AddChild(expandingSubleaderNode);
-                
-            ForOrganizationGeographyRecurse (geoTree.RootNodes[0], expandingNode, geographyLeaderTemplate, 2);
+                Position expandingSubleaderNode =
+                    Position.FromBasic(new BasicPosition(0, PositionLevel.GeographyDefault, organization.Identity,
+                        geography.Identity, 0, 0, 0, DateTime.Today,
+                        "Geographic_ExpandingSubleaderNode", "UxElement", false, true, false, false, false, 0, 0, 0, 0));
+                    // UX element, not real position
+                TreeNode<Position> expandingNode = treeResult.RootNodes[0].AddChild(expandingSubleaderNode);
+
+                ForOrganizationGeographyRecurse(geoTree.RootNodes[0], expandingNode, geographyLeaderTemplate, 2);
+            }
 
             return treeResult;
         }
