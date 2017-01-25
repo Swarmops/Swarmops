@@ -2,20 +2,28 @@
 
 #echo "DEBUG: Executing post-install script, swarmops-frontend"
 
+# add system user Swarmops, enable user to write log files
+
 adduser --system --group --no-create-home --quiet swarmops
 usermod -a -G syslog swarmops
+
+# Create the log folder
 
 mkdir -p /var/log/swarmops
 
 # make sure the upload folder exists and is writeable by www-data
 # do not make any changes to an already existing folder
 
+# We assume a new install if the upload folder didn't exist and 
+# ask for a few initial settings
+
 if [ ! -e /var/lib/swarmops/upload ]; then
   mkdir -p /var/lib/swarmops/upload
   chown www-data:www-data /var/lib/swarmops/upload
   chmod 777 /var/lib/swarmops/upload
 
-# # If there's only 000-default in apache sites, assume new install
+# # If there's only 000-default in apache sites, assume host is fresh
+# # and ask if it should be a Swarmops-dedicated host
 
   if [ "$(ls -l /etc/apache2/sites-enabled/ | wc -l)" = "2" ]; then
 
@@ -31,42 +39,57 @@ if [ ! -e /var/lib/swarmops/upload ]; then
 
 #         # Forcing a stop/start cycle because of install dependency fuckups
 
-#         # If asked to start Apache2, we're always doing so, so remove flag
+#         # Legacy: we may be asked to start Apache2 by preinst, but we're always doing so, so remove flag
 
           if [ -e /tmp/swarmops-restart-apache.flag ]; then
             rm /tmp/swarmops-restart-apache.flag
           fi
-          service apache2 reload
-          dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
-has been installed. Please navigate to this host with a web browser to \
-complete the installation." 9 60
+          echo "##################################################################"
+          echo "#                                                                #"
+          echo "#  Swarmops Frontend has been installed. Navigate to this host   #"
+          echo "#  using a browser to configure and complete installation.       #"
+          echo "#                                                                #"
+          echo "##################################################################"
           ;;
 
       2 ) echo "Creating but not enabling the site 'swarmops'. Use a2ensite to enable."
           cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/swarmops.conf
-          dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
-has been installed but not activated. Examine the 'swarmops' site file and activate it with \
-a2ensite." 9 60
+          echo "##################################################################"
+          echo "#                                                                #"
+          echo "#  Swarmops Frontend has been installed but not enabled. Use     #"
+          echo "#  'a2ensite swarmops' to enable after desired configuration.    #"
+          echo "#                                                                #"
+          echo "##################################################################"
           ;;
 
       3 ) echo "Neither reconfiguring Apache nor creating configuration file."
-          dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
-has been installed but not activated. When setting up web server directives, please pay \
-particular attention to the websocket requirements." 9 60
+          echo "##################################################################"
+          echo "#                                                                #"
+          echo "#  Swarmops Frontend has been installed but not activated. When  #"
+          echo "#  setting up web server directives, please pay particular       #"
+          echo "#  attention to the websocket requirements.                      #"
+          echo "#                                                                #"
+          echo "#  See /usr/share/swarmops/frontend/Site/apache* for a sample.   #"
+          echo "#                                                                #"
+          echo "##################################################################"
           ;;
 
       * ) echo "Unknown return code - $dialog_selection"
+          echo "This should not happen"
           ;;
         
     esac
 
   else
 
-#   If not new Apache, copy the unactivated Swarmops config to sites-available (option 2 above)
+#   If NOT a new fresh host, copy the unactivated Swarmops config to sites-available (option 2 above)
     cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/swarmops.conf
-    dialog --title 'Swarmops Frontend installed' --msgbox "\nSwarmops Frontend \
-has been installed but not activated. Examine/modify the 'swarmops.conf' site file and \
-activate it with a2ensite." 9 60
+    echo "##################################################################"
+    echo "#                                                                #"
+    echo "#  Swarmops Frontend has been installed but not enabled. Use     #"
+    echo "#  'a2ensite swarmops' to enable after desired configuration.    #"
+    echo "#                                                                #"
+    echo "##################################################################"
 
   fi
 
@@ -91,11 +114,10 @@ a2enmod --quiet proxy
 a2enmod --quiet proxy_wstunnel
 systemctl restart apache2
 
+# Enable and start the frontend daemon
 
 systemctl enable swarmops-frontend
 systemctl start swarmops-frontend
 
-# Always end a frontend update with an Apache reload to clear caches
-# /etc/init.d/apache2 reload
-
 #echo "DEBUG: Exiting post-install script, swarmops-frontend"
+
