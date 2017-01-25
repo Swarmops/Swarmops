@@ -37,8 +37,6 @@ if [ ! -e /var/lib/swarmops/upload ]; then
           cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/000-swarmops.conf
           a2ensite 000-swarmops
 
-#         # Forcing a stop/start cycle because of install dependency fuckups
-
 #         # Legacy: we may be asked to start Apache2 by preinst, but we're always doing so, so remove flag
 
           if [ -e /tmp/swarmops-restart-apache.flag ]; then
@@ -108,7 +106,7 @@ chown www-data:www-data /etc/swarmops/database.config
 
 chown www-data:www-data /etc/swarmops/symmetricKey.config
 
-# Enable required Apache mods and restart Apache
+# Enable required Apache mods and restart Apache (yes, we're always restarting Apache to clear code caches)
 
 a2enmod --quiet proxy
 a2enmod --quiet proxy_wstunnel
