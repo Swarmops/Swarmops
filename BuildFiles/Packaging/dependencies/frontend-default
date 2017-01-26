@@ -1,1 +1,1 @@
-apache2 (>= 2.2.20), mono-apache-server4 (>= 3.0.11), libapache2-mod-mono (>= 2.11), libgdiplus (>= 2.11), imagemagick, ghostscript, swarmops-frontend-external-scripts
+apache2 (>= 2.2.20), mono-apache-server4 (>= 3.0.11), libapache2-mod-mono (>= 2.11), libgdiplus (>= 2.11), dialog (>= 1.2), imagemagick, ghostscript, swarmops-frontend-external-scripts
