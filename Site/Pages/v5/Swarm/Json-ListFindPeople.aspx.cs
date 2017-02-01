@@ -43,7 +43,7 @@ namespace Swarmops.Frontend.Pages.Swarm
             List<string> jsonPeople = new List<string>();
 
             string editPersonTemplate =
-                "\"actions\":\"<a href='javascript:masterBeginEditPerson({0})'><img src='/Images/Icons/iconshock-wrench-16px.png' height='16' width='16' /></a>\"";
+                "\"actions\":\"<a href='javascript:masterBeginEditPerson({0})'><img src='/Images/Icons/iconshock-wrench-128x96px-centered.png' height='16' width='24' /></a>\"";
 
             foreach (Person person in matches)
             {

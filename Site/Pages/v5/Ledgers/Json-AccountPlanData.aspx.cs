@@ -155,7 +155,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 string editString =
                     String.Format (
-                        "<img class=\\\"IconEdit\\\" accountId=\\\"{0}{1}\\\" src=\\\"/Images/Icons/iconshock-wrench-16px.png\\\" />",
+                        "<img class='IconEdit' accountId='{0}{1}' height='16' width='24' src='/Images/Icons/iconshock-wrench-128x96px-centered.png' />",
                         accountType.ToString().Substring (0, 1), account.Identity);
 
 

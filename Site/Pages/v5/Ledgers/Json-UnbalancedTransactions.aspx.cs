@@ -39,7 +39,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                     row +=
                         String.Format (
-                            ",\"action\":\"<img src='/Images/Icons/iconshock-wrench-16px.png' class='LocalIconFix' txId='{0}' />\"",
+                            ",\"action\":\"<img src='/Images/Icons/iconshock-wrench-128x96px-centered.png' class='LocalIconFix' txId='{0}' />\"",
                             transaction.Identity);
 
                     rows.Add ("{" + row + "}");

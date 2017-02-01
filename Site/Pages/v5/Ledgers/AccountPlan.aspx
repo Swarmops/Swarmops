@@ -30,11 +30,11 @@
 	                $('div.datagrid').css('opacity', 1);
 
 	                $(".IconEdit").mouseover(function() {
-	                    $(this).attr("src", "/Images/Icons/iconshock-wrench-16px-hot.png");
+	                    // $(this).attr("src", "/Images/Icons/iconshock-wrench-16px-hot.png");  // TODO: New hot wrench icon
 	                });
 
 	                $(".IconEdit").mouseout(function() {
-	                    $(this).attr("src", "/Images/Icons/iconshock-wrench-16px.png");
+	                    // $(this).attr("src", "/Images/Icons/iconshock-wrench-128x96px-centered.png");
 	                });
 
 	                $(".IconAdd, .LinkAdd").click(function() {
