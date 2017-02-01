@@ -772,6 +772,7 @@
     <Content Include="Images\Icons\iconshock-balloon-yes-16px.png" />
     <Content Include="Images\Icons\iconshock-briefcase-16px.png" />
     <Content Include="Images\Icons\iconshock-buildings-256px.png" />
+    <Content Include="Images\Icons\iconshock-bulb-dual-128x96px.png" />
     <Content Include="Images\Icons\iconshock-cashregister-96px.png" />
     <Content Include="Images\Icons\iconshock-colorswatch-64px.png" />
     <Content Include="Images\Icons\iconshock-contacts-64px.png" />
