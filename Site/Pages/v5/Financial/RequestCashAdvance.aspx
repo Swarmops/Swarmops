@@ -61,13 +61,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label ID="BoxTitle" runat="server" /></h2>
     <div class="entryFields">
-        <Swarmops5:CurrencyTextBox runat="server" ID="TextAmount" CssClass="alignRight" />&#8203;<br/>
-        <asp:TextBox runat="server" ID="TextPurpose" />&#8203;<br/>
-        <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />&nbsp;<br/>
-        &nbsp;<br/><!-- placeholder for label-side H2 -->
-        <asp:TextBox runat="server" ID="TextBank" />&nbsp;<br/>
-        <asp:TextBox runat="server" ID="TextClearing" />&nbsp;<br/>
-        <asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/>
+        <Swarmops5:CurrencyTextBox runat="server" ID="TextAmount" CssClass="alignRight" />
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPurpose" /></div>
+        <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />
+        <div class="stacked-input-control">&nbsp;</div><!-- placeholder for label-side H2 -->
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextBank" /></div>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextClearing" /></div>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextAccount" /></div>
         <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
     </div>
     <div class="entryLabels">
