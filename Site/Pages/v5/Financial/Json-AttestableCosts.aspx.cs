@@ -134,13 +134,13 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
                     advance.Person.Name, advance.AmountCents, advance.Budget,
                     advance.Description, "Financial_CashAdvance", false, advance);
 
-                if (advance.Attested)
-                {
-                    this._attestedItems.Add (item);
-                }
-                else
+                if (!advance.Attested) // if not attested
                 {
                     this._items.Add (item);
+                }
+                else if (!advance.PaidOut) // if attested, but still reversible
+                {
+                    this._attestedItems.Add (item);
                 }
             }
         }
