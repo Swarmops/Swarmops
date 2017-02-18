@@ -201,7 +201,7 @@ namespace Swarmops.Backend
 
             int backendSocketPort = SystemSettings.WebsocketPortBackend;
             _socketServer = new WebSocketServer(backendSocketPort);
-            _socketServer.AddWebSocketService<BackendServices>("/Back");
+            _socketServer.AddWebSocketService<BackendServices>("/Backend");
             _socketServer.Start();
 
             // Begin maintenance loop

@@ -79,7 +79,7 @@ namespace Swarmops.Frontend.Socket
 
             string backendSocketUri = "ws://" + backendHostname + ":" +
                                       SystemSettings.WebsocketPortBackend.ToString(CultureInfo.InvariantCulture) +
-                                      "/ws/Backend";
+                                      "/Backend";
 
             bool exitFlag = false;
 
