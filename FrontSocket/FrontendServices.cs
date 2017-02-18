@@ -34,10 +34,11 @@ namespace Swarmops.Frontend.Socket
             switch (serverRequest)
             {
                 case "UpdateQueueCounts":
-                    Sessions.Broadcast (FrontendLoop.GetQueueInfoJson());
+                    // Sessions.Broadcast (FrontendLoop.GetQueueInfoJson());
                     break;
                 case "Ping":
-                    Sessions.Broadcast("{\"messageType\":\"Heartbeat\"}");
+                    // TODO: Request heartbeat from backend
+                    // Sessions.Broadcast("{\"messageType\":\"Heartbeat\"}");
                     break;
                 default:
                     // do nothing;
@@ -50,6 +51,9 @@ namespace Swarmops.Frontend.Socket
             Console.WriteLine(" * Attempted socket connection");
 
             string authBase64 = Context.QueryString["Auth"];
+
+            // TODO: Check for valid system authority token
+
             authBase64 = Uri.UnescapeDataString (authBase64); // Defensive programming - % sign does not exist in base64 so this won't ever collapse a working encoding
 
             _authority = Authority.FromEncryptedXml (authBase64);
@@ -57,13 +61,6 @@ namespace Swarmops.Frontend.Socket
             Console.WriteLine(" - - authenticated: " + _authority.Person.Canonical);
 
             base.OnOpen();
-
-            if (Context.QueryString["Notify"] != "false")
-            {
-                Sessions.Broadcast ("{\"messageType\":\"EditorCount\"," +
-                                    String.Format("\"editorCount\":\"{0}\"", Sessions.ActiveIDs.ToArray().Length) + '}');
-                Send(FrontendLoop.GetQueueInfoJson());
-            }
         }
 
         protected override void OnClose (CloseEventArgs e)

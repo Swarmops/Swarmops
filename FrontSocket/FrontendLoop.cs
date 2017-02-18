@@ -252,6 +252,8 @@ namespace Swarmops.Frontend.Socket
         public static void OnBackendMessage(object sender, MessageEventArgs args)
         {
             Console.WriteLine(" - Backend message: " + args.Data);
+
+            _socketServer.WebSocketServices.Broadcast(args.Data); // send unfiltered to all sessions, for now
         }
 
         public static void OnBackendOpen(object sender, EventArgs args)

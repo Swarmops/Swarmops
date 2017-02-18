@@ -825,7 +825,7 @@ namespace Swarmops.Backend
         private static void BroadcastTimestamp()
         {
             JObject json = new JObject();
-            json["messageType"] = "Timestamp";
+            json["messageType"] = "Heartbeat";
             json["Timestamp"] = DateTime.UtcNow.ToUnix();
 
             _socketServer.WebSocketServices.Broadcast(json.ToString());
