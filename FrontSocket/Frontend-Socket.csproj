@@ -56,7 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MasterServices.cs" />
+    <Compile Include="FrontendServices.cs" />
     <Compile Include="FrontendLoop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

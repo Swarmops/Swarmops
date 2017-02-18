@@ -11,9 +11,9 @@ using WebSocketSharp.Server;
 
 namespace Swarmops.Frontend.Socket
 { 
-    internal class MasterServices: WebSocketBehavior
+    internal class FrontendServices: WebSocketBehavior
     {
-        public MasterServices()
+        public FrontendServices()
         {
             base.IgnoreExtensions = true; // Necessary to suppress a Deflate exception that kills server otherwise
         }

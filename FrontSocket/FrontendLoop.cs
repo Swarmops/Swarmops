@@ -56,7 +56,7 @@ namespace Swarmops.Frontend.Socket
             OutboundComm.CreateNotification(null, NotificationResource.System_Startup_Frontend);
 
             _socketServer = new WebSocketServer (SystemSettings.WebsocketPortFrontend);
-            _socketServer.AddWebSocketService<MasterServices> ("/Master");
+            _socketServer.AddWebSocketService<FrontendServices> ("/Front");
             // _socketServer.KeepClean = false; // as per the author's recommendation - this may be bad in the long run
             _socketServer.Start();
 

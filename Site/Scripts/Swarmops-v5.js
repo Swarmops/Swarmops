@@ -47,10 +47,10 @@ function _masterInitializeSocket(authenticationTicket) {
 
 function getMasterSocketAddress() {
     if (location.host.indexOf ("localhost") >= 0) { // Assume dev environment, go for sandbox socket
-        return 'ws://sandbox.swarmops.com/ws/Master';
+        return 'ws://sandbox.swarmops.com/ws/Front';
     } else {
         var protocol = ('https:' == document.location.protocol ? 'wss://' : 'ws://');
-        return protocol + location.host + "/ws/Master";
+        return protocol + location.host + "/ws/Front";
     }
 }
 
