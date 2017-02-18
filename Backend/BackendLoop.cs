@@ -5,6 +5,8 @@ using System.Net;
 using System.Threading;
 using Mono.Unix;
 using Mono.Unix.Native;
+using Newtonsoft.Json.Linq;
+using Swarmops.Backend.SocketServices;
 using Swarmops.Common.ExtensionMethods;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
@@ -199,7 +201,7 @@ namespace Swarmops.Backend
 
             int backendSocketPort = SystemSettings.WebsocketPortBackend;
             _socketServer = new WebSocketServer(backendSocketPort);
-            // TODO: ADD SERVICE
+            _socketServer.AddWebSocketService<BackendServices>("/Back");
             _socketServer.Start();
 
             // Begin maintenance loop
@@ -342,6 +344,8 @@ namespace Swarmops.Backend
 
                 SystemSettings.HeartbeatBackend = (ulong) DateTime.UtcNow.ToUnix();
                 CommsTransmitter.Run();
+
+                BroadcastTimestamp();
 
                 try
                 {
@@ -817,6 +821,16 @@ namespace Swarmops.Backend
                 Console.Write (message);
             }
         }
+
+        private static void BroadcastTimestamp()
+        {
+            JObject json = new JObject();
+            json["messageType"] = "Timestamp";
+            json["Timestamp"] = DateTime.UtcNow.ToUnix();
+
+            _socketServer.WebSocketServices.Broadcast(json.ToString());
+        }
+
 
         private static WebSocketServer _socketServer;
     }

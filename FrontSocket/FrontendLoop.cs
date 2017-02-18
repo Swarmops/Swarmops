@@ -13,13 +13,15 @@ using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
 using Swarmops.Common.ExtensionMethods;
 using Swarmops.Logic.Support;
+using WebSocketSharp;
 using WebSocketSharp.Server;
+using ErrorEventArgs = WebSocketSharp.ErrorEventArgs;
 
 namespace Swarmops.Frontend.Socket
 {
     internal class FrontendLoop
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Are we running yet?
 
@@ -29,7 +31,7 @@ namespace Swarmops.Frontend.Socket
                 // also, the read of DatabaseInitialized can and will fail if
                 // we're not initalized enough to even have a database 
 
-                throw new InvalidOperationException(); 
+                throw new InvalidOperationException();
             }
 
             // Check if we're Sandbox
@@ -48,15 +50,17 @@ namespace Swarmops.Frontend.Socket
 
             if (!Debugger.IsAttached)
             {
-                killSignals = new UnixSignal[] { new UnixSignal(Signum.SIGINT), new UnixSignal(Signum.SIGTERM) };
+                killSignals = new UnixSignal[] {new UnixSignal(Signum.SIGINT), new UnixSignal(Signum.SIGTERM)};
             }
 
             Console.WriteLine(" * Swarmops Frontend Socket Server starting up.");
 
             OutboundComm.CreateNotification(null, NotificationResource.System_Startup_Frontend);
 
-            _socketServer = new WebSocketServer (SystemSettings.WebsocketPortFrontend);
-            _socketServer.AddWebSocketService<FrontendServices> ("/Front");
+            // Initialize socket server and client
+
+            _socketServer = new WebSocketServer(SystemSettings.WebsocketPortFrontend);
+            _socketServer.AddWebSocketService<FrontendServices>("/Front");
             // _socketServer.KeepClean = false; // as per the author's recommendation - this may be bad in the long run
             _socketServer.Start();
 
@@ -67,105 +71,127 @@ namespace Swarmops.Frontend.Socket
             int lastMinute = cycleStartTime.Minute;
             int lastHour = cycleStartTime.Hour;
 
-            bool exitFlag = false;
-
-            while (!exitFlag) // exit is handled by signals handling at end of loop
+            string backendHostname = SystemSettings.BackendHostnameOverride;
+            if (String.IsNullOrEmpty(backendHostname))
             {
-                cycleStartTime = DateTime.UtcNow;
-                cycleEndTime = cycleStartTime.AddSeconds(10);
-
-                try
-                {
-                    OnEveryTenSeconds();
-
-                    if (cycleStartTime.Second < lastSecond)
-                    {
-                        OnEveryMinute();
-
-                        if (cycleStartTime.Minute%5 == 0)
-                        {
-                            OnEveryFiveMinutes();
-                        }
-
-                        if (cycleStartTime.Minute%30 == 0)
-                        {
-                            OnEveryHalfHour();
-                        }
-                    }
-
-                    if (cycleStartTime.Minute < lastMinute)
-                    {
-                        OnEveryHour();
-
-                        if (DateTime.Now.Hour == 10 && DateTime.Today.DayOfWeek == DayOfWeek.Tuesday)
-                        {
-                            // OnTuesdayMorning();
-                        }
-                    }
-
-                    if (cycleStartTime.Hour >= 12 && lastHour < 12)
-                    {
-                        // OnNoon();
-                    }
-
-                    if (cycleStartTime.Hour < lastHour)
-                    {
-                        // OnMidnight();
-                    }
-                }
-
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-
-                    // Note each "OnEvery..." catches its own errors and sends Exception mails,
-                    // so that failure in one should not stop the others from running. This particular
-                    // code should never run.
-
-                    // ExceptionMail.Send (new Exception ("Failed in swarmops-backend main loop", e), true);
-                }
-
-                lastSecond = cycleStartTime.Second;
-                lastMinute = cycleStartTime.Minute;
-                lastHour = cycleStartTime.Hour;
-
-                // Wait for a maximum of ten seconds (the difference between cycleStartTime and cycleEndTime)
-
-                DateTime utcNow = DateTime.UtcNow;
-                while (utcNow < cycleEndTime && !exitFlag)
-                {
-                    int signalIndex = 250;
-
-                    // Block until a SIGINT or SIGTERM signal is generated, or 1/4 second has passed.
-                    // However, we can't do that in a development environment - it won't have the
-                    // Mono.Posix assembly, and won't understand UnixSignals. So people running this in
-                    // a dev environment will need to stop it manually.
-
-                    if (!Debugger.IsAttached)
-                    {
-                        signalIndex = UnixSignal.WaitAny(killSignals, 250);
-                    }
-                    else
-                    {
-                        TimeSpan timeLeft = (cycleEndTime - utcNow);
-                        Thread.Sleep(250);
-                    }
-
-                    if (signalIndex < 250)
-                    {
-                        exitFlag = true;
-                        Console.WriteLine (" * Swarmops Frontend Socket Server caught signal " + killSignals[signalIndex].Signum + ", exiting");
-                    }
-
-                    utcNow = DateTime.UtcNow;
-                }
+                backendHostname = SystemSettings.BackendHostname;
             }
 
-            _socketServer.Stop();
-            Thread.Sleep (2000);
+            string backendSocketUri = "ws://" + backendHostname + ":" +
+                                      SystemSettings.WebsocketPortBackend.ToString(CultureInfo.InvariantCulture) +
+                                      "/ws/Backend";
 
-            Console.WriteLine(" * Swarmops Frontend Socket Server exiting");
+            bool exitFlag = false;
+
+            using (var socketClient = new WebSocket(backendSocketUri))
+            {
+                socketClient.OnMessage += new EventHandler<MessageEventArgs>(OnBackendMessage);
+                socketClient.OnOpen += new EventHandler(OnBackendOpen);
+                socketClient.OnClose += new EventHandler<CloseEventArgs>(OnBackendClose);
+                socketClient.OnError += new EventHandler<ErrorEventArgs>(OnBackendError);
+                socketClient.Connect();
+
+                while (!exitFlag) // exit is handled by signals handling at end of loop
+                {
+                    cycleStartTime = DateTime.UtcNow;
+                    cycleEndTime = cycleStartTime.AddSeconds(10);
+
+                    try
+                    {
+                        OnEveryTenSeconds();
+
+                        if (cycleStartTime.Second < lastSecond)
+                        {
+                            OnEveryMinute();
+
+                            if (cycleStartTime.Minute%5 == 0)
+                            {
+                                OnEveryFiveMinutes();
+                            }
+
+                            if (cycleStartTime.Minute%30 == 0)
+                            {
+                                OnEveryHalfHour();
+                            }
+                        }
+
+                        if (cycleStartTime.Minute < lastMinute)
+                        {
+                            OnEveryHour();
+
+                            if (DateTime.Now.Hour == 10 && DateTime.Today.DayOfWeek == DayOfWeek.Tuesday)
+                            {
+                                // OnTuesdayMorning();
+                            }
+                        }
+
+                        if (cycleStartTime.Hour >= 12 && lastHour < 12)
+                        {
+                            // OnNoon();
+                        }
+
+                        if (cycleStartTime.Hour < lastHour)
+                        {
+                            // OnMidnight();
+                        }
+                    }
+
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+
+                        // Note each "OnEvery..." catches its own errors and sends Exception mails,
+                        // so that failure in one should not stop the others from running. This particular
+                        // code should never run.
+
+                        // ExceptionMail.Send (new Exception ("Failed in swarmops-backend main loop", e), true);
+                    }
+
+                    lastSecond = cycleStartTime.Second;
+                    lastMinute = cycleStartTime.Minute;
+                    lastHour = cycleStartTime.Hour;
+
+                    // Wait for a maximum of ten seconds (the difference between cycleStartTime and cycleEndTime)
+
+                    DateTime utcNow = DateTime.UtcNow;
+                    while (utcNow < cycleEndTime && !exitFlag)
+                    {
+                        int signalIndex = 250;
+
+                        // Block until a SIGINT or SIGTERM signal is generated, or 1/4 second has passed.
+                        // However, we can't do that in a development environment - it won't have the
+                        // Mono.Posix assembly, and won't understand UnixSignals. So people running this in
+                        // a dev environment will need to stop it manually.
+
+                        if (!Debugger.IsAttached)
+                        {
+                            signalIndex = UnixSignal.WaitAny(killSignals, 250);
+                        }
+                        else
+                        {
+                            TimeSpan timeLeft = (cycleEndTime - utcNow);
+                            Thread.Sleep(250);
+                        }
+
+                        if (signalIndex < 250)
+                        {
+                            exitFlag = true;
+                            Console.WriteLine(" * Swarmops Frontend Socket Server caught signal " +
+                                              killSignals[signalIndex].Signum + ", exiting");
+                        }
+
+                        utcNow = DateTime.UtcNow;
+                    }
+                }
+
+                _socketServer.Stop();
+                Thread.Sleep(2000);
+
+                Console.WriteLine(" * Swarmops Frontend Socket Server exiting");
+            }
         }
+
+
 
         private static WebSocketServer _socketServer;
         private static bool _isSandbox = false;
@@ -175,8 +201,6 @@ namespace Swarmops.Frontend.Socket
         private static void OnEveryTenSeconds()
         {
             SystemSettings.HeartbeatFrontend = DateTime.UtcNow.ToUnix();
-
-            _socketServer.WebSocketServices.Broadcast ("{\"messageType\":\"Heartbeat\"}");
 
             if (_isSandbox)
             {
@@ -195,7 +219,7 @@ namespace Swarmops.Frontend.Socket
 
         private static void OnEveryMinute()
         {
-            BroadcastTimestamp();
+            // BroadcastTimestamp();
         }
 
 
@@ -217,6 +241,34 @@ namespace Swarmops.Frontend.Socket
         private static void OnEveryHour()
         {
         }
+
+
+
+
+
+        public static void OnBackendMessage(object sender, MessageEventArgs args)
+        {
+            Console.WriteLine(" - Backend message: " + args.Data);
+        }
+
+        public static void OnBackendOpen(object sender, EventArgs args)
+        {
+            Console.WriteLine(" - Backend socket is open");
+        }
+
+        public static void OnBackendClose(object sender, CloseEventArgs args)
+        {
+            Console.WriteLine(" - Backend socket closed: " + args.Code + " " + args.Reason);
+        }
+
+        public static void OnBackendError(object sender, ErrorEventArgs args)
+        {
+            Console.WriteLine(" - Backend socket error: " + args.Message);
+        }
+
+
+
+        // --------------------------------- LEGACY CODE BELOW THIS MARK -------------------------------
 
 
         private static void CheckPriorityPublish()
@@ -316,15 +368,6 @@ namespace Swarmops.Frontend.Socket
             }*/
         }
 
-
-        private static void BroadcastTimestamp()
-        {
-            JObject json = new JObject();
-            json["messageType"] = "Timestamp";
-            json["Timestamp"] = DateTime.UtcNow.ToUnix();
-
-            _socketServer.WebSocketServices.Broadcast (json.ToString());
-        }
 
 
         /*
