@@ -86,7 +86,7 @@ namespace Swarmops.Logic.Security
 
         public static string GetSystemAuthorityToken(string subsystem)
         {
-            return EncryptString("Swarmops/" + subsystem + " " + DateTime.UtcNow.ToUnix());
+            return EncryptString("Swarmops/" + subsystem + ";" + DateTime.UtcNow.ToUnix());
         }
 
         public static bool IsSystemAuthorityTokenValid(string token)

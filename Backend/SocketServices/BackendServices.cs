@@ -44,7 +44,9 @@ namespace Swarmops.Backend.SocketServices
         protected override void OnOpen()
         {
             string authBase64 = Context.QueryString["Auth"];
-            authBase64 = Uri.UnescapeDataString(authBase64); // Defensive programming - % sign does not exist in base64 so this won't ever collapse a working encoding
+            Console.WriteLine(" -- Authbase64 is " + authBase64);
+
+            //authBase64 = Uri.UnescapeDataString(authBase64); // Defensive programming - % sign does not exist in base64 so this won't ever collapse a working encoding
 
             _systemAuthority = Authority.IsSystemAuthorityTokenValid(authBase64);
 
