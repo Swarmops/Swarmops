@@ -83,6 +83,8 @@ namespace Swarmops.Frontend.Socket
 
             bool exitFlag = false;
 
+            Console.WriteLine("Connecting backend socket " + backendSocketUri);
+
             using (var socketClient = new WebSocket(backendSocketUri))
             {
                 socketClient.OnMessage += new EventHandler<MessageEventArgs>(OnBackendMessage);
