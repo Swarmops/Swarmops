@@ -17,6 +17,7 @@ using Swarmops.Utility;
 using Swarmops.Utility.BotCode;
 using Swarmops.Utility.Communications;
 using Swarmops.Utility.Mail;
+using WebSocketSharp.Server;
 
 namespace Swarmops.Backend
 {
@@ -194,6 +195,13 @@ namespace Swarmops.Backend
 
             BitcoinUtility.VerifyBitcoinHotWallet();
 
+            // Initialize backend socket server
+
+            int backendSocketPort = SystemSettings.WebsocketPortBackend;
+            _socketServer = new WebSocketServer(backendSocketPort);
+            // TODO: ADD SERVICE
+            _socketServer.Start();
+
             // Begin maintenance loop
 
             DateTime cycleStartTime = DateTime.UtcNow;
@@ -320,6 +328,8 @@ namespace Swarmops.Backend
             {
                 System.Threading.Thread.Sleep(50);
             }*/
+
+            _socketServer.Stop();
 
             Thread.Sleep (2000);
         }
@@ -807,5 +817,7 @@ namespace Swarmops.Backend
                 Console.Write (message);
             }
         }
+
+        private static WebSocketServer _socketServer;
     }
 }

@@ -79,6 +79,7 @@
     <Compile Include="CommsTransmitter.cs" />
     <Compile Include="BackendLoop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocketServices\BackendServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Basic\Basic.csproj">
