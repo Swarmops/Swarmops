@@ -12,6 +12,7 @@ using Newtonsoft.Json.Linq;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
 using Swarmops.Common.ExtensionMethods;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
 using WebSocketSharp;
 using WebSocketSharp.Server;
@@ -79,7 +80,7 @@ namespace Swarmops.Frontend.Socket
 
             string backendSocketUri = "ws://" + backendHostname + ":" +
                                       SystemSettings.WebsocketPortBackend.ToString(CultureInfo.InvariantCulture) +
-                                      "/Backend";
+                                      "/Backend?Auth=" + Authority.GetSystemAuthorityToken("Frontend");
 
             bool exitFlag = false;
 

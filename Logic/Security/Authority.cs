@@ -12,6 +12,7 @@ using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Security;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Common.Enums;
+using Swarmops.Common.ExtensionMethods;
 using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -28,21 +29,7 @@ namespace Swarmops.Logic.Security
 
         public static Authority FromEncryptedXml (string cryptXml)
         {
-            byte[] keyBytes = SystemSettings.SymmetricEncryptionKeyDatabase;
-            byte[] cryptoBytes = Convert.FromBase64String(cryptXml);
-
-            using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
-            {
-                aes.Key = keyBytes;
-                aes.IV = new ArraySegment<byte> (cryptoBytes, 0, 16).ToArray();
-                cryptoBytes = new ArraySegment<byte>(cryptoBytes, 16, cryptoBytes.Length - 16).ToArray();
-
-                using (ICryptoTransform crypto = aes.CreateDecryptor())
-                {
-                    byte[] clearBytes = crypto.TransformFinalBlock(cryptoBytes, 0, cryptoBytes.Length);
-                    return FromXml(Encoding.UTF8.GetString (clearBytes));
-                }
-            }
+            return FromXml(DecryptString(cryptXml));
         }
 
         public string ToXml()
@@ -52,8 +39,13 @@ namespace Swarmops.Logic.Security
 
         public string ToEncryptedXml()
         {
+            return EncryptString(ToXml());
+        }
+
+        private static string EncryptString(string input)
+        {
             byte[] keyBytes = SystemSettings.SymmetricEncryptionKeyDatabase;
-            byte[] dataBytes = Encoding.UTF8.GetBytes (ToXml());
+            byte[] dataBytes = Encoding.UTF8.GetBytes(input);
 
             using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
             {
@@ -67,10 +59,46 @@ namespace Swarmops.Logic.Security
 
                 using (ICryptoTransform crypto = aes.CreateEncryptor())
                 {
-                    byte[] cryptoBytes = crypto.TransformFinalBlock (dataBytes, 0, dataBytes.Length);
-                    return Convert.ToBase64String (aes.IV.Concat (cryptoBytes).ToArray()); // joins two byte[] arrays
+                    byte[] cryptoBytes = crypto.TransformFinalBlock(dataBytes, 0, dataBytes.Length);
+                    return Convert.ToBase64String(aes.IV.Concat(cryptoBytes).ToArray()); // joins two byte[] arrays
                 }
             }
+        }
+
+        private static string DecryptString(string input)
+        {
+            byte[] keyBytes = SystemSettings.SymmetricEncryptionKeyDatabase;
+            byte[] cryptoBytes = Convert.FromBase64String(input);
+
+            using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
+            {
+                aes.Key = keyBytes;
+                aes.IV = new ArraySegment<byte>(cryptoBytes, 0, 16).ToArray();
+                cryptoBytes = new ArraySegment<byte>(cryptoBytes, 16, cryptoBytes.Length - 16).ToArray();
+
+                using (ICryptoTransform crypto = aes.CreateDecryptor())
+                {
+                    byte[] clearBytes = crypto.TransformFinalBlock(cryptoBytes, 0, cryptoBytes.Length);
+                    return Encoding.UTF8.GetString(clearBytes);
+                }
+            }
+        }
+
+        public static string GetSystemAuthorityToken(string subsystem)
+        {
+            return EncryptString("Swarmops/" + subsystem + " " + DateTime.UtcNow.ToUnix());
+        }
+
+        public static bool IsSystemAuthorityTokenValid(string token)
+        {
+            string decrypted = DecryptString(token);
+            if (decrypted.StartsWith("Swarmops/"))
+            {
+                // TODO: Check timestamp
+                return true;
+            }
+
+            return false;
         }
 
         private Authority (AuthorityData data)

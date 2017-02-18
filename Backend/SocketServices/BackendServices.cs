@@ -46,16 +46,14 @@ namespace Swarmops.Backend.SocketServices
             string authBase64 = Context.QueryString["Auth"];
             authBase64 = Uri.UnescapeDataString(authBase64); // Defensive programming - % sign does not exist in base64 so this won't ever collapse a working encoding
 
-            _authority = Authority.FromEncryptedXml(authBase64);
+            _systemAuthority = Authority.IsSystemAuthorityTokenValid(authBase64);
+
+            if (!_systemAuthority)
+            {
+                throw new UnauthorizedAccessException("System access token invalid");
+            }
 
             base.OnOpen();
-
-            if (Context.QueryString["Notify"] != "false")
-            {
-                Sessions.Broadcast("{\"messageType\":\"EditorCount\"," +
-                                    String.Format("\"editorCount\":\"{0}\"", Sessions.Count) + '}');
-                //Send(Program.GetQueueInfoJson());
-            }
         }
 
         protected override void OnClose(CloseEventArgs e)
@@ -65,7 +63,7 @@ namespace Swarmops.Backend.SocketServices
             Sessions.Broadcast("{\"messageType\":\"EditorCount\"," + String.Format("\"editorCount\":\"{0}\"", Sessions.Count) + '}');
         }
 
-        private Authority _authority = null;
+        private bool _systemAuthority = false;
     }
 }
 
