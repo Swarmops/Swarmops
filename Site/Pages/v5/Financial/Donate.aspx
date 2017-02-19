@@ -16,10 +16,14 @@
                 // We have received a donation at this address
 
                 donatedFunds += (cents / 100.0);
-                $('#odoDonatedCents').innerHTML = donatedFunds;
+                odoDonatedCents.innerHTML = donatedFunds; // looks weird but $('#id') not used with odo
+
+                var json = {};
+                json.guid = guid;
+                json.txHash = hash;
 
                 SwarmopsJS.ajaxCall('/Pages/v5/Financial/Donate.aspx/ProcessTransactionReceived',
-                    { guid: guid, txHash: hash },
+                    json,
                     function (data) {
                         if (data.Success) {
                             $('#paraStatus').text(data.DisplayMessage);
