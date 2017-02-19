@@ -70,7 +70,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 data ["ServerRequest"] = "AddBitcoinAddress";
                 data["Address"] = address.Address;
                 socket.Send(data.ToString());
-                System.Threading.Thread.Sleep(50); // wait 50ms for the ServerRequest to go through
                 socket.Ping(); // wait a little little while for send to work
                 socket.Close();
             }

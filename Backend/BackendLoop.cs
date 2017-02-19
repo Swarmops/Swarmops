@@ -961,7 +961,7 @@ namespace Swarmops.Backend
                 catch (ArgumentException)
                 {
                     // Ignore this - it means the addressString isn't ours
-                    throw;
+                    continue;
                 }
 
                 if (hotAddress != null)
