@@ -86,13 +86,13 @@ namespace Swarmops.Frontend.Socket
 
             Console.WriteLine("Connecting backend socket " + backendSocketUri);
 
-            using (var socketClient = new WebSocket(backendSocketUri))
+            using (_backendSocket = new WebSocket(backendSocketUri))
             {
-                socketClient.OnMessage += new EventHandler<MessageEventArgs>(OnBackendMessage);
-                socketClient.OnOpen += new EventHandler(OnBackendOpen);
-                socketClient.OnClose += new EventHandler<CloseEventArgs>(OnBackendClose);
-                socketClient.OnError += new EventHandler<ErrorEventArgs>(OnBackendError);
-                socketClient.Connect();
+                _backendSocket.OnMessage += new EventHandler<MessageEventArgs>(OnBackendMessage);
+                _backendSocket.OnOpen += new EventHandler(OnBackendOpen);
+                _backendSocket.OnClose += new EventHandler<CloseEventArgs>(OnBackendClose);
+                _backendSocket.OnError += new EventHandler<ErrorEventArgs>(OnBackendError);
+                _backendSocket.Connect();
 
                 while (!exitFlag) // exit is handled by signals handling at end of loop
                 {
@@ -197,6 +197,8 @@ namespace Swarmops.Frontend.Socket
 
 
         private static WebSocketServer _socketServer;
+        private static WebSocket _backendSocket;
+
         private static bool _isSandbox = false;
         private static int _sandboxDummy1 = 500;
         private static int _sandboxDummy2 = 50000;
@@ -211,9 +213,9 @@ namespace Swarmops.Frontend.Socket
                 _sandboxDummy2 += new Random().Next(1000) - 200;
 
                 JObject data = new JObject();
-                data["messageType"] = "SandboxUpdate";
-                data["local"] = _sandboxDummy1.ToString(CultureInfo.InvariantCulture);
-                data["profit"] = _sandboxDummy2.ToString(CultureInfo.InvariantCulture);
+                data["MessageType"] = "SandboxUpdate";
+                data["Local"] = _sandboxDummy1.ToString(CultureInfo.InvariantCulture);
+                data["Profit"] = _sandboxDummy2.ToString(CultureInfo.InvariantCulture);
 
                 _socketServer.WebSocketServices.Broadcast(data.ToString());
             }
@@ -270,6 +272,18 @@ namespace Swarmops.Frontend.Socket
         {
             Console.WriteLine(" - Backend socket error: " + args.Message);
         }
+
+
+
+        public static void AddBitcoinAddress(string address)
+        {
+            JObject json = new JObject();
+            json["BackendRequest"] = "AddBitcoinAddress";
+            json["Address"] = address;
+
+            _backendSocket.Send(json.ToString());
+        }
+
 
 
 

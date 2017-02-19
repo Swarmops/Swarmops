@@ -23,7 +23,7 @@ namespace Swarmops.Frontend.Socket
             // Basically just echo whatever's sent here
 
             JObject json = JObject.Parse (e.Data);
-            string serverRequest = (string) json["serverRequest"];
+            string serverRequest = (string) json["ServerRequest"];
 
             if (string.IsNullOrEmpty (serverRequest))
             {
@@ -33,8 +33,8 @@ namespace Swarmops.Frontend.Socket
 
             switch (serverRequest)
             {
-                case "UpdateQueueCounts":
-                    // Sessions.Broadcast (FrontendLoop.GetQueueInfoJson());
+                case "AddBitcoinAddress":
+                    FrontendLoop.AddBitcoinAddress((string) json["Address"]);
                     break;
                 case "Ping":
                     // TODO: Request heartbeat from backend
@@ -67,7 +67,7 @@ namespace Swarmops.Frontend.Socket
         {
             base.OnClose (e);
 
-            Sessions.Broadcast("{\"messageType\":\"EditorCount\"," + String.Format("\"editorCount\":\"{0}\"", Sessions.ActiveIDs.ToArray().Length) + '}');
+            // Sessions.Broadcast("{\"messageType\":\"EditorCount\"," + String.Format("\"editorCount\":\"{0}\"", Sessions.ActiveIDs.ToArray().Length) + '}');
         }
 
         private Authority _authority = null;

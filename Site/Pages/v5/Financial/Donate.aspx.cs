@@ -21,6 +21,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         protected void Page_Load (object sender, EventArgs e)
         {
             this.PageAccessRequired = new Access (this.CurrentOrganization, AccessAspect.Participant);
+            this.IsDashboard = true; // prevents encaps and enables odometer
 
             /* TEMP TEMP TEMP - REMOVE THIS CODE */
             /*
@@ -38,13 +39,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.PageTitle = Resources.Pages.Financial.Donate_PageTitle;
             this.InfoBoxLiteral = Resources.Pages.Financial.Donate_Info;
             this.LabelStatus.Text = Resources.Pages.Financial.Donate_StatusInitial;
-            this.LiteralTxDetected.Text = JavascriptEscape (Resources.Pages.Financial.Donate_TransactionDetected);
 
             if (this.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot == null)
             {
                 this.PanelDisabled.Visible = true;
                 this.PanelEnabled.Visible = false;
-                this.LiteralEnable.Text = @"false";
             }
 
             HotBitcoinAddress address = HotBitcoinAddress.Create (this.CurrentOrganization,
@@ -88,7 +87,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
         [WebMethod]
-        static public AjaxCallResult CheckTransactionReceived (string guid, string txHash)
+        static public AjaxCallResult ProcessTransactionReceived (string guid, string txHash)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture(); // just to make sure we're called properly
 

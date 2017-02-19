@@ -22,7 +22,7 @@ namespace Swarmops.Backend.SocketServices
             // Basically just echo whatever's sent here
 
             JObject json = JObject.Parse(e.Data);
-            string serverRequest = (string)json["serverRequest"];
+            string serverRequest = (string)json["BackendRequest"];
 
             if (string.IsNullOrEmpty(serverRequest))
             {
@@ -34,6 +34,9 @@ namespace Swarmops.Backend.SocketServices
             {
                 case "UpdateQueueCounts":
                     //Sessions.Broadcast(Program.GetQueueInfoJson());
+                    break;
+                case "AddBitcoinAddress":
+                    BackendLoop.AddBitcoinAddress((string) json["Address"]);
                     break;
                 default:
                     // do nothing;

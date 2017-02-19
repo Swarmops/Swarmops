@@ -31,15 +31,26 @@ function _masterInitializeSocket(authenticationTicket) {
 
         var message = $.parseJSON(data.data);
 
-        if (message.messageType == "Heartbeat") {
+        if (message.MessageType == "Heartbeat") {
             alertify.log("Master socket heartbeat: " + message.Timestamp);
-        } 
-        else if (message.messageType == "SandboxUpdate") {
+        }
+        else if (message.MessageType == "BitcoinReceived") {
+            var handled = false;
+
+            if (pageBitcoinReceived != undefined) {
+                handled = pageBitcoinReceived(message.Address, message.Hash, message.Satoshis, message.Cents, message.Currency);
+            }
+
+            if (!handled) {
+                alertify.log("Bitcoin received: " + message.Currecy + " " + message.CentsFormatted);
+            }
+        }
+        else if (message.MessageType == "SandboxUpdate") {
             if (odoLocalParticipation != undefined) {  // Real ugly accessing specific page elements here, but it's temporary
-                odoLocalParticipation.innerHTML = message.local;
-                odoGlobalParticipation.innerHTML = 12345678 + message.local * 5;
-                odoActiveParticipation.innerHTML = 123412 + message.local * 5;
-                odoProfitLossToDate.innerHTML = (message.profit / 100.0) + 0.001;
+                odoLocalParticipation.innerHTML = message.Local;
+                odoGlobalParticipation.innerHTML = 12345678 + message.Local * 5;
+                odoActiveParticipation.innerHTML = 123412 + message.Local * 5;
+                odoProfitLossToDate.innerHTML = (message.Profit / 100.0) + 0.001;
             }
         }
     };

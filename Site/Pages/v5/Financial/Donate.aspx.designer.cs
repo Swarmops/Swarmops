@@ -13,15 +13,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
     public partial class Donate {
         
         /// <summary>
-        /// LiteralTxDetected control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralTxDetected;
-        
-        /// <summary>
         /// LiteralBitcoinAddress control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal LiteralGuid;
-        
-        /// <summary>
-        /// LiteralEnable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralEnable;
         
         /// <summary>
         /// PanelEnabled control.

@@ -19,7 +19,9 @@ using Swarmops.Utility;
 using Swarmops.Utility.BotCode;
 using Swarmops.Utility.Communications;
 using Swarmops.Utility.Mail;
+using WebSocketSharp;
 using WebSocketSharp.Server;
+using Satoshis=NBitcoin.Money;
 
 namespace Swarmops.Backend
 {
@@ -204,112 +206,128 @@ namespace Swarmops.Backend
             _socketServer.AddWebSocketService<BackendServices>("/Backend");
             _socketServer.Start();
 
-            // Begin maintenance loop
+            // Initialize socket client to Blockchain.Info (pending our own services)
 
-            DateTime cycleStartTime = DateTime.UtcNow;
-            DateTime cycleEndTime;
-
-            int lastSecond = cycleStartTime.Second;
-            int lastMinute = cycleStartTime.Minute;
-            int lastHour = cycleStartTime.Hour;
-
-            bool exitFlag = false;
-
-            while (!exitFlag) // exit is handled by signals handling at end of loop
+            using (
+                _blockChainInfoSocket =
+                    new WebSocket("wss://ws.blockchain.info/inv?api_code=" + SystemSettings.BlockchainSwarmopsApiKey))
             {
-                BotLog.Write (0, "MainCycle", "Cycle Start");
 
-                cycleStartTime = DateTime.UtcNow;
-                cycleEndTime = cycleStartTime.AddSeconds(10);
+                // Begin maintenance loop
 
-                try
+                DateTime cycleStartTime = DateTime.UtcNow;
+                DateTime cycleEndTime;
+
+                int lastSecond = cycleStartTime.Second;
+                int lastMinute = cycleStartTime.Minute;
+                int lastHour = cycleStartTime.Hour;
+
+                bool exitFlag = false;
+
+                _blockChainInfoSocket.OnOpen += new EventHandler(OnBlockchainOpen);
+                _blockChainInfoSocket.OnError += new EventHandler<ErrorEventArgs>(OnBlockchainError);
+                _blockChainInfoSocket.OnClose += new EventHandler<CloseEventArgs>(OnBlockchainClose);
+                _blockChainInfoSocket.OnMessage += new EventHandler<MessageEventArgs>(OnBlockchainMessage);
+
+                _blockChainInfoSocket.Connect();
+
+                while (!exitFlag) // exit is handled by signals handling at end of loop
                 {
-                    OnEveryTenSeconds();
+                    BotLog.Write(0, "MainCycle", "Cycle Start");
 
-                    if (cycleStartTime.Second < lastSecond)
+                    cycleStartTime = DateTime.UtcNow;
+                    cycleEndTime = cycleStartTime.AddSeconds(10);
+
+                    try
                     {
-                        OnEveryMinute();
+                        OnEveryTenSeconds();
 
-                        if (cycleStartTime.Minute%5 == 0)
+                        if (cycleStartTime.Second < lastSecond)
                         {
-                            OnEveryFiveMinutes();
+                            OnEveryMinute();
+
+                            if (cycleStartTime.Minute%5 == 0)
+                            {
+                                OnEveryFiveMinutes();
+                            }
+                        }
+
+                        if (cycleStartTime.Minute < lastMinute)
+                        {
+                            OnEveryHour();
+
+                            if (DateTime.Now.Hour == 10 && DateTime.Today.DayOfWeek == DayOfWeek.Tuesday)
+                            {
+                                OnTuesdayMorning();
+                            }
+
+                            if (DateTime.Now.Hour == 7 && DateTime.Today.DayOfWeek == DayOfWeek.Monday)
+                            {
+                                OnMondayMorning();
+                            }
+                        }
+
+                        if (cycleStartTime.Hour >= 12 && lastHour < 12)
+                        {
+                            OnNoon();
+                        }
+
+                        if (cycleStartTime.Hour < lastHour)
+                        {
+                            OnMidnight();
                         }
                     }
 
-                    if (cycleStartTime.Minute < lastMinute)
+                    catch (Exception e)
                     {
-                        OnEveryHour();
+                        // Note each "OnEvery..." catches its own errors and sends Exception mails,
+                        // so that failure in one should not stop the others from running. This particular
+                        // code should never run.
 
-                        if (DateTime.Now.Hour == 10 && DateTime.Today.DayOfWeek == DayOfWeek.Tuesday)
+                        ExceptionMail.Send(new Exception("Failed in swarmops-backend main loop", e), true);
+                    }
+
+                    lastSecond = cycleStartTime.Second;
+                    lastMinute = cycleStartTime.Minute;
+                    lastHour = cycleStartTime.Hour;
+
+                    // Wait for a maximum of ten seconds (the difference between cycleStartTime and cycleEndTime)
+
+                    DateTime utcNow = DateTime.UtcNow;
+                    while (utcNow < cycleEndTime && !exitFlag)
+                    {
+                        int signalIndex = 250;
+
+                        // Block until a SIGINT or SIGTERM signal is generated, or 1/4 second has passed.
+                        // However, we can't do that in a development environment - it won't have the
+                        // Mono.Posix assembly, and won't understand UnixSignals. So people running this in
+                        // a dev environment will need to stop it manually.
+
+                        if (!Debugger.IsAttached)
                         {
-                            OnTuesdayMorning();
+                            signalIndex = UnixSignal.WaitAny(killSignals, 250);
+                        }
+                        else
+                        {
+                            TimeSpan timeLeft = (cycleEndTime - utcNow);
+
+                            BotLog.Write(0, "MainCycle Debug",
+                                string.Format(CultureInfo.InvariantCulture,
+                                    "Waiting for {0:F2} more seconds for cycle end",
+                                    timeLeft.TotalMilliseconds/1000.0));
+                            Thread.Sleep(250);
                         }
 
-                        if (DateTime.Now.Hour == 7 && DateTime.Today.DayOfWeek == DayOfWeek.Monday)
+                        if (signalIndex < 250)
                         {
-                            OnMondayMorning();
+                            exitFlag = true;
+                            Console.WriteLine("Caught signal " + killSignals[signalIndex].Signum + ", exiting");
+                            BotLog.Write(0, "MainCycle",
+                                "EXIT SIGNAL (" + killSignals[signalIndex].Signum + "), terminating backend");
                         }
+
+                        utcNow = DateTime.UtcNow;
                     }
-
-                    if (cycleStartTime.Hour >= 12 && lastHour < 12)
-                    {
-                        OnNoon();
-                    }
-
-                    if (cycleStartTime.Hour < lastHour)
-                    {
-                        OnMidnight();
-                    }
-                }
-
-                catch (Exception e)
-                {
-                    // Note each "OnEvery..." catches its own errors and sends Exception mails,
-                    // so that failure in one should not stop the others from running. This particular
-                    // code should never run.
-
-                    ExceptionMail.Send (new Exception ("Failed in swarmops-backend main loop", e), true);
-                }
-
-                lastSecond = cycleStartTime.Second;
-                lastMinute = cycleStartTime.Minute;
-                lastHour = cycleStartTime.Hour;
-
-                // Wait for a maximum of ten seconds (the difference between cycleStartTime and cycleEndTime)
-
-                DateTime utcNow = DateTime.UtcNow;
-                while (utcNow < cycleEndTime && !exitFlag)
-                {
-                    int signalIndex = 250;
-
-                    // Block until a SIGINT or SIGTERM signal is generated, or 1/4 second has passed.
-                    // However, we can't do that in a development environment - it won't have the
-                    // Mono.Posix assembly, and won't understand UnixSignals. So people running this in
-                    // a dev environment will need to stop it manually.
-
-                    if (!Debugger.IsAttached)
-                    {
-                        signalIndex = UnixSignal.WaitAny(killSignals, 250);
-                    }
-                    else
-                    {
-                        TimeSpan timeLeft = (cycleEndTime - utcNow);
-
-                        BotLog.Write(0, "MainCycle Debug",
-                            string.Format(CultureInfo.InvariantCulture, "Waiting for {0:F2} more seconds for cycle end",
-                                timeLeft.TotalMilliseconds / 1000.0));
-                        Thread.Sleep(250);
-                    }
-
-                    if (signalIndex < 250)
-                    {
-                        exitFlag = true;
-                        Console.WriteLine ("Caught signal " + killSignals[signalIndex].Signum + ", exiting");
-                        BotLog.Write (0, "MainCycle",
-                            "EXIT SIGNAL (" + killSignals[signalIndex].Signum + "), terminating backend");
-                    }
-
-                    utcNow = DateTime.UtcNow;
                 }
             }
 
@@ -612,7 +630,7 @@ namespace Swarmops.Backend
                 {
                     TraceAndReport (e);
                 }
-
+                
                 try
                 {
                     BotLog.DeleteOld (14); // delete logs older than 14 days
@@ -825,13 +843,162 @@ namespace Swarmops.Backend
         private static void BroadcastTimestamp()
         {
             JObject json = new JObject();
-            json["messageType"] = "Heartbeat";
+            json["MessageType"] = "Heartbeat";
             json["Timestamp"] = DateTime.UtcNow.ToUnix();
 
             _socketServer.WebSocketServices.Broadcast(json.ToString());
         }
 
 
+        // ------------------------------- BLOCKCHAIN.INFO WEB SOCKET INTERFACE CODE -------------------------
+
+        public static void OnBlockchainOpen(object sender, EventArgs args)
+        {
+            Console.WriteLine(" - Socket to Blockchain open and active");
+            // TODO: Subscribe to all active addresses
+        }
+
+        public static void OnBlockchainError(object sender, ErrorEventArgs args)
+        {
+            Console.WriteLine(" - ERROR on Blockchain socket: " + args.Message);
+        }
+
+        public static void OnBlockchainClose(object sender, CloseEventArgs args)
+        {
+            Console.WriteLine(" - Socket to Blockchain CLOSED");
+        }
+
+        public static void OnBlockchainMessage(object sender, MessageEventArgs args)
+        {
+            Console.WriteLine(" - Blockchain says: " + args.Data);
+
+            JObject json = JObject.Parse(args.Data);
+            string op = (string) json["op"];
+
+            switch (op)
+            {
+                case "utx":
+                    // transaction received on an address we sub to
+                    ProcessBitcoinTransaction(json);
+                    break;
+                default:
+                    Console.WriteLine(" -- unknown/unhandled op: '{0}'", op);
+                    break;
+            }
+
+            // A LOT OF TODO HERE
+
+
+        }
+
+
+        internal static void ProcessBitcoinTransaction(JObject blockchainTransaction)
+        {
+            /* Format:
+              
+                {
+                    "op": "utx",
+                    "x": {
+                        "lock_time": 0,
+                        "ver": 1,
+                        "size": 192,
+                        "inputs": [
+                            {
+                                "sequence": 4294967295,
+                                "prev_out": {
+                                    "spent": true,
+                                    "tx_index": 99005468,
+                                    "type": 0,
+                                    "addr": "1BwGf3z7n2fHk6NoVJNkV32qwyAYsMhkWf",
+                                    "value": 65574000,
+                                    "n": 0,
+                                    "script": "76a91477f4c9ee75e449a74c21a4decfb50519cbc245b388ac"
+                                },
+                                "script": "483045022100e4ff962c292705f051c2c2fc519fa775a4d8955bce1a3e29884b2785277999ed02200b537ebd22a9f25fbbbcc9113c69c1389400703ef2017d80959ef0f1d685756c012102618e08e0c8fd4c5fe539184a30fe35a2f5fccf7ad62054cad29360d871f8187d"
+                            }
+                        ],
+                        "time": 1440086763,
+                        "tx_index": 99006637,
+                        "vin_sz": 1,
+                        "hash": "0857b9de1884eec314ecf67c040a2657b8e083e1f95e31d0b5ba3d328841fc7f",
+                        "vout_sz": 1,
+                        "relayed_by": "127.0.0.1",
+                        "out": [
+                            {
+                                "spent": false,
+                                "tx_index": 99006637,
+                                "type": 0,
+                                "addr": "1A828tTnkVFJfSvLCqF42ohZ51ksS3jJgX",
+                                "value": 65564000,
+                                "n": 0,
+                                "script": "76a914640cfdf7b79d94d1c980133e3587bd6053f091f388ac"
+                            }
+                        ]
+                    }
+                }
+             */
+
+            Console.WriteLine(" - block received");
+
+            if (_transactionCache == null)
+            {
+                _transactionCache = new SerializableDictionary<string, JObject>();
+            }
+
+            _transactionCache[(string) (blockchainTransaction["x"]["hash"])] = (JObject) blockchainTransaction["x"];
+
+            foreach (JObject outpoint in blockchainTransaction["x"]["out"])
+            {
+                Satoshis satoshis = Int64.Parse((string) outpoint["value"]);
+                string addressString = (string) outpoint["addr"];
+
+                HotBitcoinAddress hotAddress = null;
+
+                try
+                {
+                    hotAddress = HotBitcoinAddress.FromAddress(addressString);
+                }
+                catch (ArgumentException)
+                {
+                    // Ignore this - it means the addressString isn't ours
+                    throw;
+                }
+
+                if (hotAddress != null)
+                {
+                    JObject json = new JObject();
+                    json["MessageType"] = "BitcoinReceived";
+                    json["Address"] = addressString;
+
+                    Currency currency = hotAddress.Organization.Currency;
+                    json["OrganizationId"] = hotAddress.OrganizationId.ToString();
+                    json["Currency"] = currency.Code;
+                    Swarmops.Logic.Financial.Money organizationCents = new Money(satoshis, Currency.Bitcoin).ToCurrency(currency);
+                    json["Satoshis"] = satoshis.ToString();
+                    json["Cents"] = organizationCents.Cents.ToString();
+                    json["CentsFormatted"] = String.Format("N2", organizationCents.Cents/100.0);
+
+                    _socketServer.WebSocketServices.Broadcast(json.ToString());
+
+                    // TODO: Examine what address this is, handle accordingly
+                }
+            }
+
+        }
+
+
+        public static void AddBitcoinAddress(string address)
+        {
+            JObject json = new JObject();
+            json["op"] = "addr_sub";
+            json["addr"] = address;
+
+            _blockChainInfoSocket.Send(json.ToString());
+        }
+
+
+        private static WebSocket _blockChainInfoSocket;
         private static WebSocketServer _socketServer;
+        private static SerializableDictionary<string, JObject> _transactionCache; // Need mechanism to clear this over time
     }
 }
