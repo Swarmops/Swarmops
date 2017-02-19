@@ -61,7 +61,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             using (
                 WebSocket socket =
-                    new WebSocket("ws:/localhost:" + SystemSettings.WebsocketPortFrontend + "?Auth=" +
+                    new WebSocket("ws:/localhost:" + SystemSettings.WebsocketPortFrontend + "/ws/Front?Auth=" +
                                   Uri.EscapeDataString(this.CurrentAuthority.ToEncryptedXml())))
             {
                 socket.Connect();
