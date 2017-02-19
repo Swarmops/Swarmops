@@ -67,6 +67,7 @@ namespace Swarmops.Frontend.Socket
 
         protected override void OnClose (CloseEventArgs e)
         {
+            Console.WriteLine(" - client closed");
             base.OnClose (e);
 
             // Sessions.Broadcast("{\"messageType\":\"EditorCount\"," + String.Format("\"editorCount\":\"{0}\"", Sessions.ActiveIDs.ToArray().Length) + '}');

@@ -69,8 +69,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 JObject data = new JObject();
                 data ["ServerRequest"] = "AddBitcoinAddress";
                 data["Address"] = address.Address;
-
                 socket.Send(data.ToString());
+                socket.Ping(); // wait a little little while for send to work
                 socket.Close();
             }
 
