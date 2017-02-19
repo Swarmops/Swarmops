@@ -277,6 +277,8 @@ namespace Swarmops.Frontend.Socket
 
         public static void AddBitcoinAddress(string address)
         {
+            Console.WriteLine(" - subscribing to address " + address);
+
             JObject json = new JObject();
             json["BackendRequest"] = "AddBitcoinAddress";
             json["Address"] = address;

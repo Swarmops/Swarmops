@@ -22,6 +22,8 @@ namespace Swarmops.Frontend.Socket
         {
             // Basically just echo whatever's sent here
 
+            Console.WriteLine(" - a client says " + e.Data);
+
             JObject json = JObject.Parse (e.Data);
             string serverRequest = (string) json["ServerRequest"];
 

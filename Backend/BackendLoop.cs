@@ -989,6 +989,8 @@ namespace Swarmops.Backend
 
         public static void AddBitcoinAddress(string address)
         {
+            Console.WriteLine(" - request subscribing to address " + address);
+
             if (_addressLookup == null)
             {
                 _addressLookup = new SerializableDictionary<string, bool>();
@@ -996,6 +998,8 @@ namespace Swarmops.Backend
 
             if (!_addressLookup.ContainsKey(address))
             {
+                Console.WriteLine(" -- subscribed");
+
                 JObject json = new JObject();
                 json["op"] = "addr_sub";
                 json["addr"] = address;
