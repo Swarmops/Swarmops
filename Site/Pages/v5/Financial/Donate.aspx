@@ -48,7 +48,7 @@
      <div class="box" style="background-image: url(/Images/Other/coins-background-istockphoto.jpg); background-size: 700px">
         <div class="content">
             <div class="odometer-wrapper">
-                <div class="elementFloatFar odometer odometer-currency" id="odoDonatedCents">0.001</div><div class="odometer-label">Annual Profit To Date (Testing new code)</div>
+                <div class="elementFloatFar odometer odometer-currency" id="odoDonatedCents">0.001</div><div class="odometer-label">Received funds (CUR)</div>
             </div>
         </div>
     </div>

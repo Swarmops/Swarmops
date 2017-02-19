@@ -989,16 +989,27 @@ namespace Swarmops.Backend
 
         public static void AddBitcoinAddress(string address)
         {
-            JObject json = new JObject();
-            json["op"] = "addr_sub";
-            json["addr"] = address;
+            if (_addressLookup == null)
+            {
+                _addressLookup = new SerializableDictionary<string, bool>();
+            }
 
-            _blockChainInfoSocket.Send(json.ToString());
+            if (!_addressLookup.ContainsKey(address))
+            {
+                JObject json = new JObject();
+                json["op"] = "addr_sub";
+                json["addr"] = address;
+                _blockChainInfoSocket.Send(json.ToString());
+
+                _addressLookup[address] = true; // dupe prevention
+            }
+
         }
 
 
         private static WebSocket _blockChainInfoSocket;
         private static WebSocketServer _socketServer;
         private static SerializableDictionary<string, JObject> _transactionCache; // Need mechanism to clear this over time
+        private static SerializableDictionary<string, bool> _addressLookup;
     }
 }

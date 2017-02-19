@@ -8,11 +8,14 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NBitcoin;
+using Newtonsoft.Json.Linq;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Satoshis = NBitcoin.Money; // Sets it apart from Swarmops' Money class
+using WebSocketSharp;
 
 namespace Swarmops.Frontend.Pages.v5.Financial
 {
@@ -54,26 +57,22 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             GuidCache.Set (guid, address.Address);
             this.LiteralGuid.Text = guid;
 
-            // TEST TEST TEST
-            /*
-            BitcoinSecret secretKey = address.PrivateKey;
-            Coin[] spendableCoin = BitcoinUtility.GetSpendableCoin (secretKey);
+            // Add subscription to address
 
-            TransactionBuilder txBuild = new TransactionBuilder();
-            Transaction tx = txBuild.AddCoins (spendableCoin)
-                .AddKeys (secretKey)
-                .Send (new BitcoinAddress (BitcoinUtility.BitcoinTestAddress), new Satoshis (address.UnspentSatoshis - BitcoinUtility.FeeSatoshisPerThousandBytes))
-                .SendFees (new Satoshis(BitcoinUtility.FeeSatoshisPerThousandBytes))
-                .SetChange (secretKey.GetAddress())
-                .BuildTransaction (true);
-
-            bool test = txBuild.Verify (tx);
-            if (!test)
+            using (
+                WebSocket socket =
+                    new WebSocket("ws:/localhost:" + SystemSettings.WebsocketPortFrontend + "?Auth=" +
+                                  Uri.EscapeDataString(this.CurrentAuthority.ToEncryptedXml())))
             {
-                throw new InvalidOperationException("Tx is not properly signed");
-            }
+                socket.Connect();
 
-            BitcoinUtility.BroadcastTransaction (tx);*/
+                JObject data = new JObject();
+                data ["ServerRequest"] = "AddBitcoinAddress";
+                data["Address"] = address.Address;
+
+                socket.Send(data.ToString());
+                socket.Close();
+            }
 
             this.BoxTitle.Text = Resources.Pages.Financial.Donate_PageTitle;
             this.LabelExplainBitcoinDonation.Text = String.Format (Resources.Pages.Financial.Donate_Explain,
