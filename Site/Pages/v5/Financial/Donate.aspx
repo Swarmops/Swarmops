@@ -5,13 +5,16 @@
     <script type="text/javascript" language="javascript">
         $(document).ready(function() {
 
-            if (pageBitcoinReceived != undefined) {
-                alertify.log("Undefined check works");
-            }
-
         });
 
-        function pageBitcoinReceived (address, hash, satoshis, cents, currencycode) {
+        function pageBitcoinReceived(address, hash, satoshis, cents, currencycode) {
+
+            console.log("address: " + address);
+            console.log("hash: " + hash);
+            console.log("satoshis: " + satoshis);
+            console.log("cents: " + cents);
+            console.log("currencyCode: " + currencyCode);
+
             if (address == addressUsed) {
                 // We have received a donation at this address
 

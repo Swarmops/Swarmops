@@ -945,7 +945,8 @@ namespace Swarmops.Backend
                 _transactionCache = new SerializableDictionary<string, JObject>();
             }
 
-            _transactionCache[(string) (blockchainTransaction["x"]["hash"])] = (JObject) blockchainTransaction["x"];
+            string txHash = (string) blockchainTransaction["x"]["hash"];
+            _transactionCache[txHash] = (JObject)blockchainTransaction["x"];
 
             foreach (JObject outpoint in blockchainTransaction["x"]["out"])
             {
@@ -969,6 +970,7 @@ namespace Swarmops.Backend
                     JObject json = new JObject();
                     json["MessageType"] = "BitcoinReceived";
                     json["Address"] = addressString;
+                    json["Hash"] = txHash;
 
                     Currency currency = hotAddress.Organization.Currency;
                     json["OrganizationId"] = hotAddress.OrganizationId.ToString();
