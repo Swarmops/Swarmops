@@ -42,7 +42,7 @@ function _masterInitializeSocket(authenticationTicket) {
             }
 
             if (!handled) {
-                alertify.log("Bitcoin received: " + message.Currecy + " " + message.CentsFormatted);
+                alertify.log("Bitcoin received: " + message.CurrencyCode + " " + message.CentsFormatted);
             }
         }
         else if (message.MessageType == "SandboxUpdate") {

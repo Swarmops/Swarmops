@@ -978,7 +978,7 @@ namespace Swarmops.Backend
                     Swarmops.Logic.Financial.Money organizationCents = new Money(satoshis, Currency.Bitcoin).ToCurrency(currency);
                     json["Satoshis"] = satoshis.ToString();
                     json["Cents"] = organizationCents.Cents.ToString();
-                    json["CentsFormatted"] = String.Format("N2", organizationCents.Cents/100.0);
+                    json["CentsFormatted"] = String.Format("{0:N2}", organizationCents.Cents/100.0);
 
                     _socketServer.WebSocketServices.Broadcast(json.ToString());
 
