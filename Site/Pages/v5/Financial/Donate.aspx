@@ -7,7 +7,7 @@
 
         });
 
-        function pageBitcoinReceived(address, hash, satoshis, cents, currencycode) {
+        function pageBitcoinReceived(address, hash, satoshis, cents, currencyCode) {
 
             console.log("address: " + address);
             console.log("hash: " + hash);
