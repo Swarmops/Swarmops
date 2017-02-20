@@ -32,9 +32,11 @@ function _masterInitializeSocket(authenticationTicket) {
         var message = $.parseJSON(data.data);
 
         if (message.MessageType == "Heartbeat") {
-            alertify.log("Master socket heartbeat: " + message.Timestamp);
+            //alertify.log("Master socket heartbeat: " + message.Timestamp);
         }
         else if (message.MessageType == "BitcoinReceived") {
+            console.log("Currency is " + message.Currency);
+            console.log(message);
             var handled = false;
 
             if (typeof pageBitcoinReceived === "function") {
@@ -42,7 +44,7 @@ function _masterInitializeSocket(authenticationTicket) {
             }
 
             if (!handled) {
-                alertify.log("Bitcoin received: " + message.CurrencyCode + " " + message.CentsFormatted);
+                alertify.log("Bitcoin received: " + message.Currency + " " + message.CentsFormatted);
             }
         }
         else if (message.MessageType == "SandboxUpdate") {

@@ -938,7 +938,7 @@ namespace Swarmops.Backend
                 }
              */
 
-            Console.WriteLine(" - block received");
+            Console.WriteLine(" - transaction received");
 
             if (_transactionCache == null)
             {
