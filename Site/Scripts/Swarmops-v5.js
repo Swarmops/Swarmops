@@ -37,7 +37,7 @@ function _masterInitializeSocket(authenticationTicket) {
         else if (message.MessageType == "BitcoinReceived") {
             var handled = false;
 
-            if (pageBitcoinReceived != undefined) {
+            if (typeof pageBitcoinReceived === "function") {
                 handled = pageBitcoinReceived(message.Address, message.Hash, message.Satoshis, message.Cents, message.Currency);
             }
 
