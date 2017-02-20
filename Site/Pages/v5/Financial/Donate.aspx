@@ -9,11 +9,11 @@
 
         function pageBitcoinReceived(address, hash, satoshis, cents, currencyCode) {
 
-            console.log("address: " + address);
-            console.log("hash: " + hash);
-            console.log("satoshis: " + satoshis);
-            console.log("cents: " + cents);
-            console.log("currencyCode: " + currencyCode);
+            // console.log("address: " + address);
+            // console.log("hash: " + hash);
+            // console.log("satoshis: " + satoshis);
+            // console.log("cents: " + cents);
+            // console.log("currencyCode: " + currencyCode);
 
             if (address == addressUsed) {
                 // We have received a donation at this address

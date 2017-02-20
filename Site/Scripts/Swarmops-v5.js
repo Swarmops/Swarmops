@@ -35,8 +35,8 @@ function _masterInitializeSocket(authenticationTicket) {
             //alertify.log("Master socket heartbeat: " + message.Timestamp);
         }
         else if (message.MessageType == "BitcoinReceived") {
-            console.log("Currency is " + message.Currency);
-            console.log(message);
+            // console.log("Currency is " + message.Currency);
+            // console.log(message);
             var handled = false;
 
             if (typeof pageBitcoinReceived === "function") {
