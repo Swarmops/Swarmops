@@ -1,0 +1,60 @@
+SWARMOPS I
+----------
+
+[X] Org settings 
+[X] Admin field (self-signup)
+[X] Test box Sandbox
+[ ] HTML/Markdown mail
+[X] Resolver
+[ ] Org texts self-signup
+
+
+SWARMOPS II
+-----------
+
+[ ] Expensify?
+[ ] PDF asynchronous
+[ ] Recurring expenses
+[X] Why salary fails?
+[X] Char encode HTML doc
+[ ] Hotwallet
+[ ] Tech problem box
+
+
+SWARMOPS III
+------------
+
+[X] Assign malfunction
+[X] Advance malfunction
+[X] Donate sockify
+[ ] Live numbers
+[ ] Todo box JSON
+[ ] Expense reject malfunction
+[X] Menu highlight
+[ ] Basic search
+[ ] Account edit spacing
+
+
+
+SWARMOPS IV
+-----------
+
+[ ] Load hotwallet from cold
+[ ] Database discrepancy
+[ ] Bitcoin Echo
+[ ] Icons for Validation
+[X] Favicon New
+[X] Inspect Ledger header bad
+[ ] Clean Login
+
+
+
+SWARMOPS V
+----------
+
+[X] OOBE! Wait for services
+[ ] Basic security
+[X] Impersonation for testing
+[X] Expense access
+[ ] Assign role geolock
+[X] Advance line spacing

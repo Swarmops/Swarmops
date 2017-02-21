@@ -39,7 +39,7 @@ function _masterInitializeSocket(authenticationTicket) {
             // console.log(message);
             var handled = false;
 
-            if (typeof pageBitcoinReceived === "function") {
+            if (typeof pageBitcoinReceived === "function") { // if it's defined on the page indicating the page handles it
                 handled = pageBitcoinReceived(message.Address, message.Hash, message.Satoshis, message.Cents, message.Currency);
             }
 
