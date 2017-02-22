@@ -63,6 +63,7 @@ SWARMOPS V
 SWARMOPS VI
 -----------
 
+[ ] Org 16x9 logo
 [ ] Submit invoice
 [ ] Control messages for invoice progress
 [ ] Pay invoice
