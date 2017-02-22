@@ -43,6 +43,16 @@
         AssetsVatInbound,
 
         /// <summary>
+        /// General short term holdings
+        /// </summary>
+        AssetsShortTerm,
+
+        /// <summary>
+        /// Internal transfers that are in progress
+        /// </summary>
+        AssetsTransfersInProgress,
+
+        /// <summary>
         ///     If virtual banking is enabled, this is where the virtual assets go
         /// </summary>
         AssetsVirtualBanking,

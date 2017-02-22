@@ -133,6 +133,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Short Term Assets.
+        /// </summary>
+        internal static string Asset_ShortTerm {
+            get {
+                return ResourceManager.GetString("Asset_ShortTerm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internal Transfers in Progress.
+        /// </summary>
+        internal static string Asset_TransfersInProgress {
+            get {
+                return ResourceManager.GetString("Asset_TransfersInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accounting Errors.
         /// </summary>
         internal static string Cost_AccountingErrors {

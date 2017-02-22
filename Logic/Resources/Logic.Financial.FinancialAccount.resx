@@ -334,4 +334,10 @@
   <data name="Income_SubsidiesGrants" xml:space="preserve">
     <value>Subsidies and Grants</value>
   </data>
+  <data name="Asset_ShortTerm" xml:space="preserve">
+    <value>Short Term Assets</value>
+  </data>
+  <data name="Asset_TransfersInProgress" xml:space="preserve">
+    <value>Internal Transfers in Progress</value>
+  </data>
 </root>

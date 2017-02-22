@@ -462,6 +462,14 @@ namespace Swarmops.Logic.Structure
                 FinancialAccount.Create (this, "[LOC]Asset_OutboundInvoices", FinancialAccountType.Asset, null);
             FinancialAccounts[OrganizationFinancialAccountType.AssetsOutstandingCashAdvances] =
                 FinancialAccount.Create (this, "[LOC]Asset_CashAdvances", FinancialAccountType.Asset, null);
+
+            FinancialAccount shortTermAssets = FinancialAccount.Create(this, "[LOC]Asset_ShortTerm",
+                FinancialAccountType.Asset, null);
+            FinancialAccounts[OrganizationFinancialAccountType.AssetsShortTerm] = shortTermAssets;
+            FinancialAccounts[OrganizationFinancialAccountType.AssetsTransfersInProgress] =
+                FinancialAccount.Create(this, "[LOC]Asset_TransfersInProgress", FinancialAccountType.Asset,
+                    shortTermAssets);
+
             FinancialAccounts[OrganizationFinancialAccountType.CostsAllocatedFunds] =
                 FinancialAccount.Create (this, "[LOC]Cost_AllocatedFunds", FinancialAccountType.Cost, null);
             FinancialAccounts[OrganizationFinancialAccountType.CostsInfrastructure] =
