@@ -58,3 +58,15 @@ SWARMOPS V
 [X] Expense access
 [ ] Assign role geolock
 [X] Advance line spacing
+
+
+SWARMOPS VI
+-----------
+
+[ ] Submit invoice
+[ ] Control messages for invoice progress
+[ ] Pay invoice
+[ ] Controlify financialtransaction
+    to show on balancetx page
+[ ] Close ledger year
+[ ] Internal TX account type
