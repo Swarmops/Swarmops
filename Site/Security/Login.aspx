@@ -48,7 +48,7 @@
 
     <!-- page title -->
 
-	<title>Swarmops Beta- Login</title>
+	<title>Swarmops Beta - Login</title>
 
     <!-- custom styles -->
     

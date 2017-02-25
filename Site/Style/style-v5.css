@@ -35,7 +35,7 @@ html, body, input, select
 
 /* BASE */
 
-html, body
+body
 {
 	background-color: #E4ECFF;
 	background-image: url('/Style/Images/background-shader.png');
