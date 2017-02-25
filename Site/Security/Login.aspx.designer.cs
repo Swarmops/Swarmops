@@ -157,22 +157,22 @@ namespace Swarmops.Pages.Security {
         protected global::System.Web.UI.WebControls.Label LabelForgotPassword;
         
         /// <summary>
-        /// LabelManualLogin control.
+        /// LabelUseManualLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelManualLogin;
+        protected global::System.Web.UI.WebControls.Label LabelUseManualLogin;
         
         /// <summary>
-        /// Label1 control.
+        /// LabelUseBitIdLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label LabelUseBitIdLogin;
         
         /// <summary>
         /// PanelCheat control.

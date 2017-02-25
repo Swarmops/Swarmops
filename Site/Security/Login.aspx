@@ -211,8 +211,8 @@
                 </div>
             </div>
         
-            <p align="center" id="paraSwitchManualLogin"><br/><a href="javascript:toManualLogin();"><asp:Label runat="server" ID="LabelManualLogin">Using Manual Password Login?</asp:Label></a></p>
-            <p align="center" id="paraSwitchBitIdLogin" style="display:none"><br/><a href="javascript:toBitIdLogin();"><asp:Label runat="server" ID="Label1">Using BitID Authentication?</asp:Label></a></p>
+            <p align="center" id="paraSwitchManualLogin"><br/><a href="javascript:toManualLogin();"><asp:Label runat="server" ID="LabelUseManualLogin">Using Manual Password Login?</asp:Label></a></p>
+            <p align="center" id="paraSwitchBitIdLogin" style="display:none"><br/><a href="javascript:toBitIdLogin();"><asp:Label runat="server" ID="LabelUseBitIdLogin">Using BitID Authentication?</asp:Label></a></p>
         
 
         
