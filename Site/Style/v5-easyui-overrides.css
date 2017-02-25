@@ -19,7 +19,7 @@ select:not(.comboperson)+span.textbox.combo > .textbox-text {
     width: 278px !important;
 }
 
-span.combo > input.textbox-prompt {
+span.combo > input.textbox-text, span.combo > input.textbox-prompt {
     padding-top: 0 !important; /* otherwise the default combo value is half-sunken out of the box */
 }
 
