@@ -48,7 +48,7 @@
 
     <!-- page title -->
 
-	<title>Swarmops Alpha - Login</title>
+	<title>Swarmops Beta- Login</title>
 
     <!-- custom styles -->
     
@@ -58,7 +58,7 @@
     </style>
 
 </head>
-<body>
+<body class="login-page">
     <form id="form2" runat="server">
         <asp:ScriptManager runat="server" ID="ScriptManagerBlahblah" />
 	    <script type="text/javascript">
@@ -179,33 +179,15 @@
     <!-- Main menu, emptied out here -->
 
 	<div class="center980px">
-	    <div class="currentuserinfo"><div style="background-image: url('/Images/Icons/iconshock-user-16px.png'); background-repeat: no-repeat; padding-left: 16px; float: left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image: url('/Images/Icons/iconshock-workchair-16px.png'); background-repeat: no-repeat; padding-left: 17px; float: left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image: url('/Images/Icons/iconshock-gamepad-16px.png'); background-repeat: no-repeat; padding-left: 20px; float: left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><a href="/User/SelectLanguage"><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></a></div>
-        <div class="logoimage"><a href="/"><img style="border: none" src="/Security/Images/Swarmops-Logo.png" alt="Swarmops Logo" /></a></div>
-        <div class="break"></div>
-        <div class="topmenu">
-            <div class="topSearchBox"><asp:TextBox ID="SearchBox" ReadOnly="true" runat="server" /></div>
-        </div>
-        
-        <div class="mainbar">
-            <div class="box">
+
+        <div class="login-page-logo"><asp:Image ID="ImageLogo" runat="server" ImageUrl="/Images/Swarmops-logo-256px.png" Width="128"/></div>        
+            <div class="box qrlogin">
                 <div class="content">
-                
-                    <h2><asp:Label ID="LabelHeader" runat="server" Text="XYZ Login with blockchain technology (BitID)" /></h2>
                     <div align="center"><asp:Image ID="ImageBitIdQr" runat="server"/></div>
                 </div>
             </div>
         
         </div>
-        <div class="sidebar">
-    <h2 class="blue"><asp:Label ID="LabelSidebarInfoHeader" runat="server" /><span class="arrow"></span></h2>
-    
-    <div class="box">
-        <div class="content">
-        <asp:Label ID="LabelSidebarInfoContent" runat="server" />
-        </div>
-    </div>
-    
-    <h2 class="blue"><asp:Label ID="LabelSidebarManualLoginHeader" runat="server" /><span class="arrow"></span></h2>
     
     <div class="box">
         <div class="content" style="line-height: 24px">
@@ -218,48 +200,17 @@
     </div>
     
     <asp:Panel ID="PanelCheat" runat="server" Visible="false">
-        <h2 class="blue">Dev's Cheat Button<span class="arrow"></span></h2>
     
         <div class="box">
             <div class="content" style="line-height: 14px">
+                <h2>Dev's Cheat Button</h2>
                 <p>Since we're running on localhost, on a nonstandard port, with a debugger attached, and under Windows, this is clearly not a production environment. Since it's unlikely that the outside Internet has access to this machine, which means you can't login with BitID, a cheat button has been provided for you.</p><p>Press the button below to log on as Sandbox Administrator.</p>
                 
                 <div align="right"><asp:Button ID="ButtonCheat" runat="server" OnClick="ButtonCheat_Click" Text="Cheat Button" /></div>
             </div>
         </div>
     </asp:Panel>
-    
-    <h2 class="orange"><asp:Label ID="LabelSidebarHelpHeader" runat="server" /><span class="arrow"></span></h2>
-    
-    <div class="box">
-        <div class="content">
-            <div class="link-row-encaps" onclick=" document.location='/Security/RequestPasswordReset'; return false; " >
-                <div class="link-row-icon" style="background-image: url('/Images/Icons/iconshock-databaseconnect-16px.png')"></div>
-                <asp:Label ID="LabelSidebarResetPassword" runat="server" />
-            </div>
-        </div>
-    </div>
-            
-    <asp:Panel runat="server" ID="PanelJoin" Visible="false">
-        
-        <h2 class="blue"><asp:Label ID="LabelSelfSignupHeader" runat="server" /><span class="arrow"></span></h2>
-    
-        <div class="box">
-            <div class="content">
-                <div class="link-row-encaps" onclick=" document.location=linkSelfSignup; return false; " >
-                    <div class="link-row-icon" style="background-image: url('/Images/Icons/iconshock-add-16px.png'); position:relative; top:-1px; left: -5px"></div>
-                    <asp:Label ID="LabelSelfSignup" runat="server" />
-                </div>
-            </div>
-        </div>
-            
-    </asp:Panel>
-            
-
-        </div>
-        
-	</div>
-
+                
 	</form>
 
     <!-- some javascript in footer -->

@@ -94,58 +94,13 @@ namespace Swarmops.Pages.Security {
         protected global::System.Web.UI.WebControls.Literal LiteralSelfSignupLink;
         
         /// <summary>
-        /// LabelCurrentUserName control.
+        /// ImageLogo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelCurrentUserName;
-        
-        /// <summary>
-        /// LabelCurrentOrganizationName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelCurrentOrganizationName;
-        
-        /// <summary>
-        /// LabelPreferences control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPreferences;
-        
-        /// <summary>
-        /// ImageCultureIndicator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageCultureIndicator;
-        
-        /// <summary>
-        /// SearchBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SearchBox;
-        
-        /// <summary>
-        /// LabelHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelHeader;
+        protected global::System.Web.UI.WebControls.Image ImageLogo;
         
         /// <summary>
         /// ImageBitIdQr control.
@@ -155,33 +110,6 @@ namespace Swarmops.Pages.Security {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image ImageBitIdQr;
-        
-        /// <summary>
-        /// LabelSidebarInfoHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSidebarInfoHeader;
-        
-        /// <summary>
-        /// LabelSidebarInfoContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSidebarInfoContent;
-        
-        /// <summary>
-        /// LabelSidebarManualLoginHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSidebarManualLoginHeader;
         
         /// <summary>
         /// LiteralCredentialsUser control.
@@ -227,50 +155,5 @@ namespace Swarmops.Pages.Security {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonCheat;
-        
-        /// <summary>
-        /// LabelSidebarHelpHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSidebarHelpHeader;
-        
-        /// <summary>
-        /// LabelSidebarResetPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSidebarResetPassword;
-        
-        /// <summary>
-        /// PanelJoin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelJoin;
-        
-        /// <summary>
-        /// LabelSelfSignupHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSelfSignupHeader;
-        
-        /// <summary>
-        /// LabelSelfSignup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSelfSignup;
     }
 }

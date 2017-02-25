@@ -984,6 +984,7 @@
     <Content Include="Images\PageIcons\transparency-16px.png" />
     <Content Include="Images\swarmops-logo-128px.png" />
     <Content Include="Images\swarmops-logo-16x9.png" />
+    <Content Include="Images\Swarmops-logo-256px.png" />
     <Content Include="MainMenu-v5.xml" />
     <Content Include="Pages\v5\Admin\BitcoinEchoTest.aspx" />
     <Content Include="Pages\v5\Admin\CreateOrganization.aspx" />

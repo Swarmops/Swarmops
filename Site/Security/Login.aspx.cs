@@ -137,10 +137,10 @@ namespace Swarmops.Pages.Security
 
             if (vanityOrganization != null)
             {
-                this.LiteralSelfSignupLink.Text = @"//" + vanityOrganization.VanityDomain + @"/Signup";
-                this.LabelSelfSignup.Text = String.Format (Resources.Pages.Security.Login_SelfSignup, vanityOrganization.Name);
-                this.LabelSelfSignupHeader.Text = Resources.Pages.Security.Login_SelfSignupHeader;
-                this.PanelJoin.Visible = true;
+                // this.LiteralSelfSignupLink.Text = @"//" + vanityOrganization.VanityDomain + @"/Signup";
+                // this.LabelSelfSignup.Text = String.Format (Resources.Pages.Security.Login_SelfSignup, vanityOrganization.Name);
+                // this.LabelSelfSignupHeader.Text = Resources.Pages.Security.Login_SelfSignupHeader;
+                // this.PanelJoin.Visible = true;
             }
 
 
@@ -158,9 +158,9 @@ namespace Swarmops.Pages.Security
             }
             
             
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
+            // this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
+            // this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
+            // this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
 
             _cacheVersionMark = Logic.Support.Formatting.SwarmopsVersion;
             if (_cacheVersionMark.StartsWith("Debug"))
@@ -388,7 +388,7 @@ namespace Swarmops.Pages.Security
 
         private void Localize()
         {
-            this.LabelCurrentOrganizationName.Text = Global.Global_Organization;
+            /*this.LabelCurrentOrganizationName.Text = Global.Global_Organization;
             this.LabelCurrentUserName.Text = Participant.Localized (ParticipantTitle.Person, TitleVariant.Generic);
             this.LabelPreferences.Text = Global.Global_NA;
             this.LabelSidebarInfoHeader.Text = Global.Sidebar_Information;
@@ -396,7 +396,7 @@ namespace Swarmops.Pages.Security
             this.LabelSidebarInfoContent.Text = Resources.Pages.Security.Login_Info;
             this.LabelSidebarManualLoginHeader.Text = Resources.Pages.Security.Login_ManualLogin;
             this.LabelHeader.Text = Resources.Pages.Security.Login_Header;
-            this.LabelSidebarResetPassword.Text = Resources.Pages.Security.Login_ResetPassword;
+            this.LabelSidebarResetPassword.Text = Resources.Pages.Security.Login_ResetPassword; */
             this.LiteralCredentialsUser.Text = Resources.Pages.Security.Login_Username;
             this.LiteralCredentialsPass.Text = Resources.Pages.Security.Login_Password;
             this.LiteralCredentials2FA.Text = Resources.Pages.Security.Login_GoogleAuthenticatorCode;
