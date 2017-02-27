@@ -230,6 +230,15 @@
                 </div>
             </div>
     
+            <h2 class="flashheader orange">Tech Malfunctions</h2>
+            <div class="box">
+                <div class="content">
+                    Any malfunctions go here<br/>
+                    Line two<br/>
+                    (This is under construction)
+                </div>
+            </div>
+
             <!--
             <h2 class="blue"><asp:Label ID="LabelSidebarActions" runat="server" /><span class="arrow"></span></h2>
     
