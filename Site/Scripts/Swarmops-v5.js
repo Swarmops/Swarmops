@@ -85,9 +85,11 @@ function updateListBox(box, listData) {
 
     // Step 1: Iterate through list, build id array
 
+    console.log(listData);
+
     var idListLookup = {};
     if (listData.length > 0) {
-        listData.forEach(function(item, index) {
+        Array.from(listData).forEach(function(item, index) {
             idListLookup[item.id] = item;
         });
     }
