@@ -48,7 +48,6 @@ function _masterInitializeSocket(authenticationTicket) {
             }
         }
         else if (message.MessageType == "Malfunctions") {
-            console.log(message.MalfunctionsList);
             updateListBox($('#divMalfunctionsList'), message.MalfunctionsList);
         }
         else if (message.MessageType == "SandboxUpdate") {
@@ -85,8 +84,6 @@ function updateListBox(box, listData) {
 
     // Step 1: Iterate through list, build id array
 
-    console.log(listData);
-
     var idListLookup = {};
     if (listData.length > 0) {
         Array.from(listData).forEach(function(item, index) {
@@ -98,7 +95,7 @@ function updateListBox(box, listData) {
     //         remove items that aren't in list, build id array
 
     var idBoxLookup = {};
-    var listContainer = $(box).parent.parent;
+    var listContainer = $($(box).parent).parent;
     console.log($(box));
     console.log(listContainer);
     var listElements = $(box).children;
@@ -113,10 +110,10 @@ function updateListBox(box, listData) {
     // Step 4: Adjust visibility as required
 
     if (!boxVisible && listData.length > 0) {
-        box.fadeIn();
+        $(listContainer).fadeIn();
     }
     else if (boxVisible && listData.length == 0) {
-        box.fadeOut();
+        $(listContainer).fadeOut();
     }
 }
 
