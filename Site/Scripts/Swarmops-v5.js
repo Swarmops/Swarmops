@@ -89,6 +89,7 @@ function updateListBox(box, listData) {
     if (listData.length > 0) {
         listArray.forEach(function(item, index) {
             idListLookup[item.id] = item;
+            console.log(item);
             console.log(item.Id);
         });
     }
@@ -111,8 +112,10 @@ function updateListBox(box, listData) {
 
     // Step 4: Adjust visibility as required
 
+    console.log($.isArray(listArray));
     var listEmpty = (!$.isArray(listArray) || !listArray.length);
     console.log(listEmpty);
+    console.log(listArray.length);
 
     if (!boxVisible && !listEmpty) {
         listContainer.fadeIn();
