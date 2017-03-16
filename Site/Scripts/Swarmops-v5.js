@@ -99,21 +99,23 @@ function updateListBox(box, listData) {
     var listContainer = $(box).parent().parent();
     var listElements = $(box).children();
 
-    listElements.each(function(index) {
-        console.log($(this));
-        var elementId = $(this).attr("rel");
-        console.log(elementId);
+    if (listElements.length > 0) {
+        listElements.children().each(function(index) {
+            console.log($(this));
+            var elementId = $(this).attr("rel");
+            console.log(elementId);
 
-        if (typeof idListLookup[elementId] != 'undefined') {
-            // displayed item is present in supplied list
-            // TODO: update text
-        } else {
-            // displayed item is NOT present in supplied list, and should be removed
-            $(this).slideUp(400, function() { $(this).remove(); });
-        }
-    });
+            if (typeof idListLookup[elementId] != 'undefined') {
+                // displayed item is present in supplied list
+                // TODO: update text
+            } else {
+                // displayed item is NOT present in supplied list, and should be removed
+                $(this).slideUp(400, function() { $(this).remove(); });
+            }
+        });
+    }
 
-    // Step 3: Iterate through list, add missing items
+// Step 3: Iterate through list, add missing items
 
     if (listElements.length == 0)
     {

@@ -227,7 +227,7 @@ namespace Swarmops.Frontend.Socket
                 {
                     JObject malfunctionObject = new JObject();
                     malfunctionObject["Id"] = "Mal" + loop.ToString();
-                    malfunctionObject["Text"] = malfunctionStrings[loop];
+                    malfunctionObject["Text"] = malfunctionStrings[loop] + " (Test code, ignore)";
                     malfunctionsArray.Add(malfunctionObject);
                 }
 
