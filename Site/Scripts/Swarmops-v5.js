@@ -95,7 +95,7 @@ function updateListBox(box, listData) {
     //         remove items that aren't in list, build id array
 
     var idBoxLookup = {};
-    var listContainer = $($(box).parent).parent;
+    var listContainer = $(box).parent().parent();
     console.log($(box));
     console.log(listContainer);
     var listElements = $(box).children;
@@ -109,11 +109,14 @@ function updateListBox(box, listData) {
 
     // Step 4: Adjust visibility as required
 
+    console.log(listData.length);
+    console.log(listData.length == 0);
+
     if (!boxVisible && listData.length > 0) {
-        $(listContainer).fadeIn();
+        listContainer.fadeIn();
     }
     else if (boxVisible && listData.length == 0) {
-        $(listContainer).fadeOut();
+        $listContainer.fadeOut();
     }
 }
 
