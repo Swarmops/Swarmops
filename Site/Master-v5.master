@@ -250,10 +250,12 @@
                 </div>
             </div>
     
-            <h2 class="flashheader orange">Tech Malfunctions<span class="arrow"></span></h2>
-            <div class="box">
-                <div id="divMalfunctionsList" class="content">
+            <div id="divDashboardMalfunctions">
+                <h2 class="flashheader orange">Tech Malfunctions<span class="arrow"></span></h2>
+                <div class="box">
+                    <div id="divMalfunctionsList" class="content">
 
+                    </div>
                 </div>
             </div>
 

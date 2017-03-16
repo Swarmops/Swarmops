@@ -89,8 +89,6 @@ function updateListBox(box, listData) {
     if (listData.length > 0) {
         listArray.forEach(function(item, index) {
             idListLookup[item.id] = item;
-            console.log(item);
-            console.log(item.Id);
         });
     }
 
@@ -98,10 +96,9 @@ function updateListBox(box, listData) {
     //         remove items that aren't in list, build id array
 
     var idBoxLookup = {};
-    var listContainer = $(box).parent();
-    console.log($(box));
-    console.log(listContainer);
-    var listElements = $(box).children;
+    var listContainer = $(box).parent().parent();
+    var listElements = $(box).children();
+    console.log(listElements);
 
     // Step 3: Iterate through list, add missing items
 
@@ -112,16 +109,13 @@ function updateListBox(box, listData) {
 
     // Step 4: Adjust visibility as required
 
-    console.log($.isArray(listArray));
     var listEmpty = (!$.isArray(listArray) || !listArray.length);
-    console.log(listEmpty);
-    console.log(listArray.length);
 
     if (!boxVisible && !listEmpty) {
-        listContainer.fadeIn();
+        listContainer.fadeIn().slideDown();
     }
     else if (boxVisible && listEmpty) {
-        listContainer.fadeOut();
+        listContainer.fadeOut().slideUp();
     }
 }
 
