@@ -89,6 +89,7 @@ function updateListBox(box, listData) {
     if (listData.length > 0) {
         listArray.forEach(function(item, index) {
             idListLookup[item.id] = item;
+            console.log(item.Id);
         });
     }
 
@@ -110,12 +111,13 @@ function updateListBox(box, listData) {
 
     // Step 4: Adjust visibility as required
 
-    console.log(listArray == []);
+    var listEmpty = (!$.isArray(siteArray) || !siteArray.length);
+    console.log(listEmpty);
 
-    if (!boxVisible && listArray.length > 0) {
+    if (!boxVisible && !listEmpty) {
         listContainer.fadeIn();
     }
-    else if (boxVisible && listArray.length == 0) {
+    else if (boxVisible && listEmpty) {
         listContainer.fadeOut();
     }
 }
