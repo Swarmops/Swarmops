@@ -231,6 +231,11 @@ namespace Swarmops.Frontend.Socket
                     malfunctionsArray.Add(malfunctionObject);
                 }
 
+                if (++_malfunctionTestCounter > 4)
+                {
+                    _malfunctionTestCounter = 0;
+                }
+
                 JObject data2 = new JObject();
                 data2["MessageType"] = "Malfunctions";
                 data2["MalfunctionsList"] = malfunctionsArray.ToString();

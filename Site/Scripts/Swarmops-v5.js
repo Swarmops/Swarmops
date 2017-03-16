@@ -86,9 +86,11 @@ function updateListBox(box, listData) {
     // Step 1: Iterate through list, build id array
 
     var idListLookup = {};
-    listData.forEach(function(item, index) {
-        idListLookup[item.id] = item;
-    });
+    if (listData.length > 0) {
+        listData.forEach(function(item, index) {
+            idListLookup[item.id] = item;
+        });
+    }
 
     // Step 2: Iterate through box, change texts of matching ids,
     //         remove items that aren't in list, build id array
