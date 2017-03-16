@@ -98,13 +98,28 @@ function updateListBox(box, listData) {
     var idBoxLookup = {};
     var listContainer = $(box).parent().parent();
     var listElements = $(box).children();
-   
-    console.log(listElements);
+
+    listElements.each(function(index) {
+        console.log($(this));
+        var elementId = $(this).attr("rel");
+        console.log(elementId);
+
+        if (typeof idListLookup[elementId] != 'undefined') {
+            // displayed item is present in supplied list
+            // TODO: update text
+        } else {
+            // displayed item is NOT present in supplied list, and should be removed
+            $(this).slideUp(400, function() { $(this).remove(); });
+        }
+    });
 
     // Step 3: Iterate through list, add missing items
 
     if (listElements.length == 0)
     {
+        // If there's not even an UL element (yet), add one and move the pointer to it,
+        // so we can add any missing items
+
         $(box).append ($("<ul></ul>"));
         listElements = $(box).children();
     }
@@ -112,7 +127,7 @@ function updateListBox(box, listData) {
 
     listArray.forEach(function(item, index) {
         if (idBoxLookup[item.Id] != true) {
-            var newItem = $("<li> " + item.Text + "</li>").hide();
+            var newItem = $("<li rel='" + item.Id + "'> " + item.Text + "</li>").hide();
             $(listElements).append(newItem);
             newItem.slideDown();
         }
