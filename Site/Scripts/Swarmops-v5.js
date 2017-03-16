@@ -116,7 +116,7 @@ function updateListBox(box, listData) {
         listContainer.fadeIn();
     }
     else if (boxVisible && listData.length == 0) {
-        $listContainer.fadeOut();
+        listContainer.fadeOut();
     }
 }
 
