@@ -110,9 +110,7 @@ function updateListBox(box, listData) {
 
     // Step 4: Adjust visibility as required
 
-
-    console.log(listArray.length);
-    console.log(listArray.length == 0);
+    console.log(listArray == []);
 
     if (!boxVisible && listArray.length > 0) {
         listContainer.fadeIn();
