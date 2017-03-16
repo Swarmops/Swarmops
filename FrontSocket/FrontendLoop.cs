@@ -203,6 +203,9 @@ namespace Swarmops.Frontend.Socket
         private static int _sandboxDummy1 = 500;
         private static int _sandboxDummy2 = 50000;
 
+        private static int _malfunctionTestCounter = 0;
+        private static string[] malfunctionStrings = {"One", "Two", "Three", "Four"};
+
         private static void OnEveryTenSeconds()
         {
             SystemSettings.HeartbeatFrontend = DateTime.UtcNow.ToUnix();
@@ -212,12 +215,26 @@ namespace Swarmops.Frontend.Socket
                 _sandboxDummy1 += new Random().Next(10) - 3;
                 _sandboxDummy2 += new Random().Next(1000) - 200;
 
-                JObject data = new JObject();
-                data["MessageType"] = "SandboxUpdate";
-                data["Local"] = _sandboxDummy1.ToString(CultureInfo.InvariantCulture);
-                data["Profit"] = _sandboxDummy2.ToString(CultureInfo.InvariantCulture);
+                JObject data1 = new JObject();
+                data1["MessageType"] = "SandboxUpdate";
+                data1["Local"] = _sandboxDummy1.ToString(CultureInfo.InvariantCulture);
+                data1["Profit"] = _sandboxDummy2.ToString(CultureInfo.InvariantCulture);
 
-                _socketServer.WebSocketServices.Broadcast(data.ToString());
+                _socketServer.WebSocketServices.Broadcast(data1.ToString());
+
+                JArray malfunctionsArray = new JArray();
+                for (int loop = 0; loop < _malfunctionTestCounter; loop++)
+                {
+                    JObject malfunctionObject = new JObject();
+                    malfunctionObject["Id"] = "Mal" + loop.ToString();
+                    malfunctionObject["Text"] = malfunctionStrings[loop];
+                    malfunctionsArray.Add(malfunctionObject);
+                }
+
+                JObject data2 = new JObject();
+                data2["MessageType"] = "Malfunctions";
+                data2["MalfunctionsData"] = malfunctionsArray.ToString();
+                _socketServer.WebSocketServices.Broadcast(data2.ToString());
             }
         }
 

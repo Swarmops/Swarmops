@@ -71,3 +71,4 @@ SWARMOPS VI
     to show on balancetx page
 [ ] Close ledger year
 [X] Internal TX account type
+[ ] Create TX

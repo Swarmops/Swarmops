@@ -47,6 +47,10 @@ function _masterInitializeSocket(authenticationTicket) {
                 alertify.log("Bitcoin received: " + message.Currency + " " + message.CentsFormatted);
             }
         }
+        else if (message.MessageType == "Malfunctions") {
+            console.log(message.MalfunctionsList);
+            updateListBox($('#divMalfunctionsList'), message.MalfunctionsList);
+        }
         else if (message.MessageType == "SandboxUpdate") {
             if (odoLocalParticipation != undefined) {  // Real ugly accessing specific page elements here, but it's temporary
                 odoLocalParticipation.innerHTML = message.Local;
@@ -66,6 +70,53 @@ function getMasterSocketAddress() {
         return protocol + location.host + "/ws/Front";
     }
 }
+
+// ------------------- List updating --------------------------
+
+
+function updateListBox(box, listData) {
+    // list is an array of object { id, text }
+    // box is a div-div-ul-li nest containing the li:s with the id
+    // the function syncs the box to the list with some nice fades
+
+    // Is the box visible right now?
+
+    var boxVisible = $(box).is(":visible");
+
+    // Step 1: Iterate through list, build id array
+
+    var idListLookup = {};
+    listData.forEach(function(item, index) {
+        idListLookup[item.id] = item;
+    });
+
+    // Step 2: Iterate through box, change texts of matching ids,
+    //         remove items that aren't in list, build id array
+
+    var idBoxLookup = {};
+    var listContainer = $(box).firstChild.firstChild;
+    console.log($(box));
+    console.log(listContainer);
+    var listElements = $(listContainer).children;
+
+    // Step 3: Iterate through list, add missing items
+
+    /*
+    var newItem = $("<li>Item " + listItem.text + "</li>").hide();
+    $("#mylist").prepend(newItem);
+    newItem.slideDown();*/
+
+    // Step 4: Adjust visibility as required
+
+    if (!boxVisible && listData.length > 0) {
+        box.fadeIn();
+    }
+    else if (boxVisible && listData.length == 0) {
+        box.fadeOut();
+    }
+}
+
+
 
 // ------------------- SwarmopsJS object ----------------------
 
