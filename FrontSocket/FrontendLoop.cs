@@ -238,7 +238,7 @@ namespace Swarmops.Frontend.Socket
 
                 JObject data2 = new JObject();
                 data2["MessageType"] = "Malfunctions";
-                data2["MalfunctionsList"] = malfunctionsArray.ToString();
+                data2["MalfunctionsList"] = malfunctionsArray;
                 _socketServer.WebSocketServices.Broadcast(data2.ToString());
             }
         }
