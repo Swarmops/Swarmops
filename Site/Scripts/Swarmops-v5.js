@@ -111,7 +111,7 @@ function updateListBox(box, listData) {
 
     // Step 4: Adjust visibility as required
 
-    var listEmpty = (!$.isArray(siteArray) || !siteArray.length);
+    var listEmpty = (!$.isArray(listArray) || !listArray.length);
     console.log(listEmpty);
 
     if (!boxVisible && !listEmpty) {
