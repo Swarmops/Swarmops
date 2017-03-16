@@ -111,16 +111,13 @@ function updateListBox(box, listData) {
 
 
     listArray.forEach(function(item, index) {
-        if (idBoxLookup[item.id] != true) {
+        if (idBoxLookup[item.Id] != true) {
             var newItem = $("<li> " + item.Text + "</li>").hide();
-            $(box).append(newItem);
+            $(listElements).append(newItem);
             newItem.slideDown();
         }
     });
 
-
-
-    /*
 
     // Step 4: Adjust visibility as required
 
