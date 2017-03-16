@@ -98,10 +98,10 @@ function updateListBox(box, listData) {
     //         remove items that aren't in list, build id array
 
     var idBoxLookup = {};
-    var listContainer = $(box).firstChild.firstChild;
+    var listContainer = $(box).parent.parent;
     console.log($(box));
     console.log(listContainer);
-    var listElements = $(listContainer).children;
+    var listElements = $(box).children;
 
     // Step 3: Iterate through list, add missing items
 
