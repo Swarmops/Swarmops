@@ -88,7 +88,7 @@ function updateListBox(box, listData) {
     var idListLookup = {};
     if (listData.length > 0) {
         listArray.forEach(function(item, index) {
-            idListLookup[item.id] = item;
+            idListLookup[item.Id] = item;
         });
     }
 
@@ -98,14 +98,29 @@ function updateListBox(box, listData) {
     var idBoxLookup = {};
     var listContainer = $(box).parent().parent();
     var listElements = $(box).children();
+   
     console.log(listElements);
 
     // Step 3: Iterate through list, add missing items
 
+    if (listElements.length == 0)
+    {
+        $(box).append ($("<ul></ul>"));
+        listElements = $(box).children();
+    }
+
+
+    listArray.forEach(function(item, index) {
+        if (idBoxLookup[item.id] != true) {
+            var newItem = $("<li> " + item.Text + "</li>").hide();
+            $(box).append(newItem);
+            newItem.slideDown();
+        }
+    });
+
+
+
     /*
-    var newItem = $("<li>Item " + listItem.text + "</li>").hide();
-    $("#mylist").prepend(newItem);
-    newItem.slideDown();*/
 
     // Step 4: Adjust visibility as required
 
