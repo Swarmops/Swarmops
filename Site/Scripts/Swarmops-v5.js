@@ -2,10 +2,24 @@
 
 var _masterSocket;
 var _masterSocketHeartbeatsLost;
-var _masterSocketLastHeartbeat;
+var _masterWatchingHeartbeat = false;
+var _masterSocketLastHeartbeat = -1;
+var _masterAuthenticationTicket = "";
 
 
 function _masterInitializeSocket(authenticationTicket) {
+
+    // Our first call should always be with an auth ticket; save this for later use
+
+    if (authenticationTicket === undefined) {
+        authenticationTicket = _masterAuthenticationTicket;
+    } else {
+        _masterAuthenticationTicket = authenticationTicket;
+    }
+
+    // If we're being called to restore communications in case of a heartbeat failure,
+    // close the channel first or the server will think we're still here
+
     if (_masterSocket != null) {
         _masterSocket.close();
         _masterSocket = null;
@@ -13,26 +27,45 @@ function _masterInitializeSocket(authenticationTicket) {
 
     var socketUrl = getMasterSocketAddress() + "?Auth=" + authenticationTicket;
 
+    // Create instance and open socket
+
     _masterSocket = new WebSocket(socketUrl);
+
+    // Set events
+
     _masterSocket.onopen = function(data) {
-        if (_masterSocketHeartbeatsLost) {
-            _masterSocketHeartbeatsLost = false;
-        }
+        console.log("MasterSocket.OnOpen();");
+
         if (_error_ClientSocketLost) {
             _error_ClientSocketLost = false;
             updateMalfunctions();
         }
 
-        //watchHeartbeat();
+        // If this is the first .open, start the heartbeat watcher
+
+        if (!_masterWatchingHeartbeat) {
+            watchHeartbeat();
+        }
     };
 
-    _masterSocket.onclose = function(data) {
+    _masterSocket.onclose = function (data) {
+
+        console.log("MasterSocket.OnClose();");
         _error_ClientSocketLost = true;
         updateMalfunctions();
+
+        if (!_masterWatchingHeartbeat) {
+            watchHeartbeat(); // begin watch heartbeat if open never happened
+        }
     };
+
     _masterSocket.onerror = function (data) {
+
+        console.log("MasterSocket.OnError();");
         if (!_error_ClientSocketLost) {
             alertify.error("WARNING: Socket connection error - realtime updates will not be available");
+            _error_ClientSocketLost = true;
+            updateMalfunctions();
         }
     };
 
@@ -44,7 +77,13 @@ function _masterInitializeSocket(authenticationTicket) {
 
         if (message.MessageType == "Heartbeat") {
             _masterSocketLastHeartbeat = new Date().getTime();
+            console.log("Heartbeat");
 
+            if (_masterSocketHeartbeatsLost) {
+                console.log(" - receiving heartbeats again");
+                _masterSocketHeartbeatsLost = false;
+                updateMalfunctions();
+            }
         }
         else if (message.MessageType == "BitcoinReceived") {
             // console.log("Currency is " + message.Currency);
@@ -74,6 +113,43 @@ function _masterInitializeSocket(authenticationTicket) {
     };
 }
 
+function watchHeartbeat() {
+    console.log("WatchHeartbeat()");
+    
+    _masterWatchingHeartbeat = true;
+
+    // Check again for a new heartbeat in ten seconds
+
+    setTimeout(function () {
+        watchHeartbeat();
+    }, 10000);
+
+    // Have we lost the socket connection? If so, use this to try reconnecting
+
+    if (_error_ClientSocketLost) {
+        console.log(" - trying to reinit socket");
+        _masterInitializeSocket();
+    }
+
+    // If we got a heartbeat more than fifteen seconds ago, we've lost the heartbeat
+
+    console.log(" - checking timestamps");
+
+    if (_masterSocketLastHeartbeat != -1 && !_masterSocketHeartbeatsLost) { // if we've received any at all
+        var curTime = new Date().getTime();
+        var diff = (curTime - _masterSocketLastHeartbeat) / 1000;
+        console.log(" - last heartbeat was " + diff + " seconds ago");
+        if (diff > 15) {
+            console.log(" - Heartbeats LOST");
+            _masterSocketHeartbeatsLost = true;
+            updateMalfunctions();
+        }
+    } else {
+        console.log(" - no previous heartbeat received");
+    }
+}
+
+
 function getMasterSocketAddress() {
     if (location.host.indexOf ("localhost") >= 0) { // Assume dev environment, go for sandbox socket
         return 'ws://sandbox.swarmops.com/ws/Front';
@@ -86,21 +162,31 @@ function getMasterSocketAddress() {
 
 function updateMalfunctions(serverList) {
 
+    console.log("UpdateMalfunctions();");
+
     if (serverList === undefined) {
-        serverList = _master_LastServerMalfunctionsList;
+        serverList = JSON.parse(JSON.stringify(_master_LastServerMalfunctionsList)); // deep copy
     } else {
-        _master_LastServerMalfunctionsList = serverList;
+        _master_LastServerMalfunctionsList = JSON.parse(JSON.stringify(serverList)); // deep copy
     }
 
-    var serverArray = Array.from(serverList);
-    if (_masterSocketHeartbeatsLost) {
-        serverArray.push(constructMalfunctionData("ClientHeartbeat", _errorDisplay_clientHeartbeatLost));
+    if (serverList === undefined) {  // init edge case
+        serverList = [];
+        _master_LastServerMalfunctionsList = [];
     }
+
     if (_error_ClientSocketLost) {
-        serverArray.push(constructMalfunctionData("ClientSocket", _errorDisplay_clientSocketLost));
+        console.log("Foo2");
+        serverList.push(constructMalfunctionData("ClientSocket", _errorDisplay_clientSocketLost));
+    }
+    else if (_masterSocketHeartbeatsLost) {
+        console.log("Foo1");
+        serverList.push(constructMalfunctionData("ClientHeartbeat", _errorDisplay_clientHeartbeatLost));
     }
 
-    updateListBox($('#divMalfunctionsList'), serverArray);
+    console.log("Bar");
+
+    updateListBox($('#divMalfunctionsList'), serverList);
 }
 
 function constructMalfunctionData(id, text, icon, link) {
@@ -125,13 +211,18 @@ function updateListBox(box, listData) {
     // box is a div-div-ul-li nest containing the li:s with the id
     // the function syncs the box to the list with some nice fades
 
+    console.log("UpdateListBox();");
+
     // Is the box visible right now?
 
     var boxVisible = $(box).is(":visible");
 
     // Step 1: Iterate through list, build id array
 
-    var listArray = Array.from(listData);
+    console.log(" - step 1");
+
+    var listArray = listData;
+    console.log(listArray);
     var idListLookup = {};
     if (listData.length > 0) {
         listArray.forEach(function(item, index) {
@@ -141,6 +232,8 @@ function updateListBox(box, listData) {
 
     // Step 2: Iterate through box, change texts of matching ids,
     //         remove items that aren't in list, build id array
+
+    console.log(" - step 2");
 
     var idBoxLookup = {};
     var listContainer = $(box).parent().parent();
@@ -165,7 +258,9 @@ function updateListBox(box, listData) {
         });
     }
 
-// Step 3: Iterate through list, add missing items
+    // Step 3: Iterate through list, add missing items
+
+    console.log(" - step 3");
 
     if (listElements.length == 0)
     {
@@ -187,6 +282,8 @@ function updateListBox(box, listData) {
 
 
     // Step 4: Adjust visibility as required
+
+    console.log(" - fixing visibility");
 
     var listEmpty = (!$.isArray(listArray) || !listArray.length);
 

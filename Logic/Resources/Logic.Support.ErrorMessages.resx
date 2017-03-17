@@ -124,7 +124,7 @@
     <value>Blockchain Connection Lost</value>
   </data>
   <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
-    <value>The web browser is unable to hear the server's heartbeat.</value>
+    <value>The web browser is unable to hear the server's heartbeat. Real-time updates may not be available.</value>
   </data>
   <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
     <value>Heartbeat Failure Level 1</value>

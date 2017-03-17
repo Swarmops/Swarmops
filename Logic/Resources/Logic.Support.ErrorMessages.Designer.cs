@@ -79,7 +79,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The web browser is unable to hear the server&apos;s heartbeat..
+        ///   Looks up a localized string similar to The web browser is unable to hear the server&apos;s heartbeat. Real-time updates may not be available..
         /// </summary>
         internal static string Client_ServerHeartbeatLost_Text {
             get {
