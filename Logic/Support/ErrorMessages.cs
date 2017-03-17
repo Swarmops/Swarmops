@@ -11,7 +11,7 @@ namespace Swarmops.Logic.Support
 {
     public class ErrorMessages
     {
-        public static string Localize(string errorMessage, string culture = null)
+        public static string Localized(string errorMessage, string culture = null)
         {
             if (String.IsNullOrEmpty(culture))
             {
@@ -21,9 +21,13 @@ namespace Swarmops.Logic.Support
             }
             else
             {
-                return @"<strong>" + Logic_Support_ErrorMessages.ResourceManager.GetString(errorMessage + "_Title", CultureInfo.CreateSpecificCulture(culture)) +
+                return @"<strong>" +
+                       Logic_Support_ErrorMessages.ResourceManager.GetString(errorMessage + "_Title",
+                           CultureInfo.CreateSpecificCulture(culture)) +
                        @":</strong> " +
-                       Logic_Support_ErrorMessages.ResourceManager.GetString(errorMessage + "_Text", CultureInfo.CreateSpecificCulture(culture));
+                       Logic_Support_ErrorMessages.ResourceManager.GetString(errorMessage + "_Text",
+                           CultureInfo.CreateSpecificCulture(culture));
             }
         }
+    }
 }

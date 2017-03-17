@@ -520,6 +520,20 @@ namespace Swarmops.Frontend
         }
 
 
+        public string Localized_ClientError_SocketFail
+        {
+            get
+            {
+                return
+                    CommonV5.JavascriptEscape(
+                        ErrorMessages.Localized("Client_ServerConnectionFault"));
+            }
+        }
+
+        public string Localized_ClientError_HeartbeatFail
+        {
+            get { return CommonV5.JavascriptEscape(ErrorMessages.Localized("Client_ServerHeartbeatLost")); }
+        }
 
         public string GenerateBitIdToken
         {

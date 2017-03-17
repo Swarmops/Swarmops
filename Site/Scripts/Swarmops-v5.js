@@ -2,6 +2,7 @@
 
 var _masterSocket;
 var _masterSocketHeartbeatsLost;
+var _masterSocketLastHeartbeat;
 
 
 function _masterInitializeSocket(authenticationTicket) {
@@ -15,24 +16,35 @@ function _masterInitializeSocket(authenticationTicket) {
     _masterSocket = new WebSocket(socketUrl);
     _masterSocket.onopen = function(data) {
         if (_masterSocketHeartbeatsLost) {
-            // Reload all edits and the edit pool. If there are discrepancies, we can probably live with them. (Detect editing?)
-            //alertify.log("Backend connection restored without interruption.");
-
             _masterSocketHeartbeatsLost = false;
+        }
+        if (_error_ClientSocketLost) {
+            _error_ClientSocketLost = false;
+            updateMalfunctions();
         }
 
         //watchHeartbeat();
     };
-    _masterSocket.onclose = function(data) { /* TODO: try reconnecting */ };
-    _masterSocket.onerror = function(data) { alertify.error("WARNING: Socket connection error - realtime updates will not be available"); };
-    _masterSocket.onmessage = function(data) {
+
+    _masterSocket.onclose = function(data) {
+        _error_ClientSocketLost = true;
+        updateMalfunctions();
+    };
+    _masterSocket.onerror = function (data) {
+        if (!_error_ClientSocketLost) {
+            alertify.error("WARNING: Socket connection error - realtime updates will not be available");
+        }
+    };
+
+    _masterSocket.onmessage = function (data) {
         
         console.log(data.data);
 
         var message = $.parseJSON(data.data);
 
         if (message.MessageType == "Heartbeat") {
-            //alertify.log("Master socket heartbeat: " + message.Timestamp);
+            _masterSocketLastHeartbeat = new Date().getTime();
+
         }
         else if (message.MessageType == "BitcoinReceived") {
             // console.log("Currency is " + message.Currency);
@@ -44,11 +56,12 @@ function _masterInitializeSocket(authenticationTicket) {
             }
 
             if (!handled) {
+                // Otherwise make a log note at the bottom right of the screen
                 alertify.log("Bitcoin received: " + message.Currency + " " + message.CentsFormatted);
             }
         }
         else if (message.MessageType == "Malfunctions") {
-            updateListBox($('#divMalfunctionsList'), message.MalfunctionsList);
+            updateMalfunctions (message.MalfunctionsList);
         }
         else if (message.MessageType == "SandboxUpdate") {
             if (odoLocalParticipation != undefined) {  // Real ugly accessing specific page elements here, but it's temporary
@@ -69,6 +82,40 @@ function getMasterSocketAddress() {
         return protocol + location.host + "/ws/Front";
     }
 }
+
+
+function updateMalfunctions(serverList) {
+
+    if (serverList === undefined) {
+        serverList = _master_LastServerMalfunctionsList;
+    } else {
+        _master_LastServerMalfunctionsList = serverList;
+    }
+
+    var serverArray = Array.from(serverList);
+    if (_masterSocketHeartbeatsLost) {
+        serverArray.push(constructMalfunctionData("ClientHeartbeat", _errorDisplay_clientHeartbeatLost));
+    }
+    if (_error_ClientSocketLost) {
+        serverArray.push(constructMalfunctionData("ClientSocket", _errorDisplay_clientSocketLost));
+    }
+
+    updateListBox($('#divMalfunctionsList'), serverArray);
+}
+
+function constructMalfunctionData(id, text, icon, link) {
+    var newItem = {};
+    newItem.Id = id;
+    newItem.Text = text;
+    newItem.Icon = icon;
+    newItem.Link = link;
+
+    return newItem;
+}
+
+var _master_LastServerMalfunctionsList = [];
+var _error_ClientSocketLost = false;
+
 
 // ------------------- List updating --------------------------
 

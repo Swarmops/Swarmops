@@ -773,8 +773,15 @@
         var _master_bitIdRegisterSuccess = false;
 
 
+        // some localized error messages, used in Swarmops-v5.js (yes, I know it's ugly to split like that, but
+        // Swarmops-v5.js isn't run through the ASPX filter and therefore not localized)
+
+        var _errorDisplay_clientSocketLost = SwarmopsJS.unescape('<%=this.Localized_ClientError_SocketFail%>');
+        var _errorDisplay_clientHeartbeatLost = SwarmopsJS.unescape('<%=this.Localized_ClientError_HeartbeatFail%>');
+
     </script>
-	
+
+
 	</form>
 
     <!-- some javascript in footer -->
