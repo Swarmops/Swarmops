@@ -100,10 +100,11 @@ function updateListBox(box, listData) {
     var listElements = $(box).children();
 
     if (listElements.length > 0) {
-        listElements.children().each(function(index) {
+        listElements.children().each(function (index) {
             console.log($(this));
             var elementId = $(this).attr("rel");
             console.log(elementId);
+            idBoxLookup[elementId] = true;
             var testLookup = idListLookup[elementId];
             console.log(testLookup);
 
