@@ -124,7 +124,7 @@ function watchHeartbeat() {
         watchHeartbeat();
     }, 10000);
 
-    // Have we lost the socket connection? If so, use this to try reconnecting
+    // Have we lost the socket connection? If so, take this cadence opportunity to try reconnecting
 
     if (_error_ClientSocketLost) {
         console.log(" - trying to reinit socket");
@@ -170,21 +170,17 @@ function updateMalfunctions(serverList) {
         _master_LastServerMalfunctionsList = JSON.parse(JSON.stringify(serverList)); // deep copy
     }
 
-    if (serverList === undefined) {  // init edge case
+    if (serverList === undefined) {  // edge case present on early init
         serverList = [];
         _master_LastServerMalfunctionsList = [];
     }
 
     if (_error_ClientSocketLost) {
-        console.log("Foo2");
         serverList.push(constructMalfunctionData("ClientSocket", _errorDisplay_clientSocketLost));
     }
     else if (_masterSocketHeartbeatsLost) {
-        console.log("Foo1");
         serverList.push(constructMalfunctionData("ClientHeartbeat", _errorDisplay_clientHeartbeatLost));
     }
-
-    console.log("Bar");
 
     updateListBox($('#divMalfunctionsList'), serverList);
 }
@@ -206,7 +202,7 @@ var _error_ClientSocketLost = false;
 // ------------------- List updating --------------------------
 
 
-function updateListBox(box, listData) {
+function updateListBox(box, listArray) {
     // list is an array of object { id, text }
     // box is a div-div-ul-li nest containing the li:s with the id
     // the function syncs the box to the list with some nice fades
@@ -221,10 +217,9 @@ function updateListBox(box, listData) {
 
     console.log(" - step 1");
 
-    var listArray = listData;
     console.log(listArray);
     var idListLookup = {};
-    if (listData.length > 0) {
+    if (listArray.length > 0) {
         listArray.forEach(function(item, index) {
             idListLookup[item.Id] = item;
         });
