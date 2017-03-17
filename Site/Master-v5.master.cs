@@ -526,7 +526,7 @@ namespace Swarmops.Frontend
             {
                 return
                     CommonV5.JavascriptEscape(
-                        ErrorMessages.Localized("Client_ServerConnectionFault"));
+                        ErrorMessages.Localized("Client_SocketConnectionFault"));
             }
         }
 
