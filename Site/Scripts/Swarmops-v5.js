@@ -104,13 +104,15 @@ function updateListBox(box, listData) {
             console.log($(this));
             var elementId = $(this).attr("rel");
             console.log(elementId);
+            var testLookup = idListLookup[elementId];
+            console.log(testLookup);
 
-            if (typeof idListLookup[elementId] != 'undefined') {
+            if (testLookup === undefined) {
+                // displayed item is NOT present in supplied list, and should be removed
+                $(this).slideUp(400, function () { $(this).remove(); });
+            } else {
                 // displayed item is present in supplied list
                 // TODO: update text
-            } else {
-                // displayed item is NOT present in supplied list, and should be removed
-                $(this).slideUp(400, function() { $(this).remove(); });
             }
         });
     }

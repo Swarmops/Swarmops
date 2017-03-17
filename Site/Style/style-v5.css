@@ -1146,6 +1146,27 @@ body.rtl .sidebar h2 span.arrow {
 
 
 
+/* TODO, MALFUNCTIONS LIST IN SIDEBAR */
+
+div#divMalfunctionsList > ul {
+    list-style: none;
+}
+
+div#divMalfunctionsList > ul > li {
+    padding-top: 8px;
+    background: url('/Images/Icons/iconshock-warning-24px.png') no-repeat 0px 3px;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    line-height: 140%;
+}
+
+div#divMalfunctionsList > ul > li+li {
+    border-top: 1px #476EC7 solid;
+    margin-top: 5px;
+}
+
+/* TODO: RTL VERSION AND TODO VERSION */
+
 
 /* OTHER ELEMENTS */
 
