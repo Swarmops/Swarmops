@@ -288,10 +288,10 @@ function updateListBox(box, listData) {
     var listEmpty = (!$.isArray(listArray) || !listArray.length);
 
     if (!boxVisible && !listEmpty) {
-        listContainer.fadeIn().slideDown();
+        listContainer.fadeIn(500).slideDown(300);
     }
     else if (boxVisible && listEmpty) {
-        listContainer.fadeOut().slideUp();
+        listContainer.fadeOut(500).slideUp(300);
     }
 }
 
