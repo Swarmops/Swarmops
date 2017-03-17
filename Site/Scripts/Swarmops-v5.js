@@ -126,7 +126,7 @@ function watchHeartbeat() {
 
     // Have we lost the socket connection? If so, take this cadence opportunity to try reconnecting
 
-    if (_error_ClientSocketLost) {
+    if (_error_ClientSocketLost || _masterSocketHeartbeatsLost) {
         console.log(" - trying to reinit socket");
         _masterInitializeSocket();
     }
@@ -160,29 +160,29 @@ function getMasterSocketAddress() {
 }
 
 
-function updateMalfunctions(serverList) {
+function updateMalfunctions(issueList) {
 
     console.log("UpdateMalfunctions();");
 
-    if (serverList === undefined) {
-        serverList = JSON.parse(JSON.stringify(_master_LastServerMalfunctionsList)); // deep copy
+    if (issueList === undefined) {
+        issueList = JSON.parse(JSON.stringify(_master_LastServerMalfunctionsList)); // deep copy
     } else {
-        _master_LastServerMalfunctionsList = JSON.parse(JSON.stringify(serverList)); // deep copy
+        _master_LastServerMalfunctionsList = JSON.parse(JSON.stringify(issueList)); // deep copy
     }
 
-    if (serverList === undefined) {  // edge case present on early init
-        serverList = [];
+    if (issueList === undefined) {  // edge case present on early init
+        issueList = [];
         _master_LastServerMalfunctionsList = [];
     }
 
     if (_error_ClientSocketLost) {
-        serverList.push(constructMalfunctionData("ClientSocket", _errorDisplay_clientSocketLost));
+        issueList.push(constructMalfunctionData("ClientSocket", _errorDisplay_clientSocketLost));
     }
     else if (_masterSocketHeartbeatsLost) {
-        serverList.push(constructMalfunctionData("ClientHeartbeat", _errorDisplay_clientHeartbeatLost));
+        issueList.push(constructMalfunctionData("ClientHeartbeat", _errorDisplay_clientHeartbeatLost));
     }
 
-    updateListBox($('#divMalfunctionsList'), serverList);
+    updateListBox($('#divMalfunctionsList'), issueList);
 }
 
 function constructMalfunctionData(id, text, icon, link) {
