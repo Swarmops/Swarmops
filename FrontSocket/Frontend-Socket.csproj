@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrontendMalfunctions.cs" />
     <Compile Include="FrontendServices.cs" />
     <Compile Include="FrontendLoop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

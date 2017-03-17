@@ -9,3 +9,4 @@ Logic.Structure.Geography.resx
 Logic.Swarm.DashboardTodos.resx
 Logic.Swarm.ParticipantTitle.resx
 Logic.Swarm.Position.resx
+Logic.Support.ErrorMessages.resx

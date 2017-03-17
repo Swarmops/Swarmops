@@ -203,8 +203,9 @@ namespace Swarmops.Frontend.Socket
         private static int _sandboxDummy1 = 500;
         private static int _sandboxDummy2 = 50000;
 
+        /*
         private static int _malfunctionTestCounter = 0;
-        private static string[] malfunctionStrings = {"One", "Two", "Three", "Four"};
+        private static string[] malfunctionStrings = {"One", "Two", "Three", "Four"};*/
 
         private static void OnEveryTenSeconds()
         {
@@ -222,6 +223,7 @@ namespace Swarmops.Frontend.Socket
 
                 _socketServer.WebSocketServices.Broadcast(data1.ToString());
 
+                /*
                 JArray malfunctionsArray = new JArray();
                 for (int loop = 0; loop < _malfunctionTestCounter; loop++)
                 {
@@ -244,7 +246,7 @@ namespace Swarmops.Frontend.Socket
                 JObject data2 = new JObject();
                 data2["MessageType"] = "Malfunctions";
                 data2["MalfunctionsList"] = malfunctionsArray;
-                _socketServer.WebSocketServices.Broadcast(data2.ToString());
+                _socketServer.WebSocketServices.Broadcast(data2.ToString());*/
             }
         }
 
@@ -298,11 +300,15 @@ namespace Swarmops.Frontend.Socket
         public static void OnBackendClose(object sender, CloseEventArgs args)
         {
             Console.WriteLine(" - Backend socket closed: " + args.Code + " " + args.Reason);
+
+            // TODO: Try reconnecting
         }
 
         public static void OnBackendError(object sender, ErrorEventArgs args)
         {
             Console.WriteLine(" - Backend socket error: " + args.Message);
+
+            // TODO: Try reconnecting
         }
 
 
@@ -318,6 +324,11 @@ namespace Swarmops.Frontend.Socket
             _backendSocket.Send(json.ToString());
         }
 
+
+        public static void BroadcastMalfunctions()
+        {
+            
+        }
 
 
 
