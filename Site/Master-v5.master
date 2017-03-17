@@ -250,11 +250,10 @@
                 </div>
             </div>
     
-            <div id="divDashboardMalfunctions">
+            <div id="divDashboardMalfunctions" style="display:none">
                 <h2 class="flashheader orange">Tech Malfunctions<span class="arrow"></span></h2>
                 <div class="box">
                     <div id="divMalfunctionsList" class="content">
-                        <ul><li>Test one (ignore)</li><li>Test two (ignore too)</li><li>Test three (you know the drill now)</li></ul>
                     </div>
                 </div>
             </div>

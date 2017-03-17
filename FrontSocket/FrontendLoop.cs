@@ -225,6 +225,11 @@ namespace Swarmops.Frontend.Socket
                 JArray malfunctionsArray = new JArray();
                 for (int loop = 0; loop < _malfunctionTestCounter; loop++)
                 {
+                    if (loop < _malfunctionTestCounter - 2)
+                    {
+                        continue;
+                    }
+
                     JObject malfunctionObject = new JObject();
                     malfunctionObject["Id"] = "Mal" + loop.ToString();
                     malfunctionObject["Text"] = malfunctionStrings[loop] + " (Test code, ignore - and let's make this a multiline point to test flow)";
