@@ -1158,6 +1158,7 @@ div#divMalfunctionsList > ul > li {
     padding-left: 30px;
     padding-bottom: 5px;
     line-height: 140%;
+    background-size: 24px 24px;
 }
 
 div#divMalfunctionsList > ul > li+li {

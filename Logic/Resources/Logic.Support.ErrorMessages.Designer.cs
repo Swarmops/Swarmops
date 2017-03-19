@@ -61,6 +61,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operations have returned to nominal..
+        /// </summary>
+        internal static string AllClear_Text {
+            get {
+                return ResourceManager.GetString("AllClear_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Clear.
+        /// </summary>
+        internal static string AllClear_Title {
+            get {
+                return ResourceManager.GetString("AllClear_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The server has lost the connection to the bitcoin blockchain. Bitcoin transactions won&apos;t be detected in real time..
         /// </summary>
         internal static string Backend_BlockchainSocketLost_Text {

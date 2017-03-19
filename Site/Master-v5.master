@@ -780,6 +780,7 @@
 
         var _errorDisplay_clientSocketLost = SwarmopsJS.unescape('<%=this.Localized_ClientError_SocketFail%>');
         var _errorDisplay_clientHeartbeatLost = SwarmopsJS.unescape('<%=this.Localized_ClientError_HeartbeatFail%>');
+        var _errorDisplay_allClear = SwarmopsJS.unescape('<%=this.Localized_AllErrorsClear%>');        
 
     </script>
 

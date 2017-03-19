@@ -535,6 +535,11 @@ namespace Swarmops.Frontend
             get { return CommonV5.JavascriptEscape(ErrorMessages.Localized("Client_ServerHeartbeatLost")); }
         }
 
+        public string Localized_AllErrorsClear
+        {
+            get { return CommonV5.JavascriptEscape(ErrorMessages.Localized("AllClear")); }
+        }
+
         public string GenerateBitIdToken
         {
             get

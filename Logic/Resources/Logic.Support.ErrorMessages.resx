@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllClear_Text" xml:space="preserve">
+    <value>Operations have returned to nominal.</value>
+  </data>
+  <data name="AllClear_Title" xml:space="preserve">
+    <value>All Clear</value>
+  </data>
   <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
     <value>The server has lost the connection to the bitcoin blockchain. Bitcoin transactions won't be detected in real time.</value>
   </data>

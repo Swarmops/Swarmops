@@ -6,7 +6,6 @@ var _masterWatchingHeartbeat = false;
 var _masterSocketLastHeartbeat = -1;
 var _masterAuthenticationTicket = "";
 
-
 function _masterInitializeSocket(authenticationTicket) {
 
     // Our first call should always be with an auth ticket; save this for later use
@@ -38,13 +37,13 @@ function _masterInitializeSocket(authenticationTicket) {
 
         if (_error_ClientSocketLost) {
             _error_ClientSocketLost = false;
-            updateMalfunctions();
+            _master_updateMalfunctions();
         }
 
         // If this is the first .open, start the heartbeat watcher
 
         if (!_masterWatchingHeartbeat) {
-            watchHeartbeat();
+            _master_watchHeartbeat();
         }
     };
 
@@ -52,10 +51,10 @@ function _masterInitializeSocket(authenticationTicket) {
 
         console.log("MasterSocket.OnClose();");
         _error_ClientSocketLost = true;
-        updateMalfunctions();
+        _master_updateMalfunctions();
 
         if (!_masterWatchingHeartbeat) {
-            watchHeartbeat(); // begin watch heartbeat if open never happened
+            _master_watchHeartbeat(); // begin watch heartbeat if open never happened
         }
     };
 
@@ -65,7 +64,7 @@ function _masterInitializeSocket(authenticationTicket) {
         if (!_error_ClientSocketLost) {
             alertify.error("WARNING: Socket connection error - realtime updates will not be available");
             _error_ClientSocketLost = true;
-            updateMalfunctions();
+            _master_updateMalfunctions();
         }
     };
 
@@ -82,7 +81,7 @@ function _masterInitializeSocket(authenticationTicket) {
             if (_masterSocketHeartbeatsLost) {
                 console.log(" - receiving heartbeats again");
                 _masterSocketHeartbeatsLost = false;
-                updateMalfunctions();
+                _master_updateMalfunctions();
             }
         }
         else if (message.MessageType == "BitcoinReceived") {
@@ -100,7 +99,7 @@ function _masterInitializeSocket(authenticationTicket) {
             }
         }
         else if (message.MessageType == "Malfunctions") {
-            updateMalfunctions (message.MalfunctionsList);
+            _master_updateMalfunctions (message.MalfunctionsList);
         }
         else if (message.MessageType == "SandboxUpdate") {
             if (odoLocalParticipation != undefined) {  // Real ugly accessing specific page elements here, but it's temporary
@@ -113,7 +112,7 @@ function _masterInitializeSocket(authenticationTicket) {
     };
 }
 
-function watchHeartbeat() {
+function _master_watchHeartbeat() {
     console.log("WatchHeartbeat()");
     
     _masterWatchingHeartbeat = true;
@@ -121,7 +120,7 @@ function watchHeartbeat() {
     // Check again for a new heartbeat in ten seconds
 
     setTimeout(function () {
-        watchHeartbeat();
+        _master_watchHeartbeat();
     }, 10000);
 
     // Have we lost the socket connection? If so, take this cadence opportunity to try reconnecting
@@ -142,7 +141,7 @@ function watchHeartbeat() {
         if (diff > 15) {
             console.log(" - Heartbeats LOST");
             _masterSocketHeartbeatsLost = true;
-            updateMalfunctions();
+            _master_updateMalfunctions();
         }
     } else {
         console.log(" - no previous heartbeat received");
@@ -160,7 +159,7 @@ function getMasterSocketAddress() {
 }
 
 
-function updateMalfunctions(issueList) {
+function _master_updateMalfunctions(issueList) {
 
     console.log("UpdateMalfunctions();");
 
@@ -176,16 +175,16 @@ function updateMalfunctions(issueList) {
     }
 
     if (_error_ClientSocketLost) {
-        issueList.push(constructMalfunctionData("ClientSocket", _errorDisplay_clientSocketLost));
+        issueList.push(_master_constructMalfunctionData("ClientSocket", _errorDisplay_clientSocketLost));
     }
     else if (_masterSocketHeartbeatsLost) {
-        issueList.push(constructMalfunctionData("ClientHeartbeat", _errorDisplay_clientHeartbeatLost));
+        issueList.push(_master_constructMalfunctionData("ClientHeartbeat", _errorDisplay_clientHeartbeatLost));
     }
 
-    updateListBox($('#divMalfunctionsList'), issueList);
+    _master_updateListBox($('#divMalfunctionsList'), issueList);
 }
 
-function constructMalfunctionData(id, text, icon, link) {
+function _master_constructMalfunctionData(id, text, icon, link) {
     var newItem = {};
     newItem.Id = id;
     newItem.Text = text;
@@ -202,12 +201,28 @@ var _error_ClientSocketLost = false;
 // ------------------- List updating --------------------------
 
 
-function updateListBox(box, listArray) {
+function _master_updateListBox(box, listArray) {
     // list is an array of object { id, text }
     // box is a div-div-ul-li nest containing the li:s with the id
     // the function syncs the box to the list with some nice fades
 
     console.log("UpdateListBox();");
+
+    var listContainer = $(box).parent().parent();
+    var listElements = $(box).children();
+
+    // If the list is empty but the box wasn't, add an "all clear" message
+    // to the list of items and set timer to remove it
+
+    // TODO: Make the "all clear" message dependent on which box we're dealing with
+
+    if (listElements.length > 0 && listArray.length == 0) {
+        listContainer.attr("allClear", "true");
+        listArray.push(_master_constructMalfunctionData("AllClear", _errorDisplay_allClear, "/Images/Icons/iconshock-greentick-16px.png"));
+        setTimeout(function() { _master_removeAllClearMessage(listContainer, listElements); }, 10000);
+    } else {
+        listContainer.attr("allClear", "false");
+    }
 
     // Is the box visible right now?
 
@@ -231,8 +246,6 @@ function updateListBox(box, listArray) {
     console.log(" - step 2");
 
     var idBoxLookup = {};
-    var listContainer = $(box).parent().parent();
-    var listElements = $(box).children();
 
     if (listElements.length > 0) {
         listElements.children().each(function (index) {
@@ -269,7 +282,14 @@ function updateListBox(box, listArray) {
 
     listArray.forEach(function(item, index) {
         if (idBoxLookup[item.Id] != true) {
-            var newItem = $("<li rel='" + item.Id + "'> " + item.Text + "</li>").hide();
+            var html = "<li rel='" + item.Id + "'";
+
+            if (item.Icon !== undefined) {
+                html += " style='background-image:url(" + item.Icon + ")'";
+            }
+
+            html += "> " + item.Text + "</li>";
+            var newItem = $(html).hide();
             $(listElements).append(newItem);
             newItem.slideDown();
         }
@@ -290,6 +310,15 @@ function updateListBox(box, listArray) {
     }
 }
 
+
+function _master_removeAllClearMessage(domIssueContainer, domIssuesList) {
+    if ($(domIssueContainer).attr("allClear") == "true") {
+        $(domIssueContainer).fadeOut(500).slideUp(300);
+        $(domIssuesList).children().each(function() {
+            $(this).slideUp(400, function() { $(this).remove(); });
+        });
+    }
+}
 
 
 // ------------------- SwarmopsJS object ----------------------
