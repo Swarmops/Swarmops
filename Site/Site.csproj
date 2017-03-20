@@ -801,6 +801,7 @@
     <Content Include="Images\Icons\iconshock-general-128px.png" />
     <Content Include="Images\Icons\iconshock-glass-16px-hot.png" />
     <Content Include="Images\Icons\iconshock-glass-16px.png" />
+    <Content Include="Images\Icons\iconshock-green-tick-128px.png" />
     <Content Include="Images\Icons\iconshock-green-tick-128x96px.png" />
     <Content Include="Images\Icons\iconshock-greentick-16px-desat-light.png" />
     <Content Include="Images\Icons\iconshock-greentick-16px-desat.png" />

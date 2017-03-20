@@ -218,7 +218,7 @@ function _master_updateListBox(box, listArray) {
 
     if (listElements.length > 0 && listArray.length == 0) {
         listContainer.attr("allClear", "true");
-        listArray.push(_master_constructMalfunctionData("AllClear", eval(listContainer.attr("allClearDisplay")), "/Images/Icons/iconshock-greentick-128px.png"));
+        listArray.push(_master_constructMalfunctionData("AllClear", eval(listContainer.attr("allClearDisplay")), "/Images/Icons/iconshock-green-tick-128px.png"));
         setTimeout(function() { _master_removeAllClearMessage(listContainer, listElements); }, 10000);
     } else {
         listContainer.attr("allClear", "false");
