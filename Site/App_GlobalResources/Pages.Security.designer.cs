@@ -314,11 +314,11 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manual Login.
+        ///   Looks up a localized string similar to Manual Password Login.
         /// </summary>
-        internal static string Login_ManualLogin {
+        internal static string Login_ManualLoginHeader {
             get {
-                return ResourceManager.GetString("Login_ManualLogin", resourceCulture);
+                return ResourceManager.GetString("Login_ManualLoginHeader", resourceCulture);
             }
         }
         
@@ -341,7 +341,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset Password.
+        ///   Looks up a localized string similar to Help, I forgot my password!.
         /// </summary>
         internal static string Login_ResetPassword {
             get {
@@ -373,6 +373,24 @@ namespace Resources.Pages {
         internal static string Login_UnknownBitIdAddress {
             get {
                 return ResourceManager.GetString("Login_UnknownBitIdAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use BitID two-factor authentication?.
+        /// </summary>
+        internal static string Login_UseBitIdLogin {
+            get {
+                return ResourceManager.GetString("Login_UseBitIdLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use manual password login?.
+        /// </summary>
+        internal static string Login_UseManualLogin {
+            get {
+                return ResourceManager.GetString("Login_UseManualLogin", resourceCulture);
             }
         }
         

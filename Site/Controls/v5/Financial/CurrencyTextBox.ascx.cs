@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Swarmops.Common.Enums;
 using System.Web.UI;
 
 namespace Swarmops.Frontend.Controls.Financial
@@ -13,6 +14,11 @@ namespace Swarmops.Frontend.Controls.Financial
         protected void Page_Load (object sender, EventArgs e)
         {
             this.Input.Attributes["role"] = "note"; // disable Lastpass trying to autofill
+
+            if (this.Layout == LayoutDirection.Unknown)
+            {
+                this.Layout = LayoutDirection.Vertical;
+            }
         }
 
         public Int64 Cents
@@ -65,6 +71,8 @@ namespace Swarmops.Frontend.Controls.Financial
         }
 
         // TODO: Add other-currency parsing
+
+        public LayoutDirection Layout { get; set; }
 
         public new void Focus()
         {

@@ -13,26 +13,7 @@
                 }
             });
         }
-        
-        function flashOrangeHeader() {
-            if (!_orangeFlashState) {
-                $('h2.flashheader').addClass("orangeDark").removeClass("orange");
-                _orangeFlashState = true;
-                setTimeout("flashOrangeHeader();", 250);
-            } else {
-                $('h2.flashheader').removeClass("orangeDark").addClass("orange");
-                _orangeFlashState = false;
-                setTimeout("flashOrangeHeader();", 1750);
-            }
-        }
-
-        $(document).ready(function() {
-            flashOrangeHeader();
-        });
-
-
-
-        var _orangeFlashState = false;
+       
     </script>
 
     <!-- this box is only visible on the Master when impersonation is active -->

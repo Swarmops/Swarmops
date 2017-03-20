@@ -203,8 +203,9 @@
   <data name="Login_LoggingIn" xml:space="preserve">
     <value>Logging in, please wait...</value>
   </data>
-  <data name="Login_ManualLogin" xml:space="preserve">
-    <value>Manual Login</value>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>Manual Password Login</value>
+    <comment>Header to manual username/password form</comment>
   </data>
   <data name="Login_PageTitle" xml:space="preserve">
     <value>Login</value>
@@ -213,7 +214,7 @@
     <value>Pass</value>
   </data>
   <data name="Login_ResetPassword" xml:space="preserve">
-    <value>Reset Password</value>
+    <value>Help, I forgot my password!</value>
   </data>
   <data name="Login_SelfSignup" xml:space="preserve">
     <value>Sign me up for {0}!</value>
@@ -224,6 +225,14 @@
   </data>
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
     <value>Swarmops doesn't recognize this address. Please log in manually and activate your address before using it to login.</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>Use BitID two-factor authentication?</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>Use manual password login?</value>
+    <comment>Switches from BitId to Username/Password form</comment>
   </data>
   <data name="Login_Username" xml:space="preserve">
     <value>User</value>

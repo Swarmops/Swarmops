@@ -45,7 +45,7 @@ SWARMOPS IV
 [ ] Icons for Validation
 [X] Favicon New
 [X] Inspect Ledger header bad
-[ ] Clean Login
+[X] Clean Login
 
 
 
@@ -53,7 +53,7 @@ SWARMOPS V
 ----------
 
 [X] OOBE! Wait for services
-[ ] Basic security
+[X] Basic security
 [X] Impersonation for testing
 [X] Expense access
 [ ] Assign role geolock
@@ -70,4 +70,5 @@ SWARMOPS VI
 [ ] Controlify financialtransaction
     to show on balancetx page
 [ ] Close ledger year
-[ ] Internal TX account type
+[X] Internal TX account type
+[ ] Create TX

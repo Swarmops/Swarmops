@@ -112,6 +112,15 @@ namespace Swarmops.Pages.Security {
         protected global::System.Web.UI.WebControls.Image ImageBitIdQr;
         
         /// <summary>
+        /// LabelManualLoginHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelManualLoginHeader;
+        
+        /// <summary>
         /// LiteralCredentialsUser control.
         /// </summary>
         /// <remarks>
@@ -137,6 +146,33 @@ namespace Swarmops.Pages.Security {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal LiteralCredentials2FA;
+        
+        /// <summary>
+        /// LabelForgotPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelForgotPassword;
+        
+        /// <summary>
+        /// LabelUseManualLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelUseManualLogin;
+        
+        /// <summary>
+        /// LabelUseBitIdLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelUseBitIdLogin;
         
         /// <summary>
         /// PanelCheat control.

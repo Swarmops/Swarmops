@@ -48,7 +48,7 @@
 
     <!-- page title -->
 
-	<title>Swarmops Beta- Login</title>
+	<title>Swarmops Beta - Login</title>
 
     <!-- custom styles -->
     
@@ -167,6 +167,23 @@
     	        });
     	    }
 
+    	    function toManualLogin() {
+    	        $('#divLoginQr').slideUp();
+    	        $('#divLoginManual').slideDown();
+    	        $('#TextLogin').focus();
+    	        $('#paraSwitchManualLogin').hide();
+    	        $('#paraSwitchBitIdLogin').show();
+
+	            // return false; // says we handled the click, don't process further
+    	    }
+
+    	    function toBitIdLogin() {
+    	        $('#divLoginQr').slideDown();
+    	        $('#divLoginManual').slideUp();
+    	        $('#paraSwitchManualLogin').show();
+    	        $('#paraSwitchBitIdLogin').hide();
+    	    }
+
     	    var bitIdUri = '<asp:Literal ID="LiteralUri" runat="server" />';
     	    var bitIdNonce = '<asp:Literal ID="LiteralNonce" runat="server" />';
 
@@ -175,42 +192,43 @@
     	</script>
 	
 
-	
-    <!-- Main menu, emptied out here -->
-
 	<div class="center980px">
 
         <div class="login-page-logo"><asp:Image ID="ImageLogo" runat="server" ImageUrl="/Images/Swarmops-logo-256px.png" Width="128"/></div>        
             <div class="box qrlogin">
                 <div class="content">
-                    <div align="center"><asp:Image ID="ImageBitIdQr" runat="server"/></div>
+                    <div align="center" id="divLoginQr"><asp:Image ID="ImageBitIdQr" runat="server"/></div>
+                    <div id="divLoginManual" style="display:none">
+                        <h2><asp:Label runat="server" ID="LabelManualLoginHeader">Manual Login Header XYZ</asp:Label></h2>
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom:5px">
+                            <tr><td><asp:Literal ID="LiteralCredentialsUser" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextLogin" class="InputManualCredentials" type="text" /></td></tr>
+                            <tr><td><asp:Literal ID="LiteralCredentialsPass" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextPass" class="InputManualCredentials" type="password" /></td></tr>
+                            <tr style="display: none"><td><asp:Literal id="LiteralCredentials2FA" runat="server" />&nbsp;&nbsp;</td><td><input id="Text2FA" class="InputManualCredentials" type="password" /></td></tr>
+                        </table>
+                        
+                        <p align="right"><a href="/Security/RequestPasswordReset"><asp:Label ID="LabelForgotPassword" runat="server">Help, I forgot my password!</asp:Label></a></p>
+                    </div>
                 </div>
             </div>
         
-        </div>
+            <p align="center" id="paraSwitchManualLogin"><br/><a href="javascript:toManualLogin();"><asp:Label runat="server" ID="LabelUseManualLogin">Using Manual Password Login?</asp:Label></a></p>
+            <p align="center" id="paraSwitchBitIdLogin" style="display:none"><br/><a href="javascript:toBitIdLogin();"><asp:Label runat="server" ID="LabelUseBitIdLogin">Using BitID Authentication?</asp:Label></a></p>
+        
+
+        
+            <asp:Panel ID="PanelCheat" runat="server" Visible="false">
     
-    <div class="box">
-        <div class="content" style="line-height: 24px">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr><td><asp:Literal ID="LiteralCredentialsUser" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextLogin" class="InputManualCredentials" type="text" /></td></tr>
-                <tr><td><asp:Literal ID="LiteralCredentialsPass" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextPass" class="InputManualCredentials" type="password" /></td></tr>
-                <tr style="display: none"><td><asp:Literal id="LiteralCredentials2FA" runat="server" />&nbsp;&nbsp;</td><td><input id="Text2FA" class="InputManualCredentials" type="password" /></td></tr>
-            </table>
-        </div>
-    </div>
-    
-    <asp:Panel ID="PanelCheat" runat="server" Visible="false">
-    
-        <div class="box">
-            <div class="content" style="line-height: 14px">
-                <h2>Dev's Cheat Button</h2>
-                <p>Since we're running on localhost, on a nonstandard port, with a debugger attached, and under Windows, this is clearly not a production environment. Since it's unlikely that the outside Internet has access to this machine, which means you can't login with BitID, a cheat button has been provided for you.</p><p>Press the button below to log on as Sandbox Administrator.</p>
+                <div class="box">
+                    <div class="content" style="line-height: 14px">
+                        <h2>Dev's Cheat Button</h2>
+                        <p>Since we're running on localhost, on a nonstandard port, with a debugger attached, and under Windows, this is clearly not a production environment. Since it's unlikely that the outside Internet has access to this machine, which means you can't login with BitID, a cheat button has been provided for you.</p><p>Press the button below to log on as Sandbox Administrator.</p>
                 
-                <div align="right"><asp:Button ID="ButtonCheat" runat="server" OnClick="ButtonCheat_Click" Text="Cheat Button" /></div>
-            </div>
-        </div>
-    </asp:Panel>
-                
+                        <div align="right"><asp:Button ID="ButtonCheat" runat="server" OnClick="ButtonCheat_Click" Text="Cheat Button" /></div>
+                    </div>
+                </div>
+            </asp:Panel>
+
+        </div>                
 	</form>
 
     <!-- some javascript in footer -->
