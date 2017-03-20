@@ -252,7 +252,7 @@
                 </div>
             </div>
     
-            <div id="divDashboardMalfunctions" style="display:none">
+            <div id="divDashboardMalfunctions" style="display:none" allClearDisplay="_errorDisplay_allClear">
                 <h2 class="flashheader orange">Tech Malfunctions<span class="arrow"></span></h2>
                 <div class="box">
                     <div id="divMalfunctionsList" class="content">
@@ -278,7 +278,7 @@
 
             <asp:ContentPlaceHolder ID="PlaceHolderSide" runat="server" />
     
-            <div id="divDashboardTodo">
+            <div id="divDashboardTodo" allClearDisplay="_todoDisplay_allClear">
 
                 <h2 class="orange"><asp:Label ID="LabelSidebarTodo" runat="server" /><span class="arrow"></span></h2>
     

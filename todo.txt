@@ -18,7 +18,7 @@ SWARMOPS II
 [X] Why salary fails?
 [X] Char encode HTML doc
 [ ] Hotwallet
-[ ] Tech problem box
+[X] Tech problem box
 
 
 SWARMOPS III
@@ -72,3 +72,4 @@ SWARMOPS VI
 [ ] Close ledger year
 [X] Internal TX account type
 [ ] Create TX
+[ ] Main Ledger
