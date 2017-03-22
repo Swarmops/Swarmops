@@ -281,7 +281,7 @@
     <comment>List of todo items</comment>
   </data>
   <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>No urgent action items right now.</value>
+    <value>&lt;strong&gt;All Clear:&lt;/strong&gt; There are no urgent action items. Yay!</value>
     <comment>Indicator that nothing needs immediate attention</comment>
   </data>
   <data name="Sidebar_Todo_Placeholder" xml:space="preserve">

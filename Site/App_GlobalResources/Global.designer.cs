@@ -1929,7 +1929,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No urgent action items right now..
+        ///   Looks up a localized string similar to &lt;strong&gt;All Clear:&lt;/strong&gt; There are no urgent action items. Yay!.
         /// </summary>
         internal static string Sidebar_Todo_None {
             get {

@@ -540,6 +540,11 @@ namespace Swarmops.Frontend
             get { return CommonV5.JavascriptEscape(ErrorMessages.Localized("AllClear")); }
         }
 
+        public string Localized_AllTodosClear
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Sidebar_Todo_None); }
+        }
+
         public string GenerateBitIdToken
         {
             get

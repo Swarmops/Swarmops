@@ -113,8 +113,7 @@ function _masterInitializeSocket(authenticationTicket) {
 }
 
 function _master_watchHeartbeat() {
-    console.log("WatchHeartbeat()");
-    
+ 
     _masterWatchingHeartbeat = true;
 
     // Check again for a new heartbeat in ten seconds
@@ -132,19 +131,14 @@ function _master_watchHeartbeat() {
 
     // If we got a heartbeat more than fifteen seconds ago, we've lost the heartbeat
 
-    console.log(" - checking timestamps");
-
     if (_masterSocketLastHeartbeat != -1 && !_masterSocketHeartbeatsLost) { // if we've received any at all
         var curTime = new Date().getTime();
         var diff = (curTime - _masterSocketLastHeartbeat) / 1000;
-        console.log(" - last heartbeat was " + diff + " seconds ago");
         if (diff > 15) {
             console.log(" - Heartbeats LOST");
             _masterSocketHeartbeatsLost = true;
             _master_updateMalfunctions();
         }
-    } else {
-        console.log(" - no previous heartbeat received");
     }
 }
 
@@ -160,8 +154,6 @@ function getMasterSocketAddress() {
 
 
 function _master_updateMalfunctions(issueList) {
-
-    console.log("UpdateMalfunctions();");
 
     if (issueList === undefined) {
         issueList = JSON.parse(JSON.stringify(_master_LastServerMalfunctionsList)); // deep copy
