@@ -284,12 +284,21 @@ namespace Swarmops.Frontend.Socket
         {
             JObject json = JObject.Parse(args.Data);
 
-            if ((string) json["MessageType"] != "Heartbeat")
+            string messageType = (string) json["MessageType"];
+
+            if (!messageType.Contains("Heartbeat"))
             {
                 Console.WriteLine(" - Backend message: " + args.Data);
             }
 
-            _socketServer.WebSocketServices.Broadcast(args.Data); // send unfiltered to all sessions, for now
+            if (messageType == "InternalHeartbeat")
+            {
+                // something
+            }
+            else
+            {
+                _socketServer.WebSocketServices.Broadcast(args.Data); // send unfiltered to all sessions, for now
+            }
         }
 
         public static void OnBackendOpen(object sender, EventArgs args)
