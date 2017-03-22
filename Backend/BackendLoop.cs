@@ -293,6 +293,7 @@ namespace Swarmops.Backend
 
                     // Wait for a maximum of ten seconds (the difference between cycleStartTime and cycleEndTime)
 
+                    int iterationCount = 0;
                     DateTime utcNow = DateTime.UtcNow;
                     while (utcNow < cycleEndTime && !exitFlag)
                     {
@@ -327,6 +328,13 @@ namespace Swarmops.Backend
                         }
 
                         utcNow = DateTime.UtcNow;
+
+                        // Every second, send an internal heartbeat
+
+                        if (iterationCount++%4 == 0)
+                        {
+                            InternalHeartbeat();
+                        }
                     }
                 }
             }
@@ -838,6 +846,15 @@ namespace Swarmops.Backend
             {
                 Console.Write (message);
             }
+        }
+
+        private static void InternalHeartbeat()
+        {
+            JObject json = new JObject();
+            json["MessageType"] = "InternalHeartbeat";
+            json["Timestamp"] = DateTime.UtcNow.ToUnix();
+
+            _socketServer.WebSocketServices.Broadcast(json.ToString());
         }
 
         private static void BroadcastTimestamp()
