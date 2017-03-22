@@ -293,7 +293,7 @@ namespace Swarmops.Frontend.Socket
 
             if (messageType == "InternalHeartbeat")
             {
-                // something
+                // changing to something to force build
             }
             else
             {
