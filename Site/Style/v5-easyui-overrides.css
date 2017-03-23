@@ -236,7 +236,7 @@ tr.iconTypePerson > td > div > span.tree-icon {
 }
 
 ul.tabs li.tabs-disabled {
-    display: none !important;
+    display: none !important; /* hide disabled tab completely instead of dimming it */
 }
 
 /*,
