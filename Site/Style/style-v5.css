@@ -215,6 +215,10 @@ body.rtl #MainMenuContainer {
     padding-bottom: 2px;
 }
 
+#LiSwarmopsLogo > a {
+    padding: 0 !important; /* overrides superfish padding of ".sfmenu a" class */
+}
+
 body:not(.rtl) #MainMenuContainer #LiSwarmopsLogo {
     margin-right: 20px;
 }
