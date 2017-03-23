@@ -5,6 +5,7 @@ var _masterSocketHeartbeatsLost;
 var _masterWatchingHeartbeat = false;
 var _masterSocketLastHeartbeat = -1;
 var _masterAuthenticationTicket = "";
+var _masterNavigatingAway = false; // set in document.ready in master
 
 function _masterInitializeSocket(authenticationTicket) {
 
@@ -47,16 +48,18 @@ function _masterInitializeSocket(authenticationTicket) {
         }
     };
 
-    _masterSocket.onclose = function (data) {
+    _masterSocket.onclose = function(data) {
 
         console.log("MasterSocket.OnClose();");
-        _error_ClientSocketLost = true;
+        if (!_masterNavigatingAway)
+            _error_ClientSocketLost = true;
         _master_updateMalfunctions();
 
         if (!_masterWatchingHeartbeat) {
             _master_watchHeartbeat(); // begin watch heartbeat if open never happened
         }
-    };
+    }
+};
 
     _masterSocket.onerror = function (data) {
 

@@ -77,6 +77,12 @@
 
         $(document).ready(function () {
             
+            // detect un-navigation
+
+            $(window).on("beforeunload", function() {
+                _masterNavigatingAway = true; // global defined in swarmops-v5.js
+            });
+
             // Initialize any odometers
 
             $('.odometer-integer').each(function() {
