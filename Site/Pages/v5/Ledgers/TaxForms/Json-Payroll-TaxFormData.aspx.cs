@@ -45,8 +45,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers.TaxForms
                     {
                         monthElements.Add (WriteElement (key, new DateTime (yearLoop, month, 1).ToString("yyyy MMMM"), data [key]));
                         yearData.GrossSalaryCents += data[key].GrossSalaryCents;
-                        yearData.AdditiveTaxCents += data[key].DeductedTaxCents;
-                        yearData.DeductedTaxCents += data[key].AdditiveTaxCents;
+                        yearData.AdditiveTaxCents += data[key].AdditiveTaxCents;
+                        yearData.DeductedTaxCents += data[key].DeductedTaxCents;
                     }
                 }
 
