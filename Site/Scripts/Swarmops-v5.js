@@ -51,15 +51,16 @@ function _masterInitializeSocket(authenticationTicket) {
     _masterSocket.onclose = function(data) {
 
         console.log("MasterSocket.OnClose();");
-        if (!_masterNavigatingAway)
+        if (!_masterNavigatingAway) // set in master page on window.beforeunload: socket will close when loading other page
+        {
             _error_ClientSocketLost = true;
-        _master_updateMalfunctions();
+            _master_updateMalfunctions();
 
-        if (!_masterWatchingHeartbeat) {
-            _master_watchHeartbeat(); // begin watch heartbeat if open never happened
+            if (!_masterWatchingHeartbeat) {
+                _master_watchHeartbeat(); // begin watch heartbeat if open never happened
+            }
         }
-    }
-};
+    };
 
     _masterSocket.onerror = function (data) {
 
