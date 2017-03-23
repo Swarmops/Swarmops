@@ -235,7 +235,9 @@ tr.iconTypePerson > td > div > span.tree-icon {
     margin-right: 5px;
 }
 
-
+ul.tabs li.tabs-disabled {
+    display: none !important;
+}
 
 /*,
     border-radius: 10px;
