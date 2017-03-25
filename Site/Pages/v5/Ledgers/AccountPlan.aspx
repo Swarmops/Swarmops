@@ -627,7 +627,7 @@
                 &nbsp;<br/></div>
                 <div id="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" /></div>
                 <div id="DivEditAssetControls">
-                    &nbsp;<br/><!--
+                    &nbsp;<br/>&nbsp;<br/>&nbsp;<br/><!--
                     <asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>
                     <div class="stacked-input-control"><input type="text" id="TextAutomationPaymentTag" readonly="readonly"/></div>-->
                 </div>
