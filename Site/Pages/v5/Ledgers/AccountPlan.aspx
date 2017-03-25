@@ -627,9 +627,9 @@
                 &nbsp;<br/></div>
                 <div id="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" /></div>
                 <div id="DivEditAssetControls">
-                    &nbsp;<br/>
+                    &nbsp;<br/><!--
                     <asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>
-                    <div class="stacked-input-control"><input type="text" id="TextAutomationPaymentTag" readonly="readonly"/></div>
+                    <div class="stacked-input-control"><input type="text" id="TextAutomationPaymentTag" readonly="readonly"/></div>-->
                 </div>
             </div>
             <div class="entryLabels"><asp:Literal ID="LiteralLabelAccountName" runat="server"/><br/>
@@ -643,8 +643,8 @@
                 <asp:Literal ID="LiteralLabelAdministrativeLong" runat="server"/><br/></div>
                 <div id="DivEditInitLabels"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/></div> 
                 <div id="DivEditAssetLabels"><h2><asp:Literal ID="LiteralLabelHeaderAutomation" runat="server"/></h2>
-                <asp:Literal ID="LiteralLabelFileUploadProfile" runat="server"/><br/>
-                <span id="SpanUploadParameterName">Upload parameter, if any</span></div> 
+                <!--<asp:Literal ID="LiteralLabelFileUploadProfile" runat="server"/>-->TODO<br/>
+                <span id="SpanUploadParameterName">TODO</span></div> 
             </div>
        </DialogCode>
     </Swarmops5:ModalDialog>
