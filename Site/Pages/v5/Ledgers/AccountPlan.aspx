@@ -614,21 +614,22 @@
     <Swarmops5:ModalDialog ID="DialogAccount" OnClientClose="onDialogClose" runat="server">
         <DialogCode>
             <h2 id="HeaderModal"><asp:Literal ID="LiteralHeaderEditingAccount" runat="server"/></h2>
-            <div id="DivModalFields" class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
-                <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" SuppressPrompt="True" OnClientSelect="onAccountTreeSelect" />&nbsp;<br/>
-                <div id="DivEditProfitLossControls">&nbsp;<br/>
-                <Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />&nbsp;<br/>
-                <input type="text" id="TextAccountBudget" style="text-align: right"/>&nbsp;<br/>
-                &nbsp;<br/>
+            <div id="DivModalFields" class="entryFields">
+                <div class="stacked-input-control"><input type="text" id="TextAccountName" /></div>
+                <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" SuppressPrompt="True" OnClientSelect="onAccountTreeSelect" />
+                <div id="DivEditProfitLossControls"><div class="stacked-input-control"></div>
+                <Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />
+                <div class="stacked-input-control"><input type="text" id="TextAccountBudget" style="text-align: right"/></div>
+                <div class="stacked-input-control"></div>
                 <label for="CheckAccountActive"><asp:Literal ID="LiteralLabelActiveShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckAccountActive"/></div><br/>
                 <label for="CheckAccountExpensable"><asp:Literal ID="LiteralLabelExpensableShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Expensable" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
                 <label for="CheckAccountAdministrative"><asp:Literal ID="LiteralLabelAdministrativeShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Administrative" class="EditCheck" id="CheckAccountAdministrative"/></div>
                 &nbsp;<br/></div>
-                <div id="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" />&nbsp;<br/></div>
+                <div id="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" /></div>
                 <div id="DivEditAssetControls">
                     &nbsp;<br/>
                     <asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>
-                    <input type="text" id="TextAutomationPaymentTag" readonly="readonly"/>&nbsp;<br/>
+                    <div class="stacked-input-control"><input type="text" id="TextAutomationPaymentTag" readonly="readonly"/></div>
                 </div>
             </div>
             <div class="entryLabels"><asp:Literal ID="LiteralLabelAccountName" runat="server"/><br/>
