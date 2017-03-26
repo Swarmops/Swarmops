@@ -32,7 +32,7 @@ SWARMOPS III
 [ ] Expense reject malfunction
 [X] Menu highlight
 [ ] Basic search
-[ ] Account edit spacing
+[X] Account edit spacing
 
 
 
