@@ -48,13 +48,10 @@
     <!-- external packages that are commonly used (on practically all pages) -->
     <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
     <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />
-
     
     <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
     <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js" ></script>
 
-    <!-- additional scripts etc from individual pages -->
-    <Swarmops5:IncludedScripts ID="IncludedScripts" runat="server" />
 
 </head>
 <body>
