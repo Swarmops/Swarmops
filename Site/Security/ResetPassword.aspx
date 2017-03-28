@@ -7,46 +7,34 @@
 <head id="Head1" runat="server">
 
     <!-- jQuery and plugins -->
-
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.2.0.3.min.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery-ui.1.11.1.min.js" ></script>
-
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.tmpl.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.toggles.js" ></script>
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.color.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.animate-shadow.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/hoverIntent.min.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/superfish.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/qrcode.min.js"></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.qrcode.min.js"></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/odometer.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.smartWizard-3.3.1.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/alertify.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js"></script>
 
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:light,regular,500,bold' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
-    
-    <!-- page title -->
-	<title>Swarmops - Reset Password</title>
-    
-    <!-- favicon -->
-    <link rel="shortcut icon" href="/Images/swarmops-logo-128px.png" type="image/png"/>
 
-	<!-- style sheet, followed by script style sheets -->
+    <!-- page title -->
+	<title>Resetting Password</title>
 
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
-
-    <link href="/Style/jquery.toggles.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.core.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.default.css" rel="stylesheet" type="text/css" />
-    <link href="/Style/superfish.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
-    <link href="/Style/odometer-theme-car.css" rel="stylesheet" type="text/css" />
+    <link href="WizardStyle.css" rel="stylesheet" type="text/css" />
     
     <!-- external packages that are commonly used (on practically all pages) -->
-    <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
+    
+    <!-- UGLY HACK: Control ExternalScripts requires authentication for some reason. This is a bug. But to get alpha-09 out on time, we're
+        circumventing the bug by hardcoding the hosted scripts - this needs fixing. -->
+
+    <script src="//hostedscripts.falkvinge.net/staging/easyui/jquery.easyui.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/default/easyui.css" />
     <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />
     
     <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
@@ -108,14 +96,15 @@
 
 	
     <!-- Main menu, emptied out here -->
+
+        
+    <div class="topmenu" style="margin-top: -4px; padding-top: 12px; color: white; font-family: Ubuntu; font-weight: 300; font-size: 24px; letter-spacing: 1px">
+      	<div class="center980px">
+            <span style="padding-left: 15px; padding-right: 15px"><asp:Label ID="LabelHeader" runat="server" /></span>
+        </div>
+    </div>
         
 	<div class="center980px">
-	    <div class="currentuserinfo"><div style="background-image: url('/Images/Icons/iconshock-user-16px.png'); background-repeat: no-repeat; padding-left: 16px; float: left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image: url('/Images/Icons/iconshock-workchair-16px.png'); background-repeat: no-repeat; padding-left: 17px; float: left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image: url('/Images/Icons/iconshock-gamepad-16px.png'); background-repeat: no-repeat; padding-left: 20px; float: left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div>
-        <div class="logoimage"><a href="/"><img style="border: none" src="/Security/Images/Swarmops-Logo.png" alt="Swarmops Logo" /></a></div>
-        <div class="break"></div>
-        <div class="topmenu">
-            <div class="searchbox"><asp:TextBox ID="SearchBox" ReadOnly="true" runat="server" /></div>
-        </div>
         
         <div class="mainbar">
             <div class="box">

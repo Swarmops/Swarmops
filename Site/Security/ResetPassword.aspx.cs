@@ -24,9 +24,7 @@ namespace Swarmops.Pages.Security
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Title = Resources.Pages.Security.ResetPassword_PageTitle;
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
+            this.LabelHeader.Text = this.Title = Resources.Pages.Security.ResetPassword_PageTitle;
 
             if (!Page.IsPostBack)
             {

@@ -22,15 +22,6 @@ namespace Swarmops.Pages.Security {
         protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
         
         /// <summary>
-        /// ExternalScriptEasyUI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Swarmops.Frontend.Controls.UI.ExternalScripts ExternalScriptEasyUI;
-        
-        /// <summary>
         /// form2 control.
         /// </summary>
         /// <remarks>
@@ -49,49 +40,13 @@ namespace Swarmops.Pages.Security {
         protected global::System.Web.UI.ScriptManager ScriptManagerBlahblah;
         
         /// <summary>
-        /// LabelCurrentUserName control.
+        /// LabelHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelCurrentUserName;
-        
-        /// <summary>
-        /// LabelCurrentOrganizationName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelCurrentOrganizationName;
-        
-        /// <summary>
-        /// LabelPreferences control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPreferences;
-        
-        /// <summary>
-        /// ImageCultureIndicator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageCultureIndicator;
-        
-        /// <summary>
-        /// SearchBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SearchBox;
+        protected global::System.Web.UI.WebControls.Label LabelHeader;
         
         /// <summary>
         /// LabelContentTitle control.
