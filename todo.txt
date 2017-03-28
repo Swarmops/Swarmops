@@ -73,3 +73,4 @@ SWARMOPS VI
 [X] Internal TX account type
 [ ] Create TX
 [ ] Main Ledger
+[X] Fix password reset after refactor
