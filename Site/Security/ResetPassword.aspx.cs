@@ -142,8 +142,24 @@ namespace Swarmops.Pages.Security
             return true; // temp
 
             // do NOT NOT NOT trim password - this is deliberate. Passwords starting/ending in whitespace must be possible
-
-
         }
+
+
+        public string Localize_NewPasswordsDontMatch
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Security.ResetPassword_NewPasswordsDontMatch); }
+        }
+
+        public string Localize_NoEmpty
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Security.ResetPassword_NoEmpty); }            
+        }
+
+        public string Localize_ResetPasswordFailed
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Security.ResetPassword_Failed); }
+        }
+
+        
     }
 }

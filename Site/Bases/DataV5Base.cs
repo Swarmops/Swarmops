@@ -178,5 +178,10 @@ namespace Swarmops.Frontend
         {
             return CommonV5.JavascriptEscape (input);
         }
+
+        public string Localize_GenericAjaxError
+        {
+            get { return JavascriptEscape(Resources.Global.Error_AjaxCallException); }
+        }
     }
 }

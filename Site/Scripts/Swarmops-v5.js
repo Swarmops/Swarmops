@@ -171,10 +171,10 @@ function _master_updateMalfunctions(issueList) {
     }
 
     if (_error_ClientSocketLost) {
-        issueList.push(_master_constructMalfunctionData("ClientSocket", _errorDisplay_clientSocketLost));
+        issueList.push(_master_constructMalfunctionData("ClientSocket", _errorDisplay_clientSocketLost));  // defined in master
     }
     else if (_masterSocketHeartbeatsLost) {
-        issueList.push(_master_constructMalfunctionData("ClientHeartbeat", _errorDisplay_clientHeartbeatLost));
+        issueList.push(_master_constructMalfunctionData("ClientHeartbeat", _errorDisplay_clientHeartbeatLost));  // defined in master
     }
 
     _master_updateListBox($('#divMalfunctionsList'), issueList);

@@ -7,28 +7,57 @@
 <head id="Head1" runat="server">
 
     <!-- jQuery and plugins -->
-    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
-    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js"></script>
+
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.2.0.3.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery-ui.1.11.1.min.js" ></script>
+
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.tmpl.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.toggles.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.color.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.animate-shadow.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/hoverIntent.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/superfish.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/qrcode.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.qrcode.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/odometer.js" ></script>
 
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:light,regular,500,bold' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
-
+    
     <!-- page title -->
-	<title>Swarmops Alpha - Password Reset</title>
+	<title>Swarmops - Reset Password</title>
+    
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/Images/swarmops-logo-128px.png" type="image/png"/>
+
+	<!-- style sheet, followed by script style sheets -->
 
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
+
+    <link href="/Style/jquery.toggles.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.core.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.default.css" rel="stylesheet" type="text/css" />
-
-    <!-- custom styles -->
+    <link href="/Style/superfish.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+    <link href="/Style/odometer-theme-car.css" rel="stylesheet" type="text/css" />
     
-    <style type="text/css">
+    <!-- external packages that are commonly used (on practically all pages) -->
+    <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
+    <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />
 
     
-    </style>
+    <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
+    <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js" ></script>
+
+    <!-- additional scripts etc from individual pages -->
+    <Swarmops5:IncludedScripts ID="IncludedScripts" runat="server" />
+    
+    <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />
+    <asp:Literal ID="LiteralCrowdinScript" runat="server" Text="" />
 
 </head>
 <body>
@@ -49,12 +78,12 @@
 	            jsonData.newPassword = $('#<%=this.TextPassword1.ClientID%>').val();
 
 	            if (jsonData.newPassword != $('#<%=this.TextPassword2.ClientID%>').val()) {
-	                alertify.error("<%= Resources.Pages.Security.ResetPassword_NewPasswordsDontMatch %>");
+	                alertify.error(SwarmopsJS.unescape('<%= this.Localize_NewPasswordsDontMatch %>'));
 	                return false;
 	            }
 
 	            if (jsonData.newPassword == "") {
-	                alertify.error("<%= Resources.Pages.Security.ResetPassword_NoEmpty %>");
+	                alertify.error(SwarmopsJS.unescape('<%=this.Localize_NoEmpty%>'));
 	                return false;
 	            }
 
@@ -69,11 +98,11 @@
                         if (msg.d) {
                             document.location = "/"; // success, auth cookies have been set - redirect to Dashboard
                         } else {
-                            alertify.alert("<%= Resources.Pages.Security.ResetPassword_Failed %>");
+                            alertify.dialog(SwarmopsJS.unescape('<%=this.Localize_ResetPasswordFailed%>'));
                         }
                     },
                     error: function (msg) {
-                        alertify.error("<%=Resources.Global.Error_AjaxCallException%>");
+                        alertify.error(SwarmopsJS.unescape('<%=this.Localize_GenericAjaxError%>'));
                     }
                 });
 
