@@ -55,9 +55,6 @@
 
     <!-- additional scripts etc from individual pages -->
     <Swarmops5:IncludedScripts ID="IncludedScripts" runat="server" />
-    
-    <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />
-    <asp:Literal ID="LiteralCrowdinScript" runat="server" Text="" />
 
 </head>
 <body>
