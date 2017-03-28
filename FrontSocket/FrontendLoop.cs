@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Security;
 using System.Threading;
@@ -48,6 +48,7 @@ namespace Swarmops.Frontend.Socket
             // Initiate main loop
 
             UnixSignal[] killSignals = null;
+            _activeAlarms = new Dictionary<FrontendMalfunctions, bool>();
 
             if (!Debugger.IsAttached)
             {
@@ -198,6 +199,7 @@ namespace Swarmops.Frontend.Socket
 
         private static WebSocketServer _socketServer;
         private static WebSocket _backendSocket;
+        private static DateTime _lastBackendHeartBeat = DateTime.MinValue;
 
         private static bool _isSandbox = false;
         private static int _sandboxDummy1 = 500;
@@ -222,6 +224,17 @@ namespace Swarmops.Frontend.Socket
                 data1["Profit"] = _sandboxDummy2.ToString(CultureInfo.InvariantCulture);
 
                 _socketServer.WebSocketServices.Broadcast(data1.ToString());
+
+                // Check for backend heartbeat
+
+                if (_lastBackendHeartBeat.AddSeconds(5) < DateTime.UtcNow)
+                {
+                    RaiseAlarm(FrontendMalfunctions.BackendHeartbeatLost);
+                }
+                else
+                {
+                    ClearAlarm(FrontendMalfunctions.BackendHeartbeatLost);
+                }
 
                 /*
                 JArray malfunctionsArray = new JArray();
@@ -293,7 +306,7 @@ namespace Swarmops.Frontend.Socket
 
             if (messageType == "InternalHeartbeat")
             {
-                // changing to something else to force build again and again
+                _lastBackendHeartBeat = DateTime.UtcNow;
             }
             else
             {
@@ -336,9 +349,53 @@ namespace Swarmops.Frontend.Socket
 
         public static void BroadcastMalfunctions()
         {
-            
+            JArray malfunctionsArray = new JArray();
+
+            foreach (FrontendMalfunctions alarm in _activeAlarms.Keys)
+            {
+                if (_activeAlarms[alarm])
+                {
+                    JObject newAlarm = new JObject();
+                    newAlarm["Id"] = "Frontend_" + alarm.ToString();
+                    newAlarm["Text"] = ErrorMessages.Localized("Frontend_" + alarm.ToString());
+                    malfunctionsArray.Add(newAlarm);
+                }
+            }
+
+            // TODO: Add backend active alarms
+
+            JObject message = new JObject();
+            message["MessageType"] = "Malfunctions";
+            message["MalfunctionsList"] = malfunctionsArray;
+            _socketServer.WebSocketServices.Broadcast(message.ToString());
+
         }
 
+        public static bool RaiseAlarm(FrontendMalfunctions alarm)
+        {
+            if (!_activeAlarms.ContainsKey(alarm) || !_activeAlarms[alarm])
+            {
+                _activeAlarms[alarm] = true;
+                BroadcastMalfunctions();
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool ClearAlarm(FrontendMalfunctions alarm)
+        {
+            if (_activeAlarms.ContainsKey(alarm) && _activeAlarms[alarm])
+            {
+                _activeAlarms[alarm] = false;
+                BroadcastMalfunctions();
+                return true;
+            }
+
+            return false;
+        }
+
+        private static Dictionary<FrontendMalfunctions,bool> _activeAlarms;
 
 
         // --------------------------------- LEGACY CODE BELOW THIS MARK -------------------------------
