@@ -47,9 +47,6 @@ namespace Swarmops.Pages.Security
             // Normal template
             this.LabelSidebarInfoContent.Text = Resources.Pages.Security.ResetPassword_Info;
             this.LabelSidebarInfoHeader.Text = Resources.Global.Sidebar_Information;
-            this.LabelCurrentOrganizationName.Text = Resources.Global.Global_Organization;
-            this.LabelCurrentUserName.Text = Resources.Global.Global_NoOwner;
-            this.LabelPreferences.Text = Resources.Global.CurrentUserInfo_Preferences;
 
             // Page specific
             this.LabelContentTitle.Text = Resources.Pages.Security.ResetPassword_PageTitle;
