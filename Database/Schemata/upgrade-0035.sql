@@ -40,7 +40,7 @@ BEGIN
   DECLARE organizationId INTEGER;
   DECLARE earlierTransactionCount INTEGER;
 
-  SELECT OrganizationId 
+  SELECT FinancialTransactions.OrganizationId 
       FROM FinancialTransactions 
       WHERE FinancialTransactions.FinancialTransactionId = financialTransactionId
       INTO organizationId;
