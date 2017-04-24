@@ -32,3 +32,4 @@
 0032 - Added native currency to transaction rows, for multi-currency accounting [RF]
 0033 - Added transaction row identity return, necessary for 0032 [RF]
 0034 - Fix for SetFinancialTransactionRowNativeCurrency
+0035 - Added OrganizationSequenceId on FinancialTransactions, VatCents setter on invoices [RF]
