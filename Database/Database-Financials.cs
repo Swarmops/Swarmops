@@ -21,6 +21,11 @@ namespace Swarmops.Database
             " Administrative,Active,LinkBackward,LinkForward " + // 10-13
             " FROM FinancialAccounts ";
 
+        public const string financialTransactionFieldSequence =
+            " FinancialTransactionId,OrganizationId,OrganizationSequenceId,DateTime,Comment," + // 0-4
+            " ImportHash " + // 5
+            " FROM FinancialTransactions ";
+
         public int CreateFinancialAccount (int pOrganizationId, string pName, FinancialAccountType pAccountType,
             int pParentFinancialAccountId)
         {
@@ -190,7 +195,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT FinancialTransactionId,OrganizationId,DateTime,Comment,ImportHash From FinancialTransactions WHERE FinancialTransactionId IN (" +
+                        "SELECT " + financialTransactionFieldSequence + " WHERE FinancialTransactionId IN (" +
                         JoinIds (financialTransactionIds) + ");", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -213,8 +218,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT FinancialTransactionId,OrganizationId,DateTime,Comment,ImportHash From FinancialTransactions WHERE OrganizationId=" +
-                        organizationId + " AND ImportHash='" + importKey.Replace ("'", "''") + "';", connection);
+                        "SELECT " + financialTransactionFieldSequence +  " WHERE OrganizationId=" +
+                        organizationId + " AND ImportHash='" + SqlSanitize(importKey) + "';", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -489,7 +494,8 @@ namespace Swarmops.Database
                 connection.Open();
 
                 string commandString = "select FinancialTransactions.FinancialTransactionId, " +
-                                       "FinancialTransactions.OrganizationId, FinancialTransactions.DateTime, " +
+                                       "FinancialTransactions.OrganizationId, FinancialTransactions.OrganizationSequenceId," +
+                                       "FinancialTransactions.DateTime, " +
                                        "FinancialTransactions.Comment, FinancialTransactions.ImportHash, " +
                                        "SUM(FinancialTransactionRows.AmountCents) AS Delta " +
                                        "FROM FinancialTransactions,FinancialTransactionRows " +
@@ -559,7 +565,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 string commandString = "select FinancialTransactions.FinancialTransactionId, " +
-                                       "FinancialTransactions.OrganizationId, FinancialTransactions.DateTime, " +
+                                       "FinancialTransactions.OrganizationId, FinancialTransactions.OrganizationSequenceId, FinancialTransactions.DateTime, " +
                                        "FinancialTransactions.Comment, FinancialTransactions.ImportHash, " +
                                        "SUM(FinancialTransactionRows.AmountCents) AS BalanceDelta " +
                                        "FROM FinancialTransactions " +
@@ -923,11 +929,12 @@ namespace Swarmops.Database
         {
             int transactionId = reader.GetInt32 (0);
             int organizationId = reader.GetInt32 (1);
-            DateTime dateTime = reader.GetDateTime (2);
-            string comment = reader.GetString (3);
-            string importHash = reader.GetString (4);
+            int organizationSequenceId = reader.GetInt32(2);
+            DateTime dateTime = reader.GetDateTime (3);
+            string comment = reader.GetString (4);
+            string importHash = reader.GetString (5);
 
-            return new BasicFinancialTransaction (transactionId, organizationId, dateTime, comment, importHash);
+            return new BasicFinancialTransaction (transactionId, organizationId, organizationSequenceId, dateTime, comment, importHash);
         }
 
         public int CreateFinancialTransaction (int organizationId, DateTime dateTime, string comment)
@@ -1064,6 +1071,33 @@ namespace Swarmops.Database
                 command.ExecuteNonQuery();
             }
         }
+
+
+        public BasicFinancialTransaction[] GetAllFinancialTransactionsWithoutSequenceNumber()
+        {
+            List<BasicFinancialTransaction> result = new List<BasicFinancialTransaction>();
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT " + financialTransactionFieldSequence + " WHERE OrganizationSequenceId=0;", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(ReadFinancialTransactionFromDataReader(reader));
+                    }
+
+                    return result.ToArray();
+                }
+            }
+        }
+    
+
 
         public void SetFinancialTransactionForeignId(int financialTransactionId, FinancialForeignIdType foreignIdType, string foreignId)
         {
