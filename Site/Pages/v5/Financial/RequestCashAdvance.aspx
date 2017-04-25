@@ -22,7 +22,7 @@
             isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ValidationError_Purpose %>')) && isValid;
 
             var jsonData = {};
-            jsonData.amount = $('#<%=this.TextAmount.ClientID %>_Input').val();
+            jsonData.amount = <%=this.TextAmount.ClientID %>_val();
 
             $.ajax({
                 type: "POST",
