@@ -121,7 +121,7 @@
         }
 
         function addTransactionRow() {
-            var amountString = $('#<%= TextInsertAmount.ClientID %>_Input').val();
+            var amountString = <%= TextInsertAmount.ClientID %>_val();
             var rowAccountId = 0;
             var selectedAccountNode = $('#<%= BudgetAddRow.ClientID %>_DropBudgets').combotree('tree').tree('getSelected');
 
@@ -188,7 +188,7 @@
                 dataType: "json",
                 success: function(msg) {
                     if (msg.d.length > 1) {
-                        $('#<%= TextInsertAmount.ClientID %>_Input').val(msg.d);
+                        <%= this.TextInsertAmount.ClientID %>_initialize(msg.d);
                     } else {
                         alertify.error("<%= Global.Error_AjaxCallException %>");
                     }

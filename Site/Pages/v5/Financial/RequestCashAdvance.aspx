@@ -35,7 +35,7 @@
                     if (msg.d != true) {
                         isValid = false;
                         alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Amount %>'));
-                        $('#<%=this.TextAmount.ClientID %>_Input').addClass("entryError").focus();
+                        $('#<%=this.TextAmount.ClientID %>_TextInput').addClass("entryError").focus();
                     }
                 }
             });

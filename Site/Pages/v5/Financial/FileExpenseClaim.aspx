@@ -63,9 +63,9 @@
                 success: function (msg) {
                     if (msg.d != true) {
                         isValid = false;
-                        $('#<%=this.CurrencyAmount.ClientID %>_Input').addClass("entryError");
+                        $('#<%=this.CurrencyAmount.ClientID %>_TextInput').addClass("entryError");
                         alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Amount %>'));
-                        $('#<%=this.CurrencyAmount.ClientID %>_Input').focus();
+                        <%=this.CurrencyAmount.ClientID %>_focus();
                     }
                 }
             });

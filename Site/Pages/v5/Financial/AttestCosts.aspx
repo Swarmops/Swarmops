@@ -129,7 +129,7 @@
                                 accountId = $("#IconApproval" + recordId).attr('accountid');
                                 $('div.radioOption').hide();
                                 $('input:radio[name="ModalOptions"]').prop('checked', false);
-                                SwarmopsJS.formatCurrency(amountRequested, function (data) { $('#<%=this.TextCorrectAmount.ClientID%>_Input').val(data); });
+                                SwarmopsJS.formatCurrency(amountRequested, function (data) { <%=this.TextCorrectAmount.ClientID%>_val(data); });
                                 $('<%=this.TextDenyReason.ClientID%>').val(''); // empty reason
                                 <%=this.DialogDeny.ClientID%>_open();
                             }
@@ -453,7 +453,7 @@
 
             SwarmopsJS.ajaxCall(
                 "/Pages/v5/Financial/AttestCosts.aspx/AttestCorrectedItem",
-                { recordId: recordId, amountString: $('#<%=this.TextCorrectAmount.ClientID%>_Input').val() },
+                { recordId: recordId, amountString: <%=this.TextCorrectAmount.ClientID%>_val() },
                 function(result) {
                     console.log(result);
                     if (!result.Success) {
@@ -541,7 +541,7 @@
                 </div>
                 <div style="clear:both"></div>
             </div>
-            <p><input type="radio" id="RadioCorrect" name="ModalOptions" value="Correct" onclick="$('#<%=this.TextCorrectAmount.ClientID%>_Input').focus().select();" /><label for="RadioCorrect"><asp:Label runat="server" ID="LabelRadioCorrect" Text="I will attest, but for a different amount. XYZ" /></label></p>
+            <p><input type="radio" id="RadioCorrect" name="ModalOptions" value="Correct" onclick="<%=this.TextCorrectAmount.ClientID%>_focus();" /><label for="RadioCorrect"><asp:Label runat="server" ID="LabelRadioCorrect" Text="I will attest, but for a different amount. XYZ" /></label></p>
             <div id="radioOptionCorrect" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:CurrencyTextBox ID="TextCorrectAmount" runat="server" />&#8203;<br/>

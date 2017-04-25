@@ -161,7 +161,7 @@
 	            });
 	        });
 
-	        $('#<%=CurrencyInitialBalance.ClientID%>_Input').blur(function() {
+	        $('#<%=CurrencyInitialBalance.ClientID%>_TextInput').blur(function() {
 	            var newAccountInitialBalance = $(this).val();
 
 	            if (modalAccountInitialBalance == newAccountInitialBalance) {
@@ -292,7 +292,7 @@
 	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#DDD');
 	        $('#TextAccountBudget').val('...').css('background-color', '#DDD');
 	        $('#TextAccountName').val('...').css('background-color', '#DDD');
-	        $('#<%=CurrencyInitialBalance.ClientID%>_Input').val('...').css('background-color', '#DDD');
+	        $('#<%=CurrencyInitialBalance.ClientID%>_TextInput').val('...').css('background-color', '#DDD');
 	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').attr('placeholder', '...');
 
 	        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#FFF');
@@ -418,7 +418,7 @@
 	                $('#TextAccountBudget').val(msg.d.Budget).css('background-color', '#FFF');
 
 	                modalAccountInitialBalance = msg.d.InitialBalance;
-	                $('#<%=CurrencyInitialBalance.ClientID%>_Input').val(msg.d.InitialBalance).css('background-color', '#FFF');
+	                $('#<%=CurrencyInitialBalance.ClientID%>_TextInput').val(msg.d.InitialBalance).css('background-color', '#FFF');
 
 	                $('#SpanTextCurrency').text(msg.d.CurrencyCode);
 	                $('#SpanEditBalance').text(msg.d.Balance);
