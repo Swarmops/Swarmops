@@ -51,6 +51,14 @@ namespace Swarmops.Backend
 
             SystemSettings.BackendHostname = Dns.GetHostName();
 
+
+            // Other one-time initializations
+
+            FinancialTransactions.FixAllUnsequenced();
+
+
+            // Begin main loop
+
             UnixSignal[] killSignals = null;
 
             if (!Debugger.IsAttached)

@@ -70,5 +70,18 @@ namespace Swarmops.Logic.Financial
 
             throw new NotImplementedException ("Unimplemented dependency type:" + foreignObject.GetType());
         }
+
+        // This needs only be run once. It populates the OrganizationSequenceId field.
+
+        public static void FixAllUnsequenced()
+        {
+            SwarmDb db = SwarmDb.GetDatabaseForReading();
+            FinancialTransactions txs = FromArray(db.GetAllFinancialTransactionsWithoutSequenceNumber());
+
+            foreach (FinancialTransaction tx in txs)
+            {
+                tx.SetOrganizationSequenceId();
+            }
+        }
     }
 }
