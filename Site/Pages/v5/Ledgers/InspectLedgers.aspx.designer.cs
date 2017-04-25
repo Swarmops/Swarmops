@@ -299,5 +299,68 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelTrackedTransactionHeader;
+        
+        /// <summary>
+        /// DialogCreateTx control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.ModalDialog DialogCreateTx;
+        
+        /// <summary>
+        /// LabelCreateTxDialogHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelCreateTxDialogHeader;
+        
+        /// <summary>
+        /// TextCreateTxDateTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextCreateTxDateTime;
+        
+        /// <summary>
+        /// TextCreateTxDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextCreateTxDescription;
+        
+        /// <summary>
+        /// DropBudgetsNewTransaction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Controls.Financial.ComboBudgets DropBudgetsNewTransaction;
+        
+        /// <summary>
+        /// TextAmountNewTransaction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox TextAmountNewTransaction;
+        
+        /// <summary>
+        /// PanelCreateTxVisible control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelCreateTxVisible;
     }
 }

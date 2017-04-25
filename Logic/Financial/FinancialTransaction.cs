@@ -62,7 +62,10 @@ namespace Swarmops.Logic.Financial
                 return null; // This was a dupe -- already imported, as determined by ImportHash
             }
 
-            return FromIdentityAggressive (transactionId);
+            FinancialTransaction newTx = FromIdentityAggressive (transactionId);
+            newTx.SetOrganizationSequenceId();
+
+            return newTx;
         }
 
 
@@ -70,7 +73,11 @@ namespace Swarmops.Logic.Financial
         {
             int transactionId = SwarmDb.GetDatabaseForWriting()
                 .CreateFinancialTransaction (organizationId, dateTime, description);
-            return FromIdentityAggressive (transactionId);
+
+            FinancialTransaction newTx = FromIdentityAggressive(transactionId);
+            newTx.SetOrganizationSequenceId();
+
+            return newTx;
         }
 
         public static FinancialTransaction Create (Organization organization, DateTime dateTime, string description)
@@ -86,7 +93,7 @@ namespace Swarmops.Logic.Financial
             {
                 return
                     FinancialTransactionRows.FromArray (
-                        SwarmDb.GetDatabaseForReading().GetFinancialTransactionRows (Identity));
+                        SwarmDb.GetDatabaseForReading().GetFinancialTransactionRows (this.Identity));
             }
         }
 
@@ -469,6 +476,16 @@ namespace Swarmops.Logic.Financial
 
                 currentTransactionData[row.FinancialAccountId] += row.AmountCents;
             }
+        }
+
+        internal void SetOrganizationSequenceId()
+        {
+            if (this.Identity == 0)
+            {
+                throw new ArgumentOutOfRangeException("Cannot set the sequence number for a null transaction");
+            }
+
+            SwarmDb.GetDatabaseForWriting().SetFinancialTransactionOrganizationSequenceId(this.Identity);
         }
     }
 }

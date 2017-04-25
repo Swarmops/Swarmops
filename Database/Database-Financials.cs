@@ -1048,6 +1048,23 @@ namespace Swarmops.Database
         }
 
 
+
+
+        public void SetFinancialTransactionOrganizationSequenceId(int financialTransactionId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialTransactionOrganizationSequenceId", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialTransactionId", financialTransactionId);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
         public void SetFinancialTransactionForeignId(int financialTransactionId, FinancialForeignIdType foreignIdType, string foreignId)
         {
             using (DbConnection connection = GetMySqlDbConnection())

@@ -13,6 +13,17 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
+            $('#spanActionAddTransaction').click(function() {
+                if (canWriteRows) {
+                    <%=this.DialogCreateTx.ClientID%>_open();
+                    <%=this.TextCreateTxDateTime.ClientID%>_focus();
+                    <%=this.TextAmountNewTransaction.ClientID%>_initialize('<%=(0.0).ToString("N2")%>');
+                    <%=this.TextCreateTxDateTime.ClientID%>_initialize('<%=DateTime.UtcNow.ToShortDateString() + " " + DateTime.UtcNow.ToShortTimeString()%>');
+                } else {
+                    alertify.error("You do not have sufficient authority to create transactions.");
+                }
+            });
+
             $('#gridLedgers').datagrid(
             {
                 onLoadSuccess: function() {
@@ -354,10 +365,34 @@
         </DialogCode>
     </Swarmops5:ModalDialog>
 
+        
+    <Swarmops5:ModalDialog ID="DialogCreateTx" runat="server">
+        <DialogCode>
+            <h2><asp:Label runat="server" ID="LabelCreateTxDialogHeader">Creating Transaction</asp:Label></h2>
+            <div class="entryFields">
+                <Swarmops5:AjaxTextBox ID="TextCreateTxDateTime" runat="server"/>
+                <Swarmops5:AjaxTextBox ID="TextCreateTxDescription" runat="server"/>
+                <Swarmops5:ComboBudgets ID="DropBudgetsNewTransaction" ListType="All" runat="server"/>
+                <Swarmops5:CurrencyTextBox ID="TextAmountNewTransaction" runat="server"/>
+                <input type="button" class="NoInputFocus buttonAccentColor" value="Create XYZ"/>
+            </div>
+            <div class="entryLabels">
+                Date and Time XYZ<br/>
+                Description XYZ<br/>
+                First transaction row's account<br/>
+                First transaction row's amount
+            </div>
+        </DialogCode>
+    </Swarmops5:ModalDialog>
 
 
 </asp:Content>
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
+    <asp:Panel runat="server" ID="PanelCreateTxVisible">
+    <h2 class="blue">ACTIONS<span class="arrow"></span></h2>
+    <div class="box"><span id="spanActionAddTransaction">Add Transaction</span></div>
+    
+    </asp:Panel>
 </asp:Content>

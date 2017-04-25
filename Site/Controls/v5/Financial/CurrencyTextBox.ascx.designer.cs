@@ -13,13 +13,13 @@ namespace Swarmops.Frontend.Controls.Financial {
     public partial class CurrencyTextBox {
         
         /// <summary>
-        /// Input control.
+        /// TextInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Input;
+        protected global::System.Web.UI.WebControls.TextBox TextInput;
         
         /// <summary>
         /// NativeCurrency control.
