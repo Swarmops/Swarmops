@@ -16,7 +16,8 @@ namespace Swarmops.Database
         private const string inboundInvoiceFieldSequence =
             " InboundInvoiceId,OrganizationId,CreatedDateTime,CreatedByPersonId,DueDate," +
             "AmountCents,BudgetId,Attested,Open,Supplier," +
-            "PayToAccount,Ocr,InvoiceReference,ClosedDateTime,ClosedByPersonId " +
+            "PayToAccount,Ocr,InvoiceReference,ClosedDateTime,ClosedByPersonId, " +
+            "VatCents " +
             "FROM InboundInvoices ";
 
         private BasicInboundInvoice ReadInboundInvoiceFromDataReader (DbDataReader reader)
@@ -36,9 +37,10 @@ namespace Swarmops.Database
             string invoiceReference = reader.GetString (12);
             DateTime closedDateTime = reader.GetDateTime (13);
             int closedByPersonId = reader.GetInt32 (14);
+            Int64 vatCents = reader.GetInt64(15);
 
             return new BasicInboundInvoice (inboundInvoiceId, organizationId, createdDateTime, dueDate,
-                amountCents, budgetId, supplier, payToAccount, ocr, invoiceReference,
+                amountCents, vatCents, budgetId, supplier, payToAccount, ocr, invoiceReference,
                 attested, open, closedDateTime, closedByPersonId);
         }
 
@@ -208,17 +210,34 @@ namespace Swarmops.Database
         }
 
 
-        public void SetInboundInvoiceAmount (int inboundInvoiceId, Int64 amountCents)
+        public void SetInboundInvoiceAmount(int inboundInvoiceId, Int64 amountCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("SetInboundInvoiceAmountPrecise", connection);
+                DbCommand command = GetDbCommand("SetInboundInvoiceAmountPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName (command, "inboundInvoiceId", inboundInvoiceId);
-                AddParameterWithName (command, "amountCents", amountCents);
+                AddParameterWithName(command, "inboundInvoiceId", inboundInvoiceId);
+                AddParameterWithName(command, "amountCents", amountCents);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+
+        public void SetInboundInvoiceVatCents(int inboundInvoiceId, Int64 amountCents)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetInboundInvoiceVatCents", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "inboundInvoiceId", inboundInvoiceId);
+                AddParameterWithName(command, "vatCents", amountCents);
 
                 command.ExecuteNonQuery();
             }

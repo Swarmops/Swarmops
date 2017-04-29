@@ -6,7 +6,7 @@ namespace Swarmops.Basic.Types.Financial
     public class BasicInboundInvoice : IHasIdentity
     {
         public BasicInboundInvoice (int inboundInvoiceId, int organizationId, DateTime createdDateTime,
-            DateTime dueDate, Int64 amountCents, int budgetId, string supplier, string
+            DateTime dueDate, Int64 amountCents, Int64 vatCents, int budgetId, string supplier, string
                 payToAccount, string ocr, string invoiceReference, bool attested, bool open,
             DateTime closedDateTime, int closedByPersonId)
         {
@@ -15,6 +15,7 @@ namespace Swarmops.Basic.Types.Financial
             this.CreatedDateTime = createdDateTime;
             this.DueDate = dueDate;
             this.AmountCents = amountCents;
+            this.VatCents = vatCents;
             this.BudgetId = budgetId;
             this.Supplier = supplier;
             this.PayToAccount = payToAccount;
@@ -28,7 +29,7 @@ namespace Swarmops.Basic.Types.Financial
 
         public BasicInboundInvoice (BasicInboundInvoice original)
             : this (original.InboundInvoiceId, original.OrganizationId, original.CreatedDateTime,
-                original.DueDate, original.AmountCents, original.BudgetId,
+                original.DueDate, original.AmountCents, original.VatCents, original.BudgetId,
                 original.Supplier, original.PayToAccount, original.Ocr, original.InvoiceReference,
                 original.Attested, original.Open, original.ClosedDateTime, original.ClosedByPersonId)
         {
@@ -48,7 +49,14 @@ namespace Swarmops.Basic.Types.Financial
         public int ClosedByPersonId { get; protected set; }
         public int OrganizationId { get; protected set; }
         public string Supplier { get; protected set; }
+        /// <summary>
+        /// Total amount, INCLUDING any possible VAT
+        /// </summary>
         public Int64 AmountCents { get; protected set; }
+        /// <summary>
+        /// The VAT part of the AmountCents, or zero if no VAT applied
+        /// </summary>
+        public Int64 VatCents { get; protected set; }
 
         #region IHasIdentity Members
 

@@ -131,7 +131,7 @@ namespace Swarmops.Logic.Financial
             SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAttested (Identity, true);
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
                 FinancialDependencyType.InboundInvoice, Identity,
-                DateTime.UtcNow, attester.Identity, (double) Amount);
+                DateTime.UtcNow, attester.Identity, BudgetAmountCents);
             base.Attested = true;
         }
 
@@ -140,7 +140,7 @@ namespace Swarmops.Logic.Financial
             SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAttested (Identity, false);
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Deattestation,
                 FinancialDependencyType.InboundInvoice, Identity,
-                DateTime.UtcNow, deattester.Identity, (double) Amount);
+                DateTime.UtcNow, deattester.Identity, BudgetAmountCents);
             base.Attested = false;
         }
 
@@ -169,7 +169,7 @@ namespace Swarmops.Logic.Financial
         }
 
         public static InboundInvoice Create (Organization organization, DateTime dueDate, Int64 amountCents,
-            Int64 amountVatCents, FinancialAccount budget, string supplier, string description, string payToAccount, string ocr,
+            Int64 vatCents, FinancialAccount budget, string supplier, string description, string payToAccount, string ocr,
             string invoiceReference, Person creatingPerson)
         {
             InboundInvoice newInvoice = FromIdentity (SwarmDb.GetDatabaseForWriting().
@@ -179,6 +179,11 @@ namespace Swarmops.Logic.Financial
 
             newInvoice.Description = description; // Not in original schema; not cause for schema update
 
+            if (vatCents > 0)
+            {
+                newInvoice.VatCents = vatCents;
+            }
+
             // Create a corresponding financial transaction with rows
 
             FinancialTransaction transaction =
@@ -186,11 +191,11 @@ namespace Swarmops.Logic.Financial
                     "Invoice #" + newInvoice.Identity + " from " + supplier);
 
             transaction.AddRow (organization.FinancialAccounts.DebtsInboundInvoices, -amountCents, creatingPerson);
-            if (amountVatCents > 0)
+            if (vatCents > 0)
             {
-                transaction.AddRow(organization.FinancialAccounts.AssetsVatInboundUnreported, amountVatCents,
+                transaction.AddRow(organization.FinancialAccounts.AssetsVatInboundUnreported, vatCents,
                     creatingPerson);
-                transaction.AddRow(budget, amountCents - amountVatCents, creatingPerson);
+                transaction.AddRow(budget, amountCents - vatCents, creatingPerson);
             }
             else
             {
@@ -204,7 +209,7 @@ namespace Swarmops.Logic.Financial
 
             // Create notification (slightly misplaced logic, but this is failsafest place)
 
-            OutboundComm.CreateNotificationAttestationNeeded (budget, creatingPerson, supplier, amountCents/100.0,
+            OutboundComm.CreateNotificationAttestationNeeded (budget, creatingPerson, supplier, (amountCents-vatCents)/100.0,
                 description, NotificationResource.InboundInvoice_Created);
             // Slightly misplaced logic, but failsafer here
             SwarmopsLogEntry.Create (creatingPerson,
@@ -214,10 +219,17 @@ namespace Swarmops.Logic.Financial
             // Clear a cache
             FinancialAccount.ClearAttestationAdjustmentsCache(organization);
 
-
-
             return newInvoice;
         }
+
+        /// <summary>
+        /// The amount that charges the budget (invoice total minus inbound VAT)
+        /// </summary>
+        public Int64 BudgetAmountCents
+        {
+            get { return this.AmountCents - this.VatCents; }
+        }
+
 
         public static InboundInvoice FromBasic (BasicInboundInvoice basic)
         {
@@ -245,6 +257,16 @@ namespace Swarmops.Logic.Financial
             UpdateTransaction (settingPerson);
         }
 
+
+        public new Int64 VatCents
+        {
+            get { return base.VatCents; }
+            internal set
+            {
+                base.VatCents = value;
+                SwarmDb.GetDatabaseForWriting().SetInboundInvoiceVatCents(this.Identity, value);
+            }
+        }
 
         private void UpdateTransaction (Person updatingPerson)
         {

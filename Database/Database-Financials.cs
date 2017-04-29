@@ -1326,6 +1326,15 @@ namespace Swarmops.Database
 
 
         // TODO: Return BasicFinancialValidation object
+        public void CreateFinancialValidation(FinancialValidationType validationType,
+            FinancialDependencyType dependencyType, int foreignId,
+            DateTime validatedDateTime, int personId, Int64 amountCents)
+        {
+            CreateFinancialValidation(validationType, dependencyType,
+                foreignId, validatedDateTime, personId, amountCents/100.0);
+        }
+
+
 
         public void CreateFinancialValidation (FinancialValidationType validationType,
             FinancialDependencyType dependencyType, int foreignId,
