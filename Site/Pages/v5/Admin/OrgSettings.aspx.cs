@@ -302,17 +302,28 @@ namespace Swarmops.Frontend.Pages.Admin
 
                             authData.CurrentOrganization.FinancialAccounts.AssetsVatInboundUnreported =
                                 FinancialAccount.Create(authData.CurrentOrganization, "[LOC]Asset_InboundVatUnreported",
-                                    FinancialAccountType.Asset, authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound);
+                                    FinancialAccountType.Asset,
+                                    authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound);
                             authData.CurrentOrganization.FinancialAccounts.DebtsVatOutboundUnreported =
                                 FinancialAccount.Create(authData.CurrentOrganization, "[LOC]Debt_OutboundVatUnreported",
-                                    FinancialAccountType.Debt, authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound);
+                                    FinancialAccountType.Debt,
+                                    authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound);
 
                             authData.CurrentOrganization.FinancialAccounts.AssetsVatInboundReported =
                                 FinancialAccount.Create(authData.CurrentOrganization, "[LOC]Asset_InboundVatReported",
-                                    FinancialAccountType.Asset, authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound);
+                                    FinancialAccountType.Asset,
+                                    authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound);
                             authData.CurrentOrganization.FinancialAccounts.DebtsVatOutboundReported =
                                 FinancialAccount.Create(authData.CurrentOrganization, "[LOC]Debt_OutboundVatReported",
-                                    FinancialAccountType.Debt, authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound);
+                                    FinancialAccountType.Debt,
+                                    authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound);
+                        }
+                        else // the accounts exist, need to be re-enabled or disabled, as per the switch direction
+                        {
+                            workAccounts.Add(authData.CurrentOrganization.FinancialAccounts.AssetsVatInboundReported);
+                            workAccounts.Add(authData.CurrentOrganization.FinancialAccounts.AssetsVatInboundUnreported);
+                            workAccounts.Add(authData.CurrentOrganization.FinancialAccounts.DebtsVatOutboundReported);
+                            workAccounts.Add(authData.CurrentOrganization.FinancialAccounts.DebtsVatOutboundUnreported);
                         }
 
                         workAccounts.Add (vatInbound);
