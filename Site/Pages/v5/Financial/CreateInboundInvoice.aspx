@@ -13,6 +13,10 @@
 
         $(document).ready(function () {
 
+            if (vatEnabled) { // if VAT is enabled, show those controls
+                $('.vatEnabled').show();
+            }
+
             <asp:Repeater ID="RepeaterTagDropScript" runat="server"><ItemTemplate>
             $('#DropTags<%# Eval("TagSetId") %>').combotree({
                 animate: true,
@@ -73,6 +77,25 @@
                 }
             });
 
+            if (vatEnabled) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Automation/FieldValidation.aspx/IsAmountValid",
+                    data: $.toJSON(jsonData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false, // blocks until function returns - race conditions otherwise
+                    success: function(msg) {
+                        if (msg.d != true) {
+                            isValid = false;
+                            $('#<%=CurrencyAmount.ClientID %>_TextInput').addClass("entryError");
+                            alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Amount %>'));
+                            <%=CurrencyAmount.ClientID %>_focus();
+                        }
+                    }
+                });
+            }
+
             $.ajax({
                 type: "POST",
                 url: "/Automation/FieldValidation.aspx/AreDocumentsUploaded",
@@ -103,10 +126,18 @@
             return true;
         }
 
-
+        var vatEnabled = <%= this.CurrentOrganization.FinancialAccounts.AssetsVatInbound == null? "false": "true" %>;
         var successMessage = SwarmopsJS.unescape('<%= this.Localized_ForGreatJustice %>');
 
     </script>
+    
+    <style type="text/css">
+        
+        .vatEnabled
+        { display: none;}
+
+    </style>
+
 </asp:Content>
 
 
@@ -116,6 +147,7 @@
     <div class="entryFields">
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextSupplier" /></div>
         <Swarmops5:CurrencyAmount runat="server" ID="CurrencyAmount" />
+        <span class="vatEnabled"><Swarmops5:CurrencyAmount runat="server" ID="CurrencyVat" /></span>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPurpose" /></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDueDate" /></div>
         <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />
@@ -137,6 +169,7 @@
     <div class="entryLabels">
         <asp:Label runat="server" ID="LabelSupplier" /><br/>
         <asp:Label runat="server" ID="LabelAmount" /><br/>
+        <span class="vatEnabled"><asp:Label runat="server" ID="LabelVat" /><br/></span>
         <asp:Label runat="server" ID="LabelPurpose" /><br/>
         <asp:Label runat="server" ID="LabelDueDate" /><br/>
         <asp:Label runat="server" ID="LabelBudget" /><br/>

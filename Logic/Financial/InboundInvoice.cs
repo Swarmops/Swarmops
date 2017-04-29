@@ -169,7 +169,7 @@ namespace Swarmops.Logic.Financial
         }
 
         public static InboundInvoice Create (Organization organization, DateTime dueDate, Int64 amountCents,
-            FinancialAccount budget, string supplier, string description, string payToAccount, string ocr,
+            Int64 amountVatCents, FinancialAccount budget, string supplier, string description, string payToAccount, string ocr,
             string invoiceReference, Person creatingPerson)
         {
             InboundInvoice newInvoice = FromIdentity (SwarmDb.GetDatabaseForWriting().
@@ -186,7 +186,17 @@ namespace Swarmops.Logic.Financial
                     "Invoice #" + newInvoice.Identity + " from " + supplier);
 
             transaction.AddRow (organization.FinancialAccounts.DebtsInboundInvoices, -amountCents, creatingPerson);
-            transaction.AddRow (budget, amountCents, creatingPerson);
+            if (amountVatCents > 0)
+            {
+                transaction.AddRow(organization.FinancialAccounts.AssetsVatInboundUnreported, amountVatCents,
+                    creatingPerson);
+                transaction.AddRow(budget, amountCents - amountVatCents, creatingPerson);
+            }
+            else
+            {
+                transaction.AddRow(budget, amountCents, creatingPerson);
+            }
+
 
             // Make the transaction dependent on the inbound invoice
 

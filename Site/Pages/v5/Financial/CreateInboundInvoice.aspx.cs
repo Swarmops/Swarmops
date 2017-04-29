@@ -100,6 +100,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 // Prime bank details
 
                 this.CurrencyAmount.Cents = 0;
+                this.CurrencyVat.Cents = 0;
                 this.TextSupplier.Focus();
                 this.TextDueDate.Text = DateTime.Today.AddDays (30).ToShortDateString(); // Use current culture
 
@@ -113,6 +114,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelSupplier.Text = Global.Financial_Supplier;
             this.LabelDueDate.Text = Global.Financial_DueDate;
             this.LabelAmount.Text = string.Format (Resources.Pages.Financial.CreateInboundInvoice_Amount,
+                CurrentOrganization.Currency.Code);
+            this.LabelVat.Text = string.Format(Resources.Pages.Financial.CreateInboundInvoice_AmountVat,
                 CurrentOrganization.Currency.Code);
             this.LabelPurpose.Text = Resources.Pages.Financial.CreateInboundInvoice_Description;
             this.LabelBudget.Text = Global.Financial_Budget;
@@ -132,6 +135,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // People who choose to disable JavaScript and then submit bad input almost deserve to be hurt.
 
             Int64 amountCents = this.CurrencyAmount.Cents;
+            Int64 amountVatCents = this.CurrencyVat.Cents;
 
             string description = this.TextPurpose.Text;
 
@@ -157,7 +161,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new InvalidOperationException ("No documents uploaded");
             }
 
-            InboundInvoice invoice = InboundInvoice.Create (CurrentOrganization, dueDate, amountCents, budget,
+            InboundInvoice invoice = InboundInvoice.Create (CurrentOrganization, dueDate, amountCents, amountVatCents, budget,
                 this.TextSupplier.Text, this.TextPurpose.Text, this.TextAccount.Text, string.Empty,
                 this.TextReference.Text, CurrentUser);
 
