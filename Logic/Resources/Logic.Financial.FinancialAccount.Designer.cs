@@ -115,6 +115,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Surplus inbound VAT in report.
+        /// </summary>
+        internal static string Asset_InboundVatReported {
+            get {
+                return ResourceManager.GetString("Asset_InboundVatReported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inbound VAT to report.
+        /// </summary>
+        internal static string Asset_InboundVatUnreported {
+            get {
+                return ResourceManager.GetString("Asset_InboundVatUnreported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Outbound Invoices.
         /// </summary>
         internal static string Asset_OutboundInvoices {
@@ -597,6 +615,24 @@ namespace Swarmops.Logic.Resources {
         internal static string Debt_OutboundVat {
             get {
                 return ResourceManager.GetString("Debt_OutboundVat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reported VAT to pay.
+        /// </summary>
+        internal static string Debt_OutboundVatReported {
+            get {
+                return ResourceManager.GetString("Debt_OutboundVatReported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outbound VAT to report.
+        /// </summary>
+        internal static string Debt_OutboundVatUnreported {
+            get {
+                return ResourceManager.GetString("Debt_OutboundVatUnreported", resourceCulture);
             }
         }
         

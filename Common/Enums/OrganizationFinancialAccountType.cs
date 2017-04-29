@@ -38,9 +38,19 @@
         AssetsOutstandingCashAdvances,
 
         /// <summary>
-        ///     Value Added Tax (inbound) that hasn't been declared yet and put on overall tax balance
+        ///     Value Added Tax (inbound) root account
         /// </summary>
         AssetsVatInbound,
+
+        /// <summary>
+        ///     Value Added Tax (inbound) surplus from last report - clears against tax payment of this balance
+        /// </summary>
+        AssetsVatInboundReported,
+
+        /// <summary>
+        ///     Value Added Tax (inbound) that hasn't been declared yet and put on overall tax balance
+        /// </summary>
+        AssetsVatInboundUnreported,
 
         /// <summary>
         /// General short term holdings
@@ -83,9 +93,19 @@
         DebtsEquity,
 
         /// <summary>
-        ///     Undeclared Value Added Tax (outbound) before putting it on tax balance
+        ///     Root account for Value Added Tax (outbound)
         /// </summary>
         DebtsVatOutbound,
+
+        /// <summary>
+        ///     Value Added Tax (outbound), to-be-reported amount in next report
+        /// </summary>
+        DebtsVatOutboundUnreported,
+
+        /// <summary>
+        ///     Value Added Tax (outbound), surplus amount from last report (clears against payout from tax authority before coming report)
+        /// </summary>
+        DebtsVatOutboundReported,
 
         /// <summary>
         ///     If virtual banking is enabled, this is the central debt to local assets

@@ -112,6 +112,11 @@ namespace Swarmops.Frontend.Pages.Admin
             this.DropTaxAuthority.Items.Clear();
             this.DropTaxAuthority.Items.Add(new ListItem("[DE] Germany", "DE"));
             this.DropTaxAuthority.Items.Add(new ListItem("[SE] Sweden", "SE"));
+
+            this.DropVatReportingPeriod.Items.Clear();
+            this.DropVatReportingPeriod.Items.Add(new ListItem("Annually", "12"));
+            this.DropVatReportingPeriod.Items.Add(new ListItem("Quarterly", "3"));
+            this.DropVatReportingPeriod.Items.Add(new ListItem("Monthly", "1"));
         }
 
         [WebMethod]
@@ -287,6 +292,27 @@ namespace Swarmops.Frontend.Pages.Admin
                         if (vatOutbound == null)
                         {
                             throw new InvalidOperationException();
+                        }
+
+                        // If the VAT Inbound/Outbound already exist, but subaccounts don't:
+
+                        if (authData.CurrentOrganization.FinancialAccounts.AssetsVatInboundUnreported == null)
+                        {
+                            // create unreported/reported VAT inbound/outbound - four accounts total
+
+                            authData.CurrentOrganization.FinancialAccounts.AssetsVatInboundUnreported =
+                                FinancialAccount.Create(authData.CurrentOrganization, "[LOC]Asset_InboundVatUnreported",
+                                    FinancialAccountType.Asset, authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound);
+                            authData.CurrentOrganization.FinancialAccounts.DebtsVatOutboundUnreported =
+                                FinancialAccount.Create(authData.CurrentOrganization, "[LOC]Debt_OutboundVatUnreported",
+                                    FinancialAccountType.Debt, authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound);
+
+                            authData.CurrentOrganization.FinancialAccounts.AssetsVatInboundReported =
+                                FinancialAccount.Create(authData.CurrentOrganization, "[LOC]Asset_InboundVatReported",
+                                    FinancialAccountType.Asset, authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound);
+                            authData.CurrentOrganization.FinancialAccounts.DebtsVatOutboundReported =
+                                FinancialAccount.Create(authData.CurrentOrganization, "[LOC]Debt_OutboundVatReported",
+                                    FinancialAccountType.Debt, authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound);
                         }
 
                         workAccounts.Add (vatInbound);

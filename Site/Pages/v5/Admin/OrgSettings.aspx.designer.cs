@@ -22,22 +22,13 @@ namespace Swarmops.Frontend.Pages.Admin {
         protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider ToggleBitcoinCold;
         
         /// <summary>
-        /// LiteralLabelBitcoinColdShort control.
+        /// ToggleBitcoinHot control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralLabelBitcoinColdShort;
-        
-        /// <summary>
-        /// LiteralLabelBitcoinHotShort control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralLabelBitcoinHotShort;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider ToggleBitcoinHot;
         
         /// <summary>
         /// TextDaysCashReserves control.
@@ -49,13 +40,13 @@ namespace Swarmops.Frontend.Pages.Admin {
         protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextDaysCashReserves;
         
         /// <summary>
-        /// Literal1 control.
+        /// TogglePaypal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal1;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider TogglePaypal;
         
         /// <summary>
         /// TextPaypalAccountAddress control.
@@ -67,31 +58,40 @@ namespace Swarmops.Frontend.Pages.Admin {
         protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextPaypalAccountAddress;
         
         /// <summary>
-        /// Literal2 control.
+        /// ToggleForex control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal2;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider ToggleForex;
         
         /// <summary>
-        /// Literal3 control.
+        /// ToggleVat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal3;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider ToggleVat;
         
         /// <summary>
-        /// Literal4 control.
+        /// DropVatReportingPeriod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal4;
+        protected global::Swarmops.Frontend.Controls.Base.DropDown DropVatReportingPeriod;
+        
+        /// <summary>
+        /// ToggleOpenFinancials control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider ToggleOpenFinancials;
         
         /// <summary>
         /// DropMembersWhen control.

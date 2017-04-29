@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Admin.OrgSettings" CodeFile="OrgSettings.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Admin.OrgSettings" CodeBehind="OrgSettings.aspx.cs" CodeFile="OrgSettings.aspx.cs" %>
 <%@ Import Namespace="Swarmops.Frontend" %>
 <%@ Register tagPrefix="Swarmops5" tagName="FileUpload" src="~/Controls/v5/Base/FileUpload.ascx"  %>
 <%@ Register tagPrefix="Swarmops5" tagName="DropDown" src="~/Controls/v5/Base/DropDown.ascx" %>
@@ -49,6 +49,10 @@
                 $('.paypalAccountField').show();
             }
 
+            if (orgSettings.AccountsVat) {
+                $('.enableVatField').show();
+            }
+
             $('#<%=this.TextGovtRegistrationId.ClientID%>_TextInput').val(orgSettings.GovernmentRegistrationId);
             $('#<%=this.DropTaxAuthority.ClientID%>').val(orgSettings.TaxAuthority);
             $('#<%=this.TextTaxPaymentOcr.ClientID%>_TextInput').val(orgSettings.TaxPaymentOcr);
@@ -84,6 +88,15 @@
             }
         }
 
+
+        function onChangeVatEnable(newValue) {
+            if (newValue) {
+                $('.enableVatField').show();
+            } else {
+                $('.enableVatField').hide();
+            }
+        }
+
     </script>
         
     <style type="text/css">
@@ -94,6 +107,8 @@
         .paypalAccountField { display: none; }
 
         .bitcoinHotField { display: none; }
+
+        .enableVatField { display: none; }
 
         .CheckboxContainer {
             float: right;
@@ -115,7 +130,8 @@
                 <Swarmops5:AjaxToggleSlider ID="TogglePaypal" runat="server" Cookie="Paypal" OnChange="onChangePaypalEnable" Label="Paypal"  AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
                 <div class="paypalAccountField"><Swarmops5:AjaxTextBox ID="TextPaypalAccountAddress" runat="server" Placeholder="paypal@example.org" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="PaypalAccountAddress" /></div>
                 <Swarmops5:AjaxToggleSlider ID="ToggleForex" runat="server" Cookie="Forex" Label="Forex Profit/Loss" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
-                <div style="display:none"><Swarmops5:AjaxToggleSlider ID="ToggleVat" Cookie="Vat" runat="server" Label="VAT In/Out" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/></div> <!-- disable until supported in invoicing -->
+                <Swarmops5:AjaxToggleSlider ID="ToggleVat" Cookie="Vat" runat="server" OnChange="onChangeVatEnable" Label="VAT Reports" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
+                <div class="enableVatField"><Swarmops5:DropDown ID="DropVatReportingPeriod" runat="server" ReadOnly="true" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="VatReportFrequency"  /></div>
                 <Swarmops5:AjaxToggleSlider ID="ToggleOpenFinancials" Cookie="ParticipantFinancials" runat="server" Label="Participant Financials"  AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
             </div>
             <div class="entryLabels">
@@ -125,7 +141,8 @@
                 Enable Paypal tracking and IPN?<br/>
                 <span class="paypalAccountField">Paypal account mail address<br/></span>
                 Enable foreign currency accounts?<br/>
-                <span style="display:none">Enable Value Added Tax (VAT)?<br/></span>
+                Enable Value Added Tax (VAT)?<br/>
+                <span class="enableVatField">VAT report frequency<br/></span>
                 Enable Participant Financials?<br/>
             </div>
             <div id="divUseAccountPlan" style="display: none; width: 100%; text-align: center; margin-top: 20px; margin-bottom: 20px; border-top: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; border-bottom: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; background-color: <%= CommonV5.GetColor (ColorType.Base, ColorVariant.XLight) %>">

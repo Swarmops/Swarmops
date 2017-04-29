@@ -95,6 +95,18 @@ namespace Swarmops.Logic.Financial
             set { this[OrganizationFinancialAccountType.AssetsVatInbound] = value; }
         }
 
+        public FinancialAccount AssetsVatInboundReported
+        {
+            get { return this[OrganizationFinancialAccountType.AssetsVatInboundReported]; }
+            set { this[OrganizationFinancialAccountType.AssetsVatInboundReported] = value; }
+        }
+
+        public FinancialAccount AssetsVatInboundUnreported
+        {
+            get { return this[OrganizationFinancialAccountType.AssetsVatInboundUnreported]; }
+            set { this[OrganizationFinancialAccountType.AssetsVatInboundUnreported] = value; }
+        }
+
         public FinancialAccount CostsBankFees
         {
             get { return this[OrganizationFinancialAccountType.CostsBankFees]; }
@@ -161,6 +173,18 @@ namespace Swarmops.Logic.Financial
         {
             get { return this[OrganizationFinancialAccountType.DebtsVatOutbound]; }
             set { this[OrganizationFinancialAccountType.DebtsVatOutbound] = value; }
+        }
+
+        public FinancialAccount DebtsVatOutboundReported
+        {
+            get { return this[OrganizationFinancialAccountType.DebtsVatOutboundReported]; }
+            set { this[OrganizationFinancialAccountType.DebtsVatOutboundReported] = value; }
+        }
+
+        public FinancialAccount DebtsVatOutboundUnreported
+        {
+            get { return this[OrganizationFinancialAccountType.DebtsVatOutboundUnreported]; }
+            set { this[OrganizationFinancialAccountType.DebtsVatOutboundUnreported] = value; }
         }
 
         public FinancialAccount DebtsEarmarkedVirtualBanking
