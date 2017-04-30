@@ -195,6 +195,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.TextPurpose.Text = String.Empty;
             this.TextReference.Text = String.Empty;
             this.CurrencyAmount.Cents = 0;
+            this.CurrencyVat.Cents = 0;
             this.TextDueDate.Text = DateTime.Today.AddDays (30).ToShortDateString(); // Use current culture
 
             // the easyUI combo fields should reset automatically on form submission unless we explicitly reconstruct

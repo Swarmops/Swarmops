@@ -190,7 +190,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
                 invoice.Budget.OwnerPersonId == Person.NobodyId)
             {
                 AttestableItem item = new AttestableItem ("I" + invoice.Identity.ToString (CultureInfo.InvariantCulture),
-                    invoice.Supplier, invoice.BudgetAmountCents, invoice.Budget, invoice.InvoiceReference,
+                    invoice.Supplier, invoice.BudgetAmountCents, invoice.Budget, invoice.Description,
                     "Financial_InvoiceInbound", hasDox, invoice);
 
                 if (invoice.Attested)
