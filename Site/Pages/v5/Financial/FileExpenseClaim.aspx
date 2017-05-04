@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Financial.FileExpenseClaim" Codebehind="FileExpenseClaim.aspx.cs" %>
 <%@ Register src="~/Controls/v5/Base/FileUpload.ascx" tagname="FileUpload" tagprefix="Swarmops5" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
-<%@ Register TagPrefix="Swarmops5" TagName="CurrencyAmount" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="Currency" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 
@@ -9,6 +9,10 @@
 
         $(document).ready(function () {
  
+            if (vatEnable) {
+                $('.enableVatField').show();
+            }
+
             <asp:Repeater ID="RepeaterTagDropScript" runat="server"><ItemTemplate>
             $('#DropTags<%# Eval("TagSetId") %>').combotree({
                 animate: true,
@@ -100,7 +104,13 @@
             return true;
         }
 
+        var vatEnable = <%= this.CurrentOrganization.VatEnabled? "true" : "false" %>;
+
     </script>
+    
+    <style type="text/css">
+        .enableVatField { display: none; }
+    </style>
 </asp:Content>
 
 
@@ -108,7 +118,8 @@
     <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
     <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
     <div class="entryFields">
-        <Swarmops5:CurrencyAmount runat="server" ID="CurrencyAmount" />
+        <Swarmops5:Currency runat="server" ID="CurrencyAmount" />
+        <span class="enableVatField"><Swarmops5:Currency runat="server" ID="CurrencyVat" /></span>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPurpose" /></div>
         <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />
         <asp:Repeater ID="RepeaterTagDrop" runat="server"><ItemTemplate><span id="SpanDropTags<%# Eval("TagSetId") %>"><select class="easyui-combotree" url="/Automation/Json-TransactionTagsTree.aspx?TagSetId=<%# Eval("TagSetId") %>" name="DropTags<%# Eval("TagSetId") %>" id="DropTags<%# Eval("TagSetId") %>" animate="true" style="width:300px"></select></span>&nbsp;<br/></ItemTemplate></asp:Repeater>
@@ -129,6 +140,7 @@
     </div>
     <div class="entryLabels">
         <asp:Label runat="server" ID="LabelAmount" /><br/>
+        <span class="enableVatField"><asp:Label runat="server" ID="LabelVat"/><br/></span>
         <asp:Label runat="server" ID="LabelPurpose" /><br/>
         <asp:Label runat="server" ID="LabelBudget" /><br/>
         <asp:Repeater ID="RepeaterTagLabels" runat="server"><ItemTemplate><%# Eval("TagSetLocalizedName") %><br/></ItemTemplate></asp:Repeater>

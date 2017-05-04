@@ -10,6 +10,13 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
+        private string expenseClaimFieldSequence =
+            " ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
+            " Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
+            " ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate, " +
+            " VatCents " +
+            " FROM ExpenseClaims";
+             
         public BasicExpenseClaim GetExpenseClaim (int expenseClaimId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -17,10 +24,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command = GetDbCommand (
-                    "SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                    "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                    "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                    "FROM ExpenseClaims WHERE ExpenseClaimId=" + expenseClaimId,
+                    "SELECT " + this.expenseClaimFieldSequence + " WHERE ExpenseClaimId=" + expenseClaimId,
                     connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -44,10 +48,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand ("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                                  "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                                  "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                                  "FROM ExpenseClaims " + ConstructWhereClause ("ExpenseClaims", conditions),
+                    GetDbCommand ("SELECT  " + this.expenseClaimFieldSequence + ConstructWhereClause ("ExpenseClaims", conditions),
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -71,10 +72,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand ("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                                  "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                                  "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                                  "FROM ExpenseClaims WHERE ClaimingPersonId=" + claimingPersonId,
+                    GetDbCommand ("SELECT " + this.expenseClaimFieldSequence + " WHERE ClaimingPersonId=" + claimingPersonId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -98,10 +96,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand ("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                                  "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                                  "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                                  "FROM ExpenseClaims WHERE ClaimingPersonId=" + claimingPersonId +
+                    GetDbCommand ("SELECT " + this.expenseClaimFieldSequence + " WHERE ClaimingPersonId=" + claimingPersonId +
                                   " AND OrganizationId=" + organizationId,
                         connection);
 
@@ -126,10 +121,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand ("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                                  "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                                  "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                                  "FROM ExpenseClaims WHERE BudgetId=" + budgetId + " AND BudgetYear=" + budgetYear,
+                    GetDbCommand ("SELECT " + this.expenseClaimFieldSequence + " WHERE BudgetId=" + budgetId + " AND BudgetYear=" + budgetYear,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -153,10 +145,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand ("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                                  "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                                  "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                                  "FROM ExpenseClaims WHERE OrganizationId=" + organizationId,
+                    GetDbCommand ("SELECT " + this.expenseClaimFieldSequence + " WHERE OrganizationId=" + organizationId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -190,11 +179,12 @@ namespace Swarmops.Database
             Int64 amountCents = reader.GetInt64 (13);
             bool repaid = reader.GetBoolean (14);
             bool keepSeparate = reader.GetBoolean (15);
+            Int64 vatCents = reader.GetInt64(16);
 
             return new BasicExpenseClaim (expenseClaimId, claimingPersonId, createdDateTime,
                 open, attested, documented, claimed, organizationId, geographyId,
                 budgetId, expenseDate, description, preApprovedAmount,
-                amountCents, repaid, keepSeparate);
+                amountCents, vatCents, repaid, keepSeparate);
         }
 
 
@@ -241,19 +231,36 @@ namespace Swarmops.Database
             }
         }
 
-        public int SetExpenseClaimDescription (int expenseClaimId, string description)
+        public int SetExpenseClaimDescription(int expenseClaimId, string description)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("SetExpenseClaimDescription", connection);
+                DbCommand command = GetDbCommand("SetExpenseClaimDescription", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName (command, "description", description);
+                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName(command, "description", description);
 
-                return Convert.ToInt32 (command.ExecuteScalar());
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+
+        public void SetExpenseClaimVatCents(int expenseClaimId, Int64 vatCents)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetExpenseClaimVatCents", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName(command, "vatCents", vatCents);
+
+                command.ExecuteNonQuery();
             }
         }
 

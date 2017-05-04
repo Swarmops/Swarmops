@@ -42,12 +42,18 @@ namespace Swarmops.Logic.Financial
         }
 
         public static ExpenseClaim Create (Person claimer, Organization organization, FinancialAccount budget,
-            DateTime expenseDate, string description, Int64 amountCents)
+            DateTime expenseDate, string description, Int64 amountCents, Int64 vatCents)
         {
             ExpenseClaim newClaim =
                 FromIdentityAggressive (SwarmDb.GetDatabaseForWriting()
                     .CreateExpenseClaim (claimer.Identity, organization.Identity,
                         budget.Identity, expenseDate, description, amountCents));
+
+            if (vatCents > 0)
+            {
+                newClaim.VatCents = vatCents;
+            }
+
             // Create the financial transaction with rows
 
             string transactionDescription = "Expense #" + newClaim.Identity + ": " + description; // TODO: Localize
@@ -62,7 +68,15 @@ namespace Swarmops.Logic.Financial
                     transactionDescription);
 
             transaction.AddRow (organization.FinancialAccounts.DebtsExpenseClaims, -amountCents, claimer);
-            transaction.AddRow (budget, amountCents, claimer);
+            if (vatCents > 0)
+            {
+                transaction.AddRow(budget, amountCents - vatCents, claimer);
+                transaction.AddRow(organization.FinancialAccounts.AssetsVatInboundUnreported, vatCents, claimer);
+            }
+            else
+            {
+                transaction.AddRow(budget, amountCents, claimer);
+            }
 
             // Make the transaction dependent on the expense claim
 
@@ -70,13 +84,13 @@ namespace Swarmops.Logic.Financial
 
             // Create notifications
 
-            OutboundComm.CreateNotificationAttestationNeeded (budget, claimer, string.Empty, amountCents/100.0,
+            OutboundComm.CreateNotificationAttestationNeeded (budget, claimer, string.Empty, newClaim.BudgetAmountCents/100.0,
                 description, NotificationResource.ExpenseClaim_Created); // Slightly misplaced logic, but failsafer here
-            OutboundComm.CreateNotificationFinancialValidationNeeded (organization, amountCents/100.0,
+            OutboundComm.CreateNotificationFinancialValidationNeeded (organization, newClaim.AmountCents/100.0,
                 NotificationResource.Receipts_Filed);
             SwarmopsLogEntry.Create (claimer,
-                new ExpenseClaimFiledLogEntry (claimer /*filing person*/, claimer /*beneficiary*/, amountCents/100.0,
-                    budget, description), newClaim);
+                new ExpenseClaimFiledLogEntry (claimer /*filing person*/, claimer /*beneficiary*/, newClaim.BudgetAmountCents/100.0,
+                    vatCents / 100.0, budget, description), newClaim);
 
             // Clear a cache
             FinancialAccount.ClearAttestationAdjustmentsCache(organization);
@@ -94,6 +108,22 @@ namespace Swarmops.Logic.Financial
         public bool Approved
         {
             get { return Validated && Attested; }
+        }
+
+
+        public new Int64 VatCents
+        {
+            get { return base.VatCents; }
+            set
+            {
+                base.VatCents = value;
+                SwarmDb.GetDatabaseForWriting().SetExpenseClaimVatCents(this.Identity, value);
+            }
+        }
+
+        public Int64 BudgetAmountCents
+        {
+            get { return this.AmountCents - this.VatCents; }
         }
 
 

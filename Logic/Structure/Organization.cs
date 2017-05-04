@@ -1034,5 +1034,14 @@ namespace Swarmops.Logic.Structure
             get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.OrgTaxPaymentOcr); }
             set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.OrgTaxPaymentOcr, value); }
         }
+
+        public bool VatEnabled
+        {
+            get
+            {
+                return (this.FinancialAccounts.AssetsVatInbound != null &&
+                        this.FinancialAccounts.AssetsVatInbound.Active);
+            }
+        }
     }
 }

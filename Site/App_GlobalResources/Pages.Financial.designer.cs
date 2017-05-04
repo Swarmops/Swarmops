@@ -934,6 +934,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT of the total ({0}).
+        /// </summary>
+        internal static string FileExpenseClaim_Vat {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Vat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account (OCR).
         /// </summary>
         internal static string PayoutMoney_GridHeader_Account_Ocr {

@@ -12,10 +12,11 @@ namespace Swarmops.Logic.Support.LogEntries
             // empty ctor needed for serialize
         }
 
-        public ExpenseClaimFiledLogEntry (Person filingPerson, Person beneficiaryPerson, double amount,
+        public ExpenseClaimFiledLogEntry (Person filingPerson, Person beneficiaryPerson, double amount, double vat,
             FinancialAccount budget, string reason)
         {
             Amount = amount;
+            Vat = vat;
             Currency = budget.Organization.Currency.Code;
             DateTime = DateTime.UtcNow;
             Description = reason;

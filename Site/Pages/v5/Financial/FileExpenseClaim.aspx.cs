@@ -109,6 +109,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 this.TextClearing.Text = CurrentUser.BankClearing;
                 this.TextAccount.Text = CurrentUser.BankAccount;
                 this.CurrencyAmount.Cents = 0;
+                this.CurrencyVat.Cents = 0;
                 this.CurrencyAmount.Focus();
 
                 Localize();
@@ -128,6 +129,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelBankAccount.Text = Resources.Pages.Financial.FileExpenseClaim_BankAccount;
             this.LabelHeaderImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderReceiptImages;
             this.LabelImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_UploadRecieptImages;
+            this.LabelVat.Text = string.Format(Resources.Pages.Financial.FileExpenseClaim_Vat,
+                CurrentOrganization.Currency.DisplayCode);
 
             this.ButtonRequest.Text = Resources.Pages.Financial.FileExpenseClaim_ButtonRequest;
         }
@@ -139,6 +142,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // People who choose to disable JavaScript and then submit bad input almost deserve to be hurt.
 
             Int64 amountCents = this.CurrencyAmount.Cents;
+            Int64 vatCents = this.CurrencyVat.Cents;
 
             string description = this.TextPurpose.Text;
 
@@ -167,7 +171,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             ExpenseClaim claim = ExpenseClaim.Create (CurrentUser, CurrentOrganization, budget, DateTime.UtcNow,
-                description, amountCents);
+                description, amountCents, vatCents);
 
             foreach (int tagSetId in this._tagSetIds)
             {

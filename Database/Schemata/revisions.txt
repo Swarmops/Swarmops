@@ -33,3 +33,4 @@
 0033 - Added transaction row identity return, necessary for 0032 [RF]
 0034 - Fix for SetFinancialTransactionRowNativeCurrency
 0035 - Added OrganizationSequenceId on FinancialTransactions, VatCents setter on invoices [RF]
+0036 - Added support for VatCents on ExpenseClaims [RF]

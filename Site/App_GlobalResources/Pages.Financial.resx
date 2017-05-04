@@ -614,4 +614,7 @@
   <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
     <value>VAT part of total ({0})</value>
   </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>VAT of the total ({0})</value>
+  </data>
 </root>
