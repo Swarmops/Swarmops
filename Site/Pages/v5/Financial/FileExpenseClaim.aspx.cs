@@ -65,6 +65,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Bind data
 
+            // Unused for now
+
+            /*
             this.RepeaterTagLabels.DataSource = dataSourceVisibleTags;
             this.RepeaterTagDrop.DataSource = dataSourceVisibleTags;
             this.RepeaterTagDropScript.DataSource = dataSourceVisibleTags;
@@ -73,7 +76,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.RepeaterTagLabels.DataBind();
             this.RepeaterTagDrop.DataBind();
             this.RepeaterTagDropScript.DataBind();
-            this.RepeaterErrorCheckTags.DataBind();
+            this.RepeaterErrorCheckTags.DataBind();*/
 
             // Write set list back to hidden variable
 
