@@ -12,22 +12,7 @@
             if (vatEnable) {
                 $('.enableVatField').show();
             }
-
-            <asp:Repeater ID="RepeaterTagDropScript" runat="server"><ItemTemplate>
-            $('#DropTags<%# Eval("TagSetId") %>').combotree({
-                animate: true,
-                height: 30
-            });
-
-            
-            $('#SpanDropTags<%# Eval("TagSetId") %> span.combo input.combo-text').click(function () {
-                $('#SpanDropTags<%# Eval("TagSetId") %> span.combo span span.combo-arrow').click();
-            });
-            </ItemTemplate></asp:Repeater>
-
         });
-
-
 
 
 
@@ -43,14 +28,6 @@
                 $('#<%=this.ComboBudgets.ClientID %>_SpanBudgets').addClass("entryError");
                 alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Budget %>'));
             }
-
-            <asp:Repeater ID="RepeaterErrorCheckTags" runat="server"><ItemTemplate>
-                if ($('#DropTags<%# Eval("TagSetId") %>').combotree('tree').tree('getSelected') == null) {
-                    isValid = false;
-                    $('#SpanDropTags<%# Eval("TagSetId") %>').addClass("entryError");
-                    alertify.error(SwarmopsJS.unescape('<%=this.Localized_ValidationError_MissingTag %>'));
-                }
-            </ItemTemplate></asp:Repeater>
 
             isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ValidationError_Purpose %>')) && isValid;
 
