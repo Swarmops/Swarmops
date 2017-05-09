@@ -67,9 +67,9 @@ namespace Swarmops.Frontend.Socket
             base.OnOpen();
 
             JObject json = new JObject();
-            json ["messageType"] = json["messageType"] = "AnnualProfitLossCents";
-            json["profitLossCents"] = FrontendLoop.GetOrganizationProfitLossCents(this._authority.Organization).ToString();
-            json["organizationId"] = this._authority.Organization.Identity;
+            json ["MessageType"] = json["messageType"] = "AnnualProfitLossCents";
+            json["ProfitLossCents"] = FrontendLoop.GetOrganizationProfitLossCents(this._authority.Organization).ToString();
+            json["OrganizationId"] = this._authority.Organization.Identity;
 
             this.Send(json.ToString());
         }

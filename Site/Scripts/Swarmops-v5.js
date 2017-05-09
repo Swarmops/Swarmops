@@ -105,6 +105,12 @@ function _masterInitializeSocket(authenticationTicket) {
         else if (message.MessageType == "Malfunctions") {
             _master_updateMalfunctions (message.MalfunctionsList);
         }
+        else if (message.MessageType == "AnnualProfitLossCents") {
+            if (odoProfitLossToDate != undefined) // if there's a P&L odometer on the current page
+            {
+                odoProfitLossToDate.innerHTML = (message.ProfitLossCents / 100.0) + 0.001; // update it; +0.001 needed for %.2f
+            }
+        }
         else if (message.MessageType == "SandboxUpdate") {
             if (odoLocalParticipation != undefined) {  // Real ugly accessing specific page elements here, but it's temporary
                 odoLocalParticipation.innerHTML = message.Local;

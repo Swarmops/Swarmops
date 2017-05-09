@@ -308,9 +308,9 @@ namespace Swarmops.Frontend.Socket
             Int64 annualProfitLossCents = GetOrganizationProfitLossCents(organization);
 
             JObject json = new JObject();
-            json["messageType"] = "AnnualProfitLossCents";
-            json["profitLossCents"] = annualProfitLossCents.ToString();
-            json["organizationId"] = organization.Identity;
+            json["MessageType"] = "AnnualProfitLossCents";
+            json["ProfitLossCents"] = annualProfitLossCents.ToString();
+            json["OrganizationId"] = organization.Identity;
 
             BroadcastToOrganization(organization, json);
         }
