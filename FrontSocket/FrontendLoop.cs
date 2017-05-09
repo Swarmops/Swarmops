@@ -323,7 +323,7 @@ namespace Swarmops.Frontend.Socket
             DateTime thisYearStart = new DateTime(DateTime.UtcNow.Year, 1, 1);
             DateTime thisYearEnd = new DateTime(thisYearStart.Year + 1, 1, 1);
 
-            return allPLAccounts.GetDeltaCents(thisYearStart, thisYearEnd);
+            return -allPLAccounts.GetDeltaCents(thisYearStart, thisYearEnd); // negative because of accounting of P&L accounts
         }
 
 
