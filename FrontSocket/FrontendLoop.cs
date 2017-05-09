@@ -9,11 +9,14 @@ using Mono.Unix;
 using Mono.Unix.Native;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
 using Swarmops.Common.ExtensionMethods;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Financial;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 using ErrorEventArgs = WebSocketSharp.ErrorEventArgs;
@@ -213,6 +216,18 @@ namespace Swarmops.Frontend.Socket
         {
             SystemSettings.HeartbeatFrontend = DateTime.UtcNow.ToUnix();
 
+            // Check for backend heartbeat
+
+            if (_lastBackendHeartBeat.AddSeconds(5) < DateTime.UtcNow)
+            {
+                RaiseAlarm(FrontendMalfunctions.BackendHeartbeatLost);
+            }
+            else
+            {
+                ClearAlarm(FrontendMalfunctions.BackendHeartbeatLost);
+            }
+
+
             if (_isSandbox)
             {
                 _sandboxDummy1 += new Random().Next(10) - 3;
@@ -224,42 +239,6 @@ namespace Swarmops.Frontend.Socket
                 data1["Profit"] = _sandboxDummy2.ToString(CultureInfo.InvariantCulture);
 
                 _socketServer.WebSocketServices.Broadcast(data1.ToString());
-
-                // Check for backend heartbeat
-
-                if (_lastBackendHeartBeat.AddSeconds(5) < DateTime.UtcNow)
-                {
-                    RaiseAlarm(FrontendMalfunctions.BackendHeartbeatLost);
-                }
-                else
-                {
-                    ClearAlarm(FrontendMalfunctions.BackendHeartbeatLost);
-                }
-
-                /*
-                JArray malfunctionsArray = new JArray();
-                for (int loop = 0; loop < _malfunctionTestCounter; loop++)
-                {
-                    if (loop < _malfunctionTestCounter - 2)
-                    {
-                        continue;
-                    }
-
-                    JObject malfunctionObject = new JObject();
-                    malfunctionObject["Id"] = "Mal" + loop.ToString();
-                    malfunctionObject["Text"] = malfunctionStrings[loop] + " (Test code, ignore - and let's make this a multiline point to test flow)";
-                    malfunctionsArray.Add(malfunctionObject);
-                }
-
-                if (++_malfunctionTestCounter > 4)
-                {
-                    _malfunctionTestCounter = 0;
-                }
-
-                JObject data2 = new JObject();
-                data2["MessageType"] = "Malfunctions";
-                data2["MalfunctionsList"] = malfunctionsArray;
-                _socketServer.WebSocketServices.Broadcast(data2.ToString());*/
             }
         }
 
@@ -291,8 +270,6 @@ namespace Swarmops.Frontend.Socket
 
 
 
-
-
         public static void OnBackendMessage(object sender, MessageEventArgs args)
         {
             JObject json = JObject.Parse(args.Data);
@@ -312,6 +289,47 @@ namespace Swarmops.Frontend.Socket
             {
                 _socketServer.WebSocketServices.Broadcast(args.Data); // send unfiltered to all sessions, for now
             }
+
+            if (messageType == "RecalculateOrganizationProfitLoss")
+            {
+                // An organization's annual profit changed - recalculate and broadcast to those who
+                // are displaying it
+
+                int organizationId = Int32.Parse((string) json["OrganizationId"]);
+                Organization organization = Organization.FromIdentity(organizationId);
+
+                RecalculateOrganizationProfitLoss(organization);
+            }
+        }
+
+
+        public static void RecalculateOrganizationProfitLoss(Organization organization)
+        {
+            Int64 annualProfitLossCents = GetOrganizationProfitLossCents(organization);
+
+            JObject json = new JObject();
+            json["messageType"] = "AnnualProfitLossCents";
+            json["profitLossCents"] = annualProfitLossCents.ToString();
+            json["organizationId"] = organization.Identity;
+
+            BroadcastToOrganization(organization, json);
+        }
+
+
+        public static Int64 GetOrganizationProfitLossCents(Organization organization)
+        {
+            FinancialAccounts allPLAccounts = FinancialAccounts.ForOrganization(organization,
+                FinancialAccountType.Result);
+            DateTime thisYearStart = new DateTime(DateTime.UtcNow.Year, 1, 1);
+            DateTime thisYearEnd = new DateTime(thisYearStart.Year + 1, 1, 1);
+
+            return allPLAccounts.GetDeltaCents(thisYearStart, thisYearEnd);
+        }
+
+
+        public static void BroadcastToOrganization(Organization organization, JObject message)
+        {
+            _socketServer.WebSocketServices.BroadcastToOrganization(organization, message);
         }
 
         public static void OnBackendOpen(object sender, EventArgs args)
@@ -397,6 +415,7 @@ namespace Swarmops.Frontend.Socket
 
         private static Dictionary<FrontendMalfunctions,bool> _activeAlarms;
 
+        internal static WebSocketServer SocketServer {  get { return _socketServer; } }
 
         // --------------------------------- LEGACY CODE BELOW THIS MARK -------------------------------
 

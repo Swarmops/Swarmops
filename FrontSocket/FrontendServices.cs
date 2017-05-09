@@ -60,9 +60,18 @@ namespace Swarmops.Frontend.Socket
 
             _authority = Authority.FromEncryptedXml (authBase64);
 
-            Console.WriteLine(" - - authenticated: " + _authority.Person.Canonical);
+            Console.WriteLine(" - - authenticated: " + this._authority.Person.Canonical);
 
+            this.Sessions.RegisterSession(this, this._authority);
+                
             base.OnOpen();
+
+            JObject json = new JObject();
+            json ["messageType"] = json["messageType"] = "AnnualProfitLossCents";
+            json["profitLossCents"] = FrontendLoop.GetOrganizationProfitLossCents(this._authority.Organization).ToString();
+            json["organizationId"] = this._authority.Organization.Identity;
+
+            this.Send(json.ToString());
         }
 
         protected override void OnClose (CloseEventArgs e)
@@ -70,8 +79,12 @@ namespace Swarmops.Frontend.Socket
             Console.WriteLine(" - client closed");
             base.OnClose (e);
 
+            this.Sessions.UnregisterSession(this);
+
             // Sessions.Broadcast("{\"messageType\":\"EditorCount\"," + String.Format("\"editorCount\":\"{0}\"", Sessions.ActiveIDs.ToArray().Length) + '}');
         }
+
+        public Authority Authority { get { return this._authority; } }
 
         private Authority _authority = null;
     }
