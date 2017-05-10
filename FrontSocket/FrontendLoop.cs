@@ -308,26 +308,18 @@ namespace Swarmops.Frontend.Socket
 
         public static void RecalculateOrganizationProfitLoss(Organization organization)
         {
-            Int64 annualProfitLossCents = GetOrganizationProfitLossCents(organization);
+            Int64 annualProfitLossCents = organization.GetProfitLossCents();
 
             JObject json = new JObject();
             json["MessageType"] = "AnnualProfitLossCents";
-            json["ProfitLossCents"] = annualProfitLossCents.ToString();
+            json["ProfitLossCents"] = annualProfitLossCents.ToString(CultureInfo.InvariantCulture);
             json["OrganizationId"] = organization.Identity;
 
             BroadcastToOrganization(organization, json);
         }
 
 
-        public static Int64 GetOrganizationProfitLossCents(Organization organization)
-        {
-            FinancialAccounts allPLAccounts = FinancialAccounts.ForOrganization(organization,
-                FinancialAccountType.Result);
-            DateTime thisYearStart = new DateTime(DateTime.UtcNow.Year, 1, 1);
-            DateTime thisYearEnd = new DateTime(thisYearStart.Year + 1, 1, 1);
 
-            return -allPLAccounts.GetDeltaCents(thisYearStart, thisYearEnd); // negative because of accounting of P&L accounts
-        }
 
 
         public static void BroadcastToOrganization(Organization organization, JObject message)

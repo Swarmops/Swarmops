@@ -1005,6 +1005,21 @@ namespace Swarmops.Logic.Structure
         }
 
 
+        public Int64 GetProfitLossCents (int year = 0)
+        {
+            if (year == 0)
+            {
+                year = DateTime.UtcNow.Year;
+            }
+
+            FinancialAccounts allPLAccounts = Swarmops.Logic.Financial.FinancialAccounts.ForOrganization(this,
+                FinancialAccountType.Result);
+            DateTime thisYearStart = new DateTime(year, 1, 1);
+            DateTime thisYearEnd = new DateTime(year + 1, 1, 1);
+
+            return -allPLAccounts.GetDeltaCents(thisYearStart, thisYearEnd); // negative because of accounting of P&L accounts
+        }
+
         public string VanityDomain
         {
             get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.OrgVanityDomain); }

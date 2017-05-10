@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,9 +69,8 @@ namespace Swarmops.Frontend.Socket
 
             JObject json = new JObject();
             json ["MessageType"] = json["messageType"] = "AnnualProfitLossCents";
-            json["ProfitLossCents"] = FrontendLoop.GetOrganizationProfitLossCents(this._authority.Organization).ToString();
+            json["ProfitLossCents"] = this._authority.Organization.GetProfitLossCents().ToString(CultureInfo.InvariantCulture);
             json["OrganizationId"] = this._authority.Organization.Identity;
-            json["Instant"] = "1"; // instant update, no odometer rolling for init
 
             this.Send(json.ToString());
         }
