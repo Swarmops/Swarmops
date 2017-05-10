@@ -108,7 +108,7 @@ function _masterInitializeSocket(authenticationTicket) {
         else if (message.MessageType == "AnnualProfitLossCents") {
             if (odoProfitLossToDate != undefined) // if there's a P&L odometer on the current page
             {
-                if (message.Instant == 1) {
+                if (message.Instant == "1") {
                     window.odometerOptions.duration = 1;
                 }
                 odoProfitLossToDate.innerHTML = (message.ProfitLossCents / 100.0) + 0.001; // update it; +0.001 needed for %.2f

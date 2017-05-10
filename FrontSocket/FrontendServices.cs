@@ -70,7 +70,7 @@ namespace Swarmops.Frontend.Socket
             json ["MessageType"] = json["messageType"] = "AnnualProfitLossCents";
             json["ProfitLossCents"] = FrontendLoop.GetOrganizationProfitLossCents(this._authority.Organization).ToString();
             json["OrganizationId"] = this._authority.Organization.Identity;
-            json["Instant"] = 1; // instant update, no odometer rolling for init
+            json["Instant"] = "1"; // instant update, no odometer rolling for init
 
             this.Send(json.ToString());
         }
