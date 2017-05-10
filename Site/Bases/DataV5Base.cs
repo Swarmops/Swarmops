@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Threading;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -77,6 +78,17 @@ namespace Swarmops.Frontend
 
             GregorianCalendar normalizedCalendar = new GregorianCalendar();
             normalizedCalendar.CalendarType = GregorianCalendarTypes.USEnglish;
+
+            // Set the calendar to GregorianCalendar.USEnglish. This sometimes fails on Windows but works
+            // on Mono. If it fails on Windows, no biggie b/c this is supposed to be the default anyway.
+            try
+            {
+                Thread.CurrentThread.CurrentCulture.DateTimeFormat.Calendar = normalizedCalendar;
+            }
+            catch (Exception)
+            {
+                // meh
+            }
         }
 
 
