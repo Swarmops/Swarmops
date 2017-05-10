@@ -48,6 +48,9 @@ namespace Swarmops.Frontend.Socket
             // Disable SSL cert checking (because Mono doesn't have a cert repo, dammit)
             Swarmops.Logic.Support.SupportFunctions.DisableSslCertificateChecks();
 
+            // Other one-off initializations
+            SupportFunctions.OperatingTopology = OperatingTopology.FrontendSocket;
+
             // Initiate main loop
 
             UnixSignal[] killSignals = null;

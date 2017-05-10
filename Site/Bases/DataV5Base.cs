@@ -71,6 +71,12 @@ namespace Swarmops.Frontend
             {
                 CurrentAuthority = null; // unauthenticated!
             }
+
+            // Regardless of auth data and culture, set Gregorian calendar
+            // (avoids problems with Arabic, etc, calendars and bookkeeping in localization)
+
+            GregorianCalendar normalizedCalendar = new GregorianCalendar();
+            normalizedCalendar.CalendarType = GregorianCalendarTypes.USEnglish;
         }
 
 

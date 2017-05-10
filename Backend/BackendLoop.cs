@@ -55,7 +55,7 @@ namespace Swarmops.Backend
             // Other one-time initializations
 
             FinancialTransactions.FixAllUnsequenced();
-
+            SupportFunctions.OperatingTopology = OperatingTopology.Backend;
 
             // Begin main loop
 

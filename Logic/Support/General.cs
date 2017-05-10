@@ -102,5 +102,15 @@ namespace Swarmops.Logic.Support
         {
             SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry (DateTime.UtcNow, source, exception);
         }
+
+        public static OperatingTopology OperatingTopology { get; set; }
+    }
+
+    public enum OperatingTopology
+    {
+        Unknown = 0,
+        Backend,
+        FrontendSocket,
+        FrontendWeb
     }
 }

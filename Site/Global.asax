@@ -15,6 +15,7 @@
         // Set supported cultures
         HttpContext.Current.Application["Cultures"] = new[] {"sv-SE", "en-US", "en-GB", "de-DE", "de-AT", "fi-FI"};
         HttpContext.Current.Application["UserRoleCache"] = new Dictionary<int, string[]>();
+        SupportFunctions.OperatingTopology = OperatingTopology.FrontendWeb;
     }
 
     private void Application_End(object sender, EventArgs e)
@@ -58,7 +59,7 @@
             return; // prevent further matching
         }
                 
-        // Rewrite of general URLs
+        // Rewrite of general URLs, candidates in order, assuming host is "dev.swarmops.com" and {0} given path
         
         string[] rewriteCandidates =
         {
