@@ -905,4 +905,8 @@
   <data name="Swarm_TypePartialName" xml:space="preserve">
     <value>Type a partial name...</value>
   </data>
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>Annual Profit/Loss To Date ({0})</value>
+    <comment>{0} is the currency code</comment>
+  </data>
 </root>

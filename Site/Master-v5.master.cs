@@ -259,6 +259,9 @@ namespace Swarmops.Frontend
 
 
             this.MasterLabelBitIdRegisterHeader.Text = Resources.Global.Master_BitIdRegister_Header;
+
+            this.MasterLabelDashboardProfitLoss.Text = String.Format(Resources.Global.Financial_ProfitToDate,
+                CurrentOrganization.Currency.DisplayCode);
         }
 
         protected string _cacheVersionMark;  // this is just a cache buster for style sheets on new versions

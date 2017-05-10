@@ -538,6 +538,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Annual Profit/Loss To Date ({0}).
+        /// </summary>
+        internal static string Financial_ProfitToDate {
+            get {
+                return ResourceManager.GetString("Financial_ProfitToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Receipt Image {0} of {1}.
         /// </summary>
         internal static string Financial_ReceiptSpecification {

@@ -72,7 +72,8 @@
 
         window.odometerOptions = {
             auto: false, // Don't automatically initialize everything with class 'odometer'
-            theme: 'car' // Specify the theme (if you have more than one theme css file on the page)
+            theme: 'car', // Specify the theme (if you have more than one theme css file on the page)
+            duration: 1500 // time to update
         };
 
         $(document).ready(function () {
@@ -223,6 +224,14 @@
         <div class="mainbar">
             <!--<div id="page-icon-encaps"><asp:Image ID="IconPage" runat="server" ImageUrl="~/Images/PageIcons/iconshock-steering-wheel-40px.png" /></div><h1><asp:Label ID="LabelPageTitle" Text="Dashboard" runat="server" /></h1>-->
         
+            <div class="box" style="background-image: url(/Images/Other/coins-background-istockphoto.jpg); background-size: 700px">
+                <div class="content">
+                    <div class="odometer-wrapper">
+                        <div class="elementFloatFar odometer odometer-currency" id="odoProfitLossToDate">0.001</div><div class="odometer-label"><asp:Label runat="server" ID="MasterLabelDashboardProfitLoss">Profit To Date XYZ</asp:Label></div>
+                    </div>
+                </div>
+            </div>
+
             <% if (!(this.Page as PageV5Base).IsDashboard)
                { %>
             <div class="box">
