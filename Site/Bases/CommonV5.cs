@@ -73,6 +73,7 @@ namespace Swarmops.Frontend
             try
             {
                 Thread.CurrentThread.CurrentCulture.DateTimeFormat.Calendar = normalizedCalendar;
+                Thread.CurrentThread.CurrentUICulture.DateTimeFormat.Calendar = normalizedCalendar;
             }
             catch (Exception)
             {

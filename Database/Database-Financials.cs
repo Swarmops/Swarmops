@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Globalization;
+using System.Xml;
 using Swarmops.Basic.Types.Financial;
 
 // This is the first part of Database to fully use MySql.
@@ -291,8 +292,8 @@ namespace Swarmops.Database
                         "select Sum(FinancialTransactionRows.AmountCents),Count(FinancialTransactions.FinancialTransactionId) from FinancialTransactionRows,FinancialTransactions Where FinancialTransactionRows.FinancialAccountId=" +
                         financialAccountId +
                         " AND FinancialTransactionRows.FinancialTransactionId=FinancialTransactions.FinancialTransactionId AND FinancialTransactionRows.Deleted=0 AND FinancialTransactions.DateTime >= '" +
-                        startDate.ToString ("yyyy-MM-dd HH:mm:ss") + "' AND FinancialTransactions.DateTime < '" +
-                        endDate.ToString ("yyyy-MM-dd HH:mm:ss") + "';", connection);
+                        XmlConvert.ToString(startDate, "yyyy-MM-dd HH:mm:ss") + "' AND FinancialTransactions.DateTime < '" +
+                        XmlConvert.ToString(endDate, "yyyy-MM-dd HH:mm:ss") + "';", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -325,8 +326,8 @@ namespace Swarmops.Database
                         "select Sum(FinancialTransactionRows.AmountCents),Count(FinancialTransactions.FinancialTransactionId) from FinancialTransactionRows,FinancialTransactions Where FinancialTransactionRows.FinancialAccountId IN (" +
                         JoinIds (financialAccountIds) +
                         ") AND FinancialTransactionRows.FinancialTransactionId=FinancialTransactions.FinancialTransactionId AND FinancialTransactionRows.Deleted=0 AND FinancialTransactions.DateTime >= '" +
-                        startDate.ToString ("yyyy-MM-dd HH:mm:ss") + "' AND FinancialTransactions.DateTime < '" +
-                        endDate.ToString ("yyyy-MM-dd HH:mm:ss") + "';", connection);
+                        startDate.ToString ("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) + "' AND FinancialTransactions.DateTime < '" +
+                        endDate.ToString ("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) + "';", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -383,8 +384,8 @@ namespace Swarmops.Database
                     GetDbCommand (
                         "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
                         JoinIds (financialAccountIds) + ") AND DateTime " + selectorLower + " '" +
-                        startDateTime.ToString ("yyyy-MM-dd HH:mm:ss") +
-                        "' AND DateTime " + selectorUpper + " '" + endDateTime.ToString ("yyyy-MM-dd HH:mm:ss") +
+                        startDateTime.ToString ("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) +
+                        "' AND DateTime " + selectorUpper + " '" + endDateTime.ToString ("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) +
                         "' ORDER BY DateTime,FinancialTransactions.FinancialTransactionId,FinancialTransactionRows.CreatedDateTime;",
                         connection);
 

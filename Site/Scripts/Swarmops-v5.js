@@ -112,7 +112,7 @@ function _masterInitializeSocket(authenticationTicket) {
                     window.odometerOptions.duration = 1;
                 }
                 odoProfitLossToDate.innerHTML = (message.ProfitLossCents / 100.0) + 0.001; // update it; +0.001 needed for %.2f
-                window.odometerOptions = 1500;
+                window.odometerOptions.duration = 1500;
             }
         }
         else if (message.MessageType == "SandboxUpdate") {
