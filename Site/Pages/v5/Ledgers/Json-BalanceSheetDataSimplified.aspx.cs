@@ -6,7 +6,7 @@ using Swarmops.Logic.Financial;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
-    public partial class BalanceSheetData : DataV5Base
+    public partial class BalanceSheetDataSimplified : DataV5Base
     {
         private AuthenticationData _authenticationData;
 
@@ -67,42 +67,40 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (AnnualReportLine line in reportLines)
             {
+                string columnCardinal = "assets";
+                string columnDelta = "assetdelta";
+                int signReverser = 1;
+
+                if (line.AccountType == FinancialAccountType.Debt)
+                {
+                    columnCardinal = "liabilities";
+                    columnDelta = "liabilitydelta";
+                    signReverser = -1;
+                }
+
                 string element = string.Format ("\"id\":\"{0}\",\"name\":\"{1}\"", line.AccountId,
                     JsonSanitize (line.AccountName));
 
                 if (line.Children.Count > 0)
                 {
-                    element += ",\"lastYear\":" +
-                               JsonDualString (line.AccountId, line.AccountTreeValues.PreviousYear,
-                                   line.AccountValues.PreviousYear);
+                    element += ",\"" + columnCardinal + "\":" +
+                               JsonDualString (line.AccountId, line.AccountTreeValues.ThisYear * signReverser,
+                                   line.AccountValues.ThisYear * signReverser);
 
-                    for (int quarter = 1; quarter <= 4; quarter++)
-                    {
-                        element += string.Format (",\"q{0}\":", quarter) +
-                                   JsonDualString (line.AccountId, line.AccountTreeValues.Quarters[quarter - 1],
-                                       line.AccountValues.Quarters[quarter - 1]);
-                    }
-
-                    element += ",\"ytd\":" +
-                               JsonDualString (line.AccountId, line.AccountTreeValues.ThisYear,
-                                   line.AccountValues.ThisYear);
+                    element += ",\"" + columnDelta + "\":" +
+                               JsonDualString (line.AccountId, (line.AccountTreeValues.ThisYear-line.AccountTreeValues.PreviousYear) * signReverser,
+                                   (line.AccountValues.ThisYear-line.AccountValues.PreviousYear) * signReverser);
 
 
-                    element += ",\"state\":\"" + (line.DefaultExpand ? "open" : "closed") + "\",\"children\":" + RecurseReport(line.Children);
+                    element += ",\"state\":\"" + (line.DefaultExpand? "open":"closed") + "\",\"children\":" + RecurseReport (line.Children);
                 }
                 else
                 {
-                    element += string.Format (CultureInfo.CurrentCulture, ",\"lastYear\":\"{0:N0}\"",
-                        (double) line.AccountValues.PreviousYear/100.0);
+                    element += string.Format (CultureInfo.CurrentCulture, ",\"" + columnCardinal + "\":\"{0:N2}\"",
+                        (double) line.AccountValues.PreviousYear/100.0*signReverser);
 
-                    for (int quarter = 1; quarter <= 4; quarter++)
-                    {
-                        element += string.Format (CultureInfo.CurrentCulture, ",\"q{0}\":\"{1:N0}\"", quarter,
-                            line.AccountValues.Quarters[quarter - 1]/100.0);
-                    }
-
-                    element += string.Format (CultureInfo.CurrentCulture, ",\"ytd\":\"{0:N0}\"",
-                        (double) line.AccountValues.ThisYear/100.0);
+                    element += string.Format (CultureInfo.CurrentCulture, ",\"" + columnDelta + "\":\"({0:+#,#;-#,#;0})\"",
+                        (double) line.AccountValues.ThisYear/100.0*signReverser).Replace("-", "&minus;");
                 }
 
                 elements.Add ("{" + element + "}");

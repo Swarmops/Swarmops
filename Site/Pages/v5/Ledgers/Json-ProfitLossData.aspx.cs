@@ -54,6 +54,7 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
             if (localizeMap.ContainsKey (line.AccountName))
             {
                 line.AccountName = localizeMap[line.AccountName];
+                line.DefaultExpand = true;
             }
         }
     }
@@ -104,7 +105,7 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
                            JsonDualString (line.AccountId, line.AccountTreeValues.ThisYear, line.AccountValues.ThisYear);
 
 
-                element += ",\"state\":\"closed\",\"children\":" + RecurseReport (line.Children);
+                element += ",\"state\":\"" + (line.DefaultExpand ? "open" : "closed") + "\",\"children\":" + RecurseReport(line.Children);
             }
             else
             {

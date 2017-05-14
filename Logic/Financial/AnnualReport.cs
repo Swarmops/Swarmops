@@ -361,6 +361,7 @@ namespace Swarmops.Logic.Financial
         public AnnualReportNode AccountValues;
 
         public List<AnnualReportLine> Children;
+        public bool DefaultExpand;
 
         public AnnualReportLine()
         {

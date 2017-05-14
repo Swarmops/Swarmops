@@ -285,6 +285,13 @@
     <Compile Include="Pages\v5\Ledgers\AccountPlan.aspx.designer.cs">
       <DependentUpon>AccountPlan.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Ledgers\BalanceSheetSimplified.aspx.cs">
+      <DependentUpon>BalanceSheetSimplified.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\BalanceSheetSimplified.aspx.designer.cs">
+      <DependentUpon>BalanceSheetSimplified.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Ledgers\BalanceSheet.aspx.cs">
       <DependentUpon>BalanceSheet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -354,6 +361,13 @@
     </Compile>
     <Compile Include="Pages\v5\Ledgers\Json-AccountPlanData.aspx.designer.cs">
       <DependentUpon>Json-AccountPlanData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-BalanceSheetDataSimplified.aspx.cs">
+      <DependentUpon>Json-BalanceSheetDataSimplified.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-BalanceSheetDataSimplified.aspx.designer.cs">
+      <DependentUpon>Json-BalanceSheetDataSimplified.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\v5\Ledgers\Json-BalanceSheetData.aspx.cs">
       <DependentUpon>Json-BalanceSheetData.aspx</DependentUpon>
@@ -1013,6 +1027,7 @@
     <Content Include="Pages\v5\Financial\RequestCashAdvance.aspx" />
     <Content Include="Pages\v5\Financial\ValidateReceipts.aspx" />
     <Content Include="Pages\v5\Ledgers\AccountPlan.aspx" />
+    <Content Include="Pages\v5\Ledgers\BalanceSheetSimplified.aspx" />
     <Content Include="Pages\v5\Ledgers\BalanceSheet.aspx" />
     <Content Include="Pages\v5\Ledgers\BalanceTransactions.aspx" />
     <Content Include="Pages\v5\Ledgers\BitcoinHotwallet.aspx" />
@@ -1023,6 +1038,7 @@
     <Content Include="Pages\v5\Ledgers\DebugLedgers.aspx" />
     <Content Include="Pages\v5\Ledgers\InspectLedgers.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-AccountPlanData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-BalanceSheetDataSimplified.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-BalanceSheetData.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-BitcoinHotwalletData.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-BudgetActualData.aspx" />

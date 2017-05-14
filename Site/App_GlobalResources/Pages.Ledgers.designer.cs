@@ -19,7 +19,7 @@ namespace Resources.Pages {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option or rebuild the Visual Studio project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "11.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Ledgers {
@@ -340,6 +340,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assets XXXX.
+        /// </summary>
+        internal static string BalanceSheet_Assets {
+            get {
+                return ResourceManager.GetString("BalanceSheet_Assets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Balance Sheet for {0},.
         /// </summary>
         internal static string BalanceSheet_ContentHeader {
@@ -354,6 +363,15 @@ namespace Resources.Pages {
         internal static string BalanceSheet_Current {
             get {
                 return ResourceManager.GetString("BalanceSheet_Current", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (change).
+        /// </summary>
+        internal static string BalanceSheet_Delta {
+            get {
+                return ResourceManager.GetString("BalanceSheet_Delta", resourceCulture);
             }
         }
         
@@ -381,6 +399,15 @@ namespace Resources.Pages {
         internal static string BalanceSheet_Info {
             get {
                 return ResourceManager.GetString("BalanceSheet_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Liabilities XXXX.
+        /// </summary>
+        internal static string BalanceSheet_Liabilities {
+            get {
+                return ResourceManager.GetString("BalanceSheet_Liabilities", resourceCulture);
             }
         }
         

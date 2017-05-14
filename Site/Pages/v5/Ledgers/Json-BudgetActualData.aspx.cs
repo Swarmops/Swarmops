@@ -57,6 +57,7 @@ public partial class Pages_v5_Ledgers_Json_BudgetActualData : DataV5Base
             if (localizeMap.ContainsKey (line.AccountName))
             {
                 line.AccountName = localizeMap[line.AccountName];
+                line.DefaultExpand = true;
             }
         }
     }
@@ -105,7 +106,7 @@ public partial class Pages_v5_Ledgers_Json_BudgetActualData : DataV5Base
 
 
 
-                element += ",\"state\":\"closed\",\"children\":" + RecurseReport (line.Children);
+                element += ",\"state\":\"" + (line.DefaultExpand ? "open" : "closed") + "\",\"children\":" + RecurseReport(line.Children);
             }
             else
             {
