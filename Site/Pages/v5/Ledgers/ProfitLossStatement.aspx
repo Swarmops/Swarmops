@@ -57,7 +57,7 @@
         	    $('#imageLoadIndicator').show();
 	            $('div.datagrid').css('opacity', 0.4);
 
-	            $('#tableProfitLoss').treegid('reload');
+	            //$('#tableProfitLoss').treegrid('reload');
 	        });
 
 

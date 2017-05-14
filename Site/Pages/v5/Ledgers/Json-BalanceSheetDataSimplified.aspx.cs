@@ -118,14 +118,20 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             if (expanded || treeValue != 0 && singleValue == 0)
             {
                 return string.Format (CultureInfo.CurrentCulture,
-                    "\"<span class='annualreportdata-collapsed-{0}' " + (expanded? "style='display:none'": "") + ">" + sigma + " {1:" + format + "}</span><span class='annualreportdata-expanded-{0}' " + (!expanded ? "style='display:none'" : "") + ">&nbsp;</span>\"",
-                    accountId, treeValue/100.00)
-                        .Replace("---", "<span style='color:#CCC'>&mdash;</span>")
-                        .Replace("-", "&minus;");
+                    "\"<span class='annualreportdata-collapsed-{0}' " + (expanded? "style='display:none'": "") + ">" + sigma + " " + FormatSingleString(treeValue, format) + "</span>" + 
+                    "<span class='annualreportdata-expanded-{0}' " + (!expanded ? "style='display:none'" : "") + ">&nbsp;</span>\"",
+                    accountId);
             }
-            return string.Format (CultureInfo.CurrentCulture,
-                "\"<span class='annualreportdata-collapsed-{0}'>" + sigma + " {1:" + format + "}</span><span class='annualreportdata-expanded-{0}' style='display:none'>{2:" + format + "}</span>\"",
-                accountId, treeValue/100.0, singleValue/100.0)
+            return string.Format(CultureInfo.CurrentCulture,
+                "\"<span class='annualreportdata-collapsed-{0}'>" + sigma + " " + FormatSingleString(treeValue, format) + " " + "</span>" +
+                "<span class='annualreportdata-expanded-{0}' style='display:none'>" + FormatSingleString(singleValue, format) + "</span>\"",
+                accountId);
+
+        }
+
+        private string FormatSingleString(Int64 centsValue, string format = "N0")
+        {
+            return String.Format("{0:" + format + "}", centsValue / 100.0)
                         .Replace("---", "<span style='color:#CCC'>&mdash;</span>")
                         .Replace("-", "&minus;");
         }

@@ -55,7 +55,7 @@
         	    $('#imageLoadIndicator').show();
 	            $('div.datagrid').css('opacity', 0.4);
 
-	            $('#tableAnnualReport').treegid('reload');
+	            //$('#tableAnnualReport').treegrid('reload');
 	        });
 
 
