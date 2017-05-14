@@ -35,12 +35,58 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 FinancialAccountType.Balance);
             LocalizeRoot (report.ReportLines);
 
+            _totals = new BalanceSimplifiedTotals();
+
             Response.ContentType = "application/json";
 
-            Response.Output.WriteLine (RecurseReport (report.ReportLines));
+            Response.Output.WriteLine("{\"rows\": " + RecurseReport(report.ReportLines) + ", \"footer\": [" +
+                                       WriteFooter() + "]}");
+
 
             Response.End();
         }
+
+        private class BalanceSimplifiedTotals
+        {
+            public Int64 AssetsCents { get; set; }
+            public Int64 LiabilitiesCents { get; set; }
+        }
+
+        private BalanceSimplifiedTotals _totals;
+
+        private string WriteFooter()
+        {
+            string line1 = string.Format("\"name\":\"{0}\"", Resources.Global.Global_Total);
+
+            line1 += string.Format(CultureInfo.CurrentCulture, ",\"assets\":\"{0:N0}\"",
+                _totals.AssetsCents / 100.0);
+
+            line1 += string.Format(CultureInfo.CurrentCulture, ",\"liabilities\":\"{0:N0}\"", _totals.LiabilitiesCents/-100.0);
+
+            if (_totals.AssetsCents == _totals.LiabilitiesCents)
+            {
+                return "{" + line1 + "}";
+            }
+            else if (_totals.AssetsCents > _totals.LiabilitiesCents) // Predicted profit
+            {
+                string line2 = string.Format("\"name\":\"{0}\"", string.Format(Resources.Pages.Ledgers.BalanceSheet_ProfitToDate, _year));
+
+                line2 += string.Format(CultureInfo.CurrentCulture, ",\"liabilities\":\"{0:N0}\"",
+                    (_totals.AssetsCents-_totals.LiabilitiesCents) / 100.0);
+
+                return "[{" + line1 + "},{" + line2 + "}]";
+            }
+            else
+            {
+                string line2 = string.Format("\"name\":\"{0}\"", string.Format(Resources.Pages.Ledgers.BalanceSheet_LossToDate, _year));
+
+                line2 += string.Format(CultureInfo.CurrentCulture, ",\"assets\":\"{0:N0}\"",
+                    (_totals.LiabilitiesCents - _totals.AssetsCents) / 100.0);
+
+                return "[{" + line1 + "},{" + line2 + "}]";
+            }
+        }
+
 
         private void LocalizeRoot (List<AnnualReportLine> lines)
         {
@@ -77,6 +123,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     columnCardinal = "liabilities";
                     columnDelta = "liabilitydelta";
                     signReverser = -1;
+                    this._totals.LiabilitiesCents += line.AccountValues.ThisYear;
+                }
+                else
+                {
+                    this._totals.AssetsCents += line.AccountValues.ThisYear;
                 }
 
                 string element = string.Format ("\"id\":\"{0}\",\"name\":\"{1}\"", line.AccountId,

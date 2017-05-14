@@ -793,6 +793,9 @@
     <value>(change)</value>
     <comment>Change from previous year's close, which is same as from start of this year</comment>
   </data>
+  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
+    <value>The Balance Sheet is an overview of assets and debts at a snapshot in time, and is used to see how results affect the overall financial health of the organization. You may also want to look at the &lt;a href="BalanceSheet"&gt;advanced balance sheet&lt;/a&gt; for more detail, or the &lt;a href="ProfitLossStatement"&gt;profit-and-loss statement&lt;/a&gt; which is the overview of income and expenditure.</value>
+  </data>
   <data name="BalanceSheet_Liabilities" xml:space="preserve">
     <value>Liabilities XXXX</value>
     <comment>For the simplified view - XXXX is replaced with year</comment>
@@ -800,5 +803,13 @@
   <data name="BalanceSheet_LiabilitiesDelta" xml:space="preserve">
     <value>(change)</value>
     <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_LossToDate" xml:space="preserve">
+    <value>Loss to date ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
+    <value>Profit to date ({0})</value>
+    <comment>The {0} is the year of the report</comment>
   </data>
 </root>

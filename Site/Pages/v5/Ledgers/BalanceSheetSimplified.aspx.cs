@@ -19,7 +19,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
             PageIcon = "iconshock-treasure";
             PageTitle = Resources.Pages.Ledgers.BalanceSheet_PageTitle;
-            InfoBoxLiteral = Resources.Pages.Ledgers.BalanceSheet_Info;
+            InfoBoxLiteral = Resources.Pages.Ledgers.BalanceSheet_Info_Simplified;
 
             // Security: If the org has open ledgers, then anyone may read. Otherwise, Financials.Read.
 

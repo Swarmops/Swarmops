@@ -62,6 +62,13 @@
 	        $('div.datagrid').css('opacity', 0.4);
 	    });
 
+	    function formatGray(val, row, index) {
+	        if (val === undefined) {
+	            return undefined;
+	        }
+	        return "<span style='color:#AAA'>" + val + "</span>";
+	    }
+
 	    var currentYear = <%=DateTime.Today.Year %>;
 
 	</script>
@@ -72,6 +79,14 @@
             color: #1C397E;
             letter-spacing: 1px;
 	    }
+        .datagrid-row-selected,.datagrid-row-over{
+            background:transparent;
+	    }
+   	    table.datagrid-ftable {
+		    font-weight: 500;
+	    }
+
+    </style>
     </style>
 
 </asp:Content>
@@ -82,15 +97,15 @@
         url="Json-BalanceSheetDataSimplified.aspx"
         rownumbers="false"
         animate="true"
-        fitColumns="true"
+        fitColumns="true" showFooter="true" 
         idField="id" treeField="name">
         <thead>  
             <tr>  
                 <th field="name" width="178"><asp:Literal ID="LiteralHeaderAccountName" runat="server"/></th>  
                 <th field="assets" width="140" align="right"><span class="commonHeader" id="headerAssetsCardinal" style="display:none"><asp:Literal ID="LiteralAssets" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
-                <th field="assetdelta" width="100" align="right"><span class="commonHeader" id="headerAssetsDelta" style="display:none"><asp:Literal ID="LiteralAssetsDelta" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
+                <th field="assetdelta" width="100" align="right" formatter="formatGray"><span class="commonHeader" id="headerAssetsDelta" style="display:none"><asp:Literal ID="LiteralAssetsDelta" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
                 <th field="liabilities" width="140" align="right"><span class="commonHeader" id="headerLiabilitiesCardinal" style="display:none"><asp:Literal ID="LiteralLiabilities" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
-                <th field="liabilitydelta" width="100" align="right"><span class="commonHeader" id="headerLiabilitiesDelta" style="display:none"><asp:Literal ID="LiteralLiabilitiesDelta" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
+                <th field="liabilitydelta" width="100" align="right" formatter="formatGray"><span class="commonHeader" id="headerLiabilitiesDelta" style="display:none"><asp:Literal ID="LiteralLiabilitiesDelta" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
             </tr>  
         </thead>  
     </table> 

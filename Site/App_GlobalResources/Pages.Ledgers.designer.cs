@@ -403,6 +403,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Balance Sheet is an overview of assets and debts at a snapshot in time, and is used to see how results affect the overall financial health of the organization. You may also want to look at the &lt;a href=&quot;BalanceSheet&quot;&gt;advanced balance sheet&lt;/a&gt; for more detail, or the &lt;a href=&quot;ProfitLossStatement&quot;&gt;profit-and-loss statement&lt;/a&gt; which is the overview of income and expenditure..
+        /// </summary>
+        internal static string BalanceSheet_Info_Simplified {
+            get {
+                return ResourceManager.GetString("BalanceSheet_Info_Simplified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Liabilities XXXX.
         /// </summary>
         internal static string BalanceSheet_Liabilities {
@@ -421,11 +430,29 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loss to date ({0}).
+        /// </summary>
+        internal static string BalanceSheet_LossToDate {
+            get {
+                return ResourceManager.GetString("BalanceSheet_LossToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Balance Sheet.
         /// </summary>
         internal static string BalanceSheet_PageTitle {
             get {
                 return ResourceManager.GetString("BalanceSheet_PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit to date ({0}).
+        /// </summary>
+        internal static string BalanceSheet_ProfitToDate {
+            get {
+                return ResourceManager.GetString("BalanceSheet_ProfitToDate", resourceCulture);
             }
         }
         
