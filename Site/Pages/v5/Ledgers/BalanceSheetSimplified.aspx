@@ -5,7 +5,7 @@
 
 	    $(document).ready(function () {
 
-	        $('#tableProfitLoss').treegrid(
+	        $('#tableAnnualReport').treegrid(
 	        {
 	            onBeforeExpand: function (foo) {
 	                $('span.profitlossdata-collapsed-' + foo.id).fadeOut('fast', function () {
@@ -50,11 +50,11 @@
 	        $('#<%=DropYears.ClientID %>').change(function () {
 	            var selectedYear = $('#<%=DropYears.ClientID %>').val();
 
-	            $('#tableProfitLoss').treegrid({ url: 'Json-BalanceSheetData.aspx?Year=' + selectedYear });
+	            $('#tableAnnualReport').treegrid({ url: 'Json-BalanceSheetData.aspx?Year=' + selectedYear });
         	    $('#imageLoadIndicator').show();
 	            $('div.datagrid').css('opacity', 0.4);
 
-	            $('#tableProfitLoss').treegid('reload');
+	            $('#tableAnnualReport').treegid('reload');
 	        });
 
 
@@ -77,8 +77,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     
     <h2><div class="elementFloatFar"><%= CurrentOrganization.Currency.DisplayCode %></div><asp:Label ID="LabelContentHeader" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/>&nbsp;<img alt="Loading" src="/Images/Abstract/ajaxloader-blackcircle.gif" ID="imageLoadIndicator" /></h2>
-    <table id="tableProfitLoss" title="" class="easyui-treegrid" style="width:680px;height:600px"  
-        url="Json-BalanceSheetData.aspx"
+    <table id="tableAnnualReport" title="" class="easyui-treegrid" style="width:680px;height:600px"  
+        url="Json-BalanceSheetDataSimplified.aspx"
         rownumbers="false"
         animate="true"
         fitColumns="true"
