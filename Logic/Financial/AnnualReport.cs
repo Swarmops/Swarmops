@@ -99,9 +99,9 @@ namespace Swarmops.Logic.Financial
             if (this._accountType == FinancialAccountType.Balance)
             {
                 AnnualReportLine assetLine = new AnnualReportLine
-                {AccountId = assetIdentity, AccountName = "%ASSET_ACCOUNTGROUP%"};
+                {AccountId = assetIdentity, AccountName = "%ASSET_ACCOUNTGROUP%", AccountType = FinancialAccountType.Asset};
                 AnnualReportLine debtLine = new AnnualReportLine
-                {AccountId = debtIdentity, AccountName = "%DEBT_ACCOUNTGROUP%"};
+                {AccountId = debtIdentity, AccountName = "%DEBT_ACCOUNTGROUP%", AccountType = FinancialAccountType.Debt};
                 remapLookup[FinancialAccountType.Asset] = assetLine;
                 remapLookup[FinancialAccountType.Debt] = debtLine;
 

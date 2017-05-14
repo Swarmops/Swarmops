@@ -8,14 +8,14 @@
 	        $('#tableProfitLoss').treegrid(
 	        {
 	            onBeforeExpand: function (foo) {
-	                $('span.profitlossdata-collapsed-' + foo.id).fadeOut('fast', function () {
-	                    $('span.profitlossdata-expanded-' + foo.id).fadeIn('slow');
+	                $('span.annualreportdata-collapsed-' + foo.id).fadeOut('fast', function () {
+	                    $('span.annualreportdata-expanded-' + foo.id).fadeIn('slow');
 	                });
 	            },
 
 	            onBeforeCollapse: function (foo) {
-	                $('span.profitlossdata-expanded-' + foo.id).fadeOut('fast', function () {
-	                    $('span.profitlossdata-collapsed-' + foo.id).fadeIn('slow');
+	                $('span.annualreportdata-expanded-' + foo.id).fadeOut('fast', function () {
+	                    $('span.annualreportdata-collapsed-' + foo.id).fadeIn('slow');
 	                });
 	            },
 

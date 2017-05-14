@@ -8,14 +8,14 @@
 	        $('#tableAnnualReport').treegrid(
 	        {
 	            onBeforeExpand: function (foo) {
-	                $('span.profitlossdata-collapsed-' + foo.id).fadeOut('fast', function () {
-	                    $('span.profitlossdata-expanded-' + foo.id).fadeIn('slow');
+	                $('span.annualreportdata-collapsed-' + foo.id).fadeOut('fast', function () {
+	                    $('span.annualreportdata-expanded-' + foo.id).fadeIn('slow');
 	                });
 	            },
 
 	            onBeforeCollapse: function (foo) {
-	                $('span.profitlossdata-expanded-' + foo.id).fadeOut('fast', function () {
-	                    $('span.profitlossdata-collapsed-' + foo.id).fadeIn('slow');
+	                $('span.annualreportdata-expanded-' + foo.id).fadeOut('fast', function () {
+	                    $('span.annualreportdata-collapsed-' + foo.id).fadeIn('slow');
 	                });
 	            },
 
@@ -27,8 +27,9 @@
 	                var selectedYear = $('#<%=DropYears.ClientID %>').val();
 
 	                $('div#linkDownloadReport').attr("onclick", "document.location='Csv-BalanceData.aspx?Year=" + selectedYear + "';");
-	                $('#spanDownloadText').text(SwarmopsJS.unescape('<%= this.Localized_DownloadFileName %>') + selectedYear + "-<%=DateTime.Today.ToString("yyyyMMdd") %>.csv");
-                    $('#headerStartYear').text(SwarmopsJS.unescape('<%= this.Localized_Assets %>'.replace('XXXX',selectedYear)));
+	                $('#spanDownloadText').text(SwarmopsJS.unescape('<%= this.Localized_DownloadFileName %>') + selectedYear + "-<%=DateTime.UtcNow.ToString("yyyyMMdd") %>.csv");
+                    $('#headerAssetsCardinal').text(SwarmopsJS.unescape('<%= this.Localized_Assets %>'.replace('XXXX',selectedYear)));
+                    $('#headerLiabilitiesCardinal').text(SwarmopsJS.unescape('<%= this.Localized_Liabilities %>'.replace('XXXX',selectedYear)));
               
                     if (selectedYear == currentYear) 
                     {
@@ -50,7 +51,7 @@
 	        $('#<%=DropYears.ClientID %>').change(function () {
 	            var selectedYear = $('#<%=DropYears.ClientID %>').val();
 
-	            $('#tableAnnualReport').treegrid({ url: 'Json-BalanceSheetData.aspx?Year=' + selectedYear });
+	            $('#tableAnnualReport').treegrid({ url: 'Json-BalanceSheetDataSimplified.aspx?Year=' + selectedYear });
         	    $('#imageLoadIndicator').show();
 	            $('div.datagrid').css('opacity', 0.4);
 
@@ -86,10 +87,10 @@
         <thead>  
             <tr>  
                 <th field="name" width="178"><asp:Literal ID="LiteralHeaderAccountName" runat="server"/></th>  
-                <th field="assets" width="120" align="right"><span class="commonHeader" id="headerStartYear" style="display:none"><asp:Literal ID="LiteralAssets" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
-                <th field="assetdelta" width="120" align="right"><span class="commonHeader" id="headerQ1" style="display:none"><asp:Literal ID="LiteralAssetsDelta" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
-                <th field="liabilities" width="120" align="right"><span class="commonHeader" id="headerQ2" style="display:none"><asp:Literal ID="LiteralLiabilities" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
-                <th field="liabilitydelta" width="120" align="right"><span class="commonHeader" id="headerQ3" style="display:none"><asp:Literal ID="LiteralLiabilitiesDelta" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
+                <th field="assets" width="140" align="right"><span class="commonHeader" id="headerAssetsCardinal" style="display:none"><asp:Literal ID="LiteralAssets" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
+                <th field="assetdelta" width="100" align="right"><span class="commonHeader" id="headerAssetsDelta" style="display:none"><asp:Literal ID="LiteralAssetsDelta" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
+                <th field="liabilities" width="140" align="right"><span class="commonHeader" id="headerLiabilitiesCardinal" style="display:none"><asp:Literal ID="LiteralLiabilities" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
+                <th field="liabilitydelta" width="100" align="right"><span class="commonHeader" id="headerLiabilitiesDelta" style="display:none"><asp:Literal ID="LiteralLiabilitiesDelta" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
             </tr>  
         </thead>  
     </table> 

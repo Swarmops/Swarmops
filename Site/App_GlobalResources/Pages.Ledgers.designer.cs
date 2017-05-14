@@ -349,6 +349,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (change).
+        /// </summary>
+        internal static string BalanceSheet_AssetsDelta {
+            get {
+                return ResourceManager.GetString("BalanceSheet_AssetsDelta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Balance Sheet for {0},.
         /// </summary>
         internal static string BalanceSheet_ContentHeader {
@@ -363,15 +372,6 @@ namespace Resources.Pages {
         internal static string BalanceSheet_Current {
             get {
                 return ResourceManager.GetString("BalanceSheet_Current", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to (change).
-        /// </summary>
-        internal static string BalanceSheet_Delta {
-            get {
-                return ResourceManager.GetString("BalanceSheet_Delta", resourceCulture);
             }
         }
         
@@ -408,6 +408,15 @@ namespace Resources.Pages {
         internal static string BalanceSheet_Liabilities {
             get {
                 return ResourceManager.GetString("BalanceSheet_Liabilities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (change).
+        /// </summary>
+        internal static string BalanceSheet_LiabilitiesDelta {
+            get {
+                return ResourceManager.GetString("BalanceSheet_LiabilitiesDelta", resourceCulture);
             }
         }
         

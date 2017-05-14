@@ -55,12 +55,12 @@ namespace Swarmops.Frontend.Pages.Ledgers
         {
             this.LabelContentHeader.Text = string.Format (Resources.Pages.Ledgers.BalanceSheet_ContentHeader,
                 CurrentOrganization.Name);
-            /*
-            this.LiteralHeaderQ1.Text = Resources.Pages.Ledgers.BalanceSheet_Q1;
-            this.LiteralHeaderQ2.Text = Resources.Pages.Ledgers.BalanceSheet_Q2;
-            this.LiteralHeaderQ3.Text = Resources.Pages.Ledgers.BalanceSheet_Q3;
-            this.LiteralHeaderQ4.Text = Resources.Pages.Ledgers.BalanceSheet_Q4;
-            this.LiteralHeaderYtd.Text = Resources.Pages.Ledgers.BalanceSheet_Current;*/
+
+            this.LiteralAssetsDelta.Text = Resources.Pages.Ledgers.BalanceSheet_AssetsDelta;
+            this.LiteralLiabilitiesDelta.Text = Resources.Pages.Ledgers.BalanceSheet_LiabilitiesDelta;
+            this.LiteralAssets.Text = Resources.Pages.Ledgers.BalanceSheet_Assets;
+            this.LiteralLiabilities.Text = Resources.Pages.Ledgers.BalanceSheet_Liabilities;
+
             this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.BalanceSheet_AccountName;
         }
 

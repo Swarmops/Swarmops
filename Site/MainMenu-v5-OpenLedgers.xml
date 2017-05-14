@@ -8,7 +8,7 @@
                 <UserLevel>0</UserLevel>
                 <Permissions />
                 <ImageUrl />
-                <NavigateUrl>/Pages/v5/Ledgers/BalanceSheet.aspx</NavigateUrl>
+                <NavigateUrl>/Ledgers/Balance</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>
@@ -18,7 +18,7 @@
               <UserLevel>0</UserLevel>
               <Permissions />
               <ImageUrl />
-              <NavigateUrl>/Pages/v5/Ledgers/ProfitLossStatement.aspx</NavigateUrl>
+              <NavigateUrl>/Ledgers/ProfitLossStatement</NavigateUrl>
               <Type>Link</Type>
               <Children />
             </MainMenuItem>
@@ -28,7 +28,7 @@
               <UserLevel>0</UserLevel>
               <Permissions />
               <ImageUrl />
-              <NavigateUrl>/Pages/v5/Ledgers/BudgetActual.aspx</NavigateUrl>
+              <NavigateUrl>/Ledgers/BudgetActual</NavigateUrl>
               <Type>Link</Type>
               <Children />
             </MainMenuItem>
@@ -38,7 +38,7 @@
                 <UserLevel>3</UserLevel>
                 <Permissions />
                 <ImageUrl />
-                <NavigateUrl>/Pages/v5/Ledgers/InspectLedgers.aspx</NavigateUrl>
+                <NavigateUrl>/Ledgers/InspectLedgers</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>
