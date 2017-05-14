@@ -67,12 +67,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 return "{" + line1 + "}";
             }
-            else if (_totals.AssetsCents > _totals.LiabilitiesCents) // Predicted profit
+            else if (_totals.AssetsCents > -_totals.LiabilitiesCents) // Predicted profit
             {
                 string line2 = string.Format("\"name\":\"{0}\"", string.Format(Resources.Pages.Ledgers.BalanceSheet_ProfitToDate, _year));
 
                 line2 += string.Format(CultureInfo.CurrentCulture, ",\"liabilities\":\"{0:N0}\"",
-                    (_totals.AssetsCents-_totals.LiabilitiesCents) / 100.0);
+                    (_totals.AssetsCents + _totals.LiabilitiesCents) / 100.0);
 
                 return "{" + line1 + "},{" + line2 + "}";
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 string line2 = string.Format("\"name\":\"{0}\"", string.Format(Resources.Pages.Ledgers.BalanceSheet_LossToDate, _year));
 
                 line2 += string.Format(CultureInfo.CurrentCulture, ",\"assets\":\"{0:N0}\"",
-                    (_totals.LiabilitiesCents - _totals.AssetsCents) / 100.0);
+                    (_totals.LiabilitiesCents + _totals.AssetsCents) / -100.0);
 
                 return "{" + line1 + "},{" + line2 + "}";
             }
