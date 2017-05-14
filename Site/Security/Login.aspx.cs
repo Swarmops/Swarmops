@@ -95,7 +95,7 @@ namespace Swarmops.Pages.Security
             {
                 DashboardMessage.Set (String.Format(Resources.Pages.Security.Login_AsOpenLedgers, organizationOpenLedgers.Name));
                 FormsAuthentication.SetAuthCookie(Authority.FromLogin (Person.FromIdentity (Person.OpenLedgersIdentity), organizationOpenLedgers).ToEncryptedXml(), true);
-                Response.Redirect (@"/Ledgers/BalanceSheet");
+                Response.Redirect (@"/Ledgers/Balance");
             }
 
             // Check for SSL and force it

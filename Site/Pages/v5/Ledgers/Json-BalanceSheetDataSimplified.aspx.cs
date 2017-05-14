@@ -74,7 +74,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 line2 += string.Format(CultureInfo.CurrentCulture, ",\"liabilities\":\"{0:N0}\"",
                     (_totals.AssetsCents-_totals.LiabilitiesCents) / 100.0);
 
-                return "[{" + line1 + "},{" + line2 + "}]";
+                return "{" + line1 + "},{" + line2 + "}";
             }
             else
             {
@@ -83,7 +83,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 line2 += string.Format(CultureInfo.CurrentCulture, ",\"assets\":\"{0:N0}\"",
                     (_totals.LiabilitiesCents - _totals.AssetsCents) / 100.0);
 
-                return "[{" + line1 + "},{" + line2 + "}]";
+                return "{" + line1 + "},{" + line2 + "}";
             }
         }
 
