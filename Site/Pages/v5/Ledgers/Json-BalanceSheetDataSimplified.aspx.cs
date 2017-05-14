@@ -63,7 +63,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             line1 += string.Format(CultureInfo.CurrentCulture, ",\"liabilities\":\"{0:N0}\"", _totals.LiabilitiesCents/-100.0);
 
-            if (_totals.AssetsCents == _totals.LiabilitiesCents)
+            if (_totals.AssetsCents == -_totals.LiabilitiesCents)
             {
                 return "{" + line1 + "}";
             }
