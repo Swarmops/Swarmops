@@ -31,6 +31,12 @@ namespace Swarmops.Frontend.Socket
 
                 foreach (string key in _sessionAuthorityLookup.Keys)
                 {
+                    if (!_sessionLookup.ContainsKey(key))
+                    {
+                        Console.WriteLine("INVALID STATE: Authority lookup for " + _sessionAuthorityLookup[key].Person.Canonical + " has no session");
+                        continue;
+                    }
+
                     IWebSocketSession session = _sessionLookup[key];
                     if (session.State == WebSocketState.Open) // protect against open/close race condition
                     {
