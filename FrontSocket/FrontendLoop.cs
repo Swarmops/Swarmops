@@ -280,7 +280,12 @@ namespace Swarmops.Frontend.Socket
 
             string messageType = (string) json["MessageType"];
 
-            if (!messageType.Contains("Heartbeat"))
+            if (String.IsNullOrEmpty(messageType))
+            {
+                Console.WriteLine(" -- no MessageType in backend message!");
+                Console.WriteLine(" -- data for debug: " + args.Data);
+            }
+            else if (!messageType.Contains("Heartbeat"))
             {
                 Console.WriteLine(" - Backend message: " + args.Data);
             }
