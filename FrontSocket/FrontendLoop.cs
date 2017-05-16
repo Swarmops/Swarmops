@@ -13,6 +13,7 @@ using Swarmops.Common.Enums;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
 using Swarmops.Common.ExtensionMethods;
+using Swarmops.Logic;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -343,7 +344,7 @@ namespace Swarmops.Frontend.Socket
         {
             Console.WriteLine(" - Backend socket error: " + args.Message);
 
-            // TODO: Try reconnecting
+            // TODO: Try reconnecting if closed or never opened
         }
 
 
@@ -407,6 +408,17 @@ namespace Swarmops.Frontend.Socket
 
             return false;
         }
+
+
+        public static void SendMessageUpstream(SocketMessage message)
+        {
+            JObject json = new JObject();
+            json["ServerRequest"] = "Metapackage";
+            json["XmlData"] = message.ToXml();
+
+            _backendSocket.Send(json.ToString());
+        }
+
 
         private static Dictionary<FrontendMalfunctions,bool> _activeAlarms;
 

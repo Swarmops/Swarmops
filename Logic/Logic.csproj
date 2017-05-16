@@ -195,6 +195,7 @@
     <Compile Include="Communications\Payload\PayloadEnvelope.cs" />
     <Compile Include="Communications\Payload\NotificationPayload.cs" />
     <Compile Include="Security\Impersonation.cs" />
+    <Compile Include="SocketMessage.cs" />
     <Compile Include="Support\BlockchainTransaction.cs" />
     <Compile Include="Support\ErrorMessages.cs" />
     <Compile Include="Support\LogEntries\ImpersonationLogEntry.cs" />

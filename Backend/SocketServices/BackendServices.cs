@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using Swarmops.Logic;
 using Swarmops.Logic.Security;
 using WebSocketSharp;
 using WebSocketSharp.Server;
@@ -37,6 +38,9 @@ namespace Swarmops.Backend.SocketServices
                     break;
                 case "AddBitcoinAddress":
                     BackendLoop.AddBitcoinAddress((string) json["Address"]);
+                    break;
+                case "Metapackage":
+                    BackendLoop.ProcessMetapackage(SocketMessage.FromXml((string) json["XmlData"]));
                     break;
                 default:
                     // do nothing;

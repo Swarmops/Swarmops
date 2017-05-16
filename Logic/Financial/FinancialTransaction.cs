@@ -265,8 +265,11 @@ namespace Swarmops.Logic.Financial
 
         private FinancialTransactionRow AddRow (int financialAccountId, Int64 amountCents, int personId)
         {
-            if (DateTime.Year <=
-                FinancialAccount.FromIdentity (financialAccountId).Organization.Parameters.FiscalBooksClosedUntilYear)
+            // private function that actually executes the row adding
+
+            FinancialAccount account = FinancialAccount.FromIdentity(financialAccountId);
+
+            if (DateTime.Year <= account.Organization.Parameters.FiscalBooksClosedUntilYear)
             {
                 // Recurse down into continuation transactions to write row in first nonclosed year
 
@@ -293,8 +296,29 @@ namespace Swarmops.Logic.Financial
                 return newRow;
             }
 
-            return FinancialTransactionRow.FromIdentityAggressive (SwarmDb.GetDatabaseForWriting()
+            FinancialTransactionRow addedRow = FinancialTransactionRow.FromIdentityAggressive (SwarmDb.GetDatabaseForWriting()
                 .CreateFinancialTransactionRow (Identity, financialAccountId, amountCents, personId));
+
+            // If we're running from web, and this was a P&L account, then also notify the server that the P&L has changed
+            // (doing this here means that the server can get pinged multiple times, but that's more defensive coding than
+            // having to remember doing it everywhere at the UI level)
+
+            if (account.AccountType == FinancialAccountType.Income || account.AccountType == FinancialAccountType.Cost)
+            {
+                if (SupportFunctions.OperatingTopology == OperatingTopology.FrontendWeb)
+                {
+                    SocketMessage newMessage = new SocketMessage
+                    {
+                        MessageType = "ProfitLossChanged",
+                        OrganizationId = account.Organization.Identity,
+                        FinancialTransactionId = this.Identity
+                    };
+
+                    newMessage.SendUpstream();
+                }
+            }
+
+            return addedRow;
         }
 
         public void AddDocument (string serverFileName, string originalFileName, Int64 fileSize, string description,

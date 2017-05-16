@@ -5,10 +5,12 @@ using System.Net;
 using System.Threading;
 using Mono.Unix;
 using Mono.Unix.Native;
+using NBitcoin.Protocol.Behaviors;
 using Newtonsoft.Json.Linq;
 using Swarmops.Backend.SocketServices;
 using Swarmops.Common.ExtensionMethods;
 using Swarmops.Database;
+using Swarmops.Logic;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Communications.Resolution;
@@ -874,6 +876,29 @@ namespace Swarmops.Backend
             _socketServer.WebSocketServices.Broadcast(json.ToString());
         }
 
+
+        public static void ProcessMetapackage(SocketMessage message)
+        {
+            switch (message.MessageType)
+            {
+                case "ProfitLossChanged":
+                    // Broadcast message to recalculate P&L
+                    JObject downstream = new JObject();
+                    downstream["MessageType"] = "RecalculateOrganizationProfitLoss";
+                    downstream["OrganizationId"] = message.OrganizationId.ToString(CultureInfo.InvariantCulture);
+                    Broadcast(downstream);
+                    break;
+                default:
+                    // Unhandled. Exception?
+                    break;
+            }
+        }
+
+
+        private static void Broadcast(JObject json)
+        {
+            _socketServer.WebSocketServices.Broadcast(json.ToString());
+        }
 
         // ------------------------------- BLOCKCHAIN.INFO WEB SOCKET INTERFACE CODE -------------------------
 
