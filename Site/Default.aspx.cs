@@ -1,5 +1,6 @@
 ﻿using System;
 using Resources;
+using Swarmops.Logic;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
@@ -19,12 +20,17 @@ namespace Swarmops.Frontend
             this.PageAccessRequired = new Access (AccessAspect.Null, AccessType.Read);
                 // dummy security until there's something to show on Dashboard
 
-            byte[] symmetricKey = SystemSettings.SymmetricEncryptionKeyFileSystem;
-                // Access forces initialization if it's not there: remove by Alpha-12 // TODO
+            // BEGIN TEST CODE
 
-            /*
-        this.LabelActionListMotions.Text = Resources.Pages.Governance.ListMotions_PageTitle;
-        this.LabelActionVote.Text = Resources.Pages.Governance.Vote_PageTitle;*/
+            SocketMessage testMessage = new SocketMessage
+            {
+                MessageType = "Foo",
+                OrganizationId = 1
+            };
+            string messageXml = testMessage.ToXml();
+            SocketMessage newMessage = SocketMessage.FromXml(messageXml);
+
+            // END TEST CODE
 
             InfoBoxLiteral =
                 "This is a Dashboard placeholder. It will contain a snapshot of the state of things as soon as the basic functions are re-implemented in the new interface.";

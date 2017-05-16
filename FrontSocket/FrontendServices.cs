@@ -56,6 +56,7 @@ namespace Swarmops.Frontend.Socket
 
         private void ProcessMetapackage(string xmlData)
         {
+            Console.WriteLine("Decoding XML: " + xmlData);
             SocketMessage message = SocketMessage.FromXml(xmlData);
 
             // Most should just be sent straight to backend. Some could possibly be processed already here.
@@ -68,6 +69,7 @@ namespace Swarmops.Frontend.Socket
 
                 default:
                     // we're not handling here, send to backend
+                    Console.WriteLine(" - sending " + message.MessageType + " upstream");
                     FrontendLoop.SendMessageUpstream(message);
                     break;
             }
@@ -84,6 +86,7 @@ namespace Swarmops.Frontend.Socket
             if (Authority.IsSystemAuthorityTokenValid(authBase64))
             {
                 _authority = null; // System authority
+                Console.WriteLine(" - - valid system authentication token");
             }
             else
             {

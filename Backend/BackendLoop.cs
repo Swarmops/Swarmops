@@ -887,6 +887,7 @@ namespace Swarmops.Backend
                     downstream["MessageType"] = "RecalculateOrganizationProfitLoss";
                     downstream["OrganizationId"] = message.OrganizationId.ToString(CultureInfo.InvariantCulture);
                     Broadcast(downstream);
+                    Console.WriteLine(@" - Recalculating P&L for orgId " + message.OrganizationId);
                     break;
                 default:
                     // Unhandled. Exception?
