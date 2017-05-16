@@ -418,7 +418,7 @@ namespace Swarmops.Frontend.Socket
         public static void SendMessageUpstream(SocketMessage message)
         {
             JObject json = new JObject();
-            json["ServerRequest"] = "Metapackage";
+            json["BackendRequest"] = "Metapackage";
             json["XmlData"] = message.ToXml();
 
             _backendSocket.Send(json.ToString());

@@ -22,14 +22,6 @@ namespace Swarmops.Frontend
 
             // BEGIN TEST CODE
 
-            SocketMessage testMessage = new SocketMessage
-            {
-                MessageType = "Foo",
-                OrganizationId = 1
-            };
-            string messageXml = testMessage.ToXml();
-            SocketMessage newMessage = SocketMessage.FromXml(messageXml);
-
             // END TEST CODE
 
             InfoBoxLiteral =

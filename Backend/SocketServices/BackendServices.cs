@@ -27,9 +27,12 @@ namespace Swarmops.Backend.SocketServices
 
             if (string.IsNullOrEmpty(serverRequest))
             {
+                Console.WriteLine(" - echoing a message to all sessions");
                 // Not a server request, so just echo the contents to everybody
                 Sessions.Broadcast(e.Data);
             }
+
+            Console.WriteLine(" - handling a socket message:" + serverRequest);
 
             switch (serverRequest)
             {
