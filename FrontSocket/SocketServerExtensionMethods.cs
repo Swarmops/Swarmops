@@ -25,6 +25,10 @@ namespace Swarmops.Frontend.Socket
         {
             lock (_sessionLookup)
             {
+                Console.WriteLine(" - Broadcasting to organization #" + organization.Identity);
+                Console.WriteLine(" -- sessionLookup key count: " + _sessionLookup.Keys.Count);
+                Console.WriteLine(" -- sessionAuthorityLookup key count: " + _sessionAuthorityLookup.Keys.Count);
+
                 foreach (string key in _sessionAuthorityLookup.Keys)
                 {
                     IWebSocketSession session = _sessionLookup[key];
