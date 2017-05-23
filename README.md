@@ -30,11 +30,50 @@ Countdown to Open Beta
 
 The features missing for the Open Beta, with some sort of feature-completeness, are these:
 
-[ ] enter ledger transactions manually
-[ ] send invoices (and receive payment in bitcoin)
-[ ] delegate budgets
+- [ ] enter ledger transactions manually
+- [ ] send invoices (and receive payment in bitcoin)
+- [ ] delegate budgets
+- [ ] self-signup mails
+- [ ] ledger-close screen
 
-There will also be many other small improvements added along with these features, for no better reason than their absence being pain points.
+There will also be many other small improvements added along with these features, for no better reason than their absence being pain points, since the last alpha:
+
+- [x] Proper org settings 
+- [ ] HTML/Markdown mail
+- [x] Mail Resolver
+- [ ] Expensify integration?
+- [ ] PDF asynchronous interpreter (websocket?)
+- [ ] Recurring expenses
+- [x] Char encode HTML doc
+- [ ] Hotwallet payments
+- [x] Tech problem box
+- [x] Donate sockify
+- [x] Live financial numbers
+- [ ] Todo box to JSON
+- [x] Proper menu highlight
+- [ ] Basic search
+- [x] Account edit spacing
+- [ ] Alert to load hotwallet from cold
+- [ ] Bitcoin Echo test page (kill because fees too high?)
+- [ ] Icons for Validation page
+- [x] Favicon New
+- [x] Fix Inspect Ledger header (looks bad)
+- [x] Clean Login page
+- [x] OOBE: Wait for daemons to start
+- [x] Impersonation mode for testing
+- [x] Expense access
+- [ ] Assign role geolock
+- [x] Advance line spacing
+- [ ] Upload Org 16x9 logo
+- [ ] Submit invoice anon interface
+- [ ] Control messages for invoice progress
+- [ ] Pay invoice
+- [ ] Controlify financialtransaction to show on balancetx page
+- [ ] Close ledger year
+- [x] Internal TX account type
+- [ ] Create TX
+- [ ] Download main Ledger
+- [X] Fix password reset after refactor
 
 
 Installation
