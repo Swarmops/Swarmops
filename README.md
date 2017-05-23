@@ -22,10 +22,27 @@ Release schedule
 
 Stable releases are built every six months, at the end of every calendar half-year. Sprints are built every two weeks. Internal builds are built all the time and can be tested at http://dev.swarmops.com/ which doesn't require a login.
 
+This is the plan, at least. "Stable" is a somewhat wide definition at the moment. Rather, Swarmops has a few functions to go to enter Open Beta stage.
+
+
+Countdown to Open Beta
+----------------------
+
+The features missing for the Open Beta, with some sort of feature-completeness, are these:
+
+[ ] enter ledger transactions manually
+[ ] send invoices (and receive payment in bitcoin)
+[ ] delegate budgets
+
+There will also be many other small improvements added along with these features, for no better reason than their absence being pain points.
+
+
 Installation
 ------------
 
-If you're daring enough to install a pilot of Swarmops, you're most welcome to do so. It's built for and tested on Ubuntu (Trusty+) or Debian (Wheezy+) servers. If you're running Debian Wheezy, you'll first need to upgrade Mono as instructed on [this page](http://www.mono-project.com/docs/getting-started/install/linux/) or Swarmops won't run. Then, run these commands as root - first, fetch the signing key for the repository:
+Minimum requirements are Debian Stretch or Ubuntu Xenial (due to systemd requirements; upstart is deprecated). As Debian Stretch hasn't been released at time of writing, Ubuntu Xenial is the only platform Swarmops is currently built for.
+
+If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! Run these commands _as root_ - first, fetch the signing key for the repository:
 
 > `wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -`
 
@@ -37,7 +54,9 @@ Then, run this to install the Swarmops frontend:
 
 If you installed onto a clean server, Swarmops will offer to configure Apache to use Swarmops as the default site. If you decline this offer, you can still enable the site by an `a2ensite swarmops` as a suggested configuration is provided. If you prefer to configure this entirely manually, install a new Virtual Host in Apache, a Mono host, pointing at /usr/share/swarmops/frontend as its directory. We're using /usr/bin/mod-mono-server4 as our server. Note the 4 at the end; many configurators are old and will set a 2 there. See /etc/apache2/sites-available/swarmops.conf for a template file.
 
-Navigate to the new site and continue installation from the running site.
+Navigate to the new site and continue installation from the running site. To complete the install, you will also need to install a backend process, which can (but shouldn't) run on the same machine:
+
+> `apt-get install swarmops-backend`
 
 The packages named as listed above (swarmops-frontend) are the sprint packages, released every two weeks. If you prefer, you can opt for the development builds (swarmops-frontend-internal) or the stable six-month releases (swarmops-frontend-stable) instead. The development builds aren't really recommended unless you're actively contributing to development and want to see new changes running on the development sandbox.
 
