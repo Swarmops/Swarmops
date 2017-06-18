@@ -17,7 +17,7 @@
                 if (canWriteRows) {
                     <%=this.DialogCreateTx.ClientID%>_open();
                     <%=this.TextCreateTxDateTime.ClientID%>_focus();
-                    <%=this.TextAmountNewTransaction.ClientID%>_initialize('<%=(0.0).ToString("N2")%>');
+                    <%=this.TextCreateTxAmount.ClientID%>_initialize('<%=(0.0).ToString("N2")%>');
                     <%=this.TextCreateTxDateTime.ClientID%>_initialize('<%=DateTime.UtcNow.ToShortDateString() + " " + DateTime.UtcNow.ToShortTimeString()%>');
                 } else {
                     alertify.error("You do not have sufficient authority to create transactions.");
@@ -93,6 +93,29 @@
 
             $('#ButtonAddTransactionRow').click(function() {
                 addTransactionRow();
+            });
+
+            $('#buttonCreateTransaction').click(function() {
+                var jsonData = {};
+                jsonData.dateTimeString = <%=this.TextCreateTxDateTime.ClientID%>_val();
+                jsonData.amountString = <%=this.TextCreateTxAmount.ClientID%>_val();
+                jsonData.description = <%=this.TextCreateTxDescription.ClientID%>_val();
+                jsonData.budgetId = <%=this.DropBudgetsCreateTx.ClientID%>_val();
+
+                // Disable create button
+                $("#buttonCreateTransaction").css("visibility", "hidden");
+
+                SwarmopsJS.ajaxCall("/Pages/v5/Ledgers/InspectLedgers.aspx/CreateTransaction",
+                    jsonData,
+                    function(result) {
+                        $("#buttonCreateTransaction").css("visibility", "visible");
+                        // Re-enable create button, hide dialog, show edit dialog
+                    },
+                    function(errorResult) {
+                        $("#buttonCreateTransaction").css("visibility", "visible");
+                        alertify.error("Error");
+                        // TODO: Show error message and re-enable create button
+                    });
             });
 
             currentYear = $('#<%= DropYears.ClientID %>').val();
@@ -372,9 +395,9 @@
             <div class="entryFields">
                 <Swarmops5:AjaxTextBox ID="TextCreateTxDateTime" runat="server"/>
                 <Swarmops5:AjaxTextBox ID="TextCreateTxDescription" runat="server"/>
-                <Swarmops5:ComboBudgets ID="DropBudgetsNewTransaction" ListType="All" runat="server"/>
-                <Swarmops5:CurrencyTextBox ID="TextAmountNewTransaction" runat="server"/>
-                <input type="button" class="NoInputFocus buttonAccentColor" value="Create XYZ"/>
+                <Swarmops5:ComboBudgets ID="DropBudgetsCreateTx" ListType="All" runat="server"/>
+                <Swarmops5:CurrencyTextBox ID="TextCreateTxAmount" runat="server"/>
+                <input type="button" id="buttonCreateTransaction" class="NoInputFocus buttonAccentColor" value="Create XYZ"/>
             </div>
             <div class="entryLabels">
                 Date and Time XYZ<br/>

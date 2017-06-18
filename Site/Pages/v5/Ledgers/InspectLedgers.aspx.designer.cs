@@ -337,22 +337,22 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextCreateTxDescription;
         
         /// <summary>
-        /// DropBudgetsNewTransaction control.
+        /// DropBudgetsCreateTx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Controls.Financial.ComboBudgets DropBudgetsNewTransaction;
+        protected global::Swarmops.Controls.Financial.ComboBudgets DropBudgetsCreateTx;
         
         /// <summary>
-        /// TextAmountNewTransaction control.
+        /// TextCreateTxAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox TextAmountNewTransaction;
+        protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox TextCreateTxAmount;
         
         /// <summary>
         /// PanelCreateTxVisible control.
