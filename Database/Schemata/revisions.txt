@@ -34,3 +34,4 @@
 0034 - Fix for SetFinancialTransactionRowNativeCurrency
 0035 - Added OrganizationSequenceId on FinancialTransactions, VatCents setter on invoices [RF]
 0036 - Added support for VatCents on ExpenseClaims [RF]
+0037 - Added Suppliers, ExternalContacts tables; no procs for them yet [RF]

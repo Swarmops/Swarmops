@@ -361,6 +361,28 @@
                         <asp:Label runat="server" ID="MasterLabelEditPerson2FAProvisioning" />
                     </div>
                 </div>
+                <div title="<img src='/Images/PageIcons/iconshock-money-calculator-128px.png' height='64' width='64' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment History</h2>
+                    <table id="masterPersonEditTablePaymentHistory" title="" class="easyui-treegrid" style="width: 100%; height: 400px"
+                                
+                                rownumbers="false"
+                                animate="true"
+                                fitColumns="true"
+                                idField="id"
+                                footer="true">
+                                <thead>  
+                                    <tr>  
+                                        <th field="name" width="178"><asp:Literal ID="MasterPersonEditLiteralHeaderItemName" Text="Item Type XYZ" runat="server"/></th>  
+                                        <th field="description" width="180"><asp:Literal ID="MasterPersonEditLiteralHeaderItemDescription" Text="Description XYZ" runat="server"/></th>  
+                                        <th field="opened" width="120"><asp:Literal ID="Literal1" Text="Opened date XYZ" runat="server"/></th>
+                                        <th field="owedorg" width="120" align="right"><asp:Literal ID="Literal2" Text="You owe XYZ" runat="server"/></th>
+                                        <th field="oweduser" width="120" align="right"><asp:Literal ID="Literal3" Text="Owed to you XYZ" runat="server"/></th>  
+                                        <th field="closed" width="120"><asp:Literal ID="Literal4" Text="Closed date XYZ" runat="server"/></th>
+                                        <th field="notes" width="80"><asp:Literal ID="Literal5" Text="Notes XYZ" runat="server"/></th>
+                                    </tr>  
+                                </thead>
+                            </table> 
+                </div>
                 <!--
                 <div title="<img src='/Images/Icons/iconshock-foreman-128px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Role and Responsibility</h2>
@@ -425,10 +447,7 @@
                         Prefer bitcoin for salaries
                     </div>
                 </div>
-                <div title="<img src='/Images/PageIcons/iconshock-money-calculator-128px.png' height='64' width='64' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment History</h2>
-                    TABLE
-                </div>
+
                 <div title="<img src='/Images/PageIcons/iconshock-award-96px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Achievements</h2>
                     TABLE
