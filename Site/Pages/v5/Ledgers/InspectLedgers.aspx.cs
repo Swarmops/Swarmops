@@ -448,6 +448,43 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                                        identifiableObject.GetType().Name);
             }
         }
+
+        [WebMethod]
+        public static AjaxInputCallResult CreateTransaction(string dateTimeString, string amountString, string description,
+            int budgetId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            FinancialAccount budget = FinancialAccount.FromIdentity(budgetId);
+
+            if (budget.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (!authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            double amount = Double.Parse(amountString);
+            Int64 amountCents = (Int64) ((amount + 0.005)*100); // safeguard against double rounding errors
+
+            DateTime txTime = DateTime.Parse(dateTimeString);
+
+            // TODO: Return better error codes/messages if one of these fail
+
+            FinancialTransaction transaction = FinancialTransaction.Create(authData.CurrentOrganization, txTime,
+                description);
+            transaction.AddRow(budget, amountCents, authData.CurrentUser);
+
+            AjaxInputCallResult result = new AjaxInputCallResult
+            {
+                Success = true,
+                ObjectIdentity = transaction.Identity,
+                NewValue = (amountCents/100.0).ToString("N2")
+            };
+
+            return result;
+        }
         
 
     }

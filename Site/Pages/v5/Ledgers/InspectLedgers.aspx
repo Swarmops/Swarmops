@@ -16,9 +16,11 @@
             $('#spanActionAddTransaction').click(function() {
                 if (canWriteRows) {
                     <%=this.DialogCreateTx.ClientID%>_open();
-                    <%=this.TextCreateTxDateTime.ClientID%>_focus();
+                    <%=this.TextCreateTxAmount.ClientID%>_initialize('');
+                    <%=this.TextCreateTxDescription.ClientID%>_focus();
                     <%=this.TextCreateTxAmount.ClientID%>_initialize('<%=(0.0).ToString("N2")%>');
                     <%=this.TextCreateTxDateTime.ClientID%>_initialize('<%=DateTime.UtcNow.ToShortDateString() + " " + DateTime.UtcNow.ToShortTimeString()%>');
+                    <%=this.DropBudgetsCreateTx.ClientID%>_val(<%=this.DropBudgets.ClientID%>_val());
                 } else {
                     alertify.error("You do not have sufficient authority to create transactions.");
                 }
@@ -53,12 +55,11 @@
                     // Enable various actions on icon
 
                     $('img.LocalIconFlag').click(function() {
-                        transactionId = $(this).attr("txId");
+                        inspectingTransactionId = $(this).attr("txId");
                         onFlagTransaction("Add Tx Id here");
                     });
                     $('img.LocalIconInspect').click(function() {
-                        transactionId = $(this).attr("txId");
-                        onInspectTransaction(transactionId);
+                        onInspectTransaction($(this).attr("txId"));
                     });
                 }
             });
@@ -102,18 +103,23 @@
                 jsonData.description = <%=this.TextCreateTxDescription.ClientID%>_val();
                 jsonData.budgetId = <%=this.DropBudgetsCreateTx.ClientID%>_val();
 
-                // Disable create button
+                // Disable create button to protect against double-clicking habits
                 $("#buttonCreateTransaction").css("visibility", "hidden");
 
                 SwarmopsJS.ajaxCall("/Pages/v5/Ledgers/InspectLedgers.aspx/CreateTransaction",
                     jsonData,
                     function(result) {
                         $("#buttonCreateTransaction").css("visibility", "visible");
-                        // Re-enable create button, hide dialog, show edit dialog
+                        console.log(result);
+                        if (result.Success) {
+                            alert("New transaction has identity " + result.ObjectIdentity);
+                            <%=this.DialogCreateTx.ClientID%>_close();
+                            onInspectTransaction(result.ObjectIdentity);
+                        }
                     },
                     function(errorResult) {
                         $("#buttonCreateTransaction").css("visibility", "visible");
-                        alertify.error("Error");
+                        alertify.error("Unable to call server to create transaction");
                         // TODO: Show error message and re-enable create button
                     });
             });
@@ -128,7 +134,7 @@
         });
 
         var accountId = 0;
-        var transactionId = 0;
+        var inspectingTransactionId = 0;
         var transactionDirty = false;
 
         function onModalClose() {
@@ -158,7 +164,7 @@
                 transactionDirty = true;
 
                 var jsonData = {};
-                jsonData.txId = transactionId;
+                jsonData.txId = inspectingTransactionId;
                 jsonData.accountId = selectedAccountNode.id;
                 jsonData.amountString = amountString;
 
@@ -171,7 +177,7 @@
                     success: function(msg) {
                         if (msg.d) { // true = success
                             $('#gridTransaction').datagrid('reload');
-                            prefillUnbalancedAmount();
+                            prefillUnbalancedAmount(inspectingTransactionId);
                         } else {
                             alertify.error("<%= Global.Error_AjaxCallException %>");
                         }
@@ -198,7 +204,7 @@
             // $('#gridOutstandingAccounts').datagrid('reload');
         }
 
-        function prefillUnbalancedAmount() {
+        function prefillUnbalancedAmount(transactionId) {
 
             var jsonData = {};
             jsonData.txId = transactionId;
@@ -232,9 +238,10 @@
 
             var jsonData = {};
             jsonData.txId = transactionId;
+            inspectingTransactionId = transactionId;
 
             if (canWriteRows && !closedLedgers) {
-                prefillUnbalancedAmount();
+                prefillUnbalancedAmount(transactionId);
             }
 
             if (canSeeDetail || canWriteRows) {

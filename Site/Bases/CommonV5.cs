@@ -358,7 +358,6 @@ namespace Swarmops.Frontend
     }
 
 
-
     public enum ColorType
     {
         Unkown = 0,
