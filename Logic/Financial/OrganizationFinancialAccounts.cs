@@ -76,7 +76,14 @@ namespace Swarmops.Logic.Financial
 
 
         public FinancialAccount AssetsShortTerm
-        {  get { return this[OrganizationFinancialAccountType.AssetsShortTerm]; } }
+        {
+            get { return this[OrganizationFinancialAccountType.AssetsShortTerm]; }
+        }
+
+        public FinancialAccount AssetsTaxAdvances
+        {
+            get { return this[OrganizationFinancialAccountType.AssetsTaxAdvances]; }
+        }
 
         public FinancialAccount AssetsTransfersInProgress
         {

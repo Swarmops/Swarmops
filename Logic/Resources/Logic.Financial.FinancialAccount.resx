@@ -356,4 +356,8 @@
     <value>Outbound VAT to report</value>
     <comment>Accumulates to each VAT report, as set by VAT report frequency</comment>
   </data>
+  <data name="Asset_TaxAdvances" xml:space="preserve">
+    <value>Taxes Prepayment</value>
+    <comment>Most tax authorities require you to pay some part in advance</comment>
+  </data>
 </root>

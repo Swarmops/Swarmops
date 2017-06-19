@@ -58,6 +58,11 @@
         AssetsShortTerm,
 
         /// <summary>
+        /// Money deposited with tax authority in anticipation of tax payment time
+        /// </summary>
+        AssetsTaxAdvances,
+
+        /// <summary>
         /// Internal transfers that are in progress
         /// </summary>
         AssetsTransfersInProgress,

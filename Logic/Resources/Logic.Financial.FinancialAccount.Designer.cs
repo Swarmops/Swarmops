@@ -160,6 +160,15 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Taxes Prepayment.
+        /// </summary>
+        internal static string Asset_TaxAdvances {
+            get {
+                return ResourceManager.GetString("Asset_TaxAdvances", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Internal Transfers in Progress.
         /// </summary>
         internal static string Asset_TransfersInProgress {
