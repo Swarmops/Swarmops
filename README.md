@@ -20,7 +20,7 @@ Goal #3, _functional software to assist civil liberties resistances in repressiv
 Release schedule
 ----------------
 
-Stable releases are built every six months, at the end of every calendar half-year. Sprints are built every two weeks. Internal builds are built all the time and can be tested at http://dev.swarmops.com/ which doesn't require a login.
+Stable releases are built every six months, at the end of every calendar half-year. Sprints are built every two weeks. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
 
 This is the plan, at least. "Stable" is a somewhat wide definition at the moment. Rather, Swarmops has a few functions to go to enter Open Beta stage.
 
@@ -30,7 +30,7 @@ Countdown to Open Beta
 
 The features missing for the Open Beta, with some sort of feature-completeness, are these:
 
-- [ ] enter ledger transactions manually
+- [x] enter ledger transactions manually
 - [ ] send invoices (and receive payment in bitcoin)
 - [ ] delegate budgets
 - [ ] self-signup mails

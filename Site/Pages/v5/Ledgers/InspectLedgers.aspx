@@ -13,7 +13,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-            $('#spanActionAddTransaction').click(function() {
+            $('#divActionAddTransaction').click(function() {
                 if (canWriteRows) {
                     <%=this.DialogCreateTx.ClientID%>_open();
                     <%=this.TextCreateTxAmount.ClientID%>_initialize('');
@@ -112,7 +112,6 @@
                         $("#buttonCreateTransaction").css("visibility", "visible");
                         console.log(result);
                         if (result.Success) {
-                            alert("New transaction has identity " + result.ObjectIdentity);
                             <%=this.DialogCreateTx.ClientID%>_close();
                             onInspectTransaction(result.ObjectIdentity);
                         }
@@ -398,19 +397,19 @@
         
     <Swarmops5:ModalDialog ID="DialogCreateTx" runat="server">
         <DialogCode>
-            <h2><asp:Label runat="server" ID="LabelCreateTxDialogHeader">Creating Transaction</asp:Label></h2>
+            <h2><asp:Label runat="server" ID="LabelCreateTxDialogHeader">Creating Transaction XYZ</asp:Label></h2>
             <div class="entryFields">
                 <Swarmops5:AjaxTextBox ID="TextCreateTxDateTime" runat="server"/>
                 <Swarmops5:AjaxTextBox ID="TextCreateTxDescription" runat="server"/>
                 <Swarmops5:ComboBudgets ID="DropBudgetsCreateTx" ListType="All" runat="server"/>
                 <Swarmops5:CurrencyTextBox ID="TextCreateTxAmount" runat="server"/>
-                <input type="button" id="buttonCreateTransaction" class="NoInputFocus buttonAccentColor" value="Create XYZ"/>
+                <input type="button" id="buttonCreateTransaction" class="NoInputFocus buttonAccentColor" value="<%= this.Localized_CreateTx %>"/>
             </div>
             <div class="entryLabels">
-                Date and Time XYZ<br/>
-                Description XYZ<br/>
-                First transaction row's account<br/>
-                First transaction row's amount
+                <asp:Label runat="server" ID="LabelAddTxDateTime" Text="DateTime XYZ"/><br/>
+                <asp:Label runat="server" ID="LabelAddTxDescription" Text="Description XYZ"/><br/>
+                <asp:Label runat="server" ID="LabelAddTxFirstRowAccount" Text="Account XYZ"/><br/>
+                <asp:Label runat="server" ID="LabelAddTxFirstRowAmount" Text="Amount XYZ"/>
             </div>
         </DialogCode>
     </Swarmops5:ModalDialog>
@@ -422,7 +421,14 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
     <asp:Panel runat="server" ID="PanelCreateTxVisible">
     <h2 class="blue">ACTIONS<span class="arrow"></span></h2>
-    <div class="box"><span id="spanActionAddTransaction">Add Transaction</span></div>
+    <div class="box">
+        <div class="content">
+            <div class="link-row-encaps" id="divActionAddTransaction">
+                <div class="link-row-icon" style="background-image:url('/Images/Icons/iconshock-invoice-32px.png'); background-position: -1px -1px; background-size: 16px 16px"></div>
+               <asp:Label runat="server" ID="LabelAddTransaction" Text="Add Transaction XYZ"></asp:Label>
+            </div>
+        </div>
+    </div>
     
     </asp:Panel>
 </asp:Content>

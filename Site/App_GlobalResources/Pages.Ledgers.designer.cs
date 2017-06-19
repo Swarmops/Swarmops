@@ -898,6 +898,69 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Transaction.
+        /// </summary>
+        internal static string InspectLedgers_CreateTransactionButton {
+            get {
+                return ResourceManager.GetString("InspectLedgers_CreateTransactionButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date and time of transaction (UTC).
+        /// </summary>
+        internal static string InspectLedgers_CreateTransactionDateTime {
+            get {
+                return ResourceManager.GetString("InspectLedgers_CreateTransactionDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction Description.
+        /// </summary>
+        internal static string InspectLedgers_CreateTransactionDescription {
+            get {
+                return ResourceManager.GetString("InspectLedgers_CreateTransactionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating New Transaction.
+        /// </summary>
+        internal static string InspectLedgers_CreateTransactionDialogHeader {
+            get {
+                return ResourceManager.GetString("InspectLedgers_CreateTransactionDialogHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account of first transaction row.
+        /// </summary>
+        internal static string InspectLedgers_CreateTransactionFirstAccount {
+            get {
+                return ResourceManager.GetString("InspectLedgers_CreateTransactionFirstAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount of first transaction row.
+        /// </summary>
+        internal static string InspectLedgers_CreateTransactionFirstAmount {
+            get {
+                return ResourceManager.GetString("InspectLedgers_CreateTransactionFirstAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add new transaction.
+        /// </summary>
+        internal static string InspectLedgers_CreateTransactionSidebar {
+            get {
+                return ResourceManager.GetString("InspectLedgers_CreateTransactionSidebar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Viewing/Editing Transaction #&lt;span id=&quot;spanModalTransactionId&quot;&gt;67890&lt;/span&gt;.
         /// </summary>
         internal static string InspectLedgers_EditingTransactionX {

@@ -812,4 +812,28 @@
     <value>Profit to date ({0})</value>
     <comment>The {0} is the year of the report</comment>
   </data>
+  <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
+    <value>Create Transaction</value>
+    <comment>Text on button for executing create</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDateTime" xml:space="preserve">
+    <value>Date and time of transaction (UTC)</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDescription" xml:space="preserve">
+    <value>Transaction Description</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDialogHeader" xml:space="preserve">
+    <value>Creating New Transaction</value>
+    <comment>Header of dialog</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAccount" xml:space="preserve">
+    <value>Account of first transaction row</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAmount" xml:space="preserve">
+    <value>Amount of first transaction row</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
+    <value>Add new transaction</value>
+    <comment>Option in sidebar</comment>
+  </data>
 </root>

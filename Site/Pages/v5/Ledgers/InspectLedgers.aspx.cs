@@ -108,6 +108,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 LiteralEditHeader.Text = Resources.Pages.Ledgers.InspectLedgers_InspectingTransactionX;
             }
 
+            this.LabelCreateTxDialogHeader.Text = Resources.Pages.Ledgers.InspectLedgers_CreateTransactionDialogHeader;
+            this.LabelAddTxDateTime.Text = Resources.Pages.Ledgers.InspectLedgers_CreateTransactionDateTime;
+            this.LabelAddTxDescription.Text = Resources.Pages.Ledgers.InspectLedgers_CreateTransactionDescription;
+            this.LabelAddTxFirstRowAccount.Text = Resources.Pages.Ledgers.InspectLedgers_CreateTransactionFirstAccount;
+            this.LabelAddTxFirstRowAmount.Text = Resources.Pages.Ledgers.InspectLedgers_CreateTransactionFirstAmount;
+
+            this.LabelAddTransaction.Text = Resources.Pages.Ledgers.InspectLedgers_CreateTransactionSidebar;
+
             // Access helpers to JavaScript (these don't actually determine access, but help in UI prettiness)
 
             this.LiteralAuditAccess.Text =
@@ -466,7 +474,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             double amount = Double.Parse(amountString);
-            Int64 amountCents = (Int64) ((amount + 0.005)*100); // safeguard against double rounding errors
+            Int64 amountCents = (Int64) (amount *100);
 
             DateTime txTime = DateTime.Parse(dateTimeString);
 
@@ -485,7 +493,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             return result;
         }
-        
 
+
+
+
+        public string Localized_CreateTx
+        {
+            get { return Resources.Pages.Ledgers.InspectLedgers_CreateTransactionButton; }
+        }
     }
 }

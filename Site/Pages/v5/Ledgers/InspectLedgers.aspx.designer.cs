@@ -355,6 +355,42 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox TextCreateTxAmount;
         
         /// <summary>
+        /// LabelAddTxDateTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelAddTxDateTime;
+        
+        /// <summary>
+        /// LabelAddTxDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelAddTxDescription;
+        
+        /// <summary>
+        /// LabelAddTxFirstRowAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelAddTxFirstRowAccount;
+        
+        /// <summary>
+        /// LabelAddTxFirstRowAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelAddTxFirstRowAmount;
+        
+        /// <summary>
         /// PanelCreateTxVisible control.
         /// </summary>
         /// <remarks>
@@ -362,5 +398,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelCreateTxVisible;
+        
+        /// <summary>
+        /// LabelAddTransaction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelAddTransaction;
     }
 }
