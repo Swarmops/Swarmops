@@ -261,14 +261,14 @@ namespace Swarmops.Frontend.Automation
                     if (WeAreInDebugEnvironment)
                     {
                         process = Process.Start("cmd.exe",
-                            "/c convert -alpha remove " + StorageRoot + relativeFileName + " " +
+                            "/c convert -background white -alpha remove " + StorageRoot + relativeFileName + " " +
                             StorageRoot + relativeFileName +
                             "-%04d.png");
                     }
                     else
                     {
                         process = Process.Start("bash",
-                            "-c \"convert -density 300 -alpha remove " + StorageRoot + relativeFileName + " " +
+                            "-c \"convert -density 300 -background white -alpha remove " + StorageRoot + relativeFileName + " " +
                             StorageRoot + relativeFileName +
                             "-%04d.png\""); // Density 300 means 300dpi means production-grade conversion
                     }
