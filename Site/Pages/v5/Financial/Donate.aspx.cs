@@ -42,6 +42,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.PageTitle = Resources.Pages.Financial.Donate_PageTitle;
             this.InfoBoxLiteral = Resources.Pages.Financial.Donate_Info;
             this.LabelStatus.Text = Resources.Pages.Financial.Donate_StatusInitial;
+            this.SuppressStatisticHeaders = true;
 
             if (this.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot == null)
             {

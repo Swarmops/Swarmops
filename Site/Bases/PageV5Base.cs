@@ -204,6 +204,8 @@ namespace Swarmops.Frontend
             get { return JavascriptEscape(Resources.Global.Global_Cancel); }
         }
 
+        public bool SuppressStatisticHeaders { get; set; }  // defaults to false
+
     }
 
 

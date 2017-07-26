@@ -208,6 +208,13 @@
     <Compile Include="Pages\v5\Financial\BitcoinHotwalletNotEnabled.aspx.designer.cs">
       <DependentUpon>BitcoinHotwalletNotEnabled.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Financial\CreateOutboundInvoice.aspx.cs">
+      <DependentUpon>CreateOutboundInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\CreateOutboundInvoice.aspx.designer.cs">
+      <DependentUpon>CreateOutboundInvoice.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Financial\CreateInboundInvoice.aspx.cs">
       <DependentUpon>CreateInboundInvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1023,6 +1030,7 @@
     <Content Include="Pages\v5\Comms\SendMassMessage.aspx" />
     <Content Include="Pages\v5\Financial\AttestCosts.aspx" />
     <Content Include="Pages\v5\Financial\BitcoinHotwalletNotEnabled.aspx" />
+    <Content Include="Pages\v5\Financial\CreateOutboundInvoice.aspx" />
     <Content Include="Pages\v5\Financial\CreateInboundInvoice.aspx" />
     <Content Include="Pages\v5\Financial\Donate.aspx" />
     <Content Include="Pages\v5\Financial\EconomyNotEnabled.aspx" />
