@@ -237,7 +237,7 @@
             <div class="box">
                 <div class="content"> <% } %>
                <asp:ContentPlaceHolder ID="PlaceHolderMain" runat="server" />
-            <% if (!(this.Page as PageV5Base).IsDashboard || (this.Page as PageV5Base).SuppressStatisticHeaders))
+            <% if (!((this.Page as PageV5Base).IsDashboard || (this.Page as PageV5Base).SuppressStatisticHeaders))
                { %>
                 </div>
             </div> <% } %>
