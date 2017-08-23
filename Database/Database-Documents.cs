@@ -36,6 +36,32 @@ namespace Swarmops.Database
         }
 
 
+        public BasicDocument[] GetAllDocuments()
+        {
+            List<BasicDocument> result = new List<BasicDocument>();
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT Documents.DocumentId,Documents.ServerFileName,Documents.ClientFileName,Documents.Description,DocumentTypes.Name AS DocumentType,Documents.ForeignId,Documents.FileSize,Documents.UploadedByPersonId,Documents.UploadedDateTime From Documents,DocumentTypes " +
+                        "WHERE Documents.DocumentTypeId=DocumentTypes.DocumentTypeId ORDER BY Documents.DocumentId;", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(ReadDocumentFromDataReader(reader));
+                    }
+
+                    return result.ToArray();
+                }
+            }
+        }
+
+
         public BasicDocument[] GetDocumentsForForeignObject (DocumentType documentType, int foreignId)
         {
             List<BasicDocument> result = new List<BasicDocument>();

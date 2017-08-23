@@ -261,16 +261,20 @@ namespace Swarmops.Frontend.Automation
                     if (WeAreInDebugEnvironment)
                     {
                         process = Process.Start("cmd.exe",
-                            "/c convert -background white -alpha remove " + StorageRoot + relativeFileName + " " +
+                            "/c convert -background white -flatten " + StorageRoot + relativeFileName + " " +
                             StorageRoot + relativeFileName +
                             "-%04d.png");
                     }
                     else
                     {
+                        // TODO: Send the tast to do this to backend; tell frontend to display an "in progress"
+                        // TODO  icon (rotating cogs on top of document maybe) and to listen for "conversion complete"
+                        // TODO  message from backend to know there's an accepted document
+
                         process = Process.Start("bash",
-                            "-c \"convert -density 300 -background white -alpha remove " + StorageRoot + relativeFileName + " " +
+                            "-c \"convert -density 600 -background white -flatten " + StorageRoot + relativeFileName + " " +
                             StorageRoot + relativeFileName +
-                            "-%04d.png\""); // Density 300 means 300dpi means production-grade conversion
+                            "-%04d.png\""); // Density 600 means 600dpi means production-grade conversion
                     }
 
                     process.WaitForExit();

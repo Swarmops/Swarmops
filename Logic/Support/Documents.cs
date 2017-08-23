@@ -37,6 +37,12 @@ namespace Swarmops.Logic.Support
         }
 
 
+        public static Documents GetAll()
+        {
+            return FromArray(SwarmDb.GetDatabaseForReading().GetAllDocuments());
+        }
+
+
         public Document Add (string serverFileName, string clientFileName, Int64 fileSize,
             string description, Person uploader)
         {

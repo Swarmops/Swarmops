@@ -166,6 +166,15 @@ namespace Swarmops.Backend
                     return;
                 }
 
+                if (args[0].ToLowerInvariant() == "pdfregen")
+                {
+                    Console.WriteLine("Regenerating all bitmaps from PDF uploads.");
+                    PdfProcessor.RegenerateAll();
+                    Console.WriteLine("Done.");
+                    return;
+                }
+
+
                 if (args[0].ToLower() == "rsm")
                 {
                     Console.WriteLine ("Testing character encoding: räksmörgås RÄKSMÖRGÅS");
