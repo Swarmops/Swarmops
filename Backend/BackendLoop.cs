@@ -47,7 +47,22 @@ namespace Swarmops.Backend
 
             // Checking for schemata upgrade first of all, after seeing that db exists
 
+            int startupDbVersion = Database.SwarmDb.DbVersion;
+
             DatabaseMaintenance.UpgradeSchemata();
+
+            if (startupDbVersion < 37)
+            {
+                // In versions below 37, there was a bug in the PDF rasterization
+                // (not in the database, we're just using the dbschema as a versioning
+                // tool) that requires re-rasterization of uploaded PDFs. Specifically,
+                // transparent-background PDFs were all black (black text on black bg).
+
+                Console.WriteLine("We need to regenerate all bitmaps from vector PDFs because of a now-fixed bug.");
+                Console.WriteLine("This will take a few hours, but only needs to be done once.");
+
+                PdfProcessor.RegenerateAll();
+            }
 
             testMode = false;
 
