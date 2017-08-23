@@ -75,6 +75,8 @@ namespace Swarmops.Utility.BotCode
                             "-%04d.png\""); // Density 600 means 600dpi means production-grade conversion
 
                     process.WaitForExit();
+
+                    lastFirstPart = firstPart;
                 }
                 else
                 {
