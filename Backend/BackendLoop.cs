@@ -58,10 +58,11 @@ namespace Swarmops.Backend
                 // tool) that requires re-rasterization of uploaded PDFs. Specifically,
                 // transparent-background PDFs were all black (black text on black bg).
 
+                /*
                 Console.WriteLine("We need to regenerate all bitmaps from vector PDFs because of a now-fixed bug.");
                 Console.WriteLine("This will take a few hours, but only needs to be done once.");
 
-                PdfProcessor.RegenerateAll();
+                PdfProcessor.RegenerateAll();*/
             }
 
             testMode = false;
@@ -183,9 +184,18 @@ namespace Swarmops.Backend
 
                 if (args[0].ToLowerInvariant() == "pdfregen")
                 {
-                    Console.WriteLine("Regenerating all bitmaps from PDF uploads.");
-                    PdfProcessor.RegenerateAll();
-                    Console.WriteLine("Done.");
+                    if (args.Length > 1)
+                    {
+                        int docId = Int32.Parse(args[1]);
+                        PdfProcessor.Rerasterize(Document.FromIdentity(docId));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Regenerating all bitmaps from PDF uploads.");
+                        PdfProcessor.RerasterizeAll();
+                        Console.WriteLine("Done.");
+                    }
+
                     return;
                 }
 
