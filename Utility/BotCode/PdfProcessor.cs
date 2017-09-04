@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -133,6 +134,36 @@ namespace Swarmops.Utility.BotCode
             process.WaitForExit();
 
             Console.WriteLine(" done.");
+        }
+
+        public static string TemplateToPdf(string svgFileName)
+        {
+            if (svgFileName.Contains('\"'))
+            {
+                throw new ArgumentException("Filename must not contain double quotes");
+            }
+            if (svgFileName.Contains(' '))
+            {
+                throw new ArgumentException("Filename must not contain whitespace");
+            }
+
+            if (!File.Exists(svgFileName))
+            {
+                throw new ArgumentException("File does not exist");
+            }
+
+            string tempFolder = @"/tmp/";
+
+            Guid guid = new Guid();
+
+            string tempFileName = tempFolder + guid.ToString("D") + ".pdf";
+
+            Process process = Process.Start("bash",
+                    "-c \"inkscape --without-gui --export-to-pdf=" + tempFileName + " " + svgFileName + "\"");  // inkscape is a package-level dependency
+
+            process.WaitForExit();
+
+            return tempFileName;
         }
     }
 }
