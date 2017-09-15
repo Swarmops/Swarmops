@@ -349,7 +349,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to List.
+        ///   Looks up a localized string similar to List....
         /// </summary>
         internal static string Menu5_Financial_List {
             get {

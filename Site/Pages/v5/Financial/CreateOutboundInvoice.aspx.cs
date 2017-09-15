@@ -101,7 +101,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 this.CurrencyAmount.Cents = 0;
                 this.CurrencyVat.Cents = 0;
-                this.TextSupplier.Focus();
+                this.TextClient.Focus();
                 this.TextDueDate.Text = DateTime.Today.AddDays (30).ToShortDateString(); // Use current culture
 
                 Localize();
@@ -111,7 +111,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            this.LabelSupplier.Text = Global.Financial_Supplier;
+            this.LabelClient.Text = Global.Financial_Client;
             this.LabelDueDate.Text = Global.Financial_DueDate;
             this.LabelAmount.Text = string.Format (Resources.Pages.Financial.CreateInboundInvoice_Amount,
                 CurrentOrganization.Currency.Code);
@@ -123,7 +123,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelHeaderImageFiles.Text = Resources.Pages.Financial.CreateInboundInvoice_HeaderInvoiceImage;
             this.LabelImageFiles.Text = Resources.Pages.Financial.CreateInboundInvoice_UploadInvoiceImage;
             this.LabelReference.Text = Resources.Pages.Financial.CreateInboundInvoice_Reference;
-            this.LabelAccount.Text = Resources.Pages.Financial.CreateInboundInvoice_SupplierAccount;
 
             this.ButtonCreate.Text = Resources.Pages.Financial.CreateInboundInvoice_ButtonCreate;
         }
@@ -148,7 +147,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             if (budget.Organization.Identity != CurrentOrganization.Identity)
             {
-                throw new InvalidOperationException ("Budget-organization mismatch; won't file expense claim");
+                throw new InvalidOperationException ("Budget-organization mismatch; won't file invoice");
             }
 
 
@@ -161,25 +160,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new InvalidOperationException ("No documents uploaded");
             }
 
-            InboundInvoice invoice = InboundInvoice.Create (CurrentOrganization, dueDate, amountCents, amountVatCents, budget,
-                this.TextSupplier.Text, this.TextPurpose.Text, this.TextAccount.Text, string.Empty,
-                this.TextReference.Text, CurrentUser);
+            OutboundInvoice invoice = OutboundInvoice.Create (CurrentOrganization, dueDate, budget, this.TextClient.Text, string.Empty, string.Empty, CurrentOrganization.Currency, false, this.TextReference.Text, CurrentUser);
 
-            foreach (int tagSetId in this._tagSetIds)
-            {
-                string selectedTagString =
-                    Request.Form["DropTags" + tagSetId.ToString (CultureInfo.InvariantCulture)];
+            invoice.AddItem(this.TextPurpose.Text, amountCents);
 
-                if (!String.IsNullOrEmpty (selectedTagString))
-                {
-                    int selectedTagType = Int32.Parse (selectedTagString);
-                    if (selectedTagType != 0)
-                    {
-                        invoice.FinancialTransaction.CreateTag (
-                            FinancialTransactionTagType.FromIdentity (selectedTagType), CurrentUser);
-                    }
-                }
-            }
+            // TODO: VAT
 
             documents.SetForeignObjectForAll (invoice);
 
@@ -190,8 +175,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // Reset all fields for next invoice
 
             this.FileUpload.Reset();
-            this.TextSupplier.Text = String.Empty;
-            this.TextAccount.Text = String.Empty;
+            this.TextClient.Text = String.Empty;
             this.TextPurpose.Text = String.Empty;
             this.TextReference.Text = String.Empty;
             this.CurrencyAmount.Cents = 0;
@@ -200,7 +184,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // the easyUI combo fields should reset automatically on form submission unless we explicitly reconstruct
 
-            this.TextSupplier.Focus();
+            this.TextClient.Focus();
         }
 
 

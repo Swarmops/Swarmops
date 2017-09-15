@@ -313,6 +313,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Client / Customer.
+        /// </summary>
+        internal static string Financial_Client {
+            get {
+                return ResourceManager.GetString("Financial_Client", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expenses.
         /// </summary>
         internal static string Financial_Cost {

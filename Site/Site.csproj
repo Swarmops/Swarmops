@@ -194,6 +194,13 @@
     <Compile Include="Pages\v5\Comms\SendMassMessage.aspx.designer.cs">
       <DependentUpon>SendMassMessage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Financial\ListInvoicesInbound.aspx.cs">
+      <DependentUpon>ListInvoicesInbound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\ListInvoicesInbound.aspx.designer.cs">
+      <DependentUpon>ListInvoicesInbound.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Financial\AttestCosts.aspx.cs">
       <DependentUpon>AttestCosts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -819,6 +826,7 @@
     <Content Include="Images\Icons\iconshock-diskette-upload-32px.png" />
     <Content Include="Images\Icons\iconshock-downarrow-16px.png" />
     <Content Include="Images\Icons\iconshock-downarrow-40px.png" />
+    <Content Include="Images\Icons\iconshock-empty-tick-128x96px.png" />
     <Content Include="Images\Icons\iconshock-executive-128px.png" />
     <Content Include="Images\Icons\iconshock-flag-white-16px.png" />
     <Content Include="Images\Icons\iconshock-flag-white-256px.png" />
@@ -1028,6 +1036,7 @@
     <Content Include="Pages\v5\Admin\OrgStaffing.aspx" />
     <Content Include="Pages\v5\Admin\SystemSettings.aspx" />
     <Content Include="Pages\v5\Comms\SendMassMessage.aspx" />
+    <Content Include="Pages\v5\Financial\ListInvoicesInbound.aspx" />
     <Content Include="Pages\v5\Financial\AttestCosts.aspx" />
     <Content Include="Pages\v5\Financial\BitcoinHotwalletNotEnabled.aspx" />
     <Content Include="Pages\v5\Financial\CreateOutboundInvoice.aspx" />

@@ -39,8 +39,6 @@
         function validateFields() {
             var isValid = true;
 
-            isValid = validateTextField('#<%=this.TextAccount.ClientID %>', SwarmopsJS.unescape('<%= this.Localized_ValidationError_Account %>')) && isValid;
-
             if ($('#<%=this.ComboBudgets.ClientID %>_DropBudgets').combotree('tree').tree('getSelected') == null) {
                 isValid = false;
                 $('#<%=this.ComboBudgets.ClientID %>_SpanBudgets').addClass("entryError");
@@ -145,12 +143,12 @@
     <h2><asp:Label ID="BoxTitle" runat="server"/></h2>
     <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
     <div class="entryFields">
-        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextSupplier" /></div>
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextClient" /></div>
         <Swarmops5:CurrencyAmount runat="server" ID="CurrencyAmount" />
         <span class="vatEnabled"><Swarmops5:CurrencyAmount runat="server" ID="CurrencyVat" /></span>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPurpose" /></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDueDate" /></div>
-        <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />
+        <Swarmops5:ComboBudgets ID="ComboBudgets" ListType="InvoiceableOut" runat="server" />
         <asp:Repeater ID="RepeaterTagDrop" runat="server"><ItemTemplate><span id="SpanDropTags<%# Eval("TagSetId") %>"><select class="easyui-combotree" url="/Automation/Json-TransactionTagsTree.aspx?TagSetId=<%# Eval("TagSetId") %>" name="DropTags<%# Eval("TagSetId") %>" id="DropTags<%# Eval("TagSetId") %>" animate="true" style="width:300px"></select></span>&nbsp;<br/></ItemTemplate></asp:Repeater>
 
        <div class="stacked-input-control"></div> <!-- placeholder for label-side H2 -->
@@ -162,12 +160,11 @@
         <!-- file upload ends -->
 
         <div class="stacked-input-control"></div> <!-- placeholder for label-side H2 -->
-        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextAccount" /></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextReference" /></div>
         <asp:Button ID="ButtonCreate" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return validateFields();" OnClick="ButtonCreate_Click" Text="Create"/>
     </div>
     <div class="entryLabels">
-        <asp:Label runat="server" ID="LabelSupplier" /><br/>
+        <asp:Label runat="server" ID="LabelClient" /><br/>
         <asp:Label runat="server" ID="LabelAmount" /><br/>
         <span class="vatEnabled"><asp:Label runat="server" ID="LabelVat" /><br/></span>
         <asp:Label runat="server" ID="LabelPurpose" /><br/>
@@ -177,7 +174,6 @@
         <h2><asp:Label runat="server" ID="LabelHeaderImageFiles" /></h2>
         <asp:Label runat="server" ID="LabelImageFiles" /><br/>
         <h2><asp:Label runat="server" ID="LabelHeaderBankDetails" /></h2>
-        <asp:Label runat="server" ID="LabelAccount" /><br/>
         <asp:Label runat="server" ID="LabelReference" /><br/>
     </div>
     <div style="clear:both"></div>

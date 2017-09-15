@@ -22,9 +22,9 @@ public partial class Pages_v5_Admin_Hacks_TemporaryHack : Page
             {
                 // outbound intl invoice. Add an untracked intl invoice 10 days prior, map it to this
 
-                OutboundInvoice newInvoice = OutboundInvoice.Create (euroPirates, Person.FromIdentity (1),
+                OutboundInvoice newInvoice = OutboundInvoice.Create (euroPirates,
                     transaction.DateTime, euroPirates.FinancialAccounts.IncomeSales, "Untracked",
-                    "untracked@example.com", string.Empty, euroPirates.Currency, false, string.Empty);
+                    "untracked@example.com", string.Empty, euroPirates.Currency, false, string.Empty, Person.FromIdentity (1));
                 newInvoice.AddItem ("Untracked item", transaction.Rows.BalanceCentsDelta);
 
                 // Doesn't close

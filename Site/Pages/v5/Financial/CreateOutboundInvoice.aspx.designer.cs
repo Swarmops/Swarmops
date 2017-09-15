@@ -49,13 +49,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.HiddenField HiddenTagSetIdentifiers;
         
         /// <summary>
-        /// TextSupplier control.
+        /// TextClient control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextSupplier;
+        protected global::System.Web.UI.WebControls.TextBox TextClient;
         
         /// <summary>
         /// CurrencyAmount control.
@@ -121,15 +121,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::Swarmops.Controls.Base.FileUpload FileUpload;
         
         /// <summary>
-        /// TextAccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextAccount;
-        
-        /// <summary>
         /// TextReference control.
         /// </summary>
         /// <remarks>
@@ -148,13 +139,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Button ButtonCreate;
         
         /// <summary>
-        /// LabelSupplier control.
+        /// LabelClient control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSupplier;
+        protected global::System.Web.UI.WebControls.Label LabelClient;
         
         /// <summary>
         /// LabelAmount control.
@@ -236,15 +227,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelHeaderBankDetails;
-        
-        /// <summary>
-        /// LabelAccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelAccount;
         
         /// <summary>
         /// LabelReference control.

@@ -79,11 +79,11 @@ namespace Swarmops.Logic.Swarm
                 invoiceDue = maxInvoiceDue;
             }
 
-            OutboundInvoice invoice = OutboundInvoice.Create (Parley.Organization, Parley.Person, invoiceDue,
+            OutboundInvoice invoice = OutboundInvoice.Create (Parley.Organization, invoiceDue,
                 Parley.Budget, Person.Name, Person.Mail,
                 string.Empty,
                 Parley.Organization.DefaultCountry.Currency, true,
-                string.Empty);
+                string.Empty, Parley.Person);
 
             invoice.AddItem ("Deltagarkostnad " + Parley.Name, Parley.AttendanceFeeCents); // TODO: Localize
 

@@ -228,9 +228,7 @@ namespace Swarmops.Logic.Financial
             return result;
         }
 
-        public static OutboundInvoice Create (Organization organization, Person createdByPerson, DateTime dueDate,
-            FinancialAccount budget, string customerName, string invoiceAddressMail, string invoiceAddressPaper,
-            Currency currency, bool domestic, string theirReference)
+        public static OutboundInvoice Create (Organization organization, DateTime dueDate, FinancialAccount budget, string customerName, string invoiceAddressMail, string invoiceAddressPaper, Currency currency, bool domestic, string theirReference, Person createdByPerson)
         {
             OutboundInvoice invoice =
                 FromIdentity (SwarmDb.GetDatabaseForWriting()
@@ -272,11 +270,11 @@ namespace Swarmops.Logic.Financial
 
         public OutboundInvoice Credit (Person creditingPerson)
         {
-            OutboundInvoice credit = Create (Organization, creditingPerson, DateTime.Now,
+            OutboundInvoice credit = Create (Organization, DateTime.Now,
                 Budget, CustomerName,
                 InvoiceAddressMail,
                 InvoiceAddressPaper, Currency,
-                Domestic, TheirReference);
+                Domestic, TheirReference, creditingPerson);
             if (Domestic) // TODO: LANGUAGE
             {
                 credit.AddItem ("Kredit för faktura " + Reference, -AmountCents);

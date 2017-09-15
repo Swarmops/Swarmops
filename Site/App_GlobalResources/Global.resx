@@ -909,4 +909,7 @@
     <value>Annual Profit/Loss To Date ({0})</value>
     <comment>{0} is the currency code</comment>
   </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>Client / Customer</value>
+  </data>
 </root>
