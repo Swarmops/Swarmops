@@ -250,7 +250,7 @@
             <ResourceKey>Financial_List</ResourceKey>
             <UserLevel>3</UserLevel>
             <Permissions />
-            <Type>Disabled</Type>
+            <Type>Submenu</Type>
             <Children />
             <MainMenuItem>
               <ResourceKey>Financial_List_InboundInvoices</ResourceKey>
