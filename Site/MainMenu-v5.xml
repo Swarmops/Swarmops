@@ -251,6 +251,7 @@
             <UserLevel>3</UserLevel>
             <Permissions />
             <Type>Submenu</Type>
+            <ImageUrl>iconshock-groups-docs-lists</ImageUrl>
             <Children />
             <MainMenuItem>
               <ResourceKey>Financial_List_InboundInvoices</ResourceKey>

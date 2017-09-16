@@ -949,6 +949,7 @@
     <Content Include="Images\PageIcons\iconshock-gold-40px.png" />
     <Content Include="Images\PageIcons\iconshock-group-diversified-40px.png" />
     <Content Include="Images\PageIcons\iconshock-group-search-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-groups-docs-lists-96px.png" />
     <Content Include="Images\PageIcons\iconshock-ignitionkey-16px.png" />
     <Content Include="Images\PageIcons\iconshock-ignitionkey-40px.png" />
     <Content Include="Images\PageIcons\iconshock-invoice-16px.png" />
