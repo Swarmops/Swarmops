@@ -943,6 +943,10 @@
     <Content Include="Images\PageIcons\iconshock-database-star-40px.png" />
     <Content Include="Images\PageIcons\iconshock-disconnect-40px.png" />
     <Content Include="Images\PageIcons\iconshock-documents-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-documents-green-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-documents-orange-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-documents-red-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-documents-violet-96px.png" />
     <Content Include="Images\PageIcons\iconshock-gift-40px.png" />
     <Content Include="Images\PageIcons\iconshock-gift-96px.png" />
     <Content Include="Images\PageIcons\iconshock-gold-16px.png" />

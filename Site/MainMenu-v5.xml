@@ -257,7 +257,7 @@
                 <ResourceKey>Financial_List_InboundInvoices</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />
-                <ImageUrl />
+                <ImageUrl>iconshock-documents-red</ImageUrl>
                 <NavigateUrl>/Pages/v5/Financial/ListInvoicesInbound.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
@@ -266,7 +266,7 @@
                 <ResourceKey>Financial_List_OutboundInvoices</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />
-                <ImageUrl />
+                <ImageUrl>iconshock-documents-green</ImageUrl>
                 <NavigateUrl>/Pages/v5/Financial/ListInvoicesOutbound.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />

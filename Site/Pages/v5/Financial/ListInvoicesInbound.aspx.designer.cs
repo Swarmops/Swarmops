@@ -85,24 +85,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelGridHeaderBeneficiary;
         
         /// <summary>
-        /// LabelGridHeaderDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderDescription;
-        
-        /// <summary>
-        /// LabelGridHeaderBudget control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderBudget;
-        
-        /// <summary>
         /// LabelGridHeaderRequested control.
         /// </summary>
         /// <remarks>
