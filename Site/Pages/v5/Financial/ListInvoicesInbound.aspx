@@ -191,7 +191,7 @@
                 <th data-options="field:'progress',width:96,align:'center'"><asp:Label ID="LabelGridHeaderProgress" runat="server" Text="XYZ Progress" /></th>
                 <th data-options="field:'actions',width:53,align:'center'"><asp:Label ID="Label1" runat="server" Text="Axyztion" /></th>
             </tr>  
-        </thead
+        </thead>
     </table>
     
     <div style="display:none">
