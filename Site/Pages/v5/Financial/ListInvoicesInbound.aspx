@@ -184,11 +184,11 @@
         <thead>
             <tr>  
                 <th data-options="field:'item',width:60"><asp:Label ID="LabelGridHeaderItem" runat="server" Text="XYZ Item"/></th>  
-                <th data-options="field:'dueDate',width:80"><asp:Label ID="LabelGridHeaderDueDate" runat="server" Text="XYZ DueDate" /></th>  
-                <th data-options="field:'sender',width:130,sortable:true"><asp:Label ID="LabelGridHeaderBeneficiary" runat="server" Text="XYZ Beneficiary" /></th>  
+                <th data-options="field:'dueDate',width:20"><asp:Label ID="LabelGridHeaderDueDate" runat="server" Text="XYZ DueDate" /></th>  
+                <th data-options="field:'sender',width:140,sortable:true"><asp:Label ID="LabelGridHeaderBeneficiary" runat="server" Text="XYZ Beneficiary" /></th>  
                 <th data-options="field:'budget',width:140,sortable:true"><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Budget" /></th>  
                 <th data-options="field:'amount',width:100,align:'right',sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderRequested" runat="server" Text="XYZ Requested" /></th>
-                <th data-options="field:'progress',width:66,align:'center'"><asp:Label ID="LabelGridHeaderProgress" runat="server" Text="XYZ Progress" /></th>
+                <th data-options="field:'progress',width:76,align:'center'"><asp:Label ID="LabelGridHeaderProgress" runat="server" Text="XYZ Progress" /></th>
                 <th data-options="field:'dox',width:40,align:'center'"><asp:Label ID="LabelGridHeaderDocs" runat="server" Text="Doxyz" /></th>
                 <th data-options="field:'actions',width:53,align:'center'"><asp:Label ID="LabelGridHeaderActions" runat="server" Text="XYZAction" /></th>
             </tr>  

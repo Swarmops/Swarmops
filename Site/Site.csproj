@@ -874,6 +874,9 @@
     <Content Include="Images\Icons\iconshock-redshirt-128px.png" />
     <Content Include="Images\Icons\iconshock-search-16px.png" />
     <Content Include="Images\Icons\iconshock-search-24px.png" />
+    <Content Include="Images\Icons\iconshock-search-256px.png" />
+    <Content Include="Images\Icons\iconshock-search-disabled-256px.png" />
+    <Content Include="Images\Icons\iconshock-search-hot-256px.png" />
     <Content Include="Images\Icons\iconshock-settings-16px.png" />
     <Content Include="Images\Icons\iconshock-soldier-128px.png" />
     <Content Include="Images\Icons\iconshock-star-gold-64px.png" />

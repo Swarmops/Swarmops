@@ -36,9 +36,11 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
         StringBuilder result = new StringBuilder (16384);
 
         string hasDoxString =
-            "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\\\"this.src='/Images/Icons/iconshock-search-256px-hot.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-search-256px.png';\\\" baseid='{5}' class='LocalViewDox' style='cursor:pointer' />";
+            "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\\\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-search-256px.png';\\\" baseid='{6}' class='LocalViewDox' style='cursor:pointer' />";
 
         result.Append ("{\"rows\":[");
+
+        DateTime dueDateFormatBreakDate = DateTime.Today.AddDays(-240);
 
         foreach (InboundInvoice invoice in _invoices)
         {
@@ -54,11 +56,13 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
                 //"<img id=\\\"IconUndo{5}\\\" class=\\\"LocalIconUndo LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                 "</span>\"",
                 "#" + invoice.Identity.ToString("N0"),
-                JsonSanitize(invoice.DueDate.ToString("MMM-dd")),
+
+                JsonSanitize(invoice.DueDate.ToString(invoice.DueDate < dueDateFormatBreakDate ? "YYYY-MMM" : "MMM-dd")),
                 JsonSanitize(invoice.Supplier),
                 JsonSanitize(invoice.Budget.Name),
                 JsonSanitize((invoice.AmountCents/100.0).ToString("N2")),
-                GetProgressTicks(invoice));
+                GetProgressTicks(invoice),
+                invoice.Identity); // Item #6 is only present in hasDoxString above
             result.Append("},");
         }
 
