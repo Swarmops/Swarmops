@@ -78,7 +78,7 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
 
     private string _emptyTick = "<img src='/Images/Icons/iconshock-empty-tick-128x96px.png' height='12' width='16'>";
     private string _greenTick = "<img src='/Images/Icons/iconshock-green-tick-128x96px.png' height='12' width='16'>";
-    private string _redCross = "<img src='/Images/Icons/iconshock-red-cross-circled-128x96px.png' height='12' width='16'>";
+    private string _redCross = "<img src='/Images/Icons/iconshock-red-cross-128x96px.png' height='12' width='16'>";
     private string _filler = "<img src='/Images/Icons/transparency-16px.png' height='12' width='16'>";
 
 
