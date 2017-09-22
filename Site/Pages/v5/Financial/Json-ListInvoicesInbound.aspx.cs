@@ -21,6 +21,8 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
         this._attestationRights = GetAttestationRights();
         this._invoices = InboundInvoices.ForOrganization(this.CurrentOrganization, true);
 
+        _invoices.Sort(SortInvoicesByDueDate);
+
         // Format as JSON and return
 
         Response.ContentType = "application/json";
@@ -28,6 +30,12 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
         Response.Output.WriteLine (json);
         Response.End();
     }
+
+    private static int SortInvoicesByDueDate(InboundInvoice a, InboundInvoice b)
+    {
+        return DateTime.Compare(a.DueDate, b.DueDate);
+    }
+
 
     private string FormatAsJson()
     {
@@ -78,8 +86,8 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
 
     private string _emptyTick = "<img src='/Images/Icons/iconshock-empty-tick-128x96px.png' height='12' width='16'>";
     private string _greenTick = "<img src='/Images/Icons/iconshock-green-tick-128x96px.png' height='12' width='16'>";
-    private string _redCross = "<img src='/Images/Icons/iconshock-red-cross-128x96px.png' height='12' width='16'>";
-    private string _filler = "<img src='/Images/Icons/transparency-16px.png' height='12' width='16'>";
+    private string _redCross = "<img src='/Images/Icons/iconshock-red-cross-128x96px.png' height='20' width='20'>";
+    private string _fillerTwo = "<img src='/Images/Icons/transparency-16px.png' height='12' width='16'>";
 
 
     private string GetProgressTicks(InboundInvoice invoice)
