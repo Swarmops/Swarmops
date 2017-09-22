@@ -113,13 +113,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             PageTitle = Resources.Pages.Financial.AttestCosts_PageTitle;
             InfoBoxLiteral = Resources.Pages.Financial.AttestCosts_Info;
-            this.LabelAttestCostsHeader.Text = Resources.Pages.Financial.AttestCosts_Header_CostsAwaitingAttestation;
-            //this.LabelGridHeaderAction.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Action;
-            this.LabelGridHeaderBeneficiary.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Beneficiary;
-            //this.LabelGridHeaderBudget.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Budget;
-            //this.LabelGridHeaderDescription.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Description;
-            this.LabelGridHeaderDocs.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Docs;
+            this.LabelListInboundInvoicesHeader.Text = Resources.Pages.Financial.ListInboundInvoices_Header;
             this.LabelGridHeaderItem.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Item;
+            this.LabelGridHeaderActions.Text = Resources.Global.Global_Action;
+            this.LabelGridHeaderBeneficiary.Text = Resources.Pages.Financial.ListInboundInvoices_Header_Sender;
+            this.LabelGridHeaderBudget.Text = Resources.Global.Financial_Budget;
+            this.LabelGridHeaderDocs.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Docs;
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
 
            /* this.LiteralErrorInsufficientBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_OutOfBudget);

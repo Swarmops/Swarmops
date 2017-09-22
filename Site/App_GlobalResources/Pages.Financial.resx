@@ -617,4 +617,10 @@
   <data name="FileExpenseClaim_Vat" xml:space="preserve">
     <value>VAT of the total ({0})</value>
   </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Listing Inbound Invoices</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Invoice sender</value>
+  </data>
 </root>

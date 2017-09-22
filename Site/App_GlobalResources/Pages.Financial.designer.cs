@@ -943,6 +943,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Listing Inbound Invoices.
+        /// </summary>
+        internal static string ListInboundInvoices_Header {
+            get {
+                return ResourceManager.GetString("ListInboundInvoices_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoice sender.
+        /// </summary>
+        internal static string ListInboundInvoices_Header_Sender {
+            get {
+                return ResourceManager.GetString("ListInboundInvoices_Header_Sender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account (OCR).
         /// </summary>
         internal static string PayoutMoney_GridHeader_Account_Ocr {

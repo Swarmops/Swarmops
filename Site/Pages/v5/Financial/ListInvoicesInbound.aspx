@@ -177,7 +177,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2><asp:Label runat="server" ID="LabelAttestCostsHeader" Text="XYZ Costs Awaiting Your Attestation" /></h2>
+    <h2><asp:Label runat="server" ID="LabelListInboundInvoicesHeader" Text="XYZ List Inbound Invoices" /></h2>
     <table id="TableInboundInvoices" class="easyui-datagrid" style="width:680px;height:400px"
         data-options="rownumbers:false,singleSelect:false,fit:true,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-ListInvoicesInbound.aspx'"
         idField="itemId">
@@ -186,10 +186,11 @@
                 <th data-options="field:'item',width:60"><asp:Label ID="LabelGridHeaderItem" runat="server" Text="XYZ Item"/></th>  
                 <th data-options="field:'dueDate',width:80"><asp:Label ID="LabelDueDate" runat="server" Text="XYZ DueDate" /></th>  
                 <th data-options="field:'sender',width:160,sortable:true"><asp:Label ID="LabelGridHeaderBeneficiary" runat="server" Text="XYZ Beneficiary" /></th>  
+                <th data-options="field:'budget',width:160,sortable:true"><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Budget" /></th>  
                 <th data-options="field:'amountRequested',width:80,align:'right',sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderRequested" runat="server" Text="XYZ Requested" /></th>
                 <th data-options="field:'progress',width:96,align:'center'"><asp:Label ID="LabelGridHeaderProgress" runat="server" Text="XYZ Progress" /></th>
                 <th data-options="field:'dox',width:40,align:'center'"><asp:Label ID="LabelGridHeaderDocs" runat="server" Text="Doxyz" /></th>
-                <th data-options="field:'actions',width:53,align:'center'"><asp:Label ID="Label1" runat="server" Text="XYZAction" /></th>
+                <th data-options="field:'actions',width:53,align:'center'"><asp:Label ID="LabelGridHeaderActions" runat="server" Text="XYZAction" /></th>
             </tr>  
         </thead>
     </table>

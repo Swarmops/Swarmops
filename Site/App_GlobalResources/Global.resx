@@ -912,4 +912,8 @@
   <data name="Financial_Client" xml:space="preserve">
     <value>Client / Customer</value>
   </data>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>Progress</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  </data>
 </root>

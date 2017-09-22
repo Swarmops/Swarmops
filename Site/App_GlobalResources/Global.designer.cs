@@ -1303,6 +1303,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Progress.
+        /// </summary>
+        internal static string Global_Progress {
+            get {
+                return ResourceManager.GetString("Global_Progress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Q1.
         /// </summary>
         internal static string Global_Q1 {

@@ -49,13 +49,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Literal LiteralButtonCorrect;
         
         /// <summary>
-        /// LabelAttestCostsHeader control.
+        /// LabelListInboundInvoicesHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelAttestCostsHeader;
+        protected global::System.Web.UI.WebControls.Label LabelListInboundInvoicesHeader;
         
         /// <summary>
         /// LabelGridHeaderItem control.
@@ -85,6 +85,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelGridHeaderBeneficiary;
         
         /// <summary>
+        /// LabelGridHeaderBudget control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelGridHeaderBudget;
+        
+        /// <summary>
         /// LabelGridHeaderRequested control.
         /// </summary>
         /// <remarks>
@@ -112,13 +121,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelGridHeaderDocs;
         
         /// <summary>
-        /// Label1 control.
+        /// LabelGridHeaderActions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label LabelGridHeaderActions;
         
         /// <summary>
         /// RepeaterLightboxItems control.
