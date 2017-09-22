@@ -115,23 +115,25 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             InfoBoxLiteral = Resources.Pages.Financial.AttestCosts_Info;
             this.LabelListInboundInvoicesHeader.Text = Resources.Pages.Financial.ListInboundInvoices_Header;
             this.LabelGridHeaderItem.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Item;
-            this.LabelGridHeaderActions.Text = Resources.Global.Global_Action;
+            this.LabelGridHeaderDueDate.Text = Resources.Global.Financial_DueDate;
             this.LabelGridHeaderBeneficiary.Text = Resources.Pages.Financial.ListInboundInvoices_Header_Sender;
             this.LabelGridHeaderBudget.Text = Resources.Global.Financial_Budget;
-            this.LabelGridHeaderDocs.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Docs;
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
+            this.LabelGridHeaderProgress.Text = Resources.Global.Global_Progress;
+            this.LabelGridHeaderDocs.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Docs;
+            this.LabelGridHeaderActions.Text = Resources.Global.Global_Action;
 
-           /* this.LiteralErrorInsufficientBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_OutOfBudget);
-            this.LiteralWarnUnintializedBudget.Text =
-                JavascriptEscape (Resources.Pages.Financial.AttestCosts_Warn_UninitializedBudget);*/
-/*
-            this.LabelDescribeDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionDeny;
-            this.LabelDescribeCorrect.Text = String.Format (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount, CurrentOrganization.Currency.DisplayCode);
-            this.LabelDescribeRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionRebudget;
+            /* this.LiteralErrorInsufficientBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_OutOfBudget);
+             this.LiteralWarnUnintializedBudget.Text =
+                 JavascriptEscape (Resources.Pages.Financial.AttestCosts_Warn_UninitializedBudget);*/
+            /*
+                        this.LabelDescribeDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionDeny;
+                        this.LabelDescribeCorrect.Text = String.Format (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount, CurrentOrganization.Currency.DisplayCode);
+                        this.LabelDescribeRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionRebudget;
 
-            this.LabelRadioCorrect.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionAmount;
-            this.LabelRadioDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionDeny;
-            this.LabelRadioRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionRebudget;*/
+                        this.LabelRadioCorrect.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionAmount;
+                        this.LabelRadioDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionDeny;
+                        this.LabelRadioRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionRebudget;*/
 
             this.LiteralButtonCorrect.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount); 
             this.LiteralButtonDeny.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonDeny);
