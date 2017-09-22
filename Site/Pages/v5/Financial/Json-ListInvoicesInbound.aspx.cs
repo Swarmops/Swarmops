@@ -57,7 +57,7 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
                 "</span>\"",
                 "#" + invoice.Identity.ToString("N0"),
 
-                JsonSanitize(invoice.DueDate.ToString(invoice.DueDate < dueDateFormatBreakDate ? "YYYY-MMM" : "MMM-dd")),
+                JsonSanitize(invoice.DueDate.ToString(invoice.DueDate < dueDateFormatBreakDate ? "yyyy-MMM" : "MMM-dd")),
                 JsonSanitize(invoice.Supplier),
                 JsonSanitize(invoice.Budget.Name),
                 JsonSanitize((invoice.AmountCents/100.0).ToString("N2")),
