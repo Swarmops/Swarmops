@@ -4,6 +4,7 @@ using System.Globalization;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Interfaces;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
@@ -42,6 +43,18 @@ namespace Swarmops.Logic.Financial
 
             // return payout;
         }
+
+        public static Payout FromDependency(IHasIdentity dependency)
+        {
+            int payoutId = SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency(dependency);
+            if (payoutId == 0)
+            {
+                throw new ArgumentException("Supplied item does not have an associated payout");
+            }
+
+            return Payout.FromIdentity(payoutId);
+        }
+
 
         public static Payout Empty
         {

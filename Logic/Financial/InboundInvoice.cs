@@ -268,6 +268,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+
         private void UpdateTransaction (Person updatingPerson)
         {
             Dictionary<int, Int64> nominalTransaction = new Dictionary<int, Int64>();
