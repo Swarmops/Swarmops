@@ -179,7 +179,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label runat="server" ID="LabelListInboundInvoicesHeader" Text="XYZ List Inbound Invoices" /></h2>
     <table id="TableInboundInvoices" class="easyui-datagrid" style="width:680px;height:400px"
-        data-options="rownumbers:false,singleSelect:false,fit:true,fitWidth:true,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-ListInvoicesInbound.aspx'"
+        data-options="rownumbers:false,singleSelect:false,fit:false,fitWidth:true,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-ListInvoicesInbound.aspx'"
         idField="itemId">
         <thead>
             <tr>  
