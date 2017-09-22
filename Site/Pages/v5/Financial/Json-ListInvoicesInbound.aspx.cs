@@ -19,7 +19,7 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
         // Get invoices and attestation rights
 
         this._attestationRights = GetAttestationRights();
-        this._invoices = InboundInvoices.ForOrganization(this.CurrentOrganization);
+        this._invoices = InboundInvoices.ForOrganization(this.CurrentOrganization, true);
 
         // Format as JSON and return
 
