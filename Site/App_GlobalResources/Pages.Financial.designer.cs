@@ -961,6 +961,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This lists the latest 100 invoices, sorted by their due date with newest first..
+        /// </summary>
+        internal static string ListInboundInvoices_Info {
+            get {
+                return ResourceManager.GetString("ListInboundInvoices_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inbound Invoices.
+        /// </summary>
+        internal static string ListInboundInvoices_Title {
+            get {
+                return ResourceManager.GetString("ListInboundInvoices_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account (OCR).
         /// </summary>
         internal static string PayoutMoney_GridHeader_Account_Ocr {

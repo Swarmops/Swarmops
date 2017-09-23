@@ -111,8 +111,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            PageTitle = Resources.Pages.Financial.AttestCosts_PageTitle;
-            InfoBoxLiteral = Resources.Pages.Financial.AttestCosts_Info;
+            PageTitle = Resources.Pages.Financial.ListInboundInvoices_Title;
+            InfoBoxLiteral = Resources.Pages.Financial.ListInboundInvoices_Info;
             this.LabelListInboundInvoicesHeader.Text = Resources.Pages.Financial.ListInboundInvoices_Header;
             this.LabelGridHeaderItem.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Item;
             this.LabelGridHeaderDueDate.Text = Resources.Global.Financial_DueDate;
