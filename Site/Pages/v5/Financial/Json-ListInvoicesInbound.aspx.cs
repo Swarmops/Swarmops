@@ -21,7 +21,7 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
         this._attestationRights = GetAttestationRights();
         this._invoices = InboundInvoices.ForOrganization(this.CurrentOrganization, true);
 
-        _invoices.Sort(SortInvoicesByDueDate);
+        _invoices.Sort(SortInvoicesByDueDateReverse);
 
         // Format as JSON and return
 
@@ -31,9 +31,9 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
         Response.End();
     }
 
-    private static int SortInvoicesByDueDate(InboundInvoice a, InboundInvoice b)
+    private static int SortInvoicesByDueDateReverse(InboundInvoice a, InboundInvoice b)
     {
-        return DateTime.Compare(a.DueDate, b.DueDate);
+        return DateTime.Compare(b.DueDate, a.DueDate);
     }
 
 
