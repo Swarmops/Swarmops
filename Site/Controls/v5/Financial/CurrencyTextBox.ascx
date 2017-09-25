@@ -40,13 +40,13 @@
                 if (currencyText.trim().indexOf(' ') >= 0) {
                     // the text contains at least one space, so try to interpret it and convert it to presentation currency
 
-                SwarmopsJS.ajaxCall('/Automation/FinancialFunctions.aspx/InterpretCurrency',
-                    jsonData,
-                    function(data) {
-                        if (data.Success) {
-                            alert("PresentationAmount:" + data.DisplayAmount + "\r\nUsed Currency:" + data.CurrencyCode + "\r\nEntered Amount:" + data.EnteredAmount);
-                        }
-                    });
+                    SwarmopsJS.ajaxCall('/Automation/FinancialFunctions.aspx/InterpretCurrency',
+                        jsonData,
+                        function(data) {
+                            if (data.Success) {
+                                alert("PresentationAmount:" + data.DisplayAmount + "\r\nUsed Currency:" + data.CurrencyCode + "\r\nEntered Amount:" + data.EnteredAmount);
+                            }
+                        });
                 } else {
                     // the text does NOT contain at least one space, so we should format it for presentation currency
                     $('#<%=this.ClientID%>_TextInput').blur(function() {
@@ -54,7 +54,7 @@
                             jsonData,
                             function(data) {
                                 if (data.Success) {
-                                    $('#<%=this.ClientID%>_TextInput').val(data.Result);
+                                    $('#<%=this.ClientID%>_TextInput').val(data.NewValue);
                                 }
                             });
                     });

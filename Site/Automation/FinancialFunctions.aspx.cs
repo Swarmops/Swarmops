@@ -112,6 +112,7 @@ namespace Swarmops.Frontend.Automation
             return new InterpretedCurrencyResult
             {
                 Success = true,
+                EnteredAmount = amountDouble.ToString("N2"),
                 CurrencyCode = money.Currency.Code,
                 DisplayAmount = (money.ToCurrency(authData.CurrentOrganization.Currency).Cents/100.0).ToString("N2")
             };
