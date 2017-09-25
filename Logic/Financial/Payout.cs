@@ -19,8 +19,8 @@ namespace Swarmops.Logic.Financial
     {
         #region Creation and Construction
 
-        private Payout (BasicPayout basic) :
-            base (basic)
+        private Payout(BasicPayout basic) :
+            base(basic)
         {
             LoadDependencies();
         }
@@ -32,7 +32,7 @@ namespace Swarmops.Logic.Financial
             throw new NotImplementedException();
         }
 
-        public static Payout Create (Payout payout)
+        public static Payout Create(Payout payout)
         {
             throw new NotImplementedException(); // Seems not to be needed
 
@@ -58,7 +58,12 @@ namespace Swarmops.Logic.Financial
 
         public static Payout Empty
         {
-            get { return new Payout (new BasicPayout (0, 0, string.Empty, string.Empty, string.Empty, 0, DateTime.UtcNow, true, DateTime.UtcNow, 0)); }
+            get
+            {
+                return
+                    new Payout(new BasicPayout(0, 0, string.Empty, string.Empty, string.Empty, 0, DateTime.UtcNow, true,
+                        DateTime.UtcNow, 0));
+            }
         }
 
         private void LoadDependencies()
@@ -80,64 +85,64 @@ namespace Swarmops.Logic.Financial
                 return; // never progress past here if identity zero
             }
 
-            BasicFinancialDependency[] dependencies = SwarmDb.GetDatabaseForReading().GetPayoutDependencies (Identity);
+            BasicFinancialDependency[] dependencies = SwarmDb.GetDatabaseForReading().GetPayoutDependencies(Identity);
 
             foreach (BasicFinancialDependency dependency in dependencies)
             {
                 switch (dependency.DependencyType)
                 {
                     case FinancialDependencyType.ExpenseClaim:
-                        this.DependentExpenseClaims.Add (ExpenseClaim.FromIdentity (dependency.ForeignId));
+                        this.DependentExpenseClaims.Add(ExpenseClaim.FromIdentity(dependency.ForeignId));
                         break;
                     case FinancialDependencyType.InboundInvoice:
-                        this.DependentInvoices.Add (InboundInvoice.FromIdentity (dependency.ForeignId));
+                        this.DependentInvoices.Add(InboundInvoice.FromIdentity(dependency.ForeignId));
                         break;
                     case FinancialDependencyType.Salary:
                         Salary salary = Salary.FromIdentity(dependency.ForeignId);
-                        if (salary.NetSalaryCents == AmountCents || this.CreatedDateTime > new DateTime(2015,11,1))
+                        if (salary.NetSalaryCents == AmountCents || this.CreatedDateTime > new DateTime(2015, 11, 1))
                         {
-                            this.DependentSalariesNet.Add (salary);
+                            this.DependentSalariesNet.Add(salary);
                         }
                         else // LEGACY
                         {
-                            this.DependentSalariesTax.Add (salary);
+                            this.DependentSalariesTax.Add(salary);
                         }
                         break;
 
                     case FinancialDependencyType.SalaryTax:
-                        Salary salaryTax = Salary.FromIdentity (dependency.ForeignId);
-                        this.DependentSalariesTax.Add (salaryTax);
+                        Salary salaryTax = Salary.FromIdentity(dependency.ForeignId);
+                        this.DependentSalariesTax.Add(salaryTax);
                         break;
 
                     case FinancialDependencyType.CashAdvance:
-                        this.DependentCashAdvancesPayout.Add (CashAdvance.FromIdentity (dependency.ForeignId));
+                        this.DependentCashAdvancesPayout.Add(CashAdvance.FromIdentity(dependency.ForeignId));
                         break;
 
                     case FinancialDependencyType.CashAdvancePayback:
-                        this.DependentCashAdvancesPayback.Add (CashAdvance.FromIdentity (dependency.ForeignId));
+                        this.DependentCashAdvancesPayback.Add(CashAdvance.FromIdentity(dependency.ForeignId));
                         break;
 
                     default:
-                        throw new NotImplementedException (
+                        throw new NotImplementedException(
                             "Unknown financial dependency type in Payout.LoadDependencies(): " + dependency);
                 }
             }
         }
 
-        public static Payout FromBasic (BasicPayout basic)
+        public static Payout FromBasic(BasicPayout basic)
         {
-            return new Payout (basic);
+            return new Payout(basic);
         }
 
-        public static Payout FromIdentity (int payoutId)
+        public static Payout FromIdentity(int payoutId)
         {
             try
             {
-                return FromBasic (SwarmDb.GetDatabaseForReading().GetPayout (payoutId));
+                return FromBasic(SwarmDb.GetDatabaseForReading().GetPayout(payoutId));
             }
             catch (ArgumentException e)
             {
-                throw new InvalidOperationException (String.Format ("Error loading Payout #{0}", payoutId), e);
+                throw new InvalidOperationException(String.Format("Error loading Payout #{0}", payoutId), e);
             }
         }
 
@@ -152,13 +157,14 @@ namespace Swarmops.Logic.Financial
 
         public Person RecipientPerson { get; set; }
 
+        [Obsolete("Use AmountCents", true)]
         public decimal Amount
         {
             set
             {
                 if (Identity != 0)
                 {
-                    SwarmDb.GetDatabaseForWriting().SetPayoutAmount (Identity, (Int64) (value*100));
+                    SwarmDb.GetDatabaseForWriting().SetPayoutAmount(Identity, (Int64) (value*100));
                 }
                 base.AmountCents = (Int64) value*100;
             }
@@ -171,14 +177,45 @@ namespace Swarmops.Logic.Financial
             {
                 if (Identity != 0)
                 {
-                    SwarmDb.GetDatabaseForWriting().SetPayoutAmount (Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetPayoutAmount(Identity, value);
                 }
                 base.AmountCents = value;
             }
             get { return base.AmountCents; }
         }
 
-        public new string Reference
+        public bool HasNativeAmount
+        {
+            get
+            {
+                if (this.DependentInvoices.Count == 1)
+                {
+                    return this.DependentInvoices[0].HasNativeCurrency;
+                }
+
+                return false;
+            }
+        }
+
+        public string NativeAmountString
+        {
+            get
+            {
+                if (this.DependentInvoices.Count == 1)
+                {
+                    if (this.DependentInvoices[0].HasNativeCurrency)
+                    {
+                        Money nativeMoney = this.DependentInvoices[0].NativeCurrencyAmount;
+                        return nativeMoney.Currency.DisplayCode + " " + (nativeMoney.Cents/100.0).ToString("N2");
+                    }
+                }
+
+                throw new InvalidOperationException("Should have checked for HasNativeAmount");
+            }
+        
+        }
+
+    public new string Reference
         {
             set
             {

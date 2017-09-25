@@ -67,7 +67,7 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"bank\":\"{3}\"," +
                     "\"account\":\"{4}\"," +
                     "\"reference\":\"{5}\"," +
-                    "\"amount\":\"{6:N2}\"," +
+                    "\"amount\":\"{6}\"," +
                     "\"action\":\"" +
                     "<img id=\\\"IconApproval{7}\\\" class=\\\"IconApproval{7} LocalIconApproval LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                     "<img class=\\\"IconApproved{7} LocalIconApproved LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
@@ -83,7 +83,7 @@ namespace Swarmops.Frontend.Pages.Financial
                     JsonSanitize (TryLocalize (payout.Bank)),
                     JsonSanitize (payout.Account),
                     JsonSanitize (TryLocalize (payout.Reference)),
-                    payout.AmountCents/100.0,
+                    payout.HasNativeAmount? payout.NativeAmountString : (payout.AmountCents/100.0).ToString("N2"),
                     payout.ProtoIdentity.Replace ("|", ""));
                 result.Append ("},");
             }
