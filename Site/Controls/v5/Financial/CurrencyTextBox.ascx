@@ -42,7 +42,7 @@
                     jsonData,
                     function(data) {
                         if (data.Success) {
-                            alert("PresentationAmount:" + data.NewText + "\r\nUsed Currency:" + data.EnteredCurrency + "\r\nEntered Amount:" + data.EnteredAmount);
+                            alert("PresentationAmount:" + data.DisplayAmount + "\r\nUsed Currency:" + data.CurrencyCode + "\r\nEntered Amount:" + data.EnteredAmount);
                         }
                     });
             });
