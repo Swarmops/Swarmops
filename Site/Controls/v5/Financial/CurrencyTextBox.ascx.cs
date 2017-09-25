@@ -9,7 +9,7 @@ namespace Swarmops.Frontend.Controls.Financial
     ///     This is an ordinary textbox, except it does culture-sensitive and
     ///     asynchronous validation of currency input.
     /// </summary>
-    public partial class CurrencyTextBox : UserControl
+    public partial class CurrencyTextBox : ControlV5Base
     {
         protected void Page_Load (object sender, EventArgs e)
         {
@@ -19,7 +19,11 @@ namespace Swarmops.Frontend.Controls.Financial
             {
                 this.Layout = LayoutDirection.Vertical;
             }
+
+            this.DefaultCurrency = this.CurrentAuthority.Organization.Currency;
         }
+
+        public Logic.Financial.Currency DefaultCurrency { get; set; }
 
         public Int64 Cents
         {

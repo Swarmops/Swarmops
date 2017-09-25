@@ -28,4 +28,11 @@
         // <%=this.ClientID%>_enable();
     }
 
+    $(document).ready(function() {
+        $('#<%=this.ClientID%>_TextInput').blur(function() {
+            alert('currency blur');
+        });
+
+    });
+
 </script>
