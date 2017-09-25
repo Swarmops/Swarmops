@@ -4,7 +4,7 @@
 <!-- TODO: Add nice autocomplete stuff -->
 
  <% if (this.Layout == LayoutDirection.Vertical) { %><div class="stacked-input-control"><% } %>
-    <asp:TextBox ID="TextInput" runat="server" CssClass="alignRight" /><asp:HiddenField ID="NativeCurrency" runat="server"/><asp:HiddenField ID="NativeAmount" runat="server" />
+    <asp:TextBox ID="TextInput" runat="server" CssClass="alignRight" /><asp:HiddenField ID="EnteredCurrency" runat="server"/><asp:HiddenField ID="EnteredAmount" runat="server" />
  <% if (this.Layout == LayoutDirection.Vertical) { %></div><% } %>
 
 
@@ -28,10 +28,37 @@
         // <%=this.ClientID%>_enable();
     }
 
-    $(document).ready(function() {
-        $('#<%=this.ClientID%>_TextInput').blur(function() {
-            alert('currency blur');
-        });
+    $(document).ready(function () {
+        var currencyText = $('#<%=this.ClientID%>_TextInput').val();
+
+        var jsonData = {};
+        jsonData.input = currencyText;
+
+        if (currencyText.trim().indexOf(' ') >= 0) {
+            // the text contains at least one space, so try to interpret it and convert it to presentation currency
+
+            $('#<%=this.ClientID%>_TextInput').blur(function() {
+                SwarmopsJS.ajaxCall('/Automation/FinancialFunctions.aspx/InterpretCurrency',
+                    jsonData,
+                    function(data) {
+                        if (data.Success) {
+                            alert("PresentationAmount:" + data.NewText + "\r\nUsed Currency:" + data.EnteredCurrency + "\r\nEntered Amount:" + data.EnteredAmount);
+                        }
+                    });
+            });
+        } else {
+            // the text does NOT contain at least one space, so we should format it for presentation currency
+            $('#<%=this.ClientID%>_TextInput').blur(function() {
+                SwarmopsJS.ajaxCall('/Automation/Formatting.aspx/FormatCurrencyString',
+                    jsonData,
+                    function(data) {
+                        if (data.Success) {
+                            $('#<%=this.ClientID%>_TextInput').val(data.Result);
+                        }
+                    });
+            });
+        }
+
 
     });
 

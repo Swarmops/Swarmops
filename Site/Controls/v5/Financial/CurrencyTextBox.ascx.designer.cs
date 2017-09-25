@@ -22,21 +22,21 @@ namespace Swarmops.Frontend.Controls.Financial {
         protected global::System.Web.UI.WebControls.TextBox TextInput;
         
         /// <summary>
-        /// NativeCurrency control.
+        /// EnteredCurrency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField NativeCurrency;
+        protected global::System.Web.UI.WebControls.HiddenField EnteredCurrency;
         
         /// <summary>
-        /// NativeAmount control.
+        /// EnteredAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField NativeAmount;
+        protected global::System.Web.UI.WebControls.HiddenField EnteredAmount;
     }
 }

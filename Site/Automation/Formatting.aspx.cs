@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -39,5 +40,27 @@ namespace Swarmops.Frontend.Automation
             return input.ToString("N2");
         }
 
+
+        public static AjaxInputCallResult FormatCurrencyString(string input)
+        {
+            double outParse = 0.0;
+            bool success = false;
+
+            if (Double.TryParse(input, NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out outParse))
+            {
+                success = true;
+            }
+            else if (Double.TryParse(input, NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out outParse))
+            {
+                success = true;
+            }
+
+            if (!success)
+            {
+                return new AjaxInputCallResult {Success = false};
+            }
+
+            return new AjaxInputCallResult {Success = true, NewValue = outParse.ToString("N2")};
+        }
     }
 }

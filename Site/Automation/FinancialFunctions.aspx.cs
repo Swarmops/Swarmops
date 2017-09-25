@@ -66,5 +66,63 @@ namespace Swarmops.Frontend.Automation
                 return new AjaxCallResult {Success = false, DisplayMessage = "Address already set"};
             }
         }
+
+        [WebMethod]
+        public static InterpretedCurrencyResult InterpretCurrency(string input)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            string[] currencyStrings = input.Split(' ');
+            if (currencyStrings.Length != 2)
+            {
+                return new InterpretedCurrencyResult {Success = false, DisplayMessage="Cannot interpret field"};
+            }
+
+            Currency currencyUsed = null;
+
+            try
+            {
+                currencyUsed = Currency.FromCode(currencyStrings[0].ToUpperInvariant());
+            }
+            catch (Exception)
+            {
+                return new InterpretedCurrencyResult { Success = false, DisplayMessage = "Cannot interpret currency" };
+            }
+
+            Int64 amountCents = 0;
+            double amountDouble = 0.0;
+            bool amountInterpreted = false;
+
+            if (Double.TryParse(currencyStrings[1], NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out amountDouble))
+            {
+                amountInterpreted = true;
+            }
+            else if (Double.TryParse(currencyStrings[1], NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out amountDouble))
+            {
+                amountInterpreted = true;
+            }
+
+            if (!amountInterpreted)
+            {
+                return new InterpretedCurrencyResult { Success = false, DisplayMessage = "Cannot interpret amount" };
+            }
+
+            Money money = new Money((long) (amountDouble * 100.0 + 0.5), currencyUsed);
+
+            return new InterpretedCurrencyResult
+            {
+                Success = true,
+                CurrencyCode = money.Currency.Code,
+                DisplayAmount = (money.ToCurrency(authData.CurrentOrganization.Currency).Cents/100.0).ToString("N2")
+            };
+        }
+
+
+        public class InterpretedCurrencyResult : AjaxCallResult
+        {
+            public string CurrencyCode { get; set; }
+            public string EnteredAmount { get; set; }
+            public string DisplayAmount { get; set; }
+        }
     }
 }
