@@ -40,7 +40,7 @@ namespace Swarmops.Frontend.Automation
             return input.ToString("N2");
         }
 
-
+        [WebMethod]
         public static AjaxInputCallResult FormatCurrencyString(string input)
         {
             double outParse = 0.0;
