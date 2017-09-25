@@ -300,5 +300,33 @@ namespace Swarmops.Logic.Financial
                 throw new InvalidOperationException("Can't set PaidOut if Attested is false");
             }
         }
+
+        public bool HasNativeCurrency
+        {
+            get
+            {
+                return
+                    ObjectOptionalData.ForObject(this)
+                        .GetOptionalDataString(ObjectOptionalDataType.NativeCurrencyCode)
+                        .Length > 0;
+            }
+        }
+
+        public Money NativeCurrencyAmount
+        {
+            get
+            {
+                ObjectOptionalData optionalData = ObjectOptionalData.ForObject(this);
+
+                return new Money(optionalData.GetOptionalDataInt64(ObjectOptionalDataType.NativeCurrencyAmountCents), Currency.FromCode(optionalData.GetOptionalDataString(ObjectOptionalDataType.NativeCurrencyCode)));
+            }
+            set
+            {
+                ObjectOptionalData optionalData = ObjectOptionalData.ForObject(this);
+
+                optionalData.SetOptionalDataInt64(ObjectOptionalDataType.NativeCurrencyAmountCents, value.Cents);
+                optionalData.SetOptionalDataString(ObjectOptionalDataType.NativeCurrencyCode, value.Currency.Code);
+            }
+        }
     }
 }

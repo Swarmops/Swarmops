@@ -30,12 +30,9 @@
 
     $(document).ready(function () {
 
-        alertify.success("doc.ready - <%=this.ClientID%>");
-
         $('#<%=this.ClientID%>_TextInput').blur(function () {
 
             var currencyText = $('#<%=this.ClientID%>_TextInput').val();
-            alertify.success("blur - <%=this.ClientID%> - " + currencyText);
 
             var jsonData = {};
             jsonData.input = currencyText;
@@ -47,20 +44,20 @@
                     jsonData,
                     function(data) {
                         if (data.Success) {
-                            alert("PresentationAmount:" + data.DisplayAmount + "\r\nUsed Currency:" + data.CurrencyCode + "\r\nEntered Amount:" + data.EnteredAmount);
+                            $('#<%=this.ClientID%>_TextInput').val(data.DisplayAmount);
+                            $('#<%=this.ClientID%>_EnteredCurrency').val(data.CurrencyCode);
+                            $('#<%=this.ClientID%>_EnteredAmount').val(data.EnteredAmount);
                         }
                     });
             } else {
                 // the text does NOT contain at least one space, so we should format it for presentation currency
-                $('#<%=this.ClientID%>_TextInput').blur(function() {
-                    SwarmopsJS.ajaxCall('/Automation/Formatting.aspx/FormatCurrencyString',
-                        jsonData,
-                        function(data) {
-                            if (data.Success) {
-                                $('#<%=this.ClientID%>_TextInput').val(data.NewValue);
-                            }
-                        });
-                });
+                SwarmopsJS.ajaxCall('/Automation/Formatting.aspx/FormatCurrencyString',
+                    jsonData,
+                    function(data) {
+                        if (data.Success) {
+                            $('#<%=this.ClientID%>_TextInput').val(data.NewValue);
+                        }
+                    });
             }
         });
 

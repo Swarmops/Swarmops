@@ -2,6 +2,7 @@
 using System.Globalization;
 using Swarmops.Common.Enums;
 using System.Web.UI;
+using Swarmops.Logic.Financial;
 
 namespace Swarmops.Frontend.Controls.Financial
 {
@@ -31,7 +32,16 @@ namespace Swarmops.Frontend.Controls.Financial
             { 
                 return (Int64) (InternalValue * 100.0 + 0.5); // the +0.5 is to compensate for floating point errors. And yes, THEY HAPPEN. 
             }
-            set { this.TextInput.Text = (value / 100.0).ToString("N2", CultureInfo.CurrentCulture); }
+            set
+            {
+                this.TextInput.Text = (value / 100.0).ToString("N2", CultureInfo.CurrentCulture);
+                if (value == 0)
+                {
+                    // if zeroing, also clear the foreign currency
+                    this.EnteredCurrency.Value = string.Empty;
+                    this.EnteredAmount.Value = string.Empty;
+                }
+            }
         }
 
         public Int64 Metacents  // Metacents are cents of cents, so four decimals to the currency unit.
@@ -81,6 +91,19 @@ namespace Swarmops.Frontend.Controls.Financial
         public new void Focus()
         {
             this.TextInput.Focus();
+        }
+
+        public bool NonPresentationCurrencyUsed
+        {
+            get { return this.EnteredCurrency.Value.Length > 0; }
+        }
+
+        public Money NonPresentationCurrencyAmount
+        {
+            get
+            {
+                return new Money((long) (Double.Parse(this.EnteredAmount.Value, NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture) * 100.0 + 0.5), Currency.FromCode(this.EnteredCurrency.Value));
+            }
         }
     }
 }

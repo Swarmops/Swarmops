@@ -234,7 +234,7 @@ namespace Swarmops.Common.Enums
         FinancialAccountEnabledForInvoicing,
 
         /// <summary>
-        ///     Organization's operations currency, stored as currency code
+        ///     Organization's presentation currency, stored as currency code
         /// </summary>
         OrgCurrency,
 
@@ -396,6 +396,16 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// Prohibit all active sessions until this time (UTC).
         /// </summary>
-        QuarantineSessionsUntil
+        QuarantineSessionsUntil,
+
+        /// <summary>
+        /// If nonpresentation currency, which currency was used (the code).
+        /// </summary>
+        NativeCurrencyCode,
+
+        /// <summary>
+        /// If nonpresentation currency, which currency was used (Int64 cents).
+        /// </summary>
+        NativeCurrencyAmountCents
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Web;
 using Resources;
@@ -182,6 +183,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             documents.SetForeignObjectForAll (invoice);
+
+            // If amounts were in a different currency, record the native values for proper payment
+
+            if (this.CurrencyAmount.NonPresentationCurrencyUsed)
+            {
+                Money currencyEntered = this.CurrencyAmount.NonPresentationCurrencyAmount;
+                invoice.NativeCurrencyAmount = currencyEntered;
+            }
+
 
             // Display success message
 
