@@ -18,6 +18,7 @@ namespace Swarmops.Logic.Financial
 {
     public class Payouts : PluralBase<Payouts, Payout, BasicPayout>
     {
+        [Obsolete("Use TotalAmountCents", true)]
         public decimal TotalAmount
         {
             get
