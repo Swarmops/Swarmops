@@ -68,7 +68,7 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
                 JsonSanitize(invoice.DueDate.ToString(invoice.DueDate < dueDateFormatBreakDate ? "yyyy-MMM" : "MMM-dd")),
                 JsonSanitize(invoice.Supplier),
                 JsonSanitize(invoice.Budget.Name),
-                JsonSanitize((invoice.AmountCents/100.0).ToString("N2")),
+                JsonSanitize(invoice.DisplayAmount),
                 GetProgressTicks(invoice),
                 invoice.Identity); // Item #6 is only present in hasDoxString above
             result.Append("},");

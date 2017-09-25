@@ -301,6 +301,22 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public string DisplayAmount
+        {
+            get
+            {
+                if (HasNativeCurrency)
+                {
+                    Money money = NativeCurrencyAmount;
+                    return money.Currency.DisplayCode + " " + (money.Cents/100.0).ToString("N2");
+                }
+                else
+                {
+                    return (AmountCents/100.0).ToString("N2");
+                }
+            }
+        }
+
         public bool HasNativeCurrency
         {
             get
