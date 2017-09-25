@@ -30,36 +30,39 @@
 
     $(document).ready(function () {
 
-            $('#<%=this.ClientID%>_TextInput').blur(function () {
+        alertify.success("doc.ready - <%=this.ClientID%>");
 
-                var currencyText = $('#<%=this.ClientID%>_TextInput').val();
+        $('#<%=this.ClientID%>_TextInput').blur(function () {
 
-                var jsonData = {};
-                jsonData.input = currencyText;
+            var currencyText = $('#<%=this.ClientID%>_TextInput').val();
+            alertify.success("blur - <%=this.ClientID%> - " + currencyText);
 
-                if (currencyText.trim().indexOf(' ') >= 0) {
-                    // the text contains at least one space, so try to interpret it and convert it to presentation currency
+            var jsonData = {};
+            jsonData.input = currencyText;
 
-                    SwarmopsJS.ajaxCall('/Automation/FinancialFunctions.aspx/InterpretCurrency',
+            if (currencyText.trim().indexOf(' ') >= 0) {
+                // the text contains at least one space, so try to interpret it and convert it to presentation currency
+
+                SwarmopsJS.ajaxCall('/Automation/FinancialFunctions.aspx/InterpretCurrency',
+                    jsonData,
+                    function(data) {
+                        if (data.Success) {
+                            alert("PresentationAmount:" + data.DisplayAmount + "\r\nUsed Currency:" + data.CurrencyCode + "\r\nEntered Amount:" + data.EnteredAmount);
+                        }
+                    });
+            } else {
+                // the text does NOT contain at least one space, so we should format it for presentation currency
+                $('#<%=this.ClientID%>_TextInput').blur(function() {
+                    SwarmopsJS.ajaxCall('/Automation/Formatting.aspx/FormatCurrencyString',
                         jsonData,
                         function(data) {
                             if (data.Success) {
-                                alert("PresentationAmount:" + data.DisplayAmount + "\r\nUsed Currency:" + data.CurrencyCode + "\r\nEntered Amount:" + data.EnteredAmount);
+                                $('#<%=this.ClientID%>_TextInput').val(data.NewValue);
                             }
                         });
-                } else {
-                    // the text does NOT contain at least one space, so we should format it for presentation currency
-                    $('#<%=this.ClientID%>_TextInput').blur(function() {
-                        SwarmopsJS.ajaxCall('/Automation/Formatting.aspx/FormatCurrencyString',
-                            jsonData,
-                            function(data) {
-                                if (data.Success) {
-                                    $('#<%=this.ClientID%>_TextInput').val(data.NewValue);
-                                }
-                            });
-                    });
-                }
-            });
+                });
+            }
+        });
 
 
     });
