@@ -338,5 +338,51 @@ namespace Swarmops.Logic.Financial
 
             return credit;
         }
+
+
+        public string DisplayNativeAmount
+        {
+            get
+            {
+                if (HasNativeCurrency)
+                {
+                    Money money = NativeCurrencyAmount;
+                    return money.Currency.DisplayCode + " " + (money.Cents / 100.0).ToString("N2");
+                }
+                else
+                {
+                    return (AmountCents / 100.0).ToString("N2");
+                }
+            }
+        }
+
+        public bool HasNativeCurrency
+        {
+            get
+            {
+                return
+                    ObjectOptionalData.ForObject(this)
+                        .GetOptionalDataString(ObjectOptionalDataType.NativeCurrencyCode)
+                        .Length > 0;
+            }
+        }
+
+        public Money NativeCurrencyAmount
+        {
+            get
+            {
+                ObjectOptionalData optionalData = ObjectOptionalData.ForObject(this);
+
+                return new Money(optionalData.GetOptionalDataInt64(ObjectOptionalDataType.NativeCurrencyAmountCents), Currency.FromCode(optionalData.GetOptionalDataString(ObjectOptionalDataType.NativeCurrencyCode)));
+            }
+            set
+            {
+                ObjectOptionalData optionalData = ObjectOptionalData.ForObject(this);
+
+                optionalData.SetOptionalDataInt64(ObjectOptionalDataType.NativeCurrencyAmountCents, value.Cents);
+                optionalData.SetOptionalDataString(ObjectOptionalDataType.NativeCurrencyCode, value.Currency.Code);
+            }
+        }
+
     }
 }

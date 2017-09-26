@@ -301,7 +301,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public string DisplayAmount
+        public string DisplayNativeAmount
         {
             get
             {

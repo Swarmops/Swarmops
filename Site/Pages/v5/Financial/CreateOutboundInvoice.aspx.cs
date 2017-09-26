@@ -164,9 +164,17 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             invoice.AddItem(this.TextPurpose.Text, amountCents);
 
-            // TODO: VAT
+            // TODO: VAT -- needs to be PER ITEM, and dbfields must update for this, quite a large work item, do not short circuit hack this
 
-            documents.SetForeignObjectForAll (invoice);
+            documents.SetForeignObjectForAll(invoice);
+                
+            // If invoice is denominated in a non-presentation currency, record the native values for proper payment
+
+            if (this.CurrencyAmount.NonPresentationCurrencyUsed)
+            {
+                Money currencyEntered = this.CurrencyAmount.NonPresentationCurrencyAmount;
+                invoice.NativeCurrencyAmount = currencyEntered;
+            }
 
             // Display success message
 

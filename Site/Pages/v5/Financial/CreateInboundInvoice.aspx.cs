@@ -192,7 +192,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 invoice.NativeCurrencyAmount = currencyEntered;
             }
 
-
             // Display success message
 
             this._invoiceId = invoice.Identity; // a property returns the localized string
