@@ -269,15 +269,41 @@ namespace Swarmops.Logic.Financial
                 int yearlyResultId = CostsYearlyResult.Identity;
 
                 FinancialAccounts costAccounts =
-                    FinancialAccounts.ForOrganization (Organization.FromIdentity (this._organizationId),
+                    FinancialAccounts.ForOrganization(Organization.FromIdentity(this._organizationId),
                         FinancialAccountType.Cost);
 
                 foreach (FinancialAccount account in costAccounts)
                 {
                     if (account.Identity != yearlyResultId && account.Expensable)
-                        // really should be redundant, but still...
+                    // really should be redundant, but still...
                     {
-                        result.Add (account);
+                        result.Add(account);
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        public FinancialAccounts InvoiceableBudgetsInbound
+        {
+            // TODO: This needs to return a tree, not a flat list.
+            get
+            {
+                FinancialAccounts result = new FinancialAccounts();
+
+                int yearlyResultId = CostsYearlyResult.Identity;
+
+                FinancialAccounts costAccounts =
+                    FinancialAccounts.ForOrganization(Organization.FromIdentity(this._organizationId),
+                        FinancialAccountType.Cost);
+
+                foreach (FinancialAccount account in costAccounts)
+                {
+                    if (account.Identity != yearlyResultId)
+                    // really should be redundant, but still...
+                    {
+                        result.Add(account);
                     }
                 }
 
@@ -294,17 +320,13 @@ namespace Swarmops.Logic.Financial
 
                 int yearlyResultId = CostsYearlyResult.Identity;
 
-                FinancialAccounts costAccounts =
+                FinancialAccounts revenueAccounts =
                     FinancialAccounts.ForOrganization (Organization.FromIdentity (this._organizationId),
                         FinancialAccountType.Income);
 
-                foreach (FinancialAccount account in costAccounts)
+                foreach (FinancialAccount account in revenueAccounts)
                 {
-                    if (account.Identity != yearlyResultId && account.Expensable)
-                        // really should be redundant, but still...
-                    {
-                        result.Add (account);
-                    }
+                    result.Add (account);
                 }
 
                 return result;

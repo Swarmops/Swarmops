@@ -13,23 +13,24 @@ namespace Swarmops.Frontend.Automation
             Response.ContentType = "application/json";
 
             // What type of budgets do we want?
-            // Allowed values are "Expensable", "InvoicableOut", or "InvoiceableIn". Default is "Expensable".
+            // Allowed values are "Expensable", "InvoiceableOut", or "InvoiceableIn". Default is "Expensable".
 
             string accountTypeString = Request.QueryString["AccountType"];
             AccountTypes accountType = AccountTypes.Unknown;
 
             switch (accountTypeString.ToLowerInvariant())
             {
-                case "invoicableout":
-                    accountType = AccountTypes.InvoicablesOut;
+                case "invoiceableout":
+                    accountType = AccountTypes.InvoiceablesOut;
                     break;
-                case "invoicablein":
-                    accountType = AccountTypes.InvoicablesIn;
+                case "invoiceablein":
+                    accountType = AccountTypes.InvoiceablesIn;
                     break;
                 case "expensable":
-                default:
                     accountType = AccountTypes.Expensables;
                     break;
+                default:
+                    throw new ArgumentException("Unrecognized account category");
             }
 
             // Is this stuff in cache already?
@@ -56,11 +57,11 @@ namespace Swarmops.Frontend.Automation
 
             switch (accountType)
             {
-                case AccountTypes.InvoicablesOut:
+                case AccountTypes.InvoiceablesOut:
                     accounts = CurrentOrganization.FinancialAccounts.InvoiceableBudgetsOutbound;
                     break;
                 case AccountTypes.Expensables:
-                case AccountTypes.InvoicablesIn:
+                case AccountTypes.InvoiceablesIn:
                     accounts = CurrentOrganization.FinancialAccounts.ExpensableBudgets;
                     break;
                 default:
@@ -122,8 +123,8 @@ namespace Swarmops.Frontend.Automation
         private enum AccountTypes
         {
             Unknown = 0,
-            InvoicablesOut,
-            InvoicablesIn,
+            InvoiceablesOut,
+            InvoiceablesIn,
             Expensables
         }
     }

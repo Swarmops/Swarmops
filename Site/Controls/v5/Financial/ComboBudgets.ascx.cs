@@ -34,6 +34,8 @@ namespace Swarmops.Controls.Financial
                         return "/Automation/Json-BudgetsTree.aspx?AccountType=Expensable";
                     case AccountListType.InvoiceableOut:
                         return "/Automation/Json-BudgetsTree.aspx?AccountType=InvoiceableOut";
+                    case AccountListType.InvoiceableIn:
+                        return "/Automation/Json-BudgetsTree.aspx?AccountType=InvoiceableIn";
                     case AccountListType.All:
                         return "/Automation/Json-FinancialAccountsTree.aspx?AccountType=All";
                 }
