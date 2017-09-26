@@ -176,13 +176,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             txOut.AddRow(CurrentOrganization.FinancialAccounts.AssetsOutboundInvoices, amountCents, CurrentUser);
             if (amountVatCents > 0)
             {
-                txOut.AddRow(CurrentOrganization.FinancialAccounts.DebtsVatOutboundUnreported, amountVatCents,
+                txOut.AddRow(CurrentOrganization.FinancialAccounts.DebtsVatOutboundUnreported, -amountVatCents,
                     CurrentUser);
                 txOut.AddRow(budget, -(amountCents - amountVatCents), CurrentUser); // Sales value
             }
             else
             {
-                txOut.AddRow(budget, amountCents, CurrentUser);
+                txOut.AddRow(budget, -amountCents, CurrentUser);
             }
 
 
