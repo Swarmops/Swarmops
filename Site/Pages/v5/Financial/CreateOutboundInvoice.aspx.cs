@@ -160,25 +160,47 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new InvalidOperationException ("No documents uploaded");
             }
 
-            OutboundInvoice invoice = OutboundInvoice.Create (CurrentOrganization, dueDate, budget, this.TextClient.Text, string.Empty, string.Empty, CurrentOrganization.Currency, false, this.TextReference.Text, CurrentUser);
+            OutboundInvoice newInvoice = OutboundInvoice.Create (CurrentOrganization, dueDate, budget, this.TextClient.Text, string.Empty, string.Empty, CurrentOrganization.Currency, false, this.TextReference.Text, CurrentUser);
 
-            invoice.AddItem(this.TextPurpose.Text, amountCents);
+            newInvoice.AddItem(this.TextPurpose.Text, amountCents);
 
             // TODO: VAT -- needs to be PER ITEM, and dbfields must update for this, quite a large work item, do not short circuit hack this
 
-            documents.SetForeignObjectForAll(invoice);
-                
+            documents.SetForeignObjectForAll(newInvoice);
+
+            // Create financial transaction in the ledger (this logic should not be in the presentation layer at all, move it to a better OutboundInvoice.Create that takes OutboundInvoiceItems as parameter)
+
+            FinancialTransaction txOut = FinancialTransaction.Create(CurrentOrganization, DateTime.UtcNow,
+                "Outbound Invoice #" + newInvoice.Identity.ToString("N0"));
+
+            txOut.AddRow(CurrentOrganization.FinancialAccounts.AssetsOutboundInvoices, amountCents, CurrentUser);
+            if (amountVatCents > 0)
+            {
+                txOut.AddRow(CurrentOrganization.FinancialAccounts.DebtsVatOutboundUnreported, amountVatCents,
+                    CurrentUser);
+                txOut.AddRow(budget, -(amountCents - amountVatCents), CurrentUser); // Sales value
+            }
+            else
+            {
+                txOut.AddRow(budget, amountCents, CurrentUser);
+            }
+
+
+            // Make the transaction dependent on the inbound invoice
+
+            txOut.Dependency = newInvoice;
+
             // If invoice is denominated in a non-presentation currency, record the native values for proper payment
 
             if (this.CurrencyAmount.NonPresentationCurrencyUsed)
             {
                 Money currencyEntered = this.CurrencyAmount.NonPresentationCurrencyAmount;
-                invoice.NativeCurrencyAmount = currencyEntered;
+                newInvoice.NativeCurrencyAmount = currencyEntered;
             }
 
             // Display success message
 
-            this._invoiceId = invoice.Identity; // a property returns the localized string
+            this._invoiceId = newInvoice.Identity; // a property returns the localized string
 
             // Reset all fields for next invoice
 

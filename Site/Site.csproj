@@ -972,6 +972,8 @@
     <Content Include="Images\PageIcons\iconshock-invoice-40px.png" />
     <Content Include="Images\PageIcons\iconshock-invoice-greentick-16px.png" />
     <Content Include="Images\PageIcons\iconshock-invoice-greentick-40px.png" />
+    <Content Include="Images\PageIcons\iconshock-invoice-inbound-96px.png" />
+    <Content Include="Images\PageIcons\iconshock-invoice-outbound-96px.png" />
     <Content Include="Images\PageIcons\iconshock-language-40px.png" />
     <Content Include="Images\PageIcons\iconshock-ledger-16px.png" />
     <Content Include="Images\PageIcons\iconshock-ledger-40px.png" />

@@ -226,7 +226,9 @@
                 <ResourceKey>Financial_SendInvoice</ResourceKey>
                 <UserLevel>2</UserLevel>
                 <Permissions />
-                <Type>Disabled</Type>
+                <ImageUrl>iconshock-invoice-outbound</ImageUrl>
+                <NavigateUrl>/Pages/v5/Financial/CreateOutboundInvoice.aspx</NavigateUrl>
+                <Type>Link</Type>
                 <Children />
             </MainMenuItem>
           
@@ -234,7 +236,7 @@
                 <ResourceKey>Financial_ReceivedInvoice</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />
-                <ImageUrl>iconshock-invoice</ImageUrl>
+                <ImageUrl>iconshock-invoice-inbound</ImageUrl>
                 <NavigateUrl>/Pages/v5/Financial/CreateInboundInvoice.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
