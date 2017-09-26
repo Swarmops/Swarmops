@@ -30,6 +30,11 @@ namespace Swarmops.Common.Enums
         InboundInvoice,
 
         /// <summary>
+        ///     An outbound invoice, going into accounts receivable.
+        /// </summary>
+        OutboundInvoice,
+
+        /// <summary>
         ///     Something physical received in the mail
         /// </summary>
         PaperLetter,

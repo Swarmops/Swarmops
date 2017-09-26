@@ -127,6 +127,10 @@ namespace Swarmops.Logic.Support
             {
                 return DocumentType.InboundInvoice;
             }
+            else if (foreignObject is OutboundInvoice)
+            {
+                return Common.Enums.DocumentType.OutboundInvoice;
+            }
             else if (foreignObject is PaperLetter)
             {
                 return DocumentType.PaperLetter;
