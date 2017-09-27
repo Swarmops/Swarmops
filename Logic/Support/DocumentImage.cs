@@ -48,6 +48,9 @@ namespace Swarmops.Logic.Support
 
             using (Graphics g = Graphics.FromImage(newImage))
             {
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
                 g.CompositingQuality = CompositingQuality.HighQuality;
                 g.DrawImage(image, 0, 0, newWidth, newHeight);
             }
