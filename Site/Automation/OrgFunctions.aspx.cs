@@ -19,7 +19,7 @@ namespace Swarmops.Frontend.Automation
 
 
         [WebMethod]
-        static AjaxInputCallResult AdminUploads(string guid, string cookie)
+        static public AjaxInputCallResult AdminUploads(string guid, string cookie)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
