@@ -96,6 +96,13 @@
     <Compile Include="Automation\Json-MasterPersonEditPaymentHistory.aspx.designer.cs">
       <DependentUpon>Json-MasterPersonEditPaymentHistory.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Automation\OrgFunctions.aspx.cs">
+      <DependentUpon>OrgFunctions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Automation\OrgFunctions.aspx.designer.cs">
+      <DependentUpon>OrgFunctions.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\v5\Base\AjaxToggleSlider.ascx.cs">
       <DependentUpon>AjaxToggleSlider.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -669,6 +676,7 @@
     <Content Include="Automation\Json-PositionsTree.aspx" />
     <Content Include="Automation\Json-SearchPeoplePattern.aspx" />
     <Content Include="Automation\Json-TransactionTagsTree.aspx" />
+    <Content Include="Automation\OrgFunctions.aspx" />
     <Content Include="Automation\SwarmFunctions.aspx" />
     <Content Include="Controls\v5\Base\AjaxTextBox.ascx" />
     <Content Include="Controls\v5\Base\AjaxToggleSlider.ascx" />

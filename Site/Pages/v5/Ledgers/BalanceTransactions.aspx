@@ -205,6 +205,8 @@
                     <asp:Label runat="server" ID="LabelDescribePayoutForeign" Text="Match to payout XYZ" />
                 </div>
             </div>
+            <div id="radioOptionPayment" class="radioOption"></div>
+            <div id="radioOptionPaymentForeign" class="radioOption"></div>
             <div id="divHiddenTodoFutureSprint" style="display:none">
                 <p><input type="radio" id="RadioExistingPayment" name="TxOptions" value="ExistingPayment" /><label for="RadioExistingPayment"><asp:Label runat="server" ID="LabelRadioExistingPayment" Text="Match this balance to a recorded payment, uploaded in a payments file? XYZ" /></label></p>
                 <div id="radioOptionExistingPayment" class="radioOption">

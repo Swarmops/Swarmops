@@ -139,6 +139,8 @@ namespace Swarmops.Pages.v5.Support
                 }
                     break;
                 case DocumentType.PersonPhoto:
+                case DocumentType.Logo:
+                case DocumentType.Artwork:
                 {
                     // These are public
 

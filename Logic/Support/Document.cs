@@ -151,6 +151,14 @@ namespace Swarmops.Logic.Support
                 .SetDocumentForeignObject (Identity, GetDocumentTypeForObject (foreignObject), foreignObject.Identity);
         }
 
+        public void SetDocumentTypeDirect(DocumentType docType, IHasIdentity foreignObject)
+        {
+            // Overrides the standard checks -- used for organization-level documents of many types
+            SwarmDb.GetDatabaseForWriting()
+                .SetDocumentForeignObject(this.Identity, docType, foreignObject.Identity);
+        }
+
+
         public void Delete()
         {
             // Unlink, actually

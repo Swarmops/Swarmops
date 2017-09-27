@@ -97,6 +97,30 @@
             }
         }
 
+        function onFileUploaded(guid, cookie) {
+            var jsonData = {};
+            jsonData.guid = guid;
+            jsonData.cookie = cookie;
+
+            alertify.success("onFileUploaded");
+
+            SwarmopsJS.ajaxCall(
+                '/Automation/OrgFunctions.aspx/AdminUploads',
+                jsonData,
+                function(data) {
+                    if (data.Success) {
+                        // Some special cases
+                        if (cookie == "LogoLandscape") {
+                            // Replace the main sidebar logo
+                            $('img#ctl00_ImageLogo').attr("src", "/Pages/v5/Support/StreamUpload.aspx?DocId=" + data.DocumentId);
+                        }
+                    } else {
+                        alertify.error("The server says the file was not accepted. Try again?");
+                    }
+                });
+
+        }
+
     </script>
         
     <style type="text/css">
@@ -179,7 +203,7 @@
         <div title="<img src='/Images/Icons/iconshock-colorswatch-64px.png' />">
             <h2>Communications profile and branding</h2>
             <div class="entryFields">
-                <Swarmops5:FileUpload ID="UploadLogoLandscape" DisplayCount="1" runat="server" />
+                <Swarmops5:FileUpload ID="UploadLogoLandscape" DisplayCount="1" runat="server" ClientUploadCompleteCallback="onFileUploaded" Cookie="LogoLandscape" />
                 <Swarmops5:FileUpload ID="UploadLogoSquare" DisplayCount="1" runat="server" />
                 &nbsp;<br/>
                 <Swarmops5:FileUpload ID="UploadInvoiceTemplate" DisplayCount="1" runat="server" />

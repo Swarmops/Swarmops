@@ -47,6 +47,16 @@ namespace Swarmops.Common.Enums
         /// <summary>
         ///     Photo documenting an external activity
         /// </summary>
-        ExternalActivityPhoto
+        ExternalActivityPhoto,
+
+        /// <summary>
+        ///     Organization logotype (public)
+        /// </summary>
+        Logo,
+
+        /// <summary>
+        ///     Other artwork (public)
+        /// </summary>
+        Artwork
     }
 }

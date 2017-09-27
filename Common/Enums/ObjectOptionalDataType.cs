@@ -406,6 +406,16 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// If nonpresentation currency, which currency was used (Int64 cents).
         /// </summary>
-        NativeCurrencyAmountCents
+        NativeCurrencyAmountCents,
+
+        /// <summary>
+        /// Document identity of an organization's 16x9 landscape logo.
+        /// </summary>
+        OrgLogoLandscape,
+
+        /// <summary>
+        /// Document identity of an organization's square logo - also usable for circle-type avatars
+        /// </summary>
+        OrgLogoSquare
     }
 }

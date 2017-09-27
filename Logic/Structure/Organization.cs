@@ -1060,5 +1060,23 @@ namespace Swarmops.Logic.Structure
                         this.FinancialAccounts.AssetsVatInbound.Active);
             }
         }
+
+        public Document LogoLandscape
+        {
+            get
+            {
+                int docId = OptionalData.GetOptionalDataInt(ObjectOptionalDataType.OrgLogoLandscape);
+                if (docId > 0)
+                {
+                    return Document.FromIdentity(docId);
+                }
+
+                return null;
+            }
+            set
+            {
+                OptionalData.SetOptionalDataInt(ObjectOptionalDataType.OrgLogoLandscape, value.Identity);
+            }
+        }
     }
 }
