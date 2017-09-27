@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="True" CodeBehind="FileUpload.ascx.cs" Inherits="Swarmops.Controls.Base.FileUpload" %>
+<%@ Import Namespace="System.Net" %>
 
 <asp:HiddenField runat="server" ID="HiddenGuid"/>
 
@@ -25,7 +26,7 @@
                         <% if (!String.IsNullOrEmpty(this.ClientUploadCompleteCallback))
                            { %>
                         
-                        <%= this.ClientUploadCompleteCallback %>();
+                        <%= this.ClientUploadCompleteCallback %>("<%= GuidString%>", "<%= Cookie%>");
                         
                         <% } %>
 
@@ -50,6 +51,13 @@
                 $('#<%=this.ClientID %>_DivProgressUpload').progressbar({ value: 0 }); // reset in case of previous uploads on this page
                 $('#<%=this.ClientID %>_DivProgressUpload').fadeIn();
                 data.submit();
+
+                <% if (!String.IsNullOrEmpty(this.ClientUploadStartedCallback))
+                    { %>
+                        
+                <%= this.ClientUploadStartedCallback %>("<%= GuidString%>", "<%= Cookie%>");
+                        
+                <% } %>
             }
         });
 

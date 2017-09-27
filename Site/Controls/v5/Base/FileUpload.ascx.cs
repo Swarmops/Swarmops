@@ -36,6 +36,7 @@ namespace Swarmops.Controls.Base
         public bool HideTrigger { get; set; }
         public string ClientUploadCompleteCallback { get; set; }
         public string ClientUploadStartedCallback { get; set; }
+        public string Cookie { get; set; }
 
         protected void Page_Init (object sender, EventArgs e)
         {
