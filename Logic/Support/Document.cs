@@ -178,6 +178,11 @@ namespace Swarmops.Logic.Support
             return GetReader (Encoding.GetEncoding (encodingCodePage));
         }
 
+        public StreamReader GetReader()
+        {
+            return new StreamReader(StorageRoot + ServerFileName);
+        }
+
         public Person UploadedByPerson
         {
             get
@@ -189,6 +194,11 @@ namespace Swarmops.Logic.Support
 
                 return null;
             }
+        }
+
+        public DocumentImage Image
+        {
+            get {  return new DocumentImage(this); }
         }
     }
 }

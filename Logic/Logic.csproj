@@ -197,6 +197,7 @@
     <Compile Include="Security\Impersonation.cs" />
     <Compile Include="SocketMessage.cs" />
     <Compile Include="Support\BlockchainTransaction.cs" />
+    <Compile Include="Support\DocumentImage.cs" />
     <Compile Include="Support\ErrorMessages.cs" />
     <Compile Include="Support\LogEntries\ImpersonationLogEntry.cs" />
     <Compile Include="Support\LogEntries\PersonalDataChangedLogEntry.cs" />

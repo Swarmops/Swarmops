@@ -50,13 +50,8 @@ namespace Swarmops.Frontend.Pages.v5.Security
                 string logoUrl = "/Images/Other/blank-logo-640x360.png";
 
                 Document logoLandscape = organization.LogoLandscape;
-                if (logoLandscape != null)
-                {
-                    logoUrl = "/Support/StreamUpload.aspx?DocId=" +
-                              logoLandscape.Identity.ToString(CultureInfo.InvariantCulture);
-                }
 
-                newOrganizationParameters.LogoUrl = logoUrl;
+                newOrganizationParameters.LogoImage = logoLandscape.Image.GetBase64(70, 48);
                 newOrganizationParameters.OrganizationId = membership.OrganizationId;
                 newOrganizationParameters.OrganizationName = membership.Organization.Name;
 
@@ -71,7 +66,7 @@ namespace Swarmops.Frontend.Pages.v5.Security
 
         private class OrganizationParameters
         {
-            public string LogoUrl { get; set; }
+            public string LogoImage { get; set; }
             public int OrganizationId { get; set; }
             public string OrganizationName { get; set; }
         }
