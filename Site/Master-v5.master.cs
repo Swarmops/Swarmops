@@ -58,7 +58,7 @@ namespace Swarmops.Frontend
 
             // Titles and other page elements
 
-            Page.Title = "Swarmops - " + CurrentPageTitle;
+            Page.Title = @"Swarmops - " + CurrentOrganization.NameShort + @" - " + CurrentPageTitle;
 
             this.ExternalScriptEasyUI.Controls = EasyUIControlsUsed.ToString();
             this.IncludedScripts.Controls = IncludedControlsUsed.ToString();
@@ -75,11 +75,17 @@ namespace Swarmops.Frontend
             }
             else
             {
-                // TODO: Check for corp image
+                Document logoLandscapeDoc = CurrentOrganization.LogoLandscape;
 
-                this.ImageLogo.Visible = false;
-                this.LabelOrganizationName.Visible = true;
-                this.LabelOrganizationName.Text = CurrentOrganization.Name;
+                if (logoLandscapeDoc == null)
+                {
+                    this.ImageLogo.ImageUrl = "~/Images/Other/blank-logo-640x360.png";
+                }
+                else
+                {
+                    this.ImageLogo.ImageUrl = "~/Support/StreamUpload.aspx?DocId=" +
+                                              logoLandscapeDoc.Identity.ToString(CultureInfo.InvariantCulture);
+                }
             }
 
             // Check for SSL and force it
