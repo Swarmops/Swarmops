@@ -47,6 +47,7 @@
             background-position: left;
             padding-left: 2px;
             margin-left: 4px;
+            margin-right: 8px;
             background-repeat: no-repeat;
             width: 70px;
             height: 48px;
@@ -71,7 +72,7 @@
     <asp:Repeater runat="server" ID="RepeaterOrganizations">
         <ItemTemplate>
             <div class="divOrganizationEncapsulation" onclick="document.location='/Pages/v5/Security/SetCurrentOrganization.aspx?OrganizationId=<%# Eval("OrganizationId") %>';">
-                <div class="divOrganizationLogo" style="background-image:url(data:image/png;base64,<%# Eval("LogoImage")%>')" ></div>
+                <div class="divOrganizationLogo" style="background-image:url(data:image/png;base64,<%# Eval("LogoImage")%>)" ></div>
                 <div class="spanOrganizationName"><%# Eval("OrganizationName") %></div>
             </div>
         </ItemTemplate>
