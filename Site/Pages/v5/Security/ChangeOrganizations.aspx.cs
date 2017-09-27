@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
@@ -42,12 +44,23 @@ namespace Swarmops.Frontend.Pages.v5.Security
                     continue;
                 }
 
-                OrganizationParameters newOrganization = new OrganizationParameters();
-                newOrganization.LogoUrl = "/Images/Flags/txl-64px.png";
-                newOrganization.OrganizationId = membership.OrganizationId;
-                newOrganization.OrganizationName = membership.Organization.Name;
+                Organization organization = membership.Organization;
+                OrganizationParameters newOrganizationParameters = new OrganizationParameters();
 
-                availableOrganizations.Add (newOrganization);
+                string logoUrl = "/Images/Other/blank-logo-640x360.png";
+
+                Document logoLandscape = organization.LogoLandscape;
+                if (logoLandscape != null)
+                {
+                    logoUrl = "/Support/StreamUpload.aspx?DocId=" +
+                              logoLandscape.Identity.ToString(CultureInfo.InvariantCulture);
+                }
+
+                newOrganizationParameters.LogoUrl = logoUrl;
+                newOrganizationParameters.OrganizationId = membership.OrganizationId;
+                newOrganizationParameters.OrganizationName = membership.Organization.Name;
+
+                availableOrganizations.Add (newOrganizationParameters);
             }
 
             OrganizationCount = availableOrganizations.Count;

@@ -112,7 +112,7 @@
                         // Some special cases
                         if (cookie == "LogoLandscape") {
                             // Replace the main sidebar logo
-                            $('img#ctl00_ImageLogo').attr("src", "/Pages/v5/Support/StreamUpload.aspx?DocId=" + data.DocumentId);
+                            $('img#ctl00_ImageLogo').attr("src", "/Pages/v5/Support/StreamUpload.aspx?DocId=" + data.ObjectIdentity);
                         }
                     } else {
                         alertify.error("The server says the file was not accepted. Try again?");
