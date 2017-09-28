@@ -8,6 +8,11 @@
             get { return "TabSeparatedValuesReader"; }
         }
 
+        public static string SemicolonSeparatedValuesAccountReader
+        {
+            get { return "SemicolonSeparatedValuesReader"; }
+        }
+
         public static string SEPaymentsBankgiroReader
         {
             get { return "SEPaymentsBankgiroReader"; }

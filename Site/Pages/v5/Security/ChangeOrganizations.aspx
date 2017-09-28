@@ -47,7 +47,7 @@
             background-position: left;
             padding-left: 2px;
             margin-left: 4px;
-            margin-right: 8px;
+            margin-right: 2px;
             background-repeat: no-repeat;
             width: 70px;
             height: 48px;

@@ -212,6 +212,12 @@ namespace Swarmops.Logic.Financial
                     return ExternalBankDataProfile.FromIdentity (ExternalBankDataProfile.SESebId);
                 }
 
+                if (OrganizationId == 8 && PilotInstallationIds.IsPilot(PilotInstallationIds.SwarmopsLive) &&
+                    FinancialAccountId == 150)
+                {
+                    return ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.DEPostbankId);
+                }
+
                 return null;
             }
         }

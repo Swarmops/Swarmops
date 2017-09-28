@@ -45,12 +45,19 @@ namespace Swarmops.Logic.Financial
             get { return 2; }
         }
 
+        public static int DEPostbankId
+        {
+            get { return 3; }
+        }
+
         public string Name { get; set; }
         public Country Country { get; set; }
         public string Culture { get; set; }
         public string Currency { get; set; }
         public string BankDataAccountReader { get; set; }
         public string BankDataPaymentsReader { get; set; }
+        public int IgnoreInitialLines { get; set; }
+        public string InitialReplacements { get; set; }
 
         public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
 
@@ -102,6 +109,29 @@ namespace Swarmops.Logic.Financial
                 result.LatestTransactionLocation = LatestTransactionLocation.Top;
                 result.FeeSignage = FeeSignage.Negative;
                 result.Precision = ExternalBankDateTimePrecision.Second;
+
+                result.BankDataAccountReader = StockBankDataReaders.TabSeparatedValuesAccountReader;
+                result.BankDataPaymentsReader = null; // No aggregated payments with Paypal
+
+                return result;
+            }
+
+            if (externalBankDataProfileId == DEPostbankId)
+            {
+                result.Name = "DE Postbank";
+                result.Country = Country.FromCode("DE");
+                result.Culture = "de-DE";
+                result.IgnoreInitialLines = 8;
+                result.InitialReplacements = ";|\t| | ()|";
+
+                result.FieldNames[ExternalBankDataFieldName.Date] = "Buchungstag";
+                result.FieldNames[ExternalBankDataFieldName.Description] = "Buchungsdetails";
+                result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Betrag";
+                result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo";
+
+                result.LatestTransactionLocation = LatestTransactionLocation.Top;
+                result.FeeSignage = FeeSignage.Unknown; // no inline fees
+                result.Precision = ExternalBankDateTimePrecision.Day;
 
                 result.BankDataAccountReader = StockBankDataReaders.TabSeparatedValuesAccountReader;
                 result.BankDataPaymentsReader = null; // No aggregated payments with Paypal

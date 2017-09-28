@@ -267,8 +267,11 @@ namespace Swarmops.Site.Pages.Ledgers
                     return "(Instruct Stock-SE-SEB)";
                 case 2:
                     return "(Instruct Stock-Global-Paypal)";
+                case 150:
+                    return "(Instruct Stock-DE-Postbank)";
                 default:
                     throw new NotImplementedException();
+
             }
         }
 

@@ -51,7 +51,17 @@ namespace Swarmops.Frontend.Pages.v5.Security
 
                 Document logoLandscape = organization.LogoLandscape;
 
-                newOrganizationParameters.LogoImage = logoLandscape.Image.GetBase64(70, 48);
+                try
+                {
+                    if (logoLandscape != null)
+                    {
+                        newOrganizationParameters.LogoImage = logoLandscape.Image.GetBase64(64, 36);
+                    }
+                }
+                catch (Exception)
+                {
+                     newOrganizationParameters.LogoImage = "/Images/Flags/txl-64px.png";
+                }
                 newOrganizationParameters.OrganizationId = membership.OrganizationId;
                 newOrganizationParameters.OrganizationName = membership.Organization.Name;
 

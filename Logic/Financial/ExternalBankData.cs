@@ -46,7 +46,32 @@ namespace Swarmops.Logic.Financial
 
             string organizationCurrencyCode = organization.Currency.Code;
 
-            int crlfIndex = data.IndexOfAny (new[] {'\n', '\r'});
+
+            // Replace any strings initially to force the bank data into readability (per profile)
+
+            string[] replacements = Profile.InitialReplacements.Split('|');
+
+            for (int loop = 0; loop < replacements.Length/2; loop++)
+            {
+                data = data.Replace(replacements[loop*2], replacements[loop*2 + 1]);
+            }
+
+            int crlfIndex;
+
+            for (int loop = 0; loop < Profile.IgnoreInitialLines && !String.IsNullOrEmpty(data); loop++)
+            {
+                crlfIndex = data.IndexOfAny(new[] { '\n', '\r' });
+                if (crlfIndex > 0)
+                {
+                    data = data.Substring(crlfIndex).Trim();
+                }
+                else
+                {
+                    data = string.Empty;
+                }
+            }
+
+            crlfIndex = data.IndexOfAny (new[] {'\n', '\r'});
 
             string fieldKeyLine = data.Substring (0, crlfIndex);
 
@@ -61,7 +86,7 @@ namespace Swarmops.Logic.Financial
             {
                 for (int index = 0; index < dataKeyFields.Length; index++)
                 {
-                    if (dataKeyFields[index].Trim() == Profile.FieldNames[fieldName])
+                    if (StripQuotes(dataKeyFields[index]).Trim() == Profile.FieldNames[fieldName])
                     {
                         fieldNameLookup[fieldName] = index;
                         break;
