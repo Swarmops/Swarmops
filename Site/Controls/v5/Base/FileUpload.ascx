@@ -111,13 +111,11 @@
 </div>
 <div class="stacked-input-control">
     <div id="<%=this.ClientID %>_DivPdfConverting">
-        <div style="position:relative">
-            <div style="position: absolute; top: 0; left: 0; z-index:0"><img src="/Images/Icons/iconshock-pdf-128px.png" height="32" width="32"/>
-            <div style="position: absolute; top: 0; left: 0; z-index:1"><img src="/Images/Abstract/ajaxloader-48x36px.gif" height="32" width="32"/></div>
-            <div id="<%=this.ClientID %>_DivProgressPdfConvert" style="position: absolute; top: 8px; left: 40px; width:100%"></div>
-        </div>
+        <div style="position: relative; width:100%">
+            <div style="position: absolute; top: 4px; left: 0; z-index:4"><img src="/Images/Icons/iconshock-pdf-128px.png" height="32" width="32"/></div>
+            <div style="position: absolute; top: 0; left: 0; z-index:2"><img src="/Images/Abstract/ajaxloader-48x36px.gif" height="48" width="36"/></div>
+            <div id="<%=this.ClientID %>_DivProgressPdfConvert" style="position: absolute; top: 8px; left: 20px; width:100%; z-index: 0"></div>
         </div>
     </div>
-
 </div>
 
