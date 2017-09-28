@@ -105,7 +105,7 @@
         </div>
         <div style="height:36px;padding-top:4px;width:270px;margin-right:10px;float:right;border:none">
             <div id="<%=this.ClientID %>_DivUploadCount" style='display:none;overflow:hidden;height:'<%=this.DisplayCount < 9? 32: 64%>px'></div>
-            <div id="<%=this.ClientID %>_DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div>
+            <div id="<%=this.ClientID %>_DivProgressUpload" style="width:100%;margin-top:10px;display:none"></div>
         </div>
     </div>
 </div>
@@ -113,8 +113,8 @@
     <div id="<%=this.ClientID %>_DivPdfConverting">
         <div style="position: relative; width:100%">
             <div style="position: absolute; top: 4px; left: 0; z-index:4"><img src="/Images/Icons/iconshock-pdf-128px.png" height="32" width="32"/></div>
-            <div style="position: absolute; top: 0; left: 0; z-index:2"><img src="/Images/Abstract/ajaxloader-48x36px.gif" height="48" width="36"/></div>
-            <div id="<%=this.ClientID %>_DivProgressPdfConvert" style="position: absolute; top: 8px; left: 20px; width:100%; z-index: 0"></div>
+            <div style="position: absolute; top: 0; left: -6px; z-index:2"><img src="/Images/Abstract/ajaxloader-48x36px.gif" height="36" width="48"/></div>
+            <div id="<%=this.ClientID %>_DivProgressPdfConvert" style="position: absolute; top: 10px; left: 20px; width:100%; margin-right: 20px; z-index: 0"></div>
         </div>
     </div>
 </div>
