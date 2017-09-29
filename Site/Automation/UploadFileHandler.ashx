@@ -428,7 +428,7 @@ namespace Swarmops.Frontend.Automation
                         debugWriter.WriteLine("{0:D2}%, deleted page count file, starting conversion process", progress);
 
                         process = Process.Start("bash",
-                            "-c \"convert -density 600 -background white -flatten " + StorageRoot + relativeFileName +
+                            "-c \"convert -density 300 -background white -flatten " + StorageRoot + relativeFileName +
                             " " +
                             StorageRoot + relativeFileName +
                             "-%04d.png\""); // Density 600 means 600dpi means production-grade conversion
