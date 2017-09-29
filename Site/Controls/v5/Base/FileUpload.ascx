@@ -20,8 +20,11 @@
             dataType: 'json',
             done: function (e, data) {
                 var pdfConversionNeeded = false;
-                $.each(data.result, function(index, file) {
-                    if (file.error == null || file.error.length < 1) {
+                $.each(data.result, function (index, file) {
+                    if (file.requiresPdfConversion) {
+                        pdfConversionNeeded = true;
+                    }
+                    else if (file.error == null || file.error.length < 1) {
                         $('#<%=this.ClientID %>_DivUploadCount').append(imageUploadSuccess);
                     } else {
                         $('#<%=this.ClientID %>_DivUploadCount').append(imageUploadFail); // Assume ERR_NOT_IMAGE
@@ -29,10 +32,20 @@
                     }
 
                 });
+
                 $('#<%=this.ClientID %>_DivProgressUpload').progressbar({ value: 100 });
                 if (pdfConversionNeeded) {
                     $('#<%=this.ClientID %>_DivProgressPdfConversion').progressbar({ value: 1 });
-                    $('#<%=this.ClientID %>_DivMainControlArea').fadeOut('400', function() { $('#<%=this.ClientID %>_DivPdfConverting').fadeIn(); });
+                    $('#<%=this.ClientID %>_DivMainControlArea').fadeOut('400', function () { $('#<%=this.ClientID %>_DivPdfConverting').fadeIn(); });
+                    var jsonData = {};
+                    jsonData.guid = '<%=GuidString%>';
+
+                    SwarmopsJS.ajaxCall("/Automation/UploadFileHandler.ashx/BeginPdfConversion",
+                        jsonData,
+                        function() {
+                            // Successful start
+                            alertify.success('Started PDF conversion thread');
+                        });
                 } else {
 
                     <% if (!String.IsNullOrEmpty(this.ClientUploadCompleteCallback))
@@ -84,16 +97,23 @@
         jsonData.guid = "Pdf-<%=GuidString%>";
 
         SwarmopsJS.ajaxCall(
-            "/Automation/Json-ByGuid.aspx/GetProgress2",
+            "/Automation/Json-ByGuid.aspx/GetNonsocketProgress",
             jsonData,
-            function(result) {
+            function (result) {
+                if (result.Success) {
+                    var progressPercent = parseInt(result.DisplayMessage);
+                    $("#<%=this.ClientID %>_DivProgressPdfConvert .progressbar-value").animate(
+                        {
+                            width: progressPercent + "%"
+                        }, { queue: false });
+
+                    setTimeout(function() { <%=this.ClientID%>_repingPdfProgress(); }, 500);
+                }
             },
             function(error) {
             }
         );
 
-        SwarmopsJS.ajaxCall()
-        setTimeout(function() { <%=this.ClientID%>_repingPdfProgress(); }, 500);
     }
 
 </script>
@@ -112,9 +132,9 @@
 <div class="stacked-input-control">
     <div id="<%=this.ClientID %>_DivPdfConverting">
         <div style="position: relative; width:100%">
-            <div style="position: absolute; top: 4px; left: 0; z-index:4"><img src="/Images/Icons/iconshock-pdf-128px.png" height="32" width="32"/></div>
+            <div style="position: absolute; top: 4px; left: 4px; z-index:4"><img src="/Images/Icons/iconshock-pdf-128px.png" height="32" width="32"/></div>
             <div style="position: absolute; top: 0; left: -6px; z-index:2"><img src="/Images/Abstract/ajaxloader-48x36px.gif" height="36" width="48"/></div>
-            <div id="<%=this.ClientID %>_DivProgressPdfConvert" style="position: absolute; top: 10px; left: 20px; width:90% !important; z-index: 0"></div>
+            <div id="<%=this.ClientID %>_DivProgressPdfConvert" style="position: absolute; top: 10px; z-index: 0"></div>
         </div>
     </div>
 </div>
