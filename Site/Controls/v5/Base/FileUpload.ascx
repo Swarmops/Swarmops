@@ -115,7 +115,10 @@
                     }
                 }
             },
-            function(error) {
+            function (error) {
+                // try again
+
+                setTimeout(function() { <%=this.ClientID%>_repingPdfProgress(); }, 500);
             }
         );
 

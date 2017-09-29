@@ -432,6 +432,7 @@ namespace Swarmops.Frontend.Automation
                             " " +
                             StorageRoot + relativeFileName +
                             "-%04d.png\""); // Density 600 means 600dpi means production-grade conversion
+                        process.PriorityClass = ProcessPriorityClass.Idle; // play real nice now
 
                         int pageCounter = 0; // the first produced page will be zero
                         int currentPageBaseProgress = progressFileStep*fileIndex + currentFilePageStep*pageCounter;
@@ -516,7 +517,6 @@ namespace Swarmops.Frontend.Automation
                 }
             }
         }
-
 
 
         private class ProcessThreadArguments
