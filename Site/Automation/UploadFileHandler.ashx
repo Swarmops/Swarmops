@@ -428,10 +428,10 @@ namespace Swarmops.Frontend.Automation
                         debugWriter.WriteLine("{0:D2}%, deleted page count file, starting conversion process", progress);
 
                         process = Process.Start("bash",
-                            "-c \"convert -density 300 -background white -flatten " + StorageRoot + relativeFileName +
+                            "-c \"convert -density 600 -background white -flatten " + StorageRoot + relativeFileName +
                             " " +
                             StorageRoot + relativeFileName +
-                            "-%04d.png\""); // Density 600 means 600dpi means production-grade conversion
+                            "-%04d.png > /tmp/PdfConversionOutput-" + argsProper.Guid + "\""); // Density 600 means 600dpi means production-grade conversion
                         process.PriorityClass = ProcessPriorityClass.Idle; // play real nice now
 
                         int pageCounter = 0; // the first produced page will be zero
@@ -462,7 +462,7 @@ namespace Swarmops.Frontend.Automation
                                 }
                             }
 
-                            currentPageBaseProgress = progressFileStep*fileIndex + currentFilePageStep*pageCounter;
+                            currentPageBaseProgress = progressFileStep*fileIndex + currentFilePageStep*(pageCounter+1);
                             progress = currentPageBaseProgress;
                             quarterSecondWaiting = 0;
                             if (progress > 99)
