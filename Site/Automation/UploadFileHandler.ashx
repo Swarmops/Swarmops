@@ -453,7 +453,7 @@ namespace Swarmops.Frontend.Automation
                                 debugWriter.WriteLine("{0:D2}%, waiting for page #{1} to appear", progress, pageCounter+1);
                                 GuidCache.Set("Pdf-" + argsProper.Guid + "-Progress", progress);
 
-                                Thread.Sleep(250);
+                                process.WaitForExit(250); // this is a more elaborate version of thread.sleep that prevents Apache recycling
 
                                 if (process.HasExited)
                                 {
