@@ -450,7 +450,8 @@ namespace Swarmops.Frontend.Automation
                                 quarterSecondWaiting++;
                                 progress = currentPageBaseProgress +
                                            Math.Min(quarterSecondWaiting, 50)*currentFilePageStep/2/50; // advance to 1/2 page over 5s while waiting
-                                debugWriter.WriteLine("{0:D2}%, waiting for page #{1} to appear", progress, pageCounter+1);
+                                debugWriter.WriteLine("{0:D2}%, {2:O}, waiting for page #{1} to appear", progress, pageCounter+1, DateTime.UtcNow);
+                                debugWriter.Flush();
                                 GuidCache.Set("Pdf-" + argsProper.Guid + "-Progress", progress);
 
                                 process.WaitForExit(250); // this is a more elaborate version of thread.sleep that prevents Apache recycling
