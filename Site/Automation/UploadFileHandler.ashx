@@ -436,8 +436,9 @@ namespace Swarmops.Frontend.Automation
 
                         int pageCounter = 0; // the first produced page will be zero
                         int currentPageBaseProgress = progressFileStep*fileIndex + currentFilePageStep*pageCounter;
-                        int tenthsSecondWaiting = 0;
+                        int quarterSecondWaiting = 0;
                         string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+                        debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
                         string lastPageFileName = testPageFileName;
 
                         while (pageCounter < currentFilePageCount)
@@ -446,16 +447,24 @@ namespace Swarmops.Frontend.Automation
                             {
                                 // Wait for file to appear
 
-                                tenthsSecondWaiting++;
+                                quarterSecondWaiting++;
                                 progress = currentPageBaseProgress +
-                                           Math.Min(tenthsSecondWaiting, 50)*currentFilePageStep/2/50; // advance to 1/2 page over 5s while waiting
+                                           Math.Min(quarterSecondWaiting, 50)*currentFilePageStep/2/50; // advance to 1/2 page over 5s while waiting
                                 debugWriter.WriteLine("{0:D2}%, waiting for page #{1} to appear", progress, pageCounter+1);
                                 GuidCache.Set("Pdf-" + argsProper.Guid + "-Progress", progress);
 
-                                Thread.Sleep(100);
+                                Thread.Sleep(250);
+
+                                if (process.HasExited)
+                                {
+                                    debugWriter.WriteLine("{0:D2}%, PROCESS HAS EXITED out of order with conversion", progress);
+                                    break;
+                                }
                             }
 
-                            progress = currentPageBaseProgress + currentFilePageStep;
+                            currentPageBaseProgress = progressFileStep*fileIndex + currentFilePageStep*pageCounter;
+                            progress = currentPageBaseProgress;
+                            quarterSecondWaiting = 0;
                             if (progress > 99)
                             {
                                 progress = 99; // can't reach 100 before finished
@@ -482,6 +491,7 @@ namespace Swarmops.Frontend.Automation
 
                             pageCounter++;
                             testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+                            debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
                         }
 
                         // We've seen the last page being written -- wait for process to exit
