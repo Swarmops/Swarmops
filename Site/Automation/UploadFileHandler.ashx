@@ -459,7 +459,7 @@ namespace Swarmops.Frontend.Automation
                             {
                                 progress = 99; // can't reach 100 before finished
                             }
-                            debugWriter.WriteLine("{0:D2}%, found page #{1}", progress, pageCounter);
+                            debugWriter.WriteLine("{0:D2}%, found page #{1}", progress, pageCounter+1);
                             GuidCache.Set("Pdf-" + argsProper.Guid + "-Progress", progress);
 
                             // If the page# file that has appeared is 1+, then the preceding file is ready
@@ -484,7 +484,7 @@ namespace Swarmops.Frontend.Automation
                         }
 
                         // We've seen the last page being written -- wait for process to exit
-                        debugWriter.WriteLine("{0:D2}%, waiting for process exit");
+                        debugWriter.WriteLine("{0:D2}%, waiting for process exit", progress);
 
                         process.WaitForExit();
 

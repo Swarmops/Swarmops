@@ -45,6 +45,7 @@
                         function() {
                             // Successful start
                             alertify.success('Started PDF conversion thread');
+                            setTimeout(function() { <%=this.ClientID%>_repingPdfProgress() }, 500);
                         });
                 } else {
 
@@ -107,7 +108,11 @@
                             width: progressPercent + "%"
                         }, { queue: false });
 
-                    setTimeout(function() { <%=this.ClientID%>_repingPdfProgress(); }, 500);
+                    if (progressPercent < 100) {
+                        setTimeout(function() { <%=this.ClientID%>_repingPdfProgress(); }, 500);
+                    } else {
+                        // PDF CONVERSION COMPLETE, handle this
+                    }
                 }
             },
             function(error) {
@@ -128,9 +133,7 @@
             <div id="<%=this.ClientID %>_DivProgressUpload" style="width:100%;margin-top:10px;display:none"></div>
         </div>
     </div>
-</div>
-<div class="stacked-input-control">
-    <div id="<%=this.ClientID %>_DivPdfConverting">
+    <div id="<%=this.ClientID %>_DivPdfConverting" style="display:none">
         <div style="position: relative; width:100%">
             <div style="position: absolute; top: 4px; left: 4px; z-index:4"><img src="/Images/Icons/iconshock-pdf-128px.png" height="32" width="32"/></div>
             <div style="position: absolute; top: 0; left: -6px; z-index:2"><img src="/Images/Abstract/ajaxloader-48x36px.gif" height="36" width="48"/></div>
