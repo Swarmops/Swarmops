@@ -243,7 +243,7 @@ namespace Swarmops.Frontend.Socket
                                     }
 
                                     progress = progressFileStep*fileIndex + currentFilePercentage*100/progressFileStep;
-                                    if (progress != lastProgress)
+                                    if (progress > lastProgress)  // can't use Not-Equal; temp files slowly deleted before next step
                                     {
                                         BroadcastGuidProgress(organization, guid, progress);
                                         lastProgress = progress;

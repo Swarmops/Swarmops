@@ -47,7 +47,7 @@ namespace Swarmops.Backend.SocketServices
                 case "Metapackage":
                     BackendLoop.ProcessMetapackage(SocketMessage.FromXml((string) json["XmlData"]));
                     break;
-                case "ConvertPdf":
+                case "ConvertPdfHires":
                     // Convert with high quality -- done on backend with lower priority than the immediate frontend conversion
                     PdfProcessor.Rerasterize(Document.FromIdentity((int) json["documentId"]), PdfProcessor.PdfProcessorOptions.HighQuality);
                     break;
