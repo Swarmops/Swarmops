@@ -166,6 +166,7 @@ namespace Swarmops.Utility.BotCode
 
                 Process process = Process.Start("bash",
                     "-c \"" + commandLine + "\"");
+                process.PriorityClass = ProcessPriorityClass.Idle; // play nice - this is a heavy op
 
                 process.WaitForExit();
 
