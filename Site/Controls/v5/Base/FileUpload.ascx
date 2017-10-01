@@ -87,8 +87,6 @@
 
     function progressUpdateCallback_<%=this.GuidToken%>(progressPercent) {
 
-        alertify.success(progress);
-
         $("#<%=this.ClientID %>_DivProgressPdfConvert .progressbar-value").animate(
             {
                 width: progressPercent + "%"
