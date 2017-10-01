@@ -321,6 +321,7 @@ namespace Swarmops.Frontend.Socket
         private void BroadcastGuidProgress(Organization organization, string guid, int progress)
         {
             JObject json = new JObject();
+            json["MessageType"] = "ProgressUpdate";
             json["Guid"] = guid;
             json["Progress"] = progress;
 
