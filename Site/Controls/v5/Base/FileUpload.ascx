@@ -37,16 +37,9 @@
                 if (pdfConversionNeeded) {
                     $('#<%=this.ClientID %>_DivProgressPdfConversion').progressbar({ value: 1 });
                     $('#<%=this.ClientID %>_DivMainControlArea').fadeOut('400', function () { $('#<%=this.ClientID %>_DivPdfConverting').fadeIn(); });
-                    var jsonData = {};
-                    jsonData.guid = '<%=GuidString%>';
 
-                    SwarmopsJS.ajaxCall("/Automation/UploadFileHandler.ashx/BeginPdfConversion",
-                        jsonData,
-                        function() {
-                            // Successful start
-                            alertify.success('Started PDF conversion thread');
-                            setTimeout(function() { <%=this.ClientID%>_repingPdfProgress() }, 500);
-                        });
+                    // Conversion progress will be sent through the socket, sent to our function by the master page
+
                 } else {
 
                     <% if (!String.IsNullOrEmpty(this.ClientUploadCompleteCallback))
