@@ -308,7 +308,7 @@ namespace Swarmops.Frontend.Socket
                     // Finally, ask the backend to do the high-res conversions, but now we have the basic, fast ones
 
                     JObject backendRequest = new JObject();
-                    backendRequest["MessageType"] = "BackendRequest";
+                    backendRequest["BackendRequest"] = "ConvertPdfHires";
                     backendRequest["DocumentId"] = lastDocument.Identity;
                     FrontendLoop.SendMessageUpstream(backendRequest);
 
