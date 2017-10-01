@@ -13,6 +13,7 @@ using System.Web.Script.Serialization;
 using System.Web.Services;
 using Newtonsoft.Json.Linq;
 using Swarmops.Logic.Cache;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
@@ -148,6 +149,8 @@ namespace Swarmops.Frontend.Automation
             List<string> pdfsForConversion = new List<string>();
             List<string> pdfClientNames = new List<string>();
 
+            AuthenticationData authData = CommonV5.GetAuthenticationDataAndCulture(context);
+
             using (StreamWriter debugWriter = new StreamWriter("/tmp/upload-debug.txt"))
             {
 
@@ -155,8 +158,6 @@ namespace Swarmops.Frontend.Automation
                 {
                     HttpPostedFile file = context.Request.Files[i];
                     string fullName = Path.GetFileName(file.FileName);
-
-                    AuthenticationData authData = CommonV5.GetAuthenticationDataAndCulture(context);
 
                     Person uploadingPerson = authData.CurrentUser;
                     Organization currentOrg = authData.CurrentOrganization;
@@ -381,7 +382,7 @@ namespace Swarmops.Frontend.Automation
                     using (
                         WebSocket socket =
                             new WebSocket("ws://localhost:" + SystemSettings.WebsocketPortFrontend + "/Front?Auth=" +
-                                            Uri.EscapeDataString(this.CurrentAuthority.ToEncryptedXml())))
+                                            Uri.EscapeDataString(authData.Authority.ToEncryptedXml())))
                     {
                         socket.Connect();
 
