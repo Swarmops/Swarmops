@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Text;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Swarmops.Logic.Support;
@@ -12,7 +14,13 @@ namespace Swarmops.Utility.BotCode
 {
     public class PdfProcessor
     {
-        private static readonly string StorageRoot = "/var/lib/swarmops/upload/";
+        private static readonly string StorageRoot = Document.StorageRoot;
+
+        public enum PdfProcessorOptions
+        {
+            None = 0,
+            HighQuality = 0x0001
+        };
 
         public static void RerasterizeAll()
         {
@@ -99,7 +107,7 @@ namespace Swarmops.Utility.BotCode
             }
         }
 
-        public static void Rerasterize(Document document)
+        public static void Rerasterize(Document document, PdfProcessorOptions options = PdfProcessorOptions.None)
         {
             if (document.Description.Length < 32)
             {
@@ -122,14 +130,24 @@ namespace Swarmops.Utility.BotCode
                 throw new InvalidOperationException("Document is an orphan");
             }
 
+            int density = 75;
+            string suffix = string.Empty;
+
+            if (((int) options & (int) PdfProcessorOptions.HighQuality) > 0)
+            {
+                density = 600;
+                suffix = "-hires"; // hires conversion uses different filename
+            }
+
+
             string firstPart = document.ServerFileName.Substring(0, 64);
 
             Console.Write("Regenerating document...");
 
             Process process = Process.Start("bash",
-                    "-c \"convert -density 600 -background white -flatten " + StorageRoot + firstPart + " " +
+                    "-c \"convert -density " + density.ToString(CultureInfo.InvariantCulture) + " -background white -flatten " + StorageRoot + firstPart + " " +
                     StorageRoot + firstPart +
-                    "-%04d.png\""); // Density 600 means 600dpi means production-grade conversion
+                    "-%04d" + suffix + ".png\"");
 
             process.WaitForExit();
 

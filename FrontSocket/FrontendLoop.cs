@@ -424,6 +424,11 @@ namespace Swarmops.Frontend.Socket
             _backendSocket.Send(json.ToString());
         }
 
+        public static void SendMessageUpstream(JObject message)
+        {
+            _backendSocket.Send(message.ToString());
+        }
+
 
         private static Dictionary<FrontendMalfunctions,bool> _activeAlarms;
 

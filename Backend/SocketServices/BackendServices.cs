@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Swarmops.Logic;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
+using Swarmops.Utility.BotCode;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
@@ -44,6 +46,10 @@ namespace Swarmops.Backend.SocketServices
                     break;
                 case "Metapackage":
                     BackendLoop.ProcessMetapackage(SocketMessage.FromXml((string) json["XmlData"]));
+                    break;
+                case "ConvertPdf":
+                    // Convert with high quality -- done on backend with lower priority than the immediate frontend conversion
+                    PdfProcessor.Rerasterize(Document.FromIdentity((int) json["documentId"]), PdfProcessor.PdfProcessorOptions.HighQuality);
                     break;
                 default:
                     // do nothing;

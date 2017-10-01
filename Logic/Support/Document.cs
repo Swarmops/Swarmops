@@ -57,7 +57,7 @@ namespace Swarmops.Logic.Support
             }
         }
 
-        protected static string StorageRoot
+        public static string StorageRoot
         {
             get
             {

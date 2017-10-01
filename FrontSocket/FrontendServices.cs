@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Swarmops.Frontend.Socket;
 using Swarmops.Logic;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
@@ -47,11 +53,24 @@ namespace Swarmops.Frontend.Socket
                     // TODO: Request heartbeat from backend
                     // Sessions.Broadcast("{\"messageType\":\"Heartbeat\"}");
                     break;
+                case "ConvertPdf":
+                    JArray pdfFilesArray = (JArray) json["PdfFiles"];
+                    List<string> pdfFilesList = new List<string>();
+                    foreach (string pdfFileString in pdfFilesArray)
+                    {
+                        pdfFilesList.Add(pdfFileString);
+                    }
+                    string[] pdfFiles = pdfFilesList.ToArray();
+
+                    ConvertPdf (pdfFiles, (string) json["Guid"], Person.FromIdentity((int) json["PersonId"]));
+                    break;
+
                 default:
                     // do nothing;
                     break;
             }
         }
+
 
 
         private void ProcessMetapackage(string xmlData)
@@ -108,8 +127,187 @@ namespace Swarmops.Frontend.Socket
             // Sessions.Broadcast("{\"messageType\":\"EditorCount\"," + String.Format("\"editorCount\":\"{0}\"", Sessions.ActiveIDs.ToArray().Length) + '}');
         }
 
+        private void ConvertPdf(string[] pdfFiles, string guid, Person person)
+        {
+            List<string> failedConversionFileNames = new List<string>();
+
+            using (StreamWriter debugWriter = new StreamWriter("/tmp/PdfConversionDebug-" + guid + ".txt"))
+            {
+
+                try
+                {
+                    debugWriter.WriteLine("ConvertPdf started");
+
+                    int fileCount = pdfFiles.Length;
+                    int successCount = 0;
+                    int failCount = 0;
+
+                    Process process = null;
+                    Document lastDocument = null;
+
+                    for (int fileIndex = 0; fileIndex < fileCount; fileIndex++)
+                    {
+                        // Set progress to indicate we're at file 'index' of 'fileCount'
+
+                        int progress = fileIndex * 99 / fileCount; // 99 at most -- 100 indicates complete
+                        int progressMax = (fileIndex + 1) * 99 / fileCount - 1;
+                        int progressFileStep = 99 / fileCount;
+                        int currentFilePageCount = 0;
+                        int currentFilePageStep = 0;
+
+                        string relativeFileName = pdfFiles[fileIndex];
+
+                        debugWriter.WriteLine("------------------------------------");
+                        debugWriter.WriteLine("{3:D2}%, Converting PDF file {0} of {1}; {2}", fileIndex + 1, fileCount,
+                            relativeFileName, progress);
+
+                        // Use qpdf to determine the number of pages in the PDF
+
+                        string pageCountFileName = "/tmp/pagecount-" + guid + ".txt";
+
+                        process = Process.Start("bash",
+                            "-c \"qpdf --show-npages " + Document.StorageRoot + relativeFileName + " > " + pageCountFileName + "\"");
+
+                        process.WaitForExit();
+
+                        if (process.ExitCode != 0)
+                        {
+                            // Bad PDF file
+                            failCount++;
+                            failedConversionFileNames.Add(
+                                ((string[])GuidCache.Get("PdfClientNames-" + guid))[fileIndex].Replace("'", "")
+                                    .Replace("\"", "")); // caution; we're displaying user input, guard against XSS
+                            continue;
+                        }
+
+                        // Read the resulting page count from the file we piped
+
+                        using (StreamReader pageCountReader = new StreamReader(pageCountFileName))
+                        {
+                            string pageCountString = pageCountReader.ReadToEnd().Trim();
+                            debugWriter.WriteLine("{0:D2}%, page count is '{1}'", progress, pageCountString);
+                            currentFilePageCount = Int32.Parse(pageCountString);
+                            debugWriter.WriteLine("{0:D2}%, parsed to int as {1}", progress, currentFilePageCount);
+                            currentFilePageStep = progressFileStep / currentFilePageCount;
+                        }
+
+                        File.Delete(pageCountFileName);
+
+                        // Begin the conversion
+
+                        debugWriter.WriteLine("{0:D2}%, deleted page count file, starting conversion process", progress);
+
+                        // Density 75 means 75dpi means conversion
+                        // Hires 600dpi conversion is also made, but from backend after this conversion
+
+                        process = Process.Start("bash",
+                            "-c \"convert -density 75 -background white -flatten " + Document.StorageRoot + relativeFileName +
+                            " " +
+                            Document.StorageRoot + relativeFileName +
+                            "-%04d.png > /tmp/PdfConversionOutput-" + guid + "\""); 
+                        
+
+                        int pageCounter = 0; // the first produced page will be zero
+                        int currentPageBaseProgress = progressFileStep * fileIndex + currentFilePageStep * pageCounter;
+                        int quarterSecondWaiting = 0;
+                        string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+                        debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
+                        string lastPageFileName = testPageFileName;
+
+                        while (pageCounter < currentFilePageCount)
+                        {
+                            while (!File.Exists(Document.StorageRoot + testPageFileName))
+                            {
+                                // Wait for file to appear
+
+                                quarterSecondWaiting++;
+                                progress = currentPageBaseProgress +
+                                           Math.Min(quarterSecondWaiting, 50) * currentFilePageStep / 2 / 50; // advance to 1/2 page over 5s while waiting
+                                debugWriter.WriteLine("{0:D2}%, {2:O}, waiting for page #{1} to appear", progress, pageCounter + 1, DateTime.UtcNow);
+                                debugWriter.Flush();
+                                GuidCache.Set("Pdf-" + guid + "-Progress", progress);
+
+                                process.WaitForExit(250); // this is a more elaborate version of thread.sleep that prevents Apache recycling
+
+                                if (process.HasExited)
+                                {
+                                    debugWriter.WriteLine("{0:D2}%, PROCESS HAS EXITED out of order with conversion", progress);
+                                    break;
+                                }
+                            }
+
+                            currentPageBaseProgress = progressFileStep * fileIndex + currentFilePageStep * (pageCounter + 1);
+                            progress = currentPageBaseProgress;
+                            quarterSecondWaiting = 0;
+                            if (progress > 99)
+                            {
+                                progress = 99; // can't reach 100 before finished
+                            }
+                            debugWriter.WriteLine("{0:D2}%, found page #{1}", progress, pageCounter + 1);
+                            GuidCache.Set("Pdf-" + guid + "-Progress", progress);
+
+                            // If the page# file that has appeared is 1+, then the preceding file is ready
+
+                            if (pageCounter > 0)
+                            {
+                                long fileLength = new FileInfo(Document.StorageRoot + lastPageFileName).Length;
+                                debugWriter.WriteLine("{0:D2}%, saving page #{1}, bytecount {2}", progress, pageCounter, fileLength);
+
+                                Document.Create(lastPageFileName,
+                                    "(BackendConvertedFile) " + pageCounter.ToString(CultureInfo.InvariantCulture),
+                                    fileLength, guid, null, person);
+
+                                // Prepare to save the next file
+                                lastPageFileName = testPageFileName;
+                            }
+
+                            // Increase the page counter and the file we're looking for
+
+                            pageCounter++;
+                            testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+                            debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
+                        }
+
+                        // We've seen the last page being written -- wait for process to exit
+                        debugWriter.WriteLine("{0:D2}%, waiting for process exit", progress);
+
+                        process.WaitForExit();
+
+                        // Save the last page
+
+                        long fileLengthLastPage = new FileInfo(Document.StorageRoot + lastPageFileName).Length;
+                        debugWriter.WriteLine("{0:D2}%, saving last page #{1}, bytecount {2}", progress, pageCounter, fileLengthLastPage);
+
+                        lastDocument = Document.Create(lastPageFileName,
+                            "(BackendConvertedFile) " + pageCounter.ToString(CultureInfo.InvariantCulture),
+                            fileLengthLastPage, guid, null, person);
+
+                    }
+
+                    // TODO: notify backend to rerasterize doc at 600dpi
+
+
+                }
+                catch (Exception e)
+                {
+                    debugWriter.WriteLine("Exception thrown: " + e.ToString());
+
+                    throw;
+                }
+                finally
+                {
+                    debugWriter.WriteLine("Thread exiting");
+
+                    GuidCache.Set("Pdf-" + guid + "-Progress", 100);
+                    // only here may the caller fetch the results
+                }
+            }
+        }
+
         public Authority Authority { get { return this._authority; } }
 
         private Authority _authority = null;
     }
+
+
 }

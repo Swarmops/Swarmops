@@ -11,10 +11,12 @@ using System.Threading;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Services;
+using Newtonsoft.Json.Linq;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
+using WebSocketSharp;
 
 namespace Swarmops.Frontend.Automation
 {
@@ -22,17 +24,7 @@ namespace Swarmops.Frontend.Automation
     {
         private readonly JavaScriptSerializer js = new JavaScriptSerializer();
 
-        public static string StorageRoot
-        {
-            get
-            {
-                if (Debugger.IsAttached)
-                {
-                    return @"C:\Windows\Temp\Swarmops-Debug\"; // Windows debugging environment
-                }
-                return "/var/lib/swarmops/upload/"; // production location on Debian installation
-            }
-        }
+        public static string StorageRoot = Document.StorageRoot;
 
         private bool WeAreInDebugEnvironment
         {
@@ -261,6 +253,7 @@ namespace Swarmops.Frontend.Automation
 
                     int pageCounter = 0;
                     Process process = null;
+                    bool pdfGeneratedHere = false;
 
                     if (WeAreInDebugEnvironment)
                     {
@@ -281,9 +274,59 @@ namespace Swarmops.Frontend.Automation
 
                             statuses.Add(errorStatus);
                             // -1 for length means the file was NOT saved, and that it could not be parsed.
-                            return;
+                            continue; // with next file
                         }
 
+                        pdfGeneratedHere = true;
+                    }
+                    else // live environment, not debug
+                    {
+                        // Use qpdf to determine the number of pages in the PDF
+
+                        string pageCountFileName = "/tmp/pagecount-" + guid + ".txt";
+
+                        process = Process.Start("bash",
+                            "-c \"qpdf --show-npages " + StorageRoot + relativeFileName + " > " + pageCountFileName + "\"");
+
+                        process.WaitForExit();
+                        int pdfPageCount = 0;
+
+                        if (process.ExitCode != 0)
+                        {
+                            // Bad PDF file
+                            FilesStatus errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
+                            errorStatus.error = "ERR_BAD_PDF";
+                            errorStatus.url = string.Empty;
+                            errorStatus.delete_url = string.Empty;
+                            errorStatus.thumbnail_url = string.Empty;
+
+                            statuses.Add(errorStatus);
+                            // -1 for length means the file was NOT saved, and that it could not be parsed.
+                            continue;
+                        }
+
+                        // Read the resulting page count from the file we piped
+
+                        using (StreamReader pageCountReader = new StreamReader(pageCountFileName))
+                        {
+                            string pageCountString = pageCountReader.ReadToEnd().Trim();
+                            pdfPageCount = Int32.Parse(pageCountString);
+                        }
+
+                        File.Delete(pageCountFileName);
+
+                        // TODO: If page count less than something, convert immediately
+
+                        FilesStatus requiresConversion = new FilesStatus(fullName, -1);
+                        requiresConversion.requiresPdfConversion = true;
+                        statuses.Add(requiresConversion);
+
+                        pdfsForConversion.Add(relativeFileName);
+                        pdfClientNames.Add(file.FileName);
+                    }
+
+                    if (pdfGeneratedHere)  // as opposed to deferred to backend for large files
+                    {
                         string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
 
                         while (File.Exists(StorageRoot + testPageFileName))
@@ -298,15 +341,6 @@ namespace Swarmops.Frontend.Automation
                             testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
                         }
                     }
-                    else
-                    {
-                        FilesStatus requiresConversion = new FilesStatus(fullName, -1);
-                        requiresConversion.requiresPdfConversion = true;
-                        statuses.Add(requiresConversion);
-
-                        pdfsForConversion.Add(relativeFileName);
-                        pdfClientNames.Add(file.FileName);
-                    }
                 }
                 else
                 {
@@ -318,33 +352,36 @@ namespace Swarmops.Frontend.Automation
                 statuses.Add(new FilesStatus(fullName, file.ContentLength));
             }
 
-            GuidCache.Set("PdfsForConversion-" + guid, pdfsForConversion.ToArray());
-            GuidCache.Set("PdfClientNames-" + guid, pdfClientNames.ToArray());
-        }
-
-
-        [WebMethod]
-        public static AjaxCallResult BeginPdfConversion(string guid)
-        {
-            AuthenticationData authData = GetAuthenticationDataAndCulture();
-            ProcessThreadArguments args = new ProcessThreadArguments
+            if (pdfsForConversion.Count > 0)
             {
-                CurrentUser = authData.CurrentUser,
-                Organization = authData.CurrentOrganization,
-                Guid = guid
-            };
+                // Backend conversion of long files required
 
-            Thread initThread = new Thread(ConvertPdfThread);
-            initThread.Start(args);
+                using (
+                    WebSocket socket =
+                        new WebSocket("ws://localhost:" + SystemSettings.WebsocketPortFrontend + "/Front?Auth=" +
+                                      Uri.EscapeDataString(this.CurrentAuthority.ToEncryptedXml())))
+                {
+                    socket.Connect();
 
-            return new AjaxCallResult {Success = true};
+                    JObject data = new JObject();
+                    data ["ServerRequest"] = "ConvertPdf";
+                    data["PdfFiles"] = JArray.FromObject(pdfsForConversion.ToArray());
+                    data["Guid"] = (string) guid;
+                    data["PersonId"] = CurrentUser.Identity;
+                    socket.Send(data.ToString());
+                    socket.Ping(); // wait a little little while for send to work
+                    socket.Close();
+                }
+            }
         }
+
 
         [WebMethod]
         public static AjaxConversionCallResult GetPdfConversionResult (string guid)
         {
             return (AjaxConversionCallResult) GuidCache.Get("PdfConversionResult-" + guid);
         }
+
 
         public class AjaxConversionCallResult: AjaxCallResult
         {
@@ -356,177 +393,6 @@ namespace Swarmops.Frontend.Automation
         private static void ConvertPdfThread(object args)
         {
             ProcessThreadArguments argsProper = (ProcessThreadArguments) args;
-            List<string> failedConversionFileNames = new List<string>();
-
-            using (StreamWriter debugWriter = new StreamWriter("/tmp/PdfConversionDebug-" + argsProper.Guid + ".txt"))
-            {
-
-                try
-                {
-                    debugWriter.WriteLine("ConvertPdfThread started");
-
-                    string[] relativeFileNames = (string[]) GuidCache.Get("PdfsForConversion-" + argsProper.Guid);
-                    string[] clientFileNames = (string[]) GuidCache.Get("PdfClientNames-" + argsProper.Guid);
-                    GuidCache.Delete("PdfsForConversion-" + argsProper.Guid);
-                    GuidCache.Delete("PdfsClientNames-" + argsProper.Guid);
-                    int fileCount = relativeFileNames.Length;
-                    int successCount = 0;
-                    int failCount = 0;
-
-                    Process process = null;
-
-                    for (int fileIndex = 0; fileIndex < fileCount; fileIndex++)
-                    {
-                        // Set progress to indicate we're at file 'index' of 'fileCount'
-
-                        int progress = fileIndex*99/fileCount; // 99 at most -- 100 indicates complete
-                        int progressMax = (fileIndex + 1)*99/fileCount - 1;
-                        int progressFileStep = 99/fileCount;
-                        int currentFilePageCount = 0;
-                        int currentFilePageStep = 0;
-
-                        string relativeFileName = relativeFileNames[fileIndex];
-
-                        debugWriter.WriteLine("------------------------------------");
-                        debugWriter.WriteLine("{3:D2}%, Converting PDF file {0} of {1}; {2}", fileIndex + 1, fileCount,
-                            relativeFileName, progress);
-
-                        // Use qpdf to determine the number of pages in the PDF
-
-                        string pageCountFileName = "/tmp/pagecount-" + argsProper.Guid + ".txt";
-
-                        process = Process.Start("bash",
-                            "-c \"qpdf --show-npages " + StorageRoot + relativeFileName + " > " + pageCountFileName + "\"");
-
-                        process.WaitForExit();
-
-                        if (process.ExitCode != 0)
-                        {
-                            // Bad PDF file
-                            failCount ++;
-                            failedConversionFileNames.Add(
-                                ((string[]) GuidCache.Get("PdfClientNames-" + argsProper.Guid))[fileIndex].Replace("'", "")
-                                    .Replace("\"", "")); // caution; we're displaying user input, guard against XSS
-                            continue;
-                        }
-
-                        // Read the resulting page count from the file we piped
-
-                        using (StreamReader pageCountReader = new StreamReader(pageCountFileName))
-                        {
-                            string pageCountString = pageCountReader.ReadToEnd().Trim();
-                            debugWriter.WriteLine("{0:D2}%, page count is '{1}'", progress, pageCountString);
-                            currentFilePageCount = Int32.Parse(pageCountString);
-                            debugWriter.WriteLine("{0:D2}%, parsed to int as {1}", progress, currentFilePageCount);
-                            currentFilePageStep = progressFileStep/currentFilePageCount;
-                        }
-
-                        File.Delete(pageCountFileName);
-
-                        // Begin the conversion
-
-                        debugWriter.WriteLine("{0:D2}%, deleted page count file, starting conversion process", progress);
-
-                        process = Process.Start("bash",
-                            "-c \"convert -density 600 -background white -flatten " + StorageRoot + relativeFileName +
-                            " " +
-                            StorageRoot + relativeFileName +
-                            "-%04d.png > /tmp/PdfConversionOutput-" + argsProper.Guid + "\""); // Density 600 means 600dpi means production-grade conversion
-                        process.PriorityClass = ProcessPriorityClass.Idle; // play real nice now
-
-                        int pageCounter = 0; // the first produced page will be zero
-                        int currentPageBaseProgress = progressFileStep*fileIndex + currentFilePageStep*pageCounter;
-                        int quarterSecondWaiting = 0;
-                        string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
-                        debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
-                        string lastPageFileName = testPageFileName;
-
-                        while (pageCounter < currentFilePageCount)
-                        {
-                            while (!File.Exists(StorageRoot + testPageFileName))
-                            {
-                                // Wait for file to appear
-
-                                quarterSecondWaiting++;
-                                progress = currentPageBaseProgress +
-                                           Math.Min(quarterSecondWaiting, 50)*currentFilePageStep/2/50; // advance to 1/2 page over 5s while waiting
-                                debugWriter.WriteLine("{0:D2}%, {2:O}, waiting for page #{1} to appear", progress, pageCounter+1, DateTime.UtcNow);
-                                debugWriter.Flush();
-                                GuidCache.Set("Pdf-" + argsProper.Guid + "-Progress", progress);
-
-                                process.WaitForExit(250); // this is a more elaborate version of thread.sleep that prevents Apache recycling
-
-                                if (process.HasExited)
-                                {
-                                    debugWriter.WriteLine("{0:D2}%, PROCESS HAS EXITED out of order with conversion", progress);
-                                    break;
-                                }
-                            }
-
-                            currentPageBaseProgress = progressFileStep*fileIndex + currentFilePageStep*(pageCounter+1);
-                            progress = currentPageBaseProgress;
-                            quarterSecondWaiting = 0;
-                            if (progress > 99)
-                            {
-                                progress = 99; // can't reach 100 before finished
-                            }
-                            debugWriter.WriteLine("{0:D2}%, found page #{1}", progress, pageCounter+1);
-                            GuidCache.Set("Pdf-" + argsProper.Guid + "-Progress", progress);
-
-                            // If the page# file that has appeared is 1+, then the preceding file is ready
-
-                            if (pageCounter > 0)
-                            {
-                                long fileLength = new FileInfo(StorageRoot + lastPageFileName).Length;
-                                debugWriter.WriteLine("{0:D2}%, saving page #{1}, bytecount {2}", progress, pageCounter, fileLength);
-
-                                Document.Create(lastPageFileName,
-                                    clientFileNames[fileIndex] + " " + pageCounter.ToString(CultureInfo.InvariantCulture),
-                                    fileLength, argsProper.Guid, null, argsProper.CurrentUser);
-
-                                // Prepare to save the next file
-                                lastPageFileName = testPageFileName;
-                            }
-
-                            // Increase the page counter and the file we're looking for
-
-                            pageCounter++;
-                            testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
-                            debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
-                        }
-
-                        // We've seen the last page being written -- wait for process to exit
-                        debugWriter.WriteLine("{0:D2}%, waiting for process exit", progress);
-
-                        process.WaitForExit();
-
-                        // Save the last page
-
-                        long fileLengthLastPage = new FileInfo(StorageRoot + lastPageFileName).Length;
-                        debugWriter.WriteLine("{0:D2}%, saving last page #{1}, bytecount {2}", progress, pageCounter, fileLengthLastPage);
-
-                        Document.Create(lastPageFileName,
-                            clientFileNames[fileIndex] + " " + pageCounter.ToString(CultureInfo.InvariantCulture),
-                            fileLengthLastPage, argsProper.Guid, null, argsProper.CurrentUser);
-
-                    }
-
-
-                }
-                catch (Exception e)
-                {
-                    debugWriter.WriteLine("Exception thrown: " + e.ToString());
-
-                    throw;
-                }
-                finally
-                {
-                    debugWriter.WriteLine("Thread exiting");
-
-                    GuidCache.Set("Pdf-" + argsProper.Guid + "-Progress", 100);
-                    // only here may the caller fetch the results
-                }
-            }
         }
 
 
