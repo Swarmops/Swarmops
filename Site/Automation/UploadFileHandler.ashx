@@ -379,11 +379,20 @@ namespace Swarmops.Frontend.Automation
                     debugWriter.WriteLine("Creating socket for backend job. nPdfs: " + pdfsForConversion.Count);
                     debugWriter.Flush();
 
+                    debugWriter.WriteLine(" - Websocket frontend port: " + SystemSettings.WebsocketPortFrontend);
+                    debugWriter.Flush();
+
+                    debugWriter.WriteLine(" - authData.Authority is " + (authData.Authority == null? "null" : "not null"));
+                    debugWriter.Flush();
+
                     using (
                         WebSocket socket =
                             new WebSocket("ws://localhost:" + SystemSettings.WebsocketPortFrontend + "/Front?Auth=" +
                                             Uri.EscapeDataString(authData.Authority.ToEncryptedXml())))
                     {
+                        debugWriter.WriteLine(" - socket is " + (authData.Authority == null? "NULL!?" : "not null"));
+                        debugWriter.Flush();
+
                         socket.Connect();
 
                         debugWriter.WriteLine(" - connected");
