@@ -303,17 +303,18 @@ namespace Swarmops.Frontend.Socket
                             "(BackendConvertedFile) " + pageCounter.ToString(CultureInfo.InvariantCulture),
                             fileLengthLastPage, guid, null, person);
 
+                        // Finally, ask the backend to do the high-res conversions, but now we have the basic, fast ones
+
+                        JObject backendRequest = new JObject();
+                        backendRequest["BackendRequest"] = "ConvertPdfHires";
+                        backendRequest["DocumentId"] = lastDocument.Identity;
+                        FrontendLoop.SendMessageUpstream(backendRequest);
+
+                        backendRequest["MessageType"] = "Echo";
+                        Sessions.Broadcast(backendRequest.ToString());
+
                     }
 
-                    // Finally, ask the backend to do the high-res conversions, but now we have the basic, fast ones
-
-                    JObject backendRequest = new JObject();
-                    backendRequest["BackendRequest"] = "ConvertPdfHires";
-                    backendRequest["DocumentId"] = lastDocument.Identity;
-                    FrontendLoop.SendMessageUpstream(backendRequest);
-
-                    backendRequest["MessageType"] = "Echo";
-                    Sessions.Broadcast(backendRequest.ToString());
                 }
                 catch (Exception e)
                 {
