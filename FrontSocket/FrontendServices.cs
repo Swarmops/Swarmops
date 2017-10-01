@@ -201,8 +201,8 @@ namespace Swarmops.Frontend.Socket
                         // Hires 600dpi conversion is also made, but from backend after this conversion
 
                         process = Process.Start("bash",
-                            "-c \"convert -density 75 -background white -flatten " + Document.StorageRoot + relativeFileName +
-                            " " + Document.StorageRoot + relativeFileName + "-%04d.png\""); 
+                            "-c \"convert -density 75 -background white -alpha remove " + Document.StorageRoot + relativeFileName +
+                            " " + Document.StorageRoot + relativeFileName + "-%04d.png\"");
 
                         int pageCounter = 0; // the first produced page will be zero
                         int currentPageBaseProgress = progressFileStep * fileIndex + currentFilePageStep * pageCounter;

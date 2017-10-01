@@ -145,7 +145,7 @@ namespace Swarmops.Utility.BotCode
             Console.Write("Regenerating document...");
 
             Process process = Process.Start("bash",
-                    "-c \"convert -density " + density.ToString(CultureInfo.InvariantCulture) + " -background white -flatten " + StorageRoot + firstPart + " " +
+                    "-c \"convert -density " + density.ToString(CultureInfo.InvariantCulture) + " -background white -alpha remove " + StorageRoot + firstPart + " " +
                     StorageRoot + firstPart +
                     "-%04d" + suffix + ".png\"");
 
