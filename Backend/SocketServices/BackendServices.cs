@@ -48,8 +48,18 @@ namespace Swarmops.Backend.SocketServices
                     BackendLoop.ProcessMetapackage(SocketMessage.FromXml((string) json["XmlData"]));
                     break;
                 case "ConvertPdfHires":
+                    try
+                    {
+                        PdfProcessor.Rerasterize(Document.FromIdentity((int)json["DocumentId"]), PdfProcessor.PdfProcessorOptions.HighQuality);
+                    }
+                    catch (Exception exc)
+                    {
+                        JObject newJson = new JObject();
+                        newJson["MessageType"] = "Exception";
+                        newJson["ExceptionString"] = exc.ToString();
+                        Sessions.Broadcast(newJson.ToString());
+                    }
                     // Convert with high quality -- done on backend with lower priority than the immediate frontend conversion
-                    PdfProcessor.Rerasterize(Document.FromIdentity((int) json["DocumentId"]), PdfProcessor.PdfProcessorOptions.HighQuality);
                     break;
                 default:
                     // do nothing;
