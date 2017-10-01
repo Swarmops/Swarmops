@@ -116,11 +116,13 @@ function _masterInitializeSocket(authenticationTicket) {
             }
         }
         else if (message.MessageType == "SandboxUpdate") {
-            if (window["odoLocalParticipation"] != undefined) {  // Real ugly accessing specific page elements here, but it's temporary
+            if (window["odoLocalParticipation"] != undefined) { // Real ugly accessing specific page elements here, but it's temporary
                 odoLocalParticipation.innerHTML = message.Local;
                 odoGlobalParticipation.innerHTML = 12345678 + message.Local * 5;
                 odoActiveParticipation.innerHTML = 123412 + message.Local * 5;
-                odoProfitLossToDate.innerHTML = (message.Profit / 100.0) + 0.001;
+            }
+            if (window["odoProfitLossToDate"] != undefined) {
+            odoProfitLossToDate.innerHTML = (message.Profit / 100.0) + 0.001;
             }
         }
         else if (message.MessageType == "ProgressUpdate") {

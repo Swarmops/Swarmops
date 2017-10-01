@@ -85,7 +85,7 @@
 
     });
 
-    function progressUpdateCallback_<%=this.GuidToken%>(progress) {
+    function progressUpdateCallback_<%=this.GuidToken%>(progressPercent) {
 
         alertify.success(progress);
 
