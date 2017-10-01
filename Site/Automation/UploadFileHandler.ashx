@@ -244,7 +244,6 @@ namespace Swarmops.Frontend.Automation
                 {
                     // Convert PDF file into a series of PNG images, one per page
 
-                    int pageCounter = 0;
                     Process process = null;
 
                     if (WeAreInDebugEnvironment)
@@ -308,14 +307,60 @@ namespace Swarmops.Frontend.Automation
 
                         File.Delete(pageCountFileName);
 
-                        // TODO: If page count less than something, convert immediately
+                        if (pdfPageCount < 10)
+                        {
+                            // Small file, so convert immediately instead of deferring
 
-                        FilesStatus requiresConversion = new FilesStatus(fullName, -1);
-                        requiresConversion.requiresPdfConversion = true;
-                        statuses.Add(requiresConversion);
+                            process = Process.Start("bash",
+                                "-c \"convert -density 75 -background white -alpha remove " + Document.StorageRoot + relativeFileName +
+                                " " + Document.StorageRoot + relativeFileName + "-%04d.png\"");
 
-                        pdfsForConversion.Add(relativeFileName);
-                        pdfClientNames.Add(file.FileName);
+                            process.WaitForExit();
+
+                            int pageCounter = 0; // the first produced page will be zero
+                            string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+                            string lastPageFileName = testPageFileName;
+                            Document lastDocument = null;
+
+                            // Convert works by first calling imagemagick that creates /tmp/magick-* files
+
+                            while (pageCounter < pdfPageCount)
+                            {
+                                long fileLength = new FileInfo(Document.StorageRoot + lastPageFileName).Length;
+
+                                lastDocument = Document.Create(lastPageFileName,
+                                    file.FileName + (pageCounter + 1).ToString(CultureInfo.InvariantCulture),
+                                    fileLength, guid, null, authData.CurrentUser);
+
+                                pageCounter++;
+                            }
+
+                            // Ask backend for high-res conversion
+
+                            using (WebSocket socket =
+                                new WebSocket("ws://localhost:" + SystemSettings.WebsocketPortFrontend + "/Front?Auth=" +
+                                              Uri.EscapeDataString(authData.Authority.ToEncryptedXml())))
+                            {
+                                socket.Connect();
+                                JObject data = new JObject();
+                                data["ServerRequest"] = "ConvertPdfHires";
+                                data["DocumentId"] = lastDocument.Identity;
+                                socket.Send(data.ToString());
+                                socket.Ping(); // wait a little little while for send to work
+                                socket.Close();
+                            }
+                        }
+                        else
+                        {
+                            // Defer to backend
+
+                            FilesStatus requiresConversion = new FilesStatus(fullName, -1);
+                            requiresConversion.requiresPdfConversion = true;
+                            statuses.Add(requiresConversion);
+
+                            pdfsForConversion.Add(relativeFileName);
+                            pdfClientNames.Add(file.FileName);
+                        }
 
                     }
 
@@ -372,7 +417,7 @@ namespace Swarmops.Frontend.Automation
                     socket.Close();
                 }
             }
-           
+
         }
 
 
