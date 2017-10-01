@@ -235,7 +235,7 @@ namespace Swarmops.Frontend.Socket
                                     // If first page hasn't appeared yet, check for the Magick temp files
 
                                     int currentMagickCount = Directory.GetFiles("/tmp", "magick-*").Count();
-                                    int currentFilePercentage = currentMagickCount*50/pageCounter;
+                                    int currentFilePercentage = currentMagickCount*50/currentFilePageCount;
                                     if (currentFilePercentage > 50)
                                     {
                                         currentFilePercentage = 50; // we may be not the only one converting right now
