@@ -202,14 +202,10 @@ namespace Swarmops.Frontend.Socket
 
                         process = Process.Start("bash",
                             "-c \"convert -density 75 -background white -flatten " + Document.StorageRoot + relativeFileName +
-                            " " +
-                            Document.StorageRoot + relativeFileName +
-                            "-%04d.png > /tmp/PdfConversionOutput-" + guid + "\""); 
-                        
+                            " " + Document.StorageRoot + relativeFileName + "-%04d.png\""); 
 
                         int pageCounter = 0; // the first produced page will be zero
                         int currentPageBaseProgress = progressFileStep * fileIndex + currentFilePageStep * pageCounter;
-                        int quarterSecondWaiting = 0;
                         string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
                         debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
                         string lastPageFileName = testPageFileName;
@@ -220,25 +216,19 @@ namespace Swarmops.Frontend.Socket
                             {
                                 // Wait for file to appear
 
-                                quarterSecondWaiting++;
-                                progress = currentPageBaseProgress +
-                                           Math.Min(quarterSecondWaiting, 50) * currentFilePageStep / 2 / 50; // advance to 1/2 page over 5s while waiting
                                 debugWriter.WriteLine("{0:D2}%, {2:O}, waiting for page #{1} to appear", progress, pageCounter + 1, DateTime.UtcNow);
                                 debugWriter.Flush();
                                 GuidCache.Set("Pdf-" + guid + "-Progress", progress);
 
-                                process.WaitForExit(250); // this is a more elaborate version of thread.sleep that prevents Apache recycling
-
-                                if (process.HasExited)
+                                if (!process.HasExited)
                                 {
-                                    debugWriter.WriteLine("{0:D2}%, PROCESS HAS EXITED out of order with conversion", progress);
-                                    break;
+                                    process.WaitForExit(250);
+                                    // this is a more elaborate version of thread.sleep that prevents Apache recycling
                                 }
                             }
 
                             currentPageBaseProgress = progressFileStep * fileIndex + currentFilePageStep * (pageCounter + 1);
                             progress = currentPageBaseProgress;
-                            quarterSecondWaiting = 0;
                             if (progress > 99)
                             {
                                 progress = 99; // can't reach 100 before finished
