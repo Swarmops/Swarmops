@@ -92,35 +92,16 @@
 
     });
 
-    function <%=this.ClientID%>_repingPdfProgress() {
+    function progressUpdateCallback_<%=this.GuidString%>(progress) {
 
-        var jsonData = {};
-        jsonData.guid = "Pdf-<%=GuidString%>";
+        $("#<%=this.ClientID %>_DivProgressPdfConvert .progressbar-value").animate(
+            {
+                width: progressPercent + "%"
+            }, { queue: false });
 
-        SwarmopsJS.ajaxCall(
-            "/Automation/Json-ByGuid.aspx/GetNonsocketProgress",
-            jsonData,
-            function (result) {
-                if (result.Success) {
-                    var progressPercent = parseInt(result.DisplayMessage);
-                    $("#<%=this.ClientID %>_DivProgressPdfConvert .progressbar-value").animate(
-                        {
-                            width: progressPercent + "%"
-                        }, { queue: false });
-
-                    if (progressPercent < 100) {
-                        setTimeout(function() { <%=this.ClientID%>_repingPdfProgress(); }, 500);
-                    } else {
-                        // PDF CONVERSION COMPLETE, handle this
-                    }
-                }
-            },
-            function (error) {
-                // try again
-
-                setTimeout(function() { <%=this.ClientID%>_repingPdfProgress(); }, 500);
-            }
-        );
+        if (progressPercent >= 100) {
+            alertify.success("Percent >= 100");
+        }
 
     }
 

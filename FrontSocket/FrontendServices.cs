@@ -62,7 +62,7 @@ namespace Swarmops.Frontend.Socket
                     }
                     string[] pdfFiles = pdfFilesList.ToArray();
 
-                    ConvertPdf (pdfFiles, (string) json["Guid"], Person.FromIdentity((int) json["PersonId"]));
+                    ConvertPdf (pdfFiles, (string) json["Guid"], Person.FromIdentity((int) json["PersonId"]), Organization.FromIdentity((int) json["OrganizationId"]));
                     break;
 
                 default:
@@ -127,7 +127,7 @@ namespace Swarmops.Frontend.Socket
             // Sessions.Broadcast("{\"messageType\":\"EditorCount\"," + String.Format("\"editorCount\":\"{0}\"", Sessions.ActiveIDs.ToArray().Length) + '}');
         }
 
-        private void ConvertPdf(string[] pdfFiles, string guid, Person person)
+        private void ConvertPdf(string[] pdfFiles, string guid, Person person, Organization organization)
         {
             List<string> failedConversionFileNames = new List<string>();
 
@@ -205,10 +205,14 @@ namespace Swarmops.Frontend.Socket
                             " " + Document.StorageRoot + relativeFileName + "-%04d.png\"");
 
                         int pageCounter = 0; // the first produced page will be zero
-                        int currentPageBaseProgress = progressFileStep * fileIndex + currentFilePageStep * pageCounter;
+                        int currentPageBaseProgress = progressFileStep * fileIndex;
                         string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
                         debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
                         string lastPageFileName = testPageFileName;
+
+                        // Convert works by first calling imagemagick that creates /tmp/magick-* files
+
+                        int startMagickCount = Directory.EnumerateFileSystemEntries("/tmp/magick-*").Count();
 
                         while (pageCounter < currentFilePageCount)
                         {
@@ -225,16 +229,25 @@ namespace Swarmops.Frontend.Socket
                                     process.WaitForExit(250);
                                     // this is a more elaborate version of thread.sleep that prevents Apache recycling
                                 }
+
+                                if (pageCounter == 0)
+                                {
+                                    // If first page hasn't appeared yet, check for the Magick temp files
+
+                                    int currentMagickCount = Directory.EnumerateFileSystemEntries("/tmp/magick-*").Count();
+                                    int currentFilePercentage = currentMagickCount*50/pageCounter;
+                                    if (currentFilePercentage > 50)
+                                    {
+                                        currentFilePercentage = 50; // we may be not the only one converting right now
+                                    }
+                                    BroadcastGuidProgress(organization, guid,
+                                        progressFileStep*fileIndex + currentFilePercentage*100/progressFileStep);
+                                }
                             }
 
-                            currentPageBaseProgress = progressFileStep * fileIndex + currentFilePageStep * (pageCounter + 1);
-                            progress = currentPageBaseProgress;
-                            if (progress > 99)
-                            {
-                                progress = 99; // can't reach 100 before finished
-                            }
+                            progress = progressFileStep * fileIndex + currentFilePageStep/2 + currentFilePageStep * (pageCounter + 1) / 2;
                             debugWriter.WriteLine("{0:D2}%, found page #{1}", progress, pageCounter + 1);
-                            GuidCache.Set("Pdf-" + guid + "-Progress", progress);
+                            BroadcastGuidProgress(organization, guid, progress);
 
                             // If the page# file that has appeared is 1+, then the preceding file is ready
 
@@ -286,12 +299,20 @@ namespace Swarmops.Frontend.Socket
                 }
                 finally
                 {
-                    debugWriter.WriteLine("Thread exiting");
+                    debugWriter.WriteLine("Handler exiting");
 
-                    GuidCache.Set("Pdf-" + guid + "-Progress", 100);
-                    // only here may the caller fetch the results
+                    BroadcastGuidProgress(organization, guid, 100);
                 }
             }
+        }
+
+        private void BroadcastGuidProgress(Organization organization, string guid, int progress)
+        {
+            JObject json = new JObject();
+            json["Guid"] = guid;
+            json["Progress"] = progress;
+
+            FrontendLoop.BroadcastToOrganization(organization, json);
         }
 
         public Authority Authority { get { return this._authority; } }
