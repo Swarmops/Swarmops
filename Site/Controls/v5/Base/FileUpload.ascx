@@ -20,8 +20,11 @@
             dataType: 'json',
             done: function (e, data) {
                 var pdfConversionNeeded = false;
-                $.each(data.result, function(index, file) {
-                    if (file.error == null || file.error.length < 1) {
+                $.each(data.result, function (index, file) {
+                    if (file.requiresPdfConversion) {
+                        pdfConversionNeeded = true;
+                    }
+                    else if (file.error == null || file.error.length < 1) {
                         $('#<%=this.ClientID %>_DivUploadCount').append(imageUploadSuccess);
                     } else {
                         $('#<%=this.ClientID %>_DivUploadCount').append(imageUploadFail); // Assume ERR_NOT_IMAGE
@@ -29,10 +32,21 @@
                     }
 
                 });
+
                 $('#<%=this.ClientID %>_DivProgressUpload').progressbar({ value: 100 });
                 if (pdfConversionNeeded) {
                     $('#<%=this.ClientID %>_DivProgressPdfConversion').progressbar({ value: 1 });
-                    $('#<%=this.ClientID %>_DivMainControlArea').fadeOut('400', function() { $('#<%=this.ClientID %>_DivPdfConverting').fadeIn(); });
+                    $('#<%=this.ClientID %>_DivMainControlArea').fadeOut('400', function () { $('#<%=this.ClientID %>_DivPdfConverting').fadeIn(); });
+                    var jsonData = {};
+                    jsonData.guid = '<%=GuidString%>';
+
+                    SwarmopsJS.ajaxCall("/Automation/UploadFileHandler.ashx/BeginPdfConversion",
+                        jsonData,
+                        function() {
+                            // Successful start
+                            alertify.success('Started PDF conversion thread');
+                            setTimeout(function() { <%=this.ClientID%>_repingPdfProgress() }, 500);
+                        });
                 } else {
 
                     <% if (!String.IsNullOrEmpty(this.ClientUploadCompleteCallback))
@@ -84,16 +98,30 @@
         jsonData.guid = "Pdf-<%=GuidString%>";
 
         SwarmopsJS.ajaxCall(
-            "/Automation/Json-ByGuid.aspx/GetProgress2",
+            "/Automation/Json-ByGuid.aspx/GetNonsocketProgress",
             jsonData,
-            function(result) {
+            function (result) {
+                if (result.Success) {
+                    var progressPercent = parseInt(result.DisplayMessage);
+                    $("#<%=this.ClientID %>_DivProgressPdfConvert .progressbar-value").animate(
+                        {
+                            width: progressPercent + "%"
+                        }, { queue: false });
+
+                    if (progressPercent < 100) {
+                        setTimeout(function() { <%=this.ClientID%>_repingPdfProgress(); }, 500);
+                    } else {
+                        // PDF CONVERSION COMPLETE, handle this
+                    }
+                }
             },
-            function(error) {
+            function (error) {
+                // try again
+
+                setTimeout(function() { <%=this.ClientID%>_repingPdfProgress(); }, 500);
             }
         );
 
-        SwarmopsJS.ajaxCall()
-        setTimeout(function() { <%=this.ClientID%>_repingPdfProgress(); }, 500);
     }
 
 </script>
@@ -105,19 +133,15 @@
         </div>
         <div style="height:36px;padding-top:4px;width:270px;margin-right:10px;float:right;border:none">
             <div id="<%=this.ClientID %>_DivUploadCount" style='display:none;overflow:hidden;height:'<%=this.DisplayCount < 9? 32: 64%>px'></div>
-            <div id="<%=this.ClientID %>_DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div>
+            <div id="<%=this.ClientID %>_DivProgressUpload" style="width:100%;margin-top:10px;display:none"></div>
         </div>
     </div>
-</div>
-<div class="stacked-input-control">
-    <div id="<%=this.ClientID %>_DivPdfConverting">
-        <div style="position:relative">
-            <div style="position: absolute; top: 0; left: 0; z-index:0"><img src="/Images/Icons/iconshock-pdf-128px.png" height="32" width="32"/>
-            <div style="position: absolute; top: 0; left: 0; z-index:1"><img src="/Images/Abstract/ajaxloader-48x36px.gif" height="32" width="32"/></div>
-            <div id="<%=this.ClientID %>_DivProgressPdfConvert" style="position: absolute; top: 8px; left: 40px; width:100%"></div>
-        </div>
+    <div id="<%=this.ClientID %>_DivPdfConverting" style="display:none">
+        <div style="position: relative; width:100%">
+            <div style="position: absolute; top: 4px; left: 4px; z-index:4"><img src="/Images/Icons/iconshock-pdf-128px.png" height="32" width="32"/></div>
+            <div style="position: absolute; top: 0; left: -6px; z-index:2"><img src="/Images/Abstract/ajaxloader-48x36px.gif" height="36" width="48"/></div>
+            <div id="<%=this.ClientID %>_DivProgressPdfConvert" style="position: absolute; top: 10px; z-index: 0"></div>
         </div>
     </div>
-
 </div>
 
