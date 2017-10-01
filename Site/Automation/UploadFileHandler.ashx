@@ -151,279 +151,227 @@ namespace Swarmops.Frontend.Automation
 
             AuthenticationData authData = CommonV5.GetAuthenticationDataAndCulture(context);
 
-            using (StreamWriter debugWriter = new StreamWriter("/tmp/upload-debug.txt"))
+            for (int i = 0; i < context.Request.Files.Count; i++)
             {
+                HttpPostedFile file = context.Request.Files[i];
+                string fullName = Path.GetFileName(file.FileName);
 
-                for (int i = 0; i < context.Request.Files.Count; i++)
+                Person uploadingPerson = authData.CurrentUser;
+                Organization currentOrg = authData.CurrentOrganization;
+
+                bool convertPdf = false;
+                bool pdfGeneratedHere = false;
+
+                if (file.FileName.ToLower().EndsWith(".pdf"))
                 {
-                    HttpPostedFile file = context.Request.Files[i];
-                    string fullName = Path.GetFileName(file.FileName);
+                    convertPdf = true;
+                }
+                else
+                {
+                    // If not PDF, try to load as an image
 
-                    Person uploadingPerson = authData.CurrentUser;
-                    Organization currentOrg = authData.CurrentOrganization;
+                    string filterType = context.Request.QueryString["Filter"];
 
-                    bool convertPdf = false;
-                    bool pdfGeneratedHere = false;
-
-                    if (file.FileName.ToLower().EndsWith(".pdf"))
+                    if (filterType != "NoFilter")
                     {
-                        convertPdf = true;
-                    }
-                    else
-                    {
-                        // If not PDF, try to load as an image
+                        // Try to load as image. If fails, not an acceptable file
 
-                        string filterType = context.Request.QueryString["Filter"];
-
-                        if (filterType != "NoFilter")
+                        try
                         {
-                            // Try to load as image. If fails, not an acceptable file
+                            Image image = Image.FromStream(file.InputStream);
+                            image.Dispose();
+                        }
+                        catch (Exception)
+                        {
+                            // TODO: If general files accepted, then ok, otherwise error
 
-                            try
-                            {
-                                Image image = Image.FromStream(file.InputStream);
-                                image.Dispose();
-                            }
-                            catch (Exception)
-                            {
-                                // TODO: If general files accepted, then ok, otherwise error
+                            // TODO: Accept general files
 
-                                // TODO: Accept general files
+                            FilesStatus errorStatus = new FilesStatus(fullName, file.ContentLength);
+                            errorStatus.error = "ERR_NOT_IMAGE";
+                            errorStatus.url = string.Empty;
+                            errorStatus.delete_url = string.Empty;
+                            errorStatus.thumbnail_url = string.Empty;
 
-                                FilesStatus errorStatus = new FilesStatus(fullName, file.ContentLength);
-                                errorStatus.error = "ERR_NOT_IMAGE";
-                                errorStatus.url = string.Empty;
-                                errorStatus.delete_url = string.Empty;
-                                errorStatus.thumbnail_url = string.Empty;
-
-                                statuses.Add(errorStatus);
-                                // -1 for length means the file was NOT saved, and that it could not be parsed as image.
-                                return;
-                            }
+                            statuses.Add(errorStatus);
+                            // -1 for length means the file was NOT saved, and that it could not be parsed as image.
+                            return;
                         }
                     }
+                }
 
-                    if (string.IsNullOrEmpty(guid))
+                if (string.IsNullOrEmpty(guid))
+                {
+                    throw new ArgumentException("No Context Guid supplied with upload");
+                }
+
+                string fileNameBase = guid + "-" + uploadingPerson.Identity.ToString("X8").ToLowerInvariant() + "-" +
+                                        currentOrg.Identity.ToString("X4").ToLowerInvariant();
+
+                DateTime utcNow = DateTime.UtcNow;
+
+                string fileFolder = utcNow.Year.ToString("0000") + Path.DirectorySeparatorChar +
+                                    utcNow.Month.ToString("00") + Path.DirectorySeparatorChar +
+                                    utcNow.Day.ToString("00");
+
+                if (!Directory.Exists(StorageRoot + fileFolder))
+                {
+                    Directory.CreateDirectory(StorageRoot + fileFolder);
+                }
+
+                int fileCounter = 0;
+                string fileName = string.Empty;
+
+                do
+                {
+                    fileCounter++;
+                    fileName = fileNameBase + "-" + fileCounter.ToString("X2").ToLowerInvariant();
+                } while (File.Exists(StorageRoot + fileFolder + Path.DirectorySeparatorChar + fileName) &&
+                            fileCounter < 512);
+
+                if (fileCounter >= 512)
+                {
+                    throw new InvalidOperationException(
+                        "File name determination failed; probable file system permissions error");
+                }
+
+                string relativeFileName = fileFolder + Path.DirectorySeparatorChar + fileName;
+
+                file.InputStream.Position = 0;
+                file.SaveAs(StorageRoot + relativeFileName);
+
+                if (convertPdf)
+                {
+                    // Convert PDF file into a series of PNG images, one per page
+
+                    int pageCounter = 0;
+                    Process process = null;
+
+                    if (WeAreInDebugEnvironment)
                     {
-                        throw new ArgumentException("No Context Guid supplied with upload");
-                    }
+                        process = Process.Start("cmd.exe",
+                            "/c convert -background white -flatten " + StorageRoot + relativeFileName + " " +
+                            StorageRoot + relativeFileName +
+                            "-%04d.png");
 
-                    string fileNameBase = guid + "-" + uploadingPerson.Identity.ToString("X8").ToLowerInvariant() + "-" +
-                                          currentOrg.Identity.ToString("X4").ToLowerInvariant();
+                        process.WaitForExit();
 
-                    DateTime utcNow = DateTime.UtcNow;
-
-                    string fileFolder = utcNow.Year.ToString("0000") + Path.DirectorySeparatorChar +
-                                        utcNow.Month.ToString("00") + Path.DirectorySeparatorChar +
-                                        utcNow.Day.ToString("00");
-
-                    if (!Directory.Exists(StorageRoot + fileFolder))
-                    {
-                        Directory.CreateDirectory(StorageRoot + fileFolder);
-                    }
-
-                    int fileCounter = 0;
-                    string fileName = string.Empty;
-
-                    do
-                    {
-                        fileCounter++;
-                        fileName = fileNameBase + "-" + fileCounter.ToString("X2").ToLowerInvariant();
-                    } while (File.Exists(StorageRoot + fileFolder + Path.DirectorySeparatorChar + fileName) &&
-                             fileCounter < 512);
-
-                    if (fileCounter >= 512)
-                    {
-                        throw new InvalidOperationException(
-                            "File name determination failed; probable file system permissions error");
-                    }
-
-                    string relativeFileName = fileFolder + Path.DirectorySeparatorChar + fileName;
-
-                    file.InputStream.Position = 0;
-                    file.SaveAs(StorageRoot + relativeFileName);
-
-                    if (convertPdf)
-                    {
-                        // Convert PDF file into a series of PNG images, one per page
-
-                        int pageCounter = 0;
-                        Process process = null;
-
-                        if (WeAreInDebugEnvironment)
+                        if (process.ExitCode != 0)
                         {
-                            process = Process.Start("cmd.exe",
-                                "/c convert -background white -flatten " + StorageRoot + relativeFileName + " " +
-                                StorageRoot + relativeFileName +
-                                "-%04d.png");
+                            FilesStatus errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
+                            errorStatus.error = "ERR_BAD_PDF";
+                            errorStatus.url = string.Empty;
+                            errorStatus.delete_url = string.Empty;
+                            errorStatus.thumbnail_url = string.Empty;
 
-                            process.WaitForExit();
-
-                            if (process.ExitCode != 0)
-                            {
-                                FilesStatus errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
-                                errorStatus.error = "ERR_BAD_PDF";
-                                errorStatus.url = string.Empty;
-                                errorStatus.delete_url = string.Empty;
-                                errorStatus.thumbnail_url = string.Empty;
-
-                                statuses.Add(errorStatus);
-                                // -1 for length means the file was NOT saved, and that it could not be parsed.
-                                continue; // with next file
-                            }
-
-                            pdfGeneratedHere = true;
-                        }
-                        else // live environment, not debug
-                        {
-                            // Use qpdf to determine the number of pages in the PDF
-
-                            debugWriter.WriteLine("Determining page count");
-                            debugWriter.Flush();
-
-                            string pageCountFileName = "/tmp/pagecount-" + guid + ".txt";
-
-                            process = Process.Start("bash",
-                                "-c \"qpdf --show-npages " + StorageRoot + relativeFileName + " > " + pageCountFileName +
-                                "\"");
-
-                            process.WaitForExit();
-                            int pdfPageCount = 0;
-
-                            if (process.ExitCode != 0)
-                            {
-                                debugWriter.WriteLine("Bad PDF file");
-                                debugWriter.Flush();
-
-                                // Bad PDF file
-                                FilesStatus errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
-                                errorStatus.error = "ERR_BAD_PDF";
-                                errorStatus.url = string.Empty;
-                                errorStatus.delete_url = string.Empty;
-                                errorStatus.thumbnail_url = string.Empty;
-
-                                statuses.Add(errorStatus);
-                                // -1 for length means the file was NOT saved, and that it could not be parsed.
-                                continue;
-                            }
-
-                            debugWriter.WriteLine("Reading page count");
-                            debugWriter.Flush();
-
-                            // Read the resulting page count from the file we piped
-
-                            using (StreamReader pageCountReader = new StreamReader(pageCountFileName))
-                            {
-                                string pageCountString = pageCountReader.ReadToEnd().Trim();
-                                pdfPageCount = Int32.Parse(pageCountString);
-                            }
-
-                            debugWriter.WriteLine("Page count is " + pdfPageCount);
-                            debugWriter.Flush();
-
-                            File.Delete(pageCountFileName);
-
-                            // TODO: If page count less than something, convert immediately
-
-                            FilesStatus requiresConversion = new FilesStatus(fullName, -1);
-                            requiresConversion.requiresPdfConversion = true;
-                            statuses.Add(requiresConversion);
-
-                            pdfsForConversion.Add(relativeFileName);
-                            pdfClientNames.Add(file.FileName);
-
-                            debugWriter.WriteLine("Added '" + relativeFileName + "' to list");
-                            debugWriter.Flush();
-
+                            statuses.Add(errorStatus);
+                            // -1 for length means the file was NOT saved, and that it could not be parsed.
+                            continue; // with next file
                         }
 
-                        if (pdfGeneratedHere) // as opposed to deferred to backend for large files
+                        pdfGeneratedHere = true;
+                    }
+                    else // live environment, not debug
+                    {
+                        // Use qpdf to determine the number of pages in the PDF
+
+                        string pageCountFileName = "/tmp/pagecount-" + guid + ".txt";
+
+                        process = Process.Start("bash",
+                            "-c \"qpdf --show-npages " + StorageRoot + relativeFileName + " > " + pageCountFileName +
+                            "\"");
+
+                        process.WaitForExit();
+                        int pdfPageCount = 0;
+
+                        if (process.ExitCode != 0)
                         {
-                            string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+                            // Bad PDF file
+                            FilesStatus errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
+                            errorStatus.error = "ERR_BAD_PDF";
+                            errorStatus.url = string.Empty;
+                            errorStatus.delete_url = string.Empty;
+                            errorStatus.thumbnail_url = string.Empty;
 
-                            while (File.Exists(StorageRoot + testPageFileName))
-                            {
-                                long fileLength = new FileInfo(StorageRoot + testPageFileName).Length;
-
-                                Document.Create(testPageFileName,
-                                    file.FileName + " " + (pageCounter + 1).ToString(CultureInfo.InvariantCulture),
-                                    fileLength,
-                                    guid, null, authData.CurrentUser);
-
-                                pageCounter++;
-                                testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
-                            }
-                            statuses.Add(new FilesStatus(fullName, file.ContentLength));
+                            statuses.Add(errorStatus);
+                            // -1 for length means the file was NOT saved, and that it could not be parsed.
+                            continue;
                         }
+
+                        // Read the resulting page count from the file we piped
+
+                        using (StreamReader pageCountReader = new StreamReader(pageCountFileName))
+                        {
+                            string pageCountString = pageCountReader.ReadToEnd().Trim();
+                            pdfPageCount = Int32.Parse(pageCountString);
+                        }
+
+                        File.Delete(pageCountFileName);
+
+                        // TODO: If page count less than something, convert immediately
+
+                        FilesStatus requiresConversion = new FilesStatus(fullName, -1);
+                        requiresConversion.requiresPdfConversion = true;
+                        statuses.Add(requiresConversion);
+
+                        pdfsForConversion.Add(relativeFileName);
+                        pdfClientNames.Add(file.FileName);
+
                     }
 
-                    if (!convertPdf || pdfGeneratedHere)
+                    if (pdfGeneratedHere) // as opposed to deferred to backend for large files
                     {
-                        // In all cases except PDF deferred, create the document
+                        string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
 
-                        debugWriter.WriteLine("Creating document record");
-                        debugWriter.Flush();
+                        while (File.Exists(StorageRoot + testPageFileName))
+                        {
+                            long fileLength = new FileInfo(StorageRoot + testPageFileName).Length;
 
-                        Document.Create(fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName,
-                            file.ContentLength,
-                            guid, null, authData.CurrentUser);
+                            Document.Create(testPageFileName,
+                                file.FileName + " " + (pageCounter + 1).ToString(CultureInfo.InvariantCulture),
+                                fileLength,
+                                guid, null, authData.CurrentUser);
 
+                            pageCounter++;
+                            testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+                        }
                         statuses.Add(new FilesStatus(fullName, file.ContentLength));
                     }
                 }
 
-                if (pdfsForConversion.Count > 0)
+                if (!convertPdf || pdfGeneratedHere)
                 {
-                    // Backend conversion of long files required
+                    // In all cases except PDF deferred, create the document
 
-                    debugWriter.WriteLine("Creating socket for backend job. nPdfs: " + pdfsForConversion.Count);
-                    debugWriter.Flush();
+                    Document.Create(fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName,
+                        file.ContentLength,
+                        guid, null, authData.CurrentUser);
 
-                    debugWriter.WriteLine(" - Websocket frontend port: " + SystemSettings.WebsocketPortFrontend);
-                    debugWriter.Flush();
-
-                    debugWriter.WriteLine(" - authData.Authority is " + (authData.Authority == null? "null" : "not null"));
-                    debugWriter.Flush();
-
-                    using (
-                        WebSocket socket =
-                            new WebSocket("ws://localhost:" + SystemSettings.WebsocketPortFrontend + "/Front?Auth=" +
-                                            Uri.EscapeDataString(authData.Authority.ToEncryptedXml())))
-                    {
-                        debugWriter.WriteLine(" - socket is " + (authData.Authority == null? "NULL!?" : "not null"));
-                        debugWriter.Flush();
-
-                        socket.Connect();
-
-                        debugWriter.WriteLine(" - connected");
-                        debugWriter.Flush();
-
-                        JObject data = new JObject();
-                        data["ServerRequest"] = "ConvertPdf";
-                        data["PdfFiles"] = JArray.FromObject(pdfsForConversion.ToArray());
-
-                        debugWriter.WriteLine(" - pdfFiles set");
-                        debugWriter.Flush();
-
-                        data["Guid"] = (string) guid;
-                        data["PersonId"] = authData.CurrentUser.Identity;
-
-                        debugWriter.WriteLine(" - guid and personId set");
-                        debugWriter.Flush();
-
-                        socket.Send(data.ToString());
-                        socket.Ping(); // wait a little little while for send to work
-
-                        debugWriter.WriteLine(" - sent data and pinged");
-                        debugWriter.Flush();
-
-                        socket.Close();
-                    }
-
-                    debugWriter.WriteLine("Sent instructions to backend");
-                    debugWriter.Flush();
+                    statuses.Add(new FilesStatus(fullName, file.ContentLength));
                 }
             }
+
+            if (pdfsForConversion.Count > 0)
+            {
+                // Backend conversion of long files required
+
+                using (
+                    WebSocket socket =
+                        new WebSocket("ws://localhost:" + SystemSettings.WebsocketPortFrontend + "/Front?Auth=" +
+                                        Uri.EscapeDataString(authData.Authority.ToEncryptedXml())))
+                {
+                    socket.Connect();
+                    JObject data = new JObject();
+                    data["ServerRequest"] = "ConvertPdf";
+                    data["PdfFiles"] = JArray.FromObject(pdfsForConversion.ToArray());
+                    data["Guid"] = (string) guid;
+                    data["PersonId"] = authData.CurrentUser.Identity;
+                    socket.Send(data.ToString());
+                    socket.Ping(); // wait a little little while for send to work
+                    socket.Close();
+                }
+            }
+           
         }
 
 
