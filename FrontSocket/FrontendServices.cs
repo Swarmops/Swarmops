@@ -332,7 +332,7 @@ namespace Swarmops.Frontend.Socket
         {
             JObject json = new JObject();
             json["MessageType"] = "ProgressUpdate";
-            json["Guid"] = guid;
+            json["Guid"] = guid.Replace("-", "_"); // necessary to be a JS token
             json["Progress"] = progress;
 
             FrontendLoop.BroadcastToOrganization(organization, json);
