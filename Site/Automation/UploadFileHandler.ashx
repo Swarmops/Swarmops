@@ -364,7 +364,7 @@ namespace Swarmops.Frontend.Automation
                     JObject data = new JObject();
                     data["ServerRequest"] = "ConvertPdf";
                     data["PdfFiles"] = JArray.FromObject(pdfsForConversion.ToArray());
-                    data["Guid"] = (string) guid;
+                    data["Guid"] = (string) guid.Replace("-", "_"); // convert to token
                     data["PersonId"] = authData.CurrentUser.Identity;
                     data["OrganizationId"] = authData.CurrentOrganization.Identity;
                     socket.Send(data.ToString());

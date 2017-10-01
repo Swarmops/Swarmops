@@ -38,6 +38,11 @@ namespace Swarmops.Controls.Base
         public string ClientUploadStartedCallback { get; set; }
         public string Cookie { get; set; }
 
+        public string GuidToken
+        {
+            get { return GuidString.Replace("-", "_"); }
+        }
+
         protected void Page_Init (object sender, EventArgs e)
         {
             // cause master to include necessary script

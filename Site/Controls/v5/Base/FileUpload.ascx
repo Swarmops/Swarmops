@@ -85,7 +85,7 @@
 
     });
 
-    function progressUpdateCallback_<%=this.GuidString%>(progress) {
+    function progressUpdateCallback_<%=this.GuidToken%>(progress) {
 
         $("#<%=this.ClientID %>_DivProgressPdfConvert .progressbar-value").animate(
             {
