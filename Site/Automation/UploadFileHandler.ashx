@@ -385,13 +385,28 @@ namespace Swarmops.Frontend.Automation
                     {
                         socket.Connect();
 
+                        debugWriter.WriteLine(" - connected");
+                        debugWriter.Flush();
+
                         JObject data = new JObject();
                         data["ServerRequest"] = "ConvertPdf";
                         data["PdfFiles"] = JArray.FromObject(pdfsForConversion.ToArray());
+
+                        debugWriter.WriteLine(" - pdfFiles set");
+                        debugWriter.Flush();
+
                         data["Guid"] = (string) guid;
                         data["PersonId"] = CurrentUser.Identity;
+
+                        debugWriter.WriteLine(" - guid and personId set");
+                        debugWriter.Flush();
+
                         socket.Send(data.ToString());
                         socket.Ping(); // wait a little little while for send to work
+
+                        debugWriter.WriteLine(" - sent data and pinged");
+                        debugWriter.Flush();
+
                         socket.Close();
                     }
 
