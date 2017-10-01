@@ -123,6 +123,13 @@ function _masterInitializeSocket(authenticationTicket) {
                 odoProfitLossToDate.innerHTML = (message.Profit / 100.0) + 0.001;
             }
         }
+        else if (message.MessageType == "ProgressUpdate") {
+            var updateFunction = window["progressUpdateCallback_" + message.Guid];
+
+            if (updateFunction != undefined) {
+                updateFunction(message.Progress);
+            }
+        }
     };
 }
 

@@ -153,7 +153,7 @@ namespace Swarmops.Frontend.Socket
                         int progressMax = (fileIndex + 1) * 99 / fileCount - 1;
                         int progressFileStep = 99 / fileCount;
                         int currentFilePageCount = 0;
-                        int currentFilePageStep = 0;
+                        int currentFilePageStepMilli = 0;
 
                         string relativeFileName = pdfFiles[fileIndex];
 
@@ -188,7 +188,7 @@ namespace Swarmops.Frontend.Socket
                             debugWriter.WriteLine("{0:D2}%, page count is '{1}'", progress, pageCountString);
                             currentFilePageCount = Int32.Parse(pageCountString);
                             debugWriter.WriteLine("{0:D2}%, parsed to int as {1}", progress, currentFilePageCount);
-                            currentFilePageStep = progressFileStep / currentFilePageCount;
+                            currentFilePageStepMilli = progressFileStep * 1000 / currentFilePageCount;
                         }
 
                         File.Delete(pageCountFileName);
@@ -213,6 +213,7 @@ namespace Swarmops.Frontend.Socket
                         // Convert works by first calling imagemagick that creates /tmp/magick-* files
 
                         int startMagickCount = Directory.GetFiles("/tmp", "magick-*").Count();
+                        int lastProgress = 0;
 
                         while (pageCounter < currentFilePageCount)
                         {
@@ -240,14 +241,28 @@ namespace Swarmops.Frontend.Socket
                                     {
                                         currentFilePercentage = 50; // we may be not the only one converting right now
                                     }
-                                    BroadcastGuidProgress(organization, guid,
-                                        progressFileStep*fileIndex + currentFilePercentage*100/progressFileStep);
+
+                                    progress = progressFileStep*fileIndex + currentFilePercentage*100/progressFileStep;
+                                    if (progress != lastProgress)
+                                    {
+                                        BroadcastGuidProgress(organization, guid, progress);
+                                        lastProgress = progress;
+                                    }
                                 }
                             }
 
-                            progress = progressFileStep * fileIndex + currentFilePageStep/2 + currentFilePageStep * (pageCounter + 1) / 2;
+                            pageCounter++;
+                            testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+                            debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
+
+                            progress = progressFileStep * fileIndex + progressFileStep / 2 + currentFilePageStepMilli * (pageCounter + 1) / 2000;
+                            if (progress != lastProgress)
+                            {
+                                BroadcastGuidProgress(organization, guid, progress);
+                                lastProgress = progress;
+                            }
+
                             debugWriter.WriteLine("{0:D2}%, found page #{1}", progress, pageCounter + 1);
-                            BroadcastGuidProgress(organization, guid, progress);
 
                             // If the page# file that has appeared is 1+, then the preceding file is ready
 
@@ -266,9 +281,6 @@ namespace Swarmops.Frontend.Socket
 
                             // Increase the page counter and the file we're looking for
 
-                            pageCounter++;
-                            testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
-                            debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
                         }
 
                         // We've seen the last page being written -- wait for process to exit
