@@ -318,19 +318,23 @@ namespace Swarmops.Frontend.Automation
                             process.WaitForExit();
 
                             int pageCounter = 0; // the first produced page will be zero
-                            string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
-                            string lastPageFileName = testPageFileName;
                             Document lastDocument = null;
 
-                            // Convert works by first calling imagemagick that creates /tmp/magick-* files
+                            // Create all document records
 
                             while (pageCounter < pdfPageCount)
                             {
-                                long fileLength = new FileInfo(Document.StorageRoot + lastPageFileName).Length;
+                                string pageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
 
-                                lastDocument = Document.Create(lastPageFileName,
-                                    file.FileName + (pageCounter + 1).ToString(CultureInfo.InvariantCulture),
-                                    fileLength, guid, null, authData.CurrentUser);
+                                if (File.Exists(Document.StorageRoot + pageFileName))
+                                {
+
+                                    long fileLength = new FileInfo(Document.StorageRoot + pageFileName).Length;
+
+                                    lastDocument = Document.Create(pageFileName,
+                                        file.FileName + (pageCounter + 1).ToString(CultureInfo.InvariantCulture),
+                                        fileLength, guid, null, authData.CurrentUser);
+                                }
 
                                 pageCounter++;
                             }
@@ -349,6 +353,8 @@ namespace Swarmops.Frontend.Automation
                                 socket.Ping(); // wait a little little while for send to work
                                 socket.Close();
                             }
+
+                            statuses.Add(new FilesStatus(fullName, file.ContentLength));
                         }
                         else
                         {
@@ -362,25 +368,6 @@ namespace Swarmops.Frontend.Automation
                             pdfClientNames.Add(file.FileName);
                         }
 
-                    }
-
-                    if (pdfGeneratedHere) // as opposed to deferred to backend for large files
-                    {
-                        string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
-
-                        while (File.Exists(StorageRoot + testPageFileName))
-                        {
-                            long fileLength = new FileInfo(StorageRoot + testPageFileName).Length;
-
-                            Document.Create(testPageFileName,
-                                file.FileName + " " + (pageCounter + 1).ToString(CultureInfo.InvariantCulture),
-                                fileLength,
-                                guid, null, authData.CurrentUser);
-
-                            pageCounter++;
-                            testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
-                        }
-                        statuses.Add(new FilesStatus(fullName, file.ContentLength));
                     }
                 }
 
@@ -422,128 +409,128 @@ namespace Swarmops.Frontend.Automation
 
 
         [WebMethod]
-        public static AjaxConversionCallResult GetPdfConversionResult (string guid)
-        {
-            return (AjaxConversionCallResult) GuidCache.Get("PdfConversionResult-" + guid);
-        }
+public static AjaxConversionCallResult GetPdfConversionResult (string guid)
+{
+    return (AjaxConversionCallResult) GuidCache.Get("PdfConversionResult-" + guid);
+}
 
 
-        public class AjaxConversionCallResult: AjaxCallResult
-        {
-            public int SuccessCount { get; set; }
-            public int FailCount { get; set; }
-            public string[] FailFileNames { get; set; }
-        }
+public class AjaxConversionCallResult: AjaxCallResult
+{
+    public int SuccessCount { get; set; }
+    public int FailCount { get; set; }
+    public string[] FailFileNames { get; set; }
+}
 
-        private static void ConvertPdfThread(object args)
-        {
-            ProcessThreadArguments argsProper = (ProcessThreadArguments) args;
-        }
-
-
-        private class ProcessThreadArguments
-        {
-            public string Guid { get; set; }
-            public Organization Organization { get; set; }
-            public Person CurrentUser { get; set; }
-        }
+private static void ConvertPdfThread(object args)
+{
+    ProcessThreadArguments argsProper = (ProcessThreadArguments) args;
+}
 
 
-        private void WriteJsonIframeSafe(HttpContext context, List<FilesStatus> statuses)
-        {
-            context.Response.AddHeader("Vary", "Accept");
-            try
-            {
-                if (context.Request["HTTP_ACCEPT"].Contains("application/json"))
-                    context.Response.ContentType = "application/json";
-                else
-                    context.Response.ContentType = "text/plain";
-            }
-            catch
-            {
-                context.Response.ContentType = "text/plain";
-            }
+private class ProcessThreadArguments
+{
+    public string Guid { get; set; }
+    public Organization Organization { get; set; }
+    public Person CurrentUser { get; set; }
+}
 
-            string jsonObj = this.js.Serialize(statuses.ToArray());
-            context.Response.Write(jsonObj);
-        }
 
-        private static bool GivenFilename(HttpContext context)
-        {
-            return !string.IsNullOrEmpty(context.Request["f"]);
-        }
-
-        private void DeliverFile(HttpContext context)
-        {
-            string filename = context.Request["f"];
-            string filePath = StorageRoot + filename;
-
-            if (File.Exists(filePath))
-            {
-                context.Response.AddHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
-                context.Response.ContentType = "application/octet-stream";
-                context.Response.ClearContent();
-                context.Response.WriteFile(filePath);
-            }
-            else
-                context.Response.StatusCode = 404;
-        }
-
-        private void ListCurrentFiles(HttpContext context)
-        {
-            FileInfo[] files =
-                new DirectoryInfo(StorageRoot)
-                    .GetFiles("*", SearchOption.TopDirectoryOnly);
-
-            // completely wrong, redo from scratch
-
-            string jsonObj = this.js.Serialize(files);
-            context.Response.AddHeader("Content-Disposition", "inline; filename=\"files.json\"");
-            context.Response.Write(jsonObj);
+private void WriteJsonIframeSafe(HttpContext context, List<FilesStatus> statuses)
+{
+    context.Response.AddHeader("Vary", "Accept");
+    try
+    {
+        if (context.Request["HTTP_ACCEPT"].Contains("application/json"))
             context.Response.ContentType = "application/json";
-        }
+        else
+            context.Response.ContentType = "text/plain";
+    }
+    catch
+    {
+        context.Response.ContentType = "text/plain";
+    }
+
+    string jsonObj = this.js.Serialize(statuses.ToArray());
+    context.Response.Write(jsonObj);
+}
+
+private static bool GivenFilename(HttpContext context)
+{
+    return !string.IsNullOrEmpty(context.Request["f"]);
+}
+
+private void DeliverFile(HttpContext context)
+{
+    string filename = context.Request["f"];
+    string filePath = StorageRoot + filename;
+
+    if (File.Exists(filePath))
+    {
+        context.Response.AddHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
+        context.Response.ContentType = "application/octet-stream";
+        context.Response.ClearContent();
+        context.Response.WriteFile(filePath);
+    }
+    else
+        context.Response.StatusCode = 404;
+}
+
+private void ListCurrentFiles(HttpContext context)
+{
+    FileInfo[] files =
+        new DirectoryInfo(StorageRoot)
+            .GetFiles("*", SearchOption.TopDirectoryOnly);
+
+    // completely wrong, redo from scratch
+
+    string jsonObj = this.js.Serialize(files);
+    context.Response.AddHeader("Content-Disposition", "inline; filename=\"files.json\"");
+    context.Response.Write(jsonObj);
+    context.Response.ContentType = "application/json";
+}
     }
 
     public class FilesStatus
+{
+    public const string HandlerPath = "/";
+
+    public FilesStatus()
     {
-        public const string HandlerPath = "/";
-
-        public FilesStatus()
-        {
-        }
-
-        public FilesStatus(FileInfo fileInfo)
-        {
-            SetValues(fileInfo.Name, (int) fileInfo.Length);
-        }
-
-        public FilesStatus(string fileName, int fileLength)
-        {
-            SetValues(fileName, fileLength);
-        }
-
-        public string group { get; set; }
-        public string name { get; set; }
-        public string type { get; set; }
-        public int size { get; set; }
-        public string progress { get; set; }
-        public string url { get; set; }
-        public string thumbnail_url { get; set; }
-        public string delete_url { get; set; }
-        public string delete_type { get; set; }
-        public string error { get; set; }
-        public bool requiresPdfConversion { get; set; }
-
-        private void SetValues(string fileName, int fileLength)
-        {
-            name = fileName;
-            type = "image/png";
-            size = fileLength;
-            progress = "1.0";
-            url = HandlerPath + "UploadFileHandler.ashx?f=" + fileName;
-            thumbnail_url = HandlerPath + "Thumbnail.ashx?f=" + fileName;
-            delete_url = HandlerPath + "UploadFileHandler.ashx?f=" + fileName;
-            delete_type = "DELETE";
-        }
     }
+
+    public FilesStatus(FileInfo fileInfo)
+    {
+        SetValues(fileInfo.Name, (int) fileInfo.Length);
+    }
+
+    public FilesStatus(string fileName, int fileLength)
+    {
+        SetValues(fileName, fileLength);
+    }
+
+    public string group { get; set; }
+    public string name { get; set; }
+    public string type { get; set; }
+    public int size { get; set; }
+    public string progress { get; set; }
+    public string url { get; set; }
+    public string thumbnail_url { get; set; }
+    public string delete_url { get; set; }
+    public string delete_type { get; set; }
+    public string error { get; set; }
+    public bool requiresPdfConversion { get; set; }
+
+    private void SetValues(string fileName, int fileLength)
+    {
+        name = fileName;
+        type = "image/png";
+        size = fileLength;
+        progress = "1.0";
+        url = HandlerPath + "UploadFileHandler.ashx?f=" + fileName;
+        thumbnail_url = HandlerPath + "Thumbnail.ashx?f=" + fileName;
+        delete_url = HandlerPath + "UploadFileHandler.ashx?f=" + fileName;
+        delete_type = "DELETE";
+    }
+}
 }
