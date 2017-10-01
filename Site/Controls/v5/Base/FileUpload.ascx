@@ -23,6 +23,7 @@
                 $.each(data.result, function (index, file) {
                     if (file.requiresPdfConversion) {
                         pdfConversionNeeded = true;
+                        $('#<%=this.ClientID %>_DivUploadCount').append(imageUploadSuccess);
                     }
                     else if (file.error == null || file.error.length < 1) {
                         $('#<%=this.ClientID %>_DivUploadCount').append(imageUploadSuccess);
@@ -93,7 +94,7 @@
             }, { queue: false });
 
         if (progressPercent >= 100) {
-            alertify.success("Percent >= 100");
+            $('#<%=this.ClientID %>_DivPdfConverting').fadeOut('400', function () { $('#<%=this.ClientID %>_DivMainControlArea').fadeIn(); });
         }
 
     }

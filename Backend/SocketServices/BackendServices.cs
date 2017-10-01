@@ -49,7 +49,7 @@ namespace Swarmops.Backend.SocketServices
                     break;
                 case "ConvertPdfHires":
                     // Convert with high quality -- done on backend with lower priority than the immediate frontend conversion
-                    PdfProcessor.Rerasterize(Document.FromIdentity((int) json["documentId"]), PdfProcessor.PdfProcessorOptions.HighQuality);
+                    PdfProcessor.Rerasterize(Document.FromIdentity((int) json["DocumentId"]), PdfProcessor.PdfProcessorOptions.HighQuality);
                     break;
                 default:
                     // do nothing;

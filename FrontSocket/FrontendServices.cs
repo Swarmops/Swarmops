@@ -64,7 +64,13 @@ namespace Swarmops.Frontend.Socket
 
                     ConvertPdf (pdfFiles, (string) json["Guid"], Person.FromIdentity((int) json["PersonId"]), Organization.FromIdentity((int) json["OrganizationId"]));
                     break;
-
+                case "ConvertPdfHires":
+                    // Send to backend
+                    JObject backendRequest = new JObject();
+                    backendRequest["MessageType"] = "BackendRequest";
+                    backendRequest["DocumentId"] = json["DocumentId"];
+                    FrontendLoop.SendMessageUpstream(backendRequest);
+                    break;
                 default:
                     // do nothing;
                     break;
@@ -299,8 +305,12 @@ namespace Swarmops.Frontend.Socket
 
                     }
 
-                    // TODO: notify backend to rerasterize doc at 600dpi
+                    // Finally, ask the backend to do the high-res conversions, but now we have the basic, fast ones
 
+                    JObject backendRequest = new JObject();
+                    backendRequest["MessageType"] = "BackendRequest";
+                    backendRequest["DocumentId"] = lastDocument.Identity;
+                    FrontendLoop.SendMessageUpstream(backendRequest);
 
                 }
                 catch (Exception e)
