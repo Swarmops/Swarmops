@@ -234,7 +234,6 @@ namespace Swarmops.Frontend.Socket
                                 if (!process.HasExited)
                                 {
                                     process.WaitForExit(250);
-                                    // this is a more elaborate version of thread.sleep that prevents Apache recycling
                                 }
 
                                 if (pageCounter == 0)
@@ -256,10 +255,6 @@ namespace Swarmops.Frontend.Socket
                                     }
                                 }
                             }
-
-                            pageCounter++;
-                            testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
-                            debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
 
                             progress = progressFileStep * fileIndex + progressFileStep / 2 + currentFilePageStepMilli * (pageCounter + 1) / 2000;
                             if (progress != lastProgress)
@@ -287,12 +282,18 @@ namespace Swarmops.Frontend.Socket
 
                             // Increase the page counter and the file we're looking for
 
+                            pageCounter++;
+                            testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+                            debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
                         }
 
-                        // We've seen the last page being written -- wait for process to exit
+                        // We've seen the last page being written -- wait for process to exit to assure it's complete
                         debugWriter.WriteLine("{0:D2}%, waiting for process exit", progress);
 
-                        process.WaitForExit();
+                        if (!process.HasExited)
+                        {
+                            process.WaitForExit();
+                        }
 
                         // Save the last page
 
