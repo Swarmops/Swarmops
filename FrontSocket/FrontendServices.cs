@@ -212,7 +212,7 @@ namespace Swarmops.Frontend.Socket
 
                         // Convert works by first calling imagemagick that creates /tmp/magick-* files
 
-                        int startMagickCount = Directory.GetFiles("/tmp", "/magick-*").Count();
+                        int startMagickCount = Directory.GetFiles("/tmp", "magick-*").Count();
 
                         while (pageCounter < currentFilePageCount)
                         {
@@ -234,7 +234,7 @@ namespace Swarmops.Frontend.Socket
                                 {
                                     // If first page hasn't appeared yet, check for the Magick temp files
 
-                                    int currentMagickCount = Directory.GetFiles("/tmp", "/magick-*").Count();
+                                    int currentMagickCount = Directory.GetFiles("/tmp", "magick-*").Count();
                                     int currentFilePercentage = currentMagickCount*50/pageCounter;
                                     if (currentFilePercentage > 50)
                                     {
