@@ -67,7 +67,7 @@ namespace Swarmops.Frontend.Socket
                 case "ConvertPdfHires":
                     // Send to backend
                     JObject backendRequest = new JObject();
-                    backendRequest["MessageType"] = "BackendRequest";
+                    backendRequest["BackendRequest"] = "ConvertPdfHires";
                     backendRequest["DocumentId"] = json["DocumentId"];
                     FrontendLoop.SendMessageUpstream(backendRequest);
                     break;

@@ -328,7 +328,6 @@ namespace Swarmops.Frontend.Automation
 
                                 if (File.Exists(Document.StorageRoot + pageFileName))
                                 {
-
                                     long fileLength = new FileInfo(Document.StorageRoot + pageFileName).Length;
 
                                     lastDocument = Document.Create(pageFileName,
