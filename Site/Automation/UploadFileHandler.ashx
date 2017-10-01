@@ -281,48 +281,67 @@ namespace Swarmops.Frontend.Automation
                     }
                     else // live environment, not debug
                     {
-                        // Use qpdf to determine the number of pages in the PDF
-
-                        string pageCountFileName = "/tmp/pagecount-" + guid + ".txt";
-
-                        process = Process.Start("bash",
-                            "-c \"qpdf --show-npages " + StorageRoot + relativeFileName + " > " + pageCountFileName + "\"");
-
-                        process.WaitForExit();
-                        int pdfPageCount = 0;
-
-                        if (process.ExitCode != 0)
+                        using (StreamWriter debugWriter = new StreamWriter("/tmp/upload-debug.txt"))
                         {
-                            // Bad PDF file
-                            FilesStatus errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
-                            errorStatus.error = "ERR_BAD_PDF";
-                            errorStatus.url = string.Empty;
-                            errorStatus.delete_url = string.Empty;
-                            errorStatus.thumbnail_url = string.Empty;
+                            // Use qpdf to determine the number of pages in the PDF
 
-                            statuses.Add(errorStatus);
-                            // -1 for length means the file was NOT saved, and that it could not be parsed.
-                            continue;
-                        }
+                            debugWriter.WriteLine("Determining page count");
+                            debugWriter.Flush();
 
-                        // Read the resulting page count from the file we piped
+                            string pageCountFileName = "/tmp/pagecount-" + guid + ".txt";
 
-                        using (StreamReader pageCountReader = new StreamReader(pageCountFileName))
-                        {
-                            string pageCountString = pageCountReader.ReadToEnd().Trim();
-                            pdfPageCount = Int32.Parse(pageCountString);
-                        }
+                            process = Process.Start("bash",
+                                "-c \"qpdf --show-npages " + StorageRoot + relativeFileName + " > " + pageCountFileName +
+                                "\"");
 
-                        File.Delete(pageCountFileName);
+                            process.WaitForExit();
+                            int pdfPageCount = 0;
 
-                        // TODO: If page count less than something, convert immediately
+                            if (process.ExitCode != 0)
+                            {
+                                debugWriter.WriteLine("Bad PDF file");
+                                debugWriter.Flush();
 
-                        FilesStatus requiresConversion = new FilesStatus(fullName, -1);
-                        requiresConversion.requiresPdfConversion = true;
-                        statuses.Add(requiresConversion);
+                                // Bad PDF file
+                                FilesStatus errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
+                                errorStatus.error = "ERR_BAD_PDF";
+                                errorStatus.url = string.Empty;
+                                errorStatus.delete_url = string.Empty;
+                                errorStatus.thumbnail_url = string.Empty;
 
-                        pdfsForConversion.Add(relativeFileName);
-                        pdfClientNames.Add(file.FileName);
+                                statuses.Add(errorStatus);
+                                // -1 for length means the file was NOT saved, and that it could not be parsed.
+                                continue;
+                            }
+
+                            debugWriter.WriteLine("Reading page count");
+                            debugWriter.Flush();
+
+                            // Read the resulting page count from the file we piped
+
+                            using (StreamReader pageCountReader = new StreamReader(pageCountFileName))
+                            {
+                                string pageCountString = pageCountReader.ReadToEnd().Trim();
+                                pdfPageCount = Int32.Parse(pageCountString);
+                            }
+
+                            debugWriter.WriteLine("Page count is " + pdfPageCount);
+                            debugWriter.Flush();
+
+                            File.Delete(pageCountFileName);
+
+                            // TODO: If page count less than something, convert immediately
+
+                            FilesStatus requiresConversion = new FilesStatus(fullName, -1);
+                            requiresConversion.requiresPdfConversion = true;
+                            statuses.Add(requiresConversion);
+
+                            pdfsForConversion.Add(relativeFileName);
+                            pdfClientNames.Add(file.FileName);
+
+                            debugWriter.WriteLine("Added '" + relativeFileName + "' to list");
+                            debugWriter.Flush();
+                       }
                     }
 
                     if (pdfGeneratedHere)  // as opposed to deferred to backend for large files
