@@ -50,6 +50,11 @@ namespace Swarmops.Backend.SocketServices
                 case "ConvertPdfHires":
                     try
                     {
+                        JObject newJson = new JObject();
+                        newJson["MessageType"] = "EchoBackend";
+                        newJson["DocumentId"] = json["DocumentId"];
+                        Sessions.Broadcast(newJson.ToString());
+
                         PdfProcessor.Rerasterize(Document.FromIdentity(Int32.Parse((string) json["DocumentId"])), PdfProcessor.PdfProcessorOptions.HighQuality | PdfProcessor.PdfProcessorOptions.ForceOrphans);
                     }
                     catch (Exception exc)

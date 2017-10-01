@@ -16,6 +16,7 @@ namespace Swarmops.Utility.BotCode
     {
         private static readonly string StorageRoot = Document.StorageRoot;
 
+        [Flags]
         public enum PdfProcessorOptions
         {
             None = 0,

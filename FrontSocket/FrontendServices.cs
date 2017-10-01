@@ -312,6 +312,8 @@ namespace Swarmops.Frontend.Socket
                     backendRequest["DocumentId"] = lastDocument.Identity;
                     FrontendLoop.SendMessageUpstream(backendRequest);
 
+                    backendRequest["MessageType"] = "Echo";
+                    Sessions.Broadcast(backendRequest.ToString());
                 }
                 catch (Exception e)
                 {
