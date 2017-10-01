@@ -50,7 +50,7 @@ namespace Swarmops.Backend.SocketServices
                 case "ConvertPdfHires":
                     try
                     {
-                        PdfProcessor.Rerasterize(Document.FromIdentity((int)json["DocumentId"]), PdfProcessor.PdfProcessorOptions.HighQuality);
+                        PdfProcessor.Rerasterize(Document.FromIdentity(Int32.Parse((string) json["DocumentId"])), PdfProcessor.PdfProcessorOptions.HighQuality | PdfProcessor.PdfProcessorOptions.ForceOrphans);
                     }
                     catch (Exception exc)
                     {

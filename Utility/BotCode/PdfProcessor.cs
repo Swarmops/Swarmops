@@ -19,7 +19,8 @@ namespace Swarmops.Utility.BotCode
         public enum PdfProcessorOptions
         {
             None = 0,
-            HighQuality = 0x0001
+            HighQuality = 0x0001,
+            ForceOrphans = 0x0002
         };
 
         public static void RerasterizeAll()
@@ -125,7 +126,7 @@ namespace Swarmops.Utility.BotCode
             {
                 throw new InvalidOperationException("Document is not rasterized");
             }
-            if (document.ForeignId == 0)
+            if (document.ForeignId == 0 && ((int) options & (int) PdfProcessorOptions.ForceOrphans) == 0)
             {
                 throw new InvalidOperationException("Document is an orphan");
             }
