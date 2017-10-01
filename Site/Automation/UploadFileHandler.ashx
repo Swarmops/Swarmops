@@ -406,7 +406,7 @@ namespace Swarmops.Frontend.Automation
                         debugWriter.Flush();
 
                         data["Guid"] = (string) guid;
-                        data["PersonId"] = CurrentUser.Identity;
+                        data["PersonId"] = authData.CurrentUser.Identity;
 
                         debugWriter.WriteLine(" - guid and personId set");
                         debugWriter.Flush();
