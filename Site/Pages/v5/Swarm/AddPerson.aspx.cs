@@ -112,6 +112,8 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
             OutboundComm.CreateParticipantMail (ParticipantMailType.ParticipantAddedWelcome, newParticipation, CurrentUser);
 
+            newPerson.LastLogonOrganizationId = CurrentOrganization.Identity;
+
             SwarmopsLogEntry logEntry = SwarmopsLog.CreateEntry (newPerson,
                 new Swarmops.Logic.Support.LogEntries.PersonAddedLogEntry (newParticipation, CurrentUser));
 
