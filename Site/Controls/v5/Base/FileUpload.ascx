@@ -37,7 +37,10 @@
                 $('#<%=this.ClientID %>_DivProgressUpload').progressbar({ value: 100 });
                 if (pdfConversionNeeded) {
                     $('#<%=this.ClientID %>_DivProgressPdfConversion').progressbar({ value: 1 });
-                    $('#<%=this.ClientID %>_DivMainControlArea').fadeOut('400', function () { $('#<%=this.ClientID %>_DivPdfConverting').fadeIn(); });
+                    $('#<%=this.ClientID %>_DivMainControlArea').fadeOut('400', function() {
+                        $('#<%=this.ClientID %>_DivPdfConverting').fadeIn();
+                        $('#<%=this.ClientID %>_DivProgressUpload').fadeOut('400', function() { $('#<%=this.ClientID %>_DivUploadCount').fadeIn(); });
+                    });
 
                     // Conversion progress will be sent through the socket, sent to our function by the master page
 
