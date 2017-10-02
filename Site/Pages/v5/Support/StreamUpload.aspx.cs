@@ -36,6 +36,7 @@ namespace Swarmops.Pages.v5.Support
             int orgId = 0; // initialize to invalid
 
             bool hasPermission = false;
+            string serverFileName = document.ServerFileName;
 
             switch (document.DocumentType)
             {
@@ -165,6 +166,14 @@ namespace Swarmops.Pages.v5.Support
             else if (fileNameLower.EndsWith (".png"))
             {
                 contentType = "image/png"; // why isn't this in MediaTypeNames?
+                if (Request.QueryString["hq"] == "1")
+                {
+                    string testFileName = serverFileName.Replace(".png", "-hires.png");
+                    if (File.Exists(Document.StorageRoot + testFileName))
+                    {
+                        serverFileName = testFileName;
+                    }
+                }
             }
             else if (fileNameLower.EndsWith (".jpg"))
             {
@@ -173,20 +182,20 @@ namespace Swarmops.Pages.v5.Support
 
             string legacyMarker = string.Empty;
 
-            if (!File.Exists (StorageRoot + document.ServerFileName))
+            if (!File.Exists (StorageRoot + serverFileName))
             {
                 legacyMarker = "legacy/"; // for some legacy installations, all older files are placed here
             }
 
             // TODO: If still doesn't exist, perhaps return a friendly error image instead?
 
-            if (!File.Exists (StorageRoot + legacyMarker + document.ServerFileName))
+            if (!File.Exists (StorageRoot + legacyMarker + serverFileName))
             {
-                throw new FileNotFoundException (StorageRoot + legacyMarker + document.ServerFileName);
+                throw new FileNotFoundException (StorageRoot + legacyMarker + serverFileName);
             }
 
             Response.ContentType = contentType + "; filename=" + document.ClientFileName;
-            Response.TransmitFile (StorageRoot + legacyMarker + document.ServerFileName);
+            Response.TransmitFile (StorageRoot + legacyMarker + serverFileName);
         }
     }
 }
