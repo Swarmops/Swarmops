@@ -57,8 +57,13 @@ namespace Swarmops.Site.Pages.Ledgers
             {
                 supportedHardcode = true;
             }
-            if (PilotInstallationIds.IsPilot (PilotInstallationIds.SwarmopsLive) && CurrentOrganization.Identity == 7)
-                // EPA
+            if (PilotInstallationIds.IsPilot(PilotInstallationIds.SwarmopsLive) && CurrentOrganization.Identity == 7)
+            // EPA
+            {
+                supportedHardcode = true;
+            }
+            if (PilotInstallationIds.IsPilot(PilotInstallationIds.SwarmopsLive) && CurrentOrganization.Identity == 8)
+            // RFF
             {
                 supportedHardcode = true;
             }
