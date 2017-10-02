@@ -283,7 +283,7 @@ namespace Swarmops.Frontend.Automation
                         process.WaitForExit();
                         int pdfPageCount = 0;
 
-                        if (process.ExitCode != 0)
+                        if (process.ExitCode == 2) // error code for qpdf
                         {
                             // Bad PDF file
                             FilesStatus errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
@@ -301,9 +301,14 @@ namespace Swarmops.Frontend.Automation
 
                         using (StreamReader pageCountReader = new StreamReader(pageCountFileName))
                         {
-                            string pageCountString = pageCountReader.ReadToEnd().Trim();
-                            pdfPageCount = Int32.Parse(pageCountString);
+                            string line = pageCountReader.ReadLine().Trim();
+                            while (line.StartsWith("WARNING") || line.StartsWith("qpdf:"))
+                            {
+                                line = pageCountReader.ReadLine().Trim();  // ignore warnings and chatter
+                            }
+                            pdfPageCount = Int32.Parse(line);
                         }
+
 
                         File.Delete(pageCountFileName);
 

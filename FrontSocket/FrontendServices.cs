@@ -176,7 +176,7 @@ namespace Swarmops.Frontend.Socket
 
                         process.WaitForExit();
 
-                        if (process.ExitCode != 0)
+                        if (process.ExitCode == 2)
                         {
                             // Bad PDF file
                             failCount++;
@@ -190,9 +190,12 @@ namespace Swarmops.Frontend.Socket
 
                         using (StreamReader pageCountReader = new StreamReader(pageCountFileName))
                         {
-                            string pageCountString = pageCountReader.ReadToEnd().Trim();
-                            debugWriter.WriteLine("{0:D2}%, page count is '{1}'", progress, pageCountString);
-                            currentFilePageCount = Int32.Parse(pageCountString);
+                            string line = pageCountReader.ReadLine().Trim();
+                            while (line.StartsWith("WARNING") || line.StartsWith("qpdf:"))
+                            {
+                                line = pageCountReader.ReadLine().Trim();  // ignore warnings and chatter
+                            }
+                            currentFilePageCount = Int32.Parse(line);
                             debugWriter.WriteLine("{0:D2}%, parsed to int as {1}", progress, currentFilePageCount);
                             currentFilePageStepMilli = progressFileStep * 1000 / currentFilePageCount;
                         }
