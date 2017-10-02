@@ -221,10 +221,17 @@ namespace Swarmops.Logic.Structure
 
                     return result;
                 }
-                if (PilotInstallationIds.IsPilot (PilotInstallationIds.SwarmopsLive) && OrganizationId == 7)
+                if (PilotInstallationIds.IsPilot(PilotInstallationIds.SwarmopsLive) && OrganizationId == 7)
                 {
                     FinancialAccounts result = new FinancialAccounts();
-                    result.Add (FinancialAccount.FromIdentity (29));
+                    result.Add(FinancialAccount.FromIdentity(29));
+
+                    return result;
+                }
+                if (PilotInstallationIds.IsPilot(PilotInstallationIds.SwarmopsLive) && OrganizationId == 8)
+                {
+                    FinancialAccounts result = new FinancialAccounts();
+                    result.Add(FinancialAccount.FromIdentity(150));
 
                     return result;
                 }
