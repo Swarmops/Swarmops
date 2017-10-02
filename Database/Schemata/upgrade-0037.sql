@@ -1,6 +1,12 @@
 ALTER TABLE `InboundInvoices` 
 ADD COLUMN `PayToBitcoinAddress` VARCHAR(128) NOT NULL DEFAULT '' AFTER `SupplierId`,
-ADD COLUMN `PayToEthereumAddress` VARCHAR(128) NOT NULL DEFAULT '' AFTER `PayToBitcoinAddress`
+ADD COLUMN `PayToBitcoinCashAddress` VARCHAR(128) NOT NULL DEFAULT '' AFTER `PayToBitcoinAddress`
+ADD COLUMN `PayToEthereumAddress` VARCHAR(128) NOT NULL DEFAULT '' AFTER `PayToBitcoinCashAddress`
+
+#
+
+ALTER TABLE `People`
+ADD COLUMN `PayoutSpecId` INT NOT NULL DEFAULT 0 AFTER `GenderId`
 
 #
 
@@ -36,11 +42,20 @@ CREATE TABLE `Suppliers` (
   `PostalCode` VARCHAR(45) NOT NULL DEFAULT '',
   `City` VARCHAR(45) NOT NULL DEFAULT '',
   `CountryId` INT NOT NULL DEFAULT '',
-  `Bank` VARCHAR(128) NOT NULL DEFAULT '',
-  `Account` VARCHAR(128) NOT NULL DEFAULT '',
-  `BitcoinAddress` VARCHAR(128) NOT NULL DEFAULT '',
-  `EthereumAddress` VARCHAR(128) NOT NULL DEFAULT '',
   `VatId` VARCHAR(128) NOT NULL DEFAULT '',
+  `PayoutSpecId` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`SupplierId`),
   INDEX `Ix_Name` (`Name` ASC),
   INDEX `Ix_Organization` (`OrganizationId` ASC))
+
+#
+
+CREATE TABLE `PayoutSpecs` (
+  `PayoutSpecId` IN NOT NULL AUTO_INCREMENT,
+  `Bank` VARCHAR(128) NOT NULL DEFAULT '',
+  `ClearingRouting` VARCHAR(128) NOT NULL DEFAULT '',
+  `Account` VARCHAR(128) NOT NULL DEFAULT '',
+  `BitcoinAddress` VARCHAR(128) NOT NULL DEFAULT '',
+  `BitcoinCashAddress` VARCHAR(128) NOT NULL DEFAULT '',
+  `EthereumAddress` VARCHAR(128) NOT NULL DEFAULT '',
+  PRIMARY KEY (`PayoutSpecId`))

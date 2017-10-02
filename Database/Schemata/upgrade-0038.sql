@@ -5,6 +5,7 @@ CREATE TABLE `VatReports` (
   `DateTimeStart` DATETIME NOT NULL,
   `MonthCount` INT NOT NULL,
   `Open` TINYINT NOT NULL,
+  `Turnover` BIGINT NOT NULL,
   `VatOutboundCents` BIGINT NOT NULL,
   `VatInboundCents` BIGINT NOT NULL,
   `UnderConstruction` TINYINT NOT NULL COMMENT 'This is 1 when rows are being populated and the report is not yet ready to display.',
@@ -24,12 +25,12 @@ CREATE TABLE `VatReportItems` (
   `FinancialTransactionRowId` INT NOT NULL,
   `ForeignObjectId` INT NOT NULL,
   `FinancialDependencyTypeId` INT NOT NULL,
+  `TurnoverCents` BIGINT NOT NULL,
   `VatInboundCents` BIGINT NOT NULL,
   `VatOutboundCents` BIGINT NOT NULL,
   PRIMARY KEY (`VatReportItemId`),
   INDEX `Ix_ReportId` (`VatReportId` ASC),
   INDEX `Ix_TxRowId` (`FinancialTransactionRowId` ASC))
-
 
 
 #
@@ -59,13 +60,57 @@ CREATE PROCEDURE `CreateVatReport` (
 
 BEGIN
   INSERT INTO VatReports
-    (OrganizationId,CreatedDateTime,DateTimeStart,MonthCount,Open,VatInboundCents,VatOutboundCents,UnderConstruction)
+    (OrganizationId,CreatedDateTime,DateTimeStart,MonthCount,Open,TurnoverCents,VatInboundCents,VatOutboundCents,UnderConstruction)
   VALUES
-    (organizationId,createdDateTime,dateTimeStart,monthCount,1,0,0,1);
+    (organizationId,createdDateTime,dateTimeStart,monthCount,1,0,0,0,1);
     
   SELECT LAST_INSERT_ID() AS Identity;  
 END
 
 
-Continue with procs to create Vat report, to set open and under construction, to calculate inbound/outbound cents
-procs to create vat report item, including copying tx's foreign object and dependency
+#
+
+CREATE PROCEDURE `SetVatReportCompleted` (
+  vatReportId INT
+)
+
+BEGIN
+  UPDATE VatReports
+    SET VatReports.UnderConstruction = 0 WHERE VatReports.VatReportId=vatReportId;
+END
+
+#
+
+CREATE PROCEDURE `SetVatReportOpen` (
+  vatReportId INT,
+  open INT
+)
+
+BEGIN
+  UPDATE VatReports
+    SET VatReports.Open = open WHERE VatReports.VatReportId=vatReportId;
+END
+
+#
+
+
+CREATE PROCEDURE `AddVatReportItem` (
+  vatReportId INT,
+  financialTransactionRowId INT,
+  foreignObjectId INT,
+  financialDepedencyTypeId INT,
+  turnoverCents BIGINT,
+  vatInboundCents BIGINT,
+  vatOutboundCents BIGINT
+)
+
+BEGIN
+  UPDATE VatReports
+    Set VatReports.TurnoverCents = VatReports.TurnoverCents + turnoverCents,
+        VatReports.VatInboundCents = VatReports.VatInboundCents + vatInboundCents,
+        VatReports.VatOutboundCents = VatReports.VatOutboundCents + vatOutboundCents
+    WHERE VatReportId = vatReportId;
+
+  INSERT INTO VatReportItems (VatReportId, FinancialTransactionRowId, ForeignObjectId, FinancialDependencyTypeId, TurnoverCents, VatInboundCents, VatOutboundCents)
+    VALUES (vatReportId, financialTransactionRowId, foreignObjectId, financialDependencyTypeId, turnoverCents, vatInboundCents, vatOutboundCents);
+END
