@@ -60,6 +60,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public string TransactionDate { get; set; }
             public string DifferingAmount { get; set; }
             public DropdownOptions OpenPayoutData { get; set; }
+            public DropdownOptions OpenOutboundInvoiceData { get; set; }
+            public DropdownOptions OpenVatReports { get; set; }
         }
 
         [Serializable]
@@ -106,7 +108,17 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 // this is a UNICODE MINUS (U+2212), not the hyphen on the keyboard
                 authData.CurrentOrganization.Currency.DisplayCode, transaction.Rows.AmountCentsTotal/100.0);
 
-            result.OpenPayoutData = GetOpenPayoutData (transaction);
+            if (transaction.Rows.AmountCentsTotal > 0)
+            {
+                result.OpenOutboundInvoiceData = GetOpenOutboundInvoiceData(transaction);
+                result.OpenVatReports = null; // TODO
+            }
+            else
+            {
+                // Negative difference
+
+                result.OpenPayoutData = GetOpenPayoutData(transaction);
+            }
 
             return result;
         }
@@ -155,6 +167,52 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             result.ExactMatches = listExact.ToArray();
             result.TolerantMatches = listTolerant.ToArray();
+
+            return result;
+        }
+
+
+        private static DropdownOptions GetOpenOutboundInvoiceData(FinancialTransaction transaction)
+        {
+            DateTime txDateTime = transaction.DateTime;
+            Int64 matchAmount = transaction.Rows.AmountCentsTotal;
+
+            DropdownOptions result = new DropdownOptions();
+
+            List<DropdownOption> listExact = new List<DropdownOption>();
+            List<DropdownOption> listTolerant = new List<DropdownOption>();
+
+            OutboundInvoices invoices = OutboundInvoices.ForOrganization(transaction.Organization);
+
+            foreach (OutboundInvoice invoice in invoices)
+            {
+                if (invoice.AmountCents > -matchAmount * 95 / 100 &&
+                         invoice.AmountCents < -matchAmount * 105 / 100)
+                {
+                    string description = String.Format(Resources.Pages.Ledgers.BalanceTransactions_PayoutMatch, invoice.Identity,
+                        invoice.DueDate, invoice.CustomerName, invoice.Organization.Currency.DisplayCode, invoice.AmountCents / 100.0,
+                        invoice.DisplayNativeAmount);
+
+                    if (invoice.AmountCents == matchAmount)
+                    {
+                        listExact.Add(new DropdownOption
+                        {
+                            id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
+                            @group = Resources.Pages.Ledgers.BalanceTransactions_ExactMatches,
+                            text = description
+                        });
+                    }
+                    else
+                    {
+                        listTolerant.Add(new DropdownOption
+                        {
+                            id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
+                            @group = Resources.Pages.Ledgers.BalanceTransactions_FivePercentMatches,
+                            text = description
+                        });
+                    }
+                }
+            }
 
             return result;
         }

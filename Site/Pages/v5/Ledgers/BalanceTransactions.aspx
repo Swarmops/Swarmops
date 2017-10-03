@@ -55,20 +55,44 @@
                     $('#spanTransactionUnbalancedBy').text(data.DifferingAmount);
                     $('span#spanModalTransactionDate').text(data.TransactionDate);
 
-                    if (data.OpenPayoutData.ExactMatches.length > 0) {
-                        <%=this.DropOpenPayouts.ClientID%>_loadData(data.OpenPayoutData.ExactMatches);
-                        <%=this.DropOpenPayouts.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
-                    } else {
-                        <%=this.DropOpenPayouts.ClientID%>_loadData({});
-                        <%=this.DropOpenPayouts.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
-                    }
+                    if (data.OpenPayoutData == null) // amount is positive
+                    {
+                        $('#divPositiveDifference').show();
+                        $('#divNegativeDifference').hide();
 
-                    if (data.OpenPayoutData.TolerantMatches.length > 0) {
-                        <%=this.DropOpenPayoutsForeign.ClientID%>_loadData(data.OpenPayoutData.TolerantMatches);
-                        <%=this.DropOpenPayoutsForeign.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
-                    } else {
-                        <%=this.DropOpenPayoutsForeign.ClientID%>_loadData({});
-                        <%=this.DropOpenPayoutsForeign.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
+                        if (data.OpenInvoiceData != null) {
+                            if (data.OpenInvoiceData.ExactMatches.length > 0) {
+                                <%=this.DropOpenOutboundInvoices.ClientID%>_loadData(data.OpenInvoiceData.ExactMatches);
+                                <%=this.DropOpenOutboundInvoices.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
+                            } else {
+                                <%=this.DropOpenOutboundInvoices.ClientID%>_loadData({});
+                                <%=this.DropOpenOutboundInvoices.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
+                            }
+                        }
+
+                    } else {                            // amount is negative
+                        $('#divPositiveDifference').hide();
+                        $('#divNegativeDifference').show();
+
+                        if (data.OpenPayoutData != null) {
+                            if (data.OpenPayoutData.ExactMatches.length > 0) {
+                                <%=this.DropOpenPayouts.ClientID%>_loadData(data.OpenPayoutData.ExactMatches);
+                                <%=this.DropOpenPayouts.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
+                            } else {
+                                <%=this.DropOpenPayouts.ClientID%>_loadData({});
+                                <%=this.DropOpenPayouts.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
+                            }
+
+                            if (data.OpenPayoutData.TolerantMatches.length > 0) {
+                                <%=this.DropOpenPayoutsForeign.ClientID%>_loadData(data.OpenPayoutData.TolerantMatches);
+                                <%=this.DropOpenPayoutsForeign.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
+                            } else {
+                                <%=this.DropOpenPayoutsForeign.ClientID%>_loadData({});
+                                <%=this.DropOpenPayoutsForeign.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
+                            }
+
+                        }
+
                     }
 
                 });
@@ -174,7 +198,7 @@
         <DialogCode>
             <h2><asp:Literal runat="server" ID="LiteralModalHeader" Text="Matching/Balancing transaction #foobar XYZ" /></h2>
             <p><asp:Literal ID="LabelDoYouWishTo" runat="server" Text="The balance is off by SEK +6,141.14. is Do you wish to... XYZ" /></p>
-            <p><input type="radio" id="RadioBalance" name="TxOptions" value="Balance" /><label for="RadioBalance"><asp:Label runat="server" ID="LabelRadioBalance" Text="Balance the transaction manually? XYZ" /></label></p>
+            <p><input type="radio" id="RadioBalance" name="TxOptions" value="Balance" /><label for="RadioBalance">&nbsp;<asp:Label runat="server" ID="LabelRadioBalance" Text="Balance the transaction manually? XYZ" /></label></p>
             <div id="radioOptionBalance" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" ListType="All" />&#8203;<br/>
@@ -185,27 +209,41 @@
                 </div>
                 <div style="clear:both"></div>
             </div>
-            <p><input type="radio" id="RadioPayout" name="TxOptions" value="Payout" /><label for="RadioPayout"><asp:Label runat="server" ID="LabelRadioPayout" Text="Match this balance to an open payout? XYZ" /></label></p>
-            <div id="radioOptionPayout" class="radioOption">
-                <div class="entryFields">
-                    <Swarmops5:DropDown ID="DropOpenPayouts" runat="server" ListType="All" />&#8203;<br/>
-                    <input type="button" value='#Payout#' class="buttonAccentColor" onclick="onMatchOpenPayout(); return false;" id="buttonExecutePayout"/>
+            <div id="divNegativeDifference">
+                <p><input type="radio" id="RadioPayout" name="TxOptions" value="Payout" /><label for="RadioPayout">&nbsp;<asp:Label runat="server" ID="LabelRadioPayout" Text="Match this balance to an open payout? XYZ" /></label></p>
+                <div id="radioOptionPayout" class="radioOption">
+                    <div class="entryFields">
+                        <Swarmops5:DropDown ID="DropOpenPayouts" runat="server" ListType="All" />&#8203;<br/>
+                        <input type="button" value='#Payout#' class="buttonAccentColor" onclick="onMatchOpenPayout(); return false;" id="buttonExecutePayout"/>
+                    </div>
+                    <div class="entryLabels">
+                        <asp:Label runat="server" ID="LabelDescribePayout" Text="Match to payout XYZ" />
+                    </div>
                 </div>
-                <div class="entryLabels">
-                    <asp:Label runat="server" ID="LabelDescribePayout" Text="Match to payout XYZ" />
+                <p><input type="radio" id="RadioPayoutForeign" name="TxOptions" value="PayoutForeign" /><label for="RadioPayoutForeign">&nbsp;<asp:Label runat="server" ID="LabelRadioPayoutForeign" Text="Match to an open foreign-currency payout? XYZ" /></label></p>
+                <div id="radioOptionPayoutForeign" class="radioOption">
+                    <div class="entryFields">
+                        <Swarmops5:DropDown ID="DropOpenPayoutsForeign" runat="server" ListType="All" />&#8203;<br/>
+                        <input type="button" value='#PayoutForeign#' class="buttonAccentColor" onclick="onMatchOpenPayoutForeign(); return false;" id="buttonExecutePayoutForeign"/>
+                    </div>
+                    <div class="entryLabels">
+                        <asp:Label runat="server" ID="LabelDescribePayoutForeign" Text="Match to payout XYZ" />
+                    </div>
                 </div>
             </div>
-            <p><input type="radio" id="RadioPayoutForeign" name="TxOptions" value="PayoutForeign" /><label for="RadioPayoutForeign"><asp:Label runat="server" ID="LabelRadioPayoutForeign" Text="Match to an open foreign-currency payout? XYZ" /></label></p>
-            <div id="radioOptionPayoutForeign" class="radioOption">
-                <div class="entryFields">
-                    <Swarmops5:DropDown ID="DropOpenPayoutsForeign" runat="server" ListType="All" />&#8203;<br/>
-                    <input type="button" value='#PayoutForeign#' class="buttonAccentColor" onclick="onMatchOpenPayoutForeign(); return false;" id="buttonExecutePayoutForeign"/>
-                </div>
-                <div class="entryLabels">
-                    <asp:Label runat="server" ID="LabelDescribePayoutForeign" Text="Match to payout XYZ" />
+            <div id="divPositiveDifference">
+                <p><input type="radio" id="RadioPaymentDirect" name="TxOptions" value="PaymentDirect" /><label for="RadioPaymentDirect">&nbsp;<asp:Label runat="server" ID="LabelRadioPaymentDirect" Text="Match to an open outbound invoice? XYZ" /></label></p>
+                <div id="radioOptionPaymentDirect" class="radioOption">
+                    <div class="entryFields">
+                        <Swarmops5:DropDown ID="DropOpenOutboundInvoices" runat="server" ListType="All" />&#8203;<br/>
+                        <input type="button" value='#PaymentInvoice#' class="buttonAccentColor" onclick="onMatchOpenOutboundInvoice(); return false;" id="buttonExecutePayoutForeign"/>
+                    </div>
+                    <div class="entryLabels">
+                        <asp:Label runat="server" ID="Label2" Text="Match to payout XYZ" />
+                    </div>
                 </div>
             </div>
-            <div id="radioOptionPayment" class="radioOption"></div>
+            <div id="radioOptionPayment2" class="radioOption"></div>
             <div id="radioOptionPaymentForeign" class="radioOption"></div>
             <div id="divHiddenTodoFutureSprint" style="display:none">
                 <p><input type="radio" id="RadioExistingPayment" name="TxOptions" value="ExistingPayment" /><label for="RadioExistingPayment"><asp:Label runat="server" ID="LabelRadioExistingPayment" Text="Match this balance to a recorded payment, uploaded in a payments file? XYZ" /></label></p>

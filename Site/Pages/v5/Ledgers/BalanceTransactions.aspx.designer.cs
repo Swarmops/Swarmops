@@ -211,6 +211,33 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::System.Web.UI.WebControls.Label LabelDescribePayoutForeign;
         
         /// <summary>
+        /// LabelRadioPaymentDirect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelRadioPaymentDirect;
+        
+        /// <summary>
+        /// DropOpenOutboundInvoices control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.DropDown DropOpenOutboundInvoices;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
         /// LabelRadioExistingPayment control.
         /// </summary>
         /// <remarks>
