@@ -60,9 +60,10 @@
                         $('#divPositiveDifference').show();
                         $('#divNegativeDifference').hide();
 
-                        if (data.OpenInvoiceData != null) {
-                            if (data.OpenInvoiceData.ExactMatches.length > 0) {
-                                <%=this.DropOpenOutboundInvoices.ClientID%>_loadData(data.OpenInvoiceData.ExactMatches);
+                        if (data.OpenOutboundInvoiceData != null) {
+                            console.log(data.OpenOutboundInvoiceData);
+                            if (data.OpenOutboundInvoiceData.ExactMatches.length > 0) {
+                                <%=this.DropOpenOutboundInvoices.ClientID%>_loadData(data.OpenOutboundInvoiceData.ExactMatches);
                                 <%=this.DropOpenOutboundInvoices.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
                             } else {
                                 <%=this.DropOpenOutboundInvoices.ClientID%>_loadData({});
