@@ -40,9 +40,11 @@ namespace Swarmops.Logic.Financial
                 {
                     importKey = this.UniqueId;
                 }
-                else if (!string.IsNullOrEmpty (this.NotUniqueId))
+                else if (!string.IsNullOrEmpty (this.NotUniqueId)) // no unique ID, but maybe something else
                 {
                     string commentKey = this.Description.ToLowerInvariant();
+
+                    // " / 100.0" below serves no purpose but must stay now that the hash scheme is in effect
 
                     string hashKey = this.NotUniqueId + commentKey +
                                      (this.TransactionNetCents/100.0).ToString (CultureInfo.InvariantCulture) +
@@ -50,6 +52,18 @@ namespace Swarmops.Logic.Financial
                                      this.DateTime.ToString ("yyyy-MM-dd-HH-mm-ss");
 
                     importKey = SHA1.Hash (hashKey).Replace (" ", "");
+                }
+                else // neither unique nor nonunique ID, like DE Postbank
+                {
+                    string commentKey = this.Description.ToLowerInvariant();
+
+                    string hashKey = commentKey +
+                                     this.TransactionNetCents.ToString(CultureInfo.InvariantCulture) +
+                                     this.AccountBalanceCents.ToString(CultureInfo.InvariantCulture) +
+                                     this.DateTime.ToString("yyyy-MM-dd-HH-mm-ss");
+
+                    importKey = SHA1.Hash(hashKey).Replace(" ", "");
+
                 }
 
                 if (importKey.Length > 30)

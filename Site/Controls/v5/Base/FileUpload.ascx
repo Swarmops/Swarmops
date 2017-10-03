@@ -1,5 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" CodeBehind="FileUpload.ascx.cs" CodeFile="FileUpload.ascx.cs" Inherits="Swarmops.Controls.Base.FileUpload" %>
-<%@ Import Namespace="System.Net" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" CodeBehind="FileUpload.ascx.cs" Inherits="Swarmops.Controls.Base.FileUpload" %>
+
 
 <asp:HiddenField runat="server" ID="HiddenGuid"/>
 

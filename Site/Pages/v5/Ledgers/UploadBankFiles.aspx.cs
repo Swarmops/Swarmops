@@ -376,7 +376,7 @@ namespace Swarmops.Site.Pages.Ledgers
                                 GuidCache.Set (guid + "-Result", ImportResultsCategory.Questionable);
                             }
                         }
-                        catch (Exception)
+                        catch (Exception e)
                         {
                             reader.BaseStream.Position = 0; // rewind stream to retry parse with different file type
 
@@ -437,7 +437,7 @@ namespace Swarmops.Site.Pages.Ledgers
         {
             bool fileWasUploaded = false;
 
-            foreach (string fileInputID in Request.Files)
+            foreach (string fileInputID in Request.Files)F
             {
                 UploadedFile file = UploadedFile.FromHttpPostedFile(Request.Files[fileInputID]);
                 if (file.ContentLength > 0)
@@ -579,7 +579,7 @@ namespace Swarmops.Site.Pages.Ledgers
         {
             FinancialAccount assetAccount = args.Account;
             FinancialAccount autoDepositAccount = args.Organization.FinancialAccounts.IncomeDonations;
-            int autoDepositLimit = 1000; // TODO: this.CurrentOrganization.Parameters.AutoDonationLimit;
+            int autoDepositLimit = 0; // Disabled; TODO: this.CurrentOrganization.Parameters.AutoDonationLimit;
 
             ImportResults result = new ImportResults();
             int count = 0;

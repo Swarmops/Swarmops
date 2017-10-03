@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Site.Pages.Ledgers.UploadBankFiles" Codebehind="UploadBankFiles.aspx.cs" %>
-<%@ Register src="~/Controls/v5/Base/FileUpload.ascx" tagname="FileUpload" tagprefix="Swarmops5" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Site.Pages.Ledgers.UploadBankFiles" CodeFile="UploadBankFiles.aspx.cs" Codebehind="UploadBankFiles.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->

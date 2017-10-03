@@ -1,7 +1,47 @@
+ALTER TABLE `FinancialTransactions` 
+CHANGE COLUMN `Comment` `Comment` TEXT NOT NULL
+
+#
+
+DROP PROCEDURE `CreateFinancialTransactionStub`
+
+#
+
+CREATE PROCEDURE `CreateFinancialTransactionStub`(
+  IN organizationId INTEGER,
+  IN financialAccountId INTEGER,
+  IN amountCents BIGINT,
+  IN dateTime DATETIME,
+  IN comment TEXT,
+  IN importHash VARCHAR(32),
+  IN personId INTEGER
+)
+BEGIN
+  
+  DECLARE financialTransactionId INTEGER;
+
+  SELECT 0 INTO financialTransactionId;
+
+  IF ((SELECT COUNT(*) FROM FinancialTransactions WHERE FinancialTransactions.ImportHash=importHash) = 0)
+  THEN
+    INSERT INTO FinancialTransactions (OrganizationId, DateTime, Comment, ImportHash)
+      VALUES (organizationId, dateTime, comment, importHash);
+
+    SELECT LAST_INSERT_ID() INTO financialTransactionId;
+
+    INSERT INTO FinancialTransactionRows (FinancialAccountId, FinancialTransactionId, Amount, AmountCents, CreatedDateTime, CreatedByPersonId)
+      VALUES (financialAccountId, financialTransactionId, amountCents/100.0, amountCents, DateTime, personId);
+
+  END IF;
+
+  SELECT financialTransactionId AS Identity;
+
+END
+
+#
+
 ALTER TABLE `InboundInvoices` 
-ADD COLUMN `PayToBitcoinAddress` VARCHAR(128) NOT NULL DEFAULT '' AFTER `SupplierId`,
-ADD COLUMN `PayToBitcoinCashAddress` VARCHAR(128) NOT NULL DEFAULT '' AFTER `PayToBitcoinAddress`
-ADD COLUMN `PayToEthereumAddress` VARCHAR(128) NOT NULL DEFAULT '' AFTER `PayToBitcoinCashAddress`
+ADD COLUMN `PayoutSpecId` INT NOT NULL DEFAULT 0 AFTER `SupplierId`,
 
 #
 

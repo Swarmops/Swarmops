@@ -191,7 +191,16 @@ namespace Swarmops.Pages.v5.Support
 
             if (!File.Exists (StorageRoot + legacyMarker + serverFileName))
             {
-                throw new FileNotFoundException (StorageRoot + legacyMarker + serverFileName);
+                if (!Debugger.IsAttached) // if running live; ignore FNF errors when debugging
+                {
+                    throw new FileNotFoundException(StorageRoot + legacyMarker + serverFileName);
+                }
+                else
+                {
+                    Response.StatusCode = 404;
+                    Response.End();
+                    return;
+                }
             }
 
             Response.ContentType = contentType + "; filename=" + document.ClientFileName;

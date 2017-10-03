@@ -121,13 +121,13 @@ namespace Swarmops.Logic.Financial
                 result.Name = "DE Postbank";
                 result.Country = Country.FromCode("DE");
                 result.Culture = "de-DE";
-                result.IgnoreInitialLines = 8;
-                result.InitialReplacements = ";|\t| | ()|";
+                result.IgnoreInitialLines = 7;
+                result.InitialReplacements = ";|\t| €|";
 
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Buchungstag";
                 result.FieldNames[ExternalBankDataFieldName.Description] = "Buchungsdetails";
-                result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Betrag";
-                result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo";
+                result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Betrag (€)";
+                result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo (€)";
 
                 result.LatestTransactionLocation = LatestTransactionLocation.Top;
                 result.FeeSignage = FeeSignage.Unknown; // no inline fees
