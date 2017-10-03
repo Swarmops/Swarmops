@@ -61,7 +61,6 @@
                         $('#divNegativeDifference').hide();
 
                         if (data.OpenOutboundInvoiceData != null) {
-                            console.log(data.OpenOutboundInvoiceData);
                             if (data.OpenOutboundInvoiceData.ExactMatches.length > 0) {
                                 <%=this.DropOpenOutboundInvoices.ClientID%>_loadData(data.OpenOutboundInvoiceData.ExactMatches);
                                 <%=this.DropOpenOutboundInvoices.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");

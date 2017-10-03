@@ -214,6 +214,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 }
             }
 
+            result.ExactMatches = listExact.ToArray();
+            result.TolerantMatches = listTolerant.ToArray();
+
             return result;
         }
 
