@@ -186,8 +186,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (OutboundInvoice invoice in invoices)
             {
-                if (invoice.AmountCents > -matchAmount * 95 / 100 &&
-                         invoice.AmountCents < -matchAmount * 105 / 100)
+                if (invoice.AmountCents > matchAmount * 95 / 100 &&
+                         invoice.AmountCents < matchAmount * 105 / 100)
                 {
                     string description = String.Format(Resources.Pages.Ledgers.BalanceTransactions_PayoutMatch, invoice.Identity,
                         invoice.DueDate, invoice.CustomerName, invoice.Organization.Currency.DisplayCode, invoice.AmountCents / 100.0,

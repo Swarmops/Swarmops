@@ -235,7 +235,7 @@
                 <p><input type="radio" id="RadioPaymentDirect" name="TxOptions" value="PaymentDirect" /><label for="RadioPaymentDirect">&nbsp;<asp:Label runat="server" ID="LabelRadioPaymentDirect" Text="Match to an open outbound invoice? XYZ" /></label></p>
                 <div id="radioOptionPaymentDirect" class="radioOption">
                     <div class="entryFields">
-                        <Swarmops5:DropDown ID="DropOpenOutboundInvoices" runat="server" ListType="All" />&#8203;<br/>
+                        <Swarmops5:DropDown ID="DropOpenOutboundInvoices" runat="server" />&#8203;<br/>
                         <input type="button" value='#PaymentInvoice#' class="buttonAccentColor" onclick="onMatchOpenOutboundInvoice(); return false;" id="buttonExecutePayoutForeign"/>
                     </div>
                     <div class="entryLabels">
