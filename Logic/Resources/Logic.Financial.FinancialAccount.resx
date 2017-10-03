@@ -360,4 +360,8 @@
     <value>Taxes Prepayment</value>
     <comment>Most tax authorities require you to pay some part in advance</comment>
   </data>
+  <data name="Asset_BankAccounts" xml:space="preserve">
+    <value>Bank Accounts</value>
+    <comment>Note the plural form</comment>
+  </data>
 </root>

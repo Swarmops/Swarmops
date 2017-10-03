@@ -70,6 +70,15 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bank Accounts.
+        /// </summary>
+        internal static string Asset_BankAccounts {
+            get {
+                return ResourceManager.GetString("Asset_BankAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bitcoin Cold Storage.
         /// </summary>
         internal static string Asset_BitcoinCold {

@@ -464,7 +464,7 @@ namespace Swarmops.Logic.Structure
             // First, set hardwired accounts
 
             FinancialAccounts[OrganizationFinancialAccountType.AssetsBankAccountMain] =
-                FinancialAccount.Create (this, "[LOC]Asset_BankAccount", FinancialAccountType.Asset, null);
+                FinancialAccount.Create (this, "[LOC]Asset_BankAccounts", FinancialAccountType.Asset, null);
             FinancialAccounts[OrganizationFinancialAccountType.AssetsOutboundInvoices] =
                 FinancialAccount.Create (this, "[LOC]Asset_OutboundInvoices", FinancialAccountType.Asset, null);
             FinancialAccounts[OrganizationFinancialAccountType.AssetsOutstandingCashAdvances] =
