@@ -44,11 +44,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             this.LabelDescribePayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePayout;
             this.LabelDescribePayoutForeign.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePayoutForeign;
-            this.LabelDescribeOutboundInvoice.Text = 
+            this.LabelDescribeOutboundInvoice.Text =
+                Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribeOutboundInvoice;
             this.LabelRadioPayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayout;
             this.LabelRadioPayoutForeign.Text =
                 String.Format(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayoutForeign, 5);
             this.LabelRadioOutboundInvoice.Text =
+                Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioOutboundInvoice;
 
             this.LiteralButtonBalance.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonBalance);
             this.LiteralButtonPayout.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayout);
@@ -288,7 +290,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
         [WebMethod]
-        public static void MatchTransactionOpenPayout (int transactionId, int payoutId)
+        public static void MatchTransactionOpenPayout(int transactionId, int payoutId)
         {
             if (transactionId == 0 || payoutId == 0)
             {
@@ -305,7 +307,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             FinancialTransaction transaction = FinancialTransaction.FromIdentity(transactionId);
-            Payout payout = Payout.FromIdentity (payoutId);
+            Payout payout = Payout.FromIdentity(payoutId);
             if (transaction.OrganizationId != authData.CurrentOrganization.Identity || payout.OrganizationId != authData.CurrentOrganization.Identity)
             {
                 throw new UnauthorizedAccessException();
@@ -316,7 +318,55 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new InvalidOperationException();
             }
 
-            payout.BindToTransactionAndClose (transaction, authData.CurrentUser);
+            payout.BindToTransactionAndClose(transaction, authData.CurrentUser);
+
+        }
+
+
+
+        [WebMethod]
+        public static void MatchTransactionOpenOutboundInvoice(int transactionId, int invoiceId)
+        {
+            if (transactionId == 0 || invoiceId == 0)
+            {
+                return;
+            }
+
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (
+                !authData.Authority.HasAccess(new Access(authData.CurrentOrganization,
+                    AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            FinancialTransaction transaction = FinancialTransaction.FromIdentity(transactionId);
+            OutboundInvoice outboundInvoice = OutboundInvoice.FromIdentity(invoiceId);
+            if (transaction.OrganizationId != authData.CurrentOrganization.Identity || outboundInvoice.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            if (transaction.Rows.AmountCentsTotal != outboundInvoice.AmountCents)
+            {
+                throw new InvalidOperationException();
+            }
+
+            // Close invoice
+
+            Payment payment = Payment.CreateSingle(authData.CurrentOrganization, transaction.DateTime,
+                authData.CurrentOrganization.Currency, outboundInvoice.AmountCents, outboundInvoice,
+                authData.CurrentUser);
+
+            // TODO: Notify?
+
+            // TODO: Log?
+
+            // Close transaction
+
+            transaction.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsOutboundInvoices,
+                -outboundInvoice.AmountCents, authData.CurrentUser);
 
         }
 

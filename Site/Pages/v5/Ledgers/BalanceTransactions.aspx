@@ -146,6 +146,21 @@
             }
         }
 
+        function onMatchOpenOutboundInvoice() {
+            var invoiceId = <%=this.DropOpenOutboundInvoices.ClientID%>_val();
+
+            if (invoiceId > 0) {
+                <%= this.DialogTx.ClientID %>_close();
+                SwarmopsJS.ajaxCall(
+                    "/Pages/v5/Ledgers/BalanceTransactions.aspx/MatchTransactionOpenOutboundInvoice",
+                    { transactionId: transactionId, invoiceId: invoiceId },
+                    function () {
+                        $('#gridTransactions').datagrid('reload');
+                    });
+
+            }
+        }
+
         var buttonBalanceValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonBalance" runat="server" Text="BalanceXYZ" />');
         var buttonPayoutValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonPayout" runat="server" Text="MatchXYZ" />');
         var buttonPayoutForeignValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonPayoutForeign" runat="server" Text="MatchXYZ" />');

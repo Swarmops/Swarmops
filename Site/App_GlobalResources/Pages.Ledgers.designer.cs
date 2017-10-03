@@ -619,6 +619,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Match the transaction to this outbound invoice:.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribeOutboundInvoice {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribeOutboundInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The transaction matches this payout:.
         /// </summary>
         internal static string BalanceTransactions_ModalDialog_DescribePayout {

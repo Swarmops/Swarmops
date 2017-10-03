@@ -839,6 +839,9 @@
   <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
     <value>Match invoice</value>
   </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
+    <value>Match the transaction to this outbound invoice:</value>
+  </data>
   <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
     <value>Match this to an open outbound invoice?</value>
   </data>
