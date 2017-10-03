@@ -35,7 +35,7 @@ namespace Swarmops.Frontend.Automation
 
             // Is this stuff in cache already?
 
-            string cacheKey = "ExpensableBudgets-Json-" + accountType +
+            string cacheKey = "Budgets-Json-" + accountType +
                               // use the sanitized input to prevent cache overload
                               CurrentOrganization.Identity.ToString ((CultureInfo.InvariantCulture));
 

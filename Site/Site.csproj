@@ -110,13 +110,6 @@
     <Compile Include="Controls\v5\Base\AjaxToggleSlider.ascx.designer.cs">
       <DependentUpon>AjaxToggleSlider.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\v5\Base\FileUploader.ascx.cs">
-      <DependentUpon>FileUploader.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\v5\Base\FileUploader.ascx.designer.cs">
-      <DependentUpon>FileUploader.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controls\v5\Swarm\ImpersonationWarningBox.ascx.cs">
       <DependentUpon>ImpersonationWarningBox.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -690,7 +683,6 @@
     <Content Include="Controls\v5\Base\ComboGeographies.ascx" />
     <Content Include="Controls\v5\Base\DropDown.ascx" />
     <Content Include="Controls\v5\Base\FileUpload.ascx" />
-    <Content Include="Controls\v5\Base\FileUploader.ascx" />
     <Content Include="Controls\v5\Base\MainMenu.ascx" />
     <Content Include="Controls\v5\Base\ModalDialog.ascx" />
     <Compile Include="Controls\v5\Base\AjaxTextBox.ascx.designer.cs">

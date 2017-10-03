@@ -106,7 +106,7 @@ namespace Swarmops.Frontend.Automation
                 return string.Empty;
             }
 
-            if (this._hashedAccounts[rootNodeId].Count == 1)
+            if (this._hashedAccounts[rootNodeId].Count < 1)
             {
                 // No children
 
