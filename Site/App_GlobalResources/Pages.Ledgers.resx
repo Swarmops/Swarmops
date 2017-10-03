@@ -681,7 +681,7 @@
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
   <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
-    <value>Matching Amount, Off In Time</value>
+    <value>Matching Amount But On Unexpected Date/Time</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
   <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
@@ -835,5 +835,25 @@
   <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
     <value>Add new transaction</value>
     <comment>Option in sidebar</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
+    <value>Match invoice</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
+    <value>Match this to an open outbound invoice?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
+    <value>Match this to an open outbound invoice in a nonstandard currency (5% forex tolerance)?</value>
+  </data>
+  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
+    <value>Most Probable Match</value>
+    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
+  </data>
+  <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
+    <value>Outbound Invoice #{0:N0} for {1}, due {2}: {3}</value>
+    <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
+  </data>
+  <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
+    <value>VAT Report for {1:yyyy-MMM} surplus</value>
   </data>
 </root>

@@ -29,6 +29,7 @@
             $('#buttonExecuteBalance').val(buttonBalanceValue);
             $('#buttonExecutePayout').val(buttonPayoutValue);
             $('#buttonExecutePayoutForeign').val(buttonPayoutForeignValue);
+            $('#buttonExecuteOutboundInvoice').val(buttonOutboundInvoiceValue);
         });
 
         var transactionId = 0;
@@ -148,6 +149,7 @@
         var buttonBalanceValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonBalance" runat="server" Text="BalanceXYZ" />');
         var buttonPayoutValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonPayout" runat="server" Text="MatchXYZ" />');
         var buttonPayoutForeignValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonPayoutForeign" runat="server" Text="MatchXYZ" />');
+        var buttonOutboundInvoiceValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonOutboundInvoice" runat="server" Text="MatchXYZ" />');
 
     </script>
     
@@ -232,14 +234,14 @@
                 </div>
             </div>
             <div id="divPositiveDifference">
-                <p><input type="radio" id="RadioPaymentDirect" name="TxOptions" value="PaymentDirect" /><label for="RadioPaymentDirect">&nbsp;<asp:Label runat="server" ID="LabelRadioPaymentDirect" Text="Match to an open outbound invoice? XYZ" /></label></p>
-                <div id="radioOptionPaymentDirect" class="radioOption">
+                <p><input type="radio" id="RadioOutboundInvoice" name="TxOptions" value="OutboundInvoice" /><label for="RadioOutboundInvoice">&nbsp;<asp:Label runat="server" ID="LabelRadioOutboundInvoice" Text="Match to an open outbound invoice? XYZ" /></label></p>
+                <div id="radioOptionOutboundInvoice" class="radioOption">
                     <div class="entryFields">
                         <Swarmops5:DropDown ID="DropOpenOutboundInvoices" runat="server" />&#8203;<br/>
-                        <input type="button" value='#PaymentInvoice#' class="buttonAccentColor" onclick="onMatchOpenOutboundInvoice(); return false;" id="buttonExecutePayoutForeign"/>
+                        <input type="button" value='#PaymentInvoice#' class="buttonAccentColor" onclick="onMatchOpenOutboundInvoice(); return false;" id="buttonExecuteOutboundInvoice"/>
                     </div>
                     <div class="entryLabels">
-                        <asp:Label runat="server" ID="Label2" Text="Match to payout XYZ" />
+                        <asp:Label runat="server" ID="LabelDescribeOutboundInvoice" Text="Match to outbound invoice XYZ" />
                     </div>
                 </div>
             </div>

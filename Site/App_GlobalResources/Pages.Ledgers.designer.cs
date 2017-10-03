@@ -511,7 +511,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Matching Amount, Off In Time.
+        ///   Looks up a localized string similar to Matching Amount But On Unexpected Date/Time.
         /// </summary>
         internal static string BalanceTransactions_ExactMatchesFarAway {
             get {
@@ -592,6 +592,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Match invoice.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_ButtonOutboundInvoice {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_ButtonOutboundInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Match.
         /// </summary>
         internal static string BalanceTransactions_ModalDialog_ButtonPayout {
@@ -646,6 +655,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Match this to an open outbound invoice?.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_RadioOutboundInvoice {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_RadioOutboundInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match this to an open outbound invoice in a nonstandard currency (5% forex tolerance)?.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Match the transaction difference to an open, unmatched payout?.
         /// </summary>
         internal static string BalanceTransactions_ModalDialog_RadioPayout {
@@ -673,6 +700,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Most Probable Match.
+        /// </summary>
+        internal static string BalanceTransactions_MostProbableMatch {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_MostProbableMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (No open payouts).
         /// </summary>
         internal static string BalanceTransactions_NoOpenPayouts {
@@ -696,6 +732,15 @@ namespace Resources.Pages {
         internal static string BalanceTransactions_OnePercentMatches {
             get {
                 return ResourceManager.GetString("BalanceTransactions_OnePercentMatches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outbound Invoice #{0:N0} for {1}, due {2}: {3}.
+        /// </summary>
+        internal static string BalanceTransactions_OutboundInvoiceMatch {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_OutboundInvoiceMatch", resourceCulture);
             }
         }
         
@@ -732,6 +777,15 @@ namespace Resources.Pages {
         internal static string BalanceTransactions_TenPercentMatches {
             get {
                 return ResourceManager.GetString("BalanceTransactions_TenPercentMatches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Report for {1:yyyy-MMM} surplus.
+        /// </summary>
+        internal static string BalanceTransactions_VatReportMatch {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_VatReportMatch", resourceCulture);
             }
         }
         

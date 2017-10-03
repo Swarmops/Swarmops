@@ -44,13 +44,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             this.LabelDescribePayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePayout;
             this.LabelDescribePayoutForeign.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePayoutForeign;
+            this.LabelDescribeOutboundInvoice.Text = 
             this.LabelRadioPayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayout;
             this.LabelRadioPayoutForeign.Text =
                 String.Format(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayoutForeign, 5);
+            this.LabelRadioOutboundInvoice.Text =
 
             this.LiteralButtonBalance.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonBalance);
             this.LiteralButtonPayout.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayout);
             this.LiteralButtonPayoutForeign.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayout);
+            this.LiteralButtonOutboundInvoice.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonOutboundInvoice);
         }
 
 
@@ -189,16 +192,24 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 if (invoice.AmountCents > matchAmount * 95 / 100 &&
                          invoice.AmountCents < matchAmount * 105 / 100)
                 {
-                    string description = String.Format(Resources.Pages.Ledgers.BalanceTransactions_PayoutMatch, invoice.Identity,
-                        invoice.DueDate, invoice.CustomerName, invoice.Organization.Currency.DisplayCode, invoice.AmountCents / 100.0,
-                        invoice.DisplayNativeAmount);
+                    string description = String.Format(Resources.Pages.Ledgers.BalanceTransactions_OutboundInvoiceMatch, invoice.Identity,
+                        invoice.CustomerName, invoice.DueDate, invoice.DisplayNativeAmount);
+
+                    if (invoice.HasNativeCurrency)
+                    {
+                        description += " (" + transaction.Organization.Currency.DisplayCode + " " +
+                                       (invoice.AmountCents/100.0).ToString("N2") + ")";
+                    }
+
+                    bool invoiceIdMatch = DescriptionContainsInvoiceReference(invoice.Reference, invoice.TheirReference, transaction.Description);
+
 
                     if (invoice.AmountCents == matchAmount)
                     {
                         listExact.Add(new DropdownOption
                         {
                             id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
-                            @group = Resources.Pages.Ledgers.BalanceTransactions_ExactMatches,
+                            @group = invoiceIdMatch? Resources.Pages.Ledgers.BalanceTransactions_MostProbableMatch : Resources.Pages.Ledgers.BalanceTransactions_ExactMatches,
                             text = description
                         });
                     }
@@ -207,7 +218,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         listTolerant.Add(new DropdownOption
                         {
                             id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
-                            @group = Resources.Pages.Ledgers.BalanceTransactions_FivePercentMatches,
+                            @group = invoiceIdMatch ? Resources.Pages.Ledgers.BalanceTransactions_MostProbableMatch : Resources.Pages.Ledgers.BalanceTransactions_FivePercentMatches,
                             text = description
                         });
                     }
@@ -218,6 +229,33 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             result.TolerantMatches = listTolerant.ToArray();
 
             return result;
+        }
+
+        private static bool DescriptionContainsInvoiceReference(string ourReference, string theirReference, string description)
+        {
+            // Remove some noise
+
+            ourReference = ourReference.Replace("-", "").Replace(".", "").Replace("/", "");
+            theirReference = theirReference.Replace("-", "").Replace(".", "").Replace("/", "");
+            description = description.Replace("-", "").Replace(".", "").Replace("/", "");
+
+            // For every word in the description, check if it's the invoice reference. If so, return true
+
+            string[] descriptionWords = description.Split(' ');
+
+            foreach (string descriptionWord in descriptionWords)
+            {
+                if (descriptionWord == ourReference)
+                {
+                    return true;
+                }
+                if (descriptionWord == theirReference)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         [WebMethod]
