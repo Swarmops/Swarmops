@@ -544,6 +544,8 @@ namespace Swarmops.Logic.Structure
             FinancialAccount.Create(this, "[LOC]Cost_TravelPerDiem", FinancialAccountType.Cost, travelMaster);
             FinancialAccount.Create(this, "[LOC]Cost_EventTickets", FinancialAccountType.Cost, travelMaster);
 
+            FinancialAccount.Create(this, "[LOC]Cost_Taxes", FinancialAccountType.Cost, null);
+
             // Finally, create the first conference parent
 
             FinancialAccount conferenceBase = FinancialAccount.Create (this, "[LOC]Cost_Conferences",
