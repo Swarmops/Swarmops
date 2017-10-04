@@ -78,7 +78,7 @@ CREATE TABLE `Suppliers` (
   `OrganizationId` INT NOT NULL,
   `Name` VARCHAR(128) NOT NULL DEFAULT '',
   `ExternalContactId` INT NOT NULL DEFAULT 0,
-  `Street` VARCHAR(128) NOT NULL DEFAULT '',
+  `Street` VARCHAR(256) NOT NULL DEFAULT '',
   `PostalCode` VARCHAR(45) NOT NULL DEFAULT '',
   `City` VARCHAR(45) NOT NULL DEFAULT '',
   `CountryId` INT NOT NULL DEFAULT '',
@@ -91,11 +91,87 @@ CREATE TABLE `Suppliers` (
 #
 
 CREATE TABLE `PayoutSpecs` (
-  `PayoutSpecId` IN NOT NULL AUTO_INCREMENT,
-  `Bank` VARCHAR(128) NOT NULL DEFAULT '',
-  `ClearingRouting` VARCHAR(128) NOT NULL DEFAULT '',
-  `Account` VARCHAR(128) NOT NULL DEFAULT '',
-  `BitcoinAddress` VARCHAR(128) NOT NULL DEFAULT '',
-  `BitcoinCashAddress` VARCHAR(128) NOT NULL DEFAULT '',
-  `EthereumAddress` VARCHAR(128) NOT NULL DEFAULT '',
+  `PayoutSpecId` INT NOT NULL AUTO_INCREMENT,
+  `BankAccountId` INT NOT NULL DEFAULT 0,
+  `CryptoAddressId` INT NOT NULL DEFAULT 0
   PRIMARY KEY (`PayoutSpecId`))
+
+#
+
+CREATE TABLE `BankAccountSpecs` (
+  `BankSpecId` INT NOT NULL AUTO_INCREMENT,
+  `BankId` INT NOT NULL,
+  `Iban` VARCHAR(128) NOT NULL DEFAULT '',
+  `Routing` BIGINT NOT NULL DEFAULT 0,
+  `Clearing` BIGINT NOT NULL DEFAULT 0,
+  `Account` BIGINT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`BankSpecId`),
+  INDEX `Ix_Bank` (`BankId` ASC))  
+
+#
+
+CREATE TABLE `Banks` (
+  `BankId` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(128) NOT NULL,
+  `Street` VARCHAR(256) NOT NULL,
+  `PostalCode` VARCHAR(64) NOT NULL,
+  `City` VARCHAR(64) NOT NULL,
+  `CountryId` INT NOT NULL,
+  `Bic` VARCHAR(64) NOT NULL DEFAULT '',
+  PRIMARY KEY (`BankId`),
+  INDEX `Ix_Name` (`Name` ASC),
+  INDEX `Ix_Country` (`CountryId` ASC),
+  INDEX `Ix_Bic` (`Bic` ASC))
+
+#
+
+CREATE TABLE `CryptoAddressSpecs` (
+  `CryptoAddressSpecId` INT NOT NULL AUTO_INCREMENT,
+  `CurrencyId` INT NOT NULL,
+  `Address` VARCHAR(256) NOT NULL,
+  PRIMARY KEY (`CryptoAddressSpecId`),
+  INDEX `Ix_Address` (`CurrencyId` ASC, `Address` ASC))
+
+#
+
+ALTER TABLE `Currencies` 
+CHANGE COLUMN `Code` `Code` VARCHAR(64) NOT NULL ,
+ADD COLUMN `IsCrypto` TINYINT NOT NULL DEFAULT 0 AFTER `Sign`,
+ADD INDEX `Ix_Code` (`Code` ASC, `IsCrypto` ASC)
+
+#
+
+DROP PROCEDURE `CreateCurrency`
+
+#
+
+CREATE PROCEDURE `CreateCurrency`(
+  IN name VARCHAR(64),
+  IN code VARCHAR(16),
+  IN sign VARCHAR(8)
+)
+BEGIN
+
+  INSERT INTO Currencies (Name,Code,Sign,IsCrypto)
+    VALUES (name,code,sign,0);
+
+  SELECT LAST_INSERT_ID() AS Identity;
+
+END
+
+#
+
+CREATE PROCEDURE `CreateCryptocurrency`(
+  IN name VARCHAR(64),
+  IN code VARCHAR(16),
+  IN sign VARCHAR(8)
+)
+BEGIN
+
+  INSERT INTO Currencies (Name,Code,Sign,IsCrypto)
+    VALUES (name,code,sign,1);
+
+  SELECT LAST_INSERT_ID() AS Identity;
+
+END
+  
