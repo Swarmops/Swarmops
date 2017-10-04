@@ -45,7 +45,6 @@ ADD COLUMN `PayoutSpecId` INT NOT NULL DEFAULT 0 AFTER `SupplierId`
 
 #
 
-
 ALTER TABLE `People`
 ADD COLUMN `PayoutSpecId` INT NOT NULL DEFAULT 0 AFTER `GenderId`
 
@@ -147,7 +146,7 @@ DROP PROCEDURE `CreateCurrency`
 
 #
 
-DROP PROCEDURE `CreateCryptocurrency`
+DROP PROCEDURE IF EXISTS `CreateCryptocurrency`
 
 #
 
