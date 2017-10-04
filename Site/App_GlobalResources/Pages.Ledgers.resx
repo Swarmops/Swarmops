@@ -853,7 +853,7 @@
     <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
   </data>
   <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
-    <value>Outbound Invoice #{0:N0} for {1}, due {2}: {3}</value>
+    <value>Outbound Invoice #{0:N0} for {1}, due {2:yyyy-MMM-dd}: {3}</value>
     <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
   </data>
   <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">

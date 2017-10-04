@@ -32,6 +32,7 @@
             '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png'
         ]);
 
+        /* -- commented out -- do we need attestation logic for this page?
         loadUninitializedBudgets(); // no need to wait for doc.ready to load operating params
 
         SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetRemainingBudgets", {}, function(data) {
@@ -44,50 +45,11 @@
             }
 
             budgetRemainingLookup.budgetsLoaded = true;
-        });
+        });*/
 
         // Doc.ready:
 
-        $(document).ready(function () {
-            $('#TableAttestableCosts').datagrid(
-                {
-                    rowStyler: function (index, rowData) {
-                        if (rowData.previous != null) {
-                            return { class: "rowPrevious row" + rowData.itemId };
-                        }
-
-                        if (rowData.itemId != null) {
-                            return { class: "row" + rowData.itemId.replace(/\|/g, '') };
-                        }
-
-                        return '';
-                    },
-
-                    onLoadSuccess: function () {
-                        budgetRemainingLookup.attestabilityInitialized = false;
-
-                        $(".LocalViewDox").click(function () {
-                            $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
-                        });
-
-                        $("a.FancyBox_Gallery").fancybox({
-                            'overlayShow': true,
-                            'transitionIn': 'fade',
-                            'transitionOut': 'fade',
-                            'type': 'image',
-                            'opacity': true
-                        });
-
-                        // Check if budgets have been fetched, and if so, initialize attestability
-
-                        if (budgetRemainingLookup.budgetsLoaded == true) {
-                                setAttestability();
-                            }
-
-                            budgetRemainingLookup.rowsLoaded = true;
-                        }
-                }
-            );
+        $(document).ready(function() {
 
             // we're still in document.ready
 

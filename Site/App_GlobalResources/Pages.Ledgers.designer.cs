@@ -745,7 +745,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Outbound Invoice #{0:N0} for {1}, due {2}: {3}.
+        ///   Looks up a localized string similar to Outbound Invoice #{0:N0} for {1}, due {2:yyyy-MMM-dd}: {3}.
         /// </summary>
         internal static string BalanceTransactions_OutboundInvoiceMatch {
             get {
