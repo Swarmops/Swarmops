@@ -146,6 +146,10 @@ DROP PROCEDURE `CreateCurrency`
 
 #
 
+DROP PROCEDURE `CreateCryptocurrency`
+
+#
+
 CREATE PROCEDURE `CreateCurrency`(
   IN name VARCHAR(64),
   IN code VARCHAR(16),
