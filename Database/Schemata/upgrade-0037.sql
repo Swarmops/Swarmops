@@ -41,13 +41,10 @@ END
 #
 
 ALTER TABLE `InboundInvoices` 
-ADD COLUMN `PayoutSpecId` INT NOT NULL DEFAULT 0 AFTER `SupplierId`,
+ADD COLUMN `PayoutSpecId` INT NOT NULL DEFAULT 0 AFTER `SupplierId`
 
 #
 
-ASDSADASDASD
-
-#
 
 ALTER TABLE `People`
 ADD COLUMN `PayoutSpecId` INT NOT NULL DEFAULT 0 AFTER `GenderId`
