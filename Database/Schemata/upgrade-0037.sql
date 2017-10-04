@@ -93,7 +93,7 @@ CREATE TABLE `Suppliers` (
 CREATE TABLE `PayoutSpecs` (
   `PayoutSpecId` INT NOT NULL AUTO_INCREMENT,
   `BankAccountId` INT NOT NULL DEFAULT 0,
-  `CryptoAddressId` INT NOT NULL DEFAULT 0
+  `CryptoAddressId` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`PayoutSpecId`))
 
 #
@@ -135,7 +135,7 @@ CREATE TABLE `CryptoAddressSpecs` (
 #
 
 ALTER TABLE `Currencies` 
-CHANGE COLUMN `Code` `Code` VARCHAR(64) NOT NULL ,
+CHANGE COLUMN `Code` `Code` VARCHAR(64) NOT NULL,
 ADD COLUMN `IsCrypto` TINYINT NOT NULL DEFAULT 0 AFTER `Sign`,
 ADD INDEX `Ix_Code` (`Code` ASC, `IsCrypto` ASC)
 
