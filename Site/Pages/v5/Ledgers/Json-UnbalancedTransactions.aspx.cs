@@ -35,7 +35,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     string row =
                         String.Format (
                         "\"id\":\"{0:N0}\",\"description\":\"{1}\",\"accountName\":\"{2}\",\"delta\":\"{3:+#,#.00;−#,#.00}\",\"dateTime\":\"{4:yyyy-MMM-dd HH:mm}\"",
-                            transaction.Identity, JsonSanitize (transaction.Description), JsonSanitize (accountName), txRows.AmountCentsTotal / 100.0, transaction.DateTime);
+                            transaction.OrganizationSequenceId, JsonSanitize (transaction.Description), JsonSanitize (accountName), txRows.AmountCentsTotal / 100.0, transaction.DateTime);
 
                     row +=
                         String.Format (

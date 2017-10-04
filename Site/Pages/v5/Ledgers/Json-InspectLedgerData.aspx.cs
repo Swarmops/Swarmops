@@ -176,7 +176,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 result.Append ("{" + String.Format (
                     "\"id\":\"{0:N0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
                     "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N0}\",\"action\":\"{6}\"",
-                    row.FinancialTransactionId,
+                    row.Transaction.OrganizationSequenceId,
                     row.TransactionDateTime,
                     JsonSanitize (description),
                     debitString,

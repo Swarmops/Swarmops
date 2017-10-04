@@ -36,7 +36,7 @@ namespace Swarmops.Basic.Types.Financial
         }
         public int OrganizationSequenceId
         {
-            get { return this.organizationId; }
+            get { return this.organizationSequenceId; }
         }
 
         public int FinancialTransactionId
