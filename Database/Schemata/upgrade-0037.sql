@@ -81,11 +81,12 @@ CREATE TABLE `Suppliers` (
   `Street` VARCHAR(256) NOT NULL DEFAULT '',
   `PostalCode` VARCHAR(45) NOT NULL DEFAULT '',
   `City` VARCHAR(45) NOT NULL DEFAULT '',
-  `CountryId` INT NOT NULL DEFAULT '',
+  `CountryId` INT NOT NULL DEFAULT 0,
   `VatId` VARCHAR(128) NOT NULL DEFAULT '',
   `PayoutSpecId` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`SupplierId`),
   INDEX `Ix_Name` (`Name` ASC),
+  INDEX `Ix_Country` (`CountryId` ASC),
   INDEX `Ix_Organization` (`OrganizationId` ASC))
 
 #
@@ -116,7 +117,7 @@ CREATE TABLE `Banks` (
   `Street` VARCHAR(256) NOT NULL,
   `PostalCode` VARCHAR(64) NOT NULL,
   `City` VARCHAR(64) NOT NULL,
-  `CountryId` INT NOT NULL,
+  `CountryId` INT NOT NULL DEFAULT 0,
   `Bic` VARCHAR(64) NOT NULL DEFAULT '',
   PRIMARY KEY (`BankId`),
   INDEX `Ix_Name` (`Name` ASC),
