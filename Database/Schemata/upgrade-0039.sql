@@ -11,7 +11,7 @@ DROP PROCEDURE IF EXISTS `CreateVatReport`
 #
 
 
-CREATE DEFINER=`swarmops-live-a`@`%` PROCEDURE `CreateVatReport`(
+CREATE PROCEDURE `CreateVatReport`(
   organizationId INT,
   guid VARCHAR(128),
   createdDateTime DATETIME,
