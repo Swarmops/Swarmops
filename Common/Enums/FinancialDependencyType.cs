@@ -60,6 +60,11 @@ namespace Swarmops.Common.Enums
         /// <summary>
         ///     A payback for a previous cash advance
         /// </summary>
-        CashAdvancePayback
+        CashAdvancePayback,
+
+        /// <summary>
+        ///     A VAT report with a surplus (get back) or deficit (feed the State more)
+        /// </summary>
+        VatReport
     }
 }
