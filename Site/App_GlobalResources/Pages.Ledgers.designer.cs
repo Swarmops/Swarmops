@@ -610,6 +610,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Match.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_ButtonPayoutForeign {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_ButtonPayoutForeign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Balance the difference against this account:.
         /// </summary>
         internal static string BalanceTransactions_ModalDialog_DescribeBalance {

@@ -673,6 +673,42 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating Outbound Invoice.
+        /// </summary>
+        internal static string CreateOutboundInvoice_BoxTitle {
+            get {
+                return ResourceManager.GetString("CreateOutboundInvoice_BoxTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Invoice.
+        /// </summary>
+        internal static string CreateOutboundInvoice_ButtonCreate {
+            get {
+                return ResourceManager.GetString("CreateOutboundInvoice_ButtonCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Outbound Invoice.
+        /// </summary>
+        internal static string CreateOutboundInvoice_PageTitle {
+            get {
+                return ResourceManager.GetString("CreateOutboundInvoice_PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outbound Invoice #{0:N0} filed..
+        /// </summary>
+        internal static string CreateOutboundInvoice_SuccessMessage {
+            get {
+                return ResourceManager.GetString("CreateOutboundInvoice_SuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This is a QR code for donations to {0}. Read it from your phone&apos;s bitcoin wallet to make a donation, or donate from your computer directly to [{1}] (that&apos;s a bitcoin address)..
         /// </summary>
         internal static string Donate_Explain {

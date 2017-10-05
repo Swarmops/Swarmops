@@ -13,42 +13,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
     public partial class BalanceTransactions {
         
         /// <summary>
-        /// LiteralButtonBalance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralButtonBalance;
-        
-        /// <summary>
-        /// LiteralButtonPayout control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralButtonPayout;
-        
-        /// <summary>
-        /// LiteralButtonPayoutForeign control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralButtonPayoutForeign;
-        
-        /// <summary>
-        /// LiteralButtonOutboundInvoice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralButtonOutboundInvoice;
-        
-        /// <summary>
         /// LabelHeaderUnbalancedTransactions control.
         /// </summary>
         /// <remarks>

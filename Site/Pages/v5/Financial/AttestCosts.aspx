@@ -474,14 +474,15 @@
         var uninitializedPopupDisplayed = false;
 
         // The variable below is advisory for the UI - actual access control is done server-side
-        var canOverdraftBudgets = <asp:Literal ID="LiteralCanOverdraftBudgets" runat="server" />;
+        var canOverdraftBudgets = <%=this.Logic_CanOverdraftBudgets %>;
 
         var approvalOverdraftIcon = '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png';
         var approvalOverdraftIconHover = approvalOverdraftIconHover;
 
-        var buttonRebudgetValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonRebudget" runat="server" Text="RebudgetXYZ" />');
-        var buttonDenyValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonDeny" runat="server" Text="RebudgetXYZ" />');
-        var buttonCorrectValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonCorrect" runat="server" Text="AmountXYZ" />');
+
+        var buttonRebudgetValue = SwarmopsJS.unescape('<%=this.Localized_ButtonRebudget%>');
+        var buttonDenyValue = SwarmopsJS.unescape('<%=this.Localized_ButtonDeny%>');
+        var buttonCorrectValue = SwarmopsJS.unescape('<%=this.Localized_ButtonDeny%>');
 
     </script>
     

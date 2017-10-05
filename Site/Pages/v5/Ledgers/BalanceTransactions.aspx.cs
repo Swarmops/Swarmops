@@ -52,10 +52,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelRadioOutboundInvoice.Text =
                 Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioOutboundInvoice;
 
-            this.LiteralButtonBalance.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonBalance);
-            this.LiteralButtonPayout.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayout);
-            this.LiteralButtonPayoutForeign.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayout);
-            this.LiteralButtonOutboundInvoice.Text = JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonOutboundInvoice);
         }
 
 
@@ -425,5 +421,41 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
         }
 
+        // ---- Localized resources ----
+
+
+        public string Localized_ButtonBalance
+        {
+            get
+            {
+                return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonBalance);
+            }
+        }
+
+        public string Localized_ButtonPayout
+        {
+            get
+            {
+                return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayout);
+            }
+        }
+
+        public string Localized_ButtonPayoutForeign
+        {
+            get
+            {
+                return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayoutForeign);
+            }
+        }
+
+        public string Localized_ButtonOutboundInvoice
+        {
+            get
+            {
+                return
+                    CommonV5.JavascriptEscape(
+                        Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonOutboundInvoice);
+            }
+        }
     }
 }

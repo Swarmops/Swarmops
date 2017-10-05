@@ -629,4 +629,16 @@
   <data name="ListInboundInvoices_Title" xml:space="preserve">
     <value>Inbound Invoices</value>
   </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Creating Outbound Invoice</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Create Invoice</value>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Creating Outbound Invoice</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Outbound Invoice #{0:N0} filed.</value>
+  </data>
 </root>

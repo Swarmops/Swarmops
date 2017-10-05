@@ -89,7 +89,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return;
             }
 
-            this.BoxTitle.Text = PageTitle = Resources.Pages.Financial.CreateInboundInvoice_PageTitle;
+            this.BoxTitle.Text = PageTitle = Resources.Pages.Financial.CreateOutboundInvoice_PageTitle;
             PageIcon = "iconshock-invoice";
             InfoBoxLiteral = Resources.Pages.Financial.CreateInboundInvoice_Info;
 
@@ -124,7 +124,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelImageFiles.Text = Resources.Pages.Financial.CreateInboundInvoice_UploadInvoiceImage;
             this.LabelReference.Text = Resources.Pages.Financial.CreateInboundInvoice_Reference;
 
-            this.ButtonCreate.Text = Resources.Pages.Financial.CreateInboundInvoice_ButtonCreate;
+            this.ButtonCreate.Text = Resources.Pages.Financial.CreateOutboundInvoice_ButtonCreate;
         }
 
 
@@ -238,7 +238,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 }
 
                 return
-                    JavascriptEscape (String.Format (Resources.Pages.Financial.CreateInboundInvoice_SuccessMessage,
+                    JavascriptEscape (String.Format (Resources.Pages.Financial.CreateOutboundInvoice_SuccessMessage,
                         this._invoiceId));
             }
         }

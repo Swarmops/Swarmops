@@ -43,8 +43,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             this._attestationRights = GetAttestationRights();
             this._documentList = new List<RepeatedDocument>();
-            this.LiteralCanOverdraftBudgets.Text =
-                CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Administration)).ToString(CultureInfo.InvariantCulture).ToLowerInvariant();
 
             PopulateInboundInvoices();
             PopulateExpenses();
@@ -133,10 +131,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelRadioCorrect.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionAmount;
             this.LabelRadioDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionDeny;
             this.LabelRadioRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionRebudget;
-
-            this.LiteralButtonCorrect.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount); 
-            this.LiteralButtonDeny.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonDeny);
-            this.LiteralButtonRebudget.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonRebudget);
 
             this.LabelModalDenyHeader.Text = Resources.Pages.Financial.AttestCosts_Modal_Header;
             this.LabelWhatProblem.Text = Resources.Pages.Financial.AttestCosts_Modal_WhatIsProblem;
@@ -593,6 +587,35 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             public int DocId { get; set; }
             public string BaseId { get; set; }
             public string Title { get; set; }
+        }
+
+
+        // --- Localized resources --
+
+        public string Logic_CanOverdraftBudgets
+        {
+            get
+            {
+                return
+                    CurrentAuthority.HasAccess(new Access(CurrentOrganization, AccessAspect.Administration))
+                        .ToString(CultureInfo.InvariantCulture)
+                        .ToLowerInvariant();
+            }
+        }
+
+        public string Localized_ButtonRebudget
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonRebudget); }
+        }
+
+        public string Localized_ButtonDeny
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonDeny); }
+        }
+
+        public string Localized_ButtonCorrect
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount); }
         }
 
 

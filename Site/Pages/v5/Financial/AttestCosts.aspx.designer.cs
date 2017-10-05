@@ -85,42 +85,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Literal LiteralCannotCorrectSalary;
         
         /// <summary>
-        /// LiteralCanOverdraftBudgets control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralCanOverdraftBudgets;
-        
-        /// <summary>
-        /// LiteralButtonRebudget control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralButtonRebudget;
-        
-        /// <summary>
-        /// LiteralButtonDeny control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralButtonDeny;
-        
-        /// <summary>
-        /// LiteralButtonCorrect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralButtonCorrect;
-        
-        /// <summary>
         /// LabelAttestCostsHeader control.
         /// </summary>
         /// <remarks>

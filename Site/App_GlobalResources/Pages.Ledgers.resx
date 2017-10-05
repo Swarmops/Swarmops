@@ -859,4 +859,7 @@
   <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
     <value>VAT Report for {1:yyyy-MMM} surplus</value>
   </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
+    <value>Match</value>
+  </data>
 </root>

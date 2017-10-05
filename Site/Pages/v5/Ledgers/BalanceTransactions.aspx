@@ -161,10 +161,10 @@
             }
         }
 
-        var buttonBalanceValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonBalance" runat="server" Text="BalanceXYZ" />');
-        var buttonPayoutValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonPayout" runat="server" Text="MatchXYZ" />');
-        var buttonPayoutForeignValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonPayoutForeign" runat="server" Text="MatchXYZ" />');
-        var buttonOutboundInvoiceValue = SwarmopsJS.unescape('<asp:Literal ID="LiteralButtonOutboundInvoice" runat="server" Text="MatchXYZ" />');
+        var buttonBalanceValue = SwarmopsJS.unescape('<%=this.Localized_ButtonBalance%>');
+        var buttonPayoutValue = SwarmopsJS.unescape('<%=this.Localized_ButtonPayout%>');
+        var buttonPayoutForeignValue = SwarmopsJS.unescape('<%=this.Localized_ButtonPayoutForeign%>');
+        var buttonOutboundInvoiceValue = SwarmopsJS.unescape('<%=this.Localized_ButtonOutboundInvoice%>');
 
     </script>
     
