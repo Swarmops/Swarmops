@@ -37,3 +37,4 @@
 0037 - Added Suppliers, ExternalContacts tables; no procs for them yet [RF]
 0038 - VAT Report tables and functions [RF]
 0039 - VatReport.Guid added [RF]
+0040 - Document.HiresStatus added [RF]
