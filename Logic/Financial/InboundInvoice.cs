@@ -50,7 +50,7 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
-                if (this.OrganizationSequenceId == 0)
+                if (base.OrganizationSequenceId == 0)
                 {
                     // This case is for legacy installations before DbVersion 41, when
                     // OrganizationSequenceId was added for each new invoice
