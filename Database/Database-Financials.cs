@@ -990,7 +990,7 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("CreateFinancialTransactionRowPrecise", connection);
+                DbCommand command = GetDbCommand ("CreateFinancialTransactionRow", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName (command, "financialTransactionId", financialTransactionId);
