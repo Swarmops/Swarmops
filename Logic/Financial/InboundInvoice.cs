@@ -46,7 +46,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public int OrganizationSequenceId
+        public new int OrganizationSequenceId
         {
             get
             {
