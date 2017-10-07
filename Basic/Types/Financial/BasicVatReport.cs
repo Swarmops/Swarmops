@@ -11,22 +11,44 @@ namespace Swarmops.Basic.Types.Financial
     {
         // Basic ctor
 
-
+        public BasicVatReport(int vatReportId, int organizationId, string guid, DateTime createdDateTime,
+            int yearMonthStart, int monthCount, bool open, Int64 turnoverCents, Int64 vatInboundCents, 
+            Int64 vatOutboundCents, bool underConstruction)
+        {
+            this.VatReportId = vatReportId;
+            this.OrganizationId = organizationId;
+            this.Guid = guid;
+            this.CreatedDateTime = createdDateTime;
+            this.YearMonthStart = yearMonthStart;
+            this.MonthCount = monthCount;
+            this.Open = open;
+            this.TurnoverCents = turnoverCents;
+            this.VatInboundCents = vatInboundCents;
+            this.VatOutboundCents = vatOutboundCents;
+            this.UnderConstruction = underConstruction;
+        }
 
         // Copy ctor
 
-
+        public BasicVatReport(BasicVatReport original)
+            : this(original.Identity, original.OrganizationId, original.Guid, original.CreatedDateTime,
+                original.YearMonthStart, original.MonthCount, original.Open, original.TurnoverCents,
+                original.VatInboundCents, original.VatOutboundCents, original.UnderConstruction)
+        {
+            // empty copy ctor
+        }
 
         // Properties
 
         public int VatReportId { get; private set; }
         public int OrganizationId { get; private set; }
         public string Guid { get; private set; }
-        public int YearMonth { get; private set; }
+        public DateTime CreatedDateTime { get; private set; }
+        public int YearMonthStart { get; private set; }
         public int MonthCount { get; private set; }
         public Int64 TurnoverCents { get; protected set; }
-        public Int64 VatOutboundCents { get; protected set; }
         public Int64 VatInboundCents { get; protected set; }
+        public Int64 VatOutboundCents { get; protected set; }
         public bool Open { get; protected set; }
         public bool UnderConstruction { get; protected set; }
 

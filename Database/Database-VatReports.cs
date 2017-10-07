@@ -12,45 +12,40 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string vatReportFieldSequence =
-            " SalaryId,PayrollItemId,PayoutDate,Salaries.BaseSalaryCents,NetSalaryCents," + // 0-4
-            "SubtractiveTaxCents,AdditiveTaxCents,Attested,NetPaid,TaxPaid," + // 5-9
-            "Salaries.Open " + // 10
-            "FROM Salaries ";
+            " VatReportId,OrganizationId,Guid,CreatedDateTime,YearMonthStart," + // 0-4
+            "MonthCount,VatReports.Open,TurnoverCents,VatInboundCents,VatOutboundCents," + // 5-9
+            "UnderConstruction " + // 10
+            "FROM VatReports ";
 
         private const string vatReportItemFieldSequence =
-            "" +
-            "FROM VatReportItems ";
+            " VatReportItemId,VatReportId,FinancialTransactionId,ForeignId,FinancialDependencyTypes.Name AS FinancialDependencyType," +  // 0-4
+            "TurnoverCents,VatInboundCents,VatOutboundCents " +
+            "FROM VatReportItems " +
+            "JOIN FinancialDependencyTypes ON (VatReportItemId.FinancialDependencyTypeId=FinancialDependencyTypes.FinancialDependencyTypeId) ";
 
-        private static BasicSalary ReadVatReportFromDataReader (IDataRecord reader)
+        private static BasicVatReport ReadVatReportFromDataReader (IDataRecord reader)
         {
-            int salaryId = reader.GetInt32 (0);
-            int payrollItemId = reader.GetInt32 (1);
-            DateTime payoutDate = reader.GetDateTime (2);
-            Int64 baseSalaryCents = reader.GetInt64 (3);
-            Int64 netSalaryCents = reader.GetInt64 (4);
-            Int64 subtractiveTaxCents = reader.GetInt64 (5);
-            Int64 additiveTaxCents = reader.GetInt64 (6);
-            bool attested = reader.GetBoolean (7);
-            bool netPaid = reader.GetBoolean (8);
-            bool taxPaid = reader.GetBoolean (9);
-            bool open = reader.GetBoolean (10);
+            int vatReportId = reader.GetInt32 (0);
+            int organizationId = reader.GetInt32(1);
+            string guid = reader.GetString(2);
+            DateTime createdDateTime = reader.GetDateTime (3);
+            int yearMonthStart = reader.GetInt32 (4);
+            int monthCount = reader.GetInt32 (5);
+            bool open = reader.GetBoolean(6);
+            Int64 turnoverCents = reader.GetInt64(7);
+            Int64 vatInboundCents = reader.GetInt64(8);
+            Int64 vatOutboundCents = reader.GetInt64(9);
+            bool underConstruction = reader.GetBoolean (10);
 
-            return new BasicSalary (salaryId, payrollItemId, payoutDate, baseSalaryCents, netSalaryCents,
-                subtractiveTaxCents, additiveTaxCents,
-                attested, netPaid, taxPaid, open);
+            return new BasicVatReport(vatReportId, organizationId, guid, createdDateTime, yearMonthStart, monthCount,
+                open, turnoverCents, vatInboundCents, vatOutboundCents, underConstruction);
         }
 
         #endregion
 
         #region Record reading - SELECT statements
 
-        /// <summary>
-        ///     Gets a salary from the database.
-        /// </summary>
-        /// <param name="salaryId">The salary database identity.</param>
-        /// <returns>The requested salary.</returns>
-        /// <exception cref="ArgumentException">Thrown if there is no such identity.</exception>
-        public BasicSalary GetVatReport (int salaryId)
+        public BasicVatReport GetVatReport (int vatReportId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -58,28 +53,21 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT" + salaryFieldSequence + "WHERE SalaryId=" + salaryId + ";", connection);
+                        "SELECT" + vatReportFieldSequence + "WHERE VatReportId=" + vatReportId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadSalaryFromDataReader (reader);
+                        return ReadVatReportFromDataReader (reader);
                     }
 
-                    throw new ArgumentException ("Unknown Salary Id: " + salaryId);
+                    throw new ArgumentException ("Unknown VAT Report Id: " + vatReportId);
                 }
             }
         }
 
-        /// <summary>
-        ///     Gets salaries from the database.
-        /// </summary>
-        /// <param name="conditions">
-        ///     An optional combination of a Person and/or Organization object and/or DatabaseCondition
-        ///     specifiers.
-        /// </param>
-        /// <returns>A list of matching salaries.</returns>
+
         public BasicSalary[] GetVatReports (params object[] conditions)
         {
             List<BasicSalary> result = new List<BasicSalary>();
@@ -131,17 +119,22 @@ namespace Swarmops.Database
         }
 
 
-        public void CreateVatReportItem (int salaryId, bool netPaid)
+        public void CreateVatReportItem (int vatReportId, int financialTransactionId, int foreignObjectId, string financialDependencyType, Int64 turnoverCents, Int64 vatInboundCents, Int64 vatOutboundCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("SetSalaryNetPaid", connection);
+                DbCommand command = GetDbCommand ("CreateVatReportItem", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName (command, "salaryId", salaryId);
-                AddParameterWithName (command, "netPaid", netPaid);
+                AddParameterWithName(command, "vatReportId", vatReportId);
+                AddParameterWithName(command, "financialTransactionId", financialTransactionId);
+                AddParameterWithName(command, "foreignObjectId", foreignObjectId);
+                AddParameterWithName(command, "financialDependencyType", financialDependencyType);
+                AddParameterWithName(command, "turnoverCents", turnoverCents);
+                AddParameterWithName(command, "vatInboundCents", vatInboundCents);
+                AddParameterWithName(command, "vatOutboundCents", vatOutboundCents);
 
                 command.ExecuteNonQuery();
 
@@ -151,34 +144,33 @@ namespace Swarmops.Database
         }
 
 
-        public void SetVatReportReleased (int salaryId, Int64 netSalaryCents)
+        public void SetVatReportReleased (int vatReportId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("SetSalaryNetSalaryPrecise", connection);
+                DbCommand command = GetDbCommand ("SetVatReportReleased", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName (command, "salaryId", salaryId);
-                AddParameterWithName (command, "netSalaryCents", netSalaryCents);
+                AddParameterWithName (command, "vatReportId", vatReportId);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetVatReportOpen (int salaryId, bool taxPaid)
+        public void SetVatReportOpen (int vatReportId, bool open)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("SetSalaryTaxPaid", connection);
+                DbCommand command = GetDbCommand ("SetVatReportOpen", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName (command, "salaryId", salaryId);
-                AddParameterWithName (command, "taxPaid", taxPaid);
+                AddParameterWithName (command, "vatReportId", vatReportId);
+                AddParameterWithName (command, "open", open);
 
                 command.ExecuteNonQuery();
 
@@ -191,3 +183,4 @@ namespace Swarmops.Database
         #endregion
     }
 }
+ 
