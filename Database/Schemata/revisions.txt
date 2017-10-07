@@ -39,3 +39,4 @@
 0039 - VatReport.Guid added [RF]
 0040 - Document.HiresStatus added [RF]
 0041 - InboundInvoice housekeeping; added OrgSeqId [RF]
+0042 - Bugfix to SetInboundInvoiceOrganizationSequenceId [RF]

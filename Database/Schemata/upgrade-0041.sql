@@ -75,7 +75,7 @@ BEGIN
   SELECT COUNT(*)
       FROM InboundInvoices
       WHERE InboundInvoices.OrganizationId=organizationId
-          AND InboundInvoices.InboundInvoicesId <= inboundInvoiceId
+          AND InboundInvoices.InboundInvoiceId <= inboundInvoiceId
       INTO sequenceNumber;
 
   UPDATE InboundInvoices SET OrganizationSequenceId = sequenceNumber
