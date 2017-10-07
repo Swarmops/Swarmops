@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Interfaces;
 using Swarmops.Database;
+using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Financial
 {
@@ -35,6 +36,15 @@ namespace Swarmops.Logic.Financial
             // instances of large-deployment databases and reads at the write source
 
             return FromBasic(SwarmDb.GetDatabaseForWriting().GetVatReport(vatReportId));
+        }
+
+        public static VatReport Create(Organization organization, int year, int startMonth, int monthCount)
+        {
+            System.Guid guid = System.Guid.NewGuid();
+
+            int vatReportId = SwarmDb.GetDatabaseForWriting()
+                .CreateVatReport(organization.Identity, guid.ToString(), year*100 + startMonth, monthCount);
+            return FromIdentityAggressive(vatReportId);
         }
 
         #endregion

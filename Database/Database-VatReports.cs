@@ -165,22 +165,23 @@ namespace Swarmops.Database
 
         #region Creation and manipulation - stored procedures
 
-        public int CreateVatReport (int payrollItemId, DateTime payoutDate, Int64 baseSalaryCents, Int64 netSalaryCents,
-            Int64 subtractiveTaxCents, Int64 additiveTaxCents)
+        public int CreateVatReport (int organizationId, string guid, int yearMonthStart, int monthCount)
         {
+            guid = guid.Replace("-", ""); // remove noise before committing
+            DateTime nowUtc = DateTime.UtcNow;
+
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("CreateSalaryPrecise", connection);
+                DbCommand command = GetDbCommand ("CreateVatReport", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName (command, "payrollItemId", payrollItemId);
-                AddParameterWithName (command, "payoutDate", payoutDate);
-                AddParameterWithName (command, "baseSalaryCents", baseSalaryCents);
-                AddParameterWithName (command, "netSalaryCents", netSalaryCents);
-                AddParameterWithName (command, "subtractiveTaxCents", subtractiveTaxCents);
-                AddParameterWithName (command, "additiveTaxCents", additiveTaxCents);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "guid", guid);
+                AddParameterWithName (command, "createdDateTime", nowUtc);
+                AddParameterWithName (command, "yearMonthStart", yearMonthStart);
+                AddParameterWithName (command, "monthCount", monthCount);
 
                 return Convert.ToInt32 (command.ExecuteScalar());
             }
@@ -211,7 +212,7 @@ namespace Swarmops.Database
             }
         }
 
-
+        
         public void SetVatReportReleased (int vatReportId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -251,4 +252,5 @@ namespace Swarmops.Database
         #endregion
     }
 }
+ 
  
