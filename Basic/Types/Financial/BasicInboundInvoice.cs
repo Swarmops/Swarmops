@@ -5,8 +5,8 @@ namespace Swarmops.Basic.Types.Financial
 {
     public class BasicInboundInvoice : IHasIdentity
     {
-        public BasicInboundInvoice (int inboundInvoiceId, int organizationId, DateTime createdDateTime,
-            DateTime dueDate, Int64 amountCents, Int64 vatCents, int budgetId, string supplier, string
+        public BasicInboundInvoice (int inboundInvoiceId, int organizationId, int organizationSequenceId, 
+            DateTime createdDateTime, DateTime dueDate, Int64 amountCents, Int64 vatCents, int budgetId, string supplier, string
                 payToAccount, string ocr, string invoiceReference, bool attested, bool open,
             DateTime closedDateTime, int closedByPersonId)
         {
@@ -28,7 +28,8 @@ namespace Swarmops.Basic.Types.Financial
         }
 
         public BasicInboundInvoice (BasicInboundInvoice original)
-            : this (original.InboundInvoiceId, original.OrganizationId, original.CreatedDateTime,
+            : this (original.InboundInvoiceId, original.OrganizationId, original.OrganizationSequenceId, 
+                  original.CreatedDateTime,
                 original.DueDate, original.AmountCents, original.VatCents, original.BudgetId,
                 original.Supplier, original.PayToAccount, original.Ocr, original.InvoiceReference,
                 original.Attested, original.Open, original.ClosedDateTime, original.ClosedByPersonId)
@@ -38,6 +39,7 @@ namespace Swarmops.Basic.Types.Financial
 
         public int InboundInvoiceId { get; private set; }
         public DateTime CreatedDateTime { get; private set; }
+        public int OrganizationSequenceId { get; protected set; }
         public DateTime DueDate { get; protected set; }
         public int BudgetId { get; protected set; }
         public bool Attested { get; protected set; }

@@ -38,3 +38,4 @@
 0038 - VAT Report tables and functions [RF]
 0039 - VatReport.Guid added [RF]
 0040 - Document.HiresStatus added [RF]
+0041 - InboundInvoice housekeeping; added OrgSeqId [RF]

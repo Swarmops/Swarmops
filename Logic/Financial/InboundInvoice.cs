@@ -46,6 +46,22 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public int OrganizationSequenceId
+        {
+            get
+            {
+                if (this.OrganizationSequenceId == 0)
+                {
+                    SwarmDb db = SwarmDb.GetDatabaseForWriting();
+                    base.OrganizationSequenceId = db.SetInboundInvoiceSequence(this.Identity);
+                    return base.OrganizationSequenceId;
+                }
+
+                return base.OrganizationSequenceId;
+            }
+        }
+
+
         public decimal Amount
         {
             get { return base.AmountCents/100.0m; }

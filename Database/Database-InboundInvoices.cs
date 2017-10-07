@@ -17,7 +17,7 @@ namespace Swarmops.Database
             " InboundInvoiceId,OrganizationId,CreatedDateTime,CreatedByPersonId,DueDate," +
             "AmountCents,BudgetId,Attested,Open,Supplier," +
             "PayToAccount,Ocr,InvoiceReference,ClosedDateTime,ClosedByPersonId, " +
-            "VatCents " +
+            "VatCents, OrganizationSequenceId " +
             "FROM InboundInvoices ";
 
         private BasicInboundInvoice ReadInboundInvoiceFromDataReader (DbDataReader reader)
@@ -38,8 +38,9 @@ namespace Swarmops.Database
             DateTime closedDateTime = reader.GetDateTime (13);
             int closedByPersonId = reader.GetInt32 (14);
             Int64 vatCents = reader.GetInt64(15);
+            int organizationSequenceId = reader.GetInt32(16);
 
-            return new BasicInboundInvoice (inboundInvoiceId, organizationId, createdDateTime, dueDate,
+            return new BasicInboundInvoice (inboundInvoiceId, organizationId, organizationSequenceId, createdDateTime, dueDate,
                 amountCents, vatCents, budgetId, supplier, payToAccount, ocr, invoiceReference,
                 attested, open, closedDateTime, closedByPersonId);
         }
@@ -106,32 +107,6 @@ namespace Swarmops.Database
 
         #region Creation and manipulation - stored procedures
 
-        /* -- UNUSED
-        public int CreateInboundInvoice(int organizationId, DateTime dueDate, int budgetId, 
-            string supplier, string payToAccount, string ocr, string invoiceReference, double amount, int createdByPersonId)
-        {
-            using (DbConnection connection = GetMySqlDbConnection())
-            {
-                connection.Open();
-
-                DbCommand command = GetDbCommand("CreateInboundInvoice", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "createdDateTime", DateTime.Now);
-                AddParameterWithName(command, "dueDate", dueDate);
-                AddParameterWithName(command, "budgetId", budgetId);
-                AddParameterWithName(command, "supplier", supplier);
-                AddParameterWithName(command, "payToAccount", payToAccount);
-                AddParameterWithName(command, "ocr", ocr);
-                AddParameterWithName(command, "invoiceReference", invoiceReference);
-                AddParameterWithName(command, "amount", amount);
-                AddParameterWithName(command, "createdByPersonId", createdByPersonId);
-
-                return Convert.ToInt32(command.ExecuteScalar());
-            }
-        }*/
-
 
         public int CreateInboundInvoice (int organizationId, DateTime dueDate, int budgetId, string supplier,
             string payToAccount, string ocr, string invoiceReference, Int64 amountCents, int createdByPersonId)
@@ -140,7 +115,7 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("CreateInboundInvoicePrecise", connection);
+                DbCommand command = GetDbCommand ("CreateInboundInvoice", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName (command, "organizationId", organizationId);
@@ -159,17 +134,33 @@ namespace Swarmops.Database
         }
 
 
-        public void SetInboundInvoiceOpen (int inboundInvoiceId, bool open)
+        public int SetInboundInvoiceSequence(int inboundInvoiceId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("SetInboundInvoiceOpen", connection);
+                DbCommand command = GetDbCommand("SetInboundInvoiceOrganizationSequenceId", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName (command, "inboundInvoiceId", inboundInvoiceId);
-                AddParameterWithName (command, "open", open);
+                AddParameterWithName(command, "inboundInvoiceId", inboundInvoiceId);
+
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+
+        public void SetInboundInvoiceOpen(int inboundInvoiceId, bool open)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetInboundInvoiceOpen", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "inboundInvoiceId", inboundInvoiceId);
+                AddParameterWithName(command, "open", open);
 
                 command.ExecuteNonQuery();
             }
