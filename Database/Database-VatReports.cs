@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common.Enums;
 
 namespace Swarmops.Database
 {
@@ -41,6 +43,24 @@ namespace Swarmops.Database
                 open, turnoverCents, vatInboundCents, vatOutboundCents, underConstruction);
         }
 
+
+        private static BasicVatReportItem ReadVatReportItemFromDataReader(IDataRecord reader)
+        {
+            int vatReportItemId = reader.GetInt32(0);
+            int vatReportId = reader.GetInt32(1);
+            int financialTransactionId = reader.GetInt32(2);
+            int foreignId = reader.GetInt32(3);
+            FinancialDependencyType dependencyType =
+                (FinancialDependencyType) Enum.Parse(typeof (FinancialDependencyType), reader.GetString(4));
+
+            Int64 turnoverCents = reader.GetInt64(5);
+            Int64 vatInboundCents = reader.GetInt64(6);
+            Int64 vatOutboundCents = reader.GetInt64(7);
+
+            return new BasicVatReportItem(vatReportItemId, vatReportId, financialTransactionId, foreignId,
+                dependencyType, turnoverCents, vatInboundCents, vatOutboundCents);
+        }
+
         #endregion
 
         #region Record reading - SELECT statements
@@ -68,24 +88,72 @@ namespace Swarmops.Database
         }
 
 
-        public BasicSalary[] GetVatReports (params object[] conditions)
+        public BasicVatReport[] GetVatReports(params object[] conditions)
         {
-            List<BasicSalary> result = new List<BasicSalary>();
+            List<BasicVatReport> result = new List<BasicVatReport>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand (
-                        "SELECT" + salaryFieldSequence + "JOIN Payroll USING (PayrollItemId)" +
-                        ConstructWhereClause ("Salaries", conditions), connection);
+                    GetDbCommand(
+                        "SELECT" + vatReportFieldSequence + ConstructWhereClause("VatReports", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add (ReadSalaryFromDataReader (reader));
+                        result.Add(ReadVatReportFromDataReader(reader));
+                    }
+
+                    return result.ToArray();
+                }
+            }
+        }
+
+        public BasicVatReportItem GetVatReportItem(int vatReportItemId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT" + vatReportItemFieldSequence + "WHERE VatReportItemId=" + vatReportItemId + ";", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return ReadVatReportItemFromDataReader(reader);
+                    }
+
+                    throw new ArgumentException("Unknown VAT Report Item Id: " + vatReportItemId);
+                }
+            }
+        }
+
+
+
+
+        public BasicVatReportItem[] GetVatReportItems(params object[] conditions)
+        {
+            List<BasicVatReportItem> result = new List<BasicVatReportItem>();
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT" + vatReportItemFieldSequence + ConstructWhereClause("VatReportItems", conditions), connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(ReadVatReportItemFromDataReader(reader));
                     }
 
                     return result.ToArray();
@@ -119,7 +187,7 @@ namespace Swarmops.Database
         }
 
 
-        public void CreateVatReportItem (int vatReportId, int financialTransactionId, int foreignObjectId, string financialDependencyType, Int64 turnoverCents, Int64 vatInboundCents, Int64 vatOutboundCents)
+        public int CreateVatReportItem (int vatReportId, int financialTransactionId, int foreignObjectId, FinancialDependencyType financialDependencyType, Int64 turnoverCents, Int64 vatInboundCents, Int64 vatOutboundCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -131,12 +199,12 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "vatReportId", vatReportId);
                 AddParameterWithName(command, "financialTransactionId", financialTransactionId);
                 AddParameterWithName(command, "foreignObjectId", foreignObjectId);
-                AddParameterWithName(command, "financialDependencyType", financialDependencyType);
+                AddParameterWithName(command, "financialDependencyType", financialDependencyType.ToString());
                 AddParameterWithName(command, "turnoverCents", turnoverCents);
                 AddParameterWithName(command, "vatInboundCents", vatInboundCents);
                 AddParameterWithName(command, "vatOutboundCents", vatOutboundCents);
 
-                command.ExecuteNonQuery();
+                return Convert.ToInt32(command.ExecuteScalar());
 
                 // "Open" is set in the stored procedure to "NOT (TaxPaid AND NetPaid)".
                 // So if both are paid, Open is set to false.

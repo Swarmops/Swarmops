@@ -247,6 +247,11 @@ namespace Swarmops.Logic.Financial
                     return FromIdentity (foreignId);
                 }
 
+                if (dependencyType == FinancialDependencyType.VatReport)
+                {
+                    return VatReport.FromIdentity(foreignId);
+                }
+
                 throw new NotImplementedException ("Unimplemented dependency type: " + dependencyType);
             }
         }
@@ -337,7 +342,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        private static FinancialDependencyType GetFinancialDependencyType (IHasIdentity foreignObject)
+        public static FinancialDependencyType GetFinancialDependencyType (IHasIdentity foreignObject)
         {
             if (foreignObject is ExpenseClaim)
             {
@@ -366,6 +371,10 @@ namespace Swarmops.Logic.Financial
             if (foreignObject is FinancialTransaction)
             {
                 return FinancialDependencyType.FinancialTransaction;
+            }
+            if (foreignObject is VatReport)
+            {
+                return FinancialDependencyType.VatReport;
             }
 
             throw new NotImplementedException ("Unidentified dependency encountered in GetFinancialDependencyType:" +

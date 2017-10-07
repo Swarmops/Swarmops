@@ -26,24 +26,7 @@ namespace Swarmops.Logic.Financial
 
         private static FinancialDependencyType GetDependencyType (IHasIdentity foreignObject)
         {
-            if (foreignObject is ExpenseClaim)
-            {
-                return FinancialDependencyType.ExpenseClaim;
-            }
-            if (foreignObject is InboundInvoice)
-            {
-                return FinancialDependencyType.InboundInvoice;
-            }
-            if (foreignObject is Salary)
-            {
-                return FinancialDependencyType.Salary;
-            }
-            if (foreignObject is CashAdvance)
-            {
-                return FinancialDependencyType.CashAdvance;
-            }
-
-            throw new NotImplementedException ("Unknown dependency: " + foreignObject.GetType());
+            return FinancialTransaction.GetFinancialDependencyType(foreignObject);
         }
 
 

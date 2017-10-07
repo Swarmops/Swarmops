@@ -126,6 +126,9 @@
     <Compile Include="Financial\HotBitcoinAddressUnspent.cs" />
     <Compile Include="Financial\HotBitcoinAddressUnspents.cs" />
     <Compile Include="Financial\IPayable.cs" />
+    <Compile Include="Financial\VatReport.cs" />
+    <Compile Include="Financial\VatReportItem.cs" />
+    <Compile Include="Financial\VatReportItems.cs" />
     <Compile Include="Resources\Logic.Financial.FinancialAccount.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
