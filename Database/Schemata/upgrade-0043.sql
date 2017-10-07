@@ -5,13 +5,13 @@ DROP COLUMN `Amount`
 #
 
 
-DROP PROCEDURE IF EXIST `CreateFinancialTransactionRow`
+DROP PROCEDURE IF EXISTS `CreateFinancialTransactionRow`
 
 
 #
 
 
-DROP PROCEDURE IF EXIST `CreateFinancialTransactionRowPrecise`
+DROP PROCEDURE IF EXISTS `CreateFinancialTransactionRowPrecise`
 
 
 #
