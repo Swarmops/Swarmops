@@ -41,3 +41,4 @@
 0041 - InboundInvoice housekeeping; added OrgSeqId [RF]
 0042 - Bugfix to SetInboundInvoiceOrganizationSequenceId [RF]
 0043 - FinancialTransactionRows housekeeping [RF]
+0044 - Mark bitcoin as cryptocurrency
