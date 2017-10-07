@@ -52,6 +52,9 @@ namespace Swarmops.Logic.Financial
             {
                 if (this.OrganizationSequenceId == 0)
                 {
+                    // This case is for legacy installations before DbVersion 41, when
+                    // OrganizationSequenceId was added for each new invoice
+
                     SwarmDb db = SwarmDb.GetDatabaseForWriting();
                     base.OrganizationSequenceId = db.SetInboundInvoiceSequence(this.Identity);
                     return base.OrganizationSequenceId;
