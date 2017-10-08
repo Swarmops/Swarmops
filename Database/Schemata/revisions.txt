@@ -44,3 +44,4 @@
 0044 - Mark bitcoin as cryptocurrency [RF]
 0045 - VAT Report work [RF]
 0046 - VatReports.Turnover=>TurnoverCents [RF]
+0047 - Fix for null case in SetVatReportReleased [RF]

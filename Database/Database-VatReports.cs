@@ -24,7 +24,7 @@ namespace Swarmops.Database
             " VatReportItemId,VatReportId,FinancialTransactionId,ForeignId,FinancialDependencyTypes.Name AS FinancialDependencyType," +  // 0-4
             "TurnoverCents,VatInboundCents,VatOutboundCents " +
             "FROM VatReportItems " +
-            "JOIN FinancialDependencyTypes ON (VatReportItemId.FinancialDependencyTypeId=FinancialDependencyTypes.FinancialDependencyTypeId) ";
+            "JOIN FinancialDependencyTypes ON (VatReportItems.FinancialDependencyTypeId=FinancialDependencyTypes.FinancialDependencyTypeId) ";
 
         private static BasicVatReport ReadVatReportFromDataReader (IDataRecord reader)
         {
@@ -178,12 +178,12 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + accountId.ToString(CultureInfo.InvariantCulture) + ", FinancialTransactions.TransactionId, FinancialTransactions.DateTime, FinancialTransactions.Comment, AmountCents, CreatedDateTime, CreatedByPersonId " +
+                        "SELECT " + accountId.ToString(CultureInfo.InvariantCulture) + ", FinancialTransactions.FinancialTransactionId, FinancialTransactions.DateTime, FinancialTransactions.Comment, AmountCents, CreatedDateTime, CreatedByPersonId " +
                         " FROM FinancialTransactionRows " +
                         " JOIN FinancialTransactions ON (FinancialTransactionRows.FinancialTransactionId = FinancialTransactions.FinancialTransactionId) " +
-                        " WHERE NOT EXISTS (SELECT * FROM VatReportItems WHERE FinancialTransactionId = FinancialTransactions.FinancialTransactionRowId) " +
-                        " AND AccountId = @accountId " +
-                        " AND FinancialTransaction.DateTime < @endDateTime" , connection);
+                        " WHERE NOT EXISTS (SELECT * FROM VatReportItems WHERE VatReportItems.FinancialTransactionId = FinancialTransactions.FinancialTransactionId) " +
+                        " AND FinancialAccountId = @accountId " +
+                        " AND FinancialTransactions.DateTime < @endDateTime" , connection);
 
                 AddParameterWithName(command, "accountId", accountId);
                 AddParameterWithName(command, "endDateTime", endDate);

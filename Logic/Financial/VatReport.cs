@@ -51,6 +51,7 @@ namespace Swarmops.Logic.Financial
         internal static VatReport Create(Organization organization, int year, int startMonth, int monthCount)
         {
             VatReport newReport = CreateDbRecord(organization, year, startMonth, monthCount);
+            VatReportItems testItems = newReport.Items;
             DateTime startDate = new DateTime(year, startMonth, 1).AddYears(-1); // start a year before report starts
             DateTime endDate = new DateTime(year, startMonth, 1).AddMonths(monthCount);
 
