@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Globalization;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
@@ -162,6 +163,45 @@ namespace Swarmops.Database
         }
 
         #endregion
+
+
+        #region Database optimizations
+
+
+        public BasicFinancialAccountRow[] GetAccountRowsNotInVatReport(int accountId, DateTime endDate)
+        {
+            List<BasicFinancialAccountRow> result = new List<BasicFinancialAccountRow>();
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT " + accountId.ToString(CultureInfo.InvariantCulture) + ", FinancialTransactions.TransactionId, FinancialTransactions.DateTime, FinancialTransactions.Comment, AmountCents, CreatedDateTime, CreatedByPersonId " +
+                        " FROM FinancialTransactionRows " +
+                        " JOIN FinancialTransactions ON (FinancialTransactionRows.FinancialTransactionId = FinancialTransactions.FinancialTransactionId) " +
+                        " WHERE NOT EXISTS (SELECT * FROM VatReportItems WHERE FinancialTransactionId = FinancialTransactions.FinancialTransactionRowId) " +
+                        " AND AccountId = @accountId " +
+                        " AND FinancialTransaction.DateTime < @endDateTime" , connection);
+
+                AddParameterWithName(command, "accountId", accountId);
+                AddParameterWithName(command, "endDateTime", endDate);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(ReadFinancialAccountRowFromDataReader(reader));
+                    }
+
+                    return result.ToArray();
+                }
+            }
+        }
+
+        #endregion
+
 
         #region Creation and manipulation - stored procedures
 

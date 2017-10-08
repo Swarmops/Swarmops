@@ -19,5 +19,29 @@ namespace Swarmops.Logic.Financial
         }
 
         #endregion
+
+        public Int64 TurnoverCents
+        {
+            get
+            {
+                return this.Sum(item => item.TurnoverCents);
+            }
+        }
+
+        public Int64 VatInboundCents
+        {
+            get
+            {
+                return this.Sum(item => item.VatInboundCents);
+            }
+        }
+
+        public Int64 VatOutboundCents
+        {
+            get
+            {
+                return this.Sum(item => item.VatOutboundCents);
+            }
+        }
     }
 }
