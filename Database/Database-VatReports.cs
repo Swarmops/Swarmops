@@ -239,7 +239,7 @@ namespace Swarmops.Database
 
                 AddParameterWithName(command, "vatReportId", vatReportId);
                 AddParameterWithName(command, "financialTransactionId", financialTransactionId);
-                AddParameterWithName(command, "foreignObjectId", foreignObjectId);
+                AddParameterWithName(command, "foreignId", foreignObjectId);
                 AddParameterWithName(command, "financialDependencyType", financialDependencyType.ToString());
                 AddParameterWithName(command, "turnoverCents", turnoverCents);
                 AddParameterWithName(command, "vatInboundCents", vatInboundCents);
