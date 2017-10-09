@@ -91,12 +91,19 @@ namespace Swarmops.Logic.Financial
             {
                 // if there's anything to report
 
-                FinancialTransaction vatReportTransaction = FinancialTransaction.Create(organization, DateTime.UtcNow,
+                FinancialTransaction vatReportTransaction = FinancialTransaction.Create(organization, endDate.AddDays(4).AddHours(9),
                     transactionComment);
-                vatReportTransaction.AddRow(organization.FinancialAccounts.AssetsVatInboundUnreported,
-                    -newReport.VatInboundCents, null);
-                vatReportTransaction.AddRow(organization.FinancialAccounts.DebtsVatOutboundUnreported,
-                    newReport.VatOutboundCents, null);  // not negative, because our number is sign-different from the bookkeeping's
+                if (newReport.VatInboundCents > 0)
+                {
+                    vatReportTransaction.AddRow(organization.FinancialAccounts.AssetsVatInboundUnreported,
+                        -newReport.VatInboundCents, null);
+                }
+                if (newReport.VatOutboundCents > 0)
+                {
+                    vatReportTransaction.AddRow(organization.FinancialAccounts.DebtsVatOutboundUnreported,
+                        newReport.VatOutboundCents, null);
+                        // not negative, because our number is sign-different from the bookkeeping's
+                }
 
                 if (differenceCents < 0) // outbound > inbound
                 {
@@ -163,7 +170,7 @@ namespace Swarmops.Logic.Financial
                         }
                         else if (turnoverAccountLookup.ContainsKey(txRow.FinancialAccountId))
                         {
-                            turnOver += txRow.AmountCents;
+                            turnOver -= txRow.AmountCents;  // turnover accounts are sign reversed, so convert to positive
                         }
                     }
 

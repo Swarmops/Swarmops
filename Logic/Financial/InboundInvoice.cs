@@ -206,8 +206,8 @@ namespace Swarmops.Logic.Financial
             // Create a corresponding financial transaction with rows
 
             FinancialTransaction transaction =
-                FinancialTransaction.Create (organization.Identity, DateTime.Now,
-                    "Invoice #" + newInvoice.Identity + " from " + supplier);
+                FinancialTransaction.Create (organization.Identity, DateTime.UtcNow,
+                    "Invoice #" + newInvoice.OrganizationSequenceId + " from " + supplier);
 
             transaction.AddRow (organization.FinancialAccounts.DebtsInboundInvoices, -amountCents, creatingPerson);
             if (vatCents > 0)

@@ -39,7 +39,7 @@ namespace Swarmops.Frontend
 
             // BEGIN TEST CODE
 
-            //VatReports.CreateNewReports();
+            // VatReports.CreateNewReports();
 
             // END TEST CODE
 
