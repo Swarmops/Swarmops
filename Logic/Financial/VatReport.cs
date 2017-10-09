@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Swarmops.Basic.Types.Financial;
@@ -71,18 +72,6 @@ namespace Swarmops.Logic.Financial
 
             newReport.Release();
 
-            string transactionComment = String.Format("VAT Report {0}", year);
-
-            if (monthCount != 12)
-            {
-                transactionComment += String.Format(" {0:MMM}", new DateTime(year, startMonth, 16));
-            }
-
-            if (monthCount != 1)
-            {
-                transactionComment += String.Format("-{0:MMM}", new DateTime(year, startMonth+monthCount-1, 16));
-            }
-
             // Create financial TX that moves this VAT from unreported to reported
 
             Int64 differenceCents = newReport.VatInboundCents - newReport.VatOutboundCents;
@@ -92,7 +81,8 @@ namespace Swarmops.Logic.Financial
                 // if there's anything to report
 
                 FinancialTransaction vatReportTransaction = FinancialTransaction.Create(organization, endDate.AddDays(4).AddHours(9),
-                    transactionComment);
+                    newReport.Description);
+
                 if (newReport.VatInboundCents > 0)
                 {
                     vatReportTransaction.AddRow(organization.FinancialAccounts.AssetsVatInboundUnreported,
@@ -228,6 +218,27 @@ namespace Swarmops.Logic.Financial
                     SwarmDb.GetDatabaseForReading().GetAccountRowsNotInVatReport(account.Identity, endDateTime));
 
             return rows;
+        }
+
+        public string Description
+        {
+            get
+            {
+                switch (MonthCount)
+                {
+                    case 1:
+                        return String.Format(Resources.Logic_Financial_VatReport.Description_SingleMonth,
+                            new DateTime(YearMonthStart/100, YearMonthStart%100, 2));
+                    case 12:
+                        return String.Format(Resources.Logic_Financial_VatReport.Description_FullYear,
+                            YearMonthStart/100);
+                    default:
+                        DateTime start = new DateTime(YearMonthStart/100, YearMonthStart%100, 2);
+
+                        return String.Format(Resources.Logic_Financial_VatReport.Description_Months,
+                            start, start.AddMonths(MonthCount - 1));
+                }
+            }
         }
     }
 

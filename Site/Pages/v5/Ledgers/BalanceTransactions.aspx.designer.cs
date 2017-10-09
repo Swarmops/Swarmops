@@ -211,6 +211,33 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::System.Web.UI.WebControls.Label LabelDescribeOutboundInvoice;
         
         /// <summary>
+        /// LabelRadioVatReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelRadioVatReport;
+        
+        /// <summary>
+        /// DropOpenVatReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.DropDown DropOpenVatReports;
+        
+        /// <summary>
+        /// LabelDescrribeVatReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelDescrribeVatReport;
+        
+        /// <summary>
         /// LabelRadioExistingPayment control.
         /// </summary>
         /// <remarks>

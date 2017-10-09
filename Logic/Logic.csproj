@@ -150,6 +150,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Logic.Financial.Payout.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Logic.Financial.VatReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logic.Financial.VatReport.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Logic.Structure.Country.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -597,6 +602,10 @@
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.ru-RU.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.sv-SE.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.VatReport.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Financial.VatReport.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Logic.Structure.Country.af-ZA.resx" />
     <EmbeddedResource Include="Resources\Logic.Structure.Country.ar-SA.resx" />
     <EmbeddedResource Include="Resources\Logic.Structure.Country.da-DK.resx" />

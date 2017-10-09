@@ -62,7 +62,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public string DifferingAmount { get; set; }
             public DropdownOptions OpenPayoutData { get; set; }
             public DropdownOptions OpenOutboundInvoiceData { get; set; }
-            public DropdownOptions OpenVatReports { get; set; }
+            public DropdownOption[] OpenVatReportData { get; set; }
         }
 
         [Serializable]
@@ -112,7 +112,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             if (transaction.Rows.AmountCentsTotal > 0)
             {
                 result.OpenOutboundInvoiceData = GetOpenOutboundInvoiceData(transaction);
-                result.OpenVatReports = null; // TODO
             }
             else
             {
@@ -120,6 +119,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 result.OpenPayoutData = GetOpenPayoutData(transaction);
             }
+
+            result.OpenVatReportData = GetOpenVatReportData(transaction);
 
             return result;
         }
@@ -255,6 +256,34 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             return false;
         }
+
+
+
+        private static DropdownOption[] GetOpenVatReportData(FinancialTransaction transaction)
+        {
+            VatReports vatReports = VatReports.ForOrganization(transaction.Organization);
+            List<DropdownOption> matches = new List<DropdownOption>();
+            Int64 txDiffCents = transaction.Rows.AmountCentsTotal; // is zero on a healthy tx
+
+            foreach (VatReport report in vatReports)
+            {
+                Int64 vatDiffCents = report.VatInboundCents - report.VatOutboundCents; // produces positive value for surplus; same as tx on match
+
+                if (vatDiffCents == txDiffCents)
+                {
+                    matches.Add(new DropdownOption
+                    {
+                        id = report.Identity.ToString(CultureInfo.InvariantCulture),
+                        @group = Resources.Pages.Ledgers.BalanceTransactions_ExactMatches,
+                        text = report.Description
+                    });
+                }
+            }
+
+            return matches.ToArray();
+        }
+
+
 
         [WebMethod]
         public static void BalanceTransactionManually(int transactionId, int accountId)
@@ -420,6 +449,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             payout.BindToTransactionAndClose(transaction, authData.CurrentUser);
 
         }
+
+
+        [WebMethod]
+        public static string GetTransactionDisplayIdentity(int transactionId)
+        {
+            FinancialTransaction tx = FinancialTransaction.FromIdentity(transactionId);
+            return tx.OrganizationSequenceId.ToString("N0");
+        }
+      
+
 
         // ---- Localized resources ----
 

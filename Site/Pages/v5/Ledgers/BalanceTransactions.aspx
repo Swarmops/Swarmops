@@ -37,7 +37,12 @@
         function onFixTransaction(newTransactionId) {
             transactionId = newTransactionId;
             $('span#spanModalTransactionId').text("<%=Resources.Global.Global_LoadingPlaceholder%>");
-            SwarmopsJS.formatInteger(transactionId, function (result) { $('span#spanModalTransactionId').text(result); });
+            SwarmopsJS.ajaxCall(
+                '/Pages/v5/Ledgers/BalanceTransactions.aspx/GetTransactionDisplayIdentity',
+                { transactionId: transactionId },
+                function(result) {
+                     $('span#spanModalTransactionId').text(result);
+                });
             $('input:radio[name="TxOptions"]').prop('checked', false);
             $('div.radioOption').hide();
             <%= this.DialogTx.ClientID %>_open();
@@ -94,6 +99,16 @@
 
                         }
 
+                    }
+
+                    if (data.OpenVatReportData != null && data.OpenVatReportData.length > 0) {
+                        $('#divVatReport').show();
+                        <%=this.DropOpenVatReports.ClientID%>_loadData(data.OpenVatReportData);
+                        <%=this.DropOpenVatReports.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
+                    } else {
+                        $('#divVatReport').hide();
+                        <%=this.DropOpenVatReports.ClientID%>_loadData({});
+                        <%=this.DropOpenVatReports.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
                     }
 
                 });
@@ -160,6 +175,21 @@
 
             }
         }
+
+
+        function onMatchVatReport() {
+            var vatReportId = <%=this.DropOpenVatReports.ClientID%>_val();
+
+            if (vatReportId > 0) {
+                <%= this.DialogTx.ClientID %>_close();
+                SwarmopsJS.ajaxCall(
+                    "/Pages/v5/Ledgers/BalanceTransactions.aspx/MatchTransactionOpenVatReport",
+                    { transactionId: transactionId, vatReportId: vatReportId },
+                    function () {
+                        $('#gridTransactions').datagrid('reload');
+                    });
+
+            }        }
 
         var buttonBalanceValue = SwarmopsJS.unescape('<%=this.Localized_ButtonBalance%>');
         var buttonPayoutValue = SwarmopsJS.unescape('<%=this.Localized_ButtonPayout%>');
@@ -257,6 +287,18 @@
                     </div>
                     <div class="entryLabels">
                         <asp:Label runat="server" ID="LabelDescribeOutboundInvoice" Text="Match to outbound invoice XYZ" />
+                    </div>
+                </div>
+            </div>
+            <div id="divVatReport">
+                <p><input type="radio" id="RadioVatReport" name="TxOptions" value="VatReport" /><label for="RadioVatReport">&nbsp;<asp:Label runat="server" ID="LabelRadioVatReport" Text="Match to an open VAT report? XYZ" /></label></p>
+                <div id="radioOptionVatReport" class="radioOption">
+                    <div class="entryFields">
+                        <Swarmops5:DropDown ID="DropOpenVatReports" runat="server" />&#8203;<br/>
+                        <input type="button" value='#VatReport#' class="buttonAccentColor" onclick="onMatchOpenVatReports(); return false;" id="buttonExecuteVatReport"/>
+                    </div>
+                    <div class="entryLabels">
+                        <asp:Label runat="server" ID="LabelDescrribeVatReport" Text="Match to open VAT report XYZ" />
                     </div>
                 </div>
             </div>

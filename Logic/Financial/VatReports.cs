@@ -28,7 +28,7 @@ namespace Swarmops.Logic.Financial
 
             // Get the list of previous VAT reports
 
-            VatReports reports = VatReports.ForOrganization(organization);
+            VatReports reports = VatReports.ForOrganization(organization, true);
 
             if (reports.Count == 0)
             {
@@ -63,9 +63,14 @@ namespace Swarmops.Logic.Financial
             return a.YearMonthStart - b.YearMonthStart;
         }
 
-        public static VatReports ForOrganization(Organization organization)
+        public static VatReports ForOrganization(Organization organization, bool includeClosed = false)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetVatReports(organization));
+            if (includeClosed)
+            {
+                return FromArray(SwarmDb.GetDatabaseForReading().GetVatReports(organization));
+            }
+
+            return FromArray(SwarmDb.GetDatabaseForReading().GetVatReports(organization, DatabaseCondition.OpenTrue));
         }
     }
 }
