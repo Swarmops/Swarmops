@@ -112,22 +112,31 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::System.Web.UI.WebControls.Label LabelRadioBalance;
         
         /// <summary>
-        /// DropBudgetBalance control.
+        /// LabelRadioVatReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Controls.Financial.ComboBudgets DropBudgetBalance;
+        protected global::System.Web.UI.WebControls.Label LabelRadioVatReport;
         
         /// <summary>
-        /// LabelDescribeBalance control.
+        /// DropOpenVatReports control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelDescribeBalance;
+        protected global::Swarmops.Frontend.Controls.Base.DropDown DropOpenVatReports;
+        
+        /// <summary>
+        /// LabelDescribeVatReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelDescribeVatReport;
         
         /// <summary>
         /// LabelRadioPayout control.
@@ -211,31 +220,22 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::System.Web.UI.WebControls.Label LabelDescribeOutboundInvoice;
         
         /// <summary>
-        /// LabelRadioVatReport control.
+        /// DropBudgetBalance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelRadioVatReport;
+        protected global::Swarmops.Controls.Financial.ComboBudgets DropBudgetBalance;
         
         /// <summary>
-        /// DropOpenVatReports control.
+        /// LabelDescribeBalance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Base.DropDown DropOpenVatReports;
-        
-        /// <summary>
-        /// LabelDescrribeVatReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelDescrribeVatReport;
+        protected global::System.Web.UI.WebControls.Label LabelDescribeBalance;
         
         /// <summary>
         /// LabelRadioExistingPayment control.

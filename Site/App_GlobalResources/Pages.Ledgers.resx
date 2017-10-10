@@ -862,4 +862,13 @@
   <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
     <value>Match</value>
   </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonVatReport" xml:space="preserve">
+    <value>Close VAT report</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeVatReport" xml:space="preserve">
+    <value>This transaction is payment/return for this VAT report:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
+    <value>Close a VAT report with this transaction?</value>
+  </data>
 </root>

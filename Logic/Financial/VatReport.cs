@@ -240,6 +240,38 @@ namespace Swarmops.Logic.Financial
                 }
             }
         }
+
+        public new int OpenTransactionId
+        {
+            get { return base.OpenTransactionId; }
+            set
+            {
+                SwarmDb.GetDatabaseForWriting().SetVatReportOpenTransaction(this.Identity, value);
+                base.OpenTransactionId = value;
+            }
+        }
+
+        public FinancialTransaction OpenTransaction
+        {
+            get { return FinancialTransaction.FromIdentity(OpenTransactionId); }
+            set { this.OpenTransactionId = value.Identity; }
+        }
+
+        public new int CloseTransactionId
+        {
+            get { return base.CloseTransactionId; }
+            set
+            {
+                SwarmDb.GetDatabaseForWriting().SetVatReportCloseTransaction(this.Identity, value);
+                base.CloseTransactionId = value;
+            }
+        }
+
+        public FinancialTransaction CloseTransaction
+        {
+            get { return FinancialTransaction.FromIdentity(CloseTransactionId); }
+            set { this.CloseTransactionId = value.Identity; }
+        }
     }
 
 }

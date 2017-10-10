@@ -7,6 +7,7 @@ using System.Globalization;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Exceptions;
 
 namespace Swarmops.Database
 {
@@ -17,7 +18,7 @@ namespace Swarmops.Database
         private const string vatReportFieldSequence =
             " VatReportId,OrganizationId,Guid,CreatedDateTime,YearMonthStart," + // 0-4
             "MonthCount,VatReports.Open,TurnoverCents,VatInboundCents,VatOutboundCents," + // 5-9
-            "UnderConstruction " + // 10
+            "OpenTransactionId,CloseTransactionId,UnderConstruction " + // 10-12
             "FROM VatReports ";
 
         private const string vatReportItemFieldSequence =
@@ -38,10 +39,12 @@ namespace Swarmops.Database
             Int64 turnoverCents = reader.GetInt64(7);
             Int64 vatInboundCents = reader.GetInt64(8);
             Int64 vatOutboundCents = reader.GetInt64(9);
-            bool underConstruction = reader.GetBoolean (10);
+            int openTransactionId = reader.GetInt32(10);
+            int closeTransactionid = reader.GetInt32(11);
+            bool underConstruction = reader.GetBoolean (12);
 
             return new BasicVatReport(vatReportId, organizationId, guid, createdDateTime, yearMonthStart, monthCount,
-                open, turnoverCents, vatInboundCents, vatOutboundCents, underConstruction);
+                open, turnoverCents, vatInboundCents, vatOutboundCents, openTransactionId, closeTransactionid, underConstruction);
         }
 
 
@@ -287,6 +290,49 @@ namespace Swarmops.Database
                 // So if both are paid, Open is set to false.
             }
         }
+
+
+        public void SetVatReportOpenTransaction(int vatReportId, int financialTransactionId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetVatReportOpenTransaction", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "vatReportId", vatReportId);
+                AddParameterWithName(command, "openTransactionId", financialTransactionId);
+
+                if (Convert.ToInt32(command.ExecuteScalar()) != 1) // returns count of rows updated
+                {
+                    throw new DatabaseConcurrencyException();
+                }
+            }
+        }
+
+
+
+        public void SetVatReportCloseTransaction(int vatReportId, int financialTransactionId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetVatReportCloseTransaction", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "vatReportId", vatReportId);
+                AddParameterWithName(command, "closeTransactionId", financialTransactionId);
+
+                if (Convert.ToInt32(command.ExecuteScalar()) != 1) // returns count of rows updated
+                {
+
+                    throw new DatabaseConcurrencyException();
+                }
+            }
+        }
+
 
 
         #endregion

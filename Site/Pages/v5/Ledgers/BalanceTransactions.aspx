@@ -30,6 +30,8 @@
             $('#buttonExecutePayout').val(buttonPayoutValue);
             $('#buttonExecutePayoutForeign').val(buttonPayoutForeignValue);
             $('#buttonExecuteOutboundInvoice').val(buttonOutboundInvoiceValue);
+            $('#buttonExecuteVatReport').val(buttonVatReportValue);
+
         });
 
         var transactionId = 0;
@@ -195,6 +197,7 @@
         var buttonPayoutValue = SwarmopsJS.unescape('<%=this.Localized_ButtonPayout%>');
         var buttonPayoutForeignValue = SwarmopsJS.unescape('<%=this.Localized_ButtonPayoutForeign%>');
         var buttonOutboundInvoiceValue = SwarmopsJS.unescape('<%=this.Localized_ButtonOutboundInvoice%>');
+        var buttonVatReportValue = SwarmopsJS.unescape('<%=this.Localized_ButtonVatReport%>');
 
     </script>
     
@@ -246,15 +249,17 @@
             <h2><asp:Literal runat="server" ID="LiteralModalHeader" Text="Matching/Balancing transaction #foobar XYZ" /></h2>
             <p><asp:Literal ID="LabelDoYouWishTo" runat="server" Text="The balance is off by SEK +6,141.14. is Do you wish to... XYZ" /></p>
             <p><input type="radio" id="RadioBalance" name="TxOptions" value="Balance" /><label for="RadioBalance">&nbsp;<asp:Label runat="server" ID="LabelRadioBalance" Text="Balance the transaction manually? XYZ" /></label></p>
-            <div id="radioOptionBalance" class="radioOption">
-                <div class="entryFields">
-                    <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" ListType="All" />&#8203;<br/>
-                    <input type="button" value='#Balance#' class="buttonAccentColor" onclick="onBalanceTransaction(); return false;" id="buttonExecuteBalance"/>
+            <div id="divVatReport">
+                <p><input type="radio" id="RadioVatReport" name="TxOptions" value="VatReport" /><label for="RadioVatReport">&nbsp;<asp:Label runat="server" ID="LabelRadioVatReport" Text="Match to an open VAT report? XYZ" /></label></p>
+                <div id="radioOptionVatReport" class="radioOption">
+                    <div class="entryFields">
+                        <Swarmops5:DropDown ID="DropOpenVatReports" runat="server" />&#8203;<br/>
+                        <input type="button" value='#VatReport#' class="buttonAccentColor" onclick="onMatchOpenVatReport(); return false;" id="buttonExecuteVatReport"/>
+                    </div>
+                    <div class="entryLabels">
+                        <asp:Label runat="server" ID="LabelDescribeVatReport" Text="Match to open VAT report XYZ" />
+                    </div>
                 </div>
-                <div class="entryLabels">
-                    <asp:Label runat="server" ID="LabelDescribeBalance" Text="Balance the difference against XYZ" />
-                </div>
-                <div style="clear:both"></div>
             </div>
             <div id="divNegativeDifference">
                 <p><input type="radio" id="RadioPayout" name="TxOptions" value="Payout" /><label for="RadioPayout">&nbsp;<asp:Label runat="server" ID="LabelRadioPayout" Text="Match this balance to an open payout? XYZ" /></label></p>
@@ -290,17 +295,15 @@
                     </div>
                 </div>
             </div>
-            <div id="divVatReport">
-                <p><input type="radio" id="RadioVatReport" name="TxOptions" value="VatReport" /><label for="RadioVatReport">&nbsp;<asp:Label runat="server" ID="LabelRadioVatReport" Text="Match to an open VAT report? XYZ" /></label></p>
-                <div id="radioOptionVatReport" class="radioOption">
-                    <div class="entryFields">
-                        <Swarmops5:DropDown ID="DropOpenVatReports" runat="server" />&#8203;<br/>
-                        <input type="button" value='#VatReport#' class="buttonAccentColor" onclick="onMatchOpenVatReports(); return false;" id="buttonExecuteVatReport"/>
-                    </div>
-                    <div class="entryLabels">
-                        <asp:Label runat="server" ID="LabelDescrribeVatReport" Text="Match to open VAT report XYZ" />
-                    </div>
+            <div id="radioOptionBalance" class="radioOption">  <!-- this should go last -->
+                <div class="entryFields">
+                    <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" ListType="All" />&#8203;<br/>
+                    <input type="button" value='#Balance#' class="buttonAccentColor" onclick="onBalanceTransaction(); return false;" id="buttonExecuteBalance"/>
                 </div>
+                <div class="entryLabels">
+                    <asp:Label runat="server" ID="LabelDescribeBalance" Text="Balance the difference against XYZ" />
+                </div>
+                <div style="clear:both"></div>
             </div>
             <div id="radioOptionPayment2" class="radioOption"></div>
             <div id="radioOptionPaymentForeign" class="radioOption"></div>

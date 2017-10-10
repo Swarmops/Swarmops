@@ -619,6 +619,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close VAT report.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_ButtonVatReport {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_ButtonVatReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Balance the difference against this account:.
         /// </summary>
         internal static string BalanceTransactions_ModalDialog_DescribeBalance {
@@ -651,6 +660,15 @@ namespace Resources.Pages {
         internal static string BalanceTransactions_ModalDialog_DescribePayoutForeign {
             get {
                 return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePayoutForeign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This transaction is payment/return for this VAT report:.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribeVatReport {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribeVatReport", resourceCulture);
             }
         }
         
@@ -705,6 +723,15 @@ namespace Resources.Pages {
         internal static string BalanceTransactions_ModalDialog_RadioPayoutForeign {
             get {
                 return ResourceManager.GetString("BalanceTransactions_ModalDialog_RadioPayoutForeign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close a VAT report with this transaction?.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_RadioVatReport {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_RadioVatReport", resourceCulture);
             }
         }
         

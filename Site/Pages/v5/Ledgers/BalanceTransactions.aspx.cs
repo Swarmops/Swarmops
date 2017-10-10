@@ -46,11 +46,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelDescribePayoutForeign.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePayoutForeign;
             this.LabelDescribeOutboundInvoice.Text =
                 Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribeOutboundInvoice;
+            this.LabelDescribeVatReport.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribeVatReport;
+
             this.LabelRadioPayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayout;
             this.LabelRadioPayoutForeign.Text =
                 String.Format(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayoutForeign, 5);
             this.LabelRadioOutboundInvoice.Text =
                 Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioOutboundInvoice;
+            this.LabelRadioVatReport.Text =
+                Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioVatReport;
 
         }
 
@@ -452,8 +456,17 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
         [WebMethod]
+        public static void MatchTransactionOpenVatReport(int transactionId, int vatReportId)
+        {
+            
+        }
+
+
+        [WebMethod]
         public static string GetTransactionDisplayIdentity(int transactionId)
         {
+            GetAuthenticationDataAndCulture(); // Sets culture
+
             FinancialTransaction tx = FinancialTransaction.FromIdentity(transactionId);
             return tx.OrganizationSequenceId.ToString("N0");
         }
@@ -494,6 +507,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return
                     CommonV5.JavascriptEscape(
                         Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonOutboundInvoice);
+            }
+        }
+
+        public string Localized_ButtonVatReport
+        {
+            get
+            {
+                return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonVatReport);
             }
         }
     }

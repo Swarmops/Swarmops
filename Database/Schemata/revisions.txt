@@ -47,3 +47,4 @@
 0047 - Fix for null case in SetVatReportReleased [RF]
 0048 - Fix for CreateVatReportItem, ForeignObjectId=>ForeignId [RF]
 0049 - Another fix for CreateVatReportItem
+0050 - Added VatReports.OpenTransaction, .CloseTransaction
