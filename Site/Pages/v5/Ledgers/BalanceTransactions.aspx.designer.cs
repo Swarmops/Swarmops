@@ -103,15 +103,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::System.Web.UI.WebControls.Literal LabelDoYouWishTo;
         
         /// <summary>
-        /// LabelRadioBalance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelRadioBalance;
-        
-        /// <summary>
         /// LabelRadioVatReport control.
         /// </summary>
         /// <remarks>
@@ -218,6 +209,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelDescribeOutboundInvoice;
+        
+        /// <summary>
+        /// LabelRadioBalance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelRadioBalance;
         
         /// <summary>
         /// DropBudgetBalance control.

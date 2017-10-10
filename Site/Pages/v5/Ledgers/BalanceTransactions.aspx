@@ -70,9 +70,11 @@
 
                         if (data.OpenOutboundInvoiceData != null) {
                             if (data.OpenOutboundInvoiceData.ExactMatches.length > 0) {
+                                $('#divOutboundInvoice').show();
                                 <%=this.DropOpenOutboundInvoices.ClientID%>_loadData(data.OpenOutboundInvoiceData.ExactMatches);
                                 <%=this.DropOpenOutboundInvoices.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
                             } else {
+                                $('#divOutboundInvoice').hide();
                                 <%=this.DropOpenOutboundInvoices.ClientID%>_loadData({});
                                 <%=this.DropOpenOutboundInvoices.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
                             }
@@ -179,7 +181,7 @@
         }
 
 
-        function onMatchVatReport() {
+        function onMatchOpenVatReport() {
             var vatReportId = <%=this.DropOpenVatReports.ClientID%>_val();
 
             if (vatReportId > 0) {
@@ -232,7 +234,7 @@
         idField="id">
         <thead>  
             <tr>
-                <th field="checkTx" checkbox="true"></th>
+                <!--<th field="checkTx" checkbox="true"></th>-->
                 <th data-options="field:'id',width:60,align:'right'"><asp:Label ID="LabelGridHeaderId" runat="server" Text="ID#"/></th>  
                 <th data-options="field:'dateTime',width:170,sortable:true"><asp:Label ID="LabelGridHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
                 <th data-options="field:'accountName',width:170"><asp:Label ID="LabelGridHeaderAccountName" runat="server" Text="XYZ Debit" /></th>
@@ -248,7 +250,6 @@
         <DialogCode>
             <h2><asp:Literal runat="server" ID="LiteralModalHeader" Text="Matching/Balancing transaction #foobar XYZ" /></h2>
             <p><asp:Literal ID="LabelDoYouWishTo" runat="server" Text="The balance is off by SEK +6,141.14. is Do you wish to... XYZ" /></p>
-            <p><input type="radio" id="RadioBalance" name="TxOptions" value="Balance" /><label for="RadioBalance">&nbsp;<asp:Label runat="server" ID="LabelRadioBalance" Text="Balance the transaction manually? XYZ" /></label></p>
             <div id="divVatReport">
                 <p><input type="radio" id="RadioVatReport" name="TxOptions" value="VatReport" /><label for="RadioVatReport">&nbsp;<asp:Label runat="server" ID="LabelRadioVatReport" Text="Match to an open VAT report? XYZ" /></label></p>
                 <div id="radioOptionVatReport" class="radioOption">
@@ -284,17 +285,20 @@
                 </div>
             </div>
             <div id="divPositiveDifference">
-                <p><input type="radio" id="RadioOutboundInvoice" name="TxOptions" value="OutboundInvoice" /><label for="RadioOutboundInvoice">&nbsp;<asp:Label runat="server" ID="LabelRadioOutboundInvoice" Text="Match to an open outbound invoice? XYZ" /></label></p>
-                <div id="radioOptionOutboundInvoice" class="radioOption">
-                    <div class="entryFields">
-                        <Swarmops5:DropDown ID="DropOpenOutboundInvoices" runat="server" />&#8203;<br/>
-                        <input type="button" value='#PaymentInvoice#' class="buttonAccentColor" onclick="onMatchOpenOutboundInvoice(); return false;" id="buttonExecuteOutboundInvoice"/>
-                    </div>
-                    <div class="entryLabels">
-                        <asp:Label runat="server" ID="LabelDescribeOutboundInvoice" Text="Match to outbound invoice XYZ" />
+                <div id="divOutboundInvoice">
+                    <p><input type="radio" id="RadioOutboundInvoice" name="TxOptions" value="OutboundInvoice" /><label for="RadioOutboundInvoice">&nbsp;<asp:Label runat="server" ID="LabelRadioOutboundInvoice" Text="Match to an open outbound invoice? XYZ" /></label></p>
+                    <div id="radioOptionOutboundInvoice" class="radioOption">
+                        <div class="entryFields">
+                            <Swarmops5:DropDown ID="DropOpenOutboundInvoices" runat="server" />&#8203;<br/>
+                            <input type="button" value='#PaymentInvoice#' class="buttonAccentColor" onclick="onMatchOpenOutboundInvoice(); return false;" id="buttonExecuteOutboundInvoice"/>
+                        </div>
+                        <div class="entryLabels">
+                            <asp:Label runat="server" ID="LabelDescribeOutboundInvoice" Text="Match to outbound invoice XYZ" />
+                        </div>
                     </div>
                 </div>
             </div>
+            <p><input type="radio" id="RadioBalance" name="TxOptions" value="Balance" /><label for="RadioBalance">&nbsp;<asp:Label runat="server" ID="LabelRadioBalance" Text="Balance the transaction manually? XYZ" /></label></p>
             <div id="radioOptionBalance" class="radioOption">  <!-- this should go last -->
                 <div class="entryFields">
                     <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" ListType="All" />&#8203;<br/>

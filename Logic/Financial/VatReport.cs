@@ -107,6 +107,11 @@ namespace Swarmops.Logic.Financial
                 }
 
                 vatReportTransaction.Dependency = newReport;
+                newReport.OpenTransaction = vatReportTransaction;
+            }
+            else
+            {
+                newReport.Open = false; // nothing to close, no tx created
             }
 
             return newReport;
@@ -243,7 +248,10 @@ namespace Swarmops.Logic.Financial
 
         public new int OpenTransactionId
         {
-            get { return base.OpenTransactionId; }
+            get
+            {
+                return base.OpenTransactionId;
+            }
             set
             {
                 SwarmDb.GetDatabaseForWriting().SetVatReportOpenTransaction(this.Identity, value);
@@ -253,7 +261,11 @@ namespace Swarmops.Logic.Financial
 
         public FinancialTransaction OpenTransaction
         {
-            get { return FinancialTransaction.FromIdentity(OpenTransactionId); }
+            get
+            {
+                if (base.OpenTransactionId == 0) return null;
+                return FinancialTransaction.FromIdentity(OpenTransactionId);
+            }
             set { this.OpenTransactionId = value.Identity; }
         }
 
@@ -269,8 +281,33 @@ namespace Swarmops.Logic.Financial
 
         public FinancialTransaction CloseTransaction
         {
-            get { return FinancialTransaction.FromIdentity(CloseTransactionId); }
-            set { this.CloseTransactionId = value.Identity; }
+            get
+            {
+                if (base.CloseTransactionId == 0) return null;
+                return FinancialTransaction.FromIdentity(CloseTransactionId);
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this.CloseTransactionId = value.Identity;
+                    this.Open = false;
+                }
+                else
+                {
+                    throw new ArgumentNullException(); // is this a valid case?
+                }
+            }
+        }
+
+        public new bool Open
+        {
+            get { return base.Open; }
+            set
+            {
+                SwarmDb.GetDatabaseForWriting().SetVatReportOpen(this.Identity, value);
+                base.Open = value;
+            }
         }
     }
 

@@ -458,7 +458,53 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         [WebMethod]
         public static void MatchTransactionOpenVatReport(int transactionId, int vatReportId)
         {
-            
+            if (transactionId == 0 || vatReportId == 0)
+            {
+                return;
+            }
+
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (
+                !authData.Authority.HasAccess(new Access(authData.CurrentOrganization,
+                    AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            FinancialTransaction transaction = FinancialTransaction.FromIdentity(transactionId);
+            VatReport vatReport = VatReport.FromIdentity(vatReportId);
+
+            if (authData.CurrentOrganization.Identity != transaction.OrganizationId
+                || authData.CurrentOrganization.Identity != vatReport.OrganizationId)
+            {
+                throw new InvalidOperationException("Organization mismatch");
+            }
+
+            Int64 diffCents = vatReport.VatInboundCents - vatReport.VatOutboundCents;
+
+            if (transaction.Rows.AmountCentsTotal != diffCents)
+            {
+                throw new InvalidOperationException("Amount mismatch");
+            }
+
+            // Go ahead and close
+
+            vatReport.CloseTransaction = transaction; // throws if already closed
+            vatReport.Open = false;
+
+            if (diffCents > 0)
+            {
+                // Positive amount - asset account
+                transaction.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsVatInboundReported, -diffCents,
+                    null);
+            }
+            else
+            {
+                // Negative amount - liability account
+                transaction.AddRow(authData.CurrentOrganization.FinancialAccounts.DebtsVatOutboundReported, -diffCents,
+                    null);
+            }
         }
 
 
