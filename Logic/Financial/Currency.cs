@@ -19,7 +19,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (base.Code == "BTC")
                 {
-                    return "µBTC";
+                    return "&micro;BTC"; // HTML entity -- for display only
                 }
 
                 return base.Code;
