@@ -51,6 +51,7 @@
 
             if (orgSettings.AccountsVat) {
                 $('.enableVatField').show();
+                <%=this.DropVatReportFrequency.ClientID%>_val(orgSettings.VatReportFrequency);
             }
 
             $('#<%=this.TextGovtRegistrationId.ClientID%>_TextInput').val(orgSettings.GovernmentRegistrationId);
@@ -155,7 +156,7 @@
                 <div class="paypalAccountField"><Swarmops5:AjaxTextBox ID="TextPaypalAccountAddress" runat="server" Placeholder="paypal@example.org" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="PaypalAccountAddress" /></div>
                 <Swarmops5:AjaxToggleSlider ID="ToggleForex" runat="server" Cookie="Forex" Label="Forex Profit/Loss" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
                 <Swarmops5:AjaxToggleSlider ID="ToggleVat" Cookie="Vat" runat="server" OnChange="onChangeVatEnable" Label="VAT Reports" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
-                <div class="enableVatField"><Swarmops5:DropDown ID="DropVatReportingPeriod" runat="server" ReadOnly="true" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="VatReportFrequency"  /></div>
+                <div class="enableVatField"><Swarmops5:DropDown ID="DropVatReportFrequency" runat="server" ReadOnly="true" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="VatReportFrequency"  /></div>
                 <Swarmops5:AjaxToggleSlider ID="ToggleOpenFinancials" Cookie="ParticipantFinancials" runat="server" Label="Participant Financials"  AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
             </div>
             <div class="entryLabels">

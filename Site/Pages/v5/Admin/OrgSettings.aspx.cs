@@ -503,6 +503,7 @@ namespace Swarmops.Frontend.Pages.Admin
             public bool AccountPaypal;
             public bool AccountsForex;
             public bool AccountsVat;
+            public int VatReportingPeriod;
             public bool ParticipantFinancials;
             public string PaypalAccountAddress;
 

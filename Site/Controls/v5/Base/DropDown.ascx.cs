@@ -42,6 +42,8 @@ namespace Swarmops.Frontend.Controls.Base
             }
         }
 
+        public string AjaxCallbackUrl { get; set; }
+        public string Cookie { get; set; }
 
     }
 }
