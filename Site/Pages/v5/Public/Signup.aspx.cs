@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Web;
@@ -72,7 +73,25 @@ namespace Swarmops.Frontend.Pages.Public
                 DateTime.Today.AddYears(1).ToLongDateString());*/
 
 
-            this.ImageLogo.ImageUrl = "~/Images/Other/swarmops-sandbox-logo--istockphoto.png";
+            if (this.Organization.Identity == Organization.SandboxIdentity)
+            {
+                this.ImageLogo.ImageUrl = "~/Images/Other/swarmops-sandbox-logo--istockphoto.png";
+                this.ImageLogo.Visible = true;
+            }
+            else
+            {
+                Document logoLandscapeDoc = this.Organization.LogoLandscape;
+
+                if (logoLandscapeDoc == null)
+                {
+                    this.ImageLogo.ImageUrl = "~/Images/Other/blank-logo-640x360.png";
+                }
+                else
+                {
+                    this.ImageLogo.ImageUrl = "~/Support/StreamUpload.aspx?DocId=" +
+                                              logoLandscapeDoc.Identity.ToString(CultureInfo.InvariantCulture);
+                }
+            }
 
 
             if (!Page.IsPostBack)
