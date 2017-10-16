@@ -579,10 +579,10 @@ namespace Swarmops.Frontend
 
                 string bitIdUri = "bitid://" + hostName + "/Security/Login.aspx/BitIdLogin?x=" + this.bitIdNonce;
 
-                if (this.Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl)
+                /* if (this.Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl) // comment out -- never use insecure BitId
                 {
                     bitIdUri += "&u=1";
-                }
+                }*/
 
                 GuidCache.Set(bitIdUri + "-Intent", "Register-" + CurrentUser.Identity.ToString(CultureInfo.InvariantCulture));  // Intent: register BitID
 

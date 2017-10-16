@@ -113,10 +113,10 @@ namespace Swarmops.Frontend.Pages.Admin
             this.DropTaxAuthority.Items.Add(new ListItem("[DE] Germany", "DE"));
             this.DropTaxAuthority.Items.Add(new ListItem("[SE] Sweden", "SE"));
 
-            this.DropVatReportingPeriod.Items.Clear();
-            this.DropVatReportingPeriod.Items.Add(new ListItem("Annually", "12"));
-            this.DropVatReportingPeriod.Items.Add(new ListItem("Quarterly", "3"));
-            this.DropVatReportingPeriod.Items.Add(new ListItem("Monthly", "1"));
+            this.DropVatReportFrequency.Items.Clear();
+            this.DropVatReportFrequency.Items.Add(new ListItem("Annually", "12"));
+            this.DropVatReportFrequency.Items.Add(new ListItem("Quarterly", "3"));
+            this.DropVatReportFrequency.Items.Add(new ListItem("Monthly", "1"));
         }
 
         [WebMethod]
