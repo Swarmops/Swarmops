@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Web;
 using System.Web.ExtensionMethods;
@@ -40,8 +41,11 @@ namespace Swarmops.Frontend.Pages.Public
 
             if (Request["Culture"] != null)
             {
+                CultureInfo culture = new CultureInfo(Request["Culture"]);
                 Response.SetCookie(new HttpCookie("PreferredCulture", Request["Culture"]));
-                Response.Redirect(Request.RawUrl.Substring (0, Request.RawUrl.IndexOf ("&Culture=")), true);
+                Thread.CurrentThread.CurrentCulture = culture;
+                Thread.CurrentThread.CurrentUICulture = culture;
+                // Response.Redirect(Request.RawUrl.Substring (0, Request.RawUrl.IndexOf ("&Culture=")), true);
             }
 
             // Find what organization we're supposed to sign up to
