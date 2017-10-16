@@ -182,10 +182,11 @@ namespace Swarmops.Pages.Security
 
             string bitIdUri = "bitid://" + hostName + "/Security/Login.aspx/BitIdLogin?x=" + nonce;
 
+            /*   -- commented out: NEVER permit BitId over non-SSL
             if (Request.Url.ToString().StartsWith ("http://") && !cloudFlareSsl)
             {
                 bitIdUri += "&u=1";
-            }
+            }*/
 
             this.LiteralUri.Text = HttpUtility.UrlEncode (bitIdUri);
             this.LiteralNonce.Text = nonce;
