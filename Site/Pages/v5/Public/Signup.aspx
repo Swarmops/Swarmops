@@ -447,7 +447,7 @@
 	                    }
 
 	                } else if (stepNumber == 3) {
-	                    isValid = ValidateTextField('#<%= TextPassword1.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorNeedPassword%>");
+	                    isValid = ValidateTextField('#<%= TextPassword1.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorNeedPassword%>"));
 
 	                    if (isValid) {
 	                        if ($('#<%=TextPassword1.ClientID%>').val() != $('#<%=TextPassword2.ClientID%>').val()) {
