@@ -130,19 +130,7 @@ namespace Swarmops.Frontend.Pages.Public
 
         private void Localize()
         {
-            this.LabelSidebarActionsHeader.Text = 
-
-            this.LiteralErrorCity.Text = Resources.Pages.Swarm.AddPerson_ErrorCity;
-            this.LiteralErrorMail.Text = Resources.Pages.Swarm.AddPerson_ErrorMail;
-            this.LiteralErrorName.Text = Resources.Pages.Swarm.AddPerson_ErrorName;
-            this.LiteralErrorStreet.Text = Resources.Pages.Swarm.AddPerson_ErrorStreet;
-            this.LiteralErrorDate.Text = Resources.Pages.Swarm.AddPerson_ErrorDate;
-
-            this.LiteralErrorNeedPassword.Text = Resources.Pages.Public.Signup_Error_NeedPassword;
-            this.LiteralErrorPasswordMismatch.Text = Resources.Pages.Public.Signup_Error_PasswordMismatch;
-            this.LiteralErrorSelectActivationLevel.Text = Resources.Pages.Public.Signup_Error_SelectActivationLevel;
-            this.LiteralErrorSelectVolunteerPosition.Text = Resources.Pages.Public.Signup_Error_SelectPosition;
-            this.LiteralErrorMailExists.Text = Resources.Pages.Public.Signup_Error_MailExists;
+            this.LabelSidebarActionsHeader.Text = Resources.Global.Sidebar_Actions;
 
             this.LabelWelcomeHeader.Text = String.Format (Resources.Pages.Public.Signup_Welcome, Organization.Name);
             this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
@@ -207,9 +195,6 @@ namespace Swarmops.Frontend.Pages.Public
             {
                 this.LiteralBodyAttributes.Text = @"dir='rtl' class='rtl'";
             }
-
-            this.LiteralWizardNextButton.Text = Resources.Global.Global_WizardNext;
-            this.LiteralWizardFinishButton.Text = Resources.Global.Global_WizardFinish;
 
             this.LabelSidebarActionsHeader.Text = Resources.Pages.Public.Signup_FeeHeader;
             // if (this.Organization.MembershipFee == 0 && this.Organization.MembershipRenewalFee == 0)
@@ -355,5 +340,62 @@ namespace Swarmops.Frontend.Pages.Public
 
             return new AjaxCallResult { Success = false };
         }
+
+
+        // ---- LOCALIZATION SUPPORT BELOW ----
+
+        public string Localize_ErrorCity
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Swarm.AddPerson_ErrorCity); }
+        }
+        public string Localize_ErrorMail
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Swarm.AddPerson_ErrorMail); }
+        }
+        public string Localize_ErrorName
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Swarm.AddPerson_ErrorName); }
+        }
+        public string Localize_ErrorStreet
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Swarm.AddPerson_ErrorStreet); }
+        }
+        public string Localize_ErrorDate
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Swarm.AddPerson_ErrorDate); }
+        }
+        public string Localize_ErrorNeedPassword
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Public.Signup_Error_NeedPassword); }
+        }
+        public string Localize_ErrorPasswordMismatch
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Public.Signup_Error_PasswordMismatch); }
+        }
+        public string Localize_ErrorSelectActivationLevel
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Public.Signup_Error_SelectActivationLevel); }
+        }
+        public string Localize_ErrorSelectVolunteerPosition
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Public.Signup_Error_SelectPosition); }
+        }
+        public string Localize_ErrorMailExists
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Public.Signup_Error_MailExists); }
+        }
+
+        public string Localize_WizardNext
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Global_WizardNext); }
+        }
+
+        public string Localize_WizardFinish
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Global_WizardFinish); }
+        }
+
+
+
     }
 }

@@ -298,17 +298,17 @@
     	                    if (msg.d != true) {
     	                        isValid = false;
     	                        $('#<%= TextDateOfBirth.ClientID %>').addClass("entryError");
-    	                        alertify.error("<asp:Literal runat="server" ID="LiteralErrorDate" />");
+    	                        alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorDate%>");
     	                        $('#<%=this.TextDateOfBirth.ClientID %>').focus();
     	                    }
     	                }
     	            });
     	        }
 
-    	        isValid = ValidateTextField('#<%= TextCity.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorCity" />") && isValid;
-    	        isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorStreet" />") && isValid;
-    	        isValid = ValidateTextField('#<%= TextMail.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorMail" />") && isValid;
-    	        isValid = ValidateTextField('#<%= TextName.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorName" />") && isValid; // TODO: Actually validate geography?
+    	        isValid = ValidateTextField('#<%= TextCity.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorCity%>") && isValid;
+    	        isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorStreet%>") && isValid;
+    	        isValid = ValidateTextField('#<%= TextMail.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorMail%>") && isValid;
+    	        isValid = ValidateTextField('#<%= TextName.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorName%>") && isValid; // TODO: Actually validate geography?
 
     	        if (isValid) {
 
@@ -326,7 +326,7 @@
 	                        if (msg.d.Success != true) {
 	                            isValid = false;
 	                            $('#<%= this.TextMail.ClientID %>').addClass("entryError");
-	                            alertify.error("<asp:Literal runat="server" ID="LiteralErrorMailExists" />");
+	                            alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorMailExists%>");
 	                            $('#<%=this.TextMail.ClientID %>').focus();
 	                        }
 	                    }
@@ -373,8 +373,8 @@
 
     	        $('#wizard').smartWizard({
     	            transitionEffect: 'fade',
-    	            labelNext: "<asp:Literal ID='LiteralWizardNextButton' runat='server' />",
-    	            labelFinish: "<asp:Literal ID='LiteralWizardFinishButton' runat='server' />",
+    	            labelNext: SwarmopsJS.unescape("<%=Localize_WizardNext%>"),
+    	            labelFinish: SwarmopsJS.unescape("<%=Localize_WizardFinish%>"),
     	            keyNavigation: false,
     	            onLeaveStep: leaveAStepCallback,
     	            onFinish: onFinishCallback
@@ -444,12 +444,12 @@
 	                    }
 
 	                } else if (stepNumber == 3) {
-	                    isValid = ValidateTextField('#<%= TextPassword1.ClientID %>', "<asp:Literal runat='server' ID='LiteralErrorNeedPassword' />");
+	                    isValid = ValidateTextField('#<%= TextPassword1.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorNeedPassword%>");
 
 	                    if (isValid) {
 	                        if ($('#<%=TextPassword1.ClientID%>').val() != $('#<%=TextPassword2.ClientID%>').val()) {
 	                            isValid = false;
-	                            alertify.error("<asp:Literal runat='server' ID='LiteralErrorPasswordMismatch' />");
+	                            alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorPasswordMismatch%>"));
 	                            $('#<%=TextPassword1.ClientID%>,#<%=TextPassword2.ClientID%>').addClass("entryError");
 	                            $('#<%=TextPassword1.ClientID%>').focus();
 	                        }
@@ -466,7 +466,7 @@
     	                var selectedOption = $('input:radio[name="ActivationLevel"]:checked').val();
     	                if (selectedOption === undefined) {
     	                    isValid = false;
-    	                    alertify.error("<asp:Literal runat='server' ID='LiteralErrorSelectActivationLevel' />");
+    	                    alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorSelectActivationLevel%>"));
     	                }
 
     	                if (selectedOption == "RadioActivationVolunteer" && isValid) {
@@ -503,7 +503,7 @@
 	                        selectedPositions = $('#tableVolunteerPositions').datagrid('getChecked');
 	                        if (selectedPositions.length == 0) {
 	                            isValid = false;
-	                            alertify.error("<asp:Literal runat='server' ID='LiteralErrorSelectVolunteerPosition' />");
+	                            alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorSelectVolunteerPosition%>"));
 	                        }
 	                    } else {
 	                        // If we should just skip step 5
