@@ -308,10 +308,10 @@
     	            });
     	        }
 
-    	        isValid = ValidateTextField('#<%= TextCity.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorCity%>") && isValid;
-    	        isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorStreet%>") && isValid;
-    	        isValid = ValidateTextField('#<%= TextMail.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorMail%>") && isValid;
-    	        isValid = ValidateTextField('#<%= TextName.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorName%>") && isValid; // TODO: Actually validate geography?
+    	        isValid = ValidateTextField('#<%= TextCity.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorCity%>")) && isValid;
+    	        isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorStreet%>")) && isValid;
+    	        isValid = ValidateTextField('#<%= TextMail.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorMail%>")) && isValid;
+    	        isValid = ValidateTextField('#<%= TextName.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorName%>")) && isValid; // TODO: Actually validate geography?
 
     	        if (isValid) {
 
