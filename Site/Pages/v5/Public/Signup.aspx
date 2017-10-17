@@ -741,7 +741,7 @@
             <a href="javascript:setLanguage('nb-NO')"><img src="/Images/Flags/no-24px.png"/></a>&#8203;
             <a href="javascript:setLanguage('ru-RU')"><img src="/Images/Flags/ru-24px.png"/></a>&#8203;
             <a href="javascript:setLanguage('sv-SE')"><img src="/Images/Flags/se-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('en-US')"><img src="/Images/Flags/us-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('en-US')"><img src="/Images/Flags/uk-24px.png"/></a>&#8203;
         </div>
     </div>
 
