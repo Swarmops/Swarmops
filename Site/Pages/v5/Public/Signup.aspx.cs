@@ -48,6 +48,7 @@ namespace Swarmops.Frontend.Pages.Public
             // Loc / UTF8 support
 
             Response.ContentEncoding = System.Text.Encoding.UTF8;
+            Response.Charset = "utf-8";
 
             // Find what organization we're supposed to sign up to
 
