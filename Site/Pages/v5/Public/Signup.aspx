@@ -553,7 +553,7 @@
 
 
     	    function setLanguage(cultureCode) {
-	            if (document.location.indexOf("?OrganizationId") > 0) {
+	            if (document.location.href.indexOf("?OrganizationId") > 0) {
 	                document.location = document.location + "&Culture=" + cultureCode;
 	            } else {
 	                document.location = document.location + "?Culture=" + cultureCode;
