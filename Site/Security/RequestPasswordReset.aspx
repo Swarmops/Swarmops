@@ -23,6 +23,10 @@
     <link href="/Style/alertify.core.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.default.css" rel="stylesheet" type="text/css" />
 
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/Images/swarmops-favicon.png" type="image/png"/>
+
+
     <!-- custom styles -->
     
     <style type="text/css">

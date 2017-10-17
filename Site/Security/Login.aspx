@@ -24,7 +24,7 @@
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
     
     <!-- favicon -->
-    <link rel="shortcut icon" href="/Images/swarmops-logo-128px.png" type="image/png">
+    <link rel="shortcut icon" href="/Images/swarmops-favicon.png" type="image/png"/>
 
 	<!-- style sheet, followed by script style sheets -->
     <asp:PlaceHolder ID="NeededForCacheMarkToParse1" runat="server">
