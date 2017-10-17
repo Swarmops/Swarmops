@@ -298,7 +298,7 @@
     	                    if (msg.d != true) {
     	                        isValid = false;
     	                        $('#<%= TextDateOfBirth.ClientID %>').addClass("entryError");
-    	                        alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorDate%>");
+    	                        alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorDate%>"));
     	                        $('#<%=this.TextDateOfBirth.ClientID %>').focus();
     	                    }
     	                }
@@ -326,7 +326,7 @@
 	                        if (msg.d.Success != true) {
 	                            isValid = false;
 	                            $('#<%= this.TextMail.ClientID %>').addClass("entryError");
-	                            alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorMailExists%>");
+	                            alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorMailExists%>"));
 	                            $('#<%=this.TextMail.ClientID %>').focus();
 	                        }
 	                    }
