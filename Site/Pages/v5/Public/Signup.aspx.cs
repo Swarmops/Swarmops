@@ -45,6 +45,10 @@ namespace Swarmops.Frontend.Pages.Public
                 Response.Redirect(Request.RawUrl.Substring (0, Request.RawUrl.IndexOf ("Culture=")-1), true); // "-1" removes the preceding & or ?
             }
 
+            // Loc / UTF8 support
+
+            Response.ContentEncoding = System.Text.Encoding.UTF8;
+
             // Find what organization we're supposed to sign up to
 
             this.Organization = Organization.FromVanityDomain (Request.Url.Host);
