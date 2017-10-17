@@ -42,7 +42,7 @@ namespace Swarmops.Frontend.Pages.Public
             if (Request["Culture"] != null)
             {
                 Response.SetCookie(new HttpCookie("PreferredCulture", Request["Culture"]));
-                Response.Redirect(Request.RawUrl.Substring (0, Request.RawUrl.IndexOf ("&Culture=")), true);
+                Response.Redirect(Request.RawUrl.Substring (0, Request.RawUrl.IndexOf ("?Culture=")), true);
             }
 
             // Find what organization we're supposed to sign up to

@@ -553,7 +553,7 @@
 
 
     	    function setLanguage(cultureCode) {
-	            document.location = document.location + "&Culture=" + cultureCode;
+	            document.location = document.location + "?Culture=" + cultureCode;
 	        }
 
     	    var suppressChecks = false;
