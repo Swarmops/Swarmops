@@ -1048,6 +1048,7 @@
     <Content Include="Images\PageIcons\iconshock-walletmoney-40px.png" />
     <Content Include="Images\PageIcons\swarmops-builder-40px.png" />
     <Content Include="Images\PageIcons\transparency-16px.png" />
+    <Content Include="Images\swarmops-favicon.png" />
     <Content Include="Images\swarmops-logo-128px.png" />
     <Content Include="Images\swarmops-logo-16x9.png" />
     <Content Include="Images\Swarmops-logo-256px.png" />

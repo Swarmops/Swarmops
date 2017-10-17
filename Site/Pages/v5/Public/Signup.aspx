@@ -21,6 +21,9 @@
 
     <!-- page title -->
 	<title><%=Organization.Name %> - Signup</title>
+    
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/Images/swarmops-favicon.png" type="image/png"/>
 
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.core.css" rel="stylesheet" type="text/css" />
