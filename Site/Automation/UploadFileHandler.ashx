@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Security.AccessControl;
 using System.Threading;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -18,6 +19,7 @@ using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 using WebSocketSharp;
+using Mono.Unix.Native;
 
 namespace Swarmops.Frontend.Automation
 {
@@ -217,6 +219,15 @@ namespace Swarmops.Frontend.Automation
                 if (!Directory.Exists(StorageRoot + fileFolder))
                 {
                     Directory.CreateDirectory(StorageRoot + fileFolder);
+
+                    // Set folder permissions to rwxr--r-- if live environment
+
+                    if (!WeAreInDebugEnvironment)
+                    {
+                        Syscall.chmod(StorageRoot + fileFolder,
+                            FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+                    }
+
                 }
 
                 int fileCounter = 0;
@@ -239,6 +250,15 @@ namespace Swarmops.Frontend.Automation
 
                 file.InputStream.Position = 0;
                 file.SaveAs(StorageRoot + relativeFileName);
+
+                // Set file permissions to rwxr--r-- if live environment
+
+                if (!WeAreInDebugEnvironment)
+                {
+                    Syscall.chmod(StorageRoot + relativeFileName,
+                        FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+                }
+
 
                 if (convertPdf)
                 {
@@ -338,6 +358,13 @@ namespace Swarmops.Frontend.Automation
                                     lastDocument = Document.Create(pageFileName,
                                         file.FileName + (pageCounter + 1).ToString(CultureInfo.InvariantCulture),
                                         fileLength, guid, null, authData.CurrentUser);
+
+                                        if (!WeAreInDebugEnvironment)
+                                        {
+                                            Syscall.chmod(Document.StorageRoot + pageFileName,
+                                                FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+                                        }
+
                                 }
 
                                 pageCounter++;
@@ -413,128 +440,128 @@ namespace Swarmops.Frontend.Automation
 
 
         [WebMethod]
-public static AjaxConversionCallResult GetPdfConversionResult (string guid)
-{
-    return (AjaxConversionCallResult) GuidCache.Get("PdfConversionResult-" + guid);
-}
+        public static AjaxConversionCallResult GetPdfConversionResult (string guid)
+        {
+            return (AjaxConversionCallResult) GuidCache.Get("PdfConversionResult-" + guid);
+        }
 
 
-public class AjaxConversionCallResult: AjaxCallResult
-{
-    public int SuccessCount { get; set; }
-    public int FailCount { get; set; }
-    public string[] FailFileNames { get; set; }
-}
+        public class AjaxConversionCallResult: AjaxCallResult
+        {
+            public int SuccessCount { get; set; }
+            public int FailCount { get; set; }
+            public string[] FailFileNames { get; set; }
+        }
 
-private static void ConvertPdfThread(object args)
-{
-    ProcessThreadArguments argsProper = (ProcessThreadArguments) args;
-}
-
-
-private class ProcessThreadArguments
-{
-    public string Guid { get; set; }
-    public Organization Organization { get; set; }
-    public Person CurrentUser { get; set; }
-}
+        private static void ConvertPdfThread(object args)
+        {
+            ProcessThreadArguments argsProper = (ProcessThreadArguments) args;
+        }
 
 
-private void WriteJsonIframeSafe(HttpContext context, List<FilesStatus> statuses)
-{
-    context.Response.AddHeader("Vary", "Accept");
-    try
-    {
-        if (context.Request["HTTP_ACCEPT"].Contains("application/json"))
+        private class ProcessThreadArguments
+        {
+            public string Guid { get; set; }
+            public Organization Organization { get; set; }
+            public Person CurrentUser { get; set; }
+        }
+
+
+        private void WriteJsonIframeSafe(HttpContext context, List<FilesStatus> statuses)
+        {
+            context.Response.AddHeader("Vary", "Accept");
+            try
+            {
+                if (context.Request["HTTP_ACCEPT"].Contains("application/json"))
+                    context.Response.ContentType = "application/json";
+                else
+                    context.Response.ContentType = "text/plain";
+            }
+            catch
+            {
+                context.Response.ContentType = "text/plain";
+            }
+
+            string jsonObj = this.js.Serialize(statuses.ToArray());
+            context.Response.Write(jsonObj);
+        }
+
+        private static bool GivenFilename(HttpContext context)
+        {
+            return !string.IsNullOrEmpty(context.Request["f"]);
+        }
+
+        private void DeliverFile(HttpContext context)
+        {
+            string filename = context.Request["f"];
+            string filePath = StorageRoot + filename;
+
+            if (File.Exists(filePath))
+            {
+                context.Response.AddHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
+                context.Response.ContentType = "application/octet-stream";
+                context.Response.ClearContent();
+                context.Response.WriteFile(filePath);
+            }
+            else
+                context.Response.StatusCode = 404;
+        }
+
+        private void ListCurrentFiles(HttpContext context)
+        {
+            FileInfo[] files =
+                new DirectoryInfo(StorageRoot)
+                    .GetFiles("*", SearchOption.TopDirectoryOnly);
+
+            // completely wrong, redo from scratch
+
+            string jsonObj = this.js.Serialize(files);
+            context.Response.AddHeader("Content-Disposition", "inline; filename=\"files.json\"");
+            context.Response.Write(jsonObj);
             context.Response.ContentType = "application/json";
-        else
-            context.Response.ContentType = "text/plain";
-    }
-    catch
-    {
-        context.Response.ContentType = "text/plain";
-    }
-
-    string jsonObj = this.js.Serialize(statuses.ToArray());
-    context.Response.Write(jsonObj);
-}
-
-private static bool GivenFilename(HttpContext context)
-{
-    return !string.IsNullOrEmpty(context.Request["f"]);
-}
-
-private void DeliverFile(HttpContext context)
-{
-    string filename = context.Request["f"];
-    string filePath = StorageRoot + filename;
-
-    if (File.Exists(filePath))
-    {
-        context.Response.AddHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
-        context.Response.ContentType = "application/octet-stream";
-        context.Response.ClearContent();
-        context.Response.WriteFile(filePath);
-    }
-    else
-        context.Response.StatusCode = 404;
-}
-
-private void ListCurrentFiles(HttpContext context)
-{
-    FileInfo[] files =
-        new DirectoryInfo(StorageRoot)
-            .GetFiles("*", SearchOption.TopDirectoryOnly);
-
-    // completely wrong, redo from scratch
-
-    string jsonObj = this.js.Serialize(files);
-    context.Response.AddHeader("Content-Disposition", "inline; filename=\"files.json\"");
-    context.Response.Write(jsonObj);
-    context.Response.ContentType = "application/json";
-}
+        }
     }
 
     public class FilesStatus
-{
-    public const string HandlerPath = "/";
-
-    public FilesStatus()
     {
-    }
+        public const string HandlerPath = "/";
 
-    public FilesStatus(FileInfo fileInfo)
-    {
-        SetValues(fileInfo.Name, (int) fileInfo.Length);
-    }
+        public FilesStatus()
+        {
+        }
 
-    public FilesStatus(string fileName, int fileLength)
-    {
-        SetValues(fileName, fileLength);
-    }
+        public FilesStatus(FileInfo fileInfo)
+        {
+            SetValues(fileInfo.Name, (int) fileInfo.Length);
+        }
 
-    public string group { get; set; }
-    public string name { get; set; }
-    public string type { get; set; }
-    public int size { get; set; }
-    public string progress { get; set; }
-    public string url { get; set; }
-    public string thumbnail_url { get; set; }
-    public string delete_url { get; set; }
-    public string delete_type { get; set; }
-    public string error { get; set; }
-    public bool requiresPdfConversion { get; set; }
+        public FilesStatus(string fileName, int fileLength)
+        {
+            SetValues(fileName, fileLength);
+        }
 
-    private void SetValues(string fileName, int fileLength)
-    {
-        name = fileName;
-        type = "image/png";
-        size = fileLength;
-        progress = "1.0";
-        url = HandlerPath + "UploadFileHandler.ashx?f=" + fileName;
-        thumbnail_url = HandlerPath + "Thumbnail.ashx?f=" + fileName;
-        delete_url = HandlerPath + "UploadFileHandler.ashx?f=" + fileName;
-        delete_type = "DELETE";
+        public string group { get; set; }
+        public string name { get; set; }
+        public string type { get; set; }
+        public int size { get; set; }
+        public string progress { get; set; }
+        public string url { get; set; }
+        public string thumbnail_url { get; set; }
+        public string delete_url { get; set; }
+        public string delete_type { get; set; }
+        public string error { get; set; }
+        public bool requiresPdfConversion { get; set; }
+
+        private void SetValues(string fileName, int fileLength)
+        {
+            name = fileName;
+            type = "image/png";
+            size = fileLength;
+            progress = "1.0";
+            url = HandlerPath + "UploadFileHandler.ashx?f=" + fileName;
+            thumbnail_url = HandlerPath + "Thumbnail.ashx?f=" + fileName;
+            delete_url = HandlerPath + "UploadFileHandler.ashx?f=" + fileName;
+            delete_type = "DELETE";
+        }
     }
-}
 }

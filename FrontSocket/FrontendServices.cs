@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mono.Unix.Native;
 using Newtonsoft.Json.Linq;
 using Swarmops.Frontend.Socket;
 using Swarmops.Logic;
@@ -279,6 +280,9 @@ namespace Swarmops.Frontend.Socket
                                     "(BackendConvertedFile) " + pageCounter.ToString(CultureInfo.InvariantCulture),
                                     fileLength, guid, null, person);
 
+                                Syscall.chmod(Document.StorageRoot + lastPageFileName,
+                                    FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+
                                 // Prepare to save the next file
                                 lastPageFileName = testPageFileName;
                             }
@@ -306,6 +310,9 @@ namespace Swarmops.Frontend.Socket
                         lastDocument = Document.Create(lastPageFileName,
                             "(BackendConvertedFile) " + pageCounter.ToString(CultureInfo.InvariantCulture),
                             fileLengthLastPage, guid, null, person);
+
+                        Syscall.chmod(Document.StorageRoot + lastPageFileName,
+                            FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
 
                         // Finally, ask the backend to do the high-res conversions, but now we have the basic, fast ones
 
