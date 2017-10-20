@@ -220,12 +220,13 @@ namespace Swarmops.Frontend.Automation
                 {
                     Directory.CreateDirectory(StorageRoot + fileFolder);
 
-                    // Set folder permissions to rwxr--r-- if live environment
+                    // Set folder permissions to rwxr-xr-x if live environment
 
                     if (!WeAreInDebugEnvironment)
                     {
                         Syscall.chmod(StorageRoot + fileFolder,
-                            FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+                            FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH |
+                            FilePermissions.S_IXGRP | FilePermissions.S_IXOTH);
                     }
 
                 }
@@ -255,8 +256,10 @@ namespace Swarmops.Frontend.Automation
 
                 if (!WeAreInDebugEnvironment)
                 {
+                    // Set to readonly, lock out changes, permit all read
+
                     Syscall.chmod(StorageRoot + relativeFileName,
-                        FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+                       FilePermissions.S_IRUSR | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
                 }
 
 
@@ -359,11 +362,13 @@ namespace Swarmops.Frontend.Automation
                                         file.FileName + (pageCounter + 1).ToString(CultureInfo.InvariantCulture),
                                         fileLength, guid, null, authData.CurrentUser);
 
-                                        if (!WeAreInDebugEnvironment)
-                                        {
-                                            Syscall.chmod(Document.StorageRoot + pageFileName,
-                                                FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
-                                        }
+                                    if (!WeAreInDebugEnvironment)
+                                    {
+                                        // Set to readonly, lock out changes, permit all read
+
+                                        Syscall.chmod(Document.StorageRoot + pageFileName,
+                                            FilePermissions.S_IRUSR | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+                                    }
 
                                 }
 

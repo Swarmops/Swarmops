@@ -280,8 +280,10 @@ namespace Swarmops.Frontend.Socket
                                     "(BackendConvertedFile) " + pageCounter.ToString(CultureInfo.InvariantCulture),
                                     fileLength, guid, null, person);
 
+                                // Set to readonly, lock out changes, permit all read
+
                                 Syscall.chmod(Document.StorageRoot + lastPageFileName,
-                                    FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+                                    FilePermissions.S_IRUSR | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
 
                                 // Prepare to save the next file
                                 lastPageFileName = testPageFileName;
@@ -311,8 +313,10 @@ namespace Swarmops.Frontend.Socket
                             "(BackendConvertedFile) " + pageCounter.ToString(CultureInfo.InvariantCulture),
                             fileLengthLastPage, guid, null, person);
 
+                        // Set to readonly, lock out changes, permit all read
+
                         Syscall.chmod(Document.StorageRoot + lastPageFileName,
-                            FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+                            FilePermissions.S_IRUSR | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
 
                         // Finally, ask the backend to do the high-res conversions, but now we have the basic, fast ones
 
