@@ -502,12 +502,12 @@
     <Compile Include="Pages\v5\Ledgers\UploadBankFiles.aspx.designer.cs">
       <DependentUpon>UploadBankFiles.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\v5\Ledgers\VatReports.aspx.cs">
-      <DependentUpon>VatReports.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Ledgers\ViewVatReports.aspx.cs">
+      <DependentUpon>ViewVatReports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\v5\Ledgers\VatReports.aspx.designer.cs">
-      <DependentUpon>VatReports.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Ledgers\ViewVatReports.aspx.designer.cs">
+      <DependentUpon>ViewVatReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\v5\Ledgers\ViewOutstandingAccounts.aspx.cs">
       <DependentUpon>ViewOutstandingAccounts.aspx</DependentUpon>
@@ -1115,7 +1115,7 @@
     <Content Include="Pages\v5\Ledgers\TaxForms\Json-Payroll-TaxFormData.aspx" />
     <Content Include="Pages\v5\Ledgers\TaxForms\PayrollForms.aspx" />
     <Content Include="Pages\v5\Ledgers\UploadBankFiles.aspx" />
-    <Content Include="Pages\v5\Ledgers\VatReports.aspx" />
+    <Content Include="Pages\v5\Ledgers\ViewVatReports.aspx" />
     <Content Include="Pages\v5\Ledgers\ViewOutstandingAccounts.aspx" />
     <Content Include="Pages\v5\Public\Initialize.aspx" />
     <Content Include="Pages\v5\Public\Json-SignupVolunteerPositions.aspx" />
