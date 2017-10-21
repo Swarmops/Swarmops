@@ -303,7 +303,8 @@ namespace Swarmops.Site.Pages.Ledgers
                         Math.Abs (resultDetail.BalanceMismatchCents/100.0), resultDetail.CurrencyCode);
                     break;
                 case ImportResultsCategory.Bad:
-                    html = Resources.Pages.Ledgers.UploadBankFiles_ResultsBad;
+                    html = Resources.Pages.Ledgers.UploadBankFiles_ResultsBad +
+                           (string) GuidCache.Get(guid + "-Exception");
                     break;
                 case ImportResultsCategory.Payments:
                     if (paymentsDetail.DuplicatePaymentCount > 0)
@@ -423,6 +424,7 @@ namespace Swarmops.Site.Pages.Ledgers
             catch (Exception e)
             {
                 GuidCache.Set (guid + "-Exception", e.ToString());
+                
             }
             finally
             {
