@@ -74,7 +74,7 @@ namespace Swarmops.Logic.Financial
                 result.Culture = "sv-SE";
 
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Bokföringsdatum";
-                result.FieldNames[ExternalBankDataFieldName.Description] = "Text/mottagare";
+                result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Text/mottagare";
                 result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Belopp";
                 result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo";
                 result.FieldNames[ExternalBankDataFieldName.NotUniqueId] = "Verifikationsnummer";
@@ -98,7 +98,7 @@ namespace Swarmops.Logic.Financial
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Date";
                 result.FieldNames[ExternalBankDataFieldName.Time] = "Time";
                 result.FieldNames[ExternalBankDataFieldName.TimeZone] = "Time Zone";
-                result.FieldNames[ExternalBankDataFieldName.Description] = "Name";
+                result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Name";
                 result.FieldNames[ExternalBankDataFieldName.Currency] = "Currency";
                 result.FieldNames[ExternalBankDataFieldName.TransactionGross] = "Gross";
                 result.FieldNames[ExternalBankDataFieldName.TransactionFee] = "Fee";
@@ -125,7 +125,8 @@ namespace Swarmops.Logic.Financial
                 result.InitialReplacements = ";|\t| €|";
 
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Buchungstag";
-                result.FieldNames[ExternalBankDataFieldName.Description] = "Buchungsdetails";
+                result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Buchungsdetails";
+                result.FieldNames[ExternalBankDataFieldName.DescriptionSecondary] = "Umsatzart";
                 result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Betrag (€)";
                 result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo (€)";
 
@@ -150,7 +151,8 @@ namespace Swarmops.Logic.Financial
         TransactionGross,
         TransactionFee,
         TransactionNet,
-        Description,
+        DescriptionPrimary,
+        DescriptionSecondary,
         UniqueId,
         NotUniqueId,
         Date,

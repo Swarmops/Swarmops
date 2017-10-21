@@ -260,7 +260,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public new int OpenTransactionId
+        private new int OpenTransactionId
         {
             get
             {
@@ -283,7 +283,7 @@ namespace Swarmops.Logic.Financial
             set { this.OpenTransactionId = value.Identity; }
         }
 
-        public new int CloseTransactionId
+        private new int CloseTransactionId
         {
             get { return base.CloseTransactionId; }
             set
@@ -305,6 +305,7 @@ namespace Swarmops.Logic.Financial
                 if (value != null)
                 {
                     this.CloseTransactionId = value.Identity;
+                    value.Dependency = this;
                     this.Open = false;
                 }
                 else

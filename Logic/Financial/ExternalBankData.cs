@@ -131,10 +131,21 @@ namespace Swarmops.Logic.Financial
 
                 ExternalBankDataRecord newRecord = new ExternalBankDataRecord();
 
-                if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.Description))
+                if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.DescriptionPrimary))
                 {
                     newRecord.Description =
-                        StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.Description]]);
+                        StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.DescriptionPrimary]]);
+                }
+
+                // If primary description is empty, try to apply a secondary description
+
+                if (String.IsNullOrEmpty(newRecord.Description))
+                {
+                    if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.DescriptionSecondary))
+                    {
+                        newRecord.Description =
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.DescriptionSecondary]]);
+                    }
                 }
 
                 if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.AccountBalance))
