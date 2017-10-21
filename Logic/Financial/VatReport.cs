@@ -217,12 +217,26 @@ namespace Swarmops.Logic.Financial
         private static FinancialAccountRows RowsNotInVatReport(FinancialAccount account, DateTime endDateTime)
         {
             Organization organization = account.Organization;
+            SwarmDb dbRead = SwarmDb.GetDatabaseForReading();
 
-            FinancialAccountRows rows =
+            FinancialAccountRows rowsIntermediate =
                 FinancialAccountRows.FromArray(
                     SwarmDb.GetDatabaseForReading().GetAccountRowsNotInVatReport(account.Identity, endDateTime));
 
-            return rows;
+            FinancialAccountRows rowsFinal = new FinancialAccountRows();
+            foreach (FinancialAccountRow row in rowsIntermediate)
+            {
+                // Check if this row _closes_ an _existing_ VAT report, in which case it should _not_ be included
+
+                int vatReportId = dbRead.GetVatReportIdFromCloseTransaction(row.FinancialTransactionId);
+                if (vatReportId == 0)
+                {
+                    // This particular transaction doesn't close an existing VAT report
+                    rowsFinal.Add(row);
+                }
+            }
+
+            return rowsFinal;
         }
 
         public string Description

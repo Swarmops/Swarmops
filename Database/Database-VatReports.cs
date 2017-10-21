@@ -92,6 +92,40 @@ namespace Swarmops.Database
         }
 
 
+        public int GetVatReportIdFromCloseTransaction(int closeTransactionId)
+        {
+            return GetVatReportIdFromIntegerField("CloseTransactionId", closeTransactionId);
+        }
+
+        public int GetVatReportIdFromOpenTransaction(int openTransactionId)
+        {
+            return GetVatReportIdFromIntegerField("OpenTransactionId", openTransactionId);
+        }
+
+        private int GetVatReportIdFromIntegerField(string integerFieldName, int integerValue)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT VatReportId FROM VatReports WHERE " + integerFieldName + "=" + integerValue + ";", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetInt32(0);
+                    }
+
+                    return 0;
+                }
+            }
+        }
+    
+
+
         public BasicVatReport[] GetVatReports(params object[] conditions)
         {
             List<BasicVatReport> result = new List<BasicVatReport>();
