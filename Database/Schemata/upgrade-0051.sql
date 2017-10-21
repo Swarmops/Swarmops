@@ -1,4 +1,4 @@
-﻿DROP PROCEDURE IF EXISTS `SetVatReportOpenTransaction`
+﻿DROP PROCEDURE IF EXISTS `CreateFinancialTransactionStub`
 
 #
 
