@@ -379,15 +379,24 @@ namespace Swarmops.Site.Pages.Ledgers
                         }
                         catch (Exception e)
                         {
-                            reader.BaseStream.Position = 0; // rewind stream to retry parse with different file type
+                            try
+                            {
+                                reader.BaseStream.Position = 0; // rewind stream to retry parse with different file type
 
-                            // Try a payment file instead
-                            ImportedPaymentData paymentData = ImportBankgiroSE (reader, currentUser, organization);
+                                // Try a payment file instead
+                                ImportedPaymentData paymentData = ImportBankgiroSE(reader, currentUser, organization);
 
-                            // Apparently, we were successful
+                                // Apparently, we were successful
 
-                            GuidCache.Set (guid + "-Result", ImportResultsCategory.Payments);
-                            GuidCache.Set (guid + "-ResultDetails", paymentData);
+                                GuidCache.Set(guid + "-Result", ImportResultsCategory.Payments);
+                                GuidCache.Set(guid + "-ResultDetails", paymentData);
+                            }
+                            catch (Exception innerException)
+                            {
+                                // rethrow the original exception
+
+                                throw e;
+                            }
                         }
                     }
                 }
