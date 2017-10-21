@@ -252,7 +252,7 @@ namespace Swarmops.Frontend.Automation
                 file.InputStream.Position = 0;
                 file.SaveAs(StorageRoot + relativeFileName);
 
-                // Set file permissions to rwxr--r-- if live environment
+                // Set file permissions to -r--r--r-- if live environment
 
                 if (!WeAreInDebugEnvironment)
                 {

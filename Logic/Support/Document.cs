@@ -10,6 +10,7 @@ using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
+using Mono.Unix.Native;
 
 namespace Swarmops.Logic.Support
 {
@@ -161,9 +162,15 @@ namespace Swarmops.Logic.Support
 
         public void Delete()
         {
-            // Unlink, actually
+            // If we're not in debug mode, set permissions to allow delete
 
-            SetForeignObject (new TemporaryIdentity (0));
+            if (!Debugger.IsAttached)
+            {
+                Syscall.chmod(StorageRoot + ServerFileName,
+                     FilePermissions.S_IRUSR | FilePermissions.S_IWUSR | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+            }
+
+            SetForeignObject(new TemporaryIdentity (0));
             File.Delete (StorageRoot + ServerFileName);
             SwarmDb.GetDatabaseForWriting().SetDocumentDescription (Identity, "Deleted");
         }
