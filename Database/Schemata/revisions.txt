@@ -48,3 +48,4 @@
 0048 - Fix for CreateVatReportItem, ForeignObjectId=>ForeignId [RF]
 0049 - Another fix for CreateVatReportItem
 0050 - Added VatReports.OpenTransaction, .CloseTransaction
+0051 - Fix for CreateFinancialTransactionStub with Amount field gone (caused in 0043) [RF]
