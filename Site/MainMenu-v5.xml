@@ -438,6 +438,17 @@
           </MainMenuItem>
 
           <MainMenuItem>
+            <ResourceKey>Ledgers_VatReports</ResourceKey>
+            <UserLevel>3</UserLevel>
+            <Permissions />
+            <ImageUrl>iconshock-walletmoney</ImageUrl>
+            <NavigateUrl>/Pages/v5/Ledgers/ViewVatReports.aspx</NavigateUrl>
+            <Type>Link</Type>
+            <Children />
+          </MainMenuItem>
+
+
+          <MainMenuItem>
               <ResourceKey>Ledgers_TaxForms</ResourceKey>
               <UserLevel>3</UserLevel>
               <ImageUrl>iconshock-invoice</ImageUrl>

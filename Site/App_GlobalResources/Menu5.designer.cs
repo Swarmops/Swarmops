@@ -754,6 +754,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Reports.
+        /// </summary>
+        internal static string Menu5_Ledgers_VatReports {
+            get {
+                return ResourceManager.GetString("Menu5_Ledgers_VatReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to List Unsettled Accounts.
         /// </summary>
         internal static string Menu5_Ledgers_ViewOutstandingAccounts {

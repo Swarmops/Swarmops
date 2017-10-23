@@ -58,7 +58,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        private static int VatReportSorterByDate (VatReport a, VatReport b)
+        public static int VatReportSorterByDate (VatReport a, VatReport b)
         {
             return a.YearMonthStart - b.YearMonthStart;
         }

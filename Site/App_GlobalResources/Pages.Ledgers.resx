@@ -871,4 +871,11 @@
   <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
     <value>Close a VAT report with this transaction?</value>
   </data>
+  <data name="ViewVatReports_Info" xml:space="preserve">
+    <value>You're viewing a filed VAT report. The inbound and outbound VAT, as well as total turnover, has been recorded for the report period. This report is ready to be transmitted to tax authorities.</value>
+  </data>
+  <data name="ViewVatReports_PageTitle" xml:space="preserve">
+    <value>VAT Reports</value>
+    <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
+  </data>
 </root>

@@ -439,4 +439,8 @@
   <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
     <value>Impersonate</value>
   </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>VAT Reports</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
+  </data>
 </root>

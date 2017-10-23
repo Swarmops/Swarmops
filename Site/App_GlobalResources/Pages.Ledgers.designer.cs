@@ -2031,5 +2031,23 @@ namespace Resources.Pages {
                 return ResourceManager.GetString("ViewOutstandingAccounts_PageTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;re viewing a filed VAT report. The inbound and outbound VAT, as well as total turnover, has been recorded for the report period. This report is ready to be transmitted to tax authorities..
+        /// </summary>
+        internal static string ViewVatReports_Info {
+            get {
+                return ResourceManager.GetString("ViewVatReports_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Reports.
+        /// </summary>
+        internal static string ViewVatReports_PageTitle {
+            get {
+                return ResourceManager.GetString("ViewVatReports_PageTitle", resourceCulture);
+            }
+        }
     }
 }

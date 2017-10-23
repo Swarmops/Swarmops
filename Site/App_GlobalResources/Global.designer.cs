@@ -916,6 +916,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download This.
+        /// </summary>
+        internal static string Global_DownloadThis {
+            get {
+                return ResourceManager.GetString("Global_DownloadThis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to -- Select Budget/Account --.
         /// </summary>
         internal static string Global_DropInits_SelectFinancialAccount {
@@ -1353,6 +1362,15 @@ namespace Resources {
         internal static string Global_SelectOne {
             get {
                 return ResourceManager.GetString("Global_SelectOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send this to me in mail.
+        /// </summary>
+        internal static string Global_SendThisInMail {
+            get {
+                return ResourceManager.GetString("Global_SendThisInMail", resourceCulture);
             }
         }
         

@@ -916,4 +916,10 @@
     <value>Progress</value>
     <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
   </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>Download This</value>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>Send this to me in mail</value>
+  </data>
 </root>
