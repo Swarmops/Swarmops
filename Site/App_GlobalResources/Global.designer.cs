@@ -673,6 +673,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tx#.
+        /// </summary>
+        internal static string Financial_TransactionIdShort {
+            get {
+                return ResourceManager.GetString("Financial_TransactionIdShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cost Type.
         /// </summary>
         internal static string Financial_TransactionTagSetTypeName_CostType {

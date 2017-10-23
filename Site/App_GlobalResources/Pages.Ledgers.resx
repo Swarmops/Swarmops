@@ -871,11 +871,39 @@
   <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
     <value>Close a VAT report with this transaction?</value>
   </data>
+  <data name="ViewVatReports_Footer_Total" xml:space="preserve">
+    <value>Report Totals</value>
+  </data>
+  <data name="ViewVatReports_Header_DateTime" xml:space="preserve">
+    <value>Date/Time</value>
+    <comment>Timestamp of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Description" xml:space="preserve">
+    <value>Description</value>
+    <comment>Description of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Dox" xml:space="preserve">
+    <value>Docs</value>
+    <comment>This is above the "view documents" icon</comment>
+  </data>
+  <data name="ViewVatReports_Header_Inbound" xml:space="preserve">
+    <value>Inbound VAT</value>
+  </data>
+  <data name="ViewVatReports_Header_Outbound" xml:space="preserve">
+    <value>Outbound VAT</value>
+  </data>
+  <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
+    <value>Turnover</value>
+  </data>
   <data name="ViewVatReports_Info" xml:space="preserve">
     <value>You're viewing a filed VAT report. The inbound and outbound VAT, as well as total turnover, has been recorded for the report period. This report is ready to be transmitted to tax authorities.</value>
   </data>
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>VAT Reports</value>
     <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
+  </data>
+  <data name="ViewVatReports_Title_View" xml:space="preserve">
+    <value>View</value>
+    <comment>This is the word or words before the name of the displayed VAT report.</comment>
   </data>
 </root>

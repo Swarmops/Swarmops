@@ -2033,6 +2033,69 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report Totals.
+        /// </summary>
+        internal static string ViewVatReports_Footer_Total {
+            get {
+                return ResourceManager.GetString("ViewVatReports_Footer_Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date/Time.
+        /// </summary>
+        internal static string ViewVatReports_Header_DateTime {
+            get {
+                return ResourceManager.GetString("ViewVatReports_Header_DateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string ViewVatReports_Header_Description {
+            get {
+                return ResourceManager.GetString("ViewVatReports_Header_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Docs.
+        /// </summary>
+        internal static string ViewVatReports_Header_Dox {
+            get {
+                return ResourceManager.GetString("ViewVatReports_Header_Dox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inbound VAT.
+        /// </summary>
+        internal static string ViewVatReports_Header_Inbound {
+            get {
+                return ResourceManager.GetString("ViewVatReports_Header_Inbound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outbound VAT.
+        /// </summary>
+        internal static string ViewVatReports_Header_Outbound {
+            get {
+                return ResourceManager.GetString("ViewVatReports_Header_Outbound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turnover.
+        /// </summary>
+        internal static string ViewVatReports_Header_Turnover {
+            get {
+                return ResourceManager.GetString("ViewVatReports_Header_Turnover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You&apos;re viewing a filed VAT report. The inbound and outbound VAT, as well as total turnover, has been recorded for the report period. This report is ready to be transmitted to tax authorities..
         /// </summary>
         internal static string ViewVatReports_Info {
@@ -2047,6 +2110,15 @@ namespace Resources.Pages {
         internal static string ViewVatReports_PageTitle {
             get {
                 return ResourceManager.GetString("ViewVatReports_PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View.
+        /// </summary>
+        internal static string ViewVatReports_Title_View {
+            get {
+                return ResourceManager.GetString("ViewVatReports_Title_View", resourceCulture);
             }
         }
     }
