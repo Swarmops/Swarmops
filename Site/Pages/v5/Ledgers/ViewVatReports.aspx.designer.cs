@@ -85,13 +85,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::System.Web.UI.WebControls.Literal LiteralHeaderVatInbound;
         
         /// <summary>
-        /// LiteralSeeDox control.
+        /// LiteralHeaderDox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralSeeDox;
+        protected global::System.Web.UI.WebControls.Literal LiteralHeaderDox;
         
         /// <summary>
         /// LabelSidebarDownload control.

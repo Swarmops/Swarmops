@@ -923,6 +923,10 @@
   <data name="Global_DownloadThis" xml:space="preserve">
     <value>Download This</value>
   </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>Docs</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
   <data name="Global_SendThisInMail" xml:space="preserve">
     <value>Send this to me in mail</value>
   </data>

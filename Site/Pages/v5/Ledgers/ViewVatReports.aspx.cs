@@ -66,6 +66,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LiteralHeaderTurnover.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Turnover;
             this.LiteralHeaderVatInbound.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Inbound;
             this.LiteralHeaderVatOutbound.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Outbound;
+            this.LiteralHeaderDox.Text = Resources.Global.Global_Dox;
             // Localize all controls - todo
         }
     }

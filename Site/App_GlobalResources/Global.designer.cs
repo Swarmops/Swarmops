@@ -934,6 +934,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Docs.
+        /// </summary>
+        internal static string Global_Dox {
+            get {
+                return ResourceManager.GetString("Global_Dox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to -- Select Budget/Account --.
         /// </summary>
         internal static string Global_DropInits_SelectFinancialAccount {
