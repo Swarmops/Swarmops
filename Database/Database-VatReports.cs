@@ -123,7 +123,37 @@ namespace Swarmops.Database
                 }
             }
         }
-    
+
+        public int GetVatReportIdFromGuid(string guid)
+        {
+            return GetVatReportIdFromStringField("Guid", guid);
+        }
+
+
+        private int GetVatReportIdFromStringField(string stringFieldName, string stringValue)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT VatReportId FROM VatReports WHERE " + stringFieldName + "=@stringValue;", connection);
+
+                AddParameterWithName(command, "stringValue", stringValue);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetInt32(0);
+                    }
+
+                    return 0;
+                }
+            }
+        }
+
 
 
         public BasicVatReport[] GetVatReports(params object[] conditions)
