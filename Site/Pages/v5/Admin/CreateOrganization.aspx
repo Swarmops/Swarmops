@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Admin.CreateOrganization" CodeFile="CreateOrganization.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Admin.CreateOrganization" CodeBehind="CreateOrganization.aspx.cs" CodeFile="CreateOrganization.aspx.cs" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <script type="text/javascript">
@@ -27,6 +27,7 @@
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextOrganizationName" /></div>
         <Swarmops5:DropDown runat="server" ID="DropCreateChild" />
         <Swarmops5:DropDown runat="server" ID="DropCurrencies"/>
+        <Swarmops5:DropDown runat="server" ID="DropApplicantLabel" />
         <Swarmops5:DropDown runat="server" ID="DropPersonLabel" />
         <Swarmops5:DropDown runat="server" ID="DropActivistLabel" />
         <Swarmops5:DropDown runat="server" ID="DropPositionLabel" />
@@ -36,6 +37,7 @@
         <asp:Label runat="server" ID="LabelOrganizationName" /><br/>
         <asp:Label runat="server" ID="LabelCreateAs" /><br/>
         <asp:Label runat="server" ID="LabelNativeCurrency" /><br/>
+        <asp:Label runat="server" ID="LabelApplicantLabel" /><br/>
         <asp:Label runat="server" ID="LabelPersonLabel" /><br/>
         <asp:Label runat="server" ID="LabelActivistLabel" /><br/>
         <asp:Label runat="server" ID="LabelPositionLabel" />

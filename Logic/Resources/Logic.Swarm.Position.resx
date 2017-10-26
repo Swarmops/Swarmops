@@ -144,11 +144,17 @@
   <data name="Position_Executive_ChiefExecutiveOfficer" xml:space="preserve">
     <value>Chief Executive Officer</value>
   </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer_Government" xml:space="preserve">
+    <value>President</value>
+  </data>
   <data name="Position_Executive_ChiefExecutiveOfficer_Nonprofit" xml:space="preserve">
     <value>Secretary General</value>
   </data>
   <data name="Position_Executive_ChiefFinancialOfficer" xml:space="preserve">
     <value>Chief Financial Officer</value>
+  </data>
+  <data name="Position_Executive_ChiefFinancialOfficer_Government" xml:space="preserve">
+    <value>Minister of Finance</value>
   </data>
   <data name="Position_Executive_ChiefFinancialOfficer_Nonprofit" xml:space="preserve">
     <value>Treasurer</value>
@@ -170,6 +176,9 @@
   </data>
   <data name="Position_Executive_ChiefOperationsOfficer" xml:space="preserve">
     <value>Chief Operations Officer</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer_Government" xml:space="preserve">
+    <value>Minister of the Interior</value>
   </data>
   <data name="Position_Executive_ChiefOperationsOfficer_Nonprofit" xml:space="preserve">
     <value>Chief Activism Officer</value>

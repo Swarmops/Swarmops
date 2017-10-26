@@ -197,8 +197,9 @@ namespace Swarmops.Logic.Swarm
 
             /* EXECUTIVE POSITIONS (positions at the "Global" geographic level) */
 
-            Position ceo = Position.Create (organization, PositionLevel.OrganizationExecutive, null, null,
-                PositionType.Executive_ChiefExecutiveOfficer, titleType, false, false, null, null, 1, 1);
+            Position ceo = Position.Create(organization, PositionLevel.OrganizationExecutive, null, null,
+                    PositionType.Executive_ChiefExecutiveOfficer, titleType, false, false, null, null, 1, 1);
+            
 
             /*Position vp =*/ Position.Create(organization, PositionLevel.OrganizationExecutive, null, null,
                 PositionType.Executive_CeoAssistant, titleType, false, false, ceo, null, 0, 0);

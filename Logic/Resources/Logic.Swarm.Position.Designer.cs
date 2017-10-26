@@ -142,6 +142,15 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to President.
+        /// </summary>
+        internal static string Position_Executive_ChiefExecutiveOfficer_Government {
+            get {
+                return ResourceManager.GetString("Position_Executive_ChiefExecutiveOfficer_Government", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Secretary General.
         /// </summary>
         internal static string Position_Executive_ChiefExecutiveOfficer_Nonprofit {
@@ -156,6 +165,15 @@ namespace Swarmops.Logic.Resources {
         internal static string Position_Executive_ChiefFinancialOfficer {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefFinancialOfficer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minister of Finance.
+        /// </summary>
+        internal static string Position_Executive_ChiefFinancialOfficer_Government {
+            get {
+                return ResourceManager.GetString("Position_Executive_ChiefFinancialOfficer_Government", resourceCulture);
             }
         }
         
@@ -219,6 +237,15 @@ namespace Swarmops.Logic.Resources {
         internal static string Position_Executive_ChiefOperationsOfficer {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefOperationsOfficer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minister of the Interior.
+        /// </summary>
+        internal static string Position_Executive_ChiefOperationsOfficer_Government {
+            get {
+                return ResourceManager.GetString("Position_Executive_ChiefOperationsOfficer_Government", resourceCulture);
             }
         }
         

@@ -274,18 +274,34 @@ namespace Swarmops.Logic.Structure
             }
         }
 
+        public ParticipantTitle ApplicantLabel
+        {
+            get
+            {
+                string optionalData = OptionalData[ObjectOptionalDataType.OrgApplicantLabel];
+                if (string.IsNullOrEmpty(optionalData))
+                {
+                    ApplicantLabel = ParticipantTitle.Applicant;
+                    return ParticipantTitle.Applicant; // Legacy
+                }
+
+                return (ParticipantTitle)(Enum.Parse(typeof(ParticipantTitle), optionalData));
+            }
+            set { OptionalData[ObjectOptionalDataType.OrgApplicantLabel] = value.ToString(); }
+        }
+
         public ParticipantTitle RegularLabel
         {
             get
             {
                 string optionalData = OptionalData[ObjectOptionalDataType.OrgRegularLabel];
-                if (string.IsNullOrEmpty (optionalData))
+                if (string.IsNullOrEmpty(optionalData))
                 {
                     RegularLabel = ParticipantTitle.Member;
                     return ParticipantTitle.Member; // Legacy
                 }
 
-                return (ParticipantTitle) (Enum.Parse (typeof (ParticipantTitle), optionalData));
+                return (ParticipantTitle)(Enum.Parse(typeof(ParticipantTitle), optionalData));
             }
             set { OptionalData[ObjectOptionalDataType.OrgRegularLabel] = value.ToString(); }
         }

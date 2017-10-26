@@ -26,6 +26,11 @@ namespace Swarmops.Common.Enums
         Nonprofit,
 
         /// <summary>
+        /// For organization that run a government-like structure (President, ministers, etc).
+        /// </summary>
+        Government,
+
+        /// <summary>
         /// Use medieval titles (kind of humorous, not to be taken too seriously).
         /// </summary>
         Medieval,

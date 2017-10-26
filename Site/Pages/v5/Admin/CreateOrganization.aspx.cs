@@ -53,7 +53,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             //this.DropCreateChild.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
 
             this.DropPositionLabel.Items.Add (new ListItem(Resources.Pages.Admin.CreateOrganization_Titles_Nonprofit, "Nonprofit"));
-            this.DropPositionLabel.Items.Add (new ListItem(Resources.Pages.Admin.CreateOrganization_Titles_Commercial, "Commercial"));
+            this.DropPositionLabel.Items.Add(new ListItem(Resources.Pages.Admin.CreateOrganization_Titles_Commercial, "Commercial"));
+            this.DropPositionLabel.Items.Add(new ListItem(Resources.Pages.Admin.CreateOrganization_Titles_Government, "Government"));
 
             this.DropCreateChild.Items.Add (new ListItem (Resources.Pages.Admin.CreateOrganization_AsRoot, "Root"));
             this.DropCreateChild.Items.Add (
@@ -75,10 +76,12 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             foreach (string localizedPersonLabel in localizedPersonLabels)
             {
                 string[] parts = localizedPersonLabel.Split ('|');
-                this.DropPersonLabel.Items.Add (new ListItem (parts[0], parts[1]));
+                this.DropApplicantLabel.Items.Add(new ListItem(parts[0], parts[1]));
+                this.DropPersonLabel.Items.Add(new ListItem(parts[0], parts[1]));
                 this.DropActivistLabel.Items.Add (new ListItem (parts[0], parts[1]));
             }
 
+            this.DropActivistLabel.SelectedValue = "Applicant";
             this.DropPersonLabel.SelectedValue = "Member";
             this.DropActivistLabel.SelectedValue = "Activist";
             
@@ -108,7 +111,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
         protected void ButtonCreate_Click (object sender, EventArgs e)
         {
-            ParticipantTitle activistLabel = (ParticipantTitle) (Enum.Parse(typeof(ParticipantTitle), this.DropActivistLabel.SelectedValue));
+            ParticipantTitle applicantLabel = (ParticipantTitle)(Enum.Parse(typeof(ParticipantTitle), this.DropApplicantLabel.SelectedValue));
+            ParticipantTitle activistLabel = (ParticipantTitle)(Enum.Parse(typeof(ParticipantTitle), this.DropActivistLabel.SelectedValue));
             ParticipantTitle peopleLabel =
                 (ParticipantTitle) (Enum.Parse (typeof (ParticipantTitle), this.DropPersonLabel.SelectedValue));
             string asRoot = this.DropCreateChild.SelectedValue;
@@ -137,6 +141,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 newOrgName, newOrgName, string.Empty, newOrgName, Geography.RootIdentity, true, true, 0);
             newOrganization.EnableEconomy (newOrgCurrency);
 
+            newOrganization.ApplicantLabel = applicantLabel;
             newOrganization.RegularLabel = peopleLabel;
             newOrganization.ActivistLabel = activistLabel;
 
