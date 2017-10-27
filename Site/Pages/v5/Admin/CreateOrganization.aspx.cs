@@ -81,6 +81,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             foreach (string localizedPersonLabel in localizedPersonLabels)
             {
                 string[] parts = localizedPersonLabel.Split ('|');
+
+                if (parts[1] == "Unknown")
+                {
+                    continue; // skip the empty option
+                }
                 this.DropApplicantLabel.Items.Add(new ListItem(parts[0], parts[1]));
                 this.DropPersonLabel.Items.Add(new ListItem(parts[0], parts[1]));
                 this.DropActivistLabel.Items.Add (new ListItem (parts[0], parts[1]));
