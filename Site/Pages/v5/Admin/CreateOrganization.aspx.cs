@@ -38,6 +38,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelCreateAs.Text = Resources.Pages.Admin.CreateOrganization_CreateNewOrgAs;
             this.LabelNativeCurrency.Text = Resources.Pages.Admin.CreateOrganization_NewOrgCurrency;
             this.LabelPersonLabel.Text = Resources.Pages.Admin.CreateOrganization_RegularTitle;
+            this.LabelApplicantLabel.Text = Resources.Pages.Admin.CreateOrganization_ApplicantTitle;
             this.LabelPositionLabel.Text = Resources.Pages.Admin.CreateOrganization_Titles;
 
             this.ButtonCreate.Text = Global.Global_Create;

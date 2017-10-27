@@ -270,20 +270,20 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not-yet-members are called.
-        /// </summary>
-        internal static string CreateOrganization_Applicants {
-            get {
-                return ResourceManager.GetString("CreateOrganization_Applicants", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to (not applicable).
         /// </summary>
         internal static string CreateOrganization_Applicants_None {
             get {
                 return ResourceManager.GetString("CreateOrganization_Applicants_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not-yet-members are called.
+        /// </summary>
+        internal static string CreateOrganization_ApplicantTitle {
+            get {
+                return ResourceManager.GetString("CreateOrganization_ApplicantTitle", resourceCulture);
             }
         }
         
