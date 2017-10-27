@@ -334,4 +334,34 @@
   <data name="Income_SubsidiesGrants" xml:space="preserve">
     <value>crwdns6556055:0crwdne6556055:0</value>
   </data>
+  <data name="Asset_ShortTerm" xml:space="preserve">
+    <value>crwdns6556547:0crwdne6556547:0</value>
+  </data>
+  <data name="Asset_TransfersInProgress" xml:space="preserve">
+    <value>crwdns6556548:0crwdne6556548:0</value>
+  </data>
+  <data name="Asset_InboundVatReported" xml:space="preserve">
+    <value>crwdns6556549:0crwdne6556549:0</value>
+    <comment>This is nonzero if the inbound amount (to get back) is higher than the outbound</comment>
+  </data>
+  <data name="Asset_InboundVatUnreported" xml:space="preserve">
+    <value>crwdns6556550:0crwdne6556550:0</value>
+    <comment>Accumulates to each VAT report, set by VAT report frequency</comment>
+  </data>
+  <data name="Debt_OutboundVatReported" xml:space="preserve">
+    <value>crwdns6556551:0crwdne6556551:0</value>
+    <comment>This is nonzero if there's VAT to pay to tax authorities</comment>
+  </data>
+  <data name="Debt_OutboundVatUnreported" xml:space="preserve">
+    <value>crwdns6556552:0crwdne6556552:0</value>
+    <comment>Accumulates to each VAT report, as set by VAT report frequency</comment>
+  </data>
+  <data name="Asset_TaxAdvances" xml:space="preserve">
+    <value>crwdns6556553:0crwdne6556553:0</value>
+    <comment>Most tax authorities require you to pay some part in advance</comment>
+  </data>
+  <data name="Asset_BankAccounts" xml:space="preserve">
+    <value>crwdns6556554:0crwdne6556554:0</value>
+    <comment>Note the plural form</comment>
+  </data>
 </root>

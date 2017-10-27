@@ -680,7 +680,7 @@
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
   <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
-    <value>crwdns6555890:0crwdne6555890:0</value>
+    <value>crwdns6556604:0crwdne6556604:0</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
   <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
@@ -783,5 +783,98 @@
   <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
     <value>crwdns6556446:0crwdne6556446:0</value>
     <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
+  </data>
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>crwdns6556605:0crwdne6556605:0</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_AssetsDelta" xml:space="preserve">
+    <value>crwdns6556606:0crwdne6556606:0</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
+    <value>crwdns6556607:0crwdne6556607:0</value>
+  </data>
+  <data name="BalanceSheet_Liabilities" xml:space="preserve">
+    <value>crwdns6556608:0crwdne6556608:0</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_LiabilitiesDelta" xml:space="preserve">
+    <value>crwdns6556609:0crwdne6556609:0</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_LossToDate" xml:space="preserve">
+    <value>crwdns6556610:0{0}crwdne6556610:0</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
+    <value>crwdns6556611:0{0}crwdne6556611:0</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
+    <value>crwdns6556612:0crwdne6556612:0</value>
+    <comment>Text on button for executing create</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDateTime" xml:space="preserve">
+    <value>crwdns6556613:0crwdne6556613:0</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDescription" xml:space="preserve">
+    <value>crwdns6556614:0crwdne6556614:0</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDialogHeader" xml:space="preserve">
+    <value>crwdns6556615:0crwdne6556615:0</value>
+    <comment>Header of dialog</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAccount" xml:space="preserve">
+    <value>crwdns6556616:0crwdne6556616:0</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAmount" xml:space="preserve">
+    <value>crwdns6556617:0crwdne6556617:0</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
+    <value>crwdns6556618:0crwdne6556618:0</value>
+    <comment>Option in sidebar</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
+    <value>crwdns6556619:0crwdne6556619:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
+    <value>crwdns6556620:0crwdne6556620:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
+    <value>crwdns6556621:0crwdne6556621:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
+    <value>crwdns6556622:0crwdne6556622:0</value>
+  </data>
+  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
+    <value>crwdns6556623:0crwdne6556623:0</value>
+    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
+  </data>
+  <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
+    <value>crwdns6556624:0{0:N0}crwdnd6556624:0{1}crwdnd6556624:0{2:yyyy-MMM-dd}crwdnd6556624:0{3}crwdne6556624:0</value>
+    <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
+  </data>
+  <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
+    <value>crwdns6556625:0{1:yyyy-MMM}crwdne6556625:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
+    <value>crwdns6556626:0crwdne6556626:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonVatReport" xml:space="preserve">
+    <value>crwdns6556627:0crwdne6556627:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeVatReport" xml:space="preserve">
+    <value>crwdns6556628:0crwdne6556628:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
+    <value>crwdns6556629:0crwdne6556629:0</value>
+  </data>
+  <data name="ViewVatReports_Info" xml:space="preserve">
+    <value>crwdns6556630:0crwdne6556630:0</value>
+  </data>
+  <data name="ViewVatReports_PageTitle" xml:space="preserve">
+    <value>crwdns6556631:0crwdne6556631:0</value>
+    <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
   </data>
 </root>

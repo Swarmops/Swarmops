@@ -117,26 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CentralEurope" xml:space="preserve">
+    <value>Europa Central</value>
+  </data>
+  <data name="EasternEurope" xml:space="preserve">
+    <value>Europa Oriental</value>
+  </data>
+  <data name="Europe" xml:space="preserve">
+    <value>Europa</value>
+  </data>
+  <data name="Microstates" xml:space="preserve">
+    <value>Microestados</value>
+    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
+  </data>
+  <data name="Nordics" xml:space="preserve">
+    <value>Nórdicos</value>
+    <comment>(Finland Denmark Norway Sweden Iceland)</comment>
+  </data>
+  <data name="NorthernEurope" xml:space="preserve">
+    <value>Europa do Norte</value>
+  </data>
+  <data name="SouthernEurope" xml:space="preserve">
+    <value>Europa do Sul</value>
+  </data>
+  <data name="USA_EastNorthCentral" xml:space="preserve">
+    <value>Nordeste Central</value>
+  </data>
+  <data name="USA_EastSouthCentral" xml:space="preserve">
+    <value>Sudeste Central</value>
+  </data>
+  <data name="USA_MidAtlantic" xml:space="preserve">
+    <value>Atlântico Intermédio</value>
+  </data>
+  <data name="USA_Midwest" xml:space="preserve">
+    <value>Centro-Oeste</value>
+  </data>
+  <data name="USA_Mountain" xml:space="preserve">
+    <value>Montanhas</value>
+  </data>
+  <data name="USA_NewEngland" xml:space="preserve">
+    <value>Nova Inglaterra</value>
+  </data>
+  <data name="USA_Northeast" xml:space="preserve">
+    <value>Nordeste</value>
+  </data>
+  <data name="USA_Pacific" xml:space="preserve">
+    <value>Pacífico</value>
+  </data>
+  <data name="USA_South" xml:space="preserve">
+    <value>Sul</value>
+  </data>
+  <data name="USA_SouthAtlantic" xml:space="preserve">
+    <value>Atlântico Sul</value>
+  </data>
+  <data name="USA_West" xml:space="preserve">
+    <value>Oeste</value>
+  </data>
+  <data name="USA_WestNorthCentral" xml:space="preserve">
+    <value>Nordoeste Central</value>
+  </data>
+  <data name="USA_WestSouthCentral" xml:space="preserve">
+    <value>Sudoeste Central</value>
+  </data>
+  <data name="WesternEurope" xml:space="preserve">
+    <value>Europa Ocidental</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>Global</value>
+    <comment>Root geography</comment>
+  </data>
 </root>

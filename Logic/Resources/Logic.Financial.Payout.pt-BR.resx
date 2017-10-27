@@ -117,29 +117,81 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Payout_CashAdvanceIdentities" xml:space="preserve">
+    <value>Adiantamentos de Dinheiro {0}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentitiesRecipient" xml:space="preserve">
+    <value>Adiantamentos de Dinheiro {0} para {1}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentity" xml:space="preserve">
+    <value>Adiantamento de Dinheiro #{0:N0}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentityRecipient" xml:space="preserve">
+    <value>Adiantamento de Dinheiro #{0:N0} para {1}</value>
+  </data>
+  <data name="Payout_CashAdvancePaybackIdentities" xml:space="preserve">
+    <value>Restituição de Adiantamentos de Dinheiro {0}</value>
+  </data>
+  <data name="Payout_CashAdvancePaybackIdentity" xml:space="preserve">
+    <value>Restituição de Adiantamento de Dinheiro #{0:N0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentities" xml:space="preserve">
+    <value>Despesas {0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentities" xml:space="preserve">
+    <value>Despesas {0} (menos adiantamentos {1})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentity" xml:space="preserve">
+    <value>Despesas {0} (menos adiantamento #{1:N0})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesRecipient" xml:space="preserve">
+    <value>Declarações de Despesa {0} por {1}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentity" xml:space="preserve">
+    <value>Despesa #{0:N0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentities" xml:space="preserve">
+    <value>Despesa #{0:N0} (menos adiantamentos {1})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentity" xml:space="preserve">
+    <value>Despesa #{0:N0} (menos adiantamento #{1:N0})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityRecipient" xml:space="preserve">
+    <value>Reivindicação de Despesa #{0:N0} por {1}</value>
+  </data>
+  <data name="Payout_ExpenseClaimLongIdentity" xml:space="preserve">
+    <value>Reivindicação de Despesa #{0:N0}</value>
+  </data>
+  <data name="Payout_InboundInvoiceIdentity" xml:space="preserve">
+    <value>Fatura de Entrada #{0:N0}</value>
+  </data>
+  <data name="Payout_InboundInvoiceIdentitySender" xml:space="preserve">
+    <value>Fatura de Entrada #{0:N0} de {1}</value>
+  </data>
+  <data name="Payout_SalariesTaxMonth" xml:space="preserve">
+    <value>Impostos sobre Salários em {0:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentitiesMonth" xml:space="preserve">
+    <value>Salários {0} para {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentity" xml:space="preserve">
+    <value>Salário #{0:N0}</value>
+  </data>
+  <data name="Payout_SalaryIdentityMonth" xml:space="preserve">
+    <value>Salário #{0:N0} para {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentityMonthRecipient" xml:space="preserve">
+    <value>Salário #{0:N0} para {1:yyyy-MMM} para {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Payout_SalaryMonth" xml:space="preserve">
+    <value>Salário para {0:yyyy-MMM}</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Payout_SalaryTaxIdentitiesMonth" xml:space="preserve">
+    <value>Impostos sobre Salários {0} para {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryTaxIdentityMonth" xml:space="preserve">
+    <value>Impostos sobre Salário #{0:N0} para {1:yyyy-MMM}</value>
+  </data>
 </root>

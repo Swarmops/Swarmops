@@ -121,13 +121,13 @@
     <value>crwdns6553634:0{0}crwdne6553634:0</value>
   </data>
   <data name="Attest_CashAdvance_One" xml:space="preserve">
-    <value>crwdns6553635:0{0}crwdne6553635:0</value>
+    <value>crwdns6553635:0#{0}crwdne6553635:0</value>
   </data>
   <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
     <value>crwdns6553636:0{0}crwdne6553636:0</value>
   </data>
   <data name="Attest_ExpenseClaim_One" xml:space="preserve">
-    <value>crwdns6553637:0{0}crwdne6553637:0</value>
+    <value>crwdns6553637:0#{0}crwdne6553637:0</value>
   </data>
   <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
     <value>crwdns6556393:0crwdne6556393:0</value>
@@ -161,6 +161,6 @@
     <value>crwdns6553644:0{0}crwdne6553644:0</value>
   </data>
   <data name="Validate_Receipts_One" xml:space="preserve">
-    <value>crwdns6553645:0{0}crwdne6553645:0</value>
+    <value>crwdns6553645:0#{0}crwdne6553645:0</value>
   </data>
 </root>

@@ -192,9 +192,7 @@
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Asistente de eventos</value>
   </data>
-  <data name="Menu5_Financial_List" xml:space="preserve">
-    <value>Lista</value>
-  </data>
+  
   <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
     <value>Solicitud de efectivo</value>
   </data>
@@ -213,9 +211,7 @@
   <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>Salarios</value>
   </data>
-  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
-    <value>Administrar mi presupuesto</value>
-  </data>
+  
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>Pagar dinero</value>
   </data>
@@ -410,6 +406,12 @@
   <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
     <value>Mi organización local</value>
   </data>
+  
+  
+  
+  
+  
+  
   
   
   

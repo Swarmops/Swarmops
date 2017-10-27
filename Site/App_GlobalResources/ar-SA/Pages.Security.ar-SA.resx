@@ -181,23 +181,21 @@
   <data name="Login_LoggingIn" xml:space="preserve">
     <value>تسجيل الدخول. الرجاء الانتظار...</value>
   </data>
-  <data name="Login_ManualLogin" xml:space="preserve">
-    <value>تسجيل الدخول يدوياً</value>
-  </data>
+  
   <data name="Login_PageTitle" xml:space="preserve">
     <value>تسجيل دخول</value>
   </data>
   <data name="Login_Password" xml:space="preserve">
     <value>تخطي</value>
   </data>
-  <data name="Login_ResetPassword" xml:space="preserve">
-    <value>إعادة ضبط كلمة المرور</value>
-  </data>
+  
   
   
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
     <value>لا يتعرف نظام سوارموبس على هذا العنوان. الرجاء تسجيل الدخول يدوياً وتفعيل عنوانك قبل استخدامه لتسجيل الدخول.</value>
   </data>
+  
+  
   <data name="Login_Username" xml:space="preserve">
     <value>مستخدم</value>
   </data>

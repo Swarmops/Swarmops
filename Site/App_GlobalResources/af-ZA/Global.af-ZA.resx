@@ -163,7 +163,7 @@
     <value>crwdns6552480:0crwdne6552480:0</value>
   </data>
   <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
-    <value>crwdns6552481:0{0}crwdne6552481:0</value>
+    <value>crwdns6552481:0#{0}crwdne6552481:0</value>
   </data>
   <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
     <value>crwdns6552482:0{0}crwdne6552482:0</value>
@@ -197,7 +197,7 @@
     <value>crwdns6552491:0{0}crwdne6552491:0</value>
   </data>
   <data name="Financial_TaxSpecification" xml:space="preserve">
-    <value>crwdns6552492:0{0}crwdne6552492:0</value>
+    <value>crwdns6552492:0#{0}crwdne6552492:0</value>
   </data>
   <data name="Financial_TheTaxMan" xml:space="preserve">
     <value>crwdns6552493:0crwdne6552493:0</value>
@@ -281,7 +281,7 @@
     <comment>List of todo items</comment>
   </data>
   <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>crwdns6498534:0crwdne6498534:0</value>
+    <value>crwdns6556557:0crwdne6556557:0</value>
     <comment>Indicator that nothing needs immediate attention</comment>
   </data>
   <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
@@ -343,7 +343,7 @@
     <value>crwdns6555771:0{0:N0}crwdne6555771:0</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
-    <value>crwdns6553679:0{0}crwdnd6553679:0{1}crwdne6553679:0</value>
+    <value>crwdns6553679:0{0}crwdnd6553679:0#{1}crwdne6553679:0</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
     <value>crwdns6553680:0{0}crwdne6553680:0</value>
@@ -882,5 +882,37 @@
   </data>
   <data name="Global_Volunteer_Plural" xml:space="preserve">
     <value>crwdns6556532:0crwdne6556532:0</value>
+  </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>crwdns6556558:0crwdne6556558:0</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>crwdns6556559:0crwdne6556559:0</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>crwdns6556560:0crwdne6556560:0</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  </data>
+  <data name="Swarm_TypePartialName" xml:space="preserve">
+    <value>crwdns6556561:0crwdne6556561:0</value>
+  </data>
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>crwdns6556562:0{0}crwdne6556562:0</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>crwdns6556563:0crwdne6556563:0</value>
+  </data>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>crwdns6556564:0crwdne6556564:0</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>crwdns6556565:0crwdne6556565:0</value>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>crwdns6556566:0crwdne6556566:0</value>
   </data>
 </root>

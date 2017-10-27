@@ -176,9 +176,7 @@
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Gigs Assistent</value>
   </data>
-  <data name="Menu5_Financial_List" xml:space="preserve">
-    <value>Lijst</value>
-  </data>
+  
   
   
   <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
@@ -343,6 +341,12 @@
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Nieuwe Conferentie</value>
   </data>
+  
+  
+  
+  
+  
+  
   
   
   

@@ -674,10 +674,7 @@
     <value>المطابقات التامة لهذا الحساب</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
-  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
-    <value>مبلغ المطابقة</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
+  
   <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
     <value>المبلغ خلال فترة التجاوز 5%</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
@@ -722,6 +719,33 @@
     <value>المبلغ خلال فترة التجاوز 10%</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

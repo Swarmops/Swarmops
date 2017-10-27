@@ -280,10 +280,7 @@
     <value>مهام</value>
     <comment>List of todo items</comment>
   </data>
-  <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>لا توجد إجراءات عاجلة مطلوبة حالياً.</value>
-    <comment>Indicator that nothing needs immediate attention</comment>
-  </data>
+  
   <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
     <value>سيتم وضع الإجراءات هنا.</value>
     <comment>Placeholder for future action items. Temporary.</comment>
@@ -636,6 +633,15 @@
     <value>(متعدد)</value>
     <comment>Displayed when multiple items</comment>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

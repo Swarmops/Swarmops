@@ -275,7 +275,7 @@
     <comment>List of todo items</comment>
   </data>
   <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>Inget brådskar just nu.</value>
+    <value>&lt;strong&gt;Klart:&lt;/strong&gt; Det finns inga viktiga ärenden. Yay!</value>
     <comment>Indicator that nothing needs immediate attention</comment>
   </data>
   <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
@@ -876,5 +876,37 @@
   </data>
   <data name="Global_Volunteer_Plural" xml:space="preserve">
     <value>Volontärer</value>
+  </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>Kör</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>Fortsätt</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  </data>
+  <data name="Swarm_TypePartialName" xml:space="preserve">
+    <value>Skriv del av namn...</value>
+  </data>
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>Årets vinst/förlust hittills ({0})</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>Klient / Kund</value>
+  </data>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>Förlopp</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>Ladda ner detta</value>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>Skicka detta i mail</value>
   </data>
 </root>

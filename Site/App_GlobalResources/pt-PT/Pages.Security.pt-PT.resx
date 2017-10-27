@@ -182,14 +182,18 @@
   <data name="Login_BitIdEnabled" xml:space="preserve">
     <value>&lt;strong&gt;Autenticação de dois fatores BitId está agora ativa.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;A partir de agora, pode usar a sua carteira bitcoin para entrar (e irá &lt;strong&gt;necessitar&lt;/strong&gt; dela para fazê-lo). Obrigado por ativar segurança adicional.&lt;br/&gt;&lt;br/&gt;Por favor lembre-se de manter o seu telefone seguro com uma palavra-passe também.</value>
   </data>
-  
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;NECESSÁRIO CREDENCIAIS BITID&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Esta conta requer autenticação BitId, como definido pelo detentor da conta. Não pode entrar com uma combinação de utilizador/password.</value>
+  </data>
   <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
     <value>A2F</value>
   </data>
   <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
     <value>Insira o seu código do Google Authenticator.</value>
   </data>
-  
+  <data name="Login_Header" xml:space="preserve">
+    <value>Entrar com Assinatura Bitcoin (BitId)</value>
+  </data>
   <data name="Login_Help" xml:space="preserve">
     <value>Ajuda</value>
   </data>
@@ -199,18 +203,14 @@
   <data name="Login_LoggingIn" xml:space="preserve">
     <value>A entrar, por favor aguarde...</value>
   </data>
-  <data name="Login_ManualLogin" xml:space="preserve">
-    <value>Login Manual</value>
-  </data>
+  
   <data name="Login_PageTitle" xml:space="preserve">
     <value>Entrar</value>
   </data>
   <data name="Login_Password" xml:space="preserve">
     <value>Palavra-Passe</value>
   </data>
-  <data name="Login_ResetPassword" xml:space="preserve">
-    <value>Repor Palavra-Passe</value>
-  </data>
+  
   <data name="Login_SelfSignup" xml:space="preserve">
     <value>Inscreva-me em {0}!</value>
     <comment>{0} is the organization name.</comment>
@@ -221,6 +221,8 @@
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
     <value>O Swarmops não reconhece este endereço. Por favor entre manualmente e ative o seu endereço antes de utilizá-lo para entrar.</value>
   </data>
+  
+  
   <data name="Login_Username" xml:space="preserve">
     <value>Utilizador</value>
   </data>

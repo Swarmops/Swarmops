@@ -334,4 +334,34 @@
   <data name="Income_SubsidiesGrants" xml:space="preserve">
     <value>Subventioner och bidrag</value>
   </data>
+  <data name="Asset_ShortTerm" xml:space="preserve">
+    <value>Kortfristiga tillgångar</value>
+  </data>
+  <data name="Asset_TransfersInProgress" xml:space="preserve">
+    <value>Pågående interna överföringar</value>
+  </data>
+  <data name="Asset_InboundVatReported" xml:space="preserve">
+    <value>Överskott ingående rapporterad moms</value>
+    <comment>This is nonzero if the inbound amount (to get back) is higher than the outbound</comment>
+  </data>
+  <data name="Asset_InboundVatUnreported" xml:space="preserve">
+    <value>Ingående moms att rapportera</value>
+    <comment>Accumulates to each VAT report, set by VAT report frequency</comment>
+  </data>
+  <data name="Debt_OutboundVatReported" xml:space="preserve">
+    <value>Rapporterad moms att betala</value>
+    <comment>This is nonzero if there's VAT to pay to tax authorities</comment>
+  </data>
+  <data name="Debt_OutboundVatUnreported" xml:space="preserve">
+    <value>Utgående moms att rapportera</value>
+    <comment>Accumulates to each VAT report, as set by VAT report frequency</comment>
+  </data>
+  <data name="Asset_TaxAdvances" xml:space="preserve">
+    <value>Skatteförskott</value>
+    <comment>Most tax authorities require you to pay some part in advance</comment>
+  </data>
+  <data name="Asset_BankAccounts" xml:space="preserve">
+    <value>Bankkonton</value>
+    <comment>Note the plural form</comment>
+  </data>
 </root>

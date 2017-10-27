@@ -218,10 +218,7 @@
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   
-  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
-    <value>مبلغ الفاتورة (بالـ {0})</value>
-    <comment>{0} is the organization's main currency.</comment>
-  </data>
+  
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>الوصف</value>
     <comment>Free-text description of invoice</comment>
@@ -485,6 +482,16 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>تمت مطابقة إيصالات المطالبة المالية رقم {0:N0} الخاصة بـ {1}{2:N2}.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

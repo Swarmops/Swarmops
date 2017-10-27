@@ -274,10 +274,7 @@
     <value>Por fazer</value>
     <comment>List of todo items</comment>
   </data>
-  <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>Sem ítens de ação urgente neste momento.</value>
-    <comment>Indicator that nothing needs immediate attention</comment>
-  </data>
+  
   <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
     <value>Ítens de ação aparecerão aqui.</value>
     <comment>Placeholder for future action items. Temporary.</comment>
@@ -719,47 +716,118 @@
     <value>Flags</value>
     <comment>As in a table column header</comment>
   </data>
+  <data name="Global_Total" xml:space="preserve">
+    <value>Total</value>
+    <comment>Used as footer in tables, summarizing something</comment>
+  </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>Campo não pode estar vazio.</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>Houve um erro não especificado durante a tentativa de definir este valor.</value>
+  </data>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>Twitter ID</value>
+  </data>
+  
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>Conta</value>
+  </data>
+  
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>Redefinir palavra-passe</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>Enviar link de redefinição de palavra-passe</value>
+  </data>
+  
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>Recuperar Palavra-Passe?</value>
+  </data>
+  
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>Proíbido Recuperar Palavra-Passe</value>
+  </data>
+  
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>Um link para redefinir a palavra-passe foi enviado para este utilizador.</value>
+  </data>
+  <data name="Global_2FA" xml:space="preserve">
+    <value>Autenticação dois fatores</value>
+  </data>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>Aut. 2 Fatores</value>
+  </data>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>A2F</value>
+  </data>
   
   
   
   
   
   
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>Um dia</value>
+  </data>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>Sete dias</value>
+  </data>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>Dois dias</value>
+  </data>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>Duas semanas</value>
+  </data>
   
   
   
   
   
   
+  <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
+    <value>Digite a palavra-passe atual para permitir alterações</value>
+  </data>
+  
+  <data name="Master_EditPersonNewPassword1" xml:space="preserve">
+    <value>Definir nova palavra-passe</value>
+  </data>
+  <data name="Master_EditPersonNewPassword2" xml:space="preserve">
+    <value>Insira novamente a palavra-passe</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
+    <value>Não é possível definir a nova palavra-passe: A palavra-passe antiga está incorreta.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_TooWeak" xml:space="preserve">
+    <value>Impossível definir nova palavra-passe: A nova palavra-passe é demasiado fraca. Utilize uma palavra-passe mais segura.</value>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>Oficial</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>Oficial</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>Oficial</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>Oficiais</value>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>Voluntária</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>Voluntário</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>Voluntário</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>Voluntários</value>
+  </data>
   
   
   

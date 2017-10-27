@@ -202,8 +202,9 @@
   <data name="Login_LoggingIn" xml:space="preserve">
     <value>Loggar in, vänta...</value>
   </data>
-  <data name="Login_ManualLogin" xml:space="preserve">
-    <value>Manuell inloggning</value>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>Manuell lösenordsinloggning</value>
+    <comment>Header to manual username/password form</comment>
   </data>
   <data name="Login_PageTitle" xml:space="preserve">
     <value>Inloggning</value>
@@ -212,7 +213,7 @@
     <value>Lösen</value>
   </data>
   <data name="Login_ResetPassword" xml:space="preserve">
-    <value>Återställ lösenord</value>
+    <value>Jag har supit bort mitt lösenord</value>
   </data>
   <data name="Login_SelfSignup" xml:space="preserve">
     <value>Jag vill med i {0}!</value>
@@ -223,6 +224,14 @@
   </data>
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
     <value>Swarmops känner inte igen den här bitcoinadressen. Logga in manuellt och aktivera din bitcoinplånbok innan du använder den för att logga in.</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>Använd BitID tvåfaktorsautentisering?</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>Använd manuellt lösenord?</value>
+    <comment>Switches from BitId to Username/Password form</comment>
   </data>
   <data name="Login_Username" xml:space="preserve">
     <value>Namn</value>

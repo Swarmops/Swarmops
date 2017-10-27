@@ -117,100 +117,250 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Title_Activist_Corps" xml:space="preserve">
+    <value>Swarm de Ativistas</value>
+  </data>
+  <data name="Title_Activist_Female" xml:space="preserve">
+    <value>Ativista</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Activist_Generic" xml:space="preserve">
+    <value>Ativista</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Activist_Male" xml:space="preserve">
+    <value>Ativista</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Activist_Plural" xml:space="preserve">
+    <value>Ativistas</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  
+  
+  <data name="Title_Agent_Female" xml:space="preserve">
+    <value>Agente</value>
+  </data>
+  <data name="Title_Agent_Generic" xml:space="preserve">
+    <value>Agente</value>
+  </data>
+  <data name="Title_Agent_Male" xml:space="preserve">
+    <value>Agente</value>
+  </data>
+  <data name="Title_Agent_Plural" xml:space="preserve">
+    <value>Agentes</value>
+  </data>
+  <data name="Title_Agent_Ship" xml:space="preserve">
+    <value>Agência</value>
+  </data>
+  
+  <data name="Title_Ambassador_Female" xml:space="preserve">
+    <value>Embaixador</value>
+  </data>
+  <data name="Title_Ambassador_Generic" xml:space="preserve">
+    <value>Embaixador</value>
+  </data>
+  <data name="Title_Ambassador_Male" xml:space="preserve">
+    <value>Embaixador</value>
+  </data>
+  <data name="Title_Ambassador_Plural" xml:space="preserve">
+    <value>Embaixadores</value>
+  </data>
+  
+  <data name="Title_Citizen_Corps" xml:space="preserve">
+    <value>Cidadãos</value>
+  </data>
+  <data name="Title_Citizen_Female" xml:space="preserve">
+    <value>Cidadã</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Citizen_Generic" xml:space="preserve">
+    <value>Cidadão</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Citizen_Male" xml:space="preserve">
+    <value>Cidadão</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Citizen_Plural" xml:space="preserve">
+    <value>Cidadãos</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Title_Citizen_Ship" xml:space="preserve">
+    <value>Cidadania</value>
+  </data>
+  
+  <data name="Title_Conscript_Female" xml:space="preserve">
+    <value>Recruta</value>
+  </data>
+  <data name="Title_Conscript_Generic" xml:space="preserve">
+    <value>Recruta</value>
+  </data>
+  <data name="Title_Conscript_Male" xml:space="preserve">
+    <value>Recruta</value>
+  </data>
+  <data name="Title_Conscript_Plural" xml:space="preserve">
+    <value>Recrutas</value>
+  </data>
+  
+  
+  <data name="Title_Contributor_Female" xml:space="preserve">
+    <value>Colaboradora</value>
+  </data>
+  <data name="Title_Contributor_Generic" xml:space="preserve">
+    <value>Colaborador</value>
+  </data>
+  <data name="Title_Contributor_Male" xml:space="preserve">
+    <value>Colaborador</value>
+  </data>
+  <data name="Title_Contributor_Plural" xml:space="preserve">
+    <value>Colaboradores</value>
+  </data>
+  
+  <data name="Title_Customer_Corps" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="Title_Customer_Female" xml:space="preserve">
+    <value>Cliente</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Customer_Generic" xml:space="preserve">
+    <value>Cliente</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Customer_Male" xml:space="preserve">
+    <value>Cliente</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Customer_Plural" xml:space="preserve">
+    <value>Clientes</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  
+  <data name="Title_Employee_Corps" xml:space="preserve">
+    <value>Pessoal</value>
+  </data>
+  <data name="Title_Employee_Female" xml:space="preserve">
+    <value>Funcionária</value>
+  </data>
+  <data name="Title_Employee_Generic" xml:space="preserve">
+    <value>Funcionário</value>
+  </data>
+  <data name="Title_Employee_Male" xml:space="preserve">
+    <value>Funcionário</value>
+  </data>
+  <data name="Title_Employee_Plural" xml:space="preserve">
+    <value>Funcionários</value>
+  </data>
+  
+  
+  <data name="Title_Member_Female" xml:space="preserve">
+    <value>Membro</value>
+  </data>
+  <data name="Title_Member_Generic" xml:space="preserve">
+    <value>Membro</value>
+  </data>
+  <data name="Title_Member_Male" xml:space="preserve">
+    <value>Membro</value>
+  </data>
+  <data name="Title_Member_Plural" xml:space="preserve">
+    <value>Membros</value>
+  </data>
+  <data name="Title_Member_Ship" xml:space="preserve">
+    <value>Afiliação</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  <data name="Title_Person_Female" xml:space="preserve">
+    <value>Pessoa</value>
+  </data>
+  <data name="Title_Person_Generic" xml:space="preserve">
+    <value>Pessoa</value>
+  </data>
+  <data name="Title_Person_Male" xml:space="preserve">
+    <value>Pessoa</value>
+  </data>
+  <data name="Title_Person_Plural" xml:space="preserve">
+    <value>Pessoas</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  <data name="Title_Resident_Corps" xml:space="preserve">
+    <value>Residentes</value>
+  </data>
+  <data name="Title_Resident_Female" xml:space="preserve">
+    <value>Residente</value>
+  </data>
+  <data name="Title_Resident_Generic" xml:space="preserve">
+    <value>Residente</value>
+  </data>
+  <data name="Title_Resident_Male" xml:space="preserve">
+    <value>Residente</value>
+  </data>
+  <data name="Title_Resident_Plural" xml:space="preserve">
+    <value>Residentes</value>
+  </data>
+  <data name="Title_Resident_Ship" xml:space="preserve">
+    <value>Residência</value>
+  </data>
+  <data name="Title_Sailor_Corps" xml:space="preserve">
+    <value>Tripulação</value>
+  </data>
+  <data name="Title_Sailor_Female" xml:space="preserve">
+    <value>Marinheira</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Generic" xml:space="preserve">
+    <value>Marinheiro</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Male" xml:space="preserve">
+    <value>Marinheiro</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Plural" xml:space="preserve">
+    <value>Marinheiros</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  
+  
+  <data name="Title_Salesperson_Female" xml:space="preserve">
+    <value>Vendedora</value>
+  </data>
+  <data name="Title_Salesperson_Generic" xml:space="preserve">
+    <value>Vendedor</value>
+  </data>
+  <data name="Title_Salesperson_Male" xml:space="preserve">
+    <value>Vendedor</value>
+  </data>
+  <data name="Title_Salesperson_Plural" xml:space="preserve">
+    <value>Vendedores</value>
+  </data>
+  
+  <data name="Title_Supporter_Corps" xml:space="preserve">
+    <value>Apoiantes</value>
+  </data>
+  <data name="Title_Supporter_Female" xml:space="preserve">
+    <value>Apoiante</value>
+  </data>
+  <data name="Title_Supporter_Generic" xml:space="preserve">
+    <value>Apoiante</value>
+  </data>
+  <data name="Title_Supporter_Male" xml:space="preserve">
+    <value>Apoiante</value>
+  </data>
+  <data name="Title_Supporter_Plural" xml:space="preserve">
+    <value>Apoiantes</value>
+  </data>
   
 </root>

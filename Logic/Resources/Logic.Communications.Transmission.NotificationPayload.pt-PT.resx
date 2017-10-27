@@ -319,11 +319,19 @@ Por favor entre em [InstallationName] em [ExternalUrl]Financial/AttestCosts para
     <value>--
 Este email foi enviado a [Addressee] de [OrganizationName]. Caso no futuro deseje deixar de receber estas notificações, por favor entre em [InstallationName] em [ExternalUrl] e modifique as suas definições de notificação.</value>
   </data>
-  
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>A sua mensagem foi agendada para entrega e os destinatários foram resolvidos. O seu correio irá ser enviado, ou tentativamente enviado, a [RecipientCount] pessoas em [GeographyName] em [OrganizationName].</value>
+  </data>
   <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Destinatários de Comunicado determinados para [GeographyName]: [RecipientCount]</value>
   </data>
-  
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>A sua mensagem para [GeographyName] foi enviada a todos os destinatários agendados. Dos [RecipientCount] destinatários agendados, até agora [RecipientsSuccess] foram contactados com sucesso -- recorde que o correio pode não ser entregue ou lido mais tarde por várias razões.
+
+Tempo gasto na resolução: [ResolvingTime].
+Tempo gasto na transmissão: [TransmissionTime].
+Tempo total desde criação até conclussão: [TotalTime].</value>
+  </data>
   <data name="OutboundComm_Sent_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Comunicado transmitido: [GeographyName]</value>
   </data>
@@ -445,12 +453,10 @@ A tentativa de atualização será tentada a cada hora. Alguma funcionalidade po
   <data name="System_PublicRootReset_Subject" xml:space="preserve">
     <value>Swarmops: Recuperação da chave pública raiz da conta corrente</value>
   </data>
-  <data name="System_Startup_Body" xml:space="preserve">
-    <value>O Backend do Swarmops versão [SwarmopsVersion] em [HostName] foi inicializado com sucesso e está conectado à base de dados e às frameworks de notificação.</value>
-  </data>
-  <data name="System_Startup_Subject" xml:space="preserve">
-    <value>Backend do Swarmops operacional</value>
-  </data>
+  
+  
+  
+  
   <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
     <value>O mecanismo de transmissão do Swarmops em [HostName] encontrou um tipo de comunicação desconhecido ([UnrecognizedPayloadType]). Isto deverá acontecer apenas em ocasiões extremamente raras, em conjunto com actualizações onde uma versão actualizada tem que tomar conta de algo que mudou de nome a meio do processo, um fenómeno raro.
 
