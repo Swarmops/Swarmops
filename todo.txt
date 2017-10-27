@@ -13,7 +13,7 @@ SWARMOPS II
 -----------
 
 [ ] Expensify?
-[ ] PDF asynchronous
+[X] PDF asynchronous
 [ ] Recurring expenses
 [X] Why salary fails?
 [X] Char encode HTML doc
@@ -27,11 +27,11 @@ SWARMOPS III
 [X] Assign malfunction
 [X] Advance malfunction
 [X] Donate sockify
-[ ] Live numbers
+[X] Live numbers
 [ ] Todo box JSON
 [ ] Expense reject malfunction
 [X] Menu highlight
-[ ] Basic search
+[X] Basic search
 [X] Account edit spacing
 
 
@@ -63,7 +63,7 @@ SWARMOPS V
 SWARMOPS VI
 -----------
 
-[ ] Org 16x9 logo
+[X] Org 16x9 logo
 [ ] Submit invoice
 [ ] Control messages for invoice progress
 [ ] Pay invoice
@@ -71,6 +71,6 @@ SWARMOPS VI
     to show on balancetx page
 [ ] Close ledger year
 [X] Internal TX account type
-[ ] Create TX
+[X] Create TX
 [ ] Main Ledger
 [X] Fix password reset after refactor
