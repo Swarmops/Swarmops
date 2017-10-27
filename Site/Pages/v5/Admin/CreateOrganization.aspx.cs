@@ -73,7 +73,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             }
 
             localizedPersonLabels.Sort(); // Sorts _localized_
-            
+
+            this.DropActivistLabel.Items.Clear(); // remove default empty option
+            this.DropApplicantLabel.Items.Clear();
+            this.DropPersonLabel.Items.Clear();
+
             foreach (string localizedPersonLabel in localizedPersonLabels)
             {
                 string[] parts = localizedPersonLabel.Split ('|');
