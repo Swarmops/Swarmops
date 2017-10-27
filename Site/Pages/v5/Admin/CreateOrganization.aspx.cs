@@ -38,7 +38,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelCreateAs.Text = Resources.Pages.Admin.CreateOrganization_CreateNewOrgAs;
             this.LabelNativeCurrency.Text = Resources.Pages.Admin.CreateOrganization_NewOrgCurrency;
             this.LabelPersonLabel.Text = Resources.Pages.Admin.CreateOrganization_RegularTitle;
-            this.LabelApplicantLabel.Text = Resources.Pages.Admin.CreateOrganization_ApplicantTitle;
+            this.LabelApplicantLabel.Text = Resources.Pages.Admin.CreateOrganization_ApplicantTitle; // this seems to not take effect?
             this.LabelPositionLabel.Text = Resources.Pages.Admin.CreateOrganization_Titles;
 
             this.ButtonCreate.Text = Global.Global_Create;
@@ -82,7 +82,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 this.DropActivistLabel.Items.Add (new ListItem (parts[0], parts[1]));
             }
 
-            this.DropActivistLabel.SelectedValue = "Applicant";
+            this.DropApplicantLabel.SelectedValue = "Applicant";
             this.DropPersonLabel.SelectedValue = "Member";
             this.DropActivistLabel.SelectedValue = "Activist";
             
