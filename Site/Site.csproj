@@ -397,6 +397,13 @@
     <Compile Include="Pages\v5\Ledgers\Json-AccountPlanData.aspx.designer.cs">
       <DependentUpon>Json-AccountPlanData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-VatReportData.aspx.cs">
+      <DependentUpon>Json-VatReportData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-VatReportData.aspx.designer.cs">
+      <DependentUpon>Json-VatReportData.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Ledgers\Json-BalanceSheetDataSimplified.aspx.cs">
       <DependentUpon>Json-BalanceSheetDataSimplified.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1100,6 +1107,7 @@
     <Content Include="Pages\v5\Ledgers\DebugLedgers.aspx" />
     <Content Include="Pages\v5\Ledgers\InspectLedgers.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-AccountPlanData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-VatReportData.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-BalanceSheetDataSimplified.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-BalanceSheetData.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-BitcoinHotwalletData.aspx" />

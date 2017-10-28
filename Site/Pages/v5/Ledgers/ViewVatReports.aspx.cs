@@ -50,6 +50,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         report.Identity.ToString(CultureInfo.InvariantCulture)));
                 }
 
+                this.InitialReportId = reports.Last().Identity;
+
                 Localize();
             }
 
@@ -69,5 +71,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LiteralHeaderDox.Text = Resources.Global.Global_Dox;
             // Localize all controls - todo
         }
+
+        public int InitialReportId { get; private set; }
     }
 }
