@@ -73,8 +73,8 @@
                 <th field="datetime" width="80"><asp:Literal ID="LiteralHeaderDateTime" runat="server" /></th>  
                 <th field="description" width="280"><asp:Literal ID="LiteralHeaderDescription" runat="server" /></th>  
                 <th field="turnover" width="140" align="right"><asp:Literal ID="LiteralHeaderTurnover" runat="server" /></th>
-                <th field="vatoutbound" width="110" align="right"><asp:Literal ID="LiteralHeaderVatOutbound" runat="server" /></th>
-                <th field="vatinbound" width="100" align="right"><asp:Literal ID="LiteralHeaderVatInbound" runat="server" /></th>  
+                <th field="outbound" width="110" align="right"><asp:Literal ID="LiteralHeaderVatOutbound" runat="server" /></th>
+                <th field="inbound" width="100" align="right"><asp:Literal ID="LiteralHeaderVatInbound" runat="server" /></th>  
                 <th field="dox" width="60" align="center"><asp:Literal ID="LiteralHeaderDox" runat="server" /></th>
             </tr>  
         </thead>  
