@@ -83,8 +83,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             if (lines.Count == 0) // add empty report line 
             {
-                lines.Add(String.Format("\"id\":\"0\",\"description\":\"{0}\"",
-                    JsonSanitize(Resources.Pages.Ledgers.ViewVatReports_EmptyReport)));
+                lines.Add("{" + String.Format("\"id\":\"0\",\"description\":\"{0}\"",
+                    JsonSanitize(Resources.Pages.Ledgers.ViewVatReports_EmptyReport)) + "}");
             }
 
             Response.Write("{\"rows\":[" + String.Join(",", lines.ToArray()) + "]");
