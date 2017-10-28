@@ -54,7 +54,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 FinancialTransaction transaction = item.Transaction;
 
-                string element = string.Format("\"id\":\"{0}\",\"txid\":\"{1}\",\"datetime\":\"{2: MMM dd}\",\"description\":\"{3}\"", 
+                string element = string.Format("\"id\":\"{0}\",\"txid\":\"{1}\",\"datetime\":\"{2:MMM dd}\",\"description\":\"{3}\"", 
                     transaction.Identity,
                     transaction.OrganizationSequenceId,
                     transaction.DateTime,
@@ -62,19 +62,19 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 if (item.TurnoverCents > 0)
                 {
-                    element += String.Format("\"turnover\":\"{0:N2}\"", item.TurnoverCents / 100.0);
+                    element += String.Format(",\"turnover\":\"{0:N2}\"", item.TurnoverCents / 100.0);
                     turnoverCentsTotal += item.TurnoverCents;
                 }
 
                 if (item.VatInboundCents > 0)
                 {
-                    element += String.Format("\"inbound\":\"{0:N2}\"", item.VatInboundCents/ 100.0);
+                    element += String.Format(",\"inbound\":\"{0:N2}\"", item.VatInboundCents/ 100.0);
                     inboundCentsTotal += item.VatInboundCents;
                 }
 
                 if (item.VatOutboundCents > 0)
                 {
-                    element += String.Format("\"outbound\":\"{0:N2}\"", item.VatOutboundCents/ 100.0);
+                    element += String.Format(",\"outbound\":\"{0:N2}\"", item.VatOutboundCents/ 100.0);
                     outboundCentsTotal += item.VatOutboundCents;
                 }
 
