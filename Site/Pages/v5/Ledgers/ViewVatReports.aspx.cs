@@ -51,6 +51,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 }
 
                 this.InitialReportId = reports.Last().Identity;
+                this.DropReports.SelectedValue = this.InitialReportId.ToString(CultureInfo.InvariantCulture);
 
                 Localize();
             }

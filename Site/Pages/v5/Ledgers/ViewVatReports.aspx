@@ -18,6 +18,7 @@
 
 	        $('#<%=DropReports.ClientID %>').change(function () {
 	            var selectedReportId = $('#<%=DropReports.ClientID %>').val();
+	            console.log("Selected Report Id: " + selectedReportId);
 
 	            $('#tableVatReport').treegrid({ url: 'Json-VatReportData.aspx?ReportId=' + selectedReportId });
         	    $('#imageLoadIndicator').show();
@@ -65,16 +66,16 @@
         rownumbers="false"
         animate="true"
         fitColumns="true" showFooter="true" 
-        idField="id" treeField="txid">
+        idField="id">
         <thead> 
             <tr>
-                <th field="txid" width="40"><asp:Literal ID="LiteralHeaderTransactionId" Text="Tx#" runat="server"/></th>  
-                <th field="datetime" width="100"><asp:Literal ID="LiteralHeaderDateTime" runat="server" /></th>  
+                <th field="txid" width="60"><asp:Literal ID="LiteralHeaderTransactionId" Text="Tx#" runat="server"/></th>  
+                <th field="datetime" width="80"><asp:Literal ID="LiteralHeaderDateTime" runat="server" /></th>  
                 <th field="description" width="280"><asp:Literal ID="LiteralHeaderDescription" runat="server" /></th>  
                 <th field="turnover" width="140" align="right"><asp:Literal ID="LiteralHeaderTurnover" runat="server" /></th>
                 <th field="vatoutbound" width="110" align="right"><asp:Literal ID="LiteralHeaderVatOutbound" runat="server" /></th>
                 <th field="vatinbound" width="100" align="right"><asp:Literal ID="LiteralHeaderVatInbound" runat="server" /></th>  
-                <th field="dox" width="40" align="center"><asp:Literal ID="LiteralHeaderDox" runat="server" /></th>
+                <th field="dox" width="60" align="center"><asp:Literal ID="LiteralHeaderDox" runat="server" /></th>
             </tr>  
         </thead>  
     </table> 

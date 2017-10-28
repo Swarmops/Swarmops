@@ -41,9 +41,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             Response.ContentType = "application/json";
 
-            Int64 turnoverTotal;
-            Int64 inboundTotal;
-            Int64 outboundTotal;
+            Int64 turnoverCentsTotal = 0;
+            Int64 inboundCentsTotal = 0;
+            Int64 outboundCentsTotal = 0;
 
             StringBuilder response = new StringBuilder(16384);
 
@@ -54,17 +54,36 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 FinancialTransaction transaction = item.Transaction;
 
-                string element = string.Format("\"id\":\"{0}\",\"txid\":\"{1}\",\"datetime\":\"{2}\",\"description\":\"{3}\"", 
+                string element = string.Format("\"id\":\"{0}\",\"txid\":\"{1}\",\"datetime\":\"{2: MMM dd}\",\"description\":\"{3}\"", 
                     transaction.Identity,
                     transaction.OrganizationSequenceId,
-                    "date time",
+                    transaction.DateTime,
                     JsonSanitize(transaction.Description));
 
+                if (item.TurnoverCents > 0)
+                {
+                    element += String.Format("\"turnover\":\"{0:N2}\"", item.TurnoverCents / 100.0);
+                    turnoverCentsTotal += item.TurnoverCents;
+                }
+
+                if (item.VatInboundCents > 0)
+                {
+                    element += String.Format("\"inbound\":\"{0:N2}\"", item.VatInboundCents/ 100.0);
+                    inboundCentsTotal += item.VatInboundCents;
+                }
+
+                if (item.VatOutboundCents > 0)
+                {
+                    element += String.Format("\"outbound\":\"{0:N2}\"", item.VatOutboundCents/ 100.0);
+                    outboundCentsTotal += item.VatOutboundCents;
+                }
 
                 lines.Add("{" + element + "}");
             }
 
             Response.Write("[" + String.Join(",", lines.ToArray()) + "]");
+
+            // TODO: FOOTER
 
             Response.End();
         }
