@@ -94,7 +94,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             Response.Write(String.Format("\"id\":\"0\",\"description\":\"{0}\",\"turnover\":\"{1:N2}\",\"inbound\":\"{2:N2}\",\"outbound\":\"{3:N2}\"",
                 JsonSanitize(Resources.Pages.Ledgers.ViewVatReports_Footer_Total.ToUpperInvariant()), turnoverCentsTotal / 100.0, inboundCentsTotal / 100.0, outboundCentsTotal / 100.0));
 
-            Response.Write("}]"); // needs to be separate to not trigger String.Format warning
+            Response.Write("}]}"); // needs to be separate to not trigger String.Format warning
 
             Response.End();
         }
