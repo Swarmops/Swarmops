@@ -53,6 +53,7 @@
 	    }
    	    table.datagrid-ftable {
 		    font-weight: 500;
+   	        padding-top: 2px;
 	    }
 
     </style>
