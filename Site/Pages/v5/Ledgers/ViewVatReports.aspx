@@ -61,7 +61,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     
     <h2><div class="elementFloatFar"><%= CurrentOrganization.Currency.DisplayCode %></div><asp:Label ID="LabelContentHeader" runat="server" />&nbsp;<asp:DropDownList runat="server" ID="DropReports"/>&nbsp;<img alt="Loading" src="/Images/Abstract/ajaxloader-blackcircle.gif" ID="imageLoadIndicator" /></h2>
-    <table id="tableVatReport" title="" class="easyui-treegrid" style="width:680px;height:600px"  
+    <table id="tableVatReport" title="" class="easyui-treegrid" style="width:680px"  
         url="Json-VatReportData.aspx?ReportId=<%=this.InitialReportId %>"
         rownumbers="false"
         animate="true"
