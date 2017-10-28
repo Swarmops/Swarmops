@@ -906,4 +906,12 @@
     <value>View</value>
     <comment>This is the word or words before the name of the displayed VAT report.</comment>
   </data>
+  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
+    <value>-- nothing to report --</value>
+    <comment>This is displayed when there are no items at all in a VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_ReportTotals" xml:space="preserve">
+    <value>Totals for this report</value>
+    <comment>Displayed as description of footer</comment>
+  </data>
 </root>

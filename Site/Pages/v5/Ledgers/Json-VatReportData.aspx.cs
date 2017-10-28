@@ -81,7 +81,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 lines.Add("{" + element + "}");
             }
 
-            Response.Write("[" + String.Join(",", lines.ToArray()) + "]");
+            if (lines.Count == 0) // add empty report line 
+            {
+                lines.Add(String.Format("\"id\":\"0\",\"description\":\"{0}\"",
+                    JsonSanitize(Resources.Pages.Ledgers.ViewVatReports_EmptyReport)));
+            }
+
+            Response.Write("{\"rows\":[" + String.Join(",", lines.ToArray()) + "],");
+
+            Response.Write(String.Format("\"footer\":[\"id\":\"0\",\"description\":\"{0}\",\"turnover\":\"{1:N2}\",\"inbound\":\"{2:N2}\",\"outbound\":\"{3:N2}\"]",
+                JsonSanitize(Resources.Pages.Ledgers.ViewVatReports_Footer_Total.ToUpperInvariant()), turnoverCentsTotal / 100.0, inboundCentsTotal / 100.0, outboundCentsTotal / 100.0));
+
+            Response.Write("}"); // needs to be separate to not trigger String.Format warning
 
             // TODO: FOOTER
 
