@@ -50,6 +50,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             VatReportItems items = report.Items;
             List<string> lines = new List<string>();
 
+            string hasDoxString =
+                "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\\\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-search-256px.png';\\\" baseid='{0}' class='LocalViewDox' style='cursor:pointer' height='20' width='20' />";
+
             foreach (VatReportItem item in items)
             {
                 FinancialTransaction transaction = item.Transaction;
@@ -76,6 +79,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 {
                     element += String.Format(",\"outbound\":\"{0:N2}\"", item.VatOutboundCents/ 100.0);
                     outboundCentsTotal += item.VatOutboundCents;
+                }
+
+                if (transaction.Dependency != null)
+                {
+
+                    element += String.Format(",\"dox\":\"" + hasDoxString + "\"", transaction.Identity);
                 }
 
                 lines.Add("{" + element + "}");
