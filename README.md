@@ -25,10 +25,10 @@ Stable releases are built every six months, at the end of every calendar half-ye
 This is the plan, at least. "Stable" is a somewhat wide definition at the moment. Rather, Swarmops has a few functions to go to enter Open Beta stage.
 
 
-Countdown to Open Beta
-----------------------
+Beta features checklist
+-----------------------
 
-The features missing for the Open Beta, with some sort of feature-completeness, are these:
+Here are the features still required to exit beta:
 
 - [x] enter ledger transactions manually
 - [ ] send invoices (and receive payment in bitcoin)
@@ -42,19 +42,20 @@ There will also be many other small improvements added along with these features
 - [ ] HTML/Markdown mail
 - [x] Mail Resolver
 - [ ] Expensify integration?
-- [ ] PDF asynchronous interpreter (websocket?)
+- [X] PDF asynchronous interpreter (websocket?)
 - [ ] Recurring expenses
 - [x] Char encode HTML doc
+- [ ] Org descriptions (long, short) on self-signup page
 - [ ] Hotwallet payments
 - [x] Tech problem box
 - [x] Donate sockify
 - [x] Live financial numbers
 - [ ] Todo box to JSON
 - [x] Proper menu highlight
-- [ ] Basic search
+- [X] Basic search
 - [x] Account edit spacing
 - [ ] Alert to load hotwallet from cold
-- [ ] Bitcoin Echo test page (kill because fees too high?)
+- [ ] Bitcoin Echo test page (probably needs to be Bitcoin Cash b/c fees)
 - [ ] Icons for Validation page
 - [x] Favicon New
 - [x] Fix Inspect Ledger header (looks bad)
@@ -64,14 +65,14 @@ There will also be many other small improvements added along with these features
 - [x] Expense access
 - [ ] Assign role geolock
 - [x] Advance line spacing
-- [ ] Upload Org 16x9 logo
+- [x] Upload Org 16x9 logo
 - [ ] Submit invoice anon interface
 - [ ] Control messages for invoice progress
 - [ ] Pay invoice
 - [ ] Controlify financialtransaction to show on balancetx page
 - [ ] Close ledger year
 - [x] Internal TX account type
-- [ ] Create TX
+- [x] Create TX
 - [ ] Download main Ledger
 - [X] Fix password reset after refactor
 
@@ -96,6 +97,8 @@ If you installed onto a clean server, Swarmops will offer to configure Apache to
 Navigate to the new site and continue installation from the running site. To complete the install, you will also need to install a backend process, which can (but shouldn't) run on the same machine:
 
 > `apt-get install swarmops-backend`
+
+At one point in the installation process, you will be prompted to copy the file `/etc/swarmops/database.config` from the server running swarmops-*frontend* to the server running swarmops-*backend*. This allows the backend to connect to the database as configured by the installation process. Once you do this, the installation process will detect the running backend and the installation will continue.
 
 The packages named as listed above (swarmops-frontend) are the sprint packages, released every two weeks. If you prefer, you can opt for the development builds (swarmops-frontend-internal) or the stable six-month releases (swarmops-frontend-stable) instead. The development builds aren't really recommended unless you're actively contributing to development and want to see new changes running on the development sandbox.
 
