@@ -28,17 +28,7 @@
 	            var selectedReportId = $('#<%=DropReports.ClientID %>').val();
 	            console.log("Selected Report Id: " + selectedReportId);
 
-	            $('#tableVatReport').datagrid(
-	            {
-	                url: 'Json-VatReportData.aspx?ReportId=' + selectedReportId,
-	                onLoadSuccess: function() {
-
-	                    $(".LocalViewDox").click(function () {
-	                        $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
-	                    });
-
-	                }
-	            });
+	            $('#tableVatReport').datagrid({ url: 'Json-VatReportData.aspx?ReportId=' + selectedReportId });
         	    $('#imageLoadIndicator').show();
 	            $('div.datagrid').css('opacity', 0.4);
 
