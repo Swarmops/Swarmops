@@ -33,7 +33,7 @@ namespace Swarmops.Frontend
 
             if (CurrentUser.Identity == Person.OpenLedgersIdentity)
             {
-                Response.Redirect ("/Ledgers/BalanceSheet");
+                Response.Redirect ("/Ledgers/Balance");
             }
         }
 
