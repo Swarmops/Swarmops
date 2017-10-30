@@ -80,6 +80,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         AddDocuments(report);
                     }
 
+                    initialReport = reports.Last();
                     this.InitialReportId = initialReport.Identity;
                     this.DropReports.SelectedValue = this.InitialReportId.ToString(CultureInfo.InvariantCulture);
                 }
