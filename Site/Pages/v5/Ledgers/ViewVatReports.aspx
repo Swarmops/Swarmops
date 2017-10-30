@@ -10,7 +10,7 @@
 
 	    $(document).ready(function () {
 
-	        $('#tableVatReport').treegrid(
+	        $('#tableVatReport').datagrid(
 	        {
 	            onLoadSuccess: function () {
 	                $('div.datagrid').css('opacity', 1);
