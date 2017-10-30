@@ -106,7 +106,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     VatReportDocuments.Add(new RepeatedDocument
                     {
                         BaseId = item.FinancialTransactionId.ToString(CultureInfo.InvariantCulture),
-                        DocId = tx.Identity,
+                        DocId = doc.Identity,
                         Title = tx.Description + " - " + doc.Description
                     });
                 }
