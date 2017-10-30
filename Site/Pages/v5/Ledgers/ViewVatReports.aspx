@@ -13,6 +13,10 @@
 	                $('#imageLoadIndicator').hide();
 	                $('span.loadingHeader').hide();
               
+	                $(".LocalViewDox").click(function () {
+	                    $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
+	                });
+
 	            }
 	        });
 
@@ -20,13 +24,31 @@
 	            var selectedReportId = $('#<%=DropReports.ClientID %>').val();
 	            console.log("Selected Report Id: " + selectedReportId);
 
-	            $('#tableVatReport').treegrid({ url: 'Json-VatReportData.aspx?ReportId=' + selectedReportId });
+	            $('#tableVatReport').datagrid(
+	            {
+	                url: 'Json-VatReportData.aspx?ReportId=' + selectedReportId,
+	                onLoadSuccess: function() {
+
+	                    $(".LocalViewDox").click(function () {
+	                        $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
+	                    });
+
+	                }
+	            });
         	    $('#imageLoadIndicator').show();
 	            $('div.datagrid').css('opacity', 0.4);
 
 	            //$('#tableAnnualReport').treegrid('reload');
 	        });
 
+            
+	        $("a.FancyBox_Gallery").fancybox({
+	            'overlayShow': true,
+	            'transitionIn': 'fade',
+	            'transitionOut': 'fade',
+	            'type': 'image',
+	            'opacity': true
+	        });
 
 	        $('div.datagrid').css('opacity', 0.4);
 	    });
@@ -80,6 +102,18 @@
             </tr>  
         </thead>  
     </table> 
+    
+    <div style="display:none">
+    <!-- a href links for FancyBox to trigger on -->
+    
+    <asp:Repeater runat="server" ID="RepeaterLightboxItems">
+        <ItemTemplate>
+            <a href="/Pages/v5/Support/StreamUpload.aspx?DocId=<%# Eval("DocId") %>&hq=1&VatReportKey=<%=VatReportKey %>" title="<%# Eval("Title") %>" class="FancyBox_Gallery" rel="<%# Eval("BaseId") %>">&nbsp;</a>
+        </ItemTemplate>
+    </asp:Repeater>
+
+    </div>
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
