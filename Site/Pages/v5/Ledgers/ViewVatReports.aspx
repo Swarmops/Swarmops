@@ -10,7 +10,7 @@
 
 	    $(document).ready(function () {
 
-	        $('#tableVatReport').datagrid(
+	        $('#tableVatReport').treegrid(
 	        {
 	            onLoadSuccess: function () {
 	                $('div.datagrid').css('opacity', 1);
@@ -28,7 +28,7 @@
 	            var selectedReportId = $('#<%=DropReports.ClientID %>').val();
 	            console.log("Selected Report Id: " + selectedReportId);
 
-	            $('#tableVatReport').datagrid({ url: 'Json-VatReportData.aspx?ReportId=' + selectedReportId });
+	            $('#tableVatReport').treegrid({ url: 'Json-VatReportData.aspx?ReportId=' + selectedReportId });
         	    $('#imageLoadIndicator').show();
 	            $('div.datagrid').css('opacity', 0.4);
 
