@@ -23,7 +23,7 @@
               <Children />
             </MainMenuItem>
 
-            <MainMenuItem>
+<!--            <MainMenuItem>  -commented out because of lack of space
               <ResourceKey>Ledgers_BudgetVsActual</ResourceKey>
               <UserLevel>0</UserLevel>
               <Permissions />
@@ -31,17 +31,27 @@
               <NavigateUrl>/Ledgers/BudgetActual</NavigateUrl>
               <Type>Link</Type>
               <Children />
+            </MainMenuItem>-->
+
+            <MainMenuItem>
+              <ResourceKey>Ledgers_InspectLedgers</ResourceKey>
+              <UserLevel>3</UserLevel>
+              <Permissions />
+              <ImageUrl />
+              <NavigateUrl>/Ledgers/InspectLedgers</NavigateUrl>
+              <Type>Link</Type>
+              <Children />
             </MainMenuItem>
 
             <MainMenuItem>
-                <ResourceKey>Ledgers_InspectLedgers</ResourceKey>
-                <UserLevel>3</UserLevel>
-                <Permissions />
-                <ImageUrl />
-                <NavigateUrl>/Ledgers/InspectLedgers</NavigateUrl>
-                <Type>Link</Type>
-                <Children />
+              <ResourceKey>Ledgers_VatReports</ResourceKey>
+              <UserLevel>3</UserLevel>
+              <Permissions />
+              <ImageUrl />
+              <NavigateUrl>/Ledgers/ViewVatReports</NavigateUrl>
+              <Type>Link</Type>
+              <Children />
             </MainMenuItem>
-          
+
 
 </ArrayOfMainMenuItem>
