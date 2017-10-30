@@ -39,6 +39,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             VatReport report = VatReport.FromIdentity(_reportId);
 
+            // TODO: AUTH CHECK
+
             Response.ContentType = "application/json";
 
             Int64 turnoverCentsTotal = 0;

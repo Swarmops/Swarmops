@@ -23,9 +23,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             PageTitle = Resources.Pages.Ledgers.ViewVatReports_PageTitle;
             InfoBoxLiteral = Resources.Pages.Ledgers.ViewVatReports_Info;
 
-            // Security: If the org has open ledgers, then anyone may read. Otherwise, Financials.Read.
+            // Security: If the org has open ledgers, or key was given, then anyone may read. Otherwise, Financials.Read.
 
-            if (!String.IsNullOrEmpty(CurrentOrganization.OpenLedgersDomain))
+            int specificReportId = 0;
+            VatReport specificReport = null;
+            string reportKey = Request.QueryString["ReportKey"];
+            if (!string.IsNullOrEmpty(reportKey))
+            {
+                specificReport = VatReport.FromGuid(reportKey);
+                specificReportId = specificReport.Identity;
+            }
+
+            if (CurrentOrganization.HasOpenLedgers || specificReportId > 0)
             {
                 PageAccessRequired = new Access(AccessAspect.Null, AccessType.Read);
             }
@@ -37,23 +46,34 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             if (!Page.IsPostBack)
             {
+                Localize();
+
                 // Populate VAT report dropdown
 
-                // TODO: Disable if viewing specific report and not open ledgers
-
-                VatReports reports = VatReports.ForOrganization(CurrentOrganization, true);
-                reports.Sort(VatReports.VatReportSorterByDate);
-
-                foreach (VatReport report in reports)
+                if (specificReportId > 0 && !CurrentOrganization.HasOpenLedgers)
                 {
-                    this.DropReports.Items.Add(new ListItem(report.Description,
-                        report.Identity.ToString(CultureInfo.InvariantCulture)));
+                    // Show one single report
+
+                    this.LabelContentHeader.Text = specificReport.Description;
+                    this.DropReports.Visible = false;
+                    this.InitialReportId = specificReport.Identity;
                 }
+                else
+                {
+                    // Populate dropdown
 
-                this.InitialReportId = reports.Last().Identity;
-                this.DropReports.SelectedValue = this.InitialReportId.ToString(CultureInfo.InvariantCulture);
+                    VatReports reports = VatReports.ForOrganization(CurrentOrganization, true);
+                    reports.Sort(VatReports.VatReportSorterByDate);
 
-                Localize();
+                    foreach (VatReport report in reports)
+                    {
+                        this.DropReports.Items.Add(new ListItem(report.Description,
+                            report.Identity.ToString(CultureInfo.InvariantCulture)));
+                    }
+
+                    this.InitialReportId = reports.Last().Identity;
+                    this.DropReports.SelectedValue = this.InitialReportId.ToString(CultureInfo.InvariantCulture);
+                }
             }
 
             RegisterControl(EasyUIControl.DataGrid | EasyUIControl.Tree);

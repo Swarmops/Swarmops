@@ -20,7 +20,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
             // Security: If the org has open ledgers, then anyone may read. Otherwise, Financials.Read.
 
-            if (!String.IsNullOrEmpty (CurrentOrganization.OpenLedgersDomain))
+            if (CurrentOrganization.HasOpenLedgers)
             {
                 PageAccessRequired = new Access (AccessAspect.Null, AccessType.Read);
             }

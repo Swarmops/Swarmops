@@ -683,6 +683,11 @@ namespace Swarmops.Logic.Structure
             }
         }
 
+        public bool HasOpenLedgers
+        {
+            get { return !String.IsNullOrEmpty(OpenLedgersDomain); }
+        }
+
         #endregion
 
         #region UptakeGeographies

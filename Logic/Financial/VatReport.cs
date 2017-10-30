@@ -40,6 +40,18 @@ namespace Swarmops.Logic.Financial
             return FromBasic(SwarmDb.GetDatabaseForWriting().GetVatReport(vatReportId));
         }
 
+        public static VatReport FromGuid(string guid)
+        {
+            int vatReportId = SwarmDb.GetDatabaseForReading().GetVatReportIdFromGuid(guid);
+
+            if (vatReportId == 0)
+            {
+                throw new ArgumentException("No such report");
+            }
+
+            return FromIdentity(vatReportId);
+        }
+
         private static VatReport CreateDbRecord (Organization organization, int year, int startMonth, int monthCount)
         {
             System.Guid guid = System.Guid.NewGuid();
