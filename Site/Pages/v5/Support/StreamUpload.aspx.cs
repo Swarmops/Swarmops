@@ -38,71 +38,86 @@ namespace Swarmops.Pages.v5.Support
             bool hasPermission = false;
             string serverFileName = document.ServerFileName;
 
-            switch (document.DocumentType)
+            if (CurrentOrganization.HasOpenLedgers)
             {
-                case DocumentType.FinancialTransaction:
+                hasPermission = true;
+            }
+            else
+            {
+
+
+                switch (document.DocumentType)
                 {
+                    case DocumentType.FinancialTransaction:
+                    {
 /*
                         //TODO: Get the orgId from foreign object
                         if (this.CurrentAuthority.HasPermission(Permission.CanSeeEconomyDetails, orgId, -1, Authorization.Flag.ExactOrganization))
                         {
                             hasPermission = true;
                         }*/
-                }
-                    break;
-                case DocumentType.ExpenseClaim:
-                case DocumentType.InboundInvoice:
-                {
-                    int budgetId = 0;
-
-                    if (document.DocumentType == DocumentType.ExpenseClaim)
-                    {
-                        ExpenseClaim claim = (ExpenseClaim) document.ForeignObject;
-                        orgId = claim.Budget.OrganizationId;
-                        budgetId = claim.BudgetId;
                     }
-                    else
-                    {
-                        InboundInvoice invoice = (InboundInvoice) document.ForeignObject;
-                        orgId = invoice.Budget.OrganizationId;
-                        budgetId = invoice.BudgetId;
-                    }
-
-
-                    FinancialAccount budget = FinancialAccount.FromIdentity (budgetId);
-
-                    if (budget.OwnerPersonId == CurrentUser.Identity || budget.OwnerPersonId == 0)
-                    {
-                        hasPermission = true;
                         break;
-                    }
-
-                    // TODO: Security leak - check CurrentOrganization against Document's org
-
-                    if (
-                        CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Financials,
-                            AccessType.Write)))
+                    case DocumentType.ExpenseClaim:
+                    case DocumentType.InboundInvoice:
+                    case DocumentType.OutboundInvoice:
                     {
-                        hasPermission = true;
-                    }
-                    /*
+                        int budgetId = 0;
+
+                        if (document.DocumentType == DocumentType.ExpenseClaim)
+                        {
+                            ExpenseClaim claim = (ExpenseClaim) document.ForeignObject;
+                            orgId = claim.Budget.OrganizationId;
+                            budgetId = claim.BudgetId;
+                        }
+                        else if (document.DocumentType == DocumentType.InboundInvoice)
+                        {
+                            InboundInvoice invoice = (InboundInvoice) document.ForeignObject;
+                            orgId = invoice.Budget.OrganizationId;
+                            budgetId = invoice.BudgetId;
+                        }
+                        else
+                        {
+                            OutboundInvoice invoice = (OutboundInvoice) document.ForeignObject;
+                            orgId = invoice.OrganizationId;
+                            budgetId = invoice.BudgetId;
+                        }
+
+
+                        FinancialAccount budget = FinancialAccount.FromIdentity(budgetId);
+
+                        if (budget.OwnerPersonId == CurrentUser.Identity || budget.OwnerPersonId == 0)
+                        {
+                            hasPermission = true;
+                            break;
+                        }
+
+                        // TODO: Security leak - check CurrentOrganization against Document's org
+
+                        if (
+                            CurrentAuthority.HasAccess(new Access(CurrentOrganization, AccessAspect.Financials,
+                                AccessType.Write)))
+                        {
+                            hasPermission = true;
+                        }
+                        /*
                         if (this.CurrentAuthority.HasPermission(Permission.CanSeeEconomyDetails, orgId, -1, Authorization.Flag.ExactOrganization))
                         {
                             hasPermission = true;
                             break;
                         }*/
 
-                    break;
-                }
-                case DocumentType.PaperLetter:
-                {
-                    PaperLetter letter = (PaperLetter) document.ForeignObject;
-
-                    if (letter.Recipient.Identity == CurrentUser.Identity)
-                    {
-                        hasPermission = true; // A letter to the viewer
+                        break;
                     }
-                    /*
+                    case DocumentType.PaperLetter:
+                    {
+                        PaperLetter letter = (PaperLetter) document.ForeignObject;
+
+                        if (letter.Recipient.Identity == CurrentUser.Identity)
+                        {
+                            hasPermission = true; // A letter to the viewer
+                        }
+                        /*
                         // Otherwise, are there overriding permissions, if not addressed to him/her?
 
                         else if (!letter.Personal)
@@ -137,17 +152,19 @@ namespace Swarmops.Pages.v5.Support
                                 hasPermission = true;
                             }
                         }*/
-                }
-                    break;
-                case DocumentType.PersonPhoto:
-                case DocumentType.Logo:
-                case DocumentType.Artwork:
-                {
-                    // These are public
+                    }
+                        break;
+                    case DocumentType.PersonPhoto:
+                    case DocumentType.Logo:
+                    case DocumentType.Artwork:
+                    {
+                        // These are public
 
-                    hasPermission = true;
+                        hasPermission = true;
+                    }
+                        break;
+
                 }
-                break;
             }
 
             if (!hasPermission)
