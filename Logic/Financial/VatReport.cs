@@ -61,7 +61,7 @@ namespace Swarmops.Logic.Financial
             return FromIdentityAggressive(vatReportId);
         }
 
-        internal static VatReport Create(Organization organization, int year, int startMonth, int monthCount)
+        public static VatReport Create(Organization organization, int year, int startMonth, int monthCount)
         {
             VatReport newReport = CreateDbRecord(organization, year, startMonth, monthCount);
             VatReportItems testItems = newReport.Items;
@@ -154,6 +154,11 @@ namespace Swarmops.Logic.Financial
             foreach (FinancialAccountRow accountRow in rows)
             {
                 FinancialTransaction tx = accountRow.Transaction;
+
+                if (tx.Dependency is VatReport)
+                {
+                    continue; // Never include previous VAT reports in new VAT reports
+                }
 
                 if (!transactionsIncludedLookup.ContainsKey(tx.Identity))
                 {

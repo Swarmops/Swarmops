@@ -121,7 +121,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     {
                         BaseId = item.FinancialTransactionId.ToString(CultureInfo.InvariantCulture),
                         DocId = doc.Identity,
-                        Title = tx.Description + " - " + doc.Description
+                        Title = tx.Description
                     });
                 }
             }

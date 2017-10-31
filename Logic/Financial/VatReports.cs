@@ -33,7 +33,7 @@ namespace Swarmops.Logic.Financial
             if (reports.Count == 0)
             {
                 DateTime firstReportGenerationTime =
-                    new DateTime(organization.FirstFiscalYear, 1, 1).AddMonths(reportMonthInterval).AddDays(4);
+                    new DateTime(organization.FirstFiscalYear, 1, 1).AddMonths(reportMonthInterval).AddDays(1); // add one day for some safety margin; we're constructing the VAT report on the 2nd of the month
 
                 if (nowUtc > firstReportGenerationTime)
                 {
