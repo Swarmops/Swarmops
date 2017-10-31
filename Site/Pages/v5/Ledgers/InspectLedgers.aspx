@@ -313,12 +313,6 @@
 
         table.datagrid-ftable { font-weight: 500; }
 
-        .LocalIconInspect, .LocalIconFlag {
-            cursor: pointer;
-            position: relative;
-            top: 4px;
-        }
-
         .spanAnnoyingBlink {
             -webkit-animation: blink 0.5s linear infinite;
             animation: blink 0.5s linear infinite;
