@@ -95,11 +95,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         this.PanelShowVatReports.Visible = false;
                         this.PanelShowNoVatReports.Visible = true;
-                        this.LabelContentHeader.Text = specificReport.Description;
-                        this.DropReports.Visible = false;
-                        this.InitialReportId = specificReport.Identity;
-
-                        AddDocuments(specificReport);
                     }
 
                 }
