@@ -44,6 +44,8 @@ namespace Swarmops.Logic.Swarm
         Activist,
         Agent,
         Ambassador,
+        Applicant,
+        Aspirant,
         Citizen,
         Conscript,
         Contributor,

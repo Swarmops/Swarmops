@@ -362,4 +362,13 @@
 &lt;p&gt;&lt;strong&gt;WARNING:&lt;/strong&gt; This is a highly intrusive tool that should only be used for technical development and for requested support. Using this should not be taken lightly.&lt;/p&gt;
 &lt;p&gt;All impersonations are permanently logged, all and any actions taken while impersonated are traceable as such, and the impersonated user will be informed of the intrusion.&lt;/p&gt;</value>
   </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Not-yet-members are called</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(not applicable)</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Government</value>
+  </data>
 </root>

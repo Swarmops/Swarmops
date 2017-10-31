@@ -260,7 +260,9 @@
   <data name="Title_Member_Generic" xml:space="preserve">
     <value>Membro</value>
   </data>
-  
+  <data name="Title_Member_Male" xml:space="preserve">
+    <value>Membro</value>
+  </data>
   <data name="Title_Member_Plural" xml:space="preserve">
     <value>Membros</value>
   </data>

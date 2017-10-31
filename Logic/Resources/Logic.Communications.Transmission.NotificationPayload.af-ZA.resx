@@ -362,11 +362,17 @@
   <data name="System_PublicRootReset_Subject" xml:space="preserve">
     <value>crwdns6556390:0crwdne6556390:0</value>
   </data>
-  <data name="System_Startup_Body" xml:space="preserve">
-    <value>crwdns6553666:0[SwarmopsVersion]crwdnd6553666:0[HostName]crwdne6553666:0</value>
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>crwdns6556543:0[SwarmopsVersion]crwdnd6556543:0[HostName]crwdne6556543:0</value>
   </data>
-  <data name="System_Startup_Subject" xml:space="preserve">
-    <value>crwdns6553667:0crwdne6553667:0</value>
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>crwdns6556544:0crwdne6556544:0</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>crwdns6556545:0[SwarmopsVersion]crwdnd6556545:0[HostName]crwdne6556545:0</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>crwdns6556546:0crwdne6556546:0</value>
   </data>
   <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
     <value>crwdns6556391:0[HostName]crwdnd6556391:0[UnrecognizedPayloadType]crwdne6556391:0</value>

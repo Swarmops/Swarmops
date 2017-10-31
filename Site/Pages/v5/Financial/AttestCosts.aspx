@@ -576,7 +576,7 @@
         </ItemTemplate>
     </asp:Repeater>
 
-    </div>  
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
 </asp:Content>

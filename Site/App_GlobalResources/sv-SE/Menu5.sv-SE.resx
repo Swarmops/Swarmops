@@ -193,7 +193,7 @@
     <value>Gigassistent</value>
   </data>
   <data name="Menu5_Financial_List" xml:space="preserve">
-    <value>Lista</value>
+    <value>Lista...</value>
   </data>
   <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
     <value>Kontantförskott</value>
@@ -418,5 +418,18 @@
   </data>
   <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
     <value>Bitcoin arbetsplånbok</value>
+  </data>
+  
+  
+  
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Felsök</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Uppträd som</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>Momsrapporter</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
   </data>
 </root>

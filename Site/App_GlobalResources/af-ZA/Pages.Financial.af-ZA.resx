@@ -283,7 +283,7 @@
     <value>crwdns6556422:0crwdne6556422:0</value>
   </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
-    <value>crwdns6555293:0{0}crwdne6555293:0</value>
+    <value>crwdns6556593:0{0}crwdne6556593:0</value>
     <comment>{0} is the organization's main currency.</comment>
   </data>
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
@@ -476,7 +476,7 @@
     <value>crwdns6555334:0crwdne6555334:0</value>
   </data>
   <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
-    <value>crwdns6555335:0{0}crwdne6555335:0</value>
+    <value>crwdns6555335:0#{0}crwdne6555335:0</value>
   </data>
   <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
     <value>crwdns6555336:0{0:N0}crwdnd6555336:0{1}crwdne6555336:0</value>
@@ -610,5 +610,35 @@
   </data>
   <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
     <value>crwdns6556486:0crwdne6556486:0</value>
+  </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>crwdns6556594:0{0}crwdne6556594:0</value>
+  </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>crwdns6556595:0{0}crwdne6556595:0</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>crwdns6556596:0crwdne6556596:0</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>crwdns6556597:0crwdne6556597:0</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>crwdns6556598:0crwdne6556598:0</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>crwdns6556599:0crwdne6556599:0</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>crwdns6556600:0crwdne6556600:0</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>crwdns6556601:0crwdne6556601:0</value>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>crwdns6556602:0crwdne6556602:0</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>crwdns6556603:0{0:N0}crwdne6556603:0</value>
   </data>
 </root>

@@ -129,7 +129,9 @@
     <value>Recebidos {0} microcoins ("bits"). Irão ser devolvidas brevemente (menos taxa de minagem).</value>
     <comment>Used if BTC is the org native currency.</comment>
   </data>
-  
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>Este é um teste de eco bitcoin, para testar a conta corrente. Se enviar uma pequena quantia para aqui, ela ser-lhe-á enviada de volta a si, com excepção das taxas da transação.</value>
+  </data>
   <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
     <value>Doar</value>
   </data>
@@ -156,11 +158,15 @@
   <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
     <value>Criar nova organização como...</value>
   </data>
-  
+  <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
+    <value>O nome da organização não pode estar vazio. (Necessita dar um nome à nova organização!)</value>
+  </data>
   <data name="CreateOrganization_Info" xml:space="preserve">
     <value>Pode criar uma nova organização como uma nova organização independente ou como uma sub-organização dentro da actual. (Todas as pessoas com responsabilidades numa dada organização têm automaticamente os direitos e privilégios correspondentes em todas as sub-organizações.)</value>
   </data>
-  
+  <data name="CreateOrganization_NewOrganizationName" xml:space="preserve">
+    <value>Nome da nova Organização</value>
+  </data>
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
     <value>Moeda de funcionamento</value>
   </data>
@@ -236,7 +242,9 @@
     <value>Posições Executivas Para {0}</value>
     <comment>The {0} is the org name.</comment>
   </data>
-  
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>Posições Locais (Em Todas as Áreas Geográficas)</value>
+  </data>
   <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
     <value>Folha de Pagamento de Pessoal</value>
   </data>
@@ -292,13 +300,21 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Deveria realmente, realmente, REALMENTE utilizar HTTPS para um website como este. Mas já sabia disso, não é verdade?</value>
   </data>
-  <data name="SystemSettings_WebsocketHostname" xml:space="preserve">
-    <value>Hostname do Websocket</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortClient" xml:space="preserve">
-    <value>Porto do Websocket (Cliente)</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortServer" xml:space="preserve">
-    <value>Porto do Websocket (Servidor)</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

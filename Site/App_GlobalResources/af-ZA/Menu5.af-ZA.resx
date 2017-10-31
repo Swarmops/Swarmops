@@ -193,7 +193,7 @@
     <value>crwdns1639822:0crwdne1639822:0</value>
   </data>
   <data name="Menu5_Financial_List" xml:space="preserve">
-    <value>crwdns1639823:0crwdne1639823:0</value>
+    <value>crwdns6556567:0crwdne6556567:0</value>
   </data>
   <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
     <value>crwdns6553752:0crwdne6553752:0</value>
@@ -214,7 +214,7 @@
     <value>crwdns1639828:0crwdne1639828:0</value>
   </data>
   <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
-    <value>crwdns6553958:0crwdne6553958:0</value>
+    <value>crwdns6556568:0crwdne6556568:0</value>
   </data>
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>crwdns1639830:0crwdne1639830:0</value>
@@ -422,5 +422,25 @@
   </data>
   <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
     <value>crwdns6556427:0crwdne6556427:0</value>
+  </data>
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>crwdns6556569:0{0:MMM d, yyyy}crwdne6556569:0</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>crwdns6556570:0{0:N0}crwdne6556570:0</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>crwdns6556571:0crwdne6556571:0</value>
+  </data>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>crwdns6556572:0crwdne6556572:0</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>crwdns6556573:0crwdne6556573:0</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>crwdns6556574:0crwdne6556574:0</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
   </data>
 </root>

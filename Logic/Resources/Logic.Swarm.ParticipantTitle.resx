@@ -175,6 +175,36 @@
   <data name="Title_Ambassador_Ship" xml:space="preserve">
     <value>Ambassadorship</value>
   </data>
+  <data name="Title_Applicant_Female" xml:space="preserve">
+    <value>Applicant</value>
+  </data>
+  <data name="Title_Applicant_Generic" xml:space="preserve">
+    <value>Applicant</value>
+  </data>
+  <data name="Title_Applicant_Male" xml:space="preserve">
+    <value>Applicant</value>
+  </data>
+  <data name="Title_Applicant_Plural" xml:space="preserve">
+    <value>Applicants</value>
+  </data>
+  <data name="Title_Applicant_Ship" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="Title_Aspirant_Female" xml:space="preserve">
+    <value>Aspirant</value>
+  </data>
+  <data name="Title_Aspirant_Generic" xml:space="preserve">
+    <value>Aspirant</value>
+  </data>
+  <data name="Title_Aspirant_Male" xml:space="preserve">
+    <value>Aspirant</value>
+  </data>
+  <data name="Title_Aspirant_Plural" xml:space="preserve">
+    <value>Aspirants</value>
+  </data>
+  <data name="Title_Aspirant_Ship" xml:space="preserve">
+    <value>Aspiration</value>
+  </data>
   <data name="Title_Citizen_Corps" xml:space="preserve">
     <value>Citizens</value>
   </data>
@@ -427,5 +457,20 @@
   </data>
   <data name="Title_Supporter_Ship" xml:space="preserve">
     <value>Supportership</value>
+  </data>
+  <data name="Title_Volunteer_Female" xml:space="preserve">
+    <value>Volunteer</value>
+  </data>
+  <data name="Title_Volunteer_Generic" xml:space="preserve">
+    <value>Volunteer</value>
+  </data>
+  <data name="Title_Volunteer_Male" xml:space="preserve">
+    <value>Volunteer</value>
+  </data>
+  <data name="Title_Volunteer_Plural" xml:space="preserve">
+    <value>Volunteers</value>
+  </data>
+  <data name="Title_Volunteer_Ship" xml:space="preserve">
+    <value>Volunteership</value>
   </data>
 </root>

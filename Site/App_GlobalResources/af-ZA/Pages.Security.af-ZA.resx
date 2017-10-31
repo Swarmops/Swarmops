@@ -202,8 +202,9 @@
   <data name="Login_LoggingIn" xml:space="preserve">
     <value>crwdns6555052:0crwdne6555052:0</value>
   </data>
-  <data name="Login_ManualLogin" xml:space="preserve">
-    <value>crwdns6555053:0crwdne6555053:0</value>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>crwdns6556632:0crwdne6556632:0</value>
+    <comment>Header to manual username/password form</comment>
   </data>
   <data name="Login_PageTitle" xml:space="preserve">
     <value>crwdns6555054:0crwdne6555054:0</value>
@@ -212,7 +213,7 @@
     <value>crwdns6555055:0crwdne6555055:0</value>
   </data>
   <data name="Login_ResetPassword" xml:space="preserve">
-    <value>crwdns6555056:0crwdne6555056:0</value>
+    <value>crwdns6556633:0crwdne6556633:0</value>
   </data>
   <data name="Login_SelfSignup" xml:space="preserve">
     <value>crwdns6556415:0{0}crwdne6556415:0</value>
@@ -223,6 +224,14 @@
   </data>
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
     <value>crwdns6555057:0crwdne6555057:0</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>crwdns6556634:0crwdne6556634:0</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>crwdns6556635:0crwdne6556635:0</value>
+    <comment>Switches from BitId to Username/Password form</comment>
   </data>
   <data name="Login_Username" xml:space="preserve">
     <value>crwdns6555058:0crwdne6555058:0</value>

@@ -155,20 +155,18 @@
   <data name="Login_LoggingIn" xml:space="preserve">
     <value>Anmelden, bitte warten...</value>
   </data>
-  <data name="Login_ManualLogin" xml:space="preserve">
-    <value>Manuelle Anmeldung</value>
-  </data>
+  
   <data name="Login_PageTitle" xml:space="preserve">
     <value>Anmelden</value>
   </data>
   
-  <data name="Login_ResetPassword" xml:space="preserve">
-    <value>Passwort zurücksetzen</value>
-  </data>
+  
   <data name="Login_SelfSignup" xml:space="preserve">
     <value>Registrieren Sie mich für {0}!</value>
     <comment>{0} is the organization name.</comment>
   </data>
+  
+  
   
   
   <data name="Login_Username" xml:space="preserve">

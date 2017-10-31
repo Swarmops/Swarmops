@@ -190,9 +190,7 @@
     <value>إنشاء طلب شراء</value>
   </data>
   
-  <data name="Menu5_Financial_List" xml:space="preserve">
-    <value>قائمة</value>
-  </data>
+  
   <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
     <value>طلبات السلفة النقدية</value>
   </data>
@@ -211,9 +209,7 @@
   <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>الرواتب</value>
   </data>
-  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
-    <value>إدارة ميزانياتي</value>
-  </data>
+  
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>المطالبات الجاهزة لدفع التعويض</value>
   </data>
@@ -402,6 +398,12 @@
   <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
     <value>عمليات الموازنة والتطابق</value>
   </data>
+  
+  
+  
+  
+  
+  
   
   
   

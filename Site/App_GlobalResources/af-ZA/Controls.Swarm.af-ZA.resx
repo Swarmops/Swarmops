@@ -193,4 +193,7 @@
   <data name="Positions_CreatePosition" xml:space="preserve">
     <value>crwdns6556238:0crwdne6556238:0</value>
   </data>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>crwdns6556556:0crwdne6556556:0</value>
+  </data>
 </root>

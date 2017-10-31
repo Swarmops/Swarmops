@@ -117,7 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
+  <data name="AccountPlan_CreateRootAccount" xml:space="preserve">
+    <value>Criar nova conta raíz</value>
+  </data>
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Esta é a vista geral das contas financeiras no seu livro de contabilidade. Pode fazer alguma manutenção através desta página, mesmo que a maioria das operações diárias devam estar delegadas aos responsáveis dos orçamentos.</value>
   </data>
@@ -517,7 +519,9 @@
   <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
     <value>Saldo está correto:</value>
   </data>
-  
+  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
+    <value>(Transação sem informação)</value>
+  </data>
   <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
     <value>Iniciais</value>
   </data>
@@ -647,6 +651,40 @@
     <value>Orçamento vs Real</value>
     <comment>Financial budget vs. Actual financial outcome</comment>
   </data>
+  <data name="BitcoinHotwallet_Address" xml:space="preserve">
+    <value>Endereço Bitcoin</value>
+  </data>
+  
+  
+  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
+    <value>Saldo {0}</value>
+    <comment>The {0} is the organization currency.</comment>
+  </data>
+  
+  
+  
+  
+  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
+    <value>Hash da Transação</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

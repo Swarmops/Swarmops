@@ -2033,6 +2033,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -- nothing to report --.
+        /// </summary>
+        internal static string ViewVatReports_EmptyReport {
+            get {
+                return ResourceManager.GetString("ViewVatReports_EmptyReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report Totals.
         /// </summary>
         internal static string ViewVatReports_Footer_Total {
@@ -2128,6 +2137,15 @@ namespace Resources.Pages {
         internal static string ViewVatReports_PageTitle {
             get {
                 return ResourceManager.GetString("ViewVatReports_PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Totals for this report.
+        /// </summary>
+        internal static string ViewVatReports_ReportTotals {
+            get {
+                return ResourceManager.GetString("ViewVatReports_ReportTotals", resourceCulture);
             }
         }
         

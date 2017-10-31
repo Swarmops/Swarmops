@@ -192,9 +192,7 @@
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Assistente de Apresentações</value>
   </data>
-  <data name="Menu5_Financial_List" xml:space="preserve">
-    <value>Lista</value>
-  </data>
+  
   <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
     <value>Pedidos de Dinheiro</value>
   </data>
@@ -213,9 +211,7 @@
   <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>Salários</value>
   </data>
-  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
-    <value>Gerir os meus Orçamentos</value>
-  </data>
+  
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>Pagamento de Dinheiro</value>
   </data>
@@ -416,5 +412,13 @@
   <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
     <value>Orçamento vs Real</value>
   </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Conta Corrente Bitcoin</value>
+  </data>
+  
+  
+  
+  
+  
   
 </root>

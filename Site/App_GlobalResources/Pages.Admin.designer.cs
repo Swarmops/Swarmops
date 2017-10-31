@@ -270,6 +270,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (not applicable).
+        /// </summary>
+        internal static string CreateOrganization_Applicants_None {
+            get {
+                return ResourceManager.GetString("CreateOrganization_Applicants_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not-yet-members are called.
+        /// </summary>
+        internal static string CreateOrganization_ApplicantTitle {
+            get {
+                return ResourceManager.GetString("CreateOrganization_ApplicantTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Root-level organization.
         /// </summary>
         internal static string CreateOrganization_AsRoot {
@@ -383,6 +401,15 @@ namespace Resources.Pages {
         internal static string CreateOrganization_Titles_Commercial {
             get {
                 return ResourceManager.GetString("CreateOrganization_Titles_Commercial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Government.
+        /// </summary>
+        internal static string CreateOrganization_Titles_Government {
+            get {
+                return ResourceManager.GetString("CreateOrganization_Titles_Government", resourceCulture);
             }
         }
         

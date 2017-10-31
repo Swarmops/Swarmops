@@ -912,4 +912,12 @@
   <data name="ViewVatReports_NoReports" xml:space="preserve">
     <value>There are no VAT reports to display. This is probably due to the fact that a full VAT reporting period has not elapsed yet, so it has not been possible to create a report yet.</value>
   </data>
+  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
+    <value>-- nothing to report --</value>
+    <comment>This is displayed when there are no items at all in a VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_ReportTotals" xml:space="preserve">
+    <value>Totals for this report</value>
+    <comment>Displayed as description of footer</comment>
+  </data>
 </root>

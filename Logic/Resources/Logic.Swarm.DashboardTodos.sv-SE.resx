@@ -150,11 +150,13 @@
   <data name="Payout_Urgent_One" xml:space="preserve">
     <value>Gör en brådskande utbetalning</value>
   </data>
-  
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>Slå på tvåfaktorsautentisering</value>
+  </data>
   <data name="Validate_Receipts_Many" xml:space="preserve">
-    <value>Validera anspråk {0}</value>
+    <value>Godkänn kvitton {0}</value>
   </data>
   <data name="Validate_Receipts_One" xml:space="preserve">
-    <value>Validera anspråk #{0}</value>
+    <value>Godkänn kvitto #{0}</value>
   </data>
 </root>

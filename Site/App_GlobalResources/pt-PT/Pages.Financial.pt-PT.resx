@@ -121,7 +121,9 @@
   
   
   
-  
+  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
+    <value>Não pode atestar uma quantidade nula.</value>
+  </data>
   
   
   
@@ -161,37 +163,42 @@
   </data>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
-    <value>Valor da factura (em {0})</value>
-    <comment>{0} is the organization's main currency.</comment>
+  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
+    <value>Atestar</value>
+    <comment>keep short</comment>
   </data>
+  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
+    <value>Atestar</value>
+  </data>
+  <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
+    <value>Recusar</value>
+    <comment>keep short</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>Descrição</value>
     <comment>Free-text description of invoice</comment>
@@ -429,6 +436,16 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Os recibos da Reivindicação de Despesa #{0:N0} para {1} {2:N2} foram validados.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

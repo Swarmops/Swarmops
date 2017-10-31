@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddMotionAmendment_AmendmentSubmittedAs" xml:space="preserve">
-    <value>crwdns6555196:0{0}crwdnd6555196:0{1}crwdne6555196:0</value>
+    <value>crwdns6555196:0#{0}crwdnd6555196:0{1}crwdne6555196:0</value>
     <comment>Keep very short</comment>
   </data>
   <data name="AddMotionAmendment_Decision" xml:space="preserve">
@@ -151,7 +151,7 @@
     <comment>Proposed decisions, one per line</comment>
   </data>
   <data name="AddMotion_MotionSubmittedAs" xml:space="preserve">
-    <value>crwdns6555205:0{0}crwdne6555205:0</value>
+    <value>crwdns6555205:0#{0}crwdne6555205:0</value>
     <comment>Keep short</comment>
   </data>
   <data name="AddMotion_PageTitle" xml:space="preserve">
@@ -240,7 +240,7 @@
     <comment>Hyperlink text</comment>
   </data>
   <data name="ViewMotion_MotionDesignation" xml:space="preserve">
-    <value>crwdns6555231:0{0}crwdne6555231:0</value>
+    <value>crwdns6555231:0#{0}crwdne6555231:0</value>
   </data>
   <data name="ViewMotion_PageTitle" xml:space="preserve">
     <value>crwdns6555232:0crwdne6555232:0</value>

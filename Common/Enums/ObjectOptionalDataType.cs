@@ -289,6 +289,11 @@ namespace Swarmops.Common.Enums
         OrgRegularLabel,
 
         /// <summary>
+        /// What are applying members called in this org?
+        /// </summary>
+        OrgApplicantLabel,
+
+        /// <summary>
         ///     What are activists called in this org?
         /// </summary>
         OrgActivistLabel,

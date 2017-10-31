@@ -124,9 +124,14 @@
   </data>
   
   
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>{0} Regular</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
   
-  
-  
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>Voluntário Oficial</value>
+  </data>
   <data name="Signup_DashboardMessage" xml:space="preserve">
     <value>Bem-vindo! Este é o &lt;em&gt;Painel de Controlo,&lt;/em&gt; onde pode aceder à funcionalidade interna de {0}. Irá receber mais informação brevemente no seu email.&lt;br/&gt;&lt;br/&gt;
 
@@ -165,7 +170,10 @@ Se se voluntariou para tomar responsabilidade formal, alguém (provavelmente tam
   <data name="Signup_Password2" xml:space="preserve">
     <value>Repita a palavra-passe</value>
   </data>
-  
+  <data name="Signup_SigningUp" xml:space="preserve">
+    <value>A inscrever em {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
   <data name="Signup_Step1Header" xml:space="preserve">
     <value>Bem-vindo!</value>
   </data>
@@ -205,7 +213,10 @@ Se se voluntariou para tomar responsabilidade formal, alguém (provavelmente tam
   <data name="Signup_Step6Text" xml:space="preserve">
     <value>Tudo feito. Vamos entrar!</value>
   </data>
-  
+  <data name="Signup_Step6Text_Payment" xml:space="preserve">
+    <value>Vamos pagar a taxa {0} e concluir!</value>
+    <comment>The {0} is Membership, Ambassadorship, etc. The Regularship label for this organization.</comment>
+  </data>
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Concluir Inscrição.</value>
   </data>

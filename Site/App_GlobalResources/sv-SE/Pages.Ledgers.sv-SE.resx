@@ -668,10 +668,7 @@
     <value>Exakta matchningar för beloppet</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
-  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
-    <value>Matchande belopp, tidsmässigt fel</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
+  
   <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
     <value>Belopp inom 5% tolerans</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
@@ -773,4 +770,72 @@
     <value>Ospenderade TxOut</value>
     <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
   </data>
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>Tillgångar XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_AssetsDelta" xml:space="preserve">
+    <value>(förändring)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
+    <value>Balansräkningen är en översikt över tillgångar och skulder vid ett ögonblick i tiden, och används för att se hur resultaten påverkar organisationens övergripande finansiella hälsa. Du kan också titta på den &lt;a href="BalanceSheet"&gt;avancerade balansräkningen&lt;/a&gt; för mer detaljer, eller på &lt;a href="ProfitLossStatement"&gt;resultaträkningen&lt;/a&gt; som är en översikt över inkomster och utgifter.</value>
+  </data>
+  <data name="BalanceSheet_Liabilities" xml:space="preserve">
+    <value>Skulder XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_LiabilitiesDelta" xml:space="preserve">
+    <value>(förändring)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_LossToDate" xml:space="preserve">
+    <value>Förlust hittills ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
+    <value>Vinst hittills ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
+    <value>Skapa transaktion</value>
+    <comment>Text on button for executing create</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDateTime" xml:space="preserve">
+    <value>Datum och tid för transaktion (UTC)</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDescription" xml:space="preserve">
+    <value>Transaktionsbeskrivning</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDialogHeader" xml:space="preserve">
+    <value>Skapar ny transaktion</value>
+    <comment>Header of dialog</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAccount" xml:space="preserve">
+    <value>Konto för första transaktionsrad</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAmount" xml:space="preserve">
+    <value>Belopp för första transaktionsrad</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
+    <value>Lägg till transaktion</value>
+    <comment>Option in sidebar</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
+    <value>Matcha faktura</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
+    <value>Matcha transaktionen med denna utgående faktura:</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

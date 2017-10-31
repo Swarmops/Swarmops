@@ -363,12 +363,10 @@ Uppgraderingen kommer att försökas på nytt varje timme. Vissa funktioner kan 
   </data>
   
   
-  <data name="System_Startup_Body" xml:space="preserve">
-    <value>Swarmops Backend version [SwarmopsVersion], som körs på maskinen [HostName], har startat och har anslutit till databasen och notifieringsmekanismer.</value>
-  </data>
-  <data name="System_Startup_Subject" xml:space="preserve">
-    <value>Swarmops Backend i drift</value>
-  </data>
+  
+  
+  
+  
   
   
 </root>

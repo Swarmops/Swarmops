@@ -162,9 +162,7 @@
   
   
   
-  <data name="Menu5_Financial_List" xml:space="preserve">
-    <value>Список</value>
-  </data>
+  
   
   
   <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
@@ -299,6 +297,12 @@
   <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
     <value>Налоговые формы заработной платы</value>
   </data>
+  
+  
+  
+  
+  
+  
   
   
   

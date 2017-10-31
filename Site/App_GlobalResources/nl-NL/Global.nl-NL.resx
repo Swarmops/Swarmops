@@ -275,10 +275,7 @@
     <value>Nog te doen</value>
     <comment>List of todo items</comment>
   </data>
-  <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>Geen dringende actie items nu.</value>
-    <comment>Indicator that nothing needs immediate attention</comment>
-  </data>
+  
   <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
     <value>Actie-items komen hier.</value>
     <comment>Placeholder for future action items. Temporary.</comment>
@@ -328,6 +325,15 @@
     <value>Gerelateerde</value>
     <comment>List of shortcuts to related actions to current one</comment>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
