@@ -101,7 +101,9 @@
     <asp:Panel runat="server" ID="PanelShowNoVatReports" Visible="false">
         <h2><asp:Label runat="server" ID="LabelHeaderNoVatReportsToDisplay"/></h2>
         <div style="float: left; margin-right: 10px"><img src="/Images/Icons/iconshock-cross-96px.png"/>
-        </div><asp:Label runat="server" ID="LabelNoVatReportsToDisplay"/>
+        </div>
+        <br/>
+        <asp:Label runat="server" ID="LabelNoVatReportsToDisplay"/>
         <div style="clear:both"></div> <!-- fills up the rest of the space of the warning box -->
     </asp:Panel>
     
