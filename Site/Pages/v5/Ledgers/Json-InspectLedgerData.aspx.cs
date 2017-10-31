@@ -162,8 +162,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 runningBalance += row.AmountCents;
 
-                string actionHtml = String.Format (
-                    "<img src=\"/Images/Icons/iconshock-magnifyingglass-16px.png\" class=\"LocalIconInspect\" txId=\"{0}\" />", row.FinancialTransactionId.ToString (CultureInfo.InvariantCulture));
+                string hasDoxString =
+                    "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\\\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-search-256px.png';\\\" txId='{0}' class='LocalIconInspect' style='cursor:pointer' height='20' width='20' />";
+
+                string actionHtml = String.Format (hasDoxString, row.FinancialTransactionId.ToString (CultureInfo.InvariantCulture));
 
                 if (canSeeAudit)
                 {
