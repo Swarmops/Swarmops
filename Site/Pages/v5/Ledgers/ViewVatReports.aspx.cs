@@ -139,7 +139,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LiteralHeaderVatOutbound.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Outbound;
             this.LiteralHeaderDox.Text = Resources.Global.Global_Dox;
 
-            this.LabelHeaderNoVatReportsToDisplay.Text = Resources.Pages.Ledgers.ViewVatReports_NoReports;
+            this.LabelHeaderNoVatReportsToDisplay.Text = Resources.Pages.Ledgers.ViewVatReports_Header_NoReports;
             this.LabelNoVatReportsToDisplay.Text = Resources.Pages.Ledgers.ViewVatReports_NoReports;
         }
 
