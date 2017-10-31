@@ -2078,6 +2078,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No VAT reports for this organization.
+        /// </summary>
+        internal static string ViewVatReports_Header_NoReports {
+            get {
+                return ResourceManager.GetString("ViewVatReports_Header_NoReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Outbound VAT.
         /// </summary>
         internal static string ViewVatReports_Header_Outbound {
@@ -2101,6 +2110,15 @@ namespace Resources.Pages {
         internal static string ViewVatReports_Info {
             get {
                 return ResourceManager.GetString("ViewVatReports_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no VAT reports to display. This is probably due to the fact that a full VAT reporting period has not elapsed yet, so it has not been possible to create a report yet..
+        /// </summary>
+        internal static string ViewVatReports_NoReports {
+            get {
+                return ResourceManager.GetString("ViewVatReports_NoReports", resourceCulture);
             }
         }
         

@@ -13,6 +13,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
     public partial class ViewVatReports {
         
         /// <summary>
+        /// PanelShowVatReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelShowVatReports;
+        
+        /// <summary>
         /// LabelContentHeader control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,33 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal LiteralHeaderDox;
+        
+        /// <summary>
+        /// PanelShowNoVatReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelShowNoVatReports;
+        
+        /// <summary>
+        /// LabelHeaderNoVatReportsToDisplay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelHeaderNoVatReportsToDisplay;
+        
+        /// <summary>
+        /// LabelNoVatReportsToDisplay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelNoVatReportsToDisplay;
         
         /// <summary>
         /// LabelSidebarDownload control.

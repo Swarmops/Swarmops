@@ -59,6 +59,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     
+    <asp:Panel runat="server" ID="PanelShowVatReports">
     <h2><div class="elementFloatFar"><%= CurrentOrganization.Currency.DisplayCode %></div><asp:Label ID="LabelContentHeader" runat="server" />&nbsp;<asp:DropDownList runat="server" ID="DropReports"/>&nbsp;<img alt="Loading" src="/Images/Abstract/ajaxloader-blackcircle.gif" ID="imageLoadIndicator" /></h2>
     <table id="tableVatReport" title="" class="easyui-treegrid" style="width:680px;height:600px"  
         url="Json-VatReportData.aspx"
@@ -68,7 +69,7 @@
         idField="id" treeField="txid">
         <thead> 
             <tr>
-                <th field="txid" width="40"><asp:Literal ID="LiteralHeaderTransactionId" Text="Tx#" runat="server"/></th>  
+                <th field="txid" width="60"><asp:Literal ID="LiteralHeaderTransactionId" Text="Tx#" runat="server"/></th>  
                 <th field="datetime" width="100"><asp:Literal ID="LiteralHeaderDateTime" runat="server" /></th>  
                 <th field="description" width="280"><asp:Literal ID="LiteralHeaderDescription" runat="server" /></th>  
                 <th field="turnover" width="140" align="right"><asp:Literal ID="LiteralHeaderTurnover" runat="server" /></th>
@@ -77,7 +78,13 @@
                 <th field="dox" width="40" align="center"><asp:Literal ID="LiteralHeaderDox" runat="server" /></th>
             </tr>  
         </thead>  
-    </table> 
+    </table>
+    </asp:Panel>
+    <asp:Panel runat="server" ID="PanelShowNoVatReports" Visible="false">
+        <h2><asp:Label runat="server" ID="LabelHeaderNoVatReportsToDisplay"/></h2>
+        <div style="float: left; margin-right: 10px"><img src="/Images/Icons/iconshock-cross-96px.png"/>
+        </div><asp:Label runat="server" ID="LabelNoVatReportsToDisplay"/>
+    </asp:Panel>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">

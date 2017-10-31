@@ -906,4 +906,10 @@
     <value>View</value>
     <comment>This is the word or words before the name of the displayed VAT report.</comment>
   </data>
+  <data name="ViewVatReports_Header_NoReports" xml:space="preserve">
+    <value>No VAT reports for this organization</value>
+  </data>
+  <data name="ViewVatReports_NoReports" xml:space="preserve">
+    <value>There are no VAT reports to display. This is probably due to the fact that a full VAT reporting period has not elapsed yet, so it has not been possible to create a report yet.</value>
+  </data>
 </root>
