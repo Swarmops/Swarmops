@@ -633,7 +633,8 @@
     <value>Creating Outbound Invoice</value>
   </data>
   <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Create Invoice</value>
+    <value>Create</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
   </data>
   <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
     <value>Creating Outbound Invoice</value>

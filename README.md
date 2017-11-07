@@ -25,10 +25,87 @@ Stable releases are built every six months, at the end of every calendar half-ye
 This is the plan, at least. "Stable" is a somewhat wide definition at the moment. Rather, Swarmops has a few functions to go to enter Open Beta stage.
 
 
-Beta features checklist
+Installation
+------------
+
+Minimum requirements are Debian Stretch or Ubuntu Xenial (due to systemd requirements; upstart is deprecated). As Debian Stretch hasn't been released at time of writing, Ubuntu Xenial is the only platform Swarmops is currently built for.
+
+If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! Run these commands _as root_ - first, fetch the signing key for the repository:
+
+> `wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -`
+
+Then, add the Swarmops repository to your list of software sources, where [your_distribution] below is xenial (Ubuntu) or stretch (Debian):
+> `echo deb http://packages.swarmops.com/ [your_distribution] contrib > /etc/apt/sources.list.d/swarmops.list`
+
+Then, run this to install the Swarmops frontend:
+> `apt-get update; apt-get install swarmops-frontend`
+
+If you installed onto a clean server, Swarmops will offer to configure Apache to use Swarmops as the default site. If you decline this offer, you can still enable the site by an `a2ensite swarmops` as a suggested configuration is provided. If you prefer to configure this entirely manually, install a new Virtual Host in Apache, a Mono host, pointing at /usr/share/swarmops/frontend as its directory. We're using /usr/bin/mod-mono-server4 as our server. Note the 4 at the end; many configurators are old and will set a 2 there. See /etc/apache2/sites-available/swarmops.conf for a template file.
+
+Navigate to the new site and continue installation from the running site. To complete the install, you will also need to install a backend process, which can (but shouldn't) run on the same machine:
+
+> `apt-get install swarmops-backend`
+
+At one point in the installation process, you will be prompted to copy the file `/etc/swarmops/database.config` from the server running swarmops-*frontend* to the server running swarmops-*backend*. This allows the backend to connect to the database as configured by the installation process. Once you do this, the installation process will detect the running backend and the installation will continue.
+
+The packages named as listed above (swarmops-frontend) are the sprint packages, released every two weeks. If you prefer, you can opt for the development builds (swarmops-frontend-internal) or the stable six-month releases (swarmops-frontend-stable) instead. The development builds aren't really recommended unless you're actively contributing to development and want to see new changes running on the development sandbox.
+
+
+Contributing
+------------
+
+No permission necessary, really. Just check in code. The backend is ASP.Net/C# and the frontend (where most of the development happens) is Javascript and jQuery. But if you want to see what's being worked on, feel free to get an account at http://scrum.pirateacademy.eu and join the Swarmops project, and grab tasks from the master list.
+
+Let's take that again, because it's important: **about 90% of development happens in JavaScript and jQuery**, so don't shy away because it looks like a C# backend.
+
+There's also a Facebook group named [Swarmops Developers](https://www.facebook.com/groups/swarmops.developers/) which you may want to join. Yes, Facebook is evil, so give me a better alternative. Until there is one, that's where discussions happen.
+
+
+License
+-------
+
+No, there isn't a "license". This code is completely in the public domain, with the exception of external libraries used. Those are marked as such. In jurisdictions where public domain doesn't exist as a legal concept, the code is under the CC-0 (Creative Commons Zero) license.
+
+That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.
+
+
+Beta-2 features progress
+------------------------
+
+Beta-2 will be released on December 5, with string freeze on December 2. Its focus is to retool for Bitcoin Cash and/or the Bitcoin 2x fork. This goal is fluid and may change as the strength of the respective forks become clearer.
+
+- [ ] Database update for Bitcoin Cash balances for addresses
+- [ ] Update NBitcoin to handle dual-mode
+- [ ] Rewrite the Bitcoin Echo page to use Bitcoin Cash
+- [ ] Rewrite the Bitcoin Donation page; make more resilient to socket failures
+- [ ] Write a Pay Invoice page for Bitcoin Cash
+- [ ] String Freeze
+- [ ] Release
+
+
+Beta-3 features progress
+------------------------
+
+Beta-3 will be released on January 5, 2018, with string freeze on January 2. Its focus will be on Shapeshift integration and ability to receive and send payments in all different cryptocurrencies.
+
+- [ ] Import all crypto pairs from Shapeshift and track exchange rates
+- [ ] Enable cryptocurrency as any other currency on entry
+- [ ] Enable payment identifiers, with currency
+- [ ] Tie payment identifiers to people and suppliers
+- [ ] String Freeze
+
+
+Beta-4 features progress
+------------------------
+
+Beta-4 will be released on February 5, 2018, with string freeze on February 2. Its tentative focus will be Bitwala integration and possibly an open API exposure.
+
+
+
+Overall Beta features checklist
 -----------------------
 
-Here are the features still required to exit beta:
+Here are the features still required to exit beta and declare release:
 
 - [x] enter ledger transactions manually
 - [ ] send invoices (and receive payment in bitcoin)
@@ -75,45 +152,3 @@ There will also be many other small improvements added along with these features
 - [x] Create TX
 - [ ] Download main Ledger
 - [X] Fix password reset after refactor
-
-
-Installation
-------------
-
-Minimum requirements are Debian Stretch or Ubuntu Xenial (due to systemd requirements; upstart is deprecated). As Debian Stretch hasn't been released at time of writing, Ubuntu Xenial is the only platform Swarmops is currently built for.
-
-If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! Run these commands _as root_ - first, fetch the signing key for the repository:
-
-> `wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -`
-
-Then, add the Swarmops repository to your list of software sources, where [your_distribution] below is xenial (Ubuntu) or stretch (Debian):
-> `echo deb http://packages.swarmops.com/ [your_distribution] contrib > /etc/apt/sources.list.d/swarmops.list`
-
-Then, run this to install the Swarmops frontend:
-> `apt-get update; apt-get install swarmops-frontend`
-
-If you installed onto a clean server, Swarmops will offer to configure Apache to use Swarmops as the default site. If you decline this offer, you can still enable the site by an `a2ensite swarmops` as a suggested configuration is provided. If you prefer to configure this entirely manually, install a new Virtual Host in Apache, a Mono host, pointing at /usr/share/swarmops/frontend as its directory. We're using /usr/bin/mod-mono-server4 as our server. Note the 4 at the end; many configurators are old and will set a 2 there. See /etc/apache2/sites-available/swarmops.conf for a template file.
-
-Navigate to the new site and continue installation from the running site. To complete the install, you will also need to install a backend process, which can (but shouldn't) run on the same machine:
-
-> `apt-get install swarmops-backend`
-
-At one point in the installation process, you will be prompted to copy the file `/etc/swarmops/database.config` from the server running swarmops-*frontend* to the server running swarmops-*backend*. This allows the backend to connect to the database as configured by the installation process. Once you do this, the installation process will detect the running backend and the installation will continue.
-
-The packages named as listed above (swarmops-frontend) are the sprint packages, released every two weeks. If you prefer, you can opt for the development builds (swarmops-frontend-internal) or the stable six-month releases (swarmops-frontend-stable) instead. The development builds aren't really recommended unless you're actively contributing to development and want to see new changes running on the development sandbox.
-
-Contributing
-------------
-
-No permission necessary, really. Just check in code. The backend is ASP.Net/C# and the frontend (where most of the development happens) is Javascript and jQuery. But if you want to see what's being worked on, feel free to get an account at http://scrum.pirateacademy.eu and join the Swarmops project, and grab tasks from the master list.
-
-Let's take that again, because it's important: **about 90% of development happens in JavaScript and jQuery**, so don't shy away because it looks like a C# backend.
-
-There's also a Facebook group named [Swarmops Developers](https://www.facebook.com/groups/swarmops.developers/) which you may want to join. Yes, Facebook is evil, so give me a better alternative. Until there is one, that's where discussions happen.
-
-License
--------
-
-No, there isn't a "license". This code is completely in the public domain, with the exception of external libraries used. Those are marked as such. In jurisdictions where public domain doesn't exist as a legal concept, the code is under the CC-0 (Creative Commons Zero) license.
-
-That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.

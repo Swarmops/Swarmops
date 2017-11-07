@@ -58,6 +58,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             foreach (VatReportItem item in items)
             {
                 FinancialTransaction transaction = item.Transaction;
+                bool include = false;
 
                 string element = string.Format("\"id\":\"{0}\",\"txid\":\"{1}\",\"datetime\":\"{2:MMM dd}\",\"description\":\"{3}\"", 
                     transaction.Identity,
@@ -69,18 +70,21 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 {
                     element += String.Format(",\"turnover\":\"{0:N2}\"", item.TurnoverCents / 100.0);
                     turnoverCentsTotal += item.TurnoverCents;
+                    include = true;
                 }
 
                 if (item.VatInboundCents > 0)
                 {
                     element += String.Format(",\"inbound\":\"{0:N2}\"", item.VatInboundCents/ 100.0);
                     inboundCentsTotal += item.VatInboundCents;
+                    include = true;
                 }
 
                 if (item.VatOutboundCents > 0)
                 {
                     element += String.Format(",\"outbound\":\"{0:N2}\"", item.VatOutboundCents/ 100.0);
                     outboundCentsTotal += item.VatOutboundCents;
+                    include = true;
                 }
 
                 if (transaction.Dependency != null)
@@ -89,7 +93,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     element += String.Format(",\"dox\":\"" + hasDoxString + "\"", transaction.Identity);
                 }
 
-                lines.Add("{" + element + "}");
+                if (include)
+                {
+                    lines.Add("{" + element + "}");
+                }
             }
 
             if (lines.Count == 0) // add empty report line 

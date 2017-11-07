@@ -35,6 +35,11 @@ namespace Swarmops.Common.Enums
         OutboundInvoice,
 
         /// <summary>
+        /// A Value Added Tax report to tax authorities
+        /// </summary>
+        VatReport,
+
+        /// <summary>
         ///     Something physical received in the mail
         /// </summary>
         PaperLetter,

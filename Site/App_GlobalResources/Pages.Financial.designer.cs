@@ -682,7 +682,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create Invoice.
+        ///   Looks up a localized string similar to Create.
         /// </summary>
         internal static string CreateOutboundInvoice_ButtonCreate {
             get {

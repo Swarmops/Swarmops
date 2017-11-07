@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Financial;
@@ -70,19 +71,32 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     // Populate dropdown and documents list
 
                     VatReports reports = VatReports.ForOrganization(CurrentOrganization, true);
-                    reports.Sort(VatReports.VatReportSorterByDate);
 
-                    foreach (VatReport report in reports)
+                    if (reports.Count > 0)
                     {
-                        this.DropReports.Items.Add(new ListItem(report.Description,
-                            report.Identity.ToString(CultureInfo.InvariantCulture)));
 
-                        AddDocuments(report);
+                        reports.Sort(VatReports.VatReportSorterByDate);
+
+                        foreach (VatReport report in reports)
+                        {
+                            this.DropReports.Items.Add(new ListItem(report.Description,
+                                report.Identity.ToString(CultureInfo.InvariantCulture)));
+
+                            AddDocuments(report);
+                        }
+
+                        initialReport = reports.Last();
+                        this.InitialReportId = initialReport.Identity;
+                        this.DropReports.SelectedValue = this.InitialReportId.ToString(CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        // There are no VAT reports for this organization (yet?) so display an error instead
+
+                        this.PanelShowVatReports.Visible = false;
+                        this.PanelShowNoVatReports.Visible = true;
                     }
 
-                    initialReport = reports.Last();
-                    this.InitialReportId = initialReport.Identity;
-                    this.DropReports.SelectedValue = this.InitialReportId.ToString(CultureInfo.InvariantCulture);
                 }
             }
 
@@ -107,7 +121,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     {
                         BaseId = item.FinancialTransactionId.ToString(CultureInfo.InvariantCulture),
                         DocId = doc.Identity,
-                        Title = tx.Description + " - " + doc.Description
+                        Title = tx.Description
                     });
                 }
             }
@@ -124,7 +138,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LiteralHeaderVatInbound.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Inbound;
             this.LiteralHeaderVatOutbound.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Outbound;
             this.LiteralHeaderDox.Text = Resources.Global.Global_Dox;
-            // Localize all controls - todo
+
+            this.LabelHeaderNoVatReportsToDisplay.Text = Resources.Pages.Ledgers.ViewVatReports_Header_NoReports;
+            this.LabelNoVatReportsToDisplay.Text = Resources.Pages.Ledgers.ViewVatReports_NoReports;
         }
 
         public int InitialReportId { get; private set; }
