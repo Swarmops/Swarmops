@@ -166,7 +166,7 @@ fi
 cd ../..
 
 
-scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER xenial,jessie,stretch $PACKAGE $BUILDID
+scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER xenial,stretch $PACKAGE $BUILDID
 
 
 # TODO: FIX INTERNAL INSTALL?
