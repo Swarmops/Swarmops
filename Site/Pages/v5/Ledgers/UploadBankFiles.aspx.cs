@@ -751,6 +751,7 @@ namespace Swarmops.Site.Pages.Ledgers
             if (databaseAccountBalanceCents - beyondEofCents == import.LatestAccountBalanceCents)
             {
                 Payouts.AutomatchAgainstUnbalancedTransactions (args.Organization);
+                OutboundInvoices.AutomatchAgainstUnbalancedTransactions(args.Organization, args.CurrentUser);
                 result.AccountBalanceMatchesBank = true;
                 result.BalanceMismatchCents = 0;
             }
