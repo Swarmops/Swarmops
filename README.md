@@ -38,7 +38,7 @@ Then, add the Swarmops repository to your list of software sources, where [your_
 > `echo deb http://packages.swarmops.com/ [your_distribution] contrib > /etc/apt/sources.list.d/swarmops.list`
 
 Then, run this to install the Swarmops frontend:
-> `apt-get update; apt-get install swarmops-frontend`
+> `apt update; apt install swarmops-frontend`
 
 If you installed onto a clean server, Swarmops will offer to configure Apache to use Swarmops as the default site. If you decline this offer, you can still enable the site by an `a2ensite swarmops` as a suggested configuration is provided. If you prefer to configure this entirely manually, install a new Virtual Host in Apache, a Mono host, pointing at /usr/share/swarmops/frontend as its directory. We're using /usr/bin/mod-mono-server4 as our server. Note the 4 at the end; many configurators are old and will set a 2 there. See /etc/apache2/sites-available/swarmops.conf for a template file.
 
@@ -54,11 +54,11 @@ The packages named as listed above (swarmops-frontend) are the sprint packages, 
 Contributing
 ------------
 
-No permission necessary, really. Just check in code. The backend is ASP.Net/C# and the frontend (where most of the development happens) is Javascript and jQuery. But if you want to see what's being worked on, feel free to get an account at http://scrum.pirateacademy.eu and join the Swarmops project, and grab tasks from the master list.
+No permission necessary, really. Just check in code. The backend is ASP.Net/C# and the frontend (where most of the development happens) is Javascript and jQuery. There's not really a master list beyond this one at present with tasks; getting one to work in GitHub (or GitLab) would be practical. A number of approaches have been tried, none of which have worked out in practice.
 
 Let's take that again, because it's important: **about 90% of development happens in JavaScript and jQuery**, so don't shy away because it looks like a C# backend.
 
-There's also a Facebook group named [Swarmops Developers](https://www.facebook.com/groups/swarmops.developers/) which you may want to join. Yes, Facebook is evil, so give me a better alternative. Until there is one, that's where discussions happen.
+There's also a Facebook group named [Swarmops Developers](https://www.facebook.com/groups/swarmops.developers/) which you may want to join. Yes, Facebook is evil, so give me a better alternative. Until there is one, that's where discussions happen. There's also a little-used [Slack](https://swarmops.slack.com).
 
 
 License
@@ -72,10 +72,11 @@ That also means that any code _you_ commit to Swarmops, whether by checking in c
 Beta-2 features progress
 ------------------------
 
-Beta-2 will be released on December 5, with string freeze on December 2. Its focus is to retool for Bitcoin Cash and/or the Bitcoin 2x fork. This goal is fluid and may change as the strength of the respective forks become clearer.
+Beta-2 will be released on December 5, with string freeze on December 2. Its focus is to retool for Bitcoin Cash ~~and/or the Bitcoin 2x fork. This goal is fluid and may change as the strength of the respective forks become clearer.~~
 
 - [ ] Database update for Bitcoin Cash balances for addresses
 - [ ] Update NBitcoin to handle dual-mode
+- [ ] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 1, without conversion to fiat)
 - [ ] Rewrite the Bitcoin Echo page to use Bitcoin Cash
 - [ ] Rewrite the Bitcoin Donation page; make more resilient to socket failures
 - [ ] Write a Pay Invoice page for Bitcoin Cash
@@ -89,6 +90,7 @@ Beta-3 features progress
 Beta-3 will be released on January 5, 2018, with string freeze on January 2. Its focus will be on Shapeshift integration and ability to receive and send payments in all different cryptocurrencies.
 
 - [ ] Import all crypto pairs from Shapeshift and track exchange rates
+- [ ] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 2, including conversion to fiat)
 - [ ] Enable cryptocurrency as any other currency on entry
 - [ ] Enable payment identifiers, with currency
 - [ ] Tie payment identifiers to people and suppliers
