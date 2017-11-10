@@ -5,6 +5,7 @@
 # Home folder for script is /home/builder/swarmops/packaging
 
 DEPLOYDIR=usr/share/swarmops
+DISTROS=xenial,stretch,jessie
 
 # Check parameters
 
@@ -166,7 +167,7 @@ fi
 cd ../..
 
 
-scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER xenial,stretch $PACKAGE $BUILDID
+scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER $DISTROS $PACKAGE $BUILDID
 
 
 # TODO: FIX INTERNAL INSTALL?
