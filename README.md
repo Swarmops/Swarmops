@@ -50,6 +50,8 @@ At one point in the installation process, you will be prompted to copy the file 
 
 The packages named as listed above (swarmops-frontend) are the sprint packages, released on the 5th of every month. If you prefer, you can opt for the development builds (swarmops-frontend-internal) or the stable six-month releases (swarmops-frontend-stable) instead. The development builds aren't really recommended unless you're actively contributing to development and want to see new changes running on the development sandbox.
 
+If you're running into trouble, or are just curious, see the "detailed install instructions" last in this document.
+
 
 Contributing
 ------------
@@ -154,3 +156,31 @@ There will also be many other small improvements added along with these features
 - [x] Create TX
 - [ ] Download main Ledger
 - [X] Fix password reset after refactor
+
+
+Detailed install instructions
+-----------------------------
+
+This is the exact install procedure for a two-server setup -- you could also install on one and the same server:
+
+1. Create two clean Ubuntu Xenial VMs. Call them backend and frontend. They can be in different firewall zones. Install mysql-server on the backend (or on a third server).
+
+2. Install the repository key as described above and run `apt update`.
+
+3. Install the packages "swarmops-frontend" and "swarmops-backend", respectively, on the frontend and backend machine. Make use of as much automation on installing swarmops-frontend as you like, up to and including the autoconfiguration of Apache.
+
+4. Open a browser and navigate to the swarmops-frontend machine, pass the first no-bot check in the install wizards, and enter database server root credentials. This will create a database and provision it with initial data, which takes a couple of minutes. (You can create all of this manually if you're not comfortable with entering root credentials.)
+
+5. The installation will pause here and wait for the backend to come online. This is done by manually copying the now-created `/etc/swarmops/database.config` file from the frontend to the backend machine.
+
+6. As the backend daemon detects the presence of a valid `/etc/swarmops/database.config` file, it will open the database (using the credentials of the file - make sure they're also valid for the backend machine, if you're using machine-level permissions!) and write its presence into the database.
+
+7. The installing frontend process will detect this new entry in the database and proceed to a prompt to create the first user. On entering the credentials, it will login as that user into the Sandbox organization, and the Swarmops instance is operational.
+
+8. From the Dashboard, the Apache will open a websocket to a daemon running on its own machine on port 12172, and that daemon will in turn open a websocket to the backend daemon on port 10944 (configurable in Admin / System-Wide Settings).
+
+9. From there, one can play around with the Sandbox organization, or create one or more live organizations.
+
+
+If one of these steps fails, in particular if the frontend doesn't get to provision the entire database and bring the first user logged in to the Swarmops Desktop, it is currently recommended to restart from two blank servers. Future code will handle more failure scenarios.
+
