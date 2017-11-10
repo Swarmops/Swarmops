@@ -20,7 +20,7 @@ Goal #3, _functional software to assist civil liberties resistances in repressiv
 Release schedule
 ----------------
 
-Stable releases are built every six months, at the end of every calendar half-year. Sprints are built every two weeks. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
+Stable releases are built every six months, at the end of every calendar half-year. Sprints are built every month. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
 
 This is the plan, at least. "Stable" is a somewhat wide definition at the moment. Rather, Swarmops has a few functions to go to enter Open Beta stage.
 
@@ -42,13 +42,13 @@ Then, run this to install the Swarmops frontend:
 
 If you installed onto a clean server, Swarmops will offer to configure Apache to use Swarmops as the default site. If you decline this offer, you can still enable the site by an `a2ensite swarmops` as a suggested configuration is provided. If you prefer to configure this entirely manually, install a new Virtual Host in Apache, a Mono host, pointing at /usr/share/swarmops/frontend as its directory. We're using /usr/bin/mod-mono-server4 as our server. Note the 4 at the end; many configurators are old and will set a 2 there. See /etc/apache2/sites-available/swarmops.conf for a template file.
 
-Navigate to the new site and continue installation from the running site. To complete the install, you will also need to install a backend process, which can (but shouldn't) run on the same machine:
+Navigate to the new site and continue installation from the running site. To complete the install, you will also need to install a backend process, which can (but shouldn't) run on the same machine; the frontend communicates with the backend through the database and through TCP port 10944:
 
-> `apt-get install swarmops-backend`
+> `apt install swarmops-backend`
 
 At one point in the installation process, you will be prompted to copy the file `/etc/swarmops/database.config` from the server running swarmops-*frontend* to the server running swarmops-*backend*. This allows the backend to connect to the database as configured by the installation process. Once you do this, the installation process will detect the running backend and the installation will continue.
 
-The packages named as listed above (swarmops-frontend) are the sprint packages, released every two weeks. If you prefer, you can opt for the development builds (swarmops-frontend-internal) or the stable six-month releases (swarmops-frontend-stable) instead. The development builds aren't really recommended unless you're actively contributing to development and want to see new changes running on the development sandbox.
+The packages named as listed above (swarmops-frontend) are the sprint packages, released on the 5th of every month. If you prefer, you can opt for the development builds (swarmops-frontend-internal) or the stable six-month releases (swarmops-frontend-stable) instead. The development builds aren't really recommended unless you're actively contributing to development and want to see new changes running on the development sandbox.
 
 
 Contributing
