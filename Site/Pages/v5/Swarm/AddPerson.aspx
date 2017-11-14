@@ -78,7 +78,7 @@
             }
     }
 
-    function UpdatePostalPrefix(oldValue, newValue) {
+    function UpdatePostalPrefix(newValue, oldValue) {
         $('#spanCountryPrefix').text(newValue);
         $('#<%= TextCity.ClientID %>').removeAttr("disabled").val('');
             $('#spanDetectedGeo').text('');
