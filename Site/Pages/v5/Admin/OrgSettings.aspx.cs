@@ -141,7 +141,7 @@ namespace Swarmops.Frontend.Pages.Admin
                                     org.FinancialAccounts.IncomeCurrencyFluctuations.Active);
             result.AccountsVat = (org.FinancialAccounts.AssetsVatInbound != null &&
                                   org.FinancialAccounts.AssetsVatInbound.Active);
-            result.VatReportPeriod = org.VatReportFrequencyMonths;
+            result.VatReportFrequency = org.VatReportFrequencyMonths;
             result.ParticipantFinancials = org.ParticipantFinancialsEnabled;
             result.PaypalAccountAddress = org.PaypalAccountMailAddress;
 
@@ -510,7 +510,7 @@ namespace Swarmops.Frontend.Pages.Admin
             public bool AccountPaypal;
             public bool AccountsForex;
             public bool AccountsVat;
-            public int VatReportPeriod;
+            public int VatReportFrequency;
             public bool ParticipantFinancials;
             public string PaypalAccountAddress;
 
