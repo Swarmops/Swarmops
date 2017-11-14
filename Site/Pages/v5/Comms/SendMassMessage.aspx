@@ -94,7 +94,7 @@
             return null;
         }
 
-        function onRecipientChange(oldClassIgnored, newRecipientClass) {
+        function onRecipientChange(newRecipientClass, oldClassIgnored) {
             selectedRecipientClass = newRecipientClass;
             updateRecipientCount(newRecipientClass, selectedGeographyId);
         }

@@ -12,7 +12,7 @@
                 panelWidth: 300<% 
                 if (!String.IsNullOrEmpty(this.OnClientChange))
                 {
-                    Response.Write(",\r\nonChange: function(newVal, oldVal) { " + this.OnClientChange + "(oldVal, newVal); }");
+                    Response.Write(",\r\nonChange: function(newVal, oldVal) { " + this.OnClientChange + "(newVal, oldVal); }");
                 }
                            
                 %>
