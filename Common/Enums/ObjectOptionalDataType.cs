@@ -200,6 +200,7 @@ namespace Swarmops.Common.Enums
         ///     True if the organization declares inbound/outbound Value Added Tax
         /// </summary>
         OrgValueAddedTaxEnabled,
+        OrgValueAddedTaxFrequency,
         OrgFinancialMailName,
         OrgFinancialMailAddress,
 

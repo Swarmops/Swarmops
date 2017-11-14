@@ -24,7 +24,7 @@ namespace Swarmops.Logic.Financial
             // foreach organization, if organization is VAT enabled
 
             Organization organization = Organization.FromIdentity(8); // HACK TEMPORARY HACK
-            int reportMonthInterval = 1; // TODO: READ FROM ORG PARAMETERS
+            int reportMonthInterval = organization.VatReportFrequencyMonths;
 
             // Get the list of previous VAT reports
 

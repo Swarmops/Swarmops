@@ -2,6 +2,7 @@
 <%@ Import Namespace="System.Threading" %>
 <%@ Import Namespace="Swarmops.Common.Enums" %>
 
+
 <script language="javascript" type="text/javascript">
         $(document).ready(function () {
             $('#<%=this.ClientID %>_DropControl').combobox({
@@ -10,11 +11,74 @@
                 width: 324,
                 panelAlign: '<%= Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft? "right": "left" %>',
                 panelWidth: 300<% 
-                if (!String.IsNullOrEmpty(this.OnClientChange))
+
+    if (!String.IsNullOrEmpty(this.OnClientChange) || !String.IsNullOrEmpty(this.AjaxCallbackUrl))
+    {
+        Response.Write(",\r\nonChange: function(newVal, oldVal) { ");
+
+        if (string.IsNullOrEmpty(AjaxCallbackUrl))
+        {
+            // Only client-side notification, no server involved
+            Response.Write(this.OnClientChange + "(oldVal, newVal);");
+        }
+        else
+        {
+            Response.Write("$('#" + this.ClientID + "_DropControl + span.combo > input').css('background-color', '#FFFFA0');"); // set background yellow indicating processing
+
+            Response.Write(
+                @"var jsonData = {}; " +
+                @"jsonData.newValue = " + this.ClientID + "_val(); " +
+                @"jsonData.cookie = '" + this.Cookie + "'; " +
+
+                @"SwarmopsJS.ajaxCall(" +
+                    @"'" + this.AjaxCallbackUrl + "'," +
+                    @"jsonData," +
+                    @"$.proxy(function(msg) { " +
+                    @"  if (msg.Success == false) { " +
+                    @"    if (msg.DisplayMessage != null) { " +
+                    @"       alertify.error(msg.DisplayMessage); " +
+                    @"    } else { " +
+                    @"      alertify.error(SwarmopsJS.unescape('" + this.Localized_AjaxGeneralErrorSettingValue + "')); " +
+                    @"    } " +
+                    @"      $('#" + this.ClientID + "_DropControl + span.combo > input').css('background-color', '#FFA0A0'); " + // set background red indicating error "
+                    @"    } else { " +
+                    @"      if (msg.DisplayMessage != null) { " +
+                    @"        alertify.log(msg.DisplayMessage); " +
+                    @"      } " +
+                    @"      $('#" + this.ClientID + "_DropControl + span.combo > input').css('background-color', '#E0FFE0'); "); // set background green indicating success
+
+
+            if (!string.IsNullOrEmpty(this.OnClientChange))
+            {
+                // There should be a callback as well once the server call returns with success
+                if (string.IsNullOrEmpty (this.Cookie))
                 {
-                    Response.Write(",\r\nonChange: function(newVal, oldVal) { " + this.OnClientChange + "(newVal, oldVal); }");
+                    Response.Write (this.OnClientChange + "(msg.NewValue);"); // JavaScript callback on successful change
                 }
-                           
+                else
+                {
+                    Response.Write (this.OnClientChange + "(msg.NewValue, '" + this.Cookie + "');"); // JavaScript callback on successful change
+                }
+            }
+
+                        
+            Response.Write(
+                    @"    } " +
+                    @"    $('#" + this.ClientID + "_DropControl + span.combo > input').animate({ backgroundColor: '#FFFFFF' }, 250); " +  // animate background back to white
+                    @"  }, this), " +
+                    @"  $.proxy(function(msg) { " +
+                    @"        alertify.error(SwarmopsJS.unescape('" + this.Localized_AjaxCallException + "')); " +
+//                     @"        $(this).val(_initVal_" + this.TextInput.ClientID + "); " +   // TODO: Need failure scenario
+                    @"        $('#" + this.ClientID + "_DropControl + span.combo > input').css('background-color', '#FFA0A0'); " +
+                    @"        $('#" + this.ClientID + "_DropControl + span.combo > input').animate({ backgroundColor: '#FFFFFF' }, 250); " +
+                    @"    }, this) " +
+                    @");");  // ends the SwarmopsJS.ajaxCall
+        }
+
+
+        Response.Write(" }"); // ends the onChange function
+    }
+
                 %>
             });
 

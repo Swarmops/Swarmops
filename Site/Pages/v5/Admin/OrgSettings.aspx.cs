@@ -141,6 +141,7 @@ namespace Swarmops.Frontend.Pages.Admin
                                     org.FinancialAccounts.IncomeCurrencyFluctuations.Active);
             result.AccountsVat = (org.FinancialAccounts.AssetsVatInbound != null &&
                                   org.FinancialAccounts.AssetsVatInbound.Active);
+            result.VatReportPeriod = org.VatReportFrequencyMonths;
             result.ParticipantFinancials = org.ParticipantFinancialsEnabled;
             result.PaypalAccountAddress = org.PaypalAccountMailAddress;
 
@@ -479,6 +480,12 @@ namespace Swarmops.Frontend.Pages.Admin
                     authenticationData.CurrentOrganization.TaxPaymentOcr = result.NewValue;
                     break;
 
+                case "VatReportFrequency":
+                    result.Success = true;
+                    result.NewValue = newValue;
+                    authenticationData.CurrentOrganization.VatReportFrequencyMonths = Int32.Parse(newValue);
+                    break;
+
                 default:
                     throw new NotImplementedException("Unknown cookie in StoreCallback");
             }
@@ -503,7 +510,7 @@ namespace Swarmops.Frontend.Pages.Admin
             public bool AccountPaypal;
             public bool AccountsForex;
             public bool AccountsVat;
-            public int VatReportingPeriod;
+            public int VatReportPeriod;
             public bool ParticipantFinancials;
             public string PaypalAccountAddress;
 

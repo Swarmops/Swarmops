@@ -1091,6 +1091,23 @@ namespace Swarmops.Logic.Structure
             }
         }
 
+        public int VatReportFrequencyMonths
+        {
+            get
+            {
+                int frequency = OptionalData.GetOptionalDataInt(ObjectOptionalDataType.OrgValueAddedTaxFrequency);
+                if (frequency == 0)
+                {
+                    return 12; // default to annual (the frequency is in months)
+                }
+                return frequency;
+            }
+            set
+            {
+                OptionalData.SetOptionalDataInt(ObjectOptionalDataType.OrgValueAddedTaxFrequency, value);
+            }
+        }
+
         public Document LogoLandscape
         {
             get
