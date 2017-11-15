@@ -45,6 +45,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Enums\AddressValidationResult.cs" />
     <Compile Include="Enums\AutoMailType.cs" />
+    <Compile Include="Enums\BitcoinChain.cs" />
     <Compile Include="Enums\CommunicationType.cs" />
     <Compile Include="Enums\DocumentType.cs" />
     <Compile Include="Enums\EventTypeSource.cs" />

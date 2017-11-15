@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Basic.Types.Governance;
+using Swarmops.Common.Enums;
 
 namespace Swarmops.Database
 {
@@ -15,8 +16,8 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string hotBitcoinAddressFieldSequence =
-            " HotBitcoinAddressId,OrganizationId,DerivationPath,AddressString,BalanceSatoshis," + // 0-4
-            " ThroughputSatoshis " + // 5
+            " HotBitcoinAddressId,OrganizationId,BitcoinChainId,DerivationPath,AddressString," + // 0-4
+            " AddressStringFallback,BalanceSatoshis,ThroughputSatoshis" + // 5-7
             " FROM HotBitcoinAddresses ";
 
         private const string hotBitcoinAddressUnspentFieldSequence =
@@ -28,12 +29,14 @@ namespace Swarmops.Database
         {
             int hotBitcoinAddressId = reader.GetInt32 (0);
             int organizationId = reader.GetInt32 (1);
-            string derivationPath = reader.GetString (2);
-            string addressString = reader.GetString (3);
-            Int64 balanceSatoshis = reader.GetInt64 (4);
-            Int64 throughputSatoshis = reader.GetInt64 (5);
+            BitcoinChain chain = (BitcoinChain) reader.GetInt32(2);
+            string derivationPath = reader.GetString (3);
+            string addressString = reader.GetString(4);
+            string addressStringFallback = reader.GetString(5);
+            Int64 balanceSatoshis = reader.GetInt64 (6);
+            Int64 throughputSatoshis = reader.GetInt64 (7);
 
-            return new BasicHotBitcoinAddress (hotBitcoinAddressId, organizationId, derivationPath, addressString, balanceSatoshis, throughputSatoshis);
+            return new BasicHotBitcoinAddress (hotBitcoinAddressId, organizationId, chain, derivationPath, addressString, addressStringFallback, balanceSatoshis, throughputSatoshis);
         }
 
         private BasicHotBitcoinAddressUnspent ReadHotBitcoinAddressUnspentFromDataReader(IDataRecord reader)
@@ -174,7 +177,7 @@ namespace Swarmops.Database
 
         #region Creation and manipulation
 
-        public int CreateHotBitcoinAddressConditional(int organizationId, string derivationPath, string address)
+        public int CreateHotBitcoinAddressConditional(int organizationId, BitcoinChain chain, string derivationPath, string address, string addressFallback = "")
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -185,8 +188,10 @@ namespace Swarmops.Database
                     command.CommandType = CommandType.StoredProcedure;
 
                     AddParameterWithName(command, "organizationId", organizationId);
+                    AddParameterWithName(command, "bitcoinChainId", (int) chain);
                     AddParameterWithName(command, "derivationPath", derivationPath);
                     AddParameterWithName(command, "addressString", address);
+                    AddParameterWithName(command, "addressStringFallback", addressFallback);
 
                     return Convert.ToInt32(command.ExecuteScalar());
                 }

@@ -6,6 +6,7 @@ using NBitcoin;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
@@ -458,9 +459,11 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public static void PerformAutomated()
+        public static void PerformAutomated(BitcoinChain chain)
         {
             // Perform all waiting hot payouts for all orgs in the installation
+
+            throw new NotImplementedException("Waiting for rewrite for Bitcoin Cash");
 
             DateTime utcNow = DateTime.UtcNow;
 
@@ -653,7 +656,7 @@ namespace Swarmops.Logic.Financial
                 Dictionary<int, List<string>> notificationSpecLookup = new Dictionary<int, List<string>>();
                 Dictionary<int, List<Int64>> notificationAmountLookup = new Dictionary<int, List<Int64>>();
                 Payout masterPayoutPrototype = Payout.Empty;
-                HotBitcoinAddress changeAddress = HotBitcoinAddress.OrganizationWalletZero (organization);
+                HotBitcoinAddress changeAddress = HotBitcoinAddress.OrganizationWalletZero (organization, BitcoinChain.Core);   // TODO: CHAIN!
 
                 foreach (Payout payout in bitcoinPayouts)
                 {

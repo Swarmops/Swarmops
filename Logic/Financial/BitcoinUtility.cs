@@ -16,6 +16,7 @@ using System.Web.Configuration;
 using NBitcoin;
 using Newtonsoft.Json.Linq;
 using Swarmops.Common;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
@@ -682,7 +683,7 @@ namespace Swarmops.Logic.Financial
             Dictionary<int, List<string>> notificationSpecLookup = new Dictionary<int, List<string>>();
             Dictionary<int, List<Int64>> notificationAmountLookup = new Dictionary<int, List<Int64>>();
             Payout masterPayoutPrototype = Payout.Empty;
-            HotBitcoinAddress changeAddress = HotBitcoinAddress.OrganizationWalletZero(organization);
+            HotBitcoinAddress changeAddress = HotBitcoinAddress.OrganizationWalletZero(organization, BitcoinChain.Core);
 
             // Add the test payment
 

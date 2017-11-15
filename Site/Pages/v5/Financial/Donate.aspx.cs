@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NBitcoin;
 using Newtonsoft.Json.Linq;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -50,7 +51,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 this.PanelEnabled.Visible = false;
             }
 
-            HotBitcoinAddress address = HotBitcoinAddress.Create (this.CurrentOrganization,
+            HotBitcoinAddress address = HotBitcoinAddress.Create (this.CurrentOrganization, BitcoinChain.Cash,
                 BitcoinUtility.BitcoinDonationsIndex, this.CurrentUser.Identity);
 
             this.LiteralBitcoinAddress.Text = address.Address;
@@ -80,7 +81,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 CurrentOrganization.Name, address.Address);
 
             this.ImageBitcoinQr.ImageUrl =
-                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=bitcoin:" +
+                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=bitcoincash:" +
                 HttpUtility.UrlEncode (address.Address + "?label=" +
                                        Uri.EscapeDataString (String.Format (Resources.Pages.Financial.Donate_TxLabel,
                                            CurrentOrganization.Name))); // URI scheme doesn't like &, =

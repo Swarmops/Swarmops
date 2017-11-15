@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NBitcoin;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 
@@ -49,7 +50,7 @@ namespace Swarmops.Logic.Financial
             throw new NotImplementedException();
         }
 
-        public static HotBitcoinAddress Create (Organization organization, params int[] derivationPath)
+        public static HotBitcoinAddress Create (Organization organization, BitcoinChain chain, params int[] derivationPath)
         {
             ExtPubKey extPubKey = BitcoinUtility.BitcoinHotPublicRoot;
             extPubKey = extPubKey.Derive ((uint) organization.Identity);
@@ -62,11 +63,12 @@ namespace Swarmops.Logic.Financial
             }
 
             derivationPathString = derivationPathString.TrimStart();
-            string bitcoinAddress = extPubKey.PubKey.GetAddress (Network.Main).ToString();
+            string bitcoinAddress = extPubKey.PubKey.GetAddress (Network.Main).ToString();    // TODO: CHANGE NETWORK.MAIN TO NEW LOOKUP
+            string bitcoinAddressFallback = extPubKey.PubKey.GetAddress(Network.Main).ToString(); // The fallback address would be the main address
 
             int hotBitcoinAddressId =
                 SwarmDb.GetDatabaseForWriting()
-                    .CreateHotBitcoinAddressConditional (organization.Identity, derivationPathString, bitcoinAddress);
+                    .CreateHotBitcoinAddressConditional (organization.Identity, chain, derivationPathString, bitcoinAddress);
 
             return FromIdentityAggressive (hotBitcoinAddressId);
         }
@@ -76,9 +78,9 @@ namespace Swarmops.Logic.Financial
             return FromBasic(SwarmDb.GetDatabaseForReading().GetHotBitcoinAddress(bitcoinAddress));
         }
 
-        public static HotBitcoinAddress OrganizationWalletZero (Organization organization)
+        public static HotBitcoinAddress OrganizationWalletZero (Organization organization, BitcoinChain chain)
         {
-            return Create (organization, BitcoinUtility.BitcoinWalletIndex, 0);
+            return Create (organization, chain, BitcoinUtility.BitcoinWalletIndex, 0);
         }
 
         public BitcoinSecret PrivateKey

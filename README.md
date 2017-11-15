@@ -76,7 +76,7 @@ Beta-2 features progress
 
 Beta-2 will be released on December 5, with string freeze on December 2. Its focus is to retool for Bitcoin Cash ~~and/or the Bitcoin 2x fork. This goal is fluid and may change as the strength of the respective forks become clearer.~~
 
-- [ ] Database update for Bitcoin Cash balances for addresses
+- [x] Database update for Bitcoin Cash balances for addresses
 - [ ] Update NBitcoin to handle dual-mode
 - [ ] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 1, without conversion to fiat)
 - [ ] Rewrite the Bitcoin Echo page to use Bitcoin Cash
