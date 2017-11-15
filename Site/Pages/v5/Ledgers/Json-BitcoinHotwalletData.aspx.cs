@@ -31,9 +31,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             StringBuilder result = new StringBuilder(16384);
 
             double conversionRate = 1.0;
-            if (!this._authenticationData.CurrentOrganization.Currency.IsBitcoin)
+            if (!this._authenticationData.CurrentOrganization.Currency.IsBitcoinCore)
             {
-                long fiatCentsPerCoin = new Money(100000000, Currency.Bitcoin).ToCurrency (_authenticationData.CurrentOrganization.Currency).Cents;
+                long fiatCentsPerCoin = new Money(100000000, Currency.BitcoinCore).ToCurrency (_authenticationData.CurrentOrganization.Currency).Cents;
                 conversionRate = fiatCentsPerCoin/100000000.0; // on satoshi level
             }
 

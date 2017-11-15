@@ -22,18 +22,34 @@ namespace Swarmops.Logic.Financial
                     return "&micro;BTC"; // HTML entity -- for display only
                 }
 
+                if (base.Code == "BCH")
+                {
+                    return "&micro;BCH"; // HTML entity as above
+                }
+
                 return base.Code;
             }
         }
 
-        public bool IsBitcoin
+        public bool IsBitcoinCore
         {
             get { return (base.Code == "BTC"); }
         }
 
-        public static Currency Bitcoin
+
+        public bool IsBitcoinCash
+        {
+            get { return (base.Code == "BCH"); }
+        }
+
+        public static Currency BitcoinCore
         {
             get { return Currency.FromCode ("BTC"); }
+        }
+
+        public static Currency BitcoinCash
+        {
+            get {  return Currency.FromCode("BCH"); }
         }
 
 
@@ -45,21 +61,21 @@ namespace Swarmops.Logic.Financial
 
         public double GetConversionRate (Currency otherCurrency, DateTime valuationDateTime)
         {
-            if (this.IsBitcoin)
+            if (this.IsBitcoinCore)
             {
                 return SwarmDb.GetDatabaseForReading()
                     .GetCurrencyExchangeRate (otherCurrency.Identity, this.Identity, valuationDateTime);
             }
-            else if (otherCurrency.IsBitcoin)
+            else if (otherCurrency.IsBitcoinCore)
             {
                 return 1.0 / SwarmDb.GetDatabaseForReading()
                     .GetCurrencyExchangeRate (this.Identity, otherCurrency.Identity, valuationDateTime);
             }
             else
             {
-                // Neither is bitcoin, so go via bitcoin
+                // Neither is bitcoin core, so go via bitcoin core
 
-                int bitcoinCurrencyId = Currency.Bitcoin.Identity;
+                int bitcoinCurrencyId = Currency.BitcoinCore.Identity;
                 double thisPerBitcoin = SwarmDb.GetDatabaseForReading()
                     .GetCurrencyExchangeRate (this.Identity, bitcoinCurrencyId, valuationDateTime);
                 double otherPerBitcoin = SwarmDb.GetDatabaseForReading()

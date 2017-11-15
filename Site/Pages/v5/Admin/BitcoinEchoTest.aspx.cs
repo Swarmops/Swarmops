@@ -112,10 +112,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 }
 
                 Swarmops.Logic.Financial.Money moneyReceived = new Swarmops.Logic.Financial.Money(satoshisReceived,
-                    Currency.Bitcoin);
+                    Currency.BitcoinCore);
 
                 // Make sure that the hotwallet native currency is bitcoin
-                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.ForeignCurrency = Currency.Bitcoin;
+                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.ForeignCurrency = Currency.BitcoinCore;
 
                 // Create success message and ledger transaction
                 string successMessage = string.Empty;
@@ -124,7 +124,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                 string returnAddress = BitcoinUtility.GetInputAddressesForTransaction(txHash) [0]; // assumes at least one input address
 
-                if (authData.CurrentOrganization.Currency.IsBitcoin)
+                if (authData.CurrentOrganization.Currency.IsBitcoinCore)
                 {
                     // The ledger is native bitcoin, so units are Satoshis 
 
@@ -156,7 +156,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     FinancialTransaction ledgerTx = FinancialTransaction.Create(authData.CurrentOrganization,
                         DateTime.UtcNow, "Bitcoin echo test (will be repaid immediately)");
                     ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.DebtsOther, -orgNativeCents, authData.CurrentUser);
-                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.Bitcoin);
+                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.BitcoinCore);
                     ledgerTx.BlockchainHash = txHash;
 
                     successMessage = string.Format(Resources.Pages.Admin.BitcoinEchoTest_FundsReceived,

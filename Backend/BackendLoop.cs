@@ -1046,7 +1046,7 @@ namespace Swarmops.Backend
                     Currency currency = hotAddress.Organization.Currency;
                     json["OrganizationId"] = hotAddress.OrganizationId.ToString();
                     json["Currency"] = currency.Code;
-                    Swarmops.Logic.Financial.Money organizationCents = new Money(satoshis, Currency.Bitcoin).ToCurrency(currency);
+                    Swarmops.Logic.Financial.Money organizationCents = new Money(satoshis, Currency.BitcoinCore).ToCurrency(currency);
                     json["Satoshis"] = satoshis.ToString();
                     json["Cents"] = organizationCents.Cents.ToString();
                     json["CentsFormatted"] = String.Format("{0:N2}", organizationCents.Cents/100.0);

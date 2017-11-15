@@ -430,7 +430,7 @@ namespace Swarmops.Frontend.Pages.Admin
         {
             get
             {
-                return CurrentOrganization.Currency.IsBitcoin.ToString().ToLowerInvariant(); // the tostring, tolower makes 'False' into 'false' the way JS wants it
+                return CurrentOrganization.Currency.IsBitcoinCore.ToString().ToLowerInvariant(); // the tostring, tolower makes 'False' into 'false' the way JS wants it
             }
         }
 

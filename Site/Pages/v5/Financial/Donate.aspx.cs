@@ -117,10 +117,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 }
 
                 Swarmops.Logic.Financial.Money moneyReceived = new Swarmops.Logic.Financial.Money(satoshisReceived,
-                    Currency.Bitcoin);
+                    Currency.BitcoinCore);
 
                 // Make sure that the hotwallet native currency is bitcoin
-                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.ForeignCurrency = Currency.Bitcoin;
+                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.ForeignCurrency = Currency.BitcoinCore;
 
                 // Create success message and ledger transaction
                 string successMessage = string.Empty;
@@ -139,7 +139,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     // This exception is expected - the transaction should not yet exist
                 }
 
-                if (authData.CurrentOrganization.Currency.IsBitcoin)
+                if (authData.CurrentOrganization.Currency.IsBitcoinCore)
                 {
                     // The ledger is native bitcoin, so units are Satoshis 
 
@@ -168,7 +168,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     FinancialTransaction ledgerTx = FinancialTransaction.Create(authData.CurrentOrganization,
                         DateTime.UtcNow, "Donation (bitcoin to hotwallet)");
                     ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.IncomeDonations, -orgNativeCents, authData.CurrentUser);
-                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.Bitcoin);
+                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.BitcoinCore);
                     ledgerTx.BlockchainHash = txHash;
 
                     successMessage = string.Format (Resources.Pages.Financial.Donate_FundsReceived,

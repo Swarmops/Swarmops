@@ -349,7 +349,7 @@ namespace Swarmops.Logic.Financial
             }
 
             Organization organization = parent.Organization;
-            bool organizationLedgerUsesBitcoin = organization.Currency.IsBitcoin;
+            bool organizationLedgerUsesBitcoin = organization.Currency.IsBitcoinCore;
 
             JObject addressData = JObject.Parse(
                         new WebClient().DownloadString("https://blockchain.info/address/" + address +
@@ -403,7 +403,7 @@ namespace Swarmops.Logic.Financial
                         if (!organizationLedgerUsesBitcoin)
                         {
                             Money nativeMoney = row.AmountForeignCents;
-                            if (nativeMoney != null && nativeMoney.Currency.IsBitcoin) // it damn well should be, but just checking
+                            if (nativeMoney != null && nativeMoney.Currency.IsBitcoinCore) // it damn well should be, but just checking
                             {
                                 satoshisLookup[row.AmountCents] = row.AmountForeignCents.Cents;
                             }
@@ -436,7 +436,7 @@ namespace Swarmops.Logic.Financial
                         else
                         {
                             Int64 ledgerCents =
-                                new Money (inputRow.ValueSatoshis, Currency.Bitcoin, ourTx.DateTime).ToCurrency (
+                                new Money (inputRow.ValueSatoshis, Currency.BitcoinCore, ourTx.DateTime).ToCurrency (
                                     organization.Currency).Cents;
                             transactionReconstructedRows[financialAccountId] +=
                                 -ledgerCents; // note the negation!
@@ -468,7 +468,7 @@ namespace Swarmops.Logic.Financial
                         else
                         {
                             Int64 ledgerCents =
-                                new Money(outputRow.ValueSatoshis, Currency.Bitcoin, ourTx.DateTime).ToCurrency(
+                                new Money(outputRow.ValueSatoshis, Currency.BitcoinCore, ourTx.DateTime).ToCurrency(
                                     organization.Currency).Cents;
                             transactionReconstructedRows[financialAccountId] +=
                                 ledgerCents;
@@ -491,7 +491,7 @@ namespace Swarmops.Logic.Financial
                     else
                     {
                         Int64 feeLedgerCents =
-                            new Money (blockchainTx.FeeSatoshis, Currency.Bitcoin,
+                            new Money (blockchainTx.FeeSatoshis, Currency.BitcoinCore,
                                 blockchainTx.TransactionDateTimeUtc).ToCurrency (organization.Currency).Cents;
                         transactionReconstructedRows[organization.FinancialAccounts.CostsBitcoinFees.Identity] =
                             feeLedgerCents;
@@ -520,16 +520,16 @@ namespace Swarmops.Logic.Financial
 
                                 if (satoshisLookup.ContainsKey (row.AmountCents))
                                 {
-                                    row.AmountForeignCents = new Money(satoshisLookup[row.AmountCents], Currency.Bitcoin, ourTx.DateTime);
+                                    row.AmountForeignCents = new Money(satoshisLookup[row.AmountCents], Currency.BitcoinCore, ourTx.DateTime);
                                 }
                                 else if (satoshisLookup.ContainsKey (-row.AmountCents)) // the negative counterpart
                                 {
-                                    row.AmountForeignCents = new Money(-satoshisLookup[-row.AmountCents], Currency.Bitcoin, ourTx.DateTime);
+                                    row.AmountForeignCents = new Money(-satoshisLookup[-row.AmountCents], Currency.BitcoinCore, ourTx.DateTime);
                                 }
                                 else
                                 {
                                     // There's a last case which may happen if the row is an addition to a previous row; if so, calculate
-                                    row.AmountForeignCents = new Money(row.AmountCents, organization.Currency, ourTx.DateTime).ToCurrency (Currency.Bitcoin);
+                                    row.AmountForeignCents = new Money(row.AmountCents, organization.Currency, ourTx.DateTime).ToCurrency (Currency.BitcoinCore);
                                 }
                             }
                         }
@@ -658,7 +658,7 @@ namespace Swarmops.Logic.Financial
             // Make a small test payment to a multisig address
 
             TransactionBuilder txBuilder = new TransactionBuilder();
-            Int64 satoshis = new Money(100, Currency.FromCode ("SEK")).ToCurrency (Currency.Bitcoin).Cents;
+            Int64 satoshis = new Money(100, Currency.FromCode ("SEK")).ToCurrency (Currency.BitcoinCore).Cents;
             BitcoinTransactionInputs inputs = null;
             Int64 satoshisMaximumAnticipatedFees = BitcoinUtility.GetRecommendedFeePerThousandBytesSatoshis() * 20; // assume max 20k transaction size
 

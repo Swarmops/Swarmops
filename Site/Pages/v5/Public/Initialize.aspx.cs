@@ -480,7 +480,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 Currency.CreateFiat("ISK", "Icelandic Krona", string.Empty);
                 Currency.CreateFiat("CHF", "Swiss Franc", string.Empty);
                 Currency.CreateFiat("GBP", "Pounds Sterling", "£");
-                Currency.CreateFiat("BTC", "Bitcoin", "฿");
+                Currency.CreateCrypto("BTC", "Bitcoin Core", "฿");
+                Currency.CreateCrypto("BCH", "Bitcoin Cash", "฿");
 
                 // Fetch the first set of exchange rates, completing the currency collection
 
