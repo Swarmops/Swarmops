@@ -104,7 +104,7 @@ namespace Swarmops.Database
 
         #region Creation and manipulation - stored procedures
 
-        public int CreateCurrency (string code, string name, string sign)
+        public int CreateCurrency(string code, string name, string sign)
         {
             DateTime now = DateTime.Now;
 
@@ -112,14 +112,33 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("CreateCurrency", connection);
+                DbCommand command = GetDbCommand("CreateCurrency", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName (command, "code", code.ToUpperInvariant());
-                AddParameterWithName (command, "name", name);
-                AddParameterWithName (command, "sign", sign);
+                AddParameterWithName(command, "code", code.ToUpperInvariant());
+                AddParameterWithName(command, "name", name);
+                AddParameterWithName(command, "sign", sign);
 
-                return Convert.ToInt32 (command.ExecuteScalar());
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+        public int CreateCryptocurrency(string code, string name, string sign)
+        {
+            DateTime now = DateTime.Now;
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("CreateCryptocurrency", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "code", code.ToUpperInvariant());
+                AddParameterWithName(command, "name", name);
+                AddParameterWithName(command, "sign", sign);
+
+                return Convert.ToInt32(command.ExecuteScalar());
             }
         }
 

@@ -39,20 +39,23 @@ namespace Swarmops.Logic.Financial
 
         public static void Create()
         {
-            using(WebClient client = new WebClient())
+            int exchangeRateSnapshotId = 0;
+
+            // We're getting rates against the fiat currencies from BitPay and crypto-to-crypto from Shapeshift.
+
+            using (WebClient client = new WebClient())
             {
                 client.Encoding = Encoding.UTF8;
-                string rateDataRaw = client.DownloadString("https://bitpay.com/api/rates");
+                string fiatRateDataRaw = client.DownloadString("https://bitpay.com/api/rates");
 
                 // BitPay doesn't provide valid JSON - the rate field isn't enclosed in quotes - so we can't use JSON Deserialization; we'll
                 // have to use Regex matching instead.
 
                 string regexPattern = @"\{\""code\"":\""([A-Z]+)\"",\""name\"":\""([^\""]+)\"",\""rate\"":([0-9\.]+)\}";
                 Regex regex = new Regex (regexPattern);
-                Match match = regex.Match (rateDataRaw);
+                Match match = regex.Match (fiatRateDataRaw);
 
-                int exchangeRateSnapshotId = 0;
-                int bitcoinId = GetOrCreateCurrency ("BTC", "Bitcoin");
+                int bitcoinId = GetOrCreateCryptocurrency("BTC");
 
                 if (match.Success)
                 {
@@ -70,7 +73,7 @@ namespace Swarmops.Logic.Financial
 
                     btcRate /= 1000000.0; // We're operating in microbitcoin, so adjust the stored exchange rate accordingly (right-shift six decimal places)
 
-                    int currencyId = GetOrCreateCurrency (currencyCode, currencyName);
+                    int currencyId = GetOrCreateFiatCurrency (currencyCode, currencyName);
 
                     SwarmDb.GetDatabaseForWriting()
                         .CreateExchangeRateDatapoint (exchangeRateSnapshotId, currencyId, bitcoinId, btcRate);
@@ -79,11 +82,43 @@ namespace Swarmops.Logic.Financial
                 }
 
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
-                BitpayRateDatapoint[] rates = (BitpayRateDatapoint[]) serializer.Deserialize<BitpayRateDatapoint[]> (rateDataRaw);
+                BitpayRateDatapoint[] fiatRates = (BitpayRateDatapoint[]) serializer.Deserialize<BitpayRateDatapoint[]> (fiatRateDataRaw);
+
+                // Download Shapeshift data
+
+                string cryptoRateDataRaw = client.DownloadString("https://shapeshift.io/marketinfo");
+
+                ShapeshiftRateDatapoint[] cryptoRates =
+                    (ShapeshiftRateDatapoint[]) serializer.Deserialize<ShapeshiftRateDatapoint[]>(cryptoRateDataRaw);
+
+                if (exchangeRateSnapshotId > 0) // test that we're making a snapshot first
+                {
+                    foreach (ShapeshiftRateDatapoint shapeshiftRate in cryptoRates)
+                    {
+                        if (shapeshiftRate.pair.StartsWith("BTC_"))
+                        {
+                            string coinCode = shapeshiftRate.pair.Substring(4);
+                            double btcRate = shapeshiftRate.rate;
+
+                            if (coinCode != "BCH")
+                            {
+                                btcRate /= 1000000.0;
+                                    // We're operating in microbitcoin, so adjust the stored exchange rate right six decimal places
+                                    // EXCEPT for Bitcoin Cash which ALSO operates in microbitcoin
+                            }
+
+                            int coinId = GetOrCreateCryptocurrency(coinCode);
+                            SwarmDb.GetDatabaseForWriting().
+                                CreateExchangeRateDatapoint(exchangeRateSnapshotId, coinId, bitcoinId, btcRate);
+                        }
+                    }
+                }
+
+                Console.WriteLine(cryptoRateDataRaw);
             }
         }
 
-        private static int GetOrCreateCurrency (string currencyCode, string currencyName)
+        private static int GetOrCreateFiatCurrency (string currencyCode, string currencyName)
         {
             try
             {
@@ -91,17 +126,74 @@ namespace Swarmops.Logic.Financial
             }
             catch (ArgumentException)
             {
-                return Currency.Create (currencyCode, currencyName, string.Empty).Identity;
+                return Currency.CreateFiat (currencyCode, currencyName, string.Empty).Identity;
             }
         }
 
+
+        private static int GetOrCreateCryptocurrency(string currencyCode)
+        {
+            try
+            {
+                return Currency.FromCode(currencyCode).Identity;
+            }
+            catch (Exception)
+            {
+                // We don't know about this crypto yet. Get its name from our cache, or populate the cache first.
+
+                if (coinDataLookup == null || !coinDataLookup.ContainsKey(currencyCode))
+                {
+                    using (WebClient client = new WebClient())
+                    {
+                        string coins = client.DownloadString("https://shapeshift.io/getcoins");
+                        JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+                        coinDataLookup = serializer.Deserialize<SerializableDictionary<string, ShapeshiftCoinData>>(coins);
+                    }
+                }
+
+                string coinName = string.Empty;
+                if (coinDataLookup.ContainsKey(currencyCode))
+                {
+                    coinName = coinDataLookup[currencyCode].name;
+                }
+
+                return Currency.CreateCrypto(currencyCode, coinName, string.Empty).Identity;
+            }
+        }
+
+
+        private static Dictionary<string, ShapeshiftCoinData> coinDataLookup = null;
     }
 
     [Serializable]
     public class BitpayRateDatapoint
     {
-        string code { get; set; }
-        string name { get; set; }
-        string rate { get; set; }
+        public string code { get; set; }
+        public string name { get; set; }
+        public string rate { get; set; }
+    }
+
+    // "rate":"0.04286453","limit":16718.99510938,"pair":"BLK_CLAM","maxLimit":16718.99510938,"min":0.04257204,"minerFee":0.001
+
+    [Serializable]
+    public class ShapeshiftRateDatapoint
+    {
+        public double rate { get; set; }
+        public double limit { get; set; }
+        public string pair { get; set; }
+        public double maxLimit { get; set; }
+        public double min { get; set; }
+        public double minerFee { get; set; }
+    }
+
+    [Serializable]
+    public class ShapeshiftCoinData
+    {
+        public string name;
+        public string symbol;
+        public string image;
+        public string imageSmall;
+        public string status;
     }
 }

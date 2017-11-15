@@ -471,16 +471,16 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 // Create initial currencies (European et al)
 
-                Currency.Create("EUR", "Euros", "€");
-                Currency.Create("USD", "US Dollars", "$");
-                Currency.Create("CAD", "Canadian Dollars", "CA$");
-                Currency.Create("SEK", "Swedish Krona", string.Empty);
-                Currency.Create("NOK", "Norwegian Krona", string.Empty);
-                Currency.Create("DKK", "Danish Krona", string.Empty);
-                Currency.Create("ISK", "Icelandic Krona", string.Empty);
-                Currency.Create("CHF", "Swiss Franc", string.Empty);
-                Currency.Create("GBP", "Pounds Sterling", "£");
-                Currency.Create("BTC", "Bitcoin", "฿");
+                Currency.CreateFiat("EUR", "Euros", "€");
+                Currency.CreateFiat("USD", "US Dollars", "$");
+                Currency.CreateFiat("CAD", "Canadian Dollars", "CA$");
+                Currency.CreateFiat("SEK", "Swedish Krona", string.Empty);
+                Currency.CreateFiat("NOK", "Norwegian Krona", string.Empty);
+                Currency.CreateFiat("DKK", "Danish Krona", string.Empty);
+                Currency.CreateFiat("ISK", "Icelandic Krona", string.Empty);
+                Currency.CreateFiat("CHF", "Swiss Franc", string.Empty);
+                Currency.CreateFiat("GBP", "Pounds Sterling", "£");
+                Currency.CreateFiat("BTC", "Bitcoin", "฿");
 
                 // Fetch the first set of exchange rates, completing the currency collection
 

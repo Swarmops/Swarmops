@@ -39,7 +39,7 @@ namespace Swarmops.Frontend
 
             // BEGIN TEST CODE
 
-            // VatReport.Create(Organization.FromIdentity(8), 2017, 10, 1);
+            // ExchangeRateSnapshot.Create();
 
             // END TEST CODE
 

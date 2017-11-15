@@ -93,10 +93,16 @@ namespace Swarmops.Logic.Financial
             return FromBasic (SwarmDb.GetDatabaseForReading().GetCurrency (code));
         }
 
-        public static Currency Create (string code, string name, string sign)
+        public static Currency CreateFiat (string code, string name, string sign)
         {
             return FromIdentityAggressive (
                 SwarmDb.GetDatabaseForWriting().CreateCurrency (code, name, sign));
+        }
+
+        public static Currency CreateCrypto(string code, string name, string sign)
+        {
+            return FromIdentityAggressive(
+                SwarmDb.GetDatabaseForWriting().CreateCryptocurrency(code, name, sign));
         }
     }
 }
