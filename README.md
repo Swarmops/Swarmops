@@ -91,7 +91,7 @@ Beta-3 features progress
 
 Beta-3 will be released on January 5, 2018, with string freeze on January 2. Its focus will be on Shapeshift integration and ability to receive and send payments in all different cryptocurrencies.
 
-- [ ] Import all crypto pairs from Shapeshift and track exchange rates
+- [x] Import all crypto pairs from Shapeshift and track exchange rates
 - [ ] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 2, including conversion to fiat)
 - [ ] Enable cryptocurrency as any other currency on entry
 - [ ] Enable payment identifiers, with currency
