@@ -50,3 +50,4 @@
 0050 - Added VatReports.OpenTransaction, .CloseTransaction
 0051 - Fix for CreateFinancialTransactionStub with Amount field gone (caused in 0043) [RF]
 0052 - Added database support for multiple Bitcoin chain forks [RF]
+0053 - Bugfix for 0052 [RF]
