@@ -709,7 +709,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is a QR code for donations to {0}. Read it from your phone&apos;s bitcoin wallet to make a donation, or donate from your computer directly to [{1}] (that&apos;s a bitcoin address)..
+        ///   Looks up a localized string similar to This is a QR code for donations to {0}. Read it from your phone&apos;s bitcoin wallet to make a donation, or donate from your computer directly to [{1}] (that&apos;s a Bitcoin Cash address)..
         /// </summary>
         internal static string Donate_Explain {
             get {

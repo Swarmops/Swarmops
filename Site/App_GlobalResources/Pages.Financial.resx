@@ -329,7 +329,7 @@
     <value>Please enter the supplier's bank account or equivalent.</value>
   </data>
   <data name="Donate_Explain" xml:space="preserve">
-    <value>This is a QR code for donations to {0}. Read it from your phone's bitcoin wallet to make a donation, or donate from your computer directly to [{1}] (that's a bitcoin address).</value>
+    <value>This is a QR code for donations to {0}. Read it from your phone's bitcoin wallet to make a donation, or donate from your computer directly to [{1}] (that's a Bitcoin Cash address).</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
   </data>
   <data name="Donate_FundsReceived" xml:space="preserve">
