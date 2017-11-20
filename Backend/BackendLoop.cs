@@ -8,6 +8,7 @@ using Mono.Unix.Native;
 using NBitcoin.Protocol.Behaviors;
 using Newtonsoft.Json.Linq;
 using Swarmops.Backend.SocketServices;
+using Swarmops.Common.Enums;
 using Swarmops.Common.ExtensionMethods;
 using Swarmops.Database;
 using Swarmops.Logic;
@@ -1028,7 +1029,7 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    hotAddress = HotBitcoinAddress.FromAddress(addressString);
+                    hotAddress = HotBitcoinAddress.FromAddress(BitcoinChain.Cash, addressString);
                 }
                 catch (ArgumentException)
                 {

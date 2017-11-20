@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Resources;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Money = Swarmops.Logic.Financial.Money;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
@@ -19,6 +21,25 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization (_authenticationData.CurrentOrganization);
 
+            foreach (HotBitcoinAddress address in addresses)
+            {
+                if (address.Chain == BitcoinChain.Core)
+                {
+                    // These shouldn't exist much, so make sure that we have the equivalent Cash address registered
+
+                    try
+                    {
+                        HotBitcoinAddress.FromAddress(BitcoinChain.Cash, address.Address);
+                    }
+                    catch (ArgumentException)
+                    {
+                        // We didn't have it, so create it
+                        BitcoinUtility.TestUnspents(BitcoinChain.Cash, address.Address);
+                    }
+                }
+
+            }
+
             Response.ContentType = "application/json";
             Response.Output.WriteLine(FormatJson(addresses));
             Response.End();
@@ -30,16 +51,17 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             StringBuilder result = new StringBuilder(16384);
 
-            double conversionRate = 1.0;
-            if (!this._authenticationData.CurrentOrganization.Currency.IsBitcoinCore)
-            {
-                long fiatCentsPerCoin = new Money(100000000, Currency.BitcoinCore).ToCurrency (_authenticationData.CurrentOrganization.Currency).Cents;
-                conversionRate = fiatCentsPerCoin/100000000.0; // on satoshi level
-            }
+            Dictionary<BitcoinChain, double> conversionRateLookup = new Dictionary<BitcoinChain, double>();
+            Dictionary<BitcoinChain, Int64> satoshisTotalLookup = new Dictionary<BitcoinChain, long>();
+            
+            long fiatCentsPerCoreCoin = new Money (BitcoinUtility.SatoshisPerBitcoin, Currency.BitcoinCore).ToCurrency(_authenticationData.CurrentOrganization.Currency).Cents;
+            long fiatCentsPerCashCoin = new Money(BitcoinUtility.SatoshisPerBitcoin, Currency.BitcoinCash).ToCurrency(_authenticationData.CurrentOrganization.Currency).Cents;
+
+            conversionRateLookup[BitcoinChain.Cash] = fiatCentsPerCashCoin/1.0/BitcoinUtility.SatoshisPerBitcoin;   // the "/1.0" converts to double implicitly
+            conversionRateLookup[BitcoinChain.Core] = fiatCentsPerCoreCoin/1.0/BitcoinUtility.SatoshisPerBitcoin;
 
             result.Append("{\"rows\":[");
 
-            Int64 satoshisTotal = 0;
             int addressesWithFunds = 0;
 
             foreach (HotBitcoinAddress address in addresses)
@@ -61,7 +83,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         Resources.Pages.Ledgers.BitcoinHotWallet_UnspentTransaction,
                         unspent.TransactionHash,
                         (unspent.AmountSatoshis/100.0).ToString ("N2"),
-                        (unspent.AmountSatoshis/100.0*conversionRate).ToString ("N2")
+                        (unspent.AmountSatoshis/100.0*conversionRateLookup[unspent.Address.Chain]).ToString ("N2")
                         );
                     satoshisUnspentAddress += unspent.AmountSatoshis;
                     childResult.Append ("},");
@@ -81,15 +103,22 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         "\"balanceMicrocoins\":\"{3}\"," +
                         "\"balanceFiat\":\"{4}\",",
                         address.Identity,
-                        address.DerivationPath,
+                        address.Chain.ToString() + " " + address.DerivationPath,
                         address.Address,
                         JsonExpandingString (address.Identity, satoshisUnspentAddress),
-                        JsonExpandingString (address.Identity, (Int64) (satoshisUnspentAddress*conversionRate))
+                        JsonExpandingString (address.Identity, (Int64) (satoshisUnspentAddress / 100.0 * conversionRateLookup[address.Chain]))
                         );
                     result.Append ("\"state\":\"closed\",\"children\":[" + childResult.ToString() + "]");
                     result.Append ("},");
-                    satoshisTotal += satoshisUnspentAddress;
                     addressesWithFunds++;
+
+                    if (!satoshisTotalLookup.ContainsKey(address.Chain))
+                    {
+                        satoshisTotalLookup[address.Chain] = 0;
+                    }
+
+                    satoshisTotalLookup[address.Chain] += satoshisUnspentAddress;
+
                 }
             }
 
@@ -113,14 +142,39 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 result.Append("}");
             }
 
-            result.Append("],\"footer\":[");
+            result.Append("]");
 
-            result.Append("{");
+            if (satoshisTotalLookup.Count > 0)
+            {
+                // We should also have a footer, because we need a total
 
-            result.AppendFormat("\"derivePath\":\"" + Resources.Global.Global_Total.ToUpperInvariant() +  "\",\"balanceMicrocoins\":\"{0}\",\"balanceFiat\":\"{1}\"",
-                (satoshisTotal / 100.0).ToString("N2"), (satoshisTotal / 100.0 * conversionRate).ToString("N2"));
+                result.Append(",\"footer\":[");
 
-            result.Append("}]}"); // on separate line to suppress warning
+                bool previousFooterRow = false;
+
+                foreach (BitcoinChain chain in satoshisTotalLookup.Keys)
+                {
+                    if (previousFooterRow)
+                    {
+                        result.Append(",");
+                    }
+
+                    result.Append("{");
+
+                    result.AppendFormat(
+                        "\"derivePath\":\"" + Resources.Global.Global_Total.ToUpperInvariant() + " " +
+                        (string) chain.ToString().ToUpperInvariant() + "\",\"balanceMicrocoins\":\"{0}\",\"balanceFiat\":\"{1}\"",
+                        (satoshisTotalLookup[chain]/100.0).ToString("N2"), (satoshisTotalLookup[chain]/100.0*conversionRateLookup[chain]).ToString("N2"));
+
+                    result.Append("}"); // on separate line to suppress warning*/
+
+                    previousFooterRow = true;
+                }
+
+                result.Append("]");
+            }
+
+            result.Append("}");
 
             return result.ToString();
         }

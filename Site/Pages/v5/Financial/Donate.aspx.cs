@@ -88,14 +88,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
         [WebMethod]
-        static public AjaxCallResult ProcessTransactionReceived (string guid, string txHash)
+        static public AjaxCallResult ProcessTransactionReceived (string guid, BitcoinChain chain, string txHash)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture(); // just to make sure we're called properly
 
             string bitcoinAddress = (string) GuidCache.Get (guid);
-            if (BitcoinUtility.TestUnspents (bitcoinAddress))
+            if (BitcoinUtility.TestUnspents (chain, bitcoinAddress))
             {
-                HotBitcoinAddressUnspents unspents = HotBitcoinAddress.FromAddress (bitcoinAddress).Unspents;
+                HotBitcoinAddressUnspents unspents = HotBitcoinAddress.FromAddress (chain, bitcoinAddress).Unspents;
 
                 // TODO: Update the HotBitcoinAddress with the new amount?
 

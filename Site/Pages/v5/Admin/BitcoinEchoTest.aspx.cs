@@ -92,14 +92,14 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         }
 
         [WebMethod]
-        static public AjaxCallResult CheckTransactionReceived (string guid, string txHash)
+        static public AjaxCallResult CheckTransactionReceived (string guid, BitcoinChain chain, string txHash)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture(); // just to make sure we're called properly
 
             string bitcoinAddress = (string) GuidCache.Get (guid);
-            if (BitcoinUtility.TestUnspents (bitcoinAddress))
+            if (BitcoinUtility.TestUnspents (chain, bitcoinAddress))
             {
-                HotBitcoinAddressUnspents unspents = HotBitcoinAddress.FromAddress (bitcoinAddress).Unspents;
+                HotBitcoinAddressUnspents unspents = HotBitcoinAddress.FromAddress (chain, bitcoinAddress).Unspents;
 
                 // TODO: Update the HotBitcoinAddress with the new amount?
 
@@ -122,11 +122,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                 // TODO: Get the tx, get the input
 
-                string returnAddress = BitcoinUtility.GetInputAddressesForTransaction(txHash) [0]; // assumes at least one input address
+                string returnAddress = BitcoinUtility.GetInputAddressesForTransaction(BitcoinUtility.GetNetworkFromChain(chain), txHash) [0]; // assumes at least one input address
 
-                if (authData.CurrentOrganization.Currency.IsBitcoinCore)
+                if (authData.CurrentOrganization.Currency.IsBitcoinCash)
                 {
-                    // The ledger is native bitcoin, so units are Satoshis 
+                    // The ledger is native bitcoin, so cent units are satoshis
 
                     FinancialTransaction ledgerTx = FinancialTransaction.Create (authData.CurrentOrganization,
                         DateTime.UtcNow, "Bitcoin echo test (will be repaid immediately)");
@@ -156,13 +156,13 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     FinancialTransaction ledgerTx = FinancialTransaction.Create(authData.CurrentOrganization,
                         DateTime.UtcNow, "Bitcoin echo test (will be repaid immediately)");
                     ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.DebtsOther, -orgNativeCents, authData.CurrentUser);
-                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.BitcoinCore);
+                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.BitcoinCash);
                     ledgerTx.BlockchainHash = txHash;
 
                     successMessage = string.Format(Resources.Pages.Admin.BitcoinEchoTest_FundsReceived,
                         authData.CurrentOrganization.Currency.DisplayCode, orgNativeCents/100.0, satoshisReceived/100.0);
 
-                    // TODO: Create a payout back for this amount -- needs to be specified in bitcoin -- as an inbound invoice
+                    // TODO: Create a payout back for this amount -- needs to be specified in bitcoin cash -- as an inbound invoice
                 }
 
                 return new AjaxCallResult() {DisplayMessage = successMessage, Success = true};

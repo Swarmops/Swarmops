@@ -205,6 +205,51 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chain.
+        /// </summary>
+        internal static string Financial_BitcoinChain {
+            get {
+                return ResourceManager.GetString("Financial_BitcoinChain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cash.
+        /// </summary>
+        internal static string Financial_BitcoinChain_Cash {
+            get {
+                return ResourceManager.GetString("Financial_BitcoinChain_Cash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Core.
+        /// </summary>
+        internal static string Financial_BitcoinChain_Core {
+            get {
+                return ResourceManager.GetString("Financial_BitcoinChain_Core", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gold.
+        /// </summary>
+        internal static string Financial_BitcoinChain_Gold {
+            get {
+                return ResourceManager.GetString("Financial_BitcoinChain_Gold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Legacy.
+        /// </summary>
+        internal static string Financial_BitcoinChain_Legacy {
+            get {
+                return ResourceManager.GetString("Financial_BitcoinChain_Legacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bookkeeping Account.
         /// </summary>
         internal static string Financial_BookkeepingAccountLong {

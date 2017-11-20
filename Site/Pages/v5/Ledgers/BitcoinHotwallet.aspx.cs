@@ -35,7 +35,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         private void Localize()
         {
             this.LabelContentHeader.Text = Resources.Pages.Ledgers.BitcoinHotwallet_Header;
-            this.LiteralHeaderDerivationPath.Text = Resources.Pages.Ledgers.BitcoinHotwallet_DerivationPath;
+            this.LiteralHeaderDerivationPath.Text = Resources.Global.Financial_BitcoinChain + @", " + Resources.Pages.Ledgers.BitcoinHotwallet_DerivationPath;
             this.LiteralHeaderAddress.Text = Resources.Pages.Ledgers.BitcoinHotwallet_Address + @" / " + Resources.Pages.Ledgers.BitcoinHotWallet_TransactionHash;
             this.LiteralHeaderMicrocoins.Text = Resources.Pages.Ledgers.BitcoinHotwallet_BalanceMicrocoins;
             this.LiteralHeaderFiatValue.Text = String.Format(Resources.Pages.Ledgers.BitcoinHotwallet_ValueFiat, CurrentOrganization.Currency.DisplayCode);

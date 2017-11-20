@@ -63,8 +63,8 @@ namespace Swarmops.Logic.Financial
             }
 
             derivationPathString = derivationPathString.TrimStart();
-            string bitcoinAddress = extPubKey.PubKey.GetAddress (Network.Main).ToString();    // TODO: CHANGE NETWORK.MAIN TO NEW LOOKUP
-            string bitcoinAddressFallback = extPubKey.PubKey.GetAddress(Network.Main).ToString(); // The fallback address would be the main address
+            string bitcoinAddress = extPubKey.PubKey.GetAddress (Network.Core).ToString();    // TODO: CHANGE NETWORK.MAIN TO NEW LOOKUP
+            string bitcoinAddressFallback = extPubKey.PubKey.GetAddress(Network.Core).ToString(); // The fallback address would be the main address
 
             int hotBitcoinAddressId =
                 SwarmDb.GetDatabaseForWriting()
@@ -73,9 +73,26 @@ namespace Swarmops.Logic.Financial
             return FromIdentityAggressive (hotBitcoinAddressId);
         }
 
-        public static HotBitcoinAddress FromAddress (string bitcoinAddress)
+        public static HotBitcoinAddress FromAddress (BitcoinChain chain, string bitcoinAddress)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetHotBitcoinAddress(bitcoinAddress));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetHotBitcoinAddress(chain, bitcoinAddress));
+        }
+
+        public static HotBitcoinAddress GetAddressOrForkCore(BitcoinChain chain, string bitcoinAddress)
+        {
+            try
+            {
+                return FromBasic(SwarmDb.GetDatabaseForReading().GetHotBitcoinAddress(chain, bitcoinAddress));
+            }
+            catch (Exception)
+            {
+                // Forked address off of Core is not registered yet
+
+                HotBitcoinAddress coreAddress =
+                    FromBasic(SwarmDb.GetDatabaseForReading().GetHotBitcoinAddress(BitcoinChain.Core, bitcoinAddress));
+
+                return Create(coreAddress.Organization, chain, coreAddress.DerivationPathIntArray);
+            }
         }
 
         public static HotBitcoinAddress OrganizationWalletZero (Organization organization, BitcoinChain chain)
@@ -96,7 +113,7 @@ namespace Swarmops.Logic.Financial
                     secretExtKey = secretExtKey.Derive (UInt32.Parse (derivationString));
                 }
 
-                return secretExtKey.PrivateKey.GetBitcoinSecret (Network.Main);
+                return secretExtKey.PrivateKey.GetBitcoinSecret (Network.Core);
             }
         }
 
@@ -117,6 +134,20 @@ namespace Swarmops.Logic.Financial
                 HotBitcoinAddressUnspents unspents = Unspents;
 
                 return unspents.Sum (unspent => unspent.AmountSatoshis);
+            }
+        }
+
+        public int[] DerivationPathIntArray
+        {
+            get
+            {
+                List<int> result = new List<int>();
+                foreach (string number in DerivationPath.Split(' '))
+                {
+                    result.Add(Int32.Parse(number));
+                }
+
+                return result.ToArray();
             }
         }
     }

@@ -77,7 +77,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicHotBitcoinAddress GetHotBitcoinAddress(string address)
+        public BasicHotBitcoinAddress GetHotBitcoinAddress(BitcoinChain chain, string address)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -85,7 +85,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + hotBitcoinAddressFieldSequence + "WHERE AddressString='" + SqlSanitize (address) + "';", connection);
+                        "SELECT" + hotBitcoinAddressFieldSequence + "WHERE BitcoinChainId=" + (Int32) chain + " AND AddressString='" + SqlSanitize (address) + "';", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

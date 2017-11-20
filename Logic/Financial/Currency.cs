@@ -73,7 +73,7 @@ namespace Swarmops.Logic.Financial
             }
             else
             {
-                // Neither is bitcoin core, so go via bitcoin core
+                // Neither of the currencies is bitcoin core, so go via bitcoin core
 
                 int bitcoinCurrencyId = Currency.BitcoinCore.Identity;
                 double thisPerBitcoin = SwarmDb.GetDatabaseForReading()
