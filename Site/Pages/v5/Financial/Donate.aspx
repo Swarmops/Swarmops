@@ -32,7 +32,21 @@
                         donatedFunds += (donatedSatoshis * conversionRateSatoshisToCents / 100.0);
                         odoDonatedCents.innerHTML = donatedFunds; // looks weird but $('#id') not used with odo
 
-                        // do an Ajax call as well here
+                        var json = {};
+                        json.guid = guid;
+                        json.txHash = data.txid;
+
+                        SwarmopsJS.ajaxCall('/Pages/v5/Financial/Donate.aspx/ProcessTransactionReceived',
+                            json,
+                            function (data) {
+                                if (data.Success) {
+                                    $('#paraStatus').text(data.DisplayMessage);
+                                    $('#paraIntro').fadeOut().slideUp();
+                                    $('#divQr').fadeOut().slideUp();
+                                    completed = true;
+                                }
+                            });
+
                     }
                 }
             }
