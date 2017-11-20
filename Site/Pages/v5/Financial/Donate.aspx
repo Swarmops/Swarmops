@@ -23,8 +23,12 @@
         socket.on(eventToListenTo, function(data) {
             console.log(data);
             console.log("txid: " + data.txid);
-            for (var address in data.vout) {
-                console.log(" - address " + address + " gets " + data.vout[address]);
+            var utxoCount = data.vout.length;
+            for (var index = 0; index < utxoCount; index++)
+            {
+                for (var address in data.vout[index]) {
+                    console.log(" - address " + address + " gets " + data.vout[index][address]);
+                }
             }
         });
 
