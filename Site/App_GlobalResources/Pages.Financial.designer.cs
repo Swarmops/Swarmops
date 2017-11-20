@@ -727,6 +727,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Funds Received ({0}).
+        /// </summary>
+        internal static string Donate_FundsReceivedLabel {
+            get {
+                return ResourceManager.GetString("Donate_FundsReceivedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Received {0} microcoins (&quot;bits&quot;). Thank you!.
         /// </summary>
         internal static string Donate_FundsReceivedNative {

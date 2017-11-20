@@ -642,4 +642,8 @@
   <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
     <value>Outbound Invoice #{0:N0} filed.</value>
   </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Funds Received ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
+  </data>
 </root>

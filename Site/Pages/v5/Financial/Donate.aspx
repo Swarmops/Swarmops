@@ -21,13 +21,19 @@
         });
 
         socket.on(eventToListenTo, function(data) {
-            console.log(data);
-            console.log("txid: " + data.txid);
             var utxoCount = data.vout.length;
             for (var index = 0; index < utxoCount; index++)
             {
-                for (var address in data.vout[index]) {
-                    console.log(" - address " + address + " gets " + data.vout[index][address]);
+                for (var outAddress in data.vout[index]) {
+
+                    if (outAddress == pageDonationAddress) {
+
+                        var donatedSatoshis = data.vout[index][outAddress];
+                        donatedFunds += (donatedSatoshis * conversionRateSatoshisToCents / 100.0);
+                        odoDonatedCents.innerHTML = donatedFunds; // looks weird but $('#id') not used with odo
+
+                        // do an Ajax call as well here
+                    }
                 }
             }
         });
@@ -38,14 +44,13 @@
             // This function is detected called by the Master Page; it is not
             // called from this page or anything visible here
 
-
             // console.log("address: " + address);
             // console.log("hash: " + hash);
             // console.log("satoshis: " + satoshis);
             // console.log("cents: " + cents);
             // console.log("currencyCode: " + currencyCode);
 
-            if (address == addressUsed) {
+            if (address == pageDonationAddress) {
                 // We have received a donation at this address
 
                 donatedFunds += (cents / 100.0);
@@ -74,8 +79,9 @@
 
         var donatedFunds = 0.001; // the 0.1 cents are necessary for an odometer workaround
 
-        var addressUsed = '<asp:Literal runat="server" ID="LiteralBitcoinAddress" />';
-        var guid = '<asp:Literal runat="server" ID="LiteralGuid" />';
+        var pageDonationAddress = SwarmopsJS.unescape(<%=this.BitcoinCashAddressUsed %>);
+        var guid = SwarmopsJS.unescape('<%=this.TransactionGuid%>');
+        var conversionRateSatoshisToCents = <%= this.ConversionRateSatoshisToCents %>;
         var completed = false;
 
     </script>
@@ -85,7 +91,8 @@
      <div class="box" style="background-image: url(/Images/Other/coins-background-istockphoto.jpg); background-size: 700px">
         <div class="content">
             <div class="odometer-wrapper">
-                <div class="elementFloatFar odometer odometer-currency" id="odoDonatedCents">0.001</div><div class="odometer-label">Received funds (CUR)</div>
+                <div class="elementFloatFar odometer odometer-currency" id="odoDonatedCents">0.001</div>
+                <div class="odometer-label"><asp:Label runat="server" ID="LabelReceivedFunds"/></div>
             </div>
         </div>
     </div>

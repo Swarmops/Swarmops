@@ -54,10 +54,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             HotBitcoinAddress address = HotBitcoinAddress.Create (this.CurrentOrganization, BitcoinChain.Cash,
                 BitcoinUtility.BitcoinDonationsIndex, this.CurrentUser.Identity);
 
-            this.LiteralBitcoinAddress.Text = address.Address;
             string guid = Guid.NewGuid().ToString ("N");
             GuidCache.Set (guid, address.Address);
-            this.LiteralGuid.Text = guid;
+            this.TransactionGuid = guid;
+
+            // Calculate conversion rate (satoshi-cents to unit-cents, so we're good, even if the conversion rate
+            // is calculated on microbitcoin to whole units)
+
+            this.ConversionRateSatoshisToCents = Currency.BitcoinCash.GetConversionRate(CurrentOrganization.Currency);
 
             // Add subscription to address
             /*    --- RETIRED CODE -- THIS WAS NOT RELIABLE -- DONE CLIENT SIDE INSTEAD
@@ -79,6 +83,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.BoxTitle.Text = Resources.Pages.Financial.Donate_PageTitle;
             this.LabelExplainBitcoinDonation.Text = String.Format (Resources.Pages.Financial.Donate_Explain,
                 CurrentOrganization.Name, address.Address);
+            this.LabelReceivedFunds.Text = String.Format(Resources.Pages.Financial.Donate_FundsReceivedLabel,
+                CurrentOrganization.Currency.DisplayCode);
 
             this.ImageBitcoinQr.ImageUrl =
                 "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=bitcoincash:" +
@@ -86,6 +92,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                                        Uri.EscapeDataString (String.Format (Resources.Pages.Financial.Donate_TxLabel,
                                            CurrentOrganization.Name))); // URI scheme doesn't like &, =
         }
+
+        public string BitcoinCashAddressUsed { get; private set; }
+        public string TransactionGuid { get; private set; }
+        public double ConversionRateSatoshisToCents { get; private set; }
 
         [WebMethod]
         static public AjaxCallResult ProcessTransactionReceived (string guid, string txHash)
