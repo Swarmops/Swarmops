@@ -21,8 +21,11 @@
         });
 
         socket.on(eventToListenTo, function(data) {
-            console.log("New transaction received: " + data.txid);
             console.log(data);
+            console.log("txid: " + data.txid);
+            for (var address in data.vout) {
+                console.log(" - address " + address + " gets " + data.vout[address]);
+            }
         });
 
 
