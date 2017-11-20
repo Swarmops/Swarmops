@@ -60,7 +60,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LiteralGuid.Text = guid;
 
             // Add subscription to address
-
+            /*    --- RETIRED CODE -- THIS WAS NOT RELIABLE -- DONE CLIENT SIDE INSTEAD
             using (
                 WebSocket socket =
                     new WebSocket("ws://localhost:" + SystemSettings.WebsocketPortFrontend + "/Front?Auth=" +
@@ -74,7 +74,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 socket.Send(data.ToString());
                 socket.Ping(); // wait a little little while for send to work
                 socket.Close();
-            }
+            }*/
 
             this.BoxTitle.Text = Resources.Pages.Financial.Donate_PageTitle;
             this.LabelExplainBitcoinDonation.Text = String.Format (Resources.Pages.Financial.Donate_Explain,
@@ -88,8 +88,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
         [WebMethod]
-        static public AjaxCallResult ProcessTransactionReceived (string guid, BitcoinChain chain, string txHash)
+        static public AjaxCallResult ProcessTransactionReceived (string guid, string txHash)
         {
+            BitcoinChain chain = BitcoinChain.Cash;
+
             AuthenticationData authData = GetAuthenticationDataAndCulture(); // just to make sure we're called properly
 
             string bitcoinAddress = (string) GuidCache.Get (guid);
@@ -113,14 +115,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 if (unspent == null)  // Supplied transaction hash was not found in collection
                 {
-                    Debugger.Break();
+                    Debugger.Break();   // TODO: Something else than break the debugger
                 }
 
                 Swarmops.Logic.Financial.Money moneyReceived = new Swarmops.Logic.Financial.Money(satoshisReceived,
                     Currency.BitcoinCore);
 
-                // Make sure that the hotwallet native currency is bitcoin
-                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.ForeignCurrency = Currency.BitcoinCore;
+                // Make sure that the hotwallet native currency is bitcoin cash
+                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.ForeignCurrency = Currency.BitcoinCash;
 
                 // Create success message and ledger transaction
                 string successMessage = string.Empty;
@@ -139,9 +141,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     // This exception is expected - the transaction should not yet exist
                 }
 
-                if (authData.CurrentOrganization.Currency.IsBitcoinCore)
+                if (authData.CurrentOrganization.Currency.IsBitcoinCash)
                 {
-                    // The ledger is native bitcoin, so units are Satoshis 
+                    // The ledger is native bitcoin cash, so units are Satoshis 
 
                     FinancialTransaction ledgerTx = FinancialTransaction.Create (authData.CurrentOrganization,
                         DateTime.UtcNow, "Donation (bitcoin to hotwallet)");
@@ -168,7 +170,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     FinancialTransaction ledgerTx = FinancialTransaction.Create(authData.CurrentOrganization,
                         DateTime.UtcNow, "Donation (bitcoin to hotwallet)");
                     ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.IncomeDonations, -orgNativeCents, authData.CurrentUser);
-                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.BitcoinCore);
+                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.BitcoinCash);
                     ledgerTx.BlockchainHash = txHash;
 
                     successMessage = string.Format (Resources.Pages.Financial.Donate_FundsReceived,

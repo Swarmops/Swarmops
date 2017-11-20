@@ -2,12 +2,35 @@
 <%@ Import Namespace="Swarmops.Logic.Support" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
+    <script src="https://bitcoincash.blockexplorer.com/socket.io/socket.io.js"></script>
+
     <script type="text/javascript" language="javascript">
         $(document).ready(function() {
 
         });
 
+        // Socket code to listen to Cash Block Explorer
+
+        eventToListenTo = 'tx';
+        room = 'inv';
+
+        var socket = io("https://blockexplorer.com/");
+        socket.on('connect', function() {
+            // Join the room.
+            socket.emit('subscribe', room);
+        });
+
+        socket.on(eventToListenTo, function(data) {
+            console.log("New transaction received: " + data.txid);
+            console.log(data);
+        });
+
+
         function pageBitcoinReceived(address, hash, satoshis, cents, currencyCode) {
+
+            // This function is detected called by the Master Page; it is not
+            // called from this page or anything visible here
+
 
             // console.log("address: " + address);
             // console.log("hash: " + hash);

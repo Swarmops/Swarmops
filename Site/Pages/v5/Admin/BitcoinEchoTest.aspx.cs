@@ -92,9 +92,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         }
 
         [WebMethod]
-        static public AjaxCallResult CheckTransactionReceived (string guid, BitcoinChain chain, string txHash)
+        static public AjaxCallResult CheckTransactionReceived (string guid, string txHash)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture(); // just to make sure we're called properly
+            BitcoinChain chain = BitcoinChain.Cash;
 
             string bitcoinAddress = (string) GuidCache.Get (guid);
             if (BitcoinUtility.TestUnspents (chain, bitcoinAddress))
