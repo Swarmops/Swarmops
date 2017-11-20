@@ -14,7 +14,7 @@
         eventToListenTo = 'tx';
         room = 'inv';
 
-        var socket = io("https://blockexplorer.com/");
+        var socket = io("https://bitcoincash.blockexplorer.com/");
         socket.on('connect', function() {
             // Join the room.
             socket.emit('subscribe', room);
