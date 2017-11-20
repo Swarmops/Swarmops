@@ -107,7 +107,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         address.Chain.ToString() + " " + address.DerivationPath,
                         address.Address,
                         JsonExpandingString (address.Identity, satoshisUnspentAddress),
-                        JsonExpandingString (address.Identity, (Int64) (satoshisUnspentAddress / 100.0 * conversionRateLookup[address.Chain]))
+                        JsonExpandingString (address.Identity, (Int64) (satoshisUnspentAddress * conversionRateLookup[address.Chain]))
                         );
                     result.Append ("\"state\":\"closed\",\"children\":[" + childResult.ToString() + "]");
                     result.Append ("},");
@@ -185,7 +185,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             return string.Format(CultureInfo.CurrentCulture,
                 "<span class=\\\"bitcoinhotwalletdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N2}</span><span class=\\\"bitcoinhotwalletdata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>",
-                addressId, currencyValue / 100.00);
+                addressId, currencyValue / 100.0);
         }
 
 
