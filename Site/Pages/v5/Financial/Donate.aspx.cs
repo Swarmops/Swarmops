@@ -54,6 +54,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             HotBitcoinAddress address = HotBitcoinAddress.Create (this.CurrentOrganization, BitcoinChain.Cash,
                 BitcoinUtility.BitcoinDonationsIndex, this.CurrentUser.Identity);
 
+            this.BitcoinCashAddressUsed = address.Address;
             string guid = Guid.NewGuid().ToString ("N");
             GuidCache.Set (guid, address.Address);
             this.TransactionGuid = guid;
