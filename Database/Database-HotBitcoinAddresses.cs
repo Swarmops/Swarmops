@@ -232,7 +232,7 @@ namespace Swarmops.Database
                     AddParameterWithName(command, "amountSatoshis", amountSatoshis);
                     AddParameterWithName(command, "confirmationCount", confirmationCount);
 
-                    return Convert.ToInt32(command.ExecuteScalar());
+                    return Convert.ToInt32(command.ExecuteScalar());  // A negative number means the record was updated, a positive that it was created
                 }
             }
         }
@@ -250,6 +250,21 @@ namespace Swarmops.Database
                     AddParameterWithName(command, "hotBitcoinAddressUnspentId", hotBitcoinAddressUnspentId);
 
                     return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
+
+        public void UpdateHotBitcoinAddressUnspentTotals()
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command = GetDbCommand("UpdateHotBitcoinAddressUnspentTotals", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.ExecuteNonQuery();
                 }
             }
         }

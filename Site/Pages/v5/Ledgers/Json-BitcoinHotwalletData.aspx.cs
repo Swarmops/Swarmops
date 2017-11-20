@@ -26,6 +26,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 if (address.Chain == BitcoinChain.Core)
                 {
                     // These shouldn't exist much, so make sure that we have the equivalent Cash address registered
+                    BitcoinUtility.TestUnspents(BitcoinChain.Cash, address.Address);
 
                     try
                     {
