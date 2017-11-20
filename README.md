@@ -77,9 +77,9 @@ Beta-2 features progress
 Beta-2 will be released on December 5, with string freeze on December 2. Its focus is to retool for Bitcoin Cash ~~and/or the Bitcoin 2x fork. This goal is fluid and may change as the strength of the respective forks become clearer.~~
 
 - [x] Database update for Bitcoin Cash balances for addresses
-- [ ] Track Bitcoin Cash balances as well as legacy Core balances
+- [x] Track Bitcoin Cash balances as well as legacy Core balances
 - [ ] Update NBitcoin to handle dual-mode
-- [ ] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 1, without conversion to fiat)
+- [x] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 1, without conversion to fiat)
 - [ ] Rewrite the Bitcoin Echo page to use Bitcoin Cash
 - [ ] Rewrite the Bitcoin Donation page; make more resilient to socket failures
 - [ ] String Freeze
@@ -92,7 +92,7 @@ Beta-3 features progress
 Beta-3 will be released on January 5, 2018, with string freeze on January 2. Its focus will be on Shapeshift integration and ability to receive and send payments in all different cryptocurrencies.
 
 - [x] Import all crypto pairs from Shapeshift and track exchange rates
-- [ ] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 2, including conversion to fiat)
+- [x] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 2, including conversion to fiat)
 - [ ] Write a Pay Invoice page for Bitcoin Cash
 - [x] Enable cryptocurrency as any other currency on entry
 - [ ] Enable payment identifiers, with currency
