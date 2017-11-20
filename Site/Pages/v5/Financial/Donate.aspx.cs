@@ -130,7 +130,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 }
 
                 Swarmops.Logic.Financial.Money moneyReceived = new Swarmops.Logic.Financial.Money(satoshisReceived,
-                    Currency.BitcoinCore);
+                    Currency.BitcoinCash);
 
                 // Make sure that the hotwallet native currency is bitcoin cash
                 authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.ForeignCurrency = Currency.BitcoinCash;
