@@ -52,3 +52,4 @@
 0052 - Added database support for multiple Bitcoin chain forks [RF]
 0053 - Bugfix for 0052 [RF]
 0054 - Fix for Conditional-CreateUTXO procedure with fork in effect [RF]
+0055 - Fix for bug introduced with 0054, hash collisions in index [RF]
