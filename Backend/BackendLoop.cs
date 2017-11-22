@@ -5,7 +5,6 @@ using System.Net;
 using System.Threading;
 using Mono.Unix;
 using Mono.Unix.Native;
-using NBitcoin.Protocol.Behaviors;
 using Newtonsoft.Json.Linq;
 using Swarmops.Backend.SocketServices;
 using Swarmops.Common.Enums;

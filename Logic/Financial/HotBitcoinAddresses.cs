@@ -88,5 +88,10 @@ namespace Swarmops.Logic.Financial
                 return unspents;
             }
         }
+
+        public static void UpdateAllUnspentTotals()
+        {
+            SwarmDb.GetDatabaseForWriting().UpdateHotBitcoinAddressUnspentTotals();
+        }
     }
 }

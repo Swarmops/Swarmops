@@ -592,7 +592,7 @@ namespace Swarmops.Logic.Financial
                 // We now have our desired payments. The next step is to find enough inputs to reach the required amount (plus fees; we're working a little blind here still).
 
                 BitcoinTransactionInputs inputs = null;
-                Int64 satoshisMaximumAnticipatedFees = BitcoinUtility.GetRecommendedFeePerThousandBytesSatoshis(BitcoinUtility.GetNetworkFromChain(chain)) * 20; // assume max 20k transaction size
+                Int64 satoshisMaximumAnticipatedFees = BitcoinUtility.GetRecommendedFeePerThousandBytesSatoshis(chain) * 20; // assume max 20k transaction size
 
                 try
                 {
@@ -676,7 +676,7 @@ namespace Swarmops.Logic.Financial
                     }
                     else if (payout.RecipientPerson.BitcoinPayoutAddress.StartsWith ("3")) // multisig
                     {
-                        txBuilder = txBuilder.Send(new BitcoinScriptAddress(payout.RecipientPerson.BitcoinPayoutAddress, Network.Core),
+                        txBuilder = txBuilder.Send(new BitcoinScriptAddress(payout.RecipientPerson.BitcoinPayoutAddress, Network.Main),
                             new Satoshis(satoshiPayoutLookup[payout.ProtoIdentity]));
                     }
                     else
@@ -698,7 +698,7 @@ namespace Swarmops.Logic.Financial
                 int transactionSizeBytes = txBuilder.EstimateSize (txBuilder.BuildTransaction (false)) + inputs.Count; 
                 // +inputs.Count for size variability
 
-                Int64 feeSatoshis = (transactionSizeBytes/1000 + 1) * BitcoinUtility.GetRecommendedFeePerThousandBytesSatoshis(BitcoinUtility.GetNetworkFromChain(chain));
+                Int64 feeSatoshis = (transactionSizeBytes/1000 + 1) * BitcoinUtility.GetRecommendedFeePerThousandBytesSatoshis(chain);
                 
                 txBuilder = txBuilder.SendFees (new Satoshis (feeSatoshis));
                 satoshisUsed += feeSatoshis;
@@ -724,7 +724,7 @@ namespace Swarmops.Logic.Financial
 
                 // Broadcast transaction
 
-                BitcoinUtility.BroadcastTransaction (txReady);
+                BitcoinUtility.BroadcastTransaction (txReady, BitcoinChain.Cash);
 
                 // Note the transaction hash
 

@@ -255,6 +255,22 @@ namespace Swarmops.Database
         }
 
 
+        public void UpdateHotBitcoinAddressUnspentTotal(int hotBitcoinAddressId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command = GetDbCommand("UpdateHotBitcoinAddressUnspentTotal", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    AddParameterWithName(command, "hotBitcoinAddressId", hotBitcoinAddressId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         public void UpdateHotBitcoinAddressUnspentTotals()
         {
             using (DbConnection connection = GetMySqlDbConnection())

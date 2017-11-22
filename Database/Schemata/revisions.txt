@@ -55,4 +55,5 @@
 0055 - Fix for bug introduced with 0054, hash collisions in index [RF]
 0056 - Splitting a storedproc into two; debugging a weird multi-row select return [RF]
 0057 - Bugfix for 0056: case insensitivity caused always-true comparison w/o qualifier [RF]
-0058 - Fixing the other half of 0056
+0058 - Fixing the other half of 0056 [RF]
+0059 - Added BackendServiceOrders, quite a bit of code too, for returning echo UTXOs from backend [RF]

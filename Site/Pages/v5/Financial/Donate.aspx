@@ -28,8 +28,9 @@
 
                     if (outAddress == pageDonationAddress) {
 
+                        $('#paraStatus').text(verifyingText);
                         var donatedSatoshis = data.vout[index][outAddress];
-                        donatedFunds += (donatedSatoshis * conversionRateSatoshisToCents / 100.0);
+                        donatedFunds += Math.floor((donatedSatoshis * conversionRateSatoshisToCents) / 100.0);
                         odoDonatedCents.innerHTML = donatedFunds; // looks weird but $('#id') not used with odo
 
                         var json = {};
@@ -94,6 +95,7 @@
         var donatedFunds = 0.001; // the 0.1 cents are necessary for an odometer workaround
 
         var pageDonationAddress = SwarmopsJS.unescape('<%=this.BitcoinCashAddressUsed %>');
+        var verifyingText = SwarmopsJS.unescape('<%=this.Localized_Verifying%>');
         var guid = SwarmopsJS.unescape('<%=this.TransactionGuid%>');
         var conversionRateSatoshisToCents = <%= this.ConversionRateSatoshisToCents %>;
         var completed = false;

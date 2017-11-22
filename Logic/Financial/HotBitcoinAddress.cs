@@ -63,8 +63,8 @@ namespace Swarmops.Logic.Financial
             }
 
             derivationPathString = derivationPathString.TrimStart();
-            string bitcoinAddress = extPubKey.PubKey.GetAddress (Network.Core).ToString();    // TODO: CHANGE NETWORK.MAIN TO NEW LOOKUP
-            string bitcoinAddressFallback = extPubKey.PubKey.GetAddress(Network.Core).ToString(); // The fallback address would be the main address
+            string bitcoinAddress = extPubKey.PubKey.GetAddress (Network.Main).ToString();    // TODO: CHANGE NETWORK.MAIN TO NEW LOOKUP
+            string bitcoinAddressFallback = extPubKey.PubKey.GetAddress(Network.Main).ToString(); // The fallback address would be the main address
 
             int hotBitcoinAddressId =
                 SwarmDb.GetDatabaseForWriting()
@@ -113,7 +113,7 @@ namespace Swarmops.Logic.Financial
                     secretExtKey = secretExtKey.Derive (UInt32.Parse (derivationString));
                 }
 
-                return secretExtKey.PrivateKey.GetBitcoinSecret (Network.Core);
+                return secretExtKey.PrivateKey.GetBitcoinSecret (Network.Main);
             }
         }
 
@@ -149,6 +149,11 @@ namespace Swarmops.Logic.Financial
 
                 return result.ToArray();
             }
+        }
+
+        public void UpdateTotal()
+        {
+            SwarmDb.GetDatabaseForWriting().UpdateHotBitcoinAddressUnspentTotal(this.Identity);
         }
     }
 }

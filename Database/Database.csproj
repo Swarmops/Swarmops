@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
+    <Compile Include="Database-BackendServiceOrders.cs" />
     <Compile Include="Database-ExchangeRates.cs" />
     <Compile Include="Database-GeographyUpdates.cs" />
     <Compile Include="Database-CashAdvances.cs" />

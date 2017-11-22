@@ -65,6 +65,7 @@
     <Compile Include="Types\Swarm\BasicPosition.cs" />
     <Compile Include="Types\Swarm\BasicPositionAssignment.cs" />
     <Compile Include="Types\Swarm\BasicVolunteerPosition.cs" />
+    <Compile Include="Types\System\BasicBackendServiceOrder.cs" />
     <Compile Include="Types\System\BasicSwarmopsLogEntry.cs" />
     <Compile Include="Types\Communications\BasicOutboundComm.cs" />
     <Compile Include="Types\Communications\BasicOutboundCommRecipient.cs" />

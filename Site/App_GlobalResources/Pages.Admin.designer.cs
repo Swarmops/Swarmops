@@ -61,7 +61,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is a QR code for bitcoin echo testing for {0}. Read it from your phone&apos;s bitcoin wallet to perform the echo test, or donate from your computer directly to [{1}] (that&apos;s a bitcoin address). The amount (less miner fees) will be sent back to you in the next auto-payment cycle which runs every five minutes..
+        ///   Looks up a localized string similar to This is a QR code for bitcoin echo testing for {0}. Read it from your phone&apos;s bitcoin wallet to perform the echo test, or donate from your computer directly to [{1}] (that&apos;s a Bitcoin Cash address). The amount (less miner fees) will be sent back to you in the next auto-payment cycle which runs every five minutes..
         /// </summary>
         internal static string BitcoinEchoTest_Explain {
             get {
@@ -97,7 +97,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Donate.
+        ///   Looks up a localized string similar to Bitcoin Cash Echo Test.
         /// </summary>
         internal static string BitcoinEchoTest_PageTitle {
             get {

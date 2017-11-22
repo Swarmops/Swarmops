@@ -25,18 +25,25 @@ namespace Swarmops.Logic.Support
                 (sender, certificate, chain, sslPolicyErrors) => true;
         }
 
-        public static string GenerateSecureRandomKey(int bytelength)
+        public static string GenerateSecureRandomKey(int byteCount)
         {
-            byte[] buffer = new byte[bytelength];
-            RNGCryptoServiceProvider devRandom = new RNGCryptoServiceProvider();
-            devRandom.GetBytes(buffer);
+            byte[] buffer = GenerateSecureRandomBytes(byteCount);
 
-            StringBuilder result = new StringBuilder(bytelength * 2);
+            StringBuilder result = new StringBuilder(byteCount * 2);
             for (int loop = 0; loop < buffer.Length; loop++)
             {
                 result.AppendFormat("{0:X2}", buffer[loop]);
             }
             return result.ToString();
+        }
+
+        public static byte[] GenerateSecureRandomBytes(int byteCount)
+        {
+            byte[] buffer = new byte[byteCount];
+            RNGCryptoServiceProvider devRandom = new RNGCryptoServiceProvider();
+            devRandom.GetBytes(buffer);
+
+            return buffer;
         }
 
         // ReSharper disable once InconsistentNaming  -- IPAddress is the canonical writing

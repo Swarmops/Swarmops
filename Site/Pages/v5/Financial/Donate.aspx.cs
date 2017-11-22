@@ -196,5 +196,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             return new AjaxCallResult() {Success = false};
         }
+
+
+        // -- Localizations below --
+
+        public string Localized_Verifying
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.Donate_TransactionDetected); }
+        }
     }
 }

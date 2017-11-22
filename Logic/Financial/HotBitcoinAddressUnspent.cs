@@ -41,7 +41,12 @@ namespace Swarmops.Logic.Financial
                     HotBitcoinAddressUnspentId = this.Identity
                 };
             }
-        }            
+        }
+
+        public BitcoinTransactionInputs AsInputs
+        {
+            get { return BitcoinTransactionInputs.FromSingle(AsInput); }
+        }
 
         public HotBitcoinAddress Address
         {

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
-    <value>This is a QR code for bitcoin echo testing for {0}. Read it from your phone's bitcoin wallet to perform the echo test, or donate from your computer directly to [{1}] (that's a bitcoin address). The amount (less miner fees) will be sent back to you in the next auto-payment cycle which runs every five minutes.</value>
+    <value>This is a QR code for bitcoin echo testing for {0}. Read it from your phone's bitcoin wallet to perform the echo test, or donate from your computer directly to [{1}] (that's a Bitcoin Cash address). The amount (less miner fees) will be sent back to you in the next auto-payment cycle which runs every five minutes.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
   </data>
   <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
@@ -133,7 +133,7 @@
     <value>This is a bitcoin echo test. It tests the hotwallet. If you send a small amount here, it will be sent back to you, minus the sendback transaction fee.</value>
   </data>
   <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
-    <value>Donate</value>
+    <value>Bitcoin Cash Echo Test</value>
   </data>
   <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
     <value>Waiting for transaction...</value>

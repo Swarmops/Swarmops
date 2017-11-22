@@ -52,6 +52,8 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
+                Console.WriteLine("WTF");
+
                 List<Coin> coinList = new List<Coin>();
 
                 foreach (BitcoinTransactionInput input in this)
