@@ -80,7 +80,7 @@ BEGIN
 
     SELECT BackendServiceClasses.BackendServiceClassId INTO backendServiceClassId
       FROM BackendServiceClasses
-      WHERE WHERE BackendServiceClasses.Name=backendServiceClassName;
+      WHERE BackendServiceClasses.Name=backendServiceClassName;
 
   END IF;
 
