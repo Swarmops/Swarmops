@@ -57,3 +57,4 @@
 0057 - Bugfix for 0056: case insensitivity caused always-true comparison w/o qualifier [RF]
 0058 - Fixing the other half of 0056 [RF]
 0059 - Added BackendServiceOrders, quite a bit of code too, for returning echo UTXOs from backend [RF]
+0060 - Dumb fix for BSO tables: forgot autoincrement on the primary keys [RF]
