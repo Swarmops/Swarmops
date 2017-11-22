@@ -9,7 +9,7 @@
   `Active` TINYINT NOT NULL DEFAULT 0,
   `StartedDateTime` DATETIME NOT NULL DEFAULT '1800-01-01',
   `ClosedDateTime` DATETIME NOT NULL DEFAULT '1800-01-01',
-  `ExceptionText` TEXT NOT NULL DEFAULT '',
+  `ExceptionText` TEXT NOT NULL,
   PRIMARY KEY (`BackendServiceOrderId`),
   INDEX `Ix_Created` (`CreatedDateTime` ASC),
   INDEX `Ix_Organization` (`OrganizationId` ASC),
@@ -85,12 +85,13 @@ BEGIN
   END IF;
 
   INSERT INTO BackendServiceOrders
-    (CreatedDateTime, OrganizationId, PersonId, BackendServiceClassId, OrderXml)
+    (CreatedDateTime, OrganizationId, PersonId, BackendServiceClassId, OrderXml, ExceptionText)
   VALUES
-    (dateTime, organizationId, personId, backendServiceClassId, orderXml);
+    (dateTime, organizationId, personId, backendServiceClassId, orderXml, '');
 
   SELECT LAST_INSERT_ID() AS Identity;
 
+END
 
 #
 
