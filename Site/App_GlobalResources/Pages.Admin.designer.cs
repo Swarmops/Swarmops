@@ -61,7 +61,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is a QR code for bitcoin echo testing for {0}. Read it from your phone&apos;s bitcoin wallet to perform the echo test, or donate from your computer directly to [{1}] (that&apos;s a Bitcoin Cash address). The amount (less miner fees) will be sent back to you in the next auto-payment cycle which runs every five minutes..
+        ///   Looks up a localized string similar to This is a QR code for bitcoin echo testing for this entire Swarmops installation, not just for {0}. Read it from your phone&apos;s bitcoin wallet to perform the echo test, or donate from your computer directly to [{1}] (that&apos;s a Bitcoin Cash address). The amount (less miner fees) will be sent back to you in the next few seconds..
         /// </summary>
         internal static string BitcoinEchoTest_Explain {
             get {
@@ -70,7 +70,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Received {0} {1:N2} ({2:N0} microcoins or &quot;bits&quot;). They will be sent back shortly (less miner fee)..
+        ///   Looks up a localized string similar to Received {2:N2} microcoins ({0} {1:N2}). Returning..
         /// </summary>
         internal static string BitcoinEchoTest_FundsReceived {
             get {
@@ -79,7 +79,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Received {0} microcoins (&quot;bits&quot;). They will be sent back shortly (less miner fee)..
+        ///   Looks up a localized string similar to Received {0} microcoins (&quot;bits&quot;). Returning..
         /// </summary>
         internal static string BitcoinEchoTest_FundsReceivedNative {
             get {
@@ -124,7 +124,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bitcoin Echo Test for {0}.
+        ///   Looks up a localized string similar to Swarmops Bitcoin Echo Test.
         /// </summary>
         internal static string BitcoinEchoTest_TxLabel {
             get {

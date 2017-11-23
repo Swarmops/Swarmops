@@ -45,8 +45,10 @@
                             json,
                             function (data) {
                                 if (data.Success) {
-                                    minerFees += (-Math.floor(minerFeeSatoshis * conversionRateSatoshisToCents) / 100.0);
-                                    console.log(minerFees);
+                                    var minerFeeCents = (Math.floor(minerFeeSatoshis * conversionRateSatoshisToCents) / 100.0);
+                                    minerFees -= minerFeeCents;
+                                    console.log(donatedSatoshis);
+                                    console.log("Miner fee is " + minerFeeSatoshis + " satoshis, translating to " + minerFeeCents + " cents");
                                     returnedFunds += (Math.floor(((donatedSatoshis - minerFeeSatoshis) * conversionRateSatoshisToCents) / 100.0));
 
                                     odoMinerFeeCents.innerHTML = minerFees;
