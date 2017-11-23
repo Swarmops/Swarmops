@@ -78,9 +78,9 @@ Beta-2 will be released on December 5, with string freeze on December 2. Its foc
 
 - [x] Database update for Bitcoin Cash balances for addresses
 - [x] Track Bitcoin Cash balances as well as legacy Core balances
-- [ ] Update NBitcoin to handle dual-mode
+- [x] Update NBitcoin to handle ~~dual-mode~~ Bitcoin Cash (only; no need for Core anymore)
 - [x] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 1, without conversion to fiat)
-- [ ] Rewrite the Bitcoin Echo page to use Bitcoin Cash
+- [x] Rewrite the Bitcoin Echo page to use Bitcoin Cash
 - [x] Rewrite the Bitcoin Donation page; make more resilient to socket failures
 - [ ] String Freeze
 - [ ] Release
