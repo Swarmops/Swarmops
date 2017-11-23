@@ -53,7 +53,7 @@ namespace Swarmops.Basic.Types.System
 
         public int Identity
         {
-            get { return this.GetHashCode();  }
+            get { return this.BackendServiceOrderId;  }
         }
     }
 }
