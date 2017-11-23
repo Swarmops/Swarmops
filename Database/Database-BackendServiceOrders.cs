@@ -80,9 +80,14 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command =
-                    GetDbCommand(  // this ORDERBY + LIMIT gets the oldest first in a FIFO queue
-                        "SELECT " + backendServiceOrderFieldSequence + ConstructWhereClause("BackendServiceOrders", conditions) + " ORDER BY BackendServiceOrderId LIMIT " + batchMaxSize.ToString(CultureInfo.InvariantCulture), connection);
+                string sql = "SELECT " + backendServiceOrderFieldSequence +
+                             ConstructWhereClause("BackendServiceOrders", conditions) +
+                             " ORDER BY BackendServiceOrderId LIMIT " +
+                             batchMaxSize.ToString(CultureInfo.InvariantCulture);
+
+                // this ORDERBY + LIMIT gets the oldest first in a FIFO queue
+
+                DbCommand command = GetDbCommand(sql, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -112,7 +117,7 @@ namespace Swarmops.Database
                 DbCommand command = GetDbCommand("CreateBackendServiceOrder", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "dateTime", now);
+                AddParameterWithName(command, "nowUtc", now);
                 AddParameterWithName(command, "backendServiceClassName", backendServiceClassName);
                 AddParameterWithName(command, "orderXml", orderXml);
                 AddParameterWithName(command, "organizationId", organizationId);
@@ -135,7 +140,7 @@ namespace Swarmops.Database
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName(command, "backendServiceOrderId", backendServiceOrderId);
-                AddParameterWithName(command, "dateTime", now);
+                AddParameterWithName(command, "nowUtc", now);
 
                 if (Convert.ToInt32(command.ExecuteScalar()) != 1) // returns count of rows updated
                 {
@@ -156,7 +161,7 @@ namespace Swarmops.Database
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName(command, "backendServiceOrderId", backendServiceOrderId);
-                AddParameterWithName(command, "dateTime", now);
+                AddParameterWithName(command, "nowUtc", now);
 
                 if (Convert.ToInt32(command.ExecuteScalar()) != 1) // returns count of rows updated
                 {

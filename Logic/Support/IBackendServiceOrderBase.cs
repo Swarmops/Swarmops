@@ -14,5 +14,6 @@ namespace Swarmops.Logic.Support
         void Close();
         bool HasWorkerThread { get; set; }
         Thread WorkerThread { get; set; }
+        int ServiceOrderIdentity { get; set; }
     }
 }

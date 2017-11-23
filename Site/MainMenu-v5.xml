@@ -583,6 +583,16 @@
                 <Children />
               </MainMenuItem>
 
+              <MainMenuItem>
+                <ResourceKey>Administration_Debug_BitcoinEchoTest</ResourceKey>
+                <UserLevel>4</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-battery-drill</ImageUrl>
+                <NavigateUrl>/Pages/v5/Admin/BitcoinEchoTest.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+              </MainMenuItem>
+
             </Children>
           </MainMenuItem>
 

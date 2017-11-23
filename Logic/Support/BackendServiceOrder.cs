@@ -47,7 +47,7 @@ namespace Swarmops.Logic.Support
                 return;
             }
 
-            MethodInfo methodFromXml = serviceClassType.GetMethod("FromXml", BindingFlags.FlattenHierarchy | BindingFlags.Static);
+            MethodInfo methodFromXml = serviceClassType.GetMethod("FromXml", BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public);
 
             if (methodFromXml == null)
             {
@@ -56,6 +56,7 @@ namespace Swarmops.Logic.Support
             }
 
             IBackendServiceOrderBase order = (IBackendServiceOrderBase) methodFromXml.Invoke(null, new object[] { this.OrderXml });
+            order.ServiceOrderIdentity = this.Identity; // not part of serialization
 
             // Mark as started
 
@@ -80,7 +81,7 @@ namespace Swarmops.Logic.Support
                     {
                         order.Close();
                     }
-                    catch (ConcurrencyException)
+                    catch (DatabaseConcurrencyException)
                     {
                         // Ignore if we try to close it twice in this particular failure scenario
                     }

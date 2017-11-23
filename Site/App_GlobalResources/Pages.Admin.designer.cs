@@ -97,7 +97,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bitcoin Cash Echo Test.
+        ///   Looks up a localized string similar to Bitcoin Cash Hotwallet Echo Test.
         /// </summary>
         internal static string BitcoinEchoTest_PageTitle {
             get {

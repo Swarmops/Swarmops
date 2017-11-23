@@ -151,6 +151,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bitcoin Hotwallet Echo Test.
+        /// </summary>
+        internal static string Menu5_Admin_Debug_BitcoinEchoTest {
+            get {
+                return ResourceManager.GetString("Menu5_Admin_Debug_BitcoinEchoTest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Built on {0:MMM d, yyyy}.
         /// </summary>
         internal static string Menu5_Beta_BuildTime {

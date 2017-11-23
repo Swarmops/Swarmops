@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NBitcoin;
+using RestSharp.Serializers;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Communications;
@@ -15,6 +16,8 @@ using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.BackendServices;
 using Satoshis = NBitcoin.Money; // Sets it apart from Swarmops' Money class
 
 namespace Swarmops.Frontend.Pages.v5.Admin
@@ -110,59 +113,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                 // Return the money, too. Set fee for a 300-byte transaction.
 
-                TransactionBuilder txBuilder = new TransactionBuilder();
-                txBuilder = txBuilder.SendFees(new Satoshis(EchoFeeSatoshis));
-                txBuilder = txBuilder.AddCoins(utxoToReturn.AsInputs.Coins);
-                txBuilder = txBuilder.AddKeys(utxoToReturn.AsInputs.PrivateKeys);
-
-                // change address equals return address, although it should be empty
-
-                if (returnAddress.StartsWith("1")) // regular address
-                {
-                    txBuilder = txBuilder.Send(new BitcoinPubKeyAddress(returnAddress),
-                        new Satoshis(satoshisReceived - EchoFeeSatoshis));
-                    txBuilder.SetChange(new BitcoinPubKeyAddress(returnAddress));
-                }
-                else if (returnAddress.StartsWith("3")) // multisig
-                {
-                    txBuilder = txBuilder.Send(new BitcoinScriptAddress(returnAddress, Network.Main),
-                        new Satoshis(satoshisReceived - EchoFeeSatoshis));
-                    txBuilder.SetChange(new BitcoinScriptAddress(returnAddress, Network.Main));
-                }
-
-
-
-                // Sign transaction - ready to execute
-
-                Transaction txReady = txBuilder.BuildTransaction(true);
-
-                // Verify that transaction is ready
-
-                if (!txBuilder.Verify(txReady))
-                {
-                    // Transaction was not signed with the correct keys. This is a serious condition.
-
-                    NotificationStrings primaryStrings = new NotificationStrings();
-                    primaryStrings[NotificationString.OrganizationName] = authData.CurrentOrganization.Name;
-
-                    OutboundComm.CreateNotification(authData.CurrentOrganization, NotificationResource.Bitcoin_PrivateKeyError,
-                        primaryStrings);
-
-                    throw new InvalidOperationException("Transaction is not signed enough");
-                }
-
-                // Broadcast transaction
-
-                BitcoinUtility.BroadcastTransaction(txReady, BitcoinChain.Cash);
-
-                // Note the transaction hash
-
-                string returnTxHash = txReady.GetHash().ToString();
-
-                // Delete all old inputs, adjust balance for addresses (re-register unused inputs)
-
-                utxoToReturn.Delete();
-                HotBitcoinAddresses.UpdateAllUnspentTotals();
+                ReturnBitcoinEchoUtxoOrder backendOrder = new ReturnBitcoinEchoUtxoOrder(utxoToReturn);
+                backendOrder.Create(authData.CurrentOrganization, authData.CurrentUser);
 
                 string tx1Description = "Bitcoin technical echo test (will be repaid immediately)";
                 string tx2Description = "Bitcoin echo test repayment";
@@ -182,7 +134,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         DateTime.UtcNow, tx2Description);
                     ledgerTx2.AddRow(authData.CurrentOrganization.FinancialAccounts.DebtsOther, satoshisReceived, authData.CurrentUser);
                     ledgerTx2.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, -satoshisReceived, authData.CurrentUser);
-                    ledgerTx2.BlockchainHash = returnTxHash;
+                    // ledgerTx2.BlockchainHash = returnTxHash; // TODO? Unknown at this point
 
                     if (satoshisReceived % 100 == 0)
                     {
@@ -194,9 +146,6 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         successMessage = string.Format(Resources.Pages.Admin.BitcoinEchoTest_FundsReceivedNative,
                             (satoshisReceived / 100.0).ToString("N2"));
                     }
-
-                    // TODO: Second tx
-
                 }
                 else
                 {
@@ -213,7 +162,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         DateTime.UtcNow, tx2Description);
                     ledgerTx2.AddRow(authData.CurrentOrganization.FinancialAccounts.DebtsOther, orgNativeCents, authData.CurrentUser);
                     ledgerTx2.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, -orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(-satoshisReceived, Currency.BitcoinCash);
-                    ledgerTx2.BlockchainHash = returnTxHash;
+                    // ledgerTx2.BlockchainHash = returnTxHash; // TODO: How do we solve this, the recording of the return hash? It's not known here
 
                     successMessage = string.Format(Resources.Pages.Admin.BitcoinEchoTest_FundsReceived,
                         authData.CurrentOrganization.Currency.DisplayCode, orgNativeCents/100.0, satoshisReceived/100.0);

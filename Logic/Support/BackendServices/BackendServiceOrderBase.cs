@@ -21,7 +21,7 @@ namespace Swarmops.Logic.Support.BackendServices
     {
         public virtual string ToXml()
         {
-            XmlSerializer serializer = new XmlSerializer(GetType());
+            XmlSerializer serializer = new XmlSerializer(this.GetType());
 
             MemoryStream stream = new MemoryStream();
             serializer.Serialize(stream, this);
@@ -68,7 +68,7 @@ namespace Swarmops.Logic.Support.BackendServices
         /// </summary>
         public virtual void Run()
         {
-            throw new NotImplementedException("The base Run() has no implementation. Derive and override!");
+            throw new NotImplementedException("The base Run() has no implementation. Derive and declare 'override'!");
         }
 
         /// <summary>

@@ -443,4 +443,7 @@
     <value>VAT Reports</value>
     <comment>This is a European thing (Value Added Tax).</comment>
   </data>
+  <data name="Menu5_Admin_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Bitcoin Hotwallet Echo Test</value>
+  </data>
 </root>

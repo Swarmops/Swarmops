@@ -105,7 +105,7 @@ namespace Swarmops.Logic.Financial
 
                     return
                         ExtKey.Parse(
-                            "Replace this with your own favorite secret root key for debugging, and remember to never commit it to Github :)");
+                            "Write your favorite root private key here");
                 }
 
                 return
@@ -346,7 +346,7 @@ namespace Swarmops.Logic.Financial
 
                     JArray unspentArray;
 
-                    if ((int)addressInfoResult["balanceSat"] == 0)
+                    if ((int)addressInfoResult["balanceSat"] == 0 && (int)addressInfoResult["unconfirmedBalanceSat"] == 0)
                     {
                         return false; // no funds on address at all at this time
                     }

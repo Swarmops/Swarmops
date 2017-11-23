@@ -14,12 +14,18 @@ namespace Swarmops.Logic.Support.BackendServices
     [Serializable]
     public class ReturnBitcoinEchoUtxoOrder: BackendServiceOrderBase<ReturnBitcoinEchoUtxoOrder>
     {
-        public ReturnBitcoinEchoUtxoOrder(BasicHotBitcoinAddressUnspent utxo)
+        [Obsolete("Never call the parameterless ctor from code; intended for use by serialization only.", true)]
+        public ReturnBitcoinEchoUtxoOrder()
         {
-            this.UtxoIdentity = utxo.Identity;
+            // Never call -- intended for use by serialization only
         }
 
-        public new void Run()
+        public ReturnBitcoinEchoUtxoOrder(BasicHotBitcoinAddressUnspent utxo)
+        {
+            this.UtxoIdentity = utxo == null? 0: utxo.Identity;
+        }
+
+        public override void Run()
         {
             HotBitcoinAddressUnspent utxoToReturn = HotBitcoinAddressUnspent.FromIdentity(UtxoIdentity);
             HotBitcoinAddress utxoAddress = utxoToReturn.Address;

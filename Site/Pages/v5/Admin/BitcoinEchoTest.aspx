@@ -33,6 +33,7 @@
 
                         $('#paraStatus').text(verifyingText);
                         var donatedSatoshis = data.vout[index][outAddress];
+                        console.log(donatedSatoshis);
                         sentFunds += Math.floor((donatedSatoshis * conversionRateSatoshisToCents) / 100.0);
                         odoSentCents.innerHTML = sentFunds; // looks weird but $('#id') not used with odo
 

@@ -133,7 +133,7 @@
     <value>This is a bitcoin echo test. It tests the hotwallet. If you send a small amount here, it will be sent back to you, minus the sendback transaction fee.</value>
   </data>
   <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
-    <value>Bitcoin Cash Echo Test</value>
+    <value>Bitcoin Cash Hotwallet Echo Test</value>
   </data>
   <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
     <value>Waiting for transaction...</value>
