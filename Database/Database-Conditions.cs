@@ -174,17 +174,17 @@ namespace Swarmops.Database
             switch (condition)
             {
                 case DatabaseCondition.OpenTrue:
-                    return "Open=1";
+                    return "Open=1 ";
                 case DatabaseCondition.OpenFalse:
-                    return "Open=0";
+                    return "Open=0 ";
                 case DatabaseCondition.AttestedFalse:
-                    return "Attested=0";
+                    return "Attested=0 ";
                 case DatabaseCondition.AttestedTrue:
-                    return "Attested=1";
+                    return "Attested=1 ";
                 case DatabaseCondition.ActiveFalse:
-                    return "Active=0";
+                    return "Active=0 ";
                 case DatabaseCondition.ActiveTrue:
-                    return "Active=1";
+                    return "Active=1 ";
                 default:
                     throw new InvalidOperationException (
                         "Undefined or unimplemented DatabaseCondition in GetWhereClauseForCondition: " +
@@ -203,7 +203,7 @@ namespace Swarmops.Database
                 {
                     if (!clause.StartsWith(" LIMIT"))
                     {
-                        result += " AND " + clause;
+                        result += "AND " + clause;
                     }
                     else
                     {
