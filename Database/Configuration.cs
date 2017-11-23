@@ -12,7 +12,7 @@ namespace Swarmops.Database
         /// <summary>
         ///     This is the IN-CODE revision of the database. The version we expect to be running against.
         /// </summary>
-        public static int DbVersionExpected => 60;
+        public static int DbVersionExpected => 61;
 
 
         // This class is in horrible need of serious refactoring. For its simplicity in task, it's a horrible bowl of spaghetti.
