@@ -333,7 +333,7 @@ namespace Swarmops.Backend
                         // of connection of a socket):
 
                         BackendServiceOrders backendOrders = BackendServiceOrders.GetNextBatch(5);
-                        backendOrders.Execute(); // takes at most 250ms per he spec
+                        backendOrders.Execute(); // takes at most 250ms per BSO reqs
 
                         // Block until a SIGINT or SIGTERM signal is generated, or 1/4 second has passed.
                         // However, we can't do that in a development environment - it won't have the

@@ -97,6 +97,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bitcoin Hotwallet Echo Test.
+        /// </summary>
+        internal static string Menu5_Administration_Debug_BitcoinEchoTest {
+            get {
+                return ResourceManager.GetString("Menu5_Administration_Debug_BitcoinEchoTest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Impersonate.
         /// </summary>
         internal static string Menu5_Administration_Debug_Impersonate {
@@ -147,15 +156,6 @@ namespace Resources {
         internal static string Menu5_Administration_SystemSettings {
             get {
                 return ResourceManager.GetString("Menu5_Administration_SystemSettings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bitcoin Hotwallet Echo Test.
-        /// </summary>
-        internal static string Menu5_Admin_Debug_BitcoinEchoTest {
-            get {
-                return ResourceManager.GetString("Menu5_Admin_Debug_BitcoinEchoTest", resourceCulture);
             }
         }
         
