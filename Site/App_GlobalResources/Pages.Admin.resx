@@ -371,6 +371,6 @@
     <value>Government</value>
   </data>
   <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;DUST COLLECTED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The amount sent is smaller than the expected fee for returning it to you, which is {0} satoshis ({1} {2:N2}). The money you sent is now so-called "dust" on the bitcoin network, and won't be moved again.&lt;br/&gt;&lt;br/&gt;Send a higher amount to perform an echo test.</value>
+    <value>&lt;strong&gt;DUST COLLECTED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The amount sent is smaller than the expected fee for returning it to you, which is {0:N2} microcoins. The money you sent is now so-called "dust" on the bitcoin network, and won't be moved again.&lt;br/&gt;&lt;br/&gt;Send a higher amount to perform an echo test.</value>
   </data>
 </root>

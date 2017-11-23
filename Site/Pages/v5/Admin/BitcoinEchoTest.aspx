@@ -31,35 +31,45 @@
 
                     if (outAddress == addressUsed) {
 
-                        $('#paraStatus').text(verifyingText);
                         var donatedSatoshis = data.vout[index][outAddress];
-                        console.log(donatedSatoshis);
-                        sentFunds += Math.floor(donatedSatoshis * conversionRateSatoshisToCents) / 100.0;
-                        odoSentCents.innerHTML = sentFunds; // looks weird but $('#id') not used with odo
 
-                        var json = {};
-                        json.guid = guid;
-                        json.txHash = data.txid;
+                        if (donatedSatoshis > minerFeeSatoshis) {
 
-                        SwarmopsJS.ajaxCall('/Pages/v5/Admin/BitcoinEchoTest.aspx/ProcessTransactionReceived',
-                            json,
-                            function (data) {
-                                if (data.Success) {
-                                    var minerFeeCents = (Math.floor(minerFeeSatoshis * conversionRateSatoshisToCents) / 100.0);
-                                    minerFees -= minerFeeCents;
-                                    console.log(donatedSatoshis);
-                                    console.log("Miner fee is " + minerFeeSatoshis + " satoshis, translating to " + minerFeeCents + " cents");
-                                    returnedFunds += Math.floor((donatedSatoshis - minerFeeSatoshis) * conversionRateSatoshisToCents) / 100.0;
+                            $('#paraStatus').text(verifyingText);
+                            console.log(donatedSatoshis);
+                            sentFunds += Math.floor(donatedSatoshis * conversionRateSatoshisToCents) / 100.0;
+                            odoSentCents.innerHTML = sentFunds; // looks weird but $('#id') not used with odo
 
-                                    odoMinerFeeCents.innerHTML = minerFees;
-                                    odoReturnedCents.innerHTML = returnedFunds;
+                            var json = {};
+                            json.guid = guid;
+                            json.txHash = data.txid;
 
-                                    $('#paraStatus').text(data.DisplayMessage);
-                                    $('#paraIntro').fadeOut().slideUp();
-                                    $('#divQr').fadeOut().slideUp();
-                                    completed = true;
-                                }
-                            });
+
+                            SwarmopsJS.ajaxCall('/Pages/v5/Admin/BitcoinEchoTest.aspx/ProcessTransactionReceived',
+                                json,
+                                function(data) {
+                                    if (data.Success) {
+                                        var minerFeeCents = (Math.floor(minerFeeSatoshis * conversionRateSatoshisToCents) / 100.0);
+                                        minerFees -= minerFeeCents;
+                                        console.log(donatedSatoshis);
+                                        console.log("Miner fee is " + minerFeeSatoshis + " satoshis, translating to " + minerFeeCents + " cents");
+                                        returnedFunds += Math.floor((donatedSatoshis - minerFeeSatoshis) * conversionRateSatoshisToCents) / 100.0;
+
+                                        odoMinerFeeCents.innerHTML = minerFees;
+                                        odoReturnedCents.innerHTML = returnedFunds;
+
+                                        $('#paraStatus').text(data.DisplayMessage);
+                                        $('#paraIntro').fadeOut().slideUp();
+                                        $('#divQr').fadeOut().slideUp();
+                                        completed = true;
+                                    }
+                                });
+                        } else {
+                            // Dust collected
+
+                            alertify.dialog(SwarmopsJS.unescape('<%=Localized_DustCollected%>'));
+                        }
+
 
                     }
                 }

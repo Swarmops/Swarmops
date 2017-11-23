@@ -31,7 +31,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             // This page is copied from Donate, with the echo payout added to the end
 
             this.PageTitle = Resources.Pages.Admin.BitcoinEchoTest_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Admin.BitcoinEchoTest_Info;
+            this.InfoBoxLiteral = String.Format(Resources.Pages.Admin.BitcoinEchoTest_Info, BitcoinUtility.EchoFeeSatoshis / 100.0);
             this.LabelStatus.Text = Resources.Pages.Admin.BitcoinEchoTest_StatusInitial;
             this.SuppressStatisticHeaders = true;
 
@@ -182,6 +182,16 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         public string Localized_Verifying
         {
             get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.Donate_TransactionDetected); }
+        }
+
+        public string Localized_DustCollected
+        {
+            get
+            {
+                return
+                    CommonV5.JavascriptEscape(String.Format(Resources.Pages.Admin.BitcoinEchoTest_DustCollected,
+                        BitcoinUtility.EchoFeeSatoshis/100.0)); 
+            }
         }
 
     }

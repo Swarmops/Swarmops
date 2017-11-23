@@ -61,7 +61,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;strong&gt;DUST COLLECTED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The amount sent is smaller than the expected fee for returning it to you, which is {0} satoshis ({1} {2:N2}). The money you sent is now so-called &quot;dust&quot; on the bitcoin network, and won&apos;t be moved again.&lt;br/&gt;&lt;br/&gt;Send a higher amount to perform an echo test..
+        ///   Looks up a localized string similar to &lt;strong&gt;DUST COLLECTED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The amount sent is smaller than the expected fee for returning it to you, which is {0:N2} microcoins. The money you sent is now so-called &quot;dust&quot; on the bitcoin network, and won&apos;t be moved again.&lt;br/&gt;&lt;br/&gt;Send a higher amount to perform an echo test..
         /// </summary>
         internal static string BitcoinEchoTest_DustCollected {
             get {
