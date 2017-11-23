@@ -34,7 +34,7 @@
                         $('#paraStatus').text(verifyingText);
                         var donatedSatoshis = data.vout[index][outAddress];
                         console.log(donatedSatoshis);
-                        sentFunds += (Math.floor(donatedSatoshis * conversionRateSatoshisToCents) / 100.0;
+                        sentFunds += Math.floor(donatedSatoshis * conversionRateSatoshisToCents) / 100.0;
                         odoSentCents.innerHTML = sentFunds; // looks weird but $('#id') not used with odo
 
                         var json = {};
@@ -49,7 +49,7 @@
                                     minerFees -= minerFeeCents;
                                     console.log(donatedSatoshis);
                                     console.log("Miner fee is " + minerFeeSatoshis + " satoshis, translating to " + minerFeeCents + " cents");
-                                    returnedFunds += (Math.floor((donatedSatoshis - minerFeeSatoshis) * conversionRateSatoshisToCents) / 100.0);
+                                    returnedFunds += Math.floor((donatedSatoshis - minerFeeSatoshis) * conversionRateSatoshisToCents) / 100.0;
 
                                     odoMinerFeeCents.innerHTML = minerFees;
                                     odoReturnedCents.innerHTML = returnedFunds;
