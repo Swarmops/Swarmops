@@ -60,7 +60,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             this.BoxTitle.Text = Resources.Pages.Admin.BitcoinEchoTest_PageTitle;
             this.LabelExplainBitcoinEchoTest.Text = String.Format (Resources.Pages.Admin.BitcoinEchoTest_Explain,
-                CurrentOrganization.Name, address.Address);
+                CurrentOrganization.Name, address.Address, BitcoinUtility.EchoFeeSatoshis / 100.0);
 
             this.ImageBitcoinQr.ImageUrl =
                 "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=bitcoincash:" +

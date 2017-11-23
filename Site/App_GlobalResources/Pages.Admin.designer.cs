@@ -70,7 +70,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is a QR code for bitcoin echo testing for this entire Swarmops installation, not just for {0}. Read it from your phone&apos;s bitcoin wallet to perform the echo test, or donate from your computer directly to [{1}] (that&apos;s a Bitcoin Cash address). The amount (less miner fees of {2:N2} microcoins) will be sent back to you in the next few seconds..
+        ///   Looks up a localized string similar to This is a QR code for bitcoin echo testing for this entire Swarmops installation, not just for {0}. Read it from your phone&apos;s bitcoin wallet to perform the echo test, or send from your computer directly to [{1}] (that&apos;s a Bitcoin Cash address). The amount (less miner fees of {2:N2} microcoins) will be sent back to you in the next few seconds..
         /// </summary>
         internal static string BitcoinEchoTest_Explain {
             get {
