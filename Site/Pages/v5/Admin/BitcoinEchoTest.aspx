@@ -45,11 +45,8 @@
                             json,
                             function (data) {
                                 if (data.Success) {
-                                    if (!completed) {
-                                        $('#divReturnedFunds').slideDown();
-                                    }
-
                                     minerFees += (-Math.floor(minerFeeSatoshis * conversionRateSatoshisToCents) / 100.0);
+                                    console.log(minerFees);
                                     returnedFunds += (Math.floor(((donatedSatoshis - minerFeeSatoshis) * conversionRateSatoshisToCents) / 100.0));
 
                                     odoMinerFeeCents.innerHTML = minerFees;
@@ -90,7 +87,6 @@
                 <div class="elementFloatFar odometer odometer-currency" id="odoSentCents">0.001</div>
                 <div class="odometer-label">Received in echo test (<%=CurrentOrganization.Currency.DisplayCode %>)</div>
             </div>
-            <div id="#divReturnedFunds" style="display:none">
             <div class="odometer-wrapper">
                 <div class="elementFloatFar odometer odometer-currency" id="odoMinerFeeCents">-0.001</div>
                 <div class="odometer-label">Miner fees paid</div>
@@ -99,7 +95,6 @@
             <div class="odometer-wrapper">
                 <div class="elementFloatFar odometer odometer-currency" id="odoReturnedCents">0.001</div>
                 <div class="odometer-label">Successfully returned</div>
-            </div>
             </div>
         </div>
     </div>

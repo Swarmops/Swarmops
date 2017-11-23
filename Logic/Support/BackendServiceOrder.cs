@@ -66,6 +66,8 @@ namespace Swarmops.Logic.Support
 
             try
             {
+                Console.WriteLine(" - Executing BSO: " + className);
+
                 order.Run();
             }
             catch (Exception exception)
