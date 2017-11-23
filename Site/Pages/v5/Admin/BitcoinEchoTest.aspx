@@ -49,7 +49,7 @@
                                     minerFees -= minerFeeCents;
                                     console.log(donatedSatoshis);
                                     console.log("Miner fee is " + minerFeeSatoshis + " satoshis, translating to " + minerFeeCents + " cents");
-                                    returnedFunds += ((Math.floor(((donatedSatoshis - minerFeeSatoshis) * conversionRateSatoshisToCents)) / 100.0);
+                                    returnedFunds += (Math.floor((donatedSatoshis - minerFeeSatoshis) * conversionRateSatoshisToCents) / 100.0);
 
                                     odoMinerFeeCents.innerHTML = minerFees;
                                     odoReturnedCents.innerHTML = returnedFunds;
