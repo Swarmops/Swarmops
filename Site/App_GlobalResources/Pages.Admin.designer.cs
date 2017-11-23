@@ -61,7 +61,16 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is a QR code for bitcoin echo testing for this entire Swarmops installation, not just for {0}. Read it from your phone&apos;s bitcoin wallet to perform the echo test, or donate from your computer directly to [{1}] (that&apos;s a Bitcoin Cash address). The amount (less miner fees) will be sent back to you in the next few seconds..
+        ///   Looks up a localized string similar to &lt;strong&gt;DUST COLLECTED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The amount sent is smaller than the expected fee for returning it to you, which is {0} satoshis ({1} {2:N2}). The money you sent is now so-called &quot;dust&quot; on the bitcoin network, and won&apos;t be moved again.&lt;br/&gt;&lt;br/&gt;Send a higher amount to perform an echo test..
+        /// </summary>
+        internal static string BitcoinEchoTest_DustCollected {
+            get {
+                return ResourceManager.GetString("BitcoinEchoTest_DustCollected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is a QR code for bitcoin echo testing for this entire Swarmops installation, not just for {0}. Read it from your phone&apos;s bitcoin wallet to perform the echo test, or donate from your computer directly to [{1}] (that&apos;s a Bitcoin Cash address). The amount (less miner fees of {2:N2} microcoins) will be sent back to you in the next few seconds..
         /// </summary>
         internal static string BitcoinEchoTest_Explain {
             get {
@@ -88,7 +97,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is a bitcoin echo test. It tests the hotwallet. If you send a small amount here, it will be sent back to you, minus the sendback transaction fee..
+        ///   Looks up a localized string similar to This is a bitcoin echo test. It tests the hotwallet. If you send a small amount here, it will be sent back to you, minus the sendback transaction fee (currently {0:N2} microcoins)..
         /// </summary>
         internal static string BitcoinEchoTest_Info {
             get {
