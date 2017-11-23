@@ -203,7 +203,7 @@ namespace Swarmops.Database
                 {
                     if (!clause.StartsWith(" LIMIT"))
                     {
-                        result += "AND " + clause;
+                        result += " AND " + clause;
                     }
                     else
                     {
