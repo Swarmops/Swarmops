@@ -120,6 +120,12 @@
   <data name="Position_Executive_CeoAssistant" xml:space="preserve">
     <value>CEO Assistant</value>
   </data>
+  <data name="Position_Executive_CeoAssistant_Government" xml:space="preserve">
+    <value>Presidential Aide</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Government_Plural" xml:space="preserve">
+    <value>Presidential Aides</value>
+  </data>
   <data name="Position_Executive_CeoAssistant_Nonprofit" xml:space="preserve">
     <value>Secretary General Assistant</value>
   </data>
@@ -171,6 +177,9 @@
   <data name="Position_Executive_ChiefMarketingOfficer" xml:space="preserve">
     <value>Chief Marketing Officer</value>
   </data>
+  <data name="Position_Executive_ChiefMarketingOfficer_Government" xml:space="preserve">
+    <value>Minister of Foreign Affairs</value>
+  </data>
   <data name="Position_Executive_ChiefMarketingOfficer_Nonprofit" xml:space="preserve">
     <value>Chief Outreach Officer</value>
   </data>
@@ -203,6 +212,12 @@
   </data>
   <data name="Position_Executive_MarketingAssistant" xml:space="preserve">
     <value>Marketing Assistant</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Government" xml:space="preserve">
+    <value>Foreign Affairs Aide</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Government_Plural" xml:space="preserve">
+    <value>Foreign Affairs Aides</value>
   </data>
   <data name="Position_Executive_MarketingAssistant_Nonprofit" xml:space="preserve">
     <value>Outreach Assistant</value>

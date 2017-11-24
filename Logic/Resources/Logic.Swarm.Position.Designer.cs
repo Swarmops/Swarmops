@@ -70,6 +70,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Presidential Aide.
+        /// </summary>
+        internal static string Position_Executive_CeoAssistant_Government {
+            get {
+                return ResourceManager.GetString("Position_Executive_CeoAssistant_Government", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Presidential Aides.
+        /// </summary>
+        internal static string Position_Executive_CeoAssistant_Government_Plural {
+            get {
+                return ResourceManager.GetString("Position_Executive_CeoAssistant_Government_Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Secretary General Assistant.
         /// </summary>
         internal static string Position_Executive_CeoAssistant_Nonprofit {
@@ -223,6 +241,15 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minister of Foreign Affairs.
+        /// </summary>
+        internal static string Position_Executive_ChiefMarketingOfficer_Government {
+            get {
+                return ResourceManager.GetString("Position_Executive_ChiefMarketingOfficer_Government", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chief Outreach Officer.
         /// </summary>
         internal static string Position_Executive_ChiefMarketingOfficer_Nonprofit {
@@ -318,6 +345,24 @@ namespace Swarmops.Logic.Resources {
         internal static string Position_Executive_MarketingAssistant {
             get {
                 return ResourceManager.GetString("Position_Executive_MarketingAssistant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreign Affairs Aide.
+        /// </summary>
+        internal static string Position_Executive_MarketingAssistant_Government {
+            get {
+                return ResourceManager.GetString("Position_Executive_MarketingAssistant_Government", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreign Affairs Aides.
+        /// </summary>
+        internal static string Position_Executive_MarketingAssistant_Government_Plural {
+            get {
+                return ResourceManager.GetString("Position_Executive_MarketingAssistant_Government_Plural", resourceCulture);
             }
         }
         
