@@ -96,7 +96,6 @@
     <Compile Include="BotCode\Mappery.cs" />
     <Compile Include="BotCode\MediaWatcher.cs" />
     <Compile Include="BotCode\NewsletterChecker.cs" />
-    <Compile Include="BotCode\PdfProcessor.cs" />
     <Compile Include="BotCode\PressReleaseChecker.cs" />
     <Compile Include="BotCode\RosterHousekeeping.cs" />
     <Compile Include="BotCode\SalaryProcessor.cs" />

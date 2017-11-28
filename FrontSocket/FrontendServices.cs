@@ -14,6 +14,7 @@ using Swarmops.Logic.Cache;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.BackendServices;
 using Swarmops.Logic.Swarm;
 using WebSocketSharp;
 using WebSocketSharp.Server;
@@ -61,9 +62,16 @@ namespace Swarmops.Frontend.Socket
                     {
                         pdfFilesList.Add(pdfFileString);
                     }
-                    string[] pdfFiles = pdfFilesList.ToArray();
 
-                    ConvertPdf (pdfFiles, (string) json["Guid"], Person.FromIdentity((int) json["PersonId"]), Organization.FromIdentity((int) json["OrganizationId"]));
+                    JArray pdfClientNamesArray = (JArray) json["ClientFileNames"];
+                    List<string> pdfClientNames = new List<string>();
+                    foreach (string pdfClientName in pdfClientNamesArray)
+                    {
+                        pdfClientNames.Add(pdfClientName);
+                    }
+
+                    ConvertPdf(pdfFilesList.ToArray(), pdfClientNames.ToArray(), (string) json["Guid"], Person.FromIdentity((int) json["PersonId"]), Organization.FromIdentity((int) json["OrganizationId"]));
+
                     break;
                 case "ConvertPdfHires":
                     // Send to backend
@@ -134,7 +142,7 @@ namespace Swarmops.Frontend.Socket
             // Sessions.Broadcast("{\"messageType\":\"EditorCount\"," + String.Format("\"editorCount\":\"{0}\"", Sessions.ActiveIDs.ToArray().Length) + '}');
         }
 
-        private void ConvertPdf(string[] pdfFiles, string guid, Person person, Organization organization)
+        private void ConvertPdf(string[] pdfFiles, string[] pdfClientNames, string guid, Person person, Organization organization)
         {
             List<string> failedConversionFileNames = new List<string>();
 
@@ -276,8 +284,7 @@ namespace Swarmops.Frontend.Socket
                                 long fileLength = new FileInfo(Document.StorageRoot + lastPageFileName).Length;
                                 debugWriter.WriteLine("{0:D2}%, saving page #{1}, bytecount {2}", progress, pageCounter, fileLength);
 
-                                Document.Create(lastPageFileName,
-                                    "(BackendConvertedFile) " + pageCounter.ToString(CultureInfo.InvariantCulture),
+                                Document.Create(lastPageFileName, pdfClientNames[fileIndex] + " " + pageCounter.ToString(CultureInfo.InvariantCulture),
                                     fileLength, guid, null, person);
 
                                 // Set to readonly, lock out changes, permit all read
@@ -310,7 +317,7 @@ namespace Swarmops.Frontend.Socket
                         debugWriter.WriteLine("{0:D2}%, saving last page #{1}, bytecount {2}", progress, pageCounter, fileLengthLastPage);
 
                         lastDocument = Document.Create(lastPageFileName,
-                            "(BackendConvertedFile) " + pageCounter.ToString(CultureInfo.InvariantCulture),
+                            pdfClientNames[fileIndex] + " " + pageCounter.ToString(CultureInfo.InvariantCulture),
                             fileLengthLastPage, guid, null, person);
 
                         // Set to readonly, lock out changes, permit all read
@@ -320,13 +327,8 @@ namespace Swarmops.Frontend.Socket
 
                         // Finally, ask the backend to do the high-res conversions, but now we have the basic, fast ones
 
-                        JObject backendRequest = new JObject();
-                        backendRequest["BackendRequest"] = "ConvertPdfHires";
-                        backendRequest["DocumentId"] = lastDocument.Identity;
-                        FrontendLoop.SendMessageUpstream(backendRequest);
-
-                        backendRequest["MessageType"] = "Echo";
-                        Sessions.Broadcast(backendRequest.ToString());
+                        RasterizeDocumentHiresOrder backendOrder = new RasterizeDocumentHiresOrder(lastDocument);
+                        backendOrder.Create();
 
                     }
 

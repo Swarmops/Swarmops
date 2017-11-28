@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using Swarmops.Basic.Types.System;
 using Swarmops.Common.Exceptions;
 using Swarmops.Database;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support.BackendServices;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Support
 {
@@ -58,6 +60,11 @@ namespace Swarmops.Logic.Support
             IBackendServiceOrderBase order = (IBackendServiceOrderBase) methodFromXml.Invoke(null, new object[] { this.OrderXml });
             order.ServiceOrderIdentity = this.Identity; // not part of serialization
 
+            // Supply with organization and person, if we have them
+
+            order.Person = this.PersonId == 0 ? null : Person.FromIdentity(this.PersonId);
+            order.Organization = this.OrganizationId == 0 ? null : Organization.FromIdentity(this.OrganizationId);
+
             // Mark as started
 
             SwarmDb.GetDatabaseForWriting().SetBackendServiceOrderActive(this.Identity);
@@ -72,6 +79,10 @@ namespace Swarmops.Logic.Support
             }
             catch (Exception exception)
             {
+                if (!order.HasWorkerThread)
+                {
+                    order.HasTerminated = true;
+                }
                 order.Close();
                 SwarmDb.GetDatabaseForWriting().SetBackendServiceOrderException(this.Identity, exception);
             }
@@ -81,6 +92,7 @@ namespace Swarmops.Logic.Support
                 {
                     try
                     {
+                        order.HasTerminated = true;
                         order.Close();
                     }
                     catch (DatabaseConcurrencyException)

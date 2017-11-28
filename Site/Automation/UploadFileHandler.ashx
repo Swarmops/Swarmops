@@ -20,6 +20,7 @@ using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 using WebSocketSharp;
 using Mono.Unix.Native;
+using Swarmops.Logic.Support.BackendServices;
 
 namespace Swarmops.Frontend.Automation
 {
@@ -157,6 +158,7 @@ namespace Swarmops.Frontend.Automation
             {
                 HttpPostedFile file = context.Request.Files[i];
                 string fullName = Path.GetFileName(file.FileName);
+                string clientFileName = string.Empty;
 
                 Person uploadingPerson = authData.CurrentUser;
                 Organization currentOrg = authData.CurrentOrganization;
@@ -377,6 +379,10 @@ namespace Swarmops.Frontend.Automation
 
                             // Ask backend for high-res conversion
 
+                            RasterizeDocumentHiresOrder backendOrder = new RasterizeDocumentHiresOrder(lastDocument);
+                            backendOrder.Create();
+
+                            /*
                             using (WebSocket socket =
                                 new WebSocket("ws://localhost:" + SystemSettings.WebsocketPortFrontend + "/Front?Auth=" +
                                               Uri.EscapeDataString(authData.Authority.ToEncryptedXml())))
@@ -388,7 +394,7 @@ namespace Swarmops.Frontend.Automation
                                 socket.Send(data.ToString());
                                 socket.Ping(); // wait a little little while for send to work
                                 socket.Close();
-                            }
+                            }*/
 
                             statuses.Add(new FilesStatus(fullName, file.ContentLength));
                         }
@@ -433,6 +439,7 @@ namespace Swarmops.Frontend.Automation
                     data["ServerRequest"] = "ConvertPdf";
                     data["PdfFiles"] = JArray.FromObject(pdfsForConversion.ToArray());
                     data["Guid"] = (string) guid;
+                    data["ClientFileNames"] = JArray.FromObject(pdfClientNames.ToArray());
                     data["PersonId"] = authData.CurrentUser.Identity;
                     data["OrganizationId"] = authData.CurrentOrganization.Identity;
                     socket.Send(data.ToString());

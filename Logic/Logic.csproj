@@ -220,6 +220,7 @@
     <Compile Include="Support\BackendServiceOrder.cs" />
     <Compile Include="Support\BackendServiceOrders.cs" />
     <Compile Include="Support\BackendServices\BackendServiceOrderBase.cs" />
+    <Compile Include="Support\BackendServices\RasterizeDocumentHiresOrder.cs" />
     <Compile Include="Support\BackendServices\ReturnBitcoinEchoUtxoOrder.cs" />
     <Compile Include="Support\BlockchainTransaction.cs" />
     <Compile Include="Support\DocumentImage.cs" />
@@ -385,6 +386,7 @@
     <Compile Include="Support\LogEntries\SecurityActionBase.cs" />
     <Compile Include="Support\LogEntries\VolunteerForPositionLogEntry.cs" />
     <Compile Include="Support\ObjectOptionalData.cs" />
+    <Compile Include="Support\PdfProcessor.cs" />
     <Compile Include="Support\PilotInstallationIds.cs" />
     <Compile Include="Support\PluralBase.cs" />
     <Compile Include="Security\ActivityEnum.cs" />

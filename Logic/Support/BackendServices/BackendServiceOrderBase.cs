@@ -72,6 +72,15 @@ namespace Swarmops.Logic.Support.BackendServices
         }
 
         /// <summary>
+        /// If you are deriving this class into something that spawns a worker thread, then that derived
+        /// class MUST have the worker thread terminate within 1.00 seconds from when Terminate is called.
+        /// </summary>
+        public virtual void Terminate()
+        {
+            throw new NotImplementedException("The base Terminate() has no implementation. Derive and declare 'override'!");
+        }
+
+        /// <summary>
         /// This function MUST be called when the task has been completed, either on completion of Run()
         /// if you take a short amount of time, or at the end of your worker thread.
         /// </summary>
@@ -99,6 +108,12 @@ namespace Swarmops.Logic.Support.BackendServices
         public DateTime CreatedDateTime { get; set; }
         public string BackendServiceClass { get; set; }
         public int ServiceOrderIdentity { get; set; }
+        public bool HasTerminated { get; set; }
+
+        [XmlIgnore]
+        public Organization Organization { get; set; }
+        [XmlIgnore]
+        public Person Person { get; set; }
 
         [XmlIgnore]
         public bool HasWorkerThread { get; set; }

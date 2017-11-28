@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Swarmops.Logic.Support;
 
-namespace Swarmops.Utility.BotCode
+namespace Swarmops.Logic.Support
 {
     public class PdfProcessor
     {
