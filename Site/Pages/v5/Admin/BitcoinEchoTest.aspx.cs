@@ -117,7 +117,6 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 backendOrder.Create(authData.CurrentOrganization, authData.CurrentUser);
 
                 string tx1Description = "Bitcoin technical echo test (will be repaid immediately)";
-                string tx2Description = "Bitcoin echo test repayment";
 
 
                 if (authData.CurrentOrganization.Currency.IsBitcoinCash)
@@ -130,11 +129,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     ledgerTx1.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, satoshisReceived, authData.CurrentUser);
                     ledgerTx1.BlockchainHash = txHash;
 
-                    FinancialTransaction ledgerTx2 = FinancialTransaction.Create(authData.CurrentOrganization,
-                        DateTime.UtcNow, tx2Description);
-                    ledgerTx2.AddRow(authData.CurrentOrganization.FinancialAccounts.DebtsOther, satoshisReceived, authData.CurrentUser);
-                    ledgerTx2.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, -satoshisReceived, authData.CurrentUser);
-                    // ledgerTx2.BlockchainHash = returnTxHash; // TODO? Unknown at this point
+                    // The return payment will be logged when made, so its hash can be recorded
 
                     if (satoshisReceived % 100 == 0)
                     {
@@ -158,16 +153,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     ledgerTx1.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.BitcoinCash);
                     ledgerTx1.BlockchainHash = txHash;
 
-                    FinancialTransaction ledgerTx2 = FinancialTransaction.Create(authData.CurrentOrganization,
-                        DateTime.UtcNow, tx2Description);
-                    ledgerTx2.AddRow(authData.CurrentOrganization.FinancialAccounts.DebtsOther, orgNativeCents, authData.CurrentUser);
-                    ledgerTx2.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, -orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(-satoshisReceived, Currency.BitcoinCash);
-                    // ledgerTx2.BlockchainHash = returnTxHash; // TODO: How do we solve this, the recording of the return hash? It's not known here
+                    // The second transaction is logged when executed in the back-end order
 
                     successMessage = string.Format(Resources.Pages.Admin.BitcoinEchoTest_FundsReceived,
                         authData.CurrentOrganization.Currency.DisplayCode, orgNativeCents/100.0, satoshisReceived/100.0);
-
-                    // TODO: Second tx
                 }
 
                 return new AjaxCallResult() {DisplayMessage = successMessage, Success = true};

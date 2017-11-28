@@ -35,7 +35,10 @@ namespace Swarmops.Logic.Support.BackendServices
 
             string returnAddress = BitcoinUtility.GetInputAddressesForTransaction(BitcoinChain.Cash, utxoToReturn.TransactionHash)[0]; // assumes at least one input address -- not coinbase
 
+            // Return the money
+
             BitcoinTransactionInputs inputs = utxoToReturn.AsInputs;
+            Int64 satoshisToReturn = utxoToReturn.AmountSatoshis;
 
             Coin[] coins = inputs.Coins;
             ICoin[] iCoins = coins;
@@ -53,6 +56,15 @@ namespace Swarmops.Logic.Support.BackendServices
             BitcoinUtility.BroadcastTransaction(tx, BitcoinChain.Cash);
             utxoToReturn.Delete();
             utxoAddress.UpdateTotal();
+
+            // Update the ledger
+
+            string tx2Description = "Bitcoin echo test repayment";
+            FinancialTransaction ledgerTx2 = FinancialTransaction.Create(this.Organization,
+                DateTime.UtcNow, tx2Description);
+            ledgerTx2.AddRow(this.Organization.FinancialAccounts.DebtsOther, satoshisToReturn, this.Person);
+            ledgerTx2.AddRow(this.Organization.FinancialAccounts.AssetsBitcoinHot, -satoshisToReturn, this.Person);
+            ledgerTx2.BlockchainHash = tx.GetHash().ToString();
         }
 
         public int UtxoIdentity { get; set; }
