@@ -222,13 +222,13 @@ namespace Swarmops.Frontend.Automation
                 {
                     Directory.CreateDirectory(StorageRoot + fileFolder);
 
-                    // Set folder permissions to rwxr-xr-x if live environment
+                    // Set folder permissions to rwxrwxrwx if live environment
+                    // (backend must be able to create new files)
 
                     if (!WeAreInDebugEnvironment)
                     {
                         Syscall.chmod(StorageRoot + fileFolder,
-                            FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IROTH |
-                            FilePermissions.S_IXGRP | FilePermissions.S_IXOTH);
+                            FilePermissions.S_IRWXU | FilePermissions.S_IRWXO| FilePermissions.S_IRWXG);
                     }
 
                 }
