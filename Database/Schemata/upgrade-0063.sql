@@ -67,7 +67,7 @@ END
 
 CREATE PROCEDURE `SetHotBitcoinAddressAddress`(
   IN hotBitcoinAddressId INT,
-  IN addressString BIGINT
+  IN addressString VARCHAR(48)
 )
 BEGIN
   UPDATE HotBitcoinAddresses
@@ -84,7 +84,7 @@ END
 
 CREATE PROCEDURE `SetHotBitcoinAddressFallbackAddress`(
   IN hotBitcoinAddressId INT,
-  IN addressStringFallback BIGINT
+  IN addressStringFallback VARCHAR(48)
 )
 BEGIN
   UPDATE HotBitcoinAddresses
