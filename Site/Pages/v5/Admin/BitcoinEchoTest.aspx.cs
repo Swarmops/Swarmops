@@ -41,8 +41,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 this.PanelEnabled.Visible = false;
             }
 
-            HotBitcoinAddress address = HotBitcoinAddress.Create(this.CurrentOrganization, BitcoinChain.Cash,
-                BitcoinUtility.BitcoinEchoTestIndex, this.CurrentUser.Identity);
+            DateTime utcNow = DateTime.UtcNow;
+
+            HotBitcoinAddress address = HotBitcoinAddress.CreateUnique(this.CurrentOrganization, BitcoinChain.Cash,
+                BitcoinUtility.BitcoinEchoTestIndex, this.CurrentUser.Identity, utcNow.Year, utcNow.Month, utcNow.Day);
 
             this.BitcoinCashAddressUsed = address.Address;
             string guid = Guid.NewGuid().ToString("N");
