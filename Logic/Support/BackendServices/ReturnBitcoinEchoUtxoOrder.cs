@@ -59,6 +59,10 @@ namespace Swarmops.Logic.Support.BackendServices
                 txBuilder = txBuilder.Send(new BitcoinScriptAddress(returnAddress, Network.Main), 
                     new Satoshis(utxoToReturn.AmountSatoshis - BitcoinUtility.EchoFeeSatoshis));
             }
+            else
+            {
+                throw new ArgumentException("Unrecognized address format");
+            }
 
             Transaction tx = txBuilder.BuildTransaction(true, SigHash.ForkId | SigHash.All);
 
