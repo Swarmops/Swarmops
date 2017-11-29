@@ -85,6 +85,8 @@ namespace Swarmops.Logic.Financial
                 derivationPathString += " " + derivation.ToString(CultureInfo.InvariantCulture);
             }
 
+            derivationPathString = derivationPathString.TrimStart();
+
             int hotBitcoinAddressId =
                 SwarmDb.GetDatabaseForWriting()
                     .CreateHotBitcoinAddress(organization.Identity, chain, derivationPathString);
