@@ -216,12 +216,26 @@
     <Compile Include="Pages\v5\Comms\SendMassMessage.aspx.designer.cs">
       <DependentUpon>SendMassMessage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Financial\Json-ListInvoicesOutbound.aspx.cs">
+      <DependentUpon>Json-ListInvoicesOutbound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\Json-ListInvoicesOutbound.aspx.designer.cs">
+      <DependentUpon>Json-ListInvoicesOutbound.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Financial\Json-ListInvoicesInbound.aspx.cs">
       <DependentUpon>Json-ListInvoicesInbound.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\v5\Financial\Json-ListInvoicesInbound.aspx.designer.cs">
       <DependentUpon>Json-ListInvoicesInbound.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\ListInvoicesOutbound.aspx.cs">
+      <DependentUpon>ListInvoicesOutbound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\ListInvoicesOutbound.aspx.designer.cs">
+      <DependentUpon>ListInvoicesOutbound.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\v5\Financial\ListInvoicesInbound.aspx.cs">
       <DependentUpon>ListInvoicesInbound.aspx</DependentUpon>
@@ -1096,7 +1110,9 @@
     <Content Include="Pages\v5\Admin\OrgStaffing.aspx" />
     <Content Include="Pages\v5\Admin\SystemSettings.aspx" />
     <Content Include="Pages\v5\Comms\SendMassMessage.aspx" />
+    <Content Include="Pages\v5\Financial\Json-ListInvoicesOutbound.aspx" />
     <Content Include="Pages\v5\Financial\Json-ListInvoicesInbound.aspx" />
+    <Content Include="Pages\v5\Financial\ListInvoicesOutbound.aspx" />
     <Content Include="Pages\v5\Financial\ListInvoicesInbound.aspx" />
     <Content Include="Pages\v5\Financial\AttestCosts.aspx" />
     <Content Include="Pages\v5\Financial\BitcoinHotwalletNotEnabled.aspx" />

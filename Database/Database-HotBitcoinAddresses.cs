@@ -16,8 +16,8 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string hotBitcoinAddressFieldSequence =
-            " HotBitcoinAddressId,OrganizationId,BitcoinChainId,DerivationPath,AddressString," + // 0-4
-            " AddressStringFallback,BalanceSatoshis,ThroughputSatoshis" + // 5-7
+            " HotBitcoinAddressId,OrganizationId,BitcoinChainId,DerivationPath,UniqueDerive," + // 0-4
+            " AddressString,AddressStringFallback,BalanceSatoshis,ThroughputSatoshis" + // 5-7
             " FROM HotBitcoinAddresses ";
 
         private const string hotBitcoinAddressUnspentFieldSequence =
@@ -31,12 +31,13 @@ namespace Swarmops.Database
             int organizationId = reader.GetInt32 (1);
             BitcoinChain chain = (BitcoinChain) reader.GetInt32(2);
             string derivationPath = reader.GetString (3);
-            string addressString = reader.GetString(4);
-            string addressStringFallback = reader.GetString(5);
-            Int64 balanceSatoshis = reader.GetInt64 (6);
-            Int64 throughputSatoshis = reader.GetInt64 (7);
+            int uniqueDerive = reader.GetInt32(4);
+            string addressString = reader.GetString(5);
+            string addressStringFallback = reader.GetString(6);
+            Int64 balanceSatoshis = reader.GetInt64 (7);
+            Int64 throughputSatoshis = reader.GetInt64 (8);
 
-            return new BasicHotBitcoinAddress (hotBitcoinAddressId, organizationId, chain, derivationPath, addressString, addressStringFallback, balanceSatoshis, throughputSatoshis);
+            return new BasicHotBitcoinAddress (hotBitcoinAddressId, organizationId, chain, derivationPath, uniqueDerive, addressString, addressStringFallback, balanceSatoshis, throughputSatoshis);
         }
 
         private BasicHotBitcoinAddressUnspent ReadHotBitcoinAddressUnspentFromDataReader(IDataRecord reader)
@@ -177,6 +178,25 @@ namespace Swarmops.Database
 
         #region Creation and manipulation
 
+        public int CreateHotBitcoinAddress(int organizationId, BitcoinChain chain, string derivationPath)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command = GetDbCommand("CreateHotBitcoinAddress", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    AddParameterWithName(command, "organizationId", organizationId);
+                    AddParameterWithName(command, "bitcoinChainId", (int)chain);
+                    AddParameterWithName(command, "derivationPath", derivationPath);
+
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
         public int CreateHotBitcoinAddressConditional(int organizationId, BitcoinChain chain, string derivationPath, string address, string addressFallback = "")
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -188,7 +208,7 @@ namespace Swarmops.Database
                     command.CommandType = CommandType.StoredProcedure;
 
                     AddParameterWithName(command, "organizationId", organizationId);
-                    AddParameterWithName(command, "bitcoinChainId", (int) chain);
+                    AddParameterWithName(command, "bitcoinChainId", (int)chain);
                     AddParameterWithName(command, "derivationPath", derivationPath);
                     AddParameterWithName(command, "addressString", address);
                     AddParameterWithName(command, "addressStringFallback", addressFallback);
@@ -198,7 +218,43 @@ namespace Swarmops.Database
             }
         }
 
-        public int SetHotBitcoinAddressBalance (int hotBitcoinAddressId, Int64 balanceSatoshis)
+        public int SetHotBitcoinAddressAddress(int hotBitcoinAddressId, string addressString)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command = GetDbCommand("SetHotBitcoinAddressAddress", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    AddParameterWithName(command, "hotBitcoinAddressId", hotBitcoinAddressId);
+                    AddParameterWithName(command, "addressString", addressString);
+
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
+        public int SetHotBitcoinAddressFallbackAddress(int hotBitcoinAddressId, string fallbackAddressString)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command = GetDbCommand("SetHotBitcoinAddressFallbackAddress", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    AddParameterWithName(command, "hotBitcoinAddressId", hotBitcoinAddressId);
+                    AddParameterWithName(command, "balanceSatoshis", fallbackAddressString);
+
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
+        public int SetHotBitcoinAddressBalance(int hotBitcoinAddressId, Int64 balanceSatoshis)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {

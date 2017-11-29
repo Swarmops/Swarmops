@@ -546,20 +546,16 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void PopulateInboundInvoices()
         {
-            InboundInvoices invoices = InboundInvoices.ForOrganization (CurrentOrganization).WhereUnattested;
+            InboundInvoices invoices = InboundInvoices.ForOrganization (CurrentOrganization, true);
 
             foreach (InboundInvoice invoice in invoices)
             {
                 Documents dox = invoice.Documents;
                 bool hasDox = (dox.Count > 0 ? true : false);
 
-                if (this._attestationRights.ContainsKey (invoice.BudgetId) ||
-                    invoice.Budget.OwnerPersonId == Person.NobodyId)
-                {
-                    AddDocuments (invoice.Documents, "I" + invoice.Identity.ToString (CultureInfo.InvariantCulture),
-                        String.Format (Global.Financial_InboundInvoiceSpecificationWithSender + " - ",
-                            invoice.Identity, invoice.Supplier) + Global.Global_ImageSpecification);
-                }
+                AddDocuments (invoice.Documents, "I" + invoice.Identity.ToString (CultureInfo.InvariantCulture),
+                    String.Format (Global.Financial_InboundInvoiceSpecificationWithSender + " - ",
+                        invoice.OrganizationSequenceId, invoice.Supplier) + Global.Global_ImageSpecification);
             }
         }
 

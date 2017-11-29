@@ -6,7 +6,7 @@ namespace Swarmops.Basic.Types.Financial
     public class BasicOutboundInvoice : IHasIdentity
     {
         public BasicOutboundInvoice (int outboundInvoiceId, string customerName, string invoiceAddressPaper,
-            string invoiceAddressMail, int currencyId, int organizationId, int budgetId,
+            string invoiceAddressMail, int currencyId, int organizationId, int organizationSequenceId, int budgetId,
             DateTime createdDateTime, int createdByPersonId, DateTime dueDate, int reminderCount, string reference,
             bool domestic, bool open, bool sent, string securityCode, string theirReference)
         {
@@ -16,6 +16,7 @@ namespace Swarmops.Basic.Types.Financial
             this.InvoiceAddressMail = invoiceAddressMail;
             this.CurrencyId = currencyId;
             this.OrganizationId = organizationId;
+            this.OrganizationSequenceId = organizationSequenceId;
             this.BudgetId = budgetId;
             this.CreatedDateTime = createdDateTime;
             this.CreatedByPersonId = createdByPersonId;
@@ -33,7 +34,7 @@ namespace Swarmops.Basic.Types.Financial
         public BasicOutboundInvoice (BasicOutboundInvoice original) :
             this (
             original.OutboundInvoiceId, original.CustomerName, original.InvoiceAddressPaper, original.InvoiceAddressMail,
-            original.CurrencyId, original.OrganizationId, original.BudgetId, original.CreatedDateTime,
+            original.CurrencyId, original.OrganizationId, original.OrganizationSequenceId, original.BudgetId, original.CreatedDateTime,
             original.CreatedByPersonId, original.DueDate, original.ReminderCount, original.Reference, original.Domestic,
             original.Open, original.Sent, original.SecurityCode, original.TheirReference)
         {
@@ -46,6 +47,7 @@ namespace Swarmops.Basic.Types.Financial
         public string InvoiceAddressMail { get; private set; }
         public int CurrencyId { get; private set; }
         public int OrganizationId { get; private set; }
+        public int OrganizationSequenceId { get; protected set; }
         public int BudgetId { get; protected set; }
         public DateTime CreatedDateTime { get; private set; }
         public int CreatedByPersonId { get; private set; }

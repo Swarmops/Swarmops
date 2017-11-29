@@ -950,4 +950,7 @@
     <value>Chain</value>
     <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
   </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>Outbound Invoice #{0:N0} to {1}</value>
+  </data>
 </root>

@@ -89,6 +89,11 @@ namespace Swarmops.Logic.Support.BackendServices
             SwarmDb.GetDatabaseForWriting().SetBackendServiceOrderClosed(this.ServiceOrderIdentity);
         }
 
+        public void ThrewException(Exception exception)
+        {
+            SwarmDb.GetDatabaseForWriting().SetBackendServiceOrderException(this.ServiceOrderIdentity, exception);
+        }
+
         /// <summary>
         /// This creates the order and serializes it into the database for execution.
         /// </summary>

@@ -32,8 +32,14 @@ namespace Swarmops.Logic.Support.BackendServices
         {
             RasterizeDocumentHiresOrder order = (RasterizeDocumentHiresOrder) orderObject;
             Document document = Document.FromIdentity(order.DocumentId);
-
-            PdfProcessor.Rerasterize((Document) document, PdfProcessor.PdfProcessorOptions.HighQuality | PdfProcessor.PdfProcessorOptions.ForceOrphans);
+            try
+            {
+                PdfProcessor.Rerasterize((Document)document, PdfProcessor.PdfProcessorOptions.HighQuality | PdfProcessor.PdfProcessorOptions.ForceOrphans);
+            }
+            catch (Exception exception)
+            {
+                order.ThrewException(exception);   
+            }
             order.Close();
             order.HasTerminated = true;
         }

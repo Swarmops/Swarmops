@@ -50,27 +50,56 @@ namespace Swarmops.Logic.Financial
             throw new NotImplementedException();
         }
 
-        public static HotBitcoinAddress Create (Organization organization, BitcoinChain chain, params int[] derivationPath)
+        public static HotBitcoinAddress Create(Organization organization, BitcoinChain chain, params int[] derivationPath)
         {
             ExtPubKey extPubKey = BitcoinUtility.BitcoinHotPublicRoot;
-            extPubKey = extPubKey.Derive ((uint) organization.Identity);
+            extPubKey = extPubKey.Derive((uint)organization.Identity);
             string derivationPathString = string.Empty;
 
             foreach (int derivation in derivationPath) // requires that order is consistent from 0 to n-1
             {
-                extPubKey = extPubKey.Derive ((uint) derivation);
-                derivationPathString += " " + derivation.ToString (CultureInfo.InvariantCulture);
+                extPubKey = extPubKey.Derive((uint)derivation);
+                derivationPathString += " " + derivation.ToString(CultureInfo.InvariantCulture);
             }
 
             derivationPathString = derivationPathString.TrimStart();
-            string bitcoinAddress = extPubKey.PubKey.GetAddress (Network.Main).ToString();    // TODO: CHANGE NETWORK.MAIN TO NEW LOOKUP
+            string bitcoinAddress = extPubKey.PubKey.GetAddress(Network.Main).ToString();    // TODO: CHANGE NETWORK.MAIN TO NEW LOOKUP
             string bitcoinAddressFallback = extPubKey.PubKey.GetAddress(Network.Main).ToString(); // The fallback address would be the main address
 
             int hotBitcoinAddressId =
                 SwarmDb.GetDatabaseForWriting()
-                    .CreateHotBitcoinAddressConditional (organization.Identity, chain, derivationPathString, bitcoinAddress);
+                    .CreateHotBitcoinAddressConditional(organization.Identity, chain, derivationPathString, bitcoinAddress);
 
-            return FromIdentityAggressive (hotBitcoinAddressId);
+            return FromIdentityAggressive(hotBitcoinAddressId);
+        }
+
+        public static HotBitcoinAddress CreateUnique (Organization organization, BitcoinChain chain, params int[] derivationPath)
+        {
+            ExtPubKey extPubKey = BitcoinUtility.BitcoinHotPublicRoot;
+            extPubKey = extPubKey.Derive((uint)organization.Identity);
+            string derivationPathString = string.Empty;
+
+            foreach (int derivation in derivationPath) // requires that order is consistent from 0 to n-1
+            {
+                extPubKey = extPubKey.Derive((uint)derivation);
+                derivationPathString += " " + derivation.ToString(CultureInfo.InvariantCulture);
+            }
+
+            int hotBitcoinAddressId =
+                SwarmDb.GetDatabaseForWriting()
+                    .CreateHotBitcoinAddress(organization.Identity, chain, derivationPathString);
+
+            HotBitcoinAddress addressTemp = FromIdentityAggressive(hotBitcoinAddressId);
+
+            // Derive the last step with the now-assigned unique identifier, then set address, read again, and return
+
+            extPubKey = extPubKey.Derive((uint) addressTemp.UniqueDerive);
+
+            string bitcoinAddressString = extPubKey.PubKey.GetAddress(Network.Main).ToString();
+
+            SwarmDb.GetDatabaseForWriting().SetHotBitcoinAddressAddress(hotBitcoinAddressId, bitcoinAddressString);
+
+            return FromIdentityAggressive(hotBitcoinAddressId);
         }
 
         public static HotBitcoinAddress FromAddress (BitcoinChain chain, string bitcoinAddress)
@@ -111,6 +140,11 @@ namespace Swarmops.Logic.Financial
                 foreach (string derivationString in DerivationPath.Split (' '))
                 {
                     secretExtKey = secretExtKey.Derive (UInt32.Parse (derivationString));
+                }
+
+                if (this.UniqueDerive > -1)
+                {
+                    secretExtKey = secretExtKey.Derive((uint) this.UniqueDerive);
                 }
 
                 return secretExtKey.PrivateKey.GetBitcoinSecret (Network.Main);

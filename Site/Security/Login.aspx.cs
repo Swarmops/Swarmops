@@ -74,8 +74,6 @@ namespace Swarmops.Pages.Security
 
             string requestHost = Request.Url.Host;
 
-
-
             // If this is the Dev Sandbox, autologin
 
             if ((requestHost == "sandbox.swarmops.com" || requestHost == "dev.swarmops.com") &&

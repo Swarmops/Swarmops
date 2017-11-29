@@ -84,7 +84,7 @@ namespace Swarmops.Logic.Support
                     order.HasTerminated = true;
                 }
                 order.Close();
-                SwarmDb.GetDatabaseForWriting().SetBackendServiceOrderException(this.Identity, exception);
+                order.ThrewException(exception);
             }
             finally
             {

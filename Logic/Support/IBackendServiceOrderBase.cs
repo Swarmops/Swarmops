@@ -20,6 +20,7 @@ namespace Swarmops.Logic.Support
         Thread WorkerThread { get; set; }
         void Terminate();
         bool HasTerminated { get; set; }
+        void ThrewException(Exception exception);
 
 
         int ServiceOrderIdentity { get; set; }

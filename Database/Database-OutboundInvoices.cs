@@ -13,7 +13,7 @@ namespace Swarmops.Database
 
         private const string outboundInvoiceFieldSequence =
             " OutboundInvoiceId,CustomerName,InvoiceAddressPaper,InvoiceAddressMail,CurrencyId," + // 0-4
-            "0,OrganizationId,BudgetId,CreatedDateTime,CreatedByPersonId," + // 5-9
+            "OrganizationId,OrganizationSequenceId,BudgetId,CreatedDateTime,CreatedByPersonId," + // 5-9
             "DueDate,ReminderCount,Reference,Domestic,Open, " + // 10-14
             "Sent,SecurityCode,TheirReference " +
             "FROM OutboundInvoices ";
@@ -32,8 +32,8 @@ namespace Swarmops.Database
             string invoiceAddressPaper = reader.GetString (2);
             string invoiceAddressMail = reader.GetString (3);
             int currencyId = reader.GetInt32 (4);
-            // double amount = reader.GetDouble(5);
-            int organizationId = reader.GetInt32 (6);
+            int organizationId = reader.GetInt32 (5);
+            int organizationSequenceId = reader.GetInt32(6);
             int budgetId = reader.GetInt32 (7);
             DateTime createdDateTime = reader.GetDateTime (8);
             int createdByPersonId = reader.GetInt32 (9);
@@ -47,7 +47,7 @@ namespace Swarmops.Database
             string theirReference = reader.GetString (17);
 
             return new BasicOutboundInvoice (outboundInvoiceId, customerName, invoiceAddressPaper, invoiceAddressMail,
-                currencyId, organizationId, budgetId, createdDateTime,
+                currencyId, organizationId, organizationSequenceId, budgetId, createdDateTime,
                 createdByPersonId, dueDate, reminderCount, reference, domestic, open, sent, securityCode, theirReference);
         }
 
@@ -208,6 +208,24 @@ namespace Swarmops.Database
                 return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
+
+
+        public int SetOutboundInvoiceSequence(int outboundInvoiceId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetOutboundInvoiceOrganizationSequenceId", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "outboundInvoiceId", outboundInvoiceId);
+
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+
 
 
         public int CreateOutboundInvoiceItem (int outboundInvoiceId, string description, double amount)

@@ -583,6 +583,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Outbound Invoice #{0:N0} to {1}.
+        /// </summary>
+        internal static string Financial_OutboundInvoiceSpecificationWithCustomer {
+            get {
+                return ResourceManager.GetString("Financial_OutboundInvoiceSpecificationWithCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conference.
         /// </summary>
         internal static string Financial_Parley {

@@ -59,3 +59,5 @@
 0059 - Added BackendServiceOrders, quite a bit of code too, for returning echo UTXOs from backend [RF]
 0060 - Dumb fix for BSO tables: forgot autoincrement on the primary keys [RF]
 0061 - And CreatedDateTime can't be an INT, while we're at it; also renaming dateTime => nowUtc [RF]
+0062 - Added OrganizationSequenceId to OutboundInvoices (like 0041 but outbound) [RF]
+0063 - Added DeriveUnique to HotBitcoinAddresses for ability to create unique HBAs [RF]

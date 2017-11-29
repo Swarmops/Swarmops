@@ -17,6 +17,26 @@ namespace Swarmops.Logic.Financial
             // empty ctor
         }
 
+        public new int OrganizationSequenceId
+        {
+            get
+            {
+                if (base.OrganizationSequenceId == 0)
+                {
+                    // This case is for legacy installations before DbVersion 63, when
+                    // OrganizationSequenceId was added for each new outbound invoice
+
+                    SwarmDb db = SwarmDb.GetDatabaseForWriting();
+                    base.OrganizationSequenceId = db.SetInboundInvoiceSequence(this.Identity);
+                    return base.OrganizationSequenceId;
+                }
+
+                return base.OrganizationSequenceId;
+            }
+        }
+
+
+
         public OutboundInvoiceItems Items
         {
             get { return OutboundInvoiceItems.ForInvoice (this); }
@@ -67,6 +87,10 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount Budget
         {
             get { return FinancialAccount.FromIdentity (BudgetId); }
+        }
+        public Documents Documents
+        {
+            get { return Documents.ForObject(this); }
         }
 
         public new bool Sent
