@@ -43,7 +43,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             DateTime utcNow = DateTime.UtcNow;
 
-            HotBitcoinAddress address = HotBitcoinAddress.CreateUnique(this.CurrentOrganization, BitcoinChain.Cash,
+            HotBitcoinAddress address = HotBitcoinAddress.Create(this.CurrentOrganization, BitcoinChain.Cash,
                 BitcoinUtility.BitcoinEchoTestIndex, this.CurrentUser.Identity, utcNow.Year, utcNow.Month, utcNow.Day);
 
             this.BitcoinCashAddressUsed = address.Address;
