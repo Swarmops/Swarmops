@@ -139,7 +139,10 @@ namespace Swarmops.Logic.Financial
 
                 foreach (string derivationString in DerivationPath.Split (' '))
                 {
-                    secretExtKey = secretExtKey.Derive (UInt32.Parse (derivationString));
+                    if (!String.IsNullOrEmpty(derivationString.Trim()))
+                    {
+                        secretExtKey = secretExtKey.Derive(UInt32.Parse(derivationString.Trim()));
+                    }
                 }
 
                 if (this.UniqueDerive > -1)
