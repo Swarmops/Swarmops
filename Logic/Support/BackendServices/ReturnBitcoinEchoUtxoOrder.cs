@@ -48,8 +48,17 @@ namespace Swarmops.Logic.Support.BackendServices
             txBuilder = txBuilder.SendFees(new Satoshis(BitcoinUtility.EchoFeeSatoshis));
             txBuilder = txBuilder.AddCoins(iCoins);
             txBuilder = txBuilder.AddKeys(privateKeys);
-            txBuilder = txBuilder.Send(new BitcoinPubKeyAddress(returnAddress),
-                new Satoshis(utxoToReturn.AmountSatoshis - BitcoinUtility.EchoFeeSatoshis));
+
+            if (returnAddress.StartsWith("1"))
+            {
+                txBuilder = txBuilder.Send(new BitcoinPubKeyAddress(returnAddress),
+                    new Satoshis(utxoToReturn.AmountSatoshis - BitcoinUtility.EchoFeeSatoshis));
+            }
+            else if (returnAddress.StartsWith("3"))
+            {
+                txBuilder = txBuilder.Send(new BitcoinScriptAddress(returnAddress, Network.Main), 
+                    new Satoshis(utxoToReturn.AmountSatoshis - BitcoinUtility.EchoFeeSatoshis));
+            }
 
             Transaction tx = txBuilder.BuildTransaction(true, SigHash.ForkId | SigHash.All);
 
