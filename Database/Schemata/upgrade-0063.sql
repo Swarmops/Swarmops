@@ -55,7 +55,7 @@ BEGIN
 
   UPDATE HotBitcoinAddresses
     SET HotBitcoinAddresses.UniqueDerive = sequenceNumber
-    WHERE HotBitcoinAddreses.HotBitcoinAddressId = newIdentity;
+    WHERE HotBitcoinAddresses.HotBitcoinAddressId = newIdentity;
 
   SELECT newIdentity AS Identity;
 
