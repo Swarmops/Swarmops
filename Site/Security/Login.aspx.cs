@@ -44,7 +44,7 @@ namespace Swarmops.Pages.Security
             {
                 // We should ONLY get here if we're getting a BitId by Webform submission.
 
-                Persistence.Key["BitId_RawData"] = Request.ToRaw();
+                // Persistence.Key["BitId_RawData"] = Request.ToRaw();
 
                 if (Request.Params["address"] != null)
                 {
@@ -84,7 +84,7 @@ namespace Swarmops.Pages.Security
             {
                 DashboardMessage.Set ("<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p>");
                 FormsAuthentication.SetAuthCookie (Authority.FromLogin (Person.FromIdentity (1), Organization.Sandbox).ToEncryptedXml(), true);
-                Response.Redirect ("/");
+                Response.Redirect (HttpContext.Current.Request.Path);  // Forces a reload of the same URL with auth cookie set
             }
 
             // If we're on an Open Ledgers domain, autologin as Open Ledgers

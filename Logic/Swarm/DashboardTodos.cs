@@ -39,7 +39,7 @@ namespace Swarmops.Logic.Swarm
 
             if (string.IsNullOrEmpty (authority.Person.BitcoinPayoutAddress))
             {
-                if (authority.Organization.FinancialAccounts.AssetsBitcoinHot != null)
+                if (authority.Organization.FinancialAccounts.AssetsBitcoinHot != null && authority.Organization.Identity != Organization.SandboxIdentity && ! PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
                 {
                     DashboardTodo todo = new DashboardTodo();
                     todo.Description = Logic_Swarm_DashboardTodos.Bitcoin_SetPayoutAddress;
