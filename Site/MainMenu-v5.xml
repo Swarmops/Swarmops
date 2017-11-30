@@ -221,8 +221,17 @@
                 <Type>Separator</Type>
                 <Children />
             </MainMenuItem>
-          
-            <MainMenuItem>
+
+          <MainMenuItem>
+            <ResourceKey>Financial_List_OutboundInvoices</ResourceKey>
+            <UserLevel>3</UserLevel>
+            <Permissions />
+            <ImageUrl>iconshock-documents-green</ImageUrl>
+            <NavigateUrl>/Pages/v5/Financial/ListInvoicesOutbound.aspx</NavigateUrl>
+            <Type>Link</Type>
+            <Children>
+
+              <MainMenuItem>
                 <ResourceKey>Financial_SendInvoice</ResourceKey>
                 <UserLevel>2</UserLevel>
                 <Permissions />
@@ -230,9 +239,21 @@
                 <NavigateUrl>/Pages/v5/Financial/CreateOutboundInvoice.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
-            </MainMenuItem>
+              </MainMenuItem>
+
+            </Children>
+          </MainMenuItem>
           
-            <MainMenuItem>
+          <MainMenuItem>
+            <ResourceKey>Financial_List_InboundInvoices</ResourceKey>
+            <UserLevel>3</UserLevel>
+            <Permissions />
+            <ImageUrl>iconshock-documents-red</ImageUrl>
+            <NavigateUrl>/Pages/v5/Financial/ListInvoicesInbound.aspx</NavigateUrl>
+            <Type>Link</Type>
+            <Children>
+
+              <MainMenuItem>
                 <ResourceKey>Financial_ReceivedInvoice</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />
@@ -240,7 +261,12 @@
                 <NavigateUrl>/Pages/v5/Financial/CreateInboundInvoice.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
-            </MainMenuItem>
+              </MainMenuItem>
+
+            </Children>
+          </MainMenuItem>
+
+        
           
             <MainMenuItem>
                 <UserLevel>3</UserLevel>
@@ -255,24 +281,6 @@
             <Type>Submenu</Type>
             <ImageUrl>iconshock-groups-docs-lists</ImageUrl>
             <Children>
-              <MainMenuItem>
-                <ResourceKey>Financial_List_OutboundInvoices</ResourceKey>
-                <UserLevel>3</UserLevel>
-                <Permissions />
-                <ImageUrl>iconshock-documents-green</ImageUrl>
-                <NavigateUrl>/Pages/v5/Financial/ListInvoicesOutbound.aspx</NavigateUrl>
-                <Type>Link</Type>
-                <Children />
-              </MainMenuItem>
-              <MainMenuItem>
-                <ResourceKey>Financial_List_InboundInvoices</ResourceKey>
-                <UserLevel>3</UserLevel>
-                <Permissions />
-                <ImageUrl>iconshock-documents-red</ImageUrl>
-                <NavigateUrl>/Pages/v5/Financial/ListInvoicesInbound.aspx</NavigateUrl>
-                <Type>Link</Type>
-                <Children />
-              </MainMenuItem>
             </Children>
           </MainMenuItem>
 

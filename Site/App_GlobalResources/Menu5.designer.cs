@@ -448,7 +448,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Received Invoice.
+        ///   Looks up a localized string similar to Received New Invoice.
         /// </summary>
         internal static string Menu5_Financial_ReceivedInvoice {
             get {
@@ -466,7 +466,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Send Invoice.
+        ///   Looks up a localized string similar to Send New Invoice.
         /// </summary>
         internal static string Menu5_Financial_SendInvoice {
             get {
