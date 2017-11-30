@@ -194,7 +194,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Display success message
 
-            this._invoiceId = invoice.Identity; // a property returns the localized string
+            this._invoiceId = invoice.OrganizationSequenceId; // a property returns the localized string
 
             // Reset all fields for next invoice
 

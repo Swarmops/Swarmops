@@ -171,7 +171,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // Create financial transaction in the ledger (this logic should not be in the presentation layer at all, move it to a better OutboundInvoice.Create that takes OutboundInvoiceItems as parameter)
 
             FinancialTransaction txOut = FinancialTransaction.Create(CurrentOrganization, DateTime.UtcNow,
-                "Outbound Invoice #" + newInvoice.Identity.ToString("N0"));
+                "Outbound Invoice #" + newInvoice.OrganizationSequenceId.ToString("N0"));
 
             txOut.AddRow(CurrentOrganization.FinancialAccounts.AssetsOutboundInvoices, amountCents, CurrentUser);
             if (amountVatCents > 0)
@@ -200,7 +200,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Display success message
 
-            this._invoiceId = newInvoice.Identity; // a property returns the localized string
+            this._invoiceId = newInvoice.OrganizationSequenceId; // a property returns the localized string
 
             // Reset all fields for next invoice
 
