@@ -130,7 +130,7 @@ namespace Swarmops.Logic.Support
             }
             else if (foreignObject is OutboundInvoice)
             {
-                return Common.Enums.DocumentType.OutboundInvoice;
+                return DocumentType.OutboundInvoice;
             }
             else if (foreignObject is VatReport)
             {

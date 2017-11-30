@@ -189,9 +189,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 Documents dox = invoice.Documents;
                 bool hasDox = (dox.Count > 0 ? true : false);
 
-                AddDocuments(invoice.Documents, "O" + invoice.Identity.ToString(CultureInfo.InvariantCulture),
+                if (hasDox)
+                {
+                    AddDocuments(invoice.Documents, "O" + invoice.Identity.ToString(CultureInfo.InvariantCulture),
                         String.Format(Global.Financial_OutboundInvoiceSpecificationWithCustomer + " - ",
                             invoice.OrganizationSequenceId, invoice.CustomerName) + Global.Global_ImageSpecification);
+                }
             }
         }
 

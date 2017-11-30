@@ -47,7 +47,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Administration)).ToString(CultureInfo.InvariantCulture).ToLowerInvariant();
 
             PopulateInboundInvoices();
-            PopulateExpenses();
+            // PopulateExpenses();
             // PopulateSalaries();
 
             RegisterControl(EasyUIControl.DataGrid);

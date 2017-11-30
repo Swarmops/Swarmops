@@ -65,6 +65,8 @@
                     onLoadSuccess: function () {
                         $(".LocalViewDox").click(function () {
 
+                            alertify.log($(this).attr("baseid"));
+
                             $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
 
                         });

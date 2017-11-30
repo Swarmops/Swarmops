@@ -61,7 +61,7 @@ public partial class Pages_v5_Finance_Json_ListInvoicesOutbound : DataV5Base
                 //"<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                 //"<img id=\\\"IconUndo{5}\\\" class=\\\"LocalIconUndo LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                 "</span>\"",
-                "#" + invoice.Identity.ToString("N0"),
+                "#" + invoice.OrganizationSequenceId.ToString("N0"),
 
                 JsonSanitize(invoice.DueDate.ToString(invoice.DueDate < dueDateFormatBreakDate ? "yyyy-MMM" : "MMM-dd")),
                 "Supplier",
