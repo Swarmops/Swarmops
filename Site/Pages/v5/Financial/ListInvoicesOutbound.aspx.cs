@@ -105,14 +105,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            PageTitle = Resources.Pages.Financial.ListInboundInvoices_Title;
-            InfoBoxLiteral = Resources.Pages.Financial.ListInboundInvoices_Info;
-            this.LabelListInboundInvoicesHeader.Text = Resources.Pages.Financial.ListInboundInvoices_Header;
+            PageTitle = Resources.Pages.Financial.ListOutboundInvoices_Title;
+            InfoBoxLiteral = Resources.Pages.Financial.ListOutboundInvoices_Info;
+            this.LabelListOutboundInvoicesHeader.Text = Resources.Pages.Financial.ListOutboundInvoices_Header;
             this.LabelGridHeaderItem.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Item;
             this.LabelGridHeaderDueDate.Text = Resources.Global.Financial_DueDate;
-            this.LabelGridHeaderBeneficiary.Text = Resources.Pages.Financial.ListInboundInvoices_Header_Sender;
-            this.LabelGridHeaderBudget.Text = Resources.Global.Financial_Budget;
-            this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
+            this.LabelGridHeaderCustomer.Text = Resources.Pages.Financial.ListOutboundInvoices_CustomerReceivingInvoice;
+            this.LabelGridHeaderCreated.Text = Resources.Global.Financial_Budget;
+            this.LabelGridHeaderAmountTotal.Text =
+                Resources.Pages.Financial.ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes;
             this.LabelGridHeaderProgress.Text = Resources.Global.Global_Progress;
             this.LabelGridHeaderDocs.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Docs;
             this.LabelGridHeaderActions.Text = Resources.Global.Global_Action;

@@ -1024,6 +1024,69 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sent.
+        /// </summary>
+        internal static string ListOutboundInvoices_CreatedDateTime {
+            get {
+                return ResourceManager.GetString("ListOutboundInvoices_CreatedDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer.
+        /// </summary>
+        internal static string ListOutboundInvoices_CustomerReceivingInvoice {
+            get {
+                return ResourceManager.GetString("ListOutboundInvoices_CustomerReceivingInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Listing Outbound Invoices.
+        /// </summary>
+        internal static string ListOutboundInvoices_Header {
+            get {
+                return ResourceManager.GetString("ListOutboundInvoices_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This lists the 100 most recent outbound invoices, sorted by when they were created, newest first..
+        /// </summary>
+        internal static string ListOutboundInvoices_Info {
+            get {
+                return ResourceManager.GetString("ListOutboundInvoices_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount Total.
+        /// </summary>
+        internal static string ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes {
+            get {
+                return ResourceManager.GetString("ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Due Date.
+        /// </summary>
+        internal static string ListOutboundInvoices_PaymentExpectedByDate {
+            get {
+                return ResourceManager.GetString("ListOutboundInvoices_PaymentExpectedByDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List Outbound Invoices.
+        /// </summary>
+        internal static string ListOutboundInvoices_Title {
+            get {
+                return ResourceManager.GetString("ListOutboundInvoices_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account (OCR).
         /// </summary>
         internal static string PayoutMoney_GridHeader_Account_Ocr {

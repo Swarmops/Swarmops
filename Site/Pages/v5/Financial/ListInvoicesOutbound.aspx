@@ -18,18 +18,7 @@
 
         preload([
             '/Images/Abstract/ajaxloader-medium.gif',
-            '/Images/Abstract/ajaxloader-48x36px.gif',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-gold.png',
-            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png',
-            '/Images/Icons/iconshock-green-tick-128x96px.png',
-            '/Images/Icons/iconshock-red-cross-128x96px.png',
-            '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
-            '/Images/Icons/iconshock-balloon-undo-128x96px.png',
-            '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png'
+            '/Images/Abstract/ajaxloader-48x36px.gif'
         ]);
 
         /* -- commented out -- do we need attestation logic for this page?
@@ -109,17 +98,17 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2><asp:Label runat="server" ID="LabelListInboundInvoicesHeader" Text="XYZ List Inbound Invoices" /></h2>
+    <h2><asp:Label runat="server" ID="LabelListOutboundInvoicesHeader" Text="XYZ List Outbound Invoices" /></h2>
     <table id="tableOutboundInvoices" class="easyui-datagrid" style="width:680px;height:400px"
         data-options="rownumbers:false,singleSelect:false,fit:false,fitWidth:true,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-ListInvoicesOutbound.aspx'"
         idField="itemId">
         <thead>
             <tr>  
                 <th data-options="field:'item',width:60"><asp:Label ID="LabelGridHeaderItem" runat="server" Text="XYZ Item"/></th>  
-                <th data-options="field:'dueDate',width:60"><asp:Label ID="LabelGridHeaderDueDate" runat="server" Text="XYZ DueDate" /></th>  
-                <th data-options="field:'sender',width:140,sortable:true"><asp:Label ID="LabelGridHeaderBeneficiary" runat="server" Text="XYZ Beneficiary" /></th>  
-                <th data-options="field:'budget',width:140,sortable:true"><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Budget" /></th>  
-                <th data-options="field:'amount',width:100,align:'right',sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderRequested" runat="server" Text="XYZ Requested" /></th>
+                <th data-options="field:'sent',width:60"><asp:Label ID="LabelGridHeaderCreated" runat="server" Text="XYZ Created" /></th>  
+                <th data-options="field:'due',width:60,sortable:true"><asp:Label ID="LabelGridHeaderDueDate" runat="server" Text="XYZ DueDate" /></th>  
+                <th data-options="field:'customer',width:140,sortable:true"><asp:Label ID="LabelGridHeaderCustomer" runat="server" Text="XYZ Customer" /></th>  
+                <th data-options="field:'amount',width:100,align:'right',sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderAmountTotal" runat="server" Text="XYZ AmountTotal" /></th>
                 <th data-options="field:'progress',width:76,align:'center'"><asp:Label ID="LabelGridHeaderProgress" runat="server" Text="XYZ Progress" /></th>
                 <th data-options="field:'dox',width:40,align:'center'"><asp:Label ID="LabelGridHeaderDocs" runat="server" Text="Doxyz" /></th>
                 <th data-options="field:'actions',width:53,align:'center'"><asp:Label ID="LabelGridHeaderActions" runat="server" Text="XYZAction" /></th>

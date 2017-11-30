@@ -13,13 +13,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
     public partial class ListInvoicesOutbound {
         
         /// <summary>
-        /// LabelListInboundInvoicesHeader control.
+        /// LabelListOutboundInvoicesHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelListInboundInvoicesHeader;
+        protected global::System.Web.UI.WebControls.Label LabelListOutboundInvoicesHeader;
         
         /// <summary>
         /// LabelGridHeaderItem control.
@@ -31,6 +31,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelGridHeaderItem;
         
         /// <summary>
+        /// LabelGridHeaderCreated control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelGridHeaderCreated;
+        
+        /// <summary>
         /// LabelGridHeaderDueDate control.
         /// </summary>
         /// <remarks>
@@ -40,31 +49,22 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelGridHeaderDueDate;
         
         /// <summary>
-        /// LabelGridHeaderBeneficiary control.
+        /// LabelGridHeaderCustomer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderBeneficiary;
+        protected global::System.Web.UI.WebControls.Label LabelGridHeaderCustomer;
         
         /// <summary>
-        /// LabelGridHeaderBudget control.
+        /// LabelGridHeaderAmountTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderBudget;
-        
-        /// <summary>
-        /// LabelGridHeaderRequested control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderRequested;
+        protected global::System.Web.UI.WebControls.Label LabelGridHeaderAmountTotal;
         
         /// <summary>
         /// LabelGridHeaderProgress control.

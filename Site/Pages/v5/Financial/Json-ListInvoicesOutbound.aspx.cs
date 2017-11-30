@@ -52,7 +52,7 @@ public partial class Pages_v5_Finance_Json_ListInvoicesOutbound : DataV5Base
         {
             result.Append("{");
             result.AppendFormat(
-                "\"item\":\"{0}\",\"dueDate\":\"{1}\",\"sender\":\"{2}\",\"budget\":\"{3}\",\"amount\":\"{4}\",\"progress\":\"{5}\"," +
+                "\"item\":\"{0}\",\"sent\":\"{1}\",\"dueDate\":\"{2}\",\"customer\":\"{3}\",\"amount\":\"{4}\",\"progress\":\"{5}\"," +
                 "\"dox\":\"" + (invoice.Documents.Count > 0 ? hasDoxString : "&nbsp;") + "\"," +
                 "\"actions\":\"<span style='position:relative;left:-2px'>" +
                 //"<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval LocalNew LocalFundsInsufficient\\\" accountid=\\\"{6}\\\" amount=\\\"{4}\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
@@ -62,10 +62,9 @@ public partial class Pages_v5_Finance_Json_ListInvoicesOutbound : DataV5Base
                 //"<img id=\\\"IconUndo{5}\\\" class=\\\"LocalIconUndo LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                 "</span>\"",
                 "#" + invoice.OrganizationSequenceId.ToString("N0"),
-
+                JsonSanitize(invoice.CreatedDateTime.ToString(invoice.CreatedDateTime < dueDateFormatBreakDate ? "yyyy-MMM" : "MMM-dd")),
                 JsonSanitize(invoice.DueDate.ToString(invoice.DueDate < dueDateFormatBreakDate ? "yyyy-MMM" : "MMM-dd")),
-                "Supplier",
-                JsonSanitize(invoice.Budget.Name),
+                JsonSanitize(invoice.CustomerName),
                 JsonSanitize((invoice.AmountCents/100.0).ToString("N2")),
                 GetProgressTicks(invoice),
                 invoice.Identity); // Item #6 is only present in hasDoxString above
