@@ -51,15 +51,20 @@
 
         $(document).ready(function() {
 
-            // we're still in document.ready
+            $("a.FancyBox_Gallery").fancybox({
+                'overlayShow': true,
+                'transitionIn': 'fade',
+                'transitionOut': 'fade',
+                'type': 'image',
+                'opacity': true
+            });
+
 
             $('#tableOutboundInvoices').datagrid
             (
                 {
                     onLoadSuccess: function () {
                         $(".LocalViewDox").click(function () {
-
-                            alertify.log($(this).attr("baseid"));
 
                             $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
 
