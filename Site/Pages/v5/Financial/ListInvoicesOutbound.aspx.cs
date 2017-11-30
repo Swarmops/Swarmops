@@ -111,7 +111,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelGridHeaderItem.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Item;
             this.LabelGridHeaderDueDate.Text = Resources.Global.Financial_DueDate;
             this.LabelGridHeaderCustomer.Text = Resources.Pages.Financial.ListOutboundInvoices_CustomerReceivingInvoice;
-            this.LabelGridHeaderCreated.Text = Resources.Global.Financial_Budget;
+            this.LabelGridHeaderCreated.Text = Resources.Pages.Financial.ListOutboundInvoices_CreatedDateTime;
             this.LabelGridHeaderAmountTotal.Text =
                 Resources.Pages.Financial.ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes;
             this.LabelGridHeaderProgress.Text = Resources.Global.Global_Progress;
