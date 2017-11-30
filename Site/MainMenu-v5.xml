@@ -228,7 +228,7 @@
             <Permissions />
             <ImageUrl>iconshock-documents-green</ImageUrl>
             <NavigateUrl>/Pages/v5/Financial/ListInvoicesOutbound.aspx</NavigateUrl>
-            <Type>Link</Type>
+            <Type>Submenu</Type>
             <Children>
 
               <MainMenuItem>
@@ -250,7 +250,7 @@
             <Permissions />
             <ImageUrl>iconshock-documents-red</ImageUrl>
             <NavigateUrl>/Pages/v5/Financial/ListInvoicesInbound.aspx</NavigateUrl>
-            <Type>Link</Type>
+            <Type>Submenu</Type>
             <Children>
 
               <MainMenuItem>

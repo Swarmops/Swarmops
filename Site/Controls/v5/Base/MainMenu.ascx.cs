@@ -176,10 +176,16 @@ namespace Swarmops.Controls.Base
                     {
                         output.Write ("<a href='#'>" + localizedText + "</a>");
                     }
-                    else
+                    else if (string.IsNullOrEmpty(menuItem.NavigateUrl))
                     {
                         output.Write(
                             "<a href=\"#\"><img src=\"/Images/PageIcons/{0}-{3}.png\"  height=\"20\" width=\"20\"  />{2}</a>",
+                            menuItem.ImageUrl, prettyNavUrl, localizedText, iconSize);
+                    }
+                    else
+                    {
+                        output.Write(
+                            "<a href=\"{1}\"><img src=\"/Images/PageIcons/{0}-{3}.png\"  height=\"20\" width=\"20\"  />{2}</a>",
                             menuItem.ImageUrl, prettyNavUrl, localizedText, iconSize);
                     }
                     break;
