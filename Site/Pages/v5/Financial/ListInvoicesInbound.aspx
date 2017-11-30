@@ -58,6 +58,27 @@
                 $('div.radioOption').slideUp();
                 $('div#radioOption' + pickedButtonName).slideDown();
             });
+
+            $("a.FancyBox_Gallery").fancybox({
+                'overlayShow': true,
+                'transitionIn': 'fade',
+                'transitionOut': 'fade',
+                'type': 'image',
+                'opacity': true
+            });
+
+            $('#tableInboundInvoices').datagrid(
+                {
+                    onLoadSuccess: function() {
+                        $(".LocalViewDox").click(function() {
+
+                            $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
+
+
+                        });
+                    }
+                }
+            );
         });
 
 
@@ -140,7 +161,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label runat="server" ID="LabelListInboundInvoicesHeader" Text="XYZ List Inbound Invoices" /></h2>
-    <table id="TableInboundInvoices" class="easyui-datagrid" style="width:680px;height:400px"
+    <table id="tableInboundInvoices" class="easyui-datagrid" style="width:680px;height:400px"
         data-options="rownumbers:false,singleSelect:false,fit:false,fitWidth:true,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-ListInvoicesInbound.aspx'"
         idField="itemId">
         <thead>
