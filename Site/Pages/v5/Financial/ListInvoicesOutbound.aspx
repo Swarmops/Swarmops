@@ -53,17 +53,13 @@
 
             // we're still in document.ready
 
-            $('input:radio[name="ModalOptions"]').change(function () {
-                var pickedButtonName = $(this).val();
-                $('div.radioOption').slideUp();
-                $('div#radioOption' + pickedButtonName).slideDown();
-            });
-
             $('#tableOutboundInvoices').datagrid
             (
                 {
                     onLoadSuccess: function () {
                         $(".LocalViewDox").click(function () {
+
+                            alertify.log($(this).attr("baseid"));
 
                             $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
 
