@@ -106,7 +106,7 @@
             <tr>  
                 <th data-options="field:'item',width:60"><asp:Label ID="LabelGridHeaderItem" runat="server" Text="XYZ Item"/></th>  
                 <th data-options="field:'sent',width:60"><asp:Label ID="LabelGridHeaderCreated" runat="server" Text="XYZ Created" /></th>  
-                <th data-options="field:'due',width:60,sortable:true"><asp:Label ID="LabelGridHeaderDueDate" runat="server" Text="XYZ DueDate" /></th>  
+                <th data-options="field:'dueDate',width:60,sortable:true"><asp:Label ID="LabelGridHeaderDueDate" runat="server" Text="XYZ DueDate" /></th>  
                 <th data-options="field:'customer',width:140,sortable:true"><asp:Label ID="LabelGridHeaderCustomer" runat="server" Text="XYZ Customer" /></th>  
                 <th data-options="field:'amount',width:100,align:'right',sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderAmountTotal" runat="server" Text="XYZ AmountTotal" /></th>
                 <th data-options="field:'progress',width:76,align:'center'"><asp:Label ID="LabelGridHeaderProgress" runat="server" Text="XYZ Progress" /></th>
