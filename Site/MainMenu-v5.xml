@@ -275,16 +275,6 @@
             </MainMenuItem>
 
           <MainMenuItem>
-            <ResourceKey>Financial_List</ResourceKey>
-            <UserLevel>3</UserLevel>
-            <Permissions />
-            <Type>Submenu</Type>
-            <ImageUrl>iconshock-groups-docs-lists</ImageUrl>
-            <Children>
-            </Children>
-          </MainMenuItem>
-
-          <MainMenuItem>
                 <ResourceKey>Financial_Payroll</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />
