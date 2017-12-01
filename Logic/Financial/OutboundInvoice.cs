@@ -27,7 +27,7 @@ namespace Swarmops.Logic.Financial
                     // OrganizationSequenceId was added for each new outbound invoice
 
                     SwarmDb db = SwarmDb.GetDatabaseForWriting();
-                    base.OrganizationSequenceId = db.SetInboundInvoiceSequence(this.Identity);
+                    base.OrganizationSequenceId = db.SetOutboundInvoiceSequence(this.Identity);
                     return base.OrganizationSequenceId;
                 }
 
