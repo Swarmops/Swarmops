@@ -245,8 +245,9 @@ namespace Swarmops.Logic.Financial
             {
                 // Check if this row _closes_ an _existing_ VAT report, in which case it should _not_ be included
 
-                int vatReportId = dbRead.GetVatReportIdFromCloseTransaction(row.FinancialTransactionId);
-                if (vatReportId == 0)
+                int vatReportOpenId = dbRead.GetVatReportIdFromCloseTransaction(row.FinancialTransactionId);
+                int vatReportCloseId = dbRead.GetVatReportIdFromOpenTransaction(row.FinancialTransactionId);
+                if (vatReportOpenId == 0 && vatReportCloseId == 0)
                 {
                     // This particular transaction doesn't close an existing VAT report
                     rowsFinal.Add(row);
