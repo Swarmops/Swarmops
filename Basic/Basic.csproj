@@ -92,7 +92,7 @@
     <Compile Include="Types\Swarm\BasicChurnDataPoint.cs" />
     <Compile Include="Types\Structure\BasicCity.cs" />
     <Compile Include="Types\Structure\BasicCountry.cs" />
-    <Compile Include="Types\Common\BasicDocument.cs" />
+    <Compile Include="Types\Structure\BasicDocument.cs" />
     <Compile Include="Types\Financial\BasicExpenseClaim.cs" />
     <Compile Include="Types\Security\BasicExternalCredential.cs" />
     <Compile Include="Types\Security\BasicExternalIdentity.cs" />

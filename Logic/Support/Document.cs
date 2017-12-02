@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using Swarmops.Basic.Types;
-using Swarmops.Basic.Types.Common;
+using Swarmops.Basic.Types.Structure;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
 using Swarmops.Database;
