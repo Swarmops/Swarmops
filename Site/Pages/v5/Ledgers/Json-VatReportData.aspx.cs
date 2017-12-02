@@ -66,21 +66,21 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     transaction.DateTime,
                     JsonSanitize(transaction.Description));
 
-                if (item.TurnoverCents > 0)
+                if (item.TurnoverCents != 0)
                 {
                     element += String.Format(",\"turnover\":\"{0:N2}\"", item.TurnoverCents / 100.0);
                     turnoverCentsTotal += item.TurnoverCents;
                     include = true;
                 }
 
-                if (item.VatInboundCents > 0)
+                if (item.VatInboundCents != 0)
                 {
                     element += String.Format(",\"inbound\":\"{0:N2}\"", item.VatInboundCents/ 100.0);
                     inboundCentsTotal += item.VatInboundCents;
                     include = true;
                 }
 
-                if (item.VatOutboundCents > 0)
+                if (item.VatOutboundCents != 0)
                 {
                     element += String.Format(",\"outbound\":\"{0:N2}\"", item.VatOutboundCents/ 100.0);
                     outboundCentsTotal += item.VatOutboundCents;
