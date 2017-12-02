@@ -50,6 +50,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             StringBuilder response = new StringBuilder(16384);
 
             VatReportItems items = report.Items;
+            items.Sort(VatItemSorterByDate);
             List<string> lines = new List<string>();
 
             string hasDoxString =
@@ -117,6 +118,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             Response.End();
         }
 
-
+        static public int VatItemSorterByDate(VatReportItem a, VatReportItem b)
+        {
+            return DateTime.Compare(a.Transaction.DateTime, b.Transaction.DateTime);
+        }
     }
 }
