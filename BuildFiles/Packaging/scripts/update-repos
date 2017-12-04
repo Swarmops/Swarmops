@@ -3,8 +3,18 @@
 if [ "$#" -ne "2" ]; then
     echo "Usage: update-repos <filename> <releasename1,releasename2,...>"
     echo "Example: update-repos internal-latest.deb trusty,xenial,jessie"
+    echo if 'filename' contains 'internal', will use 'conf-internal' for configuration,
+    echo otherwise default to 'conf'
     exit 1
 fi
+
+
+CONFDIR="+b/conf"
+
+if [[ $1 == *"internal"* ]]; then
+  CONFDIR="+b/conf-internal"
+fi
+
 
 cd /var/www/packages.swarmops.com
 
@@ -14,7 +24,7 @@ unset IFS
 for debianRelease in "${distros[@]}"
 do
     echo "Publishing package for $debianRelease..."
-    reprepro --component contrib includedeb $debianRelease $1 	
+    reprepro --component contrib --confdir $CONFDIR includedeb $debianRelease $1
 done
 
 cd /home/builder/swarmops/packaging
