@@ -37,6 +37,23 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        /// <summary>
+        /// Always an even number. If an odd number, the upgrade to the next even number
+        /// is currently in progress, and all blockchain operations are halted.
+        /// </summary>
+        public static int ExpectedBlockchainCodeVersion => 2;
+
+        public static bool CurrentlyUpgrading
+        {
+            get { return SystemSettings.BlockchainCodeVersion%2 == 1 ? true : false; }
+        }
+
+        public static void Upgrade(int fromVersion)
+        {
+            BitcoinBlockchainUpgrade.Upgrade(fromVersion);
+        }
+
+
         public static void VerifyBitcoinHotWallet()
         {
             // This must only be run from the backend

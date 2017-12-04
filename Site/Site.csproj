@@ -216,6 +216,13 @@
     <Compile Include="Pages\v5\Comms\SendMassMessage.aspx.designer.cs">
       <DependentUpon>SendMassMessage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Financial\BlockchainCodeUpgrading.aspx.cs">
+      <DependentUpon>BlockchainCodeUpgrading.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Financial\BlockchainCodeUpgrading.aspx.designer.cs">
+      <DependentUpon>BlockchainCodeUpgrading.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Financial\Json-ListInvoicesOutbound.aspx.cs">
       <DependentUpon>Json-ListInvoicesOutbound.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1110,6 +1117,7 @@
     <Content Include="Pages\v5\Admin\OrgStaffing.aspx" />
     <Content Include="Pages\v5\Admin\SystemSettings.aspx" />
     <Content Include="Pages\v5\Comms\SendMassMessage.aspx" />
+    <Content Include="Pages\v5\Financial\BlockchainCodeUpgrading.aspx" />
     <Content Include="Pages\v5\Financial\Json-ListInvoicesOutbound.aspx" />
     <Content Include="Pages\v5\Financial\Json-ListInvoicesInbound.aspx" />
     <Content Include="Pages\v5\Financial\ListInvoicesOutbound.aspx" />

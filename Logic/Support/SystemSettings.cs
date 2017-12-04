@@ -282,6 +282,29 @@ namespace Swarmops.Logic.Support
         }
 
 
+        public static int BlockchainCodeVersion
+        {
+            get
+            {
+                string result = Persistence.Key["BlockchainCodeVersion"];
+                if (!string.IsNullOrEmpty(result))
+                {
+                    try
+                    {
+                        return Int32.Parse(result);
+                    }
+                    catch (Exception)
+                    {
+                        return 0;
+                    }
+                }
+
+                return 0;
+            }
+            set { Persistence.Key["BlockchainCodeVersion"] = value.ToString(CultureInfo.InvariantCulture); }
+        }
+
+
         public static bool DatabaseInitialized
         {
             get { return !String.IsNullOrEmpty(InstallationId); }
