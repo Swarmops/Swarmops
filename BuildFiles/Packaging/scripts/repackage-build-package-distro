@@ -10,6 +10,14 @@ DISTROS=$3
 PACKAGE=$4
 BUILDID=$5
 
+DEBCONFDIR="+b/conf"
+
+if [[ $2 == "internal" ]]; then
+  DEBCONFDIR="+b/conf-internal"
+  echo "Overriding default packaging config; using internal/experimental configuration"
+fi
+
+
 IFS=',' read -r -a distros <<< "$DISTROS"
 unset IFS
 
@@ -58,7 +66,7 @@ do
 
   echo "Updating repositories ($DISTRO)..."
   cd /var/www/packages.swarmops.com
-  reprepro --component contrib includedeb $DISTRO swarmops-$PACKAGENAME-$DISTRO-latest.deb
+  reprepro --component contrib --confdir $DEBCONFDIR includedeb $DISTRO swarmops-$PACKAGENAME-$DISTRO-latest.deb
   cd /home/builder/swarmops/packaging
 
   echo "Restoring control file, cleaning up ($DISTRO)..."
