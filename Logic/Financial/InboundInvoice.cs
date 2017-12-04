@@ -152,6 +152,8 @@ namespace Swarmops.Logic.Financial
                 FinancialDependencyType.InboundInvoice, Identity,
                 DateTime.UtcNow, attester.Identity, BudgetAmountCents);
             base.Attested = true;
+
+            UpdateTransaction(attester); // will re-enable the tx if denied and reopened earlier
         }
 
         public void Deattest (Person deattester)
@@ -170,6 +172,8 @@ namespace Swarmops.Logic.Financial
                 DateTime.UtcNow, denyingPerson.Identity, (double)Amount);
             Attested = false;
             Open = false;
+
+            UpdateTransaction(denyingPerson); // will zero out the tx
         }
 
         #endregion
