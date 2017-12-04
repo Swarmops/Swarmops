@@ -27,7 +27,7 @@ unset IFS
 for debianRelease in "${distros[@]}"
 do
     echo "Publishing package for $debianRelease..."
-    reprepro --component contrib --confdir $CONFDIR includedeb $debianRelease $1
+    reprepro --component contrib --confdir $CONFDIR --ask-passphrase includedeb $debianRelease $1
 done
 
 cd /home/builder/swarmops/packaging
