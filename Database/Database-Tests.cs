@@ -183,7 +183,7 @@ namespace Swarmops.Database
                     DbCommand command =
                         GetDbCommand (
                             "SELECT * FROM CredentialsTests", connection);
-                    DbDataReader reader = command.ExecuteReader();
+                    command.ExecuteReader();
 
                     return true;
                 }

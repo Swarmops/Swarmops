@@ -148,8 +148,8 @@ namespace Swarmops.Logic.Communications
             ForwardMessage (from, to, subject, body);
             msg.ReplyMessage +=
                 "\r\nDitt meddelande har vidarebefordrats till medlemsservice@piratpartiet.se. Kontakta oss om du undrar över något.";
-            PWLog.Write (PWLogItem.None, 0, PWLogAction.SMSHandled, "Forwarded SMS from " + msg.FromNumber + " to " + to,
-                msg.Message + "\r\n" + msg.ErrorMessage);
+            //PWLog.Write (PWLogItem.None, 0, PWLogAction.SMSHandled, "Forwarded SMS from " + msg.FromNumber + " to " + to,
+            //    msg.Message + "\r\n" + msg.ErrorMessage);
 
             return true;
         }

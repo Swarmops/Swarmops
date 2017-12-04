@@ -422,7 +422,6 @@
     <Compile Include="Support\LogicServices.cs" />
     <Compile Include="Support\Optimizations.cs" />
     <Compile Include="Support\Persistence.cs" />
-    <Compile Include="Support\PWLog.cs" />
     <Compile Include="Support\PirateWebDebug.cs" />
     <Compile Include="Support\QuotedPrintable.cs" />
     <Compile Include="Support\SerializableDictionary.cs" />

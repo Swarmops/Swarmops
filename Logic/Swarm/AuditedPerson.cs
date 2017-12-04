@@ -284,8 +284,10 @@ namespace Swarmops.Logic.Swarm
         {
             if (this.executor != null && ("" + oldVal).Trim() != ("" + newVal).Trim())
             {
-                PWLog.Write (this.executor, PWLogItem.Person, this.person.Identity, PWLogAction.PersonFieldChange,
-                    this.actionDescr, "", field, "" + oldVal, "" + newVal);
+                //PWLog.Write (this.executor, PWLogItem.Person, this.person.Identity, PWLogAction.PersonFieldChange,
+                //    this.actionDescr, "", field, "" + oldVal, "" + newVal);
+
+                // TODO: New log format
             }
         }
 

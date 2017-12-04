@@ -387,8 +387,6 @@ namespace Swarmops.Database
                 throw new ArgumentOutOfRangeException ("OrganizationId cannot be 0");
             }
 
-            List<BasicParticipation> result = new List<BasicParticipation>();
-
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();

@@ -56,8 +56,6 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        DateTime testDate = reader.GetDateTime (3);
-
                         return reader.GetDouble(2);
                     }
 

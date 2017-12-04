@@ -30,7 +30,6 @@ namespace Swarmops.Database
             int foreignId = reader.GetInt32 (3);
             DateTime dateTime = reader.GetDateTime (4);
             int personId = reader.GetInt32 (5);
-            double amount = reader.GetDouble (6); // not yet used
 
             return new BasicFinancialValidation (financialValidationId, validationType, personId, dateTime,
                 dependencyType, foreignId);

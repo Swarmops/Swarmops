@@ -25,7 +25,7 @@ namespace Swarmops.Database
             int inboundInvoiceId = reader.GetInt32 (0);
             int organizationId = reader.GetInt32 (1);
             DateTime createdDateTime = reader.GetDateTime (2);
-            int createdByPersonId = reader.GetInt32 (3);
+            // int createdByPersonId = reader.GetInt32 (3);  // TODO: Do we care about this field?
             DateTime dueDate = reader.GetDateTime (4);
             Int64 amountCents = reader.GetInt64 (5);
             int budgetId = reader.GetInt32 (6);

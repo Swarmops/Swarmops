@@ -127,10 +127,10 @@ namespace Swarmops.Utility.BotCode
                                        membership.Organization.Name + ".");
                         SendReminderMail (membership);
                         Console.Write (".");
-                        PWLog.Write (PWLogItem.Person, membership.PersonId,
+                        /*PWLog.Write (PWLogItem.Person, membership.PersonId,
                             PWLogAction.MembershipRenewReminder,
                             "Mail was sent to " + membership.Person.Mail +
-                            " reminding to renew membership in " + membership.Organization.Name + ".", string.Empty);
+                            " reminding to renew membership in " + membership.Organization.Name + ".", string.Empty);*/
 
                         Console.Write (".");
 
@@ -148,9 +148,9 @@ namespace Swarmops.Utility.BotCode
                         string logText = "FAILED sending mail to " + membership.Person.Mail +
                                          " for reminder of pending renewal in " + membership.Organization.Name + ".";
                         failedReminders.Add (membership.Person.Canonical);
-                        PWLog.Write (PWLogItem.Person, membership.PersonId,
+                        /*PWLog.Write (PWLogItem.Person, membership.PersonId,
                             PWLogAction.MembershipRenewReminder,
-                            logText, string.Empty);
+                            logText, string.Empty);*/
                         ExceptionMail.Send (new Exception (logText, x));
                     }
                 }
@@ -301,10 +301,10 @@ namespace Swarmops.Utility.BotCode
                     try
                     {
                         SendReminderMail (membership);
-                        PWLog.Write (PWLogItem.Person, membership.PersonId,
+                        /*PWLog.Write (PWLogItem.Person, membership.PersonId,
                             PWLogAction.MembershipRenewReminder,
                             "Mail was sent to " + membership.Person.Mail +
-                            " reminding to renew membership in " + membership.Organization.Name + ".", string.Empty);
+                            " reminding to renew membership in " + membership.Organization.Name + ".", string.Empty);*/
                     }
                     catch (Exception ex)
                     {

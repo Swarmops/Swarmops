@@ -197,8 +197,8 @@ namespace Swarmops.Logic.Swarm
                 // REMOVED: everything Roles related; being phased out
 
 
-                PWLog.Write (actingPerson.Identity, PWLogItem.Person, Person.Identity, PWLogAction.MemberLost,
-                    eventSource + ":" + description, string.Empty);
+                //PWLog.Write (actingPerson.Identity, PWLogItem.Person, Person.Identity, PWLogAction.MemberLost,
+                //    eventSource + ":" + description, string.Empty);
                 PWEvents.CreateEvent (EventSource.PirateWeb, EventType.LostMember, actingPerson.Identity, OrganizationId, Person.GeographyId,
                     Person.Identity, 0, OrganizationId.ToString());
 

@@ -18,7 +18,7 @@ namespace Swarmops.Logic.Support
                 0,
                 string.Empty);
             p.TerminateActivist();
-            PWLog.Write (PWLogItem.Person, p.Identity, PWLogAction.ActivistLost, "Lost as activist", string.Empty);
+            //PWLog.Write (PWLogItem.Person, p.Identity, PWLogAction.ActivistLost, "Lost as activist", string.Empty);
         }
 
 
@@ -34,8 +34,8 @@ namespace Swarmops.Logic.Support
                 0,
                 string.Empty);
             newActivist.CreateActivist (isPublic, isConfirmed);
-            PWLog.Write (newActivist, PWLogItem.Person, newActivist.Identity, PWLogAction.ActivistJoin,
-                "New activist joined.", logMessage);
+            //PWLog.Write (newActivist, PWLogItem.Person, newActivist.Identity, PWLogAction.ActivistJoin,
+            //    "New activist joined.", logMessage);
         }
     }
 }
