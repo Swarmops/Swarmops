@@ -357,6 +357,8 @@ namespace Swarmops.Logic.Financial
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
                 NotificationResource.ExpenseClaim_Attested);
+
+            UpdateFinancialTransaction(attester); // will re-enable tx if it was zeroed out earlier
         }
 
         public void Deattest (Person deattester)
@@ -380,6 +382,8 @@ namespace Swarmops.Logic.Financial
 
             OutboundComm.CreateNotificationOfFinancialValidation(Budget, Claimer, AmountCents / 100.0, Description,
                 NotificationResource.ExpenseClaim_Denied, reason);
+
+            UpdateFinancialTransaction(denyingPerson); // will zero out transaction
         }
 
         #endregion
