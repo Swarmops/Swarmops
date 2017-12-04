@@ -80,7 +80,7 @@ Beta-2 will be released on December 5, with string freeze on December 2. Its foc
 - [x] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 1, without conversion to fiat)
 - [x] Rewrite the Bitcoin Echo page to use Bitcoin Cash
 - [x] Rewrite the Bitcoin Donation page; make more resilient to socket failures
-- [ ] String Freeze
+- [x] String Freeze
 - [ ] Release
 
 
