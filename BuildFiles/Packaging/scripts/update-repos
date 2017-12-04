@@ -3,7 +3,7 @@
 if [ "$#" -ne "2" ]; then
     echo "Usage: update-repos <filename> <releasename1,releasename2,...>"
     echo "Example: update-repos internal-latest.deb trusty,xenial,jessie"
-    echo if 'filename' contains 'internal', will use 'conf-internal' for configuration,
+    echo if <filename> contains 'internal', will use 'conf-internal' for configuration,
     echo otherwise default to 'conf'
     exit 1
 fi
