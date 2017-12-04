@@ -158,7 +158,6 @@ There will also be many other small improvements added along with these features
 - [X] Fix password reset after refactor
 
 
-
 Detailed install instructions
 -----------------------------
 
