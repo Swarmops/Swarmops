@@ -48,8 +48,6 @@ Navigate to the new site and continue installation from the running site. To com
 
 At one point in the installation process, you will be prompted to copy the file `/etc/swarmops/database.config` from the server running swarmops-*frontend* to the server running swarmops-*backend*. This allows the backend to connect to the database as configured by the installation process. Once you do this, the installation process will detect the running backend and the installation will continue.
 
-The packages named as listed above (swarmops-frontend) are the sprint packages, released on the 5th of every month. If you prefer, you can opt for the development builds (swarmops-frontend-internal) or the stable six-month releases (swarmops-frontend-stable) instead. The development builds aren't really recommended unless you're actively contributing to development and want to see new changes running on the development sandbox.
-
 If you're running into trouble, or are just curious, see the "detailed install instructions" last in this document.
 
 
@@ -93,6 +91,7 @@ Beta-3 will be released on January 5, 2018, with string freeze on January 2. Its
 
 - [x] Import all crypto pairs from Shapeshift and track exchange rates
 - [x] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 2, including conversion to fiat)
+- [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
 - [ ] Write a Pay Invoice page for Bitcoin Cash
 - [x] Enable cryptocurrency as any other currency on entry
 - [ ] Enable payment identifiers, with currency
