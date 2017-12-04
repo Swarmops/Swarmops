@@ -69,34 +69,22 @@ No, there isn't a "license". This code is completely in the public domain, with 
 That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.
 
 
-Beta-2 features progress
-------------------------
-
-Beta-2 will be released on December 5, with string freeze on December 2. Its focus is to retool for Bitcoin Cash ~~and/or the Bitcoin 2x fork. This goal is fluid and may change as the strength of the respective forks become clearer.~~
-
-- [x] Database update for Bitcoin Cash balances for addresses
-- [x] Track Bitcoin Cash balances as well as legacy Core balances
-- [x] Update NBitcoin to handle ~~dual-mode~~ Bitcoin Cash (only; no need for Core anymore)
-- [x] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 1, without conversion to fiat)
-- [x] Rewrite the Bitcoin Echo page to use Bitcoin Cash
-- [x] Rewrite the Bitcoin Donation page; make more resilient to socket failures
-- [x] String Freeze
-- [ ] Release
-
 
 Beta-3 features progress
 ------------------------
 
-Beta-3 will be released on January 5, 2018, with string freeze on January 2. Its focus will be on Shapeshift integration and ability to receive and send payments in all different cryptocurrencies.
+Beta-3 will be released on January 5, 2018, with string freeze on January 2. Its focus will be on Shapeshift integration and ability to receive and send payments in all different cryptocurrencies, but will also include some further Bitcoin Cash features that weren't included in Beta-2.
 
 - [x] Import all crypto pairs from Shapeshift and track exchange rates
 - [x] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 2, including conversion to fiat)
+- [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
 - [ ] Write a Pay Invoice page for Bitcoin Cash
 - [x] Enable cryptocurrency as any other currency on entry
 - [ ] Enable payment identifiers, with currency
 - [ ] Tie payment identifiers to people and suppliers
-- [ ] String Freeze
+- [ ] String Freeze (January 2)
+- [ ] Release (January 5)
 
 
 Beta-4 features progress
