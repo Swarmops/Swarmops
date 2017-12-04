@@ -14,6 +14,8 @@ CONFDIR="+b/conf"
 if [[ $1 == *"internal"* ]]; then
   CONFDIR="+b/conf-internal"
   echo "Update-repos: Overriding default config; using internal/experimental configuration"
+else
+  echo "Update-repos: Packaging $1 for $2"
 fi
 
 
