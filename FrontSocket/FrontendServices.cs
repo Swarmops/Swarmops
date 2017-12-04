@@ -154,8 +154,6 @@ namespace Swarmops.Frontend.Socket
                     debugWriter.WriteLine("ConvertPdf started");
 
                     int fileCount = pdfFiles.Length;
-                    int successCount = 0;
-                    int failCount = 0;
 
                     Process process = null;
                     Document lastDocument = null;
@@ -165,7 +163,6 @@ namespace Swarmops.Frontend.Socket
                         // Set progress to indicate we're at file 'index' of 'fileCount'
 
                         int progress = fileIndex * 99 / fileCount; // 99 at most -- 100 indicates complete
-                        int progressMax = (fileIndex + 1) * 99 / fileCount - 1;
                         int progressFileStep = 99 / fileCount;
                         int currentFilePageCount = 0;
                         int currentFilePageStepMilli = 0;
@@ -188,7 +185,6 @@ namespace Swarmops.Frontend.Socket
                         if (process.ExitCode == 2)
                         {
                             // Bad PDF file
-                            failCount++;
                             failedConversionFileNames.Add(
                                 ((string[])GuidCache.Get("PdfClientNames-" + guid))[fileIndex].Replace("'", "")
                                     .Replace("\"", "")); // caution; we're displaying user input, guard against XSS
@@ -223,14 +219,12 @@ namespace Swarmops.Frontend.Socket
                             " " + Document.StorageRoot + relativeFileName + "-%04d.png\"");
 
                         int pageCounter = 0; // the first produced page will be zero
-                        int currentPageBaseProgress = progressFileStep * fileIndex;
                         string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
                         debugWriter.WriteLine("{0:D2}%, testPageFileName set to {1}", progress, testPageFileName);
                         string lastPageFileName = testPageFileName;
 
                         // Convert works by first calling imagemagick that creates /tmp/magick-* files
 
-                        int startMagickCount = Directory.GetFiles("/tmp", "magick-*").Count();
                         int lastProgress = 0;
 
                         while (pageCounter < currentFilePageCount)
