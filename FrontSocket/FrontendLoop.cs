@@ -180,7 +180,6 @@ namespace Swarmops.Frontend.Socket
                         }
                         else
                         {
-                            TimeSpan timeLeft = (cycleEndTime - utcNow);
                             Thread.Sleep(250);
                         }
 
