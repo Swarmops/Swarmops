@@ -43,8 +43,6 @@ do
   echo "Setting build number $BUILDID-$DISTRO..."
   sed -i "s/--BuildNumber--/$BUILDID-$DISTRO/g" $DROPFOLDER/payload/DEBIAN/control
 
-  cat $DROPFOLDER/payload/DEBIAN/control
-
   # Calculating new checksums
   echo "Creating MD5 checksum file ($DISTRO)..."
   cd $DROPFOLDER/payload
