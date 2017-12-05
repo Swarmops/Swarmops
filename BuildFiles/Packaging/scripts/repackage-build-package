@@ -170,14 +170,7 @@ cd ../..
 scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER $DISTROS $PACKAGE $BUILDID
 
 
-# TODO: FIX INTERNAL INSTALL?
+#echo "Cleaning up..."
 
-#if [ "$2" == "" ]; then
-  #echo "Installing INTERNAL BUILD on swarmops-dev for testing..."
-  #sudo dpkg -i --force-confdef swarmops-$PACKAGENAME-latest.deb
-#fi
-
-echo "Cleaning up..."
-
-rm -rf $DROPFOLDER/payload
+#rm -rf $DROPFOLDER/payload
 
