@@ -120,9 +120,9 @@ if [ "$COPYFILES" == "yes" ]; then
   fi
 fi
 
-if [ "$1" == "extscripts" ]; then
+#if [ "$1" == "extscripts" ]; then
 #  read -n1 -r -p "About to copy files, press any key..." key
-fi
+#fi
 
 echo "Copying template files into repo..."
 if [ "$INCLUDEDB" == "yes" ]; then
@@ -179,9 +179,9 @@ fi
 cd ../..
 
 
-if [ "$1" == "extscripts" ]; then
+#if [ "$1" == "extscripts" ]; then
 #  read -n1 -r -p "About to package the copied files, press any key..." key
-fi
+#fi
 
 
 
