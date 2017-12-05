@@ -218,15 +218,11 @@
   <data name="Menu5_Financial_Payroll" xml:space="preserve">
     <value>Nómina</value>
   </data>
-  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
-    <value>Facturas recibidas</value>
-  </data>
+  
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Solicitar adelanto de efectivo</value>
   </data>
-  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
-    <value>Enviar factura</value>
-  </data>
+  
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>Validar recibos</value>
   </data>
@@ -406,6 +402,7 @@
   <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
     <value>Mi organización local</value>
   </data>
+  
   
   
   

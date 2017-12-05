@@ -120,6 +120,12 @@
   <data name="Position_Executive_CeoAssistant" xml:space="preserve">
     <value>VD-assistent</value>
   </data>
+  <data name="Position_Executive_CeoAssistant_Government" xml:space="preserve">
+    <value>Presidentassistent</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Government_Plural" xml:space="preserve">
+    <value>Presidentassistenter</value>
+  </data>
   <data name="Position_Executive_CeoAssistant_Nonprofit" xml:space="preserve">
     <value>Generalsekreterarassistent</value>
   </data>
@@ -144,11 +150,17 @@
   <data name="Position_Executive_ChiefExecutiveOfficer" xml:space="preserve">
     <value>Verkställande Direktör</value>
   </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer_Government" xml:space="preserve">
+    <value>President</value>
+  </data>
   <data name="Position_Executive_ChiefExecutiveOfficer_Nonprofit" xml:space="preserve">
     <value>Generalsekreterare</value>
   </data>
   <data name="Position_Executive_ChiefFinancialOfficer" xml:space="preserve">
     <value>Ekonomichef</value>
+  </data>
+  <data name="Position_Executive_ChiefFinancialOfficer_Government" xml:space="preserve">
+    <value>Finansminister</value>
   </data>
   <data name="Position_Executive_ChiefFinancialOfficer_Nonprofit" xml:space="preserve">
     <value>Kassör</value>
@@ -165,11 +177,17 @@
   <data name="Position_Executive_ChiefMarketingOfficer" xml:space="preserve">
     <value>Marknadschef</value>
   </data>
+  <data name="Position_Executive_ChiefMarketingOfficer_Government" xml:space="preserve">
+    <value>Utrikesminister</value>
+  </data>
   <data name="Position_Executive_ChiefMarketingOfficer_Nonprofit" xml:space="preserve">
     <value>PR-chef</value>
   </data>
   <data name="Position_Executive_ChiefOperationsOfficer" xml:space="preserve">
     <value>Verksamhetschef</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer_Government" xml:space="preserve">
+    <value>Inrikesminister</value>
   </data>
   <data name="Position_Executive_ChiefOperationsOfficer_Nonprofit" xml:space="preserve">
     <value>Aktivismchef</value>
@@ -194,6 +212,12 @@
   </data>
   <data name="Position_Executive_MarketingAssistant" xml:space="preserve">
     <value>Marknadsassistent</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Government" xml:space="preserve">
+    <value>Assistent Utrikesfrågor</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Government_Plural" xml:space="preserve">
+    <value>Assistenter Utrikesfrågor</value>
   </data>
   <data name="Position_Executive_MarketingAssistant_Nonprofit" xml:space="preserve">
     <value>PR-assistent</value>
@@ -249,7 +273,10 @@
   <data name="Position_Geographic_Deputy_Plural" xml:space="preserve">
     <value>Andreledare</value>
   </data>
-  
+  <data name="Position_Geographic_ExpandingSubleaderNode_UxElement" xml:space="preserve">
+    <value>Geografiska mellanledare</value>
+    <comment>Leaders for geographies below the one displayed</comment>
+  </data>
   <data name="Position_Geographic_InfoLeader" xml:space="preserve">
     <value>Informationsledare</value>
   </data>

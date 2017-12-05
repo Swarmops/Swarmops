@@ -870,11 +870,53 @@
   <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
     <value>crwdns6556629:0crwdne6556629:0</value>
   </data>
+  <data name="ViewVatReports_Footer_Total" xml:space="preserve">
+    <value>crwdns6556672:0crwdne6556672:0</value>
+  </data>
+  <data name="ViewVatReports_Header_DateTime" xml:space="preserve">
+    <value>crwdns6556673:0crwdne6556673:0</value>
+    <comment>Timestamp of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Description" xml:space="preserve">
+    <value>crwdns6556674:0crwdne6556674:0</value>
+    <comment>Description of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Dox" xml:space="preserve">
+    <value>crwdns6556675:0crwdne6556675:0</value>
+    <comment>This is above the "view documents" icon</comment>
+  </data>
+  <data name="ViewVatReports_Header_Inbound" xml:space="preserve">
+    <value>crwdns6556676:0crwdne6556676:0</value>
+  </data>
+  <data name="ViewVatReports_Header_Outbound" xml:space="preserve">
+    <value>crwdns6556677:0crwdne6556677:0</value>
+  </data>
+  <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
+    <value>crwdns6556678:0crwdne6556678:0</value>
+  </data>
   <data name="ViewVatReports_Info" xml:space="preserve">
     <value>crwdns6556630:0crwdne6556630:0</value>
   </data>
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>crwdns6556631:0crwdne6556631:0</value>
     <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
+  </data>
+  <data name="ViewVatReports_Title_View" xml:space="preserve">
+    <value>crwdns6556679:0crwdne6556679:0</value>
+    <comment>This is the word or words before the name of the displayed VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_Header_NoReports" xml:space="preserve">
+    <value>crwdns6556680:0crwdne6556680:0</value>
+  </data>
+  <data name="ViewVatReports_NoReports" xml:space="preserve">
+    <value>crwdns6556681:0crwdne6556681:0</value>
+  </data>
+  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
+    <value>crwdns6556682:0crwdne6556682:0</value>
+    <comment>This is displayed when there are no items at all in a VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_ReportTotals" xml:space="preserve">
+    <value>crwdns6556683:0crwdne6556683:0</value>
+    <comment>Displayed as description of footer</comment>
   </data>
 </root>

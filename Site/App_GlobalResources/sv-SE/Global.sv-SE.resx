@@ -903,10 +903,41 @@
     <value>Förlopp</value>
     <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
   </data>
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
+  </data>
   <data name="Global_DownloadThis" xml:space="preserve">
     <value>Ladda ner detta</value>
   </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>Dok</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
   <data name="Global_SendThisInMail" xml:space="preserve">
     <value>Skicka detta i mail</value>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>Cash</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>Core</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>Gold</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>Legacy</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>Kedja</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>Utgående faktura #{0:N0} till {1}</value>
   </data>
 </root>

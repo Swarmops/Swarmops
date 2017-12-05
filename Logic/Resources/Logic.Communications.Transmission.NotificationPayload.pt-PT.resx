@@ -453,10 +453,18 @@ A tentativa de atualização será tentada a cada hora. Alguma funcionalidade po
   <data name="System_PublicRootReset_Subject" xml:space="preserve">
     <value>Swarmops: Recuperação da chave pública raiz da conta corrente</value>
   </data>
-  
-  
-  
-  
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>O Backend do Swarmops versão [SwarmopsVersion] em [HostName] foi iniciado com sucesso e está ligado à base de dados e às frameworks de notificação.</value>
+  </data>
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>O Backend do Swarmops está operacional</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>O servidor de sockets do Frontend fo Swarmops versão [SwarmopsVersion] em [HostName] foi iniciado com sucesso e está ligado à base de dados e frameworks de notificação.</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>O Frontend do Swarmops está operacional</value>
+  </data>
   <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
     <value>O mecanismo de transmissão do Swarmops em [HostName] encontrou um tipo de comunicação desconhecido ([UnrecognizedPayloadType]). Isto deverá acontecer apenas em ocasiões extremamente raras, em conjunto com actualizações onde uma versão actualizada tem que tomar conta de algo que mudou de nome a meio do processo, um fenómeno raro.
 

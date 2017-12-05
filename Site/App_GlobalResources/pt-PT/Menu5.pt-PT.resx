@@ -218,15 +218,11 @@
   <data name="Menu5_Financial_Payroll" xml:space="preserve">
     <value>Folha de Pagamento</value>
   </data>
-  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
-    <value>Receção de Fatura</value>
-  </data>
+  
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Pedido de Adiantamento de Dinheiro</value>
   </data>
-  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
-    <value>Enviar Fatura</value>
-  </data>
+  
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>Validar Recibos</value>
   </data>
@@ -416,9 +412,18 @@
     <value>Conta Corrente Bitcoin</value>
   </data>
   
-  
-  
-  
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} linhas de código</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Reportar um Bug do Swarmops (no Github)</value>
+  </data>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Depuração</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Personificar</value>
+  </data>
   
   
 </root>

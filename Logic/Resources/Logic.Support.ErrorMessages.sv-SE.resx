@@ -117,16 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AllClear_Text" xml:space="preserve">
+    <value>Swarmops är åter i nominell drift.</value>
+  </data>
+  <data name="AllClear_Title" xml:space="preserve">
+    <value>Allt fungerar</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
+    <value>Servern har förlorat anslutningen till bitcoinblockkedjan. Bitcointransaktioner kan inte upptäckas i realtid.</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
+    <value>Blockkedjeförbindelsen tappad</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
+    <value>Webbläsaren kan inte höra serverns hjärtslag. Realtidsuppdateringar kanske inte visas.</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
+    <value>Hjärtslagsfel nivå 1</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Text" xml:space="preserve">
+    <value>Det gick inte att ansluta till servern för uppdateringar i realtid.</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Title" xml:space="preserve">
+    <value>WebSocket kan inte ansluta</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Text" xml:space="preserve">
+    <value>Servern kan inte ansluta till backend-processen. Realtidsuppdateringar kommer att vara mestadels otillgängliga.</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Title" xml:space="preserve">
+    <value>Backend-anslutningsfel</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Text" xml:space="preserve">
+    <value>Servern kan inte höra hjärtslag från backendprocessen.</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Title" xml:space="preserve">
+    <value>Hjärtslagsfel nivå 2</value>
+  </data>
 </root>

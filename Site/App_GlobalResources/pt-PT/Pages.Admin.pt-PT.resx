@@ -117,34 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
-    <value>Este é um código QR para teste de eco bitcoin para {0}. Leia-o a partir da sua carteira de bitcoin no seu telemóvel para realize o teste, ou faça uma doação diretamente do seu computador para [{1}] (esse é um endereço bitcoin). A quantia ser-lhe-á devolvida (exceto despesas de minagem) no próximo ciclo de pagamento automático, o qual é executado a cada cinco minutos.</value>
-    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
-  </data>
-  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
-    <value>Recebidos {0} {1:N2} ({2:N0} microcoins ou "bits"). Irão ser devolvidos brevemente (menos taxa de minagem).</value>
-    <comment>{0} is native currency, {1} is amount in native currency</comment>
-  </data>
-  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
-    <value>Recebidos {0} microcoins ("bits"). Irão ser devolvidas brevemente (menos taxa de minagem).</value>
-    <comment>Used if BTC is the org native currency.</comment>
-  </data>
-  <data name="BitcoinEchoTest_Info" xml:space="preserve">
-    <value>Este é um teste de eco bitcoin, para testar a conta corrente. Se enviar uma pequena quantia para aqui, ela ser-lhe-á enviada de volta a si, com excepção das taxas da transação.</value>
-  </data>
-  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
-    <value>Doar</value>
-  </data>
+  
+  
+  
+  
+  
   <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
     <value>À espera de transação...</value>
   </data>
   <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
     <value>Transação detectada, a verificar...</value>
   </data>
-  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
-    <value>Teste de Eco Bitcoin para {0}</value>
-    <comment>The {0} is the organization name</comment>
-  </data>
+  
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Ativistas serão chamados de</value>
   </data>
@@ -300,6 +284,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Deveria realmente, realmente, REALMENTE utilizar HTTPS para um website como este. Mas já sabia disso, não é verdade?</value>
   </data>
+  
+  
+  
+  
   
   
   

@@ -120,6 +120,8 @@
   <data name="Position_Executive_CeoAssistant" xml:space="preserve">
     <value>Assistente do CEO</value>
   </data>
+  
+  
   <data name="Position_Executive_CeoAssistant_Nonprofit" xml:space="preserve">
     <value>Assistente do Secretário-Geral</value>
   </data>
@@ -144,12 +146,14 @@
   <data name="Position_Executive_ChiefExecutiveOfficer" xml:space="preserve">
     <value>Diretor Executivo</value>
   </data>
+  
   <data name="Position_Executive_ChiefExecutiveOfficer_Nonprofit" xml:space="preserve">
     <value>Secretário-Geral</value>
   </data>
   <data name="Position_Executive_ChiefFinancialOfficer" xml:space="preserve">
     <value>Diretor Financeiro</value>
   </data>
+  
   <data name="Position_Executive_ChiefFinancialOfficer_Nonprofit" xml:space="preserve">
     <value>Tesoureiro</value>
   </data>
@@ -165,12 +169,14 @@
   <data name="Position_Executive_ChiefMarketingOfficer" xml:space="preserve">
     <value>Diretor de Marketing</value>
   </data>
+  
   <data name="Position_Executive_ChiefMarketingOfficer_Nonprofit" xml:space="preserve">
     <value>Diretor de Divulgação</value>
   </data>
   <data name="Position_Executive_ChiefOperationsOfficer" xml:space="preserve">
     <value>Diretor de Operações</value>
   </data>
+  
   <data name="Position_Executive_ChiefOperationsOfficer_Nonprofit" xml:space="preserve">
     <value>Diretor de Ativismo</value>
   </data>
@@ -193,6 +199,8 @@
   <data name="Position_Executive_MarketingAssistant" xml:space="preserve">
     <value>Assistente de Marketing</value>
   </data>
+  
+  
   <data name="Position_Executive_MarketingAssistant_Nonprofit" xml:space="preserve">
     <value>Assistente de Divulgação</value>
   </data>

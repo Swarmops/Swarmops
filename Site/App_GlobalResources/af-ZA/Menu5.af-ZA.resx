@@ -223,13 +223,13 @@
     <value>crwdns6553959:0crwdne6553959:0</value>
   </data>
   <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
-    <value>crwdns1639831:0crwdne1639831:0</value>
+    <value>crwdns6556705:0crwdne6556705:0</value>
   </data>
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>crwdns1639832:0crwdne1639832:0</value>
   </data>
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
-    <value>crwdns6553960:0crwdne6553960:0</value>
+    <value>crwdns6556706:0crwdne6556706:0</value>
   </data>
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>crwdns6553685:0crwdne6553685:0</value>
@@ -442,5 +442,8 @@
   <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
     <value>crwdns6556574:0crwdne6556574:0</value>
     <comment>This is a European thing (Value Added Tax).</comment>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>crwdns6556689:0crwdne6556689:0</value>
   </data>
 </root>

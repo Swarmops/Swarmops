@@ -909,10 +909,41 @@
     <value>crwdns6556564:0crwdne6556564:0</value>
     <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
   </data>
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>crwdns6556666:0crwdne6556666:0</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
+  </data>
   <data name="Global_DownloadThis" xml:space="preserve">
     <value>crwdns6556565:0crwdne6556565:0</value>
   </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>crwdns6556667:0crwdne6556667:0</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
   <data name="Global_SendThisInMail" xml:space="preserve">
     <value>crwdns6556566:0crwdne6556566:0</value>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>crwdns6556684:0crwdne6556684:0</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>crwdns6556685:0crwdne6556685:0</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>crwdns6556686:0crwdne6556686:0</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>crwdns6556687:0crwdne6556687:0</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>crwdns6556688:0crwdne6556688:0</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>crwdns6556704:0{0:N0}crwdnd6556704:0{1}crwdne6556704:0</value>
   </data>
 </root>

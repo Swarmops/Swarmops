@@ -174,9 +174,7 @@
     <value>Utbetal</value>
   </data>
   
-  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
-    <value>Mottatt faktura</value>
-  </data>
+  
   
   
   
@@ -245,6 +243,7 @@
   <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>Medlemsoversikt</value>
   </data>
+  
   
   
   

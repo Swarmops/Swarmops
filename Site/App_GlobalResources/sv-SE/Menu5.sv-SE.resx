@@ -223,13 +223,13 @@
     <value>Lönelista</value>
   </data>
   <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
-    <value>Mottagit faktura</value>
+    <value>Mottagit ny faktura</value>
   </data>
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Begär kontantförskott</value>
   </data>
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
-    <value>Skicka faktura</value>
+    <value>Skicka ny faktura</value>
   </data>
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>Godkänn kvitton</value>
@@ -419,9 +419,16 @@
   <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
     <value>Bitcoin arbetsplånbok</value>
   </data>
-  
-  
-  
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>Byggd {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} rader kod</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Rapportera en Swarmops-bugg (på engelska, på Github)</value>
+  </data>
   <data name="Menu5_Administration_Debug" xml:space="preserve">
     <value>Felsök</value>
   </data>
@@ -431,5 +438,8 @@
   <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
     <value>Momsrapporter</value>
     <comment>This is a European thing (Value Added Tax).</comment>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Bitcoin arbetsplånbok ekotest</value>
   </data>
 </root>

@@ -192,7 +192,7 @@
     <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
   </data>
   <data name="Cost_Hospitality" xml:space="preserve">
-    <value>Hospitais</value>
+    <value>Hospitalidade</value>
   </data>
   <data name="Cost_IctInfrastructure" xml:space="preserve">
     <value>TIC e Infraestrutura</value>

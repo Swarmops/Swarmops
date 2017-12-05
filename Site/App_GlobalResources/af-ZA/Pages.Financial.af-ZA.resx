@@ -329,7 +329,7 @@
     <value>crwdns6555305:0crwdne6555305:0</value>
   </data>
   <data name="Donate_Explain" xml:space="preserve">
-    <value>crwdns6556406:0{0}crwdnd6556406:0{1}crwdne6556406:0</value>
+    <value>crwdns6556697:0{0}crwdnd6556697:0{1}crwdne6556697:0</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
   </data>
   <data name="Donate_FundsReceived" xml:space="preserve">
@@ -633,12 +633,38 @@
     <value>crwdns6556600:0crwdne6556600:0</value>
   </data>
   <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>crwdns6556601:0crwdne6556601:0</value>
+    <value>crwdns6556671:0crwdne6556671:0</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
   </data>
   <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
     <value>crwdns6556602:0crwdne6556602:0</value>
   </data>
   <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
     <value>crwdns6556603:0{0:N0}crwdne6556603:0</value>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>crwdns6556698:0{0}crwdne6556698:0</value>
+    <comment>The {0} will be replaced with currency name.</comment>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>crwdns6556708:0crwdne6556708:0</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>crwdns6556709:0crwdne6556709:0</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>crwdns6556710:0crwdne6556710:0</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>crwdns6556711:0crwdne6556711:0</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>crwdns6556712:0crwdne6556712:0</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>crwdns6556713:0crwdne6556713:0</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>crwdns6556714:0crwdne6556714:0</value>
   </data>
 </root>

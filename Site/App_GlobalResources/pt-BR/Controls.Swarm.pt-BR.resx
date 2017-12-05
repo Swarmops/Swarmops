@@ -193,5 +193,7 @@
   <data name="Positions_CreatePosition" xml:space="preserve">
     <value>Criar nova posição...</value>
   </data>
-  
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>Líderes de subdivisões</value>
+  </data>
 </root>

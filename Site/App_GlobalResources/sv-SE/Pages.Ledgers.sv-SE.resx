@@ -668,7 +668,10 @@
     <value>Exakta matchningar för beloppet</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
-  
+  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
+    <value>Matchande belopp men på oväntat datum/tid</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
   <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
     <value>Belopp inom 5% tolerans</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
@@ -827,15 +830,82 @@
   <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
     <value>Matcha transaktionen med denna utgående faktura:</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
+    <value>Matcha detta med en öppen utgående faktura?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
+    <value>Matcha detta med en öppen utgående faktura i annan valuta (tolerans 5%)?</value>
+  </data>
+  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
+    <value>Mest sannolik träff</value>
+    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
+  </data>
+  <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
+    <value>Utgående faktura #{0:N0} till {1}, förfaller {2:yyyy-MMM-dd}: {3}</value>
+    <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
+  </data>
+  <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
+    <value>Överskott för momsrapporten för {1:yyyy-MMM}</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
+    <value>Matcha</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonVatReport" xml:space="preserve">
+    <value>Stäng momsrapport</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeVatReport" xml:space="preserve">
+    <value>Denna transaktion är ut-/inbetalning för denna momsrapport:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
+    <value>Stäng en momsrapport med denna transaktion?</value>
+  </data>
+  <data name="ViewVatReports_Footer_Total" xml:space="preserve">
+    <value>Totalt denna rapport</value>
+  </data>
+  <data name="ViewVatReports_Header_DateTime" xml:space="preserve">
+    <value>Datum/Tid</value>
+    <comment>Timestamp of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Description" xml:space="preserve">
+    <value>Beskrivning</value>
+    <comment>Description of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Dox" xml:space="preserve">
+    <value>Dok</value>
+    <comment>This is above the "view documents" icon</comment>
+  </data>
+  <data name="ViewVatReports_Header_Inbound" xml:space="preserve">
+    <value>Ingående moms</value>
+  </data>
+  <data name="ViewVatReports_Header_Outbound" xml:space="preserve">
+    <value>Utgående moms</value>
+  </data>
+  <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
+    <value>Omsättning</value>
+  </data>
+  <data name="ViewVatReports_Info" xml:space="preserve">
+    <value>Detta är en färdig momsrapport. Den inkommande och utgående momsen, samt total omsättning, har noterats för rapportperioden. Denna momsrapport är redo att skickas till skattemyndighet.</value>
+  </data>
+  <data name="ViewVatReports_PageTitle" xml:space="preserve">
+    <value>Momsrapporter</value>
+    <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
+  </data>
+  <data name="ViewVatReports_Title_View" xml:space="preserve">
+    <value>Visa</value>
+    <comment>This is the word or words before the name of the displayed VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_Header_NoReports" xml:space="preserve">
+    <value>Inga momsrapporter för denna organisation</value>
+  </data>
+  <data name="ViewVatReports_NoReports" xml:space="preserve">
+    <value>Det finns inga momsrapporter att visa. Detta är förmodligen på grund av att en hel momsrapportperiod inte förflutit, så det ännu inte har varit möjligt att skapa en momsrapport.</value>
+  </data>
+  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
+    <value>--inget att rapportera--</value>
+    <comment>This is displayed when there are no items at all in a VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_ReportTotals" xml:space="preserve">
+    <value>Totalt denna rapport</value>
+    <comment>Displayed as description of footer</comment>
+  </data>
 </root>

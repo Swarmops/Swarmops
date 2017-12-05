@@ -196,9 +196,7 @@
     <value>Geld Uitgeven</value>
   </data>
   
-  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
-    <value>Ontvangen Factuur</value>
-  </data>
+  
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Vraag om Kasvoorschot</value>
   </data>
@@ -341,6 +339,7 @@
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Nieuwe Conferentie</value>
   </data>
+  
   
   
   

@@ -230,10 +230,7 @@
     <value>Upload de imagem</value>
   </data>
   
-  <data name="Donate_Explain" xml:space="preserve">
-    <value>Este é um código QR para fazer doações a {0}. Leia-o através da sua carteira bitcoin no seu telemóvel para fazer uma doação, ou doe directamente do seu computador para [{1}] (é um endereço bitcoin).</value>
-    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
-  </data>
+  
   <data name="Donate_FundsReceived" xml:space="preserve">
     <value>Recebidos {0} {1:N2} ({2:N0} microcoins ou "bits"). Obrigado!</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
@@ -436,6 +433,14 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Os recibos da Reivindicação de Despesa #{0:N0} para {1} {2:N2} foram validados.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

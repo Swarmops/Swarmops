@@ -117,14 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
+    <value>Detta är en QR-kod för ett bitcoin-ekotest för hela Swarmops-installationen, inte bara för {0}. Scanna den från din telefons bitcoinplånbok för att göra ett ekotest, eller skicka från din dator direkt till [{1}] (det är en Bitcoin Cash-adress). Beloppet, minus transaktionsavgift på {2:N2} mikrocoin, kommer att skickas tillbaka inom ett par sekunder.</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
+    <value>Mottagit {2:N2} mikrocoin ({0} {1:N2}). Återsänder.</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
+    <value>Mottagit {0} mikrocoin. Återsänder.</value>
+    <comment>Used if Bitcoin Cash is the org native currency.</comment>
+  </data>
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>Det här är ett ekotest för bitcoin. Den testar att arbetsplånboken fungerar. Om du skickar ett litet belopp till arbetsplånboken, så ska det skickas direkt tillbaka till dig, minus transaktionsavgiften (som är {0:N2} mikrocoin).</value>
+  </data>
+  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
+    <value>Bitcoin Cash arbetsplånbok ekotest</value>
+  </data>
+  <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
+    <value>Väntar på transaktion...</value>
+  </data>
+  <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
+    <value>Mottagit transaktion, kontrollerar...</value>
+  </data>
+  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
+    <value>Swarmops Bitcoin Ekotest</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Aktivister kommer att kallas</value>
   </data>
@@ -138,11 +157,15 @@
   <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
     <value>Skapa ny organisation som...</value>
   </data>
-  
+  <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
+    <value>Organisationens namn kan inte vara tomt. (Du måste ange ett namn för den nya organisationen!)</value>
+  </data>
   <data name="CreateOrganization_Info" xml:space="preserve">
     <value>Du kan skapa en ny organisation antingen som fristående huvudorganisation, eller som en underorganisation till den nuvarande. (Alla med ansvar i en överordnad organisation har automatiskt har motsvarande rättigheter och privilegier i alla dess underorganisationer.)</value>
   </data>
-  
+  <data name="CreateOrganization_NewOrganizationName" xml:space="preserve">
+    <value>Organisationsnamn</value>
+  </data>
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
     <value>Arbetsvaluta</value>
   </data>
@@ -156,7 +179,10 @@
     <value>Vanliga deltagare kommer att kallas</value>
     <comment>This can be "members", etc.</comment>
   </data>
-  
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>Den nya organisationen har skapats. Du har fått en {0} utan utgångsdatum i organisationen, och fått rollen som dess högsta verkställande, så att du kan arbeta med organisationen och sätta upp den. För att konfigurera den nya organisationen, gå till Admin / Organisationsinställningar.</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
   <data name="CreateOrganization_Titles" xml:space="preserve">
     <value>Befattningstitlar från början</value>
   </data>
@@ -218,7 +244,9 @@
     <value>Ledande befattningar för {0}</value>
     <comment>The {0} is the org name.</comment>
   </data>
-  
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>Lokala befattningar (på varje geografi)</value>
+  </data>
   <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
     <value>Lönelista</value>
   </data>
@@ -274,6 +302,15 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Du borde verkligen, VERKLIGEN använda HTTPS för en sådan här webbsite. Men det visste du väl redan?</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Servernamn för backend (override)</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>WebSocket-port (Frontend)</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
+    <value>WebSocket-port (Backend)</value>
+  </data>
   
   
   
@@ -288,7 +325,16 @@
   
   
   
-  
-  
-  
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Inte-ännu-medlemmar kallas</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(inte tillämplig)</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Förvaltning</value>
+  </data>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;DAMM MOTTAGET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Det belopp som skickats är mindre än den beräknade avgiften för att skicka tillbaka det till dig, vilket är {0:N2} mikrocoin. Det belopp som skickades har blivit så kallat ”damm” i bitcoin-nätverket, och kommer inte att flyttas igen. &lt;br/&gt;&lt;br/&gt; Skicka ett högre belopp att utföra ett ekotest.</value>
+  </data>
 </root>

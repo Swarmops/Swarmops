@@ -282,7 +282,10 @@
   <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
     <value>&lt;strong&gt;Varning: ODEFINIERAD BUDGET&lt;/strong&gt; &lt;br/&gt; &lt;br/&gt; Kostnaden du godkänner tillhör en odefinierad budget -- ett konto i redovisningen som saknar ägare och inte har en budget definierad för året. Överväga att gå till Kontoplanen och sätt budgetar för förväntade inkomster och utgifter. &lt;br/&gt; &lt;br/&gt; Detta meddelande visas endast en gång per besök till Attesteringar. &lt;br/&gt;</value>
   </data>
-  
+  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
+    <value>Fakturabelopp totalt (i {0})</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>Beskrivning</value>
     <comment>Free-text description of invoice</comment>
@@ -326,7 +329,7 @@
     <value>Ange leverantörens bankkonto eller motsvarande.</value>
   </data>
   <data name="Donate_Explain" xml:space="preserve">
-    <value>Detta är en QR-kod för donationer till {0}. Läs den från telefonens bitcoinplånbok för att göra en donation, eller donera från datorn direkt till [{1}] (det där är en bitcoinadress).</value>
+    <value>Detta är en QR-kod för donationer till {0}. Läs den från telefonens bitcoinplånbok för att donera medel, eller donera från din dator direkt till [{1}] (det är en Bitcoin Cash-adress).</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
   </data>
   <data name="Donate_FundsReceived" xml:space="preserve">
@@ -608,14 +611,60 @@
   <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
     <value>Begär</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>Momsdel av totalbeloppet ({0})</value>
+  </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>Moms av totalbeloppet ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Lista inkommande fakturor</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Fakturaavsändare</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Här visas de senaste 100 fakturorna, sorterade efter förfallodatum, nyaste först.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Inkommande fakturor</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Skapar utgående faktura</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Skapa</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Skapar utgående faktura</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Utgående faktura #{0:N0} inlagd.</value>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Belopp mottaget ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Sänd</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Kund</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Listar utgående fakturor</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Detta är en lista över de 100 senaste utgående fakturorna, sorterade efter när de sändes, senaste överst.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Totalbelopp</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Förfaller</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Listar utgående fakturor</value>
+  </data>
 </root>

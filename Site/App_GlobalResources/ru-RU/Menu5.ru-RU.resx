@@ -182,9 +182,7 @@
     <value>Деньги</value>
   </data>
   
-  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
-    <value>Полученный счет-фактура</value>
-  </data>
+  
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Запрос наличными заранее</value>
   </data>
@@ -297,6 +295,7 @@
   <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
     <value>Налоговые формы заработной платы</value>
   </data>
+  
   
   
   

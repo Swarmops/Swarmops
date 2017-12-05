@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ÅTGÄRD KRÄVS] Ogiltig bitcoinutbetalningsadress</value>
+  </data>
   
   
   
@@ -133,8 +136,9 @@
   
   
   
-  
-  
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ÅTGÄRD KRÄVS] Bitcoinarbetsplånbok otillräcklig - fyll på omedelbart</value>
+  </data>
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>Ditt önskade kontantförskott för [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har attesterats av budgetens ägare. Kontantförskottet går nu vidare till utbetalning till dig.</value>
   </data>

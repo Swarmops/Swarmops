@@ -210,7 +210,9 @@
   <data name="Login_Password" xml:space="preserve">
     <value>Palavra-Passe</value>
   </data>
-  
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>Ajudem-me, esqueci-me da minha Palavra-passe!</value>
+  </data>
   <data name="Login_SelfSignup" xml:space="preserve">
     <value>Inscreva-me em {0}!</value>
     <comment>{0} is the organization name.</comment>

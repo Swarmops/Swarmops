@@ -216,15 +216,11 @@
   <data name="Menu5_Financial_Payroll" xml:space="preserve">
     <value>كشف الرواتب</value>
   </data>
-  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
-    <value>استلام فاتورة واردة</value>
-  </data>
+  
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>طلب سلفة نقدية</value>
   </data>
-  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
-    <value>إرسال فاتورة</value>
-  </data>
+  
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>مطابقة الإيصالات</value>
   </data>
@@ -398,6 +394,7 @@
   <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
     <value>عمليات الموازنة والتطابق</value>
   </data>
+  
   
   
   

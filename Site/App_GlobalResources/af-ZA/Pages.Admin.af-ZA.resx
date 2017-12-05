@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
-    <value>crwdns6556397:0{0}crwdnd6556397:0{1}crwdne6556397:0</value>
+    <value>crwdns6556707:0{0}crwdnd6556707:0{1}crwdnd6556707:0{2:N2}crwdne6556707:0</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
   </data>
   <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
-    <value>crwdns6556398:0{0}crwdnd6556398:0{1:N2}crwdnd6556398:0{2:N0}crwdne6556398:0</value>
+    <value>crwdns6556691:0{2:N2}crwdnd6556691:0{0}crwdnd6556691:0{1:N2}crwdne6556691:0</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
   </data>
   <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
-    <value>crwdns6556399:0{0}crwdne6556399:0</value>
-    <comment>Used if BTC is the org native currency.</comment>
+    <value>crwdns6556692:0{0}crwdne6556692:0</value>
+    <comment>Used if Bitcoin Cash is the org native currency.</comment>
   </data>
   <data name="BitcoinEchoTest_Info" xml:space="preserve">
-    <value>crwdns6556533:0crwdne6556533:0</value>
+    <value>crwdns6556693:0{0:N2}crwdne6556693:0</value>
   </data>
   <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
-    <value>crwdns6556401:0crwdne6556401:0</value>
+    <value>crwdns6556694:0crwdne6556694:0</value>
   </data>
   <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
     <value>crwdns6556402:0crwdne6556402:0</value>
@@ -142,8 +142,7 @@
     <value>crwdns6556403:0crwdne6556403:0</value>
   </data>
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
-    <value>crwdns6556404:0{0}crwdne6556404:0</value>
-    <comment>The {0} is the organization name</comment>
+    <value>crwdns6556695:0crwdne6556695:0</value>
   </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>crwdns6555020:0crwdne6555020:0</value>
@@ -359,5 +358,17 @@
   </data>
   <data name="CommenceImpersonation_Warning" xml:space="preserve">
     <value>crwdns6556592:0crwdne6556592:0</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>crwdns6556668:0crwdne6556668:0</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>crwdns6556669:0crwdne6556669:0</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>crwdns6556670:0crwdne6556670:0</value>
+  </data>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>crwdns6556696:0{0:N2}crwdne6556696:0</value>
   </data>
 </root>
