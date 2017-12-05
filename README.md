@@ -17,10 +17,11 @@ Goal #2, _the primary back-end software for bitcoin-native unbanked startups:_ S
 
 Goal #3, _functional software to assist civil liberties resistances in repressive regimes:_ With the swarm functions and the bitcoin-native cash flow in place, a “hidden branch” of organizations can be enabled, where nobody knows the identities of other people in the organization's “hidden branch” swarm except those closest to that individual, but where everybody is still working toward a common goal. Recruiting would take place face-to-face using mobile phones and BitID, and code names would be used for all other purposes. In this way, Swarmops enables large-scale change while able to protect the individuals involved in making that change come about. Lack of information even at the central level provides deniability against rubberhose attacks.
 
+
 Release schedule
 ----------------
 
-Stable releases are built every six months, at the end of every calendar half-year. Sprints are built every month. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
+Stable releases are built every six months, at the end of every calendar half-year. Sprints (currently "betas") are built every month. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
 
 This is the plan, at least. "Stable" is a somewhat wide definition at the moment. Rather, Swarmops has a few functions to go to enter Open Beta stage.
 
@@ -83,8 +84,8 @@ Beta-3 will be released on January 5, 2018, with string freeze on January 2. Its
 - [x] Enable cryptocurrency as any other currency on entry
 - [ ] Enable payment identifiers, with currency
 - [ ] Tie payment identifiers to people and suppliers
-- [ ] String Freeze (January 2)
-- [ ] Release (January 5)
+- [ ] String Freeze (January 2, 2018)
+- [ ] Release (January 5, 2018)
 
 
 Beta-4 features progress
