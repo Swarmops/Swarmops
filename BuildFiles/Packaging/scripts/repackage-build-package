@@ -90,7 +90,7 @@ cd $DROPFOLDER/payload
 
 if [ "$1" == "extscripts" ]; then
   echo "Copying from $SOURCEDIR to $DEPLOYDIR/$TARGETDIR."
-  read -n1 -r -p "About to copy files, press any key..."
+#  read -n1 -r -p "About to copy files, press any key..."
 fi
 
 
@@ -121,7 +121,7 @@ if [ "$COPYFILES" == "yes" ]; then
 fi
 
 if [ "$1" == "extscripts" ]; then
-  read -n1 -r -p "About to copy files, press any key..." key
+#  read -n1 -r -p "About to copy files, press any key..." key
 fi
 
 echo "Copying template files into repo..."
@@ -180,14 +180,14 @@ cd ../..
 
 
 if [ "$1" == "extscripts" ]; then
-  read -n1 -r -p "About to package the copied files, press any key..." key
+#  read -n1 -r -p "About to package the copied files, press any key..." key
 fi
 
 
 
 scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER $DISTROS $PACKAGE $BUILDID
 
-read -n1 -r -p "Press any key to continue..."
+#read -n1 -r -p "Press any key to continue..."
 
 
 #echo "Cleaning up..."

@@ -23,7 +23,7 @@ unset IFS
 
 for DISTRO in "${distros[@]}"
 do
-  echo "Packaging for $DISTRO..."
+  echo "Packaging build $BUILDID for $DISTRO..."
 
   if [ -e dependencies/$PACKAGE-$DISTRO ]; then
     DEPENDENCIES=$(cat dependencies/$PACKAGE-$DISTRO | tr -d ' \r')
@@ -41,7 +41,9 @@ do
 # read -p "Press [Enter] key to make create checksums..."
 
   echo "Setting build number $BUILDID-$DISTRO..."
-  sed -i "s/--BuildNumber--/$BUILDID-$DISTRO/g" $DROPFOLDER/payload/DEBIAN/control
+  sed -i "s/--BuildNumber--/$BUILDID/g" $DROPFOLDER/payload/DEBIAN/control
+
+  cat $DROPFOLDER/payload/DEBIAN/control
 
   # Calculating new checksums
   echo "Creating MD5 checksum file ($DISTRO)..."
