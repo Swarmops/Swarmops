@@ -376,6 +376,7 @@ namespace Swarmops.Logic.Financial
         {
             Attested = false;
             Open = false;
+
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Kill,
                 FinancialDependencyType.ExpenseClaim, Identity,
                 DateTime.UtcNow, denyingPerson.Identity, (double)Amount);
