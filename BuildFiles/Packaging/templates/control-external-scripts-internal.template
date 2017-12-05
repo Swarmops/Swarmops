@@ -1,4 +1,4 @@
-Package: swarmops-frontend-external-scripts
+Package: swarmops-frontend-external-scripts-internal
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
