@@ -59,9 +59,6 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json.6.0.0">
-      <HintPath>..\External Libraries\Newtonsoft.Json.6.0.0.dll</HintPath>
-    </Reference>
     <Reference Include="NGeoIP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NGeoIP.1.0.1\lib\net45\NGeoIP.dll</HintPath>
       <Private>True</Private>
