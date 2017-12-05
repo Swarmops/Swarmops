@@ -12,7 +12,12 @@ DISTROS=xenial,stretch,jessie
 if [ "$2" == "release" ]; then
   CONTROLSUFFIX=-release
   DROPFOLDER=release
+  if [ "$1" == "extscripts" ]; then
+    echo "Error: Cannot package external scripts for stable build. Use 'sprint' or 'internal'."
+    exit 1;
+  fi
   echo "Packaging FINISHED RELEASE for super-stable deployments."
+
 elif [ "$2" == "sprint" ]; then
   CONTROLSUFFIX=-sprint
   DROPFOLDER=sprint
@@ -20,10 +25,6 @@ elif [ "$2" == "sprint" ]; then
 else
   CONTROLSUFFIX=-internal
   DROPFOLDER=internal
-  if [ "$1" == "extscripts" ]; then
-    echo "Error: Cannot package external scripts for internal build. Use 'sprint' or 'release'."
-    exit 1;
-  fi
 fi
 
 if [ "$1" == "frontend" ]; then

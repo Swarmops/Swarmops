@@ -2,7 +2,7 @@ Package: swarmops-frontend-internal
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
-Depends: dialog (>= 1.1), swarmops-common-internal (>= --BuildNumber--), swarmops-frontend-external-scripts, --Dependencies--
+Depends: dialog (>= 1.1), swarmops-common-internal (>= --BuildNumber--), swarmops-frontend-external-scripts-internal (=> --BuildNumber--), --Dependencies--
 Conflicts: swarmops-frontend,swarmops-frontend-stable
 Homepage: http://swarmops.com/
 Description: Swarmops Frontend (Internal)
