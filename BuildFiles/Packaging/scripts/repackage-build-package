@@ -88,6 +88,12 @@ mkdir -p $DROPFOLDER/payload/DEBIAN
 cd $DROPFOLDER/payload
 
 
+if [ "$1" == "extscripts" ]; then
+  echo "Copying from $SOURCEDIR to $DEPLOYDIR/$TARGETDIR."
+  read -n1 -r -p "About to copy files, press any key..."
+fi
+
+
 if [ "$COPYFILES" == "yes" ]; then
   echo "Copying payload files into repo..."
   mkdir -p $DEPLOYDIR/$TARGETDIR
@@ -114,6 +120,10 @@ if [ "$COPYFILES" == "yes" ]; then
   fi
 fi
 
+if [ "$1" == "extscripts" ]; then
+  read -n1 -r -p "About to copy files, press any key..." key
+fi
+
 echo "Copying template files into repo..."
 if [ "$INCLUDEDB" == "yes" ]; then
   mkdir -p etc/swarmops
@@ -121,6 +131,7 @@ if [ "$INCLUDEDB" == "yes" ]; then
 fi
 cp ../../templates/control-$PACKAGENAME.template DEBIAN/control
 cp ../../templates/conffiles-$PACKAGE.template DEBIAN/conffiles
+
 
 if [ -e "../../templates/prerm-$PACKAGE.template" ]; then
   echo "Adding $PACKAGE prerm script..."
@@ -168,7 +179,15 @@ fi
 cd ../..
 
 
+if [ "$1" == "extscripts" ]; then
+  read -n1 -r -p "About to package the copied files, press any key..." key
+fi
+
+
+
 scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER $DISTROS $PACKAGE $BUILDID
+
+read -n1 -r -p "Press any key to continue..."
 
 
 #echo "Cleaning up..."
