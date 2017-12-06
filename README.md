@@ -34,6 +34,7 @@ Minimum requirements are a 2016+ Debian or Ubuntu LTS. This means at present, th
 If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! Run these commands _as root_ - first, fetch the signing key for the repository:
 
 > `wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -`
+> `wget -qO- http://packages.swarmops.com/swarmops-packages-internal.gpg.key | apt-key add -`
 
 Then, add the Swarmops repository to your list of software sources, where [your_distribution] below is xenial (Ubuntu) or stretch (Debian):
 > `echo deb http://packages.swarmops.com/ [your_distribution] contrib > /etc/apt/sources.list.d/swarmops.list`
@@ -160,6 +161,7 @@ This is the exact install procedure for a two-server setup. Two separate servers
 ```
 sudo su
 wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -
+wget -qO- http://packages.swarmops.com/swarmops-packages-internal.gpg.key | apt-key add -
 echo deb http://packages.swarmops.com/ [xenial/stretch] contrib > /etc/apt/sources.list.d/swarmops.list
 apt update
 ```
