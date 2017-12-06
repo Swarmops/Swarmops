@@ -33,20 +33,31 @@ Minimum requirements are a 2016+ Debian or Ubuntu LTS. At present (Dec 2017), th
 
 If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! Run these commands _as root_ - first, fetch the signing key for the repository:
 
-> `wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -`
-> `wget -qO- http://packages.swarmops.com/swarmops-packages-internal.gpg.key | apt-key add -`
+```
+sudo su
+wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -
+wget -qO- http://packages.swarmops.com/swarmops-packages-internal.gpg.key | apt-key add -
+```
 
 Then, add the Swarmops repository to your list of software sources, where [your_distribution] below is xenial (Ubuntu) or stretch (Debian):
-> `echo deb http://packages.swarmops.com/ [your_distribution] contrib > /etc/apt/sources.list.d/swarmops.list`
+
+```
+echo deb http://packages.swarmops.com/ [your_distribution] contrib > /etc/apt/sources.list.d/swarmops.list
+```
 
 Then, run this to install the Swarmops frontend:
-> `apt update; apt install swarmops-frontend`
+
+```
+apt update; apt install swarmops-frontend
+```
 
 If you installed onto a clean server, Swarmops will offer to configure Apache to use Swarmops as the default site. If you decline this offer, you can still enable the site by an `a2ensite swarmops` as a suggested configuration is provided. If you prefer to configure this entirely manually, install a new Virtual Host in Apache, a Mono host, pointing at /usr/share/swarmops/frontend as its directory. We're using /usr/bin/mod-mono-server4 as our server. Note the 4 at the end; many configurators are old and will set a 2 there. See /etc/apache2/sites-available/swarmops.conf for a template file.
 
 Navigate to the new site and continue installation from the running site. To complete the install, you will also need to install a backend process, which can (but shouldn't) run on the same machine; the frontend communicates with the backend through the database and through TCP port 10944:
 
-> `apt install swarmops-backend`
+```
+apt install swarmops-backend
+```
 
 At one point in the installation process, you will be prompted to copy the file `/etc/swarmops/database.config` from the server running swarmops-*frontend* to the server running swarmops-*backend*. This allows the backend to connect to the database as configured by the installation process. Once you do this, the installation process will detect the running backend and the installation will continue.
 
