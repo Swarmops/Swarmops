@@ -172,13 +172,13 @@ apt install swarmops-frontend
 
 4. Open a browser and navigate to the swarmops-frontend machine, pass the first no-bot check in the install wizards, and enter database server root credentials. This will create a database and provision it with initial data, which takes a couple of minutes.
 
-5. If you're not comfortable entering the root credentials into a random app, (optional step) run these commands as root instead at the MySQL/MariaDB prompt to create the database users with the right permissions:
+5. If you're not comfortable entering the root credentials into a random app, (optional step) run these commands as root instead at the MySQL/MariaDB prompt to create the database users with the right permissions. Replace the passwords with something of your own choosing:
 
 ```
 CREATE DATABASE `Swarmops`;
-CREATE USER `Swarmops-R` IDENTIFIED BY '[readpassword]';
-CREATE USER `Swarmops-W` IDENTIFIED BY '[writepassword]';
-CREATE USER `Swarmops-A` IDENTIFIED BY '[adminpassword]';
+CREATE USER `Swarmops-R` IDENTIFIED BY 'readpassword';
+CREATE USER `Swarmops-W` IDENTIFIED BY 'writepassword';
+CREATE USER `Swarmops-A` IDENTIFIED BY 'adminpassword';
 GRANT SELECT ON mysql.proc TO `Swarmops-W`;
 GRANT SELECT ON mysql.proc TO `Swarmops-A`;
 USE `Swarmops`;
@@ -190,6 +190,8 @@ FLUSH PRIVILEGES;
 ```
 
 We're using three different users with different privilege sets (read, write, admin) for security purposes; most operations are made using the read-only user, and only database maintenance is done using the account with all privileges. Do note the granting of `select` privileges on `mysql.proc` for the write and admin user accounts; this is necessary to execute stored procedures because of a design decision way back in MySQL's history.
+
+This will allow you to use the manual account settings in the setup, which is more complicated as you need to fill in twelve fields instead of two, but also doesn't require you to give the webpage the database root password.
 
 6. The installation will pause here and wait for the backend to come online. This is done by manually copying the now-created `/etc/swarmops/database.config` file from the frontend to the same location on the backend machine.
 
