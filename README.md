@@ -29,7 +29,7 @@ This is the plan, at least. "Stable" is a somewhat wide definition at the moment
 Installation
 ------------
 
-Minimum requirements are Debian Stretch or Ubuntu Xenial (due to systemd requirements; upstart is deprecated). As Debian Stretch hasn't been released at time of writing, Ubuntu Xenial is the only platform Swarmops is currently built for.
+Minimum requirements are a 2016+ Debian or Ubuntu LTS. This means at present, the Stretch and Xenial distributions are supported.
 
 If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! Run these commands _as root_ - first, fetch the signing key for the repository:
 
@@ -153,23 +153,53 @@ Detailed install instructions
 
 This is the exact install procedure for a two-server setup -- you could also install on one and the same server:
 
-1. Create two clean Ubuntu Xenial VMs. Call them backend and frontend. They can be in different firewall zones. Install mysql-server on the backend (or on a third server).
+1. Create two clean Ubuntu Xenial VMs. Call them _backend_ and _frontend._ They can be in different firewall zones. Install mysql-server on the backend (or on a third server).
 
-2. Install the repository key as described above and run `apt update`.
+2. Install the repository key as described above and run `apt update`:
+
+```
+sudo su
+wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -
+echo deb http://packages.swarmops.com/ [xenial OR stretch] contrib > /etc/apt/sources.list.d/swarmops.list
+apt update
+```
 
 3. Install the packages "swarmops-frontend" and "swarmops-backend", respectively, on the frontend and backend machine. Make use of as much automation on installing swarmops-frontend as you like, up to and including the autoconfiguration of Apache.
 
-4. Open a browser and navigate to the swarmops-frontend machine, pass the first no-bot check in the install wizards, and enter database server root credentials. This will create a database and provision it with initial data, which takes a couple of minutes. (You can create all of this manually if you're not comfortable with entering root credentials.)
+```
+apt install swarmops-frontend
+```
 
-5. The installation will pause here and wait for the backend to come online. This is done by manually copying the now-created `/etc/swarmops/database.config` file from the frontend to the backend machine.
+4. Open a browser and navigate to the swarmops-frontend machine, pass the first no-bot check in the install wizards, and enter database server root credentials. This will create a database and provision it with initial data, which takes a couple of minutes.
 
-6. As the backend daemon detects the presence of a valid `/etc/swarmops/database.config` file, it will open the database (using the credentials of the file - make sure they're also valid for the backend machine, if you're using machine-level permissions!) and write its presence into the database.
+5. If you're not comfortable entering the root credentials into a random app, (optional step) run these commands as root instead at the MySQL/MariaDB prompt to create the database users with the right permissions:
 
-7. The installing frontend process will detect this new entry in the database and proceed to a prompt to create the first user. On entering the credentials, it will login as that user into the Sandbox organization, and the Swarmops instance is operational.
+```
+CREATE DATABASE `Swarmops`;
+CREATE USER `Swarmops-R` IDENTIFIED BY '[readpassword]';
+CREATE USER `Swarmops-W` IDENTIFIED BY '[writepassword]';
+CREATE USER `Swarmops-A` IDENTIFIED BY '[adminpassword]';
+GRANT SELECT ON mysql.proc TO `Swarmops-W`;
+GRANT SELECT ON mysql.proc TO `Swarmops-A`;
+USE `Swarmops`;
+GRANT ALL ON `Swarmops`.* TO `Swarmops-A`;
+GRANT SELECT ON `Swarmops`.* TO `Swarmops-W`;
+GRANT EXECUTE ON `Swarmops`.* TO `Swarmops-W`;
+GRANT SELECT ON `Swarmops`.* TO `Swarmops-R`;
+FLUSH PRIVILEGES;
+```
 
-8. From the Dashboard, the Apache will open a websocket to a daemon running on its own machine on port 12172, and that daemon will in turn open a websocket to the backend daemon on port 10944 (configurable in Admin / System-Wide Settings).
+We're using three different users with different privilege sets (read, write, admin) for security purposes; most operations are made using the read-only user, and only database maintenance is done using the account with all privileges. Do note the granting of `select` privileges on `mysql.proc` for the write and admin user accounts; this is necessary to execute stored procedures because of a design decision way back in MySQL's history.
 
-9. From there, one can play around with the Sandbox organization, or create one or more live organizations.
+6. The installation will pause here and wait for the backend to come online. This is done by manually copying the now-created `/etc/swarmops/database.config` file from the frontend to the same location on the backend machine.
+
+7. As the backend daemon detects the presence of a valid `/etc/swarmops/database.config` file, it will open the database (using the credentials of the file - make sure they're also valid for the backend machine, if you're using machine-level permissions!) and write its presence into the database.
+
+8. The installing frontend process will detect this new entry in the database and proceed to a prompt to create the first user. On entering the credentials, it will login as that user into the Sandbox organization, and the Swarmops instance is operational.
+
+9. From the Dashboard, the Apache will open a websocket to a daemon running on its own machine on port 12172, and that daemon will in turn open a websocket to the backend daemon on port 10944 (configurable in Admin / System-Wide Settings).
+
+10. From there, one can play around with the Sandbox organization, or create one or more live organizations.
 
 
 If one of these steps fails, in particular if the frontend doesn't get to provision the entire database and bring the first user logged in to the Swarmops Desktop, it is currently recommended to restart from two blank servers. Future code will handle more failure scenarios.
