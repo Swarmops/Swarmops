@@ -802,7 +802,7 @@ namespace Swarmops.Logic.Financial
         public const int BitcoinAccountsReceivableIndex = 4;
         public const int BitcoinEchoTestIndex = 127;
 
-        public const int EchoFeeSatoshis = 20; // translates to just over 100 sats / kilobyte: tx has one input, one output
+        public const int EchoFeeSatoshis = 200; // translates to just over 100 sats / kilobyte: tx has one input, one output
 
         public const string BitcoinTestAddress = "1JMpU3D6c5sruunMwzkt6p6PQzLcUYcL26";
 
