@@ -29,7 +29,7 @@ This is the plan, at least. "Stable" is a somewhat wide definition at the moment
 Installation
 ------------
 
-Minimum requirements are a 2016+ Debian or Ubuntu LTS. This means at present, the Stretch and Xenial distributions are supported.
+Minimum requirements are a 2016+ Debian or Ubuntu LTS. At present (Dec 2017), this means that the Stretch and Xenial distributions are supported.
 
 If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! Run these commands _as root_ - first, fetch the signing key for the repository:
 
