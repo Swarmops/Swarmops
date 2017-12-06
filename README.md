@@ -155,12 +155,12 @@ This is the exact install procedure for a two-server setup. Two separate servers
 
 1. Create two clean Ubuntu Xenial or Debian Stretch machines. Call them _backend_ and _frontend._ They can be in different firewall zones. Install mysql-server on the backend (or on a third server).
 
-2. Install the repository and its key on both machines. In the commands below, replace the "[xenial OR stretch]" with just _xenial_ or _stretch,_ as per your distribution.
+2. Install the repository and its key on both machines. In the commands below, replace the "[xenial/stretch]" with just _xenial_ or _stretch,_ as per your distribution.
 
 ```
 sudo su
 wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -
-echo deb http://packages.swarmops.com/ [xenial OR stretch] contrib > /etc/apt/sources.list.d/swarmops.list
+echo deb http://packages.swarmops.com/ [xenial/stretch] contrib > /etc/apt/sources.list.d/swarmops.list
 apt update
 ```
 
