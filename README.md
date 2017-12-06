@@ -155,7 +155,7 @@ This is the exact install procedure for a two-server setup -- you could also ins
 
 1. Create two clean Ubuntu Xenial or Debian Stretch machines. Call them _backend_ and _frontend._ They can be in different firewall zones. Install mysql-server on the backend (or on a third server).
 
-2. Install the repository key as described above and run `apt update`:
+2. Install the repository and its key on both machines. In the commands below, replace the "[xenial OR stretch]" with just _xenial_ or _stretch,_ as per your distribution.
 
 ```
 sudo su
