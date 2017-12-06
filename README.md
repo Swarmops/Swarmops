@@ -151,7 +151,7 @@ There will also be many other small improvements added along with these features
 Detailed install instructions
 -----------------------------
 
-This is the exact install procedure for a two-server setup -- you could also install on one and the same server:
+This is the exact install procedure for a two-server setup. Two separate servers are strongly recommended for production use; for testing and evaluation, they can be one and the same machine.
 
 1. Create two clean Ubuntu Xenial or Debian Stretch machines. Call them _backend_ and _frontend._ They can be in different firewall zones. Install mysql-server on the backend (or on a third server).
 
