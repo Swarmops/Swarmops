@@ -467,7 +467,7 @@ namespace Swarmops.Logic.Financial
 
                     case BitcoinChain.Cash:
 
-                        byte[] response = client.UploadValues("https://bitcoincash.blockexplorer.com/api/tx/send",
+                        client.UploadValues("https://bitcoincash.blockexplorer.com/api/tx/send",
                             new NameValueCollection()
                             {
                                {"rawtx", transaction.ToHex()}
@@ -489,8 +489,6 @@ namespace Swarmops.Logic.Financial
 
             HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization (organization);
             HotBitcoinAddressUnspents unspents = addresses.Unspents;
-
-            BitcoinTransactionInputs result = new BitcoinTransactionInputs();
 
             // Lazy checking: if there's one single input that covers the entire amount, use it
 
@@ -576,7 +574,7 @@ namespace Swarmops.Logic.Financial
                         new WebClient().DownloadString("https://blockchain.info/address/" + address +
                                                         "?format=json&api_key=" +
                                                         SystemSettings.BlockchainSwarmopsApiKey));
-            int transactionCount = (int) (addressData["n_tx"]);
+            //int transactionCount = (int) (addressData["n_tx"]);
 
             foreach (JObject txJson in addressData["txs"])
             {
@@ -813,10 +811,15 @@ namespace Swarmops.Logic.Financial
         {
             try
             {
+                #pragma warning disable 219
+                // ReSharper disable once UnusedVariable
+
                 BitcoinAddress singleAddress = new BitcoinPubKeyAddress (address, Network.Main);
                 return true;
+
             }
-                // ReSharper disable once EmptyGeneralCatchClause
+
+            // ReSharper disable once EmptyGeneralCatchClause
             catch (Exception)
             {
                 // ignore for now; move on to next possible case
@@ -824,10 +827,14 @@ namespace Swarmops.Logic.Financial
 
             try
             {
+                // ReSharper disable once UnusedVariable
+
                 BitcoinScriptAddress multiSigAddress = new BitcoinScriptAddress (address, Network.Main);
                 return true;
+                #pragma warning restore 219
             }
-                // ReSharper disable once EmptyGeneralCatchClause
+
+            // ReSharper disable once EmptyGeneralCatchClause
             catch (Exception)
             {
             }
@@ -917,7 +924,7 @@ namespace Swarmops.Logic.Financial
 
             // disable "code unreachable" warning for this code
             // ReSharper disable once CSharpWarnings::CS0162
-            #pragma warning disable 162
+            #pragma warning disable 162,219
             Organization organization = Organization.Sandbox; // a few testing cents here in test environment
 
             string bitcoinTestAddress = "3KS6AuQbZARSvqnaHoHfL1Xhm3bTLFAzoK";
@@ -1025,8 +1032,8 @@ namespace Swarmops.Logic.Financial
                         + /* the change address seems to always get index 0? is this a safe assumption? */ 0, satoshisInput - satoshisUsed, /* confirmation count*/ 0);
             }
 
-            // Restore "code unreachable" warnings
-            #pragma warning restore 162
+            // Restore "code unreachable", "unsued var" warnings
+            #pragma warning restore 162,219
 
             // This puts the ledger out of sync, so only do this on Sandbox for various small-change (cents) testing
         }
