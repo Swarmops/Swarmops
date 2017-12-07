@@ -31,18 +31,17 @@ Installation
 
 Minimum requirements are a 2016+ Debian or Ubuntu LTS. At present (Dec 2017), this means that the Stretch and Xenial distributions are supported.
 
-If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! Run these commands _as root_ - first, fetch the two signing keys for the repository:
+If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! Run these commands _as root_ - first, fetch the signing key for the repository:
 
 ```
 sudo su
-wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -
-wget -qO- http://packages.swarmops.com/swarmops-packages-internal.gpg.key | apt-key add -
+wget -qO- https://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -
 ```
 
 Then, add the Swarmops repository to your list of software sources, where [your_distro] below is xenial (Ubuntu) or stretch (Debian):
 
 ```
-echo deb http://packages.swarmops.com/ [your_distro] contrib > /etc/apt/sources.list.d/swarmops.list
+echo deb https://packages.swarmops.com/ [your_distro] contrib > /etc/apt/sources.list.d/swarmops.list
 ```
 
 Then, run this to install the Swarmops frontend:
