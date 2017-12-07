@@ -11,9 +11,11 @@ PACKAGE=$4
 BUILDID=$5
 
 DEBCONFDIR="+b/conf"
+PUBLISHSITE="packages.swarmops.com"
 
 if [[ $2 == "internal" ]]; then
   DEBCONFDIR="+b/conf-internal"
+  PUBLISHSITE="packages-internal.swarmops.com"
   echo "Overriding default packaging config; using internal/experimental configuration"
 fi
 
@@ -65,7 +67,7 @@ do
 # read -p "Press [Enter] key to add package to repo..."
 
   echo "Updating repositories ($DISTRO)..."
-  cd /var/www/packages.swarmops.com
+  cd /var/www/$PUBLISHSITE
   reprepro --component contrib --confdir $DEBCONFDIR includedeb $DISTRO swarmops-$PACKAGENAME-$DISTRO-latest.deb
   cd /home/builder/swarmops/packaging
 
@@ -73,7 +75,7 @@ do
   cp $DROPFOLDER/controlbackup $DROPFOLDER/payload/DEBIAN/control
   rm $DROPFOLDER/controlbackup
   rm swarmops-$PACKAGENAME-$DISTRO-latest.deb
-  rm /var/www/packages.swarmops.com/swarmops-$PACKAGENAME-$DISTRO-latest.deb
+  rm /var/www/$PUBLISHSITE/swarmops-$PACKAGENAME-$DISTRO-latest.deb
 
 done
 
