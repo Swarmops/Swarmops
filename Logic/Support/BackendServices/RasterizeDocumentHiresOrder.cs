@@ -48,6 +48,6 @@ namespace Swarmops.Logic.Support.BackendServices
         {
             
         }
-        int DocumentId { get; set; }
+        public int DocumentId { get; set; }
     }
 }
