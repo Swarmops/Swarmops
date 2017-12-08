@@ -174,13 +174,14 @@ namespace Swarmops.Pages.v5.Support
 
             string contentType = string.Empty;
 
-            string fileNameLower = document.ClientFileName.ToLowerInvariant();
+            string clientFileNameLower = document.ClientFileName.ToLowerInvariant().Trim();
+            string serverFileNameLower = document.ServerFileName.ToLowerInvariant().Trim();
 
-            if (fileNameLower.EndsWith (".pdf"))
+            if (clientFileNameLower.EndsWith (".pdf"))
             {
                 contentType = MediaTypeNames.Application.Pdf;
             }
-            else if (fileNameLower.EndsWith (".png"))
+            else if (clientFileNameLower == (".png") || serverFileNameLower.EndsWith (".png"))  // native PNG or converted PDF
             {
                 contentType = "image/png"; // why isn't this in MediaTypeNames?
                 if (Request.QueryString["hq"] == "1")
@@ -192,7 +193,7 @@ namespace Swarmops.Pages.v5.Support
                     }
                 }
             }
-            else if (fileNameLower.EndsWith (".jpg"))
+            else if (clientFileNameLower.EndsWith (".jpg") || clientFileNameLower.EndsWith(".jpeg"))
             {
                 contentType = MediaTypeNames.Image.Jpeg;
             }

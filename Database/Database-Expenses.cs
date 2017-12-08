@@ -11,10 +11,10 @@ namespace Swarmops.Database
     public partial class SwarmDb
     {
         private string expenseClaimFieldSequence =
-            " ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-            " Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-            " ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate, " +
-            " VatCents, OrganizationSequenceId " +
+            " ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +  // 0-4
+            " Validated,Claimed,OrganizationId,GeographyId,BudgetId," +          // 5-9
+            " ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid," +   // 10-14
+            " KeepSeparate,VatCents,OrganizationSequenceId " +                   // 15-17
             " FROM ExpenseClaims";
              
         public BasicExpenseClaim GetExpenseClaim (int expenseClaimId)

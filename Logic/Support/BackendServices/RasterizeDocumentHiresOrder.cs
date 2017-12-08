@@ -30,6 +30,7 @@ namespace Swarmops.Logic.Support.BackendServices
 
         private static void LongRun(object orderObject)
         {
+            Console.WriteLine(" * LongRun running");
             RasterizeDocumentHiresOrder order = (RasterizeDocumentHiresOrder) orderObject;
             Document document = Document.FromIdentity(order.DocumentId);
             try
@@ -38,7 +39,8 @@ namespace Swarmops.Logic.Support.BackendServices
             }
             catch (Exception exception)
             {
-                order.ThrewException(exception);   
+                Console.WriteLine(" * Exception: " + exception.ToString());
+                order.ThrewException(exception);
             }
             order.Close();
             order.HasTerminated = true;
