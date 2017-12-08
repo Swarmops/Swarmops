@@ -303,7 +303,16 @@ namespace Swarmops.Logic.Financial
                 // ...only holds values if not closed as invalid...
 
                 nominalTransaction[Organization.FinancialAccounts.DebtsInboundInvoices.Identity] = -AmountCents;
-                nominalTransaction[BudgetId] = AmountCents;
+
+                if (this.Organization.VatEnabled)
+                {
+                    nominalTransaction[BudgetId] = AmountCents - VatCents;
+                    nominalTransaction[Organization.FinancialAccounts.AssetsVatInboundUnreported.Identity] = VatCents;
+                }
+                else
+                {
+                    nominalTransaction[BudgetId] = AmountCents;
+                }
             }
 
             FinancialTransaction.RecalculateTransaction (nominalTransaction, updatingPerson);
