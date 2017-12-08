@@ -14,7 +14,7 @@ namespace Swarmops.Database
             " ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
             " Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
             " ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate, " +
-            " VatCents, OrganizaionSequenceId " +
+            " VatCents, OrganizationSequenceId " +
             " FROM ExpenseClaims";
              
         public BasicExpenseClaim GetExpenseClaim (int expenseClaimId)
