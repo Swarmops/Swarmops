@@ -166,7 +166,7 @@ namespace Swarmops.Logic.Support
 
                 Process process = Process.Start("bash",
                     "-c \"" + commandLine + "\"");
-                process.PriorityClass = ProcessPriorityClass.Idle; // play nice - this is a heavy op
+                process.PriorityClass = ProcessPriorityClass.BelowNormal; // play nice - this is a heavy op
 
                 process.WaitForExit();
 
