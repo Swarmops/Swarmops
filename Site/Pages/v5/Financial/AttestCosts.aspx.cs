@@ -520,7 +520,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void PopulateExpenses()
         {
-            ExpenseClaims expenses = ExpenseClaims.ForOrganization (CurrentOrganization).WhereUnattested;
+            ExpenseClaims expenses = ExpenseClaims.ForOrganization (CurrentOrganization);
 
             foreach (ExpenseClaim expenseClaim in expenses)
             {
@@ -539,7 +539,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void PopulateInboundInvoices()
         {
-            InboundInvoices invoices = InboundInvoices.ForOrganization (CurrentOrganization).WhereUnattested;
+            InboundInvoices invoices = InboundInvoices.ForOrganization (CurrentOrganization);
 
             foreach (InboundInvoice invoice in invoices)
             {
