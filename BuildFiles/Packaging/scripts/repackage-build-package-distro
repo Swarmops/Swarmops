@@ -62,12 +62,18 @@ do
   fi
   fakeroot dpkg-deb --build $DROPFOLDER/payload
   mv $DROPFOLDER/payload.deb swarmops-$PACKAGENAME-$DISTRO-latest.deb
+
+  echo "Copying to '/var/www/$PUBLISHSITE'..."
+
   cp swarmops-$PACKAGENAME-$DISTRO-latest.deb /var/www/$PUBLISHSITE
 
 # read -p "Press [Enter] key to add package to repo..."
 
   echo "Updating repositories ($DISTRO)..."
   cd /var/www/$PUBLISHSITE
+
+  echo "Running reprepro in $(pwd)..."
+
   reprepro --component contrib --confdir $DEBCONFDIR includedeb $DISTRO swarmops-$PACKAGENAME-$DISTRO-latest.deb
   cd /home/builder/swarmops/packaging
 
