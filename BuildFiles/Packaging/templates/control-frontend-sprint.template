@@ -7,5 +7,6 @@ Conflicts: swarmops-frontend-internal,swarmops-frontend-stable
 Homepage: http://swarmops.com/
 Description: Swarmops Frontend
  Swarmops is a swarm activist administration system.
- This package is the front-end. It runs on Mono.
- Target distros are Trusty, Xenial, Jessie, and Stretch.
+ This package is the frontend. Multiple frontends can run
+ with one backend. Target distros are 2016+ Debian Stable
+ and Ubuntu LTS, which currently means Xenial and Stretch.

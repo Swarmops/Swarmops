@@ -7,6 +7,7 @@ Conflicts: swarmops-backend-internal,swarmops-backend-stable
 Homepage: http://swarmops.com/
 Description: Swarmops Backend
  Swarmops is a swarm activist administration system.
- This package is the back-end. It runs on Mono.
- Target is Ubuntu 14.10 / Debian Wheezy and up.
+ This package is the backend. Multiple frontends can run
+ on one backend. Target distros are 2016+ Debian Stable
+ and Ubuntu LTS, which currently means Xenial and Stretch.
 
