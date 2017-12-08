@@ -164,7 +164,7 @@ namespace Swarmops.Logic.Support
                 debugWriter.WriteLine("Running \"" + commandLine + "\"");
                 debugWriter.Flush();
 
-                Process process = Process.Start("bash",
+                Process process = Process.Start("/bin/bash",
                     "-c \"" + commandLine + "\"");
                 process.PriorityClass = ProcessPriorityClass.BelowNormal; // play nice - this is a heavy op
 
