@@ -64,3 +64,4 @@
 0064 - Quick fix for OutboundInvoices (how did this error happen?) [RF]
 0065 - Dumb fix for 0062 (or rather, the error was dumb) [RF]
 0066 - Added OrganizationSequenceId to CashAdvances, ExpenseClaims
+0067 - Bugfix for 0066
