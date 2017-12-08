@@ -96,6 +96,26 @@ namespace Swarmops.Logic.Financial
 
         #endregion
 
+
+
+        public new int OrganizationSequenceId
+        {
+            get
+            {
+                if (base.OrganizationSequenceId == 0)
+                {
+                    // This case is for legacy installations before DbVersion 66, when
+                    // OrganizationSequenceId was added for each new cash advance
+
+                    SwarmDb db = SwarmDb.GetDatabaseForWriting();
+                    base.OrganizationSequenceId = db.SetCashAdvanceSequence(this.Identity);
+                    return base.OrganizationSequenceId;
+                }
+
+                return base.OrganizationSequenceId;
+            }
+        }
+
         public Person Person
         {
             get { return Person.FromIdentity (PersonId); }

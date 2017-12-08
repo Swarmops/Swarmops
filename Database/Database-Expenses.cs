@@ -14,7 +14,7 @@ namespace Swarmops.Database
             " ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
             " Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
             " ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate, " +
-            " VatCents " +
+            " VatCents, OrganizaionSequenceId " +
             " FROM ExpenseClaims";
              
         public BasicExpenseClaim GetExpenseClaim (int expenseClaimId)
@@ -180,34 +180,14 @@ namespace Swarmops.Database
             bool repaid = reader.GetBoolean (14);
             bool keepSeparate = reader.GetBoolean (15);
             Int64 vatCents = reader.GetInt64(16);
+            int organizationSequenceId = reader.GetInt32(17);
 
             return new BasicExpenseClaim (expenseClaimId, claimingPersonId, createdDateTime,
-                open, attested, documented, claimed, organizationId, geographyId,
+                open, attested, documented, claimed, organizationId, organizationSequenceId, geographyId,
                 budgetId, expenseDate, description, preApprovedAmount,
                 amountCents, vatCents, repaid, keepSeparate);
         }
 
-
-        public int CreateExpenseClaim (int claimingPersonId, int organizationId, int budgetId,
-            DateTime expenseDate, string description, double amount)
-        {
-            using (DbConnection connection = GetMySqlDbConnection())
-            {
-                connection.Open();
-
-                DbCommand command = GetDbCommand ("CreateExpenseClaim", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                AddParameterWithName (command, "claimingPersonId", claimingPersonId);
-                AddParameterWithName (command, "createdDateTime", DateTime.Now);
-                AddParameterWithName (command, "organizationId", organizationId);
-                AddParameterWithName (command, "expenseDate", expenseDate);
-                AddParameterWithName (command, "description", description);
-                AddParameterWithName (command, "amount", amount);
-
-                return Convert.ToInt32 (command.ExecuteScalar());
-            }
-        }
 
         public int CreateExpenseClaim (int claimingPersonId, int organizationId, int budgetId,
             DateTime expenseDate, string description, Int64 amountCents)
@@ -216,7 +196,7 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("CreateExpenseClaimPrecise", connection);
+                DbCommand command = GetDbCommand ("CreateExpenseClaim", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName (command, "claimingPersonId", claimingPersonId);
@@ -261,6 +241,23 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "vatCents", vatCents);
 
                 command.ExecuteNonQuery();
+            }
+        }
+
+
+
+        public int SetExpenseClaimSequence(int expenseClaimId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetExpenseClaimOrganizationSequenceId", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
+
+                return Convert.ToInt32(command.ExecuteScalar());
             }
         }
 

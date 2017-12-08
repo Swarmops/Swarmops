@@ -14,7 +14,7 @@ namespace Swarmops.Database
         private const string cashAdvanceFieldSequence =
             " CashAdvanceId,OrganizationId,PersonId,CreatedDateTime,CreatedByPersonId," + // 0-4
             "FinancialAccountId,AmountCents,Description,Open,Attested," + // 5-9
-            "PaidOut,AttestedByPersonId,AttestedDateTime " + // 10-12
+            "PaidOut,AttestedByPersonId,AttestedDateTime,OrganizationSequenceId " + // 10-13
             "FROM CashAdvances ";
 
         private static BasicCashAdvance ReadCashAdvanceFromDataReader (IDataRecord reader)
@@ -34,8 +34,9 @@ namespace Swarmops.Database
             bool paidOut = reader.GetBoolean (10);
             int attestedByPersonId = reader.GetInt32 (11);
             DateTime attestedDateTime = reader.GetDateTime (12);
+            int organizationSequenceId = reader.GetInt32(13);
 
-            return new BasicCashAdvance (cashAdvanceId, organizationId, personId, createdDateTime, createdByPersonId,
+            return new BasicCashAdvance (cashAdvanceId, organizationId, organizationSequenceId, personId, createdDateTime, createdByPersonId,
                 financialAccountId, amountCents, description, open, attested,
                 paidOut, attestedByPersonId, attestedDateTime);
         }
@@ -138,6 +139,22 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "budgetId", budgetId);
 
                 command.ExecuteNonQuery();
+            }
+        }
+
+
+        public int SetCashAdvanceSequence(int cashAdvanceId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetCashAdvanceOrganizationSequenceId", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "cashAdvanceId", cashAdvanceId);
+
+                return Convert.ToInt32(command.ExecuteScalar());
             }
         }
 

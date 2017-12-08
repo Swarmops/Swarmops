@@ -56,7 +56,7 @@ namespace Swarmops.Logic.Financial
 
             // Create the financial transaction with rows
 
-            string transactionDescription = "Expense #" + newClaim.Identity + ": " + description; // TODO: Localize
+            string transactionDescription = "Expense #" + newClaim.OrganizationSequenceId + ": " + description; // TODO: Localize
 
             if (transactionDescription.Length > 64)
             {
@@ -99,6 +99,26 @@ namespace Swarmops.Logic.Financial
         }
 
         #endregion
+
+
+
+        public new int OrganizationSequenceId
+        {
+            get
+            {
+                if (base.OrganizationSequenceId == 0)
+                {
+                    // This case is for legacy installations before DbVersion 66, when
+                    // OrganizationSequenceId was added for each new expense claim
+
+                    SwarmDb db = SwarmDb.GetDatabaseForWriting();
+                    base.OrganizationSequenceId = db.SetExpenseClaimSequence(this.Identity);
+                    return base.OrganizationSequenceId;
+                }
+
+                return base.OrganizationSequenceId;
+            }
+        }
 
         public Person Claimer
         {

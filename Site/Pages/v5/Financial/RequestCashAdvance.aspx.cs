@@ -77,8 +77,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // Create cash advance
 
             CashAdvance cashAdvance = CashAdvance.Create (CurrentOrganization, CurrentUser, CurrentUser, amountCents,
-                budget,
-                description);
+                budget, description);
 
             // Create success message
 
