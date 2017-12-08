@@ -62,7 +62,7 @@ do
   fi
   fakeroot dpkg-deb --build $DROPFOLDER/payload
   mv $DROPFOLDER/payload.deb swarmops-$PACKAGENAME-$DISTRO-latest.deb
-  cp swarmops-$PACKAGENAME-$DISTRO-latest.deb /var/www/packages.swarmops.com
+  cp swarmops-$PACKAGENAME-$DISTRO-latest.deb /var/www/$PUBLISHSITE
 
 # read -p "Press [Enter] key to add package to repo..."
 
