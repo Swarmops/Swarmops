@@ -111,68 +111,50 @@ namespace Swarmops.Logic.Support
 
         public static void Rerasterize(Document document, PdfProcessorOptions options = PdfProcessorOptions.None)
         {
-            using (StreamWriter debugWriter = new StreamWriter("/tmp/pdfregen-debug.txt"))
+            if (document.Description.Length < 32)
             {
-                debugWriter.WriteLine("Document description: " + document.Description);
-                debugWriter.Flush();
-
-                if (document.Description.Length < 32)
-                {
-                    throw new InvalidOperationException("Document has no GUID");
-                }
-
-                // a ServerFileName looks like "2015/06/22/29c88f2b-44e6-4a05-a6b0-f9aaec835c5b-00000001-0007-01-0019.png"
-                //                              1234567890123456789012345678901234567890123456789012345678901234
-
-                debugWriter.WriteLine("Document server file name: " + document.ServerFileName);
-                debugWriter.Flush();
-
-                if (document.ServerFileName.Length < 64)
-                {
-                    throw new InvalidOperationException("Server file name has wrong scheme");
-                }
-
-                if (!document.ServerFileName.ToLowerInvariant().EndsWith(".png"))
-                {
-                    throw new InvalidOperationException("Document is not rasterized");
-                }
-                if (document.ForeignId == 0 && ((int) options & (int) PdfProcessorOptions.ForceOrphans) == 0)
-                {
-                    throw new InvalidOperationException("Document is an orphan");
-                }
-
-                int density = 75;
-                string suffix = string.Empty;
-
-                if (((int) options & (int) PdfProcessorOptions.HighQuality) > 0)
-                {
-                    density = 600;
-                    suffix = "-hires"; // hires conversion uses different filename
-                }
-
-
-                string firstPart = document.ServerFileName.Substring(0, 64);
-
-                debugWriter.WriteLine("Regenerating... ");
-                debugWriter.Flush();
-
-                string commandLine = "convert -density " + density.ToString(CultureInfo.InvariantCulture) +
-                                     " -background white -alpha remove " + StorageRoot + firstPart + " " +
-                                     StorageRoot + firstPart +
-                                     "-%04d" + suffix + ".png";
-
-                debugWriter.WriteLine("Running \"" + commandLine + "\"");
-                debugWriter.Flush();
-
-                Process process = Process.Start("/bin/bash",
-                    "-c \"" + commandLine + "\"");
-                process.PriorityClass = ProcessPriorityClass.BelowNormal; // play nice - this is a heavy op
-
-                process.WaitForExit();
-
-                debugWriter.WriteLine("Done.");
-                debugWriter.Flush();
+                throw new InvalidOperationException("Document has no GUID");
             }
+
+            // a ServerFileName looks like "2015/06/22/29c88f2b-44e6-4a05-a6b0-f9aaec835c5b-00000001-0007-01-0019.png"
+            //                              1234567890123456789012345678901234567890123456789012345678901234
+
+            if (document.ServerFileName.Length < 64)
+            {
+                throw new InvalidOperationException("Server file name has wrong scheme");
+            }
+
+            if (!document.ServerFileName.ToLowerInvariant().EndsWith(".png"))
+            {
+                throw new InvalidOperationException("Document is not rasterized");
+            }
+            if (document.ForeignId == 0 && ((int) options & (int) PdfProcessorOptions.ForceOrphans) == 0)
+            {
+                throw new InvalidOperationException("Document is an orphan");
+            }
+
+            int density = 75;
+            string suffix = string.Empty;
+
+            if (((int) options & (int) PdfProcessorOptions.HighQuality) > 0)
+            {
+                density = 600;
+                suffix = "-hires"; // hires conversion uses different filename
+            }
+
+
+            string firstPart = document.ServerFileName.Substring(0, 64);
+
+            string commandLine = "convert -density " + density.ToString(CultureInfo.InvariantCulture) +
+                                    " -background white -alpha remove " + StorageRoot + firstPart + " " +
+                                    StorageRoot + firstPart +
+                                    "-%04d" + suffix + ".png";
+
+            Process process = Process.Start("/bin/bash",
+                "-c \"" + commandLine + "\"");
+            process.PriorityClass = ProcessPriorityClass.BelowNormal; // play nice - this is a heavy op
+
+            process.WaitForExit();
         }
 
         public static string TemplateToPdf(string svgFileName)
