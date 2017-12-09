@@ -1,10 +1,13 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
@@ -140,10 +143,18 @@ namespace Swarmops.Logic.Financial
 
         public void DenyAttestation (Person denyingPerson, string reason)
         {
-            // Denying a salary payout is not to be taken lightly. This needs to be a larger feature. Until
-            // then, it's not implemented at all.
+            Attested = false;
+            Open = false;
 
-            throw new NotImplementedException();
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Kill,
+                FinancialDependencyType.ExpenseClaim, Identity,
+                DateTime.UtcNow, denyingPerson.Identity, this.CostTotalCents);
+
+            OutboundComm.CreateNotificationOfFinancialValidation(Budget, this.PayrollItem.Person, NetSalaryCents / 100.0, this.PayoutDate.ToString("MMMM yyyy"),
+                NotificationResource.Salary_Denied, reason);
+
+            FinancialTransaction transaction = FinancialTransaction.FromDependency(this);
+            transaction.RecalculateTransaction(new Dictionary<int, long>(), denyingPerson); // zeroes out the tx
         }
 
         #endregion

@@ -724,6 +724,26 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your salary payout for [RequestPurpose] was cancelled. It will not be paid out.
+        ///
+        ///If this comes as a surprise to you, please contact the organization and/or your supervisor urgently..
+        /// </summary>
+        internal static string Salary_Denied_Body {
+            get {
+                return ResourceManager.GetString("Salary_Denied_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Salary payout denied: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string Salary_Denied_Subject {
+            get {
+                return ResourceManager.GetString("Salary_Denied_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This is your summary salary statement for [LastYear]. It is not a statement of a new salary, but a statement of the monthly salaries paid to you over the course of the last year as well as any taxes deducted. The purpose of this statement is to serve as data for your records and/or for tax declaration purposes for last year.
         ///
         ///Gross salary for [LastYear]:  [CurrencyCode]  [GrossSalaryTotal]

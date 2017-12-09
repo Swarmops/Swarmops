@@ -194,6 +194,7 @@ namespace Swarmops.Logic.Communications.Payload
         Salary_MonthlyStatement,
         Salary_Paid,
         Salary_LastYearSummary,
+        Salary_Denied,
         OutboundComm_Resolved,
         OutboundComm_Sent
     }
