@@ -208,7 +208,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
     private void PopulateSalaries()
     {
-        Salaries salaries = Salaries.ForOrganization (CurrentOrganization).WhereUnattested;
+        Salaries salaries = Salaries.ForOrganization (CurrentOrganization);
 
         // No unattestability for previously attested salaries because complex
 
@@ -217,10 +217,20 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
             if (this._attestationRights.ContainsKey (salary.PayrollItem.BudgetId) ||
                 salary.PayrollItem.Budget.OwnerPersonId == Person.NobodyId)
             {
-                this._items.Add (new AttestableItem ("S" + salary.Identity.ToString (CultureInfo.InvariantCulture),
-                    salary.PayrollItem.PersonCanonical, salary.CostTotalCents, salary.PayrollItem.Budget,
-                    "[Loc]Financial_SalarySpecification|[Date]" +
-                    salary.PayoutDate.ToString (CultureInfo.InvariantCulture), "Financial_Salary", false, salary));
+                if (salary.Attested)
+                {
+                    this._items.Add(new AttestableItem("S" + salary.Identity.ToString(CultureInfo.InvariantCulture),
+                        salary.PayrollItem.PersonCanonical, salary.CostTotalCents, salary.PayrollItem.Budget,
+                        "[Loc]Financial_SalarySpecification|[Date]" +
+                        salary.PayoutDate.ToString(CultureInfo.InvariantCulture), "Financial_Salary", false, salary));
+                }
+                else
+                {
+                    this._attestedItems.Add(new AttestableItem("S" + salary.Identity.ToString(CultureInfo.InvariantCulture),
+                        salary.PayrollItem.PersonCanonical, salary.CostTotalCents, salary.PayrollItem.Budget,
+                        "[Loc]Financial_SalarySpecification|[Date]" +
+                        salary.PayoutDate.ToString(CultureInfo.InvariantCulture), "Financial_Salary", false, salary));
+                }
             }
         }
     }
