@@ -113,13 +113,22 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
 
                 // Is the payout closed, that is, registered closed with the bank?
 
-                if (Payout.FromDependency(invoice).Open)
+                try
                 {
-                    ticks.Append(_emptyTick);
+                    if (Payout.FromDependency(invoice).Open)
+                    {
+                        ticks.Append(_emptyTick);
+                    }
+                    else
+                    {
+                        ticks.Append(_greenTick);
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    ticks.Append(_greenTick);
+                    // There was no payout; the invoice was closed another way.
+
+                    ticks.Append(_redCross + _greenTick);
                 }
             }
             else
