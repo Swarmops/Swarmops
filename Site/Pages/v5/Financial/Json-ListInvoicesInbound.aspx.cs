@@ -128,7 +128,7 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
                 {
                     // There was no payout; the invoice was closed another way.
 
-                    ticks.Append(_redCross + _greenTick);
+                    ticks.Append(_redCross);
                 }
             }
             else
