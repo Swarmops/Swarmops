@@ -125,26 +125,55 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+
+        public bool Open
+        {
+            get { return base.Open; }
+            set
+            {
+                if (base.Open != value)
+                {
+                    SwarmDb.GetDatabaseForWriting().SetSalaryOpen(Identity, value);
+                    base.Open = value;
+                }
+            }
+        }
+
+
+        public bool Attested 
+        {
+            get { return base.Attested; }
+            set
+            {
+                if (base.Attested != value)
+                {
+                    SwarmDb.GetDatabaseForWriting().SetSalaryAttested(Identity, value);
+                    base.Attested = value;
+                }
+            }
+        }
+
+
         #region IAttestable Members
 
         public void Attest (Person attester)
         {
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
                 FinancialDependencyType.Salary, Identity, DateTime.Now, attester.Identity, CostTotalCents/100.0);
-            SwarmDb.GetDatabaseForWriting().SetSalaryAttested (Identity, true);
+            this.Attested = true;
         }
 
         public void Deattest (Person deattester)
         {
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Deattestation,
                 FinancialDependencyType.Salary, Identity, DateTime.Now, deattester.Identity, CostTotalCents/100.0);
-            SwarmDb.GetDatabaseForWriting().SetSalaryAttested (Identity, false);
+            this.Attested = false;
         }
 
         public void DenyAttestation (Person denyingPerson, string reason)
         {
-            Attested = false;
-            Open = false;
+            this.Attested = false;
+            this.Open = false;
 
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Kill,
                 FinancialDependencyType.ExpenseClaim, Identity,

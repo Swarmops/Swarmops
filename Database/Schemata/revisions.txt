@@ -63,5 +63,6 @@
 0063 - Added DeriveUnique to HotBitcoinAddresses for ability to create unique HBAs [RF]
 0064 - Quick fix for OutboundInvoices (how did this error happen?) [RF]
 0065 - Dumb fix for 0062 (or rather, the error was dumb) [RF]
-0066 - Added OrganizationSequenceId to CashAdvances, ExpenseClaims
-0067 - Bugfix for 0066
+0066 - Added OrganizationSequenceId to CashAdvances, ExpenseClaims [RF]
+0067 - Bugfix for 0066 [RF]
+0068 - Added SetSalaryOpen [RF]
