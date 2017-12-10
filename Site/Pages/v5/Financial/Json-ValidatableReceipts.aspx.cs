@@ -56,10 +56,10 @@ public partial class Pages_v5_Finance_Json_ValidatableReceipts : DataV5Base
                 "\"description\":\"{2}\",\"budgetName\":\"{3}\",{6}\"amountRequested\":\"{4:N2}\",\"itemId\":\"E{5}\"," +
                 "\"dox\":\"" + (claim.Documents.Count > 0 ? hasDoxString : "&nbsp;") + "\"," +
                 "\"actions\":\"<span style=\\\"position:relative;top:3px\\\">" +
-                "<img id=\\\"IconApprovalE{5}\\\" class=\\\"LocalIconApproval\\\" baseid=\\\"E{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconApprovedE{5}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"E{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
-                "<img id=\\\"IconDenialE{5}\\\" class=\\\"LocalIconDenial\\\" baseid=\\\"E{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconDeniedE{5}\\\" class=\\\"LocalIconDenied\\\" baseid=\\\"E{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
+                "<img id=\\\"IconApprovalE{5}\\\" class=\\\"LocalIconApproval\\\" baseid=\\\"E{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                "<img id=\\\"IconApprovedE{5}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"E{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />&nbsp;&nbsp;" +
+                "<img id=\\\"IconDenialE{5}\\\" class=\\\"LocalIconDenial\\\" baseid=\\\"E{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                "<img id=\\\"IconDeniedE{5}\\\" class=\\\"LocalIconDenied\\\" baseid=\\\"E{5}\\\" height=\\\"18\\\" width=\\\"24\\\" /></span>\"",
                 "olditem", JsonSanitize (claim.ClaimerCanonical), JsonSanitize (claim.Description),
                 JsonSanitize (claim.Budget.Name),
                 claim.AmountCents/100.0, claim.Identity, extraTags);
