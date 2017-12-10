@@ -16,51 +16,59 @@
 
         preload([
             '/Images/Abstract/ajaxloader-medium.gif',
-            '/Images/Icons/iconshock-balloon-yes-16px-hot.png',
-            '/Images/Icons/iconshock-balloon-no-16px-hot.png',
-            '/Images/Icons/iconshock-greentick-16px.png',
-            '/Images/Icons/iconshock-redcross-16px.png',
-            '/Images/Icons/undo-16px.png'
+            '/Images/Abstract/ajaxloader-48x36px.gif',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-hot.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-gold.png',
+            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png',
+            '/Images/Icons/iconshock-green-tick-128x96px.png',
+            '/Images/Icons/iconshock-red-cross-128x96px.png',
+            '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
+            '/Images/Icons/iconshock-balloon-undo-128x96px.png',
+            '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png',
+            '/Images/Icons/iconshock-search-hot-256px.png'
         ]);
 
         $(document).ready(function () {
             $('#TableAttestableCosts').datagrid(
                 {
                     onLoadSuccess: function () {
-                        $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
-                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-greentick-16px.png");
+                        $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
+                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png");
                         $(".LocalIconApproved, .LocalIconDenied").css("display", "none");
-                        $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-16px.png");
+                        $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
                         $(".LocalIconApproval, .LocalIconApproved, .LocalIconDenial").css("cursor", "pointer");
 
                         $(".LocalIconApproval").mouseover(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-hot.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot.png");
                             }
                         });
 
                         $(".LocalIconApproval").mouseout(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                             }
                         });
 
                         $(".LocalIconApproved").mouseover(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/undo-16px.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                             }
                         });
 
                         $(".LocalIconApproved").mouseout(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png");
                             }
                         });
 
                         $(".LocalIconApproval").click(function () {
                             if ($(this).attr("rel") != "loading") {
                                 $(this).attr("rel", "loading");
-                                $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
+                                $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
                                 $("#IconDenial" + $(this).attr("baseid")).fadeTo(1000, 0.01).css("cursor", "default");
                                 var thisIcon = this;
                                 $.ajax({
@@ -71,7 +79,7 @@
                                     dataType: "json",
                                     success: function (msg) {
                                         $(thisIcon).css("display", "none");
-                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                                         $(thisIcon).attr("rel", "active");
                                         $("#IconApproved" + $(thisIcon).attr("baseid")).fadeIn(100);
                                         alertify.success(unescape(msg.d));
@@ -83,7 +91,7 @@
                         $(".LocalIconApproved").click(function () {
                             if ($(this).attr("rel") != "loading") {
                                 $(this).attr("rel", "loading");
-                                $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
+                                $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
                                 var thisIcon = this;
                                 $.ajax({
                                     type: "POST",
@@ -93,7 +101,7 @@
                                     dataType: "json",
                                     success: function (msg) {
                                         $(thisIcon).css("display", "none");
-                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
+                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png");
                                         $(thisIcon).attr("rel", "");
                                         $("#IconApproval" + $(thisIcon).attr("baseid")).fadeIn(100);
                                         $("#" + $(thisIcon).attr("rel"), "");
@@ -110,13 +118,13 @@
 
                         $(".LocalIconDenial").mouseover(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-16px-hot.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot.png");
                             }
                         });
 
                         $(".LocalIconDenial").mouseout(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-16px.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
                             }
                         });
 

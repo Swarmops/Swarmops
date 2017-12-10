@@ -29,7 +29,8 @@
             '/Images/Icons/iconshock-red-cross-128x96px.png',
             '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
             '/Images/Icons/iconshock-balloon-undo-128x96px.png',
-            '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png'
+            '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png',
+            '/Images/Icons/iconshock-search-hot-256px.png'
         ]);
 
         loadUninitializedBudgets(); // no need to wait for doc.ready to load operating params
