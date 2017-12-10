@@ -124,7 +124,7 @@ public partial class Pages_v5_Finance_Json_ListInvoicesInbound : DataV5Base
                         ticks.Append(_greenTick);
                     }
                 }
-                catch (Exception)
+                catch (ArgumentException)
                 {
                     // There was no payout; the invoice was closed another way.
 
