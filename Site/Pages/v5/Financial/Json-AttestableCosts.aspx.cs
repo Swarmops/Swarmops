@@ -217,7 +217,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
             if (this._attestationRights.ContainsKey (salary.PayrollItem.BudgetId) ||
                 salary.PayrollItem.Budget.OwnerPersonId == Person.NobodyId)
             {
-                if (salary.Attested)
+                if (!salary.Attested)
                 {
                     this._items.Add(new AttestableItem("S" + salary.Identity.ToString(CultureInfo.InvariantCulture),
                         salary.PayrollItem.PersonCanonical, salary.CostTotalCents, salary.PayrollItem.Budget,

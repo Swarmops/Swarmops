@@ -399,7 +399,9 @@ Please log on to [InstallationName] at [ExternalUrl]Financial/ValidateReceipts t
   <data name="Salary_Denied_Body" xml:space="preserve">
     <value>Your salary payout for [RequestPurpose] was cancelled. It will not be paid out.
 
-If this comes as a surprise to you, please contact the organization and/or your supervisor urgently.</value>
+If this comes as a surprise to you, please contact the organization and/or your supervisor urgently. The following was given as reason:
+
+[EmbeddedPreformattedText]</value>
   </data>
   <data name="Salary_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Salary payout denied: [CurrencyCode] [BudgetAmountFloat]</value>

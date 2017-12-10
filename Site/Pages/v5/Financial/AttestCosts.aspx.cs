@@ -163,12 +163,33 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
 
+        static protected IAttestable AttestableFromRecordId(string recordId)
+        {
+            char recordType = recordId[0];
+            int itemId = Int32.Parse(recordId.Substring(1));
+
+            switch (recordType)
+            {
+                case 'E': // Expense claim
+                    return ExpenseClaim.FromIdentity(itemId);
+                case 'A': // Cash advance
+                    return CashAdvance.FromIdentity(itemId);
+                case 'I': // Inbound invoice
+                    return InboundInvoice.FromIdentity(itemId);
+                case 'S': // Salary
+                    return Salary.FromIdentity(itemId);
+                default:
+                    throw new NotImplementedException("Unknown record type");
+            }
+        }
+
+
         [WebMethod]
         public static AjaxCallResult DenyItem (string recordId, string reason)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
-            IPayable payable = PayableFromRecordId (recordId);
-            FinancialAccount budget = payable.Budget;
+            IAttestable attestable = AttestableFromRecordId (recordId);
+            FinancialAccount budget = attestable.Budget;
 
             if (budget.OrganizationId != authData.CurrentOrganization.Identity ||
                 (budget.OwnerPersonId != authData.CurrentUser.Identity &&
@@ -182,7 +203,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 reason = Resources.Global.Global_NoReasonGiven;
             }
 
-            payable.DenyAttestation (authData.CurrentUser, reason);
+            attestable.DenyAttestation (authData.CurrentUser, reason);
 
             return new AjaxCallResult { Success = true };
         }

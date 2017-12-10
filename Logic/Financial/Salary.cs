@@ -136,7 +136,7 @@ namespace Swarmops.Logic.Financial
 
         public void Deattest (Person deattester)
         {
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Deattestation,
                 FinancialDependencyType.Salary, Identity, DateTime.Now, deattester.Identity, CostTotalCents/100.0);
             SwarmDb.GetDatabaseForWriting().SetSalaryAttested (Identity, false);
         }

@@ -726,7 +726,9 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Your salary payout for [RequestPurpose] was cancelled. It will not be paid out.
         ///
-        ///If this comes as a surprise to you, please contact the organization and/or your supervisor urgently..
+        ///If this comes as a surprise to you, please contact the organization and/or your supervisor urgently. The following was given as reason:
+        ///
+        ///[EmbeddedPreformattedText].
         /// </summary>
         internal static string Salary_Denied_Body {
             get {
