@@ -14,6 +14,7 @@ namespace Swarmops.Basic.Types.Financial
         {
             CashAdvanceId = cashAdvanceId;
             OrganizationId = organizationId;
+            OrganizationSequenceId = organizationSequenceId;
             PersonId = personId;
             CreatedDateTime = createdDateTime;
             CreatedByPersonId = createdByPersonId;

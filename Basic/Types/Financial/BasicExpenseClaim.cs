@@ -21,6 +21,7 @@ namespace Swarmops.Basic.Types.Financial
             this.Validated = documented;
             this.Claimed = claimed;
             this.OrganizationId = organizationId;
+            this.OrganizationSequenceId = organizationSequenceId;
             this.GeographyId = geographyId;
             this.BudgetId = budgetId;
             this.ExpenseDate = expenseDate;
@@ -38,7 +39,7 @@ namespace Swarmops.Basic.Types.Financial
         public BasicExpenseClaim (BasicExpenseClaim original)
             : this (original.Identity, original.ClaimingPersonId, original.CreatedDateTime,
                 original.Open, original.Attested, original.Validated, original.Claimed,
-                original.OrganizationId, original.OrganizationId, 
+                original.OrganizationId, original.OrganizationSequenceId, 
                 original.GeographyId, original.BudgetId, original.ExpenseDate, original.Description,
                 original.PreApprovedAmount, original.AmountCents, original.VatCents, original.Repaid, original.KeepSeparate)
         {
