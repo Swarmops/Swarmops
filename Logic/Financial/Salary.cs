@@ -126,7 +126,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public bool Open
+        public new bool Open
         {
             get { return base.Open; }
             set
@@ -140,7 +140,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public bool Attested 
+        public new bool Attested 
         {
             get { return base.Attested; }
             set
