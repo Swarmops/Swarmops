@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.BalanceTransactions" Codebehind="BalanceTransactions.aspx.cs" CodeFile="BalanceTransactions.aspx.cs" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="CurrencyTextBox" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="DropDown" Src="~/Controls/v5/Base/DropDown.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ModalDialog" Src="~/Controls/v5/Base/ModalDialog.ascx" %>
 
@@ -298,11 +299,28 @@
                     </div>
                 </div>
             </div>
+            <p><input type="radio" id="RadioPurchase" name="TxOptions" value="Purchase" /><label for="RadioPurchase">&nbsp;<asp:Label runat="server" ID="Label2" Text="Mark this as a direct-from-account purchase? XYZ" /></label></p>
+            <div id="radioOptionPurchase" class="radioOption">
+                <div class="entryFields">
+                    <Swarmops5:ComboBudgets Layout="Vertical" ID="DropBudgetsPurchase" runat="server" ListType="All" />
+                    <div class="stacked-input-control"><input type="text" value="#Description#" id="inputTextPurchaseDescription"/></div>
+                    <div class="onVatEnabled" style="display: none"><Swarmops5:CurrencyTextBox ID="CurrencyPurchaseVat" runat="server" Layout="Vertical"/></div>
+                    <Swarmops5:FileUpload ID="UploadPurchase" runat="server"/>
+                    <input type="button" value='#Balance#' class="buttonAccentColor" onclick="onBalanceTransaction(); return false;" id="buttonExecutePurchase"/>
+                </div>
+                <div class="entryLabels">
+                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelPurchaseBudget" Text="Charge purchase to this budget XYZ" /></div>
+                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelPurchaseDescriptionUpdate" Text="Update transaction description XYZ" /></div>
+                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelPurchaseVatAmount" Text="VAT part of the amount XYZ" /></div>
+                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelPurchaseUploadReceipt" Text="Upload the receipt or other documentation XYZ" /></div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
             <p><input type="radio" id="RadioBalance" name="TxOptions" value="Balance" /><label for="RadioBalance">&nbsp;<asp:Label runat="server" ID="LabelRadioBalance" Text="Balance the transaction manually? XYZ" /></label></p>
             <div id="radioOptionBalance" class="radioOption">  <!-- this should go last -->
                 <div class="entryFields">
-                    <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" ListType="All" />&#8203;<br/>
-                    <input type="button" value='#Balance#' class="buttonAccentColor" onclick="onBalanceTransaction(); return false;" id="buttonExecuteBalance"/>
+                    <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" Layout="Vertical" ListType="All" />
+                    <div class="stacked-input-control"><input type="button" value='#Balance#' class="buttonAccentColor" onclick="onBalanceTransaction(); return false;" id="buttonExecuteBalance"/></div>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeBalance" Text="Balance the difference against XYZ" />

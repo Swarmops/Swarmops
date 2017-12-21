@@ -12,7 +12,7 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string currencyFieldSequence =
-            " CurrencyId,Code,Name,Sign " + // 0-3
+            " CurrencyId,Code,Name,Sign,IsCrypto " + // 0-4
             "FROM Currencies ";
 
         private static BasicCurrency ReadCurrencyFromDataReader (IDataRecord reader)
@@ -21,8 +21,9 @@ namespace Swarmops.Database
             string code = reader.GetString (1);
             string name = reader.GetString (2);
             string sign = reader.GetString (3);
+            int isCrypto = reader.GetInt32(4);
 
-            return new BasicCurrency (currencyId, code, name, sign);
+            return new BasicCurrency (currencyId, code, name, sign, isCrypto != 0? true: false);
         }
 
         #endregion

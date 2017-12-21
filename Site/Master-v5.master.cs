@@ -39,7 +39,7 @@ namespace Swarmops.Frontend
 
             // BEGIN TEST CODE
 
-            // VatReports.CreateNewReports();
+            // ExchangeRateSnapshot.Create();
 
             // END TEST CODE
 
