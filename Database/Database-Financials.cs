@@ -234,7 +234,7 @@ namespace Swarmops.Database
             }
         }
 
-        [Obsolete ("This method uses floating point for financials. Deprecated. Do not use.")]
+        [Obsolete ("This method uses floating point for financials. Deprecated. Do not use.", true)]
         public double GetFinancialAccountBalanceTotal (int financialAccountId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -273,10 +273,13 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return reader.GetInt64 (0);
+                        if (!reader.IsDBNull(0))
+                        {
+                            return reader.GetInt64(0);
+                        }
                     }
 
-                    throw new ArgumentException ("Unknown Account Id");
+                    return 0; // Balance appears to be zero
                 }
             }
         }
@@ -1211,7 +1214,10 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return reader.GetInt64(0);
+                        if (!reader.IsDBNull(0))
+                        {
+                            return reader.GetInt64(0);
+                        }
                     }
 
                     return 0; // zero balance, apparently.
