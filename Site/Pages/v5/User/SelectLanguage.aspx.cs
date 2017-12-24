@@ -31,7 +31,7 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         private void PopulateRepeater()
         {
-            string[] availableCultures = {"ar-AE", "de-DE", "nl-NL", "pt-PT", "ru-RU", "sv-SE" };
+            string[] availableCultures = {"ar-AE", "de-DE", "es-ES", "nl-NL", "pt-PT", "ru-RU", "sv-SE" };
 
             Array.Sort (availableCultures);
             // sort by locale string, and that's ok, that happens to give the same result as sorting on country name
