@@ -150,6 +150,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
     private void PopulateExpenses()
     {
         ExpenseClaims expenses = ExpenseClaims.ForOrganization (CurrentOrganization);
+        bool vatEnabled = CurrentOrganization.VatEnabled;
 
         foreach (ExpenseClaim expenseClaim in expenses)
         {
@@ -159,10 +160,22 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
                 Documents dox = expenseClaim.Documents;
                 bool hasDox = (dox.Count > 0 ? true : false);
 
-                AttestableItem item = new AttestableItem (
-                    "E" + expenseClaim.Identity.ToString (CultureInfo.InvariantCulture),
-                    expenseClaim.ClaimerCanonical, expenseClaim.AmountCents, expenseClaim.Budget,
-                    expenseClaim.Description, "Financial_ExpenseClaim", hasDox, expenseClaim);
+                AttestableItem item = null;
+
+                if (vatEnabled)
+                {
+                    item = new AttestableItem(
+                        "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture),
+                        expenseClaim.ClaimerCanonical, expenseClaim.AmountCents - expenseClaim.VatCents, expenseClaim.Budget,
+                        expenseClaim.Description, "Financial_ExpenseClaim", hasDox, expenseClaim);
+                }
+                else
+                {
+                    item = new AttestableItem(
+                        "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture),
+                        expenseClaim.ClaimerCanonical, expenseClaim.AmountCents, expenseClaim.Budget,
+                        expenseClaim.Description, "Financial_ExpenseClaim", hasDox, expenseClaim);
+                }
 
                 if (expenseClaim.Attested)
                 {
