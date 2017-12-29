@@ -32,6 +32,7 @@
             $('#buttonExecutePayoutForeign').val(buttonPayoutForeignValue);
             $('#buttonExecuteOutboundInvoice').val(buttonOutboundInvoiceValue);
             $('#buttonExecuteVatReport').val(buttonVatReportValue);
+            $('#buttonExecutePurchase').val(buttonPurchaseValue);
 
             if (isVatEnabled) {
                 $(".onVatEnabled").show();
@@ -68,6 +69,7 @@
                 function(data) {
                     $('#spanTransactionUnbalancedBy').text(data.DifferingAmount);
                     $('span#spanModalTransactionDate').text(data.TransactionDate);
+                    $('input#inputTextPurchaseDescription').val(data.TransactionDescription);
 
                     if (data.OpenPayoutData == null) // amount is positive
                     {
