@@ -48,6 +48,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribeOutboundInvoice;
             this.LabelDescribeVatReport.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribeVatReport;
 
+            this.LabelDescribePurchaseBudget.Text =
+                Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseBudget;
+            this.LabelDescribePurchaseDescriptionUpdate.Text =
+                Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseTransaction;
+            this.LabelDescribePurchaseVatAmount.Text =
+                Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseVat;
+            this.LabelDescribePurchaseUploadReceipt.Text =
+                Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseDocUpload;
+
             this.LabelRadioPayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayout;
             this.LabelRadioPayoutForeign.Text =
                 String.Format(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayoutForeign, 5);
@@ -55,6 +64,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioOutboundInvoice;
             this.LabelRadioVatReport.Text =
                 Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioVatReport;
+            this.LabelRadioPurchase.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPurchase;
 
         }
 
@@ -561,6 +571,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             get
             {
                 return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonVatReport);
+            }
+        }
+
+        public string Localized_ButtonPurchase
+        {
+            get
+            {
+                return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPurchase);
             }
         }
     }

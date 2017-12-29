@@ -33,8 +33,13 @@
             $('#buttonExecuteOutboundInvoice').val(buttonOutboundInvoiceValue);
             $('#buttonExecuteVatReport').val(buttonVatReportValue);
 
+            if (isVatEnabled) {
+                $(".onVatEnabled").show();
+            }
+
         });
 
+        var isVatEnabled = <%= CurrentOrganization.VatEnabled? "true": "false" %>;
         var transactionId = 0;
 
         function onFixTransaction(newTransactionId) {
@@ -201,6 +206,7 @@
         var buttonPayoutForeignValue = SwarmopsJS.unescape('<%=this.Localized_ButtonPayoutForeign%>');
         var buttonOutboundInvoiceValue = SwarmopsJS.unescape('<%=this.Localized_ButtonOutboundInvoice%>');
         var buttonVatReportValue = SwarmopsJS.unescape('<%=this.Localized_ButtonVatReport%>');
+        var buttonPurchaseValue = SwarmopsJS.unescape('<%=this.Localized_ButtonPurchase%>');
 
     </script>
     
@@ -299,20 +305,20 @@
                     </div>
                 </div>
             </div>
-            <p><input type="radio" id="RadioPurchase" name="TxOptions" value="Purchase" /><label for="RadioPurchase">&nbsp;<asp:Label runat="server" ID="Label2" Text="Mark this as a direct-from-account purchase? XYZ" /></label></p>
+            <p><input type="radio" id="RadioPurchase" name="TxOptions" value="Purchase" /><label for="RadioPurchase">&nbsp;<asp:Label runat="server" ID="LabelRadioPurchase" Text="Mark this as a direct-from-account purchase? XYZ" /></label></p>
             <div id="radioOptionPurchase" class="radioOption">
                 <div class="entryFields">
-                    <Swarmops5:ComboBudgets Layout="Vertical" ID="DropBudgetsPurchase" runat="server" ListType="All" />
-                    <div class="stacked-input-control"><input type="text" value="#Description#" id="inputTextPurchaseDescription"/></div>
+                    <Swarmops5:ComboBudgets Layout="Vertical" ID="DropBudgetsPurchase" runat="server" ListType="InvoiceableIn" />
+                    <div class="stacked-input-control"><input type="text" value="" id="inputTextPurchaseDescription"/></div>
                     <div class="onVatEnabled" style="display: none"><Swarmops5:CurrencyTextBox ID="CurrencyPurchaseVat" runat="server" Layout="Vertical"/></div>
                     <Swarmops5:FileUpload ID="UploadPurchase" runat="server"/>
-                    <input type="button" value='#Balance#' class="buttonAccentColor" onclick="onBalanceTransaction(); return false;" id="buttonExecutePurchase"/>
+                    <input type="button" value='#Balance#' class="buttonAccentColor" onclick="onCreateDirectPurchase(); return false;" id="buttonExecutePurchase"/>
                 </div>
                 <div class="entryLabels">
-                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelPurchaseBudget" Text="Charge purchase to this budget XYZ" /></div>
-                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelPurchaseDescriptionUpdate" Text="Update transaction description XYZ" /></div>
-                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelPurchaseVatAmount" Text="VAT part of the amount XYZ" /></div>
-                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelPurchaseUploadReceipt" Text="Upload the receipt or other documentation XYZ" /></div>
+                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseBudget" Text="Charge purchase to this budget XYZ" /></div>
+                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseDescriptionUpdate" Text="Update transaction description XYZ" /></div>
+                    <div class="onVatEnabled" style="display:none"><div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseVatAmount" Text="VAT part of the amount XYZ" /></div></div>
+                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseUploadReceipt" Text="Upload the receipt or other documentation XYZ" /></div>
                 </div>
                 <div style="clear:both"></div>
             </div>

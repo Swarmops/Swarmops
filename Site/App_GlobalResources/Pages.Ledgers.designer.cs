@@ -619,6 +619,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mark Purchase.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_ButtonPurchase {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_ButtonPurchase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close VAT report.
         /// </summary>
         internal static string BalanceTransactions_ModalDialog_ButtonVatReport {
@@ -660,6 +669,42 @@ namespace Resources.Pages {
         internal static string BalanceTransactions_ModalDialog_DescribePayoutForeign {
             get {
                 return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePayoutForeign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge purchase to this budget.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribePurchaseBudget {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePurchaseBudget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload receipt or other documentation.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribePurchaseDocUpload {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePurchaseDocUpload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update transaction description.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribePurchaseTransaction {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePurchaseTransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT part of the amount.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribePurchaseVat {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePurchaseVat", resourceCulture);
             }
         }
         
@@ -723,6 +768,15 @@ namespace Resources.Pages {
         internal static string BalanceTransactions_ModalDialog_RadioPayoutForeign {
             get {
                 return ResourceManager.GetString("BalanceTransactions_ModalDialog_RadioPayoutForeign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark this as a direct-from-account purchase?.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_RadioPurchase {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_RadioPurchase", resourceCulture);
             }
         }
         

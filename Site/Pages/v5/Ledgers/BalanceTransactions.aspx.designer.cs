@@ -211,13 +211,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::System.Web.UI.WebControls.Label LabelDescribeOutboundInvoice;
         
         /// <summary>
-        /// Label2 control.
+        /// LabelRadioPurchase control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label LabelRadioPurchase;
         
         /// <summary>
         /// DropBudgetsPurchase control.
@@ -247,40 +247,40 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::Swarmops.Controls.Base.FileUpload UploadPurchase;
         
         /// <summary>
-        /// LabelPurchaseBudget control.
+        /// LabelDescribePurchaseBudget control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPurchaseBudget;
+        protected global::System.Web.UI.WebControls.Label LabelDescribePurchaseBudget;
         
         /// <summary>
-        /// LabelPurchaseDescriptionUpdate control.
+        /// LabelDescribePurchaseDescriptionUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPurchaseDescriptionUpdate;
+        protected global::System.Web.UI.WebControls.Label LabelDescribePurchaseDescriptionUpdate;
         
         /// <summary>
-        /// LabelPurchaseVatAmount control.
+        /// LabelDescribePurchaseVatAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPurchaseVatAmount;
+        protected global::System.Web.UI.WebControls.Label LabelDescribePurchaseVatAmount;
         
         /// <summary>
-        /// LabelPurchaseUploadReceipt control.
+        /// LabelDescribePurchaseUploadReceipt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPurchaseUploadReceipt;
+        protected global::System.Web.UI.WebControls.Label LabelDescribePurchaseUploadReceipt;
         
         /// <summary>
         /// LabelRadioBalance control.
