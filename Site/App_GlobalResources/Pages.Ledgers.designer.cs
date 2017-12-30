@@ -502,6 +502,33 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The transaction description cannot be empty..
+        /// </summary>
+        internal static string BalanceTransactions_Error_NeedDescription {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_Error_NeedDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The transaction needs a proof of purchase..
+        /// </summary>
+        internal static string BalanceTransactions_Error_NeedDocumentation {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_Error_NeedDocumentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The VAT amount doesn&apos;t seem to be correctly entered..
+        /// </summary>
+        internal static string BalanceTransactions_Error_VatAmountParseError {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_Error_VatAmountParseError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exact Matches For This Amount.
         /// </summary>
         internal static string BalanceTransactions_ExactMatches {

@@ -256,13 +256,6 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        [Obsolete ("Do not use double-precision methods. They leak cents. Use AddRow (FinancialAccount, Int64, Person).",
-            true)]
-        public void AddRow (FinancialAccount account, double amount, Person person)
-        {
-            AddRow (account, (Int64) (amount*100), person);
-        }
-
         public FinancialTransactionRow AddRow (FinancialAccount account, Int64 amountCents, Person person)
         {
             return AddRow (account.Identity, amountCents, person != null ? person.Identity : 0);

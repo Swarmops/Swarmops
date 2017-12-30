@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Versioning;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -9,6 +10,7 @@ using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
@@ -523,7 +525,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
         [WebMethod]
         public static AjaxCallResult MarkDirectPurchase(int transactionId, int budgetId, string vatAmountString,
-            string newDescription)
+            string newDescription, string guid)
         {
             if (transactionId == 0 | budgetId == 0)
             {
@@ -539,14 +541,70 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException();
             }
 
+            FinancialAccount budget = FinancialAccount.FromIdentity(budgetId);
+
+            if (authData.CurrentOrganization.Identity != budget.Organization.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            newDescription = newDescription.Trim();
+            if (newDescription.Length < 1)
+            {
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = Resources.Pages.Ledgers.BalanceTransactions_Error_NeedDescription
+                };
+            }
+
+            Documents docs = Documents.RecentFromDescription(guid).WhereNotAssociated;
+            if (docs.Count < 1)
+            {
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = Resources.Pages.Ledgers.BalanceTransactions_Error_NeedDocumentation
+                };
+            }
+
             Int64 vatCents = 0;
             bool vatEnabled = authData.CurrentOrganization.VatEnabled;
 
             if (vatEnabled)
             {
-                double vatDouble;
+                try
+                {
+                    vatCents = Swarmops.Logic.Support.Formatting.ParseDoubleStringAsCents(vatAmountString);
+                }
+                catch (ArgumentException)
+                {
+                    return new AjaxCallResult
+                    {
+                        Success = false,
+                        DisplayMessage = Resources.Pages.Ledgers.BalanceTransactions_Error_VatAmountParseError
+                    };
 
-                
+                    throw;
+                }
+            }
+
+            // We're FINALLY ready to update the transaction
+
+            FinancialTransaction tx = FinancialTransaction.FromIdentity(transactionId);
+            tx.Description = newDescription;
+            docs.SetForeignObjectForAll(tx);
+
+            Int64 centsDiff = tx.Rows.AmountCentsTotal;
+
+            if (vatEnabled)
+            {
+                tx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsVatInboundUnreported, vatCents, authData.CurrentUser);
+                tx.AddRow(budget, (-centsDiff) - vatCents, authData.CurrentUser);
+            }
+            else
+            {
+                tx.AddRow(budget, -centsDiff, authData.CurrentUser);
             }
         }
 

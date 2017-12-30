@@ -920,6 +920,15 @@
     <value>Totals for this report</value>
     <comment>Displayed as description of footer</comment>
   </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>The transaction description cannot be empty.</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>The transaction needs a proof of purchase.</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>The VAT amount doesn't seem to be correctly entered.</value>
+  </data>
   <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
     <value>Mark as Direct Purchase</value>
   </data>

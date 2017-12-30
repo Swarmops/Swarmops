@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
 using Swarmops.Common.Interfaces;
@@ -77,6 +78,17 @@ namespace Swarmops.Logic.Support
             foreach (Document doc in this)
             {
                 doc.SetForeignObject (foreignObject);
+            }
+        }
+
+        public Documents WhereNotAssociated
+        {
+            get
+            {
+                Documents result = new Documents();
+                result.AddRange(this.Where(doc => doc.ForeignId == 0));
+
+                return result;
             }
         }
     }

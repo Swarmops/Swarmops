@@ -218,7 +218,8 @@
                         transactionId: transactionId,
                         budgetId: budgetId,
                         vatAmountString: vatAmount,
-                        newDescription: txDescription
+                        newDescription: txDescription,
+                        guid: uploadGuid
                     },
                     function(result) {
                         if (result.Success) {
@@ -245,6 +246,8 @@
         var buttonOutboundInvoiceValue = SwarmopsJS.unescape('<%=this.Localized_ButtonOutboundInvoice%>');
         var buttonVatReportValue = SwarmopsJS.unescape('<%=this.Localized_ButtonVatReport%>');
         var buttonPurchaseValue = SwarmopsJS.unescape('<%=this.Localized_ButtonPurchase%>');
+
+        var uploadGuid = '<%=this.UploadPurchase.GuidString%>';
 
     </script>
     
