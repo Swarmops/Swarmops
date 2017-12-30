@@ -59,6 +59,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseVat;
             this.LabelDescribePurchaseUploadReceipt.Text =
                 Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseDocUpload;
+            this.LabelDescribePurchaseAmount.Text =
+                String.Format(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseAmount,
+                    CurrentOrganization.Currency.DisplayCode);
 
             this.LabelRadioPayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayout;
             this.LabelRadioPayoutForeign.Text =

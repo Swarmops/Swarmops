@@ -932,6 +932,10 @@
   <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
     <value>Mark as Direct Purchase</value>
   </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>Direct-debit purchase amount ({0})</value>
+    <comment>{0} is the currency</comment>
+  </data>
   <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
     <value>Charge purchase to this budget</value>
   </data>

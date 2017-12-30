@@ -700,6 +700,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Direct-debit purchase amount ({0}).
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribePurchaseAmount {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePurchaseAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Charge purchase to this budget.
         /// </summary>
         internal static string BalanceTransactions_ModalDialog_DescribePurchaseBudget {
