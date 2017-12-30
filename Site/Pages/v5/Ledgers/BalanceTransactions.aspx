@@ -211,11 +211,32 @@
 
             alert("BudgetId: " + budgetId + "\r\nVAT amount: " + vatAmount + "\r\nDescription: " + txDescription);
 
+            if (budgetId > 0) {
+                SwarmopsJS.ajaxCall(
+                    "/Pages/v5/Ledgers/BalanceTransactions.aspx/MarkDirectPurchase",
+                    {
+                        transactionId: transactionId,
+                        budgetId: budgetId,
+                        vatAmountString: vatAmount,
+                        newDescription: txDescription
+                    },
+                    function(result) {
+                        if (result.Success) {
+                            // close dialog, clear fields, reload
+                            // Keep the budget selection
+                            <%=this.UploadPurchase.ClientID%>_clear();
+                            <%=this.CurrencyPurchaseVat.ClientID%>_setValue("");
+                            
+                            $('#gridTransactions').datagrid('reload');
+
+                        } else {
+                            alertify.error(result.DisplayMessage);
+                        }
+                    });
+            }
+
             // TODO HERE: AJAX CALL
 
-            <%=this.UploadPurchase.ClientID%>_clear();
-            <%=this.CurrencyPurchaseVat.ClientID%>_val("");
-            // Keep the budget selection
         }
 
         var buttonBalanceValue = SwarmopsJS.unescape('<%=this.Localized_ButtonBalance%>');

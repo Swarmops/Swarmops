@@ -89,33 +89,25 @@ namespace Swarmops.Frontend.Automation
                 return new InterpretedCurrencyResult { Success = false, DisplayMessage = "Cannot interpret currency" };
             }
 
-            Int64 amountCents = 0;
-            double amountDouble = 0.0;
-            bool amountInterpreted = false;
-
-            if (Double.TryParse(currencyStrings[1], NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out amountDouble))
+            try
             {
-                amountInterpreted = true;
-            }
-            else if (Double.TryParse(currencyStrings[1], NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out amountDouble))
-            {
-                amountInterpreted = true;
-            }
+                Int64 parsedCents = Swarmops.Logic.Support.Formatting.ParseDoubleStringAsCents(input);
 
-            if (!amountInterpreted)
+                Money money = new Money(parsedCents, currencyUsed);
+
+                return new InterpretedCurrencyResult
+                {
+                    Success = true,
+                    EnteredAmount = (parsedCents / 100.0).ToString("N2"),
+                    CurrencyCode = money.Currency.Code,
+                    DisplayAmount = (money.ToCurrency(authData.CurrentOrganization.Currency).Cents / 100.0).ToString("N2")
+                };
+            }
+            catch (ArgumentException)
             {
                 return new InterpretedCurrencyResult { Success = false, DisplayMessage = "Cannot interpret amount" };
             }
 
-            Money money = new Money((long) (amountDouble * 100.0 + 0.5), currencyUsed);
-
-            return new InterpretedCurrencyResult
-            {
-                Success = true,
-                EnteredAmount = amountDouble.ToString("N2"),
-                CurrencyCode = money.Currency.Code,
-                DisplayAmount = (money.ToCurrency(authData.CurrentOrganization.Currency).Cents/100.0).ToString("N2")
-            };
         }
 
 

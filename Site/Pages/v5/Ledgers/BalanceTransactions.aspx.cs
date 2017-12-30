@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
@@ -516,6 +517,36 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 // Negative amount - liability account
                 transaction.AddRow(authData.CurrentOrganization.FinancialAccounts.DebtsVatOutboundReported, -diffCents,
                     null);
+            }
+        }
+
+
+        [WebMethod]
+        public static AjaxCallResult MarkDirectPurchase(int transactionId, int budgetId, string vatAmountString,
+            string newDescription)
+        {
+            if (transactionId == 0 | budgetId == 0)
+            {
+                return new AjaxCallResult {Success = false};
+            }
+
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (
+                !authData.Authority.HasAccess(new Access(authData.CurrentOrganization,
+                    AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            Int64 vatCents = 0;
+            bool vatEnabled = authData.CurrentOrganization.VatEnabled;
+
+            if (vatEnabled)
+            {
+                double vatDouble;
+
+                
             }
         }
 

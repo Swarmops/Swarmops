@@ -155,8 +155,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
-            Double amountFloat = Double.Parse (amountString);
-            Int64 amountCents = (Int64) (amountFloat*100.0);
+            Int64 amountCents = Formatting.ParseDoubleStringAsCents(amountString);
 
             if (account.OrganizationId != authData.CurrentOrganization.Identity)
             {
@@ -473,8 +472,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException();
             }
 
-            double amount = Double.Parse(amountString);
-            Int64 amountCents = (Int64) (amount *100);
+            Int64 amountCents = Formatting.ParseDoubleStringAsCents(amountString);
 
             DateTime txTime = DateTime.Parse(dateTimeString);
 

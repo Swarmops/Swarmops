@@ -231,11 +231,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         public static AjaxCallResult AttestCorrectedItem(string recordId, string amountString)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
-            double amount = 0.0;
+            Int64 amountCents = 0;
 
             try
             {
-                amount = Double.Parse (amountString, NumberStyles.Currency, Thread.CurrentThread.CurrentCulture);
+                amountCents = Formatting.ParseDoubleStringAsCents(amountString);
             }
             catch (Exception)
             {
@@ -245,8 +245,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     DisplayMessage = String.Format(Resources.Global.Error_CurrencyParsing, 1000.00)
                 };
             }
-
-            Int64 amountCents = (Int64) (amount*100);
 
             if (amountCents < 0)
             {
@@ -277,7 +275,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             Int64 centsRemaining = budget.GetBudgetCentsRemaining();
 
-            if (centsRemaining/100.0 < amount)
+            if (centsRemaining < amountCents)
             {
                 // TODO: Handle the special case where the IPayable is not on current year, so against another (last) year's budget
 

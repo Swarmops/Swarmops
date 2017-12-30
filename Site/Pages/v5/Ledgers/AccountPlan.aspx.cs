@@ -298,11 +298,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     };
                 }
 
-                Int64 desiredInitialBalanceCents =
-                    (Int64)
-                        (Double.Parse (newInitialBalanceString,
-                            NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint,
-                            CultureInfo.CurrentCulture)*100.0);
+                Int64 desiredInitialBalanceCents = Formatting.ParseDoubleStringAsCents(newInitialBalanceString);
 
                 Int64 currentInitialBalanceCents = account.GetDeltaCents (new DateTime (1900, 1, 1),
                     new DateTime (authData.CurrentOrganization.FirstFiscalYear, 1, 1));

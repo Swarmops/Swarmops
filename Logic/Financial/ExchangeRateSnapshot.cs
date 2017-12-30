@@ -96,7 +96,7 @@ namespace Swarmops.Logic.Financial
                     string currencyCode = match.Groups[1].Value;
                     string currencyName = match.Groups[2].Value;
                     double btcRate = Double.Parse (match.Groups[3].Value, NumberStyles.AllowDecimalPoint,
-                        CultureInfo.InvariantCulture);
+                        CultureInfo.InvariantCulture); // rounding errors and loss of precision ok, don't use Formatting fn
 
                     btcRate /= 1000000.0; // We're operating in microbitcoin, so adjust the stored exchange rate accordingly (right-shift six decimal places)
 

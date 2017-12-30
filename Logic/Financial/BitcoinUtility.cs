@@ -867,8 +867,8 @@ namespace Swarmops.Logic.Financial
 
                     JObject feeData = JObject.Parse(
                                 new WebClient().DownloadString("https://blockexplorer.com/api/utils/estimatefee?nbBlocks=" + blocksWait.ToString(CultureInfo.InvariantCulture)));
-                    double feeWholeCoins = Double.Parse((string)feeData[blocksWait.ToString(CultureInfo.InvariantCulture)], NumberStyles.AllowDecimalPoint);
-                    satoshisPerThousandBytes = (Int64)(feeWholeCoins * _satoshisPerBitcoin);
+                    double feeWholeCoins = Double.Parse((string)feeData[blocksWait.ToString(CultureInfo.InvariantCulture)], NumberStyles.AllowDecimalPoint);  // rounding errors are okay, don't use Formatting fn
+                    satoshisPerThousandBytes = Convert.ToInt64(feeWholeCoins * _satoshisPerBitcoin);
                 }
 
                 _lastFeeSatoshisLookup[chain] = satoshisPerThousandBytes;

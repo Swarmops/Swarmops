@@ -136,6 +136,83 @@ namespace Swarmops.Logic.Support
         }
 
 
+        public enum ParsingScale
+        {
+            Unknown = 0,
+            Cents,
+            Metacents
+        }
+
+
+        public static Int64 ParseDoubleStringAsCents (string input, CultureInfo culture = null, ParsingScale scale = ParsingScale.Cents)
+        {
+            // Parses first according to culture, and if fails, according to neutral culture
+            // Throws ArgumentException if fails
+
+            double outputHolder;
+            bool success = false;
+            input = input.Trim();
+
+            if (culture == null)
+            {
+                culture = CultureInfo.CurrentCulture;
+            }
+
+            // Try current or provided culture first
+
+            success = Double.TryParse(input,
+                NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint,
+                culture, out outputHolder);
+
+            if (success)
+            {
+                return DoubleRoundToCents(outputHolder, scale);
+            }
+
+            // Try invariant (US) culture as fallback
+
+            success = Double.TryParse(input,
+                NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint,
+                CultureInfo.InvariantCulture, out outputHolder);
+
+            if (success)
+            {
+                return DoubleRoundToCents(outputHolder, scale);
+            }
+
+            // No joy, could not convert, so throw
+
+            throw new ArgumentException("Could not parse input as cents: " + input);
+        }
+
+        private static Int64 DoubleRoundToCents(double input, ParsingScale scale)
+        {
+            double epsilonLimit = 0.004;
+            double scalingFactor = 100.0;
+
+            if (scale == ParsingScale.Metacents)  // factor 10,000 instead of 100
+            {
+                epsilonLimit /= 100.0;
+                scalingFactor *= 100.0;
+            }
+
+            // Epsilon and true-zero values
+            if (input > -epsilonLimit && input < epsilonLimit)
+            {
+                return 0;
+            }
+
+            // Positive values
+            if (input > 0.0)
+            {
+               return Convert.ToInt64(input * scalingFactor + 0.2);   // +0.2 avoids rounding errors from epsilon losses of precision
+            }
+
+            // Negative values
+
+            return Convert.ToInt64(input * scalingFactor - 0.2);  // -0.2 avoids rounding errors from epsilon losses of precision
+        }
+
         public static string GeneratePassword (int length)
         {
             return Authentication.CreateWeakSecret (length);
