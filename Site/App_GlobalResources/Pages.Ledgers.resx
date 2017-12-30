@@ -921,7 +921,7 @@
     <comment>Displayed as description of footer</comment>
   </data>
   <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
-    <value>Mark Purchase</value>
+    <value>Mark as Direct Purchase</value>
   </data>
   <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
     <value>Charge purchase to this budget</value>

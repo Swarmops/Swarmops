@@ -619,7 +619,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mark Purchase.
+        ///   Looks up a localized string similar to Mark as Direct Purchase.
         /// </summary>
         internal static string BalanceTransactions_ModalDialog_ButtonPurchase {
             get {

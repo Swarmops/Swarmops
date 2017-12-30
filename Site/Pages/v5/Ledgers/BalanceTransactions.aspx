@@ -201,7 +201,22 @@
                         $('#gridTransactions').datagrid('reload');
                     });
 
-            }        }
+            }
+        }
+
+        function onCreateDirectPurchase() {
+            var budgetId = <%=this.DropBudgetsPurchase%>_val();
+            var vatAmount = <%=this.CurrencyPurchaseVat.ClientID%>_val();
+            var txDescription = $("#inputTextPurchaseDescription").val();
+
+            alert("BudgetId: " + budgetId + "\r\nVAT amount: " + vatAmount + "\r\nDescription: " + txDescription);
+
+            // TODO HERE: AJAX CALL
+
+            <%=this.UploadPurchase.ClientID%>_clear();
+            <%=this.CurrencyPurchaseVat.ClientID%>_val("");
+            // Keep the budget selection
+        }
 
         var buttonBalanceValue = SwarmopsJS.unescape('<%=this.Localized_ButtonBalance%>');
         var buttonPayoutValue = SwarmopsJS.unescape('<%=this.Localized_ButtonPayout%>');

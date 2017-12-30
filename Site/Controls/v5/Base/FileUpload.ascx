@@ -102,6 +102,11 @@
 
     }
 
+    function <%=this.ClientID%>_clear() {
+        // Note that this only clears the UI -- the uploaded docs must be disassociated elsewhere
+        $('#<%=this.ClientID%>_DivUploadCount').empty();
+    }
+
 </script>
 
 <div class="stacked-input-control">
