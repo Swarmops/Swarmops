@@ -80,6 +80,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             public string TransactionDate { get; set; }
             public string DifferingAmount { get; set; }
+            public string AmountAsPurchase { get; set; }
             public string TransactionDescription { get; set; }
             public DropdownOptions OpenPayoutData { get; set; }
             public DropdownOptions OpenOutboundInvoiceData { get; set; }
@@ -125,11 +126,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             TransactionMatchabilityData result = new TransactionMatchabilityData();
 
+            Int64 transactionCents = transaction.Rows.AmountCentsTotal;
+
             result.TransactionDate = transaction.DateTime.ToString ("yyyy-MMM-dd HH:mm");
             result.TransactionDescription = transaction.Description;
+            result.AmountAsPurchase = ((-transactionCents)/100.0).ToString("N2");
             result.DifferingAmount = String.Format ("{0} {1:+#,#.00;−#,#.00;0}",
                 // this is a UNICODE MINUS (U+2212), not the hyphen on the keyboard
-                authData.CurrentOrganization.Currency.DisplayCode, transaction.Rows.AmountCentsTotal/100.0);
+                authData.CurrentOrganization.Currency.DisplayCode, transactionCents/100.0);
 
             if (transaction.Rows.AmountCentsTotal > 0)
             {

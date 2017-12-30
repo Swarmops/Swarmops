@@ -70,7 +70,7 @@
                     $('#spanTransactionUnbalancedBy').text(data.DifferingAmount);
                     $('span#spanModalTransactionDate').text(data.TransactionDate);
                     $('input#inputTextPurchaseDescription').val(data.TransactionDescription);
-                    $('input#inputTextPurchaseAmount').val(data.DifferingAmount.substring(1)); // removes the leading minus sign
+                    $('input#inputTextPurchaseAmount').val(data.AmountAsPurchase); 
 
                     if (data.OpenPayoutData == null) // amount is positive
                     {
