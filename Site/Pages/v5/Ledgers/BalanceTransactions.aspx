@@ -226,6 +226,7 @@
                             <%=this.UploadPurchase.ClientID%>_clear();
                             <%=this.CurrencyPurchaseVat.ClientID%>_setValue("");
                             
+                            <%= this.DialogTx.ClientID %>_close();
                             $('#gridTransactions').datagrid('reload');
 
                         } else {
