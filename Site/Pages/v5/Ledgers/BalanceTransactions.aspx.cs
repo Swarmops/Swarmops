@@ -165,8 +165,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (Payout payout in openPayouts)
             {
-                if (payout.AmountCents > -matchAmount*95/100 &&
-                         payout.AmountCents < -matchAmount*105/100)
+                if (payout.AmountCents > -matchAmount*90/100 &&
+                         payout.AmountCents < -matchAmount*110/100)
                 {
                     string description = String.Format(Resources.Pages.Ledgers.BalanceTransactions_PayoutMatch, payout.Identity,
                         payout.ExpectedTransactionDate, payout.Recipient, payout.Organization.Currency.DisplayCode, payout.AmountCents / 100.0,
@@ -186,7 +186,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         listTolerant.Add(new DropdownOption
                         {
                             id = payout.Identity.ToString(CultureInfo.InvariantCulture),
-                            @group = Resources.Pages.Ledgers.BalanceTransactions_FivePercentMatches,
+                            @group = Resources.Pages.Ledgers.BalanceTransactions_TenPercentMatches,
                             text = description
                         });
                     }
@@ -214,8 +214,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (OutboundInvoice invoice in invoices)
             {
-                if (invoice.AmountCents > matchAmount * 95 / 100 &&
-                         invoice.AmountCents < matchAmount * 105 / 100)
+                if (invoice.AmountCents > matchAmount * 90 / 100 &&
+                         invoice.AmountCents < matchAmount * 110 / 100)
                 {
                     string description = String.Format(Resources.Pages.Ledgers.BalanceTransactions_OutboundInvoiceMatch, invoice.Identity,
                         invoice.CustomerName, invoice.DueDate, invoice.DisplayNativeAmount);
@@ -243,7 +243,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         listTolerant.Add(new DropdownOption
                         {
                             id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
-                            @group = invoiceIdMatch ? Resources.Pages.Ledgers.BalanceTransactions_MostProbableMatch : Resources.Pages.Ledgers.BalanceTransactions_FivePercentMatches,
+                            @group = invoiceIdMatch ? Resources.Pages.Ledgers.BalanceTransactions_MostProbableMatch : Resources.Pages.Ledgers.BalanceTransactions_TenPercentMatches,
                             text = description
                         });
                     }
