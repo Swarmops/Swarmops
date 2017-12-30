@@ -349,7 +349,7 @@
             <p><input type="radio" id="RadioPurchase" name="TxOptions" value="Purchase" /><label for="RadioPurchase">&nbsp;<asp:Label runat="server" ID="LabelRadioPurchase" Text="Mark this as a direct-from-account purchase? XYZ" /></label></p>
             <div id="radioOptionPurchase" class="radioOption">
                 <div class="entryFields">
-                    <div class="stacked-input-control"><input type="text" value="" readonly="readonly" disabled="disabled" id="inputTextPurchaseAmount"/></div>
+                    <div class="stacked-input-control"><input type="text" value="" readonly="readonly" disabled="disabled" class="alignRight" id="inputTextPurchaseAmount"/></div>
                     <Swarmops5:ComboBudgets Layout="Vertical" ID="DropBudgetsPurchase" runat="server" ListType="InvoiceableIn" />
                     <div class="stacked-input-control"><input type="text" value="" id="inputTextPurchaseDescription"/></div>
                     <div class="onVatEnabled" style="display: none"><Swarmops5:CurrencyTextBox ID="CurrencyPurchaseVat" runat="server" Layout="Vertical"/></div>
