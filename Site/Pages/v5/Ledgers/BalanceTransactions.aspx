@@ -205,7 +205,7 @@
         }
 
         function onCreateDirectPurchase() {
-            var budgetId = <%=this.DropBudgetsPurchase%>_val();
+            var budgetId = <%=this.DropBudgetsPurchase.ClientID%>_val();
             var vatAmount = <%=this.CurrencyPurchaseVat.ClientID%>_val();
             var txDescription = $("#inputTextPurchaseDescription").val();
 
