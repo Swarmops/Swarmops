@@ -209,8 +209,6 @@
             var vatAmount = <%=this.CurrencyPurchaseVat.ClientID%>_val();
             var txDescription = $("#inputTextPurchaseDescription").val();
 
-            alert("BudgetId: " + budgetId + "\r\nVAT amount: " + vatAmount + "\r\nDescription: " + txDescription);
-
             if (budgetId > 0) {
                 SwarmopsJS.ajaxCall(
                     "/Pages/v5/Ledgers/BalanceTransactions.aspx/MarkDirectPurchase",
