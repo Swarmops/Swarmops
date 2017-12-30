@@ -91,7 +91,7 @@ namespace Swarmops.Frontend.Automation
 
             try
             {
-                Int64 parsedCents = Swarmops.Logic.Support.Formatting.ParseDoubleStringAsCents(input);
+                Int64 parsedCents = Swarmops.Logic.Support.Formatting.ParseDoubleStringAsCents(currencyStrings[1]);
 
                 Money money = new Money(parsedCents, currencyUsed);
 
