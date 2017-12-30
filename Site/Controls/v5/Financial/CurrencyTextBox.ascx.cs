@@ -4,7 +4,6 @@ using Swarmops.Common.Enums;
 using System.Web.UI;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Support;
-using Swarmops.Logic.Support.Formatting;
 
 namespace Swarmops.Frontend.Controls.Financial
 {
