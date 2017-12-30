@@ -606,6 +606,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 tx.AddRow(budget, -centsDiff, authData.CurrentUser);
             }
+
+            return new AjaxCallResult {Success = true};
         }
 
 
