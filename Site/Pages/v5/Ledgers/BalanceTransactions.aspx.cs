@@ -81,6 +81,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public string TransactionDate { get; set; }
             public string DifferingAmount { get; set; }
             public string AmountAsPurchase { get; set; }
+            public int AmountSign { get; set; }
             public string TransactionDescription { get; set; }
             public DropdownOption[] OpenPayoutData { get; set; }
             public DropdownOption[] OpenOutboundInvoiceData { get; set; }
@@ -137,11 +138,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             if (transaction.Rows.AmountCentsTotal > 0)
             {
                 result.OpenOutboundInvoiceData = GetOpenOutboundInvoiceData(transaction);
+                result.AmountSign = 1;
             }
             else
             {
                 // Negative difference
 
+                result.AmountSign = -1;
                 result.OpenPayoutData = GetOpenPayoutData(transaction);
             }
 

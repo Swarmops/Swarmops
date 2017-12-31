@@ -72,7 +72,7 @@
                     $('input#inputTextPurchaseDescription').val(data.TransactionDescription);
                     $('input#inputTextPurchaseAmount').val(data.AmountAsPurchase); 
 
-                    if (data.OpenPayoutData == null) // amount is positive
+                    if (data.AmountSign == 1) // amount is positive
                     {
                         $('#divPositiveDifference').show();
                         $('#divNegativeDifference').hide();
@@ -322,6 +322,25 @@
                         <asp:Label runat="server" ID="LabelDescribePayoutForeign" Text="Match to payout XYZ" />
                     </div>
                 </div>
+                <p><input type="radio" id="RadioPurchase" name="TxOptions" value="Purchase" /><label for="RadioPurchase">&nbsp;<asp:Label runat="server" ID="LabelRadioPurchase" Text="Mark this as a direct-from-account purchase? XYZ" /></label></p>
+                <div id="radioOptionPurchase" class="radioOption">
+                    <div class="entryFields">
+                        <div class="stacked-input-control"><input type="text" value="" readonly="readonly" disabled="disabled" class="alignRight" id="inputTextPurchaseAmount"/></div>
+                        <Swarmops5:ComboBudgets Layout="Vertical" ID="DropBudgetsPurchase" runat="server" ListType="InvoiceableIn" />
+                        <div class="stacked-input-control"><input type="text" value="" id="inputTextPurchaseDescription"/></div>
+                        <div class="onVatEnabled" style="display: none"><Swarmops5:CurrencyTextBox ID="CurrencyPurchaseVat" runat="server" Layout="Vertical"/></div>
+                        <Swarmops5:FileUpload ID="UploadPurchase" runat="server"/>
+                        <input type="button" value='#Balance#' class="buttonAccentColor" onclick="onCreateDirectPurchase(); return false;" id="buttonExecutePurchase"/>
+                    </div>
+                    <div class="entryLabels">
+                        <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseAmount" Text="Direct purchase amount (CUR) XYZ" /></div>
+                        <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseBudget" Text="Charge purchase to this budget XYZ" /></div>
+                        <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseDescriptionUpdate" Text="Update transaction description XYZ" /></div>
+                        <div class="onVatEnabled" style="display:none"><div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseVatAmount" Text="VAT part of the amount XYZ" /></div></div>
+                        <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseUploadReceipt" Text="Upload the receipt or other documentation XYZ" /></div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
             </div>
             <div id="divPositiveDifference">
                 <div id="divOutboundInvoice">
@@ -336,25 +355,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <p><input type="radio" id="RadioPurchase" name="TxOptions" value="Purchase" /><label for="RadioPurchase">&nbsp;<asp:Label runat="server" ID="LabelRadioPurchase" Text="Mark this as a direct-from-account purchase? XYZ" /></label></p>
-            <div id="radioOptionPurchase" class="radioOption">
-                <div class="entryFields">
-                    <div class="stacked-input-control"><input type="text" value="" readonly="readonly" disabled="disabled" class="alignRight" id="inputTextPurchaseAmount"/></div>
-                    <Swarmops5:ComboBudgets Layout="Vertical" ID="DropBudgetsPurchase" runat="server" ListType="InvoiceableIn" />
-                    <div class="stacked-input-control"><input type="text" value="" id="inputTextPurchaseDescription"/></div>
-                    <div class="onVatEnabled" style="display: none"><Swarmops5:CurrencyTextBox ID="CurrencyPurchaseVat" runat="server" Layout="Vertical"/></div>
-                    <Swarmops5:FileUpload ID="UploadPurchase" runat="server"/>
-                    <input type="button" value='#Balance#' class="buttonAccentColor" onclick="onCreateDirectPurchase(); return false;" id="buttonExecutePurchase"/>
-                </div>
-                <div class="entryLabels">
-                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseAmount" Text="Direct purchase amount (CUR) XYZ" /></div>
-                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseBudget" Text="Charge purchase to this budget XYZ" /></div>
-                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseDescriptionUpdate" Text="Update transaction description XYZ" /></div>
-                    <div class="onVatEnabled" style="display:none"><div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseVatAmount" Text="VAT part of the amount XYZ" /></div></div>
-                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseUploadReceipt" Text="Upload the receipt or other documentation XYZ" /></div>
-                </div>
-                <div style="clear:both"></div>
             </div>
             <p><input type="radio" id="RadioBalance" name="TxOptions" value="Balance" /><label for="RadioBalance">&nbsp;<asp:Label runat="server" ID="LabelRadioBalance" Text="Balance the transaction manually? XYZ" /></label></p>
             <div id="radioOptionBalance" class="radioOption">  <!-- this should go last -->

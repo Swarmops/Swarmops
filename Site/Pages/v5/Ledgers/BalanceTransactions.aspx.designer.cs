@@ -184,33 +184,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::System.Web.UI.WebControls.Label LabelDescribePayoutForeign;
         
         /// <summary>
-        /// LabelRadioOutboundInvoice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelRadioOutboundInvoice;
-        
-        /// <summary>
-        /// DropOpenOutboundInvoices control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Base.DropDown DropOpenOutboundInvoices;
-        
-        /// <summary>
-        /// LabelDescribeOutboundInvoice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelDescribeOutboundInvoice;
-        
-        /// <summary>
         /// LabelRadioPurchase control.
         /// </summary>
         /// <remarks>
@@ -290,6 +263,33 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelDescribePurchaseUploadReceipt;
+        
+        /// <summary>
+        /// LabelRadioOutboundInvoice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelRadioOutboundInvoice;
+        
+        /// <summary>
+        /// DropOpenOutboundInvoices control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.DropDown DropOpenOutboundInvoices;
+        
+        /// <summary>
+        /// LabelDescribeOutboundInvoice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelDescribeOutboundInvoice;
         
         /// <summary>
         /// LabelRadioBalance control.
