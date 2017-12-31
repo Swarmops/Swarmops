@@ -78,9 +78,10 @@
                         $('#divNegativeDifference').hide();
 
                         if (data.OpenOutboundInvoiceData != null) {
-                            if (data.OpenOutboundInvoiceData.ExactMatches.length > 0) {
+                            if (data.OpenOutboundInvoiceData.ExactMatches.length > 0 || data.OpenOutboundInvoiceData.TolerantMatches.length > 0) {
                                 $('#divOutboundInvoice').show();
                                 <%=this.DropOpenOutboundInvoices.ClientID%>_loadData(data.OpenOutboundInvoiceData.ExactMatches);
+                                <%=this.DropOpenOutboundInvoices.ClientID%>_loadData(data.OpenOutboundInvoiceData.TolerantMatches);
                                 <%=this.DropOpenOutboundInvoices.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
                             } else {
                                 $('#divOutboundInvoice').hide();
@@ -94,22 +95,14 @@
                         $('#divNegativeDifference').show();
 
                         if (data.OpenPayoutData != null) {
-                            if (data.OpenPayoutData.ExactMatches.length > 0) {
+                            if (data.OpenPayoutData.ExactMatches.length > 0 || data.OpenPayoutData.TolerantMatches.length > 0) {
                                 <%=this.DropOpenPayouts.ClientID%>_loadData(data.OpenPayoutData.ExactMatches);
+                                <%=this.DropOpenPayouts.ClientID%>_loadData(data.OpenPayoutData.TolerantMatches);
                                 <%=this.DropOpenPayouts.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
                             } else {
                                 <%=this.DropOpenPayouts.ClientID%>_loadData({});
                                 <%=this.DropOpenPayouts.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
                             }
-
-                            if (data.OpenPayoutData.TolerantMatches.length > 0) {
-                                <%=this.DropOpenPayoutsForeign.ClientID%>_loadData(data.OpenPayoutData.TolerantMatches);
-                                <%=this.DropOpenPayoutsForeign.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
-                            } else {
-                                <%=this.DropOpenPayoutsForeign.ClientID%>_loadData({});
-                                <%=this.DropOpenPayoutsForeign.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
-                            }
-
                         }
 
                     }
