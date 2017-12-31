@@ -255,7 +255,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         listTolerant.Add(new DropdownOption
                         {
                             id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
-                            @group = invoiceIdMatch ? Resources.Pages.Ledgers.BalanceTransactions_FivePercentMatches,
+                            @group = Resources.Pages.Ledgers.BalanceTransactions_FivePercentMatches,
                             text = description
                         });
                     }
