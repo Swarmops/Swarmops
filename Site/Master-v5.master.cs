@@ -223,13 +223,15 @@ namespace Swarmops.Frontend
             {
                 flagName = cultureStringLower.Substring (3);
             }
-
-            if (cultureStringLower.StartsWith ("ar"))
+            else if (cultureStringLower.StartsWith ("ar"))
             {
                 flagName = "Arabic";
             }
-
-            if (cultureStringLower == "af-za") // "South African Afrikaans", a special placeholder for localization code
+            else if (cultureStringLower == "fi-latn")
+            {
+                flagName = "ph"; // Filipino culture
+            }
+            else if (cultureStringLower == "af-za") // "South African Afrikaans", a special placeholder for localization code
             {
                 flagName = "txl";
                 InitTranslation();
