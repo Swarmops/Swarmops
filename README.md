@@ -82,28 +82,24 @@ That also means that any code _you_ commit to Swarmops, whether by checking in c
 
 
 
-Beta-3 features progress
-------------------------
 
-Beta-3 will be released on January 5, 2018, with string freeze on January 2. Its focus will be on Shapeshift integration and ability to receive and send payments in all different cryptocurrencies, but will also include some further Bitcoin Cash features that weren't included in Beta-2.
+Beta-3 will be released on January 5, 2018, with string freeze on January 2. It did not reach full Shapeshift integration but covered almost all Bitcoin Cash ground.
 
-- [x] Import all crypto pairs from Shapeshift and track exchange rates
-- [x] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 2, including conversion to fiat)
-- [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
-- [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
-- [ ] Write a Pay Invoice page for Bitcoin Cash
-- [x] Enable cryptocurrency as any other currency on entry
-- [ ] Enable payment identifiers, with currency
-- [ ] Tie payment identifiers to people and suppliers
-- [ ] String Freeze (January 2, 2018)
-- [ ] Release (January 5, 2018)
 
 
 Beta-4 features progress
 ------------------------
 
-Beta-4 will be released on February 5, 2018, with string freeze on February 2. Its tentative focus will be Bitwala integration and possibly an open API exposure.
+Beta-4 will be released on February 5, 2018, with string freeze on February 2. Its tentative focus will be Shapeshift and Bitwala integration and possibly an open API exposure.
 
+
+- [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
+- [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
+- [ ] Write a Pay Invoice page for Bitcoin Cash
+- [ ] Enable payment identifiers, with currency
+- [ ] Tie payment identifiers to people and suppliers
+- [ ] String Freeze (January 2, 2018)
+- [ ] Release (January 5, 2018)
 
 
 Overall Beta features checklist
