@@ -220,7 +220,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 if (invoice.AmountCents > matchAmount * 95 / 100 &&
                          invoice.AmountCents < matchAmount * 105 / 100)
                 {
-                    string description = String.Format(Resources.Pages.Ledgers.BalanceTransactions_OutboundInvoiceMatch, invoice.Identity,
+                    string description = String.Format(Resources.Pages.Ledgers.BalanceTransactions_OutboundInvoiceMatch, invoice.OrganizationSequenceId,
                         invoice.CustomerName, invoice.DueDate, invoice.DisplayNativeAmount);
 
                     if (invoice.HasNativeCurrency)
@@ -368,10 +368,38 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException();
             }
 
+            Int64 transactionCents = transaction.Rows.AmountCentsTotal;
+            Int64 payoutCents = payout.AmountCents;
+
+            FinancialAccount forexSpillAccount =
+                authData.CurrentOrganization.FinancialAccounts.IncomeCurrencyFluctuations;
+
+            if (forexSpillAccount == null && payoutCents != -transactionCents) // the tx-negative is because it's a payout
+            {
+                throw new InvalidOperationException("Need forex gain/loss accounts for this operation");  // TODO: Autocreate?
+            }
+
+            if ((-transactionCents) < payoutCents)  // the tx-negative is because it's a payout
+            {
+                // This is a forex loss, not a gain which is the default
+                forexSpillAccount = authData.CurrentOrganization.FinancialAccounts.CostsCurrencyFluctuations;
+            }
+
+            if (-transactionCents != payoutCents)
+            {
+                // Forex adjust
+                transaction.AddRow(forexSpillAccount, -(payoutCents + transactionCents),
+                    // plus because transactionCents is negative
+                    authData.CurrentUser); // Adds the forex adjustment so we can bind payout to tx and close
+            }
+
+            // The amounts should match now
+
             if (transaction.Rows.AmountCentsTotal != -payout.AmountCents)
             {
                 throw new InvalidOperationException();
             }
+
 
             payout.BindToTransactionAndClose(transaction, authData.CurrentUser);
 
@@ -403,9 +431,23 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException();
             }
 
-            if (transaction.Rows.AmountCentsTotal != outboundInvoice.AmountCents)
+            Int64 transactionCents = transaction.Rows.AmountCentsTotal;
+            Int64 invoiceCents = outboundInvoice.AmountCents;
+
+
+
+            FinancialAccount forexSpillAccount =
+                authData.CurrentOrganization.FinancialAccounts.IncomeCurrencyFluctuations;
+
+            if (forexSpillAccount == null && invoiceCents != transactionCents)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Need forex gain/loss accounts for this operation");  // TODO: Autocreate?
+            }
+
+            if (transaction.Rows.AmountCentsTotal < outboundInvoice.AmountCents)
+            {
+                // This is a forex loss, not a gain which is the default
+                forexSpillAccount = authData.CurrentOrganization.FinancialAccounts.CostsCurrencyFluctuations;
             }
 
             // Close invoice
@@ -419,6 +461,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             // TODO: Log?
 
             // Close transaction
+
+            if (transactionCents != invoiceCents)
+            {
+                transaction.AddRow(forexSpillAccount, invoiceCents - transactionCents,
+                    authData.CurrentUser); // Adds the forex adjustment so we can bind payout to tx and close
+            }
 
             transaction.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsOutboundInvoices,
                 -outboundInvoice.AmountCents, authData.CurrentUser);

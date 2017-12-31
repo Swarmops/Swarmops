@@ -312,14 +312,16 @@
                         <asp:Label runat="server" ID="LabelDescribePayout" Text="Match to payout XYZ" />
                     </div>
                 </div>
-                <p><input type="radio" id="RadioPayoutForeign" name="TxOptions" value="PayoutForeign" /><label for="RadioPayoutForeign">&nbsp;<asp:Label runat="server" ID="LabelRadioPayoutForeign" Text="Match to an open foreign-currency payout? XYZ" /></label></p>
-                <div id="radioOptionPayoutForeign" class="radioOption">
-                    <div class="entryFields">
-                        <Swarmops5:DropDown ID="DropOpenPayoutsForeign" runat="server" ListType="All" />&#8203;<br/>
-                        <input type="button" value='#PayoutForeign#' class="buttonAccentColor" onclick="onMatchOpenPayoutForeign(); return false;" id="buttonExecutePayoutForeign"/>
-                    </div>
-                    <div class="entryLabels">
-                        <asp:Label runat="server" ID="LabelDescribePayoutForeign" Text="Match to payout XYZ" />
+                <div style="display:none"><!-- Legacy, can be deleted in 2019 -->
+                    <p><input type="radio" id="RadioPayoutForeign" name="TxOptions" value="PayoutForeign" /><label for="RadioPayoutForeign">&nbsp;<asp:Label runat="server" ID="LabelRadioPayoutForeign" Text="Match to an open foreign-currency payout? XYZ" /></label></p>
+                    <div id="radioOptionPayoutForeign" class="radioOption">
+                        <div class="entryFields">
+                            <Swarmops5:DropDown ID="DropOpenPayoutsForeign" runat="server" ListType="All" />&#8203;<br/>
+                            <input type="button" value='#PayoutForeign#' class="buttonAccentColor" onclick="onMatchOpenPayoutForeign(); return false;" id="buttonExecutePayoutForeign"/>
+                        </div>
+                        <div class="entryLabels">
+                            <asp:Label runat="server" ID="LabelDescribePayoutForeign" Text="Match to payout XYZ" />
+                        </div>
                     </div>
                 </div>
                 <p><input type="radio" id="RadioPurchase" name="TxOptions" value="Purchase" /><label for="RadioPurchase">&nbsp;<asp:Label runat="server" ID="LabelRadioPurchase" Text="Mark this as a direct-from-account purchase? XYZ" /></label></p>
