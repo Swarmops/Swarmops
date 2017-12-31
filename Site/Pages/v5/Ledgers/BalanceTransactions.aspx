@@ -78,10 +78,9 @@
                         $('#divNegativeDifference').hide();
 
                         if (data.OpenOutboundInvoiceData != null) {
-                            if (data.OpenOutboundInvoiceData.ExactMatches.length > 0 || data.OpenOutboundInvoiceData.TolerantMatches.length > 0) {
+                            if (data.OpenOutboundInvoiceData.length > 0) {
                                 $('#divOutboundInvoice').show();
-                                <%=this.DropOpenOutboundInvoices.ClientID%>_loadData(data.OpenOutboundInvoiceData.ExactMatches);
-                                <%=this.DropOpenOutboundInvoices.ClientID%>_loadData(data.OpenOutboundInvoiceData.TolerantMatches);
+                                <%=this.DropOpenOutboundInvoices.ClientID%>_loadData(data.OpenOutboundInvoiceData);
                                 <%=this.DropOpenOutboundInvoices.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
                             } else {
                                 $('#divOutboundInvoice').hide();
@@ -95,9 +94,8 @@
                         $('#divNegativeDifference').show();
 
                         if (data.OpenPayoutData != null) {
-                            if (data.OpenPayoutData.ExactMatches.length > 0 || data.OpenPayoutData.TolerantMatches.length > 0) {
-                                <%=this.DropOpenPayouts.ClientID%>_loadData(data.OpenPayoutData.ExactMatches);
-                                <%=this.DropOpenPayouts.ClientID%>_loadData(data.OpenPayoutData.TolerantMatches);
+                            if (data.OpenPayoutData.length > 0) {
+                                <%=this.DropOpenPayouts.ClientID%>_loadData(data.OpenPayoutData);
                                 <%=this.DropOpenPayouts.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
                             } else {
                                 <%=this.DropOpenPayouts.ClientID%>_loadData({});

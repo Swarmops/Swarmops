@@ -82,16 +82,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public string DifferingAmount { get; set; }
             public string AmountAsPurchase { get; set; }
             public string TransactionDescription { get; set; }
-            public DropdownOptions OpenPayoutData { get; set; }
-            public DropdownOptions OpenOutboundInvoiceData { get; set; }
+            public DropdownOption[] OpenPayoutData { get; set; }
+            public DropdownOption[] OpenOutboundInvoiceData { get; set; }
             public DropdownOption[] OpenVatReportData { get; set; }
         }
 
         [Serializable]
         public class DropdownOptions
         {
-            public DropdownOption[] ExactMatches { get; set; }
-            public DropdownOption[] TolerantMatches { get; set; }
+            public DropdownOption[] Matches { get; set; }
         }
 
         [Serializable]
@@ -151,7 +150,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             return result;
         }
 
-        private static DropdownOptions GetOpenPayoutData(FinancialTransaction transaction)
+        private static DropdownOption[] GetOpenPayoutData(FinancialTransaction transaction)
         {
             DateTime transactionDateTime = transaction.DateTime;
             Int64 matchAmount = transaction.Rows.AmountCentsTotal;
@@ -193,14 +192,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 }
             }
 
-            result.ExactMatches = listExact.ToArray();
-            result.TolerantMatches = listTolerant.ToArray();
+            List<DropdownOption> listCombined = new List<DropdownOption>();
+            listCombined.AddRange(listExact);
+            listCombined.AddRange(listTolerant);
 
-            return result;
+            return listCombined.ToArray();
         }
 
 
-        private static DropdownOptions GetOpenOutboundInvoiceData(FinancialTransaction transaction)
+        private static DropdownOption[] GetOpenOutboundInvoiceData(FinancialTransaction transaction)
         {
             DateTime txDateTime = transaction.DateTime;
             Int64 matchAmount = transaction.Rows.AmountCentsTotal;
@@ -250,10 +250,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 }
             }
 
-            result.ExactMatches = listExact.ToArray();
-            result.TolerantMatches = listTolerant.ToArray();
+            List<DropdownOption> listCombined = new List<DropdownOption>();
+            listCombined.AddRange(listExact);
+            listCombined.AddRange(listTolerant);
 
-            return result;
+            return listCombined.ToArray();
         }
 
         private static bool DescriptionContainsInvoiceReference(string ourReference, string theirReference, string description)
