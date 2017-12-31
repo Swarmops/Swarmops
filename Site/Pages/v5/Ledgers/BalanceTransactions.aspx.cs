@@ -212,6 +212,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             List<DropdownOption> listExact = new List<DropdownOption>();
             List<DropdownOption> listTolerant = new List<DropdownOption>();
+            List<DropdownOption> listRefMatch = new List<DropdownOption>();
 
             OutboundInvoices invoices = OutboundInvoices.ForOrganization(transaction.Organization);
 
@@ -231,13 +232,21 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                     bool invoiceIdMatch = DescriptionContainsInvoiceReference(invoice.Reference, invoice.TheirReference, transaction.Description);
 
-
+                    if (invoiceIdMatch)
+                    {
+                        listRefMatch.Add(new DropdownOption
+                        {
+                            id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
+                            @group = Resources.Pages.Ledgers.BalanceTransactions_MostProbableMatch,
+                            text = description
+                        });
+                    }
                     if (invoice.AmountCents == matchAmount)
                     {
                         listExact.Add(new DropdownOption
                         {
                             id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
-                            @group = invoiceIdMatch? Resources.Pages.Ledgers.BalanceTransactions_MostProbableMatch : Resources.Pages.Ledgers.BalanceTransactions_ExactMatches,
+                            @group = Resources.Pages.Ledgers.BalanceTransactions_ExactMatches,
                             text = description
                         });
                     }
@@ -246,7 +255,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         listTolerant.Add(new DropdownOption
                         {
                             id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
-                            @group = invoiceIdMatch ? Resources.Pages.Ledgers.BalanceTransactions_MostProbableMatch : Resources.Pages.Ledgers.BalanceTransactions_FivePercentMatches,
+                            @group = invoiceIdMatch ? Resources.Pages.Ledgers.BalanceTransactions_FivePercentMatches,
                             text = description
                         });
                     }
@@ -254,6 +263,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             List<DropdownOption> listCombined = new List<DropdownOption>();
+            listCombined.AddRange(listRefMatch);
             listCombined.AddRange(listExact);
             listCombined.AddRange(listTolerant);
 
