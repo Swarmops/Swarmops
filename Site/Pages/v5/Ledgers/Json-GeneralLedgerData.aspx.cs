@@ -126,7 +126,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     string description = transaction.Description;
 
                     result.Append("{" + String.Format(
-                        "\"id\":\"<span class='weight-emphasis'>{0:N0}</span>\",\"datetime\":\"<span class='weight-emphasis'>{1:MMM-dd HH:mm}</span>\",\"description\":\"<span class='weight-emphasis'>{2}</span>\"," +
+                        "\"id\":\"<span class='weight-more-emphasis'>{0:N0}</span>\",\"datetime\":\"<span class='weight-more-emphasis'>{1:MMM-dd HH:mm}</span>\",\"description\":\"<span class='weight-more-emphasis'>{2}</span>\"," +
                         "\"state\":\"open\",\"children\":[",
                         row.Transaction.OrganizationSequenceId,
                         row.TransactionDateTime,
@@ -179,12 +179,43 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 //result.Append("{\"description\":\"child\"}");
 
+                string accountClass;
+                switch (accountLookup[row.FinancialAccountId].AccountType)
+                {
+                    case FinancialAccountType.Asset:
+                        accountClass = Resources.Global.Financial_Asset;
+                        break;
+                    case FinancialAccountType.Debt:
+                        accountClass = Resources.Global.Financial_Debt;
+                        break;
+                    case FinancialAccountType.Income:
+                        accountClass = Resources.Global.Financial_Income;
+                        break;
+                    case FinancialAccountType.Cost:
+                        accountClass = Resources.Global.Financial_Cost;
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+
+                string accountName = account.Name;
+
+                if (account.ParentIdentity != 0)
+                {
+                    if (!accountLookup.ContainsKey(account.ParentIdentity))
+                    {
+                        accountLookup[account.ParentIdentity] = account.Parent;
+                    }
+
+                    accountName = accountLookup[account.ParentIdentity].Name + " » " + accountName;
+                }
+
                 result.Append ("{" + String.Format (
-                    "\"id\":\"{0:N0}:{6:N0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
+                    "\"id\":\"{0:N0}:{6:N0}\",\"datetime\":\"{1}\",\"description\":\"{2}\"," +
                     "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N2}\"",
                     row.Transaction.OrganizationSequenceId,
-                    row.TransactionDateTime,
-                    JsonSanitize ("description"),
+                    JsonSanitize (accountClass),
+                    JsonSanitize (accountName),
                     debitString,
                     creditString,
                     runningBalanceLookup[row.FinancialAccountId]/100.0,
