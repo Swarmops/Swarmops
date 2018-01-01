@@ -56,6 +56,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             bool zeroStart = false;
             bool zeroEnd = false;
             bool displayDescription = CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read));
+
+            // HACK HACK HACK
+            if (CurrentOrganization.Identity == 8 && CurrentOrganization.Name.StartsWith("Rick Falkvinge"))
+            {
+                // TODO
+                displayDescription = true; // FIX THIS WITH A DAMN SETTING, YOU MORON, DON'T HARDCODE IT
+            }
+
             bool canSeeAudit = CurrentAuthority.HasAccess(new Access(CurrentOrganization, AccessAspect.Auditing, AccessType.Read));
 
             if (month > 0 && month <= 12)
