@@ -46,7 +46,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException ("All the nopes in the world");
             }
 
-            if (!CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
+            if (!CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)) && CurrentOrganization.HasOpenLedgers)
             {
                 throw new UnauthorizedAccessException ("Access denied because security tokens say so");
             }
@@ -160,11 +160,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 if (row.AmountCents < 0)
                 {
-                    creditString = String.Format ("{0:N0}", row.AmountCents/100.0);
+                    creditString = String.Format ("{0:N2}", row.AmountCents/100.0);
                 }
                 else if (row.AmountCents > 0)
                 {
-                    debitString = String.Format ("{0:N0}", row.AmountCents/100.0);
+                    debitString = String.Format ("{0:N2}", row.AmountCents/100.0);
                 }
 
                 runningBalance += row.AmountCents;

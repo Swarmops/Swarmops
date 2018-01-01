@@ -33,6 +33,25 @@ html, body, input, select
 }
 
 
+/* WEIGHTS */
+
+.weight-normal, .light {
+    font-weight: 300;
+}
+
+.weight-emphasis {
+    font-weight: 400;
+}
+
+.weight-more-emphasis, .medium {
+    font-weight: 500;
+}
+
+.weight-most-emphasis, .bold {
+    font-weight: 700;
+}
+
+
 /* BASE */
 
 body

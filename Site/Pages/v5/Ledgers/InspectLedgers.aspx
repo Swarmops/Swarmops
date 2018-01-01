@@ -343,10 +343,10 @@
     
     <div id="divTabs" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
         <div class="tab" title="<img src='/Images/Icons/iconshock-groups-docs-lists-64px.png' height='64' width='64' />">
-            <h2><asp:Label ID="LabelHeaderGeneral" runat="server" /> <asp:Label ID="Label2" runat="server" /> <asp:DropDownList runat="server" ID="DropGeneralYears"/> <asp:DropDownList runat="server" ID="DropGeneralMonths"/></h2>
+            <h2><asp:Label ID="LabelHeaderGeneral" runat="server" /> <asp:DropDownList runat="server" ID="DropGeneralYears"/> <asp:DropDownList runat="server" ID="DropGeneralMonths"/></h2>
     
                 <table id="treeGeneralLedger" class="easyui-treegrid" style="width: 680px; height: 500px"
-                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-GeneralLedgerData.aspx'"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-GeneralLedgerData.aspx?Year=2017&Month=12'"
                 idField="id" treeField="id">
                 <thead>  
                     <tr>  

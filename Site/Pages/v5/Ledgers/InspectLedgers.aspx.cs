@@ -84,6 +84,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             this.LabelHeaderInspect.Text = Resources.Pages.Ledgers.InspectLedgers_Header_Inspect;
             this.LabelHeaderInspectFor.Text = Resources.Pages.Ledgers.InspectLedgers_Header_For;
+            this.LabelHeaderGeneral.Text = Resources.Pages.Ledgers.InspectLedgers_GeneralLedger;
 
             this.LabelGridHeaderAction.Text = this.LabelTreeHeaderAction.Text = Global.Global_Action;
             this.LabelGridHeaderBalance.Text = this.LabelTreeHeaderBalance.Text = Global.Ledgers_Balance;
@@ -93,7 +94,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelGridHeaderDescription.Text = Global.Global_Description;
             this.LabelTreeHeaderDescriptionAccount.Text = Resources.Pages.Ledgers.InspectLedgers_Detail;
             this.LabelGridHeaderId.Text = this.LabelTreeHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
-
             
             this.LabelGridHeaderAccountName.Text = Resources.Pages.Ledgers.InspectLedgers_AccountName;
             this.LabelGridHeaderDateTimeEntered.Text = Resources.Pages.Ledgers.InspectLedgers_LoggedDate;
