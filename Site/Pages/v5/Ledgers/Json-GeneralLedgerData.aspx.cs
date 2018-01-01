@@ -86,6 +86,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             int currentTransactionId = 0;
+            int rowCount = 0;
 
             foreach (FinancialAccountRow row in rows)
             {
@@ -146,11 +147,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         */
 
                     currentTransactionId = row.FinancialTransactionId;
+                    rowCount = 1;
+
                 }
                 else
                 {
                     // still same transaction
                     result.Append(",");
+                    rowCount++;
                 }
 
                 if (row.AmountCents < 0)
@@ -173,19 +177,19 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                             row.FinancialTransactionId.ToString (CultureInfo.InvariantCulture));
                 }*/
 
-                result.Append("{\"description\":\"child\"}");
+                //result.Append("{\"description\":\"child\"}");
 
-                /*
                 result.Append ("{" + String.Format (
-                    "\"id\":\"{0:N0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
+                    "\"id\":\"{0:N0}:{6:N0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
                     "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N2}\"",
                     row.Transaction.OrganizationSequenceId,
                     row.TransactionDateTime,
                     JsonSanitize ("description"),
                     debitString,
                     creditString,
-                    runningBalanceLookup[row.FinancialAccountId]/100.0) + "}");
-                */
+                    runningBalanceLookup[row.FinancialAccountId]/100.0,
+                    rowCount) + "}");
+                
             }
 
             if (rows.Count == 0)
