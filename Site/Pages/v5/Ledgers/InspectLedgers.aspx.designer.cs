@@ -76,6 +76,105 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::System.Web.UI.WebControls.Literal LiteralAddRowButton;
         
         /// <summary>
+        /// LabelHeaderGeneral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelHeaderGeneral;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// DropGeneralYears control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropGeneralYears;
+        
+        /// <summary>
+        /// DropGeneralMonths control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropGeneralMonths;
+        
+        /// <summary>
+        /// LabelTreeHeaderId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTreeHeaderId;
+        
+        /// <summary>
+        /// LabelTreeHeaderDateTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTreeHeaderDateTime;
+        
+        /// <summary>
+        /// LabelTreeHeaderDescriptionAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTreeHeaderDescriptionAccount;
+        
+        /// <summary>
+        /// LabelTreeHeaderDeltaPositive control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTreeHeaderDeltaPositive;
+        
+        /// <summary>
+        /// LabelTreeHeaderDeltaNegative control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTreeHeaderDeltaNegative;
+        
+        /// <summary>
+        /// LabelTreeHeaderBalance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTreeHeaderBalance;
+        
+        /// <summary>
+        /// LabelTreeHeaderAction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTreeHeaderAction;
+        
+        /// <summary>
         /// LabelHeaderInspect control.
         /// </summary>
         /// <remarks>
@@ -290,6 +389,24 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox TextInsertAmount;
+        
+        /// <summary>
+        /// LabelTransactionDocumentation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTransactionDocumentation;
+        
+        /// <summary>
+        /// LabelTransactionHasDocumentation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTransactionHasDocumentation;
         
         /// <summary>
         /// LabelTrackedTransactionHeader control.

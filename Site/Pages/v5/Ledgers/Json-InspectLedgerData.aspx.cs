@@ -120,7 +120,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new ArgumentException ("Invalid month supplied: " + month.ToString (CultureInfo.InvariantCulture));
             }
 
-
             FinancialAccountRows rows = account.GetRows (periodStart, periodEnd);
 
             StringBuilder result = new StringBuilder (16384);
@@ -145,7 +144,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             result.Append ("{" +
-                           String.Format ("\"description\":\"{0}\",\"balance\":\"{1:N0}\"", JsonSanitize (startString),
+                           String.Format ("\"description\":\"{0}\",\"balance\":\"{1:N2}\"", JsonSanitize (startString),
                                runningBalance/100.0) + "},");
 
             foreach (FinancialAccountRow row in rows)
@@ -185,7 +184,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 result.Append ("{" + String.Format (
                     "\"id\":\"{0:N0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
-                    "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N0}\",\"action\":\"{6}\"",
+                    "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N2}\",\"action\":\"{6}\"",
                     row.Transaction.OrganizationSequenceId,
                     row.TransactionDateTime,
                     JsonSanitize (description),
@@ -204,7 +203,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             result.Append ("{" +
-                           String.Format ("\"description\":\"{0}\",\"balance\":\"{1:N0}\"", JsonSanitize (endString),
+                           String.Format ("\"description\":\"{0}\",\"balance\":\"{1:N2}\"", JsonSanitize (endString),
                                runningBalance/100.0) + "},");
 
             Response.Output.WriteLine ("[" + result.ToString().TrimEnd (',') + "]");

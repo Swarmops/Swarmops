@@ -12,6 +12,7 @@
     
     <script type="text/javascript">
         $(document).ready(function() {
+            $('#divTabs').tabs();
 
             $('#divActionAddTransaction').click(function() {
                 if (canWriteRows) {
@@ -339,24 +340,48 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     
-    <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets Layout="Horizontal" ID="DropBudgets" OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
     
-        <table id="gridLedgers" class="easyui-datagrid" style="width: 680px; height: 500px"
-        data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerData.aspx'"
-        idField="id">
-        <thead>  
-            <tr>  
-                <th data-options="field:'id',width:70,align:'right'"><asp:Label ID="LabelGridHeaderId" runat="server" Text="ID#"/></th>  
-                <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelGridHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
-                <th data-options="field:'description',width:250"><asp:Label ID="LabelGridHeaderDescription" runat="server" Text="XYZ Description" /></th>  
-                <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaPositive" runat="server" Text="XYZ Debit" /></th>
-                <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaNegative" runat="server" Text="XYZ Credit" /></th>
-                <th data-options="field:'balance',width:80,align:'right'"><asp:Label ID="LabelGridHeaderBalance" runat="server" Text="XYZ Balance" /></th>
-                <th data-options="field:'action',width:43,align:'center'"><asp:Label ID="LabelGridHeaderAction" runat="server" Text="XYZAct" /></th>
-            </tr>  
-        </thead>
-    </table>  
+    <div id="divTabs" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
+        <div class="tab" title="<img src='/Images/Icons/iconshock-groups-docs-lists-64px.png' height='64' width='64' />">
+            <h2><asp:Label ID="LabelHeaderGeneral" runat="server" /> <asp:Label ID="Label2" runat="server" /> <asp:DropDownList runat="server" ID="DropGeneralYears"/> <asp:DropDownList runat="server" ID="DropGeneralMonths"/></h2>
     
+                <table id="treeGeneralLedger" class="easyui-treegrid" style="width: 680px; height: 500px"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-GeneralLedgerData.aspx'"
+                idField="id" treeField="id">
+                <thead>  
+                    <tr>  
+                        <th data-options="field:'id',width:70,align:'right'"><asp:Label ID="LabelTreeHeaderId" runat="server" Text="ID#"/></th>  
+                        <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelTreeHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
+                        <th data-options="field:'description',width:250"><asp:Label ID="LabelTreeHeaderDescriptionAccount" runat="server" Text="XYZ Description, Account" /></th>  
+                        <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelTreeHeaderDeltaPositive" runat="server" Text="XYZ Debit" /></th>
+                        <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelTreeHeaderDeltaNegative" runat="server" Text="XYZ Credit" /></th>
+                        <th data-options="field:'balance',width:80,align:'right'"><asp:Label ID="LabelTreeHeaderBalance" runat="server" Text="XYZ Balance" /></th>
+                        <th data-options="field:'action',width:43,align:'center'"><asp:Label ID="LabelTreeHeaderAction" runat="server" Text="XYZAct" /></th>
+                    </tr>  
+                </thead>
+            </table>  
+        </div>
+        <div class="tab" title="<img src='/Images/Icons/iconshock-search-256px.png' height='64' width='64' />">
+            <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets Layout="Horizontal" ID="DropBudgets" OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
+    
+                <table id="gridLedgers" class="easyui-datagrid" style="width: 680px; height: 500px"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerData.aspx'"
+                idField="id">
+                <thead>  
+                    <tr>  
+                        <th data-options="field:'id',width:70,align:'right'"><asp:Label ID="LabelGridHeaderId" runat="server" Text="ID#"/></th>  
+                        <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelGridHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
+                        <th data-options="field:'description',width:250"><asp:Label ID="LabelGridHeaderDescription" runat="server" Text="XYZ Description" /></th>  
+                        <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaPositive" runat="server" Text="XYZ Debit" /></th>
+                        <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaNegative" runat="server" Text="XYZ Credit" /></th>
+                        <th data-options="field:'balance',width:80,align:'right'"><asp:Label ID="LabelGridHeaderBalance" runat="server" Text="XYZ Balance" /></th>
+                        <th data-options="field:'action',width:43,align:'center'"><asp:Label ID="LabelGridHeaderAction" runat="server" Text="XYZAct" /></th>
+                    </tr>  
+                </thead>
+            </table>  
+        </div>
+    </div>
+   
 
     <Swarmops5:ModalDialog ID="DialogEditTx" OnClientClose="onModalClose" runat="server">
         <DialogCode>
@@ -379,7 +404,12 @@
             <div id="divEditTransaction">
                 <h2><asp:Label ID="LabelAddTransactionRowsHeader" runat="server" /></h2>
                 <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" Layout="Horizontal" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" Layout="Horizontal" runat="server" /> <span class="elementFloatFar"><input id="ButtonAddTransactionRow" type="button" value='#AddRow#'/></span></h2></span>
-                    
+            
+            <div id="divTransactionDocumentation">
+                <h2><asp:Label runat="server" ID="LabelTransactionDocumentation"/></h2>
+                <asp:Label runat="server" ID="LabelTransactionHasDocumentation" Text="This transaction has X pages of documentation: "/>&nbsp;<span id="spanLabelDocumentationPages"></span>
+            </div>
+               
             </div>
             <div id="divTransactionTracking">
                 <h2><asp:Label ID="LabelTrackedTransactionHeader" runat="server" /></h2>

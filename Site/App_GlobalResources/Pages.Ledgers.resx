@@ -951,4 +951,12 @@
   <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
     <value>Mark this as a direct-from-account purchase?</value>
   </data>
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>Description / Account</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>General Ledger for</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
 </root>

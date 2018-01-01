@@ -1150,6 +1150,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description / Account.
+        /// </summary>
+        internal static string InspectLedgers_Detail {
+            get {
+                return ResourceManager.GetString("InspectLedgers_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Viewing/Editing Transaction #&lt;span id=&quot;spanModalTransactionId&quot;&gt;67890&lt;/span&gt;.
         /// </summary>
         internal static string InspectLedgers_EditingTransactionX {
@@ -1173,6 +1182,15 @@ namespace Resources.Pages {
         internal static string InspectLedgers_FlaggingNotAvailable {
             get {
                 return ResourceManager.GetString("InspectLedgers_FlaggingNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General Ledger for.
+        /// </summary>
+        internal static string InspectLedgers_GeneralLedger {
+            get {
+                return ResourceManager.GetString("InspectLedgers_GeneralLedger", resourceCulture);
             }
         }
         

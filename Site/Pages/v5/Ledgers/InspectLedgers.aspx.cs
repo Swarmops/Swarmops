@@ -67,13 +67,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             this.LabelHeaderInspect.Text = Resources.Pages.Ledgers.InspectLedgers_Header_Inspect;
             this.LabelHeaderInspectFor.Text = Resources.Pages.Ledgers.InspectLedgers_Header_For;
-            this.LabelGridHeaderAction.Text = Global.Global_Action;
-            this.LabelGridHeaderBalance.Text = Global.Ledgers_Balance;
-            this.LabelGridHeaderDateTime.Text = Global.Global_Timestamp;
-            this.LabelGridHeaderDeltaNegative.Text = Global.Ledgers_Credit;
-            this.LabelGridHeaderDeltaPositive.Text = Global.Ledgers_Debit;
+
+            this.LabelGridHeaderAction.Text = this.LabelTreeHeaderAction.Text = Global.Global_Action;
+            this.LabelGridHeaderBalance.Text = this.LabelTreeHeaderBalance.Text = Global.Ledgers_Balance;
+            this.LabelGridHeaderDateTime.Text = this.LabelTreeHeaderDateTime.Text = Global.Global_Timestamp;
+            this.LabelGridHeaderDeltaNegative.Text = this.LabelTreeHeaderDeltaNegative.Text = Global.Ledgers_Credit;
+            this.LabelGridHeaderDeltaPositive.Text = this.LabelTreeHeaderDeltaPositive.Text = Global.Ledgers_Debit;
             this.LabelGridHeaderDescription.Text = Global.Global_Description;
-            this.LabelGridHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
+            this.LabelTreeHeaderDescriptionAccount.Text = Resources.Pages.Ledgers.InspectLedgers_Detail;
+            this.LabelGridHeaderId.Text = this.LabelTreeHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
 
             
             this.LabelGridHeaderAccountName.Text = Resources.Pages.Ledgers.InspectLedgers_AccountName;

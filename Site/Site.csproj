@@ -789,6 +789,7 @@
     <Content Include="Images\Flags\ph-64px.png" />
     <Content Include="Images\Flags\tr-24px.png" />
     <Content Include="Images\Flags\tr-64px.png" />
+    <Content Include="Images\Icons\iconshock-groups-docs-lists-64px.png" />
     <Content Include="Images\Icons\iconshock-pdf-128px.png" />
     <Content Include="Images\Other\blank-logo-640x360.png" />
     <Content Include="Images\Flags\ae-24px.png" />

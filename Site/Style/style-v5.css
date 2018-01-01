@@ -397,7 +397,7 @@ body.rtl .sidebar {
 	width:500px;
 }
 
-.content h2
+.content h2, .tab h2
 {
 	font-family: Ubuntu, Arial, Sans-Serif;
 	color: #FFBC37;
@@ -411,7 +411,7 @@ body.rtl .sidebar {
 	margin-bottom: 7px;
 }
 
-.content > h2 > select, .content > h2 > span > span.combo > input.textbox-text, .content > h2 > input, .content > h2 > span.elementFloatFar > input {
+.content > h2 > select, .tab > h2 > select, .content > h2 > span > span.combo > input.textbox-text, .tab > h2 > span > span.combo > input.textbox-text, .content > h2 > input, .tab > h2 > input, .content > h2 > span.elementFloatFar > input, .tab > h2 > span.elementFloatFar > input {
 	font-size: 16px;
     font-weight: bold;
     color: #1C397E;
@@ -420,11 +420,11 @@ body.rtl .sidebar {
 }
 
 
-.content > h2 > span > span.combo {
+.content > h2 > span > span.combo, .tab > h2 > span > span.combo {
     height: 20px !important;
 }
 
-.content > h2 > span > span.combo > input.textbox-text {
+.content > h2 > span > span.combo > input.textbox-text, .tab > h2 > span > span.combo > input.textbox-text {
     height: 20px !important;
     line-height: 20px !important;
 }
