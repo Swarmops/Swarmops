@@ -37,25 +37,42 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 while (year >= firstYear)
                 {
-                    this.DropYears.Items.Add (year.ToString (CultureInfo.InvariantCulture));
+                    this.DropYears.Items.Add(year.ToString(CultureInfo.InvariantCulture));
+                    this.DropGeneralYears.Items.Add(year.ToString(CultureInfo.InvariantCulture));
                     year--;
                 }
 
                 for (int monthNumber = 1; monthNumber <= 12; monthNumber++)
                 {
-                    this.DropMonths.Items.Add (new ListItem (new DateTime (2014, monthNumber, 1).ToString ("MMM"),
-                        monthNumber.ToString (CultureInfo.InvariantCulture))); // will autolocalize
+                    this.DropMonths.Items.Add(new ListItem(new DateTime(2014, monthNumber, 1).ToString("MMM"),
+                        monthNumber.ToString(CultureInfo.InvariantCulture))); // will autolocalize
+                    this.DropGeneralMonths.Items.Add(new ListItem(new DateTime(2014, monthNumber, 1).ToString("MMM"),
+                        monthNumber.ToString(CultureInfo.InvariantCulture))); // will autolocalize
                 }
 
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q1, "21"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q1, "21"));
                 // quarters and all-year are coded as fake month numbers
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q2, "22"));
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q3, "23"));
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q4, "24"));
-                this.DropMonths.Items.Add (new ListItem (Global.Global_AllYear, "31"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q2, "22"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q3, "23"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q4, "24"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_AllYear, "31"));
 
-                this.DropYears.SelectedIndex = 0;
-                this.DropMonths.SelectedValue = today.Month.ToString (CultureInfo.InvariantCulture);
+                this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_Q1, "21"));
+                // quarters and all-year are coded as fake month numbers
+                this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_Q2, "22"));
+                this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_Q3, "23"));
+                this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_Q4, "24"));
+                this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_AllYear, "31"));
+
+                DateTime lastMonth = today.AddMonths(-1);
+
+                this.DropYears.SelectedValue = 
+                this.DropGeneralYears.SelectedValue =
+                    lastMonth.Year.ToString(CultureInfo.InvariantCulture);
+
+                this.DropMonths.SelectedValue =
+                this.DropGeneralMonths.SelectedValue =
+                    lastMonth.Month.ToString(CultureInfo.InvariantCulture);
             }
 
             RegisterControl (EasyUIControl.DataGrid | EasyUIControl.Tree);
