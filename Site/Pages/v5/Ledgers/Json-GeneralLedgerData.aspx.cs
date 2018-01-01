@@ -135,6 +135,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         runningBalanceLookup[row.FinancialAccountId]/100.0,
                         JsonSanitize(actionHtml)));
 
+                    currentTransactionId = row.FinancialTransactionId;
                 }
                 else
                 {
