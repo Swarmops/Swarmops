@@ -5,6 +5,7 @@ using System.Text;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
@@ -88,7 +89,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     include = true;
                 }
 
-                if (transaction.Dependency != null)
+                if (transaction.Dependency != null || Documents.ForObject(transaction).Count > 0)
                 {
 
                     element += String.Format(",\"dox\":\"" + hasDoxString + "\"", transaction.Identity);

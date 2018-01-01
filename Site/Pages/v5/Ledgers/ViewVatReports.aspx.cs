@@ -114,7 +114,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 FinancialTransaction tx = item.Transaction;
 
-                Documents documents = Documents.ForObject(tx.Dependency);
+                Documents documents = Documents.ForObject(tx.Dependency ?? tx); // tx.Dependency if not null, else tx
+
                 foreach (Document doc in documents)
                 {
                     VatReportDocuments.Add(new RepeatedDocument
