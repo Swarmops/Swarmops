@@ -126,6 +126,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                     result.Append("{" + String.Format(
                         "\"id\":\"{0:N0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
+                        "\"state\":\"open\",\"children\":[",
+                        row.Transaction.OrganizationSequenceId,
+                        row.TransactionDateTime,
+                        JsonSanitize(description)));
+
+
+                    /*
+                    result.Append("{" + String.Format(
+                        "\"id\":\"{0:N0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
                         "\"action\":\"{6}\",\"state\":\"open\",\"children\":[",
                         row.Transaction.OrganizationSequenceId,
                         row.TransactionDateTime,
@@ -134,6 +143,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         creditString,
                         runningBalanceLookup[row.FinancialAccountId]/100.0,
                         JsonSanitize(actionHtml)));
+                        */
 
                     currentTransactionId = row.FinancialTransactionId;
                 }
@@ -163,6 +173,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                             row.FinancialTransactionId.ToString (CultureInfo.InvariantCulture));
                 }*/
 
+                result.Append("{\"description\":\"child\"}");
+
+                /*
                 result.Append ("{" + String.Format (
                     "\"id\":\"{0:N0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
                     "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N2}\"",
@@ -172,6 +185,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     debitString,
                     creditString,
                     runningBalanceLookup[row.FinancialAccountId]/100.0) + "}");
+                */
             }
 
             if (rows.Count == 0)
