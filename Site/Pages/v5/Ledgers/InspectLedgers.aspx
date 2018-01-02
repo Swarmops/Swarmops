@@ -90,12 +90,15 @@
                     onLoadSuccess: function() {
                         alertify.success("OnLoadSuccess");
 
-                        $("td field:txDescription").attr("colSpan", 4);
-                        /*
-                        $("td > span.tx-description").each(function() {
-                            var parent = $(this).parent();
+                        //$("td field:txDescription").attr("colSpan", 4);
 
-                        })*/
+                        $("td > div > span.tx-description").each(function() {
+                            var parent = $(this).parent();
+                            var grandParent = parent.parent();
+
+                            grandParent.attr("colSpan", 4);
+                            parent.css("width", "100%");
+                        });
                     }
                 }
             );
