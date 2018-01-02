@@ -95,7 +95,10 @@
                             var grandParent = parent.parent();
 
                             grandParent.attr("colSpan", 4);
-                            parent.css("width", "421px"); // resizing outside of easyUI doesn't resize the encapsulating div
+                            grandParent.next().remove(); // remove the three elements consumed by colspan=4
+                            grandParent.next().remove();
+                            grandParent.next().remove();
+                            parent.css("width", "100%"); // resizing outside of easyUI doesn't resize the encapsulating div
 
                             grandParent.css("border-top", "1px solid #444");
                             grandParent.siblings().css("border-top", "1px solid #444");
