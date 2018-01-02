@@ -6,6 +6,7 @@ using System.Text;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
@@ -106,12 +107,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     }
                 }
 
-                string hasDoxString =
-                    "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" txId='{0}' class='LocalIconInspect' style='cursor:pointer' height='20' width='20' />";
-
-                string actionHtml = String.Format(hasDoxString, row.FinancialTransactionId.ToString(CultureInfo.InvariantCulture));
-
-
                 if (row.FinancialTransactionId != currentTransactionId)
                 {
                     // We're starting a new transaction here
@@ -125,12 +120,31 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     FinancialTransaction transaction = row.Transaction;
                     string description = transaction.Description;
 
+                    string hasDoxString =
+                        "<img align='right' src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" txId='{0}' class='LocalIconGeneralViewDoc' style='cursor:pointer' height='20' width='20' />";
+
+                    string actionHtml = string.Empty;
+
+                    Documents documents = Documents.ForObject(transaction.Dependency ?? transaction);
+
+                    if (documents.Count > 0)
+                    {
+                        foreach (Document doc in documents)
+                        {
+                            actionHtml += String.Format("<a href='/Pages/v5/Support/StreamUpload.aspx?DocId={0}&title='{1}' class='FancyBox_Gallery' rel='{2}'>&nbsp;</a>",
+                                doc.Identity, doc.ClientFileName, transaction.Identity);
+                        }
+
+                        actionHtml = String.Format(hasDoxString, row.FinancialTransactionId.ToString(CultureInfo.InvariantCulture)) + "<span class='hiddenDocLinks'>" + actionHtml + "</span>";
+                    }
+
                     result.Append("{" + String.Format(
-                        "\"id\":\"<span class='weight-more-emphasis'>{0:N0}</span>\",\"datetime\":\"<span class='weight-more-emphasis'>{1:MMM-dd HH:mm}</span>\",\"txDescription\":\"<span class='weight-more-emphasis tx-description'>{2}</span>\"," +
+                        "\"id\":\"<span class='weight-more-emphasis'>{0:N0}</span>\",\"datetime\":\"<span class='weight-more-emphasis'>{1:MMM-dd HH:mm}</span>\",\"txDescription\":\"<span class='weight-more-emphasis tx-description'>{2}</span>\",\"action\":\"{3}\"" +
                         "\"state\":\"open\",\"children\":[",
                         row.Transaction.OrganizationSequenceId,
                         row.TransactionDateTime,
-                        JsonSanitize(description)));
+                        JsonSanitize(description),
+                        JsonSanitize(actionHtml)));
 
 
                     /*

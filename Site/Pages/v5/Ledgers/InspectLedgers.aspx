@@ -95,10 +95,22 @@
                             var grandParent = parent.parent();
 
                             grandParent.attr("colSpan", 4);
-                            parent.css("width", "100%");
+                            parent.css("width", "421px"); // resizing outside of easyUI doesn't resize the encapsulating div
 
                             grandParent.css("border-top", "1px solid #444");
                             grandParent.siblings().css("border-top", "1px solid #444");
+                        });
+
+                        $("a.FancyBox_Gallery").fancybox({
+                            'overlayShow': true,
+                            'transitionIn': 'fade',
+                            'transitionOut': 'fade',
+                            'type': 'image',
+                            'opacity': true
+                        });
+
+                        $("img.LocalIconGeneralViewDoc").click(function() {
+                            $("a.FancyBox_Gallery[rel='" + $(this).attr("txId") + "']").first().click();
                         });
                     }
                 }
