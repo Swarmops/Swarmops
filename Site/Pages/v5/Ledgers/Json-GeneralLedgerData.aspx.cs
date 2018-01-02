@@ -126,7 +126,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     string description = transaction.Description;
 
                     result.Append("{" + String.Format(
-                        "\"id\":\"<span class='weight-more-emphasis'>{0:N0}</span>\",\"datetime\":\"<span class='weight-more-emphasis'>{1:MMM-dd HH:mm}</span>\",\"description\":\"<span class='weight-more-emphasis'>{2}</span>\"," +
+                        "\"id\":\"<span class='weight-more-emphasis'>{0:N0}</span>\",\"datetime\":\"<span class='weight-more-emphasis'>{1:MMM-dd HH:mm}</span>\",\"txDescription\":\"<span class='weight-more-emphasis tx-description'>{2}</span>\"," +
                         "\"state\":\"open\",\"children\":[",
                         row.Transaction.OrganizationSequenceId,
                         row.TransactionDateTime,
