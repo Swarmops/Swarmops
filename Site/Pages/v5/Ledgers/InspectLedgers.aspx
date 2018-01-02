@@ -389,9 +389,9 @@
                 idField="id" treeField="id">
                 <thead>  
                     <tr>  
-                        <th data-options="field:'id',width:90"><asp:Label ID="LabelTreeHeaderId" runat="server" Text="ID#"/></th>  
+                        <th data-options="field:'id',width:110"><asp:Label ID="LabelTreeHeaderId" runat="server" Text="ID#"/></th>  
                         <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelTreeHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
-                        <th data-options="field:'txDescription',width:220"><asp:Label ID="LabelTreeHeaderDescriptionAccount" runat="server" Text="XYZ Description, Account" /></th>  
+                        <th data-options="field:'txDescription',width:200"><asp:Label ID="LabelTreeHeaderDescriptionAccount" runat="server" Text="XYZ Description, Account" /></th>  
                         <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelTreeHeaderDeltaPositive" runat="server" Text="XYZ Debit" /></th>
                         <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelTreeHeaderDeltaNegative" runat="server" Text="XYZ Credit" /></th>
                         <th data-options="field:'balance',width:80,align:'right'"><asp:Label ID="LabelTreeHeaderBalance" runat="server" Text="XYZ Balance" /></th>
