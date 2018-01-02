@@ -131,7 +131,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     {
                         foreach (Document doc in documents)
                         {
-                            actionHtml += String.Format("<a href='/Pages/v5/Support/StreamUpload.aspx?DocId={0}&title='{1}' class='FancyBox_Gallery' rel='{2}'>&nbsp;</a>",
+                            actionHtml += String.Format("<a href='/Pages/v5/Support/StreamUpload.aspx?DocId={0}&hq=1&title='{1}' class='FancyBox_Gallery' rel='{2}'>&nbsp;</a>",
                                 doc.Identity, doc.ClientFileName, transaction.Identity);
                         }
 
