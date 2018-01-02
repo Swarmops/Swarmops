@@ -139,7 +139,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     }
 
                     result.Append("{" + String.Format(
-                        "\"id\":\"<span class='weight-more-emphasis'>{0:N0}</span>\",\"datetime\":\"<span class='weight-more-emphasis'>{1:MMM-dd HH:mm}</span>\",\"txDescription\":\"<span class='weight-more-emphasis tx-description'>{2}</span>\",\"action\":\"{3}\"" +
+                        "\"id\":\"<span class='weight-more-emphasis'>{0:N0}</span>\",\"datetime\":\"<span class='weight-more-emphasis'>{1:MMM-dd HH:mm}</span>\",\"txDescription\":\"<span class='weight-more-emphasis tx-description'>{2}</span>\",\"action\":\"{3}\"," +
                         "\"state\":\"open\",\"children\":[",
                         row.Transaction.OrganizationSequenceId,
                         row.TransactionDateTime,
