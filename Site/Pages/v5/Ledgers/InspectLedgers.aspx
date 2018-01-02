@@ -88,10 +88,6 @@
             $('#treeGeneralLedger').treegrid(
                 {
                     onLoadSuccess: function() {
-                        alertify.success("OnLoadSuccess");
-
-                        //$("td field:txDescription").attr("colSpan", 4);
-
                         $("td > div > span.tx-description").each(function() {
                             var parent = $(this).parent();
                             var grandParent = parent.parent();
@@ -331,6 +327,10 @@
         .datagrid-row-selected, .datagrid-row-over { background: transparent; }
 
         table.datagrid-ftable { font-weight: 500; }
+
+        .datagrid-body td{
+            vertical-align: text-top;
+        }
 
         .spanAnnoyingBlink {
             -webkit-animation: blink 0.5s linear infinite;

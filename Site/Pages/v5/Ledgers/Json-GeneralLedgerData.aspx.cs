@@ -211,7 +211,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 }
 
                 result.Append ("{" + String.Format (
-                    "\"id\":\"{0:N0}:{6:N0}\",\"datetime\":\"{1}\",\"description\":\"{2}\"," +
+                    "\"id\":\"{0:N0}:{6:N0}\",\"datetime\":\"{1}\",\"txDescription\":\"{2}\"," +
                     "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N2}\"",
                     row.Transaction.OrganizationSequenceId,
                     JsonSanitize (accountClass),
