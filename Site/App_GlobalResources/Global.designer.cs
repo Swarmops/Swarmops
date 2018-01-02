@@ -1240,6 +1240,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (cancelled, voided, zeroed).
+        /// </summary>
+        internal static string Global_Nuked {
+            get {
+                return ResourceManager.GetString("Global_Nuked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Off.
         /// </summary>
         internal static string Global_Off {

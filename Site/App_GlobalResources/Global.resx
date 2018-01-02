@@ -953,4 +953,8 @@
   <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
     <value>Outbound Invoice #{0:N0} to {1}</value>
   </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(cancelled, voided, zeroed)</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
 </root>
