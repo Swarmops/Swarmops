@@ -88,6 +88,8 @@
             $('#treeGeneralLedger').treegrid(
                 {
                     onLoadSuccess: function() {
+                        $('div.treegrid').css('opacity', 1);
+
                         $("td > div > span.tx-description").each(function() {
                             var parent = $(this).parent();
                             var grandParent = parent.parent();
@@ -99,12 +101,22 @@
                 }
             );
 
+            reloadGeneralData(); // loads first data - URL is null when first entered
+
             $('#<%= DropYears.ClientID %>').change(function() {
                 reloadInspectData();
             });
 
             $('#<%= DropMonths.ClientID %>').change(function() {
                 reloadInspectData();
+            });
+
+            $('#<%= DropGeneralYears.ClientID %>').change(function() {
+                reloadGeneralData();
+            });
+
+            $('#<%= DropGeneralMonths.ClientID %>').change(function() {
+                reloadGeneralData();
             });
 
             $('#ButtonAddTransactionRow').click(function() {
@@ -201,6 +213,16 @@
                     }
                 });
             }
+        }
+
+        function reloadGeneralData() {
+            var selectedYear = $('#<%= DropGeneralYears.ClientID %>').val();
+            var selectedMonth = $('#<%= DropGeneralMonths.ClientID %>').val();
+
+            $('#treeGeneralLedger').datagrid({ url: 'Json-GeneralLedgerData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth });
+
+            //$('#imageLoadIndicator').show();
+            $('div.treegrid').css('opacity', 0.4);
         }
 
         function reloadInspectData() {
@@ -364,7 +386,7 @@
             <h2><asp:Label ID="LabelHeaderGeneral" runat="server" /> <asp:DropDownList runat="server" ID="DropGeneralYears"/> <asp:DropDownList runat="server" ID="DropGeneralMonths"/></h2>
     
                 <table id="treeGeneralLedger" class="easyui-treegrid" style="width: 680px; height: 500px"
-                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-GeneralLedgerData.aspx?Year=2017&Month=12'"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true"
                 idField="id" treeField="id">
                 <thead>  
                     <tr>  
