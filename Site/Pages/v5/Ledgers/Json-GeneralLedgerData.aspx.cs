@@ -139,7 +139,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     }
 
                     result.Append("{" + String.Format(
-                        "\"id\":\"<span class='weight-more-emphasis'>{0:N0}</span>\",\"datetime\":\"<span class='weight-more-emphasis'>{1:MMM-dd HH:mm}</span>\",\"txDescription\":\"<span class='weight-more-emphasis tx-description'>{2}</span>\",\"action\":\"{3}\"," +
+                        "\"id\":\"{0:N0}\",\"datetime\":\"<span class='weight-more-emphasis'>{1:MMM-dd HH:mm}</span>\",\"txDescription\":\"<span class='weight-more-emphasis tx-description'>{2}</span>\",\"action\":\"{3}\"," +
                         "\"state\":\"open\",\"children\":[",
                         row.Transaction.OrganizationSequenceId,
                         row.TransactionDateTime,
@@ -225,7 +225,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 }
 
                 result.Append ("{" + String.Format (
-                    "\"id\":\"{0:N0}:{6:N0}\",\"datetime\":\"{1}\",\"txDescription\":\"{2}\"," +
+                    "\"id\":\"{0:N0}-{6:N0}\",\"datetime\":\"{1}\",\"txDescription\":\"{2}\"," +
                     "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N2}\"",
                     row.Transaction.OrganizationSequenceId,
                     JsonSanitize (accountClass),
