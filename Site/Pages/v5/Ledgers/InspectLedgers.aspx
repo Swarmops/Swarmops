@@ -401,10 +401,10 @@
     
                 <table id="treeGeneralLedger" class="easyui-treegrid" style="width: 680px; height: 500px"
                 data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:''"
-                idField="id" treeField="id">
+                idField="id" treeField="idDisplay">
                 <thead>  
                     <tr>  
-                        <th data-options="field:'id',width:110"><asp:Label ID="LabelTreeHeaderId" runat="server" Text="ID#"/></th>  
+                        <th data-options="field:'idDisplay',width:110"><asp:Label ID="LabelTreeHeaderId" runat="server" Text="ID#"/></th>  
                         <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelTreeHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
                         <th data-options="field:'txDescription',width:200"><asp:Label ID="LabelTreeHeaderDescriptionAccount" runat="server" Text="XYZ Description, Account" /></th>  
                         <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelTreeHeaderDeltaPositive" runat="server" Text="XYZ Debit" /></th>

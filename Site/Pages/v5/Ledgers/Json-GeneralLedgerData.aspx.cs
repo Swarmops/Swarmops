@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
@@ -139,12 +140,37 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     }
 
                     result.Append("{" + String.Format(
-                        "\"id\":\"{0:N0}\",\"datetime\":\"<span class='weight-more-emphasis'>{1:MMM-dd HH:mm}</span>\",\"txDescription\":\"<span class='weight-more-emphasis tx-description'>{2}</span>\",\"action\":\"{3}\"," +
+                        "\"id\":\"{0:N0}\",\"idDisplay\":\"<span class='weight-more-emphasis'>{0:N0}</span>\",\"datetime\":\"<span class='weight-more-emphasis'>{1:MMM-dd HH:mm}</span>\",\"txDescription\":\"<span class='weight-more-emphasis tx-description'>{2}</span>\",\"action\":\"{3}\"," +
                         "\"state\":\"open\",\"children\":[",
                         row.Transaction.OrganizationSequenceId,
                         row.TransactionDateTime,
                         JsonSanitize(description),
                         JsonSanitize(actionHtml)));
+
+                    if (transaction.Dependency != null)
+                    {
+                        IHasIdentity dependency = transaction.Dependency;
+                        string info = string.Empty;
+                        Documents docs = null;
+
+                        if (dependency is VatReport)
+                        {
+                            VatReport report = (VatReport) dependency;
+                            if (report.OpenTransactionId == transaction.Identity)
+                            {
+                                info = String.Format(Resources.Pages.Ledgers.InspectLedgers_TxInfo_OpenVatReport,
+                                    report.DescriptionShort);
+                            }
+                            else if (report.CloseTransactionId == transaction.Identity)
+                            {
+                                info = String.Format(Resources.Pages.Ledgers.InspectLedgers_TxInfo_CloseVatReport,
+                                    report.DescriptionShort);
+                            }
+                        }
+
+                        // TODO: Continue here with adding Info row under transactions where it's helpful
+                        // TODO: Remember that the Info row needs cell merging, colspan=5 or =6
+                    }
 
 
                     /*
@@ -225,7 +251,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 }
 
                 result.Append ("{" + String.Format (
-                    "\"id\":\"{0:N0}-{6:N0}\",\"datetime\":\"{1}\",\"txDescription\":\"{2}\"," +
+                    "\"id\":\"{0:N0}-{6:N0}\",\"idDisplay\":\"{0:N0}:{6:N0}\",\"datetime\":\"{1}\",\"txDescription\":\"{2}\"," +
                     "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N2}\"",
                     row.Transaction.OrganizationSequenceId,
                     JsonSanitize (accountClass),

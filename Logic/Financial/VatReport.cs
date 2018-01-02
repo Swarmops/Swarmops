@@ -278,6 +278,27 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public string DescriptionShort
+        {
+            get
+            {
+                switch (MonthCount)
+                {
+                    case 1:
+                        return String.Format("{0:MMM yyyy}",
+                            new DateTime(YearMonthStart / 100, YearMonthStart % 100, 2));
+                    case 12:
+                        return String.Format("{0}",
+                            YearMonthStart / 100);
+                    default:
+                        DateTime start = new DateTime(YearMonthStart / 100, YearMonthStart % 100, 2);
+
+                        return String.Format("{0:MMM}-{1:MMM yyyy}",
+                            start, start.AddMonths(MonthCount - 1));
+                }
+            }
+        }
+
         private new int OpenTransactionId
         {
             get

@@ -1438,6 +1438,51 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This transaction closes the VAT report for {0}..
+        /// </summary>
+        internal static string InspectLedgers_TxInfo_CloseVatReport {
+            get {
+                return ResourceManager.GetString("InspectLedgers_TxInfo_CloseVatReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This transaction opens the VAT report for {0}..
+        /// </summary>
+        internal static string InspectLedgers_TxInfo_OpenVatReport {
+            get {
+                return ResourceManager.GetString("InspectLedgers_TxInfo_OpenVatReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This transaction receives payment for Outbound Invoice #{0:N0}..
+        /// </summary>
+        internal static string InspectLedgers_TxInfo_PaymentInvoice {
+            get {
+                return ResourceManager.GetString("InspectLedgers_TxInfo_PaymentInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This transaction pays {0}..
+        /// </summary>
+        internal static string InspectLedgers_TxInfo_PayoutGeneric {
+            get {
+                return ResourceManager.GetString("InspectLedgers_TxInfo_PayoutGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This transaction pays Inbound Invoice #{0:N0} from {1}..
+        /// </summary>
+        internal static string InspectLedgers_TxInfo_PayoutInvoice {
+            get {
+                return ResourceManager.GetString("InspectLedgers_TxInfo_PayoutInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Transaction is &lt;span class=&quot;spanAnnoyingBlink&quot;&gt;UNBALANCED:&lt;/span&gt; missing amount.
         /// </summary>
         internal static string InspectLedgers_UnbalancedTransaction {
