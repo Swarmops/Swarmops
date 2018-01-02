@@ -219,7 +219,7 @@
             var selectedYear = $('#<%= DropGeneralYears.ClientID %>').val();
             var selectedMonth = $('#<%= DropGeneralMonths.ClientID %>').val();
 
-            $('#treeGeneralLedger').datagrid({ url: 'Json-GeneralLedgerData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth });
+            $('#treeGeneralLedger').treegrid({ url: 'Json-GeneralLedgerData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth });
 
             //$('#imageLoadIndicator').show();
             $('div.treegrid').css('opacity', 0.4);
@@ -386,7 +386,7 @@
             <h2><asp:Label ID="LabelHeaderGeneral" runat="server" /> <asp:DropDownList runat="server" ID="DropGeneralYears"/> <asp:DropDownList runat="server" ID="DropGeneralMonths"/></h2>
     
                 <table id="treeGeneralLedger" class="easyui-treegrid" style="width: 680px; height: 500px"
-                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:''"
                 idField="id" treeField="id">
                 <thead>  
                     <tr>  
