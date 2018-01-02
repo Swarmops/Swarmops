@@ -96,6 +96,9 @@
 
                             grandParent.attr("colSpan", 4);
                             parent.css("width", "100%");
+
+                            grandParent.css("border-top", "1px solid #444");
+                            grandParent.siblings().css("border-top", "1px solid #444");
                         });
                     }
                 }
@@ -349,10 +352,6 @@
         .datagrid-row-selected, .datagrid-row-over { background: transparent; }
 
         table.datagrid-ftable { font-weight: 500; }
-
-        .datagrid-body td{
-            vertical-align: text-top;
-        }
 
         .spanAnnoyingBlink {
             -webkit-animation: blink 0.5s linear infinite;
