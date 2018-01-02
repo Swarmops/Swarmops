@@ -122,7 +122,7 @@ namespace Swarmops.Logic.Financial
                 result.Country = Country.FromCode("DE");
                 result.Culture = "de-DE";
                 result.IgnoreInitialLines = 7;
-                result.InitialReplacements = ";|\t| €|";
+                result.InitialReplacements = ";|\t| €||Referenz NOTPROVIDED Verwendungszweck|";
 
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Buchungstag";
                 result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Buchungsdetails";
