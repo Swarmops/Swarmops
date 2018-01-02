@@ -90,7 +90,7 @@
                     onLoadSuccess: function() {
                         $('div.treegrid').css('opacity', 1);
 
-                        $("td > div > span.tx-description").each(function() {
+                        $("td > div > span.tx-description:not(:first)").each(function() {
                             var parent = $(this).parent();
                             var grandParent = parent.parent();
 

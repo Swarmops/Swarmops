@@ -62,6 +62,11 @@ namespace Swarmops.Common.Enums
         /// <summary>
         ///     Other artwork (public)
         /// </summary>
-        Artwork
+        Artwork,
+
+        /// <summary>
+        /// There really isn't a standalone doctype for this but still
+        /// </summary>
+        Payout
     }
 }

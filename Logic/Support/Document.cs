@@ -144,6 +144,10 @@ namespace Swarmops.Logic.Support
             {
                 return DocumentType.ExternalActivityPhoto;
             }
+            else if (foreignObject is Payout)
+            {
+                return DocumentType.Payout;
+            }
             else
             {
                 throw new ArgumentException ("Unrecognized foreign object type:" + foreignObject.GetType().ToString());
