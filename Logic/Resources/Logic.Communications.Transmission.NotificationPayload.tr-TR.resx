@@ -117,88 +117,372 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>Bitcoin ödeme adresinize ödeme yapmaya çalışılırken, adresiniz ([BitcoinAddress]) ödeme altyapı motoru tarafından reddedildi. Bu yüzden bu adres profilinden silindi.
+
+[ExternalUrl]'daki [InstallationName] hesabınıza giriş yapın ve yeni bir bitcoin ödeme adresi ayarlayın.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - EYLEM ÖĞESİ] Geçersiz bitcoin ödeme adresi</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>Bitcoin ödeme adresinizi [BitcoinOldAddress]'dan [BitcoinAddress]'e değiştirdiniz. Bir güvenlik önlemi olarak bütün ödemeler önümüzdeki 48 saat boyunca karantinaya alınmıştır.
+
+Eğer ödeme adresiniz DEĞİŞTİRMEDİYSENİZ ve bir güvenlik ihlali olduysa, lütfen hemen bu linke tıklayarak hesabınızı kilitleyin: [LockdownLink]
+
+Eğer o linke tıklarsanız hesabınız onay isteği olmadan hemen kilitlenecektir. Fakat, eğer ödeme adresi değişikliğini siz istediyseniz, her şey yolunda ve sizin açınızdan herhangi bir işlem yapılması gerekmemektedir.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bitcoin ödeme adresi değişti</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>[OrganizationName]'de ödeme talebi bekleyen paranız var ama bir bitcoin ödeme adresi belirlememişsiniz.
+
+Lütfen, [ExternalUrl]'deki [InstallationName] hesabınıza giriş yapın ve ödeme adresinizi belirlemek için bağlantıyı takip edin - yapılacak kalemler listesinde bulabilirsiniz.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Lütfen bitcoin ödeme adresinizi belirleyin</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>Bir bitcoin ödeme adresi belirlediniz: [BitcoinAddress]. Bir güvenlik tedbiri olarak, bütün ödemeler önümüzdeki 48 saat boyunca karantinaya alınmıştır ve bu süre sonunda yeni adrese gönderilmeye devam edeceklerdir.
+
+Eğer bu öneme adresini siz belirlemediyseniz (daha fazla güvenlik için yukarıdaki adresi tekrar kontrol etmek faydalı olabilir), hemen [OrganizationName] ile iletişime geçiniz.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] tarafından bir bitcoin adresi ayarlandı. Ödemeler 48 saat sonra, karantina süresi geçtiğinde başlayacaktır.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] bir bitcoin ödeme adresi belirledi</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bitcoin ödeme adresi belirlendi</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>[OrganizationName]'nın bitcoin hotwallet'i biraz önce toplamı [CurrencyCode][AmountFloat]([BitcoinAmountFloat] microbitcoin veya "bit") eden [PaymentCount] otomatik ödeme yaptı.</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Hotwallet Ödemesi: [CurrencyCode][AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>Bitcoin adresinize ([BitcoinAddress]) biraz önce [OrganizationName] tarafından [BitcoinAmountFloat] mikrobitcoin ("bit") şunun için gönderildi:
+
+[EmbeddedPreformattedText]
+
+Zaten gönderimi cüzdanınızda görüyor olmalısınız ve bir saat içinde harcanabilirlik kazanacaktır ( 6 normal onay).</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Fonları size [CurrencyCode][AmountFloat] ödeme yaptı</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>Hotwalletten otomatik ödeme yapılması denenirken imzalamada kullanılan özel anahtar, gerekli paraları toplamak için kullanılan genele açık anahtarla eşleşmez. Bu ciddi bir durumdur.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACİL] Bitcoin özel anahtar hatsı; ödeme yapılamıyor</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmops, [CurrencyCode][AmountNeededFloat] ile ödeme yapmayı deniyor, fakat bitcoin hotwalletında sadece [CurrencyCode][AmountWalletFloat] mevcut. Swarmops şu aşamada daha fazla ödeme yapamıyor.
+
+Lütfen HEMEN hotwalletınıza en azından gerekli miktar kadar para yükleyiniz - finansal hotwallet işlemlerinin devam edebilmesi için [AmountMissingMicrocoinsFloat] mikrobitcoin ("bit") daha gereklidir.
+
+Swarmops, denemeye devam edecek ve bu işlem başarılı olana kadar bu bildirimleri göndermeye devam edecektir.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - EYLEM ÖĞESİ] Bitcoin hotwalleti ödemeler için yetersiz - hemen para yükleyin</value>
+  </data>
+  <data name="CashAdvance_Attested_Body" xml:space="preserve">
+    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık nakit avans talebiniz bütçe sahibi tarafından onaylanmıştır. Artık size ödemeye devam edecektir.</value>
+  </data>
+  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nakit Avans Onaylandı: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
+    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık nakit avans talebinizin onayı bütçe sahibi tarafından geri çekilmiştir. Bu genellikle isteğinizle ilgili bir soruna işarettir.
+
+Bu konuyla ilgili takip etmek için bütçe sahibinden daha fazla iletişim bekleyin.</value>
+  </data>
+  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nakit Avans Onayı Geri Çekildi: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık nakit avansınız yok sayılmıştır. Aşağıdaki yazı yok sayılmasına sebep olarak sunulmuştur:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nakit Avans Reddedildi: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık nakit avans talebiniz organizasyonun muhasebecileri tarafından ödendi olarak işaretlenmiştir.
+
+Bu, tutarı kısa zaman içinde hesabınızda göreceğiniz anlamına gelir.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nakit Avans Ödendi: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[ConcernedPersonName], [RequestPurpose] amacıyla [CurrencyCode][BudgetAmountFloat]'lık bir nakit avans talebinde bulundu. Bu para [BudgetName] bütçenizin bir parçasıdır.
+
+Lütfen, [ExternalUrl]Financial/AttestCosts deki [InstallationName] hesabınıza giriş yaparak işlemi onaylayın veya reddedin.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - EYLEM ÖĞESİ] Nakit Avans Talep Edildi: [CurrencyCode][BudgetAmountFloat] - Onay gerekli</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebiniz bütçe sahibi tarafından onaylanmıştır. Makbuzların geçerliliği onaylandığında ödenecektir.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Masraf Talebi Onaylandı: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName], [BudgetName] bütçesine karşı [CurrencyCode][BudgetAmountFloat] miktarında bir masraf talebi oluşturdu. Talep [RequestPurpose] ile ilgili. Bu masraf talebini onaylamanız gerekecek.
+
+Lütfen, [ExternalUrl]Financial/AttestCosts deki [InstallationName] hesabınıza giriş yaparak işlemi onaylayın veya reddedin.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - EYLEM ÖĞESİ] Masraf Talebi Oluşturuldu: [CurrencyCode][BudgetAmountFloat] - Onay gerekli</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
+    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebinizin onayı bütçe sahibi tarafından geri çekilmiştir. Bu genellikle masraf talebinizle ilgili bir soruna işarettir.
+
+Bu konuyla ilgili takip etmek için bütçe sahibinden daha fazla iletişim bekleyin.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Masraf Talebi Onayı Geri Çekildi: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebiniz yok sayılmıştır. Aşağıdaki yazı yok sayılmasına sebep olarak sunulmuştur:
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Masraf Talebi REDDEDİLDİ: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
+    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebiniz için gönderdiğiniz makbuzların onayı organizasyonun finansal hesap tutucuları tarafından geri çekilmiştir. Bu genellikle masraf talebinizdeki belgelerle ilgili bir soruna işarettir.
+
+Bu konuyla ilgili takip etmek için daha fazla iletişim bekleyin. Bu konuda kısa bir sürede hesap tutuculardan bir haber almazsanız, onları takip ediniz.</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Masraf Talebi Makbuzlarının Geçerliliği İptal Edildi: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebiniz organizasyonun muhasebecileri tarafından ödendi olarak işaretlenmiştir.
+
+Bu, tutarı kısa zaman içinde hesabınızda göreceğiniz anlamına gelir.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Masraf Talebi Ödendi: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebiniz için gönderdiğiniz makbuzlar, kayıtları düzende tutmaktan sorumlu kişiler tarafından onaylanmıştır.
+
+Talebiniz, bu miktar bütçe sahibi tarafından da onaylandığı zaman ödenecektir.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Masraf Talebi Makbuzlarının Onaylandı: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>[Supplier] tarafından, [Description] ile ilgili, [BudgetName] bütçenize karşı [CurrencyCode][BudgetAmountFloat] miktarında bir makbuz çıkartıldı. Bu makbuzu, ödemeye gitmeden önce onaylamanız gerekiyor.
+
+Lütfen, [ExternalUrl]Financial/AttestCosts deki [InstallationName] hesabınıza giriş yaparak işlemi onaylayın veya reddedin.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - EYLEM ÖĞESİ] Makbuz Dosyalandı: [CurrencyCode][BudgetAmountFloat] - Onay gerekli</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>[OrganizationName]'e sizin alanınızın içinde yeni bir [Regular] manuel olarak eklendi.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Yeni [Regular]: [PersonName], [PersonGeography] [CountryCode] (manuel)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>[OrganizationName]'e sizin alanınızın içinde yeni bir [Regular] kayıt oldu.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Yeni [Regular]: [PersonName], [PersonGeography] [CountryCode]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [Regularship] yenilendi: [PersonName], [PersonGeography] [CountryCode] (manuel)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+Bu e-posta [OrganizationName]'deki [Addressee]'e gönderildi. Eğer gelecekte bu bildirimleri almak istemiyorsanız, Lütfen,
+ [ExternalUrl]'deki [InstallationName] hesabınıza giriş yapın ve bildirim ayarlarınızı değiştirin.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Mesajınız teslim için sıraya alındı ve alıcılar çözümlendi. Mesajınız [GeographyName]'deki [OrganizationName]'deki [RecipientCount] kişiye gönderilecek veya gönderilmeye çalışılacaktır.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [GeographyName] için belirlenen iletişim alıcıları: [RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>[GeographyName] için mesajınız bütün planlanan alıcılara ulaştırıldı. [RecipientCount] alıcı içerisinden [RecipientsSuccess] si başarılı oldu, bildiğimiz kadarıyla -- Unutmayın E-posta sonradan bir takım nedenlerden dolayı gönderilemeyebilir veya okunmayabilir.
+
+Çözümlenirken harcanan zaman: [ResolvingTime].
+Gönderilirken harcanan zaman: [TransmissionTime].
+İletişimin oluşturulmasından bitişine kadar geçen zaman: [TotalTime].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] İletişimler gönderildi: [GeographyName]</value>
+  </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>Yeni birisi [OrganizationName]'de [RegularTitle] olarak kaydoldu! [ConcernedPersonName], [GeographyName][CountryCode]'de bulunuyor.</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Yeni [RegularTitle]: [ConcernedPersonName],[GeographyName]</value>
+  </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Birisi, büyük olasılıkla siz, [InstallationName]'deki bu e-posta adresiyle bağlantılı şifrenin değişimi talebinde bulundu. Fakat, bu hesap için, daha fazla koruma için iki aşamalı doğrulama etkinleitirilmişti. Bu yüzden, şifre basit bir yolla SIFIRLANAMAZ.
+
+Lütfen sorununuzu çözmek için [InstallationName]'deki personel yöneticilerinden biri ile iletişime geçiniz ve iki aşamalı doğrulama güvenlik seviyesine uygun, daha titiz bir kişi tanımlama prosedüründen geçerek yeni bir şifre talebinde bulunun.
+
+Anlayışınız için teşekkürler.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Şifre Sıfırlanamıyor</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>[InstallationName] şifreniz biraz önce [ExternalUrl]'de değiştirildi.
+
+Bu şifre değişikliğiniz siz yapmadıysanız, bir güvenlik ihlali oldu. Eğer durum bu ise, lütfen aşağıdaki linke tıklayarak HEMEN hesabınızı kilitleyiniz:
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+Eğer yukardaki link ile hesap kilitlemeyi onaylarsanız mevcut bütün oturumlar anında sonlandırılacaktır, yeni ayarlanan şifre ile girişler kilitlenecektir ve yöneticiler ne olduğunu onaylamak için sizinle iletişime geçecek ve hesabınızı yeniden aktifleştirmek için sizinle iş birliği yapacaklardır.
+
+Fakat, biraz önce şifreyi değiştiren sizin kendinizdiyse ve bu şekilde bu bildirimin gelmesine sebep olduysanız, her şey tahmin edebileceğiniz gibi yolunda ve tam da olması gerektiği gibidir. Devam ediniz.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Şifre Değiştirildi</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>[OrganizationName]'deki kişiler hesabınıza şifre sıfırlama talebi oluşturdu, muhtemelen sizin isteğiniz üzerine. Bu talep önümüzdeki 24 saat boyunca geçerlidir.
+
+Lütfen şifrenizi sıfırlamak ve eğer önceden etkinleştirilmişse, herhangi bir iki aşamalı doğrulamayı tekrar etkinleştirmek için bu bağlantıyı takip edin:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Bu talep 24 saat içinde zaman aşımına uğrayacaktır. Eğer şifrenizi bu zaman dilimi içinde sıfırlamazsanız, yeni bir şifre sıfırlama talebi oluşturmak için [OrganizationName]'deki yöneticilerle iletişime geçmeniz gerekecektir.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Şifre Sıfırlama Talebi</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Birisi, büyük olasılıkla siz, [InstallationName]'deki bu e-posta adresiyle bağlantılı şifrenin değişimi talebinde bulundu. Eğer bu sizdiyseniz, şifre sıfırlama prosedürünü tamamlamak için lütfen önümüzdeki 60 dakika içinde aşağıdaki linki takip ediniz:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Eğer bir şifre sıfırlama isteğinde bulunmadıysanız, bu e-postayı görmezden gelebilir(ve görmeli)siniz. Şifre sıfırlama talebi bir saat içinde zaman aşımına uğrayacaktır. (Eğer bu talep etmediğiniz şifre sıfırlama bağlantılarından çok sayıda alıyorsanız, lütfen yöneticiye bildiriniz.)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Şifre Sıfırlama Talebi</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>Finansal süreçlerinin devam etmesi için onay gereken makbuzlar dosyalandı.
+
+Lütfen, [ExternalUrl]Financial/ValidateReceipts adresindeki [InstallationName]'e giriş yaparak, bunları onaylayın veya geri çevirin.</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - EYLEM ÖĞESİ] Makbuzlar Dosyalandı - Onay Gerekiyor</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>[RequestPurpose] için maaş ödemeniz iptal edildi. Ödenmeyecek.
+
+Eğer bu size sürpriz olduysa, lütfen derhal organizasyon ile ve/veya yöneticinizle iletişime geçin. Aşağıdaki sebep olarak gösterildi:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Maaş ödemesi engellendi: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>Bu sizin [LastYear] için özet maaş beyanınızdır. Bu, yeni bir maaşın beyanı değilidir, ama geçen yıl boyunca size ödenen aylık maaşların ve kesilen bütün vergilerin de beyanıdır. Bu beyanın amacı; kayıtlarınız için veri olarak ve/veya geçen yıl için vergi beyanı amacıyla kullanılması.
+
+[LastYear] için brüt maaş: [CurrencyCode][GrossSalaryTotal]
+Vergiler düşülmü hali: [CurrencyCode][TaxDeductedTotal]
+Toplam ödenen maaş: [CurrencyCode][NetSalaryTotal]
+
+Ay       Brüt    Kesilen          Net  Ödemeli kullanım
+-----  ----------  -----------  ----------  -----------
+[EmbeddedPreformattedText]
+
+TOPLAM [GrossSalaryTotal][TaxDeductedTotal][NetSalaryTotal]
+
+Ek olarak, yukarıda kesilen miktara ek olarak, [CurrencyCode][TaxAdditiveTotalUnpadded] organizasyon tarafından sizin çalıştırılma verginiz olarak ödenmiştir. Bu da sizin maaşınızda bulunan bir vergidir, her ne kadar bunun gibi bir yapı bürokratik olarak gizlenmiş olsa da.</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [LastYear] için aylık özet raporu</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>[HostName] sunucusundaki Swarmops Arkaplanı [SwarmopsVersion], Swarmops veritabanı şemasını başarıyla revizyon [DbVersion]'a yükseltti.
+
+Bu sadece bilgilendirme amaçlıdır. Bir eylem yapmanıza gerek yoktur.</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>Swarmops veritabanı yükseltildi</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>[Hostname] sunucusundaki Swarmops Arkaplanı [SwarmopsVersion], Swarmops veritabanı şemasını güncellemekte BAŞARISIZ oldu. Bu, genellikle geçici bir harici ağ hatasından dolayı olur, bu da yama dosyasının çekilmesinin başarısız olmasına sebep olur.
+
+Şuanda veritabanı şema revizyonu [DbVersion]dayız, fakat [DbVersionExpected]'a yükseltmeyi deniyoruz.
+
+
+Güncelleme her saat yeniden denenecektir. Veritabanı güncellenene kadar bazı işlevler devre dışı olabilir. Eğer manuel olarak sorunları gidermek isterseniz, veritabanı güncelleme paketleri packages.swarmops.com adresinden alınmaktadır, apt-get'in yazılım paketlerini yakaladığı yer ile aynı yer.</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>Swarmops veritabanı yükseltme BAŞARISIZ OLDU</value>
+  </data>
+  <data name="System_Exception_Body" xml:space="preserve">
+    <value>Swarmops içerisinde beklenmeyen bir durum meydana geldi:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="System_Exception_Subject" xml:space="preserve">
+    <value>Swarmops İSTİSNASI!</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>Bu, [HostName]'de çalışan Swarmops [SwarmopsVersion] tarafından gönderilen bir test mailidir. Az önce e-posta sunucu ayarlarını değiştirdiniz. Yeni ayarların doğruluğunu onaylamak için, Swarmops bu test mesajını arka uçtan yollanacak şekilde gönderir.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Swarmops E-Posta Sunucusu Testi</value>
+  </data>
+  <data name="System_PublicRootReset_Body" xml:space="preserve">
+    <value>MySql veritabanındaki bitcoin genele açık kök anahtarı, [HostName]'de /etc/swarmops içinde tutulan bitcoin gizli anahtarıyla eşleşmedi. Bu ciddi olması muhtemel bir durum ve hiçbir zaman olmaması gerekir, bu yüzden genele açık kök anahtarı özel anahtardan yararlanarak yeniden üretilmiş ve veritabanında önceden orada bulunan şeyin üzerine yeniden yazılmıştır.</value>
+  </data>
+  <data name="System_PublicRootReset_Subject" xml:space="preserve">
+    <value>Swarmops: Hotwallet genele açık temel anahtar sıfırlama</value>
+  </data>
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>[HostName] sunucusundaki Swarmops Arkaplanı [SwarmopsVersion], başarıyla başladı ve veritabanı ve bildirim frameworklerine bağlandı.</value>
+  </data>
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>Swarmops Arka Plan kullanıma hazır</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>[HostName] sunucusundaki Swarmops Ön Plan soket sunucusu [SwarmopsVersion], başarıyla başladı ve veritabanı ve bildirim frameworklerine bağlandı.</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>Swarmops Ön Plan kullanıma hazır</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
+    <value>[HostName] deki Swarmops aktarma motoru bilinmeyen bir yük biçimiyle([UnrecognizedPayloadType]) karşılaştı. Bu, sadece çok nadir durumlarda, güncellemelerle birlikte, güncellenen sürümün süreçte ismi değişen bir şeyin üstesinden gelmesi gerektiğinde olmalıdır, bunun kendisi de nadir bir olaydır.
+
+Bu sorun tekrarlıyorsa, düzgün kurulmamış bir eklentiye veya benzeri bir şeye sahip olabilirsiniz. Durum hangisi olursa olsun, tanınmayan mesaj yok edildi ve gönderilmeyecek çünkü Swarmops nasıl yapacağını bilmemekte.</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
+    <value>Swarmops: Tanınmayan iletişim yükü</value>
+  </data>
 </root>

@@ -117,81 +117,274 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AddMotionAmendment_AmendmentSubmittedAs" xml:space="preserve">
+    <value>#{0}-{1} olarak kaydedildi.</value>
+    <comment>Keep very short</comment>
+  </data>
+  <data name="AddMotionAmendment_Decision" xml:space="preserve">
+    <value>Önerilen karar</value>
+    <comment>Decision to be made, amending the motion</comment>
+  </data>
+  <data name="AddMotionAmendment_PageTitle" xml:space="preserve">
+    <value>Değişiklik Ekle</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="AddMotionAmendment_SubmitAmendment" xml:space="preserve">
+    <value>Değişiklik Gönder</value>
+  </data>
+  <data name="AddMotionAmendment_Submitter" xml:space="preserve">
+    <value>Gönderen</value>
+  </data>
+  <data name="AddMotionAmendment_SubmittingAmendmentInfo" xml:space="preserve">
+    <value>Teklife bir düzeltme gönderiyorsunuz</value>
+    <comment>In sidebar info box. Motion title follows in bold.</comment>
+  </data>
+  <data name="AddMotionAmendment_Text" xml:space="preserve">
+    <value>Gerekçe</value>
+    <comment>Text of motion amendment (justification and rationale)</comment>
+  </data>
+  <data name="AddMotionAmendment_Title" xml:space="preserve">
+    <value>Değişiklik başlığı</value>
+  </data>
+  <data name="AddMotion_Decisions" xml:space="preserve">
+    <value>Kararlar (satır başına bir tane)</value>
+    <comment>Proposed decisions, one per line</comment>
+  </data>
+  <data name="AddMotion_MotionSubmittedAs" xml:space="preserve">
+    <value>Teklif #{0} olarak kaydedildi.</value>
+    <comment>Keep short</comment>
+  </data>
+  <data name="AddMotion_PageTitle" xml:space="preserve">
+    <value>Hareket Ekle</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="AddMotion_SubmitMotion" xml:space="preserve">
+    <value>Hareket Gönder</value>
+  </data>
+  <data name="AddMotion_Submitter" xml:space="preserve">
+    <value>Gönderen</value>
+    <comment>Original submitter (not person at keyboard)</comment>
+  </data>
+  <data name="AddMotion_SubmittingMotionInfo" xml:space="preserve">
+    <value>Toplantıya bir teklif gönderiyorsun</value>
+    <comment>Meeting name follows in bold.</comment>
+  </data>
+  <data name="AddMotion_Text" xml:space="preserve">
+    <value>Teklif gerekçesi</value>
+    <comment>Text of motion</comment>
+  </data>
+  <data name="AddMotion_Title" xml:space="preserve">
+    <value>Hareket Başlığı</value>
+    <comment>Motion title in form</comment>
+  </data>
+  <data name="AddMotion_WrongMeeting" xml:space="preserve">
+    <value>Yanlış toplantı?</value>
+    <comment>Link to change meetings</comment>
+  </data>
+  <data name="ListMotions_Grid_Amended" xml:space="preserve">
+    <value>Düzeltmek</value>
+  </data>
+  <data name="ListMotions_Grid_Amendments" xml:space="preserve">
+    <value>Düzeltmeler</value>
+  </data>
+  <data name="ListMotions_Grid_Carried" xml:space="preserve">
+    <value>Taşınan</value>
+  </data>
+  <data name="ListMotions_Grid_Designation" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="ListMotions_Grid_Title" xml:space="preserve">
+    <value>Başlık</value>
+  </data>
+  <data name="ListMotions_PageTitle" xml:space="preserve">
+    <value>Hareketler Listesi</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="ListMotions_Sidebar_Info" xml:space="preserve">
+    <value>Toplantı için yapılacak tekliflere bakıyorsun</value>
+  </data>
+  <data name="ListMotions_SubmitAmendment" xml:space="preserve">
+    <value>Gönder...</value>
+    <comment>Displayed in-grid</comment>
+  </data>
+  <data name="ViewMotion_AddAmendment" xml:space="preserve">
+    <value>Teklife yeni bir düzeltme önerin</value>
+  </data>
+  <data name="ViewMotion_Amendment" xml:space="preserve">
+    <value>Düzeltme</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountOne" xml:space="preserve">
+    <value>Bir düzeltme</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountTwoPlus" xml:space="preserve">
+    <value>{0} düzeltme</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountZero" xml:space="preserve">
+    <value>Düzeltme yok</value>
+  </data>
+  <data name="ViewMotion_AmendmentProposedChange" xml:space="preserve">
+    <value>Değişim önerisi</value>
+  </data>
+  <data name="ViewMotion_AmendmentText" xml:space="preserve">
+    <value>Gerekçe</value>
+  </data>
+  <data name="ViewMotion_DecisionPoints" xml:space="preserve">
+    <value>Önerilen kararlar</value>
+  </data>
+  <data name="ViewMotion_Discuss" xml:space="preserve">
+    <value>Tartışma konusu</value>
+    <comment>Label before link to forum or similar</comment>
+  </data>
+  <data name="ViewMotion_DiscussLink" xml:space="preserve">
+    <value>Forum konusu (şimdiye kadar {0} gönderi)</value>
+    <comment>Hyperlink text</comment>
+  </data>
+  <data name="ViewMotion_MotionDesignation" xml:space="preserve">
+    <value>Teklif #{0}</value>
+  </data>
+  <data name="ViewMotion_PageTitle" xml:space="preserve">
+    <value>Teklifi Görüntüle</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="ViewMotion_Text" xml:space="preserve">
+    <value>Teklif gerekçesi</value>
+  </data>
+  <data name="ViewMotion_ViewingMotionInfo" xml:space="preserve">
+    <value>Toplantıya gönderilen bir teklifi inceliyorsun</value>
+    <comment>In sidebar info box. Meeting name follows in bold.</comment>
+  </data>
+  <data name="VoteAmendments_BoardRecommendation" xml:space="preserve">
+    <value>Kurulun Önerisi</value>
+    <comment>First item in dropdown box</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Abstain" xml:space="preserve">
+    <value>Özet</value>
+    <comment>Column header</comment>
+  </data>
+  
+  <data name="VoteAmendments_Grid_Change" xml:space="preserve">
+    <value>Değiştir</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Decision" xml:space="preserve">
+    <value>Karar</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Designation" xml:space="preserve">
+    <value>#</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_No" xml:space="preserve">
+    <value>Hayır</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
+    <value>Gerekçe</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Recommend" xml:space="preserve">
+    <value>Kayıt</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Text" xml:space="preserve">
+    <value>Metin</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_TitleText" xml:space="preserve">
+    <value>Metin / Başlık</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Yes" xml:space="preserve">
+    <value>Evet</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Header" xml:space="preserve">
+    <value>{0} için düzeltmeler</value>
+    <comment>In content box header. The meeting name goes in {0}.</comment>
+  </data>
+  <data name="VoteAmendments_Info" xml:space="preserve">
+    <value>Teklifler için önerilen değişiklikleri oyla. Geçerseniz teklifleri değiştirirler. Bir sonraki turda ortaya çıkan teklifleri oylayacağız. Birbirinden ayrı değişiklikler her bir teklifin altında listelenir ve her bir teklif ve değişikliğin altında ek detaylar bulunmaktadır. Beğenirseniz bir oylama önerisi seçebilirsiniz.</value>
+  </data>
+  <data name="VoteAmendments_PageTitle" xml:space="preserve">
+    <value>Düzeltmelere oy ver</value>
+    <comment>In page title and header</comment>
+  </data>
+  <data name="VoteAmendments_Recommend_Abstain" xml:space="preserve">
+    <value>---</value>
+  </data>
+  <data name="VoteAmendments_Recommend_No" xml:space="preserve">
+    <value>HAYIR</value>
+  </data>
+  <data name="VoteAmendments_Recommend_Yes" xml:space="preserve">
+    <value>EVET</value>
+  </data>
+  <data name="VoteAmendments_SelectRecommendation" xml:space="preserve">
+    <value>Önerileri seçin...</value>
+    <comment>Default in dropdown box</comment>
+  </data>
+  <data name="Vote_CreateVotingList" xml:space="preserve">
+    <value>Oylama listesi oluşturulsun mu?</value>
+    <comment>This becomes a link which folds out to a popup asking "for motions or amendments".</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Amendments" xml:space="preserve">
+    <value>Düzeltmeler için oylama listesi oluştur</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Elections" xml:space="preserve">
+    <value>Seçim için oylama listesi oluştur</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Motions" xml:space="preserve">
+    <value>Teklifler için oylama listesi oluştur</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_Info" xml:space="preserve">
+    <value>Bazen, {0} toplantılar düzenliyor. Bu toplantılar sırasında üyeler oy kullanacak. Bu oy kullanabileceğiniz bir listedir. Başkalarına tavsiye olarak da bir oylama listesi oluşturabilirsiniz.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Vote_MeetingElections" xml:space="preserve">
+    <value>Seçimler</value>
+  </data>
+  <data name="Vote_Motions" xml:space="preserve">
+    <value>Teklifler</value>
+  </data>
+  <data name="Vote_MotionVotingMotionAmendments" xml:space="preserve">
+    <value>Teklif Düzeltmeleri</value>
+  </data>
+  <data name="Vote_MotionVotingMotions" xml:space="preserve">
+    <value>Teklifler</value>
+  </data>
+  <data name="Vote_NotOpenedYet" xml:space="preserve">
+    <value>Henüz açık değil</value>
+    <comment>Keep very short.</comment>
+  </data>
+  <data name="Vote_OpensOnDate" xml:space="preserve">
+    <value>{0:yyyy-MMM-dd}'da açılacaktır.</value>
+    <comment>Note the embedded date format. Localize to national standard.</comment>
+  </data>
+  <data name="Vote_PageTitle" xml:space="preserve">
+    <value>Oy</value>
+  </data>
+  
+  
+  <data name="Vote_VoteHere" xml:space="preserve">
+    <value>Buradan oy verebilirsiniz</value>
+    <comment>Link to voting page</comment>
+  </data>
+  <data name="Vote_VoteOnAmendments" xml:space="preserve">
+    <value>{0:N0} değişikliği oyla:</value>
+    <comment>The {0} is the amendment count.</comment>
+  </data>
+  <data name="Vote_VoteOnMotions" xml:space="preserve">
+    <value>{0:N0} teklifi oyla:</value>
+    <comment>The {0} is the motion count.</comment>
+  </data>
+  <data name="VoteAmendments_SaveVote" xml:space="preserve">
+    <value>Tamamım, Oyumu gönder</value>
+    <comment>Button at end of page</comment>
+  </data>
+  <data name="VoteAmendments_SaveVote_Temp" xml:space="preserve">
+    <value>Test toplantılarında oy kullanılmıyor</value>
+    <comment>For Tests Only</comment>
+  </data>
 </root>

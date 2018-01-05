@@ -117,113 +117,323 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Administration" xml:space="preserve">
+    <value>Yönetici</value>
+  </data>
+  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
+    <value>Erişim Kontrol Listeleri</value>
+  </data>
+  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
+    <value>Yeni Organizasyon Oluştur</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Organizasyon Ayarları</value>
+  </data>
+  <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
+    <value>Coğrafya Ağacı</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
+    <value>Organizasyon Kümeleri</value>
+  </data>
+  <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
+    <value>Sistem Geneli Ayarlar</value>
+  </data>
+  <data name="Menu5_Communications" xml:space="preserve">
+    <value>İletişimler</value>
+  </data>
+  <data name="Menu5_Communications_EditAutomailText" xml:space="preserve">
+    <value>Otomatik Posta Metnini Düzenle</value>
+  </data>
+  <data name="Menu5_Communications_MailInbox" xml:space="preserve">
+    <value>Posta Kutusunu Yönet</value>
+  </data>
+  <data name="Menu5_Communications_MassMailing" xml:space="preserve">
+    <value>Toplu Postalama</value>
+  </data>
+  <data name="Menu5_Communications_MobilizeActivists" xml:space="preserve">
+    <value>Aktivistleri Harekete Geçir</value>
+  </data>
+  <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
+    <value>Kağıt Kutusunu Yönet</value>
+  </data>
+  <data name="Menu5_Communications_ReadPaperInbox" xml:space="preserve">
+    <value>Kağıt Kutusunu Oku</value>
+  </data>
+  <data name="Menu5_Communications_ReceivedPaperLetter" xml:space="preserve">
+    <value>Kağıt Mektup Alındı</value>
+  </data>
+  <data name="Menu5_Communications_ReporterList" xml:space="preserve">
+    <value>Raportör Listesini Yönet</value>
+  </data>
+  <data name="Menu5_Communications_SendMassMessage" xml:space="preserve">
+    <value>Toplu Mesaj Gönder</value>
+  </data>
+  <data name="Menu5_Communications_SendPressRelease" xml:space="preserve">
+    <value>Basın Bülteni Gönder</value>
+  </data>
+  <data name="Menu5_Communications_TextActivists" xml:space="preserve">
+    <value>Aktivistlere Mesaj Gönder</value>
+  </data>
+  <data name="Menu5_Communications_TextInbox" xml:space="preserve">
+    <value>Metin Kutusunu Yönet</value>
+  </data>
+  <data name="Menu5_Financial" xml:space="preserve">
+    <value>Finansal</value>
+  </data>
+  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
+    <value>Maliyetleri Doğrula</value>
+  </data>
+  <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
+    <value>Masraf için İade Talep Et</value>
+  </data>
+  <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
+    <value>Satın Alma Emri Oluştur</value>
+  </data>
+  
+  <data name="Menu5_Financial_List" xml:space="preserve">
+    <value>Liste...</value>
+  </data>
+  <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
+    <value>Nakit İstekleri</value>
+  </data>
+  <data name="Menu5_Financial_List_ExpenseClaims" xml:space="preserve">
+    <value>Masraf Talepleri</value>
+  </data>
+  <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
+    <value>Gelen Faturalar</value>
+  </data>
+  <data name="Menu5_Financial_List_OutboundInvoices" xml:space="preserve">
+    <value>Giden Faturalar</value>
+  </data>
+  <data name="Menu5_Financial_List_OutstandingAdvances" xml:space="preserve">
+    <value>Ödenmemiş Nakit Avanslar</value>
+  </data>
+  <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
+    <value>Maaşlar</value>
+  </data>
+  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
+    <value>Bütçelerimi Yönet</value>
+  </data>
+  <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
+    <value>Para Öde</value>
+  </data>
+  <data name="Menu5_Financial_Payroll" xml:space="preserve">
+    <value>Bordro</value>
+  </data>
+  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
+    <value>Yeni Fatura Alındı</value>
+  </data>
+  <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
+    <value>Nakit Avans Talep Et</value>
+  </data>
+  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
+    <value>Yeni Fatura Gönder</value>
+  </data>
+  <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
+    <value>Makbuzları Doğrula</value>
+  </data>
+  <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
+    <value>Bütçeyi ve Gerçek Değerleri Görüntüle</value>
+  </data>
+  <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
+    <value>Likidite Tahminini Görüntüle</value>
+  </data>
+  <data name="Menu5_Governance" xml:space="preserve">
+    <value>Yönetim</value>
+  </data>
+  <data name="Menu5_Governance_Candidates" xml:space="preserve">
+    <value>Adaylar</value>
+  </data>
+  <data name="Menu5_Governance_CreateVotingList" xml:space="preserve">
+    <value>Oylama Listesi Oluştur</value>
+  </data>
+  <data name="Menu5_Governance_MeetingAdmin" xml:space="preserve">
+    <value>Toplantı Yönetimi</value>
+  </data>
+  <data name="Menu5_Governance_MeetingBoardAdmin" xml:space="preserve">
+    <value>Komisyon için Toplantı Yönetimi</value>
+  </data>
+  <data name="Menu5_Governance_Motions" xml:space="preserve">
+    <value>Teklifler</value>
+  </data>
+  <data name="Menu5_Governance_Vote" xml:space="preserve">
+    <value>Oy</value>
+  </data>
+  <data name="Menu5_Hacks_TemporaryAccessControl" xml:space="preserve">
+    <value>Yönetici Erişimi Ata (Geçici Sayfa)</value>
+  </data>
+  <data name="Menu5_Ledgers" xml:space="preserve">
+    <value>Defterler</value>
+  </data>
+  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
+    <value>Hesap Planı</value>
+  </data>
+  <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
+    <value>Defterleri Denetle</value>
+  </data>
+  <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
+    <value>Bilanço</value>
+  </data>
+  <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
+    <value>{0} İçin Defter Kapatılamıyor</value>
+  </data>
+  <data name="Menu5_Ledgers_CashflowAnalysis" xml:space="preserve">
+    <value>Nakit Akış Analizi</value>
+  </data>
+  <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
+    <value>{0} İçin Defterleri Kapat</value>
+  </data>
+  <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
+    <value>Defter, Hesaplarda Hata Ayıkla</value>
+  </data>
+  <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
+    <value>Banka Verilerini İçe Aktar</value>
+  </data>
+  <data name="Menu5_Ledgers_InspectLedgers" xml:space="preserve">
+    <value>Defterleri Kontrol Et</value>
+  </data>
+  <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
+    <value>Likidite Tahmini</value>
+  </data>
+  <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
+    <value>Bordro</value>
+  </data>
+  <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
+    <value>Kar &amp; Zarar Beyanı</value>
+  </data>
+  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
+    <value>Banka Hesabını Yeniden Senkronize Et</value>
+  </data>
+  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
+    <value>Bütçe Miktarlarını Ayarla</value>
+  </data>
+  <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
+    <value>Banka Dosyaları Yükle</value>
+  </data>
+  <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
+    <value>Belirsiz Hesapları Listele</value>
+  </data>
+  <data name="Menu5_Organization" xml:space="preserve">
+    <value>Organizasyon</value>
+  </data>
+  <data name="Menu5_Organization_AvailableResponsibilities" xml:space="preserve">
+    <value>Müsait Sorumluluklar</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates" xml:space="preserve">
+    <value>İletişim Şablonları</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_Invoice" xml:space="preserve">
+    <value>Faturalar</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_MassMailing" xml:space="preserve">
+    <value>Toplu Postalamalar</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_Newsletter" xml:space="preserve">
+    <value>Haber Bültenleri</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_PressRelease" xml:space="preserve">
+    <value>Basın Açıklamaları</value>
+  </data>
+  <data name="Menu5_Organization_Feeds" xml:space="preserve">
+    <value>Akışlar</value>
+  </data>
+  <data name="Menu5_Organization_Feeds_Newsletter" xml:space="preserve">
+    <value>Haber Bültenleri</value>
+  </data>
+  <data name="Menu5_Organization_Feeds_PressReleases" xml:space="preserve">
+    <value>Basın Açıklamaları</value>
+  </data>
+  <data name="Menu5_Organization_MemberStatistics" xml:space="preserve">
+    <value>Üye İstatistikleri</value>
+  </data>
+  <data name="Menu5_Organization_OrganizationChart" xml:space="preserve">
+    <value>Organizasyon Şeması</value>
+  </data>
+  <data name="Menu5_Organization_Responsibilities" xml:space="preserve">
+    <value>Organizasyon Sorumlulukları</value>
+  </data>
+  <data name="Menu5_Organization_Settings" xml:space="preserve">
+    <value>Organizasyon Ayarları</value>
+  </data>
+  <data name="Menu5_Organization_SuborganizationTree" xml:space="preserve">
+    <value>Alt-Kuruluş Ağacı</value>
+  </data>
+  <data name="Menu5_People" xml:space="preserve">
+    <value>Kişiler</value>
+  </data>
+  <data name="Menu5_People_AddMember" xml:space="preserve">
+    <value>Üye Ekle</value>
+  </data>
+  <data name="Menu5_People_AddPerson" xml:space="preserve">
+    <value>[Regular] Ekle</value>
+  </data>
+  <data name="Menu5_People_ListFind" xml:space="preserve">
+    <value>İnsanları Listele/Bul</value>
+  </data>
+  <data name="Menu5_People_ListMembers" xml:space="preserve">
+    <value>Üyeleri Listele</value>
+  </data>
+  <data name="Menu5_People_LogActivism" xml:space="preserve">
+    <value>Aktivizmi Raporla</value>
+  </data>
+  <data name="Menu5_People_ManageConferences" xml:space="preserve">
+    <value>Konferansları Yönet</value>
+  </data>
+  <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
+    <value>Gönüllüleri Yönet</value>
+  </data>
+  <data name="Menu5_People_NewConference" xml:space="preserve">
+    <value>Yeni Konferans</value>
+  </data>
+  <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
+    <value>Roller ve Sorumluluklar</value>
+  </data>
+  
+  
+  
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>Vergi Formları</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>Bordro Vergi Formları</value>
+  </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>İşlemleri Dengele &amp; Eşleştir</value>
+  </data>
+  
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>Yerel Organizasyonum</value>
+  </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>Fon Bağışla</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Bütçe vs Gerçek Değer</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Bitoin Hotwallet'ı</value>
+  </data>
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>{0:MMM d, yyyy}'de kuruldu</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} satır kod</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Bir Swarmops hatası bildir (GitHub'da)</value>
+  </data>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Hata ayıklama</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Kişileştir</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>KDV Raporları</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Bitcoin Hotwallet'ı Eko Testi</value>
+  </data>
 </root>

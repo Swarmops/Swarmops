@@ -337,6 +337,8 @@ Logga in på [InstallationName] på [ExternalUrl]Financial/ValidateReceipts att 
   </data>
   
   
+  
+  
   <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
     <value>Swarmops Backend [SwarmopsVersion] på servern [HostName] har uppgraderat Swarmops' databasschema till version [DbVersion].  Detta är endast för information. Du behöver inte vidta någon åtgärd.</value>
   </data>

@@ -119,6 +119,9 @@
   </resheader>
   
   
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>Accès Refusé</value>
+  </data>
   
   
   
@@ -167,7 +170,10 @@
   
   
   
-  
-  
-  
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>Billet</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>Si l'adresse de mail a été associée à un compte sur cette installation de Swarmops, un &lt;strong&gt;ticket de réinitialisation a été envoyé.&lt;/strong&gt; Ouvrez ce mail et cliquez sur le lien dans le mail pour réinitialiser votre mot de passe. (Si le mail n'existait pas, rien n'a été envoyé.)&lt;br/&gt;&lt;br/&gt;Vous pouvez fermer cet onglet du navigateur. Il n'est plus nécessaire.</value>
+  </data>
 </root>

@@ -940,4 +940,8 @@
   <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
     <value>Utgående faktura #{0:N0} till {1}</value>
   </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(makulerad, avbruten, nollställd)</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
 </root>

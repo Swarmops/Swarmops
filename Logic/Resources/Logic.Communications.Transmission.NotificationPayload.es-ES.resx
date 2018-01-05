@@ -117,88 +117,369 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>Al intentar un pago a su dirección de pago de bitcoin, el motor de pago subyacente rechazó la dirección ([BitcoinAddress]) como inválida. Por lo tanto, ha sido borrado de su perfil.
+
+Inicie sesión en [Nombre de instalación] en [Url externa] y establezca una nueva dirección de pago de bitcoin.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización] - OBJETO DE ACCIÓN] Mala dirección de pago de bitcoin</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>Ha cambiado la dirección de pago de bitcoin de [Dirección antigua de Bitcoin] a [Dirección de bitcoin]. Como medida de seguridad, todos los pagos se ponen en cuarentena durante las próximas 48 horas.
+
+Si NO cambiaste la dirección de pago y hubo un incumplimiento de seguridad, haz clic en este enlace de inmediato para bloquear tu cuenta: [Enlace de bloqueo]
+
+Si hace clic en ese enlace, su cuenta se bloqueará inmediatamente sin solicitudes de confirmación. Sin embargo, si solicitó cambiar la dirección de pago, todo está bien y no se requieren más acciones de su parte.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Cambió la dirección de pago de Bitcoin</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>Tienes fondos esperando el pago en [Nombre de la organización], pero no has establecido una dirección de pago de bitcoin.
+
+Inicie sesión en [Nombre de la instalación] en [Url externa] y siga el enlace para establecer su dirección de pago: la encontrará en la lista de tareas pendientes.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Configure su dirección de pago de bitcoin</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>Ha establecido una dirección de pago de bitcoin: [Dirección de Bitcoin]. Como precaución de seguridad, todos los pagos se ponen en cuarentena durante las próximas 48 horas, y luego se pagarán a la nueva dirección después de eso.
+
+Si no configuró esta dirección de pago (puede valer la pena verificar dos veces la dirección anterior para mayor seguridad), comuníquese con [Nombre de la organización] de inmediato.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>Una dirección de pago de bitcoin fue establecida por [Nombre de persona interesada]. Los pagos comenzarán después de las 48 horas cuando haya transcurrido el período de cuarentena.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] [Nombre de la persona interesada] ha establecido una dirección de pago de bitcoin</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] conjunto de Dirección de pago de Bitcoin</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>La billetera caliente de bitcoin para [Nombre de la organización] acaba de hacer [Cuenta de pago] pagos automáticos que suman [Código de moneda] [Cantidad flotante] ([Cantidad flotante de Bitcoin] microbitcoin o "bits").</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Pago de billetera caliente: [Código de moneda] [Cantidad flotante]</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[Cantidad flotante de Bitcoin] microbitcoin ("bits") se acaba de transferir a su dirección de bitcoin ([Dirección de Bitcoin]) por [Nombre de la organización] para lo siguiente:
+
+[Texto preformateado incrustado]
+
+Ya deberías ver la transacción en tu billetera y debería poder agilizarla en aproximadamente una hora (seis confirmaciones normales).</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Fondos pagados: [Código de moneda] [Cantidad flotante]</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>Cuando un pago automático desde la billetera caliente, la clave privada utilizada para firmar no coincide con las claves públicas utilizadas para reunir los fondos necesarios. Esta es una condición seria.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización] - URGENTE] Error de clave privada de Bitcoin; no puede pagar</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmops está intentando realizar pagos de [Código de moneda] [Cantidad necesaria de flotación], pero solo [Código de moneda] [Importe de flotación de cartera] está disponible en la billetera activa de bitcoin. Swarmops no puede realizar pagos adicionales en este momento.
+
+Rellene INMEDIATAMENTE la billetera caliente hasta, al menos, la cantidad necesaria: se necesita un microbitcoin [Importe Microcoins Flotante] adicional ("bits") para reanudar las operaciones financieras de la billetera caliente.
+
+Swarmops seguirá intentándolo y seguirá enviando estas notificaciones siempre que no haya tenido éxito.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización] - OBJETO DE ACCIÓN] Cartera caliente Bitcoin insuficiente para pagos - recarga inmediatamente</value>
+  </data>
+  <data name="CashAdvance_Attested_Body" xml:space="preserve">
+    <value>Su adelanto de efectivo solicitado con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], con respecto a [Propósito de la solicitud], ha sido atestiguado por el propietario del presupuesto. Ahora procederá a pagarle.</value>
+  </data>
+  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Avance de efectivo atestiguado: [Código de moneda] [Importe del presupuesto flotante]</value>
+  </data>
+  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
+    <value>Su adelanto en efectivo solicitado con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], con respecto a [Propósito de la solicitud], ha sido DE-atestiguado por el propietario del presupuesto. Esto generalmente indica algún tipo de problema con su solicitud.
+
+Espere más comunicación del propietario del presupuesto para seguir con el asunto.</value>
+  </data>
+  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Adelanto en efectivo DE-atestiguado: [Código de moneda] [Importe del presupuesto flotante]</value>
+  </data>
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>Su adelanto en efectivo con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante] con respecto a [Propósito de la solicitud] ha sido denegado. El siguiente texto fue dado como razón para negarlo:
+
+[Texto preformateado incrustado]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Adelanto en efectivo DENEGADO: [Código de moneda] [Importe del presupuesto flotante]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>Su solicitud de adelanto en efectivo con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], en relación con [Propósito de la solicitud], se ha marcado como pagada por los contadores de la organización.
+
+Esto significa que debería ver el monto en su cuenta en breve.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Pago en efectivo pagado: [Código de moneda] [Importe del presupuesto flotante]</value>
+  </data>
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[Nombre de la persona interesada] ha solicitado un adelanto en efectivo de [Código de moneda] [Importe del presupuesto flotante] a los fines del [Propósito de la solicitud]. Este dinero es parte de su presupuesto, [Nombre del presupuesto].
+
+Inicie sesión en [Nombre de la instalación] en [Url Externo] Financiero / PuntuacionesAtest para confirmar o denegar.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización] - OBJETO DE ACCIÓN] Adelanto en efectivo solicitado: [Código de moneda] [Importe del presupuesto flotante] - Se necesita certificación</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+    <value>Su reclamación de gastos con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], en relación con [Propósito de la solicitud], ha sido certificada por el propietario del presupuesto. Se le pagará cuando los recibos sean confirmados como válidos.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Reclamo de gastos atestiguado: [Código de moneda] [Importe del presupuesto flotante]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[Nombre de la persona interesada] ha creado una reclamación de gastos contra el presupuesto de [Nombre del presupuesto] por la cantidad de [Código de moneda] [Importe del presupuesto flotante]. La reclamación se refiere a [Propósito de la solicitud]. Tendrá que atestiguar este reclamo de gastos.
+
+Inicie sesión en [Nombre de la instalación] en [Url Externo] Financiero / PuntuacionesAtest para confirmar o denegar.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización] - OBJETO DE ACCIÓN] Reclamo de gasto creado: [Código de moneda] [Importe del presupuesto flotante] - Se necesita certificación</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
+    <value>Su reclamo de gastos con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], con respecto a [Propósito de la solicitud], ha sido DE-atestiguado por el propietario del presupuesto. Esto generalmente indica algún tipo de problema con su reclamo de gastos.
+
+Espere más comunicación del propietario del presupuesto para seguir con el asunto.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Reclamo de gastos DE-atestiguado: [Código de moneda] [Importe del presupuesto flotante]</value>
+  </data>
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>Su reclamo de gastos con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante] con respecto a [Propósito de la solicitud] ha sido denegado. El siguiente texto fue dado como razón para negarlo:
+
+[Texto preformateado incrustado]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Reclamo de gastos DENEGADO: [Código de moneda] [Importe del presupuesto flotante]</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
+    <value>Los recibos de su reclamación de gastos con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], con respecto a [Propósito de la solicitud], han sido validados por los registradores financieros de la organización. Esto generalmente indica algún tipo de problema con la documentación de su reclamo de gastos.
+
+Espere más comunicación para seguir sobre el asunto. Si no recibe noticias de los registradores en poco tiempo sobre este asunto, continué seguimiento.</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Recibos de reclamación de gastos DE-validada: [Código de moneda] [Importe del presupuesto flotante]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>Su reclamación de gastos con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], con respecto a [Propósito de la solicitud], se ha marcado como pagada por los contadores de la organización.
+
+Esto significa que debería ver el monto en su cuenta en breve.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Reclamación de gastos pagada: [Código de moneda] [Importe del presupuesto flotante]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>Los recibos de su reclamación de gastos con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], con respecto a [Propósito de la solicitud], han sido validados por personas responsables de mantener los registros en orden.
+
+El reclamo se le pagará cuando el monto también haya sido atestiguado por el propietario del presupuesto.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Recibos de reclamación de gastos validados: [Código de moneda] [Importe del presupuesto flotante]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Se ha presentado una factura de [Proveedor], relacionada con [Descripción], en contra de su presupuesto de [Nombre del presupuesto] por la cantidad de [Código de moneda] [Importe del presupuesto flotante]. Debe dar fe de esta factura antes de proceder con el pago.
+
+Inicie sesión en [Nombre de la instalación] en [Url Externo] Financiero / PuntuacionesAtest para confirmar o denegar.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización] - OBJETO DE ACCIÓN] Factura archivada: [Código de moneda] [Importe del presupuesto flotante] - Se necesita certificación</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>Un nuevo [Regular] se agregó manualmente a [Nombre de la organización] dentro de un área tuya.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Nuevo [Regular]: [Nombre de la persona], [Geografía de la persona] [Código del país] (manual)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>Un nuevo [Regular] se ha registrado en [Nombre de la organización] en un área suya.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Nuevo [Regular]: [Nombre de la persona], [Geografía de la persona] [Código del país]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] [Envío regular] renovado: [Nombre de la persona], [Geografía de la persona] [Código del país] (manual)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>Este correo fue enviado a [Destinatario] desde [Nombre de la organización]. Si no desea recibir estas notificaciones en el futuro, inicie sesión en [Nombre de la instalación] en [Url externa] y modifique la configuración de las notificaciones.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Su mensaje se ha puesto en cola para la entrega y los destinatarios se han resuelto. Su correo se enviará o se intentará enviar a personas [Recuento de destinatarios] en [Nombre de geografía] en [Nombre de la Organización].</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Destinatarios de comunicación determinados para [Nombre de la geografía]: [Recuento de destinatarios]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>Su mensaje a [Nombre de Geografía] ha sido enviado a todos los destinatarios programados. Fuera de los destinatarios planificados de [Recuento de destinatarios], [Destinatarios exitosos] tuvo éxito por lo que podemos decir: recuerde que el correo no se puede entregar o no leer más adelante por varias razones.
+
+Tiempo dedicado a resolver: [Resolviendo el tiempo].
+Tiempo de transmisión: [Tiempo de transmisión].
+Tiempo total desde la creación del comunicador hasta la finalización: [Tiempo total].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Comunicaciones transmitidas: [Nombre de la geografía]</value>
+  </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>¡Una nueva persona se ha registrado como [Título regular] en [Nombre de la organización]! [Nombre de la persona interesada] se basa en [Nombre de la geografía], [Código de país].</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Nuevo [Título regular]: [Nombre de la persona interesada], [Nombre de la geografía]</value>
+  </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Alguien, muy probablemente usted, solicitó un restablecimiento de la contraseña asociada con esta dirección de correo electrónico en [Nombre de la instalación]. Sin embargo, la autenticación de dos factores se ha habilitado para esta cuenta para mayor seguridad. Por lo tanto, la contraseña NO PUEDE restablecerse por medios sencillos.
+
+Póngase en contacto con un administrador de personal en [Nombre de instalación] para resolver su problema y emitir una nueva contraseña siguiendo un procedimiento de identificación más riguroso que coincida con el nivel de seguridad de dos factores.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[Nombre de la instalación]] No se puede restablecer la contraseña</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>Su contraseña de [Nombre de instalación] acaba de cambiar en [Url externa].
+
+Si no realizó este cambio de contraseña, ha habido una violación de seguridad. Si este es el caso, por favor, bloquee su cuenta INMEDIATAMENTE haciendo clic en el siguiente enlace:
+
+[Url externa] Seguridad / bloqueo de cuenta? Correo = [Dirección de correo] y ticket = [Código de ticket]
+
+Si confirma un bloqueo en el enlace anterior, las sesiones existentes finalizarán de inmediato, los inicios de sesión con la nueva contraseña se bloquearán y los administradores se pondrán en contacto con usted para verificar qué sucedió y trabajar con usted para volver a habilitar su cuenta.
+
+Sin embargo, si fue usted mismo quien cambió la contraseña en este momento, y por lo tanto provocó que se enviara esta notificación, todo está obviamente bien y justo como debería ser. Continua.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[Nombre de instalación]] Contraseña cambiada</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>Las personas de [Nombre de la organización] han emitido un ticket de restablecimiento de contraseña a su cuenta, presumiblemente a petición suya. Este boleto es válido para las próximas 24 horas.
+
+Siga este enlace para restablecer su contraseña y volver a habilitar cualquier autenticación de dos factores, si se habilitó anteriormente:
+
+[Url externa] Contraseña de seguridad / restablecimiento? Ticket = [Ticket Code]
+
+Este boleto caducará en 24 horas. Si no restablece su contraseña en este marco de tiempo, deberá ponerse en contacto con los administradores en [Nombre de la organización] para emitir un nuevo ticket de restablecimiento de contraseña.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Contraseña para Restablecer ticket</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Alguien, muy probablemente usted, solicitó un restablecimiento de la contraseña asociada con esta dirección de correo electrónico en [Nombre de la instalación]. Si fue usted, siga el siguiente enlace en los próximos 60 minutos para completar el procedimiento de restablecimiento de contraseña:
+
+[URL externa] Contraseña de seguridad / restablecimiento? Ticket = [Ticket Code]
+
+Si NO solicitó restablecer la contraseña, puede (y debe) ignorar este correo. La solicitud de restablecimiento de contraseña caducará en una hora. (Si obtiene una gran cantidad de estos enlaces de restablecimiento de contraseña que no solicitó, notifique al administrador)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[Nombre de la instalación]] Contraseña para Restablecer ticket</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>Se han presentado recibos que necesitan validación para que continúen sus procesos financieros.
+
+Inicie sesión en [Nombre de instalación] en [Url Externo] Financiero / Validar recibos para validarlos o rechazarlos.</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización] - OBJETO DE ACCIÓN] Campo de recibos - Validación necesaria</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>Su pago de salario para [RequestPurpose] fue cancelado. No será pagado.
+
+Si esto le sorprende, póngase en contacto con la organización y / o su supervisor con urgencia. Lo siguiente fue dado como razón:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[OrganizationName] Pago de salario denegado: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>Este es su resumen de sueldos para [El ultimo año]. No es una declaración de un nuevo salario, sino una declaración de los salarios mensuales pagados en el transcurso del año pasado, así como los impuestos deducidos. El propósito de esta declaración es servir como datos para sus registros y / o propósitos de declaración de impuestos para el año pasado.
+
+Salario bruto de [Último año]: [Código de moneda] [Total de salario bruto]
+Impuesto deducido del mismo: [Código de moneda] [Total deducido de impuestos]
+Salario neto pagado: [Código de moneda] [Total de salario neto]
+
+
+Mes bruto deducido neto pagado usando
+----- ---------- ----------- ---------- -----------
+[Texto preformateado incrustado]
+
+TOTAL [Total bruto bruto] [Total deducido de impuestos] [Total salario neto]
+
+
+Además, la organización para su empleo ha abonado en impuestos los [Código de moneda] [Total aditivo no abonado] en impuestos, además del importe deducido anteriormente. Esto también es un impuesto sobre su salario, incluso si su naturaleza como tal ha sido ocultada burocráticamente.</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>[[Nombre de la organización]] Resumen de sueldos de [Último año]</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>Swarmops Backend [Swarmops Version] en el host [Host Name] ha actualizado con éxito el esquema de la base de datos de Swarmops a la versión de revisión [Db].
+
+Esto es para información solamente. No necesita tomar medidas.</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>Base de datos Swarmops actualizada</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>Swarmops Backend [Swarmops Version] en el Host [Nombre de host] HA FALLADO al actualizar la base de datos de Swarmops. Esto generalmente se debe a un error de red externa transitoria, lo que hace que la recuperación del archivo parche falle.
+
+Actualmente estamos en la revisión del esquema de la base de datos [Versión de Db], pero estamos tratando de actualizar a [Versión de Db esperada].
+
+La actualización se reintentará cada hora. Algunas funcionalidades pueden deshabilitarse hasta que la base de datos se haya actualizado. Si desea solucionar problemas manualmente, los paquetes de actualización de la base de datos se recuperan de packages.swarmops.com, el mismo lugar donde apt-get obtiene sus paquetes de software.</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>La actualización de la base de datos Swarmops FALLÓ</value>
+  </data>
+  <data name="System_Exception_Body" xml:space="preserve">
+    <value>Se lanzó una excepción no controlada en Swarmops:
+
+[Texto preformateado incrustado]</value>
+  </data>
+  <data name="System_Exception_Subject" xml:space="preserve">
+    <value>Swarmops ¡EXCEPCIÓN!</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>Este es un correo de prueba enviado por Swarmops [Swarmops Version] que se ejecuta en [Nombre de host]. Usted acaba de cambiar la configuración del servidor de correo. Para verificar que la nueva configuración sea correcta, Swarmops distribuye este mensaje de prueba para que se envíe desde el back-end.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Prueba del servidor de correo Swarmops</value>
+  </data>
+  <data name="System_PublicRootReset_Body" xml:space="preserve">
+    <value>La clave de raíz pública de bitcoin en la base de datos de MySql no coincidía con la clave de raíz privada de bitcoin almacenada en / etc / swarmops en [Nombre de host]. Esta es una condición potencialmente grave, y nunca debería ocurrir, por lo que la clave de raíz pública se redirigió desde la clave privada y se volvió a escribir en la base de datos sobre lo que estaba allí antes.</value>
+  </data>
+  <data name="System_PublicRootReset_Subject" xml:space="preserve">
+    <value>Swarmops: reinicio de la clave de raíz pública de la billetera caliente</value>
+  </data>
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>La versión de Swarmops Backend [Versión de Swarmops] en el host [Nombre de host] se ha iniciado y conectado exitosamente a la base de datos y marcos de notificación.</value>
+  </data>
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>Swarmops Backend operacional</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>La versión del servidor de enchufe de Swarmops Frontend [Swarmops Version] en el host [Nombre de host] se ha iniciado y conectado exitosamente a la base de datos y marcos de notificación.</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>Swarmops Frontend operacional</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
+    <value>El motor de transmisión Swarmops en [Nombre de host] ha encontrado un tipo de carga útil desconocida ([Tipo de carga útil no reconocida]). Esto solo debería ocurrir en muy raras ocasiones junto con las actualizaciones en las que una versión mejorada tiene que encargarse de algo que cambió los nombres en el proceso, un fenómeno raro en sí mismo.
+
+Si este error es recurrente, es posible que tenga un complemento mal instalado o algo similar. En cualquier caso, el mensaje no reconocido ha sido descartado y no se transmitirá, ya que Swarmops no sabe cómo.</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
+    <value>Swarmops: carga útil de comunicaciones no reconocidas</value>
+  </data>
 </root>

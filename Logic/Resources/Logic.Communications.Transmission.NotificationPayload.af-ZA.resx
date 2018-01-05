@@ -325,6 +325,12 @@
     <value>crwdns6555560:0[OrganizationName]crwdne6555560:0</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>crwdns6556715:0[RequestPurpose]crwdnd6556715:0[EmbeddedPreformattedText]crwdne6556715:0</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>crwdns6556716:0[OrganizationName]crwdnd6556716:0[CurrencyCode]crwdnd6556716:0[BudgetAmountFloat]crwdne6556716:0</value>
+  </data>
   <data name="Salary_LastYearSummary_Body" xml:space="preserve">
     <value>crwdns6556387:0[LastYear]crwdnd6556387:0[LastYear]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[GrossSalaryTotal]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[TaxDeductedTotal]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[NetSalaryTotal]crwdnd6556387:0[EmbeddedPreformattedText]crwdnd6556387:0[GrossSalaryTotal]crwdnd6556387:0[TaxDeductedTotal]crwdnd6556387:0[NetSalaryTotal]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[TaxAdditiveTotalUnpadded]crwdne6556387:0</value>
     <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>

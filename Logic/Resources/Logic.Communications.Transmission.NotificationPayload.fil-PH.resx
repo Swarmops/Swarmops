@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>Sa pagtatangkang bayaran ang iyong payout address sa bitcoin, ang address ([BitcoinAddress]) ay tinanggihan ng pinagbabatayang payout engine bilang hindi wasto. Samakatuwid ito ay nabura mula sa iyong profile.
+
+Mangyaring mag-log on sa [InstallationName] sa [ExternalUrl] at mag-set ng bagong payout address sa bitcoin.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Masamang bitcoin payout address</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>Binago mo ang iyong bitcoin payout address mula sa [BitcoinOldAddress] sa [BitcoinAddress]. Bilang pag-iingat sa seguridad, ang lahat ng mga pagbayad ay quarantied para sa susunod na 48 oras.
+
+Kung HINDI mo binago ang address ng payout at nagkaroon ng paglabag sa seguridad, paki-click agad ang link na ito upang i-lock ang iyong account: [LockdownLink]
+
+Kung na-click mo ang link na iyon, ang iyong account ay kakalagan agad nang walang mga kahilingan sa kumpirmasyon. Gayunpaman, kung hiniling mo ang pagbabago ng payout address, lahat ay mabuti at walang karagdagang aksyon ang kinakailangan sa iyong bahagi.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Binago ang payout address ng Bitcoin</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>Mayroon kang mga pondo na naghihintay para sa payout sa [OrganizationName], ngunit hindi ka nakatakda ng isang bitcoin payout address.
+
+Mangyaring mag-log on sa [InstallationName] sa [ExternalUrl] at sundin ang link upang itakda ang iyong payout address - makikita mo ito sa listahan ng mga bagay na gagawin.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Mangyaring itakda ang iyong bitcoin payout address</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>Nagtakda ka ng isang bitcoin na payout address: [BitcoinAddress]. Bilang pag-iingat sa seguridad, ang lahat ng mga pagbabayad ay korte para sa susunod na 48 oras, at magpapatuloy na mabayaran sa bagong address pagkatapos nito.
+
+Kung hindi mo itinakda ang address na ito ng payout (maaaring ito ay nagkakahalaga ng double check sa address sa itaas para sa dagdag na seguridad), agad na makipag-ugnay sa [OrganizationName].</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>Ang isang bitcoin na payout address ay itinakda ng [ConcernedPersonName]. Magsisimula ang mga pagbabayad matapos ang 48 oras kapag lumipas na ang period ng kuwarentenas.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] ay nagtakda ng isang bitcoin payout address</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Itinakda ang address ng payout ng Bitcoin</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>Ang bitcoin hotwallet para sa [OrganizationName] ay nagawa lamang ang [PaymentCount] ng awtomatikong (mga) pagbabayad na kabuuan ng [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin o "bits").</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Hotwallet Payout: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[BitcoinAmountFloat] microbitcoin ("bits") ay inilipat sa iyong bitcoin address ([BitcoinAddress]) sa pamamagitan ng [OrganizationName] para sa mga sumusunod:
+
+[EmbeddedPreformattedText]
+
+Dapat mong makita ang transaksyon sa iyong wallet at dapat itong makamit ang paggastos sa loob ng halos isang oras (anim na normal na pagkumpirma).</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ang mga pondong ibinayad sa iyo:[CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>Kapag sinusubukan ang isang awtomatikong pagbabayad mula sa hotwallet, ang pribadong key na ginamit upang mag-sign ay hindi tumutugma sa mga pampublikong key na ginagamit upang tipunin ang mga pondo na kinakailangan. Ito ay isang malubhang kalagayan.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - URGENT] Bitcoin private key error; hindi maaaring magbayad</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Sinusubukan ng Swarmops na bayaran ang [CurrencyCode] [AmountNeededFloat], ngunit lamang [CurrencyCode] [AmountWalletFloat] ay magagamit sa bitcoin hotwallet. Ang Swarmops ay hindi makagawa ng karagdagang pagbabayad sa oras na ito.
+
+Mangyaring maghulog ng pundo hotwallet kaagad sa hindi bababa sa kinakailangang halaga - isang karagdagang [AmountMissingMicrocoinsFloat] microbitcoin ("bits") ay kinakailangan upang ipagpatuloy ang mga pagpapatakbo ng hotwallet sa pananalapi.
+
+Patuloy na sinusubukan ng Swarmops at patuloy na magpapadala ng mga notification na ito hangga't hindi ito nagtagumpay.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Bitcoin hotwallet hindi sapat para sa mga pagbabayad - top up kaagad</value>
+  </data>
+  <data name="CashAdvance_Attested_Body" xml:space="preserve">
+    <value>Ang iyong hiniling na cash advance sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay pinatunayan ng may-ari ng badyet. Ito ay magpapatuloy ngayon sa pagbabayad sa iyo.</value>
+  </data>
+  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cash Advance Attested: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
+    <value>Ang iyong hiniling na cash advance sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay DE-attested ng may-ari ng badyet. Ito ay karaniwang nagpapahiwatig ng isang uri ng problema sa iyong kahilingan.
+
+Inaasahan ang higit pang komunikasyon mula sa may-ari ng badyet upang sundin ang bagay na ito.</value>
+  </data>
+  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cash Advance DE-affested: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>Ang iyong cash advance sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat] tungkol sa [RequestPurpose] ay tinanggihan. Ang teksto sa ibaba ay ibinigay bilang dahilan para sa pagtangging ito:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cash Advance DENIED: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>Ang iyong kahilingan para sa isang cash advance sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay minarkahan bilang bayad sa mga accountant ng samahan.
+
+Nangangahulugan ito na dapat mong makita ang halaga sa iyong account sa ilang sandali.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cash Advance Paid: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>Humingi ng [ConcernedPersonName] ang cash advance ng [CurrencyCode] [BudgetAmountFloat] para sa layunin ng [RequestPurpose]. Ang pera na ito ay bahagi ng iyong badyet, [BudgetName].
+
+Mangyaring mag-log on sa [InstallationName] sa [ExternalUrl] Financial / AttestCosts upang patunayan o tanggihan.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ITEM ACTION] Hiniling ng Cash Advance: [CurrencyCode] [BudgetAmountFloat] - Kinakailangan ang Pagpapatotoo</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+    <value>Ang claim ng iyong gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay pinatunayan ng may-ari ng badyet. Ito ay babayaran sa iyo kapag ang mga resibo ay napatunayan na wasto.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Gastos na Claim Na-Attested: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>Ang [ConcernedPersonName] ay lumikha ng isang gastos sa paghahabol laban sa badyet ng [BudgetName] para sa halaga ng [CurrencyCode] [BudgetAmountFloat]. Ang claim ay may kaugnayan sa [RequestPurpose]. Kakailanganin mong patunayan ang gastos sa claim na ito.
+
+Mangyaring mag-log on sa [InstallationName] sa [ExternalUrl] Financial / AttestCosts upang patunayan o tanggihan.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Gastos na Pag-claim Nalikha: [CurrencyCode] [BudgetAmountFloat] - Kinakailangan ang Pagpapatotoo</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
+    <value>Ang claim sa gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay DE-attested ng may-ari ng badyet. Ito ay karaniwang nagpapahiwatig ng isang uri ng problema sa iyong claim claim.
+
+Inaasahan ang higit pang komunikasyon mula sa may-ari ng badyet upang sundin ang bagay na ito.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>Ang claim sa gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat] tungkol sa [RequestPurpose] ay tinanggihan. Ang teksto sa ibaba ay ibinigay bilang dahilan para sa pagtangging ito:
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
+    <value>Ang mga resibo para sa claim ng iyong gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay na-validate ng mga tagatala ng financial record ng organisasyon. Ito ay kadalasang nagpapahiwatig ng isang uri ng problema sa dokumentasyon ng iyong claim sa gastos.
+
+Inaasahan ang higit pang komunikasyon upang sundin ang bagay na ito. Kung hindi mo marinig mula sa mga tagatala ng rekord sa maikling panahon sa bagay na ito, sundin mo ang mga ito.</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>Ang claim ng iyong gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay minarkahan bilang binabayaran ng mga accountant ng samahan.
+
+Nangangahulugan ito na dapat mong makita ang halaga sa iyong account sa ilang sandali.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Expense Claim Paid: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>Ang mga resibo para sa claim ng iyong gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay napatunayan ng mga taong responsable sa pagpapanatili ng mga rekord sa pagkakasunud-sunod.
+
+Ang paghahabol ay babayaran sa iyo kapag ang halaga ay napatunayan din ng may-ari ng badyet.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Mga Resibo ng Mga Kinakailangan sa Claim na Napatunayan: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Ang isang invoice mula sa [Supplier], tungkol sa [Description], ay isinampa laban sa iyong badyet ng [BudgetName] para sa halaga ng [CurrencyCode] [BudgetAmountFloat]. Kailangan mong ibunyag ang invoice na ito bago magpunta sa payout.
+
+Mangyaring mag-log on sa[InstallationName]] sa [ExternalUrl] Financial / AttestCosts upang patunayan o tanggihan.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</root>

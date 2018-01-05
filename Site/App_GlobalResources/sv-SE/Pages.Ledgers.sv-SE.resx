@@ -908,4 +908,33 @@
     <value>Totalt denna rapport</value>
     <comment>Displayed as description of footer</comment>
   </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>Transaktionen behöver en beskrivning.</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>Transaktionen behöver något slags kvitto eller dokumentation.</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>Momsbeloppet verkar inte vara korrekt ifyllt.</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
+    <value>Markera som direktköp från kontot</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>Direktdebiterat kontobelopp ({0})</value>
+    <comment>{0} is the currency</comment>
+  </data>
+  
+  
+  
+  
+  
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>Beskrivning / Konto</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>Huvudbok för</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
 </root>

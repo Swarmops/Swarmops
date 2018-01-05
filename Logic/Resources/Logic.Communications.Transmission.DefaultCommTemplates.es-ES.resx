@@ -117,7 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
+  <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
+    <value>Bienvenido a [Nombre de la organización]!
+
+Le ha otorgado una [membresia regular] por [Persona en funciones]. Caduca el [Periodo de membresía], por lo que hay mucho tiempo para familiarizarse con la organización.
+
+Ya debería haber sido contactado por personas de [Nombre de la organización] para obtener más información sobre cómo activarse. Si no, entonces espera la correspondencia pronto.
+
+Su contraseña inicial y generada aleatoriamente para Swarmops, el software utilizado como sistema de fondo, es la siguiente:
+[Contraseña aleatoria]
+
+(Desafortunadamente, no puede cambiarlo aún. Esa funcionalidad se espera para principios de 2015. Swarmops todavía está en una fase inicial alfa; ese es uno de los inconvenientes del nuevo software pionero: las cosas pueden estar un poco mediocres cuando se ponen en línea).
+
+¡Bienvenido a bordo!</value>
+  </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] ¡Te damos la bienvenida a [OrganizationName]!</value>
   </data>

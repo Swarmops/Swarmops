@@ -946,4 +946,8 @@
   <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
     <value>crwdns6556704:0{0:N0}crwdnd6556704:0{1}crwdne6556704:0</value>
   </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>crwdns6556730:0crwdne6556730:0</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
 </root>

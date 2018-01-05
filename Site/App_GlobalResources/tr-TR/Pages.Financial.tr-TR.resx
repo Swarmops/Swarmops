@@ -117,169 +117,541 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
+    <value>{1} için nakit avans #{0:N0}, {3:N2} için onaylandı.</value>
+    <comment>Status message.</comment>
+  </data>
+  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
+    <value>{1} için nakit avans #{0:N0} onaylanmadı. Tekrar onaylanmadığı sürece ödenmeyecek.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
+    <value>Bu tutarı onaylayamazsın. {0} yılı için bütçe boş.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
+    <value>Negatif tutarı onaylayamazsın.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
+    <value>Sıfır tutarı onaylayamazsın.</value>
+  </data>
+  <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
+    <value>Üzgünüm, maaş ödemesini tekrar bütçelendiremezsiniz.</value>
+  </data>
+  <data name="AttestCosts_Error_InvalidAmountRetry" xml:space="preserve">
+    <value>Bu geçerli bir tutar gibi gözükmüyor. Lütfen tekrar deneyin?</value>
+  </data>
+  <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
+    <value>Lütfen ücreti yeniden hedeflemek için bir bütçe seçin.</value>
+  </data>
+  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
+    <value>{1} tarafından gelen {2}{3:N2}'lık Masraf Talebi #{0:N0} onaylandı.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>{1}'den gelen Masraf Talebinin #{0:N0} onayı geri alındı. Tekrar onaylanmadığı sürece ödenmeyecek.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>Eylem</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>Hak sahibi</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Bütçe</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>Açıklama</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>Belgeler</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>Öğe</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>İstendi</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
+    <value>Onayınızı bekleyen maliyetler</value>
+  </data>
+  <data name="AttestCosts_Info" xml:space="preserve">
+    <value>Buradan diğer kişilerin yaptığı harcama isteklerini onaylarsınız. Siz onaylamadıkça hiçbir şey ödenmez.</value>
+  </data>
+  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
+    <value>{1} tarafından gelen {2}{3:N2}'lık fatura #{0:N0} onaylandı.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
+    <value>{1}'den gelen faturanın #{0:N0} onayı geri alındı. Tekrar onaylanmadığı sürece ödenmeyecek.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
+    <value>Onayla</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
+    <value>Onayla</value>
+  </data>
+  <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
+    <value>Reddet</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonRebudget" xml:space="preserve">
+    <value>Tekrar bütçelendir</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
+    <value>Hoverkraftım yılan balığı dolu</value>
+    <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
+    <value>(in {0}) yerine hangi miktarı onaylıyorsunuz?</value>
+    <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionCorrect" xml:space="preserve">
+    <value>Bu öğeyi bu miktara değiştir (in {0}), ardından bu şekilde onayla:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionDeny" xml:space="preserve">
+    <value>Göndereni reddetmek için isteğe bağlı sebep:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
+    <value>Bunun yerine ücreti bu bütçeye taşıyın:</value>
+  </data>
+  <data name="AttestCosts_Modal_Header" xml:space="preserve">
+    <value>Sorunları düzelt ya da onaylamayı reddet</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
+    <value>Bunu onaylayacağım fakat farklı bir tutar için.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
+    <value>Tutar yanlış. Doğru tutarda onaylayacağım.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
+    <value>Bu kaydın onaylanmasını bütünüyle reddet.</value>
+    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
+    <value>Bu kayıt farklı bir bütçeyi ücretlendirmelidir. Buraya taşıyın.</value>
+  </data>
+  <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
+    <value>Bu kayıtla ilgili sorun ne olabilir?</value>
+  </data>
+  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
+    <value>Bütçede bu harcamayı onaylamak için yeterli kaynak yok.</value>
+  </data>
+  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
+    <value>Bunu onaylamak için yeterli kaynak yok. {2} yılı için {0}{1:N2} kadar daha onaylayabilirsiniz.</value>
+    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
+  </data>
+  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
+    <value>&lt;strong&gt;BÜTÇE LİMİT AŞIMI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;? Bütçenizde bu harcamayı onaylamak için yeterli kaynak yok. Normalde bu harcamanın onaylanması blokeli olurdu. Ancak siz bu limiti etkisiz kılarak onaylama yapabilir, dolayısıyla bütçe limit aşımına sebep olabilirsiniz. &lt;br/&gt;&lt;br/&gt;Bu harcamayı onaylayarak bütçe limitini aşmak mı yoksa bütçeyi aşmadan bu onayı iptal etmek mi istiyorsunuz?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
+    <value>Bütçede kal</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmYes" xml:space="preserve">
+    <value>Limit Aşımına Zorla</value>
+  </data>
+  <data name="AttestCosts_Overdrafted" xml:space="preserve">
+    <value>BÜTÇENİN LİMİTİ AŞILDI.</value>
+    <comment>The UPPERCASE is intentional.</comment>
+  </data>
+  <data name="AttestCosts_PageTitle" xml:space="preserve">
+    <value>Harcamaları Onayla</value>
+  </data>
+  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
+    <value>{1} tarafından düzenlenen konferans #{0:N0}, {3:N2} için onaylandı.</value>
+  </data>
+  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
+    <value>{1} tarafından düzenlenen konferans #{0:N0}'in onayı geri alındı. Tekrar onaylanmadığı sürece izin verilmeyecek.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_SalaryAttested" xml:space="preserve">
+    <value>{1} için maaş #{0:N0}, {3:N2} için onaylandı.</value>
+  </data>
+  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
+    <value>{1} için maaş #{0:N0}'nin onayı geri alındı. Tekrar onaylanmadığı sürece ödenmeyecek.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
+    <value>&lt;strong&gt;UYARI: BAŞLATILMAMIŞ BÜTÇE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Onaylamakta olduğunuz gider, başlatılmamış bir bütceye ait -- defterdeki, sahibi olmayan ve bu yıl için belirlenmiş bir bütçe ödeneğine sahip olmayan bir hesap. Hesap Planını ziyaret etmeyi ve bütçeleri beklenen gelir ve giderlere göre tahsis etmeyi göz önünde bulundurun.&lt;br/&gt;&lt;br/&gt;Bu mesaj, Onaylamalar için her ziyarette sadece bir kez gözükecektir.&lt;br/&gt;</value>
+  </data>
+  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
+    <value>Toplam fatura tutarı ({0})</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>Açıklama</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
+  <data name="CreateInboundInvoice_HeaderInvoiceImage" xml:space="preserve">
+    <value>Fatura Resmi</value>
+  </data>
+  <data name="CreateInboundInvoice_HeaderPaymentDetails" xml:space="preserve">
+    <value>Ödeme Detayları</value>
+    <comment>Displayed as header over supplier's account details</comment>
+  </data>
+  <data name="CreateInboundInvoice_Info" xml:space="preserve">
+    <value>Burası, organizasyonunuzda alınan faturaları dosyaladığınız yer ("Borç Hesapları"). Tedarikçi ismi, miktar, son tarih, fatura referansını giriniz ve alınan faturanın bir fotoğrafını yükleyiniz. Ayrıca, bir bütçe seçiniz. Bütçe sahibinin her zamanki gibi onay vermesi gerekmektedir. (Bu mekanizma için gelecek için planlanmış açılımlar, satın alma teklifleri ve tedarikçi listelerini kapsamaktadır.)</value>
+  </data>
+  <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
+    <value>Gelen Fatura Alındı</value>
+  </data>
+  <data name="CreateInboundInvoice_Reference" xml:space="preserve">
+    <value>Fatura referansı</value>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceAutomaticOcr" xml:space="preserve">
+    <value>OCR / Otomatik</value>
+    <comment>Some invoices come with OCR numbers printed on them for automatic processing.</comment>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceManual" xml:space="preserve">
+    <value>El ile</value>
+    <comment>Other invoices come without automated processing and a manual </comment>
+  </data>
+  <data name="CreateInboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Gelen fatura #{0:N0} alındı.</value>
+    <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
+  </data>
+  <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
+    <value>Hesap</value>
+    <comment>Free text input, intended to convey everything needed to get the money right</comment>
+  </data>
+  <data name="CreateInboundInvoice_UploadInvoiceImage" xml:space="preserve">
+    <value>Görsel dosya yükle</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
+    <value>Lütfen tedarikçinin banka hesabını veya bir eşdeğerini giriniz.</value>
+  </data>
+  <data name="Donate_Explain" xml:space="preserve">
+    <value>{0} için bağış QR kodu. Bir bağış yapmak için bu kodu telefonunuzdaki bitcoin cüzdanından okutun veya bilgiyasarınızdan bu adrese [{1}] (that's a Bitcoin Cash address) doğrudan bir bağış yapın.</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="Donate_FundsReceived" xml:space="preserve">
+    <value>{0}{1:N2} alındı ({2:N0} microcoin veya "bit".) Teşekkürler!</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedNative" xml:space="preserve">
+    <value>{0} microcoins ("bits") alındı. Teşekkürler!</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="Donate_Info" xml:space="preserve">
+    <value>Eğer organizasyona bağış yapmak isterseniz, burada yapabilirsiniz.</value>
+  </data>
+  <data name="Donate_PageTitle" xml:space="preserve">
+    <value>Bağış Yap</value>
+  </data>
+  <data name="Donate_StatusInitial" xml:space="preserve">
+    <value>İşlem için bekleniyor...</value>
+  </data>
+  <data name="Donate_TransactionDetected" xml:space="preserve">
+    <value>İşlem tespit edildi, onaylanıyor...</value>
+  </data>
+  <data name="Donate_TxLabel" xml:space="preserve">
+    <value>{0} için bağış</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Donate_TxLabel_Loan" xml:space="preserve">
+    <value>{0} için kredi</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="FileExpenseClaim_Amount" xml:space="preserve">
+    <value>Masraf talep tutarı ({0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
+    <value>Hesap Numarası</value>
+  </data>
+  <data name="FileExpenseClaim_BankClearing" xml:space="preserve">
+    <value>Takas Numarası</value>
+  </data>
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>Banka Adı</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Bütçe</value>
+  </data>
+  <data name="FileExpenseClaim_CostType" xml:space="preserve">
+    <value>Maliyet Türü</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
+  <data name="FileExpenseClaim_Description" xml:space="preserve">
+    <value>Açıklama</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>Banka Detayınız</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderReceiptImages" xml:space="preserve">
+    <value>Makbuz Resmi</value>
+  </data>
+  
+  <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
+    <value>Gider için parayı geri talep etme</value>
+  </data>
+  
+  <data name="FileExpenseClaim_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Bu olduktan hemen sonra, para belirtilen hesabınıza ödenmeye devam edecektir.</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Bu sizin kendi bütçeniz olduğu için, onaylama zaten tamamlanmıştır. Sadece doğrulama gereklidir.</value>
+  </data>
+  <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
+    <value>Makbuz Resimlerini Yükle</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
+    <value>Lütfen talep ettiğiniz para miktarını ({0} içerisinde) girin.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Documents" xml:space="preserve">
+    <value>Lütfen gider talebini destekleyen bir ya da daha fazla makbuz resmi yükleyin.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>Lütfen belirtildiği gibi bir seçenek seçin.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
+    <value>Lütfen bu satın alımın ne olduğunu açıklayın.</value>
+  </data>
+  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
+    <value>Hesap (OCR)</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
+    <value>Tutar</value>
+    <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
+    <value>Tutar (OCR)</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
+    <value>Takas / Hesap</value>
+    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
+    <value>Banka</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
+    <value>Son Tarih</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
+    <value>Ücretli</value>
+    <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
+    <value>Alıcı</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referans</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
+    <value>Referans (OCR)</value>
+  </data>
+  <data name="PayOutMoney_Header" xml:space="preserve">
+    <value>Ödeme için hazır maliyetler</value>
+  </data>
+  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
+    <value>Ödeme Maliyetleri (OCR için mobil uygulama)</value>
+  </data>
+  
+  <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
+    <value>Mobil uygulamalar için OCR göster</value>
+  </data>
+  <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
+    <value>Açık ödemeleri göster ({0:N0})</value>
+    <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>Para Öde</value>
+  </data>
+  <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
+    <value>#{0} ödemesi geri alınamıyor: Zaten ödenmiş veya kapanmış.</value>
+  </data>
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>{1} için #{0:N0} ödemesi oluşturuldu.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>#{0:N0} ödemesi geri alındı ve her şey restore edildi.</value>
+  </data>
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>İlave Vergi</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Vergi İndirimi</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Brüt Maaş</value>
+  </data>
+  
+  <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
+    <value>Bordro Vergi Formları</value>
+  </data>
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>{0} İçin Aylık Vergi Formları</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Toplam Maliyet</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Toplam Vergi</value>
+  </data>
+  <data name="RequestCashAdvance_Amount" xml:space="preserve">
+    <value>Avans tutarı ({0} içerisinde)</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_BankAccount" xml:space="preserve">
+    <value>Hesap Numarası</value>
+  </data>
+  <data name="RequestCashAdvance_BankClearing" xml:space="preserve">
+    <value>Takas Numarası</value>
+  </data>
+  <data name="RequestCashAdvance_BankName" xml:space="preserve">
+    <value>Banka Adı</value>
+  </data>
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>Bütçe</value>
+  </data>
+  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
+    <value>Banka Bilgileriniz</value>
+  </data>
+  <data name="RequestCashAdvance_Info" xml:space="preserve">
+    <value>Organizasyon adına bir satın alma yapmak üzereyseniz, fakat paraya sonradan talep etmekten ziyade önden peşin olarak ihtiyacınız varsa, belirli bir amaç için bir nakit avans talep edebilirsiniz.</value>
+  </data>
+  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
+    <value>Nakit Avans Talep Et</value>
+  </data>
+  <data name="RequestCashAdvance_Purpose" xml:space="preserve">
+    <value>Amaç</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartOne" xml:space="preserve">
+    <value>&lt;strong&gt;{0}&lt;/strong&gt; için bir nakit avans talep edildi. Talep edilen tutar {2} {3:N2}. Bunun, makbuzlar sunulana kadar organizasyon tarafından verilmiş bir  &lt;strong&gt;kredi&lt;/strong&gt; olduğunu unutmayın.</value>
+    <comment>{0} is the person receiving the advance, {1} is the entered description. {2} is the currency (in caps) and {3:N2} is the amount, with two decimals, displayed in culture.</comment>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Bunun bütçe sahibi tarafından onaylanmış olması gerekiyor, ve sonra ödeme yapılacak.</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Bu sizin kendi bütçeniz olduğu için, otomatik olarak onaylandı ve ödemesi yapıldı.</value>
+    <comment>This is displayed if either the person creating the cash advance OR the person receiving it is the budget owner.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Amount" xml:space="preserve">
+    <value>Lütfen avans olarak talep ettiğiniz para miktarını ({0} içerisinde) girin.</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
+    <value>Lütfen banka hesap numaranızı giriniz.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankClearing" xml:space="preserve">
+    <value>Lütfen bankanızın takas numarasını girin.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
+    <value>Lütfen bankanızın adını giriniz.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
+    <value>Lütfen, ödetmek için bir bütçe seçiniz.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
+    <value>Lütfen nakit avansın amacını belirtin.</value>
+  </data>
+  <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
+    <value>Doğrulamanızı bekleyen makbuzlar</value>
+  </data>
+  <data name="ValidateReceipts_Info" xml:space="preserve">
+    <value>Burası gider taleplerine eşlik eden makbuzların geçerliliğini incelemek ve doğrulamak için. Tutarın doğru olup olmadığını ve makbuzun olduğu iddia edilen şeye ait olup olmadığını kontrol edin.</value>
+  </data>
+  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
+    <value>Makbuzları Doğrulayın</value>
+  </data>
+  
+  
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Oluştur</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Lütfen faturanın talep ettiği para miktarını ({0} içerisinde) girin.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Lütfen borçlandırmak için bir bütçe belirtin.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Lütfen orijinal faturanın bir veya daha fazla belgesini yükleyin.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Lütfen bir seçenek seçin.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Lütfen bu satın almanın ne olduğunu açıklayın.</value>
+  </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>İstek</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>İstek</value>
+  </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>Toplam KDV kısmı ({0})</value>
+  </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>Toplam KDV ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Gelen Faturalar Listeleniyor</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Fatura Göndereni</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Bu, son 100 faturayı, vade tarihlerine göre önce en yeni olan sıralanmış şekilde listeler.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Gelen Faturalar</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Giden Fatura Oluşturuluyor</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Oluştur</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Giden Fatura Oluşturuluyor</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Giden Fatura #{0:N0} dosyalandı.</value>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Alınan Fonlar ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Gönderildi</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Müşteri</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Giden Faturalar Listeleniyor</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Bu en son 100 giden faturayı listeler, ilk önce en yeniler olmak üzere ne zaman oluşturduklarına göre sıralanırlar.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Toplam Tutar</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Son Tarih</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Giden Faturaları Listele</value>
+  </data>
 </root>

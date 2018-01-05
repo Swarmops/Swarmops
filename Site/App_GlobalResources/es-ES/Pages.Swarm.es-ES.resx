@@ -117,28 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AddPerson_ErrorCity" xml:space="preserve">
+    <value>Se requiere una ciudad válida.</value>
+  </data>
+  <data name="AddPerson_ErrorDate" xml:space="preserve">
+    <value>Proporcione una fecha válida o deje este campo vacío.</value>
+  </data>
+  <data name="AddPerson_ErrorMail" xml:space="preserve">
+    <value>Se requiere una dirección de correo electrónico válida.</value>
+  </data>
+  <data name="AddPerson_ErrorName" xml:space="preserve">
+    <value>Se requiere un nombre.</value>
+  </data>
+  <data name="AddPerson_ErrorStreet" xml:space="preserve">
+    <value>Una calle válida o caja P.O. es requerida.</value>
+  </data>
+  <data name="AddPerson_GeographyDetected" xml:space="preserve">
+    <value>Geografía detectada</value>
+  </data>
+  <data name="AddPerson_Info" xml:space="preserve">
+    <value>Aquí es donde ingresas personas nuevas en la organización. A medida que los registras para &lt;strong&gt;{0}{1}&lt;/strong&gt; durar hasta &lt;strong&gt;{2}&lt;/strong&gt;, recibirán un mensaje de bienvenida con una contraseña de acceso aleatorio por correo. Los oficiales locales también serán notificados de la nueva persona, por la oportunidad de enviarles un mensaje de bienvenida.</value>
+    <comment>{0} and {1} can be "one-year" and "Membership", for example. {2} is LongDateString.</comment>
+  </data>
+  <data name="AddPerson_LegalGender" xml:space="preserve">
+    <value>Género legal</value>
+    <comment>"Legal" to cut short discussions on 50 different genders for the time being</comment>
+  </data>
+  <data name="AddPerson_PersonSuccessfullyRegistered" xml:space="preserve">
+    <value>La persona se agregó con éxito a la organización. Un correo de bienvenida ha sido enviado.</value>
+  </data>
+  <data name="AddPerson_StatisticalData" xml:space="preserve">
+    <value>Datos estadísticos</value>
+    <comment>Header for gender, date of birth</comment>
+  </data>
+  <data name="AddPerson_Street1PO" xml:space="preserve">
+    <value>Calle 1 (o caja P.O.)</value>
+  </data>
+  <data name="AddPerson_Street2" xml:space="preserve">
+    <value>Calle 2- si es aplicable</value>
+  </data>
+  <data name="AddPerson_Title" xml:space="preserve">
+    <value>Agregar {0}</value>
+    <comment>The {0} is replaced in code. Singular form gender neutral of Participant.</comment>
+  </data>
+  <data name="ListFindPeople_Info" xml:space="preserve">
+    <value>Use esto para encontrar personas en la organización. Puede buscar por geografía y por patrón de nombre ("Jo S" coincidirá con Joel Sander).</value>
+  </data>
+  <data name="ListFindPeople_MatchingPeopleInX" xml:space="preserve">
+    <value>Búsqueda de personas en {0}</value>
+    <comment>The {0} parameter is the organization name.</comment>
+  </data>
+  <data name="ListFindPeople_NamePattern" xml:space="preserve">
+    <value>Patron de nombre</value>
+  </data>
+  <data name="ListFindPeople_Title" xml:space="preserve">
+    <value>Listar y encontrar personas</value>
+  </data>
+  <data name="ListFindPeople_TooManyHits" xml:space="preserve">
+    <value>El conjunto de resultados contiene más de mil personas (muestra limitada a mil). Por favor, refina tu búsqueda?</value>
+  </data>
+  <data name="LocalOrganization_Header" xml:space="preserve">
+    <value>Organización local ({0})</value>
+  </data>
+  <data name="LocalOrganization_HeaderGlobal" xml:space="preserve">
+    <value>La organización global</value>
+  </data>
+  <data name="LocalOrganization_Info" xml:space="preserve">
+    <value>Estos son tus contactos locales. (Si tiene privilegios administrativos, también puede asignar personas a estos puestos)</value>
+  </data>
+  <data name="LocalOrganization_PageTitle" xml:space="preserve">
+    <value>Mi organización local</value>
+    <comment>The {0} is the geography name.</comment>
+  </data>
+  <data name="Positions_AssignPerson" xml:space="preserve">
+    <value>Asignar a una persona...</value>
+  </data>
+  <data name="Positions_CreateNewPosition" xml:space="preserve">
+    <value>Crear una nueva posición...</value>
+  </data>
 </root>

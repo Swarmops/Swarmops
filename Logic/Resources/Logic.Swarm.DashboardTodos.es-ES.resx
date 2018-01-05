@@ -117,19 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Attest_CashAdvance_Many" xml:space="preserve">
+    <value>Atestiguar avances en efectivo {0}</value>
+  </data>
+  <data name="Attest_CashAdvance_One" xml:space="preserve">
+    <value>Atestiguar avances en efectivo #{0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
+    <value>Atestiguar reclamaciones de gastos {0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_One" xml:space="preserve">
+    <value>Atestiguar reclamaciones de gastos #{0}</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>Establecer la dirección de pago de bitcoin</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>Establezca su dirección de bitcoin para pagos desde [InstallationName](los espacios en la dirección son correctos, pero no son obligatorios):</value>
+  </data>
+  <data name="Payout_Many" xml:space="preserve">
+    <value>Liquidar {0} pagos</value>
+    <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
+  </data>
+  <data name="Payout_One" xml:space="preserve">
+    <value>Liquidar un pago</value>
+  </data>
+  <data name="Payout_Overdue_Many" xml:space="preserve">
+    <value>Liquidar {0} pagos vencidos</value>
+  </data>
+  <data name="Payout_Overdue_One" xml:space="preserve">
+    <value>Liquidar un pago vencido</value>
+  </data>
+  <data name="Payout_Urgent_Many" xml:space="preserve">
+    <value>Liquidar {0} pagos urgentes</value>
+  </data>
+  <data name="Payout_Urgent_One" xml:space="preserve">
+    <value>Liquidar un pago urgente</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>Habilitar la autenticación de dos factores</value>
+  </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>Validar reclamaciones {0}</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>Validar reclamo #{0}</value>
+  </data>
 </root>

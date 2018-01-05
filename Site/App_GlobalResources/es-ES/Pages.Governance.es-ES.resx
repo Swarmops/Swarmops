@@ -117,81 +117,281 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AddMotionAmendment_AmendmentSubmittedAs" xml:space="preserve">
+    <value>Guardado como #{0}-{1}.</value>
+    <comment>Keep very short</comment>
+  </data>
+  <data name="AddMotionAmendment_Decision" xml:space="preserve">
+    <value>Propuesta de decisión</value>
+    <comment>Decision to be made, amending the motion</comment>
+  </data>
+  <data name="AddMotionAmendment_PageTitle" xml:space="preserve">
+    <value>Añadir enmienda</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="AddMotionAmendment_SubmitAmendment" xml:space="preserve">
+    <value>Enviar enmienda</value>
+  </data>
+  <data name="AddMotionAmendment_Submitter" xml:space="preserve">
+    <value>Remitente</value>
+  </data>
+  <data name="AddMotionAmendment_SubmittingAmendmentInfo" xml:space="preserve">
+    <value>Está enviando una enmienda a la moción</value>
+    <comment>In sidebar info box. Motion title follows in bold.</comment>
+  </data>
+  <data name="AddMotionAmendment_Text" xml:space="preserve">
+    <value>Razonamiento</value>
+    <comment>Text of motion amendment (justification and rationale)</comment>
+  </data>
+  <data name="AddMotionAmendment_Title" xml:space="preserve">
+    <value>Titulo de enmienda</value>
+  </data>
+  <data name="AddMotion_Decisions" xml:space="preserve">
+    <value>Decisiones (una por línea)</value>
+    <comment>Proposed decisions, one per line</comment>
+  </data>
+  <data name="AddMotion_MotionSubmittedAs" xml:space="preserve">
+    <value>Moción guardada como #{0}.</value>
+    <comment>Keep short</comment>
+  </data>
+  <data name="AddMotion_PageTitle" xml:space="preserve">
+    <value>Agregar moción</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="AddMotion_SubmitMotion" xml:space="preserve">
+    <value>Enviar moción</value>
+  </data>
+  <data name="AddMotion_Submitter" xml:space="preserve">
+    <value>Remitente</value>
+    <comment>Original submitter (not person at keyboard)</comment>
+  </data>
+  <data name="AddMotion_SubmittingMotionInfo" xml:space="preserve">
+    <value>Está enviando una moción a la reunión</value>
+    <comment>Meeting name follows in bold.</comment>
+  </data>
+  <data name="AddMotion_Text" xml:space="preserve">
+    <value>Moción de razonamiento</value>
+    <comment>Text of motion</comment>
+  </data>
+  <data name="AddMotion_Title" xml:space="preserve">
+    <value>Titulo de la moción</value>
+    <comment>Motion title in form</comment>
+  </data>
+  <data name="AddMotion_WrongMeeting" xml:space="preserve">
+    <value>¿Reunión equivocada?</value>
+    <comment>Link to change meetings</comment>
+  </data>
+  <data name="ListMotions_Grid_Amended" xml:space="preserve">
+    <value>Enmendado</value>
+  </data>
+  <data name="ListMotions_Grid_Amendments" xml:space="preserve">
+    <value>Enmiendas</value>
+  </data>
+  <data name="ListMotions_Grid_Carried" xml:space="preserve">
+    <value>Llevado</value>
+  </data>
+  <data name="ListMotions_Grid_Designation" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="ListMotions_Grid_Title" xml:space="preserve">
+    <value>Titulo</value>
+  </data>
+  <data name="ListMotions_PageTitle" xml:space="preserve">
+    <value>Lista de mociones</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="ListMotions_Sidebar_Info" xml:space="preserve">
+    <value>Está viendo las mociones para la reunión</value>
+  </data>
+  <data name="ListMotions_SubmitAmendment" xml:space="preserve">
+    <value>Enviar...</value>
+    <comment>Displayed in-grid</comment>
+  </data>
+  <data name="ViewMotion_AddAmendment" xml:space="preserve">
+    <value>Proponer una nueva enmienda a la moción</value>
+  </data>
+  <data name="ViewMotion_Amendment" xml:space="preserve">
+    <value>Enmienda</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountOne" xml:space="preserve">
+    <value>Una emnienda</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountTwoPlus" xml:space="preserve">
+    <value>{0} enmiendas</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountZero" xml:space="preserve">
+    <value>Sin enmiendas</value>
+  </data>
+  <data name="ViewMotion_AmendmentProposedChange" xml:space="preserve">
+    <value>Cambio propuesto</value>
+  </data>
+  <data name="ViewMotion_AmendmentText" xml:space="preserve">
+    <value>Razonamiento</value>
+  </data>
+  <data name="ViewMotion_DecisionPoints" xml:space="preserve">
+    <value>Decisiones propuestas</value>
+  </data>
+  <data name="ViewMotion_Discuss" xml:space="preserve">
+    <value>Hilo de discusión</value>
+    <comment>Label before link to forum or similar</comment>
+  </data>
+  <data name="ViewMotion_DiscussLink" xml:space="preserve">
+    <value>Hilo del foro (publicaciones hasta el momento: {0})</value>
+    <comment>Hyperlink text</comment>
+  </data>
+  <data name="ViewMotion_MotionDesignation" xml:space="preserve">
+    <value>Moción #{0}</value>
+  </data>
+  <data name="ViewMotion_PageTitle" xml:space="preserve">
+    <value>Inspección de moción</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="ViewMotion_Text" xml:space="preserve">
+    <value>Moción de razonamiento</value>
+  </data>
+  <data name="ViewMotion_ViewingMotionInfo" xml:space="preserve">
+    <value>Está viendo una moción presentada a la reunión</value>
+    <comment>In sidebar info box. Meeting name follows in bold.</comment>
+  </data>
+  <data name="VoteAmendments_BoardRecommendation" xml:space="preserve">
+    <value>Recomendación de la Junta</value>
+    <comment>First item in dropdown box</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Abstain" xml:space="preserve">
+    <value>Abst.</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Board" xml:space="preserve">
+    <value>La junta dice</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Change" xml:space="preserve">
+    <value>Cambio</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Decision" xml:space="preserve">
+    <value>Decisión</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Designation" xml:space="preserve">
+    <value>#</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_No" xml:space="preserve">
+    <value>No</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
+    <value>Razonamiento</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Recommend" xml:space="preserve">
+    <value>Rec.</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Text" xml:space="preserve">
+    <value>Texto</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_TitleText" xml:space="preserve">
+    <value>Texto/ Titulo</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Yes" xml:space="preserve">
+    <value>Si</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Header" xml:space="preserve">
+    <value>Enmiendas para {0}</value>
+    <comment>In content box header. The meeting name goes in {0}.</comment>
+  </data>
+  <data name="VoteAmendments_Info" xml:space="preserve">
+    <value>Vote por los cambios sugeridos (enmiendas) a las mociones. Si pasan, cambien la moción. En la próxima ronda, votaremos por las mociones resultantes. Las enmiendas individuales se enumeran debajo de cada moción, y hay detalles adicionales debajo de cada moción y enmienda. Seleccione una recomendación de votación si lo desea.</value>
+  </data>
+  <data name="VoteAmendments_PageTitle" xml:space="preserve">
+    <value>Vote por las enmiendas</value>
+    <comment>In page title and header</comment>
+  </data>
+  <data name="VoteAmendments_Recommend_Abstain" xml:space="preserve">
+    <value>---</value>
+  </data>
+  <data name="VoteAmendments_Recommend_No" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="VoteAmendments_Recommend_Yes" xml:space="preserve">
+    <value>SI</value>
+  </data>
+  <data name="VoteAmendments_SelectRecommendation" xml:space="preserve">
+    <value>Seleccionar recomendaciones...</value>
+    <comment>Default in dropdown box</comment>
+  </data>
+  <data name="Vote_CreateVotingList" xml:space="preserve">
+    <value>¿Crear lista de votación?</value>
+    <comment>This becomes a link which folds out to a popup asking "for motions or amendments".</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Amendments" xml:space="preserve">
+    <value>Crear lista de votación para enmiendas</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Elections" xml:space="preserve">
+    <value>Crear lista de votación para una elección</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Motions" xml:space="preserve">
+    <value>Crear lista de votación para mociones</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_Info" xml:space="preserve">
+    <value>A veces, {0} tienes reuniones. Durante estas reuniones, los miembros pueden votar. Esta es una lista de lo que puedes votar. También puede crear una lista de votación que sirva como recomendación para otros.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Vote_MeetingElections" xml:space="preserve">
+    <value>Elecciones</value>
+  </data>
+  <data name="Vote_Motions" xml:space="preserve">
+    <value>Mociones</value>
+  </data>
+  <data name="Vote_MotionVotingMotionAmendments" xml:space="preserve">
+    <value>Enmienda de mociones</value>
+  </data>
+  <data name="Vote_MotionVotingMotions" xml:space="preserve">
+    <value>Mociones</value>
+  </data>
+  <data name="Vote_NotOpenedYet" xml:space="preserve">
+    <value>No esta abierto todavía</value>
+    <comment>Keep very short.</comment>
+  </data>
+  <data name="Vote_OpensOnDate" xml:space="preserve">
+    <value>Abre {0:yyyy-MMM-dd}.</value>
+    <comment>Note the embedded date format. Localize to national standard.</comment>
+  </data>
+  <data name="Vote_PageTitle" xml:space="preserve">
+    <value>Voto</value>
+  </data>
+  <data name="Vote_PointsOfOrder" xml:space="preserve">
+    <value>Puntos de orden</value>
+  </data>
+  <data name="Vote_PointsOfOrderTemp" xml:space="preserve">
+    <value>No hay puntos de orden en este momento.</value>
+  </data>
+  <data name="Vote_VoteHere" xml:space="preserve">
+    <value>Votar aquí</value>
+    <comment>Link to voting page</comment>
+  </data>
+  <data name="Vote_VoteOnAmendments" xml:space="preserve">
+    <value>Vote por las enmiendas {0:N0}:</value>
+    <comment>The {0} is the amendment count.</comment>
+  </data>
+  <data name="Vote_VoteOnMotions" xml:space="preserve">
+    <value>Vote por las mociones {0:N0}:</value>
+    <comment>The {0} is the motion count.</comment>
+  </data>
+  <data name="VoteAmendments_SaveVote" xml:space="preserve">
+    <value>He terminado, enviar mi voto</value>
+    <comment>Button at end of page</comment>
+  </data>
+  <data name="VoteAmendments_SaveVote_Temp" xml:space="preserve">
+    <value>No puedo votar en la reunión de prueba</value>
+    <comment>For Tests Only</comment>
+  </data>
 </root>

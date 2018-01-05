@@ -117,78 +117,251 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Asset_BankAccount" xml:space="preserve">
+    <value>Cuenta bancaria</value>
+  </data>
+  <data name="Asset_BitcoinCold" xml:space="preserve">
+    <value>Almacenamiento en frío de Bitcoin</value>
+  </data>
+  <data name="Asset_BitcoinHot" xml:space="preserve">
+    <value>Cartera caliente de Bitcoin</value>
+  </data>
+  <data name="Asset_CashAdvances" xml:space="preserve">
+    <value>Adelanto en efectivo</value>
+  </data>
+  <data name="Asset_Hardware" xml:space="preserve">
+    <value>Hardware, maquinaria, etc.</value>
+  </data>
+  <data name="Asset_InboundVat" xml:space="preserve">
+    <value>IVA entrante</value>
+    <comment>Value Added Tax</comment>
+  </data>
+  <data name="Asset_OutboundInvoices" xml:space="preserve">
+    <value>Facturas salientes</value>
+  </data>
+  <data name="Asset_Paypal" xml:space="preserve">
+    <value>Cuenta paypal</value>
+  </data>
+  <data name="Cost_AccountingErrors" xml:space="preserve">
+    <value>Errores de contabilidad</value>
+    <comment>Used to compensate for all kinds of random mistakes</comment>
+  </data>
+  <data name="Cost_Airfare" xml:space="preserve">
+    <value>Boleto aéreo, aeropuertos y tránsito</value>
+    <comment>"Transit" refers to transit to/from airport.</comment>
+  </data>
+  <data name="Cost_AirfareBusiness" xml:space="preserve">
+    <value>Primera clase o ejecutiva</value>
+  </data>
+  <data name="Cost_AirfareCoach" xml:space="preserve">
+    <value>Entrenador</value>
+  </data>
+  <data name="Cost_AllocatedFunds" xml:space="preserve">
+    <value>Fondos asignados</value>
+  </data>
+  <data name="Cost_AnnualResult" xml:space="preserve">
+    <value>Ganancia / Pérdida Anual</value>
+  </data>
+  <data name="Cost_AssetDepreciation" xml:space="preserve">
+    <value>Depreciación de activos</value>
+  </data>
+  <data name="Cost_BankFees" xml:space="preserve">
+    <value>Comisiones bancarias</value>
+  </data>
+  <data name="Cost_BitcoinFees" xml:space="preserve">
+    <value>Tarifas de miniar Bitcoin</value>
+  </data>
+  <data name="Cost_CentRounding" xml:space="preserve">
+    <value>Redondeo de centavos</value>
+    <comment>As in rounding to nearest small unit of currency</comment>
+  </data>
+  <data name="Cost_Conferences" xml:space="preserve">
+    <value>Conferencias (nuestra)</value>
+    <comment>This is for confs that the organization is _hosting_.</comment>
+  </data>
+  <data name="Cost_EventTickets" xml:space="preserve">
+    <value>Entradas para eventos</value>
+    <comment>Typically _remote_ event tickets, as this accounts sorts under travel.</comment>
+  </data>
+  <data name="Cost_FinancialFees" xml:space="preserve">
+    <value>Honorarios financieros</value>
+    <comment>Master account to bitcoin mining and bank fees</comment>
+  </data>
+  <data name="Cost_ForexLosses" xml:space="preserve">
+    <value>Pérdidas de Capital Forex</value>
+    <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
+  </data>
+  <data name="Cost_Hospitality" xml:space="preserve">
+    <value>Hospitalidad</value>
+  </data>
+  <data name="Cost_IctInfrastructure" xml:space="preserve">
+    <value>ICT e Infraestructura</value>
+  </data>
+  <data name="Cost_InterestLosses" xml:space="preserve">
+    <value>Pérdidas de Interés</value>
+  </data>
+  <data name="Cost_LegalFees" xml:space="preserve">
+    <value>Honorarios legales</value>
+  </data>
+  <data name="Cost_LodgingFiveStar" xml:space="preserve">
+    <value>5 estrellas</value>
+    <comment>Five-star rating</comment>
+  </data>
+  <data name="Cost_LodgingFourStar" xml:space="preserve">
+    <value>4 estrellas</value>
+    <comment>Four-star rating</comment>
+  </data>
+  <data name="Cost_LodgingHostel" xml:space="preserve">
+    <value>Albergue o presupuesto equivalente</value>
+  </data>
+  <data name="Cost_LodgingShared" xml:space="preserve">
+    <value>Alojamiento compartido (AirBnB, etc.)</value>
+  </data>
+  <data name="Cost_LodgingThreeStar" xml:space="preserve">
+    <value>3 estrellas</value>
+    <comment>Three-star rating</comment>
+  </data>
+  <data name="Cost_MarketingCampaigns" xml:space="preserve">
+    <value>Marketing y Campañas</value>
+  </data>
+  <data name="Cost_OfficeEquipment" xml:space="preserve">
+    <value>Equipo de oficina</value>
+  </data>
+  <data name="Cost_Offices" xml:space="preserve">
+    <value>Oficinas</value>
+  </data>
+  <data name="Cost_OfficeSpace" xml:space="preserve">
+    <value>Espacio de oficina, mantenimiento</value>
+  </data>
+  <data name="Cost_OfficeSupplies" xml:space="preserve">
+    <value>Suministros de oficina (consumibles)</value>
+  </data>
+  <data name="Cost_PublicTransit" xml:space="preserve">
+    <value>Tránsito público</value>
+    <comment>The local kind within a city or limited area.</comment>
+  </data>
+  <data name="Cost_ResearchDevelopment" xml:space="preserve">
+    <value>Investigación y desarrollo</value>
+  </data>
+  <data name="Cost_Staff" xml:space="preserve">
+    <value>Personal</value>
+  </data>
+  <data name="Cost_StaffBenefits" xml:space="preserve">
+    <value>Beneficios de personal</value>
+    <comment>Non-compensation benefits (car, phone, etc). Usually taxable.</comment>
+  </data>
+  <data name="Cost_StaffExpenses" xml:space="preserve">
+    <value>Gastos de personal</value>
+  </data>
+  <data name="Cost_StaffPerDiem" xml:space="preserve">
+    <value>Personal Per-Diem</value>
+    <comment>As in "extra travel compensation"</comment>
+  </data>
+  <data name="Cost_StaffSalaries" xml:space="preserve">
+    <value>Salarios de personal</value>
+  </data>
+  <data name="Cost_Taxes" xml:space="preserve">
+    <value>Impuestos</value>
+  </data>
+  <data name="Cost_TaxiTransport" xml:space="preserve">
+    <value>Taxi, limusina, etc</value>
+  </data>
+  <data name="Cost_TrainsFerries" xml:space="preserve">
+    <value>Trenes y Ferries</value>
+  </data>
+  <data name="Cost_Transportation" xml:space="preserve">
+    <value>Transporte</value>
+  </data>
+  <data name="Cost_Travel" xml:space="preserve">
+    <value>Viaje</value>
+    <comment>Root account for travel related accounts</comment>
+  </data>
+  <data name="Cost_TravelLodging" xml:space="preserve">
+    <value>Alojamiento</value>
+  </data>
+  <data name="Cost_TravelPerDiem" xml:space="preserve">
+    <value>Per Diems</value>
+    <comment>This is compensation to people traveling for added everyday costs. Usually follows an official guide.</comment>
+  </data>
+  <data name="Cost_Unforeseen" xml:space="preserve">
+    <value>Improvistos</value>
+  </data>
+  <data name="Debt_Equity" xml:space="preserve">
+    <value>Patrimonio</value>
+  </data>
+  <data name="Debt_EquityRestricted" xml:space="preserve">
+    <value>Patrimonio restringido</value>
+    <comment>As in "equity sold to shareholders"</comment>
+  </data>
+  <data name="Debt_EquityUnrestricted" xml:space="preserve">
+    <value>Patrimonio no restringido</value>
+  </data>
+  <data name="Debt_ExpenseClaims" xml:space="preserve">
+    <value>Reclamación de gastos</value>
+  </data>
+  <data name="Debt_General" xml:space="preserve">
+    <value>Deuda general</value>
+  </data>
+  <data name="Debt_InboundInvoices" xml:space="preserve">
+    <value>Facturas entrantes</value>
+  </data>
+  <data name="Debt_OutboundVat" xml:space="preserve">
+    <value>IVA entrante</value>
+    <comment>Value Added Tax</comment>
+  </data>
+  <data name="Debt_Salaries" xml:space="preserve">
+    <value>Salarios adeudados</value>
+  </data>
+  <data name="Debt_Taxes" xml:space="preserve">
+    <value>Impuestos adeudados</value>
+  </data>
+  <data name="Income_Donations" xml:space="preserve">
+    <value>Donaciones</value>
+  </data>
+  <data name="Income_ForexGains" xml:space="preserve">
+    <value>Ganancias de Capital Forex</value>
+    <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
+  </data>
+  <data name="Income_InterestGains" xml:space="preserve">
+    <value>Ganancia de interese</value>
+  </data>
+  <data name="Income_MembershipDues" xml:space="preserve">
+    <value>Las cuotas de afiliación</value>
+  </data>
+  <data name="Income_Sales" xml:space="preserve">
+    <value>Ventas</value>
+  </data>
+  <data name="Income_SubsidiesGrants" xml:space="preserve">
+    <value>Subsidios y subvenciones</value>
+  </data>
+  <data name="Asset_ShortTerm" xml:space="preserve">
+    <value>Activos a corto plazo</value>
+  </data>
+  <data name="Asset_TransfersInProgress" xml:space="preserve">
+    <value>Transferencias internas en progreso</value>
+  </data>
+  <data name="Asset_InboundVatReported" xml:space="preserve">
+    <value>Excedente de IVA entrante en el informe</value>
+    <comment>This is nonzero if the inbound amount (to get back) is higher than the outbound</comment>
+  </data>
+  <data name="Asset_InboundVatUnreported" xml:space="preserve">
+    <value>IVA entrante para informar</value>
+    <comment>Accumulates to each VAT report, set by VAT report frequency</comment>
+  </data>
+  <data name="Debt_OutboundVatReported" xml:space="preserve">
+    <value>IVA notificado a pagar</value>
+    <comment>This is nonzero if there's VAT to pay to tax authorities</comment>
+  </data>
+  <data name="Debt_OutboundVatUnreported" xml:space="preserve">
+    <value>IVA saliente para informar</value>
+    <comment>Accumulates to each VAT report, as set by VAT report frequency</comment>
+  </data>
+  <data name="Asset_TaxAdvances" xml:space="preserve">
+    <value>Pago anticipado de impuestos</value>
+    <comment>Most tax authorities require you to pay some part in advance</comment>
+  </data>
+  <data name="Asset_BankAccounts" xml:space="preserve">
+    <value>Cuentas Bancarias</value>
+    <comment>Note the plural form</comment>
+  </data>
 </root>

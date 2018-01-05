@@ -117,20 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SendMassMessage_Error_EmptyBody" xml:space="preserve">
+    <value>Debes escribir el cuerpo del mensaje antes de enviar su mensaje.</value>
+  </data>
+  <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
+    <value>Debe escribir un asunto para que se ajuste a su mensaje.</value>
+  </data>
+  <data name="SendMassMessage_Geography" xml:space="preserve">
+    <value>Quiénes están ubicados en</value>
+  </data>
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>Su mensaje</value>
+  </data>
+  <data name="SendMassMessage_Info" xml:space="preserve">
+    <value>Envíe un mensaje a un grupo de personas en la organización. Puede enviar el mensaje por correo (bueno para boletines informativos e información general) o para sus teléfonos (muy intrusivo, y también cuesta un poco).</value>
+  </data>
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>Escribe tu mensaje aquí. Se puede usar marcado estándar como * bold *, _italic_, == encabezados == y similares. Dos nuevas líneas comienzan un nuevo párrafo. El correo se enviará como texto simple y HTML de doble modo.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>Sin destinatarios | Un destinatario | {0:N0} Destinatarios</value>
+    <comment>Vertical bar divides none|one|many</comment>
+  </data>
+  <data name="SendMassMessage_RecipientType" xml:space="preserve">
+    <value>Envía un mensaje masivo a todos</value>
+  </data>
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>Actualmente estás usando Sandbox. ¿Dónde te gustaría que se envíe un mensaje de prueba?</value>
+  </data>
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>Enviar</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>Su mensaje ahora se está distribuyendo a los destinatarios. Se le notificará cuando se complete la transmisión.</value>
+  </data>
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>Sujeto</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
+  </data>
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>Prueba</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>El mensaje ha sido enviado a usted, para que pueda ver cómo se ve antes de comenzar.</value>
+  </data>
+  <data name="SendMassMessage_Title" xml:space="preserve">
+    <value>Envía un mensaje masivo</value>
+  </data>
 </root>

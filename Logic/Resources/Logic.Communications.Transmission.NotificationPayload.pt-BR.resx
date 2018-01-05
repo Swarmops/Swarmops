@@ -395,6 +395,8 @@ Por favor entre em [InstallationName] em [ExternalUrl]Financial/ValidateReceipts
     <value>[[OrganizationName] - ITEM DE AÇÃO] Recibos Recebidos - Validação Necessária</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
+  
+  
   <data name="Salary_LastYearSummary_Body" xml:space="preserve">
     <value>Este é o resumo da sua folha de vencimento de [LastYear]. Não é uma declaração do seu novo vencimento, mas uma declaração dos salários pagos a si ao longo do último ano, bem como quaisquer impostos deduzidos. O propósito desta declaração é para servir como informação para os seus registos e/ou para fins de declaração de impostos do ano anterior.
 

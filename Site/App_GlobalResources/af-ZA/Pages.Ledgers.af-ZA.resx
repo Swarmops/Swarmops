@@ -919,4 +919,43 @@
     <value>crwdns6556683:0crwdne6556683:0</value>
     <comment>Displayed as description of footer</comment>
   </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>crwdns6556723:0crwdne6556723:0</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>crwdns6556724:0crwdne6556724:0</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>crwdns6556725:0crwdne6556725:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
+    <value>crwdns6556726:0crwdne6556726:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>crwdns6556727:0{0}crwdne6556727:0</value>
+    <comment>{0} is the currency</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
+    <value>crwdns6556718:0crwdne6556718:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
+    <value>crwdns6556719:0crwdne6556719:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
+    <value>crwdns6556720:0crwdne6556720:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
+    <value>crwdns6556721:0crwdne6556721:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>crwdns6556722:0crwdne6556722:0</value>
+  </data>
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>crwdns6556728:0crwdne6556728:0</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>crwdns6556729:0crwdne6556729:0</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
 </root>

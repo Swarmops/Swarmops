@@ -117,16 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AllClear_Text" xml:space="preserve">
+    <value>Las operaciones han vuelto a ser nominales.</value>
+  </data>
+  <data name="AllClear_Title" xml:space="preserve">
+    <value>Todo limpio</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
+    <value>El servidor ha perdido la conexión con la cadena de bloques de bitcoin. Las transacciones de Bitcoin no se detectarán en tiempo real.</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
+    <value>Cadena de bloqueado conexión perdida</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
+    <value>El navegador web no puede escuchar los latidos del corazón del servidor. Las actualizaciones en tiempo real pueden no estar disponibles.</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
+    <value>Insuficiencia cardíaca nivel 1</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Text" xml:space="preserve">
+    <value>No se puede conectar al servidor para actualizaciones en tiempo real.</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Title" xml:space="preserve">
+    <value>Fallo de conexión web</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Text" xml:space="preserve">
+    <value>El servidor no puede conectarse al proceso de back-end. Las actualizaciones en tiempo real no estarán disponibles en gran medida.</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Title" xml:space="preserve">
+    <value>Fallo de conexión de servidor</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Text" xml:space="preserve">
+    <value>El servidor no puede escuchar el latido del proceso de back-end.</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Title" xml:space="preserve">
+    <value>Insuficiencia cardíaca nivel 2</value>
+  </data>
 </root>

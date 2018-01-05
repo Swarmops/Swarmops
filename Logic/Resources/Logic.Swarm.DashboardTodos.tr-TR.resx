@@ -117,19 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Attest_CashAdvance_Many" xml:space="preserve">
+    <value>{0} nakit avanslarını onayla</value>
+  </data>
+  <data name="Attest_CashAdvance_One" xml:space="preserve">
+    <value>#{0} nakit avansını doğrula</value>
+  </data>
+  <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
+    <value>{0} Masraf taleplerini doğrula</value>
+  </data>
+  <data name="Attest_ExpenseClaim_One" xml:space="preserve">
+    <value>#{0} Masraf talebini doğrula</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>Bitcoin ödeme adresini belirle</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>Lütfen [InstallationName]'den alacağınız ödemeler için bitcoin adresinizi ayarlayınız (adresteki boşluklar sorun oluşturmaz fakat gerekli değildir):</value>
+  </data>
+  <data name="Payout_Many" xml:space="preserve">
+    <value>{0} Ödemeyi gerçekleştir</value>
+    <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
+  </data>
+  <data name="Payout_One" xml:space="preserve">
+    <value>Bir ödeme gerçekleştir</value>
+  </data>
+  <data name="Payout_Overdue_Many" xml:space="preserve">
+    <value>{0} geçmiş ödemeyi gerçekleştir</value>
+  </data>
+  <data name="Payout_Overdue_One" xml:space="preserve">
+    <value>Bir geçmiş ödemeyi gerçekleştir</value>
+  </data>
+  <data name="Payout_Urgent_Many" xml:space="preserve">
+    <value>{0} Acil ödemeyi gerçekleştir</value>
+  </data>
+  <data name="Payout_Urgent_One" xml:space="preserve">
+    <value>Bir acil ödemeyi gerçekleştir</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>İki aşamalı doğrulamayı etkinleştir</value>
+  </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>{0} Talebi doğrula</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>Talep #{0} yi doğrula</value>
+  </data>
 </root>

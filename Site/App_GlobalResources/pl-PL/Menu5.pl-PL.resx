@@ -117,18 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Menu5_Administration" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
+    <value>Listy kontroli dostępu</value>
+  </data>
+  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
+    <value>Stwórz nową organizację</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Ustawienia organizacji</value>
+  </data>
+  <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
+    <value>Drzewo genealogiczne</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
+    <value>Grupy organizacyjne</value>
+  </data>
+  <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
+    <value>Ustawienia rozległego systemu</value>
+  </data>
+  <data name="Menu5_Communications" xml:space="preserve">
+    <value>Komunikacje</value>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Communications_MassMailing" xml:space="preserve">
+    <value>Masowe mailowanie</value>
+  </data>
+  <data name="Menu5_Communications_MobilizeActivists" xml:space="preserve">
+    <value>Mobilizować aktywistów</value>
+  </data>
   
   
   

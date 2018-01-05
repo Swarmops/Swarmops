@@ -117,169 +117,554 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
+    <value>Avance de efectivo #{0:N0} para {1} ha sido certificado por {3:N2}.</value>
+    <comment>Status message.</comment>
+  </data>
+  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
+    <value>Avance de efectivo #{0:N0} para {1} fue atestiguado por la ONU. No se pagará a menos que se certifique nuevamente.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
+    <value>No puedes atestiguar esta cantidad. El presupuesto está vacío para el año {0}.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
+    <value>No puedes atestiguar una cantidad negativa.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
+    <value>No puedes atestiguar una cantidad en cero.</value>
+  </data>
+  <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
+    <value>Lo sentimos, no puedes volver a presupuestar un pago de salario.</value>
+  </data>
+  <data name="AttestCosts_Error_InvalidAmountRetry" xml:space="preserve">
+    <value>Eso no parece ser una cantidad válida. ¿Por favor, intenta de nuevo?</value>
+  </data>
+  <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
+    <value>Seleccione un presupuesto para reorientar el cargo por.</value>
+  </data>
+  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
+    <value>Reclamación de gastos #{0:N0} desde {1} para {2}{3:N2} ha sido atestiguado.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Reclamación de gastos #{0:N0} desde {1} fue DE-atestiguado. No se pagará a menos que se certifique nuevamente.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>Acción</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>Beneficiario</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Presupuesto</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>Documento</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>Objeto</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>Pedido</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
+    <value>Costos a la espera de su testimonio</value>
+  </data>
+  <data name="AttestCosts_Info" xml:space="preserve">
+    <value>Aquí es donde atestigua los costos que otras personas están solicitando de sus presupuestos. No se paga nada antes de haberlo atestiguado.</value>
+  </data>
+  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
+    <value>Factura #{0:N0} desde {1} para {2}{3:N2} ha sido atestiguado.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
+    <value>Factura #{0:N0} desde {1} fue atestiguado por la ONU. No se pagará a menos que se certifique nuevamente.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
+    <value>Atestiguar</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
+    <value>Atestiguar</value>
+  </data>
+  <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
+    <value>Denegar</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonRebudget" xml:space="preserve">
+    <value>Re-presupuesto</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
+    <value>Mi aerodeslizador esta lleno de anguilas</value>
+    <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
+    <value>¿Qué cantidad estás certificando ( en {0})?</value>
+    <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionCorrect" xml:space="preserve">
+    <value>Cambie este artículo a esta cantidad (en {0}), luego certifícalo así:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionDeny" xml:space="preserve">
+    <value>Motivo opcional de denegación para el remitente:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
+    <value>Mueva la carga a este presupuesto en lugar de:</value>
+  </data>
+  <data name="AttestCosts_Modal_Header" xml:space="preserve">
+    <value>Soluciona problemas o denegar testimonio</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
+    <value>Daré testimonio de esto, pero por una cantidad diferente.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
+    <value>La cantidad es incorrecta. Lo atestiguaré con la cantidad correcta.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
+    <value>No atestiguaré este registro. Está rayado.</value>
+    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
+    <value>Este registro debe cobrar un presupuesto diferente. Muévelo allí.</value>
+  </data>
+  <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
+    <value>¿Cuál parece ser el problema con este registro?</value>
+  </data>
+  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
+    <value>No hay fondos suficientes en el presupuesto para atestiguar este costo.</value>
+  </data>
+  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
+    <value>No hay fondos suficientes para atestiguar esto. Puede certificar hasta {0} {1:N2} más en este presupuesto para el año {2}.</value>
+    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
+  </data>
+  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
+    <value>&lt;strong&gt;¿PRESUPUESTO DE SOBREGIRO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; No hay fondos suficientes en el presupuesto para atestiguar este gasto. Normalmente, se bloquearía de la atestación. Sin embargo, puede anular esta limitación y atestiguar de todos modos, con lo que la cuenta se sobregira en su presupuesto.&lt;br/&gt;&lt;br/&gt; ¿Desea atestiguar el gasto, forzando así un sobregiro, o desea cancelar la atestación, quedándose dentro del presupuesto?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
+    <value>Mantente en el presupuesto</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmYes" xml:space="preserve">
+    <value>Sobregiro de fuerza</value>
+  </data>
+  <data name="AttestCosts_Overdrafted" xml:space="preserve">
+    <value>EL PRESUPUESTO FUE SOBREGIRADO.</value>
+    <comment>The UPPERCASE is intentional.</comment>
+  </data>
+  <data name="AttestCosts_PageTitle" xml:space="preserve">
+    <value>Atestiguar costos</value>
+  </data>
+  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
+    <value>La conferencia # {0:N0}, organizada por {1}, ha sido certificada para {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
+    <value>La conferencia #{0:N0} por {1} fue atestiguado por la ONU. No se dará luz verde a menos que se certifique nuevamente.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_SalaryAttested" xml:space="preserve">
+    <value>Salario #{0:N0} para {1} fue atestiguado por {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
+    <value>Salario #{0:N0} para {1} fue DE-atestiguado. No se pagará a menos que se certifique nuevamente.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
+    <value>&lt;strong&gt;ADVERTENCIA: PRESUPUESTO SIN IDENTIFICAR&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; El costo que está aprobando pertenece a un presupuesto sin identificar: una cuenta en el libro mayor que carece de propietario y no tiene una asignación presupuestaria establecida para el año. Considere visitar el Plan de cuenta y asignar presupuestos para los ingresos y gastos esperados.&lt;br/&gt;&lt;br/&gt; Este mensaje solo se mostrará una vez por visita a atestiguaciones.&lt;br/&gt;</value>
+  </data>
+  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
+    <value>Cantidad de la factura total ( en{0})</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>Descripción</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
+  <data name="CreateInboundInvoice_HeaderInvoiceImage" xml:space="preserve">
+    <value>Imagen de la factura</value>
+  </data>
+  <data name="CreateInboundInvoice_HeaderPaymentDetails" xml:space="preserve">
+    <value>Detalles de pago</value>
+    <comment>Displayed as header over supplier's account details</comment>
+  </data>
+  <data name="CreateInboundInvoice_Info" xml:space="preserve">
+    <value>Aquí es donde archiva facturas recibidas en su organización ("Cuentas por pagar"). Ingrese el nombre del proveedor, el monto, la fecha de vencimiento, la referencia de la factura y cargue una imagen de la factura recibida. Además, selecciona un presupuesto. El propietario del presupuesto debe atestiguar, como de costumbre. (Las expansiones futuras de este mecanismo incluyen las órdenes de compra y las listas de proveedores)</value>
+  </data>
+  <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
+    <value>Recibió la factura entrante</value>
+  </data>
+  <data name="CreateInboundInvoice_Reference" xml:space="preserve">
+    <value>Referencia de la factura</value>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceAutomaticOcr" xml:space="preserve">
+    <value>OCR / Automático</value>
+    <comment>Some invoices come with OCR numbers printed on them for automatic processing.</comment>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceManual" xml:space="preserve">
+    <value>Manual</value>
+    <comment>Other invoices come without automated processing and a manual </comment>
+  </data>
+  <data name="CreateInboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Factura entrante #{0:N0} archivado.</value>
+    <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
+  </data>
+  <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
+    <value>Cuenta</value>
+    <comment>Free text input, intended to convey everything needed to get the money right</comment>
+  </data>
+  <data name="CreateInboundInvoice_UploadInvoiceImage" xml:space="preserve">
+    <value>Subir archivo de imagen</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
+    <value>Ingrese la cuenta bancaria del proveedor o equivalente.</value>
+  </data>
+  <data name="Donate_Explain" xml:space="preserve">
+    <value>Este es un código QR para donaciones a {0}. Léelo desde la billetera bitcoin de tu teléfono para hacer una donación o dona desde tu computadora directamente a [{1}] (esa es una dirección de Bitcoin Cash).</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="Donate_FundsReceived" xml:space="preserve">
+    <value>Recibido {0}{1:N2} ({2:N0} microcoins o "bits"). ¡Gracias!</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedNative" xml:space="preserve">
+    <value>Recibido {0} microcoins ("bits"). ¡Gracias!</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="Donate_Info" xml:space="preserve">
+    <value>Si desea donar a la organización, puede hacerlo aquí.</value>
+  </data>
+  <data name="Donate_PageTitle" xml:space="preserve">
+    <value>Donar</value>
+  </data>
+  <data name="Donate_StatusInitial" xml:space="preserve">
+    <value>Esperando la transacción...</value>
+  </data>
+  <data name="Donate_TransactionDetected" xml:space="preserve">
+    <value>Transacción detectada, verificando...</value>
+  </data>
+  <data name="Donate_TxLabel" xml:space="preserve">
+    <value>Donación a {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Donate_TxLabel_Loan" xml:space="preserve">
+    <value>Préstamo a {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="FileExpenseClaim_Amount" xml:space="preserve">
+    <value>Cantidad de reclamación de gastos (en {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
+    <value>Número de cuenta</value>
+  </data>
+  <data name="FileExpenseClaim_BankClearing" xml:space="preserve">
+    <value>Número de compensación</value>
+  </data>
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>Nombre del banco</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Presupuesto</value>
+  </data>
+  <data name="FileExpenseClaim_CostType" xml:space="preserve">
+    <value>Tipo de costo</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
+  <data name="FileExpenseClaim_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>Sus detalles bancarios</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderReceiptImages" xml:space="preserve">
+    <value>Imágenes de recibo</value>
+  </data>
+  <data name="FileExpenseClaim_Info" xml:space="preserve">
+    <value>Si realizó una compra en nombre de la organización utilizando sus fondos privados, es probable que desee un reembolso al presentar un &lt;em&gt;reclamo de gastos&lt;/em&gt;. Haga eso aquí cargando los recibos y seleccionando el presupuesto al que deberían cargarse. Si recibió previamente un anticipo de efectivo para esta compra, aquí es donde le quita el préstamo de la organización mediante el envío de recibos.</value>
+  </data>
+  <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
+    <value>Solicitar devolución de dinero por gastos</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartOne" xml:space="preserve">
+    <value>Un reclamo de gastos ha sido archivado exitosamente para {0}{1:N2} contra el presupuesto de {2}. Los recibos deberán validarse y el propietario del presupuesto tendrá que certificar la reclamación.</value>
+    <comment>{0} is the currency, {1} is the amount, and {2} is the budget name.</comment>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Tan pronto como esto haya sucedido, los fondos procederán a ser pagados a su cuenta indicada.</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Como este es su propio presupuesto, la certificación ya está completa. Solo la validación es necesaria.</value>
+  </data>
+  <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
+    <value>Cargar imágenes de recibo</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
+    <value>Ingrese la cantidad de dinero (en {0}) que está reclamando.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Documents" xml:space="preserve">
+    <value>Cargue una o más imágenes de recibos que respalden el reclamo de gastos.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>Seleccione una opción como se indica.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
+    <value>Por favor describa lo que fue esta compra.</value>
+  </data>
+  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
+    <value>Cuenta (OCR)</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
+    <value>Cantidad</value>
+    <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
+    <value>Cuenta (OCR)</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
+    <value>Claro / Cuenta</value>
+    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
+    <value>Banco</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
+    <value>Fecha de vencimiento</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
+    <value>Pagado</value>
+    <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
+    <value>Destinatario</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referencia</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
+    <value>Referencia (OCR)</value>
+  </data>
+  <data name="PayOutMoney_Header" xml:space="preserve">
+    <value>Costos listos para el pago</value>
+  </data>
+  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
+    <value>Costos de pago (OCR para aplicaciones móviles)</value>
+  </data>
+  <data name="PayOutMoney_Info" xml:space="preserve">
+    <value>Estas son las diversas formas de costos para la organización que han superado todos los obstáculos para el pago. Están listos para ser pagados al destinatario. Aquí es donde los marca para que se paguen (probablemente mientras abre su banco en otra ventana).</value>
+  </data>
+  <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
+    <value>Mostrar OCR para aplicaciones móviles</value>
+  </data>
+  <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
+    <value>Mostrar pagos abiertos ({0:N0})</value>
+    <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>Pagar dinero</value>
+  </data>
+  <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
+    <value>No se puede deshacer el pago #{0}: ya se ha liquidado o liquidado.</value>
+  </data>
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>Se creó el pago #{0:N0} a{1}.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>El pago #{0:N0} se deshizo y todo se restauró.</value>
+  </data>
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>Impuesto añadido</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Impuesto deducido</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Cheque bruto</value>
+  </data>
+  <data name="PayrollTaxForms_Info" xml:space="preserve">
+    <value>Vea las hojas de referencia (formularios de impuestos completados) para la nómina de la organización, que le resultará fácil copiar en sus formularios de impuestos reales, o incluso imprimir tal cual. El rendimiento y los formularios reales varían según el país y algunas veces dependen del código y los complementos de terceros.</value>
+  </data>
+  <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
+    <value>Formularios de impuesto de nómina</value>
+  </data>
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>Formularios de impuestos mensuales para {0} para</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Costo total</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Total del impuesto</value>
+  </data>
+  <data name="RequestCashAdvance_Amount" xml:space="preserve">
+    <value>Cantidad de avance ( en {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_BankAccount" xml:space="preserve">
+    <value>Número de cuenta</value>
+  </data>
+  <data name="RequestCashAdvance_BankClearing" xml:space="preserve">
+    <value>Número de compensación</value>
+  </data>
+  <data name="RequestCashAdvance_BankName" xml:space="preserve">
+    <value>Nombre del banco</value>
+  </data>
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>Presupuesto</value>
+  </data>
+  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
+    <value>Sus detalles bancarios</value>
+  </data>
+  <data name="RequestCashAdvance_Info" xml:space="preserve">
+    <value>Si está a punto de hacer una compra en nombre de la organización, pero necesita el dinero por adelantado en lugar de reclamarlo nuevamente, puede solicitar un adelanto en efectivo para un propósito específico.</value>
+  </data>
+  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
+    <value>Solicitar adelanto de efectivo</value>
+  </data>
+  <data name="RequestCashAdvance_Purpose" xml:space="preserve">
+    <value>Propósito</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartOne" xml:space="preserve">
+    <value>Se ha solicitado un anticipo de efectivo para &lt;strong&gt;{0}&lt;/strong&gt;. La cantidad solicitada es {2}{3:N2}. Tenga en cuenta que este es un &lt;strong&gt; préstamo &lt;/strong&gt; de la organización hasta que se hayan presentado los recibos.</value>
+    <comment>{0} is the person receiving the advance, {1} is the entered description. {2} is the currency (in caps) and {3:N2} is the amount, with two decimals, displayed in culture.</comment>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Esto debe ser atestiguado por el propietario del presupuesto y luego procederá al pago.</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Como este es su propio presupuesto, esto ha sido atestiguado automáticamente y ha procedido al pago.</value>
+    <comment>This is displayed if either the person creating the cash advance OR the person receiving it is the budget owner.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Amount" xml:space="preserve">
+    <value>Ingrese la cantidad de dinero (en {0}) que desea avanzar.</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
+    <value>Por favor ingrese su número de cuenta bancaria.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankClearing" xml:space="preserve">
+    <value>Por favor ingrese el número de compensación de su banco.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
+    <value>Por favor ingrese el nombre de su banco.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
+    <value>Por favor seleccione un presupuesto para cargar.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
+    <value>Indique el propósito del adelanto de efectivo.</value>
+  </data>
+  <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
+    <value>Recibos esperando su validación</value>
+  </data>
+  <data name="ValidateReceipts_Info" xml:space="preserve">
+    <value>Aquí es donde inspecciona y confirma la validez de los recibos que acompañan a los reclamos de gastos. Verifique que el monto sea correcto y que el recibo parezca ser para lo que se dice que es.</value>
+  </data>
+  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
+    <value>Validar recibos</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
+    <value>Los recibos de la Reclamación de gastos # {0:N0} para {1}{2:N2} han sido validados por DE. El reclamo de gastos no procederá al pago a menos que se vuelva a validar.</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
+    <value>Los recibos de la Reclamación de gastos #{0:N0} para {1}{2:N2} han sido validados.</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Crear</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Ingrese la cantidad de dinero (en {0}) que solicita la factura.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Por favor, especifique un presupuesto para cargar.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Cargue uno o más documentos de la factura original.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Por favor seleccione una opción.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Por favor describa lo que fue esta compra.</value>
+  </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Solicitud</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Solicitud</value>
+  </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>IVA parte del total ({0})</value>
+  </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>IVA parte del total ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Listado de facturas entrantes</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Remitente de la factura</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Aquí se enumeran las últimas 100 facturas, ordenadas por fecha de vencimiento y las más recientes primero.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Facturas entrantes</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Crear factura saliente</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Crear</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Crear factura saliente</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Factura saliente #{0:N0} archivado.</value>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Fondos recibidos ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Enviado</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Listado de facturas salientes</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Enumera las 100 facturas de salida más recientes, ordenadas por cuando se crearon, primero las más recientes.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Cantidad total</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Fecha de vencimiento</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Lista de facturas salientes</value>
+  </data>
 </root>

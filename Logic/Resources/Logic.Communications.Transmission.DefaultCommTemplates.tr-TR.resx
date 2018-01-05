@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
+  <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
+    <value>[OrganizationName]'e Hoşgeldiniz!
+
+[ActingPerson] tarafından bir [Regularship] verilmiş. [MembershipExpiry] tarihinde sona erecek, bu sebeple organizasyonla tanışmaya daha çok zaman var.
+
+Etkin hale getirme hakkında daha fazla bilgi için [OrganizationName]'deki insanlarla zaten temas kurmuş olmalısın. Eğer olmadıysan yakın zamanda yazmanı bekliyoruz.
+
+Bir sunucu taraflı sistem olarak kullanılan Swarmops'ta ilk ve rastgele oluşturulmuş parolanız şu şekildedir:
+[RandomPassword]
+
+(Maalesef, henüz değiştiremezsiniz. Bu işlevselliğin 2015 başında olması bekleniyor. Swarmops hala ilk alfa aşamasında; bu yeni yazılımın önündeki dezavantajlardan biridir: çevrimiçi hale geldikçe işler biraz acemileşebilir.)
+
+Gemiye Hoşgeldiniz!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [OrganizationName]'e Hoşgeldiniz!</value>
+  </data>
 </root>

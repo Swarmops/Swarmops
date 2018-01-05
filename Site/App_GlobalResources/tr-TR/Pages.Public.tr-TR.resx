@@ -117,50 +117,129 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Signup_ActivationActive" xml:space="preserve">
+    <value>Eğer daha fazla etkileşime girmek isterseniz, herhangi birine katılma, kendinizi göterme, veya görev almaya hiçbir şekilde yükümlülüğünüz olmaksızın kendinizi eylem çağrılarına uygun hale getirebilirsiniz.</value>
+  </data>
+  
+  <data name="Signup_ActivationLevel" xml:space="preserve">
+    <value>Ne kadar etkileşim kurmak istiyorsunuz?</value>
+  </data>
+  <data name="Signup_ActivationLevelText" xml:space="preserve">
+    <value>{0}'da meşgul olabileceğiniz bir sürü seviye vardır. Aşağıda hedeflenen seviyenizi seçin (tabi ki sonra değiştirebilirsiniz):</value>
+    <comment>{0} is the org name.</comment>
+  </data>
+  <data name="Signup_ActivationPassive" xml:space="preserve">
+    <value>Bu varsayılan düzeydir ve organizasyonda taban seviye {0} olarak normal bir yer alacaksınız.</value>
+    <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
+  </data>
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>Düzenli {0}</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationVolunteer" xml:space="preserve">
+    <value>Eğer organizasyonun bir bölümü için resmi yükümlülük almak için gönüllü olmak, yardıma en çok ihtiyaç olan yerde yardım etmek isterseniz tabii ki çok hoş karşılanacaktır. (Sonraki sayfada gönüllü olabileceğiniz pozisyon seçenekleriyle karşılaşacaksınız.)</value>
+  </data>
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>Gönüllü Memur</value>
+  </data>
+  
+  <data name="Signup_Error_MailExists" xml:space="preserve">
+    <value>Bu Swarmops sunucusuna zaten kayıtlısınız. Lütfen yeni bir hesap oluşturmak yerine giriş ekranından Parolayı Sıfırlama işlevini kullanın.</value>
+  </data>
+  <data name="Signup_Error_NeedPassword" xml:space="preserve">
+    <value>Lütfen bir parola seçin ve yeniden girin.</value>
+  </data>
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>İki parola kopyası uyuşmuyor.</value>
+  </data>
+  <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
+    <value>Lütfen istediğiniz aktivite seviyesini seçiniz.</value>
+  </data>
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>Lütfen en az bir konum seçin.</value>
+  </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>Ücretler ve Maliyetler</value>
+  </data>
+  <data name="Signup_FeeRenewalText" xml:space="preserve">
+    <value>{0}{1}'e kayıt olmak için hiç bir ücret bulunumamaktadır. Ancak, {1}'inizi {2}'de sona erdiğinde yenilemek için bir ücret olacaktır. Şuan için bu ücret {3}{4:N2}dir ve yenilemeniz için hiçbir yükümlülüğünüz bulunmaz.</value>
+    <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
+  </data>
   
   
   
   
+  <data name="Signup_Password1" xml:space="preserve">
+    <value>Bir parola seç</value>
+  </data>
+  <data name="Signup_Password2" xml:space="preserve">
+    <value>Parolayı tekrarla</value>
+  </data>
+  <data name="Signup_SigningUp" xml:space="preserve">
+    <value>{0} için kayıt ol</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_Step1Header" xml:space="preserve">
+    <value>Hoşgeldiniz!</value>
+  </data>
+  <data name="Signup_Step1Text" xml:space="preserve">
+    <value>Kısa bir giriş</value>
+  </data>
+  <data name="Signup_Step2Header" xml:space="preserve">
+    <value>Hakkınızda</value>
+  </data>
+  <data name="Signup_Step2Text" xml:space="preserve">
+    <value>Bize biraz kendinizden bahseder misiniz?</value>
+  </data>
+  <data name="Signup_Step3Header" xml:space="preserve">
+    <value>Oturum oluştur</value>
+  </data>
+  <data name="Signup_Step3Text" xml:space="preserve">
+    <value>Bir parola seç</value>
+  </data>
+  <data name="Signup_Step4Header" xml:space="preserve">
+    <value>Faaliyet 1</value>
+  </data>
+  
+  <data name="Signup_Step5Header" xml:space="preserve">
+    <value>Faaliyet 2</value>
+  </data>
+  
+  <data name="Signup_Step6Header" xml:space="preserve">
+    <value>Tamamlandı</value>
+  </data>
+  <data name="Signup_Step6Header_Payment" xml:space="preserve">
+    <value>Ödeme</value>
+  </data>
+  <data name="Signup_Step6Text" xml:space="preserve">
+    <value>Hepsi tamam. Giriş yapalım!</value>
+  </data>
+  <data name="Signup_Step6Text_Payment" xml:space="preserve">
+    <value>{0} ücretini ödeyelim ve tamamlayalım!</value>
+    <comment>The {0} is Membership, Ambassadorship, etc. The Regularship label for this organization.</comment>
+  </data>
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>Kayıt olma tamamlandı.</value>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
+    <value>Pozisyon</value>
+  </data>
+  <data name="Signup_VolunteerText" xml:space="preserve">
+    <value>Gönüllü olmak/başvurmak istediğiniz pozisyonu kontrol edin. Birkaçını kontrol edebilirsiniz.</value>
+  </data>
+  <data name="Signup_Welcome" xml:space="preserve">
+    <value>{0}'ya hoşgeldiniz</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_YourLogon" xml:space="preserve">
+    <value>Oturumunuz</value>
+  </data>
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>Lütfen Swarmops'a (bu sistem) giriş yapmak için bir parola seçin. Daha sonra kolaylık sağlamak için bunu bir Twitter, Facebook veya BitID girişiyle değiştirebileceksiniz.</value>
+  </data>
+  <data name="Signup_YourName" xml:space="preserve">
+    <value>Adınız</value>
+  </data>
 </root>

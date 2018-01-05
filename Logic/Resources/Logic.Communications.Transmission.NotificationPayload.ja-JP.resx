@@ -117,41 +117,122 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>あなたのビットコイン払い出しアドレスへの配当を試みると、アドレス（[BitcoinAddress]）は、その配当エンジンによって無効として拒否されました。 したがって、あなたのプロフィールから削除されました。
+
+[InstallationName] に[ExternalUrl] でログオンし、新しいビットコイン支払いアドレスを設定してください。</value>
+  </data>
+  
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>ビットコインの支払いアドレスを[BitcoinOldAddress] から[BitcoinAddress] に変更しました。 セキュリティ上の予防措置として、すべての支払いは次の48時間にわたって検疫されます。
+
+支払い金額を変更せずにセキュリティ違反があった場合は、すぐにこのリンクをクリックしてアカウントをロックダウンしてください：[LockdownLink]
+
+そのリンクをクリックすると、確認要求なしにアカウントがすぐにロックダウンされます。 ただし、支払い代金の変更をリクエストした場合は、すべて正常であり、お客様の操作は不要です。</value>
+  </data>
+  
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>[OrganizationName] で支払いを待っている資金がありますが、ビットコインの支払いアドレスは設定されていません。
+
+[ExternalUrl] の[InstallationName] にログオンしてリンクをたどって、支払い先住所を設定してください。これはToDo項目のリストにあります。</value>
+  </data>
+  
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>ビットコイン支払いアドレスを設定しました：[BitcoinAddress]。 保安上の予防策として、すべての払い出しは次の48時間隔離され、その後、新しい住所に払い戻されます。
+
+この支払いアドレスを設定していない場合は、セキュリティを強化するために上記の住所を2回確認することをおすすめします）、すぐに[OrganizationName] にご連絡ください。</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>ビットコイン払い出しアドレスは[懸念される人名] によって設定されました。 検疫期間が経過した48時間後に支払いが開始されます。</value>
+  </data>
   
   
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>[OrganizationName] のBitcoin Hotwalletは、[CurrencyCode] [AmountFloat]（[BitcoinAmountFloat] マイクロビットコインまたは「ビット」）を合計した[PaymentCount] 自動支払いを行ったばかりです。...</value>
+  </data>
   
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[BitcoinAmountFloat] マイクロビットコイン（ "ビット"）は、次の場合、[OrganizationName] によってビットコインアドレス（[BitcoinAddress]）に転送されました。
+
+[EmbeddedPreformattedText]
+
+財布にはすでに取引が表示されていて、約1時間以内に消費可能になるはずです（6回の通常の確認）。</value>
+  </data>
   
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>ホットウォレットから自動支払いをしようとすると、署名に使用された秘密鍵が、必要な資金を集めるために使用された公開鍵と一致しません。 これは深刻な状態です。</value>
+  </data>
   
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmopsは[CurrencyCode] [AmountNeededFloat] の支払いをしようとしていますが、[CurrencyCode] [AmountWalletFloat] のみがBitcoin Hotwalletで利用可能です。 スワンオプスは現時点でそれ以上の支払いはできません。
+
+ホットウォレットを少なくとも必要な額まで即時に上げてください - 金融のホットワレット操作を再開するには、追加の[AmountMissingMicrocoinsFloat] マイクロビットコイン（「ビット」）が必要です。
+
+スワンポップは引き続き努力し続け、成功していない限り、これらの通知を送信し続けます。</value>
+  </data>
   
+  <data name="CashAdvance_Attested_Body" xml:space="preserve">
+    <value>[要請目的] に関する[通貨コード] [予算金額フロート] の[組織名] で要求された現金前貸しは、予算所有者によって逮捕されました。 これであなたへの支払いが始まります。</value>
+  </data>
   
+  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
+    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] を使用して要求された現金前貸しは、予算所有者によってDE証明されています。 これは、通常、あなたの要求に何らかの問題があることを示します。
+
+予算の所有者からのより多くのコミュニケーションが問題に従うことを期待してください。</value>
+  </data>
   
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] での現金前貸しが拒否されました。 以下のテキストは、それを否定する理由として与えられました：
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
   
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] での現金進出のリクエストは、組織の会計士によって支払われたものとしてマークされています。
+
+これは、アカウントの金額をすぐに確認することを意味します。</value>
+  </data>
   
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[ConcernedPersonName]は[RequestPurpose]の目的で[CurrencyCode] [BudgetAmountFloat]の現金前払いを要求しました。 このお金はあなたの予算の一部です、[BudgetName]。
+
+証明するには、[ExternalUrl] Financial / AttestCostsの[InstallationName]にログオンしてください。</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
   
+  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] を使用した経費請求は、予算所有者によって証明されています。 領収書が有効であることが確認されたら、あなたに払い戻されます。</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
   
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName]が[CurrencyCode] [BudgetAmountFloat]の金額に対する[BudgetName]の予算に対する経費請求を作成しました。 クレームは[RequestPurpose]に関するものです。 この費用請求を証明する必要があります。
+
+証明するには、[ExternalUrl] Financial / AttestCostsの[InstallationName]にログオンしてください。</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
   
+  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
+    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] を使用した経費請求は、予算所有者によってDE証明されました。 これは、通常、あなたの経費請求に関する何らかの問題を示しています。
+
+予算の所有者からのより多くのコミュニケーションが問題に従うことを期待してください。</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
   
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] に対する経費請求が拒否されました。 以下のテキストは、それを否定する理由として与えられました：
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
+    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] での経費請求の領収書は、組織の財務記録保持者によってDE検証されています。 これは、通常、経費請求の文書化にある種の問題を示しています。
+
+この問題についてさらにコミュニケーションをとることを期待してください。 短時間で記録保持者に連絡がない場合は、フォローアップしてください。</value>
+  </data>
   
   
   
