@@ -81,25 +81,16 @@ No, there isn't a "license". This code is completely in the public domain, with 
 That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.
 
 
-
-
-Beta-3 will be released on January 5, 2018, with string freeze on January 2. It did not reach full Shapeshift integration but covered almost all Bitcoin Cash ground.
-
-
-
 Beta-4 features progress
 ------------------------
 
-Beta-4 will be released on February 5, 2018, with string freeze on February 2. Its tentative focus will be Shapeshift and Bitwala integration and possibly an open API exposure.
-
+Beta-4 will be released on February 5, with string freeze on February 2. Its tentative focus will be Shapeshift and Bitwala integration and possibly an open API exposure.
 
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
 - [ ] Write a Pay Invoice page for Bitcoin Cash
 - [ ] Enable payment identifiers, with currency
 - [ ] Tie payment identifiers to people and suppliers
-- [ ] String Freeze (January 2, 2018)
-- [ ] Release (January 5, 2018)
 
 
 Overall Beta features checklist
@@ -132,7 +123,7 @@ There will also be many other small improvements added along with these features
 - [X] Basic search
 - [x] Account edit spacing
 - [ ] Alert to load hotwallet from cold
-- [ ] Bitcoin Echo test page (probably needs to be Bitcoin Cash b/c fees)
+- [x] Bitcoin Echo test page (probably needs to be Bitcoin Cash b/c fees)
 - [ ] Icons for Validation page
 - [x] Favicon New
 - [x] Fix Inspect Ledger header (looks bad)
