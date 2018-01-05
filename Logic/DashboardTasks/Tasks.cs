@@ -121,12 +121,14 @@ namespace Swarmops.Logic.DashboardTasks
 
         private void AddReceiptValidation (Person person, Organization organization)
         {
-            TaskGroup group = new TaskGroup (TaskGroupType.ValidateExpenseClaims);
 
             throw new NotImplementedException(); // not moved to v5 framework (undecided whether it will happen)
 
             // TODO: Loop over roles, get all open claims for roles where person can attest
             /*
+
+            TaskGroup group = new TaskGroup (TaskGroupType.ValidateExpenseClaims);
+
             if (
                 !person.GetAuthority()
                     .HasPermission (Permission.CanDoEconomyTransactions, organization.Identity, Geography.RootIdentity,
@@ -181,13 +183,14 @@ namespace Swarmops.Logic.DashboardTasks
 
         private void AddPayouts (Person person, Organization organization)
         {
-            TaskGroup group = new TaskGroup (TaskGroupType.Payout);
-            TaskGroup groupUrgent = new TaskGroup (TaskGroupType.PayoutUrgently);
-            TaskGroup groupOverdue = new TaskGroup (TaskGroupType.PayoutOverdue);
-
             throw new NotImplementedException(); // not moved to v5 framework (undecided whether it will happen)
 
             /*
+
+            TaskGroup group = new TaskGroup (TaskGroupType.Payout);
+            TaskGroup groupUrgent = new TaskGroup (TaskGroupType.PayoutUrgently);
+            TaskGroup groupOverdue = new TaskGroup (TaskGroupType.PayoutOverdue);
+            
             if (
                 !person.GetAuthority()
                     .HasPermission (Permission.CanPayOutMoney, organization.Identity, 1,

@@ -50,7 +50,7 @@ namespace Swarmops.Logic.Swarm
 
                 try
                 {
-                    int codeId = SwarmDb.GetDatabaseForWriting().CreatePaymentCode (randomCode, phoneNumber, personId);
+                    SwarmDb.GetDatabaseForWriting().CreatePaymentCode (randomCode, phoneNumber, personId);
                     success = true;
                     return FromBasic (SwarmDb.GetDatabaseForReading().GetPaymentCode (randomCode));
                 }

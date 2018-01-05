@@ -695,18 +695,9 @@ namespace Swarmops.Logic.Financial
                     salary.TaxPaid = true;
                 }
 
-                string referenceString = string.Empty;
-                Organization organization = Organization.FromIdentity (organizationId);
 
-                if (identityList.Count == 1)
-                {
-                    referenceString = "Tax for salary #" + identityList[0];
-                }
-                else
-                {
-                    identityList.Sort();
-                    referenceString = "Tax for salaries " + Formatting.GenerateRangeString (identityList);
-                }
+                Organization organization = Organization.FromIdentity (organizationId);
+                identityList.Sort();
 
                 payoutId = SwarmDb.GetDatabaseForWriting()
                     .CreatePayout (organization.Identity, "The Tax Man", organization.Parameters.TaxAccount,

@@ -22,7 +22,6 @@ namespace Swarmops.Logic.Support.BackendServices
 
         public override void Run()
         {
-            Document document = Document.FromIdentity(this.DocumentId);
             HasWorkerThread = true;
             WorkerThread = new Thread(LongRun);
             WorkerThread.Start(this);

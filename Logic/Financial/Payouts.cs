@@ -428,9 +428,10 @@ namespace Swarmops.Logic.Financial
 
                         try
                         {
-                            FinancialTransaction tiedTransaction = FinancialTransaction.FromDependency (payout);
+                            // If this succeeds, there is a transaction already
 
-                            // Console.WriteLine(" - - - but is tied to transaction #{0} already", tiedTransaction.Identity);
+                            FinancialTransaction.FromDependency(payout);
+
                             break;
                         }
                         catch (Exception)
@@ -465,6 +466,8 @@ namespace Swarmops.Logic.Financial
 
             throw new NotImplementedException("Waiting for rewrite for Bitcoin Cash");
 
+            // TODO
+            
             DateTime utcNow = DateTime.UtcNow;
 
             foreach (Organization organization in Organizations.GetAll())

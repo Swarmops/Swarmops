@@ -432,7 +432,6 @@
     <Compile Include="Support\TemporaryIdentity.cs" />
     <Compile Include="Support\UrlTranslations.cs" />
     <Compile Include="Swarm\Activists.cs" />
-    <Compile Include="Swarm\AuditedPerson.cs" />
     <Compile Include="Swarm\ChurnData.cs" />
     <Compile Include="Swarm\ChurnDataPoint.cs" />
     <Compile Include="Swarm\DashboardTodo.cs" />
