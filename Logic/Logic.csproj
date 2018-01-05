@@ -277,7 +277,6 @@
     <Compile Include="Communications\PaperLetters.cs" />
     <Compile Include="Communications\PhoneMessageReceiver.cs" />
     <Compile Include="Communications\TypedMailTemplate.cs" />
-    <Compile Include="DataObjects\GeographyWithPeopleDataObject.cs" />
     <Compile Include="DataObjects\OrganizationDataObject.cs" />
     <Compile Include="Governance\Ballot.cs" />
     <Compile Include="Governance\Ballots.cs" />

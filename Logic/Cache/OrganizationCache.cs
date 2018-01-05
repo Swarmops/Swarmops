@@ -178,7 +178,6 @@ namespace Swarmops.Logic.Cache
             List<BasicOrganization> result = new List<BasicOrganization>();
 
             //Prime the cache
-            BasicOrganization start = GetOrganization (startOrganizationId);
 
             List<BasicOrganization> thisList = organizations[startOrganizationId];
 
@@ -219,7 +218,6 @@ namespace Swarmops.Logic.Cache
             List<BasicOrganization> result = new List<BasicOrganization>();
             lock (loadCacheLock)
             {
-                BasicOrganization parent = GetOrganization (parentOrgId);
                 //TODO: It is possible to miss a child here if that child was added after the last cache load.
 
                 Dictionary<int, List<BasicOrganization>> hashedOrganizations = GetHashedOrganizations();
