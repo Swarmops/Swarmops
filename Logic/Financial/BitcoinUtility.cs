@@ -954,8 +954,8 @@ namespace Swarmops.Logic.Financial
             // Add outputs and prepare notifications
 
             Int64 satoshisUsed = 0;
-            Dictionary<int, List<string>> notificationSpecLookup = new Dictionary<int, List<string>>();
-            Dictionary<int, List<Int64>> notificationAmountLookup = new Dictionary<int, List<Int64>>();
+            //Dictionary<int, List<string>> notificationSpecLookup = new Dictionary<int, List<string>>();
+            //Dictionary<int, List<Int64>> notificationAmountLookup = new Dictionary<int, List<Int64>>();
             Payout masterPayoutPrototype = Payout.Empty;
             HotBitcoinAddress changeAddress = HotBitcoinAddress.OrganizationWalletZero(organization, BitcoinChain.Core);
 

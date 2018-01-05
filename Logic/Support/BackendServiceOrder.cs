@@ -36,7 +36,7 @@ namespace Swarmops.Logic.Support
             // Instantiate the class
 
             string[] components = BackendServiceClassName.Split(',');
-            string assemblyName = components[0];
+            // string assemblyName = components[0];  // TODO: For plugin use later
             string className = components[1];
 
             Assembly assembly = Assembly.GetExecutingAssembly(); // TODO: Make this actually select the named assembly

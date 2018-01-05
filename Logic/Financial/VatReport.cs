@@ -64,8 +64,6 @@ namespace Swarmops.Logic.Financial
         public static VatReport Create(Organization organization, int year, int startMonth, int monthCount)
         {
             VatReport newReport = CreateDbRecord(organization, year, startMonth, monthCount);
-            VatReportItems testItems = newReport.Items;
-            DateTime startDate = new DateTime(year, startMonth, 1).AddYears(-1); // start a year before report starts
             DateTime endDate = new DateTime(year, startMonth, 1).AddMonths(monthCount);
 
             FinancialAccount vatInbound = organization.FinancialAccounts.AssetsVatInboundUnreported;
@@ -203,8 +201,7 @@ namespace Swarmops.Logic.Financial
                 throw new InvalidOperationException("Cannot add items once the report is released");
             }
 
-            VatReportItem newItem = VatReportItem.Create(this, transaction, turnoverCents, vatInboundCents,
-                vatOutboundCents);
+            VatReportItem.Create(this, transaction, turnoverCents, vatInboundCents, vatOutboundCents);
         }
 
         public void Release()
