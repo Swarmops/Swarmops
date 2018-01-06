@@ -95,7 +95,7 @@
 
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <div class="easyui-tabs" id="divTabs">
+    <div class="easyui-tabs" id="divTabs" data-options="tabWidth:70,tabHeight:70">
         <div title="<img src='/Images/Icons/iconshock-invoice-256px.png' width='64' height='64'>">
             <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
             <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
