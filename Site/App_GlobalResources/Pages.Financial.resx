@@ -678,7 +678,7 @@
     <comment>{0} is the organization name.</comment>
   </data>
   <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
-    <value>Based on the organization's settings, the "Default CSV" profile in Expensify should be good to go.</value>
+    <value>Based on the organization's settings, the "Default CSV" export profile in Expensify should be sufficient for Swarmops.</value>
   </data>
   <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
     <value>Upload Expensify Report For Reimbursement</value>

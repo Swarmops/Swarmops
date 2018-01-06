@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Threading;
 using System.Web;
+using System.Web.Services;
 using Swarmops.Interface.Support;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
+using Swarmops.Site.Pages.Ledgers;
 
 namespace Swarmops.Frontend.Pages.v5.Financial
 {
@@ -145,7 +151,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelExpensifyCsv.Text = Resources.Pages.Financial.FileExpenseClaim_Expensify_CsvUploadDescription;
             this.LabelExpensifyInstructions1.Text =
                 Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsBasic;
-            this.ButtonExpensifyUpload.Text = Resources.Global.Global_Upload;
 
             if (CurrentOrganization.VatEnabled)
             {
@@ -158,6 +163,73 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsNothingAdvanced;
             }
         }
+
+
+        [WebMethod(true)]
+        public static void InitializeExpensifyProcessing(string guid)
+        {
+            // Start an async thread that does all the work, then return
+
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            Thread initThread = new Thread(ProcessExpensifyUploadThread);
+
+            ProcessThreadArguments args = new ProcessThreadArguments
+            {
+                Guid = guid,
+                Organization = authData.CurrentOrganization,
+                CurrentUser = authData.CurrentUser
+            };
+
+            initThread.Start(args);
+        }
+
+
+        private class ProcessThreadArguments
+        {
+            public string Guid { get; set; }
+            public Organization Organization { get; set; }
+            public Person CurrentUser { get; set; }
+        }
+
+        public class ReportedImportResults
+        {
+            public string Category { get; set; }
+            public string Html { get; set; }
+        }
+
+
+        private static void ProcessExpensifyUploadThread(object args)
+        {
+            string guid = ((ProcessThreadArguments) args).Guid;
+            Person currentUser = ((ProcessThreadArguments) args).CurrentUser;
+            Organization organization = ((ProcessThreadArguments) args).Organization;
+
+            Documents documents = Documents.RecentFromDescription(guid);
+            GuidCache.Set(guid + "-Progress", 1); // to make sure results aren't repeated from last file
+            GuidCache.Set(guid + "-Result", UploadBankFiles.ImportResultsCategory.Bad);
+                // default - this is what happens if exception
+
+            if (documents.Count != 1)
+            {
+                return; // abort
+            }
+
+            Document uploadedDoc = documents[0];
+        }
+
+
+        private enum ExpensifyColumns
+        {
+            Unknown = 0,
+            AmountCents,
+            Description,
+            CategoryCustom,
+            CategoryStandard,
+            VatCents,
+            ReceiptUrl
+        }
+
 
 
         protected void ButtonRequest_Click (object sender, EventArgs e)

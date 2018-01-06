@@ -85,6 +85,26 @@
         }
 
         var vatEnable = <%= this.CurrentOrganization.VatEnabled? "true" : "false" %>;
+        var expensifyProcessingHalfway = false;
+
+        function onExpensifyUpload() {
+            $('#divExpensifyProcessing').fadeIn();
+            $('#divExpensifyProgress').progressbar({ value: 0, max: 100 });
+            $('#divExpensifyProgressFake').progressbar({ value: 0, max: 100 });
+            $('#divExpensifyProgressFake').progressbar({ value: 100 }); // this guy is swapped in on completion
+            $('#divExpensifyResults').slideUp();
+            expensifyProcessingHalfway = false;
+
+            $.ajax({
+                type: "POST",
+                url: "/Pages/v5/Ledgers/UploadBankFiles.aspx/InitializeProcessing",
+                data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (msg) {
+	                setTimeout('updateProgressProcessing();', 1000);
+	            }
+	        });        }
 
     </script>
     
@@ -136,24 +156,34 @@
             <div style="clear:both"></div>
         </div>
         <div title="<img src='/Images/Icons/expensify-icon-official.png' width='40' height='40' style='padding-top:12px'>">
-            <h2><asp:Label runat="server" ID="LabelExpensifyUploadHeader" /></h2>
+            
+            <div id="divExpensifyResults" style="display:none; margin-bottom:10px">
+                <h2><asp:Label ID="LabelProcessingComplete" runat="server" /></h2>
+                <div id="divExpensifyProgressFake" style="width:100%"></div>
+
+                <div id="divExpensifyResultsGood" style="display:none"><div id="DivUploadResultsGoodText"></div></div>
+
+                <div id="divExpensifyResultsBad" style="display:none">
+                    <div style="float:left;margin-right:10px"><img src="/Images/Icons/iconshock-cross-96px.png" /></div><div id="DivUploadResultsBadText"></div>
+                </div>
+             </div>
+
             
             <div id="divExpensifyInstructions">
+                <h2><asp:Label runat="server" ID="LabelExpensifyUploadHeader" /></h2>
+
                 <p><asp:Label runat="server" ID="LabelExpensifyInstructions1"/></p>
                 <p><asp:Label runat="server" ID="LabelExpensifyInstructions2"/></p>
             </div>
 
             <div id="DivUploadExpensify">
-                <div id="divExpensifyUploadAnotherHeader"><h2><asp:Label runat="server" ID="LabelUploadAnotherFileHeader" /></h2></div>
-                <div id="DivPrepData">
+                <div id="divExpensifyUploadAnotherHeader" style="display:none"><h2><asp:Label runat="server" ID="LabelUploadAnotherFileHeader" /></h2></div>
         
-                    <div class="entryFields">
-                        <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" />
-                        <asp:Button ID="ButtonExpensifyUpload" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="alert('click'); return false;" Text="Request"/>
-                    </div>
-                    <div class="entryLabels">
-                        <asp:Label runat="server" ID="LabelExpensifyCsv" />
-                    </div>
+                <div class="entryFields">
+                    <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" ClientUploadCompleteCallback="uploadCompletedCallback" />
+                </div>
+                <div class="entryLabels">
+                    <asp:Label runat="server" ID="LabelExpensifyCsv" />
                 </div>
     
                 <br clear="all"/>

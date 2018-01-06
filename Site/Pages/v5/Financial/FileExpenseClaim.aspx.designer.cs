@@ -220,6 +220,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelBankAccount;
         
         /// <summary>
+        /// LabelProcessingComplete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelProcessingComplete;
+        
+        /// <summary>
         /// LabelExpensifyUploadHeader control.
         /// </summary>
         /// <remarks>
@@ -263,15 +272,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Swarmops.Controls.Base.FileUpload UploadExpensify;
-        
-        /// <summary>
-        /// ButtonExpensifyUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonExpensifyUpload;
         
         /// <summary>
         /// LabelExpensifyCsv control.

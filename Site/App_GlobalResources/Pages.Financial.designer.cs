@@ -898,7 +898,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Based on the organization&apos;s settings, the &quot;Default CSV&quot; profile in Expensify should be good to go..
+        ///   Looks up a localized string similar to Based on the organization&apos;s settings, the &quot;Default CSV&quot; export profile in Expensify should be sufficient for Swarmops..
         /// </summary>
         internal static string FileExpenseClaim_Expensify_InstructionsNothingAdvanced {
             get {
