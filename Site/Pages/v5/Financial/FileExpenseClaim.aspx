@@ -148,9 +148,9 @@
                 <div id="DivPrepData">
         
                     <div class="entryFields">
-                        <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
+                        <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" />
                         <asp:Button ID="ButtonExpensifyUpload" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="alert('click'); return false;" Text="Request"/>
-        
+                    </div>
                     <div class="entryLabels">
                         <asp:Label runat="server" ID="LabelExpensifyCsv" />
                     </div>

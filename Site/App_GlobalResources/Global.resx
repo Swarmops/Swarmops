@@ -957,4 +957,7 @@
     <value>(cancelled, voided, zeroed)</value>
     <comment>Used when something is determined invalid</comment>
   </data>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
 </root>

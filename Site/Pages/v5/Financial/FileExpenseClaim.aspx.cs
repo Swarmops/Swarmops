@@ -145,7 +145,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelExpensifyCsv.Text = Resources.Pages.Financial.FileExpenseClaim_Expensify_CsvUploadDescription;
             this.LabelExpensifyInstructions1.Text =
                 Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsBasic;
-            this.ButtonExpensifyUpload.Text = Resources.Global.Global_UploadFile;
+            this.ButtonExpensifyUpload.Text = Resources.Global.Global_Upload;
 
             if (CurrentOrganization.VatEnabled)
             {

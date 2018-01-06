@@ -1528,6 +1528,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upload.
+        /// </summary>
+        internal static string Global_Upload {
+            get {
+                return ResourceManager.GetString("Global_Upload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload File.
         /// </summary>
         internal static string Global_UploadFile {
