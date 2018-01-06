@@ -67,7 +67,7 @@ namespace Swarmops.Logic.Financial
 
             throw new NotEnoughFundsException("Insufficient funds", "Group argument", new Satoshis (satoshisRequired)); // Serving as a placeholder for now, also testing the notification
 
-            throw new NotImplementedException("This fundfinding path is not completed"); // TODO
+            // throw new NotImplementedException("This fundfinding path is not completed"); // TODO
         }
 
         public Int64 BalanceSatoshisTotal

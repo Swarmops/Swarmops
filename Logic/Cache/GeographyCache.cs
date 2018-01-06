@@ -80,7 +80,7 @@ namespace Swarmops.Logic.Cache
             lock (loadCacheLock)
             {
                 // Prime the cache
-                BasicGeography partent = GetGeography (parentGeographyId);
+                GetGeography (parentGeographyId);
 
                 //TODO: Possible to miss a child geography here if it was added since last cache reload.
 
@@ -100,7 +100,7 @@ namespace Swarmops.Logic.Cache
             lock (loadCacheLock)
             {
                 // Prime the cache
-                BasicGeography partent = GetGeography (parentGeographyId);
+                GetGeography (parentGeographyId);
 
                 return GetHashedGeographies()[parentGeographyId].Count - 1;
             }

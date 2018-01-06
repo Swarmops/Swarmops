@@ -178,6 +178,7 @@ namespace Swarmops.Logic.Cache
             List<BasicOrganization> result = new List<BasicOrganization>();
 
             //Prime the cache
+            GetOrganization(startOrganizationId);
 
             List<BasicOrganization> thisList = organizations[startOrganizationId];
 

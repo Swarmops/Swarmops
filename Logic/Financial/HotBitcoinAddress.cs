@@ -64,7 +64,7 @@ namespace Swarmops.Logic.Financial
 
             derivationPathString = derivationPathString.TrimStart();
             string bitcoinAddress = extPubKey.PubKey.GetAddress(Network.Main).ToString();    // TODO: CHANGE NETWORK.MAIN TO NEW LOOKUP
-            string bitcoinAddressFallback = extPubKey.PubKey.GetAddress(Network.Main).ToString(); // The fallback address would be the main address
+            // string bitcoinAddressFallback = extPubKey.PubKey.GetAddress(Network.Main).ToString(); // The fallback address would be the main address
 
             int hotBitcoinAddressId =
                 SwarmDb.GetDatabaseForWriting()
