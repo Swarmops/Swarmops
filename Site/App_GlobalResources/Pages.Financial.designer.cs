@@ -934,7 +934,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Upload Expensify Report.
+        ///   Looks up a localized string similar to Upload Expensify Report For Reimbursement.
         /// </summary>
         internal static string FileExpenseClaim_Title_Expensify {
             get {

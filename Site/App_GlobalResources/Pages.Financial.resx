@@ -668,6 +668,6 @@
     <value>List Outbound Invoices</value>
   </data>
   <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
-    <value>Upload Expensify Report</value>
+    <value>Upload Expensify Report For Reimbursement</value>
   </data>
 </root>

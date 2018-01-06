@@ -96,7 +96,7 @@
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div class="easyui-tabs" id="divTabs" data-options="tabWidth:70,tabHeight:70">
-        <div title="<img src='/Images/Icons/iconshock-invoice-256px.png' width='64' height='64'>">
+        <div title="<img src='/Images/Icons/iconshock-invoice-256px.png' width='56' height='56' style='padding-top:4px'>">
             <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
             <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
             <div class="entryFields">
@@ -135,7 +135,7 @@
             </div>
             <div style="clear:both"></div>
         </div>
-        <div title="<img src='/Images/Icons/expensify-icon-official.png' width='64' height='64'>">
+        <div title="<img src='/Images/Icons/expensify-icon-official.png' width='40' height='40' style='padding-top:12px'>">
             <h2><asp:Label runat="server" ID="LabelExpensifyUploadHeader" /></h2>
         </div>
     </div>
