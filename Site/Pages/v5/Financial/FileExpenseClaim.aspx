@@ -137,6 +137,33 @@
         </div>
         <div title="<img src='/Images/Icons/expensify-icon-official.png' width='40' height='40' style='padding-top:12px'>">
             <h2><asp:Label runat="server" ID="LabelExpensifyUploadHeader" /></h2>
+            
+            <div id="divExpensifyInstructions">
+                <p><asp:Label runat="server" ID="LabelExpensifyInstructions1"/></p>
+                <p><asp:Label runat="server" ID="LabelExpensifyInstructions2"/></p>
+            </div>
+
+            <div id="DivUploadExpensify">
+                <div id="divExpensifyUploadAnotherHeader"><h2><asp:Label runat="server" ID="LabelUploadAnotherFileHeader" /></h2></div>
+                <div id="DivPrepData">
+        
+                    <div class="entryFields">
+                        <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
+                        <asp:Button ID="ButtonExpensifyUpload" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="alert('click'); return false;" Text="Request"/>
+        
+                    <div class="entryLabels">
+                        <asp:Label runat="server" ID="LabelExpensifyCsv" />
+                    </div>
+                </div>
+    
+                <br clear="all"/>
+            </div>
+    
+            <div id="DivProcessing" style="display:none">
+                <h2><asp:Label runat="server" ID="LabelProcessing" /></h2>
+                <div id="DivProgressProcessing" style="width:100%"></div>
+            </div>
+
         </div>
     </div>
 </asp:Content>

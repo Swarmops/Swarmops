@@ -142,6 +142,21 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             /* Expensify tab */
 
             this.LabelExpensifyUploadHeader.Text = Resources.Pages.Financial.FileExpenseClaim_Title_Expensify;
+            this.LabelExpensifyCsv.Text = Resources.Pages.Financial.FileExpenseClaim_Expensify_CsvUploadDescription;
+            this.LabelExpensifyInstructions1.Text =
+                Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsBasic;
+            this.ButtonExpensifyUpload.Text = Resources.Global.Global_UploadFile;
+
+            if (CurrentOrganization.VatEnabled)
+            {
+                this.LabelExpensifyInstructions2.Text =
+                    String.Format(Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsNeedVat, CurrentOrganization.Name);
+            }
+            else
+            {
+                this.LabelExpensifyInstructions2.Text =
+                    Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsNothingAdvanced;
+            }
         }
 
 

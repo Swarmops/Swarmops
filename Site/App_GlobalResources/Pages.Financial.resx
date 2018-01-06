@@ -667,6 +667,19 @@
   <data name="ListOutboundInvoices_Title" xml:space="preserve">
     <value>List Outbound Invoices</value>
   </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Upload Expensify CSV</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>If you have many expense reports, you can gather them with Expensify and upload an Expensify CSV report here (which you obtain from at Expensify under Report, Export, as CSV). Swarmops will use Expensify to fetch all the individual receipts and log them as separate expenses for proper accounting.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>In order for this to work, since {0} reports VAT to the tax authorities, you'll need to modify the default Expensify CSV profile to include the VAT, which the default doesn't. Expensify's help pages has more on how to do this and if you're using Expensify on a team basis, your Expensify policy should already have a VAT-enabled CSV export profile.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Based on the organization's settings, the "Default CSV" profile in Expensify should be good to go.</value>
+  </data>
   <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
     <value>Upload Expensify Report For Reimbursement</value>
   </data>

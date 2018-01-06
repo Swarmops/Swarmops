@@ -871,6 +871,42 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upload Expensify CSV.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_CsvUploadDescription {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_CsvUploadDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you have many expense reports, you can gather them with Expensify and upload an Expensify CSV report here (which you obtain from at Expensify under Report, Export, as CSV). Swarmops will use Expensify to fetch all the individual receipts and log them as separate expenses for proper accounting..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_InstructionsBasic {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_InstructionsBasic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In order for this to work, since {0} reports VAT to the tax authorities, you&apos;ll need to modify the default Expensify CSV profile to include the VAT, which the default doesn&apos;t. Expensify&apos;s help pages has more on how to do this and if you&apos;re using Expensify on a team basis, your Expensify policy should already have a VAT-enabled CSV export profile..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_InstructionsNeedVat {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_InstructionsNeedVat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Based on the organization&apos;s settings, the &quot;Default CSV&quot; profile in Expensify should be good to go..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_InstructionsNothingAdvanced {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_InstructionsNothingAdvanced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Bank Details.
         /// </summary>
         internal static string FileExpenseClaim_HeaderBankDetails {
