@@ -667,4 +667,7 @@
   <data name="ListOutboundInvoices_Title" xml:space="preserve">
     <value>List Outbound Invoices</value>
   </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Upload Expensify Report</value>
+  </data>
 </root>

@@ -934,6 +934,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upload Expensify Report.
+        /// </summary>
+        internal static string FileExpenseClaim_Title_Expensify {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Title_Expensify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload Receipt Images.
         /// </summary>
         internal static string FileExpenseClaim_UploadRecieptImages {

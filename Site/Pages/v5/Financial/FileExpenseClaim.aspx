@@ -92,43 +92,50 @@
 
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
-    <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
-    <div class="entryFields">
-        <Swarmops5:Currency runat="server" ID="CurrencyAmount" />
-        <span class="enableVatField"><Swarmops5:Currency runat="server" ID="CurrencyVat" /></span>
-        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPurpose" /></div>
-        <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />
-        <asp:Repeater ID="RepeaterTagDrop" runat="server"><ItemTemplate><span id="SpanDropTags<%# Eval("TagSetId") %>"><select class="easyui-combotree" url="/Automation/Json-TransactionTagsTree.aspx?TagSetId=<%# Eval("TagSetId") %>" name="DropTags<%# Eval("TagSetId") %>" id="DropTags<%# Eval("TagSetId") %>" animate="true" style="width:300px"></select></span>&nbsp;<br/></ItemTemplate></asp:Repeater>
+    <div class="easyui-tabs">
+        <div title="<img src='/Images/Icons/iconshock-document-256px.png' width='64' height='64'>">
+            <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
+            <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
+            <div class="entryFields">
+                <Swarmops5:Currency runat="server" ID="CurrencyAmount" />
+                <span class="enableVatField"><Swarmops5:Currency runat="server" ID="CurrencyVat" /></span>
+                <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPurpose" /></div>
+                <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />
+                <asp:Repeater ID="RepeaterTagDrop" runat="server"><ItemTemplate><span id="SpanDropTags<%# Eval("TagSetId") %>"><select class="easyui-combotree" url="/Automation/Json-TransactionTagsTree.aspx?TagSetId=<%# Eval("TagSetId") %>" name="DropTags<%# Eval("TagSetId") %>" id="DropTags<%# Eval("TagSetId") %>" animate="true" style="width:300px"></select></span>&nbsp;<br/></ItemTemplate></asp:Repeater>
 
-        <div class="stacked-input-control"></div><!-- placeholder for label-side H2 -->
+                <div class="stacked-input-control"></div><!-- placeholder for label-side H2 -->
         
-        <!-- file upload begins here -->
+                <!-- file upload begins here -->
         
-        <Swarmops5:FileUpload ID="FileUpload" runat="server" Filter="ImagesOnly" />
+                <Swarmops5:FileUpload ID="FileUpload" runat="server" Filter="ImagesOnly" />
 
-        <!-- file upload ends -->
+                <!-- file upload ends -->
 
-        <div class="stacked-input-control"></div><!-- placeholder for label-side H2 -->
-        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextBank" />&#8203;<br/></div>
-        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextClearing" />&#8203;<br/></div>
-        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/></div>
-        <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
+                <div class="stacked-input-control"></div><!-- placeholder for label-side H2 -->
+                <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextBank" />&#8203;<br/></div>
+                <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextClearing" />&#8203;<br/></div>
+                <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/></div>
+                <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
+            </div>
+            <div class="entryLabels">
+                <asp:Label runat="server" ID="LabelAmount" /><br/>
+                <span class="enableVatField"><asp:Label runat="server" ID="LabelVat"/><br/></span>
+                <asp:Label runat="server" ID="LabelPurpose" /><br/>
+                <asp:Label runat="server" ID="LabelBudget" /><br/>
+                <asp:Repeater ID="RepeaterTagLabels" runat="server"><ItemTemplate><%# Eval("TagSetLocalizedName") %><br/></ItemTemplate></asp:Repeater>
+                <h2><asp:Label runat="server" ID="LabelHeaderImageFiles" /></h2>
+                <asp:Label runat="server" ID="LabelImageFiles" /><br/>
+                <h2><asp:Label runat="server" ID="LabelHeaderBankDetails" /></h2>
+                <asp:Label runat="server" ID="LabelBankName" /><br/>
+                <asp:Label runat="server" ID="LabelBankClearing" /><br/>
+                <asp:Label runat="server" ID="LabelBankAccount" />
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div title="<img src='/Images/Icons/expensify-icon-official.png' width='64' height='64'>">
+            <h2><asp:Label runat="server" ID="LabelExpensifyUploadHeader" /></h2>
+        </div>
     </div>
-    <div class="entryLabels">
-        <asp:Label runat="server" ID="LabelAmount" /><br/>
-        <span class="enableVatField"><asp:Label runat="server" ID="LabelVat"/><br/></span>
-        <asp:Label runat="server" ID="LabelPurpose" /><br/>
-        <asp:Label runat="server" ID="LabelBudget" /><br/>
-        <asp:Repeater ID="RepeaterTagLabels" runat="server"><ItemTemplate><%# Eval("TagSetLocalizedName") %><br/></ItemTemplate></asp:Repeater>
-        <h2><asp:Label runat="server" ID="LabelHeaderImageFiles" /></h2>
-        <asp:Label runat="server" ID="LabelImageFiles" /><br/>
-        <h2><asp:Label runat="server" ID="LabelHeaderBankDetails" /></h2>
-        <asp:Label runat="server" ID="LabelBankName" /><br/>
-        <asp:Label runat="server" ID="LabelBankClearing" /><br/>
-        <asp:Label runat="server" ID="LabelBankAccount" />
-    </div>
-    <div style="clear:both"></div>
 </asp:Content>
 
 
