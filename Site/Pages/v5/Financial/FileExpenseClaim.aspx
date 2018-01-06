@@ -8,10 +8,13 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+
+            $('#divTabs').tabs();
  
             if (vatEnable) {
                 $('.enableVatField').show();
             }
+
         });
 
 
@@ -92,8 +95,8 @@
 
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <div class="easyui-tabs">
-        <div title="<img src='/Images/Icons/iconshock-document-256px.png' width='64' height='64'>">
+    <div class="easyui-tabs" id="divTabs">
+        <div title="<img src='/Images/Icons/iconshock-invoice-256px.png' width='64' height='64'>">
             <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
             <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
             <div class="entryFields">
