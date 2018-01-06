@@ -95,16 +95,16 @@
             $('#divExpensifyResults').slideUp();
             expensifyProcessingHalfway = false;
 
-            $.ajax({
-                type: "POST",
-                url: "/Pages/v5/Ledgers/UploadBankFiles.aspx/InitializeProcessing",
-                data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
-	            contentType: "application/json; charset=utf-8",
-	            dataType: "json",
-	            success: function (msg) {
-	                setTimeout('updateProgressProcessing();', 1000);
-	            }
-	        });        }
+            SwarmopsJS.ajaxCall
+                ("/Pages/v5/Financial/FileExpenseClaim.aspx/InitializeExpensifyProcessing",
+                { guid: '<%= this.UploadExpensify.GuidString%>' },
+                function(result) {
+                    if (result.Success) {
+                        setTimeout(function() { updateExpensifyProgress(); }, 1000);
+                    }
+                });
+            
+            }
 
     </script>
     
