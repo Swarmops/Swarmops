@@ -880,7 +880,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you have many expense reports, you can gather them with Expensify and upload an Expensify CSV report here (which you obtain from at Expensify under Report, Export, as CSV). Swarmops will use Expensify to fetch all the individual receipts and log them as separate expenses for proper accounting..
+        ///   Looks up a localized string similar to If you have many expense reports, you can gather them with Expensify and upload an Expensify CSV report here (which you obtain from at Expensify under Reports, Export, as CSV). Swarmops will use Expensify to fetch all the individual receipts and log them as separate expense claims for proper accounting..
         /// </summary>
         internal static string FileExpenseClaim_Expensify_InstructionsBasic {
             get {
@@ -903,6 +903,15 @@ namespace Resources.Pages {
         internal static string FileExpenseClaim_Expensify_InstructionsNothingAdvanced {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_InstructionsNothingAdvanced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expensify report&apos;s currency is.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_ReportCurrency {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_ReportCurrency", resourceCulture);
             }
         }
         

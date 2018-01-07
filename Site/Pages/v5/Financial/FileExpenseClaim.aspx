@@ -183,7 +183,7 @@
                     <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" ClientUploadCompleteCallback="uploadCompletedCallback" />
                 </div>
                 <div class="entryLabels">
-                    <asp:Label runat="server" ID="LabelExpensifyCsv" />
+                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelExpensifyCsv" /></div>
                 </div>
     
                 <br clear="all"/>

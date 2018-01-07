@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Threading;
 using System.Web;
 using System.Web.Services;
@@ -208,7 +209,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             Documents documents = Documents.RecentFromDescription(guid);
             GuidCache.Set(guid + "-Progress", 1); // to make sure results aren't repeated from last file
             GuidCache.Set(guid + "-Result", UploadBankFiles.ImportResultsCategory.Bad);
-                // default - this is what happens if exception
+            // default - this is what happens if exception
 
             if (documents.Count != 1)
             {
@@ -216,21 +217,176 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             Document uploadedDoc = documents[0];
+
+            // TODO: ATTEMPT TO DETERMINE CURRENCY FROM FILE, USING ORIGINAL CURRENCY + ORIGINAL AMOUNT
+
+            string csvEntire;
+
+            using (StreamReader reader = uploadedDoc.GetReader(1252))
+            {
+                csvEntire = reader.ReadToEnd();
+            }
+
+            string[] csvLines = csvEntire.Split(new char[] {'\r','\n'});
+            string[] fieldNames = csvLines[0].Split(',');
+
+            // Map fields to column indexes
+
+            Dictionary<ExpensifyColumns,int> fieldMap = new Dictionary<ExpensifyColumns, int>();
+
+            for (int loop = 0; loop < fieldNames.Length; loop++)
+            {
+                switch (fieldNames[loop].ToLowerInvariant().Trim('\"'))
+                {
+                    case "timestamp":
+                        fieldMap[ExpensifyColumns.Timestamp] = loop;
+                        break;
+                    case "amount":
+                        fieldMap[ExpensifyColumns.AmountFloat] = loop;
+                        break;
+                    case "merchant":
+                        fieldMap[ExpensifyColumns.Merchant] = loop;
+                        break;
+                    case "comment":
+                        fieldMap[ExpensifyColumns.Comment] = loop;
+                        break;
+                    case "category":
+                        fieldMap[ExpensifyColumns.CategoryCustom] = loop;
+                        break;
+                    case "mcc":
+                        fieldMap[ExpensifyColumns.CategoryStandard] = loop;
+                        break;
+                    case "vat":
+                        fieldMap[ExpensifyColumns.VatFloat] = loop;
+                        break;
+                    case "original currency":
+                        fieldMap[ExpensifyColumns.OriginalCurrency] = loop;
+                        break;
+                    case "original amount":
+                        fieldMap[ExpensifyColumns.OriginalCurrencyAmountFloat] = loop;
+                        break;
+                    case "receipt":
+                        fieldMap[ExpensifyColumns.ReceiptUrl] = loop;
+                        break;
+                    default:
+                        // ignore any unknown fields
+                        break;
+                }
+            }
+
+            // TODO: Much more general-case error conditions if not all fields are filled
+
+            if (organization.VatEnabled || !fieldMap.ContainsKey(ExpensifyColumns.VatFloat))
+            {
+                // Error: Organization needs a VAT field
+                // TODO
+                // Set result to bad
+                // Set progress to complete
+                // Abort
+            }
+
+            List<ExpensifyRecord> recordList = new List<ExpensifyRecord>();
+
+            foreach (string record in csvLines)
+            {
+                if (record == csvLines[0])
+                {
+                    continue; // ignore the header line
+                }
+
+                if (record.Length < 2)
+                {
+                    continue; // ignore empty lines & whitespace lines
+                }
+                string[] recordFields = record.Split(',');
+
+                ExpensifyRecord newRecord = new ExpensifyRecord();
+                newRecord.AmountCents =
+                    Formatting.ParseDoubleStringAsCents(recordFields[fieldMap[ExpensifyColumns.AmountFloat]]);
+                newRecord.OriginalCurrency = Currency.FromCode(recordFields[fieldMap[ExpensifyColumns.OriginalCurrency]]);
+                newRecord.OriginalAmountCents =
+                    Formatting.ParseDoubleStringAsCents(
+                        recordFields[fieldMap[ExpensifyColumns.OriginalCurrencyAmountFloat]]);
+
+                newRecord.Description = recordFields[fieldMap[ExpensifyColumns.Merchant]];
+
+                string comment = recordFields[fieldMap[ExpensifyColumns.Comment]].Trim();
+                if (!string.IsNullOrEmpty(comment))
+                {
+                    newRecord.Description += " / " + comment;
+                }
+                newRecord.CategoryCustom = recordFields[fieldMap[ExpensifyColumns.CategoryCustom]];
+                newRecord.CategoryStandard = recordFields[fieldMap[ExpensifyColumns.CategoryStandard]];
+                newRecord.ReceiptUrl = recordFields[fieldMap[ExpensifyColumns.ReceiptUrl]];
+
+                recordList.Add(newRecord);
+            }
+
+            // We now have a list of records. At this point in time, we need to determine what currency the
+            // damn report is in, because that's not specified anywhere in the CSV (who thought this was a
+            // good idea anyway?). We do this by iterating through the records and hoping there's at least
+            // one record with the exact same amount in the report field as in the "original currency amount"
+            // field, and then we guess that's the currency of the report. If we don't find one, or if
+            // there are multiple candidates, we need to ask the user what currency the report is in.
+
+            Currency reportCurrency = null;
+
+            foreach (ExpensifyRecord record in recordList)
+            {
+                if (record.AmountCents == record.OriginalAmountCents)
+                {
+                    if (reportCurrency == null)
+                    {
+                        reportCurrency = record.OriginalCurrency;
+                    }
+                    else if (reportCurrency.Identity != record.OriginalCurrency.Identity)
+                    {
+                        throw new BarfException();  // TODO: ASK USER
+                    }
+                }
+            }
+
+            if (reportCurrency == null)
+            {
+                throw new BarfException();  // TODO: ASK USER
+            }
+
+
+
         }
+
+        public class BarfException: Exception {}
 
 
         private enum ExpensifyColumns
         {
             Unknown = 0,
-            AmountCents,
-            Description,
+            Timestamp,
+            AmountFloat,
+            Merchant,
+            Comment,
             CategoryCustom,
             CategoryStandard,
-            VatCents,
+            VatFloat,
+            OriginalCurrency,
+            OriginalCurrencyAmountFloat,
             ReceiptUrl
         }
 
+        private class ExpensifyRecord
+        {
+            public Int64 AmountCents { get; set; }
+            public Int64 VatCents { get; set; }
+            public string Description { get; set; }
+            public string CategoryCustom { get; set; }
+            public string CategoryStandard { get; set; }
+            public Currency OriginalCurrency { get; set; }
+            public Int64 OriginalAmountCents { get; set; }
+            public string ReceiptUrl { get; set; }
+        }
 
+
+        // Timestamp,Merchant,Amount,MCC,Category,Tag,Comment,Reimbursable,"Original Currency","Original Amount",Receipt
 
         protected void ButtonRequest_Click (object sender, EventArgs e)
         {
