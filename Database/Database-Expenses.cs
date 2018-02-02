@@ -11,10 +11,10 @@ namespace Swarmops.Database
     public partial class SwarmDb
     {
         private string expenseClaimFieldSequence =
-            " ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +  // 0-4
-            " Validated,Claimed,OrganizationId,GeographyId,BudgetId," +          // 5-9
-            " ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid," +   // 10-14
-            " KeepSeparate,VatCents,OrganizationSequenceId " +                   // 15-17
+            " ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +     // 0-4
+            " Validated,Claimed,OrganizationId,GeographyId,BudgetId," +             // 5-9
+            " ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid," +      // 10-14
+            " KeepSeparate,VatCents,OrganizationSequenceId,ExpenseClaimGroupId " +  // 15-18
             " FROM ExpenseClaims";
              
         public BasicExpenseClaim GetExpenseClaim (int expenseClaimId)
@@ -181,8 +181,9 @@ namespace Swarmops.Database
             bool keepSeparate = reader.GetBoolean (15);
             Int64 vatCents = reader.GetInt64(16);
             int organizationSequenceId = reader.GetInt32(17);
+            int expenseClaimGroupId = reader.GetInt32(18);
 
-            return new BasicExpenseClaim (expenseClaimId, claimingPersonId, createdDateTime,
+            return new BasicExpenseClaim (expenseClaimId, claimingPersonId, createdDateTime, expenseClaimGroupId,
                 open, attested, documented, claimed, organizationId, organizationSequenceId, geographyId,
                 budgetId, expenseDate, description, preApprovedAmount,
                 amountCents, vatCents, repaid, keepSeparate);
@@ -432,19 +433,36 @@ namespace Swarmops.Database
         }
 
 
-        public int SetExpenseClaimRepaid (int expenseClaimId, bool repaid)
+        public int SetExpenseClaimRepaid(int expenseClaimId, bool repaid)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("SetExpenseClaimRepaid", connection);
+                DbCommand command = GetDbCommand("SetExpenseClaimRepaid", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName (command, "repaid", repaid);
+                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName(command, "repaid", repaid);
 
-                return Convert.ToInt32 (command.ExecuteScalar());
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+
+        public void SetExpenseClaimGroup(int expenseClaimId, int expenseClaimGroupId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetExpenseClaimGroup", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName(command, "expenseClaimGroupId", expenseClaimGroupId);
+
+                command.ExecuteNonQuery();
             }
         }
 

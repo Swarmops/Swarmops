@@ -66,3 +66,4 @@
 0066 - Added OrganizationSequenceId to CashAdvances, ExpenseClaims [RF]
 0067 - Bugfix for 0066 [RF]
 0068 - Added SetSalaryOpen [RF]
+0069 - Added table, procs for ExpenseClaimGroups [RF]

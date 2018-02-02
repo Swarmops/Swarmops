@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Web;
 using System.Web.Services;
+using Newtonsoft.Json.Linq;
 using Swarmops.Interface.Support;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.BackendServices;
 using Swarmops.Logic.Swarm;
 using Swarmops.Site.Pages.Ledgers;
+
 
 namespace Swarmops.Frontend.Pages.v5.Financial
 {
@@ -276,13 +282,17 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // TODO: Much more general-case error conditions if not all fields are filled
 
-            if (organization.VatEnabled || !fieldMap.ContainsKey(ExpensifyColumns.VatFloat))
+            bool vatEnabled = organization.VatEnabled;
+
+            if (vatEnabled && !fieldMap.ContainsKey(ExpensifyColumns.VatFloat))
             {
                 // Error: Organization needs a VAT field
                 // TODO
                 // Set result to bad
                 // Set progress to complete
                 // Abort
+
+                throw new BarfException();
             }
 
             List<ExpensifyRecord> recordList = new List<ExpensifyRecord>();
@@ -302,11 +312,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 ExpensifyRecord newRecord = new ExpensifyRecord();
                 newRecord.AmountCents =
-                    Formatting.ParseDoubleStringAsCents(recordFields[fieldMap[ExpensifyColumns.AmountFloat]]);
+                    Formatting.ParseDoubleStringAsCents(recordFields[fieldMap[ExpensifyColumns.AmountFloat]], CultureInfo.InvariantCulture);
                 newRecord.OriginalCurrency = Currency.FromCode(recordFields[fieldMap[ExpensifyColumns.OriginalCurrency]]);
                 newRecord.OriginalAmountCents =
                     Formatting.ParseDoubleStringAsCents(
-                        recordFields[fieldMap[ExpensifyColumns.OriginalCurrencyAmountFloat]]);
+                        recordFields[fieldMap[ExpensifyColumns.OriginalCurrencyAmountFloat]], CultureInfo.InvariantCulture);
 
                 newRecord.Description = recordFields[fieldMap[ExpensifyColumns.Merchant]];
 
@@ -318,6 +328,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 newRecord.CategoryCustom = recordFields[fieldMap[ExpensifyColumns.CategoryCustom]];
                 newRecord.CategoryStandard = recordFields[fieldMap[ExpensifyColumns.CategoryStandard]];
                 newRecord.ReceiptUrl = recordFields[fieldMap[ExpensifyColumns.ReceiptUrl]];
+
+                newRecord.Timestamp = DateTime.Parse(recordFields[fieldMap[ExpensifyColumns.Timestamp]]);
+
+                if (vatEnabled)
+                {
+                    newRecord.VatCents =
+                        Formatting.ParseDoubleStringAsCents(recordFields[fieldMap[ExpensifyColumns.VatFloat]],
+                            CultureInfo.InvariantCulture);
+                }
 
                 recordList.Add(newRecord);
             }
@@ -351,7 +370,78 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new BarfException();  // TODO: ASK USER
             }
 
+            // We now need to get all the receipt images. This is a little tricky as we don't have the URL
+            // of the receipt directly, we only have the URL of a webpage that contains JavaScript code
+            // to fetch the receipt image.
 
+            // Get relative date part
+
+            string relativePath = Document.DailyStorageFolder.Substring(Document.StorageRoot.Length);
+
+            // Get all receipts
+
+
+
+            for (int loop = 0; loop < recordList.Count; loop++)
+            {
+                using (WebClient client = new WebClient())
+                {
+                    string receiptResource = client.DownloadString(recordList[loop].ReceiptUrl);
+
+                    // We now have the web page which holds information about where the actual receipt is located.
+
+                    Regex regex = new Regex("^\\svar transaction\\s*=(?<jsonTxInfo>.*);", RegexOptions.Multiline);
+                    Match match = regex.Match(receiptResource);
+                    if (match.Success)
+                    {
+                        string txInfoString = match.Groups["jsonTxInfo"].ToString();
+                        JObject txInfo = JObject.Parse(txInfoString);
+                        recordList[loop].ExtendedInfo = txInfoString;
+
+                        string expensifyFileName = (string) txInfo["receiptFilename"];
+                        string actualReceiptUrl = "https://s3.amazonaws.com/receipts.expensify.com/" + expensifyFileName;
+                        string newGuidString = Guid.NewGuid().ToString();
+
+                        string fullyQualifiedFileName = Document.DailyStorageFolder + newGuidString;
+                        string relativeFileName = relativePath + newGuidString;
+
+                        client.DownloadFile(actualReceiptUrl, fullyQualifiedFileName);
+                        recordList[loop].ReceiptFileNameHere = newGuidString;
+
+                        // If original file name ends in PDF, initiate conversion.
+
+                        if (expensifyFileName.ToLowerInvariant().EndsWith(".pdf"))
+                        {
+                            // Convert low resolution
+
+                            Documents docs = new PdfProcessor().RasterizeOne(fullyQualifiedFileName, recordList[loop].Description, newGuidString, currentUser, organization);
+
+                            // Ask backend for high-res conversion
+
+                            RasterizeDocumentHiresOrder backendOrder =
+                                new RasterizeDocumentHiresOrder(docs[0]);
+                            backendOrder.Create();
+                        }
+                        else
+                        {
+                            Document doc = Document.Create(relativePath + newGuidString, expensifyFileName, 0, newGuidString, null,
+                                currentUser);
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+            // TODO: Get all receipts
+
+            // TODO: Present report to user
+
+            // TODO: Let user confirm budgets
+
+            // TODO: Once user has confirmed budgets, save expenses
 
         }
 
@@ -383,6 +473,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             public Currency OriginalCurrency { get; set; }
             public Int64 OriginalAmountCents { get; set; }
             public string ReceiptUrl { get; set; }
+            public DateTime Timestamp { get; set; }
+            public string ExtendedInfo { get; set; }
+            public string ReceiptFileNameHere { get; set; }
         }
 
 

@@ -42,58 +42,70 @@ namespace Swarmops.Logic.Financial
         }
 
         public static ExpenseClaim Create (Person claimer, Organization organization, FinancialAccount budget,
-            DateTime expenseDate, string description, Int64 amountCents, Int64 vatCents)
+            DateTime expenseDate, string description, Int64 amountCents, Int64 vatCents, ExpenseClaimGroup group = null)
         {
             ExpenseClaim newClaim =
                 FromIdentityAggressive (SwarmDb.GetDatabaseForWriting()
-                    .CreateExpenseClaim (claimer.Identity, organization.Identity,
-                        budget.Identity, expenseDate, description, amountCents));
+                    .CreateExpenseClaim (claimer.Identity, organization?.Identity ?? 0,
+                        budget?.Identity ?? 0, expenseDate, description, amountCents)); // budget can be 0 initially if created with a group
 
             if (vatCents > 0)
             {
                 newClaim.VatCents = vatCents;
             }
 
-            // Create the financial transaction with rows
-
-            string transactionDescription = "Expense #" + newClaim.OrganizationSequenceId + ": " + description; // TODO: Localize
-
-            if (transactionDescription.Length > 64)
+            if (group != null)
             {
-                transactionDescription = transactionDescription.Substring (0, 61) + "...";
+                newClaim.Group = group;
             }
 
-            FinancialTransaction transaction =
-                FinancialTransaction.Create (organization.Identity, DateTime.Now,
-                    transactionDescription);
-
-            transaction.AddRow (organization.FinancialAccounts.DebtsExpenseClaims, -amountCents, claimer);
-            if (vatCents > 0)
+            if (budget != null && organization != null)
             {
-                transaction.AddRow(budget, amountCents - vatCents, claimer);
-                transaction.AddRow(organization.FinancialAccounts.AssetsVatInboundUnreported, vatCents, claimer);
+                // Create the financial transaction with rows
+
+                string transactionDescription = "Expense #" + newClaim.OrganizationSequenceId + ": " + description;
+                    // TODO: Localize
+
+                if (transactionDescription.Length > 64)
+                {
+                    transactionDescription = transactionDescription.Substring(0, 61) + "...";
+                }
+
+                FinancialTransaction transaction =
+                    FinancialTransaction.Create(organization.Identity, DateTime.Now,
+                        transactionDescription);
+
+                transaction.AddRow(organization.FinancialAccounts.DebtsExpenseClaims, -amountCents, claimer);
+                if (vatCents > 0)
+                {
+                    transaction.AddRow(budget, amountCents - vatCents, claimer);
+                    transaction.AddRow(organization.FinancialAccounts.AssetsVatInboundUnreported, vatCents, claimer);
+                }
+                else
+                {
+                    transaction.AddRow(budget, amountCents, claimer);
+                }
+
+                // Make the transaction dependent on the expense claim
+
+                transaction.Dependency = newClaim;
+
+                // Create notifications
+
+                OutboundComm.CreateNotificationAttestationNeeded(budget, claimer, string.Empty,
+                    newClaim.BudgetAmountCents/100.0,
+                    description, NotificationResource.ExpenseClaim_Created);
+                    // Slightly misplaced logic, but failsafer here
+                OutboundComm.CreateNotificationFinancialValidationNeeded(organization, newClaim.AmountCents/100.0,
+                    NotificationResource.Receipts_Filed);
+                SwarmopsLogEntry.Create(claimer,
+                    new ExpenseClaimFiledLogEntry(claimer /*filing person*/, claimer /*beneficiary*/,
+                        newClaim.BudgetAmountCents/100.0,
+                        vatCents/100.0, budget, description), newClaim);
+
+                // Clear a cache
+                FinancialAccount.ClearAttestationAdjustmentsCache(organization);
             }
-            else
-            {
-                transaction.AddRow(budget, amountCents, claimer);
-            }
-
-            // Make the transaction dependent on the expense claim
-
-            transaction.Dependency = newClaim;
-
-            // Create notifications
-
-            OutboundComm.CreateNotificationAttestationNeeded (budget, claimer, string.Empty, newClaim.BudgetAmountCents/100.0,
-                description, NotificationResource.ExpenseClaim_Created); // Slightly misplaced logic, but failsafer here
-            OutboundComm.CreateNotificationFinancialValidationNeeded (organization, newClaim.AmountCents/100.0,
-                NotificationResource.Receipts_Filed);
-            SwarmopsLogEntry.Create (claimer,
-                new ExpenseClaimFiledLogEntry (claimer /*filing person*/, claimer /*beneficiary*/, newClaim.BudgetAmountCents/100.0,
-                    vatCents / 100.0, budget, description), newClaim);
-
-            // Clear a cache
-            FinancialAccount.ClearAttestationAdjustmentsCache(organization);
 
             return newClaim;
         }
@@ -167,6 +179,28 @@ namespace Swarmops.Logic.Financial
             get { return Organization.FromIdentity (OrganizationId); }
         }
 
+        public ExpenseClaimGroup Group
+        {
+            get
+            {
+                if (this.GroupId == 0)
+                {
+                    return null;
+                }
+
+                return ExpenseClaimGroup.FromIdentity(this.GroupId);
+            }
+            set
+            {
+                int newGroupId = value?.Identity ?? 0;
+
+                if (this.GroupId != newGroupId)
+                {
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimGroup(this.Identity, newGroupId);
+                }
+            }
+        }
+
         public FinancialTransaction FinancialTransaction
         {
             get
@@ -175,7 +209,7 @@ namespace Swarmops.Logic.Financial
 
                 if (transactions.Count == 0)
                 {
-                    return null; // not possible from July 26 onwards, but some grandfather work
+                    return null; // Only for grouped transactions that are still under construction
                 }
 
                 if (transactions.Count == 1)

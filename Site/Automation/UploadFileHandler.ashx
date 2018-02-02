@@ -28,13 +28,6 @@ namespace Swarmops.Frontend.Automation
     {
         private readonly JavaScriptSerializer js = new JavaScriptSerializer();
 
-        public static string StorageRoot = Document.StorageRoot;
-
-        private bool WeAreInDebugEnvironment
-        {
-            get { return Debugger.IsAttached; }
-        }
-
         #region IHttpHandler Members
 
         public new bool IsReusable
@@ -92,7 +85,7 @@ namespace Swarmops.Frontend.Automation
         // Delete file from the server
         private void DeleteFile(HttpContext context)
         {
-            string filePath = StorageRoot + context.Request["f"];
+            string filePath = Document.StorageRoot + context.Request["f"];
             if (File.Exists(filePath))
             {
                 File.Delete(filePath);
@@ -124,7 +117,7 @@ namespace Swarmops.Frontend.Automation
                 throw new HttpRequestValidationException(
                     "Attempt to upload chunked file containing more than one fragment per request");
             Stream inputStream = context.Request.Files[0].InputStream;
-            string fullName = StorageRoot + Path.GetFileName(fileName);
+            string fullName = Document.StorageRoot + Path.GetFileName(fileName);
 
             throw new NotImplementedException(
                 "We should never get to partial upload. If we do, something is very very unexpected and this needs to be implemented.");
@@ -212,35 +205,15 @@ namespace Swarmops.Frontend.Automation
                 string fileNameBase = guid + "-" + uploadingPerson.Identity.ToString("X8").ToLowerInvariant() + "-" +
                                         currentOrg.Identity.ToString("X4").ToLowerInvariant();
 
-                DateTime utcNow = DateTime.UtcNow;
-
-                string fileFolder = utcNow.Year.ToString("0000") + Path.DirectorySeparatorChar +
-                                    utcNow.Month.ToString("00") + Path.DirectorySeparatorChar +
-                                    utcNow.Day.ToString("00");
-
-                if (!Directory.Exists(StorageRoot + fileFolder))
-                {
-                    Directory.CreateDirectory(StorageRoot + fileFolder);
-
-                    // Set folder permissions to rwxrwxrwx if live environment
-                    // (backend must be able to create new files)
-
-                    if (!WeAreInDebugEnvironment)
-                    {
-                        Syscall.chmod(StorageRoot + fileFolder,
-                            FilePermissions.S_IRWXU | FilePermissions.S_IRWXO| FilePermissions.S_IRWXG);
-                    }
-
-                }
-
                 int fileCounter = 0;
-                string fileName = string.Empty;
+                string fileName;
+                string storageFolder = Document.DailyStorageFolder;
 
                 do
                 {
                     fileCounter++;
                     fileName = fileNameBase + "-" + fileCounter.ToString("X2").ToLowerInvariant();
-                } while (File.Exists(StorageRoot + fileFolder + Path.DirectorySeparatorChar + fileName) &&
+                } while (File.Exists(storageFolder + Path.DirectorySeparatorChar + fileName) &&
                             fileCounter < 512);
 
                 if (fileCounter >= 512)
@@ -249,18 +222,19 @@ namespace Swarmops.Frontend.Automation
                         "File name determination failed; probable file system permissions error");
                 }
 
-                string relativeFileName = fileFolder + Path.DirectorySeparatorChar + fileName;
+                string fullyQualifiedFileName = storageFolder + Path.DirectorySeparatorChar + fileName;
+                string relativeFileName = fullyQualifiedFileName.Substring(Document.StorageRoot.Length);
 
                 file.InputStream.Position = 0;
-                file.SaveAs(StorageRoot + relativeFileName);
+                file.SaveAs(fullyQualifiedFileName);
 
                 // Set file permissions to -r--r--r-- if live environment
 
-                if (!WeAreInDebugEnvironment)
+                if (!Debugger.IsAttached)
                 {
                     // Set to readonly, lock out changes, permit all read
 
-                    Syscall.chmod(StorageRoot + relativeFileName,
+                    Syscall.chmod(fullyQualifiedFileName,
                        FilePermissions.S_IRUSR | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
                 }
 
@@ -271,12 +245,11 @@ namespace Swarmops.Frontend.Automation
 
                     Process process = null;
 
-                    if (WeAreInDebugEnvironment)
+                    if (Debugger.IsAttached) // Windows environment
                     {
                         process = Process.Start("cmd.exe",
-                            "/c convert -background white -flatten " + StorageRoot + relativeFileName + " " +
-                            StorageRoot + relativeFileName +
-                            "-%04d.png");
+                            "/c convert -background white -flatten " + fullyQualifiedFileName + " " +
+                            fullyQualifiedFileName + "-%04d.png");
 
                         process.WaitForExit();
 
@@ -297,20 +270,22 @@ namespace Swarmops.Frontend.Automation
                     }
                     else // live environment, not debug
                     {
-                        // Use qpdf to determine the number of pages in the PDF
-
-                        string pageCountFileName = "/tmp/pagecount-" + guid + ".txt";
-
-                        process = Process.Start("bash",
-                            "-c \"qpdf --show-npages " + StorageRoot + relativeFileName + " > " + pageCountFileName +
-                            "\"");
-
-                        process.WaitForExit();
                         int pdfPageCount = 0;
+                        bool exceptionThrown = false;
 
-                        if (process.ExitCode == 2) // error code for qpdf
+                        try
+                        {
+                            pdfPageCount = PdfProcessor.GetPageCount(fullyQualifiedFileName);
+                        }
+                        catch (FormatException)
+                        {
+                            exceptionThrown = true;
+                        }
+
+                        if (exceptionThrown || pdfPageCount == 0)
                         {
                             // Bad PDF file
+
                             FilesStatus errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
                             errorStatus.error = "ERR_BAD_PDF";
                             errorStatus.url = string.Empty;
@@ -322,85 +297,22 @@ namespace Swarmops.Frontend.Automation
                             continue;
                         }
 
-                        // Read the resulting page count from the file we piped
-
-                        using (StreamReader pageCountReader = new StreamReader(pageCountFileName))
-                        {
-                            string line = pageCountReader.ReadLine().Trim();
-                            while (line.StartsWith("WARNING") || line.StartsWith("qpdf:"))
-                            {
-                                line = pageCountReader.ReadLine().Trim();  // ignore warnings and chatter
-                            }
-                            pdfPageCount = Int32.Parse(line);
-                        }
-
-
-                        File.Delete(pageCountFileName);
-
                         if (pdfPageCount < 10)
                         {
                             // Small file, so convert immediately instead of deferring
 
-                            process = Process.Start("bash",
-                                "-c \"convert -density 75 -background white -alpha remove " + Document.StorageRoot + relativeFileName +
-                                " " + Document.StorageRoot + relativeFileName + "-%04d.png\"");
+                            Documents docs = new PdfProcessor().RasterizeOne (fullyQualifiedFileName, file.FileName, guid, authData.CurrentUser);
 
-                            process.WaitForExit();
+                            // Ask backend for high-res conversion -- assumes at least one page
 
-                            int pageCounter = 0; // the first produced page will be zero
-                            Document lastDocument = null;
-
-                            // Create all document records
-
-                            while (pageCounter < pdfPageCount)
-                            {
-                                string pageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
-
-                                if (File.Exists(Document.StorageRoot + pageFileName))
-                                {
-                                    long fileLength = new FileInfo(Document.StorageRoot + pageFileName).Length;
-
-                                    lastDocument = Document.Create(pageFileName,
-                                        file.FileName + (pageCounter + 1).ToString(CultureInfo.InvariantCulture),
-                                        fileLength, guid, null, authData.CurrentUser);
-
-                                    if (!WeAreInDebugEnvironment)
-                                    {
-                                        // Set to readonly, lock out changes, permit all read
-
-                                        Syscall.chmod(Document.StorageRoot + pageFileName,
-                                            FilePermissions.S_IRUSR | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
-                                    }
-
-                                }
-
-                                pageCounter++;
-                            }
-
-                            // Ask backend for high-res conversion
-
-                            RasterizeDocumentHiresOrder backendOrder = new RasterizeDocumentHiresOrder(lastDocument);
+                            RasterizeDocumentHiresOrder backendOrder = new RasterizeDocumentHiresOrder(docs[0]);
                             backendOrder.Create();
-
-                            /*
-                            using (WebSocket socket =
-                                new WebSocket("ws://localhost:" + SystemSettings.WebsocketPortFrontend + "/Front?Auth=" +
-                                              Uri.EscapeDataString(authData.Authority.ToEncryptedXml())))
-                            {
-                                socket.Connect();
-                                JObject data = new JObject();
-                                data["ServerRequest"] = "ConvertPdfHires";
-                                data["DocumentId"] = lastDocument.Identity;
-                                socket.Send(data.ToString());
-                                socket.Ping(); // wait a little little while for send to work
-                                socket.Close();
-                            }*/
 
                             statuses.Add(new FilesStatus(fullName, file.ContentLength));
                         }
                         else
                         {
-                            // Defer to backend
+                            // Defer low-res conversion to frontend daemon (called from client)
 
                             FilesStatus requiresConversion = new FilesStatus(fullName, -1);
                             requiresConversion.requiresPdfConversion = true;
@@ -417,7 +329,7 @@ namespace Swarmops.Frontend.Automation
                 {
                     // In all cases except PDF deferred, create the document
 
-                    Document.Create(fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName,
+                    Document.Create(fullyQualifiedFileName, file.FileName,
                         file.ContentLength,
                         guid, null, authData.CurrentUser);
 
@@ -446,6 +358,7 @@ namespace Swarmops.Frontend.Automation
                     socket.Ping(); // wait a little little while for send to work
                     socket.Close();
                 }
+
             }
 
         }
@@ -463,19 +376,6 @@ namespace Swarmops.Frontend.Automation
             public int SuccessCount { get; set; }
             public int FailCount { get; set; }
             public string[] FailFileNames { get; set; }
-        }
-
-        private static void ConvertPdfThread(object args)
-        {
-            ProcessThreadArguments argsProper = (ProcessThreadArguments) args;
-        }
-
-
-        private class ProcessThreadArguments
-        {
-            public string Guid { get; set; }
-            public Organization Organization { get; set; }
-            public Person CurrentUser { get; set; }
         }
 
 
@@ -506,7 +406,7 @@ namespace Swarmops.Frontend.Automation
         private void DeliverFile(HttpContext context)
         {
             string filename = context.Request["f"];
-            string filePath = StorageRoot + filename;
+            string filePath = Document.StorageRoot + filename;
 
             if (File.Exists(filePath))
             {
@@ -522,7 +422,7 @@ namespace Swarmops.Frontend.Automation
         private void ListCurrentFiles(HttpContext context)
         {
             FileInfo[] files =
-                new DirectoryInfo(StorageRoot)
+                new DirectoryInfo(Document.StorageRoot)
                     .GetFiles("*", SearchOption.TopDirectoryOnly);
 
             // completely wrong, redo from scratch

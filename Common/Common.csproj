@@ -49,6 +49,7 @@
     <Compile Include="Enums\CommunicationType.cs" />
     <Compile Include="Enums\DocumentType.cs" />
     <Compile Include="Enums\EventTypeSource.cs" />
+    <Compile Include="Enums\ExpenseClaimGroupType.cs" />
     <Compile Include="Enums\ExpenseEventType.cs" />
     <Compile Include="Enums\ExternalActivityType.cs" />
     <Compile Include="Enums\ExternalIdentityType.cs" />

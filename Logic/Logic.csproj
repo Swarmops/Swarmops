@@ -134,6 +134,7 @@
     <Compile Include="Financial\BitcoinBlockchainUpgrade.cs" />
     <Compile Include="Financial\BitcoinTransactionInput.cs" />
     <Compile Include="Financial\BitcoinUtility.cs" />
+    <Compile Include="Financial\ExpenseClaimGroup.cs" />
     <Compile Include="Financial\HotBitcoinAddress.cs" />
     <Compile Include="Financial\HotBitcoinAddresses.cs" />
     <Compile Include="Financial\HotBitcoinAddressUnspent.cs" />

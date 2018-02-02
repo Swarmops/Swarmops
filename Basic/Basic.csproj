@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Types\Common\BlockchainHash.cs" />
+    <Compile Include="Types\Financial\BasicExpenseClaimGroup.cs" />
     <Compile Include="Types\Financial\BasicHotBitcoinAddress.cs" />
     <Compile Include="Types\Financial\BasicHotBitcoinAddressUnspent.cs" />
     <Compile Include="Types\Financial\BasicVatReport.cs" />

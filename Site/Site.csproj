@@ -1206,6 +1206,7 @@
     <Content Include="Plugins-Stock\Taxes\SE\MonthlyTaxForm-SE-2015.png" />
     <Content Include="Plugins-Stock\Taxes\SE\MonthlyTaxForm-SE.aspx" />
     <Content Include="Scripts\alertify.min.js" />
+    <Content Include="Scripts\bchaddr-0.14.js" />
     <Content Include="Scripts\crowdin-jipt.js" />
     <Content Include="Scripts\Experimental\easyui\changelog.txt" />
     <Content Include="Scripts\Experimental\easyui\demo-mobile\accordion\basic.html" />

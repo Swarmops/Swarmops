@@ -73,6 +73,39 @@ namespace Swarmops.Logic.Support
             }
         }
 
+        public static string DailyStorageFolder
+        {
+            get
+            {
+                DateTime utcNow = DateTime.UtcNow;
+
+                string root = Document.StorageRoot;
+
+                string dayFolder = utcNow.Year.ToString("0000") + Path.DirectorySeparatorChar +
+                    utcNow.Month.ToString("00") + Path.DirectorySeparatorChar +
+                    utcNow.Day.ToString("00");
+
+                string wholePath = root + dayFolder;
+
+                if (!Directory.Exists(wholePath))
+                {
+                    Directory.CreateDirectory(wholePath);
+
+                    // Set folder permissions to rwxrwxrwx if live environment
+                    // (backend must be able to create new files)
+
+                    if (!Debugger.IsAttached) // check if live environment
+                    {
+                        Syscall.chmod(wholePath,
+                            FilePermissions.S_IRWXU | FilePermissions.S_IRWXO | FilePermissions.S_IRWXG);
+                    }
+
+                }
+
+                return wholePath + Path.DirectorySeparatorChar;
+            }
+        }
+
         public static Document FromIdentity (int documentId)
         {
             return FromBasic (SwarmDb.GetDatabaseForReading().GetDocument (documentId));
