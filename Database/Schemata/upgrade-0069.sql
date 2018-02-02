@@ -71,7 +71,7 @@ END
 #
 
 CREATE PROCEDURE `SetExpenseClaimGroupClosed` (
-  IN expenseClaimGroupId
+  IN expenseClaimGroupId INT
 )
 BEGIN
   DECLARE createdByPersonId INT;
@@ -99,8 +99,8 @@ END
 #
 
 CREATE PROCEDURE `SetExpenseClaimGroup` (
-  IN expenseClaimId,
-  IN expenseClaimGroupId
+  IN expenseClaimId INT,
+  IN expenseClaimGroupId INT
 )
 BEGIN
   UPDATE ExpenseClaims
