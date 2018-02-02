@@ -26,12 +26,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             DateTime dawnOfMankind = new DateTime (1901, 1, 1);
             // no org will ever import bookkeeping from before this date
 
-            FinancialAccount account = CurrentOrganization.FinancialAccounts.AssetsBankAccountMain.Children.First();
-            if (account.OrganizationId != CurrentOrganization.Identity)
-            {
-                throw new UnauthorizedAccessException ("All the nopes in the world");
-            }
-
             if (!CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
             {
                 throw new UnauthorizedAccessException ("Access denied because security tokens say so");
@@ -95,7 +89,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 string creditString = string.Empty;
                 string debitString = string.Empty;
 
-                account = accountLookup[row.FinancialAccountId];
+                FinancialAccount account = accountLookup[row.FinancialAccountId];
                 if (!runningBalanceLookup.ContainsKey(row.FinancialAccountId))
                 {
                     if (account.AccountType == FinancialAccountType.Asset || account.AccountType == FinancialAccountType.Debt)
