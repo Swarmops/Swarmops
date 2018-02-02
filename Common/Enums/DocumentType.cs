@@ -67,6 +67,16 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// There really isn't a standalone doctype for this but still
         /// </summary>
-        Payout
+        Payout,
+
+        /// <summary>
+        /// Nor for this
+        /// </summary>
+        PaymentGroup,
+
+        /// <summary>
+        /// Nor this
+        /// </summary>
+        Salary
     }
 }

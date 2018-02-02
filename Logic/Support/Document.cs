@@ -181,6 +181,14 @@ namespace Swarmops.Logic.Support
             {
                 return DocumentType.Payout;
             }
+            else if (foreignObject is PaymentGroup)
+            {
+                return DocumentType.PaymentGroup;
+            }
+            else if (foreignObject is Salary)
+            {
+                return DocumentType.Salary;
+            }
             else
             {
                 throw new ArgumentException ("Unrecognized foreign object type:" + foreignObject.GetType().ToString());
