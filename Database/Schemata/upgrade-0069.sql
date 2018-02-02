@@ -78,11 +78,11 @@ BEGIN
   DECLARE organizationId INT;
 
   SELECT ExpenseClaimGroups.CreatedByPersonId
-    INTO createdByPersonId
+    INTO createdByPersonId FROM ExpenseClaimGroups
     WHERE ExpenseClaimGroups.ExpenseClaimGroupId = expenseClaimGroupId;
 
   SELECT ExpenseClaimGroups.OrganizationId
-    INTO organizationId
+    INTO organizationId FROM ExpenseClaimGroups
     WHERE ExpenseClaimGroups.ExpenseClaimGroupId = expenseClaimGroupId;
 
   UPDATE ExpenseClaimGroups 
