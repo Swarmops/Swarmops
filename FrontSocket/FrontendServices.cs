@@ -67,7 +67,7 @@ namespace Swarmops.Frontend.Socket
                         {
                             rasterizationTargets.Add(new RasterizationTarget
                             {
-                                FullyQualifiedFileName = (string)pdfFilesArray[loop],
+                                FullyQualifiedFileName = Document.StorageRoot + (string)pdfFilesArray[loop],
                                 ClientFileName = (string)pdfClientNamesArray[loop]
                             });
                         }
