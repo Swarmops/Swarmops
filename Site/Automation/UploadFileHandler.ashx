@@ -213,7 +213,7 @@ namespace Swarmops.Frontend.Automation
                 {
                     fileCounter++;
                     fileName = fileNameBase + "-" + fileCounter.ToString("X2").ToLowerInvariant();
-                } while (File.Exists(storageFolder + Path.DirectorySeparatorChar + fileName) &&
+                } while (File.Exists(storageFolder + fileName) &&
                             fileCounter < 512);
 
                 if (fileCounter >= 512)
@@ -222,7 +222,7 @@ namespace Swarmops.Frontend.Automation
                         "File name determination failed; probable file system permissions error");
                 }
 
-                string fullyQualifiedFileName = storageFolder + Path.DirectorySeparatorChar + fileName;
+                string fullyQualifiedFileName = storageFolder + fileName;
                 string relativeFileName = fullyQualifiedFileName.Substring(Document.StorageRoot.Length);
 
                 file.InputStream.Position = 0;
