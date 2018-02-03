@@ -56,25 +56,31 @@ namespace Swarmops.Frontend.Socket
                     // Sessions.Broadcast("{\"messageType\":\"Heartbeat\"}");
                     break;
                 case "ConvertPdf":
-                    JArray pdfFilesArray = (JArray) json["PdfFiles"];
-                    JArray pdfClientNamesArray = (JArray)json["ClientFileNames"];
-
-                    List<RasterizationTarget> rasterizationTargets = new List<RasterizationTarget>();
-                    for (int loop = 0; loop < pdfFilesArray.Count; loop++)
+                    Sessions.Broadcast("{\"messageType\":\"Debug\",\"data\":\"Converting PDF\"}");
+                    try
                     {
-                        rasterizationTargets.Add(new RasterizationTarget
+                        JArray pdfFilesArray = (JArray)json["PdfFiles"];
+                        JArray pdfClientNamesArray = (JArray)json["ClientFileNames"];
+
+                        List<RasterizationTarget> rasterizationTargets = new List<RasterizationTarget>();
+                        for (int loop = 0; loop < pdfFilesArray.Count; loop++)
                         {
-                            FullyQualifiedFileName = (string) pdfFilesArray[loop],
-                            ClientFileName = (string) pdfClientNamesArray[loop],
-                        });
+                            rasterizationTargets.Add(new RasterizationTarget
+                            {
+                                FullyQualifiedFileName = (string)pdfFilesArray[loop],
+                                ClientFileName = (string)pdfClientNamesArray[loop]
+                            });
+                        }
+
+                        PdfProcessor pdfMaker = new PdfProcessor();
+                        pdfMaker.RasterizationProgress += BroadcastGuidProgress;
+                        pdfMaker.RasterizeMany(rasterizationTargets.ToArray(), (string)json["Guid"], _authority.Person,
+                            _authority.Organization);
                     }
-
-                    Organization organization = Organization.FromIdentity((int)json["OrganizationId"]);
-
-                    PdfProcessor pdfMaker = new PdfProcessor();
-                    pdfMaker.RasterizationProgress += BroadcastGuidProgress;
-                    pdfMaker.RasterizeMany(rasterizationTargets.ToArray(), (string) json["Guid"], _authority.Person,
-                        _authority.Organization);
+                    catch (Exception exc)
+                    {
+                        Sessions.Broadcast("{\"messageType\":\"Debug\",\"data\":\"Exception - " + exc.GetType() + " - " + exc.ToString().Replace("\"", "\\\"") + "\"}");
+                    }
 
                     break;
                 case "ConvertPdfHires":

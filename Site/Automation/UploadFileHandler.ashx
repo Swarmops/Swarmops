@@ -352,9 +352,8 @@ namespace Swarmops.Frontend.Automation
                     data["PdfFiles"] = JArray.FromObject(pdfsForConversion.ToArray());
                     data["Guid"] = (string) guid;
                     data["ClientFileNames"] = JArray.FromObject(pdfClientNames.ToArray());
-                    data["PersonId"] = authData.CurrentUser.Identity;
-                    data["OrganizationId"] = authData.CurrentOrganization.Identity;
                     socket.Send(data.ToString());
+                    Thread.Sleep(100);
                     socket.Ping(); // wait a little little while for send to work
                     socket.Close();
                 }
