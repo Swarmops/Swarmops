@@ -130,6 +130,9 @@ namespace Swarmops.Logic.Support
                 }
             }
 
+            // Set progress to 100% to avoid rounding errors freezing the UI at 99%
+
+            BroadcastProgress(organization, guid, 100);
 
             return result;
         }
@@ -192,7 +195,7 @@ namespace Swarmops.Logic.Support
                     }
                 }
 
-                progress = progressRange.Minimum + progressRange.Range / 2 + (pageCounter + 1) * progressRange.Range / pdfPageCount;
+                progress = progressRange.Minimum + progressRange.Range / 2 + ((pageCounter + 1) * progressRange.Range / pdfPageCount) / 2;
                 if (progress > lastProgress)
                 {
                     BroadcastProgress(organization, guid, progress);
