@@ -329,7 +329,7 @@ namespace Swarmops.Frontend.Automation
                 {
                     // In all cases except PDF deferred, create the document
 
-                    Document.Create(fullyQualifiedFileName, file.FileName,
+                    Document.Create(relativeFileName, file.FileName,
                         file.ContentLength,
                         guid, null, authData.CurrentUser);
 
