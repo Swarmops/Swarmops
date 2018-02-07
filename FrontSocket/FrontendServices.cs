@@ -56,7 +56,6 @@ namespace Swarmops.Frontend.Socket
                     // Sessions.Broadcast("{\"messageType\":\"Heartbeat\"}");
                     break;
                 case "ConvertPdf":
-                    Sessions.Broadcast("{\"messageType\":\"Debug\",\"data\":\"Converting PDF\"}");
                     try
                     {
                         JArray pdfFilesArray = (JArray)json["PdfFiles"];

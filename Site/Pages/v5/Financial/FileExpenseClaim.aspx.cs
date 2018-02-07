@@ -18,6 +18,7 @@ using Swarmops.Logic.Support;
 using Swarmops.Logic.Support.BackendServices;
 using Swarmops.Logic.Swarm;
 using Swarmops.Site.Pages.Ledgers;
+using CsvHelper;
 
 
 namespace Swarmops.Frontend.Pages.v5.Financial
@@ -173,7 +174,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
 
         [WebMethod(true)]
-        public static void InitializeExpensifyProcessing(string guid)
+        public static AjaxCallResult InitializeExpensifyProcessing(string guid)
         {
             // Start an async thread that does all the work, then return
 
@@ -189,6 +190,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             };
 
             initThread.Start(args);
+
+            return new AjaxCallResult {Success = true};
         }
 
 
@@ -292,53 +295,55 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 // Set progress to complete
                 // Abort
 
+                GuidCache.Set(guid + "-Progress", 100); // terminate progress bar
                 throw new BarfException();
             }
 
             List<ExpensifyRecord> recordList = new List<ExpensifyRecord>();
 
-            foreach (string record in csvLines)
+            CsvHelper.Configuration.Configuration config = new CsvHelper.Configuration.Configuration();
+            config.HasHeaderRecord = true;
+
+            using (TextReader textReader = new StringReader(csvEntire))
             {
-                if (record == csvLines[0])
+                CsvReader csvReader = new CsvReader(textReader, config);
+                csvReader.Read(); // bypass header record -- why isn't this done automatically?
+
+                while (csvReader.Read())
                 {
-                    continue; // ignore the header line
-                }
-
-                if (record.Length < 2)
-                {
-                    continue; // ignore empty lines & whitespace lines
-                }
-                string[] recordFields = record.Split(',');
-
-                ExpensifyRecord newRecord = new ExpensifyRecord();
-                newRecord.AmountCents =
-                    Formatting.ParseDoubleStringAsCents(recordFields[fieldMap[ExpensifyColumns.AmountFloat]], CultureInfo.InvariantCulture);
-                newRecord.OriginalCurrency = Currency.FromCode(recordFields[fieldMap[ExpensifyColumns.OriginalCurrency]]);
-                newRecord.OriginalAmountCents =
-                    Formatting.ParseDoubleStringAsCents(
-                        recordFields[fieldMap[ExpensifyColumns.OriginalCurrencyAmountFloat]], CultureInfo.InvariantCulture);
-
-                newRecord.Description = recordFields[fieldMap[ExpensifyColumns.Merchant]];
-
-                string comment = recordFields[fieldMap[ExpensifyColumns.Comment]].Trim();
-                if (!string.IsNullOrEmpty(comment))
-                {
-                    newRecord.Description += " / " + comment;
-                }
-                newRecord.CategoryCustom = recordFields[fieldMap[ExpensifyColumns.CategoryCustom]];
-                newRecord.CategoryStandard = recordFields[fieldMap[ExpensifyColumns.CategoryStandard]];
-                newRecord.ReceiptUrl = recordFields[fieldMap[ExpensifyColumns.ReceiptUrl]];
-
-                newRecord.Timestamp = DateTime.Parse(recordFields[fieldMap[ExpensifyColumns.Timestamp]]);
-
-                if (vatEnabled)
-                {
-                    newRecord.VatCents =
-                        Formatting.ParseDoubleStringAsCents(recordFields[fieldMap[ExpensifyColumns.VatFloat]],
+                    ExpensifyRecord newRecord = new ExpensifyRecord();
+                    newRecord.AmountCents =
+                        Formatting.ParseDoubleStringAsCents(csvReader.GetField(fieldMap[ExpensifyColumns.AmountFloat]),
                             CultureInfo.InvariantCulture);
-                }
+                    newRecord.OriginalCurrency =
+                        Currency.FromCode(csvReader.GetField(fieldMap[ExpensifyColumns.OriginalCurrency]));
+                    newRecord.OriginalAmountCents =
+                        Formatting.ParseDoubleStringAsCents(
+                            csvReader.GetField(fieldMap[ExpensifyColumns.OriginalCurrencyAmountFloat]),
+                            CultureInfo.InvariantCulture);
 
-                recordList.Add(newRecord);
+                    newRecord.Description = csvReader.GetField(fieldMap[ExpensifyColumns.Merchant]);
+
+                    string comment = csvReader.GetField(fieldMap[ExpensifyColumns.Comment]).Trim();
+                    if (!string.IsNullOrEmpty(comment))
+                    {
+                        newRecord.Description += " / " + comment;
+                    }
+                    newRecord.CategoryCustom = csvReader.GetField(fieldMap[ExpensifyColumns.CategoryCustom]);
+                    newRecord.CategoryStandard = csvReader.GetField(fieldMap[ExpensifyColumns.CategoryStandard]);
+                    newRecord.ReceiptUrl = csvReader.GetField(fieldMap[ExpensifyColumns.ReceiptUrl]);
+
+                    newRecord.Timestamp = DateTime.Parse(csvReader.GetField(fieldMap[ExpensifyColumns.Timestamp]));
+
+                    if (vatEnabled)
+                    {
+                        newRecord.VatCents =
+                            Formatting.ParseDoubleStringAsCents(csvReader.GetField(fieldMap[ExpensifyColumns.VatFloat]),
+                                CultureInfo.InvariantCulture);
+                    }
+
+                    recordList.Add(newRecord);
+                }
             }
 
             // We now have a list of records. At this point in time, we need to determine what currency the
@@ -390,7 +395,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                     // We now have the web page which holds information about where the actual receipt is located.
 
-                    Regex regex = new Regex("^\\svar transaction\\s*=(?<jsonTxInfo>.*);", RegexOptions.Multiline);
+                    Regex regex = new Regex(@"\s*var transaction\s*=\s*(?<jsonTxInfo>{.*});", RegexOptions.Multiline);
                     Match match = regex.Match(receiptResource);
                     if (match.Success)
                     {
@@ -416,6 +421,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                             Documents docs = new PdfProcessor().RasterizeOne(fullyQualifiedFileName, recordList[loop].Description, newGuidString, currentUser, organization);
 
+                            recordList[loop].Documents = docs;
+
                             // Ask backend for high-res conversion
 
                             RasterizeDocumentHiresOrder backendOrder =
@@ -426,12 +433,19 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         {
                             Document doc = Document.Create(relativePath + newGuidString, expensifyFileName, 0, newGuidString, null,
                                 currentUser);
+
+                            recordList[loop].Documents = Documents.FromSingle(doc);
                         }
                     }
                 }
             }
 
 
+
+            // We now have the individual expenses and all accompanying receipts.
+            // Create the expense claim group, then the individual expense records,
+            // and assign the Documents to the records and the records to the Group,
+            // so the user can review all of it.
 
 
 
@@ -476,6 +490,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             public DateTime Timestamp { get; set; }
             public string ExtendedInfo { get; set; }
             public string ReceiptFileNameHere { get; set; }
+            public Documents Documents { get; set; }
         }
 
 

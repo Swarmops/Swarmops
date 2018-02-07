@@ -100,11 +100,21 @@
                 { guid: '<%= this.UploadExpensify.GuidString%>' },
                 function(result) {
                     if (result.Success) {
-                        setTimeout(function() { updateExpensifyProgress(); }, 1000);
+                        setTimeout(function() { updateExpensifyProgress(); }, 3000);
                     }
                 });
             
-            }
+        }
+
+
+        function updateExpensifyProgress() {
+            // This is a fallback for when the master page's Progress over socket doesn't work.
+            // We're polling every three seconds just to make sure to give the user some feedback.
+
+
+            
+        }
+
 
     </script>
     
@@ -180,7 +190,7 @@
                 <div id="divExpensifyUploadAnotherHeader" style="display:none"><h2><asp:Label runat="server" ID="LabelUploadAnotherFileHeader" /></h2></div>
         
                 <div class="entryFields">
-                    <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" ClientUploadCompleteCallback="uploadCompletedCallback" />
+                    <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" ClientUploadCompleteCallback="onExpensifyUpload" />
                 </div>
                 <div class="entryLabels">
                     <div class="stacked-input-control"><asp:Label runat="server" ID="LabelExpensifyCsv" /></div>
