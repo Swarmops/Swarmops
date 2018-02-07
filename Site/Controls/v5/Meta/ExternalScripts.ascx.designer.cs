@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Swarmops.Frontend.Controls.UI {
+namespace Swarmops.Frontend.Controls.Meta {
     
     
     public partial class ExternalScripts {

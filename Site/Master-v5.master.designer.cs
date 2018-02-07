@@ -28,7 +28,7 @@ namespace Swarmops.Frontend {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.UI.ExternalScripts ExternalScriptEasyUI;
+        protected global::Swarmops.Frontend.Controls.Meta.ExternalScripts ExternalScriptEasyUI;
         
         /// <summary>
         /// NeededForCacheMarkToParse2 control.
@@ -46,7 +46,7 @@ namespace Swarmops.Frontend {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.UI.IncludedScripts IncludedScripts;
+        protected global::Swarmops.Frontend.Controls.Meta.IncludedScripts IncludedScripts;
         
         /// <summary>
         /// PlaceHolderHead control.

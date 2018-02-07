@@ -6,7 +6,7 @@ using System.Threading;
 using System.Web.UI;
 using Swarmops.Logic.Support;
 
-namespace Swarmops.Frontend.Controls.UI
+namespace Swarmops.Frontend.Controls.Meta
 {
     public partial class ExternalScripts : ControlV5Base
     {

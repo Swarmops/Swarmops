@@ -50,6 +50,10 @@
       <HintPath>..\packages\NGeoIP.1.0.1\lib\net45\AutoMapper.Net4.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="CsvHelper, Version=6.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.6.1.1\lib\net45\CsvHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NBitcoinBCC, Version=1.0.16.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NBitcoinBCC.1.0.16\lib\netstandard1.1\NBitcoinBCC.dll</HintPath>
@@ -780,8 +784,8 @@
     <Content Include="Controls\v5\Swarm\ImpersonationWarningBox.ascx" />
     <Content Include="Controls\v5\Swarm\PersonDetailPopup.ascx" />
     <Content Include="Controls\v5\Swarm\TreePositions.ascx" />
-    <Content Include="Controls\v5\UI\ExternalScripts.ascx" />
-    <Content Include="Controls\v5\UI\IncludedScripts.ascx" />
+    <Content Include="Controls\v5\Meta\ExternalScripts.ascx" />
+    <Content Include="Controls\v5\Meta\IncludedScripts.ascx" />
     <Content Include="Controls\v5\Base\WebUserControlTest.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -3279,18 +3283,18 @@
     <Compile Include="Controls\v5\Swarm\TreePositions.ascx.designer.cs">
       <DependentUpon>TreePositions.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\v5\UI\ExternalScripts.ascx.cs">
+    <Compile Include="Controls\v5\Meta\ExternalScripts.ascx.cs">
       <DependentUpon>ExternalScripts.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\v5\UI\ExternalScripts.ascx.designer.cs">
+    <Compile Include="Controls\v5\Meta\ExternalScripts.ascx.designer.cs">
       <DependentUpon>ExternalScripts.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\v5\UI\IncludedScripts.ascx.cs">
+    <Compile Include="Controls\v5\Meta\IncludedScripts.ascx.cs">
       <DependentUpon>IncludedScripts.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\v5\UI\IncludedScripts.ascx.designer.cs">
+    <Compile Include="Controls\v5\Meta\IncludedScripts.ascx.designer.cs">
       <DependentUpon>IncludedScripts.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
@@ -3313,7 +3317,7 @@
     <Content Include="App_GlobalResources\deploy-mono-folderfix" />
     <Content Include="Automation\UploadFileHandler.ashx" />
     <Content Include="Automation\web.config" />
-    <Content Include="Controls\v5\UI\web.config" />
+    <Content Include="Controls\v5\Meta\web.config" />
     <Content Include="Images\web.config" />
     <Content Include="machineKey.config" />
     <Content Include="Master-v5.master" />

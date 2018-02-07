@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Swarmops.Frontend.Controls.UI
+namespace Swarmops.Frontend.Controls.Meta
 {
     public partial class IncludedScripts : ControlV5Base
     {
