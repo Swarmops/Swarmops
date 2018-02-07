@@ -128,6 +128,20 @@
     <Compile Include="Controls\v5\Base\AjaxDropDown.ascx.designer.cs">
       <DependentUpon>AjaxDropDown.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\v5\Base\ProgressBarFake.ascx.cs">
+      <DependentUpon>ProgressBarFake.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Base\ProgressBarFake.ascx.designer.cs">
+      <DependentUpon>ProgressBarFake.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\v5\Base\ProgressBar.ascx.cs">
+      <DependentUpon>ProgressBar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Base\ProgressBar.ascx.designer.cs">
+      <DependentUpon>ProgressBar.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\v5\Swarm\ImpersonationWarningBox.ascx.cs">
       <DependentUpon>ImpersonationWarningBox.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -776,6 +790,8 @@
     <Compile Include="Controls\v5\Base\WebUserControlTest.ascx.designer.cs">
       <DependentUpon>WebUserControlTest.ascx</DependentUpon>
     </Compile>
+    <Content Include="Controls\v5\Base\ProgressBarFake.ascx" />
+    <Content Include="Controls\v5\Base\ProgressBar.ascx" />
     <Content Include="Controls\v5\Financial\ComboBudgets.ascx" />
     <Content Include="Controls\v5\Financial\ComboIncomeCostType.ascx" />
     <Content Include="Controls\v5\Financial\CurrencyTextBox.ascx" />
