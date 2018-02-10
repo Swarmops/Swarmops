@@ -45,30 +45,7 @@ namespace Swarmops.Logic.Support
                     int currentPage = Int32.Parse(match.Groups["current"].Value);
                     int totalPages = Int32.Parse(match.Groups["total"].Value);
 
-                    if (currentPage == 1 && totalPages == 1)
-                    {
-                        // Single page
-
-                        return input + Resources.Logic_Support_Document.PageSingle;
-                    }
-
-                    if (currentPage == 1)
-                    {
-                        // First page of X
-
-                        return input + String.Format(Resources.Logic_Support_Document.PageOneOfX, totalPages);
-                    }
-
-                    if (currentPage == totalPages)
-                    {
-                        // Last page of X
-
-                        return input + String.Format(Resources.Logic_Support_Document.LastPageOfX, totalPages);
-                    }
-
-                    // Page X of Y
-
-                    return input + String.Format(Resources.Logic_Support_Document.PageXofY, currentPage, totalPages);
+                    return input + GetLocalizedPageCounter(currentPage, totalPages);
                 }
 
                 // No localization
@@ -103,6 +80,34 @@ namespace Swarmops.Logic.Support
                                                            DocumentType.ToString());
                 }
             }
+        }
+
+        public static string GetLocalizedPageCounter(int currentPage, int totalPages)
+        {
+            if (currentPage == 1 && totalPages == 1)
+            {
+                // Single page
+
+                return Resources.Logic_Support_Document.PageSingle;
+            }
+
+            if (currentPage == 1)
+            {
+                // First page of X
+
+                return String.Format(Resources.Logic_Support_Document.PageOneOfX, totalPages);
+            }
+
+            if (currentPage == totalPages)
+            {
+                // Last page of X
+
+                return String.Format(Resources.Logic_Support_Document.LastPageOfX, totalPages);
+            }
+
+            // Page X of Y
+
+            return String.Format(Resources.Logic_Support_Document.PageXofY, currentPage, totalPages);
         }
 
         public static string StorageRoot

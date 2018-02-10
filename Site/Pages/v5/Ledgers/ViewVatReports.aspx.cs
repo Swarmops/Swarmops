@@ -116,13 +116,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 Documents documents = Documents.ForObject(tx.Dependency ?? tx); // tx.Dependency if not null, else tx
 
+                int pageCounter = 0;
+                int pagesTotal = documents.Count;
+
                 foreach (Document doc in documents)
                 {
+                    pageCounter++;
+
                     VatReportDocuments.Add(new RepeatedDocument
                     {
                         BaseId = item.FinancialTransactionId.ToString(CultureInfo.InvariantCulture),
                         DocId = doc.Identity,
-                        Title = tx.Description
+                        Title = tx.Description + " " + Document.GetLocalizedPageCounter(pageCounter, pagesTotal)
                     });
                 }
             }
