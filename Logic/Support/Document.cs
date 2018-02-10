@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
 using Swarmops.Common.Enums;
@@ -27,6 +28,52 @@ namespace Swarmops.Logic.Support
             {
                 SwarmDb.GetDatabaseForWriting().SetDocumentServerFileName (Identity, value);
                 base.ServerFileName = value;
+            }
+        }
+
+        public new string ClientFileName
+        {
+            get
+            {
+                string input = base.ClientFileName;
+                Regex regex = new Regex("{{LOCPAGE\\-(?<current>[0-9]+)\\-(?<total>[0-9]+)}}");
+
+                Match match = regex.Match(input);
+                if (match.Success)
+                {
+                    input = input.Substring(0, input.IndexOf("{{LOCPAGE", StringComparison.InvariantCulture));
+                    int currentPage = Int32.Parse(match.Groups["current"].Value);
+                    int totalPages = Int32.Parse(match.Groups["total"].Value);
+
+                    if (currentPage == 1 && totalPages == 1)
+                    {
+                        // Single page
+
+                        return input + Resources.Logic_Support_Document.PageSingle;
+                    }
+
+                    if (currentPage == 1)
+                    {
+                        // First page of X
+
+                        return input + String.Format(Resources.Logic_Support_Document.PageOneOfX, totalPages);
+                    }
+
+                    if (currentPage == totalPages)
+                    {
+                        // Last page of X
+
+                        return input + String.Format(Resources.Logic_Support_Document.LastPageOfX, totalPages);
+                    }
+
+                    // Page X of Y
+
+                    return input + String.Format(Resources.Logic_Support_Document.PageXofY, currentPage, totalPages);
+                }
+
+                // No localization
+
+                return input;
             }
         }
 

@@ -61,6 +61,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (Last page of {0}).
+        /// </summary>
+        internal static string LastPageOfX {
+            get {
+                return ResourceManager.GetString("LastPageOfX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (First page of {0}).
+        /// </summary>
+        internal static string PageOneOfX {
+            get {
+                return ResourceManager.GetString("PageOneOfX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (Single page).
         /// </summary>
         internal static string PageSingle {
