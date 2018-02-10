@@ -136,10 +136,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LiteralPleaseSelectBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_Error_PleaseSelectBudget);
             this.LiteralCannotRebudgetSalary.Text =
                 JavascriptEscape (Resources.Pages.Financial.AttestCosts_Error_CantRebudgetSalary);
-
-            this.LiteralConfirmOverdraftNo.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirmNo);
-            this.LiteralConfirmOverdraftYes.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirmYes);
-            this.LiteralConfirmOverdraft.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirm);
         }
 
         static protected IPayable PayableFromRecordId (string recordId)
