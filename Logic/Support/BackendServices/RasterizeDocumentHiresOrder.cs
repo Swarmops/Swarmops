@@ -25,22 +25,30 @@ namespace Swarmops.Logic.Support.BackendServices
             HasWorkerThread = true;
             WorkerThread = new Thread(LongRun);
             WorkerThread.Start(this);
+            Console.WriteLine(" - Worker thread for #" + this.ServiceOrderIdentity + " started");  // debugging
         }
 
         private static void LongRun(object orderObject)
         {
-            RasterizeDocumentHiresOrder order = (RasterizeDocumentHiresOrder) orderObject;
-            Document document = Document.FromIdentity(order.DocumentId);
+            RasterizeDocumentHiresOrder order = null;
             try
             {
+                order = (RasterizeDocumentHiresOrder)orderObject;
+                Console.WriteLine(" - Worker thread for #" + order.ServiceOrderIdentity + " running");  // debugging
+                Document document = Document.FromIdentity(order.DocumentId);
                 PdfProcessor.Rerasterize((Document)document, PdfProcessor.PdfProcessorOptions.HighQuality | PdfProcessor.PdfProcessorOptions.ForceOrphans);
+                order.Close();
             }
             catch (Exception exception)
             {
+                Console.WriteLine(" - Exception thrown: " + exception.ToString());   // debugging
                 order.ThrewException(exception);
             }
-            order.Close();
-            order.HasTerminated = true;
+
+            if (order != null)
+            {
+                order.HasTerminated = true;
+            }
         }
 
         public override void Terminate()

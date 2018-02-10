@@ -209,7 +209,7 @@ namespace Swarmops.Logic.Support
                     long fileLength = new FileInfo(Document.StorageRoot + lastPageFileName).Length;
 
                     documents.Add( Document.Create(lastPageFileName,
-                        clientFileName + " " + (pageCounter + 1).ToString(CultureInfo.InvariantCulture) + "/" + pdfPageCount.ToString(CultureInfo.InvariantCulture),
+                        clientFileName + " {{LOCPAGE-" + (pageCounter).ToString(CultureInfo.InvariantCulture) + "-" + pdfPageCount.ToString(CultureInfo.InvariantCulture) + "}}",
                         fileLength, guid, null, uploader));
 
                     // Set to readonly, lock out changes, permit all read

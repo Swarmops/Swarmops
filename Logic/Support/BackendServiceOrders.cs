@@ -21,6 +21,7 @@ namespace Swarmops.Logic.Support
         {
             foreach (BackendServiceOrder order in this)
             {
+                Console.WriteLine("Excecuting backend order #" + order.Identity); // debug purposes
                 order.Execute();
             }
         }

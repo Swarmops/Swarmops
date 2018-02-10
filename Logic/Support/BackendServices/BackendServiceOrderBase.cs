@@ -101,7 +101,8 @@ namespace Swarmops.Logic.Support.BackendServices
         {
             string executingAssemblyName = Assembly.GetExecutingAssembly().GetName().Name;
             string className = this.GetType().FullName;
-            string serviceClassName = executingAssemblyName + "," + className;
+            string serviceClassName = BackendServiceClass = executingAssemblyName + "," + className;
+            this.CreatedDateTime = DateTime.UtcNow;
 
             // Create the service order through reflection and XML serialization
 
@@ -112,7 +113,11 @@ namespace Swarmops.Logic.Support.BackendServices
 
         public DateTime CreatedDateTime { get; set; }
         public string BackendServiceClass { get; set; }
+
+        [XmlIgnore]
         public int ServiceOrderIdentity { get; set; }
+
+        [XmlIgnore]
         public bool HasTerminated { get; set; }
 
         [XmlIgnore]
@@ -122,6 +127,7 @@ namespace Swarmops.Logic.Support.BackendServices
 
         [XmlIgnore]
         public bool HasWorkerThread { get; set; }
+
         [XmlIgnore]
         public Thread WorkerThread { get; set; }
 

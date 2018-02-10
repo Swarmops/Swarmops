@@ -179,6 +179,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Logic.Structure.Geography.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Logic.Support.Document.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logic.Support.Document.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Logic.Support.ErrorMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -668,6 +673,10 @@
     <EmbeddedResource Include="Resources\Logic.Structure.Geography.ru-RU.resx" />
     <EmbeddedResource Include="Resources\Logic.Structure.Geography.sv-SE.resx" />
     <EmbeddedResource Include="Resources\Logic.Structure.Geography.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Support.Document.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Support.Document.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Logic.Support.ErrorMessages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Support.ErrorMessages.Designer.cs</LastGenOutput>
