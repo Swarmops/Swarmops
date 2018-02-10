@@ -121,8 +121,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
 
             this.LiteralErrorInsufficientBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_OutOfBudget);
-            this.LiteralWarnUnintializedBudget.Text =
-                JavascriptEscape (Resources.Pages.Financial.AttestCosts_Warn_UninitializedBudget);
 
             this.LabelDescribeDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionDeny;
             this.LabelDescribeCorrect.Text = String.Format (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount, CurrentOrganization.Currency.DisplayCode);
@@ -637,6 +635,24 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount); }
         }
 
+        public string Localized_WarnUninitializedBudget
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_Warn_UninitializedBudget); }
+        }
 
+        public string Localized_ConfirmOverdraftYes
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirmYes); }
+        }
+
+        public string Localized_ConfirmOverdraftNo
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirmNo); }
+        }
+
+        public string Localized_ConfirmOverdraftPrompt
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirm); }
+        }
     }
 }

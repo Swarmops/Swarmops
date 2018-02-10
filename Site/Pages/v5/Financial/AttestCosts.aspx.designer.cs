@@ -22,42 +22,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Literal LiteralErrorInsufficientBudget;
         
         /// <summary>
-        /// LiteralConfirmOverdraftNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralConfirmOverdraftNo;
-        
-        /// <summary>
-        /// LiteralConfirmOverdraftYes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralConfirmOverdraftYes;
-        
-        /// <summary>
-        /// LiteralConfirmOverdraft control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralConfirmOverdraft;
-        
-        /// <summary>
-        /// LiteralWarnUnintializedBudget control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralWarnUnintializedBudget;
-        
-        /// <summary>
         /// LiteralPleaseSelectBudget control.
         /// </summary>
         /// <remarks>

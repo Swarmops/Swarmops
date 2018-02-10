@@ -149,12 +149,12 @@
 
                                     alertify.set({
                                         labels: {
-                                            ok: decodeURIComponent('<asp:Literal ID="LiteralConfirmOverdraftNo" runat="server" />'),
-                                            cancel: decodeURIComponent('<asp:Literal ID="LiteralConfirmOverdraftYes" runat="server" />')
+                                            ok: decodeURIComponent('<%=this.Localized_ConfirmOverdraftYes%>'),
+                                            cancel: decodeURIComponent('<%=this.Localized_ConfirmOverdraftNo%>')
                                         }
                                     });
 
-                                    alertify.confirm(decodeURIComponent('<asp:Literal ID="LiteralConfirmOverdraft" runat="server" />'),
+                                    alertify.confirm(decodeURIComponent('<%=this.Localized_ConfirmOverdraftPrompt%>'),
                                         $.proxy(function(response) {
                                             if (!response) {
                                                 // user clicked the RED button, which is "confirm overdraft"
@@ -288,7 +288,15 @@
             setAttestability();
 
             if (budgetUninitializedLookup[accountId] == true && uninitializedPopupDisplayed == false) {
-                alertify.alert(decodeURIComponent('<asp:Literal id="LiteralWarnUnintializedBudget" runat="server" />'));
+
+                alertify.set({
+                    labels: {
+                        ok: decodeURIComponent('<%=this.Localized_ConfirmDialog_Ok%>')
+                    }
+                });
+
+
+                alertify.alert(decodeURIComponent('<%=this.Localized_WarnUninitializedBudget%>'));
                 uninitializedPopupDisplayed = true;
             }
 
