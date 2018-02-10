@@ -102,10 +102,10 @@ namespace Swarmops.Logic.Support
                         // Just to be sure, also set the parent (month) and grandparent (year) permissions
                         // to rwxr-xr-x (backend must be able to see traverse to here)
 
-                        Syscall.chmod(wholePath.Substring(wholePath.Length - 3),  // strip the last "/dd" from the path, leaving "/storageroot/yyyy/mm"
+                        Syscall.chmod(wholePath.Substring(0, wholePath.Length - 3),  // strip the last "/dd" from the path, leaving "/storageroot/yyyy/mm"
                             FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IXGRP | FilePermissions.S_IROTH | FilePermissions.S_IXOTH);
 
-                        Syscall.chmod(wholePath.Substring(wholePath.Length - 6), // strip the "/mm/dd" from the path, leaving "/storageroot/yyyy"
+                        Syscall.chmod(wholePath.Substring(0, wholePath.Length - 6), // strip the "/mm/dd" from the path, leaving "/storageroot/yyyy"
                             FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IXGRP | FilePermissions.S_IROTH | FilePermissions.S_IXOTH);
                     }
                 }
