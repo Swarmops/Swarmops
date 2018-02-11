@@ -32,8 +32,6 @@
     {
         // This function primarily gets called via a socket handler invoked on the master page, but also from our fallback polling.
 
-        alertify.log(newProgress);  // debug
-
         if (newProgress > <%=this.ClientID%>_lastProgress) {
 
             $("#Div_<%=this.ClientID %>_ProgressBar .progressbar-value").animate(
@@ -80,8 +78,6 @@
 
     function <%= this.ClientID%>_progressFallbackPoll() {
         <%=this.ClientID%>_nextPollTimer = null;
-
-        alertify.log("ProgressPollTimer"); // debug
 
         SwarmopsJS.ajaxCall(
             "/Automation/Json-ByGuid.aspx/GetNonsocketProgress",
