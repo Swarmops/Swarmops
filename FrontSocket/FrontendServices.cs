@@ -109,7 +109,7 @@ namespace Swarmops.Frontend.Socket
             {
                 case "BroadcastProgress":
                     JObject progressBroadcast = new JObject();
-                    progressBroadcast["messageType"] = "ProgressUpdate";
+                    progressBroadcast["MessageType"] = "ProgressUpdate";
                     progressBroadcast["Guid"] = message.Guid.Replace("-", "_"); // enables JS tokens from Guid
                     progressBroadcast["Progress"] = message.Progress;
 
