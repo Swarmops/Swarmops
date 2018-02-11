@@ -106,10 +106,12 @@
         }
 
         function onExpensifyProgressHalfway() {
+            alertify.log("OnExpensifyProgressHalfway"); // debug
             $('#divUploadExpensify').slideUp().fadeOut();
         }
 
         function onExpensifyProgressComplete() {
+            alertify.log("OnExpensifyProgressComplete"); // debug
             <%=this.ProgressExpensify.ClientID%>_hide();
             <%=this.ProgressExpensifyFake.ClientID%>_show();
             $('#divUploadExpensify').hide();
