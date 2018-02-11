@@ -111,9 +111,16 @@
             
         }
 
+        function onExpensifyProgressHalfway() {
+            $('#divUploadExpensify').slideUp().fadeOut();
+        }
 
-
-        function onExpensify
+        function onExpensifyProgressComplete() {
+            <%=this.ProgressExpensify.ClientID%>_hide();
+            <%=this.ProgressExpensifyFake.ClientID%>_show();
+            $('#divUploadExpensify').hide();
+            $('#divExpensifyUploadAnotherHeader').show();
+        }
 
 
     </script>
@@ -174,23 +181,23 @@
                 <h2><asp:Label ID="LabelProcessingComplete" runat="server" /></h2>
                 <div id="divExpensifyProgressFake" style="width:100%"></div>
 
-                <div id="divExpensifyResultsGood" style="display:none"><div id="DivUploadResultsGoodText"></div></div>
+                <div id="divExpensifyResultsGood" style="display:none">Good results go here<div id="DivUploadResultsGoodText"></div></div>
 
                 <div id="divExpensifyResultsBad" style="display:none">
                     <div style="float:left;margin-right:10px"><img src="/Images/Icons/iconshock-cross-96px.png" /></div><div id="DivUploadResultsBadText"></div>
                 </div>
-             </div>
-
-            
-            <div id="divExpensifyInstructions">
-                <h2><asp:Label runat="server" ID="LabelExpensifyUploadHeader" /></h2>
-
-                <p><asp:Label runat="server" ID="LabelExpensifyInstructions1"/></p>
-                <p><asp:Label runat="server" ID="LabelExpensifyInstructions2"/></p>
             </div>
 
-            <div id="DivUploadExpensify">
-                <div id="divExpensifyUploadAnotherHeader" style="display:none"><h2><asp:Label runat="server" ID="LabelUploadAnotherFileHeader" /></h2></div>
+            
+            <div id="divUploadExpensify">
+                <div id="divExpensifyInstructions">
+                    <h2><asp:Label runat="server" ID="LabelExpensifyUploadHeader" /></h2>
+
+                    <p><asp:Label runat="server" ID="LabelExpensifyInstructions1"/></p>
+                    <p><asp:Label runat="server" ID="LabelExpensifyInstructions2"/></p>
+                </div>
+
+                <div id="divExpensifyUploadAnotherHeader" style="display:none"><h2><asp:Label runat="server" ID="LabelUploadAnotherFileHeader" Text="Upload Another XYZ" /></h2></div>
         
                 <div class="entryFields">
                     <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" ClientUploadCompleteCallback="onExpensifyUpload" />
