@@ -99,7 +99,7 @@
                 },
                 function(result) {
                     if (result.Success) {
-
+                        $('#divUploadExpensify').slideUp().fadeOut(); // hide the upload panel
                     }
                 });
             
@@ -107,7 +107,6 @@
 
         function onExpensifyProgressHalfway() {
             alertify.log("OnExpensifyProgressHalfway"); // debug
-            $('#divUploadExpensify').slideUp().fadeOut();
         }
 
         function onExpensifyProgressComplete() {
