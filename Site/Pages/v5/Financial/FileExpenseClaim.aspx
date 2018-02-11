@@ -99,18 +99,17 @@
                 },
                 function(result) {
                     if (result.Success) {
-                        $('#divUploadExpensify').slideUp().fadeOut(); // hide the upload panel
+
                     }
                 });
             
         }
 
         function onExpensifyProgressHalfway() {
-            alertify.log("OnExpensifyProgressHalfway"); // debug
+            $('#divUploadExpensify').slideUp().fadeOut(); // hide the upload panel
         }
 
         function onExpensifyProgressComplete() {
-            alertify.log("OnExpensifyProgressComplete"); // debug
             <%=this.ProgressExpensify.ClientID%>_hide();
             <%=this.ProgressExpensifyFake.ClientID%>_show();
             $('#divUploadExpensify').hide();
@@ -169,10 +168,10 @@
         </div>
         <div title="<img src='/Images/Icons/expensify-icon-official.png' width='40' height='40' style='padding-top:12px'>">
             
-            <div id="divExpensifyResults" style="display:none; margin-bottom:10px">
-                
-                <Swarmops5:ProgressBarFake ID="ProgressExpensifyFake" runat="server"/>
+            <Swarmops5:ProgressBarFake ID="ProgressExpensifyFake" runat="server"/>
 
+            <div id="divExpensifyResults" style="display:none; margin-bottom:10px">
+               
                 <h2><asp:Label ID="LabelProcessingComplete" runat="server" /></h2>
                 <div id="divExpensifyProgressFake" style="width:100%"></div>
 
