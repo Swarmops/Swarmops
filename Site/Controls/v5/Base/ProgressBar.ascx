@@ -57,6 +57,8 @@
 
             if (<%=this.ClientID%>_lastProgress < 100 && newProgress >= 100) {
 
+                alertify.log("100% width");
+
                 $("#Div_<%=this.ClientID %>_ProgressBar .progressbar-value").animate(
                     {
                         width: "100%"
