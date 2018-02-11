@@ -25,6 +25,7 @@
     function <%=this.ClientID%>_begin() {
         $('#Div_<%=this.ClientID %>_ProgressBar').progressbar({ value: 0, max: 100 });
         <%=this.ClientID%>_nextPollTimer = setTimeout(function() { <%= this.ClientID%>_progressFallbackPoll(); }, 2500);
+        progressUpdateCallback_<%=this.GuidToken%>(1); // Initializes a small piece of bar
     }
 
     function progressUpdateCallback_<%=this.GuidToken%>(newProgress)
