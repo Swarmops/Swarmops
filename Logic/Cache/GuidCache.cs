@@ -53,7 +53,7 @@ namespace Swarmops.Logic.Cache
 
         public static void SetProgress(string guid, int progress)
         {
-            GuidCache.Set(guid + "-Progress", progress.ToString(CultureInfo.InvariantCulture));
+            GuidCache.Set(guid + "-Progress", progress);
         }
 
 
