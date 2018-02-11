@@ -422,6 +422,7 @@
     <Compile Include="Support\CheckDigit.cs" />
     <Compile Include="Support\Document.cs" />
     <Compile Include="Support\Documents.cs" />
+    <Compile Include="Support\ProgressBarBackend.cs" />
     <Compile Include="Support\PWEvents.cs" />
     <Compile Include="Support\Formatting.cs" />
     <Compile Include="Support\LogicServices.cs" />

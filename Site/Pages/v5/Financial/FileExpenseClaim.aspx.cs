@@ -218,8 +218,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             Person currentUser = ((ProcessThreadArguments) args).CurrentUser;
             Organization organization = ((ProcessThreadArguments) args).Organization;
 
+            ProgressBarBackend progress = new ProgressBarBackend(guidProgress);
+
             Documents documents = Documents.RecentFromDescription(guidFiles);
-            GuidCache.SetProgress(guidProgress, 1); // to make sure results aren't repeated from last file
+            progress.Set(1);
             GuidCache.Set(guidProgress + "-UploadResult", UploadBankFiles.ImportResultsCategory.Bad);
             // default - this is what happens if exception
 
@@ -378,7 +380,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new BarfException();  // TODO: ASK USER
             }
 
-            GuidCache.SetProgress(guidProgress, 10);
+            progress.Set(10);
 
             // We now need to get all the receipt images. This is a little tricky as we don't have the URL
             // of the receipt directly, we only have the URL of a webpage that contains JavaScript code
@@ -392,7 +394,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             for (int loop = 0; loop < recordList.Count; loop++)
             {
-                GuidCache.SetProgress(guidProgress, loop * 90 / recordList.Count + 10);
+                progress.Set(guidProgress, loop * 90 / recordList.Count + 10);
 
                 using (WebClient client = new WebClient())
                 {
@@ -462,7 +464,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // TODO: Once user has confirmed budgets, save expenses
 
-            GuidCache.SetProgress(guidProgress, 100);
+            progress.Set(100);
 
         }
 

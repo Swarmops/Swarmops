@@ -51,6 +51,10 @@ namespace Swarmops.Frontend.Socket
                 case "Metapackage":
                     ProcessMetapackage((string) json["XmlData"]);
                     break;
+                case "BroadcastProgress":
+                    Sessions.Broadcast("{\"messageType\":\"ProgressUpdate\",\"Guid\":\"" + json["Guid"] +
+                                       "\",\"Progress\":\"" + json["Progress"] + "\"}");
+                    break;
                 case "Ping":
                     // TODO: Request heartbeat from backend
                     // Sessions.Broadcast("{\"messageType\":\"Heartbeat\"}");

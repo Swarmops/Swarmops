@@ -37,7 +37,7 @@
 
             $("#Div_<%=this.ClientID %>_ProgressBar .progressbar-value").animate(
                 {
-                    width: "100%"
+                    width: newProgress + "%"
                 }, { queue: false });
 
             if (<%=this.ClientID%>_lastProgress < 50 && newProgress >= 50) {
@@ -51,6 +51,13 @@
             }
 
             if (<%=this.ClientID%>_lastProgress < 100 && newProgress >= 100) {
+
+            $("#Div_<%=this.ClientID %>_ProgressBar .progressbar-value").animate(
+                {
+                    width: "100%"
+                }, { queue: false });
+
+
                 // check for completion callback
 
                 <% if (!String.IsNullOrEmpty(this.OnClientProgressCompleteCallback)) { %>

@@ -51,12 +51,6 @@ namespace Swarmops.Logic.Cache
         }
 
 
-        public static void SetProgress(string guid, int progress)
-        {
-            GuidCache.Set(guid + "-Progress", progress);
-        }
-
-
         private static void ConditionalGarbageCollect()
         {
             lock (_cache) // thread safety
