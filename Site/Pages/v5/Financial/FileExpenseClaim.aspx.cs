@@ -462,6 +462,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // TODO: Once user has confirmed budgets, save expenses
 
+            GuidCache.SetProgress(guidProgress, 100);
+
         }
 
         public class BarfException: Exception {}
