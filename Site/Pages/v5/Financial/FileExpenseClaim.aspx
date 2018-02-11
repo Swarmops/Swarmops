@@ -88,13 +88,7 @@
         var expensifyProcessingHalfway = false;
 
         function onExpensifyUpload() {
-            $('#divExpensifyProcessing').fadeIn();
-            $('#divExpensifyProgress').progressbar({ value: 0, max: 100 });
-            $('#divExpensifyProgressFake').progressbar({ value: 0, max: 100 });
-            $('#divExpensifyProgressFake').progressbar({ value: 100 }); // this guy is swapped in on completion
-            $('#divExpensifyResults').slideUp();
-            expensifyProcessingHalfway = false;
-
+            <%=this.ProgressExpensify.ClientID%>_fadeIn();
             <%=this.ProgressExpensify.ClientID%>_begin();  // starts listening / polling for progress
 
             SwarmopsJS.ajaxCall
