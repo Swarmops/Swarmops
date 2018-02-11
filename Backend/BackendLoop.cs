@@ -17,6 +17,7 @@ using Swarmops.Logic.Communications.Resolution;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.SocketMessages;
 using Swarmops.Utility;
 using Swarmops.Utility.BotCode;
 using Swarmops.Utility.Communications;

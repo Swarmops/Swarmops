@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Swarmops.Logic.Support;
 using System.Xml.Serialization;
 using Newtonsoft.Json.Linq;
 using Swarmops.Logic.Security;
 using WebSocketSharp;
 
-
-namespace Swarmops.Logic
+namespace Swarmops.Logic.Support.SocketMessages
 {
     [Serializable]
     public class SocketMessage : SocketMessageBase<SocketMessage>
@@ -94,6 +89,8 @@ namespace Swarmops.Logic
         public int FinancialAccountId { get; set; }
         public int GeographyId { get; set; }
         public int PersonId { get; set; }
+        public string Guid { get; set; }
+        public int Progress { get; set; }
         public string XmlData { get; set; }
     }
 

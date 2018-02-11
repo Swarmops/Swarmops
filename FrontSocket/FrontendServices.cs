@@ -15,6 +15,7 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Support.BackendServices;
+using Swarmops.Logic.Support.SocketMessages;
 using Swarmops.Logic.Swarm;
 using WebSocketSharp;
 using WebSocketSharp.Server;
@@ -50,10 +51,6 @@ namespace Swarmops.Frontend.Socket
                     break;
                 case "Metapackage":
                     ProcessMetapackage((string) json["XmlData"]);
-                    break;
-                case "BroadcastProgress":
-                    Sessions.Broadcast("{\"messageType\":\"ProgressUpdate\",\"Guid\":\"" + json["Guid"] +
-                                       "\",\"Progress\":\"" + json["Progress"] + "\"}");
                     break;
                 case "Ping":
                     // TODO: Request heartbeat from backend
@@ -110,13 +107,17 @@ namespace Swarmops.Frontend.Socket
 
             switch (message.MessageType)
             {
-                case "...":
-                    // some future to-be-defined processing
+                case "BroadcastProgress":
+                    JObject progressBroadcast = new JObject();
+                    progressBroadcast["messageType"] = "ProgressUpdate";
+                    progressBroadcast["Guid"] = message.Guid.Replace("-", "_"); // enables JS tokens from Guid
+                    progressBroadcast["Progress"] = message.Progress;
+
+                    Sessions.Broadcast(progressBroadcast.ToString());
                     break;
 
                 default:
                     // we're not handling here, send to backend
-                    Console.WriteLine(" - sending " + message.MessageType + " upstream");
                     FrontendLoop.SendMessageUpstream(message);
                     break;
             }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework.Constraints;
 using Swarmops.Logic.Cache;
+using Swarmops.Logic.Support.SocketMessages;
 
 namespace Swarmops.Logic.Support
 {
@@ -18,7 +19,13 @@ namespace Swarmops.Logic.Support
         public void Set (int progress)
         {
             GuidCache.Set(this.Guid + "-Progress", progress);
-
+            SocketMessage message = new SocketMessage
+            {
+                MessageType = "BroadcastProgress",
+                Guid = this.Guid,
+                Progress = progress
+            };
+            message.SendUpstream();
         }
 
         public string Guid { get; private set; }

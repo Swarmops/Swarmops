@@ -6,6 +6,7 @@ using Swarmops.Common.Interfaces;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.SocketMessages;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial

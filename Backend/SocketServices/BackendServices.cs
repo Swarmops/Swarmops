@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using Swarmops.Logic;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.SocketMessages;
 using Swarmops.Utility.BotCode;
 using WebSocketSharp;
 using WebSocketSharp.Server;
