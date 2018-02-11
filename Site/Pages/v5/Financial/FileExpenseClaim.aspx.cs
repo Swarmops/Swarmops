@@ -394,7 +394,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             for (int loop = 0; loop < recordList.Count; loop++)
             {
-                progress.Set(guidProgress, loop * 90 / recordList.Count + 10);
+                progress.Set(loop * 90 / recordList.Count + 10);
 
                 using (WebClient client = new WebClient())
                 {
