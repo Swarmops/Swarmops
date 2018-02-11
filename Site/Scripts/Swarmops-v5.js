@@ -126,11 +126,9 @@ function _masterInitializeSocket(authenticationTicket) {
             }
         }
         else if (message.MessageType == "ProgressUpdate") {
-            alertify.log("Received ProgressUpdate: " + message.Progress);
             var updateFunction = window["progressUpdateCallback_" + message.Guid];
 
             if (updateFunction != undefined) {
-                alertify.log("Calling ProgressUpdate: " + message.Progress);
                 updateFunction(message.Progress);
             }
         }

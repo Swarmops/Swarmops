@@ -36,14 +36,10 @@
 
         if (newProgress > <%=this.ClientID%>_lastProgress) {
 
-            if (newProgress < 100) {
-                // The 100% complete case is dealt with later
-
-                $("#Div_<%=this.ClientID %>_ProgressBar .progressbar-value").animate(
-                {
-                    width: newProgress + "%"
-                }, { queue: false });
-            }
+            $("#Div_<%=this.ClientID %>_ProgressBar .progressbar-value").animate(
+            {
+                width: newProgress + "%"
+            }, { queue: false });
 
             if (<%=this.ClientID%>_lastProgress < 50 && newProgress >= 50) {
                 // check for halfway callback
@@ -56,13 +52,6 @@
             }
 
             if (<%=this.ClientID%>_lastProgress < 100 && newProgress >= 100) {
-
-                alertify.log("100% width");
-
-                $("#Div_<%=this.ClientID %>_ProgressBar .progressbar-value").animate(
-                    {
-                        width: "100%"
-                    }, { queue: false });
 
                 // check for completion callback
 
