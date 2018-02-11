@@ -141,7 +141,7 @@
 
                                 if ($(this).hasClass("LocalFundsInsufficient")) {
                                     if (!canOverdraftBudgets) {
-                                        alertify.error(decodeURIComponent('<asp:Literal id="LiteralErrorInsufficientBudget" runat="server" />'));
+                                        alertify.error(SwarmopsJS.unescape('<%=this.Localized_Error_InsufficientBudget%>'));
                                         return;
                                     }
 
@@ -149,12 +149,12 @@
 
                                     alertify.set({
                                         labels: {
-                                            ok: decodeURIComponent('<%=this.Localized_ConfirmOverdraftYes%>'),
-                                            cancel: decodeURIComponent('<%=this.Localized_ConfirmOverdraftNo%>')
+                                            ok: SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftYes%>'),
+                                            cancel: SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftNo%>')
                                         }
                                     });
 
-                                    alertify.confirm(decodeURIComponent('<%=this.Localized_ConfirmOverdraftPrompt%>'),
+                                    alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftPrompt%>'),
                                         $.proxy(function(response) {
                                             if (!response) {
                                                 // user clicked the RED button, which is "confirm overdraft"
@@ -201,12 +201,12 @@
                                             $("#IconApproval" + baseid).fadeIn(100);
                                             $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
                                             $('.row' + baseid).animate({ color: "#000" }, 100);
-                                            alertify.log(msg.d.DisplayMessage);
+                                            alertify.log(SwarmopsJS.unescape(msg.d.DisplayMessage));
 
                                             recheckBudgets(); // will double-check budgets against server
                                         } else {
                                             $(this).attr("src", "/Images/Icons/iconshock-greentick-128x96px.png");
-                                            alertify.error(msg.d.DisplayMessage);
+                                            alertify.error(SwarmopsJS.unescape(msg.d.DisplayMessage));
                                             // TODO: Add alert box?
                                         }
                                     }, this)
@@ -291,12 +291,12 @@
 
                 alertify.set({
                     labels: {
-                        ok: decodeURIComponent('<%=this.Localized_ConfirmDialog_Ok%>')
+                        ok: SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_Ok%>')
                     }
                 });
 
 
-                alertify.alert(decodeURIComponent('<%=this.Localized_WarnUninitializedBudget%>'));
+                alertify.alert(SwarmopsJS.unescape('<%=this.Localized_WarnUninitializedBudget%>'));
                 uninitializedPopupDisplayed = true;
             }
 
@@ -321,7 +321,7 @@
                         $("#IconDenial" + baseid).finish().css("display", "none").css("opacity", 1.0);
                         $("#IconUndo" + baseid).fadeIn(100);
                         $('.row' + baseid).animate({ color: "#AAA" }, 400);
-                        alertify.success(msg.d.DisplayMessage);
+                        alertify.success(SwarmopsJS.unescape(msg.d.DisplayMessage));
 
                         recheckBudgets(); // will double-check budgets against server
                     } else {
@@ -329,7 +329,7 @@
                         $(this).attr("rel", "");
                         $(this).attr("src", approvalOverdraftIcon);
                         $("#IconDenial" + baseid).css('opacity', 1.0).css("cursor", "pointer");
-                        alertify.error(msg.d.DisplayMessage);
+                        alertify.error(SwarmopsJS.unescape(msg.d.DisplayMessage));
 
                         recheckBudgets();
                     }

@@ -120,8 +120,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelGridHeaderItem.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Item;
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
 
-            this.LiteralErrorInsufficientBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_OutOfBudget);
-
             this.LabelDescribeDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionDeny;
             this.LabelDescribeCorrect.Text = String.Format (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount, CurrentOrganization.Currency.DisplayCode);
             this.LabelDescribeRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionRebudget;
@@ -502,7 +500,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                         return new AjaxCallResult
                         {
-                            DisplayMessage = Resources.Pages.Financial.AttestCosts_OutOfBudget,
+                            DisplayMessage = CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_OutOfBudget),
                             Success = false
                         };
                     }
@@ -527,7 +525,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             FinancialAccount.ClearAttestationAdjustmentsCache (authData.CurrentOrganization);
 
-            return new AjaxCallResult {DisplayMessage = result, Success = true};
+            return new AjaxCallResult {DisplayMessage = CommonV5.JavascriptEscape(result), Success = true};
         }
 
 
@@ -649,6 +647,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         public string Localized_ConfirmOverdraftPrompt
         {
             get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirm); }
+        }
+
+        public string Localized_Error_InsufficientBudget
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_OutOfBudget); }
         }
     }
 }
