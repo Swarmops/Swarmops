@@ -95,25 +95,25 @@
             $('#divExpensifyResults').slideUp();
             expensifyProcessingHalfway = false;
 
+            <%=this.ProgressExpensify.ClientID%>_begin();  // starts listening / polling for progress
+
             SwarmopsJS.ajaxCall
                 ("/Pages/v5/Financial/FileExpenseClaim.aspx/InitializeExpensifyProcessing",
-                { guid: '<%= this.UploadExpensify.GuidString%>' },
+                {
+                    guidFiles: '<%= this.UploadExpensify.GuidString%>',
+                    guidProgress: '<%= this.ProgressExpensify.Guid%>'
+                },
                 function(result) {
                     if (result.Success) {
-                        setTimeout(function() { updateExpensifyProgress(); }, 3000);
+
                     }
                 });
             
         }
 
 
-        function updateExpensifyProgress() {
-            // This is a fallback for when the master page's Progress over socket doesn't work.
-            // We're polling every three seconds just to make sure to give the user some feedback.
 
-
-            
-        }
+        function onExpensify
 
 
     </script>
@@ -168,6 +168,9 @@
         <div title="<img src='/Images/Icons/expensify-icon-official.png' width='40' height='40' style='padding-top:12px'>">
             
             <div id="divExpensifyResults" style="display:none; margin-bottom:10px">
+                
+                <Swarmops5:ProgressBarFake ID="ProgressExpensifyFake" runat="server"/>
+
                 <h2><asp:Label ID="LabelProcessingComplete" runat="server" /></h2>
                 <div id="divExpensifyProgressFake" style="width:100%"></div>
 
@@ -198,11 +201,8 @@
     
                 <br clear="all"/>
             </div>
-    
-            <div id="DivProcessing" style="display:none">
-                <h2><asp:Label runat="server" ID="LabelProcessing" /></h2>
-                <div id="DivProgressProcessing" style="width:100%"></div>
-            </div>
+
+            <Swarmops5:ProgressBar ID="ProgressExpensify" runat="server" OnClientProgressHalfwayCallback="onExpensifyProgressHalfway" OnClientProgressCompleteCallback="onExpensifyProgressComplete"/>
 
         </div>
     </div>

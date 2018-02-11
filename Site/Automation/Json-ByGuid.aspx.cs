@@ -42,6 +42,7 @@ namespace Swarmops.Frontend.Automation
             // if the progress object doesn't exist, assume it hasn't been initialized yet
 
             return new AjaxCallResult {Success = false};
+
         }
     }
 }

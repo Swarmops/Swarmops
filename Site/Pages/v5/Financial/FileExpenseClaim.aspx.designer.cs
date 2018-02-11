@@ -220,6 +220,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelBankAccount;
         
         /// <summary>
+        /// ProgressExpensifyFake control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.v5.Base.ProgressBarFake ProgressExpensifyFake;
+        
+        /// <summary>
         /// LabelProcessingComplete control.
         /// </summary>
         /// <remarks>
@@ -283,12 +292,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelExpensifyCsv;
         
         /// <summary>
-        /// LabelProcessing control.
+        /// ProgressExpensify control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelProcessing;
+        protected global::Swarmops.Frontend.Controls.v5.Base.ProgressBar ProgressExpensify;
     }
 }

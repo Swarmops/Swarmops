@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Swarmops.Common;
 
@@ -48,7 +49,13 @@ namespace Swarmops.Logic.Cache
                 _cache.Remove (guidString);
             }
         }
-        
+
+
+        public static void SetProgress(string guid, int progress)
+        {
+            GuidCache.Set(guid + "-Progress", progress.ToString(CultureInfo.InvariantCulture));
+        }
+
 
         private static void ConditionalGarbageCollect()
         {

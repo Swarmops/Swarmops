@@ -11,8 +11,8 @@ namespace Swarmops.Frontend.Controls.v5.Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            _guid = string.Empty;
-            this.Header = Resources.Global.Global_ProcessingFile + "...";
+            _guid = System.Guid.NewGuid().ToString();
+            this.Header = Resources.Global.Global_ProcessingFile;
         }
 
         protected string GuidToken

@@ -78,18 +78,21 @@
         <%=this.ClientID%>_nextPollTimer = null;
 
         SwarmopsJS.ajaxCall(
-            "/Automation/Json-ByGuid.aspx/GetProgress",
+            "/Automation/Json-ByGuid.aspx/GetNonsocketProgress",
             { guid: '<%= this.Guid%>' },
             function(result) {
 
-                // Call our ordinary progress updater from the poller
+                if (result.Success) {
 
-                progressUpdateCallback_<%=this.GuidToken%>(result.d);
+                    // Call our ordinary progress updater from the poller
 
-                // If the progress is less than 100, schedule another poll
+                    progressUpdateCallback_<%=this.GuidToken%>(result.DisplayMessage);
 
-                if (result.d < 100) {
-                    <%=this.ClientID%>_nextPollTimer = setTimeout(function() { <%= this.ClientID%>_progressFallbackPoll(); }, 2500);
+                    // If the progress is less than 100, schedule another poll
+
+                    if (result.DisplayMessage < 100) {
+                        <%=this.ClientID%>_nextPollTimer = setTimeout(function() { <%= this.ClientID%>_progressFallbackPoll(); }, 2500);
+                    }
                 }
             }
         );

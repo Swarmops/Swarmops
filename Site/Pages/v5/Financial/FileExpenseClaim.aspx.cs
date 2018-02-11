@@ -174,7 +174,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
 
         [WebMethod(true)]
-        public static AjaxCallResult InitializeExpensifyProcessing(string guid)
+        public static AjaxCallResult InitializeExpensifyProcessing(string guidFiles, string guidProgress)
         {
             // Start an async thread that does all the work, then return
 
@@ -184,7 +184,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             ProcessThreadArguments args = new ProcessThreadArguments
             {
-                Guid = guid,
+                GuidFiles = guidFiles,
+                GuidProgress = guidProgress,
                 Organization = authData.CurrentOrganization,
                 CurrentUser = authData.CurrentUser
             };
@@ -197,7 +198,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private class ProcessThreadArguments
         {
-            public string Guid { get; set; }
+            public string GuidFiles { get; set; }
+            public string GuidProgress { get; set; }
             public Organization Organization { get; set; }
             public Person CurrentUser { get; set; }
         }
@@ -211,13 +213,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private static void ProcessExpensifyUploadThread(object args)
         {
-            string guid = ((ProcessThreadArguments) args).Guid;
+            string guidProgress = ((ProcessThreadArguments) args).GuidProgress;
+            string guidFiles = ((ProcessThreadArguments)args).GuidFiles;
             Person currentUser = ((ProcessThreadArguments) args).CurrentUser;
             Organization organization = ((ProcessThreadArguments) args).Organization;
 
-            Documents documents = Documents.RecentFromDescription(guid);
-            GuidCache.Set(guid + "-Progress", 1); // to make sure results aren't repeated from last file
-            GuidCache.Set(guid + "-Result", UploadBankFiles.ImportResultsCategory.Bad);
+            Documents documents = Documents.RecentFromDescription(guidFiles);
+            GuidCache.SetProgress(guidProgress, 1); // to make sure results aren't repeated from last file
+            GuidCache.Set(guidProgress + "-UploadResult", UploadBankFiles.ImportResultsCategory.Bad);
             // default - this is what happens if exception
 
             if (documents.Count != 1)
@@ -295,7 +298,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 // Set progress to complete
                 // Abort
 
-                GuidCache.Set(guid + "-Progress", 100); // terminate progress bar
+                GuidCache.Set(guidProgress, 100); // terminate progress bar
                 throw new BarfException();
             }
 
@@ -375,6 +378,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new BarfException();  // TODO: ASK USER
             }
 
+            GuidCache.SetProgress(guidProgress, 10);
+
             // We now need to get all the receipt images. This is a little tricky as we don't have the URL
             // of the receipt directly, we only have the URL of a webpage that contains JavaScript code
             // to fetch the receipt image.
@@ -385,10 +390,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Get all receipts
 
-
-
             for (int loop = 0; loop < recordList.Count; loop++)
             {
+                GuidCache.SetProgress(guidProgress, loop * 90 / recordList.Count + 10);
+
                 using (WebClient client = new WebClient())
                 {
                     string receiptResource = client.DownloadString(recordList[loop].ReceiptUrl);
