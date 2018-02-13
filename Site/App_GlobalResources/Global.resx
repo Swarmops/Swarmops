@@ -960,4 +960,7 @@
   <data name="Global_Upload" xml:space="preserve">
     <value>Upload</value>
   </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>File Upload Results</value>
+  </data>
 </root>

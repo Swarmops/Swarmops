@@ -133,19 +133,17 @@
 
                         // Make a brutal transition to failure view
 
-                        $('#divUploadExpensify').show(); // re-show
                         <%=this.ProgressExpensify.ClientID%>_hide();
                         <%=this.ProgressExpensifyFake.ClientID%>_hide();
 
-                        if (result.ErrorType == "ERR_NEEDSVAT") {
-                            $('#divExpensifyResultsBad').show();
-                            $('#divExpensifyResultsGood').hide();
-                            $('#divExpensifyResults').show();
-                            $('#divExpensifyUploadAnotherHeader').show();
-                            $('#divUploadExpensify').show();
-                            $('#divExpensifyResultsBadText').html(result.DisplayMessage);
-                        }
-                        
+                        $('#divExpensifyResultsBad').show();
+                        $('#divExpensifyResultsGood').hide();
+                        $('#divExpensifyResults').show();
+                        $('#divExpensifyInstructions').hide();
+                        $('#divExpensifyUploadAnotherHeader').show();
+                        $('#divExpensifyResultsBadText').html(result.DisplayMessage);
+
+                        $('#divUploadExpensify').show(); // re-show
                     }
 
                     // Regardless of whether result is good or bad, reset the upload control
@@ -212,7 +210,7 @@
 
             <div id="divExpensifyResults" style="display:none; margin-bottom:10px">
                
-                <h2><asp:Label ID="LabelProcessingComplete" runat="server" /></h2>
+                <h2><asp:Label ID="LabelExpensifyProcessingComplete" runat="server" /></h2>
 
                 <div id="divExpensifyResultsGood" style="display:none">Good results go here<div id="DivUploadResultsGoodText"></div></div>
 

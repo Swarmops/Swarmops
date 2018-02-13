@@ -159,6 +159,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelExpensifyCsv.Text = Resources.Pages.Financial.FileExpenseClaim_Expensify_CsvUploadDescription;
             this.LabelExpensifyInstructions1.Text =
                 Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsBasic;
+            this.LabelExpensifyProcessingComplete.Text = Resources.Global.Global_FileUploadResults;
 
             if (CurrentOrganization.VatEnabled)
             {
@@ -307,6 +308,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 });
 
                 progress.Set(100); // terminate progress bar, causes retrieval of result
+
+                documents[0].Delete(); // prevents further processing
 
                 return; // terminates thread
             }

@@ -229,13 +229,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::Swarmops.Frontend.Controls.v5.Base.ProgressBarFake ProgressExpensifyFake;
         
         /// <summary>
-        /// LabelProcessingComplete control.
+        /// LabelExpensifyProcessingComplete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelProcessingComplete;
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyProcessingComplete;
         
         /// <summary>
         /// LabelExpensifyUploadHeader control.

@@ -1042,6 +1042,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File Upload Results.
+        /// </summary>
+        internal static string Global_FileUploadResults {
+            get {
+                return ResourceManager.GetString("Global_FileUploadResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Flags.
         /// </summary>
         internal static string Global_Flags {
