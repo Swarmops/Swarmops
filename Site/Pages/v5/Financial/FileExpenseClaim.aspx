@@ -143,7 +143,7 @@
                         $('#divExpensifyUploadAnotherHeader').show();
                         $('#divExpensifyResultsBadText').html(result.DisplayMessage);
 
-                        $('#divUploadExpensify').show(); // re-show
+                        $('#divUploadExpensify').fadeIn().slideDown(); // aborts the slideUp probably in progress
                     }
 
                     // Regardless of whether result is good or bad, reset the upload control
