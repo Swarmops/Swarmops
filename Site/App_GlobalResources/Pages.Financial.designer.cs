@@ -934,6 +934,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upload Another Expensify CSV File?.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_UploadAnother {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_UploadAnother", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to myself.
         /// </summary>
         internal static string FileExpenseClaim_ForWhom_DefaultMyself {

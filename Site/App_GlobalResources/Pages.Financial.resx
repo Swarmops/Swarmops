@@ -693,6 +693,10 @@
   <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
     <value>&lt;p&gt;&lt;strong&gt;ERROR: The Expensify CSV file doesn't have a VAT field.&lt;/strong&gt; Since this organization reports Value Added Tax (VAT) to authorities, this must be specified on a per-expense basis. Please enable VAT in Expensify and create a new CSV export profile that exports this under the column header "VAT". If your team has already created such a CSV profile, you may just need to select it when exporting to CSV.&lt;/p&gt;&lt;p&gt;Unable to process this file.&lt;/p&gt;</value>
   </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Upload Another Expensify CSV File?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
   <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
     <value>myself</value>
   </data>
