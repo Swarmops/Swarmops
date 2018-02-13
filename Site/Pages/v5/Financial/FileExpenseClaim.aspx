@@ -135,12 +135,14 @@
 
                         $('#divUploadExpensify').show(); // re-show
                         <%=this.ProgressExpensify.ClientID%>_hide();
+s                       <%=this.ProgressExpensifyFake.ClientID%>_hide();
 
                         if (result.ErrorType == "ERR_NEEDSVAT") {
                             $('#divExpensifyResultsBad').show();
                             $('#divExpensifyResultsGood').hide();
                             $('#divExpensifyResults').show();
                             $('#divExpensifyUploadAnotherHeader').show();
+                            $('#divUploadExpensify').show();
                             $('#divExpensifyResultsBadText').innerHTML(result.DisplayMessage);
                         }
                         
@@ -215,8 +217,10 @@
                 <div id="divExpensifyResultsGood" style="display:none">Good results go here<div id="DivUploadResultsGoodText"></div></div>
 
                 <div id="divExpensifyResultsBad" style="display:none">
-                    <div style="float:left;margin-right:10px"><img src="/Images/Icons/iconshock-cross-96px.png" /></div><div id="DivExpensifyResultsBadText"></div>
+                    <div style="float:left;margin-right:10px"><img src="/Images/Icons/iconshock-cross-96px.png" /></div><div id="divExpensifyResultsBadText"></div>
                 </div>
+
+                <br clear="all"/>
             </div>
 
             
