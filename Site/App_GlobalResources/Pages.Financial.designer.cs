@@ -880,6 +880,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;&lt;strong&gt;ERROR: Unable to parse the Expensify CSV.&lt;/strong&gt; If this is a CSV file from Expensify, then Swarmops needs the columns &quot;Timestamp&quot;, &quot;Amount&quot;, &quot;Merchant&quot;, &quot;Comment&quot;, &quot;Category&quot;, &quot;MCC&quot;, &quot;Original Currency&quot;, and &quot;Original Amount&quot; to be present in the file. If the organization reports VAT, then a further column called &quot;VAT&quot; is required.&lt;/p&gt;&lt;p&gt;Unable to proceed with this file.&lt;/p&gt;.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_Error_BadFile {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_Error_BadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;&lt;strong&gt;ERROR: The Expensify CSV file doesn&apos;t have a VAT field.&lt;/strong&gt; Since this organization reports Value Added Tax (VAT) to authorities, this must be specified on a per-expense basis. Please enable VAT in Expensify and create a new CSV export profile that exports this under the column header &quot;VAT&quot;. If your team has already created such a CSV profile, you may just need to select it when exporting to CSV.&lt;/p&gt;&lt;p&gt;Unable to process this file.&lt;/p&gt;.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_Error_NeedsVat {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_Error_NeedsVat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If you have many expense reports, you can gather them with Expensify and upload an Expensify CSV report here (which you obtain from at Expensify under Reports, Export, as CSV). Swarmops will use Expensify to fetch all the individual receipts and log them as separate expense claims for proper accounting..
         /// </summary>
         internal static string FileExpenseClaim_Expensify_InstructionsBasic {
@@ -912,6 +930,24 @@ namespace Resources.Pages {
         internal static string FileExpenseClaim_Expensify_ReportCurrency {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_ReportCurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to myself.
+        /// </summary>
+        internal static string FileExpenseClaim_ForWhom_DefaultMyself {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_ForWhom_DefaultMyself", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is an expense claim from whom?.
+        /// </summary>
+        internal static string FileExpenseClaim_ForWhom_Prompt {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_ForWhom_Prompt", resourceCulture);
             }
         }
         

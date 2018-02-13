@@ -222,7 +222,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             Documents documents = Documents.RecentFromDescription(guidFiles);
             progress.Set(1);
-            GuidCache.Set(guidProgress + "-UploadResult", UploadBankFiles.ImportResultsCategory.Bad);
             // default - this is what happens if exception
 
             if (documents.Count != 1)
@@ -300,8 +299,16 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 // Set progress to complete
                 // Abort
 
-                GuidCache.Set(guidProgress, 100); // terminate progress bar
-                throw new BarfException();
+                GuidCache.Set("Results-" + guidFiles, new AjaxCallExpensifyUploadResult
+                {
+                    Success = false,
+                    ErrorType = "ERR_NEEDSVAT",
+                    DisplayMessage = Resources.Pages.Financial.FileExpenseClaim_Expensify_Error_NeedsVat
+                });
+
+                progress.Set(100); // terminate progress bar, causes retrieval of result
+
+                return; // terminates thread
             }
 
             List<ExpensifyRecord> recordList = new List<ExpensifyRecord>();
@@ -467,6 +474,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             progress.Set(100);
 
         }
+
+        [WebMethod]
+        public static AjaxCallExpensifyUploadResult GetExpensifyUploadResult(string guid)
+        {
+            // This may throw and it's okay
+
+            return (AjaxCallExpensifyUploadResult) GuidCache.Get("Results-" + guid);
+        }
+
 
         public class BarfException: Exception {}
 
@@ -637,6 +653,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents); }
         }
-
     }
+
+
+    public class AjaxCallExpensifyUploadResult: AjaxCallResult
+    {
+        public string ErrorType { get; set; }
+        // Todo: the whole damn data structure
+    }
+
+
 }

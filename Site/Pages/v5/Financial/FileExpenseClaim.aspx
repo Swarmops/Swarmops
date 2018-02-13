@@ -110,10 +110,48 @@
         }
 
         function onExpensifyProgressComplete() {
-            <%=this.ProgressExpensify.ClientID%>_hide();
-            <%=this.ProgressExpensifyFake.ClientID%>_show();
-            $('#divUploadExpensify').hide();
-            $('#divExpensifyUploadAnotherHeader').show();
+            // Get results
+
+            $('#divExpensifyUploadHeader').hide(); // this should be hidden at this time regardless of result
+
+            SwarmopsJS.ajaxCall('/Pages/v5/Financial/FileExpenseClaim.aspx/GetExpensifyResults',
+                { guidFiles: '<%=this.UploadExpensify.GuidString%>'},
+                function(result) {
+                    if (result.Success) {
+
+                        // Make a neat transition to success view
+
+                        $('#divExpensifyResultsBad').hide();
+                        $('#divExpensifyResultsGood').show();
+                        <%=this.ProgressExpensify.ClientID%>_hide();
+                        <%=this.ProgressExpensifyFake.ClientID%>_show();
+                        $('#divUploadExpensify').hide();
+                        $('#divExpensifyUploadAnotherHeader').show();
+                        $('#divExpensifyResults').slideDown();
+
+                    } else {
+
+                        // Make a brutal transition to failure view
+
+                        $('#divUploadExpensify').show(); // re-show
+                        <%=this.ProgressExpensify.ClientID%>_hide();
+
+                        if (result.ErrorType == "ERR_NEEDSVAT") {
+                            $('#divExpensifyResultsBad').show();
+                            $('#divExpensifyResultsGood').hide();
+                            $('#divExpensifyResults').show();
+                            $('#divExpensifyUploadAnotherHeader').show();
+                            $('#divExpensifyResultsBadText').innerHTML(result.DisplayMessage);
+                        }
+                        
+                    }
+
+                    // Regardless of whether result is good or bad, reset the upload control
+
+                    <%=this.UploadExpensify.ClientID%>_clear();
+                })
+
+
         }
 
 
@@ -173,12 +211,11 @@
             <div id="divExpensifyResults" style="display:none; margin-bottom:10px">
                
                 <h2><asp:Label ID="LabelProcessingComplete" runat="server" /></h2>
-                <div id="divExpensifyProgressFake" style="width:100%"></div>
 
                 <div id="divExpensifyResultsGood" style="display:none">Good results go here<div id="DivUploadResultsGoodText"></div></div>
 
                 <div id="divExpensifyResultsBad" style="display:none">
-                    <div style="float:left;margin-right:10px"><img src="/Images/Icons/iconshock-cross-96px.png" /></div><div id="DivUploadResultsBadText"></div>
+                    <div style="float:left;margin-right:10px"><img src="/Images/Icons/iconshock-cross-96px.png" /></div><div id="DivExpensifyResultsBadText"></div>
                 </div>
             </div>
 

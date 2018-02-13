@@ -686,4 +686,17 @@
   <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
     <value>Upload Expensify Report For Reimbursement</value>
   </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ERROR: Unable to parse the Expensify CSV.&lt;/strong&gt; If this is a CSV file from Expensify, then Swarmops needs the columns "Timestamp", "Amount", "Merchant", "Comment", "Category", "MCC", "Original Currency", and "Original Amount" to be present in the file. If the organization reports VAT, then a further column called "VAT" is required.&lt;/p&gt;&lt;p&gt;Unable to proceed with this file.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ERROR: The Expensify CSV file doesn't have a VAT field.&lt;/strong&gt; Since this organization reports Value Added Tax (VAT) to authorities, this must be specified on a per-expense basis. Please enable VAT in Expensify and create a new CSV export profile that exports this under the column header "VAT". If your team has already created such a CSV profile, you may just need to select it when exporting to CSV.&lt;/p&gt;&lt;p&gt;Unable to process this file.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>myself</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>This is an expense claim from whom?</value>
+  </data>
 </root>
