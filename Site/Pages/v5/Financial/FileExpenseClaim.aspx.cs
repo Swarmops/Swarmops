@@ -160,6 +160,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelExpensifyInstructions1.Text =
                 Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsBasic;
             this.LabelExpensifyProcessingComplete.Text = Resources.Global.Global_FileUploadResults;
+            this.LabelExpensifyUploadAnotherHeader.Text =
+                Resources.Pages.Financial.FileExpenseClaim_Expensify_UploadAnother;
 
             if (CurrentOrganization.VatEnabled)
             {
@@ -180,6 +182,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // Start an async thread that does all the work, then return
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
+            ProgressBarBackend progress = new ProgressBarBackend(guidProgress);
+            progress.Set(0); // Set to 0 first, esp. in case of previous files
 
             Thread initThread = new Thread(ProcessExpensifyUploadThread);
 

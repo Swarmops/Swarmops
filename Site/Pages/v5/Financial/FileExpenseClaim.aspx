@@ -88,9 +88,6 @@
         var expensifyProcessingHalfway = false;
 
         function onExpensifyUpload() {
-            <%=this.ProgressExpensify.ClientID%>_fadeIn();
-            <%=this.ProgressExpensify.ClientID%>_begin();  // starts listening / polling for progress
-
             SwarmopsJS.ajaxCall
                 ("/Pages/v5/Financial/FileExpenseClaim.aspx/InitializeExpensifyProcessing",
                 {
@@ -99,7 +96,8 @@
                 },
                 function(result) {
                     if (result.Success) {
-
+                        <%=this.ProgressExpensify.ClientID%>_fadeIn();
+                        <%=this.ProgressExpensify.ClientID%>_begin();  // starts listening / polling for progress
                     }
                 });
             
@@ -231,7 +229,7 @@
                     <p><asp:Label runat="server" ID="LabelExpensifyInstructions2"/></p>
                 </div>
 
-                <div id="divExpensifyUploadAnotherHeader" style="display:none"><h2><asp:Label runat="server" ID="LabelUploadAnotherFileHeader" Text="Upload Another XYZ" /></h2></div>
+                <div id="divExpensifyUploadAnotherHeader" style="display:none"><h2><asp:Label runat="server" ID="LabelExpensifyUploadAnotherHeader" Text="Upload Another XYZ" /></h2></div>
         
                 <div class="entryFields">
                     <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" ClientUploadCompleteCallback="onExpensifyUpload" />

@@ -265,13 +265,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelExpensifyInstructions2;
         
         /// <summary>
-        /// LabelUploadAnotherFileHeader control.
+        /// LabelExpensifyUploadAnotherHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelUploadAnotherFileHeader;
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyUploadAnotherHeader;
         
         /// <summary>
         /// UploadExpensify control.
