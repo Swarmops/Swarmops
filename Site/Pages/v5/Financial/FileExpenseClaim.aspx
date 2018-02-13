@@ -135,7 +135,7 @@
 
                         $('#divUploadExpensify').show(); // re-show
                         <%=this.ProgressExpensify.ClientID%>_hide();
-s                       <%=this.ProgressExpensifyFake.ClientID%>_hide();
+                        <%=this.ProgressExpensifyFake.ClientID%>_hide();
 
                         if (result.ErrorType == "ERR_NEEDSVAT") {
                             $('#divExpensifyResultsBad').show();
