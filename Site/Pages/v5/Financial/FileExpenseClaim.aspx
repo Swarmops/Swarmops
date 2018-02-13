@@ -114,7 +114,7 @@
 
             $('#divExpensifyUploadHeader').hide(); // this should be hidden at this time regardless of result
 
-            SwarmopsJS.ajaxCall('/Pages/v5/Financial/FileExpenseClaim.aspx/GetExpensifyResults',
+            SwarmopsJS.ajaxCall('/Pages/v5/Financial/FileExpenseClaim.aspx/GetExpensifyUploadResult',
                 { guidFiles: '<%=this.UploadExpensify.GuidString%>'},
                 function(result) {
                     if (result.Success) {
