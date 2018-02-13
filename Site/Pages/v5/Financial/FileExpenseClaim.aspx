@@ -143,7 +143,7 @@
                             $('#divExpensifyResults').show();
                             $('#divExpensifyUploadAnotherHeader').show();
                             $('#divUploadExpensify').show();
-                            $('#divExpensifyResultsBadText').innerHTML(result.DisplayMessage);
+                            $('#divExpensifyResultsBadText').html(result.DisplayMessage);
                         }
                         
                     }
