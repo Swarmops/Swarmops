@@ -133,7 +133,8 @@
 
                         // Make a brutal transition to failure view
 
-                        <%=this.ProgressExpensify.ClientID%>_hide();
+                        <%=this.ProgressExpensify.ClientID%>_fadeOut();
+                        <%=this.ProgressExpensify.ClientID%>_hide(); // both fadeOut + hide necessary
                         <%=this.ProgressExpensifyFake.ClientID%>_hide();
 
                         $('#divExpensifyResultsBad').show();
