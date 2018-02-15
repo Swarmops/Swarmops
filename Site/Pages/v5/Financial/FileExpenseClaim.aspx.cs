@@ -383,6 +383,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     newRecord.ReceiptUrl = csvReader.GetField(fieldMap[ExpensifyColumns.ReceiptUrl]);
 
                     newRecord.Timestamp = DateTime.Parse(csvReader.GetField(fieldMap[ExpensifyColumns.Timestamp]));
+                    newRecord.Guid = Guid.NewGuid().ToString();
 
                     if (vatEnabled)
                     {
@@ -456,7 +457,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                         string expensifyFileName = (string) txInfo["receiptFilename"];
                         string actualReceiptUrl = "https://s3.amazonaws.com/receipts.expensify.com/" + expensifyFileName;
-                        string newGuidString = Guid.NewGuid().ToString();
+                        string newGuidString = recordList[loop].Guid;
 
                         string fullyQualifiedFileName = Document.DailyStorageFolder + newGuidString;
                         string relativeFileName = relativePath + newGuidString;
@@ -514,8 +515,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 outputRecords.Add(new ExpensifyOutputRecord
                 {
-                    Description = record.Description,
-                    Amount = (record.AmountCents / 100.0).ToString("N2")
+                    Description = record.CategoryCustom + " / " + record.CategoryStandard + " / " + record.Description,
+                    CreatedDateTime = record.Timestamp.ToString("MMM dd"),
+                    Amount = (record.AmountCents / 100.0).ToString("N2"),
+                    AmountVat = (record.VatCents / 100.0).ToString("N2"),
+                    Guid = record.Guid
                 });
             }
 
@@ -573,6 +577,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             public string ExtendedInfo { get; set; }
             public string ReceiptFileNameHere { get; set; }
             public Documents Documents { get; set; }
+
+            public string Guid { get; set; }
         }
 
 
@@ -719,6 +725,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         public string Budget { get; set; }
         public string Amount { get; set; }
         public string AmountVat { get; set; }
+        public string CreatedDateTime { get; set; }
+        public string Guid { get; set; }
     }
 
 

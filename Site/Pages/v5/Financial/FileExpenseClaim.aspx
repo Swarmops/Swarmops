@@ -224,10 +224,10 @@
                         idField="expenseId">
                         <thead>  
                             <tr>  
+                                <th data-options="field:'Budget',width:150"><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Budget" /></th>  
                                 <th data-options="field:'CreatedDateTime',width:60"><asp:Label ID="LabelGridHeaderCreatedDate" runat="server" Text="XYZ Created" /></th>
-                                <th data-options="field:'Budget',width:130"><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Due" /></th>  
-                                <th data-options="field:'Description',width:140"><asp:Label ID="LabelExpensifyHeaderDescription" runat="server" Text="XYZ Person / Organization" /></th>
-                                <th data-options="field:'AmountVat',width:180,align:'right'"><asp:Label ID="LabelExpensifyHeaderVat" runat="server" Text="XYZ Description" /></th>
+                                <th data-options="field:'Description',width:200"><asp:Label ID="LabelExpensifyHeaderDescription" runat="server" Text="XYZ Description" /></th>
+                                <th data-options="field:'AmountVat',width:90,align:'right'"><asp:Label ID="LabelExpensifyHeaderVat" runat="server" Text="XYZ Vat" /></th>
                                 <th data-options="field:'Amount',width:90,align:'right'"><asp:Label ID="LabelExpensifyHeaderAmount" runat="server" Text="XYZ Amount" /></th>
                                 <th data-options="field:'Docs',width:43,align:'center'"><asp:Label ID="LabelExpensifyHeaderDocs" runat="server" Text="XYZAct" /></th>
                             </tr>  
