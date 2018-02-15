@@ -515,7 +515,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 outputRecords.Add(new ExpensifyOutputRecord
                 {
-                    Description = record.CategoryCustom + " / " + record.CategoryStandard + " / " + record.Description,
+                    Description = record.CategoryCustom + " / " + record.Description,
                     CreatedDateTime = record.Timestamp.ToString("MMM dd"),
                     Amount = (record.AmountCents / 100.0).ToString("N2"),
                     AmountVat = (record.VatCents / 100.0).ToString("N2"),
