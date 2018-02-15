@@ -113,7 +113,7 @@
             $('#divExpensifyUploadHeader').hide(); // this should be hidden at this time regardless of result
 
             SwarmopsJS.ajaxCall('/Pages/v5/Financial/FileExpenseClaim.aspx/GetExpensifyUploadResult',
-                { guid: '<%=this.UploadExpensify.GuidString%>'},
+                { guid: '<%=this.UploadExpensify.GuidString%>' },
                 function(result) {
                     if (result.Success) {
 
@@ -122,10 +122,15 @@
                         $('#divExpensifyResultsBad').hide();
                         $('#divExpensifyResultsGood').show();
                         <%=this.ProgressExpensify.ClientID%>_hide();
+                        <%=this.ProgressExpensify.ClientID%>_reset();
                         <%=this.ProgressExpensifyFake.ClientID%>_show();
                         $('#divUploadExpensify').hide();
                         $('#divExpensifyUploadAnotherHeader').show();
                         $('#divExpensifyResults').slideDown();
+
+                        // Display processed data
+
+
 
                     } else {
 
@@ -133,6 +138,7 @@
 
                         <%=this.ProgressExpensify.ClientID%>_fadeOut();
                         <%=this.ProgressExpensify.ClientID%>_hide(); // both fadeOut + hide necessary
+                        <%=this.ProgressExpensify.ClientID%>_reset();
                         <%=this.ProgressExpensifyFake.ClientID%>_hide();
 
                         $('#divExpensifyResultsBad').show();
@@ -148,7 +154,7 @@
                     // Regardless of whether result is good or bad, reset the upload control
 
                     <%=this.UploadExpensify.ClientID%>_clear();
-                })
+                });
 
 
         }

@@ -292,6 +292,40 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 }
             }
 
+            ExpensifyColumns[] requiredData =
+            {
+                ExpensifyColumns.AmountFloat,
+                ExpensifyColumns.CategoryCustom,
+                ExpensifyColumns.CategoryStandard,
+                ExpensifyColumns.Comment,
+                ExpensifyColumns.Merchant,
+                ExpensifyColumns.OriginalCurrency,
+                ExpensifyColumns.OriginalCurrencyAmountFloat,
+                ExpensifyColumns.ReceiptUrl,
+                ExpensifyColumns.Timestamp
+            };
+
+            foreach (ExpensifyColumns requiredColumn in requiredData)
+            {
+                if (!fieldMap.ContainsKey(requiredColumn))
+                {
+                    // Abort as invalid file
+
+                    GuidCache.Set("Results-" + guidFiles, new AjaxCallExpensifyUploadResult
+                    {
+                        Success = false,
+                        ErrorType = "ERR_INVALIDCSV",
+                        DisplayMessage = Resources.Pages.Financial.FileExpenseClaim_Expensify_Error_InvalidCsv
+                    });
+
+                    progress.Set(100); // terminate progress bar, causes retrieval of result
+
+                    documents[0].Delete(); // prevents further processing
+
+                    return; // terminates thread
+                }
+            }
+
             // TODO: Much more general-case error conditions if not all fields are filled
 
             bool vatEnabled = organization.VatEnabled;
@@ -299,10 +333,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             if (vatEnabled && !fieldMap.ContainsKey(ExpensifyColumns.VatFloat))
             {
                 // Error: Organization needs a VAT field
-                // TODO
-                // Set result to bad
-                // Set progress to complete
-                // Abort
 
                 GuidCache.Set("Results-" + guidFiles, new AjaxCallExpensifyUploadResult
                 {

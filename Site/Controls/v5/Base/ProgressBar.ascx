@@ -20,9 +20,11 @@
 
     function <%=this.ClientID%>_reset() {
         $('#Div_<%=this.ClientID %>_ProgressBar').progressbar({ value: 0 });
+        <%=this.ClientID%>_lastProgress = 0;
     }
 
     function <%=this.ClientID%>_begin() {
+        <%=this.ClientID%>_lastProgress = 0;
         $('#Div_<%=this.ClientID %>_ProgressBar').progressbar({ value: 0, max: 100 });
         <%=this.ClientID%>_nextPollTimer = setTimeout(function() { <%= this.ClientID%>_progressFallbackPoll(); }, 2500);
         progressUpdateCallback_<%=this.GuidToken%>(1); // Initializes a small piece of bar

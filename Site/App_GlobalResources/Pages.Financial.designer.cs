@@ -889,6 +889,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;&lt;strong&gt;ERROR: The Expensify CSV file is missing required data fields.&lt;/strong&gt; The file appears to be missing at least one of the required fields of Expensify&apos;s default CSV profile. Refer to the technical documentation and compare with the file you tried to upload. (It is a more probable cause of error, of course, that you tried to upload the completely wrong file &amp;ndash; maybe a photograph instead of an Expensify CSV &amp;ndash; and that this is the cause for the missing expected data.)&lt;/p&gt;&lt;p&gt;Unable to pro [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_Error_InvalidCsv {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_Error_InvalidCsv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;&lt;strong&gt;ERROR: The Expensify CSV file doesn&apos;t have a VAT field.&lt;/strong&gt; Since this organization reports Value Added Tax (VAT) to authorities, this must be specified on a per-expense basis. Please enable VAT in Expensify and create a new CSV export profile that exports this under the column header &quot;VAT&quot;. If your team has already created such a CSV profile, you may just need to select it when exporting to CSV.&lt;/p&gt;&lt;p&gt;Unable to process this file.&lt;/p&gt;.
         /// </summary>
         internal static string FileExpenseClaim_Expensify_Error_NeedsVat {
