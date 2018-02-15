@@ -130,7 +130,8 @@
 
                         // Display processed data
 
-
+                        $('#expensifyDataGrid').datagrid({});
+                        $('#expensifyDataGrid').datagrid('loadData', result.Data);
 
                     } else {
 
@@ -217,7 +218,24 @@
                
                 <h2><asp:Label ID="LabelExpensifyProcessingComplete" runat="server" /></h2>
 
-                <div id="divExpensifyResultsGood" style="display:none">Good results go here<div id="DivUploadResultsGoodText"></div></div>
+                <div id="divExpensifyResultsGood" style="display:none">
+                    <table id="expensifyDataGrid" class="easyui-datagrid" style="width:680px"
+                        data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:true,loading:false,selectOnCheck:true,checkOnSelect:true"
+                        idField="expenseId">
+                        <thead>  
+                            <tr>  
+                                <th data-options="field:'CreatedDateTime',width:60"><asp:Label ID="LabelGridHeaderCreatedDate" runat="server" Text="XYZ Created" /></th>
+                                <th data-options="field:'Budget',width:130"><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Due" /></th>  
+                                <th data-options="field:'Description',width:140"><asp:Label ID="LabelExpensifyHeaderDescription" runat="server" Text="XYZ Person / Organization" /></th>
+                                <th data-options="field:'AmountVat',width:180,align:'right'"><asp:Label ID="LabelExpensifyHeaderVat" runat="server" Text="XYZ Description" /></th>
+                                <th data-options="field:'Amount',width:90,align:'right'"><asp:Label ID="LabelExpensifyHeaderAmount" runat="server" Text="XYZ Amount" /></th>
+                                <th data-options="field:'Docs',width:43,align:'center'"><asp:Label ID="LabelExpensifyHeaderDocs" runat="server" Text="XYZAct" /></th>
+                            </tr>  
+                        </thead>
+                    </table>  
+                    
+
+                </div>
 
                 <div id="divExpensifyResultsBad" style="display:none">
                     <div style="float:left;margin-right:10px"><img src="/Images/Icons/iconshock-cross-96px.png" /></div><div id="divExpensifyResultsBadText"></div>

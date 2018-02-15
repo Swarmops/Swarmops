@@ -238,6 +238,60 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelExpensifyProcessingComplete;
         
         /// <summary>
+        /// LabelGridHeaderCreatedDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelGridHeaderCreatedDate;
+        
+        /// <summary>
+        /// LabelGridHeaderBudget control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelGridHeaderBudget;
+        
+        /// <summary>
+        /// LabelExpensifyHeaderDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderDescription;
+        
+        /// <summary>
+        /// LabelExpensifyHeaderVat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderVat;
+        
+        /// <summary>
+        /// LabelExpensifyHeaderAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderAmount;
+        
+        /// <summary>
+        /// LabelExpensifyHeaderDocs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderDocs;
+        
+        /// <summary>
         /// LabelExpensifyUploadHeader control.
         /// </summary>
         /// <remarks>

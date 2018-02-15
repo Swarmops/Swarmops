@@ -508,6 +508,25 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // TODO: Once user has confirmed budgets, save expenses
 
+            List<ExpensifyOutputRecord> outputRecords = new List<ExpensifyOutputRecord>();
+
+            foreach (ExpensifyRecord record in recordList)
+            {
+                outputRecords.Add(new ExpensifyOutputRecord
+                {
+                    Description = record.Description,
+                    Amount = (record.AmountCents / 100.0).ToString("N2")
+                });
+            }
+
+            AjaxCallExpensifyUploadResult result = new AjaxCallExpensifyUploadResult
+            {
+                Success = true,
+                Data = outputRecords.ToArray()
+            };
+
+            GuidCache.Set("Results-" + guidFiles, result);
+
             progress.Set(100);
 
         }
@@ -522,6 +541,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
 
         public class BarfException: Exception {}
+
 
 
         private enum ExpensifyColumns
@@ -693,10 +713,21 @@ namespace Swarmops.Frontend.Pages.v5.Financial
     }
 
 
+    public class ExpensifyOutputRecord
+    {
+        public string Description { get; set; }
+        public string Budget { get; set; }
+        public string Amount { get; set; }
+        public string AmountVat { get; set; }
+    }
+
+
+
+
     public class AjaxCallExpensifyUploadResult: AjaxCallResult
     {
         public string ErrorType { get; set; }
-        // Todo: the whole damn data structure
+        public ExpensifyOutputRecord[] Data;
     }
 
 
