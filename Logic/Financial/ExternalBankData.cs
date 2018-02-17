@@ -50,11 +50,14 @@ namespace Swarmops.Logic.Financial
 
             // Replace any strings initially to force the bank data into readability (per profile)
 
-            string[] replacements = Profile.InitialReplacements.Split('|');
-
-            for (int loop = 0; loop < replacements.Length/2; loop++)
+            if (!String.IsNullOrEmpty(Profile.InitialReplacements))
             {
-                data = data.Replace(replacements[loop*2], replacements[loop*2 + 1]);
+                string[] replacements = Profile.InitialReplacements.Split('|');
+
+                for (int loop = 0; loop < replacements.Length/2; loop++)
+                {
+                    data = data.Replace(replacements[loop*2], replacements[loop*2 + 1]);
+                }
             }
 
             int crlfIndex;
