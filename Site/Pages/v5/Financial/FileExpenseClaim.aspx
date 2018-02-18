@@ -229,7 +229,7 @@
                                 <th data-options="field:'Description',width:200"><asp:Label ID="LabelExpensifyHeaderDescription" runat="server" Text="XYZ Description" /></th>
                                 <th data-options="field:'AmountVat',width:90,align:'right',hidden:<%=(!CurrentOrganization.VatEnabled).ToString().ToLowerInvariant() %>"><asp:Label ID="LabelExpensifyHeaderVat" runat="server" Text="XYZ Vat" /></th>
                                 <th data-options="field:'Amount',width:90,align:'right'"><asp:Label ID="LabelExpensifyHeaderAmount" runat="server" Text="XYZ Amount" /></th>
-                                <th data-options="field:'Docs',width:43,align:'center'"><asp:Label ID="LabelExpensifyHeaderDocs" runat="server" Text="XYZAct" /></th>
+                                <th data-options="field:'Actions',width:43,align:'center'"><asp:Label ID="LabelExpensifyHeaderDocs" runat="server" Text="XYZAct" /></th>
                             </tr>  
                         </thead>
                     </table>  

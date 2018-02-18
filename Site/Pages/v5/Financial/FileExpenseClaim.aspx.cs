@@ -511,6 +511,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             List<ExpensifyOutputRecord> outputRecords = new List<ExpensifyOutputRecord>();
 
+            string doxString =
+                       "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" txId='{0}' class='LocalIconViewDoc' style='cursor:pointer' height='20' width='20' />";
+
             foreach (ExpensifyRecord record in recordList)
             {
                 outputRecords.Add(new ExpensifyOutputRecord
@@ -519,8 +522,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     CreatedDateTime = record.Timestamp.ToString("MMM dd"),
                     Amount = (record.AmountCents / 100.0).ToString("N2"),
                     AmountVat = (record.VatCents / 100.0).ToString("N2"),
+                    Actions = String.Format(doxString, "D" + documents[0].Identity.ToString(CultureInfo.InvariantCulture)) + " | ",
                     Guid = record.Guid
                 });
+
+                // TODO: ADD DOCUMENTS TO SOMETHING
             }
 
             AjaxCallExpensifyUploadResult result = new AjaxCallExpensifyUploadResult
@@ -726,6 +732,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         public string Amount { get; set; }
         public string AmountVat { get; set; }
         public string CreatedDateTime { get; set; }
+        public string Actions { get; set; }
         public string Guid { get; set; }
     }
 
@@ -735,7 +742,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
     public class AjaxCallExpensifyUploadResult: AjaxCallResult
     {
         public string ErrorType { get; set; }
-        public ExpensifyOutputRecord[] Data;
+        public ExpensifyOutputRecord[] Data { get; set; }
+        public string FancyBoxDocuments { get; set; }
     }
 
 
