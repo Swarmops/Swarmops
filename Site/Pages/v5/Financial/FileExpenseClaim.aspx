@@ -133,6 +133,27 @@
                         $('#expensifyDataGrid').datagrid({});
                         $('#expensifyDataGrid').datagrid('loadData', result.Data);
 
+                        // Fill in documents (hidden)
+
+
+
+                        // Enable document viewing
+
+                        $('#divDocumentsHidden').html(result.Documents);
+
+                        $("a.FancyBox_Gallery").fancybox({
+                            'overlayShow': true,
+                            'transitionIn': 'fade',
+                            'transitionOut': 'fade',
+                            'type': 'image',
+                            'opacity': true
+                        });
+
+                        $(".LocalViewDox").click(function () {
+                            $("a.FancyBox_Gallery[rel='" + $(this).attr("firstDocId") + "']").first().click();
+                        });
+
+
                     } else {
 
                         // Make a brutal transition to failure view
@@ -266,6 +287,8 @@
             </div>
 
             <Swarmops5:ProgressBar ID="ProgressExpensify" runat="server" OnClientProgressHalfwayCallback="onExpensifyProgressHalfway" OnClientProgressCompleteCallback="onExpensifyProgressComplete"/>
+            
+            <div id="divDocumentsHidden" style="display:none"></div>
 
         </div>
     </div>

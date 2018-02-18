@@ -512,7 +512,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             List<ExpensifyOutputRecord> outputRecords = new List<ExpensifyOutputRecord>();
 
             string doxString =
-                       "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" txId='{0}' class='LocalIconViewDoc' style='cursor:pointer' height='20' width='20' />";
+                       "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" firstDocId='{0}' class='LocalIconViewDoc' style='cursor:pointer' height='20' width='20' />";
+
+            string editString =
+                "<img src='/Images/Icons/iconshock-wrench-128x96px-centered.png' height='20' width='24' class='LocalIconEdit' guid='{0}' />";
+
+            string docString =
+                "<a href='/Pages/v5/Support/StreamUpload.aspx?DocId={0}&hq=1' title=\"{1}\" class='FancyBox_Gallery' rel='{2}'>";
+
+            string documentsAll = String.Empty;
 
             foreach (ExpensifyRecord record in recordList)
             {
@@ -522,17 +530,23 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     CreatedDateTime = record.Timestamp.ToString("MMM dd"),
                     Amount = (record.AmountCents / 100.0).ToString("N2"),
                     AmountVat = (record.VatCents / 100.0).ToString("N2"),
-                    Actions = String.Format(doxString, "D" + documents[0].Identity.ToString(CultureInfo.InvariantCulture)) + " | ",
+                    Actions = String.Format(doxString, "D" + record.Documents[0].Identity.ToString(CultureInfo.InvariantCulture)) + " " + String.Format(editString, record.Guid),
                     Guid = record.Guid
                 });
 
-                // TODO: ADD DOCUMENTS TO SOMETHING
+                foreach (Document document in record.Documents)
+                {
+                    documentsAll += String.Format(docString, document.Identity,
+                        document.ClientFileName.Replace("\"", "'"),
+                        "D" + record.Documents[0].Identity.ToString(CultureInfo.InvariantCulture));
+                }
             }
 
             AjaxCallExpensifyUploadResult result = new AjaxCallExpensifyUploadResult
             {
                 Success = true,
-                Data = outputRecords.ToArray()
+                Data = outputRecords.ToArray(),
+                Documents = documentsAll
             };
 
             GuidCache.Set("Results-" + guidFiles, result);
@@ -743,7 +757,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
     {
         public string ErrorType { get; set; }
         public ExpensifyOutputRecord[] Data { get; set; }
-        public string FancyBoxDocuments { get; set; }
+        public string Documents { get; set; }
     }
 
 
