@@ -149,7 +149,7 @@
                             'opacity': true
                         });
 
-                        $(".LocalViewDox").click(function () {
+                        $(".LocalIconViewDoc").click(function () {
                             $("a.FancyBox_Gallery[rel='" + $(this).attr("firstDocId") + "']").first().click();
                         });
 
