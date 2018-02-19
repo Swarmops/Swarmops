@@ -38,11 +38,18 @@ namespace Swarmops.Pages.v5.Support
             bool hasPermission = false;
             string serverFileName = document.ServerFileName;
 
+            if (document.UploadedByPersonId == this.CurrentAuthority.Person.Identity)
+            {
+                hasPermission = true; // can always view documents you yourself uploaded
+            }
+
             if (CurrentOrganization.HasOpenLedgers)
             {
                 hasPermission = true;
             }
-            else
+
+
+            if (!hasPermission)
             {
 
 
