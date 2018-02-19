@@ -288,7 +288,7 @@
 
             <Swarmops5:ProgressBar ID="ProgressExpensify" runat="server" OnClientProgressHalfwayCallback="onExpensifyProgressHalfway" OnClientProgressCompleteCallback="onExpensifyProgressComplete"/>
             
-            <div id="divDocumentsHidden" style="display:none"></div>
+            <div id="divDocumentsHidden"></div>
 
         </div>
     </div>
