@@ -530,7 +530,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     CreatedDateTime = record.Timestamp.ToString("MMM dd"),
                     Amount = (record.AmountCents / 100.0).ToString("N2"),
                     AmountVat = (record.VatCents / 100.0).ToString("N2"),
-                    Actions = String.Format(doxString, "D" + record.Documents[0].Identity.ToString(CultureInfo.InvariantCulture)) + " " + String.Format(editString, record.Guid),
+                    Actions = String.Format(doxString, "D" + record.Documents[0].Identity.ToString(CultureInfo.InvariantCulture)) + "&nbsp;" + String.Format(editString, record.Guid),
                     Guid = record.Guid
                 });
 
