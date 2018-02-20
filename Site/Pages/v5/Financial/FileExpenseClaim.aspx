@@ -4,6 +4,9 @@
 <%@ Register TagPrefix="Swarmops5" TagName="Currency" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
+	<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
+    <script type="text/javascript" src="/Scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 
     <script type="text/javascript">
 
@@ -245,12 +248,12 @@
                         idField="expenseId">
                         <thead>  
                             <tr>  
-                                <th data-options="field:'Budget',width:150"><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Budget" /></th>  
-                                <th data-options="field:'CreatedDateTime',width:60"><asp:Label ID="LabelGridHeaderCreatedDate" runat="server" Text="XYZ Created" /></th>
+                                <th data-options="field:'Budget',width:200"><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Budget" /></th>  
+                                <th data-options="field:'CreatedDateTime',width:50"><asp:Label ID="LabelGridHeaderCreatedDate" runat="server" Text="XYZ Created" /></th>
                                 <th data-options="field:'Description',width:200"><asp:Label ID="LabelExpensifyHeaderDescription" runat="server" Text="XYZ Description" /></th>
-                                <th data-options="field:'AmountVat',width:90,align:'right',hidden:<%=(!CurrentOrganization.VatEnabled).ToString().ToLowerInvariant() %>"><asp:Label ID="LabelExpensifyHeaderVat" runat="server" Text="XYZ Vat" /></th>
-                                <th data-options="field:'Amount',width:90,align:'right'"><asp:Label ID="LabelExpensifyHeaderAmount" runat="server" Text="XYZ Amount" /></th>
-                                <th data-options="field:'Actions',width:43,align:'center'"><asp:Label ID="LabelExpensifyHeaderDocs" runat="server" Text="XYZAct" /></th>
+                                <th data-options="field:'AmountVat',width:80,align:'right',hidden:<%=(!CurrentOrganization.VatEnabled).ToString().ToLowerInvariant() %>"><asp:Label ID="LabelExpensifyHeaderVat" runat="server" Text="XYZ Vat" /></th>
+                                <th data-options="field:'Amount',width:80,align:'right'"><asp:Label ID="LabelExpensifyHeaderAmount" runat="server" Text="XYZ Amount" /></th>
+                                <th data-options="field:'Actions',width:60,align:'center'"><asp:Label ID="LabelExpensifyHeaderDocs" runat="server" Text="XYZAct" /></th>
                             </tr>  
                         </thead>
                     </table>  
