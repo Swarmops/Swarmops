@@ -153,6 +153,7 @@
                             'opacity': true,
 
                             afterShow: function() {
+                                alert('aftershow');
                                 $('.fancybox-image').elevateZoom({
                                     zoomType: "lens",
                                     lensShape: "round",
