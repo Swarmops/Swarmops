@@ -84,13 +84,26 @@ That also means that any code _you_ commit to Swarmops, whether by checking in c
 Beta-4 features progress
 ------------------------
 
-Beta-4 will be released on February 5, with string freeze on February 2. Its tentative focus will be Shapeshift and Bitwala integration and possibly an open API exposure.
+Beta-4 will be released on March 5, with string freeze on March 2. Its focus will be Expensify integration, so that people can upload large batches of expense reports directly from the Expensify service. This is a large feature that took almost two months to complete, with a bit of refactoring required as well.
+
+
+Beta-5 features progress
+------------------------
+
+Beta-5 will be released on April 5, with string freeze on April 2. Its tentative focus will be Shapeshift integration and possibly an open API exposure.
 
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
 - [ ] Write a Pay Invoice page for Bitcoin Cash
 - [ ] Enable payment identifiers, with currency
 - [ ] Tie payment identifiers to people and suppliers
+
+
+Beta-6 features
+---------------
+
+Beta-6 will focus on Bitwala integration, for payments to legacy currencies the way Shapeshift pays cryptocurrencies.
+
 
 
 Overall Beta features checklist
@@ -124,7 +137,7 @@ There will also be many other small improvements added along with these features
 - [x] Account edit spacing
 - [ ] Alert to load hotwallet from cold
 - [x] Bitcoin Echo test page (probably needs to be Bitcoin Cash b/c fees)
-- [ ] Icons for Validation page
+- [x] Icons for Validation page
 - [x] Favicon New
 - [x] Fix Inspect Ledger header (looks bad)
 - [x] Clean Login page
