@@ -7,6 +7,7 @@
 	<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
     <script type="text/javascript" src="/Scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 	<link rel="stylesheet" type="text/css" href="/Scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    <script type="text/javascript" src="/Scripts/jquery.elevateZoom-3.0.8.min.js"></script>
 
     <script type="text/javascript">
 
@@ -149,7 +150,15 @@
                             'transitionIn': 'fade',
                             'transitionOut': 'fade',
                             'type': 'image',
-                            'opacity': true
+                            'opacity': true,
+
+                            afterShow: function() {
+                                $('.fancybox-image').elevateZoom({
+                                    zoomType: "lens",
+                                    lensShape: "round",
+                                    lensSize: 200
+                                });
+                            }
                         });
 
                         $(".LocalIconViewDoc").click(function () {
@@ -247,9 +256,9 @@
                         data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:true,loading:false,selectOnCheck:true,checkOnSelect:true"
                         idField="expenseId">
                         <thead>  
-                            <tr>  
-                                <th data-options="field:'Budget',width:200"><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Budget" /></th>  
-                                <th data-options="field:'CreatedDateTime',width:50"><asp:Label ID="LabelGridHeaderCreatedDate" runat="server" Text="XYZ Created" /></th>
+                            <tr>
+                                <th data-options="field:'Budget',width:200"><asp:Label ID="LabelExpensifyHeaderBudget" runat="server" Text="XYZ Budget" /></th>  
+                                <th data-options="field:'CreatedDateTime',width:50"><asp:Label ID="LabelExpensifyHeaderDate" runat="server" Text="XYZ Created" /></th>
                                 <th data-options="field:'Description',width:200"><asp:Label ID="LabelExpensifyHeaderDescription" runat="server" Text="XYZ Description" /></th>
                                 <th data-options="field:'AmountVat',width:80,align:'right',hidden:<%=(!CurrentOrganization.VatEnabled).ToString().ToLowerInvariant() %>"><asp:Label ID="LabelExpensifyHeaderVat" runat="server" Text="XYZ Vat" /></th>
                                 <th data-options="field:'Amount',width:80,align:'right'"><asp:Label ID="LabelExpensifyHeaderAmount" runat="server" Text="XYZ Amount" /></th>

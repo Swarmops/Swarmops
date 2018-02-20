@@ -238,22 +238,22 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelExpensifyProcessingComplete;
         
         /// <summary>
-        /// LabelGridHeaderBudget control.
+        /// LabelExpensifyHeaderBudget control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderBudget;
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderBudget;
         
         /// <summary>
-        /// LabelGridHeaderCreatedDate control.
+        /// LabelExpensifyHeaderDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderCreatedDate;
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderDate;
         
         /// <summary>
         /// LabelExpensifyHeaderDescription control.

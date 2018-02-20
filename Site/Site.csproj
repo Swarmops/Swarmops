@@ -1918,6 +1918,7 @@
     <Content Include="Scripts\jquery.animate-shadow.js" />
     <Content Include="Scripts\jquery.animate-shadow.min.js" />
     <Content Include="Scripts\jquery.color.js" />
+    <Content Include="Scripts\jquery.elevateZoom-3.0.8.min.js" />
     <Content Include="Scripts\jquery.fileupload\jquery.fileupload-fp.js" />
     <Content Include="Scripts\jquery.fileupload\jquery.fileupload-image.js" />
     <Content Include="Scripts\jquery.fileupload\jquery.fileupload-jui.js" />

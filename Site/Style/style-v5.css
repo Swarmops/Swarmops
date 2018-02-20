@@ -1192,6 +1192,10 @@ div#divMalfunctionsList > ul > li+li {
 /* TODO: RTL VERSION AND TODO VERSION */
 
 
+/* IMAGE ZOOM */
+
+.zoomContainer { z-index: 100000; }
+
 /* OTHER ELEMENTS */
 
 a

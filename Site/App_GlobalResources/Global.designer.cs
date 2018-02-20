@@ -196,6 +196,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT.
+        /// </summary>
+        internal static string Financial_AmountVat {
+            get {
+                return ResourceManager.GetString("Financial_AmountVat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value Added Tax.
+        /// </summary>
+        internal static string Financial_AmountVatFull {
+            get {
+                return ResourceManager.GetString("Financial_AmountVatFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assets.
         /// </summary>
         internal static string Financial_Asset {
@@ -934,7 +952,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MMM d, yyyy.
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string Global_Date {
+            get {
+                return ResourceManager.GetString("Global_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMMM d, yyyy.
         /// </summary>
         internal static string Global_DateFormatLongSansWeekday {
             get {
@@ -948,6 +975,15 @@ namespace Resources {
         internal static string Global_DateFormatShortReadable {
             get {
                 return ResourceManager.GetString("Global_DateFormatShortReadable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMM d, yyyy.
+        /// </summary>
+        internal static string Global_DateFormatShortSansWeekday {
+            get {
+                return ResourceManager.GetString("Global_DateFormatShortSansWeekday", resourceCulture);
             }
         }
         

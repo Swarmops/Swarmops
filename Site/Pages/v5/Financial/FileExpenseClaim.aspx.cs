@@ -173,6 +173,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 this.LabelExpensifyInstructions2.Text =
                     Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsNothingAdvanced;
             }
+
+            this.LabelExpensifyHeaderAmount.Text = Resources.Global.Financial_Amount;
+            this.LabelExpensifyHeaderVat.Text = Resources.Global.Financial_AmountVat;
+            this.LabelExpensifyHeaderDocs.Text = Resources.Global.Global_Action;
+            this.LabelExpensifyHeaderDescription.Text = Resources.Global.Global_Description;
+            this.LabelExpensifyHeaderBudget.Text = Resources.Global.Financial_Budget;
+            this.LabelExpensifyHeaderDate.Text = Resources.Global.Global_Date;
         }
 
 
@@ -515,7 +522,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                        "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" firstDocId='{0}' class='LocalIconViewDoc' style='cursor:pointer' height='20' width='20' />";
 
             string editString =
-                "<img src='/Images/Icons/iconshock-wrench-128x96px-centered.png' height='20' width='24' class='LocalIconEdit' guid='{0}' />";
+                "<img src='/Images/Icons/iconshock-wrench-128x96px-centered.png' height='18' width='24' class='LocalIconEdit' guid='{0}' />";
 
             string docString =
                 "<a href='/Pages/v5/Support/StreamUpload.aspx?DocId={0}&hq=1' title=\"{1}\" class='FancyBox_Gallery' rel='{2}'>";
@@ -530,7 +537,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     CreatedDateTime = record.Timestamp.ToString("MMM dd"),
                     Amount = (record.AmountCents / 100.0).ToString("N2"),
                     AmountVat = (record.VatCents / 100.0).ToString("N2"),
-                    Actions = String.Format(doxString, "D" + record.Documents[0].Identity.ToString(CultureInfo.InvariantCulture)) + "&nbsp;" + String.Format(editString, record.Guid),
+                    Actions = String.Format(doxString, "D" + record.Documents[0].Identity.ToString(CultureInfo.InvariantCulture)) + String.Format(editString, record.Guid),
                     Guid = record.Guid
                 });
 
