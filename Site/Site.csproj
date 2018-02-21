@@ -1913,6 +1913,7 @@
     <Content Include="Scripts\fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="Scripts\fancybox\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="Scripts\hoverIntent.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-ui.1.11.1.min.js" />
     <Content Include="Scripts\jquery.2.0.3.min.js" />
     <Content Include="Scripts\jquery.animate-shadow.js" />
