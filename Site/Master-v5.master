@@ -73,7 +73,8 @@
         window.odometerOptions = {
             auto: false, // Don't automatically initialize everything with class 'odometer'
             theme: 'car', // Specify the theme (if you have more than one theme css file on the page)
-            duration: 1500 // time to update
+            duration: 1500, // time to update
+            format: '(,ddd).dd'  // two decimal places at most
         };
 
         $(document).ready(function () {
