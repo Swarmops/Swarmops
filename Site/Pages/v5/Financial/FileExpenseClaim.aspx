@@ -29,6 +29,7 @@
         .fancybox-arrow-previous:hover,
         .fancybox-arrow-next:hover {
             text-decoration: none;
+            background: #444;
         }
 
         .fancybox-arrow-previous {
