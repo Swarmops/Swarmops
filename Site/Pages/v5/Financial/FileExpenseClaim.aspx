@@ -175,6 +175,7 @@
                             toolbar: false,
                             smallBtn: true,
                             arrows: false,
+                            infobar: false,
 
                             afterShow: function() {
                                 $('.zoomContainer').remove();
@@ -189,6 +190,9 @@
                             },
 
                             afterLoad: function() {
+
+                                /* TODO: MAKE A RIGHT-TO-LEFT VERSION OF THIS */
+
                                 if ( instance.group.length > 1 && current.$content ) {
                                     current.$content.append('<a data-fancybox-next class="fancybox-arrow-next" href="javascript:;">→</a><a data-fancybox-previous class="fancybox-arrow-previous" href="javascript:;">←</a>');
                                 }                            
