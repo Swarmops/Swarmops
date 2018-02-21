@@ -489,7 +489,7 @@ var SwarmopsJS = (function () {
                     zoomWindowFadeIn: 200,
                     zoomWindowFadeOut: 200,
                     lensShape: "round",
-                    lensSize: 200
+                    lensSize: 300
                 });
             },
 
