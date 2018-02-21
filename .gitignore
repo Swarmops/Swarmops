@@ -194,8 +194,8 @@ External Dependencies/*
 #Except the batch file to rebuild them
 !External Dependencies/rebuild-all.cmd
 
-#Everything in the Experimental folder
-Site/Experimental/*
+#All the scripts in the Experimental folder
+Site/Scripts/Experimental/*
 
 #The hotwallet keyfiles should obviously never be checked in
 Site5/hotwallet*
