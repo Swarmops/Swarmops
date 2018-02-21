@@ -182,6 +182,14 @@
                             smallBtn: true,
                             arrows: false,
                             infobar: false,
+                            title: this.title,
+
+                            helpers: {
+                                title: {
+                                    position: 'bottom',
+                                    type: 'float'
+                                }
+                            },
 
                             afterShow: function(instance, current) {
                                 $('.zoomContainer').remove();
