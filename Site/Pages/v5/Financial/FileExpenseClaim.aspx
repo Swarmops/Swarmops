@@ -196,15 +196,15 @@
 
                                 if (instance.group.length > 1) {
                                     if (instance.currIndex > 0) {
-                                        $('a.data-arrow-previous').show();
+                                        $('a.fancybox-arrow-previous').show();
                                     } else {
-                                        $('a.data-arrow-previous').hide();
+                                        $('a.fancybox-arrow-previous').hide();
                                     }
 
                                     if (instance.currIndex < instance.group.length - 1) {
-                                        $('a.data-arrow-next').show();
+                                        $('a.fancybox-arrow-next').show();
                                     } else {
-                                        $('a.data-arrow-next').hide();
+                                        $('a.fancybox-arrow-next').hide();
                                     }
                                 }
                             },
