@@ -183,7 +183,7 @@
                             arrows: false,
                             infobar: false,
 
-                            afterShow: function() {
+                            afterShow: function(instance, current) {
                                 $('.zoomContainer').remove();
                                 $('.fancybox-image').elevateZoom({
                                     zoomType: "lens",
@@ -193,6 +193,7 @@
                                     lensShape: "round",
                                     lensSize: 200
                                 });
+                                console.log(instance);
                             },
 
                             afterLoad: function(instance, current) {
@@ -202,7 +203,7 @@
                                 if ( instance.group.length > 1 && current.$content ) {
                                     console.log(instance);
                                     //console.log(current);
-                                    current.$content.append('<a data-fancybox-next class="fancybox-arrow-next" href="javascript:;">→</a><a data-fancybox-previous class="fancybox-arrow-previous" href="javascript:;">←</a>');
+                                    current.$content.append('<a data-fancybox-next class="fancybox-arrow-next button-next" href="javascript:;">→</a><a data-fancybox-previous class="fancybox-arrow-previous button-previous" href="javascript:;">←</a>');
                                 }                            
                             },
 
