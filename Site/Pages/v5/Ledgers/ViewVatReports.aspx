@@ -2,9 +2,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-	<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
-    <script type="text/javascript" src="/Scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-	<link rel="stylesheet" type="text/css" href="/Scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />    
+    <Swarmops5:ExternalScripts Package="FancyBox" runat="server" ID="ScriptFancyBox"/>
 
 	<script type="text/javascript">
 
@@ -18,7 +16,7 @@
 	                $('span.loadingHeader').hide();
               
 	                $(".LocalViewDox").click(function () {
-	                    $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
+	                    $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("baseid") + "']").first().click();
 	                });
 
 	            }
@@ -34,15 +32,8 @@
 
 	            //$('#tableAnnualReport').treegrid('reload');
 	        });
-
             
-	        $("a.FancyBox_Gallery").fancybox({
-	            'overlayShow': true,
-	            'transitionIn': 'fade',
-	            'transitionOut': 'fade',
-	            'type': 'image',
-	            'opacity': true
-	        });
+	        SwarmopsJS.fancyBoxInit("a.FancyBox_Gallery");
 
 	        $('div.datagrid').css('opacity', 0.4);
 	    });
@@ -112,7 +103,7 @@
     
     <asp:Repeater runat="server" ID="RepeaterLightboxItems">
         <ItemTemplate>
-            <a href="/Pages/v5/Support/StreamUpload.aspx?DocId=<%# Eval("DocId") %>&hq=1&VatReportKey=<%=VatReportKey %>" title="<%# Eval("Title") %>" class="FancyBox_Gallery" rel="<%# Eval("BaseId") %>">&nbsp;</a>
+            <a href="/Pages/v5/Support/StreamUpload.aspx?DocId=<%# Eval("DocId") %>&hq=1&VatReportKey=<%=VatReportKey %>" data-caption="<%# Eval("Title") %>" class="FancyBox_Gallery" data-fancybox="<%# Eval("BaseId") %>">&nbsp;</a>
         </ItemTemplate>
     </asp:Repeater>
 
