@@ -166,69 +166,6 @@ function _master_watchHeartbeat() {
 }
 
 
-function fancyBoxInit(selector) {
-
-    if (typeof selector == 'undefined') {
-        selector = '.FancyBox_Gallery';
-    }
-
-    $(selector).fancybox({
-        toolbar: false,
-        smallBtn: true,
-        arrows: false,
-        infobar: false,
-        title: $(this).title,
-
-        helpers: {
-            title: {
-                position: 'bottom',
-                type: 'float'
-            }
-        },
-
-        beforeShow: function (instance, current) {
-            $('.zoomContainer').remove();
-            if (instance.group.length > 1) {
-                if (instance.currIndex > 0) {
-                    $('a.fancybox-arrow-previous').show();
-                } else {
-                    $('a.fancybox-arrow-previous').hide();
-                }
-
-                if (instance.currIndex < instance.group.length - 1) {
-                    $('a.fancybox-arrow-next').show();
-                } else {
-                    $('a.fancybox-arrow-next').hide();
-                }
-            }
-        },
-
-        afterShow: function (instance, current) {
-            $('.fancybox-image').elevateZoom({
-                zoomType: "lens",
-                cursor: "crosshair",
-                zoomWindowFadeIn: 200,
-                zoomWindowFadeOut: 200,
-                lensShape: "round",
-                lensSize: 200
-            });
-        },
-
-        afterLoad: function (instance, current) {
-
-            /* TODO: MAKE A RIGHT-TO-LEFT VERSION OF THIS */
-
-            if (instance.group.length > 1 && current.$content) {
-                current.$content.append('<a data-fancybox-next class="fancybox-arrow-next button-next" href="javascript:;">→</a><a data-fancybox-prev class="fancybox-arrow-previous button-previous" href="javascript:;">←</a>');
-            }
-        },
-
-        afterClose: function () {
-            $('.zoomContainer').remove();
-        }
-    });
-
-}
 
 
 function getMasterSocketAddress() {
@@ -503,6 +440,74 @@ var SwarmopsJS = (function () {
             }
         });
     }
+
+
+    publicSymbols.fancyBoxInit = fancyBoxInit;
+    function fancyBoxInit(selector) {
+
+        if (typeof selector == 'undefined') {
+            selector = '.FancyBox_Gallery';
+        }
+
+        $(selector).fancybox({
+            toolbar: false,
+            smallBtn: true,
+            arrows: false,
+            infobar: false,
+            title: $(this).title,
+
+            helpers: {
+                title: {
+                    position: 'bottom',
+                    type: 'float'
+                }
+            },
+
+            beforeShow: function (instance, current) {
+                $('.zoomContainer').remove();
+                if (instance.group.length > 1) {
+                    if (instance.currIndex > 0) {
+                        $('a.fancybox-arrow-previous').show();
+                    } else {
+                        $('a.fancybox-arrow-previous').hide();
+                    }
+
+                    if (instance.currIndex < instance.group.length - 1) {
+                        $('a.fancybox-arrow-next').show();
+                    } else {
+                        $('a.fancybox-arrow-next').hide();
+                    }
+                }
+            },
+
+            afterShow: function (instance, current) {
+                $('.fancybox-image').elevateZoom({
+                    zoomType: "lens",
+                    cursor: "crosshair",
+                    zoomWindowFadeIn: 200,
+                    zoomWindowFadeOut: 200,
+                    lensShape: "round",
+                    lensSize: 200
+                });
+            },
+
+            afterLoad: function (instance, current) {
+
+                /* TODO: MAKE A RIGHT-TO-LEFT VERSION OF THIS */
+
+                if (instance.group.length > 1 && current.$content) {
+                    current.$content.append('<a data-fancybox-next class="fancybox-arrow-next button-next" href="javascript:;">→</a><a data-fancybox-prev class="fancybox-arrow-previous button-previous" href="javascript:;">←</a>');
+                }
+            },
+
+            afterClose: function () {
+                $('.zoomContainer').remove();
+            }
+        });
+
+    }
+
+
 
     // Below copied from http://stackoverflow.com/questions/4578424/javascript-extend-a-function, assumed to be in public domain
 
