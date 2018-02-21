@@ -4,11 +4,7 @@
 <%@ Register TagPrefix="Swarmops5" TagName="ModalDialog" Src="~/Controls/v5/Base/ModalDialog.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-    
-	<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
-    <script type="text/javascript" src="/Scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-    <script type="text/javascript" src="/Scripts/jquery.snipe.js"></script>
-	<link rel="stylesheet" type="text/css" href="/Scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    <Swarmops5:ExternalScripts Package="FancyBox" ID="ScriptFancyBox" runat="server"/>
     
     <script type="text/javascript">
         $(document).ready(function() {
@@ -59,6 +55,7 @@
                         inspectingTransactionId = $(this).attr("txId");
                         onFlagTransaction("Add Tx Id here");
                     });
+
                     $('img.LocalIconInspect').click(function() {
                         onInspectTransaction($(this).attr("txId"));
                     });
@@ -104,16 +101,10 @@
                             grandParent.siblings().css("border-top", "1px solid #444");
                         });
 
-                        $("a.FancyBox_Gallery").fancybox({
-                            'overlayShow': true,
-                            'transitionIn': 'fade',
-                            'transitionOut': 'fade',
-                            'type': 'image',
-                            'opacity': true
-                        });
+                        SwarmopsJS.fancyBoxInit("a.FancyBox_Gallery");
 
                         $("img.LocalIconGeneralViewDoc").click(function() {
-                            $("a.FancyBox_Gallery[rel='" + $(this).attr("txId") + "']").first().click();
+                            $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("txId") + "']").first().click();
                         });
                     }
                 }
