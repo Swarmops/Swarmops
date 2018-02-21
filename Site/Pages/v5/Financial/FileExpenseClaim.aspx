@@ -15,22 +15,28 @@
           height: 44px;
           background: #000;
           text-align: center;
-          line-height: 44px;
+          line-height: 40px;
           color: #fff;
           text-decoration: none;
           border-radius: 50%;
-          font-size: 16px;
+          font-size: 36px;
           top: 50%;
           margin-top: -22px;
-          line-height: 42px;
+          -webkit-text-stroke: 1px white;
+          text-stroke: 1px white;
+        }
+
+        .fancybox-arrow-previous:hover,
+        .fancybox-arrow-next:hover {
+            text-decoration: none;
         }
 
         .fancybox-arrow-previous {
-            left: -50px;
+            left: -60px;
         }
 
         .fancybox-arrow-next {
-            right: -50px;
+            right: -60px;
         }        
 
     </style>
@@ -194,6 +200,8 @@
                                 /* TODO: MAKE A RIGHT-TO-LEFT VERSION OF THIS */
 
                                 if ( instance.group.length > 1 && current.$content ) {
+                                    console.log(instance);
+                                    //console.log(current);
                                     current.$content.append('<a data-fancybox-next class="fancybox-arrow-next" href="javascript:;">→</a><a data-fancybox-previous class="fancybox-arrow-previous" href="javascript:;">←</a>');
                                 }                            
                             },
