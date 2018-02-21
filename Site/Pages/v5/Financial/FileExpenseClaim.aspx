@@ -162,7 +162,7 @@
                         });
 
                         $(".LocalIconViewDoc").click(function () {
-                            $("a.FancyBox_Gallery[rel='" + $(this).attr("firstDocId") + "']").first().click();
+                            $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("firstDocId") + "']").first().click();
                         });
 
 
