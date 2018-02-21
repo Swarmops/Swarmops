@@ -13,6 +13,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
     public partial class FileExpenseClaim {
         
         /// <summary>
+        /// ScriptFancyBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Meta.ExternalScripts ScriptFancyBox;
+        
+        /// <summary>
         /// BoxTitle control.
         /// </summary>
         /// <remarks>
