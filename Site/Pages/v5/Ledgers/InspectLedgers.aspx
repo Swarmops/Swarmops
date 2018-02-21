@@ -104,6 +104,7 @@
                         SwarmopsJS.fancyBoxInit("a.FancyBox_Gallery");
 
                         $("img.LocalIconGeneralViewDoc").click(function() {
+                            alertify.log("Debug " + $(this).attr("txId"));
                             $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("txId") + "']").first().click();
                         });
                     }
