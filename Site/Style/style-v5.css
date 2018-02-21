@@ -1364,6 +1364,46 @@ nav.alertify-buttons {
 }
 
 
+/* FANCYBOX */
+
+.fancybox-arrow-previous,
+.fancybox-arrow-next {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    background: #000;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50%;
+    font-size: 36px;
+    top: 50%;
+    margin-top: -22px;
+    -webkit-text-stroke: 1px white;
+    text-stroke: 1px white;
+}
+
+.fancybox-arrow-previous:hover,
+.fancybox-arrow-next:hover {
+    text-decoration: none;
+    background: #222;
+    color: #FFF;
+}
+
+.fancybox-arrow-previous {
+    left: -60px;
+}
+
+.fancybox-arrow-next {
+    right: -60px;
+}      
+        
+.zoomContainer {
+    overflow: hidden;
+}  
+
+
 /* VARIOUS ADDITIONS - SORT LATER */
 
 span.spanGrayedOut {

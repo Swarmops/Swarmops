@@ -8,37 +8,7 @@
     
     <style type="text/css">
 
-        .fancybox-arrow-previous,
-        .fancybox-arrow-next {
-          position: absolute;
-          width: 44px;
-          height: 44px;
-          background: #000;
-          text-align: center;
-          line-height: 40px;
-          color: #fff;
-          text-decoration: none;
-          border-radius: 50%;
-          font-size: 36px;
-          top: 50%;
-          margin-top: -22px;
-          -webkit-text-stroke: 1px white;
-          text-stroke: 1px white;
-        }
 
-        .fancybox-arrow-previous:hover,
-        .fancybox-arrow-next:hover {
-            text-decoration: none;
-            background: #444;
-        }
-
-        .fancybox-arrow-previous {
-            left: -60px;
-        }
-
-        .fancybox-arrow-next {
-            right: -60px;
-        }        
 
     </style>
 
@@ -178,59 +148,7 @@
 
                         $('#divDocumentsHidden').html(result.Documents);
 
-                        $("a.FancyBox_Gallery").fancybox({
-                            toolbar: false,
-                            smallBtn: true,
-                            arrows: false,
-                            infobar: false,
-                            title: this.title,
-
-                            helpers: {
-                                title: {
-                                    position: 'bottom',
-                                    type: 'float'
-                                }
-                            },
-
-                            afterShow: function(instance, current) {
-                                $('.zoomContainer').remove();
-                                $('.fancybox-image').elevateZoom({
-                                    zoomType: "lens",
-                                    cursor: "crosshair",
-                                    zoomWindowFadeIn: 200,
-                                    zoomWindowFadeOut: 200,
-                                    lensShape: "round",
-                                    lensSize: 200
-                                });
-
-                                if (instance.group.length > 1) {
-                                    if (instance.currIndex > 0) {
-                                        $('a.fancybox-arrow-previous').show();
-                                    } else {
-                                        $('a.fancybox-arrow-previous').hide();
-                                    }
-
-                                    if (instance.currIndex < instance.group.length - 1) {
-                                        $('a.fancybox-arrow-next').show();
-                                    } else {
-                                        $('a.fancybox-arrow-next').hide();
-                                    }
-                                }
-                            },
-
-                            afterLoad: function(instance, current) {
-
-                                /* TODO: MAKE A RIGHT-TO-LEFT VERSION OF THIS */
-
-                                if ( instance.group.length > 1 && current.$content ) {
-                                    current.$content.append('<a data-fancybox-next class="fancybox-arrow-next button-next" href="javascript:;">→</a><a data-fancybox-prev class="fancybox-arrow-previous button-previous" href="javascript:;">←</a>');
-                                }                            
-                            },
-
-                            afterClose: function() {
-                                $('.zoomContainer').remove();
-                            }
-                        });
+                        SwarmopsJS.fancyBoxInit('.FancyBox_Gallery');
 
                         $(".LocalIconViewDoc").click(function () {
                             $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("firstDocId") + "']").first().click();
