@@ -189,7 +189,7 @@
                                 });
                             },
 
-                            afterLoad: function() {
+                            afterLoad: function(instance, current) {
 
                                 /* TODO: MAKE A RIGHT-TO-LEFT VERSION OF THIS */
 
