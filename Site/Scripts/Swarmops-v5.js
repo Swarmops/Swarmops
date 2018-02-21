@@ -465,6 +465,8 @@ var SwarmopsJS = (function () {
 
             beforeShow: function (instance, current) {
                 $('.zoomContainer').remove();
+                this.title = $(this.element).data("caption");
+
                 if (instance.group.length > 1) {
                     if (instance.currIndex > 0) {
                         $('a.fancybox-arrow-previous').show();
