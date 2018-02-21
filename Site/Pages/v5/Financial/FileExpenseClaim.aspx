@@ -193,7 +193,20 @@
                                     lensShape: "round",
                                     lensSize: 200
                                 });
-                                console.log(instance);
+
+                                if (instance.group.length > 1) {
+                                    if (instance.currIndex > 0) {
+                                        $('a.data-arrow-previous').show();
+                                    } else {
+                                        $('a.data-arrow-previous').hide();
+                                    }
+
+                                    if (instance.currIndex < instance.group.length - 1) {
+                                        $('a.data-arrow-next').show();
+                                    } else {
+                                        $('a.data-arrow-next').hide();
+                                    }
+                                }
                             },
 
                             afterLoad: function(instance, current) {
@@ -201,9 +214,7 @@
                                 /* TODO: MAKE A RIGHT-TO-LEFT VERSION OF THIS */
 
                                 if ( instance.group.length > 1 && current.$content ) {
-                                    console.log(instance);
-                                    //console.log(current);
-                                    current.$content.append('<a data-fancybox-next class="fancybox-arrow-next button-next" href="javascript:;">→</a><a data-fancybox-previous class="fancybox-arrow-previous button-previous" href="javascript:;">←</a>');
+                                    current.$content.append('<a data-fancybox-next class="fancybox-arrow-next button-next" href="javascript:;">→</a><a data-fancybox-prev class="fancybox-arrow-previous button-previous" href="javascript:;">←</a>');
                                 }                            
                             },
 
