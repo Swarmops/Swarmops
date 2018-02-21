@@ -72,6 +72,8 @@ namespace Swarmops.Frontend.Controls.Meta
 
                     scriptRef.Append("<script src=\"" + externalScriptUrl +
                                      "/fancybox/jquery.fancybox.min.js\" type=\"text/javascript\"></script>\r\n");
+                    scriptRef.Append("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + externalScriptUrl +
+                                     "/fancybox/jquery.fancybox.min.css\" />\r\n"); // Supposed to contain all CSS
 
                     // If we're including Fancybox, always also include Elevated Zoom, which isn't external
 
