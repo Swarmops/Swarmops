@@ -143,19 +143,21 @@
                         $('#divDocumentsHidden').html(result.Documents);
 
                         $("a.FancyBox_Gallery").fancybox({
-                            'overlayShow': true,
-                            'transitionIn': 'fade',
-                            'transitionOut': 'fade',
-                            'type': 'image',
-                            'opacity': true,
 
                             afterShow: function() {
-                                alert('aftershow');
+                                $('.zoomContainer').remove();
                                 $('.fancybox-image').elevateZoom({
                                     zoomType: "lens",
+                                    cursor: "crosshair",
+                                    zoomWindowFadeIn: 200,
+                                    zoomWindowFadeOut: 200,
                                     lensShape: "round",
                                     lensSize: 200
                                 });
+                            },
+
+                            afterClose: function() {
+                                $('.zoomContainer').remove();
                             }
                         });
 
