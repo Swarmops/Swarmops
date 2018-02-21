@@ -5,6 +5,39 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <Swarmops5:ExternalScripts ID="ScriptFancyBox" Package="FancyBox" runat="server"/>
+    
+    <style type="text/css">
+
+        .button-previous,
+        .button-next {
+          position: absolute;
+          width: 44px;
+          height: 44px;
+          background: #000;
+          text-align: center;
+          line-height: 44px;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 50%;
+          font-size: 16px;
+        }
+
+        .button-previous,
+        .button-next {
+          top: 50%;
+          margin-top: -22px;
+          line-height: 42px;
+        }
+
+        .button-previous {
+            left: -50px;
+        }
+
+        .button-next {
+            right: -50px;
+        }        
+
+    </style>
 
     <script type="text/javascript">
 
@@ -143,6 +176,8 @@
                         $('#divDocumentsHidden').html(result.Documents);
 
                         $("a.FancyBox_Gallery").fancybox({
+                            toolbar: false,
+                            smallBtn: true,
 
                             afterShow: function() {
                                 $('.zoomContainer').remove();
