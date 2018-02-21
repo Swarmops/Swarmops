@@ -8,8 +8,8 @@
     
     <style type="text/css">
 
-        .button-previous,
-        .button-next {
+        .fancybox-arrow-previous,
+        .fancybox-arrow-next {
           position: absolute;
           width: 44px;
           height: 44px;
@@ -20,20 +20,16 @@
           text-decoration: none;
           border-radius: 50%;
           font-size: 16px;
-        }
-
-        .button-previous,
-        .button-next {
           top: 50%;
           margin-top: -22px;
           line-height: 42px;
         }
 
-        .button-previous {
+        .fancybox-arrow-previous {
             left: -50px;
         }
 
-        .button-next {
+        .fancybox-arrow-next {
             right: -50px;
         }        
 
@@ -178,6 +174,7 @@
                         $("a.FancyBox_Gallery").fancybox({
                             toolbar: false,
                             smallBtn: true,
+                            arrows: false,
 
                             afterShow: function() {
                                 $('.zoomContainer').remove();
@@ -189,6 +186,12 @@
                                     lensShape: "round",
                                     lensSize: 200
                                 });
+                            },
+
+                            afterLoad: function() {
+                                if ( instance.group.length > 1 && current.$content ) {
+                                    current.$content.append('<a data-fancybox-next class="fancybox-arrow-next" href="javascript:;">→</a><a data-fancybox-previous class="fancybox-arrow-previous" href="javascript:;">←</a>');
+                                }                            
                             },
 
                             afterClose: function() {
