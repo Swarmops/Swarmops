@@ -525,7 +525,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 "<img src='/Images/Icons/iconshock-wrench-128x96px-centered.png' height='18' width='24' class='LocalIconEdit' guid='{0}' />";
 
             string docString =
-                "<a href='/Pages/v5/Support/StreamUpload.aspx?DocId={0}&hq=1' title=\"{1}\" class='FancyBox_Gallery' rel='{2}'>";
+                "<a href='/Pages/v5/Support/StreamUpload.aspx?DocId={0}&hq=1' title=\"{1}\" class='FancyBox_Gallery' data-fancybox='{2}'>";
 
             string documentsAll = String.Empty;
 
