@@ -393,7 +393,7 @@ namespace Swarmops.Logic.Support
 
             if (((int) options & (int) PdfProcessorOptions.HighQuality) > 0)
             {
-                density = 600;
+                density = 300;
                 suffix = "-hires"; // hires conversion uses different filename
             }
 
