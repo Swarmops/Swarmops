@@ -498,7 +498,7 @@ var SwarmopsJS = (function () {
                 /* TODO: MAKE A RIGHT-TO-LEFT VERSION OF THIS */
 
                 if (instance.group.length > 1 && current.$content) {
-                    current.$content.append('<a data-fancybox-next class="fancybox-arrow-next button-next" href="javascript:;">→</a><a data-fancybox-prev class="fancybox-arrow-previous button-previous" href="javascript:;">←</a>');
+                    current.$content.append('<a data-fancybox-next class="fancybox-arrow-next button-next" href="javascript:;">→</a><a data-fancybox-prev class="fancybox-arrow-previous button-previous" href="javascript:;" style="display:none">←</a>');
                 }
             },
 

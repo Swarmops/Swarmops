@@ -1401,8 +1401,15 @@ nav.alertify-buttons {
         
 .zoomContainer {
     overflow: hidden;
-}  
+}
 
+.fancybox-caption
+{
+    text-align: center;
+    font-weight: 500;
+    font-family: Ubuntu;
+    font-size: 24px !important;
+}
 
 /* VARIOUS ADDITIONS - SORT LATER */
 
