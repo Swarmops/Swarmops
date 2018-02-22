@@ -149,8 +149,8 @@
 
                                     alertify.set({
                                         labels: {
-                                            ok: SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftYes%>'),
-                                            cancel: SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftNo%>')
+                                            ok: SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftNo%>'),
+                                            cancel: SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftYes%>')
                                         }
                                     });
 
