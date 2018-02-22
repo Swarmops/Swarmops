@@ -341,9 +341,9 @@ namespace Swarmops.Logic.Support
                     Console.Write(@"Regenerating document #{0}", startId);
 
                     Process process = Process.Start("bash",
-                            "-c \"convert -density 600 -background white -alpha remove " + StorageRoot + firstPart + " " +
+                            "-c \"convert -density 300 -background white -alpha remove " + StorageRoot + firstPart + " " +
                             StorageRoot + firstPart +
-                            "-%04d.png\""); // Density 600 means 600dpi means production-grade conversion
+                            "-%04d-hires.png\""); // Density 300 means 600dpi means production-grade conversion
 
                     process.WaitForExit();
 
