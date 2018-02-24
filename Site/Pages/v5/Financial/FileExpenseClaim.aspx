@@ -91,6 +91,20 @@
             return true;
         }
 
+        function editExpenseClaim(expenseClaimGuid) {
+            SwarmopsJS.ajaxCall("/Pages/v5/Financial/FileExpenseClaim.aspx/GetExpenseClaimData",
+                {
+                    masterGuid: '<%=this.UploadExpensify.GuidString%>',
+                    expenseGuid: expenseClaimGuid
+                },
+                function(result) {
+                    if (result.Success) {
+                        <%=this.DialogEditExpenseClaim.ClientID%>_show();
+                    }
+                });
+        }
+
+
         var vatEnable = <%= this.CurrentOrganization.VatEnabled? "true" : "false" %>;
         var expensifyProcessingHalfway = false;
 
@@ -133,20 +147,33 @@
                         <%=this.ProgressExpensifyFake.ClientID%>_show();
                         $('#divUploadExpensify').hide();
                         $('#divExpensifyUploadAnotherHeader').show();
-                        $('#divExpensifyResults').slideDown();
+                        $('#divExpensifyResults').slideDown("slow", function() {
+                            <%=this.ProgressExpensifyFake.ClientID%>_fadeOut();
+                        });
 
                         // Display processed data
 
-                        $('#expensifyDataGrid').datagrid({});
+                        $('#expensifyDataGrid').datagrid({
+                            
+                            onBeginEdit: function(index,row){
+                                var ed = $(this).datagrid('getEditor',{index:index,field:'productid'});
+                                $(ed.target).combotree({
+                                    url: '...',
+                                    value: row.productid
+                                });
+                            },
+                            onEndEdit: function(index,row){
+                                var ed = $(this).datagrid('getEditor',{index:index,field:'productid'});
+                                row.productname = $(ed.target).combotree('getText');
+                            }
+                        });
                         $('#expensifyDataGrid').datagrid('loadData', result.Data);
 
                         // Fill in documents (hidden)
 
-
+                        $('#divDocumentsHidden').html(result.Documents);
 
                         // Enable document viewing
-
-                        $('#divDocumentsHidden').html(result.Documents);
 
                         SwarmopsJS.fancyBoxInit('.FancyBox_Gallery');
 
@@ -154,6 +181,11 @@
                             $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("firstDocId") + "']").first().click();
                         });
 
+                        // Hook in edit-expense popup
+
+                        $(".LocalEditExpenseClaim").click(function() {
+                            editExpenseClaim($(this).attr("data-guid"));
+                        });
 
                     } else {
 
@@ -293,6 +325,14 @@
 
         </div>
     </div>
+
+    <Swarmops5:ModalDialog ID="DialogEditExpenseClaim" runat="server">
+        <DialogCode>
+            <h2>Editing Expense Claim</h2>
+            <div class="divEntryFields">FOOOO!</div>
+            <div class="divEntryLabels">BAAAAR!</div>
+        </DialogCode>
+    </Swarmops5:ModalDialog>
 </asp:Content>
 
 

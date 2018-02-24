@@ -507,12 +507,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // so the user can review all of it.
 
 
-
-            // TODO: Get all receipts
-
-            // TODO: Present report to user
-
-            // TODO: Let user confirm budgets
+            // TODO: Suggest initial budgets
 
             // TODO: Once user has confirmed budgets, save expenses
 
@@ -522,7 +517,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                        "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" firstDocId='{0}' class='LocalIconViewDoc' style='cursor:pointer' height='20' width='20' />";
 
             string editString =
-                "<img src='/Images/Icons/iconshock-wrench-128x96px-centered.png' height='18' width='24' class='LocalIconEdit' guid='{0}' />";
+                "<img src='/Images/Icons/iconshock-wrench-128x96px-centered.png' height='18' width='24' class='LocalEditExpenseClaim' data-guid='{0}' />";
 
             string docString =
                 "<a href='/Pages/v5/Support/StreamUpload.aspx?DocId={0}&hq=1' data-caption=\"{1}\" class='FancyBox_Gallery' data-fancybox='{2}'>";
@@ -533,6 +528,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 outputRecords.Add(new ExpensifyOutputRecord
                 {
+                    Budget = "<span class='LocalEditExpenseClaim' data-guid='" + record.Guid + "'>" + Resources.Global.Global_DropInits_SelectFinancialAccount + "</span>",
                     Description = record.CategoryCustom + " / " + record.Description,
                     CreatedDateTime = record.Timestamp.ToString("MMM dd"),
                     Amount = (record.AmountCents / 100.0).ToString("N2"),
@@ -568,6 +564,16 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // This may throw and it's okay
 
             return (AjaxCallExpensifyUploadResult) GuidCache.Get("Results-" + guid);
+        }
+
+
+        [WebMethod]
+        public static AjaxCallExpensifyRecordResult GetExpensifyRecord(string masterGuid, string recordGuid)
+        {
+            return new AjaxCallExpensifyRecordResult
+            {
+                Success = true,
+            };
         }
 
 
@@ -767,5 +773,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         public string Documents { get; set; }
     }
 
+    public class AjaxCallExpensifyRecordResult : AjaxCallResult
+    {
+        public string Amount { get; set; }
+        public string AmountVat { get; set; }
+    }
 
 }

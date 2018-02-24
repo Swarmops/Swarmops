@@ -362,5 +362,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Swarmops.Frontend.Controls.v5.Base.ProgressBar ProgressExpensify;
+        
+        /// <summary>
+        /// DialogEditExpenseClaim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.ModalDialog DialogEditExpenseClaim;
     }
 }
