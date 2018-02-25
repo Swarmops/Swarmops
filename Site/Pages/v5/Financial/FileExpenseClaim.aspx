@@ -101,7 +101,7 @@
                 },
                 function(result) {
                     if (result.Success) {
-                        <%=this.DialogEditExpenseClaim.ClientID%>_show();
+                        <%=this.DialogEditExpenseClaim.ClientID%>_open();
                     }
                 });
         }
