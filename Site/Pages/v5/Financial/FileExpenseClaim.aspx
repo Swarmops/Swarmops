@@ -7,11 +7,13 @@
     <Swarmops5:ExternalScripts ID="ScriptFancyBox" Package="FancyBox" runat="server"/>
     
     <style type="text/css">
-
-        .LocalEditExpenseClaim {
-            cursor: pointer;
+        .enableVatField {
+            display: none;
         }
 
+         .LocalEditExpenseClaim {
+             cursor: pointer;
+         }
     </style>
 
     <script type="text/javascript">
@@ -331,8 +333,8 @@
     <Swarmops5:ModalDialog ID="DialogEditExpenseClaim" runat="server">
         <DialogCode>
             <h2>Editing Expense Claim</h2>
-            <div class="entryFields">Budget<br/>Description<br/>Amount<br/>amountVat<br/><input type="button" class="NoInputFocus" value="Delete"/>&nbsp;<input type="button" class="NoInputFocus" value="Save changes"/></div>
-            <div class="entryLabels">Budget charged<br />Description<br/>Expense amount<br/><div class="enableVatField" style="display:none">VAT amount of the total</div></div>
+            <div class="entryFields">Budget<br/>Description<br/>Amount<br/><div class="enableVatField">amountVat<br/></div><input type="button" class="buttonAccentColor Red HalfWidth NoInputFocus" value="Delete"/>&nbsp;<input type="button" class="buttonAccentColor HalfWidth NoInputFocus" value="Proceed &gt;&gt;"/></div>
+            <div class="entryLabels">Budget charged<br />Description<br/>Expense amount<br/><div class="enableVatField">VAT amount of the total</div></div>
         </DialogCode>
     </Swarmops5:ModalDialog>
 </asp:Content>

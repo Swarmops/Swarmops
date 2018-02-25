@@ -698,6 +698,23 @@ body.rtl .buttonAccentColor:focus {
 }
 
 
+.buttonAccentColor.Red {
+	background: #EA4211;
+	border: 1px solid #EA4211;
+	box-shadow: 1px 1px 4px #7F2800;
+	background: linear-gradient(#FF6145, #F05822);
+	text-shadow: #FFEDC8 0px 0px 3px, #FFEDC8 0px 0px 3px;
+	border-color: #C74815;
+}
+
+.buttonAccentColor.Red:hover, .buttonAccentColor.Red:focus {
+	box-shadow: 2px 2px 4px #7F5500;
+	background: #FF614D;
+	background: linear-gradient(#FF7280, #FF614D);
+}
+
+
+
 .button-orange
 {
 	-webkit-box-shadow: 0 1px 3px #C78B15;
@@ -824,8 +841,12 @@ body.rtl div.modal .entryFields {
 	box-shadow: 0px 0px 4px 2px #1C397E inset;
 }
 
-.entryFields > input[type=button] {
+.entryFields > input[type=button]:not(.HalfWidth) {
     width: 324px;
+}
+
+.entryFields > input[type=button].HalfWidth {
+    width: 160px;
 }
 
 .entryFields span.toggleLabel {
