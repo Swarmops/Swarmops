@@ -331,8 +331,8 @@
     <Swarmops5:ModalDialog ID="DialogEditExpenseClaim" runat="server">
         <DialogCode>
             <h2>Editing Expense Claim</h2>
-            <div class="divEntryFields">FOOOO!</div>
-            <div class="divEntryLabels">BAAAAR!</div>
+            <div class="entryFields">Budget<br/>Description<br/>Amount<br/>amountVat<br/><input type="button" class="NoInputFocus" text="Delete"/>&nbsp;<input type="button" class="NoInputFocus" text="Save changes"/></div>
+            <div class="entryLabels">Budget charged<br />Description<br/>Expense amount<br/><div class="enableVatField" style="display:none">VAT amount of the total</div></div>
         </DialogCode>
     </Swarmops5:ModalDialog>
 </asp:Content>
