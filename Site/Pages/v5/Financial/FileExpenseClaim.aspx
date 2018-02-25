@@ -99,10 +99,13 @@
             SwarmopsJS.ajaxCall("/Pages/v5/Financial/FileExpenseClaim.aspx/GetExpensifyRecord",
                 {
                     masterGuid: '<%=this.UploadExpensify.GuidString%>',
-                    expenseGuid: expenseClaimGuid
+                    recordGuid: expenseClaimGuid
                 },
                 function(result) {
                     if (result.Success) {
+                        <%=this.CurrencyModalExpensifyAmount.ClientID%>_initialize(result.Amount);
+                        <%=this.CurrencyModalExpensifyAmountVat.ClientID%>_initialize(result.AmountVat);
+                        $('#textModalExpensifyDescription').val(result.Description);
                         <%=this.DialogEditExpenseClaim.ClientID%>_open();
                     }
                 });
@@ -333,7 +336,13 @@
     <Swarmops5:ModalDialog ID="DialogEditExpenseClaim" runat="server">
         <DialogCode>
             <h2>Editing Expense Claim</h2>
-            <div class="entryFields">Budget<br/>Description<br/>Amount<br/><div class="enableVatField">amountVat<br/></div><input type="button" class="buttonAccentColor Red HalfWidth NoInputFocus" value="Delete"/>&nbsp;<input type="button" class="buttonAccentColor HalfWidth NoInputFocus" value="Proceed &gt;&gt;"/></div>
+            <div class="entryFields">
+                <div class="stacked-input-control"><input type="text" id="textModalExpensifyDescription" /></div>
+                <Swarmops5:ComboBudgets ID="DropBudgets" runat="server"/>
+                <Swarmops5:Currency ID="CurrencyModalExpensifyAmount" runat="server"/>
+                <div class="enableVatField"><Swarmops5:Currency ID="CurrencyModalExpensifyAmountVat" runat="server"/></div>
+                <input type="button" class="buttonAccentColor HalfWidth NoInputFocus" value="Proceed &gt;&gt;"/><input type="button" class="buttonAccentColor Red HalfWidth NoInputFocus" value="Delete"/>
+            </div>
             <div class="entryLabels">Budget charged<br />Description<br/>Expense amount<br/><div class="enableVatField">VAT amount of the total</div></div>
         </DialogCode>
     </Swarmops5:ModalDialog>

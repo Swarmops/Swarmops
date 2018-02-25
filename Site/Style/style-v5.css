@@ -699,10 +699,10 @@ body.rtl .buttonAccentColor:focus {
 
 
 .buttonAccentColor.Red {
-	background: #EA4211;
-	border: 1px solid #EA4211;
+	background: #EA6311;
+	border: 1px solid #EA6311;
 	box-shadow: 1px 1px 4px #7F2800;
-	background: linear-gradient(#FF6145, #F05822);
+	background: linear-gradient(#FF9245, #F08E22);
 	text-shadow: #FFEDC8 0px 0px 3px, #FFEDC8 0px 0px 3px;
 	border-color: #C74815;
 }
@@ -846,7 +846,7 @@ body.rtl div.modal .entryFields {
 }
 
 .entryFields > input[type=button].HalfWidth {
-    width: 160px;
+    width: 152px;
 }
 
 .entryFields span.toggleLabel {
