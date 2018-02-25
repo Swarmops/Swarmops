@@ -8,7 +8,9 @@
     
     <style type="text/css">
 
-
+        .LocalEditExpenseClaim {
+            cursor: pointer;
+        }
 
     </style>
 
@@ -91,8 +93,8 @@
             return true;
         }
 
-        function editExpenseClaim(expenseClaimGuid) {
-            SwarmopsJS.ajaxCall("/Pages/v5/Financial/FileExpenseClaim.aspx/GetExpenseClaimData",
+        function editExpensifyClaim(expenseClaimGuid) {
+            SwarmopsJS.ajaxCall("/Pages/v5/Financial/FileExpenseClaim.aspx/GetExpensifyRecord",
                 {
                     masterGuid: '<%=this.UploadExpensify.GuidString%>',
                     expenseGuid: expenseClaimGuid
@@ -184,7 +186,7 @@
                         // Hook in edit-expense popup
 
                         $(".LocalEditExpenseClaim").click(function() {
-                            editExpenseClaim($(this).attr("data-guid"));
+                            editExpensifyClaim($(this).attr("data-guid"));
                         });
 
                     } else {
