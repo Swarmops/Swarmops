@@ -26,7 +26,7 @@
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/qrcode.min.js"></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.qrcode.min.js"></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/odometer.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/odometer-patched.js" ></script>
 
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
