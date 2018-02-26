@@ -338,12 +338,12 @@
             <h2>Editing Expense Claim</h2>
             <div class="entryFields">
                 <div class="stacked-input-control"><input type="text" id="textModalExpensifyDescription" /></div>
-                <Swarmops5:ComboBudgets ID="DropBudgets" runat="server"/>
+                <Swarmops5:ComboBudgets ID="DropBudgets" ListType="Expensable" runat="server"/>
                 <Swarmops5:Currency ID="CurrencyModalExpensifyAmount" runat="server"/>
                 <div class="enableVatField"><Swarmops5:Currency ID="CurrencyModalExpensifyAmountVat" runat="server"/></div>
                 <input type="button" class="buttonAccentColor HalfWidth NoInputFocus" value="Proceed &gt;&gt;"/><input type="button" class="buttonAccentColor Red HalfWidth NoInputFocus" value="Delete"/>
             </div>
-            <div class="entryLabels">Budget charged<br />Description<br/>Expense amount<br/><div class="enableVatField">VAT amount of the total</div></div>
+            <div class="entryLabels">Description<br/>Budget charged<br />Expense amount<br/><div class="enableVatField">VAT amount of the total</div></div>
         </DialogCode>
     </Swarmops5:ModalDialog>
 </asp:Content>
