@@ -111,7 +111,7 @@
   color: #000;
 }
 
-.odometer.odometer-auto-theme.nocents .odometer-digit:last-child, .odometer.odometer-auto-theme.nocents .odometer-digit:nth-last-child(1), .odometer.odometer-theme-car.nocents .odometer-digit:last-child, .odometer.odometer-theme-car.nocents .odometer-digit:nth-last-child(1) {
+.odometer.odometer-auto-theme.nocents .odometer-digit:last-child, .odometer.odometer-auto-theme.nocents .odometer-digit:nth-last-child(2), .odometer.odometer-theme-car.nocents .odometer-digit:last-child, .odometer.odometer-theme-car.nocents .odometer-digit:nth-last-child(2) {
     display: none;
 }
 
