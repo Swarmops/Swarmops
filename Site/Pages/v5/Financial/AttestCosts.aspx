@@ -554,7 +554,7 @@
             <p><input type="radio" id="RadioCorrect" name="ModalOptions" value="Correct" onclick="<%=this.TextCorrectAmount.ClientID%>_focus();" /><label for="RadioCorrect"><asp:Label runat="server" ID="LabelRadioCorrect" Text="I will attest, but for a different amount. XYZ" /></label></p>
             <div id="radioOptionCorrect" class="radioOption">
                 <div class="entryFields">
-                    <Swarmops5:CurrencyTextBox ID="TextCorrectAmount" runat="server" />&#8203;<br/>
+                    <Swarmops5:CurrencyTextBox ID="TextCorrectAmount" runat="server" />
                     <input type="button" value='#Correct#' class="buttonAccentColor" onclick="onAttestCorrectedAmount(); return false;" id="buttonExecuteCorrectedAmount"/>
                 </div>
                 <div class="entryLabels">
