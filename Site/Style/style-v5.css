@@ -303,6 +303,13 @@ div#DivMasterFlag:hover {
     background-size: 28px;
 }
 
+/* CONDITIONAL ELEMENTS */
+/* these are shown in doc.ready() as appropriate */
+
+.ifVatEnabled {
+    display: none;
+}
+
 /* DASHBOARD THINGS */
 
 .odometer {

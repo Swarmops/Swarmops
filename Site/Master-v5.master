@@ -193,7 +193,14 @@
             $('#<%=this.SearchBox.ClientID%>').blur(function() {
                 $('#<%=this.SearchBox.ClientID%>').animate({ width: "150px" });
             });
+
+            if (vatEnabled) {
+                $('.ifVatEnabled').show();
+            }
         });
+
+        var vatEnabled = <%= this.CurrentOrganization.VatEnabled? "true" : "false" %>;
+
     </script>
 
 </head>

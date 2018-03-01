@@ -7,10 +7,6 @@
     <Swarmops5:ExternalScripts ID="ScriptFancyBox" Package="FancyBox" runat="server"/>
     
     <style type="text/css">
-        .enableVatField {
-            display: none;
-        }
-
          .LocalEditExpenseClaim {
              cursor: pointer;
          }
@@ -22,10 +18,6 @@
 
             $('#divTabs').tabs();
  
-            if (vatEnable) {
-                $('.enableVatField').show();
-            }
-
         });
 
 
@@ -111,8 +103,6 @@
                 });
         }
 
-
-        var vatEnable = <%= this.CurrentOrganization.VatEnabled? "true" : "false" %>;
         var expensifyProcessingHalfway = false;
 
         function onExpensifyUpload() {
@@ -224,9 +214,6 @@
 
     </script>
     
-    <style type="text/css">
-        .enableVatField { display: none; }
-    </style>
 </asp:Content>
 
 
@@ -237,7 +224,7 @@
             <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
             <div class="entryFields">
                 <Swarmops5:Currency runat="server" ID="CurrencyAmount" />
-                <span class="enableVatField"><Swarmops5:Currency runat="server" ID="CurrencyVat" /></span>
+                <span class="ifVatEnabled"><Swarmops5:Currency runat="server" ID="CurrencyVat" /></span>
                 <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPurpose" /></div>
                 <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />
                 <asp:Repeater ID="RepeaterTagDrop" runat="server"><ItemTemplate><span id="SpanDropTags<%# Eval("TagSetId") %>"><select class="easyui-combotree" url="/Automation/Json-TransactionTagsTree.aspx?TagSetId=<%# Eval("TagSetId") %>" name="DropTags<%# Eval("TagSetId") %>" id="DropTags<%# Eval("TagSetId") %>" animate="true" style="width:300px"></select></span>&nbsp;<br/></ItemTemplate></asp:Repeater>
@@ -258,7 +245,7 @@
             </div>
             <div class="entryLabels">
                 <asp:Label runat="server" ID="LabelAmount" /><br/>
-                <span class="enableVatField"><asp:Label runat="server" ID="LabelVat"/><br/></span>
+                <span class="ifVatEnabled"><asp:Label runat="server" ID="LabelVat"/><br/></span>
                 <asp:Label runat="server" ID="LabelPurpose" /><br/>
                 <asp:Label runat="server" ID="LabelBudget" /><br/>
                 <asp:Repeater ID="RepeaterTagLabels" runat="server"><ItemTemplate><%# Eval("TagSetLocalizedName") %><br/></ItemTemplate></asp:Repeater>
@@ -340,10 +327,10 @@
                 <div class="stacked-input-control"><input type="text" id="textModalExpensifyDescription" /></div>
                 <Swarmops5:ComboBudgets ID="DropBudgets" ListType="Expensable" runat="server"/>
                 <Swarmops5:Currency ID="CurrencyModalExpensifyAmount" runat="server"/>
-                <div class="enableVatField"><Swarmops5:Currency ID="CurrencyModalExpensifyAmountVat" runat="server"/></div>
+                <div class="ifVatEnabled"><Swarmops5:Currency ID="CurrencyModalExpensifyAmountVat" runat="server"/></div>
                 <input type="button" class="buttonAccentColor HalfWidth NoInputFocus" value="Proceed &gt;&gt;"/><input type="button" class="buttonAccentColor Red HalfWidth NoInputFocus" value="Delete"/>
             </div>
-            <div class="entryLabels">Description<br/>Budget charged<br />Expense amount<br/><div class="enableVatField">VAT amount of the total</div></div>
+            <div class="entryLabels">Description<br/>Budget charged<br />Expense amount<br/><div class="ifVatEnabled">VAT amount of the total</div></div>
         </DialogCode>
     </Swarmops5:ModalDialog>
 </asp:Content>
