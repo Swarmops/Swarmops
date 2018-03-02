@@ -706,4 +706,8 @@
   <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
     <value>&lt;p&gt;&lt;strong&gt;ERROR: The Expensify CSV file is missing required data fields.&lt;/strong&gt; The file appears to be missing at least one of the required fields of Expensify's default CSV profile. Refer to the technical documentation and compare with the file you tried to upload. (It is a more probable cause of error, of course, that you tried to upload the completely wrong file &amp;ndash; maybe a photograph instead of an Expensify CSV &amp;ndash; and that this is the cause for the missing expected data.)&lt;/p&gt;&lt;p&gt;Unable to process this file.&lt;/p&gt;</value>
   </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(The amount must exclude any VAT specified!)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
+  </data>
 </root>

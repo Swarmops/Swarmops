@@ -194,12 +194,12 @@
                 $('#<%=this.SearchBox.ClientID%>').animate({ width: "150px" });
             });
 
-            if (vatEnabled) {
+            if (globalVatEnabled) {
                 $('.ifVatEnabled').show();
             }
         });
 
-        var vatEnabled = <%= this.CurrentOrganization.VatEnabled? "true" : "false" %>;
+        var globalVatEnabled = <%= this.CurrentOrganization.VatEnabled? "true" : "false" %>;
 
     </script>
 

@@ -558,7 +558,8 @@
                     <input type="button" value='#Correct#' class="buttonAccentColor" onclick="onAttestCorrectedAmount(); return false;" id="buttonExecuteCorrectedAmount"/>
                 </div>
                 <div class="entryLabels">
-                    <asp:Label runat="server" ID="LabelDescribeCorrect" Text="What amount are you attesting instead (SEK)? XYZ" />
+                    <asp:Label runat="server" ID="LabelDescribeCorrect" Text="What amount are you attesting instead (SEK)? XYZ" /><br/>
+                    <div class="ifVatEnabled"><asp:Label runat="server" ID="LabelDescribeCorrectNoVat" Text="(The VAT must not be included! XYZ)"/></div>
                 </div>
                 <div style="clear:both"></div>
             </div>

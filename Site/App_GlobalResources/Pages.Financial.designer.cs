@@ -295,6 +295,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (The amount must exclude any VAT specified!).
+        /// </summary>
+        internal static string AttestCosts_Modal_DescribeCorrectNoVat {
+            get {
+                return ResourceManager.GetString("AttestCosts_Modal_DescribeCorrectNoVat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to What amount are you attesting instead (in {0})?.
         /// </summary>
         internal static string AttestCosts_Modal_DescribeOptionAmount {
