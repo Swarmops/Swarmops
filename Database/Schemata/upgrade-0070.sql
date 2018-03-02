@@ -39,7 +39,7 @@ CREATE PROCEDURE `CreateApplication`(
 )
 BEGIN
 
-  INSERT INTO Applications VALUES (PersonId, OrganizationId, CreatedDateTime)
+  INSERT INTO Applications (PersonId, OrganizationId, CreatedDateTime)
   VALUES (personId, organizationId, dateTimeNow);
 
   SELECT LAST_INSERT_ID() AS Identity;
