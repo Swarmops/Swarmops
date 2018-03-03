@@ -15,7 +15,7 @@
                     <% 
                     if (!SuppressPrompt)
                     {
-                        Response.Write ("$('#" + this.ClientID + "_SpanBudgets span.combo input.textbox-text').val('" + SwarmopsJS.unescape('<%=CommonV5.JavascriptEscape(Resources.Global.Global_DropInits_SelectFinancialAccount)%>') + "');");
+                        Response.Write ("$('#" + this.ClientID + "_SpanBudgets span.combo input.textbox-text').val('" + SwarmopsJS.unescape('<%=this.Localized_DropInit%>') + "');");
                     }
                     if (!String.IsNullOrEmpty(this.OnClientLoaded)) 
                     {
@@ -65,7 +65,7 @@
                 } else {
                     $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', {
                         id: 0,
-                        text: SwarmopsJS.unescape('<%=CommonV5.JavascriptEscape(Resources.Global.Global_DropInits_SelectFinancialAccount)%>')
+                        text: SwarmopsJS.unescape('<%=this.Localized_DropInit%>')
                     });
                 }
 

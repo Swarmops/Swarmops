@@ -56,5 +56,10 @@ namespace Swarmops.Controls.Financial
                 this.Layout = LayoutDirection.Vertical;
             }
         }
+
+        public string Localized_DropInit
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Global_DropInits_SelectFinancialAccount); }
+        }
     }
 }
