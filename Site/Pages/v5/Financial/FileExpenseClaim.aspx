@@ -99,8 +99,8 @@
                         <%=this.CurrencyModalExpensifyAmountVat.ClientID%>_initialize(result.AmountVat);
                         $('#textModalExpensifyDescription').val(result.Description);
                         <%=this.DialogEditExpenseClaim.ClientID%>_open();
-                        $('#imgModalDocument').attr('src', '/Pages/v5/Support/StreamUpload.aspx?DocId={0}');
-                        $('#imgModalDocument').attr('data-zoom-image', '/Pages/v5/Support/StreamUpload.aspx?DocId={0}&hq=1');
+                        $('#imgModalDocument').attr('src', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + result.DocumentId);
+                        $('#imgModalDocument').attr('data-zoom-image', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + result.DocumentId + '&hq=1');
                         $('.zoomContainer').destroy();
                         $('#imgModalDocument').elevateZoom();
                     }
