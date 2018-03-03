@@ -101,7 +101,7 @@
                         <%=this.DialogEditExpenseClaim.ClientID%>_open();
                         $('#imgModalDocument').attr('src', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + result.DocumentId);
                         $('#imgModalDocument').attr('data-zoom-image', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + result.DocumentId + '&hq=1');
-                        $('.zoomContainer').destroy();
+                        $('.zoomContainer').remove();
                         $('#imgModalDocument').elevateZoom();
                     }
                 });
