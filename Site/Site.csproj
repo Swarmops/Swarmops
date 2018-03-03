@@ -1997,17 +1997,17 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\v5\Financial\Bases\CommonV5.cs" />
-    <Compile Include="Pages\v5\Financial\Bases\ControlV5Base.cs">
+    <Compile Include="Bases\CommonV5.cs" />
+    <Compile Include="Bases\ControlV5Base.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\v5\Financial\Bases\DataV5Base.cs">
+    <Compile Include="Bases\DataV5Base.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\v5\Financial\Bases\MasterV5Base.cs">
+    <Compile Include="Bases\MasterV5Base.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\v5\Financial\Bases\PageV5Base.cs">
+    <Compile Include="Bases\PageV5Base.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App_GlobalResources\af-ZA\Controls.Swarm.af-ZA.designer.cs">
