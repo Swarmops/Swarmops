@@ -335,14 +335,52 @@ Gesamtzeit von der Erstellung der Kommunikation bis zur Fertigstellung: [TotalTi
     <value>Eine neue Person hat sich angemeldet als [RegularTitle] in [OrganizationName]! [ConcernedPersonName] basiert in [GeographyName], [CountryCode].</value>
   </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Jemand (vermutlich Sie) hat versucht das [InstallationName] Kennwort für diese Email Adresse zurück zu setzen. Allerdings ist für dieses Konto die Zwei-Faktor Anmeldung für verbesserte Sicherheit eingeschaltet. Daher KANN dieses Kennwort NICHT einfach zurück gesetzt werden.
+
+Bitte kontaktieren Sie einen Administrator bei [InstallationName] um dieses Problem zu beheben und nach Prüfung Ihrer Identität ein neues Kennwort auszustellen.
+
+Vielen Dank für Ihr Verständnis.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Kennwort kann nicht zurückgesetzt werden</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>Ihr [InstallationName] Kennwort wurde eben auf [ExternalUrl] geändert.
+
+Wenn Sie diese Kennwort Änderung nicht durchgeführt haben, handelt es sich hierbei um eine Sicherheitslücke. Wenn dass der Fall ist, sperren sie bitte Ihr Konto SOFORT indem Sie folgenden Link klicken:
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+Wenn Sie die Sperre im Link oben bestätigen, werden alle aktiven Fenster umgehend gesperrt, Anmeldungen mit dem neuen Passwort werden gesperrt, und die Administratoren werden Sie kontaktieren um festzustellen was passiert ist und um Ihr Konto wieder herzustellen.
+
+Aber, wenn Sie Ihr Kennwort gerade eben selbst geändert haben, und damit diese Benachrichtigung ausgelöst haben, dann ist offensichtlich alles ok, und genauso wie es sein soll. Weitermachen.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Passwort geändert</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>[OrganizationName] hat ein "Kennwort Zurücksetzen Ticket" für Ihr Konto erstellt, vermutlich auf Ihr Ansuchen hin. Dieses Ticket ist gültig für die nächsten 24 Stunden.
+
+Bitte folgen Sie diesem Link um Ihr Passwort zurück zu setzen, und die Zwei-Faktor Anmeldung wieder einzuschalten, wenn diese vorher eingeschaltet war:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Nach 24 Stunden läuft dieses Ticket ab. Wenn Sie bis dahin nicht ihr Kennwort zurücksetzen, werden sie die Administratoren bei [OrganizationName] kontaktieren müssen um ein neues "Kennwort Zurücksetzen Ticket" anzufordern.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Passwort Zurücksetzen Ticket</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Jemand (vermutlich Sie) hat eine Zurücksetzung des Kennworts dies mit dieser Email Adresse verbundenen Kontos bei [InstallationName] angefordert. Wenn Sie das waren, bitte folgen sie dem Link unten innerhalb der nächsten 60 Minuten um die Kennwort Zurücksetzung abzuschließen.
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Wenn sie diese Kennwort Zurücksetzung NICHT angefordert haben, können (und sollten) Sie diese Email ignorieren. Die Kennwort Zurücksetzung läuft in einer Stunde ab. (Wenn Sie viele dieser Kennwort Zurücksetzungs Links erhalten, und diese nicht anfordern, bitte benachrichtigen Sie den Administrator.)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Passwort Zurücksetzen Ticket</value>
+  </data>
   
   
   

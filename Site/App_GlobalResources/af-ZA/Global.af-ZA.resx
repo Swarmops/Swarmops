@@ -514,7 +514,7 @@
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
   <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>crwdns6555394:0crwdne6555394:0</value>
+    <value>crwdns6556761:0crwdne6556761:0</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
@@ -949,5 +949,26 @@
   <data name="Global_Nuked" xml:space="preserve">
     <value>crwdns6556730:0crwdne6556730:0</value>
     <comment>Used when something is determined invalid</comment>
+  </data>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>crwdns6556736:0crwdne6556736:0</value>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>crwdns6556755:0crwdne6556755:0</value>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>crwdns6556762:0crwdne6556762:0</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>crwdns6556763:0crwdne6556763:0</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>crwdns6556764:0crwdne6556764:0</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>crwdns6556765:0crwdne6556765:0</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
   </data>
 </root>

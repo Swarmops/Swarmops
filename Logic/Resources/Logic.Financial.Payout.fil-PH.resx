@@ -117,29 +117,81 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Payout_CashAdvanceIdentities" xml:space="preserve">
+    <value>Cash Advances {0}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentitiesRecipient" xml:space="preserve">
+    <value>Cash Advances {0} para sa {1}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentity" xml:space="preserve">
+    <value>Cash Advance #{0:N0}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentityRecipient" xml:space="preserve">
+    <value>Cash Advance # {0:N0} para sa {1}</value>
+  </data>
+  <data name="Payout_CashAdvancePaybackIdentities" xml:space="preserve">
+    <value>Cash Advances {0} Payback</value>
+  </data>
+  <data name="Payout_CashAdvancePaybackIdentity" xml:space="preserve">
+    <value>Cash Advance # {0:N0} Payback</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentities" xml:space="preserve">
+    <value>Mga gastos{0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentities" xml:space="preserve">
+    <value>Mga gastos {0} (minus advances {1})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentity" xml:space="preserve">
+    <value>Mga gastos {0} (minus advance #{1:N0})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesRecipient" xml:space="preserve">
+    <value>Expense Claims {0} sa {1}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentity" xml:space="preserve">
+    <value>Gastos #{0:N0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentities" xml:space="preserve">
+    <value>Gastos #{0:N0} (minus advances {1})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentity" xml:space="preserve">
+    <value>Gastos #{0:N0} (minus advance #{1:N0})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityRecipient" xml:space="preserve">
+    <value>Klaim ng Gastusin # {0:N0} ng {1}</value>
+  </data>
+  <data name="Payout_ExpenseClaimLongIdentity" xml:space="preserve">
+    <value>Klaim ng Gastusin # {0:N0}</value>
+  </data>
+  <data name="Payout_InboundInvoiceIdentity" xml:space="preserve">
+    <value>Inbound Invoice #{0:N0}</value>
+  </data>
+  <data name="Payout_InboundInvoiceIdentitySender" xml:space="preserve">
+    <value>Papasok na Invoice #{0:N0} mula {1}</value>
+  </data>
+  <data name="Payout_SalariesTaxMonth" xml:space="preserve">
+    <value>Mga buwis sa sweldo para sa {0:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentitiesMonth" xml:space="preserve">
+    <value>Sweldo {0} para sa {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentity" xml:space="preserve">
+    <value>Sweldo #{0:N0}</value>
+  </data>
+  <data name="Payout_SalaryIdentityMonth" xml:space="preserve">
+    <value>Sweldo # {0:N0} para sa {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentityMonthRecipient" xml:space="preserve">
+    <value>Salary # {0:N0} para sa {1:yyyy-MMM} para sa {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Payout_SalaryMonth" xml:space="preserve">
+    <value>Sweldo para sa {0:yyyy-MMM}</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Payout_SalaryTaxIdentitiesMonth" xml:space="preserve">
+    <value>Mga buwis ng sweldo {0} para sa {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryTaxIdentityMonth" xml:space="preserve">
+    <value>Mga Buwis para sa Salary # {0:N0} para sa {1:yyyy-MMM}</value>
+  </data>
 </root>

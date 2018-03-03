@@ -296,47 +296,193 @@ Ang paghahabol ay babayaran sa iyo kapag ang halaga ay napatunayan din ng may-ar
 
 Mangyaring mag-log on sa[InstallationName]] sa [ExternalUrl] Financial / AttestCosts upang patunayan o tanggihan.</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Kinakailangan ang Pagpapatotoo</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>Ang isang bagong [Regular] ay idinagdag nang manu-mano sa [OrganizationName] sa loob ng iyong lugar.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bagong [Regular]: [PersonName], [PersonGeography] [CountryCode] (manu-manong)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>Ang isang bagong [Regular] ay nag-sign up para sa [OrganizationName] sa loob ng isang lugar mo.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bago [Regular]: [PersonName], [PersonGeography] [CountryCode]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [Regularship] na-renew: [PersonName], [PersonGeography] [CountryCode] (manual)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+Ang koreo na ito ay ipinadala sa [Addressee] mula sa [OrganizationName]. Kung hindi mo nais na matanggap ang mga notification na ito sa hinaharap, mangyaring mag-log on sa [InstallationName] sa [ExternalUrl] at baguhin ang iyong mga setting ng notification.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Ang iyong mensahe ay naka-queued para sa paghahatid at ang mga tatanggap ay nalutas na. Ang iyong mail ay ipapadala sa, o sinubukan na ipadala sa, [RecipientCount] ang mga tao sa [GeographyName] sa [OrganizationName].</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Tinutukoy ng mga tagatanggap ng komisyon para sa [GeographyName]: [RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>Ang iyong mensahe sa [GeographyName] ay naipadala sa lahat ng naka-iskedyul na tatanggap. Sa labas ng [RecipientCount] na nakaplanong mga tatanggap, [RecipientsSuccess] ang nagtagumpay kasing maaari naming sabihin - tandaan na ang mail ay maaaring hindi maihatid o hindi pa nababasa sa ibang pagkakataon para sa maraming kadahilanan.
+
+Ang oras na ginugol ang paglutas: [ResolvingTime].
+Oras na ginugol pagpapadala: [TransmissionTime].
+Kabuuang oras mula sa paglikha ng comma hanggang pagkumpleto: [TotalTime].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nakarating ang Comms: [GeographyName]</value>
+  </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>Ang isang bagong tao ay nag-sign up bilang [RegularTitle] sa [OrganizationName]! [ConcernedPersonName] ay batay sa [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bagong [RegularTitle]: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>May isang tao, malamang na humiling ka ng pag-reset ng password na nauugnay sa mail address na ito sa [InstallationName]. Gayunpaman, pinagana ang dalawang-factor na pagpapatotoo para sa account na ito para sa heightened seguridad. Samakatuwid, ang password ay maaaring HINDI i-reset sa pamamagitan ng simpleng paraan.
+
+Mangyaring makipag-ugnay sa isang tagapangasiwa ng tauhan sa [InstallationName] upang malutas ang iyong problema at mag-isyu ng bagong password kasunod ng mas mahigpit na pamamaraan ng pagkakakilanlan na tumutugma sa dalawang antas na antas ng seguridad.
+
+Salamat sa iyong pag-unawa.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Hindi ma-reset ang Password</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>Ang iyong [InstallationName] na password ay binago lamang sa [ExternalUrl].
+
+Kung hindi mo lang ginawa ang pagbabagong ito ng password, nagkaroon ng paglabag sa seguridad. Kung ito ang kaso, mangyaring i-lock agad ang iyong account sa pamamagitan ng pag-click sa sumusunod na link:
+
+[ExternalUrl] Seguridad/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+Kung nakumpirma mo ang isang lockdown sa link sa itaas, ang anumang umiiral na mga sesyon ay wakasan agad, ang mga logon na may bagong-set na password ay mai-lock, at ang mga administrator ay makikipag-ugnay sa iyo upang i-verify kung ano ang nangyari at gumagana sa iyo upang muling paganahin ang iyong account.
+
+Gayunpaman, kung ikaw mismo ang nagbago ng password sa ngayon, at sa gayon ay nagpapadala ng abiso na ito na ipadala, ang lahat ay malinaw na mabuti at tulad ng nararapat. Magdala.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Binago ang Password</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>Ang mga tao sa [OrganizationName] ay nagbigay ng isang tiket sa pag-reset ng password sa iyong account, siguro sa iyong kahilingan. Ang tiket na ito ay may bisa sa susunod na 24 na oras.
+
+Mangyaring sundin ang link na ito upang i-reset ang iyong password at muling paganahin ang anumang dalawang-factor na pagpapatotoo, kung dati itong pinagana:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Ang tiket na ito ay mawawalan ng bisa sa loob ng 24 na oras. Kung hindi mo i-reset ang iyong password sa frame ng oras na ito, kakailanganin mong makipag-ugnay sa mga administrator sa [OrganizationName] upang mag-isyu ng isang bagong tiket sa pag-reset ng password.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Password Reset Ticket</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>May isang tao, malamang na humiling ka ng pag-reset ng password na nauugnay sa email address na ito sa [InstallationName]. Kung ito ay sa iyo, mangyaring sundin ang link sa ibaba sa susunod na 60 minuto upang makumpleto ang pamamaraan ng pag-reset ng password:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Kung HINDI kang humiling ng pag-reset ng password, maaari mong (at dapat) huwag pansinin ang mail na ito. Ang kahilingan sa pag-reset ng password ay mawawalan ng bisa sa isang oras. (Kung nakakakuha ka ng isang malaking bilang ng mga link sa pag-reset ng password na hindi mo hiniling, mangyaring ipaalam sa administrator.)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Password Reset Ticket</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>Ang mga resibo ay nai-file na ang pagpapatunay ng pangangailangan para sa kanilang mga proseso sa pananalapi upang magpatuloy.
+
+Mangyaring mag-log on sa [InstallationName] sa [ExternalUrl] Financial / ValidateReceipts upang patunayan o tanggihan ang mga ito.</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Mga Kinitang File - Kinakailangan ang Pagpapatunay</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>Kinansela ang iyong payout sa suweldo para sa [RequestPurpose]. Hindi ito babayaran.
+
+Kung ito ay isang sorpresa sa iyo, mangyaring makipag-ugnay sa organisasyon at/o iyong superbisor ng mapilit. Ang mga sumusunod ay ibinigay bilang dahilan:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ang suweldong payout ay tinanggihan: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>Ito ang iyong buod ng pahayag ng suweldo para sa [LastYear]. Ito ay hindi isang pahayag ng isang bagong suweldo, ngunit isang pahayag ng buwanang suweldo na binabayaran sa iyo sa kabuuan ng nakaraang taon pati na rin ang anumang mga buwis na ibabawas. Ang layunin ng pahayag na ito ay maglingkod bilang data para sa iyong mga rekord at / o para sa mga layunin ng deklarasyon ng buwis para sa nakaraang taon.
+
+Gross suweldo para sa [LastYear]: [CurrencyCode] [GrossSalaryTotal]
+Tax deducted therefrom: [CurrencyCode] [TaxDeductedTotal]
+Ang netong suweldo ay binayaran: [CurrencyCode] [NetSalaryTotal]
+
+
+Buwan Gross Dedised Net Paid gamit
+----- ---------- ----------- ---------- -----------
+[EmbeddedPreformattedText]
+
+TOTAL [GrossSalaryTotal] [TaxDeductedTotal] [NetSalaryTotal]
+
+
+Bilang karagdagan, ang [CurrencyCode] [TaxAdditiveTotalUnpadded] ay binayaran sa mga buwis ng samahan para sa iyong trabaho, bilang karagdagan sa halagang ibinawas sa itaas. Ito ay isang buwis din sa iyong suweldo, kahit na ang likas na katangian nito ay naging lingipiko na lingid.</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ang pahayag ng buod ng suweldo para sa [LastYear]</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>Ang Swarmops Backend [SwarmopsVersion] sa host [HostName] ay matagumpay na na-upgrade ang Swarmops database schema sa rebisyon [DbVersion].
+
+Ito ay para sa impormasyon lamang. Hindi mo kailangang gumawa ng aksiyon.</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>Na-upgrade ang Swarmops database</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>Ang Swarmops Backend [SwarmopsVersion] sa Host [Hostname] ay NABIGO sa pag-upgrade ng database ng Swarmops. Ito ay karaniwan dahil sa isang lumilipas na error sa panlabas na network, na nagiging sanhi ng pagbawi ng patch file upang mabigo.
+
+Kasalukuyan kami ay nasa revision ng database schema [DbVersion], ngunit sinusubukang mag-upgrade sa [DbVersionExpected].
+
+Ang pag-upgrade ay muling bawiin bawat oras. Maaaring hindi paganahin ang ilang pag-andar hanggang sa ma-upgrade ang database. Kung gusto mong i-troubleshoot nang manu-mano, ang mga pakete ng pag-upgrade ng database ay nakuha mula sa mga pakete.swarmops.com, ang parehong lugar kung saan nakakakuha ng mga software package.</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>Ang pag-upgrade ng database ng Swarmops ay NABIGO</value>
+  </data>
+  <data name="System_Exception_Body" xml:space="preserve">
+    <value>Ang isang hindi maayos na pagbubukod ay itinapon sa Swarmops:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="System_Exception_Subject" xml:space="preserve">
+    <value>Swarmops EXCEPTION!</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>Ito ay isang test mail na ipinadala ng Swarmops [SwarmopsVersion] na tumatakbo sa [HostName]. Binago mo lang ang mga setting ng mail server. Upang ma-verify na tama ang mga bagong setting, ipapadala ng Swarmops ang mensaheng pagsubok na ito upang maipadala mula sa likod na dulo.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Swarmops Mail Server Test</value>
+  </data>
+  <data name="System_PublicRootReset_Body" xml:space="preserve">
+    <value>Ang pampublikong bitcoin root key sa database ng MySql ay hindi isang tugma para sa bitcoin private root key na nakaimbak sa / etc / swarmops sa [HostName]. Ito ay isang potensyal na seryosong kalagayan, at hindi dapat kailanman mangyari, kaya ang pampublikong ugat ng susi ay rederived mula sa pribadong susi at muling isinulat sa database sa kung ano ang naroroon.</value>
+  </data>
+  <data name="System_PublicRootReset_Subject" xml:space="preserve">
+    <value>Swarmops: I-reset ang pampublikong root key ng Hotwallet</value>
+  </data>
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>Ang bersyon ng Swarmops Backend [SwarmopsVersion] sa host [HostName] ay matagumpay na nagsimula at nakakonekta sa mga framework ng database at notification.</value>
+  </data>
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>Pagpapatakbo ng Swarmops Backend</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>Ang Swarmops Frontend socket server version [SwarmopsVersion] sa host [HostName] ay matagumpay na nagsimula at nakakonekta sa database at mga framework ng abiso.</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>Ang pagpapatakbo ng Swarmops Frontend</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
+    <value>Ang Swarmops transmission engine sa [HostName] ay nakaranas ng hindi kilalang uri ng payload ([UnrecognizedPayloadType]). Ito ay dapat lamang mangyari sa napakabihirang mga okasyon kasabay ng mga pag-upgrade kung saan ang isang na-upgrade na bersyon ay may pag-aalaga ng isang bagay na nagbago ng mga pangalan sa proseso, mismo isang pambihirang kababalaghan.
+
+Kung ang error na ito ay umuulit, maaari kang magkaroon ng isang masamang naka-install na plugin o isang katulad na bagay. Sa anumang kaso, ang hindi nakikilalang mensahe ay tinapon at hindi ipinapadala, dahil hindi nalalaman ng Swarmops kung paano.</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
+    <value>Swarmops: Hindi nakilalang kalakal na comms</value>
+  </data>
 </root>

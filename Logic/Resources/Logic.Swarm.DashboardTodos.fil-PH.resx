@@ -117,19 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Attest_CashAdvance_Many" xml:space="preserve">
+    <value>Patunayan ang mga paunang salapi {0}</value>
+  </data>
+  <data name="Attest_CashAdvance_One" xml:space="preserve">
+    <value>Patunayan ang mga paunang salapi #{0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
+    <value>Patunayan ang mga kahilingan ng gastos {0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_One" xml:space="preserve">
+    <value>Patunayan ang mga kahilingan ng gastos #{0}</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>Itakda ang payout address ng bitcoin</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>Mangyaring itakda ang iyong bitcoin address para sa payout mula sa [InstallationName] (puwang sa address na ito ay ok ngunit hindi kinakailangan):</value>
+  </data>
+  <data name="Payout_Many" xml:space="preserve">
+    <value>Ayusin ang {0} na mga payout</value>
+    <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
+  </data>
+  <data name="Payout_One" xml:space="preserve">
+    <value>Ayusin ang isang payout</value>
+  </data>
+  <data name="Payout_Overdue_Many" xml:space="preserve">
+    <value>Ayusin ang {0} na lumampas na mga payout</value>
+  </data>
+  <data name="Payout_Overdue_One" xml:space="preserve">
+    <value>Ayusin ang isang lumampas na payout</value>
+  </data>
+  <data name="Payout_Urgent_Many" xml:space="preserve">
+    <value>Ayusin ang {0} na madaliang mga payout</value>
+  </data>
+  <data name="Payout_Urgent_One" xml:space="preserve">
+    <value>Ayusin ang isang madaliang payout</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>Paganahin ang dalawang-salik na pagpapatunay</value>
+  </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>Patunayan ang mga kahilingan {0}</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>Patunayan ang mga kahilingan #{0}</value>
+  </data>
 </root>

@@ -924,11 +924,21 @@
     <value>Direktdebiterat kontobelopp ({0})</value>
     <comment>{0} is the currency</comment>
   </data>
-  
-  
-  
-  
-  
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
+    <value>Belasta denna budget med inköpet</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
+    <value>Ladda upp kvitto eller annan dokumentation</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
+    <value>Uppdatera transaktionsbeskrivning</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
+    <value>Momsdel av totalbeloppet</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>Markera detta som ett direktdebiterat inköp?</value>
+  </data>
   <data name="InspectLedgers_Detail" xml:space="preserve">
     <value>Beskrivning / Konto</value>
     <comment>As in, description of a transaction OR the full name of an account</comment>
@@ -936,5 +946,22 @@
   <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
     <value>Huvudbok för</value>
     <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>Denna transaktion stänger momsrapporten för {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>Denna transaktion öppnar momsrapporten för {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>Denna transaktion erhöll betalning för utgående faktura #{0:N0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>Denna transaktion betalar {0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>Denna transaktion betalar inkommande faktura #{0:N0} från {1}.</value>
   </data>
 </root>

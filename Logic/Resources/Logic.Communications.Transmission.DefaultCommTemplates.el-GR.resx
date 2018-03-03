@@ -119,4 +119,10 @@
   </resheader>
   
   
+  
+  
+  
+  <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Καλώς ήρθες στο [OrganizationName]!</value>
+  </data>
 </root>

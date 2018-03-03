@@ -508,7 +508,7 @@
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
   <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>d MMM yyyy</value>
+    <value>d MMMM yyyy</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
@@ -943,5 +943,24 @@
   <data name="Global_Nuked" xml:space="preserve">
     <value>(makulerad, avbruten, nollställd)</value>
     <comment>Used when something is determined invalid</comment>
+  </data>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Ladda upp</value>
+  </data>
+  
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>Moms</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Mervärdesskatt</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>Datum</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>MMM d, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
   </data>
 </root>

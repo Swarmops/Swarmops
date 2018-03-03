@@ -510,10 +510,7 @@
     <value>شهر/يوم/سنة (MM/DD/YYYY)</value>
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>شهر يوم، سنة (MMM d, yyyy)</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
-  </data>
+  
   <data name="Timespan_FiveYears" xml:space="preserve">
     <value>خمس سنوات</value>
   </data>
@@ -633,6 +630,12 @@
     <value>(متعدد)</value>
     <comment>Displayed when multiple items</comment>
   </data>
+  
+  
+  
+  
+  
+  
   
   
   

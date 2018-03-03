@@ -265,7 +265,10 @@ Logga in på [InstallationName] på [ExternalUrl]Financial/AttestCosts för att 
   <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
     <value>[[OrganizationName]] [Regularship] förnyat: [PersonName], [PersonGeography] [CountryCode] (manuell)</value>
   </data>
-  
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+Detta mail skickades till [Addressee] från [OrganizationName]. Om du inte vill ha dessa notiser längre, logga på [InstallationName] på [ExternalUrl] och ändra dina notifieringsinställningar.</value>
+  </data>
   
   <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Mottagarlista upprättad för [GeographyName]: [RecipientCount]</value>

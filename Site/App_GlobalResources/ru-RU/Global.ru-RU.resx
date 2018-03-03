@@ -460,10 +460,7 @@
     <value>ММ/ДД/ГГГГ</value>
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>МММ д, ГГГГ</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
-  </data>
+  
   <data name="Timespan_FiveYears" xml:space="preserve">
     <value>пятилетка</value>
   </data>
@@ -489,6 +486,12 @@
   <data name="Global_PostalCode" xml:space="preserve">
     <value>Почтовый индекс</value>
   </data>
+  
+  
+  
+  
+  
+  
   
   
   

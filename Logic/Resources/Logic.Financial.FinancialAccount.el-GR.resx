@@ -118,6 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   
+  <data name="Asset_BitcoinCold" xml:space="preserve">
+    <value>Απόθεμα Bitcoin, τύπου Cold Storage</value>
+  </data>
+  <data name="Asset_BitcoinHot" xml:space="preserve">
+    <value>Πορτοφόλι Bitcoin</value>
+  </data>
+  <data name="Asset_CashAdvances" xml:space="preserve">
+    <value>Προκαταβολές μετρητών</value>
+  </data>
+  
+  <data name="Asset_InboundVat" xml:space="preserve">
+    <value>Εισερχόμενος ΦΠΑ</value>
+    <comment>Value Added Tax</comment>
+  </data>
+  
+  <data name="Asset_Paypal" xml:space="preserve">
+    <value>Λογαριασμός Paypal</value>
+  </data>
   
   
   
@@ -125,47 +143,77 @@
   
   
   
+  <data name="Cost_BankFees" xml:space="preserve">
+    <value>Τραπεζικές χρεώσεις</value>
+  </data>
+  <data name="Cost_BitcoinFees" xml:space="preserve">
+    <value>Τέλη Εξόρυξης Bitcoin</value>
+  </data>
+  
+  
+  
+  <data name="Cost_FinancialFees" xml:space="preserve">
+    <value>Χρηματοοικονομικά έξοδα</value>
+    <comment>Master account to bitcoin mining and bank fees</comment>
+  </data>
+  
+  <data name="Cost_Hospitality" xml:space="preserve">
+    <value>Φιλοξενία</value>
+  </data>
+  <data name="Cost_IctInfrastructure" xml:space="preserve">
+    <value>Πληροφορική και υποδομές</value>
+  </data>
+  
+  
+  <data name="Cost_LodgingFiveStar" xml:space="preserve">
+    <value>5 Αστέρια</value>
+    <comment>Five-star rating</comment>
+  </data>
+  <data name="Cost_LodgingFourStar" xml:space="preserve">
+    <value>4 Αστέρια</value>
+    <comment>Four-star rating</comment>
+  </data>
+  
+  
+  <data name="Cost_LodgingThreeStar" xml:space="preserve">
+    <value>3 Αστέρια</value>
+    <comment>Three-star rating</comment>
+  </data>
+  <data name="Cost_MarketingCampaigns" xml:space="preserve">
+    <value>Καμπάνιες Μάρκετινγκ</value>
+  </data>
+  <data name="Cost_OfficeEquipment" xml:space="preserve">
+    <value>Εξοπλισμός Γραφείων</value>
+  </data>
   
   
   
   
   
+  <data name="Cost_Staff" xml:space="preserve">
+    <value>Προσωπικό</value>
+  </data>
+  
+  <data name="Cost_StaffExpenses" xml:space="preserve">
+    <value>Έξοδα Προσωπικού</value>
+  </data>
   
   
+  <data name="Cost_Taxes" xml:space="preserve">
+    <value>Φόροι</value>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Cost_Transportation" xml:space="preserve">
+    <value>Μετακινήσεις</value>
+  </data>
+  <data name="Cost_Travel" xml:space="preserve">
+    <value>Ταξίδια</value>
+    <comment>Root account for travel related accounts</comment>
+  </data>
+  <data name="Cost_TravelLodging" xml:space="preserve">
+    <value>Καταλύματα</value>
+  </data>
   
   
   

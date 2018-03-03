@@ -117,21 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AspirantAddWelcome_Body" xml:space="preserve">
+    <value>¡Bienvenido como [Aspirant] a [OrganizationName]!
+
+Has aplicado a una [Regularship] en [OrganizationName] y por esa razón recibes este correo como [Aspirant] formal. Su [Aspirantship] no expira automáticamente así que no hay apuro en responder este correo.
+
+Su contraseña inicial, generada de manera aleatoria, para Swarnmops, el software utilizado como un sistema back-end, es la siguiente:
+[RandomPassword]
+
+Debe iniciar sesión y cambiar esta contraseña a algo más seguro, escogido por usted, tan pronto sea posible. Puede hacer esto registrándose en [ExternalUrl] y pulsando el icono "Usuario" en la esquina superior derecha, luego seleccione la pestaña de Seguridad (la que tiene el candado), ingrese la contraseña temporal y finalmente escriba su nueva contraseña. Como recomendación también debería considerar permitir la autenticación de dos factores.
+
+¡Bienvenido como [Aspirant] y esperamos poder verte como [Regular] pronto!</value>
+  </data>
+  <data name="AspirantAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] ¡Bienvenido como [Aspirant] a [OrganizationName]!</value>
+  </data>
+  <data name="ParticipantManualAddWelcomeNoExpiry_Body" xml:space="preserve">
+    <value>¡Bienvenido a [OrganizationName]!
+
+[ActingPerson] le ha otorgado una [Regularship]. Esta no expira automáticamente en ningún periodo de tiempo o fecha en particular, así que no hay apuro de entrar en acción.
+
+Ya ha debido ser contactado por personas de [OrganizationName] para más información sobre cómo empezar. Si no ha recibido nada, manténgase a la espera de esta correspondencia.
+
+Su contraseña inicial, generada de manera aleatoria, para Swarnmops, el software utilizado como un sistema back-end, es la siguiente:
+[RandomPassword]
+
+Debe iniciar sesión y cambiar esta contraseña a algo más seguro, escogido por usted, tan pronto sea posible. Puede hacer esto registrándose en [ExternalUrl] y pulsando el icono "Usuario" en la esquina superior derecha, luego seleccione la pestaña de Seguridad (la que tiene el candado), ingrese la contraseña temporal y finalmente escriba su nueva contraseña. Como recomendación también debería considerar permitir la autenticación de dos factores.
+
+¡Bienvenido a bordo!</value>
+  </data>
+  <data name="ParticipantManualAddWelcomeNoExpiry_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] ¡Bienvenido a [OrganizationName]!</value>
+  </data>
   <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
-    <value>Bienvenido a [Nombre de la organización]!
+    <value>¡Bienvenido a [OrganizationName]!
 
-Le ha otorgado una [membresia regular] por [Persona en funciones]. Caduca el [Periodo de membresía], por lo que hay mucho tiempo para familiarizarse con la organización.
+[ActingPerson] le ha otorgado una [Regularship]. Caduca en [MembershipExpiry], así que tiene tiempo suficiente para familiarizarse con la organización.
 
-Ya debería haber sido contactado por personas de [Nombre de la organización] para obtener más información sobre cómo activarse. Si no, entonces espera la correspondencia pronto.
+Ya ha debido ser contactado por personas de [OrganizationName] para más información sobre cómo empezar. Si no ha recibido nada, manténgase a la espera de esta correspondencia.
 
-Su contraseña inicial y generada aleatoriamente para Swarmops, el software utilizado como sistema de fondo, es la siguiente:
-[Contraseña aleatoria]
+Su contraseña inicial, generada de manera aleatoria, para Swarnmops, el software utilizado como un sistema back-end, es la siguiente:
+[RandomPassword]
 
-(Desafortunadamente, no puede cambiarlo aún. Esa funcionalidad se espera para principios de 2015. Swarmops todavía está en una fase inicial alfa; ese es uno de los inconvenientes del nuevo software pionero: las cosas pueden estar un poco mediocres cuando se ponen en línea).
+Debe iniciar sesión y cambiar esta contraseña a algo más seguro, escogido por usted, tan pronto sea posible. Puede hacer esto registrándose en [ExternalUrl] y pulsando el icono "Usuario" en la esquina superior derecha, luego seleccione la pestaña de Seguridad (la que tiene el candado), ingrese la contraseña temporal y finalmente escriba su nueva contraseña. Como recomendación también debería considerar permitir la autenticación de dos factores.
 
 ¡Bienvenido a bordo!</value>
   </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] ¡Te damos la bienvenida a [OrganizationName]!</value>
+    <value>[[OrganizationName]] ¡Bienvenido a [OrganizationName]!</value>
   </data>
 </root>

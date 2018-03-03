@@ -117,28 +117,83 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Positions_AssignAnotherPerson" xml:space="preserve">
+    <value>Magtalaga ng isa pang tao...</value>
+    <comment>To an existing position that accepts multiple people (like "assistants")</comment>
+  </data>
+  <data name="Positions_AssignFifthPerson" xml:space="preserve">
+    <value>Magtalagal ng panlimang tao...</value>
+  </data>
+  <data name="Positions_AssignFirstPerson" xml:space="preserve">
+    <value>Magtagala...</value>
+  </data>
+  <data name="Positions_AssignFourthPerson" xml:space="preserve">
+    <value>Magtalaga ng pang-apat na tao...</value>
+  </data>
+  <data name="Positions_AssignmentDuration" xml:space="preserve">
+    <value>Tagal ng trabaho (magagawang pahabain)</value>
+  </data>
+  <data name="Positions_AssignmentExpires" xml:space="preserve">
+    <value>Natapos</value>
+    <comment>The date a position assignment autoterminates</comment>
+  </data>
+  <data name="Positions_AssignPersonToPosition" xml:space="preserve">
+    <value>Italaga ang taong ito sa posisyon</value>
+  </data>
+  <data name="Positions_AssignSecondPerson" xml:space="preserve">
+    <value>Magtalaga ng pangalawang tao...</value>
+  </data>
+  <data name="Positions_AssignSixthPerson" xml:space="preserve">
+    <value>Magtalaga ng pang-anim na tao...</value>
+    <comment>ok, this is not strictly necessary, just a bell &amp; whistle</comment>
+  </data>
+  <data name="Positions_AssignThirdPerson" xml:space="preserve">
+    <value>Magtalaga ng pangatlong tao...</value>
+  </data>
+  <data name="Positions_ButtonAssign" xml:space="preserve">
+    <value>Magtalaga</value>
+    <comment>Kind of "hire" but also for volunteers</comment>
+  </data>
+  <data name="Positions_ModalHeader" xml:space="preserve">
+    <value>Italaga ang tao bilang &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt;&lt;span id='{0}_modalGeographyName'&gt;&lt;/span&gt;</value>
+    <comment>Header for new assignment dialog</comment>
+  </data>
+  <data name="Positions_NoMorePeopleOnPosition" xml:space="preserve">
+    <value>Nabigo: Hindi maaaring magtalaga ng mas maraming tao sa posisyon na ito.</value>
+  </data>
+  <data name="Positions_PleaseSelectPerson" xml:space="preserve">
+    <value>Mangyaring pumili ng isang tao na italaga.</value>
+  </data>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>(ang posisyon ay bakante)</value>
+    <comment>For unassigned positions</comment>
+  </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;IHINTO ANG IYONG POSISYON?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ito ay &lt;strong&gt;iyong&lt;/strong&gt; trabaho. Pagwawakas ng sarili mong trabaho ay katumbas sa kasabihang "AYOKO NA". Ang paggawa nito ay magkakabisa kaagad. Ito ba ang gusto mong gawin?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;WAKASAN ANG TRABAHO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Gusto mo bang pahintuin si &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; mula sa trabaho bilang &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Ito ay katumbas ng pagtatanggal sa trabaho ng isang tao at kadalasang kailangan na maging alinsunod sa panloob na mga proseso at lokal na batas.&lt;br/&gt;&lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_TerminateNo" xml:space="preserve">
+    <value>Huwag Wakasan</value>
+  </data>
+  <data name="Positions_TerminateSelfNo" xml:space="preserve">
+    <value>Oops! Huwag, bumalik!</value>
+  </data>
+  <data name="Positions_TerminateSelfYes" xml:space="preserve">
+    <value>Oo, ako ay magbibitiw</value>
+  </data>
+  <data name="Positions_TerminateYes" xml:space="preserve">
+    <value>Wakasan ang Trabaho</value>
+  </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>(italaga sa ilalim ng Akong Organisasyon)</value>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>Lumikha ng bagong posisyon...</value>
+  </data>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>Mga Lider ng mga subdibisyon</value>
+  </data>
 </root>

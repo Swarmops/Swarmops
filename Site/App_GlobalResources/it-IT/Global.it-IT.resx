@@ -153,9 +153,15 @@
   <data name="Financial_Budget" xml:space="preserve">
     <value>Bilancio Preventivo</value>
   </data>
-  
-  
-  
+  <data name="Financial_CashAdvance" xml:space="preserve">
+    <value>Anticipo</value>
+  </data>
+  <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
+    <value>Anticipo in Contanti #{0}</value>
+  </data>
+  <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
+    <value>Anticipi in Contanti {0}</value>
+  </data>
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>Spesa</value>
   </data>
@@ -233,7 +239,10 @@
   <data name="Global_Owner" xml:space="preserve">
     <value>Propietario</value>
   </data>
-  
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>Procesando l'Archivio...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
+  </data>
   <data name="Global_UploadFile" xml:space="preserve">
     <value>Caricare Archivio</value>
     <comment>Displayed on "Submit" button next to file upload controls.</comment>
@@ -273,23 +282,39 @@
     <value>Gli elementi di azioni saranno qui.</value>
     <comment>Placeholder for future action items. Temporary.</comment>
   </data>
-  
-  
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>Anticipi</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>Anticipi in Contanti</value>
+  </data>
   <data name="Financial_ExpenseClaims" xml:space="preserve">
     <value>Spensi</value>
   </data>
   <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
-    <value>Reclamo di Spesi</value>
+    <value>Reclamo di Spese</value>
   </data>
-  
-  
-  
-  
-  
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>Fatture</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>Fattura Entrante</value>
+  </data>
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>Fatture</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>Fatture in Uscita</value>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>N/A</value>
+  </data>
   <data name="Global_NALong" xml:space="preserve">
     <value>Non Applicabile</value>
   </data>
-  
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>Da Adesso</value>
+  </data>
   <data name="Global_Today" xml:space="preserve">
     <value>Oggi</value>
   </data>
@@ -301,17 +326,41 @@
     <value>Progetto</value>
     <comment>Tagging costs/income to projects</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>Collegato</value>
+    <comment>List of shortcuts to related actions to current one</comment>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>Spensa #{0:N0} (meno anticipo #{1:N0})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>Spense {0:N0} (meno anticipi)</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>Spense {0} (meno anticipo #{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>Spense {0} (mino anticipi)</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>Reclamo di Spesa #{0:N0} da {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>Fattura Entrante #{0:N0} da {1}</value>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>Immagine di Ricevuta {0} di {1}</value>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>Immagine {0} di {1}</value>
+  </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>Data di Scadenza</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>Fornitore</value>
+  </data>
   <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
     <value>Inglese (USA)</value>
     <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
@@ -324,13 +373,30 @@
     <value>Sì</value>
     <comment>For yes/no options</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>Averi</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>Spese</value>
+  </data>
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>Passivo</value>
+  </data>
+  <data name="Financial_Income" xml:space="preserve">
+    <value>Reddito</value>
+  </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>-- Seleziona uno --</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_Missing" xml:space="preserve">
+    <value>- mancante -</value>
+    <comment>When a record or similar is missing. Used in grids.</comment>
+  </data>
+  <data name="Global_Multiple" xml:space="preserve">
+    <value>- multiplo -</value>
+    <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
   <data name="Global_Off" xml:space="preserve">
     <value>Spento</value>
     <comment>Off (as opposed to On)</comment>
@@ -406,7 +472,9 @@
     <value>D4</value>
     <comment>Fourth quarter of the year</comment>
   </data>
-  
+  <data name="Global_Timestamp" xml:space="preserve">
+    <value>Marca di tempo</value>
+  </data>
   <data name="Ledgers_Balance" xml:space="preserve">
     <value>Bilancio</value>
     <comment>As in 'account balance', not as in staying upright</comment>
@@ -439,10 +507,7 @@
     <value>GG/MM/AAAA</value>
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>MMM g, aaaa</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
-  </data>
+  
   <data name="Timespan_FiveYears" xml:space="preserve">
     <value>cinque anni</value>
   </data>
@@ -502,13 +567,27 @@
     <value>definire per attivare</value>
     <comment>shown as watermark on some edit boxes</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Anticipo in Contanti #{0:N0} per {1}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>Anticipo in Contanti #{0:N0} Rimborsare</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>Anticipi in Contanti {0} Rimborsare</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Anticipi in Contanti {0} per {1}</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>Spesa Richiesta #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>Spese Richieste {0} da {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>Fattura Entrante #{0:N0}</value>
+  </data>
   <data name="Global_System" xml:space="preserve">
     <value>Sistema</value>
     <comment>as in "Created by: System" for roles, transactions etc.</comment>
@@ -526,26 +605,75 @@
     <value>Stipendio #{0:N0} per {1:yyyy-MMM} per {2}</value>
     <comment>0 is identity, 1 is month, 2 is name</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>Stipendio #{0:N0}</value>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>Tasse per Stipendio #{0:N0} da {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>Account</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>Quantità</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Global_Add" xml:space="preserve">
+    <value>Aggiungere</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(molti)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>-- Molti - seleziona --</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>Impostazioni</value>
+    <comment>For various page-specific checkboxes etc</comment>
+  </data>
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...loading...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(nessuna corrispondenza)</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>Lavorando...</value>
+  </data>
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>Impossibile connettersi a WebSocket. Gli aggiornamenti in diretto non saranno disponibili.</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>Swarmops non capisce il tuo importo in valuta. (Mille soldi e zero centesimi sono scritti come "{0:N2}".) Riprovare?</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>Nessun motivo è stato specificato.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>Nessun elemento d'azione urgente. Bravo!</value>
+  </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>Minimo / Massimo</value>
+    <comment>note the spaces</comment>
+  </data>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>Persona Assegnata</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>Posto</value>
+  </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>Sembra che un altro utente ti ha battuto su questa operazione; la banca dati è cambiata mentre cercavi. Per favore, esamina le condizioni modificate e riprova quello che stavi tentando di fare.</value>
+  </data>
   <data name="Swarm_TypeName" xml:space="preserve">
     <value>Scrivi un nome...</value>
   </data>
@@ -606,10 +734,18 @@
     <value>Autenticazione di due fattori del BitID (disabilitare l'inizio di sessione in quarantena)</value>
     <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
   </data>
-  
-  
-  
-  
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>Approvvigionamento di Sicurezza</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>Ripristinare password</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>Inviare via e-mail un link per ripristinare la password</value>
+  </data>
   <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
     <value>Questo non sembra di essere un numero telefonico valido, comunque sarà salvato come scritto.</value>
     <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
@@ -632,8 +768,12 @@
   <data name="Global_2FA" xml:space="preserve">
     <value>Autenticazione di due fattori</value>
   </data>
-  
-  
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>Autenticazione di due fattori</value>
+  </data>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>A2F</value>
+  </data>
   <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
     <value>&lt;strong&gt;NON PUÒ PROVVEDERE A2F&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non puoi attivare l'autenticazione di due fattori per qualcun'altro. Deve farlo per se stesso, quindi essere da solo per ottenere i propri chiavi secreti.</value>
     <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
@@ -648,7 +788,10 @@
     <value>&lt;strong&gt;DISABILITARE L'AUTENTICAZIONE DI DUE FATTORI?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Questo non è consigliato. L'autenticazione di due fattori aumenta in modo significativo la sicurezza del tuo account, e anche aiuta ad accedere più facilmente se stai usando BitID.&lt;br/&gt;&lt;br/&gt;Rimuovere l'A2F e ricorrere all'autenticazione soltanto con la password?</value>
     <comment>Displayed when removing 2FA for yourself</comment>
   </data>
-  
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
+    <value>&lt;strong&gt;RIMUOVERE L'AUTENTICAZIONE DI DUE FATTORI?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Fai questo solo se ti è stato chiesto disattivare l'A2F di questo utente, da questo utente stesso, &lt;strong&gt;e&lt;/strong&gt; sei assolutamente sicuro che la richiesta proviene dalla persona la cui sicurezza stai disabilitando (secondo la politica di verifica dell'organizzazione). &lt;br/&gt;&lt;br/&gt;Procedere con la rimozione della sicurezza di questo utente? Loro torneranno alla sicurezza soltanto con una password.</value>
+    <comment>Displayed when removing 2FA for someone else</comment>
+  </data>
   <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
     <value>L'autenticazione di due fattori non è stata rimossa ed è ancora attiva.</value>
   </data>
@@ -673,7 +816,17 @@
   <data name="Master_BitIdRegister_Header" xml:space="preserve">
     <value>Fare la scansione di questo codice per abilitare il BitID</value>
   </data>
-  
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>&lt;h3&gt;Cos'è?&lt;/h3&gt;
+                &lt;p&gt;BitID è una forma sicura di accedere con meno problemi di inserire una password. La sua semplicità non può essere spiegata, solo esperimentata, ed è un'autenticazione di due fattori poiché utilizza il telefono.&lt;/p&gt;
+                &lt;h3&gt;Questo non richiede anche che il mio telefono sia protetto?&lt;/h3&gt;
+                &lt;p&gt;Va bene, sì. È il tuo telefono ed è la protezione d'accesso del tuo telefono. Mai il tuo telefono dovrebbe avere sempre una accessibilità protetta.&lt;/p&gt;
+                &lt;h3&gt;Ho bisogno di un'app per questo?&lt;/h3&gt;
+                &lt;p&gt;Chissà. Alcuni portafogli mobili di bitcoin hanno BitID incluso. Quelli più comune non c'è l'hanno. Se il tuo non c'è l'ha, cerca un'app chiamata "Autenticatore BitID " o un'altra simile. &lt;/p&gt;
+                &lt;h3&gt;Come attivo BitID?&lt;/h3&gt;
+                &lt;p&gt;Solo devi utilizzare l'app del tuo telefono per fare la scansione di questo codice. Dopo, puoi fare la scansione di un codice simile per accedere a questo sistema.&lt;/p&gt;</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
+  </data>
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>L'autenticazione di due fattori del BitID (firma bitcoin)</value>
   </data>
@@ -704,26 +857,97 @@
   <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
     <value>Se puoi, per favore abilita l'autenticazione di due fattori di BitID.</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>Funzionario</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>Funzionario</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>Funzionario</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>Funzionari</value>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>Volontario</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>Volontario</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>Volontario</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>Volontari</value>
+  </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>Vai</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>Procedere</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  </data>
+  <data name="Swarm_TypePartialName" xml:space="preserve">
+    <value>Scrivi un nome parziale...</value>
+  </data>
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>Guadagno/Perdita Annuale Fino ad Oggi ({0})</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>Progresso</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  </data>
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>Scaricare Questo</value>
+  </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>Documenti</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>Inviarmi questo via mail</value>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>Contanti</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>Centro</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>Oro</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>Eredità</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>Catena</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>Fattura in Uscita #{0:N0} a {1}</value>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(annullato, azzerato)</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
   
   
   

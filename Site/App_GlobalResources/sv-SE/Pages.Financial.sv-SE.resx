@@ -667,4 +667,42 @@
   <data name="ListOutboundInvoices_Title" xml:space="preserve">
     <value>Listar utgående fakturor</value>
   </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Ladda upp Expensify-CSV-fil</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Om du har många ersättningsanspråk, så kan du samla dem med Expensify och ladda upp en Expensify-rapportfil i CSV-format här (som du kan skapa hos Expensify under Rapporter, Export, som CSV). Swarmops kommer att använda Expensify till hämta alla kvitton och lägga dem som separata ersättningsanspråk för god redovisningssed.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>För att detta ska fungera, eftersom {0} är momsrapporteringspliktigt, så behöver du skapa en ny CSV-profil hos Expensify som att inkluderar moms (vilket standardprofilen inte gör). Expensifys hjälpsidor har mer om hur du gör detta. Om du använder Expensify på teamnivå, så har ditt teams Expensifypolicy förmodligen redan en momsaktiverad CSV-profil klar för export.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Baserat på din organisations inställningar, så bör ”standard CSV”-profilen i Expensifys exportfunktion räcka för Swarmops.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Expensifys rapportvaluta är</value>
+  </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Ladda upp Expensify-rapport för återbetalning</value>
+  </data>
+  
+  
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Ladda upp en Expensify-CSV-fil till?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>jag själv</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Vem gör detta utläggsanspråk?</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;fel: Expensify CSV-filen saknar nödvändiga datafält.&lt;/strong&gt; Filen verkar sakna minst ett av fälten som krävs hos Expensifys standard-CSV-profil. Kontrollera den tekniska dokumentationen och jämför med den filen du försökte ladda upp. (Troligtvis försökte du ladda upp helt fel fil &amp;ndash; kanske ett fotografi istället för en Expensify CSV &amp;ndash; och att detta är orsaken till de förväntade datafält som saknas.)&lt;/p&gt;&lt;p&gt;Det gick inte att bearbeta filen.&lt;/p&gt;</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(Beloppet måste vara exklusive eventuell moms!)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
+  </data>
 </root>

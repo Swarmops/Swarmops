@@ -117,6 +117,167 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Title_Activist_Corps" xml:space="preserve">
+    <value>Aktibista na Swarm</value>
+  </data>
+  <data name="Title_Activist_Female" xml:space="preserve">
+    <value>Aktibista</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Activist_Generic" xml:space="preserve">
+    <value>Aktibista</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Activist_Male" xml:space="preserve">
+    <value>Aktibista</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Activist_Plural" xml:space="preserve">
+    <value>Mga Aktibista</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Title_Activist_Ship" xml:space="preserve">
+    <value>Pag-aaktibista</value>
+  </data>
+  <data name="Title_Agent_Corps" xml:space="preserve">
+    <value>Ahente na Corps</value>
+  </data>
+  <data name="Title_Agent_Female" xml:space="preserve">
+    <value>Ahente</value>
+  </data>
+  <data name="Title_Agent_Generic" xml:space="preserve">
+    <value>Ahente</value>
+  </data>
+  <data name="Title_Agent_Male" xml:space="preserve">
+    <value>Ahente</value>
+  </data>
+  <data name="Title_Agent_Plural" xml:space="preserve">
+    <value>Mga Ahente</value>
+  </data>
+  <data name="Title_Agent_Ship" xml:space="preserve">
+    <value>Ahensya</value>
+  </data>
+  <data name="Title_Ambassador_Corps" xml:space="preserve">
+    <value>Ambassador Corps</value>
+  </data>
+  <data name="Title_Ambassador_Female" xml:space="preserve">
+    <value>Ambassador</value>
+  </data>
+  <data name="Title_Ambassador_Generic" xml:space="preserve">
+    <value>Ambassador</value>
+  </data>
+  <data name="Title_Ambassador_Male" xml:space="preserve">
+    <value>Ambassador</value>
+  </data>
+  <data name="Title_Ambassador_Plural" xml:space="preserve">
+    <value>Mga Ambassador</value>
+  </data>
+  <data name="Title_Ambassador_Ship" xml:space="preserve">
+    <value>Ambassadorship</value>
+  </data>
+  <data name="Title_Applicant_Female" xml:space="preserve">
+    <value>Aplikante</value>
+  </data>
+  <data name="Title_Applicant_Generic" xml:space="preserve">
+    <value>Aplikante</value>
+  </data>
+  <data name="Title_Applicant_Male" xml:space="preserve">
+    <value>Aplikante</value>
+  </data>
+  <data name="Title_Applicant_Plural" xml:space="preserve">
+    <value>Mga Aplikante</value>
+  </data>
+  <data name="Title_Applicant_Ship" xml:space="preserve">
+    <value>Aplikasyon</value>
+  </data>
+  <data name="Title_Aspirant_Female" xml:space="preserve">
+    <value>Aspirante</value>
+  </data>
+  <data name="Title_Aspirant_Generic" xml:space="preserve">
+    <value>Aspirante</value>
+  </data>
+  <data name="Title_Aspirant_Male" xml:space="preserve">
+    <value>Aspirante</value>
+  </data>
+  <data name="Title_Aspirant_Plural" xml:space="preserve">
+    <value>Mga Aspirante</value>
+  </data>
+  <data name="Title_Aspirant_Ship" xml:space="preserve">
+    <value>Hangarin</value>
+  </data>
+  <data name="Title_Citizen_Corps" xml:space="preserve">
+    <value>Mamamayan</value>
+  </data>
+  <data name="Title_Citizen_Female" xml:space="preserve">
+    <value>Mamamayan</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Citizen_Generic" xml:space="preserve">
+    <value>Mamamayan</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Citizen_Male" xml:space="preserve">
+    <value>Mamamayan</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Citizen_Plural" xml:space="preserve">
+    <value>Mamamayan</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Title_Citizen_Ship" xml:space="preserve">
+    <value>Pagkamamamayan</value>
+  </data>
+  <data name="Title_Conscript_Corps" xml:space="preserve">
+    <value>Corps</value>
+  </data>
+  <data name="Title_Conscript_Female" xml:space="preserve">
+    <value>Sungko</value>
+  </data>
+  <data name="Title_Conscript_Generic" xml:space="preserve">
+    <value>Sungko</value>
+  </data>
+  <data name="Title_Conscript_Male" xml:space="preserve">
+    <value>Sungko</value>
+  </data>
+  <data name="Title_Conscript_Plural" xml:space="preserve">
+    <value>Mga Sungko</value>
+  </data>
+  <data name="Title_Conscript_Ship" xml:space="preserve">
+    <value>Conscripthood</value>
+  </data>
+  <data name="Title_Contributor_Corps" xml:space="preserve">
+    <value>Tagaambag na Corps</value>
+  </data>
+  <data name="Title_Contributor_Female" xml:space="preserve">
+    <value>Tagaambag</value>
+  </data>
+  <data name="Title_Contributor_Generic" xml:space="preserve">
+    <value>Tagaambag</value>
+  </data>
+  <data name="Title_Contributor_Male" xml:space="preserve">
+    <value>Tagaambag</value>
+  </data>
+  <data name="Title_Contributor_Plural" xml:space="preserve">
+    <value>Mga Tagaambag</value>
+  </data>
+  <data name="Title_Contributor_Ship" xml:space="preserve">
+    <value>Pag-aambag</value>
+  </data>
+  <data name="Title_Customer_Corps" xml:space="preserve">
+    <value>Mga Kustomer</value>
+  </data>
+  <data name="Title_Customer_Female" xml:space="preserve">
+    <value>Kustomer</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Customer_Generic" xml:space="preserve">
+    <value>Kustomer</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Customer_Male" xml:space="preserve">
+    <value>Kustomer</value>
+    <comment>Male singular</comment>
+  </data>
   
   
   
@@ -167,65 +328,37 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Title_Supporter_Corps" xml:space="preserve">
+    <value>Mga Tagasuporta</value>
+  </data>
+  <data name="Title_Supporter_Female" xml:space="preserve">
+    <value>Tagasuporta</value>
+  </data>
+  <data name="Title_Supporter_Generic" xml:space="preserve">
+    <value>Tagasuporta</value>
+  </data>
+  <data name="Title_Supporter_Male" xml:space="preserve">
+    <value>Tagasuporta</value>
+  </data>
+  <data name="Title_Supporter_Plural" xml:space="preserve">
+    <value>Mga Tagasuporta</value>
+  </data>
+  <data name="Title_Supporter_Ship" xml:space="preserve">
+    <value>Pagsusuporta</value>
+  </data>
+  <data name="Title_Volunteer_Female" xml:space="preserve">
+    <value>Boluntaryo</value>
+  </data>
+  <data name="Title_Volunteer_Generic" xml:space="preserve">
+    <value>Boluntaryo</value>
+  </data>
+  <data name="Title_Volunteer_Male" xml:space="preserve">
+    <value>Boluntaryo</value>
+  </data>
+  <data name="Title_Volunteer_Plural" xml:space="preserve">
+    <value>Mga Boluntaryo</value>
+  </data>
+  <data name="Title_Volunteer_Ship" xml:space="preserve">
+    <value>Pagboboluntaryo</value>
+  </data>
 </root>

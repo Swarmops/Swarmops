@@ -958,4 +958,21 @@
     <value>crwdns6556729:0crwdne6556729:0</value>
     <comment>This phrase is followed by dropdowns for year and month</comment>
   </data>
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>crwdns6556743:0{0}crwdne6556743:0</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>crwdns6556744:0{0}crwdne6556744:0</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>crwdns6556745:0{0:N0}crwdne6556745:0</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>crwdns6556746:0{0}crwdne6556746:0</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>crwdns6556747:0{0:N0}crwdnd6556747:0{1}crwdne6556747:0</value>
+  </data>
 </root>

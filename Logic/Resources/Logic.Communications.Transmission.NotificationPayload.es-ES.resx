@@ -118,139 +118,139 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
-    <value>Al intentar un pago a su dirección de pago de bitcoin, el motor de pago subyacente rechazó la dirección ([BitcoinAddress]) como inválida. Por lo tanto, ha sido borrado de su perfil.
+    <value>Al intentar un pago a su dirección de pago de bitcoin, el motor de pago subyacente rechazó la dirección ([BitcoinAddress]) como inválida. Por lo tanto, ha sido borrada de su perfil.
 
-Inicie sesión en [Nombre de instalación] en [Url externa] y establezca una nueva dirección de pago de bitcoin.</value>
+Inicie sesión en [InstallationName] en [ExternalUrl] y establezca una nueva dirección de pago de bitcoin.</value>
   </data>
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización] - OBJETO DE ACCIÓN] Mala dirección de pago de bitcoin</value>
+    <value>[[OrganizationName] - OBJETO DE ACCIÓN] Mala dirección de pago de bitcoin</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
-    <value>Ha cambiado la dirección de pago de bitcoin de [Dirección antigua de Bitcoin] a [Dirección de bitcoin]. Como medida de seguridad, todos los pagos se ponen en cuarentena durante las próximas 48 horas.
+    <value>Ha cambiado su dirección de pago de bitcoin de [BitcoinOldAddress] a [BitcoinAddress]. Como medida de seguridad, todos los pagos se ponen en cuarentena durante las próximas 48 horas.
 
-Si NO cambiaste la dirección de pago y hubo un incumplimiento de seguridad, haz clic en este enlace de inmediato para bloquear tu cuenta: [Enlace de bloqueo]
+Si NO cambió la dirección de pago y hubo una violación de la seguridad, por favor haga clic en este enlace de inmediato para bloquear su cuenta: [LockdownLink]
 
-Si hace clic en ese enlace, su cuenta se bloqueará inmediatamente sin solicitudes de confirmación. Sin embargo, si solicitó cambiar la dirección de pago, todo está bien y no se requieren más acciones de su parte.</value>
+Si hace clic en ese enlace, su cuenta será bloqueada inmediatamente sin solicitudes de confirmación. Sin embargo, si usted fue quien solicitó cambiar la dirección de pago, todo está bien y no se requieren más acciones de su parte.</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización]] Cambió la dirección de pago de Bitcoin</value>
+    <value>[[OrganizationName]] La dirección de pago de Bitcoin ha cambiado</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
-    <value>Tienes fondos esperando el pago en [Nombre de la organización], pero no has establecido una dirección de pago de bitcoin.
+    <value>Tienes fondos esperando el pago en [OrganizationName], pero no has establecido una dirección de pago de bitcoin.
 
-Inicie sesión en [Nombre de la instalación] en [Url externa] y siga el enlace para establecer su dirección de pago: la encontrará en la lista de tareas pendientes.</value>
+Por favor, inicie sesión en [InstallationName] en [ExternalUrl] y siga el enlace para establecer su dirección de pago - la encontrará en la lista de tareas pendientes.</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización]] Configure su dirección de pago de bitcoin</value>
+    <value>[[OrganizationName]] Por favor, configure su dirección de pago de bitcoin</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
-    <value>Ha establecido una dirección de pago de bitcoin: [Dirección de Bitcoin]. Como precaución de seguridad, todos los pagos se ponen en cuarentena durante las próximas 48 horas, y luego se pagarán a la nueva dirección después de eso.
+    <value>Ha establecido una dirección de pago de bitcoin: [BitcoinAddress]. Como medida de seguridad, todos los pagos se ponen en cuarentena durante las próximas 48 horas, luego de esto serán pagados a la nueva dirección.
 
-Si no configuró esta dirección de pago (puede valer la pena verificar dos veces la dirección anterior para mayor seguridad), comuníquese con [Nombre de la organización] de inmediato.</value>
+Si no configuró esta dirección de pago (vale la pena verificar dos veces la dirección anterior para mayor seguridad), comuníquese con [OrganizationName] de inmediato.</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
-    <value>Una dirección de pago de bitcoin fue establecida por [Nombre de persona interesada]. Los pagos comenzarán después de las 48 horas cuando haya transcurrido el período de cuarentena.</value>
+    <value>Una dirección de pago de bitcoin fue establecida por [ConcernedPersonName]. Los pagos comenzarán después de las 48 horas cuando haya transcurrido el período de cuarentena.</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización]] [Nombre de la persona interesada] ha establecido una dirección de pago de bitcoin</value>
+    <value>[[OrganizationName]] [ConcernedPersonName] ha establecido una dirección de pago de bitcoin</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización]] conjunto de Dirección de pago de Bitcoin</value>
+    <value>[[OrganizationName]] Dirección de pago de Bitcoin configurada</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
-    <value>La billetera caliente de bitcoin para [Nombre de la organización] acaba de hacer [Cuenta de pago] pagos automáticos que suman [Código de moneda] [Cantidad flotante] ([Cantidad flotante de Bitcoin] microbitcoin o "bits").</value>
+    <value>La billetera caliente de bitcoin para [OrganizationName] acaba de hacer [PaymentCount] pago(s) automático(s) que da un total de [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin o "bits").</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización]] Pago de billetera caliente: [Código de moneda] [Cantidad flotante]</value>
+    <value>[[OrganizationName]] Pago de Cartera Caliente: [CurrencyCode] [AmountFloat]</value>
   </data>
   <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>[Cantidad flotante de Bitcoin] microbitcoin ("bits") se acaba de transferir a su dirección de bitcoin ([Dirección de Bitcoin]) por [Nombre de la organización] para lo siguiente:
+    <value>[BitcoinAmountFloat] microbitcoin ("bits") acaban de ser transferidos a su dirección de bitcoin ([BitcoinAddress]) por [OrganizationName] para lo siguiente:
 
-[Texto preformateado incrustado]
+[EmbeddedPreformattedText]
 
-Ya deberías ver la transacción en tu billetera y debería poder agilizarla en aproximadamente una hora (seis confirmaciones normales).</value>
+Ya debería poder ver la transacción en su billetera y debería hacerse efectiva en aproximadamente una hora (seis confirmaciones normales).</value>
   </data>
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización]] Fondos pagados: [Código de moneda] [Cantidad flotante]</value>
+    <value>[[OrganizationName]] Fondos pagados a usted: [CurrencyCode] [AmountFloat]</value>
   </data>
   <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
-    <value>Cuando un pago automático desde la billetera caliente, la clave privada utilizada para firmar no coincide con las claves públicas utilizadas para reunir los fondos necesarios. Esta es una condición seria.</value>
+    <value>Cuando intente hacer un pago automático desde la cartera caliente, la clave privada utilizada para firmar no coincide con las clave privadas utilizadas para recolectar los fondos necesarios. Esta es un condición estricta.</value>
   </data>
   <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización] - URGENTE] Error de clave privada de Bitcoin; no puede pagar</value>
+    <value>[[OrganizationName] - URGENTE] Error de clave privada de Bitcoin; no puede pagar</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
-    <value>Swarmops está intentando realizar pagos de [Código de moneda] [Cantidad necesaria de flotación], pero solo [Código de moneda] [Importe de flotación de cartera] está disponible en la billetera activa de bitcoin. Swarmops no puede realizar pagos adicionales en este momento.
+    <value>Swarmops está intentando realizar pagos de [CurrencyCode] [AmountNeededFloat], pero hay [CurrencyCode] [AmountWalletFloat] disponibles en la billetera caliente de bitcoin. Swarmops no puede realizar más pagos en este momento.
 
-Rellene INMEDIATAMENTE la billetera caliente hasta, al menos, la cantidad necesaria: se necesita un microbitcoin [Importe Microcoins Flotante] adicional ("bits") para reanudar las operaciones financieras de la billetera caliente.
+Por favor, coloque fondos INMEDIATAMENTE en la billetera caliente hasta, al menos, la cantidad necesaria - se requiere [AmountMissingMicrocoinsFloat] microbitcoin ("bits") adicional(es) para reanudar las operaciones financieras de la billetera caliente.
 
 Swarmops seguirá intentándolo y seguirá enviando estas notificaciones siempre que no haya tenido éxito.</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización] - OBJETO DE ACCIÓN] Cartera caliente Bitcoin insuficiente para pagos - recarga inmediatamente</value>
+    <value>[[OrganizationName] - OBJETO DE ACCIÓN] Cartera caliente Bitcoin insuficiente para pagos - coloque fondos inmediatamente</value>
   </data>
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Su adelanto de efectivo solicitado con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], con respecto a [Propósito de la solicitud], ha sido atestiguado por el propietario del presupuesto. Ahora procederá a pagarle.</value>
+    <value>Su adelanto de efectivo solicitado con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido atestiguado por el propietario del presupuesto. Ahora procederá a pagarle.</value>
   </data>
   <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización]] Avance de efectivo atestiguado: [Código de moneda] [Importe del presupuesto flotante]</value>
+    <value>[[OrganizationName]] Avance de efectivo atestiguado: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Su adelanto en efectivo solicitado con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], con respecto a [Propósito de la solicitud], ha sido DE-atestiguado por el propietario del presupuesto. Esto generalmente indica algún tipo de problema con su solicitud.
+    <value>Su adelanto de efectivo solicitado con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido DE-atestiguado por el propietario del presupuesto. Esto generalmente indica algún tipo de problema con su solicitud.
 
-Espere más comunicación del propietario del presupuesto para seguir con el asunto.</value>
+Se esperan más comunicaciones del propietario del presupuesto sobre el asunto.</value>
   </data>
   <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización]] Adelanto en efectivo DE-atestiguado: [Código de moneda] [Importe del presupuesto flotante]</value>
+    <value>[[OrganizationName]] Adelanto de Efectivo DE-atestiguado: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
-    <value>Su adelanto en efectivo con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante] con respecto a [Propósito de la solicitud] ha sido denegado. El siguiente texto fue dado como razón para negarlo:
+    <value>Su adelanto de efectivo con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] con respecto a [RequestPurpose] ha sido denegado. El siguiente texto contiene la razón para dicha acción:
 
-[Texto preformateado incrustado]
+[EmbeddedPreformattedText]
 </value>
   </data>
   <data name="CashAdvance_Denied_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización]] Adelanto en efectivo DENEGADO: [Código de moneda] [Importe del presupuesto flotante]</value>
+    <value>[[OrganizationName]] Adelanto de efectivo DENEGADO: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
-    <value>Su solicitud de adelanto en efectivo con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], en relación con [Propósito de la solicitud], se ha marcado como pagada por los contadores de la organización.
+    <value>Su adelanto de efectivo solicitado con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido marcado como pagado por los contadores de la organización.
 
-Esto significa que debería ver el monto en su cuenta en breve.</value>
+Esto significa que pronto debería ver el monto en su cuenta.</value>
   </data>
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización]] Pago en efectivo pagado: [Código de moneda] [Importe del presupuesto flotante]</value>
+    <value>[[OrganizationName]] Adelanto de Efectivo Pagado: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[Nombre de la persona interesada] ha solicitado un adelanto en efectivo de [Código de moneda] [Importe del presupuesto flotante] a los fines del [Propósito de la solicitud]. Este dinero es parte de su presupuesto, [Nombre del presupuesto].
+    <value>[ConcernedPersonName] ha solicitado un avance de efectivo de [CurrencyCode] [BudgetAmountFloat] con el propósito de [RequestPurpose]. Este dinero es parte de su presupuesto, [BudgetName]
 
-Inicie sesión en [Nombre de la instalación] en [Url Externo] Financiero / PuntuacionesAtest para confirmar o denegar.</value>
+Por favor ingrese a [InstallationName] en [ExternalUrl]Financial/AttestCosts para corroborar o denegar.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización] - OBJETO DE ACCIÓN] Adelanto en efectivo solicitado: [Código de moneda] [Importe del presupuesto flotante] - Se necesita certificación</value>
+    <value>[[OrganizationName] - OBJETO DE ACCIÓN] Adelanto de Efectivo Solicitado: [CurrencyCode] [BudgetAmountFloat] - Se Necesita Corroboración</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Su reclamación de gastos con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], en relación con [Propósito de la solicitud], ha sido certificada por el propietario del presupuesto. Se le pagará cuando los recibos sean confirmados como válidos.</value>
+    <value>Su reclamo de gasto con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], en relación a [RequestPurpose], ha sido corroborada por el propietario del presupuesto. Se le pagará cuando los recibos sean confirmados como válidos.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización]] Reclamo de gastos atestiguado: [Código de moneda] [Importe del presupuesto flotante]</value>
+    <value>[[OrganizationName]] Reclamo de Gastos Atestiguado: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[Nombre de la persona interesada] ha creado una reclamación de gastos contra el presupuesto de [Nombre del presupuesto] por la cantidad de [Código de moneda] [Importe del presupuesto flotante]. La reclamación se refiere a [Propósito de la solicitud]. Tendrá que atestiguar este reclamo de gastos.
+    <value>[ConcernedPersonName] ha creado una reclamo de gastos contra el presupuesto de [BudgetName] por la cantidad de [CurrencyCode] [BudgetAmountFloat]. El reclamo se refiere a [RequestPurpose]. Tendrá que atestiguar este reclamo de gastos.
 
-Inicie sesión en [Nombre de la instalación] en [Url Externo] Financiero / PuntuacionesAtest para confirmar o denegar.</value>
+Porfavor, inicie sesión en [InstallationName] en [ExternalUrl]Financial/AttestCost para corroborar o denegar.</value>
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[Nombre de la organización] - OBJETO DE ACCIÓN] Reclamo de gasto creado: [Código de moneda] [Importe del presupuesto flotante] - Se necesita certificación</value>
+    <value>[[OrganizationName] - OBJETO DE ACCIÓN] Reclamo de Gastos Creado: [CurrencyCode] [BudgetAmountFloat] - Se Necesita Corroboración</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Su reclamo de gastos con [Nombre de la organización] para [Código de moneda] [Importe del presupuesto flotante], con respecto a [Propósito de la solicitud], ha sido DE-atestiguado por el propietario del presupuesto. Esto generalmente indica algún tipo de problema con su reclamo de gastos.
+    <value>Su reclamo de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido DE-atestiguada por el propietario del presupuesto. Esto generalmente indica algún tipo de problema con su reclamo de gastos.
 
-Espere más comunicación del propietario del presupuesto para seguir con el asunto.</value>
+Se esperan más comunicaciones del propietario del presupuesto sobre el asunto.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">

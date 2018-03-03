@@ -117,16 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AllClear_Text" xml:space="preserve">
+    <value>Ibinalik ang operasyon sa nominal.</value>
+  </data>
+  <data name="AllClear_Title" xml:space="preserve">
+    <value>Lahat ay malinaw</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
+    <value>Nawalan ng koneksyon ang server sa blockchain ng bitcoin. Ang mga transaksyon ng bitcoin ay hindi natukoy sa totoong oras.</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
+    <value>Nawala ang koneksyon sa Blockchain</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
+    <value>Ang web browser ay hindi makarinig sa heartbeat ng server. Ang mga nasa totoong-oras na mga update ay maaaring hindi magagamit.</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
+    <value>Kabiguan ng Heartbeat na Antas 1</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Text" xml:space="preserve">
+    <value>Hindi makakonekta sa server para sa totoong-oras na mga update.</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Title" xml:space="preserve">
+    <value>Kabiguan ng WebSocket</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Text" xml:space="preserve">
+    <value>Ang server ay hindi makakonekta sa backend na proseso. Ang totoong-oras na mga update ay magiging higit na hindi magagamit.</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Title" xml:space="preserve">
+    <value>Kabiguan ng Koneksyon sa Backend</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Text" xml:space="preserve">
+    <value>Ang server ay hindi makarinig ng heartbeat mula sa backend na proseso.</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Title" xml:space="preserve">
+    <value>Kabiguan ng Heartbeat na Antas 2</value>
+  </data>
 </root>

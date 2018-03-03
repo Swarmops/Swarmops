@@ -117,20 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
-    <value>مرحبا بك في [OrganizationName]!
-
-لقد تم منحك عضوية [Regularship] من قبل [ActingPerson]. وسوف تنتهي صلاحيتها في [MembershipExpiry]، لذا فإنه لديك متسع من الوقت لتعتاد على التعامل مع المنظمة.
-
-من المفترض أن يكون قد تواصل معك أحد ما من [OrganizationName] لإعطائك مزيداً من المعلومات عن كيفية تفعيل عضويتك. فإذا لم يحدث ذلك حتى الآن فتوقع حدوثه سريعاً.
-
-كلمة المرور الخاصة بك والتي تم إنشاؤها بشكل مبدئي من قبل نظام سوارموبس، وهو النظام المستخدم خلف الستار هي:
-[RandomPassword]
-
-(للأسف لا يمكنك تغيير هذه الكلمة في الوقت الراهن. سيتم تفعيل هذه الميزة في بدايات عام 2015. فنظام سوارموبس ما يزال في مراحل التجريب الأولية ألفا، وهذا أحد مساويء أن تكون رائداً في استخدام نظام جديد).
-
-مرحباً بك على متن الرحلة!</value>
-  </data>
+  
+  
+  
+  
+  
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>[OrganizationName] مرحباً بك في [OrganizationName]</value>
   </data>

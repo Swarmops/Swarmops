@@ -504,10 +504,7 @@
     <value>DD/MM/AAAA</value>
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>d MMM yyyy</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
-  </data>
+  
   <data name="Timespan_FiveYears" xml:space="preserve">
     <value>cinco anos</value>
   </data>
@@ -828,6 +825,12 @@
   <data name="Global_Volunteer_Plural" xml:space="preserve">
     <value>Voluntários</value>
   </data>
+  
+  
+  
+  
+  
+  
   
   
   
