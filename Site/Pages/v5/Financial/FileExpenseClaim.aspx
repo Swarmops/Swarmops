@@ -110,6 +110,8 @@
         var expensifyProcessingHalfway = false;
 
         function onExpensifyUpload() {
+            $('#divExpensifyUploadFile').slideUp();
+
             SwarmopsJS.ajaxCall
                 ("/Pages/v5/Financial/FileExpenseClaim.aspx/InitializeExpensifyProcessing",
                 {
@@ -307,11 +309,13 @@
 
                 <div id="divExpensifyUploadAnotherHeader" style="display:none"><h2><asp:Label runat="server" ID="LabelExpensifyUploadAnotherHeader" Text="Upload Another XYZ" /></h2></div>
         
-                <div class="entryFields">
-                    <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" ClientUploadCompleteCallback="onExpensifyUpload" />
-                </div>
-                <div class="entryLabels">
-                    <div class="stacked-input-control"><asp:Label runat="server" ID="LabelExpensifyCsv" /></div>
+                <div id="divExpensifyUploadFile">
+                    <div class="entryFields">
+                        <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" ClientUploadCompleteCallback="onExpensifyUpload" />
+                    </div>
+                    <div class="entryLabels">
+                        <div class="stacked-input-control"><asp:Label runat="server" ID="LabelExpensifyCsv" /></div>
+                    </div>
                 </div>
     
                 <br clear="all"/>
