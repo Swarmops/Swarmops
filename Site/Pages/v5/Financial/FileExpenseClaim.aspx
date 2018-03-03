@@ -17,7 +17,33 @@
         $(document).ready(function () {
 
             $('#divTabs').tabs();
- 
+
+            $('#buttonModalProceed').click(function() {
+
+            });
+
+            $('#buttonModalDelete').click(function () {
+                <%=this.DialogEditExpenseClaim.ClientID%>_close();
+
+                SwarmopsJS.ajaxCall(
+                    '/Pages/v5/Financial/FileExpenseClaim.aspx/ExpensifyRecordDelete',
+                    { masterGuid: '<%=this.UploadExpensify.GuidString%>', recordGuid: currentlyEditedRecordGuid },
+                    function(result) {
+                        if (result.Success) {
+                            // A record has been deleted. It is possible that a new one is displayed.
+
+                            $('#expensifyDataGrid').datagrid('loadData', result.DataUpdate);
+
+                            if (result.Guid.length > 1) // there's a new record
+                            {
+                                currentlyEditedRecordGuid = result.Guid;
+                                displayExpensifyRecord(result);
+                            }
+
+                        }
+                    });
+            });
+
         });
 
 
@@ -95,30 +121,37 @@
                 },
                 function(result) {
                     if (result.Success) {
-                        <%=this.CurrencyModalExpensifyAmount.ClientID%>_initialize(result.Amount);
-                        <%=this.CurrencyModalExpensifyAmountVat.ClientID%>_initialize(result.AmountVat);
-                        $('#textModalExpensifyDescription').val(result.Description);
-                        <%=this.DialogEditExpenseClaim.ClientID%>_open();
-                        $('#imgModalDocument').attr('src', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + result.DocumentId);
-                        $('#imgModalDocument').attr('data-zoom-image', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + result.DocumentId + '&hq=1');
-                        $('.zoomContainer').remove();
-                        $('#imgModalDocument').removeData('elevateZoom');
-                        $('#imgModalDocument').removeData('zoomImage');
-                        setTimeout(function () {
-                            $('#imgModalDocument').elevateZoom({
-                                zoomType: "lens",
-                                cursor: "crosshair",
-                                zoomWindowFadeIn: 200,
-                                zoomWindowFadeOut: 200,
-                                lensShape: "round",
-                                lensSize: 150
-                            });
-                        }, 50); // delay this slightly for race condition reasons
+                        currentlyEditedRecordGuid = result.Guid;
+                        displayExpensifyRecord(result);
                     }
                 });
         }
 
+        function displayExpensifyRecord(record) {
+            <%=this.CurrencyModalExpensifyAmount.ClientID%>_initialize(record.Amount);
+            <%=this.CurrencyModalExpensifyAmountVat.ClientID%>_initialize(record.AmountVat);
+            $('#textModalExpensifyDescription').val(record.Description);
+            <%=this.DialogEditExpenseClaim.ClientID%>_open();
+            $('#imgModalDocument').attr('src', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + record.DocumentId);
+            $('#imgModalDocument').attr('data-zoom-image', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + record.DocumentId + '&hq=1');
+            $('.zoomContainer').remove();
+            $('#imgModalDocument').removeData('elevateZoom');
+            $('#imgModalDocument').removeData('zoomImage');
+            setTimeout(function () {
+                $('#imgModalDocument').elevateZoom({
+                    zoomType: "lens",
+                    cursor: "crosshair",
+                    zoomWindowFadeIn: 200,
+                    zoomWindowFadeOut: 200,
+                    lensShape: "round",
+                    lensSize: 150
+                });
+            }, 50); // delay this slightly for race condition reasons
+        }
+
+
         var expensifyProcessingHalfway = false;
+        var currentlyEditedRecordGuid = '';
 
         function onExpensifyUpload() {
             $('#divExpensifyUploadFile').slideUp();
@@ -348,7 +381,7 @@
                 <Swarmops5:ComboBudgets ID="DropBudgets" ListType="Expensable" runat="server"/>
                 <Swarmops5:Currency ID="CurrencyModalExpensifyAmount" runat="server"/>
                 <div class="ifVatEnabled"><Swarmops5:Currency ID="CurrencyModalExpensifyAmountVat" runat="server"/></div>
-                <input type="button" class="buttonAccentColor HalfWidth NoInputFocus" value="Proceed &gt;&gt;"/><input type="button" class="buttonAccentColor Red HalfWidth NoInputFocus" value="Delete"/>
+                <input type="button" id="buttonModalProceed" class="buttonAccentColor HalfWidth NoInputFocus" value="Proceed &gt;&gt;"/><input type="button" id="buttonModalDelete" class="buttonAccentColor Red HalfWidth NoInputFocus" value="Delete"/>
             </div>
             <div class="entryLabels">Description<br/>Budget charged<br />Expense amount<br/><div class="ifVatEnabled">VAT amount of the total</div></div>
         </DialogCode>
