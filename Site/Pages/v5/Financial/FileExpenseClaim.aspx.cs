@@ -645,6 +645,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 AmountVat = (recordList[index].VatCents / 100.0).ToString("N2"),
                 Description = recordList[index].Description,
                 DocumentId = recordList[index].Documents.First().Identity,
+                BudgetId = recordList[index].BudgetId,
                 Guid = recordGuid,
                 ExistNext = (index < recordList.Count - 1? true: false),
                 Success = true
@@ -706,6 +707,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             public string ExtendedInfo { get; set; }
             public string ReceiptFileNameHere { get; set; }
             public Documents Documents { get; set; }
+            public int BudgetId { get; set; }  // Initializes to 0
 
             public string Guid { get; set; }
         }
@@ -851,7 +853,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
     public class ExpensifyOutputRecord
     {
         public string Description { get; set; }
-        public string Budget { get; set; }
+        public int BudgetId { get; set; }
         public string Amount { get; set; }
         public string AmountVat { get; set; }
         public string CreatedDateTime { get; set; }
@@ -875,6 +877,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         public string AmountVat { get; set; }
         public string Description { get; set; }
         public int DocumentId { get; set; }
+        public int BudgetId { get; set; }
         public string Guid { get; set; }
         public bool ExistNext { get; set; }
 

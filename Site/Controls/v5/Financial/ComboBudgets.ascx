@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ComboBudgets.ascx.cs" Inherits="Swarmops.Controls.Financial.ComboBudgets" %>
 <%@ Import Namespace="System.Threading" %>
 <%@ Import Namespace="Swarmops.Common.Enums" %>
+<%@ Import Namespace="Swarmops.Frontend" %>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -14,7 +15,7 @@
                     <% 
                     if (!SuppressPrompt)
                     {
-                        Response.Write ("$('#" + this.ClientID + "_SpanBudgets span.combo input.textbox-text').val(\"" + Resources.Global.Global_DropInits_SelectFinancialAccount + "\");");
+                        Response.Write ("$('#" + this.ClientID + "_SpanBudgets span.combo input.textbox-text').val('" + SwarmopsJS.unescape('<%=CommonV5.JavascriptEscape(Resources.Global.Global_DropInits_SelectFinancialAccount)%>') + "');");
                     }
                     if (!String.IsNullOrEmpty(this.OnClientLoaded)) 
                     {
@@ -58,7 +59,16 @@
             return $('#<%=this.ClientID %>_DropBudgets').combotree('getValue');
             } else {
                 // setter
-                $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', newValue);
+
+                if (newValue > 0) {
+                    $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', newValue);
+                } else {
+                    $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', {
+                        id: 0,
+                        text: SwarmopsJS.unescape('<%=CommonV5.JavascriptEscape(Resources.Global.Global_DropInits_SelectFinancialAccount)%>')
+                    });
+                }
+
             }
         }
 
