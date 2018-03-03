@@ -102,8 +102,8 @@
                         $('#imgModalDocument').attr('src', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + result.DocumentId);
                         $('#imgModalDocument').attr('data-zoom-image', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + result.DocumentId + '&hq=1');
                         $('.zoomContainer').remove();
-                        $('#imgModalDocument').removeData(image, 'elevateZoom');
-                        $('#imgModalDocument').removeData(image, 'zoomImage');
+                        $('#imgModalDocument').removeData('elevateZoom');
+                        $('#imgModalDocument').removeData('zoomImage');
                         setTimeout(function () {
                             $('#imgModalDocument').elevateZoom({
                                 zoomType: "lens",
