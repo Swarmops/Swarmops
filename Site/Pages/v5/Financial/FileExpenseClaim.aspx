@@ -102,7 +102,14 @@
                         $('#imgModalDocument').attr('src', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + result.DocumentId);
                         $('#imgModalDocument').attr('data-zoom-image', '/Pages/v5/Support/StreamUpload.aspx?DocId=' + result.DocumentId + '&hq=1');
                         $('.zoomContainer').remove();
-                        $('#imgModalDocument').elevateZoom();
+                        $('#imgModalDocument').elevateZoom({
+                            zoomType: "lens",
+                            cursor: "crosshair",
+                            zoomWindowFadeIn: 200,
+                            zoomWindowFadeOut: 200,
+                            lensShape: "round",
+                            lensSize: 150
+                        });
                     }
                 });
         }
