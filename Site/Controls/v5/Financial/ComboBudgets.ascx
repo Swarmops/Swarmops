@@ -15,7 +15,7 @@
                     <% 
                     if (!SuppressPrompt)
                     {
-                        Response.Write ("$('#" + this.ClientID + "_SpanBudgets span.combo input.textbox-text').val('" + SwarmopsJS.unescape('<%=this.Localized_DropInit%>') + "');");
+                        Response.Write ("$('#" + this.ClientID + "_SpanBudgets span.combo input.textbox-text').val(comboBudgetsDropInit);");
                     }
                     if (!String.IsNullOrEmpty(this.OnClientLoaded)) 
                     {
@@ -53,6 +53,8 @@
         });
     });
 
+    var comboBudgetsDropInit = SwarmopsJS.unescape('<%=this.Localized_DropInit%>');
+
     function <%=this.ClientID %>_val(newValue) {
         if (newValue === undefined) {
             // getter
@@ -65,7 +67,7 @@
                 } else {
                     $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', {
                         id: 0,
-                        text: SwarmopsJS.unescape('<%=this.Localized_DropInit%>')
+                        text: comboBudgetsDropInit
                     });
                 }
 
