@@ -53,7 +53,7 @@
         });
     });
 
-    var comboBudgetsDropInit = SwarmopsJS.unescape('<%=this.Localized_DropInit%>');
+    var comboBudgetsDropInit = comboBudgetsDropInit || SwarmopsJS.unescape('<%=this.Localized_DropInit%>');  // declare or redeclare
 
     function <%=this.ClientID %>_val(newValue) {
         if (newValue === undefined) {
