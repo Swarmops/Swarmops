@@ -559,7 +559,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 outputRecords.Add(new ExpensifyOutputRecord
                 {
-                    Budget =
+                    BudgetText =
                         "<span class='LocalEditExpenseClaim' data-guid='" + record.Guid + "'>" +
                         Resources.Global.Global_DropInits_SelectFinancialAccount + "</span>",
                     Description = record.CategoryCustom + " / " + record.Description,
@@ -854,6 +854,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
     {
         public string Description { get; set; }
         public int BudgetId { get; set; }
+        public string BudgetText { get; set; }
         public string Amount { get; set; }
         public string AmountVat { get; set; }
         public string CreatedDateTime { get; set; }

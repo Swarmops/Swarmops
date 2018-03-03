@@ -322,7 +322,7 @@
                         idField="expenseId">
                         <thead>  
                             <tr>
-                                <th data-options="field:'Budget',width:200"><asp:Label ID="LabelExpensifyHeaderBudget" runat="server" Text="XYZ Budget" /></th>  
+                                <th data-options="field:'BudgetText',width:200"><asp:Label ID="LabelExpensifyHeaderBudget" runat="server" Text="XYZ Budget" /></th>  
                                 <th data-options="field:'CreatedDateTime',width:50"><asp:Label ID="LabelExpensifyHeaderDate" runat="server" Text="XYZ Created" /></th>
                                 <th data-options="field:'Description',width:200"><asp:Label ID="LabelExpensifyHeaderDescription" runat="server" Text="XYZ Description" /></th>
                                 <th data-options="field:'AmountVat',width:80,align:'right',hidden:<%=(!CurrentOrganization.VatEnabled).ToString().ToLowerInvariant() %>"><asp:Label ID="LabelExpensifyHeaderVat" runat="server" Text="XYZ Vat" /></th>
