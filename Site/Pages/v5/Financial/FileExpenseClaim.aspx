@@ -99,6 +99,10 @@
                         <%=this.CurrencyModalExpensifyAmountVat.ClientID%>_initialize(result.AmountVat);
                         $('#textModalExpensifyDescription').val(result.Description);
                         <%=this.DialogEditExpenseClaim.ClientID%>_open();
+                        $('#imgModalDocument').attr('src', '/Pages/v5/Support/StreamUpload.aspx?DocId={0}');
+                        $('#imgModalDocument').attr('data-zoom-image', '/Pages/v5/Support/StreamUpload.aspx?DocId={0}&hq=1');
+                        $('.zoomContainer').destroy();
+                        $('#imgModalDocument').elevateZoom();
                     }
                 });
         }
@@ -323,6 +327,7 @@
     <Swarmops5:ModalDialog ID="DialogEditExpenseClaim" runat="server">
         <DialogCode>
             <h2>Editing Expense Claim</h2>
+            <div class="elementFloatFar" style="width: 200px;padding:10px"><img id="imgModalDocument" style="border: 2px solid #888; width:100%"/></div>
             <div class="entryFields">
                 <div class="stacked-input-control"><input type="text" id="textModalExpensifyDescription" /></div>
                 <Swarmops5:ComboBudgets ID="DropBudgets" ListType="Expensable" runat="server"/>

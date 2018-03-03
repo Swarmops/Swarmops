@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -594,6 +595,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 Amount = (recordList[index].AmountCents / 100.0).ToString("N2"),
                 AmountVat = (recordList[index].VatCents / 100.0).ToString("N2"),
                 Description = recordList[index].Description,
+                DocumentId = recordList[index].Documents.First().Identity,
                 Guid = recordGuid,
                 ExistNext = (index < recordList.Count - 1? true: false),
                 Success = true
@@ -802,7 +804,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         public string Amount { get; set; }
         public string AmountVat { get; set; }
         public string Description { get; set; }
-        public string DocumentId { get; set; }
+        public int DocumentId { get; set; }
         public string Guid { get; set; }
         public bool ExistNext { get; set; }
     }
