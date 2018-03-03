@@ -70,8 +70,6 @@ namespace Swarmops.Frontend.Automation
         [WebMethod]
         public static InterpretedCurrencyResult InterpretCurrency(string input)
         {
-            AuthenticationData authData = GetAuthenticationDataAndCulture();
-
             string[] currencyStrings = input.Split(' ');
             if (currencyStrings.Length != 2)
             {

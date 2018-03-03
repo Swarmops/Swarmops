@@ -21,6 +21,8 @@ using Swarmops.Logic.Support.BackendServices;
 using Swarmops.Logic.Swarm;
 using Swarmops.Site.Pages.Ledgers;
 using CsvHelper;
+using Swarmops.Frontend.Automation;
+using Formatting = Swarmops.Logic.Support.Formatting;
 
 
 namespace Swarmops.Frontend.Pages.v5.Financial
@@ -557,11 +559,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             foreach (ExpensifyRecord record in recordList)
             {
-                outputRecords.Add(new ExpensifyOutputRecord
+                ExpensifyOutputRecord newRecord = new ExpensifyOutputRecord
                 {
-                    BudgetText =
-                        "<span class='LocalEditExpenseClaim' data-guid='" + record.Guid + "'>" +
-                        Resources.Global.Global_DropInits_SelectFinancialAccount + "</span>",
                     Description = record.CategoryCustom + " / " + record.Description,
                     CreatedDateTime = record.Timestamp.ToString("MMM dd"),
                     Amount = (record.AmountCents/100.0).ToString("N2"),
@@ -571,7 +570,26 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                             "D" + record.Documents[0].Identity.ToString(CultureInfo.InvariantCulture)) +
                         String.Format(editString, record.Guid),
                     Guid = record.Guid
-                });
+                };
+
+                if (record.BudgetId != 0)
+                {
+                    FinancialAccount account = FinancialAccount.FromIdentity(record.BudgetId);
+                    newRecord.BudgetText = account.Name;
+
+                    if (account.ParentIdentity != 0)
+                    {
+                        newRecord.BudgetText = account.Parent.Name + " &gt;&gt; " + account.Name;
+                    }
+                }
+                else
+                {
+                    newRecord.BudgetText =
+                        "<span class='LocalEditExpenseClaim' data-guid='" + record.Guid + "'>" +
+                        Resources.Global.Global_DropInits_SelectFinancialAccount + "</span>";
+                }
+
+                outputRecords.Add(newRecord);
             }
 
             return outputRecords.ToArray();
@@ -580,11 +598,59 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         [WebMethod]
         public static AjaxCallExpensifyRecordResult ExpensifyRecordProceed(string masterGuid, string recordGuid,
-            int amountCents, int amountVat, int budgetId, string description)
+            string amountString, string amountVatString, int budgetId, string description)
         {
             List<ExpensifyRecord> recordList = (List<ExpensifyRecord>)GuidCache.Get("ExpensifyData-" + masterGuid);
+            int index = LocateRecordsetIndex(recordList, recordGuid);
 
-            throw new NotImplementedException();
+            amountString = amountString.Trim();
+            amountVatString = amountVatString.Trim();
+
+            if (amountString.Contains(" "))
+            {
+                amountString = FinancialFunctions.InterpretCurrency(amountString).DisplayAmount;
+            }
+
+            if (amountVatString.Contains(" "))
+            {
+                amountVatString = FinancialFunctions.InterpretCurrency(amountVatString).DisplayAmount;
+            }
+
+            recordList[index].AmountCents = Formatting.ParseDoubleStringAsCents(amountString);
+            recordList[index].VatCents = Formatting.ParseDoubleStringAsCents(amountVatString);
+            recordList[index].BudgetId = budgetId;
+            recordList[index].Description = description;
+
+            GuidCache.Set("ExpensifyData-" + masterGuid, recordList);
+
+            index++;
+
+            if (index >= recordList.Count)
+            {
+                // We processed the last record, so return a null record
+
+                return new AjaxCallExpensifyRecordResult
+                {
+                    Guid = "", // indicates null record
+                    DataUpdate = FormatExpensifyOutputRecords(recordList)
+                    // TODO: CanCommit
+                };
+            }
+
+            // Display the record next in line
+
+            return new AjaxCallExpensifyRecordResult
+            {
+                Amount = (recordList[index].AmountCents / 100.0).ToString("N2"),
+                AmountVat = (recordList[index].VatCents / 100.0).ToString("N2"),
+                Description = recordList[index].Description,
+                DocumentId = recordList[index].Documents.First().Identity,
+                Guid = recordList[index].Guid,
+                ExistNext = (index < recordList.Count - 1 ? true : false),
+                Success = true,
+                DataUpdate = FormatExpensifyOutputRecords(recordList)
+            };
+
         }
 
         [WebMethod]

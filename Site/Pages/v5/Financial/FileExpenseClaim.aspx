@@ -19,7 +19,54 @@
             $('#divTabs').tabs();
 
             $('#buttonModalProceed').click(function() {
+                // first, validate fields
 
+                var budgetId = <%=this.ComboExpensifyBudgets.ClientID%>_val();
+
+                if (budgetId == 0) {
+                    alertify.error("You need to select a budget.");
+                    return;
+                }
+
+                var description = $('#textModalExpensifyDescription').val();
+
+                if (description.length < 1) {
+                    alertify.error("You need to describe the expense claim.");
+                    return;
+                }
+
+                // TODO: check for invalid amounts
+
+                var amount = <%=this.CurrencyModalExpensifyAmount.ClientID%>_val();
+                var amountVat = <%=this.CurrencyModalExpensifyAmountVat.ClientID%>_val();
+                <%=this.DialogEditExpenseClaim.ClientID%>_close();
+
+                SwarmopsJS.ajaxCall(
+                    '/Pages/v5/Financial/FileExpenseClaim.aspx/ExpensifyRecordProceed',
+                    {
+                        masterGuid: '<%=this.UploadExpensify.GuidString%>',
+                        recordGuid: currentlyEditedRecordGuid,
+                        description: description,
+                        amountString: amount,
+                        amountVatString: amountVat,
+                        budgetId: budgetId
+                    },
+                    function(result) {
+                        if (result.Success) {
+
+                            $('#expensifyDataGrid').datagrid('loadData', result.DataUpdate);
+
+                            if (result.Guid.length > 1) // there's a new record
+                            {
+                                currentlyEditedRecordGuid = result.Guid;
+                                displayExpensifyRecord(result);
+                            }
+
+                        } else {
+                            <%=this.DialogEditExpenseClaim.ClientID%>_open(); // re-open same dialog
+                            alertify.error("There was an error submitting the data. Please fix.");
+                        }
+                    });
             });
 
             $('#buttonModalDelete').click(function () {
@@ -44,7 +91,7 @@
                     });
             });
 
-        });
+        });  // end of doc.ready
 
 
 
@@ -128,6 +175,7 @@
         }
 
         function displayExpensifyRecord(record) {
+            <%=this.ComboExpensifyBudgets.ClientID%>_val(record.BudgetId);
             <%=this.CurrencyModalExpensifyAmount.ClientID%>_initialize(record.Amount);
             <%=this.CurrencyModalExpensifyAmountVat.ClientID%>_initialize(record.AmountVat);
             $('#textModalExpensifyDescription').val(record.Description);
@@ -378,7 +426,7 @@
             <div class="elementFloatFar" style="width: 200px;padding:10px"><img id="imgModalDocument" style="border: 2px solid #888; width:100%"/></div>
             <div class="entryFields">
                 <div class="stacked-input-control"><input type="text" id="textModalExpensifyDescription" /></div>
-                <Swarmops5:ComboBudgets ID="DropBudgets" ListType="Expensable" runat="server"/>
+                <Swarmops5:ComboBudgets ID="ComboExpensifyBudgets" ListType="Expensable" runat="server"/>
                 <Swarmops5:Currency ID="CurrencyModalExpensifyAmount" runat="server"/>
                 <div class="ifVatEnabled"><Swarmops5:Currency ID="CurrencyModalExpensifyAmountVat" runat="server"/></div>
                 <input type="button" id="buttonModalProceed" class="buttonAccentColor HalfWidth NoInputFocus" value="Proceed &gt;&gt;"/><input type="button" id="buttonModalDelete" class="buttonAccentColor Red HalfWidth NoInputFocus" value="Delete"/>
