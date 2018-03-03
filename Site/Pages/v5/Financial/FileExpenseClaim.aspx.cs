@@ -587,6 +587,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             throw new NotImplementedException();
         }
 
+        [WebMethod]
         public static AjaxCallExpensifyRecordResult ExpensifyRecordDelete(string masterGuid, string recordGuid)
         {
             List<ExpensifyRecord> recordList = (List<ExpensifyRecord>)GuidCache.Get("ExpensifyData-" + masterGuid);
