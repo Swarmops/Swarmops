@@ -436,35 +436,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
                 }
 
-                // We now have a list of records. At this point in time, we need to determine what currency the
-                // damn report is in, because that's not specified anywhere in the CSV (who thought this was a
-                // good idea anyway?). We do this by iterating through the records and hoping there's at least
-                // one record with the exact same amount in the report field as in the "original currency amount"
-                // field, and then we guess that's the currency of the report. If we don't find one, or if
-                // there are multiple candidates, we need to ask the user what currency the report is in.
-
-                Currency reportCurrency = null;
-
-                foreach (ExpensifyRecord record in recordList)
-                {
-                    if (record.AmountCents == record.OriginalAmountCents)
-                    {
-                        if (reportCurrency == null)
-                        {
-                            reportCurrency = record.OriginalCurrency;
-                        }
-                        else if (reportCurrency.Identity != record.OriginalCurrency.Identity)
-                        {
-                            throw new BarfException(); // TODO: ASK USER
-                        }
-                    }
-                }
-
-                if (reportCurrency == null)
-                {
-                    throw new BarfException(); // TODO: ASK USER
-                }
-
                 progress.Set(10);
 
                 // We now need to get all the receipt images. This is a little tricky as we don't have the URL
