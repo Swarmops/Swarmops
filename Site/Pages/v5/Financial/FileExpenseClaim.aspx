@@ -10,6 +10,16 @@
          .LocalEditExpenseClaim {
              cursor: pointer;
          }
+         #divExpensifySomethingMissing {
+             font-size: 140%;
+             margin-top: 10px;    
+         }
+         #divExpensifyReadySubmit {
+             margin-top: 10px;
+         }
+         #spanLabelExpensifySubmit {
+             line-height: 64px;
+         }
     </style>
 
     <script type="text/javascript">
@@ -322,8 +332,8 @@
 
                             // Else, display processed data
 
-                            $('#divExpensifySomethingMissing').hide();
-                            $('#divExpensifyReadySubmit').show();
+                            $('#divExpensifySomethingMissing').show();
+                            $('#divExpensifyReadySubmit').hide();
 
                             $('#spanLabelExpensifySomethingMissing').text(SwarmopsJS.unescape('<%=this.Localized_Expensify_NeedBudgetsForAll%>'));
 
