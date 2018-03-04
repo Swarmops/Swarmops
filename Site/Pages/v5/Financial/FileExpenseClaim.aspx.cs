@@ -676,8 +676,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return new AjaxCallExpensifyRecordResult
                 {
                     Guid = "", // indicates null record
-                    DataUpdate = FormatExpensifyOutputRecords(recordList)
-                    // TODO: CanCommit
+                    Success = true,
+                    DataUpdate = FormatExpensifyOutputRecords(recordList),
+                    FooterUpdate = FormatExpensifyFooter(recordList),
+                    SubmitPrompt = FormatExpensifySubmitPrompt(recordList)
                 };
             }
 
@@ -716,8 +718,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return new AjaxCallExpensifyRecordResult
                 {
                     Guid = "", // indicates null record
-                    DataUpdate = FormatExpensifyOutputRecords(recordList)
-                    // TODO: CanCommit
+                    Success = true,
+                    DataUpdate = FormatExpensifyOutputRecords(recordList),
+                    FooterUpdate = FormatExpensifyFooter(recordList),
+                    SubmitPrompt = FormatExpensifySubmitPrompt(recordList)
                 };
             }
 
@@ -979,7 +983,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
     public class ExpensifyOutputRecord
     {
         public string Description { get; set; }
-        public int BudgetId { get; set; }
         public string BudgetText { get; set; }
         public string Amount { get; set; }
         public string AmountVat { get; set; }
