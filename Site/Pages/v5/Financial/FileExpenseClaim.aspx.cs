@@ -195,6 +195,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             ProgressBarBackend progress = new ProgressBarBackend(guidProgress);
             progress.Set(0); // Set to 0 first, esp. in case of previous files
+            progress.Set(1); // Then to 1, just to indicate life
 
             Thread initThread = new Thread(ProcessExpensifyUploadThread);
 
@@ -237,8 +238,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             ProgressBarBackend progress = new ProgressBarBackend(guidProgress);
 
             Documents documents = Documents.RecentFromDescription(guidFiles);
-            progress.Set(1);
-            // default - this is what happens if exception
+            progress.Set(2); // indicate more life
 
             if (documents.Count != 1)
             {
@@ -610,7 +610,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 Amount = "<span class='weight-more-emphasis'>" + (amountCentsTotal / 100.0).ToString("N2") + "</span>",
                 AmountVat = "<span class='weight-more-emphasis'>" + (vatCentsTotal / 100.0).ToString("N2") + "</span>",
-                BudgetText = "<span class='weight-more-emphasis'>" + Resources.Global.Global_Total + "</span>"
+                BudgetText = "<span class='weight-more-emphasis'>" + Resources.Global.Global_Total.ToUpperInvariant() + "</span>"
             };
 
             List<ExpensifyOutputRecord> listResult = new List<ExpensifyOutputRecord>();

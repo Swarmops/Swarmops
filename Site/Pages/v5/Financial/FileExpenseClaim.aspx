@@ -111,7 +111,7 @@
                                 $('#divExpensifyInstructions').hide();
                                 $('#divUploadExpensify').slideDown();
                                 setTimeout(function() {
-                                    $('#divExpensifyResultsGood').slideUp();
+                                    $('#divExpensifyResults').slideUp();
                                 }, 5000);
 
                             } else {
@@ -378,6 +378,7 @@
                         $('#divExpensifyResults').show();
                         $('#divExpensifyInstructions').hide();
                         $('#divExpensifyUploadAnotherHeader').show();
+                        $('#divExpensifyUploadFile').show();
                         $('#divExpensifyResultsBadText').html(result.DisplayMessage);
 
                         $('#divUploadExpensify').fadeIn().slideDown(); // aborts the slideUp probably in progress
