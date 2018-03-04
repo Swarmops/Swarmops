@@ -237,96 +237,122 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             ProgressBarBackend progress = new ProgressBarBackend(guidProgress);
 
-            Documents documents = Documents.RecentFromDescription(guidFiles);
-            progress.Set(2); // indicate more life
-
-            if (documents.Count != 1)
+            try
             {
-                return; // abort
-            }
 
-            Document uploadedDoc = documents[0];
+                Documents documents = Documents.RecentFromDescription(guidFiles);
+                progress.Set(2); // indicate more life
 
-            // TODO: ATTEMPT TO DETERMINE CURRENCY FROM FILE, USING ORIGINAL CURRENCY + ORIGINAL AMOUNT
-
-            string csvEntire;
-
-            using (StreamReader reader = uploadedDoc.GetReader(1252))
-            {
-                csvEntire = reader.ReadToEnd();
-            }
-
-            string[] csvLines = csvEntire.Split(new char[] {'\r','\n'});
-            string[] fieldNames = csvLines[0].Split(',');
-
-            // Map fields to column indexes
-
-            Dictionary<ExpensifyColumns,int> fieldMap = new Dictionary<ExpensifyColumns, int>();
-
-            for (int loop = 0; loop < fieldNames.Length; loop++)
-            {
-                switch (fieldNames[loop].ToLowerInvariant().Trim('\"'))
+                if (documents.Count != 1)
                 {
-                    case "timestamp":
-                        fieldMap[ExpensifyColumns.Timestamp] = loop;
-                        break;
-                    case "amount":
-                        fieldMap[ExpensifyColumns.AmountFloat] = loop;
-                        break;
-                    case "merchant":
-                        fieldMap[ExpensifyColumns.Merchant] = loop;
-                        break;
-                    case "comment":
-                        fieldMap[ExpensifyColumns.Comment] = loop;
-                        break;
-                    case "category":
-                        fieldMap[ExpensifyColumns.CategoryCustom] = loop;
-                        break;
-                    case "mcc":
-                        fieldMap[ExpensifyColumns.CategoryStandard] = loop;
-                        break;
-                    case "vat":
-                        fieldMap[ExpensifyColumns.VatFloat] = loop;
-                        break;
-                    case "original currency":
-                        fieldMap[ExpensifyColumns.OriginalCurrency] = loop;
-                        break;
-                    case "original amount":
-                        fieldMap[ExpensifyColumns.OriginalCurrencyAmountFloat] = loop;
-                        break;
-                    case "receipt":
-                        fieldMap[ExpensifyColumns.ReceiptUrl] = loop;
-                        break;
-                    default:
-                        // ignore any unknown fields
-                        break;
+                    return; // abort
                 }
-            }
 
-            ExpensifyColumns[] requiredData =
-            {
-                ExpensifyColumns.AmountFloat,
-                ExpensifyColumns.CategoryCustom,
-                ExpensifyColumns.CategoryStandard,
-                ExpensifyColumns.Comment,
-                ExpensifyColumns.Merchant,
-                ExpensifyColumns.OriginalCurrency,
-                ExpensifyColumns.OriginalCurrencyAmountFloat,
-                ExpensifyColumns.ReceiptUrl,
-                ExpensifyColumns.Timestamp
-            };
+                Document uploadedDoc = documents[0];
 
-            foreach (ExpensifyColumns requiredColumn in requiredData)
-            {
-                if (!fieldMap.ContainsKey(requiredColumn))
+                // TODO: ATTEMPT TO DETERMINE CURRENCY FROM FILE, USING ORIGINAL CURRENCY + ORIGINAL AMOUNT
+
+                string csvEntire;
+
+                using (StreamReader reader = uploadedDoc.GetReader(1252))
                 {
-                    // Abort as invalid file
+                    csvEntire = reader.ReadToEnd();
+                }
+
+                string[] csvLines = csvEntire.Split(new char[] {'\r', '\n'});
+                string[] fieldNames = csvLines[0].Split(',');
+
+                // Map fields to column indexes
+
+                Dictionary<ExpensifyColumns, int> fieldMap = new Dictionary<ExpensifyColumns, int>();
+
+                for (int loop = 0; loop < fieldNames.Length; loop++)
+                {
+                    switch (fieldNames[loop].ToLowerInvariant().Trim('\"'))
+                    {
+                        case "timestamp":
+                            fieldMap[ExpensifyColumns.Timestamp] = loop;
+                            break;
+                        case "amount":
+                            fieldMap[ExpensifyColumns.AmountFloat] = loop;
+                            break;
+                        case "merchant":
+                            fieldMap[ExpensifyColumns.Merchant] = loop;
+                            break;
+                        case "comment":
+                            fieldMap[ExpensifyColumns.Comment] = loop;
+                            break;
+                        case "category":
+                            fieldMap[ExpensifyColumns.CategoryCustom] = loop;
+                            break;
+                        case "mcc":
+                            fieldMap[ExpensifyColumns.CategoryStandard] = loop;
+                            break;
+                        case "vat":
+                            fieldMap[ExpensifyColumns.VatFloat] = loop;
+                            break;
+                        case "original currency":
+                            fieldMap[ExpensifyColumns.OriginalCurrency] = loop;
+                            break;
+                        case "original amount":
+                            fieldMap[ExpensifyColumns.OriginalCurrencyAmountFloat] = loop;
+                            break;
+                        case "receipt":
+                            fieldMap[ExpensifyColumns.ReceiptUrl] = loop;
+                            break;
+                        default:
+                            // ignore any unknown fields
+                            break;
+                    }
+                }
+
+                ExpensifyColumns[] requiredData =
+                {
+                    ExpensifyColumns.AmountFloat,
+                    ExpensifyColumns.CategoryCustom,
+                    ExpensifyColumns.CategoryStandard,
+                    ExpensifyColumns.Comment,
+                    ExpensifyColumns.Merchant,
+                    ExpensifyColumns.OriginalCurrency,
+                    ExpensifyColumns.OriginalCurrencyAmountFloat,
+                    ExpensifyColumns.ReceiptUrl,
+                    ExpensifyColumns.Timestamp
+                };
+
+                foreach (ExpensifyColumns requiredColumn in requiredData)
+                {
+                    if (!fieldMap.ContainsKey(requiredColumn))
+                    {
+                        // Abort as invalid file
+
+                        GuidCache.Set("Results-" + guidFiles, new AjaxCallExpensifyUploadResult
+                        {
+                            Success = false,
+                            ErrorType = "ERR_INVALIDCSV",
+                            DisplayMessage = Resources.Pages.Financial.FileExpenseClaim_Expensify_Error_InvalidCsv
+                        });
+
+                        progress.Set(100); // terminate progress bar, causes retrieval of result
+
+                        documents[0].Delete(); // prevents further processing
+
+                        return; // terminates thread
+                    }
+                }
+
+                // TODO: Much more general-case error conditions if not all fields are filled
+
+                bool vatEnabled = organization.VatEnabled;
+
+                if (vatEnabled && !fieldMap.ContainsKey(ExpensifyColumns.VatFloat))
+                {
+                    // Error: Organization needs a VAT field
 
                     GuidCache.Set("Results-" + guidFiles, new AjaxCallExpensifyUploadResult
                     {
                         Success = false,
-                        ErrorType = "ERR_INVALIDCSV",
-                        DisplayMessage = Resources.Pages.Financial.FileExpenseClaim_Expensify_Error_InvalidCsv
+                        ErrorType = "ERR_NEEDSVAT",
+                        DisplayMessage = Resources.Pages.Financial.FileExpenseClaim_Expensify_Error_NeedsVat
                     });
 
                     progress.Set(100); // terminate progress bar, causes retrieval of result
@@ -335,237 +361,235 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                     return; // terminates thread
                 }
+
+                List<ExpensifyRecord> recordList = new List<ExpensifyRecord>();
+
+                CsvHelper.Configuration.Configuration config = new CsvHelper.Configuration.Configuration();
+                config.HasHeaderRecord = true;
+
+                using (TextReader textReader = new StringReader(csvEntire))
+                {
+                    CsvReader csvReader = new CsvReader(textReader, config);
+                    csvReader.Read(); // bypass header record -- why isn't this done automatically?
+
+                    while (csvReader.Read())
+                    {
+                        ExpensifyRecord newRecord = new ExpensifyRecord();
+                        Int64 amountExpensifyCents =
+                            newRecord.AmountCents =
+                                Formatting.ParseDoubleStringAsCents(
+                                    csvReader.GetField(fieldMap[ExpensifyColumns.AmountFloat]),
+                                    CultureInfo.InvariantCulture);
+                        newRecord.OriginalCurrency =
+                            Currency.FromCode(csvReader.GetField(fieldMap[ExpensifyColumns.OriginalCurrency]));
+                        newRecord.OriginalAmountCents =
+                            Formatting.ParseDoubleStringAsCents(
+                                csvReader.GetField(fieldMap[ExpensifyColumns.OriginalCurrencyAmountFloat]),
+                                CultureInfo.InvariantCulture);
+                        newRecord.Timestamp = DateTime.Parse(csvReader.GetField(fieldMap[ExpensifyColumns.Timestamp]));
+
+                        bool amountNeedsTranslation = false;
+
+                        if (newRecord.OriginalCurrency.Identity != organization.Currency.Identity)
+                        {
+                            amountNeedsTranslation = true;
+
+                            // May or may not be the same as Expensify calculated
+
+                            newRecord.AmountCents =
+                                new Money(newRecord.OriginalAmountCents, newRecord.OriginalCurrency, newRecord.Timestamp)
+                                    .ToCurrency(organization.Currency).Cents;
+                        }
+
+                        newRecord.Description = csvReader.GetField(fieldMap[ExpensifyColumns.Merchant]);
+
+                        string comment = csvReader.GetField(fieldMap[ExpensifyColumns.Comment]).Trim();
+                        if (!string.IsNullOrEmpty(comment))
+                        {
+                            newRecord.Description += " / " + comment;
+                        }
+                        newRecord.CategoryCustom = csvReader.GetField(fieldMap[ExpensifyColumns.CategoryCustom]);
+                        newRecord.CategoryStandard = csvReader.GetField(fieldMap[ExpensifyColumns.CategoryStandard]);
+                        newRecord.ReceiptUrl = csvReader.GetField(fieldMap[ExpensifyColumns.ReceiptUrl]);
+
+                        newRecord.Guid = Guid.NewGuid().ToString();
+
+                        if (vatEnabled)
+                        {
+                            Int64 vatOriginalCents =
+                                Formatting.ParseDoubleStringAsCents(
+                                    csvReader.GetField(fieldMap[ExpensifyColumns.VatFloat]),
+                                    CultureInfo.InvariantCulture);
+
+                            if (amountNeedsTranslation)
+                            {
+                                double vatRatio = vatOriginalCents/(double) amountExpensifyCents;
+                                newRecord.VatCents = (Int64) (newRecord.AmountCents*vatRatio);
+                            }
+                            else
+                            {
+                                newRecord.VatCents = vatOriginalCents;
+                            }
+                        }
+
+                        recordList.Add(newRecord);
+                    }
+                }
+
+                // We now have a list of records. At this point in time, we need to determine what currency the
+                // damn report is in, because that's not specified anywhere in the CSV (who thought this was a
+                // good idea anyway?). We do this by iterating through the records and hoping there's at least
+                // one record with the exact same amount in the report field as in the "original currency amount"
+                // field, and then we guess that's the currency of the report. If we don't find one, or if
+                // there are multiple candidates, we need to ask the user what currency the report is in.
+
+                Currency reportCurrency = null;
+
+                foreach (ExpensifyRecord record in recordList)
+                {
+                    if (record.AmountCents == record.OriginalAmountCents)
+                    {
+                        if (reportCurrency == null)
+                        {
+                            reportCurrency = record.OriginalCurrency;
+                        }
+                        else if (reportCurrency.Identity != record.OriginalCurrency.Identity)
+                        {
+                            throw new BarfException(); // TODO: ASK USER
+                        }
+                    }
+                }
+
+                if (reportCurrency == null)
+                {
+                    throw new BarfException(); // TODO: ASK USER
+                }
+
+                progress.Set(10);
+
+                // We now need to get all the receipt images. This is a little tricky as we don't have the URL
+                // of the receipt directly, we only have the URL of a webpage that contains JavaScript code
+                // to fetch the receipt image.
+
+                // Get relative date part
+
+                string relativePath = Document.DailyStorageFolder.Substring(Document.StorageRoot.Length);
+
+                // Get all receipts
+
+                for (int loop = 0; loop < recordList.Count; loop++)
+                {
+                    progress.Set(loop*90/recordList.Count + 10);
+
+                    using (WebClient client = new WebClient())
+                    {
+                        string receiptResource = client.DownloadString(recordList[loop].ReceiptUrl);
+
+                        // We now have the web page which holds information about where the actual receipt is located.
+
+                        Regex regex = new Regex(@"\s*var transaction\s*=\s*(?<jsonTxInfo>{.*});", RegexOptions.Multiline);
+                        Match match = regex.Match(receiptResource);
+                        if (match.Success)
+                        {
+                            string txInfoString = match.Groups["jsonTxInfo"].ToString();
+                            JObject txInfo = JObject.Parse(txInfoString);
+                            recordList[loop].ExtendedInfo = txInfoString;
+
+                            string expensifyFileName = (string) txInfo["receiptFilename"];
+                            string actualReceiptUrl = "https://s3.amazonaws.com/receipts.expensify.com/" +
+                                                      expensifyFileName;
+                            string newGuidString = recordList[loop].Guid;
+
+                            string fullyQualifiedFileName = Document.DailyStorageFolder + newGuidString;
+                            string relativeFileName = relativePath + newGuidString;
+
+                            client.DownloadFile(actualReceiptUrl, fullyQualifiedFileName);
+                            recordList[loop].ReceiptFileNameHere = newGuidString;
+
+                            // If original file name ends in PDF, initiate conversion.
+
+                            if (expensifyFileName.ToLowerInvariant().EndsWith(".pdf"))
+                            {
+                                // Convert low resolution
+
+                                Documents docs = new PdfProcessor().RasterizeOne(fullyQualifiedFileName,
+                                    recordList[loop].Description, newGuidString, currentUser, organization);
+
+                                recordList[loop].Documents = docs;
+
+                                // Ask backend for high-res conversion
+
+                                RasterizeDocumentHiresOrder backendOrder =
+                                    new RasterizeDocumentHiresOrder(docs[0]);
+                                backendOrder.Create();
+                            }
+                            else
+                            {
+                                Document doc = Document.Create(relativePath + newGuidString, expensifyFileName, 0,
+                                    newGuidString, null,
+                                    currentUser);
+
+                                recordList[loop].Documents = Documents.FromSingle(doc);
+                            }
+                        }
+                    }
+                }
+
+
+
+                // We now have the individual expenses and all accompanying receipts.
+                // Create the expense claim group, then the individual expense records,
+                // and assign the Documents to the records and the records to the Group,
+                // so the user can review all of it.
+
+
+                // TODO: Suggest initial budgets
+
+                List<ExpensifyOutputRecord> outputRecords = new List<ExpensifyOutputRecord>();
+
+                string docString =
+                    "<a href='/Pages/v5/Support/StreamUpload.aspx?DocId={0}&hq=1' data-caption=\"{1}\" class='FancyBox_Gallery' data-fancybox='{2}'>";
+
+                string documentsAll = String.Empty;
+
+                foreach (ExpensifyRecord record in recordList)
+                {
+                    foreach (Document document in record.Documents)
+                    {
+                        documentsAll += String.Format(docString, document.Identity,
+                            document.ClientFileName.Replace("\"", "'"),
+                            "D" + record.Documents[0].Identity.ToString(CultureInfo.InvariantCulture));
+                    }
+                }
+
+                AjaxCallExpensifyUploadResult result = new AjaxCallExpensifyUploadResult
+                {
+                    Success = true,
+                    Data = FormatExpensifyOutputRecords(recordList),
+                    Footer = FormatExpensifyFooter(recordList),
+                    Documents = documentsAll
+                };
+
+                GuidCache.Set("Results-" + guidFiles, result);
+                GuidCache.Set("ExpensifyData-" + guidFiles, recordList);
+
             }
-
-            // TODO: Much more general-case error conditions if not all fields are filled
-
-            bool vatEnabled = organization.VatEnabled;
-
-            if (vatEnabled && !fieldMap.ContainsKey(ExpensifyColumns.VatFloat))
+            catch (Exception exception)
             {
-                // Error: Organization needs a VAT field
+                // Abort as exception
 
                 GuidCache.Set("Results-" + guidFiles, new AjaxCallExpensifyUploadResult
                 {
                     Success = false,
-                    ErrorType = "ERR_NEEDSVAT",
-                    DisplayMessage = Resources.Pages.Financial.FileExpenseClaim_Expensify_Error_NeedsVat
+                    ErrorType = "ERR_EXCEPTION",
+                    DisplayMessage = exception.ToString()
                 });
 
+            }
+            finally
+            {
                 progress.Set(100); // terminate progress bar, causes retrieval of result
-
-                documents[0].Delete(); // prevents further processing
-
-                return; // terminates thread
             }
-
-            List<ExpensifyRecord> recordList = new List<ExpensifyRecord>();
-
-            CsvHelper.Configuration.Configuration config = new CsvHelper.Configuration.Configuration();
-            config.HasHeaderRecord = true;
-
-            using (TextReader textReader = new StringReader(csvEntire))
-            {
-                CsvReader csvReader = new CsvReader(textReader, config);
-                csvReader.Read(); // bypass header record -- why isn't this done automatically?
-
-                while (csvReader.Read())
-                {
-                    ExpensifyRecord newRecord = new ExpensifyRecord();
-                    Int64 amountExpensifyCents =
-                        newRecord.AmountCents =
-                        Formatting.ParseDoubleStringAsCents(csvReader.GetField(fieldMap[ExpensifyColumns.AmountFloat]),
-                            CultureInfo.InvariantCulture);
-                    newRecord.OriginalCurrency =
-                        Currency.FromCode(csvReader.GetField(fieldMap[ExpensifyColumns.OriginalCurrency]));
-                    newRecord.OriginalAmountCents =
-                        Formatting.ParseDoubleStringAsCents(
-                            csvReader.GetField(fieldMap[ExpensifyColumns.OriginalCurrencyAmountFloat]),
-                            CultureInfo.InvariantCulture);
-                    newRecord.Timestamp = DateTime.Parse(csvReader.GetField(fieldMap[ExpensifyColumns.Timestamp]));
-
-                    bool amountNeedsTranslation = false;
-
-                    if (newRecord.OriginalCurrency.Identity != organization.Currency.Identity)
-                    {
-                        amountNeedsTranslation = true;
-
-                        // May or may not be the same as Expensify calculated
-
-                        newRecord.AmountCents =
-                            new Money(newRecord.OriginalAmountCents, newRecord.OriginalCurrency, newRecord.Timestamp)
-                                .ToCurrency(organization.Currency).Cents;
-                    }
-
-                    newRecord.Description = csvReader.GetField(fieldMap[ExpensifyColumns.Merchant]);
-
-                    string comment = csvReader.GetField(fieldMap[ExpensifyColumns.Comment]).Trim();
-                    if (!string.IsNullOrEmpty(comment))
-                    {
-                        newRecord.Description += " / " + comment;
-                    }
-                    newRecord.CategoryCustom = csvReader.GetField(fieldMap[ExpensifyColumns.CategoryCustom]);
-                    newRecord.CategoryStandard = csvReader.GetField(fieldMap[ExpensifyColumns.CategoryStandard]);
-                    newRecord.ReceiptUrl = csvReader.GetField(fieldMap[ExpensifyColumns.ReceiptUrl]);
-
-                    newRecord.Guid = Guid.NewGuid().ToString();
-
-                    if (vatEnabled)
-                    {
-                        Int64 vatOriginalCents =
-                            Formatting.ParseDoubleStringAsCents(csvReader.GetField(fieldMap[ExpensifyColumns.VatFloat]),
-                                CultureInfo.InvariantCulture);
-
-                        if (amountNeedsTranslation)
-                        {
-                            double vatRatio = vatOriginalCents/(double) amountExpensifyCents;
-                            newRecord.VatCents = (Int64) (newRecord.AmountCents * vatRatio);
-                        }
-                        else
-                        {
-                            newRecord.VatCents = vatOriginalCents;
-                        }
-                    }
-
-                    recordList.Add(newRecord);
-                }
-            }
-
-            // We now have a list of records. At this point in time, we need to determine what currency the
-            // damn report is in, because that's not specified anywhere in the CSV (who thought this was a
-            // good idea anyway?). We do this by iterating through the records and hoping there's at least
-            // one record with the exact same amount in the report field as in the "original currency amount"
-            // field, and then we guess that's the currency of the report. If we don't find one, or if
-            // there are multiple candidates, we need to ask the user what currency the report is in.
-
-            Currency reportCurrency = null;
-
-            foreach (ExpensifyRecord record in recordList)
-            {
-                if (record.AmountCents == record.OriginalAmountCents)
-                {
-                    if (reportCurrency == null)
-                    {
-                        reportCurrency = record.OriginalCurrency;
-                    }
-                    else if (reportCurrency.Identity != record.OriginalCurrency.Identity)
-                    {
-                        throw new BarfException();  // TODO: ASK USER
-                    }
-                }
-            }
-
-            if (reportCurrency == null)
-            {
-                throw new BarfException();  // TODO: ASK USER
-            }
-
-            progress.Set(10);
-
-            // We now need to get all the receipt images. This is a little tricky as we don't have the URL
-            // of the receipt directly, we only have the URL of a webpage that contains JavaScript code
-            // to fetch the receipt image.
-
-            // Get relative date part
-
-            string relativePath = Document.DailyStorageFolder.Substring(Document.StorageRoot.Length);
-
-            // Get all receipts
-
-            for (int loop = 0; loop < recordList.Count; loop++)
-            {
-                progress.Set(loop * 90 / recordList.Count + 10);
-
-                using (WebClient client = new WebClient())
-                {
-                    string receiptResource = client.DownloadString(recordList[loop].ReceiptUrl);
-
-                    // We now have the web page which holds information about where the actual receipt is located.
-
-                    Regex regex = new Regex(@"\s*var transaction\s*=\s*(?<jsonTxInfo>{.*});", RegexOptions.Multiline);
-                    Match match = regex.Match(receiptResource);
-                    if (match.Success)
-                    {
-                        string txInfoString = match.Groups["jsonTxInfo"].ToString();
-                        JObject txInfo = JObject.Parse(txInfoString);
-                        recordList[loop].ExtendedInfo = txInfoString;
-
-                        string expensifyFileName = (string) txInfo["receiptFilename"];
-                        string actualReceiptUrl = "https://s3.amazonaws.com/receipts.expensify.com/" + expensifyFileName;
-                        string newGuidString = recordList[loop].Guid;
-
-                        string fullyQualifiedFileName = Document.DailyStorageFolder + newGuidString;
-                        string relativeFileName = relativePath + newGuidString;
-
-                        client.DownloadFile(actualReceiptUrl, fullyQualifiedFileName);
-                        recordList[loop].ReceiptFileNameHere = newGuidString;
-
-                        // If original file name ends in PDF, initiate conversion.
-
-                        if (expensifyFileName.ToLowerInvariant().EndsWith(".pdf"))
-                        {
-                            // Convert low resolution
-
-                            Documents docs = new PdfProcessor().RasterizeOne(fullyQualifiedFileName, recordList[loop].Description, newGuidString, currentUser, organization);
-
-                            recordList[loop].Documents = docs;
-
-                            // Ask backend for high-res conversion
-
-                            RasterizeDocumentHiresOrder backendOrder =
-                                new RasterizeDocumentHiresOrder(docs[0]);
-                            backendOrder.Create();
-                        }
-                        else
-                        {
-                            Document doc = Document.Create(relativePath + newGuidString, expensifyFileName, 0, newGuidString, null,
-                                currentUser);
-
-                            recordList[loop].Documents = Documents.FromSingle(doc);
-                        }
-                    }
-                }
-            }
-
-
-
-            // We now have the individual expenses and all accompanying receipts.
-            // Create the expense claim group, then the individual expense records,
-            // and assign the Documents to the records and the records to the Group,
-            // so the user can review all of it.
-
-
-            // TODO: Suggest initial budgets
-
-            List<ExpensifyOutputRecord> outputRecords = new List<ExpensifyOutputRecord>();
-
-            string docString =
-                "<a href='/Pages/v5/Support/StreamUpload.aspx?DocId={0}&hq=1' data-caption=\"{1}\" class='FancyBox_Gallery' data-fancybox='{2}'>";
-
-            string documentsAll = String.Empty;
-
-            foreach (ExpensifyRecord record in recordList)
-            {
-                foreach (Document document in record.Documents)
-                {
-                    documentsAll += String.Format(docString, document.Identity,
-                        document.ClientFileName.Replace("\"", "'"),
-                        "D" + record.Documents[0].Identity.ToString(CultureInfo.InvariantCulture));
-                }
-            }
-
-            AjaxCallExpensifyUploadResult result = new AjaxCallExpensifyUploadResult
-            {
-                Success = true,
-                Data = FormatExpensifyOutputRecords(recordList),
-                Footer = FormatExpensifyFooter(recordList),
-                Documents = documentsAll
-            };
-
-            GuidCache.Set("Results-" + guidFiles, result);
-            GuidCache.Set("ExpensifyData-" + guidFiles, recordList);
-
-            progress.Set(100);
 
         }
 
