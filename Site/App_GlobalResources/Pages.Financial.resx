@@ -725,4 +725,10 @@
     <value>Ready to submit {0} claims</value>
     <comment>The {0} is replaced by a number, 2 or higher</comment>
   </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>Claim successfully filed.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>Successfully filed {0} claims.</value>
+  </data>
 </root>

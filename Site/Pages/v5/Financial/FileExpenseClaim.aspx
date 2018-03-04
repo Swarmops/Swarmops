@@ -121,6 +121,24 @@
                     });
             });
 
+            $('#buttonExpensifySubmit').click(function() {
+                SwarmopsJS.ajaxCall (
+                    '/Pages/v5/Financial/FileExpenseClaim.aspx/ExpensifyRecordsetCommit',
+                    { masterGuid: '<%=this.UploadExpensify.GuidString%>' },
+                    function(result) {
+                        if (result.Success) {
+                            alertify.success(result.DisplayMessage);
+                            $('#divExpensifyResults').slideUp();
+                            $('#divExpensifyUploadAnotherHeader').show();
+                            $('#divExpensifyUploadFile').show();
+                            $('#divExpensifyInstructions').hide();
+                            $('#divUploadExpensify').slideDown();
+                        } else {
+                            alertify.dialog(result.DisplayMessage);
+                            console.log(result.DisplayMessage);
+                        }
+                    });
+
         });  // end of doc.ready
 
 

@@ -988,6 +988,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Claim successfully filed..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_SuccessOne {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_SuccessOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully filed {0} claims..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_SuccessSeveral {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_SuccessSeveral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload Another Expensify CSV File?.
         /// </summary>
         internal static string FileExpenseClaim_Expensify_UploadAnother {

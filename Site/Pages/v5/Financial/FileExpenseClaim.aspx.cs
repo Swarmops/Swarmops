@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -21,6 +22,7 @@ using Swarmops.Logic.Support.BackendServices;
 using Swarmops.Logic.Swarm;
 using Swarmops.Site.Pages.Ledgers;
 using CsvHelper;
+using Swarmops.Common.Enums;
 using Swarmops.Frontend.Automation;
 using Formatting = Swarmops.Logic.Support.Formatting;
 
@@ -258,6 +260,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 {
                     csvEntire = reader.ReadToEnd();
                 }
+
+                GuidCache.Set("ExpensifyRaw-" + guidFiles, csvEntire);
 
                 string[] csvLines = csvEntire.Split(new char[] {'\r', '\n'});
                 string[] fieldNames = csvLines[0].Split(',');
@@ -663,6 +667,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         public static AjaxCallExpensifyRecordResult ExpensifyRecordProceed(string masterGuid, string recordGuid,
             string amountString, string amountVatString, int budgetId, string description)
         {
+            GetAuthenticationDataAndCulture();
+
             List<ExpensifyRecord> recordList = (List<ExpensifyRecord>)GuidCache.Get("ExpensifyData-" + masterGuid);
             int index = LocateRecordsetIndex(recordList, recordGuid);
 
@@ -724,6 +730,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         [WebMethod]
         public static AjaxCallExpensifyRecordResult ExpensifyRecordDelete(string masterGuid, string recordGuid)
         {
+            GetAuthenticationDataAndCulture();
+
             List<ExpensifyRecord> recordList = (List<ExpensifyRecord>)GuidCache.Get("ExpensifyData-" + masterGuid);
             int index = LocateRecordsetIndex(recordList, recordGuid);
 
@@ -764,6 +772,66 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
         [WebMethod]
+        public static AjaxCallResult ExpensifyRecordsetCommit(string masterGuid)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            // Commit all expenses in the recordset
+
+            try
+            {
+                List<ExpensifyRecord> recordList = (List<ExpensifyRecord>) GuidCache.Get("ExpensifyData-" + masterGuid);
+                string expensifyRaw = (string) GuidCache.Get("ExpensifyRaw-" + masterGuid);
+
+                ExpenseClaimGroup expenseClaimGroup = ExpenseClaimGroup.Create(authData.CurrentOrganization,
+                    authData.CurrentUser, ExpenseClaimGroupType.Expensify, expensifyRaw);
+
+                foreach (ExpensifyRecord record in recordList)
+                {
+                    FinancialAccount budget = FinancialAccount.FromIdentity(record.BudgetId);
+
+                    ExpenseClaim claim = ExpenseClaim.Create(authData.CurrentUser, authData.CurrentOrganization, budget,
+                        record.Timestamp, record.CategoryCustom + " / " + record.Description, record.AmountCents,
+                        record.VatCents,
+                        expenseClaimGroup);
+
+                    record.Documents.SetForeignObjectForAll(claim);
+
+                    // TODO: Log
+                }
+
+                if (recordList.Count > 1)
+                {
+                    return new AjaxCallResult
+                    {
+                        Success = true,
+                        DisplayMessage =
+                            String.Format(Resources.Pages.Financial.FileExpenseClaim_Expensify_SuccessSeveral,
+                                recordList.Count)
+                    };
+                }
+
+                return new AjaxCallResult
+                {
+                    Success = true,
+                    DisplayMessage = Resources.Pages.Financial.FileExpenseClaim_Expensify_SuccessOne
+                };
+            }
+            catch (Exception exc)
+            {
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = exc.ToString()
+                };
+            }
+
+
+        }
+
+
+
+        [WebMethod]
         public static AjaxCallExpensifyUploadResult GetExpensifyUploadResult(string guid)
         {
             // This may throw and it's okay
@@ -775,6 +843,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         [WebMethod]
         public static AjaxCallExpensifyRecordResult GetExpensifyRecord(string masterGuid, string recordGuid)
         {
+            GetAuthenticationDataAndCulture();
+
             List<ExpensifyRecord> recordList = (List<ExpensifyRecord>) GuidCache.Get("ExpensifyData-" + masterGuid);
             int index = LocateRecordsetIndex(recordList, recordGuid);
 
