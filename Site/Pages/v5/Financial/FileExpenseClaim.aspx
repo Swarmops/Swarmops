@@ -62,6 +62,8 @@
                                 displayExpensifyRecord(result);
                             }
 
+                            displaySubmitPrompt(result.SubmitPrompt);
+
                         } else {
                             <%=this.DialogEditExpenseClaim.ClientID%>_open(); // re-open same dialog
                             alertify.error("There was an error submitting the data. Please fix.");
@@ -86,7 +88,21 @@
                                 currentlyEditedRecordGuid = result.Guid;
                                 displayExpensifyRecord(result);
                             }
+                            else if (result.DataUpdate.length == 0) {
+                                // There are no more records
 
+                                // No data, so prepare for another upload
+
+                                $('#spanLabelExpensifySomethingMissing').text(SwarmopsJS.unescape('<%=this.Localized_Expensify_NoRecords%>'));
+                                $('#divExpensifySomethingMissing').show();
+                                $('#divExpensifyReadySubmit').hide();
+                                $('#divExpensifyUploadAnotherHeader').show();
+                                $('#divExpensifyUploadFile').show();
+                                $('#divExpensifyInstructions').hide();
+                                $('#divUploadExpensify').slideDown();
+                            } else {
+                                displaySubmitPrompt(result.SubmitPrompt);
+                            }
                         }
                     });
             });
@@ -229,6 +245,15 @@
             });
         }
 
+        function displaySubmitPrompt(prompt) {
+            if (prompt.length > 1) {
+                $('#buttonExpensifySubmit').val(SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_Submit%>'));
+                $('#spanLabelExpensifySubmit').text(prompt);
+                $('#divExpensifySomethingMissing').slideUp();
+                $('#divExpensifyReadySubmit').slideDown();
+            }
+        }
+
 
         var expensifyProcessingHalfway = false;
         var currentlyEditedRecordGuid = '';
@@ -278,28 +303,50 @@
                             <%=this.ProgressExpensifyFake.ClientID%>_fadeOut();
                         });
 
-                        // Display processed data
+                        // If there's no data at all, sort of abort and ask for a new file
 
-                        $('#expensifyDataGrid').datagrid({
-                            
-                            onBeginEdit: function(index,row){
-                                var ed = $(this).datagrid('getEditor',{index:index,field:'productid'});
-                                $(ed.target).combotree({
-                                    url: '...',
-                                    value: row.productid
-                                });
-                            },
-                            onEndEdit: function(index,row){
-                                var ed = $(this).datagrid('getEditor',{index:index,field:'productid'});
-                                row.productname = $(ed.target).combotree('getText');
-                            }
-                        });
+                        if (result.Data.length == 0)
+                        {
+                            // No data, so prepare for another upload
 
-                        // Fill in documents (hidden)
+                            $('#spanLabelExpensifySomethingMissing').text(SwarmopsJS.unescape('<%=this.Localized_Expensify_NoRecords%>'));
+                            $('#divExpensifySomethingMissing').show();
+                            $('#divExpensifyReadySubmit').hide();
+                            $('#divExpensifyUploadAnotherHeader').show();
+                            $('#divExpensifyUploadFile').show();
+                            $('#divExpensifyInstructions').hide();
+                            $('#divUploadExpensify').slideDown();
+                        }
+                        else
+                        {
 
-                        $('#divDocumentsHidden').html(result.Documents);
+                            // Else, display processed data
 
-                        displayExpensifyDataGrid(result.Data, result.Footer);
+                            $('#divExpensifySomethingMissing').hide();
+                            $('#divExpensifyReadySubmit').show();
+
+                            $('#spanLabelExpensifySomethingMissing').text(SwarmopsJS.unescape('<%=this.Localized_Expensify_NeedBudgetsForAll%>'));
+
+                            $('#expensifyDataGrid').datagrid({
+                                onBeginEdit: function(index, row) {
+                                    var ed = $(this).datagrid('getEditor', { index: index, field: 'productid' });
+                                    $(ed.target).combotree({
+                                        url: '...',
+                                        value: row.productid
+                                    });
+                                },
+                                onEndEdit: function(index, row) {
+                                    var ed = $(this).datagrid('getEditor', { index: index, field: 'productid' });
+                                    row.productname = $(ed.target).combotree('getText');
+                                }
+                            });
+
+                            // Fill in documents (hidden)
+
+                            $('#divDocumentsHidden').html(result.Documents);
+
+                            displayExpensifyDataGrid(result.Data, result.Footer);
+                        }
 
                     } else {
 
@@ -399,6 +446,18 @@
                         </thead>
                     </table>  
                     
+                    <div id="divExpensifySomethingMissing">
+                        <span id="spanLabelExpensifySomethingMissing">Need budgets for all</span>
+                    </div>
+                    
+                    <div id="divExpensifyReadySubmit" style="display:none">
+                        <div class="entryFields">
+                            <input type="button" class="buttonAccentColor NoInputFocus" id="buttonExpensifySubmit" value="Submit"/>
+                        </div>
+                        <div class="entryLabels">
+                            <span id="spanLabelExpensifySubmit">Ready to submit</span>
+                        </div>
+                    </div>
 
                 </div>
 

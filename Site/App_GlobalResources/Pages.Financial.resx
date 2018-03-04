@@ -710,4 +710,19 @@
     <value>(The amount must exclude any VAT specified!)</value>
     <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
   </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>All expense claims need a budget before submitting.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>No Expensify records to submit</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>Ready to submit one claim</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>Ready to submit {0} claims</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
 </root>

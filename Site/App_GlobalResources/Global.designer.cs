@@ -1519,6 +1519,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        internal static string Global_Submit {
+            get {
+                return ResourceManager.GetString("Global_Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to System.
         /// </summary>
         internal static string Global_System {

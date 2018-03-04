@@ -513,8 +513,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // TODO: Suggest initial budgets
 
-            // TODO: Once user has confirmed budgets, save expenses
-
             List<ExpensifyOutputRecord> outputRecords = new List<ExpensifyOutputRecord>();
 
             string docString =
@@ -622,6 +620,26 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
 
+        private static string FormatExpensifySubmitPrompt(List<ExpensifyRecord> recordList)
+        {
+            foreach (ExpensifyRecord record in recordList)
+            {
+                if (record.BudgetId == 0)
+                {
+                    return string.Empty;
+                }
+            }
+
+            if (recordList.Count == 1)
+            {
+                return Resources.Pages.Financial.FileExpenseClaim_Expensify_SubmitRecordSingle;
+            }
+
+            return String.Format(Resources.Pages.Financial.FileExpenseClaim_Expensify_SubmitRecordsSeveral,
+                recordList.Count);
+        }
+
+
         [WebMethod]
         public static AjaxCallExpensifyRecordResult ExpensifyRecordProceed(string masterGuid, string recordGuid,
             string amountString, string amountVatString, int budgetId, string description)
@@ -676,7 +694,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 ExistNext = (index < recordList.Count - 1 ? true : false),
                 Success = true,
                 DataUpdate = FormatExpensifyOutputRecords(recordList),
-                FooterUpdate = FormatExpensifyFooter (recordList)
+                FooterUpdate = FormatExpensifyFooter (recordList),
+                SubmitPrompt = FormatExpensifySubmitPrompt(recordList)
             };
 
         }
@@ -715,7 +734,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 ExistNext = (index < recordList.Count - 1 ? true : false),
                 Success = true,
                 DataUpdate = FormatExpensifyOutputRecords(recordList),
-                FooterUpdate = FormatExpensifyFooter(recordList)
+                FooterUpdate = FormatExpensifyFooter(recordList),
+                SubmitPrompt = FormatExpensifySubmitPrompt (recordList)
             };
 
         }
@@ -943,6 +963,16 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents); }
         }
+
+        public string Localized_Expensify_NeedBudgetsForAll
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_Expensify_NeedBudgetsForAll); }
+        }
+
+        public string Localized_Expensify_NoRecords
+        {
+            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_Expensify_NoRecordsLeft); }
+        }
     }
 
 
@@ -967,6 +997,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         public ExpensifyOutputRecord[] Data { get; set; }
         public ExpensifyOutputRecord[] Footer { get; set; }
         public string Documents { get; set; }
+        public string SubmitPrompt { get; set; }
     }
 
     public class AjaxCallExpensifyRecordResult : AjaxCallResult
@@ -981,7 +1012,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         public ExpensifyOutputRecord[] DataUpdate { get; set; }
         public ExpensifyOutputRecord[] FooterUpdate { get; set; }
-        public bool CanCommit { get; set; }
+        public string SubmitPrompt { get; set; }
     }
-
 }

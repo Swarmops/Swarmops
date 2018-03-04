@@ -943,11 +943,47 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All expense claims need a budget before submitting..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_NeedBudgetsForAll {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_NeedBudgetsForAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Expensify records to submit.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_NoRecordsLeft {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_NoRecordsLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expensify report&apos;s currency is.
         /// </summary>
         internal static string FileExpenseClaim_Expensify_ReportCurrency {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_ReportCurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready to submit one claim.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_SubmitRecordSingle {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_SubmitRecordSingle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready to submit {0} claims.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_SubmitRecordsSeveral {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_SubmitRecordsSeveral", resourceCulture);
             }
         }
         
