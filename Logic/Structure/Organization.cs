@@ -533,6 +533,8 @@ namespace Swarmops.Logic.Structure
             FinancialAccount.Create(this, "[LOC]Cost_OfficeEquipment", FinancialAccountType.Cost, officeMaster);
             FinancialAccount.Create(this, "[LOC]Cost_OfficeSupplies", FinancialAccountType.Cost, officeMaster);
 
+            FinancialAccount.Create(this, "[LOC]Cost_BusinessServices", FinancialAccountType.Cost, null);
+
             FinancialAccount.Create (this, "[LOC]Cost_Unforeseen", FinancialAccountType.Cost, null);
             FinancialAccount.Create (this, "[LOC]Cost_MarketingCampaigns", FinancialAccountType.Cost, null);
             FinancialAccount.Create (this, "[LOC]Cost_ResearchDevelopment", FinancialAccountType.Cost, null);
