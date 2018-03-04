@@ -372,7 +372,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 while (csvReader.Read())
                 {
                     ExpensifyRecord newRecord = new ExpensifyRecord();
-                    Int64 amountCents =
+                    Int64 amountExpensifyCents =
                         newRecord.AmountCents =
                         Formatting.ParseDoubleStringAsCents(csvReader.GetField(fieldMap[ExpensifyColumns.AmountFloat]),
                             CultureInfo.InvariantCulture);
@@ -418,7 +418,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                         if (amountNeedsTranslation)
                         {
-                            double vatRatio = vatOriginalCents/(double) amountCents;
+                            double vatRatio = vatOriginalCents/(double) amountExpensifyCents;
                             newRecord.VatCents = (Int64) (newRecord.AmountCents * vatRatio);
                         }
                         else
