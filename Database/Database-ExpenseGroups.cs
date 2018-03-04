@@ -19,7 +19,7 @@ namespace Swarmops.Database
         private const string expenseClaimGroupFieldSequence =
             " ExpenseClaimGroups.ExpenseClaimGroupId, ExpenseClaimGroups.CreatedDateTime, ExpenseClaimGroups.CreatedByPersonId, ExpenseClaimGroups.Open, ExpenseClaimGroupTypes.Name, " + // 0-4
             " ExpenseClaimGroups.ExpenseClaimGroupData " +  // 5
-            " FROM ExpenseClaimGroups JOIN ExpenseClaimGroupTypes ON (ExpenseGlaimGroupTypes.ExpenseClaimGroupTypeId=ExpenseClaimGroups.ExpenseClaimGroupTypeId) ";
+            " FROM ExpenseClaimGroups JOIN ExpenseClaimGroupTypes ON (ExpenseClaimGroupTypes.ExpenseClaimGroupTypeId=ExpenseClaimGroups.ExpenseClaimGroupTypeId) ";
 
         private static BasicExpenseClaimGroup ReadExpenseClaimGroupFromDataReader(DbDataReader reader)
         {
