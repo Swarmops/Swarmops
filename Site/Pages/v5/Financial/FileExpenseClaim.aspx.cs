@@ -610,9 +610,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             ExpensifyOutputRecord newRecord = new ExpensifyOutputRecord
             {
-                Amount = "<span class='weight-emphasis'>" + amountCentsTotal.ToString("N2") + "</span>",
-                AmountVat = "<span class='weight-emphasis'>" + amountCentsTotal.ToString("N2") + "</span>",
-                BudgetText = "<span class='weight-emphasis'>" + Resources.Global.Global_Total + "</span>"
+                Amount = "<span class='weight-more-emphasis'>" + amountCentsTotal.ToString("N2") + "</span>",
+                AmountVat = "<span class='weight-more-emphasis'>" + amountCentsTotal.ToString("N2") + "</span>",
+                BudgetText = "<span class='weight-more-emphasis'>" + Resources.Global.Global_Total + "</span>"
             };
 
             List<ExpensifyOutputRecord> listResult = new List<ExpensifyOutputRecord>();

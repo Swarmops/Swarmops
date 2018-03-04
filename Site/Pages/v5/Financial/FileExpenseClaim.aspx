@@ -208,7 +208,7 @@
             $('#expensifyDataGrid').datagrid('loadData', gridData);
 
             $('#expensifyDataGrid').datagrid('mergeCells', {
-                index: 1,
+                index: 0,
                 field: 'BudgetText',
                 colspan: 3,
                 type: 'footer'
