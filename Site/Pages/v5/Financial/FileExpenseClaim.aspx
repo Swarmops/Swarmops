@@ -110,6 +110,10 @@
                                 $('#divExpensifyUploadFile').show();
                                 $('#divExpensifyInstructions').hide();
                                 $('#divUploadExpensify').slideDown();
+                                setTimeout(function() {
+                                    $('#divExpensifyResultsGood').slideUp();
+                                }, 5000);
+
                             } else {
                                 displaySubmitPrompt(result.SubmitPrompt);
                             }
@@ -270,6 +274,8 @@
 
         function onExpensifyUpload() {
             $('#divExpensifyUploadFile').slideUp();
+            $('#divExpensifyResultsGood').hide();
+            <%=this.ProgressExpensify.ClientID%>_reset();
 
             SwarmopsJS.ajaxCall
                 ("/Pages/v5/Financial/FileExpenseClaim.aspx/InitializeExpensifyProcessing",
