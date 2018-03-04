@@ -134,7 +134,7 @@
                             $('#divExpensifyInstructions').hide();
                             $('#divUploadExpensify').slideDown();
                         } else {
-                            alertify.alert(result.DisplayMessage);
+                            alertify.alert("<strong>EXCEPTION THROWN:</strong><br/><br/>Please take a screenshot of this and log as a bug.<br/><br/>" + result.DisplayMessage);
                             console.log(result.DisplayMessage);
                         }
                     });

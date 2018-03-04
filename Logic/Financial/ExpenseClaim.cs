@@ -71,8 +71,17 @@ namespace Swarmops.Logic.Financial
                     transactionDescription = transactionDescription.Substring(0, 61) + "...";
                 }
 
+
+                DateTime expenseTxDate = expenseDate;
+                int ledgersClosedUntil = organization.Parameters.FiscalBooksClosedUntilYear;
+
+                if (ledgersClosedUntil >= expenseDate.Year)
+                {
+                    expenseTxDate = DateTime.UtcNow; // If ledgers are closed for the actual expense time, account now
+                }
+
                 FinancialTransaction transaction =
-                    FinancialTransaction.Create(organization.Identity, DateTime.Now,
+                    FinancialTransaction.Create(organization.Identity, expenseTxDate,
                         transactionDescription);
 
                 transaction.AddRow(organization.FinancialAccounts.DebtsExpenseClaims, -amountCents, claimer);
