@@ -536,6 +536,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 Success = true,
                 Data = FormatExpensifyOutputRecords(recordList),
+                Footer = FormatExpensifyFooter(recordList),
                 Documents = documentsAll
             };
 
@@ -596,6 +597,31 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
 
+        private static ExpensifyOutputRecord[] FormatExpensifyFooter(List<ExpensifyRecord> recordList)
+        {
+            Int64 amountCentsTotal =0;
+            Int64 vatCentsTotal =0;
+
+            foreach (ExpensifyRecord record in recordList)
+            {
+                amountCentsTotal += record.AmountCents;
+                vatCentsTotal += record.VatCents;
+            }
+
+            ExpensifyOutputRecord newRecord = new ExpensifyOutputRecord
+            {
+                Amount = "<span class='weight-emphasis'>" + amountCentsTotal.ToString("N2") + "</span>",
+                AmountVat = "<span class='weight-emphasis'>" + amountCentsTotal.ToString("N2") + "</span>",
+                BudgetText = "<span class='weight-emphasis'>" + Resources.Global.Global_Total + "</span>"
+            };
+
+            List<ExpensifyOutputRecord> listResult = new List<ExpensifyOutputRecord>();
+            listResult.Add(newRecord);
+
+            return listResult.ToArray();
+        }
+
+
         [WebMethod]
         public static AjaxCallExpensifyRecordResult ExpensifyRecordProceed(string masterGuid, string recordGuid,
             string amountString, string amountVatString, int budgetId, string description)
@@ -649,7 +675,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 Guid = recordList[index].Guid,
                 ExistNext = (index < recordList.Count - 1 ? true : false),
                 Success = true,
-                DataUpdate = FormatExpensifyOutputRecords(recordList)
+                DataUpdate = FormatExpensifyOutputRecords(recordList),
+                FooterUpdate = FormatExpensifyFooter (recordList)
             };
 
         }
@@ -687,7 +714,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 Guid = recordList[index].Guid,
                 ExistNext = (index < recordList.Count - 1 ? true : false),
                 Success = true,
-                DataUpdate = FormatExpensifyOutputRecords(recordList)
+                DataUpdate = FormatExpensifyOutputRecords(recordList),
+                FooterUpdate = FormatExpensifyFooter(recordList)
             };
 
         }
@@ -937,6 +965,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
     {
         public string ErrorType { get; set; }
         public ExpensifyOutputRecord[] Data { get; set; }
+        public ExpensifyOutputRecord[] Footer { get; set; }
         public string Documents { get; set; }
     }
 
@@ -951,6 +980,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         public bool ExistNext { get; set; }
 
         public ExpensifyOutputRecord[] DataUpdate { get; set; }
+        public ExpensifyOutputRecord[] FooterUpdate { get; set; }
         public bool CanCommit { get; set; }
     }
 

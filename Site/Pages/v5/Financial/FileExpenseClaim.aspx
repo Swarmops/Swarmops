@@ -54,7 +54,7 @@
                     function(result) {
                         if (result.Success) {
 
-                            displayExpensifyDataGrid(result.DataUpdate);
+                            displayExpensifyDataGrid(result.DataUpdate, result.FooterUpdate);
 
                             if (result.Guid.length > 1) // there's a new record
                             {
@@ -79,7 +79,7 @@
                         if (result.Success) {
                             // A record has been deleted. It is possible that a new one is displayed.
 
-                            displayExpensifyDataGrid(result.DataUpdate);
+                            displayExpensifyDataGrid(result.DataUpdate, result.FooterUpdate);
 
                             if (result.Guid.length > 1) // there's a new record
                             {
@@ -198,9 +198,21 @@
         }
 
 
-        function displayExpensifyDataGrid(data) {
+        function displayExpensifyDataGrid(rows, footer) {
 
-            $('#expensifyDataGrid').datagrid('loadData', data);
+            var gridData = {
+                rows: rows,
+                footer: footer
+            };
+
+            $('#expensifyDataGrid').datagrid('loadData', gridData);
+
+            $('#expensifyDataGrid').datagrid('mergeCells', {
+                index: 1,
+                field: 'BudgetText',
+                colspan: 3,
+                type: 'footer'
+            });
 
             // Bind to enable document viewing
 
@@ -287,7 +299,7 @@
 
                         $('#divDocumentsHidden').html(result.Documents);
 
-                        displayExpensifyDataGrid(result.Data);
+                        displayExpensifyDataGrid(result.Data, result.Footer);
 
                     } else {
 
