@@ -134,7 +134,7 @@
                             $('#divExpensifyInstructions').hide();
                             $('#divUploadExpensify').slideDown();
                         } else {
-                            alertify.dialog(result.DisplayMessage);
+                            alertify.alert(result.DisplayMessage);
                             console.log(result.DisplayMessage);
                         }
                     });
