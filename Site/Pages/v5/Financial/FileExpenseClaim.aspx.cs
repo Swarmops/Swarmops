@@ -372,7 +372,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 while (csvReader.Read())
                 {
                     ExpensifyRecord newRecord = new ExpensifyRecord();
-                    newRecord.AmountCents =
+                    Int64 amountCents =
+                        newRecord.AmountCents =
                         Formatting.ParseDoubleStringAsCents(csvReader.GetField(fieldMap[ExpensifyColumns.AmountFloat]),
                             CultureInfo.InvariantCulture);
                     newRecord.OriginalCurrency =
@@ -381,6 +382,20 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         Formatting.ParseDoubleStringAsCents(
                             csvReader.GetField(fieldMap[ExpensifyColumns.OriginalCurrencyAmountFloat]),
                             CultureInfo.InvariantCulture);
+                    newRecord.Timestamp = DateTime.Parse(csvReader.GetField(fieldMap[ExpensifyColumns.Timestamp]));
+
+                    bool amountNeedsTranslation = false;
+
+                    if (newRecord.OriginalCurrency.Identity != organization.Currency.Identity)
+                    {
+                        amountNeedsTranslation = true;
+
+                        // May or may not be the same as Expensify calculated
+
+                        newRecord.AmountCents =
+                            new Money(newRecord.OriginalAmountCents, newRecord.OriginalCurrency, newRecord.Timestamp)
+                                .ToCurrency(organization.Currency).Cents;
+                    }
 
                     newRecord.Description = csvReader.GetField(fieldMap[ExpensifyColumns.Merchant]);
 
@@ -393,14 +408,23 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     newRecord.CategoryStandard = csvReader.GetField(fieldMap[ExpensifyColumns.CategoryStandard]);
                     newRecord.ReceiptUrl = csvReader.GetField(fieldMap[ExpensifyColumns.ReceiptUrl]);
 
-                    newRecord.Timestamp = DateTime.Parse(csvReader.GetField(fieldMap[ExpensifyColumns.Timestamp]));
                     newRecord.Guid = Guid.NewGuid().ToString();
 
                     if (vatEnabled)
                     {
-                        newRecord.VatCents =
+                        Int64 vatOriginalCents =
                             Formatting.ParseDoubleStringAsCents(csvReader.GetField(fieldMap[ExpensifyColumns.VatFloat]),
                                 CultureInfo.InvariantCulture);
+
+                        if (amountNeedsTranslation)
+                        {
+                            double vatRatio = vatOriginalCents/(double) amountCents;
+                            newRecord.VatCents = (Int64) (newRecord.AmountCents * vatRatio);
+                        }
+                        else
+                        {
+                            newRecord.VatCents = vatOriginalCents;
+                        }
                     }
 
                     recordList.Add(newRecord);
