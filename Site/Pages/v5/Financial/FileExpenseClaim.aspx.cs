@@ -579,7 +579,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                     if (account.ParentIdentity != 0)
                     {
-                        newRecord.BudgetText = account.Parent.Name + " &gt;&gt; " + account.Name;
+                        newRecord.BudgetText = account.Parent.Name + " &raquo; " + account.Name;
                     }
                 }
                 else

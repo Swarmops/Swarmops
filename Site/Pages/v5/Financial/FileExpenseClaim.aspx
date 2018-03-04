@@ -54,7 +54,7 @@
                     function(result) {
                         if (result.Success) {
 
-                            $('#expensifyDataGrid').datagrid('loadData', result.DataUpdate);
+                            displayExpensifyDataGrid(result.DataUpdate);
 
                             if (result.Guid.length > 1) // there's a new record
                             {
@@ -79,7 +79,7 @@
                         if (result.Success) {
                             // A record has been deleted. It is possible that a new one is displayed.
 
-                            $('#expensifyDataGrid').datagrid('loadData', result.DataUpdate);
+                            displayExpensifyDataGrid(result.DataUpdate);
 
                             if (result.Guid.length > 1) // there's a new record
                             {
@@ -198,6 +198,26 @@
         }
 
 
+        function displayExpensifyDataGrid(data) {
+
+            $('#expensifyDataGrid').datagrid('loadData', data);
+
+            // Bind to enable document viewing
+
+            SwarmopsJS.fancyBoxInit('.FancyBox_Gallery');
+
+            $(".LocalIconViewDoc").click(function () {
+                $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("firstDocId") + "']").first().click();
+            });
+
+            // Hook in edit-expense popup
+
+            $(".LocalEditExpenseClaim").click(function () {
+                editExpensifyClaim($(this).attr("data-guid"));
+            });
+        }
+
+
         var expensifyProcessingHalfway = false;
         var currentlyEditedRecordGuid = '';
 
@@ -262,25 +282,12 @@
                                 row.productname = $(ed.target).combotree('getText');
                             }
                         });
-                        $('#expensifyDataGrid').datagrid('loadData', result.Data);
 
                         // Fill in documents (hidden)
 
                         $('#divDocumentsHidden').html(result.Documents);
 
-                        // Enable document viewing
-
-                        SwarmopsJS.fancyBoxInit('.FancyBox_Gallery');
-
-                        $(".LocalIconViewDoc").click(function () {
-                            $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("firstDocId") + "']").first().click();
-                        });
-
-                        // Hook in edit-expense popup
-
-                        $(".LocalEditExpenseClaim").click(function() {
-                            editExpensifyClaim($(this).attr("data-guid"));
-                        });
+                        displayExpensifyDataGrid(results.Data);
 
                     } else {
 
