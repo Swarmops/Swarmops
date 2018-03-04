@@ -102,7 +102,7 @@ namespace Swarmops.Database
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "personId", personId);
+                AddParameterWithName(command, "createdByPersonId", personId);
                 AddParameterWithName(command, "dateTime", utcNow);
                 AddParameterWithName(command, "expenseClaimGroupType", groupType.ToString());
                 AddParameterWithName(command, "expenseClaimGroupData", groupData);
