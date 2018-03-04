@@ -122,7 +122,7 @@
             });
 
             $('#buttonExpensifySubmit').click(function() {
-                SwarmopsJS.ajaxCall (
+                SwarmopsJS.ajaxCall(
                     '/Pages/v5/Financial/FileExpenseClaim.aspx/ExpensifyRecordsetCommit',
                     { masterGuid: '<%=this.UploadExpensify.GuidString%>' },
                     function(result) {
@@ -138,6 +138,7 @@
                             console.log(result.DisplayMessage);
                         }
                     });
+            });
 
         });  // end of doc.ready
 
