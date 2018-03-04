@@ -287,7 +287,7 @@
 
                         $('#divDocumentsHidden').html(result.Documents);
 
-                        displayExpensifyDataGrid(results.Data);
+                        displayExpensifyDataGrid(result.Data);
 
                     } else {
 
