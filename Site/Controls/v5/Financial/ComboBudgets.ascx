@@ -56,23 +56,26 @@
     var comboBudgetsDropInit = comboBudgetsDropInit || SwarmopsJS.unescape('<%=this.Localized_DropInit%>');  // declare or redeclare
 
     function <%=this.ClientID %>_val(newValue) {
-        if (newValue === undefined) {
+        if (newValue === undefined)
+        {
             // getter
             return $('#<%=this.ClientID %>_DropBudgets').combotree('getValue');
+        } else {
+            // setter
+
+            if (newValue > 0) 
+            {
+                $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', newValue);
             } else {
-                // setter
-
-                if (newValue > 0) {
-                    $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', newValue);
-                } else {
-                    $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', {
-                        id: 0,
-                        text: comboBudgetsDropInit
-                    });
-                }
-
+                $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', 0);
+                $('#<%=this.ClientID %>_SpanBudgets span.combo input.textbox-text').val(comboBudgetsDropInit);
             }
         }
+
+    }
+
+    
+
 
 
 
