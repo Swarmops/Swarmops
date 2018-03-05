@@ -672,7 +672,7 @@
     <value>Posición</value>
   </data>
   <data name="Error_DatabaseConcurrency" xml:space="preserve">
-    <value>Parece que otro usuario te golpeó en esta operación; la base de datos cambió mientras mirabas. Examina las condiciones modificadas y vuelve a intentar lo que intentabas hacer.</value>
+    <value>Parece que otro usuario se te adelantó en esta operación; la base de datos cambió mientras mirabas. Examina las condiciones modificadas y vuelve a intentar lo que tratabas de hacer.</value>
   </data>
   <data name="Swarm_TypeName" xml:space="preserve">
     <value>Escriba un nombre...</value>
@@ -955,10 +955,29 @@
     <value>(cancelado, anulado, puesto a cero)</value>
     <comment>Used when something is determined invalid</comment>
   </data>
-  
-  
-  
-  
-  
-  
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Subir</value>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>Resultados de Subida del Archivo</value>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>IVA</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Impuesto al Valor Agregado</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>Fecha</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>DDD mm, AAAA</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Enviar</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
 </root>

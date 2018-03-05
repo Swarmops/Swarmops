@@ -130,10 +130,10 @@
     <value>Atestiguar reclamaciones de gastos #{0}</value>
   </data>
   <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
-    <value>Establecer la dirección de pago de bitcoin</value>
+    <value>Establecer dirección de pago de Bitcoin Cash</value>
   </data>
   <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
-    <value>Establezca su dirección de bitcoin para pagos desde [InstallationName](los espacios en la dirección son correctos, pero no son obligatorios):</value>
+    <value>Por favor configure su dirección de Bitcoin Cash para pagos desde [InstallationName] (empieza con "bitcoincash"):</value>
   </data>
   <data name="Payout_Many" xml:space="preserve">
     <value>Liquidar {0} pagos</value>

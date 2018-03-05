@@ -364,4 +364,8 @@
     <value>crwdns6556554:0crwdne6556554:0</value>
     <comment>Note the plural form</comment>
   </data>
+  <data name="Cost_BusinessServices" xml:space="preserve">
+    <value>crwdns6556780:0crwdne6556780:0</value>
+    <comment>Like paperwork services, fruit delivery, travel booking, anything that isn't strictly office maintenance</comment>
+  </data>
 </root>

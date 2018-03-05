@@ -129,12 +129,8 @@
   <data name="Attest_ExpenseClaim_One" xml:space="preserve">
     <value>Patunayan ang mga kahilingan ng gastos #{0}</value>
   </data>
-  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
-    <value>Itakda ang payout address ng bitcoin</value>
-  </data>
-  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
-    <value>Mangyaring itakda ang iyong bitcoin address para sa payout mula sa [InstallationName] (puwang sa address na ito ay ok ngunit hindi kinakailangan):</value>
-  </data>
+  
+  
   <data name="Payout_Many" xml:space="preserve">
     <value>Ayusin ang {0} na mga payout</value>
     <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>

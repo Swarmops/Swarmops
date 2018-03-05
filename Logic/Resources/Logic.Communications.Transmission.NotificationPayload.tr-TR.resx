@@ -117,59 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
-    <value>Bitcoin ödeme adresinize ödeme yapmaya çalışılırken, adresiniz ([BitcoinAddress]) ödeme altyapı motoru tarafından reddedildi. Bu yüzden bu adres profilinden silindi.
-
-[ExternalUrl]'daki [InstallationName] hesabınıza giriş yapın ve yeni bir bitcoin ödeme adresi ayarlayın.</value>
-  </data>
+  
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
     <value>[[OrganizationName] - EYLEM ÖĞESİ] Geçersiz bitcoin ödeme adresi</value>
   </data>
-  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
-    <value>Bitcoin ödeme adresinizi [BitcoinOldAddress]'dan [BitcoinAddress]'e değiştirdiniz. Bir güvenlik önlemi olarak bütün ödemeler önümüzdeki 48 saat boyunca karantinaya alınmıştır.
-
-Eğer ödeme adresiniz DEĞİŞTİRMEDİYSENİZ ve bir güvenlik ihlali olduysa, lütfen hemen bu linke tıklayarak hesabınızı kilitleyin: [LockdownLink]
-
-Eğer o linke tıklarsanız hesabınız onay isteği olmadan hemen kilitlenecektir. Fakat, eğer ödeme adresi değişikliğini siz istediyseniz, her şey yolunda ve sizin açınızdan herhangi bir işlem yapılması gerekmemektedir.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Bitcoin ödeme adresi değişti</value>
-  </data>
-  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
-    <value>[OrganizationName]'de ödeme talebi bekleyen paranız var ama bir bitcoin ödeme adresi belirlememişsiniz.
-
-Lütfen, [ExternalUrl]'deki [InstallationName] hesabınıza giriş yapın ve ödeme adresinizi belirlemek için bağlantıyı takip edin - yapılacak kalemler listesinde bulabilirsiniz.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Lütfen bitcoin ödeme adresinizi belirleyin</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
-    <value>Bir bitcoin ödeme adresi belirlediniz: [BitcoinAddress]. Bir güvenlik tedbiri olarak, bütün ödemeler önümüzdeki 48 saat boyunca karantinaya alınmıştır ve bu süre sonunda yeni adrese gönderilmeye devam edeceklerdir.
-
-Eğer bu öneme adresini siz belirlemediyseniz (daha fazla güvenlik için yukarıdaki adresi tekrar kontrol etmek faydalı olabilir), hemen [OrganizationName] ile iletişime geçiniz.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] tarafından bir bitcoin adresi ayarlandı. Ödemeler 48 saat sonra, karantina süresi geçtiğinde başlayacaktır.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] [ConcernedPersonName] bir bitcoin ödeme adresi belirledi</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Bitcoin ödeme adresi belirlendi</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
     <value>[OrganizationName]'nın bitcoin hotwallet'i biraz önce toplamı [CurrencyCode][AmountFloat]([BitcoinAmountFloat] microbitcoin veya "bit") eden [PaymentCount] otomatik ödeme yaptı.</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Hotwallet Ödemesi: [CurrencyCode][AmountFloat]</value>
   </data>
-  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>Bitcoin adresinize ([BitcoinAddress]) biraz önce [OrganizationName] tarafından [BitcoinAmountFloat] mikrobitcoin ("bit") şunun için gönderildi:
-
-[EmbeddedPreformattedText]
-
-Zaten gönderimi cüzdanınızda görüyor olmalısınız ve bir saat içinde harcanabilirlik kazanacaktır ( 6 normal onay).</value>
-  </data>
+  
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Fonları size [CurrencyCode][AmountFloat] ödeme yaptı</value>
   </data>
@@ -179,16 +145,8 @@ Zaten gönderimi cüzdanınızda görüyor olmalısınız ve bir saat içinde ha
   <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACİL] Bitcoin özel anahtar hatsı; ödeme yapılamıyor</value>
   </data>
-  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
-    <value>Swarmops, [CurrencyCode][AmountNeededFloat] ile ödeme yapmayı deniyor, fakat bitcoin hotwalletında sadece [CurrencyCode][AmountWalletFloat] mevcut. Swarmops şu aşamada daha fazla ödeme yapamıyor.
-
-Lütfen HEMEN hotwalletınıza en azından gerekli miktar kadar para yükleyiniz - finansal hotwallet işlemlerinin devam edebilmesi için [AmountMissingMicrocoinsFloat] mikrobitcoin ("bit") daha gereklidir.
-
-Swarmops, denemeye devam edecek ve bu işlem başarılı olana kadar bu bildirimleri göndermeye devam edecektir.</value>
-  </data>
-  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - EYLEM ÖĞESİ] Bitcoin hotwalleti ödemeler için yetersiz - hemen para yükleyin</value>
-  </data>
+  
+  
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık nakit avans talebiniz bütçe sahibi tarafından onaylanmıştır. Artık size ödemeye devam edecektir.</value>
   </data>

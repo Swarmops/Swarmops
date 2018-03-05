@@ -971,4 +971,8 @@
     <value>crwdns6556765:0crwdne6556765:0</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
   </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>crwdns6556781:0crwdne6556781:0</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
 </root>

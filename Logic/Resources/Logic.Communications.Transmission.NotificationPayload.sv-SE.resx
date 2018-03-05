@@ -132,13 +132,15 @@
   
   
   
-  
-  
-  
-  
-  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ÅTGÄRD KRÄVS] Bitcoinarbetsplånbok otillräcklig - fyll på omedelbart</value>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Pengar utbetalda till dig: [CurrencyCode] [AmountFloat]</value>
   </data>
+  
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - BRÅDSKAR] Privatnyckelfel Bitcoin; kan inte göra utbetalningar</value>
+  </data>
+  
+  
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>Ditt önskade kontantförskott för [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har attesterats av budgetens ägare. Kontantförskottet går nu vidare till utbetalning till dig.</value>
   </data>
@@ -269,7 +271,9 @@ Logga in på [InstallationName] på [ExternalUrl]Financial/AttestCosts för att 
     <value>--
 Detta mail skickades till [Addressee] från [OrganizationName]. Om du inte vill ha dessa notiser längre, logga på [InstallationName] på [ExternalUrl] och ändra dina notifieringsinställningar.</value>
   </data>
-  
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Ditt meddelande har lagts i kö för leverans och mottagarlistan är upprättad. Ditt mail kommer att skickas till eller försökas skickas till [RecipientCount] personer i [GeographyName] i [OrganizationName].</value>
+  </data>
   <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Mottagarlista upprättad för [GeographyName]: [RecipientCount]</value>
   </data>

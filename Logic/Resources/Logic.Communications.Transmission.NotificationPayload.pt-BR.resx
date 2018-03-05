@@ -117,59 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
-    <value>Numa tentativa de pagamento para o seu endereço de pagamento bitcoin, o endereço ([BitcoinAddress]) foi rejeitado pelo sistema de pagamento subjacente por ser inválido. Foi, portanto, apagado do seu perfil.
-
-Por favor entre em [InstallationName] em [ExternalUrl] e defina um novo endereço de pagamento bitcoin.</value>
-  </data>
+  
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ÍTEM DE ACÇÃO] Endereço de pagamento em bitcoins deficiente</value>
   </data>
-  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
-    <value>Alterou o seu endereço de pagamento bitcoin de [BitcoinOldAddress] para [BitcoinAddress]. Como medida de segurança, todos os pagamentos estão de quarentena durante as próximas 48 horas.
-
-Se NÃO alterou o endereço de pagamento e houve uma falha de segurança, por favor carregue neste link imediatamente para bloquear a sua conta: [LockdownLink]
-
-Se clicar nesse link, a sua conta irá ser bloqueada imediatamente sem pedidos de confirmação. Contudo, se pediu a alteração do endereço de pagamento, tudo está bem e não é necessária nenhuma ação adicional da sua parte.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] O endereço de pagamento Bitcoin mudou</value>
-  </data>
-  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
-    <value>Tem fundos à espera de pagamento em [OrganizationName], mas ainda não definiu um endereço de pagamento bitcoin.
-
-Por favor entre em [InstallationName] em [ExternalUrl] e siga o link para definir o seu endereço de pagamento - irá encontrá-lo na lista de tarefas por fazer.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Por favor, defina o seu endereço de pagamento bitcoin</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
-    <value>Definiu um endereço de pagamento bitcoin: [BitcoinAddress]. Como medida de precaução, todos os pagamentos estão de quarentena durante as próximas 48 horas, e depois irão ser pagos no novo endereço.
-
-Caso não tenha definido este endereço de pagamento (vale a pena verificar novamente o endereço acima indicado para maior segurança), contacte [OrganizationName] imediatamente.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
-    <value>Um endereço de pagamento em bitcoins foi definido por [ConcernedPersonName]. Os pagamentos começarão dentro de 48 horas, quando terminado o período de quarentena.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] [ConcernedPersonName] definiu um endereço de pagamento em bitcoins</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Endereço de pagamento Bitcoin definido</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
     <value>A conta corrente bitcoin de [OrganizationName] acabou de fazer [PaymentCount] pagamento(s) automático(s) totalizando [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoins ou "bits").</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Pagamento conta corrente: [CurrencyCode] [AmountFloat]</value>
   </data>
-  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>[BitcoinAmountFloat] microbitcoins ("bits") acabaram de ser transferidos para o endereço da sua conta de bitcoins ([BitcoinAddress]) por [OrganizationName] devido a:
-
-[EmbeddedPreformattedText]
-
-A transação deverá já ser visível na sua conta, e os fundos deverão poder ser gastos dentro de aproximadamente uma hora (seis confirmações normais).</value>
-  </data>
+  
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Montante pago a si: [CurrencyCode] [AmountFloat]</value>
   </data>
@@ -179,16 +145,8 @@ A transação deverá já ser visível na sua conta, e os fundos deverão poder 
   <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
     <value>[[OrganizationName] - URGENTE] Erro na chave privada de Bitcoin; impossível efetuar pagamentos</value>
   </data>
-  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
-    <value>O Swarmops está a tentar efetuar pagamentos de [CurrencyCode] [AmountNeededFloat], mas apenas [CurrencyCode] [AmountWalletFloat] estão disponíveis na conta corrente bitcoin. O Swarmops é incapaz de fazer mais pagamentos neste momento.
-
-Por favor transfira mais fundos para a conta corrente IMEDIATAMENTE pelo menos até atingir a quantia necessária - são necessários [AmountMissingMicrocoinsFloat] microbitcoins ("bits") adicionais para retomar a execução de operações financeiras na conta corrente.
-
-O Swarmops irá continuar a tentar, e continuará a enviar estas notificações enquanto não tenha sucesso.</value>
-  </data>
-  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ITEM DE AÇÃO] Conta corrente bitcoin com saldo insuficiente - encher imediatamente</value>
-  </data>
+  
+  
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>O seu pedido de adiantamento de dinheiro feito a [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], relativo a [RequestPurpose], foi certificado pelo proprietário do orçamento. O pagamento irá ser agora efetuado a si.</value>
   </data>

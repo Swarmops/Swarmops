@@ -129,12 +129,8 @@
   <data name="Attest_ExpenseClaim_One" xml:space="preserve">
     <value>Atestar reivindicação de despesa {0}</value>
   </data>
-  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
-    <value>Definir o endereço de pagamento em bitcoins</value>
-  </data>
-  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
-    <value>Por favor defina o seu endereço para pagamentos em bitcoin para [InstallationName] (o endereço pode conter espaços em braco, mas não são obrigatórios):</value>
-  </data>
+  
+  
   <data name="Payout_Many" xml:space="preserve">
     <value>Liquidar {0} pagamentos</value>
     <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>

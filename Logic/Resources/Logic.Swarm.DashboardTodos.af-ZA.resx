@@ -130,10 +130,10 @@
     <value>crwdns6553637:0#{0}crwdne6553637:0</value>
   </data>
   <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
-    <value>crwdns6556393:0crwdne6556393:0</value>
+    <value>crwdns6556788:0crwdne6556788:0</value>
   </data>
   <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
-    <value>crwdns6556394:0[InstallationName]crwdne6556394:0</value>
+    <value>crwdns6556789:0[InstallationName]crwdne6556789:0</value>
   </data>
   <data name="Payout_Many" xml:space="preserve">
     <value>crwdns6553638:0{0}crwdne6553638:0</value>
