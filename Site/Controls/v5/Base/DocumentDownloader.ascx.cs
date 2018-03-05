@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Swarmops.Frontend.Controls.Base
 {
-    public partial class DocumentDownloader : DataV5Base
+    public partial class DocumentDownloader : ControlV5Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {
