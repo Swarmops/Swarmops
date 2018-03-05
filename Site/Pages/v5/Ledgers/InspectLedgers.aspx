@@ -5,6 +5,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <Swarmops5:ExternalScripts Package="FancyBox" ID="ScriptFancyBox" runat="server"/>
+    <Swarmops5:DocumentDownloader ID="Downloader" runat="server"/>
     
     <script type="text/javascript">
         $(document).ready(function() {

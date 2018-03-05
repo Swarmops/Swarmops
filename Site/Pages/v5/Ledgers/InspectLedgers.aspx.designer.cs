@@ -22,6 +22,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::Swarmops.Frontend.Controls.Meta.ExternalScripts ScriptFancyBox;
         
         /// <summary>
+        /// Downloader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.DocumentDownloader Downloader;
+        
+        /// <summary>
         /// LiteralErrorAddRowSelectAccount control.
         /// </summary>
         /// <remarks>
