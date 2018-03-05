@@ -3,6 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <Swarmops5:ExternalScripts Package="FancyBox" runat="server" ID="ScriptFancyBox"/>
+    <Swarmops5:DocumentDownloader ID="DownloadSupport" runat="server"/>
 
 	<script type="text/javascript">
 
@@ -16,7 +17,11 @@
 	                $('span.loadingHeader').hide();
               
 	                $(".LocalViewDox").click(function () {
-	                    $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("baseid") + "']").first().click();
+	                    $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("data-docid") + "']").first().click();
+	                });
+
+	                $(".LocalDownloadDox").click(function() {
+	                    downloadDocument($(this).attr("data-docid"), $(this).attr("data-docname"));
 	                });
 
 	            }

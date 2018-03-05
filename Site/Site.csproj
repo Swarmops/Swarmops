@@ -128,6 +128,13 @@
     <Compile Include="Controls\v5\Base\AjaxDropDown.ascx.designer.cs">
       <DependentUpon>AjaxDropDown.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\v5\Base\DocumentDownloader.ascx.cs">
+      <DependentUpon>DocumentDownloader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Base\DocumentDownloader.ascx.designer.cs">
+      <DependentUpon>DocumentDownloader.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\v5\Base\ProgressBarFake.ascx.cs">
       <DependentUpon>ProgressBarFake.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -646,6 +653,13 @@
     <Compile Include="Pages\v5\Security\SetCurrentOrganization.aspx.designer.cs">
       <DependentUpon>SetCurrentOrganization.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Support\DownloadUploadedDocument.aspx.cs">
+      <DependentUpon>DownloadUploadedDocument.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Support\DownloadUploadedDocument.aspx.designer.cs">
+      <DependentUpon>DownloadUploadedDocument.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Support\StreamUpload.aspx.cs">
       <DependentUpon>StreamUpload.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -761,6 +775,7 @@
     <Content Include="Controls\v5\Base\AjaxToggleSlider.ascx" />
     <Content Include="Controls\v5\Base\ComboGeographies.ascx" />
     <Content Include="Controls\v5\Base\AjaxDropDown.ascx" />
+    <Content Include="Controls\v5\Base\DocumentDownloader.ascx" />
     <Content Include="Controls\v5\Base\DropDown.ascx" />
     <Content Include="Controls\v5\Base\FileUpload.ascx" />
     <Content Include="Controls\v5\Base\MainMenu.ascx" />
@@ -817,6 +832,9 @@
     <Content Include="Images\Flags\tr-24px.png" />
     <Content Include="Images\Flags\tr-64px.png" />
     <Content Include="Images\Icons\expensify-icon-official.png" />
+    <Content Include="Images\Icons\iconshock-download-240px.png" />
+    <Content Include="Images\Icons\iconshock-download-96px.png" />
+    <Content Include="Images\Icons\iconshock-download-hot-240px.png" />
     <Content Include="Images\Icons\iconshock-groups-docs-lists-64px.png" />
     <Content Include="Images\Icons\iconshock-invoice-256px.png" />
     <Content Include="Images\Icons\iconshock-pdf-128px.png" />
@@ -1215,6 +1233,7 @@
     <Content Include="Pages\v5\Security\DatabaseUpgradeRequired.aspx" />
     <Content Include="Pages\v5\Security\Json-AccessibleOrganizationsTree.aspx" />
     <Content Include="Pages\v5\Security\SetCurrentOrganization.aspx" />
+    <Content Include="Pages\v5\Support\DownloadUploadedDocument.aspx" />
     <Content Include="Pages\v5\Support\StreamUpload.aspx" />
     <Content Include="Pages\v5\Swarm\AddPerson.aspx" />
     <Content Include="Pages\v5\Swarm\Json-ListFindPeople.aspx" />
