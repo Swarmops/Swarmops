@@ -79,7 +79,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [BitcoinAmountFloat] microbitcoin (&quot;bits&quot;) was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
+        ///   Looks up a localized string similar to [BitcoinAmountFloat] microbitcoin (&quot;bits&quot;) was just transferred to your Bitcoin Cash address ([BitcoinAddress]) by [OrganizationName] for the following:
         ///
         ///[EmbeddedPreformattedText]
         ///
@@ -119,11 +119,11 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the bitcoin hotwallet. Swarmops is unable to make further payments at this time.
+        ///   Looks up a localized string similar to Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the Bitcoin Cash hotwallet. Swarmops is unable to make further payments at this time.
         ///
         ///Please top up the hotwallet IMMEDIATELY to at least the needed amount - an additional [AmountMissingMicrocoinsFloat] microbitcoin (&quot;bits&quot;) is required to resume financial hotwallet operations.
         ///
-        ///Swarmops will keep trying and will keep sending these notifications as long as it has not succeed [rest of string was truncated]&quot;;.
+        ///Swarmops will keep trying and will keep sending these notifications as long as it has not su [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Bitcoin_Shortage_Critical_Body {
             get {
@@ -132,7 +132,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Bitcoin hotwallet insufficient for payments - top up immediately.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Bitcoin Cash hotwallet insufficient for payments - top up immediately.
         /// </summary>
         internal static string Bitcoin_Shortage_Critical_Subject {
             get {
@@ -141,7 +141,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to On attempting a payout to your bitcoin payout address, the address ([BitcoinAddress]) was rejected by the underlying payout engine as invalid. It has therefore been cleared from your profile.
+        ///   Looks up a localized string similar to On attempting a payout to your Bitcoin Cash payout address, the address ([BitcoinAddress]) was rejected by the underlying payout engine as invalid. It has therefore been cleared from your profile.
         ///
         ///Please log on to [InstallationName] at [ExternalUrl] and set a new bitcoin payout address..
         /// </summary>
@@ -161,11 +161,11 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have changed your bitcoin payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantied for the next 48 hours.
+        ///   Looks up a localized string similar to You have changed your Bitcoin Cash payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours.
         ///
         ///If you did NOT change the payout address and there has been a security breach, please click this link immediately to lock down your account: [LockdownLink]
         ///
-        ///If you click that link, your account will be locked down immediately without confirmation requests. However, if you did request the payout address change, all is fine and no further a [rest of string was truncated]&quot;;.
+        ///If you click that link, your account will be locked down immediately without confirmation requests. However, if you did request the payout address change, all is fine and no fur [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BitcoinPayoutAddress_Changed_Body {
             get {
@@ -174,7 +174,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin payout address changed.
+        ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin Cash payout address changed.
         /// </summary>
         internal static string BitcoinPayoutAddress_Changed_Subject {
             get {
@@ -183,7 +183,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have funds waiting for payout at [OrganizationName], but you have not set a bitcoin payout address.
+        ///   Looks up a localized string similar to You have funds waiting for payout at [OrganizationName], but you have not set a Bitcoin Cash payout address.
         ///
         ///Please log on to [InstallationName] at [ExternalUrl] and follow the link to set your payout address - you will find it in the list of to-do items..
         /// </summary>
@@ -194,7 +194,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Please set your bitcoin payout address.
+        ///   Looks up a localized string similar to [[OrganizationName]] Please set your Bitcoin Cash payout address.
         /// </summary>
         internal static string BitcoinPayoutAddress_PleaseSet_Subject {
             get {
@@ -203,7 +203,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have set a bitcoin payout address: [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours, and will proceed to be paid out to the new address after that.
+        ///   Looks up a localized string similar to You have set a Bitcoin Cash payout address: [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours, and will proceed to be paid out to the new address after that.
         ///
         ///If you did not set this payout address (it may be worth double checking the address above for added security), contact [OrganizationName] immediately..
         /// </summary>
@@ -214,7 +214,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A bitcoin payout address was set by [ConcernedPersonName]. Payouts will begin after 48 hours when the quarantine period has elapsed..
+        ///   Looks up a localized string similar to A Bitcoin Cash payout address was set by [ConcernedPersonName]. Payouts will begin after 48 hours when the quarantine period has elapsed..
         /// </summary>
         internal static string BitcoinPayoutAddress_Set_OfficerNotify_Body {
             get {
@@ -223,7 +223,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] [ConcernedPersonName] has set a bitcoin payout address.
+        ///   Looks up a localized string similar to [[OrganizationName]] [ConcernedPersonName] has set a Bitcoin Cash payout address.
         /// </summary>
         internal static string BitcoinPayoutAddress_Set_OfficerNotify_Subject {
             get {
@@ -232,7 +232,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin payout address set.
+        ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin Cash payout address set.
         /// </summary>
         internal static string BitcoinPayoutAddress_Set_Subject {
             get {
