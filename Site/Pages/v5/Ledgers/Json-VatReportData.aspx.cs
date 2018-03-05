@@ -96,7 +96,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 if (documents.Count > 0)
                 {
-                    element += String.Format(",\"dox\":\"" + hasDoxString + "\"", transaction.Identity, documents[0].Identity, CurrentOrganization.Name + " - " + report.DescriptionShort + " - " + Resources.Global.Financial_TransactionIdShort + " " + transaction.Identity.ToString("N0"));
+                    element += String.Format(",\"dox\":\"" + hasDoxString + "\"", transaction.Identity, documents[0].Identity, CurrentOrganization.Name + " - " + report.Description + " - " + Resources.Global.Financial_TransactionIdShort + " " + transaction.Identity.ToString("N0"));
                 }
 
                 if (include)
