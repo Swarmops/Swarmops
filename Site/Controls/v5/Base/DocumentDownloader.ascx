@@ -5,7 +5,7 @@
 <script>
     
     function downloadDocument(docId, docName) {
-        document.getElementById('<%=this.ClientID%>_iframe').src = '/Pages/v5/Support/DownloadUploadedDocument.aspx?DocId=docId&DocName=' + encodeURIComponent(docName);
+        document.getElementById('<%=this.ClientID%>_iframe').src = '/Pages/v5/Support/DownloadUploadedDocument.aspx?DocId=' + docId + '&DocName=' + encodeURIComponent(docName);
     };
 
 </script>
