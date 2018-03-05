@@ -59,6 +59,11 @@
                     $('img.LocalIconInspect').click(function() {
                         onInspectTransaction($(this).attr("data-txid"));
                     });
+
+                    $(".LocalDownloadDox").click(function() {
+                        downloadDocument($(this).attr("data-docid"), $(this).attr("data-docname"));
+                    });
+
                 }
             });
 
