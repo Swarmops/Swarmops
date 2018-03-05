@@ -209,6 +209,6 @@ Site5/*
 *.csproj.[Dd]ot[Ss]ettings
 
 #These cultures botch debugging :(
-/Site/App_GlobalResources/ha-HG/*
+Site/App_GlobalResources/ha-HG/*
 
 #Packages provided by NuGet
