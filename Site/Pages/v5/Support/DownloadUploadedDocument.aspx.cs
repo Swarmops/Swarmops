@@ -239,7 +239,7 @@ namespace Swarmops.Pages.v5.Support
                 }
             }
 
-            Response.AppendHeader("Content-Type", contentType);
+            Response.ContentType = contentType;
             Response.AppendHeader("Content-Disposition", "attachment; filename=\"" + documentDownloadName + "\"");
             Response.TransmitFile (Document.StorageRoot + legacyMarker + serverFileName);
         }
