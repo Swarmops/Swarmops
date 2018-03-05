@@ -11,7 +11,7 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Pages.v5.Support
 {
-    public partial class DownloadUploadedDocument : DataV5Base
+    public partial class DownloadUploadedDocument : ControlV5Base
     {
         protected void Page_Load (object sender, EventArgs e)
         {
