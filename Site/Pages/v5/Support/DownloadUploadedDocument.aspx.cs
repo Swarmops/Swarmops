@@ -21,6 +21,13 @@ namespace Swarmops.Pages.v5.Support
             string documentDownloadName = Request.QueryString["DocName"];
             documentDownloadName = documentDownloadName.Replace("\"", "'");
 
+            if (documentDownloadName.EndsWith(" 2_1"))
+            {
+                // Mystery bug
+
+                documentDownloadName = documentDownloadName.Substring(0, documentDownloadName.Length - 4);
+            }
+
             Document document = Document.FromIdentity (documentId);
 
             //Orgid is needed to safely verify permission
@@ -230,7 +237,7 @@ namespace Swarmops.Pages.v5.Support
                 }
             }
 
-            Response.ContentType = contentType + "; filename=" + document.ClientFileName;
+            Response.ContentType = contentType;
             Response.AppendHeader("Content-Disposition", "attachment; filename=\"" + documentDownloadName + "\"");
             Response.TransmitFile (Document.StorageRoot + legacyMarker + serverFileName);
         }
