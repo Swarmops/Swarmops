@@ -61,10 +61,6 @@
                         onInspectTransaction($(this).attr("data-txid"));
                     });
 
-                    $(".LocalDownloadDox").click(function() {
-                        downloadDocument($(this).attr("data-docid"), $(this).attr("data-docname"));
-                    });
-
                 }
             });
 
@@ -112,6 +108,11 @@
                         $("img.LocalIconGeneralViewDoc").click(function() {
                             $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("txId") + "']").first().click();
                         });
+
+                        $(".LocalDownloadDox").click(function() {
+                            downloadDocument($(this).attr("data-docid"), $(this).attr("data-docname"));
+                        });
+
                     }
                 }
             );
