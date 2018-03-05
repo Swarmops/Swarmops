@@ -210,61 +210,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.fil-PH.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\ha-HG\Controls.Swarm.ha-HG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Controls.Swarm.ha-HG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\ha-HG\Global.ha-HG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Global.ha-HG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\ha-HG\Menu5.ha-HG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Menu5.ha-HG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\ha-HG\Pages.Admin.ha-HG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Admin.ha-HG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\ha-HG\Pages.Comms.ha-HG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Comms.ha-HG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\ha-HG\Pages.Financial.ha-HG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Financial.ha-HG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\ha-HG\Pages.Governance.ha-HG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Governance.ha-HG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\ha-HG\Pages.Ledgers.ha-HG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Ledgers.ha-HG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\ha-HG\Pages.Public.ha-HG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Public.ha-HG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\ha-HG\Pages.Security.ha-HG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Security.ha-HG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\ha-HG\Pages.Swarm.ha-HG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Swarm.ha-HG.resx</DependentUpon>
-    </Compile>
     <Compile Include="App_GlobalResources\he-IL\Controls.Swarm.he-IL.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -594,61 +539,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.tr-TR.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\yo-NG\Controls.Swarm.yo-NG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Controls.Swarm.yo-NG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\yo-NG\Global.yo-NG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Global.yo-NG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\yo-NG\Menu5.yo-NG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Menu5.yo-NG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\yo-NG\Pages.Admin.yo-NG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Admin.yo-NG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\yo-NG\Pages.Comms.yo-NG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Comms.yo-NG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\yo-NG\Pages.Financial.yo-NG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Financial.yo-NG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\yo-NG\Pages.Governance.yo-NG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Governance.yo-NG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\yo-NG\Pages.Ledgers.yo-NG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Ledgers.yo-NG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\yo-NG\Pages.Public.yo-NG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Public.yo-NG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\yo-NG\Pages.Security.yo-NG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Security.yo-NG.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\yo-NG\Pages.Swarm.yo-NG.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Swarm.yo-NG.resx</DependentUpon>
     </Compile>
     <Compile Include="Automation\Json-MasterPersonEditPaymentHistory.aspx.cs">
       <DependentUpon>Json-MasterPersonEditPaymentHistory.aspx</DependentUpon>
@@ -4922,52 +4812,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\yo-NG\Controls.Swarm.yo-NG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Controls.Swarm.yo-NG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\yo-NG\Global.yo-NG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Global.yo-NG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\yo-NG\Menu5.yo-NG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Menu5.yo-NG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\yo-NG\Pages.Admin.yo-NG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Admin.yo-NG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\yo-NG\Pages.Comms.yo-NG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Comms.yo-NG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\yo-NG\Pages.Financial.yo-NG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Financial.yo-NG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\yo-NG\Pages.Governance.yo-NG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Governance.yo-NG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\yo-NG\Pages.Ledgers.yo-NG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Ledgers.yo-NG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\yo-NG\Pages.Public.yo-NG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Public.yo-NG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\yo-NG\Pages.Security.yo-NG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Security.yo-NG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\yo-NG\Pages.Swarm.yo-NG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Swarm.yo-NG.designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="App_GlobalResources\tr-TR\Controls.Swarm.tr-TR.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Controls.Swarm.tr-TR.designer.cs</LastGenOutput>
@@ -5241,52 +5085,6 @@
     <Content Include="App_GlobalResources\he-IL\Pages.Swarm.he-IL.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Swarm.he-IL.designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\ha-HG\Controls.Swarm.ha-HG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Controls.Swarm.ha-HG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\ha-HG\Global.ha-HG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Global.ha-HG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\ha-HG\Menu5.ha-HG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Menu5.ha-HG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\ha-HG\Pages.Admin.ha-HG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Admin.ha-HG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\ha-HG\Pages.Comms.ha-HG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Comms.ha-HG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\ha-HG\Pages.Financial.ha-HG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Financial.ha-HG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\ha-HG\Pages.Governance.ha-HG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Governance.ha-HG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\ha-HG\Pages.Ledgers.ha-HG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Ledgers.ha-HG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\ha-HG\Pages.Public.ha-HG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Public.ha-HG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\ha-HG\Pages.Security.ha-HG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Security.ha-HG.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\ha-HG\Pages.Swarm.ha-HG.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Swarm.ha-HG.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
