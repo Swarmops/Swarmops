@@ -130,10 +130,10 @@
     <value>Attest expense claim #{0}</value>
   </data>
   <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
-    <value>Set bitcoin payout address</value>
+    <value>Set Bitcoin Cash payout address</value>
   </data>
   <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
-    <value>Please set your bitcoin address for payouts from [InstallationName] (spaces in the address are ok but not required):</value>
+    <value>Please set your Bitcoin Cash address for payouts from [InstallationName] (starts with "bitcoincash"):</value>
   </data>
   <data name="Payout_Many" xml:space="preserve">
     <value>Settle {0} payouts</value>
