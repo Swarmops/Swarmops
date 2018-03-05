@@ -179,7 +179,7 @@ namespace Swarmops.Pages.v5.Support
             {
                 contentType = MediaTypeNames.Application.Pdf;
 
-                if (!serverFileNameLower.EndsWith(".pdf"))
+                if (serverFileNameLower.EndsWith(".png"))
                 {
                     // Converted PDF, so cut filename to raw GUID length
 
@@ -190,12 +190,12 @@ namespace Swarmops.Pages.v5.Support
             else if (clientFileNameLower == (".png"))
             {
                 contentType = "image/png"; // why isn't this in MediaTypeNames?
-                documentDownloadName += ".pdf";
+                documentDownloadName += ".png";
             }
             else if (clientFileNameLower.EndsWith (".jpg") || clientFileNameLower.EndsWith(".jpeg"))
             {
                 contentType = MediaTypeNames.Image.Jpeg;
-                documentDownloadName += ".pdf";
+                documentDownloadName += ".jpg";
             }
             else
             {
