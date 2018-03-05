@@ -116,7 +116,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     string description = transaction.Description;
 
                     string hasDoxString =
-                        "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" txId='{0}' class='LocalIconGeneralViewDoc' style='cursor:pointer' height='20' width='20' />";
+                        "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" data-txid='{0}' class='LocalIconGeneralViewDoc' style='cursor:pointer' height='20' width='20' />";
 
                     string actionHtml = string.Empty;
 

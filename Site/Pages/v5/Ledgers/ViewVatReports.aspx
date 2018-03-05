@@ -17,7 +17,7 @@
 	                $('span.loadingHeader').hide();
               
 	                $(".LocalViewDox").click(function () {
-	                    $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("data-docid") + "']").first().click();
+	                    $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("data-txid") + "']").first().click();
 	                });
 
 	                $(".LocalDownloadDox").click(function() {
