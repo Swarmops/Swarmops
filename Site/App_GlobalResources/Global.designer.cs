@@ -520,6 +520,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Ledger.
+        /// </summary>
+        internal static string Financial_GeneralLedger {
+            get {
+                return ResourceManager.GetString("Financial_GeneralLedger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoices.
         /// </summary>
         internal static string Financial_InboundInvoices {

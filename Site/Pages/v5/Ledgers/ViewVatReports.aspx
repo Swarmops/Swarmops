@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeBehind="ViewVatReports.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.ViewVatReports" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeBehind="ViewVatReports.aspx.cs" CodeFile="ViewVatReports.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.ViewVatReports" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <Swarmops5:ExternalScripts Package="FancyBox" runat="server" ID="ScriptFancyBox"/>
+    <Swarmops5:DocumentDownloader ID="DownloadSupport" runat="server"/>
 
 	<script type="text/javascript">
 
@@ -16,7 +17,11 @@
 	                $('span.loadingHeader').hide();
               
 	                $(".LocalViewDox").click(function () {
-	                    $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("baseid") + "']").first().click();
+	                    $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("data-txid") + "']").first().click();
+	                });
+
+	                $(".LocalDownloadDox").click(function() {
+	                    downloadDocument($(this).attr("data-docid"), $(this).attr("data-docname"));
 	                });
 
 	            }

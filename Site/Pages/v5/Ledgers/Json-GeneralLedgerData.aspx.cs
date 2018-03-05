@@ -116,7 +116,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     string description = transaction.Description;
 
                     string hasDoxString =
-                        "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" txId='{0}' class='LocalIconGeneralViewDoc' style='cursor:pointer' height='20' width='20' />";
+                        "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" data-txid='{0}' class='LocalViewDox' style='cursor:pointer' height='20' width='20' />" +
+                        "<img src='/Images/Icons/iconshock-download-240px.png' onmouseover=\"this.src='/Images/Icons/iconshock-download-hot-240px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-download-240px.png';\" data-docid='{1}' data-docname=\"{2}\" class='LocalDownloadDox' style='cursor:pointer' height='18' width='18' />";
 
                     string actionHtml = string.Empty;
 
@@ -130,7 +131,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                 doc.Identity, doc.ClientFileName.Replace("\"", "'"), transaction.Identity);
                         }
 
-                        actionHtml = String.Format(hasDoxString, row.FinancialTransactionId.ToString(CultureInfo.InvariantCulture)) + "<span class='hiddenDocLinks'>" + actionHtml + "</span>";
+                        actionHtml = String.Format(hasDoxString, row.FinancialTransactionId.ToString(CultureInfo.InvariantCulture), documents[0].Identity, CurrentOrganization.Name + " - " + Resources.Global.Financial_GeneralLedger + " " + transaction.DateTime.ToShortDateString() + " - " + Resources.Global.Financial_TransactionIdShort + transaction.OrganizationSequenceId.ToString("N0")) + "<span class='hiddenDocLinks'>" + actionHtml + "</span>";
                     }
 
                     result.Append("{" + String.Format(

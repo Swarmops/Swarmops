@@ -5,6 +5,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <Swarmops5:ExternalScripts Package="FancyBox" ID="ScriptFancyBox" runat="server"/>
+    <Swarmops5:DocumentDownloader ID="Downloader" runat="server"/>
     
     <script type="text/javascript">
         $(document).ready(function() {
@@ -52,13 +53,14 @@
                     // Enable various actions on icon
 
                     $('img.LocalIconFlag').click(function() {
-                        inspectingTransactionId = $(this).attr("txId");
+                        inspectingTransactionId = $(this).attr("data-txid");
                         onFlagTransaction("Add Tx Id here");
                     });
 
                     $('img.LocalIconInspect').click(function() {
-                        onInspectTransaction($(this).attr("txId"));
+                        onInspectTransaction($(this).attr("data-txid"));
                     });
+
                 }
             });
 
@@ -106,6 +108,11 @@
                         $("img.LocalIconGeneralViewDoc").click(function() {
                             $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("txId") + "']").first().click();
                         });
+
+                        $(".LocalDownloadDox").click(function() {
+                            downloadDocument($(this).attr("data-docid"), $(this).attr("data-docname"));
+                        });
+
                     }
                 }
             );
