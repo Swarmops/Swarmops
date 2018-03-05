@@ -175,24 +175,22 @@ namespace Swarmops.Pages.v5.Support
             string clientFileNameLower = document.ClientFileName.ToLowerInvariant().Trim();
             string serverFileNameLower = document.ServerFileName.ToLowerInvariant().Trim();
 
-            if (clientFileNameLower.EndsWith (".pdf"))
+            // The "Filename.Contains" here instead of "Filename.EndsWith" is because page counts are added to file names
+
+            if (serverFileNameLower.EndsWith(".png") && clientFileNameLower.Contains(".pdf"))
             {
+                // Converted PDF, so cut filename to raw GUID length
+
+                serverFileName = serverFileName.Substring(0, serverFileName.Length - "-0001.png".Length);
+                documentDownloadName += ".pdf";
                 contentType = MediaTypeNames.Application.Pdf;
-
-                if (serverFileNameLower.EndsWith(".png"))
-                {
-                    // Converted PDF, so cut filename to raw GUID length
-
-                    serverFileName = serverFileName.Substring(0, serverFileName.Length - "-0001.png".Length);
-                    documentDownloadName += ".pdf";
-                }
             }
-            else if (clientFileNameLower == (".png"))
+            else if (clientFileNameLower.EndsWith(".png"))
             {
                 contentType = "image/png"; // why isn't this in MediaTypeNames?
                 documentDownloadName += ".png";
             }
-            else if (clientFileNameLower.EndsWith (".jpg") || clientFileNameLower.EndsWith(".jpeg"))
+            else if (clientFileNameLower.EndsWith(".jpg") || clientFileNameLower.EndsWith(".jpeg"))
             {
                 contentType = MediaTypeNames.Image.Jpeg;
                 documentDownloadName += ".jpg";

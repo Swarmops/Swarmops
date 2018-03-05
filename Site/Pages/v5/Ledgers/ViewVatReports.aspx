@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeBehind="ViewVatReports.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.ViewVatReports" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeBehind="ViewVatReports.aspx.cs" CodeFile="ViewVatReports.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.ViewVatReports" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
