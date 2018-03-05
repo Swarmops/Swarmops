@@ -90,9 +90,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     include = true;
                 }
 
-                Documents documents = transaction.Dependency != null
-                    ? Documents.ForObject(transaction.Dependency)
-                    : Documents.ForObject(transaction);
+                Documents documents = Documents.ForObject(transaction.Dependency ?? transaction);
 
                 if (documents.Count > 0)
                 {

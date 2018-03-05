@@ -52,12 +52,12 @@
                     // Enable various actions on icon
 
                     $('img.LocalIconFlag').click(function() {
-                        inspectingTransactionId = $(this).attr("txId");
+                        inspectingTransactionId = $(this).attr("data-txid");
                         onFlagTransaction("Add Tx Id here");
                     });
 
                     $('img.LocalIconInspect').click(function() {
-                        onInspectTransaction($(this).attr("txId"));
+                        onInspectTransaction($(this).attr("data-txid"));
                     });
                 }
             });

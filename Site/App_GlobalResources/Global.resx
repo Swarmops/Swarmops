@@ -982,4 +982,7 @@
     <value>Submit</value>
     <comment>As in "Submit this data for processing"</comment>
   </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>General Ledger</value>
+  </data>
 </root>
