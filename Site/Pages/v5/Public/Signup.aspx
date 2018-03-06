@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Public.Signup" CodeFile="Signup.aspx.cs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Public.Signup" CodeFile="Signup.aspx.cs" CodeBehind="Signup.aspx.cs" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -112,6 +112,10 @@
 
         .entryFieldsAdmin, .entryLabelsAdmin {
             font-size: 16px;
+        }
+
+        .enableAskParticipantStreet {
+            display: none;
         }
 
 
@@ -309,9 +313,12 @@
     	        }
 
     	        isValid = ValidateTextField('#<%= TextCity.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorCity%>")) && isValid;
-    	        isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorStreet%>")) && isValid;
-    	        isValid = ValidateTextField('#<%= TextMail.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorMail%>")) && isValid;
+	            isValid = ValidateTextField('#<%= TextMail.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorMail%>")) && isValid;
     	        isValid = ValidateTextField('#<%= TextName.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorName%>")) && isValid; // TODO: Actually validate geography?
+
+	            if (askParticipantStreet) {
+	                isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorStreet%>")) && isValid;
+	            }
 
     	        if (isValid) {
 
@@ -373,6 +380,9 @@
     	        // above code some day to a common file between this file
     	        // and Swarm / Add.  (TODO.)
 
+    	        if (askParticipantStreet) {
+	                $('.enableAskParticipantStreet').show();
+	            }
 
     	        $('#wizard').smartWizard({
     	            transitionEffect: 'fade',
@@ -565,6 +575,7 @@
 
     	    var suppressChecks = false;
     	    var selectedPositions = {};
+	        var askParticipantStreet = <%=this.Organization.Parameters.AskParticipantStreet? "true": "false"%>;
 
     	</script>
 	
@@ -632,7 +643,7 @@
   			        </ul>
   			        <div id="step-1">	
                         <h2><asp:Label ID="LabelWelcomeHeader" runat="server" /></h2>
-                        <p>This is the organization's custom welcome text. It has not yet been written; it is set in Admin / Org Settings.</p><br/><br/>
+			              <p><asp:Literal ID="LiteralFirstPageSignup" runat="server"/></p><br/><br/>
                     </div>
   			        <div id="step-2">
   			            <div class="entryFieldsAdmin">
@@ -640,8 +651,8 @@
                             <div class="stacked-input-control"><asp:DropDownList runat="server" ID="DropCountries"/></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextMail" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPhone" /></div>
-                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
-                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div>
+                            <div class="enableAskParticipantStreet"><div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
+                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div></div>
                             <div class="stacked-input-control"><div class="elementFloatFar"><asp:TextBox runat="server" ID="TextPostal" />&thinsp;<asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-text" style="width: 22px; overflow-x: hidden"><span id="spanCountryPrefix">XX</span>--</div></div>
                             <div class="stacked-input-control"><span class="stacked-text" id="spanDetectedGeo">...</span></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
@@ -652,8 +663,8 @@
                             <asp:Label ID="LabelCountry" runat="server" /><br />
                             <asp:Label ID="LabelMail" runat="server" /><br />
                             <asp:Label ID="LabelPhone" runat="server" /><br />
-                            <asp:Label ID="LabelStreet1" runat="server" /><br />
-                            <asp:Label ID="LabelStreet2" runat="server" /><br />
+                            <div class="enableAskParticipantStreet"><asp:Label ID="LabelStreet1" runat="server" /><br />
+                            <asp:Label ID="LabelStreet2" runat="server" /><br /></div>
                             <span id="spanLabelPostal"><asp:Label ID="LabelPostalCode" runat="server" />,&nbsp;</span><asp:Label runat="server" ID="LabelCity" /><br />
                             <span id="SpanGeoDetected"><asp:Label ID="LabelGeographyDetected" runat="server" /></span><span id="SpanGeoSelect" style="display: none"><asp:Label ID="LabelSelectGeography" runat="server" Text="XYZ Select Geography" /></span><br />
                             <asp:Label ID="LabelDateOfBirth" runat="server" /><br />
@@ -703,7 +714,7 @@
   			        <div id="step-6">
   			            <div id="divStep6NoPayment">
                           <h2><asp:Label ID="LabelFinalizeSignupHeader" runat="server" /></h2>
-                          <p>This is the organization-specific text shown for Signup Finalization. It is set in Admin / Org Settings. When the new person presses Finish, they will be entered into the organization, logged on, and sent to the Dashboard as a Beginner user.</p>
+			                  <p><asp:Literal ID="LiteralLastPageSignup" runat="server"/></p>
   			            </div>
                           <div id="divStep6Payment" style="display:none"><!-- todo --></div>
                     </div>

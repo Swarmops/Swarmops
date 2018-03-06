@@ -19,7 +19,7 @@ namespace Resources.Pages {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option or rebuild the Visual Studio project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "11.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Public {
@@ -133,6 +133,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are submitting an Application for a {0} with {1}. There are no fees related to submitting the Application as such..
+        /// </summary>
+        internal static string Signup_ApplicationApproval {
+            get {
+                return ResourceManager.GetString("Signup_ApplicationApproval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applying for a {0} in {1}.
+        /// </summary>
+        internal static string Signup_ApplyingFor {
+            get {
+                return ResourceManager.GetString("Signup_ApplyingFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome! This is the &lt;em&gt;Dashboard,&lt;/em&gt; where you can access internal functionality of {0}. You will get more information in mail shortly.&lt;br/&gt;&lt;br/&gt;
         ///
         ///If you volunteered for taking formal responsibility, somebody (probably also a volunteer, like yourself) will contact you to discuss more about the opportunities available..
@@ -140,6 +158,33 @@ namespace Resources.Pages {
         internal static string Signup_DashboardMessage {
             get {
                 return ResourceManager.GetString("Signup_DashboardMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is the organization&apos;s custom welcome text. It has not yet been written; it is set in Admin / Org Settings..
+        /// </summary>
+        internal static string Signup_DefaultFirstPageText {
+            get {
+                return ResourceManager.GetString("Signup_DefaultFirstPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is the organization-specific text shown for Signup Finalization. It is set in Admin / Org Settings. When the new person presses Finish, they will be entered into the organization, logged on, and sent to the Dashboard as a Beginner user.
+        /// </summary>
+        internal static string Signup_DefaultLastPageText {
+            get {
+                return ResourceManager.GetString("Signup_DefaultLastPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is the organization&apos;s short sidebar info. It is set in Administration / Org Settings..
+        /// </summary>
+        internal static string Signup_DefaultSidebarText {
+            get {
+                return ResourceManager.GetString("Signup_DefaultSidebarText", resourceCulture);
             }
         }
         
@@ -401,6 +446,15 @@ namespace Resources.Pages {
         internal static string Signup_Todo_Complete {
             get {
                 return ResourceManager.GetString("Signup_Todo_Complete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swarmops has not yet implemeted support for this fee structure..
+        /// </summary>
+        internal static string Signup_Unsupported {
+            get {
+                return ResourceManager.GetString("Signup_Unsupported", resourceCulture);
             }
         }
         
