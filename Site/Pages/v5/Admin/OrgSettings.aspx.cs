@@ -148,7 +148,7 @@ namespace Swarmops.Frontend.Pages.Admin
             switches.ParticipantFinancials = org.ParticipantFinancialsEnabled;
             switches.PaypalAccountAddress = org.PaypalAccountMailAddress;
 
-            participation.ApplicationQualifyingScore = org.Parameters.ApplicationQualifyingScore;
+            participation.ApplicationQualifyingScore = org.Parameters.ApplicationQualifyingScore.ToString("N0");
             participation.AskParticipantStreet = org.Parameters.AskParticipantStreet;
             participation.Duration = org.Parameters.ParticipationDuration;
             participation.Entry = org.Parameters.ParticipationEntry;
@@ -600,7 +600,7 @@ namespace Swarmops.Frontend.Pages.Admin
         {
             public string Entry { get; set; }
             public string Duration { get; set; }
-            public int ApplicationQualifyingScore { get; set; }
+            public string ApplicationQualifyingScore { get; set; }
             public bool AskParticipantStreet { get; set; }
         }
 

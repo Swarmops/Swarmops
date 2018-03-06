@@ -59,6 +59,7 @@
 
             if (orgSettings.Participation.Entry == "ApplicationApproval") {
                 $('.enableApplicationField').show();
+                <%=this.TextApplicationScoreQualify.ClientID%>_initialize(orgSettings.ParticipationApplicationQualifyingScore);
             }
 
             /* Messaging settings */
