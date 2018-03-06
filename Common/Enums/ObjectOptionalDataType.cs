@@ -422,6 +422,16 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// Document identity of an organization's square logo - also usable for circle-type avatars
         /// </summary>
-        OrgLogoSquare
+        OrgLogoSquare,
+
+        OrgAskParticipantStreet,
+        OrgParticipationEntry,
+        OrgParticipationDuration,
+        OrgSidebarShortInfo,
+        OrgSignupFirstPage,
+        OrgSignupLastPage,
+        OrgApplicationCompleteMail,
+        OrgParticipationAcceptedMail,
+        OrgApplicationQualifyingScore
     }
 }

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Admin.OrgSettings" CodeBehind="OrgSettings.aspx.cs" CodeFile="OrgSettings.aspx.cs" %>
 <%@ Import Namespace="Swarmops.Frontend" %>
-<%@ Register tagPrefix="Swarmops5" tagName="FileUpload" src="~/Controls/v5/Base/FileUpload.ascx"  %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 
@@ -30,34 +30,51 @@
 
         function initializeSettings(orgSettings) {
             console.log(orgSettings);
-            <%=this.ToggleBitcoinCold.ClientID%>_initialize(orgSettings.AccountBitcoinCold);
-            <%=this.ToggleBitcoinHot.ClientID%>_initialize(orgSettings.AccountBitcoinHot);
-            <%=this.TogglePaypal.ClientID%>_initialize(orgSettings.AccountPaypal);
-            <%=this.ToggleForex.ClientID%>_initialize(orgSettings.AccountsForex);
-            <%=this.ToggleVat.ClientID%>_initialize(orgSettings.AccountsVat);
-            <%=this.ToggleOpenFinancials.ClientID%>_initialize(orgSettings.ParticipantFinancials);
 
-            $("#<%=this.TextPaypalAccountAddress.ClientID%>_TextInput").val(orgSettings.PaypalAccountAddress);
+            /* Switches */
 
-            if (orgSettings.AccountBitcoinHot) {
-                /* $('.bitcoinHotField').show(); save for later */
-            }
+            <%=this.ToggleBitcoinCold.ClientID%>_initialize(orgSettings.Switches.AccountBitcoinCold);
+            <%=this.ToggleBitcoinHot.ClientID%>_initialize(orgSettings.Switches.AccountBitcoinHot);
+            <%=this.TogglePaypal.ClientID%>_initialize(orgSettings.Switches.AccountPaypal);
+            <%=this.ToggleForex.ClientID%>_initialize(orgSettings.Switches.AccountsForex);
+            <%=this.ToggleVat.ClientID%>_initialize(orgSettings.Switches.AccountsVat);
+            <%=this.ToggleOpenFinancials.ClientID%>_initialize(orgSettings.Switches.ParticipantFinancials);
 
-            if (orgSettings.AccountPaypal) {
+            $("#<%=this.TextPaypalAccountAddress.ClientID%>_TextInput").val(orgSettings.Switches.PaypalAccountAddress);
+
+            if (orgSettings.Switches.AccountPaypal) {
                 $('.paypalAccountField').show();
             }
 
-            if (orgSettings.AccountsVat) {
+            if (orgSettings.Switches.AccountsVat) {
                 $('.enableVatField').show();
-                <%=this.DropVatReportFrequency.ClientID%>_val(orgSettings.VatReportFrequency);
+                <%=this.DropVatReportFrequency.ClientID%>_val(orgSettings.Switches.VatReportFrequency);
             }
+
+            /* Participation settings */
+
+            <%=this.ToggleAskStreet.ClientID%>_intialize(orgSettings.Participation.AskParticipantStreet);
+            <%=this.DropParticipationDuration.ClientID%>_val(orgSettings.Participation.Duration);
+            <%=this.DropParticipationDuration.ClientID%>_val(orgSettings.Participation.Entry);
+
+            /* Messaging settings */
+
+            <%=this.TextApplicationCompleteMail.ClientID%>_initialize(orgSettings.Messages.ApplicationCompleteMail);
+            <%=this.TextParticipationAcceptedMail.ClientID%>_initialize(orgSettings.Messages.ParticipationAcceptedMail);
+            <%=this.TextShortOrgInfo.ClientID%>_initialize(orgSettings.Messages.SidebarOrgInfo);
+            <%=this.TextSignupFirstPage.ClientID%>_initialize(orgSettings.Messages.SignupFirstPage);
+            <%=this.TextSignupLastPage.ClientID%>_initialize(orgSettings.Messages.SignupLastPage);
+
+            /* Regulatory crap */
 
             $('#<%=this.TextGovtRegistrationId.ClientID%>_TextInput').val(orgSettings.GovernmentRegistrationId);
             $('#<%=this.DropTaxAuthority.ClientID%>').val(orgSettings.TaxAuthority);
             $('#<%=this.TextTaxPaymentOcr.ClientID%>_TextInput').val(orgSettings.TaxPaymentOcr);
 
-            $('#<%=this.TextOpenLedgersDomain.ClientID%>_TextInput').val(orgSettings.OpenLedgersDomain);
-            $('#<%=this.TextVanityDomain.ClientID%>_TextInput').val(orgSettings.VanityDomain);
+            /* Premium stuff */
+
+            <%=this.TextOpenLedgersDomain.ClientID%>_initialize(orgSettings.OpenLedgersDomain);
+            <%=this.TextVanityDomain.ClientID%>_initialize(orgSettings.VanityDomain);
         }
 
         var suppressSwitchResponse = false;
@@ -93,6 +110,14 @@
                 $('.enableVatField').show();
             } else {
                 $('.enableVatField').hide();
+            }
+        }
+
+        function onChangeApplicationEnable(newValue) {
+            if (newValue != "Application") {
+                $(".enableApplicationField").show();
+            } else {
+                $(".enableApplicationField").hide();
             }
         }
 
@@ -132,6 +157,8 @@
         .bitcoinHotField { display: none; }
 
         .enableVatField { display: none; }
+
+        .enableApplicationField { display: none; }
 
         .CheckboxContainer {
             float: right;
@@ -175,9 +202,10 @@
         <div title="<img src='/Images/Icons/iconshock-contacts-64px.png' />">
             <h2>Participant policy</h2>
             <div class="entryFields">
-                <Swarmops5:DropDown ID="DropMembersWhen" CssClass="DropTemp" runat="server"/>
+                <Swarmops5:AjaxDropDown ID="DropParticipationEntry" CssClass="DropTemp" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/DropDownChanged" OnClientChange="onChangeApplicationEnable" Cookie="ParticipationEntry" runat="server"/>
+                <div class="enableApplicationField"><Swarmops5:AjaxTextBox ID="TextApplicationScoreQualify" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="ApplicationQualifyingScore" runat="server"/></div>
                 <Swarmops5:DropDown ID="DropMembersWhere" CssClass="DropTemp" runat="server"/>
-                <Swarmops5:DropDown ID="DropMembershipDuration" CssClass="DropTemp" runat="server"/>
+                <Swarmops5:AjaxDropDown ID="DropParticipationDuration" CssClass="DropTemp" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/DropDownChanged" Cookie="ParticipationDuration"  runat="server"/>
                 <Swarmops5:DropDown ID="DropMembersChurn" CssClass="DropTemp" runat="server"/>
                 <div class="stacked-input-control"><asp:TextBox ID="TextMembershipCost" runat="server" CssClass="alignRight" Text="0" /></div>
                 <div class="stacked-input-control"><asp:TextBox ID="TextRenewalCost" runat="server" CssClass="alignRight" Text="0" /></div>
@@ -185,9 +213,11 @@
                 <Swarmops5:DropDown ID="DropRenewalsAffect" CssClass="DropTemp" runat="server"/>
                 <Swarmops5:DropDown ID="DropRenewalReminder" CssClass="DropTemp" runat="server"/>
                 <Swarmops5:DropDown ID="DropMemberNumber" runat="server" />
+                <Swarmops5:AjaxToggleSlider ID="ToggleAskStreet" runat="server" Cookie="AskParticipantStreet" Label="Street" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelParticipationEntry" runat="server" /><br/>
+                <div class="enableApplicationField"></div>Application Score required to qualify<br/></div>
                 <asp:Label ID="LabelParticipationOrg" runat="server" /><br/>
                 <asp:Label ID="LabelParticipationDuration" runat="server" /><br/>
                 <asp:Label ID="LabelParticipationChurn" runat="server" /><br/>
@@ -197,6 +227,24 @@
                 <asp:Label ID="LabelRenewalsAffect" runat="server" /><br/>
                 <asp:Label ID="LabelRenewalReminder" runat="server" /><br/>
                 <asp:Label ID="LabelMemberNumber" runat="server" /><br />
+                Ask for participant's street address?
+            </div>
+        </div>
+        <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' />">
+            <h2>Welcome messages (paste long messages here)</h2>
+            <div class="entryFields">
+                <Swarmops5:AjaxTextBox ID="TextShortOrgInfo" runat="server" Cookie="SidebarOrgInfo" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />
+                <Swarmops5:AjaxTextBox ID="TextSignupFirstPage" runat="server" Cookie="SignupFirstPage" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />
+                <Swarmops5:AjaxTextBox ID="TextSignupLastPage" runat="server" Cookie="SignupLastPage" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />
+                <div class="enableApplicationField"><Swarmops5:AjaxTextBox ID="TextApplicationCompleteMail" runat="server" Cookie="ApplicationCompleteMail" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  /></div>
+                <Swarmops5:AjaxTextBox ID="TextParticipationAcceptedMail" runat="server" Cookie="ParticipationAcceptedMail" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />
+            </div>
+            <div class="entryLabels">
+                Sidebar short organization info<br/>
+                Self-signup first page<br/>
+                Self-signup last page<br/>
+                <div class="enableApplicationField">Application complete mail<br/></div>
+                Citizenship complete mail<br/>
             </div>
         </div>
         <div title="<img src='/Images/Icons/iconshock-colorswatch-64px.png' />">
@@ -222,6 +270,7 @@
                 Renewal letter [HTML]<br/>
             </div>
         </div>
+        <!--
         <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' />">
             <h2>Mail transmission settings</h2>
             <div class="entryFields">
@@ -238,7 +287,7 @@
                 User Notification sender<br/>
                 SMTP server (default if blank)
             </div>
-        </div>
+        </div>-->
         <div title="<img src='/Images/Icons/iconshock-buildings-256px.png' height='64' width='64' />">
             <h2>Regulatory stuff (optional)</h2>
             <div class="entryFields">
