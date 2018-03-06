@@ -70,7 +70,7 @@ No permission necessary, really. Just check in code. The backend is ASP.Net/C# a
 
 Let's take that again, because it's important: **about 90% of development happens in JavaScript and jQuery**, so don't shy away because it looks like a C# backend.
 
-There's also a Facebook group named [Swarmops Developers](https://www.facebook.com/groups/swarmops.developers/) which you may want to join. Yes, Facebook is evil, so give me a better alternative. Until there is one, that's where discussions happen. There's also a little-used [Slack](https://swarmops.slack.com).
+There's also a [Slack workspace](https://swarmops.slack.com) ([public invite here](https://join.slack.com/t/swarmops/shared_invite/enQtMzI1MTMwMTkyNjI4LWUwMjQxY2I3MWVkMTFjNzE5MWU5ZjEzYjZlY2UwYjk2YmNiOGQ4OWQ3NmZkMjA0NGIxY2ZlMWVlNzRjNjE4MmE)) and a Facebook group named [Swarmops Developers](https://www.facebook.com/groups/swarmops.developers/) which you may want to join. Yes, Facebook and Slack are both private, and that is bad, but until there's a better alternative, that's where discussions happen.
 
 
 License
