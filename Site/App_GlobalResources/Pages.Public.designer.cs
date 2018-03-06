@@ -106,6 +106,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is the default level, which means you can engage as much as you want (or not) as {0} while awaiting your {1}..
+        /// </summary>
+        internal static string Signup_ActivationPassiveApplication {
+            get {
+                return ResourceManager.GetString("Signup_ActivationPassiveApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Regular {0}.
         /// </summary>
         internal static string Signup_ActivationPassiveHeader {

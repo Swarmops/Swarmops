@@ -179,8 +179,6 @@ namespace Swarmops.Frontend.Pages.Public
 
             this.LabelActivationLevelHeader.Text = Resources.Pages.Public.Signup_ActivationLevel;
             this.LabelActivationLevelIntro.Text = String.Format(Resources.Pages.Public.Signup_ActivationLevelText, this.Organization.Name);
-            this.RadioActivationPassive.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveHeader, Participant.Localized (this.Organization.RegularLabel));
-            this.LabelActivationPassiveText.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassive, Participant.Localized(this.Organization.RegularLabel));
             this.RadioActivationActive.Text = String.Format(Resources.Pages.Public.Signup_ActivationActiveHeader, Participant.Localized (this.Organization.ActivistLabel));
             this.LabelActivationActiveText.Text = Resources.Pages.Public.Signup_ActivationActive;
             this.RadioActivationVolunteer.Text = Resources.Pages.Public.Signup_ActivationVolunteerHeader;
@@ -223,6 +221,8 @@ namespace Swarmops.Frontend.Pages.Public
                     this.LabelSidebarActionsContent.Text = String.Format(Resources.Pages.Public.Signup_NoFeeText,
                         Participant.Localized(this.Organization.RegularLabel, TitleVariant.Ship), DateTime.Today.AddYears(1).ToShortDateString(), this.Organization.Name);
                     this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
+                    this.RadioActivationPassive.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveHeader, Participant.Localized(this.Organization.RegularLabel));
+                    this.LabelActivationPassiveText.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassive, Participant.Localized(this.Organization.RegularLabel));
                     break;
 
                 case "ApplicationApproval":
@@ -230,12 +230,16 @@ namespace Swarmops.Frontend.Pages.Public
                     this.LabelSidebarActionsContent.Text = String.Format(Resources.Pages.Public.Signup_ApplicationApproval,
                         Participant.Localized(this.Organization.RegularLabel, TitleVariant.Ship), this.Organization.Name);
                     this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_ApplyingFor, Participant.Localized(this.Organization.RegularLabel, TitleVariant.Ship), Organization.Name).ToUpperInvariant();
+                    this.RadioActivationPassive.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveHeader, Participant.Localized(this.Organization.ApplicantLabel));
+                    this.LabelActivationPassiveText.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveApplication, Participant.Localized(this.Organization.ApplicantLabel), Participant.Localized(this.Organization.RegularLabel, TitleVariant.Ship));
 
                     break;
 
                 default:
                     this.LabelSidebarActionsContent.Text = Resources.Pages.Public.Signup_Unsupported;
                     this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
+                    this.RadioActivationPassive.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveHeader, Participant.Localized(this.Organization.RegularLabel));
+                    this.LabelActivationPassiveText.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassive, Participant.Localized(this.Organization.RegularLabel));
                     break;
 
 

@@ -135,6 +135,9 @@
     <value>This is the default level, and means you'll take normal part in the organization as a grassroots {0}.</value>
     <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
   </data>
+  <data name="Signup_ActivationPassiveApplication" xml:space="preserve">
+    <value>This is the default level, which means you can engage as much as you want (or not) as {0} while awaiting your {1}.</value>
+  </data>
   <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
     <value>Regular {0}</value>
     <comment>{0} is the Regular Participant label for the org.</comment>
