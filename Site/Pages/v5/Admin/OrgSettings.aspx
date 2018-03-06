@@ -217,7 +217,7 @@
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelParticipationEntry" runat="server" /><br/>
-                <div class="enableApplicationField"></div>Application Score required to qualify<br/></div>
+                <div class="enableApplicationField">Application Score required to qualify<br/></div>
                 <asp:Label ID="LabelParticipationOrg" runat="server" /><br/>
                 <asp:Label ID="LabelParticipationDuration" runat="server" /><br/>
                 <asp:Label ID="LabelParticipationChurn" runat="server" /><br/>
