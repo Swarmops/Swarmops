@@ -547,7 +547,7 @@ namespace Swarmops.Frontend.Pages.Admin
                 case "ApplicationQualifyingScore":
                     int qualifyingScore = Int32.Parse(newValue, NumberStyles.Number);
                     authenticationData.CurrentOrganization.Parameters.ApplicationQualifyingScore = qualifyingScore;
-                    result.NewValue = qualifyingScore.ToString("N2");
+                    result.NewValue = qualifyingScore.ToString("N0");
                     result.Success = true; // this comes last in this section, because parsing int may fail
                     break;
 

@@ -203,7 +203,7 @@
             <h2>Participant policy</h2>
             <div class="entryFields">
                 <Swarmops5:AjaxDropDown ID="DropParticipationEntry" CssClass="DropTemp" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" OnClientChange="onChangeApplicationEnable" Cookie="ParticipationEntry" runat="server"/>
-                <div class="enableApplicationField"><Swarmops5:AjaxTextBox ID="TextApplicationScoreQualify" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="ApplicationQualifyingScore" runat="server"/></div>
+                <div class="enableApplicationField"><Swarmops5:AjaxTextBox ID="TextApplicationScoreQualify" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" CssClass="alignRight" Cookie="ApplicationQualifyingScore" runat="server"/></div>
                 <Swarmops5:DropDown ID="DropMembersWhere" CssClass="DropTemp" runat="server"/>
                 <Swarmops5:AjaxDropDown ID="DropParticipationDuration" CssClass="DropTemp" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="ParticipationDuration"  runat="server"/>
                 <Swarmops5:DropDown ID="DropMembersChurn" CssClass="DropTemp" runat="server"/>
