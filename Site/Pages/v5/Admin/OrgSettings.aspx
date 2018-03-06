@@ -53,7 +53,7 @@
 
             /* Participation settings */
 
-            <%=this.ToggleAskStreet.ClientID%>_intialize(orgSettings.Participation.AskParticipantStreet);
+            <%=this.ToggleAskStreet.ClientID%>_initialize(orgSettings.Participation.AskParticipantStreet);
             <%=this.DropParticipationDuration.ClientID%>_val(orgSettings.Participation.Duration);
             <%=this.DropParticipationDuration.ClientID%>_val(orgSettings.Participation.Entry);
 
