@@ -117,59 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
-    <value>Beim Versuch einer Auszahlung an Ihre Bitcoin-Auszahlungsadresse, Die Adresse ([BitcoinAddress]) wurde von der zugrunde liegenden Auszahlungs-Engine als ungültig zurückgewiesen. Es wurde daher von Ihrem Profil gelöscht.
-
-Bitte melden Sie sich bei [InstallationName] unter [ExternalUrl] an und legen Sie eine neue Bitcoin-Auszahlungsadresse fest.</value>
-  </data>
+  
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
     <value>[[OrganizationName] - AKTIONGEGENSTAND] Falsche Bitcoin-Auszahlungsadresse</value>
   </data>
-  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
-    <value>Sie haben Ihre Bitcoin-Auszahlungsadresse von [BitcoinOldAddress] zu [BitcoinAddress] geändert. Aus Sicherheitsgründen werden alle Auszahlungen für die nächsten 48 Stunden unter Quarantäne gestellt.
-
-Wenn Sie die Auszahlungsadresse NICHT geändert haben und eine Sicherheitsverletzung vorliegt, klicken Sie bitte sofort auf diesen Link, um Ihr Konto zu sperren: [LockdownLink]
-
-Wenn Sie auf diesen Link klicken, wird Ihr Konto sofort ohne Bestätigungsanfragen gesperrt. Wenn Sie jedoch die Änderung der Auszahlungsadresse angefordert haben, ist alles in Ordnung und es sind keine weiteren Maßnahmen von Ihrer Seite erforderlich.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Bitcoin-Auszahlungsadresse geändert</value>
-  </data>
-  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
-    <value>Sie haben Geld auf Auszahlung warten bei [OrganizationName], Sie haben jedoch keine Bitcoin-Auszahlungsadresse festgelegt.
-
-Bitte melden Sie sich an [InstallationName] beim [ExternalUrl] und folgen Sie dem Link, um Ihre Auszahlungsadresse festzulegen - Sie finden sie in der Liste der Aufgaben.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Bitte geben Sie Ihre Bitcoin-Auszahlungsadresse an</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
-    <value>Sie haben eine Bitcoin-Auszahlungsadresse festgelegt: [BitcoinAddress]. Aus Sicherheitsgründen werden alle Auszahlungen für die nächsten 48 Stunden unter Quarantäne gestellt und anschließend an die neue Adresse ausgezahlt.
-
-Wenn Sie diese Auszahlungsadresse nicht festgelegt haben (Es lohnt sich, die Adresse oben zu überprüfen, um die Sicherheit zu erhöhen), kontakt [OrganizationName] sofort.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
-    <value>Eine Bitcoin-Auszahlungsadresse wurde von eingestellt [ConcernedPersonName]. Die Auszahlungen beginnen nach 48 Stunden, wenn die Quarantänezeit abgelaufen ist.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] [ConcernedPersonName] hat eine Bitcoin-Auszahlungsadresse festgelegt</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Bitcoin-Auszahlungsadresse festgelegt</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
     <value>Das Bitcoin Hotwallet für [OrganizationName] gerade gemacht [PaymentCount] automatische Zahlung(en) in Höhe von [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin oder "bits").</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Hotwallet Auszahlung: [CurrencyCode] [AmountFloat]</value>
   </data>
-  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>[BitcoinAmountFloat] microbitcoins ("bits") wurde nur auf deine Bitcoin-Adresse übertragen ([BitcoinAddress]) durch [OrganizationName] für den folgenden:
-
-[EmbeddedPreformattedText]
-
-Sie sollten die Transaktion bereits in Ihrem Portemonnaie sehen und es sollte innerhalb von etwa einer Stunde Spendability erreichen (sechs normale Bestätigungen).</value>
-  </data>
+  
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Guthaben an Sie: [CurrencyCode] [AmountFloat]</value>
   </data>
@@ -179,16 +145,8 @@ Sie sollten die Transaktion bereits in Ihrem Portemonnaie sehen und es sollte in
   <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
     <value>[[OrganizationName] - DRINGEND] Bitcoin privater Schlüsselfehler; kann nicht bezahlen</value>
   </data>
-  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
-    <value>Swarmops versucht Zahlungen zu leisten [CurrencyCode] [AmountNeededFloat], aber nur [CurrencyCode] [AmountWalletFloat] ist im Bitcoin Hotwallet verfügbar. Swarmops kann zu diesem Zeitpunkt keine weiteren Zahlungen leisten.
-
-Bitte füllen Sie das Hotwallet SOFORT auf mindestens die benötigte Menge - eine zusätzliche [AmountMissingMicrocoinsFloat] microbitcoins ("bits") ist erforderlich, um finanzielle Hotwallet-Operationen wieder aufzunehmen.
-
-Swarmops werden weiter versuchen und werden diese Benachrichtigungen senden, solange es nicht gelungen ist.</value>
-  </data>
-  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - AKTIONSGEGENSTAND] Bitcoin hotwallet unzureichend für Zahlungen - sofort aufladen</value>
-  </data>
+  
+  
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>Ihre gewünschte Vorauszahlung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat], über [RequestPurpose], wurde vom Haushaltseigentümer bestätigt. Es wird nun fortgeführt, um Ihnen zu zahlen.</value>
   </data>

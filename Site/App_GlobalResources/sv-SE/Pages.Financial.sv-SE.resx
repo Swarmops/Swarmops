@@ -686,8 +686,13 @@
   <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
     <value>Ladda upp Expensify-rapport för återbetalning</value>
   </data>
-  
-  
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;FEL: Det gick inte att tolka Expensifys CSV-fil.&lt;/strong&gt; Om detta är en CSV-fil från Expensify, så behöver Swarmops kolumnerna ”Timestamp”, ”Amount”, ”Merchant”, ”Comment”, ”Category”, ”MCC”, ”Original Currency” och ”Original Amount” i filen. Om organisationen rapporterar moms, krävs en ytterligare kolumn som heter ”VAT”.&lt;/p&gt;&lt;p&gt;Kan inte behandla denna fil.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;FEL: Expensify-CSV-filen saknar momskolumn.&lt;/strong&gt; Eftersom denna organisation är momspliktig, så måste momsvärdet anges för varje ersättningsanspråk. Aktivera moms i Expensify och skapa en ny CSV-exportprofil som exporterar detta under rubriken ”VAT”. Om ditt team har redan skapat sådan CSV-profil, kan du bara behöver välja den när du exporterar till CSV.&lt;/p&gt;&lt;p&gt;Det gick inte att bearbeta filen.&lt;/p&gt;</value>
+  </data>
   <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
     <value>Ladda upp en Expensify-CSV-fil till?</value>
     <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
@@ -705,4 +710,10 @@
     <value>(Beloppet måste vara exklusive eventuell moms!)</value>
     <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
   </data>
+  
+  
+  
+  
+  
+  
 </root>

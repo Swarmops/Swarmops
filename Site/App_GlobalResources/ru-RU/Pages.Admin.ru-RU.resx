@@ -121,9 +121,15 @@
   
   
   
-  
-  
-  
+  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
+    <value>Bitcoin Наличными Hotwallet Echo Тест</value>
+  </data>
+  <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
+    <value>Ожидание транзакции...</value>
+  </data>
+  <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
+    <value>Подозрительных операций, проверка...</value>
+  </data>
   
   
   
@@ -131,8 +137,12 @@
   <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
     <value>Создать новую организацию как...</value>
   </data>
-  
-  
+  <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
+    <value>Название организации не может быть пустым. (Вы должны дать новой организации имя!)</value>
+  </data>
+  <data name="CreateOrganization_Info" xml:space="preserve">
+    <value>Можно создать новую организацию либо как новую автономную организацию, либо как дочернюю организацию текущей. (Каждый человек, имеющий обязанности в родительской организации, автоматически имеет соответствующие права и привилегии во всех своих детях.)</value>
+  </data>
   
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
     <value>Используемая денежная единица</value>
@@ -169,6 +179,22 @@
   
   
   
+  <data name="OrgStaffing_Info" xml:space="preserve">
+    <value>Установить штатную структуру для этой организации, а также ее штатное расписание на стратегическом (совет директоров) и исполнительном (на уровне с или эквивалентном) уровнях. Вы также можете управлять ожидающих добровольцев и заработной платы отсюда.</value>
+  </data>
+  
+  <data name="SystemSettings_AdminAddress" xml:space="preserve">
+    <value>Уведомления Администратора С Адреса</value>
+  </data>
+  
+  
+  <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
+    <value>Не удается выполнить синтаксический анализ пользователя, передачи, узла и / или порта. (Требуется только хост.)</value>
+  </data>
+  
+  <data name="SystemSettings_Header_CorrespondenceTxSettings" xml:space="preserve">
+    <value>Настройки Передачи Корреспонденции</value>
+  </data>
   
   
   
@@ -185,16 +211,12 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Вам нужно выбрать человека, которого вы олицетворяете.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Если вам нужно подражать себе, мы предлагаем Вам выйти из Swarmops и обратиться за другой помощью.</value>
+  </data>
   
   
   

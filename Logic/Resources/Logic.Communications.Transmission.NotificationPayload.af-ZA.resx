@@ -118,34 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
-    <value>crwdns6556368:0[BitcoinAddress]crwdnd6556368:0[InstallationName]crwdnd6556368:0[ExternalUrl]crwdne6556368:0</value>
+    <value>crwdns6556768:0[BitcoinAddress]crwdnd6556768:0[InstallationName]crwdnd6556768:0[ExternalUrl]crwdne6556768:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
     <value>crwdns6556369:0[OrganizationName]crwdne6556369:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
-    <value>crwdns6556370:0[BitcoinOldAddress]crwdnd6556370:0[BitcoinAddress]crwdnd6556370:0[LockdownLink]crwdne6556370:0</value>
+    <value>crwdns6556769:0[BitcoinOldAddress]crwdnd6556769:0[BitcoinAddress]crwdnd6556769:0[LockdownLink]crwdne6556769:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
-    <value>crwdns6556371:0[OrganizationName]crwdne6556371:0</value>
+    <value>crwdns6556770:0[OrganizationName]crwdne6556770:0</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
-    <value>crwdns6556372:0[OrganizationName]crwdnd6556372:0[InstallationName]crwdnd6556372:0[ExternalUrl]crwdne6556372:0</value>
+    <value>crwdns6556771:0[OrganizationName]crwdnd6556771:0[InstallationName]crwdnd6556771:0[ExternalUrl]crwdne6556771:0</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
-    <value>crwdns6556373:0[OrganizationName]crwdne6556373:0</value>
+    <value>crwdns6556772:0[OrganizationName]crwdne6556772:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
-    <value>crwdns6556374:0[BitcoinAddress]crwdnd6556374:0[OrganizationName]crwdne6556374:0</value>
+    <value>crwdns6556773:0[BitcoinAddress]crwdnd6556773:0[OrganizationName]crwdne6556773:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
-    <value>crwdns6556375:0[ConcernedPersonName]crwdne6556375:0</value>
+    <value>crwdns6556774:0[ConcernedPersonName]crwdne6556774:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
-    <value>crwdns6556376:0[OrganizationName]crwdnd6556376:0[ConcernedPersonName]crwdne6556376:0</value>
+    <value>crwdns6556775:0[OrganizationName]crwdnd6556775:0[ConcernedPersonName]crwdne6556775:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
-    <value>crwdns6556377:0[OrganizationName]crwdne6556377:0</value>
+    <value>crwdns6556776:0[OrganizationName]crwdne6556776:0</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
     <value>crwdns6556378:0[OrganizationName]crwdnd6556378:0[PaymentCount]crwdnd6556378:0[CurrencyCode]crwdnd6556378:0[AmountFloat]crwdnd6556378:0[BitcoinAmountFloat]crwdne6556378:0</value>
@@ -154,7 +154,7 @@
     <value>crwdns6556379:0[OrganizationName]crwdnd6556379:0[CurrencyCode]crwdnd6556379:0[AmountFloat]crwdne6556379:0</value>
   </data>
   <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>crwdns6556380:0[BitcoinAmountFloat]crwdnd6556380:0[BitcoinAddress]crwdnd6556380:0[OrganizationName]crwdnd6556380:0[EmbeddedPreformattedText]crwdne6556380:0</value>
+    <value>crwdns6556777:0[BitcoinAmountFloat]crwdnd6556777:0[BitcoinAddress]crwdnd6556777:0[OrganizationName]crwdnd6556777:0[EmbeddedPreformattedText]crwdne6556777:0</value>
   </data>
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
     <value>crwdns6556381:0[OrganizationName]crwdnd6556381:0[CurrencyCode]crwdnd6556381:0[AmountFloat]crwdne6556381:0</value>
@@ -166,10 +166,10 @@
     <value>crwdns6556383:0[OrganizationName]crwdne6556383:0</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
-    <value>crwdns6556384:0[CurrencyCode]crwdnd6556384:0[AmountNeededFloat]crwdnd6556384:0[CurrencyCode]crwdnd6556384:0[AmountWalletFloat]crwdnd6556384:0[AmountMissingMicrocoinsFloat]crwdne6556384:0</value>
+    <value>crwdns6556778:0[CurrencyCode]crwdnd6556778:0[AmountNeededFloat]crwdnd6556778:0[CurrencyCode]crwdnd6556778:0[AmountWalletFloat]crwdnd6556778:0[AmountMissingMicrocoinsFloat]crwdne6556778:0</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
-    <value>crwdns6556385:0[OrganizationName]crwdne6556385:0</value>
+    <value>crwdns6556779:0[OrganizationName]crwdne6556779:0</value>
   </data>
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>crwdns6553646:0[OrganizationName]crwdnd6553646:0[CurrencyCode]crwdnd6553646:0[BudgetAmountFloat]crwdnd6553646:0[RequestPurpose]crwdne6553646:0</value>

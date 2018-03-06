@@ -710,4 +710,25 @@
     <value>crwdns6556767:0crwdne6556767:0</value>
     <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
   </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>crwdns6556782:0crwdne6556782:0</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>crwdns6556783:0crwdne6556783:0</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>crwdns6556784:0crwdne6556784:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>crwdns6556785:0{0}crwdne6556785:0</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>crwdns6556786:0crwdne6556786:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>crwdns6556787:0{0}crwdne6556787:0</value>
+  </data>
 </root>

@@ -947,7 +947,9 @@
   <data name="Global_Upload" xml:space="preserve">
     <value>Ladda upp</value>
   </data>
-  
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>Uppladdningsresultat</value>
+  </data>
   <data name="Financial_AmountVat" xml:space="preserve">
     <value>Moms</value>
     <comment>The short form of Value Added Tax.</comment>
@@ -963,4 +965,5 @@
     <value>MMM d, yyyy</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
   </data>
+  
 </root>

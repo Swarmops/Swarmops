@@ -364,4 +364,8 @@
     <value>Cuentas Bancarias</value>
     <comment>Note the plural form</comment>
   </data>
+  <data name="Cost_BusinessServices" xml:space="preserve">
+    <value>Servicios Empresariales</value>
+    <comment>Like paperwork services, fruit delivery, travel booking, anything that isn't strictly office maintenance</comment>
+  </data>
 </root>
