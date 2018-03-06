@@ -55,7 +55,11 @@
 
             <%=this.ToggleAskStreet.ClientID%>_initialize(orgSettings.Participation.AskParticipantStreet);
             <%=this.DropParticipationDuration.ClientID%>_val(orgSettings.Participation.Duration);
-            <%=this.DropParticipationDuration.ClientID%>_val(orgSettings.Participation.Entry);
+            <%=this.DropParticipationEntry.ClientID%>_val(orgSettings.Participation.Entry);
+
+            if (orgSettings.Participation.Entry == "ApplicationApproval") {
+                $('.enableApplicationField').show();
+            }
 
             /* Messaging settings */
 
