@@ -438,6 +438,8 @@
     <Compile Include="Support\TemporaryIdentity.cs" />
     <Compile Include="Support\UrlTranslations.cs" />
     <Compile Include="Swarm\Activists.cs" />
+    <Compile Include="Swarm\Applicant.cs" />
+    <Compile Include="Swarm\Applicants.cs" />
     <Compile Include="Swarm\ChurnData.cs" />
     <Compile Include="Swarm\ChurnDataPoint.cs" />
     <Compile Include="Swarm\DashboardTodo.cs" />
