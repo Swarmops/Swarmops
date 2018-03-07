@@ -177,6 +177,8 @@
 
         .enableApplicationField { display: none; }
 
+        .enableExpiryRenewalField { display: none; }
+
         .CheckboxContainer {
             float: right;
             padding-top: 6px;
