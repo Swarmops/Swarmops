@@ -56,7 +56,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT" + applicantFieldSequence + "WHERE SalaryId=" + applicantId + ";", connection);
+                        "SELECT" + applicantFieldSequence + "WHERE ApplicantId=" + applicantId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
