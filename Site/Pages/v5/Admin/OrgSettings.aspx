@@ -63,7 +63,6 @@
             }
 
             if (orgSettings.Participation.Duration != 1440) {
-                alert("Pong");
                 $('.enableExpiryRenewalField').show();
             }
 
@@ -132,12 +131,9 @@
         }
 
         function onChangeRenewalEnable(newValue) {
-            alert("Ping - " + newValue);
             if (newValue != 1440) {
-                alert("show");
                 $(".enableExpiryRenewalField").show();
             } else {
-                alert("hide");
                 $(".enableExpiryRenewalField").hide();
             }
         }

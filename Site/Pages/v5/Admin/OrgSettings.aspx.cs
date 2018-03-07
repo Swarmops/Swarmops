@@ -511,11 +511,13 @@ namespace Swarmops.Frontend.Pages.Admin
 
                 case "ParticipationEntry":
                     result.Success = true;
+                    result.NewValue = newValue;
                     authenticationData.CurrentOrganization.Parameters.ParticipationEntry = newValue;
                     break;
 
                 case "ParticipationDuration":
                     result.Success = true;
+                    result.NewValue = newValue;
                     authenticationData.CurrentOrganization.Parameters.ParticipationDuration = newValue;
                     break;
 
