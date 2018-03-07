@@ -346,7 +346,9 @@ namespace Swarmops.Pages.Security
                     Authority testAuthority = Authority.FromLogin (authenticatedPerson,
                         Organization.FromIdentity (lastOrgId));
 
-                    if (!authenticatedPerson.ParticipatesInOrganizationOrParent (lastOrgId) && !authenticatedPerson.ApplicantInOrganization (lastOrgId) && !testAuthority.HasSystemAccess (AccessType.Read))
+                    Organization lastOrganization = Organization.FromIdentity(lastOrgId);
+
+                    if (!authenticatedPerson.ParticipatesInOrganizationOrParent (lastOrganization) && !authenticatedPerson.ApplicantInOrganization (lastOrganization) && !testAuthority.HasSystemAccess (AccessType.Read))
                     {
                         // If the person doesn't have access to the last organization (anymore), log on to Sandbox
                         // unless first pilot, in which case throw (deny login)
