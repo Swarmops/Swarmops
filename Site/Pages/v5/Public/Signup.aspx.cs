@@ -281,20 +281,32 @@ namespace Swarmops.Frontend.Pages.Public
 
             Person newPerson = Person.Create (name, mail, password, phone, street1 + "\n" + street2.Trim(), postalCode,
                 city, countryCode, parsedDateOfBirth, gender);
-            Participation participation = newPerson.AddParticipation (organization, DateTime.UtcNow.AddYears (1));  // TODO: set duration from organization settings of Participantship
+
+
+            if (organization.Parameters.ParticipationEntry == "ApplicationApproval")
+            {
+                Applicant Applicant = 
+                SwarmopsLog.CreateEntry(newPerson, new ApplicantAddedLogEntry(, newPerson)))
+            }
+            else
+            {
+                // "Application" or null, default
+
+                Participation participation = newPerson.AddParticipation(organization, DateTime.UtcNow.AddYears(1));  // TODO: set duration from organization settings of Participantship
+                SwarmopsLog.CreateEntry(newPerson, new PersonAddedLogEntry(participation, newPerson));
+                OutboundComm.CreateParticipantNotification(newPerson, newPerson, organization,
+                    NotificationResource.Participant_Signup);
+
+            }
+
 
             // TODO: CREATE APPLICATION INSTEAD DEPENDING ON POLICY
 
             // TODO: SEND NOTIFICATIONS
 
-            // Log the signup
-
-            SwarmopsLog.CreateEntry (newPerson, new PersonAddedLogEntry (participation, newPerson));
 
             // Create notification
 
-            OutboundComm.CreateParticipantNotification (newPerson, newPerson, organization,
-                NotificationResource.Participant_Signup);
 
             // Add the bells and whistles
 

@@ -68,3 +68,4 @@
 0068 - Added SetSalaryOpen [RF]
 0069 - Added table, procs for ExpenseClaimGroups [RF]
 0070 - Added first Applications tables, procs [RF]
+0071 - Renamed Application to Applicant, to avoid a marsh and misery of name collisions [RF]
