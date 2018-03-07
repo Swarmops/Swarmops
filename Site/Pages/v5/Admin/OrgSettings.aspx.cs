@@ -69,11 +69,11 @@ namespace Swarmops.Frontend.Pages.Admin
             this.DropParticipationEntry.Items.Clear();
             this.DropParticipationEntry.Items.Add (new ListItem ("Application submitted", "Application"));
             this.DropParticipationEntry.Items.Add (new ListItem ("Application approved", "ApplicationApproval"));
-            this.DropParticipationEntry.Items.Add (new ListItem ("Application submitted + paid", "ApplicationPayment"));
+            /*this.DropParticipationEntry.Items.Add (new ListItem ("Application submitted + paid", "ApplicationPayment"));    --- ALL THESE ARE TODO
             this.DropParticipationEntry.Items.Add (new ListItem ("Application paid + approved", "ApplicationPaymentApproval"));
             this.DropParticipationEntry.Items.Add (new ListItem ("Invited and accepted", "InvitationAcceptance"));
             this.DropParticipationEntry.Items.Add (new ListItem ("Invited and paid", "InvitationPayment"));
-            this.DropParticipationEntry.Items.Add (new ListItem ("Manual add only", "Manual"));
+            this.DropParticipationEntry.Items.Add (new ListItem ("Manual add only", "Manual"));  */
 
             this.DropMembersWhere.Items.Clear();
             this.DropMembersWhere.Items.Add (new ListItem ("Root organization only", "Root"));
