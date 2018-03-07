@@ -62,7 +62,7 @@
                 <%=this.TextApplicationScoreQualify.ClientID%>_initialize(orgSettings.Participation.ApplicationQualifyingScore);
             }
 
-            if (orgSettings.Participation.Duration != "1440") {
+            if (orgSettings.Participation.Duration != 1440) {
                 $('.enableExpiryRenewalField').show();
             }
 
@@ -131,7 +131,8 @@
         }
 
         function onChangeRenewalEnable(newValue) {
-            if (newValue != "1440") {
+            alert("Ping");
+            if (newValue != 1440) {
                 $(".enableExpiryRenewalField").show();
             } else {
                 $(".enableExpiryRenewalField").hide();
