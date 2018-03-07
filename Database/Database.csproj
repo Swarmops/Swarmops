@@ -125,6 +125,7 @@
     <Compile Include="Database-Reporters.cs" />
     <Compile Include="Database-Roles.cs" />
     <Compile Include="Database-OutboundPhoneMessages.cs" />
+    <Compile Include="Database-Applicants.cs" />
     <Compile Include="Database-VatReports.cs" />
     <Compile Include="Database-Salaries.cs" />
     <Compile Include="Database-SwarmopsLog.cs" />
