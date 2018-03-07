@@ -73,6 +73,14 @@ Let's take that again, because it's important: **about 90% of development happen
 There's also a [Slack workspace](https://swarmops.slack.com) ([public invite here](https://join.slack.com/t/swarmops/shared_invite/enQtMzI1MTMwMTkyNjI4LWUwMjQxY2I3MWVkMTFjNzE5MWU5ZjEzYjZlY2UwYjk2YmNiOGQ4OWQ3NmZkMjA0NGIxY2ZlMWVlNzRjNjE4MmE)) and a Facebook group named [Swarmops Developers](https://www.facebook.com/groups/swarmops.developers/) which you may want to join. Yes, Facebook and Slack are both private, and that is bad, but until there's a better alternative, that's where discussions happen.
 
 
+
+Translating
+-----------
+
+Use [this link](http://translate.swarmops.com/project/activizr/invite?d=65j615l6862727v4e373) to join the Swarmops project on Crowdin at the proofreader level. There are [many languages](https://crowdin.com/project/activizr) that still need translation; any one that reaches 50% or more translated with the Menu and Global sections at 100% will be enabled on the user side.
+
+
+
 License
 -------
 
@@ -84,7 +92,7 @@ That also means that any code _you_ commit to Swarmops, whether by checking in c
 Beta-4 features progress
 ------------------------
 
-Beta-4 will be released on March 5, with string freeze on March 2. Its focus will be Expensify integration, so that people can upload large batches of expense reports directly from the Expensify service. This is a large feature that took almost two months to complete, with a bit of refactoring required as well.
+Beta-4 was released on March 5 as planned, and included complete Expensify integration, so that people can upload large batches of expense reports directly from the Expensify service. This was a large feature that took almost two months to complete, with a bit of refactoring required as well.
 
 
 Beta-5 features progress
