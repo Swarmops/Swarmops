@@ -134,7 +134,7 @@
             if (newValue != "1440") {
                 $(".enableExpiryRenewalField").show();
             } else {
-                $('.enableExpiryRenewalField').hide();
+                $(".enableExpiryRenewalField").hide();
             }
         }
 
