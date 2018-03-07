@@ -61,6 +61,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A new person has applied to be a [RegularTitle] in [OrganizationName]! [ConcernedPersonName] currently resides in [GeographyName], [CountryCode]..
+        /// </summary>
+        internal static string Applicant_Signup_Body {
+            get {
+                return ResourceManager.GetString("Applicant_Signup_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] New Applicant: [ConcernedPersonName], [GeographyName].
+        /// </summary>
+        internal static string Applicant_Signup_Header {
+            get {
+                return ResourceManager.GetString("Applicant_Signup_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The bitcoin hotwallet for [OrganizationName] just made [PaymentCount] automatic payment(s) totalling [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin or &quot;bits&quot;)..
         /// </summary>
         internal static string Bitcoin_Hotwallet_Outflow_Body {

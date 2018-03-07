@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>A new person has applied to be a [RegularTitle] in [OrganizationName]! [ConcernedPersonName] currently resides in [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] New Applicant: [ConcernedPersonName], [GeographyName]</value>
+  </data>
   <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
     <value>On attempting a payout to your Bitcoin Cash payout address, the address ([BitcoinAddress]) was rejected by the underlying payout engine as invalid. It has therefore been cleared from your profile.
 

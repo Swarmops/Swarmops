@@ -285,8 +285,10 @@ namespace Swarmops.Frontend.Pages.Public
 
             if (organization.Parameters.ParticipationEntry == "ApplicationApproval")
             {
-                // Applicant Applicant = 
-                // SwarmopsLog.CreateEntry(newPerson, new ApplicantAddedLogEntry(, newPerson)))
+                Applicant newApplicant = Applicant.Create(newPerson, organization);
+                SwarmopsLog.CreateEntry(newPerson, new ApplicantAddedLogEntry(newApplicant));
+                OutboundComm.CreateParticipantNotification(newPerson, newPerson, organization,
+                    NotificationResource.Applicant_Signup);
             }
             else
             {

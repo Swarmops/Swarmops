@@ -223,6 +223,7 @@
     <Compile Include="Communications\Payload\PayloadEnvelope.cs" />
     <Compile Include="Communications\Payload\NotificationPayload.cs" />
     <Compile Include="Security\Impersonation.cs" />
+    <Compile Include="Support\LogEntries\ApplicantAddedLogEntry.cs" />
     <Compile Include="Support\SocketMessages\SocketMessageBase.cs" />
     <Compile Include="Support\BackendServiceOrder.cs" />
     <Compile Include="Support\BackendServiceOrders.cs" />

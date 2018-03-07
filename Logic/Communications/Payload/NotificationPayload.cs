@@ -180,6 +180,8 @@ namespace Swarmops.Logic.Communications.Payload
         Participant_Renewed,
         Participant_Terminated,
         Participant_Churned,
+        Applicant_Signup,
+        Applicant_Approved,
         Bitcoin_PaidOut,
         Bitcoin_Shortage,
         Bitcoin_Shortage_Urgent,

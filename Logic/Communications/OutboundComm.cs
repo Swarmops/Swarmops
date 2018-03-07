@@ -392,6 +392,8 @@ namespace Swarmops.Logic.Communications
             payload.Strings[NotificationString.RegularTitle] = organization.RegularLabel.ToString();  // may need fudging later because localization
             payload.Strings[NotificationString.ActivistTitle] = organization.ActivistLabel.ToString(); // as above
 
+            // TODO: Change the below to resolve to at least the global officers
+
             return CreateSingleRecipientNotification (payload, organization, Person.FromIdentity (1));
         }
 

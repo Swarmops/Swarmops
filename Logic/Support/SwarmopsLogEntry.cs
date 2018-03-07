@@ -30,6 +30,11 @@ namespace Swarmops.Logic.Support
             // Writing intentional
         }
 
+        public static SwarmopsLogEntry Create(IXmlPayload logEntry, params object[] affectedObjects)
+        {
+            return Create(null, logEntry, affectedObjects);
+        }
+
         public static SwarmopsLogEntry Create (Person person, IXmlPayload logEntry, params object[] affectedObjects)
         {
             SwarmopsLogEntry entry = SwarmopsLog.CreateEntry (person, logEntry);
