@@ -82,5 +82,5 @@
  </script>
  
  <% if (this.Layout == LayoutDirection.Vertical) { %><div class="stacked-input-control"><% } %>
-     <span id="<%=this.ClientID %>_SpanBudgets"><select class="easyui-combotree" url="<%=this.DataUrl %>" name="DropBudgets" id="<%=this.ClientID %>_DropBudgets" animate="true" style="width:324px"></select></span>
+     <span id="<%=this.ClientID %>_SpanBudgets"><select class="easyui-combotree" url="<%=this.DataUrl %>" name="<%=this.ClientID %>_DropBudgets" id="<%=this.ClientID %>_DropBudgets" animate="true" style="width:324px"></select></span>
  <% if (this.Layout == LayoutDirection.Vertical) { %></div><% } %>
