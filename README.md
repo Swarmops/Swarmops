@@ -77,7 +77,7 @@ There's also a [Slack workspace](https://swarmops.slack.com) ([public invite her
 Translating
 -----------
 
-Use [this link](http://translate.swarmops.com/project/activizr/invite?d=65j615l6862727v4e373) to join the Swarmops project on Crowdin at the proofreader level. There are [many languages](https://crowdin.com/project/activizr) that still need translation; any one that reaches 50% or more translated with the Menu and Global sections at 100% will be enabled on the user side.
+Use [this link](http://translate.swarmops.com/project/activizr/invite?d=65j615l6862727v4e373) to join the Swarmops project on Crowdin at the Proofreader level. There are [many languages](https://crowdin.com/project/activizr) that still need translation; any one that reaches 50% or more translated with the Menu and Global sections at 100% will be enabled from the Language Selection page.
 
 
 
