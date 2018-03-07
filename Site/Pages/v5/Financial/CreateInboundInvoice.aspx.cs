@@ -143,7 +143,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             DateTime dueDate = DateTime.Parse (this.TextDueDate.Text);
 
 
-            FinancialAccount budget = FinancialAccount.FromIdentity (Int32.Parse (Request.Form["DropBudgets"]));
+            FinancialAccount budget = this.ComboBudgets.SelectedAccount;
 
             // sanity check
 

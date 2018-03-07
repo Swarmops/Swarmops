@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Web.UI;
 using Swarmops.Common.Enums;
 using Swarmops.Frontend;
+using Swarmops.Logic.Financial;
+using WebSocketSharp;
 
 namespace Swarmops.Controls.Financial
 {
@@ -54,6 +57,27 @@ namespace Swarmops.Controls.Financial
             if (this.Layout == LayoutDirection.Unknown)
             {
                 this.Layout = LayoutDirection.Vertical;
+            }
+        }
+
+        public FinancialAccount SelectedAccount
+        {
+            get
+            {
+                if (!IsPostBack)
+                {
+                    throw new InvalidOperationException("SelectedAccount can only be retrieved in postback");
+                }
+
+                string accountIdString = Request.Form[this.ClientID + "_DropBudgets"];
+                if (accountIdString.IsNullOrEmpty())
+                {
+                    throw new InvalidOperationException("ComboBudgets control submitted a null value");
+                }
+                int accountId = Int32.Parse(accountIdString);
+                FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+
+                return account;
             }
         }
 

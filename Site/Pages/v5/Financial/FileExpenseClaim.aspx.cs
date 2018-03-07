@@ -934,7 +934,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             string description = this.TextPurpose.Text;
 
-            FinancialAccount budget = FinancialAccount.FromIdentity (Int32.Parse (Request.Form["ComboBudgets"]));
+            FinancialAccount budget = this.ComboBudgets.SelectedAccount;
 
             // sanity check
 
