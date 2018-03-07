@@ -12,7 +12,7 @@ namespace Swarmops.Basic.Types.Swarm
     {
         // public ctor - for use by database class
 
-        BasicApplicant(int applicantId, int personId, int organizationId, DateTime createdDateTime, bool open,
+        public BasicApplicant(int applicantId, int personId, int organizationId, DateTime createdDateTime, bool open,
             DateTime grantedDateTime, int grantedByPersonId, int score1, int score2, int score3)
         {
             this.ApplicantId = applicantId;
@@ -28,7 +28,7 @@ namespace Swarmops.Basic.Types.Swarm
         }
 
 
-        private BasicApplicant(BasicApplicant original)
+        public BasicApplicant(BasicApplicant original)
             : this(
                 original.Identity, original.PersonId, original.OrganizationId, original.CreatedDateTime, original.Open,
                 original.GrantedDateTime, original.GrantedByPersonId, original.Score1, original.Score2, original.Score3)
