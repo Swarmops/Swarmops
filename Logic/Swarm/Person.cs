@@ -1076,6 +1076,19 @@ namespace Swarmops.Logic.Swarm
             return ParticipatesInOrganizationOrParent (org.Identity);
         }
 
+
+        public bool ApplicantInOrganization(Organization org)
+        {
+            Applicants applicants = Applicants.FromArray(SwarmDb.GetDatabaseForReading().GetApplicants(this, org, DatabaseCondition.OpenTrue));
+            if (applicants.Count > 0)
+            {
+                // There is at least one open application
+                return true;
+            }
+
+            return false;
+        }
+
         /* --- not used, commented out for usage of hardcoded org ids
         public int NationalPartyOrg (bool onlyIfMember)
         {

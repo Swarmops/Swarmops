@@ -301,7 +301,6 @@ namespace Swarmops.Frontend.Pages.Public
 
             }
 
-
             // TODO: CREATE APPLICATION INSTEAD DEPENDING ON POLICY
 
             // TODO: SEND NOTIFICATIONS
@@ -336,7 +335,7 @@ namespace Swarmops.Frontend.Pages.Public
 
             // Set authentication cookie, which will log the new person in using the credentials just given
 
-            FormsAuthentication.SetAuthCookie (Authority.FromLogin (newPerson).ToEncryptedXml(), true);
+            FormsAuthentication.SetAuthCookie (Authority.FromLogin (newPerson, organization).ToEncryptedXml(), true);
 
             AjaxCallResult result = new AjaxCallResult {Success = true};
             return result;
