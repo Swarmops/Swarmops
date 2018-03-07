@@ -107,7 +107,7 @@ namespace Swarmops.Frontend.Pages.Admin
 
             this.DropMemberNumber.Items.Clear();
             this.DropMemberNumber.Items.Add (new ListItem ("Global for installation", "Global"));
-            this.DropMemberNumber.Items.Add (new ListItem ("Local for each organzation", "Local"));
+            this.DropMemberNumber.Items.Add (new ListItem ("Local for each organization", "Local"));
 
             this.DropTaxAuthority.Items.Clear();
             this.DropTaxAuthority.Items.Add(new ListItem("[DE] Germany", "DE"));
