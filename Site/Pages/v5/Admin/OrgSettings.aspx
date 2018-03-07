@@ -62,6 +62,10 @@
                 <%=this.TextApplicationScoreQualify.ClientID%>_initialize(orgSettings.Participation.ApplicationQualifyingScore);
             }
 
+            if (orgSettings.Participation.Duration != "1440") {
+                $('.enableExpiryRenewalField').show();
+            }
+
             /* Messaging settings */
 
             <%=this.TextApplicationCompleteMail.ClientID%>_initialize(orgSettings.Messages.ApplicationCompleteMail);
@@ -123,6 +127,14 @@
                 $(".enableApplicationField").show();
             } else {
                 $(".enableApplicationField").hide();
+            }
+        }
+
+        function onChangeRenewalEnable(newValue) {
+            if (newValue != "1440") {
+                $(".enableExpiryRenewalField").show();
+            } else {
+                $('.enableExpiryRenewalField').hide();
             }
         }
 
@@ -210,27 +222,27 @@
                 <Swarmops5:AjaxDropDown ID="DropParticipationEntry" CssClass="DropTemp" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" OnClientChange="onChangeApplicationEnable" Cookie="ParticipationEntry" runat="server"/>
                 <div class="enableApplicationField"><Swarmops5:AjaxTextBox ID="TextApplicationScoreQualify" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" CssClass="alignRight" Cookie="ApplicationQualifyingScore" runat="server"/></div>
                 <Swarmops5:DropDown ID="DropMembersWhere" CssClass="DropTemp" runat="server"/>
-                <Swarmops5:AjaxDropDown ID="DropParticipationDuration" CssClass="DropTemp" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="ParticipationDuration"  runat="server"/>
-                <Swarmops5:DropDown ID="DropMembersChurn" CssClass="DropTemp" runat="server"/>
+                <Swarmops5:AjaxDropDown ID="DropParticipationDuration" CssClass="DropTemp" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" OnClientChange="onChangeRenewalEnable" Cookie="ParticipationDuration"  runat="server"/>
+                <div class="enableExpiryRenewalField"><Swarmops5:DropDown ID="DropMembersChurn" CssClass="DropTemp" runat="server"/></div>
                 <div class="stacked-input-control"><asp:TextBox ID="TextMembershipCost" runat="server" CssClass="alignRight" Text="0" /></div>
-                <div class="stacked-input-control"><asp:TextBox ID="TextRenewalCost" runat="server" CssClass="alignRight" Text="0" /></div>
+                <div class="enableExpiryRenewalField"><div class="stacked-input-control"><asp:TextBox ID="TextRenewalCost" runat="server" CssClass="alignRight" Text="0" /></div>
                 <Swarmops5:DropDown ID="DropRenewalDateEffect" CssClass="DropTemp" runat="server"/>
                 <Swarmops5:DropDown ID="DropRenewalsAffect" CssClass="DropTemp" runat="server"/>
-                <Swarmops5:DropDown ID="DropRenewalReminder" CssClass="DropTemp" runat="server"/>
+                <Swarmops5:DropDown ID="DropRenewalReminder" CssClass="DropTemp" runat="server"/></div>
                 <Swarmops5:DropDown ID="DropMemberNumber" runat="server" />
-                <Swarmops5:AjaxToggleSlider ID="ToggleAskStreet" runat="server" Cookie="AskParticipantStreet" Label="Street" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
+                <Swarmops5:AjaxToggleSlider ID="ToggleAskStreet" runat="server" Cookie="AskParticipantStreet" Label="Ask Street" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled"/>
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelParticipationEntry" runat="server" /><br/>
                 <div class="enableApplicationField">Application Score required to qualify<br/></div>
                 <asp:Label ID="LabelParticipationOrg" runat="server" /><br/>
                 <asp:Label ID="LabelParticipationDuration" runat="server" /><br/>
-                <asp:Label ID="LabelParticipationChurn" runat="server" /><br/>
+                <div class="enableExpiryRenewalField"><asp:Label ID="LabelParticipationChurn" runat="server" /><br/></div>
                 <asp:Label ID="LabelParticipationCost" runat="server" /><br/>
-                <asp:Label ID="LabelRenewalCost" runat="server" /><br/>
+                <div class="enableExpiryRenewalField"><asp:Label ID="LabelRenewalCost" runat="server" /><br/>
                 <asp:Label ID="LabelRenewalDateEffect" runat="server" /><br/>
                 <asp:Label ID="LabelRenewalsAffect" runat="server" /><br/>
-                <asp:Label ID="LabelRenewalReminder" runat="server" /><br/>
+                <asp:Label ID="LabelRenewalReminder" runat="server" /><br/></div>
                 <asp:Label ID="LabelMemberNumber" runat="server" /><br />
                 Ask for participant's street address?
             </div>
