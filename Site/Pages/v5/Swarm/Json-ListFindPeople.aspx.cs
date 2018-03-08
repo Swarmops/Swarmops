@@ -77,10 +77,10 @@ namespace Swarmops.Frontend.Pages.Swarm
                                        person.GetSecureAvatarLink (16),
                                        JsonSanitize (person.Geography.Name),
                                        JsonSanitize (person.Mail),
-                                       JsonSanitize (person.Phone)) + "," +
+                                       JsonSanitize (person.Phone),
+                                        JsonSanitize(notes)) + "," +
                                     String.Format(
-                                        editPersonTemplate, person.Identity,
-                                        JsonSanitize(notes))
+                                        editPersonTemplate, person.Identity)
                                        + '}';
                 jsonPeople.Add (onePerson);
             }

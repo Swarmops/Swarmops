@@ -420,7 +420,7 @@ namespace Swarmops.Logic.Security
                     {
                         List<BasicApplicant> applicantList = applicantLookup[person.Identity];
 
-                        foreach (Applicant applicant in applicantList)
+                        foreach (BasicApplicant applicant in applicantList)
                         {
                             if (orgLookup.ContainsKey(applicant.OrganizationId))
                             {
