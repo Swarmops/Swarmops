@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -102,6 +103,11 @@ namespace Swarmops.Database
 
         public BasicHotBitcoinAddress[] GetHotBitcoinAddresses(params object[] conditions) // the typical condition would be an Organization, here
         {
+            if (conditions.Length > 0 && conditions[0] is BitcoinChain)
+            {
+                throw new InvalidOperationException("The compiler or runtime has chosen the wrong function signature");
+            }
+
             List<BasicHotBitcoinAddress> result = new List<BasicHotBitcoinAddress>();
 
             using (DbConnection connection = GetMySqlDbConnection())
@@ -111,6 +117,30 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand(
                         "SELECT" + hotBitcoinAddressFieldSequence + ConstructWhereClause("HotBitcoinAddresses", conditions), connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(ReadHotBitcoinAddressFromDataReader(reader));
+                    }
+
+                    return result.ToArray();
+                }
+            }
+        }
+
+        public BasicHotBitcoinAddress[] GetHotBitcoinAddresses(BitcoinChain chain, params object[] conditions) // the typical condition would be an Organization, here
+        {
+            List<BasicHotBitcoinAddress> result = new List<BasicHotBitcoinAddress>();
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT" + hotBitcoinAddressFieldSequence + ConstructWhereClause("HotBitcoinAddresses", conditions) + " AND HotBitcoinAddresses.BitcoinChainId=" + ((int) chain).ToString(CultureInfo.InvariantCulture), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

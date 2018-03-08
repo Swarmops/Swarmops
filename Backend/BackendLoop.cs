@@ -474,7 +474,7 @@ namespace Swarmops.Backend
                 try
                 {
                     // BotLog.Write(1, "FiveMinute", "Starting automated payout processing");
-                    // Payouts.PerformAutomated(); // TODO: Re-enable with Bitcoin Cash
+                    Payouts.PerformAutomated(BitcoinChain.Cash);
                 }
                 catch (Exception e)
                 {

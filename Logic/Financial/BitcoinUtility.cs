@@ -481,13 +481,13 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public static BitcoinTransactionInputs GetInputsForAmount (Organization organization, Int64 satoshis)
+        public static BitcoinTransactionInputs GetInputsForAmount (Organization organization, BitcoinChain chain, Int64 satoshis)
         {
             // TODO: Verify inputs up to date?
 
             // TODO: What's the most efficient way to do this?
 
-            HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization (organization);
+            HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization (organization, BitcoinChain.Cash);
             HotBitcoinAddressUnspents unspents = addresses.Unspents;
 
             // Lazy checking: if there's one single input that covers the entire amount, use it
@@ -496,12 +496,15 @@ namespace Swarmops.Logic.Financial
 
             foreach (HotBitcoinAddressUnspent unspent in unspents)
             {
-                if (unspent.AmountSatoshis >= satoshis)
+                if (unspent.Address.Chain == BitcoinChain.Cash)
                 {
-                    if (lowestSingleSufficientInput == null ||
-                        lowestSingleSufficientInput.AmountSatoshis > unspent.AmountSatoshis)
+                    if (unspent.AmountSatoshis >= satoshis)
                     {
-                        lowestSingleSufficientInput = unspent.AsInput;
+                        if (lowestSingleSufficientInput == null ||
+                            lowestSingleSufficientInput.AmountSatoshis > unspent.AmountSatoshis)
+                        {
+                            lowestSingleSufficientInput = unspent.AsInput;
+                        }
                     }
                 }
             }
@@ -932,13 +935,13 @@ namespace Swarmops.Logic.Financial
             // Make a small test payment to a multisig address
 
             TransactionBuilder txBuilder = null; // TODO TODO TODO TODO  new TransactionBuilder();
-            Int64 satoshis = new Money(100, Currency.FromCode ("SEK")).ToCurrency (Currency.BitcoinCore).Cents;
+            Int64 satoshis = new Money(100, Currency.FromCode ("SEK")).ToCurrency (Currency.BitcoinCash).Cents;
             BitcoinTransactionInputs inputs = null;
             Int64 satoshisMaximumAnticipatedFees = BitcoinUtility.GetRecommendedFeePerThousandBytesSatoshis(BitcoinChain.Cash) * 20; // assume max 20k transaction size
 
             try
             {
-                inputs = BitcoinUtility.GetInputsForAmount(organization, satoshis + satoshisMaximumAnticipatedFees);
+                inputs = BitcoinUtility.GetInputsForAmount(organization, BitcoinChain.Cash, satoshis + satoshisMaximumAnticipatedFees);
             }
             catch (NotEnoughFundsException)
             {

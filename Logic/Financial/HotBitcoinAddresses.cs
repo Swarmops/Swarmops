@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NBitcoin;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -18,6 +19,11 @@ namespace Swarmops.Logic.Financial
         public static HotBitcoinAddresses ForOrganization (Organization organization)
         {
             return FromArray (SwarmDb.GetDatabaseForReading().GetHotBitcoinAddresses (organization));
+        }
+
+        public static HotBitcoinAddresses ForOrganization(Organization organization, BitcoinChain chain)
+        {
+            return FromArray(SwarmDb.GetDatabaseForReading().GetHotBitcoinAddresses(chain, organization));
         }
 
         public HotBitcoinAddresses InMainWallet

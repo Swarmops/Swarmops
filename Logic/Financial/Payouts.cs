@@ -460,14 +460,15 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public static void PerformAutomated(BitcoinChain chain)
+        public static void PerformAutomated(BitcoinChain chain)  // removed parameter; Bitcoin Cash only
         {
+            if (chain != BitcoinChain.Cash)
+            {
+                throw new InvalidOperationException("Unable to use Bitcoin Core further; deprecated as of beta-4");
+            }
+            
             // Perform all waiting hot payouts for all orgs in the installation
 
-            throw new NotImplementedException("Waiting for rewrite for Bitcoin Cash");
-
-            // TODO
-            
             DateTime utcNow = DateTime.UtcNow;
 
             foreach (Organization organization in Organizations.GetAll())
@@ -545,7 +546,7 @@ namespace Swarmops.Logic.Financial
 
                         // Find the amount of satoshis for this payout
 
-                        if (organization.Currency.IsBitcoinCore)
+                        if (organization.Currency.IsBitcoinCash)
                         {
                             satoshiPayoutLookup[payout.ProtoIdentity] = payout.AmountCents;
                             nativeCentsPayoutLookup[payout.ProtoIdentity] = payout.AmountCents;
@@ -556,7 +557,7 @@ namespace Swarmops.Logic.Financial
                         {
                             // Convert currency
                             Money payoutAmount = new Money(payout.AmountCents, organization.Currency);
-                            Int64 satoshis = payoutAmount.ToCurrency(Currency.BitcoinCore).Cents;
+                            Int64 satoshis = payoutAmount.ToCurrency(Currency.BitcoinCash).Cents;
                             satoshiPayoutLookup[payout.ProtoIdentity] = satoshis;
                             nativeCentsPayoutLookup[payout.ProtoIdentity] = payout.AmountCents;
                             satoshisTotal += satoshis;
@@ -580,9 +581,9 @@ namespace Swarmops.Logic.Financial
                         primaryStrings[NotificationString.OrganizationName] = organization.Name;
                         OutboundComm.CreateNotification(organization, NotificationResource.BitcoinPayoutAddress_PleaseSet, primaryStrings, People.FromSingle(payout.RecipientPerson));
                     }
-                    else if (payout.Account.StartsWith ("bitcoin:"))
+                    else if (payout.Account.StartsWith ("bitcoincash:"))
                     {
-                        
+                        // TODO: what?
                     }
                 }
 
@@ -599,7 +600,7 @@ namespace Swarmops.Logic.Financial
 
                 try
                 {
-                    inputs = BitcoinUtility.GetInputsForAmount(organization, satoshisTotal + satoshisMaximumAnticipatedFees); 
+                    inputs = BitcoinUtility.GetInputsForAmount(organization, BitcoinChain.Cash, satoshisTotal + satoshisMaximumAnticipatedFees); 
                 }
                 catch (NotEnoughFundsException)
                 {
@@ -621,7 +622,7 @@ namespace Swarmops.Logic.Financial
                     secondaryStrings["AmountMissingMicrocoinsFloat"] =
                         ((satoshisTotal - satoshisAvailable + satoshisMaximumAnticipatedFees) / 100.0).ToString("N2");
 
-                    if (organization.Currency.IsBitcoinCore)
+                    if (organization.Currency.IsBitcoinCash)
                     {
                         secondaryStrings["AmountNeededFloat"] = ((satoshisTotal + satoshisMaximumAnticipatedFees) / 100.0).ToString("N2");
                         secondaryStrings["AmountWalletFloat"] = (satoshisAvailable/100.0).ToString ("N2");
@@ -631,9 +632,9 @@ namespace Swarmops.Logic.Financial
                         // convert to org native currency
 
                         secondaryStrings["AmountNeededFloat"] =
-                            (new Money (satoshisTotal, Currency.BitcoinCore).ToCurrency (organization.Currency).Cents/100.0).ToString ("N2");
+                            (new Money (satoshisTotal, Currency.BitcoinCash).ToCurrency (organization.Currency).Cents/100.0).ToString ("N2");
                         secondaryStrings["AmountWalletFloat"] =
-                            (new Money (satoshisAvailable, Currency.BitcoinCore).ToCurrency (organization.Currency).Cents/100.0).ToString ("N2");
+                            (new Money (satoshisAvailable, Currency.BitcoinCash).ToCurrency (organization.Currency).Cents/100.0).ToString ("N2");
                     }
 
                     OutboundComm.CreateNotification (organization,
@@ -659,7 +660,7 @@ namespace Swarmops.Logic.Financial
                 Dictionary<int, List<string>> notificationSpecLookup = new Dictionary<int, List<string>>();
                 Dictionary<int, List<Int64>> notificationAmountLookup = new Dictionary<int, List<Int64>>();
                 Payout masterPayoutPrototype = Payout.Empty;
-                HotBitcoinAddress changeAddress = HotBitcoinAddress.OrganizationWalletZero (organization, BitcoinChain.Core);   // TODO: CHAIN!
+                HotBitcoinAddress changeAddress = HotBitcoinAddress.OrganizationWalletZero (organization, BitcoinChain.Cash);
 
                 foreach (Payout payout in bitcoinPayouts)
                 {
@@ -790,7 +791,7 @@ namespace Swarmops.Logic.Financial
                 masterPrimaryStrings[NotificationString.OrganizationName] = organization.Name;
                 masterPrimaryStrings[NotificationString.CurrencyCode] = organization.Currency.DisplayCode;
                 masterSecondaryStrings["AmountFloat"] =
-                    (new Swarmops.Logic.Financial.Money (satoshisUsed, Currency.BitcoinCore).ToCurrency (
+                    (new Swarmops.Logic.Financial.Money (satoshisUsed, Currency.BitcoinCash).ToCurrency (
                         organization.Currency).Cents/100.0).ToString ("N2", CultureInfo.InvariantCulture);
                 masterSecondaryStrings["BitcoinAmountFloat"] = (satoshisUsed/100.0).ToString ("N2", CultureInfo.InvariantCulture);
                 masterSecondaryStrings["PaymentCount"] = bitcoinPayouts.Count.ToString("N0", CultureInfo.InvariantCulture);
@@ -803,7 +804,7 @@ namespace Swarmops.Logic.Financial
                 FinancialTransaction ledgerTransaction = FinancialTransaction.Create (organization, utcNow,
                     "Bitcoin automated payout");
 
-                if (organization.Currency.IsBitcoinCore)
+                if (organization.Currency.IsBitcoinCash)
                 {
                     ledgerTransaction.AddRow(organization.FinancialAccounts.AssetsBitcoinHot, -(masterPayoutPrototype.AmountCents + feeSatoshis), null);
                     ledgerTransaction.AddRow (organization.FinancialAccounts.CostsBitcoinFees, feeSatoshis, null);
@@ -812,8 +813,8 @@ namespace Swarmops.Logic.Financial
                 {
                     // If the ledger isn't using bitcoin natively, we need to translate the miner fee paid to ledger cents before entering it into ledger
 
-                    Int64 feeCentsLedger = new Money (feeSatoshis, Currency.BitcoinCore).ToCurrency (organization.Currency).Cents;
-                    ledgerTransaction.AddRow(organization.FinancialAccounts.AssetsBitcoinHot, -(masterPayoutPrototype.AmountCents + feeCentsLedger), null).AmountForeignCents = new Money(satoshisUsed, Currency.BitcoinCore);
+                    Int64 feeCentsLedger = new Money (feeSatoshis, Currency.BitcoinCash).ToCurrency (organization.Currency).Cents;
+                    ledgerTransaction.AddRow(organization.FinancialAccounts.AssetsBitcoinHot, -(masterPayoutPrototype.AmountCents + feeCentsLedger), null).AmountForeignCents = new Money(satoshisUsed, Currency.BitcoinCash);
                     ledgerTransaction.AddRow (organization.FinancialAccounts.CostsBitcoinFees, feeCentsLedger, null);
                 }
 
