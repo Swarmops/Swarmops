@@ -103,6 +103,56 @@ namespace Swarmops.Database
             }
         }
 
+
+        public Dictionary<int, List<BasicApplicant>> GetApplicantsFromPeople(int[] personIds)
+        {
+            Dictionary<int, List<BasicApplicant>> result = new Dictionary<int, List<BasicApplicant>>();
+
+            if (personIds == null || personIds.Length == 0)
+            {
+                return result;
+            }
+
+            // Optimization: If more than 128 personIds, build a hash table, get _all_ memberships, and return
+            // the matching ones logic wise. We've had _queries_ that exceed 64k text in length...
+
+            /*
+            if (personIds.Length > 128)
+            {
+                return GetParticipationsForPeopleOptimizedForLargeSets(personIds, gracePeriod);
+            }*/
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                string commandString = "SELECT " + applicantFieldSequence + " WHERE "
+                                       + "Open=1 AND PersonId in (" + JoinIds(personIds) + ")";
+
+                DbCommand command = GetDbCommand(commandString, connection);
+                command.CommandTimeout = 30; // If 30s is too short, something needs optimization.
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        BasicApplicant applicant = ReadApplicantFromDataReader(reader);
+                        int personId = applicant.PersonId;
+
+                        if (!result.ContainsKey(personId))
+                        {
+                            result[personId] = new List<BasicApplicant>();
+                        }
+
+                        result[personId].Add(applicant);
+                        // Add to this person's list of memberships
+                    }
+                }
+            }
+
+            return result;
+        }
+
         #endregion
 
         #region Creation and manipulation - stored procedures

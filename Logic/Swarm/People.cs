@@ -275,7 +275,7 @@ namespace Swarmops.Logic.Swarm
             BasicPerson[] candidates =
                 SwarmDb.GetDatabaseForReading().GetPeopleInGeographiesWithPattern (geoTree.Identities, pattern);
 
-            return FilterByMembership (candidates, organization);
+            return People.LogicalOr(FilterByMembership (candidates, organization), FilterByApplicant(candidates, organization));
         }
 
 
@@ -289,7 +289,7 @@ namespace Swarmops.Logic.Swarm
 
             // Filter on memberships
 
-            return FilterByMembership (people, organization);
+            return People.LogicalOr(FilterByMembership (people, organization), FilterByApplicant(people, organization));
         }
 
 
@@ -336,6 +336,55 @@ namespace Swarmops.Logic.Swarm
                 if (memberOfOrganization)
                 {
                     result.Add (Person.FromBasic (basicPerson));
+                }
+            }
+
+            return result;
+        }
+
+        private static People FilterByApplicant(BasicPerson[] candidates, Organization organization)
+        {
+            // Get the organization tree
+
+            Organizations orgTree = organization.ThisAndBelow();
+
+            // Build a lookup table of this organization tree. For each person in 'people' 
+            // that has at least one membership in an organization in the lookup table,
+            // add that person to the final result.
+
+            Dictionary<int, BasicOrganization> lookup = new Dictionary<int, BasicOrganization>();
+
+            foreach (Organization org in orgTree)
+            {
+                lookup[org.Identity] = org;
+            }
+
+            // Get the list of all memberships
+
+            Dictionary<int, List<BasicApplicant>> applicants =
+                SwarmDb.GetDatabaseForReading()
+                    .GetApplicantsFromPeople(People.FromArray(candidates).Identities);
+
+            People result = new People();
+
+            foreach (BasicPerson basicPerson in candidates)
+            {
+                bool applicantToOrganization = false;
+
+                if (applicants.ContainsKey(basicPerson.Identity))
+                {
+                    foreach (BasicApplicant applicant in applicants[basicPerson.Identity])
+                    {
+                        if (lookup.ContainsKey(applicant.OrganizationId))
+                        {
+                            applicantToOrganization = true;
+                        }
+                    }
+                }
+
+                if (applicantToOrganization)
+                {
+                    result.Add(Person.FromBasic(basicPerson));
                 }
             }
 

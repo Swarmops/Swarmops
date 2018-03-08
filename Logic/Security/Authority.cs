@@ -381,6 +381,7 @@ namespace Swarmops.Logic.Security
             orgLookup[Organization.Identity] = true;
 
             Dictionary<int, List<BasicParticipation>> membershipLookup = null;
+            Dictionary<int, List<BasicApplicant>> applicantLookup = null;
 
             if (HasSystemAccess(AccessType.Read) || HasAccess(new Access(Organization, aspect, AccessType.Read)))
             {
@@ -388,7 +389,8 @@ namespace Swarmops.Logic.Security
                 // or org-wide read access (at least) to participant/personal data at current Organization
 
                 // Optimization: Get all memberships in advance, without instantiating logic objects
-                membershipLookup = Participations.GetParticipationsForPeople (rawList.Identities, 0);
+                membershipLookup = Participations.GetParticipationsForPeople (rawList, 0);
+                applicantLookup = Applicants.GetApplicantsFromPeople(rawList);
 
                 foreach (Person person in rawList)
                 {
@@ -396,22 +398,40 @@ namespace Swarmops.Logic.Security
                     // them is visible to this Authority - if it's a membership in an org at or below the
                     // Authority object's organization
 
-                    if (membershipLookup.ContainsKey (person.Identity))
+                    if (membershipLookup.ContainsKey(person.Identity))
                     {
                         List<BasicParticipation> list = membershipLookup[person.Identity];
 
                         foreach (BasicParticipation basicMembership in list)
                         {
-                            if (orgLookup.ContainsKey (basicMembership.OrganizationId))
+                            if (orgLookup.ContainsKey(basicMembership.OrganizationId))
                             {
                                 // hit - this person has an active membership that makes them visible to this Authority
-                                result.Add (person);
+                                result.Add(person);
+                                break;
+                            }
+                        }
+
+                    }
+
+                    // If membership check fails, then check for membership applications
+
+                    if (applicantLookup.ContainsKey(person.Identity))
+                    {
+                        List<BasicApplicant> applicantList = applicantLookup[person.Identity];
+
+                        foreach (Applicant applicant in applicantList)
+                        {
+                            if (orgLookup.ContainsKey(applicant.OrganizationId))
+                            {
+                                // hit - this person has an active membership _application_ that makes them visible to this Authority
+                                result.Add(person);
                                 break;
                             }
                         }
                     }
                 }
-
+            
                 return result;
             }
 
@@ -448,7 +468,8 @@ namespace Swarmops.Logic.Security
 
             // Optimization: Get all memberships in advance, without instantiating logic objects
             Dictionary<int, List<BasicParticipation>> personLookup =
-                Participations.GetParticipationsForPeople(rawList.Identities, 0);
+                Participations.GetParticipationsForPeople(rawList, 0);
+            applicantLookup = Applicants.GetApplicantsFromPeople(rawList);
 
             foreach (Person person in rawList)
             {
@@ -462,15 +483,29 @@ namespace Swarmops.Logic.Security
                 {
                     // Geography hit. Test Membership / Organization.
 
-                    List<BasicParticipation> list = personLookup[person.Identity];
+                    bool added = false;
 
-                    foreach (BasicParticipation basicMembership in list)
+                    List<BasicParticipation> participationList = personLookup[person.Identity];
+
+                    foreach (BasicParticipation basicMembership in participationList)
                     {
-                        if (orgLookup.ContainsKey (basicMembership.OrganizationId))
+                        if (orgLookup.ContainsKey (basicMembership.OrganizationId) && !added)
                         {
                             // Organization hit - this person has an active membership that makes them visible to this Authority
 
                             result.Add (person);
+                            added = true;
+                        }
+                    }
+
+                    List<BasicApplicant> applicantList = applicantLookup[person.Identity];
+
+                    foreach (BasicApplicant basicApplicant in applicantList)
+                    {
+                        if (orgLookup.ContainsKey(basicApplicant.OrganizationId) && !added)
+                        {
+                            result.Add(person);
+                            added = true;
                         }
                     }
                 }

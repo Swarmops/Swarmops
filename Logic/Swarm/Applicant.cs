@@ -39,5 +39,10 @@ namespace Swarmops.Logic.Swarm
                 FromIdentityAggressive(SwarmDb.GetDatabaseForWriting()
                     .CreateApplicant(person.Identity, organization.Identity));
         }
+
+        public int ScoreTotal
+        {
+            get { return this.Score1 + this.Score2 + this.Score3; }
+        }
     }
 }
