@@ -24,6 +24,7 @@ CREATE TABLE `Applicants` (
 #
 
 
+
 DROP PROCEDURE IF EXISTS `CreateApplication`
 
 
