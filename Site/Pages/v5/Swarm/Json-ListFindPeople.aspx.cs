@@ -66,7 +66,7 @@ namespace Swarmops.Frontend.Pages.Swarm
                 if (applicantLookup.ContainsKey(person.Identity))
                 {
                     // If this is an applicant, use the "Notes" field for score
-                    notes = applicantLookup[person.Identity].ScoreTotal.ToString("N0");
+                    notes = "<span class='alignRight'>" + applicantLookup[person.Identity].ScoreTotal.ToString("N0") + "</span>";
                 }
 
                 string onePerson = '{' +
