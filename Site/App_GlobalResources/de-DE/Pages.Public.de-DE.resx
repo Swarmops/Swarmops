@@ -126,6 +126,12 @@
   
   
   
+  
+  
+  
+  
+  
+  
   <data name="Signup_Error_MailExists" xml:space="preserve">
     <value>Sie haben sich bereits auf diesem Swarmops-Server registriert. Benutzen Sie bitte die "Passwort zurücksetzen"-Funktion im Anmeldebildschirm, statt ein neues Konto zu erstellen.</value>
   </data>
@@ -173,6 +179,7 @@
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Vervollständigen Sie Ihre Registrierung.</value>
   </data>
+  
   
   
   

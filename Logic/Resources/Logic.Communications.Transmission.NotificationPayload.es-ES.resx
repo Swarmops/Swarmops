@@ -117,6 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  
+  
   <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
     <value>Al intentar un pago a su dirección de pago de Bitcoin Cash, el motor de pago subyacente rechazó la dirección ([BitcoinAddress]) como inválida. Por lo tanto, ha sido borrada de su perfil.
 

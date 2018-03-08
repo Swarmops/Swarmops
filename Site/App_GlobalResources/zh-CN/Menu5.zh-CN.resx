@@ -117,8 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Menu5_Administration" xml:space="preserve">
+    <value>管理员</value>
+  </data>
+  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
+    <value>访问控制列表</value>
+  </data>
+  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
+    <value>创建新组织</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>组织设置</value>
+  </data>
   
   
+  <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
+    <value>系统设置</value>
+  </data>
+  <data name="Menu5_Communications" xml:space="preserve">
+    <value>沟通</value>
+  </data>
+  <data name="Menu5_Communications_EditAutomailText" xml:space="preserve">
+    <value>编辑自动邮件文本</value>
+  </data>
+  <data name="Menu5_Communications_MailInbox" xml:space="preserve">
+    <value>管理邮件收件箱</value>
+  </data>
   
   
   
@@ -147,6 +171,12 @@
   
   
   
+  <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
+    <value>验证小票</value>
+  </data>
+  <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
+    <value>查看预算和实际支出</value>
+  </data>
   
   
   
@@ -171,10 +201,22 @@
   
   
   
+  <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
+    <value>上传银行文件</value>
+  </data>
   
+  <data name="Menu5_Organization" xml:space="preserve">
+    <value>组织</value>
+  </data>
   
   
+  <data name="Menu5_Organization_CommunicationTemplates_Invoice" xml:space="preserve">
+    <value>发票</value>
+  </data>
   
+  <data name="Menu5_Organization_CommunicationTemplates_Newsletter" xml:space="preserve">
+    <value>新闻</value>
+  </data>
   
   
   
@@ -184,34 +226,40 @@
   
   
   
+  <data name="Menu5_People" xml:space="preserve">
+    <value>人</value>
+  </data>
+  <data name="Menu5_People_AddMember" xml:space="preserve">
+    <value>添加成员</value>
+  </data>
+  <data name="Menu5_People_AddPerson" xml:space="preserve">
+    <value>添加[Regular]</value>
+  </data>
+  <data name="Menu5_People_ListFind" xml:space="preserve">
+    <value>列举/查找人员</value>
+  </data>
+  <data name="Menu5_People_ListMembers" xml:space="preserve">
+    <value>列举成员</value>
+  </data>
   
+  <data name="Menu5_People_ManageConferences" xml:space="preserve">
+    <value>管理会议</value>
+  </data>
+  <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
+    <value>管理志愿者</value>
+  </data>
+  <data name="Menu5_People_NewConference" xml:space="preserve">
+    <value>新会议</value>
+  </data>
+  <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
+    <value>角色和职责</value>
+  </data>
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>税单</value>
+  </data>
   
   
   

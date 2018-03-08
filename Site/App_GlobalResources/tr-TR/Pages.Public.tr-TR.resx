@@ -132,6 +132,7 @@
     <value>Bu varsayılan düzeydir ve organizasyonda taban seviye {0} olarak normal bir yer alacaksınız.</value>
     <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
   </data>
+  
   <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
     <value>Düzenli {0}</value>
     <comment>{0} is the Regular Participant label for the org.</comment>
@@ -142,6 +143,11 @@
   <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
     <value>Gönüllü Memur</value>
   </data>
+  
+  
+  
+  
+  
   
   <data name="Signup_Error_MailExists" xml:space="preserve">
     <value>Bu Swarmops sunucusuna zaten kayıtlısınız. Lütfen yeni bir hesap oluşturmak yerine giriş ekranından Parolayı Sıfırlama işlevini kullanın.</value>
@@ -221,6 +227,7 @@
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Kayıt olma tamamlandı.</value>
   </data>
+  
   
   
   <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">

@@ -949,9 +949,21 @@
     <value>Libro mayor para</value>
     <comment>This phrase is followed by dropdowns for year and month</comment>
   </data>
-  
-  
-  
-  
-  
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>Esta transacción cierra el reporte de IVA de {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>Esta transacción abre el reporte de IVA de {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>Esta trasancción recibe el pago de la Factura de Salida #{0:N0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>Esta transacción paga {0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>Esta transacción paga la Factura de Entrada #{0:N0} desde {1}.</value>
+  </data>
 </root>

@@ -124,6 +124,7 @@
   </data>
   
   
+  
   <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
     <value>{0} Regular</value>
     <comment>{0} is the Regular Participant label for the org.</comment>
@@ -132,11 +133,16 @@
   <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
     <value>Voluntário Oficial</value>
   </data>
+  
+  
   <data name="Signup_DashboardMessage" xml:space="preserve">
     <value>Bem-vindo! Este é o &lt;em&gt;Painel de Controlo,&lt;/em&gt; onde pode aceder à funcionalidade interna de {0}. Irá receber mais informação brevemente no seu email.&lt;br/&gt;&lt;br/&gt;
 
 Se se voluntariou para tomar responsabilidade formal, alguém (provavelmente também um voluntário, como você mesmo) irá contactá-lo para discutir mais sobre as oportunidades disponíveis.</value>
   </data>
+  
+  
+  
   <data name="Signup_Error_MailExists" xml:space="preserve">
     <value>Já se inscreveu neste servidor do Swarmops. Por favor utilize a função de Recuperação de Palavra-Passe através da página de entrada ao invés de criar uma nova conta.</value>
   </data>
@@ -220,6 +226,7 @@ Se se voluntariou para tomar responsabilidade formal, alguém (provavelmente tam
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Concluir Inscrição.</value>
   </data>
+  
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>Em que posição está interessado?</value>
   </data>

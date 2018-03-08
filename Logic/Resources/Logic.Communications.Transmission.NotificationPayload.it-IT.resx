@@ -135,6 +135,8 @@
   
   
   
+  
+  
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>L'anticipo richiesto con [OrganizationName] per [CurrencyCode] [BudgetAmountFloat], riguardante [RequestPurpose], è stato confermato dal responsabile del Bilancio. Ora si potrà procedere al pagamento.</value>
   </data>

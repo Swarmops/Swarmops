@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>crwdns6556790:0[RegularTitle]crwdnd6556790:0[OrganizationName]crwdnd6556790:0[ConcernedPersonName]crwdnd6556790:0[GeographyName]crwdnd6556790:0[CountryCode]crwdne6556790:0</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>crwdns6556791:0[OrganizationName]crwdnd6556791:0[ConcernedPersonName]crwdnd6556791:0[GeographyName]crwdne6556791:0</value>
+  </data>
   <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
     <value>crwdns6556768:0[BitcoinAddress]crwdnd6556768:0[InstallationName]crwdnd6556768:0[ExternalUrl]crwdne6556768:0</value>
   </data>

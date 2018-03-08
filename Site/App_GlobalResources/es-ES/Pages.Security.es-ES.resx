@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccessDenied_Header" xml:space="preserve">
-    <value>El acceso ha esta pagina fue denegado</value>
+    <value>El acceso a esta pagina fue denegado</value>
   </data>
   <data name="AccessDenied_Info" xml:space="preserve">
     <value>Intentó acceder a una página para la que no tiene permisos. Consulte el panel principal por algunas razones por las que esto pudo haber sucedido.</value>
@@ -130,7 +130,7 @@
     <value>&lt;p&gt;El marco de seguridad de Swarmops le ha denegado el acceso a la página a la que intentaba acceder. Esto generalmente significa que sus funciones estaban por encima de los niveles de acceso otorgados a usted para la organización seleccionada actualmente(&lt;em&gt;{0}&lt;/em&gt;). Esto no se ha registrado ni reportado en ninguna parte. &lt;/p&gt;&lt;p&gt; Hay varias razones por las que esto puede haber sucedido: &lt;/p&gt;</value>
   </data>
   <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
-    <value>La organización actual</value>
+    <value>Organización actual</value>
   </data>
   <data name="ChangeOrganizations_Info" xml:space="preserve">
     <value>Puede formar parte de varias organizaciones en esta instalación de Swarmops. Aquí es donde cambias entre ellos.</value>
@@ -145,7 +145,7 @@
     <value>Cambiar organización</value>
   </data>
   <data name="ChangeOrganizations_Switch" xml:space="preserve">
-    <value>Interruptor</value>
+    <value>Cambiar</value>
   </data>
   <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
     <value>Actualización de la base de datos pendiente</value>

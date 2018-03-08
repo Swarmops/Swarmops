@@ -135,6 +135,7 @@
     <value>Este es el nivel predeterminado, y significa que tomará parte normal en la organización como base {0}.</value>
     <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
   </data>
+  
   <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
     <value>Regular {0}</value>
     <comment>{0} is the Regular Participant label for the org.</comment>
@@ -145,11 +146,16 @@
   <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
     <value>Oficial de voluntarios</value>
   </data>
+  
+  
   <data name="Signup_DashboardMessage" xml:space="preserve">
     <value>¡Bienvenido! Este es el &lt;em&gt; Tablero, &lt;/em&gt; donde puede acceder a la funcionalidad interna de {0}. En breve recibirá más información por correo.&lt;br/&gt;&lt;br/&gt;
 
 Si se ofreció como voluntario para asumir la responsabilidad formal, alguien (probablemente también un voluntario, como usted) se pondrá en contacto con usted para analizar más sobre las oportunidades disponibles.</value>
   </data>
+  
+  
+  
   <data name="Signup_Error_MailExists" xml:space="preserve">
     <value>Ya te has registrado en este servidor de Swarmops. Utilice la función Restablecer contraseña en la pantalla de inicio de sesión en lugar de crear una cuenta nueva.</value>
   </data>
@@ -242,6 +248,7 @@ Si se ofreció como voluntario para asumir la responsabilidad formal, alguien (p
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Completar registro.</value>
   </data>
+  
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>¿En qué posición estás interesado?</value>
   </data>

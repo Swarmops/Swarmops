@@ -127,6 +127,8 @@
   
   
   
+  
+  
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
     <value>[OrganizationName] のBitcoin Hotwalletは、[CurrencyCode] [AmountFloat]（[BitcoinAmountFloat] マイクロビットコインまたは「ビット」）を合計した[PaymentCount] 自動支払いを行ったばかりです。...</value>
   </data>
