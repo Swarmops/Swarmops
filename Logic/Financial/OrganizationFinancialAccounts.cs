@@ -206,7 +206,7 @@ namespace Swarmops.Logic.Financial
 
         public FinancialAccount DebtsOther
         {
-            get { return this[OrganizationFinancialAccountType.DebtsSalary]; }
+            get { return this[OrganizationFinancialAccountType.DebtsOther]; }
         }
 
         public FinancialAccount IncomeCurrencyFluctuations
