@@ -84,7 +84,7 @@ namespace Swarmops.Logic.Support.BackendServices
             else
             {
                 Int64 centsPresentation =
-                    new Money(satoshisToReturn, Currency.BitcoinCash).ToCurrency(this.Organization.Currency).Cents;
+                    new Swarmops.Logic.Financial.Money(satoshisToReturn, Currency.BitcoinCash).ToCurrency(this.Organization.Currency).Cents;
                 ledgerTx2.AddRow(this.Organization.FinancialAccounts.DebtsOther, centsPresentation, this.Person);
                 ledgerTx2.AddRow(this.Organization.FinancialAccounts.AssetsBitcoinHot, -centsPresentation, this.Person);
             }
