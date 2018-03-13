@@ -75,8 +75,19 @@ namespace Swarmops.Logic.Support.BackendServices
             string tx2Description = "Bitcoin echo test repayment";
             FinancialTransaction ledgerTx2 = FinancialTransaction.Create(this.Organization,
                 DateTime.UtcNow, tx2Description);
-            ledgerTx2.AddRow(this.Organization.FinancialAccounts.DebtsOther, satoshisToReturn, this.Person);
-            ledgerTx2.AddRow(this.Organization.FinancialAccounts.AssetsBitcoinHot, -satoshisToReturn, this.Person);
+
+            if (this.Organization.Currency.IsBitcoinCash)
+            {
+                ledgerTx2.AddRow(this.Organization.FinancialAccounts.DebtsOther, satoshisToReturn, this.Person);
+                ledgerTx2.AddRow(this.Organization.FinancialAccounts.AssetsBitcoinHot, -satoshisToReturn, this.Person);
+            }
+            else
+            {
+                Int64 centsPresentation =
+                    new Swarmops.Logic.Financial.Money(satoshisToReturn, Currency.BitcoinCash).ToCurrency(this.Organization.Currency).Cents;
+                ledgerTx2.AddRow(this.Organization.FinancialAccounts.DebtsOther, centsPresentation, this.Person);
+                ledgerTx2.AddRow(this.Organization.FinancialAccounts.AssetsBitcoinHot, -centsPresentation, this.Person);
+            }
             ledgerTx2.BlockchainHash = tx.GetHash().ToString();
         }
 
