@@ -4,6 +4,7 @@ using System.Runtime.Versioning;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
@@ -108,9 +109,19 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
                 street, this.TextPostal.Text, this.TextCity.Text, this.DropCountries.SelectedValue, dateOfBirth,
                 (PersonGender)Enum.Parse(typeof(PersonGender), this.DropGenders.SelectedValue));
 
-            Participation newParticipation = Participation.Create (newPerson, CurrentOrganization, DateTime.Today.AddYears (1));
+            DateTime participationExpiry = Constants.DateTimeHigh;
+            ParticipantMailType welcomeMailType = ParticipantMailType.ParticipantAddedWelcome_NoExpiry;
 
-            OutboundComm.CreateParticipantMail (ParticipantMailType.ParticipantAddedWelcome, newParticipation, CurrentUser);
+            int participationDurationMonths = Int32.Parse(CurrentOrganization.Parameters.ParticipationDuration);
+            if (participationDurationMonths < 1000)
+            {
+                participationExpiry = DateTime.Today.AddMonths(participationDurationMonths);
+                welcomeMailType = ParticipantMailType.ParticipantAddedWelcome;
+            }
+
+            Participation newParticipation = Participation.Create (newPerson, CurrentOrganization, participationExpiry);
+
+            OutboundComm.CreateParticipantMail (welcomeMailType, newParticipation, CurrentUser);
 
             newPerson.LastLogonOrganizationId = CurrentOrganization.Identity;
 

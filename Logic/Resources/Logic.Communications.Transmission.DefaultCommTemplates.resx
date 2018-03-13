@@ -132,23 +132,6 @@ Welcome as [Aspirant] and we hope to see you as a [Regular] soon!</value>
   <data name="AspirantAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Welcome as [Aspirant] to [OrganizationName]!</value>
   </data>
-  <data name="ParticipantManualAddWelcomeNoExpiry_Body" xml:space="preserve">
-    <value>Welcome to [OrganizationName]!
-
-You have been granted a [Regularship] by [ActingPerson]. It does not expire automatically by any particular time or date, so there's no rush to take action.
-
-You should already have been contacted by people from [OrganizationName] for more information on how to get active. If not, then expect correspondence soon. 
-
-Your initial and randomly generated password to Swarmops, the software used as a back-end system, is as follows:
-[RandomPassword]
-
-You should log on and change this password to something more secure of your own choosing as soon as possible. You do so by logging on at [ExternalUrl] , and then clicking the "User" icon in the top right corner, selecting the Security tab (the one with the padlock), entering this temporary password, and then writing your new one. You should also consider enabling two-factor authentication, just as a good practice.
-
-Welcome aboard!</value>
-  </data>
-  <data name="ParticipantManualAddWelcomeNoExpiry_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Welcome to [OrganizationName]!</value>
-  </data>
   <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
     <value>Welcome to [OrganizationName]!
 
@@ -162,6 +145,23 @@ Your initial and randomly generated password to Swarmops, the software used as a
 You should log on and change this password to something more secure of your own choosing as soon as possible. You do so by logging on at [ExternalUrl] , and then clicking the "User" icon top right corner, selecting the Security tab (the one with the padlock), entering this temporary password, and then writing your new one. You should also consider enabling two-factor authentication, just as a good practice.
 
 Welcome aboard!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>Welcome to [OrganizationName]!
+
+You have been granted a [Regularship] by [ActingPerson]. It does not expire automatically by any particular time or date, so there's no rush to take action.
+
+You should already have been contacted by people from [OrganizationName] for more information on how to get active. If not, then expect correspondence soon. 
+
+Your initial and randomly generated password to Swarmops, the software used as a back-end system, is as follows:
+[RandomPassword]
+
+You should log on and change this password to something more secure of your own choosing as soon as possible. You do so by logging on at [ExternalUrl] , and then clicking the "User" icon in the top right corner, selecting the Security tab (the one with the padlock), entering this temporary password, and then writing your new one. You should also consider enabling two-factor authentication, just as a good practice.
+
+Welcome aboard!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Welcome to [OrganizationName]!</value>
   </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Welcome to [OrganizationName]!</value>

@@ -304,6 +304,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First Gentleman.
+        /// </summary>
+        internal static string Position_Executive_FirstGentleman {
+            get {
+                return ResourceManager.GetString("Position_Executive_FirstGentleman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Lady.
+        /// </summary>
+        internal static string Position_Executive_FirstLady {
+            get {
+                return ResourceManager.GetString("Position_Executive_FirstLady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Human Resources Assistant.
         /// </summary>
         internal static string Position_Executive_HrAssistant {

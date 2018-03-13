@@ -34,6 +34,13 @@ namespace Swarmops.Frontend.Automation
 
             bitcoinAddress = bitcoinAddress.Replace (" ", string.Empty);
 
+            // Remove a possible start of "bitcoincash:"
+
+            if (bitcoinAddress.StartsWith("bitcoincash:"))
+            {
+                bitcoinAddress = bitcoinAddress.Substring("bitcoincash:".Length);
+            }
+
             if (string.IsNullOrEmpty (authData.CurrentUser.BitcoinPayoutAddress))
             {
                 if (!BitcoinUtility.IsValidBitcoinAddress (bitcoinAddress))

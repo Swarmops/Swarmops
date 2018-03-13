@@ -1,3 +1,4 @@
+using System;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Support;
 
@@ -149,7 +150,7 @@ namespace Swarmops.Logic.Structure
 
         public string ParticipationDuration
         {
-            get { return this.data.GetOptionalDataString(ObjectOptionalDataType.OrgParticipationDuration); }
+            get { return CustomOrDefault(this.data.GetOptionalDataString(ObjectOptionalDataType.OrgParticipationDuration), "12"); }
             set { this.data.SetOptionalDataString(ObjectOptionalDataType.OrgParticipationDuration, value); }
         }
         public string ParticipationAcceptedMail
@@ -182,5 +183,18 @@ namespace Swarmops.Logic.Structure
             get { return this.data.GetOptionalDataInt(ObjectOptionalDataType.OrgApplicationQualifyingScore); }
             set { this.data.SetOptionalDataInt(ObjectOptionalDataType.OrgApplicationQualifyingScore, value); }
         }
+
+
+        private string CustomOrDefault(string customString, string defaultString)
+        {
+            if (String.IsNullOrEmpty(customString.Trim()))
+            {
+                return defaultString;
+            }
+
+            return customString;  // not trimmed, on purpose
+        }
+
+
     }
 }

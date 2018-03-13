@@ -1060,6 +1060,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are entering the &lt;strong&gt;Sandbox&lt;/strong&gt; organization.&lt;br/&gt;&lt;br/&gt;This is a safe environment where you can play around with Swarmops without risking any damage to production data. Have fun all you want, and return to your production environment when you&apos;re done experimenting..
+        /// </summary>
+        internal static string Global_EnteringSandbox {
+            get {
+                return ResourceManager.GetString("Global_EnteringSandbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to connect WebSocket. Live updates will not be available..
         /// </summary>
         internal static string Global_Error_WebsocketFailure {

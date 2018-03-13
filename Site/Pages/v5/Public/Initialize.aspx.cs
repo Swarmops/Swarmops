@@ -782,7 +782,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
                     string.Empty, string.Empty, new DateTime(1972,1,21), PersonGender.Unknown);
 
                 // Add membership in Sandbox
-                newPerson.AddParticipation(Organization.Sandbox, DateTime.UtcNow.AddYears(25));
+                newPerson.AddParticipation(Organization.Sandbox, Constants.DateTimeHigh); // expires never
 
                 // Initialize staffing to System and Sandbox with the new user
                 Positions.CreateSysadminPositions();

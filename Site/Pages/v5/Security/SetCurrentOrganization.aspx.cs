@@ -2,8 +2,10 @@
 using System.Globalization;
 using System.Web;
 using System.Web.Security;
+using Swarmops.Common;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Security
 {
@@ -31,7 +33,14 @@ namespace Swarmops.Frontend.Pages.v5.Security
                 suggestedOrganization = null;
             }
 
-            if (suggestedOrganization == null || !CurrentUser.ParticipatesInOrganization (suggestedOrganization))
+            if (suggestedOrganization.Identity == Organization.SandboxIdentity &&
+                !CurrentUser.ParticipatesInOrganization(suggestedOrganization))
+            {
+                // Add a forever participation in Sandbox
+
+                Participation.Create(CurrentUser, Organization.Sandbox, Constants.DateTimeHigh);
+            }
+            else if (suggestedOrganization == null || !CurrentUser.ParticipatesInOrganization (suggestedOrganization))
             {
                 // Some work here on PPSE pilot - we want everybody to be able to switch to Sandbox, which is #1
                 // except for in PPSE installation, where it is... #3 or something
@@ -50,6 +59,10 @@ namespace Swarmops.Frontend.Pages.v5.Security
             Authority newAuthority = CurrentAuthority;
             newAuthority.SetOrganization (suggestedOrganization); // will/can also modify Position
             CurrentUser.LastLogonOrganizationId = suggestedOrganization.Identity;
+
+            // Set a dashboard message that the user is now working in Sandbox
+
+            Response.SetCookie(new HttpCookie("DashboardMessage", Resources.Global.Global_EnteringSandbox);
 
             if (!string.IsNullOrEmpty (returnUrlString))
             {

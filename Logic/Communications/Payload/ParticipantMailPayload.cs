@@ -32,15 +32,26 @@ namespace Swarmops.Logic.Communications.Payload
             switch (mailType)
             {
                 case ParticipantMailType.ParticipantAddedWelcome:
+                case ParticipantMailType.ParticipantAddedWelcome_NoExpiry:
                     Strings[MailPayloadString.ActingPerson] = actingPerson.Name;
                     Strings[MailPayloadString.MembershipExpiry] = participation.Expires.ToLongDateString();
                     Strings[MailPayloadString.OrganizationName] = participation.Organization.Name;
                     Strings[MailPayloadString.Regularship] =
                         Participant.Localized (participation.Organization.RegularLabel, TitleVariant.Ship);
+                    Strings[MailPayloadString.ExternalUrl] = SystemSettings.ExternalUrl;
 
-                    BodyTemplate =
-                        Resources.Logic_Communications_Transmission_DefaultCommTemplates
-                            .ParticipantManualAddWelcome_Body;
+                    if (mailType == ParticipantMailType.ParticipantAddedWelcome)
+                    {
+                        BodyTemplate =
+                            Resources.Logic_Communications_Transmission_DefaultCommTemplates
+                                .ParticipantManualAddWelcome_Body;
+                    }
+                    else
+                    {
+                        BodyTemplate =
+                            Resources.Logic_Communications_Transmission_DefaultCommTemplates
+                                .ParticipantManualAddWelcome_NoExpiry_Body;
+                    }
 
                     SubjectTemplate =
                         Resources.Logic_Communications_Transmission_DefaultCommTemplates
@@ -136,7 +147,8 @@ namespace Swarmops.Logic.Communications.Payload
     public enum ParticipantMailType
     {
         Unknown = 0,
-        ParticipantAddedWelcome
+        ParticipantAddedWelcome,
+        ParticipantAddedWelcome_NoExpiry   
     }
 
     [Serializable]
@@ -148,7 +160,8 @@ namespace Swarmops.Logic.Communications.Payload
         MembershipExpiry,
         Regularship,
         ActingPerson,
-        OrganizationName
+        OrganizationName,
+        ExternalUrl
     }
 
 }

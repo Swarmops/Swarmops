@@ -75,7 +75,7 @@ namespace Swarmops.Frontend.Pages.Swarm
                                        person.Identity,
                                        JsonSanitize (person.Canonical),
                                        person.GetSecureAvatarLink (16),
-                                       JsonSanitize (person.Geography.Name),
+                                       JsonSanitize (person.Geography.Localized),
                                        JsonSanitize (person.Mail),
                                        JsonSanitize (person.Phone),
                                         JsonSanitize(notes)) + "," +

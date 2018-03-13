@@ -104,15 +104,6 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Welcome to [OrganizationName]!.
-        /// </summary>
-        internal static string ParticipantManualAddWelcome_Subject {
-            get {
-                return ResourceManager.GetString("ParticipantManualAddWelcome_Subject", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Welcome to [OrganizationName]!
         ///
         ///You have been granted a [Regularship] by [ActingPerson]. It does not expire automatically by any particular time or date, so there&apos;s no rush to take action.
@@ -124,18 +115,27 @@ namespace Swarmops.Logic.Resources {
         ///
         ///You should log on and c [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string ParticipantManualAddWelcomeNoExpiry_Body {
+        internal static string ParticipantManualAddWelcome_NoExpiry_Body {
             get {
-                return ResourceManager.GetString("ParticipantManualAddWelcomeNoExpiry_Body", resourceCulture);
+                return ResourceManager.GetString("ParticipantManualAddWelcome_NoExpiry_Body", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Welcome to [OrganizationName]!.
         /// </summary>
-        internal static string ParticipantManualAddWelcomeNoExpiry_Subject {
+        internal static string ParticipantManualAddWelcome_NoExpiry_Subject {
             get {
-                return ResourceManager.GetString("ParticipantManualAddWelcomeNoExpiry_Subject", resourceCulture);
+                return ResourceManager.GetString("ParticipantManualAddWelcome_NoExpiry_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Welcome to [OrganizationName]!.
+        /// </summary>
+        internal static string ParticipantManualAddWelcome_Subject {
+            get {
+                return ResourceManager.GetString("ParticipantManualAddWelcome_Subject", resourceCulture);
             }
         }
     }
