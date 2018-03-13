@@ -62,7 +62,7 @@ namespace Swarmops.Frontend.Pages.v5.Security
 
             // Set a dashboard message that the user is now working in Sandbox
 
-            Response.SetCookie(new HttpCookie("DashboardMessage", Resources.Global.Global_EnteringSandbox);
+            Response.SetCookie(new HttpCookie("DashboardMessage", CommonV5.JavascriptEscape(Resources.Global.Global_EnteringSandbox)));
 
             if (!string.IsNullOrEmpty (returnUrlString))
             {
