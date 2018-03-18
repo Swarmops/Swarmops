@@ -89,28 +89,33 @@ No, there isn't a "license". This code is completely in the public domain, with 
 That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.
 
 
-Beta-4 features progress
-------------------------
-
-Beta-4 was released on March 5 as planned, and included complete Expensify integration, so that people can upload large batches of expense reports directly from the Expensify service. This was a large feature that took almost two months to complete, with a bit of refactoring required as well.
-
-
 Beta-5 features progress
 ------------------------
 
-Beta-5 will be released on April 5, with string freeze on April 2. Its tentative focus will be Shapeshift integration and possibly an open API exposure.
+Beta-5 will be released on April 5 with string freeze on April 2. Its focus is to increase multicurrency functionality for payouts and bank imports.
+
+- [ ] Parameterize the bank file import procedure (big feature!)
+- [ ] Make it possible to import bank files in non-presentation currency
+- [ ] Rewrite payment addresses (a new name for this? Account vs. designator?)
+- [ ] Enable payment destinations, with currency
+
+
+Beta-6 features progress
+------------------------
+
+Beta-6 will be released on May 5, with string freeze on May 2. Its tentative focus will be Shapeshift integration and possibly an open API exposure.
 
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
 - [ ] Write a Pay Invoice page for Bitcoin Cash
-- [ ] Enable payment identifiers, with currency
 - [ ] Tie payment identifiers to people and suppliers
 
 
-Beta-6 features
+Beta-7 features
 ---------------
 
-Beta-6 will focus on Bitwala integration, for payments to legacy currencies the way Shapeshift pays cryptocurrencies.
+Beta-7 will focus on paying to Fiat from the Bitcoin Cash hotwallet.
+
 
 
 
