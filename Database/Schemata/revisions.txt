@@ -69,3 +69,4 @@
 0069 - Added table, procs for ExpenseClaimGroups [RF]
 0070 - Added first Applications tables, procs [RF]
 0071 - Renamed Application to Applicant, to avoid a marsh and misery of name collisions [RF]
+0072 - Critical bugfix for 0069 [RF]
