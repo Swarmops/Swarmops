@@ -117,18 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>Eyan tun tun kan ti waye la ti je [RegularTitle] ni [OrganizationName]! [ConcernedPersonName] Lọwọlọwọ n gbé ni [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] olubẹwẹ tun tun: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>Bi e se fe gba owo naa lo si Bitcoin Cash payout adirẹsi yin, adirẹsi ti ([BitcoinAddress]) kọ je wole tori ti underlying payout engine to wipe o wa invalid. Tori naa a ti yo kuro ni profaili yin.
+
+Ejo e wole si site wa [InstallationName] ni [ExternalUrl] ki e si ṣeto bitcoin payout adirẹsi tun tun si be.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Bitcoin payout adirẹsi yi o daa</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>E ti paarọ Bitcoin Cash payout adirẹsi yin lati [BitcoinOldAddress] si [BitcoinAddress]. Si ti ona aabo, gbo gbo owo ti e fe gba ni a ma dimu fun wakati méjídínláàdọ́ta.
+
+Ti ko ba n se eyin le paarọ adirẹsi naa ati wipe irufin aabo wa, ejo e te link yi lati tii account yin paa kia kia: [LockdownLink]
+
+Ti e ba te link naa, account yin ma tii paa ti ko ni si ibeere kan kan. Sugbon, ti o ba je wipe eyin le paarọ adirẹsi naa, ko si aburu kan kan sibe ki e ma dara yin lamu pupo.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Adirẹsi Bitcoin Cash payout ti paarọ</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>Eni owo ti o ye ki e gba ni [OrganizationName], sugbon e ti ṣeto ti Bitcoin Cash payout adirẹsi.
+
+Ejo e wole si site wa [InstallationName] ni [ExternalUrl] ki e si tẹle link naa lati seto ti payout adirẹsi yin - e ma ri larin awọn akojọ ohun n kan ti e fe se.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ejo e seto ti Bitcoin Cash payout adirẹsi yin</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>E ti seto ti Bitcoin Cash payout adirẹsi: [BitcoinAddress]. Si ti ona aabo, gbo gbo owo ti e fe gba ni a ma dimu fun wakati méjídínláàdọ́ta, ki a to wa san owo naa si adirẹsi tun tun ti e seto.
+
+Ti ko ba n se eyin le paarọ adirẹsi naa (o ma dara ki e se aseyewo le kan si lori ibi ti adirẹsi wa fun aabo sii), E pe olubasọrọ [OrganizationName] kia kia.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>Bitcoin Cash payout adirẹsi kan la seto fun [ConcernedPersonName]. A ma san owo naa fun yin nigba ti wakati méjídínláàdọ́ta bati koja.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] ti seto Bitcoin Cash payout adirẹsi</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bitcoin Cash payout adirẹsi ti seto</value>
+  </data>
   
   
   

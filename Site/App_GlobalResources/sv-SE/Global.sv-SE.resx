@@ -965,6 +965,14 @@
     <value>MMM d, yyyy</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
   </data>
-  
-  
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Skicka</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>Huvudbok</value>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>Du går nu in i &lt;strong&gt;Sandlådan&lt;/strong&gt;.&lt;br/&gt;&lt;br/&gt;Det här är en felsäker miljö där du kan leka med Swarmops funktionalitet utan att riskera att förstöra produktionsdata. Ha så kul det bara går, och återvänd till din organisation när du har experimenterat färdigt.</value>
+  </data>
 </root>

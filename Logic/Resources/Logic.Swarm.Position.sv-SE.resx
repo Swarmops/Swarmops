@@ -198,6 +198,14 @@
   <data name="Position_Executive_ChiefTechnologyOfficer" xml:space="preserve">
     <value>Teknikchef</value>
   </data>
+  <data name="Position_Executive_FirstGentleman" xml:space="preserve">
+    <value>Förste Man</value>
+    <comment>For government-type organizations only, with a female President</comment>
+  </data>
+  <data name="Position_Executive_FirstLady" xml:space="preserve">
+    <value>Första Dam</value>
+    <comment>For government-type organizations only</comment>
+  </data>
   <data name="Position_Executive_HrAssistant" xml:space="preserve">
     <value>Personalassistent</value>
   </data>

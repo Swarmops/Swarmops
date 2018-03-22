@@ -123,14 +123,14 @@
   <data name="AspirantAddWelcome_Subject" xml:space="preserve">
     <value>crwdns6556732:0[OrganizationName]crwdnd6556732:0[Aspirant]crwdnd6556732:0[OrganizationName]crwdne6556732:0</value>
   </data>
-  <data name="ParticipantManualAddWelcomeNoExpiry_Body" xml:space="preserve">
-    <value>crwdns6556733:0[OrganizationName]crwdnd6556733:0[Regularship]crwdnd6556733:0[ActingPerson]crwdnd6556733:0[OrganizationName]crwdnd6556733:0[RandomPassword]crwdnd6556733:0[ExternalUrl]crwdne6556733:0</value>
-  </data>
-  <data name="ParticipantManualAddWelcomeNoExpiry_Subject" xml:space="preserve">
-    <value>crwdns6556734:0[OrganizationName]crwdnd6556734:0[OrganizationName]crwdne6556734:0</value>
-  </data>
   <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
     <value>crwdns6556735:0[OrganizationName]crwdnd6556735:0[Regularship]crwdnd6556735:0[ActingPerson]crwdnd6556735:0[MembershipExpiry]crwdnd6556735:0[OrganizationName]crwdnd6556735:0[RandomPassword]crwdnd6556735:0[ExternalUrl]crwdne6556735:0</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>crwdns6556800:0[OrganizationName]crwdnd6556800:0[Regularship]crwdnd6556800:0[ActingPerson]crwdnd6556800:0[OrganizationName]crwdnd6556800:0[RandomPassword]crwdnd6556800:0[ExternalUrl]crwdne6556800:0</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>crwdns6556801:0[OrganizationName]crwdnd6556801:0[OrganizationName]crwdne6556801:0</value>
   </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>crwdns6555538:0[OrganizationName]crwdnd6555538:0[OrganizationName]crwdne6555538:0</value>

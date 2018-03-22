@@ -117,10 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AspirantAddWelcome_Body" xml:space="preserve">
+    <value>Ẹ kú àbọ̀ gegebi [Aspirant] si [OrganizationName]!
+
+E n waye fun [Regularship] ni [OrganizationName], lo fi jeka ran se si yin lori eto iranse, gege bi lodo [Aspirant]. Ti [Aspirantship] yin o ni pari laifọwọyi, sibe e ma damu arayin pupo lati ran iranse pada.
+
+ọrọigbaniwọle yin ti a fi bere ati ti laileto si Swarmops, eyi software ti won si fi n se back-end system, le leeyi:
+[RandomPassword]
+
+O ye ke wọle lori site wa kesi se ayipada ọrọigbaniwọle yin si n kan to ni oluso gegebi e se fe kia kia. E ti le se ti e ba wọle lori site wa ni [ExternalUrl] , E si wa te eyi "User" icon to wa ni igun oke apa ọtun, e si wa yan Security tab (eyi to ni padlock), e wa te ibùgbé ọrọigbaniwọle yin si inu re, e wa kọ eyi tun tun naa. O ye ke fi ironu naa si eyi ti two-factor authentication, bi ti asa to dara.
+
+Ẹ kú àbọ̀ gegebi [Aspirant] a de ni igbago wi pe a ma ri yin bi ti [Regular] lai pe lai jina!</value>
+  </data>
+  <data name="AspirantAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ẹ kú àbọ̀ gegebi [Aspirant] si [OrganizationName]!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
+    <value>Ẹ kú àbọ̀ si [OrganizationName]!
+
+A ti pese fun yin eyi ti [Regularship] lati odo [ActingPerson]. O ma pari ni [MembershipExpiry], sibe aaye si po dadaa ti e fi ma se ojulumọ agbari wa.
+
+O ye ki e ti gbo lati odo awon olubasọrọ wa ni [OrganizationName] fun alaye bi e se ma ti nṣiṣe lọwọ. Ti o ba n se be, ke si ma duro de ikowe lai pe lai jina.
+
+ọrọigbaniwọle yin ti a fi bere ati ti laileto si Swarmops, eyi software ti won si fi n se back-end system, le leeyi:
+[RandomPassword]
+
+O ye ke wọle lori site wa kesi se ayipada ọrọigbaniwọle yin si n kan to ni oluso gegebi e se fe kia kia. E ti le se ti e ba wọle lori site wa ni [ExternalUrl] , E si wa te eyi "User" icon to wa ni igun oke apa ọtun, e si wa yan Security tab (eyi to ni padlock), e wa te ibùgbé ọrọigbaniwọle yin si inu re, e wa kọ eyi tun tun naa. O ye ke fi ironu naa si eyi ti two-factor authentication, bi ti asa to dara
+
+ Ẹ kú àbọ̀!</value>
+  </data>
   
   
-  
-  
-  
-  
+  <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ẹ kú àbọ̀ si [OrganizationName]!</value>
+  </data>
 </root>

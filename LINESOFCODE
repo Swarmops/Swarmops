@@ -80,7 +80,7 @@
     377 ./Logic/Cache/OrganizationCache.cs
      85 ./Logic/Cache/GuidCache.cs
     889 ./Logic/Automation/GetGeographyData.cs
-    846 ./Logic/Resources/Logic.Swarm.Position.Designer.cs
+    864 ./Logic/Resources/Logic.Swarm.Position.Designer.cs
      90 ./Logic/Resources/Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs
     351 ./Logic/Resources/Logic.Structure.Country.Designer.cs
     288 ./Logic/Resources/Logic.Financial.Payout.Designer.cs
@@ -95,7 +95,7 @@
     142 ./Logic/Resources/Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs
    1062 ./Logic/Resources/Logic.Swarm.ParticipantTitle.Designer.cs
      58 ./Logic/AssemblyInfo.cs
-    154 ./Logic/Communications/Payload/ParticipantMailPayload.cs
+    167 ./Logic/Communications/Payload/ParticipantMailPayload.cs
     239 ./Logic/Communications/Payload/NotificationPayload.cs
      22 ./Logic/Communications/Payload/PayloadEnvelope.cs
    1285 ./Logic/Communications/TypedMailTemplate.cs
@@ -135,7 +135,7 @@
      36 ./Logic/Structure/GeographyStatisticsOverTime.cs
      53 ./Logic/Structure/City.cs
      21 ./Logic/Structure/GeographyBar.cs
-    185 ./Logic/Structure/OrganizationParameters.cs
+    199 ./Logic/Structure/OrganizationParameters.cs
     293 ./Logic/Structure/Geographies.cs
     228 ./Logic/Structure/GeographyStatistics.cs
      51 ./Logic/Structure/GeographyDataPoint.cs
@@ -248,7 +248,7 @@
      25 ./Logic/Support/Optimizations.cs
     116 ./Logic/Support/BlockchainTransaction.cs
     136 ./Logic/Support/BackendServices/BackendServiceOrderBase.cs
-     85 ./Logic/Support/BackendServices/ReturnBitcoinEchoUtxoOrder.cs
+     96 ./Logic/Support/BackendServices/ReturnBitcoinEchoUtxoOrder.cs
      57 ./Logic/Support/BackendServices/RasterizeDocumentHiresOrder.cs
     110 ./Logic/Support/BackendServiceOrder.cs
      98 ./Logic/Support/SingularFactory.cs
@@ -500,7 +500,7 @@
      83 ./Utility/Migrations/PeopleOptionalData.cs
      33 ./Site/Default.aspx.designer.cs
       0 ./Site/Automation/Json-GeographiesTree.aspx
-    120 ./Site/Automation/FinancialFunctions.aspx.cs
+    127 ./Site/Automation/FinancialFunctions.aspx.cs
      15 ./Site/Automation/Json-MasterPersonEditPaymentHistory.aspx.designer.cs
     159 ./Site/Automation/Json-FinancialAccountsTree.aspx.cs
       1 ./Site/Automation/Json-PositionsTree.aspx
@@ -544,7 +544,7 @@
       0 ./Site/App_GlobalResources/fr-FR/Pages.Swarm.fr-FR.designer.cs
       0 ./Site/App_GlobalResources/fr-FR/Pages.Financial.fr-FR.designer.cs
       0 ./Site/App_GlobalResources/fr-FR/Controls.Swarm.fr-FR.designer.cs
-   2327 ./Site/App_GlobalResources/Global.designer.cs
+   2336 ./Site/App_GlobalResources/Global.designer.cs
       0 ./Site/App_GlobalResources/sk-SK/Menu5.sk-SK.designer.cs
       0 ./Site/App_GlobalResources/sk-SK/Pages.Public.sk-SK.designer.cs
       0 ./Site/App_GlobalResources/sk-SK/Pages.Security.sk-SK.designer.cs
@@ -1045,7 +1045,7 @@
      51 ./Site/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx.designer.cs
      83 ./Site/Pages/v5/Security/ChangeOrganizations.aspx.cs
      15 ./Site/Pages/v5/Security/DatabaseUpgradeRequired.aspx.cs
-     64 ./Site/Pages/v5/Security/SetCurrentOrganization.aspx.cs
+     77 ./Site/Pages/v5/Security/SetCurrentOrganization.aspx.cs
      17 ./Site/Pages/v5/Security/AccessDenied.aspx
      13 ./Site/Pages/v5/Security/DatabaseUpgradeRequired.aspx
      15 ./Site/Pages/v5/Security/SetCurrentOrganization.aspx.designer.cs
@@ -1062,7 +1062,7 @@
      96 ./Site/Pages/v5/Comms/SendMassMessage.aspx.designer.cs
     114 ./Site/Pages/v5/Swarm/ListFindPeople.aspx.designer.cs
      15 ./Site/Pages/v5/Swarm/Json-ListFindPeople.aspx.designer.cs
-    169 ./Site/Pages/v5/Swarm/AddPerson.aspx.cs
+    180 ./Site/Pages/v5/Swarm/AddPerson.aspx.cs
       1 ./Site/Pages/v5/Swarm/Json-ListFindPeople.aspx
      33 ./Site/Pages/v5/Swarm/LocalOrganization.aspx.designer.cs
     258 ./Site/Pages/v5/Swarm/AddPerson.aspx.designer.cs
@@ -1386,4 +1386,4 @@
      87 ./Database/Database-OutboundMailRecipients.cs
     105 ./Database/Database-Activists.cs
     270 ./Database/Database-Applicants.cs
- 162275 total
+ 162371 total
