@@ -267,8 +267,8 @@
 
             SwarmopsJS.fancyBoxInit('.FancyBox_Gallery');
 
-            $(".LocalIconViewDoc").click(function () {
-                $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("firstDocId") + "']").first().click();
+            $(".LocalViewDox").click(function () {
+                $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("data-docid") + "']").first().click();
             });
 
             // Hook in edit-expense popup

@@ -574,7 +574,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             List<ExpensifyOutputRecord> outputRecords = new List<ExpensifyOutputRecord>();
 
             const string doxString =
-                "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" firstDocId='{0}' class='LocalIconViewDoc' style='cursor:pointer' height='20' width='20' />";
+                "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" data-docid='{0}' class='LocalIconViewDoc' style='cursor:pointer' height='20' width='20' />";
 
             const string editString =
                 "<img src='/Images/Icons/iconshock-wrench-128x96px-centered.png' height='18' width='24' class='LocalEditExpenseClaim' data-guid='{0}' />";
