@@ -16,12 +16,12 @@ x IMPROVEMENTS
 
 x BUGFIXES
 
-- Critical: Database procedures for closing Expensify reports would damage data (fixed in Db0072)
+- Critical: Database procedures for closing Expensify reports would damage data (introduced in Db0069, fixed in Db0072)
 - Added participation in Sandbox if the person didn't have one already
 - Updated "Add Participant" to reflect actual Participation Duration
 - Changed welcome mail for new Participant in the case of no Participation Expiry
 - Fixed localization for geography positions in Find/Search view
-
+- Repaired ability to view documents properly in General Ledger
 
 
 x MINOR
