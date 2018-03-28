@@ -253,7 +253,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         {
                             subResults.Add ("<strong>" +
                                             String.Format (Global.Financial_ExpenseClaimSpecificationWithClaimer,
-                                                payout.DependentExpenseClaims[0].Identity,
+                                                payout.DependentExpenseClaims[0].OrganizationSequenceId,
                                                 HttpUtility.HtmlEncode (payout.DependentExpenseClaims[0].Claimer.Name)) +
                                             ".</strong>");
                         }
@@ -297,7 +297,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         {
                             subResults.Add ("<strong>" +
                                             String.Format (Global.Financial_CashAdvanceLongSpecificationWithRecipient,
-                                                advance0.Identity, advance0.Person.Name) + ".</strong>");
+                                                advance0.OrganizationSequenceId, advance0.Person.Name) + ".</strong>");
                         }
                         else
                         {
@@ -320,7 +320,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         InboundInvoice invoice = payout.DependentInvoices[0];
 
                         subResults.Add ("<strong>" + String.Format (
-                            Global.Financial_InboundInvoiceSpecificationWithSender, invoice.Identity,
+                            Global.Financial_InboundInvoiceSpecificationWithSender, invoice.OrganizationSequenceId,
                             invoice.Supplier) + "</strong>");
 
                         subValidations.Add (GetObjectDetails (invoice));
