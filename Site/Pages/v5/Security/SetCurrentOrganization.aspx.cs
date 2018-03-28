@@ -60,9 +60,13 @@ namespace Swarmops.Frontend.Pages.v5.Security
             newAuthority.SetOrganization (suggestedOrganization); // will/can also modify Position
             CurrentUser.LastLogonOrganizationId = suggestedOrganization.Identity;
 
-            // Set a dashboard message that the user is now working in Sandbox
+            if (suggestedOrganization.Identity == Organization.SandboxIdentity)
+            {
+                // Set a dashboard message that the user is now working in Sandbox
 
-            Response.SetCookie(new HttpCookie("DashboardMessage", CommonV5.JavascriptEscape(Resources.Global.Global_EnteringSandbox)));
+                Response.SetCookie(new HttpCookie("DashboardMessage",
+                    CommonV5.JavascriptEscape(Resources.Global.Global_EnteringSandbox)));
+            }
 
             if (!string.IsNullOrEmpty (returnUrlString))
             {
