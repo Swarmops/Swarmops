@@ -132,23 +132,6 @@ Välkommen som [Aspirant] och vi hoppas snart få se dig som [Regular]!</value>
   <data name="AspirantAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Välkommen som [Aspirant] till [OrganizationName]!</value>
   </data>
-  <data name="ParticipantManualAddWelcomeNoExpiry_Body" xml:space="preserve">
-    <value>Välkommen till [OrganizationName]!
-
-[ActingPerson] har skapat ett [Regularship] åt dig. Det har ingen tidsbegränsning, så det finns gott om tid att bekanta sig med organisationen.
-
-Du har förmodligen redan kontaktats av folk från [OrganizationName] med mer information om hur du kan aktivera dig. Om inte, så får du förmodligen sådan kontakt inom kort.
-
-Ditt första och slumpgenererade lösenord för Swarmops, systemet som används för administration, är detta:
-[RandomPassword]
-
-Vi rekommenderar att du loggar på Swarmops och ändrar detta lösen till något säkrare som du valt själv så snart som möjligt. Du gör det genom att gå till [ExternalUrl] och logga på, och sedan klicka på användarikonen uppe till höger, välja säkerhetsfliken (den med hänglåset), skriva in detta första lösenord, och sedan skriva ditt nya. Du bör också aktivera tvåfaktorsautentisering, som en bra säkerhetsåtgärd i allmänhet.
-
-Välkommen ombord!</value>
-  </data>
-  <data name="ParticipantManualAddWelcomeNoExpiry_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Välkommen till [OrganizationName]!</value>
-  </data>
   <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
     <value>Välkommen till [OrganizationName]!
 
@@ -162,6 +145,23 @@ Ditt första och slumpgenererade lösenord för Swarmops, systemet som används 
 Vi rekommenderar att du loggar på Swarmops och ändrar detta lösen till något säkrare som du valt själv så snart som möjligt. Du gör det genom att gå till [ExternalUrl] och logga på, och sedan klicka på användarikonen uppe till höger, välja säkerhetsfliken (den med hänglåset), skriva in detta första lösenord, och sedan skriva ditt nya. Du bör också aktivera tvåfaktorsautentisering, som en bra säkerhetsåtgärd i allmänhet.
 
 Välkommen ombord!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>Välkommen till [OrganizationName]!
+
+[ActingPerson] har skapat ett [Regularship] åt dig. Det har ingen tidsbegränsning, så det finns gott om tid att bekanta sig med organisationen.
+
+Du har förmodligen redan kontaktats av folk från [OrganizationName] med mer information om hur du kan aktivera dig. Om inte, så får du förmodligen sådan kontakt inom kort.
+
+Ditt första och slumpgenererade lösenord för Swarmops, systemet som används för administration, är detta:
+[RandomPassword]
+
+Vi rekommenderar att du loggar på Swarmops och ändrar detta lösen till något säkrare som du valt själv så snart som möjligt. Du gör det genom att gå till [ExternalUrl] och logga på, och sedan klicka på användarikonen uppe till höger, välja säkerhetsfliken (den med hänglåset), skriva in detta första lösenord, och sedan skriva ditt nya. Du bör också aktivera tvåfaktorsautentisering, som en bra säkerhetsåtgärd i allmänhet.
+
+Välkommen ombord!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Välkommen till [OrganizationName]!</value>
   </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Välkommen till [OrganizationName]!</value>

@@ -117,8 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
+  <data name="SendMassMessage_Error_EmptyBody" xml:space="preserve">
+    <value>Du bör skriva en brödtext innan du skickar meddelandet.</value>
+  </data>
+  <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
+    <value>Du bör skriva en ärenderad innan du skickar meddelandet.</value>
+  </data>
   <data name="SendMassMessage_Geography" xml:space="preserve">
     <value>Som är bosatta i</value>
   </data>
@@ -128,7 +132,9 @@
   <data name="SendMassMessage_Info" xml:space="preserve">
     <value>Skicka ett massmeddelande till en grupp människor i organisationen. Du kan skicka meddelandet via mail (bra för nyhetsbrev och allmän information) eller till deras telefoner (kan uppfattas störande, och kostar även en del).</value>
   </data>
-  
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>Skriv ditt meddelande här. Standardkoder som *fet*, _kursiv_, ==rubrik== och liknande kan användas. En helt tom rad påbörjar ett nytt stycke. Mailet kommer att skickas som dual-mode klartext och HTML.</value>
+  </data>
   
   <data name="SendMassMessage_RecipientCount" xml:space="preserve">
     <value>Inga mottagare|en mottagare|{0:N0} mottagare</value>
@@ -137,7 +143,9 @@
   <data name="SendMassMessage_RecipientType" xml:space="preserve">
     <value>Skicka ett massmeddelande till alla</value>
   </data>
-  
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>Du är i Sandlådan just nu. Vart vill du ha ett testmeddelande skickat?</value>
+  </data>
   <data name="SendMassMessage_SendMessage" xml:space="preserve">
     <value>Skicka</value>
     <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
@@ -145,7 +153,10 @@
   <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
     <value>Ditt meddelande distribueras nu till mottagarna. Du meddelas när meddelandet gått iväg till alla.</value>
   </data>
-  
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>Ärenderad</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
+  </data>
   <data name="SendMassMessage_TestMessage" xml:space="preserve">
     <value>Testa</value>
     <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>

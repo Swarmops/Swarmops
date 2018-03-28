@@ -132,23 +132,6 @@ Maligayang pagdating bilang [Aspirant] at inaasahan naming makita ka bilang [Reg
   <data name="AspirantAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Maligayang pagdating bilang [Aspirant] sa [OrganizationName]!</value>
   </data>
-  <data name="ParticipantManualAddWelcomeNoExpiry_Body" xml:space="preserve">
-    <value>Maligayang pagdating sa [OrganizationName]!
-
-Nabigyan ka ng [Regularship] ng [ActingPerson]. Hindi ito awtomatikong mawawalan ng bisa sa anumang partikular na oras o petsa, kaya walang rush na kumilos.
-
-Dapat na na-ugnay ka na ng mga tao mula sa [OrganizationName] para sa higit pang impormasyon kung paano makakuha ng aktibo. Kung hindi, pagkatapos ay inaasahan ang pag-uusap sa lalong madaling panahon.
-
-Ang iyong paunang at random na nabuong password sa Swarmops, ang software na ginamit bilang back-end system, ay ang mga sumusunod:
-[RandomPassword]
-
-Dapat kang mag-log on at baguhin ang password na ito sa isang bagay na mas ligtas na iyong pinili sa lalong madaling panahon. Ginagawa mo ito sa pamamagitan ng pag-log in sa [ExternalUrl], at pagkatapos ay pag-click sa icon ng "User" sa kanang sulok sa itaas, pagpili sa tab na Security (ang isa na may padlock), pagpasok ng pansamantalang password, at pagkatapos ay pagsusulat ng bago mo. Dapat mo ring isaalang-alang ang pagpapagana ng dalawang-factor na pagpapatunay, tulad ng isang mahusay na kasanayan.
-
-Maligayang Pagdating!</value>
-  </data>
-  <data name="ParticipantManualAddWelcomeNoExpiry_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Maligayang pagdating sa [OrganizationName]!</value>
-  </data>
   <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
     <value>Maligayang pagdating sa [OrganizationName]!
 
@@ -163,6 +146,8 @@ Dapat kang mag-log on at baguhin ang password na ito sa isang bagay na mas ligta
 
 Maligayang Pagdating!</value>
   </data>
+  
+  
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Maligayang Pagdating sa [OrganizationName]!</value>
   </data>

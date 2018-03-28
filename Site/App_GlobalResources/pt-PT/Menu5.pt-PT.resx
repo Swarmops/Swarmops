@@ -192,7 +192,9 @@
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Assistente de Apresentações</value>
   </data>
-  
+  <data name="Menu5_Financial_List" xml:space="preserve">
+    <value>Lista...</value>
+  </data>
   <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
     <value>Pedidos de Dinheiro</value>
   </data>
@@ -211,18 +213,24 @@
   <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>Salários</value>
   </data>
-  
+  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
+    <value>Gerir os meus Orçamentos</value>
+  </data>
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>Pagamento de Dinheiro</value>
   </data>
   <data name="Menu5_Financial_Payroll" xml:space="preserve">
     <value>Folha de Pagamento</value>
   </data>
-  
+  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
+    <value>Recebida Nova Fatura</value>
+  </data>
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Pedido de Adiantamento de Dinheiro</value>
   </data>
-  
+  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
+    <value>Enviar Nova Fatura</value>
+  </data>
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>Validar Recibos</value>
   </data>
@@ -411,7 +419,10 @@
   <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
     <value>Conta Corrente Bitcoin</value>
   </data>
-  
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>Compilado em {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
   <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
     <value>{0:N0} linhas de código</value>
   </data>
@@ -424,6 +435,11 @@
   <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
     <value>Personificar</value>
   </data>
-  
-  
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>Relatórios de IVA</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Teste de Eco da Bitcoin Hotwallet</value>
+  </data>
 </root>

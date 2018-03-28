@@ -117,8 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>En ny person har ansökt om att bli [RegularTitle] i [OrganizationName]! [ConcernedPersonName] är för närvarande bosatt i [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] Ny sökande: [ConcernedPersonName], [GeographyName]</value>
+  </data>
   
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ÅTGÄRD KRÄVS] Ogiltig bitcoinutbetalningsadress</value>
