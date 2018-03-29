@@ -169,6 +169,10 @@ div.panel.datagrid > div.datagrid-wrap.panel-body {
     background-color: #f0f4ff; /* copy from easyui - may want to customize later */
 }
 
+.datagrid-body {
+    width: 100% !important;  /* this is miscalculated in at least Chrome to a bad pixel value */
+}
+
 /* TREE */
 
 .tree

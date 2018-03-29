@@ -28,3 +28,4 @@ x MINOR
 
 - Added explanation for entering Sandbox
 - Changed 25-year duration for first Sandbox participation to Forever
+- Minor UI fix to datagrid width on some browsers
