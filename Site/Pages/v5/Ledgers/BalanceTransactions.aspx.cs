@@ -389,7 +389,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new InvalidOperationException("Need forex gain/loss accounts for this operation");  // TODO: Autocreate?
             }
 
-            if ((-transactionCents) < payoutCents)  // the tx-negative is because it's a payout
+            if ((-transactionCents) > payoutCents)  // the tx-negative is because it's a payout
             {
                 // This is a forex loss, not a gain which is the default
                 forexSpillAccount = authData.CurrentOrganization.FinancialAccounts.CostsCurrencyFluctuations;

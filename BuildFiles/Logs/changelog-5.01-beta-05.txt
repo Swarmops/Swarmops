@@ -22,6 +22,7 @@ x BUGFIXES
 - Changed welcome mail for new Participant in the case of no Participation Expiry
 - Fixed localization for geography positions in Find/Search view
 - Repaired ability to view documents properly in General Ledger
+- Capital Gains/Loss were reversed on auto-accounting non-presentation invoices (doesn't change outcome, but formally incorrect)
 
 
 x MINOR
