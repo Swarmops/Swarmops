@@ -89,10 +89,16 @@ No, there isn't a "license". This code is completely in the public domain, with 
 That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.
 
 
-Beta-5 features progress
+Beta-5 progress
+---------------
+
+Beta-5 has frozen strings (April 2) and will be released on April 5. It contains mostly small fixes.
+
+
+Beta-6 features progress
 ------------------------
 
-Beta-5 will be released on April 5 with string freeze on April 2. Its focus is to increase multicurrency functionality for payouts and bank imports.
+Beta-6 will be released on May 5 with string freeze on May 2. Its focus is to increase multicurrency functionality for payouts and bank imports.
 
 - [ ] Parameterize the bank file import procedure (big feature!)
 - [ ] Make it possible to import bank files in non-presentation currency
@@ -100,10 +106,10 @@ Beta-5 will be released on April 5 with string freeze on April 2. Its focus is t
 - [ ] Enable payment destinations, with currency
 
 
-Beta-6 features progress
+Beta-7 features progress
 ------------------------
 
-Beta-6 will be released on May 5, with string freeze on May 2. Its tentative focus will be Shapeshift integration and possibly an open API exposure.
+Beta-7 will be released on June 5, with string freeze on June 2. Its tentative focus will be Shapeshift integration and possibly an open API exposure.
 
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
@@ -111,10 +117,10 @@ Beta-6 will be released on May 5, with string freeze on May 2. Its tentative foc
 - [ ] Tie payment identifiers to people and suppliers
 
 
-Beta-7 features
+Beta-8 features
 ---------------
 
-Beta-7 will focus on paying to Fiat from the Bitcoin Cash hotwallet.
+Beta-8 will focus on paying to Fiat from the Bitcoin Cash hotwallet.
 
 
 
