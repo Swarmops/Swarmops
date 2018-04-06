@@ -1,0 +1,20 @@
+SWARMOPS 5.1 BETA-6 CHANGE LOG
+
+
+x NEW FEATURES
+
+- (IN PROGRESS) Adding Manual Account Automation Profiles
+- (IN PROGRESS) Adding Account Automation Profile Library
+
+
+x IMPROVEMENTS
+
+- (IN PROGRESS) Changed bank file reader to use CSV helper
+
+
+x BUGFIXES
+
+
+
+x MINOR
+
