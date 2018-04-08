@@ -89,12 +89,6 @@ No, there isn't a "license". This code is completely in the public domain, with 
 That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.
 
 
-Beta-5 progress
----------------
-
-Beta-5 has frozen strings (April 2) and will be released on April 5. It contains mostly small fixes.
-
-
 Beta-6 features progress
 ------------------------
 
