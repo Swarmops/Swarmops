@@ -9,6 +9,7 @@ x NEW FEATURES
 
 x IMPROVEMENTS
 
+- GPDR compliance: A person must now have 2FA enabled to see other people's data
 - (IN PROGRESS) Changed bank file reader to use CSV helper
 
 

@@ -269,6 +269,16 @@ namespace Swarmops.Logic.Swarm
             set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.BitIdLoginAddress, value); }
         }
 
+        public virtual bool BitIdEnabled
+        {
+            get { return !string.IsNullOrEmpty(BitIdAddress); }
+        }
+
+        public virtual bool TwoFactorEnabled
+        {
+            get { return BitIdEnabled; }
+        }
+
 
         public virtual bool MailUnreachable
         {

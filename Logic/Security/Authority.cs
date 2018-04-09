@@ -354,6 +354,16 @@ namespace Swarmops.Logic.Security
 
         public People FilterPeople(People rawList, AccessAspect aspect = AccessAspect.Participation)
         {
+            if (!this.Person.TwoFactorEnabled)
+            {
+                if (this.Organization.Identity != Organization.SandboxIdentity)
+                {
+                    // GPDR compliance: to see any personal data, require 2FA to be turned on
+
+                    return new People();
+                }
+            }
+
             if (aspect != AccessAspect.Participation && aspect != AccessAspect.PersonalData)
             {
                 throw new ArgumentException(@"AccessAspect needs to reflect visibility of people data", "aspect");
@@ -523,6 +533,17 @@ namespace Swarmops.Logic.Security
             {
                 throw new ArgumentException(@"AccessAspect needs to reflect visibility of people data", "aspect");
             }
+
+            if (!this.Person.TwoFactorEnabled)
+            {
+                if (this.Organization.Identity != Organization.SandboxIdentity)
+                {
+                    // GPDR compliance: to see any personal data, require 2FA to be turned on
+
+                    return false;
+                }
+            }
+
 
             // Three cases:
 
