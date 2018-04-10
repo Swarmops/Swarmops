@@ -46,9 +46,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             HotBitcoinAddress address = HotBitcoinAddress.CreateUnique(this.CurrentOrganization, BitcoinChain.Cash,
                 BitcoinUtility.BitcoinEchoTestIndex, this.CurrentUser.Identity, utcNow.Year, utcNow.Month, utcNow.Day);
 
-            this.BitcoinCashAddressUsed = address.Address;
+            this.BitcoinCashAddressUsed = address.ProtocolLevelAddress;
             string guid = Guid.NewGuid().ToString("N");
-            GuidCache.Set(guid, address.Address);
+            GuidCache.Set(guid, address.ProtocolLevelAddress);
             this.TransactionGuid = guid;
 
             // Calculate conversion rate (satoshi-cents to unit-cents, so we're good, even if the conversion rate
@@ -62,11 +62,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             this.BoxTitle.Text = Resources.Pages.Admin.BitcoinEchoTest_PageTitle;
             this.LabelExplainBitcoinEchoTest.Text = String.Format (Resources.Pages.Admin.BitcoinEchoTest_Explain,
-                CurrentOrganization.Name, address.Address, BitcoinUtility.EchoFeeSatoshis / 100.0);
+                CurrentOrganization.Name, address.ProtocolLevelAddress, BitcoinUtility.EchoFeeSatoshis / 100.0);
 
             this.ImageBitcoinQr.ImageUrl =
                 "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=bitcoincash:" +
-                HttpUtility.UrlEncode (address.Address + "?label=" +
+                HttpUtility.UrlEncode (address.ProtocolLevelAddress + "?label=" +
                                        Uri.EscapeDataString ("Swarmops Bitcoin Echo Test")); // URI scheme doesn't like &, =
         }
 

@@ -190,6 +190,21 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public string HumanAddress
+        {
+            get
+            {
+                bool dummy1, dummy2;
+
+                return Swarmops.Logic.Support.BitcoinCashAddressConversion.LegacyAddressToCashAddress(this.MachineAddress, out dummy1, out dummy2);
+            }
+        }
+
+        public string ProtocolLevelAddress
+        {
+            get { return base.MachineAddress; }
+        }
+
         public void UpdateTotal()
         {
             SwarmDb.GetDatabaseForWriting().UpdateHotBitcoinAddressUnspentTotal(this.Identity);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using Swarmops.Common.Enums;
@@ -11,15 +12,14 @@ namespace Swarmops.Basic.Types.Financial
     public class BasicHotBitcoinAddress: IHasIdentity
     {
         public BasicHotBitcoinAddress (int hotBitcoinAddressId, int organizationId, BitcoinChain chain, string derivationPath,
-            int uniqueDerive, string address, string addressFallback, Int64 balanceSatoshis, Int64 throughputSatoshis)
+            int uniqueDerive, string address, Int64 balanceSatoshis, Int64 throughputSatoshis)
         {
             this.HotBitcoinAddressId = hotBitcoinAddressId;
             this.OrganizationId = organizationId;
             this.Chain = chain;
             this.DerivationPath = derivationPath;
             this.UniqueDerive = uniqueDerive;
-            this.Address = address;
-            this.AddressFallback = addressFallback;
+            this.MachineAddress = address;
             this.BalanceSatoshis = balanceSatoshis;
             this.ThroughputSatoshis = throughputSatoshis;
         }
@@ -27,7 +27,7 @@ namespace Swarmops.Basic.Types.Financial
         public BasicHotBitcoinAddress (BasicHotBitcoinAddress original)
             : this (
                 original.HotBitcoinAddressId, original.OrganizationId, original.Chain, original.DerivationPath, 
-                original.UniqueDerive, original.Address, original.AddressFallback, original.BalanceSatoshis, original.ThroughputSatoshis)
+                original.UniqueDerive, original.MachineAddress, original.BalanceSatoshis, original.ThroughputSatoshis)
         {
             // copy ctor
         }
@@ -37,8 +37,7 @@ namespace Swarmops.Basic.Types.Financial
         public BitcoinChain Chain { get; private set; }
         public string DerivationPath { get; private set; }
         public int UniqueDerive { get; private set; }
-        public string Address { get; private set; }
-        public string AddressFallback { get; private set; }
+        public string MachineAddress { get; private set; }
         public Int64 BalanceSatoshis { get; protected set; }
         public Int64 ThroughputSatoshis { get; protected set; }
 

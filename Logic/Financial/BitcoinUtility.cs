@@ -775,7 +775,7 @@ namespace Swarmops.Logic.Financial
             HotBitcoinAddresses hotAddresses = HotBitcoinAddresses.ForOrganization (organization);
             foreach (HotBitcoinAddress hotAddress in hotAddresses)
             {
-                result[hotAddress.Address] = organization.FinancialAccounts.AssetsBitcoinHot.Identity;
+                result[hotAddress.ProtocolLevelAddress] = organization.FinancialAccounts.AssetsBitcoinHot.Identity;
             }
 
             return result;
@@ -982,7 +982,7 @@ namespace Swarmops.Logic.Financial
 
             // Set change address to wallet slush
 
-            txBuilder.SetChange(new BitcoinPubKeyAddress(changeAddress.Address));
+            txBuilder.SetChange(new BitcoinPubKeyAddress(changeAddress.ProtocolLevelAddress));
 
             // Add fee
 

@@ -38,7 +38,7 @@ namespace Swarmops.Database
             Int64 balanceSatoshis = reader.GetInt64 (7);
             Int64 throughputSatoshis = reader.GetInt64 (8);
 
-            return new BasicHotBitcoinAddress (hotBitcoinAddressId, organizationId, chain, derivationPath, uniqueDerive, addressString, addressStringFallback, balanceSatoshis, throughputSatoshis);
+            return new BasicHotBitcoinAddress (hotBitcoinAddressId, organizationId, chain, derivationPath, uniqueDerive, addressString, balanceSatoshis, throughputSatoshis);
         }
 
         private BasicHotBitcoinAddressUnspent ReadHotBitcoinAddressUnspentFromDataReader(IDataRecord reader)

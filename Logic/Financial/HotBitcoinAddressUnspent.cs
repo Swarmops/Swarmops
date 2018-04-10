@@ -34,7 +34,7 @@ namespace Swarmops.Logic.Financial
                 return new BitcoinTransactionInput()
                 {
                     AmountSatoshis = this.AmountSatoshis,
-                    BitcoinAddress = address.Address,
+                    BitcoinAddress = address.ProtocolLevelAddress,
                     PrivateKey = address.PrivateKey,
                     TransactionHash = this.TransactionHash,
                     TransactionOutputIndex = this.TransactionOutputIndex,

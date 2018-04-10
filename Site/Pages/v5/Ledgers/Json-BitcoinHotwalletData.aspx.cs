@@ -28,12 +28,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     // These shouldn't exist much, so make sure that we have the equivalent Cash address registered
                     try
                     {
-                        HotBitcoinAddress.FromAddress(BitcoinChain.Cash, address.Address);
+                        HotBitcoinAddress.FromAddress(BitcoinChain.Cash, address.ProtocolLevelAddress);
                     }
                     catch (ArgumentException)
                     {
                         // We didn't have it, so create it
-                        BitcoinUtility.TestUnspents(BitcoinChain.Cash, address.Address);
+                        BitcoinUtility.TestUnspents(BitcoinChain.Cash, address.ProtocolLevelAddress);
                     }
                 }
 
@@ -103,7 +103,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         "\"balanceFiat\":\"{4}\",",
                         address.Identity,
                         address.Chain.ToString() + " " + address.DerivationPath,
-                        address.Address,
+                        address.ProtocolLevelAddress,
                         JsonExpandingString (address.Identity, satoshisUnspentAddress),
                         JsonExpandingString (address.Identity, (Int64) (satoshisUnspentAddress * conversionRateLookup[address.Chain]))
                         );
