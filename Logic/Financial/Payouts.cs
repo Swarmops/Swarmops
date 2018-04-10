@@ -695,7 +695,7 @@ namespace Swarmops.Logic.Financial
 
                 // Set change address to wallet slush
 
-                txBuilder.SetChange (new BitcoinPubKeyAddress (changeAddress.Address));
+                txBuilder.SetChange (new BitcoinPubKeyAddress (changeAddress.ProtocolLevelAddress));
 
                 // Add fee
 
