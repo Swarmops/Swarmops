@@ -31,5 +31,6 @@ namespace Swarmops.Basic.Types.Financial
         public Int64 AmountCents { get; private set; }
         public DateTime RowDateTime { get; private set; }
         public int RowCreatedByPersonId { get; private set; }
+
     }
 }
