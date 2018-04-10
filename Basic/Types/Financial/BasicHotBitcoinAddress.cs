@@ -37,7 +37,7 @@ namespace Swarmops.Basic.Types.Financial
         public BitcoinChain Chain { get; private set; }
         public string DerivationPath { get; private set; }
         public int UniqueDerive { get; private set; }
-        public string MachineAddress { get; private set; }
+        protected string MachineAddress { get; private set; }
         public Int64 BalanceSatoshis { get; protected set; }
         public Int64 ThroughputSatoshis { get; protected set; }
 
