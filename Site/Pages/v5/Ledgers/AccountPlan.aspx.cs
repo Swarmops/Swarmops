@@ -524,6 +524,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
         [WebMethod]
         public static bool ToggleSwitch ()
+        {
+            return false;  // TODO
+        }
 
 
         [WebMethod]
