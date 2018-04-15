@@ -583,7 +583,7 @@
             font-weight:500;
         }
 
-        .DivEditAutomaticRetrievalCredentials, .DivEditAutomationProfileCustom, .DivEditAutomationControls, .DivEditForexControls {
+        .DivEditAutomaticRetrievalCredentials, .DivEditAutomationProfileCustom, .DivEditAutomaticRetrieval, .DivEditAutomationControls, .DivEditForexControls {
             display: none;
         }
 
