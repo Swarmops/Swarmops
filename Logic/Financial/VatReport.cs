@@ -69,10 +69,11 @@ namespace Swarmops.Logic.Financial
             FinancialAccount vatInbound = organization.FinancialAccounts.AssetsVatInboundUnreported;
             FinancialAccount vatOutbound = organization.FinancialAccounts.DebtsVatOutboundUnreported;
             FinancialAccount sales = organization.FinancialAccounts.IncomeSales;
+            FinancialAccounts salesTree = sales.ThisAndBelow();
 
             FinancialAccountRows inboundRows = RowsNotInVatReport(vatInbound, endDate);
             FinancialAccountRows outboundRows = RowsNotInVatReport(vatOutbound, endDate);
-            FinancialAccountRows turnoverRows = RowsNotInVatReport(sales, endDate);
+            FinancialAccountRows turnoverRows = RowsNotInVatReport(salesTree, endDate);
 
             Dictionary<int, bool> transactionsIncludedLookup = new Dictionary<int, bool>();
 
@@ -227,6 +228,17 @@ namespace Swarmops.Logic.Financial
         {
             get { return VatReportItems.ForReport(this); }
         }
+
+
+        private static FinancialAccountRows RowsNotInVatReport(FinancialAccounts accounts, DateTime endTime)
+        {
+            FinancialAccountRows result = new FinancialAccountRows();
+
+            result.AddRange(accounts.SelectMany(account => RowsNotInVatReport(account, endTime)));
+
+            return result;
+        }
+
 
         private static FinancialAccountRows RowsNotInVatReport(FinancialAccount account, DateTime endDateTime)
         {
