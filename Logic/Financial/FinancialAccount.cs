@@ -646,5 +646,26 @@ namespace Swarmops.Logic.Financial
 
             return result;
         }
+
+
+        public int AutomationProfileId
+        {
+            get { return ObjectOptionalData.ForObject(this).GetOptionalDataInt(ObjectOptionalDataType.AutomationProfileId); }
+            set { ObjectOptionalData.ForObject(this).SetOptionalDataInt(ObjectOptionalDataType.AutomationProfileId, value); }
+        }
+
+        public string AutomationProfileCustomXml
+        {
+            get
+            {
+                return
+                    ObjectOptionalData.ForObject(this)
+                        .GetOptionalDataString(ObjectOptionalDataType.AutomationProfileCustomXml);
+            }
+            set
+            {
+                ObjectOptionalData.ForObject(this).SetOptionalDataString(ObjectOptionalDataType.AutomationProfileCustomXml, value);
+            }
+        }
     }
 }

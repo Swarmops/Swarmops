@@ -432,6 +432,16 @@ namespace Swarmops.Common.Enums
         OrgSignupLastPage,
         OrgApplicationCompleteMail,
         OrgParticipationAcceptedMail,
-        OrgApplicationQualifyingScore
+        OrgApplicationQualifyingScore,
+
+        /// <summary>
+        /// Profile identifier for asset tracking automation
+        /// </summary>
+        AutomationProfileId,
+
+        /// <summary>
+        /// If custom automation, the XML for it, in string format
+        /// </summary>
+        AutomationProfileCustomXml
     }
 }

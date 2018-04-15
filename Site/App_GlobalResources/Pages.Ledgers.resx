@@ -431,7 +431,7 @@
     <value>Expensable</value>
   </data>
   <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
-    <value>File upload profile</value>
+    <value>Automation Profile</value>
   </data>
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>Editing Account</value>

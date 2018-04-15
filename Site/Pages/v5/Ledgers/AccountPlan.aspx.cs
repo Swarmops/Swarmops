@@ -77,8 +77,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 this.LiteralLabelBudgetBalance.Text = Resources.Pages.Ledgers.AccountPlan_Edit_BudgetBalance;
                 this.LiteralLabelExpensableLong.Text = Resources.Pages.Ledgers.AccountPlan_Edit_ExpensableLong;
                 this.LiteralLabelExpensableShort.Text = Resources.Pages.Ledgers.AccountPlan_Edit_ExpensableShort;
-                this.LiteralLabelFileUploadProfile.Text = Resources.Pages.Ledgers.AccountPlan_Edit_FileUploadProfile;
-                this.LiteralLabelHeaderAutomation.Text = Resources.Pages.Ledgers.AccountPlan_Edit_HeaderAutomation;
+                this.LabelFileUploadProfile.Text = Resources.Pages.Ledgers.AccountPlan_Edit_FileUploadProfile;
+                this.LabelHeaderAutomation.Text = Resources.Pages.Ledgers.AccountPlan_Edit_HeaderAutomation;
                 this.LiteralLabelHeaderConfiguration.Text = Resources.Pages.Ledgers.AccountPlan_Edit_HeaderConfiguration;
                 this.LiteralLabelHeaderDailyOperations.Text =
                     Resources.Pages.Ledgers.AccountPlan_Edit_HeaderDailyOperations;
@@ -104,7 +104,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
         [WebMethod]
-        public static JsonAccountData GetAccountData (int accountId)
+        public static AjaxCallAccountData GetAccountData (int accountId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
@@ -118,7 +118,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             FinancialAccounts accountTree = account.ThisAndBelow();
             int year = DateTime.Today.Year;
 
-            JsonAccountData result = new JsonAccountData();
+            AjaxCallAccountData result = new AjaxCallAccountData();
 
             if (account.ParentIdentity == 0)
             {
@@ -276,9 +276,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return false;
             }
 
-            // TODO SECURITY: Verify that authdata.AuthenticatedPerson can see personId, or this can be exploited to enumerate all people
+            Person newOwner = Person.FromIdentity(newOwnerId);
 
-            account.Owner = Person.FromIdentity (newOwnerId);
+            // Verify that authdata.AuthenticatedPerson can see personId, or this can be exploited to enumerate all people
+
+            if (!authData.Authority.CanSeePerson(newOwner))
+            {
+                throw new ArgumentException("No such person identity");
+            }
+
+            account.Owner = newOwner;
             return true;
         }
 
@@ -287,6 +294,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             try
             {
+                const string initialBalanceTransactionTitle = "Initial Balances";
+
                 AuthenticationData authData = GetAuthenticationDataAndCulture();
                 FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
@@ -314,7 +323,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 foreach (FinancialAccountRow row in testRows)
                 {
-                    if (row.Transaction.Description == "Initial Balances")
+                    if (row.Transaction.Description == initialBalanceTransactionTitle)
                     {
                         initialBalancesTransaction = row.Transaction;
                         break;
@@ -326,7 +335,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     // create transaction
 
                     initialBalancesTransaction = FinancialTransaction.Create (authData.CurrentOrganization.Identity,
-                        new DateTime (authData.CurrentOrganization.FirstFiscalYear - 1, 12, 31), "Initial Balances");
+                        new DateTime (authData.CurrentOrganization.FirstFiscalYear - 1, 12, 31), initialBalanceTransactionTitle);
                 }
 
                 Dictionary<int, Int64> recalcBase = initialBalancesTransaction.GetRecalculationBase();
@@ -357,6 +366,85 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw;
             }
         }
+
+        [WebMethod]
+        public static ChangeAccountDataResult SetAccountInitialBalanceForex(int accountId, string newInitialBalanceString)
+        {
+            try
+            {
+                const string initialBalanceTransactionTitle = "Initial Balances";
+
+                AuthenticationData authData = GetAuthenticationDataAndCulture();
+                FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+
+                if (!PrepareAccountChange(account, authData, false) || authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear >= authData.CurrentOrganization.FirstFiscalYear)
+                {
+                    return new ChangeAccountDataResult
+                    {
+                        Result = ChangeAccountDataOperationsResult.NoPermission
+                    };
+                }
+
+                Int64 desiredInitialBalanceCents = Formatting.ParseDoubleStringAsCents(newInitialBalanceString);
+
+                Int64 currentInitialBalanceCents = account.GetDeltaCents(new DateTime(1900, 1, 1),
+                    new DateTime(authData.CurrentOrganization.FirstFiscalYear, 1, 1));
+
+                Int64 deltaCents = desiredInitialBalanceCents - currentInitialBalanceCents;
+
+                // Find or create "Initial Balances" transaction
+
+                FinancialAccountRows testRows = FinancialAccountRows.ForOrganization(authData.CurrentOrganization,
+                    new DateTime(1900, 1, 1), new DateTime(authData.CurrentOrganization.FirstFiscalYear, 1, 1));
+
+                FinancialTransaction initialBalancesTransaction = null;
+
+                foreach (FinancialAccountRow row in testRows)
+                {
+                    if (row.Transaction.Description == initialBalanceTransactionTitle)
+                    {
+                        initialBalancesTransaction = row.Transaction;
+                        break;
+                    }
+                }
+
+                if (initialBalancesTransaction == null)
+                {
+                    // create transaction
+
+                    initialBalancesTransaction = FinancialTransaction.Create(authData.CurrentOrganization.Identity,
+                        new DateTime(authData.CurrentOrganization.FirstFiscalYear - 1, 12, 31), initialBalanceTransactionTitle);
+                }
+
+                Dictionary<int, Int64> recalcBase = initialBalancesTransaction.GetRecalculationBase();
+                int equityAccountId = authData.CurrentOrganization.FinancialAccounts.DebtsEquity.Identity;
+
+                if (!recalcBase.ContainsKey(accountId))
+                {
+                    recalcBase[accountId] = 0;
+                }
+                if (!recalcBase.ContainsKey(equityAccountId))
+                {
+                    recalcBase[equityAccountId] = 0;
+                }
+
+                recalcBase[accountId] += deltaCents;
+                recalcBase[equityAccountId] -= deltaCents;
+                initialBalancesTransaction.RecalculateTransaction(recalcBase, authData.CurrentUser);
+                return new ChangeAccountDataResult
+                {
+                    Result = ChangeAccountDataOperationsResult.Changed,
+                    NewData = (desiredInitialBalanceCents / 100.0).ToString("N2", CultureInfo.CurrentCulture)
+                };
+            }
+            catch (Exception weirdException)
+            {
+                SupportFunctions.LogException("AccountPlan-SetInitBalance", weirdException);
+
+                throw;
+            }
+        }
+
 
         [WebMethod]
         public static ChangeAccountDataResult SetAccountBudget (int accountId, string budget)
@@ -464,6 +552,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
 
+        [Serializable]
         public class ChangeAccountDataResult
         {
             public ChangeAccountDataOperationsResult Result { set; get; }
@@ -471,22 +560,25 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
 
-        public struct JsonAccountData
+        [Serializable]
+        public class AjaxCallAccountData: AjaxCallResult
         {
-            public string AccountName;
-            public string AccountOwnerAvatarUrl;
-            public string AccountOwnerName;
-            public bool Active;
-            public bool Administrative;
-            public string InitialBalance;
-            public string Balance;
-            public string Budget;
-            public string ClosedYear;
-            public string CurrencyCode;
-            public bool Expensable;
-            public bool Open;
-            public int ParentAccountId;
-            public string ParentAccountName;
+            public string AccountName { get; set; }
+            public string AccountOwnerAvatarUrl { get; set; }
+            public string AccountOwnerName { get; set; }
+            public bool Active { get; set; }
+            public bool Administrative { get; set; }
+            public int AutomationProfileId { get; set; }
+            public string AutomationProfileCustomXml { get; set; }
+            public string InitialBalance { get; set; }
+            public string Balance { get; set; }
+            public string Budget { get; set; }
+            public string ClosedYear { get; set; }
+            public string CurrencyCode { get; set; }
+            public bool Expensable { get; set; }
+            public bool Open { get; set; }
+            public int ParentAccountId { get; set; }
+            public string ParentAccountName { get; set; }
         }
     }
 }

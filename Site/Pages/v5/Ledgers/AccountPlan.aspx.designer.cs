@@ -166,13 +166,67 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox CurrencyInitialBalance;
         
         /// <summary>
-        /// DropAccountUploadFormats control.
+        /// CurrencyInitialBalanceForex control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropAccountUploadFormats;
+        protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox CurrencyInitialBalanceForex;
+        
+        /// <summary>
+        /// ToggleAssetAutomation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider ToggleAssetAutomation;
+        
+        /// <summary>
+        /// DropAccountAutomationProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxDropDown DropAccountAutomationProfile;
+        
+        /// <summary>
+        /// TextCustomAutomationProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextCustomAutomationProfile;
+        
+        /// <summary>
+        /// ToggleAutoRetrieval control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider ToggleAutoRetrieval;
+        
+        /// <summary>
+        /// TextRetrievalLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextRetrievalLogin;
+        
+        /// <summary>
+        /// TextRetrievalPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextRetrievalPassword;
         
         /// <summary>
         /// LiteralLabelAccountName control.
@@ -265,22 +319,22 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::System.Web.UI.WebControls.Literal LiteralLabelInitialAmount;
         
         /// <summary>
-        /// LiteralLabelHeaderAutomation control.
+        /// LabelHeaderAutomation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralLabelHeaderAutomation;
+        protected global::System.Web.UI.WebControls.Label LabelHeaderAutomation;
         
         /// <summary>
-        /// LiteralLabelFileUploadProfile control.
+        /// LabelFileUploadProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralLabelFileUploadProfile;
+        protected global::System.Web.UI.WebControls.Label LabelFileUploadProfile;
         
         /// <summary>
         /// LabelSidebarOptions control.

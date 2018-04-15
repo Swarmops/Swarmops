@@ -1,9 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.AccountPlan" Codebehind="AccountPlan.aspx.cs" CodeFile="AccountPlan.aspx.cs" %>
 <%@ Import Namespace="Swarmops.Logic.Financial" %>
-<%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
-<%@ Register TagPrefix="Swarmops5" TagName="ComboPeople" Src="~/Controls/v5/Swarm/ComboPeople.ascx" %>
-<%@ Register TagPrefix="Swarmops5" TagName="TextCurrency" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
-<%@ Register TagPrefix="Swarmops5" TagName="ModalDialog" Src="~/Controls/v5/Base/ModalDialog.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <script src="/Scripts/jquery.switchButton.js" language="javascript" type="text/javascript"></script>
@@ -397,55 +393,47 @@
 	            }, 100);
 	        }
 
-	        $.ajax({
-	            type: "POST",
-	            url: "/Pages/v5/Ledgers/AccountPlan.aspx/GetAccountData",
-	            data: "{'accountId': '" + escape(accountId) + "'}",
-	            contentType: "application/json; charset=utf-8",
-	            dataType: "json",
-	            success: function(msg) {
+	        SwarmopsJS.ajaxCall(
+	            "/Pages/v5/Ledgers/AccountPlan.aspx/GetAccountData",
+	            { accountId: accountId },
+	            function(data) {
 
 	                suppressSwitchChangeAction = true;
-	                $("#CheckAccountActive").prop("checked", msg.d.Active).change();
-	                $("#CheckAccountExpensable").prop("checked", msg.d.Expensable).change();
-	                $("#CheckAccountAdministrative").prop("checked", msg.d.Administrative).change();
+	                $("#CheckAccountActive").prop("checked", data.Active).change();
+	                $("#CheckAccountExpensable").prop("checked", data.Expensable).change();
+	                $("#CheckAccountAdministrative").prop("checked", data.Administrative).change();
 	                suppressSwitchChangeAction = false;
 
-	                modalAccountName = msg.d.AccountName;
-	                $('#TextAccountName').val(msg.d.AccountName).css('background-color', '#FFF');
+	                modalAccountName = data.AccountName;
+	                $('#TextAccountName').val(data.AccountName).css('background-color', '#FFF');
 
-	                modalAccountBudget = msg.d.Budget;
-	                $('#TextAccountBudget').val(msg.d.Budget).css('background-color', '#FFF');
+	                modalAccountBudget = data.Budget;
+	                $('#TextAccountBudget').val(data.Budget).css('background-color', '#FFF');
 
-	                modalAccountInitialBalance = msg.d.InitialBalance;
-	                $('#<%=CurrencyInitialBalance.ClientID%>_TextInput').val(msg.d.InitialBalance).css('background-color', '#FFF');
+	                modalAccountInitialBalance = data.InitialBalance;
+	                $('#<%=CurrencyInitialBalance.ClientID%>_TextInput').val(data.InitialBalance).css('background-color', '#FFF');
 
-	                $('#SpanTextCurrency').text(msg.d.CurrencyCode);
-	                $('#SpanEditBalance').text(msg.d.Balance);
-	                parentAccountName = msg.d.ParentAccountName;
-	                setAccountTreeId(msg.d.ParentAccountId);
+	                $('#SpanTextCurrency').text(data.CurrencyCode);
+	                $('#SpanEditBalance').text(data.Balance);
+	                parentAccountName = data.ParentAccountName;
+	                setAccountTreeId(data.ParentAccountId);
 
 	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#FFF');
-	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-image', "url('" + msg.d.AccountOwnerAvatarUrl + "')");
-	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').attr('placeholder', msg.d.AccountOwnerName);
+	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-image', "url('" + data.AccountOwnerAvatarUrl + "')");
+	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').attr('placeholder', data.AccountOwnerName);
 	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').val('');
-	            }
-	        });
+	            });
 
 	    }
 
 	    function updateInactiveCount()
 	    {
-	        $.ajax({
-	            type: "POST",
-	            url: "/Pages/v5/Ledgers/AccountPlan.aspx/GetInactiveAccountCount",
-	            data: "{}",
-	            contentType: "application/json; charset=utf-8",
-	            dataType: "json",
-	            success: function(msg) {
-	                $("#SpanInactiveCount").text(msg.d);
-	            }
-	        });
+            SwarmopsJS.ajaxCall (
+	            "/Pages/v5/Ledgers/AccountPlan.aspx/GetInactiveAccountCount",
+                {},
+	            function(msg) {
+	                $("#SpanInactiveCount").text(msg);
+	            });
 	    }
 
         function modalShow() {
@@ -625,11 +613,24 @@
                 <label for="CheckAccountExpensable"><asp:Literal ID="LiteralLabelExpensableShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Expensable" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
                 <label for="CheckAccountAdministrative"><asp:Literal ID="LiteralLabelAdministrativeShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Administrative" class="EditCheck" id="CheckAccountAdministrative"/></div>
                 &nbsp;<br/></div>
-                <div id="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" /></div>
-                <div id="DivEditAssetControls">
-                    &nbsp;<br/>&nbsp;<br/>&nbsp;<br/><!--
-                    <asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>
-                    <div class="stacked-input-control"><input type="text" id="TextAutomationPaymentTag" readonly="readonly"/></div>-->
+                <div class="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" />
+                <div class="DivEditForexControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalanceForex" runat="server" /></div></div>
+                <div class="DivEditAssetControls">
+                    <div class="stacked-input-control"></div><!-- space for headline -->
+                    <Swarmops5:AjaxToggleSlider ID="ToggleAssetAutomation" runat="server"/>
+                    <div class="DivEditAutomationControls">
+                        <Swarmops5:AjaxDropDown ID="DropAccountAutomationProfile" runat="server"/>
+                        <div class="DivAutomationProfileCustom">
+                            <Swarmops5:AjaxTextBox ID="TextCustomAutomationProfile" runat="server"/>
+                        </div>
+                        <div class="DivAutomaticRetrieval">
+                            <Swarmops5:AjaxToggleSlider ID="ToggleAutoRetrieval" runat="server"/>
+                            <div class="DivAutomaticRetrievalCredentials">
+                                <Swarmops5:AjaxTextBox ID="TextRetrievalLogin" runat="server"/>
+                                <Swarmops5:AjaxTextBox ID="TextRetrievalPassword" runat="server"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="entryLabels"><asp:Literal ID="LiteralLabelAccountName" runat="server"/><br/>
@@ -641,10 +642,26 @@
                 <asp:Literal ID="LiteralLabelActiveLong" runat="server"/><br/>
                 <asp:Literal ID="LiteralLabelExpensableLong" runat="server"/><br/>
                 <asp:Literal ID="LiteralLabelAdministrativeLong" runat="server"/><br/></div>
-                <div id="DivEditInitLabels"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/></div> 
-                <div id="DivEditAssetLabels"><h2><asp:Literal ID="LiteralLabelHeaderAutomation" runat="server"/></h2>
-                <!--<asp:Literal ID="LiteralLabelFileUploadProfile" runat="server"/>-->TODO<br/>
-                <span id="SpanUploadParameterName">TODO</span></div> 
+                <div id="DivEditInitLabels"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/>
+                    <div class="DivEditForexControls">Initial Balance (<span class="SpanAccountCurrencyCode">XXX</span>)</div>
+                </div>
+                <div class="DivEditAssetControls">
+                    <h2><asp:Label ID="LabelHeaderAutomation" runat="server"/></h2>
+                    Enable account automation<br/>
+                    <div class="DivEditAutomationControls">
+                        <asp:Label runat="server" ID="LabelFileUploadProfile"/><br/>
+                        <div class="DivAutomationProfileCustom">
+                            Custom Profile XML<br/>
+                        </div>
+                        <div class="DivAutomaticRetrieval">
+                            Automatic Retrieval<br />
+                            <div class="DivAutomaticRetrievalCredentials">
+                                Autoretrieval Username<br/>
+                                Autoretrieval Password<br />
+                            </div>
+                        </div>
+                    </div>
+                </div>            
             </div>
        </DialogCode>
     </Swarmops5:ModalDialog>

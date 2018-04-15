@@ -160,7 +160,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File upload profile.
+        ///   Looks up a localized string similar to Automation Profile.
         /// </summary>
         internal static string AccountPlan_Edit_FileUploadProfile {
             get {
