@@ -527,6 +527,15 @@
 	    }
 
 
+	    function onToggleChange(newValue, cookie) {
+	        if (newValue) {
+	            $(".DivEditAutomationControls").slideDown();
+	        } else {
+	            $(".DivEditAutomationControls").slideUp();
+	        }
+	    }
+
+
 	    var currentYear = <%=DateTime.Today.Year %>;
 	    var firstFiscalYear = <%=CurrentOrganization.FirstFiscalYear %>;
 	    var ledgersClosedUntil = <%=CurrentOrganization.Parameters.FiscalBooksClosedUntilYear %>;
@@ -574,6 +583,10 @@
             font-weight:500;
         }
 
+        .DivEditAutomaticRetrievalCredentials, .DivEditAutomationProfileCustom, .DivEditAutomationControls, .DivEditForexControls {
+            display: none;
+        }
+
     </style>
 
 </asp:Content>
@@ -617,15 +630,15 @@
                 <div class="DivEditForexControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalanceForex" runat="server" /></div></div>
                 <div class="DivEditAssetControls">
                     <div class="stacked-input-control"></div><!-- space for headline -->
-                    <Swarmops5:AjaxToggleSlider ID="ToggleAssetAutomation" runat="server"/>
+                    <Swarmops5:AjaxToggleSlider ID="ToggleAssetAutomation" OnChange="onToggleChange" Cookie="Automation" runat="server"/>
                     <div class="DivEditAutomationControls">
                         <Swarmops5:AjaxDropDown ID="DropAccountAutomationProfile" runat="server"/>
-                        <div class="DivAutomationProfileCustom">
+                        <div class="DivEditAutomationProfileCustom">
                             <Swarmops5:AjaxTextBox ID="TextCustomAutomationProfile" runat="server"/>
                         </div>
-                        <div class="DivAutomaticRetrieval">
+                        <div class="DivEditAutomaticRetrieval">
                             <Swarmops5:AjaxToggleSlider ID="ToggleAutoRetrieval" runat="server"/>
-                            <div class="DivAutomaticRetrievalCredentials">
+                            <div class="DivEditAutomaticRetrievalCredentials">
                                 <Swarmops5:AjaxTextBox ID="TextRetrievalLogin" runat="server"/>
                                 <Swarmops5:AjaxTextBox ID="TextRetrievalPassword" runat="server"/>
                             </div>
@@ -650,12 +663,12 @@
                     Enable account automation<br/>
                     <div class="DivEditAutomationControls">
                         <asp:Label runat="server" ID="LabelFileUploadProfile"/><br/>
-                        <div class="DivAutomationProfileCustom">
+                        <div class="DivEditAutomationProfileCustom">
                             Custom Profile XML<br/>
                         </div>
-                        <div class="DivAutomaticRetrieval">
+                        <div class="DivEditAutomaticRetrieval">
                             Automatic Retrieval<br />
-                            <div class="DivAutomaticRetrievalCredentials">
+                            <div class="DivEditAutomaticRetrievalCredentials">
                                 Autoretrieval Username<br/>
                                 Autoretrieval Password<br />
                             </div>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Web;
 using System.Web.Services;
+using System.Web.UI.WebControls;
 using Resources;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
@@ -94,6 +95,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 this.LabelSidebarOptions.Text = Resources.Global.Sidebar_Options;
                 this.LabelOptionsShowInactive.Text = String.Format(Resources.Pages.Ledgers.AccountPlan_Options_ShowInactive, inactiveCount);
+
+                this.DropAccountAutomationProfile.Items.Add(new ListItem(Resources.Global.Global_SelectOne, "0"));
+
+                // Hardcoded automation profiles for the time being
+
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[CZ CZK] Fio CSV", "3"));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[DE EUR] Postbank CSV", "2"));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[SE SEK] SEB CSV", "1"));
+
             }
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
             DbVersionRequired = 2; // Account reparenting
@@ -511,6 +521,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw;
             }
         }
+
+        [WebMethod]
+        public static bool ToggleSwitch ()
+
 
         [WebMethod]
         public static bool SetAccountSwitch (int accountId, string switchName, bool switchValue)
