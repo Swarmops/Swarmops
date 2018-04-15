@@ -34,7 +34,7 @@ namespace Swarmops.Database
             string derivationPath = reader.GetString (3);
             int uniqueDerive = reader.GetInt32(4);
             string addressString = reader.GetString(5);
-            string addressStringFallback = reader.GetString(6);
+            // string addressStringFallback = reader.GetString(6);   // UNUSED
             Int64 balanceSatoshis = reader.GetInt64 (7);
             Int64 throughputSatoshis = reader.GetInt64 (8);
 
