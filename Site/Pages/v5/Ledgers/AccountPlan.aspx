@@ -625,19 +625,18 @@
                 &nbsp;<br/></div>
                 <div class="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" />
                 <div class="DivEditAssetControls"><div class="DivEditForexControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalanceForex" runat="server" /></div></div></div>
-                    <div class="stacked-input-control"></div><!-- space for headline -->
-                    <Swarmops5:AjaxToggleSlider ID="ToggleAssetAutomation" OnChange="onToggleChange" Cookie="Automation" runat="server"/>
-                    <div class="DivEditAutomationControls">
-                        <Swarmops5:AjaxDropDown ID="DropAccountAutomationProfile" runat="server"/>
-                        <div class="DivEditAutomationProfileCustom">
-                            <Swarmops5:AjaxTextBox ID="TextCustomAutomationProfile" runat="server"/>
-                        </div>
-                        <div class="DivEditAutomaticRetrieval">
-                            <Swarmops5:AjaxToggleSlider ID="ToggleAutoRetrieval" runat="server"/>
-                            <div class="DivEditAutomaticRetrievalCredentials">
-                                <Swarmops5:AjaxTextBox ID="TextRetrievalLogin" runat="server"/>
-                                <Swarmops5:AjaxTextBox ID="TextRetrievalPassword" runat="server"/>
-                            </div>
+                <div class="stacked-input-control"></div><!-- space for headline -->
+                <Swarmops5:AjaxToggleSlider ID="ToggleAssetAutomation" OnChange="onToggleChange" Cookie="Automation" runat="server"/>
+                <div class="DivEditAutomationControls">
+                    <Swarmops5:AjaxDropDown ID="DropAccountAutomationProfile" runat="server"/>
+                    <div class="DivEditAutomationProfileCustom">
+                        <Swarmops5:AjaxTextBox ID="TextCustomAutomationProfile" runat="server"/>
+                    </div>
+                    <div class="DivEditAutomaticRetrieval">
+                        <Swarmops5:AjaxToggleSlider ID="ToggleAutoRetrieval" runat="server"/>
+                        <div class="DivEditAutomaticRetrievalCredentials">
+                            <Swarmops5:AjaxTextBox ID="TextRetrievalLogin" runat="server"/>
+                            <Swarmops5:AjaxTextBox ID="TextRetrievalPassword" runat="server"/>
                         </div>
                     </div>
                 </div>
