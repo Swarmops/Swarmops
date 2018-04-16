@@ -250,11 +250,9 @@
 	        accountTree.combotree('setText', '');
 
 	        if ((accountType == 'A' || accountType == 'D') && firstFiscalYear > ledgersClosedUntil) {
-	            $('#DivEditInitLabels').show();
-	            $('#DivEditInitControls').show();
+	            $(".DivEditInitControls").show();
 	        } else {
-	            $('#DivEditInitLabels').hide();
-	            $('#DivEditInitControls').hide();
+	            $(".DivEditInitControls").hide();
 	        }
 
 	        if (accountType == 'A') {
