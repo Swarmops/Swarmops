@@ -624,8 +624,7 @@
                 <label for="CheckAccountAdministrative"><asp:Literal ID="LiteralLabelAdministrativeShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Administrative" class="EditCheck" id="CheckAccountAdministrative"/></div>
                 &nbsp;<br/></div>
                 <div class="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" />
-                <div class="DivEditForexControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalanceForex" runat="server" /></div></div>
-                <div class="DivEditAssetControls">
+                <div class="DivEditAssetControls"><div class="DivEditForexControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalanceForex" runat="server" /></div></div></div>
                     <div class="stacked-input-control"></div><!-- space for headline -->
                     <Swarmops5:AjaxToggleSlider ID="ToggleAssetAutomation" OnChange="onToggleChange" Cookie="Automation" runat="server"/>
                     <div class="DivEditAutomationControls">
@@ -652,8 +651,8 @@
                 <asp:Literal ID="LiteralLabelActiveLong" runat="server"/><br/>
                 <asp:Literal ID="LiteralLabelExpensableLong" runat="server"/><br/>
                 <asp:Literal ID="LiteralLabelAdministrativeLong" runat="server"/><br/></div>
-                <div id="DivEditInitLabels"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/>
-                    <div class="DivEditForexControls">Initial Balance (<span class="SpanAccountCurrencyCode">XXX</span>)</div>
+                <div id="DivEditInitLabels"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/><br/>
+                    <div class="DivEditAssetControls"><div class="DivEditForexControls">Initial Balance (<span class="SpanAccountCurrencyCode">XXX</span>)</div></div>
                 </div>
                 <div class="DivEditAssetControls">
                     <h2><asp:Label ID="LabelHeaderAutomation" runat="server"/></h2>
