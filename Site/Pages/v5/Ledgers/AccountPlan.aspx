@@ -623,20 +623,26 @@
                 <label for="CheckAccountExpensable"><asp:Literal ID="LiteralLabelExpensableShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Expensable" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
                 <label for="CheckAccountAdministrative"><asp:Literal ID="LiteralLabelAdministrativeShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Administrative" class="EditCheck" id="CheckAccountAdministrative"/></div>
                 &nbsp;<br/></div>
-                <div class="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" />
-                <div class="DivEditAssetControls"><div class="DivEditForexControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalanceForex" runat="server" /></div></div></div>
-                <div class="stacked-input-control"></div><!-- space for headline -->
-                <Swarmops5:AjaxToggleSlider ID="ToggleAssetAutomation" OnChange="onToggleChange" Cookie="Automation" runat="server"/>
-                <div class="DivEditAutomationControls">
-                    <Swarmops5:AjaxDropDown ID="DropAccountAutomationProfile" runat="server"/>
-                    <div class="DivEditAutomationProfileCustom">
-                        <Swarmops5:AjaxTextBox ID="TextCustomAutomationProfile" runat="server"/>
+                <div class="DivEditInitControls">
+                    <Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" />
+                    <div class="DivEditAssetControls">
+                        <div class="DivEditForexControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalanceForex" runat="server" /></div>
                     </div>
-                    <div class="DivEditAutomaticRetrieval">
-                        <Swarmops5:AjaxToggleSlider ID="ToggleAutoRetrieval" runat="server"/>
-                        <div class="DivEditAutomaticRetrievalCredentials">
-                            <Swarmops5:AjaxTextBox ID="TextRetrievalLogin" runat="server"/>
-                            <Swarmops5:AjaxTextBox ID="TextRetrievalPassword" runat="server"/>
+                </div>
+                <div class="DivEditAssetControls">
+                    <div class="stacked-input-control"></div><!-- space for headline -->
+                    <Swarmops5:AjaxToggleSlider ID="ToggleAssetAutomation" OnChange="onToggleChange" Cookie="Automation" runat="server"/>
+                    <div class="DivEditAutomationControls">
+                        <Swarmops5:AjaxDropDown ID="DropAccountAutomationProfile" runat="server"/>
+                        <div class="DivEditAutomationProfileCustom">
+                            <Swarmops5:AjaxTextBox ID="TextCustomAutomationProfile" runat="server"/>
+                        </div>
+                        <div class="DivEditAutomaticRetrieval">
+                            <Swarmops5:AjaxToggleSlider ID="ToggleAutoRetrieval" runat="server"/>
+                            <div class="DivEditAutomaticRetrievalCredentials">
+                                <Swarmops5:AjaxTextBox ID="TextRetrievalLogin" runat="server"/>
+                                <Swarmops5:AjaxTextBox ID="TextRetrievalPassword" runat="server"/>
+                            </div>
                         </div>
                     </div>
                 </div>
