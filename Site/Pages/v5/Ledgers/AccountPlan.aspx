@@ -258,20 +258,17 @@
 	        }
 
 	        if (accountType == 'A') {
-	            $('#DivEditAssetLabels').show();
-	            $('#DivEditAssetControls').show();
+	            $('.DivEditAssetControls').show();
 	            $('#DivEditProfitLossLabels').hide();
 	            $('#DivEditProfitLossControls').hide();
 	            accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Asset&ExcludeId=' + accountId);
 	        } else if (accountType == 'D') { // Debt, aka Liability
-	            $('#DivEditAssetLabels').hide();
-	            $('#DivEditAssetControls').hide();
+	            $('.DivEditAssetControls').hide();
 	            $('#DivEditProfitLossLabels').hide();
 	            $('#DivEditProfitLossControls').hide();
 	            accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Debt&ExcludeId=' + accountId);
 	        } else { // P&L account
-	            $('#DivEditAssetLabels').hide();
-	            $('#DivEditAssetControls').hide();
+	            $('.DivEditAssetControls').hide();
 	            $('#DivEditProfitLossLabels').show();
 	            $('#DivEditProfitLossControls').show();
 
@@ -583,7 +580,7 @@
             font-weight:500;
         }
 
-        .DivEditAutomaticRetrievalCredentials, .DivEditAutomationProfileCustom, .DivEditAutomaticRetrieval, .DivEditAutomationControls, .DivEditForexControls {
+        .DivEditAutomaticRetrievalCredentials, .DivEditAutomationProfileCustom, .DivEditAutomaticRetrieval, .DivEditAutomationControls, .DivEditForexControls, .DivEditAssetControls {
             display: none;
         }
 
