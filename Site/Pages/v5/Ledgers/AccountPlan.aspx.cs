@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Basic.Types.Structure;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -530,6 +531,41 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
         [WebMethod]
+        public static AjaxCallAutomationDataResult SetAccountAutomationProfile(int accountId, int profileId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+
+
+            if (account.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new UnauthorizedAccessException("A million nopes");
+            }
+
+            if (
+                !authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails,
+                    AccessType.Write)))
+            {
+                throw new UnauthorizedAccessException("No");
+            }
+
+            account.AutomationProfileId = profileId;
+
+            AjaxCallAutomationDataResult result = new AjaxCallAutomationDataResult();
+            result.Success = true;
+            result.Data = GetAccountAutomationData(profileId);
+
+            return result;
+        }
+
+
+        private static AutomationData GetAccountAutomationData(int profileId)
+        {
+            
+        }
+
+
+        [WebMethod]
         public static bool SetAccountSwitch (int accountId, string switchName, bool switchValue)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
@@ -596,6 +632,25 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public bool Open { get; set; }
             public int ParentAccountId { get; set; }
             public string ParentAccountName { get; set; }
+            public AutomationData AutomationData { get; set; }
+        }
+
+
+        [Serializable]
+        public class AutomationData
+        {
+            public bool AutomationEnabled { get; set; }
+            public int AutomationProfileId { get; set; }
+            public string AutomationCurrencyCode { get; set; }
+            public bool NonPresentationCurrency { get; set; }
+            public bool AutomaticRetrievalPossible { get; set; }  // always false for now
+            public string AutomationProfileCustomXml { get; set; }  // always empty for now
+        }
+
+        [Serializable]
+        public class AjaxCallAutomationDataResult : AjaxCallResult
+        {
+            public AutomationData Data { get; set; }
         }
     }
 }

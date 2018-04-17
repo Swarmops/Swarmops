@@ -530,7 +530,6 @@
 	        }
 	    }
 
-
 	    var currentYear = <%=DateTime.Today.Year %>;
 	    var firstFiscalYear = <%=CurrentOrganization.FirstFiscalYear %>;
 	    var ledgersClosedUntil = <%=CurrentOrganization.Parameters.FiscalBooksClosedUntilYear %>;
