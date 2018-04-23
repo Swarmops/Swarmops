@@ -104,7 +104,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 this.DropAccountAutomationProfile.Items.Add(new ListItem("[BTC] Bitcoin Core - Armory", "3"));
                 this.DropAccountAutomationProfile.Items.Add(new ListItem("[BCH] Bitcoin Cash - Armory", "2"));
-                this.DropAccountAutomationProfile.Items.Add(new ListItem("[BCH] Bitcoin Cash Hotwallet", "1"));
                 this.DropAccountAutomationProfile.Items.Add(new ListItem("[CZ CZK] Fio CSV", "7"));
                 this.DropAccountAutomationProfile.Items.Add(new ListItem("[DE EUR] Postbank CSV", "6"));
                 this.DropAccountAutomationProfile.Items.Add(new ListItem("[SE SEK] SEB CSV", "5"));
