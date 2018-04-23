@@ -574,7 +574,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             if (result.AutomationEnabled)
             {
-                result.Profile = 
+                // result.Profile = 
             }
 
             return result;
