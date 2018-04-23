@@ -655,11 +655,11 @@
                 <asp:Literal ID="LiteralLabelExpensableLong" runat="server"/><br/>
                 <asp:Literal ID="LiteralLabelAdministrativeLong" runat="server"/><br/></div>
                 <div id="DivEditInitLabels">
-                    <div class="DivEditNonAutomationControls"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/><br/></div></div>
+                    <div class="DivEditNonAutomationControls"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/><br/></div>
                 </div>
                 <div class="DivEditAssetControls">
                     <h2><asp:Label ID="LabelHeaderAutomation" runat="server"/></h2>
-                    Enable account automation<br/>
+                    <div class="stacked-input-control">Enable account automation</div>
                     <div class="DivEditAutomationControls">
                         <asp:Label runat="server" ID="LabelFileUploadProfile"/><br/>
                         <div class="DivEditAutomationProfileCustom">

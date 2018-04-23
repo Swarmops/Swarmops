@@ -574,7 +574,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             if (result.AutomationEnabled)
             {
-                
+                result.Profile = 
             }
 
             return result;
@@ -660,7 +660,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public string AutomationCurrencyCode { get; set; }
             public string AutomationCountryCode { get; set; }
             public bool NonPresentationCurrency { get; set; }
-            public bool SetInitialBalance { get; set; }
             public bool AutomaticRetrievalPossible { get; set; }  // always false for now
             public string AutomationProfileCustomXml { get; set; }  // always empty for now
 
