@@ -166,15 +166,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox CurrencyInitialBalance;
         
         /// <summary>
-        /// CurrencyInitialBalanceForex control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox CurrencyInitialBalanceForex;
-        
-        /// <summary>
         /// ToggleAssetAutomation control.
         /// </summary>
         /// <remarks>

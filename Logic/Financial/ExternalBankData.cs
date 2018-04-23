@@ -38,7 +38,7 @@ namespace Swarmops.Logic.Financial
                 throw new InvalidOperationException ("Cannot call LoadData before a profile has been set");
             }
 
-            if (Profile.BankDataAccountReader != StockBankDataReaders.TabSeparatedValuesAccountReader)
+            if (Profile.BankDataAccountReader != StockBankDataReaders.CommaSeparatedValuesAccountReader)
             {
                 throw new NotImplementedException ("Only tab separated values are supported at this point");
             }

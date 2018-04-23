@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Financial
 {
-    public class ExternalBankDataProfile
+    public class ExternalBankDataProfile: IHasIdentity
     {
         public FeeSignage FeeSignage;
         public LatestTransactionLocation LatestTransactionLocation;
@@ -50,6 +51,11 @@ namespace Swarmops.Logic.Financial
             get { return 3; }
         }
 
+        public static int CZFioId
+        {
+            get { return 4; }
+        }
+
         public string Name { get; set; }
         public Country Country { get; set; }
         public string Culture { get; set; }
@@ -58,12 +64,15 @@ namespace Swarmops.Logic.Financial
         public string BankDataPaymentsReader { get; set; }
         public int IgnoreInitialLines { get; set; }
         public string InitialReplacements { get; set; }
+        public int ExternalBankDataProfileId { get; set; }
+        public int Identity { get { return ExternalBankDataProfileId; } }
 
         public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
 
         public static ExternalBankDataProfile FromIdentity (int externalBankDataProfileId)
         {
             ExternalBankDataProfile result = new ExternalBankDataProfile();
+            result.ExternalBankDataProfileId = externalBankDataProfileId;
 
             // Ugly hack for now
 
@@ -83,7 +92,7 @@ namespace Swarmops.Logic.Financial
                 result.FeeSignage = FeeSignage.Unknown; // no inline fees
                 result.Precision = ExternalBankDateTimePrecision.Day;
 
-                result.BankDataAccountReader = StockBankDataReaders.TabSeparatedValuesAccountReader;
+                result.BankDataAccountReader = StockBankDataReaders.CommaSeparatedValuesAccountReader;
                 result.BankDataPaymentsReader = StockBankDataReaders.SEPaymentsBankgiroReader;
 
                 return result;
@@ -110,7 +119,7 @@ namespace Swarmops.Logic.Financial
                 result.FeeSignage = FeeSignage.Negative;
                 result.Precision = ExternalBankDateTimePrecision.Second;
 
-                result.BankDataAccountReader = StockBankDataReaders.TabSeparatedValuesAccountReader;
+                result.BankDataAccountReader = StockBankDataReaders.CommaSeparatedValuesAccountReader;
                 result.BankDataPaymentsReader = null; // No aggregated payments with Paypal
 
                 return result;
@@ -134,10 +143,21 @@ namespace Swarmops.Logic.Financial
                 result.FeeSignage = FeeSignage.Unknown; // no inline fees
                 result.Precision = ExternalBankDateTimePrecision.Day;
 
-                result.BankDataAccountReader = StockBankDataReaders.TabSeparatedValuesAccountReader;
-                result.BankDataPaymentsReader = null; // No aggregated payments with Paypal
+                result.BankDataAccountReader = StockBankDataReaders.CommaSeparatedValuesAccountReader;
+                result.BankDataPaymentsReader = null; // No aggregated payments with Postbank
 
                 return result;
+            }
+
+            if (externalBankDataProfileId == CZFioId)
+            {
+                // Czech Fio Bank
+
+                result.Name = "CZ Fio";
+                result.Country = Structure.Country.FromCode("CZ");
+                result.Culture = "cz-CZ";
+
+                result.FieldNames[ExternalBankDataFieldName.Date] = "...Continue here...";
             }
 
             throw new ArgumentException ("Unrecognized profile Id");

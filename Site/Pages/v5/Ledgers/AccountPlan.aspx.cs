@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Web;
+using System.Web.Management;
 using System.Web.Services;
 using System.Web.UI.WebControls;
 using Resources;
@@ -101,9 +102,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 // Hardcoded automation profiles for the time being
 
-                this.DropAccountAutomationProfile.Items.Add(new ListItem("[CZ CZK] Fio CSV", "3"));
-                this.DropAccountAutomationProfile.Items.Add(new ListItem("[DE EUR] Postbank CSV", "2"));
-                this.DropAccountAutomationProfile.Items.Add(new ListItem("[SE SEK] SEB CSV", "1"));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[BTC] Bitcoin Core - Armory", "3"));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[BCH] Bitcoin Cash - Armory", "2"));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[BCH] Bitcoin Cash Hotwallet", "1"));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[CZ CZK] Fio CSV", "7"));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[DE EUR] Postbank CSV", "6"));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[SE SEK] SEB CSV", "5"));
 
             }
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
@@ -561,7 +565,19 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
         private static AutomationData GetAccountAutomationData(int profileId)
         {
-            
+            AutomationData result = new AutomationData();
+
+            result.AutomationProfileCustomXml = string.Empty;
+            result.AutomaticRetrievalPossible = false;
+            result.AutomationProfileId = profileId;
+            result.AutomationEnabled = (profileId != 0);
+
+            if (result.AutomationEnabled)
+            {
+                
+            }
+
+            return result;
         }
 
 
@@ -642,9 +658,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public bool AutomationEnabled { get; set; }
             public int AutomationProfileId { get; set; }
             public string AutomationCurrencyCode { get; set; }
+            public string AutomationCountryCode { get; set; }
             public bool NonPresentationCurrency { get; set; }
+            public bool SetInitialBalance { get; set; }
             public bool AutomaticRetrievalPossible { get; set; }  // always false for now
             public string AutomationProfileCustomXml { get; set; }  // always empty for now
+
+            public FinancialAccountAutomationProfile Profile { get; set; }
         }
 
         [Serializable]
