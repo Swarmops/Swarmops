@@ -655,7 +655,7 @@
                 <asp:Literal ID="LiteralLabelExpensableLong" runat="server"/><br/>
                 <asp:Literal ID="LiteralLabelAdministrativeLong" runat="server"/><br/></div>
                 <div id="DivEditInitLabels">
-                    <div class="DivEditNonAutomationControls"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/><br/></div>
+                    <div class="DivEditNonautomationControls"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/><br/></div>
                 </div>
                 <div class="DivEditAssetControls">
                     <h2><asp:Label ID="LabelHeaderAutomation" runat="server"/></h2>
