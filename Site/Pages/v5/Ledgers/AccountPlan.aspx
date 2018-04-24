@@ -293,6 +293,12 @@
 	        $('body').css('overflow-y', 'hidden');
 	        <%=this.DialogAccount.ClientID %>_open();
 
+	        <%=this.ToggleAssetAutomation.ClientID%>_initialize(false);
+	        $('.DivEditAutomationControls').hide();
+	        $('.DivEditNonautomationControls').hide();
+
+            // TODO: Initialize Automation to None, hide controls, set switch to Off and dropbox to option zero
+
 	        $('#<%=DropParents.ClientID %>_DropBudgets').combotree('setText', "...");
 
 	        setTimeout(function() {
@@ -413,6 +419,14 @@
 	                parentAccountName = data.ParentAccountName;
 	                setAccountTreeId(data.ParentAccountId);
 
+	                <%=this.ToggleAssetAutomation.ClientID%>_initialize(data.AutomationData.AutomationEnabled);
+	                <%=this.DropAccountAutomationProfile%>_val(data.AutomationData.AutomationProfileId); // will be 0 if not enabled, which gives correct result
+
+	                if (data.AutomationData.AutomationEnabled) {
+	                    $('.DivEditAutomationControls').show();
+	                    $('.DivEditNonautomationControls').hide();
+	                }
+
 	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#FFF');
 	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-image', "url('" + data.AccountOwnerAvatarUrl + "')");
 	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').attr('placeholder', data.AccountOwnerName);
@@ -523,14 +537,32 @@
 
 
 	    function onToggleChange(newValue, cookie) {
-	        if (newValue) {
-	            $(".DivEditAutomationControls").slideDown();
-	            $(".DivEditNonautomationControls").slideUp();
-	        } else {
-	            $(".DivEditAutomationControls").slideUp();
-	            $(".DivEditNonautomationControls").slideDown();
+	        if (cookie == "Automation") 
+	        {
+	            if (newValue) {
+	                $(".DivEditAutomationControls").slideDown();
+	                $(".DivEditNonautomationControls").slideUp();
+	            } else {
+	                $(".DivEditAutomationControls").slideUp();
+	                $(".DivEditNonautomationControls").slideDown();
+	            }
 	        }
 	    }
+
+
+	    function onAutomationProfileChange(oldValue, newValue) {
+	        SwarmopsJS.ajaxCall('/Pages/v5/Financial/AccountPlan.aspx/SetAccountAutomationProfile',
+	            {
+	                accountId: accountId,
+	                profileId: <%=this.DropAccountAutomationProfile%>_val()
+	            },
+	            function(result) {
+	                if (result.Success) {
+	                    accountDirty = true;
+	                }
+	            });
+	    }
+
 
 	    var currentYear = <%=DateTime.Today.Year %>;
 	    var firstFiscalYear = <%=CurrentOrganization.FirstFiscalYear %>;
