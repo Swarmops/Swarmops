@@ -294,8 +294,8 @@
 	        <%=this.DialogAccount.ClientID %>_open();
 
 	        <%=this.ToggleAssetAutomation.ClientID%>_initialize(false);
-	        $('.DivEditAutomationControls').hide();
-	        $('.DivEditNonautomationControls').hide();
+	        $(".DivEditAutomationControls").hide();
+	        $(".DivEditNonautomationControls").hide();
 
             // TODO: Initialize Automation to None, hide controls, set switch to Off and dropbox to option zero
 
@@ -424,7 +424,8 @@
 
 	                if (data.AutomationData.AutomationEnabled) {
 	                    $('.DivEditAutomationControls').show();
-	                    $('.DivEditNonautomationControls').hide();
+	                } else {
+	                    $(".DivEditNonautomationControls").show();
 	                }
 
 	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#FFF');
