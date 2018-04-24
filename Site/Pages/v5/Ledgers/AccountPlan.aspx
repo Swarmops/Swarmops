@@ -420,7 +420,7 @@
 	                setAccountTreeId(data.ParentAccountId);
 
 	                <%=this.ToggleAssetAutomation.ClientID%>_initialize(data.AutomationData.AutomationEnabled);
-	                <%=this.DropAccountAutomationProfile%>_val(data.AutomationData.AutomationProfileId); // will be 0 if not enabled, which gives correct result
+	                <%=this.DropAccountAutomationProfile.ClientID%>_val(data.AutomationData.AutomationProfileId); // will be 0 if not enabled, which gives correct result
 
 	                if (data.AutomationData.AutomationEnabled) {
 	                    $('.DivEditAutomationControls').show();
