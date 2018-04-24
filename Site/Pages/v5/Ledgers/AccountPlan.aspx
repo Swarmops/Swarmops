@@ -551,7 +551,7 @@
 
 
 	    function onAutomationProfileChange(oldValue, newValue) {
-	        SwarmopsJS.ajaxCall('/Pages/v5/Financial/AccountPlan.aspx/SetAccountAutomationProfile',
+	        SwarmopsJS.ajaxCall('/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountAutomationProfile',
 	            {
 	                accountId: accountId,
 	                profileId: newValue
