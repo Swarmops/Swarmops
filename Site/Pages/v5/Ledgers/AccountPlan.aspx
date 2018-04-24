@@ -554,7 +554,7 @@
 	        SwarmopsJS.ajaxCall('/Pages/v5/Financial/AccountPlan.aspx/SetAccountAutomationProfile',
 	            {
 	                accountId: accountId,
-	                profileId: <%=this.DropAccountAutomationProfile%>_val()
+	                profileId: newValue
 	            },
 	            function(result) {
 	                if (result.Success) {
@@ -663,7 +663,7 @@
                     <div class="stacked-input-control"></div><!-- space for headline -->
                     <Swarmops5:AjaxToggleSlider ID="ToggleAssetAutomation" OnChange="onToggleChange" Cookie="Automation" runat="server"/>
                     <div class="DivEditAutomationControls">
-                        <Swarmops5:AjaxDropDown ID="DropAccountAutomationProfile" runat="server"/>
+                        <Swarmops5:AjaxDropDown ID="DropAccountAutomationProfile" OnClientChange="onAutomationProfileChange" runat="server"/>
                         <div class="DivEditAutomationProfileCustom">
                             <Swarmops5:AjaxTextBox ID="TextCustomAutomationProfile" runat="server"/>
                         </div>
