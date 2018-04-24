@@ -46,42 +46,13 @@ namespace Swarmops.Site.Pages.Ledgers
             PageIcon = "iconshock-bank";
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
-            // HACK HACK: If not a supported hardcoded org, bail out like a chicken
-
-            // UGLY UGLY UGLY
-
-            bool supportedHardcode = false;
-
-            if (PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE) && CurrentOrganization.Identity == 1)
-                // PPSE
-            {
-                supportedHardcode = true;
-            }
-            if (PilotInstallationIds.IsPilot(PilotInstallationIds.SwarmopsLive) && CurrentOrganization.Identity == 7)
-            // EPA
-            {
-                supportedHardcode = true;
-            }
-            if (PilotInstallationIds.IsPilot(PilotInstallationIds.SwarmopsLive) && CurrentOrganization.Identity == 8)
-            // RFF
-            {
-                supportedHardcode = true;
-            }
-
-            if (!supportedHardcode)
-            {
-                DashboardMessage.Set ("There are no asset accounts set up for automation, so no accounts support data upload at this time. Returning to Dashboard.");
-                Response.Redirect ("/", true);
-            }
-
-
             if (!IsPostBack)
             {
                 // Localize
 
                 InfoBoxLiteral = Resources.Pages.Ledgers.UploadBankFiles_Info;
                 this.LabelBankAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_BankAccount;
-                this.LabelInstructions.Text = Resources.Pages.Ledgers.UploadBankFiles_Instructions;
+                this.LabelProfile.Text = Resources.Pages.Ledgers.UploadBankFiles_AccountAutomationProfile;
                 this.LabelProcessing.Text = Resources.Pages.Ledgers.UploadBankFiles_Processing;
                 this.LabelProcessingComplete.Text = Resources.Pages.Ledgers.UploadBankFiles_ProcessingComplete;
                 this.LabelUploadBankFile.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
@@ -91,6 +62,12 @@ namespace Swarmops.Site.Pages.Ledgers
                 // Populate the asset account dropdown, if needed for file type
 
                 PopulateAccountDropDown();
+
+                if (this.DropAccounts.Items.Count < 2)
+                {
+                    DashboardMessage.Set(CommonV5.JavascriptEscape(Resources.Pages.Ledgers.UploadBankFiles_Error_NoAutomationProfiles));
+                    Response.Redirect("/", true);
+                }
             }
 
             if (!IsPostBack)

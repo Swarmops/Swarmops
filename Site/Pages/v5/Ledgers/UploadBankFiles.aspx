@@ -178,12 +178,12 @@
         
             <div class="entryFields">
                 <asp:DropDownList runat="server" ID="DropAccounts"/>
-                <span id="SpanInstructions"></span>&thinsp;<br/>
+                <div class="stacked-input-control"><span id="SpanInstructions"></span></div>
                 <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
         
             <div class="entryLabels">
                 <asp:Label runat="server" ID="LabelBankAccount" /><br/>
-                <asp:Label runat="server" ID="LabelInstructions" /><br/>
+                <asp:Label runat="server" ID="LabelProfile" /><br/>
                 <asp:Label runat="server" ID="LabelUploadBankFile" />
             </div>
         </div>

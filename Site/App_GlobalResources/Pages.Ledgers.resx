@@ -976,4 +976,15 @@
   <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
     <value>This transaction pays Inbound Invoice #{0:N0} from {1}.</value>
   </data>
+  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
+    <value>Automation Profile</value>
+    <comment>This is where the bank name, country, and currency appears.</comment>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>There are no asset accounts set up for automation, so no accounts support data upload at this time. Returning to Dashboard.</value>
+  </data>
+  <data name="UploadBankFiles_FirstUploadBalanceSet" xml:space="preserve">
+    <value>As this was the first upload to this automated account, the initial balance of {0} {1:N2} going into the year {2} has been detected and set.</value>
+    <comment>{0} is currency, {1} is amount, {2} is the first accounting year</comment>
+  </data>
 </root>

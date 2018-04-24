@@ -51,12 +51,13 @@ namespace Swarmops.Logic.Financial
     public enum FinancialAccountAutomationProfileHardIds
     {
         Unknown = 0,
-        BitcoinHotwallet = 1,
-        BitcoinCashArmory = 2,
-        BitcoinCoreArmory = 3,
-        BankPaypal = 4,
-        BankSwedenSeb = 5,
-        BankGermanyPostbank = 6,
-        BankCzechFio = 7
+        Custom = 1,
+        BitcoinHotwallet = 2,
+        BitcoinCashArmory = 3,
+        BitcoinCoreArmory = 4,
+        BankPaypal = 5,
+        BankSwedenSeb = 6,
+        BankGermanyPostbank = 7,
+        BankCzechFio = 8
     }
 }

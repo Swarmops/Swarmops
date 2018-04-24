@@ -210,9 +210,24 @@ namespace Swarmops.Logic.Structure
         {
             get
             {
+                FinancialAccounts result = new FinancialAccounts();
+
+                FinancialAccounts allAssets = Logic.Financial.FinancialAccounts.ForOrganization(this, FinancialAccountType.Asset);
+
+                foreach (FinancialAccount account in allAssets)
+                {
+                    if (account.AutomationProfileId != 0)
+                    {
+                        result.Add(account);
+                    }
+                }
+
+                return result;
+
                 // HACK: MUST FETCH THIS FROM ACTUAL ACCOUNTS
                 // HACK HACK HACK HACK HACK HACK
 
+                /*
                 if (PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE) && OrganizationId == 1)
                 {
                     FinancialAccounts result = new FinancialAccounts();
@@ -236,7 +251,7 @@ namespace Swarmops.Logic.Structure
                     return result;
                 }
 
-                throw new NotImplementedException();
+                throw new NotImplementedException();*/
             }
         }
 

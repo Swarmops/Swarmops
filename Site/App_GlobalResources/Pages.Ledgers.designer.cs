@@ -1699,6 +1699,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automation Profile.
+        /// </summary>
+        internal static string UploadBankFiles_AccountAutomationProfile {
+            get {
+                return ResourceManager.GetString("UploadBankFiles_AccountAutomationProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account Statement.
         /// </summary>
         internal static string UploadBankFiles_AccountStatement {
@@ -1807,6 +1816,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no asset accounts set up for automation, so no accounts support data upload at this time. Returning to Dashboard..
+        /// </summary>
+        internal static string UploadBankFiles_Error_NoAutomationProfiles {
+            get {
+                return ResourceManager.GetString("UploadBankFiles_Error_NoAutomationProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expected File.
         /// </summary>
         internal static string UploadBankFiles_ExpectedFile {
@@ -1839,6 +1857,15 @@ namespace Resources.Pages {
         internal static string UploadBankFiles_FileType {
             get {
                 return ResourceManager.GetString("UploadBankFiles_FileType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As this was the first upload to this automated account, the initial balance of {0} {1:N2} going into the year {2} has been detected and set..
+        /// </summary>
+        internal static string UploadBankFiles_FirstUploadBalanceSet {
+            get {
+                return ResourceManager.GetString("UploadBankFiles_FirstUploadBalanceSet", resourceCulture);
             }
         }
         
