@@ -178,7 +178,7 @@
         <div id="DivPrepData">
         
             <div class="entryFields">
-                <Swarmops5:DropDown OnClientChange="onAccountChange" runat="server" ID="DropAccounts"/>
+                <Swarmops5:AjaxDropDown OnClientChange="onAccountChange" runat="server" ID="DropAccounts"/>
                 <div class="stacked-input-control"><span id="SpanInstructions"></span></div>
                 <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" />
             </div>

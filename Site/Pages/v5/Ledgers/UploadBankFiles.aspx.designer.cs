@@ -46,7 +46,7 @@ namespace Swarmops.Site.Pages.Ledgers {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Base.DropDown DropAccounts;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxDropDown DropAccounts;
         
         /// <summary>
         /// UploadFile control.
