@@ -24,24 +24,21 @@
         });
 
         function onAccountChange(newAccountId) {
-            $('#<%=DropAccounts.ClientID %>').change(function() {
+            if (newAccountId != 0) {
+                $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeIn();
 
-                if (newAccountId != 0) {
-                    $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeIn();
-
-                    SwarmopsJS.ajaxCall(
-                        "/Pages/v5/Ledgers/UploadBankFiles.aspx/GetAutomationProfileName",
-                        {
-                            guid: guid, accountId: newAccountId
-                        },
-                        function(result) {
-                            $('#SpanInstructions').text(result.DisplayMessage);
-                        });
-                } else {
-                    $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeOut();
-                    $('#SpanInstructions').text("");
-                }
-            });
+                SwarmopsJS.ajaxCall(
+                    "/Pages/v5/Ledgers/UploadBankFiles.aspx/GetAutomationProfileName",
+                    {
+                        guid: guid, accountId: newAccountId
+                    },
+                    function(result) {
+                        $('#SpanInstructions').text(result.DisplayMessage);
+                    });
+            } else {
+                $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeOut();
+                $('#SpanInstructions').text("");
+            }
         }
 
         function uploadCompletedCallback() {
