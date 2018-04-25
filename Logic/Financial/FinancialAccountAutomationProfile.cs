@@ -13,9 +13,88 @@ namespace Swarmops.Logic.Financial
     [Serializable]
     public class FinancialAccountAutomationProfile: IHasIdentity
     {
+        public static FinancialAccountAutomationProfile FromIdentity(int financialAccountAutomationProfileId)
+        {
+            if (financialAccountAutomationProfileId >= 100)
+            {
+                // Database ID, not hard ID
+
+                throw new NotImplementedException();
+            }
+
+            FinancialAccountAutomationProfileHardIds hardId =
+                (FinancialAccountAutomationProfileHardIds) financialAccountAutomationProfileId;
+
+            switch (hardId)
+            {
+                case FinancialAccountAutomationProfileHardIds.Unknown:
+                    throw new ArgumentException("Null Profile");
+
+                case FinancialAccountAutomationProfileHardIds.Custom:
+                    throw new NotImplementedException("Custom profiles not implemented");
+
+                case FinancialAccountAutomationProfileHardIds.BankPaypal:
+                    return new FinancialAccountAutomationProfile
+                    {
+                        CanManualUpload = true,
+                        CanAutoRetrieve = false,
+                        Name = "Swedish SEB CSV",
+                        Country = null, // global
+                        Currency = null, // whatever the presentation currency is
+                        BankDataProfile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.PaypalId)
+                    };
+
+                case FinancialAccountAutomationProfileHardIds.BankSwedenSeb:
+                    return new FinancialAccountAutomationProfile
+                    {
+                        CanManualUpload = true,
+                        CanAutoRetrieve = false,
+                        Name = "Swedish SEB CSV",
+                        Country = Structure.Country.FromCode("SE"),
+                        Currency = Financial.Currency.FromCode("SEK"),
+                        BankDataProfile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.SESebId)
+                    };
+
+                case FinancialAccountAutomationProfileHardIds.BankGermanyPostbank:
+                    return new FinancialAccountAutomationProfile
+                    {
+                        CanManualUpload = true,
+                        CanAutoRetrieve = false,
+                        Name = "Deutsche Postbank CSV",
+                        Country = Structure.Country.FromCode("DE"),
+                        Currency = Financial.Currency.FromCode("EUR"),
+                        BankDataProfile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.DEPostbankId)
+                    };
+
+                case FinancialAccountAutomationProfileHardIds.BankCzechFio:
+                    return new FinancialAccountAutomationProfile
+                    {
+                        CanManualUpload = true,
+                        CanAutoRetrieve = false,
+                        Name = "Ceská Fio CSV",
+                        Country = Structure.Country.FromCode("CZ"),
+                        Currency = Financial.Currency.FromCode("CZK"),
+                        BankDataProfile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.CZFioId)
+                    };
+
+                default:
+                    return new FinancialAccountAutomationProfile
+                    {
+                        // Some other, non-upload automation
+
+                        CanManualUpload = false,
+                        CanAutoRetrieve = false,
+                        Name = "Unspecified"
+                    };
+            }
+        }
+
+
+
         public int FinancialAccountAutomationProfileId { get; set; }
         public string Name { get; set; }
-        public bool CanRetrieve { get; set; }
+        public bool CanAutoRetrieve { get; set; }
+        public bool CanManualUpload { get; set; }
 
         [XmlIgnore]
         public Country Country

@@ -654,6 +654,17 @@ namespace Swarmops.Logic.Financial
             set { ObjectOptionalData.ForObject(this).SetOptionalDataInt(ObjectOptionalDataType.AutomationProfileId, value); }
         }
 
+        public FinancialAccountAutomationProfile AutomationProfile
+        {
+            get
+            {
+                return (AutomationProfileId == 0
+                    ? null
+                    : FinancialAccountAutomationProfile.FromIdentity(AutomationProfileId));
+            }
+            set { AutomationProfileId = (value == null ? 0 : value.Identity); }
+        }
+
         public string AutomationProfileCustomXml
         {
             get

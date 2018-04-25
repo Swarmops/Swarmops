@@ -188,7 +188,10 @@ namespace Swarmops.Site.Pages.Ledgers
             {
                 if (account.AccountType == FinancialAccountType.Asset)
                 {
-                    this.DropAccounts.Items.Add (new ListItem (account.Name, account.Identity.ToString()));
+                    if (account.AutomationProfile.CanManualUpload)
+                    {
+                        this.DropAccounts.Items.Add(new ListItem(account.Name, account.Identity.ToString()));
+                    }
                 }
             }
         }
@@ -234,27 +237,38 @@ namespace Swarmops.Site.Pages.Ledgers
         }
 
         [WebMethod]
-        public static string GetAccountUploadInstructions (string guid, string accountIdString)
+        public static AjaxCallResult GetAutomationProfileName (string guid, string accountIdString)
         {
             int accountId = Int32.Parse (accountIdString);
+            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
-            // HACK HACK RELENTLESS HACK TODO
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            switch (accountId)
+            if (
+                !authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails,
+                    AccessType.Write)))
             {
-                case 0:
-                    return string.Empty;
-                case 1:
-                case 29:
-                    return "(Instruct Stock-SE-SEB)";
-                case 2:
-                    return "(Instruct Stock-Global-Paypal)";
-                case 150:
-                    return "(Instruct Stock-DE-Postbank)";
-                default:
-                    throw new NotImplementedException();
-
+                throw new UnauthorizedAccessException();
             }
+
+            FinancialAccountAutomationProfile profile =
+                FinancialAccountAutomationProfile.FromIdentity(account.AutomationProfileId);
+
+            if (profile == null)
+            {
+                return new AjaxCallResult
+                {
+                    Success = true,
+                    DisplayMessage = string.Empty
+                };
+            }
+
+            return new AjaxCallResult
+            {
+                Success = true,
+                DisplayMessage = profile.Name + " (" + profile.Currency.DisplayCode + ")"
+            };
+
         }
 
         [WebMethod]

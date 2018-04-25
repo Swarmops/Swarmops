@@ -26,16 +26,14 @@
                 if (selectedAccountId != 0) {
                     $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeIn();
 
-                    $.ajax({
-                        type: "POST",
-                        url: "/Pages/v5/Ledgers/UploadBankFiles.aspx/GetAccountUploadInstructions",
-                        data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function (msg) {
-                            $('#SpanInstructions').text(msg.d);
-                        }
-                    });
+                    SwarmopsJS.ajaxCall(
+                        "/Pages/v5/Ledgers/UploadBankFiles.aspx/GetAutomationProfileName",
+                        {
+                            guid: guid, accountId: selectedAccountId
+                        },
+                        function(result) {
+                            $('#SpanInstructions').text(result.DisplayMessage);
+                        });
                 } else {
                     $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeOut();
                 }
@@ -143,6 +141,8 @@
 
 
         var progressReceived = false;
+
+        var guid = '<%=this.UploadFile.GuidString%>';
 
         var halfway = false;
 
