@@ -38,7 +38,7 @@ namespace Swarmops.Logic.Financial
                     {
                         CanManualUpload = true,
                         CanAutoRetrieve = false,
-                        Name = "Swedish SEB CSV",
+                        Name = "Paypal CSV",
                         Country = null, // global
                         Currency = null, // whatever the presentation currency is
                         BankDataProfile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.PaypalId)
