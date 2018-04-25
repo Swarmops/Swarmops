@@ -198,7 +198,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
 
         [WebMethod (true)]
-        public static void InitializeProcessing (string guid, int accountId)
+        public static AjaxCallResult InitializeProcessing (string guid, int accountId)
         {
             // Start an async thread that does all the work, then return
 
@@ -232,6 +232,8 @@ namespace Swarmops.Site.Pages.Ledgers
             };
 
             initThread.Start (args);
+
+            return new AjaxCallResult {Success = true};
         }
 
         [WebMethod]
