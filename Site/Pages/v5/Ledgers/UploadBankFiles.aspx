@@ -23,8 +23,7 @@
 
         });
 
-        function onAccountChange(newAccountId) {
-            alert(newAccountId);
+        function onAccountChange(oldAccountId, newAccountId) {
             if (newAccountId != 0) {
                 $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeIn();
 
@@ -50,16 +49,21 @@
             $('#DivProcessingFake').slideUp(); // in case second, third... file
             halfway = false;
 
-            $.ajax({
-                type: "POST",
-                url: "/Pages/v5/Ledgers/UploadBankFiles.aspx/InitializeProcessing",
-                data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
-	            contentType: "application/json; charset=utf-8",
-	            dataType: "json",
-	            success: function (msg) {
-	                setTimeout('updateProgressProcessing();', 1000);
-	            }
-	        });
+            var selectedAccountId = <%=this.DropAccounts.ClientID%>_val();
+
+            alert(selectedAccountId);
+            return; // debug code
+
+            SwarmopsJS.ajaxCall (
+                "/Pages/v5/Ledgers/UploadBankFiles.aspx/InitializeProcessing",
+                { guid: guid, accountId: selectedAccountId },
+                function (result) {
+                    if (result.Success)
+                    {
+	                    setTimeout('updateProgressProcessing();', 1000);
+	                }
+                }
+            );
         }
 
         function updateProgressProcessing() {
