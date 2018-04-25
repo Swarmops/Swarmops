@@ -21,7 +21,7 @@
 
         $(document).ready(function() {
             $('#<%=DropAccounts.ClientID %>').change(function() {
-                var selectedAccountId = $('#<%=DropAccounts.ClientID %>').val();
+                var selectedAccountId = <%=DropAccounts.ClientID %>_val();
 
                 if (selectedAccountId != 0) {
                     $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeIn();
@@ -177,9 +177,10 @@
         <div id="DivPrepData">
         
             <div class="entryFields">
-                <asp:DropDownList runat="server" ID="DropAccounts"/>
+                <Swarmops5:DropDown runat="server" ID="DropAccounts"/>
                 <div class="stacked-input-control"><span id="SpanInstructions"></span></div>
-                <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
+                <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" />
+            </div>
         
             <div class="entryLabels">
                 <asp:Label runat="server" ID="LabelBankAccount" /><br/>
