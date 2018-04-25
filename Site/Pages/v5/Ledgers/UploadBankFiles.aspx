@@ -20,26 +20,29 @@
     <script type="text/javascript">
 
         $(document).ready(function() {
-            $('#<%=DropAccounts.ClientID %>').change(function() {
-                var selectedAccountId = <%=DropAccounts.ClientID %>_val();
 
-                if (selectedAccountId != 0) {
+        });
+
+        function onAccountChange(newAccountId) {
+            $('#<%=DropAccounts.ClientID %>').change(function() {
+
+                if (newAccountId != 0) {
                     $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeIn();
 
                     SwarmopsJS.ajaxCall(
                         "/Pages/v5/Ledgers/UploadBankFiles.aspx/GetAutomationProfileName",
                         {
-                            guid: guid, accountId: selectedAccountId
+                            guid: guid, accountId: newAccountId
                         },
                         function(result) {
                             $('#SpanInstructions').text(result.DisplayMessage);
                         });
                 } else {
                     $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeOut();
+                    $('#SpanInstructions').text("");
                 }
             });
-
-        });
+        }
 
         function uploadCompletedCallback() {
             $('#DivProcessing').fadeIn();
@@ -177,7 +180,7 @@
         <div id="DivPrepData">
         
             <div class="entryFields">
-                <Swarmops5:DropDown runat="server" ID="DropAccounts"/>
+                <Swarmops5:DropDown OnClientChange="onAccountChange" runat="server" ID="DropAccounts"/>
                 <div class="stacked-input-control"><span id="SpanInstructions"></span></div>
                 <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" />
             </div>
