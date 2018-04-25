@@ -237,9 +237,8 @@ namespace Swarmops.Site.Pages.Ledgers
         }
 
         [WebMethod]
-        public static AjaxCallResult GetAutomationProfileName (string guid, string accountIdString)
+        public static AjaxCallResult GetAutomationProfileName (string guid, int accountId)
         {
-            int accountId = Int32.Parse (accountIdString);
             FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
