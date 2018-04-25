@@ -51,9 +51,6 @@
 
             var selectedAccountId = <%=this.DropAccounts.ClientID%>_val();
 
-            alert(selectedAccountId);
-            return; // debug code
-
             SwarmopsJS.ajaxCall (
                 "/Pages/v5/Ledgers/UploadBankFiles.aspx/InitializeProcessing",
                 { guid: guid, accountId: selectedAccountId },
