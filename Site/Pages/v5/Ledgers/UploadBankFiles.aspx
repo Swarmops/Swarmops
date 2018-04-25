@@ -24,6 +24,7 @@
         });
 
         function onAccountChange(newAccountId) {
+            alert(newAccountId);
             if (newAccountId != 0) {
                 $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeIn();
 
