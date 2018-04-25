@@ -194,7 +194,7 @@ namespace Swarmops.Logic.Financial
                 ExternalBankDataProfile oldProfile = ExternalBankDataProfileOldHack;
                 ExternalBankDataProfile newProfile = AutomationProfile.BankDataProfile;
 
-                if (oldProfile != null && newProfile.Identity != oldProfile.Identity)
+                if (oldProfile != null && (newProfile.Identity != oldProfile.Identity || newProfile.Name != oldProfile.Name))
                 {
                     throw new InvalidOperationException("Defensive programming for crucial part");                    
                 }
