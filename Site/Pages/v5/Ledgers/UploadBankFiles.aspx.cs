@@ -263,7 +263,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 };
             }
 
-            if (profile.Currency == null) // uses presentation currency
+            if (profile.Currency == null || profile.Currency.Identity == authData.CurrentOrganization.Currency.Identity) // uses presentation currency
             {
                 return new AjaxCallResult
                 {
