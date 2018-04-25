@@ -263,6 +263,15 @@ namespace Swarmops.Site.Pages.Ledgers
                 };
             }
 
+            if (profile.Currency == null) // uses presentation currency
+            {
+                return new AjaxCallResult
+                {
+                    Success = true,
+                    DisplayMessage = profile.Name
+                };
+            }
+
             return new AjaxCallResult
             {
                 Success = true,

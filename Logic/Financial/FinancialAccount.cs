@@ -187,8 +187,23 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-
         public ExternalBankDataProfile ExternalBankDataProfile
+        {
+            get
+            {
+                ExternalBankDataProfile oldProfile = ExternalBankDataProfileOldHack;
+                ExternalBankDataProfile newProfile = AutomationProfile.BankDataProfile;
+
+                if (oldProfile != null && newProfile != oldProfile)
+                {
+                    throw new InvalidOperationException("Defensive programming for crucial part");                    
+                }
+
+                return newProfile;
+            }
+        }
+
+        private ExternalBankDataProfile ExternalBankDataProfileOldHack
         {
             get
             {
