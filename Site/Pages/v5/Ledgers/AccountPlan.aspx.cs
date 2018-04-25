@@ -102,11 +102,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 // Hardcoded automation profiles for the time being
 
-                this.DropAccountAutomationProfile.Items.Add(new ListItem("[BTC] Bitcoin Core - Armory", "3"));
-                this.DropAccountAutomationProfile.Items.Add(new ListItem("[BCH] Bitcoin Cash - Armory", "2"));
-                this.DropAccountAutomationProfile.Items.Add(new ListItem("[CZ CZK] Fio CSV", "7"));
-                this.DropAccountAutomationProfile.Items.Add(new ListItem("[DE EUR] Postbank CSV", "6"));
-                this.DropAccountAutomationProfile.Items.Add(new ListItem("[SE SEK] SEB CSV", "5"));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[BTC] Bitcoin Core - Armory", ((int)(FinancialAccountAutomationProfileHardIds.BitcoinCoreArmory)).ToString()));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[BCH] Bitcoin Cash - Armory", ((int)(FinancialAccountAutomationProfileHardIds.BitcoinCoreArmory)).ToString()));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[CZ CZK] Fio CSV", ((int)(FinancialAccountAutomationProfileHardIds.BankCzechFio)).ToString()));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[DE EUR] Postbank CSV", ((int)(FinancialAccountAutomationProfileHardIds.BankGermanyPostbank)).ToString()));
+                this.DropAccountAutomationProfile.Items.Add(new ListItem("[SE SEK] SEB CSV", ((int)(FinancialAccountAutomationProfileHardIds.BankSwedenSeb)).ToString()));
 
             }
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
