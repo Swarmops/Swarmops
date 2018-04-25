@@ -100,7 +100,8 @@
 
                                     $('#SpanUploadMore').show();
                                     $('#SpanUploadFirst').hide();
-                                    $('#<%=DropAccounts.ClientID %>').val('0');
+                                    <%=this.DropAccounts.ClientID %>_val('0');
+                                    <%=this.UploadFile.ClientID%>_clear();
                                     $('#SpanInstructions').text('');
                                     setTimeout("$('#DivProgressFake').slideUp().fadeOut();", 1000);
                                     setTimeout("$('#DivUploadBankFile').slideDown();", 1000);
