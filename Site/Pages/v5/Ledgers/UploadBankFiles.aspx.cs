@@ -198,13 +198,11 @@ namespace Swarmops.Site.Pages.Ledgers
 
 
         [WebMethod (true)]
-        public static void InitializeProcessing (string guid, string accountIdString)
+        public static void InitializeProcessing (string guid, int accountId)
         {
             // Start an async thread that does all the work, then return
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
-
-            int accountId = Int32.Parse (accountIdString);
             BankFileType fileType = BankFileType.Unknown;
 
             if (accountId < 0)
