@@ -14,6 +14,7 @@ namespace Swarmops.Logic.Financial
         private ExternalBankDataProfile()
         {
             FieldNames = new Dictionary<ExternalBankDataFieldName, string>();
+            FieldDelimiter = ',';
         }
 
         public string DateTimeFormatString
@@ -65,6 +66,7 @@ namespace Swarmops.Logic.Financial
         public int IgnoreInitialLines { get; set; }
         public string InitialReplacements { get; set; }
         public int ExternalBankDataProfileId { get; set; }
+        public char FieldDelimiter { get; set; }
         public int Identity { get { return ExternalBankDataProfileId; } }
 
         public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
@@ -146,6 +148,8 @@ namespace Swarmops.Logic.Financial
                 result.BankDataAccountReader = StockBankDataReaders.CommaSeparatedValuesAccountReader;
                 result.BankDataPaymentsReader = null; // No aggregated payments with Postbank
 
+                result.FieldDelimiter = ';'; // DE Postbank uses semicolon as delimiter for no reason in particular
+
                 return result;
             }
 
@@ -157,7 +161,25 @@ namespace Swarmops.Logic.Financial
                 result.Country = Structure.Country.FromCode("CZ");
                 result.Culture = "cz-CZ";
 
-                result.FieldNames[ExternalBankDataFieldName.Date] = "...Continue here...";
+                result.InitialReplacements = ";|\t";  // before CSV helper is implemented, replace field separators with spaces
+
+                result.FieldNames[ExternalBankDataFieldName.Date] = "Datum";  // in dd.mm.yyyy format
+                result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Zpráva pro příjemce";
+                result.FieldNames[ExternalBankDataFieldName.CounterpartyName] = "Název protiúčtu";
+                result.FieldNames[ExternalBankDataFieldName.CounterpartyAccount] = "Protiúčet";
+                result.FieldNames[ExternalBankDataFieldName.CounterpartyBank] = "Kód banky";
+                result.FieldNames[ExternalBankDataFieldName.DescriptionSecondary] = "Typ";
+                result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Objem";   // has comma as radix
+                result.FieldNames[ExternalBankDataFieldName.Currency] = "Měna";          // must be czk
+
+                result.LatestTransactionLocation = LatestTransactionLocation.Bottom;
+                result.FeeSignage = FeeSignage.Unknown; // no inline fees
+                result.Precision = ExternalBankDateTimePrecision.Day;
+
+                result.BankDataAccountReader = StockBankDataReaders.CommaSeparatedValuesAccountReader;
+                result.BankDataPaymentsReader = null; // No aggregated payments with Postbank
+
+                result.FieldDelimiter = ';'; // CZ Fio uses semicolon as delimiter for no reason in particular
             }
 
             throw new ArgumentException ("Unrecognized profile Id");
@@ -173,6 +195,9 @@ namespace Swarmops.Logic.Financial
         TransactionNet,
         DescriptionPrimary,
         DescriptionSecondary,
+        CounterpartyAccount,
+        CounterpartyBank,
+        CounterpartyName,
         UniqueId,
         NotUniqueId,
         Date,

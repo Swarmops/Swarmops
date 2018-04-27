@@ -183,7 +183,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             if (result.AutomationData.AutomationEnabled && result.AutomationData.NonPresentationCurrency)
             {
-                result.CurrencyCode = result.AutomationData.AutomationCurrencyCode;
+                Currency foreignCurrency = Currency.FromCode(result.AutomationData.AutomationCurrencyCode);
+
+                result.AutomationData.AutomationCurrencyCode = foreignCurrency.DisplayCode;
+                account.ForeignCurrency = foreignCurrency;
             }
             else
             {
@@ -490,6 +493,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             AjaxCallAutomationDataResult result = new AjaxCallAutomationDataResult();
             result.Success = true;
             result.Data = GetAccountAutomationData(profileId);
+            result.Data.NonPresentationCurrency =
+                (result.Data.Profile.Currency.Identity != authData.CurrentOrganization.Currency.Identity);
 
             return result;
         }
@@ -506,7 +511,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             if (result.AutomationEnabled)
             {
-                // result.Profile = 
+                result.Profile = FinancialAccountAutomationProfile.FromIdentity(profileId);
+                result.AutomationCurrencyCode = result.Profile.Currency.Code;
+                // the "NonpresentationCurrency" field can't be set here, because we don't know the presentation currency
             }
 
             return result;
