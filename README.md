@@ -92,9 +92,9 @@ That also means that any code _you_ commit to Swarmops, whether by checking in c
 Beta-6 features progress
 ------------------------
 
-Beta-6 will be released on May 5 with string freeze on May 2. Its focus is to increase multicurrency functionality for payouts and bank imports.
+Beta-6 will be released on June 5 with string freeze on June 2. Its focus is to increase multicurrency functionality for payouts and bank imports.
 
-- [ ] Parameterize the bank file import procedure (big feature!)
+- [x] Parameterize the bank file import procedure (big feature!)
 - [ ] Make it possible to import bank files in non-presentation currency
 - [ ] Rewrite payment addresses (a new name for this? Account vs. designator?)
 - [ ] Enable payment destinations, with currency
@@ -103,7 +103,7 @@ Beta-6 will be released on May 5 with string freeze on May 2. Its focus is to in
 Beta-7 features progress
 ------------------------
 
-Beta-7 will be released on June 5, with string freeze on June 2. Its tentative focus will be Shapeshift integration and possibly an open API exposure.
+Beta-7 will be released on July 5, with string freeze on July 2. Its tentative focus will be Shapeshift integration and possibly an open API exposure.
 
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
@@ -135,12 +135,12 @@ There will also be many other small improvements added along with these features
 - [x] Proper org settings 
 - [ ] HTML/Markdown mail
 - [x] Mail Resolver
-- [ ] Expensify integration?
+- [X] Expensify integration?
 - [X] PDF asynchronous interpreter (websocket?)
 - [ ] Recurring expenses
 - [x] Char encode HTML doc
 - [ ] Org descriptions (long, short) on self-signup page
-- [ ] Hotwallet payments
+- [x] Hotwallet payments
 - [x] Tech problem box
 - [x] Donate sockify
 - [x] Live financial numbers
