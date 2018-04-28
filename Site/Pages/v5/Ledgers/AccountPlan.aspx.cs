@@ -511,8 +511,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             if (result.AutomationEnabled)
             {
-                result.Profile = FinancialAccountAutomationProfile.FromIdentity(profileId);
-                result.AutomationCurrencyCode = result.Profile.Currency.Code;
+                // result.Profile = FinancialAccountAutomationProfile.FromIdentity(profileId);
+                // result.AutomationCurrencyCode = result.Profile.Currency.Code;
                 // the "NonpresentationCurrency" field can't be set here, because we don't know the presentation currency
             }
 

@@ -46,7 +46,9 @@ namespace Swarmops.Logic.Financial
             // TODO: Implement bank data reader factory here
 
             string organizationCurrencyCode = organization.Currency.Code;
+            string accountCurrencyCode = string.Empty;
 
+            // TODO: This function must be made aware of the expected currency code
 
             // Replace any strings initially to force the bank data into readability (per profile)
 
@@ -128,6 +130,8 @@ namespace Swarmops.Logic.Financial
 
                     if (currency != organizationCurrencyCode)
                     {
+                        // TODO: Implement nonpresentation currency import right here
+
                         continue; // ignore this record
                     }
                 }
