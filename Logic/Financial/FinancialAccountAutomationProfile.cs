@@ -97,6 +97,7 @@ namespace Swarmops.Logic.Financial
         public bool CanManualUpload { get; set; }
 
         [XmlIgnore]
+        [JsonIgnore]
         public Country Country
         {
             get { return CountryId != 0? Country.FromIdentity(CountryId): null; }
@@ -104,6 +105,7 @@ namespace Swarmops.Logic.Financial
         }
 
         [XmlIgnore]
+        [JsonIgnore]
         public Currency Currency
         {
             get { return CurrencyId != 0? Currency.FromIdentity(CurrencyId): null; }
@@ -111,6 +113,7 @@ namespace Swarmops.Logic.Financial
         }
 
         [XmlIgnore]
+        [JsonIgnore]
         public ExternalBankDataProfile BankDataProfile
         {
             get { return BankDataProfileId != 0 ? ExternalBankDataProfile.FromIdentity(BankDataProfileId): null; }
@@ -122,6 +125,7 @@ namespace Swarmops.Logic.Financial
         protected int CurrencyId { get; set; }
 
         [XmlIgnore]
+        [JsonIgnore]
         public int Identity { get { return FinancialAccountAutomationProfileId; } }
     }
 
