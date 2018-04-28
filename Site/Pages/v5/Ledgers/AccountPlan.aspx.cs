@@ -496,6 +496,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             result.Data.NonPresentationCurrency =
                 (result.Data.Profile.CurrencyId != authData.CurrentOrganization.Currency.Identity);
 
+            if (result.Data.NonPresentationCurrency)
+            {
+                account.ForeignCurrency = Currency.FromCode(result.Data.AutomationCurrencyCode);
+            }
+            else
+            {
+                account.ForeignCurrency = null;
+            }
+
             return result;
         }
 

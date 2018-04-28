@@ -126,7 +126,7 @@ namespace Swarmops.Logic.Financial
             }
             set
             {
-                OptionalData.SetOptionalDataInt (ObjectOptionalDataType.FinancialAccountNativeCurrency, value.Identity);
+                OptionalData.SetOptionalDataInt (ObjectOptionalDataType.FinancialAccountNativeCurrency, (value == null? 0: value.Identity));
             }
         }
 
