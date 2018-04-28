@@ -165,7 +165,7 @@
         </div>
         
         <div id="DivUploadResultsQuestionable" style="display:none">
-            <div style="float:left;margin-right:10px"><img src="/Images/Icons/iconshock-warning-96px.png" /></div><div id="DivUploadResultsQuestionableText"></div>
+            <div style="float:left; margin-right: 10px; padding-top: 10px;padding-bottom:20px"><img src="/Images/Icons/iconshock-warning-96px.png" /></div><div id="DivUploadResultsQuestionableText"></div>
         </div>
         
         <div id="DivUploadResultsPayments" style="display:none">
