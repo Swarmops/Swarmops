@@ -90,6 +90,7 @@ namespace Swarmops.Logic.Financial
         public string InitialReplacements { get; set; }
         public int ExternalBankDataProfileId { get; set; }
         public char FieldDelimiter { get; set; }
+        public string DateTimeCustomFormatString { get; set; }
         public int Identity { get { return ExternalBankDataProfileId; } }
 
         public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
@@ -199,6 +200,7 @@ namespace Swarmops.Logic.Financial
                 result.LatestTransactionLocation = LatestTransactionLocation.Bottom;
                 result.FeeSignage = FeeSignage.Unknown; // no inline fees
                 result.Precision = ExternalBankDateTimePrecision.Day;
+                result.DateTimeFormatString = "dd.MM.yyyy";
 
                 result.BankDataAccountReader = StockBankDataReaders.CommaSeparatedValuesAccountReader;
                 result.BankDataPaymentsReader = null; // No aggregated payments with Postbank

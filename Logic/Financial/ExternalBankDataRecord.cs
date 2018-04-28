@@ -10,6 +10,8 @@ namespace Swarmops.Logic.Financial
         public long AccountBalanceCents;
         public DateTime DateTime; // UTC!
         public string Description;
+        public string CounterpartyName;
+        public string CounterpartyBankAccount;
         public long FeeCents;
 
         public string NotUniqueId;

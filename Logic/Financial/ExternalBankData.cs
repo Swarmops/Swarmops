@@ -155,6 +155,48 @@ namespace Swarmops.Logic.Financial
                     }
                 }
 
+                // Check if there's counterparty information
+
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.CounterpartyName))
+                {
+                    string counterpartyName =
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.CounterpartyName]]);
+
+                    if (newRecord.Description != counterpartyName)
+                    {
+                        newRecord.CounterpartyName = counterpartyName;
+                    }
+                }
+
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.CounterpartyBank))
+                {
+                    string counterpartyBank =
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.CounterpartyBank]]);
+
+                    if (!string.IsNullOrEmpty(counterpartyBank))
+                    {
+                        newRecord.CounterpartyBankAccount = counterpartyBank;
+                    }
+                }
+
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.CounterpartyAccount))
+                {
+                    string counterpartyAccount =
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.CounterpartyAccount]]);
+
+                    if (!string.IsNullOrEmpty(counterpartyAccount))
+                    {
+                        if (!string.IsNullOrEmpty(newRecord.CounterpartyBankAccount))
+                        {
+                            newRecord.CounterpartyBankAccount += "|";
+                        }
+
+                        newRecord.CounterpartyBankAccount += counterpartyAccount;
+                    }
+                }
+
+
+
                 if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.AccountBalance))
                 {
                     // Dividing up to step-by-step statements instead of one long statement assists debugging
@@ -184,7 +226,15 @@ namespace Swarmops.Logic.Financial
                 if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.Date))
                 {
                     string dateString = StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.Date]]);
-                    dateTime = DateTime.Parse (dateString, new CultureInfo (Profile.Culture));
+
+                    if (!String.IsNullOrEmpty(Profile.DateTimeCustomFormatString))
+                    {
+                        dateTime = DateTime.ParseExact(dateString, Profile.DateTimeCustomFormatString, new CultureInfo(Profile.Culture));
+                    }
+                    else
+                    {
+                        dateTime = DateTime.Parse(dateString, new CultureInfo(Profile.Culture));
+                    }
 
                     if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.Time))
                     {
