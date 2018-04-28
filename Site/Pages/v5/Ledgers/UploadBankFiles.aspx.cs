@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Web;
 using System.Web.Services;
@@ -358,7 +359,21 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 if (fileType == BankFileType.Unknown)
                 {
-                    using (StreamReader reader = uploadedDoc.GetReader (1252))
+                    StreamReader reader;
+
+                    switch (externalData.Profile.Encoding.ToUpperInvariant())
+                    {
+                        case "UTF-8":
+                        case "UTF8":
+                            reader = uploadedDoc.GetReader(Encoding.UTF8);
+                            break;
+                        default: // none specified
+                            reader = uploadedDoc.GetReader(1252); // Windows western 1 as default
+                            break;
+                    }
+
+
+                    using (reader)  // Guarantees disposal of reader
                     {
                         try
                         {

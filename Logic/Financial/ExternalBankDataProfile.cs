@@ -82,6 +82,7 @@ namespace Swarmops.Logic.Financial
         }
         public string CountryCode { get; set; }
         public string Culture { get; set; }
+        public string Encoding { get; set; }
         public string Currency { get; set; }
         public string BankDataAccountReader { get; set; }
         public string BankDataPaymentsReader { get; set; }
@@ -182,6 +183,7 @@ namespace Swarmops.Logic.Financial
                 result.Name = "CZ Fio";
                 result.Country = Country.FromCode("CZ");
                 result.Culture = "cz-CZ";
+                result.Encoding = "UTF-8";
 
                 result.InitialReplacements = ";|\t";  // before CSV helper is implemented, replace field separators with spaces
 
