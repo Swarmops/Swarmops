@@ -180,6 +180,8 @@ namespace Swarmops.Logic.Financial
                 result.BankDataPaymentsReader = null; // No aggregated payments with Postbank
 
                 result.FieldDelimiter = ';'; // CZ Fio uses semicolon as delimiter for no reason in particular
+
+                return result;
             }
 
             throw new ArgumentException ("Unrecognized profile Id");
