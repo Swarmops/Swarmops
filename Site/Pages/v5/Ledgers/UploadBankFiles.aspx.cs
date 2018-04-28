@@ -685,27 +685,7 @@ namespace Swarmops.Site.Pages.Ledgers
                         transaction.Rows[0].AmountForeignCents = new Money(foreignCents, accountCurrency);
                     }
 
-                    FinancialAccounts accounts = FinancialAccounts.FromBankTransactionTag (row.Description);
-
-                    if (accounts.Count == 1)
-                    {
-                        // This is a labelled local donation.
-
-                        Geography geography = accounts[0].AssignedGeography;
-                        FinancialAccount localAccount = accounts[0];
-
-                        transaction.AddRow (args.Organization.FinancialAccounts.IncomeDonations, -amountCents,
-                            args.CurrentUser);
-                        transaction.AddRow (args.Organization.FinancialAccounts.CostsLocalDonationTransfers,
-                            amountCents, args.CurrentUser);
-                        transaction.AddRow (localAccount, -amountCents, args.CurrentUser);
-
-                        PWEvents.CreateEvent (EventSource.PirateWeb, EventType.LocalDonationReceived,
-                            args.CurrentUser.Identity, args.Organization.Identity,
-                            geography.Identity, 0,
-                            transaction.Identity, localAccount.Identity.ToString());
-                    }
-                    else if (row.Description.ToLowerInvariant().StartsWith (args.Organization.IncomingPaymentTag))
+                    if (row.Description.ToLowerInvariant().StartsWith (args.Organization.IncomingPaymentTag))
                     {
                         // Check for previously imported payment group
 
