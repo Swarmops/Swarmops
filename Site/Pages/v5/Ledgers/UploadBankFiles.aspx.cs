@@ -262,7 +262,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 };
             }
 
-            if (profile.Currency == null || profile.Currency.Identity == authData.CurrentOrganization.Currency.Identity) // uses presentation currency
+            if (profile.CurrencyId == 0 || profile.CurrencyId == authData.CurrentOrganization.Currency.Identity) // uses presentation currency
             {
                 return new AjaxCallResult
                 {
@@ -274,7 +274,7 @@ namespace Swarmops.Site.Pages.Ledgers
             return new AjaxCallResult
             {
                 Success = true,
-                DisplayMessage = profile.Name + " (" + profile.Currency.DisplayCode + ")"
+                DisplayMessage = profile.Name + " (" + Currency.FromIdentity(profile.CurrencyId).DisplayCode + ")"
             };
 
         }

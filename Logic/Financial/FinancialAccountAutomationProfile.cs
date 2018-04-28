@@ -39,9 +39,9 @@ namespace Swarmops.Logic.Financial
                         CanManualUpload = true,
                         CanAutoRetrieve = false,
                         Name = "Paypal CSV",
-                        Country = null, // global
-                        Currency = null, // whatever the presentation currency is
-                        BankDataProfile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.PaypalId)
+                        CountryId = 0, // global
+                        CurrencyId = 0, // whatever the presentation currency is
+                        BankDataProfileId = ExternalBankDataProfile.PaypalId
                     };
 
                 case FinancialAccountAutomationProfileHardIds.BankSwedenSeb:
@@ -50,9 +50,9 @@ namespace Swarmops.Logic.Financial
                         CanManualUpload = true,
                         CanAutoRetrieve = false,
                         Name = "Swedish SEB CSV",
-                        Country = Structure.Country.FromCode("SE"),
-                        Currency = Financial.Currency.FromCode("SEK"),
-                        BankDataProfile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.SESebId)
+                        CountryId = Structure.Country.FromCode("SE").Identity,
+                        CurrencyId = Financial.Currency.FromCode("SEK").Identity,
+                        BankDataProfileId = ExternalBankDataProfile.SESebId
                     };
 
                 case FinancialAccountAutomationProfileHardIds.BankGermanyPostbank:
@@ -61,9 +61,9 @@ namespace Swarmops.Logic.Financial
                         CanManualUpload = true,
                         CanAutoRetrieve = false,
                         Name = "Deutsche Postbank CSV",
-                        Country = Structure.Country.FromCode("DE"),
-                        Currency = Financial.Currency.FromCode("EUR"),
-                        BankDataProfile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.DEPostbankId)
+                        CountryId = Structure.Country.FromCode("DE").Identity,
+                        CurrencyId = Financial.Currency.FromCode("EUR").Identity,
+                        BankDataProfileId = ExternalBankDataProfile.DEPostbankId
                     };
 
                 case FinancialAccountAutomationProfileHardIds.BankCzechFio:
@@ -72,9 +72,9 @@ namespace Swarmops.Logic.Financial
                         CanManualUpload = true,
                         CanAutoRetrieve = false,
                         Name = "Ceská Fio CSV",
-                        Country = Structure.Country.FromCode("CZ"),
-                        Currency = Financial.Currency.FromCode("CZK"),
-                        BankDataProfile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.CZFioId)
+                        CountryId = Structure.Country.FromCode("CZ").Identity,
+                        CurrencyId = Financial.Currency.FromCode("CZK").Identity,
+                        BankDataProfileId = ExternalBankDataProfile.CZFioId
                     };
 
                 default:
@@ -96,6 +96,7 @@ namespace Swarmops.Logic.Financial
         public bool CanAutoRetrieve { get; set; }
         public bool CanManualUpload { get; set; }
 
+        /*
         [XmlIgnore]
         [JsonIgnore]
         public Country Country
@@ -118,11 +119,11 @@ namespace Swarmops.Logic.Financial
         {
             get { return BankDataProfileId != 0 ? ExternalBankDataProfile.FromIdentity(BankDataProfileId): null; }
             set { this.BankDataProfileId = (value == null ? 0 : value.Identity); }
-        }
+        }*/
 
-        protected int BankDataProfileId { get; set; }
-        protected int CountryId { get; set; }
-        protected int CurrencyId { get; set; }
+        public int BankDataProfileId { get; set; }
+        public int CountryId { get; set; }
+        public int CurrencyId { get; set; }
 
         [XmlIgnore]
         [JsonIgnore]

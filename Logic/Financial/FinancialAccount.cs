@@ -192,7 +192,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 ExternalBankDataProfile oldProfile = ExternalBankDataProfileOldHack;
-                ExternalBankDataProfile newProfile = AutomationProfile.BankDataProfile;
+                ExternalBankDataProfile newProfile = ExternalBankDataProfile.FromIdentity(AutomationProfile.BankDataProfileId);
 
                 if (oldProfile != null && (newProfile.Identity != oldProfile.Identity || newProfile.Name != oldProfile.Name))
                 {
