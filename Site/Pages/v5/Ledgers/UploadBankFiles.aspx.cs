@@ -615,6 +615,14 @@ namespace Swarmops.Site.Pages.Ledgers
                 progressUpdateInterval = 100;
             }
 
+            Currency organizationCurrency = assetAccount.Organization.Currency;
+            Currency accountCurrency = assetAccount.ForeignCurrency;
+
+            if (accountCurrency == null)
+            {
+                accountCurrency = organizationCurrency;
+            }
+
             foreach (ExternalBankDataRecord row in import.Records)
             {
                 // Update progress.
@@ -650,6 +658,14 @@ namespace Swarmops.Site.Pages.Ledgers
                     amountCents = row.TransactionGrossCents;
                 }
 
+                Int64 foreignCents = amountCents;
+
+                if (accountCurrency.Identity != organizationCurrency.Identity)
+                {
+                    amountCents =
+                        new Money(amountCents, accountCurrency, row.DateTime).ToCurrency(organizationCurrency).Cents;
+                }
+
                 FinancialTransaction transaction = FinancialTransaction.ImportWithStub (args.Organization.Identity,
                     row.DateTime,
                     assetAccount.Identity, amountCents,
@@ -658,9 +674,16 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 if (transaction != null)
                 {
-                    // The transaction was created. Examine if the autobook criteria are true.
+                    // The transaction was created.
 
                     result.TransactionsImported++;
+
+                    // If non-presentation currency, log the account currency amount as well.
+
+                    if (accountCurrency.Identity != organizationCurrency.Identity)
+                    {
+                        transaction.Rows[0].AmountForeignCents = new Money(foreignCents, accountCurrency);
+                    }
 
                     FinancialAccounts accounts = FinancialAccounts.FromBankTransactionTag (row.Description);
 

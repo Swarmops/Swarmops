@@ -95,7 +95,7 @@ Beta-6 features progress
 Beta-6 will be released on June 5 with string freeze on June 2. Its focus is to increase multicurrency functionality for payouts and bank imports.
 
 - [x] Parameterize the bank file import procedure (big feature!)
-- [ ] Make it possible to import bank files in non-presentation currency
+- [x] Make it possible to import bank files in non-presentation currency
 - [ ] Rewrite payment addresses (a new name for this? Account vs. designator?)
 - [ ] Enable payment destinations, with currency
 
