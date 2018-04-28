@@ -15,21 +15,13 @@ namespace Swarmops.Logic.Financial
         public ExternalBankDataProfile Profile { get; set; }
         public ExternalBankDataRecord[] Records { get; private set; }
 
-        public void LoadData (Stream dataStream, Organization organization)
-        {
-            using (TextReader reader = new StreamReader (dataStream)) // TODO: Is encoding necessary?
-            {
-                LoadData (reader, organization);
-            }
-        }
-
-        public void LoadData (TextReader reader, Organization organization)
+        public void LoadData (TextReader reader, Organization organization, Currency expectedCurrency)
         {
             string data = reader.ReadToEnd();
-            LoadData (data, organization);
+            LoadData (data, organization, expectedCurrency);
         }
 
-        public void LoadData (string data, Organization organization)
+        public void LoadData (string data, Organization organization, Currency accountCurrency)
         {
             List<ExternalBankDataRecord> recordList = new List<ExternalBankDataRecord>();
 
@@ -45,8 +37,11 @@ namespace Swarmops.Logic.Financial
 
             // TODO: Implement bank data reader factory here
 
-            string organizationCurrencyCode = organization.Currency.Code;
-            string accountCurrencyCode = string.Empty;
+            string expectedCurrencyCode = organization.Currency.Code;
+            if (accountCurrency != null)
+            {
+                expectedCurrencyCode = accountCurrency.Code;
+            }
 
             // TODO: This function must be made aware of the expected currency code
 
@@ -128,10 +123,8 @@ namespace Swarmops.Logic.Financial
                 {
                     string currency = StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.Currency]]);
 
-                    if (currency != organizationCurrencyCode)
+                    if (currency != expectedCurrencyCode)
                     {
-                        // TODO: Implement nonpresentation currency import right here
-
                         continue; // ignore this record
                     }
                 }

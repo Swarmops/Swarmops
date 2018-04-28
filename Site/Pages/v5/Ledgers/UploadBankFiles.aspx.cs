@@ -337,7 +337,8 @@ namespace Swarmops.Site.Pages.Ledgers
             string guid = ((ProcessThreadArguments) args).Guid;
             BankFileType fileType = ((ProcessThreadArguments) args).FileType;
             Person currentUser = ((ProcessThreadArguments) args).CurrentUser;
-            Organization organization = ((ProcessThreadArguments) args).Organization;
+            Organization organization = ((ProcessThreadArguments)args).Organization;
+            FinancialAccount account = ((ProcessThreadArguments)args).Account;
 
             Documents documents = Documents.RecentFromDescription (guid);
             GuidCache.Set (guid + "-Progress", 1); // to make sure results aren't repeated from last file
@@ -349,35 +350,21 @@ namespace Swarmops.Site.Pages.Ledgers
             }
 
             Document uploadedDoc = documents[0];
+            Currency accountCurrency = account.ForeignCurrency;
+            Currency presentationCurrency = organization.Currency;
 
             try
             {
-                FinancialAccount account = ((ProcessThreadArguments) args).Account;
-
                 ExternalBankData externalData = new ExternalBankData();
                 externalData.Profile = account.ExternalBankDataProfile;
 
                 if (fileType == BankFileType.Unknown)
                 {
-                    StreamReader reader;
-
-                    switch (externalData.Profile.Encoding.ToUpperInvariant())
-                    {
-                        case "UTF-8":
-                        case "UTF8":
-                            reader = uploadedDoc.GetReader(Encoding.UTF8);
-                            break;
-                        default: // none specified
-                            reader = uploadedDoc.GetReader(1252); // Windows western 1 as default
-                            break;
-                    }
-
-
-                    using (reader)  // Guarantees disposal of reader
+                    using (StreamReader reader = CreateReader(uploadedDoc, externalData.Profile.Encoding))  // Guarantees disposal of reader
                     {
                         try
                         {
-                            externalData.LoadData (reader, organization);
+                            externalData.LoadData (reader, organization, accountCurrency);
                             // catch here and set result to BAD
                             ImportResults results = ProcessImportedData (externalData, (ProcessThreadArguments) args);
 
@@ -417,9 +404,9 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 if (fileType == BankFileType.AccountStatement)
                 {
-                    using (StreamReader reader = uploadedDoc.GetReader (1252))
+                    using (StreamReader reader = CreateReader(uploadedDoc, externalData.Profile.Encoding))  // Guarantees disposal of reader
                     {
-                        externalData.LoadData (reader, ((ProcessThreadArguments) args).Organization);
+                        externalData.LoadData (reader, organization, accountCurrency);
                         // catch here and set result to BAD
                         ImportResults results = ProcessImportedData (externalData, (ProcessThreadArguments) args);
 
@@ -456,6 +443,19 @@ namespace Swarmops.Site.Pages.Ledgers
             }
         }
 
+
+        static private StreamReader CreateReader(Document document, string encoding = "")
+        {
+            switch (encoding)
+            {
+                case "UTF-8":
+                case "UTF8":
+                    return document.GetReader(Encoding.UTF8);
+
+                default: // none specified
+                    return document.GetReader(1252); // Windows western 1 as default
+            }
+        }
 
         /*
         private void Submit_Click(object sender, EventArgs e)
