@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Structure;
 
@@ -58,7 +59,28 @@ namespace Swarmops.Logic.Financial
         }
 
         public string Name { get; set; }
-        public Country Country { get; set; }
+
+        [XmlIgnore]
+        public Country Country
+        {
+            get
+            {
+                if (CountryCode == string.Empty) return null;
+                return Country.FromCode(CountryCode);
+            }
+            set
+            {
+                if (value == null)
+                {
+                    CountryCode = string.Empty;
+                }
+                else
+                {
+                    CountryCode = value.Code;
+                }
+            }
+        }
+        public string CountryCode { get; set; }
         public string Culture { get; set; }
         public string Currency { get; set; }
         public string BankDataAccountReader { get; set; }
@@ -158,7 +180,7 @@ namespace Swarmops.Logic.Financial
                 // Czech Fio Bank
 
                 result.Name = "CZ Fio";
-                result.Country = Structure.Country.FromCode("CZ");
+                result.Country = Country.FromCode("CZ");
                 result.Culture = "cz-CZ";
 
                 result.InitialReplacements = ";|\t";  // before CSV helper is implemented, replace field separators with spaces
