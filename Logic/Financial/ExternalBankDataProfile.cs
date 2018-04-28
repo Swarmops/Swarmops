@@ -200,7 +200,7 @@ namespace Swarmops.Logic.Financial
                 result.LatestTransactionLocation = LatestTransactionLocation.Bottom;
                 result.FeeSignage = FeeSignage.Unknown; // no inline fees
                 result.Precision = ExternalBankDateTimePrecision.Day;
-                result.DateTimeFormatString = "dd.MM.yyyy";
+                result.DateTimeCustomFormatString = "dd.MM.yyyy";
 
                 result.BankDataAccountReader = StockBankDataReaders.CommaSeparatedValuesAccountReader;
                 result.BankDataPaymentsReader = null; // No aggregated payments with Postbank
