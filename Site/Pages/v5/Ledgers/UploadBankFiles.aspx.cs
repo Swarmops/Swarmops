@@ -66,7 +66,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 if (this.DropAccounts.Items.Count < 2)
                 {
-                    DashboardMessage.Set(CommonV5.JavascriptEscape(Resources.Pages.Ledgers.UploadBankFiles_Error_NoAutomationProfiles));
+                    DashboardMessage.Set(Resources.Pages.Ledgers.UploadBankFiles_Error_NoAutomationProfiles);
                     Response.Redirect("/", true);
                 }
             }
