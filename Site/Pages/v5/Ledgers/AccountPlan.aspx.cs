@@ -321,12 +321,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             try
             {
-                const string initialBalanceTransactionTitle = "Initial Balances";
-
                 AuthenticationData authData = GetAuthenticationDataAndCulture();
-                FinancialAccount account = FinancialAccount.FromIdentity (accountId);
+                FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
-                if (!PrepareAccountChange (account, authData, false) || authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear >= authData.CurrentOrganization.FirstFiscalYear)
+                if (!PrepareAccountChange(account, authData, false) ||
+                    authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear >=
+                    authData.CurrentOrganization.FirstFiscalYear)
                 {
                     return new ChangeAccountDataResult
                     {
@@ -336,61 +336,17 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 Int64 desiredInitialBalanceCents = Formatting.ParseDoubleStringAsCents(newInitialBalanceString);
 
-                Int64 currentInitialBalanceCents = account.GetDeltaCents (new DateTime (1900, 1, 1),
-                    new DateTime (authData.CurrentOrganization.FirstFiscalYear, 1, 1));
+                account.InitialBalanceCents = new Money(desiredInitialBalanceCents, account.Organization.Currency); // only avaialable for presentation currencies
 
-                Int64 deltaCents = desiredInitialBalanceCents - currentInitialBalanceCents;
-
-                // Find or create "Initial Balances" transaction
-
-                FinancialAccountRows testRows = FinancialAccountRows.ForOrganization (authData.CurrentOrganization,
-                    new DateTime (1900, 1, 1), new DateTime (authData.CurrentOrganization.FirstFiscalYear, 1, 1));
-
-                FinancialTransaction initialBalancesTransaction = null;
-
-                foreach (FinancialAccountRow row in testRows)
-                {
-                    if (row.Transaction.Description == initialBalanceTransactionTitle)
-                    {
-                        initialBalancesTransaction = row.Transaction;
-                        break;
-                    }
-                }
-
-                if (initialBalancesTransaction == null)
-                {
-                    // create transaction
-
-                    initialBalancesTransaction = FinancialTransaction.Create (authData.CurrentOrganization.Identity,
-                        new DateTime (authData.CurrentOrganization.FirstFiscalYear - 1, 12, 31), initialBalanceTransactionTitle);
-                }
-
-                Dictionary<int, Int64> recalcBase = initialBalancesTransaction.GetRecalculationBase();
-                int equityAccountId = authData.CurrentOrganization.FinancialAccounts.DebtsEquity.Identity;
-
-                if (!recalcBase.ContainsKey (accountId))
-                {
-                    recalcBase[accountId] = 0;
-                }
-                if (!recalcBase.ContainsKey (equityAccountId))
-                {
-                    recalcBase[equityAccountId] = 0;
-                }
-
-                recalcBase[accountId] += deltaCents;
-                recalcBase[equityAccountId] -= deltaCents;
-                initialBalancesTransaction.RecalculateTransaction (recalcBase, authData.CurrentUser);
                 return new ChangeAccountDataResult
                 {
                     Result = ChangeAccountDataOperationsResult.Changed,
                     NewData = (desiredInitialBalanceCents / 100.0).ToString("N2", CultureInfo.CurrentCulture)
                 };
             }
-            catch (Exception weirdException)
+            catch (Exception exception)
             {
-                SupportFunctions.LogException ("AccountPlan-SetInitBalance", weirdException);
-
-                throw;
+                throw new Exception("AccountPlan-SetInitialBalance", exception);
             }
         }
 

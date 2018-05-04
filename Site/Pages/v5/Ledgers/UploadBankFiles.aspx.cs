@@ -296,6 +296,9 @@ namespace Swarmops.Site.Pages.Ledgers
                     html = String.Format (Resources.Pages.Ledgers.UploadBankFiles_ResultsGood,
                         resultDetail.TransactionsImported, resultDetail.DuplicateTransactions,
                         resultDetail.EarliestTransaction, resultDetail.LatestTransaction);
+
+                    // if (resultDetail.)
+
                     break;
                 case ImportResultsCategory.Questionable:
                     html = String.Format (Resources.Pages.Ledgers.UploadBankFiles_ResultsQuestionable,
@@ -606,6 +609,7 @@ namespace Swarmops.Site.Pages.Ledgers
             FinancialAccount autoDepositAccount = args.Organization.FinancialAccounts.IncomeDonations;
             int autoDepositLimit = 0; // Disabled; TODO: this.CurrentOrganization.Parameters.AutoDonationLimit;
 
+            bool autosetInitialBalance = false;
             ImportResults result = new ImportResults();
             int count = 0;
             int progressUpdateInterval = import.Records.Length/40;
@@ -622,6 +626,13 @@ namespace Swarmops.Site.Pages.Ledgers
             {
                 accountCurrency = organizationCurrency;
             }
+
+            FinancialAccountRows existingRows = assetAccount.GetRows(Constants.DateTimeLow, Constants.DateTimeHigh); // gets all
+            if (existingRows.Count == 0)
+            {
+                autosetInitialBalance = true;
+            }
+
 
             foreach (ExternalBankDataRecord row in import.Records)
             {
@@ -739,7 +750,18 @@ namespace Swarmops.Site.Pages.Ledgers
 
             // Import complete. Return true if the bookkeeping account matches the bank data.
 
-            Int64 databaseAccountBalanceCents = assetAccount.BalanceTotalCents;
+            Int64 databaseAccountBalanceCents;
+
+            if (accountCurrency.Identity == organizationCurrency.Identity)
+            {
+                databaseAccountBalanceCents = assetAccount.BalanceTotalCents;
+            }
+            else
+            {
+                // foreign-currency account
+                databaseAccountBalanceCents = assetAccount.ForeignBalanceTotalCents.Cents;
+            }
+
 
             // Subtract any transactions made after the most recent imported transaction.
             // This is necessary in case of Paypal and others which continuously feed the
@@ -762,6 +784,19 @@ namespace Swarmops.Site.Pages.Ledgers
                 result.AccountBalanceMatchesBank = false;
                 result.BalanceMismatchCents = (databaseAccountBalanceCents - beyondEofCents) -
                                               import.LatestAccountBalanceCents;
+
+                if (autosetInitialBalance)
+                {
+                    if (accountCurrency.Identity == organizationCurrency.Identity) // ordinary presentation currency
+                    {
+                        // assetAccount.    
+                    }
+                    else
+                    {
+                        // non-presentation currency
+                        
+                    }
+                }
             }
 
             result.CurrencyCode = args.Organization.Currency.Code;

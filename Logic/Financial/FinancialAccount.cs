@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common;
 using Swarmops.Common.Enums;
@@ -186,6 +187,75 @@ namespace Swarmops.Logic.Financial
                 profitTx.AddRow(Organization.FinancialAccounts.IncomeCurrencyFluctuations, -profitCents, null);
             }
         }
+
+
+        public Money InitialBalanceCents
+        {
+            set
+            {
+                try
+                {
+                    const string initialBalanceTransactionTitle = "Initial Balances";
+
+                    Int64 currentInitialBalanceCents = this.GetDeltaCents(new DateTime(1900, 1, 1),
+                        new DateTime(this.Organization.FirstFiscalYear, 1, 1));
+
+                    // Find or create "Initial Balances" transaction
+
+                    FinancialAccountRows testRows = FinancialAccountRows.ForOrganization(this.Organization,
+                        new DateTime(1900, 1, 1), new DateTime(this.Organization.FirstFiscalYear, 1, 1));
+
+                    FinancialTransaction initialBalancesTransaction = null;
+
+                    foreach (FinancialAccountRow row in testRows)
+                    {
+                        if (row.Transaction.Description == initialBalanceTransactionTitle)
+                        {
+                            initialBalancesTransaction = row.Transaction;
+                            break;
+                        }
+                    }
+
+                    if (initialBalancesTransaction == null)
+                    {
+                        // create transaction
+
+                        initialBalancesTransaction = FinancialTransaction.Create(this.Organization,
+                            new DateTime(this.Organization.FirstFiscalYear - 1, 12, 31),
+                            initialBalanceTransactionTitle);
+                    }
+
+                    // reconstructing the R-value now that we have the valuation date, which the setter didn't
+
+                    Money setValue = new Money(value.Cents, value.Currency, initialBalancesTransaction.DateTime); 
+                    Int64 deltaCents = setValue.ToCurrency(Organization.Currency).Cents - currentInitialBalanceCents;
+
+                    Dictionary<int, Int64> recalcBase = initialBalancesTransaction.GetRecalculationBase();
+                    int equityAccountId = this.Organization.FinancialAccounts.DebtsEquity.Identity;
+
+                    if (!recalcBase.ContainsKey(this.Identity))
+                    {
+                        recalcBase[this.Identity] = 0;
+                    }
+                    if (!recalcBase.ContainsKey(equityAccountId))
+                    {
+                        recalcBase[equityAccountId] = 0;
+                    }
+
+                    recalcBase[this.Identity] += deltaCents;
+                    recalcBase[equityAccountId] -= deltaCents;
+                    initialBalancesTransaction.RecalculateTransaction(recalcBase, null);
+                }
+                catch (Exception weirdException)
+                {
+                    SupportFunctions.LogException("FinancialAccount-SetInitialBalance", weirdException);
+
+                    throw;
+                }
+            }
+        }
+
+
 
         public ExternalBankDataProfile ExternalBankDataProfile
         {
