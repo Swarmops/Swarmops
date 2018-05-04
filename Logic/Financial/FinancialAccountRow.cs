@@ -27,5 +27,10 @@ namespace Swarmops.Logic.Financial
         {
             get { return FinancialTransaction.FromIdentity (FinancialTransactionId); }
         }
+
+        public FinancialTransactionRow TransactionRow
+        {
+            get { return FinancialTransactionRow.FromIdentity(this.FinancialTransactionRowId); }
+        }
     }
 }

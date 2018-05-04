@@ -386,7 +386,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
+                        "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactionRows.FinancialTransactionRowId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
                         JoinIds (financialAccountIds) + ") AND DateTime " + selectorLower + " '" +
                         startDateTime.ToString ("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) +
                         "' AND DateTime " + selectorUpper + " '" + endDateTime.ToString ("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) +
@@ -421,7 +421,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
+                        "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactionRows.FinancialTransactionRowId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
                         JoinIds (financialAccountIds) +
                         ") ORDER BY DateTime DESC,FinancialTransactions.FinancialTransactionId,FinancialTransactionRows.CreatedDateTime LIMIT " +
                         rowCount + ";",
@@ -919,13 +919,14 @@ namespace Swarmops.Database
         {
             int accountId = reader.GetInt32 (0);
             int transactionId = reader.GetInt32 (1);
-            DateTime transactionDateTime = reader.GetDateTime (2);
-            string comment = reader.GetString (3);
-            Int64 amountCents = reader.GetInt64 (4);
-            DateTime rowDateTime = reader.GetDateTime (5);
-            int rowCreatedByPersonId = reader.GetInt32 (6);
+            int transactionRowId = reader.GetInt32(2);
+            DateTime transactionDateTime = reader.GetDateTime (3);
+            string comment = reader.GetString (4);
+            Int64 amountCents = reader.GetInt64 (5);
+            DateTime rowDateTime = reader.GetDateTime (6);
+            int rowCreatedByPersonId = reader.GetInt32 (7);
 
-            return new BasicFinancialAccountRow (accountId, transactionId, transactionDateTime, comment, amountCents,
+            return new BasicFinancialAccountRow (accountId, transactionId, transactionRowId, transactionDateTime, comment, amountCents,
                 rowDateTime, rowCreatedByPersonId);
         }
 

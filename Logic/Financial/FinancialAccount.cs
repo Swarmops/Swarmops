@@ -210,20 +210,23 @@ namespace Swarmops.Logic.Financial
                 {
                     const string initialBalanceTransactionTitle = "Initial Balances";
 
-                    Int64 currentInitialBalanceCents = this.GetDeltaCents(new DateTime(1900, 1, 1),
+                    Int64 currentInitialBalanceCents = this.GetDeltaCents(Constants.DateTimeLow,
                         new DateTime(this.Organization.FirstFiscalYear, 1, 1));
 
                     // Test: Assert that the currency set equals the currency for the account
 
                     if (this.ForeignCurrency != null)
                     {
-                        
+                        if (value.Currency.Identity != this.ForeignCurrency.Identity)
+                        {
+                            throw new ArgumentException("Foreign currency mismatch");
+                        }
                     }
                     else
                     {
                         if (value.Currency.Identity != this.Organization.Currency.Identity)
                         {
-                            throw new ArgumentException("Currency mismatch");
+                            throw new ArgumentException("Presentation currency mismatch");
                         }
                     }
 
@@ -279,7 +282,8 @@ namespace Swarmops.Logic.Financial
 
                         // First, get the current initial balance in account nonpresentation currency:
 
-                        Money currentInitialBalanceCents = ForeignBalanceTotalCents
+                        Int64 initialBalanceForeignCents = GetForeignBalanceDeltaCents(Constants.DateTimeLow,
+                            new DateTime(this.Organization.FirstFiscalYear, 1, 1)).Cents;
 
                         // Find the newly added transaction row 
                         // (WARNING / RACE: This may return an incorrect row, if there's a lag betweeen
@@ -288,7 +292,7 @@ namespace Swarmops.Logic.Financial
 
                         testRows = FinancialAccountRows.ForOrganization(this.Organization,
                             Constants.DateTimeLow, new DateTime(this.Organization.FirstFiscalYear, 1, 1));
-                        FinancialAccountRow lastFoundRow = null;
+                        FinancialTransactionRow lastFoundRow = null;
 
                         foreach (FinancialAccountRow row in testRows)
                         {
@@ -300,6 +304,9 @@ namespace Swarmops.Logic.Financial
 
                         // Amend the last found row, which is assumed to be a result of the RecalculateTx
                         // call above, to reflect the new initial balance in foreign currency.
+
+                        Int64 currentBalanceForeignCents = this.ForeignBalanceTotalCents.Cents;
+                        Int64 lastRowForeignCents = lastFoundRow.
 
                     }
                 }

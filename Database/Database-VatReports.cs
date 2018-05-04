@@ -245,7 +245,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + accountId.ToString(CultureInfo.InvariantCulture) + ", FinancialTransactions.FinancialTransactionId, FinancialTransactions.DateTime, FinancialTransactions.Comment, AmountCents, CreatedDateTime, CreatedByPersonId " +
+                        "SELECT " + accountId.ToString(CultureInfo.InvariantCulture) + ", FinancialTransactions.FinancialTransactionId, FinancialTransactionRows.FinancialTransactionRowId, FinancialTransactions.DateTime, FinancialTransactions.Comment, AmountCents, CreatedDateTime, CreatedByPersonId " +
                         " FROM FinancialTransactionRows " +
                         " JOIN FinancialTransactions ON (FinancialTransactionRows.FinancialTransactionId = FinancialTransactions.FinancialTransactionId) " +
                         " WHERE NOT EXISTS (SELECT * FROM VatReportItems WHERE VatReportItems.FinancialTransactionId = FinancialTransactions.FinancialTransactionId) " +
