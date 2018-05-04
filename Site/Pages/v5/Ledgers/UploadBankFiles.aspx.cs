@@ -1031,6 +1031,8 @@ namespace Swarmops.Site.Pages.Ledgers
             public DateTime EarliestTransaction;
             public DateTime LatestTransaction;
             public int TransactionsImported;
+            public string InitialBalanceCents;
+            public string InitialBalanceCurrency;
 
             public ImportResults()
             {

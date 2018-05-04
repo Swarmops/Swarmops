@@ -5,6 +5,7 @@ using System.Data.Common;
 using System.Globalization;
 using System.Xml;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common;
 
 // This is the first part of Database to fully use MySql.
 
@@ -1195,10 +1196,13 @@ namespace Swarmops.Database
 
 
 
-        public Int64 GetFinancialAccountForeignCentsBalance (int financialAccountId)
+        public Int64 GetFinancialAccountForeignCentsBalance(int financialAccountId)
         {
-            // This gets the balance across the entire ledger history, so it's only for asset or liability accounts
-            // (not for P&L).
+            // This gets the non-presentation balance across the entire ledger history, so it's only 
+            // for asset or liability accounts (not for P&L).
+
+            // This function joins one less table than the ForeignDeltaCents, so it's kept despite being redundant
+            // because it's far more optimized for this special case.
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -1208,24 +1212,65 @@ namespace Swarmops.Database
                     GetDbCommand(
                         "SELECT SUM(NativeAmountCents) FROM FinancialTransactionRowsNativeCurrency " +
                         "  JOIN FinancialTransactionRows USING (FinancialTransactionRowId) " +
-                        "  WHERE FinancialAccountId =" + financialAccountId + ";", connection))
-
-                using (DbDataReader reader = command.ExecuteReader())
+                        "  WHERE FinancialAccountId=@financialAccountId;", connection))
                 {
-                    if (reader.Read())
-                    {
-                        if (!reader.IsDBNull(0))
-                        {
-                            return reader.GetInt64(0);
-                        }
-                    }
+                    AddParameterWithName(command, "financialAccountId", financialAccountId);
 
-                    return 0; // zero balance, apparently.
+                    using (DbDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                            {
+                                return reader.GetInt64(0);
+                            }
+                        }
+
+                        return 0; // zero balance, apparently.
+                    }
                 }
             }
-
-
         }
+
+        public Int64 GetFinancialAccountForeignDeltaCents(int financialAccountId, DateTime lowerBoundInclusive, DateTime upperBoundExclusive)
+        {
+            // This gets the balance across the specified part of ledger history for non-presentation currency.
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command =
+                    GetDbCommand(
+                        "SELECT SUM(NativeAmountCents) FROM FinancialTransactionRowsNativeCurrency " +
+                        "  JOIN FinancialTransactionRows USING (FinancialTransactionRowId) " +
+                        "  JOIN FinancialTransactions USING (FinancialTransactionId) " +
+                        "  WHERE FinancialTransactionRows.FinancialAccountId=@financialAccountId " +
+                        "    AND FinancialTransactions.DateTime >= @lowerBoundInclusive " +
+                        "    AND FinancialTransactions.DateTime <  @upperBoundExclusive " +
+                        ";", connection))
+                {
+                    AddParameterWithName(command, "financialAccountId", financialAccountId);
+                    AddParameterWithName(command, "lowerBoundInclusive", lowerBoundInclusive);
+                    AddParameterWithName(command, "upperBoundExclusive", upperBoundExclusive);
+
+                    using (DbDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                            {
+                                return reader.GetInt64(0);
+                            }
+                        }
+
+                        return 0; // zero delta for this time span: no rows returned at all.
+                    }
+                }
+            }
+        }
+
+
 
 
 

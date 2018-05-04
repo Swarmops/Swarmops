@@ -143,6 +143,19 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public Money GetForeignBalanceDeltaCents(DateTime lowerBoundinclusive, DateTime upperBoundExclusive)
+        {
+            if (this.ForeignCurrency == null)
+            {
+                throw new InvalidOperationException("Account does not have a non-presentation currency");
+            }
+
+            Int64 foreignCents =
+                SwarmDb.GetDatabaseForReading().GetFinancialAccountForeignDeltaCents(this.Identity, lowerBoundinclusive, upperBoundExclusive);
+            return new Money(foreignCents, ForeignCurrency); // default to now
+        }
+
+
         public string BitcoinAddress
         {
             get
@@ -200,10 +213,24 @@ namespace Swarmops.Logic.Financial
                     Int64 currentInitialBalanceCents = this.GetDeltaCents(new DateTime(1900, 1, 1),
                         new DateTime(this.Organization.FirstFiscalYear, 1, 1));
 
+                    // Test: Assert that the currency set equals the currency for the account
+
+                    if (this.ForeignCurrency != null)
+                    {
+                        
+                    }
+                    else
+                    {
+                        if (value.Currency.Identity != this.Organization.Currency.Identity)
+                        {
+                            throw new ArgumentException("Currency mismatch");
+                        }
+                    }
+
                     // Find or create "Initial Balances" transaction
 
                     FinancialAccountRows testRows = FinancialAccountRows.ForOrganization(this.Organization,
-                        new DateTime(1900, 1, 1), new DateTime(this.Organization.FirstFiscalYear, 1, 1));
+                        Constants.DateTimeLow, new DateTime(this.Organization.FirstFiscalYear, 1, 1));
 
                     FinancialTransaction initialBalancesTransaction = null;
 
@@ -227,7 +254,7 @@ namespace Swarmops.Logic.Financial
 
                     // reconstructing the R-value now that we have the valuation date, which the setter didn't
 
-                    Money setValue = new Money(value.Cents, value.Currency, initialBalancesTransaction.DateTime); 
+                    Money setValue = new Money(value.Cents, value.Currency, initialBalancesTransaction.DateTime);
                     Int64 deltaCents = setValue.ToCurrency(Organization.Currency).Cents - currentInitialBalanceCents;
 
                     Dictionary<int, Int64> recalcBase = initialBalancesTransaction.GetRecalculationBase();
@@ -245,6 +272,36 @@ namespace Swarmops.Logic.Financial
                     recalcBase[this.Identity] += deltaCents;
                     recalcBase[equityAccountId] -= deltaCents;
                     initialBalancesTransaction.RecalculateTransaction(recalcBase, null);
+
+                    if (this.ForeignCurrency != null)
+                    {
+                        // We need to also set the initial balance in foreign currency.
+
+                        // First, get the current initial balance in account nonpresentation currency:
+
+                        Money currentInitialBalanceCents = ForeignBalanceTotalCents
+
+                        // Find the newly added transaction row 
+                        // (WARNING / RACE: This may return an incorrect row, if there's a lag betweeen
+                        // reading and writing of the database instances, such as a replication scenario
+                        // with one write and many read dbs)
+
+                        testRows = FinancialAccountRows.ForOrganization(this.Organization,
+                            Constants.DateTimeLow, new DateTime(this.Organization.FirstFiscalYear, 1, 1));
+                        FinancialAccountRow lastFoundRow = null;
+
+                        foreach (FinancialAccountRow row in testRows)
+                        {
+                            if (row.Transaction.Description == initialBalanceTransactionTitle)
+                            {
+                                lastFoundRow = row;
+                            }
+                        }
+
+                        // Amend the last found row, which is assumed to be a result of the RecalculateTx
+                        // call above, to reflect the new initial balance in foreign currency.
+
+                    }
                 }
                 catch (Exception weirdException)
                 {
