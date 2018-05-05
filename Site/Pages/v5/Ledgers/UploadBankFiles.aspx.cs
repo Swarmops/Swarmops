@@ -316,7 +316,7 @@ namespace Swarmops.Site.Pages.Ledgers
                                 String.Format(
                                     Resources.Pages.Ledgers.UploadBankFiles_ResultsInitialBalanceSetForeignCurrency,
                                     Currency.FromCode(resultDetail.CurrencyCode).DisplayCode,
-                                    resultDetail.BalanceMismatchCents);
+                                    -resultDetail.BalanceMismatchCents);
                         }
 
                         html += ".</p>";
