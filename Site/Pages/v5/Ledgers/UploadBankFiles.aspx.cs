@@ -305,7 +305,8 @@ namespace Swarmops.Site.Pages.Ledgers
                         html += "<p>" +
                                 String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsInitialBalanceSet,
                                     Currency.FromCode(resultDetail.InitialBalanceCurrencyCode).DisplayCode,
-                                    resultDetail.InitialBalanceCents/100.0);
+                                    resultDetail.InitialBalanceCents/100.0,
+                                    authData.CurrentOrganization.FirstFiscalYear);
 
                         if (resultDetail.CurrencyCode != resultDetail.InitialBalanceCurrencyCode)
                         {
