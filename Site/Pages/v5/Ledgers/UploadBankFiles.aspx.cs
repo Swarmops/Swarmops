@@ -289,6 +289,7 @@ namespace Swarmops.Site.Pages.Ledgers
             ImportResultsCategory category = (ImportResultsCategory) GuidCache.Get (guid + "-Result");
             ImportResults resultDetail = GuidCache.Get (guid + "-ResultDetails") as ImportResults;
             ImportedPaymentData paymentsDetail = GuidCache.Get (guid + "-ResultDetails") as ImportedPaymentData;
+            string exceptionText = GuidCache.Get(guid + "-Exception") as string;
 
             string html = string.Empty;
 
@@ -328,7 +329,7 @@ namespace Swarmops.Site.Pages.Ledgers
                     break;
                 case ImportResultsCategory.Bad:
                     html = Resources.Pages.Ledgers.UploadBankFiles_ResultsBad + "<!-- Technical Information: " +
-                           (string) GuidCache.Get(guid + "-Exception") + "-->";
+                          exceptionText + "-->";
                     break;
                 case ImportResultsCategory.Payments:
                     if (paymentsDetail.DuplicatePaymentCount > 0)

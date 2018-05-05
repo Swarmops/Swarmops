@@ -87,7 +87,7 @@ namespace Swarmops.Logic.Financial
             {
                 for (int index = 0; index < dataKeyFields.Length; index++)
                 {
-                    if (StripQuotes(dataKeyFields[index]).Trim() == Profile.FieldNames[fieldName])
+                    if (StripQuotes(dataKeyFields[index]).Trim().ToLowerInvariant() == Profile.FieldNames[fieldName].ToLowerInvariant())
                     {
                         fieldNameLookup[fieldName] = index;
                         break;
