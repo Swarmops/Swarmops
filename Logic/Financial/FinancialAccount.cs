@@ -285,6 +285,10 @@ namespace Swarmops.Logic.Financial
                         Int64 initialBalanceForeignCents = GetForeignBalanceDeltaCents(Constants.DateTimeLow,
                             new DateTime(this.Organization.FirstFiscalYear, 1, 1)).Cents;
 
+                        Int64 desiredInitialBalanceForeignCents = value.Cents;
+
+                        Int64 deltaForeignCents = desiredInitialBalanceForeignCents - initialBalanceForeignCents;
+
                         // Find the newly added transaction row 
                         // (WARNING / RACE: This may return an incorrect row, if there's a lag betweeen
                         // reading and writing of the database instances, such as a replication scenario
@@ -298,15 +302,33 @@ namespace Swarmops.Logic.Financial
                         {
                             if (row.Transaction.Description == initialBalanceTransactionTitle)
                             {
-                                lastFoundRow = row;
+                                lastFoundRow = row.TransactionRow;
                             }
+                        }
+
+                        if (lastFoundRow == null)
+                        {
+                            throw new InvalidOperationException("Could not find row that was seemingly just created");
                         }
 
                         // Amend the last found row, which is assumed to be a result of the RecalculateTx
                         // call above, to reflect the new initial balance in foreign currency.
 
-                        Int64 currentBalanceForeignCents = this.ForeignBalanceTotalCents.Cents;
-                        Int64 lastRowForeignCents = lastFoundRow.
+                        Money lastRowForeignAmount = lastFoundRow.AmountForeignCents;
+
+                        if (lastRowForeignAmount.Currency.Identity != value.Currency.Identity)
+                        {
+                            throw new ArgumentException("Foreign currency mismatch");
+                        }
+
+                        Int64 lastRowForeignCents = lastFoundRow.AmountForeignCents.Cents;
+
+                        // adjust last row's foreign cents with the delta between the current initial balance
+                        // and the desired initial balance
+
+                        Int64 newLastRowForeignCents = lastRowForeignCents + deltaForeignCents;
+
+                        lastFoundRow.AmountForeignCents = new Money(newLastRowForeignCents, value.Currency, lastFoundRow.Transaction.DateTime);
 
                     }
                 }
