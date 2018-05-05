@@ -812,7 +812,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 if (autosetInitialBalance)
                 {
-                    Int64 newInitialBalanceCents = result.BalanceMismatchCents;
+                    Int64 newInitialBalanceCents = -result.BalanceMismatchCents;
 
                     assetAccount.InitialBalanceCents = new Money(newInitialBalanceCents, accountCurrency);
                     result.InitialBalanceCents = newInitialBalanceCents;
