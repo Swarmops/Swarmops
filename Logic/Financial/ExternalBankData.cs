@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Security.Cryptography;
+using System.Web.ExtensionMethods;
 using Swarmops.Common;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -407,9 +408,10 @@ namespace Swarmops.Logic.Financial
             }
 
 
-            // remove all known noise from the digit sequence: spaces, thousands accents, commas, periods
+            // remove all known noise from the digit sequence: all whitespace, thousands accents, commas, periods
 
-            input = input.Replace (" ", "").Replace ("'", "").Replace (",", "").Replace (".", "");
+            input = input.RemoveAllWhitespace();
+            input = input.Replace ("'", "").Replace (",", "").Replace (".", "");
 
             // parse what's remaining as cents in Int64
 
