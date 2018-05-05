@@ -9,6 +9,7 @@ namespace Swarmops.Basic.Types.Financial
         {
             FinancialAccountId = financialAccountId;
             FinancialTransactionId = financialTransactionId;
+            FinancialTransactionRowId = financialTransactionRowId;
             TransactionDateTime = dateTime;
             Description = comment;
             AmountCents = amountCents;
