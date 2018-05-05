@@ -312,7 +312,7 @@ namespace Swarmops.Site.Pages.Ledgers
                         {
                             // nonpresentation currency
 
-                            html +=
+                            html += " " +
                                 String.Format(
                                     Resources.Pages.Ledgers.UploadBankFiles_ResultsInitialBalanceSetForeignCurrency,
                                     Currency.FromCode(resultDetail.CurrencyCode).DisplayCode,

@@ -971,7 +971,7 @@
     <value>There are no asset accounts set up for automation, so no accounts support data upload at this time. Returning to Dashboard.</value>
   </data>
   <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
-    <value>As this was the first upload to this automated account, the initial balance of &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; going into the year {2} has been detected and set </value>
+    <value>As this was the first upload to this automated account, the initial balance of &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; going into the year {2} has been detected and set</value>
     <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
   </data>
   <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">

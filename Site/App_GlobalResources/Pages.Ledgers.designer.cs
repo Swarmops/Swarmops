@@ -1978,7 +1978,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to As this was the first upload to this automated account, the initial balance of &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; going into the year {2} has been detected and set .
+        ///   Looks up a localized string similar to As this was the first upload to this automated account, the initial balance of &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; going into the year {2} has been detected and set.
         /// </summary>
         internal static string UploadBankFiles_ResultsInitialBalanceSet {
             get {
