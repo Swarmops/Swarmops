@@ -613,6 +613,7 @@ namespace Swarmops.Site.Pages.Ledgers
             ImportResults result = new ImportResults();
             int count = 0;
             int progressUpdateInterval = import.Records.Length/40;
+            Int64 importedCentsTotal = 0;
 
             if (progressUpdateInterval > 100)
             {
@@ -670,6 +671,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 }
 
                 Int64 foreignCents = amountCents;
+                importedCentsTotal += amountCents;
 
                 if (accountCurrency.Identity != organizationCurrency.Identity)
                 {
@@ -787,15 +789,11 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 if (autosetInitialBalance)
                 {
-                    if (accountCurrency.Identity == organizationCurrency.Identity) // ordinary presentation currency
-                    {
-                        // assetAccount.    
-                    }
-                    else
-                    {
-                        // non-presentation currency
-                        
-                    }
+                    Int64 newInitialBalanceCents = result.BalanceMismatchCents - importedCentsTotal;
+
+                    assetAccount.InitialBalanceCents = new Money(newInitialBalanceCents, accountCurrency);
+                    result.InitialBalanceCents = (newInitialBalanceCents/100.0).ToString("N2");
+                    result.InitialBalanceCurrency = accountCurrency.DisplayCode;
                 }
             }
 
