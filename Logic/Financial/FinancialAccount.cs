@@ -202,7 +202,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public Money InitialBalanceCents
+        public Money InitialBalance
         {
             set
             {

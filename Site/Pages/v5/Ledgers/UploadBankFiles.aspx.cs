@@ -316,7 +316,7 @@ namespace Swarmops.Site.Pages.Ledgers
                                 String.Format(
                                     Resources.Pages.Ledgers.UploadBankFiles_ResultsInitialBalanceSetForeignCurrency,
                                     Currency.FromCode(resultDetail.CurrencyCode).DisplayCode,
-                                    -resultDetail.BalanceMismatchCents);
+                                    resultDetail.BalanceMismatchCents);
                         }
 
                         html += ".</p>";
@@ -813,10 +813,15 @@ namespace Swarmops.Site.Pages.Ledgers
                 if (autosetInitialBalance)
                 {
                     Int64 newInitialBalanceCents = -result.BalanceMismatchCents;
+                    Money initialBalance = new Money(newInitialBalanceCents, accountCurrency);
 
-                    assetAccount.InitialBalanceCents = new Money(newInitialBalanceCents, accountCurrency);
+                    assetAccount.InitialBalance = initialBalance;
                     result.InitialBalanceCents = newInitialBalanceCents;
                     result.InitialBalanceCurrencyCode = accountCurrency.Code;
+
+                    // make an approximation of conversion rate set for initial balance in presentation to tell user
+                    initialBalance.ValuationDateTime = new DateTime(assetAccount.Organization.FirstFiscalYear, 1, 1);
+                    result.BalanceMismatchCents = initialBalance.ToCurrency(assetAccount.Organization.Currency).Cents;
                 }
             }
 

@@ -336,7 +336,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 Int64 desiredInitialBalanceCents = Formatting.ParseDoubleStringAsCents(newInitialBalanceString);
 
-                account.InitialBalanceCents = new Money(desiredInitialBalanceCents, account.Organization.Currency); // only avaialable for presentation currencies
+                account.InitialBalance = new Money(desiredInitialBalanceCents, account.Organization.Currency); // only avaialable for presentation currencies
 
                 return new ChangeAccountDataResult
                 {
