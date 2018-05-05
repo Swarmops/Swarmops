@@ -300,7 +300,7 @@ namespace Swarmops.Logic.Financial
 
                         foreach (FinancialAccountRow row in testRows)
                         {
-                            if (row.Transaction.Description == initialBalanceTransactionTitle)
+                            if (row.Transaction.Description == initialBalanceTransactionTitle && row.FinancialAccountId == this.Identity)
                             {
                                 lastFoundRow = row.TransactionRow;
                             }

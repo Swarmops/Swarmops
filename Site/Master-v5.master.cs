@@ -43,14 +43,19 @@ namespace Swarmops.Frontend
 
             // END TEST CODE
 
+            // If organization doesn't exist anymore, sign out
 
-            if (this._authority.Organization.Identity == 3 &&
-                PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE))
+            try
+            {
+                this._authority.Organization.GetMemberCount(); // will throw if Organization can't be looked up
+            }
+            catch (Exception)
             {
                 this._authority = null;
                 FormsAuthentication.SignOut();
                 Response.Redirect("/", true);
             }
+
         }
 
         protected void Page_Load (object sender, EventArgs e)
