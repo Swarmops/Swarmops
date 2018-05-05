@@ -283,6 +283,8 @@ namespace Swarmops.Site.Pages.Ledgers
         [WebMethod]
         public static ReportedImportResults GetReportedImportResults (string guid)
         {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
             ReportedImportResults results = new ReportedImportResults();
             ImportResultsCategory category = (ImportResultsCategory) GuidCache.Get (guid + "-Result");
             ImportResults resultDetail = GuidCache.Get (guid + "-ResultDetails") as ImportResults;
@@ -297,7 +299,26 @@ namespace Swarmops.Site.Pages.Ledgers
                         resultDetail.TransactionsImported, resultDetail.DuplicateTransactions,
                         resultDetail.EarliestTransaction, resultDetail.LatestTransaction);
 
-                    // if (resultDetail.)
+                    if (resultDetail.InitialBalanceCents != 0)
+                    {
+                        html += "<p>" +
+                                String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsInitialBalanceSet,
+                                    Currency.FromCode(resultDetail.InitialBalanceCurrencyCode).DisplayCode,
+                                    resultDetail.InitialBalanceCents/100.0);
+
+                        if (resultDetail.CurrencyCode != resultDetail.InitialBalanceCurrencyCode)
+                        {
+                            // nonpresentation currency
+
+                            html +=
+                                String.Format(
+                                    Resources.Pages.Ledgers.UploadBankFiles_ResultsInitialBalanceSetForeignCurrency,
+                                    Currency.FromCode(resultDetail.CurrencyCode).DisplayCode,
+                                    resultDetail.BalanceMismatchCents);
+                        }
+
+                        html += ".</p>";
+                    }
 
                     break;
                 case ImportResultsCategory.Questionable:
@@ -372,7 +393,7 @@ namespace Swarmops.Site.Pages.Ledgers
                             ImportResults results = ProcessImportedData (externalData, (ProcessThreadArguments) args);
 
                             GuidCache.Set (guid + "-ResultDetails", results);
-                            if (results.AccountBalanceMatchesBank)
+                            if (results.AccountBalanceMatchesBank || results.InitialBalanceCents != 0)
                             {
                                 GuidCache.Set (guid + "-Result", ImportResultsCategory.Good);
                             }
@@ -789,11 +810,11 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 if (autosetInitialBalance)
                 {
-                    Int64 newInitialBalanceCents = result.BalanceMismatchCents - importedCentsTotal;
+                    Int64 newInitialBalanceCents = result.BalanceMismatchCents;
 
                     assetAccount.InitialBalanceCents = new Money(newInitialBalanceCents, accountCurrency);
-                    result.InitialBalanceCents = (newInitialBalanceCents/100.0).ToString("N2");
-                    result.InitialBalanceCurrency = accountCurrency.DisplayCode;
+                    result.InitialBalanceCents = newInitialBalanceCents;
+                    result.InitialBalanceCurrencyCode = accountCurrency.Code;
                 }
             }
 
@@ -1029,8 +1050,8 @@ namespace Swarmops.Site.Pages.Ledgers
             public DateTime EarliestTransaction;
             public DateTime LatestTransaction;
             public int TransactionsImported;
-            public string InitialBalanceCents;
-            public string InitialBalanceCurrency;
+            public Int64 InitialBalanceCents;
+            public string InitialBalanceCurrencyCode;
 
             public ImportResults()
             {

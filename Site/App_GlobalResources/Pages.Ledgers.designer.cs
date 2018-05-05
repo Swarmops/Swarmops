@@ -1762,42 +1762,6 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Different banks have different means of obtaining the BGMAX format file. On SEB, you go to &lt;strong&gt;Payments&lt;/strong&gt; and &lt;strong&gt;File communications&lt;/strong&gt; to see a list of files to retrieve. Other banks will vary. In any case, upload them here..
-        /// </summary>
-        internal static string UploadBankFiles_DownloadInstructions_BankgiroSEFile {
-            get {
-                return ResourceManager.GetString("UploadBankFiles_DownloadInstructions_BankgiroSEFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Log on to PayPal. Go to &lt;strong&gt;Your Account&lt;/strong&gt;, and under the &lt;strong&gt;History&lt;/strong&gt; menu, select &lt;strong&gt;Download History&lt;/strong&gt;. Select &lt;strong&gt;Custom Date Range&lt;/strong&gt;, enter the range since last download (as indicated) plus some overlap, and most importantly, select &lt;strong&gt;Tab Delimited - All Activity&lt;/strong&gt;. Click &lt;strong&gt;Download&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Some time will pass before you get a mail from PayPal saying that the file is ready for download. It will be named &lt;em&gt;download.txt&lt;/em&gt;. Uplo [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string UploadBankFiles_DownloadInstructions_PaypalFile {
-            get {
-                return ResourceManager.GetString("UploadBankFiles_DownloadInstructions_PaypalFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Log on to Payson. Go to the &lt;strong&gt;History&lt;/strong&gt; tab, and click &lt;strong&gt;Export history&lt;/strong&gt;. The downloaded file will be named &lt;em&gt;Payson_Export_[date].xls&lt;/em&gt;. Upload this file..
-        /// </summary>
-        internal static string UploadBankFiles_DownloadInstructions_PaysonFile {
-            get {
-                return ResourceManager.GetString("UploadBankFiles_DownloadInstructions_PaysonFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Open SEB&apos;s internet bank. Go to &lt;strong&gt;your account&lt;/strong&gt;, and enter the date span you wish to download in the search box. Press &lt;strong&gt;filter&lt;/strong&gt;. After that, click the link to &lt;strong&gt;save the account history&lt;/strong&gt;. A popup will appear. Choose &lt;strong&gt;csv&lt;/strong&gt; and &lt;strong&gt;tab separated&lt;/strong&gt;, then &lt;strong&gt;save&lt;/strong&gt;. The downloaded file will be named &lt;em&gt;Kontohändelser.csv&lt;/em&gt;. Upload this file..
-        /// </summary>
-        internal static string UploadBankFiles_DownloadInstructions_SebAccountFile {
-            get {
-                return ResourceManager.GetString("UploadBankFiles_DownloadInstructions_SebAccountFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;The file contained {0:N0} transactions. &lt;strong&gt;{1:N0} transactions&lt;/strong&gt; have been successfully imported into the &lt;em&gt;{2}&lt;/em&gt; bookkeeping account. ({3:N0} transactions were duplicates.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;However, the bank balance does not match the records in Swarmops.&lt;/strong&gt; This is usually due to missing transactions. Please upload a transaction list with a larger time span to make sure that Swarmops sees all transactions.&lt;/p&gt;&lt;p&gt;Swarmops&apos;s bookkeeping account is currently &lt;strong&gt;not in sync&lt;/strong [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string UploadBankFiles_ErrorBalance {
@@ -1857,15 +1821,6 @@ namespace Resources.Pages {
         internal static string UploadBankFiles_FileType {
             get {
                 return ResourceManager.GetString("UploadBankFiles_FileType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to As this was the first upload to this automated account, the initial balance of {0} {1:N2} going into the year {2} has been detected and set..
-        /// </summary>
-        internal static string UploadBankFiles_FirstUploadBalanceSet {
-            get {
-                return ResourceManager.GetString("UploadBankFiles_FirstUploadBalanceSet", resourceCulture);
             }
         }
         
@@ -2019,6 +1974,24 @@ namespace Resources.Pages {
         internal static string UploadBankFiles_ResultsGood {
             get {
                 return ResourceManager.GetString("UploadBankFiles_ResultsGood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As this was the first upload to this automated account, the initial balance of &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; going into the year {2} has been detected and set .
+        /// </summary>
+        internal static string UploadBankFiles_ResultsInitialBalanceSet {
+            get {
+                return ResourceManager.GetString("UploadBankFiles_ResultsInitialBalanceSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (which was accounted for with &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; in the presentation currency).
+        /// </summary>
+        internal static string UploadBankFiles_ResultsInitialBalanceSetForeignCurrency {
+            get {
+                return ResourceManager.GetString("UploadBankFiles_ResultsInitialBalanceSetForeignCurrency", resourceCulture);
             }
         }
         
