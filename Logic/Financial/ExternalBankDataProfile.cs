@@ -191,8 +191,8 @@ namespace Swarmops.Logic.Financial
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Datum";  // in dd.mm.yyyy format
                 result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Zpráva pro příjemce";
                 result.FieldNames[ExternalBankDataFieldName.CounterpartyName] = "Název protiúčtu";
-                result.FieldNames[ExternalBankDataFieldName.CounterpartyAccount] = "Protiúčet";
-                result.FieldNames[ExternalBankDataFieldName.CounterpartyBank] = "Kód banky";
+                //result.FieldNames[ExternalBankDataFieldName.CounterpartyAccount] = "Protiúčet";
+                //result.FieldNames[ExternalBankDataFieldName.CounterpartyBank] = "Kód banky";
                 result.FieldNames[ExternalBankDataFieldName.DescriptionSecondary] = "Typ";
                 result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Objem";   // has comma as radix
                 result.FieldNames[ExternalBankDataFieldName.Currency] = "Měna";          // must be czk
