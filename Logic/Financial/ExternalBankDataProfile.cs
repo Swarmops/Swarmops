@@ -186,7 +186,7 @@ namespace Swarmops.Logic.Financial
                 result.Culture = "cs-CZ";
                 result.Encoding = "UTF-8";
 
-                result.InitialReplacements = ";|\t";  // before CSV helper is implemented, replace field separators with spaces
+                result.InitialReplacements = ";|\t|Kč|";  // before CSV helper is implemented, replace field separators with tabs; remove currency symbols
 
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Datum";  // in dd.mm.yyyy format
                 result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Zpráva pro příjemce";
@@ -196,6 +196,7 @@ namespace Swarmops.Logic.Financial
                 result.FieldNames[ExternalBankDataFieldName.DescriptionSecondary] = "Typ";
                 result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Objem";   // has comma as radix
                 result.FieldNames[ExternalBankDataFieldName.Currency] = "Měna";          // must be czk
+                result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Balance"; // not originally in file, must be manually added
 
                 result.LatestTransactionLocation = LatestTransactionLocation.Bottom;
                 result.FeeSignage = FeeSignage.Unknown; // no inline fees
