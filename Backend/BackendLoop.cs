@@ -79,13 +79,12 @@ namespace Swarmops.Backend
             {
                 if (args[0].ToLower() == "test")
                 {
-/*
+
                     BotLog.Write(0, "MainCycle", "Running self-tests");
                     HeartBeater.Instance.Beat(heartbeatFile);  // Otherwise Heartbeater.Beat() will fail in various places
 
                     testMode = true;
                     Console.WriteLine("Testing All Maintenance Processes (except membership-changing ones).");
-                    PWLog.Write(PWLogItem.None, 0, PWLogAction.SystemTest, string.Empty, string.Empty);
 
                     Console.WriteLine("\r\n10-second intervals:");
                     OnEveryTenSeconds();
@@ -99,9 +98,8 @@ namespace Swarmops.Backend
                     OnNoon();
                     Console.WriteLine("\r\nMidnight:");
                     OnMidnight();
-                    */
 
-                    Console.WriteLine ("Testing database access...");
+                    Console.WriteLine ("\r\nTesting database access...");
 
                     Console.WriteLine (SwarmDb.GetDatabaseForReading().GetPerson (1).Name);
                     Console.WriteLine (SwarmDb.GetDatabaseForReading().GetPerson (1).PasswordHash);
