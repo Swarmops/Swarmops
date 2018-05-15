@@ -154,7 +154,7 @@ namespace Swarmops.Utility.BotCode
                 {
                     if (!Debugger.IsAttached)
                     {
-                        HeartBeater.Instance.Beat();
+                        // HeartBeater.Instance.Beat();
                         //Tick the heartbeat to stop exernal restart if this takes a lot of time, but only if not debugging.
                     }
 
