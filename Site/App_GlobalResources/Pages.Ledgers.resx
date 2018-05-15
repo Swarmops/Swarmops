@@ -975,7 +975,7 @@
     <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
   </data>
   <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
-    <value>(which was accounted for with &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; in the presentation currency)</value>
+    <value>(which was accounted for with &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; in the ledger operating currency)</value>
     <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
   </data>
 </root>

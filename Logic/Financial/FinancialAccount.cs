@@ -132,7 +132,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public Money ForeignBalanceTotalCents
+        public Money ForeignCurrencyBalance
         {
             get
             {
@@ -143,7 +143,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public Money GetForeignBalanceDeltaCents(DateTime lowerBoundinclusive, DateTime upperBoundExclusive)
+        public Money GetForeignCurrencyBalanceDeltaCents(DateTime lowerBoundinclusive, DateTime upperBoundExclusive)
         {
             if (this.ForeignCurrency == null)
             {
@@ -174,21 +174,30 @@ namespace Swarmops.Logic.Financial
             // Compare current balance in native currency with the current balance in foreign currency. If off by more than 100 cents,
             // log a corrective transaction to account for exchange rate fluctuations.
 
-            DateTime compareDateTime = DateTime.UtcNow;
+            if (ForeignCurrency == null)
+            {
+                return; // accounting is in presentation currency only
+            }
 
+            Money foreignCents = new Money(ForeignCurrencyBalance.Cents, ForeignCurrency);
+
+            LogForexProfitLoss(foreignCents);
+        }
+
+
+        public void LogForexProfitLoss(Money accountBalanceInAnyCurrency)
+        {
+            Int64 currentNativeValueOfForeignCents = accountBalanceInAnyCurrency.ToCurrency(Organization.Currency).Cents;
             Int64 nativeCents = BalanceTotalCents;
-            Money foreignCents = new Money(ForeignBalanceTotalCents.Cents, ForeignCurrency, compareDateTime);
-
-            Int64 currentNativeValueOfForeignCents = foreignCents.ToCurrency (Organization.Currency).Cents;
 
             if (nativeCents - 100 > currentNativeValueOfForeignCents)
             {
                 // log a loss
 
                 Int64 lossCents = nativeCents - currentNativeValueOfForeignCents;
-                FinancialTransaction lossTx = FinancialTransaction.Create (Organization, DateTime.UtcNow, "Forex Loss");
-                lossTx.AddRow (this, -lossCents, null);
-                lossTx.AddRow (Organization.FinancialAccounts.CostsCurrencyFluctuations, lossCents, null);
+                FinancialTransaction lossTx = FinancialTransaction.Create(Organization, DateTime.UtcNow, "Forex Loss");
+                lossTx.AddRow(this, -lossCents, null);
+                lossTx.AddRow(Organization.FinancialAccounts.CostsCurrencyFluctuations, lossCents, null);
             }
             else if (nativeCents + 100 < currentNativeValueOfForeignCents)
             {
@@ -282,7 +291,7 @@ namespace Swarmops.Logic.Financial
 
                         // First, get the current initial balance in account nonpresentation currency:
 
-                        Int64 initialBalanceForeignCents = GetForeignBalanceDeltaCents(Constants.DateTimeLow,
+                        Int64 initialBalanceForeignCents = GetForeignCurrencyBalanceDeltaCents(Constants.DateTimeLow,
                             new DateTime(this.Organization.FirstFiscalYear, 1, 1)).Cents;
 
                         Int64 desiredInitialBalanceForeignCents = value.Cents;

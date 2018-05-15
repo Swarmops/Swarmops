@@ -54,6 +54,101 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public static void CheckHotwalletAddresses(Organization organization)
+        {
+            HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization(organization);
+
+            foreach (HotBitcoinAddress address in addresses)
+            {
+                if (address.Chain == BitcoinChain.Core)
+                {
+                    // These shouldn't exist much, so make sure that we have the equivalent Cash address registered
+                    try
+                    {
+                        HotBitcoinAddress.FromAddress(BitcoinChain.Cash, address.ProtocolLevelAddress);
+                    }
+                    catch (ArgumentException)
+                    {
+                        // We didn't have it, so create it
+                        BitcoinUtility.TestUnspents(BitcoinChain.Cash, address.ProtocolLevelAddress);
+                    }
+                }
+            }
+        }
+
+
+        public static Dictionary<BitcoinChain, Int64> GetHotwalletSatoshisPerChain(Organization organization)
+        {
+            Dictionary<BitcoinChain, Int64> satoshisTotalLookup = new Dictionary<BitcoinChain, long>();
+
+            HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization(organization);
+
+            foreach (HotBitcoinAddress address in addresses)
+            {
+                HotBitcoinAddressUnspents unspents = HotBitcoinAddressUnspents.ForAddress(address);
+                Int64 satoshisUnspentAddress = 0;
+
+                foreach (HotBitcoinAddressUnspent unspent in unspents)
+                {
+                    satoshisUnspentAddress += unspent.AmountSatoshis;
+                }
+
+                if (satoshisUnspentAddress > 0)
+                {
+                    if (!satoshisTotalLookup.ContainsKey(address.Chain))
+                    {
+                        satoshisTotalLookup[address.Chain] = 0;
+                    }
+
+                    satoshisTotalLookup[address.Chain] += satoshisUnspentAddress;
+                }
+            }
+
+            return satoshisTotalLookup;
+        }
+
+
+        public static Money GetHotwalletValue (Organization organization)
+        {
+            Currency presentationCurrency = organization.Currency;
+
+            Dictionary<BitcoinChain, double> conversionRateLookup = new Dictionary<BitcoinChain, double>();
+            Dictionary<BitcoinChain, Int64> satoshisTotalLookup = new Dictionary<BitcoinChain, long>();
+
+            long fiatCentsPerCoreCoin =
+                new Money(BitcoinUtility.SatoshisPerBitcoin, Currency.BitcoinCore).ToCurrency(
+                    presentationCurrency).Cents;
+            long fiatCentsPerCashCoin =
+                new Money(BitcoinUtility.SatoshisPerBitcoin, Currency.BitcoinCash).ToCurrency(
+                    presentationCurrency).Cents;
+
+            conversionRateLookup[BitcoinChain.Cash] = fiatCentsPerCashCoin/1.0/BitcoinUtility.SatoshisPerBitcoin;
+                // the "/1.0" converts to double implicitly
+            conversionRateLookup[BitcoinChain.Core] = fiatCentsPerCoreCoin/1.0/BitcoinUtility.SatoshisPerBitcoin;
+
+            satoshisTotalLookup = GetHotwalletSatoshisPerChain(organization);
+
+            Int64 presentationCurrencyCents = 0;
+
+            foreach (BitcoinChain chain in satoshisTotalLookup.Keys)
+            {
+                presentationCurrencyCents += (Int64) (satoshisTotalLookup[chain]*conversionRateLookup[chain]); // some precision loss unavoidable here
+            }
+
+            return new Money(presentationCurrencyCents, presentationCurrency);
+        }
+
+
+        public static void CheckHotwalletForexProfitLoss(FinancialAccount hotWallet)
+        {
+            if (hotWallet != null)
+            {
+                hotWallet.LogForexProfitLoss(GetHotwalletValue(hotWallet.Organization));
+            }
+        }
+
+
+
         public static void VerifyBitcoinHotWallet()
         {
             // This must only be run from the backend
@@ -901,7 +996,7 @@ namespace Swarmops.Logic.Financial
 
         private const Int64 _satoshisPerBitcoin = 100 * 1000 * 1000; // written this way to improve readability - important constants
 
-
+        
 
         public static Currency GetCurrencyFromChain(BitcoinChain chain)
         {

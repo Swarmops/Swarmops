@@ -841,6 +841,20 @@ namespace Swarmops.Backend
                         account.CheckForexProfitLoss();
                     }
                 }
+
+                // Also check the bitcoin hotwallets for forex profit/loss as a special case of the above.
+
+                Organizations allOrganizations = Organizations.GetAll();
+
+                foreach (Organization organization in allOrganizations)
+                {
+                    FinancialAccount hotWalletAccount = organization.FinancialAccounts.AssetsBitcoinHot;
+
+                    if (hotWalletAccount != null)
+                    {
+                        BitcoinUtility.CheckHotwalletForexProfitLoss(hotWalletAccount);
+                    }
+                }
             }
             catch (Exception e)
             {

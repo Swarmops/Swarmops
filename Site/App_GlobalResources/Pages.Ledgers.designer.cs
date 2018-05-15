@@ -1987,7 +1987,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (which was accounted for with &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; in the presentation currency).
+        ///   Looks up a localized string similar to (which was accounted for with &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; in the ledger operating currency).
         /// </summary>
         internal static string UploadBankFiles_ResultsInitialBalanceSetForeignCurrency {
             get {

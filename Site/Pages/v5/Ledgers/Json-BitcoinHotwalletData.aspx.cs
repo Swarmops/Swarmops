@@ -19,26 +19,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             PageAccessRequired = new Access(CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read);
             this._authenticationData = GetAuthenticationDataAndCulture();
 
-            HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization (_authenticationData.CurrentOrganization);
+            BitcoinUtility.CheckHotwalletAddresses(_authenticationData.CurrentOrganization);
 
-            foreach (HotBitcoinAddress address in addresses)
-            {
-                if (address.Chain == BitcoinChain.Core)
-                {
-                    // These shouldn't exist much, so make sure that we have the equivalent Cash address registered
-                    try
-                    {
-                        HotBitcoinAddress.FromAddress(BitcoinChain.Cash, address.ProtocolLevelAddress);
-                    }
-                    catch (ArgumentException)
-                    {
-                        // We didn't have it, so create it
-                        BitcoinUtility.TestUnspents(BitcoinChain.Cash, address.ProtocolLevelAddress);
-                    }
-                }
-
-            }
-
+            HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization(_authenticationData.CurrentOrganization);
             Response.ContentType = "application/json";
             Response.Output.WriteLine(FormatJson(addresses));
             Response.End();

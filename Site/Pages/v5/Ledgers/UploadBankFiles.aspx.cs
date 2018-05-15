@@ -784,7 +784,7 @@ namespace Swarmops.Site.Pages.Ledgers
             else
             {
                 // foreign-currency account
-                databaseAccountBalanceCents = assetAccount.ForeignBalanceTotalCents.Cents;
+                databaseAccountBalanceCents = assetAccount.ForeignCurrencyBalance.Cents;
             }
 
 
