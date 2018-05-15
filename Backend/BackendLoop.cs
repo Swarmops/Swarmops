@@ -81,7 +81,6 @@ namespace Swarmops.Backend
                 {
 
                     BotLog.Write(0, "MainCycle", "Running self-tests");
-                    HeartBeater.Instance.Beat(heartbeatFile);  // Otherwise Heartbeater.Beat() will fail in various places
 
                     testMode = true;
                     Console.WriteLine("Testing All Maintenance Processes (except membership-changing ones).");

@@ -37,6 +37,8 @@ namespace Swarmops.Utility.BotCode
         }
 
 
+        /*
+
         public void Beat()
         {
             Beat (this.lastFilename);
@@ -75,7 +77,7 @@ namespace Swarmops.Utility.BotCode
                 }
             }
         }
-
+        */
 
         public void SuggestRestart()
         {
