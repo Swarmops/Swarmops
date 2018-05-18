@@ -29,7 +29,7 @@
             {
                 for (var outAddress in data.vout[index]) {
 
-                    if (outAddress == addressUsed) {
+                    if (outAddress == addressUsedLegacy || outAddress == addressUsedCash) {
 
                         var donatedSatoshis = data.vout[index][outAddress];
 
@@ -80,7 +80,8 @@
         var minerFees = -0.001; // negative, or the .1 cents will go wrong
         var returnedFunds = 0.001; // as above
 
-        var addressUsed = SwarmopsJS.unescape('<%=this.BitcoinCashAddressUsed %>');
+        var addressUsedLegacy = SwarmopsJS.unescape('<%=this.BitcoinCashAddressLegacy %>');
+        var addressUsedCash = SwarmopsJS.unescape('<%=this.BitcoinCashAddressCash %>');
         var verifyingText = SwarmopsJS.unescape('<%=this.Localized_Verifying%>');
         var guid = SwarmopsJS.unescape('<%=this.TransactionGuid%>');
         var conversionRateSatoshisToCents = <%= this.ConversionRateSatoshisToCents %>;

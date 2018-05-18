@@ -139,6 +139,36 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public static void CheckHotwalletAccountBalance(FinancialAccount hotWallet)
+        {
+            if (hotWallet == null)
+            {
+                return;
+            }
+
+            Dictionary<BitcoinChain, Int64> satoshisPerChain = GetHotwalletSatoshisPerChain(hotWallet.Organization);
+
+            Int64 satoshisCash = 0;
+
+            if (satoshisPerChain.ContainsKey(BitcoinChain.Core))
+            {
+                // There should not be any. Use Shapeshift to convert to Cash.
+
+                // TODO
+
+                return; // do not repeat not process at this time
+            }
+            else
+            {
+                if (satoshisPerChain.ContainsKey(BitcoinChain.Cash))
+                {
+                    satoshisCash = satoshisPerChain[BitcoinChain.Cash];
+                }
+            }
+
+        }
+
+
         public static void CheckHotwalletForexProfitLoss(FinancialAccount hotWallet)
         {
             if (hotWallet != null)

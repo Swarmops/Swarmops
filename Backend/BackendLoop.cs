@@ -97,6 +97,8 @@ namespace Swarmops.Backend
                     OnNoon();
                     Console.WriteLine("\r\nMidnight:");
                     OnMidnight();
+                    Console.WriteLine("\r\nMonday Morning:");
+                    OnMondayMorning();
 
                     Console.WriteLine ("\r\nTesting database access...");
 

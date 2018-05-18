@@ -138,9 +138,9 @@ namespace Swarmops.Database
                     }
                     else
                     {
-                        // Dev console process.
+                        // Dev's debug console process.
 
-                        string configLocation = "../Site5/database.config";
+                        string configLocation = "../Site/database.config";
 
                         // however, we don't know exactly how deep in the directory structure we are, so keep adding ../ until we
                         // correct level. We may hit the root if the config doesn't exist and that'll throw us out.

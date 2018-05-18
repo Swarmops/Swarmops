@@ -46,7 +46,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             HotBitcoinAddress address = HotBitcoinAddress.CreateUnique(this.CurrentOrganization, BitcoinChain.Cash,
                 BitcoinUtility.BitcoinEchoTestIndex, this.CurrentUser.Identity, utcNow.Year, utcNow.Month, utcNow.Day);
 
-            this.BitcoinCashAddressUsed = address.ProtocolLevelAddress;
+            this.BitcoinCashAddressLegacy = address.ProtocolLevelAddress;
+            this.BitcoinCashAddressCash = address.HumanAddress;
             string guid = Guid.NewGuid().ToString("N");
             GuidCache.Set(guid, address.ProtocolLevelAddress);
             this.TransactionGuid = guid;
@@ -76,7 +77,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             get { return BitcoinUtility.EchoFeeSatoshis; }
         }
 
-        public string BitcoinCashAddressUsed { get; private set; }
+        public string BitcoinCashAddressLegacy { get; private set; }
+        public string BitcoinCashAddressCash { get; private set; }
         public string TransactionGuid { get; private set; }
         public double ConversionRateSatoshisToCents { get; private set; }
 
