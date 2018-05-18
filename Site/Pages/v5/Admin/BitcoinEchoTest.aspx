@@ -77,9 +77,9 @@
             }
         });
 
-        var sentFunds = 0.001; // the 0.1 cents are necessary for an odometer workaround
-        var minerFees = -0.001; // negative, or the .1 cents will go wrong
-        var returnedFunds = 0.001; // as above
+        var sentFunds = 0; // the 0.1 cents are necessary for an odometer workaround
+        var minerFees = 0; // negative, or the .1 cents will go wrong
+        var returnedFunds = 0; // as above
 
         var addressUsedLegacy = SwarmopsJS.unescape('<%=this.BitcoinCashAddressLegacy %>');
         var addressUsedCash = SwarmopsJS.unescape('<%=this.BitcoinCashAddressCash %>');
