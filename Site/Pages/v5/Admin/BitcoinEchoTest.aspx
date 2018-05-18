@@ -32,7 +32,7 @@
             {
                 for (var outAddress in data.vout[index]) {
 
-                    if (outAddress == addressUsedLegacy || outAddress == addressUsedCash) {
+                    if (outAddress == addressUsedLegacy || outAddress == addressUsedCash || outAddress == addressUsedCashPrefixed) {
 
                         var donatedSatoshis = data.vout[index][outAddress];
 
@@ -85,6 +85,7 @@
 
         var addressUsedLegacy = SwarmopsJS.unescape('<%=this.BitcoinCashAddressLegacy %>');
         var addressUsedCash = SwarmopsJS.unescape('<%=this.BitcoinCashAddressCash %>');
+        var addressUsedCashPrefixed = "bitcoincash:" + addressUsedCash;
         var verifyingText = SwarmopsJS.unescape('<%=this.Localized_Verifying%>');
         var guid = SwarmopsJS.unescape('<%=this.TransactionGuid%>');
         var conversionRateSatoshisToCents = <%= this.ConversionRateSatoshisToCents %>;
