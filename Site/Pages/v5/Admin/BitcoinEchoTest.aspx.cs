@@ -47,7 +47,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 BitcoinUtility.BitcoinEchoTestIndex, this.CurrentUser.Identity, utcNow.Year, utcNow.Month, utcNow.Day);
 
             this.BitcoinCashAddressLegacy = address.ProtocolLevelAddress;
-            this.BitcoinCashAddressCash = address.HumanAddress;
+            this.BitcoinCashAddressCash = address.HumanAddress.Substring("bitcoincash:".Length);
             string guid = Guid.NewGuid().ToString("N");
             GuidCache.Set(guid, address.ProtocolLevelAddress);
             this.TransactionGuid = guid;
