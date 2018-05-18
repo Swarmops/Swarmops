@@ -104,10 +104,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                 Swarmops.Logic.Financial.Money moneyReceived = new Swarmops.Logic.Financial.Money(satoshisReceived,
                     Currency.BitcoinCash);
-
-                // Make sure that the hotwallet native currency is bitcoin
-                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.ForeignCurrency = Currency.BitcoinCash;
-
+                
                 // Create success message and ledger transaction
                 string successMessage = string.Empty;
 

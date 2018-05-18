@@ -26,8 +26,6 @@
         socket.on(eventToListenTo, function(data) {
             var utxoCount = data.vout.length;
 
-            console.log(data);
-
             for (var index = 0; index < utxoCount; index++)
             {
                 for (var outAddress in data.vout[index]) {
