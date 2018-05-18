@@ -54,6 +54,11 @@ namespace Swarmops.DebugConsole
                 }
             }
 
+            // 0.5) Re-register the initial Sandbox Echo address
+
+            HotBitcoinAddress.Create(organization, BitcoinChain.Cash,
+                             BitcoinUtility.BitcoinEchoTestIndex, 1);
+
             // 1) Check unspents on hotwallet addresses
 
             HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization(organization);
