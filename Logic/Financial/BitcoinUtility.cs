@@ -287,7 +287,15 @@ namespace Swarmops.Logic.Financial
                             new WebClient().DownloadString("https://bitcoincash.blockexplorer.com/api/tx/" + txHash));
                     foreach (var input in jsonResult["vin"])
                     {
-                        inputAddresses.Add((string)(input["addr"]));
+                        string address = ((string) (input["addr"]));
+                        if (address.StartsWith("bitcoincash:"))
+                        {
+                            bool dummy1, dummy2;
+
+                            address = Support.BitcoinCashAddressConversion.CashAddressToLegacyAddresss(address, out dummy1, out dummy2);
+                        }
+
+                        inputAddresses.Add(address);
                     }
 
                     break;
