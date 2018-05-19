@@ -194,9 +194,7 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
-                bool dummy1, dummy2;
-
-                return Swarmops.Logic.Support.BitcoinCashAddressConversion.LegacyAddressToCashAddress(this.MachineAddress, out dummy1, out dummy2);
+                return BitcoinUtility.EnsureCashAddressWithPrefix(this.MachineAddress);
             }
         }
 

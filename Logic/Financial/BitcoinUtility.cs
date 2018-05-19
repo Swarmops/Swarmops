@@ -284,16 +284,11 @@ namespace Swarmops.Logic.Financial
                 case BitcoinChain.Cash:
                     jsonResult =
                         JObject.Parse(
-                            new WebClient().DownloadString("https://bitcoincash.blockexplorer.com/api/tx/" + txHash));
+                            new WebClient().DownloadString("https://bch-insight.bitpay.com/api/tx/" + txHash));
                     foreach (var input in jsonResult["vin"])
                     {
                         string address = ((string) (input["addr"]));
-                        if (address.StartsWith("bitcoincash:"))
-                        {
-                            bool dummy1, dummy2;
-
-                            address = Support.BitcoinCashAddressConversion.CashAddressToLegacyAddresss(address, out dummy1, out dummy2);
-                        }
+                        address = BitcoinUtility.EnsureLegacyAddress(address);
 
                         inputAddresses.Add(address);
                     }
@@ -351,7 +346,7 @@ namespace Swarmops.Logic.Financial
                     bool dummy1, dummy2;
 
                     unspentArray = JArray.Parse(
-                        new WebClient().DownloadString("https://bch-insight.bitpay.com/api/addr/" + BitcoinCashAddressConversion.LegacyAddressToCashAddress(secretKey.PubKey.GetAddress(Network.Main).ToString(), out dummy1, out dummy2).Substring("bitcoincash:".Length) + "/utxo"));
+                        new WebClient().DownloadString("https://bch-insight.bitpay.com/api/addr/" + EnsureCashAddressWithoutPrefix(secretKey.PubKey.GetAddress(Network.Main).ToString()) + "/utxo"));
 
                     foreach (JObject unspentJson in unspentArray.Children())
                     {
@@ -489,15 +484,14 @@ namespace Swarmops.Logic.Financial
 
                 case BitcoinChain.Cash:
 
-                    bool dummy1, dummy2;
-                    string cashAddress = BitcoinCashAddressConversion.LegacyAddressToCashAddress(address, out dummy1, out dummy2);
-
                     // TODO: SELECTION OF BLOCK EXPLORER, ADDRESS STRING FORMAT TO GO WITH IT
+
+                    string cashAddress = EnsureCashAddressWithoutPrefix(address);
 
                     addressInfoResult =
                         JObject.Parse(
                             new WebClient().DownloadString(
-                                "https://bch-insight.bitpay.com/api/addr/" + cashAddress.Substring("bitcoincash:".Length)));
+                                "https://bch-insight.bitpay.com/api/addr/" + cashAddress));
 
                     JArray unspentArray;
 
@@ -663,6 +657,88 @@ namespace Swarmops.Logic.Financial
         public static FinancialTransaction GetSwarmopsTransactionFromBlockchainId (string transactionId)
         {
             return null;
+        }
+
+
+        public static string EnsureLegacyAddress(string address)
+        {
+            bool dummy1, dummy2;
+
+            try
+            {
+                string legacyAddress = BitcoinCashAddressConversion.CashAddressToLegacyAddresss(address, out dummy1,
+                    out dummy2);
+
+                // If this doesn't throw, we have a valid legacy address
+
+                return legacyAddress;
+            }
+            catch (Exception)
+            {
+                // This wasn't a valid cash address, so assume it's a legacy address
+            }
+
+            return address;
+        }
+
+    
+
+
+        public static string EnsureCashAddressWithoutPrefix (string address)
+        {
+            bool dummy1, dummy2;
+
+            try
+            {
+                string legacyAddress = BitcoinCashAddressConversion.CashAddressToLegacyAddresss(address, out dummy1,
+                    out dummy2);
+
+                // If this doesn't throw, we already have a valid bitcoincash address
+                // Just strip the prefix if there is one
+
+                return EnsureNoCashAddressPrefix(address);
+            }
+            catch (Exception)
+            {
+                // This wasn't a valid cash address, so assume it's a legacy address
+            }
+
+            // Convert a legacy address to a cash address. This may throw if the address was invalid and that's
+            // exactly what we want in this case.
+
+            string cashAddress = BitcoinCashAddressConversion.LegacyAddressToCashAddress(address, out dummy1, out dummy2);
+
+            return EnsureNoCashAddressPrefix(cashAddress);
+        }
+
+        public static string EnsureCashAddressWithPrefix(string address)
+        {
+            return BitcoinCashPrefix + EnsureCashAddressWithoutPrefix(address);
+        }
+
+
+
+        private const string BitcoinCashPrefix = "bitcoincash:";
+
+
+        public static string EnsureNoCashAddressPrefix(string address)
+        {
+            if (address.ToLowerInvariant().StartsWith(BitcoinCashPrefix))
+            {
+                return address.Substring(BitcoinCashPrefix.Length);
+            }
+
+            return address;  // does not start with prefix
+        }
+
+        public static string EnsureCashAddressPrefix(string address)
+        {
+            if (!address.ToLowerInvariant().StartsWith(BitcoinCashPrefix))
+            {
+                return BitcoinCashPrefix + address;
+            }
+
+            return address;  // already has prefix
         }
 
 
