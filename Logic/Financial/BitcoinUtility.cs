@@ -351,7 +351,7 @@ namespace Swarmops.Logic.Financial
                     bool dummy1, dummy2;
 
                     unspentArray = JArray.Parse(
-                        new WebClient().DownloadString("https://bch-insight.bitpay.com/api/addr/" + BitcoinCashAddressConversion.LegacyAddressToCashAddress(secretKey.PubKey.GetAddress(Network.Main).ToString(), out dummy1, out dummy2).Substring("bitcoincash:".Length) + "/utxo")));
+                        new WebClient().DownloadString("https://bch-insight.bitpay.com/api/addr/" + BitcoinCashAddressConversion.LegacyAddressToCashAddress(secretKey.PubKey.GetAddress(Network.Main).ToString(), out dummy1, out dummy2).Substring("bitcoincash:".Length) + "/utxo"));
 
                     foreach (JObject unspentJson in unspentArray.Children())
                     {
