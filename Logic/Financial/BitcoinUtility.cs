@@ -348,8 +348,10 @@ namespace Swarmops.Logic.Financial
 
                     // TODO: SELECT BLOCK EXPLORER AND ITS ACCOMPANYING ADDRESS FORMAT
 
+                    bool dummy1, dummy2;
+
                     unspentArray = JArray.Parse(
-                        new WebClient().DownloadString("https://bitcoincash.blockexplorer.com/api/addr/" + secretKey.PubKey.GetAddress(Network.Main) + "/utxo"));
+                        new WebClient().DownloadString("https://bch-insight.bitpay.com/api/addr/" + BitcoinCashAddressConversion.LegacyAddressToCashAddress(secretKey.PubKey.GetAddress(Network.Main).ToString(), out dummy1, out dummy2).Substring("bitcoincash:".Length) + "/utxo")));
 
                     foreach (JObject unspentJson in unspentArray.Children())
                     {
@@ -487,12 +489,15 @@ namespace Swarmops.Logic.Financial
 
                 case BitcoinChain.Cash:
 
+                    bool dummy1, dummy2;
+                    string cashAddress = BitcoinCashAddressConversion.LegacyAddressToCashAddress(address, out dummy1, out dummy2);
+
                     // TODO: SELECTION OF BLOCK EXPLORER, ADDRESS STRING FORMAT TO GO WITH IT
 
                     addressInfoResult =
                         JObject.Parse(
                             new WebClient().DownloadString(
-                                "https://bitcoincash.blockexplorer.com/api/addr/" + address));
+                                "https://bch-insight.bitpay.com/api/addr/" + cashAddress));
 
                     JArray unspentArray;
 
@@ -504,7 +509,7 @@ namespace Swarmops.Logic.Financial
                     try
                     {
                         unspentArray = JArray.Parse(
-                            new WebClient().DownloadString("https://bitcoincash.blockexplorer.com/api/addr/" + address + "/utxo"));
+                            new WebClient().DownloadString("https://bch-insight.bitpay.com/api/addr/" + cashAddress + "/utxo"));
 
                     }
                     catch (WebException webException)

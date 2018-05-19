@@ -7,6 +7,7 @@ using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support.BackendServices;
 
 
 // This is a console environment for debugging the logic and database layers.
@@ -54,7 +55,7 @@ namespace Swarmops.DebugConsole
                 }
             }
 
-            // 0.5) Re-register the initial Sandbox Echo address
+            // 0.5) Re-register the initial Sandbox Echo addressbl
 
             HotBitcoinAddress.Create(organization, BitcoinChain.Cash,
                              BitcoinUtility.BitcoinEchoTestIndex, 1);
@@ -76,7 +77,19 @@ namespace Swarmops.DebugConsole
 
                 if (beforeCheckCount != correctedCount)
                 {
-                    Console.WriteLine(" - Unspent count was corrected: ");
+                    Console.WriteLine(" - Unspent count was corrected: was {0}, changed to {1}", beforeCheckCount, correctedCount);
+                }
+
+                if (
+                    address.DerivationPath.StartsWith(BitcoinUtility.BitcoinEchoTestIndex.ToString() + " "))
+                {
+                    // This is an address that should be echoed back, all of it
+
+                    foreach (HotBitcoinAddressUnspent unspent in unspents2)
+                    {
+                        ReturnBitcoinEchoUtxoOrder backendOrder = new ReturnBitcoinEchoUtxoOrder(unspent);
+                        backendOrder.Create(organization, testPerson);
+                    }
                 }
             }
 
