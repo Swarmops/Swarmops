@@ -42,6 +42,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             }
 
             DateTime utcNow = DateTime.UtcNow;
+            this._currency = CurrentOrganization.Currency;
 
             HotBitcoinAddress address = HotBitcoinAddress.CreateUnique(this.CurrentOrganization, BitcoinChain.Cash,
                 BitcoinUtility.BitcoinEchoTestIndex, this.CurrentUser.Identity, utcNow.Year, utcNow.Month, utcNow.Day);
@@ -184,5 +185,17 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             }
         }
 
+
+        private Currency _currency;
+
+        public double MinerFeeDefaultFee
+        {
+            get
+            {
+                Int64 satoshisFee = BitcoinUtility.EchoFeeSatoshis;
+                Logic.Financial.Money presentationCurrencyFee = new Logic.Financial.Money(satoshisFee, Currency.BitcoinCash).ToCurrency(_currency);
+                return presentationCurrencyFee.Cents / -100.0;
+            }
+        }
     }
 }
