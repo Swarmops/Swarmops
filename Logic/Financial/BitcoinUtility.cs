@@ -343,8 +343,6 @@ namespace Swarmops.Logic.Financial
 
                     // TODO: SELECT BLOCK EXPLORER AND ITS ACCOMPANYING ADDRESS FORMAT
 
-                    bool dummy1, dummy2;
-
                     unspentArray = JArray.Parse(
                         new WebClient().DownloadString("https://bch-insight.bitpay.com/api/addr/" + EnsureCashAddressWithoutPrefix(secretKey.PubKey.GetAddress(Network.Main).ToString()) + "/utxo"));
 
@@ -690,8 +688,7 @@ namespace Swarmops.Logic.Financial
 
             try
             {
-                string legacyAddress = BitcoinCashAddressConversion.CashAddressToLegacyAddresss(address, out dummy1,
-                    out dummy2);
+                BitcoinCashAddressConversion.CashAddressToLegacyAddresss(address, out dummy1, out dummy2);
 
                 // If this doesn't throw, we already have a valid bitcoincash address
                 // Just strip the prefix if there is one
