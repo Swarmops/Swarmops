@@ -497,7 +497,7 @@ namespace Swarmops.Logic.Financial
                     addressInfoResult =
                         JObject.Parse(
                             new WebClient().DownloadString(
-                                "https://bch-insight.bitpay.com/api/addr/" + cashAddress));
+                                "https://bch-insight.bitpay.com/api/addr/" + cashAddress.Substring("bitcoincash:".Length)));
 
                     JArray unspentArray;
 
