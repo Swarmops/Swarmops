@@ -1811,8 +1811,7 @@ namespace Resources {
         ///                &lt;p&gt;BitID is a way to log on securely with less hassle than entering a password. Its simplicitly cannot be explained, only experienced, and it is a two-factor authentication since it uses your phone.&lt;/p&gt;
         ///                &lt;h3&gt;Doesn&apos;t this require my phone to be protected also?&lt;/h3&gt;
         ///                &lt;p&gt;Well, yes. It&apos;s your phone and your phone&apos;s access protection. But your phone should always be access protected.&lt;/p&gt;
-        ///                &lt;h3&gt;Do I need an app for this?&lt;/h3&gt;
-        /// [rest of string was truncated]&quot;;.
+        ///                &lt;h3&gt;Do I need a mobile app for this?&lt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Master_BitIdRegister_Sidebar {
             get {

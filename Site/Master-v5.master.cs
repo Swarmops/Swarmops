@@ -516,7 +516,9 @@ namespace Swarmops.Frontend
 
         public string Localized_BitIdRegister_Sidebar
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_BitIdRegister_Sidebar); }
+            get { return CommonV5.JavascriptEscape(String.Format(Resources.Global.Master_BitIdRegister_Sidebar, "Mycelium", "Ledger")); } 
+            
+            // the parameters are examples of mobile wallets supporting BitId authentication; this was moved out of the resource file because it changes
         }
 
 
