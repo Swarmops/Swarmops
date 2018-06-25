@@ -69,15 +69,25 @@ namespace Swarmops.Logic.Financial
             return result;
         }
 
+        public static FinancialAccounts FromBitcoinAddress(string machineFormatAddress)
+        {
+            return FromOptionalData(ObjectOptionalDataType.FinancialAccountBitcoinPublicAddress, machineFormatAddress);
+        }
+
+        private static FinancialAccounts FromOptionalData(ObjectOptionalDataType dataType, string data)
+        {
+            return
+                FromIdentities(SwarmDb.GetDatabaseForReading()
+                    .GetObjectsByOptionalData(ObjectType.FinancialAccount, dataType, data));
+        }
+
         public static FinancialAccounts FromBankTransactionTag (string tag)
         {
-            int[] accountIdentities =
+            return FromIdentities(
                 SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData (ObjectType.FinancialAccount,
                     ObjectOptionalDataType.
                         BankTransactionTag,
-                    tag.ToLower());
-
-            return FromIdentities (accountIdentities);
+                    tag.ToLower()));
         }
 
         public static FinancialAccounts FromIdentities (int[] financialAccountIds)
