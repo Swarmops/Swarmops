@@ -923,12 +923,19 @@ namespace Swarmops.Logic.Financial
                 }
             }
 
+            DateTime ledgersClosedUntil = new DateTime(organization.Parameters.FiscalBooksClosedUntilYear + 1, 1, 1);
+
 
             foreach (BlockchainTransaction blockchainTx in transactions)
             {
                 if (forkDate > Constants.DateTimeLowThreshold && blockchainTx.TransactionDateTimeUtc < forkDate)
                 {
                     continue; // do not process transactions before forkdate DateTime
+                }
+
+                if (blockchainTx.TransactionDateTimeUtc < ledgersClosedUntil)
+                {
+                    continue; // do not attempt to write into closedledger space
                 }
 
                 FinancialTransaction ourTx = null;
