@@ -923,7 +923,13 @@ namespace Swarmops.Logic.Financial
                 }
             }
 
-            DateTime ledgersClosedUntil = new DateTime(organization.Parameters.FiscalBooksClosedUntilYear + 1, 1, 1);
+            int ledgersClosedYear = organization.Parameters.FiscalBooksClosedUntilYear;
+            DateTime ledgersClosedUntil = Constants.DateTimeLow;
+
+            if (ledgersClosedYear > 0)
+            {
+                ledgersClosedUntil = new DateTime(ledgersClosedYear + 1, 1, 1);
+            }
 
 
             foreach (BlockchainTransaction blockchainTx in transactions)
