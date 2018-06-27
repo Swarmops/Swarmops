@@ -45,7 +45,6 @@
                             json.guid = guid;
                             json.txHash = data.txid;
 
-
                             SwarmopsJS.ajaxCall('/Pages/v5/Admin/BitcoinEchoTest.aspx/ProcessTransactionReceived',
                                 json,
                                 function(data) {

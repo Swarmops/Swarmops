@@ -55,13 +55,15 @@ namespace Swarmops.DebugConsole
                 }
             }
 
-            // 0.5) Re-register the initial Sandbox Echo addressbl
+            // 0.5) Re-register the initial Sandbox Echo address
 
+            /*
             HotBitcoinAddress.Create(organization, BitcoinChain.Cash,
-                             BitcoinUtility.BitcoinEchoTestIndex, 1);
+                             BitcoinUtility.BitcoinEchoTestIndex, 1);*/
 
             // 1) Check unspents on hotwallet addresses
 
+            /*
             HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization(organization);
 
             foreach (HotBitcoinAddress address in addresses)
@@ -91,9 +93,93 @@ namespace Swarmops.DebugConsole
                         backendOrder.Create(organization, testPerson);
                     }
                 }
-            }
+            }*/
 
-            // 2) Shapeshift all Core into Cash
+            // 2) Check cold storage accounts, make sure there are corresponding Cash accounts for all Core accounts
+
+            /*
+            FinancialAccount coldStorageRoot = organization.FinancialAccounts.AssetsBitcoinCold;
+
+            if (coldStorageRoot != null)
+            {
+                FinancialAccounts accounts = coldStorageRoot.ThisAndBelow();
+
+                foreach (FinancialAccount account in accounts)
+                {
+                    string bitcoinAddress = account.BitcoinAddress;
+
+                    if (!String.IsNullOrEmpty(bitcoinAddress))
+                    {
+                        Currency accountCurrency = organization.Currency;
+                        if (account.ForeignCurrency != null)
+                        {
+                            accountCurrency = account.ForeignCurrency;
+                        }
+
+                        if (accountCurrency.IsBitcoinCore)
+                        {
+                            // Assert there's a corresponding Bitcoin Cash account
+
+                            bool bitcoinCashExists = false;
+
+                            FinancialAccounts accountsMatchingAddress =
+                                FinancialAccounts.FromBitcoinAddress(bitcoinAddress);
+
+                            foreach (FinancialAccount accountMatchingAddress in accountsMatchingAddress)
+                            {
+                                if (accountMatchingAddress.Identity == account.Identity)
+                                {
+                                    continue; // this is the outer loop account we've found in the inner loop
+                                }
+
+                                if (accountMatchingAddress.OrganizationId != account.OrganizationId)
+                                {
+                                    // This is not supposed to happen, ever, since it implies that two
+                                    // different organizations share the same bitcoin address. Nevertheless
+                                    // it's a theoretically valid case and so we check for it
+
+                                    continue; // not the right organization
+                                }
+
+                                if (accountMatchingAddress.ForeignCurrency.IsBitcoinCash)
+                                {
+                                    // We have a match for organization, currency, and address
+
+                                    bitcoinCashExists = true;
+                                }
+                            }
+
+                            if (!bitcoinCashExists)
+                            {
+                                // Need to create a new Bitcoin Cash address and populate it with transactions,
+                                // starting on 2017-Dec-30
+
+                                if (!account.Name.StartsWith("[Core] "))
+                                {
+                                    account.Name = "[Core] " + account.Name;
+                                }
+
+                                FinancialAccount correspondingCashAccount = FinancialAccount.Create(
+                                    account.Organization, "[Cash] " + account.Name.Substring(7), account.AccountType,
+                                    account.Parent);
+
+                                correspondingCashAccount.BitcoinAddress = account.BitcoinAddress;
+
+                                if (!organization.Currency.IsBitcoinCash)
+                                {
+                                    correspondingCashAccount.ForeignCurrency = Currency.BitcoinCash;
+                                }
+                            }
+                        }
+                    }
+                }
+            }*/
+
+            // 2½ - TODO) Shapeshift all Core into Cash
+
+            // 2 3/4 -- Check cold storage for the new Cash accounts
+            
+            BitcoinUtility.CheckColdStorageForOrganization(organization); 
 
             // 3) Adjust balances of foreign cents on hotwallet
 

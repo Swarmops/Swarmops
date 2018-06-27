@@ -198,4 +198,4 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             }
         }
     }
-}
+};

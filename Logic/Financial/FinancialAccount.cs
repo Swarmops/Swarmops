@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common;
 using Swarmops.Common.Enums;
@@ -696,6 +697,19 @@ namespace Swarmops.Logic.Financial
         public FinancialAccounts ThisAndBelow()
         {
             return FinancialAccounts.ThisAndBelow (this);
+        }
+
+        public Currency Currency
+        {
+            get
+            {
+                if (this.ForeignCurrency != null)
+                {
+                    return this.ForeignCurrency;
+                }
+
+                return this.Organization.Currency;
+            }
         }
 
 
