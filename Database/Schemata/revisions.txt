@@ -71,3 +71,4 @@
 0071 - Renamed Application to Applicant, to avoid a marsh and misery of name collisions [RF]
 0072 - Critical bugfix for 0069 [RF]
 0073 - FinancialTransactions.Comment and People.Name to UTF8 explicit charset [RF]
+0074 - Added FinancialTransaction.ImportSha256 for making bank import better [RF]

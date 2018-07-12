@@ -58,7 +58,7 @@ namespace Swarmops.Logic.Financial
                     financialAccountId, amountCents,
                     description, importHash, personId);
 
-            if (transactionId == 0)
+            if (transactionId <= 0)
             {
                 return null; // This was a dupe -- already imported, as determined by ImportHash
             }
