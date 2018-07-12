@@ -966,7 +966,7 @@ namespace Swarmops.Database
         }
 
         public int CreateFinancialTransactionStub (int organizationId, DateTime dateTime, int financialAccountId,
-            Int64 amountCents, string comment, string importHash, int personId)
+            Int64 amountCents, string comment, string importHash, string importSha256, int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -979,8 +979,9 @@ namespace Swarmops.Database
                 AddParameterWithName (command, "organizationId", organizationId);
                 AddParameterWithName (command, "financialAccountId", financialAccountId);
                 AddParameterWithName (command, "comment", comment);
-                AddParameterWithName (command, "importHash", importHash);
-                AddParameterWithName (command, "amountCents", amountCents);
+                AddParameterWithName(command, "importHash", importHash);
+                AddParameterWithName(command, "importSha256", importSha256);
+                AddParameterWithName(command, "amountCents", amountCents);
                 AddParameterWithName (command, "personId", personId);
 
                 return Convert.ToInt32 (command.ExecuteScalar());

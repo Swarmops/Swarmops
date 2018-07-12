@@ -51,12 +51,12 @@ namespace Swarmops.Logic.Financial
 
 
         public static FinancialTransaction ImportWithStub (int organizationId, DateTime dateTime, int financialAccountId,
-            Int64 amountCents, string description, string importHash, int personId)
+            Int64 amountCents, string description, string importHash, string importSha256, int personId)
         {
             int transactionId = SwarmDb.GetDatabaseForWriting()
                 .CreateFinancialTransactionStub (organizationId, dateTime,
                     financialAccountId, amountCents,
-                    description, importHash, personId);
+                    description, importHash, importSha256, personId);
 
             if (transactionId <= 0)
             {

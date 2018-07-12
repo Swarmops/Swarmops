@@ -182,7 +182,7 @@ namespace Swarmops.Utility.Financial
 
                     transaction = FinancialTransaction.ImportWithStub (organization.Identity, row.DateTime,
                         payPalAccount.Identity, amountCents,
-                        row.Comment, importKey,
+                        row.Comment, importKey, "" /* new SHA256 field */,
                         importingPerson.Identity);
                     result.ImportedTransactionCount++;
 
