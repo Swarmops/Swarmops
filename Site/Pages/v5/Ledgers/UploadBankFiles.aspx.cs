@@ -237,6 +237,7 @@ namespace Swarmops.Site.Pages.Ledgers
             return new AjaxCallResult {Success = true};
         }
 
+
         [WebMethod]
         public static AjaxCallResult GetAutomationProfileName (string guid, int accountId)
         {
@@ -279,6 +280,7 @@ namespace Swarmops.Site.Pages.Ledgers
             };
 
         }
+
 
         [WebMethod]
         public static ReportedImportResults GetReportedImportResults (string guid)
@@ -705,7 +707,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 FinancialTransaction transaction = FinancialTransaction.ImportWithStub (args.Organization.Identity,
                     row.DateTime,
                     assetAccount.Identity, amountCents,
-                    row.Description, importKey,
+                    row.Description, importKey, "" /* new SHA256 field */,
                     args.CurrentUser.Identity);
 
                 if (transaction != null)
