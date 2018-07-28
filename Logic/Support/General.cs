@@ -23,6 +23,11 @@ namespace Swarmops.Logic.Support
 
             System.Net.ServicePointManager.ServerCertificateValidationCallback =
                 (sender, certificate, chain, sslPolicyErrors) => true;
+
+            // Further, instantiate an AesCryptoServiceProvider to make sure the linker doesn't optimize it away -- apparently
+            // another known bug
+
+            System.Security.Cryptography.AesCryptoServiceProvider b = new System.Security.Cryptography.AesCryptoServiceProvider();
         }
 
         public static string GenerateSecureRandomKey(int byteCount)

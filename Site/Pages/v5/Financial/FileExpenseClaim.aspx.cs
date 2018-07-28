@@ -463,6 +463,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                     using (WebClient client = new WebClient())
                     {
+                        SupportFunctions.DisableSslCertificateChecks();
+
                         string receiptResource = string.Empty;
                         try
                         {
