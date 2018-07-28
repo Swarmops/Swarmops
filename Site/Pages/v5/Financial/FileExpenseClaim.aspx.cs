@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Security.Principal;
@@ -462,7 +463,17 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                     using (WebClient client = new WebClient())
                     {
-                        string receiptResource = client.DownloadString(recordList[loop].ReceiptUrl);
+                        string receiptResource = string.Empty;
+                        try
+                        {
+                            receiptResource = client.DownloadString(recordList[loop].ReceiptUrl);
+                        }
+                        catch (Exception innerException)
+                        {
+                            throw new Exception("Exception trying to download first Receipt URI: " +
+                                                recordList[loop].ReceiptUrl, innerException);
+                        }
+                        
 
                         // We now have the web page which holds information about where the actual receipt is located.
 
@@ -482,7 +493,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                             string fullyQualifiedFileName = Document.DailyStorageFolder + newGuidString;
                             string relativeFileName = relativePath + newGuidString;
 
-                            client.DownloadFile(actualReceiptUrl, fullyQualifiedFileName);
+                            try
+                            {
+                                client.DownloadFile(actualReceiptUrl, fullyQualifiedFileName);
+                            }
+                            catch (Exception innerException)
+                            {
+                                throw new Exception("Exception trying to download receipt image: " +
+                                                    actualReceiptUrl, innerException);
+                            }
                             recordList[loop].ReceiptFileNameHere = newGuidString;
 
                             // If original file name ends in PDF, initiate conversion.
