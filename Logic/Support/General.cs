@@ -21,7 +21,7 @@ namespace Swarmops.Logic.Support
 
             // TODO: Does this install a new handler every time it's been called? How do you verify that this short-circuit is in place?
 
-            System.Net.ServicePointManager.ServerCertificateValidationCallback +=
+            System.Net.ServicePointManager.ServerCertificateValidationCallback =
                 (sender, certificate, chain, sslPolicyErrors) => true;
         }
 
