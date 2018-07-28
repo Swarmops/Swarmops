@@ -237,6 +237,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             Person currentUser = ((ProcessThreadArguments) args).CurrentUser;
             Organization organization = ((ProcessThreadArguments) args).Organization;
 
+            // Disable certificate checking due to Mono not installing with a certificate repository - this is UTTERLY broken
+
+            SupportFunctions.DisableSslCertificateChecks(); // MONO BUG/MISFEATURE: Mono has no root certificates, so can't verify cert
+
             ProgressBarBackend progress = new ProgressBarBackend(guidProgress);
 
             try
