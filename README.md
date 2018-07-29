@@ -21,7 +21,7 @@ Goal #3, _functional software to assist civil liberties resistances in repressiv
 Release schedule
 ----------------
 
-Stable releases are built every six months, at the end of every calendar half-year. Sprints (currently "betas") are built every month. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
+Stable releases are built every six months, at the end of every calendar half-year. Sprints (currently "betas") are built on the 5th of every month, sometimes skipping a month when bigger features are being written. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
 
 This is the plan, at least. "Stable" is a somewhat wide definition at the moment. Rather, Swarmops has a few functions to go to enter Open Beta stage.
 
@@ -29,19 +29,27 @@ This is the plan, at least. "Stable" is a somewhat wide definition at the moment
 Installation
 ------------
 
-Minimum requirements are a 2016+ Debian or Ubuntu LTS. At present (Dec 2017), this means that the Stretch and Xenial distributions are supported.
+Minimum requirements are a 2016+ Debian or Ubuntu LTS. At present (July 2018), this means that the Stretch, Xenial, and Bionic distributions are supported. Further, due to the insane lag of Mono distributions to make it into the official repositories, the most recent Mono is also required. Swarmops will install this for you if you just enable it as detailed below.
 
-If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! Run these commands _as root_ - first, fetch the signing key for the repository:
+If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! It requires Run these commands _as root_ - first, fetch the signing keys for the repositories:
 
 ```
 sudo su
 wget -qO- https://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 ```
 
-Then, add the Swarmops repository to your list of software sources, where [your_distro] below is xenial (Ubuntu) or stretch (Debian):
+Then, add the Swarmops repository to your list of software sources, where [your_distro] is `debian` or `ubuntu`, and [your_distro_version] below is `xenial` or `bionic` (Ubuntu) or `stretch` (Debian):
 
 ```
-echo deb https://packages.swarmops.com/ [your_distro] contrib > /etc/apt/sources.list.d/swarmops.list
+echo "deb https://packages.swarmops.com/ [your_distro_version] contrib" > /etc/apt/sources.list.d/swarmops.list
+echo "deb https://download.mono-project.com/repo/[your_distro] stable-[your-distro-version] main" > /etc/apt/sources.list.d/mono-official-stable.list
+```
+
+Make sure you can retrieve packages over secure connections:
+
+```
+apt install apt-transport-https
 ```
 
 Then, run this to install the Swarmops frontend:
@@ -92,7 +100,7 @@ That also means that any code _you_ commit to Swarmops, whether by checking in c
 Beta-6 features progress
 ------------------------
 
-Beta-6 will be released on June 5 with string freeze on June 2. Its focus is to increase multicurrency functionality for payouts and bank imports.
+Beta-6 will be released on September 5 with string freeze on September 2. Its focus is to increase multicurrency functionality for payouts and bank imports.
 
 - [x] Parameterize the bank file import procedure (big feature!)
 - [x] Make it possible to import bank files in non-presentation currency
@@ -103,7 +111,7 @@ Beta-6 will be released on June 5 with string freeze on June 2. Its focus is to 
 Beta-7 features progress
 ------------------------
 
-Beta-7 will be released on July 5, with string freeze on July 2. Its tentative focus will be Shapeshift integration and possibly an open API exposure.
+Beta-7 will be released on October 5, with string freeze on October 2. Its tentative focus will be Shapeshift integration and possibly an open API exposure.
 
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
@@ -179,13 +187,14 @@ This is the exact install procedure for a two-server setup. Two separate servers
 
 1. Create two clean Ubuntu Xenial or Debian Stretch machines. Call them _backend_ and _frontend._ They can be in different firewall zones. Install mysql-server on the backend (or on a third server).
 
-2. Install the repository and its key on both machines. In the commands below, replace the "[xenial/stretch]" with just _xenial_ or _stretch,_ as per your distribution.
+2. Install the repository and its key on both machines. In the commands below, replace the "[xenial/bionic/stretch]" with just _xenial_, _bionic_, or _stretch,_ as per your distribution. Same for "[ubuntu/debian]".
 
 ```
 sudo su
 wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -
-wget -qO- http://packages.swarmops.com/swarmops-packages-internal.gpg.key | apt-key add -
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 echo deb http://packages.swarmops.com/ [xenial/stretch] contrib > /etc/apt/sources.list.d/swarmops.list
+echo "deb https://download.mono-project.com/repo/[ubuntu/debian] stable-[xenial/bionic/stretch] main" > /etc/apt/sources.list.d/mono-official-stable.list
 apt update
 ```
 
