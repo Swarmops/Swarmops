@@ -3,7 +3,7 @@ crowdin-cli download translations
 
 echo "Downloading latest build..."
 
-wget https://crowdin.com/download/project/activizr.zip
+wget https://crowdin.com/backend/download/project/activizr.zip
 
 echo "Unpacking..."
 
