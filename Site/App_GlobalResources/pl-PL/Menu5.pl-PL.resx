@@ -142,7 +142,9 @@
     <value>Komunikacje</value>
   </data>
   
-  
+  <data name="Menu5_Communications_MailInbox" xml:space="preserve">
+    <value>Zarządzaj skrzynką odbiorczą poczty</value>
+  </data>
   <data name="Menu5_Communications_MassMailing" xml:space="preserve">
     <value>Masowe mailowanie</value>
   </data>
@@ -160,36 +162,94 @@
   
   
   
+  <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
+    <value>Złóż zamówienie zakupu</value>
+  </data>
+  <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
+    <value>Asystent koncertów</value>
+  </data>
+  <data name="Menu5_Financial_List" xml:space="preserve">
+    <value>Lista...</value>
+  </data>
+  <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
+    <value>Żądania Pieniężne</value>
+  </data>
+  <data name="Menu5_Financial_List_ExpenseClaims" xml:space="preserve">
+    <value>Zwroty Kosztów</value>
+  </data>
+  <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
+    <value>Faktury Przychodzące</value>
+  </data>
+  <data name="Menu5_Financial_List_OutboundInvoices" xml:space="preserve">
+    <value>Faktury Wychodzące</value>
+  </data>
+  <data name="Menu5_Financial_List_OutstandingAdvances" xml:space="preserve">
+    <value>Odstające zaliczki</value>
+  </data>
+  <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
+    <value>Wynagrodzenia</value>
+  </data>
+  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
+    <value>Zarządzaj Moim Planem Finansowym</value>
+  </data>
+  <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
+    <value>Wypłać Pieniądze</value>
+  </data>
+  <data name="Menu5_Financial_Payroll" xml:space="preserve">
+    <value>Lista płac</value>
+  </data>
+  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
+    <value>Otrzymano Nowe Faktury</value>
+  </data>
+  <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
+    <value>Żądaj zaliczki</value>
+  </data>
+  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
+    <value>Wyślij Nową Fakturę</value>
+  </data>
+  <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
+    <value>Sprawdzenie Poprawności Paragonu</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
+    <value>Zobacz Prognozę Płynności</value>
+  </data>
+  <data name="Menu5_Governance" xml:space="preserve">
+    <value>Zarządzania</value>
+  </data>
+  <data name="Menu5_Governance_Candidates" xml:space="preserve">
+    <value>Kandydaci</value>
+  </data>
+  <data name="Menu5_Governance_CreateVotingList" xml:space="preserve">
+    <value>Tworzenie Głosowania</value>
+  </data>
+  <data name="Menu5_Governance_MeetingAdmin" xml:space="preserve">
+    <value>Spotkanie Administracji</value>
+  </data>
+  <data name="Menu5_Governance_MeetingBoardAdmin" xml:space="preserve">
+    <value>Spotkanie Admina dla Zarządu</value>
+  </data>
+  <data name="Menu5_Governance_Motions" xml:space="preserve">
+    <value>Ruchy</value>
+  </data>
+  <data name="Menu5_Governance_Vote" xml:space="preserve">
+    <value>Głosuj</value>
+  </data>
+  <data name="Menu5_Hacks_TemporaryAccessControl" xml:space="preserve">
+    <value>Ustaw Dostęp Admina (Strona Tymczasowa)</value>
+  </data>
+  <data name="Menu5_Ledgers" xml:space="preserve">
+    <value>Księgi</value>
+  </data>
+  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
+    <value>Plan Konta</value>
+  </data>
+  <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
+    <value>Audyt Ksiąg</value>
+  </data>
+  <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
+    <value>Bilans</value>
+  </data>
   
   
   

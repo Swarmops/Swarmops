@@ -117,19 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Attest_CashAdvance_Many" xml:space="preserve">
+    <value>Attesta anticipi di contanti {0}</value>
+  </data>
+  <data name="Attest_CashAdvance_One" xml:space="preserve">
+    <value>Attesta anticipo di contanti #{0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
+    <value>Attesta richieste di rimborso spese {0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_One" xml:space="preserve">
+    <value>Attesta richiesta di rimborso spese #{0}</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>Imposta indirizzo di pagamento Bitcoin Cash</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>Si prega di impostare il proprio indirizzo Bitcoin Cash per i pagamenti andando su [InstallationName] (inizia con "bitcoincash"):</value>
+  </data>
+  <data name="Payout_Many" xml:space="preserve">
+    <value>Salda {0} pagamenti</value>
+    <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
+  </data>
+  <data name="Payout_One" xml:space="preserve">
+    <value>Salda un pagamento</value>
+  </data>
+  <data name="Payout_Overdue_Many" xml:space="preserve">
+    <value>Salda {0} pagamenti arretrati</value>
+  </data>
+  <data name="Payout_Overdue_One" xml:space="preserve">
+    <value>Salda un pagamento arretrato</value>
+  </data>
+  <data name="Payout_Urgent_Many" xml:space="preserve">
+    <value>Salda {0} pagamenti urgenti</value>
+  </data>
+  <data name="Payout_Urgent_One" xml:space="preserve">
+    <value>Salda un pagamento urgente</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>Abilita l'autenticazione in due passaggi</value>
+  </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>Valida {0} richieste</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>Valida richiesta #{0}</value>
+  </data>
 </root>

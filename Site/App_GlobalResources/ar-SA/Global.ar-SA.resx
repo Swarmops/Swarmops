@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CurrentUserInfo_Logout" xml:space="preserve">
-    <value>تسجيل خروج</value>
+    <value>تسجيل الخروج</value>
     <comment>Causes signoff and de-authentication</comment>
   </data>
   <data name="CurrentUserInfo_Preferences" xml:space="preserve">
@@ -280,7 +280,10 @@
     <value>مهام</value>
     <comment>List of todo items</comment>
   </data>
-  
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>&lt;strong&gt;واضح:&lt;/strong&gt;ليس هنالك أي إجراء عاجل. يا للروعة!</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
+  </data>
   <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
     <value>سيتم وضع الإجراءات هنا.</value>
     <comment>Placeholder for future action items. Temporary.</comment>
@@ -510,7 +513,10 @@
     <value>شهر/يوم/سنة (MM/DD/YYYY)</value>
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>yyyy, MMM d</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
     <value>خمس سنوات</value>
   </data>
@@ -630,108 +636,356 @@
     <value>(متعدد)</value>
     <comment>Displayed when multiple items</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>-- اختيار - متعدد --</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>الخيارات</value>
+    <comment>For various page-specific checkboxes etc</comment>
+  </data>
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...loading...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(لا يوجد تطابق)</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>جاري العمل...</value>
+  </data>
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>يتعذر الاتصال بـ WebSocket. لن تتوفر تحديثات مباشرة فيما بعد.</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>لم يفهم Swarmops مبلغ العملة الخاصة بك. ( ألف دولار و صفر سنت تكتب على هذا الشكل "{0:N2}".) حاول مرة اخرى؟</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>لم يتم تحديد اي مبرر.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>ليس هنالك أي إجراء عاجل. يا للروعة!</value>
+  </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>الحد الادنى/ الحد الاقصى</value>
+    <comment>note the spaces</comment>
+  </data>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>الشخص المعين</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>الموقف</value>
+  </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>يبدو أن مستخدمًا آخر كان سباقا لهذه العملية ؛ تغيرت قاعدة البيانات اثناء قيامك بالبحث. يرجى فحص الشروط المتغيرة وإعادة المحاولة مع ما كنت تريد القيام به.</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>اكتب اسمًا...</value>
+  </data>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>شهر واحد</value>
+  </data>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>سنة واحدة</value>
+  </data>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>ستة اشهر</value>
+  </data>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>ثلاثة اشهر</value>
+  </data>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>شهرين</value>
+  </data>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>سنتين</value>
+  </data>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>حتى الإنهاء</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
+  </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>إنهاء</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>السابق</value>
+  </data>
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>منذ بداية السنة</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>اعلام</value>
+    <comment>As in a table column header</comment>
+  </data>
+  <data name="Global_Total" xml:space="preserve">
+    <value>المجموع</value>
+    <comment>Used as footer in tables, summarizing something</comment>
+  </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>لا يمكن لهذا الحقل ان يكون فارغا.</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>حدث خطأ غير محدد أثناء محاولة ادخال هذه القيمة.</value>
+  </data>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>Twitter ID</value>
+  </data>
+  <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
+    <value>المصادقة ذات العاملين لـ BitID (مَخجَر على عملية تسجيل الدخول من 48 ساعة إلى7 أيام)</value>
+    <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
+  </data>
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>الحساب</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>توفير الحماية</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>إعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>أرسل بريدا يتضمن رابط اعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>لا يبدو ان هذا رقم هاتف صحيح, ولكننا نخزنه كما هو مكتوب هنا رغم ذلك.</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>إعادة تعيين كلمة مرور المستخدم؟</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>أنت تعيد تعيين كلمة مرور المستخدم. سيتوصل هذا المستخدم برابط لإعادة التعيين عبر البريد الالكتروني، والذي يمكن للمستخدمين تتبعه لإعادة تعيين كلمة المرور لـ Swarmops الخاص بهم.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt; لا تفعل هذا ابدا قبل ان تطلب المساعدة بشكل خاص من قبل المستخدم. &lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; متابعة إجراء إعادة تعيين كلمة المرور؟</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>عملية اعادة تعيين كلمة المرور محظورة</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>تم تغيير عنوان البريد الخاص بهذا المستعمل مؤخرا (اقل من اسبوع). ومن أجل حماية أكثر، لا يمكن ولن يتم ارسال أي رابط لاعادة تعيين كلمة المرور لعنوان بريد حديث التغيير.</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>لقد تم ارسال رابط اعادة تعيين كلمة المرور الى هذا المستخدم.</value>
+  </data>
+  <data name="Global_2FA" xml:space="preserve">
+    <value>المصادقة ذات العاملين</value>
+  </data>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>المصادقة ذات العامل الثنائي</value>
+  </data>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>المصادقة ذات العاملين</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
+    <value>&lt;strong&gt;لا يمكن توفير المصادقة ذات العاملين&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; لا يمكنك تشغيل المصادقة ذات عاملين لشخص أخر. يمكنكم فقط القيام بذلك بأنفسهم، كونهم الوحيدين الذي بحوزتهم المفاتيح السرية.</value>
+    <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedOwn" xml:space="preserve">
+    <value>المصادقة ذات عاملين قد تم حذفها. يجب أن تقوم الأن بتسجيل الدخول بكلمة المرور العادية.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedProvision" xml:space="preserve">
+    <value>المصادقة ذات العاملين قد تم حذفها بالنسبة لهذا المستعمل. يجب أن يقوم الأن بتسجيل الدخول بكلمة المرور العادية.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveOwn" xml:space="preserve">
+    <value>&lt;strong&gt;تعطيل المصادقة ذات عاملين؟&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;لا ينصح بفعل هذا. المصادقة ذات عاملين تمنح حماية أكثر لحسابك، هذا بالإضافة أنها تجعل تسجيل الدخول أكثر سهولة إن كنت تستعمل BitID.&lt;br/&gt;&lt;br/&gt;القيام بمسح المصادقة ذات العاملين و الرجوع إلى المصادقة بكلمة المرور فقط؟</value>
+    <comment>Displayed when removing 2FA for yourself</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
+    <value>&lt;strong&gt;حذف المصادقة ذات عاملين؟&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;لديك الحق في القيام بهذا فقط إن طُلب منك تعطيل الـ 2fa لهذا المستعمل، من طرف المستعمل نفسه، &lt;strong&gt;و&lt;/strong&gt; أنت متأكد، من أن الطلب قد جاء من نفس الشخص الذي سوف تقوم بتعطيل الأمن لديه (وفقا لسياسة التحقق لدى المنظمة).&lt;br/&gt;&lt;br/&gt;الشروع في حذف أمن هذا المستعمل؟ سوف يقوم بالرجوع إلى الأمن المنطوي فقط على كلمة السر.</value>
+    <comment>Displayed when removing 2FA for someone else</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
+    <value>لم يتم حذف المصادقة ذات عاملين و هي لا تزال قائمة.</value>
+  </data>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>يوم واحد</value>
+  </data>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>سبعة ايام</value>
+  </data>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>يومين</value>
+  </data>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>اسبوعين</value>
+  </data>
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>&lt;strong&gt;بيتد صفحتان-FACTOR "بنجاح تمكين مصادقة"&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;عند تسجيل الدخول إلى هذا النظام من الآن فصاعدا، تحتاج إلى استخدام تطبيق بيتد (BitId) الذي إستخدمته توا من أجل مسح الرقم التسلسلي.</value>
+  </data>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>المصادقة ذات عاملين لـ BitID لم يتم تفعيلها بعد.</value>
+  </data>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>قم بمسح هذا الكود لتفعيل BitID</value>
+  </data>
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>&lt;h3&gt;ما هذا ؟&lt;/h3&gt;
+                &lt;p&gt;يمكّنك BitID من تسجيل الدخول بأمان و بدون عناء إدخال كلمة السر. يصعب علينا وصف مدى سهولته, حتى تقوم باختباره, فهو عبارة عن مصادقة ذات عاملين(2fa) لأنه يقوم باستعمال هاتفك المحمول.&lt;/p&gt;
+                &lt;h3&gt;ألا يتطلب هذا أن يكون هاتفي محمي أيضا؟&lt;/h3&gt;
+                &lt;p&gt;نعم, بالنسبة لهاتفك و حماية الولوج إلى هاتفك. لكن الولوج إلى هاتفك يجب أن يضل دائما محمي.&lt;/p&gt;
+                &lt;h3&gt;هل أنا في حاجة لأي تطبيق من أجل هذا؟&lt;/h3&gt;
+                &lt;p&gt;ربما. بعض الهواتف التي تحتوي على محافظ البتكوين تتوفر بالفعل على BitID. لكن أغلب الهواتف لا تتوفر على ذلك. إن لم يكن هاتفك يحتوي عليها, قم بالبحث عن تطبيق يدعى “BitID Authenticator“ أو تطبيق مماثل.&lt;/p&gt;
+                &lt;h3&gt;كيف أقوم بتفعيل BitID؟&lt;/h3&gt;
+                &lt;p&gt;فقط قم باستعمال التطبيق على هاتفك و قم بمسح هذا الكود. بعد ذلك, يمكنك مسح كود مشابه للولوج إلى النظام.&lt;/p&gt;</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>المصادقة ذات عاملين لـ BitID (توقيع البتكوين)</value>
+  </data>
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value>المصادقة ذات عاملين لـ BitID</value>
+  </data>
+  <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
+    <value>اكتب كلمة المرور الحالية لكي يتاح لك التغيير</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
+    <value>الحماية الخاصة بك</value>
+  </data>
+  <data name="Master_EditPersonNewPassword1" xml:space="preserve">
+    <value>تعيين كلمة مرور جديدة</value>
+  </data>
+  <data name="Master_EditPersonNewPassword2" xml:space="preserve">
+    <value>أعد كتابة كلمة السر الجديدة</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
+    <value>يتعذر تعيين كلمة مرور جديدة: كلمة المرور القديمة غير صحيحة.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_TooWeak" xml:space="preserve">
+    <value>يتعذر تعيين كلمة مرور جديدة: كلمة المرور الجديدة ضعيفة للغاية. قم باستعمال كلمة مرور اقوى.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
+    <value>&lt;strong&gt;تم تغيير كلمة السر&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;لقد قمت بتغيير كلمة السر بنجاح. و كإجراء أمني بسيط، سنقوم بتعطيل أي سحب في الساعات الـ 48 القادمة.</value>
+  </data>
+  <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
+    <value>إذا سمحت، قم بتفعيل المصادقة ذات عاملين لـ BitID.</value>
+  </data>
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>الضابط</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>الضابط</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>الضابط</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>الضباط</value>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>متطوع</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>متطوع</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>متطوع</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>متطوعين</value>
+  </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>إبدأ</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>موافق</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>متابعة</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  </data>
+  <data name="Swarm_TypePartialName" xml:space="preserve">
+    <value>أكتب اسما جزئيا...</value>
+  </data>
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>الربح/الخسارة السنوية لتاريخ ({0})</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>الزبون / العميل</value>
+  </data>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>التقدم</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  </data>
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>حمل هذا</value>
+  </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>مستندات</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>قم بارساله لي عبر البريد الاكتروني</value>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>نقدا</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>النواة</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>الذهب</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>إرث</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>سلسلة</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>الفاتورة الصادرة #{0:N0} لـ {1}</value>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(ملغاة ، باطلة، منعدمة)</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>رفع</value>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>رفع ملف النتائج</value>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>ضريبة القيمة المضافة</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>الضريبة على القيمة المضافة</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>التاريخ</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>yyyy, MMM d</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>إرسال</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>السجل العام</value>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>لقد قمت بالتو بالدخول لـ&lt;strong&gt;منظمة الـ sandbox.&lt;br/&gt;&lt;br/&gt; هذا محيط أمن من خلاله يمكنك تجربة جميع خواص الـ Swarmops من دون إلحاق أي ضرر لبيانات الإنتاج. قم بالإستمتاع كما شئت، وقم بالرجوع إلى محيط الإنتاج الخاص بك عندما تنتهي من التجارب.</value>
+  </data>
 </root>

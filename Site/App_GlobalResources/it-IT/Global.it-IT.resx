@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CurrentUserInfo_Logout" xml:space="preserve">
-    <value>Uscita</value>
+    <value>Esci</value>
     <comment>Causes signoff and de-authentication</comment>
   </data>
   <data name="CurrentUserInfo_Preferences" xml:space="preserve">
@@ -132,7 +132,7 @@
   
   
   <data name="Dashboard_PageTitle" xml:space="preserve">
-    <value>Cruscotto</value>
+    <value>Pannello di controllo</value>
     <comment>Title of default page</comment>
   </data>
   <data name="Financial_Actuals" xml:space="preserve">
@@ -507,7 +507,10 @@
     <value>GG/MM/AAAA</value>
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>MMMM g, aaaa</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
     <value>cinque anni</value>
   </data>
@@ -948,13 +951,35 @@
     <value>(annullato, azzerato)</value>
     <comment>Used when something is determined invalid</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Carica</value>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>Risultati del caricamento del file</value>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>IVA</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Imposta sul valore aggiunto</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>Data</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>MMM g, aaaa</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Invia</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>Contabilità generale</value>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>Stai entrando nel &lt;strong&gt;Sandbox&lt;/strong&gt;dell'organizzazione.&lt;br/&gt;&lt;br/&gt;Questo è un ambiente sicuro dove si può giocare con Swarmops senza rischiare di danneggiare i dati di produzione. Divertiti quanto vuoi, e ritorna al tuo ambiente di produzione quando hai finito di sperimentare.</value>
+  </data>
 </root>

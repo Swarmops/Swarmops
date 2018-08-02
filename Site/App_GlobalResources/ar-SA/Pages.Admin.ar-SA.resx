@@ -117,14 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
+    <value>هذا كود رمز الإستجابة السريع للبتكوين لإختبار الصدى بالنسبة لجهاز Swarmops كاملا، و ليس فقط لـ {0}. قم بمسحه من على محفظة البتكوين بهاتفك لإنجاز اختبار الصدى، أو قم بالإرسال من على جهاز الكمبيوتر مباشرة إلى [{1}] (هذا عنوان للبتكوين كاش). المبلغ (ناقص رسوم التعدين وقدرها {2:N2} microcoins) سوف يرسل إليك مجددا في غضون بضع ثواني.</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
+    <value>تم التوصل بـ {2:N2} microcoins ({0} {1:N2}). جاري الإرجاع.</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
+    <value>تم التوصل بـ {0} microcoins ("bits"). جاري الإرجاع.</value>
+    <comment>Used if Bitcoin Cash is the org native currency.</comment>
+  </data>
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>هذا اختبار صدى للبتكوين. يقوم هذا باختبار المحفظة الساخنة, إذا قمت بإرسال كمية صغيرة هنا, فسوف يعاد إرسالها إليك, ناقص رسوم المعاملة (تعادل {0:N2} microcoins حاليا).</value>
+  </data>
+  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
+    <value>اختبار صدى المحفظة الساخنة للبتكوين كاش</value>
+  </data>
+  <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
+    <value>جاري انتظار العملية...</value>
+  </data>
+  <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
+    <value>تم وجود المعاملة ، جاري التحقق...</value>
+  </data>
+  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
+    <value>اختبار صدى بتكوين Swarmops</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>النشطاء سيتم تسميتهم</value>
   </data>
@@ -138,11 +157,15 @@
   <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
     <value>إنشاء المنظمة الجديدة ك...</value>
   </data>
-  
+  <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
+    <value>اسم المنظمة لا يمكن أن يكون فارغا.(يجب أن تعطي اسما للمنظمة!)</value>
+  </data>
   <data name="CreateOrganization_Info" xml:space="preserve">
     <value>يمكنك إنشاء منظمة جديدة كمنظمة مستقلة، أو كمنظمة وليدة من المنظمة الحالية. (جميع الأشخاص في المنظمة الأم مع مسؤولياتهم سيكون لهم نفس الصلاحيات والامتيازات في المنظمة الوليدة تلقائياً.)</value>
   </data>
-  
+  <data name="CreateOrganization_NewOrganizationName" xml:space="preserve">
+    <value>اسم المنظمة الجديد</value>
+  </data>
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
     <value>عملة المنظمة</value>
   </data>
@@ -156,10 +179,19 @@
     <value>الأشخاص العاديون سيتم تسميتهم</value>
     <comment>This can be "members", etc.</comment>
   </data>
-  
-  
-  
-  
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>تم إنشاء المنظمة الجديدة. لقد تم منحك {0} غير منتهي الصلاحية في المؤسسة ، وتم تعيينك كأعلى مسؤول تنفيذي في الوقت الحالي ، بحيث يمكنك العمل به وإعداده بشكل صحيح. لتكوين المؤسسة الجديدة ، استخدم لوحة التحكم هته (متوفرة لاحقًا تحت المسؤول / إعدادات المؤسسة).</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
+  <data name="CreateOrganization_Titles" xml:space="preserve">
+    <value>عناوين المركز الافتراضي في البداية</value>
+  </data>
+  <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
+    <value>تجاري</value>
+  </data>
+  <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
+    <value>غير مربحة</value>
+  </data>
   
   <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
     <value>ترقيم {0}</value>
@@ -208,13 +240,29 @@
   <data name="EditOrganization_VanityDomain" xml:space="preserve">
     <value>اسم النطاق الخاص بالمنظمة</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
+  <data name="OrgStaffing_Header_ExecutivePositions" xml:space="preserve">
+    <value>المناصب التنفيذية لـ {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>مواضع محلية (في كل التضاريس)</value>
+  </data>
+  <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
+    <value>جدول الرواتب للأعضاء</value>
+  </data>
+  <data name="OrgStaffing_Header_StrategicPositions" xml:space="preserve">
+    <value>مواقع استراتيجية لـ {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
+    <value>المتطوعون بانتظار الاجابة</value>
+  </data>
+  <data name="OrgStaffing_Info" xml:space="preserve">
+    <value>حدد هيكل التوظيف لهذه المنظمة ، وكذلك هيكل توظيفها على المستويات الاستراتيجية (المجلس) والتنفيذية (مستوى C أو ما يعادلها). يمكنك أيضًا إدارة المتطوعين في طور الانتظار وقوائم الرواتب من هنا.</value>
+  </data>
+  <data name="OrgStaffing_PageTitle" xml:space="preserve">
+    <value>موظفي المنظمة</value>
+  </data>
   <data name="SystemSettings_AdminAddress" xml:space="preserve">
     <value>العنوان المستخدم لمدير النظام في حقل المرسل</value>
   </data>
@@ -230,8 +278,12 @@
   <data name="SystemSettings_ExternalUrl" xml:space="preserve">
     <value>عنوان الإنترنت الذي يمكن الوصول إليه من الخارج</value>
   </data>
-  
-  
+  <data name="SystemSettings_Header_CorrespondenceTxSettings" xml:space="preserve">
+    <value>إعدادات التراسل بالمراسلة</value>
+  </data>
+  <data name="SystemSettings_Header_SystemAdministrators" xml:space="preserve">
+    <value>مدراء النظام</value>
+  </data>
   <data name="SystemSettings_Info" xml:space="preserve">
     <value>الإعدادات التقنية المختلفة لهذا التنصيب من نظام سوارموبس. غير مخصص لأي منظمة أو شخص وهي على مستوى التنصيب ككل.</value>
   </data>
@@ -250,25 +302,76 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>أعتقد أنه عليك حقاً حقاً حقاً استخدام بروتوكول HTTPS الآمن في موقع مثل هذا الموقع. ولكنك تعرف هذا الأمر مسبقاً. اليس كذلك؟</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>تغيير اسم مضيف الخلفية</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>مدخل WebSocket (الواجهة)</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
+    <value>مدخل WebSocket (الخلفية)</value>
+  </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>إنتحال الشخصية مفعل</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>لديك حصة تجسيد حالية باسم {0}.&lt;a href="javascript:terminateImpersonation();"&gt;إنهاء التجسيد.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;أتريد تجسيد شخص ما؟&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;هذا ليس بالشيئ الهين، فإن لم تكن تفعل هذا لأسباب تقنية ، فقد يكون هذا مخالفا للقانون نسبة لقوانينك المحلية.&lt;br/&gt;&lt;br/&gt;فالهدف من وراء هذه الأداة هي معالجة بعض الأعطال الفنية.
+لقد تم تسجيل الدخول.&lt;br/&gt;&lt;br/&gt;أتود المتابعة؟</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;لقد تم انهاء التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;إنتهى التجسيد مع {0:HH:mm} UTC.
+أنت الأن مسجّل للدخول بنفسك من جديد.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;لقد تم رفض التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;لا يمكنك تجسيد مديرك المباشر.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;لقد تم رفض التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; لا يمكنك تجسيد شخص أخر لديه الحق في الولوج إلى مستوى النظام.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>يتوجب عليك تحديد شخص لتمثيله.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>إن كانت لديك الرغبة في تجسيد نفسك، فنحن ننصحك بأن تقوم بتسجيل الخروج من Swarmops و أن تقوم بالبحث عن مساعدة من نوع أخر.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;لقد تم رفض التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; لا يبدو أنك تتمتع بالإمتيازات الكافية من أجل تجسيد شخص أخر.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>تجسيد شخصية مستخدم آخر</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>تجسيد</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>الشخص الذي ستنتحل شخصيته</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;التجسيد الأن قائم&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;التجسيد إنطلق مع حوالي {0:HH:mm} UTC. هذه هي اللوحة الرئيسية كما يراها الشخص الذي تقوم بتجسيده. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>إن أداة التصحيح التالية تمكنك من تجسيد مستخدم أخر لترى و تقوم باختبار Swarmops كما يفعل عندما يقوم بتسجيل الدخول.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;تحذير:&lt;/strong&gt;هته الأداة هي أداة تطفلية ويجب عليك أن تستعملها فقط لأغراض تتعلق بالتطوير التقني أو عند طلب الدعم. إن إستعمال هذه الأداة لا يجب أن يستهان به.&lt;/p&gt;
+&lt;p&gt;جميع عمليات التجسيد هي موثقة، وجميع العمليات المنجزة أثناء التجسيد يمكن تعقبها، والمستخدم الذي قمت بتجسيده سيكون على دراية بتدخلك.&lt;/p&gt;</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>لا تتم منادتهم بأعضاء إلى حد الأن</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(لا يطبق)</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>الحكومة</value>
+  </data>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;لقد تم تجميع الغبار&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; المبلغ الذي قمت بإرساله هو في الواقع أقل من الرسوم اللازمة لتغطية مصاريف الإرجاع إليك، والتي تساوي {0:N2} microcoins. المبلغ الذي قمت بإرساله يلقب بـ "الغبار" على شبكة البتكوين، ولن يتم نقله مرة أخرى.&lt;br/&gt;
+&lt;br/&gt;قم بإرسال مبلغ أكبر من أجل إنجاز اختبار الصدى.</value>
+  </data>
 </root>

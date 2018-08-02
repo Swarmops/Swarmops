@@ -117,26 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CentralEurope" xml:space="preserve">
+    <value>أوروبا الوسطى</value>
+  </data>
+  <data name="EasternEurope" xml:space="preserve">
+    <value>أوروبا الشرقية</value>
+  </data>
+  <data name="Europe" xml:space="preserve">
+    <value>أوروبا</value>
+  </data>
+  <data name="Microstates" xml:space="preserve">
+    <value>الدول الصغيرة</value>
+    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
+  </data>
+  <data name="Nordics" xml:space="preserve">
+    <value>الدول الإسكندنافية</value>
+    <comment>(Finland Denmark Norway Sweden Iceland)</comment>
+  </data>
+  <data name="NorthernEurope" xml:space="preserve">
+    <value>أوروبا الشمالية</value>
+  </data>
+  <data name="SouthernEurope" xml:space="preserve">
+    <value>أوروبا الجنوبية</value>
+  </data>
+  <data name="USA_EastNorthCentral" xml:space="preserve">
+    <value>وسط الشمال الشرقي</value>
+  </data>
+  <data name="USA_EastSouthCentral" xml:space="preserve">
+    <value>وسط الجنوب الشرقي</value>
+  </data>
+  <data name="USA_MidAtlantic" xml:space="preserve">
+    <value>وسط-الأطلسي</value>
+  </data>
+  <data name="USA_Midwest" xml:space="preserve">
+    <value>الغرب الأوسط</value>
+  </data>
+  <data name="USA_Mountain" xml:space="preserve">
+    <value>الجبال</value>
+  </data>
+  <data name="USA_NewEngland" xml:space="preserve">
+    <value>بريطانيا الجديدة</value>
+  </data>
+  <data name="USA_Northeast" xml:space="preserve">
+    <value>الشمال الشرقي</value>
+  </data>
+  <data name="USA_Pacific" xml:space="preserve">
+    <value>المحيط الهادئ</value>
+  </data>
+  <data name="USA_South" xml:space="preserve">
+    <value>الجنوب</value>
+  </data>
+  <data name="USA_SouthAtlantic" xml:space="preserve">
+    <value>جنوب المحيط الأطلسي</value>
+  </data>
+  <data name="USA_West" xml:space="preserve">
+    <value>غرب</value>
+  </data>
+  <data name="USA_WestNorthCentral" xml:space="preserve">
+    <value>وسط الشمال الغربي</value>
+  </data>
+  <data name="USA_WestSouthCentral" xml:space="preserve">
+    <value>وسط الجنوب الغربي</value>
+  </data>
+  <data name="WesternEurope" xml:space="preserve">
+    <value>أوروبا الغربية</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>عالمي</value>
+    <comment>Root geography</comment>
+  </data>
 </root>

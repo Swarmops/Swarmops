@@ -163,13 +163,35 @@ Ti ko ba n se eyin le paarọ adirẹsi naa (o ma dara ki e se aseyewo le kan si
   <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Bitcoin Cash payout adirẹsi ti seto</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>Apo owo bitcoin fun [OrganizationName] sese san [PaymentCount] owo (awon awo) alaifowoyi ti isiro re je [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin tabi "bits").</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Owo ti o jade ninu Apo owo: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[BitcoinAmountFloat] microbitcoin ("bits") sese je fifi ran se si adiresi Bitcoin Cash re ([BitcoinAddress]) lati odo [OrganizationName] fun awon idi won yii:
+
+[EmbeddedPreformattedText]
+
+O ye ki o ti ri owo naa ninu apo owo re, o de ma wa fun lilo laarin wakati kan (deede ijerisi mefa).</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Awon owo ti o je sisan fun e: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>Nigbati ti o ba n gbiyanju lati san owo aladaase lati inu apo owo re, kokoro ikoko ti o lo lati wole ko baramu pelu kokoro ti gbogbo gbo ti a lo lati fi se akojo awon owo ti o se pataki. Eleyi je ohun ti o se pataki gan.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - KIAKIA] asise kokoro ikoko Bitcoin; kole sanwo</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmops n gbiyanju lati san awon owo ti [CurrencyCode] [AmountNeededFloat], sugbon [CurrencyCode] [AmountWalletFloat] nikan ni o wa nile ninu apo owo ti Bitcoin Cash. Swarmops ko ri owo san siwaju si ni akoko yii.
+
+Jowo fi owo sinu apo owo re LESEKESE bi o ti e jepe koni ju iye owo ti o nilo lo - o nilo afikun kekere [AmountMissingMicrocoinsFloat] microbitcoin ("bits") lati le bere si ni lo awon ise apo owo pada.
+
+Swarmops a tun bo ma gbiyanju ati pe a si ma si fi awon ikede won yii ranse ni won iba igba ti ko ba ti ni aseyori.</value>
+  </data>
   
   
   

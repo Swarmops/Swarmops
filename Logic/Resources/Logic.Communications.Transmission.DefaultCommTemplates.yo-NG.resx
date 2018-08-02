@@ -146,8 +146,23 @@ O ye ke wọle lori site wa kesi se ayipada ọrọigbaniwọle yin si n kan to 
 
  Ẹ kú àbọ̀!</value>
   </data>
-  
-  
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>E kaabo si [OrganizationName]!
+
+A ti fun o ni [Regularship] lati odo [ActingPerson]. Koni pato igba tabi akoko ti o ma pari, fun idi eyi o nilo lati gbe igbese pelu ikanju.
+
+Ni bayii o ye ki awon eniyan wa ti kan e lara lati [OrganizationName] fun alaye si lori bi o se le sise. Ti koba jebe, ma reti ifiranse laipe.
+
+Oro igbaniwole re titele ati alaileto si Swarmops, eyi ni software ti a lo gegebi back-end system, le leyii:
+[RandomPassword]
+
+O ye ki o wole si ori site wa ki o si se ayipada oroigbaniwole yi si eleyii ti aabo re tun bo gbopon ti o je eyi ti o nifesi ni kiakia. O le se eleyi nipa lilo si [ExternalUrl] , tesiwaju nipa tite aami "User" ti o wa ni oke igun apa otun, yiyan taabu Aabo (eleyi ti o ni agadagodo), tite oro igbaniwole igba die, leyin na ko tuntun. O ye ki o ro nipa latin se amulo ifasesi olonameji, gegebi asa ti o dara.
+
+E kaabo!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] E kaabo si [OrganizationName]!</value>
+  </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Ẹ kú àbọ̀ si [OrganizationName]!</value>
   </data>

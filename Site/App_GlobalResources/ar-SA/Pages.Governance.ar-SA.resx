@@ -187,8 +187,12 @@
   <data name="ListMotions_Grid_Amendments" xml:space="preserve">
     <value>التعديلات</value>
   </data>
-  
-  
+  <data name="ListMotions_Grid_Carried" xml:space="preserve">
+    <value>محمولة</value>
+  </data>
+  <data name="ListMotions_Grid_Designation" xml:space="preserve">
+    <value>#</value>
+  </data>
   <data name="ListMotions_Grid_Title" xml:space="preserve">
     <value>العنوان</value>
   </data>
@@ -269,7 +273,10 @@
     <value>القرار</value>
     <comment>Row header</comment>
   </data>
-  
+  <data name="VoteAmendments_Grid_Designation" xml:space="preserve">
+    <value>#</value>
+    <comment>Column header</comment>
+  </data>
   <data name="VoteAmendments_Grid_No" xml:space="preserve">
     <value>لا</value>
     <comment>Column header</comment>
@@ -278,7 +285,10 @@
     <value>المبررات</value>
     <comment>Row header</comment>
   </data>
-  
+  <data name="VoteAmendments_Grid_Recommend" xml:space="preserve">
+    <value>تسجيل.</value>
+    <comment>Column header</comment>
+  </data>
   <data name="VoteAmendments_Grid_Text" xml:space="preserve">
     <value>النص</value>
     <comment>Row header</comment>
@@ -302,7 +312,9 @@
     <value>التصويت على التعديلات</value>
     <comment>In page title and header</comment>
   </data>
-  
+  <data name="VoteAmendments_Recommend_Abstain" xml:space="preserve">
+    <value>---</value>
+  </data>
   <data name="VoteAmendments_Recommend_No" xml:space="preserve">
     <value>لا</value>
   </data>

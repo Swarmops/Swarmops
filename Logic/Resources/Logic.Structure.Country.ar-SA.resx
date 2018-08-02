@@ -117,36 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Country_AT" xml:space="preserve">
+    <value>النمسا</value>
+  </data>
+  <data name="Country_BE" xml:space="preserve">
+    <value>بلجيكا</value>
+  </data>
+  <data name="Country_BG" xml:space="preserve">
+    <value>بلغاريا</value>
+  </data>
+  <data name="Country_CH" xml:space="preserve">
+    <value>سويسرا</value>
+  </data>
+  <data name="Country_CY" xml:space="preserve">
+    <value>قبرص</value>
+  </data>
+  <data name="Country_CZ" xml:space="preserve">
+    <value>جمهورية التشيك</value>
+  </data>
+  <data name="Country_DE" xml:space="preserve">
+    <value>ألمانيا</value>
+  </data>
+  <data name="Country_DK" xml:space="preserve">
+    <value>الدانمارك</value>
+  </data>
+  <data name="Country_EE" xml:space="preserve">
+    <value>إستونيا</value>
+  </data>
+  <data name="Country_ES" xml:space="preserve">
+    <value>إسبانيا</value>
+  </data>
+  <data name="Country_FI" xml:space="preserve">
+    <value>فنلندا</value>
+  </data>
+  <data name="Country_FR" xml:space="preserve">
+    <value>فرنسا</value>
+  </data>
+  <data name="Country_GH" xml:space="preserve">
+    <value>غانا</value>
+  </data>
+  <data name="Country_GR" xml:space="preserve">
+    <value>اليونان</value>
+  </data>
+  <data name="Country_HR" xml:space="preserve">
+    <value>كرواتتيا</value>
+  </data>
+  <data name="Country_HU" xml:space="preserve">
+    <value>هنغاريا</value>
+  </data>
+  <data name="Country_IE" xml:space="preserve">
+    <value>أيرلندا</value>
+  </data>
+  <data name="Country_IS" xml:space="preserve">
+    <value>آيسلندا</value>
+  </data>
+  <data name="Country_IT" xml:space="preserve">
+    <value>إيطاليا</value>
+  </data>
+  <data name="Country_LT" xml:space="preserve">
+    <value>لتوانيا</value>
+  </data>
+  <data name="Country_LU" xml:space="preserve">
+    <value>لكسبمبورج</value>
+  </data>
+  <data name="Country_LV" xml:space="preserve">
+    <value>لاتفيا</value>
+  </data>
+  <data name="Country_MT" xml:space="preserve">
+    <value>مالطا</value>
+  </data>
+  <data name="Country_NL" xml:space="preserve">
+    <value>هولندا</value>
+  </data>
+  <data name="Country_NO" xml:space="preserve">
+    <value>النرويج</value>
+  </data>
+  <data name="Country_PL" xml:space="preserve">
+    <value>بولندا</value>
+  </data>
+  <data name="Country_PT" xml:space="preserve">
+    <value>البرتغال</value>
+  </data>
+  <data name="Country_RO" xml:space="preserve">
+    <value>رومانيا</value>
+  </data>
+  <data name="Country_SE" xml:space="preserve">
+    <value>السويد</value>
+  </data>
+  <data name="Country_SI" xml:space="preserve">
+    <value>سلوفينيا</value>
+  </data>
+  <data name="Country_SK" xml:space="preserve">
+    <value>سلوفاكيا</value>
+  </data>
+  <data name="Country_UK" xml:space="preserve">
+    <value>المملكة المتحدة</value>
+  </data>
 </root>

@@ -117,31 +117,105 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CurrentUserInfo_Logout" xml:space="preserve">
+    <value>Αποσύνδεση</value>
+    <comment>Causes signoff and de-authentication</comment>
+  </data>
+  <data name="CurrentUserInfo_Preferences" xml:space="preserve">
+    <value>Προτιμήσεις</value>
+    <comment>Tooltip on hover over wrench icon</comment>
+  </data>
+  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
+    <value>Επιλογή γλώσσας</value>
+    <comment>Shown as header of language list pop-up</comment>
+  </data>
   
   
+  <data name="Dashboard_PageTitle" xml:space="preserve">
+    <value>Πίνακας Ελέγχου</value>
+    <comment>Title of default page</comment>
+  </data>
   
   
   
   
+  <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
+    <value>Λογαριασμός</value>
+  </data>
+  <data name="Financial_Budget" xml:space="preserve">
+    <value>Προϋπολογισμός</value>
+  </data>
+  <data name="Financial_CashAdvance" xml:space="preserve">
+    <value>Προκαταβολή</value>
+  </data>
+  <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
+    <value>Προκαταβολές μετρητών #{0}</value>
+  </data>
+  <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
+    <value>Προκαταβολές μετρητών {0}</value>
+  </data>
+  <data name="Financial_ExpenseClaim" xml:space="preserve">
+    <value>Έξοδο</value>
+  </data>
   
   
+  <data name="Financial_InvoiceInbound" xml:space="preserve">
+    <value>Τιμολόγιο</value>
+  </data>
+  <data name="Financial_InvoiceOutbound" xml:space="preserve">
+    <value>Τιμολόγιο</value>
+  </data>
+  <data name="Financial_Parley" xml:space="preserve">
+    <value>Συνδιάσκεψη</value>
+  </data>
   
   
   
   
   
   
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>ΤΟ ΣΥΝΤΟΜΌΤΕΡΟ ΔΥΝΑΤΌΝ</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
+  </data>
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>Ακύρωση</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
   
   
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>Επιβεβαίωση</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
   
   
   
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>Κανείς</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>Ιδιοκτήτης</value>
+  </data>
   
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>Φόρτωση αρχείου</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
+  </data>
   
   
   
+  <data name="Sidebar_Actions" xml:space="preserve">
+    <value>Δράσεις</value>
+    <comment>List of shortcuts to likely actions</comment>
+  </data>
   
   
+  <data name="Sidebar_Todo" xml:space="preserve">
+    <value>Να γίνουν</value>
+    <comment>List of todo items</comment>
+  </data>
   
   
   
@@ -179,29 +253,14 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_Off" xml:space="preserve">
+    <value>Ανενεργό</value>
+    <comment>Off (as opposed to On)</comment>
+  </data>
+  <data name="Global_On" xml:space="preserve">
+    <value>Ενεργό</value>
+    <comment>On (as opposed to Off)</comment>
+  </data>
   
   
   

@@ -117,6 +117,132 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>一位新用户在[OrganizationName]申请成为[RegularTitle]。[ConcernedPersonName]现在定居于[GeographyName]，[CountryCode]。</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] 新申请人：[ConcernedPersonName]，[GeographyName]</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>尝试向您的比特币现金支付地址进行一笔支付，该地址 ([BitcoinAddress]) 被基础支付引擎由于无效而拒绝。因此该地址已被从您的个人简介中删除。
+
+请在[ExternalUrl]以[InstallationName]登录并且设置一个新的比特币支付地址。</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - 动作项目] 无效比特币支付地址</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>您已经将您的比特币现金支付地址从[BitcoinOldAddress]改为[BitcoinAddress]。出于安全考虑，所有的支付将在接下来的48小时中被进行隔离处理。
+
+如果您并没有修改支付地址并且您的账户存在安全问题，请您立刻点击这条链接以冻结您的账户：[LockdownLink]
+
+如果您点击该连接，您的账户将立即在无须确认请求的情况下被冻结。然而，如果是您自己进行的修改支付地址请求操作，那么没有问题，您无需做任何其他操作。</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 比特币现金支付地址改变</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>您有在[OrganizationName]等待支付的款项，但是您还没有设置比特币现金支付地址。
+
+请在[ExternalUrl]以[InstallationName]登录并跟随链接的指引来设置您的支付地址 - 你将在待办项目列表中找到它。</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 请设置您的比特币现金支付地址</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>您已设置一个比特币现金地址：[BitcoinAddress]。出于安全考虑，所有的支付将在接下来的48小时中被进行隔离处理，并且将在此后支付给此新地址。
+
+如果您没有设置此支付地址（如果可能，请再次检查上面的地址以增加安全性），请立即联系[OrganizationName]。</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>[ConcernedPersonName]设置了一个新的比特币现金支付地址。付款将在48小时后隔离时间结束时开始。</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] 设置了一个比特币现金支付地址</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 比特币现金地址已设置</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>[OrganizationName]的比特币热钱包刚刚进行了总计[CurrencyCode][AmountFloat]的共[PaymentCount]笔自动支付（[BitcoinAmountFloat]的 microbitcoin 或 “ bits”）。</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 热钱包支付：[CurrencyCode][AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[BitcoinAmountFloat] microbitcoin ("bits") 刚刚被[OrganizationName]用以下形式转账到您的比特币现金地址([BitcoinAddress]):
+
+[EmbeddedPreformattedText]
+
+您应该已经在您的钱包里看到了该笔转账并且它将在一小时內 (6个普通确认) 允许被再次支出。</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 支付给您的资金：[CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>当尝试从热钱包中进行自动支付时，签名所使用的私钥与提取所需资金所使用的公钥无法进行匹配。这是一个严重的情况。</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - 紧急] 比特币私钥错误；无法支付</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmops 正在尝试支付 [CurrencyCode] [AmountNeededFloat]，但是在该比特币现金钱包中的可用余额只有[CurrencyCode] [AmountWalletFloat]。Swarmops现在无法进行进一步的支付。
+
+请立即向您的热钱包中充值不少于[AmountMissingMicrocoinsFloat] microbitcoin ("bits") 的金额以继续热钱包的相关金融操作。
+
+再充值成功前，Swarmops 将一直尝试付款并向您持续发通知。</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - 动作项目] 比特币现金热钱包余额不足以支付 - 请立即充值</value>
+  </data>
+  <data name="CashAdvance_Attested_Body" xml:space="preserve">
+    <value>您出于[RequestPurpose]而向[OrganizationName]所申请的[CurrencyCode] [BudgetAmountFloat]提现的请求已经被预算所有者受理。它现在将被处理并支付给您。</value>
+  </data>
+  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 提现确认：[CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
+    <value>您所出于[RequestPurpose]而向[OrganizationName]的提出[CurrencyCode] [BudgetAmountFloat]的提现请求已经被预算所有者不予确认。这种情况一般是由于您的请求有一些问题。
+
+请期待处理此问题的预算所有者联系您。</value>
+  </data>
+  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 无法确认提现：[CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>您出于[RequestPurpose]而向[OrganizationName]进行的[CurrencyCode] [BudgetAmountFloat]提现已经被拒绝。下面的文本给出了拒绝的理由：
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 提现被拒绝：[CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>您出于[RequestPurpose]而向[OrganizationName]所申请的[CurrencyCode] [BudgetAmountFloat]提现的请求已经被该组织会计标记为已支出。
+
+这意味着您很快就能在您的账户中看到该笔金额。</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 提现成功：[CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[ConcernedPersonName]出于[RequestPurpose]的目的申请了一笔价值[CurrencyCode] [BudgetAmountFloat]的提现。此笔资金将出自于您的预算——[BudgetName]。
+
+请在[ExternalUrl]Financial/AttestCosts以[InstallationName]登录来批准或拒绝。</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - 活动项目] 提现请求：[CurrencyCode] [BudgetAmountFloat] - 需要批准</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+    <value>您以[RequestPurpose]为目的向[OrganizationName]进行的价值[CurrencyCode] [BudgetAmountFloat]的开支申请已经被预算拥有者批准。当收据确认有效后该笔开支将支付给您。</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 开支申请通过：[CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   
   
   
@@ -133,6 +259,12 @@
   
   
   
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>一位新的[Regular]已经在您的领域注册参加了[OrganizationName]</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 新[Regular]：[PersonName]，[PersonGeography] [CountryCode]</value>
+  </data>
   
   
   
@@ -142,7 +274,13 @@
   
   
   
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] 无法重置密码</value>
+  </data>
   
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] 密码已重置</value>
+  </data>
   
   
   
@@ -154,55 +292,41 @@
   
   
   
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>Swarmops 数据库已升级</value>
+  </data>
   
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>Swarmops 数据库升级失败</value>
+  </data>
+  <data name="System_Exception_Body" xml:space="preserve">
+    <value>在 Swarmops 中有一个未处理的异常被抛出：
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="System_Exception_Subject" xml:space="preserve">
+    <value>Swarmops 异常！</value>
+  </data>
   
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Swarmops 邮件服务器测试</value>
+  </data>
   
   
   
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>Swarmops 后台可操控</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>Swarmops 前台可操控</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
+    <value>在[HostName]上的Swarmops传播引擎遇到了一个未知的荷载类型 ([UnrecognizedPayloadType])。这是在更新时当更新版本需要处理的一些内容在进程中更改了名字才会发生的极小概率事件。
+
+如果这个问题重复出现，那么说明您可能之前没有成功安装某个插件或有其他类似的情况。无论如何，由于Swarmops不知如何传输未识别的信息，该无法识别的信息已经被舍弃并且不会被进行传输。</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
+    <value>Swarmops：无法识别的通讯荷载</value>
+  </data>
 </root>

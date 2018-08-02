@@ -117,16 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AllClear_Text" xml:space="preserve">
+    <value>لقد عادت العمليات إلى ما كانت عليه من قبل.</value>
+  </data>
+  <data name="AllClear_Title" xml:space="preserve">
+    <value>تم مسح الكل</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
+    <value>الخادم فقد الإتصال بسلسلة الكتل للبتكوين. ومنه فمعاملات البتكوين لن يتم الكشف عنها في نفس الوقت.</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
+    <value>فقد الاتصال بسلسلة الكتل</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
+    <value>يتعذر على متصفح الويب قراءة نبضات الخادم. قد لا تكون التحديثات الحية متوفرة.</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
+    <value>فشل الإشارات من المستوى الأول</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Text" xml:space="preserve">
+    <value>تعذر الإتصال بالخادم من أجل إنجاز التحديثات في الوقت الحالي.</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Title" xml:space="preserve">
+    <value>لقد فشل الـ WebSocket</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Text" xml:space="preserve">
+    <value>يتعذر على الخادم ربط الإتصال بالمعالجة في الخلفية. ومنه لن تكون التحديثات الحية متوفرة.</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Title" xml:space="preserve">
+    <value>‏أخفق الإتصال بالبنية التحتية (Backend)</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Text" xml:space="preserve">
+    <value>يتعذر على الخادم قراءة الإشارات(Heartbeat) الواردة من عمليات المعالجة للبنية التحتية للنظام(Backend Process).</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Title" xml:space="preserve">
+    <value>فشل الإشارات من المستوى الثاني</value>
+  </data>
 </root>
