@@ -9,7 +9,7 @@ using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
 
-namespace Swarmops.Frontend.Pages.Admin.Debug
+namespace Swarmops.Frontend.Pages.Admin.Troubleshooting
 {
     public partial class DebugSockets : PageV5Base
     {

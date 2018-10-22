@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Swarmops.Frontend.Pages.Admin.Debug {
+namespace Swarmops.Frontend.Pages.Admin.Troubleshooting {
     
     
-    public partial class Sockets {
+    public partial class DebugSockets {
         
         /// <summary>
         /// LabelMatchingPeopleInX control.
