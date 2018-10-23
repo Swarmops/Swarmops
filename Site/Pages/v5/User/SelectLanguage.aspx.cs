@@ -31,7 +31,7 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         private void PopulateRepeater()
         {
-            string[] availableCultures = {"ar-AE", "de-DE", "es-ES", "fr-FR", /*"fil-Latn",*/ "it-IT", "nl-NL", "pt-PT", "ru-RU", "tr-TR", "sv-SE" };
+            string[] availableCultures = {"ar-AE", "de-DE", "es-ES", "fr-FR", "it-IT", "nl-NL", "pt-PT", "ru-RU", "tr-TR", "sv-SE" };
 
             Array.Sort (availableCultures);
             // sort by locale string, and that's ok, that happens to give the same result as sorting on country name
@@ -58,11 +58,6 @@ namespace Swarmops.Frontend.Pages.v5.User
                 {
                     newLanguage.IconUrl = "/Images/Flags/Arabic-64px.png";
                     // crowdin's generic culture is ar-SA but Arabic is not country specific
-                }
-                else if (cultureId.StartsWith("fil"))
-                {
-                    // Filipino flag can't be deduced from the culture string
-                    newLanguage.IconUrl = "/Images/Flags/ph-64px.png";
                 }
                 else
                 {
