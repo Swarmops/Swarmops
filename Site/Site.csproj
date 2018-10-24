@@ -1337,9 +1337,12 @@
     <Content Include="Images\Icons\iconshock-download-240px.png" />
     <Content Include="Images\Icons\iconshock-download-96px.png" />
     <Content Include="Images\Icons\iconshock-download-hot-240px.png" />
+    <Content Include="Images\Icons\iconshock-green-tick-sphere-128x96px.png" />
     <Content Include="Images\Icons\iconshock-groups-docs-lists-64px.png" />
     <Content Include="Images\Icons\iconshock-invoice-256px.png" />
     <Content Include="Images\Icons\iconshock-pdf-128px.png" />
+    <Content Include="Images\Icons\iconshock-red-cross-sphere-128x96px.png" />
+    <Content Include="Images\Icons\iconshock-yellow-sphere-128x96px.png" />
     <Content Include="Images\Other\blank-logo-640x360.png" />
     <Content Include="Images\Flags\ae-24px.png" />
     <Content Include="Images\Flags\ae-64px.png" />
