@@ -20,7 +20,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2 style="padding-top:15px">Troubleshooting Sockets...</h2>
+    <h2>Troubleshooting Sockets...</h2>
     <table id="TableTestResults" class="easyui-datagrid" style="width:680px;height:500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true"
         idField="testId">
@@ -28,9 +28,9 @@
             <tr>
                 <th data-options="field:'testGroup',width:54">&nbsp;</th>  
                 <th data-options="field:'testName',width:500">Test</th>
-                <th data-options="field:'red',width:42"><img src="/Images/Icons/iconshock-red-cross-128x96px.png" height="20px" style="position: relative; top: 2px"/></th>  
-                <th data-options="field:'yellow',width:42">&nbsp;</th>
-                <th data-options="field:'green',width:42"><img src="/Images/Icons/iconshock-green-tick-128x96px.png" height="20px"style="position: relative; top: 2px" /></th>
+                <th data-options="field:'red',width:42,align:'center'"><img src="/Images/Icons/iconshock-red-cross-128x96px.png" height="20px" style="position: relative; top: 2px"/></th>  
+                <th data-options="field:'yellow',width:42,align:'center'">&nbsp;</th>
+                <th data-options="field:'green',width:42,align:'center'"><img src="/Images/Icons/iconshock-green-tick-128x96px.png" height="20px"style="position: relative; top: 2px" /></th>
             </tr>  
         </thead>
     </table>  
