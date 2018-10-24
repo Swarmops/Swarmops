@@ -26,11 +26,11 @@
         idField="testId">
         <thead>
             <tr>
-                <th data-options="field:'testGroup',width:50">&nbsp;</th>  
-                <th data-options="field:'testName',width:300,sortable:true">Test</th>
-                <th data-options="field:'red',width:105,sortable:true"><img src="/Images/Icons/iconshock-red-cross-128x96px.png" height="20px" /></th>  
-                <th data-options="field:'yellow',width:100,sortable:true">&nbsp;</th>
-                <th data-options="field:'green',width:50"><img src="/Images/Icons/iconshock-green-tick-128x96px.png" height="20px" /></th>
+                <th data-options="field:'testGroup',width:54">&nbsp;</th>  
+                <th data-options="field:'testName',width:500">Test</th>
+                <th data-options="field:'red',width:42"><img src="/Images/Icons/iconshock-red-cross-128x96px.png" height="20px" style="position: relative; top: 2px"/></th>  
+                <th data-options="field:'yellow',width:42">&nbsp;</th>
+                <th data-options="field:'green',width:42"><img src="/Images/Icons/iconshock-green-tick-128x96px.png" height="20px"style="position: relative; top: 2px" /></th>
             </tr>  
         </thead>
     </table>  
