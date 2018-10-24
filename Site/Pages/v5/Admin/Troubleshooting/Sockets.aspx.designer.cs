@@ -11,5 +11,14 @@ namespace Swarmops.Frontend.Pages.Admin.Troubleshooting {
     
     
     public partial class DebugSockets {
+        
+        /// <summary>
+        /// TestProgress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.v5.Base.ProgressBar TestProgress;
     }
 }

@@ -17,6 +17,7 @@ namespace Swarmops.Frontend.Pages.Admin.Troubleshooting
         {
             PageIcon = "iconshock-group-search";
             this.PageAccessRequired = new Access (CurrentOrganization, AccessAspect.PersonalData, AccessType.Read);
+            this.SuppressStatisticHeaders = true;
 
             if (!Page.IsPostBack)
             {
