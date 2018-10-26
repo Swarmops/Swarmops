@@ -12,6 +12,8 @@
                 yellow: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' style='display:inline' height='20px' />",
                 green: "<img src='/Images/Icons/iconshock-green-tick-sphere-128x96px.png' style='display:inline' height='20px' />"
             });
+
+            <%=this.ProgressTests.ClientID%>_begin();
         });
 
 
@@ -26,7 +28,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2>Troubleshooting Sockets...</h2>
     
-    <Swarmops5:ProgressBar ID="TestProgress" runat="server"/>
+    <Swarmops5:ProgressBar ID="ProgressTests" runat="server"/>
 
     <table id="TableTestResults" class="easyui-datagrid" style="width:680px;height:500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true"
