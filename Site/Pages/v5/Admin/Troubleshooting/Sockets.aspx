@@ -6,7 +6,12 @@
     
 
         $(document).ready(function () {
-
+            $('#TableTestResults').datagrid('appendRow', {
+                testName: 'Test Name',
+                red: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' style='display:inline;position:relative;top:2px' height='20px' />",
+                yellow: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' style='display:inline;position:relative;top:2px' height='20px' />",
+                green: "<img src='/Images/Icons/iconshock-green-tick-sphere-128x96px.png' style='display:inline;position:relative;top:2px' height='20px' />"
+            });
         });
 
 
@@ -20,7 +25,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2>Troubleshooting Sockets...</h2>
-
+    
     <Swarmops5:ProgressBar ID="TestProgress" runat="server"/>
 
     <table id="TableTestResults" class="easyui-datagrid" style="width:680px;height:500px"
