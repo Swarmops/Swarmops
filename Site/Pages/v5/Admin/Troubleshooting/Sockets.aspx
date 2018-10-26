@@ -14,6 +14,7 @@
             });
 
             <%=this.ProgressTests.ClientID%>_begin();
+            <%=this.ProgressTests.ClientID%>_show();
         });
 
 
