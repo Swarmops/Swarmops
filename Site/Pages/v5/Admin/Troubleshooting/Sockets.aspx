@@ -27,9 +27,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2>Troubleshooting Sockets...</h2>
-    
-    <Swarmops5:ProgressBar ID="ProgressTests" runat="server"/>
+   
+    <Swarmops5:ProgressBar ID="ProgressTests" runat="server" Header="Running tests..."/>
 
     <table id="TableTestResults" class="easyui-datagrid" style="width:680px;height:500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true"
