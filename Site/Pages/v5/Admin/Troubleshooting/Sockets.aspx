@@ -8,9 +8,9 @@
         $(document).ready(function () {
             $('#TableTestResults').datagrid('appendRow', {
                 testName: 'Test Name',
-                red: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' style='display:inline;position:relative;top:2px' height='20px' />",
-                yellow: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' style='display:inline;position:relative;top:2px' height='20px' />",
-                green: "<img src='/Images/Icons/iconshock-green-tick-sphere-128x96px.png' style='display:inline;position:relative;top:2px' height='20px' />"
+                red: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' style='display:inline' height='20px' />",
+                yellow: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' style='display:inline' height='20px' />",
+                green: "<img src='/Images/Icons/iconshock-green-tick-sphere-128x96px.png' style='display:inline' height='20px' />"
             });
         });
 
