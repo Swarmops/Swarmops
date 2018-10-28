@@ -8,15 +8,32 @@
         $(document).ready(function () {
             $('#TableTestResults').datagrid('appendRow', {
                 testName: 'Test Name',
-                red: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' style='display:inline' height='20px' />",
-                yellow: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' style='display:inline' height='20px' />",
-                green: "<img src='/Images/Icons/iconshock-green-tick-sphere-128x96px.png' style='display:inline' height='20px' />"
+                red: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
+                yellow: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />",
+                green: "<img src='/Images/Icons/iconshock-green-tick-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-passed' style='display:none' height='20px' />"
             });
 
             <%=this.ProgressTests.ClientID%>_begin();
             <%=this.ProgressTests.ClientID%>_show();
         });
 
+
+        function pageOnHeartbeat(source) {  // called from Swarmops-v5.js script
+            testPassed('Sockets-Browser');
+        }
+
+        function testPassed(testId)
+        {
+            $('img.test-running[data-test-id="' + testId + '"').fadeOut();
+            $('img.test-passed[data-test-id="' + testId + '"').show();
+        }
+
+        function testFailed(testId)
+        {
+            $('img.test-passed[data-test-id="' + testId + '"').fadeOut();
+            $('img.test-running[data-test-id="' + testId + '"').fadeOut();
+            $('img.test-failed[data-test-id="' + testId + '"').show();
+        }
 
     </script>
 
