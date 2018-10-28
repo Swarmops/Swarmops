@@ -901,7 +901,7 @@ namespace Swarmops.Backend
         private static void InternalHeartbeat()
         {
             JObject json = new JObject();
-            json["MessageType"] = "InternalHeartbeat";
+            json["MessageType"] = "BackendHeartbeat";
             json["Timestamp"] = DateTime.UtcNow.ToUnix();
 
             _socketServer.WebSocketServices.Broadcast(json.ToString());

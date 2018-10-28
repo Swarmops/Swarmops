@@ -74,18 +74,24 @@ function _masterInitializeSocket(authenticationTicket) {
 
     _masterSocket.onmessage = function (data) {
         
-        console.log(data.data);
-
         var message = $.parseJSON(data.data);
 
         if (message.MessageType == "Heartbeat") {
             _masterSocketLastHeartbeat = new Date().getTime();
-            console.log("Heartbeat");
-
             if (_masterSocketHeartbeatsLost) {
                 console.log(" - receiving heartbeats again");
                 _masterSocketHeartbeatsLost = false;
                 _master_updateMalfunctions();
+            }
+
+            if (typeof pageOnHeartbeat === "function") { // if it's defined on the page, indicating there's a handler for it
+                pageOnHeartbeat('Frontend', _masterSocketLastHeartbeat);
+            }
+
+        }
+        else if (message.MessageType == "BackendHeartbeat") {
+            if (typeof pageOnHeartbeat === "function") { // if it's defined on the page, indicating there's a handler for it
+                pageOnHeartbeat('Backend', new Date().getTime());
             }
         }
         else if (message.MessageType == "BitcoinReceived") {
@@ -93,8 +99,8 @@ function _masterInitializeSocket(authenticationTicket) {
             // console.log(message);
             var handled = false;
 
-            if (typeof pageBitcoinReceived === "function") { // if it's defined on the page indicating the page handles it
-                handled = pageBitcoinReceived(message.Address, message.Hash, message.Satoshis, message.Cents, message.Currency);
+            if (typeof pageOnBitcoinReceived === "function") { // if it's defined on the page indicating the page handles it
+                handled = pageOnBitcoinReceived(message.Address, message.Hash, message.Satoshis, message.Cents, message.Currency);
             }
 
             if (!handled) {

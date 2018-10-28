@@ -54,7 +54,7 @@
         });
 
 
-        function pageBitcoinReceived(address, hash, satoshis, cents, currencyCode) {
+        function pageOnBitcoinReceived(address, hash, satoshis, cents, currencyCode) {
 
             // This function is detected called by the Master Page; it is not
             // called from this page or anything visible here

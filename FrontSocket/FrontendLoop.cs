@@ -290,9 +290,10 @@ namespace Swarmops.Frontend.Socket
                 Console.WriteLine(" - Backend message: " + args.Data);
             }
 
-            if (messageType == "InternalHeartbeat")
+            if (messageType == "BackendHeartbeat")
             {
                 _lastBackendHeartBeat = DateTime.UtcNow;
+                _socketServer.WebSocketServices.Broadcast(args.Data); // send unfiltered to all sessions, for now
             }
             else
             {
