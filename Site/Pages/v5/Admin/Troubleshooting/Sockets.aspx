@@ -8,17 +8,17 @@
         $(document).ready(function () {
 
             $('#TableTestResults').datagrid('appendRow', {
-                groupName: 'Socket tests'
+                testGroupName: 'Socket tests',
+                testId: 'Group'
             });
 
             var rowCount = $('#TableTestResults').datagrid('getRows').length;
-            alert(rowCount);
 
             $('#TableTestResults').datagrid('mergeCells', {
                 index: rowCount-1,
                 colspan: 5,
                 type: 'body',
-                field: 'testGroup'
+                field: 'testGroupName'
             });
 
             $('#TableTestResults').datagrid('appendRow', {
@@ -87,7 +87,7 @@
         idField="testId">
         <thead>
             <tr>
-                <th data-options="field:'testGroup',width:54">Group</th>
+                <th data-options="field:'testGroupName',width:54">Group</th>
                 <th data-options="field:'testName',width:500">Test</th>
                 <th data-options="field:'red',width:42,align:'center'"><img src="/Images/Icons/iconshock-red-cross-128x96px.png" height="20px" style="position: relative; top: 2px"/></th>  
                 <th data-options="field:'yellow',width:42,align:'center'">&nbsp;</th>
