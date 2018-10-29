@@ -6,6 +6,21 @@
     
 
         $(document).ready(function () {
+
+            $('#TableTestResults').datagrid('appendRow', {
+                testName: 'Socket tests'
+            });
+
+            var rowCount = $('#TableTestResults').datagrid('getRows').length;
+            alert(rowCount);
+
+            $('#TableTestResults').datagrid('mergeCells', {
+                index: rowCount,
+                colspan: 5,
+                type: 'body',
+                field: 'testGroup'
+            });
+
             $('#TableTestResults').datagrid('appendRow', {
                 testName: 'Test Browser',
                 red: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
