@@ -8,14 +8,14 @@
         $(document).ready(function () {
 
             $('#TableTestResults').datagrid('appendRow', {
-                testName: 'Socket tests'
+                groupName: 'Socket tests'
             });
 
             var rowCount = $('#TableTestResults').datagrid('getRows').length;
             alert(rowCount);
 
             $('#TableTestResults').datagrid('mergeCells', {
-                index: rowCount,
+                index: rowCount-1,
                 colspan: 5,
                 type: 'body',
                 field: 'testGroup'
