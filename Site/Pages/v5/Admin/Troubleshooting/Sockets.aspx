@@ -7,10 +7,24 @@
 
         $(document).ready(function () {
             $('#TableTestResults').datagrid('appendRow', {
-                testName: 'Test Name',
+                testName: 'Test Browser',
                 red: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
                 yellow: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />",
                 green: "<img src='/Images/Icons/iconshock-green-tick-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-passed' style='display:none' height='20px' />"
+            });
+
+            $('#TableTestResults').datagrid('appendRow', {
+                testName: 'Test Frontend',
+                red: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Frontend' class='test-failed' style='display:none' height='20px' />",
+                yellow: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Frontend' class='test-running' style='display:inline' height='20px' />",
+                green: "<img src='/Images/Icons/iconshock-green-tick-sphere-128x96px.png' data-test-id='Sockets-Frontend' class='test-passed' style='display:none' height='20px' />"
+            });
+
+            $('#TableTestResults').datagrid('appendRow', {
+                testName: 'Test Backend',
+                red: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Backend' class='test-failed' style='display:none' height='20px' />",
+                yellow: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Backend' class='test-running' style='display:inline' height='20px' />",
+                green: "<img src='/Images/Icons/iconshock-green-tick-sphere-128x96px.png' data-test-id='Sockets-Backend' class='test-passed' style='display:none' height='20px' />"
             });
 
             <%=this.ProgressTests.ClientID%>_begin();
@@ -20,6 +34,12 @@
 
         function pageOnHeartbeat(source) {  // called from Swarmops-v5.js script
             testPassed('Sockets-Browser');
+            if (source == 'Frontend') {
+                testPassed('Sockets-Frontend');
+            }
+            else if (source == 'Backend') {
+                testPassed('Sockets-Backend');
+            }
         }
 
         function testPassed(testId)
