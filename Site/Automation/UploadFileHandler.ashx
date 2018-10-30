@@ -119,8 +119,11 @@ namespace Swarmops.Frontend.Automation
             Stream inputStream = context.Request.Files[0].InputStream;
             string fullName = Document.StorageRoot + Path.GetFileName(fileName);
 
-            throw new NotImplementedException(
+            Exception exception = new NotImplementedException(
                 "We should never get to partial upload. If we do, something is very very unexpected and this needs to be implemented.");
+
+            SupportFunctions.LogException("UploadFileHandler-Partial", exception);
+            throw exception;
 
             //using (var fs = new FileStream(fullName, FileMode.Append, FileAccess.Write))
             //{
@@ -149,6 +152,8 @@ namespace Swarmops.Frontend.Automation
 
             for (int i = 0; i < context.Request.Files.Count; i++)
             {
+                try
+                {
                 HttpPostedFile file = context.Request.Files[i];
                 string fullName = Path.GetFileName(file.FileName);
                 string clientFileName = string.Empty;
@@ -335,6 +340,15 @@ namespace Swarmops.Frontend.Automation
 
                     statuses.Add(new FilesStatus(fullName, file.ContentLength));
                 }
+                
+                }
+                catch (Exception loggableException)
+                {
+                    SupportFunctions.LogException("UploadFileHandler", loggableException);
+
+                    throw loggableException;
+                }
+
             }
 
             if (pdfsForConversion.Count > 0)

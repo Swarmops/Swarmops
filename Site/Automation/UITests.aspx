@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UITests.aspx.cs" Inherits="Swarmops.Frontend.Automation.UITests" %>
