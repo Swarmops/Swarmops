@@ -2,13 +2,20 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
    
+    <style type="text/css">
+        .testGroupHeader {
+            font-size: 125%;
+            font-weight: 500;
+        }
+    </style>
+
     <script type="text/javascript"> 
     
 
         $(document).ready(function () {
 
             $('#TableTestResults').datagrid('appendRow', {
-                testGroupName: 'Socket tests',
+                testGroupName: '<span class="testGroupHeader">Socket tests</span>',
                 testId: 'Group'
             });
 
