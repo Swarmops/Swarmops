@@ -248,38 +248,12 @@ namespace Swarmops.Logic.Support
             Syscall.chmod(Document.StorageRoot + lastPageFileName,
                 FilePermissions.S_IRUSR | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
 
-
-            /* -- OLD CODE BELOW --
-            process.WaitForExit();
-
-            int pageCounter = 0; // the first produced page will be zero
-
-            // Create all document records
-
-
-            while (pageCounter < pdfPageCount)
-            {
-                string pageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
-
-                if (File.Exists(Document.StorageRoot + pageFileName))
-                {
-                    long fileLength = new FileInfo(Document.StorageRoot + pageFileName).Length;
-
-                    documents.Add(Document.Create(pageFileName,
-                        clientFileName + " " + (pageCounter + 1).ToString(CultureInfo.InvariantCulture) + "/" + pdfPageCount.ToString(CultureInfo.InvariantCulture),
-                        fileLength, guid, null, uploader));
-
-                    Syscall.chmod(Document.StorageRoot + pageFileName,
-                        FilePermissions.S_IRUSR | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
-
-                }
-
-                pageCounter++;
-            } */
-
             return documents;
         }
-/*
+
+
+/*      -- Commented out: this has not been converted from CONVERT to GS (ghostscript) pdf-to-png conversion, and was used only in one special case anyway
+ *      
         public static void RerasterizeAll()
         {
             // Because of a bug with transparent-background PDFs converting to black-background bitmaps, all PDFs imaged before
@@ -401,7 +375,7 @@ namespace Swarmops.Logic.Support
 
             string firstPart = document.ServerFileName.Substring(0, 64);
 
-            string commandLine = "gs -dNOPAUSE -dBATCH -sDEVICE=png16m -r" + density.ToString(CultureInfo.InvariantCulture) + " -sOutputFile=" + StorageRoot + firstPart + "-%04d" + suffix + ".png " + StorageRoot + firstPart + "\"";
+            string commandLine = "gs -dNOPAUSE -dBATCH -sDEVICE=png16m -r" + density.ToString(CultureInfo.InvariantCulture) + " -sOutputFile=" + StorageRoot + firstPart + "-%04d" + suffix + ".png " + StorageRoot + firstPart;
 
             /*
             string commandLine = "convert -density " + density.ToString(CultureInfo.InvariantCulture) +
