@@ -155,7 +155,7 @@ namespace Swarmops.Logic.Support
                 progressRange = new ProgressRange();
             }
 
-            int pageCounter = 0; // the first produced page will be zero
+            int pageCounter = 1; // the first produced page will be numbered ONE, not ImageMagick's zero
             string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
             string lastPageFileName = testPageFileName;
 
@@ -164,7 +164,7 @@ namespace Swarmops.Logic.Support
             int lastProgress = progressRange.Minimum;
             int progress = progressRange.Minimum;
 
-            while (pageCounter < pdfPageCount)
+            while (pageCounter <= pdfPageCount)
             {
                 while (!File.Exists(Document.StorageRoot + testPageFileName))
                 {
@@ -175,6 +175,7 @@ namespace Swarmops.Logic.Support
                         process.WaitForExit(250);
                     }
 
+                    /* -- old ImageMagick-dependent code
                     if (pageCounter == 0)
                     {
                         // If first page hasn't appeared yet, check for the Magick temp files
@@ -192,24 +193,24 @@ namespace Swarmops.Logic.Support
                             BroadcastProgress(organization, guid, progress);
                             lastProgress = progress;
                         }
-                    }
+                    }*/
                 }
 
-                progress = progressRange.Minimum + progressRange.Range / 2 + ((pageCounter + 1) * progressRange.Range / pdfPageCount) / 2;
+                progress = progressRange.Minimum + ((pageCounter + 1) * progressRange.Range / pdfPageCount);
                 if (progress > lastProgress)
                 {
                     BroadcastProgress(organization, guid, progress);
                     lastProgress = progress;
                 }
 
-                // If the page# file that has appeared is 1+, then the preceding file is ready
+                // If the page# file that has appeared is 2+, then the preceding file is ready
 
-                if (pageCounter > 0)
+                if (pageCounter > 1)
                 {
                     long fileLength = new FileInfo(Document.StorageRoot + lastPageFileName).Length;
 
                     documents.Add( Document.Create(lastPageFileName,
-                        clientFileName + " {{LOCPAGE-" + (pageCounter).ToString(CultureInfo.InvariantCulture) + "-" + pdfPageCount.ToString(CultureInfo.InvariantCulture) + "}}",
+                        clientFileName + " {{LOCPAGE-" + (pageCounter-1).ToString(CultureInfo.InvariantCulture) + "-" + pdfPageCount.ToString(CultureInfo.InvariantCulture) + "}}",
                         fileLength, guid, null, uploader));
 
                     // Set to readonly, lock out changes, permit all read
@@ -239,7 +240,7 @@ namespace Swarmops.Logic.Support
             long fileLengthLastPage = new FileInfo(Document.StorageRoot + lastPageFileName).Length;
 
             documents.Add(Document.Create(lastPageFileName,
-                clientFileName + " {{LOCPAGE-" + (pageCounter).ToString(CultureInfo.InvariantCulture) + "-" + pdfPageCount.ToString(CultureInfo.InvariantCulture) + "}}",
+                clientFileName + " {{LOCPAGE-" + pdfPageCount.ToString(CultureInfo.InvariantCulture) + "-" + pdfPageCount.ToString(CultureInfo.InvariantCulture) + "}}",
                 fileLengthLastPage, guid, null, uploader));
 
             // Set to readonly, lock out changes, permit all read
