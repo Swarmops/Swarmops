@@ -178,7 +178,7 @@ namespace Swarmops.Backend
                     else
                     {
                         Console.WriteLine("Regenerating all bitmaps from PDF uploads.");
-                        PdfProcessor.RerasterizeAll();
+                        //PdfProcessor.RerasterizeAll();
                         Console.WriteLine("Done.");
                     }
 

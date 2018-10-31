@@ -145,8 +145,8 @@ namespace Swarmops.Logic.Support
             string relativeFileName = fullyQualifiedFileName.Substring(Document.StorageRoot.Length);
 
             Process process = Process.Start("bash",
-                "-c \"convert -density 75 -background white -alpha remove " + fullyQualifiedFileName +
-                " " + fullyQualifiedFileName + "-%04d.png\"");
+                "-c \"gs -dNOPAUSE -dBATCH -sDEVICE=png16m -r75 -sOutputFile=" + fullyQualifiedFileName + "-%04d.png "+
+                fullyQualifiedFileName + "\"");
 
             Documents documents = new Documents();
 
@@ -278,7 +278,7 @@ namespace Swarmops.Logic.Support
 
             return documents;
         }
-
+/*
         public static void RerasterizeAll()
         {
             // Because of a bug with transparent-background PDFs converting to black-background bitmaps, all PDFs imaged before
@@ -362,7 +362,7 @@ namespace Swarmops.Logic.Support
                     lastId = document.Identity;
                 }
             }
-        }
+        }*/
 
         public static void Rerasterize(Document document, PdfProcessorOptions options = PdfProcessorOptions.None)
         {
@@ -400,10 +400,13 @@ namespace Swarmops.Logic.Support
 
             string firstPart = document.ServerFileName.Substring(0, 64);
 
+            string commandLine = "gs -dNOPAUSE -dBATCH -sDEVICE=png16m -r" + density.ToString(CultureInfo.InvariantCulture) + " -sOutputFile=" + StorageRoot + firstPart + "-%04d" + suffix + ".png " + StorageRoot + firstPart + "\"";
+
+            /*
             string commandLine = "convert -density " + density.ToString(CultureInfo.InvariantCulture) +
                                     " -background white -alpha remove " + StorageRoot + firstPart + " " +
                                     StorageRoot + firstPart +
-                                    "-%04d" + suffix + ".png";
+                                    "-%04d" + suffix + ".png";*/
 
             Process process = Process.Start("/bin/bash",
                 "-c \"" + commandLine + "\"");
