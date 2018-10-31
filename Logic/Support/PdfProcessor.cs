@@ -77,7 +77,7 @@ namespace Swarmops.Logic.Support
                 pdfPageCount = Int32.Parse(line);
             }
 
-            //File.Delete(pageCountFileName);
+            File.Delete(pageCountFileName);
 
             GuidCache.Set("PdfPageCount-" + fullyQualifiedFileName, pdfPageCount);
 
