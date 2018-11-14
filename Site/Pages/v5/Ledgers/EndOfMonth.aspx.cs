@@ -13,5 +13,15 @@ namespace Swarmops.Frontend.Pages.Ledgers
         {
 
         }
+
+
+        public string JavascriptDocReady
+        {
+            get
+            {
+                return string.Empty;
+                
+            }
+        }
     }
 }
