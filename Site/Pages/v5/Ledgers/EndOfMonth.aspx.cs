@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Pages.Ledgers
 {
@@ -11,7 +12,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.BookkeepingDetails);
         }
 
 
