@@ -46,7 +46,7 @@
             });
 
             $('#TableEomItems').datagrid('appendRow', {
-                itemGroupName: '<span class="itemGroupHeader">Taxes and Payroll</span>',
+                itemGroupName: '<span class="itemGroupHeader">Taxes&nbsp;and&nbsp;Payroll</span>',
                 itemId: 'GroupTaxesPayroll'
             });
 
@@ -82,7 +82,7 @@
             */
 
             $('#TableEomItems').datagrid('appendRow', {
-                itemGroupName: '<span class="itemGroupHeader">Annual Reports</span>',
+                itemGroupName: '<span class="itemGroupHeader">Annual&nbsp;Reports</span>',
                 itemId: 'GroupAnnual'
             });
 
@@ -176,10 +176,10 @@
         idField="itemId">
         <thead>
             <tr>
-                <th data-options="field:'itemGroupName',width:54">Group</th>
+                <th data-options="field:'itemGroupName',width:42">&nbsp;</th>
                 <th data-options="field:'itemName',width:500">Todo</th>
                 <th data-options="field:'docs',width:42,align:'center'">Docs</th>  
-                <th data-options="field:'actions',width:63,align:'center'">Actions</th>
+                <th data-options="field:'actions',width:75,align:'center'">Actions</th>
             </tr>  
         </thead>
     </table>  
