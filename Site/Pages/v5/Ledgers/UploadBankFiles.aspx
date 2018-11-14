@@ -156,6 +156,7 @@
         var halfway = false;
 
         var currentYear = <%=DateTime.Today.Year %>;
+        var localizedFirstUploadConfirmation = SwarmopsJS.unescape("<%=this.Localized_ConfirmFirstUpload%>");
 
 
     </script>

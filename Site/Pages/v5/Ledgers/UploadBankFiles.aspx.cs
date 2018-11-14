@@ -392,6 +392,7 @@ namespace Swarmops.Site.Pages.Ledgers
                     {
                         try
                         {
+                            throw new NotImplementedException();
                             externalData.LoadData (reader, organization, accountCurrency);
                             // catch here and set result to BAD
                             ImportResults results = ProcessImportedData (externalData, (ProcessThreadArguments) args);
@@ -432,8 +433,9 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 if (fileType == BankFileType.AccountStatement)
                 {
-                    using (StreamReader reader = CreateReader(uploadedDoc, externalData.Profile.Encoding))  // Guarantees disposal of reader
+                    using (TextReader reader = CreateReader(uploadedDoc, externalData.Profile.Encoding))  // Guarantees disposal of reader
                     {
+                        throw new NotImplementedException();
                         externalData.LoadData (reader, organization, accountCurrency);
                         // catch here and set result to BAD
                         ImportResults results = ProcessImportedData (externalData, (ProcessThreadArguments) args);

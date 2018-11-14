@@ -335,6 +335,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 StreamReader reader = new StreamReader (StorageRoot + uploadedDoc.ServerFileName,
                     Encoding.GetEncoding (1252)))
             {
+                throw new NotImplementedException();  // TODO
                 externalData.LoadData (reader, ((ProcessThreadArguments) args).Organization, account.ForeignCurrency);
             }
 
