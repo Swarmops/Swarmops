@@ -13,11 +13,11 @@
             var rowCount = 0;
 
             $('#TableEomItems').datagrid('appendRow', {
-                testGroupName: '<span class="itemGroupHeader">Upload external data and match accounts</span>',
-                testId: 'Group'
+                ítemGroupName: '<span class="itemGroupHeader">Upload external data and match accounts</span>',
+                itemId: 'GroupExternal'
             });
 
-            rowCount = $('#TableTestResults').datagrid('getRows').length;
+            rowCount = $('#TableEomItems').datagrid('getRows').length;
 
             $('#TableEomItems').datagrid('mergeCells', {
                 index: rowCount - 1,
@@ -46,11 +46,11 @@
             });
 
             $('#TableEomItems').datagrid('appendRow', {
-                testGroupName: '<span class="itemGroupHeader">Taxes and Payroll</span>',
-                testId: 'Group'
+                itemGroupName: '<span class="itemGroupHeader">Taxes and Payroll</span>',
+                itemId: 'GroupTaxesPayroll'
             });
 
-            rowCount = $('#TableTestResults').datagrid('getRows').length;
+            rowCount = $('#TableEomItems').datagrid('getRows').length;
 
             $('#TableEomItems').datagrid('mergeCells', {
                 index: rowCount - 1,
@@ -86,7 +86,7 @@
                 testId: 'Group'
             });
 
-            rowCount = $('#TableTestResults').datagrid('getRows').length;
+            rowCount = $('#TableEomItems').datagrid('getRows').length;
 
             $('#TableEomItems').datagrid('mergeCells', {
                 index: rowCount - 1,
@@ -103,11 +103,11 @@
 
 
             $('#TableEomItems').datagrid('appendRow', {
-                testGroupName: '<span class="itemGroupHeader">Send to Accountants, Shareholders, etc.</span>',
-                testId: 'Group'
+                itemGroupName: '<span class="itemGroupHeader">Send to Accountants, Shareholders, etc.</span>',
+                itemId: 'SendReports'
             });
 
-            rowCount = $('#TableTestResults').datagrid('getRows').length;
+            rowCount = $('#TableEomItems').datagrid('getRows').length;
 
             $('#TableEomItems').datagrid('mergeCells', {
                 index: rowCount - 1,
