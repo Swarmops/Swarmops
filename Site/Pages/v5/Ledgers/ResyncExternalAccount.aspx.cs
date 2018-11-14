@@ -336,7 +336,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     Encoding.GetEncoding (1252)))
             {
                 throw new NotImplementedException();  // TODO
-                externalData.LoadData (reader, ((ProcessThreadArguments) args).Organization, account.ForeignCurrency);
+                // externalData.LoadData (reader, ((ProcessThreadArguments) args).Organization, account.ForeignCurrency);
             }
 
             _staticDataLookup[guid + "FirstTx"] = externalData.Records[0].DateTime.ToLongDateString();
