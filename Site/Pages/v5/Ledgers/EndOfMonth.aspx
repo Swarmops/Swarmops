@@ -26,6 +26,13 @@
                 field: 'itemGroupName'
             });
 
+            $('#TableEomItems').datagrid('refreshRow', rowCount - 1);
+
+            /*
+            var dg = $('#dg');
+            var tr = dg.datagrid('options').finder.getTr(dg[0], 1);
+            tr.css('height', '40px');*/
+
             $('#TableEomItems').datagrid('appendRow', {
                 itemName: 'Upload/Fetch bank transaction data (FORMAT) up until [lastdatelastmonth]',
                 docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
