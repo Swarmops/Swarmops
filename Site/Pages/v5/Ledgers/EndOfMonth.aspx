@@ -13,7 +13,7 @@
             var rowCount = 0;
 
             $('#TableEomItems').datagrid('appendRow', {
-                itemGroupName: '<span class="itemGroupHeader">Upload external data and match accounts</span>',
+                itemGroupName: '<span class="itemGroupHeader">Upload&nbsp;external&nbsp;data&nbsp;and&nbsp;match&nbsp;accounts</span>',
                 itemId: 'GroupExternal'
             });
 
@@ -26,12 +26,6 @@
                 field: 'itemGroupName'
             });
 
-            $('#TableEomItems').datagrid('refreshRow', rowCount - 1);
-
-            /*
-            var dg = $('#dg');
-            var tr = dg.datagrid('options').finder.getTr(dg[0], 1);
-            tr.css('height', '40px');*/
 
             $('#TableEomItems').datagrid('appendRow', {
                 itemName: 'Upload/Fetch bank transaction data (FORMAT) up until [lastdatelastmonth]',
