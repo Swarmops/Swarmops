@@ -11,7 +11,8 @@ PRIO 1
 ------
 
 [ ] Fix self-signup
-[ ] End-of-month routine (incl EOY)
+[ ] End-of-month routine
+[ ] - incl EOY
 [ ] - with todo field
 [ ] Fix generic block explorer interfaces'
 [ ] Fix & redo bank file upload completely
