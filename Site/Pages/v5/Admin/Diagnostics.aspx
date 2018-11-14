@@ -17,7 +17,7 @@
             <%=this.JavascriptDocReady%>
 
             $('#TableTestResults').datagrid('appendRow', {
-                testGroupName: '<span class="testGroupHeader">Socket tests</span>',
+                testGroupName: '<span class="testGroupHeader">Socket&nbsp;tests</span>',
                 testId: 'Group'
             });
 
