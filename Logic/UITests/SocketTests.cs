@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Swarmops.Logic.UITests
 {
-    public class Sockets: IUITestGroup
+    public class SocketTests: IUITestGroup
     {
         public string GroupId { get { return "Sockets"; } }
 
@@ -14,7 +14,20 @@ namespace Swarmops.Logic.UITests
 
         public void InitializeServerSide() { }
 
-        public string JavaScriptClientCodeDocReady { get { return string.Empty; } }
+        public string JavaScriptClientCodeDocReady { get { return @"
+
+            function pageOnHeartbeat(source) {  // called from Swarmops-v5.js script
+                onUITestPassed('Sockets-Browser');
+                if (source == 'Frontend') {
+                    onUITestPassed('Sockets-Frontend');
+                }
+                else if (source == 'Backend') {
+                    onUITestPassed('Sockets-Backend');
+                }
+            }
+
+        "; } }
+
         public IUITest[] Tests
         {
             get
@@ -33,7 +46,7 @@ namespace Swarmops.Logic.UITests
     {
         public string Id { get { return @"Browser";  } }
 
-        public string Name { get { return @"Browser WebSocket connection"; } }
+        public string Name { get { return @"Browser WebSocket connection to server"; } }
 
         public void ExecuteServerSide()
         {

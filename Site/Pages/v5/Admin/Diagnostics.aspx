@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Admin.Troubleshooting.DebugSockets" Codebehind="Sockets.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Admin.Diagnostics" Codebehind="Diagnostics.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
    
@@ -13,6 +13,8 @@
     
 
         $(document).ready(function () {
+
+            <%=this.JavascriptDocReady%>
 
             $('#TableTestResults').datagrid('appendRow', {
                 testGroupName: '<span class="testGroupHeader">Socket tests</span>',
@@ -53,29 +55,20 @@
             <%=this.ProgressTests.ClientID%>_show();
         });
 
-
-        function pageOnHeartbeat(source) {  // called from Swarmops-v5.js script
-            testPassed('Sockets-Browser');
-            if (source == 'Frontend') {
-                testPassed('Sockets-Frontend');
-            }
-            else if (source == 'Backend') {
-                testPassed('Sockets-Backend');
-            }
-        }
-
-        function testPassed(testId)
+        function onUITestPassed(testId)
         {
             $('img.test-running[data-test-id="' + testId + '"').fadeOut();
             $('img.test-passed[data-test-id="' + testId + '"').show();
         }
 
-        function testFailed(testId)
+        function onUITestFailed(guid, testId)
         {
             $('img.test-passed[data-test-id="' + testId + '"').fadeOut();
             $('img.test-running[data-test-id="' + testId + '"').fadeOut();
             $('img.test-failed[data-test-id="' + testId + '"').show();
         }
+
+        var uiTestPageGuid = '<%=this.PageGuid%>';
 
     </script>
 

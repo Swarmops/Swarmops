@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Swarmops.Frontend.Pages.Admin.Troubleshooting {
+namespace Swarmops.Frontend.Pages.Admin {
     
     
-    public partial class DebugSockets {
+    public partial class Diagnostics {
         
         /// <summary>
         /// ProgressTests control.

@@ -16,10 +16,17 @@ namespace Swarmops.Logic.Financial
         public ExternalBankDataProfile Profile { get; set; }
         public ExternalBankDataRecord[] Records { get; private set; }
 
-        public void LoadData (TextReader reader, Organization organization, Currency expectedCurrency)
+        public void LoadData (TextReader textReader, FinancialAccount automatedAccount)
         {
+            /*
+
+            CsvHelper.Configuration.Configuration config = new CsvHelper.Configuration.Configuration();
+            config.HasHeaderRecord = true;
+
+            CsvReader csvReader = new CsvReader(textReader, config);
+
             string data = reader.ReadToEnd();
-            LoadData (data, organization, expectedCurrency);
+            LoadData (data, organization, expectedCurrency);*/
         }
 
         public void LoadData (string data, Organization organization, Currency accountCurrency)

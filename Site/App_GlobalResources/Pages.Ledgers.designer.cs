@@ -2267,7 +2267,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You&apos;re viewing a filed VAT report. The inbound and outbound VAT, as well as total turnover, has been recorded for the report period. This report is ready to be transmitted to tax authorities..
+        ///   Looks up a localized string similar to You&apos;re viewing a filed VAT report. The inbound and outbound VAT, as well as total turnover, have been recorded for the report period. This report is ready to be transmitted to tax authorities..
         /// </summary>
         internal static string ViewVatReports_Info {
             get {

@@ -609,6 +609,13 @@
     <Compile Include="Automation\OrgFunctions.aspx.designer.cs">
       <DependentUpon>OrgFunctions.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Automation\UITests.aspx.cs">
+      <DependentUpon>UITests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Automation\UITests.aspx.designer.cs">
+      <DependentUpon>UITests.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\v5\Base\AjaxToggleSlider.ascx.cs">
       <DependentUpon>AjaxToggleSlider.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -672,12 +679,12 @@
     <Compile Include="Pages\v5\Admin\CommenceImpersonation.aspx.designer.cs">
       <DependentUpon>CommenceImpersonation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\v5\Admin\Troubleshooting\Sockets.aspx.cs">
-      <DependentUpon>Sockets.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Admin\Diagnostics.aspx.cs">
+      <DependentUpon>Diagnostics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\v5\Admin\Troubleshooting\Sockets.aspx.designer.cs">
-      <DependentUpon>Sockets.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Admin\Diagnostics.aspx.designer.cs">
+      <DependentUpon>Diagnostics.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\v5\Admin\Hacks\PopulateCountry1.aspx.cs">
       <DependentUpon>PopulateCountry1.aspx</DependentUpon>
@@ -944,6 +951,13 @@
     </Compile>
     <Compile Include="Pages\v5\Ledgers\DebugLedgers.aspx.designer.cs">
       <DependentUpon>DebugLedgers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\EndOfMonth.aspx.cs">
+      <DependentUpon>EndOfMonth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\EndOfMonth.aspx.designer.cs">
+      <DependentUpon>EndOfMonth.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\v5\Ledgers\InspectLedgers.aspx.cs">
       <DependentUpon>InspectLedgers.aspx</DependentUpon>
@@ -1273,6 +1287,7 @@
     <Content Include="Automation\Json-TransactionTagsTree.aspx" />
     <Content Include="Automation\OrgFunctions.aspx" />
     <Content Include="Automation\SwarmFunctions.aspx" />
+    <Content Include="Automation\UITests.aspx" />
     <Content Include="Controls\v5\Base\AjaxTextBox.ascx" />
     <Content Include="Controls\v5\Base\AjaxToggleSlider.ascx" />
     <Content Include="Controls\v5\Base\ComboGeographies.ascx" />
@@ -1670,7 +1685,7 @@
     <Content Include="Pages\v5\Admin\BitcoinEchoTest.aspx" />
     <Content Include="Pages\v5\Admin\CreateOrganization.aspx" />
     <Content Include="Pages\v5\Admin\CommenceImpersonation.aspx" />
-    <Content Include="Pages\v5\Admin\Troubleshooting\Sockets.aspx" />
+    <Content Include="Pages\v5\Admin\Diagnostics.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\PopulateCountry1.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\PopulateCountry2.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\PopulateFakePeople.aspx" />
@@ -1709,6 +1724,7 @@
     <Content Include="Pages\v5\Ledgers\Csv-BalanceData.aspx" />
     <Content Include="Pages\v5\Ledgers\Csv-ProfitLossData.aspx" />
     <Content Include="Pages\v5\Ledgers\DebugLedgers.aspx" />
+    <Content Include="Pages\v5\Ledgers\EndOfMonth.aspx" />
     <Content Include="Pages\v5\Ledgers\InspectLedgers.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-AccountPlanData.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-GeneralLedgerData.aspx" />

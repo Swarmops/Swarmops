@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security;
 using System.Web;
 using System.Web.Services;
@@ -8,13 +9,16 @@ using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.UITests;
 
-namespace Swarmops.Frontend.Pages.Admin.Troubleshooting
+namespace Swarmops.Frontend.Pages.Admin
 {
-    public partial class DebugSockets : PageV5Base
+    public partial class Diagnostics : PageV5Base
     {
         protected void Page_Load (object sender, EventArgs e)
         {
+            this.PageGuid = Guid.NewGuid().ToString();
+
             PageIcon = "iconshock-group-search";
             this.PageAccessRequired = new Access (CurrentOrganization, AccessAspect.PersonalData, AccessType.Read);
 
@@ -24,12 +28,28 @@ namespace Swarmops.Frontend.Pages.Admin.Troubleshooting
             }
 
             RegisterControl (EasyUIControl.Tree | EasyUIControl.DataGrid);
+
+            // Add all test groups
+
+            List<IUITestGroup> testGroups = new List<IUITestGroup>();
+
+            testGroups.Add(new SocketTests());
+
+            // Create the document.ready() function body
+
+            string javascriptDocReady = string.Empty;
+
+            foreach (IUITestGroup testGroup in testGroups)
+            {
+                javascriptDocReady += testGroup.JavaScriptClientCodeDocReady;
+            }
+
         }
 
         private void Localize()
         {
-            PageTitle = @"Debug Sockets";
-            InfoBoxLiteral = @"This troubleshoots socket connections by showing which connections are live.";
+            PageTitle = @"Troubleshooting";
+            InfoBoxLiteral = @"This runs a series of self-tests to check that the installation is working correctly. If one or more tests fail, or just don't pass, this helps you diagnose precisely what is needed to correct the problem.";
 
             /* no localization for debug pages */
         }
@@ -92,6 +112,10 @@ namespace Swarmops.Frontend.Pages.Admin.Troubleshooting
             result.Success = true;
             return result;
         }
+
+        public string JavascriptDocReady { get; set; }
+
+        public string PageGuid { get; set; }
 
         public struct ConfirmPayoutResult
         {

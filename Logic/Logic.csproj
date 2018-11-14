@@ -491,7 +491,7 @@
     <Compile Include="DashboardTasks\Tasks.cs" />
     <Compile Include="DashboardTasks\TaskSalary.cs" />
     <Compile Include="DashboardTasks\TaskVolunteer.cs" />
-    <Compile Include="UITests\Sockets.cs" />
+    <Compile Include="UITests\SocketTests.cs" />
     <Compile Include="UITests\IUITest.cs" />
   </ItemGroup>
   <ItemGroup>

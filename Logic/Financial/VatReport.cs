@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Swarmops.Basic.Types.Common;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
@@ -60,6 +61,69 @@ namespace Swarmops.Logic.Financial
                 .CreateVatReport(organization.Identity, guid.ToString(), year*100 + startMonth, monthCount);
             return FromIdentityAggressive(vatReportId);
         }
+
+        public static ReportRequirement IsRequired(Organization organization, int year, int month)
+        {
+            // If org isn't VAT enabled, the report is never required
+
+            if (!organization.VatEnabled)
+            {
+                return ReportRequirement.NotRequired;
+            }
+
+            DateTime nowUtc = DateTime.UtcNow;
+            int reportMonthInterval = organization.VatReportFrequencyMonths;
+
+            // Get the list of previous VAT reports
+
+            VatReports reports = VatReports.ForOrganization(organization, true);
+
+            if (reports.Count == 0)
+            {
+                DateTime firstReportGenerationTime =
+                    new DateTime(organization.FirstFiscalYear, 1, 1).AddMonths(reportMonthInterval); // construct VAT report on the first day of the new month
+
+                if (nowUtc > firstReportGenerationTime)
+                {
+                    // It's time to generate the first report
+                    return ReportRequirement.Required;
+                }
+
+            }
+            else   // if reports.Count > 0
+            {
+                reports.Sort(VatReports.VatReportSorterByDate);
+
+                DateTime lastReport = new DateTime(reports.Last().YearMonthStart / 100, reports.Last().YearMonthStart % 100,
+                    1);
+
+
+                // If we generated a report in the present month, say we've done so already
+                if (lastReport.Year == nowUtc.Year && lastReport.Month == nowUtc.Month)
+                {
+                    return ReportRequirement.Completed;
+                }
+
+                // Check when the next report is due
+                DateTime nextReport = lastReport.AddMonths(reportMonthInterval);
+                DateTime nextReportGenerationTime = nextReport.AddMonths(reportMonthInterval);
+
+                if (nowUtc > nextReportGenerationTime)
+                {
+                    // Time for a new report
+                    return ReportRequirement.Required;
+                }
+
+                // Otherwise, it looks like this is a month we don't need to make a VAT report
+                // (the reporting interval may be set to quarterly or annually)
+                return ReportRequirement.NotRequired;
+            }
+
+            // Not yet time for the first report
+            return ReportRequirement.NotRequired;
+
+        }
+
 
         public static VatReport Create(Organization organization, int year, int startMonth, int monthCount)
         {
