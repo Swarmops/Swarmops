@@ -13,6 +13,39 @@
             var rowCount = 0;
 
             $('#TableEomItems').datagrid('appendRow', {
+                testGroupName: '<span class="itemGroupHeader">Upload external data and match accounts</span>',
+                testId: 'Group'
+            });
+
+            rowCount = $('#TableTestResults').datagrid('getRows').length;
+
+            $('#TableEomItems').datagrid('mergeCells', {
+                index: rowCount - 1,
+                colspan: 4,
+                type: 'body',
+                field: 'itemGroupName'
+            });
+
+
+            $('#TableEomItems').datagrid('appendRow', {
+                itemName: 'Upload/Fetch bank transaction data (FORMAT) up until [lastdatelastmonth]',
+                docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
+                actions: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
+            });
+
+            $('#TableEomItems').datagrid('appendRow', {
+                itemName: 'Upload bank statement (PDF) for [lastmonth]',
+                docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
+                actions: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
+            });
+
+            $('#TableEomItems').datagrid('appendRow', {
+                itemName: 'Resolve unmatched ledger transactions',
+                docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
+                actions: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
+            });
+
+            $('#TableEomItems').datagrid('appendRow', {
                 testGroupName: '<span class="itemGroupHeader">Taxes and Payroll</span>',
                 testId: 'Group'
             });
@@ -20,7 +53,7 @@
             rowCount = $('#TableTestResults').datagrid('getRows').length;
 
             $('#TableEomItems').datagrid('mergeCells', {
-                index: rowCount-1,
+                index: rowCount - 1,
                 colspan: 4,
                 type: 'body',
                 field: 'itemGroupName'
@@ -31,14 +64,6 @@
                 docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
                 actions: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
             });
-
-            $('#TableEomItems').datagrid('appendRow', {
-                itemName: 'Upload bank statement for [lastmonth]',
-                docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
-                actions: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
-            });
-
-
 
             /*
 
