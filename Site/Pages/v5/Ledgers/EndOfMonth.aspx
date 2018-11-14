@@ -13,7 +13,7 @@
             var rowCount = 0;
 
             $('#TableEomItems').datagrid('appendRow', {
-                ítemGroupName: '<span class="itemGroupHeader">Upload external data and match accounts</span>',
+                itemGroupName: '<span class="itemGroupHeader">Upload external data and match accounts</span>',
                 itemId: 'GroupExternal'
             });
 
@@ -25,7 +25,6 @@
                 type: 'body',
                 field: 'itemGroupName'
             });
-
 
             $('#TableEomItems').datagrid('appendRow', {
                 itemName: 'Upload/Fetch bank transaction data (FORMAT) up until [lastdatelastmonth]',
@@ -82,8 +81,8 @@
             */
 
             $('#TableEomItems').datagrid('appendRow', {
-                testGroupName: '<span class="itemGroupHeader">Annual Reports</span>',
-                testId: 'Group'
+                itemGroupName: '<span class="itemGroupHeader">Annual Reports</span>',
+                itemId: 'GroupAnnual'
             });
 
             rowCount = $('#TableEomItems').datagrid('getRows').length;
@@ -173,7 +172,7 @@
 
     <table id="TableEomItems" class="easyui-datagrid" style="width:680px;height:500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true"
-        idField="testId">
+        idField="itemId">
         <thead>
             <tr>
                 <th data-options="field:'itemGroupName',width:54">Group</th>
