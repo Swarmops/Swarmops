@@ -62,7 +62,7 @@ namespace Swarmops.Logic.Financial
             return FromIdentityAggressive(vatReportId);
         }
 
-        public static ReportRequirement IsRequired(Organization organization, int year, int month)
+        public static ReportRequirement IsRequired(Organization organization)
         {
             // If org isn't VAT enabled, the report is never required
 
@@ -73,6 +73,7 @@ namespace Swarmops.Logic.Financial
 
             DateTime nowUtc = DateTime.UtcNow;
             int reportMonthInterval = organization.VatReportFrequencyMonths;
+            DateTime nextReportDue = NextReportDue(organization);
 
             // Get the list of previous VAT reports
 
@@ -122,6 +123,37 @@ namespace Swarmops.Logic.Financial
             // Not yet time for the first report
             return ReportRequirement.NotRequired;
 
+        }
+
+
+        public static DateTime NextReportDue(Organization organization)
+        {
+            int reportMonthInterval = organization.VatReportFrequencyMonths;
+
+            // Get the list of previous VAT reports
+
+            VatReports reports = VatReports.ForOrganization(organization, true);
+
+            if (reports.Count == 0)
+            {
+                DateTime firstReportGenerationTime =
+                    new DateTime(organization.FirstFiscalYear, 1, 1).AddMonths(reportMonthInterval);
+                    // construct VAT report on the first day of the new month
+
+                return firstReportGenerationTime;
+            }
+            else // if reports.Count > 0
+            {
+                reports.Sort(VatReports.VatReportSorterByDate);
+
+                DateTime lastReport = new DateTime(reports.Last().YearMonthStart/100, reports.Last().YearMonthStart%100,
+                    1);
+
+                DateTime nextReport = lastReport.AddMonths(reportMonthInterval);
+                DateTime nextReportGenerationTime = nextReport.AddMonths(reportMonthInterval);
+
+                return nextReportGenerationTime;
+            }
         }
 
 
@@ -350,6 +382,31 @@ namespace Swarmops.Logic.Financial
                 }
             }
         }
+
+
+        public static string NextReportDescription(Organization organization)
+        {
+            DateTime nextReportDue = NextReportDue(organization);
+            int monthInterval = organization.VatReportFrequencyMonths;
+
+            switch (monthInterval)
+            {
+                case 1:
+                    return String.Format(Resources.Logic_Financial_VatReport.Description_SingleMonth,
+                        new DateTime(nextReportDue.Year, nextReportDue.Month, 2)); // the 2 is to prevent timezone errors
+
+                case 12:
+                    return String.Format(Resources.Logic_Financial_VatReport.Description_FullYear,
+                        nextReportDue.Year);
+
+                default:
+                    return String.Format(Resources.Logic_Financial_VatReport.Description_Months,
+                        nextReportDue, nextReportDue.AddMonths(monthInterval - 1));
+
+            }
+
+        }
+
 
         public string DescriptionShort
         {

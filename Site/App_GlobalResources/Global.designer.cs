@@ -1213,6 +1213,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} to {1}.
+        /// </summary>
+        internal static string Global_MonthXtoY {
+            get {
+                return ResourceManager.GetString("Global_MonthXtoY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to - multiple -.
         /// </summary>
         internal static string Global_Multiple {

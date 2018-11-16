@@ -988,4 +988,8 @@
   <data name="Global_EnteringSandbox" xml:space="preserve">
     <value>You are entering the &lt;strong&gt;Sandbox&lt;/strong&gt; organization.&lt;br/&gt;&lt;br/&gt;This is a safe environment where you can play around with Swarmops without risking any damage to production data. Have fun all you want, and return to your production environment when you're done experimenting.</value>
   </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>{0} to {1}</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
 </root>

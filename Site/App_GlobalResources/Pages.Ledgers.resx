@@ -978,4 +978,44 @@
     <value>(which was accounted for with &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; in the ledger operating currency)</value>
     <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
   </data>
+  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
+    <value>Close Financial Ledgers for Year {0}</value>
+    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
+  </data>
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Create {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
+    <value>Autofetch Transaction Data for {0}</value>
+    <comment>Parameter zero is the account name as given by the user</comment>
+  </data>
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Annual Reports</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>External Account Data and Match Accounts</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Payroll And Taxes</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+    <value>Send Reports to Accountants, Shareholders, etc.</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
+  <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
+    <value>Resolve all unmatched accounts</value>
+    <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>Upload Bank Statement ({1}) for {0} for {2}</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>Upload Transaction Data ({1}) for {0}</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
 </root>

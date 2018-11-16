@@ -103,7 +103,7 @@
 
 
             $('#TableEomItems').datagrid('appendRow', {
-                itemGroupName: '<span class="itemGroupHeader">Send to Accountants, Shareholders, etc.</span>',
+                itemGroupName: '<span class="itemGroupHeader">Send&nbsp;to&nbsp;Accountants,&nbsp;Shareholders,&nbsp;etc.</span>',
                 itemId: 'SendReports'
             });
 

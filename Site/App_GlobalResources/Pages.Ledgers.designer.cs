@@ -1069,6 +1069,96 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close Financial Ledgers for Year {0}.
+        /// </summary>
+        internal static string EndOfMonth_CloseLedgersFor {
+            get {
+                return ResourceManager.GetString("EndOfMonth_CloseLedgersFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create {0}.
+        /// </summary>
+        internal static string EndOfMonth_CreateVatReport {
+            get {
+                return ResourceManager.GetString("EndOfMonth_CreateVatReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autofetch Transaction Data for {0}.
+        /// </summary>
+        internal static string EndOfMonth_FetchTransactionDataFor {
+            get {
+                return ResourceManager.GetString("EndOfMonth_FetchTransactionDataFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annual Reports.
+        /// </summary>
+        internal static string EndOfMonth_Header_AnnualReports {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Header_AnnualReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to External Account Data and Match Accounts.
+        /// </summary>
+        internal static string EndOfMonth_Header_ExternalData {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Header_ExternalData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payroll And Taxes.
+        /// </summary>
+        internal static string EndOfMonth_Header_PayrollTaxes {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Header_PayrollTaxes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Reports to Accountants, Shareholders, etc..
+        /// </summary>
+        internal static string EndOfMonth_Header_SendReports {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Header_SendReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resolve all unmatched accounts.
+        /// </summary>
+        internal static string EndOfMonth_MatchAccounts {
+            get {
+                return ResourceManager.GetString("EndOfMonth_MatchAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Bank Statement ({1}) for {0} for {2}.
+        /// </summary>
+        internal static string EndOfMonth_UploadBankStatementFor {
+            get {
+                return ResourceManager.GetString("EndOfMonth_UploadBankStatementFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Transaction Data ({1}) for {0}.
+        /// </summary>
+        internal static string EndOfMonth_UploadTransactionDataFor {
+            get {
+                return ResourceManager.GetString("EndOfMonth_UploadTransactionDataFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account name.
         /// </summary>
         internal static string InspectLedgers_AccountName {
