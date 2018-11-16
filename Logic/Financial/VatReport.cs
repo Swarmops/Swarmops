@@ -73,7 +73,6 @@ namespace Swarmops.Logic.Financial
 
             DateTime nowUtc = DateTime.UtcNow;
             int reportMonthInterval = organization.VatReportFrequencyMonths;
-            DateTime nextReportDue = NextReportDue(organization);
 
             // Get the list of previous VAT reports
 
