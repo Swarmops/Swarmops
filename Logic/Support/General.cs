@@ -27,7 +27,10 @@ namespace Swarmops.Logic.Support
             // Further, instantiate an AesCryptoServiceProvider to make sure the linker doesn't optimize it away -- apparently
             // another known bug
 
+            #pragma warning disable 0219
             System.Security.Cryptography.AesCryptoServiceProvider b = new System.Security.Cryptography.AesCryptoServiceProvider();
+            #pragma warning restore 0219
+
         }
 
         public static string GenerateSecureRandomKey(int byteCount)
