@@ -25,7 +25,7 @@ namespace Swarmops.Logic.Support
                 (sender, certificate, chain, sslPolicyErrors) => true;
 
             // Further, instantiate an AesCryptoServiceProvider to make sure the linker doesn't optimize it away -- apparently
-            // another known bug
+            // another known bug. The warning disabled here is "b is assigned a value that is never used".
 
             #pragma warning disable 0219
             System.Security.Cryptography.AesCryptoServiceProvider b = new System.Security.Cryptography.AesCryptoServiceProvider();
