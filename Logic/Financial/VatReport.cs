@@ -74,52 +74,29 @@ namespace Swarmops.Logic.Financial
             DateTime nowUtc = DateTime.UtcNow;
             int reportMonthInterval = organization.VatReportFrequencyMonths;
 
-            // Get the list of previous VAT reports
+            // Check when next report is due
 
-            VatReports reports = VatReports.ForOrganization(organization, true);
+            DateTime nextReportDue = NextReportDue(organization);
 
-            if (reports.Count == 0)
+            // if the next report is due (reportMonthInterval) months from now,
+            // then the report for this month has already been completed
+
+            DateTime lastReportDate = nextReportDue.AddMonths(-reportMonthInterval);
+            if (lastReportDate.Year == nowUtc.Year && lastReportDate.Month == nowUtc.Month)
             {
-                DateTime firstReportGenerationTime =
-                    new DateTime(organization.FirstFiscalYear, 1, 1).AddMonths(reportMonthInterval); // construct VAT report on the first day of the new month
-
-                if (nowUtc > firstReportGenerationTime)
-                {
-                    // It's time to generate the first report
-                    return ReportRequirement.Required;
-                }
-
-            }
-            else   // if reports.Count > 0
-            {
-                reports.Sort(VatReports.VatReportSorterByDate);
-
-                DateTime lastReport = new DateTime(reports.Last().YearMonthStart / 100, reports.Last().YearMonthStart % 100,
-                    1);
-
-
-                // If we generated a report in the present month, say we've done so already
-                if (lastReport.Year == nowUtc.Year && lastReport.Month == nowUtc.Month)
-                {
-                    return ReportRequirement.Completed;
-                }
-
-                // Check when the next report is due
-                DateTime nextReport = lastReport.AddMonths(reportMonthInterval);
-                DateTime nextReportGenerationTime = nextReport.AddMonths(reportMonthInterval);
-
-                if (nowUtc > nextReportGenerationTime)
-                {
-                    // Time for a new report
-                    return ReportRequirement.Required;
-                }
-
-                // Otherwise, it looks like this is a month we don't need to make a VAT report
-                // (the reporting interval may be set to quarterly or annually)
-                return ReportRequirement.NotRequired;
+                // Already completed
+                return ReportRequirement.Completed;
             }
 
-            // Not yet time for the first report
+            // If the next report is due this month, it's required
+
+            if (nextReportDue.Year == nowUtc.Year && nextReportDue.Month == nowUtc.Month)
+            {
+                return ReportRequirement.Required;
+            }
+
+            // Otherwise not required
+
             return ReportRequirement.NotRequired;
 
         }
