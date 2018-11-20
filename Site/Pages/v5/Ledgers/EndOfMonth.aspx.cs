@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -18,6 +19,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
             // Check which reports are required
 
+            ItemGroups = new List<EomItemGroup>();
+
             // Group I: External data & accounts
 
             EomItemGroup group1 = new EomItemGroup();
@@ -26,18 +29,29 @@ namespace Swarmops.Frontend.Pages.Ledgers
             // TODO: Iterate over all Balance account and check for automation;
             // if so, add it to an upload sequence
 
+
+            EomItemGroup group2 = new EomItemGroup();
+            group2.Header = Resources.Pages.Ledgers.EndOfMonth_Header_PayrollTaxes;
+            group2.Id = "PayrollTaxes";
+
             ReportRequirement vatRequired = VatReport.IsRequired(this.CurrentOrganization);
 
-            if (vatRequired != ReportRequirement.NotRequired) // it's either Required or Completed
+            if (vatRequired == ReportRequirement.Required || vatRequired == ReportRequirement.Completed)
             {
                 EomItem vatReport = new EomItem();
                 vatReport.Id = "VatReport";
+                vatReport.Callback = "CreateVatReport";
                 vatReport.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_CreateVatReport, VatReport.NextReportDescription (this.CurrentOrganization));
                 vatReport.Completed = (vatRequired == ReportRequirement.Completed ? true : false);
 
-                group1.Items.Add(vatReport);
+                group2.Items.Add(vatReport);
             }
 
+
+            if (group2.Items.Count > 0)
+            {
+                ItemGroups.Add(group2);
+            }
         }
 
 
@@ -45,7 +59,40 @@ namespace Swarmops.Frontend.Pages.Ledgers
         {
             get
             {
-                return string.Empty;
+                StringBuilder builder = new StringBuilder(16384);
+
+                foreach (EomItemGroup group in ItemGroups)
+                {
+                    if (group.Items.Count > 0)
+                    {
+                        // Group header
+
+                        builder.AppendFormat(@"
+
+                            $('#TableEomItems').datagrid('appendRow', {
+                                itemGroupName: '<span class=\x22itemGroupHeader\x22>{0}</span>',
+                                itemId: '{1}'
+                            });
+
+                             rowCount = $('#TableEomItems').datagrid('getRows').length;
+
+                            $('#TableEomItems').datagrid('mergeCells', {
+                                index: rowCount - 1,
+                                colspan: 4,
+                                type: 'body',
+                                field: 'itemGroupName'
+                            });
+
+                        ", group.Header.Replace(" ", "&nbsp;"), group.Id);
+    
+                        foreach (EomItem item in group.Items)
+                        {
+                            
+                        }
+                    }
+                }
+
+                return builder.ToString();
                 
             }
         }
@@ -54,6 +101,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
         {
             public string Id { get; set; }
             public string Name { get; set; }
+            public string Callback { get; set; }
             public bool Completed { get; set; }
         }
 
@@ -64,8 +112,11 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 Items = new List<EomItem>();
             }
 
+            public string Id { get; set; }
             public string Header { get; set; }
             public List<EomItem> Items { get; }
         }
+
+        private List<EomItemGroup> ItemGroups { get; set; }
     }
 }

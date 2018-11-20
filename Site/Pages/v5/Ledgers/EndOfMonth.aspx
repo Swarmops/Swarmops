@@ -8,9 +8,9 @@
 
         $(document).ready(function () {
 
-            <%=this.JavascriptDocReady%>
-
             var rowCount = 0;
+
+            <%=this.JavascriptDocReady%>
 
             $('#TableEomItems').datagrid('appendRow', {
                 itemGroupName: '<span class="itemGroupHeader">Upload&nbsp;external&nbsp;data&nbsp;and&nbsp;match&nbsp;accounts</span>',
