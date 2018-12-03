@@ -364,20 +364,21 @@ namespace Swarmops.Logic.Financial
         {
             DateTime nextReportDue = NextReportDue(organization);
             int monthInterval = organization.VatReportFrequencyMonths;
+            DateTime nextReportConcerns = nextReportDue.AddMonths(-monthInterval);
 
             switch (monthInterval)
             {
                 case 1:
                     return String.Format(Resources.Logic_Financial_VatReport.Description_SingleMonth,
-                        new DateTime(nextReportDue.Year, nextReportDue.Month, 2)); // the 2 is to prevent timezone errors
+                        new DateTime(nextReportDue.Year, nextReportConcerns.Month, 2)); // the 2 is to prevent timezone errors
 
                 case 12:
                     return String.Format(Resources.Logic_Financial_VatReport.Description_FullYear,
-                        nextReportDue.Year);
+                        nextReportConcerns.Year);
 
                 default:
                     return String.Format(Resources.Logic_Financial_VatReport.Description_Months,
-                        nextReportDue, nextReportDue.AddMonths(monthInterval - 1));
+                        nextReportConcerns, nextReportConcerns.AddMonths(monthInterval - 1));
 
             }
 

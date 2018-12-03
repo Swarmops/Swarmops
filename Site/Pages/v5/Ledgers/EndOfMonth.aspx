@@ -21,7 +21,7 @@
 
             $('#TableEomItems').datagrid('mergeCells', {
                 index: rowCount - 1,
-                colspan: 4,
+                colspan: 2,
                 type: 'body',
                 field: 'itemGroupName'
             });
@@ -51,7 +51,7 @@
 
             $('#TableEomItems').datagrid('mergeCells', {
                 index: rowCount - 1,
-                colspan: 4,
+                colspan: 2,
                 type: 'body',
                 field: 'itemGroupName'
             });
