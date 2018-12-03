@@ -82,7 +82,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
                             $('#TableEomItems').datagrid('mergeCells', {
                                 index: rowCount - 1,
-                                colspan: 4,
+                                colspan: 3,
                                 type: 'body',
                                 field: 'itemGroupName'
                             });

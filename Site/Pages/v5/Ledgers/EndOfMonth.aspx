@@ -122,18 +122,6 @@
         });
 
 
-
-
-
-        document.ready(function() {
-            var lineIndex = 0;  // declare here to not redeclare in autogen code below
-
-
-
-
-        }); // end of document.ready
-
-
         // Function: Generate VAT report
 
         // Function: Match all mismatched transactions
