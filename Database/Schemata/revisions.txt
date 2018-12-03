@@ -73,3 +73,4 @@
 0073 - FinancialTransactions.Comment and People.Name to UTF8 explicit charset [RF]
 0074 - Added FinancialTransaction.ImportSha256 for making bank import better [RF]
 0075 - Added tables, storedprocs for better external bank import [RF]
+0076 - Added MaintenanceDonation tables, storedprocs [RF]
