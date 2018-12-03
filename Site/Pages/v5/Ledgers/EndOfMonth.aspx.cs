@@ -71,12 +71,12 @@ namespace Swarmops.Frontend.Pages.Ledgers
                     {
                         // Group header
 
-                        builder.AppendFormat(@"
+                        builder.Append(@"
 
-                            $('#TableEomItems').datagrid('appendRow', " + '{' + @"
-                                itemGroupName: '<span class=" + '"' + "itemGroupHeader" + '"' + @">{0}</span>',
-                                itemId: '{1}'
-                            " + '}' + @");
+                            $('#TableEomItems').datagrid('appendRow', {
+                                itemGroupName: '<span class=""itemGroupHeader"">" + group.Header.Replace(" ", "&nbsp;").Replace("'", "''") + @"</span>',
+                                itemId: '" + group.Id + @"'
+                            });
 
                              rowCount = $('#TableEomItems').datagrid('getRows').length;
 
@@ -87,17 +87,16 @@ namespace Swarmops.Frontend.Pages.Ledgers
                                 field: 'itemGroupName'
                             });
 
-                        ", group.Header.Replace(" ", "&nbsp;").Replace("'", "''"), group.Id);
+                        ");
     
                         foreach (EomItem item in group.Items)
                         {
-                            builder.AppendFormat(@"            
+                            builder.Append(@"            
                                 $('#TableEomItems').datagrid('appendRow', " + '{' + @"
-                                    itemName: '{0}',
-                                    docs: ""<img src = '/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data - test - id = 'Sockets-Browser' class='test-failed' style='display:none' height='20px' />"",
-                                    actions: ""<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' class='eomitem-document' style='display:inline' height='20px' />""
+                                    itemName: '" + item.Name + @"',
+                                    action: ""<img src='/Images/Icons/transparency-16px.png' class='eomitem-" + item.Icon + @"' style='display:inline' height='20px' width='26px' />""
                                 });
-                            ", item.Name);
+                            ");
                         }
                     }
                 }
