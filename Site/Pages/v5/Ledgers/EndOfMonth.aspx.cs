@@ -17,6 +17,9 @@ namespace Swarmops.Frontend.Pages.Ledgers
         {
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.BookkeepingDetails);
 
+            this.Title = Resources.Pages.Ledgers.EndOfMonth_Title;
+            this.InfoBoxLiteral = Resources.Pages.Ledgers.EndOfMonth_Info;
+
             // Check which reports are required
 
             ItemGroups = new List<EomItemGroup>();
@@ -43,6 +46,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 vatReport.Callback = "CreateVatReport";
                 vatReport.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_CreateVatReport, VatReport.NextReportDescription (this.CurrentOrganization));
                 vatReport.Completed = (vatRequired == ReportRequirement.Completed ? true : false);
+                vatReport.Icon = "document";
 
                 group2.Items.Add(vatReport);
             }
@@ -69,10 +73,10 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
                         builder.AppendFormat(@"
 
-                            $('#TableEomItems').datagrid('appendRow', {
-                                itemGroupName: '<span class=\x22itemGroupHeader\x22>{0}</span>',
+                            $('#TableEomItems').datagrid('appendRow', " + '{' + @"
+                                itemGroupName: '<span class=" + '"' + "itemGroupHeader" + '"' + @">{0}</span>',
                                 itemId: '{1}'
-                            });
+                            " + '}' + @");
 
                              rowCount = $('#TableEomItems').datagrid('getRows').length;
 
@@ -83,11 +87,17 @@ namespace Swarmops.Frontend.Pages.Ledgers
                                 field: 'itemGroupName'
                             });
 
-                        ", group.Header.Replace(" ", "&nbsp;"), group.Id);
+                        ", group.Header.Replace(" ", "&nbsp;").Replace("'", "''"), group.Id);
     
                         foreach (EomItem item in group.Items)
                         {
-                            
+                            builder.AppendFormat(@"            
+                                $('#TableEomItems').datagrid('appendRow', " + '{' + @"
+                                    itemName: '{0}',
+                                    docs: ""<img src = '/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data - test - id = 'Sockets-Browser' class='test-failed' style='display:none' height='20px' />"",
+                                    actions: ""<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' class='eomitem-document' style='display:inline' height='20px' />""
+                                });
+                            ", item.Name);
                         }
                     }
                 }
@@ -101,6 +111,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
         {
             public string Id { get; set; }
             public string Name { get; set; }
+            public string Icon { get; set; }
             public string Callback { get; set; }
             public bool Completed { get; set; }
         }

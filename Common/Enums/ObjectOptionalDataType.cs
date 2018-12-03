@@ -265,6 +265,11 @@ namespace Swarmops.Common.Enums
         OrgVanityDomain,
 
         /// <summary>
+        /// Organization's maintenance donation level, in parts-per-million; typically 1000 or 100
+        /// </summary>
+        OrgMaintenanceDonationLevel,
+
+        /// <summary>
         ///     Free-text description of an inbound invoice (what's it for?)
         /// </summary>
         InboundInvoiceDescription,

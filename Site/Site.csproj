@@ -1349,6 +1349,8 @@
     <Content Include="Images\Flags\tr-24px.png" />
     <Content Include="Images\Flags\tr-64px.png" />
     <Content Include="Images\Icons\expensify-icon-official.png" />
+    <Content Include="Images\Icons\iconshock-balloon-invoice-128x96px-hot.png" />
+    <Content Include="Images\Icons\iconshock-balloon-invoice-128x96px.png" />
     <Content Include="Images\Icons\iconshock-download-240px.png" />
     <Content Include="Images\Icons\iconshock-download-96px.png" />
     <Content Include="Images\Icons\iconshock-download-hot-240px.png" />

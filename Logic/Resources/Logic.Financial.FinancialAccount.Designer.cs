@@ -403,6 +403,15 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maintenance Donations.
+        /// </summary>
+        internal static string Cost_MaintenanceDonations {
+            get {
+                return ResourceManager.GetString("Cost_MaintenanceDonations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Marketing and Campaigns.
         /// </summary>
         internal static string Cost_MarketingCampaigns {

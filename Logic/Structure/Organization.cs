@@ -607,6 +607,15 @@ namespace Swarmops.Logic.Structure
             }
         }
 
+        public void EnsureMaintenanceDonationAccountExists()
+        {
+            if (FinancialAccounts[OrganizationFinancialAccountType.CostsBitcoinFees] == null)
+            {
+                FinancialAccounts[OrganizationFinancialAccountType.CostsBitcoinFees] =
+                    FinancialAccount.Create(this, "[LOC]Cost_MaintenanceDonations", FinancialAccountType.Cost, FinancialAccounts.CostsBankFees);
+            }
+        }
+
         #endregion
 
         #region Public properties
@@ -703,6 +712,20 @@ namespace Swarmops.Logic.Structure
         public bool HasOpenLedgers
         {
             get { return !String.IsNullOrEmpty(OpenLedgersDomain); }
+        }
+
+        public Int64 MaintenanceDonationLevelPpm
+        {
+            get
+            {
+                return
+                    ObjectOptionalData.ForObject(this)
+                        .GetOptionalDataInt64(ObjectOptionalDataType.OrgMaintenanceDonationLevel);
+            }
+            set
+            {
+                ObjectOptionalData.ForObject(this).SetOptionalDataInt64(ObjectOptionalDataType.OrgMaintenanceDonationLevel, value);
+            }
         }
 
         #endregion

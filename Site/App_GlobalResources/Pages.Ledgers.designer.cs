@@ -1132,11 +1132,29 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is a checklist of things to do to close the previous month and begin the new one with respect to accounting..
+        /// </summary>
+        internal static string EndOfMonth_Info {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resolve all unmatched accounts.
         /// </summary>
         internal static string EndOfMonth_MatchAccounts {
             get {
                 return ResourceManager.GetString("EndOfMonth_MatchAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End-of-Month Routine.
+        /// </summary>
+        internal static string EndOfMonth_Title {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Title", resourceCulture);
             }
         }
         

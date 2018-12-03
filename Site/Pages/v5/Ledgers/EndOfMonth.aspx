@@ -29,20 +29,17 @@
 
             $('#TableEomItems').datagrid('appendRow', {
                 itemName: 'Upload/Fetch bank transaction data (FORMAT) up until [lastdatelastmonth]',
-                docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
-                actions: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
+                action: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
             });
 
             $('#TableEomItems').datagrid('appendRow', {
                 itemName: 'Upload bank statement (PDF) for [lastmonth]',
-                docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
-                actions: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
+                action: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
             });
 
             $('#TableEomItems').datagrid('appendRow', {
                 itemName: 'Resolve unmatched ledger transactions',
-                docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
-                actions: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
+                action: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
             });
 
             $('#TableEomItems').datagrid('appendRow', {
@@ -61,8 +58,7 @@
 
             $('#TableEomItems').datagrid('appendRow', {
                 itemName: 'VAT Report for [lastmonth]',
-                docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
-                actions: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
+                action: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
             });
 
             /*
@@ -98,7 +94,7 @@
             $('#TableEomItems').datagrid('appendRow', {
                 itemName: 'Close ledgers for [year]',
                 docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
-                actions: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
+                action: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
             });
 
 
@@ -119,7 +115,7 @@
             $('#TableEomItems').datagrid('appendRow', {
                 itemName: 'Send all reports as required',
                 docs: "<img src='/Images/Icons/iconshock-red-cross-sphere-128x96px.png' data-test-id='Sockets-Browser' class='test-failed' style='display:none' height='20px' />",
-                actions: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
+                action: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
             });
 
 
@@ -177,9 +173,8 @@
         <thead>
             <tr>
                 <th data-options="field:'itemGroupName',width:42">&nbsp;</th>
-                <th data-options="field:'itemName',width:500">Todo</th>
-                <th data-options="field:'docs',width:42,align:'center'">Docs</th>  
-                <th data-options="field:'actions',width:75,align:'center'">Actions</th>
+                <th data-options="field:'itemName',width:562">Todo</th>
+                <th data-options="field:'action',width:55,align:'center'">Action</th>
             </tr>  
         </thead>
     </table>  
