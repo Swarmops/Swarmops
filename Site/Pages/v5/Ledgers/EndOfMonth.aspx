@@ -12,7 +12,7 @@
 
             <%=this.JavascriptDocReady%>
 
-            $('img.eomitem-document').attr['src'] = '/Images/Icons/iconshock-balloon-invoice-128x96.png';
+            $('img.eomitem-document').attr('src', '/Images/Icons/iconshock-balloon-invoice-128x96.png');
 
             $('#TableEomItems').datagrid('appendRow', {
                 itemGroupName: '<span class="itemGroupHeader">Upload&nbsp;external&nbsp;data&nbsp;and&nbsp;match&nbsp;accounts</span>',
