@@ -75,7 +75,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
                             $('#TableEomItems').datagrid('appendRow', {
                                 itemGroupName: '<span class=""itemGroupHeader"">" + group.Header.Replace(" ", "&nbsp;").Replace("'", "''") + @"</span>',
-                                action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='group-status-icon style='display:none' />"",
+                                action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='group-status-icon' style='display:none' />"",
                                 itemId: '" + group.Id + @"'
                             });
 
