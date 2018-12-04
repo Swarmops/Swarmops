@@ -164,17 +164,18 @@
             width: 26px;
             height: 20px;
             cursor: hand;
+        }
 
-            &:hover {
-                border: 1px solid #ddd;
-                filter: brightness(120%), contrast(120%);
-                -webkit-filter: brightness(120%), contrast(120%);
-                -moz-filter: brightness(120%), contrast(120%);
-                -o-filter: brightness(120%), contrast(120%);
-                -ms-filter: brightness(120%), contrast(120%);
-                -webkit-transition: all 0.50s;
-                transition: all 0.50s;
-            }
+        .action-icon:hover {
+            border: 1px solid #FFD580;
+            background: #FFEDC8;
+            filter: brightness(120%), contrast(120%);
+            -webkit-filter: brightness(120%), contrast(120%);
+            -moz-filter: brightness(120%), contrast(120%);
+            -o-filter: brightness(120%), contrast(120%);
+            -ms-filter: brightness(120%), contrast(120%);
+            -webkit-transition: all 0.50s;
+            transition: all 0.50s;
         }
 
         .datagrid-row-selected,.datagrid-row-over{
