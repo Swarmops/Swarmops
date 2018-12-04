@@ -130,9 +130,14 @@
                 $(this).addClass('action-list-item-disabled');
 
                 var groupId = $(this).attr['data-group'];
-                if ($(".action-list-item:not(.action-list-item-disabled)[data-group='" + groupId + "']").length == 0) // no further actions in this group enabled
+                var selector = ".action-list-item:not(.action-list-item-disabled)[data-group='" + groupId + "']";
+                console.log(selector);
+                var groupActionsRemaining = $(selector);
+                console.log(groupActionsRemaining);
+                if (groupActionsRemaining.length == 0) // no further actions in this group enabled
                 {
                     // mark the group as completed
+                    console.log("marking as completed");
                     $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
                 }
             });
