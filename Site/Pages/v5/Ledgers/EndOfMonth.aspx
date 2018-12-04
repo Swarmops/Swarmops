@@ -163,7 +163,7 @@
             border: 1px solid transparent;
             width: 26px;
             height: 20px;
-            cursor: hand;
+            cursor: pointer;
         }
 
         .action-icon:hover {
