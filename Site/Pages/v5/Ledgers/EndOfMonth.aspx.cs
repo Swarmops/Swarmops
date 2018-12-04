@@ -75,10 +75,11 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
                             $('#TableEomItems').datagrid('appendRow', {
                                 itemGroupName: '<span class=""itemGroupHeader"">" + group.Header.Replace(" ", "&nbsp;").Replace("'", "''") + @"</span>',
+                                action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='group-status-icon style='display:none' />""
                                 itemId: '" + group.Id + @"'
                             });
 
-                             rowCount = $('#TableEomItems').datagrid('getRows').length;
+                            rowCount = $('#TableEomItems').datagrid('getRows').length;
 
                             $('#TableEomItems').datagrid('mergeCells', {
                                 index: rowCount - 1,
@@ -93,8 +94,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         {
                             builder.Append(@"            
                                 $('#TableEomItems').datagrid('appendRow', " + '{' + @"
-                                    itemName: '<span class=""action-list-item"">" + item.Name + @"</span>',
-                                    action: ""<img src='/Images/Icons/transparency-16px.png' class='action action-icon eomitem-" + item.Icon + @"' style='display:inline' />""
+                                    itemName: ""<span class='action-list-item' data-group='" + group.Id + @"'>" + item.Name + @"</span>"",
+                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + @"' style='display:inline' />""
                                 });
                             ");
                         }

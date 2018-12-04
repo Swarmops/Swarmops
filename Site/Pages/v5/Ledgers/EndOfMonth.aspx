@@ -128,6 +128,13 @@
 
             $('.action-list-item').click(function() {
                 $(this).addClass('action-list-item-disabled');
+
+                var groupId = $(this).attr['data-group'];
+                if ($(".action-list-item:not(.action-list-item-disabled)[data-group='" + groupId + "']").length == 0) // no further actions in this group enabled
+                {
+                    // mark the group as completed
+                    $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
+                }
             });
 
         });
@@ -159,6 +166,18 @@
             width: 26px;
             height: 20px;
             cursor: pointer;
+        }
+
+        .status-icon {
+            border: 1px solid transparent;
+            width: 26px;
+            height: 20px;
+        }
+
+        .group-status-icon {
+            border: 1px solid transparent;
+            width: 32px;
+            height: 24px;
         }
 
         .action-icon:hover {
