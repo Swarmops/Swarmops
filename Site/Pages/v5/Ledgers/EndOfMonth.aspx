@@ -169,11 +169,11 @@
         .action-icon:hover {
             border: 1px solid #FFD580;
             background: #FFEDC8;
-            filter: brightness(120%) contrast(120%);
-            -webkit-filter: brightness(120%) contrast(120%);
-            -moz-filter: brightness(120%) contrast(120%);
-            -o-filter: brightness(120%) contrast(120%);
-            -ms-filter: brightness(120%) contrast(120%);
+            filter: brightness(105%) contrast(105%);
+            -webkit-filter: brightness(105%) contrast(105%);
+            -moz-filter: brightness(105%) contrast(105%);
+            -o-filter: brightness(105%) contrast(105%);
+            -ms-filter: brightness(105%) contrast(105%);
             -webkit-transition: all 0.50s;
             transition: all 0.50s;
         }
