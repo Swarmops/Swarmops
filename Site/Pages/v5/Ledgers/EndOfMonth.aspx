@@ -12,7 +12,21 @@
 
             <%=this.JavascriptDocReady%>
 
+            // set action icons to their respective initial icons
+
             $('img.eomitem-document').attr('src', '/Images/Icons/iconshock-balloon-invoice-128x96px.png');
+
+            // add hover mechanisms
+
+            $('img.action').hover(function() {
+
+            }, function() {
+
+            });
+
+            // pointer cursor over action icons
+
+            $('img.action').attr('cursor', 'hand');
 
             $('#TableEomItems').datagrid('appendRow', {
                 itemGroupName: '<span class="itemGroupHeader">Upload&nbsp;external&nbsp;data&nbsp;and&nbsp;match&nbsp;accounts</span>',
@@ -141,6 +155,26 @@
         .itemGroupHeader {
             font-size: 125%;
             font-weight: 500;
+        }
+
+        .action-icon {
+            -webkit-transition: all 0.50s;
+            transition: all 0.50s;
+            border: 1px solid transparent;
+            width: 26px;
+            height: 20px;
+            cursor: hand;
+
+            &:hover {
+                border: 1px solid #ddd;
+                filter: brightness(120%), contrast(120%);
+                -webkit-filter: brightness(120%), contrast(120%);
+                -moz-filter: brightness(120%), contrast(120%);
+                -o-filter: brightness(120%), contrast(120%);
+                -ms-filter: brightness(120%), contrast(120%);
+                -webkit-transition: all 0.50s;
+                transition: all 0.50s;
+            }
         }
 
         .datagrid-row-selected,.datagrid-row-over{

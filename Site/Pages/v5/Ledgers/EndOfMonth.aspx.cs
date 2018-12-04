@@ -94,7 +94,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                             builder.Append(@"            
                                 $('#TableEomItems').datagrid('appendRow', " + '{' + @"
                                     itemName: '" + item.Name + @"',
-                                    action: ""<img src='/Images/Icons/transparency-16px.png' class='eomitem-" + item.Icon + @"' style='display:inline' height='20px' width='26px' />""
+                                    action: ""<img src='/Images/Icons/transparency-16px.png' class='action action-icon eomitem-" + item.Icon + @"' style='display:inline' />""
                                 });
                             ");
                         }
