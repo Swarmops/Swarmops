@@ -129,7 +129,7 @@
             $('.action-list-item').click(function() {
                 $(this).addClass('action-list-item-disabled');
 
-                var groupId = $(this).attr['data-group'];
+                var groupId = $(this).attr('data-group');
                 var selector = ".action-list-item:not(.action-list-item-disabled)[data-group='" + groupId + "']";
                 console.log(selector);
                 var groupActionsRemaining = $(selector);
