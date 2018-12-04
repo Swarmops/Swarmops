@@ -102,7 +102,7 @@
 
             $('#TableEomItems').datagrid('mergeCells', {
                 index: rowCount - 1,
-                colspan: 4,
+                colspan: 2,
                 type: 'body',
                 field: 'itemGroupName'
             });
@@ -123,7 +123,7 @@
 
             $('#TableEomItems').datagrid('mergeCells', {
                 index: rowCount - 1,
-                colspan: 4,
+                colspan: 2,
                 type: 'body',
                 field: 'itemGroupName'
             });
@@ -177,8 +177,8 @@
             -moz-filter: brightness(105%) contrast(105%);
             -o-filter: brightness(105%) contrast(105%);
             -ms-filter: brightness(105%) contrast(105%);
-            -webkit-transition: all 0.50s;
-            transition: all 0.50s;
+            /*-webkit-transition: all 0.50s;
+            transition: all 0.50s;*/
         }
 
         .action-list-item-disabled {
