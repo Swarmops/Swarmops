@@ -180,7 +180,6 @@
         }
 
         .group-status-icon {
-            border: 1px solid transparent;
             width: 32px;
             height: 24px;
         }
