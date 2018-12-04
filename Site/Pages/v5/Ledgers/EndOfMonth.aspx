@@ -16,14 +16,6 @@
 
             $('img.eomitem-document').attr('src', '/Images/Icons/iconshock-balloon-invoice-128x96px.png');
 
-            // add hover mechanisms
-
-            $('img.action').hover(function() {
-
-            }, function() {
-
-            });
-
             // pointer cursor over action icons
 
             $('img.action').attr('cursor', 'hand');
