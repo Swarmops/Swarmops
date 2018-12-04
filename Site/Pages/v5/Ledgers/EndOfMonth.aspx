@@ -134,6 +134,9 @@
                 action: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
             });
 
+            $('.action-list-item').click(function() {
+                $(this).addClass('action-list-item-disabled');
+            });
 
         });
 
@@ -176,6 +179,13 @@
             -ms-filter: brightness(105%) contrast(105%);
             -webkit-transition: all 0.50s;
             transition: all 0.50s;
+        }
+
+        .action-list-item-disabled {
+            -webkit-transition: all 0.50s;
+            transition: all 0.50s;
+            color: #ccc;
+            text-decoration: line-through;
         }
 
         .datagrid-row-selected,.datagrid-row-over{
