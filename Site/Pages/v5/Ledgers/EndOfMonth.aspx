@@ -134,7 +134,7 @@
                 $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
 
                 SwarmopsJS.ajaxCall(
-                    "EndOfMonth.aspx/" + callbackFunction,
+                    "/Pages/v5/Ledgers/EndOfMonth.aspx/" + callbackFunction,
                     {},
                     $.proxy(function() {
                         var groupId = $(this).attr('data-group');
