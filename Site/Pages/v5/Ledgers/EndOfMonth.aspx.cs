@@ -53,7 +53,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 vatReport.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_CreateVatReport,
                     (vatReport.Completed
                         ? VatReport.LastReportDescription(this.CurrentOrganization)
-                        : VatReport.NextReportDescription(this.CurrentOrganization);
+                        : VatReport.NextReportDescription(this.CurrentOrganization)));
                 vatReport.Icon = "document";
 
                 group2.Items.Add(vatReport);
