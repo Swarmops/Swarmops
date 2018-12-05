@@ -21,6 +21,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
             this.PageTitle =
                 this.Title =
+                this.LabelHeader.Text =
                     String.Format(Resources.Pages.Ledgers.EndOfMonth_Title, DateTime.UtcNow.AddMonths(-1));
 
             this.InfoBoxLiteral = Resources.Pages.Ledgers.EndOfMonth_Info;

@@ -226,7 +226,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" runat="server">
-    <h2>End-of-Month routine</h2>
+    <h2><asp:Label runat="server" ID="LabelHeader"></asp:Label></h2>
 
     <table id="TableEomItems" class="easyui-datagrid" style="width:680px;height:500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:false,checkOnSelect:false"
