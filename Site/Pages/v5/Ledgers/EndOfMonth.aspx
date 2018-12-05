@@ -133,7 +133,7 @@
                 $('img.action-icon[data-item="' + itemId + '"]').hide();
                 $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
 
-                setTimeout(4000, $.proxy(function() {
+                setTimeout($.proxy(function() {
                     var groupId = $(this).attr('data-group');
                     var itemId = $(this).attr('data-item');
 
@@ -148,7 +148,7 @@
                         // mark the group as completed
                         $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
                     }
-                }, this));
+                }, this), 4000);
 
             });
 
