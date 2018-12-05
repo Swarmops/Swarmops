@@ -64,18 +64,25 @@ namespace Swarmops.Frontend.Pages.Ledgers
             get
             {
                 StringBuilder builder = new StringBuilder(16384);
+                string previousGroupId = string.Empty;
 
                 foreach (EomItemGroup group in ItemGroups)
                 {
                     if (group.Items.Count > 0)
                     {
+                        string previousGroupIdData = string.Empty;
+                        if (!string.IsNullOrEmpty(previousGroupId))
+                        {
+                            previousGroupIdData = " data-previous-group='" + previousGroupId + "'";
+                        }
+
                         // Group header
 
                         builder.Append(@"
 
                             $('#TableEomItems').datagrid('appendRow', {
-                                itemGroupName: '<span class=""itemGroupHeader"">" + group.Header.Replace(" ", "&nbsp;").Replace("'", "''") + @"</span>',
-                                action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='group-status-icon' style='display:none' />"",
+                                itemGroupName: '<span class=""itemGroupHeader""" + previousGroupIdData + @">" + group.Header.Replace(" ", "&nbsp;").Replace("'", "''") + @"</span>',
+                                action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + "'" + previousGroupIdData + @" class='group-status-icon status-completed' style='display:none' />"",
                                 itemId: '" + group.Id + @"'
                             });
 
@@ -94,11 +101,13 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         {
                             builder.Append(@"            
                                 $('#TableEomItems').datagrid('appendRow', " + '{' + @"
-                                    itemName: ""<span class='action-list-item' data-group='" + group.Id + @"'>" + item.Name + @"</span>"",
-                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + @"' style='display:inline' />""
+                                    itemName: ""<span class='action-list-item' data-item='" + item.Id + @"' data-group='" + group.Id + @"'>" + item.Name + @"</span>"",
+                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id + @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + @"' data-callback='" + item.Callback + @"' style='display:inline' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:inline' />""
                                 });
                             ");
                         }
+
+                        previousGroupId = group.Id;  // only set if group has items
                     }
                 }
 

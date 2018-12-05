@@ -130,14 +130,15 @@
                 $(this).addClass('action-list-item-disabled');
 
                 var groupId = $(this).attr('data-group');
+                var itemId = $(this).attr('data-item');
+                $('img.action-icon[data-item="' + itemId + '"]').hide();
+                $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
+
+
                 var selector = ".action-list-item:not(.action-list-item-disabled)[data-group='" + groupId + "']";
-                console.log(selector);
-                var groupActionsRemaining = $(selector);
-                console.log(groupActionsRemaining);
-                if (groupActionsRemaining.length == 0) // no further actions in this group enabled
+                if ($(selector).length == 0) // no further actions in this group enabled
                 {
                     // mark the group as completed
-                    console.log("marking as completed");
                     $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
                 }
             });
