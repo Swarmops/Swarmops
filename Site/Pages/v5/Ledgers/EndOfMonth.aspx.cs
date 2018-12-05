@@ -104,12 +104,24 @@ namespace Swarmops.Frontend.Pages.Ledgers
     
                         foreach (EomItem item in group.Items)
                         {
-                            builder.Append(@"            
-                                $('#TableEomItems').datagrid('appendRow', " + '{' + @"
+                            if (!item.Completed)
+                            {
+                                builder.Append(@"            
+                                $('#TableEomItems').datagrid('appendRow', {
                                     itemName: ""<span class='action-list-item' data-item='" + item.Id + @"' data-group='" + group.Id + @"'>" + item.Name + @"</span>"",
                                     action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id + @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + @"' data-callback='" + item.Callback + @"' style='display:inline' /><img src='/Images/Abstract/ajaxloader-48x36px.gif' data-group='" + group.Id + @"' class='status-icon status-icon-pleasewait' data-item='" + item.Id + @"' style='display:none' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:none' />""
-                                });
-                            ");
+                                    });
+                                ");
+                            }
+                            else
+                            {
+                                builder.Append(@"            
+                                $('#TableEomItems').datagrid('appendRow', {
+                                    itemName: ""<span class='action-list-item action-list-item-disabled' data-item='" + item.Id + @"' data-group='" + group.Id + @"'>" + item.Name + @"</span>"",
+                                    action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:inline' />""
+                                    });
+                                ");
+                            }
                         }
 
                         previousGroupId = group.Id;  // only set if group has items
