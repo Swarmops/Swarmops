@@ -102,7 +102,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                             builder.Append(@"            
                                 $('#TableEomItems').datagrid('appendRow', " + '{' + @"
                                     itemName: ""<span class='action-list-item' data-item='" + item.Id + @"' data-group='" + group.Id + @"'>" + item.Name + @"</span>"",
-                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id + @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + @"' data-callback='" + item.Callback + @"' style='display:inline' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:inline' />""
+                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id + @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + @"' data-callback='" + item.Callback + @"' style='display:inline' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:none' />""
                                 });
                             ");
                         }
