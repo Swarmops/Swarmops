@@ -81,13 +81,22 @@ namespace Swarmops.Frontend.Pages.Ledgers
                             previousGroupIdData = " data-previous-group='" + previousGroupId + "'";
                         }
 
+                        bool groupReady = true;
+                        foreach (EomItem item in group.Items)
+                        {
+                            if (!item.Completed)
+                            {
+                                groupReady = false;
+                            }
+                        }
+
                         // Group header
 
                         builder.Append(@"
 
                             $('#TableEomItems').datagrid('appendRow', {
                                 itemGroupName: '<span class=""itemGroupHeader""" + previousGroupIdData + @">" + group.Header.Replace(" ", "&nbsp;").Replace("'", "''") + @"</span>',
-                                action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + "'" + previousGroupIdData + @" class='group-status-icon status-completed' style='display:none' />"",
+                                action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + "'" + previousGroupIdData + @" class='group-status-icon status-completed' style='display:" + (groupReady? "inline" : "none") + @"' />"",
                                 itemId: '" + group.Id + @"'
                             });
 
