@@ -1150,7 +1150,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to End-of-Month Routine.
+        ///   Looks up a localized string similar to End-of-Month Routine: {0:MMMM yyyy}.
         /// </summary>
         internal static string EndOfMonth_Title {
             get {

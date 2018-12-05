@@ -128,34 +128,35 @@
 
             $('.action').click(function() {
                 var itemId = $(this).attr('data-item');
-                var callbackName = $(this).attr('data-callback');
+                var callbackFunction = $(this).attr('data-callback');
 
                 $('img.action-icon[data-item="' + itemId + '"]').hide();
                 $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
 
-                setTimeout($.proxy(function() {
-                    var groupId = $(this).attr('data-group');
-                    var itemId = $(this).attr('data-item');
+                SwarmopsJS.ajaxCall(
+                    "EndOfMonth.aspx/" + callbackFunction,
+                    {},
+                    $.proxy(function() {
+                        var groupId = $(this).attr('data-group');
+                        var itemId = $(this).attr('data-item');
 
-                    $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-disabled');
-                    $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
-                    $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
+                        $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-disabled');
+                        $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
+                        $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
 
-                    $(this).attr('data-item');
-                    var selector = ".action-list-item:not(.action-list-item-disabled)[data-group='" + groupId + "']";
-                    if ($(selector).length == 0) // no further actions in this group enabled
-                    {
-                        // mark the group as completed
-                        $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
-                    }
-                }, this), 4000);
+                        $(this).attr('data-item');
+                        var selector = ".action-list-item:not(.action-list-item-disabled)[data-group='" + groupId + "']";
+                        if ($(selector).length == 0) // no further actions in this group enabled
+                        {
+                            // mark the group as completed
+                            $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
+                        }
+                    }, this)
+                );
 
             });
 
         });
-
-
-        // Function: Generate VAT report
 
         // Function: Match all mismatched transactions
 
@@ -213,8 +214,8 @@
             text-decoration: line-through;
         }
 
-        .datagrid-row-selected,.datagrid-row-over,.datagrid-row-checked{
-            background:transparent;
+        .datagrid-row-selected, .datagrid-row-over, .datagrid-row-checked {
+            background:transparent !important;
         }
     </style>
 
@@ -228,7 +229,7 @@
     <h2>End-of-Month routine</h2>
 
     <table id="TableEomItems" class="easyui-datagrid" style="width:680px;height:500px"
-        data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true"
+        data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:false,checkOnSelect:false"
         idField="itemId">
         <thead>
             <tr>

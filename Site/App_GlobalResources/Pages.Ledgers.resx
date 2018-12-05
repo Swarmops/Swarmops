@@ -1014,7 +1014,8 @@
     <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
   </data>
   <data name="EndOfMonth_Title" xml:space="preserve">
-    <value>End-of-Month Routine</value>
+    <value>End-of-Month Routine: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
   </data>
   <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
     <value>Upload Bank Statement ({1}) for {0} for {2}</value>

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Basic.Types.Common;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Pages.Ledgers
 {
@@ -17,10 +19,11 @@ namespace Swarmops.Frontend.Pages.Ledgers
         {
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.BookkeepingDetails);
 
-            this.Title = Resources.Pages.Ledgers.EndOfMonth_Title;
             this.PageTitle =
                 this.Title =
                     String.Format(Resources.Pages.Ledgers.EndOfMonth_Title, DateTime.UtcNow.AddMonths(-1));
+
+            this.InfoBoxLiteral = Resources.Pages.Ledgers.EndOfMonth_Info;
 
             // Check which reports are required
 
@@ -117,6 +120,22 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 
             }
         }
+
+        [WebMethod]
+        public static AjaxCallResult CreateVatReport()
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (!authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            VatReport.CreateNext(authData.CurrentOrganization);
+
+            return new AjaxCallResult {Success = true};
+        }
+
 
         private class EomItem
         {

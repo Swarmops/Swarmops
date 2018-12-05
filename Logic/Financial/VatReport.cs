@@ -62,6 +62,43 @@ namespace Swarmops.Logic.Financial
             return FromIdentityAggressive(vatReportId);
         }
 
+        public static void CreateNext(Organization organization)
+        {
+            // Creates all VAT reports that are required up until today.
+            // Normally this is just one, but in the case of a missed report slot, this function will
+            // catch up with all the missed ones, too.
+
+            DateTime nowUtc = DateTime.UtcNow;
+            DateTime nextReportDue = NextReportDue(organization);
+            int reportMonthInterval = organization.VatReportFrequencyMonths;
+
+            if (nextReportDue > nowUtc)
+            {
+                throw new InvalidOperationException("VAT report is not yet due or has already been generated");
+            }
+
+            DateTime thisReport = new DateTime(organization.FirstFiscalYear, 1, 1);  // default to first report
+            VatReports reports = VatReports.ForOrganization(organization, true);
+
+            if (reports.Count > 0)
+            {
+                reports.Sort(VatReports.VatReportSorterByDate);
+
+                DateTime lastReport = new DateTime(reports.Last().YearMonthStart / 100, reports.Last().YearMonthStart % 100,
+                    1);
+
+                thisReport = lastReport.AddMonths(reportMonthInterval);
+            }
+
+            while (thisReport.AddMonths(reportMonthInterval) < nowUtc)
+            {
+                VatReport.Create(organization, thisReport.Year, thisReport.Month, reportMonthInterval);
+                thisReport = thisReport.AddMonths(reportMonthInterval);
+            }
+
+
+        }
+
         public static ReportRequirement IsRequired(Organization organization)
         {
             // If org isn't VAT enabled, the report is never required
