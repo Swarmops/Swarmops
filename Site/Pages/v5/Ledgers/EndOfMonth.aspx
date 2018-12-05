@@ -126,21 +126,30 @@
                 action: "<img src='/Images/Icons/iconshock-yellow-sphere-30pct-128x96px.png' data-test-id='Sockets-Browser' class='test-running' style='display:inline' height='20px' />"
             });
 
-            $('.action-list-item').click(function() {
-                $(this).addClass('action-list-item-disabled');
-
-                var groupId = $(this).attr('data-group');
+            $('.action').click(function() {
                 var itemId = $(this).attr('data-item');
+                var callbackName = $(this).attr('data-callback');
+
                 $('img.action-icon[data-item="' + itemId + '"]').hide();
-                $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
+                $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
 
+                setTimeout(4000, $.proxy(function() {
+                    var groupId = $(this).attr('data-group');
+                    var itemId = $(this).attr('data-item');
 
-                var selector = ".action-list-item:not(.action-list-item-disabled)[data-group='" + groupId + "']";
-                if ($(selector).length == 0) // no further actions in this group enabled
-                {
-                    // mark the group as completed
-                    $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
-                }
+                    $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-disabled');
+                    $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
+                    $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
+
+                    $(this).attr('data-item');
+                    var selector = ".action-list-item:not(.action-list-item-disabled)[data-group='" + groupId + "']";
+                    if ($(selector).length == 0) // no further actions in this group enabled
+                    {
+                        // mark the group as completed
+                        $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
+                    }
+                }, this));
+
             });
 
         });

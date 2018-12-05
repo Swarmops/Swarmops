@@ -18,7 +18,9 @@ namespace Swarmops.Frontend.Pages.Ledgers
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.BookkeepingDetails);
 
             this.Title = Resources.Pages.Ledgers.EndOfMonth_Title;
-            this.InfoBoxLiteral = Resources.Pages.Ledgers.EndOfMonth_Info;
+            this.PageTitle =
+                this.Title =
+                    String.Format(Resources.Pages.Ledgers.EndOfMonth_Title, DateTime.UtcNow.AddMonths(-1));
 
             // Check which reports are required
 
