@@ -407,7 +407,7 @@ namespace Swarmops.Logic.Financial
             {
                 case 1:
                     return String.Format(Resources.Logic_Financial_VatReport.Description_SingleMonth,
-                        new DateTime(nextReportDue.Year, nextReportConcerns.Month, 2)); // the 2 is to prevent timezone errors
+                        new DateTime(nextReportConcerns.Year, nextReportConcerns.Month, 2)); // the 2 is to prevent timezone errors
 
                 case 12:
                     return String.Format(Resources.Logic_Financial_VatReport.Description_FullYear,
