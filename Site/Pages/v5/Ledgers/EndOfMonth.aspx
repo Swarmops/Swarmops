@@ -204,7 +204,7 @@
             text-decoration: line-through;
         }
 
-        .datagrid-row-selected,.datagrid-row-over{
+        .datagrid-row-selected,.datagrid-row-over,.datagrid-row-checked{
             background:transparent;
         }
     </style>
