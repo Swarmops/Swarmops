@@ -418,7 +418,18 @@ namespace Swarmops.Logic.Financial
                         nextReportConcerns, nextReportConcerns.AddMonths(monthInterval - 1));
 
             }
+        }
 
+        public static string LastReportDescription(Organization organization)
+        {
+            VatReports reports = VatReports.ForOrganization(organization, true);
+            if (reports.Count == 0)
+            {
+                throw new InvalidOperationException("Cannot look up last description of nonexistent VAT report collection");
+            }
+
+            reports.Sort(VatReports.VatReportSorterByDate);
+            return reports.Last().Description;
         }
 
 

@@ -49,8 +49,11 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 EomItem vatReport = new EomItem();
                 vatReport.Id = "VatReport";
                 vatReport.Callback = "CreateVatReport";
-                vatReport.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_CreateVatReport, VatReport.NextReportDescription (this.CurrentOrganization));
                 vatReport.Completed = (vatRequired == ReportRequirement.Completed ? true : false);
+                vatReport.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_CreateVatReport,
+                    (vatReport.Completed
+                        ? VatReport.LastReportDescription(this.CurrentOrganization)
+                        : VatReport.NextReportDescription(this.CurrentOrganization);
                 vatReport.Icon = "document";
 
                 group2.Items.Add(vatReport);
