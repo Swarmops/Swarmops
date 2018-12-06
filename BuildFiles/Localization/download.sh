@@ -1,5 +1,5 @@
 #!/bin/sh
-crowdin-cli download translations
+crowdin download translations
 
 echo "Downloading latest build..."
 
