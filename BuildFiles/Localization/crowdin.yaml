@@ -1,4 +1,5 @@
-base_path: /home/rick/Lab/Dev/temp
+"base_path": /home/rick/Lab/Dev/temp
+"preserve_hierarchy": true
 
 files:
   -

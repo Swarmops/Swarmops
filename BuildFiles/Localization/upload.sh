@@ -25,7 +25,7 @@ cp Swarmops/BuildFiles/Localization/crowdin.yaml temp
 echo "Uploading en-US source files..."
 
 cd temp
-crowdin upload sources
+crowdin upload sources --tree
 cd ..
 rm -rf temp
 
