@@ -64,6 +64,11 @@ namespace Swarmops.Frontend.Pages.v5.User
                     // Filipino flag can't be deduced from the culture string
                     newLanguage.IconUrl = "/Images/Flags/ph-64px.png";
                 }
+                else if (cultureId.StartsWith("el"))
+                {
+                    // Nor the Greek flag
+                    newLanguage.IconUrl = "/Images/Flags/gr-64px.png";
+                }
                 else
                 {
                     newLanguage.IconUrl = "/Images/Flags/" + cultureId.Substring(3, 2).ToLowerInvariant() + "-64px.png";
