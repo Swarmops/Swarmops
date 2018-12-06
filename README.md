@@ -29,7 +29,7 @@ This is the plan, at least. "Stable" is a somewhat wide definition at the moment
 Installation
 ------------
 
-Minimum requirements are a 2016+ Debian or Ubuntu LTS. At present (July 2018), this means that the Stretch, Xenial, and Bionic distributions are supported. Further, due to the insane lag of Mono distributions to make it into the official repositories, the most recent Mono is also required. Swarmops will install this for you if you just enable it as detailed below.
+Minimum requirements are a 2016+ Debian or Ubuntu LTS. At present (December 2018), this means that the Stretch, Xenial, and Bionic distributions are supported. Further, due to the insane lag of Mono distributions to make it into the official repositories, the most recent Mono is also required. Swarmops will install this for you if you just enable it as detailed below.
 
 If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! It requires Run these commands _as root_ - first, fetch the signing keys for the repositories:
 
@@ -100,18 +100,19 @@ That also means that any code _you_ commit to Swarmops, whether by checking in c
 Beta-6 features progress
 ------------------------
 
-Beta-6 will be released on September 5 with string freeze on September 2. Its focus is to increase multicurrency functionality for payouts and bank imports.
+Beta-6 will be released on January or February 5, 2019, with string freeze three days earlier. Its focus is to increase multicurrency functionality for payouts and bank imports.
 
 - [x] Parameterize the bank file import procedure (big feature!)
 - [x] Make it possible to import bank files in non-presentation currency
 - [ ] Rewrite payment addresses (a new name for this? Account vs. designator?)
 - [ ] Enable payment destinations, with currency
+- [ ] Complete rewrite of the bank import procedure, account matching UX
 
 
 Beta-7 features progress
 ------------------------
 
-Beta-7 will be released on October 5, with string freeze on October 2. Its tentative focus will be Shapeshift integration and possibly an open API exposure.
+Beta-7 will be released on March 5, 2019, with string freeze on March 2. Its tentative focus will be Fairshift integration and possibly an open API exposure.
 
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
@@ -124,59 +125,6 @@ Beta-8 features
 
 Beta-8 will focus on paying to Fiat from the Bitcoin Cash hotwallet.
 
-
-
-
-Overall Beta features checklist
------------------------
-
-Here are the features still required to exit beta and declare release:
-
-- [x] enter ledger transactions manually
-- [ ] send invoices (and receive payment in bitcoin)
-- [ ] delegate budgets
-- [ ] self-signup mails
-- [ ] ledger-close screen
-
-There will also be many other small improvements added along with these features, for no better reason than their absence being pain points, since the last alpha:
-
-- [x] Proper org settings 
-- [ ] HTML/Markdown mail
-- [x] Mail Resolver
-- [X] Expensify integration?
-- [X] PDF asynchronous interpreter (websocket?)
-- [ ] Recurring expenses
-- [x] Char encode HTML doc
-- [ ] Org descriptions (long, short) on self-signup page
-- [x] Hotwallet payments
-- [x] Tech problem box
-- [x] Donate sockify
-- [x] Live financial numbers
-- [ ] Todo box to JSON
-- [x] Proper menu highlight
-- [X] Basic search
-- [x] Account edit spacing
-- [ ] Alert to load hotwallet from cold
-- [x] Bitcoin Echo test page (probably needs to be Bitcoin Cash b/c fees)
-- [x] Icons for Validation page
-- [x] Favicon New
-- [x] Fix Inspect Ledger header (looks bad)
-- [x] Clean Login page
-- [x] OOBE: Wait for daemons to start
-- [x] Impersonation mode for testing
-- [x] Expense access
-- [ ] Assign role geolock
-- [x] Advance line spacing
-- [x] Upload Org 16x9 logo
-- [ ] Submit invoice anon interface
-- [ ] Control messages for invoice progress
-- [ ] Pay invoice
-- [ ] Controlify financialtransaction to show on balancetx page
-- [ ] Close ledger year
-- [x] Internal TX account type
-- [x] Create TX
-- [ ] Download main Ledger
-- [X] Fix password reset after refactor
 
 
 
