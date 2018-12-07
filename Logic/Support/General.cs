@@ -64,7 +64,7 @@ namespace Swarmops.Logic.Support
             nonStandardFlagNames["fil"] = "ph";     // Philippines / Filipino
             nonStandardFlagNames["el"] = "gr";      // Greece / Ελληνικά
             nonStandardFlagNames["yo"] = "ng";      // Nigeria / Yoruba
-            nonStandardFlagNames["zh"] = "ch";      // China / Chinese
+            nonStandardFlagNames["zh"] = "cn";      // China / Chinese
 
             string cultureFirstPart = cultureId.Split('-')[0];
 
