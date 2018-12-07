@@ -117,16 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AllClear_Text" xml:space="preserve">
+    <value>Awọn isẹ ti pada si kekere.</value>
+  </data>
+  <data name="AllClear_Title" xml:space="preserve">
+    <value>Gbogbo e sofo</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
+    <value>Iṣakoso naa ti padanu asopọ si blockchain bitcoin naa. Awon idunadura Bitcoin kii yoo je mimo bi o ti se n sele.</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
+    <value>Asopọ Blockchain ti sọnu</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
+    <value>Aṣàwákiri ayelujara ko lanfaani lati gbọ awọn ohun-iṣoro isakoso naa. Awọn imudojuiwọn bi o ti se n sele le ma wa.</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
+    <value>Ikuna Awọn ohun-iṣoro Ipele 1</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Text" xml:space="preserve">
+    <value>Koni anfani lati sopọ mo isakoso naa fun awọn imudojuiwọn bi o ti se n sele.</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Title" xml:space="preserve">
+    <value>Ikuna WebSocket</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Text" xml:space="preserve">
+    <value>Isakoso naa koni anfani lati sopọ mo ilana backend. Awọn imudojuiwọn bi o ti se n sele kii yoo wa rara.</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Title" xml:space="preserve">
+    <value>Ikuna Asopọ Backend</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Text" xml:space="preserve">
+    <value>Isakoso naa ko le gbọ awọn ohun-iṣoro lati ilana backend naa.</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Title" xml:space="preserve">
+    <value>Ikuna Awọn ohun-iṣoro Ipele 2</value>
+  </data>
 </root>

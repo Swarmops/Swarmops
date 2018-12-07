@@ -117,57 +117,169 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>Δεν επιτρέπεται η πρόσβαση σε αυτήν την σελίδα</value>
+  </data>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>Προσπαθήσατε να προσπελάσετε μία σελίδα χωρίς να έχετε τα αντίστοιχα δικαιώματα. Δείτε στον κεντρικό πίνακα κάποιους από τους λόγους που συμβαίνει αυτό.</value>
+  </data>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>Δεν επιτρέπεται η πρόσβαση</value>
+  </data>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Η ασφάλεια του Swarmops δεν σας επέτρεψε την πρόσβαση στη σελίδα που προσπαθήσατε να επισκεφτείτε. Αυτό συνήθως σημαίνει ότι οι λειτουργίες της υπερβαίνουν τα επίπεδα πρόσβασης που σας έχουν εκχωρηθεί για τον οργανισμό (&lt;em&gt;{0}&lt;/em&gt;). Αυτό δεν έχει καταχωρηθεί κάπου.&lt;/p&gt;&lt;p&gt;Υπάρχουν αρκετοί λόγοι για τους οποίους μπορεί να συμβαίνει αυτό:&lt;/p&gt;</value>
+  </data>
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>Επιλεγμένος οργανισμός</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>Μπορείτε να συμμετέχετε σε πολλαπλούς οργανισμούς σε αυτή την εγκατάσταση του Swarmops. Από αυτό το σημείο μπορείτε να επιλέγετε τον οργανισμό που επιθυμείτε.</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>Νέος οργανισμός</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>Δεν συμμετέχετε σε άλλον οργανισμό σε αυτή την εγκατάσταση του Swarmops, επομένως δεν μπορείτε να αλλάξετε σε κάποιον άλλο. Επομένως, θα μεταφερθείτε στον Πίνακα Ελέγχου.</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>Αλλαγή Οργανισμού</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>Αλλαγή</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>Εκκρεμεί Αναβάθμιση της Βάσης Δεδομένων</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>Αυτή η σελίδα απαιτεί αναβαθμισμένη βάση δεδομένων του Swarmops. </value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>Αναμονή Αναβάθμισης της Βάσης Δεδομένων</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Εκκρεμεί αναβάθμιση της βάσης δεδομένων, και αυτό δεν σας επιτρέπει την πρόσβασή σας σε αυτή τη σελίδα. &lt;strong&gt;Αυτή είναι μία προσωρινή κατάσταση&lt;/strong&gt; και οι εξυπηρετητές του Swarmops ήδη πραγματοποιούν την απαραίτητη αναβάθμιση.&lt;/p&gt;
+&lt;p&gt;Δοκιμάστε να φορτώσετε ξανά τη σελίδα σε μερικά λεπτά. Εάν αυτή η κατάσταση εμμένει για πάνω από δεκαπέντε λεπτά, επικοινωνήστε με τον διαχειριστή του συστήματος.&lt;/p&gt;</value>
+  </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>Ο λογαριασμός &lt;strong&gt;δεν κλειδώθηκε&lt;/strong&gt;. Αυτός ο λογαριασμός δεν υπάρχει, ή η εντολή δεν ήταν έγκυρη ή ήταν πολύ παλιά. Αν επιθυμείτε ακόμα να κλειδώσετε αυτόν τον λογαριασμό, επικοινωνήστε με τους διαχειριστές αυτής της εγκατάστασης του Swarmops.</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>Αν βλέπετε αυτό το μήνυμα, προσπαθείτε να κλειδώσετε ένα λογαριασμό χρήστη για λόγους ασφαλείας. Αν ο σύνδεσμος ήταν έγκυρος και δεν έχει λήξει, τότε ο λογαριασμός έχει ήδη κλειδωθεί.</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>Κλείδωμα Λογαριασμού Χρήστη</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>Ο λογαριασμός &lt;strong&gt;κλειδώθηκε επιτυχώς&lt;/strong&gt; και οι όποιες ενεργές συνεδρίες έχουν πλέον τερματιστεί.</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>Εντολή Κλειδώματος</value>
+  </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>&lt;strong&gt;ΑΝΟΙΚΤΑ ΛΟΓΙΣΤΙΚΑ ΒΙΒΛΙΑ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ο οργανισμός {0} διαθέτει Ανοικτά Λογιστικά Βιβλία. Αυτό σημαίνει ότι οποιοσδήποτε μπορεί να ελέγξει τις οικονομικές αναφορές και δραστηριότητες. Έχετε συνδεθεί στις Λειτουργίες του οργανισμού για να πραγματοποιήσετε το σχετικό έλεγχο.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt;Ενεργοποιήθηκε η ταυτοποίηση δύο σημείων του BitId.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Από δω και πέρα, μπορείτε να χρησιμοποιείτε το bitcoin πορτοφόλι σας για τη σύνδεσή σας (και θα &lt;strong&gt;πρέπει&lt;/strong&gt; να το κάνετε). Ευχαριστούμε που ενεργοποιήσατε πρόσθετη ασφάλεια. &lt;br/&gt;&lt;br/&gt;Παρακαλούμε θυμηθείτε και την ασφάλεια του κινητού σας, ορίζοντας έναν κωδικό πρόσβασης.</value>
+  </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;ΑΠΑΙΤΕΙΤΑΙ ΣΥΝΔΕΣΗ ΜΕΣΩ BITID&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Αυτή η σύνδεση απαιτεί ταυτοποίηση μέσω BitId, όπως ενεργοποιήθηκε από τον κάτοχο του λογαριασμού. Δεν μπορείτε να συνδεθείτε με συνδυασμό ονόματος χρήστη/κωδικού πρόσβασης.</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>Εισάγετε τον κωδικό από τον Επαληθευτή Google.</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Σύνδεση με Υπογραφή Bitcoin (BitId)</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>Βοήθεια</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>Συνδεθείτε στο Swarmops χρησιμοποιώντας το bitcoin πορτοφόλι σας που υποστηρίζει Bitid. Δεν απαιτείται να έχετε χρήματα μέσα σε αυτό. Αν δεν έχετε πορτοφόλι bitcoin που υποστηρίζει Bitid, μπορείτε να συνδεθείτε χειροκίνητα χρησιμοποιώντας ένα όνομα χρήστη και έναν κωδικό. (το όνομα χρήστη είναι το όνομά σας ή το email σας.)</value>
+  </data>
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>Γίνεται σύνδεση, παρακαλώ περιμένετε...</value>
+  </data>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>Χειροκίνητη Σύνδεση με Κωδικό</value>
+    <comment>Header to manual username/password form</comment>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>Σύνδεση</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>Κωδικός</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>Βοήθεια, ξέχασα τον κωδικό μου!</value>
+  </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>Εγγραφή στον οργανισμό {0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>Επιθυμείτε να γίνετε μέλος;</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>Το Swarmops δεν αναγνωρίζει αυτή τη διεύθυνση. Παρακαλούμε συνδεθείτε χειροκίνητα και ενεργοποιήστε τη διεύθυνσή σας πριν τη χρησιμοποιήσετε για να συνδεθείτε.</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>Χρήση ταυτοποίησης δύο σημείων BitID;</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>Χρήση χειροκίνητου κωδικού για τη σύνδεση;</value>
+    <comment>Switches from BitId to Username/Password form</comment>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>Χρήστης</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>Δεν υπάρχει έγκυρη εντολή επαναφοράς κωδικού πρόσβασης για αυτό το email, η διεύθυνση δεν υπάρχει, ο σύνδεσμος επαναφοράς κωδικού είναι άκυρος ή έχει λήξει.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Η επαναφορά κωδικού δεν πραγματοποιήθηκε.&lt;/strong&gt;</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>Πραγματοποιείτε επαναφορά κωδικού για έναν χρήστη. Εισάγετε το νέο σας κωδικό δύο φορές για να τον δημιουργήσετε και για να συνδεθείτε. (Εάν προσπαθείτε να εκκινήσετε τη διαδικασία επαναφοράς κωδικού, χρειάζεστε μία εντολή για να το κάνετε. &lt;a href="/Security/RequestPasswordReset"&gt;Δημιουργία Εντολής.&lt;/a&gt;)</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>Εισάγετε το email σας για να λάβετε οδηγίες σχετικά με τη διαδικασία επαναφοράς κωδικού. Οι οδηγίες θα περιέχουν έναν μοναδικό κωδικό που λήγει, τον οποίο χρειάζεστε για να συνεχίσετε τη διαδικασία.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>Εισάγετε το email σας</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>Επανεισάγετε το email σας</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>Οι δύο κωδικοί δεν ταιριάζουν. Παρακαλούμε ξαναπροσπαθήστε.</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>Ο νέος κωδικός δεν μπορεί να είναι κενός.</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>Επαναφορά Κωδικού</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>Νέος Κωδικός</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>Επανάληψη Νέου Κωδικού</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>Μπορείτε να επαναφέρετε τον κωδικό που σχετίζεται με ένα email. Ένας σύνδεσμος με έναν κωδικό εντολής θα αποσταλεί σε αυτό το email, τον οποίο θα πρέπει να ακολουθήσετε για να επαναφέρετε τον κωδικό σας.</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>Επαναφορά</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>Ο κωδικός σας άλλαξε και έχετε συνδεθεί στο Swarmops με το νέο σας κωδικό.</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>Εντολή</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>Εάν το email σχετίζεται με έναν λογαριασμό αυτής της εγκατάστασης του Swarmops, μία &lt;strong&gt;εντολή επαναφοράς έχει αποσταλεί.&lt;/strong&gt; Ανοίξτε το μήνυμα και κάντε κλικ στο σύνδεσμο που περιέχεται για να επαναφέρετε τον κωδικό σας. (Αν το email δεν υπήρχε, δεν έγινε αποστολή.)&lt;br/&gt;&lt;br/&gt;Μπορείτε να κλείσετε αυτήν την καρτέλα του περιηγητή. Δεν χρειάζεται πια.</value>
+  </data>
 </root>

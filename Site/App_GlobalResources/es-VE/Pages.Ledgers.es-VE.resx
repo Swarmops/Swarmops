@@ -241,12 +241,6 @@
     <value>Instrucciones de descarga del banco</value>
     <comment>Header above instructions for generation of the bank file type selected.</comment>
   </data>
-  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
-    <value>Diferentes bancos tienen diferentes medios para obtener el archivo de formato BGMAX. En SEB, vaya a &lt;strong&gt; Pagos &lt;/strong&gt; y &lt;strong&gt; Comunicaciones de archivos &lt;/strong&gt; para ver una lista de archivos para recuperar. Otros bancos variarán. En cualquier caso, cárguelos aquí.</value>
-  </data>
-  
-  
-  
   <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
     <value>&lt;p&gt; El archivo contenía {0:N0} transacciones. &lt;strong&gt;{1:N0} transacciones &lt;/strong&gt; se importaron con éxito a la cuenta de contabilidad &lt;em&gt;{2}&lt;/em&gt;. ({3:N0} transacciones fueron duplicados). &lt;/p&gt;&lt;p&gt;&lt;strong&gt; Sin embargo, el saldo bancario no coincide con los registros en Swarmops. &lt;/strong&gt; Esto generalmente se debe a transacciones perdidas. Cargue una lista de transacciones con un período de tiempo mayor para asegurarse de que Swarmops vea todas las transacciones. &lt;/p&gt;&lt;p&gt; La cuenta de contabilidad de Swarmops actualmente &lt;strong&gt; no está sincronizada &lt;/strong&gt; con la del banco. &lt;/p&gt;</value>
     <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
@@ -424,9 +418,7 @@
   <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
     <value>Gastos</value>
   </data>
-  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
-    <value>Perfil de carga de archivos</value>
-  </data>
+  
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>Editar cuenta</value>
   </data>
@@ -885,9 +877,7 @@
   <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
     <value>Volumen de negocios</value>
   </data>
-  <data name="ViewVatReports_Info" xml:space="preserve">
-    <value>Está viendo un informe de IVA presentado. El IVA entrante y saliente, así como la facturación total, se han registrado para el período del informe. Este informe está listo para ser transmitido a las autoridades fiscales.</value>
-  </data>
+  
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>Informes de IVA</value>
     <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
@@ -966,4 +956,20 @@
   <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
     <value>Esta transacción paga la Factura de Entrada #{0:N0} desde {1}.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

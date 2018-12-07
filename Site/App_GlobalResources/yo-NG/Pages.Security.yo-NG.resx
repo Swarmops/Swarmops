@@ -117,61 +117,169 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>Iwọle si ojuewe yii ti jẹ kikọ</value>
+  </data>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>O gbiyanju lati wọle si ojuewe ti o ko ni awọn igbanilaaye fun. Wo panẹẹli akọkọ fun awọn idi ti eyi le fi ṣẹlẹ.</value>
+  </data>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>Iwọle jẹ Kikọ</value>
+  </data>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Awọn eto ilana aabo Swarmops ti kọ iwọle rẹ si ojuewe ti o n gbiyanju lati lọ si. Eyi saba tumọ si pe awọn iṣẹ rẹ ga ju awọn ipele wiwọle ti a fifun ọ lọ fun ajọ ti o yan lọwọlọwọ (&lt;em&gt;{0}&lt;/em&gt;). Eyi ko ti wa ni igbasilẹ tabi jẹ jijabọ nibikibi.&lt;/p&gt;&lt;p&gt;Awọn idi pupọ ni idi ti eyi le fi ṣẹlẹ:&lt;/p&gt;</value>
+  </data>
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>Ajọ lọwọlọwọ yii</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>O le ma kopa ninu awọn ọpọlọpọ ajọ lori isàgbékalẹ̀ Swarmops yii. Eyi ni ibi ti o ti ma se iyipada laarin wọn.</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>Ajọ Tuntun</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>O ko kopa ninu eyikeyi ajọ miiran ti o wa lori isàgbékalẹ̀ Swarmops yii, nitorina o ko le yipada si nkan miiran. Nitorina, a n pada lọ si Dasibodu dipo.</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>Se ayipada Awọn ajọ</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>Yipada</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>Agbega Ibi ipamo data wa ni Asorọ</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>Ojuewe yii nilo ibi ipamo data Swarmops ti o ti ni igbesoke. </value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>Nduro de Agbesoke Ibi ipamo data</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Aṣorọ igbesoke data kan wa ti o se idilọwọ wiwọle rẹ si ojuewe yii. &lt;strong&gt;Eyi jẹ ipo onigbadiẹ&lt;/strong&gt; atipe awọn iṣakoso Swarmops gbọdọ ti bẹrẹ isẹ lori ṣiṣe agbega ti o yẹ.&lt;/p&gt;
+&lt;p&gt;Gbiyanju lati lọ ojuewe naa ni iṣẹju diẹ. Ti o ba si wa ni ipo naa ju iṣẹju mẹẹdogun lọ, kan si alakoso eto rẹ.&lt;/p&gt;</value>
+  </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>Akọọlẹ naa &lt;strong&gt;ko jẹ titipa&lt;/strong&gt;. Kosi iru akọọlẹ bẹẹ, tabi iwe ọja naa ko fẹsẹmulẹ tabi ti pẹ ju. Ti o ba tun fẹ lati ti akọọlẹ yii pa, kan si awọn alakoso ti iṣàgbékalẹ̀ Swarmops yii.</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>Ti o ba n ri ojuewe yii, o n gbiyanju lati ti akọọlẹ olumulo kan pa fun awọn idi aabo. Ti itọkasi naa ba sisẹ ti ko ti jo tan, akọọlẹ naa ti wa ni titipa.</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>Atipa Akọọlẹ Olumulo</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>Akọọlẹ naa ti jẹ &lt;strong&gt;titipa pẹlu aseyọri&lt;/strong&gt; ti eyikeyi awọn akoko iṣiṣẹ ti nṣiṣẹ lọwọ jẹ fifopin si.</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>Tikẹti Atipa</value>
+  </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>&lt;strong&gt;AWON LEJA SISI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;{0} n lo awọn lẹja siṣi. Eyi tumọ si pe ẹnikẹni le ṣayẹwo awọn ijabọ owo ati iwe iṣowo. O ti wọle sori awọn isẹ ti ajọ naa lati ṣe eyi gangan.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt;Ifọwọsi ifosiwẹwẹ-meji ti BitID ti wa ni mimu ṣiṣẹ bayii.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Lati isinyi lọ, o le lo apo owo bitcoin rẹ lati wọle (atipe wa &lt;strong&gt;nilo&lt;/strong&gt; lati ṣe bẹ). O ṣeun fun ṣiṣe imuṣiṣẹ afikun aabo.&lt;br/&gt;&lt;br/&gt;Jọwọ ranti lati tọju foonu rẹ pẹlu aabo ọrọ igbaniwọle, pẹlu.</value>
+  </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;NILO IWOLE BITID&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Iwọle yii nilo ìfàṣẹsí BitId, bi o ti jẹ mimu ṣiṣẹ nipasẹ ẹniti ti o di akọọlẹ mu. O ko le wọle pẹlu akanpọ orukọ olumulo/ọrọ igbaniwọle.</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>Tẹ koodu rẹ lati Google Authenticator.</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Wọle pẹlu Ibuwọlu Bitcoin (BitId)</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>Iranwọ</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>Wọle si Swarmops nipa lilo apo owo bitcoin rẹ ti o ni imusisẹ bitid. O ko nilo owo kankan ninu rẹ. Ti o ko ba ni apo owo bitcoin ti o ni imusisẹ bitid, o le wọle pẹlu afọwọyi pẹlu lilo orukọ olumulo ati ọrọ igbaniwọle. (Orukọ olumulo rẹ jẹ orukọ rẹ tabi imeeli.)</value>
+  </data>
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>Nwọle sinu, Jọwọ duro...</value>
+  </data>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>Iwọle ti Ọrọ igbaniwọle Afọwọyi</value>
+    <comment>Header to manual username/password form</comment>
+  </data>
   <data name="Login_PageTitle" xml:space="preserve">
-    <value>Wole</value>
+    <value>Wọle</value>
   </data>
-  
+  <data name="Login_Password" xml:space="preserve">
+    <value>Kọja</value>
+  </data>
   <data name="Login_ResetPassword" xml:space="preserve">
-    <value>Egbami, Moti gbagbe pasiwodu mi!</value>
+    <value>Egbami, Mo gbagbe ọrọ igbaniwọle mi!</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>Forukọ mi silẹ fun {0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>Nwa lati Darapọ?</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>Swarmops ko da adirẹẹsi yii mọ. Jọwọ wọle pẹlu afọwọyi ki o si mu adirẹẹsi rẹ ṣiṣẹ ṣaaju ki o to lo lati wọle.</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>Lo ifọwọsi ifosiwewe-meji ti BitID?</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>Lo iwọle ọrọ igbaniwọle afọwọyi?</value>
+    <comment>Switches from BitId to Username/Password form</comment>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>Olumulo</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>Ko si tikẹti atunto ọrọ igbaniwọle ti o fẹsẹmulẹ fun adirẹsi imeeli yii, adirẹẹsi naa kosi, tikẹti atunto ọrọ igbaniwọle naa ko fẹsẹmulẹ, tabi o ti jotan.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Atunto ọrọ igbaniwọle kuna.&lt;/strong&gt;</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>O n ṣatunkọ ọrọ igbaniwọle fun akọọlẹ olumulo kan. Tẹ ọrọ igbaniwọle rẹ lẹẹmeji lati ṣeto rẹ ki o si wọle. (Ti o ba n gbiyanju lati bẹrẹ ilana atunto-ọrọ igbaniwọle, o nilo tikẹti lati ṣe bẹ. &lt;a href="/Security/RequestPasswordReset"&gt;Ṣẹda tikẹti kan.&lt;/a&gt;)</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>Tẹ adirẹẹsi imeeli rẹ lati gba awọn itọnisọna bi o ṣe le tẹsiwaju pẹlu ilana atunto ọrọ igbaniwọle. Awọn itọnisọna naa yoo ni koodu adayatọ kan ti o ma jo tan ti o ma nilo lati tẹsiwaju.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>Tẹ adirẹẹsi imeeli rẹ</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>Se atuntẹ adirẹẹsi imeeli rẹ</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>Awọn ọrọ igbaniwọle mejeeji naa ko baramu. Jọwọ tun gbiyanju.</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>Ọrọ igbaniwọle tuntun ko le jẹ ofo.</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>Ṣàtúntò ọ̀rọ̀ ìgbaniwọ́lé</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>Ọrọ igbaniwọle tuntun</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>Tun Ọrọ igbaniwọle Tuntun tẹ</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>O le satunto ọrọ igbaniwọle ti o ni ajọṣe pẹlu adirẹẹsi meeli kan. Itọkasi kan ti o ni koodu tikẹti kan ma jẹ fifiranṣẹ si adirẹẹsi imeeli naa, eyi ti o gbọdọ tẹle lati ṣatunto ọrọ igbaniwọle rẹ.</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>Satunto</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>Ọrọ igbaniwọle rẹ jẹ yiyipada atipe o ti wọle si Swarmops nipa lilo ọrọ igbaniwọle tuntun rẹ.</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>Tikẹti</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>Ti adirẹẹsi meeli naa ba ni ajọṣe pẹlu akọọlẹ kan lori iṣàgbékalẹ̀ Swarmops yii, &lt;strong&gt;tikẹti atunto kan ti jẹ fifiranṣẹ.&lt;/strong&gt; Ṣi imeeli yẹn ki o si tẹ itọkasi inu meeli naa lati satunto ọrọ igbaniwọle rẹ. (Ti ko ba si imeeli naa, nkankan ko jẹ fifiranṣẹ.)&lt;br/&gt;&lt;br/&gt;O le pa taabu aṣàwákiri yii de. Ko niwulo mọ.</value>
+  </data>
 </root>

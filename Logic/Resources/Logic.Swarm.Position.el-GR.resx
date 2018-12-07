@@ -117,93 +117,274 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Position_Executive_CeoAssistant" xml:space="preserve">
+    <value>Βοηθός Διευθύνοντος Συμβούλου</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Government" xml:space="preserve">
+    <value>Προεδρικός Βοηθός</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Government_Plural" xml:space="preserve">
+    <value>Προεδρικοί Βοηθοί</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Nonprofit" xml:space="preserve">
+    <value>Βοηθός Γενικού Γραμματέα</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Βοηθοί Γενικού Γραμματέα</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Plural" xml:space="preserve">
+    <value>Βοηθοί Διευθύνοντος Συμβούλου</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant" xml:space="preserve">
+    <value>Βοηθός Οικονομικού Διευθυντή</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant_Nonprofict" xml:space="preserve">
+    <value>Βοηθός Λογιστή</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Βοηθοί Λογιστή</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant_Plural" xml:space="preserve">
+    <value>Βοηθοί Οικονομικού Διευθυντή</value>
+  </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer" xml:space="preserve">
+    <value>Διευθύνων Σύμβουλος</value>
+  </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer_Government" xml:space="preserve">
+    <value>Πρόεδρος</value>
+  </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer_Nonprofit" xml:space="preserve">
+    <value>Γενικός Γραμματέας</value>
+  </data>
+  <data name="Position_Executive_ChiefFinancialOfficer" xml:space="preserve">
+    <value>Οικονομικός Διευθυντής</value>
+  </data>
+  <data name="Position_Executive_ChiefFinancialOfficer_Government" xml:space="preserve">
+    <value>Υπουργός Οικονομικών</value>
+  </data>
+  <data name="Position_Executive_ChiefFinancialOfficer_Nonprofit" xml:space="preserve">
+    <value>Ταμίας</value>
+  </data>
+  <data name="Position_Executive_ChiefHrOfficer" xml:space="preserve">
+    <value>Υπεύθυνος Ανθρώπινου Δυναμικού</value>
+  </data>
+  <data name="Position_Executive_ChiefHrOfficer_Nonprofit" xml:space="preserve">
+    <value>Ανώτατος Κοινοτικός Αξιωματούχος</value>
+  </data>
+  <data name="Position_Executive_ChiefInformationOfficer" xml:space="preserve">
+    <value>Ανώτατο Στέλεχος Πληροφοριών</value>
+  </data>
+  <data name="Position_Executive_ChiefMarketingOfficer" xml:space="preserve">
+    <value>Ανώτατο Στέλεχος Μάρκετινγκ</value>
+  </data>
+  <data name="Position_Executive_ChiefMarketingOfficer_Government" xml:space="preserve">
+    <value>Υπουργός Εξωτερικών</value>
+  </data>
+  <data name="Position_Executive_ChiefMarketingOfficer_Nonprofit" xml:space="preserve">
+    <value>Διευθυντής Κοινωνικής Προβολής</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer" xml:space="preserve">
+    <value>Ανώτατο Επιχειρησιακό Στέλεχος</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer_Government" xml:space="preserve">
+    <value>Υπουργός Εσωτερικών</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer_Nonprofit" xml:space="preserve">
+    <value>Διευθυντής Ακτιβισμού</value>
+  </data>
+  <data name="Position_Executive_ChiefStaff" xml:space="preserve">
+    <value>Υπεύθυνος Προσωπικού</value>
+  </data>
+  <data name="Position_Executive_ChiefTechnologyOfficer" xml:space="preserve">
+    <value>Διευθυντής Τεχνολογίας</value>
+  </data>
+  <data name="Position_Executive_FirstGentleman" xml:space="preserve">
+    <value>Πρώτος Κύριος</value>
+    <comment>For government-type organizations only, with a female President</comment>
+  </data>
+  <data name="Position_Executive_FirstLady" xml:space="preserve">
+    <value>Πρώτη Κυρία</value>
+    <comment>For government-type organizations only</comment>
+  </data>
+  <data name="Position_Executive_HrAssistant" xml:space="preserve">
+    <value>Βοηθός Ανθρώπινου Δυναμικού</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Nonprofit" xml:space="preserve">
+    <value>Βοηθός Κοινότητας</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Βοηθοί Κοινότητας</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Plural" xml:space="preserve">
+    <value>Βοηθοί Ανθρωπίνου Δυναμικού</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant" xml:space="preserve">
+    <value>Βοηθός Μάρκετινγκ</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Government" xml:space="preserve">
+    <value>Βοηθός Εξωτερικών Υποθέσεων</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Government_Plural" xml:space="preserve">
+    <value>Βοηθοί Εξωτερικών Υποθέσεων</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Nonprofit" xml:space="preserve">
+    <value>Βοηθός Κοινωνικής Προβολής</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Βοηθοί Κοινωνικής Προβολής</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Plural" xml:space="preserve">
+    <value>Βοηθοί Μάρκετινγκ</value>
+  </data>
+  <data name="Position_Executive_President" xml:space="preserve">
+    <value>Πρόεδρος</value>
+  </data>
+  <data name="Position_Executive_VicePresident" xml:space="preserve">
+    <value>Αντιπρόεδρος</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Nonprofit" xml:space="preserve">
+    <value>Αναπληρωτής Γενικός Γραμματέας</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Nonprofit_Plural" xml:space="preserve">
+    <value>Αναπληρωτές Γενικού Γραμματέα</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Plural" xml:space="preserve">
+    <value>Αντιπρόεδροι</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeader" xml:space="preserve">
+    <value>Επικεφαλής Ακτιβισμού</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant" xml:space="preserve">
+    <value>Βοηθός Ακτιβισμού</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Commercial" xml:space="preserve">
+    <value>Επιχειρησιακός Βοηθός</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Commercial_Plural" xml:space="preserve">
+    <value>Επιχειρησιακοί Βοηθοί</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Plural" xml:space="preserve">
+    <value>Βοηθοί Ακτιβισμού</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeader_Commercial" xml:space="preserve">
+    <value>Επικεφαλής Επιχειρήσεων</value>
+  </data>
+  <data name="Position_Geographic_Assistant" xml:space="preserve">
+    <value>Βοηθός</value>
+  </data>
+  <data name="Position_Geographic_Assistant_Plural" xml:space="preserve">
+    <value>Βοηθοί</value>
+  </data>
+  <data name="Position_Geographic_Deputy" xml:space="preserve">
+    <value>Αναπληρωτής</value>
+  </data>
+  <data name="Position_Geographic_Deputy_Plural" xml:space="preserve">
+    <value>Αναπληρωτές</value>
+  </data>
+  <data name="Position_Geographic_ExpandingSubleaderNode_UxElement" xml:space="preserve">
+    <value>Υπεύθυνος Γεωγραφικών Περιοχών</value>
+    <comment>Leaders for geographies below the one displayed</comment>
+  </data>
+  <data name="Position_Geographic_InfoLeader" xml:space="preserve">
+    <value>Επικεφαλής Τμήματος Πληροφοριών</value>
+  </data>
+  <data name="Position_Geographic_InfoLeaderAssistant" xml:space="preserve">
+    <value>Βοηθός Τμήματος Πληροφοριών</value>
+  </data>
+  <data name="Position_Geographic_InfoLeaderAssistant_Plural" xml:space="preserve">
+    <value>Βοηθοί Τμήματος Πληροφοριών</value>
+  </data>
+  <data name="Position_Geographic_Leader" xml:space="preserve">
+    <value>Επικεφαλής</value>
+  </data>
+  <data name="Position_Geographic_OutreachLeader" xml:space="preserve">
+    <value>Επικεφαλής Κοινωνικής Προβολής</value>
+  </data>
+  <data name="Position_Geographic_OutreachLeaderAssistant" xml:space="preserve">
+    <value>Βοηθός Κοινωνικής Προβολής</value>
+  </data>
+  <data name="Position_Geographic_OutreachLeaderAssistant_Plural" xml:space="preserve">
+    <value>Βοηθοί Κοινωνικής Προβολής</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeader" xml:space="preserve">
+    <value>Επικεφαλής Εξυπηρέτησης Swarm</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant" xml:space="preserve">
+    <value>Βοηθός Εξυπηρέτησης Swarm</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Commercial" xml:space="preserve">
+    <value>Βοηθός Κοινοτικής Μέριμνας</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Commercial_Plural" xml:space="preserve">
+    <value>Βοηθοί Κοινοτικής Μέριμνας</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Plural" xml:space="preserve">
+    <value>Βοηθοί Εξυπηρέτησης Swarm</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeader_Commercial" xml:space="preserve">
+    <value>Επικεφαλής Κοινοτικής Μέριμνας</value>
+  </data>
+  <data name="Position_Strategic_Auditor" xml:space="preserve">
+    <value>Ελεγκτής</value>
+  </data>
+  <data name="Position_Strategic_AuditorAssistant" xml:space="preserve">
+    <value>Βοηθός Ελεγκτή</value>
+  </data>
+  <data name="Position_Strategic_AuditorAssistant_Plural" xml:space="preserve">
+    <value>Βοηθοί Ελεγκτή</value>
+  </data>
+  <data name="Position_Strategic_AuditorDeputy" xml:space="preserve">
+    <value>Αναπληρωτής Ελεγκτής</value>
+  </data>
+  <data name="Position_Strategic_AuditorDeputy_Plural" xml:space="preserve">
+    <value>Αναπληρωτές Ελεγκτή</value>
+  </data>
+  <data name="Position_Strategic_Auditor_Plural" xml:space="preserve">
+    <value>Ελεγκτές</value>
+  </data>
+  <data name="Position_Strategic_BoardChairperson" xml:space="preserve">
+    <value>Πρόεδρος Διοικητικού Συμβουλίου</value>
+  </data>
+  <data name="Position_Strategic_BoardChairpersonDeputy" xml:space="preserve">
+    <value>Αναπληρωτής Πρόεδρος</value>
+  </data>
+  <data name="Position_Strategic_BoardChairpersonDeputy_Plural" xml:space="preserve">
+    <value>Αναπληρωτές Προέδρου</value>
+  </data>
+  <data name="Position_Strategic_BoardChairperson_Plural" xml:space="preserve">
+    <value>Πρόεδροι του Διοικητικού Συμβουλίου</value>
+  </data>
+  <data name="Position_Strategic_BoardDeputy" xml:space="preserve">
+    <value>Αναπληρωτής Διοικητικού Συμβουλίου</value>
+  </data>
+  <data name="Position_Strategic_BoardDeputy_Plural" xml:space="preserve">
+    <value>Αναπληρωτές Διοικητικού Συμβουλίου</value>
+  </data>
+  <data name="Position_Strategic_BoardMember" xml:space="preserve">
+    <value>Μέλος Διοικητικού Συμβουλίου</value>
+  </data>
+  <data name="Position_Strategic_BoardMember_Plural" xml:space="preserve">
+    <value>Μέλη Διοικητικού Συμβουλίου</value>
+  </data>
+  <data name="Position_Strategic_Observer" xml:space="preserve">
+    <value>Παρατηρητής Διοικητικού Συμβουλίου</value>
+  </data>
+  <data name="Position_Strategic_Observer_Plural" xml:space="preserve">
+    <value>Παρατηρητές Διοικητικού Συμβουλίου</value>
+  </data>
+  <data name="Position_System_SysadminAssistantReadOnly" xml:space="preserve">
+    <value>Βοηθός Διαχειριστή (Μόνο για Ανάγνωση)</value>
+  </data>
+  <data name="Position_System_SysadminAssistantReadOnly_Plural" xml:space="preserve">
+    <value>Βοηθοί Διαχειριστή Συστήματος (Μόνο για Ανάγνωση)</value>
+  </data>
+  <data name="Position_System_SysadminMain" xml:space="preserve">
+    <value>Κύριος Διαχειριστής Συστήματος</value>
+  </data>
+  <data name="Position_System_SysadminReadWrite" xml:space="preserve">
+    <value>Διαχειριστής Συστήματος (Πλήρης Πρόσβαση)</value>
+  </data>
+  <data name="Position_System_SysadminReadWrite_Plural" xml:space="preserve">
+    <value>Διαχειριστές Συστήματος (Πλήρης Πρόσβαση Ανάγνωσης)</value>
+  </data>
 </root>

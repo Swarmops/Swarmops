@@ -117,20 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SendMassMessage_Error_EmptyBody" xml:space="preserve">
+    <value>O yẹ ki o kọ ara ifiranṣẹ ṣaaju fifi ifiranṣẹ rẹ ranṣẹ.</value>
+  </data>
+  <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
+    <value>O yẹ ki o kọ ori ọrọ ifiranṣẹ lati lọ pẹlu ifiranṣẹ rẹ.</value>
+  </data>
+  <data name="SendMassMessage_Geography" xml:space="preserve">
+    <value>Ti o wa ni</value>
+  </data>
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>Ifiranṣẹ rẹ</value>
+  </data>
+  <data name="SendMassMessage_Info" xml:space="preserve">
+    <value>Fi ifiranṣẹ ransẹ si akojọ awọn eniyan kan ni ajọ naa. O le fi ifiranṣẹ naa ranṣẹ nipasẹ meeli (o dara fun awọn iwe iroyin ati alaye gbogbogbo) tabi si awọn foonu wọn (o ni ijawọ pupọ, atipe o tun gbowolori diẹ).</value>
+  </data>
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>Tẹ ifiranṣẹ rẹ nibi. Awọn aami idaraasi bii *bold*, _italic_, ==headers== ati iru rẹ naa le jẹ lilo. Awọn ila tuntun meji ma n bẹrẹ ìpínrọ tuntun. Meeli naa ma jẹ fifiranṣẹ bi onipo-meji cleartext ati HTML.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>Kosi Awọn olugba|Olugba kan|{0:N0} Awọn olugba</value>
+    <comment>Vertical bar divides none|one|many</comment>
+  </data>
+  <data name="SendMassMessage_RecipientType" xml:space="preserve">
+    <value>Fi ifiranṣẹ ọlọpọ kan ranṣẹ si ẹni gbogbo</value>
+  </data>
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>O nlo Sandbox naa lọwọlọwọ. Nibo ni o ma fẹ ki ifiranṣẹ idanwo lọ?</value>
+  </data>
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>Firansẹ</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>Ifiranṣẹ rẹ ti jẹ pinpin bayi fun awọn olugba. O ma gba ifitonileti nigbati itan kaakiri ba pari.</value>
+  </data>
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>Ori ọrọ</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
+  </data>
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>Idanwo</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>Ifiranṣẹ naa ti jẹ fifiranṣẹ si ọ, ki o le ri bi o se ri ki o to jade saaye.</value>
+  </data>
+  <data name="SendMassMessage_Title" xml:space="preserve">
+    <value>Fi Ifiranṣẹ ọlọpọ ranṣẹ</value>
+  </data>
 </root>

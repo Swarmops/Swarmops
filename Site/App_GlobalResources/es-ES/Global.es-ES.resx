@@ -819,24 +819,7 @@
   <data name="Master_BitIdRegister_Header" xml:space="preserve">
     <value>Escanee este código para habilitar BitID</value>
   </data>
-  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
-    <value>&lt;h3&gt;¿Que es esto?&lt;/h3&gt;
-
-                &lt;p&gt;BitID es una forma de iniciar sesión de forma segura con menos complicaciones que ingresar una contraseña. Su simplicidad no puede explicarse, solo tiene experiencia, y es una autenticación de dos factores, ya que usa su teléfono.&lt;/p&gt;
-
-                &lt;h3&gt;¿Esto no requiere que mi teléfono esté protegido también?&lt;/h3&gt;
-
-                &lt;p&gt;Bueno, sí. Es su teléfono y la protección de acceso de su teléfono. Pero su teléfono siempre debe tener acceso protegido.&lt;/p&gt;
-
-                &lt;h3&gt;¿Necesito una aplicación para esto?&lt;/h3&gt;
-
-                &lt;p&gt;Tal vez. Algunas billeteras bitcoin para dispositivos móviles tienen BitID incorporado. La más común no tiene. Si el tuyo no funciona, busca una aplicación llamada "BitID Authenticator" o similar.&lt;/p&gt;
-
-&lt;h3&gt;¿Cómo habilito BitID?&lt;/h3&gt;
-
-                &lt;p&gt;Simplemente use la aplicación del teléfono para escanear este código. Después de eso, puede escanear un código similar para iniciar sesión en este sistema.&lt;/p&gt;</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
-  </data>
+  
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>BitID (firma bitcoin) autenticación de dos factores</value>
   </data>
@@ -983,6 +966,7 @@
     <value>Enviar</value>
     <comment>As in "Submit this data for processing"</comment>
   </data>
+  
   
   
 </root>

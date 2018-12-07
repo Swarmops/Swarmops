@@ -117,26 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CentralEurope" xml:space="preserve">
+    <value>Aarin gbungbun Europe</value>
+  </data>
+  <data name="EasternEurope" xml:space="preserve">
+    <value>Ila oorun Europe</value>
+  </data>
+  <data name="Europe" xml:space="preserve">
+    <value>Europe</value>
+  </data>
+  <data name="Microstates" xml:space="preserve">
+    <value>Microstates</value>
+    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
+  </data>
+  <data name="Nordics" xml:space="preserve">
+    <value>Nordics</value>
+    <comment>(Finland Denmark Norway Sweden Iceland)</comment>
+  </data>
+  <data name="NorthernEurope" xml:space="preserve">
+    <value>Ariwa Europe</value>
+  </data>
+  <data name="SouthernEurope" xml:space="preserve">
+    <value>Guusu Europe</value>
+  </data>
+  <data name="USA_EastNorthCentral" xml:space="preserve">
+    <value>Ila oorun Ariwa Aarin gbungbun</value>
+  </data>
+  <data name="USA_EastSouthCentral" xml:space="preserve">
+    <value>Ila oorun Guusu Aarin gbungbun</value>
+  </data>
+  <data name="USA_MidAtlantic" xml:space="preserve">
+    <value>Mid-Atlantic</value>
+  </data>
+  <data name="USA_Midwest" xml:space="preserve">
+    <value>Aarin Iwo oorun</value>
+  </data>
+  <data name="USA_Mountain" xml:space="preserve">
+    <value>Oke giga</value>
+  </data>
+  <data name="USA_NewEngland" xml:space="preserve">
+    <value>England tuntun</value>
+  </data>
+  <data name="USA_Northeast" xml:space="preserve">
+    <value>Ariwa Ila oorun</value>
+  </data>
+  <data name="USA_Pacific" xml:space="preserve">
+    <value>Pacific</value>
+  </data>
+  <data name="USA_South" xml:space="preserve">
+    <value>Guusu</value>
+  </data>
+  <data name="USA_SouthAtlantic" xml:space="preserve">
+    <value>Guusu Atlantic</value>
+  </data>
+  <data name="USA_West" xml:space="preserve">
+    <value>Iwo oorun</value>
+  </data>
+  <data name="USA_WestNorthCentral" xml:space="preserve">
+    <value>Iwo oorun Ariwa Aarin gbungbun</value>
+  </data>
+  <data name="USA_WestSouthCentral" xml:space="preserve">
+    <value>Iwo oorun Guusu Aarin gbungbun</value>
+  </data>
+  <data name="WesternEurope" xml:space="preserve">
+    <value>Iwo oorun Europe</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>Agbaye</value>
+    <comment>Root geography</comment>
+  </data>
 </root>

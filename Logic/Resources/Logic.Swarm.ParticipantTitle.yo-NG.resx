@@ -117,115 +117,360 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Title_Activist_Corps" xml:space="preserve">
+    <value>Akojọ Ajafeto</value>
+  </data>
+  <data name="Title_Activist_Female" xml:space="preserve">
+    <value>Ajafeto</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Activist_Generic" xml:space="preserve">
+    <value>Ajafeto</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Activist_Male" xml:space="preserve">
+    <value>Ajafeto</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Activist_Plural" xml:space="preserve">
+    <value>Awon ajafeto</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Title_Activist_Ship" xml:space="preserve">
+    <value>Ipo ajafeto</value>
+  </data>
+  <data name="Title_Agent_Corps" xml:space="preserve">
+    <value>Corps ti Aṣoju</value>
+  </data>
+  <data name="Title_Agent_Female" xml:space="preserve">
+    <value>Aṣoju</value>
+  </data>
+  <data name="Title_Agent_Generic" xml:space="preserve">
+    <value>Aṣoju</value>
+  </data>
+  <data name="Title_Agent_Male" xml:space="preserve">
+    <value>Aṣoju</value>
+  </data>
+  <data name="Title_Agent_Plural" xml:space="preserve">
+    <value>Awon aṣoju</value>
+  </data>
+  <data name="Title_Agent_Ship" xml:space="preserve">
+    <value>Ajo abẹwẹ</value>
+  </data>
+  <data name="Title_Ambassador_Corps" xml:space="preserve">
+    <value>Ambassador Corps</value>
+  </data>
+  <data name="Title_Ambassador_Female" xml:space="preserve">
+    <value>Ambassador</value>
+  </data>
+  <data name="Title_Ambassador_Generic" xml:space="preserve">
+    <value>Ambassador</value>
+  </data>
+  <data name="Title_Ambassador_Male" xml:space="preserve">
+    <value>Ambassador</value>
+  </data>
+  <data name="Title_Ambassador_Plural" xml:space="preserve">
+    <value>Awon Ambassador</value>
+  </data>
+  <data name="Title_Ambassador_Ship" xml:space="preserve">
+    <value>Ipo Ambassador</value>
+  </data>
+  <data name="Title_Applicant_Female" xml:space="preserve">
+    <value>Olubẹwẹ</value>
+  </data>
+  <data name="Title_Applicant_Generic" xml:space="preserve">
+    <value>Olubẹwẹ</value>
+  </data>
+  <data name="Title_Applicant_Male" xml:space="preserve">
+    <value>Olubẹwẹ</value>
+  </data>
+  <data name="Title_Applicant_Plural" xml:space="preserve">
+    <value>Awon Olubẹwẹ</value>
+  </data>
+  <data name="Title_Applicant_Ship" xml:space="preserve">
+    <value>Ibẹwẹ</value>
+  </data>
+  <data name="Title_Aspirant_Female" xml:space="preserve">
+    <value>Oludije</value>
+  </data>
+  <data name="Title_Aspirant_Generic" xml:space="preserve">
+    <value>Oludije</value>
+  </data>
+  <data name="Title_Aspirant_Male" xml:space="preserve">
+    <value>Oludije</value>
+  </data>
+  <data name="Title_Aspirant_Plural" xml:space="preserve">
+    <value>Awon oludije</value>
+  </data>
+  <data name="Title_Aspirant_Ship" xml:space="preserve">
+    <value>Erongba</value>
+  </data>
+  <data name="Title_Citizen_Corps" xml:space="preserve">
+    <value>Awon ọmọ ilu</value>
+  </data>
+  <data name="Title_Citizen_Female" xml:space="preserve">
+    <value>Omọ ilu</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Citizen_Generic" xml:space="preserve">
+    <value>Omọ ilu</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Citizen_Male" xml:space="preserve">
+    <value>Omọ ilu</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Citizen_Plural" xml:space="preserve">
+    <value>Awon ọmọ ilu</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Title_Citizen_Ship" xml:space="preserve">
+    <value>Ipo ijọmọ ilu</value>
+  </data>
+  <data name="Title_Conscript_Corps" xml:space="preserve">
+    <value>Corps</value>
+  </data>
+  <data name="Title_Conscript_Female" xml:space="preserve">
+    <value>Iforukọsilẹ dandan</value>
+  </data>
+  <data name="Title_Conscript_Generic" xml:space="preserve">
+    <value>Iforukọsilẹ dandan</value>
+  </data>
+  <data name="Title_Conscript_Male" xml:space="preserve">
+    <value>Iforukọsilẹ dandan</value>
+  </data>
+  <data name="Title_Conscript_Plural" xml:space="preserve">
+    <value>Awon iforukọsilẹ dandan</value>
+  </data>
+  <data name="Title_Conscript_Ship" xml:space="preserve">
+    <value>Iforukọsilẹ onidandan</value>
+  </data>
+  <data name="Title_Contributor_Corps" xml:space="preserve">
+    <value>Corps ti Olùrànlọwọ</value>
+  </data>
+  <data name="Title_Contributor_Female" xml:space="preserve">
+    <value>Olùrànlọwọ</value>
+  </data>
+  <data name="Title_Contributor_Generic" xml:space="preserve">
+    <value>Olùrànlọwọ</value>
+  </data>
+  <data name="Title_Contributor_Male" xml:space="preserve">
+    <value>Olùrànlọwọ</value>
+  </data>
+  <data name="Title_Contributor_Plural" xml:space="preserve">
+    <value>Awon olùrànlọwọ</value>
+  </data>
+  <data name="Title_Contributor_Ship" xml:space="preserve">
+    <value>Ipo olùrànlọwọ</value>
+  </data>
+  <data name="Title_Customer_Corps" xml:space="preserve">
+    <value>Awon onibara</value>
+  </data>
+  <data name="Title_Customer_Female" xml:space="preserve">
+    <value>Onibara</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Customer_Generic" xml:space="preserve">
+    <value>Onibara</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Customer_Male" xml:space="preserve">
+    <value>Onibara</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Customer_Plural" xml:space="preserve">
+    <value>Awon onibara</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Title_Customer_Ship" xml:space="preserve">
+    <value>Aṣa</value>
+  </data>
+  <data name="Title_Employee_Corps" xml:space="preserve">
+    <value>Oṣiṣẹ</value>
+  </data>
+  <data name="Title_Employee_Female" xml:space="preserve">
+    <value>Oṣiṣẹ</value>
+  </data>
+  <data name="Title_Employee_Generic" xml:space="preserve">
+    <value>Oṣiṣẹ</value>
+  </data>
+  <data name="Title_Employee_Male" xml:space="preserve">
+    <value>Oṣiṣẹ</value>
+  </data>
+  <data name="Title_Employee_Plural" xml:space="preserve">
+    <value>Awon oṣiṣẹ</value>
+  </data>
+  <data name="Title_Employee_Ship" xml:space="preserve">
+    <value>Igbanisiṣẹ</value>
+  </data>
+  <data name="Title_Member_Corps" xml:space="preserve">
+    <value>Corps ti Omọ ẹgbẹ</value>
+  </data>
+  <data name="Title_Member_Female" xml:space="preserve">
+    <value>Omọ ẹgbẹ́</value>
+  </data>
+  <data name="Title_Member_Generic" xml:space="preserve">
+    <value>Omọ ẹgbẹ́</value>
+  </data>
+  <data name="Title_Member_Male" xml:space="preserve">
+    <value>Omọ ẹgbẹ́</value>
+  </data>
+  <data name="Title_Member_Plural" xml:space="preserve">
+    <value>Àwọn ọmọ ẹgbẹ́</value>
+  </data>
+  <data name="Title_Member_Ship" xml:space="preserve">
+    <value>Ipo ijọmọ ẹgbẹ</value>
+  </data>
+  <data name="Title_Operative_Corps" xml:space="preserve">
+    <value>Awon osise</value>
+  </data>
+  <data name="Title_Operative_Female" xml:space="preserve">
+    <value>Osise</value>
+  </data>
+  <data name="Title_Operative_Generic" xml:space="preserve">
+    <value>Osise</value>
+  </data>
+  <data name="Title_Operative_Male" xml:space="preserve">
+    <value>Osise</value>
+  </data>
+  <data name="Title_Operative_Plural" xml:space="preserve">
+    <value>Awon osise</value>
+  </data>
+  <data name="Title_Operative_Ship" xml:space="preserve">
+    <value>Ipo isise</value>
+  </data>
+  <data name="Title_Person_Corps" xml:space="preserve">
+    <value>Ologun</value>
+  </data>
+  <data name="Title_Person_Female" xml:space="preserve">
+    <value>Eniyan</value>
+  </data>
+  <data name="Title_Person_Generic" xml:space="preserve">
+    <value>Eniyan</value>
+  </data>
+  <data name="Title_Person_Male" xml:space="preserve">
+    <value>Eniyan</value>
+  </data>
+  <data name="Title_Person_Plural" xml:space="preserve">
+    <value>Awon emiyan</value>
+  </data>
+  <data name="Title_Person_Ship" xml:space="preserve">
+    <value>Ipo ijeniyan</value>
+  </data>
+  <data name="Title_Regular_Corps" xml:space="preserve">
+    <value>Corps</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Regular_Female" xml:space="preserve">
+    <value>Regula</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Regular_Generic" xml:space="preserve">
+    <value>Regula</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Regular_Male" xml:space="preserve">
+    <value>Regula</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Regular_Plural" xml:space="preserve">
+    <value>Awon regula</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Regular_Ship" xml:space="preserve">
+    <value>Ipo ijeregula</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Resident_Corps" xml:space="preserve">
+    <value>Awon olugbe</value>
+  </data>
+  <data name="Title_Resident_Female" xml:space="preserve">
+    <value>Olugbe</value>
+  </data>
+  <data name="Title_Resident_Generic" xml:space="preserve">
+    <value>Olugbe</value>
+  </data>
+  <data name="Title_Resident_Male" xml:space="preserve">
+    <value>Olugbe</value>
+  </data>
+  <data name="Title_Resident_Plural" xml:space="preserve">
+    <value>Awon olugbe</value>
+  </data>
+  <data name="Title_Resident_Ship" xml:space="preserve">
+    <value>Ipo ijolugbe</value>
+  </data>
+  <data name="Title_Sailor_Corps" xml:space="preserve">
+    <value>Awọn atukọ</value>
+  </data>
+  <data name="Title_Sailor_Female" xml:space="preserve">
+    <value>Atukọ okun</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Generic" xml:space="preserve">
+    <value>Atukọ okun</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Male" xml:space="preserve">
+    <value>Atukọ okun</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Plural" xml:space="preserve">
+    <value>Awọn atukọ okun</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Ship" xml:space="preserve">
+    <value>Ipo ijatukọ okun</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Salesperson_Corps" xml:space="preserve">
+    <value>Awọn olutaja</value>
+  </data>
+  <data name="Title_Salesperson_Female" xml:space="preserve">
+    <value>Olutaja'binrin</value>
+  </data>
+  <data name="Title_Salesperson_Generic" xml:space="preserve">
+    <value>Olutaja eniyan</value>
+  </data>
+  <data name="Title_Salesperson_Male" xml:space="preserve">
+    <value>Olutaja'kunrin</value>
+  </data>
+  <data name="Title_Salesperson_Plural" xml:space="preserve">
+    <value>Awon olutaja</value>
+  </data>
+  <data name="Title_Salesperson_Ship" xml:space="preserve">
+    <value>Ipo olutaja</value>
+  </data>
+  <data name="Title_Supporter_Corps" xml:space="preserve">
+    <value>Awon alatilẹyin</value>
+  </data>
+  <data name="Title_Supporter_Female" xml:space="preserve">
+    <value>Alatilẹyin</value>
+  </data>
+  <data name="Title_Supporter_Generic" xml:space="preserve">
+    <value>Alatilẹyin</value>
+  </data>
+  <data name="Title_Supporter_Male" xml:space="preserve">
+    <value>Alatilẹyin</value>
+  </data>
+  <data name="Title_Supporter_Plural" xml:space="preserve">
+    <value>Awon alatilẹyin</value>
+  </data>
+  <data name="Title_Supporter_Ship" xml:space="preserve">
+    <value>Ipo isatilẹyin</value>
+  </data>
+  <data name="Title_Volunteer_Female" xml:space="preserve">
+    <value>Olujọwọ ara ẹni</value>
+  </data>
+  <data name="Title_Volunteer_Generic" xml:space="preserve">
+    <value>Olujọwọ ara ẹni</value>
+  </data>
+  <data name="Title_Volunteer_Male" xml:space="preserve">
+    <value>Olujọwọ ara ẹni</value>
+  </data>
+  <data name="Title_Volunteer_Plural" xml:space="preserve">
+    <value>Awon olujọwọ ara ẹni</value>
+  </data>
+  <data name="Title_Volunteer_Ship" xml:space="preserve">
+    <value>Ipo ijọwọ ara ẹni</value>
+  </data>
 </root>

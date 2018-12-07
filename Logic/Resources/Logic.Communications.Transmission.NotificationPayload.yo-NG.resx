@@ -118,147 +118,380 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Applicant_Signup_Body" xml:space="preserve">
-    <value>Eyan tun tun kan ti waye la ti je [RegularTitle] ni [OrganizationName]! [ConcernedPersonName] Lọwọlọwọ n gbé ni [GeographyName], [CountryCode].</value>
+    <value>Eniyan tuntun kan ti beere lati jẹ [RegularTitle] ni [OrganizationName]! [ConcernedPersonName] lọwọlọwọ o ngbe ni [GeographyName], [CountryCode].</value>
   </data>
   <data name="Applicant_Signup_Header" xml:space="preserve">
-    <value>[[OrganizationName]] olubẹwẹ tun tun: [ConcernedPersonName], [GeographyName]</value>
+    <value>[[OrganizationName]] Olubẹwẹ Tuntun: [ConcernedPersonName], [GeographyName]</value>
   </data>
   <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
-    <value>Bi e se fe gba owo naa lo si Bitcoin Cash payout adirẹsi yin, adirẹsi ti ([BitcoinAddress]) kọ je wole tori ti underlying payout engine to wipe o wa invalid. Tori naa a ti yo kuro ni profaili yin.
+    <value>Lori igbiyanju sisan owo jade si adireesi isanwojade Bitcoin Cash re, adireesi naa ([BitcoinAddress]) je kikọ nipasẹ ẹrọ isanwojade 
+ti o yẹ bi aifẹsẹmulẹ. Nitorina o ti je piparẹ kuro ninu profaili rẹ.
 
-Ejo e wole si site wa [InstallationName] ni [ExternalUrl] ki e si ṣeto bitcoin payout adirẹsi tun tun si be.</value>
+Jowo wọle si [InstallationName] ni [ExternalUrl] ki o si ṣeto adirẹesi isanwojade bitcoin tuntun kan.</value>
   </data>
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Bitcoin payout adirẹsi yi o daa</value>
+    <value>[[OrganizationName] - ACTION ITEM] Adireesi isanwojade bitcoin ti koda</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
-    <value>E ti paarọ Bitcoin Cash payout adirẹsi yin lati [BitcoinOldAddress] si [BitcoinAddress]. Si ti ona aabo, gbo gbo owo ti e fe gba ni a ma dimu fun wakati méjídínláàdọ́ta.
+    <value>O ti se ayipada adireesi isanwojade Bitcoin Cash rẹ lati [BitcoinOldAddress] si [BitcoinAddress]. Gẹgẹ bi abojuto aabo, gbogbo awon isanwojade ti wa ni atipa fun wakati 48 ti o n bo.
 
-Ti ko ba n se eyin le paarọ adirẹsi naa ati wipe irufin aabo wa, ejo e te link yi lati tii account yin paa kia kia: [LockdownLink]
+Ti o KO BA se ayipada adireesi isanwojade yii ti o si je wipe isise aabo kan ti waye, jọwọ tẹ itọkasi yii lẹsẹkẹsẹ lati ti akọọlẹ re pa: [LockdownLink]
 
-Ti e ba te link naa, account yin ma tii paa ti ko ni si ibeere kan kan. Sugbon, ti o ba je wipe eyin le paarọ adirẹsi naa, ko si aburu kan kan sibe ki e ma dara yin lamu pupo.</value>
+Ti o ba tẹ itọkasi naa, akọọlẹ rẹ yoo wa ni titiipa lẹsẹkẹsẹ laisi awọn ibeere idaniloju. Sibẹsibẹ, ti o ba je iwo lo beere iyipada adiresi isanwojade naa, gbogbo nkan dara ati pe o ko nilo igbese kankan siwaju sii ni apa odo rẹ.</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Adirẹsi Bitcoin Cash payout ti paarọ</value>
+    <value>[[OrganizationName]] adireesi isanwojade Bitcoin Cash di ayipada</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
-    <value>Eni owo ti o ye ki e gba ni [OrganizationName], sugbon e ti ṣeto ti Bitcoin Cash payout adirẹsi.
+    <value>O ni owo ti nduro fun sisanjade ni [OrganizationName], ṣugbọn o ko ti ṣeto adirẹẹsi isanwojade Bitcoin Cash.
 
-Ejo e wole si site wa [InstallationName] ni [ExternalUrl] ki e si tẹle link naa lati seto ti payout adirẹsi yin - e ma ri larin awọn akojọ ohun n kan ti e fe se.</value>
+Jowo wọle si [InstallationName] ni [ExternalUrl] ki o si tẹle itọkasi naa lati ṣeto adirẹẹsi isanwojade rẹ - o yoo ri ni akojọ awọn nkan ti o wa fun ṣi-ṣe.</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Ejo e seto ti Bitcoin Cash payout adirẹsi yin</value>
+    <value>[[OrganizationName]] Jowo seto adireesi isanwojade Bitcoin Cash re</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
-    <value>E ti seto ti Bitcoin Cash payout adirẹsi: [BitcoinAddress]. Si ti ona aabo, gbo gbo owo ti e fe gba ni a ma dimu fun wakati méjídínláàdọ́ta, ki a to wa san owo naa si adirẹsi tun tun ti e seto.
+    <value>O ti ṣeto adireesi isanwojade Bitcoin Cash: [BitcoinAddress]. Gẹgẹ bi abojuto aabo, gbogbo awon isanwojade ti wa ni atipa fun wakati 48 ti o n bo, ati pe yoo tẹsiwaju lati je sisan jade si adirẹẹsi tuntun naa lẹhin eyi.
 
-Ti ko ba n se eyin le paarọ adirẹsi naa (o ma dara ki e se aseyewo le kan si lori ibi ti adirẹsi wa fun aabo sii), E pe olubasọrọ [OrganizationName] kia kia.</value>
+Ti o ko ba ṣeto adirẹẹsi isanwojade yii (o tọ ki o se atunyẹwo keji adirẹẹsi naa ti o wa loke fun afikun aabo), kan si [OrganizationName] lẹsẹkẹsẹ.</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
-    <value>Bitcoin Cash payout adirẹsi kan la seto fun [ConcernedPersonName]. A ma san owo naa fun yin nigba ti wakati méjídínláàdọ́ta bati koja.</value>
+    <value>Adirẹsi isanwojade Bitcoin Cash kan ti je siṣeto nipasẹ [ConcernedPersonName]. Awọn isanwojade yoo bẹrẹ lẹhin wakati 48 nigbati akoko atipa ba ti kọja.</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] [ConcernedPersonName] ti seto Bitcoin Cash payout adirẹsi</value>
+    <value>[[OrganizationName]] [ConcernedPersonName] ti seto adireesi isanwojade Bitcoin Cash</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Bitcoin Cash payout adirẹsi ti seto</value>
+    <value>[[OrganizationName]] adireesi isanwojade Bitcoin Cash di siseto</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
-    <value>Apo owo bitcoin fun [OrganizationName] sese san [PaymentCount] owo (awon awo) alaifowoyi ti isiro re je [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin tabi "bits").</value>
+    <value>Bitcoin hotwallet fun [OrganizationName] sese se (awon) owo sisan alaifọwọyi [PaymentCount] ti apapọ re je [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin tabi "bits").</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Owo ti o jade ninu Apo owo: [CurrencyCode] [AmountFloat]</value>
+    <value>[[OrganizationName]] Isanwojade Hotwallet: [CurrencyCode] [AmountFloat]</value>
   </data>
   <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>[BitcoinAmountFloat] microbitcoin ("bits") sese je fifi ran se si adiresi Bitcoin Cash re ([BitcoinAddress]) lati odo [OrganizationName] fun awon idi won yii:
+    <value>[BitcoinAmountFloat] microbitcoin ("bits") sese je fifiranse si adireesi Bitcoin Cash re ([BitcoinAddress]) nipase [OrganizationName] fun awọn wonyii:
 
 [EmbeddedPreformattedText]
 
-O ye ki o ti ri owo naa ninu apo owo re, o de ma wa fun lilo laarin wakati kan (deede ijerisi mefa).</value>
+O yẹ ki o ti ri idunadura naa ninu apo owo re ati pe o yẹ ki o wa fun nina laarin wakati kan (ijerisi deedee mefa).</value>
   </data>
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Awon owo ti o je sisan fun e: [CurrencyCode] [AmountFloat]</value>
+    <value>[[OrganizationName]] Awọn owo ti won san fun e: [CurrencyCode] [AmountFloat]</value>
   </data>
   <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
-    <value>Nigbati ti o ba n gbiyanju lati san owo aladaase lati inu apo owo re, kokoro ikoko ti o lo lati wole ko baramu pelu kokoro ti gbogbo gbo ti a lo lati fi se akojo awon owo ti o se pataki. Eleyi je ohun ti o se pataki gan.</value>
+    <value>Nigbati o ba n gbiyanju owo sisan alaifowoyi lati inu hotwallet, kokoro ikoko ti o lo lati wole ko baramu pelu awon kokoro gbangba ti o lo lati kó awọn owo to wulo jo. Eyi je ipo pataki.</value>
   </data>
   <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - KIAKIA] asise kokoro ikoko Bitcoin; kole sanwo</value>
+    <value>[[OrganizationName] - URGENT] Aṣiṣe kokoro ipamo Bitcoin; ko le san</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
-    <value>Swarmops n gbiyanju lati san awon owo ti [CurrencyCode] [AmountNeededFloat], sugbon [CurrencyCode] [AmountWalletFloat] nikan ni o wa nile ninu apo owo ti Bitcoin Cash. Swarmops ko ri owo san siwaju si ni akoko yii.
+    <value>Swarmops n gbiyanju lati san awon owo ti [CurrencyCode] [AmountNeededFloat], sugbon [CurrencyCode] [AmountWalletFloat] nikan ni o wa nile ninu Bitcoin Cash hotwallet. Swarmops ko ri owo san siwaju si ni akoko yii.
 
-Jowo fi owo sinu apo owo re LESEKESE bi o ti e jepe koni ju iye owo ti o nilo lo - o nilo afikun kekere [AmountMissingMicrocoinsFloat] microbitcoin ("bits") lati le bere si ni lo awon ise apo owo pada.
+Jowo se afikun hotwallet LESEKESE bi o ti le jepe koni ju iye owo ti o nilo lo - o nilo afikun kekere [AmountMissingMicrocoinsFloat] microbitcoin ("bits") lati le bere si ni lo awon ise owo hotwallet pada.
 
-Swarmops a tun bo ma gbiyanju ati pe a si ma si fi awon ikede won yii ranse ni won iba igba ti ko ba ti ni aseyori.</value>
+Swarmops a tun bo ma gbiyanju ati pe a si ma si fi awon iwifuni won yii ranse ni won iba igba ti ko ba ti ni aseyori.</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Bitcoin Cash hotwallet ko to fun awon owo sisan - se afikun lẹsẹkẹsẹ</value>
+  </data>
+  <data name="CashAdvance_Attested_Body" xml:space="preserve">
+    <value>Owo agbaalẹ ti o beere fun pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti jẹ jijẹri nipasẹ ẹniti o ni isuna naa. Yoo wa tẹsiwaju bayi lati sanwo jade fun ọ.</value>
+  </data>
+  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Owo agbaalẹ di jijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
+    <value>Owo agbaalẹ ti o beere fun pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti jẹ aijẹri nipasẹ ẹniti o ni isuna naa. Eyi maa n tọka si awọn irufẹ iṣoro diẹ pẹlu ìbéèrè rẹ.
+
+Ma reti ibaraẹnisọrọ diẹ si lati odo ẹniti o ni isuna naa lati tẹle ọrọ naa.</value>
+  </data>
+  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Owo agbaalẹ di aijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>Owo agbaalẹ rẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat] nipa [RequestPurpose] ti jẹ kikọ. Awọn ọrọ ti isalẹ yi ni a pese gẹgẹbi idi fun kikọ rẹ:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Owo agbaalẹ di kikọ: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>Ibeere ​​rẹ fun owo agbaalẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti ni aami isanjade nipasẹ awọn oniṣiro ajo na.
+
+Eyi tumọ si pe o yẹ ki o ri iye re lori akọọlẹ rẹ laipe.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Owo agbaalẹ di sisan: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] ti beere fun owo agbaalẹ ti [CurrencyCode] [BudgetAmountFloat] fun idi ti [RequestPurpose]. Owo yi jẹ ara ti isuna rẹ, [BudgetName].
+
+Jowo wọle si [InstallationName] ni [ExternalUrl]Financial/AttestCosts lati jẹri tabi kọ.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Owo agbaalẹ di bibeere: [CurrencyCode] [BudgetAmountFloat] - Nilo Ijerisi</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+    <value>Ibéèrè owo agbapada rẹ pelu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti jẹ jijẹri nipasẹ ẹniti o ni isuna naa. Yoo je sisan jade fun ọ nigbati awọn iwe ọja naa ba jẹ otito ti o fẹsẹmulẹ.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ibéèrè owo agbapada di jijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] ti ṣẹda ibeere owo agbapada ti o lodi si isuna [BudgetName] 
+fun iye ti o je [CurrencyCode] [BudgetAmountFloat]. Ibeere naa kan [RequestPurpose]. Iwọ yoo nilo lati jẹrisi ibeere agbapada yii.
+
+Jowo wole si [InstallationName] ni [ExternalUrl]Financial/AttestCosts lati jẹri tabi kọ.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Ibeere owo Agbapada di Siṣẹda: [CurrencyCode] [BudgetAmountFloat] - Nilo Ijerisi</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
+    <value>Ibeere owo agbapada re pelu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti je aijeri nipase eniti o ni isuna naa. Eyi maa n tọka si awọn irufẹ iṣoro diẹ pẹlu ìbéèrè agbapada rẹ.
+
+Ma reti ibaraẹnisọrọ diẹ si lati odo ẹniti o ni isuna naa lati tẹle ọrọ naa.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ibéèrè Owo agbapada di aijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>Ibeere owo agbapada rẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat] nipa [RequestPurpose] ti jẹ kikọ. Awọn ọrọ ti isalẹ yi ni a pese gẹgẹbi idi fun kikọ rẹ:
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ibeere Owo Agbapada di KIKỌ: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
+    <value>Awon iwe ọja fun ibeere owo agbapada re pelu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti je aifọwọsi nipasẹ awọn oluṣọ akosile owo ti ajo naa. Eyi maa n tọka si awọn irufẹ iṣoro diẹ pẹlu awọn akọsilẹ ìbéèrè owo agbapada rẹ.
+
+Ma reti ibaraẹnisọrọ diẹ si lati tẹle ọrọ naa. Ti o ko ba gbọ lati odo awọn oluṣọ akosilẹ ni igba diẹ lori ọrọ yii, ma ṣe atẹle pẹlu wọn.</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Iwe oja Ibéèrè owo agbapada di aijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>Ibeere owo agbapada ​​rẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti ni aami isanjade nipasẹ awọn oniṣiro ajo na.
+
+Eyi tumọ si pe o yẹ ki o ri iye re lori akọọlẹ rẹ laipe.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ibéèrè owo agbapada di sisan: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>Awon iwe oja fun ibeere owo agbapada re pelu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti di jijerisi nipasẹ awọn eniyan ti o wa fun fifi awon akosile naa pamo.
+
+A yoo san owo naa jade fun ọ nigbati iye naa ba ti je jijẹri si nipasẹ eniti o ni isuna.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Iwe oja Ibéèrè Owo Agbapada di Jijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Iwe iye-owo ọja lati [Supplier], nipa [Description], ti di gbigbe dide ni ilodi si isuna rẹ ti [BudgetName] fun iye ti [CurrencyCode] [BudgetAmountFloat]. O gbọdọ jẹri Iwe iye-owo ọja yii ṣaaju ki o to lọ si owo sisan jade.
+
+ Jowo wole si [InstallationName] ni [ExternalUrl]Financial/AttestCosts lati jẹri tabi kọ.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Iwe iye-owo ọja di gbigbe dide: [CurrencyCode] [BudgetAmountFloat] - Nilo Ijerisi</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>[Regular] tuntun kan je fi fikun pẹlu afọwọyi [OrganizationName] laarin agbegbe rẹ kan.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Tuntun [Regular]: [PersonName], [PersonGeography] [CountryCode] (afowoyi)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>[Regular] tuntun kan ti forukọsilẹ fun [OrganizationName] laarin agbegbe rẹ kan.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Tuntun [Regular]: [PersonName], [PersonGeography] [CountryCode]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [Regularship] sọdọtun: [PersonName], [PersonGeography] [CountryCode] (afowoyi)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+Meeli yii je fifiranṣẹ si [Addressee] lati [OrganizationName]. Ti o ko ba fẹ lati gba awọn iwifunni wọnyi ni ojo iwaju, Jowo wọle si [InstallationName] ni [ExternalUrl] ki o si ṣe atunṣe awọn eto iwifunni rẹ.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Ifiranṣẹ rẹ ti wa ni ori ila fun ifijiṣẹ ti awọn olugba naa si ti je yiyanju. Meeli re ma je fifranse si, tabi se igbiyanju lati firanse si, [RecipientCount] awon eniyan ni [GeographyName] ni [OrganizationName].</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Awọn olugba ibaraẹnisọrọ ti ipinnu fun [GeographyName]: [RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>Ifiranse re si [GeographyName] ti je fifiranse si gbogbo awon olugba ti a seto. Lati inu [RecipientCount] awọn olugba ti a gbero, [RecipientsSuccess] je aṣeyọri niwọn bi a ti le sọ -- ranti pe meeli le je aifijise tabi alaijekika nigba miran fun awon idi die.
+
+Aago ti o lo lori ipinnu: [ResolvingTime].
+Aago ti o lo lori gbigbe lo: [TransmissionTime].
+Apapo akoko lati isẹda ibaraẹnisọrọ de ipari: [TotalTime].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Awọn ibaraẹnisọrọ ti o je gbigbe lo: [GeographyName]</value>
+  </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>Eniyan tuntun kan ti forukọsilẹ gegebi [RegularTitle] ni [OrganizationName]! [ConcernedPersonName] o ngbe ni [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Tuntun [RegularTitle]: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Ẹnikan, boya julọ iwo, beere fun atunto ọrọ igbaniwọle ti o ni ṣe pẹlu adirẹsi imeeli yii ni [InstallationName]. Sibẹsibẹ, ifọwọsi ifosiwewe-meji ti di mimu ṣiṣẹ fun akoole yii fun aabo ti o ga sii. Nitorina, ọrọ igbaniwọle naa KO ṣe se atunṣe si nipasẹ awọn ọna ti o rọrun.
+
+Jowo kan si alakoso eniyan kan ni [InstallationName] lati yanju isoro rẹ ati lati fun o ni oro igbaniwole tuntun titẹle ilana idanimọ ti o nira die sii ti o ni ibamu si ipele aabo ifosiwewe-meji.
+
+O ṣeun fun oye re.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Kolese Atunse Oro igbaniwole</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>Oro igbaniwole [InstallationName] re sese je yiyipada ni [ExternalUrl].
+
+Ti o ko ba ṣe ayipada ọrọ igbaniwọle yii, isise aabo kan ti waye. Ti eyi ba jẹ be, 
+jọwọ tii akoole rẹ pa LESEKESE nipa tite itọkasi yii:
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+Ti o ba fọwọsi titiipa lori itọkasi loke, eyikeyi awọn isele to wa tẹlẹ yoo dopin lẹsẹkẹsẹ, awọn iwole pẹlu ọrọ igbaniwọle tuntun ti o ṣẹṣẹ ṣeto yoo wa ni titiipa, ati pe awọn alakoso yoo kan si ọ lati se amọdaju ohun ti o ṣẹlẹ ti won yo si ṣiṣẹ pẹlu rẹ lati jeki àkọọlẹ rẹ tun bere ise.
+
+Sibẹsibẹ, ti o ba jẹ iwo gangan ni o yi ọrọ igbaniwọle pada laipe yii, ti o mu ki iwifuni yii fi je fifiranse wa, o han gbangba pe ohun gbogbo n lo deedee ati gẹgẹbi o yẹ ki o jẹ. Maa se lo.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Oro igbaniwole di ayipada</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>Awon eniyan ni [OrganizationName] ti pese tikẹti atunse ọrọ igbaniwọle si akoole rẹ, o ṣeeṣe pe ni ibere rẹ. Tikẹti yii wulo fun wakati 24 ti o n bo.
+
+Jowo tẹle itọkasi yii lati se atunse ọrọ igbaniwọle rẹ ati ki o tun se mimu sise ifọwọsi ifosiwewe-meji, ti o ba ti n ṣiṣẹ tẹlẹ:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Tikẹti yii yoo pari ni wakati 24. Ti o ko ba se atunse ọrọ igbaniwọle rẹ ni aarin akoko yii, o ma nilo lati kan si awọn alakoso ni [OrganizationName] lati pese tiketi atunse oro igbaniwole tuntun.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Tikẹti Atunse Ọrọ igbaniwọle</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Ẹnikan, o ṣeese ko je iwo, beere fun atunse ọrọ igbaniwọle ti o ni nkan ṣe pẹlu adirẹẹsi imeeli yii ni [InstallationName]. Ti o ba jẹ iwo ni eyi, jọwọ tẹle itọkasi ti isalẹ ni aarin iṣẹju 60 lati pari ilana atunṣe ọrọ igbaniwọle:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Ti o ko ba beere fun atunse ọrọ igbaniwọle, o le (ati pe o yẹ) ma bikita si meeli yi. Ibeere atunṣe naa yoo pari ni wakati kan. (Ti o ba n gba opolopo nọmba iru awon itọkasi atunse oro igbaniwole wọnyi ti iwọ ko bèrè, jowo fi to alakoso leti.)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Tikẹti Atunse Ọrọ igbaniwọle</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>Awon iwe ọja ti di gbigbe dide ti o nilo ifọwọsi fun awọn ilana iṣowo wọn lati tẹsiwaju.
+
+Jowo wọle si [InstallationName] ni [ExternalUrl]Financial/ValidateReceipts lati fọwọsi tabi kọ wọn.</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Awon iwe ọja di gbigbe dide - Nilo Ifọwọsi</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>Isanjade owo iṣẹ re fun [RequestPurpose] je ifagile. Ko ni je sisan jade.
+
+Ti eyi ba wa bi iyalenu fun ọ, jọwọ kan si ajo ati/tabi alabojuto re ni kiakia. Awọn wọnyi ti a pese gegebi idi:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Owo ise sisanjade di kiko: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>Eyi ni alaye isọniṣoki owo ise re fun [LastYear]. Ko kin ṣe alaye owo ise tuntun, ṣugbọn alaye ti awọn owo ise oṣooṣu ti o je sisan fun ọ ni gbogbo ọdun to koja ati pẹlu eyikeyi owo ori ti o je yiyọkuro. Ise ti alaye yii ni lati ṣiṣẹ bi data fun awon akoole re ati/tabi fun awon ikede owo ori fun odun to koja.
+
+Apapọ owo ise fun [LastYear]:  [CurrencyCode]  [GrossSalaryTotal]
+Owo ori to je yiyokuro: [CurrencyCode] [TaxDeductedTotal]	
+Ojulowo owo ise ti o je sisanjade:    [CurrencyCode]  [NetSalaryTotal]
+
+
+Osu       Apapo    Ayokuro          Ojulowo  jesisan lilo
+-----  ----------  -----------  ----------  -----------
+[EmbeddedPreformattedText]
+
+TOTAL  [GrossSalaryTotal]  [TaxDeductedTotal]  [NetSalaryTotal]
+
+
+Ni afikun, [CurrencyCode] [TaxAdditiveTotalUnpadded] ti je sisan ni owo ori nipase ajo fun iṣẹ rẹ, ni afikun si iye ti o dinku loke. Eyi naa tun jẹ owo ori lori owo ise rẹ, paapa ti o ba jẹ pe irufẹ rẹ bi ti bee ti je fifipamo pelu ase.</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Alaye isonisoki owo ise fun [LastYear]</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>Swarmops Backend [SwarmopsVersion] lori agbalejo [HostName] ti se aseyori isagbega schema ibi ipamo data Swarmops si atunyewo [DbVersion].
+
+Eyi wa fun alaye nikan. O ko nilo lati gbe igbese.</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>Ibi ipamo data Swarmops di gbigbega</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>Swarmops Backend [SwarmopsVersion] lori Agbalejo [Hostname] ti KUNA ninu sisagbega ibi ipamo data Swarmops. Eyi maa n ri bẹ nitori aṣiṣe ranpe netiwoki ita gbangba, ti o nfa ki igbapada faili atunse kuna.
+
+A wa ni atunyewo schema ibi ipamo data lọwọlọwọ [DbVersion], ṣugbọn a n gbiyanju lati sagbega si [DbVersionExpected].
+
+Isagbega naa yoo ma je gbigbiyanju ni gbogbo wakati. Diẹ ninu awọn iṣẹ-ṣiṣe le ma sise titi di igba ti isagbega ibi ipamo data naa yoo fi pari. Ti o ba fẹ lati se iwadi awọn iṣoro naa pẹlu ọwọ re, awon apejọ isagbega ibiipamo data ma n je ti gbigba lati packages.swarmops.com, ibi kanna ti apt-get ti ma n gba awon apejo software re.</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>Ibi ipamo data Swarmops gbigbega KUNA</value>
+  </data>
+  <data name="System_Exception_Body" xml:space="preserve">
+    <value>Aṣiṣe kan ti a ko fi sori agbekalẹ ti waye lori Swarmops:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="System_Exception_Subject" xml:space="preserve">
+    <value>Swarmops EXCEPTION!</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>Eyi jẹ meeli ayewo ti Swarmops fi ranṣẹ [SwarmopsVersion] nṣiṣẹ lori [HostName]. O sese se ayipada eto isakoso meeli. Lati se idaniloju pe awọn eto tuntun peye, Swarmops ma n fi ifiranse ayewo yi ranse ti o ma n je fifiranṣẹ lati back end.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Ayewo Iṣakoso Meeli Swarmops</value>
+  </data>
+  <data name="System_PublicRootReset_Body" xml:space="preserve">
+    <value>Kokoro ipile gbangba ti Bitcoin ninu ibi ipamo data Mysql ko wa ni ibamu fun kokoro ipile ipamo Bitcoin ti owa ni ipamọ ninu/ati beebee lo/swarmops ni [HostName]. Eyi jẹ ipo pataki kan, ati pe ko yẹ ki o lailai ṣẹlẹ, nitorina kokoro ipile gbangba je atungba lati ibi kokoro ipamo naa ati atunkọ si ibi ipamo data lori ohun ti o wa nibẹ tele.</value>
+  </data>
+  <data name="System_PublicRootReset_Subject" xml:space="preserve">
+    <value>Swarmops: Atunse kokoro ipile gbangba Hotwallet</value>
+  </data>
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>Eya Swarmops Backend [SwarmopsVersion] lori agbalejo [HostName] ti bẹrẹ ni aseyori ati pe o ti sopo mo ibi ipile data ati awon ilana iwifuni.</value>
+  </data>
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>Swarmops Backend nsiṣẹ</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>Eya isakoso Swarmops Frontend socket [SwarmopsVersion] lori agbalejo [HostName] ti bẹrẹ ni aseyori ati pe o ti sopo mo ibi ipile data ati awon ilana iwifuni.</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>Swarmops Frontend nsiṣẹ</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
+    <value>Erọ olugbelo Swarmops lori [HostName] ti ṣe alabapade iru payload aimo ([UnrecognizedPayloadType]). Eyi yẹ ki o ṣẹlẹ ni awon igba ti ko wopo nikan ni apapo pẹlu awọn iṣagbega nibiti eya ti o ni igbega ni lati ṣe abojuto ohun kan ti o yi awọn orukọ pada ninu ilana naa, ara kan ti ko wopo.
+
+Ti aṣiṣe yi ba si nwaye, o le je wipe o ti fi plugin kan sori ero re lona aida tabi ohun kan ti o sumo. Bosewu ko ri, ifiranṣẹ ti a ko mọ naa ti je sisọnu ati pe koni je gbigbe lo, niwon ti Swarmops ko mọ atise re.</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
+    <value>Swarmops: Payload ibaraẹnisọrọ ti a ko mo</value>
+  </data>
 </root>

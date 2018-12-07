@@ -810,17 +810,7 @@
   <data name="Master_BitIdRegister_Header" xml:space="preserve">
     <value>BitID'yi etkinleştirmek için bu kodu okutun</value>
   </data>
-  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
-    <value>&lt;h3&gt;Bu nedir?&lt;/h3&gt;
-                &lt;p&gt;BitID, güvenli bir şekilde oturum açmanın şifre girmekten daha az zahmetli bir yoludur. Kolaylığı anlatılamaz, sadece deneyimlenebilir ve telefonunuzu kullandığı için bir iki aşamalı doğrulama yöntemidir.&lt;/p&gt;
-                &lt;h3&gt;Bu benim telefonumun da korunuyor olmasını gerektirmez mi?&lt;/h3&gt;
-                &lt;p&gt;Yani, evet. Bu sizin telefonunuz ve sizin telefonunuzun erişim koruması. Fakat, telefonunuzun her zaman erişim koruması olmalıdır.&lt;/p&gt;
-                &lt;h3&gt;Bunun için bir uygulamaya ihtiyacım var mı?&lt;/h3&gt;
-                &lt;p&gt;Belki. Bazı mobil bitcoin cüzdanları BitID'yi kurulumda içlerinde barındırır. En yaygın olanı barındırmıyor. Eğer sizinki de barındırmıyorsa, "BitID Authenticator" isimli bir uygulama arayın veya buna benzer bir uygulama.&lt;/p&gt;
-                &lt;h3&gt;BitID'yi nasıl etkinleştiririm?&lt;/h3&gt;
-                &lt;p&gt;Bu kodu okutmak için telefon uygulamasını kullanmanız yeterli. Sonrasında, benzer bir kod okutarak sisteme giriş yapabilirsiniz&lt;/p&gt;</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
-  </data>
+  
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>BitID (bitcoin imzası) iki aşamalı doğrulama</value>
   </data>
@@ -936,6 +926,7 @@
     <value>(iptal edildi, hükümsüz kılındı, sıfırlandı)</value>
     <comment>Used when something is determined invalid</comment>
   </data>
+  
   
   
   

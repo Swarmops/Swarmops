@@ -825,17 +825,7 @@
   <data name="Master_BitIdRegister_Header" xml:space="preserve">
     <value>قم بمسح هذا الكود لتفعيل BitID</value>
   </data>
-  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
-    <value>&lt;h3&gt;ما هذا ؟&lt;/h3&gt;
-                &lt;p&gt;يمكّنك BitID من تسجيل الدخول بأمان و بدون عناء إدخال كلمة السر. يصعب علينا وصف مدى سهولته, حتى تقوم باختباره, فهو عبارة عن مصادقة ذات عاملين(2fa) لأنه يقوم باستعمال هاتفك المحمول.&lt;/p&gt;
-                &lt;h3&gt;ألا يتطلب هذا أن يكون هاتفي محمي أيضا؟&lt;/h3&gt;
-                &lt;p&gt;نعم, بالنسبة لهاتفك و حماية الولوج إلى هاتفك. لكن الولوج إلى هاتفك يجب أن يضل دائما محمي.&lt;/p&gt;
-                &lt;h3&gt;هل أنا في حاجة لأي تطبيق من أجل هذا؟&lt;/h3&gt;
-                &lt;p&gt;ربما. بعض الهواتف التي تحتوي على محافظ البتكوين تتوفر بالفعل على BitID. لكن أغلب الهواتف لا تتوفر على ذلك. إن لم يكن هاتفك يحتوي عليها, قم بالبحث عن تطبيق يدعى “BitID Authenticator“ أو تطبيق مماثل.&lt;/p&gt;
-                &lt;h3&gt;كيف أقوم بتفعيل BitID؟&lt;/h3&gt;
-                &lt;p&gt;فقط قم باستعمال التطبيق على هاتفك و قم بمسح هذا الكود. بعد ذلك, يمكنك مسح كود مشابه للولوج إلى النظام.&lt;/p&gt;</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
-  </data>
+  
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>المصادقة ذات عاملين لـ BitID (توقيع البتكوين)</value>
   </data>
@@ -988,4 +978,5 @@
   <data name="Global_EnteringSandbox" xml:space="preserve">
     <value>لقد قمت بالتو بالدخول لـ&lt;strong&gt;منظمة الـ sandbox.&lt;br/&gt;&lt;br/&gt; هذا محيط أمن من خلاله يمكنك تجربة جميع خواص الـ Swarmops من دون إلحاق أي ضرر لبيانات الإنتاج. قم بالإستمتاع كما شئت، وقم بالرجوع إلى محيط الإنتاج الخاص بك عندما تنتهي من التجارب.</value>
   </data>
+  
 </root>

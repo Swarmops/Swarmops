@@ -118,52 +118,54 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AspirantAddWelcome_Body" xml:space="preserve">
-    <value>Ẹ kú àbọ̀ gegebi [Aspirant] si [OrganizationName]!
+    <value>Kaabọ gegebi [Aspirant] si [OrganizationName]!
 
-E n waye fun [Regularship] ni [OrganizationName], lo fi jeka ran se si yin lori eto iranse, gege bi lodo [Aspirant]. Ti [Aspirantship] yin o ni pari laifọwọyi, sibe e ma damu arayin pupo lati ran iranse pada.
+O ti beere fun [Regularship] kan ni [OrganizationName], nitorina lo fi n gba meeli yi gegebi [Aspirant] aigbafẹ. [Aspirantship] re ko le pari laifọwọyi, nitorina kosi ikanju lati fesi si meeli yi.
 
-ọrọigbaniwọle yin ti a fi bere ati ti laileto si Swarmops, eyi software ti won si fi n se back-end system, le leeyi:
+Oro igbaniwọle re ti iṣaju ati onigbekale alaileto si Swarmops, software eyi ti a lo gẹgẹbi ilana back-end, ni awon wonyi:
 [RandomPassword]
 
-O ye ke wọle lori site wa kesi se ayipada ọrọigbaniwọle yin si n kan to ni oluso gegebi e se fe kia kia. E ti le se ti e ba wọle lori site wa ni [ExternalUrl] , E si wa te eyi "User" icon to wa ni igun oke apa ọtun, e si wa yan Security tab (eyi to ni padlock), e wa te ibùgbé ọrọigbaniwọle yin si inu re, e wa kọ eyi tun tun naa. O ye ke fi ironu naa si eyi ti two-factor authentication, bi ti asa to dara.
+O yẹ ki o wọle si ki o yi ọrọ igbaniwọle yii pada si nkan ti o ni aabo to gbopon sii ti ipinnu ara rẹ ni kete bi o ti ṣeeṣe. O ṣe eyi nipa wiwole ni [ExternalUrl] , ati ki o si tẹ aami "Olumulo" ti o wa ni igun oke apa ọtun, yiyan taabu aabo (eleyi ti o ni agadagodo), titẹ ọrọ igbaniwọle onigbadie yii, ati lehinna ko tuntun ti ara re. O yẹ ki o tun ro mimu sise ifọwọsi ifosiwewe-meji, gege bi iṣe ti o dara.
 
-Ẹ kú àbọ̀ gegebi [Aspirant] a de ni igbago wi pe a ma ri yin bi ti [Regular] lai pe lai jina!</value>
+Kaabo gegebi [Aspirant] a de ni ireti lati ri ọ bi [Regular] laipe!</value>
   </data>
   <data name="AspirantAddWelcome_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Ẹ kú àbọ̀ gegebi [Aspirant] si [OrganizationName]!</value>
+    <value>[[OrganizationName]] Kaabo gegebi [Aspirant] si [OrganizationName]!</value>
   </data>
   <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
-    <value>Ẹ kú àbọ̀ si [OrganizationName]!
+    <value>Kaabo si [OrganizationName]!
 
-A ti pese fun yin eyi ti [Regularship] lati odo [ActingPerson]. O ma pari ni [MembershipExpiry], sibe aaye si po dadaa ti e fi ma se ojulumọ agbari wa.
+A ti fun ọ ni [Regularship] nipasẹ [ActingPerson]. O ma pari ni [MembershipExpiry], nitorina opolopo akoko wa lati ni ifaramo pẹlu ajo naa.
 
-O ye ki e ti gbo lati odo awon olubasọrọ wa ni [OrganizationName] fun alaye bi e se ma ti nṣiṣe lọwọ. Ti o ba n se be, ke si ma duro de ikowe lai pe lai jina.
+O yẹ ki won ti kan si i ẹ tẹlẹ nipasẹ awọn eniyan lati [OrganizationName] fun alaye diẹ sii lori bi o ṣe le ṣiṣẹ. Bi be ko, ma reti iwe laipe. 
 
-ọrọigbaniwọle yin ti a fi bere ati ti laileto si Swarmops, eyi software ti won si fi n se back-end system, le leeyi:
+Oro igbaniwọle re ti iṣaju ati onigbekale alaileto si Swarmops, software eyi ti a lo gẹgẹbi ilana back-end, ni awon wonyi:
 [RandomPassword]
 
-O ye ke wọle lori site wa kesi se ayipada ọrọigbaniwọle yin si n kan to ni oluso gegebi e se fe kia kia. E ti le se ti e ba wọle lori site wa ni [ExternalUrl] , E si wa te eyi "User" icon to wa ni igun oke apa ọtun, e si wa yan Security tab (eyi to ni padlock), e wa te ibùgbé ọrọigbaniwọle yin si inu re, e wa kọ eyi tun tun naa. O ye ke fi ironu naa si eyi ti two-factor authentication, bi ti asa to dara
+O yẹ ki o wọle si ki o yi ọrọ igbaniwọle yii pada si nkan ti o ni aabo to gbopon sii ti ipinnu ara rẹ ni kete bi o ti ṣeeṣe. O ṣe eyi nipa wiwole ni [ExternalUrl] , ati ki o si tẹ aami "Olumulo" ti o wa ni igun oke apa ọtun, yiyan taabu aabo (eleyi ti o ni agadagodo), titẹ ọrọ igbaniwọle onigbadie yii, ati lehinna ko tuntun ti ara re. O yẹ ki o tun ro mimu sise ifọwọsi ifosiwewe-meji, gege bi iṣe ti o dara.
 
- Ẹ kú àbọ̀!</value>
+
+ Kaabo si eto!</value>
   </data>
   <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
-    <value>E kaabo si [OrganizationName]!
+    <value>Kaabo si [OrganizationName]!
 
-A ti fun o ni [Regularship] lati odo [ActingPerson]. Koni pato igba tabi akoko ti o ma pari, fun idi eyi o nilo lati gbe igbese pelu ikanju.
+A ti fun o ni [Regularship] lati odo [ActingPerson]. Koni pato igba tabi akoko ti o ma pari laifowoyi, nitorina kosi ikanju lati gbe igbese.
 
-Ni bayii o ye ki awon eniyan wa ti kan e lara lati [OrganizationName] fun alaye si lori bi o se le sise. Ti koba jebe, ma reti ifiranse laipe.
+O yẹ ki won ti kan si i ẹ tẹlẹ nipasẹ awọn eniyan lati [OrganizationName] fun alaye diẹ sii lori bi o ṣe le ṣiṣẹ. Bi be ko, ma reti iwe laipe. 
 
-Oro igbaniwole re titele ati alaileto si Swarmops, eyi ni software ti a lo gegebi back-end system, le leyii:
+Oro igbaniwọle re ti iṣaju ati onigbekale alaileto si Swarmops, software eyi ti a lo gẹgẹbi ilana back-end, ni awon wonyi:
 [RandomPassword]
 
-O ye ki o wole si ori site wa ki o si se ayipada oroigbaniwole yi si eleyii ti aabo re tun bo gbopon ti o je eyi ti o nifesi ni kiakia. O le se eleyi nipa lilo si [ExternalUrl] , tesiwaju nipa tite aami "User" ti o wa ni oke igun apa otun, yiyan taabu Aabo (eleyi ti o ni agadagodo), tite oro igbaniwole igba die, leyin na ko tuntun. O ye ki o ro nipa latin se amulo ifasesi olonameji, gegebi asa ti o dara.
+O yẹ ki o wọle si ki o yi ọrọ igbaniwọle yii pada si nkan ti o ni aabo to gbopon sii ti ipinnu ara rẹ ni kete bi o ti ṣeeṣe. O ṣe eyi nipa wiwole ni [ExternalUrl] , ati ki o si tẹ aami "Olumulo" ti o wa ni igun oke apa ọtun, yiyan taabu aabo (eleyi ti o ni agadagodo), titẹ ọrọ igbaniwọle onigbadie yii, ati lehinna ko tuntun ti ara re. O yẹ ki o tun ro mimu sise ifọwọsi ifosiwewe-meji, gege bi iṣe ti o dara.
 
-E kaabo!</value>
+
+ Kaabo si eto!</value>
   </data>
   <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] E kaabo si [OrganizationName]!</value>
+    <value>[[OrganizationName]] Kaabo si [OrganizationName]!</value>
   </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Ẹ kú àbọ̀ si [OrganizationName]!</value>
+    <value>[[OrganizationName]] Kaabo si [OrganizationName]!</value>
   </data>
 </root>

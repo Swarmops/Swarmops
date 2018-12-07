@@ -171,10 +171,6 @@
   
   
   
-  
-  
-  
-  
   <data name="UploadBankFiles_FileImportedHeader" xml:space="preserve">
     <value>Файл успешно импортирован</value>
     <comment>Displayed as header after successful processing</comment>
@@ -416,9 +412,7 @@
   
   
   
-  <data name="ViewVatReports_Info" xml:space="preserve">
-    <value>Вы просматриваете отчет по НДС. Входящий и исходящий НДС, а также общий оборот были зарегистрированы за отчетный период. Данный отчет готов к передаче в налоговые органы.</value>
-  </data>
+  
   
   
   
@@ -430,6 +424,22 @@
   <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
     <value>Описание проводки не может быть пустым.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

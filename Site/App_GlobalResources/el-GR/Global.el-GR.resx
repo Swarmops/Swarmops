@@ -135,10 +135,18 @@
     <value>Πίνακας Ελέγχου</value>
     <comment>Title of default page</comment>
   </data>
-  
-  
-  
-  
+  <data name="Financial_Actuals" xml:space="preserve">
+    <value>Πραγματικά Στοιχεία</value>
+  </data>
+  <data name="Financial_ActualsPreliminary" xml:space="preserve">
+    <value>Πραγματικά Στοιχεία (προκαταρκτικά)</value>
+  </data>
+  <data name="Financial_ActualsToDate" xml:space="preserve">
+    <value>Πραγματικά Στοιχεία YTD</value>
+  </data>
+  <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
+    <value>Λογαριασμός Λογιστή</value>
+  </data>
   <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
     <value>Λογαριασμός</value>
   </data>
@@ -149,7 +157,7 @@
     <value>Προκαταβολή</value>
   </data>
   <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
-    <value>Προκαταβολές μετρητών #{0}</value>
+    <value>Προκαταβολή μετρητών #{0}</value>
   </data>
   <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
     <value>Προκαταβολές μετρητών {0}</value>
@@ -157,8 +165,12 @@
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>Έξοδο</value>
   </data>
-  
-  
+  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
+    <value>Έξοδο #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
+    <value>Έξοδα {0}</value>
+  </data>
   <data name="Financial_InvoiceInbound" xml:space="preserve">
     <value>Τιμολόγιο</value>
   </data>
@@ -166,31 +178,60 @@
     <value>Τιμολόγιο</value>
   </data>
   <data name="Financial_Parley" xml:space="preserve">
-    <value>Συνδιάσκεψη</value>
+    <value>Συνέδριο</value>
   </data>
-  
-  
-  
-  
-  
-  
+  <data name="Financial_Salary" xml:space="preserve">
+    <value>Μισθοδοσία</value>
+  </data>
+  <data name="Financial_SalarySpecification" xml:space="preserve">
+    <value>Μισθοδοσία για το μήνα {0:yyyy-MMM}</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_TaxesSpecification" xml:space="preserve">
+    <value>Φόρος μισθοδοσιών {0}</value>
+  </data>
+  <data name="Financial_TaxSpecification" xml:space="preserve">
+    <value>Φόρος μισθοδοσίας #{0}</value>
+  </data>
+  <data name="Financial_TheTaxMan" xml:space="preserve">
+    <value>Έφορος</value>
+    <comment>Used as recipient for taxes.</comment>
+  </data>
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>Ετήσια Αποτελέσματα</value>
+  </data>
   <data name="Global_ASAP" xml:space="preserve">
-    <value>ΤΟ ΣΥΝΤΟΜΌΤΕΡΟ ΔΥΝΑΤΌΝ</value>
+    <value>ASAP</value>
     <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
   </data>
   <data name="Global_Cancel" xml:space="preserve">
     <value>Ακύρωση</value>
     <comment>Displayed as cancellation link on changing something</comment>
   </data>
-  
-  
+  <data name="Global_Change" xml:space="preserve">
+    <value>Αλλαγή;</value>
+    <comment>Link after describing what the user is looking at, allowing a change.</comment>
+  </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>Κάντε κλικ για μεγέθυνση.</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
   <data name="Global_Confirm" xml:space="preserve">
     <value>Επιβεβαίωση</value>
     <comment>Displayed as confirmation link on changing something</comment>
   </data>
-  
-  
-  
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>-- Επιλέξτε Προϋπολογισμό/Λογαριασμό --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>-- Επιλέξτε Οργανισμό --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>Μεταφορά...</value>
+    <comment>Link after describing something.</comment>
+  </data>
   <data name="Global_NoOwner" xml:space="preserve">
     <value>Κανείς</value>
     <comment>Displayed when an account/position etc is vacant</comment>
@@ -198,61 +239,164 @@
   <data name="Global_Owner" xml:space="preserve">
     <value>Ιδιοκτήτης</value>
   </data>
-  
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>Επεξεργασία αρχείου...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
+  </data>
   <data name="Global_UploadFile" xml:space="preserve">
     <value>Φόρτωση αρχείου</value>
     <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
-  
-  
-  
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Φορτώστε Αρχείο στο Swarmops</value>
+    <comment>Used as header above upload sections.</comment>
+  </data>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>Παρακαλούμε επιλέξτε ένα αρχείο για να φορτώσετε.</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
+  </data>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>Έχετε συνδεθεί στον οργανισμό &lt;strong&gt;{0}&lt;/strong&gt;. Θα θέλατε να αλλάξετε σε κάποιον άλλο οργανισμό;</value>
+  </data>
   <data name="Sidebar_Actions" xml:space="preserve">
-    <value>Δράσεις</value>
+    <value>Ενέργειες</value>
     <comment>List of shortcuts to likely actions</comment>
   </data>
-  
-  
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>Δεν υπάρχουν προτεινόμενες ενέργειες σε αυτό το σημείο.</value>
+    <comment>No shortcuts from this page right now.</comment>
+  </data>
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>Πληροφορίες</value>
+    <comment>Information about current page</comment>
+  </data>
   <data name="Sidebar_Todo" xml:space="preserve">
     <value>Να γίνουν</value>
     <comment>List of todo items</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>&lt;strong&gt;Όλα ok:&lt;/strong&gt; Δεν υπάρχουν επείγοντα στοιχεία. Τέλεια!</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
+  </data>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>Εδώ μεταφέρονται τα στοιχεία ενεργειών.</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
+  </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>Προκαταβολές</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>Προκαταβολές μετρητών</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>Έξοδα</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>Διεκδικήσεις Δαπανών</value>
+  </data>
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>Τιμολόγια</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>Εισερχόμενα Τιμολόγια</value>
+  </data>
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>Τιμολόγια</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>Εξερχόμενα Τιμολόγια</value>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>Μ/Ε</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>Μη Εφαρμόσιμο</value>
+  </data>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>Από αυτή τη στιγμή</value>
+  </data>
+  <data name="Global_Today" xml:space="preserve">
+    <value>Σήμερα</value>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
+    <value>Είδος Εξόδων</value>
+    <comment>Second-dimension bookkeeping</comment>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
+    <value>Έργο</value>
+    <comment>Tagging costs/income to projects</comment>
+  </data>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>Σχετικά</value>
+    <comment>List of shortcuts to related actions to current one</comment>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>Έξοδο #{0:N0} (μείον προκαταβολή #{1:N0})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>Έξοδο #{0:N0} (μείον προκαταβολές)</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>Έξοδα {0} (μείον προκαταβολή #{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>Έξοδα {0} (μείον προκαταβολές)</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>Διεκδίκηση Εξόδων #{0:N0} από {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>Εισερχόμενο Τιμολόγιο #{0:N0} από {1}</value>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>Εικόνα Απόδειξης {0} από {1}</value>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>Εικόνα {0} από {1}</value>
+  </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>Προθεσμία</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>Προμηθευτής</value>
+  </data>
+  <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
+    <value>Αγγλικά (ΗΠΑ)</value>
+    <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>Όχι</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Ναι</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>Στοιχεία</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>Δαπάνες</value>
+  </data>
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>Οφειλές</value>
+  </data>
+  <data name="Financial_Income" xml:space="preserve">
+    <value>Έσοδα</value>
+  </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>--Επιλέξτε ένα--</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_Missing" xml:space="preserve">
+    <value>- απουσιάζει -</value>
+    <comment>When a record or similar is missing. Used in grids.</comment>
+  </data>
+  <data name="Global_Multiple" xml:space="preserve">
+    <value>- πολλαπλά -</value>
+    <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
   <data name="Global_Off" xml:space="preserve">
     <value>Ανενεργό</value>
     <comment>Off (as opposed to On)</comment>
@@ -261,171 +405,572 @@
     <value>Ενεργό</value>
     <comment>On (as opposed to Off)</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_Organization_Commercial" xml:space="preserve">
+    <value>Εμπορική Επιχείρηση</value>
+    <comment>A commercial organization (for-profit enterprise)</comment>
+  </data>
+  <data name="Global_Organization_Governmental" xml:space="preserve">
+    <value>Κυβερνητικός Οργανισμός</value>
+    <comment>Organization that's part of government somehow</comment>
+  </data>
+  <data name="Global_Organization_Nonprofit" xml:space="preserve">
+    <value>Μη κερδοσκοπικού χαρακτήρα</value>
+    <comment>Non-profit (activist, political parties)</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>Γεωγραφική Περιοχή</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
+  <data name="Global_Action" xml:space="preserve">
+    <value>Ενέργεια</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>Email</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>Ονοματεπώνυμο</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>Σημειώσεις</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Phone" xml:space="preserve">
+    <value>Τηλέφωνο</value>
+    <comment>Somebody's telephone number. Mobile assumed.</comment>
+  </data>
+  <data name="Global_Custom" xml:space="preserve">
+    <value>Προσαρμογή</value>
+    <comment>As in "show me the advanced options"</comment>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>Δημιουργία</value>
+    <comment>Like "Create Organization"</comment>
+  </data>
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>Ολόκληρο Έτος</value>
+  </data>
+  <data name="Global_Description" xml:space="preserve">
+    <value>Περιγραφή</value>
+    <comment>As a general header of any description field</comment>
+  </data>
+  <data name="Global_Q1" xml:space="preserve">
+    <value>Q1</value>
+    <comment>First quarter of the year</comment>
+  </data>
+  <data name="Global_Q2" xml:space="preserve">
+    <value>Q2</value>
+    <comment>Second quarter of the year</comment>
+  </data>
+  <data name="Global_Q3" xml:space="preserve">
+    <value>Q3</value>
+    <comment>Third quarter of the year</comment>
+  </data>
+  <data name="Global_Q4" xml:space="preserve">
+    <value>Q4</value>
+    <comment>Fourth quarter of the year</comment>
+  </data>
+  <data name="Global_Timestamp" xml:space="preserve">
+    <value>Χρονοσήμανση</value>
+  </data>
+  <data name="Ledgers_Balance" xml:space="preserve">
+    <value>Υπόλοιπο</value>
+    <comment>As in 'account balance', not as in staying upright</comment>
+  </data>
+  <data name="Ledgers_Credit" xml:space="preserve">
+    <value>Πίστωση</value>
+  </data>
+  <data name="Ledgers_Debit" xml:space="preserve">
+    <value>Χρέωση</value>
+  </data>
+  <data name="Global_Organization" xml:space="preserve">
+    <value>Οργανισμός</value>
+  </data>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>Βοήθεια</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>Θήλυ</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>Άρρεν</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_UnknownUndisclosed" xml:space="preserve">
+    <value>Άγνωστο ή Μη κοινοποιημένο</value>
+    <comment>Used for gender et al</comment>
+  </data>
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>ΗΗ/ΜΜ/ΕΕΕΕ</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  </data>
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>ΜΜΜΜ η, εεεε</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>πέντε ετών</value>
+  </data>
+  <data name="Timespan_Forever" xml:space="preserve">
+    <value>εφ' όρου ζωής</value>
+    <comment>Like "a lifetime membership"</comment>
+  </data>
+  <data name="Timespan_OneMonth" xml:space="preserve">
+    <value>ενός μήνα</value>
+  </data>
+  <data name="Timespan_OneYear" xml:space="preserve">
+    <value>ενός έτους</value>
+  </data>
+  <data name="Timespan_TwoYears" xml:space="preserve">
+    <value>δύο ετών</value>
+    <comment>Like "a two-year membership"</comment>
+  </data>
+  <data name="Global_Address" xml:space="preserve">
+    <value>Διεύθυνση</value>
+    <comment>As in physical location</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>Πόλη</value>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>Country</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>Ημερομηνία Γέννησης</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
+  </data>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>Ταχυδρομικός Κώδικας</value>
+  </data>
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>Υπήρξε ένα γενικό, απροσδιόριστο σφάλμα επικοινωνίας με τον εξυπηρετητή Swarmops. Είναι το δίκτυο ακόμα σε λειτουργία και ο εξυπηρετητής διαθέσιμος;</value>
+  </data>
+  <data name="Global_Month" xml:space="preserve">
+    <value>Μήνας</value>
+  </data>
+  <data name="Global_View" xml:space="preserve">
+    <value>Προβολή</value>
+    <comment>As in "inspect"</comment>
+  </data>
+  <data name="Global_Year" xml:space="preserve">
+    <value>Έτος</value>
+  </data>
+  <data name="Global_YearMonth" xml:space="preserve">
+    <value>Έτος/Μήνας</value>
+  </data>
+  <data name="Global_YearX" xml:space="preserve">
+    <value>Έτος {0}</value>
+    <comment>As in "the year X".</comment>
+  </data>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>ορισμός ενεργοποίησης</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Προκαταβολή Μετρητών #{0:N0} για {1}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>Προκαταβολή Μετρητών #{0:N0} Αποπληρωμή</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>Προκαταβολές Μετρητών {0} Αποπληρωμή</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Προκαταβολές μετρητών {0} για {1}</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>Διεκδίκηση Εξόδων #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>Διεκδικήσεις Εξόδων {0} από {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>Εισερχόμενο Τιμολόγιο #{0:N0}</value>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>Σύστημα</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>Μισθοδοσίες {0} για το μήνα {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>Φόρος Μισθοδοσίας για το μήνα {0:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>Μισθοδοσία #{0:N0} για το μήνα {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>Μισθοδοσία #{0:N0} για το μήνα {1:yyyy-MMM} για τον εργαζόμενο {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>Μισθοδοσία #{0:N0}</value>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>Φόροι για Μισθοδοσία #{0:N0} για το μήνα {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>Λογαριασμός</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>Ποσό</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Global_Add" xml:space="preserve">
+    <value>Προσθήκη</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(πολλαπλά)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>-- Πολλαπλή - επιλογή --</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>Επιλογές</value>
+    <comment>For various page-specific checkboxes etc</comment>
+  </data>
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...loading...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(καμία αντιστοιχία)</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>Εκτελείται...</value>
+  </data>
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>Αδυναμία σύνδεσης με WebSocket. Δεν πραγματοποιούνται αυτόματες ανανεώσεις.</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>Το Swarmops δεν καταλαβαίνει το ποσό συναλλάγματος που εισάγατε. (Το ποσό χιλίων νομισμάτων και μηδέν σεντς γράφεται ως εξής "{0:N2}".) Θέλετε να προσπαθήσετε ξανά;</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>Χωρίς συγκεκριμένη αιτιολόγηση.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>Δεν υπάρχουν επείγοντα στοιχεία. Τέλεια!</value>
+  </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>Min / Max</value>
+    <comment>note the spaces</comment>
+  </data>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>Καθορισμένο Άτομο</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>Θέση</value>
+  </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>Φαίνεται ότι ένας άλλος χρήστης σας πρόλαβε σε αυτή τη λειτουργία, η βάση δεδομένων τροποποιήθηκε όσο εσείς κοιτούσατε. Παρακαλούμε ελέγξτε τις αλλαγές στις συνθήκες και επαναλάβετε την προσπάθειά σας.</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>Πληκτρολογήστε ένα όνομα...</value>
+  </data>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>Ένας μήνας</value>
+  </data>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>Ένα έτος</value>
+  </data>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>Έξι μήνες</value>
+  </data>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>Τρεις μήνες</value>
+  </data>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>Δύο μήνες</value>
+  </data>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>Δύο έτη</value>
+  </data>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>Μέχρι τον τερματισμό</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
+  </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>Τερματισμός</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>Επόμενο</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>Προηγούμενο</value>
+  </data>
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>YTD</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>Flags</value>
+    <comment>As in a table column header</comment>
+  </data>
+  <data name="Global_Total" xml:space="preserve">
+    <value>Σύνολο</value>
+    <comment>Used as footer in tables, summarizing something</comment>
+  </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>Αυτό το πεδίο δεν μπορεί να είναι κενό.</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>Παρουσιάστηκε ένα απροσδιόριστο σφάλμα στην προσπάθειά σας να ορίσετε αυτήν την τιμή.</value>
+  </data>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>Twitter ID</value>
+  </data>
+  <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
+    <value>Ταυτοποίηση δύο σημείων BitID (η απενεργοποίηση θέτει το λογαριασμό σε καραντίνα)</value>
+    <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
+  </data>
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>Λογαριασμός</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>Παροχή Ασφαλείας</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>Επαναφορά κωδικού πρόσβασης</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>Αποστολή συνδέσμου επαναφοράς κωδικού πρόσβασης</value>
+  </data>
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>Αυτός δεν είναι έγκυρος αριθμός τηλεφώνου, αλλά θα το αποθηκεύσουμε όπως το γράψατε.</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>Επαναφορά κωδικού πρόσβασης;</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>Πραγματοποιείτε επαναφορά κωδικού χρήστη. Αυτός ο χρήστης θα λάβει ένα σύνδεσμο επαναφοράς με email, τον οποίο θα πρέπει να ακολουθήσει για να επαναφέρει τον κωδικό Swarmops.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Μην κάνετε ποτέ αυτή τη διαδικασία, εκτός και αν σας ζητήθηκε βοήθεια από τον συγκεκριμένο χρήστη.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Συνέχεια με την διαδικασία επαναφοράς κωδικού;</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>Απαγόρευση Επαναφοράς Κωδικού</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>Η διεύθυνση email του χρήστη άλλαξε πρόσφατα (λιγότερο από μία εβδομάδα πριν). Για λόγους ασφαλείας δεν μπορεί και δεν θα σταλεί ένας σύνδεσμος επαναφοράς κωδικού σε μία τόσο πρόσφατα αλλαγμένη διεύθυνση email.</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>Ένας σύνδεσμος επαναφοράς κωδικού στάλθηκε στον χρήστη αυτόν.</value>
+  </data>
+  <data name="Global_2FA" xml:space="preserve">
+    <value>Ταυτοποίηση δύο σημείων</value>
+  </data>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>Ταυτ δύο-σημείων</value>
+  </data>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
+    <value>&lt;strong&gt;ΑΔΥΝΑΤΗ Η ΕΝΕΡΓΟΠΟΙΗΣΗ 2FA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Δεν μπορείτε να ενεργοποιήσετε την ταυτοποίηση δύο σημείων για λογαριασμό τρίτων. Θα πρέπει να το κάνουν μόνοι τους, ώστε να είναι οι μόνοι που έχουν τα κλειδιά τους.</value>
+    <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedOwn" xml:space="preserve">
+    <value>Η ταυτοποίηση δύο σημείων απενεργοποιήθηκε. Θα πρέπει να κάνετε σύνδεση με έναν κανονικό κωδικό.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedProvision" xml:space="preserve">
+    <value>Η ταυτοποίηση δύο σημείων αφαιρέθηκε γι αυτόν τον χρήστη. Θα πρέπει να κάνετε σύνδεση με έναν κανονικό κωδικό.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveOwn" xml:space="preserve">
+    <value>&lt;strong&gt;ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ ΤΑΥΤΟΠΟΙΗΣΗΣ ΔΥΟ ΣΗΜΕΙΩΝ;&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Αυτό δε συνίσταται. Η ταυτοποίηση δύο σημείων αυξάνει σημαντικά την ασφάλεια του λογαριασμού σας, επιπλέον διευκολύνει τη σύνδεσή σας αν χρησιμοποιείτε BitID.&lt;br/&gt;&lt;br/&gt;Κατάργηση 2FA και ενεργοποίηση ταυτοποίησης μόνο μέσω κωδικού;</value>
+    <comment>Displayed when removing 2FA for yourself</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
+    <value>&lt;strong&gt;ΚΑΤΑΡΓΗΣΗ ΤΑΥΤΟΠΟΙΗΣΗΣ ΔΥΟ ΣΗΜΕΙΩΝ;&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Πραγματοποιήστε αυτή την ενέργεια μόνο αν σας ζητήθηκε η κατάργηση 2FA για αυτό το χρήστη, από τον ίδιο το χρήστη, &lt;strong&gt;και&lt;/strong&gt; είστε απόλυτα, αναμφίβολα σίγουροι ότι το αίτημα προήλθε από τον ίδιο χρήστη, για τον οποίο απενεργοποιείτε την ασφάλεια (σύμφωνα με την πολιτική ελέγχου του οργανισμού).&lt;br/&gt;&lt;br/&gt;Συνέχεια με κατάργηση της ασφάλειας αυτού του χρήστη; Αυτό σημαίνει ότι η ασφάλεια θα επανέλθει σε επίπεδο χρήσης του κωδικού πρόσβασης.</value>
+    <comment>Displayed when removing 2FA for someone else</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
+    <value>Η ταυτοποίηση δύο σημείων δεν καταργήθηκε και είναι ακόμη ενεργή.</value>
+  </data>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>Μία ημέρα</value>
+  </data>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>Επτά ημέρες</value>
+  </data>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>Δύο ημέρες</value>
+  </data>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>Δύο εβδομάδες</value>
+  </data>
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>&lt;strong&gt;ΕΠΙΤΥΧΗΣ ΕΝΕΡΓΟΠΟΙΗΣΗ ΤΑΥΤΟΠΟΙΗΣΗΣ ΔΥΟ ΣΗΜΕΙΩΝ BITID&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Εφ'εξής, όταν συνδέεστε σε αυτό το σύστημα, θα πρέπει να χρησιμοποιείτε την εφαρμογή BitId που μόλις χρησιμοποιήσατε για να σαρώσετε τον κωδικό.</value>
+  </data>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>Ταυτοποίηση δύο σημείων BitID δεν ενεργοποιήθηκε.</value>
+  </data>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>Σαρώστε αυτόν τον κωδικό για να ενεργοποιήσετε την εφαρμογή BitID</value>
+  </data>
+  
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>Ταυτοποίηση δύο σημείων με BitID (υπογραφή bitcoin)</value>
+  </data>
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value>Ταυτ. δύο σημείων BitID</value>
+  </data>
+  <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
+    <value>Πληκτρολογήστε τον κωδικό πρόσβασης για να ενεργοποιήσετε τις αλλαγές</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
+    <value>Η ασφάλειά σας</value>
+  </data>
+  <data name="Master_EditPersonNewPassword1" xml:space="preserve">
+    <value>Ορίστε νέο κωδικό</value>
+  </data>
+  <data name="Master_EditPersonNewPassword2" xml:space="preserve">
+    <value>Γράψτε ξανά τον κωδικό</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
+    <value>Αδυναμία ορισμού νέου κωδικού. Ο παλιός κωδικός είναι λάθος.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_TooWeak" xml:space="preserve">
+    <value>Αδυναμία ορισμού νέου κωδικού. Ο νέος κωδικός είναι πολύ αδύναμος. Χρησιμοποιήστε έναν πιο ισχυρό κωδικό.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
+    <value>&lt;strong&gt;ΑΛΛΑΓΗ ΚΩΔΙΚΟΥ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Η αλλαγή κωδικού πραγματοποιήθηκε επιτυχώς. Σαν μέτρο ασφαλείας, δεν μπορείτε να πραγματοποιήσετε αναλήψεις για τις επόμενες 48 ώρες.</value>
+  </data>
+  <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
+    <value>Εάν μπορείτε, παρακαλώ ενεργοποιήσετε ταυτοποίηση δύο σημείων BitID.</value>
+  </data>
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>Στέλεχος</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>Στέλεχος</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>Στέλεχος</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>Στελέχη</value>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>Εθελόντρια</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>Εθελοντής</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>Εθελοντής</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>Εθελοντές</value>
+  </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>Εκτέλεση</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>Συνέχεια</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  </data>
+  <data name="Swarm_TypePartialName" xml:space="preserve">
+    <value>Πληκτρολογήστε ένα συντομευμένο όνομα...</value>
+  </data>
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>Ετήσιο Κέρδος/Ζημία έως ημερομηνία ({0})</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>Πελάτης</value>
+  </data>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>Πρόοδος</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  </data>
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>Κατεβάστε Tο</value>
+  </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>Εγγρ</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>Αποστολή στον εαυτό μου με email</value>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>Μετρητά</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>Πυρήνας</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>Gold</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>Legacy</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>Αλυσίδα</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>Εξερχόμενο Τιμολόγιο #{0:N0} στο {1}</value>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(ακυρωμένο)</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Φόρτωση</value>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>Αποτελέσματα Φόρτωσης Αρχείου</value>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>ΦΠΑ</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Φόρος Προστιθέμενης Αξίας</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>Ημερομηνία</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>ΜΜΜ η, εεεε</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Υποβολή</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>Γενική λογιστική</value>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>Πραγματοποιείτε είσοδο στο &lt;strong&gt;Sandbox&lt;/strong&gt; του οργανισμού. &lt;br/&gt;&lt;br/&gt;Αυτό είναι ένα ασφαλές περιβάλλον στο οποίο μπορείτε να δοκιμάσετε τις λειτουργίες του Swarmops χωρίς τον κίνδυνο να πειραχθούν τα οποιαδήποτε δεδομένα. Διασκεδάστε όσο θέλετε και έπειτα επιστρέψτε στο περιβάλλον παραγωγής όταν έχετε ολοκληρώσει τις δοκιμές σας.</value>
+  </data>
   
 </root>

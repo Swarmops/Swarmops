@@ -826,8 +826,8 @@
     <value>crwdns6556513:0crwdne6556513:0</value>
   </data>
   <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
-    <value>crwdns6556514:0crwdne6556514:0</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
+    <value>crwdns6563328:0{0}crwdnd6563328:0{1}crwdne6563328:0</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
   </data>
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>crwdns6556515:0crwdne6556515:0</value>
@@ -980,5 +980,9 @@
   </data>
   <data name="Global_EnteringSandbox" xml:space="preserve">
     <value>crwdns6556804:0crwdne6556804:0</value>
+  </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>crwdns6563330:0{0}crwdnd6563330:0{1}crwdne6563330:0</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
   </data>
 </root>

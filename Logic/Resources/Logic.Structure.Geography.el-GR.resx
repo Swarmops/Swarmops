@@ -117,26 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CentralEurope" xml:space="preserve">
+    <value>Κεντρική Ευρώπη</value>
+  </data>
+  <data name="EasternEurope" xml:space="preserve">
+    <value>Ανατολική Ευρώπη</value>
+  </data>
+  <data name="Europe" xml:space="preserve">
+    <value>Ευρώπη</value>
+  </data>
+  <data name="Microstates" xml:space="preserve">
+    <value>Κρατίδια</value>
+    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
+  </data>
+  <data name="Nordics" xml:space="preserve">
+    <value>Σκανδιναβία</value>
+    <comment>(Finland Denmark Norway Sweden Iceland)</comment>
+  </data>
+  <data name="NorthernEurope" xml:space="preserve">
+    <value>Βόρεια Ευρώπη</value>
+  </data>
+  <data name="SouthernEurope" xml:space="preserve">
+    <value>Νότια Ευρώπη</value>
+  </data>
+  <data name="USA_EastNorthCentral" xml:space="preserve">
+    <value>Κεντρικές Βορειοανατολικές Πολιτείες</value>
+  </data>
+  <data name="USA_EastSouthCentral" xml:space="preserve">
+    <value>Κεντρικές Νοτιοανατολικές Πολιτείες</value>
+  </data>
+  <data name="USA_MidAtlantic" xml:space="preserve">
+    <value>Μεσο-Ατλαντικός</value>
+  </data>
+  <data name="USA_Midwest" xml:space="preserve">
+    <value>Μεσοδυτικές Πολιτείες</value>
+  </data>
+  <data name="USA_Mountain" xml:space="preserve">
+    <value>Βουνό</value>
+  </data>
+  <data name="USA_NewEngland" xml:space="preserve">
+    <value>Νέα Αγγλία</value>
+  </data>
+  <data name="USA_Northeast" xml:space="preserve">
+    <value>Βορειοανατολικά</value>
+  </data>
+  <data name="USA_Pacific" xml:space="preserve">
+    <value>Ειρηνικός</value>
+  </data>
+  <data name="USA_South" xml:space="preserve">
+    <value>Νότια</value>
+  </data>
+  <data name="USA_SouthAtlantic" xml:space="preserve">
+    <value>Νότιο Ατλαντικό</value>
+  </data>
+  <data name="USA_West" xml:space="preserve">
+    <value>Δυτικά</value>
+  </data>
+  <data name="USA_WestNorthCentral" xml:space="preserve">
+    <value>Κεντρικές Βορειοδυτικές Πολιτείες</value>
+  </data>
+  <data name="USA_WestSouthCentral" xml:space="preserve">
+    <value>Κεντρικές Νοτιοδυτικές Πολιτείες</value>
+  </data>
+  <data name="WesternEurope" xml:space="preserve">
+    <value>Δυτική Ευρώπη</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>Παγκόσμια</value>
+    <comment>Root geography</comment>
+  </data>
 </root>

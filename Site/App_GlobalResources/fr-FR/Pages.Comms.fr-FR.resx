@@ -117,20 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SendMassMessage_Error_EmptyBody" xml:space="preserve">
+    <value>Vous devez écrire le corps du message avant d’envoyer votre message.</value>
+  </data>
+  <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
+    <value>Vous devez écrire un sujet de message accompagnant votre message.</value>
+  </data>
+  <data name="SendMassMessage_Geography" xml:space="preserve">
+    <value>Qui sont situés à</value>
+  </data>
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>Votre message</value>
+  </data>
+  <data name="SendMassMessage_Info" xml:space="preserve">
+    <value>Envoyez un message à un groupe de personnes de l'organisation. Vous pouvez envoyer le message par mail (utile pour les actualités et les informations générales) ou sur leurs téléphones (très intrusif, et coûte un peu plus cher).</value>
+  </data>
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>Tapez votre message ici. Les balises standard telles que * gras *, _italic_, == en-têtes == et autres similaires peuvent être utilisées. Deux nouvelles lignes commencent un nouveau paragraphe. Le courrier sera envoyé en texte clair et en double mode HTML.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>Aucun destinataire | Un destinataire | {0:N0} Destinataires</value>
+    <comment>Vertical bar divides none|one|many</comment>
+  </data>
+  <data name="SendMassMessage_RecipientType" xml:space="preserve">
+    <value>Envoyer un message de masse à tous</value>
+  </data>
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>Vous utilisez actuellement le Sandbox. Où souhaitez-vous qu'un message de test soit envoyé?</value>
+  </data>
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>Envoyer</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>Votre message est maintenant en cours de distribution aux destinataires. Vous serez averti lorsque la transmission est terminée.</value>
+  </data>
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>Sujet</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
+  </data>
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>Test</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>Le message vous a été envoyé pour que vous puissiez voir à quoi il ressemble avant de passer en direct.</value>
+  </data>
+  <data name="SendMassMessage_Title" xml:space="preserve">
+    <value>Envoyer un message en masse</value>
+  </data>
 </root>

@@ -117,20 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SendMassMessage_Error_EmptyBody" xml:space="preserve">
+    <value>Θα πρέπει να γράψετε ένα σώμα μηνύματος πριν στείλετε το μήνυμά σας.</value>
+  </data>
+  <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
+    <value>Θα πρέπει να γράψετε ένα θέμα μηνύματος το οποίο θα συνοδεύει το μήνυμά σας.</value>
+  </data>
+  <data name="SendMassMessage_Geography" xml:space="preserve">
+    <value>Που βρίσκονται στην</value>
+  </data>
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>Το μήνυμά σας</value>
+  </data>
+  <data name="SendMassMessage_Info" xml:space="preserve">
+    <value>Αποστολή ενός μηνύματος σε μια ομάδα ανθρώπων εντός του οργανισμού. Μπορείτε να στείλετε το μήνυμα μέσω ηλεκτρονικού ταχυδρομείου (καλή επιλογή για ενημερωτικά δελτία και γενικές πληροφορίες) ή στα τηλέφωνά τους (ιδιαίτερα αδιάκριτη επιλογή, επίσης περιλαμβάνει μια μικρή χρέωση).</value>
+  </data>
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>Πληκτρολογήστε εδώ το μήνυμά σας. Δύναται να χρησιμοποιηθούν επιλογές του προτύπου σήμανσης όπως *έντονη γραφή*, _πλάγια γραφή_, ==επικεφαλίδες== και άλλες παρόμοιες. Η χρήση δύο χαρακτήρων newline (\n) ορίζει την έναρξη μιας νέας παραγράφου. Το μήνυμα θα σταλεί σε μορφή διπλής λειτουργίας απλού κειμένου και HTML.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>Κανένας Παραλήπτης|Ένας Παραλήπτης|{0:N0} Παραλήπτες</value>
+    <comment>Vertical bar divides none|one|many</comment>
+  </data>
+  <data name="SendMassMessage_RecipientType" xml:space="preserve">
+    <value>Αποστολή ενός μαζικού μηνύματος σε όλους</value>
+  </data>
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>Επί του παρόντος χρησιμοποιείτε το Sandbox. Πού θα θέλατε να αποσταλεί ένα μήνυμα δοκιμής;</value>
+  </data>
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>Αποστολή</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>Το μήνυμά σας διανέμεται στους παραλήπτες αυτήν την στιγμή. Θα ειδοποιηθείτε όταν ολοκληρωθεί η μετάδοση.</value>
+  </data>
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>Θέμα</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
+  </data>
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>Δοκιμή</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>Το μήνυμα εστάλη σε εσάς, ώστε να μπορείτε να δείτε πώς φαίνεται πριν βρεθείτε σε ζωντανή σύνδεση.</value>
+  </data>
+  <data name="SendMassMessage_Title" xml:space="preserve">
+    <value>Αποστολή Μαζικού Μηνύματος</value>
+  </data>
 </root>

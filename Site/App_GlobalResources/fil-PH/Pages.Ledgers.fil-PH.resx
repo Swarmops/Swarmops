@@ -228,12 +228,6 @@
     <comment>Displayed instead of date of last transaction in the case of Paypal.</comment>
   </data>
   
-  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
-    <value>Ang iba't ibang mga bangko ay may iba't ibang paraan ng pagkuha ng BGMAX na pormat ng file. Sa SEB, ikaw ay pumunta sa &lt;strong&gt;Mga Kabayaran&lt;/strong&gt; at &lt;strong&gt;Mga komunikasyon ng file&lt;/strong&gt; para makita ang listahan ng mga files na mababawi. Ang ibang bangko ay mag-iiba. Sa anumang kaso, i-upload sila dito.</value>
-  </data>
-  
-  
-  
   
   <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
     <value>&lt;h3&gt;Ang file ng bangko ay hindi ma-import.&lt;/h3&gt;&lt;p&gt;Ito ay may isa sa tatlong mga rason: nalaktawan mo ang ibang detalye sa mga instruksyon ng pag-download, ang bangko ay nagbago ng pormat, o aksidente mong na-upload ang maling file ng buo (kagaya ng larawan sa huli mong pagdiriwang kaysa sa listahan ng transaksyon). Walang transaksyon ang na-import. &lt;strong&gt;Mangyaring subukan muli.&lt;/strong&gt;</value>
@@ -881,4 +875,20 @@
   <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
     <value>Binabayaran ng transaksyong ito ang Inbound Invoice #{0:N0} from {1}.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

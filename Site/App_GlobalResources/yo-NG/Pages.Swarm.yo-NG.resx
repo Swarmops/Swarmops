@@ -117,28 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AddPerson_ErrorCity" xml:space="preserve">
+    <value>A nilo ilu ti o fẹsẹmulẹ.</value>
+  </data>
+  <data name="AddPerson_ErrorDate" xml:space="preserve">
+    <value>Pese ọjọ ti o fẹsẹmulẹ tabi fi aaye yii silẹ lofo.</value>
+  </data>
+  <data name="AddPerson_ErrorMail" xml:space="preserve">
+    <value>A nilo imeeli ti o fẹsẹmulẹ.</value>
+  </data>
+  <data name="AddPerson_ErrorName" xml:space="preserve">
+    <value>A nilo orukọ kan.</value>
+  </data>
+  <data name="AddPerson_ErrorStreet" xml:space="preserve">
+    <value>A nilo opopona tabi apoti ile-ifiweranṣẹ ti o fẹsẹmulẹ.</value>
+  </data>
+  <data name="AddPerson_GeographyDetected" xml:space="preserve">
+    <value>Ti ṣawari agbegbe</value>
+  </data>
+  <data name="AddPerson_Info" xml:space="preserve">
+    <value>Eyi ni ibi ti o ti ma ko awọn eniyan tuntun sinu ajọ. Bi o ṣe forukọ wọn silẹ fun &lt;strong&gt;{0} {1}&lt;/strong&gt; titi di &lt;strong&gt;{2}&lt;/strong&gt;, wọn ma gba ifiranṣẹ ikini ku aabọ pẹlu ọrọ igbaniwọle alaileto iwọle kan ninu meeli. Awọn ọfisa ibilẹ naa ma wa ni ifitonileti nipa eniyan tuntun naa, fun anfaani lati fi ifiranṣẹ ikini ku aabọ ranṣẹ si wọn.</value>
+    <comment>{0} and {1} can be "one-year" and "Membership", for example. {2} is LongDateString.</comment>
+  </data>
+  <data name="AddPerson_LegalGender" xml:space="preserve">
+    <value>Idanimọ ti ẹya oju-ara</value>
+    <comment>"Legal" to cut short discussions on 50 different genders for the time being</comment>
+  </data>
+  <data name="AddPerson_PersonSuccessfullyRegistered" xml:space="preserve">
+    <value>Afikun eniyan naa ni si ajọ naa waye pẹlu aseyọri. Meeli ikini ku aabọ kan ti jẹ fifiranṣẹ.</value>
+  </data>
+  <data name="AddPerson_StatisticalData" xml:space="preserve">
+    <value>Awọn Data iṣiro</value>
+    <comment>Header for gender, date of birth</comment>
+  </data>
+  <data name="AddPerson_Street1PO" xml:space="preserve">
+    <value>Opopona 1 (tabi apoti ile-ifiweranṣẹ)</value>
+  </data>
+  <data name="AddPerson_Street2" xml:space="preserve">
+    <value>Opopona 2 - ti o ba wa</value>
+  </data>
+  <data name="AddPerson_Title" xml:space="preserve">
+    <value>Fi kun {0}</value>
+    <comment>The {0} is replaced in code. Singular form gender neutral of Participant.</comment>
+  </data>
+  <data name="ListFindPeople_Info" xml:space="preserve">
+    <value>Lo eyi lati wa awọn eniyan ninu ajọ naa. O le se wiwa nipasẹ agbegbe ati nipa ilana eto orukọ ("Jo S" ma ba Joel Sander mu).</value>
+  </data>
+  <data name="ListFindPeople_MatchingPeopleInX" xml:space="preserve">
+    <value>Siso awọn eniyan pọ ni {0}</value>
+    <comment>The {0} parameter is the organization name.</comment>
+  </data>
+  <data name="ListFindPeople_NamePattern" xml:space="preserve">
+    <value>Ilana eto Orukọ</value>
+  </data>
+  <data name="ListFindPeople_Title" xml:space="preserve">
+    <value>Ṣe akojọ ki o si Wa Awọn eniyan</value>
+  </data>
+  <data name="ListFindPeople_TooManyHits" xml:space="preserve">
+    <value>Awon eto esi naa ni ju ẹgbẹrun eniyan lọ (ifihan jẹ dindinku si iwọnba ẹgbẹrun kan). Jọwọ ṣe atunse àwárí rẹ?</value>
+  </data>
+  <data name="LocalOrganization_Header" xml:space="preserve">
+    <value>Ajọ Ibilẹ ({0})</value>
+  </data>
+  <data name="LocalOrganization_HeaderGlobal" xml:space="preserve">
+    <value>Ajọ Agbaye naa</value>
+  </data>
+  <data name="LocalOrganization_Info" xml:space="preserve">
+    <value>Awọn wọnyi ni awọn olubasọrọ ibilẹ rẹ. (Ti o ba ni awọn anfaani isakoso, o tun le fi awọn eniyan si awọn ipo wọnyi.)</value>
+  </data>
+  <data name="LocalOrganization_PageTitle" xml:space="preserve">
+    <value>Ajọ Ibilẹ Mi</value>
+    <comment>The {0} is the geography name.</comment>
+  </data>
+  <data name="Positions_AssignPerson" xml:space="preserve">
+    <value>Yan eniyan...</value>
+  </data>
+  <data name="Positions_CreateNewPosition" xml:space="preserve">
+    <value>Ṣẹda ipo tuntun...</value>
+  </data>
 </root>

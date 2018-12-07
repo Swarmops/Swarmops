@@ -117,13 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
+  <data name="CentralEurope" xml:space="preserve">
+    <value>Europa Środkowa</value>
+  </data>
+  <data name="EasternEurope" xml:space="preserve">
+    <value>Europa Wschodnia</value>
+  </data>
+  <data name="Europe" xml:space="preserve">
+    <value>Europa</value>
+  </data>
+  <data name="Microstates" xml:space="preserve">
+    <value>Mikropaństwa</value>
+    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
+  </data>
+  <data name="Nordics" xml:space="preserve">
+    <value>Kraje Nordyckie</value>
+    <comment>(Finland Denmark Norway Sweden Iceland)</comment>
+  </data>
+  <data name="NorthernEurope" xml:space="preserve">
+    <value>Europa Północna</value>
+  </data>
+  <data name="SouthernEurope" xml:space="preserve">
+    <value>Europa Południowa</value>
+  </data>
   
   
   

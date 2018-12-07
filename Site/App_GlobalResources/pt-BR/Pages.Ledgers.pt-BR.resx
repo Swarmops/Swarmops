@@ -227,12 +227,6 @@
   </data>
   
   
-  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
-    <value>Cada banco tem meios diferentes de obter o ficheiro de formato BGMAX. No SEB, vai a &lt;strong&gt;Pagamentos&lt;/strong&gt; e &lt;strong&gt;Ficheiro de Comunicações&lt;/strong&gt; para ver a lista de ficheiros disponíveis. Outros bancos variarão. Em qualquer dos casos, envie-os por aqui.</value>
-  </data>
-  
-  
-  
   <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
     <value>&lt;p&gt;O ficheiro contém {0:N0} transações. Foram importadas com sucesso &lt;strong&gt;{1:N0} transações&lt;/strong&gt; na conta de contabilidade &lt;em&gt;{2}&lt;/em&gt;. ({3:N0} transações eram duplicadas.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Contudo, o saldo bancário não coincide com os registos no Swarmops.&lt;/strong&gt; Isto deve-se geralmente a transações em falta. Por favor faça o upload de uma lista de transações de um período de tempo mais alargado para certificar que o Swarmops vê todas as transações.&lt;/p&gt;&lt;p&gt;A conta de contabilidade do Swarmops está atualmente &lt;strong&gt;não sincronizada&lt;/strong&gt; com a do banco.&lt;/p&gt;</value>
     <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
@@ -667,6 +661,22 @@
   <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
     <value>Hash da Transação</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

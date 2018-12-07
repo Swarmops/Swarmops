@@ -117,188 +117,618 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
+    <value>Η Προκαταβολή Μετρητών #{0:N0} για {1} έχει επιβεβαιωθεί για {3:N2}.</value>
+    <comment>Status message.</comment>
+  </data>
+  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
+    <value>Έγινε αναίρεση επιβεβαίωσης της Προκαταβολής Μετρητών #{0:N0} για {1}.  Δεν πρόκειται να πληρωθεί αν δεν επιβεβαιωθεί ξανά.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
+    <value>Δεν μπορείτε να επιβεβαιώσετε αυτό το ποσό. Ο προϋπολογισμός είναι κενός για το έτος {0}.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
+    <value>Δεν μπορείτε να επιβεβαιώσετε ένα αρνητικό ποσό.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
+    <value>Δεν μπορείτε να επιβεβαιώσετε ένα μηδενικό ποσό.</value>
+  </data>
+  <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
+    <value>Λυπούμαστε, δεν μπορείτε να αναπρογραμματίσετε μια πληρωμή μισθοδοσίας.</value>
+  </data>
+  <data name="AttestCosts_Error_InvalidAmountRetry" xml:space="preserve">
+    <value>Αυτό δεν φαίνεται να είναι έγκυρο ποσό. Παρακαλώ προσπαθήστε ξανά.</value>
+  </data>
+  <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
+    <value>Παρακαλώ επιλέξτε έναν προϋπολογισμό για την ανάθεση της χρέωσης.</value>
+  </data>
+  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
+    <value>Η Διεκδίκηση Εξόδων #{0:N0} από {1} για {2}{3:N2} έχει επιβεβαιωθεί.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Έγινε αναίρεση επιβεβαίωσης της Διεκδίκησης Εξόδων #{0:N0} από {1}. Δεν πρόκειται να πληρωθεί αν δεν επιβεβαιωθεί ξανά.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>Ενέργεια</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>Δικαιούχος</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Προϋπολογισμός</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>Περιγραφή</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>Τεκμηρίωση</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>Είδος</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>Ζητήθηκε</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
+    <value>Χρεώσεις σε αναμονή για την επιβεβαίωσή σας</value>
+  </data>
+  <data name="AttestCosts_Info" xml:space="preserve">
+    <value>Εδώ γίνεται η επιβεβαίωση των χρεώσεων που αιτούνται άλλα άτομα από τους προϋπολογισμούς σας. Τίποτα δεν πληρώνεται προτού επιβεβαιωθεί από εσάς.</value>
+  </data>
+  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
+    <value>To Τιμολόγιο #{0:N0} από {1} για {2}{3:N2} έχει επιβεβαιωθεί.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
+    <value>Έγινε ακύρωση επιβεβαίωσης του Τιμολογίου #{0:N0} από {1}.  Δεν πρόκειται να πληρωθεί αν δεν επιβεβαιωθεί ξανά.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
+    <value>Επιβεβαίωση</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
+    <value>Επιβεβαίωση</value>
+  </data>
+  <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
+    <value>Άρνηση</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonRebudget" xml:space="preserve">
+    <value>Αναπρογραμματισμός</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
+    <value>Απορρίπτω το αίτημά σας για κεφάλαια επειδή...</value>
+    <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
+    <value>Τι ποσό επιβεβαιώνετε εναλλακτικά (σε {0});</value>
+    <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionCorrect" xml:space="preserve">
+    <value>Αλλάξτε αυτό το αντικείμενο σε αυτό το ποσό (σε {0}), έπειτα επιβεβαιώστε το με αυτόν τον τρόπο:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionDeny" xml:space="preserve">
+    <value>Προαιρετική αιτία άρνησης στον υποβάλλοντα:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
+    <value>Ανάθεση της χρέωσης σε αυτόν τον προϋπολογισμό εναλλακτικά:</value>
+  </data>
+  <data name="AttestCosts_Modal_Header" xml:space="preserve">
+    <value>Διόρθωση προβλημάτων ή άρνηση επιβεβαίωσης</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
+    <value>Θα το επιβεβαιώσω, αλλά για ένα διαφορετικό ποσό.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
+    <value>Το ποσό είναι λάθος. Θα το επιβεβαιώσω με το σωστό ποσό.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
+    <value>Πλήρης άρνηση επιβεβαίωσης αυτής της εγγραφής.</value>
+    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
+    <value>Αυτή η εγγραφή θα έπρεπε να χρεώνει κάποιον άλλο προϋπολογισμό. Πραγματοποιήστε ανάθεση της χρέωσης αντίστοιχα.</value>
+  </data>
+  <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
+    <value>Ποιο φαίνεται να είναι το πρόβλημα με αυτήν την εγγραφή;</value>
+  </data>
+  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
+    <value>Δεν απομένουν αρκετά κεφάλαια στον προϋπολογισμό για την επιβεβαίωση αυτής της χρέωσης.</value>
+  </data>
+  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
+    <value>Δεν υπάρχουν αρκετά κεφάλαια για την επιβεβαίωση αυτού. Μπορείτε να επιβεβαιώσετε έως και {0} {1:N2} παραπάνω σε αυτόν τον προϋπολογισμό για το έτος {2}.</value>
+    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
+  </data>
+  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
+    <value>&lt;strong&gt;ΥΠΕΡΒΑΣΗ ΠΡΟΥΠΟΛΟΓΙΣΜΟΥ;&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Δεν απομένουν αρκετά κεφάλαια στον προϋπολογισμό προκειμένου να επιβεβαιώσετε αυτά τα έξοδα. Κανονικά, θα αποκλείονταν από την διαδικασία επιβεβαίωσης. Ωστόσο, μπορείτε να παρακάμψετε αυτόν τον περιορισμό και να πραγματοποιήσετε επιβεβαίωση ούτως ή άλλως, ωθώντας ως εκ τούτου τον λογαριασμό να υπερβεί τον προϋπολογισμό του.&lt;br/&gt;&lt;br/&gt;Θέλετε να πραγματοποιήσετε επιβεβαίωση των εξόδων, και κατά συνέπεια να επιβάλλετε υπέρβαση προϋπολογισμού, ή θέλετε να ακυρώσετε την επιβεβαίωση, και αντί αυτού να παραμείνετε εντός προϋπολογισμού;&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
+    <value>Μείνετε εντός Προϋπολογισμού</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmYes" xml:space="preserve">
+    <value>Επιβάλλετε Υπέρβαση Προϋπολογισμού</value>
+  </data>
+  <data name="AttestCosts_Overdrafted" xml:space="preserve">
+    <value>ΕΓΙΝΕ ΥΠΕΡΒΑΣΗ ΠΡΟΥΠΟΛΟΓΙΣΜΟΥ.</value>
+    <comment>The UPPERCASE is intentional.</comment>
+  </data>
+  <data name="AttestCosts_PageTitle" xml:space="preserve">
+    <value>Επιβεβαίωση Χρεώσεων</value>
+  </data>
+  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
+    <value>Το Συνέδριο #{0:N0}, που διοργανώνεται από {1}, έχει επιβεβαιωθεί για {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
+    <value>Έγινε αναίρεση επιβεβαίωσης του Συνεδρίου #{0:N0} από {1}.  Δεν πρόκειται να δοθεί έγκριση αν δεν επιβεβαιωθεί ξανά.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_SalaryAttested" xml:space="preserve">
+    <value>Η Μισθοδοσία #{0:N0} για {1} επιβεβαιώθηκε για {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
+    <value>Έγινε αναίρεση επιβεβαίωσης της Μισθοδοσίας #{0:N0} για {1}. Δεν πρόκειται να πληρωθεί αν δεν επιβεβαιωθεί ξανά.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
+    <value>&lt;strong&gt;ΠΡΟΕΙΔΟΠΟΙΗΣΗ: ΜΗ ΑΡΧΙΚΟΠΟΙΗΜΕΝΟΣ ΠΡΟΫΠΟΛΟΓΙΣΜΟΣ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Η χρέωση που επιβεβαιώνετε ανήκει σε έναν μη αρχικοποιημένο προϋπολογισμό -- έναν λογαριασμό στο μητρώο που δεν έχει ιδιοκτήτη ούτε καθορισμένο επιτρεπτό όριο προϋπολογισμού για το έτος. Εξετάστε το ενδεχόμενο πραγματοποίησης επίσκεψης στο Σχέδιο Λογαριασμού και κατανομής προϋπολογισμών για τα αναμενόμενα έσοδα και έξοδα.&lt;br/&gt;&lt;br/&gt;Αυτό το μήνυμα θα εμφανίζεται μόνο μια φορά ανά επίσκεψη στις Επιβεβαιώσεις.&lt;br/&gt;</value>
+  </data>
+  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
+    <value>Συνολικό ποσό Τιμολογίου (σε {0})</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>Περιγραφή</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
+  <data name="CreateInboundInvoice_HeaderInvoiceImage" xml:space="preserve">
+    <value>Εικόνα Τιμολογίου</value>
+  </data>
+  <data name="CreateInboundInvoice_HeaderPaymentDetails" xml:space="preserve">
+    <value>Λεπτομέρειες Πληρωμής</value>
+    <comment>Displayed as header over supplier's account details</comment>
+  </data>
+  <data name="CreateInboundInvoice_Info" xml:space="preserve">
+    <value>Εδώ μπορείτε να καταθέσετε τιμολόγια που λήφθηκαν στον οργανισμό σας (''Πληρωτέοι Λογαριασμοί''). Εισάγετε το όνομα του προμηθευτή, ποσό, ημερομηνία πληρωμής, τον κωδικό αναφοράς τιμολογίου, και ανεβάστε μια εικόνα του ληφθέντος τιμολογίου. Επίσης, επιλέξτε έναν προϋπολογισμό. Ο ιδιοκτήτης του προϋπολογισμού θα πρέπει να πραγματοποιήσει επιβεβαίωση, ως συνήθως. (Οι μελλοντικές επεκτάσεις αυτού του μηχανισμού περιλαμβάνουν εντολές αγορών και λίστες προμηθευτών.)</value>
+  </data>
+  <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
+    <value>Ελήφθη Εισερχόμενο Τιμολόγιο</value>
+  </data>
+  <data name="CreateInboundInvoice_Reference" xml:space="preserve">
+    <value>Κωδικός Αναφοράς Τιμολογίου</value>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceAutomaticOcr" xml:space="preserve">
+    <value>OCR / Αυτόματη Επεξεργασία</value>
+    <comment>Some invoices come with OCR numbers printed on them for automatic processing.</comment>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceManual" xml:space="preserve">
+    <value>Χειροκίνητη Επεξεργασία</value>
+    <comment>Other invoices come without automated processing and a manual </comment>
+  </data>
+  <data name="CreateInboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Το Εισερχόμενο Τιμολόγιο #{0:N0} κατατέθηκε.</value>
+    <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
+  </data>
+  <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
+    <value>Λογαριασμός</value>
+    <comment>Free text input, intended to convey everything needed to get the money right</comment>
+  </data>
+  <data name="CreateInboundInvoice_UploadInvoiceImage" xml:space="preserve">
+    <value>Ανεβάστε αρχείο εικόνας</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε τον τραπεζικό λογαριασμό του προμηθευτή ή άλλο ισοδύναμό του.</value>
+  </data>
+  <data name="Donate_Explain" xml:space="preserve">
+    <value>Αυτός είναι ένας κωδικός QR για δωρεές στον οργανισμό {0}. Σκανάρετέ τον με το πορτοφόλι bitcoin του κινητού σας για να πραγματοποιήσετε μια δωρεά, ή πραγματοποιήστε δωρεά απευθείας από τον υπολογιστή σας στην διεύθυνση [{1}] (αυτή είναι μια διεύθυνση Bitcoin Cash).</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="Donate_FundsReceived" xml:space="preserve">
+    <value>Ελήφθησαν {0} {1:N2} ({2:N0} microcoins ή "bits"). Ευχαριστούμε!</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedNative" xml:space="preserve">
+    <value>Ελήφθησαν {0} microcoins ("bits"). Ευχαριστούμε!</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="Donate_Info" xml:space="preserve">
+    <value>Αν θέλετε να πραγματοποιήσετε δωρεά στον οργανισμό, μπορείτε να το κάνετε εδώ.</value>
+  </data>
+  <data name="Donate_PageTitle" xml:space="preserve">
+    <value>Πραγματοποιήστε δωρεά</value>
+  </data>
+  <data name="Donate_StatusInitial" xml:space="preserve">
+    <value>Σε αναμονή για συναλλαγή...</value>
+  </data>
+  <data name="Donate_TransactionDetected" xml:space="preserve">
+    <value>Εντοπίστηκε συναλλαγή, πραγματοποιείται επιβεβαίωση...</value>
+  </data>
+  <data name="Donate_TxLabel" xml:space="preserve">
+    <value>Πραγματοποίηση δωρεάς στον οργανισμό {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Donate_TxLabel_Loan" xml:space="preserve">
+    <value>Χορήγηση δανείου στον οργανισμό {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="FileExpenseClaim_Amount" xml:space="preserve">
+    <value>Ποσό διεκδίκησης εξόδων (σε {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
+    <value>Αριθμός Λογαριασμού</value>
+  </data>
+  <data name="FileExpenseClaim_BankClearing" xml:space="preserve">
+    <value>Αριθμός Εκκαθάρισης</value>
+  </data>
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>Επωνυμία Τράπεζας</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Προϋπολογισμός</value>
+  </data>
+  <data name="FileExpenseClaim_CostType" xml:space="preserve">
+    <value>Τύπος Χρέωσης</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
+  <data name="FileExpenseClaim_Description" xml:space="preserve">
+    <value>Περιγραφή</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>Το Δελτίο Τραπεζικών Στοιχείων Σας</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderReceiptImages" xml:space="preserve">
+    <value>Εικόνες Αποδείξεων</value>
+  </data>
+  <data name="FileExpenseClaim_Info" xml:space="preserve">
+    <value>Αν έχετε πραγματοποιήσει κάποια αγορά εκ μέρους του οργανισμού χρησιμοποιώντας τα ιδιωτικά σας κεφάλαια, είναι πιθανό να θελήσετε να αιτηθείτε χρηματική αποζημίωση για αυτό υποβάλλοντας μια &lt;em&gt;διεκδίκηση εξόδων&lt;/em&gt;. Αυτό είναι κάτι που μπορείτε να κάνετε εδώ ανεβάζοντας τις αποδείξεις και επιλέγοντας τον προϋπολογισμό στον οποίο θα πρέπει να χρεωθούν. Εάν έχετε προηγουμένως λάβει προκαταβολή μετρητών για αυτήν την αγορά, εδώ μπορείτε να εκκαθαρίσετε το δάνειο που λάβατε από τον οργανισμό υποβάλλοντας αποδείξεις.</value>
+  </data>
+  <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
+    <value>Αιτηθείτε Επιστροφή Χρημάτων Λόγω Εξόδων</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartOne" xml:space="preserve">
+    <value>Μια διεκδίκηση εξόδων έχει κατατεθεί επιτυχώς για {0} {1:N2} σε βάρος του προϋπολογισμού {2}. Οι αποδείξεις θα χρειαστούν επικύρωση και η διεκδίκηση θα χρειαστεί επιβεβαίωση από τον ιδιοκτήτη του προϋπολογισμού.</value>
+    <comment>{0} is the currency, {1} is the amount, and {2} is the budget name.</comment>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Μόλις γίνει αυτό, τα κεφάλαια θα προχωρήσουν σε πληρωμή στον λογαριασμό που έχετε υποδείξει.</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Καθώς αυτός είναι ο δικός σας προϋπολογισμός, η επιβεβαίωση έχει ήδη ολοκληρωθεί. Μόνο η επικύρωση είναι αναγκαία.</value>
+  </data>
+  <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
+    <value>Ανεβάστε Εικόνες Αποδείξεων</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε το χρηματικό ποσό (σε {0}) που διεκδικείτε.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Documents" xml:space="preserve">
+    <value>Παρακαλώ ανεβάστε μια ή περισσότερες εικόνες αποδείξεων που να υποστηρίζουν την διεκδίκηση εξόδων.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>Παρακαλώ κάντε μια επιλογή όπως υποδεικνύεται.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
+    <value>Παρακαλώ περιγράψτε αυτήν την αγορά.</value>
+  </data>
+  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
+    <value>Λογαριασμός (OCR)</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
+    <value>Ποσό</value>
+    <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
+    <value>Ποσό (OCR)</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
+    <value>Αριθμός Εκκαθάρισης / Λογαριασμός</value>
+    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
+    <value>Τράπεζα</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
+    <value>Ημερομηνία Πληρωμής</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
+    <value>Πληρώθηκε</value>
+    <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
+    <value>Παραλήπτης</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Κωδικός Αναφοράς</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
+    <value>Κωδικός Αναφοράς (OCR)</value>
+  </data>
+  <data name="PayOutMoney_Header" xml:space="preserve">
+    <value>Χρεώσεις Έτοιμες Για Πληρωμή</value>
+  </data>
+  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
+    <value>Χρεώσεις για Πληρωμή (OCR για εφαρμογές κινητών συσκευών)</value>
+  </data>
+  <data name="PayOutMoney_Info" xml:space="preserve">
+    <value>Αυτές είναι οι διάφορες μορφές χρεώσεων του οργανισμού που έχουν περάσει όλα τα εμπόδια για πληρωμή. Είναι έτοιμες να καταβληθούν στον παραλήπτη. Εδώ μπορείτε να σημειώσετε ότι πραγματοποιείται η πληρωμή τους (πιθανώς ενώ έχετε την τράπεζά σας ανοικτή σε κάποιο άλλο παράθυρο).</value>
+  </data>
+  <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
+    <value>Εμφάνιση OCR για εφαρμογές κινητών συσκευών</value>
+  </data>
+  <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
+    <value>Εμφάνιση πληρωμών που εκκρεμούν ({0:N0})</value>
+    <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>Πληρωμή Χρημάτων</value>
+  </data>
+  <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
+    <value>Δεν μπορείτε να κάνετε αναίρεση της πληρωμής #{0}: έχει ήδη διευθετηθεί ή κλείσει.</value>
+  </data>
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>Η πληρωμή #{0:N0} στο {1} δημιουργήθηκε.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>Αναιρέθηκε η πληρωμή #{0:N0} και πραγματοποιήθηκε επαναφορά όλων.</value>
+  </data>
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>Πρόσθετος Φόρος</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Φόρος που Αφαιρέθηκε</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Εκκαθαριστικό Σημείωμα Μικτών Αποδοχών</value>
+  </data>
+  <data name="PayrollTaxForms_Info" xml:space="preserve">
+    <value>Εμφάνιση φύλλων σημειώσεων (συμπληρωμένων φορολογικών εντύπων) για την κατάσταση μισθοδοσίας του οργανισμού, που είναι εύκολο να αντιγραφούν στα πραγματικά φορολογικά έντυπα, ή ακόμα και να εκτυπωθούν όπως είναι. Η απόδοση του συστήματος και τα πραγματικά έντυπα διαφέρουν από χώρα σε χώρα και μερικές φορές εξαρτώνται από τον κώδικα και τις προσθήκες που παρέχονται από τρίτους.</value>
+  </data>
+  <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
+    <value>Φορολογικά Έντυπα Κατάστασης Μισθοδοσίας</value>
+  </data>
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>Μηνιαία Φορολογικά Έντυπα Για Τον Οργανισμό {0} Για</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Συνολική Χρέωση</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Συνολικός Φόρος</value>
+  </data>
+  <data name="RequestCashAdvance_Amount" xml:space="preserve">
+    <value>Ποσό προκαταβολής (σε {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_BankAccount" xml:space="preserve">
+    <value>Αριθμός Λογαριασμού</value>
+  </data>
+  <data name="RequestCashAdvance_BankClearing" xml:space="preserve">
+    <value>Αριθμός Εκκαθάρισης</value>
+  </data>
+  <data name="RequestCashAdvance_BankName" xml:space="preserve">
+    <value>Επωνυμία Τράπεζας</value>
+  </data>
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>Προϋπολογισμός</value>
+  </data>
+  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
+    <value>Το Δελτίο Τραπεζικών Στοιχείων Σας</value>
+  </data>
+  <data name="RequestCashAdvance_Info" xml:space="preserve">
+    <value>Αν πρόκειται να πραγματοποιήσετε μια αγορά εκ μέρους του οργανισμού, αλλά χρειάζεστε τα χρήματα προκαταβολικά και δεν επιθυμείτε να διεκδικήσετε την επιστροφή τους μετέπειτα, μπορείτε να αιτηθείτε χορήγηση μιας προκαταβολής χρημάτων για κάποιον συγκεκριμένο σκοπό.</value>
+  </data>
+  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
+    <value>Αιτηθείτε Χορήγηση Προκαταβολής Μετρητών</value>
+  </data>
+  <data name="RequestCashAdvance_Purpose" xml:space="preserve">
+    <value>Σκοπός</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartOne" xml:space="preserve">
+    <value>Ζητήθηκε μια προκαταβολή μετρητών για τον χρήστη &lt;strong&gt;{0}&lt;/strong&gt;. Το ποσό που ζητήθηκε είναι {2} {3:N2}. Σημειώνεται ότι αυτό είναι ένα &lt;strong&gt;δάνειο&lt;/strong&gt; από τον οργανισμό έως ότου προσκομιστούν αποδείξεις.</value>
+    <comment>{0} is the person receiving the advance, {1} is the entered description. {2} is the currency (in caps) and {3:N2} is the amount, with two decimals, displayed in culture.</comment>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Αυτό χρειάζεται να επιβεβαιωθεί από τον ιδιοκτήτη του προϋπολογισμού και τότε θα προχωρήσει σε πληρωμή.</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Καθώς αυτός είναι ο δικός σας προϋπολογισμός, αυτό επιβεβαιώθηκε αυτόματα και έχει προχωρήσει σε πληρωμή.</value>
+    <comment>This is displayed if either the person creating the cash advance OR the person receiving it is the budget owner.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Amount" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε το χρηματικό ποσό (σε {0}) που θα θέλατε να προκαταβάλλετε.</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε τον αριθμό του τραπεζικού λογαριασμού σας.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankClearing" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε τον αριθμό εκκαθάρισης της τράπεζάς σας.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε την επωνυμία της τράπεζάς σας.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
+    <value>Παρακαλώ επιλέξτε έναν προϋπολογισμό στον οποίο θα γίνει η χρέωση.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
+    <value>Παρακαλώ αναφέρετε τον σκοπό της προκαταβολής μετρητών.</value>
+  </data>
+  <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
+    <value>Αποδείξεις σε αναμονή για την επικύρωσή σας</value>
+  </data>
+  <data name="ValidateReceipts_Info" xml:space="preserve">
+    <value>Εδώ μπορείτε να επιθεωρήσετε και να επιβεβαιώσετε την εγκυρότητα των αποδείξεων που συνοδεύουν διεκδικήσεις εξόδων. Βεβαιωθείτε ότι το ποσό είναι σωστό και ότι η απόδειξη αφορά αυτό για το οποίο προσκομίζεται.</value>
+  </data>
+  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
+    <value>Επικύρωση Αποδείξεων</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
+    <value>Έγινε αναίρεση επικύρωσης των αποδείξεων για την Διεκδίκηση Εξόδων #{0:N0} για {1} {2:N2}. Η διεκδίκηση εξόδων δεν θα προχωρήσει σε πληρωμή αν δεν ξαναγίνει επικύρωση.</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
+    <value>Οι αποδείξεις για την Διεκδίκηση Εξόδων #{0:N0} για {1} {2:N2} έχουν επικυρωθεί.</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Δημιουργήστε</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε το ποσό χρήματος (σε {0}) που απαιτεί το τιμολόγιο.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Παρακαλώ καθορίστε έναν προϋπολογισμό στον οποίο θα γίνει η χρέωση.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Παρακαλώ ανεβάστε ένα ή περισσότερα έγγραφα του αρχικού τιμολογίου.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Παρακαλώ κάντε μια επιλογή.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Παρακαλώ περιγράψτε αυτήν την αγορά.</value>
+  </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Υποβολή αιτήματος</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Υποβολή αιτήματος</value>
+  </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>Μέρος ΦΠΑ του συνολικού ({0})</value>
+  </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>ΦΠΑ του συνόλου ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Παράθεση Εισερχόμενων Τιμολογίων</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Αποστολέας τιμολογίου</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Εδώ παρατίθενται τα 100 πιο πρόσφατα τιμολόγια, ταξινομημένα με βάση την ημερομηνία πληρωμής τους, από το πιο πρόσφατο έως το παλαιότερο.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Εισερχόμενα Τιμολόγια</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Πραγματοποιείται Δημιουργία Εξερχόμενου Τιμολογίου</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Δημιουργία</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Πραγματοποιείται Δημιουργία Εξερχόμενου Τιμολογίου</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Το Εξερχόμενο Τιμολόγιο #{0:N0} κατατέθηκε.</value>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Ελήφθησαν Κεφάλαια ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Εστάλη</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Πελάτης</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Πραγματοποιείται Παράθεση Εξερχόμενων Τιμολογίων</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Εδώ παρατίθενται τα 100 πιο πρόσφατα εξερχόμενα τιμολόγια, ταξινομημένα με βάση την ημερομηνία δημιουργίας τους, από το πιο πρόσφατο έως το παλαιότερο.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Συνολικό Ποσό</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Ημερομηνία Πληρωμής</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Παράθεση Εξερχόμενων Τιμολογίων</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Ανεβάστε Expensify CSV</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Αν έχετε πολλές αναφορές εξόδων, μπορείτε να τις συγκεντρώσετε με το Expensify και να ανεβάσετε εδώ μια αναφορά Expensify CSV (την οποία μπορείτε να αποκτήσετε στο Expensify κάτω από τις Αναφορές, και να πραγματοποιήσετε Εξαγωγή ως CSV). Το Swarmops θα χρησιμοποιήσει το Expensify προκειμένου να συγκεντρώσει όλες τις ατομικές αποδείξεις και να τις καταγράψει ως ξεχωριστές διεκδικήσεις εξόδων για λόγους ορθής λογιστικής.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>Για να λειτουργήσει αυτό, εφόσον ο οργανισμός {0} υποβάλλει δήλωση ΦΠΑ στις φορολογικές αρχές, θα χρειαστεί να τροποποιήσετε το προεπιλεγμένο προφίλ Expensify CSV για να συμπεριλάβετε τον ΦΠΑ, τον οποίο δεν περιλαμβάνει το προεπιλεγμένο. Οι σελίδες βοήθειας του Expensify περιέχουν περισσότερες πληροφορίες σχετικά με το πώς γίνεται αυτό και αν χρησιμοποιείτε το Expensify ως ομάδα, τότε η Expensify πολιτική σας θα πρέπει ήδη να διαθέτει ένα προφίλ εξαγωγής σε μορφή CSV που να περιλαμβάνει τον ΦΠΑ.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Με βάση τις ρυθμίσεις του οργανισμού, το ''Προεπιλεγμένο CSV'' προφίλ εξαγωγής στο Expensify θα πρέπει να είναι επαρκές για το Swarmops.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Το νόμισμα της αναφοράς Expensify είναι</value>
+  </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Ανέβασμα Αναφοράς Expensify Για Αποζημίωση</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ΣΦΑΛΜΑ: Αδύνατη η ανάλυση του αρχείου Expensify CSV.&lt;/strong&gt; Αν αυτό είναι αρχείο CSV από το Expensify, τότε το Swarmops χρειάζεται την παρουσία των στηλών "Timestamp", "Ποσό", "Έμπορος", "Σχόλιο", "Κατηγορία", "MCC", "Αρχικό Νόμισμα", και "Αρχικό Ποσό" στο αρχείο. Αν ο οργανισμός υποβάλλει δήλωση ΦΠΑ, τότε απαιτείται η παρουσία μιας ακόμα στήλης με το όνομα "ΦΠΑ".&lt;/p&gt;&lt;p&gt;Αδύνατη η συνέχιση με αυτό το αρχείο.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ΣΦΑΛΜΑ: Το αρχείο Expensify CSV δεν διαθέτει πεδίο ΦΠΑ.&lt;/strong&gt; Εφόσον αυτός ο οργανισμός υποβάλλει δήλωση Φόρου Προστιθέμενης Αξίας (ΦΠΑ) στις φορολογικές αρχές, θα πρέπει να καθορίζεται για κάθε δαπάνη. Παρακαλώ ενεργοποιήστε τον ΦΠΑ στο Expensify και δημιουργήστε ένα νέο προφίλ εξαγωγής CSV που πραγματοποιεί εξαγωγή αυτού κάτω από την επικεφαλίδα στήλης "ΦΠΑ". Αν η ομάδα σας έχει ήδη δημιουργήσει ένα τέτοιο προφίλ CSV, ίσως να χρειαστεί να το επιλέξετε όταν πραγματοποιείτε εξαγωγή ως CSV.&lt;/p&gt;&lt;p&gt;Αδύνατη η επεξεργασία αυτού του αρχείου.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Θα Ανεβάσετε Άλλο Αρχείο Expensify CSV;</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>εμένα</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Αυτή είναι μια διεκδίκηση εξόδων από ποιόν;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ΣΦΑΛΜΑ: Το αρχείο Expensify CSV δεν διαθέτει κάποια απαιτούμενα πεδία δεδομένων.&lt;/strong&gt; Το αρχείο φαίνεται να μην διαθέτει τουλάχιστον ένα από τα απαιτούμενα πεδία του προκαθορισμένου προφίλ CSV του Expensify. Ανατρέξτε στην τεχνική τεκμηρίωση και πραγματοποιήστε σύγκριση με το αρχείο που επιχειρήσατε να ανεβάσετε. (Είναι μια πιο πιθανή αιτία σφάλματος, φυσικά, το ενδεχόμενο να προσπαθήσατε να ανεβάσετε το λάθος αρχείο &amp;ndash; ίσως μια φωτογραφία αντί ενός αρχείου Expensify CSV &amp;ndash; και να είναι αυτή η αιτία για την απουσία των αναμενόμενων δεδομένων.)&lt;/p&gt;&lt;p&gt;Αδύνατη η επεξεργασία αυτού του αρχείου.&lt;/p&gt;</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(Το ποσό θα πρέπει να μην περιλαμβάνει τυχόν καθορισμένο ΦΠΑ!)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>Όλες οι διεκδικήσεις εξόδων χρειάζονται τον καθορισμό ενός προϋπολογισμού πριν από την υποβολή.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>Δεν υπάρχουν εγγραφές Expensify για υποβολή</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>Όλα είναι έτοιμα για την υποβολή μιας διεκδίκησης</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>Όλα είναι έτοιμα για την υποβολή {0} διεκδικήσεων</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>Η διεκδίκηση κατατέθηκε επιτυχώς.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>Κατατέθηκαν επιτυχώς {0} διεκδικήσεις.</value>
+  </data>
 </root>

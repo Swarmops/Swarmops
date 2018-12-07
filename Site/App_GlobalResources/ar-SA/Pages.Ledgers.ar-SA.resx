@@ -241,19 +241,6 @@
     <value>تعليمات تحميل بيانات البنك</value>
     <comment>Header above instructions for generation of the bank file type selected.</comment>
   </data>
-  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
-    <value>لدى البنوك المختلفة وسائل مختلفة للحصول على ملف تنسيق BGMAX. في SEB، تذهب إلى &lt;strong&gt;المدفوعات&lt;/strong&gt; و &lt;strong&gt;اتصالات الملف&lt;/strong&gt; لمشاهدة قائمة ملفات للاسترداد. بنوك أخرى لديها طرق أخرى وعلى أية حال، قم برفعه هنا.</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_PaypalFile" xml:space="preserve">
-    <value>سجل دخولك إلى Paypal. اذهب إلى &lt;strong&gt;الحساب الخاص بك&lt;/strong&gt;، وضمن القائمة "&lt;strong&gt;المحفوظات&lt;/strong&gt;"، حدد &lt;strong&gt;تاريخ التحميل&lt;/strong&gt;. حدد &lt;strong&gt;نطاق تاريخ مخصص&lt;/strong&gt;، قم بإدخال النطاق منذ آخر تحميل (كما ورد) بالإضافة إلى بضعة أيام للتداخل، والأهم من ذلك، حدد &lt;strong&gt;علامة التبويب محدد-كل الأنشطة&lt;/strong&gt;. انقر فوق &lt;strong&gt;تحميل&lt;/strong&gt;-&lt;/p&gt;&lt;p&gt;سيمر بعض الوقت قبل أن تستلم بريداً إلكترونياً من Paypal يخبرك بأن الملف جاهز للتحميل. سوف يكون اسمه &lt;em&gt;download.txt&lt;/em&gt;. قم برفع هذا الملف.</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_PaysonFile" xml:space="preserve">
-    <value>تسجيل الدخول إلى Payson. انتقل إلى علامة التبويب &lt;strong&gt;History&lt;/strong&gt;، وانقر فوق &lt;strong&gt;Export history&lt;/strong&gt;. سيتم تسمية الملف الذي تم تنزيله &lt;em&gt;Payson_Export_[date].xls&lt;/em&gt;. قم برفع هذا الملف.</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_SebAccountFile" xml:space="preserve">
-    <value>إفتح حساب الإنترنت الخاص بك في بنك SEB . اذهب إلى &lt;strong&gt;your account&lt;/strong&gt;، وأدخل النطاق الزمني الذي ترغب في تحميله في مربع البحث. اضغط على &lt;strong&gt;filter&lt;/strong&gt;. وبعد ذلك، انقر فوق الارتباط &lt;strong&gt;save the account history&lt;/strong&gt;. وسوف تظهر قائمة منبثقة. اختر &lt;strong&gt;csv&lt;/strong&gt; و &lt;strong&gt;tab separated&lt;/strong&gt;، ثم &lt;strong&gt;save&lt;/strong&gt;. سيتم تسمية الملف الذي تم تنزيله &lt;em&gt;Kontohändelser.csv&lt;/em&gt;. قم برفع هذا الملف.</value>
-    <comment>Only translate to languages where SEB is active.</comment>
-  </data>
   <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
     <value>&lt;p&gt;الملف احتوى على عدد  {0:N0} من العمليات. {1:N0} عملية تم استيرادها بنجاح إلى حساب {2}. (عدد {3:N0} كانت عمليات مكررة).&lt;/p&gt;&lt;p&gt;ومع ذلك فإن الرصيد البنكي لا يتطابق مع السجلات في نظام سوارموبس. وهذا يحدث عادة بسبب بعض المعاملات المفقودة. الرجاء رفع قائمة المعاملات خلال فترة زمنية كبيرة للتأكد من أنه يمكن لنظام سوارموبس أن يرى جميع العمليات.&lt;/p&gt;&lt;pحالياً فإن السجلات المحاسبية لنظام سوارموبس &lt;strong&gt;غير متطابقة&lt;/strong&gt; مع سجلات البنك.</value>
     <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
@@ -430,9 +417,7 @@
   <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
     <value>يقبل النفقات</value>
   </data>
-  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
-    <value>بروفايل رفع الملفات</value>
-  </data>
+  
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>تحرير الحساب</value>
   </data>
@@ -896,9 +881,7 @@
   <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
     <value>إعادة التوظيف</value>
   </data>
-  <data name="ViewVatReports_Info" xml:space="preserve">
-    <value>أنت تشاهد تقرير ضريبة القيمة المضافة الذي تم حفظه. تم تسجيل ضريبة القيمة المضافة الواردة والصادرة، وكذلك إجمالي عملية التوظيف في فترة التقرير. هذا التقرير جاهز ليتم نقله إلى السلطات الضريبية.</value>
-  </data>
+  
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>تقرير الضريبة على القيمة المضافة</value>
     <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
@@ -977,4 +960,20 @@
   <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
     <value>تدفع هذه المعاملة الفاتورة الواردة#{0:N0} من {1}.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

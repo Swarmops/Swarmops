@@ -120,12 +120,15 @@
   <data name="Signup_ActivationActive" xml:space="preserve">
     <value>Se si desidera impegnarsi ulteriormente, è possibile rendersi disponibili per gli inviti ad agire, senza alcun obbligo di presentarsi, partecipare o prendere parte a nessuno di questi.</value>
   </data>
-  
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>{0} All'opportunità</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
   <data name="Signup_ActivationLevel" xml:space="preserve">
     <value>Quanto desideri interagire?</value>
   </data>
   <data name="Signup_ActivationLevelText" xml:space="preserve">
-    <value>Ci sono diversi livelli su cui puoi interaggire in {0}. Selezionare il livello desiderato qui sotto (il quale, ovviamente può essere cambiato in seguito, se desideri):</value>
+    <value>Ci sono diversi livelli su cui puoi interagire in {0}. Selezionare il livello desiderato qui sotto (il quale, ovviamente può essere cambiato in seguito, se desideri):</value>
     <comment>{0} is the org name.</comment>
   </data>
   <data name="Signup_ActivationPassive" xml:space="preserve">
@@ -221,7 +224,7 @@ Se ti sei offerto di assumerti una responsabilità formale, qualcuno (probabilme
     <value>Su di te</value>
   </data>
   <data name="Signup_Step2Text" xml:space="preserve">
-    <value>Raccontaci qualcosa su di te</value>
+    <value>Ci racconti qualcosa su di te?</value>
   </data>
   <data name="Signup_Step3Header" xml:space="preserve">
     <value>Creare un accesso</value>
@@ -263,7 +266,9 @@ Se ti sei offerto di assumerti una responsabilità formale, qualcuno (probabilme
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>A quale funzione sei interessato?</value>
   </data>
-  
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>Posizione geografica più alta</value>
+  </data>
   <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
     <value>Posizione</value>
   </data>

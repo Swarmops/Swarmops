@@ -117,36 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Country_AT" xml:space="preserve">
+    <value>奥地利</value>
+  </data>
+  <data name="Country_BE" xml:space="preserve">
+    <value>比利时</value>
+  </data>
+  <data name="Country_BG" xml:space="preserve">
+    <value>保加利亚</value>
+  </data>
+  <data name="Country_CH" xml:space="preserve">
+    <value>瑞士</value>
+  </data>
+  <data name="Country_CY" xml:space="preserve">
+    <value>塞浦路斯</value>
+  </data>
+  <data name="Country_CZ" xml:space="preserve">
+    <value>捷克共和国</value>
+  </data>
+  <data name="Country_DE" xml:space="preserve">
+    <value>德国</value>
+  </data>
+  <data name="Country_DK" xml:space="preserve">
+    <value>丹麦</value>
+  </data>
+  <data name="Country_EE" xml:space="preserve">
+    <value>爱沙尼亚</value>
+  </data>
+  <data name="Country_ES" xml:space="preserve">
+    <value>西班牙</value>
+  </data>
+  <data name="Country_FI" xml:space="preserve">
+    <value>芬兰</value>
+  </data>
+  <data name="Country_FR" xml:space="preserve">
+    <value>法国</value>
+  </data>
+  <data name="Country_GH" xml:space="preserve">
+    <value>加纳</value>
+  </data>
+  <data name="Country_GR" xml:space="preserve">
+    <value>希腊</value>
+  </data>
+  <data name="Country_HR" xml:space="preserve">
+    <value>克罗地亚</value>
+  </data>
+  <data name="Country_HU" xml:space="preserve">
+    <value>匈牙利</value>
+  </data>
+  <data name="Country_IE" xml:space="preserve">
+    <value>爱尔兰</value>
+  </data>
+  <data name="Country_IS" xml:space="preserve">
+    <value>冰岛</value>
+  </data>
+  <data name="Country_IT" xml:space="preserve">
+    <value>意大利</value>
+  </data>
+  <data name="Country_LT" xml:space="preserve">
+    <value>立陶宛</value>
+  </data>
+  <data name="Country_LU" xml:space="preserve">
+    <value>卢森堡</value>
+  </data>
+  <data name="Country_LV" xml:space="preserve">
+    <value>拉脱维亚</value>
+  </data>
+  <data name="Country_MT" xml:space="preserve">
+    <value>马耳他</value>
+  </data>
+  <data name="Country_NL" xml:space="preserve">
+    <value>荷兰</value>
+  </data>
+  <data name="Country_NO" xml:space="preserve">
+    <value>挪威</value>
+  </data>
+  <data name="Country_PL" xml:space="preserve">
+    <value>波兰</value>
+  </data>
+  <data name="Country_PT" xml:space="preserve">
+    <value>葡萄牙</value>
+  </data>
+  <data name="Country_RO" xml:space="preserve">
+    <value>罗马尼亚</value>
+  </data>
+  <data name="Country_SE" xml:space="preserve">
+    <value>瑞典</value>
+  </data>
+  <data name="Country_SI" xml:space="preserve">
+    <value>斯洛文尼亚</value>
+  </data>
+  <data name="Country_SK" xml:space="preserve">
+    <value>斯洛伐克</value>
+  </data>
+  <data name="Country_UK" xml:space="preserve">
+    <value>英国</value>
+  </data>
 </root>

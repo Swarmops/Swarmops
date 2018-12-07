@@ -130,7 +130,7 @@
     <value>Il tuo messaggio</value>
   </data>
   <data name="SendMassMessage_Info" xml:space="preserve">
-    <value>Invia una messaggio a un determinato gruppo di persone all'interno dell'organizzazione. Puoi inviare il messaggio via email (buona per novità e informazioni generali) oppure come messaggio sul cellulare (molto invasiva, e anche un pò costosa).</value>
+    <value>Invia un messaggio ad un determinato gruppo di persone all'interno dell'organizzazione. Puoi inviare il messaggio via email (buono per novità e informazioni generali) oppure come messaggio sul cellulare (molto invasiva, e anche un po' costosa).</value>
   </data>
   <data name="SendMassMessage_MessageHint" xml:space="preserve">
     <value>Digita qui il tuo messaggio. Si possono usare markup standard come *bold*, _italic_, ==headers== e simili. Due nuove righe danno inizio a un nuovo paragrafo. La mail verrà inviata come cleartext dual-mode e HTML.</value>

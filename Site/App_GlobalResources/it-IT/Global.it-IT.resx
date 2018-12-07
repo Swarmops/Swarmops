@@ -237,10 +237,10 @@
     <comment>Displayed when an account/position etc is vacant</comment>
   </data>
   <data name="Global_Owner" xml:space="preserve">
-    <value>Propietario</value>
+    <value>Proprietario</value>
   </data>
   <data name="Global_ProcessingFile" xml:space="preserve">
-    <value>Procesando l'Archivio...</value>
+    <value>Processando l'Archivio...</value>
     <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
   <data name="Global_UploadFile" xml:space="preserve">
@@ -252,7 +252,7 @@
     <comment>Used as header above upload sections.</comment>
   </data>
   <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
-    <value>Per favore seleziona un'archivio per caricare.</value>
+    <value>Per favore seleziona un archivio per caricare.</value>
     <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
   </data>
   <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
@@ -289,10 +289,10 @@
     <value>Anticipi in Contanti</value>
   </data>
   <data name="Financial_ExpenseClaims" xml:space="preserve">
-    <value>Spensi</value>
+    <value>Costi</value>
   </data>
   <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
-    <value>Reclamo di Spese</value>
+    <value>Reclamo di Costi</value>
   </data>
   <data name="Financial_InboundInvoices" xml:space="preserve">
     <value>Fatture</value>
@@ -319,7 +319,7 @@
     <value>Oggi</value>
   </data>
   <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
-    <value>Modo di Costo</value>
+    <value>Tipologia di Costo</value>
     <comment>Second-dimension bookkeeping</comment>
   </data>
   <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
@@ -331,25 +331,25 @@
     <comment>List of shortcuts to related actions to current one</comment>
   </data>
   <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>Spensa #{0:N0} (meno anticipo #{1:N0})</value>
+    <value>Spesa #{0:N0} (meno anticipo #{1:N0})</value>
   </data>
   <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>Spense {0:N0} (meno anticipi)</value>
+    <value>Spese {0:N0} (meno anticipi)</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
-    <value>Spense {0} (meno anticipo #{1})</value>
+    <value>Spese {0} (meno anticipo #{1})</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
-    <value>Spense {0} (mino anticipi)</value>
+    <value>Spese {0} (mino anticipi)</value>
   </data>
   <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
-    <value>Reclamo di Spesa #{0:N0} da {1}</value>
+    <value>Reclamo Spesa #{0:N0} da {1}</value>
   </data>
   <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
     <value>Fattura Entrante #{0:N0} da {1}</value>
   </data>
   <data name="Financial_ReceiptSpecification" xml:space="preserve">
-    <value>Immagine di Ricevuta {0} di {1}</value>
+    <value>Immagine Ricevuta {0} di {1}</value>
   </data>
   <data name="Global_ImageSpecification" xml:space="preserve">
     <value>Immagine {0} di {1}</value>
@@ -374,13 +374,13 @@
     <comment>For yes/no options</comment>
   </data>
   <data name="Financial_Asset" xml:space="preserve">
-    <value>Averi</value>
+    <value>Risorse</value>
   </data>
   <data name="Financial_Cost" xml:space="preserve">
     <value>Spese</value>
   </data>
   <data name="Financial_Debt" xml:space="preserve">
-    <value>Passivo</value>
+    <value>Passività</value>
   </data>
   <data name="Financial_Income" xml:space="preserve">
     <value>Reddito</value>
@@ -442,7 +442,7 @@
     <comment>Somebody's telephone number. Mobile assumed.</comment>
   </data>
   <data name="Global_Custom" xml:space="preserve">
-    <value>Personalizare</value>
+    <value>Personalizza</value>
     <comment>As in "show me the advanced options"</comment>
   </data>
   <data name="Global_Create" xml:space="preserve">
@@ -473,7 +473,7 @@
     <comment>Fourth quarter of the year</comment>
   </data>
   <data name="Global_Timestamp" xml:space="preserve">
-    <value>Marca di tempo</value>
+    <value>Data pubblicazione</value>
   </data>
   <data name="Ledgers_Balance" xml:space="preserve">
     <value>Bilancio</value>
@@ -500,7 +500,7 @@
     <comment>Legal gender</comment>
   </data>
   <data name="Global_UnknownUndisclosed" xml:space="preserve">
-    <value>Sconosciuto o Non Difuso</value>
+    <value>Sconosciuto o Non Diffuso</value>
     <comment>Used for gender et al</comment>
   </data>
   <data name="Global_DateFormatShortReadable" xml:space="preserve">
@@ -515,14 +515,14 @@
     <value>cinque anni</value>
   </data>
   <data name="Timespan_Forever" xml:space="preserve">
-    <value>tempo di vita</value>
+    <value>durata</value>
     <comment>Like "a lifetime membership"</comment>
   </data>
   <data name="Timespan_OneMonth" xml:space="preserve">
-    <value>un messe</value>
+    <value>un mese</value>
   </data>
   <data name="Timespan_OneYear" xml:space="preserve">
-    <value>un'anno</value>
+    <value>un anno</value>
   </data>
   <data name="Timespan_TwoYears" xml:space="preserve">
     <value>due anni</value>
@@ -547,7 +547,7 @@
     <value>Codice Postale</value>
   </data>
   <data name="Error_AjaxCallException" xml:space="preserve">
-    <value>È accaduto un'errore generale e non specificato contattando al servitore di Swarmops. La rete è ancora operativa e il servitore è disponibile?</value>
+    <value>C'è stato un errore generale e non specificato nel contattare il server di Swarmops. La rete è ancora operativa e il server è disponibile?</value>
   </data>
   <data name="Global_Month" xml:space="preserve">
     <value>Mese</value>
@@ -596,10 +596,10 @@
     <comment>as in "Created by: System" for roles, transactions etc.</comment>
   </data>
   <data name="Financial_SalariesDualSpecification" xml:space="preserve">
-    <value>Stipendio {0} per {1:yyyy-MMM}</value>
+    <value>Stipendi {0} per {1:yyyy-MMM}</value>
   </data>
   <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
-    <value>Tasse di Stipendio per {0:yyyy-MMM}</value>
+    <value>Imposte sullo Stipendio per {0:yyyy-MMM}</value>
   </data>
   <data name="Financial_SalaryDualSpecification" xml:space="preserve">
     <value>Stipendio #{0:N0} per {1:yyyy-MMM}</value>
@@ -612,30 +612,30 @@
     <value>Stipendio #{0:N0}</value>
   </data>
   <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
-    <value>Tasse per Stipendio #{0:N0} da {1:yyyy-MMM}</value>
+    <value>Imposte su Stipendio #{0:N0} da {1:yyyy-MMM}</value>
   </data>
   <data name="Financial_Account" xml:space="preserve">
     <value>Account</value>
     <comment>as in bookkeeping or ledger account</comment>
   </data>
   <data name="Financial_Amount" xml:space="preserve">
-    <value>Quantità</value>
+    <value>Importo</value>
     <comment>as in amount of money</comment>
   </data>
   <data name="Global_Add" xml:space="preserve">
-    <value>Aggiungere</value>
+    <value>Aggiungi</value>
     <comment>as in "add element", "add row", etc</comment>
   </data>
   <data name="Global_Several_Display" xml:space="preserve">
-    <value>(molti)</value>
+    <value>(parecchi)</value>
     <comment>Displayed when multiple items</comment>
   </data>
   <data name="Global_Several_SelectOne" xml:space="preserve">
-    <value>-- Molti - seleziona --</value>
+    <value>-- Parecchi - seleziona --</value>
     <comment>Displayed when multiple choice</comment>
   </data>
   <data name="Sidebar_Options" xml:space="preserve">
-    <value>Impostazioni</value>
+    <value>Opzioni</value>
     <comment>For various page-specific checkboxes etc</comment>
   </data>
   <data name="Global_LoadingPlaceholder" xml:space="preserve">
@@ -648,10 +648,10 @@
     <value>(nessuna corrispondenza)</value>
   </data>
   <data name="Global_Working" xml:space="preserve">
-    <value>Lavorando...</value>
+    <value>Elaborando...</value>
   </data>
   <data name="Global_Error_WebsocketFailure" xml:space="preserve">
-    <value>Impossibile connettersi a WebSocket. Gli aggiornamenti in diretto non saranno disponibili.</value>
+    <value>Impossibile connettersi a WebSocket. Gli aggiornamenti live non saranno disponibili.</value>
   </data>
   <data name="Error_CurrencyParsing" xml:space="preserve">
     <value>Swarmops non capisce il tuo importo in valuta. (Mille soldi e zero centesimi sono scritti come "{0:N2}".) Riprovare?</value>
@@ -684,7 +684,7 @@
     <value>Un mese</value>
   </data>
   <data name="Timespan_Selection_OneYear" xml:space="preserve">
-    <value>Un'anno</value>
+    <value>Un anno</value>
   </data>
   <data name="Timespan_Selection_SixMonths" xml:space="preserve">
     <value>Sei mesi</value>
@@ -763,40 +763,40 @@
     <value>Proibito Ripristino di Password</value>
   </data>
   <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
-    <value>L'e-mail dell'utente è stato modificato recentemente (meno di una settimana fa). Per sicurezza, un link di ripristino di password non può essere e non sarà inviato a un'e-mail recentemente modificato.</value>
+    <value>L'email dell'utente è stato modificato recentemente (meno di una settimana fa). Per sicurezza, un link di ripristino di password non può essere e non sarà inviato a un'email recentemente modificato.</value>
   </data>
   <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
-    <value>È stato invitato un link di ripristinamento della password a questo utente.</value>
+    <value>È stato invitato un link di ripristino della password a questo utente.</value>
   </data>
   <data name="Global_2FA" xml:space="preserve">
-    <value>Autenticazione di due fattori</value>
+    <value>Autenticazione a due fattori</value>
   </data>
   <data name="Global_2FA_Short" xml:space="preserve">
-    <value>Autenticazione di due fattori</value>
+    <value>Autenticazione a due fattori</value>
   </data>
   <data name="Global_2FA_Shorter" xml:space="preserve">
     <value>A2F</value>
   </data>
   <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
-    <value>&lt;strong&gt;NON PUÒ PROVVEDERE A2F&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non puoi attivare l'autenticazione di due fattori per qualcun'altro. Deve farlo per se stesso, quindi essere da solo per ottenere i propri chiavi secreti.</value>
+    <value>&lt;strong&gt;NON PUÒ PROVVEDERE A2F&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non puoi attivare l'autenticazione a due fattori per qualcun altro. Deve farlo per se stesso, quindi essere da solo per ottenere le proprie chiavi segrete.</value>
     <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
   </data>
   <data name="Master_EditPerson2FAEnable_ConfirmingRemovedOwn" xml:space="preserve">
-    <value>L'autenticazione di due fattori è stata disabilitata. Adesso devi accedere con una password normale.</value>
+    <value>L'autenticazione a due fattori è stata disabilitata. Adesso devi accedere con una password normale.</value>
   </data>
   <data name="Master_EditPerson2FAEnable_ConfirmingRemovedProvision" xml:space="preserve">
-    <value>L'autenticazione di due fattori è stato rimosso per questo utente. Adesso deve accedere con una password normale.</value>
+    <value>L'autenticazione a due fattori è stata rimossa per questo utente. Adesso devi accedere con una password normale.</value>
   </data>
   <data name="Master_EditPerson2FAEnable_ConfirmRemoveOwn" xml:space="preserve">
-    <value>&lt;strong&gt;DISABILITARE L'AUTENTICAZIONE DI DUE FATTORI?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Questo non è consigliato. L'autenticazione di due fattori aumenta in modo significativo la sicurezza del tuo account, e anche aiuta ad accedere più facilmente se stai usando BitID.&lt;br/&gt;&lt;br/&gt;Rimuovere l'A2F e ricorrere all'autenticazione soltanto con la password?</value>
+    <value>&lt;strong&gt;DISABILITARE L'AUTENTICAZIONE DI DUE FATTORI?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Questo non è consigliato. L'autenticazione a due fattori aumenta in modo significativo la sicurezza del tuo account, e anche aiuta ad accedere più facilmente se stai usando BitID.&lt;br/&gt;&lt;br/&gt;Rimuovere l'A2F e ricorrere all'autenticazione soltanto con la password?</value>
     <comment>Displayed when removing 2FA for yourself</comment>
   </data>
   <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
-    <value>&lt;strong&gt;RIMUOVERE L'AUTENTICAZIONE DI DUE FATTORI?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Fai questo solo se ti è stato chiesto disattivare l'A2F di questo utente, da questo utente stesso, &lt;strong&gt;e&lt;/strong&gt; sei assolutamente sicuro che la richiesta proviene dalla persona la cui sicurezza stai disabilitando (secondo la politica di verifica dell'organizzazione). &lt;br/&gt;&lt;br/&gt;Procedere con la rimozione della sicurezza di questo utente? Loro torneranno alla sicurezza soltanto con una password.</value>
+    <value>&lt;strong&gt;RIMUOVERE L'AUTENTICAZIONE A DUE FATTORI?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Fai questo solo se ti è stato chiesto disattivare l'A2F di questo utente, da questo utente stesso, &lt;strong&gt;e&lt;/strong&gt; sei assolutamente sicuro che la richiesta proviene dalla persona la cui sicurezza stai disabilitando (secondo la politica di verifica dell'organizzazione). &lt;br/&gt;&lt;br/&gt;Procedere con la rimozione della sicurezza di questo utente? Torneranno in sicurezza soltanto con una password.</value>
     <comment>Displayed when removing 2FA for someone else</comment>
   </data>
   <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
-    <value>L'autenticazione di due fattori non è stata rimossa ed è ancora attiva.</value>
+    <value>L'autenticazione a due fattori non è stata rimossa ed è ancora attiva.</value>
   </data>
   <data name="Timespan_Selection_OneDay" xml:space="preserve">
     <value>Un giorno</value>
@@ -811,30 +811,20 @@
     <value>Due settimane</value>
   </data>
   <data name="Master_BitIdRegistered" xml:space="preserve">
-    <value>&lt;strong&gt;BITID DELL'AUTENTICAZIONE DI DUE FATTORI È STATA ABILITATA CON SUCCESSO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Da ora in poi, quando accedi nel sistema, devi usare l'applicazione BitID che hai appena usato per la scansione del codice.</value>
+    <value>&lt;strong&gt;BITID DELL'AUTENTICAZIONE DI DUE FATTORI È STATA ABILITATA CON SUCCESSO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Da ora in poi, quando accedi al sistema, devi usare l'applicazione BitID che hai appena usato per la scansione del codice.</value>
   </data>
   <data name="Master_BitIdRegister_Fail" xml:space="preserve">
-    <value>L'autenticazione di due fattori del BitID non è stato abilitato.</value>
+    <value>L'autenticazione a due fattori del BitID non è stata abilitata.</value>
   </data>
   <data name="Master_BitIdRegister_Header" xml:space="preserve">
     <value>Fare la scansione di questo codice per abilitare il BitID</value>
   </data>
-  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
-    <value>&lt;h3&gt;Cos'è?&lt;/h3&gt;
-                &lt;p&gt;BitID è una forma sicura di accedere con meno problemi di inserire una password. La sua semplicità non può essere spiegata, solo esperimentata, ed è un'autenticazione di due fattori poiché utilizza il telefono.&lt;/p&gt;
-                &lt;h3&gt;Questo non richiede anche che il mio telefono sia protetto?&lt;/h3&gt;
-                &lt;p&gt;Va bene, sì. È il tuo telefono ed è la protezione d'accesso del tuo telefono. Mai il tuo telefono dovrebbe avere sempre una accessibilità protetta.&lt;/p&gt;
-                &lt;h3&gt;Ho bisogno di un'app per questo?&lt;/h3&gt;
-                &lt;p&gt;Chissà. Alcuni portafogli mobili di bitcoin hanno BitID incluso. Quelli più comune non c'è l'hanno. Se il tuo non c'è l'ha, cerca un'app chiamata "Autenticatore BitID " o un'altra simile. &lt;/p&gt;
-                &lt;h3&gt;Come attivo BitID?&lt;/h3&gt;
-                &lt;p&gt;Solo devi utilizzare l'app del tuo telefono per fare la scansione di questo codice. Dopo, puoi fare la scansione di un codice simile per accedere a questo sistema.&lt;/p&gt;</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
-  </data>
+  
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
-    <value>L'autenticazione di due fattori del BitID (firma bitcoin)</value>
+    <value>L'autenticazione a due fattori del BitID (firma bitcoin)</value>
   </data>
   <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
-    <value>L'autenticazione di due fattori del BitID</value>
+    <value>L'autenticazione a due fattori del BitID</value>
   </data>
   <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
     <value>Scrivi la password attuale per abilitare le modifiche</value>
@@ -843,16 +833,16 @@
     <value>Tua Sicurezza</value>
   </data>
   <data name="Master_EditPersonNewPassword1" xml:space="preserve">
-    <value>Stabilire una nuova password</value>
+    <value>Imposta una nuova password</value>
   </data>
   <data name="Master_EditPersonNewPassword2" xml:space="preserve">
     <value>Riscrivi la nuova password</value>
   </data>
   <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
-    <value>Non si può stabilire la nova password: la password anteriore non è giusta.</value>
+    <value>Non è possibile installare la nuova password: la vecchia è errata.</value>
   </data>
   <data name="Master_EditPersonNewPassword_CannotChange_TooWeak" xml:space="preserve">
-    <value>Non si può stabilire la nuova password: La nuova password è di bassa sicurezza. Utilizzare una password più sicura.</value>
+    <value>Non è possibile impostare la nuova password: La nuova password è debole. Utilizzare una password più sicura.</value>
   </data>
   <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
     <value>&lt;strong&gt;PASSWORD MODIFICATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Hai modificato la tua password con successo. Come misura di sicurezza, per le prossime 48 ore tutti i prelievi sono in quarantena.</value>
@@ -907,7 +897,7 @@
     <value>Cliente</value>
   </data>
   <data name="Global_Progress" xml:space="preserve">
-    <value>Progresso</value>
+    <value>Avanzamento</value>
     <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
   </data>
   <data name="Financial_TransactionIdShort" xml:space="preserve">
@@ -922,7 +912,7 @@
     <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
   </data>
   <data name="Global_SendThisInMail" xml:space="preserve">
-    <value>Inviarmi questo via mail</value>
+    <value>Inviami questo via mail</value>
   </data>
   <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
     <value>Contanti</value>
@@ -941,7 +931,7 @@
     <comment>Keep short - seven chars max</comment>
   </data>
   <data name="Financial_BitcoinChain" xml:space="preserve">
-    <value>Catena</value>
+    <value>Chain</value>
     <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
   </data>
   <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
@@ -982,4 +972,5 @@
   <data name="Global_EnteringSandbox" xml:space="preserve">
     <value>Stai entrando nel &lt;strong&gt;Sandbox&lt;/strong&gt;dell'organizzazione.&lt;br/&gt;&lt;br/&gt;Questo è un ambiente sicuro dove si può giocare con Swarmops senza rischiare di danneggiare i dati di produzione. Divertiti quanto vuoi, e ritorna al tuo ambiente di produzione quando hai finito di sperimentare.</value>
   </data>
+  
 </root>

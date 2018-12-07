@@ -124,7 +124,34 @@
   
   
   
+  <data name="Title_Agent_Female" xml:space="preserve">
+    <value>Agentka</value>
+  </data>
+  <data name="Title_Agent_Generic" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="Title_Agent_Male" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="Title_Agent_Plural" xml:space="preserve">
+    <value>Agenci</value>
+  </data>
+  <data name="Title_Agent_Ship" xml:space="preserve">
+    <value>Agencja</value>
+  </data>
   
+  <data name="Title_Ambassador_Female" xml:space="preserve">
+    <value>Ambasadorka</value>
+  </data>
+  <data name="Title_Ambassador_Generic" xml:space="preserve">
+    <value>Ambasador</value>
+  </data>
+  <data name="Title_Ambassador_Male" xml:space="preserve">
+    <value>Ambasador</value>
+  </data>
+  <data name="Title_Ambassador_Plural" xml:space="preserve">
+    <value>Ambasadorzy</value>
+  </data>
   
   
   
@@ -156,6 +183,14 @@
   
   
   
+  <data name="Title_Customer_Generic" xml:space="preserve">
+    <value>Klient</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Customer_Male" xml:space="preserve">
+    <value>Klient</value>
+    <comment>Male singular</comment>
+  </data>
   
   
   
@@ -165,6 +200,21 @@
   
   
   
+  <data name="Title_Member_Female" xml:space="preserve">
+    <value>Członkini</value>
+  </data>
+  <data name="Title_Member_Generic" xml:space="preserve">
+    <value>Członek</value>
+  </data>
+  <data name="Title_Member_Male" xml:space="preserve">
+    <value>Członek</value>
+  </data>
+  <data name="Title_Member_Plural" xml:space="preserve">
+    <value>Członkowie</value>
+  </data>
+  <data name="Title_Member_Ship" xml:space="preserve">
+    <value>Członkostwo</value>
+  </data>
   
   
   
@@ -196,26 +246,18 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Title_Salesperson_Female" xml:space="preserve">
+    <value>Sprzedawczyni</value>
+  </data>
+  <data name="Title_Salesperson_Generic" xml:space="preserve">
+    <value>Sprzedawca</value>
+  </data>
+  <data name="Title_Salesperson_Male" xml:space="preserve">
+    <value>Sprzedawca</value>
+  </data>
+  <data name="Title_Salesperson_Plural" xml:space="preserve">
+    <value>Sprzedawcy</value>
+  </data>
   
   
   

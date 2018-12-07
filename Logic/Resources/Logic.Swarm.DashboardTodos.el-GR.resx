@@ -117,19 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Attest_CashAdvance_Many" xml:space="preserve">
+    <value>Πιστοποίηση προκαταβολών μετρητών {0}</value>
+  </data>
+  <data name="Attest_CashAdvance_One" xml:space="preserve">
+    <value>Πιστοποίηση προκαταβολής μετρητών #{0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
+    <value>Πιστοποίηση διεκδικήσεων εξόδων {0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_One" xml:space="preserve">
+    <value>Πιστοποίηση διεκδίκησης εξόδων #{0}</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>Ορισμός διεύθυνσης πληρωμών Bitcoin Cash</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>Παρακαλούμε ορίστε τη διεύθυνσή σας για πληρωμές Bitcoin Cash από [InstallationName] (αρχίζει με "bitcoincash"):</value>
+  </data>
+  <data name="Payout_Many" xml:space="preserve">
+    <value>Διευθέτηση {0} πληρωμών</value>
+    <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
+  </data>
+  <data name="Payout_One" xml:space="preserve">
+    <value>Διευθέτηση μίας πληρωμής</value>
+  </data>
+  <data name="Payout_Overdue_Many" xml:space="preserve">
+    <value>Διευθέτηση {0} εκπρόθεσμων πληρωμών</value>
+  </data>
+  <data name="Payout_Overdue_One" xml:space="preserve">
+    <value>Διευθέτησης μίας εκπρόθεσμης πληρωμής</value>
+  </data>
+  <data name="Payout_Urgent_Many" xml:space="preserve">
+    <value>Διευθέτηση {0} επείγουσων πληρωμών</value>
+  </data>
+  <data name="Payout_Urgent_One" xml:space="preserve">
+    <value>Διευθέτηση μίας επείγουσας πληρωμής</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>Ενεργοποίηση ελέγχου ταυτότητας δύο σημείων</value>
+  </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>Επαλήθευση διεκδικήσεων {0}</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>Επαλήθευση διεκδίκησης #{0}</value>
+  </data>
 </root>

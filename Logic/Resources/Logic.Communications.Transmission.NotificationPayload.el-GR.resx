@@ -117,92 +117,379 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>Ένα νέο άτομο αιτήθηκε για [RegularTitle] στον οργανισμό [OrganizationName]! Ο/Η [ConcernedPersonName] διαμένει στην [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] Νέος Υποψήφιος: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>Κατά την προσπάθεια αποστολής μίας πληρωμής στην Bitcoin Cash διεύθυνσή σας, η διεύθυνση ([BitcoinAddress]) απορρίφθηκε από τη μηχανή πληρωμών ως μη έγκυρη. Επομένως αφαιρέθηκε από το προφίλ σας. 
+
+Παρακαλώ συνδεθείτε στο [InstallationName] που βρίσκεται στη διεύθυνση [ExternalUrl] και ορίστε μία νέα διεύθυνση πληρωμών bitcoin.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ΣΤΟΙΧΕΙΟ ΕΝΕΡΓΕΙΑΣ] Άκυρη διεύθυνση πληρωμής bitcoin</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>Πραγματοποιήσατε αλλαγή της διεύθυνσης πληρωμών Bitcoin Cash από [BitcoinOldAddress] σε [BitcoinAddress]. Ως προληπτικό μέτρο ασφάλειας, όλες οι πληρωμές αναστέλλονται για τις επόμενες 48 ώρες. 
+
+Εάν ΔΕΝ πραγματοποιήσατε αλλαγή αλλά υπάρχει η οποιαδήποτε παραβίαση ασφαλείας, παρακαλούμε κάντε κλικ αμέσως σε αυτό τον σύνδεσμο για να κλειδώσετε το λογαριασμό σας: [LockdownLink]
+
+Μόλις πατήσετε σε αυτό τον σύνδεσμο, ο λογαριασμός σας θα κλειδωθεί αμέσως χωρίς αίτημα επιβεβαίωσης.
+Παρόλα αυτά, αν εσείς ζητήσατε την αλλαγή διεύθυνσης, δεν χρειάζεται περαιτέρω ενέργεια από πλευράς σας.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Πραγματοποιήθηκε αλλαγή διεύθυνσης Bitcoin Cash</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>Υπάρχουν κεφάλαια σε αναμονή πληρωμής στον οργανισμό [OrganizationName], αλλά δεν έχετε ορίσει διεύθυνση πληρωμής Βitcoin Cash.
+
+Παρακαλώ συνδεθείτε στο [InstallationName] στο [ExternalUrl] και ακολουθήστε το σύνδεσμο για να ορίσετε τη διεύθυνση πληρωμών σας - θα τη βρείτε στη λίστα των ενεργειών που βρίσκονται σε εκκρεμότητα.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Παρακαλώ ορίστε τη διεύθυνση πληρωμών Bitcoin Cash</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>Έχετε ορίσει μία διεύθυνση πληρωμών Bitcoin Cash: [BitcoinAddress]. Ως προληπτικό μέτρο ασφαλείας, όλες οι πληρωμές αναστέλλονται για τις επόμενες 48 ώρες και θα καταβληθούν στη νέα διεύθυνση με το πέρας αυτών.
+
+Εάν δεν ορίσατε εσείς αυτή τη διεύθυνση πληρωμών (ίσως πρέπει να ξανα-ελέγξετε τη διεύθυνση για μεγαλύτερη ασφάλεια), επικοινωνήστε αμέσως με τον οργανισμό [OrganizationName].</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>Μια διεύθυνση πληρωμών Bitcoin Cash ορίστηκε από τον χρήστη [ConcernedPersonName]. Οι πληρωμές θα καταβληθούν 48 ώρες μετά την περίοδο αναστολής.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] έχει ορίσει μία διεύθυνση πληρωμών Bitcoin Cash</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Η διεύθυνση πληρωμών Bitcoin Cash έχει οριστεί</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>Το bitcoin hotwallet του οργανισμού [OrganizationName] μόλις πραγματοποίησε [PaymentCount] αυτόματες πληρωμές, συνολικής αξίας [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin ή "bits").</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Πληρωμή Hotwallet: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[BitcoinAmountFloat] microbitcoin ("bits") μεταφέρθηκαν μόλις στη διεύθυνση πληρωμών σας Bitcoin Cash ([BitcoinAddress]) από τον [OrganizationName] για τα ακόλουθα:
+
+[EmbeddedPreformattedText]
+
+Η συναλλαγή θα πρέπει να είναι ήδη ορατή στο πορτοφόλι σας, και το κεφάλαιο θα είναι διαθέσιμο σε περίπου μία ώρα (επιβεβαιώσεις).</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Κεφάλαιο που πληρώθηκε σε εσάς: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>Όταν πραγματοποιείται μία αυτόματη πληρωμή από το hotwallet, το ιδιωτικό κλειδί που χρησιμοποιείται για την υπογραφή δεν ταιριάζει με τα δημόσια κλειδιά που χρησιμοποιούνται για να συγκεντρώσουν το απαραίτητο κεφάλαιο. Αυτό είναι σοβαρό.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ΕΠΕΙΓΟΝ] Σφάλμα ιδιωτικού κλειδιού Bitcoin; αδυναμία πληρωμών</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Το λογισμικό Swarmops προσπαθεί να πραγματοποιήσει συνολικές πληρωμές [CurrencyCode] [AmountNeededFloat], ωστόσο μόνο [CurrencyCode] [AmountWalletFloat] είναι διαθέσιμα στο Bitcoin Cash hotwallet. Το λογισμικό Swarmops δεν μπορεί να πραγματοποιήσει πληρωμές τώρα. 
+
+Παρακαλούμε γεμίστε το hotwallet ΑΜΕΣΑ τουλάχιστον με το απαιτούμενο ποσό - ένα επιπλέον ποσό [AmountMissingMicrocoinsFloat] microbitcoin ("bits") απαιτείται για να συνεχιστούν οι οικονομικές συναλλαγές του hotwallet.
+
+Το λογισμικό Swarmops θα εξακολουθήσει να προσπαθεί και να στέλνει ειδοποιήσεις για το διάστημα μη επιτυχίας.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ΣΤΟΙΧΕΙΟ ΕΝΕΡΓΕΙΑΣ] Το Bitcoin Cash hotwallet είναι ανεπαρκές για πληρωμές - παρακαλούμε γεμίστε το άμεσα</value>
+  </data>
+  <data name="CashAdvance_Attested_Body" xml:space="preserve">
+    <value>Η προκαταβολή που ζητήσατε με τον [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], επιβεβαιώθηκε από τον ιδιοκτήτη του προϋπολογισμού. Τώρα θα πραγματοποιηθεί η πληρωμή σε εσάς.</value>
+  </data>
+  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Επιβεβαίωση Προκαταβολής: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
+    <value>Η προκαταβολή που ζητήσατε από τον Οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], δεν επιβεβαιώθηκε από τον ιδιοκτήτη του προϋπολογισμού. Αυτό συνήθως καταδεικνύει κάποιο πρόβλημα με το αίτημά σας.
+
+Να αναμένετε επικοινωνία από τον ιδιοκτήτη του λογαριασμού σχετικά με το θέμα σας.</value>
+  </data>
+  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Η Προκαταβολή δεν επιβεβαιώθηκε: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>Η προκαταβολή σας από τον οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat] σχετικά με [RequestPurpose] απορρίφθηκε. Παρακάτω θα δείτε το λόγο απόρριψης:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] ΑΠΟΡΡΙΨΗ Προκαταβολής: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>Η προκαταβολή που ζητήσατε από τον οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], έχει επισημανθεί ως πληρωμένη από τους λογιστές του οργανισμού. 
+
+Θα πρέπει να εμφανιστεί το ποσό στο λογαριασμό σας σύντομα.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Προκαταβολή Πληρώθηκε: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>Ο χρήστης [ConcernedPersonName] ζήτησε μία προκαταβολή [CurrencyCode] [BudgetAmountFloat] σχετικά με [RequestPurpose]. Τα χρήματα αυτά είναι μέρος του προϋπολογισμού σας, [BudgetName].
+
+Παρακαλώ συνδεθείτε στο [InstallationName] στη διεύθυνση [ExternalUrl]Financial/AttestCosts για να επιβεβαιώσετε ή να απορρίψετε.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ΣΤΟΙΧΕΙΟ ΕΝΕΡΓΕΙΑΣ] Ζητήθηκε Προκαταβολή: [CurrencyCode] [BudgetAmountFloat] - Απαιτείται Επιβεβαίωση</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+    <value>Η διεκδίκηση εξόδων σας από τον οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], που αφορά [RequestPurpose], έχει επιβεβαιωθεί από τον ιδιοκτήτη προϋπολογισμού. Θα πληρωθεί σε εσάς όταν επιβεβαιωθεί η εγκυρότητα των αποδείξεων.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Επιβεβαίωση Διεκδίκησης Εξόδων: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>Ο/Η [ConcernedPersonName] δημιούργησε διεκδίκηση εξόδων από τον προϋπολογισμό [BudgetName] για το ποσό των [CurrencyCode] [BudgetAmountFloat]. Η διεκδίκηση αφορά [RequestPurpose]. Χρειάζεται να επιβεβαιώσετε αυτή τη διεκδίκηση εξόδων.
+
+Παρακαλώ συνδεθείτε στο [InstallationName] σε [ExternalUrl]Financial/AttestCosts για να επιβεβαιώσετε ή να απορρίψετε.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ΣΤΟΙΧΕΙΟ ΕΝΕΡΓΕΙΑΣ] Δημιουργήθηκε Διεκδίκηση Εξόδων: [CurrencyCode] [BudgetAmountFloat] - Απαιτείται Επιβεβαίωση</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
+    <value>Η διεκδίκηση εξόδων που ζητήσατε από τον οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], δεν επιβεβαιώθηκε από τον ιδιοκτήτη του προϋπολογισμού. Αυτό συνήθως καταδεικνύει κάποιο πρόβλημα με το αίτημά σας.
+
+Να αναμένετε επικοινωνία από τον ιδιοκτήτη του προϋπολογισμού σχετικά με το θέμα σας.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Διεκδίκηση Εξόδων δεν επιβεβαιώθηκε: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>Η διεκδίκηση εξόδων σας από τον οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat] σχετικά με [RequestPurpose] απορρίφθηκε. Παρακάτω θα δείτε το λόγο απόρριψης:
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] ΑΠΟΡΡΙΨΗ Διεκδίκησης Εξόδων: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
+    <value>Οι αποδείξεις για τη διεκδίκηση εξόδων από τον [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], ΔΕΝ επιβεβαιώθηκαν από τους οικονομικούς ελεγκτές του οργανισμού. Αυτό συνήθως καταδεικνύει κάποιο πρόβλημα με τα δικαιολογητικά της διεκδίκησής σας.
+
+Να αναμένετε επικοινωνία σχετικά με το θέμα σας. Σε περίπτωση που οι ελεγκτές δεν επικοινωνήσουν μαζί σας, επικοινωνήστε εσείς μαζί τους.</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Οι Αποδείξεις Διεκδίκησης Εξόδων δεν εγκρίθηκαν: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>Η διεκδίκηση εξόδων σας από τον [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], έχει επισημανθεί ως πληρωμένη από τους λογιστές του οργανισμού. 
+
+Θα πρέπει να εμφανιστεί το ποσό στο λογαριασμό σας σύντομα.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Διεκδίκηση Εξόδων Πληρώθηκε: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>Οι αποδείξεις για τη διεκδίκηση εξόδων σας από τον οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], εγκρίθηκε από τους υπεύθυνους διατήρησης σωστών αρχείων. 
+
+Η διεκδίκησή σας θα πληρωθεί όταν επιβεβαιωθεί και το ποσό από τον ιδιοκτήτη προϋπολογισμού.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Οι Αποδείξεις Διεκδίκησης Εξόδων Εγκρίθηκαν: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Ένα τιμολόγιο από τον [Supplier], που αφορά [Description], έχει συμπληρωθεί για τον προϋπολογισμό σας [BudgetName] για το ποσό των [CurrencyCode] [BudgetAmountFloat]. Πρέπει να επιβεβαιώσετε αυτό το τιμολόγιο προτού προχωρήσει σε εξόφληση.
+
+Παρακαλούμε συνδεθείτε στο [InstallationName] σε [ExternalUrl]Financial/AttestCosts για να επιβεβαιώσετε ή να απορρίψετε.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ΣΤΟΙΧΕΙΟ ΕΝΕΡΓΕΙΑΣ] Αρχείο Τιμολογίου: [CurrencyCode] [BudgetAmountFloat] - Απαιτείται Επιβεβαίωση</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>Ένας νέος [Regular] προστέθηκε χειροκίνητα στον οργανισμό [OrganizationName] σε έναν από τους τομείς σας.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Νέος [Regular]: [PersonName], [PersonGeography] [CountryCode] (χειροκίνητη προσθήκη)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>Ενας νέος [Regular] έκανε εγγραφή στον οργανισμό [OrganizationName] σε έναν από τους τομείς σας.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Νέος [Regular]: [PersonName], [PersonGeography] [CountryCode]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [Regularship] ανανεώθηκε: [PersonName], [PersonGeography] [CountryCode] (χειροκίνητη ενέργεια)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+Το mail αυτό εστάλη στο χρήστη [Addressee] από τον οργανισμό [OrganizationName]. Εάν δεν επιθυμείτε να λαμβάνετε τέτοιες ειδοποιήσεις στο μέλλον, παρακαλώ συνδεθείτε στο [InstallationName] στη διεύθυνση [ExternalUrl] και αλλάξτε τις ρυθμίσεις ειδοποιήσεων.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Το μήνυμά σας έχει προστεθεί στην ουρά για παράδοση και οι παραλήπτες έχουν διορθωθεί. Το mail σας θα σταλεί σε, ή επιχειρείται να σταλεί σε, [RecipientCount] άτομα στην περιοχή [GeographyName] στον οργανισμό [OrganizationName].</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Παραλήπτες επικοινωνίας που έχουν καθοριστεί για [GeographyName]: [RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>Το μήνυμά σας στην περιοχή [GeographyName] εστάλη σε όλους τους προγραμματισμένους παραλήπτες. Από τους συνολικά [RecipientCount] παραλήπτες, [RecipientsSuccess] παρέλαβαν επιτυχώς -- σημειώστε πως ένα email μπορεί να μην παραδοθεί ή να μη διαβαστεί στη συνέχεια για διάφορους λόγους. 
+
+Χρόνος Επίλυσης: [ResolvingTime].
+Χρόνος Μετάδοσης: [TransmissionTime].
+Συνολικός χρόνος από τη δημιουργία επικοινωνίας ως την ολοκλήρωση: [TotalTime].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Η επικοινωνία πραγματοποιήθηκε: [GeographyName]</value>
+  </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>Ένα νέο άτομο έκανε εγγραφή σαν [RegularTitle] στον οργανισμό [OrganizationName]! Ο χρήστης [ConcernedPersonName] έχει έδρα την περιοχή [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Νέος [RegularTitle]: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Κάποιος, κατά πάσα πιθανότητα εσείς, ζήτησε επαναφορά κωδικού που συνδέεται με αυτό το email [InstallationName]. Ωστόσο, έχει ενεργοποιηθεί επαλήθευση δύο σημείων για αυξημένη ασφάλεια. Επομένως, ο κωδικός ΔΕΝ μπορεί να ανακτηθεί με απλό τρόπο. 
+
+Παρακαλούμε να έλθετε σε επαφή με έναν διαχειριστή του [InstallationName] για να επιλύσει το πρόβλημά σας και να εκδώσει έναν νέο κωδικό ακολουθώντας μία πιο αυστηρή διαδικασία ταυτοποίησης που να ταιριάζει στο επίπεδο ασφαλείας των δύο σημείων. 
+
+Ευχαριστούμε για την κατανόηση.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Αδύνατη η επαναφορά κωδικού</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>Ο κωδικός σας στο [InstallationName] μόλις άλλαξε στη διεύθυνση [ExternalUrl].
+
+Στην περίπτωση που δεν πραγματοποιήσατε εσείς την αλλαγή κωδικού, υπάρχει παραβίαση ασφαλείας. Εάν ισχύει αυτό, παρακαλούμε κλειδώστε το λογαριασμό σας ΑΜΕΣΩΣ πατώντας στον παρακάτω σύνδεσμο:
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+Μόλις επιβεβαιώσετε κλείδωμα του λογαριασμού σας με τον παραπάνω σύνδεσμο, οποιαδήποτε υπάρχουσα σύνδεση θα τερματιστεί αμέσως, όποιες συνδέσεις με τον νέο κωδικό θα κλειδωθούν εκτός συστήματος, και οι διαχειριστές θα επικοινωνήσουν μαζί σας για να επιβεβαιώσουν τι συνέβη και να επανενεργοποιήσετε τον λογαριασμό σας. 
+
+Αν ωστόσο εσείς αλλάξατε τον κωδικό μόλις τώρα και γιαυτό εστάλη αυτή η ειδοποίηση, όλα είναι εντάξει. Συνεχίστε.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Ο Κωδικός Άλλαξε</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>Άτομα στον οργανισμό [OrganizationName] έχουν εκδώσει μία εντολή για επαναφορά κωδικού του λογαριασμού σας, προφανώς μετά από δικό σας αίτημα. Η εντολή αυτή ισχύει για τις επόμενες 24 ώρες. 
+
+Παρακαλούμε ακολουθήστε αυτό το σύνδεσμο για να επαναφέρετε τον κωδικό σας και να επανενεργοποιήσετε την ταυτοποίηση δύο σημείων, εάν αυτή ήταν ενεργοποιημένη και πριν.
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Η εντολή θα λήξει σε 24 ώρες. Αν δεν επαναφέρετε τον κωδικό σας σε αυτό το διάστημα, θα πρέπει να επικοινωνήσετε με τους διαχειριστές του οργανισμού [OrganizationName] για να σας εκδώσουν μία νέα εντολή επαναφοράς κωδικού.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Εντολή Επαναφοράς Κωδικού</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Κάποιος, κατά πάσα πιθανότητα εσείς, ζήτησε επαναφορά κωδικού που συνδέεται με αυτό το email [InstallationName]. Εάν εσείς το ζητήσατε, παρακαλούμε ακολουθήστε τον παρακάτω σύνδεσμο στα επόμενα 60 λεπτά για να ολοκληρώσετε τη διαδικασία επαναφοράς κωδικού:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Εάν ΔΕΝ ζητήσατε εσείς επαναφορά κωδικού, μπορείτε (και θα πρέπει) να αγνοήσετε αυτό το μήνυμα. Το αίτημα επαναφοράς κωδικού θα λήξει σε μία ώρα. (Αν λαμβάνετε μεγάλο αριθμό συνδέσμων επαναφοράς κωδικού, τα οποία δεν ζητήσατε εσείς, παρακαλούμε ειδοποιήστε τον διαχειριστή.)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Εντολή Επαναφοράς Κωδικού</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>Έχουν κατατεθεί αποδείξεις που χρειάζονται επικύρωση για την ολοκλήρωση των οικονομικών διαδικασιών. 
+
+Παρακαλούμε συνδεθείτε στο [InstallationName] στη διεύθυνση [ExternalUrl]Financial/ValidateReceipts για να τις επικυρώσετε ή να τις απορρίψετε.</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ΣΤΟΙΧΕΙΟ ΕΝΕΡΓΕΙΑΣ] Κατάθεση Αποδείξεων - Απαιτείται Επικύρωση</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>Η πληρωμή σας για τον σκοπό [RequestPurpose] ακυρώθηκε. Δεν θα πραγματοποιηθεί πληρωμή. 
+
+Εάν αυτό σας είναι απρόσμενο, παρακαλούμε επικοινωνήστε με τον οργανισμό και/ή με τον ανώτερό σας άμεσα. Δόθηκε η παρακάτω αιτιολογία:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Άρνηση πληρωμής μισθού: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>Αυτή είναι η δήλωση της μισθοδοσίας σας σας για το έτος [LastYear]. Δεν είναι δήλωση νέου μισθού, αλλά εκκαθαριστική δήλωση των μηνιαίων ποσών πληρωτέων σε εσάς κατά τη διάρκεια του προηγούμενου έτους και των παρακρατηθέντων φόρων. Σκοπός της δήλωσης είναι για να το κρατήσετε στο αρχείο σας και/ή για φορολογικούς σκοπούς του προηγούμενου έτους.  
+
+Μεικτός μισθός για το έτος [LastYear]:  [CurrencyCode]  [GrossSalaryTotal]
+Φόρος που παρακρατήθηκε: [CurrencyCode] [TaxDeductedTotal]	
+Καθαρή πληρωμή μισθού: [CurrencyCode]  [NetSalaryTotal]
+
+
+Μήνας       Μεικτός    Παρακράτηση          Καθαρό πληρωτέο ποσό 
+-----  ----------  -----------  ----------  -----------
+[EmbeddedPreformattedText]
+
+ΣΥΝΟΛΟ  [GrossSalaryTotal]  [TaxDeductedTotal]  [NetSalaryTotal]
+
+
+Επιπλέον, [CurrencyCode] [TaxAdditiveTotalUnpadded] έχουν καταβληθεί σε φόρους εκ μέρους του οργανισμού για την εργασία σας, επιπρόσθετα του ποσού που παρακρατήθηκε παραπάνω. Έχει επιβληθεί φόρος και στο μισθό σας, παρόλο που, για λόγους γραφειοκρατίας, δεν υποδεικνύεται.</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Εκκαθαριστική δήλωση μισθοδοσίας για το έτος [LastYear]</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>Το παρασκήνιο Swarmops έκδοσης [SwarmopsVersion] που βρίσκεται στον εξυπηρετητή [HostName] έχει αναβαθμίσει επιτυχώς τη βάση δεδομένων Swarmops στην αναθεωρημένη έκδοση [DbVersion].
+
+Το μήνυμα αυτό είναι ενημερωτικό. Δεν χρειάζεται κάποια ενέργεια από πλευράς σας.</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>Η βάση δεδομένων Swarmops αναβαθμίστηκε</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>Η διαδικασία αναβάθμισης της βάσης δεδομένων στο παρασκήνιο του Swarmops, έκδοσης [SwarmopsVersion], που βρίσκεται στον εξυπηρετητή [Hostname] ΑΠΕΤΥΧΕ. Αυτό συνήθως οφείλεται σε κάποιο παροδικό σφάλμα του εξωτερικού δικτύου, που δεν επιτρέπει την ανάκτηση του αρχείου διορθωσης.
+
+Αυτή τη στιγμή ισχύει η έκδοση βάσης δεδομένων [DbVersion], αλλά γίνεται προσπάθεια αναβάθμισης σε έκδοση [DbVersionExpected].
+
+Απόπειρα αναβάθμισης θα πραγματοποιείται κάθε ώρα. Κάποιες λειτουργίες ίσως να είναι απενεργοποιημένες μέχρι την αναβάθμιση της βάσης δεδομένων. Αν επιθυμείτε να το επιχειρήσετε χειροκίνητα, τα πακέτα αναβάθμισης της βάσης δεδομένων προέρχονται από τη διεύθυνση packages.swarmops.com, το ίδιο σημείο που προέρχονται τα πακέτα λογισμικού των εντολών apt-get.</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>Η αναβάθμιση βάσης δεδομένων του Swarmops ΑΠΕΤΥΧΕ</value>
+  </data>
+  <data name="System_Exception_Body" xml:space="preserve">
+    <value>Υπήρξε μία ανεπίλυτη εξαίρεση στο Swarmops:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="System_Exception_Subject" xml:space="preserve">
+    <value>Swarmops ΕΞΑΙΡΕΣΗ!</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>Αυτό είναι ένα δοκιμαστικό μήνυμα που στάλθηκε από την έκδοση [SwarmopsVersion] του Swarmops που τρέχει στον εξυπηρετητή [HostName]. Μόλις αλλάξατε τις ρυθμίσεις του διακομιστή mail. Για να επιβεβαιώσουμε ότι οι νέες ρυθμίσεις είναι σωστές, το Swarmops αποστέλλει το δοκιμαστικό μήνυμα από το παρασκήνιο.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Δοκιμή Διακομιστή Αλληλογραφίας Swarmops</value>
+  </data>
+  <data name="System_PublicRootReset_Body" xml:space="preserve">
+    <value>Το δημόσιο κλειδί bitcoin στη βάση δεδομένων MySql δεν ταιριάζει με το ιδιωτικό κλειδί ρίζας που είναι αποθηκευμένο στο /etc/swarmops στον εξυπηρετητή [HostName]. Αυτό είναι πιθανότατα μία σοβαρή κατάσταση και δε θα έπρεπε να συμβαίνει ποτέ, επομένως το δημόσιο κλειδί ρίζας επαναδημιουργήθηκε από το ιδιωτικό κλειδί και επανεγγράφηκε στη βάση δεδομένων, πάνω από την προηγούμενη εγγραφή.</value>
+  </data>
+  <data name="System_PublicRootReset_Subject" xml:space="preserve">
+    <value>Swarmops: Επαναφορά δημόσιου κλειδιού Hotwallet</value>
+  </data>
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>Το παρασκήνιο Swarmops έκδοσης [SwarmopsVersion], που βρίσκεται στον εξυπηρετητή [HostName] εκκινήθηκε με επιτυχία και συνδέθηκε στη βάση δεδομένων και στο πλαίσιο ειδοποιήσεων.</value>
+  </data>
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>Παρασκήνιο Swarmops σε λειτουργία</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>O εξυπηρετητής Socket της διεπαφής του Swarmops έκδοσης [SwarmopsVersion] που βρίσκεται στον εξυπηρετητή [HostName] εκκινήθηκε με επιτυχία, και συνδέθηκε στη βάση δεδομένων και στο πλαίσιο ειδοποιήσεων.</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>Διεπαφή Swarmops σε λειτουργία</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
+    <value>Ο μηχανισμός μετάδοσης δεδομένων Swarmops που βρίσκεται στον εξυπηρετητή [HostName] αντιμετώπισε ένα άγνωστο φορτίο πληροφοριών τύπου ([UnrecognizedPayloadType]). Αυτό πρέπει να συμβαίνει σε πολύ σπάνιες περιπτώσεις, κατα κύριο λόγο σε συνδυασμό με αναβαθμίσεις, οπου η νέα έκδοση ίσως έπρεπε να αλλάξει κάποια ονόματα κατα τη διαδικασία της αναβάθμισης, πράγμα που είναι σπάνιο απο μόνο του.
+
+Αν αυτό το σφάλμα επιμένει, ίσως έχετε εγκαταστήσει κάποιο προβληματικό πρόσθετο ή κάτι παρόμοιο. Σε οποιαδήποτε περίπτωση, το μη αναγνωρισμένο μήνυμα έχει ακυρωθεί και δε θα μεταδοθεί, αφού το Swarmops δεν ξέρει πως να το μεταδώσει.</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
+    <value>Swarmops: Μη αναγνωρίσιμο φορτίο επικοινωνιών</value>
+  </data>
 </root>

@@ -816,18 +816,7 @@
   <data name="Master_BitIdRegister_Header" xml:space="preserve">
     <value>I-scan ang code na ito upang mapagana ang BitID</value>
   </data>
-  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
-    <value>&lt;h3&gt;Ano ito?&lt;/h3&gt;
-                &lt;p&gt;Ang BitID ay isang paraan upang maka-log on nang ligtas ng walang abala kaysa sa pagpapasok ng password. Ang kasimplihan nito ay hindi maipaliwanag, maranasan lamang, at ito ay isang dalawang-salik ng pagpapatunay dahil ito ay gumagamit sa iyong telepono.
-&lt;/p&gt;
-                &lt;h3&gt;Hindi ba ito nangangailangan ng aking telepono na maging protektado rin?&lt;/h3&gt;
-                &lt;p&gt;Oo. Ito'y iyong telepono at ang iyong proteksyon sa pag-access ng iyong telepono. Ngunit ang iyong telepono ay dapat palaging protektado sa pag-access.&lt;/p&gt;
-                &lt;h3&gt;Kailangan ba ako ng app para rito?&lt;/h3&gt;
-                &lt;p&gt;Siguro. Ilang mga bitcoin wallet sa mobile ay mayroonng built in na BitID. Ang pinakakaraniwan ay wala. Kung ang iyo ay wala, humanap ng isang app na tinatawag na "BitID Authenticator" o pareho.&lt;/p&gt;
-                &lt;h3&gt;Paano ko paganahin ang BitID?&lt;/h3&gt;
-                &lt;p&gt;Gamitin lamang ang phone app upang ma-scan ang code na ito. Pagkatapos nito, maaari mong ma-scan ang isang parehong code upang maka-login sa sistema nito.&lt;/p&gt;</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
-  </data>
+  
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>Dalawang-salik ng pagpapatunay ng BitID (bitcoin signature)</value>
   </data>
@@ -952,6 +941,7 @@
   <data name="Global_Upload" xml:space="preserve">
     <value>I-upload</value>
   </data>
+  
   
   
   

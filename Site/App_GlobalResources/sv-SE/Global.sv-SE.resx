@@ -819,10 +819,7 @@
   <data name="Master_BitIdRegister_Header" xml:space="preserve">
     <value>Skanna den här koden för att aktivera BitID</value>
   </data>
-  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
-    <value>&lt;h3&gt;Vad är detta?&lt;/h3&gt;&lt;p&gt;BitID är ett sätt att logga in säkert med mindre krångel än att ange ett lösenord. Dess enkelhet kan inte förklaras, bara upplevas, och det är en tvåfaktorsautentisering eftersom den använder din telefon.&lt;/p&gt;&lt;h3&gt;Kräver inte det att min telefon skyddas också?&lt;/h3&gt;&lt;p&gt;Tja, jo. Det är din telefon och din telefons tillgångsskydd. Men din telefon bör alltid ha någon form av skydd.&lt;/p&gt;                 &lt;h3&gt;Behöver jag en app för detta?&lt;/h3&gt;                 &lt;p&gt;Kanske. Vissa mobila bitcoinplånböcker har BitID inbyggt. Det vanligaste man det inte. Om din bitcoinplånbok inte har BitID, så leta efter en app som heter "BitID Authenticator" eller liknande.&lt;/p&gt;                 &lt;h3&gt;Hur aktiverar jag BitID?&lt;/h3&gt;                 &lt;p&gt;Använd appen på din mobil för att skanna den här koden. Efter det, så kan du skanna en liknande kod på inloggningsskärmen för att logga in.&lt;/p&gt;</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
-  </data>
+  
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>BitID (bitcoinsignatur) tvåfaktorsautentisering</value>
   </data>
@@ -974,5 +971,9 @@
   </data>
   <data name="Global_EnteringSandbox" xml:space="preserve">
     <value>Du går nu in i &lt;strong&gt;Sandlådan&lt;/strong&gt;.&lt;br/&gt;&lt;br/&gt;Det här är en felsäker miljö där du kan leka med Swarmops funktionalitet utan att riskera att förstöra produktionsdata. Ha så kul det bara går, och återvänd till din organisation när du har experimenterat färdigt.</value>
+  </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>{0} till {1}</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
   </data>
 </root>

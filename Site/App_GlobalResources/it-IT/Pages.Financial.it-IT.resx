@@ -122,7 +122,7 @@
     <comment>Status message.</comment>
   </data>
   <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>L'anticipo in contanti  #{0:N0} per {1} è stato negato. Non verrà pagato a meno che non verrà riattestato.</value>
+    <value>L'anticipo in contanti  #{0:N0} per {1} è stato negato. Non verrà pagato a meno che non verrà attestato nuovamente.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
@@ -135,7 +135,7 @@
     <value>Non si può attestare un importo pari a zero.</value>
   </data>
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
-    <value>Siamo spiacenti, non si puo rifare il bilancio per un pagamento dello stipendo.</value>
+    <value>Siamo spiacenti, non si può rifare il bilancio per un pagamento dello stipendo.</value>
   </data>
   <data name="AttestCosts_Error_InvalidAmountRetry" xml:space="preserve">
     <value>Sembra che questo non sia un importo valido. Riprovare?</value>
@@ -148,7 +148,7 @@
     <comment>{2} is the currency.</comment>
   </data>
   <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>La richiesta di rimborso spese #{0:N0} da {1} è stata cancellata. Non verrà pagata a meno che non venga riattestata.</value>
+    <value>La richiesta di rimborso spese #{0:N0} da {1} è stata cancellata. Non verrà pagata a meno che non venga attestata nuovamente.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
@@ -188,7 +188,7 @@
     <comment>{2} is the currency.</comment>
   </data>
   <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>La fattura #{0:N0} da {1} è stata negata. Non verrà pagata a meno che non venga riattestata.</value>
+    <value>La fattura #{0:N0} da {1} è stata negata. Non verrà pagata a meno che non venga attestata nuovamente.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
@@ -206,7 +206,10 @@
     <value>Ridefinisci il bilancio</value>
     <comment>keep short</comment>
   </data>
-  
+  <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
+    <value>Sto rifiutando la tua richiesta di fondi perché</value>
+    <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
   <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
     <value>Quale importo desideri attestare invece (a{0})?</value>
     <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
@@ -234,7 +237,7 @@
     <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
   </data>
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
-    <value>Questo record dovrebbe essere addebbitato ad un altro budget. Spostarlo lì.</value>
+    <value>Questo record dovrebbe essere addebitato ad un altro budget. Spostarlo lì.</value>
   </data>
   <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
     <value>Quale sembra essere il problema con questo record?</value>
@@ -273,11 +276,11 @@
     <value>Lo stipendio #{0:N0} per {1} è stato attestato per {3:N2}.</value>
   </data>
   <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Lo stipendio #{0:N0} per {1} è stato negato. Non verrà pagato a meno che non verrà riattestato.</value>
+    <value>Lo stipendio #{0:N0} per {1} è stato negato. Non verrà pagato a meno che non verrà attestato nuovamente.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;ATTENZIONE: BUDGET NON INIZIALIZZATO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Il costo che si sta approvando appartiene a un budget non inizializzato - un account nel registro contabile che manca di proprietario e non ha alcun budget allocato per l'anno in corso. Si consiglia di visitare il piano del conto e di allocare i budget per le entrate e le uscite previste.&lt;br/&gt;&lt;br/&gt;Questo messaggio verrà visualizzato solotanto una volta per ogni visita a Attestazioni.&lt;br/&gt;</value>
+    <value>&lt;strong&gt;ATTENZIONE: BUDGET NON INIZIALIZZATO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Il costo che si sta approvando appartiene a un budget non inizializzato - un account nel registro contabile che manca di proprietario e non ha alcun budget allocato per l'anno in corso. Si consiglia di visitare il piano del conto e di allocare i budget per le entrate e le uscite previste.&lt;br/&gt;&lt;br/&gt;Questo messaggio verrà visualizzato soltanto una volta per ogni visita a Attestazioni.&lt;br/&gt;</value>
   </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Importo totale delle fatture (in {0})</value>
@@ -311,7 +314,10 @@
     <value>Manuale</value>
     <comment>Other invoices come without automated processing and a manual </comment>
   </data>
-  
+  <data name="CreateInboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Fattura in entrata #{0:N0} archiviata.</value>
+    <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
+  </data>
   <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
     <value>Account</value>
     <comment>Free text input, intended to convey everything needed to get the money right</comment>
@@ -361,7 +367,9 @@
   <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
     <value>Numero Account</value>
   </data>
-  
+  <data name="FileExpenseClaim_BankClearing" xml:space="preserve">
+    <value>Numero di clearing, usato specialmente in svizzera, l'equivalente italiano del Bic</value>
+  </data>
   <data name="FileExpenseClaim_BankName" xml:space="preserve">
     <value>Nome della banca</value>
   </data>
@@ -406,17 +414,27 @@
   <data name="FileExpenseClaim_ValidationError_Documents" xml:space="preserve">
     <value>Si prega di caricare una o più immagini di ricevute a supporto della richiesta di rimborso spese.</value>
   </data>
-  
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>Selezionare un'opzione come indicato.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Si prega di descrivere che cosa è stato tale acquisto.</value>
   </data>
-  
+  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
+    <value>Account (OCR)</value>
+  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Importo</value>
     <comment>Amount to be paid out</comment>
   </data>
-  
-  
+  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
+    <value>Importo (OCR)</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
+    <value>Numero di clearing/ Account</value>
+    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
+  </data>
   <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
     <value>Banca</value>
   </data>
@@ -431,16 +449,25 @@
     <value>Destinatario</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  
-  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Riferimento</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
+    <value>Riferimento (OCR)</value>
+  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Spese pronte per il pagamento</value>
   </data>
-  
+  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
+    <value>Spese per il pagamento (OCR per applicazioni mobili)</value>
+  </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Queste sono le varie tipologie di spese per l'organizzazione che hanno superato tutte le verifiche per il pagamento. Sono pronte per essere versate al destinatario. Qui è dove si effettua il controllo del pagamento (probabilmente mentre la pagina relativa alla vostra banca è aperta in un'altra finestra).</value>
   </data>
-  
+  <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
+    <value>Mostra OCR per le applicazioni mobili</value>
+  </data>
   <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
     <value>Mostra pagamenti in corso ({0:N0})</value>
     <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>
@@ -458,7 +485,10 @@
   <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
     <value>Il pagamento #{0:N0} è stato annullato ed è stato ripristinato tutto.</value>
   </data>
-  
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>Imposte Aggiunte</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
   <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
     <value>Imposta trattenuta</value>
     <comment>If applicable, translate to local legal tax term</comment>
@@ -467,7 +497,7 @@
     <value>Stipendio lordo</value>
   </data>
   <data name="PayrollTaxForms_Info" xml:space="preserve">
-    <value>Visualizzare i moduli fiscali precompilati per gli stipendi dell'organizzazione, i quali, sono facili da copiare nei moduli fiscali effettivi o, eventualmente, stampare così come sono. Le prestazioni e i moduli effettivi variano da paese a paese e a volte dipendono da codici e plugin di terze parti.</value>
+    <value>Visualizzare i moduli fiscali (precompilati) per gli stipendi dell'organizzazione, i quali, sono facili da copiare nei moduli fiscali effettivi o, eventualmente, stampare così come sono. Le prestazioni e i moduli effettivi variano da paese a paese e a volte dipendono da codici e plugin di terze parti.</value>
   </data>
   <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
     <value>Moduli fiscali per gli stipendi</value>
@@ -518,7 +548,7 @@
     <value>Ciò deve essere attestato dal proprietario del bilancio e poi si procederà al pagamento.</value>
   </data>
   <data name="RequestCashAdvance_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
-    <value>Poiché questo è il vostro bilancio, questo è stato automaticamente attestato e si procedera al pagamento.</value>
+    <value>Poiché questo è il vostro bilancio, questo è stato automaticamente attestato e si procederà al pagamento.</value>
     <comment>This is displayed if either the person creating the cash advance OR the person receiving it is the budget owner.</comment>
   </data>
   <data name="RequestCashAdvance_ValidationError_Amount" xml:space="preserve">
@@ -637,7 +667,9 @@
   <data name="ListOutboundInvoices_Title" xml:space="preserve">
     <value>Elenca fatture in uscita</value>
   </data>
-  
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Carica CSV di Expensify</value>
+  </data>
   <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
     <value>Se si hanno molti report delle spese, è possibile raccoglierli tutti con Expensify e caricare un report Expensify CSV qui (che si ottiene da Expensify, categoria Reports, Esporta, come CSV). Swarmops utilizzerà Expensify per recuperare tutte le ricevute individuali e registrarle come richieste di rimborso spese separate per una corretta contabilità.</value>
   </data>

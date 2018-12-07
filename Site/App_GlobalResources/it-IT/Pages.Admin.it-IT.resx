@@ -273,7 +273,7 @@
     <value>La porta SMTP deve essere un valore numerico. Impossibile analizzare host:porta.</value>
   </data>
   <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
-    <value>Impossibile analizzare utente, pass, host e/o porta. (È richiesto solo l'host.)</value>
+    <value>Impossibile analizzare utente, pass, host e/o porta. (È richiesto solo lo host.)</value>
   </data>
   <data name="SystemSettings_ExternalUrl" xml:space="preserve">
     <value>URL accessibile esternamente</value>
@@ -316,30 +316,30 @@
     <comment>Visible on Dashboard</comment>
   </data>
   <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>Hai una sessione di impersonificazione attiva come {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Termina impersonificazione.&lt;/a&gt;</value>
+    <value>Hai una sessione di impersonazione attiva come {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Termina impersonificazione.&lt;/a&gt;</value>
     <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
   </data>
   <data name="CommenceImpersonation_Confirm" xml:space="preserve">
     <value>&lt;strong&gt;IMPERSONARE PERSONA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Questo non deve essere preso alla leggera, e se non lo si sta facendo per motivi tecnici, può anche essere illegale, a seconda delle leggi locali.&lt;br/&gt;&lt;br/&gt;Lo scopo di questo strumento è quello di risolvere i malfunzionamenti tecnici. Tutto è registrato.&lt;br/&gt;&lt;br/&gt;Procedere?</value>
   </data>
   <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>&lt;strong&gt;IMPERSONIFICAZIONE TERMINATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonificazione terminata alle {0:HH:mm}. UTC. State agendo di nuovo come voi stessi.</value>
+    <value>&lt;strong&gt;IMPERSONAZIONE TERMINATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonazione terminata alle {0:HH:mm}. UTC. State agendo di nuovo come voi stessi.</value>
     <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
   </data>
   <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
     <value>&lt;strong&gt;IMPERSONAZIONE NEGATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non dovresti impersonare qualcuno che è il tuo diretto superiore.</value>
   </data>
   <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>&lt;strong&gt;IMPERSONAZIONE NEGATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non puoi impersonare qualcun'altro che ha accesso a livello di sistema.</value>
+    <value>&lt;strong&gt;IMPERSONAZIONE NEGATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non puoi impersonare qualcun altro che ha accesso a livello di sistema.</value>
   </data>
   <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
     <value>È necessario selezionare una persona da impersonare.</value>
   </data>
   <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>Se hai bisogno di impersonificare te stesso, ti suggeriamo di disconnetterti da Swarmops e cercare altro tipo di assistenza.</value>
+    <value>Se hai bisogno di impersonare te stesso, ti suggeriamo di disconnetterti da Swarmops e cercare altro tipo di assistenza.</value>
   </data>
   <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>&lt;strong&gt;IMPERSONAZIONE NEGATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non sembra che tu abbia i privilegi sufficienti per impersonare qualcun'altro.</value>
+    <value>&lt;strong&gt;IMPERSONAZIONE NEGATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non sembra che tu abbia i privilegi sufficienti per impersonare qualcun altro.</value>
   </data>
   <data name="CommenceImpersonation_Header" xml:space="preserve">
     <value>Impersonare un altro utente</value>

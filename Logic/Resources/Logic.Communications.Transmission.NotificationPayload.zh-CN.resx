@@ -237,65 +237,214 @@
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>您以[RequestPurpose]为目的向[OrganizationName]进行的价值[CurrencyCode] [BudgetAmountFloat]的开支申请已经被预算拥有者批准。当收据确认有效后该笔开支将支付给您。</value>
+    <value>您出于[RequestPurpose] 目的向[OrganizationName] 进行的价值[CurrencyCode] [BudgetAmountFloat] 的报销申请已经被预算拥有者批准。当收据确认有效后该笔报销将支付给您。</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] 开支申请通过：[CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] 报销申请通过：[CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName]对于[BudgetName]的预算申请了一笔价值[CurrencyCode][BudgetAmountFloat]的报销申请。此笔报销申请出于[RequestPurpose]的请求。您将需要确认这笔报销申请。
+
+请在 [ExternalUrl]Financial/AttestCosts 登录 [InstallationName] 以确认或者拒绝。</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] 报销申请已建立：[CurrencyCode][BudgetAmountFloat] - 需要证实</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
+    <value>您出于 [RequestPurpose] 向 [OrganizationName] 提出的价值 [CurrencyCode][BudgetAmountFloat] 的报销申请未被预算拥有者确认。这通常是由于您的报销申请有一些问题。
+
+需要与预算拥有者进行进一步的沟通来跟进这个问题。</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 报销申请未被确认：[CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>您出于 [RequestPurpose] 向 [OrganizationName] 提出的价值 [CurrencyCode][BudgetAmountFloat] 的报销申请被预算拥有者拒绝。以下的文本给出了其被拒绝的理由：
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 报销申请被拒绝：[CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
+    <value>您出于 [RequestPurpose] 向 [OrganizationName] 提出的价值 [CurrencyCode][BudgetAmountFloat] 报销申请的收据未被该组织的出纳员验证。这通常是由于您的报销申请文档有一些问题。
+
+需要通过进一步的沟通来跟进这个问题。如果您短时间内没有收到出纳员的回复，请进一步跟进与他们的沟通。</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 报销收据未被验证：[CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>您出于 [RequestPurpose] 向 [OrganizationName] 提出的价值 [CurrencyCode][BudgetAmountFloat] 的报销申请已被该组织的会计标记为已支付。
+
+这意味着您很快就能在您的账户上看到这笔金额。</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 报销申请已被支付：[CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>您出于 [RequestPurpose] 向 [OrganizationName] 提出的价值 [CurrencyCode][BudgetAmountFloat] 报销申请的收据已被该组织的出纳员验证。
+
+拨款将在预算拥有者也将其确认后将被支付给您。</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 报销收据已被验证：[CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>对于您的 [BudgetName] 预算价值 [CurrencyCode][BudgetAmountFloat] 的发票已被 [Supplier] 附上 [Description] 的描述而提交。您必须在其被支付前确认这张发票。
+
+请在 [ExternalUrl]Financial/AttestCosts 登录 [InstallationName] 以确认或者拒绝。</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] 发票已被提交：[CurrencyCode][BudgetAmountFloat] - 需要确认。</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>在一个您的领域中，一个新的 [Regular] 被手动加到 [OrganizationName]。</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 新的 [Regular]：[PersonName]，[PersonGeography][CountryCode] (手动)</value>
+  </data>
   <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
     <value>一位新的[Regular]已经在您的领域注册参加了[OrganizationName]</value>
   </data>
   <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
     <value>[[OrganizationName]] 新[Regular]：[PersonName]，[PersonGeography] [CountryCode]</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [Regularship] 更新：[PersonName]，[PersonGeography][CountryCode] (手动)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+此封邮件由[OrganizationName] 寄往[Addressee]。如果您以后不希望再收到这些通知，请在[ExternalUrl] 登录[InstallationName] 并修改您的通知设定。</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>您的信息已经被加入到发送队列中，并且收件人地址已经被解析。您的邮件将被发送至，或者说会尝试发送到：在[OrganizationName] 中[GeographyName] 的[RecipientCount] 人。</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 为[GeographyName] 确定的通信收件人：[RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>您发往[GeographyName] 的信息已经被发送至所有计划的收件人。在[RecipientCount] 位计划的收件人中，[RecipientsSuccess] 位已经被我们确认发送成功 - 请记住，邮件可能会由于一些原因导致无法投递或无法被阅读。
+
+解析所用时间：[ResolvingTime]。
+传输所用时间：[TransmissionTime]。
+从通信被创建到完成所用时间：[TotalTime]。</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 通讯已被传输：[GeographyName]</value>
+  </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>一位新人已经在[OrganizationName] 注册为[RegularTitle]！
+[ConcernedPersonName] 现在定居于 [GeographyName]，[CountryCode]。</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 新 [RegularTitle]：[ConcernedPersonName]，[GeographyName]</value>
+  </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>有人，很可能是您，在[InstallationName] 对于关联此邮箱地址的账户申请密码重置。然而，为了提高此账户的安全性，双因素身份验证已被启用。因此，此密码不能通过简单的方法进行重置。
+
+请在[InstallationName] 联系一位人事管理员以解决您的问题并遵循更加严谨的身份验证流程发给您一个符合双因素身份验证的新密码。
+
+感谢您的理解。</value>
+  </data>
   <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
     <value>[[InstallationName]] 无法重置密码</value>
   </data>
-  
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>您于[InstallationName]的密码已经在[ExternalUrl]上被修改，
+
+如果此次密码修改不是出于您所为，那么您的账户可能出现了安全问题。如若如此，请立刻点击以下链接来冻结您的账户：
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+如果您在此链接上确认冻结，所有现存的交易对话都将被立刻终止，以新设密码所进行的登录也将被锁定，并且管理员将联系您以验证所发生的事情同时和您一同合作重启您的账户。
+
+但是，如果是您自己在刚刚修改了密码，从而导致您收到此条通知，那么就没有任何问题，您可以继续您的操作。</value>
+  </data>
   <data name="Password_Changed_Subject" xml:space="preserve">
     <value>[[InstallationName]] 密码已重置</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>来自[OrganizationName]的工作人员已经根据您的请求发给您一个你账户的密码重置券。这张密码重置券有效期为接下来的24个小时。
+
+请按照此链接来重置您的密码并重新启用双因素身份验证 (如果您曾启用过)：
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+这张密码重置券将在24小时后过期，如果您不在此时间窗口内重置您的密码，您将需要联系在[OrganizationName]的管理员以发给您一个新的密码重置券。</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 密码重置券</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>有人，很可能是您，在[InstallationName] 对于关联此邮箱地址的账户申请密码重置。如果这是您本人的操作，请在接下来的60分钟内按照以下链接完成密码重置过程：
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+如果您未申请重置密码，您可以(也应该)忽略此邮件。此密码重置请求将在一小时后失效。(如果您收到了大量此种你未申请的密码重置链接，请通知管理员)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] 密码重置券</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>收据已经被提交，需要验证其财务流程才能继续。
+
+请在 [ExternalUrl]Financial/ValidateReceipts 登录 [InstallationName] 以验证或者拒绝。</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] 收据已被提交 - 需要验证</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>您出于[RequestPurpose] 的薪水支出已被取消。它将不会被交付。
+
+如果这出于您意料之外，请立刻联系组织和/或你的主管。 以下是交付取消的原因：
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 薪水支出被否决：[CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>这是您[LastYear] 的薪资摘要报表。这不是一份新的薪资报表，而是一份去年全年您所收到月薪以及所扣除的税款的报表。该报表的目的是作为您自身的一个记录和/或为去年纳税申报提供数据。
+
+[LastYear] 的总收入：[CurrencyCode] [GrossSalaryTotal]
+从中扣除的税款：[CurrencyCode] [TaxDeductedTotal]
+薪酬净额：[CurrencyCode] [NetSalaryTotal]
+
+月  总收入  扣除税款  薪酬净额
+-----  ----------  -----------  ----------  -----------
+[EmbeddedPreformattedText]
+
+总计 [GrossSalaryTotal] [TaxDeductedTotal] [NetSalaryTotal] 
+
+此外，除了以上所述的纳税金额，您所效力的组织还为您交付了[CurrencyCode] [TaxAdditiveTotalUnpadded] 的税款。即便这是不予公布的项目，但这也是基于您的工资所缴纳的税款。</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [LastYear] 的薪资摘要报表</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>Swarmops在[HostName] 主机上的后台程序[SwarmopsVersion] 已经成功将Swarmops的数据库架构升级到修订版[DbVersion]。</value>
+  </data>
   <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
     <value>Swarmops 数据库已升级</value>
   </data>
-  
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>Swarmops在 [Hostname] 主机上的后台程序[SwarmopsVersion] 在升级Swarmops的数据库时失败。这通常是由于短暂性外部网络错误导致的更新文件获取失败。
+
+当前数据库架构版本为修订版[DbVersion]，但是正在尝试升级为[DbVersionExpected]。
+
+每小时将重试一次升级。在数据库升级完成前某些功能可能会被禁用。如果您想手动进行故障排除，数据升级包可以从packages.swarmops.com上获取(与apt-get获取其软件包是同一位置)。</value>
+  </data>
   <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
     <value>Swarmops 数据库升级失败</value>
   </data>
@@ -307,17 +456,27 @@
   <data name="System_Exception_Subject" xml:space="preserve">
     <value>Swarmops 异常！</value>
   </data>
-  
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>这是由在[HostName] 上运行的Swarmops[SwarmopsVersion] 所发送的测试邮件。您刚刚修改了邮件服务器设置。Swarmops将此测试邮件派发到后台发送以验证新的设定是否正确</value>
+  </data>
   <data name="System_MailServerTest_Subject" xml:space="preserve">
     <value>Swarmops 邮件服务器测试</value>
   </data>
-  
-  
-  
+  <data name="System_PublicRootReset_Body" xml:space="preserve">
+    <value>在MySql数据库中的比特币根公钥无法与在[HostName] 中/etc/swarmops储存的比特币根私钥匹配。这是一个不应该发生的潜在严重问题，因此根公钥被从根私钥中重新推导并且重写回原来储存它的数据库。</value>
+  </data>
+  <data name="System_PublicRootReset_Subject" xml:space="preserve">
+    <value>Swarmops: 热钱包根公钥重置</value>
+  </data>
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>Swarmops在[HostName] 主机上的后台程序版本[SwarmopsVersion] 已经成功启动并连接到数据库和通知框架中。</value>
+  </data>
   <data name="System_Startup_Backend_Subject" xml:space="preserve">
     <value>Swarmops 后台可操控</value>
   </data>
-  
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>Swarmops 在主机[HostName] 上的前端套接字服务器版本[SwarmopsVersion] 已经成功启动并连接到数据库和通知框架中。</value>
+  </data>
   <data name="System_Startup_Frontend_Subject" xml:space="preserve">
     <value>Swarmops 前台可操控</value>
   </data>

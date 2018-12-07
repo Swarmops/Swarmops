@@ -368,4 +368,8 @@
     <value>Affärs- och kontorstjänster</value>
     <comment>Like paperwork services, fruit delivery, travel booking, anything that isn't strictly office maintenance</comment>
   </data>
+  <data name="Cost_MaintenanceDonations" xml:space="preserve">
+    <value>Underhållsdonationer</value>
+    <comment>This is donations toward maintenance of the Swarmops / Backoffice.Cash codebase and data.</comment>
+  </data>
 </root>

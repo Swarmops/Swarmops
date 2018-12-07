@@ -117,82 +117,258 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
+    <value>Eyi jẹ koodu QR fun idanwo echo bitcoin fun gbogbo iṣàgbékalẹ̀ Swarmops yii, kii ṣe fun {0} nikan. Ka lati inu apo owo bitcoin foonu rẹ lati ṣe idanwo echo naa, tabi firanṣẹ lati ori kọmputa rẹ taara si [{1}] (iyen jẹ Adirẹsi Bitcoin Cash). Iye naa (ayọkuro owo awakusa ti o je {2:N2} microcoins) ma jẹ didapada fun ọ ni iṣẹju aaya diẹ ti o n bo.</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
+    <value>Ti gba {2:N2} microcoins ({0} {1:N2}). N pada.</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
+    <value>Ti gba {0} microcoins ("bits"). N pada.</value>
+    <comment>Used if Bitcoin Cash is the org native currency.</comment>
+  </data>
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>Eyi jẹ idanwo echo bitcoin. O ma n ṣe idanwo fun hotwallet. Ti o ba fi owo kekere ranṣẹ sibi, o ma jẹ didapada fun ọ, pelu ayọkuro owo ifi idunadura ranṣẹ pada (lọwọlọwọ jẹ {0:N2} microcoins).</value>
+  </data>
+  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
+    <value>Idanwo Echo Hotwallet ti Bitcoin Cash</value>
+  </data>
+  <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
+    <value>Nduro fun idunadura...</value>
+  </data>
+  <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
+    <value>Ti ri idunadura, n se idaniloju...</value>
+  </data>
+  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
+    <value>Idanwo Echo Bitcoin ti Swarmops</value>
+  </data>
+  <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
+    <value>Awon ajafeto ma je pipe</value>
+  </data>
+  <data name="CreateOrganization_AsRoot" xml:space="preserve">
+    <value>Ajo ipele-ipile</value>
+  </data>
+  <data name="CreateOrganization_ChildOfX" xml:space="preserve">
+    <value>Ọmọ ti {0}</value>
+    <comment>"Create org as..."</comment>
+  </data>
+  <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
+    <value>Ṣẹda ajo tuntun bi...</value>
+  </data>
+  <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
+    <value>Orukọ ajọ ko le jẹ ofo. (O nilo lati fun ajọ tuntun naa ni orukọ kan!)</value>
+  </data>
+  <data name="CreateOrganization_Info" xml:space="preserve">
+    <value>O le ṣẹda ajọ tuntun kan boya bi ajọ tuntun kan ti o daduro, tabi bi ọmọ si ti ajọ eyi ti o wa lọwọlọwọ yii. (Gbogbo eniyan ti o ni ojuse ninu ajọ obi kan ti ni iru awọn ẹtọ ati awọn anfaani wonyi ninu gbogbo awọn ọmọ rẹ.)</value>
+  </data>
+  <data name="CreateOrganization_NewOrganizationName" xml:space="preserve">
+    <value>Orukọ Ajọ Tuntun</value>
+  </data>
+  <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
+    <value>Owo iṣiṣe</value>
+  </data>
+  <data name="CreateOrganization_NewOrgName" xml:space="preserve">
+    <value>Orukọ ajọ tuntun naa</value>
+  </data>
+  <data name="CreateOrganization_PageTitle" xml:space="preserve">
+    <value>Ṣẹda Ajo Tuntun</value>
+  </data>
+  <data name="CreateOrganization_RegularTitle" xml:space="preserve">
+    <value>Awọn eniyan regula ma je pipe</value>
+    <comment>This can be "members", etc.</comment>
+  </data>
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>Ajọ naa tuntun ti jẹ ṣiṣẹda. A ti fun ọ ni {0} alainipari ninu ajọ naa, ati pe a gbe ọ si ipo alakoso giga julọ fun akoko yi naa, nitori ki o le ṣiṣẹ pẹlu rẹ ati ṣeto rẹ daradara. Lati seto ajọ tuntun naa, lo panẹẹli iṣakoso yii (pada wa labẹ Iseto Abojuto / Ajọ).</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
+  <data name="CreateOrganization_Titles" xml:space="preserve">
+    <value>Ipo akọle atilẹba ni ibẹrẹ</value>
+  </data>
+  <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
+    <value>Ti iṣowo</value>
+  </data>
+  <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
+    <value>Alailere</value>
+  </data>
+  
+  <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
+    <value>nọmba ti {0}</value>
+    <comment>The {0} is the membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_OpenLedgersDomain" xml:space="preserve">
+    <value>Ibudo Awọn lẹja Ṣiṣi</value>
+  </data>
+  <data name="EditOrganization_PageTitle" xml:space="preserve">
+    <value>Ṣatunse Ajọ</value>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsOrg" xml:space="preserve">
+    <value>Awọn eniyan di {0} ti</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsWhen" xml:space="preserve">
+    <value>Awọn eniyan di {0} nigbati</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationChurn" xml:space="preserve">
+    <value>{0} pari nigbati</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationCost" xml:space="preserve">
+    <value>Iye owo {0} Ni ibẹrẹ (ni {1})</value>
+    <comment>The {0} is membership, etc. The {1} is the operating currency.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationDuration" xml:space="preserve">
+    <value>Ọkan {0} gbẹhin</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_RenewalDateEffect" xml:space="preserve">
+    <value>Akoko isọdọtun bẹrẹ lati</value>
+  </data>
+  <data name="EditOrganization_RenewalReminders" xml:space="preserve">
+    <value>Seranti lati sọdọtun</value>
+  </data>
+  <data name="EditOrganization_RenewalsAffect" xml:space="preserve">
+    <value>Awọn isọdọtun kan</value>
+    <comment>(options: all organizations, one org at a time)</comment>
+  </data>
+  <data name="EditOrganization_RenewalsCost" xml:space="preserve">
+    <value>Iye owo isọdọtun (ni {0})</value>
+    <comment>The {0} is the operating currency (USD etc).</comment>
+  </data>
+  <data name="EditOrganization_VanityDomain" xml:space="preserve">
+    <value>Ibudo Ti ara ẹni ti Ajọ</value>
+  </data>
+  <data name="OrgStaffing_Header_ExecutivePositions" xml:space="preserve">
+    <value>Awọn ipo Alakoso Fun {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>Awọn ipo Ibile (Nibi gbogbo)</value>
+  </data>
+  <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
+    <value>Iwe isanwo Oṣiṣẹ</value>
+  </data>
+  <data name="OrgStaffing_Header_StrategicPositions" xml:space="preserve">
+    <value>Awọn ipo Pataki Fun {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
+    <value>Awon olujọwọ ara ẹni Nduro fun Idahun</value>
+  </data>
+  <data name="OrgStaffing_Info" xml:space="preserve">
+    <value>Ṣeto eto igbaosise fun ajọ yii, bakanna pẹlu igbaoṣiṣẹ rẹ ni awọn ipele (igbimo) ati alakoso (Ipele-C tabi deede) pataki. O tun le ṣakoso awon olujọwọ ara ẹni ti o n duro ati iwe isanwo lati ibi.</value>
+  </data>
+  <data name="OrgStaffing_PageTitle" xml:space="preserve">
+    <value>Igbaoṣiṣẹ si Ajọ</value>
+  </data>
+  <data name="SystemSettings_AdminAddress" xml:space="preserve">
+    <value>Awọn iwifunni Alabojuto Lati Adirẹẹsi</value>
+  </data>
+  <data name="SystemSettings_AdminSender" xml:space="preserve">
+    <value>Awọn iwifunni Alabojuto Lati Orukọ</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
+    <value>Ibudo SMTP gbọdọ jẹ nọmba. Ko le yanju agbalejo:ibudo.</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
+    <value>Ko le yanju olumulo, yege, agbalejo, ati / tabi ibudo. (Agbalejo nikan ni o nilo.)</value>
+  </data>
+  <data name="SystemSettings_ExternalUrl" xml:space="preserve">
+    <value>URL ti o se wo lati ita</value>
+  </data>
+  <data name="SystemSettings_Header_CorrespondenceTxSettings" xml:space="preserve">
+    <value>Awọn eto Itan kaakiri Ifiweranṣẹ</value>
+  </data>
+  <data name="SystemSettings_Header_SystemAdministrators" xml:space="preserve">
+    <value>Awọn alakoso Eto</value>
+  </data>
+  <data name="SystemSettings_Info" xml:space="preserve">
+    <value>Awọn eto imọran ẹrọ oriṣiriṣi fun iṣàgbékalẹ̀ Swarmops yii. Ko je pato si eyikeyi ajọ tabi eniyan, ṣugbọn gbogbo iṣàgbékalẹ̀.</value>
+  </data>
+  <data name="SystemSettings_InstallationName" xml:space="preserve">
+    <value>Orukọ Iṣàgbékalẹ̀</value>
+  </data>
+  <data name="SystemSettings_PageTitle" xml:space="preserve">
+    <value>Awon eto Ilana</value>
+  </data>
+  <data name="SystemSettings_SmtpServer" xml:space="preserve">
+    <value>Iṣakoso SMTP (olumulo:yege@agbalejo:ibudo)</value>
+  </data>
+  <data name="SystemSettings_TestMailSent" xml:space="preserve">
+    <value>Swarmops ti fi meeli ayẹwo kan ranṣẹ si ọ lati se idaniloju awon eto isakoso SMTP tuntun rẹ.</value>
+  </data>
+  <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
+    <value>O yẹ ki o lo HTTPS nikan fun iru aaye ayelujara bii eyi. Ṣugbọn o ti mọ eyi tẹlẹ, ṣe o ko mọ?</value>
+  </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Ibori Orukọ agbalejo Backend</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>Ibudo WebSocket (Frontend)</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
+    <value>Ibudo WebSocket (Backend)</value>
+  </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Isafarawe Ti Nṣiṣẹ</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>O ni akoko isafarawe ti nṣiṣe lọwọ bi {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Pari isafarawe.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;SAFARAWE ENIYAN?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Eyi ko wa fun mimu ni yẹpẹrẹ, ati pe ti o ko ba ṣe eyi fun awọn idi imọran ẹrọ, o tun le lodi si ofin didale ori awọn ofin ibile.&lt;br/&gt;&lt;br/&gt;Idi ti irinṣẹ yii ni lati ṣatunṣe awọn aiṣedeede imọ-ẹrọ. Ohun gbogbo ti wa ni igbasilẹ.&lt;br/&gt;&lt;br/&gt;Tesiwaju?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;ISAFARAWE DOPIN&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Isafarawe dopin ni {0:HH:mm} UTC. O n ṣe bi ara rẹ lẹẹkansi.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;ISAFARAWE DI KIKỌ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ko yẹ ki o se isafarawe ẹnikan ti o jẹ oluṣakoso rẹ gangan.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;ISAFARAWE DI KIKỌ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ko yẹ ki o se isafarawe ẹlomiran pẹlu iwọle ipele ilana.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>O nilo lati yan eniyan ti o ma safarawe.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Ti o ba nilo lati se isafarawe ara rẹ, a daba pe ki o jade kuro ni Swarmops ki o si wa iru iranlowo miiran.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;ISAFARAWE DI KIKỌ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;O dabi pe o ko ni awọn anfaani ti o to lati se isafarawe elomiran.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Se isafarawe olumulo miiran</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Se isafarawe</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Eniyan ti o ma se isafarawe rẹ</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;ISAFARAWE NSISE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Isafarawe bẹrẹ ni {0:HH:mm} UTC. Eyi ni Dasibodu bi eniyan ti o safarawe rẹ ma se ri. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Irinṣẹ isatunṣe yii gba ọ laaye lati se isafarawe ti olumulo miiran lati ri ati ni iriri Swarmops bi ti wọn nigbati o ba wọle.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IKILO:&lt;/strong&gt; Eyi jẹ irinṣẹ irẹburu gíga ti o yẹ ki o lo fun idagbasoke imọ ẹrọ ati atilẹyin ti o nilo nikan. Lilo eyi ko yẹ ki o jẹ mimu ni yẹpẹrẹ.&lt;/p&gt;
+&lt;p&gt;Gbogbo awon isafarawe ti wa ni igbasilẹ titlai, gbogbo ati eyikeyi awọn igbese ti o je gbigbe nigbati isafarawe waye ni o wa fun awari bi ti bẹẹ, atipe olumulo ti won safarawe rẹ ma gba alaye nipa irẹburu naa.&lt;/p&gt;</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Awọn ti ko di ọmọ ẹgbẹ n jẹ</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(kose lo)</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Ijọba</value>
+  </data>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;TI GBA ERUKU&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Iye ti o jẹ fifiransẹ kere ju owo ti o yẹ lọ fun didapada fun ọ, eyi ti o jẹ {0:N2} microcoins. Owo ti o firansẹ ni a npe ni "eruku" ni bayi lori nẹtiwọki bitcoin, ati pe ko jẹ gbigbe mọ.&lt;br/&gt;&lt;br/&gt;Fi iye ti o ga si ranṣẹ lati ṣe idanwo echo.</value>
+  </data>
 </root>

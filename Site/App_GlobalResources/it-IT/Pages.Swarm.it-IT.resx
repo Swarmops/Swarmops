@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddPerson_ErrorCity" xml:space="preserve">
-    <value>Inserire una città valida.</value>
+    <value>È richiesta una città valida.</value>
   </data>
   <data name="AddPerson_ErrorDate" xml:space="preserve">
     <value>Fornire una data valida o lasciare vuoto questo campo.</value>
@@ -132,8 +132,13 @@
   <data name="AddPerson_ErrorStreet" xml:space="preserve">
     <value>È necessaria una strada o una casella postale valida.</value>
   </data>
-  
-  
+  <data name="AddPerson_GeographyDetected" xml:space="preserve">
+    <value>Posizione geografica rilevata</value>
+  </data>
+  <data name="AddPerson_Info" xml:space="preserve">
+    <value>È qui che si inseriscono nuove persone nell'organizzazione. Quando li registri per un &lt;strong&gt;{0} {1}&lt;/strong&gt; che durerà fino a &lt;strong&gt;{2}&lt;/strong&gt;, riceveranno, nella loro casella email, un messaggio di benvenuto con una password di accesso casuale. Anche gli ufficiali locali saranno informati della nuova persona, per l'opportunità di inviare loro un messaggio di benvenuto.</value>
+    <comment>{0} and {1} can be "one-year" and "Membership", for example. {2} is LongDateString.</comment>
+  </data>
   <data name="AddPerson_LegalGender" xml:space="preserve">
     <value>Identità sessuali riconosciute</value>
     <comment>"Legal" to cut short discussions on 50 different genders for the time being</comment>
@@ -169,7 +174,7 @@
     <value>Elenca e trova persone</value>
   </data>
   <data name="ListFindPeople_TooManyHits" xml:space="preserve">
-    <value>L'insieme dei risultati contiene più di 1000 persone (visualizzazione limitata a 1000 persone). Si prega di affinare la ricerca.</value>
+    <value>L'insieme dei risultati contiene più di 1000 persone (visualizzazione limitata a 1000 persone). È possibile affinare la vostra ricerca?</value>
   </data>
   <data name="LocalOrganization_Header" xml:space="preserve">
     <value>Organizzazione locale ({0})</value>
@@ -178,7 +183,7 @@
     <value>L'organizzazione globale</value>
   </data>
   <data name="LocalOrganization_Info" xml:space="preserve">
-    <value>Questi sono i tuoi contatti locali. ( Se disponi dei provilegi amministrativi, potresti anche assegnare persone a questi incarichi.)</value>
+    <value>Questi sono i tuoi contatti locali. ( Se disponi dei privilegi amministrativi, potresti anche assegnare persone a questi incarichi.)</value>
   </data>
   <data name="LocalOrganization_PageTitle" xml:space="preserve">
     <value>La mia organizzazione locale</value>

@@ -158,7 +158,7 @@
   </data>
   <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
     <value>&lt;p&gt;C'è un aggiornamento del database in attesa che ti impedisce l'accesso a questa pagina. &lt;strong&gt;Questa è una situazione temporanea&lt;/strong&gt; e i server di Swarmops dovrebbero già lavorare per eseguire l'aggiornamento necessario.&lt;/p&gt;P
-&lt;p&gt;Prova a riaggiornare la pagina tra qualche minito. Se la condizione persiste per più di quindici minuti, contattare l'amministratore di sistema.&lt;/p&gt;</value>
+&lt;p&gt;Prova ad aggiornare nuovamente la pagina tra qualche minito. Se la condizione persiste per più di quindici minuti, contattare l'amministratore di sistema.&lt;/p&gt;</value>
   </data>
   <data name="LockdownAccount_Failed" xml:space="preserve">
     <value>L'account &lt;strong&gt; non è stato bloccato&lt;/strong&gt;. Non esiste un account del genere, oppure il ticket non era valido o troppo vecchio. Se desideri ancora bloccare questo account, contatta gli amministratori di questa installazione di Swarmops.</value>
@@ -170,7 +170,7 @@
     <value>Blocco account utente</value>
   </data>
   <data name="LockdownAccount_Success" xml:space="preserve">
-    <value>L'account è stato &lt;strong&gt;bloccato con successso&lt;/strong&gt; e tutte le sessioni attive sono state terminate.</value>
+    <value>L'account è stato &lt;strong&gt;bloccato con successo&lt;/strong&gt; e tutte le sessioni attive sono state terminate.</value>
   </data>
   <data name="LockdownAccount_Ticket" xml:space="preserve">
     <value>Ticket per il blocco dell'account</value>
@@ -189,7 +189,7 @@
     <value>A2F</value>
   </data>
   <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
-    <value>Insierisci il codice fornito da Google Authenticator.</value>
+    <value>Inserisci il codice fornito da Google Authenticator.</value>
   </data>
   <data name="Login_Header" xml:space="preserve">
     <value>Accedi con firma Bitcoin (BitId)</value>
@@ -201,10 +201,10 @@
     <value>Accedi a Swarmops utilizzando il vostro wallet bitcoin abilitato per il bitid. Non avete bisogno di alcun credito. Se non si dispone di un portafoglio di bitcoin abilitato per il bitid, è possibile accedere manualmente utilizzando un nome utente e una password precedenti. (Il tuo nome utente è il tuo nome o la tua email.)</value>
   </data>
   <data name="Login_LoggingIn" xml:space="preserve">
-    <value>Acesso in corso, attendere...</value>
+    <value>Accesso in corso, attendere...</value>
   </data>
   <data name="Login_ManualLoginHeader" xml:space="preserve">
-    <value>Acesso manuale con password</value>
+    <value>Accesso manuale con password</value>
     <comment>Header to manual username/password form</comment>
   </data>
   <data name="Login_PageTitle" xml:space="preserve">
@@ -281,6 +281,6 @@
     <value>Ticket</value>
   </data>
   <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
-    <value>Se l'indirizzo e-mail è stato associato a un account in questa installazione di Swarmops, &lt;strong&gt;è stato inviato una mail contenente il ticket per il reset della password.&lt;/strong&gt; Apri tale e-mail e fai clic sul collegamento presente per reimpostare la password. (Se l'e-mail non esisteva, non è stato inviato nulla.)&lt;br/&gt;&lt;br/&gt;È possibile chiudere questa scheda del browser. Non è più necessaria.</value>
+    <value>Se l'indirizzo e-mail è stato associato a un account in questa installazione di Swarmops, &lt;strong&gt;è stata inviata una mail contenente il ticket per il reset della password.&lt;/strong&gt; Apri tale e-mail e fai clic sul collegamento presente per reimpostare la password. (Se l'email non esisteva, non è stato inviato nulla.)&lt;br/&gt;&lt;br/&gt;È possibile chiudere questa scheda del browser. Non è più necessaria.</value>
   </data>
 </root>

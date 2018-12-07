@@ -117,16 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AllClear_Text" xml:space="preserve">
+    <value>Οι λειτουργίες έχουν επιστρέψει σε ονομαστικούς όρους.</value>
+  </data>
+  <data name="AllClear_Title" xml:space="preserve">
+    <value>Καθαρισμός</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
+    <value>Ο διακομιστής έχασε τη σύνδεση με το bitcoin blockchain. Οι συναλλαγές Bitcoin δεν θα εντοπίζονται σε πραγματικό χρόνο.</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
+    <value>Χάθηκε η σύνδεση με το Blockchain</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
+    <value>Ο περιηγητής αδυνατεί να επικοινωνήσει με τον εξυπηρετητή. Οι ανανεώσεις σε πραγματικό χρόνο ίσως να μην είναι διαθέσιμες.</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
+    <value>Αποτυχία Επικοινωνίας Επιπέδου 1</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Text" xml:space="preserve">
+    <value>Αδυναμία σύνδεσης με τον εξυπηρετητή για ανανεώσεις σε πραγματικό χρόνο.</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Title" xml:space="preserve">
+    <value>Αποτυχία WebSocket</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Text" xml:space="preserve">
+    <value>Ο εξυπηρετητής αδυνατεί να συνδεθεί στη διαδικασία παρασκηνίου. Ανανεώσεις σε πραγματικό χρόνο θα είναι σε μεγάλο βαθμό μη διαθέσιμες.</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Title" xml:space="preserve">
+    <value>Αποτυχία Σύνδεσης Παρασκηνίου</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Text" xml:space="preserve">
+    <value>Ο εξυπηρετητής δεν μπορεί να επικοινωνήσει με τη διαδικασία παρασκηνίου.</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Title" xml:space="preserve">
+    <value>Αποτυχία Επικοινωνίας Επιπέδου 2</value>
+  </data>
 </root>

@@ -117,19 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Attest_CashAdvance_Many" xml:space="preserve">
+    <value>Attester les avances monétaires {0}</value>
+  </data>
+  <data name="Attest_CashAdvance_One" xml:space="preserve">
+    <value>Attester une avance monétaire #{0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
+    <value>Attester les demandes de remboursement {0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_One" xml:space="preserve">
+    <value>Attester la demande de remboursement #{0}</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>Définir l'adresse du paiement Bitcoin Cash</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>Veuillez définir votre adresse Bitcoin Cash pour les paiements à partir de [InstallationName] (commence par "bitcoincash"):</value>
+  </data>
+  <data name="Payout_Many" xml:space="preserve">
+    <value>Régler {0} paiements</value>
+    <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
+  </data>
+  <data name="Payout_One" xml:space="preserve">
+    <value>Régler un paiement</value>
+  </data>
+  <data name="Payout_Overdue_Many" xml:space="preserve">
+    <value>Régler {0} paiements en retard</value>
+  </data>
+  <data name="Payout_Overdue_One" xml:space="preserve">
+    <value>Régler un paiement en retard</value>
+  </data>
+  <data name="Payout_Urgent_Many" xml:space="preserve">
+    <value>Régler {0} paiements urgents</value>
+  </data>
+  <data name="Payout_Urgent_One" xml:space="preserve">
+    <value>Régler un paiement urgent</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>Activer l'authentification à deux facteurs</value>
+  </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>Valider les réclamations {0}</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>Valider la demande #{0}</value>
+  </data>
 </root>

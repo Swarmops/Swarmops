@@ -825,17 +825,7 @@
   <data name="Master_BitIdRegister_Header" xml:space="preserve">
     <value>扫描这个条码来启用BitID</value>
   </data>
-  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
-    <value>&lt;h3&gt;这是什么？&lt;/h3&gt;
-                &lt;p&gt;BitID是和输入密码相比更为安全的登录方式。它的简洁性不易描述，最好进行体验，由于它需要使用手机，因此它是一种双重身份验证。&lt;/p&gt;
-                &lt;h3&gt;这不需要我的手机也受到保护吗？&lt;/h3&gt;
-                &lt;p&gt;是的。这是你手机的访问保护。但是你的手机应始终受到访问保护。&lt;/p&gt;
-                &lt;h3&gt;我需要一个应用程序吗？&lt;/h3&gt;
-                &lt;p&gt;可能。一些手机比特币钱包已经内置BitID了。最常见的并不包含。如果你的比特币钱包不包含，可以查找叫做"BitID Authenticator" 或类似的应用程序。&lt;/p&gt;
-                &lt;h3&gt;如何启用BitID?&lt;/h3&gt;
-                &lt;p&gt;只需要使用手机应用程序扫描这个条码。完成后可以扫描一个类似的条码来登录系统。&lt;/p&gt;</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
-  </data>
+  
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>BitID（比特币签名）双重身份验证</value>
   </data>
@@ -982,6 +972,11 @@
     <value>提交</value>
     <comment>As in "Submit this data for processing"</comment>
   </data>
-  
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>总账</value>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>您正进入&lt;strong&gt;沙盒&lt;/strong&gt;组织。&lt;br/&gt;&lt;br/&gt;这是一个您可以在不会危及生产数据的情况下使用 Swarmops 的安全环境。想怎么用就怎么用，然后在您完成实验后返回您的生产环境。</value>
+  </data>
   
 </root>

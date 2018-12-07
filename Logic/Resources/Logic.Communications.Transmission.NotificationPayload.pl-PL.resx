@@ -117,92 +117,375 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>Nowa osoba wyraziła chęć zostania [RegularTitle] w [OrganizationName]! [ConcernedPersonName] obecnie znajduje się w [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] Nowy Kandydat: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>Podczas próby wypłaty na Twój adres rozliczeniowy Bitcoin Cash, adres ([BitcoinAddress]) został odrzucony przez związany z tym mechanizm wypłat jako nieważny. Zostało to usunięte z Twojego profilu.
+
+Zaloguj się do [InstallationName] w [ExternalUrl] i ustaw nowy adres płatności bitcoin.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] - ELEMENT DZIAŁANIA] Zły adres rozliczeniowy bitcoin</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>Zmieniłeś swój adres płatności Bitcoin Cash z [BitcoinOldAddress] na [BitcoinAddress]. Ze względów bezpieczeństwa wszystkie wypłaty są poddawane kwarantannie przez następne 48 godzin.
+
+Jeżeli NIE zmieniałeś adresu wypłaty i nastąpiło naruszenie bezpieczeństwa, kliknij natychmiast w ten link, aby zablokować konto: [LockdownLink].
+
+Jeśli wejdziesz w ten link, twoje konto zostanie natychmiast zablokowane bez żądania potwierdzenia. Jeśli jednak poprosiłeś o zmianę adresu, wszystko jest w porządku i nie musisz już nic robić.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[OrganizationName] Adres płatności Bitcoin Cash uległ zmianie</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>Masz fundusze oczekujące na wypłatę w [OrganizationName], ale nie ustawiłeś adresu płatności Bitcoin Cash.
+
+Zaloguj się do [InstallationName] w [ExternalUrl] i podążaj za linkiem, aby ustawić adres rozliczeniowy - znajdziesz go na liście rzeczy do zrobienia.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Proszę ustawić twój adres rozliczeniowy Bitcoin Cash</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>Ustawiłeś adres rozliczeniowy Bitcoin Cash: [BitcoinAddress]. Ze względów bezpieczeństwa wszystkie wypłaty są poddawane kwarantannie przez następne 48 godzin, a następnie wypłacane na nowy adres.
+
+Jeśli nie ustawiłeś tego adresu płatności (warto podwójnie sprawdzić powyższy adresu w celu zwiększenia bezpieczeństwa), natychmiast skontaktuj się z [OrganizationName].</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>Adres rozliczeniowy Bitcoin Cash został ustalony przez [ConcernedPersonName]. Wypłaty rozpoczną się po 48 godzinach od zakończenia okresu kwarantanny.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] ustawił adres płatności Bitcoin Cash</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[OrganizationName] Adres płatności Bitcoin Cash uległ zmianie</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>Elektroniczny portfel bitcoin wykonał [PaymentCount] dla [OrganizationName] automatyczne całkowite płatności [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] mikrobitcoinem lub "bitsami").</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Elektroniczna Wypłata: [CurrencyCode][AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[BitcoinAmountFloat] mikrobitcoin("bits") został właśnie wysłany na twój adres Bitcoin Cash ([BitcoinAddress]) przez [OrganizationName] na nastepujący:
+
+[EmbeddedPreformattedText]
+
+Powinieneś już widzieć transakcję w swoim portfelu, powinna być ona zdatna do dalszej wymiany w ciągu około godziny (sześć normalnych potwierdzeń).</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Fundusze Ci wypłacone: [CurrencyCode][AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>Podczas próby automatycznej płatności z elektronicznego portfela, klucz prywatny użyty do podpisu nie pasuje do kluczy publicznych używanych do zbierania niezbędnych funduszy. To poważna sprawa.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] - PILNE] Błąd prywatnego klucza Bitcoin; nie można zapłacić</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmops próbuje dokonywać płatności w [CurrencyCode] [AmountNeededFloat], ale tylko [CurrencyCode] [AmountWalletFloat] jest dostępny w elektronicznym portfelu Bitcoin Cash. Swarmops nie jest obecnie w stanie dokonać dalszych płatności.
+
+Uzupełnij NATYCHMIAST elektroniczny portfel do przynajmniej wymaganej kwoty - dodatkowy [AmountMissingMicrocoinsFloat] mikrobitcoin("bits") jest wymagany do finansowych operacji na portfelach elektronicznych.
+
+Swarmops będzie nadal próbował i wysyłał te powiadomienia, dopóki nie zakończą się pomyślnie.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ELEMENT DZIAŁANIA] Środki na Bitcoin Cash są niewystarczające na płatności - natychmiast doładuj</value>
+  </data>
+  <data name="CashAdvance_Attested_Body" xml:space="preserve">
+    <value>Żądana zaliczka gotówkowa z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotycząca [RequestPurpose] została potwierdzona przez właściciela budżetu. Przejdzie teraz do twojej wypłaty.</value>
+  </data>
+  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Zaliczka Gotówkowa Potwierdzona: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
+    <value>Twoja żądana zaliczka gotówkowa z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotycząca [RequestPurpose] była atestowana przez właściciela budżetu. Zwykle oznacza to jakiś problem z twoją prośbą.
+
+Oczekuj więcej komunikatów od właściciela budżetu, aby śledzić tę sprawę.</value>
+  </data>
+  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Zaliczka Gotówkowa atestowana: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>Twoja zaliczka gotówkowa z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotycząca [RequestPurpose] została odrzucona. Poniższy tekst został podany jako powód odmowy:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Zaliczka Gotówkowa ODRZUCONA: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>Twoja prośba o zaliczkę gotówkową z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotycząca [RequestPurpose] została oznaczona jako wypłacona przez księgowych organizacji.
+
+Oznacza to, że wkrótce powinieneś zobaczyć kwotę na swoim koncie.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Zaliczka gotówkowa zapłacona: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] poprosił o zaliczkę [CurrencyCode] [BudgetAmountFloat] w celu [RequestPurpose]. Te pieniądze są częścią twojego budżetu, [BudgetName].
+
+Zaloguj się w [InstallationName] pod [ExternalUrl] Financial / AttestCosts, aby potwierdzić lub odrzucić.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ELEMENT AKCJI] Wnioskowane zaliczki gotówkowe: [CurrencyCode] [BudgetAmountFloat] - Potrzebne Potwierdzenie</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+    <value>Twoje roszczenie dotyczące wydatków z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotyczące [RequestPurpose] zostało potwierdzone przez właściciela budżetu. Zostanie to Tobie wypłacone po potwierdzeniu ważności pokwitowań.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Roszczenie Dotyczące Wydatków Potwierdzone: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] utworzył roszczenie dotyczące wydatków w stosunku do budżetu [BudgetName] na kwotę [CurrencyCode] [BudgetAmountFloat]. Roszczenie dotyczy [RequestPurpose]. Będziesz musiał potwierdzić to roszczenie dotyczące wydatków.
+
+Zaloguj się na [InstallationName] w [ExternalUrl] Finansach/Kosztach Poświadczenia aby potwierdzić lub odmówić.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName]- ELEMENT AKCJI] Utworzono roszczenie dotyczące kosztów: [CurrencyCode] [BudgetAmountFloat] - Wymagane poświadczenie</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
+    <value>Twoja żądana zaliczka gotówkowa z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotycząca [RequestPurpose] była atestowana przez właściciela budżetu. Zwykle oznacza to jakiś problem z twoją prośbą.
+
+Oczekuj więcej komunikatów od właściciela budżetu, aby śledzić tę sprawę.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Roszczenie Dotyczące wydatków potwierdzone: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>Roszczenie dotyczące wydatków z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] w odniesieniu do [RequestPurpose] zostało odrzucone. Tekst poniżej wyjaśnia powód odrzucenia:
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Roszczenie dotyczące wydatków ODRZUCONE: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
+    <value>Pokwitowania dotyczące wydatków z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat], dotyczące [RequestPurpose], zostały zatwierdzone przez DE przez posiadaczy dokumentów finansowych organizacji. Zwykle oznacza to jakiś problem z dokumentacją roszczenia o wydatkach.
+
+Oczekuj więcej komunikacji w tej sprawie. Jeśli w krótkim czasie nie usłyszysz nic nowego w tej sprawie, podejmij odpowiednie kroki.</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Dokumenty roszczeniowe wydatków zweryfikowane przez DE: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>Twoje roszczenie dotyczące wydatków z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotyczące [RequestPurpose] zostało oznaczone jako opłacone przez księgowych organizacji.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Koszt roszczenia zapłacony: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>Pokwitowania dotyczące wydatków z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat], dotyczące [RequestPurpose], zostały zatwierdzone przez osoby odpowiedzialne za utrzymywanie ważnych dokumentów.
+
+Roszczenie zostanie ci wypłacone, gdy kwota zostanie potwierdzona przez właściciela budżetu.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Potwierdzone pokwitowania roszczeń dotyczące wydatków: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Faktura od [Supplier] dotycząca [Description] została złożona w odniesieniu do Twojego budżetu [BudgetName] na kwotę [CurrencyCode][BudgetAmountFloat]. Musisz potwierdzić tę fakturę, zanim przejdzie do wypłaty.
+
+Zaloguj się w [InstallationName] pod [ExternalUrl] Finanse/ Koszty Potwierdzeń, aby potwierdzić lub odmówić.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ELEMENT AKCJI] Wnioskowane faktury: [CurrencyCode] [BudgetAmountFloat] - Potrzebne Potwierdzenie</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>Nowy [Regular] został ręcznie dodany do [OrganizationName] w twojej okolicy.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nowe [Regular]: [PersonName], [PersonGeography] [CountryCode] (ręcznie)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>Nowy [Regular] zarejestrował się do [OrganizationName] w twojej okolicy.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nowy [Regular]: [PersonName], [PersonGeography] [CountryCode]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [Regularship] odnowiony: [PersonName], [PersonGeography] [CountryCode] (ręcznie)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+Ta wiadomość została wysłana do [Addressee] od [OrganizationName]. Jeśli nie chcesz otrzymywać takich powiadomień w przyszłości, zaloguj się do [InstallationName] w [ExternalUrl] i zmodyfikuj ustawienia twoich powiadomień.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Twoja wiadomość została umieszczona w kolejce do dostarczenia, a adresaci zostali wybrani. Twoja wiadomość zostanie wysłana lub podejmie próbę wysłania do osób [RecipientCount] w [GeographyName] w [OrganizationName].</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Adresaci połączenia zdeterminowanego dla [GeographyName]: [RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>Twoja wiadomość do [GeographyName] została wysłana do wszystkich zaplanowanych odbiorców. Spośród zaplanowanych odbiorców [RecipientCount], [RecipientsSuccess] udało się tak, jak to możliwe - pamiętaj, że e-maile mogą być później niedoręczone lub nieprzeczytane z wielu powodów.
+
+Czas spędzony na rozwiązywaniu: [ResolvingTime].
+Czas spędzony na transmisji: [TransmissionTime].
+Łączny czas od utworzenia połączenia do jej zakończenia: [TotalTime].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Połączenie przesłane: [GeographyName]</value>
+  </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>Nowa osoba wyraziła zarejestrowała się jako [RegularTitle] w [OrganizationName]! [ConcernedPersonName] obecnie znajduje się w [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nowy [RegularTitle]: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Ktoś, najprawdopodobniej ty, zażądał zresetowania hasła związanego z tym adresem pocztowym w [InstallationName]. Jednakże dla tego konta włączono uwierzytelnianie dwuskładnikowe w celu zwiększenia bezpieczeństwa. Dlatego hasło NIE MOŻNA resetować w prosty sposób.
+
+Skontaktuj się z administratorem personelu w [InstallationName], aby rozwiązać problem i wprowadź nowe hasło po bardziej rygorystycznej procedurze identyfikacji, która odpowiada dwuskładnikowemu poziomowi ochrony.
+
+Dziękuję za zrozumienie.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Nie Może Zresetować Hasła</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>Twoje [InstallationName] hasło zostało właśnie zmienione na [ExternalUrl].
+
+Jeśli nie wykonałeś tej zmiany hasła, nastąpiło naruszenie bezpieczeństwa. W takim przypadku zamknij konto NATYCHMIAST, klikając poniższy link:
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+Jeśli potwierdzisz blokadę poprzez powyższy link, wszelkie istniejące sesje zakończą się natychmiast, logowanie z nowo ustawionym hasłem zostanie zablokowane, a administratorzy skontaktują się z Tobą, aby zweryfikować, co się stało i pomogą Ci ponownie włączyć konto.
+
+Jeśli jednak to ty sam zmieniłeś hasło właśnie teraz, a tym samym spowodowałeś wysłanie tego powiadomienia wszystko jest oczywiście w porządku i tak jak powinno być. Kontynuuj.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Hasło Zmienione</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>Osoby w [OrganizationName] wydały na Twoim koncie kod resetujący hasło, prawdopodobnie na twoją prośbę. Ten kod jest ważny przez następne 24 godziny.
+
+Kliknij w ten link, aby zresetować hasło i ponownie włączyć uwierzytelnianie dwuskładnikowe, jeśli było wcześniej włączone:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Kod ten wygaśnie w ciągu 24 godzin. Jeśli nie zresetujesz swojego hasła do tego czasu, będziesz musiał skontaktować się z administratorami w [OrganizationName], aby wydać nowy bilet resetowania hasła.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Kod Resetujący Hasło</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Ktoś, najprawdopodobniej ty, zażądał zresetowania hasła związanego z tym adresem e-mail w [InstallationName]. Jeśli to Ty, wejdź w poniższy link w ciągu następnych 60 minut, aby ukończyć procedurę resetowania hasła:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Jeśli NIE poprosiłeś o zresetowanie hasła, możesz (i powinieneś) zignorować tę pocztę. Żądanie zresetowania hasła wygaśnie w ciągu godziny. (Jeśli otrzymujesz dużą liczbę linków do resetowania hasła, których nie prosiłeś, powiadom administratora.)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Kod Resetujący Hasło</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>Złożone pokwitowania wymagają weryfikacji w celu kontynuowania procesów finansowych.
+
+Zaloguj się do [InstallationName] w [ExternalUrl]Financial/ValidateReceipts, aby je potwierdzić lub odrzucić.</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] - ELEMENT DZIAŁANIA] Złożone pokwitowania - Potrzebne Potwierdzenie</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>Twoja wypłata dla [RequestPurpose] została anulowana. Nie zostanie wypłacona.
+
+
+Jeśli jest to dla ciebie zaskoczeniem, skontaktuj się niezwłocznie z organizacją i/lub swoim przełożonym. Jako przyczynę podano:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Wypłata gotówki odrzucona: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>To jest podsumowanie twojego wynagrodzenia dla [LastYear]. Nie jest to oświadczenie o nowej pensji, ale o miesięcznych pensjach wypłacanych w ciągu ostatniego roku, a także o wszelkich odliczonych podatkach. Celem tego oświadczenia jest dostarczenie danych do twoich rejestrów i/lub celów deklaracji podatkowych w zeszłym roku.
+
+Wynagrodzenie brutto za [LastYear]: [CurrencyCode] [GrossSalaryTotal]
+Odliczony z niego podatek: [CurrencyCode] [TaxDeductedTotal]
+Wypłacone wynagrodzenie netto: [CurrencyCode] [NetSalaryTotal]
+
+Miesięczna kwota netto
+-----  ----------  -----------  ----------  -----------
+[EmbeddedPreformattedText]
+
+Całkowite  [GrossSalaryTotal] [TaxDeductedTotal] [NetSalaryTotal]
+
+Ponadto, [CurrencyCode] [TaxAdditiveTotalUnpadded] zostały opłacone poprzez przez organizację za twoje zatrudnienie, oprócz kwoty odliczonej powyżej. Jest to także podatek od twojej pensji, nawet jeśli jej charakter został ukryty biurokratycznie.</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Zestawienie podsumowujące wynagrodzenie dla [LastYear]</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>Swarmops Backend [SwarmopsVersion] na hoście [HostName] pomyślnie uaktualnił schemat bazy danych Swarmops do wersji [DbVersion].
+
+Jest to wyłącznie informacja. Nie musisz podejmować działań.</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>Zaktualizowano bazy danych Swarmops</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>Swarmops Back-end [SwarmopsVersion] hostowany na [Hostname] nie powiódł się podczas aktualizacji bazy danych Swarmops. Jest to zwykle spowodowane przejściowym błędem sieci zewnętrznej, powodującym niepowodzenie odzyskania ścieżki łatki pliku.
+
+Jesteśmy obecnie w rewizji schematu bazy danych [DbVersion], ale staramy się uaktualnić do [DbVersionExpected].
+
+Aktualizacja będzie ponawiana co godzinę. Niektóre funkcje mogą być wyłączone do czasu aktualizacji bazy danych. Jeśli chcesz ręcznie rozwiązać problem, pakiety aktualizacji bazy danych są pobierane z packages.swarmops.com, w tym samym miejscu, w którym apt-get pobiera pakiety oprogramowania.</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>Aktualizacja bazy danych Swarmops NIE POWIODŁA SIĘ</value>
+  </data>
+  <data name="System_Exception_Body" xml:space="preserve">
+    <value>W Swarmops został zgłoszony nieobsługiwany wyjątek:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="System_Exception_Subject" xml:space="preserve">
+    <value>WYJĄTEK Swarmops!</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>To jest wiadomość testowa wysłana przez Swarmops [SwarmopsVersion] działającą na [HostName]. Właśnie zmieniłeś ustawienia serwera pocztowego. Aby sprawdzić, czy nowe ustawienia są poprawne, Swarmops wysyła tą wiadomość tekstową z back-endu.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Test Serwera Poczty Swarmops</value>
+  </data>
+  <data name="System_PublicRootReset_Body" xml:space="preserve">
+    <value>Publiczny główny klucz bitcoin w bazie danych MySql nie był zgodny z prywatnym głównym kluczem bitcoin przechowywanym w /etc/swarmops na [HostName]. Jest to potencjalnie poważny stan i nigdy nie powinien się zdarzyć, więc publiczny klucz główny został odjęty z klucza prywatnego i ponownie zapisany w bazie danych tam, gdzie był wcześniej.</value>
+  </data>
+  <data name="System_PublicRootReset_Subject" xml:space="preserve">
+    <value>Swarmops: Resetowanie głównego klucza publicznego w Hotwallet</value>
+  </data>
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>Wersja Swarmops Back-end [SwarmopsVersion] na hoście [HostName] została pomyślnie uruchomiona i połączona z bazą danych i strukturą powiadomień.</value>
+  </data>
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>Swamops bieżący Back-end</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>Swarmops Czołowa wersja serwera [SwarmopsVersion] na hoście [HostName] została pomyślnie uruchomiona i połączona z bazą danych i ramami powiadomień.</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>Bieżący czołowy Swarmops</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
+    <value>Mechanizm transmisji Swarmops w [HostName] napotkał nieznany typ ładunku ([UnrecognizedPayloadType]). Może się to zdarzyć tylko w bardzo rzadkich przypadkach w połączeniu z ulepszeniami, w których ulepszona wersja musi zająć się czymś, co zmieniło nazwy w samym procesie, co jest rzadkim zjawiskiem.
+
+Jeśli ten błąd się powtarza, możesz mieć źle zainstalowaną wtyczkę lub coś podobnego. W każdym razie nierozpoznany komunikat został odrzucony i nie zostanie przesłany, ponieważ Swarmops nie wie w jaki sposób to zrobić.</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
+    <value>Swarmops: Nierozpoznany ładunek komunikacyjny</value>
+  </data>
 </root>

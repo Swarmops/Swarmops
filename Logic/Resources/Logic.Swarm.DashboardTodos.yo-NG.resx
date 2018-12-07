@@ -117,19 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Attest_CashAdvance_Many" xml:space="preserve">
+    <value>Jẹri awon owo agbaalẹ {0}</value>
+  </data>
+  <data name="Attest_CashAdvance_One" xml:space="preserve">
+    <value>Jẹri owo agbaalẹ #{0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
+    <value>Jẹri awon ibéèrè owo agbapada {0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_One" xml:space="preserve">
+    <value>Jẹri ibéèrè owo agbapada #{0}</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>Seto adireesi isanwojade Bitcoin Cash</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>Jowo seto adireesi Bitcoin Cash re fun awon isanwojade lati [InstallationName] (bẹrẹ pẹlu "bitcoincash"):</value>
+  </data>
+  <data name="Payout_Many" xml:space="preserve">
+    <value>Yanju {0} awon isanwojade</value>
+    <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
+  </data>
+  <data name="Payout_One" xml:space="preserve">
+    <value>Yanju isanwojade kan</value>
+  </data>
+  <data name="Payout_Overdue_Many" xml:space="preserve">
+    <value>Yanju {0} awon isanwojade ti o ti tọ kọja</value>
+  </data>
+  <data name="Payout_Overdue_One" xml:space="preserve">
+    <value>Yanju isanwojade kan ti o ti tọ kọja</value>
+  </data>
+  <data name="Payout_Urgent_Many" xml:space="preserve">
+    <value>Yanju {0} awon isanwojade kiakia</value>
+  </data>
+  <data name="Payout_Urgent_One" xml:space="preserve">
+    <value>Yanju isanwojade kiakia kan</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>Mu ifọwọsi ifosiwewe-meji ṣiṣẹ</value>
+  </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>Se ijẹri awon ibeere {0}</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>Se ijẹri ibeere #{0}</value>
+  </data>
 </root>

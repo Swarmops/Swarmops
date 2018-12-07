@@ -129,7 +129,9 @@
   <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
     <value>Impostazioni dell'organizzazione</value>
   </data>
-  
+  <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
+    <value>Albero geografico</value>
+  </data>
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>Cluster dell'organizzazione</value>
   </data>
@@ -187,7 +189,9 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>Crea ordine d'acquisto</value>
   </data>
-  
+  <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
+    <value>Assistente Gigs</value>
+  </data>
   <data name="Menu5_Financial_List" xml:space="preserve">
     <value>Lista...</value>
   </data>
@@ -300,7 +304,7 @@
     <value>Dichiarazione del profitto &amp; perdite</value>
   </data>
   <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
-    <value>Risincronizza conto bancario</value>
+    <value>Resincronizza conto bancario</value>
   </data>
   <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
     <value>Imposta budget</value>

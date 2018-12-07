@@ -282,7 +282,7 @@
     <value>Vice</value>
   </data>
   <data name="Position_Geographic_ExpandingSubleaderNode_UxElement" xml:space="preserve">
-    <value>Subleaders di quest'area geografica</value>
+    <value>Vice-Capi area geografica</value>
     <comment>Leaders for geographies below the one displayed</comment>
   </data>
   <data name="Position_Geographic_InfoLeader" xml:space="preserve">

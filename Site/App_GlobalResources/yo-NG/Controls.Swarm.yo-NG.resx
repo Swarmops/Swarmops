@@ -117,28 +117,83 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Positions_AssignAnotherPerson" xml:space="preserve">
+    <value>Yan eniyan miran...</value>
+    <comment>To an existing position that accepts multiple people (like "assistants")</comment>
+  </data>
+  <data name="Positions_AssignFifthPerson" xml:space="preserve">
+    <value>Yan eniyan karun...</value>
+  </data>
+  <data name="Positions_AssignFirstPerson" xml:space="preserve">
+    <value>Yan...</value>
+  </data>
+  <data name="Positions_AssignFourthPerson" xml:space="preserve">
+    <value>Yan eniyan kerin...</value>
+  </data>
+  <data name="Positions_AssignmentDuration" xml:space="preserve">
+    <value>Iye akoko ise (o se fagun)</value>
+  </data>
+  <data name="Positions_AssignmentExpires" xml:space="preserve">
+    <value>Pari ni</value>
+    <comment>The date a position assignment autoterminates</comment>
+  </data>
+  <data name="Positions_AssignPersonToPosition" xml:space="preserve">
+    <value>Yan eniyan yi si ipo</value>
+  </data>
+  <data name="Positions_AssignSecondPerson" xml:space="preserve">
+    <value>Yan eniyan keji...</value>
+  </data>
+  <data name="Positions_AssignSixthPerson" xml:space="preserve">
+    <value>Yan eniyan kefa...</value>
+    <comment>ok, this is not strictly necessary, just a bell &amp; whistle</comment>
+  </data>
+  <data name="Positions_AssignThirdPerson" xml:space="preserve">
+    <value>Yan eniyan keta...</value>
+  </data>
+  <data name="Positions_ButtonAssign" xml:space="preserve">
+    <value>Yan</value>
+    <comment>Kind of "hire" but also for volunteers</comment>
+  </data>
+  <data name="Positions_ModalHeader" xml:space="preserve">
+    <value>Yan eniyan bi &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt; &lt;span id='{0}_modalGeographyName'&gt; &lt;/span&gt;</value>
+    <comment>Header for new assignment dialog</comment>
+  </data>
+  <data name="Positions_NoMorePeopleOnPosition" xml:space="preserve">
+    <value>Kuna: Ko le yan awon eniyan si ipo yii mo.</value>
+  </data>
+  <data name="Positions_PleaseSelectPerson" xml:space="preserve">
+    <value>Jowo mu eniyan kan lati yan.</value>
+  </data>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>(ipo ti ṣofo)</value>
+    <comment>For unassigned positions</comment>
+  </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;FI IPO RE SILE?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Eyi jẹ &lt;strong&gt;iṣẹ&lt;/strong&gt; rẹ. Fifopinsi iṣẹ ti ara rẹ jẹ deede sisọpe "MO JAWO". Siṣe bẹ yoo ni ipa lẹsẹkẹsẹ. Ṣe eyi ni ohun ti o fẹ lati ṣe?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;FOPINSI ISE?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ṣe o fẹ lati fopinsi &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; kuro nibi iṣẹ bi &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Eyi jẹ deede ti gbigbasẹ lọwọ ẹnikan ati pe o nilo lati wa ni ibamu pẹlu awọn ilana ti abẹle ati ofin ibilẹ.&lt;br/&gt;&lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_TerminateNo" xml:space="preserve">
+    <value>Maa ṣe Fopinsi</value>
+  </data>
+  <data name="Positions_TerminateSelfNo" xml:space="preserve">
+    <value>Oops! Rara, pada!</value>
+  </data>
+  <data name="Positions_TerminateSelfYes" xml:space="preserve">
+    <value>Bẹẹni, Mo Fiposilẹ</value>
+  </data>
+  <data name="Positions_TerminateYes" xml:space="preserve">
+    <value>Fopinsi Ise</value>
+  </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>(yan-an labẹ Ajọ Mi)</value>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>Ṣẹda ipo tuntun...</value>
+  </data>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>Awọn asiwaju ti awọn atunpin</value>
+  </data>
 </root>

@@ -241,12 +241,6 @@
     <value>Banka İndirme Talimatları</value>
     <comment>Header above instructions for generation of the bank file type selected.</comment>
   </data>
-  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
-    <value>BGMAX biçim dosyaları farklı bankalarda farklı anlamlara gelmektedir. Yeniden edinilecek dosyaların listesini görmek için SEB üzerinden &lt;strong&gt; Ödemeler &lt;/strong&gt; ve &lt;strong&gt; İletişim dosyaları &lt;/strong&gt; 'na gidin. Diğer bankalar değişik olabilir. Ne olursa olsun, dosyaları buraya yükleyin.</value>
-  </data>
-  
-  
-  
   <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
     <value>&lt;p&gt;Dosya {0:N0} işlem içeriyordu. &lt;strong&gt; {1:N0} işlem&lt;/strong&gt; başarıyla muhasebe defteri &lt;em&gt;{2}&lt;/em&gt; hesabına aktarıldı. ({3:N0} işlem tekrarlayan işlemlerdi.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Ancak, banka bakiyesi Swarmops'daki kayıtlar ile eşleşmemekte.&lt;/strong&gt;Bu genellikle eksik işlemlerden kaynaklanır. Lütfen, Swarmops'un bütün işlemleri gördüğünden emin olmak için daha büyük bir zaman aralığına sahip bir işlem listesi yükleyiniz.&lt;/p&gt;&lt;p&gt;Swarmops'un muhasebe defteri hesabı şu anda bankanınki ile &lt;strong&gt;senkronize değil&lt;/strong&gt;&lt;/p&gt;</value>
     <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
@@ -422,9 +416,7 @@
   <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
     <value>Gidere eklenebilir</value>
   </data>
-  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
-    <value>Dosya yükleme profili</value>
-  </data>
+  
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>Hesabı Düzenle</value>
   </data>
@@ -872,9 +864,7 @@
   <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
     <value>Ciro</value>
   </data>
-  <data name="ViewVatReports_Info" xml:space="preserve">
-    <value>Dosyalanmış bir KDV raporu görüntülüyorsunuz. Gelen ve giden KDV'nin yanı sıra toplam ciro rapor dönemi için kayıt altına alındı. Bu rapor vergi yetkililerine iletilebilmeye hazırdır.</value>
-  </data>
+  
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>KDV Raporları</value>
     <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
@@ -936,6 +926,22 @@
     <value>Şunun için genel muhasebe defteri</value>
     <comment>This phrase is followed by dropdowns for year and month</comment>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
