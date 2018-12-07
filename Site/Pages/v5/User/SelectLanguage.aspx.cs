@@ -60,35 +60,9 @@ namespace Swarmops.Frontend.Pages.v5.User
 
                 string cultureFirstPart = cultureId.Split('-')[0];
 
-                if (nonStandardFlagNames.ContainsKey(cultureFirstPart)
+                if (nonStandardFlagNames.ContainsKey(cultureFirstPart))
                 {
-                    
-                }
-
-                if (cultureId.StartsWith("en"))
-                {
-                    newLanguage.IconUrl = "/Images/Flags/uk-64px.png";
-                    // use "uk" for en-GB and en-US rather than "gb" or "us"
-                }
-                else if (cultureId.StartsWith ("ar"))
-                {
-                    newLanguage.IconUrl = "/Images/Flags/Arabic-64px.png";
-                    // crowdin's generic culture is ar-SA but Arabic is not country specific
-                }
-                else if (cultureId.StartsWith("fil"))
-                {
-                    // Filipino flag can't be deduced from the culture string
-                    newLanguage.IconUrl = "/Images/Flags/ph-64px.png";
-                }
-                else if (cultureId.StartsWith("el"))
-                {
-                    // Nor the Greek flag
-                    newLanguage.IconUrl = "/Images/Flags/gr-64px.png";
-                }
-                else if (cultureId.StartsWith("zh"))
-                {
-                    // Nor Chinese
-                    newLanguage.IconUrl = "/Images/Flags/cn-64px.png";
+                    newLanguage.IconUrl = "/Images/Flags/" + nonStandardFlagNames[cultureFirstPart] + "-64px.png";
                 }
                 else
                 {
