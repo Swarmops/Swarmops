@@ -151,6 +151,7 @@ namespace Swarmops.Frontend
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
+            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Height] = "25px";
 
             SetupDropboxes();
 
