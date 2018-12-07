@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.User
 {
@@ -33,17 +34,8 @@ namespace Swarmops.Frontend.Pages.v5.User
         {
             string[] availableCultures = {"ar-AE", "de-DE", "el", "es-ES", "fr-FR", "fil-Latn", "it-IT", "nl-NL", "pl-PL", "pt-PT", "ru-RU", "tr-TR", "sv-SE", "yo-Latn", "zh-CHS" };
 
-            Dictionary<string,string> nonStandardFlagNames = new Dictionary<string, string>();
-            nonStandardFlagNames["en"] = "uk";      // Use UK flag for US English
-            nonStandardFlagNames["ar"] = "Arabic";  // Arabic doesn't have a country flag per se
-            nonStandardFlagNames["fil"] = "ph";     // Philippines / Filipino
-            nonStandardFlagNames["el"] = "gr";      // Greece / Ελληνικά
-            nonStandardFlagNames["yo"] = "ng";      // Nigeria / Yoruba
-            nonStandardFlagNames["zh"] = "ch";      // China / Chinese
-
-
             Array.Sort (availableCultures);
-            // sort by locale string, and that's ok, that happens to give the same result as sorting on country name
+            // sort by locale string, and that's ok, that happens to give the same result as sorting on language native name, which is the desired outcome
 
             List<LanguageParameters> availableLanguages = new List<LanguageParameters>();
             foreach (string cultureId in availableCultures)
@@ -58,16 +50,8 @@ namespace Swarmops.Frontend.Pages.v5.User
                 // Do not display country, just the language name
                 newLanguage.DisplayName = newLanguage.DisplayName.Split (' ')[0];
 
-                string cultureFirstPart = cultureId.Split('-')[0];
+                newLanguage.IconUrl = SupportFunctions.FlagFileFromCultureId(cultureId);
 
-                if (nonStandardFlagNames.ContainsKey(cultureFirstPart))
-                {
-                    newLanguage.IconUrl = "/Images/Flags/" + nonStandardFlagNames[cultureFirstPart] + "-64px.png";
-                }
-                else
-                {
-                    newLanguage.IconUrl = "/Images/Flags/" + cultureId.Substring(3, 2).ToLowerInvariant() + "-64px.png";
-                }
                 if (culture.TextInfo.IsRightToLeft)
                 {
                     newLanguage.Rtl = "rtl";

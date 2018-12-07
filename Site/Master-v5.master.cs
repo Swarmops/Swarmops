@@ -210,24 +210,9 @@ namespace Swarmops.Frontend
                 Response.Cookies.Add (cookieCulture);
             }
 
-            string flagName = "uk";
 
-            if (!cultureStringLower.StartsWith ("en") && cultureString.Length > 3)
+            if (cultureStringLower == "af-za") // "South African Afrikaans", a special placeholder for localization code
             {
-                flagName = cultureStringLower.Substring (3);
-            }
-
-            if (cultureStringLower.StartsWith ("ar"))
-            {
-                flagName = "Arabic";
-            }
-            else if (cultureStringLower == "fil-latn" || cultureStringLower == "fil-ph")
-            {
-                flagName = "ph"; // Filipino culture
-            }
-            else if (cultureStringLower == "af-za") // "South African Afrikaans", a special placeholder for localization code
-            {
-                flagName = "txl";
                 InitTranslation();
             }
             else
@@ -235,7 +220,7 @@ namespace Swarmops.Frontend
                 this.LiteralCrowdinScript.Text = string.Empty;
             }
 
-            this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + "-24px.png";
+            this.ImageCultureIndicator.ImageUrl = SupportFunctions.FlagFileFromCultureId(cultureString);
 
             this.LinkLogout.Text = Global.CurrentUserInfo_Logout;
             this.LabelPreferences.Text = Global.CurrentUserInfo_Preferences;

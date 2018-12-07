@@ -54,6 +54,36 @@ namespace Swarmops.Logic.Support
             return buffer;
         }
 
+        public static string FlagFileFromCultureId(string cultureId)
+        {
+            cultureId = cultureId.ToLowerInvariant();
+
+            Dictionary<string, string> nonStandardFlagNames = new Dictionary<string, string>();
+            nonStandardFlagNames["en"] = "uk";      // Use UK flag for US English
+            nonStandardFlagNames["ar"] = "Arabic";  // Arabic doesn't have a country flag per se
+            nonStandardFlagNames["fil"] = "ph";     // Philippines / Filipino
+            nonStandardFlagNames["el"] = "gr";      // Greece / Ελληνικά
+            nonStandardFlagNames["yo"] = "ng";      // Nigeria / Yoruba
+            nonStandardFlagNames["zh"] = "ch";      // China / Chinese
+
+            string cultureFirstPart = cultureId.Split('-')[0];
+
+            if (cultureId == "af-za") // Translation pseudocode
+            {
+                return "/Images/Flags/txl-64px.png";
+            }
+            else if (nonStandardFlagNames.ContainsKey(cultureFirstPart))
+            {
+                return "/Images/Flags/" + nonStandardFlagNames[cultureFirstPart] + "-64px.png";
+            }
+            else
+            {
+                return "/Images/Flags/" + cultureId.Substring(3, 2) + "-64px.png";
+            }
+
+        }
+
+
         // ReSharper disable once InconsistentNaming  -- IPAddress is the canonical writing
         public static string GetRemoteIPAddressChain()
         {
