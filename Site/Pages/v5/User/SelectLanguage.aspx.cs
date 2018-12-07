@@ -38,6 +38,7 @@ namespace Swarmops.Frontend.Pages.v5.User
             nonStandardFlagNames["ar"] = "Arabic";  // Arabic doesn't have a country flag per se
             nonStandardFlagNames["fil"] = "ph";     // Philippines / Filipino
             nonStandardFlagNames["el"] = "gr";      // Greece / Ελληνικά
+            nonStandardFlagNames["yo"] = "ng";      // Nigeria / Yoruba
             nonStandardFlagNames["zh"] = "ch";      // China / Chinese
 
 
@@ -56,6 +57,13 @@ namespace Swarmops.Frontend.Pages.v5.User
 
                 // Do not display country, just the language name
                 newLanguage.DisplayName = newLanguage.DisplayName.Split (' ')[0];
+
+                string cultureFirstPart = cultureId.Split('-')[0];
+
+                if (nonStandardFlagNames.ContainsKey(cultureFirstPart)
+                {
+                    
+                }
 
                 if (cultureId.StartsWith("en"))
                 {
