@@ -31,7 +31,7 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         private void PopulateRepeater()
         {
-            string[] availableCultures = {"ar-AE", "de-DE", "es-ES", "fr-FR", "el", /*"fil-Latn",*/ "it-IT", "nl-NL", "pt-PT", "ru-RU", "tr-TR", "sv-SE" };
+            string[] availableCultures = {"ar-AE", "de-DE", "el", "es-ES", "fr-FR", /*"fil-Latn",*/ "it-IT", "nl-NL", "pt-PT", "ru-RU", "tr-TR", "sv-SE", "zh-CHS" };
 
             Array.Sort (availableCultures);
             // sort by locale string, and that's ok, that happens to give the same result as sorting on country name
@@ -68,6 +68,11 @@ namespace Swarmops.Frontend.Pages.v5.User
                 {
                     // Nor the Greek flag
                     newLanguage.IconUrl = "/Images/Flags/gr-64px.png";
+                }
+                else if (cultureId.StartsWith("zh"))
+                {
+                    // Nor Chinese
+                    newLanguage.IconUrl = "/Images/Flags/cn-64px.png";
                 }
                 else
                 {
