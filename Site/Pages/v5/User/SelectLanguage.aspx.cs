@@ -31,7 +31,15 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         private void PopulateRepeater()
         {
-            string[] availableCultures = {"ar-AE", "de-DE", "el", "es-ES", "fr-FR", /*"fil-Latn",*/ "it-IT", "nl-NL", "pt-PT", "ru-RU", "tr-TR", "sv-SE", "zh-CHS" };
+            string[] availableCultures = {"ar-AE", "de-DE", "el", "es-ES", "fr-FR", "fil-Latn", "it-IT", "nl-NL", "pl-PL", "pt-PT", "ru-RU", "tr-TR", "sv-SE", "yo-Latn", "zh-CHS" };
+
+            Dictionary<string,string> nonStandardFlagNames = new Dictionary<string, string>();
+            nonStandardFlagNames["en"] = "uk";      // Use UK flag for US English
+            nonStandardFlagNames["ar"] = "Arabic";  // Arabic doesn't have a country flag per se
+            nonStandardFlagNames["fil"] = "ph";     // Philippines / Filipino
+            nonStandardFlagNames["el"] = "gr";      // Greece / Ελληνικά
+            nonStandardFlagNames["zh"] = "ch";      // China / Chinese
+
 
             Array.Sort (availableCultures);
             // sort by locale string, and that's ok, that happens to give the same result as sorting on country name
