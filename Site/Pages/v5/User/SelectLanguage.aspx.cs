@@ -32,10 +32,9 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         private void PopulateRepeater()
         {
-            string[] availableCultures = {"ar-AE", "de-DE", "el", "es-ES", "fr-FR", "fil-Latn", "it-IT", "nl-NL", "pl-PL", "pt-PT", "ru-RU", "tr-TR", "sv-SE", "yo-Latn", "zh-CHS" };
+            string[] availableCultures = {"ar-AE", "de-DE", "yo-Latn", "el", "es-ES", "fr-FR", "fil-Latn", "it-IT", "nl-NL", "pl-PL", "pt-PT", "ru-RU", "tr-TR", "sv-SE", "zh-CHS" };
 
-            Array.Sort (availableCultures);
-            // sort by locale string, and that's ok, that happens to give the same result as sorting on language native name, which is the desired outcome
+            // the above locales are sorted by the language NATIVE name, to make the list maximally useful
 
             List<LanguageParameters> availableLanguages = new List<LanguageParameters>();
             foreach (string cultureId in availableCultures)
