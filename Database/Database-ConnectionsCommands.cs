@@ -228,7 +228,7 @@ namespace Swarmops.Database
             return d.ToString ("yyyyMMddHHmmss");
         }
 
-
+        [Obsolete("This should be replaced with parameterized queries everywhere, so making a compile error.", true)]
         private string SqlSanitize (string input)  // TODO: Replace with parameterized queries everywhere.
         {
             string[] forbiddenArray =

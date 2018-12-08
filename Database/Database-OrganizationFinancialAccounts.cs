@@ -57,6 +57,8 @@ namespace Swarmops.Database
                         "AND ObjectOptionalDataTypes.Name='" + dataType.ToString() + "' " +
                         "AND ObjectOptionalData.Data='" + data.Replace("'", "''") + "';", connection);
 
+                // NOTE: THIS STRING QUERY IS NOT PARAMETERIZED, EVEN THOUGH IT'S IN COMMENTED OUT CODE
+
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())

@@ -66,9 +66,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + personFieldSequence + " WHERE Name like '" +
-                        GetSqlPatternFromNamePattern (namePattern).Replace ("'", "''") + "'",
+                        "SELECT " + personFieldSequence + " WHERE Name like @namePattern",
                         connection);
+                AddParameterWithName(command, "namePattern", namePattern);
                 command.CommandTimeout = 120;
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -86,7 +86,7 @@ namespace Swarmops.Database
         private string GetSqlPatternFromNamePattern (string namePattern)
         {
             // Remove any injection codes
-            namePattern = SqlSanitize (namePattern).Replace ("%", String.Empty).Trim();
+            namePattern = namePattern.Replace ("%", String.Empty).Trim();
 
             while (namePattern.Contains ("  "))
             {

@@ -221,7 +221,9 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand (
                         "SELECT " + financialTransactionFieldSequence +  " WHERE OrganizationId=" +
-                        organizationId + " AND ImportHash='" + SqlSanitize(importKey) + "';", connection);
+                        organizationId + " AND ImportHash=@importKey';", connection);
+
+                AddParameterWithName(command, "importKey", importKey);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -1135,17 +1137,21 @@ namespace Swarmops.Database
 
                 using (DbCommand command =
                     GetDbCommand(
-                        "Select FinancialTransactionId from FinancialTransactionForeignIds WHERE FinancialTransactionForeignIdType=" + (int)foreignIdType +
-                        " AND ForeignId='" + SqlSanitize(foreignId) + "';", connection))
-
-                using (DbDataReader reader = command.ExecuteReader())
+                        "Select FinancialTransactionId from FinancialTransactionForeignIds WHERE FinancialTransactionForeignIdType=" +
+                        (int) foreignIdType + " AND ForeignId=@foreignId;", connection))
                 {
-                    if (reader.Read())
-                    {
-                        return reader.GetInt32(0);
-                    }
 
-                    return 0; // none found. Todo: throw exception instead? This behavior is inconsistent
+                    AddParameterWithName(command, "foreignId", foreignId);
+
+                    using (DbDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return reader.GetInt32(0);
+                        }
+
+                        return 0; // none found. Todo: throw exception instead? This behavior is inconsistent
+                    }
                 }
             }
         }

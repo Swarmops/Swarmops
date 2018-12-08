@@ -77,6 +77,8 @@ namespace Swarmops.Database
                         "SELECT" + currencyFieldSequence + "WHERE Code='" +
                         currencyCode.Replace("'", "''").ToUpperInvariant() + "';", connection);
 
+                // TODO: NOTE THIS STRING QUERY, THOUGH IN COMMENTED OUT CODE, IS NOT PARAMETERIZED
+
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())

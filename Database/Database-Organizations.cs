@@ -66,6 +66,9 @@ namespace Swarmops.Database
 
         public void DeleteOrganization (int OrganizationId)
         {
+            throw new NotImplementedException();
+
+            /*
             int deletedOrganizationsID = 98;
             BasicOrganization org = GetOrganization (OrganizationId);
             //Delete is done by setting parent ID to deletedOrganizationsID
@@ -80,7 +83,7 @@ namespace Swarmops.Database
                 org.AcceptsMembers,
                 org.AutoAssignNewMembers,
                 org.DefaultCountryId,
-                OrganizationId);
+                OrganizationId);*/
         }
 
         public void UpdateOrganization (int ParentOrganizationId, string NameInternational, string Name,
