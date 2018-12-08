@@ -88,6 +88,8 @@ namespace Swarmops.Database
             string Domain, string MailPrefix, int AnchorGeographyId, bool AcceptsMembers, bool AutoAssignNewMembers,
             int DefaultCountryId, int OrganizationId)
         {
+            throw new NotImplementedException("Needs to use SPs per field");
+
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();

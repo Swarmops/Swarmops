@@ -76,8 +76,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT TranslatedUrl FROM UrlTranslations WHERE OriginalUrl='" + url.Replace ("'", "''") +
-                        "' AND Translated=1", connection);
+                        "SELECT TranslatedUrl FROM UrlTranslations WHERE OriginalUrl=@originalUrl " +
+                        " AND Translated=1", connection);
+
+                AddParameterWithName("originalUrl", url);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

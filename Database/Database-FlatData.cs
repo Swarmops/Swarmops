@@ -13,8 +13,9 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand ("SELECT DataValue FROM FlatData WHERE DataKey='" + key.Replace ("'", "''") + "'",
+                    GetDbCommand ("SELECT DataValue FROM FlatData WHERE DataKey=@dataKey",
                         connection);
+                AddParameterWithName(command, "dataKey", key);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

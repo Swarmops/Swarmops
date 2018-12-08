@@ -60,8 +60,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT" + currencyFieldSequence + "WHERE Code='" +
-                        currencyCode.Replace ("'", "''").ToUpperInvariant() + "';", connection);
+                        "SELECT" + currencyFieldSequence + "WHERE Code=@currencyCode;", connection);
+                AddParameterWithName(command, "currencyCode", currencyCode);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

@@ -491,8 +491,10 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand (
                         "SELECT " + personFieldSequence + " WHERE GeographyId IN (" + JoinIds (geographyIds) +
-                        ") AND (Name like '" + sqlPattern + "' OR Email like '" + sqlPattern + "')",
+                        ") AND (Name LIKE @searchPattern OR Email LIKE @searchPattern)",
                         connection);
+
+                AddParameterWithName(command, "searchPattern", pattern);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

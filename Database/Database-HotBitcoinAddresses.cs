@@ -87,7 +87,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + hotBitcoinAddressFieldSequence + "WHERE BitcoinChainId=" + (Int32) chain + " AND AddressString='" + SqlSanitize (address) + "';", connection);
+                        "SELECT" + hotBitcoinAddressFieldSequence + "WHERE BitcoinChainId=" + (Int32) chain + " AND AddressString=@addressString;", connection);
+                AddParameterWithName(command, "addressString", address);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
