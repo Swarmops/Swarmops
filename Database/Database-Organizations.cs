@@ -89,7 +89,7 @@ namespace Swarmops.Database
             int DefaultCountryId, int OrganizationId)
         {
             throw new NotImplementedException("Needs to use SPs per field");
-
+            /*
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
@@ -109,7 +109,7 @@ namespace Swarmops.Database
                 AddParameterWithName (command, "p_DefaultCountryId", DefaultCountryId);
                 AddParameterWithName (command, "p_OrganizationId", OrganizationId);
                 command.ExecuteNonQuery();
-            }
+            }*/
         }
 
 

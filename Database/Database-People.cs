@@ -494,7 +494,7 @@ namespace Swarmops.Database
                         ") AND (Name LIKE @searchPattern OR Email LIKE @searchPattern)",
                         connection);
 
-                AddParameterWithName(command, "searchPattern", pattern);
+                AddParameterWithName(command, "searchPattern", sqlPattern);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
