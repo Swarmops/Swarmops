@@ -55,7 +55,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                     // If automation has Bank Account Statement enabled (assume true for now):
 
                     FinancialAccountDocument lastBankStatement = assetAccount.GetMostRecentDocument(FinancialAccountDocumentType.BankStatement);
-                    int lastStatementMonth = (this.CurrentOrganization.FirstFiscalYear*100-1) + 12;  // December of the year before
+                    int lastStatementMonth = (this.CurrentOrganization.FirstFiscalYear-1) *100 + 12;  // December of the year before
 
                     if (lastBankStatement != null)
                     {
