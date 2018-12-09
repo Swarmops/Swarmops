@@ -53,6 +53,7 @@
     <Compile Include="Enums\ExpenseEventType.cs" />
     <Compile Include="Enums\ExternalActivityType.cs" />
     <Compile Include="Enums\ExternalIdentityType.cs" />
+    <Compile Include="Enums\FinancialAccountDocumentType.cs" />
     <Compile Include="Enums\FinancialAccountType.cs" />
     <Compile Include="Enums\FinancialDependencyType.cs" />
     <Compile Include="Enums\FinancialForeignIdType.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Enums\PositionLevel.cs" />
     <Compile Include="Enums\PositionTitle.cs" />
     <Compile Include="Enums\PositionType.cs" />
+    <Compile Include="Enums\ReportRequirement.cs" />
     <Compile Include="Enums\RoleTypeClass.cs" />
     <Compile Include="Exceptions\ConcurrencyException.cs" />
     <Compile Include="Exceptions\DatabaseConcurrencyException.cs" />

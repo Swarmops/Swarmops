@@ -136,6 +136,8 @@
     <Compile Include="Financial\BitcoinUtility.cs" />
     <Compile Include="Financial\ExpenseClaimGroup.cs" />
     <Compile Include="Financial\FinancialAccountAutomationProfile.cs" />
+    <Compile Include="Financial\FinancialAccountDocument.cs" />
+    <Compile Include="Financial\FinancialAccountDocuments.cs" />
     <Compile Include="Financial\HotBitcoinAddress.cs" />
     <Compile Include="Financial\HotBitcoinAddresses.cs" />
     <Compile Include="Financial\HotBitcoinAddressUnspent.cs" />
