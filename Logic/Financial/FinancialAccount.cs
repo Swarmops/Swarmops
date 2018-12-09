@@ -172,7 +172,6 @@ namespace Swarmops.Logic.Financial
         public FinancialAccountDocument GetMostRecentDocument(FinancialAccountDocumentType documentType)
         {
             // TODO: Continue here
-            throw new NotImplementedException();
             return null;
         }
 
