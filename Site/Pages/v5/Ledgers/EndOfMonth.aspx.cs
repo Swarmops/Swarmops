@@ -44,7 +44,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
             FinancialAccounts assetAccounts = FinancialAccounts.ForOrganization(this.CurrentOrganization,
                 FinancialAccountType.Asset);
 
-            int lastMonth = DateTime.UtcNow.Year*100 + DateTime.UtcNow.Month;
+            DateTime lastMonthEndDate = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1).AddDays(-1);
+            int lastMonth = lastMonthEndDate.Year*100 + lastMonthEndDate.Month;
 
             foreach (FinancialAccount assetAccount in assetAccounts)
             {
@@ -78,11 +79,18 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         bankStatement.Id = lastId = "BankStatement-" +
                                            assetAccount.Identity.ToString(CultureInfo.InvariantCulture) + monthIterator;
                         bankStatement.Name = string.Format(Resources.Pages.Ledgers.EndOfMonth_UploadBankStatementFor,
-                            assetAccount.Name, "PDF", "last month");
+                            assetAccount.Name, "PDF", new DateTime(monthIterator / 100, monthIterator % 100, 15).ToString("MMMM yyyy"));
                         bankStatement.Completed = false; // TODO
+
+                        group1.Items.Add(bankStatement);
                     }
 
                 }
+            }
+
+            if (group1.Items.Count > 0)
+            {
+                ItemGroups.Add(group1);
             }
 
             EomItemGroup group2 = new EomItemGroup();
