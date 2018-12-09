@@ -22,8 +22,9 @@ namespace Swarmops.Logic.Support
             return;
 
             // disable "unreachable code" for the rest of this function, as the disabling is deliberate
+            // disable "variable is assigned a value that is never used" because of the workaround last here
 
-            #pragma warning disable 0162
+            #pragma warning disable 0162,0219
 
             // X.509 is SO SO SO broken. The reason we do this, btw, is that mono doesn't come with root certs. At all.
             // This disables certificate checking completely and accepts ALL certificates.
@@ -36,11 +37,9 @@ namespace Swarmops.Logic.Support
             // Further, instantiate an AesCryptoServiceProvider to make sure the linker doesn't optimize it away -- apparently
             // another known bug. The warning disabled here is "b is assigned a value that is never used".
 
-            #pragma warning disable 0219
             System.Security.Cryptography.AesCryptoServiceProvider b = new System.Security.Cryptography.AesCryptoServiceProvider();
-            #pragma warning restore 0219
             
-            #pragma warning restore 0162
+            #pragma warning restore 0162,0219
         }
 
         public static string GenerateSecureRandomKey(int byteCount)
