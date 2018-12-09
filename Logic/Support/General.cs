@@ -15,8 +15,17 @@ namespace Swarmops.Logic.Support
     {
         public static void DisableSslCertificateChecks()
         {
-            // X.509 is SO SO SO broken. The reason we do this, btw, is that mono doesn't come with root certs. At all.
+            // 2018-Dec-01: We're now requiring the freshest Mono repositories to be installed with Swarmops, and this DOES
+            // force a cert repository to be installed (at long effing last). Therefore, we're disabling this entire
+            // function, and basically checking if anything breaks as HTTPS becomes re-enabled across the board.
 
+            return;
+
+            // disable "unreachable code" for the rest of this function, as the disabling is deliberate
+
+            #pragma warning disable 0162
+
+            // X.509 is SO SO SO broken. The reason we do this, btw, is that mono doesn't come with root certs. At all.
             // This disables certificate checking completely and accepts ALL certificates.
 
             // TODO: Does this install a new handler every time it's been called? How do you verify that this short-circuit is in place?
@@ -30,7 +39,8 @@ namespace Swarmops.Logic.Support
             #pragma warning disable 0219
             System.Security.Cryptography.AesCryptoServiceProvider b = new System.Security.Cryptography.AesCryptoServiceProvider();
             #pragma warning restore 0219
-
+            
+            #pragma warning restore 0162
         }
 
         public static string GenerateSecureRandomKey(int byteCount)
