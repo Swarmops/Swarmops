@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -7,9 +8,11 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Basic.Types.Common;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.Ledgers
 {
@@ -35,9 +38,52 @@ namespace Swarmops.Frontend.Pages.Ledgers
             EomItemGroup group1 = new EomItemGroup();
             group1.Header = Resources.Pages.Ledgers.EndOfMonth_Header_ExternalData;
 
-            // TODO: Iterate over all Balance account and check for automation;
+            // Iterate over all Balance accounts and check for automation;
             // if so, add it to an upload sequence
 
+            FinancialAccounts assetAccounts = FinancialAccounts.ForOrganization(this.CurrentOrganization,
+                FinancialAccountType.Asset);
+
+            int lastMonth = DateTime.UtcNow.Year*100 + DateTime.UtcNow.Month;
+
+            foreach (FinancialAccount assetAccount in assetAccounts)
+            {
+                if (assetAccount.AutomationProfileId != 0)
+                {
+                    // This account has automation
+                    // If automation has Bank Account Statement enabled (assume true for now):
+
+                    FinancialAccountDocument lastBankStatement = assetAccount.GetMostRecentDocument(FinancialAccountDocumentType.BankStatement);
+                    int lastStatementMonth = this.CurrentOrganization.FirstFiscalYear*100 + 1;
+
+                    if (lastBankStatement != null)
+                    {
+                        lastStatementMonth = lastBankStatement.ConcernsPeriodStart.Year*100 +
+                                                 lastBankStatement.ConcernsPeriodStart.Month;
+                    }
+
+                    string lastId = string.Empty;
+                    int monthIterator = lastStatementMonth;
+
+                    while (monthIterator < lastMonth)
+                    {
+                        monthIterator++;
+                        if (monthIterator%100 == 13)
+                        {
+                            monthIterator += 88;
+                        }
+
+                        EomItem bankStatement = new EomItem();
+                        bankStatement.DependsOn = lastId; // empty for first record
+                        bankStatement.Id = lastId = "BankStatement-" +
+                                           assetAccount.Identity.ToString(CultureInfo.InvariantCulture) + monthIterator;
+                        bankStatement.Name = string.Format(Resources.Pages.Ledgers.EndOfMonth_UploadBankStatementFor,
+                            assetAccount.Name, "PDF", "last month");
+                        bankStatement.Completed = false; // TODO
+                    }
+
+                }
+            }
 
             EomItemGroup group2 = new EomItemGroup();
             group2.Header = Resources.Pages.Ledgers.EndOfMonth_Header_PayrollTaxes;
@@ -169,6 +215,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
             public string Icon { get; set; }
             public string Callback { get; set; }
             public bool Completed { get; set; }
+            public string DependsOn { get; set; }
         }
 
         private class EomItemGroup
