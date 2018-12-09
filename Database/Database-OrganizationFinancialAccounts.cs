@@ -55,7 +55,7 @@ namespace Swarmops.Database
                     GetDbCommand(
                         "SELECT" + objectOptionalDataFieldSequence + "WHERE ObjectTypes.Name='" + objectType.ToString() + "' " +
                         "AND ObjectOptionalDataTypes.Name='" + dataType.ToString() + "' " +
-                        "AND ObjectOptionalData.Data='" + data.Replace("'", "''") + "';", connection);
+                        "AND ObjectOptionalData.Data='" + data.Replace("'", "''") + "';", connection);  // this is commented out
 
                 // NOTE: THIS STRING QUERY IS NOT PARAMETERIZED, EVEN THOUGH IT'S IN COMMENTED OUT CODE
 
