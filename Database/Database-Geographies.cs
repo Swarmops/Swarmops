@@ -285,8 +285,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + geographyFieldSequence + " WHERE Name ='" + geographyName.Replace ("'", "''") + "'",
+                        "SELECT " + geographyFieldSequence + " WHERE Name=@geographyName",
                         connection);
+
+                AddParameterWithName(command, "geographyName", geographyName);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -376,8 +378,9 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand (
                         "select GeographyId FROM GeographyDesignations WHERE CountryId=" + countryId +
-                        " AND GeographyLevelId= " + ((int) level) + " AND Designation='" +
-                        designation.Replace ("'", "''") + "'", connection);
+                        " AND GeographyLevelId= " + ((int) level) + " AND Designation=@designation", connection);
+
+                AddParameterWithName(command, "designation", designation);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

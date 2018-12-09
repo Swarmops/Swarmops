@@ -15,11 +15,9 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                templatename = templatename.Replace ("'", "''");
-
-                string sql = string.Format ("SELECT * FROM MailTemplates WHERE (TemplateName = '{0}')", templatename);
-
+                string sql = "SELECT * FROM MailTemplates WHERE (TemplateName = @templateName)";
                 DbCommand command = GetDbCommand (sql, connection);
+                AddParameterWithName(command, "templateName", templatename);                
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

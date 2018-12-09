@@ -35,8 +35,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT CityId FROM PostalCodes WHERE PostalCode='" + postalCode.Replace ("'", "''") +
-                        "' AND CountryId=" + countryId, connection);
+                        "SELECT CityId FROM PostalCodes WHERE PostalCode=@postalCode AND CountryId=" + countryId, connection);
+                AddParameterWithName(command, "postalCode", postalCode);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

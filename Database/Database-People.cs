@@ -66,7 +66,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + personFieldSequence + " WHERE Name like @namePattern",
+                        "SELECT " + personFieldSequence + " WHERE Name LIKE @namePattern",
                         connection);
                 AddParameterWithName(command, "namePattern", namePattern);
                 command.CommandTimeout = 120;
@@ -150,8 +150,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + personFieldSequence + " WHERE Email LIKE '" + emailPattern.Replace ("'", "''") + "'",
+                        "SELECT " + personFieldSequence + " WHERE Email LIKE @emailPattern",
                         connection);
+                AddParameterWithName(command, "emailPattern", emailPattern);
+
                 command.CommandTimeout = 120;
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -176,8 +178,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + personFieldSequence + " WHERE City like '" + cityPattern.Replace ("'", "''") + "'",
+                        "SELECT " + personFieldSequence + " WHERE City LIKE @cityPattern",
                         connection);
+                AddParameterWithName(command, "cityPattern", cityPattern);
+
                 command.CommandTimeout = 120;
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -192,7 +196,7 @@ namespace Swarmops.Database
             return result.ToArray();
         }
 
-        public BasicPerson[] GetPeopleFromPostalCodePattern (string pcPattern)
+        public BasicPerson[] GetPeopleFromPostalCodePattern (string postalCodePattern)
         {
             List<BasicPerson> result = new List<BasicPerson>();
 
@@ -202,9 +206,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + personFieldSequence + " WHERE PostalCode like '" + pcPattern.Replace ("'", "''") +
-                        "'",
+                        "SELECT " + personFieldSequence + " WHERE PostalCode LIKE @postalPattern",
                         connection);
+                AddParameterWithName(command, "postalPattern", postalCodePattern);
                 command.CommandTimeout = 120;
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -221,9 +225,11 @@ namespace Swarmops.Database
 
         public BasicPerson[] GetPeopleFromPostalCodes (string[] postalCodes)
         {
+            // Security consideration: This must NEVER be called with user input as parameter, only with postal codes from our own db.
+
             List<BasicPerson> result = new List<BasicPerson>();
             for (int i = 0; i < postalCodes.Length; ++i)
-                postalCodes[i] = postalCodes[i].Replace ("'", "''");
+                postalCodes[i] = postalCodes[i].Replace ("'", "''"); // but we harden it anyway just for defense in depth
 
             string postalCodesString = ("'" + string.Join ("','", postalCodes) + "'").Replace (" ", "");
             using (DbConnection connection = GetMySqlDbConnection())
@@ -258,8 +264,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + personFieldSequence + " WHERE Email='" + email.Replace ("'", "''").Trim() + "'",
+                        "SELECT " + personFieldSequence + " WHERE Email=@email",
                         connection);
+                AddParameterWithName(command, "email", email);
                 command.CommandTimeout = 120;
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -286,8 +293,8 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand (
                         "SELECT " + personFieldSequence + " WHERE CountryId=" + countryId.ToString() +
-                        " AND PhoneNumber='" +
-                        phoneNumber.Replace ("'", "''") + "'", connection);
+                        " AND PhoneNumber=@phoneNumber", connection);
+                AddParameterWithName(command, "phoneNumber", phoneNumber);
                 command.CommandTimeout = 300;
 
                 using (DbDataReader reader = command.ExecuteReader())

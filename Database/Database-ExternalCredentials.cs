@@ -15,9 +15,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT ExternalCredentialId,ServiceName,Login,Password From ExternalCredentials WHERE ServiceName='" +
-                        serviceName.Replace ("'", "''") + "'",
+                        "SELECT ExternalCredentialId,ServiceName,Login,Password From ExternalCredentials WHERE ServiceName=@serviceName",
                         connection);
+
+                AddParameterWithName(command, "serviceName", serviceName);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
