@@ -186,7 +186,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
                                 if (item.Skippable)
                                 {
-                                    itemName += " (<span class='action-skip'><a href='javascript:skipItem(\"" + item.Id + "\"); return false;'>" +
+                                    itemName += " (<span class='action-skip'><a href='javascript:skipItem(\\'" + item.Id + "\\'); return false;'>" +
                                                 Server.HtmlEncode(Resources.Global.Global_SkipThis) + "</a></span>)";
                                 }
 
