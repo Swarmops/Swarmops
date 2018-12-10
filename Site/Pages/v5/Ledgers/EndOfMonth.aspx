@@ -15,6 +15,7 @@
             // set action icons to their respective initial icons
 
             $('img.eomitem-document').attr('src', '/Images/Icons/iconshock-balloon-invoice-128x96px.png');
+            $('img.eomitem-upload').attr('src', '/Images/Icons/iconshock-upload-128x96px.png');
 
             // pointer cursor over action icons
 
@@ -164,6 +165,7 @@
 
                 $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-completed');
                 $('span.action-list-item[data-item="' + dependentItemId + '"]').removeClass('action-list-item-disabled');
+                $('img.action-icon[data-item="' + dependentItemId + '"]').removeClass('action-icon-disabled');
             });
 
         });
@@ -234,6 +236,10 @@
             -webkit-transition: all 0.50s;
             transition: all 0.50s;
             color: #aaa;
+        }
+
+        .action-icon-disabled {
+            display: none !important;
         }
 
         .datagrid-row-selected, .datagrid-row-over, .datagrid-row-checked {

@@ -83,6 +83,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         bankStatement.Name = string.Format(Resources.Pages.Ledgers.EndOfMonth_UploadBankStatementFor,
                             assetAccount.Name, "PDF", new DateTime(monthIterator / 100, monthIterator % 100, 15).ToString("MMMM yyyy"));
                         bankStatement.Completed = false; // TODO
+                        bankStatement.Icon = "upload";
                         bankStatement.Skippable = skippable;
 
                         group1.Items.Add(bankStatement);
@@ -178,10 +179,13 @@ namespace Swarmops.Frontend.Pages.Ledgers
                             {
                                 string itemName = Server.HtmlEncode(item.Name);
                                 string itemDisabledClass = string.Empty;
+                                string iconDisabledClass = string.Empty;
+
                                 if (item.DependsOn.Length > 0)
                                 {
                                     // add as disabled
                                     itemDisabledClass = " action-list-item-disabled";
+                                    iconDisabledClass = " action-icon-disabled";
                                 }
 
                                 if (item.Skippable)
@@ -193,7 +197,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                                 builder.Append(@"            
                                 $('#TableEomItems').datagrid('appendRow', {
                                     itemName: ""<span class='action-list-item" + itemDisabledClass + @"' data-item='" + item.Id + @"' data-dependson='" + item.DependsOn + @"' data-group='" + group.Id + @"'>" + itemName + @"</span>"",
-                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id + @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + @"' data-callback='" + item.Callback + @"' data-dependson='" + item.DependsOn + @"' style='display:inline' /><img src='/Images/Abstract/ajaxloader-48x36px.gif' data-group='" + group.Id + @"' class='status-icon status-icon-pleasewait' data-item='" + item.Id + @"' style='display:none' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:none' />""
+                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id + @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + iconDisabledClass + @"' data-callback='" + item.Callback + @"' data-dependson='" + item.DependsOn + @"' /><img src='/Images/Abstract/ajaxloader-48x36px.gif' data-group='" + group.Id + @"' class='status-icon status-icon-pleasewait' data-item='" + item.Id + @"' style='display:none' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:none' />""
                                     });
                                 ");
                             }
