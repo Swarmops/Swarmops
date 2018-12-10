@@ -158,6 +158,10 @@
             $('.action-skip > a').click(function () {
                 var itemId = $(this).parent().parent().attr("data-item");
                 var dependentItemId = $('span.action-list-item[data-dependson="' + itemId + '"]').attr("data-item");
+
+                $('img.action-icon[data-item="' + itemId + '"]').hide();
+                $('img.status-icon-completed[data-item="' + itemId + '"]').attr("src", "/Images/Icons/iconshock-red-cross-128x96px.png").fadeIn();
+
                 $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-completed');
                 $('span.action-list-item[data-item="' + dependentItemId + '"]').removeClass('action-list-item-disabled');
             });
