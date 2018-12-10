@@ -155,6 +155,11 @@
 
             });
 
+            $('.action-skip > a').click(function() {
+                console.log($(this));
+                alert($(this.parent.parent).attr("data-item"));
+            });
+
         });
 
         // Function: Match all mismatched transactions
