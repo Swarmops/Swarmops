@@ -1025,4 +1025,7 @@
     <value>Upload Transaction Data ({1}) for {0}</value>
     <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
   </data>
+  <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
+    <value>&lt;strong&gt;SKIP BANK STATEMENT?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bank statements are typically needed for audit verification of the internal records. The only valid reason to skip a month's statement is that the account wasn't opened yet, in which case you skip the months before the account was opened and no statements therefore exist.&lt;br/&gt;&lt;br/&gt;You won't be asked again to upload this particular statement if you skip it now.</value>
+  </data>
 </root>

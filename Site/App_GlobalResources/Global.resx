@@ -992,4 +992,16 @@
     <value>{0} to {1}</value>
     <comment>For example, "January to March". The initial "from" is implied.</comment>
   </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>Don't Skip</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>skip this</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>Skip</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
 </root>

@@ -46,6 +46,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
             DateTime lastMonthEndDate = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1).AddDays(-1);
             int lastMonth = lastMonthEndDate.Year*100 + lastMonthEndDate.Month;
+            bool skippable = true;
 
             foreach (FinancialAccount assetAccount in assetAccounts)
             {
@@ -61,6 +62,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                     {
                         lastStatementMonth = lastBankStatement.ConcernsPeriodStart.Year*100 +
                                                  lastBankStatement.ConcernsPeriodStart.Month;
+                        skippable = false;
                     }
 
                     string lastId = string.Empty;
@@ -81,6 +83,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         bankStatement.Name = string.Format(Resources.Pages.Ledgers.EndOfMonth_UploadBankStatementFor,
                             assetAccount.Name, "PDF", new DateTime(monthIterator / 100, monthIterator % 100, 15).ToString("MMMM yyyy"));
                         bankStatement.Completed = false; // TODO
+                        bankStatement.Skippable = skippable;
 
                         group1.Items.Add(bankStatement);
                     }
@@ -173,10 +176,24 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         {
                             if (!item.Completed)
                             {
+                                string itemName = Server.HtmlEncode(item.Name);
+                                string itemDisabledClass = string.Empty;
+                                if (item.DependsOn.Length > 0)
+                                {
+                                    // add as disabled
+                                    itemDisabledClass = " action-list-item-disabled";
+                                }
+
+                                if (item.Skippable)
+                                {
+                                    itemName += " (<span class='action-item-skip'>" +
+                                                Server.HtmlEncode(Resources.Global.Global_SkipThis) + "</span>)";
+                                }
+
                                 builder.Append(@"            
                                 $('#TableEomItems').datagrid('appendRow', {
-                                    itemName: ""<span class='action-list-item' data-item='" + item.Id + @"' data-group='" + group.Id + @"'>" + item.Name + @"</span>"",
-                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id + @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + @"' data-callback='" + item.Callback + @"' style='display:inline' /><img src='/Images/Abstract/ajaxloader-48x36px.gif' data-group='" + group.Id + @"' class='status-icon status-icon-pleasewait' data-item='" + item.Id + @"' style='display:none' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:none' />""
+                                    itemName: ""<span class='action-list-item" + itemDisabledClass + @"' data-item='" + item.Id + @"' data-dependson='" + item.DependsOn + @"' data-group='" + group.Id + @"'>" + itemName + @"</span>"",
+                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id + @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + @"' data-callback='" + item.Callback + @"' data-dependson='" + item.DependsOn + @"' style='display:inline' /><img src='/Images/Abstract/ajaxloader-48x36px.gif' data-group='" + group.Id + @"' class='status-icon status-icon-pleasewait' data-item='" + item.Id + @"' style='display:none' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:none' />""
                                     });
                                 ");
                             }
@@ -184,7 +201,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                             {
                                 builder.Append(@"            
                                 $('#TableEomItems').datagrid('appendRow', {
-                                    itemName: ""<span class='action-list-item action-list-item-disabled' data-item='" + item.Id + @"' data-group='" + group.Id + @"'>" + item.Name + @"</span>"",
+                                    itemName: ""<span class='action-list-item action-list-item-completed' data-item='" + item.Id + @"' data-group='" + group.Id + @"'>" + item.Name + @"</span>"",
                                     action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:inline' />""
                                     });
                                 ");
@@ -224,6 +241,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
             public string Callback { get; set; }
             public bool Completed { get; set; }
             public string DependsOn { get; set; }
+            public bool Skippable { get; set; }
         }
 
         private class EomItemGroup

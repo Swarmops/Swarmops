@@ -144,8 +144,7 @@
                         $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
                         $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
 
-                        $(this).attr('data-item');
-                        var selector = ".action-list-item:not(.action-list-item-disabled)[data-group='" + groupId + "']";
+                        var selector = ".action-list-item:not(.action-list-item-completed):not(.action-list-item-disabled)[data-group='" + groupId + "']";
                         if ($(selector).length == 0) // no further actions in this group enabled
                         {
                             // mark the group as completed
@@ -207,11 +206,23 @@
             transition: all 0.50s;*/
         }
 
-        .action-list-item-disabled {
+        .action-list-item-disabled .action-skip, .action-list-item-completed .action-skip {
+            -webkit-transition: all 0.50s;
+            transition: all 0.50s;
+            display: none;
+        }
+
+        .action-list-item-completed {
             -webkit-transition: all 0.50s;
             transition: all 0.50s;
             color: #ccc;
             text-decoration: line-through;
+        }
+
+        .action-list-item-disabled {
+            -webkit-transition: all 0.50s;
+            transition: all 0.50s;
+            color: #aaa;
         }
 
         .datagrid-row-selected, .datagrid-row-over, .datagrid-row-checked {

@@ -1150,6 +1150,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;SKIP BANK STATEMENT?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bank statements are typically needed for audit verification of the internal records. The only valid reason to skip a month&apos;s statement is that the account wasn&apos;t opened yet, in which case you skip the months before the account was opened and no statements therefore exist.&lt;br/&gt;&lt;br/&gt;You won&apos;t be asked again to upload this particular statement if you skip it now..
+        /// </summary>
+        internal static string EndOfMonth_SkipBankStatementDialog {
+            get {
+                return ResourceManager.GetString("EndOfMonth_SkipBankStatementDialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End-of-Month Routine: {0:MMMM yyyy}.
         /// </summary>
         internal static string EndOfMonth_Title {

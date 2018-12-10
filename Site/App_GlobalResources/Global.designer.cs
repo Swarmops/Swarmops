@@ -1546,6 +1546,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t Skip.
+        /// </summary>
+        internal static string Global_SkipNo {
+            get {
+                return ResourceManager.GetString("Global_SkipNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to skip this.
+        /// </summary>
+        internal static string Global_SkipThis {
+            get {
+                return ResourceManager.GetString("Global_SkipThis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip.
+        /// </summary>
+        internal static string Global_SkipYes {
+            get {
+                return ResourceManager.GetString("Global_SkipYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
         internal static string Global_Submit {
