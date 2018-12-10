@@ -140,7 +140,7 @@
                         var groupId = $(this).attr('data-group');
                         var itemId = $(this).attr('data-item');
 
-                        $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-disabled');
+                        $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-completed');
                         $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
                         $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
 
@@ -155,9 +155,11 @@
 
             });
 
-            $('.action-skip > a').click(function() {
-                console.log($(this));
-                alert($(this).parent().parent().attr("data-item"));
+            $('.action-skip > a').click(function () {
+                var itemId = $(this).parent().parent().attr("data-item");
+                var dependentItemId = $('action-list-item[data-dependson="' + itemId + "']").attr("data-item");
+                $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-completed');
+                $('span.action-list-item[data-item="' + dependentItemId + '"]').removeClass('action-list-item-disabled');
             });
 
         });
