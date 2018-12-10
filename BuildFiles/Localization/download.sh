@@ -1,7 +1,9 @@
 #!/bin/sh
-crowdin download translations
+echo "Downloading latest Crowdin build..."
 
-echo "Downloading latest build..."
+# crowdin download translations
+
+# echo "Downloading latest build..."
 
 wget https://crowdin.com/backend/download/project/activizr.zip
 
