@@ -180,6 +180,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                                 string itemName = Server.HtmlEncode(item.Name);
                                 string itemDisabledClass = string.Empty;
                                 string iconDisabledClass = string.Empty;
+                                string iconIsUploadClass = string.Empty;
 
                                 if (item.DependsOn.Length > 0)
                                 {
@@ -194,10 +195,15 @@ namespace Swarmops.Frontend.Pages.Ledgers
                                                 Server.HtmlEncode(Resources.Global.Global_SkipThis) + "</a>)</span>";
                                 }
 
+                                if (item.Icon == "upload")
+                                {
+                                    iconIsUploadClass = " is-upload";
+                                }
+
                                 builder.Append(@"            
                                 $('#TableEomItems').datagrid('appendRow', {
                                     itemName: ""<span class='action-list-item" + itemDisabledClass + @"' data-item='" + item.Id + @"' data-dependson='" + item.DependsOn + @"' data-group='" + group.Id + @"'>" + itemName + @"</span>"",
-                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id + @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + iconDisabledClass + @"' data-callback='" + item.Callback + @"' data-dependson='" + item.DependsOn + @"' /><img src='/Images/Abstract/ajaxloader-48x36px.gif' data-group='" + group.Id + @"' class='status-icon status-icon-pleasewait' data-item='" + item.Id + @"' style='display:none' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:none' />""
+                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id + @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + iconIsUploadClass + iconDisabledClass + @"' data-callback='" + item.Callback + @"' data-dependson='" + item.DependsOn + @"' /><img src='/Images/Abstract/ajaxloader-48x36px.gif' data-group='" + group.Id + @"' class='status-icon status-icon-pleasewait' data-item='" + item.Id + @"' style='display:none' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:none' />""
                                     });
                                 ");
                             }

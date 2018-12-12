@@ -134,25 +134,34 @@
                 $('img.action-icon[data-item="' + itemId + '"]').hide();
                 $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
 
-                SwarmopsJS.ajaxCall(
-                    "/Pages/v5/Ledgers/EndOfMonth.aspx/" + callbackFunction,
-                    {},
-                    $.proxy(function() {
-                        var groupId = $(this).attr('data-group');
-                        var itemId = $(this).attr('data-item');
+                if ($(this).hasClass('is-upload')) {
+                    // Trigger upload, then trigger ajax call on complete
 
-                        $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-completed');
-                        $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
-                        $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
+                    <%=this.UploadControl.ClientID%>_triggerUpload();
 
-                        var selector = ".action-list-item:not(.action-list-item-completed):not(.action-list-item-disabled)[data-group='" + groupId + "']";
-                        if ($(selector).length == 0) // no further actions in this group enabled
-                        {
-                            // mark the group as completed
-                            $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
-                        }
-                    }, this)
-                );
+                } else {
+                    // Ajax call right away
+
+                    SwarmopsJS.ajaxCall(
+                        "/Pages/v5/Ledgers/EndOfMonth.aspx/" + callbackFunction,
+                        {},
+                        $.proxy(function() {
+                            var groupId = $(this).attr('data-group');
+                            var itemId = $(this).attr('data-item');
+
+                            $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-completed');
+                            $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
+                            $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
+
+                            var selector = ".action-list-item:not(.action-list-item-completed):not(.action-list-item-disabled)[data-group='" + groupId + "']";
+                            if ($(selector).length == 0) // no further actions in this group enabled
+                            {
+                                // mark the group as completed
+                                $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
+                            }
+                        }, this)
+                    );
+                }
 
             });
 
@@ -169,6 +178,12 @@
             });
 
         });
+
+        function clientPostUpload(callbackFunction, cookie) {
+            
+        }
+
+        var uploadGuid = '<%=this.UploadControl.GuidString%>';
 
         // Function: Match all mismatched transactions
 
@@ -255,6 +270,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" runat="server">
     <h2><asp:Label runat="server" ID="LabelHeader"></asp:Label></h2>
+    <div style="display: none"><Swarmops5:FileUpload ID="UploadControl" runat="server"/></div>
 
     <table id="TableEomItems" class="easyui-datagrid" style="width:680px;height:500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:false,checkOnSelect:false"

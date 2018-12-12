@@ -102,6 +102,10 @@
 
     }
 
+    function <%=this.ClientID%>_triggerUpload() {
+        $('#<%=this.ClientID %>_ButtonUploadHidden').click();
+    }
+
     function <%=this.ClientID%>_clear() {
         // Note that this only clears the UI -- the uploaded docs must be disassociated elsewhere
         $('#<%=this.ClientID%>_DivUploadCount').empty();
