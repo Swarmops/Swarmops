@@ -76,7 +76,21 @@
                 <%= this.ClientUploadStartedCallback %>("<%= GuidString%>", "<%= Cookie%>");
                         
                 <% } %>
+            },
+            send: function(e, data) {
+                // call when upload actually begins -- for notify  
+            },
+            fail: function(e, data) {
+                // called on upload fail or upload abort -- for notify
+
+                <% if (!String.IsNullOrEmpty(this.ClientUploadFailedCallback))
+                    { %>
+                        
+                <%= this.ClientUploadFailedCallback %>("<%= GuidString%>", "<%= Cookie%>");
+                        
+                <% } %>
             }
+
         });
 
 

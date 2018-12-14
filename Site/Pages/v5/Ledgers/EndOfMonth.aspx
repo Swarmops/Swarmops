@@ -131,16 +131,26 @@
                 var itemId = $(this).attr('data-item');
                 var callbackFunction = $(this).attr('data-callback');
 
-                $('img.action-icon[data-item="' + itemId + '"]').hide();
-                $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
-
                 if ($(this).hasClass('is-upload')) {
+
                     // Trigger upload, then trigger ajax call on complete
 
+                    if (triggeredUpload != null) {
+                        // upload is already in progress; don't allow two concurrent uploads since we're using one control
+                        // todo: error message or some UX to explain this?
+
+                        return;
+                    }
+
+                    triggeredUpload = this;
                     <%=this.UploadControl.ClientID%>_triggerUpload();
 
                 } else {
+
                     // Ajax call right away
+
+                    $('img.action-icon[data-item="' + itemId + '"]').hide();
+                    $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
 
                     SwarmopsJS.ajaxCall(
                         "/Pages/v5/Ledgers/EndOfMonth.aspx/" + callbackFunction,
@@ -179,11 +189,43 @@
 
         });
 
-        function clientPostUpload(callbackFunction, cookie) {
-            
+        function clientStartUpload() {
+            if (triggeredUpload == null) {
+                // invalid state
+                return;
+            }
+
+            var itemId = $(triggeredUpload).attr('data-item');
+            $('img.action-icon[data-item="' + itemId + '"]').hide();
+            $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
+        }
+
+        function clientFailUpload() {
+            if (triggeredUpload == null) {
+                // invalid state
+                return;
+            }
+
+            var itemId = $(triggeredUpload).attr('data-item');
+            $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
+            $('img.action-icon[data-item="' + itemId + '"]').show();
+
+            triggeredUpload = null;
+        }
+
+        function clientFinishUpload() {
+            if (triggeredUpload == null) {
+                // invalid state
+                return;
+            }
+
+            triggeredUpload = null;
         }
 
         var uploadGuid = '<%=this.UploadControl.GuidString%>';
+
+        var triggeredUpload = null;
+
 
         // Function: Match all mismatched transactions
 
