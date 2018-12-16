@@ -199,9 +199,13 @@
             activeUpload = triggeredUpload;
             triggeredUpload = null;
 
+            // switch action icon upload to status icon waiting
             var itemId = $(activeUpload).attr('data-item');
             $('img.action-icon[data-item="' + itemId + '"]').hide();
             $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
+
+            // If there's a skip option, disable it at this time
+            $('span.action-list-item[data-item="' + itemId + '"] span.action-skip').addClass('action-skip-disabled');
         }
 
         function clientFailedUpload() {
@@ -225,6 +229,8 @@
                 // invalid state
                 return;
             }
+
+            // TODO: AJAX CALL TO STORE UPLOAD
 
             activeUpload = null;
         }
@@ -282,6 +288,10 @@
             -ms-filter: brightness(105%) contrast(105%);
             /*-webkit-transition: all 0.50s;
             transition: all 0.50s;*/
+        }
+
+        .action-skip .action-skip-disabled {
+            display: none !important;
         }
 
         .action-list-item-disabled .action-skip, .action-list-item-completed .action-skip {
