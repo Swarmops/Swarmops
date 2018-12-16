@@ -189,7 +189,7 @@
 
         });
 
-        function clientStartUpload() {
+        function clientStartedUpload() {
             console.log("Client started upload");
             
             if (triggeredUpload == null) {
@@ -204,7 +204,7 @@
             $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
         }
 
-        function clientFailUpload() {
+        function clientFailedUpload() {
             console.log("Client aborted or failed upload");
 
             if (activeUpload == null) {
@@ -320,7 +320,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" runat="server">
     <h2><asp:Label runat="server" ID="LabelHeader"></asp:Label></h2>
-    <div style="display: none"><Swarmops5:FileUpload ID="UploadControl" ClientUploadFailedCallback="clientFailUpload" ClientUploadStartedCallback="clientStartedUpload" ClientUploadCompleteCallback="clientFinishedUpload" runat="server"/></div>
+    <div style="display: none"><Swarmops5:FileUpload ID="UploadControl" ClientUploadFailedCallback="clientFailedUpload" ClientUploadStartedCallback="clientStartedUpload" ClientUploadCompleteCallback="clientFinishedUpload" runat="server"/></div>
 
     <table id="TableEomItems" class="easyui-datagrid" style="width:680px;height:500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:false,checkOnSelect:false"
