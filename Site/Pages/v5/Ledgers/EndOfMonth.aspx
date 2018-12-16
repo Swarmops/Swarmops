@@ -135,7 +135,7 @@
 
                     // Trigger upload, then trigger ajax call on complete
 
-                    if (triggeredUpload != null) {
+                    if (activeUpload != null) {
                         // upload is already in progress; don't allow two concurrent uploads since we're using one control
                         // todo: error message or some UX to explain this?
 
@@ -190,41 +190,49 @@
         });
 
         function clientStartUpload() {
+            console.log("Client started upload");
+            
             if (triggeredUpload == null) {
                 // invalid state
                 return;
             }
+            activeUpload = triggeredUpload;
+            triggeredUpload = null;
 
-            var itemId = $(triggeredUpload).attr('data-item');
+            var itemId = $(activeUpload).attr('data-item');
             $('img.action-icon[data-item="' + itemId + '"]').hide();
             $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
         }
 
         function clientFailUpload() {
-            if (triggeredUpload == null) {
+            console.log("Client aborted or failed upload");
+
+            if (activeUpload == null) {
                 // invalid state
                 return;
             }
 
-            var itemId = $(triggeredUpload).attr('data-item');
+            var itemId = $(activeUpload).attr('data-item');
             $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
             $('img.action-icon[data-item="' + itemId + '"]').show();
 
-            triggeredUpload = null;
+            activeUpload = null;
         }
 
         function clientFinishedUpload() {
-            if (triggeredUpload == null) {
+            console.log("Client finished upload");
+            if (activeUpload == null) {
                 // invalid state
                 return;
             }
 
-            triggeredUpload = null;
+            activeUpload = null;
         }
 
         var uploadGuid = '<%=this.UploadControl.GuidString%>';
 
         var triggeredUpload = null;
+        var activeUpload = null;
 
 
         // Function: Match all mismatched transactions
