@@ -290,7 +290,7 @@
             transition: all 0.50s;*/
         }
 
-        .action-skip .action-skip-disabled {
+        .action-skip-disabled {
             display: none !important;
         }
 
