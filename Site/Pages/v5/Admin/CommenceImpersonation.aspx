@@ -20,7 +20,7 @@
 	                    
             alertify.set({
 	            labels: {
-	                ok: SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_Proceed%>'),
+	                ok: SwarmopsJS.unescape('<%=this.Localized_Impersonate%>'),
 	                cancel: SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_Cancel%>')
 	            },
 	            buttonFocus: 'cancel'
