@@ -240,6 +240,10 @@
         var triggeredUpload = null;
         var activeUpload = null;
 
+        var localized_skipNoResponse = SwarmopsJS.unescape('<%=this.Localized_SkipNo%>');
+        var localized_skipYesResponse = SwarmopsJS.unescape('<%=this.Localized_SkipYes%>');
+        var localized_skipPromptBankStatement = SwarmopsJS.unescape('<%=this.Localized_SkipPrompt_BankStatement%>');
+        var localized_skipPromptGeneric = SwarmopsJS.unescape('<%=this.Localized_SkipPrompt_Generic%>');
 
         // Function: Match all mismatched transactions
 
@@ -290,7 +294,7 @@
             transition: all 0.50s;*/
         }
 
-        .action-skip-disabled {
+        .action-list-item .action-skip-disabled {
             display: none !important;
         }
 

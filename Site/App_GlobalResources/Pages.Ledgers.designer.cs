@@ -1159,6 +1159,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;SKIP DOCUMENT UPLOAD?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This document is typically needed for operation records. The only valid reason to skip a document is that it doesn&apos;t exist because the operations weren&apos;t running yet, like when an operation started in June of a year won&apos;t have documents for January of that year.&lt;br/&gt;&lt;br/&gt;You won&apos;t be asked again to upload this document if you skip it now..
+        /// </summary>
+        internal static string EndOfMonth_SkipDocumentDialogGeneric {
+            get {
+                return ResourceManager.GetString("EndOfMonth_SkipDocumentDialogGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End-of-Month Routine: {0:MMMM yyyy}.
         /// </summary>
         internal static string EndOfMonth_Title {

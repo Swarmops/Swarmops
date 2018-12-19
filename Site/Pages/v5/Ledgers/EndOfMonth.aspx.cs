@@ -24,8 +24,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
             this.PageTitle =
                 this.Title =
-                this.LabelHeader.Text =
-                    String.Format(Resources.Pages.Ledgers.EndOfMonth_Title, DateTime.UtcNow.AddMonths(-1));
+                    this.LabelHeader.Text =
+                        String.Format(Resources.Pages.Ledgers.EndOfMonth_Title, DateTime.UtcNow.AddMonths(-1));
 
             this.InfoBoxLiteral = Resources.Pages.Ledgers.EndOfMonth_Info;
 
@@ -55,13 +55,15 @@ namespace Swarmops.Frontend.Pages.Ledgers
                     // This account has automation
                     // If automation has Bank Account Statement enabled (assume true for now):
 
-                    FinancialAccountDocument lastBankStatement = assetAccount.GetMostRecentDocument(FinancialAccountDocumentType.BankStatement);
-                    int lastStatementMonth = (this.CurrentOrganization.FirstFiscalYear-1) *100 + 12;  // December of the year before
+                    FinancialAccountDocument lastBankStatement =
+                        assetAccount.GetMostRecentDocument(FinancialAccountDocumentType.BankStatement);
+                    int lastStatementMonth = (this.CurrentOrganization.FirstFiscalYear - 1)*100 + 12;
+                        // December of the year before
 
                     if (lastBankStatement != null)
                     {
                         lastStatementMonth = lastBankStatement.ConcernsPeriodStart.Year*100 +
-                                                 lastBankStatement.ConcernsPeriodStart.Month;
+                                             lastBankStatement.ConcernsPeriodStart.Month;
                         skippable = false;
                     }
 
@@ -79,9 +81,11 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         EomItem bankStatement = new EomItem();
                         bankStatement.DependsOn = lastId; // empty for first record
                         bankStatement.Id = lastId = "BankStatement-" +
-                                           assetAccount.Identity.ToString(CultureInfo.InvariantCulture) + monthIterator;
+                                                    assetAccount.Identity.ToString(CultureInfo.InvariantCulture) +
+                                                    monthIterator;
                         bankStatement.Name = string.Format(Resources.Pages.Ledgers.EndOfMonth_UploadBankStatementFor,
-                            assetAccount.Name, "PDF", new DateTime(monthIterator / 100, monthIterator % 100, 15).ToString("MMMM yyyy"));
+                            assetAccount.Name, "PDF",
+                            new DateTime(monthIterator/100, monthIterator%100, 15).ToString("MMMM yyyy"));
                         bankStatement.Completed = false; // TODO
                         bankStatement.Icon = "upload";
                         bankStatement.Skippable = skippable;
@@ -157,8 +161,12 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         builder.Append(@"
 
                             $('#TableEomItems').datagrid('appendRow', {
-                                itemGroupName: '<span class=""itemGroupHeader""" + previousGroupIdData + @">" + group.Header.Replace(" ", "&nbsp;").Replace("'", "''") + @"</span>',
-                                action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + "'" + previousGroupIdData + @" class='group-status-icon status-completed' style='display:" + (groupReady? "inline" : "none") + @"' />"",
+                                itemGroupName: '<span class=""itemGroupHeader""" + previousGroupIdData + @">" +
+                                       group.Header.Replace(" ", "&nbsp;").Replace("'", "''") + @"</span>',
+                                action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" +
+                                       group.Id + "'" + previousGroupIdData +
+                                       @" class='group-status-icon status-completed' style='display:" +
+                                       (groupReady ? "inline" : "none") + @"' />"",
                                 itemId: '" + group.Id + @"'
                             });
 
@@ -172,7 +180,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                             });
 
                         ");
-    
+
                         foreach (EomItem item in group.Items)
                         {
                             if (!item.Completed)
@@ -202,8 +210,19 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
                                 builder.Append(@"            
                                 $('#TableEomItems').datagrid('appendRow', {
-                                    itemName: ""<span class='action-list-item" + itemDisabledClass + @"' data-item='" + item.Id + @"' data-dependson='" + item.DependsOn + @"' data-group='" + group.Id + @"'>" + itemName + @"</span>"",
-                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id + @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" + item.Icon + iconIsUploadClass + iconDisabledClass + @"' data-callback='" + item.Callback + @"' data-dependson='" + item.DependsOn + @"' /><img src='/Images/Abstract/ajaxloader-48x36px.gif' data-group='" + group.Id + @"' class='status-icon status-icon-pleasewait' data-item='" + item.Id + @"' style='display:none' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:none' />""
+                                    itemName: ""<span class='action-list-item" + itemDisabledClass + @"' data-item='" +
+                                               item.Id + @"' data-dependson='" + item.DependsOn + @"' data-group='" +
+                                               group.Id + @"'>" + itemName + @"</span>"",
+                                    action: ""<img src='/Images/Icons/transparency-16px.png' data-item='" + item.Id +
+                                               @"' data-group='" + group.Id + @"' class='action action-icon eomitem-" +
+                                               item.Icon + iconIsUploadClass + iconDisabledClass + @"' data-callback='" +
+                                               item.Callback + @"' data-dependson='" + item.DependsOn +
+                                               @"' /><img src='/Images/Abstract/ajaxloader-48x36px.gif' data-group='" +
+                                               group.Id + @"' class='status-icon status-icon-pleasewait' data-item='" +
+                                               item.Id +
+                                               @"' style='display:none' /><img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" +
+                                               group.Id + @"' class='status-icon status-icon-completed' data-item='" +
+                                               item.Id + @"' style='display:none' />""
                                     });
                                 ");
                             }
@@ -211,19 +230,22 @@ namespace Swarmops.Frontend.Pages.Ledgers
                             {
                                 builder.Append(@"            
                                 $('#TableEomItems').datagrid('appendRow', {
-                                    itemName: ""<span class='action-list-item action-list-item-completed' data-item='" + item.Id + @"' data-group='" + group.Id + @"'>" + item.Name + @"</span>"",
-                                    action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" + group.Id + @"' class='status-icon status-icon-completed' data-item='" + item.Id + @"' style='display:inline' />""
+                                    itemName: ""<span class='action-list-item action-list-item-completed' data-item='" +
+                                               item.Id + @"' data-group='" + group.Id + @"'>" + item.Name + @"</span>"",
+                                    action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" +
+                                               group.Id + @"' class='status-icon status-icon-completed' data-item='" +
+                                               item.Id + @"' style='display:inline' />""
                                     });
                                 ");
                             }
                         }
 
-                        previousGroupId = group.Id;  // only set if group has items
+                        previousGroupId = group.Id; // only set if group has items
                     }
                 }
 
                 return builder.ToString();
-                
+
             }
         }
 
@@ -267,5 +289,26 @@ namespace Swarmops.Frontend.Pages.Ledgers
         }
 
         private List<EomItemGroup> ItemGroups { get; set; }
+
+
+        public string Localized_SkipPrompt_BankStatement
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.EndOfMonth_SkipBankStatementDialog); }
+        }
+
+        public string Localized_SkipPrompt_Generic
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.EndOfMonth_SkipDocumentDialogGeneric); }
+        }
+
+        public string Localized_SkipYes
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Global_SkipYes); }
+        }
+
+        public string Localized_SkipNo
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.Global_SkipNo); }
+        }
     }
 }
