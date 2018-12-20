@@ -142,7 +142,7 @@
                         return;
                     }
 
-                    triggeredUpload = this;
+                    triggeredUpload = $(this).attr('data-item');
                     <%=this.UploadControl.ClientID%>_triggerUpload();
 
                 } else {
@@ -245,12 +245,11 @@
             triggeredUpload = null;
 
             // switch action icon upload to status icon waiting
-            var itemId = $(activeUpload).attr('data-item');
-            $('img.action-icon[data-item="' + itemId + '"]').hide();
-            $('img.status-icon-pleasewait[data-item="' + itemId + '"]').show();
+            $('img.action-icon[data-item="' + activeUpload + '"]').hide();
+            $('img.status-icon-pleasewait[data-item="' + activeUpload + '"]').show();
 
             // If there's a skip option, disable it at this time
-            $('span.action-list-item[data-item="' + itemId + '"] span.action-skip').addClass('action-skip-disabled');
+            $('span.action-list-item[data-item="' + activeUpload + '"] span.action-skip').addClass('action-skip-disabled');
         }
 
         function clientFailedUpload() {
@@ -261,11 +260,8 @@
                 return;
             }
 
-            markItemCompleted(activeUpload);
-
-            var itemId = $(activeUpload).attr('data-item');
-            $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
-            $('img.action-icon[data-item="' + itemId + '"]').show();
+            $('img.status-icon-pleasewait[data-item="' + activeUpload + '"]').hide();
+            $('img.action-icon[data-item="' + activeUpload + '"]').show();
 
             activeUpload = null;
         }
@@ -277,25 +273,25 @@
                 return;
             }
 
-            var itemId = $(activeUpload).attr('data-item');
-
             // TODO: AJAX CALL TO STORE UPLOAD
 
-            activeUpload = null;
+            markItemCompleted(activeUpload);
 
             // If there are items that depend on this one,
             // disable their "skip" option now (because there's
             // a first document in the series)
 
-            var itemIterator = $('.action-list-item[data-dependson="' + itemId + '"]');
+            var itemIterator = $('.action-list-item[data-dependson="' + activeUpload + '"]');
 
             while (itemIterator.length > 0) {
                 // We're only supporting a 1:1 chain at this time, no 1:n dependencies
 
-                itemId = $(itemIterator).attr('data-item');
+                var itemId = $(itemIterator).attr('data-item');
                 $('span.action-list-item[data-item="' + itemId + '"] span.action-skip').addClass('action-skip-disabled');
                 itemIterator = $('.action-list-item[data-dependson="' + itemId + '"]');
             }
+
+            activeUpload = null;
         }
 
         var uploadGuid = '<%=this.UploadControl.GuidString%>';
