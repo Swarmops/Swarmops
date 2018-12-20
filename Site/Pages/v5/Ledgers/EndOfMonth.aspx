@@ -236,7 +236,6 @@
         }
 
         function clientStartedUpload() {
-            console.log("Client started upload");
             
             if (triggeredUpload == null) {
                 // invalid state
@@ -268,19 +267,15 @@
         }
 
         function clientFinishedUpload() {
-            console.log("Client finished upload");
+
             if (activeUpload == null) {
                 // invalid state
-                console.log("activeUpload is null");
                 return;
             }
 
             // TODO: AJAX CALL TO STORE UPLOAD
 
-            console.log("activeUpload is " + activeUpload);
-            console.log("calling MarkCompleted");
             markItemCompleted(activeUpload);
-            console.log("called MarkCompleted");
 
             // If there are items that depend on this one,
             // disable their "skip" option now (because there's
