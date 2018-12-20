@@ -210,10 +210,9 @@
 
         });
 
-        function markItemCompleted(item) {
+        function markItemCompleted(itemId) {
 
-            var groupId = $(item).attr('data-group');
-            var itemId = $(item).attr('data-item');
+            var groupId = $('span.action-list-item[data-item="' + itemId + '"]').attr('data-group');
 
             $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-completed');
             $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
