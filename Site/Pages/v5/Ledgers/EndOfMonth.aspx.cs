@@ -37,6 +37,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
             EomItemGroup group1 = new EomItemGroup();
             group1.Header = Resources.Pages.Ledgers.EndOfMonth_Header_ExternalData;
+            group1.Id = "ExternalData";
 
             // Iterate over all Balance accounts and check for automation;
             // if so, add it to an upload sequence
@@ -81,7 +82,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         EomItem bankStatement = new EomItem();
                         bankStatement.DependsOn = lastId; // empty for first record
                         bankStatement.Id = lastId = "BankStatement-" +
-                                                    assetAccount.Identity.ToString(CultureInfo.InvariantCulture) +
+                                                    assetAccount.Identity.ToString(CultureInfo.InvariantCulture) + '-' + 
                                                     monthIterator;
                         bankStatement.Name = string.Format(Resources.Pages.Ledgers.EndOfMonth_UploadBankStatementFor,
                             assetAccount.Name, "PDF",

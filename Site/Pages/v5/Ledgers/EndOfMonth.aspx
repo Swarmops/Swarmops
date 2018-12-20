@@ -214,6 +214,8 @@
 
             var groupId = $('span.action-list-item[data-item="' + itemId + '"]').attr('data-group');
 
+            console.log("GroupId is " + groupId);
+
             $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-completed');
             $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
             $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
