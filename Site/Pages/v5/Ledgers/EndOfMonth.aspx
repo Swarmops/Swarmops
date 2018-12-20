@@ -251,9 +251,25 @@
                 return;
             }
 
+            var itemId = $(activeUpload).attr('data-item');
+
             // TODO: AJAX CALL TO STORE UPLOAD
 
             activeUpload = null;
+
+            // If there are items that depend on this one,
+            // disable their "skip" option now (because there's
+            // a first document in the series)
+
+            var itemIterator = $('.action-list-item[data-dependson="' + itemId + '"]');
+
+            while (itemIterator.length > 0) {
+                // We're only supporting a 1:1 chain at this time, no 1:n dependencies
+
+                itemId = $(itemIterator).attr('data-item');
+                $('span.action-list-item[data-item="' + itemId + '"] span.action-skip').addClass('action-skip-disabled');
+                itemIterator = $('.action-list-item[data-dependson="' + itemId + '"]');
+            }
         }
 
         var uploadGuid = '<%=this.UploadControl.GuidString%>';
