@@ -145,7 +145,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         string previousGroupIdData = string.Empty;
                         if (!string.IsNullOrEmpty(previousGroupId))
                         {
-                            previousGroupIdData = " data-previous-group=\"" + previousGroupId + "\"";
+                            previousGroupIdData = " data-previous-group='" + previousGroupId + "'";
                         }
 
                         bool groupReady = true;
@@ -162,8 +162,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         builder.Append(@"
 
                             $('#TableEomItems').datagrid('appendRow', {
-                                itemGroupName: '<span class=""itemGroupHeader""" + previousGroupIdData + @">" +
-                                       group.Header.Replace(" ", "&nbsp;").Replace("'", "''") + @"</span>',
+                                itemGroupName: ""<span class='itemGroupHeader'" + previousGroupIdData + @">" +
+                                       group.Header.Replace(" ", "&nbsp;") + @"</span>"",
                                 action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" +
                                        group.Id + "'" + previousGroupIdData +
                                        @" class='group-status-icon status-completed' style='display:" +
