@@ -145,7 +145,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         string previousGroupIdData = string.Empty;
                         if (!string.IsNullOrEmpty(previousGroupId))
                         {
-                            previousGroupIdData = " data-previous-group='" + previousGroupId + "'";
+                            previousGroupIdData = " data-previous-group=\"" + previousGroupId + "\"";
                         }
 
                         bool groupReady = true;
