@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbColumnAwareBase.cs" />
     <Compile Include="Types\Common\BlockchainHash.cs" />
     <Compile Include="Types\Financial\BasicExpenseClaimGroup.cs" />
     <Compile Include="Types\Financial\BasicFinancialAccountDocument.cs" />

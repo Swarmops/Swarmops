@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\DbEnumField.cs" />
+    <Compile Include="Attributes\DbColumnName.cs" />
     <Compile Include="Attributes\DbRecordType.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Enums\AddressValidationResult.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="ExtensionMethods\Color.cs" />
     <Compile Include="ExtensionMethods\DateTime.cs" />
     <Compile Include="Generics\Tree.cs" />
+    <Compile Include="Interfaces\IDatabaseColumnAware.cs" />
     <Compile Include="Interfaces\IEmailPerson.cs" />
     <Compile Include="Interfaces\IHandleProvider.cs" />
     <Compile Include="Interfaces\IHasIdentities.cs" />

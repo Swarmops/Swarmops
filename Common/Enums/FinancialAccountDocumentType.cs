@@ -10,6 +10,7 @@ namespace Swarmops.Common.Enums
     {
         Unknown = 0,
         BankStatement,
-        BankTransactionData
+        BankTransactionData,
+        BankPaymentData
     }
 }
