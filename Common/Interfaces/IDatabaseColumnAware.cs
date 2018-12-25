@@ -17,9 +17,11 @@ namespace Swarmops.Common.Interfaces
     [SuppressMessage("ReSharper", "TypeParameterCanBeVariant")]
     public interface IDatabaseColumnAware<TBasic>
     {
+        // these could all be static but C# doesn't allow static methods in interfaces
+
         string DbTableName { get; }
-        string[] DbFieldSequence { get; }
-        string DbIdentityField { get; }
-        TBasic FromDataReader (IDataReader reader);  // this could be static but C# doesn't allow static methods in interfaces
+        string[] DbColumnSequence { get; }
+        string DbIdentityColumn { get; }
+        TBasic FromDataReader (IDataReader reader);  
     }
 }
