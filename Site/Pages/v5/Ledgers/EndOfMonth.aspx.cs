@@ -251,10 +251,9 @@ namespace Swarmops.Frontend.Pages.Ledgers
         }
 
         [WebMethod]
-        public static AjaxCallResult CreateVatReport()
+        public static AjaxCallResult CreateVatReport(string itemId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
-
             if (!authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails)))
             {
                 throw new UnauthorizedAccessException();
@@ -264,6 +263,33 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
             return new AjaxCallResult {Success = true};
         }
+
+
+        [WebMethod]
+        public static AjaxCallResult UploadBankStatement(string itemId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            if (!authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            string[] parts = itemId.Split('-');
+            FinancialAccount account = FinancialAccount.FromIdentity(Int32.Parse(parts[1]));
+            int yearMonth = Int32.Parse(parts[2]);
+
+            if (account.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+
+
+            return new AjaxCallResult {Success = true};
+        }
+        
+
+
 
 
         private class EomItem

@@ -154,21 +154,24 @@
 
                     SwarmopsJS.ajaxCall(
                         "/Pages/v5/Ledgers/EndOfMonth.aspx/" + callbackFunction,
-                        {},
-                        $.proxy(function() {
-                            var groupId = $(this).attr('data-group');
+                        { itemId: itemId },
+                        // Success function
+                        $.proxy(function (result) {
                             var itemId = $(this).attr('data-item');
-
-                            $('span.action-list-item[data-item="' + itemId + '"]').addClass('action-list-item-completed');
-                            $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
-                            $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
-
-                            var selector = ".action-list-item:not(.action-list-item-completed):not(.action-list-item-disabled)[data-group='" + groupId + "']";
-                            if ($(selector).length == 0) // no further actions in this group enabled
-                            {
-                                // mark the group as completed
-                                $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
+                            if (result.Success) {
+                                markItemCompleted(itemId);
+                            } else {
+                                // Restore action icons.
+                                // Todo: display DisplayMessage in dialog or error notice.
+                                $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
+                                $('img.action-icon[data-item="' + itemId + '"]').show();
                             }
+                        }, this),
+                        // Failure (exception) function
+                        $.proxy(function () {
+                            var itemId = $(this).attr('data-item');
+                            $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
+                            $('img.action-icon[data-item="' + itemId + '"]').show();
                         }, this)
                     );
                 }

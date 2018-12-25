@@ -43,7 +43,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + paymentFieldSequence +
+                    GetDbCommand("SELECT" + financialAccountDocumentFieldSequence +
                                   "WHERE FinancialAccountDocumentId=" + financialAccountDocumentId,
                         connection);
 
@@ -70,7 +70,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + paymentFieldSequence + ConstructWhereClause("Payments", conditions), connection);
+                        "SELECT" + financialAccountDocumentFieldSequence + ConstructWhereClause("Payments", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -105,75 +105,13 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "uploadedByPersonId", uploadedByPersonId);
                 AddParameterWithName(command, "concernsPeriodStart", concernsPeriodStart);  // inclusive endpoint
                 AddParameterWithName(command, "concernsPeriodEnd", concernsPeriodEnd);  // exclusive endpoint
-                AddParameterWithName(command, "outboundInvoiceId", outboundInvoiceId);
+                AddParameterWithName(command, "rawDocumentText", rawText);
 
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
 
 
-        public int CreatePayment(int paymentGroupId, Int64 amountCents, string reference, string fromAccount,
-            string key,
-            bool hasImage, int outboundInvoiceId)
-        {
-            using (DbConnection connection = GetMySqlDbConnection())
-            {
-                connection.Open();
-
-                DbCommand command = GetDbCommand("CreatePaymentPrecise", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                AddParameterWithName(command, "paymentGroupId", paymentGroupId);
-                AddParameterWithName(command, "amountCents", amountCents);
-                AddParameterWithName(command, "reference", reference);
-                AddParameterWithName(command, "fromAccount", fromAccount);
-                AddParameterWithName(command, "paymentKey", key);
-                AddParameterWithName(command, "hasImage", hasImage);
-                AddParameterWithName(command, "outboundInvoiceId", outboundInvoiceId);
-
-                return Convert.ToInt32(command.ExecuteScalar());
-            }
-        }
-
-
-        public int CreatePaymentInformation(int paymentId, PaymentInformationType type, string data)
-        {
-            using (DbConnection connection = GetMySqlDbConnection())
-            {
-                connection.Open();
-
-                DbCommand command = GetDbCommand("CreatePaymentInformation", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                AddParameterWithName(command, "paymentId", paymentId);
-                AddParameterWithName(command, "dataTypeString", type.ToString());
-                AddParameterWithName(command, "data", data);
-
-                return Convert.ToInt32(command.ExecuteScalar());
-            }
-        }
-
-        [Obsolete("This should never be called, ever: it ruins trackability.")]
-        public void DeletePayment(int paymentId)
-        {
-            // This function is necessary since the Swedish bank system only allows for a dupe check AFTER all payments
-            // have been communicated, so they are created as data is received. If the data was a dupe, it is therefore
-            // deleted after the dupecheck triggers.
-
-            // That code was later re-written to do in-memory dupechecking. This delete function should never be called.
-
-            using (DbConnection connection = GetMySqlDbConnection())
-            {
-                connection.Open();
-
-                DbCommand command = GetDbCommand("DeletePayment", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                AddParameterWithName(command, "paymentId", paymentId);
-
-                command.ExecuteNonQuery();
-            }
-        }
 
         #endregion
 

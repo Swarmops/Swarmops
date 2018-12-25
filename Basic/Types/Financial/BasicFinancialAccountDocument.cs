@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Swarmops.Common.Attributes;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
 
@@ -38,14 +39,20 @@ namespace Swarmops.Basic.Types.Financial
             // empty copy ctor
         }
 
-        public int FinancialAccountDocumentId { get; private set; }
-        public int FinancialAccountId { get; private set; }
+        // Name-identical dbcolumns / properties
+
+        [DbColumnName] public int FinancialAccountDocumentId { get; private set; }
+        [DbColumnName] public int FinancialAccountId { get; private set; }
+        [DbColumnName] public DateTime UploadedDateTime { get; private set; }
+        [DbColumnName] public int UploadedByPersonId { get; private set; }
+        [DbColumnName] public DateTime ConcernsPeriodStart { get; private set; }
+        [DbColumnName] public DateTime ConcernsPeriodEnd { get; private set; }
+        [DbColumnName] public string RawDocumentText { get; private set; }
+
+        // Complex or renamed dbcolumns / properties
+
         public FinancialAccountDocumentType Type { get; private set; }
-        public DateTime UploadedDateTime { get; private set; }
-        public int UploadedByPersonId { get; private set; }
-        public DateTime ConcernsPeriodStart { get; private set; }
-        public DateTime ConcernsPeriodEnd { get; private set; }
-        public string RawDocumentText { get; private set; }
+
 
         public int Identity { get { return this.FinancialAccountDocumentId; } }
     }
