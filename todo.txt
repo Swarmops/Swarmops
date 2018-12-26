@@ -14,7 +14,7 @@ PRIO 1
 [ ] End-of-month routine
 [ ] - incl EOY
 [ ] - with todo field
-[ ] Fix generic block explorer interfaces'
+[ ] Fix generic block explorer interfaces
 [ ] Fix & redo bank file upload completely
 [ ] - with interface to Github repo of XML definitions
 [ ] Fix Bionic build
@@ -25,20 +25,23 @@ PRIO 1
 PRIO 2
 ------
 
-[ ] Recurring expenses
 [ ] Todo box JSON
-[ ] Expense reject malfunction
+[ ] Expense reject malfunction (what's this? -RF)
 [ ] Backoffice.Cash SKU
 [ ] Submit invoice
 [ ] Control messages for invoice progress
 [ ] Pay invoice
 [ ] Upload bank statements
 [ ] External people notifications
+[ ] Currency inventory tracking
+[ ] Cost centers and 2-D reports
+[ ] Monthly reports (not just quarterly)
 
 
 PRIO 3
 ------
 
+[ ] Recurring expenses
 [ ] HTML/Markdown mail
 [ ] Org texts self-signup
 [ ] Load hotwallet from cold
