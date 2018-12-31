@@ -281,7 +281,7 @@
             // Note that the function to call is selected dynamically!
 
             SwarmopsJS.ajaxCall(
-                "EndOfMonth.aspx/Upload" + itemType,
+                "/Pages/v5/Ledgers/EndOfMonth.aspx/Upload" + itemType,
                 { guid: uploadGuid, itemId: activeUpload },
                 function(result) {
                     if (result.Success) {
@@ -308,6 +308,9 @@
                         // Todo: add more error handling later, maybe
                         clientFailedUpload();
                     }
+                },
+                function(error) {
+                    clientFailedUpload();
                 });
           
         }
