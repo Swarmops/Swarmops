@@ -266,7 +266,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
 
         [WebMethod]
-        public static AjaxCallResult UploadBankStatement(string itemId)
+        public static AjaxCallResult UploadBankStatement(string guid, string itemId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             if (!authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails)))
@@ -283,7 +283,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 throw new UnauthorizedAccessException();
             }
 
-
+            Documents documents = Documents.RecentFromDescription(guid);
 
             return new AjaxCallResult {Success = true};
         }

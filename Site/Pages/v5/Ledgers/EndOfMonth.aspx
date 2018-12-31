@@ -276,7 +276,16 @@
                 return;
             }
 
-            // TODO: AJAX CALL TO STORE UPLOAD
+            var itemType = activeUpload.substring(0, activeUpload.indexOf('-'));
+            console.log(itemType);
+            console.log("Upload" + itemType);
+
+            /*
+            SwarmopsJS.ajaxCall(
+                "EndOfMonth.aspx/Upload" + ,
+                {guid: uploadGuid, itemId: activeUpload},
+                )
+            // TODO: AJAX CALL TO STORE UPLOAD*/
 
             markItemCompleted(activeUpload);
 
@@ -306,6 +315,8 @@
         var localized_skipYesResponse = SwarmopsJS.unescape('<%=this.Localized_SkipYes%>');
         var localized_skipPromptBankStatement = SwarmopsJS.unescape('<%=this.Localized_SkipPrompt_BankStatement%>');
         var localized_skipPromptGeneric = SwarmopsJS.unescape('<%=this.Localized_SkipPrompt_Generic%>');
+
+        var uploadGuid = '<%=this.UploadControl.GuidString%>';
 
         // Function: Match all mismatched transactions
 
