@@ -3,7 +3,7 @@ NOV2018
 
 OVERALL: 
 [ ] Fix basic flows
-[ ] Focus on new SKU Backoffice.Cash
+[ ] Focus on new SKU op.Cash
 [ ] Make work on Bionic and Stretch
 
 
@@ -27,10 +27,11 @@ PRIO 2
 
 [ ] Todo box JSON
 [ ] Expense reject malfunction (what's this? -RF)
-[ ] Backoffice.Cash SKU
+[ ] op.Cash SKU
 [ ] Submit invoice
 [ ] Control messages for invoice progress
 [ ] Pay invoice
+[ ] Payment points for invoices, expense reports
 [ ] Upload bank statements
 [ ] External people notifications
 [ ] Currency inventory tracking
@@ -47,6 +48,6 @@ PRIO 3
 [ ] Load hotwallet from cold
 [ ] Database discrepancy
 [ ] Icons for Validation
-[ ] Backoffice.Cash OOBE
+[ ] op.Cash OOBE
 [ ] Assign role geolock
 
