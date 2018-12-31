@@ -19,7 +19,17 @@ namespace Swarmops.Logic.Financial
 
             if (typeRequested != FinancialAccountDocumentType.Unknown)
             {
-                return (FinancialAccountDocuments) result.Where(doc => doc.Type == typeRequested);
+                FinancialAccountDocuments subset = new FinancialAccountDocuments();
+
+                foreach (FinancialAccountDocument document in result)
+                {
+                    if (document.Type == typeRequested)
+                    {
+                        subset.Add(document);
+                    }
+                }
+
+                return subset;
             }
 
             return result;
