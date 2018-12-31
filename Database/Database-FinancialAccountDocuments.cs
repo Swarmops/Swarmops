@@ -13,30 +13,32 @@ namespace Swarmops.Database
         #region Database field reading
 
         private const string financialAccountDocumentFieldSequence =
-            " PaymentId,PaymentGroupId,AmountCents,Reference,FromAccount," + // 0-4
-            "PaymentKey,HasImage,OutboundInvoiceId " + // 5-7
-            "FROM Payments ";
+            " FinancialAccountDocumentId,FinancialAccountId,FinancialAccountDocumentTypes.Name,UploadedDateTime,UploadedByPersonId, " + // 0-4
+            " ConcernsPeriodStart,ConcernsPeriodEnd,RawDocumentText " + // 5-7
+            " FROM FinancialAccountDocuments JOIN FinancialAccountDocumentTypes USING (FinancialAccountDocumentTypeId) ";
 
-        private static BasicPayment ReadFinancialAccountDocumentFromDataReader(IDataRecord reader)
+        private static BasicFinancialAccountDocument ReadFinancialAccountDocumentFromDataReader(IDataRecord reader)
         {
-            int paymentId = reader.GetInt32(0);
-            int paymentGroupId = reader.GetInt32(1);
-            Int64 amountCents = reader.GetInt64(2);
-            string reference = reader.GetString(3);
-            string fromAccount = reader.GetString(4);
-            string key = reader.GetString(5);
-            bool hasImage = reader.GetBoolean(6);
-            int outboundInvoiceId = reader.GetInt32(7);
+            int financialAccountDocumentId = reader.GetInt32(0);
+            int financialAccountId = reader.GetInt32(1);
+            string financialAccountDocumentTypeString = reader.GetString(2);
+            DateTime uploadedDateTime = reader.GetDateTime(3);
+            int uploadedByPersonId = reader.GetInt32(4);
+            DateTime concernsPeriodStart = reader.GetDateTime(5);
+            DateTime concernsPeriodEnd = reader.GetDateTime(6);
+            string rawText = reader.GetString(7);
 
-            return new BasicPayment(paymentId, paymentGroupId, amountCents, reference, fromAccount, key, hasImage,
-                outboundInvoiceId);
+            FinancialAccountDocumentType docType = (FinancialAccountDocumentType) Enum.Parse(typeof (FinancialAccountDocumentType), financialAccountDocumentTypeString);
+
+            return new BasicFinancialAccountDocument(financialAccountDocumentId, financialAccountId, docType, uploadedDateTime, uploadedByPersonId, concernsPeriodStart,
+                concernsPeriodEnd, rawText);
         }
 
         #endregion
 
         #region Database record reading -- SELECT clauses
 
-        public BasicPayment GetFinancialAccountDocument(int financialAccountDocumentId)
+        public BasicFinancialAccountDocument GetFinancialAccountDocument(int financialAccountDocumentId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -51,7 +53,7 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadPaymentFromDataReader(reader);
+                        return ReadFinancialAccountDocumentFromDataReader(reader);
                     }
 
                     throw new ArgumentException("No such FinancialAccountDocumentId:" + financialAccountDocumentId);
@@ -60,9 +62,9 @@ namespace Swarmops.Database
         }
 
 
-        public BasicPayment[] GetFinancialAccountDocuments(params object[] conditions)
+        public BasicFinancialAccountDocument[] GetFinancialAccountDocuments(params object[] conditions)
         {
-            List<BasicPayment> result = new List<BasicPayment>();
+            List<BasicFinancialAccountDocument> result = new List<BasicFinancialAccountDocument>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -76,7 +78,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPaymentFromDataReader(reader));
+                        result.Add(ReadFinancialAccountDocumentFromDataReader(reader));
                     }
 
                     return result.ToArray();

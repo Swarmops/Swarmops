@@ -39,9 +39,13 @@ namespace Swarmops.Basic.Types.Financial
             // empty copy ctor
         }
 
+        // Identity field
+
+        [DbColumnName] [DbIdentity]
+        public int FinancialAccountDocumentId { get; private set; }
+
         // Name-identical dbcolumns / properties
 
-        [DbColumnName] public int FinancialAccountDocumentId { get; private set; }
         [DbColumnName] public int FinancialAccountId { get; private set; }
         [DbColumnName] public DateTime UploadedDateTime { get; private set; }
         [DbColumnName] public int UploadedByPersonId { get; private set; }
@@ -51,6 +55,7 @@ namespace Swarmops.Basic.Types.Financial
 
         // Complex or renamed dbcolumns / properties
 
+        [DbColumnForeignTypeName("FinancialAccountDocumentTypes", "FinancialAccountDocumentTypeId", "Name")]
         public FinancialAccountDocumentType Type { get; private set; }
 
 

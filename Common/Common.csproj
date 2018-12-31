@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\DbColumnTypeName.cs" />
     <Compile Include="Attributes\DbEnumField.cs" />
     <Compile Include="Attributes\DbColumnName.cs" />
+    <Compile Include="Attributes\DbIdentity.cs" />
     <Compile Include="Attributes\DbRecordType.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Enums\AddressValidationResult.cs" />
