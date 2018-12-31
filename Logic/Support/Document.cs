@@ -249,6 +249,10 @@ namespace Swarmops.Logic.Support
             {
                 return DocumentType.Salary;
             }
+            else if (foreignObject is FinancialAccountDocument)
+            {
+                return DocumentType.FinancialAccountDocument;
+            }
             else
             {
                 throw new ArgumentException ("Unrecognized foreign object type:" + foreignObject.GetType().ToString());

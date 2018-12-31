@@ -277,6 +277,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
             string[] parts = itemId.Split('-');
             FinancialAccount account = FinancialAccount.FromIdentity(Int32.Parse(parts[1]));
             int yearMonth = Int32.Parse(parts[2]);
+            DateTime statementStart = new DateTime(yearMonth/100, yearMonth%100, 1);
 
             if (account.OrganizationId != authData.CurrentOrganization.Identity)
             {
@@ -284,6 +285,11 @@ namespace Swarmops.Frontend.Pages.Ledgers
             }
 
             Documents documents = Documents.RecentFromDescription(guid);
+
+            FinancialAccountDocument accountDoc = FinancialAccountDocument.Create(account, FinancialAccountDocumentType.BankStatement, authData.CurrentUser,
+                statementStart, statementStart.AddMonths(1), string.Empty);
+
+            documents.SetForeignObjectForAll(accountDoc);
 
             return new AjaxCallResult {Success = true};
         }

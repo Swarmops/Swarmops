@@ -5311,7 +5311,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Frames\" />
+    <Folder Include="Frames\v5\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

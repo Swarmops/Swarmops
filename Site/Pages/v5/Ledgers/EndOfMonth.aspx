@@ -277,15 +277,21 @@
             }
 
             var itemType = activeUpload.substring(0, activeUpload.indexOf('-'));
-            console.log(itemType);
-            console.log("Upload" + itemType);
 
-            /*
+            // Note that the function to call is selected dynamically!
+
             SwarmopsJS.ajaxCall(
-                "EndOfMonth.aspx/Upload" + ,
-                {guid: uploadGuid, itemId: activeUpload},
-                )
-            // TODO: AJAX CALL TO STORE UPLOAD*/
+                "EndOfMonth.aspx/Upload" + itemType,
+                { guid: uploadGuid, itemId: activeUpload },
+                function(result) {
+                    if (result.Success) {
+
+                    } else {
+                        // Todo: add more error handling later, maybe
+                        clientFailedUpload();
+                    }
+                });
+           
 
             markItemCompleted(activeUpload);
 
