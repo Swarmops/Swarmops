@@ -47,5 +47,15 @@ namespace Swarmops.Basic
             // every class that derives from DbColumnAwareBase
             ;
         }
+
+        /*
+         * 
+         * sample SELECT sequence:
+         *         private const string financialAccountDocumentFieldSequence =
+            " FinancialAccountDocumentId,FinancialAccountId,FinancialAccountDocumentTypes.Name,UploadedDateTime,UploadedByPersonId, " + // 0-4
+            " ConcernsPeriodStart,ConcernsPeriodEnd,RawDocumentText " + // 5-7
+            " FROM FinancialAccountDocuments JOIN FinancialAccountDocumentTypes USING (FinancialAccountDocumentTypeId) ";
+
+        */
     }
 }

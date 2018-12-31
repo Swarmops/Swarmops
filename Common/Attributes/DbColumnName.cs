@@ -18,7 +18,7 @@ namespace Swarmops.Common.Attributes
     {
         public DbColumnName()
         {
-            // means the column name is the same as the property name that houses the attribute
+            // empty attr means the column name is the same as the property name that houses the attribute
             this.ColumnName = string.Empty;
         }
         public DbColumnName(string columnName)
