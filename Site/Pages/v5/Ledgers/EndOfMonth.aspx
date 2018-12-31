@@ -223,18 +223,20 @@
             $('img.status-icon-pleasewait[data-item="' + itemId + '"]').hide();
             $('img.status-icon-completed[data-item="' + itemId + '"]').fadeIn();
 
+            // If any items depended on this one, enable them now
+
+            var dependentItemId = $('span.action-list-item[data-dependson="' + itemId + '"]').attr("data-item");
+            $('span.action-list-item[data-item="' + dependentItemId + '"]').removeClass('action-list-item-disabled');
+            $('img.action-icon[data-item="' + dependentItemId + '"]').removeClass('action-icon-disabled');
+
+            // Check if group is complete
+
             var selector = ".action-list-item:not(.action-list-item-completed):not(.action-list-item-disabled)[data-group='" + groupId + "']";
             if ($(selector).length == 0) // no further actions in this group enabled
             {
                 // mark the group as completed
                 $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
             }
-
-            // If any items depended on this one, enable them now
-
-            var dependentItemId = $('span.action-list-item[data-dependson="' + itemId + '"]').attr("data-item");
-            $('span.action-list-item[data-item="' + dependentItemId + '"]').removeClass('action-list-item-disabled');
-            $('img.action-icon[data-item="' + dependentItemId + '"]').removeClass('action-icon-disabled');
 
         }
 
