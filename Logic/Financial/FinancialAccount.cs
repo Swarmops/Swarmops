@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common;
@@ -171,7 +172,13 @@ namespace Swarmops.Logic.Financial
 
         public FinancialAccountDocument GetMostRecentDocument(FinancialAccountDocumentType documentType)
         {
-            // TODO: Continue here
+            FinancialAccountDocuments documents = FinancialAccountDocuments.ForAccount(this, documentType);
+
+            if (documents.Count() > 0)
+            {
+                return documents.Last();
+            }
+
             return null;
         }
 
