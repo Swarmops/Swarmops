@@ -191,7 +191,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                                 string iconDisabledClass = string.Empty;
                                 string iconIsUploadClass = string.Empty;
 
-                                if (item.DependsOn.Length > 0)
+                                if (!string.IsNullOrEmpty(item.DependsOn))
                                 {
                                     // add as disabled
                                     itemDisabledClass = " action-list-item-disabled";
