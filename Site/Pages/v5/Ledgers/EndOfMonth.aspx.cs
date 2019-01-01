@@ -123,6 +123,23 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 group2.Items.Add(vatReport);
             }
 
+            Payroll payroll = Payroll.ForOrganization(this.CurrentOrganization);
+            if (payroll.Any())
+            {
+                // There is active payroll
+
+
+            }
+            else
+            {
+                EomItem payrollInactive = new EomItem();
+                payrollInactive.Id = "PayrollInactive";
+                payrollInactive.Completed = true;
+                payrollInactive.Name = Resources.Pages.Ledgers.EndOfMonth_PayrollInactive;
+                payrollInactive.Icon = "document";
+                group2.Items.Add(payrollInactive);
+            }
+
 
             if (group2.Items.Count > 0)
             {

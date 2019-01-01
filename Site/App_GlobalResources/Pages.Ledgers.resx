@@ -1031,4 +1031,8 @@
   <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
     <value>&lt;strong&gt;SKIP DOCUMENT UPLOAD?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This document is typically needed for operation records. The only valid reason to skip a document is that it doesn't exist because the operations weren't running yet, like when an operation started in June of a year won't have documents for January of that year.&lt;br/&gt;&lt;br/&gt;You won't be asked again to upload this document if you skip it now.</value>
   </data>
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>Payroll: No payroll defined</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
+  </data>
 </root>
