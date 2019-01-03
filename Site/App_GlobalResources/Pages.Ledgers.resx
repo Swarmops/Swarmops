@@ -1018,11 +1018,11 @@
     <comment>Parameter zero is the month that's just ended</comment>
   </data>
   <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
-    <value>Upload Bank Statement ({1}) for {0} for {2}</value>
+    <value>Upload Bank &lt;strong&gt;Statement&lt;/strong&gt; ({1}) for {0} for {2}</value>
     <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
   </data>
   <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
-    <value>Upload Transaction Data ({1}) for {0}</value>
+    <value>Upload &lt;strong&gt;Transaction Data&lt;/strong&gt; ({1}) for {0}</value>
     <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
   </data>
   <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">

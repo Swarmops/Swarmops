@@ -39,6 +39,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
             group1.Header = Resources.Pages.Ledgers.EndOfMonth_Header_ExternalData;
             group1.Id = "ExternalData";
 
+            string lastUploadItemId = string.Empty;
+
             // Iterate over all Balance accounts and check for automation;
             // if so, add it to an upload sequence
 
@@ -94,7 +96,25 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         group1.Items.Add(bankStatement);
                     }
 
+                    // Add data upload item
+
                 }
+            }
+
+            // If there are any items in Group 1, OR if an account matching is necessary, then
+            // add that as an action item
+
+            if (group1.Items.Count() > 0 || FinancialTransactions.GetUnbalanced(this.CurrentOrganization).Count() > 0)
+            {
+                EomItem matchAccounts = new EomItem();
+                matchAccounts.DependsOn = lastUploadItemId; // may be empty if there's nothing to upload and that's ok
+                matchAccounts.Id = "MatchAccounts";
+                matchAccounts.Completed = false; // we already know there's at least one unbalanced
+                matchAccounts.Icon = "wrench";
+                matchAccounts.Skippable = false;
+                matchAccounts.Name = Resources.Pages.Ledgers.EndOfMonth_MatchAccounts;
+
+                group1.Items.Add(matchAccounts);
             }
 
             if (group1.Items.Count > 0)
