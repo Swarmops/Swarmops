@@ -98,6 +98,9 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
                     // Add data upload item
 
+                    EomItem dataUploadItem = new EomItem();
+                    dataUploadItem.Id = "BankDataUpload-" + assetAccount.Identity.ToString(CultureInfo.InvariantCulture);
+
                 }
             }
 
