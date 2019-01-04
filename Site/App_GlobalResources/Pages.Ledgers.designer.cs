@@ -115,7 +115,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are transactions here excluded from 2-D reports?.
+        ///   Looks up a localized string similar to Is this an account after the EBITDA line?.
         /// </summary>
         internal static string AccountPlan_Edit_AdministrativeLong {
             get {

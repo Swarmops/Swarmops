@@ -14,6 +14,7 @@
 
             // set action icons to their respective initial icons
 
+            $('img.eomitem-wrench').attr('src', '/Images/Icons/iconshock-balloon-wrench-128x96px.png');
             $('img.eomitem-document').attr('src', '/Images/Icons/iconshock-balloon-invoice-128x96px.png');
             $('img.eomitem-upload').attr('src', '/Images/Icons/iconshock-upload-128x96px.png');
 

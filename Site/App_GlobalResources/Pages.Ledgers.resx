@@ -402,7 +402,8 @@
     <value>Active</value>
   </data>
   <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Are transactions here excluded from 2-D reports?</value>
+    <value>Is this an account after the EBITDA line?</value>
+    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
   </data>
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Admin</value>
