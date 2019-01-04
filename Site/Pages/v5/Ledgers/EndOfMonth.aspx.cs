@@ -128,7 +128,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
             {
                 // There is active payroll
 
-
+                // TODO: Taxes for last month and processing for this month
             }
             else
             {
