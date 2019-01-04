@@ -115,7 +115,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are transactions here excluded from 2-D reports?.
+        ///   Looks up a localized string similar to Is this an account after the EBITDA line?.
         /// </summary>
         internal static string AccountPlan_Edit_AdministrativeLong {
             get {
@@ -1186,7 +1186,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Upload Bank &lt;strong&gt;Statement&lt;/strong&gt; ({1}) for {0} for {2}.
+        ///   Looks up a localized string similar to Upload Bank Statement ({1}) for {0} for {2}.
         /// </summary>
         internal static string EndOfMonth_UploadBankStatementFor {
             get {
@@ -1195,7 +1195,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Upload &lt;strong&gt;Transaction Data&lt;/strong&gt; ({1}) for {0}.
+        ///   Looks up a localized string similar to Upload Transaction Data ({1}) for {0}.
         /// </summary>
         internal static string EndOfMonth_UploadTransactionDataFor {
             get {

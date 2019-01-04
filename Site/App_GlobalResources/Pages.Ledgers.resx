@@ -402,7 +402,8 @@
     <value>Active</value>
   </data>
   <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Are transactions here excluded from 2-D reports?</value>
+    <value>Is this an account after the EBITDA line?</value>
+    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
   </data>
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Admin</value>
@@ -1018,11 +1019,11 @@
     <comment>Parameter zero is the month that's just ended</comment>
   </data>
   <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
-    <value>Upload Bank &lt;strong&gt;Statement&lt;/strong&gt; ({1}) for {0} for {2}</value>
+    <value>Upload Bank Statement ({1}) for {0} for {2}</value>
     <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
   </data>
   <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
-    <value>Upload &lt;strong&gt;Transaction Data&lt;/strong&gt; ({1}) for {0}</value>
+    <value>Upload Transaction Data ({1}) for {0}</value>
     <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
   </data>
   <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
