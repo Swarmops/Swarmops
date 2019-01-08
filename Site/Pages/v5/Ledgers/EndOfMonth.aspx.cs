@@ -104,7 +104,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                     dataUploadItem.Id = "BankDataUpload-" + assetAccount.Identity.ToString(CultureInfo.InvariantCulture);
                     dataUploadItem.Icon = "upload";
                     dataUploadItem.Completed = false; // todo
-                    dataUploadItem.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_FetchTransactionDataFor,
+                    dataUploadItem.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_UploadTransactionDataFor,
                         "CSV", assetAccount.Name);
                     dataUploadItem.Skippable = false;
 
