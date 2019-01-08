@@ -1141,7 +1141,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resolve all unmatched accounts.
+        ///   Looks up a localized string similar to Resolve all unmatched ledger transactions.
         /// </summary>
         internal static string EndOfMonth_MatchAccounts {
             get {

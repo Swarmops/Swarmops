@@ -1011,7 +1011,7 @@
     <value>This is a checklist of things to do to close the previous month and begin the new one with respect to accounting.</value>
   </data>
   <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
-    <value>Resolve all unmatched accounts</value>
+    <value>Resolve all unmatched ledger transactions</value>
     <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
   </data>
   <data name="EndOfMonth_Title" xml:space="preserve">

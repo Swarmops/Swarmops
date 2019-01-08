@@ -160,6 +160,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set up Connected Accounts.
+        /// </summary>
+        internal static string Menu5_Admin_SetupConnectedAccounts {
+            get {
+                return ResourceManager.GetString("Menu5_Admin_SetupConnectedAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set up Ledger Account Structure.
+        /// </summary>
+        internal static string Menu5_Admin_SetupLedgerAccountStructure {
+            get {
+                return ResourceManager.GetString("Menu5_Admin_SetupLedgerAccountStructure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set up Payroll.
+        /// </summary>
+        internal static string Menu5_Admin_SetupPayroll {
+            get {
+                return ResourceManager.GetString("Menu5_Admin_SetupPayroll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Built on {0:MMM d, yyyy}.
         /// </summary>
         internal static string Menu5_Beta_BuildTime {
@@ -466,6 +493,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Salary.
+        /// </summary>
+        internal static string Menu5_Financial_Salary {
+            get {
+                return ResourceManager.GetString("Menu5_Financial_Salary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send New Invoice.
         /// </summary>
         internal static string Menu5_Financial_SendInvoice {
@@ -673,6 +709,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deprecating &amp; Amortized Assets.
+        /// </summary>
+        internal static string Menu5_Ledgers_DeprecatingAmortizedAssets {
+            get {
+                return ResourceManager.GetString("Menu5_Ledgers_DeprecatingAmortizedAssets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Depreciations and Amortizations.
+        /// </summary>
+        internal static string Menu5_Ledgers_DepreciationsAmortizations {
+            get {
+                return ResourceManager.GetString("Menu5_Ledgers_DepreciationsAmortizations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import Bank Data.
         /// </summary>
         internal static string Menu5_Ledgers_ImportBankData {
@@ -709,6 +763,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Make Payroll Adjustments.
+        /// </summary>
+        internal static string Menu5_Ledgers_PayrollAdjustments {
+            get {
+                return ResourceManager.GetString("Menu5_Ledgers_PayrollAdjustments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profit &amp; Loss Statement.
         /// </summary>
         internal static string Menu5_Ledgers_ProfitLossStatement {
@@ -718,7 +781,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resync Bank Account.
+        ///   Looks up a localized string similar to Resync Connected Account.
         /// </summary>
         internal static string Menu5_Ledgers_ResyncExternalAccount {
             get {
@@ -727,7 +790,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set Budget Amounts.
+        ///   Looks up a localized string similar to Set up Budgets.
         /// </summary>
         internal static string Menu5_Ledgers_SetBudgets {
             get {
@@ -750,6 +813,15 @@ namespace Resources {
         internal static string Menu5_Ledgers_TaxForms_Payroll {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_TaxForms_Payroll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracked Transactions.
+        /// </summary>
+        internal static string Menu5_Ledgers_TrackedTransactions {
+            get {
+                return ResourceManager.GetString("Menu5_Ledgers_TrackedTransactions", resourceCulture);
             }
         }
         
@@ -943,6 +1015,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Distributed Assets.
+        /// </summary>
+        internal static string Menu5_People_DistributedAssets {
+            get {
+                return ResourceManager.GetString("Menu5_People_DistributedAssets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to List/Find People.
         /// </summary>
         internal static string Menu5_People_ListFind {
@@ -1029,6 +1110,15 @@ namespace Resources {
         internal static string Menu5_Placeholder_Todo {
             get {
                 return ResourceManager.GetString("Menu5_Placeholder_Todo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reports.
+        /// </summary>
+        internal static string Menu5_Reports {
+            get {
+                return ResourceManager.GetString("Menu5_Reports", resourceCulture);
             }
         }
         

@@ -1004,4 +1004,11 @@
     <value>Skip</value>
     <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
   </data>
+  <data name="Financial_Ebitda_Long" xml:space="preserve">
+    <value>Earnings before Interest, Taxes, Depreciation, and Amortization</value>
+  </data>
+  <data name="Financial_Ebitda_Short" xml:space="preserve">
+    <value>EBITDA</value>
+    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
+  </data>
 </root>
