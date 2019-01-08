@@ -98,9 +98,17 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
                     // Add data upload item
 
+                    // TODO: Check if the last data upload was into the current month
+
                     EomItem dataUploadItem = new EomItem();
                     dataUploadItem.Id = "BankDataUpload-" + assetAccount.Identity.ToString(CultureInfo.InvariantCulture);
+                    dataUploadItem.Icon = "upload";
+                    dataUploadItem.Completed = false; // todo
+                    dataUploadItem.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_FetchTransactionDataFor,
+                        "CSV", assetAccount.Name);
+                    dataUploadItem.Skippable = false;
 
+                    group1.Items.Add(dataUploadItem);
                 }
             }
 
