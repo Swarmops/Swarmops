@@ -105,7 +105,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                     dataUploadItem.Icon = "upload";
                     dataUploadItem.Completed = false; // todo
                     dataUploadItem.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_UploadTransactionDataFor,
-                        "CSV", assetAccount.Name);
+                        assetAccount.Name, "CSV");
                     dataUploadItem.Skippable = false;
 
                     group1.Items.Add(dataUploadItem);
