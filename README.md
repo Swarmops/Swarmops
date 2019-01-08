@@ -112,7 +112,7 @@ Beta-6 will be released on February 5, 2019, with string freeze three days earli
 Beta-7 features progress
 ------------------------
 
-Beta-7 will be released on March 5, 2019, with string freeze on March 2. Its tentative focus will be Fairshift integration and possibly an open API exposure.
+Beta-7 will be released on April 5, 2019, with string freeze on April 2. Its tentative focus will be Fairshift integration and possibly an open API exposure.
 
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
