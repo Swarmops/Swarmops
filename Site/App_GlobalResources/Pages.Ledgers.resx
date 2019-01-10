@@ -402,7 +402,8 @@
     <value>Active</value>
   </data>
   <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Are transactions here excluded from 2-D reports?</value>
+    <value>Is this an account after the EBITDA line?</value>
+    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
   </data>
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Admin</value>
@@ -1010,7 +1011,7 @@
     <value>This is a checklist of things to do to close the previous month and begin the new one with respect to accounting.</value>
   </data>
   <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
-    <value>Resolve all unmatched accounts</value>
+    <value>Resolve all unmatched ledger transactions</value>
     <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
   </data>
   <data name="EndOfMonth_Title" xml:space="preserve">
@@ -1027,5 +1028,12 @@
   </data>
   <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
     <value>&lt;strong&gt;SKIP BANK STATEMENT?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bank statements are typically needed for audit verification of the internal records. The only valid reason to skip a month's statement is that the account wasn't opened yet, in which case you skip the months before the account was opened and no statements therefore exist.&lt;br/&gt;&lt;br/&gt;You won't be asked again to upload this particular statement if you skip it now.</value>
+  </data>
+  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
+    <value>&lt;strong&gt;SKIP DOCUMENT UPLOAD?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This document is typically needed for operation records. The only valid reason to skip a document is that it doesn't exist because the operations weren't running yet, like when an operation started in June of a year won't have documents for January of that year.&lt;br/&gt;&lt;br/&gt;You won't be asked again to upload this document if you skip it now.</value>
+  </data>
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>Payroll: No payroll defined</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
   </data>
 </root>

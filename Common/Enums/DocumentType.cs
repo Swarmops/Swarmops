@@ -77,6 +77,11 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// Nor this
         /// </summary>
-        Salary
+        Salary,
+
+        /// <summary>
+        /// Documentation related to a financial account, usually an external one
+        /// </summary>
+        FinancialAccountDocument
     }
 }

@@ -304,10 +304,11 @@
     <value>Profit &amp; Loss Statement</value>
   </data>
   <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
-    <value>Resync Bank Account</value>
+    <value>Resync Connected Account</value>
   </data>
   <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
-    <value>Set Budget Amounts</value>
+    <value>Set up Budgets</value>
+    <comment>"Budget" as in "Cost allowed for a particular purpose" or "Revenue expected from a source".</comment>
   </data>
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Upload Bank Files</value>
@@ -445,5 +446,42 @@
   </data>
   <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
     <value>Bitcoin Hotwallet Echo Test</value>
+  </data>
+  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
+    <value>Set up Connected Accounts</value>
+    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
+    <value>Set up Ledger Account Structure</value>
+    <comment>This is sometimes called an "account plan" but this term has many overloaded meanings in the context of operations software.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
+    <value>Set up Payroll</value>
+  </data>
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>My Salary</value>
+    <comment>This lists salary payments for the logged on individual</comment>
+  </data>
+  <data name="Menu5_Ledgers_DeprecatingAmortizedAssets" xml:space="preserve">
+    <value>Deprecating &amp; Amortized Assets</value>
+  </data>
+  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
+    <value>Depreciations and Amortizations</value>
+  </data>
+  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
+    <value>Make Payroll Adjustments</value>
+    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
+  </data>
+  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
+    <value>Tracked Transactions</value>
+    <comment>Tracking of special transactions</comment>
+  </data>
+  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
+    <value>Distributed Assets</value>
+    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
+  </data>
+  <data name="Menu5_Reports" xml:space="preserve">
+    <value>Reports</value>
+    <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
   </data>
 </root>

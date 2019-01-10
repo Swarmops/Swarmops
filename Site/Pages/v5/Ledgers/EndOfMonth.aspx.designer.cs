@@ -20,5 +20,14 @@ namespace Swarmops.Frontend.Pages.Ledgers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelHeader;
+        
+        /// <summary>
+        /// UploadControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Controls.Base.FileUpload UploadControl;
     }
 }

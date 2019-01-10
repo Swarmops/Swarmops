@@ -412,6 +412,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Earnings before Interest, Taxes, Depreciation, and Amortization.
+        /// </summary>
+        internal static string Financial_Ebitda_Long {
+            get {
+                return ResourceManager.GetString("Financial_Ebitda_Long", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EBITDA.
+        /// </summary>
+        internal static string Financial_Ebitda_Short {
+            get {
+                return ResourceManager.GetString("Financial_Ebitda_Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expense.
         /// </summary>
         internal static string Financial_ExpenseClaim {

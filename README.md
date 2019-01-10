@@ -39,7 +39,7 @@ wget -qO- https://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add 
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 ```
 
-Then, add the Swarmops repository to your list of software sources, where [your_distro] is `debian` or `ubuntu`, and [your_distro_version] below is `xenial` or `bionic` (Ubuntu) or `stretch` (Debian):
+Then, add the Swarmops and Mono repositories to your list of software sources, where [your_distro] is `debian` or `ubuntu`, and [your_distro_version] below is `xenial` or `bionic` (Ubuntu) or `stretch` (Debian):
 
 ```
 echo "deb https://packages.swarmops.com/ [your_distro_version] contrib" > /etc/apt/sources.list.d/swarmops.list
@@ -100,7 +100,7 @@ That also means that any code _you_ commit to Swarmops, whether by checking in c
 Beta-6 features progress
 ------------------------
 
-Beta-6 will be released on January or February 5, 2019, with string freeze three days earlier. Its focus is to increase multicurrency functionality for payouts and bank imports.
+Beta-6 will be released on February 5, 2019, with string freeze three days earlier. Its focus is to increase multicurrency functionality for payouts and bank imports.
 
 - [x] Parameterize the bank file import procedure (big feature!)
 - [x] Make it possible to import bank files in non-presentation currency
@@ -112,7 +112,7 @@ Beta-6 will be released on January or February 5, 2019, with string freeze three
 Beta-7 features progress
 ------------------------
 
-Beta-7 will be released on March 5, 2019, with string freeze on March 2. Its tentative focus will be Fairshift integration and possibly an open API exposure.
+Beta-7 will be released on April 5, 2019, with string freeze on April 2. Its tentative focus will be Fairshift integration and possibly an open API exposure.
 
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts

@@ -3,7 +3,7 @@ NOV2018
 
 OVERALL: 
 [ ] Fix basic flows
-[ ] Focus on new SKU Backoffice.Cash
+[ ] Focus on new SKU op.Cash
 [ ] Make work on Bionic and Stretch
 
 
@@ -14,7 +14,7 @@ PRIO 1
 [ ] End-of-month routine
 [ ] - incl EOY
 [ ] - with todo field
-[ ] Fix generic block explorer interfaces'
+[ ] Fix generic block explorer interfaces
 [ ] Fix & redo bank file upload completely
 [ ] - with interface to Github repo of XML definitions
 [ ] Fix Bionic build
@@ -25,25 +25,29 @@ PRIO 1
 PRIO 2
 ------
 
-[ ] Recurring expenses
 [ ] Todo box JSON
-[ ] Expense reject malfunction
-[ ] Backoffice.Cash SKU
+[ ] Expense reject malfunction (what's this? -RF)
+[ ] op.Cash SKU
 [ ] Submit invoice
 [ ] Control messages for invoice progress
 [ ] Pay invoice
+[ ] Payment points for invoices, expense reports
 [ ] Upload bank statements
 [ ] External people notifications
+[ ] Currency inventory tracking
+[ ] Cost centers and 2-D reports
+[ ] Monthly reports (not just quarterly)
 
 
 PRIO 3
 ------
 
+[ ] Recurring expenses
 [ ] HTML/Markdown mail
 [ ] Org texts self-signup
 [ ] Load hotwallet from cold
 [ ] Database discrepancy
 [ ] Icons for Validation
-[ ] Backoffice.Cash OOBE
+[ ] op.Cash OOBE
 [ ] Assign role geolock
 
