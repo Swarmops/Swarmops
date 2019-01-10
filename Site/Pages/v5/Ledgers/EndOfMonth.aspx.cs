@@ -101,7 +101,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                     // TODO: Check if the last data upload was into the current month
 
                     EomItem dataUploadItem = new EomItem();
-                    dataUploadItem.Id = "BankDataUpload-" + assetAccount.Identity.ToString(CultureInfo.InvariantCulture);
+                    dataUploadItem.Id = "BankTransactionData-" + assetAccount.Identity.ToString(CultureInfo.InvariantCulture);
                     dataUploadItem.Icon = "upload";
                     dataUploadItem.Completed = false; // todo
                     dataUploadItem.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_UploadTransactionDataFor,
@@ -341,7 +341,28 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
             return new AjaxCallResult {Success = true};
         }
-        
+
+        [WebMethod]
+        public static AjaxCallResult UploadTransactionData(string guid, string itemId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            if (!authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            string[] parts = itemId.Split('-');
+            FinancialAccount account = FinancialAccount.FromIdentity(Int32.Parse(parts[1]));
+
+            if (account.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            Documents documents = Documents.RecentFromDescription(guid);
+
+
+        }
 
 
 

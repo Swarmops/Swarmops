@@ -194,7 +194,7 @@
 
 	<div class="center980px">
 
-        <div class="login-page-logo"><asp:Image ID="ImageLogo" runat="server" ImageUrl="/Images/Swarmops-logo-256px.png" Width="128"/></div>        
+        <div class="login-page-logo"><asp:Image ID="ImageLogo" runat="server" ImageUrl="/Images/swarmops-logo-256px.png" Width="128"/></div>        
             <div class="box qrlogin">
                 <div class="content">
                     <div align="center" id="divLoginQr"><asp:Image ID="ImageBitIdQr" runat="server"/></div>
