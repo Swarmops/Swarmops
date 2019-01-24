@@ -32,9 +32,7 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         private void PopulateRepeater()
         {
-            string[] availableCultures = {"ar-AE", "de-DE", "yo-Latn" /* Yoruba writes as Èbè */, "el" /* Greek writes as Ellenika */ , "es-ES", "fr-FR", "fil-Latn", "it-IT", "nl-NL", "pl-PL", "pt-PT", "ru-RU", "sr-Cyrl-RS", "sr-Latn-RS", "sv-SE", "tr-TR", "zh-CHS" };
-
-            // the above locales are sorted by the language NATIVE name, to make the list maximally useful
+            string[] availableCultures = Formatting.SupportedCultures;
 
             List<LanguageParameters> availableLanguages = new List<LanguageParameters>();
             foreach (string cultureId in availableCultures)
