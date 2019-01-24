@@ -38,7 +38,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             }
 
             string yesImage = "<img src='/Images/Icons/iconshock-green-tick-128x96px.png' height='20' width='26' />";
-            string halfImage = "<img src='/Images/Icons/iconshock-gold-tick-128x96px.png' height='16' width='21' />";
+            string halfImage = "<img src='/Images/Icons/iconshock-gold-tick-128x96px.png' height='18' width='24' />";
             string noImage = "<img src='/Images/Icons/iconshock-red-cross-128x96px.png' height='12' width='16' />";
 
             result.Append("{\"rows\":[");
