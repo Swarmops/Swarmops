@@ -99,17 +99,6 @@ namespace Swarmops.Logic.Support
 
         }
 
-        public static string[] SupportedCultures
-        {
-            get
-            {
-                return new string[] { "ar-AE", "de-DE", "yo-Latn" /* Yoruba writes as Èbè */, "el" /* Greek writes as Ellenika */ , "es-ES", "fr-FR", "fil-Latn", "it-IT", "nl-NL", "pl-PL", "pt-PT", "ru-RU", "sr-Cyrl-RS", "sr-Latn-RS", "sv-SE", "tr-TR", "zh-CHS" };
-
-                // the above locales are sorted by the language NATIVE name, to make the list maximally useful
-            }
-        }
-
-
         // ReSharper disable once InconsistentNaming  -- IPAddress is the canonical writing
         public static string GetRemoteIPAddressChain()
         {
