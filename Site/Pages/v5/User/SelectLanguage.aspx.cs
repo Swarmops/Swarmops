@@ -52,7 +52,7 @@ namespace Swarmops.Frontend.Pages.v5.User
                                               newLanguage.DisplayName.Substring(1); // Capitalize
 
                     // Do not display country, just the language name
-                    newLanguage.DisplayName = newLanguage.DisplayName.Split(' ')[0];
+                    newLanguage.DisplayName = newLanguage.DisplayName.Substring(0, newLanguage.DisplayName.IndexOf(" (")).Trim();
                 }
 
                 newLanguage.IconUrl = SupportFunctions.FlagFileFromCultureId(cultureId);
