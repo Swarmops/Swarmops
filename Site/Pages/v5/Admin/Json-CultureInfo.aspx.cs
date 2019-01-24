@@ -34,8 +34,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 cultureLookup[culture] = true;
             }
 
-            string yesImage = "<img src='/Images/Icons/iconshock-green-tick-128x96.png' height='24' width='32' />";
-            string noImage = "<img src='/Images/Icons/iconshock-red-cross-128x96.png' height='24' width='32' />";
+            string yesImage = "<img src='/Images/Icons/iconshock-green-tick-128x96px.png' height='24' width='32' />";
+            string noImage = "<img src='/Images/Icons/iconshock-red-cross-128x96px.png' height='24' width='32' />";
 
             result.Append("{\"rows\":[");
 
@@ -57,7 +57,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     }
                     else
                     {
-                        flagFile = "<img src='" + flagFile + "' height='24' width='32' />";
+                        flagFile = "<img src='" + flagFile + "' height='24' width='24' />";
                     }
 
                     result.Append("{");
