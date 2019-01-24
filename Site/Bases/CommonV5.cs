@@ -63,6 +63,8 @@ namespace Swarmops.Frontend
             }
             catch (Exception) // if we can't set the culture, what do we do? ("We send the Marines.")
             {
+                throw; // for debugging purposes 2019-Jan-24
+
                 Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
                 // throw new Exception("Could not set culture \"" + preferredCulture + "\"", exception);
                 // Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
