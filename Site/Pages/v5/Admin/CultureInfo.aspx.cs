@@ -4,13 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Admin
 {
-    public partial class CultureInfo : System.Web.UI.Page
+    public partial class CultureInfo : PageV5Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.PageAccessRequired = new Access(AccessAspect.Null);
+
+            this.InfoBoxLiteral = "This shows the system cultures (languages), as well as which ones are installed and supported.";
+            this.Title = @"Supported Languages and Cultures";
 
         }
     }
