@@ -5,5 +5,12 @@ if [ $(cat /etc/hostname) != 'swarmops-build' ]; then
   exit 1
 fi
 
+# Standard resources files
 find -iname '*.??-??.resx' -exec cp {} . \;
+
+# Filipino fil-PH
+find -iname '*.fil-PH.resx' -exec cp {} . \;
+
+# Serbian sr-Cyrl-RS, sr-Latn-RS
+find -iname '*.sr-????-??.resx' -exec cp {} . \;
 
