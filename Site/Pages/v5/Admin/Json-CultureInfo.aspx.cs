@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Globalization;
 using System.Text;
 using System.IO;
@@ -26,16 +27,19 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         private static string AllCulturesAsJson()
         {
             StringBuilder result = new StringBuilder(16384);
-            Dictionary<string, bool> cultureLookup = new Dictionary<string, bool>();
+            Dictionary<string, bool> cultureFullLookup = new Dictionary<string, bool>();
+            Dictionary<string, bool> culturePartialLookup = new Dictionary<string, bool>();
 
             string[] supportedCultures = Swarmops.Logic.Support.Formatting.SupportedCultures;
             foreach (string culture in supportedCultures)
             {
-                cultureLookup[culture] = true;
+                cultureFullLookup[culture] = true;
+                culturePartialLookup[culture.Substring(0, culture.IndexOf('-'))] = true;
             }
 
-            string yesImage = "<img src='/Images/Icons/iconshock-green-tick-128x96px.png' height='24' width='32' />";
-            string noImage = "<img src='/Images/Icons/iconshock-red-cross-128x96px.png' height='24' width='32' />";
+            string yesImage = "<img src='/Images/Icons/iconshock-green-tick-128x96px.png' height='20' width='26' />";
+            string halfImage = "<img src='/Images/Icons/iconshock-gold-tick-128x96px.png' height='16' width='21' />";
+            string noImage = "<img src='/Images/Icons/iconshock-red-cross-128x96px.png' height='12' width='16' />";
 
             result.Append("{\"rows\":[");
 
@@ -69,7 +73,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         region.DisplayName,
                         region.EnglishName,
                         flagFile.Length > 2? flagFile : noImage,
-                        cultureLookup.ContainsKey(culture.Name)? yesImage: noImage
+                        cultureFullLookup.ContainsKey(culture.Name)? yesImage: culturePartialLookup.ContainsKey(culture.Name.Substring(0, culture.Name.IndexOf('-')))? halfImage: noImage
                     );
 
                     result.Append("},");
