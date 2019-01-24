@@ -88,6 +88,10 @@ namespace Swarmops.Logic.Support
             {
                 return "/Images/Flags/" + nonStandardFlagNames[cultureFirstPart] + "-64px.png";
             }
+            else if (cultureId.Contains("Latn") || cultureId.Contains("Cyrl"))  // Serbian and others
+            {
+                return "/Images/Flags/" + cultureId.Substring(cultureId.Length - 3, 2) + "-64px.png";
+            }
             else
             {
                 return "/Images/Flags/" + cultureId.Substring(3, 2) + "-64px.png";
