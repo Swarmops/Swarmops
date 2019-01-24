@@ -37,7 +37,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                     result.Append("{");
                     result.AppendFormat(
-                        "\"culture\":\"{0}\",\"name\":\"{1}\",\"nameInternational\":\"{2}\",\"language\":\"{3}\",\"country\":\"{4}\",\"flag\":\"{5}\",\"supported\":\"{6}\"",
+                        "\"cultureId\":\"{0}\",\"name\":\"{1}\",\"nameInternational\":\"{2}\",\"language\":\"{3}\",\"country\":\"{4}\",\"flag\":\"{5}\",\"supported\":\"{6}\"",
                         culture.Name,
                         culture.NativeName,
                         culture.EnglishName,
