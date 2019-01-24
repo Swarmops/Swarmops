@@ -47,6 +47,13 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             foreach (CultureInfo culture in cultures)
             {
+                // Don't display af-ZA because we're using af-ZA as a pseudoloc culture
+
+                if (culture.Name == "af-ZA")
+                {
+                    continue;
+                }
+
                 RegionInfo region = null;
 
                 try
