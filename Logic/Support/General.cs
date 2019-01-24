@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Support
             }
             else if (cultureId.Contains("-latn-") || cultureId.Contains("-cyrl-"))  // Serbian and others
             {
-                return "/Images/Flags/" + cultureId.Substring(cultureId.Length - 3, 2) + "-64px.png";
+                return "/Images/Flags/" + cultureId.Substring(cultureId.Length - 2, 2) + "-64px.png";
             }
             else
             {
