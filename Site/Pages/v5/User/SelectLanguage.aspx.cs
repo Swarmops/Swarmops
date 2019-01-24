@@ -42,12 +42,20 @@ namespace Swarmops.Frontend.Pages.v5.User
                 LanguageParameters newLanguage = new LanguageParameters();
                 newLanguage.CultureId = cultureId;
                 CultureInfo culture = CultureInfo.CreateSpecificCulture (cultureId);
-                newLanguage.DisplayName = culture.NativeName;
-                newLanguage.DisplayName = Char.ToUpperInvariant (newLanguage.DisplayName[0]) +
-                                          newLanguage.DisplayName.Substring (1); // Capitalize
 
-                // Do not display country, just the language name
-                newLanguage.DisplayName = newLanguage.DisplayName.Split (' ')[0];
+                if (cultureId == "sr-Latn-RS") // special case: Mono wants to write this in Cyrillic
+                {
+                    newLanguage.DisplayName = "Srpska";
+                }
+                else
+                {
+                    newLanguage.DisplayName = culture.NativeName;
+                    newLanguage.DisplayName = Char.ToUpperInvariant(newLanguage.DisplayName[0]) +
+                                              newLanguage.DisplayName.Substring(1); // Capitalize
+
+                    // Do not display country, just the language name
+                    newLanguage.DisplayName = newLanguage.DisplayName.Split(' ')[0];
+                }
 
                 newLanguage.IconUrl = SupportFunctions.FlagFileFromCultureId(cultureId);
 
