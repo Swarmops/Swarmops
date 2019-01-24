@@ -374,7 +374,7 @@ namespace Swarmops.Logic.Support
         {
             get
             {
-                return new string[] { "ar-AE", "de-DE", "yo-Latn" /* Yoruba writes as Èbè */, "el-GR" /* Greek writes as Ellenika */ , "es-ES", "fr-FR", "fil-Latn", "it-IT", "nl-NL", "pl-PL", "pt-PT", "ru-RU", "sr-Cyrl-RS", "sr-Latn-RS", "sv-SE", "tr-TR", "zh-CN" };
+                return new string[] { "ar-AE", "de-DE", "yo-NG" /* Yoruba writes as Èbè */, "el-GR" /* Greek writes as Ellenika */ , "es-ES", "fr-FR", "fil-PH", "it-IT", "nl-NL", "pl-PL", "pt-PT", "ru-RU", "sr-Cyrl-RS", "sr-Latn-RS", "sv-SE", "tr-TR", "zh-CN" };
 
                 // the above locales are sorted by the language NATIVE name, to make the list maximally useful
             }
