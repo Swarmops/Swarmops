@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json;
+using Swarmops.Logic.Support;
+using WebSocketSharp.Server;
 
 namespace Swarmops.Frontend.Pages.v5.Admin
 {
@@ -22,6 +26,16 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         private static string AllCulturesAsJson()
         {
             StringBuilder result = new StringBuilder(16384);
+            Dictionary<string, bool> cultureLookup = new Dictionary<string, bool>();
+
+            string[] supportedCultures = Swarmops.Logic.Support.Formatting.SupportedCultures;
+            foreach (string culture in supportedCultures)
+            {
+                cultureLookup[culture] = true;
+            }
+
+            string yesImage = "<img src='/Images/Icons/iconshock-green-tick-128x96px.png' height='24' width='32' />";
+            string noImage = "<img src='/Images/Icons/iconshock-red-cross-128x96px.png' height='24' width='32' />";
 
             result.Append("{\"rows\":[");
 
@@ -35,16 +49,27 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 {
                     region = new RegionInfo(culture.Name);
 
+                    string flagFile = SupportFunctions.FlagFileFromCultureId(culture.Name);
+
+                    if (!File.Exists(HttpContext.Current.Server.MapPath("~" + flagFile)))
+                    {
+                        flagFile = string.Empty;
+                    }
+                    else
+                    {
+                        flagFile = "<img src='" + flagFile + "' height='24' width='24' />";
+                    }
+
                     result.Append("{");
                     result.AppendFormat(
                         "\"cultureId\":\"{0}\",\"name\":\"{1}\",\"nameInternational\":\"{2}\",\"language\":\"{3}\",\"country\":\"{4}\",\"flag\":\"{5}\",\"supported\":\"{6}\"",
                         culture.Name,
                         culture.NativeName,
                         culture.EnglishName,
-                        "Language",
+                        region.DisplayName,
                         region.EnglishName,
-                        "Fl",
-                        "Sp"
+                        flagFile.Length > 2? flagFile : noImage,
+                        cultureLookup.ContainsKey(culture.Name)? yesImage: noImage
                     );
 
                     result.Append("},");
