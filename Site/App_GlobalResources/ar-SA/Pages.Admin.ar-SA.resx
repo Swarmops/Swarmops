@@ -130,7 +130,7 @@
     <comment>Used if Bitcoin Cash is the org native currency.</comment>
   </data>
   <data name="BitcoinEchoTest_Info" xml:space="preserve">
-    <value>هذا اختبار صدى للبتكوين. يقوم هذا باختبار المحفظة الساخنة, إذا قمت بإرسال كمية صغيرة هنا, فسوف يعاد إرسالها إليك, ناقص رسوم المعاملة (تعادل {0:N2} microcoins حاليا).</value>
+    <value>هذا اختبار صدى للبتكوين. يقوم هذا باختبار المحفظة الساخنة، إذا قمت بإرسال كمية صغيرة هنا، فسوف يعاد إرسالها إليك، ناقص رسوم المعاملة (تعادل {0:N2} microcoins حاليا).</value>
   </data>
   <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
     <value>اختبار صدى المحفظة الساخنة للبتكوين كاش</value>
@@ -338,7 +338,7 @@
     <value>يتوجب عليك تحديد شخص لتمثيله.</value>
   </data>
   <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>إن كانت لديك الرغبة في تجسيد نفسك، فنحن ننصحك بأن تقوم بتسجيل الخروج من Swarmops و أن تقوم بالبحث عن مساعدة من نوع أخر.</value>
+    <value>إن كانت لديك الرغبة في تجسيد نفسك، فنحن ننصحك بأن تقوم بتسجيل الخروج من Swarmops وأن تقوم بالبحث عن مساعدة من نوع أخر.</value>
   </data>
   <data name="CommenceImpersonation_Failed" xml:space="preserve">
     <value>&lt;strong&gt;لقد تم رفض التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; لا يبدو أنك تتمتع بالإمتيازات الكافية من أجل تجسيد شخص أخر.</value>

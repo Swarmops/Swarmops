@@ -330,7 +330,7 @@
     <value>الرجاء إدخال الحساب البنكي للمورد أو ما يكافؤه.</value>
   </data>
   <data name="Donate_Explain" xml:space="preserve">
-    <value>هذا كود رمز الإستجابة السريع لإنجاز التبرعات لـ {0}. قم بمسحه عن طريق محفظة البتكوين على هاتفك من أجل التبرع, أو تبرع مباشرة من على حاسوبك إلى [{1}] (هذا عنوان للبتكوين كاش Bitcoin Cash).</value>
+    <value>هذا كود رمز الإستجابة السريع لإنجاز التبرعات لـ {0}. قم بمسحه عن طريق محفظة البتكوين على هاتفك من أجل التبرع، أو تبرع مباشرة من على حاسوبك إلى [{1}] (هذا عنوان للبتكوين كاش Bitcoin Cash).</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
   </data>
   <data name="Donate_FundsReceived" xml:space="preserve">

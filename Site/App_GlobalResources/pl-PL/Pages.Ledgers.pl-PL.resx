@@ -401,9 +401,7 @@
   <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
     <value>Aktywny</value>
   </data>
-  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Czy te transakcje są wyłączone z raportów 2-D?</value>
-  </data>
+  
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Administrator</value>
   </data>
@@ -955,6 +953,9 @@
   <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
     <value>Ta transakcja opłaca Fakturę Przychodzącą #{0:N0} z {1}.</value>
   </data>
+  
+  
+  
   
   
   

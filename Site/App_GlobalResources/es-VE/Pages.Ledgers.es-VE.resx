@@ -402,9 +402,7 @@
   <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
     <value>Activo</value>
   </data>
-  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>¿Las transacciones aquí están excluidas de los informes 2-D?</value>
-  </data>
+  
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Administrar</value>
   </data>
@@ -961,6 +959,15 @@
   
   
   
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Crear {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Informes anuales</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
   
   
   

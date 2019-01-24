@@ -403,9 +403,7 @@
   <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
     <value>Ενεργός</value>
   </data>
-  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Να εξαιρεθούν οι συναλλαγές που βρίσκονται εδώ από τις αναφορές 2-D;</value>
-  </data>
+  
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Διαχειριστής</value>
   </data>
@@ -419,7 +417,9 @@
   <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
     <value>Δαπανηρό</value>
   </data>
-  
+  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
+    <value>Προφίλ Αυτοματοποίησης</value>
+  </data>
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>Πραγματοποιείται Επεξεργασία Λογαριασμού</value>
   </data>
@@ -878,7 +878,9 @@
   <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
     <value>Τζίρος</value>
   </data>
-  
+  <data name="ViewVatReports_Info" xml:space="preserve">
+    <value>Βλέπετε μια δήλωση ΦΠΑ που έχει υποβληθεί. Ο ΦΠΑ εισερχομένων και εξερχομένων συναλλαγών, όπως και ο συνολικός τζίρος, έχουν καταγραφεί για την περίοδο δήλωσης. Αυτή η δήλωση είναι έτοιμη να διαβιβαστεί στις φορολογικές αρχές.</value>
+  </data>
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>Δηλώσεις ΦΠΑ</value>
     <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
@@ -957,19 +959,65 @@
   <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
     <value>Αυτή η συναλλαγή πληρώνει το Εισερχόμενο Τιμολόγιο #{0:N0} από {1}.</value>
   </data>
+  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
+    <value>Προφίλ Αυτοματοποίησης</value>
+    <comment>This is where the bank name, country, and currency appears.</comment>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>Δεν υπάρχουν λογαριασμοί περιουσιακών στοιχείων που να έχουν οριστεί για αυτοματοποίηση, οπότε κανένας λογαριασμός δεν υποστηρίζει την φόρτωση δεδομένων επί του παρόντος. Πραγματοποιείται επιστροφή στο ταμπλό.</value>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
+    <value>Εφόσον αυτή ήταν η πρώτη μεταφόρτωση σε αυτόν τον αυτοματοποιημένο λογαριασμό, το αρχικό υπόλοιπο του &lt;strong&gt;{0} &lt;/strong&gt;{1:N2} οδεύοντας προς το έτος {2} έχει εντοπιστεί και οριστεί</value>
+    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
+    <value>(που αντιστοιχήθηκε με &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; στο νόμισμα λειτουργίας του καθολικού)</value>
+    <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
+  </data>
+  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
+    <value>Κλείσιμο Οικονομικών Μητρώων για το Έτος {0}</value>
+    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
+  </data>
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Δημιουργία {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
+    <value>Αυτόματη Ανάγνωση Δεδομένων Συναλλαγών για τον λογαριασμό {0}</value>
+    <comment>Parameter zero is the account name as given by the user</comment>
+  </data>
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Ετήσιες Δηλώσεις</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>Εξωτερικά Δεδομένα Λογαριασμού και Αντιστοίχιση Λογαριασμών</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Μισθοδοσία Και Φόροι</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+    <value>Αποστολή Δηλώσεων σε Λογιστές, Μετόχους κτλ.</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
+  <data name="EndOfMonth_Info" xml:space="preserve">
+    <value>Αυτή είναι μια λίστα με ενέργειες που πρέπει να γίνουν ώστε να κλείσει ο προηγούμενος μήνας και να ξεκινήσει ο καινούριος σε σχέση με την τήρηση λογιστικών βιβλίων.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>Τακτική Ρουτίνα Τέλους του Μήνα: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>Ανεβάστε Κατάσταση Τραπεζικού Λογαριασμού ({1}) για τον λογαριασμό {0} για τον μήνα {2}</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>Ανεβάστε Δεδομένα Συναλλαγών (μορφής {1}) για τον λογαριασμό {0}</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
   
   
   

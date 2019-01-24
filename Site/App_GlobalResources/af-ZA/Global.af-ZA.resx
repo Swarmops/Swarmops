@@ -985,4 +985,23 @@
     <value>crwdns6563330:0{0}crwdnd6563330:0{1}crwdne6563330:0</value>
     <comment>For example, "January to March". The initial "from" is implied.</comment>
   </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>crwdns6563366:0crwdne6563366:0</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>crwdns6563368:0crwdne6563368:0</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>crwdns6563370:0crwdne6563370:0</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Financial_Ebitda_Long" xml:space="preserve">
+    <value>crwdns6563372:0crwdne6563372:0</value>
+  </data>
+  <data name="Financial_Ebitda_Short" xml:space="preserve">
+    <value>crwdns6563374:0crwdne6563374:0</value>
+    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
+  </data>
 </root>

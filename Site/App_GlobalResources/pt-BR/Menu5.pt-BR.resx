@@ -303,12 +303,8 @@
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Declaração de Lucros &amp; Perdas</value>
   </data>
-  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
-    <value>Ressincronizar Conta Bancária</value>
-  </data>
-  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
-    <value>Definir Limites de Orçamento</value>
-  </data>
+  
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Enviar Ficheiros Bancários</value>
   </data>
@@ -442,4 +438,14 @@
   <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
     <value>Teste de Eco da Bitcoin Hotwallet</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

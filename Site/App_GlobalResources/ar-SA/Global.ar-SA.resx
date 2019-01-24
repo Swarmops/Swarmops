@@ -851,7 +851,7 @@
     <value>يتعذر تعيين كلمة مرور جديدة: كلمة المرور الجديدة ضعيفة للغاية. قم باستعمال كلمة مرور اقوى.</value>
   </data>
   <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
-    <value>&lt;strong&gt;تم تغيير كلمة السر&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;لقد قمت بتغيير كلمة السر بنجاح. و كإجراء أمني بسيط، سنقوم بتعطيل أي سحب في الساعات الـ 48 القادمة.</value>
+    <value>&lt;strong&gt;تم تغيير كلمة السر&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;لقد قمت بتغيير كلمة السر بنجاح. وكإجراء أمني بسيط، سنقوم بتعطيل أي سحب في الساعات الـ 48 القادمة.</value>
   </data>
   <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
     <value>إذا سمحت، قم بتفعيل المصادقة ذات عاملين لـ BitID.</value>
@@ -978,5 +978,10 @@
   <data name="Global_EnteringSandbox" xml:space="preserve">
     <value>لقد قمت بالتو بالدخول لـ&lt;strong&gt;منظمة الـ sandbox.&lt;br/&gt;&lt;br/&gt; هذا محيط أمن من خلاله يمكنك تجربة جميع خواص الـ Swarmops من دون إلحاق أي ضرر لبيانات الإنتاج. قم بالإستمتاع كما شئت، وقم بالرجوع إلى محيط الإنتاج الخاص بك عندما تنتهي من التجارب.</value>
   </data>
+  
+  
+  
+  
+  
   
 </root>

@@ -147,7 +147,9 @@ Debe iniciar sesión y cambiar esta contraseña a algo más seguro, escogido por
 ¡Bienvenido a bordo!</value>
   </data>
   
-  
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] ¡Te damos la bienvenida a [OrganizationName]!</value>
+  </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] ¡Bienvenido a [OrganizationName]!</value>
   </data>

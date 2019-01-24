@@ -202,7 +202,7 @@
     <value>تسجيل الدخول الخاص بك (البريد الخاص بك)</value>
   </data>
   <data name="Signup_NoFeeText" xml:space="preserve">
-    <value>لن تكون هناك أي تكلفة في الاشتراك ل{0} مع {2} كيفما كانت الاحوال, ولا أي تكلفة للتجديد عند انتهاء صلاحية الاشتراك في {1}. و اكثر من ذلك, يمكن أن تكمل ال {0} الخاص بك في أي وقت.</value>
+    <value>لن تكون هناك أي تكلفة في الاشتراك ل{0} مع {2} كيفما كانت الاحوال, ولا أي تكلفة للتجديد عند انتهاء صلاحية الاشتراك في {1}. و اكثر من ذلك، يمكن أن تكمل الـ {0} الخاص بك في أي وقت.</value>
     <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
   </data>
   <data name="Signup_Password1" xml:space="preserve">

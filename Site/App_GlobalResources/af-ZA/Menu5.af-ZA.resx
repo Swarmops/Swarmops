@@ -304,10 +304,11 @@
     <value>crwdns6498777:0crwdne6498777:0</value>
   </data>
   <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
-    <value>crwdns6553754:0crwdne6553754:0</value>
+    <value>crwdns6563342:0crwdne6563342:0</value>
   </data>
   <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
-    <value>crwdns1639851:0crwdne1639851:0</value>
+    <value>crwdns6563344:0crwdne6563344:0</value>
+    <comment>"Budget" as in "Cost allowed for a particular purpose" or "Revenue expected from a source".</comment>
   </data>
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>crwdns1639852:0crwdne1639852:0</value>
@@ -445,5 +446,42 @@
   </data>
   <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
     <value>crwdns6556689:0crwdne6556689:0</value>
+  </data>
+  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
+    <value>crwdns6563346:0crwdne6563346:0</value>
+    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
+    <value>crwdns6563348:0crwdne6563348:0</value>
+    <comment>This is sometimes called an "account plan" but this term has many overloaded meanings in the context of operations software.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
+    <value>crwdns6563350:0crwdne6563350:0</value>
+  </data>
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>crwdns6563352:0crwdne6563352:0</value>
+    <comment>This lists salary payments for the logged on individual</comment>
+  </data>
+  <data name="Menu5_Ledgers_DeprecatingAmortizedAssets" xml:space="preserve">
+    <value>crwdns6563354:0crwdne6563354:0</value>
+  </data>
+  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
+    <value>crwdns6563356:0crwdne6563356:0</value>
+  </data>
+  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
+    <value>crwdns6563358:0crwdne6563358:0</value>
+    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
+  </data>
+  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
+    <value>crwdns6563360:0crwdne6563360:0</value>
+    <comment>Tracking of special transactions</comment>
+  </data>
+  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
+    <value>crwdns6563362:0crwdne6563362:0</value>
+    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
+  </data>
+  <data name="Menu5_Reports" xml:space="preserve">
+    <value>crwdns6563364:0crwdne6563364:0</value>
+    <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
   </data>
 </root>

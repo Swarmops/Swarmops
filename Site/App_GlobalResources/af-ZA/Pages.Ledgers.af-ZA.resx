@@ -401,7 +401,8 @@
     <value>crwdns6555156:0crwdne6555156:0</value>
   </data>
   <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>crwdns6555157:0crwdne6555157:0</value>
+    <value>crwdns6563332:0crwdne6563332:0</value>
+    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
   </data>
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>crwdns6555158:0crwdne6555158:0</value>
@@ -1009,7 +1010,7 @@
     <value>crwdns6563318:0crwdne6563318:0</value>
   </data>
   <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
-    <value>crwdns6563320:0crwdne6563320:0</value>
+    <value>crwdns6563334:0crwdne6563334:0</value>
     <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
   </data>
   <data name="EndOfMonth_Title" xml:space="preserve">
@@ -1023,5 +1024,15 @@
   <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
     <value>crwdns6563326:0{1}crwdnd6563326:0{0}crwdne6563326:0</value>
     <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
+  <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
+    <value>crwdns6563336:0crwdne6563336:0</value>
+  </data>
+  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
+    <value>crwdns6563338:0crwdne6563338:0</value>
+  </data>
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>crwdns6563340:0crwdne6563340:0</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
   </data>
 </root>

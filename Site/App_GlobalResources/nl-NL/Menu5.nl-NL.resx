@@ -264,9 +264,7 @@
     <value>Winst- &amp; verliesrekening</value>
   </data>
   
-  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
-    <value>Budgetbedragen Instellen</value>
-  </data>
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Upload Bankbestanden</value>
   </data>
@@ -339,6 +337,16 @@
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Nieuwe Conferentie</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

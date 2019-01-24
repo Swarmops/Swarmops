@@ -819,7 +819,17 @@
   <data name="Master_BitIdRegister_Header" xml:space="preserve">
     <value>Σαρώστε αυτόν τον κωδικό για να ενεργοποιήσετε την εφαρμογή BitID</value>
   </data>
-  
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>&lt;h3&gt;Τι είναι αυτό;&lt;/h3&gt;
+                &lt;p&gt;Το BitID είναι ένας τρόπος για να συνδεθείτε με ασφάλεια και ευκολότερα από ότι με την εισαγωγή κωδικού πρόσβασης. Η απλότητα του συστήματος δεν δύναται να επεξηγηθεί, αλλά μόνο να διαπιστωθεί εμπειρικά, και είναι σύστημα ταυτοποίησης δύο σημείων εφόσον χρησιμοποιεί το τηλέφωνό σας.&lt;/p&gt;
+                &lt;h3&gt;Δεν απαιτείται να είναι και το τηλέφωνό μου προστατευμένο;&lt;/h3&gt;
+                &lt;p&gt;Ναι. Πρόκειται για το τηλέφωνό σας και την προστασία πρόσβασης του τηλεφώνου σας. Αλλά το τηλέφωνό σας θα πρέπει να έχει πάντα προστασία πρόσβασης.&lt;/p&gt;
+                &lt;h3&gt;Χρειάζομαι κάποια εφαρμογή κινητού τηλεφώνου για αυτό;&lt;/h3&gt;
+                &lt;p&gt;Ναι, κατά κάποιο τρόπο. Μερικά πορτοφόλια bitcoin κινητών συσκευών έχουν ενσωματωμένο το BitID. Δύο τέτοια παραδείγματα πορτοφολιών κινητών συσκευών που υποστηρίζουν το BitID είναι το {0} και το {1}. Μπορείτε επίσης να ψάξετε για κάποια αυτόνομη εφαρμογή ταυτοποίησης BitID.&lt;/p&gt;
+                &lt;h3&gt;Πώς ενεργοποιώ το BitID;&lt;/h3&gt;
+                &lt;p&gt;Απλά χρησιμοποιήστε την εφαρμογή του τηλεφώνου σας για να σαρώσετε αυτόν τον κωδικό. Έπειτα μπορείτε να σαρώσετε έναν παρόμοιο κωδικό για να συνδεθείτε σε αυτό το σύστημα.&lt;/p&gt;</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
+  </data>
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>Ταυτοποίηση δύο σημείων με BitID (υπογραφή bitcoin)</value>
   </data>
@@ -972,5 +982,13 @@
   <data name="Global_EnteringSandbox" xml:space="preserve">
     <value>Πραγματοποιείτε είσοδο στο &lt;strong&gt;Sandbox&lt;/strong&gt; του οργανισμού. &lt;br/&gt;&lt;br/&gt;Αυτό είναι ένα ασφαλές περιβάλλον στο οποίο μπορείτε να δοκιμάσετε τις λειτουργίες του Swarmops χωρίς τον κίνδυνο να πειραχθούν τα οποιαδήποτε δεδομένα. Διασκεδάστε όσο θέλετε και έπειτα επιστρέψτε στο περιβάλλον παραγωγής όταν έχετε ολοκληρώσει τις δοκιμές σας.</value>
   </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>Από {0} έως {1}</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
+  
+  
+  
+  
   
 </root>

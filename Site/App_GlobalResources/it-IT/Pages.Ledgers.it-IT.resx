@@ -401,9 +401,7 @@
   <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
     <value>Attivo</value>
   </data>
-  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Le transazioni qui presenti sono escluse dai rapporti 2-D?</value>
-  </data>
+  
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Admin</value>
   </data>
@@ -417,7 +415,9 @@
   <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
     <value>Spese</value>
   </data>
-  
+  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
+    <value>Profilo di automazione</value>
+  </data>
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>Modificare account</value>
   </data>
@@ -876,7 +876,9 @@
   <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
     <value>Fatturato</value>
   </data>
-  
+  <data name="ViewVatReports_Info" xml:space="preserve">
+    <value>Stai visualizzando un rapporto IVA archiviato. L'IVA in entrata e in uscita, così come il fatturato totale, sono stati registrati per il periodo del rapporto. Questo rapporto è pronto per essere trasmesso alle autorità fiscali.</value>
+  </data>
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>Report Iva</value>
     <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
@@ -955,19 +957,65 @@
   <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
     <value>Questa transazione paga fattura in entrata #{0:N0} da {1}.</value>
   </data>
+  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
+    <value>Profilo di automazione</value>
+    <comment>This is where the bank name, country, and currency appears.</comment>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>Non ci sono account di merito impostati per l'automazione, quindi nessun account supporta il caricamento dei dati in questo momento. Ritorno al cruscotto.</value>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
+    <value>Poiché questo è stato il primo caricamento su questo account automatizzato, il saldo iniziale di &lt;strong&gt; {0} {1:N2}&lt;/strong&gt; relativo all'anno {2} è stato rilevato e impostato</value>
+    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
+    <value>(che era stato conteggiato con &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; nella valuta operativa del libro contabili)</value>
+    <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
+  </data>
+  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
+    <value>Chiudi libri contabili finanziari per l'anno {0}</value>
+    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
+  </data>
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Crea {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
+    <value>Recupero automatico dei dati di transazione per {0}</value>
+    <comment>Parameter zero is the account name as given by the user</comment>
+  </data>
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Resoconti annuali</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>Account di Dati Esterni e Account di Corrispondenza</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Libro paga e Tasse</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+    <value>Invia rapporti a contabili, azionisti, ecc.</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
+  <data name="EndOfMonth_Info" xml:space="preserve">
+    <value>Questa è una lista di cose da fare per chiudere il mese precedente e iniziare quello nuovo per quanto riguarda la contabilità.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>Routine-di-fine-mese: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>Carica estratto conto ({1}) per {0} per {2}</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>Carica i dati di transazione ({1}) per {0}</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
   
   
   

@@ -401,7 +401,8 @@
     <value>Aktivt</value>
   </data>
   <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Är transaktioner här bortfiltrerade från 2D-rapporter?</value>
+    <value>Är detta ett konto efter raden EBITDA?</value>
+    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
   </data>
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Admin</value>
@@ -1005,7 +1006,7 @@
     <value>Det här är en checklista med saker att göra för att stänga föregående månad och börja den nya med avseende på redovisning.</value>
   </data>
   <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
-    <value>Matcha all utestående reskontra</value>
+    <value>Matcha alla lösa transaktioner</value>
     <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
   </data>
   <data name="EndOfMonth_Title" xml:space="preserve">
@@ -1019,5 +1020,15 @@
   <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
     <value>Ladda upp transaktionsdata ({1}) för {0}</value>
     <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
+  <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
+    <value>&lt;strong&gt;SKIPPA KONTOUTDRAG?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bankernas kontoutdrag behövs vanligen för revision av bokföringen. Det giltiga skälet att hoppa över en månads kontoutdrag är att kontot är inte öppnat ännu, och då hoppar man över månaderna innan kontot öppnades.&lt;br/&gt;&lt;br/&gt;Om du skippar detta kontoutdrag nu kommer du inte att omfrågas igen senare.</value>
+  </data>
+  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
+    <value>&lt;strong&gt;SKIPPA DOKUMENTET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Detta dokument behövs vanligtvis för kontroll av verksamheten. Ett giltigt skäl att hoppa över ett dokument är att det inte existerar om verksamheten ifråga inte var igång ännu.&lt;br/&gt;&lt;br/&gt;Du kommer inte att få frågan om att ladda upp detta dokument igen om du hoppar över det nu.</value>
+  </data>
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>Lönekörning: Ingen lönelista upprättad</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
   </data>
 </root>

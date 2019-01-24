@@ -303,12 +303,8 @@
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>بيان الأرباح والخسائر</value>
   </data>
-  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
-    <value>تحديث تزامني للحساب البنكي</value>
-  </data>
-  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
-    <value>تحديد حسابات الميزانية</value>
-  </data>
+  
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>رفع ملفات البنك</value>
   </data>
@@ -442,4 +438,14 @@
   <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
     <value>اختبار صدى المحفظة الساخنة للبتكوين</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

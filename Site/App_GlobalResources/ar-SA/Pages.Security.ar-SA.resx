@@ -179,8 +179,8 @@
     <comment>The {0} is the organization name.</comment>
   </data>
   <data name="Login_BitIdEnabled" xml:space="preserve">
-    <value>&lt;strong&gt; عملية التأكدي ذو العاملين لـ BitId الأن مسموح بها.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; من الأن فصاعدا, يمكنك إستعمال محفظتك للبتكوين من أجل تسجيل الدخول ( و يجب &lt;strong&gt; عليك &lt;/strong&gt; فعل ذلك).
-حسنا فعلت بتعزيزك للأمن.&lt;br/&gt;&lt;br/&gt; و لا تنسى بأن تقوم بتأمين هاتفك بكلمة السر أيضا.</value>
+    <value>&lt;strong&gt; عملية التأكيد ذو العاملين لـ BitId الآن مسموح بها.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; من الآن فصاعدا، يمكنك إستعمال محفظتك للبتكوين من أجل تسجيل الدخول ( ويجب &lt;strong&gt; عليك &lt;/strong&gt; فعل ذلك).
+حسنا فعلت بتعزيزك للأمن.&lt;br/&gt;&lt;br/&gt; ولا تنسى بأن تقوم بتأمين هاتفك بكلمة السر أيضا.</value>
   </data>
   <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
     <value>&lt;strong&gt;تسجيل الدخول بالBITID ضروري&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; تسجيل الدخول يتطلب الإثبات من BitId كما هو محدد من قبل صاحب الحساب. لا يمكنك الدخول فقط باستعمال اسم المستخدم و كلمة السر.</value>

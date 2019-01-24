@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Position_Executive_CeoAssistant" xml:space="preserve">
-    <value>Asistente CEO</value>
+    <value>Asistente del director ejecutivo</value>
   </data>
   <data name="Position_Executive_CeoAssistant_Government" xml:space="preserve">
     <value>Ayuda presidencial</value>
   </data>
   <data name="Position_Executive_CeoAssistant_Government_Plural" xml:space="preserve">
-    <value>Ayudas presidencial</value>
+    <value>Ayudas presidenciales</value>
   </data>
   <data name="Position_Executive_CeoAssistant_Nonprofit" xml:space="preserve">
-    <value>Secretario General Asistente</value>
+    <value>Asistente del secretario general</value>
   </data>
   <data name="Position_Executive_CeoAssistant_Nonprofit_Plural" xml:space="preserve">
-    <value>Secretario General Asistentes</value>
+    <value>Asistentes del secretario general</value>
   </data>
   <data name="Position_Executive_CeoAssistant_Plural" xml:space="preserve">
-    <value>Asistentes CEO</value>
+    <value>Asistentes del director ejecutivo</value>
   </data>
   <data name="Position_Executive_CfoAssistant" xml:space="preserve">
     <value>Asistente CFO</value>
@@ -198,8 +198,14 @@
   <data name="Position_Executive_ChiefTechnologyOfficer" xml:space="preserve">
     <value>Director de tecnología</value>
   </data>
-  
-  
+  <data name="Position_Executive_FirstGentleman" xml:space="preserve">
+    <value>Primer caballero</value>
+    <comment>For government-type organizations only, with a female President</comment>
+  </data>
+  <data name="Position_Executive_FirstLady" xml:space="preserve">
+    <value>Primera dama</value>
+    <comment>For government-type organizations only</comment>
+  </data>
   <data name="Position_Executive_HrAssistant" xml:space="preserve">
     <value>Asistente de recursos humanos</value>
   </data>

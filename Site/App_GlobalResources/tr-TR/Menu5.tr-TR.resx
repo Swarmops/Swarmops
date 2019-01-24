@@ -301,12 +301,8 @@
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Kar &amp; Zarar Beyanı</value>
   </data>
-  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
-    <value>Banka Hesabını Yeniden Senkronize Et</value>
-  </data>
-  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
-    <value>Bütçe Miktarlarını Ayarla</value>
-  </data>
+  
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Banka Dosyaları Yükle</value>
   </data>
@@ -436,4 +432,14 @@
   <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
     <value>Bitcoin Hotwallet'ı Eko Testi</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

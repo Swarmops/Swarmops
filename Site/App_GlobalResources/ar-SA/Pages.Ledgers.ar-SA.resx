@@ -145,7 +145,7 @@
     <comment>The XXXX is replaced with year number.</comment>
   </data>
   <data name="BalanceSheet_Info" xml:space="preserve">
-    <value>يقدم بيان الـميزانيَّة لمحة عامة عن الأصول والمديونيات عند نقطة محددة من الزمن, وتستخدم لمعرفة كيفية تأثير النتائج على الحالة المالية العامة للمنظمة. قد ترغب ايضاً في التعرف على &lt;a href="ProfitLossStatement"&gt; بيان الأرباح والخسائر &lt;/a&gt; والذي يعطي نظرة عن المداخيل والنفقات.</value>
+    <value>يقدم بيان الـميزانيَّة لمحة عامة عن الأصول والمديونيات عند نقطة محددة من الزمن، وتستخدم لمعرفة كيفية تأثير النتائج على الحالة المالية العامة للمنظمة. قد ترغب أيضاً في التعرف على &lt;a href="ProfitLossStatement"&gt; بيان الأرباح والخسائر &lt;/a&gt; والذي يعطي نظرة عن المداخيل والنفقات.</value>
   </data>
   <data name="BalanceSheet_PageTitle" xml:space="preserve">
     <value>الميزانية العمومية</value>
@@ -401,9 +401,7 @@
   <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
     <value>نشط</value>
   </data>
-  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>هل العمليات على هذا الحساب مستبعدة من التقارير ثنائية الأبعاد؟</value>
-  </data>
+  
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>مدير النظام</value>
   </data>
@@ -756,7 +754,7 @@
     <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
   </data>
   <data name="BitcoinHotwallet_Info" xml:space="preserve">
-    <value>يبين هذا معلومات دقيقة حول عنواين ورصيد محفظة البيتكوين الساخنة الخاصة بالمنظمة. (لا يتم عرض العناوين الفارغة والمستخدمة سابقًا.)</value>
+    <value>يبين هذا معلومات دقيقة حول عناوين ورصيد محفظة البيتكوين الساخنة الخاصة بالمنظمة. (لا يتم عرض العناوين الفارغة والمستخدمة سابقًا.)</value>
   </data>
   <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
     <value>المحفظة الساخنة للبيتكوين</value>
@@ -780,7 +778,7 @@
     <comment>Change from previous year's close, which is same as from start of this year</comment>
   </data>
   <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
-    <value>يقدم بيان الـميزانيَّة لمحة عامة عن الأصول والمديونيات في فترةمحددة من الزمن، ويستخدم لمعرفة كيفية تأثير النتائج على الحالة المالية العامة للمنظمة. قد ترغب ايضاً في التعرف على &lt;a href="BalanceSheet"&gt;بيان الـميزانيَّة المتقدم&lt;/a&gt; لمزيد من التفاصيل، او التعرف على&lt;a href="ProfitLossStatement"&gt; بيان الارباح والخسائر&lt;/a&gt; الذي يعطي نظرة عامة عن المداخيل والمفقات.</value>
+    <value>يقدم بيان الـميزانيَّة لمحة عامة عن الأصول والمديونيات في فترة محددة من الزمن، ويستخدم لمعرفة كيفية تأثير النتائج على الحالة المالية العامة للمنظمة. قد ترغب أيضاً في التعرف على &lt;a href="BalanceSheet"&gt;بيان الـميزانيَّة المتقدم&lt;/a&gt; لمزيد من التفاصيل، أو التعرف على&lt;a href="ProfitLossStatement"&gt; بيان الأرباح والخسائر&lt;/a&gt; الذي يعطي نظرة عامة عن المداخيل والنفقات.</value>
   </data>
   <data name="BalanceSheet_Liabilities" xml:space="preserve">
     <value>الخصوم XXXX</value>
@@ -894,7 +892,7 @@
     <value>لا تتوفر اي تقارير لضريبة القيمة المضافة لهذه المنظمة</value>
   </data>
   <data name="ViewVatReports_NoReports" xml:space="preserve">
-    <value>لا تتوفر اي تقارير لضريبة القيمة المضافة التي يمكن عرضها. ومن الممكن ان يكون هذا راجع إلى عدم إنقضاء الفترة الكاملة لتحرير تقرير ضريبة القيمة المضافة, حيث انه لم يتسن انشاء تقرير حتى الان.</value>
+    <value>لا تتوفر اي تقارير لضريبة القيمة المضافة التي يمكن عرضها. ومن الممكن ان يكون هذا راجع إلى عدم إنقضاء الفترة الكاملة لتحرير تقرير ضريبة القيمة المضافة، حيث انه لم يتسن انشاء تقرير حتى الان.</value>
   </data>
   <data name="ViewVatReports_EmptyReport" xml:space="preserve">
     <value>-- لا يوجد شيء للإبلاغ عنه --</value>
@@ -960,6 +958,9 @@
   <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
     <value>تدفع هذه المعاملة الفاتورة الواردة#{0:N0} من {1}.</value>
   </data>
+  
+  
+  
   
   
   

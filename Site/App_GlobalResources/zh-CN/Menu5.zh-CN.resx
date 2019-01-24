@@ -303,12 +303,8 @@
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>损益表</value>
   </data>
-  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
-    <value>重新同步银行账户</value>
-  </data>
-  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
-    <value>设置预算金额</value>
-  </data>
+  
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>上传银行文件</value>
   </data>
@@ -442,4 +438,14 @@
   <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
     <value>比特币热钱包回复测试</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

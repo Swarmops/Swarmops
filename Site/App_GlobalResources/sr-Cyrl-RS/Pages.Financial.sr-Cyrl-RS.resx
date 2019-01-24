@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
+    <value>Приспеће #{0:N0} за {1} је потврђено за {3:N2}.</value>
+    <comment>Status message.</comment>
+  </data>
+  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
+    <value>Приспеће #{0:N0} за {1} је изгубило потврду. Ако се поново не потврди, неће бити исплаћено.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
+    <value>Није могуће одобрити овај износ. Буџет је испражњен за ову годину {0}.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
+    <value>Није могуће потврдити негативан износ.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
+    <value>Није могуће потврдити нулу као износ.</value>
+  </data>
+  <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
+    <value>Жао нам је, али не можете да промените буџет за исплату зарада.</value>
+  </data>
+  <data name="AttestCosts_Error_InvalidAmountRetry" xml:space="preserve">
+    <value>Чини се да унети износ није валидан. Покушајте поново.</value>
+  </data>
+  <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
+    <value>Молимо Вас, одаберите буџет на који се преусмерава трошак.</value>
+  </data>
+  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
+    <value>Захтев за рефундацију #{0:N0} од {1} за {2} {3:N2} је потврђен.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Захтев за рефундацију #{0:N0} од {1} је изгубио потврду. Ако се поново не потврди, неће бизи исплаћен.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>Прихватање</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>Прималац (Beneficiary)</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Буџет</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>Документи</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>Ставка</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>Захтев</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
+    <value>Трошкови који чекају Ваше одобрење</value>
+  </data>
+  <data name="AttestCosts_Info" xml:space="preserve">
+    <value>Овде потврђујете трошкове које други људи захтевају да се исплате из Вашег буџета. Ништа се не исплаћује, све док Ви то не одобрите.</value>
+  </data>
+  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
+    <value>Фактура #{0:N0} од {1} за {2} {3:N2} је потврђена.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
+    <value>Факрута #{0:N0} за {1} је изгубила потврду. Ако се поново не потврди, неће бити исплаћена.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
+    <value>Потврди</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
+    <value>Потврди</value>
+  </data>
+  <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
+    <value>Одбиј</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonRebudget" xml:space="preserve">
+    <value>Ре-буџет</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
+    <value>Мој авион је пун јегуља</value>
+    <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
+    <value>Колики износ одобравате (у {0})?</value>
+    <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionCorrect" xml:space="preserve">
+    <value>Измените дату ставку на износ од (у {0}), а затим потврдите на следећи начин:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionDeny" xml:space="preserve">
+    <value>Додатни разлог за одбијање подносиоца:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
+    <value>Пренеси задужење на овај буџет:</value>
+  </data>
+  <data name="AttestCosts_Modal_Header" xml:space="preserve">
+    <value>Решите проблем или одбијте да потврдите</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
+    <value>Даћу потврду за ово, али за другачији износ.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
+    <value>Износ је погрешан. Потврдићу исправну суму.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
+    <value>Нећу да прихватим ову забелешку. Видиш, прецртана је.</value>
+    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
+    <value>Ова ставка би требало да се наплати из другог буџета. Пребаци је на тај.</value>
+  </data>
+  <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
+    <value>Шта би био проблем са овим записом?</value>
+  </data>
+  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
+    <value>У преосталом буџету нема довољно средстава како би се одобрио овај трошак.</value>
+  </data>
+  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
+    <value>Нема довољно средстава како би се ово потврдило. Можете одобрити до {0} {1:N2} из овогодишњег буџета, {2}.</value>
+    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
+  </data>
+  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕКОРАЧЕЊЕ БУЏЕТА?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;У овом буџету нема преосталих средстава како би се одобрио овај трошак. Нормално је да се таква трансакција блокира. Ипак, можете пренебрегнути ову чињеницу и ипак дати одобрење, чиме ћете пробити буџет.&lt;br/&gt;&lt;br/&gt;Да ли желите да дате одобрење и тиме пробијете буџет, или желите да одбијете захтев и останете у границама буџета?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
+    <value>Остани у границама буџета</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmYes" xml:space="preserve">
+    <value>Прекорачи буџет</value>
+  </data>
+  <data name="AttestCosts_Overdrafted" xml:space="preserve">
+    <value>БУЏЕТ ЈЕ ПРЕКОРАЧЕН.</value>
+    <comment>The UPPERCASE is intentional.</comment>
+  </data>
+  <data name="AttestCosts_PageTitle" xml:space="preserve">
+    <value>Потврди трошкове</value>
+  </data>
+  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
+    <value>Конференција #{0:N0}, у организацији {1}, је потврђена за {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
+    <value>Конференција #{0:N0}, у организацији {1}, је изгубила потврду. Неће добити зелено светло ако не дате потврду.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_SalaryAttested" xml:space="preserve">
+    <value>Плата #{0:N0} за {1} је потврђена за {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
+    <value>Плата #{0:N0} за {1} је изгубила потврду. Ако не добије нову потврду, неће бити исплаћена.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
+    <value>&lt;strong&gt;УПОЗОРЕЊЕ: НЕРАСПОДЕЉЕНИ БУЏЕТ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Трошак који одобравате припада непрерасподељеним буџетским средствима. Размотрите План обрачунавања и прерасподелу средстава на основу очекиваних прихода и расхода.&lt;br/&gt;&lt;br/&gt;Ова порука се приказује само једном када отварате страницу Потврђивање.&lt;br/&gt;</value>
+  </data>
+  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
+    <value>Фактура на укупан изснос (у {0})</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>Опис</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
+    <value>Трошкови исплате (OCR за мобилне апликације)</value>
+  </data>
+  <data name="PayOutMoney_Info" xml:space="preserve">
+    <value>Ови обрасци пристигли у Организацију су савладали све препреке пре исплаћивања. Све исплате су спремне. Овде можете пратити како се исплате реализују (у другом прозору можете отворити сервис банке).</value>
+  </data>
+  <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
+    <value>Прикажи OCR за мобилне апликације</value>
+  </data>
+  <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
+    <value>Прикажи отворене исплате ({0:N0})</value>
+    <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>Исплати новац</value>
+  </data>
+  <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
+    <value>Не можете опозвати исплату #{0}: већ је договорена или затворена.</value>
+  </data>
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>Исплата #{0:N0} за {1} је креирана.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>Исплата #{0:N0} је поништена и све је враћено.</value>
+  </data>
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>Додатни порез</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Одбијени порез</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Бруто плата</value>
+  </data>
+  <data name="PayrollTaxForms_Info" xml:space="preserve">
+    <value>Погледај табеле са пореским обрасцима за плате у организацији, а које можете једноставно користити за примере из праксе. Приказани и стварни обрасци ипак могу да варирају у зависности од државе, плугина и кода који обезбеђује трећа страна.</value>
+  </data>
+  <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
+    <value>Обрасци за порез на плату</value>
+  </data>
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>Обрасци за месечно опорезивање за {0} за</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Укупни трошкови</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Укупан порез</value>
+  </data>
+  <data name="RequestCashAdvance_Amount" xml:space="preserve">
+    <value>Износ приспећа (у {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_BankAccount" xml:space="preserve">
+    <value>Број рачуна</value>
+  </data>
+  <data name="RequestCashAdvance_BankClearing" xml:space="preserve">
+    <value>Clearing број</value>
+  </data>
+  <data name="RequestCashAdvance_BankName" xml:space="preserve">
+    <value>Име банке</value>
+  </data>
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>Буџет</value>
+  </data>
+  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
+    <value>Ваши банкарски детаљи</value>
+  </data>
+  <data name="RequestCashAdvance_Info" xml:space="preserve">
+    <value>Ако се спремате да обавите куповину на име организације, али Вам је потребан новац унапред, а не након обављене куповине, можете затражити аванс (cash advance) за одређену сврху.</value>
+  </data>
+  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
+    <value>Затражи аванс</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</root>

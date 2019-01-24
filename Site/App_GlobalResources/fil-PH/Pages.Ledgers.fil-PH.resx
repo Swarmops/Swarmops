@@ -369,9 +369,7 @@
   <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
     <value>Aktibo</value>
   </data>
-  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Ang mga transaksyon bang ito ay hindi kasama sa mga ulat ng 2-D?</value>
-  </data>
+  
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Admin</value>
   </data>
@@ -875,6 +873,9 @@
   <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
     <value>Binabayaran ng transaksyong ito ang Inbound Invoice #{0:N0} from {1}.</value>
   </data>
+  
+  
+  
   
   
   

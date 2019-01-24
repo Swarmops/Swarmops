@@ -303,12 +303,8 @@
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Compte de résultat</value>
   </data>
-  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
-    <value>Resynchroniser le compte bancaire</value>
-  </data>
-  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
-    <value>Définir les montants budgétaires</value>
-  </data>
+  
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Télécharger les fichiers bancaires</value>
   </data>
@@ -442,4 +438,14 @@
   <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
     <value>Test d'echo d'un Portefeuille chaud Bitcoin</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

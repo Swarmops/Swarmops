@@ -819,7 +819,17 @@
   <data name="Master_BitIdRegister_Header" xml:space="preserve">
     <value>Fare la scansione di questo codice per abilitare il BitID</value>
   </data>
-  
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>&lt;h3&gt;Che cos'è questo?&lt;/h3&gt;
+                &lt;p&gt;BitID è un modo per accedere in sicurezza con meno problemi rispetto una password. Non può essere spiegato in modo esplicito, solo con esperienza, ed è un'autenticazione a due fattori poiché utilizza il telefono.&lt;/p&gt;
+                &lt;h3&gt;Non richiede anche la protezione del mio telefono?&lt;/h3&gt;
+                &lt;p&gt;Bene, si. È il tuo telefono e la protezione dell'accesso del tuo telefono. Ma il tuo telefono dovrebbe essere sempre protetto dall'accesso.&lt;/p&gt;
+                &lt;h3&gt;Ho bisogno di un'app mobile per questo?&lt;/h3&gt;
+                &lt;p&gt;Sì, in qualche modo. Alcuni portafogli mobili bitcoin hanno BitID integrato. Due esempi di portafogli mobili che supportano BitID sono {0} e {1}. Puoi anche cercare un Autenticatore BitID standalone.&lt;/p&gt;
+                &lt;h3&gt;Come abilitare BitID?&lt;/h3&gt;
+                &lt;p&gt;Usa l'app del telefono per scansionare questo codice. Successivamente, è possibile eseguire la scansione di un codice simile per accedere a questo sistema.&lt;/p&gt;</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
+  </data>
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>L'autenticazione a due fattori del BitID (firma bitcoin)</value>
   </data>
@@ -972,5 +982,13 @@
   <data name="Global_EnteringSandbox" xml:space="preserve">
     <value>Stai entrando nel &lt;strong&gt;Sandbox&lt;/strong&gt;dell'organizzazione.&lt;br/&gt;&lt;br/&gt;Questo è un ambiente sicuro dove si può giocare con Swarmops senza rischiare di danneggiare i dati di produzione. Divertiti quanto vuoi, e ritorna al tuo ambiente di produzione quando hai finito di sperimentare.</value>
   </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>{0} a {1}</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
+  
+  
+  
+  
   
 </root>

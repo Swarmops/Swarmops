@@ -400,9 +400,7 @@
   <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
     <value>Aktif</value>
   </data>
-  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Buradaki işlemler 2B raporların dışında bırakıldı mı?</value>
-  </data>
+  
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Yönetici</value>
   </data>
@@ -926,6 +924,9 @@
     <value>Şunun için genel muhasebe defteri</value>
     <comment>This phrase is followed by dropdowns for year and month</comment>
   </data>
+  
+  
+  
   
   
   
