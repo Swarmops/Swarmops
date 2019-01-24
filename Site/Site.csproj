@@ -682,6 +682,13 @@
     <Compile Include="Pages\v5\Admin\CommenceImpersonation.aspx.designer.cs">
       <DependentUpon>CommenceImpersonation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Admin\CultureInfo.aspx.cs">
+      <DependentUpon>CultureInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\CultureInfo.aspx.designer.cs">
+      <DependentUpon>CultureInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Admin\Diagnostics.aspx.cs">
       <DependentUpon>Diagnostics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -723,6 +730,13 @@
     </Compile>
     <Compile Include="Pages\v5\Admin\Hacks\TemporaryHack.aspx.designer.cs">
       <DependentUpon>TemporaryHack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Json-CultureInfo.aspx.cs">
+      <DependentUpon>Json-CultureInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Json-CultureInfo.aspx.designer.cs">
+      <DependentUpon>Json-CultureInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\v5\Admin\OrgSettings.aspx.cs">
       <DependentUpon>OrgSettings.aspx</DependentUpon>
@@ -1690,12 +1704,14 @@
     <Content Include="Pages\v5\Admin\BitcoinEchoTest.aspx" />
     <Content Include="Pages\v5\Admin\CreateOrganization.aspx" />
     <Content Include="Pages\v5\Admin\CommenceImpersonation.aspx" />
+    <Content Include="Pages\v5\Admin\CultureInfo.aspx" />
     <Content Include="Pages\v5\Admin\Diagnostics.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\PopulateCountry1.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\PopulateCountry2.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\PopulateFakePeople.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\Temp-SetOrganizationAdminAccess.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\TemporaryHack.aspx" />
+    <Content Include="Pages\v5\Admin\Json-CultureInfo.aspx" />
     <Content Include="Pages\v5\Admin\OrgSettings.aspx" />
     <Content Include="Pages\v5\Admin\OrgStaffing.aspx" />
     <Content Include="Pages\v5\Admin\SystemSettings.aspx" />
