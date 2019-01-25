@@ -37,6 +37,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 culturePartialLookup[culture.Substring(0, culture.IndexOf('-'))] = true;
             }
 
+            cultureFullLookup["en-US"] = true;
+            culturePartialLookup["en"] = true;
+
             string yesImage = "<img src='/Images/Icons/iconshock-green-tick-128x96px.png' height='20' width='26' />";
             string halfImage = "<img src='/Images/Icons/iconshock-gold-tick-128x96px.png' height='18' width='24' />";
             string noImage = "<img src='/Images/Icons/iconshock-red-cross-128x96px.png' height='10' width='13' />";
