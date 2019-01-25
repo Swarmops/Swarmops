@@ -76,11 +76,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                     result.Append("{");
                     result.AppendFormat(
-                        "\"cultureId\":\"{0}\",\"name\":\"{1}\",\"nameInternational\":\"{2}\",\"language\":\"{3}\",\"country\":\"{4}\",\"flag\":\"{5}\",\"supported\":\"{6}\"",
+                        "\"cultureId\":\"{0}\",\"name\":\"{1}\",\"nameInternational\":\"{2}\",\"country\":\"{3}\",\"flag\":\"{4}\",\"supported\":\"{5}\"",
                         culture.Name,
                         culture.NativeName,
                         culture.EnglishName,
-                        region.DisplayName,
                         region.EnglishName,
                         flagFile.Length > 2? flagFile : noImage,
                         cultureFullLookup.ContainsKey(culture.Name)? yesImage: culturePartialLookup.ContainsKey(culture.Name.Substring(0, culture.Name.IndexOf('-')))? halfImage: noImage

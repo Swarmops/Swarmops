@@ -8,14 +8,14 @@ using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Admin
 {
-    public partial class CultureInfo : PageV5Base
+    public partial class SupportedCultures : PageV5Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             this.PageAccessRequired = new Access(AccessAspect.Null);
 
             this.InfoBoxLiteral = "This shows the system cultures (languages), as well as which ones are installed and supported.";
-            this.Title = @"Supported Languages and Cultures";
+            this.Title = this.PageTitle = @"Supported Languages and Cultures";
 
         }
     }

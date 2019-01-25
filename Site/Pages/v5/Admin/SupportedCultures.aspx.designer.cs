@@ -10,6 +10,6 @@
 namespace Swarmops.Frontend.Admin {
     
     
-    public partial class CultureInfo {
+    public partial class SupportedCultures {
     }
 }
