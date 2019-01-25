@@ -34,6 +34,12 @@ namespace Swarmops.Frontend.Pages.v5.User
         {
             string[] availableCultures = Formatting.SupportedCultures;
 
+            Dictionary<string, string> specialNameLookup = new Dictionary<string, string>();
+
+            specialNameLookup["sr-Cyrl-RS"] = "Српски (ћирилица)";
+            specialNameLookup["sr-Latn-RS"] = "Srpski (latinica)";
+            specialNameLookup["es-VE"] = "Español (Venezuela)";
+
             List<LanguageParameters> availableLanguages = new List<LanguageParameters>();
             foreach (string cultureId in availableCultures)
             {
@@ -41,9 +47,9 @@ namespace Swarmops.Frontend.Pages.v5.User
                 newLanguage.CultureId = cultureId;
                 CultureInfo culture = CultureInfo.CreateSpecificCulture (cultureId);
 
-                if (cultureId == "sr-Latn-RS") // special case: Mono wants to write this in Cyrillic
+                if (specialNameLookup.ContainsKey(cultureId))
                 {
-                    newLanguage.DisplayName = "Srpska (Latin)";
+                    newLanguage.DisplayName = specialNameLookup[cultureId];
                 }
                 else
                 {
