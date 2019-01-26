@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
 
@@ -35,14 +36,24 @@ namespace Swarmops.Frontend.Pages.v5.User
             string[] availableCultures = Formatting.SupportedCultures;
 
             Dictionary<string, string> specialNameLookup = new Dictionary<string, string>();
+            Dictionary<string, bool> suppressLookup = new Dictionary<string, bool>();
 
             specialNameLookup["sr-Cyrl-RS"] = "Српски (ћирилица)";
             specialNameLookup["sr-Latn-RS"] = "Srpski (latinica)";
             specialNameLookup["es-VE"] = "Español (Venezuela)";
 
+            suppressLookup["en-US"] = true;
+            suppressLookup["zh-CN"] = true;
+            // suppressLookup["ar-SA"] = true;
+
             List<LanguageParameters> availableLanguages = new List<LanguageParameters>();
             foreach (string cultureId in availableCultures)
             {
+                if (suppressLookup.ContainsKey(cultureId))
+                {
+                    continue;
+                }
+
                 LanguageParameters newLanguage = new LanguageParameters();
                 newLanguage.CultureId = cultureId;
                 CultureInfo culture = CultureInfo.CreateSpecificCulture (cultureId);

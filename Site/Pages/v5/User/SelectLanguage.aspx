@@ -93,6 +93,10 @@
         <div class="divLanguageFlag" style="background-image:url('/Images/Flags/uk-64px.png')" ></div>
         <div class="spanLanguageNativeName">English (United States / International English)</div>
     </div>
+    <div class="divLanguageEncapsulation" onclick="document.location='/Pages/v5/User/SetCulture.aspx?CultureId=zh-CN';">
+        <div class="divLanguageFlag" style="background-image:url('/Images/Flags/cn-64px.png')" ></div>
+        <div class="spanLanguageNativeName">中文 (中国)</div>
+    </div>
     <hr/>
     <asp:Repeater runat="server" ID="RepeaterLanguages">
         <ItemTemplate>
