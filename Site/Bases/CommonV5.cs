@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Threading;
@@ -19,9 +20,8 @@ namespace Swarmops.Frontend
         public static void CulturePreInit (HttpRequest request)
         {
             // Localization
-            // Set default culture (English, United States)
 
-            string preferredCulture = "en-US";
+            string preferredCulture = "en-US"; // default
 
             // -----------  SET CULTURE ------------
 
@@ -30,27 +30,61 @@ namespace Swarmops.Frontend
             if (request.Cookies["PreferredCulture"] != null)
             {
                 // Yes, set it
-                preferredCulture = request.Cookies["PreferredCulture"].Value;
+                preferredCulture = request.Cookies["PreferredCulture"].Value;  // Ignores whether we actually support this culture...?
             }
             else
             {
                 // No, determine from browser
-                string browserPreference = "en-US";
+
+                InitializeLookups();
+
+                string browserPreference = string.Empty;
                 if (request.UserLanguages != null && request.UserLanguages.Length > 0)
                 {
-                    browserPreference = request.UserLanguages[0];
-                    preferredCulture = browserPreference;
-                }
+                    // Iterate over user-requested cultures, return best match
 
-                /*
-            string[] languages = (string[])Application["Cultures"];
-            for (int index = 0; index < languages.Length; index++)
-            {
-                if (languages[index].StartsWith(browserPreference))
-                {
-                    preferredCulture = languages[index];
+                    string partialMatch = string.Empty;
+
+                    foreach (string userLanguage in request.UserLanguages)
+                    {
+                        string partialLanguage = userLanguage;
+                        int indexOfDivider = partialLanguage.IndexOf('-');
+                        if (indexOfDivider > 0)
+                        {
+                            partialLanguage = partialLanguage.Substring(0, indexOfDivider);
+                        }
+                        else
+                        {
+                            partialLanguage = string.Empty;
+                        }
+
+                        // If we have a full match, e.g. en-US to en-US...
+
+                        if (_supportedFullCulturesLookup.ContainsKey(userLanguage))
+                        {
+                            browserPreference = userLanguage;
+                            break;
+                        }
+
+                        // ...otherwise, a close match, like en-US to a requested en-AU....
+
+                        if (_supportedPartialCulturesLookup.ContainsKey(partialLanguage))
+                        {
+                            partialMatch = partialLanguage;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(browserPreference)) // prefer full match to partial match
+                    {
+                        preferredCulture = browserPreference;
+                    }
+                    else if (!string.IsNullOrEmpty(partialMatch))
+                    {
+                        preferredCulture = partialMatch;
+                    }
+
+                    // if none of these work, use the default setting, en-US, from initialization
                 }
-            }*/
             }
 
             GregorianCalendar normalizedCalendar = new GregorianCalendar();
@@ -84,6 +118,28 @@ namespace Swarmops.Frontend
 
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
         }
+
+        private static Dictionary<string, bool> _supportedFullCulturesLookup;
+        private static Dictionary<string, bool> _supportedPartialCulturesLookup;
+
+        private static void InitializeLookups()
+        {
+            if (_supportedFullCulturesLookup != null)
+            {
+                return;
+            }
+
+            _supportedFullCulturesLookup = new Dictionary<string, bool>();
+            _supportedPartialCulturesLookup = new Dictionary<string, bool>();
+
+            string[] supportedCultures = Swarmops.Logic.Support.Formatting.SupportedCultures;
+            foreach (string culture in supportedCultures)
+            {
+                _supportedFullCulturesLookup[culture] = true;
+                _supportedPartialCulturesLookup[culture.Substring(0, culture.IndexOf('-'))] = true;
+            }
+        }
+
 
         public static AuthenticationData GetAuthenticationDataAndCulture (HttpContext suppliedContext)
         {
