@@ -638,7 +638,7 @@
     <value>(detailed description withheld)</value>
   </data>
   <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Dangling Payments (Must Balance, Match Or Fix)</value>
+    <value>Dangling Payments (Must Balance, Match, or Fix)</value>
     <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
   </data>
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
@@ -656,7 +656,7 @@
     <comment>Keep VERY short.</comment>
   </data>
   <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Some auto-imported financial transactions can't be automatically matched to the ongoing accounting. This is where you manually match such transactions to "balance" them (if a transaction only has one part completed, like the money sent to the organization with no record of what the money is for, the transaction is said to be "unbalanced").</value>
+    <value>Some auto-imported financial transactions can't be automatically matched to the ongoing accounting. This is where you manually match such transactions to "balance" them (if a transaction only has one part completed, like the money sent to the organization with no record of what the money is for, the transaction is said to be "unbalanced" and a "dangling payment", as in, missing its bookkeeping counterpart).</value>
   </data>
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Balancing/Matching Transaction #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; From &lt;span id="spanModalTransactionDate"&gt;yyyy-mmm-dd&lt;/span&gt;</value>

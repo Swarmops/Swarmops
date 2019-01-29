@@ -303,7 +303,7 @@ namespace Swarmops.Logic.Financial
             // Add the financial transaction
 
             FinancialTransaction transaction =
-                FinancialTransaction.Create (payrollItem.OrganizationId, DateTime.Now,
+                FinancialTransaction.Create (payrollItem.OrganizationId, DateTime.UtcNow,
                     "Salary #" + salary.Identity + ": " + payrollItem.PersonCanonical +
                     " " +
                     salary.PayoutDate.ToString ("yyyy-MMM", CultureInfo.InvariantCulture));

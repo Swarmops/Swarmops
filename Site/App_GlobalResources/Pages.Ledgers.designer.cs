@@ -592,7 +592,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dangling Payments (Must Balance, Match Or Fix).
+        ///   Looks up a localized string similar to Dangling Payments (Must Balance, Match, or Fix).
         /// </summary>
         internal static string BalanceTransactions_HeaderUnbalancedTransactions {
             get {
@@ -601,7 +601,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Some auto-imported financial transactions can&apos;t be automatically matched to the ongoing accounting. This is where you manually match such transactions to &quot;balance&quot; them (if a transaction only has one part completed, like the money sent to the organization with no record of what the money is for, the transaction is said to be &quot;unbalanced&quot;)..
+        ///   Looks up a localized string similar to Some auto-imported financial transactions can&apos;t be automatically matched to the ongoing accounting. This is where you manually match such transactions to &quot;balance&quot; them (if a transaction only has one part completed, like the money sent to the organization with no record of what the money is for, the transaction is said to be &quot;unbalanced&quot; and a &quot;dangling payment&quot;, as in, missing its bookkeeping counterpart)..
         /// </summary>
         internal static string BalanceTransactions_Info {
             get {

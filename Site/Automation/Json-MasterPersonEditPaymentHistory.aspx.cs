@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Common;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
 
@@ -28,6 +29,13 @@ namespace Swarmops.Frontend.Automation
             }
 
             this._person = Person.FromIdentity(personId);
+            if (this._person.Identity != _authenticationData.CurrentUser.Identity)
+            {
+                if (!_authenticationData.Authority.CanSeePerson(_person))
+                {
+                    throw new UnauthorizedAccessException();
+                }
+            }
 
             List<PaymentHistoryLineItem> list = new List<PaymentHistoryLineItem>();
 
@@ -65,6 +73,36 @@ namespace Swarmops.Frontend.Automation
                     newItem.OwedToPerson = claim.AmountCents;
 
                     Payout payout = claim.Payout;
+                    if (payout != null && payout.Open == false)
+                    {
+                        newItem.ClosedDate = payout.FinancialTransaction.DateTime;
+                    }
+
+                    items.Add(newItem);
+                }
+            }
+
+            // Salaries
+
+            Salaries salaries = Salaries.ForPersonAndOrganization(_person, _authenticationData.CurrentOrganization, true);
+
+            foreach (Salary salary in salaries)
+            {
+                if (salary.Open || salary.NetPaid) // either of these must be open for the salary to be valid
+                {
+                    PaymentHistoryLineItem newItem = new PaymentHistoryLineItem();
+                    newItem.Id = "S" + salary.Identity.ToString(CultureInfo.InvariantCulture);
+                    newItem.Name = Resources.Global.Financial_Salary + " #" + salary.Identity.ToString("N0");
+                    newItem.Description = "Salary for something XYZ";
+                    newItem.OwedToPerson = salary.NetSalaryCents;
+
+                    FinancialTransaction openTx = FinancialTransaction.FromDependency(salary);
+                    if (openTx != null)
+                    {
+                        newItem.OpenedDate = openTx.DateTime;
+                    }
+
+                    Payout payout = Payout.FromDependency(salary, FinancialDependencyType.Salary);
                     if (payout != null && payout.Open == false)
                     {
                         newItem.ClosedDate = payout.FinancialTransaction.DateTime;

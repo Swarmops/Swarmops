@@ -44,9 +44,19 @@ namespace Swarmops.Logic.Financial
             // return payout;
         }
 
-        public static Payout FromDependency(IHasIdentity dependency)
+        public static Payout FromDependency(IHasIdentity dependency, FinancialDependencyType dependencyType = FinancialDependencyType.Unknown)
         {
-            int payoutId = SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency(dependency);
+            int payoutId = 0;
+
+            if (dependencyType == FinancialDependencyType.Unknown)
+            {
+                payoutId = SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency(dependency);
+            }
+            else
+            {
+                payoutId = SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency(dependency, dependencyType);
+            }
+
             if (payoutId == 0)
             {
                 throw new ArgumentException("Supplied item does not have an associated payout");

@@ -385,11 +385,11 @@
                                 <thead>  
                                     <tr>  
                                         <th field="name" width="138"><asp:Literal ID="MasterPersonEditLiteralHeaderItemName" Text="Item Type XYZ" runat="server"/></th>  
-                                        <th field="description" width="220"><asp:Literal ID="MasterPersonEditLiteralHeaderItemDescription" Text="Description XYZ" runat="server"/></th>  
-                                        <th field="opened" width="120"><asp:Literal ID="MasterPersonEditLiteralHeaderItemOpenedDate" Text="Opened date XYZ" runat="server"/></th>
+                                        <th field="description" width="260"><asp:Literal ID="MasterPersonEditLiteralHeaderItemDescription" Text="Description XYZ" runat="server"/></th>  
+                                        <th field="opened" width="100"><asp:Literal ID="MasterPersonEditLiteralHeaderItemOpenedDate" Text="Opened date XYZ" runat="server"/></th>
                                         <th field="owedToPerson" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountOwed" Text="Owed to you XYZ" runat="server"/></th>
                                         <th field="paidToPerson" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountPaid" Text="Paid to you XYZ" runat="server"/></th>
-                                        <th field="closed" width="120"><asp:Literal ID="MasterPersonEditLiteralHeaderItemClosedDate" Text="Closed date XYZ" runat="server"/></th>
+                                        <th field="closed" width="100"><asp:Literal ID="MasterPersonEditLiteralHeaderItemClosedDate" Text="Closed date XYZ" runat="server"/></th>
                                         <th field="notes" width="80"><asp:Literal ID="MasterPersonEditLiteralHeaderItemNotes" Text="Notes XYZ" runat="server"/></th>
                                     </tr>  
                                 </thead>
