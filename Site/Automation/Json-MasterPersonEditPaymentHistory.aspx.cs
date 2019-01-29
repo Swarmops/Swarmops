@@ -6,6 +6,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Common;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
 
@@ -89,11 +90,11 @@ namespace Swarmops.Frontend.Automation
                     "\"id\":\"{0}\",\"name\":\"{1}\",\"description\":\"{2}\",\"opened\":\"{3}\",\"owedToPerson\":\"{4}\",\"paidToPerson\":\"{5}\",\"closed\":\"{6}\"",
                     JsonSanitize(item.Id),
                     JsonSanitize(item.Name),
-                    item.OpenedDate.ToString("yyyy-MMM-dd"),
                     JsonSanitize(item.Description),
+                    item.OpenedDate > Constants.DateTimeLowThreshold? item.OpenedDate.ToString("yyyy-MMM-dd") : string.Empty,
                     item.OwedToPerson > 0 ? (item.OwedToPerson/100.0).ToString("N2") : string.Empty,
                     string.Empty,
-                    item.ClosedDate.ToString("yyyy-MMM-dd")
+                    item.ClosedDate < Constants.DateTimeHighThreshold? item.ClosedDate.ToString("yyyy-MMM-dd"): string.Empty
 
                 );
 
@@ -113,6 +114,12 @@ public string JsonWriteFooter(List<PaymentHistoryLineItem> items)
 
         public class PaymentHistoryLineItem
         {
+            public PaymentHistoryLineItem()
+            {
+                this.OpenedDate = Constants.DateTimeLow;
+                this.ClosedDate = Constants.DateTimeHigh;
+            }
+
             public string Id { get; set; }
             public string Name { get; set; }
             public string Description { get; set; }
