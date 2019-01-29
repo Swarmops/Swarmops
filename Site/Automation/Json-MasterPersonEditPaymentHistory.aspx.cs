@@ -17,7 +17,12 @@ namespace Swarmops.Frontend.Automation
         {
             this._authenticationData = GetAuthenticationDataAndCulture();
 
-            int personId = Int32.Parse(Request.QueryString["PersonId"]); // may throw and that's okay
+            int personId = Int32.Parse(Request.QueryString["PersonId"]); // may throw and that's okay, returning a 500 instead of Json the caller shouldn't see
+            if (personId == 0)
+            {
+                personId = _authenticationData.CurrentUser.Identity;
+            }
+
             this._person = Person.FromIdentity(personId);
 
             /*

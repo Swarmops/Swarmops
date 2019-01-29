@@ -387,8 +387,8 @@
                                         <th field="name" width="178"><asp:Literal ID="MasterPersonEditLiteralHeaderItemName" Text="Item Type XYZ" runat="server"/></th>  
                                         <th field="description" width="180"><asp:Literal ID="MasterPersonEditLiteralHeaderItemDescription" Text="Description XYZ" runat="server"/></th>  
                                         <th field="opened" width="120"><asp:Literal ID="MasterPersonEditLiteralHeaderItemOpenedDate" Text="Opened date XYZ" runat="server"/></th>
-                                        <th field="owedtouser" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountOwed" Text="Owed to you XYZ" runat="server"/></th>
-                                        <th field="paidtouser" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountPaid" Text="Payment XYZ" runat="server"/></th>
+                                        <th field="owedtoperson" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountOwed" Text="Payment XYZ" runat="server"/></th>
+                                        <th field="paidtoperson" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountPaid" Text="Owed to you XYZ" runat="server"/></th>
                                         <th field="closed" width="120"><asp:Literal ID="MasterPersonEditLiteralHeaderItemClosedDate" Text="Closed date XYZ" runat="server"/></th>
                                         <th field="notes" width="80"><asp:Literal ID="MasterPersonEditLiteralHeaderItemNotes" Text="Notes XYZ" runat="server"/></th>
                                     </tr>  
@@ -609,6 +609,10 @@
 
             _master_PersonEditLoading = false;
             _master_PersonEditedId = personId;
+
+            $('#masterPersonEditTablePaymentHistory').treegrid({
+                url: '/Automation/Json-MasterPersonEditPaymentHistory.aspx?PersonId=' + personId
+            });
 
             SwarmopsJS.ajaxCall('/Automation/SwarmFunctions.aspx/GetPersonEditorData', personEditorData, function(data) {
                 if (data != null && data.Success) {
