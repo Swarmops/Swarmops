@@ -47,8 +47,12 @@ html, body, input, select
     font-weight: 500;
 }
 
-.weight-most-emphasis, .bold {
+.weight-most-emphasis, .bold, .strong {
     font-weight: 700;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }
 
 
@@ -70,6 +74,11 @@ body.login-page {
 strong
 {
 	font-weight: 700;  /* bugfix for Chrome */
+}
+
+* 
+{
+    -webkit-font-smoothing: antialiased; /* also bugfix for Chrome */
 }
 
 
@@ -1439,25 +1448,6 @@ span.spanGrayedOut {
     opacity: .5;
 }
 
-span.light {
-    font-weight: 300;
-}
-
-span.regular-weight {
-    font-weight: 400;
-}
-
-span.medium {
-    font-weight: 500;
-}
-
-span.strong {
-    font-weight: 700;
-}
-
-span.uppercase {
-    text-transform: uppercase;
-}
 
 /* COLOR SCHEME
 
