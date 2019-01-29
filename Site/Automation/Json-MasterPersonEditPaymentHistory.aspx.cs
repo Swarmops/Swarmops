@@ -31,7 +31,8 @@ namespace Swarmops.Frontend.Automation
             List<PaymentHistoryLineItem> list = new List<PaymentHistoryLineItem>();
 
             list.AddRange(GetAmountsOwed());
-            list.AddRange(GetAmountsPaid());
+            //list.AddRange(GetAmountsPaid());
+            //list.SortByDate();
 
             Response.ContentType = "application/json";
             Response.Output.WriteLine("{\"rows\": " + JsonWriteItems(list) + ", \"footer\": [" +
