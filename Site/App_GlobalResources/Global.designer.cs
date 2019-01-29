@@ -628,6 +628,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no payments on record.
+        /// </summary>
+        internal static string Financial_NoPaymentHistory {
+            get {
+                return ResourceManager.GetString("Financial_NoPaymentHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoices.
         /// </summary>
         internal static string Financial_OutboundInvoices {
@@ -1200,6 +1209,15 @@ namespace Resources {
         internal static string Global_DropInits_SelectOrganization {
             get {
                 return ResourceManager.GetString("Global_DropInits_SelectOrganization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No records.
+        /// </summary>
+        internal static string Global_EmptySet {
+            get {
+                return ResourceManager.GetString("Global_EmptySet", resourceCulture);
             }
         }
         

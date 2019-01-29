@@ -183,6 +183,20 @@ namespace Swarmops.Frontend.Automation
             StringBuilder result = new StringBuilder(16384);
             result.Append("[");
 
+            if (items.Any())
+            {
+                // Must return something in body to refresh footer - EasyUI bug
+
+                result.AppendFormat(
+                    "\"id\":\"NoRecords\",\"name\":\"{0}\",\"description\":\"{1}\"",
+                    JsonSanitize(Resources.Global.Global_EmptySet),
+                    JsonSanitize(Resources.Global.Financial_NoPaymentHistory)
+                    );
+                result.Append("}]");
+
+                return result.ToString();
+            }
+
             foreach (PaymentHistoryLineItem item in items)
             { 
                 result.Append("{");

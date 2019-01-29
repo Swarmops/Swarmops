@@ -1018,6 +1018,9 @@
   <data name="Financial_CurrentBalance" xml:space="preserve">
     <value>Current Balance</value>
   </data>
+  <data name="Financial_NoPaymentHistory" xml:space="preserve">
+    <value>There are no payments on record</value>
+  </data>
   <data name="Financial_Owed" xml:space="preserve">
     <value>Owed</value>
     <comment>As in, "Amount Owed"</comment>
@@ -1064,6 +1067,10 @@
   <data name="Global_Closed" xml:space="preserve">
     <value>Closed</value>
     <comment>As in "record closed"</comment>
+  </data>
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>No records</value>
+    <comment>There are no records of the requested type</comment>
   </data>
   <data name="Global_Item" xml:space="preserve">
     <value>Item</value>
