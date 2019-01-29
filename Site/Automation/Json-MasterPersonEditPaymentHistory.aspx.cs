@@ -45,7 +45,7 @@ namespace Swarmops.Frontend.Automation
 
             list.AddRange(GetAmountsOwed());
             list.AddRange(GetAmountsPaid());
-            //list.SortByDate();
+            list.Sort(LineItemSorterByDate);
 
             Response.ContentType = "application/json";
             Response.Output.WriteLine("{\"rows\": " + JsonWriteItems(list) + ", \"footer\": [" +
@@ -71,7 +71,7 @@ namespace Swarmops.Frontend.Automation
                 {
                     PaymentHistoryLineItem newItem = new PaymentHistoryLineItem();
                     newItem.Id = "E" + claim.Identity.ToString(CultureInfo.InvariantCulture);
-                    newItem.Name = Resources.Global.Financial_ExpenseClaim + " #" + claim.Identity.ToString("N0");
+                    newItem.Name = String.Format(Resources.Global.Financial_ExpenseClaimLongSpecification, claim.Identity);
                     newItem.Description = claim.Description;
                     newItem.OpenedDate = claim.CreatedDateTime;
                     newItem.OwedToPerson = claim.AmountCents;
@@ -163,6 +163,7 @@ namespace Swarmops.Frontend.Automation
                 }
                 newItem.Description = String.Empty;
                 newItem.PaidToPerson = payout.AmountCents;
+                newItem.OpenedDate = payout.CreatedDateTime;
 
                 FinancialTransaction closeTx = payout.FinancialTransaction;
                 if (closeTx != null) // it damn well should not be null since Open is false
@@ -189,9 +190,9 @@ namespace Swarmops.Frontend.Automation
                     JsonSanitize(item.Id),
                     JsonSanitize(item.Name),
                     JsonSanitize(item.Description),
-                    item.OpenedDate > Constants.DateTimeLowThreshold? item.OpenedDate.ToString("yyyy-MMM-dd") : string.Empty,
-                    item.OwedToPerson > 0 ? (item.OwedToPerson/100.0).ToString("N2") : string.Empty,
-                    string.Empty,
+                    item.OpenedDate > Constants.DateTimeLowThreshold && item.PaidToPerson == 0? item.OpenedDate.ToString("yyyy-MMM-dd") : string.Empty,
+                    item.OwedToPerson != 0 ? (item.OwedToPerson/100.0).ToString("N2") : string.Empty,
+                    item.PaidToPerson != 0 ? (item.PaidToPerson / 100.0).ToString("N2") : string.Empty,
                     item.ClosedDate < Constants.DateTimeHighThreshold? item.ClosedDate.ToString("yyyy-MMM-dd"): string.Empty
 
                 );
@@ -205,9 +206,14 @@ namespace Swarmops.Frontend.Automation
             return result.ToString();
         }
 
-public string JsonWriteFooter(List<PaymentHistoryLineItem> items)
+        public string JsonWriteFooter(List<PaymentHistoryLineItem> items)
         {
             return string.Empty;
+        }
+
+        public static int LineItemSorterByDate(PaymentHistoryLineItem a, PaymentHistoryLineItem b)
+        {
+            return a.OpenedDate.CompareTo(b.OpenedDate);
         }
 
         public class PaymentHistoryLineItem
