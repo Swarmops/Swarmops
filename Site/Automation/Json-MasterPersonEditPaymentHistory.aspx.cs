@@ -60,6 +60,12 @@ namespace Swarmops.Frontend.Automation
                 newItem.Description = claim.Description;
                 newItem.OwedToPerson = claim.AmountCents;
 
+                Payout payout = claim.Payout;
+                if (payout != null && payout.Open == false)
+                {
+                    newItem.ClosedDate = payout.FinancialTransaction.DateTime;
+                }
+
                 items.Add(newItem);
             }
 
@@ -80,11 +86,15 @@ namespace Swarmops.Frontend.Automation
             { 
                 result.Append("{");
                 result.AppendFormat(
-                    "\"id\":\"{0}\",\"name\":\"{1}\",\"description\":\"{2}\",\"owedToPerson\":\"{3:N2}\"",
+                    "\"id\":\"{0}\",\"name\":\"{1}\",\"description\":\"{2}\",\"opened\":\"{3}\",\"owedToPerson\":\"{4}\",\"paidToPerson\":\"{5}\",\"closed\":\"{6}\"",
                     JsonSanitize(item.Id),
                     JsonSanitize(item.Name),
+                    item.OpenedDate.ToString("yyyy-MMM-dd"),
                     JsonSanitize(item.Description),
-                    item.OwedToPerson/100.0
+                    item.OwedToPerson > 0 ? (item.OwedToPerson/100.0).ToString("N2") : string.Empty,
+                    string.Empty,
+                    item.ClosedDate.ToString("yyyy-MMM-dd")
+
                 );
 
                 result.Append("},");
