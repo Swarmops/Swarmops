@@ -183,7 +183,7 @@ namespace Swarmops.Frontend.Automation
             StringBuilder result = new StringBuilder(16384);
             result.Append("[");
 
-            if (items.Count() > 0)
+            if (items.Count() == 0)
             {
                 // Must return something in body to refresh footer - EasyUI bug
 
