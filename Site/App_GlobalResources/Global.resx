@@ -1011,4 +1011,12 @@
     <value>EBITDA</value>
     <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
   </data>
+  <data name="Financial_PaymentSpecification" xml:space="preserve">
+    <value>Payment #{0:N0}</value>
+    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
+  </data>
+  <data name="Financial_PayoutSpecification" xml:space="preserve">
+    <value>Payout #{0:N0}</value>
+    <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
 </root>

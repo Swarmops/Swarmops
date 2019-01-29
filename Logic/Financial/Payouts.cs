@@ -64,6 +64,15 @@ namespace Swarmops.Logic.Financial
             return FromArray (SwarmDb.GetDatabaseForReading().GetPayouts (organization, DatabaseCondition.OpenTrue));
         }
 
+        public static Payouts ToPerson(Person person, bool includeClosed)
+        {
+            if (includeClosed)
+            {
+                return FromArray(SwarmDb.GetDatabaseForReading().GetPayouts(organization));
+            }
+            return FromArray(SwarmDb.GetDatabaseForReading().GetPayouts(organization, DatabaseCondition.OpenTrue));
+        }
+
         public static Payouts Construct (Organization organization)
         {
             // Construct a list of not-yet-created payouts. Basically, these are the things that

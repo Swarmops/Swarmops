@@ -17,6 +17,8 @@ namespace Swarmops.Frontend.Automation
     {
         private AuthenticationData _authenticationData;
         private Person _person;
+        private Dictionary<int, Payout> _payoutLookup;
+        private Dictionary<int, string> _payoutDescriptionOverride; 
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,9 +40,11 @@ namespace Swarmops.Frontend.Automation
             }
 
             List<PaymentHistoryLineItem> list = new List<PaymentHistoryLineItem>();
+            _payoutLookup = new Dictionary<int, Payout>();
+            _payoutDescriptionOverride = new Dictionary<int, string>();
 
             list.AddRange(GetAmountsOwed());
-            //list.AddRange(GetAmountsPaid());
+            list.AddRange(GetAmountsPaid());
             //list.SortByDate();
 
             Response.ContentType = "application/json";
@@ -75,6 +79,7 @@ namespace Swarmops.Frontend.Automation
                     Payout payout = claim.Payout;
                     if (payout != null && payout.Open == false)
                     {
+                        _payoutLookup[payout.Identity] = payout;
                         newItem.ClosedDate = payout.FinancialTransaction.DateTime;
                     }
 
@@ -92,8 +97,8 @@ namespace Swarmops.Frontend.Automation
                 {
                     PaymentHistoryLineItem newItem = new PaymentHistoryLineItem();
                     newItem.Id = "S" + salary.Identity.ToString(CultureInfo.InvariantCulture);
-                    newItem.Name = Resources.Global.Financial_Salary + " #" + salary.Identity.ToString("N0");
-                    newItem.Description = "Salary for something XYZ";
+                    newItem.Name = Resources.Global.Financial_Salary;
+                    newItem.Description = String.Format(Resources.Global.Financial_SalaryDualSpecification, salary.Identity, salary.PayoutDate);
                     newItem.OwedToPerson = salary.NetSalaryCents;
 
                     FinancialTransaction openTx = FinancialTransaction.FromDependency(salary);
@@ -105,10 +110,30 @@ namespace Swarmops.Frontend.Automation
                     Payout payout = Payout.FromDependency(salary, FinancialDependencyType.Salary);
                     if (payout != null && payout.Open == false)
                     {
+                        _payoutLookup[payout.Identity] = payout;
                         newItem.ClosedDate = payout.FinancialTransaction.DateTime;
                     }
 
                     items.Add(newItem);
+                }
+            }
+
+            // Cash advances
+
+            CashAdvances advances = CashAdvances.ForPersonAndOrganization(_person,
+                _authenticationData.CurrentOrganization, true);
+
+            foreach (CashAdvance advance in advances)
+            {
+                if (advance.Open || advance.PaidOut)
+                {
+                    Payout payout = advance.PayoutOut;
+                    if (payout != null)
+                    {
+                        _payoutLookup[payout.Identity] = payout;
+                        _payoutDescriptionOverride[payout.Identity] =
+                            String.Format(Resources.Global.Financial_CashAdvanceSpecification, advance.Identity.ToString("N0"));
+                    }
                 }
             }
 
@@ -117,7 +142,38 @@ namespace Swarmops.Frontend.Automation
 
         public List<PaymentHistoryLineItem> GetAmountsPaid()
         {
-            return null;
+            List<PaymentHistoryLineItem> items = new List<PaymentHistoryLineItem>();
+
+            foreach (Payout payout in _payoutLookup.Values)
+            {
+                if (payout.Open)
+                {
+                    continue; // do not list unconfirmed payouts
+                }
+
+                PaymentHistoryLineItem newItem = new PaymentHistoryLineItem();
+                newItem.Id = "PO" + payout.Identity.ToString(CultureInfo.InvariantCulture);
+                if (_payoutDescriptionOverride.ContainsKey(payout.Identity))
+                {
+                    newItem.Name = _payoutDescriptionOverride[payout.Identity];
+                }
+                else
+                {
+                    newItem.Name = String.Format(Resources.Global.Financial_PayoutSpecification, payout.Identity);
+                }
+                newItem.Description = String.Empty;
+                newItem.PaidToPerson = payout.AmountCents;
+
+                FinancialTransaction closeTx = payout.FinancialTransaction;
+                if (closeTx != null) // it damn well should not be null since Open is false
+                {
+                    newItem.ClosedDate = closeTx.DateTime;
+                }
+
+                items.Add(newItem);
+            }
+
+            return items;
         }
 
         public string JsonWriteItems(List<PaymentHistoryLineItem> items)

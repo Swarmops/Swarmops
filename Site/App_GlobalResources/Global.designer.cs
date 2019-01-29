@@ -646,6 +646,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment #{0:N0}.
+        /// </summary>
+        internal static string Financial_PaymentSpecification {
+            get {
+                return ResourceManager.GetString("Financial_PaymentSpecification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payout #{0:N0}.
+        /// </summary>
+        internal static string Financial_PayoutSpecification {
+            get {
+                return ResourceManager.GetString("Financial_PayoutSpecification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Annual Profit/Loss To Date ({0}).
         /// </summary>
         internal static string Financial_ProfitToDate {
