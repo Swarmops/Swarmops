@@ -374,7 +374,7 @@
                     </div>
                 </div>
                 <div title="<img src='/Images/PageIcons/iconshock-money-calculator-128px.png' height='64' width='64' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment History</h2>
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label ID="MasterLabelEditPersonHeaderPaymentHistory" runat="server" Text="Payment History XYZ"/></h2>
                     <table id="masterPersonEditTablePaymentHistory" title="" class="easyui-treegrid" style="width: 100%; height: 400px"
                                 
                                 rownumbers="false"
@@ -384,11 +384,11 @@
                                 footer="true">
                                 <thead>  
                                     <tr>  
-                                        <th field="name" width="178"><asp:Literal ID="MasterPersonEditLiteralHeaderItemName" Text="Item Type XYZ" runat="server"/></th>  
-                                        <th field="description" width="180"><asp:Literal ID="MasterPersonEditLiteralHeaderItemDescription" Text="Description XYZ" runat="server"/></th>  
+                                        <th field="name" width="138"><asp:Literal ID="MasterPersonEditLiteralHeaderItemName" Text="Item Type XYZ" runat="server"/></th>  
+                                        <th field="description" width="220"><asp:Literal ID="MasterPersonEditLiteralHeaderItemDescription" Text="Description XYZ" runat="server"/></th>  
                                         <th field="opened" width="120"><asp:Literal ID="MasterPersonEditLiteralHeaderItemOpenedDate" Text="Opened date XYZ" runat="server"/></th>
-                                        <th field="owedToPerson" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountOwed" Text="Payment XYZ" runat="server"/></th>
-                                        <th field="paidToPerson" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountPaid" Text="Owed to you XYZ" runat="server"/></th>
+                                        <th field="owedToPerson" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountOwed" Text="Owed to you XYZ" runat="server"/></th>
+                                        <th field="paidToPerson" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountPaid" Text="Paid to you XYZ" runat="server"/></th>
                                         <th field="closed" width="120"><asp:Literal ID="MasterPersonEditLiteralHeaderItemClosedDate" Text="Closed date XYZ" runat="server"/></th>
                                         <th field="notes" width="80"><asp:Literal ID="MasterPersonEditLiteralHeaderItemNotes" Text="Notes XYZ" runat="server"/></th>
                                     </tr>  

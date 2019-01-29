@@ -55,19 +55,23 @@ namespace Swarmops.Frontend.Automation
 
             foreach (ExpenseClaim claim in expenses)
             {
-                PaymentHistoryLineItem newItem = new PaymentHistoryLineItem();
-                newItem.Id = "E" + claim.Identity.ToString(CultureInfo.InvariantCulture);
-                newItem.Name = Resources.Global.Financial_ExpenseClaim + " #" + claim.Identity.ToString("N0");
-                newItem.Description = claim.Description;
-                newItem.OwedToPerson = claim.AmountCents;
-
-                Payout payout = claim.Payout;
-                if (payout != null && payout.Open == false)
+                if (claim.Open || claim.PaidOut) // if both these are false, the claim was denied and shouldn't be listed
                 {
-                    newItem.ClosedDate = payout.FinancialTransaction.DateTime;
-                }
+                    PaymentHistoryLineItem newItem = new PaymentHistoryLineItem();
+                    newItem.Id = "E" + claim.Identity.ToString(CultureInfo.InvariantCulture);
+                    newItem.Name = Resources.Global.Financial_ExpenseClaim + " #" + claim.Identity.ToString("N0");
+                    newItem.Description = claim.Description;
+                    newItem.OpenedDate = claim.CreatedDateTime;
+                    newItem.OwedToPerson = claim.AmountCents;
 
-                items.Add(newItem);
+                    Payout payout = claim.Payout;
+                    if (payout != null && payout.Open == false)
+                    {
+                        newItem.ClosedDate = payout.FinancialTransaction.DateTime;
+                    }
+
+                    items.Add(newItem);
+                }
             }
 
             return items;
