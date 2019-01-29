@@ -381,7 +381,7 @@
                                 animate="true"
                                 fitColumns="true"
                                 idField="id"
-                                footer="true">
+                                showFooter="true">
                                 <thead>  
                                     <tr>  
                                         <th field="name" width="138"><asp:Literal ID="MasterPersonEditLiteralHeaderItemName" Text="Item Type XYZ" runat="server"/></th>  
