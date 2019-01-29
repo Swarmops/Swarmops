@@ -268,7 +268,7 @@
     <value>Ledgers</value>
   </data>
   <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>Account Plan</value>
+    <value>Chart of Accounts</value>
   </data>
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Audit Ledgers</value>
@@ -452,8 +452,8 @@
     <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
   </data>
   <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
-    <value>Set up Ledger Account Structure</value>
-    <comment>This is sometimes called an "account plan" but this term has many overloaded meanings in the context of operations software.</comment>
+    <value>Set up Chart of Accounts</value>
+    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
   </data>
   <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
     <value>Set up Payroll</value>

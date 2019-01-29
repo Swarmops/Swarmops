@@ -169,7 +169,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set up Ledger Account Structure.
+        ///   Looks up a localized string similar to Set up Chart of Accounts.
         /// </summary>
         internal static string Menu5_Admin_SetupLedgerAccountStructure {
             get {
@@ -619,7 +619,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account Plan.
+        ///   Looks up a localized string similar to Chart of Accounts.
         /// </summary>
         internal static string Menu5_Ledgers_AccountPlan {
             get {

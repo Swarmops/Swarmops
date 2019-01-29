@@ -304,7 +304,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account Plan.
+        ///   Looks up a localized string similar to Chart of Accounts.
         /// </summary>
         internal static string AccountPlan_PageTitle {
             get {
@@ -592,7 +592,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unbalanced Transactions (Must Match Or Fix).
+        ///   Looks up a localized string similar to Dangling Payments (Must Balance, Match Or Fix).
         /// </summary>
         internal static string BalanceTransactions_HeaderUnbalancedTransactions {
             get {
@@ -1141,7 +1141,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resolve all unmatched ledger transactions.
+        ///   Looks up a localized string similar to Resolve all dangling payments.
         /// </summary>
         internal static string EndOfMonth_MatchAccounts {
             get {

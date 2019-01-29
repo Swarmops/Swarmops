@@ -124,7 +124,7 @@
     <value>This is the overview of the financial accounts in your bookkeeping ledger. You can do some maintenance from here, even if most of the daily operations should be delegated to the budget owners.</value>
   </data>
   <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>Account Plan</value>
+    <value>Chart of Accounts</value>
   </data>
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Account</value>
@@ -638,7 +638,8 @@
     <value>(detailed description withheld)</value>
   </data>
   <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Unbalanced Transactions (Must Match Or Fix)</value>
+    <value>Dangling Payments (Must Balance, Match Or Fix)</value>
+    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
   </data>
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Account</value>
@@ -1011,7 +1012,7 @@
     <value>This is a checklist of things to do to close the previous month and begin the new one with respect to accounting.</value>
   </data>
   <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
-    <value>Resolve all unmatched ledger transactions</value>
+    <value>Resolve all dangling payments</value>
     <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
   </data>
   <data name="EndOfMonth_Title" xml:space="preserve">
