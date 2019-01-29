@@ -183,10 +183,11 @@ namespace Swarmops.Frontend.Automation
             StringBuilder result = new StringBuilder(16384);
             result.Append("[");
 
-            if (items.Any())
+            if (items.Count() > 0)
             {
                 // Must return something in body to refresh footer - EasyUI bug
 
+                result.Append("{");
                 result.AppendFormat(
                     "\"id\":\"NoRecords\",\"name\":\"{0}\",\"description\":\"{1}\"",
                     JsonSanitize(Resources.Global.Global_EmptySet),
