@@ -222,11 +222,11 @@ namespace Swarmops.Frontend.Automation
             {
                 if (currentBalance > 0)
                 {
-                    summary = Resources.Global.Financial_YouAreOwed;
+                    summary = String.Format(Resources.Global.Financial_YouAreOwed, _authenticationData.CurrentOrganization.Name);
                 }
                 else
                 {
-                    summary = Resources.Global.Financial_YouOwe;
+                    summary = String.Format(Resources.Global.Financial_YouOwe, _authenticationData.CurrentOrganization.Name);
                 }
             }
             else
