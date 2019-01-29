@@ -166,9 +166,9 @@ namespace Swarmops.Frontend.Automation
                 newItem.PaidToPerson = payout.AmountCents;
                 newItem.OpenedDate = payout.CreatedDateTime;
 
-                FinancialTransaction closeTx = payout.FinancialTransaction;
-                if (closeTx != null) 
+                if (!payout.Open)
                 {
+                    FinancialTransaction closeTx = payout.FinancialTransaction;
                     newItem.ClosedDate = closeTx.DateTime;
                 }
 
@@ -187,7 +187,7 @@ namespace Swarmops.Frontend.Automation
             { 
                 result.Append("{");
                 result.AppendFormat(
-                    "\"id\":\"{0}\",\"name\":\"{1}\",\"description\":\"{2}\",\"opened\":\"{3}\",\"owedToPerson\":\"<span class='medium'>{4}</span>\",\"paidToPerson\":\"<span class='medium'>{5}</span>\",\"closed\":\"{6}\"",
+                    "\"id\":\"{0}\",\"name\":\"{1}\",\"description\":\"{2}\",\"opened\":\"{3}\",\"owedToPerson\":\"<span class='weight-more-emphasis'>{4}</span>\",\"paidToPerson\":\"<span class='weight-more-emphasis'>{5}</span>\",\"closed\":\"{6}\"",
                     JsonSanitize(item.Id),
                     JsonSanitize(item.Name),
                     JsonSanitize(item.Description),
@@ -247,7 +247,7 @@ namespace Swarmops.Frontend.Automation
             }
 
             return String.Format(
-                    "\"id\":\"Footer\",\"name\":\"<span class='strong uppercase'>{0}</span>\",\"description\":\"<span class='medium uppercase'>{1}</span>\",\"owedToPerson\":\"<span class='strong uppercase'>{2}</span>\",\"paidToPerson\":\"<span class='strong uppercase'>{3}</span>\"",
+                    "\"id\":\"Footer\",\"name\":\"<span class='weight-most-emphasis uppercase'>{0}</span>\",\"description\":\"<span class='weight-more-emphasis uppercase'>{1}</span>\",\"owedToPerson\":\"<span class='weight-most-emphasis uppercase'>{2}</span>\",\"paidToPerson\":\"<span class='weight-most-emphasis uppercase'>{3}</span>\"",
                     JsonSanitize(Resources.Global.Financial_CurrentBalance),
                     JsonSanitize(summary),
                     currentBalance == 0 ? Resources.Global.Financial_Zero : currentBalance > 0 ? (currentBalance / 100.0).ToString("N2") : string.Empty,
