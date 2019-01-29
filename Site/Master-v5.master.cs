@@ -252,6 +252,8 @@ namespace Swarmops.Frontend
             this.MasterPersonEditLiteralHeaderItemOpenedDate.Text = Resources.Global.Global_Opened;
             this.MasterPersonEditLiteralHeaderItemClosedDate.Text = Resources.Global.Global_Closed;
             this.MasterPersonEditLiteralHeaderItemNotes.Text = Resources.Global.Global_Notes;
+            this.MasterPersonEditLiteralHeaderItemName.Text = Resources.Global.Global_Item;
+            this.MasterPersonEditLiteralHeaderItemDescription.Text = Resources.Global.Global_Description;
 
 
             this.MasterLabelBitIdRegisterHeader.Text = Resources.Global.Master_BitIdRegister_Header;
