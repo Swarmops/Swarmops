@@ -246,6 +246,13 @@ namespace Swarmops.Frontend
             this.MasterLabelEditPersonResetPassword.Text = Resources.Global.Master_EditPersonResetPasswordLabel;
             this.MasterLabelEditPerson2FAProvisioning.Text = Resources.Global.Master_EditPerson2FAEnable;
 
+            this.MasterLabelEditPersonHeaderPaymentHistory.Text = Resources.Global.Financial_PaymentHistory;
+            this.MasterPersonEditLiteralHeaderAmountOwed.Text = Resources.Global.Financial_Owed;
+            this.MasterPersonEditLiteralHeaderAmountPaid.Text = Resources.Global.Financial_Paid;
+            this.MasterPersonEditLiteralHeaderItemOpenedDate.Text = Resources.Global.Global_Opened;
+            this.MasterPersonEditLiteralHeaderItemClosedDate.Text = Resources.Global.Global_Closed;
+            this.MasterPersonEditLiteralHeaderItemNotes.Text = Resources.Global.Global_Notes;
+
 
             this.MasterLabelBitIdRegisterHeader.Text = Resources.Global.Master_BitIdRegister_Header;
 

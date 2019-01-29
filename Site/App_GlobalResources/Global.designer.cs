@@ -655,11 +655,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Owed.
+        /// </summary>
+        internal static string Financial_Owed {
+            get {
+                return ResourceManager.GetString("Financial_Owed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paid.
+        /// </summary>
+        internal static string Financial_Paid {
+            get {
+                return ResourceManager.GetString("Financial_Paid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conference.
         /// </summary>
         internal static string Financial_Parley {
             get {
                 return ResourceManager.GetString("Financial_Parley", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment History.
+        /// </summary>
+        internal static string Financial_PaymentHistory {
+            get {
+                return ResourceManager.GetString("Financial_PaymentHistory", resourceCulture);
             }
         }
         
@@ -1024,6 +1051,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Closed.
+        /// </summary>
+        internal static string Global_Closed {
+            get {
+                return ResourceManager.GetString("Global_Closed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string Global_Confirm {
@@ -1258,6 +1294,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item.
+        /// </summary>
+        internal static string Global_Item {
+            get {
+                return ResourceManager.GetString("Global_Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Items.
+        /// </summary>
+        internal static string Global_Items {
+            get {
+                return ResourceManager.GetString("Global_Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [...loading...].
         /// </summary>
         internal static string Global_LoadingPlaceholder {
@@ -1488,6 +1542,15 @@ namespace Resources {
         internal static string Global_On {
             get {
                 return ResourceManager.GetString("Global_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opened.
+        /// </summary>
+        internal static string Global_Opened {
+            get {
+                return ResourceManager.GetString("Global_Opened", resourceCulture);
             }
         }
         

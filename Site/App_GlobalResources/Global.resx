@@ -1018,6 +1018,17 @@
   <data name="Financial_CurrentBalance" xml:space="preserve">
     <value>Current Balance</value>
   </data>
+  <data name="Financial_Owed" xml:space="preserve">
+    <value>Owed</value>
+    <comment>As in, "Amount Owed"</comment>
+  </data>
+  <data name="Financial_Paid" xml:space="preserve">
+    <value>Paid</value>
+    <comment>As in, "Amount Paid To Person"</comment>
+  </data>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>Payment History</value>
+  </data>
   <data name="Financial_PaymentSpecification" xml:space="preserve">
     <value>Payment #{0:N0}</value>
     <comment>A Payment (as opposed to payout) is money entering the organization</comment>
@@ -1049,5 +1060,21 @@
   <data name="Financial_Zero" xml:space="preserve">
     <value>Zero</value>
     <comment>This is used when a debt is zero; there is no debt to settle</comment>
+  </data>
+  <data name="Global_Closed" xml:space="preserve">
+    <value>Closed</value>
+    <comment>As in "record closed"</comment>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>Item</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>Items</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
+  <data name="Global_Opened" xml:space="preserve">
+    <value>Opened</value>
+    <comment>As in "record opened"</comment>
   </data>
 </root>
