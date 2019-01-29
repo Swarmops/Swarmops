@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Web;
 using System.Web.UI;
@@ -48,8 +49,8 @@ namespace Swarmops.Frontend.Automation
             list.Sort(LineItemSorterByDate);
 
             Response.ContentType = "application/json";
-            Response.Output.WriteLine("{\"rows\": " + JsonWriteItems(list) + ", \"footer\": [" +
-                                       JsonWriteFooter(list) + "]}");
+            Response.Output.WriteLine("{\"rows\": " + JsonWriteItems(list) + ", \"footer\": [{" +
+                                       JsonWriteFooter(list) + "}]}");
 
             Response.End();
 
@@ -148,7 +149,7 @@ namespace Swarmops.Frontend.Automation
             {
                 if (payout.Open)
                 {
-                    continue; // do not list unconfirmed payouts
+                    _payoutDescriptionOverride[payout.Identity] = Resources.Global.Financial_UnconfirmedPayout;
                 }
 
                 PaymentHistoryLineItem newItem = new PaymentHistoryLineItem();
@@ -166,7 +167,7 @@ namespace Swarmops.Frontend.Automation
                 newItem.OpenedDate = payout.CreatedDateTime;
 
                 FinancialTransaction closeTx = payout.FinancialTransaction;
-                if (closeTx != null) // it damn well should not be null since Open is false
+                if (closeTx != null) 
                 {
                     newItem.ClosedDate = closeTx.DateTime;
                 }
@@ -186,7 +187,7 @@ namespace Swarmops.Frontend.Automation
             { 
                 result.Append("{");
                 result.AppendFormat(
-                    "\"id\":\"{0}\",\"name\":\"{1}\",\"description\":\"{2}\",\"opened\":\"{3}\",\"owedToPerson\":\"{4}\",\"paidToPerson\":\"{5}\",\"closed\":\"{6}\"",
+                    "\"id\":\"{0}\",\"name\":\"{1}\",\"description\":\"{2}\",\"opened\":\"{3}\",\"owedToPerson\":\"<span class='medium'>{4}</span>\",\"paidToPerson\":\"<span class='medium'>{5}</span>\",\"closed\":\"{6}\"",
                     JsonSanitize(item.Id),
                     JsonSanitize(item.Name),
                     JsonSanitize(item.Description),
@@ -208,7 +209,50 @@ namespace Swarmops.Frontend.Automation
 
         public string JsonWriteFooter(List<PaymentHistoryLineItem> items)
         {
-            return string.Empty;
+            Int64 currentBalance = 0;
+
+            foreach (PaymentHistoryLineItem item in items)
+            {
+                currentBalance += item.OwedToPerson;
+                currentBalance -= item.PaidToPerson;
+            }
+
+            string summary = string.Empty;
+            if (_person.Identity == _authenticationData.CurrentUser.Identity)
+            {
+                if (currentBalance > 0)
+                {
+                    summary = Resources.Global.Financial_YouAreOwed;
+                }
+                else
+                {
+                    summary = Resources.Global.Financial_YouOwe;
+                }
+            }
+            else
+            {
+                if (currentBalance > 0)
+                {
+                    summary = Resources.Global.Financial_PersonIsOwed;
+                }
+                else
+                {
+                    summary = Resources.Global.Financial_PersonOwes;
+                }
+            }
+
+            if (currentBalance == 0)
+            {
+                summary = Resources.Global.Financial_AllBalancesSettled;
+            }
+
+            return String.Format(
+                    "\"id\":\"Footer\",\"name\":\"<span class='strong uppercase'>{0}</span>\",\"description\":\"<span class='medium uppercase'>{1}</span>\",\"owedToPerson\":\"<span class='strong uppercase'>{2}</span>\",\"paidToPerson\":\"<span class='strong uppercase'>{3}</span>\"",
+                    JsonSanitize(Resources.Global.Financial_CurrentBalance),
+                    JsonSanitize(summary),
+                    currentBalance == 0 ? Resources.Global.Financial_Zero : currentBalance > 0 ? (currentBalance / 100.0).ToString("N2") : string.Empty,
+                    currentBalance == 0 ? Resources.Global.Financial_Zero : currentBalance < 0 ? (currentBalance / -100.0).ToString("N2") : string.Empty
+                );
         }
 
         public static int LineItemSorterByDate(PaymentHistoryLineItem a, PaymentHistoryLineItem b)

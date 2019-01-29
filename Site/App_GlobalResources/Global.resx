@@ -1011,6 +1011,13 @@
     <value>EBITDA</value>
     <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
   </data>
+  <data name="Financial_AllBalancesSettled" xml:space="preserve">
+    <value>All Balances Are Settled</value>
+    <comment>Nobody owes anybody anything</comment>
+  </data>
+  <data name="Financial_CurrentBalance" xml:space="preserve">
+    <value>Current Balance</value>
+  </data>
   <data name="Financial_PaymentSpecification" xml:space="preserve">
     <value>Payment #{0:N0}</value>
     <comment>A Payment (as opposed to payout) is money entering the organization</comment>
@@ -1018,5 +1025,29 @@
   <data name="Financial_PayoutSpecification" xml:space="preserve">
     <value>Payout #{0:N0}</value>
     <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
+  <data name="Financial_PersonIsOwed" xml:space="preserve">
+    <value>Person Is Owed</value>
+    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
+  </data>
+  <data name="Financial_PersonOwes" xml:space="preserve">
+    <value>Person Owes Amount</value>
+    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
+  </data>
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>Unconfirmed Payout</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
+  </data>
+  <data name="Financial_YouAreOwed" xml:space="preserve">
+    <value>{0} Owes You</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Financial_YouOwe" xml:space="preserve">
+    <value>You Owe This Amount</value>
+    <comment>Like Person Owes, but directed at the user at the screen</comment>
+  </data>
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>Zero</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
   </data>
 </root>

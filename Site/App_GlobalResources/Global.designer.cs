@@ -187,6 +187,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Balances Are Settled.
+        /// </summary>
+        internal static string Financial_AllBalancesSettled {
+            get {
+                return ResourceManager.GetString("Financial_AllBalancesSettled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         internal static string Financial_Amount {
@@ -390,6 +399,15 @@ namespace Resources {
         internal static string Financial_Cost {
             get {
                 return ResourceManager.GetString("Financial_Cost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Balance.
+        /// </summary>
+        internal static string Financial_CurrentBalance {
+            get {
+                return ResourceManager.GetString("Financial_CurrentBalance", resourceCulture);
             }
         }
         
@@ -664,6 +682,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Person Is Owed.
+        /// </summary>
+        internal static string Financial_PersonIsOwed {
+            get {
+                return ResourceManager.GetString("Financial_PersonIsOwed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Person Owes Amount.
+        /// </summary>
+        internal static string Financial_PersonOwes {
+            get {
+                return ResourceManager.GetString("Financial_PersonOwes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Annual Profit/Loss To Date ({0}).
         /// </summary>
         internal static string Financial_ProfitToDate {
@@ -817,6 +853,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unconfirmed Payout.
+        /// </summary>
+        internal static string Financial_UnconfirmedPayout {
+            get {
+                return ResourceManager.GetString("Financial_UnconfirmedPayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yearly result.
         /// </summary>
         internal static string Financial_YearlyResult {
@@ -826,11 +871,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Owes You.
+        /// </summary>
+        internal static string Financial_YouAreOwed {
+            get {
+                return ResourceManager.GetString("Financial_YouAreOwed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You Owe This Amount.
+        /// </summary>
+        internal static string Financial_YouOwe {
+            get {
+                return ResourceManager.GetString("Financial_YouOwe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to YTD.
         /// </summary>
         internal static string Financial_YTD {
             get {
                 return ResourceManager.GetString("Financial_YTD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zero.
+        /// </summary>
+        internal static string Financial_Zero {
+            get {
+                return ResourceManager.GetString("Financial_Zero", resourceCulture);
             }
         }
         

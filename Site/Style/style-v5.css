@@ -1439,7 +1439,25 @@ span.spanGrayedOut {
     opacity: .5;
 }
 
+span.light {
+    font-weight: 300;
+}
 
+span.regular-weight {
+    font-weight: 400;
+}
+
+span.medium {
+    font-weight: 500;
+}
+
+span.strong {
+    font-weight: 700;
+}
+
+span.uppercase {
+    text-transform: uppercase;
+}
 
 /* COLOR SCHEME
 
