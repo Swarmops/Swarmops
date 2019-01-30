@@ -69,6 +69,8 @@
                                         $(thisIcon).attr("rel", "active");
                                         $(thisIcon).hide();
                                         $('.row' + baseId).addClass("action-list-item-approved");
+                                        $('.row' + baseId).removeClass("datagrid-row-selected");
+                                        $('.row' + baseId).removeClass("datagrid-row-checked");
                                         $("#IconDenial" + baseId).hide();
                                         $("#IconApproved" + baseId).fadeTo(200, 1);
                                         $("#IconUndo" + baseId).fadeTo(1000, 1); // the longer delay is intentional

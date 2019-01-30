@@ -321,6 +321,8 @@
                         $("#IconDenial" + baseid).finish().css("display", "none").css("opacity", 1.0);
                         $("#IconUndo" + baseid).fadeIn(100);
                         $('.row' + baseid).addClass("action-list-item-approved");
+                        $('.row' + baseid).removeClass("datagrid-row-selected");
+                        $('.row' + baseid).removeClass("datagrid-row-checked");
                         alertify.success(SwarmopsJS.unescape(msg.d.DisplayMessage));
 
                         recheckBudgets(); // will double-check budgets against server
