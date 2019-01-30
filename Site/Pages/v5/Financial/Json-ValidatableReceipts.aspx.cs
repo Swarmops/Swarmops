@@ -29,7 +29,7 @@ public partial class Pages_v5_Finance_Json_ValidatableReceipts : DataV5Base
         StringBuilder result = new StringBuilder (16384);
 
         string hasDoxString =
-            "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\\\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-search-256px.png';\\\" baseid=\\\"E{5}\\\" class=\\\"LocalViewDox\\\" height=\\\"20\\\" width=\\\"20\\\" style=\\\"cursor:pointer\\\" />";
+            "<img baseid='E{5}' class='LocalViewDox action-icon' />";
 
         result.Append ("{\"rows\":[");
         FinancialTransactionTagSets tagSets = FinancialTransactionTagSets.ForOrganization (CurrentOrganization);
@@ -59,7 +59,7 @@ public partial class Pages_v5_Finance_Json_ValidatableReceipts : DataV5Base
                 "<img id='IconApprovalE{5}' class='LocalIconApproval action-icon' baseid='E{5}' />" +
                 "<img id='IconApprovedE{5}' class='LocalIconApproved status-icon' baseid='E{5}' />" +
                 "<img id='IconDenialE{5}' class='LocalIconDenial action-icon' baseid='E{5}' />" +
-                "<img id='IconDeniedE{5}' class='LocalIconDenied status-icon' baseid='E{5}' />\"",
+                "<img id='IconDeniedE{5}' class='LocalIconDenied status-icon' baseid='E{5}' />" +
                 "<img id='IconUndoE{5}' class='LocalIconUndo action-icon' baseid='E{5}' />\"",
                 "olditem", JsonSanitize (claim.ClaimerCanonical), JsonSanitize (claim.Description),
                 JsonSanitize (claim.Budget.Name),
