@@ -1037,7 +1037,7 @@ input.entryError, span.entryError, div.entryError {
 }
 
 .action-list-item-approved {
-    color: #aaa;
+    color: #aaa !important;
     transition: all 0.50s;
     -webkit-transition: all 0.50s;
 }
