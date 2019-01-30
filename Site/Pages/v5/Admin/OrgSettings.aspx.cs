@@ -215,7 +215,7 @@ namespace Swarmops.Frontend.Pages.Admin
                         authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold = coldAccount;
 
                         result.DisplayMessage =
-                            "Bitcoin cold accounts were created. Edit names and addresses in Account Plan."; // LOC
+                            "Bitcoin cold accounts were created. Edit names and addresses in Connected Accounts."; // LOC
                     }
                     else
                     {
