@@ -23,7 +23,7 @@
             $('img.action').attr('cursor', 'hand');
 
             $('#TableEomItems').datagrid('appendRow', {
-                itemGroupName: '<span class="itemGroupHeader">Upload&nbsp;external&nbsp;data&nbsp;and&nbsp;match&nbsp;accounts</span>',
+                itemGroupName: '<span class="item-group-header">Upload&nbsp;external&nbsp;data&nbsp;and&nbsp;match&nbsp;accounts</span>',
                 itemId: 'GroupExternal'
             });
 
@@ -53,7 +53,7 @@
             });
 
             $('#TableEomItems').datagrid('appendRow', {
-                itemGroupName: '<span class="itemGroupHeader">Taxes&nbsp;and&nbsp;Payroll</span>',
+                itemGroupName: '<span class="item-group-header">Taxes&nbsp;and&nbsp;Payroll</span>',
                 itemId: 'GroupTaxesPayroll'
             });
 
@@ -88,7 +88,7 @@
             */
 
             $('#TableEomItems').datagrid('appendRow', {
-                itemGroupName: '<span class="itemGroupHeader">Annual&nbsp;Reports</span>',
+                itemGroupName: '<span class="item-group-header">Annual&nbsp;Reports</span>',
                 itemId: 'GroupAnnual'
             });
 
@@ -109,7 +109,7 @@
 
 
             $('#TableEomItems').datagrid('appendRow', {
-                itemGroupName: '<span class="itemGroupHeader">Send&nbsp;to&nbsp;Accountants,&nbsp;Shareholders,&nbsp;etc.</span>',
+                itemGroupName: '<span class="item-group-header">Send&nbsp;to&nbsp;Accountants,&nbsp;Shareholders,&nbsp;etc.</span>',
                 itemId: 'SendReports'
             });
 
@@ -342,73 +342,6 @@
     </script>
 
     <style type="text/css">
-        .itemGroupHeader {
-            font-size: 125%;
-            font-weight: 500;
-        }
-
-        .action-icon {
-            -webkit-transition: all 0.50s;
-            transition: all 0.50s;
-            border: 1px solid transparent;
-            width: 26px;
-            height: 20px;
-            cursor: pointer;
-        }
-
-        .status-icon {
-            border: 1px solid transparent;
-            width: 26px;
-            height: 20px;
-        }
-
-        .group-status-icon {
-            width: 32px;
-            height: 24px;
-        }
-
-        .action-icon:hover {
-            border: 1px solid #FFD580;
-            background: #FFEDC8;
-            filter: brightness(105%) contrast(105%);
-            -webkit-filter: brightness(105%) contrast(105%);
-            -moz-filter: brightness(105%) contrast(105%);
-            -o-filter: brightness(105%) contrast(105%);
-            -ms-filter: brightness(105%) contrast(105%);
-            /*-webkit-transition: all 0.50s;
-            transition: all 0.50s;*/
-        }
-
-        .action-list-item .action-skip-disabled {
-            display: none !important;
-        }
-
-        .action-list-item-disabled .action-skip, .action-list-item-completed .action-skip {
-            -webkit-transition: all 0.50s;
-            transition: all 0.50s;
-            display: none;
-        }
-
-        .action-list-item-completed {
-            -webkit-transition: all 0.50s;
-            transition: all 0.50s;
-            color: #ccc;
-            text-decoration: line-through;
-        }
-
-        .action-list-item-disabled {
-            -webkit-transition: all 0.50s;
-            transition: all 0.50s;
-            color: #aaa;
-        }
-
-        .action-icon-disabled {
-            display: none !important;
-        }
-
-        .datagrid-row-selected, .datagrid-row-over, .datagrid-row-checked {
-            background:transparent !important;
-        }
     </style>
 
 
