@@ -389,7 +389,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     account.SetBudgetCents (DateTime.Today.Year, newSingleBudget);
 
                     // Once we've set the budget, also update the "yearly result" budget.
-                    // The "yearly result" budget isn't shown in the account plan, but is
+                    // The "yearly result" budget isn't shown in the chart of accounts, but is
                     // abstracted to "projected loss" or "projected gain" pseudobudgets.
 
                     int thisYear = DateTime.UtcNow.Year;
