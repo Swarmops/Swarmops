@@ -57,8 +57,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             FinancialTransactionTagSets tagSets = FinancialTransactionTagSets.ForOrganization (CurrentOrganization);
 
-            int descriptionWidth = 137 + 180;
-            int tagWidth = 180;
+            int descriptionWidth = 137 + 170;
+            int tagWidth = 170;
 
             if (tagSets.Count > 0)
             {
