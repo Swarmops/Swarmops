@@ -35,36 +35,6 @@
             $('#TableAttestableCosts').datagrid(
                 {
                     onLoadSuccess: function () {
-                        $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
-                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png");
-                        $(".LocalIconApproved, .LocalIconDenied").css("display", "none");
-                        $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
-                        $(".LocalIconApproval, .LocalIconApproved, .LocalIconDenial").css("cursor", "pointer");
-
-                        $(".LocalIconApproval").mouseover(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot.png");
-                            }
-                        });
-
-                        $(".LocalIconApproval").mouseout(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
-                            }
-                        });
-
-                        $(".LocalIconApproved").mouseover(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
-                            }
-                        });
-
-                        $(".LocalIconApproved").mouseout(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png");
-                            }
-                        });
-
                         $(".LocalIconApproval").click(function () {
                             if ($(this).attr("rel") != "loading") {
                                 $(this).attr("rel", "loading");
@@ -88,7 +58,7 @@
                             }
                         });
 
-                        $(".LocalIconApproved").click(function () {
+                        $(".LocalIconUndo").click(function () {
                             if ($(this).attr("rel") != "loading") {
                                 $(this).attr("rel", "loading");
                                 $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
@@ -110,21 +80,6 @@
                                     }
                                 });
 
-                            }
-                        });
-
-
-
-
-                        $(".LocalIconDenial").mouseover(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot.png");
-                            }
-                        });
-
-                        $(".LocalIconDenial").mouseout(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
                             }
                         });
 
