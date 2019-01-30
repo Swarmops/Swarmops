@@ -52,7 +52,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
             result.AppendFormat(
                 "\"item\":\"{0}\",\"beneficiary\":\"{1}\",\"description\":\"{2}\",\"budgetName\":\"{3}\",\"amountRequested\":\"{4:N2}\",\"itemId\":\"{5}\"," +
                 "\"dox\":\"" + (item.HasDox ? hasDoxString : "&nbsp;") + "\"," +
-                "\"actions\":\"<span style='position:relative;left:-2px'\">" +
+                "\"actions\":\"<span style='position:relative;left:-2px'>" +
                 "<img id='IconApproval{5}' class='LocalIconApproval LocalNew LocalFundsInsufficient action-icon' accountid='{6}' amount='{4}' baseid='{5}' />" +
                 "<img id='IconApproved{5}' class='LocalIconApproved LocalNew status-icon' baseid='{5}' />" +
                 "<img id='IconUndo{5}' class='LocalIconUndo LocalNew action-icon' baseid='{5}' />" +
