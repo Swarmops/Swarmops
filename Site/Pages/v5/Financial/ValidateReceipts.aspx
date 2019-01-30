@@ -56,8 +56,8 @@
                                         $(thisIcon).attr("rel", "active");
                                         $(thisIcon).hide();
                                         $("#IconDenial" + $(thisIcon).attr("baseid")).hide();
-                                        $("#IconApproved" + $(thisIcon).attr("baseid")).fadeIn(200);
-                                        $("#IconUndo" + $(thisIcon).attr("baseid")).fadeIn(1000); // the longer delay is intentional
+                                        $("#IconApproved" + $(thisIcon).attr("baseid")).fadeTo(200, 1);
+                                        $("#IconUndo" + $(thisIcon).attr("baseid")).fadeTo(1000, 1); // the longer delay is intentional
                                         alertify.success(unescape(msg.d));
                                     }
                                 });
@@ -81,8 +81,8 @@
                                         $(thisIcon).css("display", "none");
                                         $(thisIcon).attr("rel", "");
                                         $("#IconApproved" + $(thisIcon).attr("baseid")).hide();
-                                        $("#IconApproval" + $(thisIcon).attr("baseid")).fadeIn(200);
-                                        $("#IconDenial" + $(thisIcon).attr("baseid")).fadeIn(200);
+                                        $("#IconApproval" + $(thisIcon).attr("baseid")).fadeTo(200, 1);
+                                        $("#IconDenial" + $(thisIcon).attr("baseid")).fadeTo(200, 1);
                                         $("#" + $(thisIcon).attr("rel"), "");
                                         alertify.log(unescape(msg.d).replace('+', ' '));
                                     }
