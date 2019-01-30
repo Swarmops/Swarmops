@@ -67,12 +67,12 @@
                     onLoadSuccess: function () {
                         budgetRemainingLookup.attestabilityInitialized = false;
 
-                        $(".LocalIconApproval").attr("src", '/Images/Icons/iconshock-balloon-yes-128x96px.png').hide();  // Initialized to wait icon
-                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").hide().css("opacity", 0.5);
+                        $(".LocalIconApproval").attr("src", '/Images/Icons/iconshock-balloon-yes-128x96px.png');  // Hidden initially; wait shown instead
+                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").css("opacity", 0.5);
                         $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png").hide();
-                        $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png").hide();
-                        $(".LocalIconWait").attr("src", "/Images/Abstract/ajaxloader-48x36px.gif").show();  // initializes as wait cursor here until budgets loaded
-                        $(".LocalIconApproved.LocalNew, .LocalIconUndo.LocalNew, .LocalIconDenied.LocalNew, .LocalIconApproval.LocalPreviouslyAttested, .LocalIconDenial.LocalPreviouslyAttested, .LocalIconDenied.LocalPreviouslyAttested").hide();
+                        $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
+                        $(".LocalIconWait").attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");  // initializes as wait cursor here until budgets loaded
+                        $(".LocalIconApproval.LocalNew, .LocalIconApproved.LocalNew, .LocalIconUndo.LocalNew, .LocalIconDenied.LocalNew, .LocalIconApproval.LocalPreviouslyAttested, .LocalIconWait.LocalPreviouslyAttested, .LocalIconDenial.LocalPreviouslyAttested, .LocalIconDenied.LocalPreviouslyAttested").hide();
                         $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
 
 
