@@ -56,8 +56,8 @@
                                         $(thisIcon).attr("rel", "active");
                                         $(thisIcon).hide();
                                         $("#IconDenial" + $(thisIcon).attr("baseid")).hide();
-                                        $("#IconApproved" + $(thisIcon).attr("baseid")).fadeIn(100);
-                                        $("#IconUndo" + $(thisIcon).attr("baseid")).fadeIn(100);
+                                        $("#IconApproved" + $(thisIcon).attr("baseid")).fadeIn(200);
+                                        $("#IconUndo" + $(thisIcon).attr("baseid")).fadeIn(1000); // the longer delay is intentional
                                         alertify.success(unescape(msg.d));
                                     }
                                 });
@@ -80,8 +80,9 @@
                                         $(thisIcon).attr("src", "/Images/Icons/iconshock-undo-128x96px.png");
                                         $(thisIcon).css("display", "none");
                                         $(thisIcon).attr("rel", "");
-                                        $("#IconApproval" + $(thisIcon).attr("baseid")).fadeIn(100);
-                                        $("#IconDenial" + $(thisIcon).attr("baseid")).fadeIn(100);
+                                        $("#IconApproved" + $(thisIcon).attr("baseid")).hide();
+                                        $("#IconApproval" + $(thisIcon).attr("baseid")).fadeIn(200);
+                                        $("#IconDenial" + $(thisIcon).attr("baseid")).fadeIn(200);
                                         $("#" + $(thisIcon).attr("rel"), "");
                                         alertify.log(unescape(msg.d).replace('+', ' '));
                                     }
