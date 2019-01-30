@@ -66,6 +66,7 @@
                                 success: function (msg) {
                                     var baseId = $(thisIcon).attr("baseid");
                                     $('.row' + baseId).addClass("action-list-item-approved");
+                                    $("#IconWait" + baseId).hide();
                                     $("#IconDenial" + baseId).hide();
                                     $("#IconApproved" + baseId).fadeTo(200, 0.5);  // half opacity is intentional
                                     $("#IconUndo" + baseId).fadeTo(1000, 1); // the longer delay is intentional
@@ -76,8 +77,8 @@
 
                         $(".LocalIconUndo").click(function () {
                             var thisIcon = this;
-                            $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
                             $(this).hide();
+                            $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
                             $("#IconWait" + $(this).attr("baseid")).show();
                             $.ajax({
                                 type: "POST",
@@ -87,8 +88,8 @@
                                 dataType: "json",
                                 success: function (msg) {
                                     var baseId = $(thisIcon).attr("baseid");
-                                    $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                                     $('.row' + baseId).removeClass("action-list-item-approved");
+                                    $("#IconWait" + baseId).hide();
                                     $("#IconApproved" + baseId).hide();
                                     $("#IconApproval" + baseId).fadeTo(200, 1);
                                     $("#IconDenial" + baseId).fadeTo(200, 1);
@@ -120,11 +121,11 @@
 
     </script>
     
-     <style type="text/css">
-        .datagrid-row-selected,.datagrid-row-over{
-            background:transparent;
-        }
+    <style type="text/css">
+        /* any extra style goes here */
     </style>
+    
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label runat="server" ID="LabelAttestCostsHeader" Text="XYZ Costs Awaiting Your Attestation" /></h2>
