@@ -58,6 +58,7 @@ public partial class Pages_v5_Finance_Json_ValidatableReceipts : DataV5Base
                 "\"actions\":\"" +
                 "<img id='IconApprovalE{5}' class='LocalIconApproval action-icon' baseid='E{5}' />" +
                 "<img id='IconApprovedE{5}' class='LocalIconApproved status-icon' baseid='E{5}' />" +
+                "<img id='IconWaitE{5}' class='LocalIconWait status-icon' baseid='E{5}' />" +
                 "<img id='IconUndoE{5}' class='LocalIconUndo action-icon' baseid='E{5}' />" +
                 "<img id='IconDenialE{5}' class='LocalIconDenial action-icon' baseid='E{5}' />" +
                 "<img id='IconDeniedE{5}' class='LocalIconDenied status-icon' baseid='E{5}' />\"",

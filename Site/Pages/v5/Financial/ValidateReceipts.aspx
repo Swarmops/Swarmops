@@ -49,64 +49,52 @@
                         $(".LocalIconDenial").attr('src', '/Images/Icons/iconshock-balloon-no-128x96px.png');
                         $(".LocalIconDenied").attr('src', '/Images/Icons/iconshock-red-cross-128x96px.png').hide();
                         $(".LocalIconUndo").attr('src', '/Images/Icons/iconshock-balloon-undo-128x96px.png').hide();
+                        $(".LocalIconWait").attr('src', '/Images/Abstract/ajaxloader-48x36px.gif').hide();
 
 
                         $(".LocalIconApproval").click(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("rel", "loading");
-                                $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
-                                $("#IconDenial" + $(this).attr("baseid")).fadeTo(1000, 0.01);
-                                var thisIcon = this;
-                                $.ajax({
-                                    type: "POST",
-                                    url: "/Pages/v5/Financial/ValidateReceipts.aspx/Validate",
-                                    data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    success: function (msg) {
-                                        var baseId = $(thisIcon).attr("baseid");
-                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
-                                        $(thisIcon).attr("rel", "active");
-                                        $(thisIcon).hide();
-                                        $('.row' + baseId).addClass("action-list-item-approved");
-                                        $('.row' + baseId).removeClass("datagrid-row-selected");
-                                        $('.row' + baseId).removeClass("datagrid-row-checked");
-                                        $("#IconDenial" + baseId).hide();
-                                        $("#IconApproved" + baseId).fadeTo(200, 1);
-                                        $("#IconUndo" + baseId).fadeTo(1000, 1); // the longer delay is intentional
-                                        alertify.success(unescape(msg.d));
-                                    }
-                                });
-                            }
+                            $(this).hide();
+                            $("#IconWait" + $(this).attr("baseid")).show();
+                            $("#IconDenial" + $(this).attr("baseid")).fadeTo(1000, 0.01);
+                            var thisIcon = this;
+                            $.ajax({
+                                type: "POST",
+                                url: "/Pages/v5/Financial/ValidateReceipts.aspx/Validate",
+                                data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (msg) {
+                                    var baseId = $(thisIcon).attr("baseid");
+                                    $('.row' + baseId).addClass("action-list-item-approved");
+                                    $("#IconDenial" + baseId).hide();
+                                    $("#IconApproved" + baseId).fadeTo(200, 0.5);  // half opacity is intentional
+                                    $("#IconUndo" + baseId).fadeTo(1000, 1); // the longer delay is intentional
+                                    alertify.success(unescape(msg.d));
+                                }
+                            });
                         });
 
                         $(".LocalIconUndo").click(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("rel", "loading");
-                                $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
-                                var thisIcon = this;
-                                $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
-                                $.ajax({
-                                    type: "POST",
-                                    url: "/Pages/v5/Financial/ValidateReceipts.aspx/Devalidate",
-                                    data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    success: function (msg) {
-                                        var baseId = $(thisIcon).attr("baseid");
-                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
-                                        $(thisIcon).css("display", "none");
-                                        $(thisIcon).attr("rel", "");
-                                        $('.row' + baseId).removeClass("action-list-item-approved");
-                                        $("#IconApproved" + baseId).hide();
-                                        $("#IconApproval" + baseId).fadeTo(200, 1);
-                                        $("#IconDenial" + baseId).fadeTo(200, 1);
-                                        $("#" + $(thisIcon).attr("rel"), "");
-                                        alertify.log(unescape(msg.d).replace('+', ' '));
-                                    }
-                                });
-
-                            }
+                            var thisIcon = this;
+                            $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
+                            $(this).hide();
+                            $("#IconWait" + $(this).attr("baseid")).show();
+                            $.ajax({
+                                type: "POST",
+                                url: "/Pages/v5/Financial/ValidateReceipts.aspx/Devalidate",
+                                data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (msg) {
+                                    var baseId = $(thisIcon).attr("baseid");
+                                    $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
+                                    $('.row' + baseId).removeClass("action-list-item-approved");
+                                    $("#IconApproved" + baseId).hide();
+                                    $("#IconApproval" + baseId).fadeTo(200, 1);
+                                    $("#IconDenial" + baseId).fadeTo(200, 1);
+                                    alertify.log(unescape(msg.d).replace('+', ' '));
+                                }
+                            });
                         });
 
 

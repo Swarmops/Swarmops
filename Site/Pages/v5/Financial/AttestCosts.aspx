@@ -67,61 +67,14 @@
                     onLoadSuccess: function () {
                         budgetRemainingLookup.attestabilityInitialized = false;
 
-                        $(".LocalIconApproval").attr("src", '/Images/Abstract/ajaxloader-48x36px.gif'); // initialize as rotating loader until budgets known
-                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").css("opacity", 0.5);
-                        $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
-                        $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
-                        $(".LocalIconApproved.LocalNew, .LocalIconUndo.LocalNew, .LocalIconDenied.LocalNew, .LocalIconApproval.LocalPreviouslyAttested, .LocalIconDenial.LocalPreviouslyAttested, .LocalIconDenied.LocalPreviouslyAttested").css("display", "none");
+                        $(".LocalIconApproval").attr("src", '/Images/Icons/iconshock-balloon-yes-128x96px.png').hide();  // Initialized to wait icon
+                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").hide().css("opacity", 0.5);
+                        $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png").hide();
+                        $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png").hide();
+                        $(".LocalIconWait").attr("src", "/Images/Abstract/ajaxloader-48x36px.gif").show();  // initializes as wait cursor here until budgets loaded
+                        $(".LocalIconApproved.LocalNew, .LocalIconUndo.LocalNew, .LocalIconDenied.LocalNew, .LocalIconApproval.LocalPreviouslyAttested, .LocalIconDenial.LocalPreviouslyAttested, .LocalIconDenied.LocalPreviouslyAttested").hide();
                         $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
-                        $(".LocalIconApproval, .LocalIconUndo, .LocalIconDenial").css("cursor", "pointer");
 
-                        $(".LocalIconApproval").mouseover(function () {
-                            if (budgetRemainingLookup.attestabilityInitialized) {
-                                if ($(this).attr("rel") != "loading") {
-                                    if ($(this).hasClass("LocalFundsInsufficient")) {
-                                        $(this).attr("src", approvalOverdraftIconHover);
-                                    } else {
-                                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot.png");
-                                    }
-                                }
-                            }
-                        });
-
-                        $(".LocalIconApproval").mouseout(function () {
-                            if (budgetRemainingLookup.attestabilityInitialized) {
-                                if ($(this).attr("rel") != "loading") {
-                                    if ($(this).hasClass("LocalFundsInsufficient")) {
-                                        $(this).attr("src", approvalOverdraftIcon);
-                                    } else {
-                                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
-                                    }
-                                }
-                            }
-                        });
-
-                        $(".LocalIconUndo").mouseover(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px-hot.png");
-                            }
-                        });
-
-                        $(".LocalIconUndo").mouseout(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
-                            }
-                        });
-
-                        $(".LocalIconDenial").mouseover(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot.png");
-                            }
-                        });
-
-                        $(".LocalIconDenial").mouseout(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
-                            }
-                        });
 
                         $(".LocalIconDenial").click(function() {
                             if ($(this).attr("rel") != "loading" && $("#IconApproval" + $(this).attr("baseid")) != "loading") {
@@ -321,8 +274,6 @@
                         $("#IconDenial" + baseid).finish().css("display", "none").css("opacity", 1.0);
                         $("#IconUndo" + baseid).fadeIn(100);
                         $('.row' + baseid).addClass("action-list-item-approved");
-                        $('.row' + baseid).removeClass("datagrid-row-selected");
-                        $('.row' + baseid).removeClass("datagrid-row-checked");
                         alertify.success(SwarmopsJS.unescape(msg.d.DisplayMessage));
 
                         recheckBudgets(); // will double-check budgets against server
