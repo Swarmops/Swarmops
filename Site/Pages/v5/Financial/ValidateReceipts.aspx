@@ -64,12 +64,14 @@
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
                                     success: function (msg) {
+                                        var baseId = $(thisIcon).attr("baseid");
                                         $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                                         $(thisIcon).attr("rel", "active");
                                         $(thisIcon).hide();
-                                        $("#IconDenial" + $(thisIcon).attr("baseid")).hide();
-                                        $("#IconApproved" + $(thisIcon).attr("baseid")).fadeTo(200, 1);
-                                        $("#IconUndo" + $(thisIcon).attr("baseid")).fadeTo(1000, 1); // the longer delay is intentional
+                                        $('.row' + baseId).addClass("action-list-item-approved");
+                                        $("#IconDenial" + baseId).hide();
+                                        $("#IconApproved" + baseId).fadeTo(200, 1);
+                                        $("#IconUndo" + baseId).fadeTo(1000, 1); // the longer delay is intentional
                                         alertify.success(unescape(msg.d));
                                     }
                                 });
@@ -89,12 +91,14 @@
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
                                     success: function (msg) {
+                                        var baseId = $(thisIcon).attr("baseid");
                                         $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                                         $(thisIcon).css("display", "none");
                                         $(thisIcon).attr("rel", "");
-                                        $("#IconApproved" + $(thisIcon).attr("baseid")).hide();
-                                        $("#IconApproval" + $(thisIcon).attr("baseid")).fadeTo(200, 1);
-                                        $("#IconDenial" + $(thisIcon).attr("baseid")).fadeTo(200, 1);
+                                        $('.row' + baseId).removeClass("action-list-item-approved");
+                                        $("#IconApproved" + baseId).hide();
+                                        $("#IconApproval" + baseId).fadeTo(200, 1);
+                                        $("#IconDenial" + baseId).fadeTo(200, 1);
                                         $("#" + $(thisIcon).attr("rel"), "");
                                         alertify.log(unescape(msg.d).replace('+', ' '));
                                     }
