@@ -77,7 +77,7 @@
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
                                     success: function (msg) {
-                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-undo-128x96px.png");
+                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                                         $(thisIcon).css("display", "none");
                                         $(thisIcon).attr("rel", "");
                                         $("#IconApproved" + $(thisIcon).attr("baseid")).hide();
