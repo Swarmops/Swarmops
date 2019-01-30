@@ -1066,7 +1066,7 @@
   </data>
   <data name="Global_Closed" xml:space="preserve">
     <value>Closed</value>
-    <comment>As in "record closed"</comment>
+    <comment>As in "record or transaction closed"</comment>
   </data>
   <data name="Global_EmptySet" xml:space="preserve">
     <value>No records</value>
@@ -1082,6 +1082,6 @@
   </data>
   <data name="Global_Opened" xml:space="preserve">
     <value>Opened</value>
-    <comment>As in "record opened"</comment>
+    <comment>As in "record or transaction opened"</comment>
   </data>
 </root>

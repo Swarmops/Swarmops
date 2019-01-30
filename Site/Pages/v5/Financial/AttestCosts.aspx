@@ -53,8 +53,8 @@
             $('#TableAttestableCosts').datagrid(
                 {
                     rowStyler: function (index, rowData) {
-                        if (rowData.previous != null) {
-                            return { class: "rowPrevious row" + rowData.itemId };
+                        if (rowData.approved != null) {
+                            return { class: "action-list-item-approved row" + rowData.itemId };
                         }
 
                         if (rowData.itemId != null) {
@@ -200,7 +200,7 @@
                                             $("#IconApproved" + baseid).finish().css("opacity", 0.5).css("display", "none");
                                             $("#IconApproval" + baseid).fadeIn(100);
                                             $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
-                                            $('.row' + baseid).animate({ color: "#000" }, 100);
+                                            $('.row' + baseid).removeClass("action-list-item-approved");
                                             alertify.log(SwarmopsJS.unescape(msg.d.DisplayMessage));
 
                                             recheckBudgets(); // will double-check budgets against server
@@ -320,7 +320,7 @@
                         $("#IconApproved" + baseid).fadeTo(250, 0.5);
                         $("#IconDenial" + baseid).finish().css("display", "none").css("opacity", 1.0);
                         $("#IconUndo" + baseid).fadeIn(100);
-                        $('.row' + baseid).animate({ color: "#AAA" }, 400);
+                        $('.row' + baseid).addClass("action-list-item-approved");
                         alertify.success(SwarmopsJS.unescape(msg.d.DisplayMessage));
 
                         recheckBudgets(); // will double-check budgets against server

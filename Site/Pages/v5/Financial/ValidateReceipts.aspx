@@ -30,6 +30,18 @@
         $(document).ready(function () {
             $('#TableAttestableCosts').datagrid(
                 {
+                    rowStyler: function (index, rowData) {
+                        if (rowData.approved != null) {
+                            return { class: "action-list-item-approved row" + rowData.itemId };
+                        }
+
+                        if (rowData.itemId != null) {
+                            return { class: "row" + rowData.itemId.replace(/\|/g, '') };
+                        }
+
+                        return '';
+                    },
+
                     onLoadSuccess: function () {
 
                         $(".LocalIconApproval").attr('src', '/Images/Icons/iconshock-balloon-yes-128x96px.png');

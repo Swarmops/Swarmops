@@ -69,7 +69,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
         {
             result.Append("{");
             result.AppendFormat(
-                "\"item\":\"{0}\",\"beneficiary\":\"{1}\",\"description\":\"{2}\",\"budgetName\":\"{3}\",\"previous\":\"yes\",\"amountRequested\":\"{4:N2}\",\"itemId\":\"{5}\"," +
+                "\"item\":\"{0}\",\"beneficiary\":\"{1}\",\"description\":\"{2}\",\"budgetName\":\"{3}\",\"approved\":\"yes\",\"amountRequested\":\"{4:N2}\",\"itemId\":\"{5}\"," +
                 "\"dox\":\"" + (item.HasDox ? hasDoxString : "&nbsp;") + "\"," +
                 "\"actions\":\"<span style=\\\"position:relative;left:-2px\\\">" +
                 "<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval LocalFundsInsufficient LocalPreviouslyAttested\\\" accountid=\\\"{6}\\\" amount=\\\"{4}\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +

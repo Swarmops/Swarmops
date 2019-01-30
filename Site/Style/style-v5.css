@@ -1036,6 +1036,11 @@ input.entryError, span.entryError, div.entryError {
     background:transparent !important;
 }
 
+.action-list-item-approved {
+    color: #aaa;
+    transition: all 0.50s;
+    -webkit-transition: all 0.50s;
+}
 
 /* DISPLAY FIELDS */
 
