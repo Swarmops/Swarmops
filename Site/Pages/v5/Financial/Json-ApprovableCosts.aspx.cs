@@ -42,7 +42,7 @@ public partial class Pages_v5_Finance_Json_ApprovableCosts : DataV5Base
         StringBuilder result = new StringBuilder (16384);
 
         string hasDoxString =
-            "<img baseid='{5}' class='LocalViewDox action-icon' />";
+            "<img baseid='{5}' class='LocalIconDox action-icon' />";
 
         result.Append ("{\"rows\":[");
 

@@ -67,6 +67,8 @@
                     onLoadSuccess: function () {
                         budgetRemainingLookup.attestabilityInitialized = false;
 
+                        $(".LocalIconDox").attr('src', '/Images/Icons/iconshock-balloon-examine-128x96px.png');
+
                         $(".LocalIconApproval").attr("src", '/Images/Icons/iconshock-balloon-yes-128x96px.png');  // Hidden initially; wait shown instead
                         $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").css("opacity", 0.5);
                         $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png").hide();
