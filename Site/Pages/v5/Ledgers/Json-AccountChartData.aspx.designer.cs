@@ -10,6 +10,6 @@
 namespace Swarmops.Frontend.Pages.v5.Ledgers {
     
     
-    public partial class AccountPlanData {
+    public partial class AccountChartData {
     }
 }

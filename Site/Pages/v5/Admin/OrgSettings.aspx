@@ -215,7 +215,7 @@
                 Enable Participant Financials?<br/>
             </div>
             <div id="divUseAccountPlan" style="display: none; width: 100%; text-align: center; margin-top: 20px; margin-bottom: 20px; border-top: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; border-bottom: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; background-color: <%= CommonV5.GetColor (ColorType.Base, ColorVariant.XLight) %>">
-                Use the <a href="/Ledgers/AccountPlan">Chart of Accounts</a> to set detailed parameters for these accounts, once enabled.
+                Use the <a href="/Ledgers/ChartOfAccounts">Chart of Accounts</a> to set detailed parameters for these accounts, once enabled.
             </div>
         </div>
         <div title="<img src='/Images/Icons/iconshock-contacts-64px.png' />">

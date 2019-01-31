@@ -380,7 +380,7 @@
                 <UserLevel>3</UserLevel>
                 <Permissions />
                 <ImageUrl>iconshock-openbook</ImageUrl>
-                <NavigateUrl>/Pages/v5/Ledgers/AccountPlan.aspx</NavigateUrl>
+                <NavigateUrl>/Pages/v5/Ledgers/ChartOfAccounts.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>

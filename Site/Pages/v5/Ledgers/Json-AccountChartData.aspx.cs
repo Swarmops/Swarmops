@@ -10,7 +10,7 @@ using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
-    public partial class AccountPlanData : DataV5Base
+    public partial class AccountChartData : DataV5Base
     {
         private AuthenticationData _authenticationData;
         private Dictionary<int, FinancialAccounts> _hashedAccounts;

@@ -10,7 +10,7 @@
 namespace Swarmops.Frontend.Pages.v5.Ledgers {
     
     
-    public partial class AccountPlan {
+    public partial class ChartOfAccounts {
         
         /// <summary>
         /// LiteralExpensesBudgetsAreNegative control.

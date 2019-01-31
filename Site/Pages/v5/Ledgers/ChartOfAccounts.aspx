@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.AccountPlan" Codebehind="AccountPlan.aspx.cs" CodeFile="AccountPlan.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.ChartOfAccounts" Codebehind="ChartOfAccounts.aspx.cs" CodeFile="ChartOfAccounts.aspx.cs" %>
 <%@ Import Namespace="Swarmops.Logic.Financial" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
@@ -93,7 +93,7 @@
 	            $('#TextAccountName').css('background-color', '#FFFFE0');
 	            $.ajax({
 	                type: "POST",
-	                url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountName",
+	                url: "/Pages/v5/Ledgers/ChartOfAccounts.aspx/SetAccountName",
 	                data: $.toJSON(jsonData),
 	                contentType: "application/json; charset=utf-8",
 	                dataType: "json",
@@ -132,7 +132,7 @@
 	            $('#TextAccountBudget').css('background-color', '#FFFFE0');
 	            $.ajax({
 	                type: "POST",
-	                url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountBudget",
+	                url: "/Pages/v5/Ledgers/ChartOfAccounts.aspx/SetAccountBudget",
 	                data: "{'accountId': '" + escape(accountId) + "', 'budget':'" + escape(newAccountBudget) + "'}",
 	                contentType: "application/json; charset=utf-8",
 	                dataType: "json",
@@ -176,7 +176,7 @@
 	            $(this).css('background-color', '#FFFFE0');
 	            $.ajax({
 	                type: "POST",
-	                url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountInitialBalance",
+	                url: "/Pages/v5/Ledgers/ChartOfAccounts.aspx/SetAccountInitialBalance",
 	                data: $.toJSON(jsonData),
 	                contentType: "application/json; charset=utf-8",
 	                dataType: "json",
@@ -226,7 +226,7 @@
 	    function addAccount() {
 	        $.ajax({
 	            type: "POST",
-	            url: "/Pages/v5/Ledgers/AccountPlan.aspx/CreateAccount",
+	            url: "/Pages/v5/Ledgers/ChartOfAccounts.aspx/CreateAccount",
 	            data: "{'accountType': '" + accountType + "'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -343,7 +343,7 @@
 
 	                            $.ajax({
 	                                type: "POST",
-	                                url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountSwitch",
+	                                url: "/Pages/v5/Ledgers/ChartOfAccounts.aspx/SetAccountSwitch",
 	                                data: callParameters,
 	                                contentType: "application/json; charset=utf-8",
 	                                dataType: "json",
@@ -395,7 +395,7 @@
 	        }
 
 	        SwarmopsJS.ajaxCall(
-	            "/Pages/v5/Ledgers/AccountPlan.aspx/GetAccountData",
+	            "/Pages/v5/Ledgers/ChartOfAccounts.aspx/GetAccountData",
 	            { accountId: accountId },
 	            function(data) {
 
@@ -439,7 +439,7 @@
 	    function updateInactiveCount()
 	    {
             SwarmopsJS.ajaxCall (
-	            "/Pages/v5/Ledgers/AccountPlan.aspx/GetInactiveAccountCount",
+	            "/Pages/v5/Ledgers/ChartOfAccounts.aspx/GetInactiveAccountCount",
                 {},
 	            function(msg) {
 	                $("#SpanInactiveCount").text(msg);
@@ -454,7 +454,7 @@
 	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#FFFFE0');
             $.ajax({
                 type: "POST",
-                url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountOwner",
+                url: "/Pages/v5/Ledgers/ChartOfAccounts.aspx/SetAccountOwner",
                 data: "{'accountId':'" + escape(accountId) + "','newOwnerId':'" + escape(personId) + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -500,7 +500,7 @@
 	        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#FFFFE0');
 	        $.ajax({
 	            type: "POST",
-	            url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountParent",
+	            url: "/Pages/v5/Ledgers/ChartOfAccounts.aspx/SetAccountParent",
 	            data: "{'accountId':'" + escape(accountId) + "','parentAccountId':'" + escape(parentAccountId) + "'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -552,7 +552,7 @@
 
 
 	    function onAutomationProfileChange(oldValue, newValue) {
-	        SwarmopsJS.ajaxCall('/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountAutomationProfile',
+	        SwarmopsJS.ajaxCall('/Pages/v5/Ledgers/ChartOfAccounts.aspx/SetAccountAutomationProfile',
 	            {
 	                accountId: accountId,
 	                profileId: newValue
@@ -622,8 +622,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label ID="BoxTitle" runat="server" /></h2>
-    <table id="tableAccountPlan" title="" class="easyui-treegrid" style="width:680px;height:600px"  
-        url="Json-AccountPlanData.aspx"
+    <table id="tableChartOfAccount" title="" class="easyui-treegrid" style="width:680px;height:600px"  
+        url="Json-AccountChartData.aspx"
         rownumbers="false"
         animate="true"
         fitColumns="true"

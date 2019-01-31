@@ -17,7 +17,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
-    public partial class AccountPlan : PageV5Base
+    public partial class ChartOfAccounts : PageV5Base
     {
         public enum ChangeAccountDataOperationsResult
         {

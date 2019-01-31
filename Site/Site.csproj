@@ -1119,12 +1119,12 @@
     <Compile Include="Pages\v5\Financial\ValidateReceipts.aspx.designer.cs">
       <DependentUpon>ValidateReceipts.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\v5\Ledgers\AccountPlan.aspx.cs">
-      <DependentUpon>AccountPlan.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Ledgers\ChartOfAccounts.aspx.cs">
+      <DependentUpon>ChartOfAccounts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\v5\Ledgers\AccountPlan.aspx.designer.cs">
-      <DependentUpon>AccountPlan.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Ledgers\ChartOfAccounts.aspx.designer.cs">
+      <DependentUpon>ChartOfAccounts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\v5\Ledgers\BalanceSheetSimplified.aspx.cs">
       <DependentUpon>BalanceSheetSimplified.aspx</DependentUpon>
@@ -1203,12 +1203,12 @@
     <Compile Include="Pages\v5\Ledgers\InspectLedgers.aspx.designer.cs">
       <DependentUpon>InspectLedgers.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\v5\Ledgers\Json-AccountPlanData.aspx.cs">
-      <DependentUpon>Json-AccountPlanData.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Ledgers\Json-AccountChartData.aspx.cs">
+      <DependentUpon>Json-AccountChartData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\v5\Ledgers\Json-AccountPlanData.aspx.designer.cs">
-      <DependentUpon>Json-AccountPlanData.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Ledgers\Json-AccountChartData.aspx.designer.cs">
+      <DependentUpon>Json-AccountChartData.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\v5\Ledgers\Json-GeneralLedgerData.aspx.cs">
       <DependentUpon>Json-GeneralLedgerData.aspx</DependentUpon>
@@ -1955,7 +1955,7 @@
     <Content Include="Pages\v5\Financial\PayOutMoney.aspx" />
     <Content Include="Pages\v5\Financial\RequestCashAdvance.aspx" />
     <Content Include="Pages\v5\Financial\ValidateReceipts.aspx" />
-    <Content Include="Pages\v5\Ledgers\AccountPlan.aspx" />
+    <Content Include="Pages\v5\Ledgers\ChartOfAccounts.aspx" />
     <Content Include="Pages\v5\Ledgers\BalanceSheetSimplified.aspx" />
     <Content Include="Pages\v5\Ledgers\BalanceSheet.aspx" />
     <Content Include="Pages\v5\Ledgers\BalanceTransactions.aspx" />
@@ -1967,7 +1967,7 @@
     <Content Include="Pages\v5\Ledgers\DebugLedgers.aspx" />
     <Content Include="Pages\v5\Ledgers\EndOfMonth.aspx" />
     <Content Include="Pages\v5\Ledgers\InspectLedgers.aspx" />
-    <Content Include="Pages\v5\Ledgers\Json-AccountPlanData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-AccountChartData.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-GeneralLedgerData.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-VatReportData.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-BalanceSheetDataSimplified.aspx" />
