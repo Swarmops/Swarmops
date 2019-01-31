@@ -8,7 +8,7 @@
 
 	    $(document).ready(function () {
 
-	        $('#tableAccountPlan').treegrid(
+	        $('#tableChartOfAccounts').treegrid(
 	        {
 	            onBeforeExpand: function(foo) {
 	                $('span.accountplandata-collapsed-' + foo.id).fadeOut('fast', function() {
@@ -217,7 +217,7 @@
 
         function onDialogClose() {
             if (accountDirty) {
-                $('#tableAccountPlan').treegrid('reload');
+                $('#tableChartOfAccounts').treegrid('reload');
                 accountDirty = false;
             }
         }
@@ -622,7 +622,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label ID="BoxTitle" runat="server" /></h2>
-    <table id="tableChartOfAccount" title="" class="easyui-treegrid" style="width:680px;height:600px"  
+    <table id="tableChartOfAccounts" title="" class="easyui-treegrid" style="width:680px;height:600px"  
         url="Json-AccountChartData.aspx"
         rownumbers="false"
         animate="true"
