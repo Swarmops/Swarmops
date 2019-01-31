@@ -29,7 +29,7 @@ public partial class Pages_v5_Finance_Json_ValidatableReceipts : DataV5Base
         StringBuilder result = new StringBuilder (16384);
 
         string hasDoxString =
-            "<img baseid='E{5}' class='LocalViewDox action-icon' />";
+            "<img baseid='E{5}' class='LocalIconDox action-icon' />";
 
         result.Append ("{\"rows\":[");
         FinancialTransactionTagSets tagSets = FinancialTransactionTagSets.ForOrganization (CurrentOrganization);

@@ -44,6 +44,7 @@
 
                     onLoadSuccess: function () {
 
+                        $(".LocalIconDox").attr('src', '/Images/Icons/iconshock-balloon-examine-128x96px.png');
                         $(".LocalIconApproval").attr('src', '/Images/Icons/iconshock-balloon-yes-128x96px.png');
                         $(".LocalIconApproved").attr('src', '/Images/Icons/iconshock-green-tick-128x96px.png').hide();
                         $(".LocalIconDenial").attr('src', '/Images/Icons/iconshock-balloon-no-128x96px.png');
@@ -119,7 +120,7 @@
                             alert('Denying validation is not yet implemented, but you can just leave the unwanted cost here until it is.');
                         });
 
-                        $(".LocalViewDox").click(function () {
+                        $(".LocalIconDox").click(function () {
                             $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
                         });
 
