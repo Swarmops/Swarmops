@@ -137,7 +137,7 @@
                 <asp:Literal runat="server" ID="LiteralDescriptionThStart" /><asp:Label ID="LabelGridHeaderDescription" runat="server" Text="XYZ Description" /><asp:Literal runat="server" ID="LiteralDescriptionThClose" Text="</th>" />  
                 <asp:Literal runat="server" ID="LiteralBudgetThStart" /><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Budget" /><asp:Literal runat="server" ID="LiteralBudgetThClose" Text="</th>" />
                 <asp:Literal runat="server" ID="LiteralExtraTags" />
-                <th data-options="field:'amountRequested',width:80,align:'right',sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderRequested" runat="server" Text="XYZ Requested" /></th>
+                <th data-options="field:'amountRequested',width:90,align:'right',sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderRequested" runat="server" Text="XYZ Requested" /></th>
                 <th data-options="field:'dox',width:40,align:'center'"><asp:Label ID="LabelGridHeaderDocs" runat="server" Text="Doxyz" /></th>
                 <th data-options="field:'actions',width:68,align:'center'"><asp:Label ID="LabelGridHeaderAction" runat="server" Text="Axyztion" /></th>
             </tr>  

@@ -1015,17 +1015,17 @@ input.entryError, span.entryError, div.entryError {
     display: none;
 }
 
-.action-list-item-completed {
+.action-list-item-completed, .action-list-item-denied {
     -webkit-transition: all 0.50s;
     transition: all 0.50s;
     color: #ccc;
     text-decoration: line-through;
 }
 
-.action-list-item-disabled {
+.action-list-item-disabled, .action-list-item-approved {
     -webkit-transition: all 0.50s;
     transition: all 0.50s;
-    color: #aaa;
+    color: #aaa !important;
 }
 
 .action-icon-disabled {
@@ -1036,11 +1036,6 @@ input.entryError, span.entryError, div.entryError {
     background:transparent !important;
 }
 
-.action-list-item-approved {
-    color: #aaa !important;
-    transition: all 0.50s;
-    -webkit-transition: all 0.50s;
-}
 
 /* DISPLAY FIELDS */
 

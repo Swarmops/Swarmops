@@ -353,12 +353,11 @@
         function onDenyRecord() {
             var reason = $('#<%=this.TextDenyReason.ClientID%>').val();
 
-            // hide yes/no icons, show denied icon, but set it to "loading" icon until completed
+            // hide yes/no icons, show waiting
             
-            $('#IconApproval' + recordId).hide();
+            $('#IconApproval' + recordId).fadeOut(1000,0.01);
             $('#IconDenial' + recordId).hide();
-            $('#IconDenied' + recordId).attr('src', '/Images/Abstract/ajaxloader-48x36px.gif');
-            $('#IconDenied' + recordId).show();
+            $('#IconWait' + recordId).hide();
             <%= this.DialogDeny.ClientID %>_close();
 
             SwarmopsJS.ajaxCall(
@@ -366,10 +365,8 @@
                 { recordId: recordId, reason: reason },
                 $.proxy(function(result) {
                     if (result.Success) {
-                        $(this).attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
-                        $(this).fadeIn();  // was visible already, but this will create an effect as it changes image
-                        $('.row' + $(this).attr('baseid')).animate({ color: "#CCC" }, 500);
-                        $('.row' + $(this).attr('baseid')).css('text-decoration', 'line-through');
+                        $(this).fadeTo(1000, 1);
+                        $('.row' + $(this).attr('baseid')).addClass("action-list-item-denied");
                     } else {
                         // Failure can happen for many reasons, all bad, so we're just reloading the
                         // entire grid to cover our bases

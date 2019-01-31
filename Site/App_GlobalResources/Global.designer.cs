@@ -1231,6 +1231,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This action is no longer available..
+        /// </summary>
+        internal static string Global_Error_Concurrency {
+            get {
+                return ResourceManager.GetString("Global_Error_Concurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to connect WebSocket. Live updates will not be available..
         /// </summary>
         internal static string Global_Error_WebsocketFailure {

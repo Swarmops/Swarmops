@@ -1072,6 +1072,10 @@
     <value>No records</value>
     <comment>There are no records of the requested type</comment>
   </data>
+  <data name="Global_Error_Concurrency" xml:space="preserve">
+    <value>This action is no longer available.</value>
+    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
+  </data>
   <data name="Global_Item" xml:space="preserve">
     <value>Item</value>
     <comment>As in "record", "list item", something listed</comment>
