@@ -201,7 +201,7 @@
                 <UserLevel>2</UserLevel>
                 <Permissions />
                 <ImageUrl>iconshock-stamped-paper</ImageUrl>
-                <NavigateUrl>/Pages/v5/Financial/AttestCosts.aspx</NavigateUrl>
+                <NavigateUrl>/Pages/v5/Financial/ApproveCosts.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>
