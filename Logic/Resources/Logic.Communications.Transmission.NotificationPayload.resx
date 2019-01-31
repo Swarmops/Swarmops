@@ -204,10 +204,10 @@ Expect more communication from the budget owner to follow on the matter.</value>
     <value>[[OrganizationName]] Approval for Cash Advance RETRACTED: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Approved_Body" xml:space="preserve">
-    <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you.</value>
+    <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been approved by the budget owner. It will now proceed to payout to you.</value>
   </data>
   <data name="CashAdvance_Approved_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance Approveed: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Cash Advance Approved: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Your cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. The text below was given as reason for denying it:
@@ -246,11 +246,11 @@ Expect more communication from the budget owner to follow on the matter.</value>
     <value>[[OrganizationName]] Approval RETRACTED for Expense Claim: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
-    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
+    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been approved by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Approved_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Expense Claim Approveed: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Expense Claim Approved: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Created_Body" xml:space="preserve">
     <value>[ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.

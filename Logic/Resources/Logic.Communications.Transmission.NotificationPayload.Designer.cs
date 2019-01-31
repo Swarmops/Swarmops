@@ -279,7 +279,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you..
+        ///   Looks up a localized string similar to Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been approved by the budget owner. It will now proceed to payout to you..
         /// </summary>
         internal static string CashAdvance_Approved_Body {
             get {
@@ -288,7 +288,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance Approveed: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance Approved: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string CashAdvance_Approved_Subject {
             get {
@@ -378,7 +378,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid..
+        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been approved by the budget owner. It will be paid out to you when the receipts are confirmed valid..
         /// </summary>
         internal static string ExpenseClaim_Approved_Body {
             get {
@@ -387,7 +387,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Approveed: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Approved: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string ExpenseClaim_Approved_Subject {
             get {
