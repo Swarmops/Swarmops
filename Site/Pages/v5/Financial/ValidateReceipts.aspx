@@ -83,10 +83,10 @@
                         });
 
                         $(".LocalIconUndo").click(function () {
-                            var thisIcon = this;
                             $(this).hide();
-                            $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
-                            $("#IconWait" + $(this).attr("baseid")).show();
+                            var itemId = $(this).attr("baseid");
+                            $("#IconApproved" + itemId).fadeTo(1000, 0.01);
+                            $("#IconWait" + itemId).show();
 
                             SwarmopsJS.proxiedAjaxCall(
                                 "/Pages/v5/Financial/ValidateReceipts.aspx/RetractValidation",
@@ -99,7 +99,7 @@
                                         $("#IconWait" + itemId).hide();
                                         $("#IconApproved" + itemId).hide();
                                         $("#IconApproval" + itemId).fadeTo(200, 1);
-                                        $("#IconDenial" + itemId,Id).fadeTo(200, 1);
+                                        $("#IconDenial" + itemId).fadeTo(200, 1);
                                         alertify.log(result.DisplayMessage);
 
                                     } else {
