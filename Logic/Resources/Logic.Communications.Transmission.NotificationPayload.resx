@@ -243,7 +243,7 @@ Expect more communication from the budget owner to follow on the matter.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_ApprovalRetracted_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Approval for Expense Claim RETRACTED: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Approval RETRACTED for Expense Claim: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
@@ -295,7 +295,7 @@ The claim will be paid out to you when the amount has also been attested by the 
 Expect more communication to follow on the matter. If you don't hear from record keepers in short time on this matter, do follow up with them.</value>
   </data>
   <data name="ExpenseClaim_ValidationRetracted_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Validation for Expense Claim Receipts RETRACTED: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Validation RETRACTED for Expense Claim Receipts: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="InboundInvoice_Created_Body" xml:space="preserve">
     <value>An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.

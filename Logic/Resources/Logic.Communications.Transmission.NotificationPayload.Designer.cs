@@ -369,7 +369,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Approval for Expense Claim RETRACTED: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Approval RETRACTED for Expense Claim: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string ExpenseClaim_ApprovalRetracted_Subject {
             get {
@@ -488,7 +488,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Validation for Expense Claim Receipts RETRACTED: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Validation RETRACTED for Expense Claim Receipts: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string ExpenseClaim_ValidationRetracted_Subject {
             get {
