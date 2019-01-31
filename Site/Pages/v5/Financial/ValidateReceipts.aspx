@@ -51,7 +51,6 @@
                         $(".LocalIconUndo").attr('src', '/Images/Icons/iconshock-balloon-undo-128x96px.png').hide();
                         $(".LocalIconWait").attr('src', '/Images/Abstract/ajaxloader-48x36px.gif').hide();
 
-
                         $(".LocalIconApproval").click(function () {
                             var itemId = $(this).attr("baseid");
                             $(this).hide();
@@ -61,6 +60,7 @@
                             SwarmopsJS.proxiedAjaxCall(
                                 "/Pages/v5/Financial/ValidateReceipts.aspx/Validate",
                                 { identifier: itemId },
+                                this,
                                 function (result) {
                                     if (result.Success) {
                                         var itemId = $(this).attr("baseid");
@@ -91,6 +91,7 @@
                             SwarmopsJS.proxiedAjaxCall(
                                 "/Pages/v5/Financial/ValidateReceipts.aspx/RetractValidation",
                                 { identifier: $(this).attr("baseid") },
+                                this,
                                 function(result) {
                                     if (result.Success) {
                                         var itemId = $(this).attr("baseid");

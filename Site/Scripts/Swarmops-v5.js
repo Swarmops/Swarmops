@@ -450,12 +450,12 @@ var SwarmopsJS = (function () {
 
     // Preserves the "this" object into success and error functions
     publicSymbols.proxiedAjaxCall = proxiedAjaxCall;
-    function proxiedAjaxCall(url, params, successFunction, errorFunction) {
+    function proxiedAjaxCall(url, params, thisObject, successFunction, errorFunction) {
         ajaxCall(
             url,
             params,
-            $.proxy(successFunction, this),
-            errorFunction !== undefined? $.proxy(errorFunction, this) : undefined
+            $.proxy(successFunction, thisObject),
+            errorFunction !== undefined? $.proxy(errorFunction, thisObject) : undefined
         );
     }
 
