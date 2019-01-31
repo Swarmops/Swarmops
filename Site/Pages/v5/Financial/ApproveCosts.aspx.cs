@@ -221,7 +221,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
         [WebMethod]
-        public static AjaxCallResult AttestCorrectedItem(string recordId, string amountString)
+        public static AjaxCallResult ApproveCorrectedItem(string recordId, string amountString)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             Int64 amountCents = 0;
@@ -339,7 +339,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
        
         
         [WebMethod]
-        public static AjaxCallResult Attest (string identifier)
+        public static AjaxCallResult ApproveItem (string identifier)
         {
             identifier = HttpUtility.UrlDecode (identifier);
 
@@ -347,7 +347,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
         [WebMethod]
-        public static AjaxCallResult Deattest (string identifier)
+        public static AjaxCallResult RetractApproval (string identifier)
         {
             identifier = HttpUtility.UrlDecode (identifier);
 

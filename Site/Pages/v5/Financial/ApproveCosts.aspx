@@ -403,7 +403,7 @@
                 });
         }
 
-        function onAttestCorrectedAmount() {
+        function onApproveCorrectedAmount() {
             if (recordId[0] == 'S') // Salary - cannot change amount this way
             {
                 alertify.error(decodeURIComponent('<asp:Literal ID="LiteralCannotCorrectSalary" runat="server" />'));
@@ -470,7 +470,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label runat="server" ID="LabelAttestCostsHeader" Text="XYZ Costs Awaiting Your Approval" /></h2>
     <table id="tableApprovableCosts" class="easyui-datagrid" style="width:680px;height:400px"
-        data-options="rownumbers:false,singleSelect:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-AttestableCosts.aspx'"
+        data-options="rownumbers:false,singleSelect:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-ApprovableCosts.aspx'"
         idField="itemId">
         <thead>  
             <tr>  
@@ -504,7 +504,7 @@
             <div id="radioOptionCorrect" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:CurrencyTextBox ID="TextCorrectAmount" runat="server" />
-                    <input type="button" value='#Correct#' class="buttonAccentColor" onclick="onAttestCorrectedAmount(); return false;" id="buttonExecuteCorrectedAmount"/>
+                    <input type="button" value='#Correct#' class="buttonAccentColor" onclick=" onApproveCorrectedAmount(); return false;" id="buttonExecuteCorrectedAmount"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeCorrect" Text="What amount are you attesting instead (SEK)? XYZ" /><br/>
