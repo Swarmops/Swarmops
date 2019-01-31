@@ -96,7 +96,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 successMessage += "<br/><br/>" +
                                   Resources.Pages.Financial.RequestCashAdvance_SuccessMessagePartTwoOwnBudget +
                                   "<br/>";
-                cashAdvance.Attest (CurrentUser);
+                cashAdvance.Approve (CurrentUser);
             }
 
             DashboardMessage.Set (successMessage);

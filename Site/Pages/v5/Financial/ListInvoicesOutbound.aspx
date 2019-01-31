@@ -30,7 +30,7 @@
             });
 
             if (budgetRemainingLookup.rowsLoaded == true) {
-                setAttestability();
+                setApprovability();
             }
 
             budgetRemainingLookup.budgetsLoaded = true;

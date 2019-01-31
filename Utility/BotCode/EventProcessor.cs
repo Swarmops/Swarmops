@@ -910,7 +910,7 @@ namespace Swarmops.Utility.BotCode
                 "Description:  " + expenseClaim.Description + "\r\n" +
                 "Amount:       " + expenseClaim.Amount.ToString("N2", CultureInfo.InvariantCulture) + "\r\n" +
                 "Budget:       " + expenseClaim.Budget.Name + "\r\n\r\n" +
-                "Attestation mechanisms are available on PirateWeb. The claimer will not be refunded until " +
+                "Approval mechanisms are available on PirateWeb. The claimer will not be refunded until " +
                 "YOU, as the budget owner, have attested that this claim should be drawn from your budget. " +
                 "Go to this link and attest the claim, if it is correct:\r\n" +
                 "https://pirateweb.net/Pages/v4/Financial/AttestCosts.aspx\r\n\r\n";
@@ -920,7 +920,7 @@ namespace Swarmops.Utility.BotCode
             concernedPeople = People.FromSingle(budgetOwner);
 
             new MailTransmitter(Strings.MailSenderNameFinancial, Strings.MailSenderAddress,
-                                           "Attestation Required [" + expenseClaim.Identity + "]: [" + expenser.Name +
+                                           "Approval Required [" + expenseClaim.Identity + "]: [" + expenser.Name +
                                            "], [" + organization.NameShort + "], [" +
                                            expenseClaim.Budget.Name + "], [" +
                                            expenseClaim.Amount.ToString("N2", CultureInfo.InvariantCulture) + "]",
@@ -951,7 +951,7 @@ namespace Swarmops.Utility.BotCode
                 "Due Date:     " + invoice.DueDate.ToLongDateString() + "\r\n" +
                 "Amount:       " + invoice.Amount.ToString("N2", CultureInfo.InvariantCulture) + "\r\n" +
                 "Budget:       " + invoice.Budget.Name + "\r\n\r\n" +
-                "Attestation mechanisms are available on PirateWeb. The invoice will not be available for payment until " +
+                "Approval mechanisms are available on PirateWeb. The invoice will not be available for payment until " +
                 "YOU, as the budget owner, have attested that this invoice should be drawn from your budget. " +
                 "Go to this link and attest the invoice, if it is correct; you can also see the invoice scan here:\r\n" +
                 "https://pirateweb.net/Pages/v4/Financial/AttestCosts.aspx\r\n\r\n";
@@ -961,7 +961,7 @@ namespace Swarmops.Utility.BotCode
             People concernedPeople = People.FromSingle(budgetOwner);
 
             new MailTransmitter(Strings.MailSenderNameFinancial, Strings.MailSenderAddress,
-                                           "Attestation Required [" + invoice.Identity + "]: [" + invoice.Supplier +
+                                           "Approval Required [" + invoice.Identity + "]: [" + invoice.Supplier +
                                            "], [" + organization.NameShort + "], [" +
                                            invoice.Budget.Name + "], [" +
                                            invoice.Amount.ToString("N2", CultureInfo.InvariantCulture) + "]",

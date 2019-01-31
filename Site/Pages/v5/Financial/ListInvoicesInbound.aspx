@@ -41,7 +41,7 @@
             });
 
             if (budgetRemainingLookup.rowsLoaded == true) {
-                setAttestability();
+                setApprovability();
             }
 
             budgetRemainingLookup.budgetsLoaded = true;
@@ -83,7 +83,7 @@
 
 
 
-        function setAttestability() {
+        function setApprovability() {
 
             $('.LocalIconApproval').each(function() {
                 var accountId = $(this).attr('accountid');

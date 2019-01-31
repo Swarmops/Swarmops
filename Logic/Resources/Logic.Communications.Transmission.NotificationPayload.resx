@@ -195,19 +195,19 @@ Swarmops will keep trying and will keep sending these notifications as long as i
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] Bitcoin Cash hotwallet insufficient for payments - top up immediately</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance Attested: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your request.
+  <data name="CashAdvance_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Your previously approved cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has had its approval RETRACTED by the budget owner. This cash advance is no longer approved. This usually indicates some sort of problem with your request.
 
 Expect more communication from the budget owner to follow on the matter.</value>
   </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
+  <data name="CashAdvance_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Approval for Cash Advance RETRACTED: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Approved_Body" xml:space="preserve">
+    <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you.</value>
+  </data>
+  <data name="CashAdvance_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cash Advance Approveed: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Your cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. The text below was given as reason for denying it:
@@ -229,38 +229,38 @@ This means you should see the amount on your account shortly.</value>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
     <value>[ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
 
-Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny.</value>
+Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <value>[[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Approveation Needed</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Expense Claim Attested: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
-
-Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your expense claim.
+  <data name="ExpenseClaim_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Your previously approved expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has had its approval RETRACTED by the budget owner. This expense claim is no longer approved. This usually indicates some sort of problem with your expense claim.
 
 Expect more communication from the budget owner to follow on the matter.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
+  <data name="ExpenseClaim_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Approval for Expense Claim RETRACTED: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
+    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Expense Claim Approveed: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
+
+Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Approveation Needed</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. The text below was given as reason for denying it:
@@ -271,14 +271,6 @@ Expect more communication from the budget owner to follow on the matter.</value>
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been DE-validated by the financial record keepers of the organization. This usually indicates some sort of problem with the documentation of your expense claim.
-
-Expect more communication to follow on the matter. If you don't hear from record keepers in short time on this matter, do follow up with them.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been marked as paid out by the organization's accountants.
@@ -297,13 +289,21 @@ The claim will be paid out to you when the amount has also been attested by the 
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Expense Claim Receipts Validated: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
+  <data name="ExpenseClaim_ValidationRetracted_Body" xml:space="preserve">
+    <value>The validation of receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been RETRACTED by the financial record keepers of the organization. The receipts are no longer considered valid. This usually indicates some sort of problem with the documentation of your expense claim.
+
+Expect more communication to follow on the matter. If you don't hear from record keepers in short time on this matter, do follow up with them.</value>
+  </data>
+  <data name="ExpenseClaim_ValidationRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Validation for Expense Claim Receipts RETRACTED: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   <data name="InboundInvoice_Created_Body" xml:space="preserve">
     <value>An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
 
-Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny.</value>
+Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny.</value>
   </data>
   <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <value>[[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Approveation Needed</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">

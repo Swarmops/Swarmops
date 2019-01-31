@@ -189,7 +189,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 reason = Resources.Global.Global_NoReasonGiven;
             }
 
-            payable.DenyAttestation (authData.CurrentUser, reason);
+            payable.DenyApproval (authData.CurrentUser, reason);
 
             return new AjaxCallResult { Success = true };
         }
@@ -286,7 +286,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             payable.SetAmountCents (amountCents, authData.CurrentUser);
-            payable.Attest (authData.CurrentUser);
+            payable.Approve (authData.CurrentUser);
 
             return new AjaxCallResult
             {
@@ -352,7 +352,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            IAttestable attestableItem;
+            IApprovable approvableItem;
             string attestedTemplate;
             string deattestedTemplate;
 
@@ -378,7 +378,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         throw new SecurityException ("Called without attestation privileges");
                     }
 
-                    attestableItem = advance;
+                    approvableItem = advance;
                     attestedTemplate = Resources.Pages.Financial.AttestCosts_AdvanceAttested;
                     deattestedTemplate = Resources.Pages.Financial.AttestCosts_AdvanceDeattested;
                     beneficiary = advance.Person.Name;
@@ -397,7 +397,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         throw new SecurityException ("Called without attestation privileges");
                     }
 
-                    attestableItem = expense;
+                    approvableItem = expense;
                     attestedTemplate = Resources.Pages.Financial.AttestCosts_ExpenseAttested;
                     deattestedTemplate = Resources.Pages.Financial.AttestCosts_ExpenseDeattested;
                     beneficiary = expense.Claimer.Name;
@@ -416,7 +416,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         throw new SecurityException ("Called without attestation privileges");
                     }
 
-                    attestableItem = invoice;
+                    approvableItem = invoice;
                     attestedTemplate = Resources.Pages.Financial.AttestCosts_InvoiceAttested;
                     deattestedTemplate = Resources.Pages.Financial.AttestCosts_InvoiceDeattested;
                     beneficiary = invoice.Supplier;
@@ -435,7 +435,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         throw new SecurityException ("Called without attestation privileges");
                     }
 
-                    attestableItem = salary;
+                    approvableItem = salary;
                     attestedTemplate = Resources.Pages.Financial.AttestCosts_SalaryAttested;
                     deattestedTemplate = Resources.Pages.Financial.AttestCosts_SalaryDeattested;
                     beneficiary = salary.PayrollItem.PersonCanonical;
@@ -454,7 +454,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         throw new SecurityException ("Called without attestation privileges");
                     }
 
-                    attestableItem = parley;
+                    approvableItem = parley;
                     attestedTemplate = Resources.Pages.Financial.AttestCosts_ParleyAttested;
                     deattestedTemplate = Resources.Pages.Financial.AttestCosts_ParleyDeattested;
                     beneficiary = parley.Person.Name;
@@ -470,7 +470,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             if (mode == AttestationMode.Attestation)
             {
-                Int64 budgetRemaining = attestableItem.Budget.GetBudgetCentsRemaining();
+                Int64 budgetRemaining = approvableItem.Budget.GetBudgetCentsRemaining();
 
                 result = string.Empty;
 
@@ -484,7 +484,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                         // Unless budget was nonzero and allocated, set protest message
 
-                        if (attestableItem.Budget.Owner != null || attestableItem.Budget.GetBudgetCents() != 0)
+                        if (approvableItem.Budget.Owner != null || approvableItem.Budget.GetBudgetCents() != 0)
 
                         result = Resources.Pages.Financial.AttestCosts_Overdrafted + " ";
                     }
@@ -500,24 +500,24 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
                 }
 
-                attestableItem.Attest (authData.CurrentUser);
+                approvableItem.Approve (authData.CurrentUser);
                 result += string.Format (attestedTemplate, itemId, beneficiary,
                     authData.CurrentOrganization.Currency.Code,
                     amountCents/100.0);
             }
             else if (mode == AttestationMode.Deattestation)
             {
-                attestableItem.Deattest (authData.CurrentUser);
+                approvableItem.RetractApproval (authData.CurrentUser);
                 result = string.Format (deattestedTemplate, itemId, beneficiary,
                     authData.CurrentOrganization.Currency.Code,
                     amountCents/100.0);
             }
             else
             {
-                throw new InvalidOperationException ("Unknown Attestation Mode: " + mode);
+                throw new InvalidOperationException ("Unknown Approval Mode: " + mode);
             }
 
-            FinancialAccount.ClearAttestationAdjustmentsCache (authData.CurrentOrganization);
+            FinancialAccount.ClearApprovalAdjustmentsCache (authData.CurrentOrganization);
 
             return new AjaxCallResult {DisplayMessage = result, Success = true};
         }

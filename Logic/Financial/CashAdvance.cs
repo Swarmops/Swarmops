@@ -45,7 +45,7 @@ namespace Swarmops.Logic.Financial
                     budget.Identity, amountCents,
                     description));
 
-            OutboundComm.CreateNotificationAttestationNeeded (budget, forPerson, string.Empty, amountCents/100.0,
+            OutboundComm.CreateNotificationApprovalNeeded (budget, forPerson, string.Empty, amountCents/100.0,
                 description, NotificationResource.CashAdvance_Requested);
             // Slightly misplaced logic, but failsafer here
             SwarmopsLogEntry.Create (forPerson,
@@ -53,36 +53,36 @@ namespace Swarmops.Logic.Financial
                 newAdvance);
 
             // Clear a cache
-            FinancialAccount.ClearAttestationAdjustmentsCache (organization);
+            FinancialAccount.ClearApprovalAdjustmentsCache (organization);
 
             return newAdvance;
         }
 
         #endregion
 
-        #region Implementation of IAttestable
+        #region Implementation of IApprovable
 
-        public void Attest (Person attester)
+        public void Approve (Person approvingPerson)
         {
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
-                FinancialDependencyType.CashAdvance, Identity, DateTime.UtcNow, attester.Identity, AmountCents/100.0);
-            SwarmDb.GetDatabaseForWriting().SetCashAdvanceAttested (Identity, true, attester.Identity);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Approval,
+                FinancialDependencyType.CashAdvance, Identity, DateTime.UtcNow, approvingPerson.Identity, AmountCents/100.0);
+            SwarmDb.GetDatabaseForWriting().SetCashAdvanceAttested (Identity, true, approvingPerson.Identity);
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Person, AmountCents/100.0, Description,
-                NotificationResource.CashAdvance_Attested);
+                NotificationResource.CashAdvance_Approved);
         }
 
-        public void Deattest (Person deattester)
+        public void RetractApproval (Person retractingPerson)
         {
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Deattestation,
-                FinancialDependencyType.CashAdvance, Identity, DateTime.UtcNow, deattester.Identity, AmountCents/100.0);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.UndoApproval,
+                FinancialDependencyType.CashAdvance, Identity, DateTime.UtcNow, retractingPerson.Identity, AmountCents/100.0);
             SwarmDb.GetDatabaseForWriting().SetCashAdvanceAttested (Identity, false, Person.NobodyId);
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Person, AmountCents/100.0, Description,
-                NotificationResource.CashAdvance_Deattested);
+                NotificationResource.CashAdvance_ApprovalRetracted);
         }
 
-        public void DenyAttestation (Person denyingPerson, string reason)
+        public void DenyApproval (Person denyingPerson, string reason)
         {
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Kill,
                 FinancialDependencyType.CashAdvance, Identity, DateTime.UtcNow, denyingPerson.Identity, AmountCents / 100.0);

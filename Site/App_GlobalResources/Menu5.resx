@@ -181,7 +181,8 @@
     <value>Financial</value>
   </data>
   <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>Attest Costs</value>
+    <value>Approve Costs</value>
+    <comment>This approves costs for payout from the organization</comment>
   </data>
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Claim Refund for Expense</value>

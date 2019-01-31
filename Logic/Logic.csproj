@@ -304,7 +304,7 @@
     <Compile Include="DataObjects\PeopleDataObject.cs" />
     <Compile Include="Financial\FinancialValidation.cs" />
     <Compile Include="Financial\FinancialValidations.cs" />
-    <Compile Include="Financial\IAttestable.cs" />
+    <Compile Include="Financial\IApprovable.cs" />
     <Compile Include="Financial\InboundInvoice.cs" />
     <Compile Include="Financial\InboundInvoices.cs" />
     <Compile Include="Financial\IValidatable.cs" />

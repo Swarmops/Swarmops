@@ -1020,7 +1020,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 successMessage += "<br/><br/>" +
                                   Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartTwoOwnBudget +
                                   "<br/>";
-                claim.Attest (CurrentUser);
+                claim.Approve (CurrentUser);
             }
 
             DashboardMessage.Set (successMessage);

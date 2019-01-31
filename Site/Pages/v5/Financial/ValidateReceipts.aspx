@@ -53,26 +53,33 @@
 
 
                         $(".LocalIconApproval").click(function () {
+                            var itemId = $(this).attr("baseid");
                             $(this).hide();
-                            $("#IconWait" + $(this).attr("baseid")).show();
-                            $("#IconDenial" + $(this).attr("baseid")).fadeTo(1000, 0.01);
-                            var thisIcon = this;
-                            $.ajax({
-                                type: "POST",
-                                url: "/Pages/v5/Financial/ValidateReceipts.aspx/Validate",
-                                data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
-                                success: function (msg) {
-                                    var baseId = $(thisIcon).attr("baseid");
-                                    $('.row' + baseId).addClass("action-list-item-approved");
-                                    $("#IconWait" + baseId).hide();
-                                    $("#IconDenial" + baseId).hide();
-                                    $("#IconApproved" + baseId).fadeTo(200, 0.5);  // half opacity is intentional
-                                    $("#IconUndo" + baseId).fadeTo(1000, 1); // the longer delay is intentional
-                                    alertify.success(unescape(msg.d));
+                            $("#IconWait" + itemId).show();
+                            $("#IconDenial" + itemId).fadeTo(1000, 0.01);
+
+                            SwarmopsJS.proxiedAjaxCall(
+                                "/Pages/v5/Financial/ValidateReceipts.aspx/Validate",
+                                { identifier: itemId },
+                                function (result) {
+                                    if (result.Success) {
+                                        var itemId = $(this).attr("baseid");
+                                        $('.row' + itemId).addClass("action-list-item-approved");
+                                        $("#IconWait" + itemId).hide();
+                                        $("#IconDenial" + itemId).hide();
+                                        $("#IconApproved" + itemId).fadeTo(200, 0.5); // half opacity is intentional
+                                        $("#IconUndo" + itemId).fadeTo(1000, 1); // the longer delay is intentional
+                                        alertify.success(result.DisplayMessage);
+                                    } else {
+                                        // There's probably a concurrency error.
+                                        // The socket handler will take care of updating the UI on
+                                        // receiving the cause of the concurrency error.
+
+                                        alertify.log(result.DisplayMessage);
+                                       
+                                    }
                                 }
-                            });
+                            );
                         });
 
                         $(".LocalIconUndo").click(function () {
@@ -80,22 +87,30 @@
                             $(this).hide();
                             $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
                             $("#IconWait" + $(this).attr("baseid")).show();
-                            $.ajax({
-                                type: "POST",
-                                url: "/Pages/v5/Financial/ValidateReceipts.aspx/Devalidate",
-                                data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
-                                success: function (msg) {
-                                    var baseId = $(thisIcon).attr("baseid");
-                                    $('.row' + baseId).removeClass("action-list-item-approved");
-                                    $("#IconWait" + baseId).hide();
-                                    $("#IconApproved" + baseId).hide();
-                                    $("#IconApproval" + baseId).fadeTo(200, 1);
-                                    $("#IconDenial" + baseId).fadeTo(200, 1);
-                                    alertify.log(unescape(msg.d).replace('+', ' '));
+
+                            SwarmopsJS.proxiedAjaxCall(
+                                "/Pages/v5/Financial/ValidateReceipts.aspx/RetractValidation",
+                                { identifier: $(this).attr("baseid") },
+                                function(result) {
+                                    if (result.Success) {
+                                        var itemId = $(this).attr("baseid");
+                                        $('.row' + itemId).removeClass("action-list-item-approved");
+                                        $("#IconWait" + itemId).hide();
+                                        $("#IconApproved" + itemId).hide();
+                                        $("#IconApproval" + itemId).fadeTo(200, 1);
+                                        $("#IconDenial" + itemId,Id).fadeTo(200, 1);
+                                        alertify.log(result.DisplayMessage);
+
+                                    } else {
+                                        // There's probably a concurrency error.
+                                        // The socket handler will take care of updating the UI on
+                                        // receiving the cause of the concurrency error.
+
+                                        alertify.log(result.DisplayMessage);
+                                    }
                                 }
-                            });
+                            );
+
                         });
 
 
@@ -128,7 +143,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2><asp:Label runat="server" ID="LabelAttestCostsHeader" Text="XYZ Costs Awaiting Your Attestation" /></h2>
+    <h2><asp:Label runat="server" ID="LabelAttestCostsHeader" Text="XYZ Costs Awaiting Your Approval" /></h2>
     <table id="TableAttestableCosts" class="easyui-datagrid" style="width:680px;height:400px"
         data-options="rownumbers:false,singleSelect:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-ValidatableReceipts.aspx'"
         idField="itemId">

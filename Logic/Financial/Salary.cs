@@ -12,7 +12,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
-    public class Salary : BasicSalary, IAttestable
+    public class Salary : BasicSalary, IApprovable
     {
         internal Salary (BasicSalary basic) : base (basic)
         {
@@ -154,23 +154,23 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        #region IAttestable Members
+        #region IApprovable Members
 
-        public void Attest (Person attester)
+        public void Approve (Person approvingPerson)
         {
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
-                FinancialDependencyType.Salary, Identity, DateTime.Now, attester.Identity, CostTotalCents/100.0);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Approval,
+                FinancialDependencyType.Salary, Identity, DateTime.Now, approvingPerson.Identity, CostTotalCents/100.0);
             this.Attested = true;
         }
 
-        public void Deattest (Person deattester)
+        public void RetractApproval (Person retractingPerson)
         {
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Deattestation,
-                FinancialDependencyType.Salary, Identity, DateTime.Now, deattester.Identity, CostTotalCents/100.0);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.UndoApproval,
+                FinancialDependencyType.Salary, Identity, DateTime.Now, retractingPerson.Identity, CostTotalCents/100.0);
             this.Attested = false;
         }
 
-        public void DenyAttestation (Person denyingPerson, string reason)
+        public void DenyApproval (Person denyingPerson, string reason)
         {
             this.Attested = false;
             this.Open = false;
@@ -188,7 +188,7 @@ namespace Swarmops.Logic.Financial
 
         #endregion
 
-        public FinancialAccount Budget // needed for IAttestable
+        public FinancialAccount Budget // needed for IApprovable
         {
             get { return PayrollItem.Budget; }
         }
@@ -328,7 +328,7 @@ namespace Swarmops.Logic.Financial
             }
 
             // Clear a cache
-            FinancialAccount.ClearAttestationAdjustmentsCache(payrollItem.Organization);
+            FinancialAccount.ClearApprovalAdjustmentsCache(payrollItem.Organization);
 
 
 

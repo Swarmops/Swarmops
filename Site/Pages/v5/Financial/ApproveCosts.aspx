@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Financial.AttestCosts" Codebehind="AttestCosts.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Financial.AttestCosts" Codebehind="ApproveCosts.aspx.cs" %>
 <%@ Register src="~/Controls/v5/Base/ModalDialog.ascx" tagname="ModalDialog" tagprefix="Swarmops5" %>
 <%@ Register src="~/Controls/v5/Financial/ComboBudgets.ascx" tagname="ComboBudgets" tagprefix="Swarmops5" %>
 <%@ Register src="~/Controls/v5/Financial/CurrencyTextBox.ascx" tagname="CurrencyTextBox" tagprefix="Swarmops5" %>
@@ -35,13 +35,13 @@
 
         loadUninitializedBudgets(); // no need to wait for doc.ready to load operating params
 
-        SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetRemainingBudgets", {}, function(data) {
+        SwarmopsJS.ajaxCall("/Pages/v5/Financial/ApproveCosts.aspx/GetRemainingBudgets", {}, function(data) {
             data.forEach(function(accountData, dummy1, dummy2) {
                 budgetRemainingLookup[accountData.AccountId] = accountData.Remaining;
             });
 
             if (budgetRemainingLookup.rowsLoaded == true) {
-                setAttestability();
+                setApprovability();
             }
 
             budgetRemainingLookup.budgetsLoaded = true;
@@ -50,7 +50,7 @@
         // Doc.ready:
 
         $(document).ready(function () {
-            $('#TableAttestableCosts').datagrid(
+            $('#tableApprovableCosts').datagrid(
                 {
                     rowStyler: function (index, rowData) {
                         if (rowData.approved != null) {
@@ -72,7 +72,7 @@
                         $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png").hide();
                         $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                         $(".LocalIconWait").attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");  // initializes as wait cursor here until budgets loaded
-                        $(".LocalIconApproval.LocalNew, .LocalIconApproved.LocalNew, .LocalIconUndo.LocalNew, .LocalIconDenied.LocalNew, .LocalIconApproval.LocalPreviouslyAttested, .LocalIconWait.LocalPreviouslyAttested, .LocalIconDenial.LocalPreviouslyAttested, .LocalIconDenied.LocalPreviouslyAttested").hide();
+                        $(".LocalIconApproval.LocalNew, .LocalIconApproved.LocalNew, .LocalIconUndo.LocalNew, .LocalIconDenied.LocalNew, .LocalIconApproval.LocalApproved, .LocalIconWait.LocalApproved, .LocalIconDenial.LocalApproved, .LocalIconDenied.LocalApproved").hide();
                         $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
 
 
@@ -136,11 +136,11 @@
                                 var accountId = $("#IconApproval" + baseid).attr("accountid");
                                 var funds = parseFloat($("#IconApproval" + baseid).attr("amount"));
                                 budgetRemainingLookup[accountId] -= funds;
-                                setAttestability();
+                                setApprovability();
 
                                 $.ajax({
                                     type: "POST",
-                                    url: "/Pages/v5/Financial/AttestCosts.aspx/Deattest",
+                                    url: "/Pages/v5/Financial/ApproveCosts.aspx/RetractApproval",
                                     data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
@@ -199,7 +199,7 @@
                         // Check if budgets have been fetched, and if so, initialize attestability
 
                         if (budgetRemainingLookup.budgetsLoaded == true) {
-                                setAttestability();
+                                setApprovability();
                             }
 
                             budgetRemainingLookup.rowsLoaded = true;
@@ -238,7 +238,7 @@
             var accountId = $("#IconApproval" + baseid).attr("accountid");
             var funds = parseFloat($("#IconApproval" + baseid).attr("amount"));
             budgetRemainingLookup[accountId] += funds;
-            setAttestability();
+            setApprovability();
 
             if (budgetUninitializedLookup[accountId] == true && uninitializedPopupDisplayed == false) {
 
@@ -248,7 +248,6 @@
                     }
                 });
 
-
                 alertify.alert(SwarmopsJS.unescape('<%=this.Localized_WarnUninitializedBudget%>'));
                 uninitializedPopupDisplayed = true;
             }
@@ -256,7 +255,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Pages/v5/Financial/AttestCosts.aspx/Attest",
+                url: "/Pages/v5/Financial/ApproveCosts.aspx/ApproveItem",
                 data: "{'identifier': '" + escape($(approvalIcon).attr("baseid")) + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -293,18 +292,18 @@
 
 
         function recheckBudgets() {
-            SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetRemainingBudgets", {}, function(data) {
+            SwarmopsJS.ajaxCall("/Pages/v5/Financial/ApproveCosts.aspx/GetRemainingBudgets", {}, function(data) {
                 data.forEach(function(accountData, dummy1, dummy2) {
                     budgetRemainingLookup[accountData.AccountId] = accountData.Remaining;
                     // console.log("Rechecking budget " + accountData.AccountId + ": remaining is " + accountData.Remaining);
                 });
 
-                setAttestability();
+                setApprovability();
             });
         }
 
         function loadUninitializedBudgets() {
-            SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetUninitializedBudgets", {}, function(data) {
+            SwarmopsJS.ajaxCall("/Pages/v5/Financial/ApproveCosts.aspx/GetUninitializedBudgets", {}, function(data) {
                 console.log(data);
                 data.forEach(function(accountData, dummy1, dummy2) {
                     budgetUninitializedLookup[accountData] = true;
@@ -314,7 +313,7 @@
         }
 
 
-        function setAttestability() {
+        function setApprovability() {
 
             $('.LocalIconApproval').each(function() {
                 var accountId = $(this).attr('accountid');
@@ -361,7 +360,7 @@
             <%= this.DialogDeny.ClientID %>_close();
 
             SwarmopsJS.ajaxCall(
-                "/Pages/v5/Financial/AttestCosts.aspx/DenyItem",
+                "/Pages/v5/Financial/ApproveCosts.aspx/DenyItem",
                 { recordId: recordId, reason: reason },
                 $.proxy(function(result) {
                     if (result.Success) {
@@ -372,7 +371,7 @@
                         // entire grid to cover our bases
                         alertify.error(result.DisplayMessage);
                         recheckBudgets();
-                        $('#TableAttestableCosts').datagrid('reload');
+                        $('#tableApprovableCosts').datagrid('reload');
                     }
                 }, $('#IconDenied' + recordId)));
         }
@@ -396,11 +395,11 @@
 
             <%= this.DialogDeny.ClientID %>_close();
             SwarmopsJS.ajaxCall(
-                "/Pages/v5/Financial/AttestCosts.aspx/RebudgetItem",
+                "/Pages/v5/Financial/ApproveCosts.aspx/RebudgetItem",
                 { recordId: recordId, newAccountId: newAccountId },
                 function(data) {
                     // this is when the change is completed
-                    $('#TableAttestableCosts').datagrid('reload');
+                    $('#tableApprovableCosts').datagrid('reload');
                 });
         }
 
@@ -411,7 +410,7 @@
             }
 
             SwarmopsJS.ajaxCall(
-                "/Pages/v5/Financial/AttestCosts.aspx/AttestCorrectedItem",
+                "/Pages/v5/Financial/ApproveCosts.aspx/ApproveCorrectedItem",
                 { recordId: recordId, amountString: <%=this.TextCorrectAmount.ClientID%>_val() },
                 function(result) {
                     console.log(result);
@@ -420,7 +419,7 @@
                     } else {
                         // Succeeded, attested for new amount. Since amount was changed, reload grid and budgets
                         recheckBudgets();
-                        $('#TableAttestableCosts').datagrid('reload');
+                        $('#tableApprovableCosts').datagrid('reload');
                         <%= this.DialogDeny.ClientID %>_close();
                     }
                 });
@@ -469,8 +468,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2><asp:Label runat="server" ID="LabelAttestCostsHeader" Text="XYZ Costs Awaiting Your Attestation" /></h2>
-    <table id="TableAttestableCosts" class="easyui-datagrid" style="width:680px;height:400px"
+    <h2><asp:Label runat="server" ID="LabelAttestCostsHeader" Text="XYZ Costs Awaiting Your Approval" /></h2>
+    <table id="tableApprovableCosts" class="easyui-datagrid" style="width:680px;height:400px"
         data-options="rownumbers:false,singleSelect:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-AttestableCosts.aspx'"
         idField="itemId">
         <thead>  
@@ -488,7 +487,7 @@
     
     <Swarmops5:ModalDialog ID="DialogDeny" runat="server" >
         <DialogCode>
-            <h2><asp:Label ID="LabelModalDenyHeader" runat="server" Text="Fix Problems Or Deny Attestation XYZ" /></h2>
+            <h2><asp:Label ID="LabelModalDenyHeader" runat="server" Text="Fix Problems Or Deny Approval XYZ" /></h2>
             <p><asp:Literal ID="LabelWhatProblem" runat="server" Text="What seems to be the problem? XYZ" /></p>
             <p><input type="radio" id="RadioDeny" name="ModalOptions" value="Deny" onclick="$('#<%=this.TextDenyReason.ClientID%>').focus();" /><label for="RadioDeny"><asp:Label runat="server" ID="LabelRadioDeny" Text="I will not attest this record. It is scratched. XYZ" /></label></p>
             <div id="radioOptionDeny" class="radioOption">

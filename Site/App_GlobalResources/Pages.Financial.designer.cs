@@ -61,7 +61,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cash Advance #{0:N0} for {1} has been attested for {3:N2}..
+        ///   Looks up a localized string similar to Cash Advance #{0:N0} for {1} has been approved for {3:N2}..
         /// </summary>
         internal static string AttestCosts_AdvanceAttested {
             get {
@@ -70,7 +70,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cash Advance #{0:N0} for {1} was UN-attested.  It will not be paid out unless attested again..
+        ///   Looks up a localized string similar to The approval for Cash Advance #{0:N0} for {1} was RETRACTED.  It will not be paid out unless approved again..
         /// </summary>
         internal static string AttestCosts_AdvanceDeattested {
             get {
@@ -79,7 +79,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You cannot attest this amount. The budget is empty for the year {0}..
+        ///   Looks up a localized string similar to You cannot approve this amount. The budget is empty for the year {0}..
         /// </summary>
         internal static string AttestCosts_BudgetIsEmpty {
             get {
@@ -88,7 +88,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You cannot attest a negative amount..
+        ///   Looks up a localized string similar to You cannot approve a negative amount..
         /// </summary>
         internal static string AttestCosts_CannotAttestNegative {
             get {
@@ -97,7 +97,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You cannot attest a zero amount..
+        ///   Looks up a localized string similar to You cannot approve a zero amount..
         /// </summary>
         internal static string AttestCosts_CannotAttestZero {
             get {
@@ -133,7 +133,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expense Claim #{0:N0} from {1} for {2} {3:N2} has been attested..
+        ///   Looks up a localized string similar to Expense Claim #{0:N0} from {1} for {2} {3:N2} has been approved..
         /// </summary>
         internal static string AttestCosts_ExpenseAttested {
             get {
@@ -142,7 +142,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expense Claim #{0:N0} from {1} was DE-attested. It will not be paid out unless attested again..
+        ///   Looks up a localized string similar to Approval for Expense Claim #{0:N0} from {1} was RETRACTED. It will not be paid unless approved again..
         /// </summary>
         internal static string AttestCosts_ExpenseDeattested {
             get {
@@ -214,7 +214,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Costs waiting for your attestation.
+        ///   Looks up a localized string similar to Costs waiting for your approval.
         /// </summary>
         internal static string AttestCosts_Header_CostsAwaitingAttestation {
             get {
@@ -223,7 +223,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is where you attest costs that other people are requesting from your budgets. Nothing is paid before you have attested it..
+        ///   Looks up a localized string similar to This is where you approve costs that other people are requesting from your budgets. Nothing is paid before you have approved it..
         /// </summary>
         internal static string AttestCosts_Info {
             get {
@@ -232,7 +232,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invoice #{0:N0} from {1} for {2} {3:N2} has been attested..
+        ///   Looks up a localized string similar to Invoice #{0:N0} from {1} for {2} {3:N2} has been approved..
         /// </summary>
         internal static string AttestCosts_InvoiceAttested {
             get {
@@ -241,7 +241,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invoice #{0:N0} from {1} was UN-attested.  It will not be paid unless attested again..
+        ///   Looks up a localized string similar to Approval for Invoice #{0:N0} from {1} was RETRACTED.  It will not be paid unless approved again..
         /// </summary>
         internal static string AttestCosts_InvoiceDeattested {
             get {
@@ -250,7 +250,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attest.
+        ///   Looks up a localized string similar to Approve.
         /// </summary>
         internal static string AttestCosts_Modal_ButtonAmount {
             get {
@@ -259,7 +259,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attest.
+        ///   Looks up a localized string similar to Approve.
         /// </summary>
         internal static string AttestCosts_Modal_ButtonCorrect {
             get {
@@ -340,7 +340,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fix problems or deny attestation.
+        ///   Looks up a localized string similar to Fix problems or deny approval.
         /// </summary>
         internal static string AttestCosts_Modal_Header {
             get {
@@ -349,7 +349,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I will attest this, but for a different amount..
+        ///   Looks up a localized string similar to I will approve this, but for a different amount..
         /// </summary>
         internal static string AttestCosts_Modal_RadioOptionAmount {
             get {
@@ -358,7 +358,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The amount is wrong. I will attest it with the correct amount..
+        ///   Looks up a localized string similar to The amount is wrong. I will approve it for the correct amount..
         /// </summary>
         internal static string AttestCosts_Modal_RadioOptionCorrect {
             get {
@@ -367,7 +367,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I will not attest this record. It is scratched..
+        ///   Looks up a localized string similar to I will not approve this record. It is scratched..
         /// </summary>
         internal static string AttestCosts_Modal_RadioOptionDeny {
             get {
@@ -394,7 +394,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are not enough funds remaining in the budget to attest this cost..
+        ///   Looks up a localized string similar to There are not enough funds remaining in the budget to approve this cost..
         /// </summary>
         internal static string AttestCosts_OutOfBudget {
             get {
@@ -403,7 +403,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are not enough funds to attest this. You can attest up to {0} {1:N2} more in this budget for the year {2}..
+        ///   Looks up a localized string similar to There are not enough funds to approve this. You can attest up to {0} {1:N2} more in this budget for the year {2}..
         /// </summary>
         internal static string AttestCosts_OutOfBudgetPrecise {
             get {
@@ -412,7 +412,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;strong&gt;OVERDRAFT BUDGET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;There are not enough funds remaining in the budget to attest this expense. Normally, it would be blocked from attestation. However, you may override this limitation and attest anyway, thereby causing the account to overdraft its budget.&lt;br/&gt;&lt;br/&gt;Do you want to attest the expense, thereby forcing an overdraft, or do you want to cancel attestation, staying on budget instead?&lt;br/&gt;&lt;br/&gt;.
+        ///   Looks up a localized string similar to &lt;strong&gt;OVERDRAFT BUDGET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;There are not enough funds remaining in the budget to approve this expense. Normally, it would be blocked from approval. However, you may override this limitation and attest anyway, thereby causing the account to overdraft its budget.&lt;br/&gt;&lt;br/&gt;Do you want to approve the expense, thereby forcing an overdraft, or do you want to cancel, staying on budget instead?&lt;br/&gt;&lt;br/&gt;.
         /// </summary>
         internal static string AttestCosts_OverdraftConfirm {
             get {
@@ -448,7 +448,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attest Costs.
+        ///   Looks up a localized string similar to Approve Costs.
         /// </summary>
         internal static string AttestCosts_PageTitle {
             get {
@@ -457,7 +457,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conference #{0:N0}, arranged by {1}, has been attested for {3:N2}..
+        ///   Looks up a localized string similar to Conference #{0:N0}, arranged by {1}, has been approved for {3:N2}..
         /// </summary>
         internal static string AttestCosts_ParleyAttested {
             get {
@@ -466,7 +466,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conference #{0:N0} by {1} was UN-attested.  It will not be greenlighted unless attested again..
+        ///   Looks up a localized string similar to Approval for Conference #{0:N0} by {1} was RETRACTED.  It will not be greenlighted unless approved again..
         /// </summary>
         internal static string AttestCosts_ParleyDeattested {
             get {
@@ -484,7 +484,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Salary #{0:N0} for {1} was DE-attested. It will not be paid out unless attested again..
+        ///   Looks up a localized string similar to Approval for Salary #{0:N0} for {1} was RETRACTED. It will not be paid out unless approved again..
         /// </summary>
         internal static string AttestCosts_SalaryDeattested {
             get {
@@ -493,7 +493,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;strong&gt;WARNING: UNINITIALIZED BUDGET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The cost you&apos;re approving belongs to an uninitialized budget -- an account in the ledger that lacks owner and doesn&apos;t have a set budget allowance for the year. Consider visiting the Account Plan and allocating budgets for the expected revenue and expenses.&lt;br/&gt;&lt;br/&gt;This message will only display once per visit to Attestations.&lt;br/&gt;.
+        ///   Looks up a localized string similar to &lt;strong&gt;WARNING: BUDGET NOT SET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The cost you&apos;re approving belongs to an account in the ledger that lacks owner and doesn&apos;t have a defined budget allowance for the year. Consider visiting the Chart of Accounts and allocating budgets for the expected revenue and expenses.&lt;br/&gt;&lt;br/&gt;This message will only display once per visit to Cost Approvals.&lt;br/&gt;.
         /// </summary>
         internal static string AttestCosts_Warn_UninitializedBudget {
             get {
@@ -1699,7 +1699,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The receipts for Expense Claim #{0:N0} for {1} {2:N2} have been DE-validated. The expense claim will not proceed to payout unless re-validated..
+        ///   Looks up a localized string similar to Validation for receipts for Expense Claim #{0:N0} for {1} {2:N2} was RETRACTED. The expense claim will not proceed to payout unless re-validated..
         /// </summary>
         internal static string ValidateReceipts_ReceiptsDevalidated {
             get {

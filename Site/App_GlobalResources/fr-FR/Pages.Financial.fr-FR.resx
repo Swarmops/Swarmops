@@ -280,7 +280,7 @@
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;AVERTISSEMENT: BUDGET NON INITIALISÉ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Le coût que vous approuvez appartient à un budget non initialisé -- un compte dans le grand livre qui manque de propriétaire et qui ne dispose pas d'une allocation budgétaire définie pour l'année. Envisagez de consulter le plan du compte et d’allouer des budgets aux revenus et aux dépenses prévues.&lt;br/&gt;&lt;br/&gt; Ce message ne s'affiche qu'une fois par visite dans Attestations.&lt;br/&gt;</value>
+    <value>&lt;strong&gt;AVERTISSEMENT: BUDGET NON INITIALISÉ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Le coût que vous approuvez appartient à un budget non initialisé -- un compte dans le grand livre qui manque de propriétaire et qui ne dispose pas d'une allocation budgétaire définie pour l'année. Envisagez de consulter le plan du compte et d’allouer des budgets aux revenus et aux dépenses prévues.&lt;br/&gt;&lt;br/&gt; Ce message ne s'affiche qu'une fois par visite dans Approvals.&lt;br/&gt;</value>
   </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Montant total de la facture (en {0})</value>

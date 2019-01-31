@@ -448,6 +448,18 @@ var SwarmopsJS = (function () {
     }
 
 
+    // Preserves the "this" object into success and error functions
+    publicSymbols.proxiedAjaxCall = proxiedAjaxCall;
+    function proxiedAjaxCall(url, params, successFunction, errorFunction) {
+        ajaxCall(
+            url,
+            params,
+            $.proxy(successFunction, this),
+            errorFunction !== undefined? $.proxy(errorFunction, this) : undefined
+        );
+    }
+
+
     publicSymbols.fancyBoxInit = fancyBoxInit;
     function fancyBoxInit(selector) {
 

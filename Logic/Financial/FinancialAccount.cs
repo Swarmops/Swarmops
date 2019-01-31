@@ -812,7 +812,7 @@ namespace Swarmops.Logic.Financial
             return result;
         }
 
-        public static void ClearAttestationAdjustmentsCache (Organization organization)
+        public static void ClearApprovalAdjustmentsCache (Organization organization)
         {
             if (_organizationBudgetAttestationSpaceLookup.ContainsKey (organization.Identity))
             {

@@ -36,7 +36,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 if (salary.PayrollItem.Person.BitcoinPayoutAddress.Length > 0 && salary.Attested == false)
                 {
-                    salary.Attest (salary.PayrollItem.Person); // null for system apparently isn't allowed here
+                    salary.Approve (salary.PayrollItem.Person); // null for system apparently isn't allowed here
                 }
             }*/
             

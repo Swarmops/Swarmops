@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>Cash Advance #{0:N0} for {1} has been attested for {3:N2}.</value>
+    <value>Cash Advance #{0:N0} for {1} has been approved for {3:N2}.</value>
     <comment>Status message.</comment>
   </data>
   <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>Cash Advance #{0:N0} for {1} was UN-attested.  It will not be paid out unless attested again.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>The approval for Cash Advance #{0:N0} for {1} was RETRACTED.  It will not be paid out unless approved again.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
-    <value>You cannot attest this amount. The budget is empty for the year {0}.</value>
+    <value>You cannot approve this amount. The budget is empty for the year {0}.</value>
   </data>
   <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
-    <value>You cannot attest a negative amount.</value>
+    <value>You cannot approve a negative amount.</value>
   </data>
   <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>You cannot attest a zero amount.</value>
+    <value>You cannot approve a zero amount.</value>
   </data>
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>Sorry, you cannot rebudget a salary payout.</value>
@@ -144,12 +144,8 @@
     <value>Please select a budget to retarget the charge for.</value>
   </data>
   <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>Expense Claim #{0:N0} from {1} for {2} {3:N2} has been attested.</value>
+    <value>Expense Claim #{0:N0} from {1} for {2} {3:N2} has been approved.</value>
     <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Expense Claim #{0:N0} from {1} was DE-attested. It will not be paid out unless attested again.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Action</value>
@@ -178,25 +174,25 @@
     <comment>Header for the requested amount.</comment>
   </data>
   <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
-    <value>Costs waiting for your attestation</value>
+    <value>Costs waiting for your approval</value>
   </data>
   <data name="AttestCosts_Info" xml:space="preserve">
-    <value>This is where you attest costs that other people are requesting from your budgets. Nothing is paid before you have attested it.</value>
+    <value>This is where you approve costs that other people are requesting from your budgets. Nothing is paid before you have approved it.</value>
   </data>
   <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>Invoice #{0:N0} from {1} for {2} {3:N2} has been attested.</value>
+    <value>Invoice #{0:N0} from {1} for {2} {3:N2} has been approved.</value>
     <comment>{2} is the currency.</comment>
   </data>
   <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>Invoice #{0:N0} from {1} was UN-attested.  It will not be paid unless attested again.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>Approval for Invoice #{0:N0} from {1} was RETRACTED.  It will not be paid unless approved again.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>Attest</value>
+    <value>Approve</value>
     <comment>keep short</comment>
   </data>
   <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Attest</value>
+    <value>Approve</value>
   </data>
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Deny</value>
@@ -224,16 +220,16 @@
     <value>Move the charge to this budget instead:</value>
   </data>
   <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>Fix problems or deny attestation</value>
+    <value>Fix problems or deny approval</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
-    <value>I will attest this, but for a different amount.</value>
+    <value>I will approve this, but for a different amount.</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
-    <value>The amount is wrong. I will attest it with the correct amount.</value>
+    <value>The amount is wrong. I will approve it for the correct amount.</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
-    <value>I will not attest this record. It is scratched.</value>
+    <value>I will not approve this record. It is scratched.</value>
     <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
   </data>
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
@@ -243,14 +239,14 @@
     <value>What seems to be the problem with this record?</value>
   </data>
   <data name="AttestCosts_OutOfBudget" xml:space="preserve">
-    <value>There are not enough funds remaining in the budget to attest this cost.</value>
+    <value>There are not enough funds remaining in the budget to approve this cost.</value>
   </data>
   <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>There are not enough funds to attest this. You can attest up to {0} {1:N2} more in this budget for the year {2}.</value>
+    <value>There are not enough funds to approve this. You can attest up to {0} {1:N2} more in this budget for the year {2}.</value>
     <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
   </data>
   <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
-    <value>&lt;strong&gt;OVERDRAFT BUDGET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;There are not enough funds remaining in the budget to attest this expense. Normally, it would be blocked from attestation. However, you may override this limitation and attest anyway, thereby causing the account to overdraft its budget.&lt;br/&gt;&lt;br/&gt;Do you want to attest the expense, thereby forcing an overdraft, or do you want to cancel attestation, staying on budget instead?&lt;br/&gt;&lt;br/&gt;</value>
+    <value>&lt;strong&gt;OVERDRAFT BUDGET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;There are not enough funds remaining in the budget to approve this expense. Normally, it would be blocked from approval. However, you may override this limitation and attest anyway, thereby causing the account to overdraft its budget.&lt;br/&gt;&lt;br/&gt;Do you want to approve the expense, thereby forcing an overdraft, or do you want to cancel, staying on budget instead?&lt;br/&gt;&lt;br/&gt;</value>
   </data>
   <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
     <value>Stay on Budget</value>
@@ -263,24 +259,24 @@
     <comment>The UPPERCASE is intentional.</comment>
   </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
-    <value>Attest Costs</value>
+    <value>Approve Costs</value>
   </data>
   <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>Conference #{0:N0}, arranged by {1}, has been attested for {3:N2}.</value>
+    <value>Conference #{0:N0}, arranged by {1}, has been approved for {3:N2}.</value>
   </data>
   <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>Conference #{0:N0} by {1} was UN-attested.  It will not be greenlighted unless attested again.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>Approval for Conference #{0:N0} by {1} was RETRACTED.  It will not be greenlighted unless approved again.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>Salary #{0:N0} for {1} was attested for {3:N2}.</value>
   </data>
   <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Salary #{0:N0} for {1} was DE-attested. It will not be paid out unless attested again.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>Approval for Salary #{0:N0} for {1} was RETRACTED. It will not be paid out unless approved again.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;WARNING: UNINITIALIZED BUDGET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The cost you're approving belongs to an uninitialized budget -- an account in the ledger that lacks owner and doesn't have a set budget allowance for the year. Consider visiting the Account Plan and allocating budgets for the expected revenue and expenses.&lt;br/&gt;&lt;br/&gt;This message will only display once per visit to Attestations.&lt;br/&gt;</value>
+    <value>&lt;strong&gt;WARNING: BUDGET NOT SET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The cost you're approving belongs to an account in the ledger that lacks owner and doesn't have a defined budget allowance for the year. Consider visiting the Chart of Accounts and allocating budgets for the expected revenue and expenses.&lt;br/&gt;&lt;br/&gt;This message will only display once per visit to Cost Approvals.&lt;br/&gt;</value>
   </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Invoice amount total (in {0})</value>
@@ -580,7 +576,7 @@
     <value>Validate Receipts</value>
   </data>
   <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>The receipts for Expense Claim #{0:N0} for {1} {2:N2} have been DE-validated. The expense claim will not proceed to payout unless re-validated.</value>
+    <value>Validation for receipts for Expense Claim #{0:N0} for {1} {2:N2} was RETRACTED. The expense claim will not proceed to payout unless re-validated.</value>
   </data>
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>The receipts for Expense Claim #{0:N0} for {1} {2:N2} have been validated.</value>
@@ -730,5 +726,9 @@
   </data>
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>Successfully filed {0} claims.</value>
+  </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Approval for Expense Claim #{0:N0} from {1} was RETRACTED. It will not be paid unless approved again.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
   </data>
 </root>

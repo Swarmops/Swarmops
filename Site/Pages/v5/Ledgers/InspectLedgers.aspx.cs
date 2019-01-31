@@ -385,7 +385,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (FinancialValidation validation in validations)
             {
-                if (validation.ValidationType == FinancialValidationType.Attestation)
+                if (validation.ValidationType == FinancialValidationType.Approval)
                 {
                     result += String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_AttestedByX + ". ",
                         validation.Person.Canonical,

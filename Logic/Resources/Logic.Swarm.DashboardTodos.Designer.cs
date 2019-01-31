@@ -61,7 +61,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attest cash advances {0}.
+        ///   Looks up a localized string similar to Approve cash advances {0}.
         /// </summary>
         internal static string Attest_CashAdvance_Many {
             get {
@@ -70,7 +70,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attest cash advance #{0}.
+        ///   Looks up a localized string similar to Approve cash advance #{0}.
         /// </summary>
         internal static string Attest_CashAdvance_One {
             get {
@@ -79,7 +79,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attest expense claims {0}.
+        ///   Looks up a localized string similar to Approve expense claims {0}.
         /// </summary>
         internal static string Attest_ExpenseClaim_Many {
             get {
@@ -88,7 +88,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attest expense claim #{0}.
+        ///   Looks up a localized string similar to Approve expense claim #{0}.
         /// </summary>
         internal static string Attest_ExpenseClaim_One {
             get {

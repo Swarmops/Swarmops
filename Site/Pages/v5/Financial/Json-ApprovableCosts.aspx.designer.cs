@@ -9,5 +9,5 @@
 
 
 
-public partial class Pages_v5_Finance_Json_AttestableCosts {
+public partial class Pages_v5_Finance_Json_ApprovableCosts {
 }

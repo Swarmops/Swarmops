@@ -13,7 +13,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
-    public class ExpenseClaim : BasicExpenseClaim, IValidatable, IAttestable, IPayable
+    public class ExpenseClaim : BasicExpenseClaim, IValidatable, IApprovable, IPayable
     {
         #region Construction and Creation
 
@@ -101,7 +101,7 @@ namespace Swarmops.Logic.Financial
 
                 // Create notifications
 
-                OutboundComm.CreateNotificationAttestationNeeded(budget, claimer, string.Empty,
+                OutboundComm.CreateNotificationApprovalNeeded(budget, claimer, string.Empty,
                     newClaim.BudgetAmountCents/100.0,
                     description, NotificationResource.ExpenseClaim_Created);
                     // Slightly misplaced logic, but failsafer here
@@ -113,7 +113,7 @@ namespace Swarmops.Logic.Financial
                         vatCents/100.0, budget, description), newClaim);
 
                 // Clear a cache
-                FinancialAccount.ClearAttestationAdjustmentsCache(organization);
+                FinancialAccount.ClearApprovalAdjustmentsCache(organization);
             }
 
             return newClaim;
@@ -395,47 +395,47 @@ namespace Swarmops.Logic.Financial
                 NotificationResource.ExpenseClaim_Validated);
         }
 
-        public void Devalidate (Person devalidator)
+        public void RetractValidation (Person retractor)
         {
             SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated (Identity, false);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Devalidation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.UndoValidation,
                 FinancialDependencyType.ExpenseClaim, Identity,
-                DateTime.UtcNow, devalidator.Identity, (double) Amount);
+                DateTime.UtcNow, retractor.Identity, (double) Amount);
             base.Validated = false;
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
-                NotificationResource.ExpenseClaim_Devalidated);
+                NotificationResource.ExpenseClaim_ValidationRetracted);
         }
 
         #endregion
 
-        #region IAttestable Members
+        #region IApprovable Members
 
-        public void Attest (Person attester)
+        public void Approve (Person approvingPerson)
         {
             Attested = true;
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Approval,
                 FinancialDependencyType.ExpenseClaim, Identity,
-                DateTime.UtcNow, attester.Identity, (double) Amount);
+                DateTime.UtcNow, approvingPerson.Identity, (double) Amount);
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
-                NotificationResource.ExpenseClaim_Attested);
+                NotificationResource.ExpenseClaim_Approved);
 
-            UpdateFinancialTransaction(attester); // will re-enable tx if it was zeroed out earlier
+            UpdateFinancialTransaction(approvingPerson); // will re-enable tx if it was zeroed out earlier
         }
 
-        public void Deattest (Person deattester)
+        public void RetractApproval (Person retractingPerson)
         {
             Attested = false;
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.UndoApproval,
                 FinancialDependencyType.ExpenseClaim, Identity,
-                DateTime.UtcNow, deattester.Identity, (double) Amount);
+                DateTime.UtcNow, retractingPerson.Identity, (double) Amount);
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
-                NotificationResource.ExpenseClaim_Deattested);
+                NotificationResource.ExpenseClaim_ApprovalRetracted);
         }
 
-        public void DenyAttestation (Person denyingPerson, string reason)
+        public void DenyApproval (Person denyingPerson, string reason)
         {
             Attested = false;
             Open = false;
@@ -493,7 +493,7 @@ namespace Swarmops.Logic.Financial
             if (Validated)
             {
                 // Reset validation, since amount was changed
-                Devalidate (settingPerson);
+                RetractValidation (settingPerson);
             }
         }
 

@@ -340,7 +340,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attest Costs.
+        ///   Looks up a localized string similar to Approve Costs.
         /// </summary>
         internal static string Menu5_Financial_AttestCosts {
             get {

@@ -1021,12 +1021,12 @@
     <Compile Include="Pages\v5\Financial\ListInvoicesInbound.aspx.designer.cs">
       <DependentUpon>ListInvoicesInbound.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\v5\Financial\AttestCosts.aspx.cs">
-      <DependentUpon>AttestCosts.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Financial\ApproveCosts.aspx.cs">
+      <DependentUpon>ApproveCosts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\v5\Financial\AttestCosts.aspx.designer.cs">
-      <DependentUpon>AttestCosts.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Financial\ApproveCosts.aspx.designer.cs">
+      <DependentUpon>ApproveCosts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\v5\Financial\BitcoinHotwalletNotEnabled.aspx.cs">
       <DependentUpon>BitcoinHotwalletNotEnabled.aspx</DependentUpon>
@@ -1070,12 +1070,12 @@
     <Compile Include="Pages\v5\Financial\FileExpenseClaim.aspx.designer.cs">
       <DependentUpon>FileExpenseClaim.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\v5\Financial\Json-AttestableCosts.aspx.cs">
-      <DependentUpon>Json-AttestableCosts.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Financial\Json-ApprovableCosts.aspx.cs">
+      <DependentUpon>Json-ApprovableCosts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\v5\Financial\Json-AttestableCosts.aspx.designer.cs">
-      <DependentUpon>Json-AttestableCosts.aspx</DependentUpon>
+    <Compile Include="Pages\v5\Financial\Json-ApprovableCosts.aspx.designer.cs">
+      <DependentUpon>Json-ApprovableCosts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\v5\Financial\Json-PayableCosts.aspx.cs">
       <DependentUpon>Json-PayableCosts.aspx</DependentUpon>
@@ -1941,14 +1941,14 @@
     <Content Include="Pages\v5\Financial\Json-ListInvoicesInbound.aspx" />
     <Content Include="Pages\v5\Financial\ListInvoicesOutbound.aspx" />
     <Content Include="Pages\v5\Financial\ListInvoicesInbound.aspx" />
-    <Content Include="Pages\v5\Financial\AttestCosts.aspx" />
+    <Content Include="Pages\v5\Financial\ApproveCosts.aspx" />
     <Content Include="Pages\v5\Financial\BitcoinHotwalletNotEnabled.aspx" />
     <Content Include="Pages\v5\Financial\CreateOutboundInvoice.aspx" />
     <Content Include="Pages\v5\Financial\CreateInboundInvoice.aspx" />
     <Content Include="Pages\v5\Financial\Donate.aspx" />
     <Content Include="Pages\v5\Financial\EconomyNotEnabled.aspx" />
     <Content Include="Pages\v5\Financial\FileExpenseClaim.aspx" />
-    <Content Include="Pages\v5\Financial\Json-AttestableCosts.aspx" />
+    <Content Include="Pages\v5\Financial\Json-ApprovableCosts.aspx" />
     <Content Include="Pages\v5\Financial\Json-PayableCosts.aspx" />
     <Content Include="Pages\v5\Financial\Json-PayableCostsOcr.aspx" />
     <Content Include="Pages\v5\Financial\Json-ValidatableReceipts.aspx" />

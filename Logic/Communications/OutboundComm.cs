@@ -280,7 +280,7 @@ namespace Swarmops.Logic.Communications
 
 
 
-        public static OutboundComm CreateNotificationAttestationNeeded (FinancialAccount budget, Person concernedPerson,
+        public static OutboundComm CreateNotificationApprovalNeeded (FinancialAccount budget, Person concernedPerson,
             string supplier, double amountRequested, string purpose, NotificationResource notification)
         {
             NotificationPayload payload = new NotificationPayload (notification.ToString());
