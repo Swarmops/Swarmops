@@ -497,7 +497,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
+        ///   Looks up a localized string similar to An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must approve this invoice before it proceeds to payout.
         ///
         ///Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny..
         /// </summary>

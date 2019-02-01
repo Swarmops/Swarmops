@@ -298,7 +298,7 @@ Expect more communication to follow on the matter. If you don't hear from record
     <value>[[OrganizationName]] Validation RETRACTED for Expense Claim Receipts: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
+    <value>An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must approve this invoice before it proceeds to payout.
 
 Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny.</value>
   </data>
