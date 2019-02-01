@@ -233,7 +233,7 @@ Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to at
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Approveation Needed</value>
+    <value>[[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Approval Needed</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_ApprovalRetracted_Body" xml:space="preserve">
@@ -259,7 +259,7 @@ Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to at
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Approveation Needed</value>
+    <value>[[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Approval Needed</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
@@ -303,7 +303,7 @@ Expect more communication to follow on the matter. If you don't hear from record
 Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny.</value>
   </data>
   <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Approveation Needed</value>
+    <value>[[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Approval Needed</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">

@@ -349,7 +349,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Approveation Needed.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Approval Needed.
         /// </summary>
         internal static string CashAdvance_Requested_Subject {
             get {
@@ -407,7 +407,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Approveation Needed.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Approval Needed.
         /// </summary>
         internal static string ExpenseClaim_Created_Subject {
             get {
@@ -508,7 +508,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Approveation Needed.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Approval Needed.
         /// </summary>
         internal static string InboundInvoice_Created_Subject {
             get {
