@@ -53,7 +53,10 @@
             (
                 {
                     onLoadSuccess: function () {
-                        $(".LocalViewDox").click(function () {
+
+                        $(".LocalIconDox").attr('src', '/Images/Icons/iconshock-balloon-examine-128x96px.png');
+
+                        $(".LocalIconDox").click(function () {
 
                             $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
 
