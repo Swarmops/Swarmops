@@ -169,7 +169,7 @@ namespace Swarmops.Frontend.Automation
                     {
                         action =
                             String.Format (
-                                "<img class='LocalIconTerminate {1}' height='18' width='24' {2} assignmentId='{0}' />",
+                                "<img class='LocalIconTerminate {1} action-icon' {2} assignmentId='{0}' />",
                                 assignments[0].Identity, _customCookieClass,
                                 assignments[0].PersonId == CurrentUser.Identity ? "self='true'" : string.Empty);
                     }
