@@ -10,8 +10,7 @@
         }
 
         preload([
-            '/Images/Abstract/ajaxloader-48x36px.gif',
-            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png'
+            '/Images/Abstract/ajaxloader-48x36px.gif'
         ]);
         $(document).ready(function() {
 
@@ -50,19 +49,7 @@
 	                    <%= this.DropPerson.ClientID%>_focus();
 	                });
 
-	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').css("cursor", "pointer").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
-
-	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').mouseover(function() {
-	                    if ($(this).attr("rel") != "loading") {
-	                        $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot.png");
-	                    }
-	                });
-
-	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').mouseout(function () {
-	                    if ($(this).attr("rel") != "loading") {
-	                        $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
-	                    }
-	                });
+	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
 
 	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').click(function() {
 	                    if ($(this).attr("rel") != "loading") {
