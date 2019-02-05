@@ -92,100 +92,80 @@
                         });
 
                         $(".LocalIconApproval").click(function() {
-                            if ($(this).attr("rel") != "loading" && $("#IconDenial" + $(this).attr("baseid")) != "loading") {
-
-                                if ($(this).hasClass("LocalFundsInsufficient")) {
-                                    if (!canOverdraftBudgets) {
-                                        alertify.error(SwarmopsJS.unescape('<%=this.Localized_Error_InsufficientBudget%>'));
-                                        return;
-                                    }
-
-                                    // Handle confirm-overdraft case
-
-                                    alertify.set({
-                                        labels: {
-                                            ok: SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftNo%>'),
-                                            cancel: SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftYes%>')
-                                        }
-                                    });
-
-                                    alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftPrompt%>'),
-                                        $.proxy(function(response) {
-                                            if (!response) {
-                                                // user clicked the RED button, which is "confirm overdraft"
-
-                                                onExpenseApproval(this);
-                                            }
-                                        }, this));
-
-                                    return; // Do not process here - must wait for confirm dialog to return
+                            if ($(this).hasClass("LocalFundsInsufficient")) {
+                                if (!canOverdraftBudgets) {
+                                    alertify.error(SwarmopsJS.unescape('<%=this.Localized_Error_InsufficientBudget%>'));
+                                    return;
                                 }
 
-                                // Handle normal case
+                                // Handle confirm-overdraft case
 
-                                onExpenseApproval(this);
+                                alertify.set({
+                                    labels: {
+                                        ok: SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftNo%>'),
+                                        cancel: SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftYes%>')
+                                    }
+                                });
 
+                                alertify.confirm(SwarmopsJS.unescape('<%=this.Localized_ConfirmOverdraftPrompt%>'),
+                                    $.proxy(function(response) {
+                                        if (!response) {
+                                            // user clicked the RED button, which is "confirm overdraft"
+
+                                            onExpenseApproval(this);
+                                        }
+                                    }, this));
+
+                                return; // Do not process here - must wait for confirm dialog to return
                             }
+
+                            // Handle normal case
+
+                            onExpenseApproval(this);
                         });
 
                         $(".LocalIconUndo").click(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("rel", "loading");
-                                $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
-                                $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
+                            $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
+                            $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
 
-                                var baseid = $(this).attr("baseid");
-                                var accountId = $("#IconApproval" + baseid).attr("accountid");
-                                var funds = parseFloat($("#IconApproval" + baseid).attr("amount"));
-                                budgetRemainingLookup[accountId] -= funds;
-                                setApprovability();
+                            var baseid = $(this).attr("baseid");
+                            var accountId = $("#IconApproval" + baseid).attr("accountid");
+                            var funds = parseFloat($("#IconApproval" + baseid).attr("amount"));
+                            budgetRemainingLookup[accountId] -= funds;
+                            setApprovability();
 
-                                $.ajax({
-                                    type: "POST",
-                                    url: "/Pages/v5/Financial/ApproveCosts.aspx/RetractApproval",
-                                    data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    success: $.proxy(function (msg) {
-                                        if (msg.d.Success) {
-                                            var baseid = $(this).attr("baseid");
-                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
-                                            $(this).attr("rel", "");
-                                            $(this).hide();
-                                            $("#IconApproved" + baseid).finish().css("opacity", 0.5).css("display", "none");
-                                            $("#IconApproval" + baseid).fadeIn(100);
-                                            $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
-                                            $('.row' + baseid).removeClass("action-list-item-approved");
-                                            alertify.log(SwarmopsJS.unescape(msg.d.DisplayMessage));
+                            $.ajax({
+                                type: "POST",
+                                url: "/Pages/v5/Financial/ApproveCosts.aspx/RetractApproval",
+                                data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: $.proxy(function (msg) {
+                                    if (msg.d.Success) {
+                                        var baseid = $(this).attr("baseid");
+                                        $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
+                                        $(this).attr("rel", "");
+                                        $(this).hide();
+                                        $("#IconApproved" + baseid).finish().css("opacity", 0.5).css("display", "none");
+                                        $("#IconApproval" + baseid).fadeIn(100);
+                                        $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
+                                        $('.row' + baseid).removeClass("action-list-item-approved");
+                                        alertify.log(SwarmopsJS.unescape(msg.d.DisplayMessage));
 
-                                            recheckBudgets(); // will double-check budgets against server
-                                        } else {
-                                            $(this).attr("src", "/Images/Icons/iconshock-greentick-128x96px.png");
-                                            alertify.error(SwarmopsJS.unescape(msg.d.DisplayMessage));
-                                            // TODO: Add alert box?
-                                        }
-                                    }, this)
-                                });
+                                        recheckBudgets(); // will double-check budgets against server
+                                    } else {
+                                        $(this).attr("src", "/Images/Icons/iconshock-greentick-128x96px.png");
+                                        alertify.error(SwarmopsJS.unescape(msg.d.DisplayMessage));
+                                        // TODO: Add alert box?
+                                    }
+                                }, this)
+                            });
 
-                            }
                         });
 
 
 
-
-                        $(".LocalIconDenial").mouseover(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot.png");
-                            }
-                        });
-
-                        $(".LocalIconDenial").mouseout(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
-                            }
-                        });
-
-                        $(".LocalViewDox").click(function () {
+                        $(".LocalIconDox").click(function () {
                             $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
                         });
 
