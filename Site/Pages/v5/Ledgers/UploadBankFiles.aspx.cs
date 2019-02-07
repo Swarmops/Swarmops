@@ -41,11 +41,11 @@ namespace Swarmops.Site.Pages.Ledgers
             Payments
         }
 
-        protected void Page_Load (object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             PageTitle = Resources.Pages.Ledgers.UploadBankFiles_PageTitle;
             PageIcon = "iconshock-bank";
-            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+            PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
             if (!IsPostBack)
             {
@@ -183,7 +183,7 @@ namespace Swarmops.Site.Pages.Ledgers
             FinancialAccounts accounts = CurrentOrganization.FinancialAccountsExternal;
 
             this.DropAccounts.Items.Clear();
-            this.DropAccounts.Items.Add (new ListItem (Global.Global_DropInits_SelectFinancialAccount, "0"));
+            this.DropAccounts.Items.Add(new ListItem(Global.Global_DropInits_SelectFinancialAccount, "0"));
 
             foreach (FinancialAccount account in accounts)
             {
@@ -198,8 +198,8 @@ namespace Swarmops.Site.Pages.Ledgers
         }
 
 
-        [WebMethod (true)]
-        public static AjaxCallResult InitializeProcessing (string guid, int accountId)
+        [WebMethod(true)]
+        public static AjaxCallResult InitializeProcessing(string guid, int accountId)
         {
             // Start an async thread that does all the work, then return
 
@@ -212,16 +212,16 @@ namespace Swarmops.Site.Pages.Ledgers
                 fileType = BankFileType.PaymentDetails;
             }
 
-            FinancialAccount account = FinancialAccount.FromIdentity (accountId);
+            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
             if (account.Organization.Identity != authData.CurrentOrganization.Identity ||
-                !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Bookkeeping,
+                !authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Bookkeeping,
                     AccessType.Write)))
             {
                 throw new UnauthorizedAccessException();
             }
 
-            Thread initThread = new Thread (ProcessUploadThread);
+            Thread initThread = new Thread(ProcessUploadThread);
 
             ProcessThreadArguments args = new ProcessThreadArguments
             {
@@ -232,14 +232,14 @@ namespace Swarmops.Site.Pages.Ledgers
                 FileType = fileType
             };
 
-            initThread.Start (args);
+            initThread.Start(args);
 
-            return new AjaxCallResult {Success = true};
+            return new AjaxCallResult { Success = true };
         }
 
 
         [WebMethod]
-        public static AjaxCallResult GetAutomationProfileName (string guid, int accountId)
+        public static AjaxCallResult GetAutomationProfileName(string guid, int accountId)
         {
             FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
@@ -283,14 +283,14 @@ namespace Swarmops.Site.Pages.Ledgers
 
 
         [WebMethod]
-        public static ReportedImportResults GetReportedImportResults (string guid)
+        public static ReportedImportResults GetReportedImportResults(string guid)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             ReportedImportResults results = new ReportedImportResults();
-            ImportResultsCategory category = (ImportResultsCategory) GuidCache.Get (guid + "-Result");
-            ImportResults resultDetail = GuidCache.Get (guid + "-ResultDetails") as ImportResults;
-            ImportedPaymentData paymentsDetail = GuidCache.Get (guid + "-ResultDetails") as ImportedPaymentData;
+            ImportResultsCategory category = (ImportResultsCategory)GuidCache.Get(guid + "-Result");
+            ImportResults resultDetail = GuidCache.Get(guid + "-ResultDetails") as ImportResults;
+            ImportedPaymentData paymentsDetail = GuidCache.Get(guid + "-ResultDetails") as ImportedPaymentData;
             string exceptionText = GuidCache.Get(guid + "-Exception") as string;
 
             string html = string.Empty;
@@ -298,7 +298,7 @@ namespace Swarmops.Site.Pages.Ledgers
             switch (category)
             {
                 case ImportResultsCategory.Good:
-                    html = String.Format (Resources.Pages.Ledgers.UploadBankFiles_ResultsGood,
+                    html = String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsGood,
                         resultDetail.TransactionsImported, resultDetail.DuplicateTransactions,
                         resultDetail.EarliestTransaction, resultDetail.LatestTransaction);
 
@@ -307,7 +307,7 @@ namespace Swarmops.Site.Pages.Ledgers
                         html += "<p>" +
                                 String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsInitialBalanceSet,
                                     Currency.FromCode(resultDetail.InitialBalanceCurrencyCode).DisplayCode,
-                                    resultDetail.InitialBalanceCents/100.0,
+                                    resultDetail.InitialBalanceCents / 100.0,
                                     authData.CurrentOrganization.FirstFiscalYear);
 
                         if (resultDetail.CurrencyCode != resultDetail.InitialBalanceCurrencyCode)
@@ -326,9 +326,9 @@ namespace Swarmops.Site.Pages.Ledgers
 
                     break;
                 case ImportResultsCategory.Questionable:
-                    html = String.Format (Resources.Pages.Ledgers.UploadBankFiles_ResultsQuestionable,
+                    html = String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsQuestionable,
                         resultDetail.TransactionsImported, resultDetail.DuplicateTransactions,
-                        Math.Abs (resultDetail.BalanceMismatchCents/100.0), resultDetail.CurrencyCode);
+                        Math.Abs(resultDetail.BalanceMismatchCents / 100.0), resultDetail.CurrencyCode);
                     break;
                 case ImportResultsCategory.Bad:
                     html = Resources.Pages.Ledgers.UploadBankFiles_ResultsBad + "<!-- Technical Information: " +
@@ -337,22 +337,22 @@ namespace Swarmops.Site.Pages.Ledgers
                 case ImportResultsCategory.Payments:
                     if (paymentsDetail.DuplicatePaymentCount > 0)
                     {
-                        html = String.Format (Resources.Pages.Ledgers.UploadBankFiles_ResultsPaymentsWithDupes,
+                        html = String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsPaymentsWithDupes,
                             paymentsDetail.PaymentGroupCount, paymentsDetail.PaymentCount,
-                            paymentsDetail.PaymentCentsTotal/100.0,
+                            paymentsDetail.PaymentCentsTotal / 100.0,
                             paymentsDetail.Currency.Code, paymentsDetail.DuplicatePaymentGroupCount,
                             paymentsDetail.DuplicatePaymentCount);
                     }
                     else
                     {
-                        html = String.Format (Resources.Pages.Ledgers.UploadBankFiles_ResultsPayments,
+                        html = String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsPayments,
                             paymentsDetail.PaymentGroupCount, paymentsDetail.PaymentCount,
-                            paymentsDetail.PaymentCentsTotal/100.0,
+                            paymentsDetail.PaymentCentsTotal / 100.0,
                             paymentsDetail.Currency.Code);
                     }
                     break;
                 default:
-                    throw new NotImplementedException ("Unhandled ImportResultCategory");
+                    throw new NotImplementedException("Unhandled ImportResultCategory");
             }
 
             results.Html = html;
@@ -360,17 +360,17 @@ namespace Swarmops.Site.Pages.Ledgers
             return results;
         }
 
-        private static void ProcessUploadThread (object args)
+        private static void ProcessUploadThread(object args)
         {
-            string guid = ((ProcessThreadArguments) args).Guid;
-            BankFileType fileType = ((ProcessThreadArguments) args).FileType;
-            Person currentUser = ((ProcessThreadArguments) args).CurrentUser;
+            string guid = ((ProcessThreadArguments)args).Guid;
+            BankFileType fileType = ((ProcessThreadArguments)args).FileType;
+            Person currentUser = ((ProcessThreadArguments)args).CurrentUser;
             Organization organization = ((ProcessThreadArguments)args).Organization;
             FinancialAccount account = ((ProcessThreadArguments)args).Account;
 
-            Documents documents = Documents.RecentFromDescription (guid);
-            GuidCache.Set (guid + "-Progress", 1); // to make sure results aren't repeated from last file
-            GuidCache.Set (guid + "-Result", ImportResultsCategory.Bad); // default - this is what happens if exception
+            Documents documents = Documents.RecentFromDescription(guid);
+            GuidCache.Set(guid + "-Progress", 1); // to make sure results aren't repeated from last file
+            GuidCache.Set(guid + "-Result", ImportResultsCategory.Bad); // default - this is what happens if exception
 
             if (documents.Count != 1)
             {
@@ -392,19 +392,18 @@ namespace Swarmops.Site.Pages.Ledgers
                     {
                         try
                         {
-                            throw new NotImplementedException();
-                            // externalData.LoadData (reader, organization, accountCurrency);
+                            externalData.LoadData(reader, organization, accountCurrency);
                             // catch here and set result to BAD
-                            ImportResults results = ProcessImportedData (externalData, (ProcessThreadArguments) args);
+                            ImportResults results = ProcessImportedData(externalData, (ProcessThreadArguments)args);
 
-                            GuidCache.Set (guid + "-ResultDetails", results);
+                            GuidCache.Set(guid + "-ResultDetails", results);
                             if (results.AccountBalanceMatchesBank || results.InitialBalanceCents != 0)
                             {
-                                GuidCache.Set (guid + "-Result", ImportResultsCategory.Good);
+                                GuidCache.Set(guid + "-Result", ImportResultsCategory.Good);
                             }
                             else
                             {
-                                GuidCache.Set (guid + "-Result", ImportResultsCategory.Questionable);
+                                GuidCache.Set(guid + "-Result", ImportResultsCategory.Questionable);
                             }
                         }
                         catch (Exception e)
@@ -433,21 +432,20 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 if (fileType == BankFileType.AccountStatement)
                 {
-                    using (TextReader reader = CreateReader(uploadedDoc, externalData.Profile.Encoding))  // Guarantees disposal of reader
+                    using (StreamReader reader = CreateReader(uploadedDoc, externalData.Profile.Encoding))  // Guarantees disposal of reader
                     {
-                        throw new NotImplementedException();
-                        // externalData.LoadData (reader, organization, accountCurrency);
+                        externalData.LoadData(reader, organization, accountCurrency);
                         // catch here and set result to BAD
-                        ImportResults results = ProcessImportedData (externalData, (ProcessThreadArguments) args);
+                        ImportResults results = ProcessImportedData(externalData, (ProcessThreadArguments)args);
 
-                        GuidCache.Set (guid + "-ResultDetails", results);
+                        GuidCache.Set(guid + "-ResultDetails", results);
                         if (results.AccountBalanceMatchesBank)
                         {
-                            GuidCache.Set (guid + "-Result", ImportResultsCategory.Good);
+                            GuidCache.Set(guid + "-Result", ImportResultsCategory.Good);
                         }
                         else
                         {
-                            GuidCache.Set (guid + "-Result", ImportResultsCategory.Questionable);
+                            GuidCache.Set(guid + "-Result", ImportResultsCategory.Questionable);
                         }
                     }
                 }
@@ -455,7 +453,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 {
                     // Get reader factory from ExternalBankData
 
-                    throw new NotImplementedException ("Need to implement new flexible payment reader structure");
+                    throw new NotImplementedException("Need to implement new flexible payment reader structure");
 
                     // IBankDataPaymentsReader paymentsReader = externalData.GetPaymentsReader();
                     // then read
@@ -463,12 +461,12 @@ namespace Swarmops.Site.Pages.Ledgers
             }
             catch (Exception e)
             {
-                GuidCache.Set (guid + "-Exception", e.ToString());
-                
+                GuidCache.Set(guid + "-Exception", e.ToString());
+
             }
             finally
             {
-                GuidCache.Set (guid + "-Progress", 100); // only here may the caller fetch the results
+                GuidCache.Set(guid + "-Progress", 100); // only here may the caller fetch the results
                 uploadedDoc.Delete(); // document no longer needed after processing, no matter the result
             }
         }
@@ -625,12 +623,12 @@ namespace Swarmops.Site.Pages.Ledgers
 
 
         [WebMethod]
-        public static string GetImportResults (string guid)
+        public static string GetImportResults(string guid)
         {
             return string.Empty;
         }
 
-        private static ImportResults ProcessImportedData (ExternalBankData import, ProcessThreadArguments args)
+        private static ImportResults ProcessImportedData(ExternalBankData import, ProcessThreadArguments args)
         {
             FinancialAccount assetAccount = args.Account;
             FinancialAccount autoDepositAccount = args.Organization.FinancialAccounts.IncomeDonations;
@@ -639,7 +637,7 @@ namespace Swarmops.Site.Pages.Ledgers
             bool autosetInitialBalance = false;
             ImportResults result = new ImportResults();
             int count = 0;
-            int progressUpdateInterval = import.Records.Length/40;
+            int progressUpdateInterval = import.Records.Length / 40;
             Int64 importedCentsTotal = 0;
 
             if (progressUpdateInterval > 100)
@@ -667,11 +665,11 @@ namespace Swarmops.Site.Pages.Ledgers
                 // Update progress.
 
                 count++;
-                if (progressUpdateInterval < 2 || count%progressUpdateInterval == 0)
+                if (progressUpdateInterval < 2 || count % progressUpdateInterval == 0)
                 {
-                    int percent = (count*99)/import.Records.Length;
+                    int percent = (count * 99) / import.Records.Length;
 
-                    GuidCache.Set (args.Guid + "-Progress", percent);
+                    GuidCache.Set(args.Guid + "-Progress", percent);
                 }
 
                 // Update high- and low-water marks.
@@ -692,7 +690,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 Int64 amountCents = row.TransactionNetCents;
 
                 if (amountCents == 0)
-                    // defensive programming - these _should_ be duplicated in the interpreter if no "fee" field
+                // defensive programming - these _should_ be duplicated in the interpreter if no "fee" field
                 {
                     amountCents = row.TransactionGrossCents;
                 }
@@ -706,7 +704,7 @@ namespace Swarmops.Site.Pages.Ledgers
                         new Money(amountCents, accountCurrency, row.DateTime).ToCurrency(organizationCurrency).Cents;
                 }
 
-                FinancialTransaction transaction = FinancialTransaction.ImportWithStub (args.Organization.Identity,
+                FinancialTransaction transaction = FinancialTransaction.ImportWithStub(args.Organization.Identity,
                     row.DateTime,
                     assetAccount.Identity, amountCents,
                     row.Description, importKey, "" /* new SHA256 field */,
@@ -725,16 +723,16 @@ namespace Swarmops.Site.Pages.Ledgers
                         transaction.Rows[0].AmountForeignCents = new Money(foreignCents, accountCurrency);
                     }
 
-                    if (row.Description.ToLowerInvariant().StartsWith (args.Organization.IncomingPaymentTag))
+                    if (row.Description.ToLowerInvariant().StartsWith(args.Organization.IncomingPaymentTag))
                     {
                         // Check for previously imported payment group
 
                         // TODO: MAKE FLEXIBLE - CALL PAYMENTREADERINTERFACE!
                         // HACK HACK HACK HACK
 
-                        PaymentGroup group = PaymentGroup.FromTag (args.Organization,
+                        PaymentGroup group = PaymentGroup.FromTag(args.Organization,
                             "SEBGM" + DateTime.Today.Year + // TODO: Get tags from org
-                            row.Description.Substring (args.Organization.IncomingPaymentTag.Length).Trim());
+                            row.Description.Substring(args.Organization.IncomingPaymentTag.Length).Trim());
 
                         if (group != null && group.Open)
                         {
@@ -743,7 +741,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
                             transaction.Dependency = group;
                             group.Open = false;
-                            transaction.AddRow (args.Organization.FinancialAccounts.AssetsOutboundInvoices, -amountCents,
+                            transaction.AddRow(args.Organization.FinancialAccounts.AssetsOutboundInvoices, -amountCents,
                                 args.CurrentUser);
                         }
                     }
@@ -757,15 +755,15 @@ namespace Swarmops.Site.Pages.Ledgers
                         {
                             // This is always an autodeposit, if there is a fee (which is never > 0.0)
 
-                            transaction.AddRow (args.Organization.FinancialAccounts.CostsBankFees, -row.FeeCents,
+                            transaction.AddRow(args.Organization.FinancialAccounts.CostsBankFees, -row.FeeCents,
                                 args.CurrentUser);
-                            transaction.AddRow (autoDepositAccount, -row.TransactionGrossCents, args.CurrentUser);
+                            transaction.AddRow(autoDepositAccount, -row.TransactionGrossCents, args.CurrentUser);
                         }
-                        else if (amountCents < autoDepositLimit*100)
+                        else if (amountCents < autoDepositLimit * 100)
                         {
                             // Book against autoDeposit account.
 
-                            transaction.AddRow (autoDepositAccount, -amountCents, args.CurrentUser);
+                            transaction.AddRow(autoDepositAccount, -amountCents, args.CurrentUser);
                         }
                     }
                 }
@@ -797,13 +795,13 @@ namespace Swarmops.Site.Pages.Ledgers
             // bookkeeping account with new transactions; it will already have fed transactions
             // beyond the end-of-file.
 
-            Int64 beyondEofCents = assetAccount.GetDeltaCents (result.LatestTransaction.AddSeconds (1),
-                DateTime.Now.AddDays (2));
+            Int64 beyondEofCents = assetAccount.GetDeltaCents(result.LatestTransaction.AddSeconds(1),
+                DateTime.Now.AddDays(2));
             // Caution: the "AddSeconds(1)" is not foolproof, there may be other new txs on the same second.
 
             if (databaseAccountBalanceCents - beyondEofCents == import.LatestAccountBalanceCents)
             {
-                Payouts.AutomatchAgainstUnbalancedTransactions (args.Organization);
+                Payouts.AutomatchAgainstUnbalancedTransactions(args.Organization);
                 OutboundInvoices.AutomatchAgainstUnbalancedTransactions(args.Organization, args.CurrentUser);
                 result.AccountBalanceMatchesBank = true;
                 result.BalanceMismatchCents = 0;
@@ -833,12 +831,12 @@ namespace Swarmops.Site.Pages.Ledgers
             return result;
         }
 
-        protected static ImportedPaymentData ImportBankgiroSE (StreamReader reader, Person currentUser,
+        protected static ImportedPaymentData ImportBankgiroSE(StreamReader reader, Person currentUser,
             Organization organization)
         {
             string contents = reader.ReadToEnd();
 
-            string[] lines = contents.Split ('\n');
+            string[] lines = contents.Split('\n');
 
             DateTime timestamp = Constants.DateTimeLow;
             int bgMaxVersion = 0;
@@ -856,47 +854,47 @@ namespace Swarmops.Site.Pages.Ledgers
                     continue; // CR/LF split causes every other line to be empty
                 }
 
-                switch (line.Substring (0, 2))
+                switch (line.Substring(0, 2))
                 {
                     case "01": // BGMAX intro
-                        string bgmaxmarker = line.Substring (2, 20).Trim();
+                        string bgmaxmarker = line.Substring(2, 20).Trim();
                         if (bgmaxmarker != "BGMAX")
                         {
-                            throw new Exception ("bad format -- not bgmax");
+                            throw new Exception("bad format -- not bgmax");
                         }
-                        bgMaxVersion = Int32.Parse (line.Substring (22, 2));
-                        timestamp = DateTime.ParseExact (line.Substring (24, 20), "yyyyMMddHHmmssffffff",
+                        bgMaxVersion = Int32.Parse(line.Substring(22, 2));
+                        timestamp = DateTime.ParseExact(line.Substring(24, 20), "yyyyMMddHHmmssffffff",
                             CultureInfo.InvariantCulture);
                         break;
                     case "05": // Begin payment group
                         if (bgMaxVersion < 1)
                         {
-                            throw new InvalidOperationException ("BGMax record must precede first payment group");
+                            throw new InvalidOperationException("BGMax record must precede first payment group");
                         }
                         curPayments = new List<InMemoryPayment>();
-                        currency = Currency.FromCode (line.Substring (22, 3));
+                        currency = Currency.FromCode(line.Substring(22, 3));
                         result.Currency = currency;
                         curPaymentGroupAmountCents = 0;
                         break;
                     case "20": // Begin payment
                         if (curPayments == null)
                         {
-                            throw new InvalidOperationException ("Payment group start must precede first payment");
+                            throw new InvalidOperationException("Payment group start must precede first payment");
                         }
 
                         // If we have a previous payment in this group, add it to list
 
                         if (curPayment != null)
                         {
-                            curPayments.Add (curPayment);
+                            curPayments.Add(curPayment);
                         }
 
                         curPayment = new InMemoryPayment();
 
-                        curPayment.FromAccount = line.Substring (2, 10);
-                        curPayment.Reference = line.Substring (12, 25).Trim(); // left space padded in BgMax format
-                        curPayment.AmountCents = Int64.Parse (line.Substring (37, 18), CultureInfo.InvariantCulture);
-                        curPayment.Key = "SEBGM" + DateTime.Today.Year + line.Substring (57, 12);
+                        curPayment.FromAccount = line.Substring(2, 10);
+                        curPayment.Reference = line.Substring(12, 25).Trim(); // left space padded in BgMax format
+                        curPayment.AmountCents = Int64.Parse(line.Substring(37, 18), CultureInfo.InvariantCulture);
+                        curPayment.Key = "SEBGM" + DateTime.Today.Year + line.Substring(57, 12);
                         curPayment.HasImage = (line[69] == '1' ? true : false);
 
                         // TODO: Check if existed already -- must do -- IMPORTANT (same todo as below)
@@ -906,62 +904,62 @@ namespace Swarmops.Site.Pages.Ledgers
                     case "25": // Payment info: Freeform
                         if (curPayment == null)
                         {
-                            throw new InvalidOperationException ("Payment start must precede payment information");
+                            throw new InvalidOperationException("Payment start must precede payment information");
                         }
-                        curPayment.Information.Add (new InMemoryPaymentInformation (PaymentInformationType.Freeform,
-                            line.Substring (2, 50).Trim()));
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.Freeform,
+                            line.Substring(2, 50).Trim()));
                         break;
                     case "26": // Payment info: Name
                         if (curPayment == null)
                         {
-                            throw new InvalidOperationException ("Payment start must precede payment information");
+                            throw new InvalidOperationException("Payment start must precede payment information");
                         }
-                        curPayment.Information.Add (new InMemoryPaymentInformation (PaymentInformationType.Name,
-                            line.Substring (2, 35).Trim()));
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.Name,
+                            line.Substring(2, 35).Trim()));
                         break;
                     case "27": // Payment info: Street, postal code
                         if (curPayment == null)
                         {
-                            throw new InvalidOperationException ("Payment start must precede payment information");
+                            throw new InvalidOperationException("Payment start must precede payment information");
                         }
-                        curPayment.Information.Add (new InMemoryPaymentInformation (PaymentInformationType.Street,
-                            line.Substring (2, 35).Trim()));
-                        curPayment.Information.Add (new InMemoryPaymentInformation (PaymentInformationType.PostalCode,
-                            line.Substring (37, 9).Replace (" ", ""))); // also removes inspace
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.Street,
+                            line.Substring(2, 35).Trim()));
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.PostalCode,
+                            line.Substring(37, 9).Replace(" ", ""))); // also removes inspace
                         break;
                     case "28": // Payment info: City, Country
                         if (curPayment == null)
                         {
-                            throw new InvalidOperationException ("Payment start must precede payment information");
+                            throw new InvalidOperationException("Payment start must precede payment information");
                         }
-                        curPayment.Information.Add (new InMemoryPaymentInformation (PaymentInformationType.City,
-                            line.Substring (2, 35).Trim()));
-                        curPayment.Information.Add (new InMemoryPaymentInformation (PaymentInformationType.Country,
-                            line.Substring (37, 35).Trim()));
-                        curPayment.Information.Add (new InMemoryPaymentInformation (PaymentInformationType.CountryCode,
-                            line.Substring (72, 2).Trim()));
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.City,
+                            line.Substring(2, 35).Trim()));
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.Country,
+                            line.Substring(37, 35).Trim()));
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.CountryCode,
+                            line.Substring(72, 2).Trim()));
                         break;
                     case "29": // Payment info: Organization or personal ID number
                         if (curPayment == null)
                         {
-                            throw new InvalidOperationException ("Payment start must precede payment information");
+                            throw new InvalidOperationException("Payment start must precede payment information");
                         }
-                        curPayment.Information.Add (new InMemoryPaymentInformation (PaymentInformationType.OrgNumber,
-                            line.Substring (2, 12).Trim()));
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.OrgNumber,
+                            line.Substring(2, 12).Trim()));
                         break;
                     case "15": // End payment group
                         if (curPayments == null)
                         {
-                            throw new InvalidOperationException ("Payment group start must precede payment group end");
+                            throw new InvalidOperationException("Payment group start must precede payment group end");
                         }
 
                         // Add currently building payment to group before committing
 
-                        curPayments.Add (curPayment);
+                        curPayments.Add(curPayment);
 
                         // This is where we finally get a unique identifier that allows us to dupecheck.
 
-                        string tag = timestamp.Year + line.Substring (45, 5);
+                        string tag = timestamp.Year + line.Substring(45, 5);
 
                         if (timestamp.Year >= 2012)
                         {
@@ -971,16 +969,16 @@ namespace Swarmops.Site.Pages.Ledgers
 
                         // Dupe check
 
-                        PaymentGroup dupe = PaymentGroup.FromTag (organization, tag);
+                        PaymentGroup dupe = PaymentGroup.FromTag(organization, tag);
 
                         if (dupe == null)
                         {
                             // Commit all recorded payments
 
-                            PaymentGroup newGroup = PaymentGroup.Create (organization, timestamp, currency, currentUser);
+                            PaymentGroup newGroup = PaymentGroup.Create(organization, timestamp, currency, currentUser);
                             result.PaymentGroupCount++;
 
-                            Int64 reportedAmountCents = Int64.Parse (line.Substring (50, 18),
+                            Int64 reportedAmountCents = Int64.Parse(line.Substring(50, 18),
                                 CultureInfo.InvariantCulture);
                             // may differ because of duplicates
                             newGroup.AmountCents = curPaymentGroupAmountCents;
@@ -990,14 +988,14 @@ namespace Swarmops.Site.Pages.Ledgers
                             {
                                 // TODO: DUPECHECK PAYMENT KEY AS WELL (same todo as above)
 
-                                Payment newPayment = newGroup.CreatePayment (payment.AmountCents/100.0,
+                                Payment newPayment = newGroup.CreatePayment(payment.AmountCents / 100.0,
                                     payment.Reference,
                                     payment.FromAccount, payment.Key,
                                     payment.HasImage);
 
                                 foreach (InMemoryPaymentInformation paymentInfo in payment.Information)
                                 {
-                                    newPayment.AddInformation (paymentInfo.Type, paymentInfo.Data);
+                                    newPayment.AddInformation(paymentInfo.Type, paymentInfo.Data);
                                 }
                                 result.PaymentCount++;
                             }
@@ -1030,7 +1028,7 @@ namespace Swarmops.Site.Pages.Ledgers
             {
                 // The file contained no instructions at all
 
-                throw new ArgumentException ("This was not a BGMAX-SE file");
+                throw new ArgumentException("This was not a BGMAX-SE file");
             }
 
             return result;
@@ -1115,7 +1113,7 @@ namespace Swarmops.Site.Pages.Ledgers
             public string Data;
             public PaymentInformationType Type;
 
-            public InMemoryPaymentInformation (PaymentInformationType type, string data)
+            public InMemoryPaymentInformation(PaymentInformationType type, string data)
             {
                 this.Type = type;
                 this.Data = data;
