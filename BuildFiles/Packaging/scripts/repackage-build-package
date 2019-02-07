@@ -5,7 +5,7 @@
 # Home folder for script is /home/builder/swarmops/packaging
 
 DEPLOYDIR=usr/share/swarmops
-DISTROS=xenial,stretch,jessie
+DISTROS=xenial,bionic,stretch,jessie
 
 # Check parameters
 

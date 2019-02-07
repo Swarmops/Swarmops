@@ -2,7 +2,7 @@ Package: swarmops-backend
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
-Depends: swarmops-common (>= --BuildNumber--),mono-runtime (>= 3.2.8),--Dependencies--
+Depends: swarmops-common (>= --BuildNumber--),--Dependencies--
 Conflicts: swarmops-backend-internal,swarmops-backend-stable
 Homepage: http://swarmops.com/
 Description: Swarmops Backend
