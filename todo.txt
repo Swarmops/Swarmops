@@ -4,7 +4,7 @@ NOV2018
 OVERALL: 
 [ ] Fix basic flows
 [ ] Focus on new SKU op.Cash
-[ ] Make work on Bionic and Stretch
+[x] Make work on Bionic and Stretch
 
 
 PRIO 1
@@ -17,7 +17,7 @@ PRIO 1
 [ ] Fix generic block explorer interfaces
 [ ] Fix & redo bank file upload completely
 [ ] - with interface to Github repo of XML definitions
-[ ] Fix Bionic build
+[x] Fix Bionic build
 [ ] Investigate weird accounting of echo test
 [ ] Fix crypto funds mismatch resulting from echo test
 
@@ -37,6 +37,7 @@ PRIO 2
 [ ] Currency inventory tracking
 [ ] Cost centers and 2-D reports
 [ ] Monthly reports (not just quarterly)
+[ ] Manual payout dialog, with lock/confirm/undo step to Payouts
 
 
 PRIO 3
