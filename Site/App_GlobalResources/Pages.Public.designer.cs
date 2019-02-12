@@ -459,7 +459,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Swarmops has not yet implemeted support for this fee structure..
+        ///   Looks up a localized string similar to Swarmops has not yet implemented support for this fee structure..
         /// </summary>
         internal static string Signup_Unsupported {
             get {

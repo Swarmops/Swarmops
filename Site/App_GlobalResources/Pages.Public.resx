@@ -261,7 +261,7 @@ If you volunteered for taking formal responsibility, somebody (probably also a v
     <value>Complete signup.</value>
   </data>
   <data name="Signup_Unsupported" xml:space="preserve">
-    <value>Swarmops has not yet implemeted support for this fee structure.</value>
+    <value>Swarmops has not yet implemented support for this fee structure.</value>
   </data>
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>What position are you interested in?</value>
