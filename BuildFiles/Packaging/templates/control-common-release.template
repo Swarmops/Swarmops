@@ -2,6 +2,7 @@ Package: swarmops-common-stable
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
+Depends:dialog(>=1.1),mono-runtime,--Dependencies--
 Conflicts: swarmops-common-internal,swarmops-common
 Homepage: http://swarmops.com/
 Description: Swarmops Common (Stable)
