@@ -73,8 +73,8 @@
                                 var itemId = $(this).attr("baseid");
                                 var prototypeId = $(this).attr("protoid");
                                 $(this).hide();
-                                $("#IconWait" + itemId).show();
-                                $("#IconDenial" + itemId).fadeTo(1000, 0.01);
+                                $(".IconWait" + itemId).show();
+                                $(".IconDenial" + itemId).fadeTo(1000, 0.01);
 
                                 SwarmopsJS.proxiedAjaxCall(
                                     "/Pages/v5/Financial/PayOutMoney.aspx/ConfirmPayout",
