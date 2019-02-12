@@ -17,20 +17,13 @@
         }
 
         preload([
-            '/Images/Abstract/ajaxloader-medium.gif',
             '/Images/Abstract/ajaxloader-48x36px.gif',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot.png',
             '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png',
             '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-gold.png',
-            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png',
             '/Images/Icons/iconshock-green-tick-128x96px.png',
             '/Images/Icons/iconshock-red-cross-128x96px.png',
             '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
-            '/Images/Icons/iconshock-balloon-undo-128x96px.png',
-            '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png',
-            '/Images/Icons/iconshock-search-hot-256px.png'
+            '/Images/Icons/iconshock-balloon-undo-128x96px.png'
         ]);
 
         loadUninitializedBudgets(); // no need to wait for doc.ready to load operating params
@@ -206,7 +199,6 @@
 
             if (canOverdraftBudgets) {
                 approvalOverdraftIcon = '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png';
-                approvalOverdraftIconHover = '/Images/Icons/iconshock-balloon-yes-128x96px-hot-gold.png';
             }
         });
 
@@ -302,27 +294,16 @@
                 var amountRequested = $(this).attr('amount');
                 var fundsInBudget = -budgetRemainingLookup[accountId];
 
-                // console.log("attestability checking accountid " + accountId + ", amount requested is " + amountRequested + ", funds in budget is " + fundsInBudget);
+                console.log("attestability checking accountid " + accountId + ", amount requested is " + amountRequested + ", funds in budget is " + fundsInBudget);
 
                 if (fundsInBudget >= amountRequested || budgetUninitializedLookup[accountId] == true) {
                     // console.log("- removing insufficience marker");
                     $(this).removeClass("LocalFundsInsufficient");
-                    if ($(this).attr("rel") != "loading") {
-                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
-                    }
+                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                 }
                 else {
-                    if ($(this).attr("rel") != "loading") {
-                        $(this).attr("src", approvalOverdraftIcon);
-                    }
-
-                    if (!$(this).hasClass("LocalFundsInsufficient")) {
-                        // console.log("- adding insufficience marker");
-                        $(this).addClass("LocalFundsInsufficient");
-                        if ($(this).attr("rel") != "loading") {
-                            $(this).attr("src", approvalOverdraftIcon);
-                        }
-                    }
+                    $(this).attr("src", approvalOverdraftIcon);
+                    $(this).addClass("LocalFundsInsufficient");
                 }
 
             });
@@ -417,8 +398,6 @@
         var canOverdraftBudgets = <%=this.Logic_CanOverdraftBudgets %>;
 
         var approvalOverdraftIcon = '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png';
-        var approvalOverdraftIconHover = approvalOverdraftIconHover;
-
 
         var buttonRebudgetValue = SwarmopsJS.unescape('<%=this.Localized_ButtonRebudget%>');
         var buttonDenyValue = SwarmopsJS.unescape('<%=this.Localized_ButtonDeny%>');
