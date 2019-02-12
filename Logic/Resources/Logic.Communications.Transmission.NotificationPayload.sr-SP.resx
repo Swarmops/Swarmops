@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>Нова особа је аплицитала за позицију [RegularTitle] у оквиру [OrganizationName]! [ConcernedPersonName] тренутно има боравиште у [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] Нови апликација: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>Током покушаја исплате на Вашу Bitcoin Cash адресу, адреса ([BitcoinAddress]) је одбијена јер је payout engine неважећи. Услед тога, обрисана је адреса са Вашег профила.
+
+Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl] и подесите нову bitcoin адресу за исплату.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Неисправна bitcoin адреса за исплату</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>Променили сте своју Bitcoin Cash адресу за исплату, са старе: [BitcoinOldAddress] на [BitcoinAddress]. Из сигурносних разлога, све исплате се стављају у карантин који траје 48 сати.
+
+Ако НИСТЕ променили адресу за наплату и ако је безбедност нарушена, молимо Вас да ОДМАХ кликнете овај линк и да закључате свој налог: [LockdownLink]
+
+Ако кликнете на линк, Ваш налог ће одмах бити закључан, без захтева за потврду. Наравно, ако сте Ви захтевали промену адресе, све је у реду, нема потребе да било шта предузимате.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bitcoin Cash адреса за наплату је промењена</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>Имате средстава за исплату која су тренутно на чекању код [OrganizationName], али нисте подесили Bitcoin Cash адресу за наплату.
+
+Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl] и пратите линк до странице на којој се врши промена адресе - тамо ћете наћи листу са неопходним ставкама.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Молимо Вас, подесите своју Bitcoin Cash адресу за наплату</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>Подесили сте Bitcoin Cash адресу за наплату: [BitcoinAddress]. Из сигурносних разлога, све исплате пролазе кроз период карантина који траје 48 сати, а после тога се без даљих задржавања исплаћују.
+
+Ако нисте унели наведену адресу за наплату (проверите поново, врло пажљиво), без одлагања контактирајте [OrganizationName].</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>Bitcoin Cash адреса за наплату је подешена од стране [ConcernedPersonName]. Исплате ће бити извршене након периода карантина који траје 48 сати.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] је подесио(ла) Bitcoin Cash адресу за наплату</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bitcoin Cash адреса за наплату је подешена</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>Bitcoin hotwallet за [OrganizationName] је управо извршио [PaymentCount] аутоматско плаћање(ња) у укупном износу од [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin или "bits").</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Hotwallet Исплата: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[BitcoinAmountFloat] microbitcoin ("bits") је управо тренсферовано на Bitcoin Cash адресу ([BitcoinAddress]) од стране [OrganizationName] за наведени:
+
+[EmbeddedPreformattedText]
+
+Требало би да је трансакција већ видљива у Вашем новчанику, а требало би да над њом остварите пуни приступ за око 1 сат (шест нормалних потврђивања).</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Средства која су Вам исплаћена: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>Када се покуша аутоматско плаћање из hotwallet-а, приватни кључ који се користи као потпис се не поклапа са приватним кључевима који се користе за сакупљање средстава. Ово је врло озбиљно.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ХИТНО] Bitcoin приватни кључ, грешка, исплата није могућа</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmops покушава да изврши уплату у износу од [CurrencyCode] [AmountNeededFloat], али је на располагању свега [CurrencyCode] [AmountWalletFloat] Bitcoin Cash у hotwallet-у. Swarmops тренутно није у могућности да обави даља плаћања.
+
+Молимо Вас да ОДМАХ допуните hotwallet, до макар минималног потребног нивоа - додатних [AmountMissingMicrocoinsFloat] microbitcoin ("bits") је неопходно како би се наставиле финансијске операције у оквиру hotwallet-а.
+
+Swarmops ће наставити да шаље нотификације и покушаваће да обави исплату све док у томе не успе.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Bitcoin Cash hotwallet, недовољно средстава за исплату - одмах допуните</value>
+  </data>
+  <data name="CashAdvance_Attested_Body" xml:space="preserve">
+    <value>Ваш захтев за исплату издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је добио потврду од стране носиоца буџета. Сада ће се прећи на исплату.</value>
+  </data>
+  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cash Advance је потврђен: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
+    <value>Ваш захтев за исплату издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је изгубио потврду од стране носиоца буџета. То обично указује на постојање проблема везаног за Ваш захтев.
+
+Очекујте даљу комуникацију са носиоцем буџета, а са циљем решавања тренутних проблема.</value>
+  </data>
+  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cash Advance, Изгубио потврду: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>Ваш захтев за исплату издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је одбијен. Наведени текст Вам даје увид у разлоге одбијања:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cash Advance, ОДБИЈЕН: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>Ваш захтев за исплату издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је од стране рачуновођа организације означен као исплаћен.
+
+То значи да ћете ускоро видети уплаћени износ на Вашем рачуну.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cash Advance, Исплаћен: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] је затражио(ла) cash advance у износу од [CurrencyCode] [BudgetAmountFloat] у сврху [RequestPurpose]. Ова средства су део буџета, [BudgetName].
+
+Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl] Финансије/ТрошковиПотврђивања како бисте захтев прихватили или одбили.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Cash Advance, Затражен: [CurrencyCode] [BudgetAmountFloat] - Потврда је неопходна</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+    <value>Ваш захтев за исплату трошкова, од [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је добио потврду од стране носиоца буџета. Исплата ће бити обављена након што се потврди валидност рачуна.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Захтев за рефундирање, потврђен: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] је поднео(ла) захтев за рефундирање, из буџета [BudgetName] у износу од [CurrencyCode] [BudgetAmountFloat], а у вези са [RequestPurpose]. Потребно је да потврдите овај захтев за рефундацију.
+
+Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl] Финансије/ТрошковиПотврђивања како бисте дали потврду или одбили.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Захтев за рефундирање, Креиран: [CurrencyCode] [BudgetAmountFloat] - Потврда је неопходна</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
+    <value>Ваш захтев за рефундацију, насловљен на [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је изгубио потврду од стране носиоца буџета. То обично указује на постојање проблема везаног за Ваш захтев.
+
+Очекујте даљу комуникацију са носиоцем буџета, а са циљем решавања тренутних проблема.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Захтев за рефундацију, Изгубио потврду: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>Ваш захтев за рафундацију издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је одбијен. Наведени текст Вам даје увид у разлоге одбијања:
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Захтев за рефундацију, ОДБИЈЕН: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
+    <value>Рачуни које сте доставили на име трошкова који су упућени организацији [OrganizationName] у износу од [CurrencyCode] [BudgetAmountFloat], а у вези са [RequestPurpose], су изгубили потврду од стране рачуноводства организације. То обично указује на неки проблем који се односи на документацију која је поднета на име рефундације.
+
+Очекујте даљу комуникацију по овом питању. Ако не добијете поруку од рачуноводства, обратите се Ви њима.</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Рачуни који се односе на рефундацију, Изгубили потврду: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>Ваш захтев за рефундацију предат у [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је од стране рачуновођа организације означен као исплаћен.
+
+То значи да ћете ускоро видети уплаћени износ на Вашем рачуну.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Захтев за рефундацију, Исплаћен: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>Рачуни које сте доставили на име трошкова који су упућени организацији [OrganizationName] у износу од [CurrencyCode] [BudgetAmountFloat], а у вези са [RequestPurpose], су добили потврду од стране рачуноводства.
+
+Захтев ће бити исплаћен када износ потврди и носилац буџета.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Рачуни који се односе на рефундацију, Валидирани: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Фактура коју је поднео [Supplier], а везана за [Description], је насловљена на буџет [BudgetName], за износ [CurrencyCode] [BudgetAmountFloat]. Пре него што се настави са плаћањем, морате извршити потврду фактуре
+
+Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl]Финансије/ПотврдеТрошкови како бисте дали потврду или одбили.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Попуњена је фактура: [CurrencyCode] [BudgetAmountFloat] - Потврда је неопходна</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>Нови [Regular] је ручно придодат [OrganizationName] у Вашој области.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Нови [Regular]: [PersonName], [PersonGeography] [CountryCode] (ручно)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>Нови [Regular] се пријавио у [OrganizationName], у Вашој области.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Нови [Regular]: [PersonName], [PersonGeography] [CountryCode]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [Regularship] обновљено: [PersonName], [PersonGeography] [CountryCode] (ручно)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+Овај mail је послат на [Addressee] од стране [OrganizationName]. Ако у будућности не желите да примате ова обавештења, молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl] и измените подешавања која се односе на обавештења.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Ваша порука је стављена листу за слање и сви примаоци су проверени. Ваша порука ће бити послата, или ће се макар покушати слање, [RecipientCount] људи, и [GeographyName] у име [OrganizationName].</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Примаоци одређени за [GeographyName]: [RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>Ваша порука за подручје [GeographyName] је послата свим задатим примаоцима. Од [RecipientCount] планираних прималаца, поруку је примило њих [RecipientsSuccess] -- имајте у виду то да mail може остати непрочитан или неиспоручен из бројних разлога.
+
+Време утрошено за решавање: [ResolvingTime].
+Време утрошено за слање: [TransmissionTime].
+Укупно време од креирања поруке до завршетка: [TotalTime].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Поруке послате за регион: [GeographyName]</value>
+  </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>Нова особа се пријавила као [RegularTitle] у [OrganizationName]! [ConcernedPersonName], са боравиштем у [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Нови [RegularTitle]: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Неко, вероватно Ви, је затражио ресет лозинке која је придружена овој mail адреси на [InstallationName]. Ипак, дво-факторска аутентификација је омогућена за овај налог како би се сигурност подигла на виши ниво. Стога, лозинка се НЕ МОЖЕ ресетовати на једноставан начин.
+
+Молимо Вас да контактирате кадровског аднинистратора у [InstallationName] како би се решио Ваш проблем и како би се издала нова лозинка, уз поштовање ригорознијих процедура за идентификацију и уз подударање на нивоу дво-факторске сигурности.
+
+Хвала Вам на разумевању.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Није могуће ресетовати лозинку</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>Ваша [InstallationName] лозинка је управо промењена на [ExternalUrl].
+
+Ако то нисте Ви урадили, догодио се пробој у систем сигурности. Ако је то у питању, молимо Вас да ОДМАХ закључате налог тако што ћете пратити следећи линк:
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+Ако потврдите закључавање налога преко наведеног линка, све постојеће сесије ће бити одмах угашене, пријаве и новопостављене лозинке ће такође бити закључане и након тога ће Вас контактирати администратор како би потврдио то што се догодило и како би у најкраћем могућем року поново омогућио коришћење Вашег налога.
+
+Наравно, ако сте Ви то сами урадили и сами изменили лозинку, све је у реду. Наставите са коришћењем.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Лозинка је промењена</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>Људи из [OrganizationName] су издали ticket за ресет лозинке, вероватно на Ваш сопствени захтев. Овај ticket је валидан следећих 24 сата.
+
+Молимо Вас, пратите овај линк како бисте ресетовали своју лозинку и поново омогућили дво-факторску аутентификацију ако је претходно била омогућена.
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Важење овог ticket-а ће истећи за 24 сата. Ако не обавите ресет своје лозинке у датом временском оквиру, мораћете да контактирате администратора из [OrganizationName] како би Вам издао нови ticket за ресет лозинке.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ticket за ресет лозинке</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Неко, вероватно Ви, је затражио ресет лозинке која је придружена овој mail адреси на [InstallationName]. Ако сте то заиста били Ви, молимо Вас да пратите наведени линк и да у наредних 60 минута довршите процедуру ресетовања лозинке:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Ако Ви НИСТЕ тражили ресет лозинке, можете (а и требало би) да игноришете овај mail. Захтев за промену лозинке ће истећи за један сат. (а ако се догоди да наставите да добијате велики број ових захтева за ресет лозинке које нисте сами тражили, молимо Вас да о томе обавестите администратора.)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Ticket за ресет лозинке</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>Признанице су попуњене и чекају валидацију како би се финансијске процедуре наставиле.
+
+Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl]Финансије/ВалидацијаПризнаница како бисте их валидирали или одбили.</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Поднети рачуни - Валидација је неопходна</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>Исплата Ваше зараде на име [RequestPurpose] је поништена. И неће Вам бити исплаћена.
+
+Ако Вас је ова одлука изненадила, молимо Вас да одмах контактирате организацију и/или супервизора. Као разлог, наведено је следеће:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Исплата плате је одбијена: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>Ово је сумирани извештај о Вашој плати за [LastYear]. То није потврда која се односи на нову плату, већ на месечне зараде које су Вам исплаћене током протекле године, као и на порезе и доприносе који су се одбијали. Циљ овог извештаја је да Вам пружи податке који су Вам потребни за пореску пријаву за протеклу годину.
+
+Бруто износ зараде за [LastYear]:  [CurrencyCode]  [GrossSalaryTotal]
+Порези и доприноси: [CurrencyCode] [TaxDeductedTotal]	
+Нето зарада која је исплаћена:    [CurrencyCode]  [NetSalaryTotal]
+
+
+Месечно       Бруто    Одузето          Нето  Исплаћено
+-----  ----------  -----------  ----------  -----------
+[EmbeddedPreformattedText]
+
+УКУПНО  [GrossSalaryTotal]  [TaxDeductedTotal]  [NetSalaryTotal]
+
+
+Додатно, [CurrencyCode] [TaxAdditiveTotalUnpadded] је исплаћено од стране организације на име пореза за запослене, и то се додаје на већ одбијени износ који је наведен. Ово представља неку врсту пореза на Вашу зараду, али се из бирократских разлога представља као одвојена ставка.</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Листинг са платама за [LastYear]</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>Swarmops Backend [SwarmopsVersion] на host-у [HostName] је успешно надоградио Swarmops шему базе података на ревизију [DbVersion].
+
+Ово је само информација. Није потребно да предузимате даље радње.</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>Swarmops база података је надограђена</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>Swarmops Backend [SwarmopsVersion] на Host-у [Hostname] НИЈЕ УСПЕО да надогради Swarmops базу података. Разлог томе је обично грешка на transient external network, услед које се patch фајл не прима.
+
+Тренутно користимо шему базе података, верзија [DbVersion], али покушавамо да извршимо надоградњу на [DbVersionExpected].
+
+
+Покушај надоградње ће се извршавати сваког сата. Могуће је да ће то утицати на функционалност, све док траје надоградња базе података. Ако желите да сами решите проблем, пакети за надоградњу базе података се преузимају са packages.swarmops.com, на истом месту на коме се врши apt-get fetches за софтверске пакете.</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>Надоградња Swarmops базе података НИЈЕ УСПЕЛА</value>
+  </data>
+  <data name="System_Exception_Body" xml:space="preserve">
+    <value>Swarmops је избацио unhandled exception:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="System_Exception_Subject" xml:space="preserve">
+    <value>Swarmops EXCEPTION!</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>Ово је тест-порука коју је послао Swarmops [SwarmopsVersion] који је покренут на [HostName]. Управо сте променили подешавања mail сервера. Како би верификовао подешавања, Swarmops шаље тест-поруке из back end-а.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Swarmops Mail Сервер Тест</value>
+  </data>
+  <data name="System_PublicRootReset_Body" xml:space="preserve">
+    <value>Bitcoin јавни root key у MySql бази података се не поклапа са bitcoin приватним root key-ом који се чува у /etc/swarmops на [HostName]. Ово указује на могући проблем, јер то ни у ком случају не би смело да се догађа, тако да је јавни root key поново изведен из приватног кључа и поново уписан у базу података преко постојећег.</value>
+  </data>
+  <data name="System_PublicRootReset_Subject" xml:space="preserve">
+    <value>Swarmops: Ресет Hotwallet јавног root кључа</value>
+  </data>
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>Swarmops Backend верзија [SwarmopsVersion] на host-у [HostName] је успешно покренута и повезана је са базом података и са notification frameworks.</value>
+  </data>
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>Swarmops Backend operational</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>Swarmops Frontend socket server, верзија [SwarmopsVersion] на host-у [HostName] је успешно покренута и повезана са базом података и са notification frameworks.</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>Swarmops Frontend operational</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
+    <value>Swarmops transmission engine на [HostName] је наишао на непознати payload type ([UnrecognizedPayloadType]). Ово се обично догађа само у ретким ситуацијама и скопчано је са надоградњама, када надограђена верзија треба да се избори са неким именима која су промењена. У супротном се ово дешава јако, јако ретко.
+
+Ако ова грешка настави да се јавља, могуће је да имате лоше инсталирани plugin или нешто слично. Било како било, некатегорисана порука ће бити одбачена и неће бити послата даље, пошто Swarmops нема конкретно решење за овај проблем.</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
+    <value>Swarmops: Непозната пошиљка заједничких порука (comms payload)</value>
+  </data>
+</root>
