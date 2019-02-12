@@ -196,6 +196,7 @@
 
 
             // If we're running with admin privileges, allow overdraft override
+            // This is a UX thing, the actual check is done server side, of course
 
             if (canOverdraftBudgets) {
                 approvalOverdraftIcon = '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png';
@@ -292,6 +293,7 @@
             $('.LocalIconApproval').each(function() {
                 var accountId = $(this).attr('accountid');
                 var amountRequested = $(this).attr('amount');
+                var itemId = $(this).attr('baseid');
                 var fundsInBudget = -budgetRemainingLookup[accountId];
 
                 console.log("attestability checking accountid " + accountId + ", amount requested is " + amountRequested + ", funds in budget is " + fundsInBudget);
@@ -299,12 +301,13 @@
                 if (fundsInBudget >= amountRequested || budgetUninitializedLookup[accountId] == true) {
                     // console.log("- removing insufficience marker");
                     $(this).removeClass("LocalFundsInsufficient");
-                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
+                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png").show();
                 }
                 else {
-                    $(this).attr("src", approvalOverdraftIcon);
+                    $(this).attr("src", approvalOverdraftIcon).show();
                     $(this).addClass("LocalFundsInsufficient");
                 }
+                $('#IconWait' + itemId).hide();
 
             });
 
