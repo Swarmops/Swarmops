@@ -181,7 +181,7 @@ Det betyder att du borde se beloppet på ditt konto inom kort.</value>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
     <value>[ConcernedPersonName] har begärt ett kontantförskott på [CurrencyCode] [BudgetAmountFloat] för [RequestPurpose]. Dessa pengar är en del av din budget, [BudgetName].
 
-Vänligen logga in på [InstallationName] på [ExternalUrl]Financial/ApproveCosts att attestera eller neka.</value>
+Vänligen logga in på [InstallationName] på [ExternalUrl]Financial/AttestCosts att attestera eller neka.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
@@ -198,7 +198,7 @@ Vänligen logga in på [InstallationName] på [ExternalUrl]Financial/ApproveCost
   <data name="ExpenseClaim_Created_Body" xml:space="preserve">
     <value>[ConcernedPersonName] har lagt ett utläggsanspråk mot budgeten [BudgetName] på [CurrencyCode] [BudgetAmountFloat]. Anspråket gäller [RequestPurpose]. Det betalas bara ut om du attesterar kostnaden.
 
-Logga in på [InstallationName] på [ExternalUrl]Financial/ApproveCosts för att attestera eller neka anspråket.</value>
+Logga in på [InstallationName] på [ExternalUrl]Financial/AttestCosts för att attestera eller neka anspråket.</value>
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
@@ -252,7 +252,7 @@ Utläggsanspråket kommer att betalas ut till dig när beloppet också är attes
   <data name="InboundInvoice_Created_Body" xml:space="preserve">
     <value>En faktura från [Supplier] gällande [Description] har inkommit mot din budget [BudgetName]. Fakturan är på [CurrencyCode] [BudgetAmountFloat]. Du måste attestera fakturan innan den går till betalning.
 
-Logga in på [InstallationName] på [ExternalUrl]Financial/ApproveCosts för att attestera eller neka fakturan.</value>
+Logga in på [InstallationName] på [ExternalUrl]Financial/AttestCosts för att attestera eller neka fakturan.</value>
   </data>
   <data name="InboundInvoice_Created_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ÅTGÄRD KRÄVS] Faktura mottagen: [CurrencyCode] [BudgetAmountFloat] - attest behövs</value>
