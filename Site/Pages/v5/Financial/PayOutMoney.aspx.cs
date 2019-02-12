@@ -7,6 +7,7 @@ using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.LogEntries;
 
 namespace Swarmops.Frontend.Pages.Financial
 {
@@ -67,74 +68,64 @@ namespace Swarmops.Frontend.Pages.Financial
         [WebMethod]
         public static ConfirmPayoutResult ConfirmPayout (string protoIdentity)
         {
-            protoIdentity = HttpUtility.UrlDecode (protoIdentity);
-
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
                 !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
             {
-                throw new SecurityException ("Insufficient privileges for operation");
+                throw new UnauthorizedAccessException("Insufficient privileges for operation");
             }
 
-            ConfirmPayoutResult result = new ConfirmPayoutResult();
-
-            Payout payout = Payout.CreateFromProtoIdentity (authData.CurrentUser, protoIdentity);
-            PWEvents.CreateEvent (EventSource.PirateWeb, EventType.PayoutCreated,
-                authData.CurrentUser.Identity, 1, 1, 0, payout.Identity,
-                protoIdentity);
+            Payout payout = Payout.CreateFromProtoIdentity (authData.CurrentUser, protoIdentity); // TODO: Catch ConcurrencyException
 
             // Create result and return it
 
-            result.AssignedId = payout.Identity;
-            result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
-                payout.Recipient);
-
-            return result;
+            return new ConfirmPayoutResult
+            {
+                AssignedId = payout.Identity,
+                DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
+                    payout.Recipient),
+                Success = true
+            };
         }
 
         [WebMethod]
-        public static UndoPayoutResult UndoPayout (int databaseId)
+        public static AjaxCallResult UndoPayout (int databaseId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
                 !authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials)))
             {
-                throw new SecurityException("Insufficient privileges for operation");
+                throw new UnauthorizedAccessException("Insufficient privileges for operation");
             }
 
-            UndoPayoutResult result = new UndoPayoutResult();
             Payout payout = Payout.FromIdentity (databaseId);
 
             if (!payout.Open)
             {
-                // this payout has already been settled, or picked up for settling
+                // this payout has already been settled, or picked up for settling. This is a concurrency error, only detected earlier than the database layer.
 
-                result.Success = false;
-                result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
-                    databaseId);
-
-                return result;
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
+                        databaseId)
+                };
             }
 
-            payout.UndoPayout();
+            payout.UndoPayout();   // TODO: catch ConcurrencyException
 
-            result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId);
-            result.Success = true;
-            return result;
+            return new AjaxCallResult
+            {
+                DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId),
+                Success = true
+            };
         }
 
-        public struct ConfirmPayoutResult
+        public class ConfirmPayoutResult: AjaxCallResult
         {
             public int AssignedId;
-            public string DisplayMessage;
         };
-
-        public struct UndoPayoutResult
-        {
-            public string DisplayMessage;
-            public bool Success;
-        }
     }
 }

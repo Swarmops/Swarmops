@@ -17,7 +17,7 @@ namespace Swarmops.Logic.Support.LogEntries
             ActingPersonId = 0;
             BeneficiaryPersonId = salary.PayrollItem.PersonId;
             Amount = salary.NetSalaryCents/100.0;
-            Currency = salary.Budget.Organization.Currency.Code;
+            CurrencyCode = salary.Budget.Organization.Currency.Code;
             DateTime = DateTime.UtcNow;
             FinancialAccountId = salary.Budget.Identity;
             FinancialAccountName = salary.Budget.Name;

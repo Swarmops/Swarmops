@@ -389,7 +389,7 @@ namespace Swarmops.Logic.Financial
 
                         SwarmopsLogEntry.Create (null,
                             new PayoutCreatedLogEntry (null, advance.Person, organization,
-                                organization.Currency, advance.AmountCents/100.0,
+                                organization.Currency, advance.AmountCents,
                                 "Cash Advance Paid Out"),
                             advance.Person, advance);
 
@@ -518,7 +518,7 @@ namespace Swarmops.Logic.Financial
 
                     SwarmopsLogEntry.Create (creator,
                         new PayoutCreatedLogEntry (creator, advance.Person, organization,
-                            organization.Currency, amountCents/100.0,
+                            organization.Currency, amountCents,
                             "Cash Advance Paid Out"),
                         advance.Person, advance);
 
@@ -614,7 +614,7 @@ namespace Swarmops.Logic.Financial
 
                 SwarmopsLogEntry.Create (creator,
                     new PayoutCreatedLogEntry (creator, beneficiaryPerson, organization,
-                        organization.Currency, amountCents/100.0,
+                        organization.Currency, amountCents,
                         referenceString),
                     beneficiaryPerson);
 

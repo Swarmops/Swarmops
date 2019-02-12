@@ -69,11 +69,12 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"reference\":\"{5}\"," +
                     "\"amount\":\"{6}\"," +
                     "\"action\":\"" +
-                    "<img id=\\\"IconApproval{7}\\\" class=\\\"IconApproval{7} LocalIconApproval LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconApproved{7} LocalIconApproved LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconDenial{7} LocalIconDenial LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconDenied{7} LocalIconDenied LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconUndo{7} LocalIconUndo LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPrototype action-icon' baseid='{7}' protoid='{0}' />" +
+                    "<img class='IconApproved{7} LocalIconApproved LocalPrototype status-icon' baseid='{7}' />" +
+                    "<img class='IconWait{7} LocalIconWait LocalPrototype status-icon' baseid='{7}' />" +
+                    "<img class='IconUndo{7} LocalIconUndo LocalPrototype action-icon' baseid='{7}' />" + 
+                    "<img class='IconDenial{7} LocalIconDenial LocalPrototype action-icon' baseid='{7}' />" +
+                    "<img class='IconDenied{7} LocalIconDenied LocalPrototype status-icon' baseid='{7}' />" +
                     "\"",
                     payout.ProtoIdentity,
                     (payout.ExpectedTransactionDate <= today
@@ -100,13 +101,12 @@ namespace Swarmops.Frontend.Pages.Financial
         {
             StringBuilder result = new StringBuilder(16384);
 
-            DateTime today = DateTime.Today;
-
             foreach (Payout payout in payouts)
             {
                 result.Append("{");
                 result.AppendFormat(
                     "\"itemId\":\"{0}\"," +
+                    "\"paid\":\"yes\"," +
                     "\"databaseId\":\"{8}\"," +
                     "\"due\":\"{1}\"," +
                     "\"recipient\":\"{2}\"," +
@@ -115,11 +115,12 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"reference\":\"{5}\"," +
                     "\"amount\":\"{6:N2}\"," +
                     "\"action\":\"" +
-                    "<img id=\\\"IconApproval{7}\\\" class=\\\"IconApproval{7} LocalIconApproval LocalPrevious\\\" databaseid=\\\"{8}\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconApproved{7} LocalIconApproved LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconDenial{7} LocalIconDenial LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconDenied{7} LocalIconDenied LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconUndo{7} LocalIconUndo LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPaid action-icon' baseid='{7}' protoid='{0}' databaseid='{8}' />" +
+                    "<img class='IconApproved{7} LocalIconApproved LocalPaid status-icon' baseid='{0}' />" +
+                    "<img class='IconWait{7} LocalIconWait LocalPaid status-icon' baseid='{0}' />" +
+                    "<img class='IconUndo{7} LocalIconUndo LocalPaid action-icon' baseid='{0}' />" +
+                    "<img class='IconDenial{7} LocalIconDenial LocalPaid action-icon' baseid='{0}' />" +
+                    "<img class='IconDenied{7} LocalIconDenied LocalPaid status-icon' baseid='{0}' />" +
                     "\"",
                     payout.ProtoIdentity,
                     payout.ExpectedTransactionDate.ToShortDateString(),

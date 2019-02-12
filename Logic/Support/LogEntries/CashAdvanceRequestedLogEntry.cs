@@ -16,7 +16,7 @@ namespace Swarmops.Logic.Support.LogEntries
             FinancialAccount budget, string reason)
         {
             Amount = amount;
-            Currency = budget.Organization.Currency.Code;
+            CurrencyCode = budget.Organization.Currency.Code;
             DateTime = DateTime.UtcNow;
             Description = reason;
             OrganizationId = budget.OrganizationId;

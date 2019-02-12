@@ -81,11 +81,12 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"amount\":\"<span class='ocrFont'>{3}</span>\"," +
                     "\"account\":\"<span class='ocrFont'>{4}</span>\"," +
                     "\"action\":\"" +
-                    "<img class=\\\"IconApproval{5} LocalIconApproval LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconApproved{5} LocalIconApproved LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconDenial{5} LocalIconDenial LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconDenied{5} LocalIconDenied LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconUndo{5} LocalIconUndo LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img class='IconApproval{5} LocalIconApproval LocalPrototype action-icon' baseid='{0}' />" +
+                    "<img class='IconApproved{5} LocalIconApproved LocalPrototype status-icon' baseid='{0}' />" +
+                    "<img class='IconWait{5} LocalIconWait status-icon' baseid='{0}' />" +
+                    "<img class='IconUndo{5} LocalIconUndo LocalPrototype action-icon' baseid='{0}' />" +
+                    "<img class='IconDenial{5} LocalIconDenial LocalPrototype action-icon' baseid='{0}' />" +
+                    "<img class='IconDenied{5} LocalIconDenied LocalPrototype status-icon' baseid='{0}' />" +
                     "\"" ,
                     payout.ProtoIdentity,
                     (payout.ExpectedTransactionDate <= today

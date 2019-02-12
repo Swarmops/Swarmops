@@ -10,9 +10,16 @@ namespace Swarmops.Logic.Support.LogEntries
         public int ActingPersonId { get; set; }
         public int BeneficiaryPersonId { get; set; }
         public int OrganizationId { get; set; }
+
+        [Obsolete("Find and eliminate all uses of double-precision in financial")]
         public double Amount { get; set; }
+        public Int64 AmountCents { get; set; }
+
+        [Obsolete("Find and eliminate all uses of double-precision in financial")]
         public double Vat { get; set; }
-        public string Currency { get; set; }
+        public Int64 VatCents { get; set; }
+
+        public string CurrencyCode { get; set; }
         public string Description { get; set; }
         public int OwnerPersonId { get; set; }
         public string OwnerPersonName { get; set; }

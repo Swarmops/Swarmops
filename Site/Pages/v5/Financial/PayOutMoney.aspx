@@ -39,9 +39,9 @@
                 var checked = $('#CheckOptionsShowPrevious').prop('checked');
 
                 if (checked) {
-                    $('.rowPrevious').show();
+                    $('.LocalPaid').show();
                 } else {
-                    $('.rowPrevious').hide();
+                    $('.LocalPaid').hide();
                 }
             });
 
@@ -61,14 +61,14 @@
                 {
                     rowStyler: function (index, rowData) {
                         if (rowData.databaseId != null) {
-                            return { class: "rowPrevious row" + rowData.itemId.replace(/\|/g, '') };
+                            return { class: "action-list-item-approved row" + rowData.itemId.replace(/\|/g, "") };
                         }
 
                         if (rowData.itemId != null) {
-                            return { class: "row" + rowData.itemId.replace(/\|/g, '') };
+                            return { class: "row" + rowData.itemId.replace(/\|/g, "") };
                         }
 
-                        return '';
+                        return "";
                     },
 
                     onLoadSuccess: function () {
@@ -82,47 +82,79 @@
                             $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                             $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").css("opacity", 0.5);
                             $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
-                            $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
-                            $(".LocalIconApproved.LocalPrototype, .LocalIconUndo.LocalPrototype, .LocalIconDenied.LocalPrototype, .LocalIconApproval.LocalPrevious, .LocalIconDenial.LocalPrevious, .LocalIconDenied.LocalPrevious").css("display", "none");
+                            $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png").hide();
+                            $(".LocalIconApproved.LocalPrototype, .LocalIconUndo.LocalPrototype, .LocalIconDenied.LocalPrototype, .LocalIconApproval.LocalPaid, .LocalIconDenial.LocalPaid, .LocalIconDenied.LocalPaid").hide();
                             $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-disabled.png");
                             $(".LocalIconApproval, .LocalIconUndo, .LocalIconDenial").css("cursor", "pointer");
 
-                            $(".LocalIconApproval").mouseover(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot.png");
-                                }
+                            $(".LocalIconApproval").click(function () {
+                                var itemId = $(this).attr("baseid");
+                                var prototypeId = $(this).attr("protoid");
+                                $(this).hide();
+                                $("#IconWait" + itemId).show();
+                                $("#IconDenial" + itemId).fadeTo(1000, 0.01);
+
+                                SwarmopsJS.proxiedAjaxCall(
+                                    "/Pages/v5/Financial/PayOutMoney.aspx/ConfirmPayout",
+                                    { protoIdentity: prototypeId },
+                                    this,
+                                    function (result) {
+                                        if (result.Success) {
+                                            var itemId = $(this).attr("baseid");
+                                            $('.row' + itemId).addClass("action-list-item-approved");
+                                            $("#IconApproval" + itemId).attr("databaseid", msg.d.AssignedId);
+                                            $(".IconWait" + itemId).hide();
+                                            $(".IconDenial" + itemId).hide();
+                                            $(".IconApproved" + itemId).fadeTo(200, 0.5); // half opacity is intentional
+                                            $(".IconUndo" + itemId).fadeTo(1000, 1); // the longer delay is intentional
+                                            alertify.success(result.DisplayMessage);
+                                        } else {
+                                            // There's probably a concurrency error.
+                                            // The socket handler will take care of updating the UI on
+                                            // receiving the cause of the concurrency error.
+
+                                            alertify.log(result.DisplayMessage);
+
+                                        }
+                                    }
+                                );
                             });
 
-                            $(".LocalIconApproval").mouseout(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
-                                }
+
+                            $(".LocalIconUndo").click(function() {
+                                $(this).hide();
+                                var itemId = $(this).attr("baseid");
+                                $(".IconApproved" + itemId).fadeTo(1000, 0.01);
+                                $(".IconWait" + itemId).show();
+
+                                SwarmopsJS.proxiedAjaxCall(
+                                    "/Pages/v5/Financial/PayOutMoney.aspx/UndoPayout",
+                                    { databaseId: $(this).attr("databaseid") },
+                                    this,
+                                    function(result) {
+                                        if (result.Success) {
+                                            var itemId = $(this).attr("baseid");
+                                            $('.row' + itemId).removeClass("action-list-item-approved");
+                                            $(".IconWait" + itemId).hide();
+                                            $(".IconApproved" + itemId).hide();
+                                            $(".IconApproval" + itemId).fadeTo(200, 1);
+                                            $(".IconDenial" + itemId).fadeTo(200, 1);
+                                            alertify.log(result.DisplayMessage);
+
+                                        } else {
+                                            // There's probably a concurrency error.
+                                            // The socket handler will take care of updating the UI on
+                                            // receiving the cause of the concurrency error.
+
+                                            alertify.log(result.DisplayMessage);
+                                        }
+                                    }
+                                );
                             });
 
-                            $(".LocalIconUndo").mouseover(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px-hot.png");
-                                }
-                            });
 
-                            $(".LocalIconUndo").mouseout(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
-                                }
-                            });
 
-                            $(".LocalIconDenial").mouseover(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot-disabled.png");
-                                }
-                            });
-
-                            $(".LocalIconDenial").mouseout(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-disabled.png");
-                                }
-                            });
-
+                            /*
                             $(".LocalIconApproval").click(function() {
                                 if ($(this).attr("rel") != "loading") {
 
@@ -154,6 +186,9 @@
                                     });
                                 }
                             });
+
+
+
 
                             $(".LocalIconUndo").click(function() {
                                 if ($(this).attr("rel") != "loading") {
@@ -190,7 +225,7 @@
                                     });
 
                                 }
-                            });
+                            });*/
                         }
 
                     }
