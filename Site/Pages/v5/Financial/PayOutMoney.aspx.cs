@@ -54,16 +54,9 @@ namespace Swarmops.Frontend.Pages.Financial
             this.LabelGridHeaderPaid2.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_PaidOut;
 
             this.LabelSidebarOptions.Text = Resources.Global.Sidebar_Options;
-
-            int previouslyOpenPayouts = GetOpenCount();
-            this.LabelOptionsShowPrevious.Text = String.Format(Resources.Pages.Financial.PayOutMoney_OptionShowOpen, previouslyOpenPayouts);
             this.LabelOptionsShowOcr.Text = Resources.Pages.Financial.PayoutMoney_OptionShowOcr;
         }
 
-        private int GetOpenCount()
-        {
-            return Payouts.ForOrganization (CurrentOrganization).Count;
-        }
 
         [WebMethod]
         public static ConfirmPayoutResult ConfirmPayout (string protoIdentity)
