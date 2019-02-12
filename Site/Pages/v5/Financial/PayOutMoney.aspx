@@ -17,20 +17,11 @@
         }
 
         preload([
-            '/Images/Abstract/ajaxloader-medium.gif',
             '/Images/Abstract/ajaxloader-48x36px.gif',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-gold.png',
-            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png',
-            '/Images/Icons/iconshock-balloon-no-128x96px-disabled.png',
             '/Images/Icons/iconshock-green-tick-128x96px.png',
             '/Images/Icons/iconshock-red-cross-128x96px.png',
             '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
-            '/Images/Icons/iconshock-balloon-undo-128x96px.png',
-            '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png'
+            '/Images/Icons/iconshock-balloon-undo-128x96px.png'
         ]);
 
         $(document).ready(function () {
@@ -82,7 +73,8 @@
                             $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                             $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").css("opacity", 0.5);
                             $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
-                            $(".LocalIconWait").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png").hide();
+                            $(".LocalIconWait").attr("src", "/Images/Abstract/ajaxloader-48x36px.gif").hide();
+                            $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                             $(".LocalIconApproved.LocalPrototype, .LocalIconUndo.LocalPrototype, .LocalIconDenied.LocalPrototype, .LocalIconApproval.LocalPaid, .LocalIconDenial.LocalPaid, .LocalIconDenied.LocalPaid").hide();
                             $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-disabled.png");
                             $(".LocalIconApproval, .LocalIconUndo, .LocalIconDenial").css("cursor", "pointer");
