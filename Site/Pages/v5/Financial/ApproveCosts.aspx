@@ -291,23 +291,28 @@
         function setApprovability() {
 
             $('.LocalIconApproval').each(function() {
-                var accountId = $(this).attr('accountid');
-                var amountRequested = $(this).attr('amount');
-                var itemId = $(this).attr('baseid');
-                var fundsInBudget = -budgetRemainingLookup[accountId];
 
-                console.log("attestability checking accountid " + accountId + ", amount requested is " + amountRequested + ", funds in budget is " + fundsInBudget);
+                // Only process items that aren't approved at this time
 
-                if (fundsInBudget >= amountRequested || budgetUninitializedLookup[accountId] == true) {
-                    // console.log("- removing insufficience marker");
-                    $(this).removeClass("LocalFundsInsufficient");
-                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png").show();
+                if (!$(this).hasClass('LocalApproved')) {
+
+                    var accountId = $(this).attr('accountid');
+                    var amountRequested = $(this).attr('amount');
+                    var itemId = $(this).attr('baseid');
+                    var fundsInBudget = -budgetRemainingLookup[accountId];
+
+                    // console.log("attestability checking accountid " + accountId + ", amount requested is " + amountRequested + ", funds in budget is " + fundsInBudget);
+
+                    if (fundsInBudget >= amountRequested || budgetUninitializedLookup[accountId] == true) {
+                        // console.log("- removing insufficience marker");
+                        $(this).removeClass("LocalFundsInsufficient");
+                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png").show();
+                    } else {
+                        $(this).attr("src", approvalOverdraftIcon).show();
+                        $(this).addClass("LocalFundsInsufficient");
+                    }
+                    $('#IconWait' + itemId).hide();
                 }
-                else {
-                    $(this).attr("src", approvalOverdraftIcon).show();
-                    $(this).addClass("LocalFundsInsufficient");
-                }
-                $('#IconWait' + itemId).hide();
 
             });
 
