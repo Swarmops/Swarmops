@@ -84,7 +84,7 @@
                                         if (result.Success) {
                                             var itemId = $(this).attr("baseid");
                                             $('.row' + itemId).addClass("action-list-item-approved");
-                                            $("#IconApproval" + itemId).attr("databaseid", msg.d.AssignedId);
+                                            $("#IconApproval" + itemId).attr("databaseid", result.AssignedId);
                                             $(".IconWait" + itemId).hide();
                                             $(".IconDenial" + itemId).hide();
                                             $(".IconApproved" + itemId).fadeTo(200, 0.5); // half opacity is intentional
