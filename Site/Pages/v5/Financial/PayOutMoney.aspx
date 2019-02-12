@@ -26,16 +26,6 @@
 
         $(document).ready(function () {
 
-            $('#CheckOptionsShowPrevious').change(function () {
-                var checked = $('#CheckOptionsShowPrevious').prop('checked');
-
-                if (checked) {
-                    $('.LocalPaid').show();
-                } else {
-                    $('.LocalPaid').hide();
-                }
-            });
-
             $('#CheckOptionsShowOcr').change(function () {
                 var checked = $('#CheckOptionsShowOcr').prop('checked');
 
@@ -121,7 +111,7 @@
 
                                 SwarmopsJS.proxiedAjaxCall(
                                     "/Pages/v5/Financial/PayOutMoney.aspx/UndoPayout",
-                                    { databaseId: $(this).attr("databaseid") },
+                                    { databaseId: $("#IconApproval" + itemId).attr("databaseid") },
                                     this,
                                     function(result) {
                                         if (result.Success) {
@@ -297,10 +287,7 @@
     <div class="box">
         <div class="content" style="margin-left:5px">
             <div class="link-row-encaps" style="cursor:default; margin-left:2px">
-               <span style="position:relative;top:2px;left:1px"><input type="checkbox" id="CheckOptionsShowPrevious" /></span>&nbsp;<label for="CheckOptionsShowPrevious"><asp:Label ID="LabelOptionsShowPrevious" runat="server" Text="Show previous payouts XYZ"/></label>
-            </div>
-            <div class="link-row-encaps" style="cursor:default; margin-left:2px">
-               <span style="position:relative;top:2px;left:1px"><input type="checkbox" id="CheckOptionsShowOcr" /></span>&nbsp;<label for="CheckOptionsShowOcr"><asp:Label ID="LabelOptionsShowOcr" runat="server" Text="Show previous payouts XYZ"/></label>
+               <span style="position:relative;top:2px;left:1px"><input type="checkbox" id="CheckOptionsShowOcr" /></span>&nbsp;<label for="CheckOptionsShowOcr"><asp:Label ID="LabelOptionsShowOcr" runat="server" Text="Display OCR ready data XYZ"/></label>
             </div>
         </div>
     </div>
