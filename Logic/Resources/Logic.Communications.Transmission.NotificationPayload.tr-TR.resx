@@ -117,27 +117,65 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>[OrganizationName]'den [RegularTitle] olmak için yeni bir kişi başvurdu! [ConcernedPersonName] şu anda [CountryCode], [GeographyName]'de ikamet ediyor.</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] Yeni Başvuru Sahibi: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>Bitcoin Cash ödeme adresinizde bir ödeme yapılmaya çalışılırken, adres ([BitcoinAddress]), temel ödeme motoru tarafından geçersiz olarak reddedildi. Bu nedenle profilinizden silindi.
+
+Lütfen [ExternalUrl]'den [InstallationName]'e oturum açın ve yeni bir Bitcoin ödeme adresi belirleyin.</value>
+  </data>
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
     <value>[[OrganizationName] - EYLEM ÖĞESİ] Geçersiz bitcoin ödeme adresi</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>Bitcoin Cash ödeme adresinizi [BitcoinOldAddress]'dan [BitcoinAddress]'a değiştirdiniz. Güvenlik önlemi olarak, tüm ödemeleriniz sonraki 48 saat boyunca karantinaya alınır.
+
+Ödeme adresini DEĞİŞTİRMEDİYSENİZ ve bir güvenlik ihlali olmuşsa, hesabınızı kilitlemek için lütfen hemen bu bağlantıyı tıklayın: [LockdownLink]
+
+Bu bağlantıyı tıklarsanız, onay istekleri olmadan hesabınız derhal kilitlenir. Bununla birlikte, ödeme adresi değişikliğini talep ettiyseniz, her şey yolundadır ve sizin tarafınızdan başka bir işlem yapılması gerekmemektedir.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bitcoin Cash ödeme adresi değişti</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>[OrganizationName] adresinde ödeme bekleyen fonlarınız var, ancak bir Bitcoin Nakit ödeme adresi belirlemediniz.
+
+Lütfen [ExternalUrl]'de [InstallationName]'e giriş yapın ve ödeme adresinizi ayarlamak için bağlantıyı izleyin - yapılacaklar listesinde bulabilirsiniz.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Lütfen Bitcoin Cash ödeme adresinizi belirleyin</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>Bir Bitcoin Cash ödeme adresi belirlediniz: [BitcoinAddress]. Güvenlik önlemi olarak, tüm ödemeler sonraki 48 saat boyunca karantinaya alınır ve bundan sonra yeni adrese ödenmeye devam eder.
+
+Bu ödeme adresini siz ayarlamadıysanız (daha fazla güvenlik için yukarıdaki adresi iki kere kontrol etmeye değer), derhal [OrganizationName] ile iletişime geçin.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] tarafından bir Bitcoin Cash adresi belirlendi. Karantina süresi dolduğunda ödemeler 48 saat sonra başlayacaktır.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] bir Bitcoin Cash ödeme adresi belirledi</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bitcoin Cash ödeme adresi belirlendi</value>
+  </data>
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
     <value>[OrganizationName]'nın bitcoin hotwallet'i biraz önce toplamı [CurrencyCode][AmountFloat]([BitcoinAmountFloat] microbitcoin veya "bit") eden [PaymentCount] otomatik ödeme yaptı.</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Hotwallet Ödemesi: [CurrencyCode][AmountFloat]</value>
   </data>
-  
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[BitcoinAmountFloat] mikrobitcoin ("bit"), aşağıdakiler için [OrganizationName] tarafından Bitcoin Cash adresinize ([BitcoinAddress]) transfer edildi:
+
+[EmbeddedPreformattedText]
+
+İşlemi cüzdanınızda zaten görmeli ve yaklaşık bir saat içinde harcanabilirliği sağlamalıdır. (altı normal onay).</value>
+  </data>
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Fonları size [CurrencyCode][AmountFloat] ödeme yaptı</value>
   </data>
@@ -149,20 +187,10 @@
   </data>
   
   
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık nakit avans talebiniz bütçe sahibi tarafından onaylanmıştır. Artık size ödemeye devam edecektir.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Nakit Avans Onaylandı: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık nakit avans talebinizin onayı bütçe sahibi tarafından geri çekilmiştir. Bu genellikle isteğinizle ilgili bir soruna işarettir.
-
-Bu konuyla ilgili takip etmek için bütçe sahibinden daha fazla iletişim bekleyin.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Nakit Avans Onayı Geri Çekildi: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık nakit avansınız yok sayılmıştır. Aşağıdaki yazı yok sayılmasına sebep olarak sunulmuştur:
 
@@ -180,42 +208,14 @@ Bu, tutarı kısa zaman içinde hesabınızda göreceğiniz anlamına gelir.</va
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Nakit Avans Ödendi: [CurrencyCode][BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName], [RequestPurpose] amacıyla [CurrencyCode][BudgetAmountFloat]'lık bir nakit avans talebinde bulundu. Bu para [BudgetName] bütçenizin bir parçasıdır.
-
-Lütfen, [ExternalUrl]Financial/AttestCosts deki [InstallationName] hesabınıza giriş yaparak işlemi onaylayın veya reddedin.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - EYLEM ÖĞESİ] Nakit Avans Talep Edildi: [CurrencyCode][BudgetAmountFloat] - Onay gerekli</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebiniz bütçe sahibi tarafından onaylanmıştır. Makbuzların geçerliliği onaylandığında ödenecektir.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Masraf Talebi Onaylandı: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName], [BudgetName] bütçesine karşı [CurrencyCode][BudgetAmountFloat] miktarında bir masraf talebi oluşturdu. Talep [RequestPurpose] ile ilgili. Bu masraf talebini onaylamanız gerekecek.
-
-Lütfen, [ExternalUrl]Financial/AttestCosts deki [InstallationName] hesabınıza giriş yaparak işlemi onaylayın veya reddedin.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - EYLEM ÖĞESİ] Masraf Talebi Oluşturuldu: [CurrencyCode][BudgetAmountFloat] - Onay gerekli</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebinizin onayı bütçe sahibi tarafından geri çekilmiştir. Bu genellikle masraf talebinizle ilgili bir soruna işarettir.
-
-Bu konuyla ilgili takip etmek için bütçe sahibinden daha fazla iletişim bekleyin.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Masraf Talebi Onayı Geri Çekildi: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebiniz yok sayılmıştır. Aşağıdaki yazı yok sayılmasına sebep olarak sunulmuştur:
 
@@ -225,14 +225,6 @@ Bu konuyla ilgili takip etmek için bütçe sahibinden daha fazla iletişim bekl
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Masraf Talebi REDDEDİLDİ: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebiniz için gönderdiğiniz makbuzların onayı organizasyonun finansal hesap tutucuları tarafından geri çekilmiştir. Bu genellikle masraf talebinizdeki belgelerle ilgili bir soruna işarettir.
-
-Bu konuyla ilgili takip etmek için daha fazla iletişim bekleyin. Bu konuda kısa bir sürede hesap tutuculardan bir haber almazsanız, onları takip ediniz.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Masraf Talebi Makbuzlarının Geçerliliği İptal Edildi: [CurrencyCode][BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebiniz organizasyonun muhasebecileri tarafından ödendi olarak işaretlenmiştir.
@@ -251,15 +243,10 @@ Talebiniz, bu miktar bütçe sahibi tarafından da onaylandığı zaman ödenece
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Masraf Talebi Makbuzlarının Onaylandı: [CurrencyCode][BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>[Supplier] tarafından, [Description] ile ilgili, [BudgetName] bütçenize karşı [CurrencyCode][BudgetAmountFloat] miktarında bir makbuz çıkartıldı. Bu makbuzu, ödemeye gitmeden önce onaylamanız gerekiyor.
-
-Lütfen, [ExternalUrl]Financial/AttestCosts deki [InstallationName] hesabınıza giriş yaparak işlemi onaylayın veya reddedin.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - EYLEM ÖĞESİ] Makbuz Dosyalandı: [CurrencyCode][BudgetAmountFloat] - Onay gerekli</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>[OrganizationName]'e sizin alanınızın içinde yeni bir [Regular] manuel olarak eklendi.</value>
   </data>

@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Attest_CashAdvance_Many" xml:space="preserve">
-    <value>crwdns6553634:0{0}crwdne6553634:0</value>
+    <value>crwdns6563376:0{0}crwdne6563376:0</value>
   </data>
   <data name="Attest_CashAdvance_One" xml:space="preserve">
-    <value>crwdns6553635:0#{0}crwdne6553635:0</value>
+    <value>crwdns6563378:0#{0}crwdne6563378:0</value>
   </data>
   <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
-    <value>crwdns6553636:0{0}crwdne6553636:0</value>
+    <value>crwdns6563380:0{0}crwdne6563380:0</value>
   </data>
   <data name="Attest_ExpenseClaim_One" xml:space="preserve">
-    <value>crwdns6553637:0#{0}crwdne6553637:0</value>
+    <value>crwdns6563382:0#{0}crwdne6563382:0</value>
   </data>
   <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
     <value>crwdns6556788:0crwdne6556788:0</value>

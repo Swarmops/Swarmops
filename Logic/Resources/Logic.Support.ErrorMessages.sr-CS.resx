@@ -124,7 +124,7 @@
     <value>Sve je čisto</value>
   </data>
   <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
-    <value>Сервер је изгубио везу са bitcoin blockchain-ом. Bitcoin трансакције неће бити детектоване у реалном времену.</value>
+    <value>Server je izgubio vezu sa bitcoin blockchain-om. Bitcoin transakcije neće biti detektovane u realnom vremenu.</value>
   </data>
   <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
     <value>Izgubljena je veza sa blockchain-om</value>

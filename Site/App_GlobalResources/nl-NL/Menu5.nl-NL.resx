@@ -164,9 +164,7 @@
   <data name="Menu5_Financial" xml:space="preserve">
     <value>Financiën</value>
   </data>
-  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>Attest Kosten</value>
-  </data>
+  
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Terugbetaling op Uitgaven</value>
   </data>
@@ -235,9 +233,7 @@
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Grootboeken</value>
   </data>
-  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>Account Plan</value>
-  </data>
+  
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Grootboek nazien</value>
   </data>

@@ -117,23 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>L'anticipo in contanti n. {0:N0} per {1} è stato attestato a {3:N2}.</value>
-    <comment>Status message.</comment>
-  </data>
-  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>L'anticipo in contanti  #{0:N0} per {1} è stato negato. Non verrà pagato a meno che non verrà attestato nuovamente.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
-    <value>Non è possibile attestare questa somma. Il bilancio per l'anno {0} è vuoto.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
-    <value>Non si può attestare un importo negativo.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>Non si può attestare un importo pari a zero.</value>
-  </data>
+  
+  
+  
+  
+  
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>Siamo spiacenti, non si può rifare il bilancio per un pagamento dello stipendo.</value>
   </data>
@@ -143,14 +131,7 @@
   <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
     <value>Si prega di selezionare un budget per il quale ridefinire la tariffa.</value>
   </data>
-  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>La richiesta di rimborso spese #{0:N0} da{1} per {2}{3:N2} è stata attestata.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>La richiesta di rimborso spese #{0:N0} da {1} è stata cancellata. Non verrà pagata a meno che non venga attestata nuovamente.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Azione</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -177,27 +158,12 @@
     <value>Richiesto</value>
     <comment>Header for the requested amount.</comment>
   </data>
-  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
-    <value>Spese in attesa della vostra attestazione</value>
-  </data>
-  <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Qui è dove si attestano le spese che altre persone stanno richiedendo dal vostro bilancio. Niente è pagato prima che voi lo abbiate attestato.</value>
-  </data>
-  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>La fattura #{0:N0} da {1} per {2}{3:N2} è stata attestata.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>La fattura #{0:N0} da {1} è stata negata. Non verrà pagata a meno che non venga attestata nuovamente.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>Attesta</value>
-    <comment>keep short</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Attesta</value>
-  </data>
+  
+  
+  
+  
+  
+  
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Nega</value>
     <comment>keep short</comment>
@@ -223,35 +189,19 @@
   <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
     <value>Spostare la carica su questo bilancio invece:</value>
   </data>
-  <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>Risolvere i problemi o negare l'attestazione</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
-    <value>Questo verrà attestato, ma per un importo differente.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
-    <value>L'importo è errato. Lo attesterò con l'importo corretto.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
-    <value>Non attesterò questo registro. è danneggiato.</value>
-    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
-  </data>
+  
+  
+  
+  
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
     <value>Questo record dovrebbe essere addebitato ad un altro budget. Spostarlo lì.</value>
   </data>
   <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
     <value>Quale sembra essere il problema con questo record?</value>
   </data>
-  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
-    <value>Nel bilancio non sono rimasti fondi sufficienti per attestare tale costo.</value>
-  </data>
-  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>Non vi sono fondi sufficienti per poterlo attestare. È possibile attestare fino a {0} {1:N2} in più per questo bilancio per l'anno {2}.</value>
-    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
-  </data>
-  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
-    <value>&lt;strong&gt;OVERDRAFT BUDGET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non ci sono abbastanza fondi rimanenti nel bilancio per attestare questa spesa. Di norma, sarebbe bloccato dall'attestazione. Di norma, sarebbe bloccato dall'attestazione. Tuttavia, è possibile ignorare questa limitazione e attestare comunque, però in questo modo il conto sconfinerà il suo bilancio.&lt;br/&gt;&lt;br/&gt;Vuoi attestare la spesa, causando così uno sconfinamento sul bilancio per questo account, o si desidera annullare l'attestazione, per non superare il bilancio?&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
+  
+  
+  
   <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
     <value>Rimanere sul budget</value>
   </data>
@@ -262,26 +212,14 @@
     <value>IL BUDGET È STATO SUPERATO.</value>
     <comment>The UPPERCASE is intentional.</comment>
   </data>
-  <data name="AttestCosts_PageTitle" xml:space="preserve">
-    <value>Attesta costi</value>
-  </data>
-  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>Conferenza #{0:N0}, organizzata da {1}, è stata attestata per {3:N2}.</value>
-  </data>
-  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>La conferenza #{0:N0} di {1}  è stata a negata.  Non avrà luce verde a meno che non sarà nuovamente attestata.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
+  
+  
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>Lo stipendio #{0:N0} per {1} è stato attestato per {3:N2}.</value>
   </data>
-  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Lo stipendio #{0:N0} per {1} è stato negato. Non verrà pagato a meno che non verrà attestato nuovamente.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;ATTENZIONE: BUDGET NON INIZIALIZZATO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Il costo che si sta approvando appartiene a un budget non inizializzato - un account nel registro contabile che manca di proprietario e non ha alcun budget allocato per l'anno in corso. Si consiglia di visitare il piano del conto e di allocare i budget per le entrate e le uscite previste.&lt;br/&gt;&lt;br/&gt;Questo messaggio verrà visualizzato soltanto una volta per ogni visita a Attestazioni.&lt;br/&gt;</value>
-  </data>
+  
+  
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Importo totale delle fatture (in {0})</value>
     <comment>{0} is the organization's main currency.</comment>
@@ -579,9 +517,7 @@
   <data name="ValidateReceipts_PageTitle" xml:space="preserve">
     <value>Convalida ricevute</value>
   </data>
-  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>Le ricevute per la richiesta di rimborso spese #{0:N0} per {1}{2:N2} non sono state validate. La richiesta di rimborso spese non procederà al pagamento se non sarà riconvalidata.</value>
-  </data>
+  
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Le ricevute per la richiesta di rimborso spese #{0:N0} per {1}{2:N2} sono state convalidate.</value>
   </data>
@@ -732,4 +668,5 @@ nella colonna "IVA". Se il tuo team ha già creato un profilo CSV di questo tipo
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>{0} richieste archiviate con successo.</value>
   </data>
+  
 </root>

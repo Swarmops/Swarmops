@@ -120,7 +120,10 @@
   <data name="Signup_ActivationActive" xml:space="preserve">
     <value>Eğer daha fazla etkileşime girmek isterseniz, herhangi birine katılma, kendinizi göterme, veya görev almaya hiçbir şekilde yükümlülüğünüz olmaksızın kendinizi eylem çağrılarına uygun hale getirebilirsiniz.</value>
   </data>
-  
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>{0} Fırsatta</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
   <data name="Signup_ActivationLevel" xml:space="preserve">
     <value>Ne kadar etkileşim kurmak istiyorsunuz?</value>
   </data>
@@ -132,7 +135,9 @@
     <value>Bu varsayılan düzeydir ve organizasyonda taban seviye {0} olarak normal bir yer alacaksınız.</value>
     <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
   </data>
-  
+  <data name="Signup_ActivationPassiveApplication" xml:space="preserve">
+    <value>Bu varsayılan seviyedir, yani {1}'inizi beklerken {0} olarak istediğiniz kadar meşgul olabilirsiniz (ya da olmayabilirsiniz).</value>
+  </data>
   <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
     <value>Düzenli {0}</value>
     <comment>{0} is the Regular Participant label for the org.</comment>
@@ -143,12 +148,26 @@
   <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
     <value>Gönüllü Memur</value>
   </data>
-  
-  
-  
-  
-  
-  
+  <data name="Signup_ApplicationApproval" xml:space="preserve">
+    <value>{1} ile bir {0} başvurusunda bulunuyorsunuz. Başvuru gönderme ile ilgili herhangi bir ücretlendirme bulunmamaktadır.</value>
+  </data>
+  <data name="Signup_ApplyingFor" xml:space="preserve">
+    <value>{1}'de {0} için bir başvuru</value>
+  </data>
+  <data name="Signup_DashboardMessage" xml:space="preserve">
+    <value>Hoşgeldiniz! Bu &lt;em&gt;Gösterge Tablosu,&lt;/em&gt; {0} dahili işlevine erişebileceğiniz yer. Posta ile kısa süre içinde daha fazla bilgi alacaksınız.&lt;br/&gt;&lt;br/&gt;
+
+Resmi bir sorumluluk almak için gönüllü olduysanız, biri (muhtemelen kendiniz gibi bir gönüllü de olabilir) mevcut fırsatlar hakkında daha fazla bilgi almak için sizinle irtibata geçecektir.</value>
+  </data>
+  <data name="Signup_DefaultFirstPageText" xml:space="preserve">
+    <value>Bu Organizasyon'un özel karşılama metnidir. Yönetici / Kuruluş ayarlarında ayarlanır.</value>
+  </data>
+  <data name="Signup_DefaultLastPageText" xml:space="preserve">
+    <value>Bu Kayıt Sonlandırma için gösterilen organizasyona özel metindir. Yönetici / Kuruluş ayaları bölümünde ayarlanır. Yeni kişi Bitir tuşuna bastığında, kuruluşa girecek, oturum açacak ve Başlangıç kullanıcı olarak Gösterge Tablosuna gönderilecektir.</value>
+  </data>
+  <data name="Signup_DefaultSidebarText" xml:space="preserve">
+    <value>Bu, organizasyonun kısa kenar bilgi çubuğudur. Yönetim/Org. ayarlarında ayarlanır.</value>
+  </data>
   <data name="Signup_Error_MailExists" xml:space="preserve">
     <value>Bu Swarmops sunucusuna zaten kayıtlısınız. Lütfen yeni bir hesap oluşturmak yerine giriş ekranından Parolayı Sıfırlama işlevini kullanın.</value>
   </data>
@@ -172,9 +191,14 @@
     <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
   </data>
   
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>Kaydolmayı Sonlandır</value>
+  </data>
   
-  
-  
+  <data name="Signup_NoFeeText" xml:space="preserve">
+    <value>{2} ile bir {0} için kayıt olmanın hiçbir maliyeti yoktur, ne de {1} zaman aşımına uğradığında yenileme için hiçbir bir maliyet yoktur. Ayrıca, {0}'ı istediğiniz zaman sonlandırabilirsiniz.</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
+  </data>
   <data name="Signup_Password1" xml:space="preserve">
     <value>Bir parola seç</value>
   </data>
@@ -206,11 +230,15 @@
   <data name="Signup_Step4Header" xml:space="preserve">
     <value>Faaliyet 1</value>
   </data>
-  
+  <data name="Signup_Step4Text" xml:space="preserve">
+    <value>Ne kadar meşgul olmak istersin?</value>
+  </data>
   <data name="Signup_Step5Header" xml:space="preserve">
     <value>Faaliyet 2</value>
   </data>
-  
+  <data name="Signup_Step5Text" xml:space="preserve">
+    <value>Ne ile meşgul olmak isterdiniz?</value>
+  </data>
   <data name="Signup_Step6Header" xml:space="preserve">
     <value>Tamamlandı</value>
   </data>
@@ -228,8 +256,12 @@
     <value>Kayıt olma tamamlandı.</value>
   </data>
   
-  
-  
+  <data name="Signup_VolunteerHeader" xml:space="preserve">
+    <value>Hangi statü ile ilgileniyorsunuz?</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>Mevcut olan en yüksek coğrafya</value>
+  </data>
   <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
     <value>Pozisyon</value>
   </data>

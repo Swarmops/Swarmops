@@ -117,18 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Attest_CashAdvance_Many" xml:space="preserve">
-    <value>Zatwierdzenie Zaliczek Gotówkowych {0}</value>
-  </data>
-  <data name="Attest_CashAdvance_One" xml:space="preserve">
-    <value>Przyznanie Zaliczki Gotówkowej #{0}</value>
-  </data>
-  <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
-    <value>Zatwierdzenie zaświadczenia o kosztach {0}</value>
-  </data>
-  <data name="Attest_ExpenseClaim_One" xml:space="preserve">
-    <value>Potwierdzenie Żądania Wydatków #{0}</value>
-  </data>
+  
+  
+  
+  
   <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
     <value>Ustaw Adres Płatności Gotówkowej Bitcoin</value>
   </data>

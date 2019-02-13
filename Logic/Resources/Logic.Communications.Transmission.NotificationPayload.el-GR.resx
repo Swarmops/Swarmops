@@ -196,20 +196,10 @@
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ΣΤΟΙΧΕΙΟ ΕΝΕΡΓΕΙΑΣ] Το Bitcoin Cash hotwallet είναι ανεπαρκές για πληρωμές - παρακαλούμε γεμίστε το άμεσα</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Η προκαταβολή που ζητήσατε με τον [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], επιβεβαιώθηκε από τον ιδιοκτήτη του προϋπολογισμού. Τώρα θα πραγματοποιηθεί η πληρωμή σε εσάς.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Επιβεβαίωση Προκαταβολής: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Η προκαταβολή που ζητήσατε από τον Οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], δεν επιβεβαιώθηκε από τον ιδιοκτήτη του προϋπολογισμού. Αυτό συνήθως καταδεικνύει κάποιο πρόβλημα με το αίτημά σας.
-
-Να αναμένετε επικοινωνία από τον ιδιοκτήτη του λογαριασμού σχετικά με το θέμα σας.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Η Προκαταβολή δεν επιβεβαιώθηκε: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Η προκαταβολή σας από τον οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat] σχετικά με [RequestPurpose] απορρίφθηκε. Παρακάτω θα δείτε το λόγο απόρριψης:
 
@@ -227,42 +217,14 @@
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Προκαταβολή Πληρώθηκε: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>Ο χρήστης [ConcernedPersonName] ζήτησε μία προκαταβολή [CurrencyCode] [BudgetAmountFloat] σχετικά με [RequestPurpose]. Τα χρήματα αυτά είναι μέρος του προϋπολογισμού σας, [BudgetName].
-
-Παρακαλώ συνδεθείτε στο [InstallationName] στη διεύθυνση [ExternalUrl]Financial/AttestCosts για να επιβεβαιώσετε ή να απορρίψετε.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ΣΤΟΙΧΕΙΟ ΕΝΕΡΓΕΙΑΣ] Ζητήθηκε Προκαταβολή: [CurrencyCode] [BudgetAmountFloat] - Απαιτείται Επιβεβαίωση</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Η διεκδίκηση εξόδων σας από τον οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], που αφορά [RequestPurpose], έχει επιβεβαιωθεί από τον ιδιοκτήτη προϋπολογισμού. Θα πληρωθεί σε εσάς όταν επιβεβαιωθεί η εγκυρότητα των αποδείξεων.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Επιβεβαίωση Διεκδίκησης Εξόδων: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>Ο/Η [ConcernedPersonName] δημιούργησε διεκδίκηση εξόδων από τον προϋπολογισμό [BudgetName] για το ποσό των [CurrencyCode] [BudgetAmountFloat]. Η διεκδίκηση αφορά [RequestPurpose]. Χρειάζεται να επιβεβαιώσετε αυτή τη διεκδίκηση εξόδων.
-
-Παρακαλώ συνδεθείτε στο [InstallationName] σε [ExternalUrl]Financial/AttestCosts για να επιβεβαιώσετε ή να απορρίψετε.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ΣΤΟΙΧΕΙΟ ΕΝΕΡΓΕΙΑΣ] Δημιουργήθηκε Διεκδίκηση Εξόδων: [CurrencyCode] [BudgetAmountFloat] - Απαιτείται Επιβεβαίωση</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Η διεκδίκηση εξόδων που ζητήσατε από τον οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], δεν επιβεβαιώθηκε από τον ιδιοκτήτη του προϋπολογισμού. Αυτό συνήθως καταδεικνύει κάποιο πρόβλημα με το αίτημά σας.
-
-Να αναμένετε επικοινωνία από τον ιδιοκτήτη του προϋπολογισμού σχετικά με το θέμα σας.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Διεκδίκηση Εξόδων δεν επιβεβαιώθηκε: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Η διεκδίκηση εξόδων σας από τον οργανισμό [OrganizationName] για [CurrencyCode] [BudgetAmountFloat] σχετικά με [RequestPurpose] απορρίφθηκε. Παρακάτω θα δείτε το λόγο απόρριψης:
 
@@ -272,14 +234,6 @@
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] ΑΠΟΡΡΙΨΗ Διεκδίκησης Εξόδων: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Οι αποδείξεις για τη διεκδίκηση εξόδων από τον [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], ΔΕΝ επιβεβαιώθηκαν από τους οικονομικούς ελεγκτές του οργανισμού. Αυτό συνήθως καταδεικνύει κάποιο πρόβλημα με τα δικαιολογητικά της διεκδίκησής σας.
-
-Να αναμένετε επικοινωνία σχετικά με το θέμα σας. Σε περίπτωση που οι ελεγκτές δεν επικοινωνήσουν μαζί σας, επικοινωνήστε εσείς μαζί τους.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Οι Αποδείξεις Διεκδίκησης Εξόδων δεν εγκρίθηκαν: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Η διεκδίκηση εξόδων σας από τον [OrganizationName] για [CurrencyCode] [BudgetAmountFloat], σχετικά με [RequestPurpose], έχει επισημανθεί ως πληρωμένη από τους λογιστές του οργανισμού. 
@@ -298,15 +252,10 @@
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Οι Αποδείξεις Διεκδίκησης Εξόδων Εγκρίθηκαν: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Ένα τιμολόγιο από τον [Supplier], που αφορά [Description], έχει συμπληρωθεί για τον προϋπολογισμό σας [BudgetName] για το ποσό των [CurrencyCode] [BudgetAmountFloat]. Πρέπει να επιβεβαιώσετε αυτό το τιμολόγιο προτού προχωρήσει σε εξόφληση.
-
-Παρακαλούμε συνδεθείτε στο [InstallationName] σε [ExternalUrl]Financial/AttestCosts για να επιβεβαιώσετε ή να απορρίψετε.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ΣΤΟΙΧΕΙΟ ΕΝΕΡΓΕΙΑΣ] Αρχείο Τιμολογίου: [CurrencyCode] [BudgetAmountFloat] - Απαιτείται Επιβεβαίωση</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Ένας νέος [Regular] προστέθηκε χειροκίνητα στον οργανισμό [OrganizationName] σε έναν από τους τομείς σας.</value>
   </data>

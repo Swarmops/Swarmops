@@ -123,9 +123,7 @@
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Jest to przegląd kont finansowych w Twojej księdze rachunkowej. Możesz wykonać tu pewne czynności konserwacyjne, nawet jeśli większość codziennych operacji powinna zostać oddelegowana do właścicieli budżetu.</value>
   </data>
-  <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>Plan Konta</value>
-  </data>
+  
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Konto</value>
   </data>
@@ -628,9 +626,7 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(szczegółowy opis wstrzymany)</value>
   </data>
-  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Niezbilansowane transakcje (Musisz dopasować lub naprawić)</value>
-  </data>
+  
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Konto</value>
     <comment>Usually the account name. Can also be "several".</comment>
@@ -645,9 +641,7 @@
     <value>Tx#</value>
     <comment>Keep VERY short.</comment>
   </data>
-  <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Niektóre automatycznie importowane transakcje finansowe nie mogą być automatycznie dopasowywane do bieżącej rachunkowości. Tutaj jest miejsce gdzie ręcznie dobiera się takie transakcje, aby "wyrównać" je (jeśli transakcja zawiera tylko jedną część, np. Pieniądze wysłane do organizacji bez rejestru, na co te pieniądze są przeznaczone, transakcja jest określana jako "niezbilansowana").</value>
-  </data>
+  
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Równoważenie/Dopasowywanie Transakcji #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; Od &lt;span id="spanModalTransactionDate"&gt;yyyy-mmm-dd&lt;/span&gt;</value>
     <comment>The span text is replaced runtime.</comment>

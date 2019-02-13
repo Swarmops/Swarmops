@@ -260,9 +260,7 @@ Si vous vous êtes porté volontaire pour assurer des responsabilités formelles
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Inscription terminée.</value>
   </data>
-  <data name="Signup_Unsupported" xml:space="preserve">
-    <value>Swarmops n'a pas encore implémenté le support pour cette structure de frais.</value>
-  </data>
+  
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>En quelle position êtes-vous intéressé?</value>
   </data>

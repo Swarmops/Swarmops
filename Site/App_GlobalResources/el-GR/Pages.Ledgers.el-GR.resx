@@ -123,9 +123,7 @@
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Αυτή είναι η γενική επισκόπηση των χρηματοοικονομικών λογαριασμών στο καθολικό σας. Μπορείτε να κάνετε κάποια συντήρηση από εδώ, ακόμα και αν οι περισσότερες καθημερινές εργασίες πρέπει να μεταβιβαστούν στους ιδιοκτήτες προϋπολογισμών.</value>
   </data>
-  <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>Σχέδιο Λογαριασμού</value>
-  </data>
+  
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Λογαριασμός</value>
   </data>
@@ -632,9 +630,7 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(παρακρατήθηκε η λεπτομερής περιγραφή)</value>
   </data>
-  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Μη Ισορροπημένες Συναλλαγές (Πρέπει Να Πραγματοποιηθεί Αντιστοίχιση Ή Επιδιόρθωση)</value>
-  </data>
+  
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Λογαριασμός</value>
     <comment>Usually the account name. Can also be "several".</comment>
@@ -649,9 +645,7 @@
     <value>Tx#</value>
     <comment>Keep VERY short.</comment>
   </data>
-  <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Κάποιες οικονομικές συναλλαγές που εισάγονται αυτόματα δεν δύναται να αντιστοιχιστούν αυτόματα στην τρέχουσα λογιστική. Εδώ πραγματοποιείτε χειροκίνητη αντιστοίχιση τέτοιων συναλλαγών για την ''εξισορρόπησή'' τους (αν έχει ολοκληρωθεί μόνο το ένα μέρος μιας συναλλαγής, όπως το να έχουν αποσταλεί τα χρήματα στον οργανισμό χωρίς καταγραφή του λόγου αποστολής των χρημάτων, η συναλλαγή θεωρείται ''μη ισορροπημένη'').</value>
-  </data>
+  
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Πραγματοποιείται Εξισορρόπηση/Αντιστοίχιση Της Συναλλαγής #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; Από &lt;span id="spanModalTransactionDate"&gt;εεεε-μμμ-ηη&lt;/span&gt;</value>
     <comment>The span text is replaced runtime.</comment>

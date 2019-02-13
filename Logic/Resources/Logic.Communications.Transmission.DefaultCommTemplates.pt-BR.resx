@@ -117,11 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
+  <data name="AspirantAddWelcome_Body" xml:space="preserve">
+    <value>Bem-vindo como [Aspirant] a [OrganizationName]!
+Você solicitou um [Regularship] em [OrganizationName] e, portanto, está recebendo este email como [Aspirant] formal. Seu [Aspirantship] não expira automaticamente, então não há pressa para responder a este e-mail.
+Sua senha inicial gerada aleatoriamente no Swarmops, o software usado como sistema de back-end, é a seguinte:
+[RandomPassword]
+Você deve fazer o login e mudar esta senha para algo mais seguro de sua escolha o mais rápido possível. Você faz isso fazendo login em [ExternalUrl] e, em seguida, clicando no ícone "Usuário" no canto superior direito, selecionando a guia Segurança (aquela com o cadeado), digitando essa senha temporária e gravando a nova. Você também deve considerar a ativação da autenticação de dois fatores, como uma boa prática.
+Bem-vindo como [Aspirant] e esperamos ver você como [Regular] em breve!</value>
+  </data>
+  <data name="AspirantAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bem vindo como [Aspirant] a [OrganizationName]!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
+    <value>Bem vindo a [OrganizationName]!
+Você recebeu um [Regularship] por [ActingPerson]. Ele expira em [MembershipExpiry], portanto, há muito tempo para se familiarizar com a organização.
+Você já deve ter sido contatado por pessoas de [OrganizationName] para mais informações sobre como se tornar ativo. Se não, espere a correspondência em breve.
+Sua senha inicial gerada aleatoriamente no Swarmops, o software usado como sistema de back-end, é a seguinte:
+[RandomPassword]
+Você deve fazer o login e mudar esta senha para algo mais seguro de sua escolha o mais rápido possível. Para isso, faça login em [ExternalUrl] e, em seguida, clique no ícone "Usuário" no canto superior direito, selecionando a guia Segurança (aquela com o cadeado), inserindo essa senha temporária e, em seguida, escrevendo sua nova senha. Você também deve considerar a ativação da autenticação de dois fatores, como uma boa prática.
+Bem vindo a bordo!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>Bem-vindo ao [OrganizationName]!
+Você recebeu um [Regularship] por [ActingPerson]. Ele não expira automaticamente por qualquer hora ou data específica, portanto, não há pressa para realizar uma ação.
+Você já deve ter sido contatado por pessoas de [OrganizationName] para mais informações sobre como se tornar ativo. Se não, espere a correspondência em breve.
+Sua senha inicial e gerada aleatoriamente no Swarmops, o software usado como sistema de back-end, é a seguinte:
+[RandomPassword]
+Você deve fazer o login e mudar esta senha para algo mais seguro de sua escolha o mais rápido possível. Você faz isso fazendo login em [ExternalUrl] e, em seguida, clicando no ícone "Usuário" no canto superior direito, selecionando a Guia de Segurança (aquela com o cadeado), digitando essa senha temporária e gravando sua nova senha. Você também deve considerar a ativação da autenticação de dois fatores, como uma boa prática.
+Bem vindo a bordo!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bem-vindo a [OrganizationName]!</value>
+  </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Bem-vindo a [OrganizationName]!</value>
   </data>

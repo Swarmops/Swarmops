@@ -1004,4 +1004,81 @@
     <value>crwdns6563374:0crwdne6563374:0</value>
     <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
   </data>
+  <data name="Financial_AllBalancesSettled" xml:space="preserve">
+    <value>crwdns6563482:0crwdne6563482:0</value>
+    <comment>Nobody owes anybody anything</comment>
+  </data>
+  <data name="Financial_CurrentBalance" xml:space="preserve">
+    <value>crwdns6563484:0crwdne6563484:0</value>
+  </data>
+  <data name="Financial_NoPaymentHistory" xml:space="preserve">
+    <value>crwdns6563486:0crwdne6563486:0</value>
+  </data>
+  <data name="Financial_Owed" xml:space="preserve">
+    <value>crwdns6563488:0crwdne6563488:0</value>
+    <comment>As in, "Amount Owed"</comment>
+  </data>
+  <data name="Financial_Paid" xml:space="preserve">
+    <value>crwdns6563490:0crwdne6563490:0</value>
+    <comment>As in, "Amount Paid To Person"</comment>
+  </data>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>crwdns6563492:0crwdne6563492:0</value>
+  </data>
+  <data name="Financial_PaymentSpecification" xml:space="preserve">
+    <value>crwdns6563494:0{0:N0}crwdne6563494:0</value>
+    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
+  </data>
+  <data name="Financial_PayoutSpecification" xml:space="preserve">
+    <value>crwdns6563496:0{0:N0}crwdne6563496:0</value>
+    <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
+  <data name="Financial_PersonIsOwed" xml:space="preserve">
+    <value>crwdns6563498:0crwdne6563498:0</value>
+    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
+  </data>
+  <data name="Financial_PersonOwes" xml:space="preserve">
+    <value>crwdns6563500:0crwdne6563500:0</value>
+    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
+  </data>
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>crwdns6563502:0crwdne6563502:0</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
+  </data>
+  <data name="Financial_YouAreOwed" xml:space="preserve">
+    <value>crwdns6563504:0{0}crwdne6563504:0</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Financial_YouOwe" xml:space="preserve">
+    <value>crwdns6563506:0crwdne6563506:0</value>
+    <comment>Like Person Owes, but directed at the user at the screen</comment>
+  </data>
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>crwdns6563508:0crwdne6563508:0</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
+  </data>
+  <data name="Global_Closed" xml:space="preserve">
+    <value>crwdns6563510:0crwdne6563510:0</value>
+    <comment>As in "record or transaction closed"</comment>
+  </data>
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>crwdns6563512:0crwdne6563512:0</value>
+    <comment>There are no records of the requested type</comment>
+  </data>
+  <data name="Global_Error_Concurrency" xml:space="preserve">
+    <value>crwdns6563514:0crwdne6563514:0</value>
+    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>crwdns6563516:0crwdne6563516:0</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>crwdns6563518:0crwdne6563518:0</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
+  <data name="Global_Opened" xml:space="preserve">
+    <value>crwdns6563520:0crwdne6563520:0</value>
+    <comment>As in "record or transaction opened"</comment>
+  </data>
 </root>

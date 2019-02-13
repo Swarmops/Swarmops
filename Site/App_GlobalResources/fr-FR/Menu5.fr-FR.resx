@@ -180,9 +180,7 @@
   <data name="Menu5_Financial" xml:space="preserve">
     <value>Financier</value>
   </data>
-  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>Attester des coûts</value>
-  </data>
+  
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Réclamer le remboursement des dépenses</value>
   </data>
@@ -267,9 +265,7 @@
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Grands Livres</value>
   </data>
-  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>Plan comptable</value>
-  </data>
+  
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Grand livre d'audit</value>
   </data>

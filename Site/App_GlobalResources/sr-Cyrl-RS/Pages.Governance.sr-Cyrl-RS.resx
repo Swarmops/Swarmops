@@ -126,7 +126,7 @@
     <comment>Decision to be made, amending the motion</comment>
   </data>
   <data name="AddMotionAmendment_PageTitle" xml:space="preserve">
-    <value>Додај амандман</value>
+    <value>Додавање амандмана</value>
     <comment>Used as header and page title</comment>
   </data>
   <data name="AddMotionAmendment_SubmitAmendment" xml:space="preserve">
@@ -136,7 +136,7 @@
     <value>Подносилац</value>
   </data>
   <data name="AddMotionAmendment_SubmittingAmendmentInfo" xml:space="preserve">
-    <value>Подносите амандман, формално</value>
+    <value>Подносите амандман на члан</value>
     <comment>In sidebar info box. Motion title follows in bold.</comment>
   </data>
   <data name="AddMotionAmendment_Text" xml:space="preserve">
@@ -147,34 +147,34 @@
     <value>Наслов амандмана</value>
   </data>
   <data name="AddMotion_Decisions" xml:space="preserve">
-    <value>Одлуке (једна у сваком реду)</value>
+    <value>Одлуке (по једна у сваком реду)</value>
     <comment>Proposed decisions, one per line</comment>
   </data>
   <data name="AddMotion_MotionSubmittedAs" xml:space="preserve">
-    <value>Формални предлог је заведен под бројем #{0}.</value>
+    <value>Члан је заведен под бројем #{0}.</value>
     <comment>Keep short</comment>
   </data>
   <data name="AddMotion_PageTitle" xml:space="preserve">
-    <value>Додај формални предлог</value>
+    <value>Додај члан</value>
     <comment>Used as header and page title</comment>
   </data>
   <data name="AddMotion_SubmitMotion" xml:space="preserve">
-    <value>Поднеси формални предлог</value>
+    <value>Поднеси члан</value>
   </data>
   <data name="AddMotion_Submitter" xml:space="preserve">
     <value>Подносилац</value>
     <comment>Original submitter (not person at keyboard)</comment>
   </data>
   <data name="AddMotion_SubmittingMotionInfo" xml:space="preserve">
-    <value>Подносите формални предлог на заседање</value>
+    <value>Подносите члан на заседање</value>
     <comment>Meeting name follows in bold.</comment>
   </data>
   <data name="AddMotion_Text" xml:space="preserve">
-    <value>Образложење формалног предлога</value>
+    <value>Образложење поднетог члана</value>
     <comment>Text of motion</comment>
   </data>
   <data name="AddMotion_Title" xml:space="preserve">
-    <value>Наслов формалног предлога</value>
+    <value>Наслов члана</value>
     <comment>Motion title in form</comment>
   </data>
   <data name="AddMotion_WrongMeeting" xml:space="preserve">
@@ -188,7 +188,7 @@
     <value>Амандмани</value>
   </data>
   <data name="ListMotions_Grid_Carried" xml:space="preserve">
-    <value>Пренос</value>
+    <value>Преглед чланова</value>
   </data>
   <data name="ListMotions_Grid_Designation" xml:space="preserve">
     <value>#</value>
@@ -197,18 +197,18 @@
     <value>Наслов</value>
   </data>
   <data name="ListMotions_PageTitle" xml:space="preserve">
-    <value>Листа формалних предлога</value>
+    <value>Листа чланова</value>
     <comment>Used as header and page title</comment>
   </data>
   <data name="ListMotions_Sidebar_Info" xml:space="preserve">
-    <value>Прегледате фомалне предлоге за седницу</value>
+    <value>Прегледате предлоге чланова за седницу</value>
   </data>
   <data name="ListMotions_SubmitAmendment" xml:space="preserve">
     <value>Поднеси...</value>
     <comment>Displayed in-grid</comment>
   </data>
   <data name="ViewMotion_AddAmendment" xml:space="preserve">
-    <value>Предложи нови амандман за формални предлог</value>
+    <value>Предложи нови амандман на члан</value>
   </data>
   <data name="ViewMotion_Amendment" xml:space="preserve">
     <value>Амандман</value>
@@ -223,7 +223,7 @@
     <value>Нема амандмана</value>
   </data>
   <data name="ViewMotion_AmendmentProposedChange" xml:space="preserve">
-    <value>Предложена промена</value>
+    <value>Предложене измене</value>
   </data>
   <data name="ViewMotion_AmendmentText" xml:space="preserve">
     <value>Образложење</value>
@@ -240,17 +240,17 @@
     <comment>Hyperlink text</comment>
   </data>
   <data name="ViewMotion_MotionDesignation" xml:space="preserve">
-    <value>Формални предлог #{0}</value>
+    <value>Члан #{0}</value>
   </data>
   <data name="ViewMotion_PageTitle" xml:space="preserve">
-    <value>Приказивање формалног предлога</value>
+    <value>Преглед члана</value>
     <comment>Used as header and page title</comment>
   </data>
   <data name="ViewMotion_Text" xml:space="preserve">
-    <value>Образложење формалног предлога</value>
+    <value>Образложење члана</value>
   </data>
   <data name="ViewMotion_ViewingMotionInfo" xml:space="preserve">
-    <value>Прегледате формални предлог који је послат за седницу</value>
+    <value>Прегледате члан који је послат на седницу</value>
     <comment>In sidebar info box. Meeting name follows in bold.</comment>
   </data>
   <data name="VoteAmendments_BoardRecommendation" xml:space="preserve">
@@ -258,7 +258,7 @@
     <comment>First item in dropdown box</comment>
   </data>
   <data name="VoteAmendments_Grid_Abstain" xml:space="preserve">
-    <value>Одсутно</value>
+    <value>Уздрж.</value>
     <comment>Column header</comment>
   </data>
   <data name="VoteAmendments_Grid_Board" xml:space="preserve">
@@ -278,7 +278,7 @@
     <comment>Column header</comment>
   </data>
   <data name="VoteAmendments_Grid_No" xml:space="preserve">
-    <value>Не</value>
+    <value>Против</value>
     <comment>Column header</comment>
   </data>
   <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
@@ -298,15 +298,15 @@
     <comment>Column header</comment>
   </data>
   <data name="VoteAmendments_Grid_Yes" xml:space="preserve">
-    <value>Да</value>
+    <value>За</value>
     <comment>Column header</comment>
   </data>
   <data name="VoteAmendments_Header" xml:space="preserve">
-    <value>Амандмана за {0}</value>
+    <value>Амандмана на {0}</value>
     <comment>In content box header. The meeting name goes in {0}.</comment>
   </data>
   <data name="VoteAmendments_Info" xml:space="preserve">
-    <value>Гласањем се уводе промене (амандмани) у формалне предлоге. Ако на гласању прођу, они постају део формалног предлога. У наредној рунди, гласаће се о преосталим формалним предлозима. Индивидуални амандмани сачињавају сваки формални предлог и за сваки формални предлог и/или амандман постоје додатни детаљи. Ако желите, селектујте предлоге како треба гласати.</value>
+    <value>Гласањем се уводе промене (амандмани) у чланове. Ако на гласању прођу, они постају део члана. У наредној рунди, гласаће се о преосталим члановима. Индивидуални амандмани сачињавају сваки члан и за сваки члан и/или амандман постоје додатни детаљи. Ако желите, селектујте предлоге како треба гласати.</value>
   </data>
   <data name="VoteAmendments_PageTitle" xml:space="preserve">
     <value>Гласај о амандманима</value>
@@ -316,10 +316,10 @@
     <value>---</value>
   </data>
   <data name="VoteAmendments_Recommend_No" xml:space="preserve">
-    <value>НЕ</value>
+    <value>ПРОТИВ</value>
   </data>
   <data name="VoteAmendments_Recommend_Yes" xml:space="preserve">
-    <value>ДА</value>
+    <value>ЗА</value>
   </data>
   <data name="VoteAmendments_SelectRecommendation" xml:space="preserve">
     <value>Изабери препоруке...</value>
@@ -338,7 +338,7 @@
     <comment>In pop-up after clicking "create voting list"</comment>
   </data>
   <data name="Vote_CreateVotingList_Motions" xml:space="preserve">
-    <value>Креирај листу за формалне предлоге</value>
+    <value>Креирај листу за чланове</value>
     <comment>In pop-up after clicking "create voting list"</comment>
   </data>
   <data name="Vote_Info" xml:space="preserve">
@@ -349,20 +349,20 @@
     <value>Избори</value>
   </data>
   <data name="Vote_Motions" xml:space="preserve">
-    <value>Формални предлози</value>
+    <value>Чланови</value>
   </data>
   <data name="Vote_MotionVotingMotionAmendments" xml:space="preserve">
-    <value>Амандмани на формалне предлоге</value>
+    <value>Амандмани на чланове</value>
   </data>
   <data name="Vote_MotionVotingMotions" xml:space="preserve">
-    <value>Формални предлози</value>
+    <value>Чланови</value>
   </data>
   <data name="Vote_NotOpenedYet" xml:space="preserve">
     <value>Још није отворено</value>
     <comment>Keep very short.</comment>
   </data>
   <data name="Vote_OpensOnDate" xml:space="preserve">
-    <value>Отвара се {0:yyyy-MMM-dd}</value>
+    <value>Отвара се {0:yyyy-MMM-dd}.</value>
     <comment>Note the embedded date format. Localize to national standard.</comment>
   </data>
   <data name="Vote_PageTitle" xml:space="preserve">
@@ -372,7 +372,7 @@
     <value>Тачке дневног реда</value>
   </data>
   <data name="Vote_PointsOfOrderTemp" xml:space="preserve">
-    <value>Тачка дневног реда, активна у овом тренутку</value>
+    <value>Тренутно нема нових тачака.</value>
   </data>
   <data name="Vote_VoteHere" xml:space="preserve">
     <value>Гласајте овде</value>
@@ -383,11 +383,11 @@
     <comment>The {0} is the amendment count.</comment>
   </data>
   <data name="Vote_VoteOnMotions" xml:space="preserve">
-    <value>Гласајте на {0:N0} формалних предлога:</value>
+    <value>Гласајте на {0:N0} чланова:</value>
     <comment>The {0} is the motion count.</comment>
   </data>
   <data name="VoteAmendments_SaveVote" xml:space="preserve">
-    <value>Завршио сам, поднеси мој глас</value>
+    <value>Завршио(ла) сам, поднеси мој глас</value>
     <comment>Button at end of page</comment>
   </data>
   <data name="VoteAmendments_SaveVote_Temp" xml:space="preserve">

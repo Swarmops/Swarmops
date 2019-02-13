@@ -123,9 +123,7 @@
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Eyi ni àpapọ alaye awọn iroyin iṣowo ti inu iwe leja iṣowo rẹ. O le ṣe itọju diẹ lati ibi, ti o ba tun je pe ọpọlọpọ awọn iṣẹ ojoojumọ jẹ pinpin si awọn eniti o ni isuna.</value>
   </data>
-  <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>Eto Akoole</value>
-  </data>
+  
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Akoole</value>
   </data>
@@ -630,9 +628,7 @@ Lẹhin ti o gbe wọle, iṣiro akọọlẹ ni Swarmops ba ti banki mu.&lt;/p&
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(alaye ni kunkun ti a dimu)</value>
   </data>
-  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Awon isowo ti Ko peye (Gbọdọ Baramu Tabi Tunṣe)</value>
-  </data>
+  
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Akoole</value>
     <comment>Usually the account name. Can also be "several".</comment>
@@ -647,9 +643,7 @@ Lẹhin ti o gbe wọle, iṣiro akọọlẹ ni Swarmops ba ti banki mu.&lt;/p&
     <value>Tx#</value>
     <comment>Keep VERY short.</comment>
   </data>
-  <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Diẹ ninu awọn iṣowo owo ti a gbe wọle ko le ṣe sopọ pẹlu isiro alaifọwọyi ti n lọ lọwọ. Eyi ni ibiti o ti ma se asopọ alafọwọyi iru awọn isowo bẹ lati mu wọn "peye" (ti isowo kan ba ni apakan pere ti o ti pari, bi owo ti a fi ranṣẹ si ajọ ti ko ni akọsile ohun ti owo naa wa fun, a ma sọ pe isowo naa "ko peye").</value>
-  </data>
+  
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Mimu peye/Minu baramu Isowo #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; Lati &lt;span id="spanModalTransactionDate"&gt;yyyy-mmm-dd&lt;/span&gt;</value>
     <comment>The span text is replaced runtime.</comment>

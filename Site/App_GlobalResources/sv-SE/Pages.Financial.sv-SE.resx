@@ -122,8 +122,8 @@
     <comment>Status message.</comment>
   </data>
   <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>Kontantförskott #{0:N0} till {1} har AV-attesterats. Det kommer inte att betalas ut om det inte attesteras igen.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>Godkännandet av kontantförskott #{0:N0} för {1} har DRAGITS TILLBAKA. Det kommer inte att betalas ut förrän det godkänts på nytt.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
     <value>Du kan inte attestera detta belopp. Budgeten är tom eller slut för år {0}.</value>
@@ -146,10 +146,6 @@
   <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
     <value>Utläggsanspråk #{0:N0} från {1} för {2} {3:N2} har attesterats.</value>
     <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Utläggsanspråk #{0:N0} från {1} har AV-attesterats. Det kommer inte att betalas ut förrän det attesterats igen.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Attest</value>
@@ -181,22 +177,22 @@
     <value>Kostnader som väntar på attest</value>
   </data>
   <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Här attesterar du belopp som andra personer vill ha från dina budgetar. Inget betalas ut före det attesterats.</value>
+    <value>Här attesterar (godkänner) du belopp som andra personer vill ha från dina budgetar. Inget betalas ut före det har attesterats.</value>
   </data>
   <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
     <value>Faktura #{0:N0} från {1} på {2} {3:N2} attesterades.</value>
     <comment>{2} is the currency.</comment>
   </data>
   <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>Faktura #{0:N0} från {1} har AV-attesterats. Den kommer inte att betalas förrän den attesterats igen.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>Attesten av faktura #{0:N0} för {1} har DRAGITS TILLBAKA. Fakturan kommer inte att betalas förrän den attesterats på nytt.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>Attestera</value>
+    <value>Godkänn</value>
     <comment>keep short</comment>
   </data>
   <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Attestera</value>
+    <value>Godkänn</value>
   </data>
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Neka</value>
@@ -224,7 +220,7 @@
     <value>Flytta kostnaden till denna budget i stället:</value>
   </data>
   <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>Åtgärda problem eller neka attestation</value>
+    <value>Åtgärda problem eller neka beloppet</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
     <value>Jag attesterar kostnaden, men till ett annat belopp.</value>
@@ -269,18 +265,18 @@
     <value>Konferens #{0:N0} som arrangeras av {1} har attesterats för {3:N2}.</value>
   </data>
   <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>Konferens #{0:N0} av {1} har AV-attesterats. Den kommer inte att få garantimedel förrän den attesteras igen.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>Attesten av konferens #{0:N0} för {1} har DRAGITS TILLBAKA. Den kommer inte att få garantimedel förrän den attesterats på nytt.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>Löneutbetalning #{0:N0} till {1} attesterades till en totalkostnad av {3:N2}.</value>
   </data>
   <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Löneutbetalning #{0:N0} till {1} har AV-attesterats. Lönen kommer inte att betalas ut om den inte attesteras igen.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>Attesten av lön #{0:N0} för {1} har DRAGITS TILLBAKA. Lönen kommer inte att betalas ut förrän den attesterats på nytt.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;Varning: ODEFINIERAD BUDGET&lt;/strong&gt; &lt;br/&gt; &lt;br/&gt; Kostnaden du godkänner tillhör en odefinierad budget -- ett konto i redovisningen som saknar ägare och inte har en budget definierad för året. Överväga att gå till Kontoplanen och sätt budgetar för förväntade inkomster och utgifter. &lt;br/&gt; &lt;br/&gt; Detta meddelande visas endast en gång per besök till Attesteringar. &lt;br/&gt;</value>
+    <value>&lt;strong&gt;Varning: BUDGET ÄR INTE SATT&lt;/strong&gt; &lt;br/&gt; &lt;br/&gt; Kostnaden du godkänner tillhör en ett konto i redovisningen som saknar ägare och inte har någon budget satt för året. Överväg att gå till Kontoplanen och sätt budgetramar för förväntade inkomster och utgifter. &lt;br/&gt; &lt;br/&gt; Detta meddelande visas endast en gång per besök till Attesteringar. &lt;br/&gt;</value>
   </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Fakturabelopp totalt (i {0})</value>
@@ -580,7 +576,7 @@
     <value>Godkänn kvitton</value>
   </data>
   <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>Kvittona för utläggsanspråk #{0:N0} på {1} {2:N2} har AV-godkänts. Utläggsanspråket kommer inte att gå till utbetalning om de inte granskas och godkänns på nytt.</value>
+    <value>Godkännandet av kvittona för utläggsanspråk #{0:N0} på {1} {2:N2} har DRAGITS TILLBAKA. Utläggsanspråket kommer inte att gå till utbetalning om de inte granskas och godkänns på nytt.</value>
   </data>
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Kvittona för utläggsanspråk #{0:N0} på {1} {2:N2} har godkänts.</value>
@@ -730,5 +726,9 @@
   </data>
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>{0} anspråk inskickade.</value>
+  </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Attesten av utläggsanspråk #{0:N0} för {1} har DRAGITS TILLBAKA. Anspråket kommer inte att betalas ut förrän det attesterats på nytt.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
   </data>
 </root>

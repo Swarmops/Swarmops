@@ -120,12 +120,8 @@
   
   
   
-  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
-    <value>Вы не можете подтвердить отрицательную сумму.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>Вы не можете подтвердить нулевую сумму.</value>
-  </data>
+  
+  
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>К сожалению, вы не можете rebudget выплату заработной платы.</value>
   </data>
@@ -140,7 +136,6 @@
   
   
   
-  
   <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
     <value>Документация</value>
     <comment>Button to see underlying documentation. Keep short!</comment>
@@ -148,9 +143,7 @@
   
   
   
-  <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Здесь Вы подтверждаете расходы, которые другие люди запрашивают из ваших бюджетов. Ничего не выплачивается до того, как вы подтвердите это.</value>
-  </data>
+  
   
   
   
@@ -169,28 +162,17 @@
   <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
     <value>Переместить расходы в этот бюджет:</value>
   </data>
-  <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>Устранить проблемы или запретить аттестацию</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
-    <value>Я скажу это, но на другую сумму.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
-    <value>Сумма неправильная. Я засвидетельствую это с правильной суммой.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
-    <value>Я не буду подтверждать эту запись. Она поцарапана.</value>
-    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
-  </data>
+  
+  
+  
+  
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
     <value>Эта запись должна взимать другой бюджет. Переместите его туда.</value>
   </data>
   <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
     <value>Что, кажется, проблема с этой записью?</value>
   </data>
-  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
-    <value>В бюджете не хватает средств для подтверждения этой стоимости.</value>
-  </data>
+  
   
   
   
@@ -380,6 +362,7 @@
   <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
     <value>Если у вас есть много отчетов о расходах, вы можете собрать их с expensify и отправка отчета здесь банк автоматически в формате CSV (который можно получить с в банк автоматически под отчеты, экспорт в CSV). Swarmops будет использовать Expensify для извлечения всех отдельных поступлений и регистрировать их как отдельные претензии расходов для надлежащего учета.</value>
   </data>
+  
   
   
   

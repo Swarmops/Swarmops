@@ -195,20 +195,10 @@ Swarmops ستواصل المحاولة وإرسال الإشعرات إلى حي
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] -عنصر العمل] نفاذ كمية بيتكوين كاش للمحفظة الساخنة للمدفوعات - إشحن فورا</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>طلبك للدفع المسبق مع [OrganizationName] من أجل [CurrencyCode] [BudgetAmountFloat], بخصوص [RequestPurpose], ثم توثيقها من طرف ملك الميزانية. سيشرع الآن في الدفع لك.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] توثيق الدفع المسبق: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>طلبك للدفع المسبق مع [OrganizationName] من أجل [CurrencyCode] [BudgetAmountFloat], بخصوص [RequestPurpose], لم يثم توثيقها من طرف ملك الميزانية. هذا عادة يشير إلى مشكلة ما مع طلبك.
-
-توقع المزيد من التواصل من مالك الميزانية لمتابعة هذه المسألة.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] لم يثم توثيق الدفع المسبق: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>الدفع المسبق مع [OrganizationName] من أجل [CurrencyCode] [BudgetAmountFloat] بخصوص [RequestPurpose] ثم رفضه. النص أسفله يشرح سبب الرفض:
 
@@ -226,45 +216,14 @@ Swarmops ستواصل المحاولة وإرسال الإشعرات إلى حي
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] تسديد السلفة النقدية: [BudgetAmountFloat][CurrencyCode]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] قام بتقديم طلب للإستفادة من سلفة نقدية من [CurrencyCode]
-[BudgetAmountFloat] من أجل [RequestPurpose].هذا المبلغ هو جزء من ميزانيتك، [BudgetName].
-
-من فضلك قم بتسجيل الدخول إلى [InstallationName] من خلال الرابط [ExternalUrl]Financial/AttestCosts بغية السمَاح له أو الرفض.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - إجراء] طلب سلفة نقدية:[CurrencyCode]
-[BudgetAmountFloat] - بحاجة إلى المصادقة</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>قام المسؤول على الميزانية بتوثيق طلبك بخصوص النفقات الخاصة بحسابك مع [OrganizationName] ل [CurrencyCode][BudgetAmountFloat]، بخصوص [RequestPurpose]. سيتم دفعها لك عند تأكيد صحة الإيصالات.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] تمت المصادقة على طلب النفقات: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] قد قام بتقديم طلب نفقة من مصروف [BudgetName] و قدره [BudgetAmountFloat][CurrencyCode]. الطلب له صلة بـ [RequestPurpose]. و يجب عليك المصادقة على هذا الطلب.
-
-من فضلك قم بتسجيل الدخول إلى [InstallationName] من خلال الرابط [ExternalUrl]Financial/AttestCosts من أجل المصادقة أو رفض هذا الطلب.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - إجراء] تم إنشاء طلب نفقة:[CurrencyCode]
-[BudgetAmountFloat] - بحاجة إلى المصادقة</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>طلبك للنفقة مع [OrganizationName] من أجل [BudgetAmountFloat][CurrencyCode]، بخصوص [RequestPurpose]، لم يتم المصادقة عليها من طرف صاحب الميزانية. هذا غالبا يُفَسّر بوجود مشكل بطلبك للنفقة.
-
-وسوف تتلقى توضيحات من طرف صاحب الميزانية بهذا الخصوص.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] تمت المصادقة على طلب النفقات DE: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>إن طلبك للنفقة مع [OrganizationName] من أجل [BudgetAmountFloat][CurrencyCode] بخصوص [RequestPurpose] قد تم رفضه. النص التالي يفسر سبب رفض طلبك:
 
@@ -274,14 +233,6 @@ Swarmops ستواصل المحاولة وإرسال الإشعرات إلى حي
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] لقد تم رفض طلب النفقة:[BudgetAmountFloat][CurrencyCode]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>قام حفظة السجل المالي للمنظمة بالتحقق من صحة الايصالات التي طالبت بها والتي تتعلق بالنفقات الخاصة بحسابك مع [OrganizationName] ل [CurrencyCode][BudgetAmountFloat]، بخصوص [RequestPurpose]. يشير هذا عادة إلى نوع من المشاكل مع وثائق النفقات الخاصة بحسابك التي طالبت بها.
-
-توقع المزيد من الاتصالات لمتابعة هذه المسألة. إذا لم تتوصل بأي جديد من حفظة السجلات في وقت قصير في هذا الشأن، تواصل معهم.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] تم التحقق من ايصالات طلب النفقات DE: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>إن طلب النفقة الذي قمت بتقديمه مع [OrganizationName] من أجل [BudgetAmountFloat][CurrencyCode]، بخصوص [RequestPurpose]، قد تم تصنيفه على أنه قد دُفع من قِبل محاسبي المنظمة.
@@ -301,16 +252,10 @@ Swarmops ستواصل المحاولة وإرسال الإشعرات إلى حي
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] تمت المصادقة على إيصالات المطالبة بالنفقات: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>الفاتورة الصادرة من [Supplier]، بخصوص [Description]، قد تم الرصد لها من ميزانيتك [BudgetName] مبلغ يقدر بـ [BudgetAmountFloat][CurrencyCode]. يجب عليك المصادقة على هذه الفاتورة قبل أن تتقدم إلى مرحلة الدفع.
-
-من فضلك قم بتسجيل الدخول إلى [InstallationName] من خلال الرابط [ExternalUrl]Financial/AttestCosts من أجل المصادقة أو الرفض.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - إجراء] تم أرشفة الفاتورة:[CurrencyCode]
-[BudgetAmountFloat] - بحاجة إلى المصادقة</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>أضيف [Regular] جديد بطريقة يدوية الى [OrganizationName] في مجال يخصك.</value>
   </data>

@@ -123,9 +123,7 @@
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>هذه نظرة عامة على الحسابات المالية في دفتر الأستاذ الخاص بك. يمكنك القيام ببعض عمليات الصيانة من هنا، ولو أنه يجب تفويض معظم العمليات اليومية إلى الأشخاص المسؤولين عن الميزانيات.</value>
   </data>
-  <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>شجرة الحسابات</value>
-  </data>
+  
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>الحساب</value>
   </data>
@@ -633,9 +631,7 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(تم حجب الوصف المفصل)</value>
   </data>
-  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>حركات مختلة (يجب إتمام تطابقها أو إصلاحها)</value>
-  </data>
+  
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>الحساب</value>
     <comment>Usually the account name. Can also be "several".</comment>
@@ -650,9 +646,7 @@
     <value>حركة#</value>
     <comment>Keep VERY short.</comment>
   </data>
-  <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>لا يمكن مطابقة بعض الحركات المالية التي تم استيرادها بشكل تلقائي مع السجلات المحاسبية الحالية. هذا ما يتطلب تدخلك لتقوم بمطابقة هذه الحركات بشكل يدوي لموازنتها (عند اكتمال جزء واحد من الحركة، كأن يتم تسجيل الأموال المرسلة إلى المنظمة ولكن دون تحديد الغرض من هذه الأموال، فعندها يقال بأن الحركة مختلة أو "غير موزونة").</value>
-  </data>
+  
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>موازنة/ مطابقة "المعاملات" #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; من &lt;span id="spanModalTransactionDate"&gt;yyyy mmm dd&lt;/span&gt;</value>
     <comment>The span text is replaced runtime.</comment>

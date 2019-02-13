@@ -161,7 +161,7 @@
     <comment>The {0} is replaced in code. Singular form gender neutral of Participant.</comment>
   </data>
   <data name="ListFindPeople_Info" xml:space="preserve">
-    <value>Ову опцију можете користити да пронађете људе у организацији. Можете претраживати по географској позицији или по имену (на пример, "Jo S" ће пронаћи особу Joel Sander).</value>
+    <value>Ову опцију можете користити да пронађете људе у организацији. Можете претраживати по географској локацији или по имену (на пример, "Jo S" ће пронаћи особу Joel Sander).</value>
   </data>
   <data name="ListFindPeople_MatchingPeopleInX" xml:space="preserve">
     <value>Пронађених особа {0}</value>
@@ -183,7 +183,7 @@
     <value>Глобална Организација</value>
   </data>
   <data name="LocalOrganization_Info" xml:space="preserve">
-    <value>Ово су Ваши локални контакти. (ако имате привилегије администратора, можете додељивати људе на дате позиције)</value>
+    <value>Ово су Ваши локални контакти. (ако имате привилегије администратора, можете распоређивати људе на дате позиције)</value>
   </data>
   <data name="LocalOrganization_PageTitle" xml:space="preserve">
     <value>Моја локална Организација</value>

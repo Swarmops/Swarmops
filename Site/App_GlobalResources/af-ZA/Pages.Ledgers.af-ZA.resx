@@ -124,7 +124,7 @@
     <value>crwdns6555065:0crwdne6555065:0</value>
   </data>
   <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>crwdns6555066:0crwdne6555066:0</value>
+    <value>crwdns6563416:0crwdne6563416:0</value>
   </data>
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>crwdns6555067:0crwdne6555067:0</value>
@@ -637,7 +637,8 @@
     <value>crwdns6555816:0crwdne6555816:0</value>
   </data>
   <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>crwdns6555826:0crwdne6555826:0</value>
+    <value>crwdns6563418:0crwdne6563418:0</value>
+    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
   </data>
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>crwdns6555827:0crwdne6555827:0</value>
@@ -654,7 +655,7 @@
     <comment>Keep VERY short.</comment>
   </data>
   <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>crwdns6555831:0crwdne6555831:0</value>
+    <value>crwdns6563420:0crwdne6563420:0</value>
   </data>
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>crwdns6556050:0crwdne6556050:0</value>
@@ -1010,7 +1011,7 @@
     <value>crwdns6563318:0crwdne6563318:0</value>
   </data>
   <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
-    <value>crwdns6563334:0crwdne6563334:0</value>
+    <value>crwdns6563422:0crwdne6563422:0</value>
     <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
   </data>
   <data name="EndOfMonth_Title" xml:space="preserve">

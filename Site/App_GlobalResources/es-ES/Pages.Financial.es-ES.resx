@@ -117,23 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>Avance de efectivo #{0:N0} para {1} ha sido certificado por {3:N2}.</value>
-    <comment>Status message.</comment>
-  </data>
-  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>Avance de efectivo #{0:N0} para {1} fue atestiguado por la ONU. No se pagará a menos que se certifique nuevamente.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
-    <value>No puedes atestiguar esta cantidad. El presupuesto está vacío para el año {0}.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
-    <value>No puedes atestiguar una cantidad negativa.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>No puedes atestiguar una cantidad en cero.</value>
-  </data>
+  
+  
+  
+  
+  
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>Lo sentimos, no puedes volver a presupuestar un pago de salario.</value>
   </data>
@@ -143,14 +131,7 @@
   <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
     <value>Seleccione un presupuesto para reorientar el cargo por.</value>
   </data>
-  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>Reclamación de gastos #{0:N0} desde {1} para {2}{3:N2} ha sido atestiguado.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Reclamación de gastos #{0:N0} desde {1} fue DE-atestiguado. No se pagará a menos que se certifique nuevamente.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Acción</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -177,27 +158,12 @@
     <value>Pedido</value>
     <comment>Header for the requested amount.</comment>
   </data>
-  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
-    <value>Costos a la espera de su testimonio</value>
-  </data>
-  <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Aquí es donde atestigua los costos que otras personas están solicitando de sus presupuestos. No se paga nada antes de haberlo atestiguado.</value>
-  </data>
-  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>Factura #{0:N0} desde {1} para {2}{3:N2} ha sido atestiguado.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>Factura #{0:N0} desde {1} fue atestiguado por la ONU. No se pagará a menos que se certifique nuevamente.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>Atestiguar</value>
-    <comment>keep short</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Atestiguar</value>
-  </data>
+  
+  
+  
+  
+  
+  
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Denegar</value>
     <comment>keep short</comment>
@@ -223,35 +189,19 @@
   <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
     <value>Mueva la carga a este presupuesto en lugar de:</value>
   </data>
-  <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>Soluciona problemas o denegar testimonio</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
-    <value>Daré testimonio de esto, pero por una cantidad diferente.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
-    <value>La cantidad es incorrecta. Lo atestiguaré con la cantidad correcta.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
-    <value>No atestiguaré este registro. Está rayado.</value>
-    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
-  </data>
+  
+  
+  
+  
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
     <value>Este registro debe cobrar un presupuesto diferente. Muévelo allí.</value>
   </data>
   <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
     <value>¿Cuál parece ser el problema con este registro?</value>
   </data>
-  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
-    <value>No hay fondos suficientes en el presupuesto para atestiguar este costo.</value>
-  </data>
-  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>No hay fondos suficientes para atestiguar esto. Puede certificar hasta {0} {1:N2} más en este presupuesto para el año {2}.</value>
-    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
-  </data>
-  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
-    <value>&lt;strong&gt;¿PRESUPUESTO DE SOBREGIRO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; No hay fondos suficientes en el presupuesto para atestiguar este gasto. Normalmente, se bloquearía de la atestación. Sin embargo, puede anular esta limitación y atestiguar de todos modos, con lo que la cuenta se sobregira en su presupuesto.&lt;br/&gt;&lt;br/&gt; ¿Desea atestiguar el gasto, forzando así un sobregiro, o desea cancelar la atestación, quedándose dentro del presupuesto?&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
+  
+  
+  
   <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
     <value>Mantente en el presupuesto</value>
   </data>
@@ -262,26 +212,14 @@
     <value>EL PRESUPUESTO FUE SOBREGIRADO.</value>
     <comment>The UPPERCASE is intentional.</comment>
   </data>
-  <data name="AttestCosts_PageTitle" xml:space="preserve">
-    <value>Atestiguar costos</value>
-  </data>
-  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>La conferencia # {0:N0}, organizada por {1}, ha sido certificada para {3:N2}.</value>
-  </data>
-  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>La conferencia #{0:N0} por {1} fue atestiguado por la ONU. No se dará luz verde a menos que se certifique nuevamente.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
+  
+  
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>Salario #{0:N0} para {1} fue atestiguado por {3:N2}.</value>
   </data>
-  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Salario #{0:N0} para {1} fue DE-atestiguado. No se pagará a menos que se certifique nuevamente.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;ADVERTENCIA: PRESUPUESTO SIN IDENTIFICAR&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; El costo que está aprobando pertenece a un presupuesto sin identificar: una cuenta en el libro mayor que carece de propietario y no tiene una asignación presupuestaria establecida para el año. Considere visitar el Plan de cuenta y asignar presupuestos para los ingresos y gastos esperados.&lt;br/&gt;&lt;br/&gt; Este mensaje solo se mostrará una vez por visita a atestiguaciones.&lt;br/&gt;</value>
-  </data>
+  
+  
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Cantidad de la factura total ( en{0})</value>
     <comment>{0} is the organization's main currency.</comment>
@@ -579,9 +517,7 @@
   <data name="ValidateReceipts_PageTitle" xml:space="preserve">
     <value>Validar recibos</value>
   </data>
-  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>Los recibos de la Reclamación de gastos # {0:N0} para {1}{2:N2} han sido validados por DE. El reclamo de gastos no procederá al pago a menos que se vuelva a validar.</value>
-  </data>
+  
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Los recibos de la Reclamación de gastos #{0:N0} para {1}{2:N2} han sido validados.</value>
   </data>
@@ -731,4 +667,5 @@
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>{0} reclamos presentados exitosamente.</value>
   </data>
+  
 </root>

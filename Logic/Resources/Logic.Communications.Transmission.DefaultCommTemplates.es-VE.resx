@@ -146,7 +146,20 @@ Debe iniciar sesión y cambiar esta contraseña a algo más seguro, escogido por
 
 ¡Bienvenido a bordo!</value>
   </data>
-  
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>¡Bienvenido a [OrganizationName]!
+
+[ActingPerson] te ha otorgado una [Regularship]. Esta no caduca automáticamente en ningún periodo de tiempo ni fecha en particular, así corre prisa entrar en acción.
+
+Ya se habrán puesto en contacto contigo personas de [OrganizationName] para darte más información sobre cómo empezar. Si no has recibido nada, mantente a la espera de dicha correspondencia.
+
+Tu contraseña inicial, generada de manera aleatoria, para Swarnmops, el software utilizado como un sistema back-end, es la siguiente:
+[RandomPassword]
+
+Debes iniciar sesión y cambiar esta contraseña a algo más seguro, elegido por ti, lo antes posible. Puedes hacerlo registrándote en [ExternalUrl] y pulsando el icono "Usuario" en la esquina superior derecha, luego selecciona la pestaña de Seguridad (la que tiene el candado), pon la contraseña temporal y finalmente escribe tu nueva contraseña. Como recomendación también deberías echar un vistazo a la autenticación de dos factores, te interesará activarla.
+
+¡Bienvenido a bordo!</value>
+  </data>
   <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
     <value>[[OrganizationName]] ¡Te damos la bienvenida a [OrganizationName]!</value>
   </data>

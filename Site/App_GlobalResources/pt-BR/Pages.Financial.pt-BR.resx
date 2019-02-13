@@ -121,9 +121,6 @@
   
   
   
-  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>Não pode atestar uma quantidade nula.</value>
-  </data>
   
   
   
@@ -155,21 +152,12 @@
     <value>Pedido</value>
     <comment>Header for the requested amount.</comment>
   </data>
-  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
-    <value>Custos à espera da sua atestação</value>
-  </data>
-  <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Aqui é onde atesta os custos que as outras pessoas estão a pedir para retirar dos seus orçamentos. Nada é pago antes de ser atestado por si.</value>
-  </data>
   
   
-  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>Atestar</value>
-    <comment>keep short</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Atestar</value>
-  </data>
+  
+  
+  
+  
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Recusar</value>
     <comment>keep short</comment>
@@ -427,12 +415,11 @@
   <data name="ValidateReceipts_PageTitle" xml:space="preserve">
     <value>Validar Recibos</value>
   </data>
-  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>Os recibos da Reivindicação de Despesa #{0:N0} para {1} {2:N2} foram INVALIDADOS. A reivindicação não irá prosseguir a menos que seja re-validada.</value>
-  </data>
+  
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Os recibos da Reivindicação de Despesa #{0:N0} para {1} {2:N2} foram validados.</value>
   </data>
+  
   
   
   

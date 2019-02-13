@@ -117,57 +117,169 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>Pristup ovoj stranici je odbijen</value>
+  </data>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>Pokušali ste da pristupite stranici za koju nemate ovlašćenja. Pogledajte osnovni panel i razloge zbog kojih se ovo moglo dogoditi.</value>
+  </data>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>Pristup odbijen</value>
+  </data>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Swarmops security framework Vam je uskratio pristup stranici na koju ste se uputili. To obično znači da ste hteli da pristupite stranici koja je namenjena članovima višeg nivoa organizacije (&lt;em&gt;{0}&lt;/em&gt;). Ovaj događaj nije nigde usnimljen.&lt;/p&gt;&lt;p&gt;Evo još nekoliko razloga zbog kojih se ovo moglo dogoditi:&lt;/p&gt;</value>
+  </data>
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>Trenutna organizacija</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>Možete uzeti učešća u nekoliko organizacija u okviru ove Swarmops instalacije. Evo gde se možete prebacivati između njih.</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>Nova organizacija</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>Ne učestvujete ni u jednoj drugoj organizaciji u okviru Swarmops instalacije, te stoga ne možete preći nikud. Umesto toga, vraćamo se na Kontrolnu tablu.</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>Promeni organizacije</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>Prebaci na</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>Nadogradnja baze podataka na čekanju</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>Ova stranica zahteva nadograđenu Swarmops bazu podataka. </value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>Čeka se nadogradnja baze podataka</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Nadogradnja baze podataka je na čekanju. &lt;strong&gt;Takvo stanje je samo privremeno&lt;/strong&gt; i Swarmops serveri bi trebalo da već rade na potrebnoj nadogradnji.&lt;/p&gt;
+&lt;p&gt;Pokušajte za nekoliko minuta da ponovo učitate stranicu. Ako situacija potraje duže od petnaest minuta, kontaktirajte svog sistem administratora.&lt;/p&gt;</value>
+  </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>Nalog &lt;strong&gt;nije zaključan&lt;/strong&gt;. Takav nalog ne postoji, ili je ticket nevažeći, ili je istekao. Ako i dalje želite da zaključate ovaj nalog, kontaktirajte administratore za ovu Swarmops instalaciju.</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>Ako vidite ovu stranu, to znači da pokušavate da zaključate korisnički nalog iz bezbednosnih razloga. Ako link nije istekao, nalog je već zaključan.</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>Zaključavanje korisničkog naloga</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>Nalog je &lt;strong&gt;uspešno zaključan&lt;/strong&gt; i sve aktivne sesije su sada ugašene.</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>Ticket o zaključavanju</value>
+  </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>&lt;strong&gt;OTVORENE POSLOVNE KNJIGE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;{0} su otvorene. To znači da svako ima uvid u računovodstvene zapise i finansijske knjige. Prijavljeni ste u meni Operacije unutar organizacije kako biste upravo to uradili.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt;BitId dvo-faktorska autentifikacija je sada aktivna.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Od sada možete koristiti svoj bitcoin novčanik kako biste se prijavili (i &lt;strong&gt;moraćete&lt;/strong&gt; tako). Hvala Vam što ste aktivirali dodatnu sigurnost.&lt;br/&gt;&lt;br/&gt;Ne zaboravite da i svoj telefon obezbedite lozinkom.</value>
+  </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;BITID PRIJAVLJIVANJE, NEOPHODNO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Prijavljivanje zahteva BitId autentifikaciju, a nju odobrava vlasnik naloga. Ne možete se prijaviti samo sa korisničkim imenom i lozinkom.</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>Unesite kôd iz Google Authenticator-a.</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Prijavljivanje putem Bitcoin Signature (BitId)</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>Pomoć</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>Prijavite se na Swarmops korišćenjem bitcoin novčanika koji podržava bitid. Na njemu ne morate imati sredstava. Ako nemate bitcoin novčanik koji podržava bitid možete se prijaviti preko stare kombinacije korisničkog imena i lozinke. (Vaše korisničko ime je Vaše ime ili email.)</value>
+  </data>
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>Prijavljivanje, molim sačekajte...</value>
+  </data>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>Ručno prijavljivanje, putem lozinke</value>
+    <comment>Header to manual username/password form</comment>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>Prijavi se</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>Prolaz</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>Upomoć, zaboravio sam lozinku!</value>
+  </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>Prijavi me za {0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>Tražite kako da se priključite?</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>Swarmops ne prepoznaje ovu adresu. Molimo Vas, prijavite se ručno i aktivirajte adresu.</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>Želite da koristite BitID dvo-faktorsku autentifikaciju?</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>Želite da se prijavljujete putem lozinke?</value>
+    <comment>Switches from BitId to Username/Password form</comment>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>Korisnik</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>Nema validnog ticket-a za resetovanje lozinke, koji se odnosi na datu mail adresu. Adresa je nepostojeća, ticket nije validan, ili je istekao.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Resetovanje lozinke nije uspelo.&lt;/strong&gt;</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>Resetujete lozinku za korisnički nalog. Unesite novu lozinku dva puta kako biste je zadali i prijavili se. (ako pokušavate da pokrenete proceduru za resetovanje lozinke, za to Vam je naophodan ticket. &lt;a href="/Security/RequestPasswordReset"&gt;Kreiraj ticket.&lt;/a&gt;)</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>Unesite svoju mail adresu kako biste primili uputstva kako da nastavite sa procedurom za resetovanje lozinke. Instrukcije će sadržati jedinstveni kod ograničenog vremena trajanja, koji ćete morati da iskoristite kako biste nastavili.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>Unesite svoju mail adresu</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>Ponovo unesite svoju mail adresu</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>Dve lozinke se ne poklapaju. Ponovite.</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>Nova lozinka ne može biti prazna.</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>Resetuj Lozinku</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>Nova lozinka</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>Ponovite novu lozinku</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>Možda ćete resetovati lozinku koja je povezana sa mail adresom. Link sa ticket-kodom će biti poslat na tu mail adresu. Linku morate pristupiti da biste pratili dalja uputstva za reset lozinke.</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>Resetuj</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>Vaša lozinka je promenjena i Vi ste prijavljeni na Swarmops sa novom lozinkom.</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>Ticket</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>Ako je mail adresa povezana sa nalogom za ovu Swarmops instalaciju, &lt;strong&gt;ticket za reset je poslat.&lt;/strong&gt; Otvorite dobijeni mail i kliknite na link u poruci kako biste izvršili reset lozinke. (Ako email-a nema, ništa nije poslato.)&lt;br/&gt;&lt;br/&gt;Možete zatvoriti ovaj tab. Neće Vam biti potreban.</value>
+  </data>
 </root>

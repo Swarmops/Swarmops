@@ -149,20 +149,10 @@
   </data>
   
   
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>O seu pedido de adiantamento de dinheiro feito a [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], relativo a [RequestPurpose], foi certificado pelo proprietário do orçamento. O pagamento irá ser agora efetuado a si.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Adiantamento de Dinheiro Confirmado: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>O seu adiantamento de dinheiro com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] sobre [RequestPurpose] foi DES-confirmado pelo proprietário do orçamento. Isto geralmente indica a existência de um problema com o seu pedido.
-
-Espere mais comunicação do proprietário do orçamento dando seguimento ao assunto.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Adiantamento de Dinheiro DES-Confirmado: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>O seu adiantamento de dinheiro com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] sobre [RequestPurpose] foi negado. O texto abaixo foi dado como razão para negá-lo:
 
@@ -180,42 +170,14 @@ Isto significa que em breve deverá ver o montante na sua conta.</value>
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Adiantamento de Dinheiro Pago: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] requisitou um adiantamento de dinheiro de [CurrencyCode] [BudgetAmountFloat] com a finalidade de [RequestPurpose]. Este dinheiro faz parte do seu orçamento, [BudgetName].
-
-Por favor entre em [InstallationName] em [ExternalUrl]Financial/AttestCosts para confirmar ou negar.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ITEM DE AÇÃO] Adiantamento de Dinheiro Solicitado: [CurrencyCode] [BudgetAmountFloat] - Confirmação Necessária</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>O seu pedido de reivindicação de despesa com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], relativo a [RequestPurpose], foi confirmado pelo proprietário do orçamento. Irá ser-lhe pago assim que os recibos sejam validados.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Reivindicação de Despesa Confirmada: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] criou um pedido de reivindicação de despesa no orçamento [BudgetName] com o montante de [CurrencyCode] [BudgetAmountFloat]. O pedido diz respeito a [RequestPurpose]. Irá precisar de confirmar este pedido de reivindicação de despesa.
-
-Por favor entre em [InstallationName] em [ExternalUrl]Financial/AttestCosts para confirmar ou negar.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ITEM DE AÇÃO] Reivindicação de Despesa Criada: [CurrencyCode] [BudgetAmountFloat] - Confirmação Necessária</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>O seu pedido de reivindicação de despesa com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], relativo a [RequestPurpose], foi DES-confirmado pelo responsável do orçamento. Isto geralmente indica a existência de um problema com o seu pedido.
-
-Espere mais comunicação do responsável do orçamento dando seguimento ao assunto.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Reivindicação de Despesa DES-confirmada: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>O seu pedido de reivindicação de despesa com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] relativo a [RequestPurpose] foi negado. O texto abaixo foi dado como razão para negá-lo:
 
@@ -225,14 +187,6 @@ Espere mais comunicação do responsável do orçamento dando seguimento ao assu
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Reivindicação de Despesa NEGADA: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Os recibos da sua reivindicação de despesa com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], relativos a [RequestPurpose], foram INVALIDADOS pelos detentores dos registos financeiros da organização. Isto geralmente indica a existência de um problema com a documentação do seu pedido de reivindicação de despesa.
-
-Espere mais comunicação dando seguimento ao assunto. Caso não tenha notícias dos detentores dos registos financeiros em breve sobre este assunto, fale com eles.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Recibos de Reivindicação de Despesa INVALIDADOS: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>A sua reivindicação de despesa com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], relativa a [RequestPurpose], foi marcada como paga pelos contabilistas da organização.
@@ -251,15 +205,10 @@ A reivindicação ser-lhe-á paga a si assim que o montante seja também confirm
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Recibos de Reivindicação de Despesa Validados: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Uma fatura de [Supplier], relativa a [Description], foi apresentada no seu orçamento [BudgetName] com o montante de [CurrencyCode] [BudgetAmountFloat]. Deverá confirmar esta fatura antes de proceder ao seu pagamento.
-
-Por favor entre em [InstallationName] em [ExternalUrl]Financial/AttestCosts para confirmar ou negar.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ITEM DE AÇÃO] Fatura Apresentada: [CurrencyCode] [BudgetAmountFloat] - Confirmação Necessária</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Um novo [Regular] foi manualmente adicionado a [OrganizationName] numa das suas áreas.</value>
   </data>

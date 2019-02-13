@@ -906,7 +906,10 @@
     <value>Nakit</value>
     <comment>Keep short - seven chars max</comment>
   </data>
-  
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>Çekirdek</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
   <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
     <value>Altın</value>
     <comment>Keep short - seven chars max</comment>
@@ -926,19 +929,132 @@
     <value>(iptal edildi, hükümsüz kılındı, sıfırlandı)</value>
     <comment>Used when something is determined invalid</comment>
   </data>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Yükle</value>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>Dosya Yükleme Sonuçları</value>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>KDV</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Katma Değer Vergisi</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>Tarih</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>AAA g, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Gönder</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>Genel Muhasebe</value>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>&lt;strong&gt;Sandbox&lt;/strong&gt; organizasyonuna &lt;br/&gt;&lt;br/&gt; giriyorsunuz. Bu, üretim verilerine herhangi bir hasar riski olmadan Swarmops ile oynayabileceğiniz güvenli bir ortamdır. İstediğiniz kadar eğlenin ve deneme bittiğinde üretim ortamına geri dönün.</value>
+  </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>{0} ile {1} arası</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>Atlama</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>bunu atla</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>Atla</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Financial_Ebitda_Long" xml:space="preserve">
+    <value>Faiz, Vergi, Değer Kaybı ve İtfa payı öncesi kazanç</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Financial_AllBalancesSettled" xml:space="preserve">
+    <value>Tüm bakiyeler düzenlendi</value>
+    <comment>Nobody owes anybody anything</comment>
+  </data>
+  <data name="Financial_CurrentBalance" xml:space="preserve">
+    <value>Mevcut Bakiye</value>
+  </data>
+  <data name="Financial_NoPaymentHistory" xml:space="preserve">
+    <value>Kayıtta ödeme yok</value>
+  </data>
+  <data name="Financial_Owed" xml:space="preserve">
+    <value>Borçlu</value>
+    <comment>As in, "Amount Owed"</comment>
+  </data>
+  <data name="Financial_Paid" xml:space="preserve">
+    <value>Ücretli</value>
+    <comment>As in, "Amount Paid To Person"</comment>
+  </data>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>Ödeme Geçmişi</value>
+  </data>
+  <data name="Financial_PaymentSpecification" xml:space="preserve">
+    <value>Ödeme #{0:N0}</value>
+    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
+  </data>
+  <data name="Financial_PayoutSpecification" xml:space="preserve">
+    <value>Ödeme #{0:N0}</value>
+    <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
+  <data name="Financial_PersonIsOwed" xml:space="preserve">
+    <value>Kişi borçlu</value>
+    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
+  </data>
+  <data name="Financial_PersonOwes" xml:space="preserve">
+    <value>Kişi Borç Tutarı</value>
+    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
+  </data>
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>Onaylanmamış Ödeme</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
+  </data>
+  <data name="Financial_YouAreOwed" xml:space="preserve">
+    <value>{0} Sana borçlu</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Financial_YouOwe" xml:space="preserve">
+    <value>Bu miktar borcunuz</value>
+    <comment>Like Person Owes, but directed at the user at the screen</comment>
+  </data>
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>Sıfır</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
+  </data>
+  <data name="Global_Closed" xml:space="preserve">
+    <value>Kapalı</value>
+    <comment>As in "record or transaction closed"</comment>
+  </data>
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>Kayıt yok</value>
+    <comment>There are no records of the requested type</comment>
+  </data>
+  <data name="Global_Error_Concurrency" xml:space="preserve">
+    <value>Bu işlem artık mevcut değil.</value>
+    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>Ürün</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>Ürünler</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
+  <data name="Global_Opened" xml:space="preserve">
+    <value>Açıldı</value>
+    <comment>As in "record or transaction opened"</comment>
+  </data>
 </root>

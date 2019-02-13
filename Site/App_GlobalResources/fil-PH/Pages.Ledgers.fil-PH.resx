@@ -123,9 +123,7 @@
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Ito ang pangkalahatang-ideya ng mga accounts na pinansyal sa iyong ledger ng bookkeeping. Maaari kang gumawa ng ilang mga pagpapanatili mula dito, kahit na karamihan sa mga pangaraw-araw na operasyon ay dapat na naka-atas sa mga may-ari ng badyet.</value>
   </data>
-  <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>Plano ng Akawnt</value>
-  </data>
+  
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Akawnt</value>
   </data>
@@ -584,9 +582,7 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(detalyadong paglalarawan na ipinagkait)</value>
   </data>
-  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Mga Hindi Balanseng Transaksyon (Kailangang Tugma o Ayusin)</value>
-  </data>
+  
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Akawnt</value>
     <comment>Usually the account name. Can also be "several".</comment>

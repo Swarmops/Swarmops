@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>{1} için nakit avans #{0:N0}, {3:N2} için onaylandı.</value>
+    <value>{1} için Nakit Avans #{0:N0}, {3:N2} için onaylandı.</value>
     <comment>Status message.</comment>
   </data>
   <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>{1} için nakit avans #{0:N0} onaylanmadı. Tekrar onaylanmadığı sürece ödenmeyecek.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>{1} için Nakit Avans #{0:N0} onayı GERİ ÇEKİLDİ. Tekrar onaylanmadıkça ödeme yapılmayacaktır.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
-    <value>Bu tutarı onaylayamazsın. {0} yılı için bütçe boş.</value>
+    <value>Bu tutarı onaylayamazsınız. Bütçe {0} yılı için boş.</value>
   </data>
   <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
-    <value>Negatif tutarı onaylayamazsın.</value>
+    <value>Negatif tutarı onaylayamazsınız.</value>
   </data>
   <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>Sıfır tutarı onaylayamazsın.</value>
+    <value>Sıfır tutarını onaylayamazsınız.</value>
   </data>
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>Üzgünüm, maaş ödemesini tekrar bütçelendiremezsiniz.</value>
@@ -143,14 +143,7 @@
   <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
     <value>Lütfen ücreti yeniden hedeflemek için bir bütçe seçin.</value>
   </data>
-  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>{1} tarafından gelen {2}{3:N2}'lık Masraf Talebi #{0:N0} onaylandı.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>{1}'den gelen Masraf Talebinin #{0:N0} onayı geri alındı. Tekrar onaylanmadığı sürece ödenmeyecek.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Eylem</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -181,23 +174,15 @@
     <value>Onayınızı bekleyen maliyetler</value>
   </data>
   <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Buradan diğer kişilerin yaptığı harcama isteklerini onaylarsınız. Siz onaylamadıkça hiçbir şey ödenmez.</value>
+    <value>Burası, başkalarının sizin bütçelerinizden talep ettiği maliyetleri onayladığınız yerdir. Siz onaylamadan önce hiçbir şey ödenmez.</value>
   </data>
-  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>{1} tarafından gelen {2}{3:N2}'lık fatura #{0:N0} onaylandı.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>{1}'den gelen faturanın #{0:N0} onayı geri alındı. Tekrar onaylanmadığı sürece ödenmeyecek.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
+  
   <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
     <value>Onayla</value>
     <comment>keep short</comment>
   </data>
-  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Onayla</value>
-  </data>
+  
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Reddet</value>
     <comment>keep short</comment>
@@ -224,16 +209,16 @@
     <value>Bunun yerine ücreti bu bütçeye taşıyın:</value>
   </data>
   <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>Sorunları düzelt ya da onaylamayı reddet</value>
+    <value>Sorunları gider veya onaylamayı reddet</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
-    <value>Bunu onaylayacağım fakat farklı bir tutar için.</value>
+    <value>Bunu onaylayacağım, ama farklı bir tutar için.</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
-    <value>Tutar yanlış. Doğru tutarda onaylayacağım.</value>
+    <value>Tutar yanlış. Doğru tutar için onaylayacağım.</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
-    <value>Bu kaydın onaylanmasını bütünüyle reddet.</value>
+    <value>Bu kaydı onaylamayacağım. Bu çizik.</value>
     <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
   </data>
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
@@ -243,15 +228,10 @@
     <value>Bu kayıtla ilgili sorun ne olabilir?</value>
   </data>
   <data name="AttestCosts_OutOfBudget" xml:space="preserve">
-    <value>Bütçede bu harcamayı onaylamak için yeterli kaynak yok.</value>
+    <value>Bu maliyeti onaylamak için bütçede yeterli fon kalmamıştır.</value>
   </data>
-  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>Bunu onaylamak için yeterli kaynak yok. {2} yılı için {0}{1:N2} kadar daha onaylayabilirsiniz.</value>
-    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
-  </data>
-  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
-    <value>&lt;strong&gt;BÜTÇE LİMİT AŞIMI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;? Bütçenizde bu harcamayı onaylamak için yeterli kaynak yok. Normalde bu harcamanın onaylanması blokeli olurdu. Ancak siz bu limiti etkisiz kılarak onaylama yapabilir, dolayısıyla bütçe limit aşımına sebep olabilirsiniz. &lt;br/&gt;&lt;br/&gt;Bu harcamayı onaylayarak bütçe limitini aşmak mı yoksa bütçeyi aşmadan bu onayı iptal etmek mi istiyorsunuz?&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
+  
+  
   <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
     <value>Bütçede kal</value>
   </data>
@@ -263,25 +243,15 @@
     <comment>The UPPERCASE is intentional.</comment>
   </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
-    <value>Harcamaları Onayla</value>
+    <value>Maliyetleri Onayla</value>
   </data>
-  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>{1} tarafından düzenlenen konferans #{0:N0}, {3:N2} için onaylandı.</value>
-  </data>
-  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>{1} tarafından düzenlenen konferans #{0:N0}'in onayı geri alındı. Tekrar onaylanmadığı sürece izin verilmeyecek.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
+  
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>{1} için maaş #{0:N0}, {3:N2} için onaylandı.</value>
   </data>
-  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>{1} için maaş #{0:N0}'nin onayı geri alındı. Tekrar onaylanmadığı sürece ödenmeyecek.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;UYARI: BAŞLATILMAMIŞ BÜTÇE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Onaylamakta olduğunuz gider, başlatılmamış bir bütceye ait -- defterdeki, sahibi olmayan ve bu yıl için belirlenmiş bir bütçe ödeneğine sahip olmayan bir hesap. Hesap Planını ziyaret etmeyi ve bütçeleri beklenen gelir ve giderlere göre tahsis etmeyi göz önünde bulundurun.&lt;br/&gt;&lt;br/&gt;Bu mesaj, Onaylamalar için her ziyarette sadece bir kez gözükecektir.&lt;br/&gt;</value>
-  </data>
+  
+  
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Toplam fatura tutarı ({0})</value>
     <comment>{0} is the organization's main currency.</comment>
@@ -654,23 +624,59 @@
   <data name="ListOutboundInvoices_Title" xml:space="preserve">
     <value>Giden Faturaları Listele</value>
   </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Expensify CSV'yi yükle</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Çok fazla harcama raporunuz varsa, onları Expensify ile toplayabilir ve bir Expensify CSV raporunu buraya yükleyebilirsiniz (Expensify Raporları altında CSV olarak elde ettikleriniz, Dışa Aktarma) Swarmops, tüm bireysel makbuzları almak için Expensify'ı kullanacak ve bunları uygun muhasebe için ayrı gider talepleri olarak kaydedecektir.</value>
+  </data>
+  
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Organizasyon'un kurallarına bağlı olarak, Expensify'daki "Varsayılan CSV" dışa aktarma profili Swarmops için yeterli olmalıdır.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Expensify Raporları'nın para birimi</value>
+  </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Ger Ödeme İçin Expensify Raporu Yükle</value>
+  </data>
   
   
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Başka Bir Expensify CSV Dosyası Yükle?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>kendim</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Bu kimden bir gider talebi?</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(Tutar belirtilen KDV'yi hariç tutmalıdır!)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>Tüm gider talepleri göndermeden önce bir bütçeye ihtiyaç duyar.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>Gönderilecek Expensify kaydı yok</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>Bir talep göndermeye hazır</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>{0} talep göndermeye hazır</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>Talep başarıyla dosyalandı.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>{0} talep başarıyla dosyalandı.</value>
+  </data>
   
 </root>

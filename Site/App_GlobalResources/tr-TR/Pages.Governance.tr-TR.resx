@@ -261,7 +261,10 @@
     <value>Özet</value>
     <comment>Column header</comment>
   </data>
-  
+  <data name="VoteAmendments_Grid_Board" xml:space="preserve">
+    <value>Kurul diyor ki</value>
+    <comment>Row header</comment>
+  </data>
   <data name="VoteAmendments_Grid_Change" xml:space="preserve">
     <value>Değiştir</value>
     <comment>Row header</comment>
@@ -365,8 +368,12 @@
   <data name="Vote_PageTitle" xml:space="preserve">
     <value>Oy</value>
   </data>
-  
-  
+  <data name="Vote_PointsOfOrder" xml:space="preserve">
+    <value>Sipariş Noktaları</value>
+  </data>
+  <data name="Vote_PointsOfOrderTemp" xml:space="preserve">
+    <value>Şu an için sipariş noktaları yok.</value>
+  </data>
   <data name="Vote_VoteHere" xml:space="preserve">
     <value>Buradan oy verebilirsiniz</value>
     <comment>Link to voting page</comment>

@@ -180,9 +180,7 @@
   <data name="Menu5_Financial" xml:space="preserve">
     <value>Inawo</value>
   </data>
-  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>Awon iye owo ijẹri</value>
-  </data>
+  
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Gba Agbapada fun Inawo</value>
   </data>
@@ -267,9 +265,7 @@
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Awọn lẹja</value>
   </data>
-  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>Eto Akoole</value>
-  </data>
+  
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Sayẹwo Awọn lẹja</value>
   </data>

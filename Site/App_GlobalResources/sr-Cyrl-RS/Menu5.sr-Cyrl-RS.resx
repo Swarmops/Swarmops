@@ -181,7 +181,8 @@
     <value>Финансије</value>
   </data>
   <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>Потврди трошкове</value>
+    <value>Одобри трошкове</value>
+    <comment>This approves costs for payout from the organization</comment>
   </data>
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Затражи рефундацију трошкова</value>
@@ -268,7 +269,7 @@
     <value>Књиге</value>
   </data>
   <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>План за обрачунавање</value>
+    <value>График налога</value>
   </data>
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Ревизија књига</value>
@@ -286,7 +287,7 @@
     <value>Затвори пословне књиге за {0}</value>
   </data>
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
-    <value>Оклањање књиговодствених грешака, Налози</value>
+    <value>Отклањање књиговодствених грешака, Налози</value>
   </data>
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Увези банкарске податке</value>
@@ -448,8 +449,8 @@
     <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
   </data>
   <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
-    <value>Подеси структуру пословне књиге</value>
-    <comment>This is sometimes called an "account plan" but this term has many overloaded meanings in the context of operations software.</comment>
+    <value>Подеси график налога</value>
+    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
   </data>
   <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
     <value>Подеси платни списак</value>
@@ -459,7 +460,7 @@
     <comment>This lists salary payments for the logged on individual</comment>
   </data>
   <data name="Menu5_Ledgers_DeprecatingAmortizedAssets" xml:space="preserve">
-    <value>Амортизована средства</value>
+    <value>Амортизована средства и добра</value>
   </data>
   <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
     <value>Губитак вредности и амортизација</value>
@@ -473,7 +474,7 @@
     <comment>Tracking of special transactions</comment>
   </data>
   <data name="Menu5_People_DistributedAssets" xml:space="preserve">
-    <value>Дистрибуирана средстава</value>
+    <value>Дистрибуирана средства</value>
     <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
   </data>
   <data name="Menu5_Reports" xml:space="preserve">

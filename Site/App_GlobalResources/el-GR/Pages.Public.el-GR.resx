@@ -260,9 +260,7 @@
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Ολοκλήρωση εγγραφής.</value>
   </data>
-  <data name="Signup_Unsupported" xml:space="preserve">
-    <value>Το Swarmops δεν έχει εφαρμόσει ακόμα υποστήριξη για αυτήν την διάρθρωση τελών.</value>
-  </data>
+  
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>Για ποια θέση ενδιαφέρεστε;</value>
   </data>

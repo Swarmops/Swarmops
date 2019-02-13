@@ -355,20 +355,42 @@
     <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
   
+  <data name="Title_Regular_Ship" xml:space="preserve">
+    <value>Düzenlilik</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Resident_Corps" xml:space="preserve">
+    <value>Yerleşikler</value>
+  </data>
+  <data name="Title_Resident_Female" xml:space="preserve">
+    <value>Yerleşik</value>
+  </data>
   
   
   
+  <data name="Title_Resident_Ship" xml:space="preserve">
+    <value>İkamet</value>
+  </data>
+  <data name="Title_Sailor_Corps" xml:space="preserve">
+    <value>Ekip</value>
+  </data>
+  <data name="Title_Sailor_Female" xml:space="preserve">
+    <value>Denizci</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Title_Sailor_Plural" xml:space="preserve">
+    <value>Denizciler</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Ship" xml:space="preserve">
+    <value>Denizcilik</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Salesperson_Corps" xml:space="preserve">
+    <value>Satış Ekibi</value>
+  </data>
   
   <data name="Title_Salesperson_Generic" xml:space="preserve">
     <value>Satış elemanı</value>

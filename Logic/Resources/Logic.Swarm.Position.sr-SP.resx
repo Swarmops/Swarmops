@@ -373,18 +373,18 @@
     <value>Надзорници одбора</value>
   </data>
   <data name="Position_System_SysadminAssistantReadOnly" xml:space="preserve">
-    <value>Асистент систем-администратора (само чита)</value>
+    <value>Асистент систем-администратора (Read-only)</value>
   </data>
   <data name="Position_System_SysadminAssistantReadOnly_Plural" xml:space="preserve">
-    <value>Асистенти систем-администратора (само читају)</value>
+    <value>Асистенти систем-администратора (Read-only)</value>
   </data>
   <data name="Position_System_SysadminMain" xml:space="preserve">
     <value>Главни систем-администратор</value>
   </data>
   <data name="Position_System_SysadminReadWrite" xml:space="preserve">
-    <value>Систем-администратор (чита/записује)</value>
+    <value>Систем-администратор (Read/Write)</value>
   </data>
   <data name="Position_System_SysadminReadWrite_Plural" xml:space="preserve">
-    <value>Систем-администратори (читају/записују)</value>
+    <value>Систем-администратори (Read/Write)</value>
   </data>
 </root>

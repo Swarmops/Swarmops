@@ -178,9 +178,7 @@
   <data name="Menu5_Financial" xml:space="preserve">
     <value>Finansowy</value>
   </data>
-  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>Koszty Potwierdzenia</value>
-  </data>
+  
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Zażądaj Zwrotu Kosztów</value>
   </data>
@@ -265,9 +263,7 @@
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Księgi</value>
   </data>
-  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>Plan Konta</value>
-  </data>
+  
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Audyt Ksiąg</value>
   </data>

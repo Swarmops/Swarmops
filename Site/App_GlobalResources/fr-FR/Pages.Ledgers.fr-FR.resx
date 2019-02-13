@@ -123,9 +123,7 @@
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Ceci est l'aperçu général des comptes financiers dans votre grand livre. Vous pouvez faire quelques maintenances à partir d'ici, même si la plupart des opérations quotidiennes doivent être déléguées aux responsables du budget.</value>
   </data>
-  <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>Plan de compte</value>
-  </data>
+  
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Compte</value>
   </data>
@@ -628,9 +626,7 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(description détaillée retenue)</value>
   </data>
-  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Transactions non équilibrées (il faut faire correspondre ou ajuster)</value>
-  </data>
+  
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Compte</value>
     <comment>Usually the account name. Can also be "several".</comment>
@@ -645,9 +641,7 @@
     <value>Tx#</value>
     <comment>Keep VERY short.</comment>
   </data>
-  <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Certaines transactions financières importées automatiquement ne peuvent pas être automatiquement associées à la comptabilité en cours. C'est là que vous faites correspondre manuellement ces transactions pour les "équilibrer" (si une transaction ne comporte qu'une partie complète, comme l'argent envoyé à l'organisation sans enregistrement du libellé de ce transfert, la transaction est dite "déséquilibrée").</value>
-  </data>
+  
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Transaction d'équilibrage / mise en correspondance #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; de la part de &lt;span id="spanModalTransactionDate"&gt;dd-mmm-yyyy&lt;/span&gt;</value>
     <comment>The span text is replaced runtime.</comment>

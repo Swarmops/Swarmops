@@ -195,20 +195,10 @@
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] - 动作项目] 比特币现金热钱包余额不足以支付 - 请立即充值</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>您出于[RequestPurpose]而向[OrganizationName]所申请的[CurrencyCode] [BudgetAmountFloat]提现的请求已经被预算所有者受理。它现在将被处理并支付给您。</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] 提现确认：[CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>您所出于[RequestPurpose]而向[OrganizationName]的提出[CurrencyCode] [BudgetAmountFloat]的提现请求已经被预算所有者不予确认。这种情况一般是由于您的请求有一些问题。
-
-请期待处理此问题的预算所有者联系您。</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] 无法确认提现：[CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>您出于[RequestPurpose]而向[OrganizationName]进行的[CurrencyCode] [BudgetAmountFloat]提现已经被拒绝。下面的文本给出了拒绝的理由：
 
@@ -226,42 +216,14 @@
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] 提现成功：[CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName]出于[RequestPurpose]的目的申请了一笔价值[CurrencyCode] [BudgetAmountFloat]的提现。此笔资金将出自于您的预算——[BudgetName]。
-
-请在[ExternalUrl]Financial/AttestCosts以[InstallationName]登录来批准或拒绝。</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - 活动项目] 提现请求：[CurrencyCode] [BudgetAmountFloat] - 需要批准</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>您出于[RequestPurpose] 目的向[OrganizationName] 进行的价值[CurrencyCode] [BudgetAmountFloat] 的报销申请已经被预算拥有者批准。当收据确认有效后该笔报销将支付给您。</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] 报销申请通过：[CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName]对于[BudgetName]的预算申请了一笔价值[CurrencyCode][BudgetAmountFloat]的报销申请。此笔报销申请出于[RequestPurpose]的请求。您将需要确认这笔报销申请。
-
-请在 [ExternalUrl]Financial/AttestCosts 登录 [InstallationName] 以确认或者拒绝。</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] 报销申请已建立：[CurrencyCode][BudgetAmountFloat] - 需要证实</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>您出于 [RequestPurpose] 向 [OrganizationName] 提出的价值 [CurrencyCode][BudgetAmountFloat] 的报销申请未被预算拥有者确认。这通常是由于您的报销申请有一些问题。
-
-需要与预算拥有者进行进一步的沟通来跟进这个问题。</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] 报销申请未被确认：[CurrencyCode][BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>您出于 [RequestPurpose] 向 [OrganizationName] 提出的价值 [CurrencyCode][BudgetAmountFloat] 的报销申请被预算拥有者拒绝。以下的文本给出了其被拒绝的理由：
 
@@ -271,14 +233,6 @@
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] 报销申请被拒绝：[CurrencyCode][BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>您出于 [RequestPurpose] 向 [OrganizationName] 提出的价值 [CurrencyCode][BudgetAmountFloat] 报销申请的收据未被该组织的出纳员验证。这通常是由于您的报销申请文档有一些问题。
-
-需要通过进一步的沟通来跟进这个问题。如果您短时间内没有收到出纳员的回复，请进一步跟进与他们的沟通。</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] 报销收据未被验证：[CurrencyCode][BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>您出于 [RequestPurpose] 向 [OrganizationName] 提出的价值 [CurrencyCode][BudgetAmountFloat] 的报销申请已被该组织的会计标记为已支付。
@@ -297,15 +251,10 @@
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] 报销收据已被验证：[CurrencyCode][BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>对于您的 [BudgetName] 预算价值 [CurrencyCode][BudgetAmountFloat] 的发票已被 [Supplier] 附上 [Description] 的描述而提交。您必须在其被支付前确认这张发票。
-
-请在 [ExternalUrl]Financial/AttestCosts 登录 [InstallationName] 以确认或者拒绝。</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] 发票已被提交：[CurrencyCode][BudgetAmountFloat] - 需要确认。</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>在一个您的领域中，一个新的 [Regular] 被手动加到 [OrganizationName]。</value>
   </data>

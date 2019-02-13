@@ -197,20 +197,10 @@ Swarmops continuera à essayer et continuera à envoyer ces notifications tant q
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName]- ACTION ITEM] Fonds du Hotwallet Bitcoin insuffisants pour effectuer les paiements - recharger immédiatement</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>L’avance demandée avec [OrganizationName] pour [CurrencyCode] [BudgetAmountFloat], concernant [RequestPurpose], a été attestée par le propriétaire du budget. On va maintenant procéder au paiement pour vous.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Avance en cash attestée:[CurrencyCode][BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>L’avance monétaire demandée avec [OrganizationName] pour [CurrencyCode] [BudgetAmountFloat], concernant [RequestPurpose], a été DE-attestée par le propriétaire du budget. Cela indique généralement une sorte de problème avec votre demande.
-
-Attendez-vous à plus de communication de la part du propriétaire du budget pour suivre l'affaire.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Avance en cash DE-attestée: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Votre avance en espèces avec [OrganizationName] pour [CurrencyCode] [BudgetAmountFloat] concernant [RequestPurpose] a été refusée. Le texte ci-dessous a été présenté comme motif du refus:
 
@@ -228,42 +218,14 @@ Cela signifie que vous devriez voir le montant sur votre compte bientôt.</value
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Avance en cash payée: [CurrencyCode][BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] a demandé une avance monétaire de [CurrencyCode] [BudgetAmountFloat] pour but de [RequestPurpose]. Cet argent fait partie de votre budget, [BudgetName].
-
-Veuillez vous connecter à [InstallationName] à [ExternalUrl] Financier / Attester les coûts pour attester ou refuser.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[OrganizationName]- ACTION ITEM] Avance en cash demandée: [CurrencyCode][BudgetAmountFloat]</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Votre demande de remboursement avec [OrganizationName] pour [CurrencyCode] [BudgetAmountFloat], concernant [RequestPurpose], a été attestée par le propriétaire du budget. Il vous sera versé lorsque les reçus seront confirmés valides.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Demande de remboursement attestée: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] a créé une demande de remboursement du budget de [BudgetName] pour le montant de [CurrencyCode][BudgetAmountFloat]. La demande concerne [RequestPurpose]. Vous aurez besoin d'attester cette demande de remboursement.
-
-Veuillez vous connecter sur [InstallationName] au lien [ExternalUrl] afin d'accepter ou refuser cette demande.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName]- ACTION ITEM] Demande de remboursement créée : [CurrencyCode][BudgetAmountFloat] - Attestation nécessaire</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Votre demande de remboursement avec [OrganizationName] pour [CurrencyCode][BudgetAmountFloat], concernant [RequestPurpose], a été DE-attestée de la part du propriétaire du budget. Cela indique souvent qu'il y'a un problème avec votre demande de remboursement.
-
-Vous recevrez plus de détails de la part du propriétaire du budget à ce propos.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Demande de remboursement DE-attestée: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Votre demande de remboursement avec [OrganizationName] pour [CurrencyCode][BudgetAmountFloat] concernant [RequestPurpose] a été refusée. Le texte ci-dessous explique pourquoi:
 
@@ -274,14 +236,6 @@ Vous recevrez plus de détails de la part du propriétaire du budget à ce propo
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Demande de remboursement REFUSEE: [CurrencyCode]
 [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Les reçus de votre demande de remboursement avec [OrganizationName] pour [CurrencyCode] [BudgetAmountFloat], concernant [RequestPurpose], ont été validés par les détenteurs des registres financiers de l'organisation. Cela indique généralement une sorte de problème avec la documentation de votre demande de remboursement.
-
-Attendez-vous à plus de communication à suivre sur le sujet. Si vous ne recevez rien de la part les détenteurs des registres bientôt à ce sujet, faites le suivi avec eux.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Reçus de demandes de remboursement DE-validés: [CurrencyCode][BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Votre demande de remboursement avec [OrganizationName] pour [CurrencyCode] [BudgetAmountFloat], concernant [RequestPurpose], a été marquée comme payée par les comptables de l'organisation.
@@ -300,15 +254,10 @@ La réclamation vous sera payée lorsque le montant sera également attesté par
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Reçus de la demande de remboursement validés: [CurrencyCode][BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Une facture de la part de [Supplier], concernant [Description], a été archivée sur votre budget de [BudgetName] pour le montant de [CurrencyCode] [BudgetAmountFloat]. Vous devez attester cette facture avant d'entamer le paiment.
-
-Veuillez vous connectez à [InstallationName] dans [ExternalUrl] Financier/Attester coûts ou refuser.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Facture archivée: [CurrencyCode][BudgetAmountFloat] - Attestation nécessaire</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Un nouveau [Regular] a été ajouté manuellement à [OrganizationName] dans un domaine qui vous appartient.</value>
   </data>

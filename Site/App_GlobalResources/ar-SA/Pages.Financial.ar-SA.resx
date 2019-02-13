@@ -117,23 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>السلفة النقدية رقم {0:N0} لـ {1} تم الموافقة عليها لـ {3:N2}.</value>
-    <comment>Status message.</comment>
-  </data>
-  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>السلفة النقدية رقم {0:N0} ل {1} لم يتم الموافقة عليها. هذه السلفة لن يتم دفعها حتى يتم المصادقة عليها مرة أخرى.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
-    <value>لا يمكنك الإقرار بهذا المبلغ. الميزانية فارغة للسنة {0}.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
-    <value>لا يمكنك الاقرار بمبلغ سالب.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>لا يمكنك الاقرار بمبلغ منعدم.</value>
-  </data>
+  
+  
+  
+  
+  
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>عذرًا ، لا يمكنك إعادة تمويل دفع الرواتب.</value>
   </data>
@@ -143,14 +131,7 @@
   <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
     <value>يرجى تحديد ميزانية لإعادة توجيه الرسوم.</value>
   </data>
-  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>المطالبة المالية للنفقات رقم {0:N0} من {1} على {2} {3:N2} قد تم الموافقة عليها.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>المطالبة المالية للنفقات رقم {0:N0} من {1} لم يتم المصادقة عليها. هذه المطالبة لن يتم دفع تعويضها حتى تتم المصادقة عليها مرة أخرى.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>الإجراء</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -177,27 +158,12 @@
     <value>المطلوب</value>
     <comment>Header for the requested amount.</comment>
   </data>
-  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
-    <value>تكاليف بانتظار مصادقتك</value>
-  </data>
-  <data name="AttestCosts_Info" xml:space="preserve">
-    <value>هنا يمكنك التصديق على النففات التي يطالب بها الآخرون من ميزانيتك. لا شيء يتم صرفه إلى بعد الحصول على مصادقتك.</value>
-  </data>
-  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>الفاتورة رقم {0:N0} من {1} على {2} {3:N2} قد تمت المصادقة عليها.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>الفاتورة رقم {0:N0} من {1} لم تتم المصادقة عليها. هذه الفاتورة لن يتم دفعها حتى تتم المصادقة عليها مرة أخرى.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>التصديق</value>
-    <comment>keep short</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>التصديق</value>
-  </data>
+  
+  
+  
+  
+  
+  
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>رفض</value>
     <comment>keep short</comment>
@@ -223,35 +189,19 @@
   <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
     <value>قم بتحويل التكلفة الى هته الميزانية بدلا من ذلك:</value>
   </data>
-  <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>اصلاح المشاكل او رفض الشهادة</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
-    <value>سوف اصادق على هذا، لكن بمبلغ مختلف.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
-    <value>المبلغ غير صحيح. سوف أصادق عليه عندما يكون صحيحا.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
-    <value>لن أصادق على هذا السجل. انه مخدوش.</value>
-    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
-  </data>
+  
+  
+  
+  
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
     <value>يجب أن يكلف هذا السجل ميزانية مختلفة. قم بتحريكه هناك.</value>
   </data>
   <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
     <value>ما الذي يبدو على انه مشكلة في هذا السجل؟</value>
   </data>
-  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
-    <value>لا يوجد ما يكفي من الأموال المتبقية في الميزانية للمصادقة على هذه التكلفة.</value>
-  </data>
-  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>لا يوجد ما يكفي من الاموال للمصادقة على هذا. يمكنك المصادقة الى غاية {0}{1:N2} اكثر في هته الميزانية لسنة {2}.</value>
-    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
-  </data>
-  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
-    <value>&lt;strong&gt; سحب زائد من الميزانية؟&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;ليس هنالك ما يكفي من المال في الميزانية لتغطية هذه النفقة. في الحالات العادية، سوف تُمْنع من المصادقة عليها. لكن، يمكنك تجاهل هذا التحديد و المصادقة عليها في جميع الحالات، وبالتالي ستتسبب للحساب في فرط في السحب من الميزانية.&lt;br/&gt;&lt;br/&gt; هل تريد المصادقة على هذه النفقة، والتسبب في سحب زائد من الميزانية، أم تريد إلغاء المصادقة، والبقاء ضمن معايير الميزانية؟&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
+  
+  
+  
   <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
     <value>البقاء على الميزانية</value>
   </data>
@@ -262,27 +212,14 @@
     <value>إن الميزانية تعرضت إلى سحب زائد.</value>
     <comment>The UPPERCASE is intentional.</comment>
   </data>
-  <data name="AttestCosts_PageTitle" xml:space="preserve">
-    <value>المصادقة على النففات</value>
-  </data>
-  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>المؤتمر رقم {0:N0}، الذي يتم تنظيمه من قبل {1}، قد تمت المصادقة عليه لـ {3:N2}.</value>
-  </data>
-  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>المؤتمر رقم {0:N0} الذي يتم تنظيمه من قبل {1} لم تتم المصادقة عليه. ولن يتم إعطاءه الضوء الأخضر حتى تعاد المصادقة عليه مرة أخرى.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
+  
+  
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>المرتب رقم #{0:N0} لـ {1} قد تمت المصادقة عليه لـ {3:N2}.</value>
   </data>
-  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>المرتب رقم{0:N0} لـ {1} لم تتم المصادقة عليه. ولن يتم دفعه حتى تعاد المصادقة عليه مرة أخرى.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;تحذير: الميزانية التالية غير جاهزة&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; إن الكلفة التي أنت بصدد الموافقة عليها تنتمي إلى ميزانية غير مجهزة -- حساب في الخزانة بدون مالك ولا يمتلك ميزانية محددة للسنة. قم بزيارة خطة الحساب وابحث عن توزيع الميزانية بالنسبة للإيرادات والنفقات المتوقعة.&lt;br/&gt;
-&lt;br/&gt;هذه الرسالة ستظهر فقط مرة واحدة عند زيارتك لمكان الشهادات.&lt;br/&gt;</value>
-  </data>
+  
+  
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>مبلغ الفاتورة الكلي (في{0})</value>
     <comment>{0} is the organization's main currency.</comment>
@@ -580,9 +517,7 @@
   <data name="ValidateReceipts_PageTitle" xml:space="preserve">
     <value>مطابقة الإيصالات</value>
   </data>
-  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>لم يمكن مطابقة إيصالات المطالبة المالية رقم {0:N0} الخاصة بـ {1} {2:N2}. المطالبة المالية لن يتم نقلها إلى التعويضات حتى تتم إعادة مطابقتها.</value>
-  </data>
+  
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>تمت مطابقة إيصالات المطالبة المالية رقم {0:N0} الخاصة بـ {1}{2:N2}.</value>
   </data>
@@ -732,4 +667,5 @@
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>تم تقديم {0} طلبيات بنجاح.</value>
   </data>
+  
 </root>

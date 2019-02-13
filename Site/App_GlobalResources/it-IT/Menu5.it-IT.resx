@@ -180,9 +180,7 @@
   <data name="Menu5_Financial" xml:space="preserve">
     <value>Finanziaria</value>
   </data>
-  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>Attesta costi</value>
-  </data>
+  
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Richiedi il rimborso spese</value>
   </data>
@@ -267,9 +265,7 @@
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Registri contabili</value>
   </data>
-  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>Account Plan</value>
-  </data>
+  
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Controllo registri</value>
   </data>

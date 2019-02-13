@@ -191,20 +191,10 @@ Swarmops seguirá intentándolo y seguirá enviando estas notificaciones siempre
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] - OBJETO DE ACCIÓN] Cartera caliente Bitcoin Cash es insuficiente para realizar pagos - coloque fondos inmediatamente</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Su adelanto de efectivo solicitado con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido atestiguado por el propietario del presupuesto. Ahora procederá a pagarle.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Avance de efectivo atestiguado: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Su adelanto de efectivo solicitado con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido DE-atestiguado por el propietario del presupuesto. Esto generalmente indica algún tipo de problema con su solicitud.
-
-Se esperan más comunicaciones del propietario del presupuesto sobre el asunto.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Adelanto de Efectivo DE-atestiguado: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Su adelanto de efectivo con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] con respecto a [RequestPurpose] ha sido denegado. El siguiente texto contiene la razón para dicha acción:
 
@@ -222,42 +212,14 @@ Esto significa que pronto debería ver el monto en su cuenta.</value>
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Adelanto de Efectivo Pagado: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] ha solicitado un avance de efectivo de [CurrencyCode] [BudgetAmountFloat] con el propósito de [RequestPurpose]. Este dinero es parte de su presupuesto, [BudgetName]
-
-Por favor ingrese a [InstallationName] en [ExternalUrl]Financial/AttestCosts para corroborar o denegar.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - OBJETO DE ACCIÓN] Adelanto de Efectivo Solicitado: [CurrencyCode] [BudgetAmountFloat] - Se Necesita Corroboración</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Su reclamo de gasto con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], en relación a [RequestPurpose], ha sido corroborada por el propietario del presupuesto. Se le pagará cuando los recibos sean confirmados como válidos.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Reclamo de Gastos Atestiguado: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] ha creado una reclamo de gastos contra el presupuesto de [BudgetName] por la cantidad de [CurrencyCode] [BudgetAmountFloat]. El reclamo se refiere a [RequestPurpose]. Tendrá que atestiguar este reclamo de gastos.
-
-Porfavor, inicie sesión en [InstallationName] en [ExternalUrl]Financial/AttestCost para corroborar o denegar.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - OBJETO DE ACCIÓN] Reclamo de Gastos Creado: [CurrencyCode] [BudgetAmountFloat] - Se Necesita Corroboración</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Su reclamo de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido DE-atestiguada por el propietario del presupuesto. Esto generalmente indica algún tipo de problema con su reclamo de gastos.
-
-Se esperan más comunicaciones del propietario del presupuesto sobre el asunto.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Reclamo de Gastos DE-atestiguado: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Su reclamo de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] con respecto a [RequestPurpose] ha sido denegado. El siguiente texto contiene la razón para dicha acción:
 
@@ -267,14 +229,6 @@ Se esperan más comunicaciones del propietario del presupuesto sobre el asunto.<
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Reclamo de gastos DENEGADO: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Los recibos de su reclamo de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], han sido DE-validados por los contadores financieros de la organización. Esto generalmente indica algún tipo de problema con la documentación de su reclamo de gastos.
-
-Se esperan más comunicaciones sobre el asunto. Si no recibe noticias de los contadores en poco tiempo sobre este asunto, contactelos usted.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Recibos de Reclamo de Gastos DE-validada: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Su reclamo de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido marcado como pagado por los contadores de la organización.
@@ -293,15 +247,10 @@ El reclamo se le pagará cuando el monto también haya sido atestiguado por el p
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Recibos de Reclamo de Gastos Validados: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Se ha presentado una factura de [Supplier], relacionada a [Description], contra su presupuesto de [BudgetName] por la cantidad de [CurrencyCode] [BudgetAmountFloat]. Debe corroborar esta factura antes de proceder con el pago.
-
-Por favor, inicie sesión en [InstallationName] en [ExternalUrl]Financial/AttestCosts para corroborar o denegar.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - OBJETO DE ACCIÓN] Factura Introducida: [CurrencyCode] [BudgetAmountFloat] - Se Necesita Corroboración</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Un nuevo [Regular] se agregó manualmente a [OrganizationName] en una de sus áreas.</value>
   </data>

@@ -123,9 +123,7 @@
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Esta es la descripción general de las cuentas financieras en su libro contable. Puede hacer algo de mantenimiento desde aquí, incluso si la mayoría de las operaciones diarias se deben delegar a los propietarios del presupuesto.</value>
   </data>
-  <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>Plan de cuenta</value>
-  </data>
+  
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Cuenta</value>
   </data>
@@ -629,9 +627,7 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(descripción detallada retenida)</value>
   </data>
-  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Transacciones desequilibradas (debe coincidir o corregir)</value>
-  </data>
+  
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Cuenta</value>
     <comment>Usually the account name. Can also be "several".</comment>
@@ -646,9 +642,7 @@
     <value>Tx#</value>
     <comment>Keep VERY short.</comment>
   </data>
-  <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Algunas transacciones financieras importadas automáticamente no se pueden combinar automáticamente con la contabilidad en curso. Aquí es donde empareja manualmente tales transacciones para "equilibrarlas" (si una transacción solo tiene una parte completa, como el dinero enviado a la organización sin registro de para qué es el dinero, se dice que la transacción está "desequilibrada").</value>
-  </data>
+  
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Equilibrio / Coincidencia de transacción # &lt;span id="spanModalTransactionId"&gt; 67890 &lt;/span&gt; Desde &lt;span id="spanModalTransactionDate"&gt; yyyy-mmm-dd &lt;/span&gt;</value>
     <comment>The span text is replaced runtime.</comment>

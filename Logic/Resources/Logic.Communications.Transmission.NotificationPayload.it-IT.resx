@@ -194,20 +194,10 @@ Swarmops continuerà a provare e continuerà ad inviare queste notifiche fino a 
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] fondi Bitcoin Cash hotwallet insufficienti per effettuare i pagamenti - ricaricare immediatamente</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>L'anticipo richiesto con [OrganizationName] per [CurrencyCode] [BudgetAmountFloat], riguardante [RequestPurpose], è stato confermato dal responsabile del Bilancio. Ora si potrà procedere al pagamento.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Anticipo contanti attestato: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>L'anticipo richiesto con [OrganizationName] per [CurrencyCode] [BudgetAmountFloat], riguardante [RequestPurpose], non è stato confermato dal responsabile del Bilancio. Questo di solito indica che vi sono problemi con la vostra richiesta.
-
-Rimanete in attesa di ulteriori indicazioni dal responsabile del bilancio.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Anticipo contanti non attestato: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Il tuo anticipo di contanti con [OrganizationName] di [CurrencyCode][BudgetAmountFloat] riguardante [RequestPurpose] è stato negato. Il testo sotto è stato fornito come motivo della negazione:
 
@@ -225,42 +215,14 @@ Questo significa che dovresti vedere l'importo sul tuo conto a breve.</value>
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Anticipo contanti pagato: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] ha richiesto un anticipo contanti di [CurrencyCode] [BudgetAmountFloat] per [RequestPurpose]. Questi soldi appartengono al tuo budget, [BudgetName].
-
-Accedere a [InstallationName] presso [ExternalUrl] Finanziario/AttestaSpese per attestare o negare.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION iTEM] Anticipo contanti richiesto: [CurrencyCode][BudgetAmountFloat] - Attestazione necessaria</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>La tua richiesta di rimborso spese con [OrganizationName] di [CurrencyCode] [BudgetAmountFloat], relativa a [RequestPurpose], è stata attestata dal proprietario del budget. Il pagamento verrà effettuato quando le ricevute saranno state validate.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Anticipo contanti attestato: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] ha creato una richiesta di rimborso spese nei confronti del budget [BudgetName] per un importo di [CurrencyCode] [BudgetAmountFloat]. La richiesta riguarda [RequestPurpose]. Dovrai attestare questa richiesta di rimborso spese.
-
-Accedere a [InstallationName] su [ExternalUrl]Finanziario/AttestaSpese per attestare o negare.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName]- ACTION ITEM] Richiesta di rimborso spese creata: [CurrencyCode][BudgetAmountFloat] - Attestazione necessaria</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>La vostra richiesta di rimborso spese con [OrganizationName] di [CurrencyCode] [BudgetAmountFloat], relativa a [RequestPurpose], è stata negata dal proprietario del budget. Questo di solito indica qualche tipo di problema con la vostra richiesta di rimborso spese.
-
-Aspettatevi una maggiore comunicazione al riguardo, da parte del proprietario del budget.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Richiesta di rimborso spese negata: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>La richiesta di rimborso spese con [OrganizationName] di [CurrencyCode] [BudgetAmountFloat] relativa a [RequestPurpose] è stata negata. Il testo che segue è stato fornito come motivo della negazione:
 
@@ -270,14 +232,6 @@ Aspettatevi una maggiore comunicazione al riguardo, da parte del proprietario de
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Richiesta di rimborso spese NEGATA: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Le ricevute per la vostra richiesta di rimborso spese con [OrganizationName] di [CurrencyCode] [BudgetAmountFloat], relativa a [RequestPurpose], è stata negata dai responsabili della contabilità finanziaria dell'organizzazione. Questo di solito indica un qualche tipo di problema con la documentazione relativa alla vostra richiesta di rimborso spese.
-
-Aspettatevi di ricevere messaggi riguardanti il problema, da parte dei contabili. Se non si riceve alcun messaggio a riguardo in breve tempo, mettetevi in contatto con loro.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[OrganizationName] Ricevute per la richiesta di rimborso spese annullate: [CurrencyCode][BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>La tua richiesta di anticipo contanti con [OrganizationName] di [CurrencyCode] [BudgetAmountFloat], relativa a [RequestPurpose], è stata contrassegnata come pagata dai contabili dell'organizzazione.
@@ -296,15 +250,10 @@ La richiesta verrà pagata quando l'importo sarà stato attestato anche dal prop
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Ricevute per la richiesta di rimborso spese convalidate: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Una fattura da [Supplier], riguardante [Description], è stata presentata contro il vostro budget per [BudgetName] per l'importo di [CurrencyCode][BudgetAmountFloat]. È necessario attestare questa fattura prima di procedere al pagamento.
-
-Accedere a [InstallationName] a [ExternalUrl]Finanziario/AttestaSpese per attestare o negare.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[OrganizationName] - ACTION ITEM] Fattura archiviata: [CurrencyCode] [BudgetAmountFloat] - Attestazione necessaria</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Un nuovo [Regular] è stato aggiunto manualmente a [OrganizationName] in uno dei vostri settori.</value>
   </data>

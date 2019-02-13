@@ -185,18 +185,10 @@ Swarmops будут продолжать пытаться и будут отпр
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ДЕЙСТВИТЕЛЬНЫЙ ДЕТАЛЬ] Биткойн Наличный ваниль, недостаточный для платежей - немедленно долейте</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Запрошенный денежный аванс с [OrganizationName] для [CurrencyCode] [BudgetAmountFloat], относительно [RequestPurpose], был подтвержден владельцем бюджета. Теперь он перейдет к выплате вам.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance Attested: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Запрошенный денежный аванс с [OrganizationName] для [CurrencyCode] [BudgetAmountFloat], относительно [RequestPurpose], был засвидетельствован владельцем бюджета. Обычно это указывает на какую-то проблему с вашим запросом.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Денежный аванс DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Ваш денежный аванс с [OrganizationName] для [CurrencyCode] [BudgetAmountFloat] относительно [RequestPurpose] как было отказано. Приведенный ниже текст был приведен в качестве основания для отказа в этом:
 
@@ -213,36 +205,13 @@ Swarmops будут продолжать пытаться и будут отпр
     <value>[[OrganizationName]] Оплата наличными: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] - ДЕЙСТВИЕ] ДЕНЕЖНЫЙ ЗАПРОС: [CurrencyCode] [BudgetAmountFloat] - Требуется аттестация</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Ваш расход [OrganizationName] для [CurrencyCode] [BudgetAmountFloat], относительно [RequestPurpose], был подтвержден владельцем бюджета. Он будет выплачен вам, когда квитанции будут подтверждены.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Подтверждение о расходах: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] создал требование о расходах в отношении бюджета [BudgetName] на сумму [CurrencyCode] [BudgetAmountFloat]. Требование касается [RequestPurpose]. Вам нужно будет подтвердить это требование о расходах.
-
-Войдите в систему [InstallationName] в [ExternalUrl] Financial / AttestCosts для подтверждения или отрицания.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ДЕЙСТВИЕ ДЕЙСТВИЯ] Заявка на оплату Создана: [CurrencyCode] [BudgetAmountFloat] - Требуется аттестация</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Ваше требование расходов с [OrganizationName] для [CurrencyCode] [BudgetAmountFloat], относительно [RequestPurpose], был засвидетельствован владельцем бюджета. Это обычно указывает на какую-то проблему с вашей претензией к расходам.
-
-Ожидайте больше информации от владельца бюджета, чтобы следить за этим вопросом.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Затраты на оплату труда DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Ваше требование расходов с [OrganizationName] для [CurrencyCode] [BudgetAmountFloat] относительно [RequestPurpose] было отказано. Приведенный ниже текст был приведен в качестве основания для отказа в этом:
 
@@ -252,10 +221,6 @@ Swarmops будут продолжать пытаться и будут отпр
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Затраты на выплату: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Расходы на получение иска о расходах DE-validated: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Ваше требование расходов с [OrganizationName] для [CurrencyCode] [BudgetAmountFloat], относительно [RequestPurpose], был отмечен как оплаченный бухгалтерами организации.
@@ -274,15 +239,10 @@ Swarmops будут продолжать пытаться и будут отпр
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Подтвержденные поступления к расходам: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Счет-фактура из [Supplier], относительно [Description], был подан против вашего бюджета [BudgetName] на сумму [CurrencyCode] [BudgetAmountFloat]. Вы должны подтвердить этот счет перед его выплатой.
-
-Войдите в систему [InstallationName] в [ExternalUrl]Financial / AttestCosts для подтверждения или отрицания.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ДЕЙСТВИЕ] Поле счета: [CurrencyCode] [BudgetAmountFloat] - Требуется аттестация</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Новый [Regular] был добавлен вручную [OrganizationName] в пределах вашей территории.</value>
   </data>

@@ -149,20 +149,10 @@
   </data>
   
   
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Ihre gewünschte Vorauszahlung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat], über [RequestPurpose], wurde vom Haushaltseigentümer bestätigt. Es wird nun fortgeführt, um Ihnen zu zahlen.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Barvorschuss bestätigt: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Ihre gewünschte Vorauszahlung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat], über [RequestPurpose], wurde vom Budgeteigner bestätigt. Dies deutet normalerweise auf ein Problem mit Ihrer Anfrage hin.
-
-Erwarten Sie mehr Kommunikation vom Haushaltseigentümer, um auf die Angelegenheit zu folgen.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Barkredit DE-attestiert: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Ihr Barkredit mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat] über [RequestPurpose] wurde verweigert. Der folgende Text wurde als Grund für die Ablehnung angegeben:
 
@@ -180,38 +170,14 @@ Das bedeutet, dass Sie den Betrag in Kürze auf Ihrem Konto sehen sollten.</valu
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Bar Vorauszahlung: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] hat um Vorkasse gebeten [CurrencyCode] [BudgetAmountFloat] zum Zwecke der [RequestPurpose]. Dieses Geld ist Teil Ihres Budgets, [BudgetName].
-
-Bitte melden Sie sich an [InstallationName] beim [ExternalUrl] Finanzielle / AttestKosten zum Bestätigen oder Verweigern.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - AKTIONSGEGENSTAND] Barkredit angefordert: [CurrencyCode] [BudgetAmountFloat] - Attestierung benötigt</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Ihre Spesenabrechnung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat], über [RequestPurpose], wurde vom Haushaltseigentümer bestätigt. Es wird Ihnen ausgezahlt, wenn die Belege gültig sind.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Spesenabrechnung bescheinigt: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] hat eine Spesenabrechnung zulasten des Haushalts der [BudgetName] für den [CurrencyCode] [BudgetAmountFloat] geschaffen. Der Anspruch bezieht sich auf [RequestPurpose]. Du musst diese Spesenabrechnung bezeugen. Bitte melden Sie sich [InstallationName] an [ExternalUrl]Financial/AttestCosts zu bestätigen oder zu verweigern.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - AKTIONSGEGENSTAND] Ausgabenanspruch erstellt: [CurrencyCode] [BudgetAmountFloat] - Attestierung benötigt</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Ihre Spesenabrechnung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat], über [RequestPurpose], wurde vom Budgeteigner bestätigt. Dies weist normalerweise auf ein Problem mit Ihrer Spesenabrechnung hin.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Spesenabrechnung DE-attestiert: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Ihre Spesenabrechnung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat] über [RequestPurpose] wurde verweigert. Der folgende Text wurde als Grund für die Ablehnung angegeben:
 
@@ -221,14 +187,6 @@ Bitte melden Sie sich an [InstallationName] beim [ExternalUrl] Finanzielle / Att
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Ausgabenanspruch VERWEIGERT: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Die Belege für Ihre Spesenabrechnung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat], über [RequestPurpose], wurden von den Finanzbuchhaltern der Organisation validiert. Dies weist normalerweise auf ein Problem mit der Dokumentation Ihrer Spesenabrechnung hin.
-
-Erwarte, dass mehr Kommunikation in der Sache folgen wird. Wenn Sie in dieser Angelegenheit nicht von den Protokollführern hören, machen Sie mit ihnen weiter.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Spesenabrechnungen für die Ausgaben DE-validiert: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Ihre Spesenabrechnung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat], über [RequestPurpose], wurde von den Buchhaltern der Organisation als ausbezahlt markiert.
@@ -247,15 +205,10 @@ Die Forderung wird Ihnen ausgezahlt, wenn der Betrag auch vom Eigentümer des Et
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Spesenabrechnungen bestätigt: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Eine Rechnung von [Supplier], über [Description], wurde für Ihr Budget von [BudgetName] in Höhe von [CurrencyCode] [BudgetAmountFloat] eingereicht. Sie müssen diese Rechnung bestätigen, bevor sie zur Auszahlung kommt.
-
-Bitte melden Sie sich an [InstallationName] beim [ExternalUrl] Finanzielle / AttestKosten zum Bestätigen oder Verweigern.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - AKTIONSGEGENSTAND] Rechnungsfeld: [CurrencyCode] [BudgetAmountFloat] - Attestierung benötigt</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Eine neue [Regular] wurde manuell zu [OrganizationName] in einem Bereich von Ihnen hinzugefügt.</value>
   </data>

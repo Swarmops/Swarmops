@@ -260,9 +260,7 @@ Se ti sei offerto di assumerti una responsabilità formale, qualcuno (probabilme
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Completa registrazione.</value>
   </data>
-  <data name="Signup_Unsupported" xml:space="preserve">
-    <value>Swarmops non ha ancora implementato il supporto per questa struttura tariffaria.</value>
-  </data>
+  
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>A quale funzione sei interessato?</value>
   </data>

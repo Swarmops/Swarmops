@@ -633,7 +633,8 @@
     <value>(detaljerad beskrivning visas ej)</value>
   </data>
   <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Obalanserade transaktioner (måste matcha eller fixa)</value>
+    <value>Lösa betalningar (måste balanseras, matchas eller fixas)</value>
+    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
   </data>
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Konto</value>
@@ -650,7 +651,7 @@
     <comment>Keep VERY short.</comment>
   </data>
   <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Några automatimporterade finansiella transaktioner kunde inte matchas automatiskt mot den löpande redovisningen. Det är här som du manuellt matchar transaktionerna att "balansera" (om en transaktion bara har ena sidan redovisad, till exempel utbetalda pengar från organisationen utan motsvarande post vad pengarna gick till, så sägs transaktionen vara "obalanserad").</value>
+    <value>Några automatimporterade finansiella transaktioner kunde inte matchas automatiskt mot den löpande redovisningen. Det är här som du manuellt matchar transaktionerna att "balansera" (om en transaktion bara har ena sidan redovisad, till exempel utbetalda pengar från organisationen utan motsvarande post vad pengarna gick till, så sägs transaktionen vara "obalanserad" och en "lös betalning", det vill säga, den har ingen motpart i bokföringen).</value>
   </data>
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Balanserar/matchar transaktionen # &lt;span id="spanModalTransactionId"&gt;[...]&lt;/span&gt; från &lt;span id="spanModalTransactionDate"&gt;[...laddar...]&lt;/span&gt;</value>
@@ -1006,7 +1007,7 @@
     <value>Det här är en checklista med saker att göra för att stänga föregående månad och börja den nya med avseende på redovisning.</value>
   </data>
   <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
-    <value>Matcha alla lösa transaktioner</value>
+    <value>Matcha alla lösa betalningar</value>
     <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
   </data>
   <data name="EndOfMonth_Title" xml:space="preserve">

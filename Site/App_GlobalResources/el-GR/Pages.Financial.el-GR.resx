@@ -117,23 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>Η Προκαταβολή Μετρητών #{0:N0} για {1} έχει επιβεβαιωθεί για {3:N2}.</value>
-    <comment>Status message.</comment>
-  </data>
-  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>Έγινε αναίρεση επιβεβαίωσης της Προκαταβολής Μετρητών #{0:N0} για {1}.  Δεν πρόκειται να πληρωθεί αν δεν επιβεβαιωθεί ξανά.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
-    <value>Δεν μπορείτε να επιβεβαιώσετε αυτό το ποσό. Ο προϋπολογισμός είναι κενός για το έτος {0}.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
-    <value>Δεν μπορείτε να επιβεβαιώσετε ένα αρνητικό ποσό.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>Δεν μπορείτε να επιβεβαιώσετε ένα μηδενικό ποσό.</value>
-  </data>
+  
+  
+  
+  
+  
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>Λυπούμαστε, δεν μπορείτε να αναπρογραμματίσετε μια πληρωμή μισθοδοσίας.</value>
   </data>
@@ -143,14 +131,7 @@
   <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
     <value>Παρακαλώ επιλέξτε έναν προϋπολογισμό για την ανάθεση της χρέωσης.</value>
   </data>
-  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>Η Διεκδίκηση Εξόδων #{0:N0} από {1} για {2}{3:N2} έχει επιβεβαιωθεί.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Έγινε αναίρεση επιβεβαίωσης της Διεκδίκησης Εξόδων #{0:N0} από {1}. Δεν πρόκειται να πληρωθεί αν δεν επιβεβαιωθεί ξανά.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Ενέργεια</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -177,27 +158,12 @@
     <value>Ζητήθηκε</value>
     <comment>Header for the requested amount.</comment>
   </data>
-  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
-    <value>Χρεώσεις σε αναμονή για την επιβεβαίωσή σας</value>
-  </data>
-  <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Εδώ γίνεται η επιβεβαίωση των χρεώσεων που αιτούνται άλλα άτομα από τους προϋπολογισμούς σας. Τίποτα δεν πληρώνεται προτού επιβεβαιωθεί από εσάς.</value>
-  </data>
-  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>To Τιμολόγιο #{0:N0} από {1} για {2}{3:N2} έχει επιβεβαιωθεί.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>Έγινε ακύρωση επιβεβαίωσης του Τιμολογίου #{0:N0} από {1}.  Δεν πρόκειται να πληρωθεί αν δεν επιβεβαιωθεί ξανά.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>Επιβεβαίωση</value>
-    <comment>keep short</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Επιβεβαίωση</value>
-  </data>
+  
+  
+  
+  
+  
+  
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Άρνηση</value>
     <comment>keep short</comment>
@@ -223,35 +189,19 @@
   <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
     <value>Ανάθεση της χρέωσης σε αυτόν τον προϋπολογισμό εναλλακτικά:</value>
   </data>
-  <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>Διόρθωση προβλημάτων ή άρνηση επιβεβαίωσης</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
-    <value>Θα το επιβεβαιώσω, αλλά για ένα διαφορετικό ποσό.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
-    <value>Το ποσό είναι λάθος. Θα το επιβεβαιώσω με το σωστό ποσό.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
-    <value>Πλήρης άρνηση επιβεβαίωσης αυτής της εγγραφής.</value>
-    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
-  </data>
+  
+  
+  
+  
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
     <value>Αυτή η εγγραφή θα έπρεπε να χρεώνει κάποιον άλλο προϋπολογισμό. Πραγματοποιήστε ανάθεση της χρέωσης αντίστοιχα.</value>
   </data>
   <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
     <value>Ποιο φαίνεται να είναι το πρόβλημα με αυτήν την εγγραφή;</value>
   </data>
-  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
-    <value>Δεν απομένουν αρκετά κεφάλαια στον προϋπολογισμό για την επιβεβαίωση αυτής της χρέωσης.</value>
-  </data>
-  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>Δεν υπάρχουν αρκετά κεφάλαια για την επιβεβαίωση αυτού. Μπορείτε να επιβεβαιώσετε έως και {0} {1:N2} παραπάνω σε αυτόν τον προϋπολογισμό για το έτος {2}.</value>
-    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
-  </data>
-  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
-    <value>&lt;strong&gt;ΥΠΕΡΒΑΣΗ ΠΡΟΥΠΟΛΟΓΙΣΜΟΥ;&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Δεν απομένουν αρκετά κεφάλαια στον προϋπολογισμό προκειμένου να επιβεβαιώσετε αυτά τα έξοδα. Κανονικά, θα αποκλείονταν από την διαδικασία επιβεβαίωσης. Ωστόσο, μπορείτε να παρακάμψετε αυτόν τον περιορισμό και να πραγματοποιήσετε επιβεβαίωση ούτως ή άλλως, ωθώντας ως εκ τούτου τον λογαριασμό να υπερβεί τον προϋπολογισμό του.&lt;br/&gt;&lt;br/&gt;Θέλετε να πραγματοποιήσετε επιβεβαίωση των εξόδων, και κατά συνέπεια να επιβάλλετε υπέρβαση προϋπολογισμού, ή θέλετε να ακυρώσετε την επιβεβαίωση, και αντί αυτού να παραμείνετε εντός προϋπολογισμού;&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
+  
+  
+  
   <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
     <value>Μείνετε εντός Προϋπολογισμού</value>
   </data>
@@ -262,26 +212,14 @@
     <value>ΕΓΙΝΕ ΥΠΕΡΒΑΣΗ ΠΡΟΥΠΟΛΟΓΙΣΜΟΥ.</value>
     <comment>The UPPERCASE is intentional.</comment>
   </data>
-  <data name="AttestCosts_PageTitle" xml:space="preserve">
-    <value>Επιβεβαίωση Χρεώσεων</value>
-  </data>
-  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>Το Συνέδριο #{0:N0}, που διοργανώνεται από {1}, έχει επιβεβαιωθεί για {3:N2}.</value>
-  </data>
-  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>Έγινε αναίρεση επιβεβαίωσης του Συνεδρίου #{0:N0} από {1}.  Δεν πρόκειται να δοθεί έγκριση αν δεν επιβεβαιωθεί ξανά.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
+  
+  
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>Η Μισθοδοσία #{0:N0} για {1} επιβεβαιώθηκε για {3:N2}.</value>
   </data>
-  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Έγινε αναίρεση επιβεβαίωσης της Μισθοδοσίας #{0:N0} για {1}. Δεν πρόκειται να πληρωθεί αν δεν επιβεβαιωθεί ξανά.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;ΠΡΟΕΙΔΟΠΟΙΗΣΗ: ΜΗ ΑΡΧΙΚΟΠΟΙΗΜΕΝΟΣ ΠΡΟΫΠΟΛΟΓΙΣΜΟΣ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Η χρέωση που επιβεβαιώνετε ανήκει σε έναν μη αρχικοποιημένο προϋπολογισμό -- έναν λογαριασμό στο μητρώο που δεν έχει ιδιοκτήτη ούτε καθορισμένο επιτρεπτό όριο προϋπολογισμού για το έτος. Εξετάστε το ενδεχόμενο πραγματοποίησης επίσκεψης στο Σχέδιο Λογαριασμού και κατανομής προϋπολογισμών για τα αναμενόμενα έσοδα και έξοδα.&lt;br/&gt;&lt;br/&gt;Αυτό το μήνυμα θα εμφανίζεται μόνο μια φορά ανά επίσκεψη στις Επιβεβαιώσεις.&lt;br/&gt;</value>
-  </data>
+  
+  
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Συνολικό ποσό Τιμολογίου (σε {0})</value>
     <comment>{0} is the organization's main currency.</comment>
@@ -579,9 +517,7 @@
   <data name="ValidateReceipts_PageTitle" xml:space="preserve">
     <value>Επικύρωση Αποδείξεων</value>
   </data>
-  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>Έγινε αναίρεση επικύρωσης των αποδείξεων για την Διεκδίκηση Εξόδων #{0:N0} για {1} {2:N2}. Η διεκδίκηση εξόδων δεν θα προχωρήσει σε πληρωμή αν δεν ξαναγίνει επικύρωση.</value>
-  </data>
+  
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Οι αποδείξεις για την Διεκδίκηση Εξόδων #{0:N0} για {1} {2:N2} έχουν επικυρωθεί.</value>
   </data>
@@ -731,4 +667,5 @@
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>Κατατέθηκαν επιτυχώς {0} διεκδικήσεις.</value>
   </data>
+  
 </root>

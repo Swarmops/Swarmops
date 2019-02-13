@@ -260,9 +260,7 @@ Jeśli zgłosisz się na ochotnika do wzięcia na siebie odpowiedzialności, kto
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Zakończ rejestrację.</value>
   </data>
-  <data name="Signup_Unsupported" xml:space="preserve">
-    <value>Swarmops nie wdrożył jeszcze wsparcia dla tej struktury opłat.</value>
-  </data>
+  
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>Na jakiej pozycji jesteś zainteresowany?</value>
   </data>

@@ -306,12 +306,18 @@
   <data name="Position_Geographic_SwarmLeaderAssistant" xml:space="preserve">
     <value>Swarmcare Asistanı</value>
   </data>
-  
-  
+  <data name="Position_Geographic_SwarmLeaderAssistant_Commercial" xml:space="preserve">
+    <value>Topluluk Bakım Asistanı</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Commercial_Plural" xml:space="preserve">
+    <value>Topluluk Bakım Asistanları</value>
+  </data>
   <data name="Position_Geographic_SwarmLeaderAssistant_Plural" xml:space="preserve">
     <value>Swarmcare Asistanları</value>
   </data>
-  
+  <data name="Position_Geographic_SwarmLeader_Commercial" xml:space="preserve">
+    <value>Topluluk Bakım Lideri</value>
+  </data>
   <data name="Position_Strategic_Auditor" xml:space="preserve">
     <value>Denetçi</value>
   </data>

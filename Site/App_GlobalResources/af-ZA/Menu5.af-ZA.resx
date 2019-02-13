@@ -181,7 +181,8 @@
     <value>crwdns1639818:0crwdne1639818:0</value>
   </data>
   <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>crwdns1639819:0crwdne1639819:0</value>
+    <value>crwdns6563476:0crwdne6563476:0</value>
+    <comment>This approves costs for payout from the organization</comment>
   </data>
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>crwdns1639820:0crwdne1639820:0</value>
@@ -268,7 +269,7 @@
     <value>crwdns1639843:0crwdne1639843:0</value>
   </data>
   <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>crwdns1639844:0crwdne1639844:0</value>
+    <value>crwdns6563478:0crwdne6563478:0</value>
   </data>
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>crwdns6498773:0crwdne6498773:0</value>
@@ -452,8 +453,8 @@
     <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
   </data>
   <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
-    <value>crwdns6563348:0crwdne6563348:0</value>
-    <comment>This is sometimes called an "account plan" but this term has many overloaded meanings in the context of operations software.</comment>
+    <value>crwdns6563480:0crwdne6563480:0</value>
+    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
   </data>
   <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
     <value>crwdns6563350:0crwdne6563350:0</value>

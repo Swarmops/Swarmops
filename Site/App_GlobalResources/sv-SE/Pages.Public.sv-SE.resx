@@ -236,9 +236,7 @@
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Slutför ansökan.</value>
   </data>
-  <data name="Signup_Unsupported" xml:space="preserve">
-    <value>Swarmops har ännu inte stöd för denna avgiftsstruktur.</value>
-  </data>
+  
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>Vilken befattning är du intresserad av?</value>
   </data>

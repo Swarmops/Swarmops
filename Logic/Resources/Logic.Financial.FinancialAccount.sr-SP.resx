@@ -137,7 +137,7 @@
     <comment>Value Added Tax</comment>
   </data>
   <data name="Asset_OutboundInvoices" xml:space="preserve">
-    <value>Outbound Invoices</value>
+    <value>Излазне фактуре</value>
   </data>
   <data name="Asset_Paypal" xml:space="preserve">
     <value>Paypal налог</value>
@@ -154,7 +154,7 @@
     <value>Business или прва класа</value>
   </data>
   <data name="Cost_AirfareCoach" xml:space="preserve">
-    <value>Coach</value>
+    <value>Економска класа</value>
   </data>
   <data name="Cost_AllocatedFunds" xml:space="preserve">
     <value>Додељена средства</value>
@@ -303,7 +303,7 @@
     <value>Укупни дуг</value>
   </data>
   <data name="Debt_InboundInvoices" xml:space="preserve">
-    <value>Inbound фактуре</value>
+    <value>Улазне фактуре</value>
   </data>
   <data name="Debt_OutboundVat" xml:space="preserve">
     <value>Outbound VAT</value>

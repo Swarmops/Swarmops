@@ -966,6 +966,40 @@
     <value>Enviar</value>
     <comment>As in "Submit this data for processing"</comment>
   </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>Libreta general</value>
+  </data>
+  
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>{0} de {1}</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>No saltar</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>omitir esto</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>Omitir</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

@@ -123,9 +123,7 @@
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Muhasebe defterinizdeki finansal hesapların özeti budur. Günlük işlemlerin çoğu bütçe sahiplarine devredilse bile burada biraz bakım yapabilirsiniz.</value>
   </data>
-  <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>Hesap Planı</value>
-  </data>
+  
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Hesap</value>
   </data>
@@ -414,7 +412,9 @@
   <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
     <value>Gidere eklenebilir</value>
   </data>
-  
+  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
+    <value>Otomasyon Profili</value>
+  </data>
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>Hesabı Düzenle</value>
   </data>
@@ -570,7 +570,9 @@
   <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
     <value>Baş Harfler</value>
   </data>
-  
+  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
+    <value>Girildi</value>
+  </data>
   <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
     <value>İşlem &lt;span class="spanAnnoyingBlink"&gt;DENGESİZ:&lt;/span&gt; eksik miktar</value>
   </data>
@@ -621,7 +623,8 @@
     <value>(detaylı açıklama yok)</value>
   </data>
   <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Karşılıksız İşlemler (Eşleştirmeniz ya da Düzeltmeniz Gerekiyor)</value>
+    <value>Sarkan Ödemeler (Dengeleme, Eşleme, veya Düzeltme Gerekiyor)</value>
+    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
   </data>
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Hesap</value>
@@ -638,7 +641,7 @@
     <comment>Keep VERY short.</comment>
   </data>
   <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Bazı oto-içe aktarılan finansal işlemler otomatik olarak devam eden muhasebe hesaplarıyla eşleştirilemez. Burası, bu tür işlemleri "dengelemek" için manuel olarak eşleştirdiğiniz yerdir (eğer bir işlemin sadece bir kısmı tamamlanmış ise, bir organizasyona paranın ne için olduğu ile ilgili herhangi bir kayıt bulunmaksızın gönderilen para gibi, işlem "dengesiz" olarak geçer).</value>
+    <value>Bazı otomatik ithal edilen finansal işlemler, devam eden muhasebe için otomatik olarak eşleştirilemez. bu tür işlemleri manuel olarak "dengeleme" için eşleştirdiğiniz yerdir (bir işlemin yalnızca bir kısmı tamamlanmışsa, paranın ne için olduğuna dair hiçbir kayıt olmadan organizasyona gönderilen bir para gibi, işlemin "dengesiz" olduğu ve defter tutma muadili eksik olduğu "sarkan bir ödeme" olduğu söylenir).</value>
   </data>
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Dengeleme/Eşleştirme İşlemi &lt;span id="spanModalTransactionId"&gt; 67890 &lt;/span&gt; Üzerinden &lt;span id="spanModalTransactionDate"&gt; yyyy-mmm-dd &lt;/span&gt;</value>
@@ -724,7 +727,9 @@
   <data name="BitcoinHotwallet_Address" xml:space="preserve">
     <value>Bitcoin Adresi</value>
   </data>
-  
+  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
+    <value>Microcoin Bakiyesi</value>
+  </data>
   <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
     <value>Türetme Yolu</value>
   </data>
@@ -862,7 +867,9 @@
   <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
     <value>Ciro</value>
   </data>
-  
+  <data name="ViewVatReports_Info" xml:space="preserve">
+    <value>Dosyalanmış bir KDV raporunu görüntülüyorsunuz. Gelen ve giden KDV, hem de toplam ciro, rapor dönemi için kaydedilmiştir. Bu rapor vergi yetkililerine iletilmeye hazırdır.</value>
+  </data>
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>KDV Raporları</value>
     <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
@@ -936,16 +943,34 @@
   
   
   
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Yıllık Raporlar</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>Dış Hesap Verileri ve Hesap Eşleşmeleri</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Bordro ve Vergiler</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+    <value>Muhasebecilere, hissedarlara, vb. Raporlar gönderin.</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
   
   
   
   
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>{0} için işlem verilerini ({1}) yükle</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>Maaş Bordrosu: Tanımlanan maaş bordrosu yok</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
+  </data>
 </root>

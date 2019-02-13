@@ -149,20 +149,10 @@
   </data>
   
   
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Ang iyong hiniling na cash advance sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay pinatunayan ng may-ari ng badyet. Ito ay magpapatuloy ngayon sa pagbabayad sa iyo.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance Attested: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Ang iyong hiniling na cash advance sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay DE-attested ng may-ari ng badyet. Ito ay karaniwang nagpapahiwatig ng isang uri ng problema sa iyong kahilingan.
-
-Inaasahan ang higit pang komunikasyon mula sa may-ari ng badyet upang sundin ang bagay na ito.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance DE-affested: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Ang iyong cash advance sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat] tungkol sa [RequestPurpose] ay tinanggihan. Ang teksto sa ibaba ay ibinigay bilang dahilan para sa pagtangging ito:
 
@@ -180,42 +170,14 @@ Nangangahulugan ito na dapat mong makita ang halaga sa iyong account sa ilang sa
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Cash Advance Paid: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>Humingi ng [ConcernedPersonName] ang cash advance ng [CurrencyCode] [BudgetAmountFloat] para sa layunin ng [RequestPurpose]. Ang pera na ito ay bahagi ng iyong badyet, [BudgetName].
-
-Mangyaring mag-log on sa [InstallationName] sa [ExternalUrl] Financial / AttestCosts upang patunayan o tanggihan.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ITEM ACTION] Hiniling ng Cash Advance: [CurrencyCode] [BudgetAmountFloat] - Kinakailangan ang Pagpapatotoo</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Ang claim ng iyong gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay pinatunayan ng may-ari ng badyet. Ito ay babayaran sa iyo kapag ang mga resibo ay napatunayan na wasto.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Gastos na Claim Na-Attested: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>Ang [ConcernedPersonName] ay lumikha ng isang gastos sa paghahabol laban sa badyet ng [BudgetName] para sa halaga ng [CurrencyCode] [BudgetAmountFloat]. Ang claim ay may kaugnayan sa [RequestPurpose]. Kakailanganin mong patunayan ang gastos sa claim na ito.
-
-Mangyaring mag-log on sa [InstallationName] sa [ExternalUrl] Financial / AttestCosts upang patunayan o tanggihan.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Gastos na Pag-claim Nalikha: [CurrencyCode] [BudgetAmountFloat] - Kinakailangan ang Pagpapatotoo</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Ang claim sa gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay DE-attested ng may-ari ng badyet. Ito ay karaniwang nagpapahiwatig ng isang uri ng problema sa iyong claim claim.
-
-Inaasahan ang higit pang komunikasyon mula sa may-ari ng badyet upang sundin ang bagay na ito.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Ang claim sa gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat] tungkol sa [RequestPurpose] ay tinanggihan. Ang teksto sa ibaba ay ibinigay bilang dahilan para sa pagtangging ito:
 
@@ -225,14 +187,6 @@ Inaasahan ang higit pang komunikasyon mula sa may-ari ng badyet upang sundin ang
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Ang mga resibo para sa claim ng iyong gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay na-validate ng mga tagatala ng financial record ng organisasyon. Ito ay kadalasang nagpapahiwatig ng isang uri ng problema sa dokumentasyon ng iyong claim sa gastos.
-
-Inaasahan ang higit pang komunikasyon upang sundin ang bagay na ito. Kung hindi mo marinig mula sa mga tagatala ng rekord sa maikling panahon sa bagay na ito, sundin mo ang mga ito.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Ang claim ng iyong gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], tungkol sa [RequestPurpose], ay minarkahan bilang binabayaran ng mga accountant ng samahan.
@@ -251,15 +205,10 @@ Ang paghahabol ay babayaran sa iyo kapag ang halaga ay napatunayan din ng may-ar
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Mga Resibo ng Mga Kinakailangan sa Claim na Napatunayan: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Ang isang invoice mula sa [Supplier], tungkol sa [Description], ay isinampa laban sa iyong badyet ng [BudgetName] para sa halaga ng [CurrencyCode] [BudgetAmountFloat]. Kailangan mong ibunyag ang invoice na ito bago magpunta sa payout.
-
-Mangyaring mag-log on sa[InstallationName]] sa [ExternalUrl] Financial / AttestCosts upang patunayan o tanggihan.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Kinakailangan ang Pagpapatotoo</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Ang isang bagong [Regular] ay idinagdag nang manu-mano sa [OrganizationName] sa loob ng iyong lugar.</value>
   </data>

@@ -180,9 +180,7 @@
   <data name="Menu5_Financial" xml:space="preserve">
     <value>Finanzas</value>
   </data>
-  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>Dar fe de los costos</value>
-  </data>
+  
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Reclamar reembolso de los gastos</value>
   </data>
@@ -267,9 +265,7 @@
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Libros de contabilidad</value>
   </data>
-  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>Plan de cuentas</value>
-  </data>
+  
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Auditar libros de auditoría</value>
   </data>
@@ -441,11 +437,17 @@
   
   
   
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>Mi salario</value>
+    <comment>This lists salary payments for the logged on individual</comment>
+  </data>
   
   
   
   
   
-  
-  
+  <data name="Menu5_Reports" xml:space="preserve">
+    <value>Informes</value>
+    <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
+  </data>
 </root>

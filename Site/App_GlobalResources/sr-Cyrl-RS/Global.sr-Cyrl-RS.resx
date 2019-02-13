@@ -758,7 +758,7 @@
     <value>Ресетуј корисничку лозинку?</value>
   </data>
   <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
-    <value>Управо ресетујете корисничку лозинку. Поменути корисник ће примити линк за ресет у mail-у, а који ћега одвести на страну за ресетовање Swarmops лозинке.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Немојте никада радити ово, осим ако то од Вас није тражио корисник.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Да ли желите да наставите са процедуром за ресетовање лозинке?</value>
+    <value>Управо ресетујете корисничку лозинку. Поменути корисник ће примити линк за ресет у mail-у, а који ће га одвести на страну за ресетовање Swarmops лозинке.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Немојте никада радити ово, осим ако то од Вас није тражио корисник.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Да ли желите да наставите са процедуром за ресетовање лозинке?</value>
   </data>
   <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
     <value>Ресет лозинке је забрањен</value>
@@ -779,7 +779,7 @@
     <value>2FA</value>
   </data>
   <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
-    <value>&lt;strong&gt;НЕ МОЖЕТЕ ПРУЖИТИ 2FA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Не можете активирати дво-факторску аутентификацију у туђе име. Свако то мора учинити за себе, како би само он(а) имао(ла) кајне кључеве.</value>
+    <value>&lt;strong&gt;НЕ МОЖЕТЕ ПРУЖИТИ 2FA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Не можете активирати дво-факторску аутентификацију у туђе име. Свако то мора учинити за себе, како би само он(а) имао(ла) тајне кључеве.</value>
     <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
   </data>
   <data name="Master_EditPerson2FAEnable_ConfirmingRemovedOwn" xml:space="preserve">
@@ -793,7 +793,7 @@
     <comment>Displayed when removing 2FA for yourself</comment>
   </data>
   <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
-    <value>&lt;strong&gt;ИСКЉУЧУЈЕТЕ ДВО-ФАКТОРСКУ АУТЕНТИФИКАЦИЈУ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Учините ово само ако су Вас сами корисници захтевали да им уклоните 2FA &lt;strong&gt;и&lt;/strong&gt; ако сте у потпуности сигурни да је захтев дошао управо од те особе, чије се мере сигурности сада уклањају (што је и у сагласности са правилима организације која се односе на верификацију).&lt;br/&gt;&lt;br/&gt;Желите да наставите са уклањањем сигурносних мера за овог корисника? То ће их вратити на класично уношење лозинке.</value>
+    <value>&lt;strong&gt;ИСКЉУЧУЈЕТЕ ДВО-ФАКТОРСКУ АУТЕНТИФИКАЦИЈУ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Учините ово само ако су сами корисници захтевали од Вас да им уклоните 2FA &lt;strong&gt;и&lt;/strong&gt; ако сте у потпуности сигурни да је захтев дошао управо од те особе, чије се мере сигурности сада уклањају (што је и у сагласности са правилима организације која се односе на верификацију).&lt;br/&gt;&lt;br/&gt;Желите да наставите са уклањањем сигурносних мера за овог корисника? То ће их вратити на класично уношење лозинке.</value>
     <comment>Displayed when removing 2FA for someone else</comment>
   </data>
   <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
@@ -1005,5 +1005,82 @@
   <data name="Financial_Ebitda_Short" xml:space="preserve">
     <value>EBITDA</value>
     <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
+  </data>
+  <data name="Financial_AllBalancesSettled" xml:space="preserve">
+    <value>Сви биланси су решени</value>
+    <comment>Nobody owes anybody anything</comment>
+  </data>
+  <data name="Financial_CurrentBalance" xml:space="preserve">
+    <value>Тренутни биланс</value>
+  </data>
+  <data name="Financial_NoPaymentHistory" xml:space="preserve">
+    <value>Нема убележених уплата</value>
+  </data>
+  <data name="Financial_Owed" xml:space="preserve">
+    <value>Дуг</value>
+    <comment>As in, "Amount Owed"</comment>
+  </data>
+  <data name="Financial_Paid" xml:space="preserve">
+    <value>Плаћено</value>
+    <comment>As in, "Amount Paid To Person"</comment>
+  </data>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>Историја уплата</value>
+  </data>
+  <data name="Financial_PaymentSpecification" xml:space="preserve">
+    <value>Уплата #{0:N0}</value>
+    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
+  </data>
+  <data name="Financial_PayoutSpecification" xml:space="preserve">
+    <value>Исплата #{0:N0}</value>
+    <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
+  <data name="Financial_PersonIsOwed" xml:space="preserve">
+    <value>Особи се дугује</value>
+    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
+  </data>
+  <data name="Financial_PersonOwes" xml:space="preserve">
+    <value>Особа дугује износ</value>
+    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
+  </data>
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>Непотврђена исплата</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
+  </data>
+  <data name="Financial_YouAreOwed" xml:space="preserve">
+    <value>{0} Вам дугује</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Financial_YouOwe" xml:space="preserve">
+    <value>Дугујете овај износ</value>
+    <comment>Like Person Owes, but directed at the user at the screen</comment>
+  </data>
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>Нула</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
+  </data>
+  <data name="Global_Closed" xml:space="preserve">
+    <value>Затворено</value>
+    <comment>As in "record or transaction closed"</comment>
+  </data>
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>Нема забелешки</value>
+    <comment>There are no records of the requested type</comment>
+  </data>
+  <data name="Global_Error_Concurrency" xml:space="preserve">
+    <value>Ова радња више није могућа.</value>
+    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>Ставка</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>Ставке</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
+  <data name="Global_Opened" xml:space="preserve">
+    <value>Отворен</value>
+    <comment>As in "record or transaction opened"</comment>
   </data>
 </root>

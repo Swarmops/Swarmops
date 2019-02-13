@@ -130,14 +130,14 @@
     <value>Ваша порука</value>
   </data>
   <data name="SendMassMessage_Info" xml:space="preserve">
-    <value>Слање порука групи људи унутар организацији. Поруку можете послати путем mail-а (добар начин за слање денералних информација и билтена) или путем телефона (наметљиво, а и кошта).</value>
+    <value>Слање порука групи људи унутар организације. Поруку можете послати путем mail-а (добар начин за слање генералних информација и билтена) или путем телефона (наметљиво, а и кошта).</value>
   </data>
   <data name="SendMassMessage_MessageHint" xml:space="preserve">
-    <value>Овде откуцајте своју поруку. На располагању имате стандардне markup опције, као што су *bold*, _italic_, ==headers==. Две нове линије отпочињу нови параграф. Овај mail ће бити послат као dual-mode cleartext и HTML.</value>
+    <value>Овде откуцајте своју поруку. На располагању имате стандардне markup опције, као што су *bold*, _italic_, ==headers==. Две нове линије отпочињу нови параграф. Овај mail ће бити послат на два начина, као cleartext и HTML.</value>
   </data>
   
   <data name="SendMassMessage_RecipientCount" xml:space="preserve">
-    <value>Нема прималаца |Један прималац|{0:N0} Прималаца</value>
+    <value>Нема прималаца| Један прималац|{0:N0} Прималаца</value>
     <comment>Vertical bar divides none|one|many</comment>
   </data>
   <data name="SendMassMessage_RecipientType" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
   </data>
   <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
-    <value>Ова порука је прво послата Вама, да бисте видели како изгледа пре него што се проследи и осталима.</value>
+    <value>Ова порука је прво послата Вама, да бисте видели како изгледа пре него што се проследи осталима.</value>
   </data>
   <data name="SendMassMessage_Title" xml:space="preserve">
     <value>Пошаљи масовну поруку</value>

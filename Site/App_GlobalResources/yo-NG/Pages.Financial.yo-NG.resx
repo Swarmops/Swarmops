@@ -117,23 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>Owo Agbaalẹ #{0:N0} fun {1} ti jẹ jijẹri fun {3:N2}.</value>
-    <comment>Status message.</comment>
-  </data>
-  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>Owo Agbaalẹ #{0:N0} fun {1} je AI-jẹrisi.  Ko ni je sisan jade ayafi to ba di jijẹri lẹẹkansi.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
-    <value>O ko le jẹri iye yii. Isuna naa jẹ ofifo fun ọdun {0}.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
-    <value>O ko le jẹri iye odi.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>O ko le jẹri iye odo.</value>
-  </data>
+  
+  
+  
+  
+  
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>Ma binu, o ko le ṣe atunṣe isuna owo ise sisanjade.</value>
   </data>
@@ -143,14 +131,7 @@
   <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
     <value>Jowo mu isuna kan lati ṣe atunṣe afojusun idiyele naa fun.</value>
   </data>
-  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>Ibéèrè owo agbapada #{0:N0} lati {1} fun {2} {3:N2} ti jẹ jijẹri.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Owo Agbaalẹ #{0:N0} lati {1} je AI-jẹrisi. Ko ni je sisan jade ayafi to ba di jijẹri lẹẹkansi.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Igbese</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -177,27 +158,12 @@
     <value>Di bibeere</value>
     <comment>Header for the requested amount.</comment>
   </data>
-  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
-    <value>Awọn owo ti o nduro fun ijẹrisi re</value>
-  </data>
-  <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Eyi ni ibi ti o ti n ṣe ijẹrisi awon owo ti awọn eniyan miiran n beere lati inu awọn isuna rẹ. Ohun kankan koni je sisan ṣaaju ki o to jẹri rẹ.</value>
-  </data>
-  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>Iwe iye-owo oja #{0:N0} lati {1} fun {2} {3:N2} ti jẹ jijẹri.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>Iwe iye-owo oja #{0:N0} lati {1} je AI-jerisi.  Ko ni je sisan jade ayafi to ba di jijẹri lẹẹkansi.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>Jẹri</value>
-    <comment>keep short</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Jẹri</value>
-  </data>
+  
+  
+  
+  
+  
+  
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Kọ</value>
     <comment>keep short</comment>
@@ -223,35 +189,19 @@
   <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
     <value>Gbe idiyele naa lo si iṣuna yi dipo:</value>
   </data>
-  <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>Satunṣe awon isoro tabi ko ijẹrisi</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
-    <value>Mo ma jẹrisi eyi, ṣugbọn fun iye ti o yatọ.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
-    <value>Iye naa ko tọ. Mo ma jẹri rẹ pẹlu iye ti o tọ.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
-    <value>Mi koni jẹri akọsilẹ yii. O ti bajẹ.</value>
-    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
-  </data>
+  
+  
+  
+  
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
     <value>Akọsilẹ yii yẹ ki o se idiyele isuna ti o yatọ. Gbe lo sibẹ.</value>
   </data>
   <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
     <value>Kini o dabi iṣoro pẹlu akosilẹ yii?</value>
   </data>
-  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
-    <value>Ko si awon owo ti o to to ṣẹku ninu isuna naa lati jeri iye owo yi.</value>
-  </data>
-  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>Ko si awon owo ti o to lati jeri eyi. O le jẹri to {0} {1:N2} diẹ sii ninu isuna yii fun ọdun naa {2}.</value>
-    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
-  </data>
-  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
-    <value>&lt;strong&gt;ITAYO ISUNA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ko si awon owo ti o to to ṣẹku ninu isuna naa lati jeri inawo yi. Ni deede, yoo je didena lati ni ijẹrisi. Sibẹsibẹ, o le bori idaduro yii ati ki o jẹri sibẹsibẹ, nitorina o jẹ ki akọọlẹ naa tayọ isuna rẹ.&lt;br/&gt;&lt;br/&gt;Ṣe o fẹ lati jẹrisi inawo naa, nitorina fi ipa se itayo, tabi ṣe o fẹ fagilee ijẹrisi, duro lori isuna dipo?&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
+  
+  
+  
   <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
     <value>Duro lori Isuna</value>
   </data>
@@ -262,26 +212,14 @@
     <value>ISUNA JE TITAYO.</value>
     <comment>The UPPERCASE is intentional.</comment>
   </data>
-  <data name="AttestCosts_PageTitle" xml:space="preserve">
-    <value>Awon iye owo ijẹri</value>
-  </data>
-  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>Apero #{0:N0}, je tito nipasẹ {1}, ti jẹ jijẹri fun {3:N2}.</value>
-  </data>
-  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>Apero #{0:N0} nipase {1} je AI-jerisi.  Ko ni je sisaami si ayafi ti o ba di jijẹri lẹẹkansi.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
+  
+  
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>Owo ise #{0:N0} fun {1} ti je jijeri fun {3:N2}.</value>
   </data>
-  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Owo ise #{0:N0} fun {1} je AI-jerisi. Ko ni je sisan jade ayafi to ba di jijẹri lẹẹkansi.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;IKILO: ISUNA TI A KO PILESE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Iye owo ti o n fọwọsi jẹ ti isuna ti a ko pilese -- akọọlẹ kan ninu leja ti ko ni eni ti o ni ati pe ko ni ipinnu owo isuna ti a ṣeto fun ọdun naa. Ro sisàbẹwò si Eto Akọọlẹ naa ati yiyan awọn isuna fun awọn ohun ti nwọle ati awon inawo ti a n reti.&lt;br/&gt;&lt;br/&gt;Ifiranṣẹ yii yoo ma han ni ẹẹkan fun ibewo si Awọn ijẹrisi.&lt;br/&gt;</value>
-  </data>
+  
+  
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Apapọ Iye iwe iye-owo oja (ni {0})</value>
     <comment>{0} is the organization's main currency.</comment>
@@ -581,9 +519,7 @@ Iṣẹ-ṣiṣe ati awọn fọọmu gangan yatọ nipasẹ orilẹ-ede ati nig
   <data name="ValidateReceipts_PageTitle" xml:space="preserve">
     <value>Se ijẹri awon iwe oja</value>
   </data>
-  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>Awon iwe oja fun Ibéèrè Owo agbapada #{0:N0} fun {1} {2:N2} ti je AI-jerisi. Ibéèrè owo agbapada naa koni tesiwaju si isanjade ayafi ti o ba je atunjẹri.</value>
-  </data>
+  
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Awon iwe oja fun Ibéèrè Owo agbapada #{0:N0} fun {1} {2:N2} ti je jijerisi.</value>
   </data>
@@ -733,4 +669,5 @@ Iṣẹ-ṣiṣe ati awọn fọọmu gangan yatọ nipasẹ orilẹ-ede ati nig
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>Aseyori awon ibeere {0} gbigbe dide.</value>
   </data>
+  
 </root>

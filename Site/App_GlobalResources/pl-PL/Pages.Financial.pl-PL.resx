@@ -117,23 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>Zaliczka Gotówkowa #{0:N0} za {1} została potwierdzona dla {3:N2}.</value>
-    <comment>Status message.</comment>
-  </data>
-  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>Zaliczka Gotówkowa #{0:N0} dla {1} została odrzucona. Nie zostanie wypłacona, o ile nie zostanie ponownie potwierdzona.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
-    <value>Nie możesz potwierdzić tej kwoty. Budżet jest pusty przez rok {0}.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
-    <value>Nie możesz potwierdzić ujemnej kwoty.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>Nie możesz potwierdzić zerowej kwoty.</value>
-  </data>
+  
+  
+  
+  
+  
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>Niestety, nie można ponownie zaplanować wypłaty wynagrodzenia.</value>
   </data>
@@ -143,14 +131,7 @@
   <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
     <value>Wybierz budżet, aby przekierować opłatę.</value>
   </data>
-  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>Wniosek o zwrot kosztów #{0:N0} z {1} dla {2} {3:N2} został potwierdzony.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Wniosek o zwrot kosztów #{0:N0} z {1} został potwierdzony. Pieniądze nie zostaną wypłacone dopóki wniosek nie zostanie ponownie potwierdzony.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Działanie</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -177,27 +158,12 @@
     <value>Żądana</value>
     <comment>Header for the requested amount.</comment>
   </data>
-  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
-    <value>Koszty czekające na twoje potwierdzenie</value>
-  </data>
-  <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Tutaj możesz poświadczyć o kosztach, o które proszą inne osoby z twoich budżetów. Nic nie zostanie zapłacone, dopóki tego nie potwierdzisz.</value>
-  </data>
-  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>Faktura #{0:N0} z {1} dla {2} {3:N2} została potwierdzona.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>Faktura nr #{0:N0} z {1} została odrzucona przez ONZ.  Nie zostanie wypłacona, o ile nie zostanie ponownie potwierdzona.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>Zaświadczenie</value>
-    <comment>keep short</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Zaświadczenie</value>
-  </data>
+  
+  
+  
+  
+  
+  
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Odmów</value>
     <comment>keep short</comment>
@@ -223,35 +189,19 @@
   <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
     <value>Przenieś opłatę do tego budżetu zamiast:</value>
   </data>
-  <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>Napraw problemy lub odmawiaj potwierdzenia</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
-    <value>Potwierdzę to, ale za inną kwotę.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
-    <value>Kwota jest zła. Potwierdzę to poprawną kwotą.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
-    <value>Odmów całkowicie potwierdzenia tego zapisu.</value>
-    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
-  </data>
+  
+  
+  
+  
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
     <value>Ten rejestr powinien pobierać inny budżet. Przenieś go tam.</value>
   </data>
   <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
     <value>Co wydaje się być nie tak z tym zapisem?</value>
   </data>
-  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
-    <value>W budżecie nie ma wystarczających środków, aby potwierdzić te koszty.</value>
-  </data>
-  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>Nie ma wystarczających funduszy, aby to potwierdzić. Możesz potwierdzić maksymalnie o {0} {1:N2} więcej w tym budżecie na rok {2}.</value>
-    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
-  </data>
-  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
-    <value>&lt;strong&gt;PRZEKROCZENIE BUDŻETU?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;W budżecie nie ma wystarczających środków, aby potwierdzić ten wydatek. Zwykle zostałby zablokowany przed potwierdzeniem. Możesz jednak uchylić to ograniczenie i potwierdzić, co powoduje, że konto przekracza kredyt.&lt;br/&gt;&lt;br/&gt;Czy chcesz potwierdzić wydatek, a tym samym wymusić przekroczenie stanu konta, czy też chcesz anulować zaświadczenie, zostając przy tym samych budżecie?&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
+  
+  
+  
   <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
     <value>Pozostań przy Budżecie</value>
   </data>
@@ -262,26 +212,14 @@
     <value>BUDŻET ZOSTAŁ PRZEKROCZONY.</value>
     <comment>The UPPERCASE is intentional.</comment>
   </data>
-  <data name="AttestCosts_PageTitle" xml:space="preserve">
-    <value>Koszty Potwierdzenia</value>
-  </data>
-  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>Konferencja #{0:N0},ustalona przez {1}, została potwierdzona dla {3:N2}.</value>
-  </data>
-  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>Konferencja #{0:N0} przez {1} została odrzucona. Nie zostanie ona dopuszczona, o ile nie zostanie ponownie potwierdzona.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
+  
+  
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>Wynagrodzenie #{0:N0} za {1} zostało potwierdzona dla {3:N2}.</value>
   </data>
-  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Wynagrodzenie #{0:N0} za {1} zostało odrzucone. Nie zostanie wypłacone, o ile nie zostanie ponownie potwierdzone.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;OSTRZEŻENIE: BUDŻET NIEZAINICJOWANY&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Koszt, który zatwierdzasz, należy do niezainicjowanego budżetu - konto w rejestrze, które nie ma właściciela i nie ma ustawionego dodatku budżetowego na rok. Rozważ skorzystanie z Planu Kont i przydzielenie budżetów na spodziewane przychody i wydatki.&lt;br/&gt;&lt;br/&gt;Ta wiadomość będzie wyświetlana jednokrotnie podczas wizyt dla potwierdzenia.&lt;br/&gt;</value>
-  </data>
+  
+  
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Łączna kwota faktury (w {0})</value>
     <comment>{0} is the organization's main currency.</comment>
@@ -579,9 +517,7 @@
   <data name="ValidateReceipts_PageTitle" xml:space="preserve">
     <value>Sprawdź Poprawność Poświadczeń</value>
   </data>
-  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>Poświadczenia Zwrotu Kosztów #{0:N0} za {1} {2:N2} zostały zatwierdzone przez DE. Roszczenie dotyczące wydatków nie rozpocznie wypłaty, chyba że zostanie ponownie zatwierdzone.</value>
-  </data>
+  
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Potwierdzono Pokwitowanie na Roszczenie o Zwrot Kosztów #{0:N0} za {1} {2:N2}.</value>
   </data>
@@ -731,4 +667,5 @@
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>Pomyślnie złożono {0} roszczenia.</value>
   </data>
+  
 </root>

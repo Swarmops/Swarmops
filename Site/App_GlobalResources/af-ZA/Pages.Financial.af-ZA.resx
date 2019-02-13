@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>crwdns6555273:0{0:N0}crwdnd6555273:0{1}crwdnd6555273:0{3:N2}crwdne6555273:0</value>
+    <value>crwdns6563424:0{0:N0}crwdnd6563424:0{1}crwdnd6563424:0{3:N2}crwdne6563424:0</value>
     <comment>Status message.</comment>
   </data>
   <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>crwdns6555274:0{0:N0}crwdnd6555274:0{1}crwdne6555274:0</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>crwdns6563426:0{0:N0}crwdnd6563426:0{1}crwdne6563426:0</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
-    <value>crwdns6556112:0{0}crwdne6556112:0</value>
+    <value>crwdns6563428:0{0}crwdne6563428:0</value>
   </data>
   <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
-    <value>crwdns6556113:0crwdne6556113:0</value>
+    <value>crwdns6563430:0crwdne6563430:0</value>
   </data>
   <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>crwdns6556114:0crwdne6556114:0</value>
+    <value>crwdns6563432:0crwdne6563432:0</value>
   </data>
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>crwdns6556115:0crwdne6556115:0</value>
@@ -144,12 +144,8 @@
     <value>crwdns6556117:0crwdne6556117:0</value>
   </data>
   <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>crwdns6555275:0{0:N0}crwdnd6555275:0{1}crwdnd6555275:0{2}crwdnd6555275:0{3:N2}crwdne6555275:0</value>
+    <value>crwdns6563434:0{0:N0}crwdnd6563434:0{1}crwdnd6563434:0{2}crwdnd6563434:0{3:N2}crwdne6563434:0</value>
     <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>crwdns6555276:0{0:N0}crwdnd6555276:0{1}crwdne6555276:0</value>
-    <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>crwdns6555277:0crwdne6555277:0</value>
@@ -178,25 +174,25 @@
     <comment>Header for the requested amount.</comment>
   </data>
   <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
-    <value>crwdns6555284:0crwdne6555284:0</value>
+    <value>crwdns6563436:0crwdne6563436:0</value>
   </data>
   <data name="AttestCosts_Info" xml:space="preserve">
-    <value>crwdns6555285:0crwdne6555285:0</value>
+    <value>crwdns6563438:0crwdne6563438:0</value>
   </data>
   <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>crwdns6555286:0{0:N0}crwdnd6555286:0{1}crwdnd6555286:0{2}crwdnd6555286:0{3:N2}crwdne6555286:0</value>
+    <value>crwdns6563440:0{0:N0}crwdnd6563440:0{1}crwdnd6563440:0{2}crwdnd6563440:0{3:N2}crwdne6563440:0</value>
     <comment>{2} is the currency.</comment>
   </data>
   <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>crwdns6555287:0{0:N0}crwdnd6555287:0{1}crwdne6555287:0</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>crwdns6563442:0{0:N0}crwdnd6563442:0{1}crwdne6563442:0</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>crwdns6556091:0crwdne6556091:0</value>
+    <value>crwdns6563444:0crwdne6563444:0</value>
     <comment>keep short</comment>
   </data>
   <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>crwdns6556118:0crwdne6556118:0</value>
+    <value>crwdns6563446:0crwdne6563446:0</value>
   </data>
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>crwdns6556092:0crwdne6556092:0</value>
@@ -224,16 +220,16 @@
     <value>crwdns6556097:0crwdne6556097:0</value>
   </data>
   <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>crwdns6556098:0crwdne6556098:0</value>
+    <value>crwdns6563448:0crwdne6563448:0</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
-    <value>crwdns6556099:0crwdne6556099:0</value>
+    <value>crwdns6563450:0crwdne6563450:0</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
-    <value>crwdns6556120:0crwdne6556120:0</value>
+    <value>crwdns6563452:0crwdne6563452:0</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
-    <value>crwdns6556100:0crwdne6556100:0</value>
+    <value>crwdns6563454:0crwdne6563454:0</value>
     <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
   </data>
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
@@ -243,14 +239,14 @@
     <value>crwdns6556102:0crwdne6556102:0</value>
   </data>
   <data name="AttestCosts_OutOfBudget" xml:space="preserve">
-    <value>crwdns6556059:0crwdne6556059:0</value>
+    <value>crwdns6563456:0crwdne6563456:0</value>
   </data>
   <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>crwdns6556121:0{0}crwdnd6556121:0{1:N2}crwdnd6556121:0{2}crwdne6556121:0</value>
+    <value>crwdns6563458:0{0}crwdnd6563458:0{1:N2}crwdnd6563458:0{2}crwdne6563458:0</value>
     <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
   </data>
   <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
-    <value>crwdns6556135:0crwdne6556135:0</value>
+    <value>crwdns6563460:0crwdne6563460:0</value>
   </data>
   <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
     <value>crwdns6556136:0crwdne6556136:0</value>
@@ -263,24 +259,24 @@
     <comment>The UPPERCASE is intentional.</comment>
   </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
-    <value>crwdns6555288:0crwdne6555288:0</value>
+    <value>crwdns6563462:0crwdne6563462:0</value>
   </data>
   <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>crwdns6555289:0{0:N0}crwdnd6555289:0{1}crwdnd6555289:0{3:N2}crwdne6555289:0</value>
+    <value>crwdns6563464:0{0:N0}crwdnd6563464:0{1}crwdnd6563464:0{3:N2}crwdne6563464:0</value>
   </data>
   <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>crwdns6555290:0{0:N0}crwdnd6555290:0{1}crwdne6555290:0</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>crwdns6563466:0{0:N0}crwdnd6563466:0{1}crwdne6563466:0</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>crwdns6555291:0{0:N0}crwdnd6555291:0{1}crwdnd6555291:0{3:N2}crwdne6555291:0</value>
   </data>
   <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>crwdns6555292:0{0:N0}crwdnd6555292:0{1}crwdne6555292:0</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>crwdns6563468:0{0:N0}crwdnd6563468:0{1}crwdne6563468:0</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>crwdns6556422:0crwdne6556422:0</value>
+    <value>crwdns6563470:0crwdne6563470:0</value>
   </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>crwdns6556593:0{0}crwdne6556593:0</value>
@@ -580,7 +576,7 @@
     <value>crwdns6555358:0crwdne6555358:0</value>
   </data>
   <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>crwdns6555359:0{0:N0}crwdnd6555359:0{1}crwdnd6555359:0{2:N2}crwdne6555359:0</value>
+    <value>crwdns6563472:0{0:N0}crwdnd6563472:0{1}crwdnd6563472:0{2:N2}crwdne6563472:0</value>
   </data>
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>crwdns6555360:0{0:N0}crwdnd6555360:0{1}crwdnd6555360:0{2:N2}crwdne6555360:0</value>
@@ -730,5 +726,9 @@
   </data>
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>crwdns6556787:0{0}crwdne6556787:0</value>
+  </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>crwdns6563474:0{0:N0}crwdnd6563474:0{1}crwdne6563474:0</value>
+    <comment>When somebody undoes a previous attestation.</comment>
   </data>
 </root>

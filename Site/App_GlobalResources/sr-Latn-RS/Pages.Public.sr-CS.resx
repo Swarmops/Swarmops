@@ -117,57 +117,173 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Signup_ActivationActive" xml:space="preserve">
+    <value>Ako želite da se angažujete više, možete se prijaviti za pozivanje na akcije, bez obaveze da se pojavite na njima.</value>
+  </data>
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>{0} za mogućnost</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationLevel" xml:space="preserve">
+    <value>Koliko aktivni želite da budete?</value>
+  </data>
+  <data name="Signup_ActivationLevelText" xml:space="preserve">
+    <value>Postoji puno nivoa na kojima se možete angažovati u {0}. Selektujte željeni nivo (naravno, kasnije možete promeniti svoj izbor):</value>
+    <comment>{0} is the org name.</comment>
+  </data>
+  <data name="Signup_ActivationPassive" xml:space="preserve">
+    <value>Ovo je podrazumevani nivo, što znači da ćete uzeti učešće u radu organizacije kao {0}.</value>
+    <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
+  </data>
+  <data name="Signup_ActivationPassiveApplication" xml:space="preserve">
+    <value>Ovo je osnovni nivo, što znači da se možete angažovati koliko želite (ili ne želite) kao {0} dok čekate svoju {1}.</value>
+  </data>
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>Običan {0}</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationVolunteer" xml:space="preserve">
+    <value>Ako želite da volontirate i formalno preuzmete neke odgovornosti unutar organizacije, Vaša želja je više nego dobrodošla. (Na sledećoj stranici ćete naći pozicije na kojima biste mogli da volontirate.)</value>
+  </data>
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>Vođa volontera</value>
+  </data>
+  <data name="Signup_ApplicationApproval" xml:space="preserve">
+    <value>Podnosite aplikaciju za {0} sa {1}. Ne postoje nikakve naknade za podnošenje aplikacije.</value>
+  </data>
+  <data name="Signup_ApplyingFor" xml:space="preserve">
+    <value>Aplicira za {0} u {1}</value>
+  </data>
+  <data name="Signup_DashboardMessage" xml:space="preserve">
+    <value>Dobrodošli! Ovo je &lt;em&gt;Kontrolna tabla,&lt;/em&gt; mesto na kome pristupate internim funkcijama {0}. Uskoro ćete dobiti više informacija putem mail-a.&lt;br/&gt;&lt;br/&gt;
+
+Ako volontirate sa formalnom odgovornošću, neko (verovatno volonter), će Vas kontaktirati i objasniti koje opcije postoje.</value>
+  </data>
+  <data name="Signup_DefaultFirstPageText" xml:space="preserve">
+    <value>Ovo je prilagodljivi tekst dobrodošlice u organizaciju. Još nije napisan, a zadaje se u okviru Admin / Org. Podešavanja.</value>
+  </data>
+  <data name="Signup_DefaultLastPageText" xml:space="preserve">
+    <value>Ovo je tekst za dovršetak prijavljivanja. Zadaje se pod Admin / Org. Podešavanja. Nakon što novi član klikne na "Kraj", biće primljen u organizaciju, prijavljen i poslat na Kontrolnu tablu sa pozicijom "korisnik-početnik".</value>
+  </data>
+  <data name="Signup_DefaultSidebarText" xml:space="preserve">
+    <value>Ovo je kratki sidebar sa informacijama. I on se podešava pod menijem Administracija / Org. Podešavanja.</value>
+  </data>
+  <data name="Signup_Error_MailExists" xml:space="preserve">
+    <value>Već ste se prijavili na ovaj Swarmops server. Molimo Vas, koristite funkciju Resetovanje Lozinke, koja je dostupna na ekranu za prijavljivanje, umesto da kreirate novi nalog.</value>
+  </data>
+  <data name="Signup_Error_NeedPassword" xml:space="preserve">
+    <value>Molimo Vas, selektujte i ponovo otkucajte lozinku.</value>
+  </data>
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>Lozinke se ne podudaraju.</value>
+  </data>
+  <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
+    <value>Izaberite željeni nivo aktivnosti.</value>
+  </data>
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>Molimo, izaberite makar jednu poziciju.</value>
+  </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>Naknade i troškovi</value>
+  </data>
+  <data name="Signup_FeeRenewalText" xml:space="preserve">
+    <value>Nema troškova naknade za prijavljivanje za {0} {1}. Ipak, plaća se nadoknada za produženje {1} nakon što istekne {2}. Naknada trenutno iznosi {3} {4:N2}, a nemate obavezu da produžavate.</value>
+    <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
+  </data>
+  <data name="Signup_FeeText" xml:space="preserve">
+    <value>{0} naknada iznosi {1} {2:N2} za {3}. Na kraju procesa, dobićete fakturu. (Možete prekinuti svoju {0} u bilo kom momentu.) </value>
+    <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>Finalizacija prijavljivanja</value>
+  </data>
+  <data name="Signup_MailLoginKey" xml:space="preserve">
+    <value>Vaša prijava (Vaš mail)</value>
+  </data>
+  <data name="Signup_NoFeeText" xml:space="preserve">
+    <value>Nema troškova naknade za prijavljivanje za {0} sa {2} niti bilo kakvih troškova nakon isteka {1}. Osim toga, možete prekinuti {0} u bilo kom momentu.</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
+  </data>
+  <data name="Signup_Password1" xml:space="preserve">
+    <value>Odaberite lozinku</value>
+  </data>
+  <data name="Signup_Password2" xml:space="preserve">
+    <value>Ponovite lozinku</value>
+  </data>
+  <data name="Signup_SigningUp" xml:space="preserve">
+    <value>Prijavljivanje za {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_Step1Header" xml:space="preserve">
+    <value>Dobrodošli!</value>
+  </data>
+  <data name="Signup_Step1Text" xml:space="preserve">
+    <value>Kratak uvod</value>
+  </data>
+  <data name="Signup_Step2Header" xml:space="preserve">
+    <value>O Vama</value>
+  </data>
+  <data name="Signup_Step2Text" xml:space="preserve">
+    <value>Recite nam nešto više o sebi?</value>
+  </data>
+  <data name="Signup_Step3Header" xml:space="preserve">
+    <value>Napravite prijavu</value>
+  </data>
+  <data name="Signup_Step3Text" xml:space="preserve">
+    <value>Izaberite lozinku</value>
+  </data>
+  <data name="Signup_Step4Header" xml:space="preserve">
+    <value>Aktivnost 1</value>
+  </data>
+  <data name="Signup_Step4Text" xml:space="preserve">
+    <value>Koliko aktivni želite da budete?</value>
+  </data>
+  <data name="Signup_Step5Header" xml:space="preserve">
+    <value>Aktivnost 2</value>
+  </data>
+  <data name="Signup_Step5Text" xml:space="preserve">
+    <value>Šta biste želeli da radite?</value>
+  </data>
+  <data name="Signup_Step6Header" xml:space="preserve">
+    <value>Gotovo</value>
+  </data>
+  <data name="Signup_Step6Header_Payment" xml:space="preserve">
+    <value>Plaćanje</value>
+  </data>
+  <data name="Signup_Step6Text" xml:space="preserve">
+    <value>To je sve. Prijavljeni ste!</value>
+  </data>
+  <data name="Signup_Step6Text_Payment" xml:space="preserve">
+    <value>Hajde da platimo {0} kao naknadu i da dovršimo proces!</value>
+    <comment>The {0} is Membership, Ambassadorship, etc. The Regularship label for this organization.</comment>
+  </data>
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>Registracija je obavljena.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Signup_VolunteerHeader" xml:space="preserve">
+    <value>Za koju poziciju ste zainteresovani?</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>Najdalja pozicija</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
+    <value>Pozicija</value>
+  </data>
+  <data name="Signup_VolunteerText" xml:space="preserve">
+    <value>Pogledajte poziciju za koju biste želeli da aplicirate/volontirate. Možete selektovati više opcija.</value>
+  </data>
+  <data name="Signup_Welcome" xml:space="preserve">
+    <value>Dobrodošli u {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_YourLogon" xml:space="preserve">
+    <value>Vaša prijava</value>
+  </data>
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>Molimo Vas, izaberite lozinku sa kojom ćete se prijavljivati na Swarmops. Kasnije možete izabrati i prijavu preko Twitter-a, Facebook-a, ili BitID i time olakšati proces.</value>
+  </data>
+  <data name="Signup_YourName" xml:space="preserve">
+    <value>Vaše ime</value>
+  </data>
 </root>

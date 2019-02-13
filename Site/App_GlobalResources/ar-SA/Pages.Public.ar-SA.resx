@@ -261,9 +261,7 @@
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>تم اكمال التسجيل.</value>
   </data>
-  <data name="Signup_Unsupported" xml:space="preserve">
-    <value>Swarmops لا يدعم حاليا هيكلة الرسوم بهذا الشكل.</value>
-  </data>
+  
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>ما هو المنصب الذي يهمك؟</value>
   </data>

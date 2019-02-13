@@ -141,15 +141,9 @@
   
   
   
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>[要請目的] に関する[通貨コード] [予算金額フロート] の[組織名] で要求された現金前貸しは、予算所有者によって逮捕されました。 これであなたへの支払いが始まります。</value>
-  </data>
   
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] を使用して要求された現金前貸しは、予算所有者によってDE証明されています。 これは、通常、あなたの要求に何らかの問題があることを示します。
-
-予算の所有者からのより多くのコミュニケーションが問題に従うことを期待してください。</value>
-  </data>
+  
+  
   
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] での現金前貸しが拒否されました。 以下のテキストは、それを否定する理由として与えられました：
@@ -164,31 +158,13 @@
 これは、アカウントの金額をすぐに確認することを意味します。</value>
   </data>
   
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName]は[RequestPurpose]の目的で[CurrencyCode] [BudgetAmountFloat]の現金前払いを要求しました。 このお金はあなたの予算の一部です、[BudgetName]。
-
-証明するには、[ExternalUrl] Financial / AttestCostsの[InstallationName]にログオンしてください。</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
   
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] を使用した経費請求は、予算所有者によって証明されています。 領収書が有効であることが確認されたら、あなたに払い戻されます。</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
   
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName]が[CurrencyCode] [BudgetAmountFloat]の金額に対する[BudgetName]の予算に対する経費請求を作成しました。 クレームは[RequestPurpose]に関するものです。 この費用請求を証明する必要があります。
-
-証明するには、[ExternalUrl] Financial / AttestCostsの[InstallationName]にログオンしてください。</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
   
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] を使用した経費請求は、予算所有者によってDE証明されました。 これは、通常、あなたの経費請求に関する何らかの問題を示しています。
-
-予算の所有者からのより多くのコミュニケーションが問題に従うことを期待してください。</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
+  
+  
+  
+  
   
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] に対する経費請求が拒否されました。 以下のテキストは、それを否定する理由として与えられました：
@@ -198,11 +174,7 @@
     <comment>This is sent to the claimer.</comment>
   </data>
   
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] での経費請求の領収書は、組織の財務記録保持者によってDE検証されています。 これは、通常、経費請求の文書化にある種の問題を示しています。
-
-この問題についてさらにコミュニケーションをとることを期待してください。 短時間で記録保持者に連絡がない場合は、フォローアップしてください。</value>
-  </data>
+  
   
   
   

@@ -261,9 +261,7 @@ nigbati o ba dopin ni {2}. Iye naa jẹ {3} lọwọlọwọ {4:N2}, ati pe o ko
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Pari Iforukọsilẹ.</value>
   </data>
-  <data name="Signup_Unsupported" xml:space="preserve">
-    <value>Swarmops ko ti ṣe amulo atilẹyin fun eto owo yi.</value>
-  </data>
+  
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>Ipo wo ni o nifẹsi?</value>
   </data>

@@ -195,20 +195,10 @@ Swarmops będzie nadal próbował i wysyłał te powiadomienia, dopóki nie zako
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ELEMENT DZIAŁANIA] Środki na Bitcoin Cash są niewystarczające na płatności - natychmiast doładuj</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Żądana zaliczka gotówkowa z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotycząca [RequestPurpose] została potwierdzona przez właściciela budżetu. Przejdzie teraz do twojej wypłaty.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Zaliczka Gotówkowa Potwierdzona: [CurrencyCode][BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Twoja żądana zaliczka gotówkowa z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotycząca [RequestPurpose] była atestowana przez właściciela budżetu. Zwykle oznacza to jakiś problem z twoją prośbą.
-
-Oczekuj więcej komunikatów od właściciela budżetu, aby śledzić tę sprawę.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Zaliczka Gotówkowa atestowana: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Twoja zaliczka gotówkowa z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotycząca [RequestPurpose] została odrzucona. Poniższy tekst został podany jako powód odmowy:
 
@@ -226,42 +216,14 @@ Oznacza to, że wkrótce powinieneś zobaczyć kwotę na swoim koncie.</value>
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Zaliczka gotówkowa zapłacona: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] poprosił o zaliczkę [CurrencyCode] [BudgetAmountFloat] w celu [RequestPurpose]. Te pieniądze są częścią twojego budżetu, [BudgetName].
-
-Zaloguj się w [InstallationName] pod [ExternalUrl] Financial / AttestCosts, aby potwierdzić lub odrzucić.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ELEMENT AKCJI] Wnioskowane zaliczki gotówkowe: [CurrencyCode] [BudgetAmountFloat] - Potrzebne Potwierdzenie</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Twoje roszczenie dotyczące wydatków z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotyczące [RequestPurpose] zostało potwierdzone przez właściciela budżetu. Zostanie to Tobie wypłacone po potwierdzeniu ważności pokwitowań.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Roszczenie Dotyczące Wydatków Potwierdzone: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] utworzył roszczenie dotyczące wydatków w stosunku do budżetu [BudgetName] na kwotę [CurrencyCode] [BudgetAmountFloat]. Roszczenie dotyczy [RequestPurpose]. Będziesz musiał potwierdzić to roszczenie dotyczące wydatków.
-
-Zaloguj się na [InstallationName] w [ExternalUrl] Finansach/Kosztach Poświadczenia aby potwierdzić lub odmówić.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName]- ELEMENT AKCJI] Utworzono roszczenie dotyczące kosztów: [CurrencyCode] [BudgetAmountFloat] - Wymagane poświadczenie</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Twoja żądana zaliczka gotówkowa z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotycząca [RequestPurpose] była atestowana przez właściciela budżetu. Zwykle oznacza to jakiś problem z twoją prośbą.
-
-Oczekuj więcej komunikatów od właściciela budżetu, aby śledzić tę sprawę.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Roszczenie Dotyczące wydatków potwierdzone: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Roszczenie dotyczące wydatków z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] w odniesieniu do [RequestPurpose] zostało odrzucone. Tekst poniżej wyjaśnia powód odrzucenia:
 
@@ -271,14 +233,6 @@ Oczekuj więcej komunikatów od właściciela budżetu, aby śledzić tę spraw�
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Roszczenie dotyczące wydatków ODRZUCONE: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Pokwitowania dotyczące wydatków z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat], dotyczące [RequestPurpose], zostały zatwierdzone przez DE przez posiadaczy dokumentów finansowych organizacji. Zwykle oznacza to jakiś problem z dokumentacją roszczenia o wydatkach.
-
-Oczekuj więcej komunikacji w tej sprawie. Jeśli w krótkim czasie nie usłyszysz nic nowego w tej sprawie, podejmij odpowiednie kroki.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Dokumenty roszczeniowe wydatków zweryfikowane przez DE: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Twoje roszczenie dotyczące wydatków z [OrganizationName] dla [CurrencyCode] [BudgetAmountFloat] dotyczące [RequestPurpose] zostało oznaczone jako opłacone przez księgowych organizacji.</value>
@@ -295,15 +249,10 @@ Roszczenie zostanie ci wypłacone, gdy kwota zostanie potwierdzona przez właśc
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Potwierdzone pokwitowania roszczeń dotyczące wydatków: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Faktura od [Supplier] dotycząca [Description] została złożona w odniesieniu do Twojego budżetu [BudgetName] na kwotę [CurrencyCode][BudgetAmountFloat]. Musisz potwierdzić tę fakturę, zanim przejdzie do wypłaty.
-
-Zaloguj się w [InstallationName] pod [ExternalUrl] Finanse/ Koszty Potwierdzeń, aby potwierdzić lub odmówić.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ELEMENT AKCJI] Wnioskowane faktury: [CurrencyCode] [BudgetAmountFloat] - Potrzebne Potwierdzenie</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Nowy [Regular] został ręcznie dodany do [OrganizationName] w twojej okolicy.</value>
   </data>

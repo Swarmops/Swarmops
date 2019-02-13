@@ -196,20 +196,10 @@ Swarmops a tun bo ma gbiyanju ati pe a si ma si fi awon iwifuni won yii ranse ni
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] Bitcoin Cash hotwallet ko to fun awon owo sisan - se afikun lẹsẹkẹsẹ</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Owo agbaalẹ ti o beere fun pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti jẹ jijẹri nipasẹ ẹniti o ni isuna naa. Yoo wa tẹsiwaju bayi lati sanwo jade fun ọ.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Owo agbaalẹ di jijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Owo agbaalẹ ti o beere fun pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti jẹ aijẹri nipasẹ ẹniti o ni isuna naa. Eyi maa n tọka si awọn irufẹ iṣoro diẹ pẹlu ìbéèrè rẹ.
-
-Ma reti ibaraẹnisọrọ diẹ si lati odo ẹniti o ni isuna naa lati tẹle ọrọ naa.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Owo agbaalẹ di aijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Owo agbaalẹ rẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat] nipa [RequestPurpose] ti jẹ kikọ. Awọn ọrọ ti isalẹ yi ni a pese gẹgẹbi idi fun kikọ rẹ:
 
@@ -227,43 +217,14 @@ Eyi tumọ si pe o yẹ ki o ri iye re lori akọọlẹ rẹ laipe.</value>
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Owo agbaalẹ di sisan: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] ti beere fun owo agbaalẹ ti [CurrencyCode] [BudgetAmountFloat] fun idi ti [RequestPurpose]. Owo yi jẹ ara ti isuna rẹ, [BudgetName].
-
-Jowo wọle si [InstallationName] ni [ExternalUrl]Financial/AttestCosts lati jẹri tabi kọ.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Owo agbaalẹ di bibeere: [CurrencyCode] [BudgetAmountFloat] - Nilo Ijerisi</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Ibéèrè owo agbapada rẹ pelu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti jẹ jijẹri nipasẹ ẹniti o ni isuna naa. Yoo je sisan jade fun ọ nigbati awọn iwe ọja naa ba jẹ otito ti o fẹsẹmulẹ.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Ibéèrè owo agbapada di jijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] ti ṣẹda ibeere owo agbapada ti o lodi si isuna [BudgetName] 
-fun iye ti o je [CurrencyCode] [BudgetAmountFloat]. Ibeere naa kan [RequestPurpose]. Iwọ yoo nilo lati jẹrisi ibeere agbapada yii.
-
-Jowo wole si [InstallationName] ni [ExternalUrl]Financial/AttestCosts lati jẹri tabi kọ.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Ibeere owo Agbapada di Siṣẹda: [CurrencyCode] [BudgetAmountFloat] - Nilo Ijerisi</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Ibeere owo agbapada re pelu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti je aijeri nipase eniti o ni isuna naa. Eyi maa n tọka si awọn irufẹ iṣoro diẹ pẹlu ìbéèrè agbapada rẹ.
-
-Ma reti ibaraẹnisọrọ diẹ si lati odo ẹniti o ni isuna naa lati tẹle ọrọ naa.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Ibéèrè Owo agbapada di aijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Ibeere owo agbapada rẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat] nipa [RequestPurpose] ti jẹ kikọ. Awọn ọrọ ti isalẹ yi ni a pese gẹgẹbi idi fun kikọ rẹ:
 
@@ -273,14 +234,6 @@ Ma reti ibaraẹnisọrọ diẹ si lati odo ẹniti o ni isuna naa lati tẹle 
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Ibeere Owo Agbapada di KIKỌ: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Awon iwe ọja fun ibeere owo agbapada re pelu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti je aifọwọsi nipasẹ awọn oluṣọ akosile owo ti ajo naa. Eyi maa n tọka si awọn irufẹ iṣoro diẹ pẹlu awọn akọsilẹ ìbéèrè owo agbapada rẹ.
-
-Ma reti ibaraẹnisọrọ diẹ si lati tẹle ọrọ naa. Ti o ko ba gbọ lati odo awọn oluṣọ akosilẹ ni igba diẹ lori ọrọ yii, ma ṣe atẹle pẹlu wọn.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Iwe oja Ibéèrè owo agbapada di aijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Ibeere owo agbapada ​​rẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti ni aami isanjade nipasẹ awọn oniṣiro ajo na.
@@ -299,15 +252,10 @@ A yoo san owo naa jade fun ọ nigbati iye naa ba ti je jijẹri si nipasẹ eni
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Iwe oja Ibéèrè Owo Agbapada di Jijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Iwe iye-owo ọja lati [Supplier], nipa [Description], ti di gbigbe dide ni ilodi si isuna rẹ ti [BudgetName] fun iye ti [CurrencyCode] [BudgetAmountFloat]. O gbọdọ jẹri Iwe iye-owo ọja yii ṣaaju ki o to lọ si owo sisan jade.
-
- Jowo wole si [InstallationName] ni [ExternalUrl]Financial/AttestCosts lati jẹri tabi kọ.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Iwe iye-owo ọja di gbigbe dide: [CurrencyCode] [BudgetAmountFloat] - Nilo Ijerisi</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>[Regular] tuntun kan je fi fikun pẹlu afọwọyi [OrganizationName] laarin agbegbe rẹ kan.</value>
   </data>

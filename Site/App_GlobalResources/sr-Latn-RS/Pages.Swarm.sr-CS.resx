@@ -117,28 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AddPerson_ErrorCity" xml:space="preserve">
+    <value>Unesite ispravno ime grada.</value>
+  </data>
+  <data name="AddPerson_ErrorDate" xml:space="preserve">
+    <value>Navedite ispravan datum, ili ovo polje ostavite prazno.</value>
+  </data>
+  <data name="AddPerson_ErrorMail" xml:space="preserve">
+    <value>Unestite ispravnu email adresu.</value>
+  </data>
+  <data name="AddPerson_ErrorName" xml:space="preserve">
+    <value>Ime je neophodno.</value>
+  </data>
+  <data name="AddPerson_ErrorStreet" xml:space="preserve">
+    <value>Neophodno je uneti ispravnu ulicu ili poštanski fah.</value>
+  </data>
+  <data name="AddPerson_GeographyDetected" xml:space="preserve">
+    <value>Detektovana je geografska lokacija.</value>
+  </data>
+  <data name="AddPerson_Info" xml:space="preserve">
+    <value>Na ovom mestu uvodite nove ljude u organizaciju. Kada ih registrujete pod opcijom &lt;strong&gt;{0} {1}&lt;/strong&gt; ograničenog trajanja &lt;strong&gt;{2}&lt;/strong&gt;, njima će biti poslata poruka dobrodošlice koja će sadržati slučajno generisanu lozinku za prijavljivanje. Lokalni nadležni će takođe biti informisani o novoprijavljenoj osobi, te će i oni imati priliku da pozdrave novog člana.</value>
+    <comment>{0} and {1} can be "one-year" and "Membership", for example. {2} is LongDateString.</comment>
+  </data>
+  <data name="AddPerson_LegalGender" xml:space="preserve">
+    <value>Pol</value>
+    <comment>"Legal" to cut short discussions on 50 different genders for the time being</comment>
+  </data>
+  <data name="AddPerson_PersonSuccessfullyRegistered" xml:space="preserve">
+    <value>Osoba je uspešno pridodata organizaciji. Poruka dobrodošlice je poslata.</value>
+  </data>
+  <data name="AddPerson_StatisticalData" xml:space="preserve">
+    <value>Statistički podaci</value>
+    <comment>Header for gender, date of birth</comment>
+  </data>
+  <data name="AddPerson_Street1PO" xml:space="preserve">
+    <value>Ulica 1 (ili poštanski fah)</value>
+  </data>
+  <data name="AddPerson_Street2" xml:space="preserve">
+    <value>Ulica 2 - ako postoji</value>
+  </data>
+  <data name="AddPerson_Title" xml:space="preserve">
+    <value>Dodaj {0}</value>
+    <comment>The {0} is replaced in code. Singular form gender neutral of Participant.</comment>
+  </data>
+  <data name="ListFindPeople_Info" xml:space="preserve">
+    <value>Ovu opciju možete koristiti da pronađete ljude u organizaciji. Možete pretraživati po geografskoj lokaciji ili po imenu (na primer, "Jo S" će pronaći osobu Joel Sander).</value>
+  </data>
+  <data name="ListFindPeople_MatchingPeopleInX" xml:space="preserve">
+    <value>Pronađenih osoba {0}</value>
+    <comment>The {0} parameter is the organization name.</comment>
+  </data>
+  <data name="ListFindPeople_NamePattern" xml:space="preserve">
+    <value>Patern imena</value>
+  </data>
+  <data name="ListFindPeople_Title" xml:space="preserve">
+    <value>Izlistavanje i pronalaženje ljudi</value>
+  </data>
+  <data name="ListFindPeople_TooManyHits" xml:space="preserve">
+    <value>Set podataka sadrži preko hiljadu ljudi (prikaz je limitiran na hiljadu). Da li želite da suzite pretragu?</value>
+  </data>
+  <data name="LocalOrganization_Header" xml:space="preserve">
+    <value>Lokalnih Organizacija ({0})</value>
+  </data>
+  <data name="LocalOrganization_HeaderGlobal" xml:space="preserve">
+    <value>Globalna Organizacija</value>
+  </data>
+  <data name="LocalOrganization_Info" xml:space="preserve">
+    <value>Ovo su Vaši lokalni kontakti. (ako imate privilegije administratora, možete raspoređivati ljude na date pozicije)</value>
+  </data>
+  <data name="LocalOrganization_PageTitle" xml:space="preserve">
+    <value>Moja lokalna Organizacija</value>
+    <comment>The {0} is the geography name.</comment>
+  </data>
+  <data name="Positions_AssignPerson" xml:space="preserve">
+    <value>Pridruži osobu...</value>
+  </data>
+  <data name="Positions_CreateNewPosition" xml:space="preserve">
+    <value>Kreiraj novu poziciju...</value>
+  </data>
 </root>

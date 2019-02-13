@@ -117,23 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>Ang Advance ng Cash #{0:N0} para sa {1} ay napatunayan para sa {3:N2}.</value>
-    <comment>Status message.</comment>
-  </data>
-  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>Ang Cash Advance #{0:N0} para sa {1} ay UN-testified. Hindi ito babayaran maliban kung pinatunayan muli.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
-    <value>Hindi mo mapapatunayan ang halagang ito. Ang badget ay walang laman para sa taon {0}.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
-    <value>Hindi ka maaaring magpatunay ng negatibong halaga.</value>
-  </data>
-  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>Hindi ka maaaring magpatunay ng zero na halaga.</value>
-  </data>
+  
+  
+  
+  
+  
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>Paumanhin, Hindi mo maaaring i-rebudget ang isang suweldo na payout.</value>
   </data>
@@ -143,14 +131,7 @@
   <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
     <value>Mangyaring pumili sa budget para i-retarget ang bayad para sa.</value>
   </data>
-  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>Ang Claim ng Gastusin #{0:N0} mula sa {1} para sa {2} {3:N2} ay napatunayan.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Ang Claim na Gastusin #{0:N0} mula sa {1} ay De-attested. Hindi ito babayaran maliban kung pinatunayan muli.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Aksyon</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -177,27 +158,12 @@
     <value>Hiniling</value>
     <comment>Header for the requested amount.</comment>
   </data>
-  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
-    <value>Mga gastos na naghihintay para sa iyong pagpapatunay</value>
-  </data>
-  <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Ito ay kung saan nagpapatunay ka ng mga gastos na hinihiling ng ibang tao mula sa iyong mga budyet. Wala nang bayad bago mo pinatunayan ito.</value>
-  </data>
-  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>Ang Invoice #{0:N0} mula sa {1} para sa {2} {3:N2} ay napatunayan.</value>
-    <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>Ang Invoice #{0:N0} mula sa {1} ay Un-testified. Hindi ito babayaran maliban kung pinatunayan muli.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>Patunayan</value>
-    <comment>keep short</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Patunayan</value>
-  </data>
+  
+  
+  
+  
+  
+  
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Tanggihan</value>
     <comment>keep short</comment>
@@ -223,35 +189,19 @@
   <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
     <value>Ilipat ang singil sa badyet na ito sa halip:</value>
   </data>
-  <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>Ayusin ang mga problema o tanggihan ang pagpapatotoo</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
-    <value>Ipapatunayan ko ito, ngunit para sa ibang halaga.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
-    <value>Ang halaga ay mali. Ipapatunayan ko ito sa tamang halaga.</value>
-  </data>
-  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
-    <value>Hindi ko susumpukin ang rekord na ito. Ito ay scratched.</value>
-    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
-  </data>
+  
+  
+  
+  
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
     <value>Ang rekord na ito ay dapat na singilin sa ibang badyet. Ilipat ito doon.</value>
   </data>
   <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
     <value>Ano ang tila problema sa rekord na ito?</value>
   </data>
-  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
-    <value>Walang sapat na pondo na natitira sa badyet upang patunayan ang halagang ito.</value>
-  </data>
-  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>Walang sapat na pondo upang patunayan ito. Maaari kaang magpatotoo sa {0} {1:N2} higit pa sa badyet na ito pa sa taon {2}.</value>
-    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
-  </data>
-  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
-    <value>&lt;strong&gt;OVERDRAFT BUDGET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Walang sapat na pondo na natitira sa badyet upang patunayan ang gastos na ito. Karaniwan, ito ay haharangan mula sa pagpapatunay. Gayunpaman, maaari mong i-override ang limitasyong ito at magpatunay na, sa gayon ay nagiging sanhi ang account na mag-overdraft sa badyet nito.&lt;br/&gt;&lt;br/&gt;Gusto mo bang ibunyag ang gastos, sa gayon pagputol ng overdraft, o gusto mong kanselahin ang pagpapatunay, manatili sa halip na badyet? &lt;br/&gt;&lt;br/&gt;</value>
-  </data>
+  
+  
+  
   <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
     <value>Manatili sa Badyet</value>
   </data>
@@ -262,26 +212,14 @@
     <value>ANG BUDGET AY OVERDRAFTED.</value>
     <comment>The UPPERCASE is intentional.</comment>
   </data>
-  <data name="AttestCosts_PageTitle" xml:space="preserve">
-    <value>Patunayan ang mga gasto</value>
-  </data>
-  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>Ang Conference #{0:N0}, na isinaayos ng {1}, ay napatunayan para sa {3:N2}.</value>
-  </data>
-  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>Conference #{0:N0} sa pamamagitan ng {1} ay UN-attested. Hindi ito mapipintig maliban kung pinatunayan muli.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
+  
+  
+  
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>Sweldo #{0:N0} para sa {1} ay pinatunayan para sa {3:N2}.</value>
   </data>
-  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Sweldo #{0:N0} para sa {1} ay DE-attested. Hindi ito babayaran maliban kung pinatunayan muli.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;WARNING: UNINITIALIZED BUDGET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Ang gastos na iyong pinapayagan ay pagmamay-ari ng isang di-binabanggit na badyet -- isang account sa ledger na walang may-ari at walang hanay ng allowance sa badyet para sa taon. Isaalang-alang ang pagbisita sa Plano sa Account at paglalaan ng mga badyet para sa inaasahang kita at gastos. &lt;br/&gt;&lt;br/&gt; Ang mensaheng ito ay ipapakita lamang isang beses bawat pagbisita sa mga Pagsusuri.&lt;br/&gt;</value>
-  </data>
+  
+  
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Kabuuang halang ng invoice (sa {0})</value>
     <comment>{0} is the organization's main currency.</comment>
@@ -460,9 +398,7 @@
   <data name="ValidateReceipts_PageTitle" xml:space="preserve">
     <value>Patunayan ang mga Resibo</value>
   </data>
-  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>Ang mga resibo para sa Claim ng Gastusin #{0:N0} para sa {1} {2:N2} ay may DE-napatunayan. Ang claim ng gastos ay hindi magpapatuloy sa pagbabayad maliban kung muling napatunayan.</value>
-  </data>
+  
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Ang mga resibo para sa Claim ng Gastusin #{0:N0} para sa {1} {2:N2} ay napatunayan na.</value>
   </data>
@@ -565,6 +501,7 @@
   <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
     <value>Mag-upload ng Expensify Report Para sa Pagbabayad</value>
   </data>
+  
   
   
   

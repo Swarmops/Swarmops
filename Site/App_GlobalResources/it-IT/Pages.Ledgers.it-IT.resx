@@ -123,9 +123,7 @@
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Questo è il riepilogo dei conti finanziari nel vostro registro contabile. È possibile eseguire alcune operazioni di manutenzione da qui, anche se la maggior parte delle operazioni quotidiane dovrebbe essere delegata ai proprietari dei budget.</value>
   </data>
-  <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>Piano del conto</value>
-  </data>
+  
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Account</value>
   </data>
@@ -630,9 +628,7 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(descrizione dettagliata omessa)</value>
   </data>
-  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Transazione non bilanciata (Deve corrispondere o essere aggiustata)</value>
-  </data>
+  
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Account</value>
     <comment>Usually the account name. Can also be "several".</comment>
@@ -647,9 +643,7 @@
     <value>Tx#</value>
     <comment>Keep VERY short.</comment>
   </data>
-  <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Alcune transazioni finanziarie auto-importate non possono essere abbinate automaticamente alla contabilità in corso. È qui che si associano manualmente tali transazioni per "bilanciarle" (se una transazione ha solo una parte completata, come il denaro inviato all'organizzazione senza aver specificato a cosa serve il denaro, si dice che la transazione sia "sbilanciata").</value>
-  </data>
+  
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Bilanciando/Combaciando transazione $&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; del &lt;span id="spanModalTransactionDate"&gt;aaaa-mm-gg&lt;/span&gt;</value>
     <comment>The span text is replaced runtime.</comment>
