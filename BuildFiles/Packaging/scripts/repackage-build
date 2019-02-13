@@ -19,12 +19,15 @@ if [ "$1" == "release" ]; then
 elif [ "$1" == "sprint" ]; then
   DROPFOLDER=sprint
   echo "Packaging END-OF-SPRINT for normal deployments."
+elif [ "$1" == "candidate" ]; then
+  DROPFOLDER=sprint
+  echo "Packaging RELEASE CANDIDATE to test a specific build before releasing it."
 elif [ "$1" == "" ]; then
   DROPFOLDER=internal
   echo "internal" > ../builds/internal/frontend/SprintName.txt
   echo "Packaging internal test build."
 else
-  echo "Syntax: repackage-build [sprint|release]"
+  echo "Syntax: repackage-build [candidate|sprint|release]"
   echo "(No parameter will trigger a build of the internal branch.)"
   exit 1;
 fi
@@ -64,9 +67,13 @@ if [ "$DROPFOLDER" == "internal" ]; then
   # Do not mail for internal releases, for now
 
 else
-  PACKAGELABEL="$DROPFOLDER $(cat ../builds/$DROPFOLDER/frontend/SprintName.txt | tr -d '\n\r')"
-  echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt upgrade. Yay, we made another sprint!" > deploymsg.txt
-  mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops $BUILDID ($PACKAGELABEL) packaged." "swarmops.developers@groups.facebook.com" < deploymsg.txt
+#  This didn't work anyway
+#  -----------------------
+#  PACKAGELABEL="$DROPFOLDER $(cat ../builds/$DROPFOLDER/frontend/SprintName.txt | tr -d '\n\r')"
+#  echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt upgrade. Yay, we made another sprint!" > deploymsg.txt
+#  mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops $BUILDID ($PACKAGELABEL) packaged." "swarmops.developers@groups.facebook.com" < deploymsg.txt
+
+#  scripts/notify-sprint-ready.sh
 fi
 
 # TODO: Add build messages to deploy message, at least for internal build

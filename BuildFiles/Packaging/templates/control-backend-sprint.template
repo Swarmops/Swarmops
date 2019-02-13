@@ -1,9 +1,9 @@
-Package: swarmops-backend
+Package: swarmops-backend--PackageSuffix--
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
 Depends: swarmops-common (>= --BuildNumber--),--Dependencies--
-Conflicts: swarmops-backend-internal,swarmops-backend-stable
+Conflicts: swarmops-backend-internal,swarmops-backend-stable,swarmops-backend--ReversePackageSuffix--
 Homepage: http://swarmops.com/
 Description: Swarmops Backend
  Swarmops is a swarm activist administration system.

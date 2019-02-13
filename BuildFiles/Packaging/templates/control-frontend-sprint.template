@@ -1,9 +1,9 @@
-Package: swarmops-frontend
+Package: swarmops-frontend--PackageSuffix--
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
 Depends: swarmops-common (>= --BuildNumber--), swarmops-frontend-external-scripts (>= --BuildNumber--), --Dependencies--
-Conflicts: swarmops-frontend-internal,swarmops-frontend-stable
+Conflicts: swarmops-frontend-internal,swarmops-frontend-stable,swarmops-frontend--ReversePackageSuffix--
 Homepage: http://swarmops.com/
 Description: Swarmops Frontend
  Swarmops is a swarm activist administration system.

@@ -9,14 +9,22 @@ DROPFOLDER=$2
 DISTROS=$3
 PACKAGE=$4
 BUILDID=$5
+RELEASETYPE=$6
 
 DEBCONFDIR="+b/conf"
 PUBLISHSITE="packages.swarmops.com"
+PACKAGESUFFIX=""
+REVERSEPACKAGESUFFIX="-rc"
 
 if [[ $2 == "internal" ]]; then
   DEBCONFDIR="+b/conf-internal"
   PUBLISHSITE="packages-internal.swarmops.com"
   echo "Overriding default packaging config; using internal/experimental configuration"
+fi
+
+if [ $RELEASETYPE == "candidate" ]; then
+  PACKAGESUFFIX="-rc"
+  REVERSEPACKAGESUFFIX=""
 fi
 
 
@@ -44,6 +52,10 @@ do
 
   echo "Setting build number $BUILDID-$DISTRO..."
   sed -i "s/--BuildNumber--/$BUILDID-$DISTRO/g" $DROPFOLDER/payload/DEBIAN/control
+
+  echo "Setting package name suffixes, if any..."
+  sed -i "s/--PackageSuffix--/$PACKAGESUFFIX/g" $DROPFOLDER/payload/DEBIAN/control
+  sed -i "s/--ReversePackageSuffix--/$REVERSEPACKAGESUFFIX/g" $DROPFOLDER/payload/DEBIAN/control
 
   # Calculating new checksums
   echo "Creating MD5 checksum file ($DISTRO)..."
