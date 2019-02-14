@@ -114,10 +114,10 @@
     	            success: function(msg) {
     	                if (msg.d == "Success") {
     	                    // Good credentials. TODO: Add manual 2FA challenge if applicable.
-    	                    $('#TextLogin, #TextPass').css('background-image', "url('/Security/Images/iconshock-greentick-16px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+    	                    $('#TextLogin, #TextPass').css('background-image', "url('/Images/Icons/iconshock-green-tick-128x96px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat').css('background-size', '16px 12px');
     	                } else if (msg.d == "Fail") {
 	                        // inform user of bad credentials by means of a red cross on _both_ boxes
-	                        $('#TextLogin, #TextPass').css('background-image', "url('/Security/Images/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+    	                    $('#TextLogin, #TextPass').css('background-image', "url('/Images/Icons/iconshock-red-cross-128x96px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat').css('background-size', '16px 12px');
 	                    } else if (msg.d == "BitIdRequired") {
 	                        alertify.alert(SwarmopsJS.unescape('<%=this.Localized_BitIdRequired_Dialog%>'));
 	                    } else {
