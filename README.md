@@ -97,33 +97,36 @@ No, there isn't a "license". This code is completely in the public domain, with 
 That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.
 
 
-Beta-6 features progress
-------------------------
+Beta-6
+------
 
-Beta-6 will be released on February 5, 2019, with string freeze three days earlier. Its focus is to increase multicurrency functionality for payouts and bank imports.
+Beta-6 was released for Xenial, Bionic, and Stretch on February 12, one week behind schedule.
 
-- [x] Parameterize the bank file import procedure (big feature!)
-- [x] Make it possible to import bank files in non-presentation currency
-- [ ] Rewrite payment addresses (a new name for this? Account vs. designator?)
-- [ ] Enable payment destinations, with currency
-- [ ] Complete rewrite of the bank import procedure, account matching UX
 
 
 Beta-7 features progress
 ------------------------
 
-Beta-7 will be released on April 5, 2019, with string freeze on April 2. Its tentative focus will be Fairshift integration and possibly an open API exposure.
+Beta-7 will be released on April 5, 2019, with string freeze three days earlier. Its focus is to increase multicurrency functionality for payouts and bank imports.
 
+- [x] Parameterize the bank file import procedure (big feature!)
+- [x] Make it possible to import bank files in non-presentation currency
+- [ ] Rewrite payment addresses (a new name for this? Account vs. designator?)
+- [ ] Complete rewrite of the bank import procedure, account matching UX
+- [ ] End-of-month wizard to guide user through accounting steps
+
+
+Beta-8 features progress
+------------------------
+
+Beta-8 will be released on June 5, 2019, with string freeze three days earlier. Its tentative focus will be Fairshift integration and possibly an open API exposure.
+
+- [ ] Enable payment destinations, with currency
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
 - [ ] Write a Pay Invoice page for Bitcoin Cash
 - [ ] Tie payment identifiers to people and suppliers
 
-
-Beta-8 features
----------------
-
-Beta-8 will focus on paying to Fiat from the Bitcoin Cash hotwallet.
 
 
 
@@ -133,7 +136,7 @@ Detailed install instructions
 
 This is the exact install procedure for a two-server setup. Two separate servers are strongly recommended for production use; for testing and evaluation, they can be one and the same machine.
 
-1. Create two clean Ubuntu Xenial or Debian Stretch machines. Call them _backend_ and _frontend._ They can be in different firewall zones. Install mysql-server on the backend (or on a third server).
+1. Create two clean Ubuntu Xenial/Bionic or Debian Stretch machines. Call them _backend_ and _frontend._ They can be in different firewall zones. Install mysql-server on the backend (or on a third server).
 
 2. Install the repository and its key on both machines. In the commands below, replace the "[xenial/bionic/stretch]" with just _xenial_, _bionic_, or _stretch,_ as per your distribution. Same for "[ubuntu/debian]".
 

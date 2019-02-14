@@ -11,33 +11,36 @@ PRIO 1
 ------
 
 [ ] Fix self-signup
+[ ] Investigate weird accounting of echo test
+[ ] Fix crypto funds mismatch resulting from echo test
+[ ] Fix "connected accounts" concept
+[ ] - with interface to Github repo of XML definitions
+[ ] Fix & redo bank file upload completely
+[x] Fix Bionic build
 [ ] End-of-month routine
 [ ] - incl EOY
 [ ] - with todo field
-[ ] Fix generic block explorer interfaces
-[ ] Fix & redo bank file upload completely
-[ ] - with interface to Github repo of XML definitions
-[x] Fix Bionic build
-[ ] Investigate weird accounting of echo test
-[ ] Fix crypto funds mismatch resulting from echo test
 
 
 PRIO 2
 ------
 
 [ ] Todo box JSON
+[ ] Fix generic block explorer interfaces
 [ ] Expense reject malfunction (what's this? -RF)
+[ ] Redo Match Accounts completely, put under EOM
 [ ] op.Cash SKU
 [ ] Submit invoice
 [ ] Control messages for invoice progress
 [ ] Pay invoice
 [ ] Payment points for invoices, expense reports
-[ ] Upload bank statements
+[x] Upload bank statements
 [ ] External people notifications
 [ ] Currency inventory tracking
 [ ] Cost centers and 2-D reports
 [ ] Monthly reports (not just quarterly)
 [ ] Manual payout dialog, with lock/confirm/undo step to Payouts
+[ ] Live tracking of currency inventory value
 
 
 PRIO 3
@@ -48,7 +51,7 @@ PRIO 3
 [ ] Org texts self-signup
 [ ] Load hotwallet from cold
 [ ] Database discrepancy
-[ ] Icons for Validation
+[x] Icons for Validation
 [ ] op.Cash OOBE
 [ ] Assign role geolock
 
