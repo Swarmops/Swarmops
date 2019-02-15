@@ -88,9 +88,9 @@
             <tr>
                 <th field="txid" width="60"><asp:Literal ID="LiteralHeaderTransactionId" Text="Tx#" runat="server"/></th>  
                 <th field="datetime" width="80"><asp:Literal ID="LiteralHeaderDateTime" runat="server" /></th>  
-                <th field="description" width="270"><asp:Literal ID="LiteralHeaderDescription" runat="server" /></th>  
-                <th field="turnover" width="140" align="right"><asp:Literal ID="LiteralHeaderTurnover" runat="server" /></th>
-                <th field="outbound" width="110" align="right"><asp:Literal ID="LiteralHeaderVatOutbound" runat="server" /></th>
+                <th field="description" width="165"><asp:Literal ID="LiteralHeaderDescription" runat="server" /></th>  
+                <th field="turnover" width="100" align="right"><asp:Literal ID="LiteralHeaderTurnover" runat="server" /></th>
+                <th field="outbound" width="100" align="right"><asp:Literal ID="LiteralHeaderVatOutbound" runat="server" /></th>
                 <th field="inbound" width="100" align="right"><asp:Literal ID="LiteralHeaderVatInbound" runat="server" /></th>  
                 <th field="dox" width="68" align="center"><asp:Literal ID="LiteralHeaderDox" runat="server" /></th>
             </tr>  
