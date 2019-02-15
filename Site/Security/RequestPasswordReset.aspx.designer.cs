@@ -92,23 +92,5 @@ namespace Swarmops.Pages.Security {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelSuccessMaybe;
-        
-        /// <summary>
-        /// LabelSidebarInfoHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSidebarInfoHeader;
-        
-        /// <summary>
-        /// LabelSidebarInfoContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSidebarInfoContent;
     }
 }

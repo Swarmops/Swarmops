@@ -84,37 +84,25 @@
 	    
         <div class="login-page-logo"><asp:Image ID="Image1" runat="server" ImageUrl="/Images/swarmops-logo-256px.png" Width="128"/></div>
         
-        <div class="mainbar">
-            <div class="box">
-                <div class="content">
-                    <h2><asp:Label ID="LabelContentTitle" runat="server" /></h2>
-                    <div id="DivMailEntry">
-                        <div class="entryFields">
-                            <asp:TextBox runat="server" ID="TextMailAddress" />&#8203;<br/>
-                            <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
-                        </div>
-                        <div class="entryLabels">
-                            <asp:Label ID="LabelMail" runat="server" /><br />
-                        </div>
+        <div class="box">
+            <div class="content">
+                <h2><asp:Label ID="LabelContentTitle" runat="server" /></h2>
+                <div id="DivMailEntry">
+                    <div class="entryFields">
+                        <asp:TextBox runat="server" ID="TextMailAddress" />&#8203;<br/>
+                        <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
                     </div>
-                    <div style="clear:both"></div>
-                    <div id="DivSuccessMaybe">
-                        <asp:Label ID="LabelSuccessMaybe" runat="server" /><br/><br/><!-- some ugly formatting solutions on the one-off pages -->
+                    <div class="entryLabels">
+                        <asp:Label ID="LabelMail" runat="server" /><br />
                     </div>
                 </div>
-            </div>
-        
-        </div>
-        <div class="sidebar">
-        <h2 class="blue"><asp:Label ID="LabelSidebarInfoHeader" runat="server" /><span class="arrow"></span></h2>
-    
-            <div class="box">
-                <div class="content">
-                    <asp:Label ID="LabelSidebarInfoContent" runat="server" />
+                <div style="clear:both"></div>
+                <div id="DivSuccessMaybe">
+                    <asp:Label ID="LabelSuccessMaybe" runat="server" /><br/><br/><!-- some ugly formatting solutions on the one-off pages -->
                 </div>
             </div>
-   
         </div>
+       
         
 	</div>
 

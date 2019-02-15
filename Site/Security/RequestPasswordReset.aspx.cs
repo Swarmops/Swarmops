@@ -32,11 +32,6 @@ namespace Swarmops.Pages.Security
 
         private void Localize()
         {
-            // Normal template
-            this.LabelSidebarInfoContent.Text = Resources.Pages.Security.ResetPassword_InfoRequest;
-            this.LabelSidebarInfoHeader.Text = Resources.Global.Sidebar_Information;
-
-            // Page specific
             this.LabelContentTitle.Text = Resources.Pages.Security.ResetPassword_PageTitle;
             this.LabelMail.Text = Resources.Pages.Security.ResetPassword_Mail1;
             this.LabelSuccessMaybe.Text = Resources.Pages.Security.ResetPassword_TicketSentMaybe;
