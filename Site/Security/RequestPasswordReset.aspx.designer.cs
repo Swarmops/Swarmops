@@ -40,49 +40,13 @@ namespace Swarmops.Pages.Security {
         protected global::System.Web.UI.ScriptManager ScriptManagerBlahblah;
         
         /// <summary>
-        /// LabelCurrentUserName control.
+        /// Image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelCurrentUserName;
-        
-        /// <summary>
-        /// LabelCurrentOrganizationName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelCurrentOrganizationName;
-        
-        /// <summary>
-        /// LabelPreferences control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPreferences;
-        
-        /// <summary>
-        /// ImageCultureIndicator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageCultureIndicator;
-        
-        /// <summary>
-        /// ImageLogo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageLogo;
+        protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
         /// LabelContentTitle control.
@@ -128,23 +92,5 @@ namespace Swarmops.Pages.Security {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelSuccessMaybe;
-        
-        /// <summary>
-        /// LabelSidebarInfoHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSidebarInfoHeader;
-        
-        /// <summary>
-        /// LabelSidebarInfoContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSidebarInfoContent;
     }
 }

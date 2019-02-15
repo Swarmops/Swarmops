@@ -81,43 +81,28 @@
     <!-- Main menu, emptied out here -->
         
 	<div class="center980px">
-	    <div class="currentuserinfo"><div style="background-image: url('/Images/Icons/iconshock-user-16px.png'); background-repeat: no-repeat; padding-left: 16px; float: left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image: url('/Images/Icons/iconshock-workchair-16px.png'); background-repeat: no-repeat; padding-left: 17px; float: left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image: url('/Images/Icons/iconshock-gamepad-16px.png'); background-repeat: no-repeat; padding-left: 20px; float: left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div>
-        <div class="logoimage"><a href="/"><asp:Image ID="ImageLogo" runat="server" ImageUrl="/Images/swarmops-logo-256px.png" Width="128"/></a></div>
-        <div class="break"></div>
-        <div class="topmenu">
-        </div>
+	    
+        <div class="login-page-logo"><asp:Image ID="Image1" runat="server" ImageUrl="/Images/swarmops-logo-256px.png" Width="128"/></div>
         
-        <div class="mainbar">
-            <div class="box">
-                <div class="content">
-                    <h2><asp:Label ID="LabelContentTitle" runat="server" /></h2>
-                    <div id="DivMailEntry">
-                        <div class="entryFields">
-                            <asp:TextBox runat="server" ID="TextMailAddress" />&#8203;<br/>
-                            <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
-                        </div>
-                        <div class="entryLabels">
-                            <asp:Label ID="LabelMail" runat="server" /><br />
-                        </div>
+        <div class="box">
+            <div class="content">
+                <h2><asp:Label ID="LabelContentTitle" runat="server" /></h2>
+                <div id="DivMailEntry">
+                    <div class="entryFields">
+                        <asp:TextBox runat="server" ID="TextMailAddress" />&#8203;<br/>
+                        <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
                     </div>
-                    <div style="clear:both"></div>
-                    <div id="DivSuccessMaybe">
-                        <asp:Label ID="LabelSuccessMaybe" runat="server" /><br/><br/><!-- some ugly formatting solutions on the one-off pages -->
+                    <div class="entryLabels">
+                        <asp:Label ID="LabelMail" runat="server" /><br />
                     </div>
                 </div>
-            </div>
-        
-        </div>
-        <div class="sidebar">
-        <h2 class="blue"><asp:Label ID="LabelSidebarInfoHeader" runat="server" /><span class="arrow"></span></h2>
-    
-            <div class="box">
-                <div class="content">
-                    <asp:Label ID="LabelSidebarInfoContent" runat="server" />
+                <div style="clear:both"></div>
+                <div id="DivSuccessMaybe">
+                    <asp:Label ID="LabelSuccessMaybe" runat="server" /><br/><br/><!-- some ugly formatting solutions on the one-off pages -->
                 </div>
             </div>
-   
         </div>
+       
         
 	</div>
 

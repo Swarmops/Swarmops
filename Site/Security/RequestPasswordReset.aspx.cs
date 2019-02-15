@@ -21,8 +21,6 @@ namespace Swarmops.Pages.Security
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Title = Resources.Pages.Security.ResetPassword_PageTitle;
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
 
             if (!Page.IsPostBack)
             {
@@ -34,14 +32,6 @@ namespace Swarmops.Pages.Security
 
         private void Localize()
         {
-            // Normal template
-            this.LabelSidebarInfoContent.Text = Resources.Pages.Security.ResetPassword_InfoRequest;
-            this.LabelSidebarInfoHeader.Text = Resources.Global.Sidebar_Information;
-            this.LabelCurrentOrganizationName.Text = Resources.Global.Global_Organization;
-            this.LabelCurrentUserName.Text = Resources.Global.Global_NoOwner;
-            this.LabelPreferences.Text = Resources.Global.CurrentUserInfo_Preferences;
-
-            // Page specific
             this.LabelContentTitle.Text = Resources.Pages.Security.ResetPassword_PageTitle;
             this.LabelMail.Text = Resources.Pages.Security.ResetPassword_Mail1;
             this.LabelSuccessMaybe.Text = Resources.Pages.Security.ResetPassword_TicketSentMaybe;
