@@ -81,11 +81,8 @@
     <!-- Main menu, emptied out here -->
         
 	<div class="center980px">
-	    <div class="currentuserinfo"><div style="background-image: url('/Images/Icons/iconshock-user-16px.png'); background-repeat: no-repeat; padding-left: 16px; float: left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image: url('/Images/Icons/iconshock-workchair-16px.png'); background-repeat: no-repeat; padding-left: 17px; float: left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image: url('/Images/Icons/iconshock-gamepad-16px.png'); background-repeat: no-repeat; padding-left: 20px; float: left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div>
-        <div class="logoimage"><a href="/"><asp:Image ID="ImageLogo" runat="server" ImageUrl="/Images/swarmops-logo-256px.png" Width="128"/></a></div>
-        <div class="break"></div>
-        <div class="topmenu">
-        </div>
+	    
+        <div class="login-page-logo"><asp:Image ID="Image1" runat="server" ImageUrl="/Images/swarmops-logo-256px.png" Width="128"/></div>
         
         <div class="mainbar">
             <div class="box">
