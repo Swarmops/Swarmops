@@ -210,7 +210,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         builder.Append(@"
 
                             $('#TableEomItems').datagrid('appendRow', {
-                                itemGroupName: ""<span class='itemGroupHeader'" + previousGroupIdData + @">" +
+                                itemGroupName: ""<span class='item-group-header'" + previousGroupIdData + @">" +
                                        group.Header.Replace(" ", "&nbsp;") + @"</span>"",
                                 action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" +
                                        group.Id + "'" + previousGroupIdData +
