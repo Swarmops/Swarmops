@@ -138,7 +138,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelContentHeader.Text = Resources.Pages.Ledgers.ViewVatReports_Title_View;
 
             this.LiteralHeaderTransactionId.Text = Resources.Global.Financial_TransactionIdShort;
-            this.LiteralHeaderDateTime.Text = Resources.Pages.Ledgers.ViewVatReports_Header_DateTime;
+            this.LiteralHeaderDateTime.Text = Resources.Global.Global_Date;
             this.LiteralHeaderDescription.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Description;
             this.LiteralHeaderTurnover.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Turnover;
             this.LiteralHeaderVatInbound.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Inbound;
