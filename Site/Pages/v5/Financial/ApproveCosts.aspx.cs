@@ -501,7 +501,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                         return new AjaxCallResult
                         {
-                            DisplayMessage = CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_OutOfBudget),
+                            DisplayMessage = Resources.Pages.Financial.AttestCosts_OutOfBudget,
                             Success = false
                         };
                     }
@@ -526,7 +526,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             FinancialAccount.ClearApprovalAdjustmentsCache (authData.CurrentOrganization);
 
-            return new AjaxCallResult {DisplayMessage = CommonV5.JavascriptEscape(result), Success = true};
+            return new AjaxCallResult {DisplayMessage = result, Success = true};
         }
 
 
