@@ -139,6 +139,13 @@ namespace Swarmops.Logic.Financial
                 return ReportRequirement.Required; // if there was a "VeryRequired" option it would be appropriate here
             }
 
+            // If the next report was due last year, it's even more required
+
+            if (nextReportDue.Year < nowUtc.Year)
+            {
+                return ReportRequirement.Required;
+            }
+
             // Otherwise not required
 
             return ReportRequirement.NotRequired;
