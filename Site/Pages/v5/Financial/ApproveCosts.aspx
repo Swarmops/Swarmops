@@ -334,10 +334,11 @@
             $('#IconWait' + recordId).hide();
             <%= this.DialogDeny.ClientID %>_close();
 
-            SwarmopsJS.ajaxCall(
+            SwarmopsJS.proxiedAjaxCall(
                 "/Pages/v5/Financial/ApproveCosts.aspx/DenyItem",
                 { recordId: recordId, reason: reason },
-                $.proxy(function(result) {
+                $('#IconDenied' + recordId),
+                function(result) {
                     if (result.Success) {
                         $(this).fadeTo(1000, 1);
                         $('.row' + $(this).attr('baseid')).addClass("action-list-item-denied");
@@ -348,7 +349,8 @@
                         recheckBudgets();
                         $('#tableApprovableCosts').datagrid('reload');
                     }
-                }, $('#IconDenied' + recordId)));
+                }
+            );
         }
 
         
