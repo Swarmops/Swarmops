@@ -22,8 +22,8 @@ fi
 # remove the autoexecuting commands, if there were
 # any before
 
-if [ -f /home/rick/.profile ]; then
-  rm /home/rick/.profile
+if [ -f /home/rick/.bash_profile ]; then
+  rm /home/rick/.bash_profile
 fi
 
 # detect if running as root already; if not, add sudo to
@@ -43,7 +43,7 @@ $SUDO apt -y update
 $SUDO apt -y upgrade
 
 if [ -f /var/run/reboot-required ]; then
-  echo "./install-release-candidate.sh" > /home/rick/.profile
+  echo "./install-release-candidate.sh" > /home/rick/.bash_profile
   echo " "
   echo "After upgrading, a REBOOT is required to continue."
   echo "The script will continue when you ssh to the machine after reboot."
