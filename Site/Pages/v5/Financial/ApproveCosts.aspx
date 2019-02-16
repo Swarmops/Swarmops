@@ -141,6 +141,7 @@
                                         $(this).hide();
                                         $("#IconApproved" + baseid).finish().css("opacity", 0.5).css("display", "none");
                                         $("#IconApproval" + baseid).fadeIn(100);
+                                        $("#IconApproval" + baseid).removeClass("LocalApproved");
                                         $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
                                         $('.row' + baseid).removeClass("action-list-item-approved");
                                         alertify.log(SwarmopsJS.unescape(msg.d.DisplayMessage));
@@ -243,6 +244,7 @@
                             $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                         }
                         $(this).attr("rel", "active");
+                        $(this).addClass("LocalApproved");
                         $(this).hide();
                         $("#IconApproved" + baseid).fadeTo(250, 0.5);
                         $("#IconDenial" + baseid).finish().css("display", "none").css("opacity", 1.0);
