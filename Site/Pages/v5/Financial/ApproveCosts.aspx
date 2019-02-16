@@ -143,12 +143,12 @@
                                         $("#IconApproval" + baseid).removeClass("LocalApproved");
                                         $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
                                         $('.row' + baseid).removeClass("action-list-item-approved");
-                                        alertify.log(SwarmopsJS.unescape(result.DisplayMessage));
+                                        alertify.log(result.DisplayMessage);
 
                                         recheckBudgets(); // will double-check budgets against server
                                     } else {
                                         $(this).attr("src", "/Images/Icons/iconshock-greentick-128x96px.png");
-                                        alertify.error(SwarmopsJS.unescape(result.DisplayMessage));
+                                        alertify.error(result.DisplayMessage);
                                         // TODO: Add alert box?
 
                                     }
@@ -249,7 +249,7 @@
                         $("#IconDenial" + baseid).finish().css("display", "none").css("opacity", 1.0);
                         $("#IconUndo" + baseid).fadeIn(100);
                         $('.row' + baseid).addClass("action-list-item-approved");
-                        alertify.success(SwarmopsJS.unescape(msg.d.DisplayMessage));
+                        alertify.success(result.DisplayMessage);
 
                         recheckBudgets(); // will double-check budgets against server
                     } else {
@@ -257,7 +257,7 @@
                         $(this).attr("rel", "");
                         $(this).attr("src", approvalOverdraftIcon);
                         $("#IconDenial" + baseid).css('opacity', 1.0).css("cursor", "pointer");
-                        alertify.error(SwarmopsJS.unescape(msg.d.DisplayMessage));
+                        alertify.error(result.DisplayMessage);
 
                         recheckBudgets();
                     }
