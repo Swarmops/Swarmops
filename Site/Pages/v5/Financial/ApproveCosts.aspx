@@ -127,14 +127,13 @@
                             budgetRemainingLookup[accountId] -= funds;
                             setApprovability();
 
-                            $.ajax({
-                                type: "POST",
-                                url: "/Pages/v5/Financial/ApproveCosts.aspx/RetractApproval",
-                                data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
-                                success: $.proxy(function (msg) {
-                                    if (msg.d.Success) {
+                            SwarmopsJS.proxiedAjaxCall
+                            (
+                                "/Pages/v5/Financial/ApproveCosts.aspx/RetractApproval",
+                                { identifier: $(this).attr("baseid") },
+                                this,
+                                function(result) {
+                                    if (result.Success) {
                                         var baseid = $(this).attr("baseid");
                                         $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                                         $(this).attr("rel", "");
@@ -144,18 +143,20 @@
                                         $("#IconApproval" + baseid).removeClass("LocalApproved");
                                         $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
                                         $('.row' + baseid).removeClass("action-list-item-approved");
-                                        alertify.log(SwarmopsJS.unescape(msg.d.DisplayMessage));
+                                        alertify.log(SwarmopsJS.unescape(result.DisplayMessage));
 
                                         recheckBudgets(); // will double-check budgets against server
                                     } else {
                                         $(this).attr("src", "/Images/Icons/iconshock-greentick-128x96px.png");
-                                        alertify.error(SwarmopsJS.unescape(msg.d.DisplayMessage));
+                                        alertify.error(SwarmopsJS.unescape(result.DisplayMessage));
                                         // TODO: Add alert box?
-                                    }
-                                }, this)
-                            });
 
-                        });
+                                    }
+                                }
+
+                            );  // ends proxiedAjaxCall
+
+                        });  // ends .click(function() {
 
 
 
@@ -228,16 +229,14 @@
                 uninitializedPopupDisplayed = true;
             }
 
-
-            $.ajax({
-                type: "POST",
-                url: "/Pages/v5/Financial/ApproveCosts.aspx/ApproveItem",
-                data: "{'identifier': '" + escape($(approvalIcon).attr("baseid")) + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: $.proxy(function (msg) {
+            SwarmopsJS.proxiedAjaxCall (
+                "/Pages/v5/Financial/ApproveCosts.aspx/ApproveItem",
+                { identifier: $(approvalIcon).attr("baseid") },
+                approvalIcon,
+                function (result) {
                     var baseid = $(this).attr("baseid");
-                    if (msg.d.Success) {
+
+                    if (result.Success) {
                         if ($(this).hasClass("LocalFundsInsufficient")) {
                             $(this).attr("src", approvalOverdraftIcon);
                         } else {
@@ -262,9 +261,12 @@
 
                         recheckBudgets();
                     }
-                }, approvalIcon)
-            });
-        }
+
+                }  // ends success function parameter
+
+            ); // ends proxiedAjaxCall() call
+
+        } // ends onExpenseApproval() definition
 
 
 
