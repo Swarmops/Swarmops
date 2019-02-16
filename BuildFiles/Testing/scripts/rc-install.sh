@@ -62,7 +62,9 @@ if [ $ISDEBIAN -gt 0 ]; then
   echo " "
   echo "Step 3 - Configuring MariaDB for root@localhost login"
   echo " "
-  echo "TODO"
+  echo "GRANT ALL PRIVILEGES on *.* to 'root'@'localhost' IDENTIFIED BY 'sandbox';" > /tmp/mariadbroot.sql
+  echo "FLUSH PRIVILEGES;" >> /tmp/mariadbroot.sql
+  mysql -u root -psandbox < /tmp/mariadbroot.sql
 else
   echo " "
   echo "Step 3 - No configuration of MySQL required, skipped"
