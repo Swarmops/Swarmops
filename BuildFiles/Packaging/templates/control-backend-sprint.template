@@ -9,5 +9,5 @@ Description: Swarmops Backend
  Swarmops is a swarm activist administration system.
  This package is the backend. Multiple frontends can run
  on one backend. Target distros are 2016+ Debian Stable
- and Ubuntu LTS, which currently means Xenial and Stretch.
+ and Ubuntu LTS, which currently means Xenial, Bionic, and Stretch.
 

@@ -1,8 +1,24 @@
+#
+# The --PackageSuffix-- is expanded to be empty (for release) or "-rc" (for release candidate)
+#
 Package: swarmops-common--PackageSuffix--
+#
+# The --BuildNumber-- is replaced with the build number on the format A.B.C-betaXX+buildseqnumber-githubcommit
+#
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
-Depends: dialog (>=1.1), mono-runtime (>=5), --Dependencies--
+#
+# Dialog is required for the Apache autoconfiguration
+# mono-runtime >=5 makes sure user has added the mono sources, Mono 5 is not yet in Debian/Ubuntu
+# --Dependencies-- are picked from the Dependencies folder, note that the file starts with
+# a space on each line, and so becomes a folding field in this control file
+#
+Depends: dialog (>=1.2), mono-runtime (>=5), --Dependencies--
+#
+# This prevents installation of other flavors of Swarmops on the same server.
+# The --ReversePackageSuffix-- is the other flavor from --PackageSuffix-- above.
+#
 Conflicts: swarmops-common-internal,swarmops-common-stable,swarmops-common--ReversePackageSuffix--
 Homepage: http://swarmops.com/
 Description: Swarmops Common
