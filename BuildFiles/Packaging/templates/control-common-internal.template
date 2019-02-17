@@ -2,7 +2,7 @@ Package: swarmops-common-internal
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
-Depends: dialog (>=1.1), mono-runtime (>=3.2.8), --Dependencies--
+Depends: dialog (>=1.1), mono-runtime (>=5), --Dependencies--
 Conflicts: swarmops-common,swarmops-common-stable
 Homepage: http://swarmops.com/
 Description: Swarmops Common (Internal)
