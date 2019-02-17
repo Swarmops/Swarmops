@@ -204,13 +204,13 @@
 
 
         function onExpenseApproval(approvalIcon) {
-            $(approvalIcon).attr("rel", "loading");
-            $(approvalIcon).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
-            $("#IconDenial" + $(approvalIcon).attr("baseid")).fadeTo(1000, 0.01).css("cursor", "default");
+            var itemId = $(approvalIcon).attr("baseid");
+            $(approvalIcon).hide();
+            $("#IconWait" + itemId).show();
+            $("#IconDenial" + itemId).fadeTo(1000, 0.01);
 
-            var baseid = $(approvalIcon).attr("baseid");
-            var accountId = $("#IconApproval" + baseid).attr("accountid");
-            var funds = parseFloat($("#IconApproval" + baseid).attr("amount"));
+            var accountId = $("#IconApproval" + itemId).attr("accountid");
+            var funds = parseFloat($("#IconApproval" + itemId).attr("amount"));
             budgetRemainingLookup[accountId] += funds;
             setApprovability();
 
@@ -231,29 +231,36 @@
                 { identifier: $(approvalIcon).attr("baseid") },
                 approvalIcon,
                 function (result) {
-                    var baseid = $(this).attr("baseid");
+                    var itemId = $(this).attr("baseid");
 
                     if (result.Success) {
-                        if ($(this).hasClass("LocalFundsInsufficient")) {
-                            $(this).attr("src", approvalOverdraftIcon);
-                        } else {
-                            $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
-                        }
-                        $(this).attr("rel", "active");
-                        $(this).addClass("LocalApproved");
                         $(this).hide();
-                        $("#IconApproved" + baseid).fadeTo(250, 0.5);
-                        $("#IconDenial" + baseid).finish().css("display", "none").css("opacity", 1.0);
-                        $("#IconUndo" + baseid).fadeIn(100);
-                        $('.row' + baseid).addClass("action-list-item-approved");
+                        $(this).addClass("LocalApproved");
+                        $('.row' + itemId).addClass("action-list-item-approved");
+
+                        $("#IconWait" + itemId).hide();
+                        $("#IconDenial" + itemId).hide();
+                        $("#IconApproved" + itemId).fadeTo(200, 0.5); // half opacity is intentional
+                        $("#IconUndo" + itemId).fadeTo(1000, 1); // the longer delay is intentional
                         alertify.success(result.DisplayMessage);
 
                         recheckBudgets(); // will double-check budgets against server
+
                     } else {
-                        // failure, likely from attesting too quickly and overrunning budget
-                        $(this).attr("rel", "");
-                        $(this).attr("src", approvalOverdraftIcon);
-                        $("#IconDenial" + baseid).css('opacity', 1.0).css("cursor", "pointer");
+
+                        // failure, likely from approving too quickly and overrunning budget,
+                        // or from a concurrency error
+
+                        // In the case of a concurrency error, resetting the UI here might cause
+                        // race conditions, but the far more common case will be the overrun
+                        // budget race condition, in which case this produces the desired result
+
+                        $('.row' + itemId).removeClass("action-list-item-approved");
+                        $("#IconWait" + itemId).hide();
+                        $("#IconApproved" + itemId).hide();
+                        $("#IconApproval" + itemId).fadeTo(1000, 1); // the longer delay is intentional
+                        $("#IconDenial" + itemId).fadeTo(1000, 1); // the longer delay is intentional
+
                         alertify.error(result.DisplayMessage);
 
                         recheckBudgets();
