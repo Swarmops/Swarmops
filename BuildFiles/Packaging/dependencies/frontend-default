@@ -2,6 +2,7 @@
  dialog (>= 1.2),
  mono-apache-server4 (>= 3.0.11),
  libapache2-mod-mono (>= 2.11),
+ mono-devel,
  libgdiplus (>= 2.11),
  imagemagick,
  ghostscript,
