@@ -72,16 +72,14 @@
 
 
                         $(".LocalIconDenial").click(function() {
-                            if ($(this).attr("rel") != "loading" && $("#IconApproval" + $(this).attr("baseid")) != "loading") {
-                                recordId = $(this).attr("baseid");
-                                var amountRequested = $("#IconApproval" + recordId).attr('amount');
-                                accountId = $("#IconApproval" + recordId).attr('accountid');
-                                $('div.radioOption').hide();
-                                $('input:radio[name="ModalOptions"]').prop('checked', false);
-                                SwarmopsJS.formatCurrency(amountRequested, function (data) { <%=this.TextCorrectAmount.ClientID%>_val(data); });
-                                $('<%=this.TextDenyReason.ClientID%>').val(''); // empty reason
-                                <%=this.DialogDeny.ClientID%>_open();
-                            }
+                            recordId = $(this).attr("baseid");
+                            var amountRequested = $("#IconApproval" + recordId).attr('amount');
+                            accountId = $("#IconApproval" + recordId).attr('accountid');
+                            $('div.radioOption').hide();
+                            $('input:radio[name="ModalOptions"]').prop('checked', false);
+                            SwarmopsJS.formatCurrency(amountRequested, function (data) { <%=this.TextCorrectAmount.ClientID%>_val(data); });
+                            $('<%=this.TextDenyReason.ClientID%>').val(''); // empty reason
+                            <%=this.DialogDeny.ClientID%>_open();
                         });
 
                         $(".LocalIconApproval").click(function() {
@@ -118,14 +116,14 @@
                         });
 
                         $(".LocalIconUndo").click(function () {
-                            $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
-                            $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
+                            $(this).hide();
+                            var itemId = $(this).attr("baseid");
+                            $("#IconApproved" + itemId).fadeTo(1000, 0.01);
+                            $("#IconWait" + itemId).show();
 
-                            var baseid = $(this).attr("baseid");
-                            var accountId = $("#IconApproval" + baseid).attr("accountid");
-                            var funds = parseFloat($("#IconApproval" + baseid).attr("amount"));
+                            var accountId = $("#IconApproval" + itemId).attr("accountid");
+                            var funds = parseFloat($("#IconApproval" + itemId).attr("amount"));
                             budgetRemainingLookup[accountId] -= funds;
-                            setApprovability();
 
                             SwarmopsJS.proxiedAjaxCall
                             (
@@ -134,23 +132,22 @@
                                 this,
                                 function(result) {
                                     if (result.Success) {
-                                        var baseid = $(this).attr("baseid");
-                                        $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
-                                        $(this).attr("rel", "");
-                                        $(this).hide();
-                                        $("#IconApproved" + baseid).finish().css("opacity", 0.5).css("display", "none");
-                                        $("#IconApproval" + baseid).fadeIn(100);
-                                        $("#IconApproval" + baseid).removeClass("LocalApproved");
-                                        $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
-                                        $('.row' + baseid).removeClass("action-list-item-approved");
+                                        var itemId = $(this).attr("baseid");
+                                        $('.row' + itemId).removeClass("action-list-item-approved");
+                                        $("#IconApproval" + itemId).removeClass("LocalApproved");
+                                        $("#IconWait" + itemId).hide();
+                                        $("#IconApproved" + itemId).hide();
+                                        $("#IconApproval" + itemId).fadeTo(200, 1);
+                                        $("#IconDenial" + itemId).fadeTo(200, 1);
                                         alertify.log(result.DisplayMessage);
 
                                         recheckBudgets(); // will double-check budgets against server
                                     } else {
-                                        $(this).attr("src", "/Images/Icons/iconshock-greentick-128x96px.png");
-                                        alertify.error(result.DisplayMessage);
-                                        // TODO: Add alert box?
+                                        // There's probably a concurrency error.
+                                        // The socket handler will take care of updating the UI on
+                                        // receiving the cause of the concurrency error.
 
+                                        alertify.log(result.DisplayMessage);
                                     }
                                 }
 
