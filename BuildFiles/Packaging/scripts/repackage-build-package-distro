@@ -41,9 +41,9 @@ do
     DEPENDENCIES=$(cat dependencies/$PACKAGE-default | tr -d ' \r')
   fi
 
+  # remove comments and roll up multiline to singleline in Dependencies field
+  DEPENDENCIES=$(echo ${DEPENDENCIES} | grep -v '^$\|^\s*\#' | tr -d '\n')
   echo "Dependencies: $DEPENDENCIES"
-  # escape newlines in Dependencies file
-  DEPENDENCIES=$(echo ${DEPENDENCIES} | tr '\n' "\n\\")
 
 # read -p "Press [Enter] key to make control backup..."
 

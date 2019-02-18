@@ -1,48 +1,62 @@
- apache2 (>= 2.2.20),
-#
-# Dialog is required for the "Autoconfigure apache?" dialog
-#
- dialog (>= 1.2),
-#
-# The xsp4 server
-#
- mono-apache-server4 (>= 3.0.11),
-#
-# The Mono interface to Apache
-#
- libapache2-mod-mono (>= 2.11),
-#
-# Mono-devel is repeated here, it's in swarmops-common as well
-#
- mono-devel,
-#
-# I _think_ this package was required for better image conversions
-#
- libgdiplus (>= 2.11),
-#
-# Imagemagick is for image conversions
-#
- imagemagick,
-#
-# Ghostscript is for making/reading PDFs
-#
- ghostscript,
-#
-# and QPDF is a small utility to count the pages in a PDF file in a script
-#
- qpdf
-#
-#
 #
 # This file is a template included with dependencies for the swarmops frontend.
 # It is included into the control file when packages are built. If there exists
 # a file with the name frontend-[distro], it is selected for a distro, otherwise, 
 # front-default is used.
 #
-# Note that all entries are preceded by a space. That's a requirement because
-# of how control lines in the debian packages are folded to multiline, and
-# this file is included in-situ into the control template.
+# First, Apache is obviously required to serve the frontend.
 #
-# For the same reason, there can't be any non-comment empty lines,
-# or any comment lines first in the file, before the first dependency.
+
+ apache2 (>= 2.2.20),
+
+#
+# Dialog is required for the "Autoconfigure apache?" dialog
+#
+
+ dialog (>= 1.2),
+
+#
+# The xsp4 server serving Mono to Apache
+#
+
+ mono-apache-server4 (>= 3.0.11),
+
+#
+# The Mono interface to Apache
+#
+
+ libapache2-mod-mono (>= 2.11),
+
+#
+# Mono-devel is repeated here, it's in swarmops-common as well
+#
+
+ mono-devel,
+
+#
+# I _think_ this package was required for better image conversions
+#
+
+ libgdiplus (>= 2.11),
+
+#
+# Imagemagick is for image conversions
+#
+
+ imagemagick,
+
+#
+# Ghostscript is for making/reading PDFs
+#
+
+ ghostscript,
+
+#
+# and QPDF is a small utility to count the pages in a PDF file in a script
+#
+
+ qpdf
+
+# Note that the last line doesn't have a terminating comma, as it ends the list
+# of dependencies that goes into the Control file
 
