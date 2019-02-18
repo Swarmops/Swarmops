@@ -36,13 +36,13 @@ do
   echo "Packaging build $BUILDID for $DISTRO..."
 
   if [ -e dependencies/$PACKAGE-$DISTRO ]; then
-    DEPENDENCIES=$(cat dependencies/$PACKAGE-$DISTRO | tr -d ' \r')
+    DEPENDENCIESFILE=dependencies/$PACKAGE-$DISTRO
   else
-    DEPENDENCIES=$(cat dependencies/$PACKAGE-default | tr -d ' \r')
+    DEPENDENCIESFILE=dependencies/$PACKAGE-default
   fi
 
   # remove comments and roll up multiline to singleline in Dependencies field
-  DEPENDENCIES=$(echo ${DEPENDENCIES} | grep -v '^$\|^\s*\#' | tr -d '\n')
+  DEPENDENCIES=$(cat ${DEPENDENCIESFILE} | grep -v '^$\|^\s*\#' | tr -d '\n' | tr -d '\r' )
   echo "Dependencies: $DEPENDENCIES"
 
 # read -p "Press [Enter] key to make control backup..."
