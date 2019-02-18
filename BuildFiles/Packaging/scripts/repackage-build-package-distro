@@ -43,7 +43,7 @@ do
 
   echo "Dependencies: $DEPENDENCIES"
   # escape newlines in Dependencies file
-  DEPENDENCIES=$(echo ${DEPENDENCIES} | tr '\n' "\\n")
+  DEPENDENCIES=$(echo ${DEPENDENCIES} | tr '\n' "\n\\")
 
 # read -p "Press [Enter] key to make control backup..."
 
