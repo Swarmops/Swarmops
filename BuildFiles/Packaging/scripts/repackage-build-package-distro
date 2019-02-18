@@ -42,11 +42,13 @@ do
   fi
 
   echo "Dependencies: $DEPENDENCIES"
+  # escape newlines in Dependencies file
+  DEPENDENCIES=$(echo ${DEPENDENCIES} | tr '\n' "\\n")
 
 # read -p "Press [Enter] key to make control backup..."
 
   cp $DROPFOLDER/payload/DEBIAN/control $DROPFOLDER/controlbackup
-  sed -i "s/--Dependencies--/$DEPENDENCIES/g" $DROPFOLDER/payload/DEBIAN/control
+  sed -i "s/--Dependencies--/${DEPENDENCIES}/g" $DROPFOLDER/payload/DEBIAN/control
 
 # read -p "Press [Enter] key to make create checksums..."
 
