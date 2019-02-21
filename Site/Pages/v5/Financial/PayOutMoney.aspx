@@ -287,8 +287,23 @@
     
     <Swarmops5:ModalDialog ID="ModalConfirmPayment" runat="server" >
         <DialogCode>
-            <h2>Testing</h2>
-            <p>Testing more</p>
+            <h2>EXECUTE A MANUAL PAYOUT</h2>
+            <div class="entryFields">
+                <input type="text" readonly="readonly" value="Recipient"/><br/>
+                <input type="text" readonly="readonly" class="alignRight" value="Amount"/><br/>
+                <input type="text" readonly="readonly" value="Reference"/><br/>
+                <input type="text" readonly="readonly" value="Transfer Method"/><br/>
+                <input type="text" readonly="readonly" value="Clearing"/><br/>
+                <input type="text" readonly="readonly" value="Account Number"/><br/>
+            </div>
+            <div class="entryLabels">
+                Recipient<br/>
+                Currency and Amount<br/>
+                Reference<br/>
+                Currency, Method<br/>
+                Clearing<br/>
+                Account Number
+            </div>
             Foobar high chaparral
         </DialogCode>
     </Swarmops5:ModalDialog>
