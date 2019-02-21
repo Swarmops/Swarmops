@@ -15,8 +15,25 @@ namespace Swarmops.Logic.Support
     {
         public static void DisableSslCertificateChecks()
         {
-            // Mono's SSL **REMAINS** broken even in the freshest builds. :( This disables client-side TLS verification.
-            // It means there's a certain lack of security, but the alternative is not having the functionality at all.
+            // 2019-Feb-21: The TLS connection to Blockchain.Info's WebSocket still fails with a TLS connection, but
+            // that appears to be unrelated to this issue; it fails a check whether TLS checks are enabled or not
+            //
+            // 2018-Dec-01: We're now requiring the freshest Mono repositories to be installed with Swarmops, and this DOES
+            // force a cert repository to be installed (at long effing last). Therefore, we're disabling this entire
+            // function, and basically checking if anything breaks as HTTPS becomes re-enabled across the board.
+
+            return;
+
+            // disable "unreachable code" for the rest of this function, as the disabling is deliberate
+            // disable "variable declared but never used" because of the workaround last here
+            // disable "variable is assigned a value that is never used" because of the workaround last here
+
+            #pragma warning disable 0162, 0168, 0219
+
+            // X.509 is SO SO SO broken. The reason we do this, btw, is that mono doesn't come with root certs. At all.
+            // This disables certificate checking completely and accepts ALL certificates.
+
+            // TODO: Does this install a new handler every time it's been called? How do you verify that this short-circuit is in place?
 
             System.Net.ServicePointManager.ServerCertificateValidationCallback =
                 (sender, certificate, chain, sslPolicyErrors) => true;
@@ -24,9 +41,11 @@ namespace Swarmops.Logic.Support
             // Further, instantiate an AesCryptoServiceProvider to make sure the linker doesn't optimize it away -- apparently
             // another known bug. The warning disabled here is "b is assigned a value that is never used".
 
-            #pragma warning disable 0219
+            //#pragma warning disable 0219
             System.Security.Cryptography.AesCryptoServiceProvider b = new System.Security.Cryptography.AesCryptoServiceProvider();
-            #pragma warning restore 0219
+            //#pragma warning restore 0219
+
+            #pragma warning restore 0162, 0168, 0219
 
         }
 
