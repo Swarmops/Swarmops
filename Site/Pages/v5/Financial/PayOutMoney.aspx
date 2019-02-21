@@ -70,6 +70,10 @@
                             $(".LocalIconApproval, .LocalIconUndo, .LocalIconDenial").css("cursor", "pointer");
 
                             $(".LocalIconApproval").click(function () {
+
+                                <%=this.ModalConfirmPayment.ClientID%>_open();
+
+                                /*
                                 var itemId = $(this).attr("baseid");
                                 var prototypeId = $(this).attr("protoid");
                                 $(this).hide();
@@ -99,7 +103,7 @@
 
                                         }
                                     }
-                                );
+                                );*/
                             });
 
 
@@ -137,6 +141,9 @@
 
 
                             /*
+
+                            OLD CODE BELOW FROM PREVIOUS TYPE OF ICON LOGIC, KEPT A WHILE FOR REFERENCE --
+
                             $(".LocalIconApproval").click(function() {
                                 if ($(this).attr("rel") != "loading") {
 
@@ -253,12 +260,10 @@
             <thead>  
                 <tr>  
                     <th data-options="field:'due',width:70"><asp:Label ID="LabelGridHeaderDue" runat="server" Text="XYZ Due"/></th>  
-                    <th data-options="field:'recipient',width:100,sortable:true"><asp:Label ID="LabelGridHeaderRecipient" runat="server" Text="XYZ Beneficiary" /></th>
-                    <th data-options="field:'bank',width:80"><asp:Label ID="LabelGridHeaderBank" runat="server" Text="XYZ Bank" /></th>  
-                    <th data-options="field:'account',width:90,sortable:true"><asp:Label ID="LabelGridHeaderAccount" runat="server" Text="XYZ Account" /></th>
-                    <th data-options="field:'reference',width:145,sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderReference" runat="server" Text="XYZ Reference" /></th>
-                    <th data-options="field:'amount',width:80,align:'right'"><asp:Label ID="LabelGridHeaderAmount" runat="server" Text="XYZ Amount" /></th>
-                    <th data-options="field:'action',width:68,align:'center'"><asp:Label ID="LabelGridHeaderPaid" runat="server" Text="XYZPaid" /></th>
+                    <th data-options="field:'recipient',width:160,sortable:true"><asp:Label ID="LabelGridHeaderRecipient" runat="server" Text="XYZ Beneficiary" /></th>
+                    <th data-options="field:'bank',width:160"><asp:Label ID="LabelGridHeaderCurrencyMethod" runat="server" Text="XYZ Bank" /></th>  
+                    <th data-options="field:'amount',width:85,align:'right'"><asp:Label ID="LabelGridHeaderAmount" runat="server" Text="XYZ Amount" /></th>
+                    <th data-options="field:'action',width:68,align:'center'"><asp:Label ID="LabelGridHeaderPay" runat="server" Text="XYZPaid" /></th>
                 </tr>  
             </thead>
         </table>
@@ -291,6 +296,13 @@
             </div>
         </div>
     </div>
+    
+    <Swarmops5:ModalDialog ID="ModalConfirmPayment" runat="server" >
+        <DialogCode>
+            <h2>Testing</h2>
+            Foobar high chaparral
+        </DialogCode>
+    </Swarmops5:ModalDialog>
 
 </asp:Content>
 

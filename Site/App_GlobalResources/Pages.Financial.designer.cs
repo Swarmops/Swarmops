@@ -1303,6 +1303,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Currency, Method.
+        /// </summary>
+        internal static string PayOutMoney_GridHeader_CurrencyMethod {
+            get {
+                return ResourceManager.GetString("PayOutMoney_GridHeader_CurrencyMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Due Date.
         /// </summary>
         internal static string PayOutMoney_GridHeader_DueDate {
@@ -1317,6 +1326,15 @@ namespace Resources.Pages {
         internal static string PayOutMoney_GridHeader_PaidOut {
             get {
                 return ResourceManager.GetString("PayOutMoney_GridHeader_PaidOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pay.
+        /// </summary>
+        internal static string PayOutMoney_GridHeader_PayThis {
+            get {
+                return ResourceManager.GetString("PayOutMoney_GridHeader_PayThis", resourceCulture);
             }
         }
         
@@ -1371,6 +1389,15 @@ namespace Resources.Pages {
         internal static string PayOutMoney_Info {
             get {
                 return ResourceManager.GetString("PayOutMoney_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string PayOutMoney_ModalPay_Confirm {
+            get {
+                return ResourceManager.GetString("PayOutMoney_ModalPay_Confirm", resourceCulture);
             }
         }
         

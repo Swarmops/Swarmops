@@ -61,6 +61,7 @@
     <Compile Include="Enums\FinancialDependencyType.cs" />
     <Compile Include="Enums\FinancialForeignIdType.cs" />
     <Compile Include="Enums\FinancialValidationType.cs" />
+    <Compile Include="Enums\ForeignObjectType.cs" />
     <Compile Include="Enums\GeographyLevel.cs" />
     <Compile Include="Enums\InvalidMembershipType.cs" />
     <Compile Include="Enums\LayoutDirection.cs" />
@@ -70,6 +71,8 @@
     <Compile Include="Enums\OrganizationFinancialAccountType.cs" />
     <Compile Include="Enums\OutboundCommPriority.cs" />
     <Compile Include="Enums\PaymentCodeIssueType.cs" />
+    <Compile Include="Enums\PaymentTargetField.cs" />
+    <Compile Include="Enums\PaymentTargetType.cs" />
     <Compile Include="Enums\PermissionEnum.cs" />
     <Compile Include="Enums\PersonGender.cs" />
     <Compile Include="Enums\PersonOptionalDataKey.cs" />

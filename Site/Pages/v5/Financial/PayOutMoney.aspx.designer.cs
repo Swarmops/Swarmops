@@ -40,31 +40,13 @@ namespace Swarmops.Frontend.Pages.Financial {
         protected global::System.Web.UI.WebControls.Label LabelGridHeaderRecipient;
         
         /// <summary>
-        /// LabelGridHeaderBank control.
+        /// LabelGridHeaderCurrencyMethod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderBank;
-        
-        /// <summary>
-        /// LabelGridHeaderAccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderAccount;
-        
-        /// <summary>
-        /// LabelGridHeaderReference control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderReference;
+        protected global::System.Web.UI.WebControls.Label LabelGridHeaderCurrencyMethod;
         
         /// <summary>
         /// LabelGridHeaderAmount control.
@@ -76,13 +58,13 @@ namespace Swarmops.Frontend.Pages.Financial {
         protected global::System.Web.UI.WebControls.Label LabelGridHeaderAmount;
         
         /// <summary>
-        /// LabelGridHeaderPaid control.
+        /// LabelGridHeaderPay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderPaid;
+        protected global::System.Web.UI.WebControls.Label LabelGridHeaderPay;
         
         /// <summary>
         /// LabelPayOutMoneyOcrHeader control.
@@ -155,5 +137,14 @@ namespace Swarmops.Frontend.Pages.Financial {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelOptionsShowOcr;
+        
+        /// <summary>
+        /// ModalConfirmPayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.ModalDialog ModalConfirmPayment;
     }
 }
