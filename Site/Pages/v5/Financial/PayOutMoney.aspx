@@ -288,13 +288,13 @@
     <Swarmops5:ModalDialog ID="ModalConfirmPayment" runat="server" >
         <DialogCode>
             <h2>EXECUTE A MANUAL PAYOUT</h2>
-            <div class="entryFields">
-                <input type="text" readonly="readonly" value="Recipient"/><br/>
-                <input type="text" readonly="readonly" class="alignRight" value="Amount"/><br/>
-                <input type="text" readonly="readonly" value="Reference"/><br/>
-                <input type="text" readonly="readonly" value="Transfer Method"/><br/>
-                <input type="text" readonly="readonly" value="Clearing"/><br/>
-                <input type="text" readonly="readonly" value="Account Number"/><br/>
+            <div class="entryFields modal wide">
+                <input type="text" readonly="readonly" value="Recipient"/>&#8203;<br/>
+                <input type="text" readonly="readonly" class="alignRight" value="Amount"/>&#8203;<br/>
+                <input type="text" readonly="readonly" value="Reference"/>&#8203;<br/>
+                <input type="text" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
+                <input type="text" readonly="readonly" value="Clearing"/>&#8203;<br/>
+                <input type="text" readonly="readonly" value="Account Number"/>&#8203;<br/>
             </div>
             <div class="entryLabels">
                 Recipient<br/>

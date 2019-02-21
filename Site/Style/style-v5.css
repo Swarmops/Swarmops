@@ -809,6 +809,11 @@ input[type="text"], input[type="password"], select {  /* this makes dropdowns an
 	box-shadow: 0 1px 3px 1px #1C397E;
 }
 
+.entryFields.modal.wide {
+    width: 630px;
+}
+
+
 div.modal .entryFields {
     margin-right: 3px;
     margin-bottom: 10px;
@@ -836,6 +841,7 @@ body.rtl div.modal .entryFields {
 	font-size: 24px !important;
 	margin-bottom: 3px !important;
 }
+
 
 .entryFields input:not(.buttonAccentColor), .entryFields textarea
 {
