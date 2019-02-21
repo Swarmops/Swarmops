@@ -121,6 +121,15 @@ namespace Swarmops.Frontend.Pages.Financial {
         protected global::System.Web.UI.WebControls.Label LabelGridHeaderPaid2;
         
         /// <summary>
+        /// ModalConfirmPayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.ModalDialog ModalConfirmPayment;
+        
+        /// <summary>
         /// LabelSidebarOptions control.
         /// </summary>
         /// <remarks>
@@ -137,14 +146,5 @@ namespace Swarmops.Frontend.Pages.Financial {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelOptionsShowOcr;
-        
-        /// <summary>
-        /// ModalConfirmPayment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Base.ModalDialog ModalConfirmPayment;
     }
 }

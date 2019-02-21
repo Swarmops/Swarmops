@@ -284,6 +284,16 @@
             </thead>
         </table>
     </div>
+    
+    <Swarmops5:ModalDialog ID="ModalConfirmPayment" runat="server" >
+        <DialogCode>
+            <h2>Testing</h2>
+            <p>Testing more</p>
+            Foobar high chaparral
+        </DialogCode>
+    </Swarmops5:ModalDialog>
+
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
@@ -297,13 +307,5 @@
         </div>
     </div>
     
-    <Swarmops5:ModalDialog ID="ModalConfirmPayment" runat="server" >
-        <DialogCode>
-            <h2>Testing</h2>
-            <p>Testing more</p>
-            Foobar high chaparral
-        </DialogCode>
-    </Swarmops5:ModalDialog>
-
 </asp:Content>
 
