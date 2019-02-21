@@ -240,7 +240,7 @@ namespace Swarmops.Backend
 
             using (
                 _blockChainInfoSocket =
-                    new WebSocket("wss://ws.blockchain.info/inv?api_code=" + SystemSettings.BlockchainSwarmopsApiKey))
+                    new WebSocket("ws://ws.blockchain.info/inv?api_code=" + SystemSettings.BlockchainSwarmopsApiKey))
             {
 
                 // Begin maintenance loop
