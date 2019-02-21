@@ -848,9 +848,23 @@ body.rtl div.modal .entryFields {
 	width: 300px;
 }
 
+.entryFields input:not(.buttonAccentColor), .entryFields textarea
+{
+	width: 300px;
+}
+
 .entryFields select {
 	width: 330px;
 	background: white;
+}
+
+.entryFields.modal.wide input:not(.buttonAccentColor), .entryFields.modal.wide textarea
+{
+	width: 600px;
+}
+
+.entryFields.modal.wide select {
+	width: 630px;
 }
 
 .entryFields input:not(.NoInputFocus):focus, .entryFields textarea:focus, .entryFields select:focus 
