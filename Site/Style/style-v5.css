@@ -585,69 +585,15 @@ div.login-page-logo {
     margin-bottom: 30px;
 }
 
-div.loginbox
-{
-	-webkit-box-shadow: 0 1px 3px #1C397E;
-	-moz-box-shadow: 0 1px 3px #1C397E;
-	box-shadow: 0 1px 3px #1C397E;
-	
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	
-	border: solid 1px #A2BEFF;
-	border-top-left-radius: 10px 10px;
-	border-top-right-radius: 10px 10px;
-	border-bottom-right-radius: 10px 10px;
-	border-bottom-left-radius: 10px 10px;
-	
-	margin-top: 0px;	
-	background-color: #E4ECFF;
-}
-
 
 input.InputManualCredentials {
     border: solid 1px #A2BEFF;
     padding: 2px;
 }
 
-span.loginalphabetasign
-{
-	font-size: 24px;
-	text-transform: none;
-	font-family: Georgia, Times New Roman, Serif;
-	font-weight: bold;
-	font-style:italic;
-	color: #C78B15;
-	text-shadow: #7F5500 0px -1px 0px, #7F5500 0px 1px 0px, #7F5500 -1px 0px 0px, #7F5500 1px 0px 0px, #C78B15 1px 1px 3px, #C78B15 1px 1px 3px;
-	position:relative;
-	top:4px;
-	left:-4px;
-}
 
+/* EXECUTE BUTTON */
 
-.loginbox .box
-{
-	margin-top: 12px;
-	margin-bottom: 12px;
-}
-
-.loginbox h1
-{
-	margin-left: 80px;
-	margin-top: 10px;
-	font-size: 40px;
-}
-
-.loginbox #ButtonLogin
-{
-	background-image: url('/Security/Images/iconshock-foreign-key-16px-offset.png');
-}
-
-.loginbox #ButtonLogin:hover
-{
-	background-image: url('/Security/Images/iconshock-foreign-key-16px-hot-offset.png');
-}
 
 .buttonAccentColor {
 	display:block;
@@ -879,7 +825,7 @@ body.rtl div.modal .entryFields {
 	width: 530px;
 }
 
-.entryFields input:not(.NoInputFocus):focus, .entryFields textarea:focus, .entryFields select:focus 
+.entryFields input:not(.NoInputFocus):not(.suppress-input-focus):focus, .entryFields textarea:focus, .entryFields select:focus 
 {
 	background: #F0F6FF;
 	box-shadow: 0px 0px 4px 2px #1C397E inset;

@@ -161,7 +161,7 @@
 
         <div class="stacked-input-control"></div> <!-- placeholder for label-side H2 -->
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextReference" /></div>
-        <asp:Button ID="ButtonCreate" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return validateFields();" OnClick="ButtonCreate_Click" Text="Create"/>
+        <asp:Button ID="ButtonCreate" runat="server" CssClass="buttonAccentColor suppress-input-focus" OnClientClick="return validateFields();" OnClick="ButtonCreate_Click" Text="Create"/>
     </div>
     <div class="entryLabels">
         <asp:Label runat="server" ID="LabelClient" /><br/>

@@ -63,7 +63,7 @@
     <asp:Literal runat="server" ID="LiteralImpersonationWarning"/>
     <div class="entryFields">
         <Swarmops5:ComboPeople ID="ComboPeople" runat="server" />
-        <asp:Button ID="ButtonImpersonate" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return dialogBeginImpersonation();" Text="#Impersonate#"/>
+        <asp:Button ID="ButtonImpersonate" runat="server" CssClass="buttonAccentColor suppress-input-focus" OnClientClick="return dialogBeginImpersonation();" Text="#Impersonate#"/>
     </div>
     <div class="entryLabels">
         <asp:Label runat="server" ID="LabelPerson" />

@@ -441,7 +441,7 @@
                 <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextBank" />&#8203;<br/></div>
                 <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextClearing" />&#8203;<br/></div>
                 <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/></div>
-                <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
+                <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor suppress-input-focus" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
             </div>
             <div class="entryLabels">
                 <asp:Label runat="server" ID="LabelAmount" /><br/>
@@ -488,7 +488,7 @@
                     
                     <div id="divExpensifyReadySubmit" style="display:none">
                         <div class="entryFields">
-                            <input type="button" class="buttonAccentColor NoInputFocus" id="buttonExpensifySubmit" value="Submit"/>
+                            <input type="button" class="buttonAccentColor suppress-input-focus" id="buttonExpensifySubmit" value="Submit"/>
                         </div>
                         <div class="entryLabels">
                             <span id="spanLabelExpensifySubmit">Ready to submit</span>
@@ -543,7 +543,7 @@
                 <Swarmops5:ComboBudgets ID="ComboExpensifyBudgets" ListType="Expensable" runat="server"/>
                 <Swarmops5:Currency ID="CurrencyModalExpensifyAmount" runat="server"/>
                 <div class="ifVatEnabled"><Swarmops5:Currency ID="CurrencyModalExpensifyAmountVat" runat="server"/></div>
-                <input type="button" id="buttonModalProceed" class="buttonAccentColor HalfWidth NoInputFocus" value="Proceed &gt;&gt;"/><input type="button" id="buttonModalDelete" class="buttonAccentColor Red HalfWidth NoInputFocus" value="Delete"/>
+                <input type="button" id="buttonModalProceed" class="buttonAccentColor HalfWidth suppress-input-focus" value="Proceed &gt;&gt;"/><input type="button" id="buttonModalDelete" class="buttonAccentColor Red HalfWidth NoInputFocus" value="Delete"/>
             </div>
             <div class="entryLabels">Description<br/>Budget charged<br />Expense amount<br/><div class="ifVatEnabled">VAT amount of the total</div></div>
         </DialogCode>

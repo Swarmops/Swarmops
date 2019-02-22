@@ -17,7 +17,7 @@
     <span style="margin-left:12px"><asp:Label runat="server" ID="LabelCurrentOrganizationName" /></span>&nbsp;<br/>
         <select class="easyui-combotree" url="Json-AccessibleOrganizationsTree.aspx" name="DropOrganizations" id="DropOrganizations" animate="true" style="width:300px" height="30"></select>
 
-        <asp:Button ID="ButtonSwitch" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClick="ButtonSwitch_Click" Text="Switch"/>
+        <asp:Button ID="ButtonSwitch" runat="server" CssClass="buttonAccentColor suppress-input-focus" OnClick="ButtonSwitch_Click" Text="Switch"/>
     </div>
     <div class="entryLabels">
         <asp:Label runat="server" ID="LabelCurrentOrganization" /><br/>

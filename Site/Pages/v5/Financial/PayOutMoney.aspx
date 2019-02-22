@@ -295,7 +295,7 @@
                 <input type="text" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
                 <input type="text" readonly="readonly" value="Clearing"/>&#8203;<br/>
                 <input type="text" readonly="readonly" value="Account Number"/>&#8203;<br/>
-                <input type="button" value="Confirm" class="buttonAccentColor action-icon-button icon-yes"/>
+                <input type="button" value="Confirm" class="buttonAccentColor suppress-input-focus action-icon-button icon-yes"/>
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelModalRecipient" runat="server" Text="Recipient"/><br/>
