@@ -674,6 +674,12 @@ span.loginalphabetasign
 	cursor: pointer;
 }
 
+.buttonAccentColor.action-icon-button {
+    height: 80px;
+    font-size: 16px !important;
+    padding-top: 40px;
+}
+
 body.rtl .buttonAccentColor {
 	float:left;
     left: inherit;
@@ -723,6 +729,12 @@ body.rtl .buttonAccentColor:focus {
 	background: linear-gradient(#FF7280, #FF614D);
 }
 
+
+.action-icon-button.icon-yes {
+    background-image: url('/Images/Icons/iconshock-balloon-yes-128x96px.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+}
 
 
 .button-orange
@@ -810,7 +822,7 @@ input[type="text"], input[type="password"], select {  /* this makes dropdowns an
 }
 
 .entryFields.modal.wide {
-    width: 630px;
+    width: 530px;
 }
 
 
@@ -860,11 +872,11 @@ body.rtl div.modal .entryFields {
 
 .entryFields.modal.wide input:not(.buttonAccentColor), .entryFields.modal.wide textarea
 {
-	width: 600px;
+	width: 500px;
 }
 
 .entryFields.modal.wide select {
-	width: 630px;
+	width: 530px;
 }
 
 .entryFields input:not(.NoInputFocus):focus, .entryFields textarea:focus, .entryFields select:focus 
@@ -876,6 +888,7 @@ body.rtl div.modal .entryFields {
 .entryFields > input[type=button]:not(.HalfWidth) {
     width: 324px;
 }
+
 
 .entryFields > input[type=button].HalfWidth {
     width: 152px;

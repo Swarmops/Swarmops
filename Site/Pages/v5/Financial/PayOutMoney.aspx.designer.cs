@@ -130,6 +130,51 @@ namespace Swarmops.Frontend.Pages.Financial {
         protected global::Swarmops.Frontend.Controls.Base.ModalDialog ModalConfirmPayment;
         
         /// <summary>
+        /// LabelPayoutModalHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelPayoutModalHeader;
+        
+        /// <summary>
+        /// LabelModalRecipient control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelModalRecipient;
+        
+        /// <summary>
+        /// LabelModalCurrencyAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelModalCurrencyAmount;
+        
+        /// <summary>
+        /// LabelModalReference control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelModalReference;
+        
+        /// <summary>
+        /// LabelModalTransferMethod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelModalTransferMethod;
+        
+        /// <summary>
         /// LabelSidebarOptions control.
         /// </summary>
         /// <remarks>

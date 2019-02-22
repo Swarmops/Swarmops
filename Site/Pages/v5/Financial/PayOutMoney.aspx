@@ -287,7 +287,7 @@
     
     <Swarmops5:ModalDialog ID="ModalConfirmPayment" runat="server" >
         <DialogCode>
-            <h2>EXECUTE A MANUAL PAYOUT</h2>
+            <h2><asp:Label ID="LabelPayoutModalHeader" runat="server" Text="Execute this payout manually now XYZ"/></h2>
             <div class="entryFields modal wide">
                 <input type="text" readonly="readonly" value="Recipient"/>&#8203;<br/>
                 <input type="text" readonly="readonly" class="alignRight" value="Amount"/>&#8203;<br/>
@@ -295,14 +295,16 @@
                 <input type="text" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
                 <input type="text" readonly="readonly" value="Clearing"/>&#8203;<br/>
                 <input type="text" readonly="readonly" value="Account Number"/>&#8203;<br/>
+                <input type="button" value="Confirm" class="buttonAccentColor action-icon-button icon-yes"/>
             </div>
             <div class="entryLabels">
-                Recipient<br/>
-                Currency and Amount<br/>
-                Reference<br/>
-                Currency, Method<br/>
+                <asp:Label ID="LabelModalRecipient" runat="server" Text="Recipient"/><br/>
+                <asp:Label ID="LabelModalCurrencyAmount" runat="server" Text="Currency and Amount XYZ"/><br/>
+                <asp:Label ID="LabelModalReference" runat="server" Text="Reference XYZ"/><br/>
+                <asp:Label ID="LabelModalTransferMethod" runat="server" Text="Transfer Method XYZ"/><br/>
                 Clearing<br/>
-                Account Number
+                Account Number<br/>
+                &nbsp;
             </div>
             Foobar high chaparral
         </DialogCode>
