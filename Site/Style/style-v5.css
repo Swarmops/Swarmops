@@ -633,8 +633,8 @@ body.rtl .buttonAccentColor {
 
 
 .buttonAccentColor:hover, .buttonAccentColor:focus {
-	top: -2px;
-	left: -2px;
+	top: -1px;
+	left: -1px;
 	box-shadow: 2px 2px 4px #7F5500;
 	background: #FFC34D;
 	background: linear-gradient(#FFD580, #FFC34D);
@@ -682,6 +682,12 @@ body.rtl .buttonAccentColor:focus {
     background-position: top center;
     background-size: 80px auto, cover;
 }
+
+.action-icon-button.icon-yes:hover {
+	box-shadow: 2px 2px 4px #7F5500;
+	background: url(/Images/Icons/iconshock-balloon-yes-128x96px.png) no-repeat, linear-gradient(#FFD580, #FFC34D);
+}
+
 
 
 .button-orange
