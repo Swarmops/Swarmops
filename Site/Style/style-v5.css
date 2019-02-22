@@ -686,6 +686,7 @@ body.rtl .button-accent-color:focus {
 .action-icon-button.icon-yes:hover {
 	box-shadow: 2px 2px 4px #7F5500;
 	background: url(/Images/Icons/iconshock-balloon-yes-128x96px.png) no-repeat, linear-gradient(#FFD580, #FFC34D);
+    background-position: top center;
     background-size: 80px auto, cover;
 }
 
