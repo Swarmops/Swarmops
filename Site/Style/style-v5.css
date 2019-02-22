@@ -692,59 +692,6 @@ body.rtl .button-accent-color:focus {
 
 
 
-.button-orange
-{
-	-webkit-box-shadow: 0 1px 3px #C78B15;
-	-moz-box-shadow: 0 1px 3px #C78B15;
-	box-shadow: 0 1px 3px #C78B15;
-	
-	background-position: left;
-	background-repeat: no-repeat;
-	background-color: Transparent;
-	
-	font-weight: bold;
-	text-shadow: #FFBC37 0px 1px 3px, #FFBC37 0px 1px 3px;
-	
-	padding: 2px 4px 2px 20px;
-	border: solid 1px #C78B15;
-	border-radius: 4px;
-	-moz-border-radius: 4px;
-}
-
-body.rtl .button-orange {
-    padding: 2px 20px 2px 4px;
-    background-position: right;
-}
-
-.button-orange:hover
-{
-	text-shadow: #FFEDC8 0px 1px 3px, #FFBC37 0px 1px 3px;
-}
-
-.button-orange-encaps
-{
-	border-radius: 4px;
-	-moz-border-radius:4px;
-	background: #FFD580;
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffd98c), to(#f0c265));
-	background: -moz-linear-gradient(top,  #ffd98c,  #f0c265);
-	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd98c', endColorstr='#f0c265');
-}
-
-.button-orange-encaps:hover {
-	background: #FFBC37;
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffc145), to(#edaa26));
-	background: -moz-linear-gradient(top,  #ffc145,  #edaa26);
-	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc145', endColorstr='#edaa26');
-}
-
-.button-orange-encaps:active {
-	background: #C78B15;
-	background: -webkit-gradient(linear, left top, left bottom, from(#d1941d), to(#b37909));
-	background: -moz-linear-gradient(top,  #d1941d,  #b37909);
-	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1941d', endColorstr='#b37909');
-}
-
 
 
 /* ENTRY FIELDS AND ACTION UX */
