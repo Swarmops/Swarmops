@@ -620,12 +620,6 @@ input.InputManualCredentials {
 	cursor: pointer;
 }
 
-.buttonAccentColor.action-icon-button {
-    height: 80px;
-    font-size: 16px !important;
-    padding-top: 40px;
-}
-
 body.rtl .buttonAccentColor {
 	float:left;
     left: inherit;
@@ -673,6 +667,13 @@ body.rtl .buttonAccentColor:focus {
 	box-shadow: 2px 2px 4px #7F5500;
 	background: #FF614D;
 	background: linear-gradient(#FF7280, #FF614D);
+}
+
+.action-icon-button {
+    height: 72px !important;
+    width: 128px !important;
+    font-size: 16px !important;
+    padding-top: 48px;
 }
 
 
@@ -831,7 +832,7 @@ body.rtl div.modal .entryFields {
 	box-shadow: 0px 0px 4px 2px #1C397E inset;
 }
 
-.entryFields > input[type=button]:not(.HalfWidth) {
+.entryFields > input[type=button]:not(.HalfWidth):not(.action-icon-button) {
     width: 324px;
 }
 
