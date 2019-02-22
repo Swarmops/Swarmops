@@ -107,7 +107,7 @@
      <div class="box" style="background-image: url(/Images/Other/coins-background-istockphoto.jpg); background-size: 700px">
         <div class="content">
             <div class="odometer-wrapper">
-                <div class="elementFloatFar odometer odometer-currency" id="odoDonatedCents">0.001</div>
+                <div class="float-far odometer odometer-currency" id="odoDonatedCents">0.001</div>
                 <div class="odometer-label"><asp:Label runat="server" ID="LabelReceivedFunds"/></div>
             </div>
         </div>

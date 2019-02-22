@@ -202,11 +202,11 @@
     <h2>Step 1/4: Upload Master File</h2>
     <div id="DivPrepData">
         
-        <div class="entryFields">
+        <div class="data-entry-fields">
             <asp:DropDownList runat="server" ID="DropAccounts"/>&nbsp;
             <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
         
-        <div class="entryLabels">
+        <div class="data-entry-labels">
             Account to resync<br/>
             Upload master file
         </div>

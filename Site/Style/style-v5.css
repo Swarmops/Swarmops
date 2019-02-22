@@ -91,7 +91,7 @@ a
 
 
 /* RTL */
-body.rtl {
+body.right-to-left {
     direction: rtl;
 }
 
@@ -127,7 +127,7 @@ div.break
 	width: 400px;
 }
 
-body.rtl .logoimage
+body.right-to-left .logoimage
 {
 	float: right;
 }
@@ -162,7 +162,7 @@ div.currentuserinfo
 	font-size:14px;
 }
 
-body.rtl div.currentuserinfo {
+body.right-to-left div.currentuserinfo {
     float: left;
 }
 
@@ -192,7 +192,7 @@ img
 }
 
 
-.topSearchBox
+.top-search-box
 {
 	float:right;
 	position:relative;
@@ -200,12 +200,12 @@ img
 	left:-5px;
 }
 
-body.rtl .topSearchBox {
+body.right-to-left .top-search-box {
     float: left;
     left: 5px;
 }
 
-.topSearchBox input
+.top-search-box input
 {
 	width:150px;
 	-moz-border-radius: 2em;
@@ -223,18 +223,18 @@ body.rtl .topSearchBox {
     font-size: 18px;
 }
 
-body.rtl .topSearchBox input {
+body.right-to-left .top-search-box input {
     padding-left: inherit;
     padding-right: 30px;
     background-position-x: right;
 }
 
 
-body:not(.rtl) #MainMenuContainer {
+body:not(.right-to-left) #MainMenuContainer {
     margin-left: -75px !important;
 }
 
-body.rtl #MainMenuContainer {
+body.right-to-left #MainMenuContainer {
     margin-right: -75px !important;
 }
 
@@ -247,11 +247,11 @@ body.rtl #MainMenuContainer {
     padding: 0 !important; /* overrides superfish padding of ".sfmenu a" class */
 }
 
-body:not(.rtl) #MainMenuContainer #LiSwarmopsLogo {
+body:not(.right-to-left) #MainMenuContainer #LiSwarmopsLogo {
     margin-right: 20px;
 }
 
-body.rtl #MainMenuContainer #LiSwarmopsLogo {
+body.right-to-left #MainMenuContainer #LiSwarmopsLogo {
     margin-left: 20px;
 }
 
@@ -281,12 +281,12 @@ li#LiSwarmopsLogo a.sf-with-ul {
 	font-weight: normal;
 }
 
-body.rtl #ctl00_MainMenu {
+body.right-to-left #ctl00_MainMenu {
 	left: inherit;
     right: 0px;
 }
 
-body.rtl span.buildId {
+body.right-to-left span.buildId {
     direction: ltr; /* parentheses freak out unless specified LTR */
 }
 
@@ -338,7 +338,7 @@ div#DivMasterFlag:hover {
     padding-left: 4px;
 }
 
-body.rtl .odometer-label {
+body.right-to-left .odometer-label {
     padding-left: 0;
     padding-right: 4px;
 }
@@ -352,7 +352,7 @@ body.rtl .odometer-label {
 	width: 700px;
 }
 
-body.rtl .mainbar {
+body.right-to-left .mainbar {
     float: right;
 }
 
@@ -363,7 +363,7 @@ body.rtl .mainbar {
 	margin-left: 20px;
 }
 
-body.rtl .sidebar {
+body.right-to-left .sidebar {
     float: left;
     margin-left: inherit;
     margin-right: 20px;
@@ -440,7 +440,7 @@ body.rtl .sidebar {
 	margin-bottom: 7px;
 }
 
-.content > h2 > select, .tab > h2 > select, .content > h2 > span > span.combo > input.textbox-text, .tab > h2 > span > span.combo > input.textbox-text, .content > h2 > input, .tab > h2 > input, .content > h2 > span.elementFloatFar > input, .tab > h2 > span.elementFloatFar > input {
+.content > h2 > select, .tab > h2 > select, .content > h2 > span > span.combo > input.textbox-text, .tab > h2 > span > span.combo > input.textbox-text, .content > h2 > input, .tab > h2 > input, .content > h2 > span.float-far > input, .tab > h2 > span.float-far > input {
 	font-size: 16px;
     font-weight: bold;
     color: #1C397E;
@@ -459,14 +459,14 @@ body.rtl .sidebar {
 }
 
 
-.entryFields div.stacked-input-control {
+.data-entry-fields div.stacked-input-control {
     height: 40px;
     width: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
-.entryFieldsAdmin div.stacked-input-control {
+.data-entry-fields-admin div.stacked-input-control {
     height: 30px;
     width: 100%;
     overflow-y: hidden;
@@ -534,7 +534,7 @@ body.rtl .sidebar {
     z-index: 9103;
 }
 
-body.rtl .modalIconClose, body.rtl #fancybox-close {
+body.right-to-left .modalIconClose, body.right-to-left #fancybox-close {
     right: initial !important;
     left: -15px !important;
 }
@@ -546,24 +546,24 @@ body.rtl .modalIconClose, body.rtl #fancybox-close {
 }
 
 
-body.rtl .divIconCloseModal {
+body.right-to-left .divIconCloseModal {
     float:left;
 }
 
 
-.elementFloatNear {
+.float-near {
     float: left;
 }
 
-.elementFloatFar {
+.float-far {
     float: right;
 }
 
-body.rtl .elementFloatNear {
+body.right-to-left .float-near {
     float: right;
 }
 
-body.rtl .elementFloatFar {
+body.right-to-left .float-far {
     float: left;
 }
 
@@ -586,7 +586,7 @@ div.login-page-logo {
 }
 
 
-input.InputManualCredentials {
+input.input-manual-credentials {
     border: solid 1px #A2BEFF;
     padding: 2px;
 }
@@ -620,7 +620,7 @@ input.InputManualCredentials {
 	cursor: pointer;
 }
 
-body.rtl .button-accent-color {
+body.right-to-left .button-accent-color {
 	float:left;
     left: inherit;
     right: -1px;
@@ -640,8 +640,8 @@ body.rtl .button-accent-color {
 	background: linear-gradient(#FFD580, #FFC34D);
 }
 
-body.rtl .button-accent-color:hover, 
-body.rtl .button-accent-color:focus {
+body.right-to-left .button-accent-color:hover, 
+body.right-to-left .button-accent-color:focus {
     left: inherit;
     right: -2px;
 }
@@ -704,7 +704,7 @@ input[type="text"], input[type="password"], select {  /* this makes dropdowns an
             box-sizing: content-box;
 }
 
-.entryFields
+.data-entry-fields
 {
 	background: #A2BEFF;
 	background: linear-gradient(#B0C8FF, #86A6F0);
@@ -723,30 +723,30 @@ input[type="text"], input[type="password"], select {  /* this makes dropdowns an
 	box-shadow: 0 1px 3px 1px #1C397E;
 }
 
-.entryFields.modal.wide {
+.data-entry-fields.modal.wide {
     width: 530px;
 }
 
 
-div.modal .entryFields {
+div.modal .data-entry-fields {
     margin-right: 3px;
     margin-bottom: 10px;
 }
 
-body.rtl .entryFields {
+body.right-to-left .data-entry-fields {
     float: left;
     padding-left: 8px;
     padding-right: 10px;
 }
 
-body.rtl div.modal .entryFields {
+body.right-to-left div.modal .data-entry-fields {
     margin-right: inherit;
     margin-left: 3px;
 }
 
 
 
-.entryFields input:not(.button-accent-color), .entryFields textarea, .entryFields select 
+.data-entry-fields input:not(.button-accent-color), .data-entry-fields textarea, .data-entry-fields select 
 {
     /* "important" here overrides the easyUI native styling */
 
@@ -757,69 +757,69 @@ body.rtl div.modal .entryFields {
 }
 
 
-.entryFields input:not(.button-accent-color), .entryFields textarea
+.data-entry-fields input:not(.button-accent-color), .data-entry-fields textarea
 {
 	width: 300px;
 }
 
-.entryFields input:not(.button-accent-color), .entryFields textarea
+.data-entry-fields input:not(.button-accent-color), .data-entry-fields textarea
 {
 	width: 300px;
 }
 
-.entryFields select {
+.data-entry-fields select {
 	width: 330px;
 	background: white;
 }
 
-.entryFields.modal.wide input:not(.button-accent-color), .entryFields.modal.wide textarea
+.data-entry-fields.modal.wide input:not(.button-accent-color), .data-entry-fields.modal.wide textarea
 {
 	width: 500px;
 }
 
-.entryFields.modal.wide select {
+.data-entry-fields.modal.wide select {
 	width: 530px;
 }
 
-.entryFields input:not(.NoInputFocus):not(.suppress-input-focus):focus, .entryFields textarea:focus, .entryFields select:focus 
+.data-entry-fields input:not(.NoInputFocus):not(.suppress-input-focus):focus, .data-entry-fields textarea:focus, .data-entry-fields select:focus 
 {
 	background: #F0F6FF;
 	box-shadow: 0px 0px 4px 2px #1C397E inset;
 }
 
-.entryFields > input[type=button]:not(.button-half-width):not(.action-icon-button) {
+.data-entry-fields > input[type=button]:not(.button-half-width):not(.action-icon-button) {
     width: 324px;
 }
 
 
-.entryFields > input[type=button].button-half-width {
+.data-entry-fields > input[type=button].button-half-width {
     width: 152px;
 }
 
-.entryFields span.toggleLabel {
+.data-entry-fields span.toggleLabel {
     position: relative;
     top: -3px;
 }
 
-.entryFields .stacked-text, .entryFields .stacked-input-control .stacked-text {
+.data-entry-fields .stacked-text, .data-entry-fields .stacked-input-control .stacked-text {
     position: relative;
     top: -6px;
 }
 
-.entryFieldsAdmin .stacked-text, .entryFieldsAdmin .stacked-input-control .stacked-text {
+.data-entry-fields-admin .stacked-text, .data-entry-fields-admin .stacked-input-control .stacked-text {
     position: relative;
     top: -1px;
 }
 
-body:not(.rtl) .entryFields .small-margin-right {
+body:not(.right-to-left) .data-entry-fields .small-margin-right {
     margin-right: 5px;
 }
 
-body.rtl .entryFields .small-margin-right {
+body.right-to-left .data-entry-fields .small-margin-right {
     margin-left: 5px;
 }
 
-.entryLabels 
+.data-entry-labels 
 {
 	font-size: 18px;
 	line-height: 40px;
@@ -830,12 +830,12 @@ body.rtl .entryFields .small-margin-right {
 	overflow-x: hidden;
 }
 
-body.rtl .entryLabels {
+body.right-to-left .data-entry-labels {
     padding-left: inherit;
     padding-right: 15px;
 }
 
-.content .entryLabels h2 
+.content .data-entry-labels h2 
 {
 	font-size: 130%;
 	letter-spacing: 0px;
@@ -848,12 +848,12 @@ body.rtl .entryLabels {
 	line-height: 33px;	
 }
 
-.alignRight {
+.align-for-numbers {
 	text-align: right;
 }
 
 
-.entryLabelsAdmin
+.entry-labels-admin
 {
 	margin-top: 10px;
 	line-height: 30px;
@@ -861,7 +861,7 @@ body.rtl .entryLabels {
 }
 
 
-.entryFieldsAdmin
+.data-entry-fields-admin
 {
 	background: #A2BEFF;
 	-moz-border-radius: 2px;
@@ -882,7 +882,7 @@ body.rtl .entryLabels {
 	box-shadow: 0 1px 3px 1px #1C397E;
 }
 
-body.rtl .entryFieldsAdmin {
+body.right-to-left .data-entry-fields-admin {
     float: left;
     margin-right: inherit;
     margin-left: 20px;
@@ -899,7 +899,7 @@ body.rtl .entryFieldsAdmin {
 }
 
 
-input.entryError, span.entryError, div.entryError {
+input.data-entry-error, span.data-entry-error, div.data-entry-error {
     outline: red ridge 4px;   
 }
 
@@ -1102,7 +1102,7 @@ div#page-icon-encaps
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
 }
 
-body.rtl .sidebar h2 {
+body.right-to-left .sidebar h2 {
     float: right;
 }
 
@@ -1159,7 +1159,7 @@ body.rtl .sidebar h2 {
 	position: absolute;
 }
 
-body.rtl .sidebar h2 span.arrow {
+body.right-to-left .sidebar h2 span.arrow {
     left: inherit;
     right: 10px;
 }
@@ -1381,7 +1381,7 @@ input.ButtonSwarmopsUpload:active {
     float: left;
 }
 
-body.rtl .buttonUploadFile {
+body.right-to-left .buttonUploadFile {
     float: right;
 }
 

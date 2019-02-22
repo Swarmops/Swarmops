@@ -292,11 +292,11 @@
             <div id="divVatReport">
                 <p><input type="radio" id="RadioVatReport" name="TxOptions" value="VatReport" /><label for="RadioVatReport">&nbsp;<asp:Label runat="server" ID="LabelRadioVatReport" Text="Match to an open VAT report? XYZ" /></label></p>
                 <div id="radioOptionVatReport" class="radioOption">
-                    <div class="entryFields">
+                    <div class="data-entry-fields">
                         <Swarmops5:DropDown ID="DropOpenVatReports" runat="server" />&#8203;<br/>
                         <input type="button" value='#VatReport#' class="button-accent-color" onclick="onMatchOpenVatReport(); return false;" id="buttonExecuteVatReport"/>
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         <asp:Label runat="server" ID="LabelDescribeVatReport" Text="Match to open VAT report XYZ" />
                     </div>
                 </div>
@@ -304,37 +304,37 @@
             <div id="divNegativeDifference">
                 <p><input type="radio" id="RadioPayout" name="TxOptions" value="Payout" /><label for="RadioPayout">&nbsp;<asp:Label runat="server" ID="LabelRadioPayout" Text="Match this balance to an open payout? XYZ" /></label></p>
                 <div id="radioOptionPayout" class="radioOption">
-                    <div class="entryFields">
+                    <div class="data-entry-fields">
                         <Swarmops5:DropDown ID="DropOpenPayouts" runat="server" ListType="All" />&#8203;<br/>
                         <input type="button" value='#Payout#' class="button-accent-color" onclick="onMatchOpenPayout(); return false;" id="buttonExecutePayout"/>
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         <asp:Label runat="server" ID="LabelDescribePayout" Text="Match to payout XYZ" />
                     </div>
                 </div>
                 <div style="display:none"><!-- Legacy, can be deleted in 2019 -->
                     <p><input type="radio" id="RadioPayoutForeign" name="TxOptions" value="PayoutForeign" /><label for="RadioPayoutForeign">&nbsp;<asp:Label runat="server" ID="LabelRadioPayoutForeign" Text="Match to an open foreign-currency payout? XYZ" /></label></p>
                     <div id="radioOptionPayoutForeign" class="radioOption">
-                        <div class="entryFields">
+                        <div class="data-entry-fields">
                             <Swarmops5:DropDown ID="DropOpenPayoutsForeign" runat="server" ListType="All" />&#8203;<br/>
                             <input type="button" value='#PayoutForeign#' class="button-accent-color" onclick="onMatchOpenPayoutForeign(); return false;" id="buttonExecutePayoutForeign"/>
                         </div>
-                        <div class="entryLabels">
+                        <div class="data-entry-labels">
                             <asp:Label runat="server" ID="LabelDescribePayoutForeign" Text="Match to payout XYZ" />
                         </div>
                     </div>
                 </div>
                 <p><input type="radio" id="RadioPurchase" name="TxOptions" value="Purchase" /><label for="RadioPurchase">&nbsp;<asp:Label runat="server" ID="LabelRadioPurchase" Text="Mark this as a direct-from-account purchase? XYZ" /></label></p>
                 <div id="radioOptionPurchase" class="radioOption">
-                    <div class="entryFields">
-                        <div class="stacked-input-control"><input type="text" value="" readonly="readonly" disabled="disabled" class="alignRight" id="inputTextPurchaseAmount"/></div>
+                    <div class="data-entry-fields">
+                        <div class="stacked-input-control"><input type="text" value="" readonly="readonly" disabled="disabled" class="align-for-numbers" id="inputTextPurchaseAmount"/></div>
                         <Swarmops5:ComboBudgets Layout="Vertical" ID="DropBudgetsPurchase" runat="server" ListType="InvoiceableIn" />
                         <div class="stacked-input-control"><input type="text" value="" id="inputTextPurchaseDescription"/></div>
                         <div class="onVatEnabled" style="display: none"><Swarmops5:CurrencyTextBox ID="CurrencyPurchaseVat" runat="server" Layout="Vertical"/></div>
                         <Swarmops5:FileUpload ID="UploadPurchase" runat="server"/>
                         <input type="button" value='#Balance#' class="button-accent-color" onclick="onCreateDirectPurchase(); return false;" id="buttonExecutePurchase"/>
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseAmount" Text="Direct purchase amount (CUR) XYZ" /></div>
                         <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseBudget" Text="Charge purchase to this budget XYZ" /></div>
                         <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseDescriptionUpdate" Text="Update transaction description XYZ" /></div>
@@ -348,11 +348,11 @@
                 <div id="divOutboundInvoice">
                     <p><input type="radio" id="RadioOutboundInvoice" name="TxOptions" value="OutboundInvoice" /><label for="RadioOutboundInvoice">&nbsp;<asp:Label runat="server" ID="LabelRadioOutboundInvoice" Text="Match to an open outbound invoice? XYZ" /></label></p>
                     <div id="radioOptionOutboundInvoice" class="radioOption">
-                        <div class="entryFields">
+                        <div class="data-entry-fields">
                             <Swarmops5:DropDown ID="DropOpenOutboundInvoices" runat="server" />&#8203;<br/>
                             <input type="button" value='#PaymentInvoice#' class="button-accent-color" onclick="onMatchOpenOutboundInvoice(); return false;" id="buttonExecuteOutboundInvoice"/>
                         </div>
-                        <div class="entryLabels">
+                        <div class="data-entry-labels">
                             <asp:Label runat="server" ID="LabelDescribeOutboundInvoice" Text="Match to outbound invoice XYZ" />
                         </div>
                     </div>
@@ -360,11 +360,11 @@
             </div>
             <p><input type="radio" id="RadioBalance" name="TxOptions" value="Balance" /><label for="RadioBalance">&nbsp;<asp:Label runat="server" ID="LabelRadioBalance" Text="Balance the transaction manually? XYZ" /></label></p>
             <div id="radioOptionBalance" class="radioOption">  <!-- this should go last -->
-                <div class="entryFields">
+                <div class="data-entry-fields">
                     <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" Layout="Vertical" ListType="All" />
                     <div class="stacked-input-control"><input type="button" value='#Balance#' class="button-accent-color" onclick="onBalanceTransaction(); return false;" id="buttonExecuteBalance"/></div>
                 </div>
-                <div class="entryLabels">
+                <div class="data-entry-labels">
                     <asp:Label runat="server" ID="LabelDescribeBalance" Text="Balance the difference against XYZ" />
                 </div>
                 <div style="clear:both"></div>
@@ -374,21 +374,21 @@
             <div id="divHiddenTodoFutureSprint" style="display:none">
                 <p><input type="radio" id="RadioExistingPayment" name="TxOptions" value="ExistingPayment" /><label for="RadioExistingPayment"><asp:Label runat="server" ID="LabelRadioExistingPayment" Text="Match this balance to a recorded payment, uploaded in a payments file? XYZ" /></label></p>
                 <div id="radioOptionExistingPayment" class="radioOption">
-                    <div class="entryFields">
+                    <div class="data-entry-fields">
                         <Swarmops5:DropDown ID="DropExistingPayments" runat="server" ListType="All" />&#8203;<br/>
                         <input type="button" value='<asp:Literal ID="LiteralButtonExistingPayment" runat="server" Text="MatchXYZ" />' class="button-accent-color" id="button2"/>
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         <asp:Label runat="server" ID="LabelDescribeExistingPayment" Text="Match existing payment XYZ" />
                     </div>
                 </div>
                 <p><input type="radio" id="RadioExpectedPayment" name="TxOptions" value="ExpectedPayment" /><label for="RadioExpectedPayment"><asp:Label runat="server" ID="LabelRadioExpectedPayment" Text="Match this balance to an expected payment that has not been previously uploaded? XYZ" /></label></p>
                 <div id="radioOptionExpectedPayment" class="radioOption">
-                    <div class="entryFields">
+                    <div class="data-entry-fields">
                         <Swarmops5:DropDown ID="DropExpectedPayments" runat="server" ListType="All" />&#8203;<br/>
                         <input type="button" value='<asp:Literal ID="LiteralButtonExpectedPayment" runat="server" Text="MatchXYZ" />' class="button-accent-color" id="button3"/>
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         <asp:Label runat="server" ID="LabelDescribeExpectedPayments" Text="Match expected payment XYZ" />
                     </div>
                 </div>

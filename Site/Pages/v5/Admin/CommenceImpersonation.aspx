@@ -61,11 +61,11 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label runat="server" ID="LabelImpersonationHeader" /></h2>
     <asp:Literal runat="server" ID="LiteralImpersonationWarning"/>
-    <div class="entryFields">
+    <div class="data-entry-fields">
         <Swarmops5:ComboPeople ID="ComboPeople" runat="server" />
         <asp:Button ID="ButtonImpersonate" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick="return dialogBeginImpersonation();" Text="#Impersonate#"/>
     </div>
-    <div class="entryLabels">
+    <div class="data-entry-labels">
         <asp:Label runat="server" ID="LabelPerson" />
     </div>
     <div style="clear:both"></div>

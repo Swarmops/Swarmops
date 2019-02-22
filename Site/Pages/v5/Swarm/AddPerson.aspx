@@ -148,7 +148,7 @@
                     success: function (msg) {
                         if (msg.d != true) {
                             isValid = false;
-                            $('#<%= TextDateOfBirth.ClientID %>').addClass("entryError");
+                            $('#<%= TextDateOfBirth.ClientID %>').addClass("data-entry-error");
                             alertify.error(SwarmopsJS.unescape('<%= this.Localized_ErrorDate %>'));
                             $('#<%=this.TextDateOfBirth.ClientID %>').focus();
                         }
@@ -165,10 +165,10 @@
         }
 
         function ValidateTextField(fieldId, message) {
-            $(fieldId).removeClass("entryError");
+            $(fieldId).removeClass("data-entry-error");
             if ($(fieldId).val().length == 0) {
                 alertify.error(message);
-                $(fieldId).addClass("entryError");
+                $(fieldId).addClass("data-entry-error");
                 $(fieldId).focus();
                 return false;
             }
@@ -193,7 +193,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
-    <div class="entryFields">
+    <div class="data-entry-fields">
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextName" /></div>
         <Swarmops5:DropDown runat="server" OnClientChange=" UpdatePostalPrefix " ID="DropCountries"/>        
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextMail" /></div>
@@ -201,14 +201,14 @@
         <div class="stacked-input-control"></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div>
-        <div class="small-margin-right elementFloatFar"><asp:TextBox runat="server" ID="TextPostal" CssClass="small-margin-right"/><asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-input-control stacked-text" style="width: 40px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
+        <div class="small-margin-right float-far"><asp:TextBox runat="server" ID="TextPostal" CssClass="small-margin-right"/><asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-input-control stacked-text" style="width: 40px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
         <div class="stacked-input-control stacked-text"><span id="spanDetectedGeo">...</span></div>
         <div class="stacked-input-control"></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
         <Swarmops5:DropDown runat="server" ID="DropGenders" />
         <asp:Button ID="ButtonSubmit" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick=" return ValidateFields(); " OnClick="ButtonSubmit_Click" Text="Register"/>
     </div>
-    <div class="entryLabels">
+    <div class="data-entry-labels">
         <asp:Label ID="LabelName" runat="server" /><br />
         <asp:Label ID="LabelCountry" runat="server" /><br />
         <asp:Label ID="LabelMail" runat="server" /><br />

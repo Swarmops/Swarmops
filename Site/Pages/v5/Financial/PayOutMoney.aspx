@@ -288,16 +288,16 @@
     <Swarmops5:ModalDialog ID="ModalConfirmPayment" runat="server" >
         <DialogCode>
             <h2><asp:Label ID="LabelPayoutModalHeader" runat="server" Text="Execute this payout manually now XYZ"/></h2>
-            <div class="entryFields modal wide">
+            <div class="data-entry-fields modal wide">
                 <input type="text" readonly="readonly" value="Recipient"/>&#8203;<br/>
-                <input type="text" readonly="readonly" class="alignRight" value="Amount"/>&#8203;<br/>
+                <input type="text" readonly="readonly" class="align-for-numbers" value="Amount"/>&#8203;<br/>
                 <input type="text" readonly="readonly" value="Reference"/>&#8203;<br/>
                 <input type="text" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
                 <input type="text" readonly="readonly" value="Clearing"/>&#8203;<br/>
                 <input type="text" readonly="readonly" value="Account Number"/>&#8203;<br/>
                 <input type="button" value="Confirm" class="button-accent-color suppress-input-focus action-icon-button icon-yes"/>
             </div>
-            <div class="entryLabels">
+            <div class="data-entry-labels">
                 <asp:Label ID="LabelModalRecipient" runat="server" Text="Recipient"/><br/>
                 <asp:Label ID="LabelModalCurrencyAmount" runat="server" Text="Currency and Amount XYZ"/><br/>
                 <asp:Label ID="LabelModalReference" runat="server" Text="Reference XYZ"/><br/>

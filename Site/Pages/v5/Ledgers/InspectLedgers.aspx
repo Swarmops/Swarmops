@@ -455,7 +455,7 @@
                 
             <div id="divEditTransaction">
                 <h2><asp:Label ID="LabelAddTransactionRowsHeader" runat="server" /></h2>
-                <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" Layout="Horizontal" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" Layout="Horizontal" runat="server" /> <span class="elementFloatFar"><input id="ButtonAddTransactionRow" type="button" value='#AddRow#'/></span></h2></span>
+                <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" Layout="Horizontal" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" Layout="Horizontal" runat="server" /> <span class="float-far"><input id="ButtonAddTransactionRow" type="button" value='#AddRow#'/></span></h2></span>
             
             <div id="divTransactionDocumentation">
                 <h2><asp:Label runat="server" ID="LabelTransactionDocumentation"/></h2>
@@ -474,14 +474,14 @@
     <Swarmops5:ModalDialog ID="DialogCreateTx" runat="server">
         <DialogCode>
             <h2><asp:Label runat="server" ID="LabelCreateTxDialogHeader">Creating Transaction XYZ</asp:Label></h2>
-            <div class="entryFields">
+            <div class="data-entry-fields">
                 <Swarmops5:AjaxTextBox ID="TextCreateTxDateTime" runat="server"/>
                 <Swarmops5:AjaxTextBox ID="TextCreateTxDescription" runat="server"/>
                 <Swarmops5:ComboBudgets ID="DropBudgetsCreateTx" ListType="All" runat="server"/>
                 <Swarmops5:CurrencyTextBox ID="TextCreateTxAmount" runat="server"/>
                 <input type="button" id="buttonCreateTransaction" class="suppress-input-focus button-accent-color" value="<%= this.Localized_CreateTx %>"/>
             </div>
-            <div class="entryLabels">
+            <div class="data-entry-labels">
                 <asp:Label runat="server" ID="LabelAddTxDateTime" Text="DateTime XYZ"/><br/>
                 <asp:Label runat="server" ID="LabelAddTxDescription" Text="Description XYZ"/><br/>
                 <asp:Label runat="server" ID="LabelAddTxFirstRowAccount" Text="Account XYZ"/><br/>

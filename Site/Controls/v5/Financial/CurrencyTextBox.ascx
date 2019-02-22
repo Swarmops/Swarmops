@@ -4,7 +4,7 @@
 <!-- TODO: Add nice autocomplete stuff -->
 
  <% if (this.Layout == LayoutDirection.Vertical) { %><div class="stacked-input-control"><% } %>
-    <asp:TextBox ID="TextInput" runat="server" CssClass="alignRight" /><asp:HiddenField ID="EnteredCurrency" runat="server"/><asp:HiddenField ID="EnteredAmount" runat="server" />
+    <asp:TextBox ID="TextInput" runat="server" CssClass="align-for-numbers" /><asp:HiddenField ID="EnteredCurrency" runat="server"/><asp:HiddenField ID="EnteredAmount" runat="server" />
  <% if (this.Layout == LayoutDirection.Vertical) { %></div><% } %>
 
 

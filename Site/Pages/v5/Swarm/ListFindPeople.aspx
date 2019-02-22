@@ -170,11 +170,11 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <div class="entryFields" style="padding-top:4px">
+    <div class="data-entry-fields" style="padding-top:4px">
         <Swarmops5:ComboGeographies ID="ComboGeographies" runat="server" OnClientSelect="onGeographyChange" />
         <asp:TextBox runat="server" ID="TextNamePattern" />
     </div>
-    <div class="entryLabels" style="padding-top:10px">
+    <div class="data-entry-labels" style="padding-top:10px">
         <asp:Label ID="LabelGeography" runat="server" /><br/>
         <asp:Label ID="LabelNamePattern" runat="server" /><br/>
     </div>

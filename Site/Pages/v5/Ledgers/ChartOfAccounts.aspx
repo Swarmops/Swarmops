@@ -644,7 +644,7 @@
     <Swarmops5:ModalDialog ID="DialogAccount" OnClientClose="onDialogClose" runat="server">
         <DialogCode>
             <h2 id="HeaderModal"><asp:Literal ID="LiteralHeaderEditingAccount" runat="server"/></h2>
-            <div id="DivModalFields" class="entryFields">
+            <div id="DivModalFields" class="data-entry-fields">
                 <div class="stacked-input-control"><input type="text" id="TextAccountName" /></div>
                 <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" SuppressPrompt="True" OnClientSelect="onAccountTreeSelect" />
                 <div id="DivEditProfitLossControls"><div class="stacked-input-control"></div>
@@ -678,7 +678,7 @@
                     </div>
                 </div>
             </div>
-            <div class="entryLabels"><asp:Literal ID="LiteralLabelAccountName" runat="server"/><br/>
+            <div class="data-entry-labels"><asp:Literal ID="LiteralLabelAccountName" runat="server"/><br/>
                 <asp:Literal ID="LiteralLabelParent" runat="server"/><br/>
                 <div id="DivEditProfitLossLabels"><h2><asp:Literal ID="LiteralLabelHeaderDailyOperations" runat="server"/></h2>
                 <asp:Literal ID="LiteralLabelOwner" runat="server"/><br/>

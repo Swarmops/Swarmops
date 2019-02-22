@@ -11,16 +11,16 @@
        { %>
     <div class="box" style="background-image: url(/Images/Other/member-background-istockphoto.jpg); background-size: 700px"><div class="content">
     <div class="odometer-wrapper">
-        <div class="elementFloatFar odometer odometer-integer nocents" id="odoGlobalParticipation">12342500</div><div class="odometer-label">Current Participants</div>
+        <div class="float-far odometer odometer-integer nocents" id="odoGlobalParticipation">12342500</div><div class="odometer-label">Current Participants</div>
     </div>
         
     <div class="odometer-wrapper">
-        <div class="elementFloatFar odometer odometer-integer nocents" id="odoActiveParticipation">125498</div><div class="odometer-label">Active Participants Last 30 Days</div>
+        <div class="float-far odometer odometer-integer nocents" id="odoActiveParticipation">125498</div><div class="odometer-label">Active Participants Last 30 Days</div>
     </div>
         
         <hr/>
 
-            <div class="odometer-wrapper"><div class="elementFloatFar odometer odometer-integer nocents" id="odoLocalParticipation">498.001</div><div class="odometer-label">Current Participants in Your City</div>
+            <div class="odometer-wrapper"><div class="float-far odometer odometer-integer nocents" id="odoLocalParticipation">498.001</div><div class="odometer-label">Current Participants in Your City</div>
     </div>
 
 

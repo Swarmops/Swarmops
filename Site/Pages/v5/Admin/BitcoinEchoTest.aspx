@@ -98,16 +98,16 @@
      <div class="box" style="background-image: url(/Images/Other/coins-background-istockphoto.jpg); background-size: 700px">
         <div class="content">
             <div class="odometer-wrapper">
-                <div class="elementFloatFar odometer odometer-currency" id="odoSentCents">0.001</div>
+                <div class="float-far odometer odometer-currency" id="odoSentCents">0.001</div>
                 <div class="odometer-label">Received in echo test (<%=CurrentOrganization.Currency.DisplayCode %>)</div>
             </div>
             <div class="odometer-wrapper">
-                <div class="elementFloatFar odometer odometer-currency" id="odoMinerFeeCents">-0.001</div>
+                <div class="float-far odometer odometer-currency" id="odoMinerFeeCents">-0.001</div>
                 <div class="odometer-label">Miner fees paid</div>
             </div>
             <hr/>
             <div class="odometer-wrapper">
-                <div class="elementFloatFar odometer odometer-currency" id="odoReturnedCents">0.001</div>
+                <div class="float-far odometer odometer-currency" id="odoReturnedCents">0.001</div>
                 <div class="odometer-label">Successfully returned</div>
             </div>
         </div>

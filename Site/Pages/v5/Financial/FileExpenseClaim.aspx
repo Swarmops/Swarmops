@@ -153,7 +153,7 @@
 
             if ($('#<%=this.ComboBudgets.ClientID %>_DropBudgets').combotree('tree').tree('getSelected') == null) {
                 isValid = false;
-                $('#<%=this.ComboBudgets.ClientID %>_SpanBudgets').addClass("entryError");
+                $('#<%=this.ComboBudgets.ClientID %>_SpanBudgets').addClass("data-entry-error");
                 alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Budget %>'));
             }
 
@@ -172,7 +172,7 @@
                 success: function (msg) {
                     if (msg.d != true) {
                         isValid = false;
-                        $('#<%=this.CurrencyAmount.ClientID %>_TextInput').addClass("entryError");
+                        $('#<%=this.CurrencyAmount.ClientID %>_TextInput').addClass("data-entry-error");
                         alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Amount %>'));
                         <%=this.CurrencyAmount.ClientID %>_focus();
                     }
@@ -189,7 +189,7 @@
                 success: function (msg) {
                     if (msg.d != true) {
                         isValid = false;
-                        $('#TextAmount').addClass("entryError");
+                        $('#TextAmount').addClass("data-entry-error");
                         alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Documents %>'));
                     }
                 }
@@ -201,7 +201,7 @@
         function validateTextField (fieldId, message) {
             if ($(fieldId).val().length == 0) {
                 alertify.error(message);
-                $(fieldId).addClass("entryError");
+                $(fieldId).addClass("data-entry-error");
                 $(fieldId).focus();
                 return false;
             }
@@ -422,7 +422,7 @@
         <div title="<img src='/Images/Icons/iconshock-invoice-256px.png' width='56' height='56' style='padding-top:4px'>">
             <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
             <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
-            <div class="entryFields">
+            <div class="data-entry-fields">
                 <Swarmops5:Currency runat="server" ID="CurrencyAmount" />
                 <span class="ifVatEnabled"><Swarmops5:Currency runat="server" ID="CurrencyVat" /></span>
                 <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPurpose" /></div>
@@ -443,7 +443,7 @@
                 <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/></div>
                 <asp:Button ID="ButtonRequest" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
             </div>
-            <div class="entryLabels">
+            <div class="data-entry-labels">
                 <asp:Label runat="server" ID="LabelAmount" /><br/>
                 <span class="ifVatEnabled"><asp:Label runat="server" ID="LabelVat"/><br/></span>
                 <asp:Label runat="server" ID="LabelPurpose" /><br/>
@@ -487,10 +487,10 @@
                     </div>
                     
                     <div id="divExpensifyReadySubmit" style="display:none">
-                        <div class="entryFields">
+                        <div class="data-entry-fields">
                             <input type="button" class="button-accent-color suppress-input-focus" id="buttonExpensifySubmit" value="Submit"/>
                         </div>
-                        <div class="entryLabels">
+                        <div class="data-entry-labels">
                             <span id="spanLabelExpensifySubmit">Ready to submit</span>
                         </div>
                     </div>
@@ -516,10 +516,10 @@
                 <div id="divExpensifyUploadAnotherHeader" style="display:none"><h2><asp:Label runat="server" ID="LabelExpensifyUploadAnotherHeader" Text="Upload Another XYZ" /></h2></div>
         
                 <div id="divExpensifyUploadFile">
-                    <div class="entryFields">
+                    <div class="data-entry-fields">
                         <Swarmops5:FileUpload runat="server" ID="UploadExpensify" Filter="NoFilter" DisplayCount="8" ClientUploadCompleteCallback="onExpensifyUpload" />
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         <div class="stacked-input-control"><asp:Label runat="server" ID="LabelExpensifyCsv" /></div>
                     </div>
                 </div>
@@ -537,15 +537,15 @@
     <Swarmops5:ModalDialog ID="DialogEditExpenseClaim" runat="server">
         <DialogCode>
             <h2>Editing Expense Claim</h2>
-            <div class="elementFloatFar" style="width: 200px;padding:10px"><img id="imgModalDocument" style="border: 2px solid #888; width:100%"/></div>
-            <div class="entryFields">
+            <div class="float-far" style="width: 200px;padding:10px"><img id="imgModalDocument" style="border: 2px solid #888; width:100%"/></div>
+            <div class="data-entry-fields">
                 <div class="stacked-input-control"><input type="text" id="textModalExpensifyDescription" /></div>
                 <Swarmops5:ComboBudgets ID="ComboExpensifyBudgets" ListType="Expensable" runat="server"/>
                 <Swarmops5:Currency ID="CurrencyModalExpensifyAmount" runat="server"/>
                 <div class="ifVatEnabled"><Swarmops5:Currency ID="CurrencyModalExpensifyAmountVat" runat="server"/></div>
                 <input type="button" id="buttonModalProceed" class="button-accent-color button-half-width suppress-input-focus" value="Proceed &gt;&gt;"/><input type="button" id="buttonModalDelete" class="button-accent-color button-red button-half-width suppress-input-focus" value="Delete"/>
             </div>
-            <div class="entryLabels">Description<br/>Budget charged<br />Expense amount<br/><div class="ifVatEnabled">VAT amount of the total</div></div>
+            <div class="data-entry-labels">Description<br/>Budget charged<br />Expense amount<br/><div class="ifVatEnabled">VAT amount of the total</div></div>
         </DialogCode>
     </Swarmops5:ModalDialog>
 </asp:Content>

@@ -185,13 +185,13 @@
         <h2><span id="SpanUploadFirst"><asp:Label runat="server" ID="LabelUploadBankFileHeader" /></span><span id="SpanUploadMore" style="display:none"><asp:Label runat="server" ID="LabelUploadMore" /></span></h2>
         <div id="DivPrepData">
         
-            <div class="entryFields">
+            <div class="data-entry-fields">
                 <Swarmops5:AjaxDropDown OnClientChange="onAccountChange" runat="server" ID="DropAccounts"/>
                 <div class="stacked-input-control"><span id="SpanInstructions"></span></div>
                 <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" />
             </div>
         
-            <div class="entryLabels">
+            <div class="data-entry-labels">
                 <asp:Label runat="server" ID="LabelBankAccount" /><br/>
                 <asp:Label runat="server" ID="LabelProfile" /><br/>
                 <asp:Label runat="server" ID="LabelUploadBankFile" />

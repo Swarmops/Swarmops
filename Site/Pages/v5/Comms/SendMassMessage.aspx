@@ -120,12 +120,12 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <div class="entryFields">
+    <div class="data-entry-fields">
         <Swarmops5:DropDown runat="server" ID="DropRecipientClasses" OnClientChange="onRecipientChange"/>
         <Swarmops5:ComboGeographies ID="ComboGeographies" runat="server" OnClientSelect="onGeographyChange" />
         <asp:TextBox ID="TextSubject" runat="server"/>
     </div>
-    <div class="entryLabels">
+    <div class="data-entry-labels">
         <asp:Label ID="LabelRecipientType" runat="server" /><br/>
         <asp:Label ID="LabelGeography" runat="server" /><br/>
         <asp:Label ID="LabelSubject" runat="server"/>

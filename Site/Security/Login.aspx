@@ -72,7 +72,7 @@
     	        }, 1000);
 
 
-    	        $('.InputManualCredentials').on('input', function() {
+    	        $('.input-manual-credentials').on('input', function() {
     	            onInputCredentials();
     	        });
 
@@ -201,9 +201,9 @@
                     <div id="divLoginManual" style="display:none">
                         <h2><asp:Label runat="server" ID="LabelManualLoginHeader">Manual Login Header XYZ</asp:Label></h2>
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom:5px">
-                            <tr><td><asp:Literal ID="LiteralCredentialsUser" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextLogin" class="InputManualCredentials" type="text" /></td></tr>
-                            <tr><td><asp:Literal ID="LiteralCredentialsPass" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextPass" class="InputManualCredentials" type="password" /></td></tr>
-                            <tr style="display: none"><td><asp:Literal id="LiteralCredentials2FA" runat="server" />&nbsp;&nbsp;</td><td><input id="Text2FA" class="InputManualCredentials" type="password" /></td></tr>
+                            <tr><td><asp:Literal ID="LiteralCredentialsUser" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextLogin" class="input-manual-credentials" type="text" /></td></tr>
+                            <tr><td><asp:Literal ID="LiteralCredentialsPass" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextPass" class="input-manual-credentials" type="password" /></td></tr>
+                            <tr style="display: none"><td><asp:Literal id="LiteralCredentials2FA" runat="server" />&nbsp;&nbsp;</td><td><input id="Text2FA" class="input-manual-credentials" type="password" /></td></tr>
                         </table>
                         
                         <p align="right"><a href="/Security/RequestPasswordReset"><asp:Label ID="LabelForgotPassword" runat="server">Help, I forgot my password!</asp:Label></a></p>

@@ -110,7 +110,7 @@
         }
 
 
-        .entryFieldsAdmin, .entryLabelsAdmin {
+        .data-entry-fields-admin, .entry-labels-admin {
             font-size: 16px;
         }
 
@@ -119,7 +119,7 @@
         }
 
 
-        .entryLabelsAdmin {
+        .entry-labels-admin {
             font-weight: 300;
         }
 
@@ -304,7 +304,7 @@
     	                success: function (msg) {
     	                    if (msg.d != true) {
     	                        isValid = false;
-    	                        $('#<%= TextDateOfBirth.ClientID %>').addClass("entryError");
+    	                        $('#<%= TextDateOfBirth.ClientID %>').addClass("data-entry-error");
     	                        alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorDate%>"));
     	                        $('#<%=this.TextDateOfBirth.ClientID %>').focus();
     	                    }
@@ -335,7 +335,7 @@
 	                    success: function(msg) {
 	                        if (msg.d.Success != true) {
 	                            isValid = false;
-	                            $('#<%= this.TextMail.ClientID %>').addClass("entryError");
+	                            $('#<%= this.TextMail.ClientID %>').addClass("data-entry-error");
 	                            alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorMailExists%>"));
 	                            $('#<%=this.TextMail.ClientID %>').focus();
 	                        }
@@ -347,10 +347,10 @@
     	    }
 
     	    function ValidateTextField(fieldId, message) {
-    	        $(fieldId).removeClass("entryError");
+    	        $(fieldId).removeClass("data-entry-error");
     	        if ($(fieldId).val().length == 0) {
     	            alertify.error(message);
-    	            $(fieldId).addClass("entryError");
+    	            $(fieldId).addClass("data-entry-error");
     	            $(fieldId).focus();
     	            return false;
     	        }
@@ -463,7 +463,7 @@
 	                        if ($('#<%=TextPassword1.ClientID%>').val() != $('#<%=TextPassword2.ClientID%>').val()) {
 	                            isValid = false;
 	                            alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorPasswordMismatch%>"));
-	                            $('#<%=TextPassword1.ClientID%>,#<%=TextPassword2.ClientID%>').addClass("entryError");
+	                            $('#<%=TextPassword1.ClientID%>,#<%=TextPassword2.ClientID%>').addClass("data-entry-error");
 	                            $('#<%=TextPassword1.ClientID%>').focus();
 	                        }
 	                    }
@@ -646,19 +646,19 @@
 			              <p><asp:Literal ID="LiteralFirstPageSignup" runat="server"/></p><br/><br/>
                     </div>
   			        <div id="step-2">
-  			            <div class="entryFieldsAdmin">
+  			            <div class="data-entry-fields-admin">
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextName" /></div>
                             <div class="stacked-input-control"><asp:DropDownList runat="server" ID="DropCountries"/></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextMail" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPhone" /></div>
                             <div class="enableAskParticipantStreet"><div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div></div>
-                            <div class="stacked-input-control"><div class="elementFloatFar"><asp:TextBox runat="server" ID="TextPostal" />&thinsp;<asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-text" style="width: 22px; overflow-x: hidden"><span id="spanCountryPrefix">XX</span>--</div></div>
+                            <div class="stacked-input-control"><div class="float-far"><asp:TextBox runat="server" ID="TextPostal" />&thinsp;<asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-text" style="width: 22px; overflow-x: hidden"><span id="spanCountryPrefix">XX</span>--</div></div>
                             <div class="stacked-input-control"><span class="stacked-text" id="spanDetectedGeo">...</span></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
                             <div class="stacked-input-control"><asp:DropDownList runat="server" ID="DropGenders" /></div>
                         </div>
-                        <div class="entryLabelsAdmin">
+                        <div class="entry-labels-admin">
                             <asp:Label ID="LabelName" runat="server" /><br />
                             <asp:Label ID="LabelCountry" runat="server" /><br />
                             <asp:Label ID="LabelMail" runat="server" /><br />
@@ -674,12 +674,12 @@
   			        <div id="step-3">
   			            <h2><asp:Label runat="server" ID="LabelYourLogon" /></h2>
                         <p><asp:Label ID="LabelYourLogonText" runat="server" /></p>
-  			            <div class="entryFieldsAdmin" style="width:204px;overflow:hidden">
+  			            <div class="data-entry-fields-admin" style="width:204px;overflow:hidden">
   			                <div class="stacked-input-control"><span id="spanMailLoginKey" style="white-space:nowrap">...</span></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPassword1" TextMode="Password" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPassword2" TextMode="Password" /></div>
                         </div>
-                        <div class="entryLabelsAdmin">
+                        <div class="entry-labels-admin">
                             <asp:Label ID="LabelLoginKey" runat="server" /><br />
                             <asp:Label ID="LabelPassword1" runat="server" /><br />
                             <asp:Label ID="LabelPassword2" runat="server" /><br />

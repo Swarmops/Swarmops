@@ -88,11 +88,11 @@
             <div class="content">
                 <h2><asp:Label ID="LabelContentTitle" runat="server" /></h2>
                 <div id="DivMailEntry">
-                    <div class="entryFields">
+                    <div class="data-entry-fields">
                         <asp:TextBox runat="server" ID="TextMailAddress" />&#8203;<br/>
                         <asp:Button ID="ButtonRequest" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         <asp:Label ID="LabelMail" runat="server" /><br />
                     </div>
                 </div>

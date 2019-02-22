@@ -3,12 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <div class="entryFields">
-        <asp:TextBox runat="server" ID="TextPeopleWriteAccessList" CssClass="alignRight" />&nbsp;<br/>
+    <div class="data-entry-fields">
+        <asp:TextBox runat="server" ID="TextPeopleWriteAccessList" CssClass="align-for-numbers" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPeopleReadAccessList" />&nbsp;<br/>
         <asp:Button ID="ButtonSave" runat="server" CssClass="button-accent-color" OnClick="ButtonSave_Click" Text="Save"/>
     </div>
-    <div class="entryLabels">
+    <div class="data-entry-labels">
         Read/write access, person IDs<br/>
         Read-only access, person IDs<br/>
     </div>

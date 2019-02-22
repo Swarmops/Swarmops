@@ -109,10 +109,10 @@
     <div id="divTabs" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
         <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
             <h2>System Behavior</h2>
-            <div class="entryFields">
+            <div class="data-entry-fields">
                 <label for="CheckRequireSsl">Force SSL</label><div class="CheckboxContainer"><input type="checkbox" rel="RequireSsl" class="EditCheck" id="CheckRequireSsl"/></div><br/>
             </div>
-            <div class="entryLabels">
+            <div class="data-entry-labels">
                 Require SSL connection?<br/>
             </div>
         </div>
@@ -122,7 +122,7 @@
         </div>
         <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' />">
             <h2><asp:Label ID="LabelHeaderCorrespondenceTransmission" runat="server" /></h2>
-            <div class="entryFields">
+            <div class="data-entry-fields">
                 <Swarmops5:AjaxTextBox runat="server" ID="TextSmtpServer" Cookie="Smtp" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="localhost:587" />
                 <Swarmops5:AjaxTextBox runat="server" ID="TextInstallationName" Cookie="InstallationName" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="localhost:587" />
                 <Swarmops5:AjaxTextBox runat="server" ID="TextExternalUrl" Cookie="ExtUrl" OnChange="onUrlChange" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="https://swarmops.example.com/" />
@@ -132,7 +132,7 @@
                 <Swarmops5:AjaxTextBox runat="server" ID="TextWebsocketPortBackend" Cookie="WebsocketBackend" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="10944" />
                 <Swarmops5:AjaxTextBox runat="server" ID="TextBackendHostnameOverride" Cookie="BackendHost" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" />
             </div>
-            <div class="entryLabels">
+            <div class="data-entry-labels">
                 <asp:Label ID="LabelSmtpServer" runat="server" /><br/>
                 <asp:Label ID="LabelInstallationName" runat="server" /><br/>
                 <asp:Label ID="LabelExternalUrl" runat="server" /><br />

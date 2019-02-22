@@ -470,22 +470,22 @@
             <p><asp:Literal ID="LabelWhatProblem" runat="server" Text="What seems to be the problem? XYZ" /></p>
             <p><input type="radio" id="RadioDeny" name="ModalOptions" value="Deny" onclick="$('#<%=this.TextDenyReason.ClientID%>').focus();" /><label for="RadioDeny"><asp:Label runat="server" ID="LabelRadioDeny" Text="I will not attest this record. It is scratched. XYZ" /></label></p>
             <div id="radioOptionDeny" class="radioOption">
-                <div class="entryFields">
+                <div class="data-entry-fields">
                     <asp:TextBox ID="TextDenyReason" runat="server" TextMode="MultiLine" Rows="3" Placeholder="My hovercraft is full of eels" />&#8203;<br/>
                     <input type="button" value='#Deny#' class="button-accent-color" onclick="onDenyRecord(); return false;" id="buttonExecuteDeny"/>
                 </div>
-                <div class="entryLabels">
+                <div class="data-entry-labels">
                     <asp:Label runat="server" ID="LabelDescribeDeny" Text="Optional explanation to submitter: XYZ" />
                 </div>
                 <div style="clear:both"></div>
             </div>
             <p><input type="radio" id="RadioCorrect" name="ModalOptions" value="Correct" onclick="<%=this.TextCorrectAmount.ClientID%>_focus();" /><label for="RadioCorrect"><asp:Label runat="server" ID="LabelRadioCorrect" Text="I will attest, but for a different amount. XYZ" /></label></p>
             <div id="radioOptionCorrect" class="radioOption">
-                <div class="entryFields">
+                <div class="data-entry-fields">
                     <Swarmops5:CurrencyTextBox ID="TextCorrectAmount" runat="server" />
                     <input type="button" value='#Correct#' class="button-accent-color" onclick=" onApproveCorrectedAmount(); return false;" id="buttonExecuteCorrectedAmount"/>
                 </div>
-                <div class="entryLabels">
+                <div class="data-entry-labels">
                     <asp:Label runat="server" ID="LabelDescribeCorrect" Text="What amount are you attesting instead (SEK)? XYZ" /><br/>
                     <div class="ifVatEnabled"><asp:Label runat="server" ID="LabelDescribeCorrectNoVat" Text="(The VAT must not be included! XYZ)"/></div>
                 </div>
@@ -493,11 +493,11 @@
             </div>
             <p><input type="radio" id="RadioRebudget" name="ModalOptions" value="Rebudget" /><label for="RadioRebudget"><asp:Label runat="server" ID="LabelRadioRebudget" Text="This record should be charging a different budget. XYZ" /></label></p>
             <div id="radioOptionRebudget" class="radioOption">
-                <div class="entryFields">
+                <div class="data-entry-fields">
                     <Swarmops5:ComboBudgets ID="DropBudgetsRebudget" runat="server" ListType="Expensable" />&#8203;<br/>
                     <input type="button" value='#Rebudget#' class="button-accent-color" onclick="onRebudgetRecord(); return false;" id="buttonExecuteRebudget"/>
                 </div>
-                <div class="entryLabels">
+                <div class="data-entry-labels">
                     <asp:Label runat="server" ID="LabelDescribeRebudget" Text="Move the record to this budget: XYZ" />
                 </div>
                 <div style="clear:both"></div>
