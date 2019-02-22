@@ -731,9 +731,9 @@ body.rtl .buttonAccentColor:focus {
 
 
 .action-icon-button.icon-yes {
-    background-image: url('/Images/Icons/iconshock-balloon-yes-128x96px.png');
-    background-repeat: no-repeat;
+    background: url(/Images/Icons/iconshock-balloon-yes-128x96px.png) no-repeat, linear-gradient(#FFC144, #F0AB1F);
     background-position: top center;
+    background-size: 80px auto, cover;
 }
 
 

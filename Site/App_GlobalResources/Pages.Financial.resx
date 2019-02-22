@@ -737,10 +737,10 @@
   </data>
   <data name="PayOutMoney_GridHeader_PayThis" xml:space="preserve">
     <value>Pay</value>
-    <comment>Like the "Actions" column in other grids, but just with one option, "Pay this expense"</comment>
+    <comment>Like the "Actions" column in other grids, but just with one option, "Pay this expenditure"</comment>
   </data>
-  <data name="PayOutMoney_ModalPay_Confirm" xml:space="preserve">
-    <value>Confirm</value>
-    <comment>As in "Confirm The Listed Payment Has Been Made Manually" -- try to keep below 8-9 characters</comment>
+  <data name="PayOutMoney_Modal_ConfirmPaid" xml:space="preserve">
+    <value>This is Paid</value>
+    <comment>As in "Confirm The Currently Displayed Payout Has Been Manually Executed" -- try to keep short, "This is Paid" length is ideal</comment>
   </data>
 </root>

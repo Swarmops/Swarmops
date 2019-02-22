@@ -1393,11 +1393,11 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm.
+        ///   Looks up a localized string similar to This is Paid.
         /// </summary>
-        internal static string PayOutMoney_ModalPay_Confirm {
+        internal static string PayOutMoney_Modal_ConfirmPaid {
             get {
-                return ResourceManager.GetString("PayOutMoney_ModalPay_Confirm", resourceCulture);
+                return ResourceManager.GetString("PayOutMoney_Modal_ConfirmPaid", resourceCulture);
             }
         }
         
