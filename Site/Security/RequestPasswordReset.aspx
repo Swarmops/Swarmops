@@ -90,7 +90,7 @@
                 <div id="DivMailEntry">
                     <div class="entryFields">
                         <asp:TextBox runat="server" ID="TextMailAddress" />&#8203;<br/>
-                        <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor suppress-input-focus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
+                        <asp:Button ID="ButtonRequest" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
                     </div>
                     <div class="entryLabels">
                         <asp:Label ID="LabelMail" runat="server" /><br />

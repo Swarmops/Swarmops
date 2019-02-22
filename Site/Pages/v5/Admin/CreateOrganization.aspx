@@ -31,7 +31,7 @@
         <Swarmops5:DropDown runat="server" ID="DropPersonLabel" />
         <Swarmops5:DropDown runat="server" ID="DropActivistLabel" />
         <Swarmops5:DropDown runat="server" ID="DropPositionLabel" />
-        <asp:Button ID="ButtonCreate" runat="server" CssClass="buttonAccentColor suppress-input-focus" OnClientClick=" return validateFields(); " OnClick="ButtonCreate_Click" Text="CreateXYZ"/>
+        <asp:Button ID="ButtonCreate" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick=" return validateFields(); " OnClick="ButtonCreate_Click" Text="CreateXYZ"/>
     </div>
     <div class="entryLabels">
         <asp:Label runat="server" ID="LabelOrganizationName" /><br/>

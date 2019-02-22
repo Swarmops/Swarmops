@@ -132,7 +132,7 @@
     </div>
     <h2 style="padding-top:15px"><asp:Label ID="LabelHeaderMessage" runat="server" /> (<span id="spanRecipientCount">...</span>)</h2>
     <asp:TextBox runat="server" TextMode="MultiLine" Rows="10" ID="TextMessage" />
-    <asp:Button runat="server" CssClass="buttonAccentColor" Text="Foo" OnClientClick="onClickSend(); return false;" ID="ButtonSend" /><asp:Button runat="server" CssClass="buttonAccentColor" OnClientClick="onClickTest(); return false;" Text="Bar" ID="ButtonTest" />
+    <asp:Button runat="server" CssClass="button-accent-color" Text="Foo" OnClientClick="onClickSend(); return false;" ID="ButtonSend" /><asp:Button runat="server" CssClass="button-accent-color" OnClientClick="onClickTest(); return false;" Text="Bar" ID="ButtonTest" />
     <div style="clear:both"></div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">

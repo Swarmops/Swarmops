@@ -595,7 +595,7 @@ input.InputManualCredentials {
 /* EXECUTE BUTTON */
 
 
-.buttonAccentColor {
+.button-accent-color {
 	display:block;
 	float:right;
 	margin:15px 3px 8px 3px;
@@ -620,19 +620,19 @@ input.InputManualCredentials {
 	cursor: pointer;
 }
 
-body.rtl .buttonAccentColor {
+body.rtl .button-accent-color {
 	float:left;
     left: inherit;
     right: -1px;
 }
 
-.buttonAccentColor:hover, .buttonAccentColor:active {
+.button-accent-color:hover, .button-accent-color:active {
 	text-shadow: #FFF4E4 0px 0px 5px, #FFF4E4 0px 0px 5px, #FFF4E4 0px 0px 5px;
 
 }
 
 
-.buttonAccentColor:hover, .buttonAccentColor:focus {
+.button-accent-color:hover, .button-accent-color:focus {
 	top: -1px;
 	left: -1px;
 	box-shadow: 2px 2px 4px #7F5500;
@@ -640,21 +640,21 @@ body.rtl .buttonAccentColor {
 	background: linear-gradient(#FFD580, #FFC34D);
 }
 
-body.rtl .buttonAccentColor:hover, 
-body.rtl .buttonAccentColor:focus {
+body.rtl .button-accent-color:hover, 
+body.rtl .button-accent-color:focus {
     left: inherit;
     right: -2px;
 }
 
 
-.buttonAccentColor:active {
+.button-accent-color:active {
 	top: 0px;
 	left: 0px;
 	box-shadow: 0px 0px 4px #7F5500;
 }
 
 
-.buttonAccentColor.Red {
+.button-accent-color.button-red {
 	background: #EA6311;
 	border: 1px solid #EA6311;
 	box-shadow: 1px 1px 4px #7F2800;
@@ -663,7 +663,7 @@ body.rtl .buttonAccentColor:focus {
 	border-color: #C74815;
 }
 
-.buttonAccentColor.Red:hover, .buttonAccentColor.Red:focus {
+.button-accent-color.button-red:hover, .button-accent-color.button-red:focus {
 	box-shadow: 2px 2px 4px #7F5500;
 	background: #FF614D;
 	background: linear-gradient(#FF7280, #FF614D);
@@ -797,7 +797,7 @@ body.rtl div.modal .entryFields {
 
 
 
-.entryFields input:not(.buttonAccentColor), .entryFields textarea, .entryFields select 
+.entryFields input:not(.button-accent-color), .entryFields textarea, .entryFields select 
 {
     /* "important" here overrides the easyUI native styling */
 
@@ -808,12 +808,12 @@ body.rtl div.modal .entryFields {
 }
 
 
-.entryFields input:not(.buttonAccentColor), .entryFields textarea
+.entryFields input:not(.button-accent-color), .entryFields textarea
 {
 	width: 300px;
 }
 
-.entryFields input:not(.buttonAccentColor), .entryFields textarea
+.entryFields input:not(.button-accent-color), .entryFields textarea
 {
 	width: 300px;
 }
@@ -823,7 +823,7 @@ body.rtl div.modal .entryFields {
 	background: white;
 }
 
-.entryFields.modal.wide input:not(.buttonAccentColor), .entryFields.modal.wide textarea
+.entryFields.modal.wide input:not(.button-accent-color), .entryFields.modal.wide textarea
 {
 	width: 500px;
 }
@@ -838,12 +838,12 @@ body.rtl div.modal .entryFields {
 	box-shadow: 0px 0px 4px 2px #1C397E inset;
 }
 
-.entryFields > input[type=button]:not(.HalfWidth):not(.action-icon-button) {
+.entryFields > input[type=button]:not(.button-half-width):not(.action-icon-button) {
     width: 324px;
 }
 
 
-.entryFields > input[type=button].HalfWidth {
+.entryFields > input[type=button].button-half-width {
     width: 152px;
 }
 

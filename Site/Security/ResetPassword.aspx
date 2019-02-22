@@ -119,7 +119,7 @@
                             <asp:TextBox runat="server" ID="TextTicket" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextPassword1" TextMode="Password" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextPassword2" TextMode="Password" />&#8203;<br/>
-                            <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor suppress-input-focus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
+                            <asp:Button ID="ButtonRequest" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
                         </div>
                         <div class="entryLabels">
                             <asp:Label ID="LabelMail" runat="server" /><br />

@@ -479,7 +479,7 @@
                 <Swarmops5:AjaxTextBox ID="TextCreateTxDescription" runat="server"/>
                 <Swarmops5:ComboBudgets ID="DropBudgetsCreateTx" ListType="All" runat="server"/>
                 <Swarmops5:CurrencyTextBox ID="TextCreateTxAmount" runat="server"/>
-                <input type="button" id="buttonCreateTransaction" class="suppress-input-focus buttonAccentColor" value="<%= this.Localized_CreateTx %>"/>
+                <input type="button" id="buttonCreateTransaction" class="suppress-input-focus button-accent-color" value="<%= this.Localized_CreateTx %>"/>
             </div>
             <div class="entryLabels">
                 <asp:Label runat="server" ID="LabelAddTxDateTime" Text="DateTime XYZ"/><br/>

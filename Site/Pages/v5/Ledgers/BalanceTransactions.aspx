@@ -294,7 +294,7 @@
                 <div id="radioOptionVatReport" class="radioOption">
                     <div class="entryFields">
                         <Swarmops5:DropDown ID="DropOpenVatReports" runat="server" />&#8203;<br/>
-                        <input type="button" value='#VatReport#' class="buttonAccentColor" onclick="onMatchOpenVatReport(); return false;" id="buttonExecuteVatReport"/>
+                        <input type="button" value='#VatReport#' class="button-accent-color" onclick="onMatchOpenVatReport(); return false;" id="buttonExecuteVatReport"/>
                     </div>
                     <div class="entryLabels">
                         <asp:Label runat="server" ID="LabelDescribeVatReport" Text="Match to open VAT report XYZ" />
@@ -306,7 +306,7 @@
                 <div id="radioOptionPayout" class="radioOption">
                     <div class="entryFields">
                         <Swarmops5:DropDown ID="DropOpenPayouts" runat="server" ListType="All" />&#8203;<br/>
-                        <input type="button" value='#Payout#' class="buttonAccentColor" onclick="onMatchOpenPayout(); return false;" id="buttonExecutePayout"/>
+                        <input type="button" value='#Payout#' class="button-accent-color" onclick="onMatchOpenPayout(); return false;" id="buttonExecutePayout"/>
                     </div>
                     <div class="entryLabels">
                         <asp:Label runat="server" ID="LabelDescribePayout" Text="Match to payout XYZ" />
@@ -317,7 +317,7 @@
                     <div id="radioOptionPayoutForeign" class="radioOption">
                         <div class="entryFields">
                             <Swarmops5:DropDown ID="DropOpenPayoutsForeign" runat="server" ListType="All" />&#8203;<br/>
-                            <input type="button" value='#PayoutForeign#' class="buttonAccentColor" onclick="onMatchOpenPayoutForeign(); return false;" id="buttonExecutePayoutForeign"/>
+                            <input type="button" value='#PayoutForeign#' class="button-accent-color" onclick="onMatchOpenPayoutForeign(); return false;" id="buttonExecutePayoutForeign"/>
                         </div>
                         <div class="entryLabels">
                             <asp:Label runat="server" ID="LabelDescribePayoutForeign" Text="Match to payout XYZ" />
@@ -332,7 +332,7 @@
                         <div class="stacked-input-control"><input type="text" value="" id="inputTextPurchaseDescription"/></div>
                         <div class="onVatEnabled" style="display: none"><Swarmops5:CurrencyTextBox ID="CurrencyPurchaseVat" runat="server" Layout="Vertical"/></div>
                         <Swarmops5:FileUpload ID="UploadPurchase" runat="server"/>
-                        <input type="button" value='#Balance#' class="buttonAccentColor" onclick="onCreateDirectPurchase(); return false;" id="buttonExecutePurchase"/>
+                        <input type="button" value='#Balance#' class="button-accent-color" onclick="onCreateDirectPurchase(); return false;" id="buttonExecutePurchase"/>
                     </div>
                     <div class="entryLabels">
                         <div class="stacked-input-control"><asp:Label runat="server" ID="LabelDescribePurchaseAmount" Text="Direct purchase amount (CUR) XYZ" /></div>
@@ -350,7 +350,7 @@
                     <div id="radioOptionOutboundInvoice" class="radioOption">
                         <div class="entryFields">
                             <Swarmops5:DropDown ID="DropOpenOutboundInvoices" runat="server" />&#8203;<br/>
-                            <input type="button" value='#PaymentInvoice#' class="buttonAccentColor" onclick="onMatchOpenOutboundInvoice(); return false;" id="buttonExecuteOutboundInvoice"/>
+                            <input type="button" value='#PaymentInvoice#' class="button-accent-color" onclick="onMatchOpenOutboundInvoice(); return false;" id="buttonExecuteOutboundInvoice"/>
                         </div>
                         <div class="entryLabels">
                             <asp:Label runat="server" ID="LabelDescribeOutboundInvoice" Text="Match to outbound invoice XYZ" />
@@ -362,7 +362,7 @@
             <div id="radioOptionBalance" class="radioOption">  <!-- this should go last -->
                 <div class="entryFields">
                     <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" Layout="Vertical" ListType="All" />
-                    <div class="stacked-input-control"><input type="button" value='#Balance#' class="buttonAccentColor" onclick="onBalanceTransaction(); return false;" id="buttonExecuteBalance"/></div>
+                    <div class="stacked-input-control"><input type="button" value='#Balance#' class="button-accent-color" onclick="onBalanceTransaction(); return false;" id="buttonExecuteBalance"/></div>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeBalance" Text="Balance the difference against XYZ" />
@@ -376,7 +376,7 @@
                 <div id="radioOptionExistingPayment" class="radioOption">
                     <div class="entryFields">
                         <Swarmops5:DropDown ID="DropExistingPayments" runat="server" ListType="All" />&#8203;<br/>
-                        <input type="button" value='<asp:Literal ID="LiteralButtonExistingPayment" runat="server" Text="MatchXYZ" />' class="buttonAccentColor" id="button2"/>
+                        <input type="button" value='<asp:Literal ID="LiteralButtonExistingPayment" runat="server" Text="MatchXYZ" />' class="button-accent-color" id="button2"/>
                     </div>
                     <div class="entryLabels">
                         <asp:Label runat="server" ID="LabelDescribeExistingPayment" Text="Match existing payment XYZ" />
@@ -386,7 +386,7 @@
                 <div id="radioOptionExpectedPayment" class="radioOption">
                     <div class="entryFields">
                         <Swarmops5:DropDown ID="DropExpectedPayments" runat="server" ListType="All" />&#8203;<br/>
-                        <input type="button" value='<asp:Literal ID="LiteralButtonExpectedPayment" runat="server" Text="MatchXYZ" />' class="buttonAccentColor" id="button3"/>
+                        <input type="button" value='<asp:Literal ID="LiteralButtonExpectedPayment" runat="server" Text="MatchXYZ" />' class="button-accent-color" id="button3"/>
                     </div>
                     <div class="entryLabels">
                         <asp:Label runat="server" ID="LabelDescribeExpectedPayments" Text="Match expected payment XYZ" />

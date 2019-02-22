@@ -192,7 +192,7 @@
             <div class="entryFields">
                 <Swarmops5Workaround:ComboPeople ID="DropPerson" runat="server" />
                 <Swarmops5:DropDown ID="DropDuration" runat="server" />
-                <input type="button" id="<%=this.ClientID %>_buttonAssign" class="buttonAccentColor" value="#Assign#" />
+                <input type="button" id="<%=this.ClientID %>_buttonAssign" class="button-accent-color" value="#Assign#" />
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelAssignPersonTo" runat="server" /><br/>

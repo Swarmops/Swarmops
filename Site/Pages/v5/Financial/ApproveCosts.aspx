@@ -472,7 +472,7 @@
             <div id="radioOptionDeny" class="radioOption">
                 <div class="entryFields">
                     <asp:TextBox ID="TextDenyReason" runat="server" TextMode="MultiLine" Rows="3" Placeholder="My hovercraft is full of eels" />&#8203;<br/>
-                    <input type="button" value='#Deny#' class="buttonAccentColor" onclick="onDenyRecord(); return false;" id="buttonExecuteDeny"/>
+                    <input type="button" value='#Deny#' class="button-accent-color" onclick="onDenyRecord(); return false;" id="buttonExecuteDeny"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeDeny" Text="Optional explanation to submitter: XYZ" />
@@ -483,7 +483,7 @@
             <div id="radioOptionCorrect" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:CurrencyTextBox ID="TextCorrectAmount" runat="server" />
-                    <input type="button" value='#Correct#' class="buttonAccentColor" onclick=" onApproveCorrectedAmount(); return false;" id="buttonExecuteCorrectedAmount"/>
+                    <input type="button" value='#Correct#' class="button-accent-color" onclick=" onApproveCorrectedAmount(); return false;" id="buttonExecuteCorrectedAmount"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeCorrect" Text="What amount are you attesting instead (SEK)? XYZ" /><br/>
@@ -495,7 +495,7 @@
             <div id="radioOptionRebudget" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:ComboBudgets ID="DropBudgetsRebudget" runat="server" ListType="Expensable" />&#8203;<br/>
-                    <input type="button" value='#Rebudget#' class="buttonAccentColor" onclick="onRebudgetRecord(); return false;" id="buttonExecuteRebudget"/>
+                    <input type="button" value='#Rebudget#' class="button-accent-color" onclick="onRebudgetRecord(); return false;" id="buttonExecuteRebudget"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeRebudget" Text="Move the record to this budget: XYZ" />

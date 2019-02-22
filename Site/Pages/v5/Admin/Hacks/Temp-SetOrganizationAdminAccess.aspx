@@ -6,7 +6,7 @@
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextPeopleWriteAccessList" CssClass="alignRight" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPeopleReadAccessList" />&nbsp;<br/>
-        <asp:Button ID="ButtonSave" runat="server" CssClass="buttonAccentColor" OnClick="ButtonSave_Click" Text="Save"/>
+        <asp:Button ID="ButtonSave" runat="server" CssClass="button-accent-color" OnClick="ButtonSave_Click" Text="Save"/>
     </div>
     <div class="entryLabels">
         Read/write access, person IDs<br/>

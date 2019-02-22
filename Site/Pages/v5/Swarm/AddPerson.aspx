@@ -206,7 +206,7 @@
         <div class="stacked-input-control"></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
         <Swarmops5:DropDown runat="server" ID="DropGenders" />
-        <asp:Button ID="ButtonSubmit" runat="server" CssClass="buttonAccentColor suppress-input-focus" OnClientClick=" return ValidateFields(); " OnClick="ButtonSubmit_Click" Text="Register"/>
+        <asp:Button ID="ButtonSubmit" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick=" return ValidateFields(); " OnClick="ButtonSubmit_Click" Text="Register"/>
     </div>
     <div class="entryLabels">
         <asp:Label ID="LabelName" runat="server" /><br />

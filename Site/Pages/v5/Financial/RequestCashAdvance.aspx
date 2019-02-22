@@ -68,7 +68,7 @@
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextBank" /></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextClearing" /></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextAccount" /></div>
-        <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
+        <asp:Button ID="ButtonRequest" runat="server" CssClass="button-accent-color" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
     </div>
     <div class="entryLabels">
         <asp:Label runat="server" ID="LabelAmount" /><br/>
