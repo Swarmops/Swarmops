@@ -176,6 +176,9 @@ namespace Swarmops.Logic.Financial
                                        Formatting.GenerateRangeString (claimIds);
                 }
 
+                // Finally, add the payout to the result list if and only if the resulting debt less cash advances
+                // is greater than zero. (Cash advances paid may exceed existing expense claims.)
+
                 if (newAmountCents > 0)
                 {
                     payoutList.Add (payout);

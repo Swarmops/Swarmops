@@ -14,10 +14,11 @@ namespace Swarmops.Common.Enums
         BicSwift,
         GiroNumber,
         GiroService,
-        ClearingNumber,
+        ClearingCode,
         AccountNumber,
-        BankAccountHolderName,
+        AccountHolderName,
         BankName,
+        BankAddress,
         CashAccount,
         CryptoAddress
     }

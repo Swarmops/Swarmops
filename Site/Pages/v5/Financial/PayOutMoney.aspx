@@ -21,7 +21,9 @@
             '/Images/Icons/iconshock-green-tick-128x96px.png',
             '/Images/Icons/iconshock-red-cross-128x96px.png',
             '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
-            '/Images/Icons/iconshock-balloon-undo-128x96px.png'
+            '/Images/Icons/iconshock-balloon-undo-128x96px.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px.png',
+            '/Images/Icons/iconshock-balloon-no-128x96px-disabled.png'
         ]);
 
         $(document).ready(function () {
@@ -71,7 +73,44 @@
 
                             $(".LocalIconApproval").click(function () {
 
+                                // TODO: Check UX-level concurrency lock
+
+                                $('#idModalInputRecipient').val(loadingBreadcrumb);
+                                $('#idModalInputCurrencyAmount').val(loadingBreadcrumb);
+                                $('#idModalReference').val(loadingBreadcrumb);
+                                $('#idModalTransferMethod').val(loadingBreadcrumb);
+
+                                // TODO: The two fields below will initially be hidden, and
+                                // TODO: replaced with dynamically unfolding fields
+
+                                $('#idModalClearing').val(loadingBreadcrumb);
+                                $('#idModalAccountNumber').val(loadingBreadcrumb);
+
                                 <%=this.ModalConfirmPayment.ClientID%>_open();
+
+
+                                var prototypeId = $(this).attr("protoid");
+
+                                SwarmopsJS.proxiedAjaxCall(
+                                    "/Pages/v5/Financial/PayOutMoney.aspx/ConfirmPayout",
+                                    { protoIdentity: prototypeId },
+                                    this,
+                                    function(result) {
+                                        if (result.Success) {
+                                            modalPrototypeId = $(this).attr("protoid");
+
+                                            $('#idModalInputRecipient').val(loadingBreadcrumb);
+                                            $('#idModalInputCurrencyAmount').val(loadingBreadcrumb);
+                                            $('#idModalReference').val(loadingBreadcrumb);
+                                            $('#idModalTransferMethod').val(loadingBreadcrumb);
+                                            $('#idModalClearing').val(loadingBreadcrumb);
+                                            $('#idModalAccountNumber').val(loadingBreadcrumb);
+
+                                        } else {
+                                            // TODO: Handle server-level concurrency lock
+                                        }
+                                    }
+                                );
 
                                 /*
                                 var itemId = $(this).attr("baseid");
@@ -225,6 +264,12 @@
         });
 
         var gridsLoaded = 0;
+        var loadingBreadcrumb = "[...]";
+        var modalPrototypeId = "";
+
+        // Localization
+
+        $('#idModalButtonConfirm').value(SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_ConfirmPaid%>'));
 
     </script>
 
@@ -289,16 +334,16 @@
         <DialogCode>
             <h2><asp:Label ID="LabelPayoutModalHeader" runat="server" Text="Execute this payout manually now XYZ"/></h2>
             <div class="data-entry-fields modal wide">
-                <input type="text" readonly="readonly" value="Recipient"/>&#8203;<br/>
-                <input type="text" readonly="readonly" class="align-for-numbers" value="Amount"/>&#8203;<br/>
-                <input type="text" readonly="readonly" value="Reference"/>&#8203;<br/>
-                <input type="text" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
-                <input type="text" readonly="readonly" value="Clearing"/>&#8203;<br/>
-                <input type="text" readonly="readonly" value="Account Number"/>&#8203;<br/>
-                <input type="button" value="Confirm" class="button-accent-color suppress-input-focus action-icon-button icon-yes"/>
+                <input type="text" id="idModalInputRecipient" readonly="readonly" value="Recipient"/>&#8203;<br/>
+                <input type="text" id="idModalInputCurrencyAmount" readonly="readonly" class="align-for-numbers" value="Amount"/>&#8203;<br/>
+                <input type="text" id="idModalReference" readonly="readonly" value="Reference"/>&#8203;<br/>
+                <input type="text" id="idModalTransferMethod" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
+                <input type="text" id="idModalClearing" readonly="readonly" value="Clearing"/>&#8203;<br/>
+                <input type="text" id="idModalAccountNumber" readonly="readonly" value="Account Number"/>&#8203;<br/>
+                <input type="button" id="idModalButtonConfirm" value="Confirm XYZ" class="button-accent-color suppress-input-focus action-icon-button icon-yes" onclick="onConfirmModal();"/>
             </div>
             <div class="data-entry-labels">
-                <asp:Label ID="LabelModalRecipient" runat="server" Text="Recipient"/><br/>
+                <asp:Label ID="LabelModalRecipient" runat="server" Text="Recipient XYZ"/><br/>
                 <asp:Label ID="LabelModalCurrencyAmount" runat="server" Text="Currency and Amount XYZ"/><br/>
                 <asp:Label ID="LabelModalReference" runat="server" Text="Reference XYZ"/><br/>
                 <asp:Label ID="LabelModalTransferMethod" runat="server" Text="Transfer Method XYZ"/><br/>

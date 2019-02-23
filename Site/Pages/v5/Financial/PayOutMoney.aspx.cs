@@ -118,5 +118,23 @@ namespace Swarmops.Frontend.Pages.Financial
         {
             public int AssignedId;
         };
+
+        public class PayoutInformationResult : AjaxCallResult
+        {
+            public string Recipient { get; set; }
+            public string CurrencyAmount { get; set; }
+            public string Reference { get; set; }
+            public string TransferMethod { get; set; }
+            public string[] TransferMethodLabels { get; set; }
+            public string[] TransferMethodData { get; set; }
+        }
+
+
+        // --------- Localization strings UX-side ------------
+
+        public string Localized_ComfirmDialog_ConfirmPaid
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.PayOutMoney_Modal_ConfirmPaid); }
+        }
     }
 }

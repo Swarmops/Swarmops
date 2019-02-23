@@ -25,25 +25,6 @@ namespace Swarmops.Logic.Financial
             LoadDependencies();
         }
 
-        public static void Create()
-        {
-            // is this even needed?
-
-            throw new NotImplementedException();
-        }
-
-        public static Payout Create(Payout payout)
-        {
-            throw new NotImplementedException(); // Seems not to be needed
-
-            // This is quite unique in PW4 -- this is the only class which is pre-constructed and
-            // can take an instance of its own kind as parameter in creation
-
-            // TODO: Create in database
-
-            // return payout;
-        }
-
         public static Payout FromDependency(IHasIdentity dependency, FinancialDependencyType dependencyType = FinancialDependencyType.Unknown)
         {
             int payoutId = 0;
@@ -225,7 +206,7 @@ namespace Swarmops.Logic.Financial
         
         }
 
-    public new string Reference
+        public new string Reference
         {
             set
             {
