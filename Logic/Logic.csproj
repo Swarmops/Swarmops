@@ -143,7 +143,7 @@
     <Compile Include="Financial\HotBitcoinAddressUnspent.cs" />
     <Compile Include="Financial\HotBitcoinAddressUnspents.cs" />
     <Compile Include="Financial\IPayable.cs" />
-    <Compile Include="Financial\PaymentTransferMethodInfo.cs" />
+    <Compile Include="Financial\PaymentTransferInfo.cs" />
     <Compile Include="Financial\VatReport.cs" />
     <Compile Include="Financial\VatReportItem.cs" />
     <Compile Include="Financial\VatReportItems.cs" />
@@ -163,10 +163,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Logic.Financial.FinancialTransactionTagSetTypesStock.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Logic.Financial.PaymentTransferMethodInfo.Designer.cs">
+    <Compile Include="Resources\Logic.Financial.PaymentTransferInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Logic.Financial.PaymentTransferMethodInfo.resx</DependentUpon>
+      <DependentUpon>Logic.Financial.PaymentTransferInfo.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Logic.Financial.Payout.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -699,9 +699,9 @@
     <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.tr-TR.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.yo-NG.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.zh-CN.resx" />
-    <EmbeddedResource Include="Resources\Logic.Financial.PaymentTransferMethodInfo.resx">
+    <EmbeddedResource Include="Resources\Logic.Financial.PaymentTransferInfo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Logic.Financial.PaymentTransferMethodInfo.Designer.cs</LastGenOutput>
+      <LastGenOutput>Logic.Financial.PaymentTransferInfo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.af-ZA.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.ar-SA.resx" />

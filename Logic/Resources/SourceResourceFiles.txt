@@ -4,7 +4,7 @@ Logic.Communications.Transmission.NotificationPayload.resx
 Logic.Financial.FinancialAccount.resx
 Logic.Financial.FinancialTransactionTagSetTypesStock.resx
 Logic.Financial.Payout.resx
-Logic.Financial.PaymentTransferMethodInfo.resx
+Logic.Financial.PaymentTransferInfo.resx
 Logic.Financial.VatReport.resx
 Logic.Structure.Country.resx
 Logic.Structure.Geography.resx
