@@ -169,11 +169,11 @@ namespace Swarmops.Logic.Financial
                 if (claimIds.Count == 1)
                 {
                     payout.Reference = "[Loc]Financial_ExpenseClaimSpecification" + lessAdvancesIndicator + "|" +
-                                       claimIds[0].ToString (CultureInfo.InvariantCulture);
+                                       claimSequenceIds[0].ToString (CultureInfo.InvariantCulture);
                 }
                 else
                 {
-                    claimIds.Sort();
+                    claimSequenceIds.Sort();
                     payout.Reference = "[Loc]Financial_ExpenseClaimsSpecification" + lessAdvancesIndicator + "|" +
                                        Formatting.GenerateRangeString (claimSequenceIds);
                 }
@@ -250,7 +250,7 @@ namespace Swarmops.Logic.Financial
                 if (advanceIds.Count == 1)
                 {
                     payout.Reference = "[Loc]Financial_CashAdvanceSpecification|" +
-                                       advanceIds[0].ToString (CultureInfo.InvariantCulture);
+                                       advanceSequenceIds[0].ToString (CultureInfo.InvariantCulture);
                 }
                 else
                 {
