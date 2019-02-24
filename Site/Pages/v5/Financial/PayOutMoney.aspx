@@ -302,7 +302,7 @@
 
         // Localization
 
-        $('#idModalButtonConfirm').val(SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_ConfirmPaid%>'));
+        $('#idModalButtonConfirm').prop("value", SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_ConfirmPaid%>'));
 
     </script>
 
