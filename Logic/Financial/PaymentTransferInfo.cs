@@ -23,6 +23,7 @@ namespace Swarmops.Logic.Financial
         /// </summary>
         public Country Country { get; set; }
         public string Recipient { get; set; }
+        public string Reference { get; set; }
         public string CurrencyAmount { get; set; }
         public PaymentTargetType TargetType { get; set; }
         public string LocalizedPaymentMethodName { get; set; }

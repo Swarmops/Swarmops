@@ -176,6 +176,8 @@ namespace Swarmops.Frontend.Pages.Financial
                 TransferMethod = info.LocalizedPaymentMethodName,
             };
 
+            return result;
+
             // TODO: Continue with adding localized fields
         }
 
