@@ -139,13 +139,13 @@ namespace Swarmops.Frontend.Pages.Financial {
         protected global::System.Web.UI.WebControls.Label LabelPayoutModalHeader;
         
         /// <summary>
-        /// MasterEditPerson2FAProvisioning control.
+        /// ToggleModalMachineReadable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider MasterEditPerson2FAProvisioning;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider ToggleModalMachineReadable;
         
         /// <summary>
         /// LabelModalRecipient control.
@@ -182,6 +182,15 @@ namespace Swarmops.Frontend.Pages.Financial {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelModalTransferMethod;
+        
+        /// <summary>
+        /// LabelModalOcr1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelModalOcr1;
         
         /// <summary>
         /// LabelSidebarOptions control.

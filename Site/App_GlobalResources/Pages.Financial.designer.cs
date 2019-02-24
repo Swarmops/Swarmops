@@ -1402,6 +1402,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you scanning this payment?.
+        /// </summary>
+        internal static string PayOutMoney_Modal_LabelOcr1 {
+            get {
+                return ResourceManager.GetString("PayOutMoney_Modal_LabelOcr1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show in machine-readable format.
+        /// </summary>
+        internal static string PayOutMoney_Modal_LabelOcr2 {
+            get {
+                return ResourceManager.GetString("PayOutMoney_Modal_LabelOcr2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show OCR for mobile apps.
         /// </summary>
         internal static string PayoutMoney_OptionShowOcr {

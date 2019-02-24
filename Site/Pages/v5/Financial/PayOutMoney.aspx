@@ -269,7 +269,7 @@
 
         // Localization
 
-        $('#idModalButtonConfirm').value(SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_ConfirmPaid%>'));
+        $('#idModalButtonConfirm').val(SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_ConfirmPaid%>'));
 
     </script>
 
@@ -340,7 +340,7 @@
                 <input type="text" id="idModalTransferMethod" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
                 <input type="text" id="idModalClearing" readonly="readonly" value="Clearing"/>&#8203;<br/>
                 <input type="text" id="idModalAccountNumber" readonly="readonly" value="Account Number"/>&#8203;<br/>
-                <Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FAProvisioning" runat="server" Label="Show in machine-readable format XYZ" Cookie="2FAProvision" AjaxCallbackUrl="" OnChange="masterPersonEditor2FAProvisionToggle"/>
+                <Swarmops5:AjaxToggleSlider ID="ToggleModalMachineReadable" runat="server" Label="Show in machine-readable format XYZ" Cookie="MachineReadable" AjaxCallbackUrl="" OnChange="modalToggleMachineReadable"/>
                 <input type="button" id="idModalButtonConfirm" value="Confirm XYZ" class="button-accent-color suppress-input-focus action-icon-button icon-yes" onclick="onConfirmModal();"/>
             </div>
             <div class="data-entry-labels">
@@ -350,10 +350,9 @@
                 <asp:Label ID="LabelModalTransferMethod" runat="server" Text="Transfer Method XYZ"/><br/>
                 Clearing<br/>
                 Account Number<br/>
-                Are you scanning this payment XYZ?
+                <asp:Label runat="server" ID="LabelModalOcr1" Text="Are you scanning this payment XYZ?"/>
                 &nbsp;
             </div>
-            Foobar high chaparral
         </DialogCode>
     </Swarmops5:ModalDialog>
 
