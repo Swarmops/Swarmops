@@ -98,6 +98,7 @@
                                     function(result) {
                                         if (result.Success) {
                                             modalPrototypeId = $(this).attr("protoid");
+                                            modalItemId = $(this).attr("baseid");
 
                                             $('#idModalInputRecipient').val(loadingBreadcrumb);
                                             $('#idModalInputCurrencyAmount').val(loadingBreadcrumb);
@@ -111,38 +112,6 @@
                                         }
                                     }
                                 );
-
-                                /*
-                                var itemId = $(this).attr("baseid");
-                                var prototypeId = $(this).attr("protoid");
-                                $(this).hide();
-                                $(".IconWait" + itemId).show();
-                                $(".IconDenial" + itemId).fadeTo(1000, 0.01);
-
-                                SwarmopsJS.proxiedAjaxCall(
-                                    "/Pages/v5/Financial/PayOutMoney.aspx/ConfirmPayout",
-                                    { protoIdentity: prototypeId },
-                                    this,
-                                    function (result) {
-                                        if (result.Success) {
-                                            var itemId = $(this).attr("baseid");
-                                            $('.row' + itemId).addClass("action-list-item-approved");
-                                            $("#IconApproval" + itemId).attr("databaseid", result.AssignedId);
-                                            $(".IconWait" + itemId).hide();
-                                            $(".IconDenial" + itemId).hide();
-                                            $(".IconApproved" + itemId).fadeTo(200, 0.5); // half opacity is intentional
-                                            $(".IconUndo" + itemId).fadeTo(1000, 1); // the longer delay is intentional
-                                            alertify.success(result.DisplayMessage);
-                                        } else {
-                                            // There's probably a concurrency error.
-                                            // The socket handler will take care of updating the UI on
-                                            // receiving the cause of the concurrency error.
-
-                                            alertify.log(result.DisplayMessage);
-
-                                        }
-                                    }
-                                );*/
                             });
 
 
@@ -260,12 +229,58 @@
                 }
             );
 
-            
+
         });
+
+        function onConfirmModal()
+        {
+            var approvalIcon = $('#IconApproval' + modalItemId);
+            confirmExpenseApproved(approvalIcon);
+            <%=this.ModalConfirmPayment.ClientID%>_close();
+
+            modalItemId = "";
+            modalPrototypeId = "";
+        }
+
+
+        function confirmExpenseApproved(approvalIcon) {
+
+            var itemId = $(this).attr("baseid");
+            var prototypeId = $(this).attr("protoid");
+            $(this).hide();
+            $(".IconWait" + itemId).show();
+            $(".IconDenial" + itemId).fadeTo(1000, 0.01);
+
+            SwarmopsJS.proxiedAjaxCall(
+                "/Pages/v5/Financial/PayOutMoney.aspx/ConfirmPayout",
+                { protoIdentity: prototypeId },
+                this,
+                function (result) {
+                    if (result.Success) {
+                        var itemId = $(this).attr("baseid");
+                        $('.row' + itemId).addClass("action-list-item-approved");
+                        $("#IconApproval" + itemId).attr("databaseid", result.AssignedId);
+                        $(".IconWait" + itemId).hide();
+                        $(".IconDenial" + itemId).hide();
+                        $(".IconApproved" + itemId).fadeTo(200, 0.5); // half opacity is intentional
+                        $(".IconUndo" + itemId).fadeTo(1000, 1); // the longer delay is intentional
+                        alertify.success(result.DisplayMessage);
+                    } else {
+                        // There's probably a concurrency error.
+                        // The socket handler will take care of updating the UI on
+                        // receiving the cause of the concurrency error.
+
+                        alertify.log(result.DisplayMessage);
+
+                    }
+                }
+            );
+        }
 
         var gridsLoaded = 0;
         var loadingBreadcrumb = "[...]";
         var modalPrototypeId = "";
+        var modalItemId = "";
 
         // Localization
 
