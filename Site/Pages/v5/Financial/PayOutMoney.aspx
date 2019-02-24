@@ -88,6 +88,8 @@
 
                                 <%=this.ModalConfirmPayment.ClientID%>_open();
 
+                                modalPrototypeId = $(this).attr("protoid");
+                                modalItemId = $(this).attr("baseid");
 
                                 var prototypeId = $(this).attr("protoid");
 
@@ -110,6 +112,13 @@
                                         } else {
                                             // TODO: Handle server-level concurrency lock
                                         }
+                                    },
+                                    function() {
+                                        // This is the error handler function
+                                        //
+                                        // TODO: Display an error message and close the modal
+                                        //
+                                        alert("Error calling GetPaymentTransferInfo");
                                     }
                                 );
                             });
