@@ -92,7 +92,7 @@
                                 var prototypeId = $(this).attr("protoid");
 
                                 SwarmopsJS.proxiedAjaxCall(
-                                    "/Pages/v5/Financial/PayOutMoney.aspx/ConfirmPayout",
+                                    "/Pages/v5/Financial/PayOutMoney.aspx/GetPaymentTransferInfo",
                                     { protoIdentity: prototypeId },
                                     this,
                                     function(result) {
