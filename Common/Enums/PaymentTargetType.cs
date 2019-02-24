@@ -19,7 +19,7 @@ namespace Swarmops.Common.Enums
         /// </summary>
         DomesticBankGiro,
         /// <summary>
-        /// The 
+        /// The international bank transfer assumes the IBAN/BIC standard. This is used by all but the recalcitrant United States.
         /// </summary>
         InternationalBankTransfer
     }

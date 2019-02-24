@@ -105,7 +105,7 @@ namespace Swarmops.Frontend.Pages.Financial
             {
                 result.Append("{");
                 result.AppendFormat(
-                    "\"itemId\":\"{0}\"," +
+                    "\"itemId\":\"{7}\"," +
                     "\"paid\":\"yes\"," +
                     "\"databaseId\":\"{8}\"," +
                     "\"due\":\"{1}\"," +
@@ -116,11 +116,11 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"amount\":\"{6:N2}\"," +
                     "\"action\":\"" +
                     "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPaid action-icon' baseid='{7}' protoid='{0}' databaseid='{8}' />" +
-                    "<img class='IconApproved{7} LocalIconApproved LocalPaid status-icon' baseid='{0}' />" +
-                    "<img class='IconWait{7} LocalIconWait LocalPaid status-icon' baseid='{0}' />" +
-                    "<img class='IconUndo{7} LocalIconUndo LocalPaid action-icon' baseid='{0}' />" +
-                    "<img class='IconDenial{7} LocalIconDenial LocalPaid action-icon' baseid='{0}' />" +
-                    "<img class='IconDenied{7} LocalIconDenied LocalPaid status-icon' baseid='{0}' />" +
+                    "<img class='IconApproved{7} LocalIconApproved LocalPaid status-icon' baseid='{7}' />" +
+                    "<img class='IconWait{7} LocalIconWait LocalPaid status-icon' baseid='{7}' />" +
+                    "<img class='IconUndo{7} LocalIconUndo LocalPaid action-icon' baseid='{7}' />" +
+                    "<img class='IconDenial{7} LocalIconDenial LocalPaid action-icon' baseid='{7}' />" +
+                    "<img class='IconDenied{7} LocalIconDenied LocalPaid status-icon' baseid='{7}' />" +
                     "\"",
                     payout.ProtoIdentity,
                     payout.ExpectedTransactionDate.ToShortDateString(),
