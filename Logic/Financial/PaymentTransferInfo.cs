@@ -22,6 +22,7 @@ namespace Swarmops.Logic.Financial
         /// The Country field is needed whenever a transfer is marked as "domestic"
         /// </summary>
         public Country Country { get; set; }
+        public string Recipient { get; set; }
         public string CurrencyAmount { get; set; }
         public PaymentTargetType TargetType { get; set; }
         public string LocalizedPaymentMethodName { get; set; }
@@ -33,14 +34,28 @@ namespace Swarmops.Logic.Financial
             {
                 ExpenseClaim claim = financialObject as ExpenseClaim;
 
-                return FromObject(claim.Claimer, new Money(claim.AmountCents, claim.Organization.Currency));
+                if (amountToPay == null)
+                {
+                    return FromObject(claim.Claimer, new Money(claim.AmountCents, claim.Organization.Currency));
+                }
+                else
+                {
+                    return FromObject(claim.Claimer, amountToPay);
+                }
             }
 
             if (financialObject is CashAdvance)
             {
                 CashAdvance advance = financialObject as CashAdvance;
 
-                return FromObject(advance.Person, new Money(advance.AmountCents, advance.Organization.Currency));
+                if (amountToPay == null)
+                {
+                    return FromObject(advance.Person, new Money(advance.AmountCents, advance.Organization.Currency));
+                }
+                else
+                {
+                    return FromObject(advance.Person, amountToPay);
+                }
             }
 
             if (financialObject is Salary)

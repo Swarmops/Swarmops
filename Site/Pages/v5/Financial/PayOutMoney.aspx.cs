@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security;
 using System.Web;
 using System.Web.Services;
+using System.Web.UI;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -114,12 +115,104 @@ namespace Swarmops.Frontend.Pages.Financial
             };
         }
 
+        [WebMethod]
+        public static PaymentTransferInfoResult GetPayoutTransferInfo(string prototypeId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            // TODO: Authentication check
+
+            string[] payoutComponents = prototypeId.Split('|');
+
+            if (payoutComponents.Length < 1)
+            {
+                throw new InvalidOperationException("Prototype ID can't be empty");
+            }
+
+            PaymentTransferInfo info = new PaymentTransferInfo();
+
+            // Some payouts are composites of multiple objects, but all these will share the same
+            // payout data, so we can safely use just the first object to determine payment
+            // target information
+            //
+            // with one exception -- we need to determine the amount by adding all the objects
+            // together, if applicable
+
+            switch (Char.ToUpperInvariant(payoutComponents[0][0]))
+            {
+                case 'E': // expense claim
+                    info =
+                        PaymentTransferInfo.FromObject(
+                            ExpenseClaim.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1))),
+                            new Money(GetSumCentsTotal(prototypeId), authData.CurrentOrganization.Currency));
+                    break;
+                case 'A': // cash advance (payout or payback, same logic either way)
+                    info =
+                        PaymentTransferInfo.FromObject(
+                            CashAdvance.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1))),
+                            new Money(GetSumCentsTotal(prototypeId), authData.CurrentOrganization.Currency));
+                    break;
+                case 'S': // salary
+                    info =
+                        PaymentTransferInfo.FromObject(
+                            Salary.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1))));
+                    break;
+                case 'I': // inbound invoice
+                    info =
+                        PaymentTransferInfo.FromObject(
+                            InboundInvoice.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1))));
+                    break;
+                default:
+                    throw new NotImplementedException("Unrecognized payment type");
+            }
+
+            PaymentTransferInfoResult result = new PaymentTransferInfoResult
+            {
+                Success = true,
+                CurrencyAmount = info.CurrencyAmount,
+                DisplayMessage = string.Empty,
+                Recipient = info.Recipient,
+                Reference = info.Reference,
+                TransferMethod = info.LocalizedPaymentMethodName,
+            };
+
+            // TODO: Continue with adding localized fields
+        }
+
+
+        static private Int64 GetSumCentsTotal(string prototypeId)
+        {
+            string[] payoutComponents = prototypeId.Split('|');
+
+            Int64 amountCentsTotal = 0;
+
+            foreach (string payoutComponent in payoutComponents)
+            {
+                switch (payoutComponent[0])
+                {
+                    case 'E':
+                        amountCentsTotal += ExpenseClaim.FromIdentity(Int32.Parse(payoutComponent.Substring(1))).AmountCents;
+                        break;
+                    case 'A':  // Advance pay-OUT
+                        amountCentsTotal += CashAdvance.FromIdentity(Int32.Parse(payoutComponent.Substring(1))).AmountCents;
+                        break;
+                    case 'a':  // Advance pay-BACK
+                        amountCentsTotal -= CashAdvance.FromIdentity(Int32.Parse(payoutComponent.Substring(1))).AmountCents;
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+
+            return amountCentsTotal;
+        }
+
         public class ConfirmPayoutResult: AjaxCallResult
         {
             public int AssignedId;
         };
 
-        public class PayoutInformationResult : AjaxCallResult
+        public class PaymentTransferInfoResult : AjaxCallResult
         {
             public string Recipient { get; set; }
             public string CurrencyAmount { get; set; }
