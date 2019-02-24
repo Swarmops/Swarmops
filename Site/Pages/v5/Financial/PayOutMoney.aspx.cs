@@ -119,7 +119,7 @@ namespace Swarmops.Frontend.Pages.Financial
         }
 
         [WebMethod]
-        public static PaymentTransferInfoResult GetPayoutTransferInfo(string prototypeId)
+        public static PaymentTransferInfoResult GetPaymentTransferInfo(string prototypeId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 

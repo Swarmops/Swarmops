@@ -102,10 +102,12 @@
                                             modalPrototypeId = $(this).attr("protoid");
                                             modalItemId = $(this).attr("baseid");
 
-                                            $('#idModalInputRecipient').val(loadingBreadcrumb);
-                                            $('#idModalInputCurrencyAmount').val(loadingBreadcrumb);
-                                            $('#idModalReference').val(loadingBreadcrumb);
-                                            $('#idModalTransferMethod').val(loadingBreadcrumb);
+                                            console.log(result);
+
+                                            $('#idModalInputRecipient').val(result.Recipient);
+                                            $('#idModalInputCurrencyAmount').val(result.CurrencyAmount);
+                                            $('#idModalReference').val(loadingBreadcrumb);  // TODO: load reference from JSON data
+                                            $('#idModalTransferMethod').val(result.LocalizedPaymentMethodName);
                                             $('#idModalClearing').val(loadingBreadcrumb);
                                             $('#idModalAccountNumber').val(loadingBreadcrumb);
 
@@ -243,7 +245,6 @@
 
         function onConfirmModal()
         {
-            alert(modalItemId);
 
             var approvalIcon = $('#IconApproval' + modalItemId);
             confirmExpenseApproved(approvalIcon);
@@ -259,10 +260,8 @@
             var itemId = $(approvalIcon).attr("baseid");
             var prototypeId = $(approvalIcon).attr("protoid");
 
-            alert(prototypeId);
-
             if (prototypeId === undefined || prototypeId === null || prototypeId.Length < 2) {
-                alert("Aborting");
+                alert("PrototypeId is empty. Aborting operation. This should not happen.");
                 return;
             }
 
