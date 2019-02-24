@@ -89,7 +89,7 @@ namespace Swarmops.Logic.Financial
                 }
 
                 result.TargetType = PaymentTargetType.DomesticBankTransfer;
-                result.Country = person.Country;
+                result.Country = person.CountryId == 0? null: person.Country;
                 result.Currency = amountToPay.Currency; // TODO: The currency will need to come from the payment method instead
                 
                 result.CurrencyAmount = result.Currency.Code + " " + (amountToPay.ToCurrency(result.Currency).Cents / 100.0).ToString("N2");

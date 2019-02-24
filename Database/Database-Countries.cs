@@ -74,7 +74,7 @@ namespace Swarmops.Database
                         return ReadCountryFromDataReader (reader);
                     }
 
-                    throw new ArgumentException ("Unknown CountryId");
+                    throw new ArgumentException ("Unknown CountryId: " + countryId);
                 }
             }
         }
