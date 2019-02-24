@@ -107,7 +107,7 @@
                                             $('#idModalInputRecipient').val(result.Recipient);
                                             $('#idModalInputCurrencyAmount').val(result.CurrencyAmount);
                                             $('#idModalReference').val(loadingBreadcrumb);  // TODO: load reference from JSON data
-                                            $('#idModalTransferMethod').val(result.LocalizedPaymentMethodName);
+                                            $('#idModalTransferMethod').val(result.TransferMethod);
                                             $('#idModalClearing').val(loadingBreadcrumb);
                                             $('#idModalAccountNumber').val(loadingBreadcrumb);
 

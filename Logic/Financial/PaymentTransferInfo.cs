@@ -97,6 +97,7 @@ namespace Swarmops.Logic.Financial
                 result.LocalizedPaymentMethodName =
                     Logic_Financial_PaymentTransferInfo.ResourceManager.GetString("PaymentTargetType_" +
                                                                                         result.TargetType.ToString());
+                result.Recipient = person.Canonical;
 
                 result.LocalizedPaymentInformation = new Dictionary<string, string>();
                 result.LocalizedPaymentInformation[
