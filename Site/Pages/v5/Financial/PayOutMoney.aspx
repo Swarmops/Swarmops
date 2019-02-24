@@ -245,16 +245,16 @@
 
         function confirmExpenseApproved(approvalIcon) {
 
-            var itemId = $(this).attr("baseid");
-            var prototypeId = $(this).attr("protoid");
-            $(this).hide();
+            var itemId = $(approvalIcon).attr("baseid");
+            var prototypeId = $(approvalIcon).attr("protoid");
+            $(approvalIcon).hide();
             $(".IconWait" + itemId).show();
             $(".IconDenial" + itemId).fadeTo(1000, 0.01);
 
             SwarmopsJS.proxiedAjaxCall(
                 "/Pages/v5/Financial/PayOutMoney.aspx/ConfirmPayout",
                 { protoIdentity: prototypeId },
-                this,
+                approvalIcon,
                 function (result) {
                     if (result.Success) {
                         var itemId = $(this).attr("baseid");
