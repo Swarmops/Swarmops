@@ -95,7 +95,7 @@
 
                                 SwarmopsJS.proxiedAjaxCall(
                                     "/Pages/v5/Financial/PayOutMoney.aspx/GetPaymentTransferInfo",
-                                    { protoIdentity: prototypeId },
+                                    { prototypeId: prototypeId },
                                     this,
                                     function(result) {
                                         if (result.Success) {
