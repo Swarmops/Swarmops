@@ -234,6 +234,8 @@
 
         function onConfirmModal()
         {
+            alert(modalItemId);
+
             var approvalIcon = $('#IconApproval' + modalItemId);
             confirmExpenseApproved(approvalIcon);
             <%=this.ModalConfirmPayment.ClientID%>_close();
@@ -247,6 +249,14 @@
 
             var itemId = $(approvalIcon).attr("baseid");
             var prototypeId = $(approvalIcon).attr("protoid");
+
+            alert(prototypeId);
+
+            if (prototypeId === undefined || prototypeId === null || prototypeId.Length < 2) {
+                alert("Aborting");
+                return;
+            }
+
             $(approvalIcon).hide();
             $(".IconWait" + itemId).show();
             $(".IconDenial" + itemId).fadeTo(1000, 0.01);
