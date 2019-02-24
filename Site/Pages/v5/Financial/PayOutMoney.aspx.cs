@@ -195,7 +195,7 @@ namespace Swarmops.Frontend.Pages.Financial
             {
                 switch (payoutComponent[0])
                 {
-                    case 'E':
+                    case 'C':
                         amountCentsTotal += ExpenseClaim.FromIdentity(Int32.Parse(payoutComponent.Substring(1))).AmountCents;
                         break;
                     case 'A':  // Advance pay-OUT
