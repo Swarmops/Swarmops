@@ -146,11 +146,13 @@ namespace Swarmops.Logic.Financial
             {
                 Int64 newAmountCents = 0;
                 List<int> claimIds = new List<int>();
+                List<int> claimSequenceIds = new List<int>();
 
                 foreach (ExpenseClaim claim in payout.DependentExpenseClaims)
                 {
                     newAmountCents += claim.AmountCents;
                     claimIds.Add (claim.Identity);
+                    claimSequenceIds.Add(claim.OrganizationSequenceId);
                 }
 
                 foreach (CashAdvance previousAdvance in payout.DependentCashAdvancesPayback)
@@ -173,7 +175,7 @@ namespace Swarmops.Logic.Financial
                 {
                     claimIds.Sort();
                     payout.Reference = "[Loc]Financial_ExpenseClaimsSpecification" + lessAdvancesIndicator + "|" +
-                                       Formatting.GenerateRangeString (claimIds);
+                                       Formatting.GenerateRangeString (claimSequenceIds);
                 }
 
                 // Finally, add the payout to the result list if and only if the resulting debt less cash advances
@@ -234,11 +236,13 @@ namespace Swarmops.Logic.Financial
             {
                 Int64 newAmountCents = 0;
                 List<int> advanceIds = new List<int>();
+                List<int> advanceSequenceIds = new List<int>();
 
                 foreach (CashAdvance advance in payout.DependentCashAdvancesPayout)
                 {
                     newAmountCents += advance.AmountCents;
                     advanceIds.Add (advance.Identity);
+                    advanceSequenceIds.Add(advance.OrganizationSequenceId);
                 }
 
                 payout.AmountCents = newAmountCents;
@@ -250,9 +254,9 @@ namespace Swarmops.Logic.Financial
                 }
                 else
                 {
-                    advanceIds.Sort();
+                    advanceSequenceIds.Sort();
                     payout.Reference = "[Loc]Financial_CashAdvancesSpecification|" +
-                                       Formatting.GenerateRangeString (advanceIds);
+                                       Formatting.GenerateRangeString (advanceSequenceIds);
                 }
 
                 if (newAmountCents > 0)
