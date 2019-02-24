@@ -227,7 +227,7 @@ namespace Swarmops.Frontend.Pages.Financial
 
         // --------- Localization strings UX-side ------------
 
-        public string Localized_ComfirmDialog_ConfirmPaid
+        public string Localized_ConfirmDialog_ConfirmPaid
         {
             get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.PayOutMoney_Modal_ConfirmPaid); }
         }
