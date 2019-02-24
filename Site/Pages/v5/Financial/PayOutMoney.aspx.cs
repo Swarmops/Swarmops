@@ -143,7 +143,7 @@ namespace Swarmops.Frontend.Pages.Financial
 
             switch (Char.ToUpperInvariant(payoutComponents[0][0]))
             {
-                case 'E': // expense claim
+                case 'C': // expense claim
                     info =
                         PaymentTransferInfo.FromObject(
                             ExpenseClaim.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1))),
