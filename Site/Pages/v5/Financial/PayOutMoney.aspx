@@ -308,26 +308,14 @@
     </script>
 
     <style type="text/css">
-        .datagrid-row-selected,.datagrid-row-over{
-            background:transparent;
-        }
+
         .datagrid-row .ocrFont {  /* this is necessary for OCR to work as expected */
             font-family: Droid Sans Mono;
             font-weight: bold;
             font-size: 120%;
             letter-spacing: 1px;
         }
-        .LocalIconApproval, .LocalIconApproved {
-            padding-right: 3px;
-        }
-        body.rtl .LocalIconApproval, body.rtl .LocalIconApproved {
-            padding-left: 3px;
-            padding-right: initial;
-        }
-        .rowPrevious {
-            color: #AAA;
-            display: none;
-        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
@@ -371,6 +359,7 @@
                 <input type="text" id="idModalInputCurrencyAmount" readonly="readonly" class="align-for-numbers" value="Amount"/>&#8203;<br/>
                 <input type="text" id="idModalReference" readonly="readonly" value="Reference"/>&#8203;<br/>
                 <input type="text" id="idModalTransferMethod" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
+                <div id="idModalExtraFieldsData"></div>
                 <input type="text" id="idModalClearing" readonly="readonly" value="Clearing"/>&#8203;<br/>
                 <input type="text" id="idModalAccountNumber" readonly="readonly" value="Account Number"/>&#8203;<br/>
                 <Swarmops5:AjaxToggleSlider ID="ToggleModalMachineReadable" runat="server" Label="Show in machine-readable format XYZ" Cookie="MachineReadable" AjaxCallbackUrl="" OnChange="modalToggleMachineReadable"/>
@@ -381,6 +370,7 @@
                 <asp:Label ID="LabelModalCurrencyAmount" runat="server" Text="Currency and Amount XYZ"/><br/>
                 <asp:Label ID="LabelModalReference" runat="server" Text="Reference XYZ"/><br/>
                 <asp:Label ID="LabelModalTransferMethod" runat="server" Text="Transfer Method XYZ"/><br/>
+                <div id="idModalExtraFieldsLabels"></div>
                 Clearing<br/>
                 Account Number<br/>
                 <asp:Label runat="server" ID="LabelModalOcr1" Text="Are you scanning this payment XYZ?"/>
