@@ -52,6 +52,7 @@ namespace Swarmops.Frontend.Pages.Financial
             this.LabelModalReference.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Reference;
             this.LabelModalHeader.Text = Resources.Pages.Financial.PayOutMoney_Modal_Header;
             this.LabelModalCurrencyAmount.Text = Resources.Pages.Financial.PayOutMoney_Modal_CurrencyAmount;
+            this.LabelModalTransferMethod.Text = Resources.Pages.Financial.PayOutMoney_Modal_TransferMethod;
 
             this.LabelPayOutMoneyOcrHeader.Text = Resources.Pages.Financial.PayoutMoney_Header_Ocr;
             this.LabelGridHeaderAccountOcr.Text = Resources.Pages.Financial.PayoutMoney_GridHeader_Account_Ocr;

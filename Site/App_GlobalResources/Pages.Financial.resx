@@ -759,4 +759,8 @@
     <value>Show in machine-readable format</value>
     <comment>Don't make this string much longer than it is.</comment>
   </data>
+  <data name="PayOutMoney_Modal_TransferMethod" xml:space="preserve">
+    <value>Transfer Method</value>
+    <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
+  </data>
 </root>

@@ -1438,6 +1438,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transfer Method.
+        /// </summary>
+        internal static string PayOutMoney_Modal_TransferMethod {
+            get {
+                return ResourceManager.GetString("PayOutMoney_Modal_TransferMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show OCR for mobile apps.
         /// </summary>
         internal static string PayoutMoney_OptionShowOcr {
