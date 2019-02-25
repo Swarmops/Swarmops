@@ -731,6 +731,7 @@ input[type="text"], input[type="password"], select {  /* this makes dropdowns an
 div.modal .data-entry-fields {
     margin-right: 3px;
     margin-bottom: 10px;
+    margin-top: 0px !important;
 }
 
 body.right-to-left .data-entry-fields {
