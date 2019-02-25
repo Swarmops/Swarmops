@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
 using System.Security;
@@ -182,12 +183,22 @@ namespace Swarmops.Frontend.Pages.Financial
                 DisplayMessage = string.Empty,
                 Recipient = info.Recipient,
                 Reference = info.Reference,
-                TransferMethod = info.LocalizedPaymentMethodName,
+                TransferMethod = info.LocalizedPaymentMethodName
             };
 
-            return result;
+            List<string> listTransferMethodLabels = new List<string>();
+            List<string> listTransferMethodData = new List<string>();
 
-            // TODO: Continue with adding localized fields
+            foreach (string label in info.LocalizedPaymentInformation.Keys)
+            {
+                listTransferMethodLabels.Add(label);
+                listTransferMethodData.Add(info.LocalizedPaymentInformation [label]);
+            }
+
+            result.TransferMethodLabels = listTransferMethodLabels.ToArray();
+            result.TransferMethodData = listTransferMethodData.ToArray();
+
+            return result;
         }
 
 

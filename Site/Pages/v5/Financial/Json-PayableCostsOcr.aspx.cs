@@ -49,7 +49,7 @@ namespace Swarmops.Frontend.Pages.Financial
                     continue;
                 }
 
-                if (bitcoinHotWalletActive && payout.Account.StartsWith ("bitcoin:"))
+                if (bitcoinHotWalletActive && payout.Account.StartsWith ("bitcoin"))
                 {
                     // This is a payout registered to be paid in bitcoin, so don't show for manual payout
 
