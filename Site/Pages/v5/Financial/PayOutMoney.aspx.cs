@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Resources;
 using System.Security;
 using System.Web;
 using System.Web.Services;
@@ -47,6 +48,10 @@ namespace Swarmops.Frontend.Pages.Financial
 
             this.LabelModalOcr1.Text = Resources.Pages.Financial.PayOutMoney_Modal_LabelOcr1;
             this.ToggleModalMachineReadable.Label = Resources.Pages.Financial.PayOutMoney_Modal_LabelOcr2;
+            this.LabelModalRecipient.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Recipient;
+            this.LabelModalReference.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Reference;
+            this.LabelModalHeader.Text = Resources.Pages.Financial.PayOutMoney_Modal_Header;
+            this.LabelModalCurrencyAmount.Text = Resources.Pages.Financial.PayOutMoney_Modal_CurrencyAmount;
 
             this.LabelPayOutMoneyOcrHeader.Text = Resources.Pages.Financial.PayoutMoney_Header_Ocr;
             this.LabelGridHeaderAccountOcr.Text = Resources.Pages.Financial.PayoutMoney_GridHeader_Account_Ocr;

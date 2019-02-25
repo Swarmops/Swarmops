@@ -240,8 +240,13 @@
                 }
             );
 
+            // Localization
 
-        });
+            $('#idModalButtonConfirm').prop("value", SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_ConfirmPaid%>'));
+
+
+
+        });  // End of document.ready()
 
         function onConfirmModal()
         {
@@ -299,10 +304,6 @@
         var loadingBreadcrumb = "[...]";
         var modalPrototypeId = "";
         var modalItemId = "";
-
-        // Localization
-
-        $('#idModalButtonConfirm').prop("value", SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_ConfirmPaid%>'));
 
     </script>
 
@@ -365,7 +366,7 @@
     
     <Swarmops5:ModalDialog ID="ModalConfirmPayment" runat="server" >
         <DialogCode>
-            <h2><asp:Label ID="LabelPayoutModalHeader" runat="server" Text="Execute this payout manually now XYZ"/></h2>
+            <h2><asp:Label ID="LabelModalHeader" runat="server" Text="Execute this payout manually now XYZ"/></h2>
             <div class="data-entry-fields modal wide"><input type="text" id="idModalInputRecipient" readonly="readonly" value="Recipient"/>&#8203;<br/>
                 <input type="text" id="idModalInputCurrencyAmount" readonly="readonly" class="align-for-numbers" value="Amount"/>&#8203;<br/>
                 <input type="text" id="idModalReference" readonly="readonly" value="Reference"/>&#8203;<br/>

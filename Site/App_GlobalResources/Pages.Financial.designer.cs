@@ -1402,6 +1402,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Currency and Amount.
+        /// </summary>
+        internal static string PayOutMoney_Modal_CurrencyAmount {
+            get {
+                return ResourceManager.GetString("PayOutMoney_Modal_CurrencyAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Execute This Payment Manually Now.
+        /// </summary>
+        internal static string PayOutMoney_Modal_Header {
+            get {
+                return ResourceManager.GetString("PayOutMoney_Modal_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you scanning this payment?.
         /// </summary>
         internal static string PayOutMoney_Modal_LabelOcr1 {

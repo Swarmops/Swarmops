@@ -130,13 +130,13 @@ namespace Swarmops.Frontend.Pages.Financial {
         protected global::Swarmops.Frontend.Controls.Base.ModalDialog ModalConfirmPayment;
         
         /// <summary>
-        /// LabelPayoutModalHeader control.
+        /// LabelModalHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPayoutModalHeader;
+        protected global::System.Web.UI.WebControls.Label LabelModalHeader;
         
         /// <summary>
         /// ToggleModalMachineReadable control.
