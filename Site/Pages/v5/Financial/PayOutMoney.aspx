@@ -86,11 +86,11 @@
 
                                 for (var index = 0; index < modalExtraFieldCount; index++) {
                                     if (index < fieldsRequiredCount) {
-                                        $('#idModalExtraField' + index).show();
-                                        $('#idModalExtraLabel' + index).show();
+                                        $('#idModalSpanExtraField' + index).show();
+                                        $('#idModalSpanExtraLabel' + index).show();
                                     } else {
-                                        $('#idModalExtraField' + index).hide();
-                                        $('#idModalExtraLabel' + index).hide();
+                                        $('#idModalSpanExtraField' + index).hide();
+                                        $('#idModalSpanExtraLabel' + index).hide();
                                     }
                                 }
 
