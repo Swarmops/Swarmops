@@ -80,10 +80,19 @@
                                 $('#idModalReference').val(loadingBreadcrumb);
                                 $('#idModalTransferMethod').val(loadingBreadcrumb);
 
-                                // TODO: The two fields below will initially be hidden, and
-                                // TODO: replaced with dynamically unfolding fields
+                                // Show or hide the correct count of extra data fields
 
-                                $('#idModalExtraField0').val($(this).attr("data-fieldcount"));
+                                var fieldsRequiredCount = parseInt($(this).attr("data-fieldcount"));
+
+                                for (var index = 0; index < modalExtraFieldCount; index++) {
+                                    if (index < fieldsRequiredCount) {
+                                        $('#idModalExtraField' + index).show();
+                                        $('#idModalExtraLabel' + index).show();
+                                    } else {
+                                        $('#idModalExtraField' + index).hide();
+                                        $('#idModalExtraLabel' + index).hide();
+                                    }
+                                }
 
                                 <%=this.ModalConfirmPayment.ClientID%>_open();
 
@@ -301,6 +310,7 @@
         var loadingBreadcrumb = "[...]";
         var modalPrototypeId = "";
         var modalItemId = "";
+        var modalExtraFieldCount = 5;  // this is the count of showable/hideable fields
 
     </script>
 
