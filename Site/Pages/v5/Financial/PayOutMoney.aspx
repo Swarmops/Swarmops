@@ -117,11 +117,11 @@
                                             $('#idModalReference').val($(this).attr("data-reference"));  // load reference from JSON data
                                             $('#idModalTransferMethod').val(result.TransferMethod);
 
-                                            var fieldsCount = parseInt($(this).attr("data-fieldcount"));
+                                            var customFieldCount = parseInt($(this).attr("data-fieldcount"));
 
-                                            for (var index = 0; index < fieldsCount; index++) {
-                                                $('#idModalSpanExtraLabel0').html(result.TransferMethodLabels[index] + "<br/>");
-                                                $('#idModalExtraField0').val(result.TransferMethodData[index]);
+                                            for (var index = 0; index < customFieldCount; index++) {
+                                                $('#idModalSpanExtraLabel' + index).html(result.TransferMethodLabels[index] + "<br/>");
+                                                $('#idModalExtraField' + index).val(result.TransferMethodData[index]);
                                             }
 
                                         } else {
