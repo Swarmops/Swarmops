@@ -191,8 +191,8 @@ namespace Swarmops.Frontend.Pages.Financial
 
             foreach (string label in info.LocalizedPaymentInformation.Keys)
             {
-                listTransferMethodLabels.Add(label);
-                listTransferMethodData.Add(info.LocalizedPaymentInformation [label]);
+                listTransferMethodLabels.Add(HttpUtility.HtmlEncode(label));
+                listTransferMethodData.Add(HttpUtility.HtmlEncode(info.LocalizedPaymentInformation [label]));
             }
 
             result.TransferMethodLabels = listTransferMethodLabels.ToArray();

@@ -117,6 +117,13 @@
                                             $('#idModalReference').val($(this).attr("data-reference"));  // load reference from JSON data
                                             $('#idModalTransferMethod').val(result.TransferMethod);
 
+                                            var fieldsCount = parseInt($(this).attr("data-fieldcount"));
+
+                                            for (var index = 0; index < fieldsCount; index++) {
+                                                $('#idModalSpanExtraLabel0').html(result.TransferMethodLabels[index] + "<br/>");
+                                                $('#idModalExtraField0').val(result.TransferMethodData[index]);
+                                            }
+
                                         } else {
                                             // TODO: Handle server-level concurrency lock
                                         }
