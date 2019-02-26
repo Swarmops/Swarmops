@@ -83,8 +83,7 @@
                                 // TODO: The two fields below will initially be hidden, and
                                 // TODO: replaced with dynamically unfolding fields
 
-                                $('#idModalClearing').val(loadingBreadcrumb);
-                                $('#idModalAccountNumber').val(loadingBreadcrumb);
+                                $('#idModalExtraField0').val($(this).attr("data-fieldcount"));
 
                                 <%=this.ModalConfirmPayment.ClientID%>_open();
 
@@ -108,8 +107,6 @@
                                             $('#idModalInputCurrencyAmount').val(result.CurrencyAmount);
                                             $('#idModalReference').val($(this).attr("data-reference"));  // load reference from JSON data
                                             $('#idModalTransferMethod').val(result.TransferMethod);
-                                            $('#idModalClearing').val(loadingBreadcrumb);
-                                            $('#idModalAccountNumber').val(loadingBreadcrumb);
 
                                         } else {
                                             // TODO: Handle server-level concurrency lock
@@ -359,9 +356,11 @@
                 <input type="text" id="idModalInputCurrencyAmount" readonly="readonly" class="align-for-numbers" value="Amount"/>&#8203;<br/>
                 <input type="text" id="idModalReference" readonly="readonly" value="Reference"/>&#8203;<br/>
                 <input type="text" id="idModalTransferMethod" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
-                <div id="idModalExtraFieldsData"></div>
-                <input type="text" id="idModalClearing" readonly="readonly" value="Clearing"/>&#8203;<br/>
-                <input type="text" id="idModalAccountNumber" readonly="readonly" value="Account Number"/>&#8203;<br/>
+                <span id="idModalSpanExtraField0"><input type="text" id="idModalExtraField0" readonly="readonly" value="Clearing"/>&#8203;<br/></span>
+                <span id="idModalSpanExtraField1"><input type="text" id="idModalExtraField1" readonly="readonly" value="Clearing"/>&#8203;<br/></span>
+                <span id="idModalSpanExtraField2"><input type="text" id="idModalExtraField2" readonly="readonly" value="Clearing"/>&#8203;<br/></span>
+                <span id="idModalSpanExtraField3"><input type="text" id="idModalExtraField3" readonly="readonly" value="Clearing"/>&#8203;<br/></span>
+                <span id="idModalSpanExtraField4"><input type="text" id="idModalExtraField4" readonly="readonly" value="Clearing"/>&#8203;<br/></span>
                 <Swarmops5:AjaxToggleSlider ID="ToggleModalMachineReadable" runat="server" Label="Show in machine-readable format XYZ" Cookie="MachineReadable" AjaxCallbackUrl="" OnChange="modalToggleMachineReadable"/>
                 <input type="button" id="idModalButtonConfirm" value="Confirm XYZ" class="button-accent-color suppress-input-focus action-icon-button icon-yes" onclick="onConfirmModal();"/>
             </div>
@@ -370,11 +369,12 @@
                 <asp:Label ID="LabelModalCurrencyAmount" runat="server" Text="Currency and Amount XYZ"/><br/>
                 <asp:Label ID="LabelModalReference" runat="server" Text="Reference XYZ"/><br/>
                 <asp:Label ID="LabelModalTransferMethod" runat="server" Text="Transfer Method XYZ"/><br/>
-                <div id="idModalExtraFieldsLabels"></div>
-                Clearing<br/>
-                Account Number<br/>
-                <asp:Label runat="server" ID="LabelModalOcr1" Text="Are you scanning this payment XYZ?"/>
-                &nbsp;
+                <span id="idModalSpanExtraLabel0">Label 0<br/></span>
+                <span id="idModalSpanExtraLabel1">Label 1<br/></span>
+                <span id="idModalSpanExtraLabel2">Label 2<br/></span>
+                <span id="idModalSpanExtraLabel3">Label 3<br/></span>
+                <span id="idModalSpanExtraLabel4">Label 4<br/></span>
+                <span id="idModalSpanEnableOcrLabel"><asp:Label runat="server" ID="LabelModalOcr1" Text="Are you scanning this payment XYZ?"/></span>
             </div>
         </DialogCode>
     </Swarmops5:ModalDialog>

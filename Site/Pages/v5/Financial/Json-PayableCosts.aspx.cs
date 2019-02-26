@@ -69,7 +69,7 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"reference\":\"{5}\"," +
                     "\"amount\":\"{6}\"," +
                     "\"action\":\"" +
-                    "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPrototype action-icon' baseid='{7}' protoid='{0}' data-reference='{5}' />" +
+                    "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPrototype action-icon' baseid='{7}' protoid='{0}' data-fieldcount='{8}' data-reference='{5}' />" +
                     "<img class='IconApproved{7} LocalIconApproved LocalPrototype status-icon' baseid='{7}' />" +
                     "<img class='IconWait{7} LocalIconWait LocalPrototype status-icon' baseid='{7}' />" +
                     "<img class='IconUndo{7} LocalIconUndo LocalPrototype action-icon' baseid='{7}' />" + 
@@ -85,7 +85,8 @@ namespace Swarmops.Frontend.Pages.Financial
                     JsonSanitize (payout.Account),
                     JsonSanitize (TryLocalize (payout.Reference)),
                     payout.HasNativeAmount? payout.NativeAmountString : (payout.AmountCents/100.0).ToString("N2"),
-                    payout.ProtoIdentity.Replace ("|", ""));
+                    payout.ProtoIdentity.Replace ("|", ""),
+                    payout.PaymentTransferInfo.LocalizedPaymentInformation.Count);
                 result.Append ("},");
             }
 

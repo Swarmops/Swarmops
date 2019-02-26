@@ -175,6 +175,40 @@ namespace Swarmops.Logic.Financial
             get { return base.AmountCents; }
         }
 
+
+        public PaymentTransferInfo PaymentTransferInfo
+        {
+            get
+            {
+                if (this.DependentExpenseClaims.Count > 0)
+                {
+                    return PaymentTransferInfo.FromObject(this.DependentExpenseClaims[0]);
+                }
+                if (this.DependentCashAdvancesPayout.Count > 0)
+                {
+                    return PaymentTransferInfo.FromObject(this.DependentCashAdvancesPayout[0]);
+                }
+                if (this.DependentCashAdvancesPayback.Count > 0)
+                {
+                    return PaymentTransferInfo.FromObject(this.DependentCashAdvancesPayback[0]);
+                }
+                if (this.DependentSalariesNet.Count > 0)
+                {
+                    return PaymentTransferInfo.FromObject(this.DependentSalariesNet[0]);
+                }
+                if (this.DependentSalariesTax.Count > 0)
+                {
+                    throw new NotImplementedException("Need to implement tax information from PaymentTransferInfo");
+                }
+                if (this.DependentInvoices.Count > 0)
+                {
+                    return PaymentTransferInfo.FromObject(this.DependentInvoices[0]);
+                }
+
+                throw new NotImplementedException("Unknown object or dependency - can't construct PaymentTransferInfo");
+            }
+        }
+
         public bool HasNativeAmount
         {
             get
