@@ -67,60 +67,6 @@ namespace Swarmops.Frontend.Pages.Financial {
         protected global::System.Web.UI.WebControls.Label LabelGridHeaderPay;
         
         /// <summary>
-        /// LabelPayOutMoneyOcrHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPayOutMoneyOcrHeader;
-        
-        /// <summary>
-        /// LabelGridHeaderDue2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderDue2;
-        
-        /// <summary>
-        /// LabelGridHeaderReferenceOcr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderReferenceOcr;
-        
-        /// <summary>
-        /// LabelGridHeaderAmountOcr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderAmountOcr;
-        
-        /// <summary>
-        /// LabelGridHeaderAccountOcr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderAccountOcr;
-        
-        /// <summary>
-        /// LabelGridHeaderPaid2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGridHeaderPaid2;
-        
-        /// <summary>
         /// ModalConfirmPayment control.
         /// </summary>
         /// <remarks>

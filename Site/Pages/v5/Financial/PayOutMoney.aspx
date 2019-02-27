@@ -58,7 +58,7 @@
 
                         gridsLoaded++;
 
-                        if (gridsLoaded == 4) {  // onLoadSuccess is triggered _twice_ per grid for some arcane reason
+                        if (gridsLoaded == 2) {  // onLoadSuccess is triggered _twice_ per grid for some arcane reason
 
                             $('#divOcrView').hide();
 
@@ -142,8 +142,8 @@
                             $(".LocalIconUndo").click(function() {
                                 $(this).hide();
                                 var itemId = $(this).attr("baseid");
-                                $(".IconApproved" + itemId).fadeTo(1000, 0.01);
-                                $(".IconWait" + itemId).show();
+                                $("#IconApproved" + itemId).fadeTo(1000, 0.01);
+                                $("#IconWait" + itemId).show();
 
                                 SwarmopsJS.proxiedAjaxCall(
                                     "/Pages/v5/Financial/PayOutMoney.aspx/UndoPayout",
@@ -153,10 +153,10 @@
                                         if (result.Success) {
                                             var itemId = $(this).attr("baseid");
                                             $('.row' + itemId).removeClass("action-list-item-approved");
-                                            $(".IconWait" + itemId).hide();
-                                            $(".IconApproved" + itemId).hide();
-                                            $(".IconApproval" + itemId).fadeTo(200, 1);
-                                            $(".IconDenial" + itemId).fadeTo(200, 1);
+                                            $("#IconWait" + itemId).hide();
+                                            $("#IconApproved" + itemId).hide();
+                                            $("#IconApproval" + itemId).fadeTo(200, 1);
+                                            $("#IconDenial" + itemId).fadeTo(200, 1);
                                             alertify.log(result.DisplayMessage);
 
                                         } else {
@@ -284,8 +284,8 @@
             }
 
             $(approvalIcon).hide();
-            $(".IconWait" + itemId).show();
-            $(".IconDenial" + itemId).fadeTo(1000, 0.01);
+            $("#IconWait" + itemId).show();
+            $("#IconDenial" + itemId).fadeTo(1000, 0.01);
 
             SwarmopsJS.proxiedAjaxCall(
                 "/Pages/v5/Financial/PayOutMoney.aspx/ConfirmPayout",
@@ -296,10 +296,10 @@
                         var itemId = $(this).attr("baseid");
                         $('.row' + itemId).addClass("action-list-item-approved");
                         $("#IconApproval" + itemId).attr("databaseid", result.AssignedId);
-                        $(".IconWait" + itemId).hide();
-                        $(".IconDenial" + itemId).hide();
-                        $(".IconApproved" + itemId).fadeTo(200, 0.5); // half opacity is intentional
-                        $(".IconUndo" + itemId).fadeTo(1000, 1); // the longer delay is intentional
+                        $("#IconWait" + itemId).hide();
+                        $("#IconDenial" + itemId).hide();
+                        $("#IconApproved" + itemId).fadeTo(200, 0.5); // half opacity is intentional
+                        $("#IconUndo" + itemId).fadeTo(1000, 1); // the longer delay is intentional
                         alertify.success(result.DisplayMessage);
                     } else {
                         // There's probably a concurrency error.
@@ -349,22 +349,6 @@
             </thead>
         </table>
     </div>  
-    <div id="divOcrView">
-        <h2><asp:Label runat="server" ID="LabelPayOutMoneyOcrHeader" Text="XYZ Costs In Ocr View" /></h2>
-        <table id="TablePayableCostsOcr" class="easyui-datagrid" style="width:680px;height:500px"
-            data-options="rownumbers:false,singleSelect:false,fit:false,fitColumns:true,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-PayableCostsOcr.aspx'"
-            idField="itemId">
-            <thead>  
-                <tr>  
-                    <th data-options="field:'due',width:70"><asp:Label ID="LabelGridHeaderDue2" runat="server" Text="XYZ Due"/></th>  
-                    <th data-options="field:'reference',width:165, align:'right'"><asp:Label ID="LabelGridHeaderReferenceOcr" runat="server" Text="XYZ Reference" /></th>
-                    <th data-options="field:'amount',width:180, align: 'right'"><asp:Label ID="LabelGridHeaderAmountOcr" runat="server" Text="XYZ Amount" /></th>  
-                    <th data-options="field:'account',width:150, align: 'right'"><asp:Label ID="LabelGridHeaderAccountOcr" runat="server" Text="XYZ Account" /></th>
-                    <th data-options="field:'action',width:68,align:'center'"><asp:Label ID="LabelGridHeaderPaid2" runat="server" Text="XYZPaid" /></th>
-                </tr>  
-            </thead>
-        </table>
-    </div>
     
     <Swarmops5:ModalDialog ID="ModalConfirmPayment" runat="server" >
         <DialogCode>

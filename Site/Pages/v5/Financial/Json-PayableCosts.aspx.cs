@@ -70,11 +70,11 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"amount\":\"{6}\"," +
                     "\"action\":\"" +
                     "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPrototype action-icon' baseid='{7}' protoid='{0}' data-fieldcount='{8}' data-reference='{5}' />" +
-                    "<img class='IconApproved{7} LocalIconApproved LocalPrototype status-icon' baseid='{7}' />" +
-                    "<img class='IconWait{7} LocalIconWait LocalPrototype status-icon' baseid='{7}' />" +
-                    "<img class='IconUndo{7} LocalIconUndo LocalPrototype action-icon' baseid='{7}' />" + 
-                    "<img class='IconDenial{7} LocalIconDenial LocalPrototype action-icon' baseid='{7}' />" +
-                    "<img class='IconDenied{7} LocalIconDenied LocalPrototype status-icon' baseid='{7}' />" +
+                    "<img id='IconApproved{7}' class='LocalIconApproved LocalPrototype status-icon' baseid='{7}' />" +
+                    "<img id='IconWait{7}' class='LocalIconWait LocalPrototype status-icon' baseid='{7}' />" +
+                    "<img id='IconUndo{7}' class='LocalIconUndo LocalPrototype action-icon' baseid='{7}' />" +
+                    "<img id='IconDenial{7}' class='LocalIconDenial LocalPrototype action-icon' baseid='{7}' />" +
+                    "<img id='IconDenied{7}' class='LocalIconDenied LocalPrototype status-icon' baseid='{7}' />" +
                     "\"",
                     payout.ProtoIdentity,
                     (payout.ExpectedTransactionDate <= today
