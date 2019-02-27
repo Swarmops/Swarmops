@@ -208,8 +208,8 @@
         function onExpenseApproval(approvalIcon) {
 
             var itemId = $(approvalIcon).attr("baseid");
-            $(approvalIcon).css("display","none");
-            $('#IconWait' + itemId).css("display", "inline");
+            $(approvalIcon).hide();
+            $('#IconWait' + itemId).show();
             $('#IconDenial' + itemId).fadeTo(1000, 0.01);
 
             console.log(approvalIcon);
@@ -218,7 +218,7 @@
             var accountId = $("#IconApproval" + itemId).attr("accountid");
             var funds = parseFloat($("#IconApproval" + itemId).attr("amount"));
             budgetRemainingLookup[accountId] += funds;
-            setApprovability();
+            setApprovability(itemId);
 
             if (budgetUninitializedLookup[accountId] == true && uninitializedPopupDisplayed == false) {
 
@@ -302,7 +302,7 @@
         }
 
 
-        function setApprovability() {
+        function setApprovability(exceptForId) {
 
             $('.LocalIconApproval').each(function() {
 
@@ -315,17 +315,20 @@
                     var itemId = $(this).attr('baseid');
                     var fundsInBudget = -budgetRemainingLookup[accountId];
 
-                    // console.log("attestability checking accountid " + accountId + ", amount requested is " + amountRequested + ", funds in budget is " + fundsInBudget);
+                    if (itemId != exceptForId) {
 
-                    if (fundsInBudget >= amountRequested || budgetUninitializedLookup[accountId] == true) {
-                        // console.log("- removing insufficience marker");
-                        $(this).removeClass("LocalFundsInsufficient");
-                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png").show();
-                    } else {
-                        $(this).attr("src", approvalOverdraftIcon).show();
-                        $(this).addClass("LocalFundsInsufficient");
+                        // console.log("attestability checking accountid " + accountId + ", amount requested is " + amountRequested + ", funds in budget is " + fundsInBudget);
+
+                        if (fundsInBudget >= amountRequested || budgetUninitializedLookup[accountId] == true) {
+                            // console.log("- removing insufficience marker");
+                            $(this).removeClass("LocalFundsInsufficient");
+                            $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png").show();
+                        } else {
+                            $(this).attr("src", approvalOverdraftIcon).show();
+                            $(this).addClass("LocalFundsInsufficient");
+                        }
+                        $('#IconWait' + itemId).hide();
                     }
-                    $('#IconWait' + itemId).hide();
                 }
 
             });
