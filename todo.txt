@@ -39,7 +39,7 @@ PRIO 2
 [ ] Currency inventory tracking
 [ ] Cost centers and 2-D reports
 [ ] Monthly reports (not just quarterly)
-[ ] Manual payout dialog, with lock/confirm/undo step to Payouts
+[x] Manual payout dialog, with lock/confirm/undo step to Payouts
 [ ] Live tracking of currency inventory value
 
 
