@@ -206,17 +206,14 @@
 
 
         function onExpenseApproval(approvalIcon) {
-            alert("debug step 1");
 
             var itemId = $(approvalIcon).attr("baseid");
-            $(approvalIcon).hide();
-            $("#IconWait" + itemId).show();
-            $("#IconDenial" + itemId).fadeTo(1000, 0.01);
+            $(approvalIcon).css("display","none");
+            $('#IconWait' + itemId).css("display", "inline");
+            $('#IconDenial' + itemId).fadeTo(1000, 0.01);
 
             console.log(approvalIcon);
             console.log(itemId);
-
-            alert("debug step 2");
 
             var accountId = $("#IconApproval" + itemId).attr("accountid");
             var funds = parseFloat($("#IconApproval" + itemId).attr("amount"));
