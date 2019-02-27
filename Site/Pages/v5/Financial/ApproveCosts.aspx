@@ -103,8 +103,6 @@
                                         if (!response) {
                                             // user clicked the RED button, which is "confirm overdraft"
 
-                                            console.log(this); // Debug
-
                                             onExpenseApproval(this);
                                         }
                                     }, this));
@@ -211,9 +209,6 @@
             $(approvalIcon).hide();
             $('#IconWait' + itemId).show();
             $('#IconDenial' + itemId).fadeTo(1000, 0.01);
-
-            console.log(approvalIcon);
-            console.log(itemId);
 
             var accountId = $("#IconApproval" + itemId).attr("accountid");
             var funds = parseFloat($("#IconApproval" + itemId).attr("amount"));
