@@ -1088,4 +1088,8 @@
     <value>Opened</value>
     <comment>As in "record or transaction opened"</comment>
   </data>
+  <data name="IconTooltip_Barcode_Scanning" xml:space="preserve">
+    <value>This line item can be automatically scanned by an app.</value>
+    <comment>This is when Swarmops can display an expense-to-be-paid in a format, that a mobile banking app can read directly, such as a QR code or other machine-readable format.</comment>
+  </data>
 </root>

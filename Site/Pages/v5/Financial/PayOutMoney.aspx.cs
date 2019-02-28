@@ -244,5 +244,10 @@ namespace Swarmops.Frontend.Pages.Financial
         {
             get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.PayOutMoney_Modal_ConfirmPaid); }
         }
+
+        public string Localized_IconTooltip_Barcode
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.IconTooltip_Barcode_Scanning); }
+        }
     }
 }

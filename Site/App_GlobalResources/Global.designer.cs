@@ -1987,6 +1987,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This line item can be automatically scanned by an app..
+        /// </summary>
+        internal static string IconTooltip_Barcode_Scanning {
+            get {
+                return ResourceManager.GetString("IconTooltip_Barcode_Scanning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Balance.
         /// </summary>
         internal static string Ledgers_Balance {
