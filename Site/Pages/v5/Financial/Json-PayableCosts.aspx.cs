@@ -63,14 +63,14 @@ namespace Swarmops.Frontend.Pages.Financial
 
                 result.Append ("{");
                 result.AppendFormat (
-                    "\"itemId\":\"{0}\"," +
+                    "\"itemId\":\"{7}\"," +
                     "\"due\":\"{1}\"," +
                     "\"recipient\":\"{2}\"," +
                     "\"transferInfo\":\"{3}\"," +
                     "\"amount\":\"{6}\"," +
                     "\"ocrAvailable\":\"{4}\"," +
                     "\"action\":\"" +
-                    "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPrototype action-icon' baseid='{7}' protoid='{0}' data-ocr='{9}' data-fieldcount='{8}' data-reference='{5}' />" +
+                    "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPrototype action-icon' baseid='{7}' protoid='{0}' data-ocr='{10}' data-fieldcount='{9}' data-reference='{5}' />" +
                     "<img id='IconApproved{7}' class='LocalIconApproved LocalPrototype status-icon' baseid='{7}' />" +
                     "<img id='IconWait{7}' class='LocalIconWait LocalPrototype status-icon' baseid='{7}' />" +
                     "<img id='IconUndo{7}' class='LocalIconUndo LocalPrototype action-icon' baseid='{7}' />" +
@@ -81,12 +81,13 @@ namespace Swarmops.Frontend.Pages.Financial
                     (payout.ExpectedTransactionDate <= today
                         ? Global.Global_ASAP
                         : payout.ExpectedTransactionDate.ToShortDateString()),
-                    JsonSanitize (TryLocalize (payout.Recipient)),
+                    JsonSanitize (TryLocalize (transferInfo.Recipient)),
                     transferInfo.Currency.Code + ", " + JsonSanitize (transferInfo.LocalizedPaymentMethodName),
                     transferInfo.OcrAvailable? "<img class='LocalIconOcr status-icon' />": string.Empty,
                     JsonSanitize (TryLocalize (payout.Reference)),
                     payout.HasNativeAmount? payout.NativeAmountString : (payout.AmountCents/100.0).ToString("N2"),
                     payout.ProtoIdentity.Replace ("|", ""),
+                    string.Empty, // this is here to match the databaseid field below
                     transferInfo.LocalizedPaymentInformation.Count,
                     transferInfo.OcrAvailable? "yes": "no");
                 result.Append ("},");
@@ -106,6 +107,8 @@ namespace Swarmops.Frontend.Pages.Financial
 
             foreach (Payout payout in payouts)
             {
+                PaymentTransferInfo transferInfo = payout.PaymentTransferInfo;
+
                 result.Append("{");
                 result.AppendFormat(
                     "\"itemId\":\"{7}\"," +
@@ -113,12 +116,11 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"databaseId\":\"{8}\"," +
                     "\"due\":\"{1}\"," +
                     "\"recipient\":\"{2}\"," +
-                    "\"bank\":\"{3}\"," +
-                    "\"account\":\"{4}\"," +
-                    "\"reference\":\"{5}\"," +
-                    "\"amount\":\"{6:N2}\"," +
+                    "\"transferInfo\":\"{3}\"," +
+                    "\"amount\":\"{6}\"," +
+                    "\"ocrAvailable\":\"{4}\"," +
                     "\"action\":\"" +
-                    "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPaid action-icon' baseid='{7}' protoid='{0}' databaseid='{8}' />" +
+                    "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPaid action-icon' baseid='{7}' protoid='{0}' databaseid='{8}' data-ocr='{10}' data-fieldcount='{9}' data-reference='{5}' />" +
                     "<img class='IconApproved{7} LocalIconApproved LocalPaid status-icon' baseid='{7}' />" +
                     "<img class='IconWait{7} LocalIconWait LocalPaid status-icon' baseid='{7}' />" +
                     "<img class='IconUndo{7} LocalIconUndo LocalPaid action-icon' baseid='{7}' />" +
@@ -127,13 +129,15 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"",
                     payout.ProtoIdentity,
                     payout.ExpectedTransactionDate.ToShortDateString(),
-                    JsonSanitize(TryLocalize(payout.Recipient)),
-                    JsonSanitize(payout.Bank),
-                    JsonSanitize(payout.Account),
+                    JsonSanitize(TryLocalize(transferInfo.Recipient)),
+                    transferInfo.Currency.Code + ", " + JsonSanitize(transferInfo.LocalizedPaymentMethodName),
+                    transferInfo.OcrAvailable ? "<img class='LocalIconOcr status-icon' />" : string.Empty,
                     JsonSanitize(TryLocalize(payout.Reference)),
                     payout.AmountCents / 100.0,
                     payout.ProtoIdentity.Replace("|", ""),
-                    payout.Identity);
+                    payout.Identity,
+                    transferInfo.LocalizedPaymentInformation.Count,
+                    transferInfo.OcrAvailable ? "yes" : "no");
                 result.Append("},");
             }
 
