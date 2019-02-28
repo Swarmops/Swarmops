@@ -924,6 +924,11 @@ input.data-entry-error, span.data-entry-error, div.data-entry-error {
     height: 20px;
 }
 
+.grid-header-status-icon {
+    position: relative;
+    top: 2px;
+}
+
 .group-status-icon {
     width: 32px;
     height: 24px;
@@ -956,6 +961,12 @@ input.data-entry-error, span.data-entry-error, div.data-entry-error {
     transition: all 0.50s;
     color: #ccc;
     text-decoration: line-through;
+}
+
+.action-list-item-completed status-icon {
+    -webkit-transition: all 0.50s;
+    transition: all 0.50s;
+    opacity: 0.5;
 }
 
 .action-list-item-disabled, .action-list-item-approved {
