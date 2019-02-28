@@ -97,17 +97,17 @@ No, there isn't a "license". This code is completely in the public domain, with 
 That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.
 
 
-Beta-6
-------
+Beta-7 progress
+---------------
 
-Beta-6 was released for Xenial, Bionic, and Stretch on February 12, one week behind schedule.
+Beta-7 will be released on March 5, with string freeze three days earlier. It contains overhauls to outbound payments and significant UX improvements in this area.
 
 
 
-Beta-7 features progress
+Beta-8 features progress
 ------------------------
 
-Beta-7 will be released on April 5, 2019, with string freeze three days earlier. Its focus is to increase multicurrency functionality for payouts and bank imports.
+Beta-8 will be released on April 5, with string freeze three days earlier. Its focus is to increase multicurrency functionality for payouts and bank imports.
 
 - [x] Parameterize the bank file import procedure (big feature!)
 - [x] Make it possible to import bank files in non-presentation currency
@@ -116,10 +116,10 @@ Beta-7 will be released on April 5, 2019, with string freeze three days earlier.
 - [ ] End-of-month wizard to guide user through accounting steps
 
 
-Beta-8 features progress
+Beta-9 features progress
 ------------------------
 
-Beta-8 will be released on June 5, 2019, with string freeze three days earlier. Its tentative focus will be Fairshift integration and possibly an open API exposure.
+Beta-9 will be released on June 5, 2019, with string freeze three days earlier. Its tentative focus will be Fairshift integration and possibly an open API exposure.
 
 - [ ] Enable payment destinations, with currency
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
