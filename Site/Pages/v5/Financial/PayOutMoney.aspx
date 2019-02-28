@@ -66,7 +66,7 @@
                             $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
                             $(".LocalIconWait").attr("src", "/Images/Abstract/ajaxloader-48x36px.gif").hide();
                             $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
-                            $(".LocalIconOcr").attr("src", "/Images/Icons/iconshock-barcode-128x96px.png").attr("alt", SwarmopsJS.unescape('<%=this.Localized_IconTooltip_Barcode%>');
+                            $(".LocalIconOcr").attr("src", "/Images/Icons/iconshock-barcode-128x96px.png").attr("alt", SwarmopsJS.unescape('<%=this.Localized_IconTooltip_Barcode%>'));
 
                             $(".LocalIconApproved.LocalPrototype, .LocalIconUndo.LocalPrototype, .LocalIconDenied.LocalPrototype, .LocalIconApproval.LocalPaid, .LocalIconDenial.LocalPaid, .LocalIconDenied.LocalPaid").hide();
                             $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-disabled.png");
