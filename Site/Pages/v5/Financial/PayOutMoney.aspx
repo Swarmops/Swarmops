@@ -359,11 +359,11 @@
                 <input type="text" id="idModalInputCurrencyAmount" readonly="readonly" class="align-for-numbers" value="Amount"/>&#8203;<br/>
                 <input type="text" id="idModalReference" readonly="readonly" value="Reference"/>&#8203;<br/>
                 <input type="text" id="idModalTransferMethod" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
-                <span id="idModalSpanExtraField0"><input type="text" id="idModalExtraField0" readonly="readonly" value="Clearing"/>&#8203;<br/></span>
-                <span id="idModalSpanExtraField1"><input type="text" id="idModalExtraField1" readonly="readonly" value="Clearing"/>&#8203;<br/></span>
-                <span id="idModalSpanExtraField2"><input type="text" id="idModalExtraField2" readonly="readonly" value="Clearing"/>&#8203;<br/></span>
-                <span id="idModalSpanExtraField3"><input type="text" id="idModalExtraField3" readonly="readonly" value="Clearing"/>&#8203;<br/></span>
-                <span id="idModalSpanExtraField4"><input type="text" id="idModalExtraField4" readonly="readonly" value="Clearing"/>&#8203;<br/></span>
+                <span id="idModalSpanExtraField0"><input type="text" id="idModalExtraField0" readonly="readonly" value="Extra Field 0"/>&#8203;<br/></span>
+                <span id="idModalSpanExtraField1"><input type="text" id="idModalExtraField1" readonly="readonly" value="Extra Field 1"/>&#8203;<br/></span>
+                <span id="idModalSpanExtraField2"><input type="text" id="idModalExtraField2" readonly="readonly" value="Extra Field 2"/>&#8203;<br/></span>
+                <span id="idModalSpanExtraField3"><input type="text" id="idModalExtraField3" readonly="readonly" value="Extra Field 3"/>&#8203;<br/></span>
+                <span id="idModalSpanExtraField4"><input type="text" id="idModalExtraField4" readonly="readonly" value="Extra Field 4"/>&#8203;<br/></span>
                 <Swarmops5:AjaxToggleSlider ID="ToggleModalMachineReadable" runat="server" Label="Show in machine-readable format XYZ" Cookie="MachineReadable" AjaxCallbackUrl="" OnChange="modalToggleMachineReadable"/>
                 <input type="button" id="idModalButtonConfirm" value="Confirm XYZ" class="button-accent-color suppress-input-focus action-icon-button icon-yes" onclick="onConfirmModal();"/>
             </div>
