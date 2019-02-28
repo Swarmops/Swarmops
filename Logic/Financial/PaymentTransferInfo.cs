@@ -65,6 +65,59 @@ namespace Swarmops.Logic.Financial
                 return FromObject(salary.PayrollItem.Person, new Money(salary.NetSalaryCents, salary.PayrollItem.Organization.Currency));
             }
 
+            if (financialObject is InboundInvoice)
+            {
+                // TODO: Create Supplier object, read from that instead
+
+                InboundInvoice invoice = financialObject as InboundInvoice;
+                PaymentTransferInfo result = new PaymentTransferInfo();
+
+                // For now, do a switch on the pay-to-account string, before the payment targets are implemented
+                // on invoices and expense claims:
+
+                result.LocalizedPaymentInformation = new Dictionary<string, string>();
+
+                if (invoice.PayToAccount.StartsWith("IBAN"))
+                {
+                    result.TargetType = PaymentTargetType.InternationalBankTransfer;
+
+                    result.LocalizedPaymentInformation[
+                        Logic_Financial_PaymentTransferInfo.PaymentTargetField_Iban] =
+                            invoice.PayToAccount.Substring(5);
+
+                    // this should have bic too but we don't have that information before payment targets
+                    // are properly implemented
+                }
+                else if (invoice.PayToAccount.StartsWith("SEBG"))
+                {
+                    result.TargetType = PaymentTargetType.DomesticBankGiro; // for now
+                    result.LocalizedPaymentInformation[
+                        Logic_Financial_PaymentTransferInfo.PaymentTargetField_GiroNumber] =
+                            invoice.PayToAccount.Substring(5);
+                }
+
+                result.LocalizedPaymentMethodName =
+                    Logic_Financial_PaymentTransferInfo.ResourceManager.GetString("PaymentTargetType_" +
+                                                                        result.TargetType.ToString());
+                if (invoice.HasNativeCurrency)
+                {
+                    result.Currency = invoice.NativeCurrencyAmount.Currency;
+                    result.CurrencyAmount = result.Currency.Code + " " +
+                                            (invoice.NativeCurrencyAmount.Cents/100.0).ToString("N2");
+                }
+                else
+                {
+                    result.Currency = invoice.Organization.Currency;
+                    result.CurrencyAmount = result.Currency.Code + " " + (invoice.AmountCents/100.0).ToString("N2");
+                }
+
+                result.Country = null; // TODO: Set to Supplier's PaymentTarget country
+
+                result.Recipient = invoice.Supplier;
+
+                return result;
+            }
+
             if (financialObject is Person)
             {
                 Person person = financialObject as Person;

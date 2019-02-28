@@ -59,14 +59,14 @@ namespace Swarmops.Frontend.Pages.Financial
                     continue;
                 }
 
+                PaymentTransferInfo transferInfo = payout.PaymentTransferInfo;
+
                 result.Append ("{");
                 result.AppendFormat (
                     "\"itemId\":\"{0}\"," +
                     "\"due\":\"{1}\"," +
                     "\"recipient\":\"{2}\"," +
-                    "\"bank\":\"{3}\"," +
-                    "\"account\":\"{4}\"," +
-                    "\"reference\":\"{5}\"," +
+                    "\"transferInfo\":\"{3}\"," +
                     "\"amount\":\"{6}\"," +
                     "\"action\":\"" +
                     "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPrototype action-icon' baseid='{7}' protoid='{0}' data-fieldcount='{8}' data-reference='{5}' />" +
@@ -81,12 +81,12 @@ namespace Swarmops.Frontend.Pages.Financial
                         ? Global.Global_ASAP
                         : payout.ExpectedTransactionDate.ToShortDateString()),
                     JsonSanitize (TryLocalize (payout.Recipient)),
-                    JsonSanitize (TryLocalize (payout.Bank)),
+                    transferInfo.Currency.Code + ", " + JsonSanitize (transferInfo.LocalizedPaymentMethodName),
                     JsonSanitize (payout.Account),
                     JsonSanitize (TryLocalize (payout.Reference)),
                     payout.HasNativeAmount? payout.NativeAmountString : (payout.AmountCents/100.0).ToString("N2"),
                     payout.ProtoIdentity.Replace ("|", ""),
-                    payout.PaymentTransferInfo.LocalizedPaymentInformation.Count);
+                    transferInfo.LocalizedPaymentInformation.Count);
                 result.Append ("},");
             }
 
