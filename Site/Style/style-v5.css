@@ -963,7 +963,7 @@ input.data-entry-error, span.data-entry-error, div.data-entry-error {
     text-decoration: line-through;
 }
 
-.action-list-item-completed .status-icon, .action-list-item-disabled .status-icon, .action-list-item-completed .status-icon {
+.action-list-item-completed .status-icon, .action-list-item-disabled .status-icon, .action-list-item-approved .status-icon {
     -webkit-transition: all 0.50s;
     transition: all 0.50s;
     opacity: 0.5;
