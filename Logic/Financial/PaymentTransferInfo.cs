@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -9,6 +10,7 @@ using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Resources;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
 {
@@ -27,6 +29,8 @@ namespace Swarmops.Logic.Financial
         public string CurrencyAmount { get; set; }
         public PaymentTargetType TargetType { get; set; }
         public string LocalizedPaymentMethodName { get; set; }
+        public bool OcrAvailable { get; set; } // defaults to false which is fine
+        public string[] OcrData { get; set; }
         public Dictionary<string,string> LocalizedPaymentInformation { get; set; }
 
         public static PaymentTransferInfo FromObject(IHasIdentity financialObject, Money amountToPay = null)
@@ -93,7 +97,30 @@ namespace Swarmops.Logic.Financial
                     result.TargetType = PaymentTargetType.DomesticBankGiro; // for now
                     result.LocalizedPaymentInformation[
                         Logic_Financial_PaymentTransferInfo.PaymentTargetField_GiroNumber] =
-                            invoice.PayToAccount.Substring(5);
+                        invoice.PayToAccount.Substring(5);
+
+                    // Check for SEBG OCR availability
+
+                    if (invoice.InvoiceReference.Length > 2 && Formatting.CheckLuhnChecksum(invoice.InvoiceReference) &&
+                        Formatting.CheckLuhnChecksum(invoice.PayToAccount))
+                    {
+                        result.OcrAvailable = true;
+                        result.OcrData = new string[3];
+                        result.OcrData[0] = invoice.InvoiceReference + " #";
+                        result.OcrData[1] = string.Format("{0} {1:00} &nbsp; {2} &gt;", // three spaces between the cents and the checksum
+                            invoice.AmountCents / 100, invoice.AmountCents % 100,
+                            Formatting.GetLuhnChecksum(invoice.AmountCents.ToString(CultureInfo.InvariantCulture)));
+                        result.OcrData[2] = Formatting.CleanNumber(invoice.PayToAccount);
+                    }
+                }
+                else
+                {
+                    // Assume domestic giro in lack of other information
+
+                    result.TargetType = PaymentTargetType.DomesticBankGiro;
+                    result.LocalizedPaymentInformation[
+                        Logic_Financial_PaymentTransferInfo.PaymentTargetField_GiroNumber] =
+                        invoice.PayToAccount; // the whole string, as opposed to case above
                 }
 
                 result.LocalizedPaymentMethodName =

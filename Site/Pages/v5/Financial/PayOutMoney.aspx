@@ -23,7 +23,8 @@
             '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
             '/Images/Icons/iconshock-balloon-undo-128x96px.png',
             '/Images/Icons/iconshock-balloon-yes-128x96px.png',
-            '/Images/Icons/iconshock-balloon-no-128x96px-disabled.png'
+            '/Images/Icons/iconshock-balloon-no-128x96px-disabled.png',
+            '/Images/Icons/iconshock-barcode-128x96px.png'
         ]);
 
         $(document).ready(function () {
@@ -60,13 +61,13 @@
 
                         if (gridsLoaded == 2) {  // onLoadSuccess is triggered _twice_ per grid for some arcane reason
 
-                            $('#divOcrView').hide();
-
                             $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                             $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").css("opacity", 0.5);
                             $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
                             $(".LocalIconWait").attr("src", "/Images/Abstract/ajaxloader-48x36px.gif").hide();
                             $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
+                            $(".LocalIconOcr").attr("src", "/Images/Icons/iconshock-barcode-128x96px.png");
+
                             $(".LocalIconApproved.LocalPrototype, .LocalIconUndo.LocalPrototype, .LocalIconDenied.LocalPrototype, .LocalIconApproval.LocalPaid, .LocalIconDenial.LocalPaid, .LocalIconDenied.LocalPaid").hide();
                             $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-disabled.png");
                             $(".LocalIconApproval, .LocalIconUndo, .LocalIconDenial").css("cursor", "pointer");
@@ -342,8 +343,9 @@
                 <tr>  
                     <th data-options="field:'due',width:70"><asp:Label ID="LabelGridHeaderDue" runat="server" Text="XYZ Due"/></th>  
                     <th data-options="field:'recipient',width:160,sortable:true"><asp:Label ID="LabelGridHeaderRecipient" runat="server" Text="XYZ Beneficiary" /></th>
-                    <th data-options="field:'transferInfo',width:200"><asp:Label ID="LabelGridHeaderCurrencyMethod" runat="server" Text="XYZ Bank" /></th>  
+                    <th data-options="field:'transferInfo',width:150"><asp:Label ID="LabelGridHeaderCurrencyMethod" runat="server" Text="XYZ Bank" /></th>  
                     <th data-options="field:'amount',width:85,align:'right'"><asp:Label ID="LabelGridHeaderAmount" runat="server" Text="XYZ Amount" /></th>
+                    <th data-options="field:'ocrAvailable',width:40"><img src="/Images/Icons/iconshock-barcode-128x96px.png" class="status-icon"/></th>  
                     <th data-options="field:'action',width:68,align:'center'"><asp:Label ID="LabelGridHeaderPay" runat="server" Text="XYZPaid" /></th>
                 </tr>  
             </thead>
