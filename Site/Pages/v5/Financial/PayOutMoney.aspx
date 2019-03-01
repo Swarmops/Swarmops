@@ -352,8 +352,9 @@
 
         .ocr-font {  /* this is necessary for OCR to work as expected */
             font-family: Ocrb;
-            font-size: 120%;
-            letter-spacing: 0px;
+            font-size: 80% !important;
+            letter-spacing: 1px !important;
+            padding-top: 5px !important;
         }
 
     </style>

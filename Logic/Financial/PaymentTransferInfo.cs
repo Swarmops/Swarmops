@@ -107,10 +107,10 @@ namespace Swarmops.Logic.Financial
                         result.OcrAvailable = true;
                         result.OcrData = new string[3];
                         result.OcrData[0] = invoice.InvoiceReference + " #";
-                        result.OcrData[1] = string.Format("{0} {1:00} &nbsp; {2} &gt;", // three spaces between the cents and the checksum
+                        result.OcrData[1] = string.Format("{0} {1:00}   {2} >", // three spaces between the cents and the checksum
                             invoice.AmountCents / 100, invoice.AmountCents % 100,
                             Formatting.GetLuhnChecksum(invoice.AmountCents.ToString(CultureInfo.InvariantCulture)));
-                        result.OcrData[2] = Formatting.CleanNumber(invoice.PayToAccount);
+                        result.OcrData[2] = Formatting.CleanNumber(invoice.PayToAccount) + "#41#";
                     }
                 }
                 else
