@@ -5,6 +5,7 @@
     <!-- Monospace font for OCR view -->
 
     <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:regular' rel='stylesheet' type='text/css' />
         
     <!-- regular JS -->
 
@@ -349,8 +350,8 @@
 
     <style type="text/css">
 
-        .datagrid-row .ocrFont {  /* this is necessary for OCR to work as expected */
-            font-family: Droid Sans Mono;
+        .ocr-font {  /* this is necessary for OCR to work as expected */
+            font-family: Ubuntu Mono;
             font-weight: bold;
             font-size: 120%;
             letter-spacing: 1px;
