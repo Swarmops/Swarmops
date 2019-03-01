@@ -397,7 +397,7 @@
             <h2><asp:Label ID="LabelModalHeader" runat="server" Text="Execute this payout manually now XYZ"/> (<asp:Label runat="server" ID="LabelModalHeaderDue"/> <span id="idModalDueDate"></span></h2>
             <div class="data-entry-fields modal wide">
                 <input type="text" id="idModalInputRecipient" class="input-field-needs-init" readonly="readonly" value="Recipient"/>&#8203;<br/>
-                <span class="modal-input-regular">
+                <div class="modal-input-regular">
                     <input type="text" id="idModalInputCurrencyAmount" readonly="readonly" class="input-field-needs-init align-for-numbers" value="Amount"/>&#8203;<br/>
                     <input type="text" id="idModalReference" readonly="readonly" class="input-field-needs-init" value="Reference"/>&#8203;<br/>
                     <input type="text" id="idModalTransferMethod" readonly="readonly" class="input-field-needs-init" value="Transfer Method"/>&#8203;<br/>
@@ -408,18 +408,18 @@
                         <span id="idModalSpanExtraField3"><input type="text" id="idModalExtraField3" class="input-field-needs-init" readonly="readonly" value="Extra Field 3"/>&#8203;<br/></span>
                         <span id="idModalSpanExtraField4"><input type="text" id="idModalExtraField4" class="input-field-needs-init" readonly="readonly" value="Extra Field 4"/>&#8203;<br/></span>
                     </div>
-                </span>
-                <span class="modal-input-automated ocr-font">
+                </div>
+                <div class="modal-input-automated ocr-font">
                     <input type="text" id="idModalAutomationField1" class="input-field-needs-init ocr-font" readonly="readonly" value="Field1"/>&#8203;<br/>
                     <input type="text" id="idModalAutomationField2" class="input-field-needs-init ocr-font" readonly="readonly" value="Field2"/>&#8203;<br/>
                     <input type="text" id="idModalAutomationField3" class="input-field-needs-init ocr-font" readonly="readonly" value="Field3"/>&#8203;<br/>
-                </span>
+                </div>
                 <span class="modal-automation-toggle"><Swarmops5:AjaxToggleSlider ID="ToggleModalMachineReadable" runat="server" Label="Show in machine-readable format XYZ" Cookie="MachineReadable" AjaxCallbackUrl="" OnChange="onModalToggleMachineReadable"/></span>
                 <input type="button" id="idModalButtonConfirm" value="Confirm XYZ" class="button-accent-color suppress-input-focus action-icon-button icon-yes" onclick="onConfirmModal();"/>
             </div>
             <div class="data-entry-labels">
                 <asp:Label ID="LabelModalRecipient" runat="server" Text="Recipient XYZ"/><br/>
-                <span class="modal-input-regular">
+                <div class="modal-input-regular">
                     <asp:Label ID="LabelModalCurrencyAmount" runat="server" Text="Currency and Amount XYZ"/><br/>
                     <asp:Label ID="LabelModalReference" runat="server" Text="Reference XYZ"/><br/>
                     <asp:Label ID="LabelModalTransferMethod" runat="server" Text="Transfer Method XYZ"/><br/>
@@ -430,12 +430,12 @@
                         <span id="idModalSpanExtraLabel3">Label 3<br/></span>
                         <span id="idModalSpanExtraLabel4">Label 4<br/></span>
                     </div>
-                </span>
-                <span class="modal-input-automated">
+                </div>
+                <div class="modal-input-automated">
                     <asp:Label runat="server" ID="LabelModalAutomation1" /><br/>
                     <asp:Label runat="server" ID="LabelModalAutomation2" /><br/>
                     <asp:Label runat="server" ID="LabelModalAutomation3" /><br/>
-                </span>
+                </div>
                 <span class="modal-automation-toggle"><span id="idModalSpanEnableOcrLabel"><asp:Label runat="server" ID="LabelModalOcr1" Text="Are you scanning this payment XYZ?"/></span></span>
             </div>
         </DialogCode>
