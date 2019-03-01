@@ -757,6 +757,12 @@ body.right-to-left div.modal .data-entry-fields {
 	margin-bottom: 3px !important;
 }
 
+.data-entry-fields span.textbox.combo input[type=text]:not(.ocr-font) {
+    /* "important" here overrides the easyUI native styling */
+
+	padding: 0px 10px 0px 10px !important;
+}
+
 
 .data-entry-fields input:not(.button-accent-color), .data-entry-fields textarea
 {
