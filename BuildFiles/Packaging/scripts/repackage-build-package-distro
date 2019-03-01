@@ -43,14 +43,14 @@ do
 
   # remove comments and roll up multiline to singleline in Dependencies field
   DEPENDENCIES=$(cat ${DEPENDENCIESFILE} | grep -v '^$\|^\s*\#' | tr -d '\n' | tr -d '\r' )
-  echo "Dependencies: $DEPENDENCIES"
+  # echo "Dependencies: $DEPENDENCIES"
 
-# read -p "Press [Enter] key to make control backup..."
+  # remove comments and empty lines in control file, make backup for next build
+  cat $DROPFOLDER/payload/DEBIAN/control | grep -v '^$\|^\s*\#' > $DROPFOLDER/controlbackup
+  cp $DROPFOLDER/controlbackup $DROPFOLDER/payload/DEBIAN/control
 
-  cp $DROPFOLDER/payload/DEBIAN/control $DROPFOLDER/controlbackup
+  # replace macros in control file
   sed -i "s/--Dependencies--/${DEPENDENCIES}/g" $DROPFOLDER/payload/DEBIAN/control
-
-# read -p "Press [Enter] key to make create checksums..."
 
   echo "Setting build number $BUILDID-$DISTRO..."
   sed -i "s/--BuildNumber--/$BUILDID-$DISTRO/g" $DROPFOLDER/payload/DEBIAN/control
@@ -58,6 +58,9 @@ do
   echo "Setting package name suffixes, if any..."
   sed -i "s/--PackageSuffix--/$PACKAGESUFFIX/g" $DROPFOLDER/payload/DEBIAN/control
   sed -i "s/--ReversePackageSuffix--/$REVERSEPACKAGESUFFIX/g" $DROPFOLDER/payload/DEBIAN/control
+
+  # make a copy for debugging purposes
+  cp $DROPFOLDER/payload/DEBIAN/control $DROPFOLDER/effective-control-$PACKAGENAME-$DISTRO
 
   # Calculating new checksums
   echo "Creating MD5 checksum file ($DISTRO)..."
