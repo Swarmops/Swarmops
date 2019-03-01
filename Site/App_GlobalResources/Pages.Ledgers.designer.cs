@@ -1069,6 +1069,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check Hotwallet Balance Against Blockchain.
+        /// </summary>
+        internal static string EndOfMonth_CheckHotWalletWithBlockchain {
+            get {
+                return ResourceManager.GetString("EndOfMonth_CheckHotWalletWithBlockchain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check Ledger Balance Against Hotwallet.
+        /// </summary>
+        internal static string EndOfMonth_CheckLedgerAgainstHotWallet {
+            get {
+                return ResourceManager.GetString("EndOfMonth_CheckLedgerAgainstHotWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close Financial Ledgers for Year {0}.
         /// </summary>
         internal static string EndOfMonth_CloseLedgersFor {

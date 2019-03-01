@@ -1037,4 +1037,12 @@
     <value>Payroll: No payroll defined</value>
     <comment>This is shown as a disabled action item when there's no active payroll</comment>
   </data>
+  <data name="EndOfMonth_CheckHotWalletWithBlockchain" xml:space="preserve">
+    <value>Check Hotwallet Balance Against Blockchain</value>
+    <comment>This verifies the hotwallet data against master blockchain data, as per a blockchain explorer service or local crypto service node.</comment>
+  </data>
+  <data name="EndOfMonth_CheckLedgerAgainstHotWallet" xml:space="preserve">
+    <value>Check Ledger Balance Against Hotwallet</value>
+    <comment>This is the ledger balance of the hotwallet, which is supposed to say the hotwallet contains as much as it actually does.</comment>
+  </data>
 </root>

@@ -144,7 +144,7 @@
 
                                             // Add OCR fields if available
 
-                                            if (result.OcrData != null && result.OcrData.Length > 0) {
+                                            if (result.OcrData != null && result.OcrData.length > 0) {
                                                 $('#idModalAutomationField1').val(result.OcrData[0]);
                                                 $('#idModalAutomationField2').val(result.OcrData[1]);
                                                 $('#idModalAutomationField3').val(result.OcrData[2]);
