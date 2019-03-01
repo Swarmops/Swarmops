@@ -100,6 +100,9 @@
                                     $(".modal-automation-toggle").hide();
                                 }
 
+                                $(".modal-input-regular").show();
+                                $(".modal-input-automated").hide();
+
                                 $(".input-field-needs-init").each(function() {
                                     $(this).val(loadingBreadcrumb);
                                 });
@@ -294,7 +297,7 @@
         }
 
 
-        function onToggleMachineReadable(newValue) {
+        function onModalToggleMachineReadable(newValue) {
             if (newValue) {
                 $('.modal-input-regular').slideUp();
                 $('.modal-input-automated').slideDown();
@@ -411,7 +414,7 @@
                     <input type="text" id="idModalAutomationField2" class="input-field-needs-init ocr-font" readonly="readonly" value="Field2"/>&#8203;<br/>
                     <input type="text" id="idModalAutomationField3" class="input-field-needs-init ocr-font" readonly="readonly" value="Field3"/>&#8203;<br/>
                 </span>
-                <span class="modal-automation-toggle"><Swarmops5:AjaxToggleSlider ID="ToggleModalMachineReadable" runat="server" Label="Show in machine-readable format XYZ" Cookie="MachineReadable" AjaxCallbackUrl="" OnChange="modalToggleMachineReadable"/></span>
+                <span class="modal-automation-toggle"><Swarmops5:AjaxToggleSlider ID="ToggleModalMachineReadable" runat="server" Label="Show in machine-readable format XYZ" Cookie="MachineReadable" AjaxCallbackUrl="" OnChange="onModalToggleMachineReadable"/></span>
                 <input type="button" id="idModalButtonConfirm" value="Confirm XYZ" class="button-accent-color suppress-input-focus action-icon-button icon-yes" onclick="onConfirmModal();"/>
             </div>
             <div class="data-entry-labels">
