@@ -1,5 +1,17 @@
 #!/bin/bash
 
+#Check if we're running as root
+
+if [ $EUID -ne 0 ]; then
+  echo "ERROR: The packaging must be run as the root user; sudoing is not"
+  echo "       enough (if just sudoing, the package signing key will not"
+  echo "       be found by reprepro and the packaging will fail)."
+  echo " "
+  echo "Do a 'sudo su' and run the packaging again as root user."
+  echo " "
+  exit 1
+fi
+
 #Update schemata
 cd /var/www/packages.swarmops.com/schemata
 echo "Checking for updates to schema..."

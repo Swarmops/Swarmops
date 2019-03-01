@@ -60,7 +60,8 @@ do
   sed -i "s/--ReversePackageSuffix--/$REVERSEPACKAGESUFFIX/g" $DROPFOLDER/payload/DEBIAN/control
 
   # make a copy for debugging purposes
-  cp $DROPFOLDER/payload/DEBIAN/control $DROPFOLDER/effective-control-$PACKAGENAME-$DISTRO
+  mkdir -p $DROPFOLDER/debug
+  cp $DROPFOLDER/payload/DEBIAN/control $DROPFOLDER/debug/control-$PACKAGE-$DISTRO
 
   # Calculating new checksums
   echo "Creating MD5 checksum file ($DISTRO)..."
