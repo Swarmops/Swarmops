@@ -2,13 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     
-    <!-- Monospace font for OCR view -->
-
-    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:regular' rel='stylesheet' type='text/css' />
-        
-    <!-- regular JS -->
-
     <script type="text/javascript"> 
     
         function preload(arrayOfImages) {
@@ -350,11 +343,17 @@
 
     <style type="text/css">
 
+        /* Include OCR-B font for OCR fields */
+
+        @font-face {
+            font-family: Ocrb;
+            src: url('/Style/Fonts/OCR-B-regular-web.woff');
+        }
+
         .ocr-font {  /* this is necessary for OCR to work as expected */
-            font-family: Ubuntu Mono;
-            font-weight: bold;
+            font-family: Ocrb;
             font-size: 120%;
-            letter-spacing: 1px;
+            letter-spacing: 0px;
         }
 
     </style>

@@ -2729,6 +2729,7 @@
     <Content Include="SprintName.txt" />
     <Content Include="Style\alertify.core.css" />
     <Content Include="Style\alertify.default.css" />
+    <Content Include="Style\Fonts\licenses.txt" />
     <Content Include="Style\Images\activizr-v5-pirateedition-logo.png" />
     <Content Include="Style\Images\activizr-webblue-objects.png" />
     <Content Include="Style\Images\activizr-webblue-orange.png" />
@@ -4129,6 +4130,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Style\Fonts\OCR-B-regular-web.woff" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
