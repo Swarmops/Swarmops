@@ -80,6 +80,7 @@
                                 $('#idModalInputCurrencyAmount').val(loadingBreadcrumb);
                                 $('#idModalReference').val(loadingBreadcrumb);
                                 $('#idModalTransferMethod').val(loadingBreadcrumb);
+                                $('#idModalDueDate').text(loadingBreadcrumb);
 
                                 // Show or hide the correct count of extra data fields
 
@@ -117,6 +118,8 @@
                                             $('#idModalInputCurrencyAmount').val(result.CurrencyAmount);
                                             $('#idModalReference').val($(this).attr("data-reference"));  // load reference from JSON data
                                             $('#idModalTransferMethod').val(result.TransferMethod);
+
+                                            $('#idModalDueDate').text(result.DueBy + ')');
 
                                             var customFieldCount = parseInt($(this).attr("data-fieldcount"));
 
@@ -354,30 +357,49 @@
     
     <Swarmops5:ModalDialog ID="ModalConfirmPayment" runat="server" >
         <DialogCode>
-            <h2><asp:Label ID="LabelModalHeader" runat="server" Text="Execute this payout manually now XYZ"/></h2>
-            <div class="data-entry-fields modal wide"><input type="text" id="idModalInputRecipient" readonly="readonly" value="Recipient"/>&#8203;<br/>
-                <input type="text" id="idModalInputCurrencyAmount" readonly="readonly" class="align-for-numbers" value="Amount"/>&#8203;<br/>
-                <input type="text" id="idModalReference" readonly="readonly" value="Reference"/>&#8203;<br/>
-                <input type="text" id="idModalTransferMethod" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
-                <span id="idModalSpanExtraField0"><input type="text" id="idModalExtraField0" readonly="readonly" value="Extra Field 0"/>&#8203;<br/></span>
-                <span id="idModalSpanExtraField1"><input type="text" id="idModalExtraField1" readonly="readonly" value="Extra Field 1"/>&#8203;<br/></span>
-                <span id="idModalSpanExtraField2"><input type="text" id="idModalExtraField2" readonly="readonly" value="Extra Field 2"/>&#8203;<br/></span>
-                <span id="idModalSpanExtraField3"><input type="text" id="idModalExtraField3" readonly="readonly" value="Extra Field 3"/>&#8203;<br/></span>
-                <span id="idModalSpanExtraField4"><input type="text" id="idModalExtraField4" readonly="readonly" value="Extra Field 4"/>&#8203;<br/></span>
-                <Swarmops5:AjaxToggleSlider ID="ToggleModalMachineReadable" runat="server" Label="Show in machine-readable format XYZ" Cookie="MachineReadable" AjaxCallbackUrl="" OnChange="modalToggleMachineReadable"/>
+            <h2><asp:Label ID="LabelModalHeader" runat="server" Text="Execute this payout manually now XYZ"/> (<asp:Label runat="server" ID="LabelModalHeaderDue"/> <span id="idModalDueDate"></span></h2>
+            <div class="data-entry-fields modal wide">
+                <input type="text" id="idModalInputRecipient" readonly="readonly" value="Recipient"/>&#8203;<br/>
+                <span class="modal-input-regular">
+                    <input type="text" id="idModalInputCurrencyAmount" readonly="readonly" class="align-for-numbers" value="Amount"/>&#8203;<br/>
+                    <input type="text" id="idModalReference" readonly="readonly" value="Reference"/>&#8203;<br/>
+                    <input type="text" id="idModalTransferMethod" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
+                </span>
+                <span class="modal-input-automated ocr-font">
+                    <input type="text" id="idModalAutomationField1" readonly="readonly" class="ocr-font" value="Field1"/>&#8203;<br/>
+                    <input type="text" id="idModalAutomationField2" readonly="readonly" class="ocr-font" value="Field2"/>&#8203;<br/>
+                    <input type="text" id="idModalAutomationField3" readonly="readonly" class="ocr-font" value="Field3"/>&#8203;<br/>
+                </span>
+                <div class="modal-extra-data-fields">
+                    <span id="idModalSpanExtraField0"><input type="text" id="idModalExtraField0" readonly="readonly" value="Extra Field 0"/>&#8203;<br/></span>
+                    <span id="idModalSpanExtraField1"><input type="text" id="idModalExtraField1" readonly="readonly" value="Extra Field 1"/>&#8203;<br/></span>
+                    <span id="idModalSpanExtraField2"><input type="text" id="idModalExtraField2" readonly="readonly" value="Extra Field 2"/>&#8203;<br/></span>
+                    <span id="idModalSpanExtraField3"><input type="text" id="idModalExtraField3" readonly="readonly" value="Extra Field 3"/>&#8203;<br/></span>
+                    <span id="idModalSpanExtraField4"><input type="text" id="idModalExtraField4" readonly="readonly" value="Extra Field 4"/>&#8203;<br/></span>
+                </div>
+                <span class="modal-automation-toggle"><Swarmops5:AjaxToggleSlider ID="ToggleModalMachineReadable" runat="server" Label="Show in machine-readable format XYZ" Cookie="MachineReadable" AjaxCallbackUrl="" OnChange="modalToggleMachineReadable"/></span>
                 <input type="button" id="idModalButtonConfirm" value="Confirm XYZ" class="button-accent-color suppress-input-focus action-icon-button icon-yes" onclick="onConfirmModal();"/>
             </div>
             <div class="data-entry-labels">
                 <asp:Label ID="LabelModalRecipient" runat="server" Text="Recipient XYZ"/><br/>
-                <asp:Label ID="LabelModalCurrencyAmount" runat="server" Text="Currency and Amount XYZ"/><br/>
-                <asp:Label ID="LabelModalReference" runat="server" Text="Reference XYZ"/><br/>
-                <asp:Label ID="LabelModalTransferMethod" runat="server" Text="Transfer Method XYZ"/><br/>
-                <span id="idModalSpanExtraLabel0">Label 0<br/></span>
-                <span id="idModalSpanExtraLabel1">Label 1<br/></span>
-                <span id="idModalSpanExtraLabel2">Label 2<br/></span>
-                <span id="idModalSpanExtraLabel3">Label 3<br/></span>
-                <span id="idModalSpanExtraLabel4">Label 4<br/></span>
-                <span id="idModalSpanEnableOcrLabel"><asp:Label runat="server" ID="LabelModalOcr1" Text="Are you scanning this payment XYZ?"/></span>
+                <span class="modal-input-regular">
+                    <asp:Label ID="LabelModalCurrencyAmount" runat="server" Text="Currency and Amount XYZ"/><br/>
+                    <asp:Label ID="LabelModalReference" runat="server" Text="Reference XYZ"/><br/>
+                    <asp:Label ID="LabelModalTransferMethod" runat="server" Text="Transfer Method XYZ"/><br/>
+                </span>
+                <span class="modal-input-automated">
+                    <asp:Label runat="server" ID="LabelModalAutomation1" />
+                    <asp:Label runat="server" ID="LabelModalAutomation2" />
+                    <asp:Label runat="server" ID="LabelModalAutomation3" />
+                </span>
+                <div class="modal-extra-data-fields">
+                    <span id="idModalSpanExtraLabel0">Label 0<br/></span>
+                    <span id="idModalSpanExtraLabel1">Label 1<br/></span>
+                    <span id="idModalSpanExtraLabel2">Label 2<br/></span>
+                    <span id="idModalSpanExtraLabel3">Label 3<br/></span>
+                    <span id="idModalSpanExtraLabel4">Label 4<br/></span>
+                </div>
+                <span class="modal-automation-toggle"><span id="idModalSpanEnableOcrLabel"><asp:Label runat="server" ID="LabelModalOcr1" Text="Are you scanning this payment XYZ?"/></span></span>
             </div>
         </DialogCode>
     </Swarmops5:ModalDialog>

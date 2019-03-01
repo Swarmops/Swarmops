@@ -763,4 +763,8 @@
     <value>Transfer Method</value>
     <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
   </data>
+  <data name="PayOutMoney_PaymentLate" xml:space="preserve">
+    <value>Payment is late</value>
+    <comment>"Late" in this context means "after its due date".</comment>
+  </data>
 </root>

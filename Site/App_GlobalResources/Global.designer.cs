@@ -1123,11 +1123,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0:MMMM} {0:d}.
+        /// </summary>
+        internal static string Global_DateFormatLongDateMonth {
+            get {
+                return ResourceManager.GetString("Global_DateFormatLongDateMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MMMM d, yyyy.
         /// </summary>
         internal static string Global_DateFormatLongSansWeekday {
             get {
                 return ResourceManager.GetString("Global_DateFormatLongSansWeekday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:MMM} {0:dd}.
+        /// </summary>
+        internal static string Global_DateFormatShortDateMonth {
+            get {
+                return ResourceManager.GetString("Global_DateFormatShortDateMonth", resourceCulture);
             }
         }
         

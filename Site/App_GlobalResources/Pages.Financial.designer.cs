@@ -1474,6 +1474,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment is late.
+        /// </summary>
+        internal static string PayOutMoney_PaymentLate {
+            get {
+                return ResourceManager.GetString("PayOutMoney_PaymentLate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot undo payout #{0}: it has already settled or closed..
         /// </summary>
         internal static string PayOutMoney_PayoutCannotUndo {

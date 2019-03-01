@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Resources;
 using System.Security;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -54,6 +56,7 @@ namespace Swarmops.Frontend.Pages.Financial
             this.LabelModalHeader.Text = Resources.Pages.Financial.PayOutMoney_Modal_Header;
             this.LabelModalCurrencyAmount.Text = Resources.Pages.Financial.PayOutMoney_Modal_CurrencyAmount;
             this.LabelModalTransferMethod.Text = Resources.Pages.Financial.PayOutMoney_Modal_TransferMethod;
+            this.LabelModalHeaderDue.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_DueDate;
 
             this.LabelSidebarOptions.Text = Resources.Global.Sidebar_Options;
             this.LabelOptionsShowOcr.Text = Resources.Pages.Financial.PayoutMoney_OptionShowOcr;
@@ -141,6 +144,8 @@ namespace Swarmops.Frontend.Pages.Financial
             // with one exception -- we need to determine the amount by adding all the objects
             // together, if applicable
 
+            DateTime paymentDueBy = Constants.DateTimeLow;
+
             switch (Char.ToUpperInvariant(payoutComponents[0][0]))
             {
                 case 'C': // expense claim
@@ -156,14 +161,14 @@ namespace Swarmops.Frontend.Pages.Financial
                             new Money(GetSumCentsTotal(prototypeId), authData.CurrentOrganization.Currency));
                     break;
                 case 'S': // salary
-                    info =
-                        PaymentTransferInfo.FromObject(
-                            Salary.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1))));
+                    Salary salary = Salary.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1)));
+                    info = PaymentTransferInfo.FromObject(salary);
+                    paymentDueBy = salary.PayoutDate;
                     break;
                 case 'I': // inbound invoice
-                    info =
-                        PaymentTransferInfo.FromObject(
-                            InboundInvoice.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1))));
+                    InboundInvoice invoice = InboundInvoice.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1)));
+                    info = PaymentTransferInfo.FromObject(invoice);
+                    paymentDueBy = invoice.DueDate;
                     break;
                 default:
                     throw new NotImplementedException("Unrecognized payment type");
@@ -178,6 +183,29 @@ namespace Swarmops.Frontend.Pages.Financial
                 Reference = info.Reference,
                 TransferMethod = info.LocalizedPaymentMethodName
             };
+
+            if (paymentDueBy < Constants.DateTimeLowThreshold)
+            {
+                result.DueBy = Resources.Global.Global_ASAP;
+            }
+            else
+            {
+                DateTime nowUtc = DateTime.UtcNow;
+
+                if (paymentDueBy.Year != nowUtc.Year || paymentDueBy < nowUtc.AddMonths(-3))
+                {
+                    result.DueBy = paymentDueBy.ToString(Resources.Global.Global_DateFormatLongSansWeekday);
+                }
+                else
+                {
+                    result.DueBy = paymentDueBy.ToString(Resources.Global.Global_DateFormatLongDateMonth);
+                }
+
+                if (paymentDueBy < nowUtc.AddDays(-1))
+                {
+                    result.DueBy += " - " + Resources.Pages.Financial.PayOutMoney_PaymentLate;
+                }
+            }
 
             List<string> listTransferMethodLabels = new List<string>();
             List<string> listTransferMethodData = new List<string>();
@@ -231,6 +259,7 @@ namespace Swarmops.Frontend.Pages.Financial
         {
             public string Recipient { get; set; }
             public string CurrencyAmount { get; set; }
+            public string DueBy { get; set; }
             public string Reference { get; set; }
             public string TransferMethod { get; set; }
             public string[] TransferMethodLabels { get; set; }
