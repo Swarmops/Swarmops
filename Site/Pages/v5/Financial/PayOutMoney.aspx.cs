@@ -44,7 +44,7 @@ namespace Swarmops.Frontend.Pages.Financial
             InfoBoxLiteral = Resources.Pages.Financial.PayOutMoney_Info;
             this.LabelPayOutMoneyHeader.Text = Resources.Pages.Financial.PayOutMoney_Header;
             this.LabelGridHeaderAmount.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Amount;
-            this.LabelGridHeaderDue.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_DueDate;
+            this.LabelGridHeaderDue.Text = Resources.Global.Financial_DueDate;
             this.LabelGridHeaderPay.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_PayThis;
             this.LabelGridHeaderRecipient.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Recipient;
             this.LabelGridHeaderCurrencyMethod.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_CurrencyMethod;
@@ -56,7 +56,7 @@ namespace Swarmops.Frontend.Pages.Financial
             this.LabelModalHeader.Text = Resources.Pages.Financial.PayOutMoney_Modal_Header;
             this.LabelModalCurrencyAmount.Text = Resources.Pages.Financial.PayOutMoney_Modal_CurrencyAmount;
             this.LabelModalTransferMethod.Text = Resources.Pages.Financial.PayOutMoney_Modal_TransferMethod;
-            this.LabelModalHeaderDue.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_DueDate;
+            this.LabelModalHeaderDue.Text = Resources.Global.Financial_DueDateShort;
 
             this.LabelSidebarOptions.Text = Resources.Global.Sidebar_Options;
             this.LabelOptionsShowOcr.Text = Resources.Pages.Financial.PayoutMoney_OptionShowOcr;

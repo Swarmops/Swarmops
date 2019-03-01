@@ -430,6 +430,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Due.
+        /// </summary>
+        internal static string Financial_DueDateShort {
+            get {
+                return ResourceManager.GetString("Financial_DueDateShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Earnings before Interest, Taxes, Depreciation, and Amortization.
         /// </summary>
         internal static string Financial_Ebitda_Long {
@@ -1123,7 +1132,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0:MMMM} {0:d}.
+        ///   Looks up a localized string similar to MMMM d.
         /// </summary>
         internal static string Global_DateFormatLongDateMonth {
             get {
@@ -1141,7 +1150,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0:MMM} {0:dd}.
+        ///   Looks up a localized string similar to MMM dd.
         /// </summary>
         internal static string Global_DateFormatShortDateMonth {
             get {

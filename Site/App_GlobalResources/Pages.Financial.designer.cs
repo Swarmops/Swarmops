@@ -1258,15 +1258,6 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account (OCR).
-        /// </summary>
-        internal static string PayoutMoney_GridHeader_Account_Ocr {
-            get {
-                return ResourceManager.GetString("PayoutMoney_GridHeader_Account_Ocr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         internal static string PayOutMoney_GridHeader_Amount {
@@ -1276,47 +1267,11 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Amount (OCR).
-        /// </summary>
-        internal static string PayOutMoney_GridHeader_Amount_Ocr {
-            get {
-                return ResourceManager.GetString("PayOutMoney_GridHeader_Amount_Ocr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Clearing / Account.
-        /// </summary>
-        internal static string PayOutMoney_GridHeader_BankAccount {
-            get {
-                return ResourceManager.GetString("PayOutMoney_GridHeader_BankAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bank.
-        /// </summary>
-        internal static string PayOutMoney_GridHeader_BankName {
-            get {
-                return ResourceManager.GetString("PayOutMoney_GridHeader_BankName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Currency, Method.
         /// </summary>
         internal static string PayOutMoney_GridHeader_CurrencyMethod {
             get {
                 return ResourceManager.GetString("PayOutMoney_GridHeader_CurrencyMethod", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Due Date.
-        /// </summary>
-        internal static string PayOutMoney_GridHeader_DueDate {
-            get {
-                return ResourceManager.GetString("PayOutMoney_GridHeader_DueDate", resourceCulture);
             }
         }
         
@@ -1357,29 +1312,11 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reference (OCR).
-        /// </summary>
-        internal static string PayOutMoney_GridHeader_Reference_Ocr {
-            get {
-                return ResourceManager.GetString("PayOutMoney_GridHeader_Reference_Ocr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Costs Ready For Payout.
         /// </summary>
         internal static string PayOutMoney_Header {
             get {
                 return ResourceManager.GetString("PayOutMoney_Header", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Costs for Payout (OCR for mobile apps).
-        /// </summary>
-        internal static string PayoutMoney_Header_Ocr {
-            get {
-                return ResourceManager.GetString("PayoutMoney_Header_Ocr", resourceCulture);
             }
         }
         
