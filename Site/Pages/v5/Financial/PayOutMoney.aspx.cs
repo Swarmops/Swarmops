@@ -44,7 +44,7 @@ namespace Swarmops.Frontend.Pages.Financial
             InfoBoxLiteral = Resources.Pages.Financial.PayOutMoney_Info;
             this.LabelPayOutMoneyHeader.Text = Resources.Pages.Financial.PayOutMoney_Header;
             this.LabelGridHeaderAmount.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Amount;
-            this.LabelGridHeaderDue.Text = Resources.Global.Financial_DueDate;
+            this.LabelGridHeaderDue.Text = Resources.Global.Financial_DueDateShort;
             this.LabelGridHeaderPay.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_PayThis;
             this.LabelGridHeaderRecipient.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Recipient;
             this.LabelGridHeaderCurrencyMethod.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_CurrencyMethod;
@@ -57,6 +57,10 @@ namespace Swarmops.Frontend.Pages.Financial
             this.LabelModalCurrencyAmount.Text = Resources.Pages.Financial.PayOutMoney_Modal_CurrencyAmount;
             this.LabelModalTransferMethod.Text = Resources.Pages.Financial.PayOutMoney_Modal_TransferMethod;
             this.LabelModalHeaderDue.Text = Resources.Global.Financial_DueDateShort;
+
+            this.LabelModalAutomation1.Text = Resources.Pages.Financial.PayOutMoney_AutomationFieldStart;
+            this.LabelModalAutomation2.Text = Resources.Pages.Financial.PayOutMoney_AutomationFieldNext;
+            this.LabelModalAutomation3.Text = Resources.Pages.Financial.PayOutMoney_AutomationFieldNext;
 
             this.LabelSidebarOptions.Text = Resources.Global.Sidebar_Options;
             this.LabelOptionsShowOcr.Text = Resources.Pages.Financial.PayoutMoney_OptionShowOcr;
@@ -102,7 +106,7 @@ namespace Swarmops.Frontend.Pages.Financial
 
             if (!payout.Open)
             {
-                // this payout has already been settled, or picked up for settling. This is a concurrency error, only detected earlier than the database layer.
+                // this payout has already been settled, or picked up for settling. This is a concurrency error, detected before actually trying to change it.
 
                 return new AjaxCallResult
                 {
@@ -218,6 +222,7 @@ namespace Swarmops.Frontend.Pages.Financial
 
             result.TransferMethodLabels = listTransferMethodLabels.ToArray();
             result.TransferMethodData = listTransferMethodData.ToArray();
+            result.OcrData = info.OcrData;  // can be null and that's ok
 
             return result;
         }
@@ -264,6 +269,7 @@ namespace Swarmops.Frontend.Pages.Financial
             public string TransferMethod { get; set; }
             public string[] TransferMethodLabels { get; set; }
             public string[] TransferMethodData { get; set; }
+            public string[] OcrData { get; set; }
         }
 
 

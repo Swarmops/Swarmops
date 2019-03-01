@@ -429,10 +429,6 @@
     <value>Recipient</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Reference</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Costs Ready For Payout</value>
   </data>
@@ -740,6 +736,18 @@
   <data name="PayOutMoney_Modal_TransferMethod" xml:space="preserve">
     <value>Transfer Method</value>
     <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
+  </data>
+  <data name="PayOutMoney_AutomationFieldNext" xml:space="preserve">
+    <value>...and this</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
+  <data name="PayOutMoney_AutomationFieldStart" xml:space="preserve">
+    <value>Scan this</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Reference</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   <data name="PayOutMoney_PaymentLate" xml:space="preserve">
     <value>Payment is late</value>

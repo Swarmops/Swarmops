@@ -96,6 +96,20 @@
                                     }
                                 }
 
+                                // Show or hide the automation toggle
+
+                                var automationAvailable = $(this).attr("data-ocr");
+                                if (automationAvailable == "yes") {
+                                    $(".modal-automation-toggle").show();
+                                } else {
+                                    $(".modal-automation-toggle").hide();
+                                }
+
+                                $(".input-field-needs-init").each(function() {
+                                    $(this).val(loadingBreadcrumb);
+                                });
+
+
                                 <%=this.ModalConfirmPayment.ClientID%>_open();
 
                                 modalPrototypeId = $(this).attr("protoid");
@@ -126,6 +140,14 @@
                                             for (var index = 0; index < customFieldCount; index++) {
                                                 $('#idModalSpanExtraLabel' + index).html(result.TransferMethodLabels[index] + "<br/>");
                                                 $('#idModalExtraField' + index).val(result.TransferMethodData[index]);
+                                            }
+
+                                            // Add OCR fields if available
+
+                                            if (result.OcrData != null && result.OcrData.Length > 0) {
+                                                $('#idModalAutomationField1').val(result.OcrData[0]);
+                                                $('#idModalAutomationField2').val(result.OcrData[1]);
+                                                $('#idModalAutomationField3').val(result.OcrData[2]);
                                             }
 
                                         } else {
@@ -359,23 +381,23 @@
         <DialogCode>
             <h2><asp:Label ID="LabelModalHeader" runat="server" Text="Execute this payout manually now XYZ"/> (<asp:Label runat="server" ID="LabelModalHeaderDue"/> <span id="idModalDueDate"></span></h2>
             <div class="data-entry-fields modal wide">
-                <input type="text" id="idModalInputRecipient" readonly="readonly" value="Recipient"/>&#8203;<br/>
+                <input type="text" id="idModalInputRecipient" class="input-field-needs-init" readonly="readonly" value="Recipient"/>&#8203;<br/>
                 <span class="modal-input-regular">
-                    <input type="text" id="idModalInputCurrencyAmount" readonly="readonly" class="align-for-numbers" value="Amount"/>&#8203;<br/>
-                    <input type="text" id="idModalReference" readonly="readonly" value="Reference"/>&#8203;<br/>
-                    <input type="text" id="idModalTransferMethod" readonly="readonly" value="Transfer Method"/>&#8203;<br/>
+                    <input type="text" id="idModalInputCurrencyAmount" readonly="readonly" class="input-field-needs-init align-for-numbers" value="Amount"/>&#8203;<br/>
+                    <input type="text" id="idModalReference" readonly="readonly" class="input-field-needs-init" value="Reference"/>&#8203;<br/>
+                    <input type="text" id="idModalTransferMethod" readonly="readonly" class="input-field-needs-init" value="Transfer Method"/>&#8203;<br/>
                 </span>
                 <span class="modal-input-automated ocr-font">
-                    <input type="text" id="idModalAutomationField1" readonly="readonly" class="ocr-font" value="Field1"/>&#8203;<br/>
-                    <input type="text" id="idModalAutomationField2" readonly="readonly" class="ocr-font" value="Field2"/>&#8203;<br/>
-                    <input type="text" id="idModalAutomationField3" readonly="readonly" class="ocr-font" value="Field3"/>&#8203;<br/>
+                    <input type="text" id="idModalAutomationField1" class="input-field-needs-init ocr-font" readonly="readonly" value="Field1"/>&#8203;<br/>
+                    <input type="text" id="idModalAutomationField2" class="input-field-needs-init ocr-font" readonly="readonly" value="Field2"/>&#8203;<br/>
+                    <input type="text" id="idModalAutomationField3" class="input-field-needs-init ocr-font" readonly="readonly" value="Field3"/>&#8203;<br/>
                 </span>
                 <div class="modal-extra-data-fields">
-                    <span id="idModalSpanExtraField0"><input type="text" id="idModalExtraField0" readonly="readonly" value="Extra Field 0"/>&#8203;<br/></span>
-                    <span id="idModalSpanExtraField1"><input type="text" id="idModalExtraField1" readonly="readonly" value="Extra Field 1"/>&#8203;<br/></span>
-                    <span id="idModalSpanExtraField2"><input type="text" id="idModalExtraField2" readonly="readonly" value="Extra Field 2"/>&#8203;<br/></span>
-                    <span id="idModalSpanExtraField3"><input type="text" id="idModalExtraField3" readonly="readonly" value="Extra Field 3"/>&#8203;<br/></span>
-                    <span id="idModalSpanExtraField4"><input type="text" id="idModalExtraField4" readonly="readonly" value="Extra Field 4"/>&#8203;<br/></span>
+                    <span id="idModalSpanExtraField0"><input type="text" id="idModalExtraField0" class="input-field-needs-init" readonly="readonly" value="Extra Field 0"/>&#8203;<br/></span>
+                    <span id="idModalSpanExtraField1"><input type="text" id="idModalExtraField1" class="input-field-needs-init" readonly="readonly" value="Extra Field 1"/>&#8203;<br/></span>
+                    <span id="idModalSpanExtraField2"><input type="text" id="idModalExtraField2" class="input-field-needs-init" readonly="readonly" value="Extra Field 2"/>&#8203;<br/></span>
+                    <span id="idModalSpanExtraField3"><input type="text" id="idModalExtraField3" class="input-field-needs-init" readonly="readonly" value="Extra Field 3"/>&#8203;<br/></span>
+                    <span id="idModalSpanExtraField4"><input type="text" id="idModalExtraField4" class="input-field-needs-init" readonly="readonly" value="Extra Field 4"/>&#8203;<br/></span>
                 </div>
                 <span class="modal-automation-toggle"><Swarmops5:AjaxToggleSlider ID="ToggleModalMachineReadable" runat="server" Label="Show in machine-readable format XYZ" Cookie="MachineReadable" AjaxCallbackUrl="" OnChange="modalToggleMachineReadable"/></span>
                 <input type="button" id="idModalButtonConfirm" value="Confirm XYZ" class="button-accent-color suppress-input-focus action-icon-button icon-yes" onclick="onConfirmModal();"/>
@@ -388,9 +410,9 @@
                     <asp:Label ID="LabelModalTransferMethod" runat="server" Text="Transfer Method XYZ"/><br/>
                 </span>
                 <span class="modal-input-automated">
-                    <asp:Label runat="server" ID="LabelModalAutomation1" />
-                    <asp:Label runat="server" ID="LabelModalAutomation2" />
-                    <asp:Label runat="server" ID="LabelModalAutomation3" />
+                    <asp:Label runat="server" ID="LabelModalAutomation1" /><br/>
+                    <asp:Label runat="server" ID="LabelModalAutomation2" /><br/>
+                    <asp:Label runat="server" ID="LabelModalAutomation3" /><br/>
                 </span>
                 <div class="modal-extra-data-fields">
                     <span id="idModalSpanExtraLabel0">Label 0<br/></span>

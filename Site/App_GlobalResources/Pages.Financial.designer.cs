@@ -1258,6 +1258,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ...and this.
+        /// </summary>
+        internal static string PayOutMoney_AutomationFieldNext {
+            get {
+                return ResourceManager.GetString("PayOutMoney_AutomationFieldNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan this.
+        /// </summary>
+        internal static string PayOutMoney_AutomationFieldStart {
+            get {
+                return ResourceManager.GetString("PayOutMoney_AutomationFieldStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         internal static string PayOutMoney_GridHeader_Amount {
