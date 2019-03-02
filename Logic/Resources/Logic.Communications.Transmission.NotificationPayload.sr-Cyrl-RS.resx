@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Applicant_Signup_Body" xml:space="preserve">
-    <value>Нова особа је аплицитала за позицију [RegularTitle] у оквиру [OrganizationName]! [ConcernedPersonName] тренутно има боравиште у [GeographyName], [CountryCode].</value>
+    <value>Нова особа је аплицирала за позицију [RegularTitle] у оквиру [OrganizationName]! [ConcernedPersonName] тренутно има боравиште у [GeographyName], [CountryCode].</value>
   </data>
   <data name="Applicant_Signup_Header" xml:space="preserve">
     <value>[[OrganizationName]] Нови апликација: [ConcernedPersonName], [GeographyName]</value>
@@ -129,7 +129,7 @@
 Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl] и подесите нову bitcoin адресу за исплату.</value>
   </data>
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Неисправна bitcoin адреса за исплату</value>
+    <value>[[OrganizationName] - СТАВКА] Неисправна bitcoin адреса за исплату</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
     <value>Променили сте своју Bitcoin Cash адресу за исплату, са старе: [BitcoinOldAddress] на [BitcoinAddress]. Из сигурносних разлога, све исплате се стављају у карантин који траје 48 сати.
@@ -170,7 +170,7 @@
     <value>[[OrganizationName]] Hotwallet Исплата: [CurrencyCode] [AmountFloat]</value>
   </data>
   <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>[BitcoinAmountFloat] microbitcoin ("bits") је управо тренсферовано на Bitcoin Cash адресу ([BitcoinAddress]) од стране [OrganizationName] за наведени:
+    <value>[BitcoinAmountFloat] microbitcoin ("bits") је управо трансферовано на Bitcoin Cash адресу ([BitcoinAddress]) од стране [OrganizationName] за наведени:
 
 [EmbeddedPreformattedText]
 
@@ -193,21 +193,21 @@
 Swarmops ће наставити да шаље нотификације и покушаваће да обави исплату све док у томе не успе.</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Bitcoin Cash hotwallet, недовољно средстава за исплату - одмах допуните</value>
+    <value>[[OrganizationName] - СТАВКА] Bitcoin Cash hotwallet, недовољно средстава за исплату - одмах допуните</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Ваш захтев за исплату издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је добио потврду од стране носиоца буџета. Сада ће се прећи на исплату.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance је потврђен: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Ваш захтев за исплату издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је изгубио потврду од стране носиоца буџета. То обично указује на постојање проблема везаног за Ваш захтев.
+  <data name="CashAdvance_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Ваш захтев за исплату унапред издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је изгубио потврду од стране носиоца буџета. То обично указује на постојање проблема везаног за Ваш захтев.
 
 Очекујте даљу комуникацију са носиоцем буџета, а са циљем решавања тренутних проблема.</value>
   </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance, Изгубио потврду: [CurrencyCode] [BudgetAmountFloat]</value>
+  <data name="CashAdvance_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Аванс, ОДБИЈЕН: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Approved_Body" xml:space="preserve">
+    <value>Ваш захтев за аванс, издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је добио потврду од стране носиоца буџета. Сада ће се прећи на исплату.</value>
+  </data>
+  <data name="CashAdvance_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Аванс је потврђен: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Ваш захтев за исплату издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је одбијен. Наведени текст Вам даје увид у разлоге одбијања:
@@ -227,43 +227,43 @@ Swarmops ће наставити да шаље нотификације и по�
     <value>[[OrganizationName]] Cash Advance, Исплаћен: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] је затражио(ла) cash advance у износу од [CurrencyCode] [BudgetAmountFloat] у сврху [RequestPurpose]. Ова средства су део буџета, [BudgetName].
+    <value>[ConcernedPersonName] је затражио(ла) аванс у износу од [CurrencyCode] [BudgetAmountFloat] у сврху [RequestPurpose]. Ова средства су део буџета, [BudgetName].
 
-Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl] Финансије/ТрошковиПотврђивања како бисте захтев прихватили или одбили.</value>
+Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl]Financial/ApproveCosts како бисте захтев прихватили или одбили.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Cash Advance, Затражен: [CurrencyCode] [BudgetAmountFloat] - Потврда је неопходна</value>
+    <value>[[OrganizationName] - СТАВКА] Аванс, Затражен: [CurrencyCode] [BudgetAmountFloat] - Потврда је неопходна</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+  <data name="ExpenseClaim_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Ваш захтев за рефундацију издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је изгубио потврду од стране носиоца буџета. Захтев се сматра одбијеним. То обично указује на постојање проблема везаног за Ваш захтев.
+
+Очекујте даљу комуникацију са носиоцем буџета, а са циљем решавања тренутних проблема.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Аванс за рефундацију трошкова, одобрење ПОВУЧЕНО: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
     <value>Ваш захтев за исплату трошкова, од [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је добио потврду од стране носиоца буџета. Исплата ће бити обављена након што се потврди валидност рачуна.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
+  <data name="ExpenseClaim_Approved_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Захтев за рефундирање, потврђен: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Created_Body" xml:space="preserve">
     <value>[ConcernedPersonName] је поднео(ла) захтев за рефундирање, из буџета [BudgetName] у износу од [CurrencyCode] [BudgetAmountFloat], а у вези са [RequestPurpose]. Потребно је да потврдите овај захтев за рефундацију.
 
-Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl] Финансије/ТрошковиПотврђивања како бисте дали потврду или одбили.</value>
+Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl]Financial/ApproveCosts како бисте дали потврду или одбили.</value>
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Захтев за рефундирање, Креиран: [CurrencyCode] [BudgetAmountFloat] - Потврда је неопходна</value>
+    <value>[[OrganizationName] - СТАВКА] Захтев за рефундирање, Креиран: [CurrencyCode] [BudgetAmountFloat] - Потврда је неопходна</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Ваш захтев за рефундацију, насловљен на [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је изгубио потврду од стране носиоца буџета. То обично указује на постојање проблема везаног за Ваш захтев.
-
-Очекујте даљу комуникацију са носиоцем буџета, а са циљем решавања тренутних проблема.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Захтев за рефундацију, Изгубио потврду: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
-    <value>Ваш захтев за рафундацију издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је одбијен. Наведени текст Вам даје увид у разлоге одбијања:
+    <value>Ваш захтев за рефундацију издат од стране [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је одбијен. Наведени текст Вам даје увид у разлоге одбијања:
 
 [EmbeddedPreformattedText]
 </value>
@@ -271,14 +271,6 @@ Swarmops ће наставити да шаље нотификације и по�
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Захтев за рефундацију, ОДБИЈЕН: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Рачуни које сте доставили на име трошкова који су упућени организацији [OrganizationName] у износу од [CurrencyCode] [BudgetAmountFloat], а у вези са [RequestPurpose], су изгубили потврду од стране рачуноводства организације. То обично указује на неки проблем који се односи на документацију која је поднета на име рефундације.
-
-Очекујте даљу комуникацију по овом питању. Ако не добијете поруку од рачуноводства, обратите се Ви њима.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Рачуни који се односе на рефундацију, Изгубили потврду: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Ваш захтев за рефундацију предат у [OrganizationName] за износ [CurrencyCode] [BudgetAmountFloat], у вези са [RequestPurpose], је од стране рачуновођа организације означен као исплаћен.
@@ -297,13 +289,21 @@ Swarmops ће наставити да шаље нотификације и по�
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Рачуни који се односе на рефундацију, Валидирани: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Фактура коју је поднео [Supplier], а везана за [Description], је насловљена на буџет [BudgetName], за износ [CurrencyCode] [BudgetAmountFloat]. Пре него што се настави са плаћањем, морате извршити потврду фактуре
+  <data name="ExpenseClaim_ValidationRetracted_Body" xml:space="preserve">
+    <value>Рачуни које сте доставили на име трошкова који су упућени организацији [OrganizationName] у износу од [CurrencyCode] [BudgetAmountFloat], а у вези са [RequestPurpose], су одбијену од стране рачуноводства организације. Рачуни се не сматрају валидним. То обично указује на неки проблем који се односи на документацију која је поднета на име рефундације.
 
-Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl]Финансије/ПотврдеТрошкови како бисте дали потврду или одбили.</value>
+Очекујте даљу комуникацију по овом питању. Ако не добијете поруку од рачуноводства, обратите се Ви њима.</value>
+  </data>
+  <data name="ExpenseClaim_ValidationRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Валидација је ПОВУЧЕНА за рачуне који се односе на захтев за рефундацију: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Фактура коју је поднео [Supplier], а везана за [Description], је насловљена на буџет [BudgetName], за износ [CurrencyCode] [BudgetAmountFloat]. Пре него што се настави са плаћањем, морате извршити потврду фактуре.
+
+Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl]Financial/ApproveCosts како бисте дали потврду или одбили.</value>
   </data>
   <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Попуњена је фактура: [CurrencyCode] [BudgetAmountFloat] - Потврда је неопходна</value>
+    <value>[[OrganizationName] - СТАВКА] Попуњена је фактура: [CurrencyCode] [BudgetAmountFloat] - Потврда је неопходна</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">
@@ -326,7 +326,7 @@ Swarmops ће наставити да шаље нотификације и по�
 Овај mail је послат на [Addressee] од стране [OrganizationName]. Ако у будућности не желите да примате ова обавештења, молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl] и измените подешавања која се односе на обавештења.</value>
   </data>
   <data name="OutboundComm_Resolved_Body" xml:space="preserve">
-    <value>Ваша порука је стављена листу за слање и сви примаоци су проверени. Ваша порука ће бити послата, или ће се макар покушати слање, [RecipientCount] људи, и [GeographyName] у име [OrganizationName].</value>
+    <value>Ваша порука је стављена на листу за слање и сви примаоци су проверени. Ваша порука ће бити послата, или ће се макар покушати слање, [RecipientCount] људи, у [GeographyName] у име [OrganizationName].</value>
   </data>
   <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Примаоци одређени за [GeographyName]: [RecipientCount]</value>
@@ -350,7 +350,7 @@ Swarmops ће наставити да шаље нотификације и по�
   <data name="Password_CannotReset2FA_Body" xml:space="preserve">
     <value>Неко, вероватно Ви, је затражио ресет лозинке која је придружена овој mail адреси на [InstallationName]. Ипак, дво-факторска аутентификација је омогућена за овај налог како би се сигурност подигла на виши ниво. Стога, лозинка се НЕ МОЖЕ ресетовати на једноставан начин.
 
-Молимо Вас да контактирате кадровског аднинистратора у [InstallationName] како би се решио Ваш проблем и како би се издала нова лозинка, уз поштовање ригорознијих процедура за идентификацију и уз подударање на нивоу дво-факторске сигурности.
+Молимо Вас да контактирате кадровског администратора у [InstallationName] како би се решио Ваш проблем и како би се издала нова лозинка, уз поштовање ригорознијих процедура за идентификацију и уз подударање на нивоу дво-факторске сигурности.
 
 Хвала Вам на разумевању.</value>
   </data>
@@ -399,7 +399,7 @@ Swarmops ће наставити да шаље нотификације и по�
 Молимо Вас, пријавите се на [InstallationName] преко [ExternalUrl]Финансије/ВалидацијаПризнаница како бисте их валидирали или одбили.</value>
   </data>
   <data name="Receipts_Filed_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Поднети рачуни - Валидација је неопходна</value>
+    <value>[[OrganizationName] - СТАВКА] Поднети рачуни - Валидација је неопходна</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="Salary_Denied_Body" xml:space="preserve">
@@ -446,7 +446,6 @@ Swarmops ће наставити да шаље нотификације и по�
 
 Тренутно користимо шему базе података, верзија [DbVersion], али покушавамо да извршимо надоградњу на [DbVersionExpected].
 
-
 Покушај надоградње ће се извршавати сваког сата. Могуће је да ће то утицати на функционалност, све док траје надоградња базе података. Ако желите да сами решите проблем, пакети за надоградњу базе података се преузимају са packages.swarmops.com, на истом месту на коме се врши apt-get fetches за софтверске пакете.</value>
   </data>
   <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
@@ -490,6 +489,6 @@ Swarmops ће наставити да шаље нотификације и по�
 Ако ова грешка настави да се јавља, могуће је да имате лоше инсталирани plugin или нешто слично. Било како било, некатегорисана порука ће бити одбачена и неће бити послата даље, пошто Swarmops нема конкретно решење за овај проблем.</value>
   </data>
   <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
-    <value>Swarmops: Непозната пошиљка заједничких порука (comms payload)</value>
+    <value>Swarmops: Непозната комуникацијска пошиљка (comms payload)</value>
   </data>
 </root>

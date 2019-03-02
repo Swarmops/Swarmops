@@ -163,10 +163,10 @@
     <value>Refundacija #{0:N0}</value>
   </data>
   <data name="Payout_InboundInvoiceIdentity" xml:space="preserve">
-    <value>Inbound Invoice #{0:N0}</value>
+    <value>Ulazna faktura #{0:N0}</value>
   </data>
   <data name="Payout_InboundInvoiceIdentitySender" xml:space="preserve">
-    <value>Inbound Invoice #{0:N0} od {1}</value>
+    <value>Ulazna faktura #{0:N0} od {1}</value>
   </data>
   <data name="Payout_SalariesTaxMonth" xml:space="preserve">
     <value>Porezi na zaradu za {0:yyyy-MMM}</value>

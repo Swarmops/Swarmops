@@ -120,11 +120,11 @@
   <data name="AspirantAddWelcome_Body" xml:space="preserve">
     <value>Dobrodošli u svojstvu [Aspirant] na [OrganizationName]!
 
-Aplicirali ste za [Regularship] u [OrganizationName], i upravo ste primili elektronsku popoštu kao formalni [Aspirant]. Rok za Vašu [Aspirantship] neće automatski isteći, tako da nema potrebe da žurite sa odgovorom na poruku.
+Aplicirali ste za [Regularship] u [OrganizationName], i upravo ste primili elektronsku poštu kao formalni [Aspirant]. Rok za Vašu [Aspirantship] neće automatski isteći, tako da nema potrebe da žurite sa odgovorom na poruku.
 
 Vašu inicijalnu i slučajno generisanu lozinku za Swarmops, softver koristi kao back-end system i ona glasi: [RandomPassword]
 
-Trebalo bi da se prijavite i da što pre izmenite ovu lozinku nekom koja je sigurnija. Procedura podrazumeva da se prijavite na [ExternalUrl], a da zatim kliknete na ikonicu "User" ("Korisnik") koja se nalazi u gornjem desnom uglu. Potom je potrebno da seletkujete Security tab (Tab sigurnost, oblika katanca) i da unesete ovu privremenu lozinku, a zatim da upišete novu lozinku. Razmislite i o tome da omogućite opciju dvo-faktorske autentifikacije, što je generalno govoreći dobra praksa. 
+Trebalo bi da se prijavite i da što pre izmenite ovu lozinku nekom koja je sigurnija. Procedura podrazumeva da se prijavite na [ExternalUrl], a da zatim kliknete na ikonicu "User" ("Korisnik") koja se nalazi u gornjem desnom uglu. Potom je potrebno da selektujete Security tab (Tab sigurnost, oblika katanca) i da unesete ovu privremenu lozinku, a zatim da upišete novu lozinku. Razmislite i o tome da omogućite opciju dvo-faktorske autentifikacije, što je generalno govoreći dobra praksa. 
 
 Dobrodošli u svojstvu [Aspirant], nadamo se da ćete uskoro postati [Regular]!</value>
   </data>
@@ -141,7 +141,7 @@ Trebalo bi da su Vas ljudi iz [OrganizationName] već kontaktirali, vezano za to
 Vašu inicijalnu i slučajno generisanu lozinku za Swarmops, softver koristi u back-end sistemu, i ona glasi:
 [RandomPassword]
 
-Trebalo bi da se prijavite i da što pre izmenite ovu lozinku nekom koja je sigurnija. Procedura podrazumeva da se prijavite na [ExternalUrl], a da zatim kliknete na ikonicu "User" ("Korisnik") koja se nalazi u gornjem desnom uglu. Potom je potrebno da seletkujete Security tab (Tab sigurnost, oblika katanca) i da unesete ovu privremenu lozinku, a zatim da upišete novu lozinku. Razmislite i o tome da omogućite opciju dvo-faktorske autentifikacije, što je generalno govoreći dobra praksa. 
+Trebalo bi da se prijavite i da što pre izmenite ovu lozinku nekom koja je sigurnija. Procedura podrazumeva da se prijavite na [ExternalUrl], a da zatim kliknete na ikonicu "User" ("Korisnik") koja se nalazi u gornjem desnom uglu. Potom je potrebno da selektujete Security tab (Tab sigurnost, oblika katanca) i da unesete ovu privremenu lozinku, a zatim da upišete novu lozinku. Razmislite i o tome da omogućite opciju dvo-faktorske autentifikacije, što je generalno govoreći dobra praksa. 
 
 Dobrodošli!</value>
   </data>
@@ -155,7 +155,7 @@ Trebalo bi da su Vas ljudi iz [OrganizationName] već kontaktirali, vezano za to
 Vašu inicijalnu i slučajno generisanu lozinku za Swarmops, softver koristi u back-end sistemu, i ona glasi:
 [RandomPassword]
 
-Trebalo bi da se prijavite i da što pre izmenite ovu lozinku nekom koja je sigurnija. Procedura podrazumeva da se prijavite na [ExternalUrl], a da zatim kliknete na ikonicu "User" ("Korisnik") koja se nalazi u gornjem desnom uglu. Potom je potrebno da seletkujete Security tab (Tab sigurnost, oblika katanca) i da unesete ovu privremenu lozinku, a zatim da upišete novu lozinku. Razmislite i o tome da omogućite opciju dvo-faktorske autentifikacije, što je generalno govoreći dobra praksa. 
+Trebalo bi da se prijavite i da što pre izmenite ovu lozinku nekom koja je sigurnija. Procedura podrazumeva da se prijavite na [ExternalUrl], a da zatim kliknete na ikonicu "User" ("Korisnik") koja se nalazi u gornjem desnom uglu. Potom je potrebno da selektujete Security tab (Tab sigurnost, oblika katanca) i da unesete ovu privremenu lozinku, a zatim da upišete novu lozinku. Razmislite i o tome da omogućite opciju dvo-faktorske autentifikacije, što je generalno govoreći dobra praksa. 
 
 Dobrodošli!</value>
   </data>

@@ -117,20 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SendMassMessage_Error_EmptyBody" xml:space="preserve">
+    <value>Pre slanja, trebalo bi da napišete tekst poruke.</value>
+  </data>
+  <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
+    <value>Pre slanja, trebalo bi da napišete naslov poruke.</value>
+  </data>
+  <data name="SendMassMessage_Geography" xml:space="preserve">
+    <value>Koji se nalazi u</value>
+  </data>
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>Vaša poruka</value>
+  </data>
+  <data name="SendMassMessage_Info" xml:space="preserve">
+    <value>Slanje poruka grupi ljudi unutar organizacije. Poruku možete poslati putem mail-a (dobar način za slanje generalnih informacija i biltena) ili putem telefona (nametljivo, a i košta).</value>
+  </data>
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>Ovde otkucajte svoju poruku. Na raspolaganju imate standardne markup opcije, kao što su *bold*, _italic_, ==headers==. Dve nove linije otpočinju novi paragraf. Ovaj mail će biti poslat na dva načina, kao cleartext i HTML.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>Nema primalaca| Jedan primalac|{0:N0} Primalaca</value>
+    <comment>Vertical bar divides none|one|many</comment>
+  </data>
+  <data name="SendMassMessage_RecipientType" xml:space="preserve">
+    <value>Pošalji masovnu poruku svima</value>
+  </data>
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>Trenutno koristite Sandbox. Da biste želeli da testirate slanje poruka?</value>
+  </data>
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>Pošalji</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>Vaša poruka je sada poslata na adrese primalaca. Nakon što slanje bude u potpunosti obavljeno, bićete obavešteni.</value>
+  </data>
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>Naslov</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
+  </data>
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>Test</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>Ova poruka je prvo poslata Vama, da biste videli kako izgleda pre nego što se prosledi ostalima.</value>
+  </data>
+  <data name="SendMassMessage_Title" xml:space="preserve">
+    <value>Pošalji masovnu poruku</value>
+  </data>
 </root>

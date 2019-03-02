@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Attest_CashAdvance_Many" xml:space="preserve">
-    <value>Potvrđivanje prispeća (cash advances) {0}</value>
+    <value>Potvrdi avanse {0}</value>
   </data>
   <data name="Attest_CashAdvance_One" xml:space="preserve">
-    <value>Potvrdi prispeće (cash advance) #{0}</value>
+    <value>Potvrdi avans #{0}</value>
   </data>
   <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
-    <value>Potvrdi zahteve za refundaciju {0}</value>
+    <value>Potvrdi zahtev za refundaciju {0}</value>
   </data>
   <data name="Attest_ExpenseClaim_One" xml:space="preserve">
     <value>Potvrdi zahtev za refundaciju #{0}</value>
@@ -133,7 +133,7 @@
     <value>Podesi Bitcoin Cash adresu za isplatu</value>
   </data>
   <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
-    <value>Molimo Vas, podesite Bitcoin Cash adresu za uplate iz [InstallationName] (počinje sa "bitcoincash"):</value>
+    <value>Molimo Vas, podesite Bitcoin Cash adresu za isplate iz [InstallationName] (počinje sa "bitcoincash"):</value>
   </data>
   <data name="Payout_Many" xml:space="preserve">
     <value>Reši {0} isplata</value>

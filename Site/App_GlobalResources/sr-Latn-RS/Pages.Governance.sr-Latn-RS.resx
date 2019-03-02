@@ -121,80 +121,277 @@
     <value>Snimljeno kao #{0}-{1}.</value>
     <comment>Keep very short</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AddMotionAmendment_Decision" xml:space="preserve">
+    <value>Predložena odluka</value>
+    <comment>Decision to be made, amending the motion</comment>
+  </data>
+  <data name="AddMotionAmendment_PageTitle" xml:space="preserve">
+    <value>Dodavanje amandmana</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="AddMotionAmendment_SubmitAmendment" xml:space="preserve">
+    <value>Podnesi amandman</value>
+  </data>
+  <data name="AddMotionAmendment_Submitter" xml:space="preserve">
+    <value>Podnosilac</value>
+  </data>
+  <data name="AddMotionAmendment_SubmittingAmendmentInfo" xml:space="preserve">
+    <value>Podnosite amandman na član</value>
+    <comment>In sidebar info box. Motion title follows in bold.</comment>
+  </data>
+  <data name="AddMotionAmendment_Text" xml:space="preserve">
+    <value>Obrazloženje</value>
+    <comment>Text of motion amendment (justification and rationale)</comment>
+  </data>
+  <data name="AddMotionAmendment_Title" xml:space="preserve">
+    <value>Naslov amandmana</value>
+  </data>
+  <data name="AddMotion_Decisions" xml:space="preserve">
+    <value>Odluke (po jedna u svakom redu)</value>
+    <comment>Proposed decisions, one per line</comment>
+  </data>
+  <data name="AddMotion_MotionSubmittedAs" xml:space="preserve">
+    <value>Član je zaveden pod brojem #{0}.</value>
+    <comment>Keep short</comment>
+  </data>
+  <data name="AddMotion_PageTitle" xml:space="preserve">
+    <value>Dodaj član</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="AddMotion_SubmitMotion" xml:space="preserve">
+    <value>Podnesi član</value>
+  </data>
+  <data name="AddMotion_Submitter" xml:space="preserve">
+    <value>Podnosilac</value>
+    <comment>Original submitter (not person at keyboard)</comment>
+  </data>
+  <data name="AddMotion_SubmittingMotionInfo" xml:space="preserve">
+    <value>Podnosite član na zasedanje</value>
+    <comment>Meeting name follows in bold.</comment>
+  </data>
+  <data name="AddMotion_Text" xml:space="preserve">
+    <value>Obrazloženje podnetog člana</value>
+    <comment>Text of motion</comment>
+  </data>
+  <data name="AddMotion_Title" xml:space="preserve">
+    <value>Naslov člana</value>
+    <comment>Motion title in form</comment>
+  </data>
+  <data name="AddMotion_WrongMeeting" xml:space="preserve">
+    <value>Pogrešno zasedanje?</value>
+    <comment>Link to change meetings</comment>
+  </data>
+  <data name="ListMotions_Grid_Amended" xml:space="preserve">
+    <value>Izmene i dopune</value>
+  </data>
+  <data name="ListMotions_Grid_Amendments" xml:space="preserve">
+    <value>Amandmani</value>
+  </data>
+  <data name="ListMotions_Grid_Carried" xml:space="preserve">
+    <value>Pregled članova</value>
+  </data>
+  <data name="ListMotions_Grid_Designation" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="ListMotions_Grid_Title" xml:space="preserve">
+    <value>Naslov</value>
+  </data>
+  <data name="ListMotions_PageTitle" xml:space="preserve">
+    <value>Lista članova</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="ListMotions_Sidebar_Info" xml:space="preserve">
+    <value>Pregledate predloge članova za sednicu</value>
+  </data>
+  <data name="ListMotions_SubmitAmendment" xml:space="preserve">
+    <value>Podnesi...</value>
+    <comment>Displayed in-grid</comment>
+  </data>
+  <data name="ViewMotion_AddAmendment" xml:space="preserve">
+    <value>Predloži novi amandman na član</value>
+  </data>
+  <data name="ViewMotion_Amendment" xml:space="preserve">
+    <value>Amandman</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountOne" xml:space="preserve">
+    <value>Jedan amandman</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountTwoPlus" xml:space="preserve">
+    <value>{0} amandman</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountZero" xml:space="preserve">
+    <value>Nema amandmana</value>
+  </data>
+  <data name="ViewMotion_AmendmentProposedChange" xml:space="preserve">
+    <value>Predložene izmene</value>
+  </data>
+  <data name="ViewMotion_AmendmentText" xml:space="preserve">
+    <value>Obrazloženje</value>
+  </data>
+  <data name="ViewMotion_DecisionPoints" xml:space="preserve">
+    <value>Predložene odluke</value>
+  </data>
+  <data name="ViewMotion_Discuss" xml:space="preserve">
+    <value>Tema diskusije</value>
+    <comment>Label before link to forum or similar</comment>
+  </data>
+  <data name="ViewMotion_DiscussLink" xml:space="preserve">
+    <value>Tema foruma (do sada objavljeno postova: {0})</value>
+    <comment>Hyperlink text</comment>
+  </data>
+  <data name="ViewMotion_MotionDesignation" xml:space="preserve">
+    <value>Član #{0}</value>
+  </data>
+  <data name="ViewMotion_PageTitle" xml:space="preserve">
+    <value>Pregled člana</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="ViewMotion_Text" xml:space="preserve">
+    <value>Obrazloženje člana</value>
+  </data>
+  <data name="ViewMotion_ViewingMotionInfo" xml:space="preserve">
+    <value>Pregledate član koji je poslat na sednicu</value>
+    <comment>In sidebar info box. Meeting name follows in bold.</comment>
+  </data>
+  <data name="VoteAmendments_BoardRecommendation" xml:space="preserve">
+    <value>Preporuka odbora</value>
+    <comment>First item in dropdown box</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Abstain" xml:space="preserve">
+    <value>Uzdrž.</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Board" xml:space="preserve">
+    <value>Odbor saopštava</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Change" xml:space="preserve">
+    <value>Izmena</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Decision" xml:space="preserve">
+    <value>Odluka</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Designation" xml:space="preserve">
+    <value>#</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_No" xml:space="preserve">
+    <value>Protiv</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
+    <value>Obrazloženje</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Recommend" xml:space="preserve">
+    <value>Zapis</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Text" xml:space="preserve">
+    <value>Tekst</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_TitleText" xml:space="preserve">
+    <value>Tekst / Naslov</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Yes" xml:space="preserve">
+    <value>Za</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Header" xml:space="preserve">
+    <value>Amandmana na {0}</value>
+    <comment>In content box header. The meeting name goes in {0}.</comment>
+  </data>
+  <data name="VoteAmendments_Info" xml:space="preserve">
+    <value>Glasanjem se uvode promene (amandmani) u članove. Ako na glasanju prođu, oni postaju deo člana. U narednoj rundi, glasaće se o preostalim članovima. Individualni amandmani sačinjavaju svaki član i za svaki član i/ili amandman postoje dodatni detalji. Ako želite, selektujte predloge kako treba glasati.</value>
+  </data>
+  <data name="VoteAmendments_PageTitle" xml:space="preserve">
+    <value>Glasaj o amandmanima</value>
+    <comment>In page title and header</comment>
+  </data>
+  <data name="VoteAmendments_Recommend_Abstain" xml:space="preserve">
+    <value>---</value>
+  </data>
+  <data name="VoteAmendments_Recommend_No" xml:space="preserve">
+    <value>PROTIV</value>
+  </data>
+  <data name="VoteAmendments_Recommend_Yes" xml:space="preserve">
+    <value>ZA</value>
+  </data>
+  <data name="VoteAmendments_SelectRecommendation" xml:space="preserve">
+    <value>Izaberi preporuke...</value>
+    <comment>Default in dropdown box</comment>
+  </data>
+  <data name="Vote_CreateVotingList" xml:space="preserve">
+    <value>Kreiranje liste za glasanje?</value>
+    <comment>This becomes a link which folds out to a popup asking "for motions or amendments".</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Amendments" xml:space="preserve">
+    <value>Kreiraj listu za glasanje o amandmanima</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Elections" xml:space="preserve">
+    <value>Kreiraj listu za izbore</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Motions" xml:space="preserve">
+    <value>Kreiraj listu za članove</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_Info" xml:space="preserve">
+    <value>Nekada, {0} organizuje sastanke. Tokom sastanaka, članovi mogu da glasaju. Ovo je lista predloga koji se stavljaju na glasanje. Takođe, možete kreirati listu za glasanje koja služi kao preporuka ostalima.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Vote_MeetingElections" xml:space="preserve">
+    <value>Izbori</value>
+  </data>
+  <data name="Vote_Motions" xml:space="preserve">
+    <value>Članovi</value>
+  </data>
+  <data name="Vote_MotionVotingMotionAmendments" xml:space="preserve">
+    <value>Amandmani na članove</value>
+  </data>
+  <data name="Vote_MotionVotingMotions" xml:space="preserve">
+    <value>Članovi</value>
+  </data>
+  <data name="Vote_NotOpenedYet" xml:space="preserve">
+    <value>Još nije otvoreno</value>
+    <comment>Keep very short.</comment>
+  </data>
+  <data name="Vote_OpensOnDate" xml:space="preserve">
+    <value>Otvara se {0:yyyy-MMM-dd}.</value>
+    <comment>Note the embedded date format. Localize to national standard.</comment>
+  </data>
+  <data name="Vote_PageTitle" xml:space="preserve">
+    <value>Glasajte</value>
+  </data>
+  <data name="Vote_PointsOfOrder" xml:space="preserve">
+    <value>Tačke dnevnog reda</value>
+  </data>
+  <data name="Vote_PointsOfOrderTemp" xml:space="preserve">
+    <value>Trenutno nema novih tačaka.</value>
+  </data>
+  <data name="Vote_VoteHere" xml:space="preserve">
+    <value>Glasajte ovde</value>
+    <comment>Link to voting page</comment>
+  </data>
+  <data name="Vote_VoteOnAmendments" xml:space="preserve">
+    <value>Glasajte na {0:N0} amandmana:</value>
+    <comment>The {0} is the amendment count.</comment>
+  </data>
+  <data name="Vote_VoteOnMotions" xml:space="preserve">
+    <value>Glasajte na {0:N0} članova:</value>
+    <comment>The {0} is the motion count.</comment>
+  </data>
+  <data name="VoteAmendments_SaveVote" xml:space="preserve">
+    <value>Završio(la) sam, podnesi moj glas</value>
+    <comment>Button at end of page</comment>
+  </data>
+  <data name="VoteAmendments_SaveVote_Temp" xml:space="preserve">
+    <value>Nije moguće glasanje na test-sednici</value>
+    <comment>For Tests Only</comment>
+  </data>
 </root>

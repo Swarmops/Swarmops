@@ -417,25 +417,9 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>crwdns6555324:0crwdne6555324:0</value>
   </data>
-  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
-    <value>crwdns6556439:0crwdne6556439:0</value>
-  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>crwdns6555325:0crwdne6555325:0</value>
     <comment>Amount to be paid out</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
-    <value>crwdns6556440:0crwdne6556440:0</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
-    <value>crwdns6555326:0crwdne6555326:0</value>
-    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
-    <value>crwdns6555327:0crwdne6555327:0</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
-    <value>crwdns6555328:0crwdne6555328:0</value>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>crwdns6555329:0crwdne6555329:0</value>
@@ -445,18 +429,8 @@
     <value>crwdns6555330:0crwdne6555330:0</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>crwdns6555331:0crwdne6555331:0</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
-    <value>crwdns6556441:0crwdne6556441:0</value>
-  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>crwdns6555332:0crwdne6555332:0</value>
-  </data>
-  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
-    <value>crwdns6556442:0crwdne6556442:0</value>
   </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>crwdns6555333:0crwdne6555333:0</value>
@@ -730,5 +704,53 @@
   <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
     <value>crwdns6563474:0{0:N0}crwdnd6563474:0{1}crwdne6563474:0</value>
     <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_CurrencyMethod" xml:space="preserve">
+    <value>crwdns6563568:0crwdne6563568:0</value>
+    <comment>"Method" refers to the method of payout -- wire transfer, direct deposit, giro service, etc.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_PayThis" xml:space="preserve">
+    <value>crwdns6563570:0crwdne6563570:0</value>
+    <comment>Like the "Actions" column in other grids, but just with one option, "Pay this expenditure"</comment>
+  </data>
+  <data name="PayOutMoney_Modal_ConfirmPaid" xml:space="preserve">
+    <value>crwdns6563572:0crwdne6563572:0</value>
+    <comment>As in "Confirm The Currently Displayed Payout Has Been Manually Executed" -- try to keep short, "This is Paid" length is ideal</comment>
+  </data>
+  <data name="PayOutMoney_Modal_CurrencyAmount" xml:space="preserve">
+    <value>crwdns6563574:0crwdne6563574:0</value>
+    <comment>Will be a label for something like "USD 10,000.00"</comment>
+  </data>
+  <data name="PayOutMoney_Modal_Header" xml:space="preserve">
+    <value>crwdns6563576:0crwdne6563576:0</value>
+    <comment>Displayed as header over the details of a payment to be made manually (as opposed to with bitcoin/crypto)</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr1" xml:space="preserve">
+    <value>crwdns6563578:0crwdne6563578:0</value>
+    <comment>In longer form, the question would be "Are you using a mobile phone or other device to capture this payment data automatically?". Some banking apps can scan QR codes or specially formatted number sequences.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr2" xml:space="preserve">
+    <value>crwdns6563580:0crwdne6563580:0</value>
+    <comment>Don't make this string much longer than it is.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_TransferMethod" xml:space="preserve">
+    <value>crwdns6563582:0crwdne6563582:0</value>
+    <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
+  </data>
+  <data name="PayOutMoney_AutomationFieldNext" xml:space="preserve">
+    <value>crwdns6563584:0crwdne6563584:0</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
+  <data name="PayOutMoney_AutomationFieldStart" xml:space="preserve">
+    <value>crwdns6563586:0crwdne6563586:0</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>crwdns6555331:0crwdne6555331:0</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  <data name="PayOutMoney_PaymentLate" xml:space="preserve">
+    <value>crwdns6563588:0crwdne6563588:0</value>
+    <comment>"Late" in this context means "after its due date".</comment>
   </data>
 </root>

@@ -463,8 +463,8 @@
     <value>crwdns6563352:0crwdne6563352:0</value>
     <comment>This lists salary payments for the logged on individual</comment>
   </data>
-  <data name="Menu5_Ledgers_DeprecatingAmortizedAssets" xml:space="preserve">
-    <value>crwdns6563354:0crwdne6563354:0</value>
+  <data name="Menu5_Ledgers_DepreciatingAmortizedAssets" xml:space="preserve">
+    <value>crwdns6563598:0crwdne6563598:0</value>
   </data>
   <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
     <value>crwdns6563356:0crwdne6563356:0</value>

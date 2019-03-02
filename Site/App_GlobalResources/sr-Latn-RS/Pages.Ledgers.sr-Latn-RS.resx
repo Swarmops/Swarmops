@@ -117,269 +117,922 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AccountPlan_CreateRootAccount" xml:space="preserve">
+    <value>Otvori novi bazni (root) nalog</value>
+  </data>
+  <data name="AccountPlan_Info" xml:space="preserve">
+    <value>Ovo je pregled Vaših finansijskih računa u poslovnoj knjizi. Odavde možete vršiti bazične operacije vezane za održavanje, čak i ako većina radnji treba da se usmeri na vlasnike budžeta.</value>
+  </data>
+  <data name="AccountPlan_PageTitle" xml:space="preserve">
+    <value>Grafik naloga</value>
+  </data>
+  <data name="BalanceSheet_AccountName" xml:space="preserve">
+    <value>Račun</value>
+  </data>
+  <data name="BalanceSheet_ContentHeader" xml:space="preserve">
+    <value>Tabela stanja za {0},</value>
+    <comment>{0} is the organization name. The year follows immediately, so keep ending comma.</comment>
+  </data>
+  <data name="BalanceSheet_Current" xml:space="preserve">
+    <value>Trenutno</value>
+  </data>
+  <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
+    <value>TabelaStanja</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="BalanceSheet_EndYear" xml:space="preserve">
+    <value>Završetak-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="BalanceSheet_Info" xml:space="preserve">
+    <value>Tabela stanja daje prikaz sredstava i dugovanja u datom vremenskom trenutku i koristi se da bi se stekao uvid u opšte stanje organizacije. Možda biste želeli da pogledate i &lt;a href="ProfitLossStatement"&gt;izjavu o dobicima i gubicima&lt;/a&gt; koja predstavlja prihode i rashode.</value>
+  </data>
+  <data name="BalanceSheet_PageTitle" xml:space="preserve">
+    <value>Tabela bilansa stanja</value>
+  </data>
+  <data name="BalanceSheet_Q1" xml:space="preserve">
+    <value>Promena za Q1</value>
+  </data>
+  <data name="BalanceSheet_Q2" xml:space="preserve">
+    <value>Promena za Q2</value>
+  </data>
+  <data name="BalanceSheet_Q3" xml:space="preserve">
+    <value>Promena za Q3</value>
+  </data>
+  <data name="BalanceSheet_Q4" xml:space="preserve">
+    <value>Promena za Q4</value>
+  </data>
+  <data name="BalanceSheet_StartYear" xml:space="preserve">
+    <value>Početak-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="ProfitLossStatement_AccountName" xml:space="preserve">
+    <value>Račun</value>
+  </data>
+  <data name="ProfitLossStatement_ContentHeader" xml:space="preserve">
+    <value>D.i G. za {0} za</value>
+    <comment>The {0} is the organization name. The year number follows this string.</comment>
+  </data>
+  <data name="ProfitLossStatement_DownloadFileName" xml:space="preserve">
+    <value>DobitakGubitak</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="ProfitLossStatement_Info" xml:space="preserve">
+    <value>D.i G. daje uvid u prihode i rashode koji su grupisani na osnovu pripadnosti budžetu ili po tipu uloženog/dobijenog. Godišnji rezultat se dobija kao razlika svih prihoda i svih rashoda. Možda biste želeli da pogledate i &lt;a href="BalanceSheet"&gt;tabelu bilansa stanja&lt;/a&gt; koja prikazuje raspoloživa sredstva i dugovanja.</value>
+  </data>
+  <data name="ProfitLossStatement_LastYear" xml:space="preserve">
+    <value>Za prošlu godinu</value>
+  </data>
+  <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
+    <value>Profit i Gubici, Izjava</value>
+  </data>
+  <data name="ProfitLossStatement_Results" xml:space="preserve">
+    <value>Rezultati</value>
+    <comment>Footer on P&amp;L statement</comment>
+  </data>
+  <data name="ProfitLossStatement_Ytd" xml:space="preserve">
+    <value>Pr.God.</value>
+    <comment>Year To Date</comment>
+  </data>
+  <data name="ResyncExternalAccount_Info" xml:space="preserve">
+    <value>Ako je Vaše knjigovodstvo pri Swarmops-u izgubilo sinhronizaciju sa bankarskim izveštajima, iz bilo kog razloga (tehnički problem ili ljudski faktor), sinhronizaciju možete izvršiti slanjem master fajla koji pokriva vremenski interval koji treba da se usaglasi.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Upozorenje:&lt;/strong&gt; ovo je vremenski zahtevan proces koji može da unese &lt;em&gt;puno&lt;/em&gt; izmena u poslovne knjige. Koristite ovu mogućnost jedino onda kada utvrdite neslaganja između Vaše evidencije i evidencije banke.&lt;br/&gt;&lt;br/&gt;(Pre nego što se izmene uvrste u Vaše knjige, imaćete priliku da pogledate predložene izmene.)</value>
+  </data>
+  <data name="ResyncExternalAccount_PageTitle" xml:space="preserve">
+    <value>Resinhronizuj račun banke</value>
+  </data>
+  <data name="SetRootBudgets_BudgetOwnerHeader" xml:space="preserve">
+    <value>Budžet, vlasnik</value>
+    <comment>Displayed above editables</comment>
+  </data>
+  <data name="SetRootBudgets_Info" xml:space="preserve">
+    <value>Na ovom mestu se definišu osnovni budžeti za svaku budžetsku godinu. Nakon što se definišu glavni budžeti, iz njih se dalje granaju sredstva koja imaju neku određeniju podnamenu.</value>
+  </data>
+  <data name="SetRootBudgets_PageHeader" xml:space="preserve">
+    <value>Osnovni budžeti za {0}</value>
+    <comment>The {0} is replaced with the organization's name.</comment>
+  </data>
+  <data name="SetRootBudgets_PageTitle" xml:space="preserve">
+    <value>Zadaj budžete osnovnog nivoa</value>
+    <comment>Displayed above main content</comment>
+  </data>
+  <data name="SetRootBudgets_SetNewBudgets" xml:space="preserve">
+    <value>Zadaj nove budžete</value>
+    <comment>Text on submit button</comment>
+  </data>
+  <data name="UploadBankFiles_AccountStatement" xml:space="preserve">
+    <value>Izvod sa računa</value>
+  </data>
+  <data name="UploadBankFiles_BankAccount" xml:space="preserve">
+    <value>Bankovni račun</value>
+  </data>
+  <data name="UploadBankFiles_BankScreenshot" xml:space="preserve">
+    <value>Snimak ekrana banke</value>
+    <comment>Displayed as header above modally zoomed screenshot</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince" xml:space="preserve">
+    <value>&lt;/p&gt;&lt;p&gt;(Najnoviji podaci u Swarmops-u u &lt;em&gt;{0}&lt;/em&gt; potiču od {1:yyyy-MMM-dd}. Trebalo bi da preuzmete bankarske podatke od makar &lt;strong&gt;{2:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
+    <comment>Displayed to help user determine scope of bank download</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince_Paypal" xml:space="preserve">
+    <value>&lt;/p&gt;&lt;p&gt;(Paypal će Vas obavestiti o o vremenu kada je izvršeno poslednje preuzimanje transakcije. Preuzmite sve transakcije od navedenog datuma i na to dodajte otprilike tri dana preklapanja.)</value>
+    <comment>Displayed instead of date of last transaction in the case of Paypal.</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
+    <value>Uputstvo za preuzimanje podataka banke</value>
+    <comment>Header above instructions for generation of the bank file type selected.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
+    <value>&lt;p&gt;Fajl sadrži {0:N0} transakcija. &lt;strong&gt;{1:N0} transakcija&lt;/strong&gt; je uspešno uveženo u &lt;em&gt;{2}&lt;/em&gt; nalog za knjigovodstvo. ({3:N0} transakcija su bili duplikati.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Ipak, stanje izvoda iz banke se ne poklapa sa stanjem prikazanim u Swarmops-u.&lt;/strong&gt; To se obično događa onda kada se neke transakcije propuste. Molimo Vas, otpremite listu transakcija za duži vremenski period, kako biste osigurali da Swarmops vidi sve transakcije.&lt;/p&gt;&lt;p&gt;Swarmops-ov nalog za vođenje poslovnih knjiga trenutno &lt;strong&gt;nije sinhronizovan&lt;/strong&gt; sa odgovarajućim nalogom u banci.&lt;/p&gt;</value>
+    <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
+    <value>&lt;h3&gt;Nije bilo moguće uvesti fajl iz banke.&lt;/h3&gt;&lt;p&gt;To se može dogoditi iz tri razloga: propustili ste neki detalj u uputstvima za preuzimanje, banka je promenila format fajla, ili ste slučajno otpremili potpuno pogrešan fajl (tipa fotografiju sa sinoćne zabave umesto liste transakcija). Nijedna transakcija nije uvežena. &lt;strong&gt;Pokušajte ponovo.&lt;/strong&gt;</value>
+  </data>
+  <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
+    <value>Očekivani fajl</value>
+    <comment>The name of the expected file for uploading.</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader" xml:space="preserve">
+    <value>Fajl je uspešno uvežen</value>
+    <comment>Displayed as header after successful processing</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader_ErrorBalance" xml:space="preserve">
+    <value>Fajl je uvežen, ali podaci nisu sinhronizovani</value>
+    <comment>Displayed as header after a good processing that ended in sync failure</comment>
+  </data>
+  <data name="UploadBankFiles_FileType" xml:space="preserve">
+    <value>Tip fajla</value>
+    <comment>can be Account Statement or Payments File</comment>
+  </data>
+  <data name="UploadBankFiles_ImportError" xml:space="preserve">
+    <value>Greška prilikom uvoženja fajla</value>
+    <comment>Displayed as header on import failure</comment>
+  </data>
+  <data name="UploadBankFiles_ImportResults" xml:space="preserve">
+    <value>&lt;p&gt;Fajl sadrži {0:N0} transakcija. &lt;strong&gt;{1:N0} transakcija&lt;/strong&gt; je uspešno uveženo u &lt;em&gt;{2}&lt;/em&gt; nalog za knjigovodstvo. ({3:N0} transakcija su bili duplikati.)&lt;/p&gt;&lt;p&gt;Nakon uvoza, bilans stanja na Swarmops-u se poklapa sa stanjem koje prikazuje banka.&lt;/p&gt;</value>
+    <comment>Displayed on successful import. Assumes plural among all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles_Info" xml:space="preserve">
+    <value>Odavde možete da otpremite fajlove svoje banke ili drugog servisa za naplatu u poslovne knjige organizacije. Primeri uključuju istoriju naloga i primljenih uplata.</value>
+    <comment>Displayed in sidebar on page.</comment>
+  </data>
+  <data name="UploadBankFiles_Instructions" xml:space="preserve">
+    <value>Uputstva</value>
+  </data>
+  <data name="UploadBankFiles_PageTitle" xml:space="preserve">
+    <value>Pošalji bankarske fajlove</value>
+    <comment>Displayed above main content.</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentAllDuplicates" xml:space="preserve">
+    <value>Na žalost, sve informacije o obavljenim plaćanjima koje ste otpremili su bili duplikati. Nijedna nova informacija o plaćanjima nije uvežena u Swarmops.</value>
+  </data>
+  <data name="UploadBankFiles_PaymentCount" xml:space="preserve">
+    <value>nema plaćanja|jedno plaćanje|{0} plaćanja</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentFileUploadedHeader" xml:space="preserve">
+    <value>Fajl sa plaćanjima je otpremljen</value>
+  </data>
+  <data name="UploadBankFiles_PaymentGroupCount" xml:space="preserve">
+    <value>ne postoji grupa za plaćanje|jedna grupa za plaćanje|{0} grupa za plaćanje</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentsFile" xml:space="preserve">
+    <value>Fajlovi za plaćanja</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary1" xml:space="preserve">
+    <value>Fajl za plaćanje sadrži {0}.</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary2" xml:space="preserve">
+    <value>&lt;strong&gt;{0} {1:N2}&lt;/strong&gt; u plaćanjima koja su uvežena, distribuirana putem {2} preko {3}.</value>
+    <comment>like EUR 2,102.00 in 3 payments across 2 groups </comment>
+  </data>
+  <data name="UploadBankFiles_PaymentSummaryDuplicates" xml:space="preserve">
+    <value>Ima nekih duplikata informacija ({0} preko {1}).</value>
+  </data>
+  <data name="UploadBankFiles_Processing" xml:space="preserve">
+    <value>Obrađivanje fajla...</value>
+  </data>
+  <data name="UploadBankFiles_ProcessingComplete" xml:space="preserve">
+    <value>Obrada je završena</value>
+  </data>
+  <data name="UploadBankFiles_ResultsBad" xml:space="preserve">
+    <value>&lt;p&gt;&lt;br/&gt;&lt;strong&gt;Fajl ne može biti pročitan kao ulazni fajl navedene banke.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Postoji nekoliko razloga zašto se ovo dogodilo: sam fajl je možda oštećen, banka je možda promenila format fajla, ili ste podneli u potpunosti pogrešan fajl. Pokušajte ponovo.&lt;/p&gt;</value>
+    <comment>Displayed when the input file can't be parsed, before import attempt.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsGood" xml:space="preserve">
+    <value>&lt;p&gt;Fajl je &lt;strong&gt;uspešno uvežen.&lt;/strong&gt; {0:N0} novih transakcija je uveženo; {1:N0} je odbačeno jer su duplikati i već postoje u Swarmops bazi. Bilans stanja koji prikazuje Swarmops se poklapa sa bilansom koji prikazuje banka.&lt;/p&gt;&lt;p&gt;Fajl sadrži podatke o transakcijama od {2:yyyy-MMM-dd} do {3:yyyy-MMM-dd}.&lt;/p&gt;</value>
+    <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsQuestionable" xml:space="preserve">
+    <value>&lt;p&gt;Fajl je uvežen ali &lt;strong&gt;postoje neslaganja u bilansima.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Nakon uvoženja {0:N0} transakcija (i odbacivanja {1:N0} duplikata), čitav fajl je obrađen. Ipak bilans u banci i bilans na Swarmops se ne poklapaju; a razlika je {3} {2:N2}.&lt;/p&gt;
+&lt;p&gt;Molimo Vas da uvezete noviji izveštaj. Ako se i dalje bude javljalo neslaganje, probajte da &lt;a href="/Pages/v5/Ledgers/ResyncExternalAccount.aspx"&gt;resinhronizujete&lt;/a&gt; bankovni račun i odgovarajući fajl.&lt;/p&gt;</value>
+    <comment>Displayed on successful import, but the resulting balance is off compared to the account statement file that was just uploaded. 2 is the diff, 3 is the currency.</comment>
+  </data>
+  <data name="UploadBankFiles_SelectAccount" xml:space="preserve">
+    <value>Selektujte knjigovodstveni nalog</value>
+    <comment>Select prompt for the financial account in the organization's bookkeeping.</comment>
+  </data>
+  <data name="UploadBankFiles_SelectBankAndAccount" xml:space="preserve">
+    <value>Selektujte tip fajla i nalog za otpremanje</value>
+  </data>
+  <data name="UploadBankFiles_SelectBankFileType" xml:space="preserve">
+    <value>Selektujte tip fajla banke</value>
+    <comment>Header above several bank logos, prompting a selection of bank.</comment>
+  </data>
+  <data name="UploadBankFiles_UploadAnother" xml:space="preserve">
+    <value>Otpremanje još jednog fajla banke?</value>
+    <comment>Displayed as header after uploading one file</comment>
+  </data>
+  <data name="UploadBankFiles_UploadBankFile" xml:space="preserve">
+    <value>Otpremi fajl banke</value>
+    <comment>Displayed as header above download instructions / upload form</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterDifference" xml:space="preserve">
+    <value>Razlika</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterLedgerBalance" xml:space="preserve">
+    <value>Poslovna knjiga bilansa</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterTotal" xml:space="preserve">
+    <value>Ukupno</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAction" xml:space="preserve">
+    <value>Akcija</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
+    <value>Iznos</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderExpectedCloseDate" xml:space="preserve">
+    <value>Oč. Zat.</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderId" xml:space="preserve">
+    <value>ID#</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderOpenedDate" xml:space="preserve">
+    <value>Otvoreni datum</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
+    <value>Primalac</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Header" xml:space="preserve">
+    <value>Lista nedovršenih</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Info" xml:space="preserve">
+    <value>Stranica Vam omogućava da verifikujete naloge koji nisu zatvoreni i naloge posebne namene (troškovi, fakture, avansi...), u bilo kom vremenu.</value>
+  </data>
+  <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
+    <value>Lista nezavršenih računa</value>
+  </data>
+  <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
+    <value>Ime računa</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveLong" xml:space="preserve">
+    <value>Da li je ovaj račun otvoren za transakcije?</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
+    <value>Aktivni</value>
+  </data>
+  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
+    <value>Da li je ovo račun pre EBITDA (prihodi bez oduzetih poreza, amortizacija...)?</value>
+    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
+  </data>
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="AccountPlan_Edit_BudgetBalance" xml:space="preserve">
+    <value>Budžet (bilans je &lt;span id="SpanTextCurrency"&gt;foo&lt;/span&gt; &lt;span id="SpanEditBalance"&gt;bar&lt;/span&gt;)</value>
+    <comment>foo, bar replaced on load with actual values</comment>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableLong" xml:space="preserve">
+    <value>Da li ljudi mogu da koriste ovaj nalog za podnošenje izveštaja o troškovima?</value>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
+    <value>Za trošenje</value>
+  </data>
+  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
+    <value>Profil za automatizaciju</value>
+  </data>
+  <data name="AccountPlan_Edit_Header" xml:space="preserve">
+    <value>Nalog za uređivanje</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderAutomation" xml:space="preserve">
+    <value>Automatizacija</value>
+    <comment>Automatic connections to bank, blockchain etc.</comment>
+  </data>
+  <data name="AccountPlan_Edit_HeaderConfiguration" xml:space="preserve">
+    <value>Konfiguracija</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
+    <value>Svakodnevne operacije</value>
+  </data>
+  <data name="AccountPlan_Edit_Parent" xml:space="preserve">
+    <value>Ishodni nalog ili grupa</value>
+  </data>
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
+    <value>Ovo je nalog za troškove. Nalozi poput ovoga obično imaju stanje budžeta koje je u minusu i na taj način izvlače sredstva iz organizacije. Vaš predloženi budžet je postao negativan.</value>
+    <comment>Displayed as a message box</comment>
+  </data>
+  <data name="AccountPlan_Header_AccountName" xml:space="preserve">
+    <value>Nalog</value>
+  </data>
+  <data name="AccountPlan_Header_Balance" xml:space="preserve">
+    <value>Stanje</value>
+  </data>
+  <data name="AccountPlan_Header_Budget" xml:space="preserve">
+    <value>Budžet</value>
+  </data>
+  <data name="AccountPlan_Header_Edit" xml:space="preserve">
+    <value>Uredi</value>
+  </data>
+  <data name="AccountPlan_Header_Flags" xml:space="preserve">
+    <value>Zastavice</value>
+  </data>
+  <data name="InspectLedgers_Header_For" xml:space="preserve">
+    <value>za</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
+    <value>Provera</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_PageTitle" xml:space="preserve">
+    <value>Proveri poslovne knjige</value>
+  </data>
+  
+  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
+    <value>Dolazni saldo</value>
+  </data>
+  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
+    <value>Nema prethodnih bilansa</value>
+  </data>
+  <data name="InspectLedgers_Info" xml:space="preserve">
+    <value>Ovo je originalni, venecijanski način vođenja knjiga organizacije. Možete ih analizirati u detalje u svrhu revizije. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt;&lt;strong&gt;Trenutno gledate nalog za profit i gubitak, pa su stoga znaci obrnuti - prihodi imaju negativan predznak, a rashodi pozitivan&lt;/strong&gt; jer tako funkcioniše venecijansko dvojno knjigovodstvo.&lt;/span&gt;</value>
+  </data>
+  
+  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
+    <value>Na ovom računu nema transakcija za odabrani vremenski period.</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
+    <value>Odlazni bilans</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
+    <value>Završni bilans</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>Završni bilans (do datuma)</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
+  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
+    <value>(Molimo, izaberite nalog.)</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Fajl za plaćanja je &lt;strong&gt;uspešno uvežen.&lt;/strong&gt; {1:N0} plaćanje u {0:N0} grupa, ukupno {3} {2:N2}, uveženo.&lt;/p&gt;</value>
+    <comment>Arguments 0-3 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPaymentsWithDupes" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Fajl za plaćanja je &lt;strong&gt;uspešno uvežen.&lt;/strong&gt; {1:N0} plaćanje u {0:N0} grupa, ukupno {3} {2:N2}, uveženo.&lt;/p&gt;&lt;p&gt;(Bilo je i {5:N0} duplikata plaćanja i {4:N0} grupa.)&lt;/p&gt;</value>
+    <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
+  </data>
+  <data name="AccountPlan_AddAccount" xml:space="preserve">
+    <value>dodaj nalog</value>
+    <comment>Displayed as link in parens after account group name</comment>
+  </data>
+  <data name="AccountPlan_NewAccount" xml:space="preserve">
+    <value>Novi nalog</value>
+    <comment>the name of newly-created accounts, before rename</comment>
+  </data>
+  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
+    <value>Ovo je nalog za troškove. Nalozi poput ovoga obično imaju stanje koje je u minusu. Iznos koji ste naveli je dobio predznak minus.</value>
+  </data>
+  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
+    <value>Inicijalni bilans (fakturisan pod {0}), {1}</value>
+    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
+  </data>
+  <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
+    <value>Prikaži neaktivne naloge (&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
+    <comment>The {0} is the number of inactive accounts.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedLoss" xml:space="preserve">
+    <value>Projektovani gubitak {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedProfit" xml:space="preserve">
+    <value>Projektovani dobitak {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="TaxForms_Payroll_AdditiveTax" xml:space="preserve">
+    <value>Dodatni porez</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_DeductedTax" xml:space="preserve">
+    <value>Odbijeni porez</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
+    <value>Bruto plata</value>
+  </data>
+  <data name="TaxForms_Payroll_Info" xml:space="preserve">
+    <value>Pogledajte primere (već ispunjene poreske obrasce) za platnu listu organizacije koje lako možete iskoristiti za Vaše obrasce. Ipak, moguće je da u zavisnosti od zemlje obrasci variraju.</value>
+  </data>
+  <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
+    <value>Obrasci za porez na platu</value>
+  </data>
+  <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
+    <value>Obrasci za mesečno oporezivanje</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="TaxForms_Payroll_TotalCost" xml:space="preserve">
+    <value>Ukupni troškovi</value>
+  </data>
+  <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
+    <value>Ukupan porez</value>
+  </data>
+  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
+    <value>Pregled/Uređivanje transakcije #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
+    <value>Proveri transakciju #&lt;span id="spanModalTransactionId"&gt;12345&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_AccountName" xml:space="preserve">
+    <value>Ime računa</value>
+  </data>
+  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
+    <value>Bilans je ispravan:</value>
+  </data>
+  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
+    <value>(Nema podataka o transakciji)</value>
+  </data>
+  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
+    <value>Inicijali</value>
+  </data>
+  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
+    <value>Snimljeno</value>
+  </data>
+  <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
+    <value>Transakcija je &lt;span class="spanAnnoyingBlink"&gt;NEPOTPUNA:&lt;/span&gt; nedostaje iznos</value>
+  </data>
+  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
+    <value>Dodajte redove za transakciju</value>
+    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
+  </data>
+  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
+    <value>Prateći detalji o odobrenju</value>
+    <comment>(this means the transaction is locked from editing)</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
+    <value>Potvrdio {0} dana {1:yyyy-MMM-dd}</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
+    <value>u kombinaciji sa</value>
+    <comment>Inserted between transaction causes.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_InvoiceX" xml:space="preserve">
+    <value>&lt;strong&gt;Ulazna faktura #{0:N0}&lt;/strong&gt; od {1}:</value>
+    <comment>the {1} is the supplier name</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
+    <value>Ovo je &lt;strong&gt;Isplata #{0:N0}.&lt;/strong&gt; To je isplata za</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
+    <value>Dokumente validirao {0} dana {1:yyyy-MMM-dd}</value>
+    <comment>"Document" refers to receipts, invoices, etc.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
+    <value>Izvršio {0}.</value>
+    <comment>As in "payout executed by": who actually paid the money?</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
+    <value>Osnovna plata {0} {1:N2}, bruto dodaci {2:+N2;-N2;none}, bruto plata {3:N2}, oduzeti porez {4:N2}, neto podešavanja {5:+N2;-N2;none}, isplata {6:N2}.</value>
+    <comment>The "none"s in the format strings need to be translated.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
+    <value>Molimo Vas, selektujte račun kako biste dodali red ovoj transakciji.</value>
+  </data>
+  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
+    <value>Godišnji gubitak</value>
+  </data>
+  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
+    <value>Godišnji profit</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
+    <value>(detaljni opis zadržanog)</value>
+  </data>
+  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
+    <value>Neproknjižene transakcije (mora se popraviti, sravniti ili poklopiti)</value>
+    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
+    <value>Nalog</value>
+    <comment>Usually the account name. Can also be "several".</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
+    <value>Iznos</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="BalanceTransactions_Info" xml:space="preserve">
+    <value>Neke od finansijskih transakcija koje su automatski uvežene se ne mogu poklopiti. To morate učiniti ručno (ako na primer transakcija ima samo jedan deo koji je kompletno zapisan, recimo iznos novca ali ne i namenu, onda se za takvu transakciju kaže da je "unbalanced", nepotpuna, dok se pojam "dangling payment" odnosi na nepostojanje knjigovodstvenog dela).</value>
+  </data>
+  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
+    <value>Dopunjavanje/Poklapanje transakcija #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; Od &lt;span id="spanModalTransactionDate"&gt;yyyy-mmm-dd&lt;/span&gt;</value>
+    <comment>The span text is replaced runtime.</comment>
+  </data>
+  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
+    <value>Saldo i podudaranje transakcija</value>
+  </data>
+  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
+    <value>Potpuna podudaranja sa datim iznosom</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
+    <value>Podudaranje iznosa ali na neočekivanim datumom/vremenom</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
+    <value>Iznos uz toleranciju od 5%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
+    <value>Stanje</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
+    <value>Poklapanje</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
+    <value>Sravnjavanje razlika u poređenju sa ovim računom:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
+    <value>Transakcija se poklapa sa ovom isplatom:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
+    <value>Transakcija je nepotpuna, nedostaje &lt;span id="spanTransactionUnbalancedBy"&gt;+FOO,BAR.QX&lt;/span&gt;. Da li želite da...</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
+    <value>Da li želite da ručno sravnite ovu transakciju sa računom?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayout" xml:space="preserve">
+    <value>Da li želite da poklopite razliku sa otvorenom isplatom koja se ne podudara?</value>
+  </data>
+  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
+    <value>(Nema otvorenih isplata)</value>
+  </data>
+  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
+    <value>(Nema isplata koje se podudaraju)</value>
+  </data>
+  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
+    <value>Iznos uz toleranciju od 1%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
+    <value>-- Izaberite isplatu --</value>
+  </data>
+  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
+    <value>Iznos uz toleranciju od 10%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
+    <value>Isplata #{0:N0}, {5} (očekivana za {1:yyyy-MMM-dd}) za {2}: {3} {4:N2}</value>
+    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
+    <value>Transakcija se podudara sa ovom isplatom u stranoj valuti:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
+    <value>Mapiraj transakciju u stranoj valuti ({0}% tolerancije)?</value>
+  </data>
+  <data name="BudgetActual_ContentHeader" xml:space="preserve">
+    <value>Budžet vs Stvarno stanje</value>
+  </data>
+  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
+    <value>Očekivani YTD</value>
+    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
+  </data>
+  <data name="BudgetActual_Info" xml:space="preserve">
+    <value>Stranica prikazuje predviđenu podelu budžeta u odnosu na stvarno stanje.</value>
+  </data>
+  <data name="BudgetActual_PageTitle" xml:space="preserve">
+    <value>Budžet vs Stvarno stanje</value>
+    <comment>Financial budget vs. Actual financial outcome</comment>
+  </data>
+  <data name="BitcoinHotwallet_Address" xml:space="preserve">
+    <value>Bitcoin adrese</value>
+  </data>
+  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
+    <value>Saldo microcoins-a</value>
+  </data>
+  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
+    <value>Derivation Path</value>
+  </data>
+  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
+    <value>Vrednost {0}</value>
+    <comment>The {0} is the organization currency.</comment>
+  </data>
+  <data name="BitcoinHotwallet_Header" xml:space="preserve">
+    <value>Hotwallet, detalji</value>
+    <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
+  </data>
+  <data name="BitcoinHotwallet_Info" xml:space="preserve">
+    <value>Ovo prikazuje detalje bitcoin hotwallet-a organizacije, adrese i stanje. (Prazne i prethodno korišćene adrese se ne prikazuju.)</value>
+  </data>
+  <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
+    <value>Bitcoin Hotwallet</value>
+  </data>
+  <data name="BitcoinHotWallet_Empty" xml:space="preserve">
+    <value>Nema sredstava u hotwallet-u.</value>
+  </data>
+  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
+    <value>Hash Transakcije</value>
+  </data>
+  <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
+    <value>Nepotrošeno TxOut</value>
+    <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
+  </data>
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>Sredstava XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_AssetsDelta" xml:space="preserve">
+    <value>(razlika)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
+    <value>Tabela stanja daje prikaz sredstava i dugovanja u datom vremenskom trenutku i koristi se da bi se stekao uvid u opšte stanje organizacije. Možda biste želeli da pogledate i &lt;a href="BalanceSheet"&gt;naprednu tabelu&lt;/a&gt; sa više detalja ili &lt;a href="ProfitLossStatement"&gt;izjavu o profitu i gubitku,&lt;/a&gt; koja daje uvid u prihode i rashode.</value>
+  </data>
+  <data name="BalanceSheet_Liabilities" xml:space="preserve">
+    <value>Obaveze XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_LiabilitiesDelta" xml:space="preserve">
+    <value>(разлика)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_LossToDate" xml:space="preserve">
+    <value>Gubitak do datuma ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
+    <value>Profit do datuma ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
+    <value>Kreiraj transakciju</value>
+    <comment>Text on button for executing create</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDateTime" xml:space="preserve">
+    <value>Datum i vreme transakcije (UTC)</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDescription" xml:space="preserve">
+    <value>Opis transakcije</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDialogHeader" xml:space="preserve">
+    <value>Kreiraj novu transakciju</value>
+    <comment>Header of dialog</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAccount" xml:space="preserve">
+    <value>Račun za prvi red transakcije</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAmount" xml:space="preserve">
+    <value>Iznos u prvom redu transakcije</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
+    <value>Dodaj novu transakciju</value>
+    <comment>Option in sidebar</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
+    <value>Preklopi fakturu</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
+    <value>Preklopi transakciju sa izlaznom fakturom:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
+    <value>Da li se ovo poklapa sa otvorenom izlaznom fakturom?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
+    <value>Da li se ovo poklapa sa otvorenom izlaznom fakturom u nestandardnoj valuti (5% forex tolerancije)?</value>
+  </data>
+  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
+    <value>Najverovatnije podudaranje</value>
+    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
+  </data>
+  <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
+    <value>Izlazna faktura #{0:N0} za {1}, rok {2:yyyy-MMM-dd}: {3}</value>
+    <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
+  </data>
+  <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
+    <value>PDV izveštaj za {1:yyyy-MMM} dodatno</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
+    <value>Poklapanje</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonVatReport" xml:space="preserve">
+    <value>Zatvori PDV izveštaj</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeVatReport" xml:space="preserve">
+    <value>Ova transakcija predstavlja plaćanje/povraćaj za dati PDV izveštaj:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
+    <value>Želite da zatvorite PDV izveštaj za ovu transakciju?</value>
+  </data>
+  <data name="ViewVatReports_Footer_Total" xml:space="preserve">
+    <value>Prijavi zbirove</value>
+  </data>
+  <data name="ViewVatReports_Header_DateTime" xml:space="preserve">
+    <value>Datum/Vreme</value>
+    <comment>Timestamp of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Description" xml:space="preserve">
+    <value>Opis</value>
+    <comment>Description of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Dox" xml:space="preserve">
+    <value>Dokumenti</value>
+    <comment>This is above the "view documents" icon</comment>
+  </data>
+  <data name="ViewVatReports_Header_Inbound" xml:space="preserve">
+    <value>Ulazni PDV</value>
+  </data>
+  <data name="ViewVatReports_Header_Outbound" xml:space="preserve">
+    <value>Izlazni PDV</value>
+  </data>
+  <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
+    <value>Povraćaj</value>
+  </data>
+  <data name="ViewVatReports_Info" xml:space="preserve">
+    <value>Upravo pregledate PDV izveštaj koji se arhivira. Za ovaj period su snimljeni ulazni i izlazni PDV kao i povraćaj. Izveštaj je spreman za slanje poreskim organima.</value>
+  </data>
+  <data name="ViewVatReports_PageTitle" xml:space="preserve">
+    <value>PDV, izveštaji</value>
+    <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
+  </data>
+  <data name="ViewVatReports_Title_View" xml:space="preserve">
+    <value>Pregled</value>
+    <comment>This is the word or words before the name of the displayed VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_Header_NoReports" xml:space="preserve">
+    <value>Nema PDV izveštaja za ovu organizaciju</value>
+  </data>
+  <data name="ViewVatReports_NoReports" xml:space="preserve">
+    <value>Nema PDV izveštaja za prikaz. Verovatno zbog toga što period za prijavu PDV-a nije istekao, te je stoga bilo nemoguće kreirati izveštaj.</value>
+  </data>
+  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
+    <value>-- ništa novo --</value>
+    <comment>This is displayed when there are no items at all in a VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_ReportTotals" xml:space="preserve">
+    <value>Ukupno, za ovaj izveštaj</value>
+    <comment>Displayed as description of footer</comment>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>Opis transakcije ne može ostati prazan.</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>Za ovu transakciju je neophodan dokaz o obavljenoj kupovini.</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>Čini se da iznos PDV-a nije ispravno popunjen.</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
+    <value>Označi kao direktnu kupovinu</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>Direkno-debit, iznos kupovine ({0})</value>
+    <comment>{0} is the currency</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
+    <value>Naplati kupovinu iz ovog budžeta</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
+    <value>Otpremi fiskalni račun ili drugu dokumentaciju</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
+    <value>Otpremi opis transakcije</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
+    <value>Deo iznosa koji odlazi na PDV</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>Označi kao "direktna kupovina sa naloga"?</value>
+  </data>
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>Opis / Nalog</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>Glavna knjiga za</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>Ova transakcija zatvara PDV izveštaj za {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>Ova transakcija otvara PDV izveštaj za {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>Ova transakcija prima naplatu za odlaznu fakturu #{0:N0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>Transakcija isplaćuje {0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>Ova transakcija plaća ulaznu fakturu #{0:N0} od {1}.</value>
+  </data>
+  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
+    <value>Profil za automatizaciju</value>
+    <comment>This is where the bank name, country, and currency appears.</comment>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>Nema naloga za sredstva kako bi se podesila automatizacija, tako da dodatni podaci koji idu uz nalog neće biti otpremljeni. Vratite se na kontrolnu tablu.</value>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
+    <value>Kako je ovo bilo prvo otpremanje na dati automatizovani nalog, inicijalni bilans od &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; ulazi u godinu {2} detektovan je i zadat</value>
+    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
+    <value>(ovo je obračunato sa &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; u valuti koja se koristi u knjigama)</value>
+    <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
+  </data>
+  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
+    <value>Zatvori finansijske knjige za godinu {0}</value>
+    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
+  </data>
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Kreiraj {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
+    <value>Automatsko preuzimanje podataka o transakciji za {0}</value>
+    <comment>Parameter zero is the account name as given by the user</comment>
+  </data>
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Godišnji izveštaji</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>Podaci u eksternom nalogu i poklapanje računa</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Platni spiskovi i porezi</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+    <value>Pošalji izveštaje računovođama, deoničarima...</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
+  <data name="EndOfMonth_Info" xml:space="preserve">
+    <value>Ovo je spisak stavki koje treba da zatvorite za prethodni mesec i otpočnete novi računovodstveni mesec.</value>
+  </data>
+  <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
+    <value>Razrešite sva neproknjižena plaćanja</value>
+    <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
+  </data>
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>Rutina na kraju meseca: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>Otpremi izvod iz banke ({1}) za {0} za {2}</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>Otpremi podatke za transakciju ({1}) za {0}</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
+  <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
+    <value>&lt;strong&gt;PRESKOČI IZVEŠTAJ BANKE?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bankarski izveštaji su obično neophodni kako bi se verifikovale interne zabeleške. Jedini valjani razlog zbog koga biste izbegli upotrebu izveštaja jeste da i nemate izveštaj.&lt;br/&gt;&lt;br/&gt;Ako sada preskočite ovaj korak, program Vas neće pitati ponovo.</value>
+  </data>
+  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
+    <value>&lt;strong&gt;PRESKAČETE OTPREMANJE DOKUMENTA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ovaj dokument je obično potreban za vođenje evidencije. Jedini logični razlog zašto biste to učinili jeste da zapravo i nemate odgovarajući dokument na raspolaganju.&lt;br/&gt;&lt;br/&gt;Ako sada preskočite ovaj korak, program Vas neće ponovno pitati.</value>
+  </data>
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>Platni spisak: ne postoji definisani platni spisak</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
+  </data>
   
   
 </root>

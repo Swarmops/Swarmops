@@ -117,40 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllClear_Text" xml:space="preserve">
-    <value>Operacije su se vratile u normalu.</value>
-  </data>
-  <data name="AllClear_Title" xml:space="preserve">
-    <value>Sve je čisto</value>
-  </data>
-  <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
-    <value>Server je izgubio vezu sa bitcoin blockchain-om. Bitcoin transakcije neće biti detektovane u realnom vremenu.</value>
-  </data>
-  <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
-    <value>Izgubljena je veza sa blockchain-om</value>
-  </data>
-  <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
-    <value>Veb pretraživač nije u stanju da čuje otkucaje srca servera (heartbeat). Ažuriranja u realnom vremenu verovatno neće biti dostupna.</value>
-  </data>
-  <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
-    <value>Heartbeat signal, Otkaz nivoa 1</value>
-  </data>
-  <data name="Client_SocketConnectionFault_Text" xml:space="preserve">
-    <value>Nije moguće uspostaviti vezu sa serverom za ažuriranje u realnom vremenu.</value>
-  </data>
-  <data name="Client_SocketConnectionFault_Title" xml:space="preserve">
-    <value>WebSocket, Problem</value>
-  </data>
-  <data name="Frontend_BackendConnectionFault_Text" xml:space="preserve">
-    <value>Server nije u mogućnosti da se poveže na backend process. Većina ažuriranja u realnom vremenu neće biti dostupna.</value>
-  </data>
-  <data name="Frontend_BackendConnectionFault_Title" xml:space="preserve">
-    <value>Backend, veza je otkazala</value>
-  </data>
-  <data name="Frontend_BackendHeartbeatLost_Text" xml:space="preserve">
-    <value>Server ne čuje znake života backend process-a.</value>
-  </data>
-  <data name="Frontend_BackendHeartbeatLost_Title" xml:space="preserve">
-    <value>Heartbeat signal, Otkaz nivoa 2</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

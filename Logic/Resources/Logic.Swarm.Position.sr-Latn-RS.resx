@@ -322,7 +322,7 @@
     <value>Swarmcare asistenti</value>
   </data>
   <data name="Position_Geographic_SwarmLeader_Commercial" xml:space="preserve">
-    <value>Vođa zadužen za brigu o zajedanici</value>
+    <value>Vođa zadužen za brigu o zajednici</value>
   </data>
   <data name="Position_Strategic_Auditor" xml:space="preserve">
     <value>Revizor</value>
@@ -373,18 +373,18 @@
     <value>Nadzornici odbora</value>
   </data>
   <data name="Position_System_SysadminAssistantReadOnly" xml:space="preserve">
-    <value>Asistent sistem-administratora (samo čita)</value>
+    <value>Asistent sistem-administratora (Read-only)</value>
   </data>
   <data name="Position_System_SysadminAssistantReadOnly_Plural" xml:space="preserve">
-    <value>Asistenti sistem-administratora (samo čitaju)</value>
+    <value>Asistenti sistem-administratora (Read-only)</value>
   </data>
   <data name="Position_System_SysadminMain" xml:space="preserve">
     <value>Glavni sistem-administrator</value>
   </data>
   <data name="Position_System_SysadminReadWrite" xml:space="preserve">
-    <value>Sistem-administrator (čita/zapisuje)</value>
+    <value>Sistem-administrator (Read/Write)</value>
   </data>
   <data name="Position_System_SysadminReadWrite_Plural" xml:space="preserve">
-    <value>Sistem-administratori (čitaju/zapisuju)</value>
+    <value>Sistem-administratori (Read/Write)</value>
   </data>
 </root>

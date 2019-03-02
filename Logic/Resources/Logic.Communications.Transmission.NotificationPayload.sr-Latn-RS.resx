@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Applicant_Signup_Body" xml:space="preserve">
-    <value>Nova osoba je aplicitala za poziciju [RegularTitle] u okviru [OrganizationName]! [ConcernedPersonName] trenutno ima boravište u [GeographyName], [CountryCode].</value>
+    <value>Nova osoba je aplicirala za poziciju [RegularTitle] u okviru [OrganizationName]! [ConcernedPersonName] trenutno ima boravište u [GeographyName], [CountryCode].</value>
   </data>
   <data name="Applicant_Signup_Header" xml:space="preserve">
     <value>[[OrganizationName]] Novi aplikacija: [ConcernedPersonName], [GeographyName]</value>
@@ -129,7 +129,7 @@
 Molimo Vas, prijavite se na [InstallationName] preko [ExternalUrl] i podesite novu bitcoin adresu za isplatu.</value>
   </data>
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Neispravna bitcoin adresa za isplatu</value>
+    <value>[[OrganizationName] - STAVKA] Neispravna bitcoin adresa za isplatu</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
     <value>Promenili ste svoju Bitcoin Cash adresu za isplatu, sa stare: [BitcoinOldAddress] na [BitcoinAddress]. Iz sigurnosnih razloga, sve isplate se stavljaju u karantin koji traje 48 sati.
@@ -170,7 +170,7 @@ Ako niste uneli navedenu adresu za naplatu (proverite ponovo, vrlo pažljivo), b
     <value>[[OrganizationName]] Hotwallet Isplata: [CurrencyCode] [AmountFloat]</value>
   </data>
   <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>[BitcoinAmountFloat] microbitcoin ("bits") je upravo trensferovano na Bitcoin Cash adresu ([BitcoinAddress]) od strane [OrganizationName] za navedeni:
+    <value>[BitcoinAmountFloat] microbitcoin ("bits") je upravo transferovano na Bitcoin Cash adresu ([BitcoinAddress]) od strane [OrganizationName] za navedeni:
 
 [EmbeddedPreformattedText]
 
@@ -193,21 +193,21 @@ Molimo Vas da ODMAH dopunite hotwallet, do makar minimalnog potrebnog nivoa - do
 Swarmops će nastaviti da šalje notifikacije i pokušavaće da obavi isplatu sve dok u tome ne uspe.</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Bitcoin Cash hotwallet, nedovoljno sredstava za isplatu - odmah dopunite</value>
+    <value>[[OrganizationName] - STAVKA] Bitcoin Cash hotwallet, nedovoljno sredstava za isplatu - odmah dopunite</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Vaš zahtev za isplatu izdat od strane [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je dobio potvrdu od strane nosioca budžeta. Sada će se preći na isplatu.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance je potvrđen: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Vaš zahtev za isplatu izdat od strane [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je izgubio potvrdu od strane nosioca budžeta. To obično ukazuje na postojanje problema vezanog za Vaš zahtev.
+  <data name="CashAdvance_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Vaš zahtev za isplatu unapred izdat od strane [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je izgubio potvrdu od strane nosioca budžeta. To obično ukazuje na postojanje problema vezanog za Vaš zahtev.
 
 Očekujte dalju komunikaciju sa nosiocem budžeta, a sa ciljem rešavanja trenutnih problema.</value>
   </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance, Izgubio potvrdu: [CurrencyCode] [BudgetAmountFloat]</value>
+  <data name="CashAdvance_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Avans, ODBIJEN: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Approved_Body" xml:space="preserve">
+    <value>Vaš zahtev za avans, izdat od strane [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je dobio potvrdu od strane nosioca budžeta. Sada će se preći na isplatu.</value>
+  </data>
+  <data name="CashAdvance_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Avans je potvrđen: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Vaš zahtev za isplatu izdat od strane [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je odbijen. Navedeni tekst Vam daje uvid u razloge odbijanja:
@@ -227,43 +227,43 @@ To znači da ćete uskoro videti uplaćeni iznos na Vašem računu.</value>
     <value>[[OrganizationName]] Cash Advance, Isplaćen: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] je zatražio(la) cash advance u iznosu od [CurrencyCode] [BudgetAmountFloat] u svrhu [RequestPurpose]. Ova sredstva su deo budžeta, [BudgetName].
+    <value>[ConcernedPersonName] je zatražio(la) avans u iznosu od [CurrencyCode] [BudgetAmountFloat] u svrhu [RequestPurpose]. Ova sredstva su deo budžeta, [BudgetName].
 
-Molimo Vas, prijavite se na [InstallationName] preko [ExternalUrl] Finansije/TroškoviPotvrđivanja kako biste zahtev prihvatili ili odbili.</value>
+Molimo Vas, prijavite se na [InstallationName] preko [ExternalUrl]Financial/ApproveCosts kako biste zahtev prihvatili ili odbili.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Cash Advance, Zatražen: [CurrencyCode] [BudgetAmountFloat] - Potvrda je neophodna</value>
+    <value>[[OrganizationName] - STAVKA] Avans, Zatražen: [CurrencyCode] [BudgetAmountFloat] - Potvrda je neophodna</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Vaš zahtev za isplatu troškova, od [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je dobio potvrdu od strane nosioca budžeta. Isplata će biti obavljena nakon što se potvrdi validnost računa.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Zahtev za refundiranje, potvrđen: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] je podneo(la) zahtev za refundiranje, iz budžeta [BudgetName] u iznosu od [CurrencyCode] [BudgetAmountFloat], а u vezi sa [RequestPurpose]. Potrebno je da potvrdite ovaj zahtev za refundaciju.
-
-Molimo Vas, prijavite se na [InstallationName] preko [ExternalUrl] Finansije/TroškoviPotvrđivanja kako biste dali potvrdu ili odbili.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Zahtev za refundiranje, Kreiran: [CurrencyCode] [BudgetAmountFloat] - Potvrda je neophodna</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Vaš zahtev za refundaciju, naslovljen na [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je izgubio potvrdu od strane nosioca budžeta. To obično ukazuje na postojanje problema vezanog za Vaš zahtev.
+  <data name="ExpenseClaim_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Vaš zahtev za refundaciju izdat od strane [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je izgubio potvrdu od strane nosioca budžeta. Zahtev se smatra odbijenim. To obično ukazuje na postojanje problema vezanog za Vaš zahtev.
 
 Očekujte dalju komunikaciju sa nosiocem budžeta, a sa ciljem rešavanja trenutnih problema.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Zahtev za refundaciju, Izgubio potvrdu: [CurrencyCode] [BudgetAmountFloat]</value>
+  <data name="ExpenseClaim_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Avans za refundaciju troškova, odobrenje POVUČENO: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
+    <value>Vaš zahtev za isplatu troškova, od [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je dobio potvrdu od strane nosioca budžeta. Isplata će biti obavljena nakon što se potvrdi validnost računa.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Zahtev za refundiranje, potvrđen: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] je podneo(la) zahtev za refundiranje, iz budžeta [BudgetName] u iznosu od [CurrencyCode] [BudgetAmountFloat], a u vezi sa [RequestPurpose]. Potrebno je da potvrdite ovaj zahtev za refundaciju.
+
+Molimo Vas, prijavite se na [InstallationName] preko [ExternalUrl]Financial/ApproveCosts kako biste dali potvrdu ili odbili.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - STAVKA] Zahtev za refundiranje, Kreiran: [CurrencyCode] [BudgetAmountFloat] - Potvrda je neophodna</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
-    <value>Vaš zahtev za rafundaciju izdat od strane [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je odbijen. Navedeni tekst Vam daje uvid u razloge odbijanja:
+    <value>Vaš zahtev za refundaciju izdat od strane [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je odbijen. Navedeni tekst Vam daje uvid u razloge odbijanja:
 
 [EmbeddedPreformattedText]
 </value>
@@ -271,14 +271,6 @@ Očekujte dalju komunikaciju sa nosiocem budžeta, a sa ciljem rešavanja trenut
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Zahtev za refundaciju, ODBIJEN: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Računi koje ste dostavili na ime troškova koji su upućeni organizaciji [OrganizationName] u iznosu od [CurrencyCode] [BudgetAmountFloat], a u vezi sa [RequestPurpose], su izgubili potvrdu od strane računovodstva organizacije. To obično ukazuje na neki problem koji se odnosi na dokumentaciju koja je podneta na ime refundacije.
-
-Očekujte dalju komunikaciju po ovom pitanju. Ako ne dobijete poruku od računovodstva, obratite se Vi njima.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Računi koji se odnose na refundaciju, Izgubili potvrdu: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Vaš zahtev za refundaciju predat u [OrganizationName] za iznos [CurrencyCode] [BudgetAmountFloat], u vezi sa [RequestPurpose], je od strane računovođa organizacije označen kao isplaćen.
@@ -297,13 +289,21 @@ Zahtev će biti isplaćen kada iznos potvrdi i nosilac budžeta.</value>
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Računi koji se odnose na refundaciju, Validirani: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Faktura koju je podneo [Supplier], a vezana za [Description], je naslovljena na budžet [BudgetName], za iznos [CurrencyCode] [BudgetAmountFloat]. Pre nego što se nastavi sa plaćanjem, morate izvršiti potvrdu fakture
+  <data name="ExpenseClaim_ValidationRetracted_Body" xml:space="preserve">
+    <value>Računi koje ste dostavili na ime troškova koji su upućeni organizaciji [OrganizationName] u iznosu od [CurrencyCode] [BudgetAmountFloat], a u vezi sa [RequestPurpose], su odbijeni od strane računovodstva organizacije. Računi se ne smatraju validnim. To obično ukazuje na neki problem koji se odnosi na dokumentaciju koja je podneta na ime refundacije.
 
-Molimo Vas, prijavite se na [InstallationName] preko [ExternalUrl]Finansije/PotvrdeTroškovi kako biste dali potvrdu ili odbili.</value>
+Očekujte dalju komunikaciju po ovom pitanju. Ako ne dobijete poruku od računovodstva, obratite se Vi njima.</value>
+  </data>
+  <data name="ExpenseClaim_ValidationRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Validacija je POVUČENA za račune koji se odnose na zahtev za refundaciju: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Faktura koju je podneo [Supplier], a vezana za [Description], je naslovljena na budžet [BudgetName], za iznos [CurrencyCode] [BudgetAmountFloat]. Pre nego što se nastavi sa plaćanjem, morate izvršiti potvrdu fakture.
+
+Molimo Vas, prijavite se na [InstallationName] preko [ExternalUrl]Financial/ApproveCosts kako biste dali potvrdu ili odbili.</value>
   </data>
   <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Popunjena je faktura: [CurrencyCode] [BudgetAmountFloat] - Potvrda je neophodna</value>
+    <value>[[OrganizationName] - STAVKA] Popunjena je faktura: [CurrencyCode] [BudgetAmountFloat] - Potvrda je neophodna</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">
@@ -326,7 +326,7 @@ Molimo Vas, prijavite se na [InstallationName] preko [ExternalUrl]Finansije/Potv
 Ovaj mail je poslat na [Addressee] od strane [OrganizationName]. Ako u budućnosti ne želite da primate ova obaveštenja, molimo Vas, prijavite se na [InstallationName] preko [ExternalUrl] i izmenite podešavanja koja se odnose na obaveštenja.</value>
   </data>
   <data name="OutboundComm_Resolved_Body" xml:space="preserve">
-    <value>Vaša poruka je stavljena listu za slanje i svi primaoci su provereni. Vaša poruka će biti poslata, ili će se makar pokušati slanje, [RecipientCount] ljudi, i [GeographyName] u ime [OrganizationName].</value>
+    <value>Vaša poruka je stavljena na listu za slanje i svi primaoci su provereni. Vaša poruka će biti poslata, ili će se makar pokušati slanje, [RecipientCount] ljudi, u [GeographyName] u ime [OrganizationName].</value>
   </data>
   <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Primaoci određeni za [GeographyName]: [RecipientCount]</value>
@@ -350,7 +350,7 @@ Ukupno vreme od kreiranja poruke do završetka: [TotalTime].</value>
   <data name="Password_CannotReset2FA_Body" xml:space="preserve">
     <value>Neko, verovatno Vi, je zatražio reset lozinke koja je pridružena ovoj mail adresi na [InstallationName]. Ipak, dvo-faktorska autentifikacija je omogućena za ovaj nalog kako bi se sigurnost podigla na viši nivo. Stoga, lozinka se NE MOŽE resetovati na jednostavan način.
 
-Molimo Vas da kontaktirate kadrovskog adninistratora u [InstallationName] kako bi se rešio Vaš problem i kako bi se izdala nova lozinka, uz poštovanje rigoroznijih procedura za identifikaciju i uz podudaranje na nivou dvo-faktorske sigurnosti.
+Molimo Vas da kontaktirate kadrovskog administratora u [InstallationName] kako bi se rešio Vaš problem i kako bi se izdala nova lozinka, uz poštovanje rigoroznijih procedura za identifikaciju i uz podudaranje na nivou dvo-faktorske sigurnosti.
 
 Hvala Vam na razumevanju.</value>
   </data>
@@ -399,7 +399,7 @@ Ako Vi NISTE tražili reset lozinke, možete (a i trebalo bi) da ignorišete ova
 Molimo Vas, prijavite se na [InstallationName] preko [ExternalUrl]Finansije/ValidacijaPriznanica kako biste ih validirali ili odbili.</value>
   </data>
   <data name="Receipts_Filed_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Podneti računi - Validacija je neophodna</value>
+    <value>[[OrganizationName] - STAVKA] Podneti računi - Validacija je neophodna</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="Salary_Denied_Body" xml:space="preserve">
@@ -446,7 +446,6 @@ Ovo je samo informacija. Nije potrebno da preduzimate dalje radnje.</value>
 
 Trenutno koristimo šemu baze podataka, verzija [DbVersion], ali pokušavamo da izvršimo nadogradnju na [DbVersionExpected].
 
-
 Pokušaj nadogradnje će se izvršavati svakog sata. Moguće je da će to uticati na funkcionalnost, sve dok traje nadogradnja baze podataka. Ako želite da sami rešite problem, paketi za nadogradnju baze podataka se preuzimaju sa packages.swarmops.com, na istom mestu na kome se vrši apt-get fetches za softverske pakete.</value>
   </data>
   <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
@@ -490,6 +489,6 @@ Pokušaj nadogradnje će se izvršavati svakog sata. Moguće je da će to uticat
 Ako ova greška nastavi da se javlja, moguće je da imate loše instalirani plugin ili nešto slično. Bilo kako bilo, nekategorisana poruka će biti odbačena i neće biti poslata dalje, pošto Swarmops nema konkretno rešenje za ovaj problem.</value>
   </data>
   <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
-    <value>Swarmops: Nepoznata pošiljka zajedničkih poruka (comms payload)</value>
+    <value>Swarmops: Nepoznata komunikacijska pošiljka (comms payload)</value>
   </data>
 </root>

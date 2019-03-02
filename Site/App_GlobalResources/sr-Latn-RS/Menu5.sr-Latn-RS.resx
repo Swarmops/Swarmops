@@ -181,7 +181,8 @@
     <value>Finansije</value>
   </data>
   <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>Potvrdi troškove</value>
+    <value>Odobri troškove</value>
+    <comment>This approves costs for payout from the organization</comment>
   </data>
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Zatraži refundaciju troškova</value>
@@ -268,7 +269,7 @@
     <value>Knjige</value>
   </data>
   <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>Plan za obračunavanje</value>
+    <value>Grafik naloga</value>
   </data>
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Revizija knjiga</value>
@@ -286,7 +287,7 @@
     <value>Zatvori poslovne knjige za {0}</value>
   </data>
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
-    <value>Oklanjanje knjigovodstvenih grešaka, Nalozi</value>
+    <value>Otklanjanje knjigovodstvenih grešaka, Nalozi</value>
   </data>
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Uvezi bankarske podatke</value>
@@ -303,8 +304,13 @@
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Profit i Gubici, Izjava</value>
   </data>
-  
-  
+  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
+    <value>Resinhronizuj povezani nalog</value>
+  </data>
+  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
+    <value>Podesi budžete</value>
+    <comment>"Budget" as in "Cost allowed for a particular purpose" or "Revenue expected from a source".</comment>
+  </data>
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Pošalji bankarske fajlove</value>
   </data>
@@ -366,7 +372,7 @@
     <value>Dodaj [Regular]</value>
   </data>
   <data name="Menu5_People_ListFind" xml:space="preserve">
-    <value>Излистај/Пронађи људе</value>
+    <value>Izlistaj/Pronađi ljude</value>
   </data>
   <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>Lista članova</value>
@@ -438,14 +444,39 @@
   <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
     <value>Bitcoin Hotwallet Echo Test</value>
   </data>
+  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
+    <value>Podesi povezane naloge</value>
+    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
+    <value>Podesi grafik naloga</value>
+    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
+  </data>
+  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
+    <value>Podesi platni spisak</value>
+  </data>
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>Moja plata</value>
+    <comment>This lists salary payments for the logged on individual</comment>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
+    <value>Gubitak vrednosti i amortizacija</value>
+  </data>
+  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
+    <value>Podešavanja platnog spiska</value>
+    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
+  </data>
+  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
+    <value>Praćene transakcije</value>
+    <comment>Tracking of special transactions</comment>
+  </data>
+  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
+    <value>Distribuirana sredstva</value>
+    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
+  </data>
+  <data name="Menu5_Reports" xml:space="preserve">
+    <value>Izveštaji</value>
+    <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
+  </data>
 </root>

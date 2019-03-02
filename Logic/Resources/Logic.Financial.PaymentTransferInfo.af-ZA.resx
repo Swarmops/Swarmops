@@ -117,40 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllClear_Text" xml:space="preserve">
-    <value>Operacije su se vratile u normalu.</value>
+  <data name="PaymentTargetField_AccountHolderName" xml:space="preserve">
+    <value>crwdns6563532:0crwdne6563532:0</value>
+    <comment>This is the name of the person that a (bank) account is assigned to</comment>
   </data>
-  <data name="AllClear_Title" xml:space="preserve">
-    <value>Sve je čisto</value>
+  <data name="PaymentTargetField_AccountNumber" xml:space="preserve">
+    <value>crwdns6563534:0crwdne6563534:0</value>
   </data>
-  <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
-    <value>Server je izgubio vezu sa bitcoin blockchain-om. Bitcoin transakcije neće biti detektovane u realnom vremenu.</value>
+  <data name="PaymentTargetField_BankAddress" xml:space="preserve">
+    <value>crwdns6563536:0crwdne6563536:0</value>
   </data>
-  <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
-    <value>Izgubljena je veza sa blockchain-om</value>
+  <data name="PaymentTargetField_BankName" xml:space="preserve">
+    <value>crwdns6563538:0crwdne6563538:0</value>
   </data>
-  <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
-    <value>Veb pretraživač nije u stanju da čuje otkucaje srca servera (heartbeat). Ažuriranja u realnom vremenu verovatno neće biti dostupna.</value>
+  <data name="PaymentTargetField_Bban" xml:space="preserve">
+    <value>crwdns6563540:0crwdne6563540:0</value>
+    <comment>A Basic Bank Account Number (BBAN), a part of the IBAN code</comment>
   </data>
-  <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
-    <value>Heartbeat signal, Otkaz nivoa 1</value>
+  <data name="PaymentTargetField_BicSwift" xml:space="preserve">
+    <value>crwdns6563542:0crwdne6563542:0</value>
+    <comment>This code uniquely identifies a bank (the Bank Identifier Code, BIC).</comment>
   </data>
-  <data name="Client_SocketConnectionFault_Text" xml:space="preserve">
-    <value>Nije moguće uspostaviti vezu sa serverom za ažuriranje u realnom vremenu.</value>
+  <data name="PaymentTargetField_CashAccount" xml:space="preserve">
+    <value>crwdns6563544:0crwdne6563544:0</value>
+    <comment>This is a special way of denoting a Bitcoin Cash address; search for "CashAccount" or look at cashaccount.info</comment>
   </data>
-  <data name="Client_SocketConnectionFault_Title" xml:space="preserve">
-    <value>WebSocket, Problem</value>
+  <data name="PaymentTargetField_ClearingCode" xml:space="preserve">
+    <value>crwdns6563546:0crwdne6563546:0</value>
+    <comment>This is sometimes necessary for domestic bank transfers</comment>
   </data>
-  <data name="Frontend_BackendConnectionFault_Text" xml:space="preserve">
-    <value>Server nije u mogućnosti da se poveže na backend process. Većina ažuriranja u realnom vremenu neće biti dostupna.</value>
+  <data name="PaymentTargetField_CryptoAddress" xml:space="preserve">
+    <value>crwdns6563548:0crwdne6563548:0</value>
   </data>
-  <data name="Frontend_BackendConnectionFault_Title" xml:space="preserve">
-    <value>Backend, veza je otkazala</value>
+  <data name="PaymentTargetField_GiroNumber" xml:space="preserve">
+    <value>crwdns6563550:0crwdne6563550:0</value>
+    <comment>This is like an account number, but abstracted one level.</comment>
   </data>
-  <data name="Frontend_BackendHeartbeatLost_Text" xml:space="preserve">
-    <value>Server ne čuje znake života backend process-a.</value>
+  <data name="PaymentTargetField_GiroService" xml:space="preserve">
+    <value>crwdns6563552:0crwdne6563552:0</value>
   </data>
-  <data name="Frontend_BackendHeartbeatLost_Title" xml:space="preserve">
-    <value>Heartbeat signal, Otkaz nivoa 2</value>
+  <data name="PaymentTargetField_Iban" xml:space="preserve">
+    <value>crwdns6563554:0crwdne6563554:0</value>
+    <comment>The International Bank Account Number (IBAN)</comment>
+  </data>
+  <data name="PaymentTargetType_BitcoinCashAccount" xml:space="preserve">
+    <value>crwdns6563556:0crwdne6563556:0</value>
+    <comment>This is a special way of denoting a Bitcoin Cash address; search for "CashAccount" or look at cashaccount.info</comment>
+  </data>
+  <data name="PaymentTargetType_DomesticBankGiro" xml:space="preserve">
+    <value>crwdns6563558:0crwdne6563558:0</value>
+    <comment>Some countries have meta-accounts called "giro" accounts, that map to bank accounts.</comment>
+  </data>
+  <data name="PaymentTargetType_DomesticBankTransfer" xml:space="preserve">
+    <value>crwdns6563560:0crwdne6563560:0</value>
+  </data>
+  <data name="PaymentTargetType_InternationalBankTransfer" xml:space="preserve">
+    <value>crwdns6563562:0crwdne6563562:0</value>
   </data>
 </root>

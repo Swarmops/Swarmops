@@ -1081,4 +1081,20 @@
     <value>crwdns6563520:0crwdne6563520:0</value>
     <comment>As in "record or transaction opened"</comment>
   </data>
+  <data name="IconTooltip_Barcode_Scanning" xml:space="preserve">
+    <value>crwdns6563590:0crwdne6563590:0</value>
+    <comment>This is when Swarmops can display an expense-to-be-paid in a format, that a mobile banking app can read directly, such as a QR code or other machine-readable format.</comment>
+  </data>
+  <data name="Financial_DueDateShort" xml:space="preserve">
+    <value>crwdns6563592:0crwdne6563592:0</value>
+    <comment>As "due date", as in when a payment is expected, but just the word "due" to be combined with an actual date in the UI. Example: *Due* Jan 21.</comment>
+  </data>
+  <data name="Global_DateFormatLongDateMonth" xml:space="preserve">
+    <value>crwdns6563594:0crwdne6563594:0</value>
+    <comment>Format used for just date and month (no year). The formats are MMMM for month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages use different ways to write month and date, for example, German would write "23. Dezember" (note the dot), a format which would be "{0:d}. {0:MMMM}".</comment>
+  </data>
+  <data name="Global_DateFormatShortDateMonth" xml:space="preserve">
+    <value>crwdns6563596:0crwdne6563596:0</value>
+    <comment>Format used for just date and month (no year). The formats are MMM for three-letter month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages write month and date in different orders and with different separators. Do keep the month NAME though, rather than using the month number, even if that's common in the target language.</comment>
+  </data>
 </root>
