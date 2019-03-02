@@ -30,6 +30,9 @@
     <link href="WizardStyle.css" rel="stylesheet" type="text/css" />
     
     <!-- external packages that are commonly used (on practically all pages) -->
+    <script src="/Scripts/ExternalScripts/easyui/jquery.easyui.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/Scripts/ExternalScripts/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/Scripts/ExternalScripts/easyui/themes/default/easyui.css">
     
     <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
     <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js" ></script>
