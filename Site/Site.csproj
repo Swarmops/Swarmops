@@ -268,6 +268,61 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.es-VE.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\fa-IR\Controls.Swarm.fa-IR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controls.Swarm.fa-IR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\fa-IR\Global.fa-IR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.fa-IR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\fa-IR\Menu5.fa-IR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu5.fa-IR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\fa-IR\Pages.Admin.fa-IR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Admin.fa-IR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\fa-IR\Pages.Comms.fa-IR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Comms.fa-IR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\fa-IR\Pages.Financial.fa-IR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Financial.fa-IR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\fa-IR\Pages.Governance.fa-IR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Governance.fa-IR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\fa-IR\Pages.Ledgers.fa-IR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Ledgers.fa-IR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\fa-IR\Pages.Public.fa-IR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Public.fa-IR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\fa-IR\Pages.Security.fa-IR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Security.fa-IR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\fa-IR\Pages.Swarm.fa-IR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Swarm.fa-IR.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\fil-PH\Controls.Swarm.fil-PH.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -542,6 +597,61 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.ko-KR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lol-US\Controls.Swarm.lol-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controls.Swarm.lol-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lol-US\Global.lol-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.lol-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lol-US\Menu5.lol-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu5.lol-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lol-US\Pages.Admin.lol-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Admin.lol-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lol-US\Pages.Comms.lol-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Comms.lol-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lol-US\Pages.Financial.lol-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Financial.lol-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lol-US\Pages.Governance.lol-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Governance.lol-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lol-US\Pages.Ledgers.lol-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Ledgers.lol-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lol-US\Pages.Public.lol-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Public.lol-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lol-US\Pages.Security.lol-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Security.lol-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lol-US\Pages.Swarm.lol-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Swarm.lol-US.resx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\sk-SK\Controls.Swarm.sk-SK.designer.cs">
       <AutoGen>True</AutoGen>
@@ -4066,6 +4176,7 @@
     <Content Include="Pages\v5\Public\GeoLookupHelpers.js.include" />
     <Content Include="Pages\v5\Public\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Pages\v5\Support\web.config" />
     <None Include="Properties\PublishProfiles\Autobuild.pubxml" />
     <Content Include="Scripts\Experimental\easyui\demo\accordion\datagrid_data1.json" />
     <Content Include="Scripts\Experimental\easyui\demo\combobox\combobox_data1.json" />
@@ -5491,6 +5602,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_GlobalResources\et-EE\" />
+    <Folder Include="App_GlobalResources\hu-HU\" />
+    <Folder Include="App_GlobalResources\id-ID\" />
+    <Folder Include="App_GlobalResources\lb-LU\" />
+    <Folder Include="App_GlobalResources\lt-LT\" />
+    <Folder Include="App_GlobalResources\lv-LV\" />
+    <Folder Include="App_GlobalResources\me-ME\" />
+    <Folder Include="App_GlobalResources\mk-MK\" />
+    <Folder Include="App_GlobalResources\sl-SI\" />
+    <Folder Include="App_GlobalResources\sr-Cyrl-ME\" />
+    <Folder Include="App_GlobalResources\vi-VN\" />
     <Folder Include="Frames\v5\" />
   </ItemGroup>
   <ItemGroup>
@@ -5675,6 +5797,98 @@
     <Content Include="App_GlobalResources\sr-Latn-RS\Pages.Swarm.sr-Latn-RS.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Swarm.sr-Latn-RS.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\fa-IR\Controls.Swarm.fa-IR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Controls.Swarm.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\fa-IR\Global.fa-IR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Global.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\fa-IR\Menu5.fa-IR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu5.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\fa-IR\Pages.Admin.fa-IR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Admin.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\fa-IR\Pages.Comms.fa-IR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Comms.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\fa-IR\Pages.Financial.fa-IR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Financial.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\fa-IR\Pages.Governance.fa-IR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Governance.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\fa-IR\Pages.Ledgers.fa-IR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Ledgers.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\fa-IR\Pages.Public.fa-IR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Public.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\fa-IR\Pages.Security.fa-IR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Security.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\fa-IR\Pages.Swarm.fa-IR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Swarm.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\lol-US\Controls.Swarm.lol-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Controls.Swarm.lol-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lol-US\Global.lol-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Global.lol-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lol-US\Menu5.lol-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu5.lol-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lol-US\Pages.Admin.lol-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Admin.lol-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lol-US\Pages.Comms.lol-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Comms.lol-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lol-US\Pages.Financial.lol-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Financial.lol-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lol-US\Pages.Governance.lol-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Governance.lol-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lol-US\Pages.Ledgers.lol-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Ledgers.lol-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lol-US\Pages.Public.lol-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Public.lol-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lol-US\Pages.Security.lol-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Security.lol-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lol-US\Pages.Swarm.lol-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Swarm.lol-US.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>
