@@ -1045,4 +1045,16 @@
     <value>Check Ledger Balance Against Hotwallet</value>
     <comment>This is the ledger balance of the hotwallet, which is supposed to say the hotwallet contains as much as it actually does.</comment>
   </data>
+  <data name="EndOfMonth_ConsolidateHotwallet" xml:space="preserve">
+    <value>Consolidate Bitcoin Hotwallet</value>
+    <comment>This rearranges the hotwallet for easy payouts going forward (collects all small amounts into even chunks)</comment>
+  </data>
+  <data name="EndOfMonth_Header_Cryptocurrency" xml:space="preserve">
+    <value>Cryptocurrency</value>
+    <comment>This is the header for various bitcoin hotwallet / cold storage operations</comment>
+  </data>
+  <data name="EndOfMonth_VerifyColdStorage" xml:space="preserve">
+    <value>Verify Cold Storage</value>
+    <comment>This verifies that the amounts supposed to be in cold storage are indeed in cold storage</comment>
+  </data>
 </root>

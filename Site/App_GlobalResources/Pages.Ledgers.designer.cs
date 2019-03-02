@@ -1096,6 +1096,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Consolidate Bitcoin Hotwallet.
+        /// </summary>
+        internal static string EndOfMonth_ConsolidateHotwallet {
+            get {
+                return ResourceManager.GetString("EndOfMonth_ConsolidateHotwallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create {0}.
         /// </summary>
         internal static string EndOfMonth_CreateVatReport {
@@ -1119,6 +1128,15 @@ namespace Resources.Pages {
         internal static string EndOfMonth_Header_AnnualReports {
             get {
                 return ResourceManager.GetString("EndOfMonth_Header_AnnualReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cryptocurrency.
+        /// </summary>
+        internal static string EndOfMonth_Header_Cryptocurrency {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Header_Cryptocurrency", resourceCulture);
             }
         }
         
@@ -1218,6 +1236,15 @@ namespace Resources.Pages {
         internal static string EndOfMonth_UploadTransactionDataFor {
             get {
                 return ResourceManager.GetString("EndOfMonth_UploadTransactionDataFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verify Cold Storage.
+        /// </summary>
+        internal static string EndOfMonth_VerifyColdStorage {
+            get {
+                return ResourceManager.GetString("EndOfMonth_VerifyColdStorage", resourceCulture);
             }
         }
         
