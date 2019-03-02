@@ -86,7 +86,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         "\"balanceFiat\":\"{4}\",",
                         address.Identity,
                         address.Chain.ToString() + " " + address.DerivationPath,
-                        address.ProtocolLevelAddress,
+                        (address.Chain == BitcoinChain.Cash? address.HumanAddress.Substring("bitcoincash:".Length): address.ProtocolLevelAddress),
                         JsonExpandingString (address.Identity, satoshisUnspentAddress),
                         JsonExpandingString (address.Identity, (Int64) (satoshisUnspentAddress * conversionRateLookup[address.Chain]))
                         );
