@@ -38,14 +38,25 @@ namespace Swarmops.Pages.v5.Support
             bool hasPermission = false;
             string serverFileName = document.ServerFileName;
 
-            if (document.UploadedByPersonId == this.CurrentAuthority.Person.Identity)
+            if (document.DocumentType == DocumentType.Logo)
             {
-                hasPermission = true; // can always view documents you yourself uploaded
-            }
+                // Always allow organization logos to display,
+                // or the "signup" page won't work without
+                // credentials
 
-            if (CurrentOrganization.HasOpenLedgers)
-            {
                 hasPermission = true;
+            }
+            else
+            {
+                if (document.UploadedByPersonId == this.CurrentAuthority.Person.Identity)
+                {
+                    hasPermission = true; // can always view documents you yourself uploaded
+                }
+
+                if (CurrentOrganization.HasOpenLedgers)
+                {
+                    hasPermission = true;
+                }
             }
 
 
