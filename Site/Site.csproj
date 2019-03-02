@@ -2131,6 +2131,9 @@
     <Content Include="Images\Abstract\ajaxloader-medium.gif" />
     <Content Include="Images\Abstract\easyui-elements-downarrow.gif" />
     <Content Include="Images\Abstract\swarmops-progressbar-animation.gif" />
+    <Content Include="Images\Flags\blank-64px.png" />
+    <Content Include="Images\Flags\cat-64px.png" />
+    <Content Include="Images\Flags\flag-64px-base.png" />
     <Content Include="Images\Flags\gr-64px.png" />
     <Content Include="Images\Flags\il-64px.png" />
     <Content Include="Images\Flags\iq-64px.png" />
