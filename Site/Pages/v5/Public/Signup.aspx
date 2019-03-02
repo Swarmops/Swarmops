@@ -32,16 +32,13 @@
     <!-- external packages that are commonly used (on practically all pages) -->
     <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
     
-    <!-- additional scripts etc from individual pages -->
-    <Swarmops5:IncludedScripts ID="IncludedScripts" runat="server" />    
-
     <!-- UGLY HACK: Control ExternalScripts requires authentication for some reason. This is a bug. But to get alpha-09 out on time, we're
         circumventing the bug by hardcoding the hosted scripts - this needs fixing. -->
 
-    <script src="//hostedscripts.falkvinge.net/staging/easyui/jquery.easyui.min.js" type="text/javascript"></script>
+<!--    <script src="//hostedscripts.falkvinge.net/staging/easyui/jquery.easyui.min.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/icon.css" />
     <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/default/easyui.css" />
-    <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />-->
     
     <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
     <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js" ></script>
