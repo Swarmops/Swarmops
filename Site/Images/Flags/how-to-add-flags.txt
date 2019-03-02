@@ -1,0 +1,6 @@
+- create 64x64 transparent image
+- put the flag centered, 60 wide x 40 high, on bottom layer
+- put flag-64px-base.png in layer on top
+- change "layer mode" on flag-64px-base to Value
+
+presto!
