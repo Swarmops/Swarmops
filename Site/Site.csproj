@@ -983,6 +983,61 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.sk-SK.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\sl-SI\Controls.Swarm.sl-SI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controls.Swarm.sl-SI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\sl-SI\Global.sl-SI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.sl-SI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\sl-SI\Menu5.sl-SI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu5.sl-SI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\sl-SI\Pages.Admin.sl-SI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Admin.sl-SI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\sl-SI\Pages.Comms.sl-SI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Comms.sl-SI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\sl-SI\Pages.Financial.sl-SI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Financial.sl-SI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\sl-SI\Pages.Governance.sl-SI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Governance.sl-SI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\sl-SI\Pages.Ledgers.sl-SI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Ledgers.sl-SI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\sl-SI\Pages.Public.sl-SI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Public.sl-SI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\sl-SI\Pages.Security.sl-SI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Security.sl-SI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\sl-SI\Pages.Swarm.sl-SI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Swarm.sl-SI.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\sr-Cyrl-RS\Controls.Swarm.sr-Cyrl-RS.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1147,6 +1202,61 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.tr-TR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\vi-VN\Controls.Swarm.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controls.Swarm.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\vi-VN\Global.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\vi-VN\Menu5.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu5.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\vi-VN\Pages.Admin.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Admin.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\vi-VN\Pages.Comms.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Comms.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\vi-VN\Pages.Financial.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Financial.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\vi-VN\Pages.Governance.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Governance.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\vi-VN\Pages.Ledgers.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Ledgers.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\vi-VN\Pages.Public.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Public.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\vi-VN\Pages.Security.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Security.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\vi-VN\Pages.Swarm.vi-VN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Swarm.vi-VN.resx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\yo-NG\Controls.Swarm.yo-NG.designer.cs">
       <AutoGen>True</AutoGen>
@@ -5879,9 +5989,7 @@
   <ItemGroup>
     <Folder Include="App_GlobalResources\me-ME\" />
     <Folder Include="App_GlobalResources\mk-MK\" />
-    <Folder Include="App_GlobalResources\sl-SI\" />
     <Folder Include="App_GlobalResources\sr-Cyrl-ME\" />
-    <Folder Include="App_GlobalResources\vi-VN\" />
     <Folder Include="Frames\v5\" />
   </ItemGroup>
   <ItemGroup>
@@ -6388,6 +6496,98 @@
     <Content Include="App_GlobalResources\lv-LV\Pages.Swarm.lv-LV.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Swarm.lv-LV.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\sl-SI\Controls.Swarm.sl-SI.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Controls.Swarm.sl-SI.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\sl-SI\Global.sl-SI.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Global.sl-SI.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\sl-SI\Menu5.sl-SI.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu5.sl-SI.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\sl-SI\Pages.Admin.sl-SI.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Admin.sl-SI.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\sl-SI\Pages.Comms.sl-SI.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Comms.sl-SI.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\sl-SI\Pages.Financial.sl-SI.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Financial.sl-SI.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\sl-SI\Pages.Governance.sl-SI.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Governance.sl-SI.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\sl-SI\Pages.Ledgers.sl-SI.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Ledgers.sl-SI.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\sl-SI\Pages.Public.sl-SI.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Public.sl-SI.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\sl-SI\Pages.Security.sl-SI.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Security.sl-SI.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\sl-SI\Pages.Swarm.sl-SI.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Swarm.sl-SI.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\vi-VN\Controls.Swarm.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Controls.Swarm.vi-VN.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\vi-VN\Global.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Global.vi-VN.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\vi-VN\Menu5.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu5.vi-VN.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\vi-VN\Pages.Admin.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Admin.vi-VN.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\vi-VN\Pages.Comms.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Comms.vi-VN.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\vi-VN\Pages.Financial.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Financial.vi-VN.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\vi-VN\Pages.Governance.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Governance.vi-VN.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\vi-VN\Pages.Ledgers.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Ledgers.vi-VN.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\vi-VN\Pages.Public.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Public.vi-VN.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\vi-VN\Pages.Security.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Security.vi-VN.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\vi-VN\Pages.Swarm.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Swarm.vi-VN.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>
