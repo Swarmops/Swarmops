@@ -29,6 +29,12 @@
     <link href="/Style/alertify.default.css" rel="stylesheet" type="text/css" />
     <link href="WizardStyle.css" rel="stylesheet" type="text/css" />
     
+    <!-- BUG: the external scripts and styles should normally be provided by the ExternalScripts control
+         BUG: ...that determines an available URL for the external scripts, but including the component
+         BUG: ...on the page forces an authentication, thereby disabling the key function of the page.
+         BUG: ...I've spent hours trying to find why adding the ExternalScripts control to the page
+         BUG: ...triggers authentication, including adding web.configs everywhere, without results. -->
+
     <!-- external packages that are commonly used (on practically all pages) -->
     <script src="/Scripts/ExternalScripts/easyui/jquery.easyui.min.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="/Scripts/ExternalScripts/easyui/themes/icon.css">
