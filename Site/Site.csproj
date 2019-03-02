@@ -598,6 +598,61 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.hu-HU.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\id-ID\Controls.Swarm.id-ID.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controls.Swarm.id-ID.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\id-ID\Global.id-ID.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.id-ID.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\id-ID\Menu5.id-ID.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu5.id-ID.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\id-ID\Pages.Admin.id-ID.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Admin.id-ID.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\id-ID\Pages.Comms.id-ID.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Comms.id-ID.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\id-ID\Pages.Financial.id-ID.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Financial.id-ID.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\id-ID\Pages.Governance.id-ID.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Governance.id-ID.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\id-ID\Pages.Ledgers.id-ID.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Ledgers.id-ID.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\id-ID\Pages.Public.id-ID.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Public.id-ID.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\id-ID\Pages.Security.id-ID.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Security.id-ID.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\id-ID\Pages.Swarm.id-ID.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Swarm.id-ID.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\ja-JP\Controls.Swarm.ja-JP.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -707,6 +762,61 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.ko-KR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lb-LU\Controls.Swarm.lb-LU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controls.Swarm.lb-LU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lb-LU\Global.lb-LU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.lb-LU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lb-LU\Menu5.lb-LU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu5.lb-LU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lb-LU\Pages.Admin.lb-LU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Admin.lb-LU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lb-LU\Pages.Comms.lb-LU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Comms.lb-LU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lb-LU\Pages.Financial.lb-LU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Financial.lb-LU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lb-LU\Pages.Governance.lb-LU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Governance.lb-LU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lb-LU\Pages.Ledgers.lb-LU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Ledgers.lb-LU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lb-LU\Pages.Public.lb-LU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Public.lb-LU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lb-LU\Pages.Security.lb-LU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Security.lb-LU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lb-LU\Pages.Swarm.lb-LU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Swarm.lb-LU.resx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\sk-SK\Controls.Swarm.sk-SK.designer.cs">
       <AutoGen>True</AutoGen>
@@ -5657,8 +5767,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_GlobalResources\id-ID\" />
-    <Folder Include="App_GlobalResources\lb-LU\" />
     <Folder Include="App_GlobalResources\lt-LT\" />
     <Folder Include="App_GlobalResources\lv-LV\" />
     <Folder Include="App_GlobalResources\me-ME\" />
@@ -5988,6 +6096,98 @@
     <Content Include="App_GlobalResources\hu-HU\Pages.Swarm.hu-HU.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Swarm.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\id-ID\Controls.Swarm.id-ID.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Controls.Swarm.id-ID.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\id-ID\Global.id-ID.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Global.id-ID.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\id-ID\Menu5.id-ID.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu5.id-ID.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\id-ID\Pages.Admin.id-ID.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Admin.id-ID.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\id-ID\Pages.Comms.id-ID.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Comms.id-ID.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\id-ID\Pages.Financial.id-ID.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Financial.id-ID.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\id-ID\Pages.Governance.id-ID.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Governance.id-ID.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\id-ID\Pages.Ledgers.id-ID.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Ledgers.id-ID.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\id-ID\Pages.Public.id-ID.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Public.id-ID.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\id-ID\Pages.Security.id-ID.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Security.id-ID.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\id-ID\Pages.Swarm.id-ID.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Swarm.id-ID.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\lb-LU\Controls.Swarm.lb-LU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Controls.Swarm.lb-LU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lb-LU\Global.lb-LU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Global.lb-LU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lb-LU\Menu5.lb-LU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu5.lb-LU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lb-LU\Pages.Admin.lb-LU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Admin.lb-LU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lb-LU\Pages.Comms.lb-LU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Comms.lb-LU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lb-LU\Pages.Financial.lb-LU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Financial.lb-LU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lb-LU\Pages.Governance.lb-LU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Governance.lb-LU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lb-LU\Pages.Ledgers.lb-LU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Ledgers.lb-LU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lb-LU\Pages.Public.lb-LU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Public.lb-LU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lb-LU\Pages.Security.lb-LU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Security.lb-LU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lb-LU\Pages.Swarm.lb-LU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Swarm.lb-LU.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>
