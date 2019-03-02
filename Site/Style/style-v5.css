@@ -925,6 +925,12 @@ input.data-entry-error, span.data-entry-error, div.data-entry-error {
     cursor: pointer;
 }
 
+.action-icon.flag {  /* override because flag dimensions are different */
+    height: 26px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
 .status-icon {
     border: 1px solid transparent;
     width: 26px;

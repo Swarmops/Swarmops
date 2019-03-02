@@ -729,22 +729,26 @@
     <h2 class="blue">Language<span class="arrow"></span></h2>
     <div class="box">
         <div class="content">
-            &nbsp;<a href="javascript:setLanguage('ar-SA')"><img class="action-icon" src="/Images/Flags/Arabic-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('pt-BR')"><img class="action-icon" src="/Images/Flags/br-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('zh-CHS')"><img class="action-icon" src="/Images/Flags/cn-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('de-DE')"><img class="action-icon"  src="/Images/Flags/de-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('da-DK')"><img class="action-icon"  src="/Images/Flags/dk-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('es-ES')"><img class="action-icon"  src="/Images/Flags/es-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('fi-FI')"><img class="action-icon"  src="/Images/Flags/fi-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('fr-FR')"><img class="action-icon"  src="/Images/Flags/fr-64px.png"/></a><br/>
-            &nbsp;<a href="javascript:setLanguage('el-GR')"><img class="action-icon" src="/Images/Flags/gr-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('hi-IN')"><img class="action-icon" src="/Images/Flags/in-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('is-IS')"><img class="action-icon" src="/Images/Flags/is-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('nl-NL')"><img class="action-icon" src="/Images/Flags/nl-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('nb-NO')"><img class="action-icon" src="/Images/Flags/no-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('ru-RU')"><img class="action-icon" src="/Images/Flags/ru-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('sv-SE')"><img class="action-icon" src="/Images/Flags/se-64px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('en-US')"><img class="action-icon" src="/Images/Flags/uk-64px.png"/></a>&#8203;
+            &nbsp;<a href="javascript:setLanguage('ar-SA')"><img class="action-icon flag" src="/Images/Flags/Arabic-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('pt-BR')"><img class="action-icon flag" src="/Images/Flags/br-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('zh-CHS')"><img class="action-icon flag" src="/Images/Flags/cn-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('de-DE')"><img class="action-icon flag"  src="/Images/Flags/de-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('yo-NG')"><img class="action-icon flag"  src="/Images/Flags/ng-64px.png"/></a><br />
+            &nbsp;<a href="javascript:setLanguage('el-GR')"><img class="action-icon flag"  src="/Images/Flags/gr-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('es-ES')"><img class="action-icon flag"  src="/Images/Flags/es-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('es-VE')"><img class="action-icon flag"  src="/Images/Flags/ve-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('fr-FR')"><img class="action-icon flag" src="/Images/Flags/fr-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('fil-PH')"><img class="action-icon flag" src="/Images/Flags/ph-64px.png"/></a><br />
+            &nbsp;<a href="javascript:setLanguage('it-IT')"><img class="action-icon flag" src="/Images/Flags/it-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('nl-NL')"><img class="action-icon flag" src="/Images/Flags/nl-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('pl-PL')"><img class="action-icon flag" src="/Images/Flags/pl-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('pt-PT')"><img class="action-icon flag" src="/Images/Flags/pt-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('ru-RU')"><img class="action-icon flag" src="/Images/Flags/ru-64px.png"/></a><br/>
+            &nbsp;<a href="javascript:setLanguage('sr-Cyrl-RS')"><img class="action-icon flag" src="/Images/Flags/rs-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('sr-Latn-RS')"><img class="action-icon flag" src="/Images/Flags/rs-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('sv-SE')"><img class="action-icon flag" src="/Images/Flags/se-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('tr-TR')"><img class="action-icon flag" src="/Images/Flags/tr-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('en-US')"><img class="action-icon flag" src="/Images/Flags/uk-64px.png"/></a>
         </div>
     </div>
 
