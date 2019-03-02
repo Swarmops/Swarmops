@@ -22,15 +22,6 @@ namespace Swarmops.Frontend.Pages.Public {
         protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
         
         /// <summary>
-        /// ExternalScriptEasyUI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Meta.ExternalScripts ExternalScriptEasyUI;
-        
-        /// <summary>
         /// LiteralBodyAttributes control.
         /// </summary>
         /// <remarks>
