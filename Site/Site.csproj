@@ -6042,8 +6042,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_GlobalResources\me-ME\" />
-    <Folder Include="App_GlobalResources\sr-Cyrl-ME\" />
     <Folder Include="Frames\v5\" />
   </ItemGroup>
   <ItemGroup>
