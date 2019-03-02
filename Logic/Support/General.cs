@@ -89,6 +89,10 @@ namespace Swarmops.Logic.Support
             {
                 return "/Images/Flags/txl-64px.png";
             }
+            else if (cultureId == "zh-tw") // Taiwan breaks all the rules: speaks Chinese but has its own flag
+            {
+                return "/Images/Flags/tw-64px.png";
+            }
             else if (nonStandardFlagNames.ContainsKey(cultureFirstPart))
             {
                 return "/Images/Flags/" + nonStandardFlagNames[cultureFirstPart] + "-64px.png";
