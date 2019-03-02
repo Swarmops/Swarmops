@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Public.Signup" CodeFile="Signup.aspx.cs" CodeBehind="Signup.aspx.cs" %>
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -31,7 +30,11 @@
     <link href="WizardStyle.css" rel="stylesheet" type="text/css" />
     
     <!-- external packages that are commonly used (on practically all pages) -->
+    <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
     
+    <!-- additional scripts etc from individual pages -->
+    <Swarmops5:IncludedScripts ID="IncludedScripts" runat="server" />    
+
     <!-- UGLY HACK: Control ExternalScripts requires authentication for some reason. This is a bug. But to get alpha-09 out on time, we're
         circumventing the bug by hardcoding the hosted scripts - this needs fixing. -->
 
