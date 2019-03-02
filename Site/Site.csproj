@@ -928,61 +928,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.lv-LV.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\me-ME\Controls.Swarm.me-ME.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Controls.Swarm.me-ME.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\me-ME\Global.me-ME.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Global.me-ME.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\me-ME\Menu5.me-ME.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Menu5.me-ME.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\me-ME\Pages.Admin.me-ME.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Admin.me-ME.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\me-ME\Pages.Comms.me-ME.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Comms.me-ME.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\me-ME\Pages.Financial.me-ME.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Financial.me-ME.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\me-ME\Pages.Governance.me-ME.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Governance.me-ME.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\me-ME\Pages.Ledgers.me-ME.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Ledgers.me-ME.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\me-ME\Pages.Public.me-ME.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Public.me-ME.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\me-ME\Pages.Security.me-ME.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Security.me-ME.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\me-ME\Pages.Swarm.me-ME.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.Swarm.me-ME.resx</DependentUpon>
-    </Compile>
     <Compile Include="App_GlobalResources\mk-MK\Controls.Swarm.mk-MK.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -6097,6 +6042,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_GlobalResources\me-ME\" />
     <Folder Include="App_GlobalResources\sr-Cyrl-ME\" />
     <Folder Include="Frames\v5\" />
   </ItemGroup>
@@ -6696,52 +6642,6 @@
     <Content Include="App_GlobalResources\vi-VN\Pages.Swarm.vi-VN.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Swarm.vi-VN.designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\me-ME\Controls.Swarm.me-ME.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Controls.Swarm.me-ME.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\me-ME\Global.me-ME.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Global.me-ME.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\me-ME\Menu5.me-ME.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Menu5.me-ME.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\me-ME\Pages.Admin.me-ME.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Admin.me-ME.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\me-ME\Pages.Comms.me-ME.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Comms.me-ME.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\me-ME\Pages.Financial.me-ME.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Financial.me-ME.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\me-ME\Pages.Governance.me-ME.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Governance.me-ME.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\me-ME\Pages.Ledgers.me-ME.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Ledgers.me-ME.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\me-ME\Pages.Public.me-ME.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Public.me-ME.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\me-ME\Pages.Security.me-ME.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Security.me-ME.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\me-ME\Pages.Swarm.me-ME.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.Swarm.me-ME.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
