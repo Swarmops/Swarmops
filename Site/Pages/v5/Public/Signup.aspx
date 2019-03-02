@@ -32,14 +32,6 @@
     <!-- external packages that are commonly used (on practically all pages) -->
     <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
     
-    <!-- UGLY HACK: Control ExternalScripts requires authentication for some reason. This is a bug. But to get alpha-09 out on time, we're
-        circumventing the bug by hardcoding the hosted scripts - this needs fixing. -->
-
-<!--    <script src="//hostedscripts.falkvinge.net/staging/easyui/jquery.easyui.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/icon.css" />
-    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/default/easyui.css" />
-    <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />-->
-    
     <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
     <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js" ></script>
 
@@ -737,22 +729,22 @@
     <h2 class="blue">Language<span class="arrow"></span></h2>
     <div class="box">
         <div class="content">
-            &nbsp;<a href="javascript:setLanguage('ar-SA')"><img src="/Images/Flags/Arabic-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('pt-BR')"><img src="/Images/Flags/br-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('zh-CHS')"><img src="/Images/Flags/cn-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('de-DE')"><img src="/Images/Flags/de-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('da-DK')"><img src="/Images/Flags/dk-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('es-ES')"><img src="/Images/Flags/es-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('fi-FI')"><img src="/Images/Flags/fi-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('fr-FR')"><img src="/Images/Flags/fr-24px.png"/></a><br/>
-            &nbsp;<a href="javascript:setLanguage('el-GR')"><img src="/Images/Flags/gr-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('hi-IN')"><img src="/Images/Flags/in-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('is-IS')"><img src="/Images/Flags/is-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('nl-NL')"><img src="/Images/Flags/nl-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('nb-NO')"><img src="/Images/Flags/no-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('ru-RU')"><img src="/Images/Flags/ru-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('sv-SE')"><img src="/Images/Flags/se-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('en-US')"><img src="/Images/Flags/uk-24px.png"/></a>&#8203;
+            &nbsp;<a href="javascript:setLanguage('ar-SA')"><img class="action-icon" src="/Images/Flags/Arabic-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('pt-BR')"><img class="action-icon" src="/Images/Flags/br-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('zh-CHS')"><img class="action-icon" src="/Images/Flags/cn-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('de-DE')"><img class="action-icon"  src="/Images/Flags/de-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('da-DK')"><img class="action-icon"  src="/Images/Flags/dk-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('es-ES')"><img class="action-icon"  src="/Images/Flags/es-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('fi-FI')"><img class="action-icon"  src="/Images/Flags/fi-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('fr-FR')"><img class="action-icon"  src="/Images/Flags/fr-64px.png"/></a><br/>
+            &nbsp;<a href="javascript:setLanguage('el-GR')"><img class="action-icon" src="/Images/Flags/gr-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('hi-IN')"><img class="action-icon" src="/Images/Flags/in-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('is-IS')"><img class="action-icon" src="/Images/Flags/is-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('nl-NL')"><img class="action-icon" src="/Images/Flags/nl-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('nb-NO')"><img class="action-icon" src="/Images/Flags/no-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('ru-RU')"><img class="action-icon" src="/Images/Flags/ru-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('sv-SE')"><img class="action-icon" src="/Images/Flags/se-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('en-US')"><img class="action-icon" src="/Images/Flags/uk-64px.png"/></a>&#8203;
         </div>
     </div>
 
