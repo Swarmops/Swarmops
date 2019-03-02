@@ -268,6 +268,61 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.es-VE.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\et-EE\Controls.Swarm.et-EE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controls.Swarm.et-EE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\et-EE\Global.et-EE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.et-EE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\et-EE\Menu5.et-EE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu5.et-EE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\et-EE\Pages.Admin.et-EE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Admin.et-EE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\et-EE\Pages.Comms.et-EE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Comms.et-EE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\et-EE\Pages.Financial.et-EE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Financial.et-EE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\et-EE\Pages.Governance.et-EE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Governance.et-EE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\et-EE\Pages.Ledgers.et-EE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Ledgers.et-EE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\et-EE\Pages.Public.et-EE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Public.et-EE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\et-EE\Pages.Security.et-EE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Security.et-EE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\et-EE\Pages.Swarm.et-EE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Swarm.et-EE.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\fa-IR\Controls.Swarm.fa-IR.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -487,6 +542,61 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.hr-HR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\hu-HU\Controls.Swarm.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controls.Swarm.hu-HU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\hu-HU\Global.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.hu-HU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\hu-HU\Menu5.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu5.hu-HU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\hu-HU\Pages.Admin.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Admin.hu-HU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\hu-HU\Pages.Comms.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Comms.hu-HU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\hu-HU\Pages.Financial.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Financial.hu-HU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\hu-HU\Pages.Governance.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Governance.hu-HU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\hu-HU\Pages.Ledgers.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Ledgers.hu-HU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\hu-HU\Pages.Public.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Public.hu-HU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\hu-HU\Pages.Security.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Security.hu-HU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\hu-HU\Pages.Swarm.hu-HU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Swarm.hu-HU.resx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\ja-JP\Controls.Swarm.ja-JP.designer.cs">
       <AutoGen>True</AutoGen>
@@ -5547,8 +5657,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_GlobalResources\et-EE\" />
-    <Folder Include="App_GlobalResources\hu-HU\" />
     <Folder Include="App_GlobalResources\id-ID\" />
     <Folder Include="App_GlobalResources\lb-LU\" />
     <Folder Include="App_GlobalResources\lt-LT\" />
@@ -5788,6 +5896,98 @@
     <Content Include="App_GlobalResources\fa-IR\Pages.Swarm.fa-IR.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Swarm.fa-IR.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\et-EE\Controls.Swarm.et-EE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Controls.Swarm.et-EE.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\et-EE\Global.et-EE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Global.et-EE.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\et-EE\Menu5.et-EE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu5.et-EE.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\et-EE\Pages.Admin.et-EE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Admin.et-EE.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\et-EE\Pages.Comms.et-EE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Comms.et-EE.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\et-EE\Pages.Financial.et-EE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Financial.et-EE.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\et-EE\Pages.Governance.et-EE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Governance.et-EE.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\et-EE\Pages.Ledgers.et-EE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Ledgers.et-EE.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\et-EE\Pages.Public.et-EE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Public.et-EE.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\et-EE\Pages.Security.et-EE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Security.et-EE.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\et-EE\Pages.Swarm.et-EE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Swarm.et-EE.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\hu-HU\Controls.Swarm.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Controls.Swarm.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\hu-HU\Global.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Global.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\hu-HU\Menu5.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu5.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\hu-HU\Pages.Admin.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Admin.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\hu-HU\Pages.Comms.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Comms.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\hu-HU\Pages.Financial.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Financial.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\hu-HU\Pages.Governance.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Governance.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\hu-HU\Pages.Ledgers.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Ledgers.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\hu-HU\Pages.Public.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Public.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\hu-HU\Pages.Security.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Security.hu-HU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\hu-HU\Pages.Swarm.hu-HU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Swarm.hu-HU.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>
