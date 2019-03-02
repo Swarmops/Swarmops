@@ -759,6 +759,7 @@ body.right-to-left div.modal .data-entry-fields {
 
 .data-entry-fields span.textbox.combo input[type=text]:not(.ocr-font) {
     /* "important" here overrides the easyUI native styling */
+    /* the selector above is intended to apply only to easyUI combo boxes */
 
 	padding: 0px 10px 0px 10px !important;
 }
