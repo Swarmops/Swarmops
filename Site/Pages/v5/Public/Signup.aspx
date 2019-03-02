@@ -769,16 +769,17 @@
         <asp:Label ID="LabelSidebarInfoContent" runat="server" />
         </div>
     </div>
-    
-    <h2 class="blue"><asp:Label ID="LabelSidebarActionsHeader" runat="server" /><span class="arrow"></span></h2>
-    
-    <div class="box">
-        <div class="content">
-            <asp:Label ID="LabelSidebarActionsContent" runat="server" />
-        </div>
-    </div>
-    
+
     <div id="divTodoDerpage" style="display:none">
+    
+        <h2 class="blue"><asp:Label ID="LabelSidebarActionsHeader" runat="server" /><span class="arrow"></span></h2>
+    
+        <div class="box">
+            <div class="content">
+                <asp:Label ID="LabelSidebarActionsContent" runat="server" />
+            </div>
+        </div>
+   
 
         <h2 class="orange"><asp:Label ID="LabelSidebarTodoHeader" runat="server" /><span class="arrow"></span></h2>
     
