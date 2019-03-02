@@ -709,11 +709,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deprecating &amp; Amortized Assets.
+        ///   Looks up a localized string similar to Depreciating &amp; Amortized Assets.
         /// </summary>
-        internal static string Menu5_Ledgers_DeprecatingAmortizedAssets {
+        internal static string Menu5_Ledgers_DepreciatingAmortizedAssets {
             get {
-                return ResourceManager.GetString("Menu5_Ledgers_DeprecatingAmortizedAssets", resourceCulture);
+                return ResourceManager.GetString("Menu5_Ledgers_DepreciatingAmortizedAssets", resourceCulture);
             }
         }
         

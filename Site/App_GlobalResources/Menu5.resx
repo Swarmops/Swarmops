@@ -463,8 +463,8 @@
     <value>My Salary</value>
     <comment>This lists salary payments for the logged on individual</comment>
   </data>
-  <data name="Menu5_Ledgers_DeprecatingAmortizedAssets" xml:space="preserve">
-    <value>Deprecating &amp; Amortized Assets</value>
+  <data name="Menu5_Ledgers_DepreciatingAmortizedAssets" xml:space="preserve">
+    <value>Depreciating &amp; Amortized Assets</value>
   </data>
   <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
     <value>Depreciations and Amortizations</value>
