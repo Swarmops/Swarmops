@@ -818,6 +818,116 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.lb-LU.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\lt-LT\Controls.Swarm.lt-LT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controls.Swarm.lt-LT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lt-LT\Global.lt-LT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.lt-LT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lt-LT\Menu5.lt-LT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu5.lt-LT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lt-LT\Pages.Admin.lt-LT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Admin.lt-LT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lt-LT\Pages.Comms.lt-LT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Comms.lt-LT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lt-LT\Pages.Financial.lt-LT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Financial.lt-LT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lt-LT\Pages.Governance.lt-LT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Governance.lt-LT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lt-LT\Pages.Ledgers.lt-LT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Ledgers.lt-LT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lt-LT\Pages.Public.lt-LT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Public.lt-LT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lt-LT\Pages.Security.lt-LT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Security.lt-LT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lt-LT\Pages.Swarm.lt-LT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Swarm.lt-LT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lv-LV\Controls.Swarm.lv-LV.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controls.Swarm.lv-LV.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lv-LV\Global.lv-LV.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.lv-LV.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lv-LV\Menu5.lv-LV.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu5.lv-LV.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lv-LV\Pages.Admin.lv-LV.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Admin.lv-LV.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lv-LV\Pages.Comms.lv-LV.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Comms.lv-LV.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lv-LV\Pages.Financial.lv-LV.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Financial.lv-LV.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lv-LV\Pages.Governance.lv-LV.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Governance.lv-LV.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lv-LV\Pages.Ledgers.lv-LV.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Ledgers.lv-LV.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lv-LV\Pages.Public.lv-LV.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Public.lv-LV.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lv-LV\Pages.Security.lv-LV.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Security.lv-LV.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lv-LV\Pages.Swarm.lv-LV.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.Swarm.lv-LV.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\sk-SK\Controls.Swarm.sk-SK.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -5767,8 +5877,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_GlobalResources\lt-LT\" />
-    <Folder Include="App_GlobalResources\lv-LV\" />
     <Folder Include="App_GlobalResources\me-ME\" />
     <Folder Include="App_GlobalResources\mk-MK\" />
     <Folder Include="App_GlobalResources\sl-SI\" />
@@ -6188,6 +6296,98 @@
     <Content Include="App_GlobalResources\lb-LU\Pages.Swarm.lb-LU.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Swarm.lb-LU.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\lt-LT\Controls.Swarm.lt-LT.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Controls.Swarm.lt-LT.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lt-LT\Global.lt-LT.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Global.lt-LT.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lt-LT\Menu5.lt-LT.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu5.lt-LT.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lt-LT\Pages.Admin.lt-LT.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Admin.lt-LT.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lt-LT\Pages.Comms.lt-LT.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Comms.lt-LT.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lt-LT\Pages.Financial.lt-LT.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Financial.lt-LT.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lt-LT\Pages.Governance.lt-LT.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Governance.lt-LT.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lt-LT\Pages.Ledgers.lt-LT.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Ledgers.lt-LT.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lt-LT\Pages.Public.lt-LT.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Public.lt-LT.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lt-LT\Pages.Security.lt-LT.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Security.lt-LT.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lt-LT\Pages.Swarm.lt-LT.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Swarm.lt-LT.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\lv-LV\Controls.Swarm.lv-LV.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Controls.Swarm.lv-LV.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lv-LV\Global.lv-LV.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Global.lv-LV.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lv-LV\Menu5.lv-LV.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu5.lv-LV.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lv-LV\Pages.Admin.lv-LV.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Admin.lv-LV.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lv-LV\Pages.Comms.lv-LV.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Comms.lv-LV.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lv-LV\Pages.Financial.lv-LV.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Financial.lv-LV.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lv-LV\Pages.Governance.lv-LV.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Governance.lv-LV.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lv-LV\Pages.Ledgers.lv-LV.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Ledgers.lv-LV.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lv-LV\Pages.Public.lv-LV.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Public.lv-LV.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lv-LV\Pages.Security.lv-LV.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Security.lv-LV.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lv-LV\Pages.Swarm.lv-LV.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.Swarm.lv-LV.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>
