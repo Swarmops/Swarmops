@@ -248,7 +248,9 @@ Si se ofreció como voluntario para asumir la responsabilidad formal, alguien (p
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Completar registro.</value>
   </data>
-  
+  <data name="Signup_Unsupported" xml:space="preserve">
+    <value>Swarmops aún no ha implementado está estructura.</value>
+  </data>
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>¿En qué posición estás interesado?</value>
   </data>

@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
+    <value>crwdns6556707:0{0}crwdnd6556707:0{1}crwdnd6556707:0{2:N2}crwdne6556707:0</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
+    <value>crwdns6556691:0{2:N2}crwdnd6556691:0{0}crwdnd6556691:0{1:N2}crwdne6556691:0</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
+    <value>crwdns6556692:0{0}crwdne6556692:0</value>
+    <comment>Used if Bitcoin Cash is the org native currency.</comment>
+  </data>
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>crwdns6556693:0{0:N2}crwdne6556693:0</value>
+  </data>
+  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
+    <value>crwdns6556694:0crwdne6556694:0</value>
+  </data>
+  <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
+    <value>crwdns6556402:0crwdne6556402:0</value>
+  </data>
+  <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
+    <value>crwdns6556403:0crwdne6556403:0</value>
+  </data>
+  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
+    <value>crwdns6556695:0crwdne6556695:0</value>
+  </data>
+  <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
+    <value>crwdns6555020:0crwdne6555020:0</value>
+  </data>
+  <data name="CreateOrganization_AsRoot" xml:space="preserve">
+    <value>crwdns6555021:0crwdne6555021:0</value>
+  </data>
+  <data name="CreateOrganization_ChildOfX" xml:space="preserve">
+    <value>crwdns6555022:0{0}crwdne6555022:0</value>
+    <comment>"Create org as..."</comment>
+  </data>
+  <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
+    <value>crwdns6555023:0crwdne6555023:0</value>
+  </data>
+  <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
+    <value>crwdns6556534:0crwdne6556534:0</value>
+  </data>
+  <data name="CreateOrganization_Info" xml:space="preserve">
+    <value>crwdns6555408:0crwdne6555408:0</value>
+  </data>
+  <data name="CreateOrganization_NewOrganizationName" xml:space="preserve">
+    <value>crwdns6556535:0crwdne6556535:0</value>
+  </data>
+  <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
+    <value>crwdns6555025:0crwdne6555025:0</value>
+  </data>
+  <data name="CreateOrganization_NewOrgName" xml:space="preserve">
+    <value>crwdns6555026:0crwdne6555026:0</value>
+  </data>
+  <data name="CreateOrganization_PageTitle" xml:space="preserve">
+    <value>crwdns6555027:0crwdne6555027:0</value>
+  </data>
+  <data name="CreateOrganization_RegularTitle" xml:space="preserve">
+    <value>crwdns6555028:0crwdne6555028:0</value>
+    <comment>This can be "members", etc.</comment>
+  </data>
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>crwdns6556575:0{0}crwdne6556575:0</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
+  <data name="CreateOrganization_Titles" xml:space="preserve">
+    <value>crwdns6556255:0crwdne6556255:0</value>
+  </data>
+  <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
+    <value>crwdns6556256:0crwdne6556256:0</value>
+  </data>
+  <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
+    <value>crwdns6556257:0crwdne6556257:0</value>
+  </data>
+  <data name="EditOrganization_Info" xml:space="preserve">
+    <value>crwdns6555030:0crwdne6555030:0</value>
+  </data>
+  <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
+    <value>crwdns6555409:0{0}crwdne6555409:0</value>
+    <comment>The {0} is the membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_OpenLedgersDomain" xml:space="preserve">
+    <value>crwdns6555794:0crwdne6555794:0</value>
+  </data>
+  <data name="EditOrganization_PageTitle" xml:space="preserve">
+    <value>crwdns6555031:0crwdne6555031:0</value>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsOrg" xml:space="preserve">
+    <value>crwdns6555410:0{0}crwdne6555410:0</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsWhen" xml:space="preserve">
+    <value>crwdns6555411:0{0}crwdne6555411:0</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationChurn" xml:space="preserve">
+    <value>crwdns6555412:0{0}crwdne6555412:0</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationCost" xml:space="preserve">
+    <value>crwdns6555413:0{0}crwdnd6555413:0{1}crwdne6555413:0</value>
+    <comment>The {0} is membership, etc. The {1} is the operating currency.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationDuration" xml:space="preserve">
+    <value>crwdns6555414:0{0}crwdne6555414:0</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_RenewalDateEffect" xml:space="preserve">
+    <value>crwdns6555415:0crwdne6555415:0</value>
+  </data>
+  <data name="EditOrganization_RenewalReminders" xml:space="preserve">
+    <value>crwdns6555416:0crwdne6555416:0</value>
+  </data>
+  <data name="EditOrganization_RenewalsAffect" xml:space="preserve">
+    <value>crwdns6555417:0crwdne6555417:0</value>
+    <comment>(options: all organizations, one org at a time)</comment>
+  </data>
+  <data name="EditOrganization_RenewalsCost" xml:space="preserve">
+    <value>crwdns6555418:0{0}crwdne6555418:0</value>
+    <comment>The {0} is the operating currency (USD etc).</comment>
+  </data>
+  <data name="EditOrganization_VanityDomain" xml:space="preserve">
+    <value>crwdns6555795:0crwdne6555795:0</value>
+  </data>
+  <data name="OrgStaffing_Header_ExecutivePositions" xml:space="preserve">
+    <value>crwdns6556240:0{0}crwdne6556240:0</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>crwdns6556478:0crwdne6556478:0</value>
+  </data>
+  <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
+    <value>crwdns6556242:0crwdne6556242:0</value>
+  </data>
+  <data name="OrgStaffing_Header_StrategicPositions" xml:space="preserve">
+    <value>crwdns6556243:0{0}crwdne6556243:0</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
+    <value>crwdns6556312:0crwdne6556312:0</value>
+  </data>
+  <data name="OrgStaffing_Info" xml:space="preserve">
+    <value>crwdns6556245:0crwdne6556245:0</value>
+  </data>
+  <data name="OrgStaffing_PageTitle" xml:space="preserve">
+    <value>crwdns6556246:0crwdne6556246:0</value>
+  </data>
+  <data name="SystemSettings_AdminAddress" xml:space="preserve">
+    <value>crwdns6555632:0crwdne6555632:0</value>
+  </data>
+  <data name="SystemSettings_AdminSender" xml:space="preserve">
+    <value>crwdns6555633:0crwdne6555633:0</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
+    <value>crwdns6555585:0crwdne6555585:0</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
+    <value>crwdns6555586:0crwdne6555586:0</value>
+  </data>
+  <data name="SystemSettings_ExternalUrl" xml:space="preserve">
+    <value>crwdns6555587:0crwdne6555587:0</value>
+  </data>
+  <data name="SystemSettings_Header_CorrespondenceTxSettings" xml:space="preserve">
+    <value>crwdns6556247:0crwdne6556247:0</value>
+  </data>
+  <data name="SystemSettings_Header_SystemAdministrators" xml:space="preserve">
+    <value>crwdns6556248:0crwdne6556248:0</value>
+  </data>
+  <data name="SystemSettings_Info" xml:space="preserve">
+    <value>crwdns6555588:0crwdne6555588:0</value>
+  </data>
+  <data name="SystemSettings_InstallationName" xml:space="preserve">
+    <value>crwdns6555589:0crwdne6555589:0</value>
+  </data>
+  <data name="SystemSettings_PageTitle" xml:space="preserve">
+    <value>crwdns6555590:0crwdne6555590:0</value>
+  </data>
+  <data name="SystemSettings_SmtpServer" xml:space="preserve">
+    <value>crwdns6555591:0crwdne6555591:0</value>
+  </data>
+  <data name="SystemSettings_TestMailSent" xml:space="preserve">
+    <value>crwdns6555592:0crwdne6555592:0</value>
+  </data>
+  <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
+    <value>crwdns6555593:0crwdne6555593:0</value>
+  </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>crwdns6556576:0crwdne6556576:0</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>crwdns6556577:0crwdne6556577:0</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
+    <value>crwdns6556578:0crwdne6556578:0</value>
+  </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>crwdns6556579:0crwdne6556579:0</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>crwdns6556580:0{0}crwdne6556580:0</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>crwdns6556581:0crwdne6556581:0</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>crwdns6556582:0{0:HH:mm}crwdne6556582:0</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>crwdns6556583:0crwdne6556583:0</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>crwdns6556584:0crwdne6556584:0</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>crwdns6556585:0crwdne6556585:0</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>crwdns6556586:0crwdne6556586:0</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>crwdns6556587:0crwdne6556587:0</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>crwdns6556588:0crwdne6556588:0</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>crwdns6556589:0crwdne6556589:0</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>crwdns6556590:0crwdne6556590:0</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>crwdns6556591:0{0:HH:mm}crwdne6556591:0</value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>crwdns6556592:0crwdne6556592:0</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>crwdns6556668:0crwdne6556668:0</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>crwdns6556669:0crwdne6556669:0</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>crwdns6556670:0crwdne6556670:0</value>
+  </data>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>crwdns6556696:0{0:N2}crwdne6556696:0</value>
+  </data>
+</root>

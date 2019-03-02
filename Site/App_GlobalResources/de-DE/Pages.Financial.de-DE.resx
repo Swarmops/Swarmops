@@ -264,27 +264,12 @@
   
   
   
-  
-  
-  
-  
-  
   <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
     <value>Empfänger</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referenz</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
-    <value>Referenz (OCR)</value>
-  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Kosten bereit für Auszahlung</value>
-  </data>
-  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
-    <value>Kosten für Auszahlung (OCR für Mobile Apps)</value>
   </data>
   
   <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
@@ -461,5 +446,20 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referenz</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
   
 </root>

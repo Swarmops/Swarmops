@@ -1033,4 +1033,6 @@
     <value>Платни списак: не постоји дефинисани платни списак</value>
     <comment>This is shown as a disabled action item when there's no active payroll</comment>
   </data>
+  
+  
 </root>

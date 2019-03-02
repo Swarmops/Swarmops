@@ -360,25 +360,9 @@ Awọn iwe oja naa yoo nilo lati di jijẹri ati pe ibeere naa yoo nilo lati di 
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Jọwọ ṣe apejuwe ohun ti rira yii je.</value>
   </data>
-  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
-    <value>Akọọlẹ (OCR)</value>
-  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Iye</value>
     <comment>Amount to be paid out</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
-    <value>Akọọlẹ (OCR)</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
-    <value>Imukuro / Akọọlẹ</value>
-    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
-    <value>Banki</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
-    <value>Ojo titọ</value>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Ti san</value>
@@ -388,18 +372,8 @@ Awọn iwe oja naa yoo nilo lati di jijẹri ati pe ibeere naa yoo nilo lati di 
     <value>Olugba</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Itọkasi</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
-    <value>Itọkasi (OCR)</value>
-  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Awọn owo Ṣetan Fun Sisanjade</value>
-  </data>
-  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
-    <value>Awọn owo fun Sisanjade (OCR fun awọn ohun elo alagbeka)</value>
   </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Awọn wọnyi ni awọn ọna pupọ ti awọn owo si ajo ti o ti kọja gbogbo awọn idiwo fun sisanjade. Wọn ti ṣetan lati je sisan jade fun olugba naa. Eyi ni ibi ti o ti samisi wọn gegebi pe o ti je sisan jade (boya nigbati o ba jẹki banki rẹ jẹ sisi ni akoko miran).</value>
@@ -668,6 +642,21 @@ Iṣẹ-ṣiṣe ati awọn fọọmu gangan yatọ nipasẹ orilẹ-ede ati nig
   </data>
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>Aseyori awon ibeere {0} gbigbe dide.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Itọkasi</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   
 </root>

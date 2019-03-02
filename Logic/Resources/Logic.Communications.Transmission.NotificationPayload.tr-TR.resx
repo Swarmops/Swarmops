@@ -185,12 +185,30 @@ Bu ödeme adresini siz ayarlamadıysanız (daha fazla güvenlik için yukarıdak
   <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACİL] Bitcoin özel anahtar hatsı; ödeme yapılamıyor</value>
   </data>
-  
-  
-  
-  
-  
-  
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmops [CurrencyCode] [AmountNeededFloat] ödemesini yapmaya çalışıyor, ancak Bitcoin Cash hotwallet'inde yalnızca [CurrencyCode] [AmountWalletFloat] kullanılabilir. Swarmops şu anda daha fazla ödeme yapamıyor.
+
+Lütfen hotwallet'I HEMEN gerekli miktarda doldurun - finansal hotwallet işlemlerine devam etmek için ek olarak [AmountMissingMicrocoinsFloat] mikrobitcoin ("bit") gerekir.
+
+Swarmops denemeye devam edecek ve başarılı olamadığı sürece bu bildirimleri göndermeye devam edecektir.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - EYLEM ÖĞESİ] Bitcoin Cash hotwallet ödemeler için yeterli değil - hemen doldurun</value>
+  </data>
+  <data name="CashAdvance_ApprovalRetracted_Body" xml:space="preserve">
+    <value>[RequestPurpose] ile ilgili [CurrencyCode] [BudgetAmountFloat] için [OrganizationName] ile önceden onaylanmış nakit avansınız, bütçe sahibi tarafından GERİ ÇEKİLDİ. Bu nakit avans artık onaylanmamıştır. Bu genellikle isteğinizle ilgili bir sorun olduğunu gösterir.
+
+Konuyu takip etmesi için bütçe sahibinden daha fazla iletişim bekleyin.</value>
+  </data>
+  <data name="CashAdvance_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nakit Avans Onayının GERİ ÇEKİLMESİ: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Approved_Body" xml:space="preserve">
+    <value>[RequestPurpose] ile ilgili [CurrencyCode] [BudgetAmountFloat] için, [OrganizationName] ile istediğiniz nakit avans, bütçe sahibi tarafından onaylandı. Şimdi size ödeme yapmaya devam edecek.</value>
+  </data>
+  <data name="CashAdvance_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nakit Avans Onaylandı: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık nakit avansınız yok sayılmıştır. Aşağıdaki yazı yok sayılmasına sebep olarak sunulmuştur:
 
@@ -208,14 +226,42 @@ Bu, tutarı kısa zaman içinde hesabınızda göreceğiniz anlamına gelir.</va
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Nakit Avans Ödendi: [CurrencyCode][BudgetAmountFloat]</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] [RequestPurpose] amacıyla [CurrencyCode] [BudgetAmountFloat]'ın nakit avansını istedi. Bu para bütçenizin bir parçası, [BudgetName].
+
+Lütfen onaylamak veya reddetmek için [ExternalUrl] Finansal/MaliOnaylarda [InstallationName]'de oturum açın.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - EYLEM ÖĞESİ] Nakit Avans İstendi: [CurrencyCode] [BudgetAmountFloat] - Onay Gerekli</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_ApprovalRetracted_Body" xml:space="preserve">
+    <value>[RequestPurpose] ile ilgili [CurrencyCode] [BudgetAmountFloat] için [OrganizationName] ile önceden onaylanmış gider talebiniz, bütçe sahibi tarafından GERİ ÇEKİLDİ. Bu gider talebi artık onaylanmamıştır. Bu genellikle gider talebinizle ilgili bir sorun olduğunu gösterir.
+
+Konuyu takip etmesi için bütçe sahibinden daha fazla iletişim bekleyin.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Gider Talebi için Onaylama Geri Çekildi: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
+    <value>[RequestPurpose] ile ilgili, [CurrencyCode] [BudgetAmountFloat] için [OrganizationName] ile gider talebiniz, bütçe sahibi tarafından onaylandı. Makbuzların geçerli olduğu onaylandığında size ödeme yapılır.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Gider Talebi Onaylandı: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName], [CurrencyCode] [BudgetAmountFloat] tutarı için [BudgetName] bütçesine karşı bir masraf talebi oluşturdu. Bu talep [RequestPurpose] ile ilgilidir. Bu gider talebini onaylamanız gerekecek.
+
+Lütfen onaylamak veya reddetmek için [ExternalUrl] Finansal/MaliOnaylarda [InstallationName]'de oturum açın.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - EYLEM ÖĞESİ] Gider Talebi Oluşturuldu: [CurrencyCode] [BudgetAmountFloat] - Onay Gerekli</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>[OrganizationName]'den [RequestPurpose] ile ilgili [CurrencyCode][BudgetAmountFloat]'lık masraf talebiniz yok sayılmıştır. Aşağıdaki yazı yok sayılmasına sebep olarak sunulmuştur:
 
@@ -243,10 +289,23 @@ Talebiniz, bu miktar bütçe sahibi tarafından da onaylandığı zaman ödenece
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Masraf Talebi Makbuzlarının Onaylandı: [CurrencyCode][BudgetAmountFloat]</value>
   </data>
-  
-  
-  
-  
+  <data name="ExpenseClaim_ValidationRetracted_Body" xml:space="preserve">
+    <value>[RequestPurpose] ile ilgili [CurrencyCode] [BudgetAmountFloat] için [OrganizationName] ile gider talebinizin makbuzlarının doğrulanması, kuruluşun mali kayıt sahipleri tarafından GERİ ÇEKİLMİŞTİR. Makbuzlar artık geçerli sayılmaz. Bu genellikle gider talebinizin belgelenmesinde bir tür sorun olduğunu gösterir.
+
+Konuyla ilgili daha fazla iletişim bekleyin. Bu konuda kısa süre içinde kayıt tutucularından haber alamazsanız, onları takip edin.</value>
+  </data>
+  <data name="ExpenseClaim_ValidationRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Gider Talebi Makbuzları için Doğrulama GERİ ÇEKİLDİ: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>[Supplier] tarafından, [Description] ile ilgili bir fatura, [BudgetName] bütçenize karşı [CurrencyCode] [BudgetAmountFloat] tutarında bir fatura dosyalanmıştır. Ödeme yapmadan önce bu faturayı onaylamanız gerekir.
+
+Lütfen onaylamak veya reddetmek için [ExternalUrl] Finansal / MaliOnaylar'da [InstallationName]'de oturum açın.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - EYLEM ÖĞESİ] Fatura Dosyalandı: [CurrencyCode] [BudgetAmountFloat] - Onay Gerekli</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>[OrganizationName]'e sizin alanınızın içinde yeni bir [Regular] manuel olarak eklendi.</value>
   </data>

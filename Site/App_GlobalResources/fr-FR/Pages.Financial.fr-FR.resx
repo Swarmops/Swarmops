@@ -359,25 +359,9 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Veuillez décrire ce que cet achat était.</value>
   </data>
-  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
-    <value>Compte (OCR)</value>
-  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Montant</value>
     <comment>Amount to be paid out</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
-    <value>Montant (OCR)</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
-    <value>Compensation / Compte</value>
-    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
-    <value>Banque</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
-    <value>Date limite</value>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Payé</value>
@@ -387,18 +371,8 @@
     <value>Reçu</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Référence</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
-    <value>Référence (OCR)</value>
-  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Dépenses prêtes pour paiement</value>
-  </data>
-  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
-    <value>Dépenses de paiement (OCR pour applications mobile)</value>
   </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Ce sont les différentes formes de coûts pour l'organisation qui ont franchi tous les obstacles en matière de paiement. Ils sont prêts à être payés au destinataire. Voici où vous les cochez comme étant payés (probablement en ayant votre banque ouverte dans une autre fenêtre).</value>
@@ -666,6 +640,21 @@
   </data>
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>{0} Demandes archivées avec succès.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Référence</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   
 </root>

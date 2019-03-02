@@ -417,25 +417,9 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Molimo Vas, dajte obrazloženje za navedenu kupovinu.</value>
   </data>
-  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
-    <value>Račun (OCR)</value>
-  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Iznos</value>
     <comment>Amount to be paid out</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
-    <value>Iznos (OCR)</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
-    <value>Clearing / Račun</value>
-    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
-    <value>Banka</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
-    <value>Krajnji rok</value>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Plaćeno</value>
@@ -445,18 +429,8 @@
     <value>Primalac</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referenca</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
-    <value>Referenca (OCR)</value>
-  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Troškovi spremni za isplatu</value>
-  </data>
-  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
-    <value>Troškovi isplate (OCR za mobilne aplikacije)</value>
   </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Ovi obrasci pristigli u Organizaciju su savladali sve prepreke pre isplaćivanja. Sve isplate su spremne. Ovde možete pratiti kako se isplate realizuju (u drugom prozoru možete otvoriti servis banke).</value>
@@ -731,4 +705,19 @@
     <value>Odobrenje za refundaciju troškova #{0:N0}, od {1}, je povučeno. Neće biti isplaćeno osim ako ne date potvrdu.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referenca</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  
 </root>

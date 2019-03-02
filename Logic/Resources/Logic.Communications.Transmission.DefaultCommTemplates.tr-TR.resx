@@ -117,11 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
+  <data name="AspirantAddWelcome_Body" xml:space="preserve">
+    <value>[Aspirant] olarak [OrganizationName]'e hoş geldiniz!
+
+[OrganizationName] içinde [Regularship] için başvuru yaptınız, ve bu nedenle bu postayı resmi bir [Aspirant] olarak alıyorsunuz. [Aspirantship]'inizin süresi otomatik olarak sona ermez, bu yüzden bu postaya cevap verme konusunda acele etmeyin.
+
+Bir arka uç sistemi yazılımı olarak kullanılan Swarmops'a ilk ve rastgele oluşturulan şifreniz aşağıdaki gibidir:
+[RandomPassword]
+
+Giriş yapmalı ve bu şifreyi en kısa zamanda kendi seçeceğiniz daha güvenli bir şeyle değiştirmelisiniz. Bunu [ExternalUrl]'de oturum açarak, ve ardından sağ üst köşedeki "Kullanıcı" simgesine tıklayarak, Güvenlik sekmesini seçerek (asma kilit olanla), bu geçici şifreyi girip ardından yeni olanı yazınız. Ayrıca tıpkı iyi bir uygulama gibi, iki faktörlü kimlik doğrulamayı etkinleştirmeyi de düşünmelisiniz.
+
+[Aspirant] olarak hoş geldiniz ve sizi yakında [Regular] olarak görmeyi umuyoruz!</value>
+  </data>
+  <data name="AspirantAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [OrganizationName]'e [Aspirant] olarak hoş geldiniz!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
+    <value>[OrganizationName]'e hoş geldiniz!
+
+Size [ActingPerson] tarafından [Regularship] verildi. [MembershipExpiry] tarihinde sona eriyor, bu nedenle organizasyon hakkında bilgi sahibi olmak için bolca zaman var. 
+
+Nasıl aktif olunacağına dair daha fazla bilgi için [OrganizationName]'den insanlarla zaten iletişim kurmuş olmalısınız. Eğer olmazsa, yakındaki yazışmaları bekleyin.
+
+Bir arka uç sistemi yazılımı olarak kullanılan Swarmops'a ilk ve rastgele oluşturulan şifreniz aşağıdaki gibidir:
+[RandomPassword]
+
+Giriş yapmalı ve bu şifreyi en kısa zamanda kendi seçeceğiniz daha güvenli bir şeyle değiştirmelisiniz. Bunu [ExternalUrl]'de oturum açarak, ve sonra sağ üst köşedeki "Kullanıcı" simgesine tıklayarak, Güvenlik sekmesini seçerek (asma kilit olanla), bu geçici şifreyi girip ardından yeni olanı yazınız. Ayrıca tıpkı iyi bir uygulama gibi, iki faktörlü kimlik doğrulamayı etkinleştirmeyi de düşünmelisiniz.
+
+Gemiye Hoş geldiniz!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>[OrganizationName]'e hoş geldiniz!
+
+Size [ActingPerson] tarafından bir [Regularship] verildi. Herhangi bir zaman veya tarihe göre otomatik olarak sona ermez, bu nedenle işlem yapmak için acele etmenize gerek yoktur.
+
+Nasıl aktif olunacağına dair daha fazla bilgi için [OrganizationName]'den insanlarla zaten iletişim kurmuş olmalısınız. Eğer olmazsa, yakındaki yazışmaları bekleyin. 
+
+Bir arka uç sistemi yazılımı olarak kullanılan Swarmops'a ilk ve rastgele oluşturulan şifreniz aşağıdaki gibidir:
+[RandomPassword]
+
+Giriş yapmalı ve bu şifreyi en kısa zamanda kendi seçeceğiniz daha güvenli bir şeyle değiştirmelisiniz. Bunu [ExternalUrl]'de oturum açarak, ve sonra sağ üst köşedeki "Kullanıcı" simgesine tıklayarak, Güvenlik sekmesini seçerek (asma kilit olanla), bu geçici şifreyi girip ardından yeni olanı yazınız. Ayrıca tıpkı iyi bir uygulama gibi, iki faktörlü kimlik doğrulamayı etkinleştirmeyi de düşünmelisiniz.
+
+Gemiye hoş geldiniz!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [OrganizationName]'e Hoş geldiniz!</value>
+  </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] [OrganizationName]'e Hoşgeldiniz!</value>
   </data>

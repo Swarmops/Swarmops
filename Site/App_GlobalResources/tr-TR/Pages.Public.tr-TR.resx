@@ -155,12 +155,12 @@
     <value>{1}'de {0} için bir başvuru</value>
   </data>
   <data name="Signup_DashboardMessage" xml:space="preserve">
-    <value>Hoşgeldiniz! Bu &lt;em&gt;Gösterge Tablosu,&lt;/em&gt; {0} dahili işlevine erişebileceğiniz yer. Posta ile kısa süre içinde daha fazla bilgi alacaksınız.&lt;br/&gt;&lt;br/&gt;
+    <value>Hoş geldiniz! Bu &lt;em&gt;Gösterge Tablosu,&lt;/em&gt; {0} dahili işlevine erişebileceğiniz yer. Posta ile kısa süre içinde daha fazla bilgi alacaksınız.&lt;br/&gt;&lt;br/&gt;
 
 Resmi bir sorumluluk almak için gönüllü olduysanız, biri (muhtemelen kendiniz gibi bir gönüllü de olabilir) mevcut fırsatlar hakkında daha fazla bilgi almak için sizinle irtibata geçecektir.</value>
   </data>
   <data name="Signup_DefaultFirstPageText" xml:space="preserve">
-    <value>Bu Organizasyon'un özel karşılama metnidir. Yönetici / Kuruluş ayarlarında ayarlanır.</value>
+    <value>Bu organizasyon'un özel karşılama metnidir. Henüz yazılı değil; Yönetici / Kuruluş ayarlarında ayarlanır.</value>
   </data>
   <data name="Signup_DefaultLastPageText" xml:space="preserve">
     <value>Bu Kayıt Sonlandırma için gösterilen organizasyona özel metindir. Yönetici / Kuruluş ayaları bölümünde ayarlanır. Yeni kişi Bitir tuşuna bastığında, kuruluşa girecek, oturum açacak ve Başlangıç kullanıcı olarak Gösterge Tablosuna gönderilecektir.</value>
@@ -190,11 +190,16 @@ Resmi bir sorumluluk almak için gönüllü olduysanız, biri (muhtemelen kendin
     <value>{0}{1}'e kayıt olmak için hiç bir ücret bulunumamaktadır. Ancak, {1}'inizi {2}'de sona erdiğinde yenilemek için bir ücret olacaktır. Şuan için bu ücret {3}{4:N2}dir ve yenilemeniz için hiçbir yükümlülüğünüz bulunmaz.</value>
     <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
   </data>
-  
+  <data name="Signup_FeeText" xml:space="preserve">
+    <value>{0} ücreti {3} için {1} {2:N2}'dir. Bu işlemin sonunda bir fatura alacaksınız. ({0}'ınızı istediğiniz zaman sonlandırabilirsiniz.) </value>
+    <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
   <data name="Signup_FinalizeSignup" xml:space="preserve">
     <value>Kaydolmayı Sonlandır</value>
   </data>
-  
+  <data name="Signup_MailLoginKey" xml:space="preserve">
+    <value>Oturumunuz (mail adresiniz)</value>
+  </data>
   <data name="Signup_NoFeeText" xml:space="preserve">
     <value>{2} ile bir {0} için kayıt olmanın hiçbir maliyeti yoktur, ne de {1} zaman aşımına uğradığında yenileme için hiçbir bir maliyet yoktur. Ayrıca, {0}'ı istediğiniz zaman sonlandırabilirsiniz.</value>
     <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
@@ -255,12 +260,14 @@ Resmi bir sorumluluk almak için gönüllü olduysanız, biri (muhtemelen kendin
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Kayıt olma tamamlandı.</value>
   </data>
-  
+  <data name="Signup_Unsupported" xml:space="preserve">
+    <value>Swarmops bu ücret yapısına henüz destek sağlamamıştır.</value>
+  </data>
   <data name="Signup_VolunteerHeader" xml:space="preserve">
-    <value>Hangi statü ile ilgileniyorsunuz?</value>
+    <value>Hangi pozisyon ile ilgileniyorsunuz?</value>
   </data>
   <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
-    <value>Mevcut olan en yüksek coğrafya</value>
+    <value>Mevcut Olan En Yüksek Coğrafya</value>
   </data>
   <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
     <value>Pozisyon</value>

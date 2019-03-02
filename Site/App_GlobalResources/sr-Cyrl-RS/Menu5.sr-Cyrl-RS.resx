@@ -459,9 +459,7 @@
     <value>Моја плата</value>
     <comment>This lists salary payments for the logged on individual</comment>
   </data>
-  <data name="Menu5_Ledgers_DeprecatingAmortizedAssets" xml:space="preserve">
-    <value>Амортизована средства и добра</value>
-  </data>
+  
   <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
     <value>Губитак вредности и амортизација</value>
   </data>

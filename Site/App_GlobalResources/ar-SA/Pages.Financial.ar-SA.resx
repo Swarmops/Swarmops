@@ -359,25 +359,9 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>الرجاء وصف هذه العملية الشرائية.</value>
   </data>
-  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
-    <value>حساب (OCR)</value>
-  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>المبلغ</value>
     <comment>Amount to be paid out</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
-    <value>المبلغ (OCR)</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
-    <value>المقاصة/حساب</value>
-    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
-    <value>البنك</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
-    <value>تاريخ الاستحقاق</value>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>دفعت</value>
@@ -387,18 +371,8 @@
     <value>المُستلم</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>المرجع</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
-    <value>المرجع (OCR)</value>
-  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>النفقات الجاهزة للتعويض</value>
-  </data>
-  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
-    <value>تكاليف الدفع (OCR لتطبيقات الهاتف)</value>
   </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>هذه هي الأشكال المتنوعة للنفقات التي سيتم دفعها للمنظمة والتي اجتازت كل العقبات لدفع التعويضات. إنها جاهزة الآن لتدفع للمستلم. هنا يتم التحقق منها أثناء إجراء عملية الدفع (ربما أثناء فتحك لنافذة المصرف الخاص بك في إطار آخر).</value>
@@ -666,6 +640,21 @@
   </data>
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>تم تقديم {0} طلبيات بنجاح.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>المرجع</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   
 </root>

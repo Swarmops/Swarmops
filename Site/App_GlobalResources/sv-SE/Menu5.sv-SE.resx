@@ -459,7 +459,7 @@
     <value>Min lön</value>
     <comment>This lists salary payments for the logged on individual</comment>
   </data>
-  <data name="Menu5_Ledgers_DeprecatingAmortizedAssets" xml:space="preserve">
+  <data name="Menu5_Ledgers_DepreciatingAmortizedAssets" xml:space="preserve">
     <value>Tillgångars av- &amp; nedskrivningar</value>
   </data>
   <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">

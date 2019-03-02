@@ -271,16 +271,6 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
-    <value>Mga gastos par sa Payout (OCR para sa mga mobile app)</value>
-  </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Ang mga ito ay ang iba't ibang uri ng mga gastos sa organisasyon na nakapasa sa lahat ng mga hadlang para sa payout. Sila ay handa na mabayaran sa tatanggap. Narito kung saan mo tinitingnan ang mga ito bilang bayad (marahil habang nakabukas ang iyong bangko sa isa pang window).</value>
   </data>
@@ -501,6 +491,18 @@
   <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
     <value>Mag-upload ng Expensify Report Para sa Pagbabayad</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

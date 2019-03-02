@@ -297,18 +297,9 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Por favor descreva o que foi esta compra.</value>
   </data>
-  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Quantia</value>
     <comment>Amount to be paid out</comment>
-  </data>
-  
-  
-  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
-    <value>Banco</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
-    <value>Data de Vencimento</value>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Pago</value>
@@ -318,15 +309,9 @@
     <value>Destinatário</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referência</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Custos Prontos Para Pagamento</value>
   </data>
-  
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Estes são os diversos custos para a organização que passaram todos os obstáculos para pagamento. Estão prontos a serem pagos ao destinatário. Aqui é onde pode verificá-los manualmente à medida que são pagos (provavelmente enquanto tem a página do banco aberta numa outra janela).</value>
   </data>
@@ -464,5 +449,20 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referência</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
   
 </root>

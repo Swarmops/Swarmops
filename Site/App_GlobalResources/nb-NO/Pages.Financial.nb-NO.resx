@@ -215,16 +215,9 @@
   
   
   
-  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Beløp</value>
     <comment>Amount to be paid out</comment>
-  </data>
-  
-  
-  
-  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
-    <value>Forfallsdato</value>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Betalingen er utført</value>
@@ -234,15 +227,9 @@
     <value>Mottaker</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referanse</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Kostnader til utbetaling</value>
   </data>
-  
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Dette er de forskjellige kostnadene som har blitt godkjent. De er klare for utbetaling til mottaker. Hak av her for å markere at betalingen er utført (gjerne samtidig som du har nettbankvinduet åpent). </value>
   </data>
@@ -360,5 +347,20 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referanse</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
   
 </root>

@@ -135,9 +135,15 @@
     <value>Gösterge paneli</value>
     <comment>Title of default page</comment>
   </data>
-  
-  
-  
+  <data name="Financial_Actuals" xml:space="preserve">
+    <value>Aktüeller</value>
+  </data>
+  <data name="Financial_ActualsPreliminary" xml:space="preserve">
+    <value>Aktüeller (prel)</value>
+  </data>
+  <data name="Financial_ActualsToDate" xml:space="preserve">
+    <value>SBB Aktüeller</value>
+  </data>
   <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
     <value>Muhasebe Hesabı</value>
   </data>
@@ -501,7 +507,10 @@
     <value>AA/GG/YYYY</value>
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>AAAA g, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
     <value>beş yıllık</value>
   </data>
@@ -810,7 +819,17 @@
   <data name="Master_BitIdRegister_Header" xml:space="preserve">
     <value>BitID'yi etkinleştirmek için bu kodu okutun</value>
   </data>
-  
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>&lt;h3&gt;Bu nedir?&lt;/h3&gt;
+                &lt;p&gt;BitID bir parola girmekten daha az zahmetle güvenli bir şekilde oturum açmanın bir yoludur. Basitçe açıklanamaz, yalnızca deneyimlenir ve telefonunuzu kullandığı için bir iki faktörlü kimlik doğrulamadır.&lt;/p&gt;
+                &lt;h3&gt;Bu, telefonumun da korunmasını gerektirmiyor mu?&lt;/h3&gt;
+                &lt;p&gt;Güzel, evet. Bu, telefonunuz ve telefonunuzun erişim korumasıdır. Ancak telefonunuz her zaman erişim korumalı olmalıdır.&lt;/p&gt;
+                &lt;h3&gt;Bunun için bir mobil uygulamaya ihtiyacım var mı?&lt;/h3&gt;
+                &lt;p&gt;Evet, bir şekilde. Bazı mobil bitcoin cüzdanlarında yerleşik BitID bulunur. BitID'yi destekleyen iki mobil cüzdan örneği {0} ve {1}'dir. Ayrıca bağımsız bir BitID Kimlik Doğrulayıcı da arayabilirsiniz.&lt;/p&gt;
+                &lt;h3&gt;BitID'yi nasıl etkinleştiririm?&lt;/h3&gt;
+                &lt;p&gt;Sadece bu kodu taramak için telefon uygulamasını kullanın. Bundan sonra, bu sisteme giriş yapmak için benzer bir kod tarayabilirsiniz.&lt;/p&gt;</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
+  </data>
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>BitID (bitcoin imzası) iki aşamalı doğrulama</value>
   </data>
@@ -891,7 +910,10 @@
     <value>İlerleme durumu</value>
     <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
   </data>
-  
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
+  </data>
   <data name="Global_DownloadThis" xml:space="preserve">
     <value>Bunu İndir</value>
   </data>
@@ -977,11 +999,14 @@
     <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
   </data>
   <data name="Financial_Ebitda_Long" xml:space="preserve">
-    <value>Faiz, Vergi, Değer Kaybı ve İtfa payı öncesi kazanç</value>
+    <value>Faiz öncesi kazançlar, Vergiler, Değer Kayıpları ve Amortismanlar</value>
   </data>
-  
+  <data name="Financial_Ebitda_Short" xml:space="preserve">
+    <value>FAVÖK</value>
+    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
+  </data>
   <data name="Financial_AllBalancesSettled" xml:space="preserve">
-    <value>Tüm bakiyeler düzenlendi</value>
+    <value>Tüm Bakiyeler Düzenlendi</value>
     <comment>Nobody owes anybody anything</comment>
   </data>
   <data name="Financial_CurrentBalance" xml:space="preserve">
@@ -1026,7 +1051,7 @@
     <comment>The {0} is the organization name</comment>
   </data>
   <data name="Financial_YouOwe" xml:space="preserve">
-    <value>Bu miktar borcunuz</value>
+    <value>Bu Miktar Borcunuz</value>
     <comment>Like Person Owes, but directed at the user at the screen</comment>
   </data>
   <data name="Financial_Zero" xml:space="preserve">
@@ -1057,4 +1082,8 @@
     <value>Açıldı</value>
     <comment>As in "record or transaction opened"</comment>
   </data>
+  
+  
+  
+  
 </root>

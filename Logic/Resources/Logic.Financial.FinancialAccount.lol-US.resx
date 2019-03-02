@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Asset_BankAccount" xml:space="preserve">
+    <value>crwdns6555893:0crwdne6555893:0</value>
+  </data>
+  <data name="Asset_BitcoinCold" xml:space="preserve">
+    <value>crwdns6555894:0crwdne6555894:0</value>
+  </data>
+  <data name="Asset_BitcoinHot" xml:space="preserve">
+    <value>crwdns6555895:0crwdne6555895:0</value>
+  </data>
+  <data name="Asset_CashAdvances" xml:space="preserve">
+    <value>crwdns6555896:0crwdne6555896:0</value>
+  </data>
+  <data name="Asset_Hardware" xml:space="preserve">
+    <value>crwdns6555897:0crwdne6555897:0</value>
+  </data>
+  <data name="Asset_InboundVat" xml:space="preserve">
+    <value>crwdns6555898:0crwdne6555898:0</value>
+    <comment>Value Added Tax</comment>
+  </data>
+  <data name="Asset_OutboundInvoices" xml:space="preserve">
+    <value>crwdns6555899:0crwdne6555899:0</value>
+  </data>
+  <data name="Asset_Paypal" xml:space="preserve">
+    <value>crwdns6555900:0crwdne6555900:0</value>
+  </data>
+  <data name="Cost_AccountingErrors" xml:space="preserve">
+    <value>crwdns6555901:0crwdne6555901:0</value>
+    <comment>Used to compensate for all kinds of random mistakes</comment>
+  </data>
+  <data name="Cost_Airfare" xml:space="preserve">
+    <value>crwdns6556447:0crwdne6556447:0</value>
+    <comment>"Transit" refers to transit to/from airport.</comment>
+  </data>
+  <data name="Cost_AirfareBusiness" xml:space="preserve">
+    <value>crwdns6556448:0crwdne6556448:0</value>
+  </data>
+  <data name="Cost_AirfareCoach" xml:space="preserve">
+    <value>crwdns6556449:0crwdne6556449:0</value>
+  </data>
+  <data name="Cost_AllocatedFunds" xml:space="preserve">
+    <value>crwdns6555902:0crwdne6555902:0</value>
+  </data>
+  <data name="Cost_AnnualResult" xml:space="preserve">
+    <value>crwdns6555903:0crwdne6555903:0</value>
+  </data>
+  <data name="Cost_AssetDepreciation" xml:space="preserve">
+    <value>crwdns6555904:0crwdne6555904:0</value>
+  </data>
+  <data name="Cost_BankFees" xml:space="preserve">
+    <value>crwdns6556450:0crwdne6556450:0</value>
+  </data>
+  <data name="Cost_BitcoinFees" xml:space="preserve">
+    <value>crwdns6556418:0crwdne6556418:0</value>
+  </data>
+  <data name="Cost_CentRounding" xml:space="preserve">
+    <value>crwdns6555906:0crwdne6555906:0</value>
+    <comment>As in rounding to nearest small unit of currency</comment>
+  </data>
+  <data name="Cost_Conferences" xml:space="preserve">
+    <value>crwdns6556451:0crwdne6556451:0</value>
+    <comment>This is for confs that the organization is _hosting_.</comment>
+  </data>
+  <data name="Cost_EventTickets" xml:space="preserve">
+    <value>crwdns6556452:0crwdne6556452:0</value>
+    <comment>Typically _remote_ event tickets, as this accounts sorts under travel.</comment>
+  </data>
+  <data name="Cost_FinancialFees" xml:space="preserve">
+    <value>crwdns6556453:0crwdne6556453:0</value>
+    <comment>Master account to bitcoin mining and bank fees</comment>
+  </data>
+  <data name="Cost_ForexLosses" xml:space="preserve">
+    <value>crwdns6556052:0crwdne6556052:0</value>
+    <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
+  </data>
+  <data name="Cost_Hospitality" xml:space="preserve">
+    <value>crwdns6556454:0crwdne6556454:0</value>
+  </data>
+  <data name="Cost_IctInfrastructure" xml:space="preserve">
+    <value>crwdns6555909:0crwdne6555909:0</value>
+  </data>
+  <data name="Cost_InterestLosses" xml:space="preserve">
+    <value>crwdns6555910:0crwdne6555910:0</value>
+  </data>
+  <data name="Cost_LegalFees" xml:space="preserve">
+    <value>crwdns6556455:0crwdne6556455:0</value>
+  </data>
+  <data name="Cost_LodgingFiveStar" xml:space="preserve">
+    <value>crwdns6556456:0crwdne6556456:0</value>
+    <comment>Five-star rating</comment>
+  </data>
+  <data name="Cost_LodgingFourStar" xml:space="preserve">
+    <value>crwdns6556457:0crwdne6556457:0</value>
+    <comment>Four-star rating</comment>
+  </data>
+  <data name="Cost_LodgingHostel" xml:space="preserve">
+    <value>crwdns6556458:0crwdne6556458:0</value>
+  </data>
+  <data name="Cost_LodgingShared" xml:space="preserve">
+    <value>crwdns6556459:0crwdne6556459:0</value>
+  </data>
+  <data name="Cost_LodgingThreeStar" xml:space="preserve">
+    <value>crwdns6556460:0crwdne6556460:0</value>
+    <comment>Three-star rating</comment>
+  </data>
+  <data name="Cost_MarketingCampaigns" xml:space="preserve">
+    <value>crwdns6555911:0crwdne6555911:0</value>
+  </data>
+  <data name="Cost_OfficeEquipment" xml:space="preserve">
+    <value>crwdns6556461:0crwdne6556461:0</value>
+  </data>
+  <data name="Cost_Offices" xml:space="preserve">
+    <value>crwdns6555912:0crwdne6555912:0</value>
+  </data>
+  <data name="Cost_OfficeSpace" xml:space="preserve">
+    <value>crwdns6556462:0crwdne6556462:0</value>
+  </data>
+  <data name="Cost_OfficeSupplies" xml:space="preserve">
+    <value>crwdns6556469:0crwdne6556469:0</value>
+  </data>
+  <data name="Cost_PublicTransit" xml:space="preserve">
+    <value>crwdns6556463:0crwdne6556463:0</value>
+    <comment>The local kind within a city or limited area.</comment>
+  </data>
+  <data name="Cost_ResearchDevelopment" xml:space="preserve">
+    <value>crwdns6555913:0crwdne6555913:0</value>
+  </data>
+  <data name="Cost_Staff" xml:space="preserve">
+    <value>crwdns6555914:0crwdne6555914:0</value>
+  </data>
+  <data name="Cost_StaffBenefits" xml:space="preserve">
+    <value>crwdns6556088:0crwdne6556088:0</value>
+    <comment>Non-compensation benefits (car, phone, etc). Usually taxable.</comment>
+  </data>
+  <data name="Cost_StaffExpenses" xml:space="preserve">
+    <value>crwdns6555915:0crwdne6555915:0</value>
+  </data>
+  <data name="Cost_StaffPerDiem" xml:space="preserve">
+    <value>crwdns6556089:0crwdne6556089:0</value>
+    <comment>As in "extra travel compensation"</comment>
+  </data>
+  <data name="Cost_StaffSalaries" xml:space="preserve">
+    <value>crwdns6555916:0crwdne6555916:0</value>
+  </data>
+  <data name="Cost_Taxes" xml:space="preserve">
+    <value>crwdns6556053:0crwdne6556053:0</value>
+  </data>
+  <data name="Cost_TaxiTransport" xml:space="preserve">
+    <value>crwdns6556464:0crwdne6556464:0</value>
+  </data>
+  <data name="Cost_TrainsFerries" xml:space="preserve">
+    <value>crwdns6556465:0crwdne6556465:0</value>
+  </data>
+  <data name="Cost_Transportation" xml:space="preserve">
+    <value>crwdns6555917:0crwdne6555917:0</value>
+  </data>
+  <data name="Cost_Travel" xml:space="preserve">
+    <value>crwdns6556466:0crwdne6556466:0</value>
+    <comment>Root account for travel related accounts</comment>
+  </data>
+  <data name="Cost_TravelLodging" xml:space="preserve">
+    <value>crwdns6556467:0crwdne6556467:0</value>
+  </data>
+  <data name="Cost_TravelPerDiem" xml:space="preserve">
+    <value>crwdns6556468:0crwdne6556468:0</value>
+    <comment>This is compensation to people traveling for added everyday costs. Usually follows an official guide.</comment>
+  </data>
+  <data name="Cost_Unforeseen" xml:space="preserve">
+    <value>crwdns6555918:0crwdne6555918:0</value>
+  </data>
+  <data name="Debt_Equity" xml:space="preserve">
+    <value>crwdns6555919:0crwdne6555919:0</value>
+  </data>
+  <data name="Debt_EquityRestricted" xml:space="preserve">
+    <value>crwdns6555920:0crwdne6555920:0</value>
+    <comment>As in "equity sold to shareholders"</comment>
+  </data>
+  <data name="Debt_EquityUnrestricted" xml:space="preserve">
+    <value>crwdns6555921:0crwdne6555921:0</value>
+  </data>
+  <data name="Debt_ExpenseClaims" xml:space="preserve">
+    <value>crwdns6555922:0crwdne6555922:0</value>
+  </data>
+  <data name="Debt_General" xml:space="preserve">
+    <value>crwdns6555923:0crwdne6555923:0</value>
+  </data>
+  <data name="Debt_InboundInvoices" xml:space="preserve">
+    <value>crwdns6555924:0crwdne6555924:0</value>
+  </data>
+  <data name="Debt_OutboundVat" xml:space="preserve">
+    <value>crwdns6555925:0crwdne6555925:0</value>
+    <comment>Value Added Tax</comment>
+  </data>
+  <data name="Debt_Salaries" xml:space="preserve">
+    <value>crwdns6555926:0crwdne6555926:0</value>
+  </data>
+  <data name="Debt_Taxes" xml:space="preserve">
+    <value>crwdns6555927:0crwdne6555927:0</value>
+  </data>
+  <data name="Income_Donations" xml:space="preserve">
+    <value>crwdns6555928:0crwdne6555928:0</value>
+  </data>
+  <data name="Income_ForexGains" xml:space="preserve">
+    <value>crwdns6556054:0crwdne6556054:0</value>
+    <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
+  </data>
+  <data name="Income_InterestGains" xml:space="preserve">
+    <value>crwdns6555930:0crwdne6555930:0</value>
+  </data>
+  <data name="Income_MembershipDues" xml:space="preserve">
+    <value>crwdns6555931:0crwdne6555931:0</value>
+  </data>
+  <data name="Income_Sales" xml:space="preserve">
+    <value>crwdns6555932:0crwdne6555932:0</value>
+  </data>
+  <data name="Income_SubsidiesGrants" xml:space="preserve">
+    <value>crwdns6556055:0crwdne6556055:0</value>
+  </data>
+  <data name="Asset_ShortTerm" xml:space="preserve">
+    <value>crwdns6556547:0crwdne6556547:0</value>
+  </data>
+  <data name="Asset_TransfersInProgress" xml:space="preserve">
+    <value>crwdns6556548:0crwdne6556548:0</value>
+  </data>
+  <data name="Asset_InboundVatReported" xml:space="preserve">
+    <value>crwdns6556549:0crwdne6556549:0</value>
+    <comment>This is nonzero if the inbound amount (to get back) is higher than the outbound</comment>
+  </data>
+  <data name="Asset_InboundVatUnreported" xml:space="preserve">
+    <value>crwdns6556550:0crwdne6556550:0</value>
+    <comment>Accumulates to each VAT report, set by VAT report frequency</comment>
+  </data>
+  <data name="Debt_OutboundVatReported" xml:space="preserve">
+    <value>crwdns6556551:0crwdne6556551:0</value>
+    <comment>This is nonzero if there's VAT to pay to tax authorities</comment>
+  </data>
+  <data name="Debt_OutboundVatUnreported" xml:space="preserve">
+    <value>crwdns6556552:0crwdne6556552:0</value>
+    <comment>Accumulates to each VAT report, as set by VAT report frequency</comment>
+  </data>
+  <data name="Asset_TaxAdvances" xml:space="preserve">
+    <value>crwdns6556553:0crwdne6556553:0</value>
+    <comment>Most tax authorities require you to pay some part in advance</comment>
+  </data>
+  <data name="Asset_BankAccounts" xml:space="preserve">
+    <value>crwdns6556554:0crwdne6556554:0</value>
+    <comment>Note the plural form</comment>
+  </data>
+  <data name="Cost_BusinessServices" xml:space="preserve">
+    <value>crwdns6556780:0crwdne6556780:0</value>
+    <comment>Like paperwork services, fruit delivery, travel booking, anything that isn't strictly office maintenance</comment>
+  </data>
+  <data name="Cost_MaintenanceDonations" xml:space="preserve">
+    <value>crwdns6563290:0crwdne6563290:0</value>
+    <comment>This is donations toward maintenance of the Swarmops / Backoffice.Cash codebase and data.</comment>
+  </data>
+</root>

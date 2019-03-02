@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>crwdns6555032:0crwdne6555032:0</value>
+  </data>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>crwdns6555033:0crwdne6555033:0</value>
+  </data>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>crwdns6555034:0crwdne6555034:0</value>
+  </data>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>crwdns6555035:0{0}crwdne6555035:0</value>
+  </data>
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>crwdns6555036:0crwdne6555036:0</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>crwdns6555037:0crwdne6555037:0</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>crwdns6555038:0crwdne6555038:0</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>crwdns6555421:0crwdne6555421:0</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>crwdns6555040:0crwdne6555040:0</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>crwdns6555041:0crwdne6555041:0</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>crwdns6555042:0crwdne6555042:0</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>crwdns6555043:0crwdne6555043:0</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>crwdns6555044:0crwdne6555044:0</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>crwdns6555045:0crwdne6555045:0</value>
+  </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>crwdns6555597:0crwdne6555597:0</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>crwdns6555598:0crwdne6555598:0</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>crwdns6555599:0crwdne6555599:0</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>crwdns6555600:0crwdne6555600:0</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>crwdns6555601:0crwdne6555601:0</value>
+  </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>crwdns6555817:0{0}crwdne6555817:0</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>crwdns6555046:0crwdne6555046:0</value>
+  </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>crwdns6556542:0crwdne6556542:0</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>crwdns6555047:0crwdne6555047:0</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>crwdns6555048:0crwdne6555048:0</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>crwdns6556437:0crwdne6556437:0</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>crwdns6555050:0crwdne6555050:0</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>crwdns6555051:0crwdne6555051:0</value>
+  </data>
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>crwdns6555052:0crwdne6555052:0</value>
+  </data>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>crwdns6556632:0crwdne6556632:0</value>
+    <comment>Header to manual username/password form</comment>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>crwdns6555054:0crwdne6555054:0</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>crwdns6555055:0crwdne6555055:0</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>crwdns6556633:0crwdne6556633:0</value>
+  </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>crwdns6556415:0{0}crwdne6556415:0</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>crwdns6556416:0crwdne6556416:0</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>crwdns6555057:0crwdne6555057:0</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>crwdns6556634:0crwdne6556634:0</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>crwdns6556635:0crwdne6556635:0</value>
+    <comment>Switches from BitId to Username/Password form</comment>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>crwdns6555058:0crwdne6555058:0</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>crwdns6555603:0crwdne6555603:0</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>crwdns6555604:0crwdne6555604:0</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>crwdns6555650:0crwdne6555650:0</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>crwdns6555651:0crwdne6555651:0</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>crwdns6555652:0crwdne6555652:0</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>crwdns6555606:0crwdne6555606:0</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>crwdns6555607:0crwdne6555607:0</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>crwdns6555608:0crwdne6555608:0</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>crwdns6555609:0crwdne6555609:0</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>crwdns6555610:0crwdne6555610:0</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>crwdns6555611:0crwdne6555611:0</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>crwdns6555612:0crwdne6555612:0</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>crwdns6555613:0crwdne6555613:0</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>crwdns6555614:0crwdne6555614:0</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>crwdns6555615:0crwdne6555615:0</value>
+  </data>
+</root>

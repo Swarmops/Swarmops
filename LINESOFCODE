@@ -298,6 +298,7 @@
      44 ./Basic/Types/Financial/BasicExchangeRateSnapshot.cs
      64 ./Basic/Types/Financial/BasicFinancialAccountDocument.cs
      51 ./Basic/Types/Financial/BasicPayout.cs
+     28 ./Basic/Types/Financial/BasicPaymentTarget.cs
      42 ./Basic/Types/Financial/BasicPayment.cs
      61 ./Basic/Types/Financial/BasicFinancialAccount.cs
      39 ./Basic/Types/Financial/BasicFinancialValidation.cs
@@ -461,6 +462,7 @@
     291 ./Logic/Swarm/DashboardTodos.cs
      88 ./Logic/Swarm/Volunteers.cs
      41 ./Logic/Swarm/ParleyOptions.cs
+    207 ./Logic/Resources/Logic.Financial.PaymentTransferInfo.Designer.cs
     942 ./Logic/Resources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
      90 ./Logic/Resources/Logic.Financial.VatReport.Designer.cs
      99 ./Logic/Resources/Logic.Support.Document.Designer.cs
@@ -489,7 +491,7 @@
      81 ./Logic/Support/Documents.cs
      25 ./Logic/Support/TemporaryIdentity.cs
     269 ./Logic/Support/SharpCashAddr.cs
-    176 ./Logic/Support/General.cs
+    180 ./Logic/Support/General.cs
     464 ./Logic/Support/PdfProcessor.cs
      33 ./Logic/Support/ErrorMessages.cs
      30 ./Logic/Support/IBackendServiceOrderBase.cs
@@ -572,7 +574,7 @@
     238 ./Logic/Financial/CashAdvance.cs
     103 ./Logic/Financial/Payroll.cs
      88 ./Logic/Financial/BitcoinTransactionInput.cs
-    988 ./Logic/Financial/Payout.cs
+   1003 ./Logic/Financial/Payout.cs
     114 ./Logic/Financial/ExpenseClaims.cs
      52 ./Logic/Financial/FinancialAccountDocuments.cs
       8 ./Logic/Financial/IBankDataAccountStatementReader.cs
@@ -602,7 +604,7 @@
     112 ./Logic/Financial/FinancialTransactionRow.cs
      90 ./Logic/Financial/InboundInvoices.cs
      63 ./Logic/Financial/ExpenseClaimGroup.cs
-    523 ./Logic/Financial/VatReport.cs
+    537 ./Logic/Financial/VatReport.cs
    1493 ./Logic/Financial/BitcoinUtility.cs
     200 ./Logic/Financial/ExchangeRateSnapshot.cs
      21 ./Logic/Financial/PayrollAdjustments.cs
@@ -621,7 +623,7 @@
     123 ./Logic/Financial/Currency.cs
      47 ./Logic/Financial/VatReportItems.cs
      23 ./Logic/Financial/ImportedBankData.cs
-    827 ./Logic/Financial/Payouts.cs
+    834 ./Logic/Financial/Payouts.cs
     196 ./Logic/Financial/Payment.cs
     386 ./Logic/Financial/AnnualReport.cs
      49 ./Logic/Financial/Money.cs
@@ -639,6 +641,7 @@
      40 ./Logic/Financial/FinancialValidations.cs
     346 ./Logic/Financial/Salary.cs
     568 ./Logic/Financial/ExpenseClaim.cs
+    195 ./Logic/Financial/PaymentTransferInfo.cs
      35 ./Logic/Financial/FinancialAccountRow.cs
     211 ./Logic/Financial/HotBitcoinAddress.cs
       9 ./Logic/Financial/ISummable.cs
@@ -735,11 +738,11 @@
     159 ./Site/Security/ResetPassword.aspx.designer.cs
       0 ./Site/Security/FinalizeLogin.aspx
     507 ./Site/Security/Login.aspx.cs
-    150 ./Site/Security/RequestPasswordReset.aspx.designer.cs
+     96 ./Site/Security/RequestPasswordReset.aspx.designer.cs
      15 ./Site/Security/FinalizeLogin.aspx.designer.cs
     195 ./Site/Security/Login.aspx.designer.cs
-    139 ./Site/Security/RequestPasswordReset.aspx
-     94 ./Site/Security/RequestPasswordReset.aspx.cs
+    124 ./Site/Security/RequestPasswordReset.aspx
+     84 ./Site/Security/RequestPasswordReset.aspx.cs
     132 ./Site/Global.asax
     279 ./Site/App_GlobalResources/Pages.Swarm.designer.cs
       0 ./Site/App_GlobalResources/ru-RU/Pages.Financial.ru-RU.designer.cs
@@ -870,7 +873,7 @@
       0 ./Site/App_GlobalResources/he-IL/Pages.Comms.he-IL.designer.cs
       0 ./Site/App_GlobalResources/he-IL/Controls.Swarm.he-IL.designer.cs
       0 ./Site/App_GlobalResources/he-IL/Pages.Admin.he-IL.designer.cs
-   2449 ./Site/App_GlobalResources/Pages.Ledgers.designer.cs
+   2467 ./Site/App_GlobalResources/Pages.Ledgers.designer.cs
       0 ./Site/App_GlobalResources/es-ES/Pages.Governance.es-ES.designer.cs
       0 ./Site/App_GlobalResources/es-ES/Global.es-ES.designer.cs
       0 ./Site/App_GlobalResources/es-ES/Pages.Public.es-ES.designer.cs
@@ -999,7 +1002,7 @@
       0 ./Site/App_GlobalResources/ko-KR/Menu5.ko-KR.designer.cs
       0 ./Site/App_GlobalResources/ko-KR/Controls.Swarm.ko-KR.designer.cs
       0 ./Site/App_GlobalResources/ko-KR/Pages.Swarm.ko-KR.designer.cs
-   1719 ./Site/App_GlobalResources/Pages.Financial.designer.cs
+   1755 ./Site/App_GlobalResources/Pages.Financial.designer.cs
     541 ./Site/App_GlobalResources/Pages.Security.designer.cs
       0 ./Site/App_GlobalResources/ar-SA/Pages.Financial.ar-SA.designer.cs
       0 ./Site/App_GlobalResources/ar-SA/Global.ar-SA.designer.cs
@@ -1012,7 +1015,7 @@
       0 ./Site/App_GlobalResources/ar-SA/Pages.Security.ar-SA.designer.cs
       0 ./Site/App_GlobalResources/ar-SA/Pages.Admin.ar-SA.designer.cs
       0 ./Site/App_GlobalResources/ar-SA/Pages.Ledgers.ar-SA.designer.cs
-   2569 ./Site/App_GlobalResources/Global.designer.cs
+   2605 ./Site/App_GlobalResources/Global.designer.cs
       0 ./Site/App_GlobalResources/sr-Cyrl-RS/Pages.Security.sr-Cyrl-RS.designer.cs
       0 ./Site/App_GlobalResources/sr-Cyrl-RS/Pages.Swarm.sr-Cyrl-RS.designer.cs
       0 ./Site/App_GlobalResources/sr-Cyrl-RS/Pages.Admin.sr-Cyrl-RS.designer.cs
@@ -1212,7 +1215,7 @@
       0 ./Site/Pages/v5/Ledgers/Json-InspectLedgerData.aspx
       0 ./Site/Pages/v5/Ledgers/Json-GeneralLedgerData.aspx
      15 ./Site/Pages/v5/Ledgers/Json-BalanceSheetData.aspx.designer.cs
-    134 ./Site/Pages/v5/Ledgers/ViewVatReports.aspx
+    137 ./Site/Pages/v5/Ledgers/ViewVatReports.aspx
      15 ./Site/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx.designer.cs
     164 ./Site/Pages/v5/Ledgers/ViewVatReports.aspx.cs
       1 ./Site/Pages/v5/Ledgers/Json-BitcoinHotwalletData.aspx
@@ -1262,13 +1265,13 @@
     245 ./Site/Pages/v5/Support/DownloadUploadedDocument.aspx.cs
      15 ./Site/Pages/v5/Support/StreamUpload.aspx.designer.cs
     190 ./Site/Pages/v5/Financial/CreateInboundInvoice.aspx
-    296 ./Site/Pages/v5/Financial/PayOutMoney.aspx
+    459 ./Site/Pages/v5/Financial/PayOutMoney.aspx
     207 ./Site/Pages/v5/Financial/Donate.aspx.cs
      13 ./Site/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx.designer.cs
     271 ./Site/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
      76 ./Site/Pages/v5/Financial/Json-ValidatableReceipts.aspx.cs
     276 ./Site/Pages/v5/Financial/CreateOutboundInvoice.aspx.cs
-    159 ./Site/Pages/v5/Financial/PayOutMoney.aspx.designer.cs
+    195 ./Site/Pages/v5/Financial/PayOutMoney.aspx.designer.cs
      13 ./Site/Pages/v5/Financial/BlockchainCodeUpgrading.aspx.designer.cs
       1 ./Site/Pages/v5/Financial/Json-ApprovableCosts.aspx
     189 ./Site/Pages/v5/Financial/ListInvoicesInbound.aspx
@@ -1283,9 +1286,9 @@
      13 ./Site/Pages/v5/Financial/Json-ListInvoicesInbound.aspx.designer.cs
     135 ./Site/Pages/v5/Financial/ListInvoicesOutbound.aspx
     115 ./Site/Pages/v5/Financial/Json-ListInvoicesOutbound.aspx.cs
-    123 ./Site/Pages/v5/Financial/PayOutMoney.aspx.cs
+    287 ./Site/Pages/v5/Financial/PayOutMoney.aspx.cs
       1 ./Site/Pages/v5/Financial/Json-ListInvoicesInbound.aspx
-    511 ./Site/Pages/v5/Financial/ApproveCosts.aspx
+    525 ./Site/Pages/v5/Financial/ApproveCosts.aspx
     150 ./Site/Pages/v5/Financial/RequestCashAdvance.aspx.designer.cs
      13 ./Site/Pages/v5/Financial/Json-ApprovableCosts.aspx.designer.cs
      13 ./Site/Pages/v5/Financial/Json-ListInvoicesOutbound.aspx.designer.cs
@@ -1303,7 +1306,7 @@
     402 ./Site/Pages/v5/Financial/FileExpenseClaim.aspx.designer.cs
     258 ./Site/Pages/v5/Financial/CreateInboundInvoice.aspx.designer.cs
     186 ./Site/Pages/v5/Financial/CreateOutboundInvoice.aspx
-    144 ./Site/Pages/v5/Financial/Json-PayableCosts.aspx.cs
+    151 ./Site/Pages/v5/Financial/Json-PayableCosts.aspx.cs
    1133 ./Site/Pages/v5/Financial/FileExpenseClaim.aspx.cs
      78 ./Site/Pages/v5/Financial/Donate.aspx.designer.cs
     594 ./Site/Pages/v5/Financial/ListInvoicesInbound.aspx.cs
@@ -1367,7 +1370,7 @@
     460 ./Site/Pages/v5/Public/Signup.aspx.cs
     870 ./Site/Pages/v5/Public/Initialize.aspx.cs
      15 ./Site/Pages/v5/Public/Json-SignupVolunteerPositions.aspx.designer.cs
-    808 ./Site/Pages/v5/Public/Signup.aspx
+    813 ./Site/Pages/v5/Public/Signup.aspx
      73 ./Site/Pages/v5/Public/Json-SignupVolunteerPositions.aspx.cs
      41 ./Site/Default.aspx
      26 ./Site/Properties/Settings.Designer.cs
@@ -1431,8 +1434,10 @@
      28 ./Common/Enums/PersonOptionalDataKey.cs
      19 ./Common/Enums/InvalidMembershipType.cs
     240 ./Common/Enums/RoleTypeClass.cs
+     25 ./Common/Enums/PaymentTargetField.cs
      19 ./Common/Enums/ExternalIdentityType.cs
       8 ./Common/Enums/PaymentCodeIssueType.cs
+     26 ./Common/Enums/PaymentTargetType.cs
      69 ./Common/Enums/FinancialDependencyType.cs
      29 ./Common/Enums/PositionLevel.cs
     451 ./Common/Enums/ObjectOptionalDataType.cs
@@ -1457,9 +1462,10 @@
      45 ./Common/Enums/MembershipPaymentStatus.cs
      16 ./Common/Enums/FinancialAccountDocumentType.cs
      26 ./Common/Enums/BitcoinChain.cs
+     16 ./Common/Enums/ForeignObjectType.cs
      15 ./Common/Enums/LayoutDirection.cs
      16 ./Common/Enums/PoliticalAffiliation.cs
      16 ./Common/Enums/CommunicationType.cs
      34 ./Common/Enums/FinancialValidationType.cs
      36 ./Common/Properties/AssemblyInfo.cs
- 167467 total
+ 168407 total

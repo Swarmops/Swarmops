@@ -344,17 +344,32 @@
     <value>Rapordaki fazlalık gelen KDV</value>
     <comment>This is nonzero if the inbound amount (to get back) is higher than the outbound</comment>
   </data>
-  
+  <data name="Asset_InboundVatUnreported" xml:space="preserve">
+    <value>Gelen raporlanacak KDV</value>
+    <comment>Accumulates to each VAT report, set by VAT report frequency</comment>
+  </data>
   <data name="Debt_OutboundVatReported" xml:space="preserve">
     <value>Ödenmek için raporlanan KDV</value>
     <comment>This is nonzero if there's VAT to pay to tax authorities</comment>
   </data>
-  
-  
+  <data name="Debt_OutboundVatUnreported" xml:space="preserve">
+    <value>Giden raporlanacak KDV</value>
+    <comment>Accumulates to each VAT report, as set by VAT report frequency</comment>
+  </data>
+  <data name="Asset_TaxAdvances" xml:space="preserve">
+    <value>Vergi Ön Ödemesi</value>
+    <comment>Most tax authorities require you to pay some part in advance</comment>
+  </data>
   <data name="Asset_BankAccounts" xml:space="preserve">
     <value>Banka Hesapları</value>
     <comment>Note the plural form</comment>
   </data>
-  
-  
+  <data name="Cost_BusinessServices" xml:space="preserve">
+    <value>İş Hizmetleri</value>
+    <comment>Like paperwork services, fruit delivery, travel booking, anything that isn't strictly office maintenance</comment>
+  </data>
+  <data name="Cost_MaintenanceDonations" xml:space="preserve">
+    <value>Bakım Bağışları</value>
+    <comment>This is donations toward maintenance of the Swarmops / Backoffice.Cash codebase and data.</comment>
+  </data>
 </root>

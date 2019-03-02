@@ -1033,4 +1033,6 @@
     <value>Platni spisak: ne postoji definisani platni spisak</value>
     <comment>This is shown as a disabled action item when there's no active payroll</comment>
   </data>
+  
+  
 </root>

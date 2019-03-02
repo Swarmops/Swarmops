@@ -190,7 +190,9 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>Satın Alma Emri Oluştur</value>
   </data>
-  
+  <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
+    <value>İş Yardımcısı</value>
+  </data>
   <data name="Menu5_Financial_List" xml:space="preserve">
     <value>Liste...</value>
   </data>
@@ -267,7 +269,7 @@
     <value>Defterler</value>
   </data>
   <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>Hesap tablosu</value>
+    <value>Hesap Tablosu</value>
   </data>
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Defterleri Denetle</value>
@@ -302,7 +304,9 @@
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Kar &amp; Zarar Beyanı</value>
   </data>
-  
+  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
+    <value>Bağlı Hesapları Yeniden Senkronize Edin</value>
+  </data>
   <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
     <value>Bütçeleri ayarla</value>
     <comment>"Budget" as in "Cost allowed for a particular purpose" or "Revenue expected from a source".</comment>
@@ -388,7 +392,9 @@
   <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
     <value>Roller ve Sorumluluklar</value>
   </data>
-  
+  <data name="Menu5_People_SelfSignup" xml:space="preserve">
+    <value>Kendi-Kendine Kayıt Sayfası</value>
+  </data>
   
   
   <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">

@@ -359,25 +359,9 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Si prega di descrivere che cosa è stato tale acquisto.</value>
   </data>
-  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
-    <value>Account (OCR)</value>
-  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Importo</value>
     <comment>Amount to be paid out</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
-    <value>Importo (OCR)</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
-    <value>Numero di clearing/ Account</value>
-    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
-    <value>Banca</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
-    <value>Data di scadenza</value>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Pagato</value>
@@ -387,18 +371,8 @@
     <value>Destinatario</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Riferimento</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
-    <value>Riferimento (OCR)</value>
-  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Spese pronte per il pagamento</value>
-  </data>
-  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
-    <value>Spese per il pagamento (OCR per applicazioni mobili)</value>
   </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Queste sono le varie tipologie di spese per l'organizzazione che hanno superato tutte le verifiche per il pagamento. Sono pronte per essere versate al destinatario. Qui è dove si effettua il controllo del pagamento (probabilmente mentre la pagina relativa alla vostra banca è aperta in un'altra finestra).</value>
@@ -667,6 +641,21 @@ nella colonna "IVA". Se il tuo team ha già creato un profilo CSV di questo tipo
   </data>
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>{0} richieste archiviate con successo.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Riferimento</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   
 </root>
