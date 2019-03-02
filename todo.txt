@@ -10,7 +10,7 @@ OVERALL:
 PRIO 1
 ------
 
-[ ] Fix self-signup
+[x] Fix self-signup
 [ ] Investigate weird accounting of echo test
 [ ] Fix crypto funds mismatch resulting from echo test
 [ ] Fix "connected accounts" concept
