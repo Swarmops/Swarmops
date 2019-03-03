@@ -309,7 +309,7 @@
             var selectedYear = $('#<%= DropHotwalletYears.ClientID %>').val();
             var selectedMonth = $('#<%= DropHotwalletMonths.ClientID %>').val();
 
-            $('#gridHotwallet').datagrid({ url: 'Json-InspectNativeData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth });
+            $('#gridHotwallet').datagrid({ url: 'Json-LedgerNativeData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth });
 
             $('#imageLoadIndicator').show();
             $('div.datagrid').css('opacity', 0.4);
@@ -495,7 +495,7 @@
             <h2><asp:Label ID="LabelHeaderHotwallet" runat="server" /> <asp:DropDownList runat="server" ID="DropHotwalletYears"/> <asp:DropDownList runat="server" ID="DropHotwalletMonths"/></h2>
 
                 <table id="gridHotwallet" class="easyui-datagrid" style="width: 680px; height: 500px"
-                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-BitcoinHotwalletData.aspx'"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-LedgerNativeData.aspx'"
                 idField="id">
                 <thead>  
                     <tr>  
