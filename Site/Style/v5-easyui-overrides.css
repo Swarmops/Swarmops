@@ -17,6 +17,7 @@
 
 h2 .textbox .textbox-text {
     border: none;
+    background: transparent !important; /* important overrides element-level styling from easyui */
 }
 
 /* combo inner, add some distance to dropdown arrow */
