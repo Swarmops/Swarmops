@@ -443,11 +443,11 @@
                         <th data-options="field:'id',width:70,align:'right'"><asp:Label ID="Label1" runat="server" Text="ID#"/></th>  
                         <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="Label2" runat="server" Text="XYZ DateTime" /></th>
                         <th data-options="field:'description',width:250"><asp:Label ID="Label3" runat="server" Text="XYZ Description" /></th>  
-                        <th data-options="field:'deltaPres',width:70,align:'right'"><asp:Label ID="Label4" runat="server" Text="XYZ Debit" /></th>
-                        <th data-options="field:'deltaBitcoin',width:70,align:'right'"><asp:Label ID="Label5" runat="server" Text="XYZ Credit" /></th>
-                        <th data-options="field:'balanceBitcoin',width:80,align:'right'"><asp:Label ID="Label6" runat="server" Text="XYZ Balance" /></th>
+                        <th data-options="field:'deltaPres',width:70,align:'right'"><asp:Label ID="Label4" runat="server" Text="XYZ SEK" /></th>
+                        <th data-options="field:'deltaBitcoin',width:70,align:'right'"><asp:Label ID="Label5" runat="server" Text="XYZ Microcoin" /></th>
+                        <th data-options="field:'balanceBitcoin',width:80,align:'right'"><asp:Label ID="Label6" runat="server" Text="XYZ Coin balance" /></th>
                         <th data-options="field:'action',width:43,align:'center'"><asp:Label ID="Label7" runat="server" Text="XYZAct" /></th>
-                    </tr>  
+                    </tr>
                 </thead>
             </table>  
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Financial;
@@ -22,9 +23,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             int year = Int32.Parse (yearString);
             int month = Int32.Parse (monthString);
-
-            DateTime dawnOfMankind = new DateTime (1901, 1, 1);
-            // no org will ever import bookkeeping from before this date
 
             if (!CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
             {
@@ -66,7 +64,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             DateTime profitLossStart = new DateTime(periodStart.Year, 1, 1);
-            DateTime balanceStart = dawnOfMankind;
+            DateTime balanceStart = Constants.DateTimeLow;
 
             FinancialAccounts accounts = FinancialAccounts.ForOrganization(CurrentOrganization);
             FinancialAccountRows rows = accounts.GetRows (periodStart, periodEnd);

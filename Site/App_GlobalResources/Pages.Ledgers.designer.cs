@@ -1402,6 +1402,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inspect Bitcoin Hotwallet For.
+        /// </summary>
+        internal static string InspectLedgers_Header_Hotwallet {
+            get {
+                return ResourceManager.GetString("InspectLedgers_Header_Hotwallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inspect.
         /// </summary>
         internal static string InspectLedgers_Header_Inspect {

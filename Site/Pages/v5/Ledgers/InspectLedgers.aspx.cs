@@ -39,6 +39,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 {
                     this.DropYears.Items.Add(year.ToString(CultureInfo.InvariantCulture));
                     this.DropGeneralYears.Items.Add(year.ToString(CultureInfo.InvariantCulture));
+                    this.DropHotwalletYears.Items.Add(year.ToString(CultureInfo.InvariantCulture));
                     year--;
                 }
 
@@ -47,6 +48,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     this.DropMonths.Items.Add(new ListItem(new DateTime(2014, monthNumber, 1).ToString("MMM"),
                         monthNumber.ToString(CultureInfo.InvariantCulture))); // will autolocalize
                     this.DropGeneralMonths.Items.Add(new ListItem(new DateTime(2014, monthNumber, 1).ToString("MMM"),
+                        monthNumber.ToString(CultureInfo.InvariantCulture))); // will autolocalize
+                    this.DropHotwalletMonths.Items.Add(new ListItem(new DateTime(2014, monthNumber, 1).ToString("MMM"),
                         monthNumber.ToString(CultureInfo.InvariantCulture))); // will autolocalize
                 }
 
@@ -64,14 +67,23 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_Q4, "24"));
                 this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_AllYear, "31"));
 
+                this.DropHotwalletMonths.Items.Add(new ListItem(Global.Global_Q1, "21"));
+                // quarters and all-year are coded as fake month numbers
+                this.DropHotwalletMonths.Items.Add(new ListItem(Global.Global_Q2, "22"));
+                this.DropHotwalletMonths.Items.Add(new ListItem(Global.Global_Q3, "23"));
+                this.DropHotwalletMonths.Items.Add(new ListItem(Global.Global_Q4, "24"));
+                this.DropHotwalletMonths.Items.Add(new ListItem(Global.Global_AllYear, "31"));
+
                 DateTime lastMonth = today.AddMonths(-1);
 
                 this.DropYears.SelectedValue = 
                 this.DropGeneralYears.SelectedValue =
+                this.DropHotwalletYears.SelectedValue =
                     lastMonth.Year.ToString(CultureInfo.InvariantCulture);
 
                 this.DropMonths.SelectedValue =
                 this.DropGeneralMonths.SelectedValue =
+                this.DropHotwalletMonths.SelectedValue =
                     lastMonth.Month.ToString(CultureInfo.InvariantCulture);
             }
 
@@ -85,6 +97,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelHeaderInspect.Text = Resources.Pages.Ledgers.InspectLedgers_Header_Inspect;
             this.LabelHeaderInspectFor.Text = Resources.Pages.Ledgers.InspectLedgers_Header_For;
             this.LabelHeaderGeneral.Text = Resources.Pages.Ledgers.InspectLedgers_GeneralLedger;
+            this.LabelHeaderHotwallet.Text = Resources.Pages.Ledgers.InspectLedgers_Header_Hotwallet;
 
             this.LabelGridHeaderAction.Text = this.LabelTreeHeaderAction.Text = Global.Global_Action;
             this.LabelGridHeaderBalance.Text = this.LabelTreeHeaderBalance.Text = Global.Ledgers_Balance;
