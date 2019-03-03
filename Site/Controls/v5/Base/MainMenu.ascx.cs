@@ -125,7 +125,7 @@ namespace Swarmops.Controls.Base
             }
             else if (menuItem.ImageUrl != null)
             {
-                string[] iconSizePreferences = { "40", "96", "128", "20", "16" };
+                string[] iconSizePreferences = { "96", "128", "40", "20", "16" };
 
                 foreach (string testSize in iconSizePreferences)
                 {

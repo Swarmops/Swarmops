@@ -493,6 +493,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request Reimbursement.
+        /// </summary>
+        internal static string Menu5_Financial_RequestReimbursement {
+            get {
+                return ResourceManager.GetString("Menu5_Financial_RequestReimbursement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Salary.
         /// </summary>
         internal static string Menu5_Financial_Salary {

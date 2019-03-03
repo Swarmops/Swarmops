@@ -1760,6 +1760,13 @@
     <Compile Include="Pages\v5\Ledgers\Json-AccountChartData.aspx.designer.cs">
       <DependentUpon>Json-AccountChartData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-LedgerNativeData.aspx.cs">
+      <DependentUpon>Json-LedgerNativeData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Ledgers\Json-LedgerNativeData.aspx.designer.cs">
+      <DependentUpon>Json-LedgerNativeData.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Ledgers\Json-GeneralLedgerData.aspx.cs">
       <DependentUpon>Json-GeneralLedgerData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2460,6 +2467,7 @@
     <Content Include="Pages\v5\Ledgers\EndOfMonth.aspx" />
     <Content Include="Pages\v5\Ledgers\InspectLedgers.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-AccountChartData.aspx" />
+    <Content Include="Pages\v5\Ledgers\Json-LedgerNativeData.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-GeneralLedgerData.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-VatReportData.aspx" />
     <Content Include="Pages\v5\Ledgers\Json-BalanceSheetDataSimplified.aspx" />

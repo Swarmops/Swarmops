@@ -146,10 +146,10 @@
         <Children>
           
             <MainMenuItem>
-                <ResourceKey>Financial_ClaimExpense</ResourceKey>
+                <ResourceKey>Financial_RequestReimbursement</ResourceKey>
                 <UserLevel>1</UserLevel>
                 <Permissions />
-                <ImageUrl>iconshock-moneyback</ImageUrl>
+                <ImageUrl>iconshock-visa</ImageUrl>
                 <NavigateUrl>/Pages/v5/Financial/FileExpenseClaim.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
