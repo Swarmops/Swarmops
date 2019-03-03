@@ -9,8 +9,14 @@
 
 /* combo inner, add input field attributes */
 
-.textbox:not(.combo) .textbox-text {
+.textbox .textbox-text {
     border: 2px inset;
+}
+
+/* ...except when in header dropdown */
+
+h2 .textbox .textbox-text {
+    border: none;
 }
 
 /* combo inner, add some distance to dropdown arrow */
