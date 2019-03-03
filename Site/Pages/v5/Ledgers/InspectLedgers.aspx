@@ -501,11 +501,11 @@
                     <tr>  
                         <th data-options="field:'id',width:70,align:'right'"><asp:Label ID="LabelHotwalletHeaderId" runat="server" Text="ID#"/></th>  
                         <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelHotwalletHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
-                        <th data-options="field:'description',width:250"><asp:Label ID="LabelHotwalletHeaderDescription" runat="server" Text="XYZ Description" /></th>  
+                        <th data-options="field:'description',width:205"><asp:Label ID="LabelHotwalletHeaderDescription" runat="server" Text="XYZ Description" /></th>  
                         <th data-options="field:'deltaPresentation',width:70,align:'right'"><asp:Label ID="LabelHotwalletHeaderPresentationCurrency" runat="server" Text="XYZ SEK" /></th>
                         <th data-options="field:'deltaBitcoin',width:70,align:'right'"><asp:Label ID="LabelHotwalletHeaderMicrocoin" runat="server" Text="XYZ Microcoin" /></th>
-                        <th data-options="field:'balanceBitcoin',width:80,align:'right'"><asp:Label ID="LabelHotwalletHeaderBalance" runat="server" Text="XYZ Coin balance" /></th>
-                        <th data-options="field:'action',width:43,align:'center'"><asp:Label ID="LabelHotwalletActions" runat="server" Text="XYZAct" /></th>
+                        <th data-options="field:'balanceBitcoin',width:100,align:'right'"><asp:Label ID="LabelHotwalletHeaderBalance" runat="server" Text="XYZ Coin balance" /></th>
+                        <th data-options="field:'action',width:68,align:'center'"><asp:Label ID="LabelHotwalletActions" runat="server" Text="XYZAct" /></th>
                     </tr>
                 </thead>
             </table>  

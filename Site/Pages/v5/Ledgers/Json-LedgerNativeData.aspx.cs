@@ -154,14 +154,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" data-txid='{0}' class='LocalIconInspect' style='cursor:pointer' height='20' width='20' />";
 
                 string actionHtml = String.Format(hasDoxString, row.FinancialTransactionId.ToString(CultureInfo.InvariantCulture));
-
+                /*
                 if (canSeeAudit)
                 {
                     actionHtml +=
                         String.Format(
                             "&nbsp;<img src=\"/Images/Icons/iconshock-flag-white-16px.png\" class=\"LocalIconFlag\" txId=\"{0}\" />",
                             row.FinancialTransactionId.ToString(CultureInfo.InvariantCulture));
-                }
+                }*/
 
                 result.Append("{" + String.Format(
                     "\"id\":\"{0:N0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
@@ -184,8 +184,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             result.Append("{" +
-                           String.Format("\"description\":\"{0}\",\"balance\":\"{1:N2}\"", JsonSanitize(endString),
-                               runningBalance / 100.0) + "},");
+                           String.Format("\"description\":\"{0}\",\"balanceBitcoin\":\"{1:N2}\"", JsonSanitize(endString),
+                               runningBitcoinBalance / 100.0) + "},");
 
             Response.Output.WriteLine("[" + result.ToString().TrimEnd(',') + "]");
             Response.End();
