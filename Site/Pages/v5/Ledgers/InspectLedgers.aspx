@@ -394,7 +394,7 @@
     
     
     <div id="divTabs" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
-        <div class="tab" title="<img src='/Images/Icons/iconshock-groups-docs-lists-64px.png' height='64' width='64' />">
+        <div class="tab" title="<img src='/Images/Icons/iconshock-accounting-512px.png' height='64' width='64' />">
             <h2><asp:Label ID="LabelHeaderGeneral" runat="server" /> <asp:DropDownList runat="server" ID="DropGeneralYears"/> <asp:DropDownList runat="server" ID="DropGeneralMonths"/></h2>
     
                 <table id="treeGeneralLedger" class="easyui-treegrid" style="width: 680px; height: 500px"
@@ -413,7 +413,7 @@
                 </thead>
             </table>  
         </div>
-        <div class="tab" title="<img src='/Images/Icons/iconshock-search-256px.png' height='64' width='64' />">
+        <div class="tab" title="<img src='/Images/Icons/iconshock-directory-512px.png' height='64' width='64' />">
             <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets Layout="Horizontal" ID="DropBudgets" OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
     
                 <table id="gridLedgers" class="easyui-datagrid" style="width: 680px; height: 500px"

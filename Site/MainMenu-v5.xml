@@ -159,7 +159,7 @@
               <ResourceKey>Financial_RequestCashAdvance</ResourceKey>
               <UserLevel>1</UserLevel>
               <Permissions />
-              <ImageUrl>iconshock-cashinhand</ImageUrl>
+              <ImageUrl>iconshock-money</ImageUrl>
               <NavigateUrl>/Pages/v5/Financial/RequestCashAdvance.aspx</NavigateUrl>
               <Type>Link</Type>
               <Children />
