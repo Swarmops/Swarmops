@@ -1058,7 +1058,7 @@
     <comment>This verifies that the amounts supposed to be in cold storage are indeed in cold storage</comment>
   </data>
   <data name="InspectLedgers_Header_Hotwallet" xml:space="preserve">
-    <value>Inspect Bitcoin Hotwallet For</value>
+    <value>Inspect Bitcoin Cash Hotwallet For</value>
     <comment>This is followed by a year and month dropdown</comment>
   </data>
 </root>

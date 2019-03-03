@@ -114,6 +114,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelGridHeaderDeltaPositive2.Text = Global.Ledgers_Debit;
             this.LabelGridHeaderInitials.Text = Resources.Pages.Ledgers.InspectLedgers_LoggedByInitials;
 
+            this.LabelHotwalletHeaderDateTime.Text = Global.Global_Timestamp;
+            this.LabelHotwalletHeaderDescription.Text = Global.Global_Description;
+            this.LabelHotwalletHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
+            this.LabelHotwalletHeaderPresentationCurrency.Text = CurrentOrganization.Currency.DisplayCode;
+            this.LabelHotwalletHeaderMicrocoin.Text = Currency.BitcoinCash.DisplayCode;
+            this.LabelHotwalletHeaderBalance.Text = Global.Ledgers_Balance;
+            this.LabelHotwalletActions.Text = Global.Global_Action;
+
             this.LabelFlagNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_FlaggingNotAvailable;
 
             
