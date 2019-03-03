@@ -86,7 +86,7 @@ namespace Swarmops.Logic.Support.BackendServices
                 Int64 centsPresentation =
                     new Swarmops.Logic.Financial.Money(satoshisToReturn, Currency.BitcoinCash).ToCurrency(this.Organization.Currency).Cents;
                 ledgerTx2.AddRow(this.Organization.FinancialAccounts.DebtsOther, centsPresentation, this.Person);
-                ledgerTx2.AddRow(this.Organization.FinancialAccounts.AssetsBitcoinHot, -centsPresentation, this.Person);
+                ledgerTx2.AddRow(this.Organization.FinancialAccounts.AssetsBitcoinHot, -centsPresentation, this.Person).AmountForeignCents = new Swarmops.Logic.Financial.Money(-satoshisToReturn, Currency.BitcoinCash); ;
             }
             ledgerTx2.BlockchainHash = tx.GetHash().ToString();
         }
