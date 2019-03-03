@@ -9,7 +9,7 @@
 
 /* combo inner, add input field attributes */
 
-.textbox .textbox-text {
+.textbox:not(.combo) .textbox-text {
     border: 2px inset;
 }
 
