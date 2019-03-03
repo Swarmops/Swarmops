@@ -67,9 +67,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 CurrentOrganization.Name, address.ProtocolLevelAddress, BitcoinUtility.EchoFeeSatoshis / 100.0);
 
             this.ImageBitcoinQr.ImageUrl =
-                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=bitcoincash:" +
-                HttpUtility.UrlEncode (address.ProtocolLevelAddress + "?label=" +
-                                       Uri.EscapeDataString ("Swarmops Bitcoin Echo Test")); // URI scheme doesn't like &, =
+                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" +
+                HttpUtility.UrlEncode (address.HumanAddress + "?label=" +
+                                       Uri.EscapeDataString ("Bitcoin Echo Test")); // URI scheme doesn't like &, =
         }
 
 
