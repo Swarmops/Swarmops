@@ -119,7 +119,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelHotwalletHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
             this.LabelHotwalletHeaderPresentationCurrency.Text = CurrentOrganization.Currency.DisplayCode;
             this.LabelHotwalletHeaderMicrocoin.Text = Currency.BitcoinCash.DisplayCode;
-            this.LabelHotwalletHeaderBalance.Text = Global.Ledgers_Balance;
+            this.LabelHotwalletHeaderBalance.Text = Resources.Pages.Ledgers.BitcoinHotwallet_BalanceMicrocoins;
             this.LabelHotwalletActions.Text = Global.Global_Action;
 
             this.LabelFlagNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_FlaggingNotAvailable;

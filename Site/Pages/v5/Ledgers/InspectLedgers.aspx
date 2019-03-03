@@ -71,8 +71,7 @@
 
                     var heightBody = $('div#<%=this.DialogEditTx.ClientID%>_divModalCover table.datagrid-btable').height();
 
-                    if (heightBody != null) 
-                    {
+                    if (heightBody != null) {
                         $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-body').height(heightBody);
 
                         var heightHeaders = $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-header').height();
@@ -83,6 +82,7 @@
                     }
                 }
             });
+
 
             $('#treeGeneralLedger').treegrid(
                 {
@@ -117,7 +117,46 @@
                 }
             );
 
+            $('#gridHotwallet').datagrid(
+            {
+                onLoadSuccess: function() {
+                    $('div.datagrid').css('opacity', 1);
+                    $('#imageLoadIndicator').hide();
+                    $('span.loadingHeader').hide();
+
+                    // Merge inbound, outbound balances
+
+                    var rowCount = $('#gridHotwallet').datagrid('getRows').length;
+                    if (rowCount > 0) {
+                        $('#gridHotwallet').datagrid('mergeCells', {
+                            index: 0,
+                            field: 'description',
+                            colspan: 3
+                        });
+                        $('#gridHotwallet').datagrid('mergeCells', {
+                            index: rowCount - 1,
+                            field: 'description',
+                            colspan: 3
+                        });
+
+                    }
+
+                    // Enable various actions on icon
+
+                    $('img.LocalIconFlag').click(function() {
+                        inspectingTransactionId = $(this).attr("data-txid");
+                        onFlagTransaction("Add Tx Id here");
+                    });
+
+                    $('img.LocalIconInspect').click(function() {
+                        onInspectTransaction($(this).attr("data-txid"));
+                    });
+
+                }
+            });
+
             reloadGeneralData(); // loads first data - URL is null when first entered
+            reloadHotwalletData();
 
             $('#<%= DropYears.ClientID %>').change(function() {
                 reloadInspectData();
@@ -133,6 +172,16 @@
 
             $('#<%= DropGeneralMonths.ClientID %>').change(function() {
                 reloadGeneralData();
+            });
+
+            $('#<%=this.DropHotwalletYears.ClientID%>').change(function()
+            {
+                reloadHotwalletData();
+            });
+
+            $('#<%=this.DropHotwalletMonths.ClientID%>').change(function()
+            {
+                reloadHotwalletData();
             });
 
             $('#ButtonAddTransactionRow').click(function() {
@@ -254,6 +303,16 @@
             $('div.datagrid').css('opacity', 0.4);
 
             // $('#gridOutstandingAccounts').datagrid('reload');
+        }
+
+        function reloadHotwalletData() {
+            var selectedYear = $('#<%= DropHotwalletYears.ClientID %>').val();
+            var selectedMonth = $('#<%= DropHotwalletMonths.ClientID %>').val();
+
+            $('#gridHotwallet').datagrid({ url: 'Json-InspectNativeData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth });
+
+            $('#imageLoadIndicator').show();
+            $('div.datagrid').css('opacity', 0.4);
         }
 
         function prefillUnbalancedAmount(transactionId) {
@@ -436,7 +495,7 @@
             <h2><asp:Label ID="LabelHeaderHotwallet" runat="server" /> <asp:DropDownList runat="server" ID="DropHotwalletYears"/> <asp:DropDownList runat="server" ID="DropHotwalletMonths"/></h2>
 
                 <table id="gridHotwallet" class="easyui-datagrid" style="width: 680px; height: 500px"
-                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerData.aspx'"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-BitcoinHotwalletData.aspx'"
                 idField="id">
                 <thead>  
                     <tr>  
