@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Basic.Types.Common;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -109,6 +110,30 @@ namespace Swarmops.Frontend.Pages.Ledgers
                     dataUploadItem.Skippable = false;
 
                     group1.Items.Add(dataUploadItem);
+
+                    // Check if we need to add a resync of the hotwallet's native ledger
+
+                    Int64 cashSatoshisInLedger =
+                        CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.GetForeignCurrencyBalanceDeltaCents(
+                            Constants.DateTimeLow, Constants.DateTimeHigh).Cents;
+
+                    Int64 cashSatoshisInHotwallet =
+                        HotBitcoinAddresses.GetSatoshisInHotwallet(CurrentOrganization)[BitcoinChain.Cash];
+
+                    if (cashSatoshisInHotwallet != cashSatoshisInLedger)
+                    {
+                        // Resync required
+
+                        EomItem resyncSatoshiCountItem = new EomItem();
+                        resyncSatoshiCountItem.Id = "ResyncSatoshisLedger";
+                        resyncSatoshiCountItem.Icon = "wrench";
+                        resyncSatoshiCountItem.Completed = false;
+                        resyncSatoshiCountItem.Skippable = false;
+                        resyncSatoshiCountItem.Callback = "ResyncSatoshisLedger";
+                        resyncSatoshiCountItem.Name = String.Format("Ledger cash microcoin {0:N2}; hotwallet {1:N2}",
+                            cashSatoshisInLedger/100.0, cashSatoshisInHotwallet/100.0);
+                        group1.Items.Add(resyncSatoshiCountItem);
+                    }
                 }
             }
 

@@ -26,6 +26,16 @@ namespace Swarmops.Logic.Financial
             return FromArray(SwarmDb.GetDatabaseForReading().GetHotBitcoinAddresses(chain, organization));
         }
 
+        public static Dictionary<BitcoinChain, Int64> GetSatoshisInHotwallet(Organization organization)
+        {
+            Dictionary<BitcoinChain, Int64> result = new Dictionary<BitcoinChain, long>();
+
+            result[BitcoinChain.Cash] = ForOrganization(organization, BitcoinChain.Cash).BalanceSatoshisTotal;
+            result[BitcoinChain.Core] = ForOrganization(organization, BitcoinChain.Core).BalanceSatoshisTotal;
+
+            return result;
+        }
+
         public HotBitcoinAddresses InMainWallet
         {
             get
