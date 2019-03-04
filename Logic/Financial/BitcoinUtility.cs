@@ -80,32 +80,7 @@ namespace Swarmops.Logic.Financial
 
         public static Dictionary<BitcoinChain, Int64> GetHotwalletSatoshisPerChain(Organization organization)
         {
-            Dictionary<BitcoinChain, Int64> satoshisTotalLookup = new Dictionary<BitcoinChain, long>();
-
-            HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization(organization);
-
-            foreach (HotBitcoinAddress address in addresses)
-            {
-                HotBitcoinAddressUnspents unspents = HotBitcoinAddressUnspents.ForAddress(address);
-                Int64 satoshisUnspentAddress = 0;
-
-                foreach (HotBitcoinAddressUnspent unspent in unspents)
-                {
-                    satoshisUnspentAddress += unspent.AmountSatoshis;
-                }
-
-                if (satoshisUnspentAddress > 0)
-                {
-                    if (!satoshisTotalLookup.ContainsKey(address.Chain))
-                    {
-                        satoshisTotalLookup[address.Chain] = 0;
-                    }
-
-                    satoshisTotalLookup[address.Chain] += satoshisUnspentAddress;
-                }
-            }
-
-            return satoshisTotalLookup;
+            return HotBitcoinAddresses.GetSatoshisInHotwallet(organization);
         }
 
 
@@ -127,7 +102,7 @@ namespace Swarmops.Logic.Financial
                 // the "/1.0" converts to double implicitly
             conversionRateLookup[BitcoinChain.Core] = fiatCentsPerCoreCoin/1.0/BitcoinUtility.SatoshisPerBitcoin;
 
-            satoshisTotalLookup = GetHotwalletSatoshisPerChain(organization);
+            satoshisTotalLookup = HotBitcoinAddresses.GetSatoshisInHotwallet(organization);
 
             Int64 presentationCurrencyCents = 0;
 
