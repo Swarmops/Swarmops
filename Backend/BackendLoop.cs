@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Net;
@@ -827,21 +828,9 @@ namespace Swarmops.Backend
         {
             try
             {
-                // Detect and log any forex difference exceeding 100 cents.
+                Dictionary<int, bool> accountTested = new Dictionary<int, bool>();
 
-                FinancialAccounts allAccounts = FinancialAccounts.GetAll(); // across ALL ORGS!
-
-                foreach (FinancialAccount account in allAccounts)
-                {
-                    // For every account, if it's based on foreign currency, check for forex gains/losses
-
-                    if (account.ForeignCurrency != null)
-                    {
-                        account.CheckForexProfitLoss();
-                    }
-                }
-
-                // Also check the bitcoin hotwallets for forex profit/loss as a special case of the above.
+                // Check the bitcoin hotwallets for forex profit/loss as a special case of the above.
 
                 Organizations allOrganizations = Organizations.GetAll();
 
@@ -852,8 +841,24 @@ namespace Swarmops.Backend
                     if (hotWalletAccount != null)
                     {
                         BitcoinUtility.CheckHotwalletForexProfitLoss(hotWalletAccount);
+                        accountTested[hotWalletAccount.Identity] = true;
                     }
                 }
+
+                // Detect and log any forex difference exceeding 100 cents.
+
+                FinancialAccounts allAccounts = FinancialAccounts.GetAll(); // across ALL ORGS!
+
+                foreach (FinancialAccount account in allAccounts)
+                {
+                    // For every account, if it's based on foreign currency, check for forex gains/losses
+
+                    if (account.ForeignCurrency != null && !accountTested.ContainsKey(account.Identity))
+                    {
+                        account.CheckForexProfitLoss();
+                    }
+                }
+
             }
             catch (Exception e)
             {
