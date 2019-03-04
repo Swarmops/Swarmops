@@ -495,7 +495,7 @@
             <h2><asp:Label ID="LabelHeaderHotwallet" runat="server" /> <asp:DropDownList runat="server" ID="DropHotwalletYears"/> <asp:DropDownList runat="server" ID="DropHotwalletMonths"/></h2>
 
                 <table id="gridHotwallet" class="easyui-datagrid" style="width: 680px; height: 500px"
-                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-LedgerNativeData.aspx'"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:''"
                 idField="id">
                 <thead>  
                     <tr>  
@@ -519,7 +519,7 @@
             <h2><asp:Literal ID="LiteralEditHeader" runat="server"/></h2>
 
             <table id="gridTransaction" class="easyui-datagrid" style="width: 910px"
-            data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:true,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:''"
+            data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:true,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerTxData.aspx'"
             idField="id">
                 <thead>
                     <tr>
