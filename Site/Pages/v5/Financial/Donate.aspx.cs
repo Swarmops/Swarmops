@@ -83,13 +83,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             this.BoxTitle.Text = Resources.Pages.Financial.Donate_PageTitle;
             this.LabelExplainBitcoinDonation.Text = String.Format (Resources.Pages.Financial.Donate_Explain,
-                CurrentOrganization.Name, address.ProtocolLevelAddress);
+                CurrentOrganization.Name, address.HumanAddress);
             this.LabelReceivedFunds.Text = String.Format(Resources.Pages.Financial.Donate_FundsReceivedLabel,
                 CurrentOrganization.Currency.DisplayCode);
 
             this.ImageBitcoinQr.ImageUrl =
-                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=bitcoincash:" +
-                HttpUtility.UrlEncode (address.ProtocolLevelAddress + "?label=" +
+                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" +
+                HttpUtility.UrlEncode (address.HumanAddress + "?label=" +
                                        Uri.EscapeDataString (String.Format (Resources.Pages.Financial.Donate_TxLabel,
                                            CurrentOrganization.Name))); // URI scheme doesn't like &, =
         }
