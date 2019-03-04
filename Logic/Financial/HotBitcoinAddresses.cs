@@ -30,8 +30,8 @@ namespace Swarmops.Logic.Financial
         {
             Dictionary<BitcoinChain, Int64> result = new Dictionary<BitcoinChain, long>();
 
-            result[BitcoinChain.Cash] = ForOrganization(organization, BitcoinChain.Cash).BalanceSatoshisTotal;
-            result[BitcoinChain.Core] = ForOrganization(organization, BitcoinChain.Core).BalanceSatoshisTotal;
+            result[BitcoinChain.Cash] = ForOrganization(organization, BitcoinChain.Cash).Unspents.AmountSatoshisTotal;
+            result[BitcoinChain.Core] = ForOrganization(organization, BitcoinChain.Core).Unspents.AmountSatoshisTotal;
 
             return result;
         }
@@ -90,6 +90,23 @@ namespace Swarmops.Logic.Financial
         {
             get { return this.Sum (item => item.BalanceSatoshis); }
         }
+
+        /*
+        public Int64 BalanceSatoshisTotalByUnspents
+        {
+            get
+            {
+                Int64 satoshis = 0;
+
+                foreach (HotBitcoinAddress address in this)
+                {
+                    foreach (HotBitcoinAddressUnspent unspent in address.Unspents)
+                    {
+                        
+                    }
+                }
+            }
+        }*/
 
         public HotBitcoinAddressUnspents Unspents
         {
