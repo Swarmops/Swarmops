@@ -830,7 +830,7 @@ namespace Swarmops.Backend
             {
                 Dictionary<int, bool> accountTested = new Dictionary<int, bool>();
 
-                // Check the bitcoin hotwallets for forex profit/loss as a special case of the above.
+                // Check the bitcoin hotwallets for forex profit/loss.
 
                 Organizations allOrganizations = Organizations.GetAll();
 
@@ -851,7 +851,8 @@ namespace Swarmops.Backend
 
                 foreach (FinancialAccount account in allAccounts)
                 {
-                    // For every account, if it's based on foreign currency, check for forex gains/losses
+                    // For every account, if it's based on foreign currency, and not already checked, 
+                    // then check for forex gains/losses
 
                     if (account.ForeignCurrency != null && !accountTested.ContainsKey(account.Identity))
                     {
