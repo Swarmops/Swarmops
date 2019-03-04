@@ -17,6 +17,7 @@ using NBitcoin;
 using Newtonsoft.Json.Linq;
 using Swarmops.Common;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Exceptions;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
@@ -582,33 +583,44 @@ namespace Swarmops.Logic.Financial
 
         public static void BroadcastTransaction (Transaction transaction, BitcoinChain chain)
         {
-            using (WebClient client = new WebClient())
+            try
             {
-                switch (chain)
+                using (WebClient client = new WebClient())
                 {
-                    case BitcoinChain.Core:
+                    switch (chain)
+                    {
+                        case BitcoinChain.Core:
 
-                        client.UploadValues("https://blockchain.info/pushtx?cors=true",
-                            new NameValueCollection()
-                            {
-                                {"tx", transaction.ToHex()}
-                            });
-                        break;  // no txid given
+                            client.UploadValues("https://blockchain.info/pushtx?cors=true",
+                                new NameValueCollection()
+                                {
+                                    {"tx", transaction.ToHex()}
+                                });
+                            break;  // no txid given
 
-                    case BitcoinChain.Cash:
+                        case BitcoinChain.Cash:
 
-                        client.UploadValues("https://bch-insight.bitpay.com/api/tx/send",
-                            new NameValueCollection()
-                            {
-                               {"rawtx", transaction.ToHex()}
-                            });
-                        break;
+                            client.UploadValues("https://bch-insight.bitpay.com/api/tx/send",
+                                new NameValueCollection()
+                                {
+                                   {"rawtx", transaction.ToHex()}
+                                });
+                            break;
 
-                    default:
-                        throw new NotImplementedException("Unknown chain: " + chain);
+                        default:
+                            throw new NotImplementedException("Unknown chain: " + chain);
+                    }
+                    // TODO: Exception handling
                 }
-                // TODO: Exception handling
             }
+            catch (WebException exception)
+            {
+                if (exception.Message.Contains("has timed out"))
+                {
+                    throw new NetworkTimeoutException();
+                }
+            }
+
         }
 
         public static BitcoinTransactionInputs GetInputsForAmount (Organization organization, BitcoinChain chain, Int64 satoshis)

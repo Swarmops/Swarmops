@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NBitcoin;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Exceptions;
 using Swarmops.Logic.Financial;
 using Satoshis = NBitcoin.Money;
 
@@ -66,7 +67,16 @@ namespace Swarmops.Logic.Support.BackendServices
 
             Transaction tx = txBuilder.BuildTransaction(true, SigHash.ForkId | SigHash.All);
 
-            BitcoinUtility.BroadcastTransaction(tx, BitcoinChain.Cash);
+            try
+            {
+                BitcoinUtility.BroadcastTransaction(tx, BitcoinChain.Cash);
+            }
+            catch (NetworkTimeoutException)
+            {
+                // This is a transient error, so retry
+
+                throw new TryAgainException();
+            }
             utxoToReturn.Delete();
             utxoAddress.UpdateTotal();
 

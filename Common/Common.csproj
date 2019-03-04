@@ -84,6 +84,8 @@
     <Compile Include="Enums\RoleTypeClass.cs" />
     <Compile Include="Exceptions\ConcurrencyException.cs" />
     <Compile Include="Exceptions\DatabaseConcurrencyException.cs" />
+    <Compile Include="Exceptions\NetworkTimeoutException.cs" />
+    <Compile Include="Exceptions\TryAgainException.cs" />
     <Compile Include="ExtensionMethods\Bitmap.cs" />
     <Compile Include="ExtensionMethods\Color.cs" />
     <Compile Include="ExtensionMethods\DateTime.cs" />

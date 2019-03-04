@@ -71,11 +71,19 @@ namespace Swarmops.Logic.Support
 
             // Run the Run() function
 
+            bool transientError = false;
+
             try
             {
                 Console.WriteLine(" - Executing BSO: " + className);
 
                 order.Run();
+            }
+            catch (TryAgainException)
+            {
+                transientError = true;
+
+                // Don't close this backend service order - it will retry
             }
             catch (Exception exception)
             {
@@ -88,7 +96,7 @@ namespace Swarmops.Logic.Support
             }
             finally
             {
-                if (!order.HasWorkerThread)
+                if (!order.HasWorkerThread && !transientError)
                 {
                     try
                     {
