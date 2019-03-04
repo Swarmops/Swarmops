@@ -519,7 +519,7 @@
             <h2><asp:Literal ID="LiteralEditHeader" runat="server"/></h2>
 
             <table id="gridTransaction" class="easyui-datagrid" style="width: 910px"
-            data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:true,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerTxData.aspx'"
+            data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:true,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:''"
             idField="id">
                 <thead>
                     <tr>
