@@ -108,10 +108,8 @@ namespace Swarmops.Logic.Support
                 newRow.Address = (string) json["scriptPubKey"]["addresses"][0];
             }
 
-            if (newRow.Address.StartsWith("bitcoincash:"))  // make sure we're using the same machine readable format
-            {
-                newRow.Address = BitcoinUtility.EnsureLegacyAddress(newRow.Address);
-            }
+            // Ensure we have a protocol-level address 
+            newRow.Address = BitcoinUtility.EnsureLegacyAddress(newRow.Address);
 
             string valueSatoshisString = (string) json["valueSat"];
             if (!string.IsNullOrEmpty(valueSatoshisString))

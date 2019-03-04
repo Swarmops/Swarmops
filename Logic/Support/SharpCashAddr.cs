@@ -181,7 +181,7 @@ namespace Swarmops.Logic.Support
 			}
 			return ret.ToString();
 		}
-		public static string CashAddressToLegacyAddresss(string cashAddress, out bool isP2PKH, out bool mainnet) {
+		public static string CashAddressToLegacyAddress(string cashAddress, out bool isP2PKH, out bool mainnet) {
 			cashAddress = cashAddress.ToLower();
 			if (cashAddress.Length != 54 && cashAddress.Length != 42 && cashAddress.Length != 50) {
 				if (cashAddress.StartsWith("bchreg:"))

@@ -2,7 +2,7 @@
 <%@ Import Namespace="Swarmops.Logic.Support" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-    <script src="https://bitcoincash.blockexplorer.com/socket.io/socket.io.js"></script>
+    <script src="https://bch-insight.bitpay.com/socket.io/socket.io.js"></script>
 
     <script type="text/javascript" language="javascript">
         $(document).ready(function() {
@@ -14,7 +14,7 @@
         eventToListenTo = 'tx';
         room = 'inv';
 
-        var socket = io("https://bitcoincash.blockexplorer.com/");
+        var socket = io("https://bch-insight.bitpay.com/");
         socket.on('connect', function() {
             // Join the room.
             socket.emit('subscribe', room);

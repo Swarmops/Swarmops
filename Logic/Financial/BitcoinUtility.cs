@@ -597,7 +597,7 @@ namespace Swarmops.Logic.Financial
 
                     case BitcoinChain.Cash:
 
-                        client.UploadValues("https://bitcoincash.blockexplorer.com/api/tx/send",
+                        client.UploadValues("https://bch-insight.bitpay.com/api/tx/send",
                             new NameValueCollection()
                             {
                                {"rawtx", transaction.ToHex()}
@@ -664,7 +664,7 @@ namespace Swarmops.Logic.Financial
 
             try
             {
-                string legacyAddress = BitcoinCashAddressConversion.CashAddressToLegacyAddresss(address, out dummy1,
+                string legacyAddress = BitcoinCashAddressConversion.CashAddressToLegacyAddress(address, out dummy1,
                     out dummy2);
 
                 // If this doesn't throw, we have a valid legacy address
@@ -688,7 +688,7 @@ namespace Swarmops.Logic.Financial
 
             try
             {
-                BitcoinCashAddressConversion.CashAddressToLegacyAddresss(address, out dummy1, out dummy2);
+                BitcoinCashAddressConversion.CashAddressToLegacyAddress(address, out dummy1, out dummy2);
 
                 // If this doesn't throw, we already have a valid bitcoincash address
                 // Just strip the prefix if there is one
@@ -820,9 +820,10 @@ namespace Swarmops.Logic.Financial
 
         public static void CheckColdStorageCash(FinancialAccount account, string bitcoinMachineAddress, Dictionary<string, int> addressAccountLookup)
         {
+            string bitcoinCashAddress = EnsureCashAddressWithoutPrefix(bitcoinMachineAddress);
 
             JObject addressData = JObject.Parse(
-                        new WebClient().DownloadString("https://bitcoincash.blockexplorer.com/api/txs/?address=" + bitcoinMachineAddress));
+                        new WebClient().DownloadString("https://bch-insight.bitpay.com/api/txs/?address=" + bitcoinCashAddress));
 
             List<BlockchainTransaction> transactionList = new List<BlockchainTransaction>();
 
@@ -1271,6 +1272,9 @@ namespace Swarmops.Logic.Financial
                     JObject feeData = JObject.Parse(
                                 new WebClient().DownloadString("https://bitcoinlegacy.blockexplorer.com/api/utils/estimatefee?nbBlocks=" + blocksWait.ToString(CultureInfo.InvariantCulture)));
                     double feeWholeCoins = Double.Parse((string)feeData[blocksWait.ToString(CultureInfo.InvariantCulture)], NumberStyles.AllowDecimalPoint);  // rounding errors are okay, don't use Formatting fn
+
+                    // TODO: I saw this function return -1 once, just once. Will need to catch that.
+
                     satoshisPerThousandBytes = Convert.ToInt64(feeWholeCoins * _satoshisPerBitcoin);
                 }
 
