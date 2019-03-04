@@ -1038,20 +1038,34 @@
     <comment>This is shown as a disabled action item when there's no active payroll</comment>
   </data>
   <data name="EndOfMonth_CheckHotWalletWithBlockchain" xml:space="preserve">
-    <value>Check Hotwallet Balance Against Blockchain</value>
+    <value>Check Hotwallet Bitcoin Balance Against Blockchain</value>
     <comment>This verifies the hotwallet data against master blockchain data, as per a blockchain explorer service or local crypto service node.</comment>
   </data>
   <data name="EndOfMonth_CheckLedgerAgainstHotWallet" xml:space="preserve">
-    <value>Check Ledger Balance Against Hotwallet</value>
+    <value>Resynchronize Ledger Bitcoin Balance Against Hotwallet</value>
     <comment>This is the ledger balance of the hotwallet, which is supposed to say the hotwallet contains as much as it actually does.</comment>
   </data>
   <data name="EndOfMonth_ConsolidateHotwallet" xml:space="preserve">
     <value>Consolidate Bitcoin Hotwallet</value>
     <comment>This rearranges the hotwallet for easy payouts going forward (collects all small amounts into even chunks)</comment>
   </data>
+  <data name="EndOfMonth_ConvertBitcoinCoreToCash" xml:space="preserve">
+    <value>Convert the Bitcoin Core in Hotwallet to Bitcoin Cash</value>
+    <comment>This places an order on an exchange to convert BTC in the hotwallet to BCH</comment>
+  </data>
+  <data name="EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch" xml:space="preserve">
+    <value>&lt;strong&gt;LEDGER BITCOIN BALANCE MISMATCH&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The hotwallet has a balance of &lt;strong&gt;{0:N2}&lt;/strong&gt; microbitcoin, but the ledger says a different amount should be there: &lt;strong&gt;{1:N2}.&lt;/strong&gt; The hotwallet will always be in the right in a mismatch between these two, so the ledger has been adjusted to match the hotwallet.&lt;br/&gt;&lt;br/&gt;
+This can happen after bitcoin splits (&amp;quot;forks&amp;quot;) or similar events, but if this happens repeatedly, month after month, and especially if money appears to be leaking from the hotwallet, there is cause for further investigation.
+</value>
+    <comment>This is displayed after (!) the ledger bitcoin balance has been updated to match the hotwallet by means of a new transaction.</comment>
+  </data>
   <data name="EndOfMonth_Header_Cryptocurrency" xml:space="preserve">
     <value>Cryptocurrency</value>
     <comment>This is the header for various bitcoin hotwallet / cold storage operations</comment>
+  </data>
+  <data name="EndOfMonth_LedgerBitcoinBalanceTransactionDescription" xml:space="preserve">
+    <value>Ledger correction on hotwallet audit</value>
+    <comment>This is the description of a transaction that corrects the bitcoin balance in the ledger to equal that of the hotwallet.</comment>
   </data>
   <data name="EndOfMonth_VerifyColdStorage" xml:space="preserve">
     <value>Verify Cold Storage</value>

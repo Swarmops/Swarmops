@@ -17,6 +17,7 @@
             $('img.eomitem-wrench').attr('src', '/Images/Icons/iconshock-balloon-wrench-128x96px.png');
             $('img.eomitem-document').attr('src', '/Images/Icons/iconshock-balloon-invoice-128x96px.png');
             $('img.eomitem-upload').attr('src', '/Images/Icons/iconshock-balloon-up-128x96px.png');
+            $('img.eomitem-approve').attr('src', '/Images/Icons/iconshock-balloon-yes-128x96px.png');
 
             // pointer cursor over action icons
 
@@ -161,6 +162,9 @@
                             var itemId = $(this).attr('data-item');
                             if (result.Success) {
                                 markItemCompleted(itemId);
+                                if (result.DisplayMessage !== undefined && result.DisplayMessage != null && result.DisplayMessage.length > 2) {
+                                    alertify.alert(result.DisplayMessage);
+                                }
                             } else {
                                 // Restore action icons.
                                 // Todo: display DisplayMessage in dialog or error notice.

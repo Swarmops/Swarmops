@@ -88,7 +88,10 @@ namespace Swarmops.Logic.Financial
 
         public Int64 BalanceSatoshisTotal
         {
-            get { return this.Sum (item => item.BalanceSatoshis); }
+            // the BalanceSatoshis field doesn't update properly, so we need to collect
+            // this over all Unspents
+
+            get { return Unspents.AmountSatoshisTotal; }
         }
 
         /*

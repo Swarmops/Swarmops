@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Web;
 using System.Web.Services;
@@ -125,13 +127,12 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         // Resync required
 
                         EomItem resyncSatoshiCountItem = new EomItem();
-                        resyncSatoshiCountItem.Id = "ResyncSatoshisLedger";
-                        resyncSatoshiCountItem.Icon = "wrench";
+                        resyncSatoshiCountItem.Id = "ResyncSatoshisInLedger";
+                        resyncSatoshiCountItem.Icon = "approve";
                         resyncSatoshiCountItem.Completed = false;
                         resyncSatoshiCountItem.Skippable = false;
-                        resyncSatoshiCountItem.Callback = "ResyncSatoshisLedger";
-                        resyncSatoshiCountItem.Name = String.Format("Ledger cash microcoin {0:N2}; hotwallet {1:N2}",
-                            cashSatoshisInLedger/100.0, cashSatoshisInHotwallet/100.0);
+                        resyncSatoshiCountItem.Callback = "ResyncSatoshisInLedger";
+                        resyncSatoshiCountItem.Name = Resources.Pages.Ledgers.EndOfMonth_CheckLedgerAgainstHotWallet;
                         group1.Items.Add(resyncSatoshiCountItem);
                     }
                 }
@@ -391,7 +392,36 @@ namespace Swarmops.Frontend.Pages.Ledgers
             throw new NotImplementedException();
         }
 
+        [WebMethod]
+        public static AjaxCallResult ResyncSatoshisInLedger(string itemId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            if (!authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
 
+            Int64 cashSatoshisInLedger =
+                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.GetForeignCurrencyBalanceDeltaCents(
+                Constants.DateTimeLow, Constants.DateTimeHigh).Cents;
+
+            Int64 cashSatoshisInHotwallet =
+                HotBitcoinAddresses.GetSatoshisInHotwallet(authData.CurrentOrganization)[BitcoinChain.Cash];
+
+            Int64 adjustment = cashSatoshisInHotwallet - cashSatoshisInLedger;  // positive if ledger needs upward adjustment
+
+            FinancialTransaction adjustmentTx = FinancialTransaction.Create(authData.CurrentOrganization,
+                DateTime.UtcNow, Resources.Pages.Ledgers.EndOfMonth_LedgerBitcoinBalanceTransactionDescription);
+            adjustmentTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, 0, authData.CurrentUser).AmountForeignCents = new Money(adjustment, Currency.BitcoinCash);
+
+            return new AjaxCallResult
+            {
+                Success = true,
+                DisplayMessage =
+                    String.Format(Resources.Pages.Ledgers.EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch,
+                        cashSatoshisInHotwallet/100.0, cashSatoshisInLedger/100.0)
+            };
+        }
 
 
         private class EomItem

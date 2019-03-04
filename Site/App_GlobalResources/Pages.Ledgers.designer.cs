@@ -1069,7 +1069,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check Hotwallet Balance Against Blockchain.
+        ///   Looks up a localized string similar to Check Hotwallet Bitcoin Balance Against Blockchain.
         /// </summary>
         internal static string EndOfMonth_CheckHotWalletWithBlockchain {
             get {
@@ -1078,7 +1078,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check Ledger Balance Against Hotwallet.
+        ///   Looks up a localized string similar to Resynchronize Ledger Bitcoin Balance Against Hotwallet.
         /// </summary>
         internal static string EndOfMonth_CheckLedgerAgainstHotWallet {
             get {
@@ -1105,11 +1105,30 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Convert the Bitcoin Core in Hotwallet to Bitcoin Cash.
+        /// </summary>
+        internal static string EndOfMonth_ConvertBitcoinCoreToCash {
+            get {
+                return ResourceManager.GetString("EndOfMonth_ConvertBitcoinCoreToCash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create {0}.
         /// </summary>
         internal static string EndOfMonth_CreateVatReport {
             get {
                 return ResourceManager.GetString("EndOfMonth_CreateVatReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;LEDGER BITCOIN BALANCE MISMATCH&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The hotwallet has a balance of &lt;strong&gt;{0:N2}&lt;/strong&gt; microbitcoin, but the ledger says a different amount should be there: &lt;strong&gt;{1:N2}.&lt;/strong&gt; The hotwallet will always be in the right in a mismatch between these two, so the ledger has been adjusted to match the hotwallet.&lt;br/&gt;&lt;br/&gt;
+        ///This can happen after bitcoin splits (&amp;quot;forks&amp;quot;) or similar events, but if this happens repeatedly, month after month, and especially if money appears to  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch", resourceCulture);
             }
         }
         
@@ -1173,6 +1192,15 @@ namespace Resources.Pages {
         internal static string EndOfMonth_Info {
             get {
                 return ResourceManager.GetString("EndOfMonth_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ledger correction on hotwallet audit.
+        /// </summary>
+        internal static string EndOfMonth_LedgerBitcoinBalanceTransactionDescription {
+            get {
+                return ResourceManager.GetString("EndOfMonth_LedgerBitcoinBalanceTransactionDescription", resourceCulture);
             }
         }
         
