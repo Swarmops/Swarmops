@@ -12,7 +12,7 @@ PRIO 1
 
 [x] Fix self-signup
 [x] Investigate weird accounting of echo test
-[ ] Fix crypto funds mismatch resulting from echo test
+[x] Fix crypto funds mismatch resulting from echo test
 [ ] Fix "connected accounts" concept
 [ ] - with interface to Github repo of XML definitions
 [ ] Fix & redo bank file upload completely
