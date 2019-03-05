@@ -223,7 +223,7 @@
      36 ./BuildFiles/Building/SharedLabeller/Properties/AssemblyInfo.cs
     150 ./Backend/CommsTransmitter.cs
     103 ./Backend/SocketServices/BackendServices.cs
-   1111 ./Backend/BackendLoop.cs
+   1125 ./Backend/BackendLoop.cs
      38 ./Backend/Properties/AssemblyInfo.cs
      43 ./Basic/Strings.cs
      61 ./Basic/DbColumnAwareBase.cs
@@ -393,7 +393,7 @@
      64 ./Logic/Structure/Country.cs
      36 ./Logic/Structure/GeographyStatisticsOverTime.cs
     228 ./Logic/Structure/GeographyStatistics.cs
-   1168 ./Logic/Structure/Organization.cs
+   1173 ./Logic/Structure/Organization.cs
      51 ./Logic/Structure/GeographyDataPoint.cs
      24 ./Logic/Structure/GeographyUpdates.cs
      23 ./Logic/Structure/GeographyWithPeople.cs
@@ -481,17 +481,17 @@
      25 ./Logic/Support/Optimizations.cs
      38 ./Logic/Support/SwarmopsLog.cs
      97 ./Logic/Support/SocketMessages/SocketMessageBase.cs
-    110 ./Logic/Support/BackendServiceOrder.cs
+    118 ./Logic/Support/BackendServiceOrder.cs
      89 ./Logic/Support/DocumentImage.cs
      22 ./Logic/Support/PirateWebDebug.cs
     323 ./Logic/Support/Document.cs
      75 ./Logic/Support/SerializableDictionary.cs
-    158 ./Logic/Support/BlockchainTransaction.cs
+    156 ./Logic/Support/BlockchainTransaction.cs
      33 ./Logic/Support/ProgressBarBackend.cs
      81 ./Logic/Support/Documents.cs
      25 ./Logic/Support/TemporaryIdentity.cs
     269 ./Logic/Support/SharpCashAddr.cs
-    180 ./Logic/Support/General.cs
+    185 ./Logic/Support/General.cs
     464 ./Logic/Support/PdfProcessor.cs
      33 ./Logic/Support/ErrorMessages.cs
      30 ./Logic/Support/IBackendServiceOrderBase.cs
@@ -526,7 +526,7 @@
      31 ./Logic/Support/LogEntries/ExpenseClaimFiledLogEntry.cs
      28 ./Logic/Support/LogEntries/SalaryCreatedLogEntry.cs
      15 ./Logic/Support/LogEntries/ImpersonationLogEntry.cs
-     96 ./Logic/Support/BackendServices/ReturnBitcoinEchoUtxoOrder.cs
+    106 ./Logic/Support/BackendServices/ReturnBitcoinEchoUtxoOrder.cs
     136 ./Logic/Support/BackendServices/BackendServiceOrderBase.cs
      57 ./Logic/Support/BackendServices/RasterizeDocumentHiresOrder.cs
     245 ./Logic/Support/PWLog.cs
@@ -605,7 +605,7 @@
      90 ./Logic/Financial/InboundInvoices.cs
      63 ./Logic/Financial/ExpenseClaimGroup.cs
     537 ./Logic/Financial/VatReport.cs
-   1493 ./Logic/Financial/BitcoinUtility.cs
+   1484 ./Logic/Financial/BitcoinUtility.cs
     200 ./Logic/Financial/ExchangeRateSnapshot.cs
      21 ./Logic/Financial/PayrollAdjustments.cs
      15 ./Logic/Financial/ExchangeRateSnapshots.cs
@@ -627,7 +627,7 @@
     196 ./Logic/Financial/Payment.cs
     386 ./Logic/Financial/AnnualReport.cs
      49 ./Logic/Financial/Money.cs
-    103 ./Logic/Financial/HotBitcoinAddresses.cs
+    133 ./Logic/Financial/HotBitcoinAddresses.cs
       9 ./Logic/Financial/FinancialTransactionTagSetTypesStock.cs
      14 ./Logic/Financial/Payments.cs
       6 ./Logic/Financial/BankDataReaders/SEPaymentsBankgiroReader.cs
@@ -744,6 +744,17 @@
     124 ./Site/Security/RequestPasswordReset.aspx
      84 ./Site/Security/RequestPasswordReset.aspx.cs
     132 ./Site/Global.asax
+      0 ./Site/App_GlobalResources/mk-MK/Pages.Admin.mk-MK.designer.cs
+      0 ./Site/App_GlobalResources/mk-MK/Pages.Ledgers.mk-MK.designer.cs
+      0 ./Site/App_GlobalResources/mk-MK/Pages.Comms.mk-MK.designer.cs
+      0 ./Site/App_GlobalResources/mk-MK/Global.mk-MK.designer.cs
+      0 ./Site/App_GlobalResources/mk-MK/Pages.Public.mk-MK.designer.cs
+      0 ./Site/App_GlobalResources/mk-MK/Pages.Security.mk-MK.designer.cs
+      0 ./Site/App_GlobalResources/mk-MK/Pages.Governance.mk-MK.designer.cs
+      0 ./Site/App_GlobalResources/mk-MK/Menu5.mk-MK.designer.cs
+      0 ./Site/App_GlobalResources/mk-MK/Controls.Swarm.mk-MK.designer.cs
+      0 ./Site/App_GlobalResources/mk-MK/Pages.Financial.mk-MK.designer.cs
+      0 ./Site/App_GlobalResources/mk-MK/Pages.Swarm.mk-MK.designer.cs
     279 ./Site/App_GlobalResources/Pages.Swarm.designer.cs
       0 ./Site/App_GlobalResources/ru-RU/Pages.Financial.ru-RU.designer.cs
       0 ./Site/App_GlobalResources/ru-RU/Pages.Public.ru-RU.designer.cs
@@ -873,7 +884,18 @@
       0 ./Site/App_GlobalResources/he-IL/Pages.Comms.he-IL.designer.cs
       0 ./Site/App_GlobalResources/he-IL/Controls.Swarm.he-IL.designer.cs
       0 ./Site/App_GlobalResources/he-IL/Pages.Admin.he-IL.designer.cs
-   2467 ./Site/App_GlobalResources/Pages.Ledgers.designer.cs
+      0 ./Site/App_GlobalResources/vi-VN/Pages.Financial.vi-VN.designer.cs
+      0 ./Site/App_GlobalResources/vi-VN/Pages.Comms.vi-VN.designer.cs
+      0 ./Site/App_GlobalResources/vi-VN/Pages.Security.vi-VN.designer.cs
+      0 ./Site/App_GlobalResources/vi-VN/Global.vi-VN.designer.cs
+      0 ./Site/App_GlobalResources/vi-VN/Pages.Ledgers.vi-VN.designer.cs
+      0 ./Site/App_GlobalResources/vi-VN/Pages.Admin.vi-VN.designer.cs
+      0 ./Site/App_GlobalResources/vi-VN/Controls.Swarm.vi-VN.designer.cs
+      0 ./Site/App_GlobalResources/vi-VN/Pages.Public.vi-VN.designer.cs
+      0 ./Site/App_GlobalResources/vi-VN/Pages.Governance.vi-VN.designer.cs
+      0 ./Site/App_GlobalResources/vi-VN/Pages.Swarm.vi-VN.designer.cs
+      0 ./Site/App_GlobalResources/vi-VN/Menu5.vi-VN.designer.cs
+   2531 ./Site/App_GlobalResources/Pages.Ledgers.designer.cs
       0 ./Site/App_GlobalResources/es-ES/Pages.Governance.es-ES.designer.cs
       0 ./Site/App_GlobalResources/es-ES/Global.es-ES.designer.cs
       0 ./Site/App_GlobalResources/es-ES/Pages.Public.es-ES.designer.cs
@@ -1003,6 +1025,17 @@
       0 ./Site/App_GlobalResources/ko-KR/Controls.Swarm.ko-KR.designer.cs
       0 ./Site/App_GlobalResources/ko-KR/Pages.Swarm.ko-KR.designer.cs
    1755 ./Site/App_GlobalResources/Pages.Financial.designer.cs
+      0 ./Site/App_GlobalResources/hu-HU/Menu5.hu-HU.designer.cs
+      0 ./Site/App_GlobalResources/hu-HU/Pages.Public.hu-HU.designer.cs
+      0 ./Site/App_GlobalResources/hu-HU/Pages.Ledgers.hu-HU.designer.cs
+      0 ./Site/App_GlobalResources/hu-HU/Pages.Governance.hu-HU.designer.cs
+      0 ./Site/App_GlobalResources/hu-HU/Pages.Security.hu-HU.designer.cs
+      0 ./Site/App_GlobalResources/hu-HU/Pages.Admin.hu-HU.designer.cs
+      0 ./Site/App_GlobalResources/hu-HU/Controls.Swarm.hu-HU.designer.cs
+      0 ./Site/App_GlobalResources/hu-HU/Pages.Swarm.hu-HU.designer.cs
+      0 ./Site/App_GlobalResources/hu-HU/Pages.Comms.hu-HU.designer.cs
+      0 ./Site/App_GlobalResources/hu-HU/Global.hu-HU.designer.cs
+      0 ./Site/App_GlobalResources/hu-HU/Pages.Financial.hu-HU.designer.cs
     541 ./Site/App_GlobalResources/Pages.Security.designer.cs
       0 ./Site/App_GlobalResources/ar-SA/Pages.Financial.ar-SA.designer.cs
       0 ./Site/App_GlobalResources/ar-SA/Global.ar-SA.designer.cs
@@ -1016,6 +1049,28 @@
       0 ./Site/App_GlobalResources/ar-SA/Pages.Admin.ar-SA.designer.cs
       0 ./Site/App_GlobalResources/ar-SA/Pages.Ledgers.ar-SA.designer.cs
    2605 ./Site/App_GlobalResources/Global.designer.cs
+      0 ./Site/App_GlobalResources/sl-SI/Menu5.sl-SI.designer.cs
+      0 ./Site/App_GlobalResources/sl-SI/Pages.Swarm.sl-SI.designer.cs
+      0 ./Site/App_GlobalResources/sl-SI/Pages.Admin.sl-SI.designer.cs
+      0 ./Site/App_GlobalResources/sl-SI/Pages.Security.sl-SI.designer.cs
+      0 ./Site/App_GlobalResources/sl-SI/Pages.Financial.sl-SI.designer.cs
+      0 ./Site/App_GlobalResources/sl-SI/Controls.Swarm.sl-SI.designer.cs
+      0 ./Site/App_GlobalResources/sl-SI/Pages.Comms.sl-SI.designer.cs
+      0 ./Site/App_GlobalResources/sl-SI/Pages.Ledgers.sl-SI.designer.cs
+      0 ./Site/App_GlobalResources/sl-SI/Global.sl-SI.designer.cs
+      0 ./Site/App_GlobalResources/sl-SI/Pages.Governance.sl-SI.designer.cs
+      0 ./Site/App_GlobalResources/sl-SI/Pages.Public.sl-SI.designer.cs
+      0 ./Site/App_GlobalResources/et-EE/Pages.Ledgers.et-EE.designer.cs
+      0 ./Site/App_GlobalResources/et-EE/Pages.Swarm.et-EE.designer.cs
+      0 ./Site/App_GlobalResources/et-EE/Pages.Governance.et-EE.designer.cs
+      0 ./Site/App_GlobalResources/et-EE/Pages.Admin.et-EE.designer.cs
+      0 ./Site/App_GlobalResources/et-EE/Pages.Public.et-EE.designer.cs
+      0 ./Site/App_GlobalResources/et-EE/Pages.Comms.et-EE.designer.cs
+      0 ./Site/App_GlobalResources/et-EE/Controls.Swarm.et-EE.designer.cs
+      0 ./Site/App_GlobalResources/et-EE/Pages.Security.et-EE.designer.cs
+      0 ./Site/App_GlobalResources/et-EE/Global.et-EE.designer.cs
+      0 ./Site/App_GlobalResources/et-EE/Menu5.et-EE.designer.cs
+      0 ./Site/App_GlobalResources/et-EE/Pages.Financial.et-EE.designer.cs
       0 ./Site/App_GlobalResources/sr-Cyrl-RS/Pages.Security.sr-Cyrl-RS.designer.cs
       0 ./Site/App_GlobalResources/sr-Cyrl-RS/Pages.Swarm.sr-Cyrl-RS.designer.cs
       0 ./Site/App_GlobalResources/sr-Cyrl-RS/Pages.Admin.sr-Cyrl-RS.designer.cs
@@ -1063,6 +1118,17 @@
       0 ./Site/App_GlobalResources/it-IT/Pages.Financial.it-IT.designer.cs
       0 ./Site/App_GlobalResources/it-IT/Pages.Governance.it-IT.designer.cs
       0 ./Site/App_GlobalResources/it-IT/Pages.Admin.it-IT.designer.cs
+      0 ./Site/App_GlobalResources/lv-LV/Controls.Swarm.lv-LV.designer.cs
+      0 ./Site/App_GlobalResources/lv-LV/Pages.Financial.lv-LV.designer.cs
+      0 ./Site/App_GlobalResources/lv-LV/Pages.Security.lv-LV.designer.cs
+      0 ./Site/App_GlobalResources/lv-LV/Pages.Swarm.lv-LV.designer.cs
+      0 ./Site/App_GlobalResources/lv-LV/Pages.Governance.lv-LV.designer.cs
+      0 ./Site/App_GlobalResources/lv-LV/Menu5.lv-LV.designer.cs
+      0 ./Site/App_GlobalResources/lv-LV/Pages.Public.lv-LV.designer.cs
+      0 ./Site/App_GlobalResources/lv-LV/Pages.Admin.lv-LV.designer.cs
+      0 ./Site/App_GlobalResources/lv-LV/Global.lv-LV.designer.cs
+      0 ./Site/App_GlobalResources/lv-LV/Pages.Ledgers.lv-LV.designer.cs
+      0 ./Site/App_GlobalResources/lv-LV/Pages.Comms.lv-LV.designer.cs
     756 ./Site/App_GlobalResources/Pages.Governance.designer.cs
       0 ./Site/App_GlobalResources/fr-FR/Global.fr-FR.designer.cs
       0 ./Site/App_GlobalResources/fr-FR/Pages.Public.fr-FR.designer.cs
@@ -1088,7 +1154,7 @@
       0 ./Site/App_GlobalResources/da-DK/Menu5.da-DK.designer.cs
       0 ./Site/App_GlobalResources/da-DK/Pages.Swarm.da-DK.designer.cs
       0 ./Site/App_GlobalResources/da-DK/Pages.Ledgers.da-DK.designer.cs
-   1134 ./Site/App_GlobalResources/Menu5.designer.cs
+   1143 ./Site/App_GlobalResources/Menu5.designer.cs
       0 ./Site/App_GlobalResources/sr-Latn-RS/Controls.Swarm.sr-Latn-RS.designer.cs
       0 ./Site/App_GlobalResources/sr-Latn-RS/Pages.Swarm.sr-Latn-RS.designer.cs
       0 ./Site/App_GlobalResources/sr-Latn-RS/Pages.Admin.sr-Latn-RS.designer.cs
@@ -1111,6 +1177,17 @@
       0 ./Site/App_GlobalResources/es-VE/Pages.Public.es-VE.designer.cs
       0 ./Site/App_GlobalResources/es-VE/Pages.Swarm.es-VE.designer.cs
       0 ./Site/App_GlobalResources/es-VE/Controls.Swarm.es-VE.designer.cs
+      0 ./Site/App_GlobalResources/fa-IR/Pages.Admin.fa-IR.designer.cs
+      0 ./Site/App_GlobalResources/fa-IR/Controls.Swarm.fa-IR.designer.cs
+      0 ./Site/App_GlobalResources/fa-IR/Menu5.fa-IR.designer.cs
+      0 ./Site/App_GlobalResources/fa-IR/Pages.Ledgers.fa-IR.designer.cs
+      0 ./Site/App_GlobalResources/fa-IR/Pages.Governance.fa-IR.designer.cs
+      0 ./Site/App_GlobalResources/fa-IR/Pages.Swarm.fa-IR.designer.cs
+      0 ./Site/App_GlobalResources/fa-IR/Global.fa-IR.designer.cs
+      0 ./Site/App_GlobalResources/fa-IR/Pages.Financial.fa-IR.designer.cs
+      0 ./Site/App_GlobalResources/fa-IR/Pages.Public.fa-IR.designer.cs
+      0 ./Site/App_GlobalResources/fa-IR/Pages.Comms.fa-IR.designer.cs
+      0 ./Site/App_GlobalResources/fa-IR/Pages.Security.fa-IR.designer.cs
       0 ./Site/App_GlobalResources/hi-IN/Pages.Security.hi-IN.designer.cs
       0 ./Site/App_GlobalResources/hi-IN/Pages.People.hi-IN.designer.cs
       0 ./Site/App_GlobalResources/hi-IN/Pages.Financial.hi-IN.designer.cs
@@ -1123,6 +1200,39 @@
       0 ./Site/App_GlobalResources/hi-IN/Pages.Swarm.hi-IN.designer.cs
       0 ./Site/App_GlobalResources/hi-IN/Pages.Comms.hi-IN.designer.cs
       0 ./Site/App_GlobalResources/hi-IN/Controls.Swarm.hi-IN.designer.cs
+      0 ./Site/App_GlobalResources/id-ID/Pages.Comms.id-ID.designer.cs
+      0 ./Site/App_GlobalResources/id-ID/Pages.Governance.id-ID.designer.cs
+      0 ./Site/App_GlobalResources/id-ID/Controls.Swarm.id-ID.designer.cs
+      0 ./Site/App_GlobalResources/id-ID/Global.id-ID.designer.cs
+      0 ./Site/App_GlobalResources/id-ID/Pages.Security.id-ID.designer.cs
+      0 ./Site/App_GlobalResources/id-ID/Menu5.id-ID.designer.cs
+      0 ./Site/App_GlobalResources/id-ID/Pages.Admin.id-ID.designer.cs
+      0 ./Site/App_GlobalResources/id-ID/Pages.Swarm.id-ID.designer.cs
+      0 ./Site/App_GlobalResources/id-ID/Pages.Public.id-ID.designer.cs
+      0 ./Site/App_GlobalResources/id-ID/Pages.Financial.id-ID.designer.cs
+      0 ./Site/App_GlobalResources/id-ID/Pages.Ledgers.id-ID.designer.cs
+      0 ./Site/App_GlobalResources/lb-LU/Pages.Financial.lb-LU.designer.cs
+      0 ./Site/App_GlobalResources/lb-LU/Pages.Comms.lb-LU.designer.cs
+      0 ./Site/App_GlobalResources/lb-LU/Pages.Admin.lb-LU.designer.cs
+      0 ./Site/App_GlobalResources/lb-LU/Global.lb-LU.designer.cs
+      0 ./Site/App_GlobalResources/lb-LU/Pages.Ledgers.lb-LU.designer.cs
+      0 ./Site/App_GlobalResources/lb-LU/Pages.Governance.lb-LU.designer.cs
+      0 ./Site/App_GlobalResources/lb-LU/Pages.Public.lb-LU.designer.cs
+      0 ./Site/App_GlobalResources/lb-LU/Menu5.lb-LU.designer.cs
+      0 ./Site/App_GlobalResources/lb-LU/Pages.Security.lb-LU.designer.cs
+      0 ./Site/App_GlobalResources/lb-LU/Pages.Swarm.lb-LU.designer.cs
+      0 ./Site/App_GlobalResources/lb-LU/Controls.Swarm.lb-LU.designer.cs
+      0 ./Site/App_GlobalResources/lt-LT/Global.lt-LT.designer.cs
+      0 ./Site/App_GlobalResources/lt-LT/Pages.Admin.lt-LT.designer.cs
+      0 ./Site/App_GlobalResources/lt-LT/Pages.Swarm.lt-LT.designer.cs
+      0 ./Site/App_GlobalResources/lt-LT/Pages.Comms.lt-LT.designer.cs
+      0 ./Site/App_GlobalResources/lt-LT/Controls.Swarm.lt-LT.designer.cs
+      0 ./Site/App_GlobalResources/lt-LT/Pages.Public.lt-LT.designer.cs
+      0 ./Site/App_GlobalResources/lt-LT/Pages.Financial.lt-LT.designer.cs
+      0 ./Site/App_GlobalResources/lt-LT/Menu5.lt-LT.designer.cs
+      0 ./Site/App_GlobalResources/lt-LT/Pages.Security.lt-LT.designer.cs
+      0 ./Site/App_GlobalResources/lt-LT/Pages.Ledgers.lt-LT.designer.cs
+      0 ./Site/App_GlobalResources/lt-LT/Pages.Governance.lt-LT.designer.cs
     177 ./Site/Pages/v5/Comms/SendMassMessage.aspx.cs
      96 ./Site/Pages/v5/Comms/SendMassMessage.aspx.designer.cs
     140 ./Site/Pages/v5/Comms/SendMassMessage.aspx
@@ -1135,7 +1245,7 @@
      15 ./Site/Pages/v5/Ledgers/Json-InspectLedgerTxData.aspx.designer.cs
      92 ./Site/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx
     143 ./Site/Pages/v5/Ledgers/Json-ProfitLossData.aspx.cs
-    272 ./Site/Pages/v5/Ledgers/Json-GeneralLedgerData.aspx.cs
+    270 ./Site/Pages/v5/Ledgers/Json-GeneralLedgerData.aspx.cs
     267 ./Site/Pages/v5/Ledgers/ResyncExternalAccount.aspx
      15 ./Site/Pages/v5/Ledgers/Json-VatReportData.aspx.designer.cs
      70 ./Site/Pages/v5/Ledgers/BitcoinHotwallet.aspx
@@ -1147,7 +1257,7 @@
      53 ./Site/Pages/v5/Ledgers/Json-UnbalancedTransactions.aspx.cs
     107 ./Site/Pages/v5/Ledgers/BudgetActual.aspx
     746 ./Site/Pages/v5/Ledgers/BalanceTransactions.aspx.cs
-    537 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx.designer.cs
+    627 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx.designer.cs
      64 ./Site/Pages/v5/Ledgers/BudgetActual.aspx.cs
       1 ./Site/Pages/v5/Ledgers/Json-AccountChartData.aspx
     729 ./Site/Pages/v5/Ledgers/ChartOfAccounts.aspx
@@ -1162,9 +1272,10 @@
      15 ./Site/Pages/v5/Ledgers/TaxForms/Json-Payroll-TaxFormData.aspx.designer.cs
     215 ./Site/Pages/v5/Ledgers/TaxForms/Json-Payroll-TaxFormData.aspx.cs
     106 ./Site/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx
-    417 ./Site/Pages/v5/Ledgers/EndOfMonth.aspx.cs
+    472 ./Site/Pages/v5/Ledgers/EndOfMonth.aspx.cs
     105 ./Site/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx.designer.cs
     348 ./Site/Pages/v5/Ledgers/ChartOfAccounts.aspx.designer.cs
+      0 ./Site/Pages/v5/Ledgers/Json-LedgerNativeData.aspx
      85 ./Site/Pages/v5/Ledgers/BalanceSheetSimplified.aspx.cs
      96 ./Site/Pages/v5/Ledgers/BalanceSheet.aspx.designer.cs
      15 ./Site/Pages/v5/Ledgers/Json-AccountChartData.aspx.designer.cs
@@ -1178,7 +1289,7 @@
      15 ./Site/Pages/v5/Ledgers/Json-BalanceSheetDataSimplified.aspx.designer.cs
     740 ./Site/Pages/v5/Ledgers/ResyncExternalAccount.aspx.cs
      93 ./Site/Pages/v5/Ledgers/Csv-BalanceData.aspx.cs
-    521 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx.cs
+    542 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx.cs
      13 ./Site/Pages/v5/Ledgers/Json-ProfitLossData.aspx.designer.cs
       1 ./Site/Pages/v5/Ledgers/Json-ProfitLossData.aspx
      15 ./Site/Pages/v5/Ledgers/Json-GeneralLedgerData.aspx.designer.cs
@@ -1190,6 +1301,7 @@
      33 ./Site/Pages/v5/Ledgers/ResyncExternalAccount.aspx.designer.cs
      11 ./Site/Pages/v5/Ledgers/DebugLedgers.aspx
     103 ./Site/Pages/v5/Ledgers/BudgetActual.aspx.designer.cs
+    193 ./Site/Pages/v5/Ledgers/Json-LedgerNativeData.aspx.cs
      13 ./Site/Pages/v5/Ledgers/DebugLedgers.aspx.designer.cs
       0 ./Site/Pages/v5/Ledgers/Json-InspectLedgerTxData.aspx
       1 ./Site/Pages/v5/Ledgers/Csv-BalanceData.aspx
@@ -1219,8 +1331,9 @@
      15 ./Site/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx.designer.cs
     164 ./Site/Pages/v5/Ledgers/ViewVatReports.aspx.cs
       1 ./Site/Pages/v5/Ledgers/Json-BitcoinHotwalletData.aspx
-    371 ./Site/Pages/v5/Ledgers/EndOfMonth.aspx
-    510 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx
+     15 ./Site/Pages/v5/Ledgers/Json-LedgerNativeData.aspx.designer.cs
+    375 ./Site/Pages/v5/Ledgers/EndOfMonth.aspx
+    589 ./Site/Pages/v5/Ledgers/InspectLedgers.aspx
     145 ./Site/Pages/v5/Ledgers/CloseLedgers.aspx.cs
      15 ./Site/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx.designer.cs
      40 ./Site/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx.cs
@@ -1259,7 +1372,7 @@
      96 ./Site/Pages/v5/User/SelectLanguage.aspx.cs
       1 ./Site/Pages/v5/User/SetCulture.aspx
       2 ./Site/Pages/v5/Support/StreamUpload.aspx
-    234 ./Site/Pages/v5/Support/StreamUpload.aspx.cs
+    245 ./Site/Pages/v5/Support/StreamUpload.aspx.cs
       2 ./Site/Pages/v5/Support/DownloadUploadedDocument.aspx
      15 ./Site/Pages/v5/Support/DownloadUploadedDocument.aspx.designer.cs
     245 ./Site/Pages/v5/Support/DownloadUploadedDocument.aspx.cs
@@ -1430,7 +1543,9 @@
     270 ./Common/ExtensionMethods/Bitmap.cs
      37 ./Common/ExtensionMethods/DateTime.cs
      16 ./Common/Exceptions/DatabaseConcurrencyException.cs
+     12 ./Common/Exceptions/TryAgainException.cs
      12 ./Common/Exceptions/ConcurrencyException.cs
+     12 ./Common/Exceptions/NetworkTimeoutException.cs
      28 ./Common/Enums/PersonOptionalDataKey.cs
      19 ./Common/Enums/InvalidMembershipType.cs
     240 ./Common/Enums/RoleTypeClass.cs
@@ -1468,4 +1583,4 @@
      16 ./Common/Enums/CommunicationType.cs
      34 ./Common/Enums/FinancialValidationType.cs
      36 ./Common/Properties/AssemblyInfo.cs
- 168407 total
+ 169031 total
