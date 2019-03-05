@@ -192,6 +192,14 @@ namespace Swarmops.Backend
                     Console.WriteLine ("Testing character encoding: räksmörgås RÄKSMÖRGÅS");
                     return;
                 }
+
+                if (args[0].ToLower() == "update-currencies")
+                {
+                    Console.WriteLine("Updating currencies and exiting");
+                    ExchangeRateSnapshot.Create();
+
+                    return;
+                }
             }
 
             /*
