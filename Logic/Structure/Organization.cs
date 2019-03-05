@@ -594,6 +594,19 @@ namespace Swarmops.Logic.Structure
 
             OptionalData.SetOptionalDataString (ObjectOptionalDataType.OrgCurrency, currency.Code);
 
+            // If presentation currency is something else than bitcoin cash, then we also
+            // need forex gain/loss accounts to account for (at least) the hotwallet
+
+            if (!currency.IsBitcoinCash)
+            {
+                this.FinancialAccounts.IncomeCurrencyFluctuations =
+                    FinancialAccount.Create(this, "[LOC]Income_ForexGains",
+                        FinancialAccountType.Income, null);
+                this.FinancialAccounts.CostsCurrencyFluctuations =
+                    FinancialAccount.Create(this, "[LOC]Cost_ForexLosses",
+                        FinancialAccountType.Cost, null);
+            }
+
             // Set current year to first fiscal year
 
             OptionalData.SetOptionalDataInt (ObjectOptionalDataType.OrgFirstFiscalYear, DateTime.Today.Year);
