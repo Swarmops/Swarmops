@@ -510,6 +510,11 @@ namespace Swarmops.Logic.Structure
                 FinancialAccount.Create(this, "[LOC]Asset_TransfersInProgress", FinancialAccountType.Asset,
                     shortTermAssets);
 
+            FinancialAccounts [OrganizationFinancialAccountType.AssetsBitcoinHot] =
+                FinancialAccount.Create(this, "[LOC]Asset_BitcoinHot",
+                FinancialAccountType.Asset, null);
+
+
             FinancialAccounts[OrganizationFinancialAccountType.CostsAllocatedFunds] =
                 FinancialAccount.Create (this, "[LOC]Cost_AllocatedFunds", FinancialAccountType.Cost, null);
             FinancialAccounts[OrganizationFinancialAccountType.CostsInfrastructure] =
