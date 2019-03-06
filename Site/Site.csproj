@@ -158,6 +158,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Pages.Swarm.ca-ES.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Controls.Financial.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controls.Financial.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\cs-CZ\Controls.Swarm.cs-CZ.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -6697,6 +6702,12 @@
     <Content Include="App_GlobalResources\mk-MK\Pages.Swarm.mk-MK.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Swarm.mk-MK.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Controls.Financial.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Controls.Financial.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>

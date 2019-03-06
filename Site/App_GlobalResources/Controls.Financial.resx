@@ -117,83 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Positions_AssignAnotherPerson" xml:space="preserve">
-    <value>Assign another person...</value>
-    <comment>To an existing position that accepts multiple people (like "assistants")</comment>
+  <data name="Bitcoin_ClientRefusesTracking_Header" xml:space="preserve">
+    <value>Your browser is malfunctioning</value>
   </data>
-  <data name="Positions_AssignFifthPerson" xml:space="preserve">
-    <value>Assign a fifth person...</value>
+  <data name="Bitcoin_ClientRefusesTracking_Para1" xml:space="preserve">
+    <value>Your browser is refusing to load bitcoin transaction trackers. These trackers are necessary to detect when you make a bitcoin transaction, in order to honor your payment.</value>
   </data>
-  <data name="Positions_AssignFirstPerson" xml:space="preserve">
-    <value>Assign...</value>
+  <data name="Bitcoin_ClientRefusesTracking_Para2" xml:space="preserve">
+    <value>Some browser extensions, such as EFF:s "Privacy Badger", prevent loading of bitcoin tracking by mistake, thinking it is advertising.</value>
   </data>
-  <data name="Positions_AssignFourthPerson" xml:space="preserve">
-    <value>Assign a fourth person...</value>
-  </data>
-  <data name="Positions_AssignmentDuration" xml:space="preserve">
-    <value>Assignment duration (extendable)</value>
-  </data>
-  <data name="Positions_AssignmentExpires" xml:space="preserve">
-    <value>Expires</value>
-    <comment>The date a position assignment autoterminates</comment>
-  </data>
-  <data name="Positions_AssignPersonToPosition" xml:space="preserve">
-    <value>Assign this person to position</value>
-  </data>
-  <data name="Positions_AssignSecondPerson" xml:space="preserve">
-    <value>Assign a second person...</value>
-  </data>
-  <data name="Positions_AssignSixthPerson" xml:space="preserve">
-    <value>Assign a sixth person...</value>
-    <comment>ok, this is not strictly necessary, just a bell &amp; whistle</comment>
-  </data>
-  <data name="Positions_AssignThirdPerson" xml:space="preserve">
-    <value>Assign a third person...</value>
-  </data>
-  <data name="Positions_ButtonAssign" xml:space="preserve">
-    <value>Assign</value>
-    <comment>Kind of "hire" but also for volunteers</comment>
-  </data>
-  <data name="Positions_ModalHeader" xml:space="preserve">
-    <value>Assign person as &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt; &lt;span id='{0}_modalGeographyName'&gt; &lt;/span&gt;</value>
-    <comment>Header for new assignment dialog</comment>
-  </data>
-  <data name="Positions_NoMorePeopleOnPosition" xml:space="preserve">
-    <value>Failed: Can't assign any more people to this position.</value>
-  </data>
-  <data name="Positions_PleaseSelectPerson" xml:space="preserve">
-    <value>Please select a person to assign.</value>
-  </data>
-  <data name="Positions_Vacant" xml:space="preserve">
-    <value>(position is vacant)</value>
-    <comment>For unassigned positions</comment>
-  </data>
-  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;QUIT YOUR POSITION?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is &lt;strong&gt;your&lt;/strong&gt; assignment. Terminating your own assignment is the equivalent of saying "I QUIT". Doing so will take effect immediately. Is this what you wanted to do?&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
-  <data name="Positions_ConfirmTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;TERMINATE ASSIGNMENT?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Do you want to terminate &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; from the assignment as &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? This is the equivalent of firing somebody and usually needs to be in accordance with internal processes and local law.&lt;br/&gt;&lt;br/&gt;</value>
-    <comment>{0} is the person name, {1} is the position title.</comment>
-  </data>
-  <data name="Positions_TerminateNo" xml:space="preserve">
-    <value>Do Not Terminate</value>
-  </data>
-  <data name="Positions_TerminateSelfNo" xml:space="preserve">
-    <value>Oops! No, go back!</value>
-  </data>
-  <data name="Positions_TerminateSelfYes" xml:space="preserve">
-    <value>Yes, I Resign</value>
-  </data>
-  <data name="Positions_TerminateYes" xml:space="preserve">
-    <value>Terminate Assignment</value>
-  </data>
-  <data name="Positions_AssignElsewhere" xml:space="preserve">
-    <value>(assign under My Organization)</value>
-  </data>
-  <data name="Positions_CreatePosition" xml:space="preserve">
-    <value>Create new position...</value>
-  </data>
-  <data name="Positions_Subleaders" xml:space="preserve">
-    <value>Leaders of subdivisions</value>
+  <data name="Bitcoin_ClientRefusesTracking_Para3" xml:space="preserve">
+    <value>Please check your browser extensions and/or disable Privacy Badger, Adblock, etc., for this site.</value>
   </data>
 </root>

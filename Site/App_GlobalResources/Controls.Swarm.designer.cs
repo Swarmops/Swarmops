@@ -61,42 +61,6 @@ namespace Resources.Controls {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your browser is malfunctioning.
-        /// </summary>
-        internal static string Bitcoin_ClientRefusesTracking_Header {
-            get {
-                return ResourceManager.GetString("Bitcoin_ClientRefusesTracking_Header", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your browser is refusing to load bitcoin transaction trackers. These trackers are necessary to detect when you make a bitcoin transaction, in order to honor your payment..
-        /// </summary>
-        internal static string Bitcoin_ClientRefusesTracking_Para1 {
-            get {
-                return ResourceManager.GetString("Bitcoin_ClientRefusesTracking_Para1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Some browser extensions, such as EFF:s &quot;Privacy Badger&quot;, prevent loading of bitcoin tracking by mistake, thinking it is advertising..
-        /// </summary>
-        internal static string Bitcoin_ClientRefusesTracking_Para2 {
-            get {
-                return ResourceManager.GetString("Bitcoin_ClientRefusesTracking_Para2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please check your browser extensions and/or disable Privacy Badger, Adblock, etc., for this site..
-        /// </summary>
-        internal static string Bitcoin_ClientRefusesTracking_Para3 {
-            get {
-                return ResourceManager.GetString("Bitcoin_ClientRefusesTracking_Para3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Assign another person....
         /// </summary>
         internal static string Positions_AssignAnotherPerson {
