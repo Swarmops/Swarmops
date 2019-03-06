@@ -196,4 +196,16 @@
   <data name="Positions_Subleaders" xml:space="preserve">
     <value>Leaders of subdivisions</value>
   </data>
+  <data name="Bitcoin_ClientRefusesTracking_Header" xml:space="preserve">
+    <value>Your browser is malfunctioning</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para1" xml:space="preserve">
+    <value>Your browser is refusing to load bitcoin transaction trackers. These trackers are necessary to detect when you make a bitcoin transaction, in order to honor your payment.</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para2" xml:space="preserve">
+    <value>Some browser extensions, such as EFF:s "Privacy Badger", prevent loading of bitcoin tracking by mistake, thinking it is advertising.</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para3" xml:space="preserve">
+    <value>Please check your browser extensions and/or disable Privacy Badger, Adblock, etc., for this site.</value>
+  </data>
 </root>
