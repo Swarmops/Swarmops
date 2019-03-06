@@ -405,21 +405,6 @@ namespace Swarmops.Logic.Structure
 
                 string currencyCode = OptionalData.GetOptionalDataString (ObjectOptionalDataType.OrgCurrency);
 
-                if (string.IsNullOrEmpty (currencyCode))
-                {
-                    if (Identity == 1 && (Name.StartsWith ("Piratpartiet") || Name.StartsWith ("Sandbox")))
-                    {
-                        // This is a one-off to fix the v4 installation. Currency is SEK.
-                        OptionalData.SetOptionalDataString (ObjectOptionalDataType.OrgCurrency, "SEK");
-                        currencyCode = "SEK";
-                    }
-                    if (Identity == 2 && (Name.StartsWith ("European")))
-                    {
-                        OptionalData.SetOptionalDataString (ObjectOptionalDataType.OrgCurrency, "SEK");
-                        currencyCode = "SEK";
-                    }
-                }
-
                 return Currency.FromCode (currencyCode);
             }
         }
@@ -1046,28 +1031,6 @@ namespace Swarmops.Logic.Structure
                 defaultCountryId));
         }
 
-        [Obsolete ("Never use this function. Mark the organization as unused. Records are needed for history.", true)]
-        public void Delete()
-        {
-            string problems = "";
-            int ChildrenCount = Children.Count;
-            int ActiveMembershipsCount = GetMemberships (false).Count;
-            int HistoricalMembershipsCount = GetMemberships (true).Count - ActiveMembershipsCount;
-
-            if (ChildrenCount > 0)
-                problems += ChildrenCount + " child organisations\n\r";
-
-            if (ActiveMembershipsCount > 0)
-                problems += ActiveMembershipsCount + " active memberships\n\r";
-
-            if (HistoricalMembershipsCount > 0)
-                problems += HistoricalMembershipsCount + " historical memberships\n\r";
-
-            if (problems != "")
-                throw new Exception ("Can not delete because:\n\r" + problems);
-
-            // OrganizationCache.DeleteOrganization(this.Identity);  -- commented out because OrganizationCache.Delete is also marked obsolete
-        }
 
         public static void UpdateOrganization (int ParentOrganizationId, string NameInternational, string Name,
             string NameShort, string Domain, string MailPrefix, int AnchorGeographyId, bool AcceptsMembers,
