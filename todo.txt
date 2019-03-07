@@ -1,4 +1,4 @@
-FEB2019
+MAR2019
 =======
 
 OVERALL: 
@@ -41,6 +41,7 @@ PRIO 2
 [ ] Monthly reports (not just quarterly)
 [x] Manual payout dialog, with lock/confirm/undo step to Payouts
 [ ] Live tracking of currency inventory value
+[ ] Detect if upload area disconnects between backend and frontend
 
 
 PRIO 3
