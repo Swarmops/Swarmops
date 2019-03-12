@@ -68,7 +68,7 @@ public class ListPersonDataSource
         {
             People ppl = People.FromIdentities(this.listedPersons);
             Dictionary<int, List<BasicParticipation>> membershipTable =
-                Participations.GetParticipationsForPeople(this.listedPersons, Participation.GracePeriod);
+                Participations.GetParticipationsForPeople(ppl, Participation.GracePeriod);
             Participations participationsToLoad = new Participations();
             foreach (Person p in ppl)
             {

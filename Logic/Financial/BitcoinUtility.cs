@@ -17,6 +17,7 @@ using NBitcoin;
 using Newtonsoft.Json.Linq;
 using Swarmops.Common;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Exceptions;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
@@ -52,6 +53,106 @@ namespace Swarmops.Logic.Financial
         {
             BitcoinBlockchainUpgrade.Upgrade(fromVersion);
         }
+
+
+        public static void CheckHotwalletAddresses(Organization organization)
+        {
+            HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization(organization);
+
+            foreach (HotBitcoinAddress address in addresses)
+            {
+                if (address.Chain == BitcoinChain.Core)
+                {
+                    // These shouldn't exist much, so make sure that we have the equivalent Cash address registered
+                    try
+                    {
+                        HotBitcoinAddress.FromAddress(BitcoinChain.Cash, address.ProtocolLevelAddress);
+                    }
+                    catch (ArgumentException)
+                    {
+                        // We didn't have it, so create it
+                        BitcoinUtility.TestUnspents(BitcoinChain.Cash, address.ProtocolLevelAddress);
+                    }
+                }
+            }
+        }
+
+
+        public static Dictionary<BitcoinChain, Int64> GetHotwalletSatoshisPerChain(Organization organization)
+        {
+            return HotBitcoinAddresses.GetSatoshisInHotwallet(organization);
+        }
+
+
+        public static Money GetHotwalletValue (Organization organization)
+        {
+            Currency presentationCurrency = organization.Currency;
+
+            Dictionary<BitcoinChain, double> conversionRateLookup = new Dictionary<BitcoinChain, double>();
+            Dictionary<BitcoinChain, Int64> satoshisTotalLookup = new Dictionary<BitcoinChain, long>();
+
+            long fiatCentsPerCoreCoin =
+                new Money(BitcoinUtility.SatoshisPerBitcoin, Currency.BitcoinCore).ToCurrency(
+                    presentationCurrency).Cents;
+            long fiatCentsPerCashCoin =
+                new Money(BitcoinUtility.SatoshisPerBitcoin, Currency.BitcoinCash).ToCurrency(
+                    presentationCurrency).Cents;
+
+            conversionRateLookup[BitcoinChain.Cash] = fiatCentsPerCashCoin/1.0/BitcoinUtility.SatoshisPerBitcoin;
+                // the "/1.0" converts to double implicitly
+            conversionRateLookup[BitcoinChain.Core] = fiatCentsPerCoreCoin/1.0/BitcoinUtility.SatoshisPerBitcoin;
+
+            satoshisTotalLookup = HotBitcoinAddresses.GetSatoshisInHotwallet(organization);
+
+            Int64 presentationCurrencyCents = 0;
+
+            foreach (BitcoinChain chain in satoshisTotalLookup.Keys)
+            {
+                presentationCurrencyCents += (Int64) (satoshisTotalLookup[chain]*conversionRateLookup[chain]); // some precision loss unavoidable here
+            }
+
+            return new Money(presentationCurrencyCents, presentationCurrency);
+        }
+
+
+        public static void CheckHotwalletAccountBalance(FinancialAccount hotWallet)
+        {
+            if (hotWallet == null)
+            {
+                return;
+            }
+
+            Dictionary<BitcoinChain, Int64> satoshisPerChain = GetHotwalletSatoshisPerChain(hotWallet.Organization);
+
+            Int64 satoshisCash = 0;
+
+            if (satoshisPerChain.ContainsKey(BitcoinChain.Core))
+            {
+                // There should not be any. Use Shapeshift to convert to Cash.
+
+                // TODO
+
+                return; // do not repeat not process at this time
+            }
+            else
+            {
+                if (satoshisPerChain.ContainsKey(BitcoinChain.Cash))
+                {
+                    satoshisCash = satoshisPerChain[BitcoinChain.Cash];
+                }
+            }
+
+        }
+
+
+        public static void CheckHotwalletForexProfitLoss(FinancialAccount hotWallet)
+        {
+            if (hotWallet != null)
+            {
+                hotWallet.LogForexProfitLoss(GetHotwalletValue(hotWallet.Organization));
+            }
+        }
+
 
 
         public static void VerifyBitcoinHotWallet()
@@ -159,10 +260,13 @@ namespace Swarmops.Logic.Financial
                 case BitcoinChain.Cash:
                     jsonResult =
                         JObject.Parse(
-                            new WebClient().DownloadString("https://bitcoincash.blockexplorer.com/api/tx/" + txHash));
+                            new WebClient().DownloadString("https://bch-insight.bitpay.com/api/tx/" + txHash));
                     foreach (var input in jsonResult["vin"])
                     {
-                        inputAddresses.Add((string)(input["addr"]));
+                        string address = ((string) (input["addr"]));
+                        address = BitcoinUtility.EnsureLegacyAddress(address);
+
+                        inputAddresses.Add(address);
                     }
 
                     break;
@@ -216,7 +320,7 @@ namespace Swarmops.Logic.Financial
                     // TODO: SELECT BLOCK EXPLORER AND ITS ACCOMPANYING ADDRESS FORMAT
 
                     unspentArray = JArray.Parse(
-                        new WebClient().DownloadString("https://bitcoincash.blockexplorer.com/api/addr/" + secretKey.PubKey.GetAddress(Network.Main) + "/utxo"));
+                        new WebClient().DownloadString("https://bch-insight.bitpay.com/api/addr/" + EnsureCashAddressWithoutPrefix(secretKey.PubKey.GetAddress(Network.Main).ToString()) + "/utxo"));
 
                     foreach (JObject unspentJson in unspentArray.Children())
                     {
@@ -356,10 +460,12 @@ namespace Swarmops.Logic.Financial
 
                     // TODO: SELECTION OF BLOCK EXPLORER, ADDRESS STRING FORMAT TO GO WITH IT
 
+                    string cashAddress = EnsureCashAddressWithoutPrefix(address);
+
                     addressInfoResult =
                         JObject.Parse(
                             new WebClient().DownloadString(
-                                "https://bitcoincash.blockexplorer.com/api/addr/" + address));
+                                "https://bch-insight.bitpay.com/api/addr/" + cashAddress));
 
                     JArray unspentArray;
 
@@ -371,7 +477,7 @@ namespace Swarmops.Logic.Financial
                     try
                     {
                         unspentArray = JArray.Parse(
-                            new WebClient().DownloadString("https://bitcoincash.blockexplorer.com/api/addr/" + address + "/utxo"));
+                            new WebClient().DownloadString("https://bch-insight.bitpay.com/api/addr/" + cashAddress + "/utxo"));
 
                     }
                     catch (WebException webException)
@@ -452,45 +558,54 @@ namespace Swarmops.Logic.Financial
 
         public static void BroadcastTransaction (Transaction transaction, BitcoinChain chain)
         {
-            using (WebClient client = new WebClient())
+            try
             {
-                switch (chain)
+                using (WebClient client = new WebClient())
                 {
-                    case BitcoinChain.Core:
+                    switch (chain)
+                    {
+                        case BitcoinChain.Core:
 
-                        client.UploadValues("https://blockchain.info/pushtx?cors=true",
-                            new NameValueCollection()
-                            {
-                                {"tx", transaction.ToHex()}
-                            });
-                        break;  // no txid given
+                            client.UploadValues("https://blockchain.info/pushtx?cors=true",
+                                new NameValueCollection()
+                                {
+                                    {"tx", transaction.ToHex()}
+                                });
+                            break;  // no txid given
 
-                    case BitcoinChain.Cash:
+                        case BitcoinChain.Cash:
 
-                        byte[] response = client.UploadValues("https://bitcoincash.blockexplorer.com/api/tx/send",
-                            new NameValueCollection()
-                            {
-                               {"rawtx", transaction.ToHex()}
-                            });
-                        break;
+                            client.UploadValues("https://bch-insight.bitpay.com/api/tx/send",
+                                new NameValueCollection()
+                                {
+                                   {"rawtx", transaction.ToHex()}
+                                });
+                            break;
 
-                    default:
-                        throw new NotImplementedException("Unknown chain: " + chain);
+                        default:
+                            throw new NotImplementedException("Unknown chain: " + chain);
+                    }
+                    // TODO: Exception handling
                 }
-                // TODO: Exception handling
             }
+            catch (WebException exception)
+            {
+                if (exception.Message.Contains("has timed out"))
+                {
+                    throw new NetworkTimeoutException();
+                }
+            }
+
         }
 
-        public static BitcoinTransactionInputs GetInputsForAmount (Organization organization, Int64 satoshis)
+        public static BitcoinTransactionInputs GetInputsForAmount (Organization organization, BitcoinChain chain, Int64 satoshis)
         {
             // TODO: Verify inputs up to date?
 
             // TODO: What's the most efficient way to do this?
 
-            HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization (organization);
+            HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization (organization, BitcoinChain.Cash);
             HotBitcoinAddressUnspents unspents = addresses.Unspents;
-
-            BitcoinTransactionInputs result = new BitcoinTransactionInputs();
 
             // Lazy checking: if there's one single input that covers the entire amount, use it
 
@@ -498,12 +613,15 @@ namespace Swarmops.Logic.Financial
 
             foreach (HotBitcoinAddressUnspent unspent in unspents)
             {
-                if (unspent.AmountSatoshis >= satoshis)
+                if (unspent.Address.Chain == BitcoinChain.Cash)
                 {
-                    if (lowestSingleSufficientInput == null ||
-                        lowestSingleSufficientInput.AmountSatoshis > unspent.AmountSatoshis)
+                    if (unspent.AmountSatoshis >= satoshis)
                     {
-                        lowestSingleSufficientInput = unspent.AsInput;
+                        if (lowestSingleSufficientInput == null ||
+                            lowestSingleSufficientInput.AmountSatoshis > unspent.AmountSatoshis)
+                        {
+                            lowestSingleSufficientInput = unspent.AsInput;
+                        }
                     }
                 }
             }
@@ -527,6 +645,87 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public static string EnsureLegacyAddress(string address)
+        {
+            bool dummy1, dummy2;
+
+            try
+            {
+                string legacyAddress = BitcoinCashAddressConversion.CashAddressToLegacyAddress(address, out dummy1,
+                    out dummy2);
+
+                // If this doesn't throw, we have a valid legacy address
+
+                return legacyAddress;
+            }
+            catch (Exception)
+            {
+                // This wasn't a valid cash address, so assume it's a legacy address
+            }
+
+            return address;
+        }
+
+    
+
+
+        public static string EnsureCashAddressWithoutPrefix (string address)
+        {
+            bool dummy1, dummy2;
+
+            try
+            {
+                BitcoinCashAddressConversion.CashAddressToLegacyAddress(address, out dummy1, out dummy2);
+
+                // If this doesn't throw, we already have a valid bitcoincash address
+                // Just strip the prefix if there is one
+
+                return EnsureNoCashAddressPrefix(address);
+            }
+            catch (Exception)
+            {
+                // This wasn't a valid cash address, so assume it's a legacy address
+            }
+
+            // Convert a legacy address to a cash address. This may throw if the address was invalid and that's
+            // exactly what we want in this case.
+
+            string cashAddress = BitcoinCashAddressConversion.LegacyAddressToCashAddress(address, out dummy1, out dummy2);
+
+            return EnsureNoCashAddressPrefix(cashAddress);
+        }
+
+        public static string EnsureCashAddressWithPrefix(string address)
+        {
+            return BitcoinCashPrefix + EnsureCashAddressWithoutPrefix(address);
+        }
+
+
+
+        private const string BitcoinCashPrefix = "bitcoincash:";
+
+
+        public static string EnsureNoCashAddressPrefix(string address)
+        {
+            if (address.ToLowerInvariant().StartsWith(BitcoinCashPrefix))
+            {
+                return address.Substring(BitcoinCashPrefix.Length);
+            }
+
+            return address;  // does not start with prefix
+        }
+
+        public static string EnsureCashAddressPrefix(string address)
+        {
+            if (!address.ToLowerInvariant().StartsWith(BitcoinCashPrefix))
+            {
+                return BitcoinCashPrefix + address;
+            }
+
+            return address;  // already has prefix
+        }
+
+
         public static void CheckColdStorageForOrganization (Organization organization)
         {
             FinancialAccount coldRoot = organization.FinancialAccounts.AssetsBitcoinCold;
@@ -545,23 +744,24 @@ namespace Swarmops.Logic.Financial
             CheckColdStorageRecurse (coldRoot, addressAccountLookup);
         }
 
-        private static void CheckColdStorageRecurse (FinancialAccount parent, Dictionary<string, int> addressAccountLookup)
+        private static void CheckColdStorageRecurse(FinancialAccount parent,
+            Dictionary<string, int> addressAccountLookup)
         {
             foreach (FinancialAccount child in parent.Children)
             {
-                CheckColdStorageRecurse (child, addressAccountLookup);
+                CheckColdStorageRecurse(child, addressAccountLookup);
             }
 
             // After recursing, get all transactions for this account and verify against our records
 
             // is the account name a valid bitcoin address on the main network?
 
-            string address = parent.BitcoinAddress;
-            if (string.IsNullOrEmpty (address))
+            string bitcoinMachineAddress = parent.BitcoinAddress;
+            if (string.IsNullOrEmpty(bitcoinMachineAddress))
             {
-                if (BitcoinUtility.IsValidBitcoinAddress (parent.Name.Trim()))
+                if (BitcoinUtility.IsValidBitcoinAddress(parent.Name.Trim()))
                 {
-                    parent.BitcoinAddress = address = parent.Name.Trim();
+                    parent.BitcoinAddress = bitcoinMachineAddress = parent.Name.Trim();
                 }
                 else
                 {
@@ -569,24 +769,176 @@ namespace Swarmops.Logic.Financial
                 }
             }
 
-            Organization organization = parent.Organization;
-            bool organizationLedgerUsesBitcoin = organization.Currency.IsBitcoinCore;
+            Currency accountCurrency = parent.Currency;
 
+            if (accountCurrency.IsBitcoinCore)
+            {
+                CheckColdStorageCore(parent, bitcoinMachineAddress, addressAccountLookup);
+            }
+            else if (accountCurrency.IsBitcoinCash)
+            {
+                CheckColdStorageCash(parent, bitcoinMachineAddress, addressAccountLookup);
+            }
+        }
+
+
+        private static void CheckColdStorageCore(FinancialAccount account, string bitcoinMachineAddress,
+            Dictionary<string, int> addressAccountLookup)
+        {
             JObject addressData = JObject.Parse(
-                        new WebClient().DownloadString("https://blockchain.info/address/" + address +
-                                                        "?format=json&api_key=" +
-                                                        SystemSettings.BlockchainSwarmopsApiKey));
-            int transactionCount = (int) (addressData["n_tx"]);
+                new WebClient().DownloadString("https://blockchain.info/address/" + bitcoinMachineAddress +
+                                               "?format=json&api_key=" +
+                                               SystemSettings.BlockchainSwarmopsApiKey));
+            //int transactionCount = (int) (addressData["n_tx"]);
+
+            List<BlockchainTransaction> transactionList = new List<BlockchainTransaction>();
 
             foreach (JObject txJson in addressData["txs"])
             {
+                BlockchainTransaction blockchainTx = BlockchainTransaction.FromBlockchainInfoJson(txJson);
+                transactionList.Add(blockchainTx);
+            }
+
+            CheckColdStorageTransactions(account, addressAccountLookup, transactionList.ToArray(), BitcoinChain.Core);
+        }
+
+
+        // This function is public only while testing, and for testing purposes
+
+        public static void CheckColdStorageCash(FinancialAccount account, string bitcoinMachineAddress, Dictionary<string, int> addressAccountLookup)
+        {
+            string bitcoinCashAddress = EnsureCashAddressWithoutPrefix(bitcoinMachineAddress);
+
+            JObject addressData = JObject.Parse(
+                        new WebClient().DownloadString("https://bch-insight.bitpay.com/api/txs/?address=" + bitcoinCashAddress));
+
+            List<BlockchainTransaction> transactionList = new List<BlockchainTransaction>();
+
+            foreach (JObject txJson in addressData["txs"])
+            {
+                BlockchainTransaction blockchainTx = BlockchainTransaction.FromInsightInfoJson(txJson);
+                transactionList.Add(blockchainTx);
+            }
+
+            CheckColdStorageTransactions(account, addressAccountLookup, transactionList.ToArray(), BitcoinChain.Cash);
+        }
+
+
+        private static void CheckColdStorageTransactions (FinancialAccount account, Dictionary<string, int> addressAccountLookup, BlockchainTransaction[] transactions, BitcoinChain chain)
+        {
+            Organization organization = account.Organization;
+            string bitcoinMachineAddress = account.BitcoinAddress;
+
+            bool accountUsesPresentationCurrency = false;
+            if (account.ForeignCurrency == null || account.ForeignCurrency.Identity == organization.Currency.Identity)
+            {
+                accountUsesPresentationCurrency = true;
+            }
+
+            DateTime forkDate = GetForkDateForChain(chain);
+
+            if (forkDate > Constants.DateTimeLowThreshold)
+            {
+                // Check if we have a priming transaction for this fork
+
+                // Find or create "Initial Balance" transaction
+
+                FinancialAccountRows testRows = account.GetRows(Constants.DateTimeLow, forkDate.AddDays(1));
+
+                FinancialTransaction initialBalancesTransaction = null;
+
+                foreach (FinancialAccountRow row in testRows)
+                {
+                    if (row.Transaction.Description == BitcoinUtility.BlockchainForkPrimingTxDescription && row.Transaction.DateTime == forkDate && row.FinancialAccountId == account.Identity)
+                    {
+                        initialBalancesTransaction = row.Transaction;
+                        break;
+                    }
+                }
+
+                if (initialBalancesTransaction == null)
+                {
+                    // Find the amount of satoshis in this account by the transactions we have
+
+                    Int64 satoshisAtFork = 0;
+                    string accountMachineAddress = account.BitcoinAddress;
+
+                    foreach (BlockchainTransaction tx in transactions)
+                    {
+                        if (tx.TransactionDateTimeUtc >= forkDate)
+                        {
+                            continue; // only count txs that are before "fork date"
+                        }
+
+                        foreach (BlockchainTransactionRow inRow in tx.Inputs)
+                        {
+                            if (inRow.Address == accountMachineAddress)
+                            {
+                                satoshisAtFork -= inRow.ValueSatoshis;
+                            }
+                        }
+
+                        foreach (BlockchainTransactionRow outRow in tx.Outputs)
+                        {
+                            if (outRow.Address == accountMachineAddress)
+                            {
+                                satoshisAtFork += outRow.ValueSatoshis;
+                            }
+                        }
+                    }
+
+                    if (satoshisAtFork > 0)
+                    {
+                        Money valueAtFork = new Money(satoshisAtFork, account.Currency, forkDate);
+                        Money valueInLedgerCurrency = valueAtFork.ToCurrency(organization.Currency);
+
+                        // Assemble a fork-priming transaction against "forex gains", if it doesn't exist already
+
+                        FinancialTransaction createdTx = FinancialTransaction.Create(organization,
+                            forkDate, BlockchainForkPrimingTxDescription);
+
+                        // Add the satoshis we found
+
+                        FinancialTransactionRow satoshisRow = createdTx.AddRow(account, valueInLedgerCurrency.Cents,
+                            /* loggingPerson*/ null);
+                        satoshisRow.AmountForeignCents = valueAtFork;
+
+                        // Match the satoshis to "Forex Gains"
+
+                        createdTx.AddRow(organization.FinancialAccounts.IncomeCurrencyFluctuations,
+                            -valueInLedgerCurrency.Cents, /* loggingPerson */ null);
+                    }
+                }
+            }
+
+            int ledgersClosedYear = organization.Parameters.FiscalBooksClosedUntilYear;
+            DateTime ledgersClosedUntil = Constants.DateTimeLow;
+
+            if (ledgersClosedYear > 0)
+            {
+                ledgersClosedUntil = new DateTime(ledgersClosedYear + 1, 1, 1);
+            }
+
+
+            foreach (BlockchainTransaction blockchainTx in transactions)
+            {
+                if (forkDate > Constants.DateTimeLowThreshold && blockchainTx.TransactionDateTimeUtc < forkDate)
+                {
+                    continue; // do not process transactions before forkdate DateTime
+                }
+
+                if (blockchainTx.TransactionDateTimeUtc < ledgersClosedUntil)
+                {
+                    continue; // do not attempt to write into closedledger space
+                }
+
                 FinancialTransaction ourTx = null;
-                Dictionary<Int64, Int64> satoshisLookup = new Dictionary<long, long>(); // map from ledgercents to satoshis
-                BlockchainTransaction blockchainTx = BlockchainTransaction.FromBlockchainInfoJson (txJson);
+                Dictionary<Int64, Int64> satoshisLookup = new Dictionary<long, long>();
+                // map from ledgercents to satoshis
 
                 try
                 {
-                    ourTx = FinancialTransaction.FromBlockchainHash (parent.Organization, blockchainTx.TransactionHash);
+                    ourTx = FinancialTransaction.FromBlockchainHash (account.Organization, blockchainTx.TransactionHash);
                     // If the transaction was fetched fine, we have already seen this transaction, but need to re-check it
 
                 }
@@ -594,7 +946,7 @@ namespace Swarmops.Logic.Financial
                 {
                     // We didn't have this transaction, so we need to create it
 
-                    ourTx = FinancialTransaction.Create (parent.Organization, blockchainTx.TransactionDateTimeUtc, "Blockchain tx");
+                    ourTx = FinancialTransaction.Create (account.Organization, blockchainTx.TransactionDateTimeUtc, "Blockchain tx");
                     ourTx.BlockchainHash = blockchainTx.TransactionHash;
 
                     // Did we lose or gain money?
@@ -621,10 +973,10 @@ namespace Swarmops.Logic.Financial
                     else
                     {
                         // this is a known blockchain row, note its ledgered value in satoshis
-                        if (!organizationLedgerUsesBitcoin)
+                        if (!accountUsesPresentationCurrency)
                         {
                             Money nativeMoney = row.AmountForeignCents;
-                            if (nativeMoney != null && nativeMoney.Currency.IsBitcoinCore) // it damn well should be, but just checking
+                            if (nativeMoney != null && !accountUsesPresentationCurrency) // it damn well should be, but just checking
                             {
                                 satoshisLookup[row.AmountCents] = row.AmountForeignCents.Cents;
                             }
@@ -638,18 +990,20 @@ namespace Swarmops.Logic.Financial
 
                 foreach (BlockchainTransactionRow inputRow in blockchainTx.Inputs)
                 {
-                    if (addressAccountLookup.ContainsKey (inputRow.Address))
+                    string lookupKey = chain + "-" + inputRow.Address;
+
+                    if (addressAccountLookup.ContainsKey (lookupKey))
                     {
                         // this input is ours
 
-                        int financialAccountId = addressAccountLookup[inputRow.Address];
+                        int financialAccountId = addressAccountLookup[lookupKey];
 
                         if (!transactionReconstructedRows.ContainsKey (financialAccountId))
                         {
                             transactionReconstructedRows[financialAccountId] = 0; // initialize
                         }
 
-                        if (organizationLedgerUsesBitcoin)
+                        if (accountUsesPresentationCurrency)
                         {
                             transactionReconstructedRows[financialAccountId] +=
                                 -inputRow.ValueSatoshis; // note the negation!
@@ -670,18 +1024,20 @@ namespace Swarmops.Logic.Financial
 
                 foreach (BlockchainTransactionRow outputRow in blockchainTx.Outputs)
                 {
-                    if (addressAccountLookup.ContainsKey(outputRow.Address))
+                    string lookupKey = chain + "-" + outputRow.Address;
+
+                    if (addressAccountLookup.ContainsKey(lookupKey))
                     {
                         // this output is ours
 
-                        int financialAccountId = addressAccountLookup[outputRow.Address];
+                        int financialAccountId = addressAccountLookup[lookupKey];
 
                         if (!transactionReconstructedRows.ContainsKey (financialAccountId))
                         {
                             transactionReconstructedRows[financialAccountId] = 0; // initialize
                         }
 
-                        if (organizationLedgerUsesBitcoin)
+                        if (accountUsesPresentationCurrency)
                         {
                             transactionReconstructedRows[financialAccountId] +=
                                 outputRow.ValueSatoshis;
@@ -700,11 +1056,11 @@ namespace Swarmops.Logic.Financial
 
                 // -- fees
 
-                if (addressAccountLookup.ContainsKey (blockchainTx.Inputs[0].Address))
+                if (addressAccountLookup.ContainsKey (chain + "-" + blockchainTx.Inputs[0].Address))
                 {
                     // if the first input is ours, we're paying the fee (is there any case where this is not true?)
 
-                    if (organizationLedgerUsesBitcoin)
+                    if (accountUsesPresentationCurrency)
                     {
                         transactionReconstructedRows[organization.FinancialAccounts.CostsBitcoinFees.Identity] =
                             blockchainTx.FeeSatoshis;
@@ -726,7 +1082,7 @@ namespace Swarmops.Logic.Financial
 
                 // Finally, add foreign cents, if any
 
-                if (!organizationLedgerUsesBitcoin)
+                if (!accountUsesPresentationCurrency)
                 {
                     foreach (FinancialTransactionRow row in ourTx.Rows)
                     {
@@ -761,6 +1117,21 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        private static DateTime GetForkDateForChain(BitcoinChain chain)
+        {
+            switch (chain)
+            {
+                case BitcoinChain.Cash:
+                    return new DateTime(2017,12,30); // set the first cold-storage tx to be on this date
+                default:
+                    return Constants.DateTimeLow;
+            }
+        }
+
+
+        private const string BlockchainForkPrimingTxDescription = "Blockchain Fork";  // TODO: Localize?
+
+
         private static Dictionary<string, int> GetAddressAccountLookup (Organization organization)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
@@ -774,7 +1145,7 @@ namespace Swarmops.Logic.Financial
             HotBitcoinAddresses hotAddresses = HotBitcoinAddresses.ForOrganization (organization);
             foreach (HotBitcoinAddress hotAddress in hotAddresses)
             {
-                result[hotAddress.Address] = organization.FinancialAccounts.AssetsBitcoinHot.Identity;
+                result[hotAddress.Chain + "-" + hotAddress.ProtocolLevelAddress] = organization.FinancialAccounts.AssetsBitcoinHot.Identity;
             }
 
             return result;
@@ -794,7 +1165,25 @@ namespace Swarmops.Logic.Financial
 
             if (!string.IsNullOrEmpty(account.BitcoinAddress) || IsValidBitcoinAddress (account.Name)) // TODO: Add a special property for the address instead of using name
             {
-                result [account.Name] = account.Identity;
+                if (string.IsNullOrEmpty(account.BitcoinAddress))
+                {
+                    throw new InvalidOperationException("The account bitcoin address is not set");
+                }
+
+                Currency accountCurrency = account.Organization.Currency;
+                if (account.ForeignCurrency != null)
+                {
+                    accountCurrency = account.ForeignCurrency;
+                }
+
+                if (!accountCurrency.IsBitcoinCash && !accountCurrency.IsBitcoinCore) // Safeguard 2018-Jun
+                {
+                    throw new InvalidOperationException("Unknown account currency -- Core is probably just not set");
+                }
+
+                BitcoinChain accountChain = GetChainFromCurrency(accountCurrency);
+
+                result [accountChain.ToString() + "-" + account.BitcoinAddress] = account.Identity;
             }
         }
 
@@ -804,7 +1193,7 @@ namespace Swarmops.Logic.Financial
         public const int BitcoinAccountsReceivableIndex = 4;
         public const int BitcoinEchoTestIndex = 127;
 
-        public const int EchoFeeSatoshis = 200; // translates to just over 1000 sats / kilobyte: tx has one input, one output
+        public const int EchoFeeSatoshis = 200; // translates to just over 100 sats / kilobyte: tx has one input, one output
 
         public const string BitcoinTestAddress = "1JMpU3D6c5sruunMwzkt6p6PQzLcUYcL26";
 
@@ -813,10 +1202,15 @@ namespace Swarmops.Logic.Financial
         {
             try
             {
+                #pragma warning disable 219
+                // ReSharper disable once UnusedVariable
+
                 BitcoinAddress singleAddress = new BitcoinPubKeyAddress (address, Network.Main);
                 return true;
+
             }
-                // ReSharper disable once EmptyGeneralCatchClause
+
+            // ReSharper disable once EmptyGeneralCatchClause
             catch (Exception)
             {
                 // ignore for now; move on to next possible case
@@ -824,10 +1218,14 @@ namespace Swarmops.Logic.Financial
 
             try
             {
+                // ReSharper disable once UnusedVariable
+
                 BitcoinScriptAddress multiSigAddress = new BitcoinScriptAddress (address, Network.Main);
                 return true;
+                #pragma warning restore 219
             }
-                // ReSharper disable once EmptyGeneralCatchClause
+
+            // ReSharper disable once EmptyGeneralCatchClause
             catch (Exception)
             {
             }
@@ -859,9 +1257,12 @@ namespace Swarmops.Logic.Financial
                     // But Core has way way WAAAAAAY higher fees
 
                     JObject feeData = JObject.Parse(
-                                new WebClient().DownloadString("https://blockexplorer.com/api/utils/estimatefee?nbBlocks=" + blocksWait.ToString(CultureInfo.InvariantCulture)));
-                    double feeWholeCoins = Double.Parse((string)feeData[blocksWait.ToString(CultureInfo.InvariantCulture)], NumberStyles.AllowDecimalPoint);
-                    satoshisPerThousandBytes = (Int64)(feeWholeCoins * _satoshisPerBitcoin);
+                                new WebClient().DownloadString("https://bitcoinlegacy.blockexplorer.com/api/utils/estimatefee?nbBlocks=" + blocksWait.ToString(CultureInfo.InvariantCulture)));
+                    double feeWholeCoins = Double.Parse((string)feeData[blocksWait.ToString(CultureInfo.InvariantCulture)], NumberStyles.AllowDecimalPoint);  // rounding errors are okay, don't use Formatting fn
+
+                    // TODO: I saw this function return -1 once, just once. Will need to catch that.
+
+                    satoshisPerThousandBytes = Convert.ToInt64(feeWholeCoins * _satoshisPerBitcoin);
                 }
 
                 _lastFeeSatoshisLookup[chain] = satoshisPerThousandBytes;
@@ -891,7 +1292,7 @@ namespace Swarmops.Logic.Financial
 
         private const Int64 _satoshisPerBitcoin = 100 * 1000 * 1000; // written this way to improve readability - important constants
 
-
+        
 
         public static Currency GetCurrencyFromChain(BitcoinChain chain)
         {
@@ -906,6 +1307,22 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+
+        public static BitcoinChain GetChainFromCurrency(Currency currency)
+        {
+            if (currency.IsBitcoinCash)
+            {
+                return BitcoinChain.Cash;
+            }
+
+            if (currency.IsBitcoinCore)
+            {
+                return BitcoinChain.Core;
+            }
+
+            throw new ArgumentException("Unsupported or unrecognized bitcoin chain");
+        }
+
         public static Int64 SatoshisPerBitcoin
         {
             get { return _satoshisPerBitcoin; }
@@ -917,7 +1334,7 @@ namespace Swarmops.Logic.Financial
 
             // disable "code unreachable" warning for this code
             // ReSharper disable once CSharpWarnings::CS0162
-            #pragma warning disable 162
+            #pragma warning disable 162,219
             Organization organization = Organization.Sandbox; // a few testing cents here in test environment
 
             string bitcoinTestAddress = "3KS6AuQbZARSvqnaHoHfL1Xhm3bTLFAzoK";
@@ -925,13 +1342,13 @@ namespace Swarmops.Logic.Financial
             // Make a small test payment to a multisig address
 
             TransactionBuilder txBuilder = null; // TODO TODO TODO TODO  new TransactionBuilder();
-            Int64 satoshis = new Money(100, Currency.FromCode ("SEK")).ToCurrency (Currency.BitcoinCore).Cents;
+            Int64 satoshis = new Money(100, Currency.FromCode ("SEK")).ToCurrency (Currency.BitcoinCash).Cents;
             BitcoinTransactionInputs inputs = null;
             Int64 satoshisMaximumAnticipatedFees = BitcoinUtility.GetRecommendedFeePerThousandBytesSatoshis(BitcoinChain.Cash) * 20; // assume max 20k transaction size
 
             try
             {
-                inputs = BitcoinUtility.GetInputsForAmount(organization, satoshis + satoshisMaximumAnticipatedFees);
+                inputs = BitcoinUtility.GetInputsForAmount(organization, BitcoinChain.Cash, satoshis + satoshisMaximumAnticipatedFees);
             }
             catch (NotEnoughFundsException)
             {
@@ -947,8 +1364,8 @@ namespace Swarmops.Logic.Financial
             // Add outputs and prepare notifications
 
             Int64 satoshisUsed = 0;
-            Dictionary<int, List<string>> notificationSpecLookup = new Dictionary<int, List<string>>();
-            Dictionary<int, List<Int64>> notificationAmountLookup = new Dictionary<int, List<Int64>>();
+            //Dictionary<int, List<string>> notificationSpecLookup = new Dictionary<int, List<string>>();
+            //Dictionary<int, List<Int64>> notificationAmountLookup = new Dictionary<int, List<Int64>>();
             Payout masterPayoutPrototype = Payout.Empty;
             HotBitcoinAddress changeAddress = HotBitcoinAddress.OrganizationWalletZero(organization, BitcoinChain.Core);
 
@@ -972,7 +1389,7 @@ namespace Swarmops.Logic.Financial
 
             // Set change address to wallet slush
 
-            txBuilder.SetChange(new BitcoinPubKeyAddress(changeAddress.Address));
+            txBuilder.SetChange(new BitcoinPubKeyAddress(changeAddress.ProtocolLevelAddress));
 
             // Add fee
 
@@ -1025,8 +1442,8 @@ namespace Swarmops.Logic.Financial
                         + /* the change address seems to always get index 0? is this a safe assumption? */ 0, satoshisInput - satoshisUsed, /* confirmation count*/ 0);
             }
 
-            // Restore "code unreachable" warnings
-            #pragma warning restore 162
+            // Restore "code unreachable", "unsued var" warnings
+            #pragma warning restore 162,219
 
             // This puts the ledger out of sync, so only do this on Sandbox for various small-change (cents) testing
         }

@@ -135,6 +135,9 @@
     <value>This is the default level, and means you'll take normal part in the organization as a grassroots {0}.</value>
     <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
   </data>
+  <data name="Signup_ActivationPassiveApplication" xml:space="preserve">
+    <value>This is the default level, which means you can engage as much as you want (or not) as {0} while awaiting your {1}.</value>
+  </data>
   <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
     <value>Regular {0}</value>
     <comment>{0} is the Regular Participant label for the org.</comment>
@@ -145,10 +148,25 @@
   <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
     <value>Officer Volunteer</value>
   </data>
+  <data name="Signup_ApplicationApproval" xml:space="preserve">
+    <value>You are submitting an Application for a {0} with {1}. There are no fees related to submitting the Application as such.</value>
+  </data>
+  <data name="Signup_ApplyingFor" xml:space="preserve">
+    <value>Applying for a {0} in {1}</value>
+  </data>
   <data name="Signup_DashboardMessage" xml:space="preserve">
     <value>Welcome! This is the &lt;em&gt;Dashboard,&lt;/em&gt; where you can access internal functionality of {0}. You will get more information in mail shortly.&lt;br/&gt;&lt;br/&gt;
 
 If you volunteered for taking formal responsibility, somebody (probably also a volunteer, like yourself) will contact you to discuss more about the opportunities available.</value>
+  </data>
+  <data name="Signup_DefaultFirstPageText" xml:space="preserve">
+    <value>This is the organization's custom welcome text. It has not yet been written; it is set in Admin / Org Settings.</value>
+  </data>
+  <data name="Signup_DefaultLastPageText" xml:space="preserve">
+    <value>This is the organization-specific text shown for Signup Finalization. It is set in Admin / Org Settings. When the new person presses Finish, they will be entered into the organization, logged on, and sent to the Dashboard as a Beginner user.</value>
+  </data>
+  <data name="Signup_DefaultSidebarText" xml:space="preserve">
+    <value>This is the organization's short sidebar info. It is set in Administration / Org Settings.</value>
   </data>
   <data name="Signup_Error_MailExists" xml:space="preserve">
     <value>You have already signed up to this Swarmops server. Please use the Reset Password function from the login screen instead of creating a new account.</value>
@@ -241,6 +259,9 @@ If you volunteered for taking formal responsibility, somebody (probably also a v
   </data>
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Complete signup.</value>
+  </data>
+  <data name="Signup_Unsupported" xml:space="preserve">
+    <value>Swarmops has not yet implemented support for this fee structure.</value>
   </data>
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>What position are you interested in?</value>

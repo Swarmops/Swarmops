@@ -70,6 +70,12 @@ namespace Swarmops.Logic.Financial
                 includeClosed ? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
 
+        public static Salaries ForPersonAndOrganization(Person person, Organization organization, bool includeClosed)
+        {
+            return FromArray(SwarmDb.GetDatabaseForReading().GetSalaries(person, organization,
+                includeClosed ? DatabaseCondition.None : DatabaseCondition.OpenTrue));
+        }
+
         public static void CreateAnnualStatements (int year)
         {
             // This function is supposed to be running once a year, and summarize the past year of salaries.

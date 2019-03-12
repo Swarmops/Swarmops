@@ -18,6 +18,7 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Support.SocketMessages;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 using ErrorEventArgs = WebSocketSharp.ErrorEventArgs;
@@ -289,9 +290,10 @@ namespace Swarmops.Frontend.Socket
                 Console.WriteLine(" - Backend message: " + args.Data);
             }
 
-            if (messageType == "InternalHeartbeat")
+            if (messageType == "BackendHeartbeat")
             {
                 _lastBackendHeartBeat = DateTime.UtcNow;
+                _socketServer.WebSocketServices.Broadcast(args.Data); // send unfiltered to all sessions, for now
             }
             else
             {

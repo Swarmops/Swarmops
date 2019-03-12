@@ -57,12 +57,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbColumnAwareBase.cs" />
     <Compile Include="Types\Common\BlockchainHash.cs" />
+    <Compile Include="Types\Financial\BasicExpenseClaimGroup.cs" />
+    <Compile Include="Types\Financial\BasicFinancialAccountDocument.cs" />
     <Compile Include="Types\Financial\BasicHotBitcoinAddress.cs" />
     <Compile Include="Types\Financial\BasicHotBitcoinAddressUnspent.cs" />
+    <Compile Include="Types\Financial\BasicPaymentTarget.cs" />
     <Compile Include="Types\Financial\BasicVatReport.cs" />
     <Compile Include="Types\Financial\BasicVatReportItem.cs" />
     <Compile Include="Types\Governance\BasicBallot.cs" />
+    <Compile Include="Types\Swarm\BasicApplicant.cs" />
     <Compile Include="Types\Swarm\BasicPosition.cs" />
     <Compile Include="Types\Swarm\BasicPositionAssignment.cs" />
     <Compile Include="Types\Swarm\BasicVolunteerPosition.cs" />

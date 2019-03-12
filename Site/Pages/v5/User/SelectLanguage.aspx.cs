@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.User
 {
@@ -31,38 +33,47 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         private void PopulateRepeater()
         {
-            string[] availableCultures = {"ar-AE", "de-DE", "nl-NL", "pt-PT", "ru-RU", "sv-SE" };
+            string[] availableCultures = Formatting.SupportedCultures;
 
-            Array.Sort (availableCultures);
-            // sort by locale string, and that's ok, that happens to give the same result as sorting on country name
+            Dictionary<string, string> specialNameLookup = new Dictionary<string, string>();
+            Dictionary<string, bool> suppressLookup = new Dictionary<string, bool>();
+
+            specialNameLookup["sr-Cyrl-RS"] = "Српски (ћирилица)";
+            specialNameLookup["sr-Latn-RS"] = "Srpski (latinica)";
+            specialNameLookup["es-VE"] = "Español (Venezuela)";
+
+            suppressLookup["en-US"] = true;
+            suppressLookup["zh-CN"] = true;
+            // suppressLookup["ar-SA"] = true;
 
             List<LanguageParameters> availableLanguages = new List<LanguageParameters>();
             foreach (string cultureId in availableCultures)
             {
+                if (suppressLookup.ContainsKey(cultureId))
+                {
+                    continue;
+                }
+
                 LanguageParameters newLanguage = new LanguageParameters();
                 newLanguage.CultureId = cultureId;
                 CultureInfo culture = CultureInfo.CreateSpecificCulture (cultureId);
-                newLanguage.DisplayName = culture.NativeName;
-                newLanguage.DisplayName = Char.ToUpperInvariant (newLanguage.DisplayName[0]) +
-                                          newLanguage.DisplayName.Substring (1); // Capitalize
 
-                // Do not display country, just the language name
-                newLanguage.DisplayName = newLanguage.DisplayName.Split (' ')[0];
-
-                if (cultureId.StartsWith("en"))
+                if (specialNameLookup.ContainsKey(cultureId))
                 {
-                    newLanguage.IconUrl = "/Images/Flags/uk-64px.png";
-                    // use "uk" for en-GB and en-US rather than "gb" or "us"
-                }
-                else if (cultureId.StartsWith ("ar"))
-                {
-                    newLanguage.IconUrl = "/Images/Flags/Arabic-64px.png";
-                    // crowdin's generic culture is ar-SA but Arabic is not country specific
+                    newLanguage.DisplayName = specialNameLookup[cultureId];
                 }
                 else
                 {
-                    newLanguage.IconUrl = "/Images/Flags/" + cultureId.Substring(3, 2).ToLowerInvariant() + "-64px.png";
+                    newLanguage.DisplayName = culture.NativeName;
+                    newLanguage.DisplayName = Char.ToUpperInvariant(newLanguage.DisplayName[0]) +
+                                              newLanguage.DisplayName.Substring(1); // Capitalize
+
+                    // Do not display country, just the language name
+                    newLanguage.DisplayName = newLanguage.DisplayName.Substring(0, newLanguage.DisplayName.IndexOf(" (")).Trim();
                 }
+
+                newLanguage.IconUrl = SupportFunctions.FlagFileFromCultureId(cultureId);
+
                 if (culture.TextInfo.IsRightToLeft)
                 {
                     newLanguage.Rtl = "rtl";

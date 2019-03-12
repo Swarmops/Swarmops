@@ -33,6 +33,29 @@ html, body, input, select
 }
 
 
+/* WEIGHTS */
+
+.weight-normal, .light {
+    font-weight: 300;
+}
+
+.weight-emphasis {
+    font-weight: 400;
+}
+
+.weight-more-emphasis, .medium {
+    font-weight: 500;
+}
+
+.weight-most-emphasis, .bold, .strong {
+    font-weight: 700;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+
 /* BASE */
 
 body
@@ -53,6 +76,11 @@ strong
 	font-weight: 700;  /* bugfix for Chrome */
 }
 
+* 
+{
+    -webkit-font-smoothing: antialiased; /* also bugfix for Chrome */
+}
+
 
 /* CURSOR POINTER ON ALL A ELEMENTS, EVEN THOSE THAT JS-TRIGGER ACTION */
 
@@ -63,7 +91,7 @@ a
 
 
 /* RTL */
-body.rtl {
+body.right-to-left {
     direction: rtl;
 }
 
@@ -99,7 +127,7 @@ div.break
 	width: 400px;
 }
 
-body.rtl .logoimage
+body.right-to-left .logoimage
 {
 	float: right;
 }
@@ -134,7 +162,7 @@ div.currentuserinfo
 	font-size:14px;
 }
 
-body.rtl div.currentuserinfo {
+body.right-to-left div.currentuserinfo {
     float: left;
 }
 
@@ -164,7 +192,7 @@ img
 }
 
 
-.topSearchBox
+.top-search-box
 {
 	float:right;
 	position:relative;
@@ -172,12 +200,12 @@ img
 	left:-5px;
 }
 
-body.rtl .topSearchBox {
+body.right-to-left .top-search-box {
     float: left;
     left: 5px;
 }
 
-.topSearchBox input
+.top-search-box input
 {
 	width:150px;
 	-moz-border-radius: 2em;
@@ -195,18 +223,18 @@ body.rtl .topSearchBox {
     font-size: 18px;
 }
 
-body.rtl .topSearchBox input {
+body.right-to-left .top-search-box input {
     padding-left: inherit;
     padding-right: 30px;
     background-position-x: right;
 }
 
 
-body:not(.rtl) #MainMenuContainer {
+body:not(.right-to-left) #MainMenuContainer {
     margin-left: -75px !important;
 }
 
-body.rtl #MainMenuContainer {
+body.right-to-left #MainMenuContainer {
     margin-right: -75px !important;
 }
 
@@ -219,18 +247,18 @@ body.rtl #MainMenuContainer {
     padding: 0 !important; /* overrides superfish padding of ".sfmenu a" class */
 }
 
-body:not(.rtl) #MainMenuContainer #LiSwarmopsLogo {
+body:not(.right-to-left) #MainMenuContainer #LiSwarmopsLogo {
     margin-right: 20px;
 }
 
-body.rtl #MainMenuContainer #LiSwarmopsLogo {
+body.right-to-left #MainMenuContainer #LiSwarmopsLogo {
     margin-left: 20px;
 }
 
 #DivSwarmopsLogo {
     width: 60px;
     height: 34px;
-    background-image: url('/Images/logo-banner-dual-16x9.png');
+    background-image: url('/Images/swarmops-logo-head-dual-16x9.png');
     background-size: 60px 68px;
 }
 
@@ -253,12 +281,12 @@ li#LiSwarmopsLogo a.sf-with-ul {
 	font-weight: normal;
 }
 
-body.rtl #ctl00_MainMenu {
+body.right-to-left #ctl00_MainMenu {
 	left: inherit;
     right: 0px;
 }
 
-body.rtl span.buildId {
+body.right-to-left span.buildId {
     direction: ltr; /* parentheses freak out unless specified LTR */
 }
 
@@ -284,6 +312,13 @@ div#DivMasterFlag:hover {
     background-size: 28px;
 }
 
+/* CONDITIONAL ELEMENTS */
+/* these are shown in doc.ready() as appropriate */
+
+.ifVatEnabled {
+    display: none;
+}
+
 /* DASHBOARD THINGS */
 
 .odometer {
@@ -303,16 +338,10 @@ div#DivMasterFlag:hover {
     padding-left: 4px;
 }
 
-body.rtl .odometer-label {
+body.right-to-left .odometer-label {
     padding-left: 0;
     padding-right: 4px;
 }
-
-
-.odometer.odometer-auto-theme:not(.nocents) .odometer-digit:last-child, .odometer.odometer-auto-theme:not(.nocents) .odometer-digit:nth-last-child(1), .odometer.odometer-theme-car:not(.nocents) .odometer-digit:last-child, .odometer.odometer-theme-car:not(.nocents) .odometer-digit:nth-last-child(1) {
-    display: none;  /* redundant workaround for cent rounding - moved here to escape caching of styles; main file has a cache buster and others don't */
-}
-
 
 
 /* BARS AND BOXEN */
@@ -323,7 +352,7 @@ body.rtl .odometer-label {
 	width: 700px;
 }
 
-body.rtl .mainbar {
+body.right-to-left .mainbar {
     float: right;
 }
 
@@ -334,7 +363,7 @@ body.rtl .mainbar {
 	margin-left: 20px;
 }
 
-body.rtl .sidebar {
+body.right-to-left .sidebar {
     float: left;
     margin-left: inherit;
     margin-right: 20px;
@@ -397,7 +426,7 @@ body.rtl .sidebar {
 	width:500px;
 }
 
-.content h2
+.content h2, .tab h2
 {
 	font-family: Ubuntu, Arial, Sans-Serif;
 	color: #FFBC37;
@@ -411,7 +440,7 @@ body.rtl .sidebar {
 	margin-bottom: 7px;
 }
 
-.content > h2 > select, .content > h2 > span > span.combo > input.textbox-text, .content > h2 > input, .content > h2 > span.elementFloatFar > input {
+.content > h2 > select, .tab > h2 > select, .content > h2 > span > span.combo > input.textbox-text, .tab > h2 > span > span.combo > input.textbox-text, .content > h2 > input, .tab > h2 > input, .content > h2 > span.float-far > input, .tab > h2 > span.float-far > input {
 	font-size: 16px;
     font-weight: bold;
     color: #1C397E;
@@ -420,24 +449,24 @@ body.rtl .sidebar {
 }
 
 
-.content > h2 > span > span.combo {
+.content > h2 > span > span.combo, .tab > h2 > span > span.combo {
     height: 20px !important;
 }
 
-.content > h2 > span > span.combo > input.textbox-text {
+.content > h2 > span > span.combo > input.textbox-text, .tab > h2 > span > span.combo > input.textbox-text {
     height: 20px !important;
     line-height: 20px !important;
 }
 
 
-.entryFields div.stacked-input-control {
+.data-entry-fields div.stacked-input-control {
     height: 40px;
     width: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
-.entryFieldsAdmin div.stacked-input-control {
+.data-entry-fields-admin div.stacked-input-control {
     height: 30px;
     width: 100%;
     overflow-y: hidden;
@@ -505,7 +534,7 @@ body.rtl .sidebar {
     z-index: 9103;
 }
 
-body.rtl .modalIconClose, body.rtl #fancybox-close {
+body.right-to-left .modalIconClose, body.right-to-left #fancybox-close {
     right: initial !important;
     left: -15px !important;
 }
@@ -517,24 +546,24 @@ body.rtl .modalIconClose, body.rtl #fancybox-close {
 }
 
 
-body.rtl .divIconCloseModal {
+body.right-to-left .divIconCloseModal {
     float:left;
 }
 
 
-.elementFloatNear {
+.float-near {
     float: left;
 }
 
-.elementFloatFar {
+.float-far {
     float: right;
 }
 
-body.rtl .elementFloatNear {
+body.right-to-left .float-near {
     float: right;
 }
 
-body.rtl .elementFloatFar {
+body.right-to-left .float-far {
     float: left;
 }
 
@@ -556,71 +585,17 @@ div.login-page-logo {
     margin-bottom: 30px;
 }
 
-div.loginbox
-{
-	-webkit-box-shadow: 0 1px 3px #1C397E;
-	-moz-box-shadow: 0 1px 3px #1C397E;
-	box-shadow: 0 1px 3px #1C397E;
-	
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	
-	border: solid 1px #A2BEFF;
-	border-top-left-radius: 10px 10px;
-	border-top-right-radius: 10px 10px;
-	border-bottom-right-radius: 10px 10px;
-	border-bottom-left-radius: 10px 10px;
-	
-	margin-top: 0px;	
-	background-color: #E4ECFF;
-}
 
-
-input.InputManualCredentials {
+input.input-manual-credentials {
     border: solid 1px #A2BEFF;
     padding: 2px;
 }
 
-span.loginalphabetasign
-{
-	font-size: 24px;
-	text-transform: none;
-	font-family: Georgia, Times New Roman, Serif;
-	font-weight: bold;
-	font-style:italic;
-	color: #C78B15;
-	text-shadow: #7F5500 0px -1px 0px, #7F5500 0px 1px 0px, #7F5500 -1px 0px 0px, #7F5500 1px 0px 0px, #C78B15 1px 1px 3px, #C78B15 1px 1px 3px;
-	position:relative;
-	top:4px;
-	left:-4px;
-}
+
+/* EXECUTE BUTTON */
 
 
-.loginbox .box
-{
-	margin-top: 12px;
-	margin-bottom: 12px;
-}
-
-.loginbox h1
-{
-	margin-left: 80px;
-	margin-top: 10px;
-	font-size: 40px;
-}
-
-.loginbox #ButtonLogin
-{
-	background-image: url('/Security/Images/iconshock-foreign-key-16px-offset.png');
-}
-
-.loginbox #ButtonLogin:hover
-{
-	background-image: url('/Security/Images/iconshock-foreign-key-16px-hot-offset.png');
-}
-
-.buttonAccentColor {
+.button-accent-color {
 	display:block;
 	float:right;
 	margin:15px 3px 8px 3px;
@@ -645,94 +620,81 @@ span.loginalphabetasign
 	cursor: pointer;
 }
 
-body.rtl .buttonAccentColor {
+body.right-to-left .button-accent-color {
 	float:left;
     left: inherit;
     right: -1px;
 }
 
-.buttonAccentColor:hover, .buttonAccentColor:active {
+.button-accent-color:hover, .button-accent-color:active {
 	text-shadow: #FFF4E4 0px 0px 5px, #FFF4E4 0px 0px 5px, #FFF4E4 0px 0px 5px;
 
 }
 
 
-.buttonAccentColor:hover, .buttonAccentColor:focus {
-	top: -2px;
-	left: -2px;
+.button-accent-color:hover, .button-accent-color:focus {
+	top: -1px;
+	left: -1px;
 	box-shadow: 2px 2px 4px #7F5500;
 	background: #FFC34D;
 	background: linear-gradient(#FFD580, #FFC34D);
 }
 
-body.rtl .buttonAccentColor:hover, 
-body.rtl .buttonAccentColor:focus {
+body.right-to-left .button-accent-color:hover, 
+body.right-to-left .button-accent-color:focus {
     left: inherit;
     right: -2px;
 }
 
 
-.buttonAccentColor:active {
+.button-accent-color:active {
 	top: 0px;
 	left: 0px;
 	box-shadow: 0px 0px 4px #7F5500;
 }
 
 
-.button-orange
-{
-	-webkit-box-shadow: 0 1px 3px #C78B15;
-	-moz-box-shadow: 0 1px 3px #C78B15;
-	box-shadow: 0 1px 3px #C78B15;
-	
-	background-position: left;
-	background-repeat: no-repeat;
-	background-color: Transparent;
-	
-	font-weight: bold;
-	text-shadow: #FFBC37 0px 1px 3px, #FFBC37 0px 1px 3px;
-	
-	padding: 2px 4px 2px 20px;
-	border: solid 1px #C78B15;
-	border-radius: 4px;
-	-moz-border-radius: 4px;
+.button-accent-color.button-red {
+	background: #EA6311;
+	border: 1px solid #EA6311;
+	box-shadow: 1px 1px 4px #7F2800;
+	background: linear-gradient(#FF9245, #F08E22);
+	text-shadow: #FFEDC8 0px 0px 3px, #FFEDC8 0px 0px 3px;
+	border-color: #C74815;
 }
 
-body.rtl .button-orange {
-    padding: 2px 20px 2px 4px;
-    background-position: right;
+.button-accent-color.button-red:hover, .button-accent-color.button-red:focus {
+	box-shadow: 2px 2px 4px #7F5500;
+	background: #FF614D;
+	background: linear-gradient(#FF7280, #FF614D);
 }
 
-.button-orange:hover
-{
-	text-shadow: #FFEDC8 0px 1px 3px, #FFBC37 0px 1px 3px;
+.action-icon-button {
+    height: 72px !important;
+    width: 128px !important;
+    font-size: 16px !important;
+    padding-top: 48px;
 }
 
-.button-orange-encaps
-{
-	border-radius: 4px;
-	-moz-border-radius:4px;
-	background: #FFD580;
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffd98c), to(#f0c265));
-	background: -moz-linear-gradient(top,  #ffd98c,  #f0c265);
-	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd98c', endColorstr='#f0c265');
+
+.action-icon-button.icon-yes {
+    background: url(/Images/Icons/iconshock-balloon-yes-128x96px.png) no-repeat, linear-gradient(#FFC144, #F0AB1F);
+    background-position: top center;
+    background-size: 80px auto, cover;
 }
 
-.button-orange-encaps:hover {
-	background: #FFBC37;
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffc145), to(#edaa26));
-	background: -moz-linear-gradient(top,  #ffc145,  #edaa26);
-	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc145', endColorstr='#edaa26');
+.action-icon-button.icon-yes:hover {
+	box-shadow: 2px 2px 4px #7F5500;
+	background: url(/Images/Icons/iconshock-balloon-yes-128x96px.png) no-repeat, linear-gradient(#FFD580, #FFC34D);
+    background-position: top center;
+    background-size: 80px auto, cover;
 }
 
-.button-orange-encaps:active {
-	background: #C78B15;
-	background: -webkit-gradient(linear, left top, left bottom, from(#d1941d), to(#b37909));
-	background: -moz-linear-gradient(top,  #d1941d,  #b37909);
-	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1941d', endColorstr='#b37909');
-}
 
-/* ENTRY FIELDS */
+
+
+
+/* ENTRY FIELDS AND ACTION UX */
 
 
 
@@ -742,7 +704,7 @@ input[type="text"], input[type="password"], select {  /* this makes dropdowns an
             box-sizing: content-box;
 }
 
-.entryFields
+.data-entry-fields
 {
 	background: #A2BEFF;
 	background: linear-gradient(#B0C8FF, #86A6F0);
@@ -761,78 +723,111 @@ input[type="text"], input[type="password"], select {  /* this makes dropdowns an
 	box-shadow: 0 1px 3px 1px #1C397E;
 }
 
-div.modal .entryFields {
-    margin-right: 3px;
-    margin-bottom: 10px;
+.data-entry-fields.modal.wide {
+    width: 530px;
 }
 
-body.rtl .entryFields {
+
+div.modal .data-entry-fields {
+    margin-right: 3px;
+    margin-bottom: 10px;
+    margin-top: 0px !important;
+}
+
+body.right-to-left .data-entry-fields {
     float: left;
     padding-left: 8px;
     padding-right: 10px;
 }
 
-body.rtl div.modal .entryFields {
+body.right-to-left div.modal .data-entry-fields {
     margin-right: inherit;
     margin-left: 3px;
 }
 
 
 
-.entryFields input:not(.buttonAccentColor), .entryFields textarea, .entryFields select 
+.data-entry-fields input:not(.button-accent-color), .data-entry-fields textarea, .data-entry-fields select 
 {
     /* "important" here overrides the easyUI native styling */
 
 	border-radius: 10px !important;
-	padding: 0px 10px 0px 10px !important;
-	font-size: 24px !important;
+	padding: 0px 10px 0px 10px;
+	font-size: 24px;
 	margin-bottom: 3px !important;
 }
 
-.entryFields input:not(.buttonAccentColor), .entryFields textarea
+.data-entry-fields span.textbox.combo input[type=text]:not(.ocr-font) {
+    /* "important" here overrides the easyUI native styling */
+    /* the selector above is intended to apply only to easyUI combo boxes */
+
+	padding: 0px 10px 0px 10px !important;
+}
+
+
+.data-entry-fields input:not(.button-accent-color), .data-entry-fields textarea
 {
 	width: 300px;
 }
 
-.entryFields select {
+.data-entry-fields input:not(.button-accent-color), .data-entry-fields textarea
+{
+	width: 300px;
+}
+
+.data-entry-fields select {
 	width: 330px;
 	background: white;
 }
 
-.entryFields input:not(.NoInputFocus):focus, .entryFields textarea:focus, .entryFields select:focus 
+.data-entry-fields.modal.wide input:not(.button-accent-color), .data-entry-fields.modal.wide textarea
+{
+	width: 500px;
+}
+
+.data-entry-fields.modal.wide select {
+	width: 530px;
+}
+
+.data-entry-fields input:not(.NoInputFocus):not(.suppress-input-focus):focus, .data-entry-fields textarea:focus, .data-entry-fields select:focus 
 {
 	background: #F0F6FF;
 	box-shadow: 0px 0px 4px 2px #1C397E inset;
 }
 
-.entryFields > input[type=button] {
+.data-entry-fields > input[type=button]:not(.button-half-width):not(.action-icon-button) {
     width: 324px;
 }
 
-.entryFields span.toggleLabel {
+
+.data-entry-fields > input[type=button].button-half-width {
+    width: 152px;
+}
+
+.data-entry-fields span.toggleLabel {
     position: relative;
     top: -3px;
 }
 
-.entryFields .stacked-text, .entryFields .stacked-input-control .stacked-text {
+.data-entry-fields .stacked-text, .data-entry-fields .stacked-input-control .stacked-text {
     position: relative;
     top: -6px;
 }
 
-.entryFieldsAdmin .stacked-text, .entryFieldsAdmin .stacked-input-control .stacked-text {
+.data-entry-fields-admin .stacked-text, .data-entry-fields-admin .stacked-input-control .stacked-text {
     position: relative;
     top: -1px;
 }
 
-body:not(.rtl) .entryFields .small-margin-right {
+body:not(.right-to-left) .data-entry-fields .small-margin-right {
     margin-right: 5px;
 }
 
-body.rtl .entryFields .small-margin-right {
+body.right-to-left .data-entry-fields .small-margin-right {
     margin-left: 5px;
 }
 
-.entryLabels 
+.data-entry-labels 
 {
 	font-size: 18px;
 	line-height: 40px;
@@ -843,12 +838,12 @@ body.rtl .entryFields .small-margin-right {
 	overflow-x: hidden;
 }
 
-body.rtl .entryLabels {
+body.right-to-left .data-entry-labels {
     padding-left: inherit;
     padding-right: 15px;
 }
 
-.content .entryLabels h2 
+.content .data-entry-labels h2 
 {
 	font-size: 130%;
 	letter-spacing: 0px;
@@ -861,12 +856,12 @@ body.rtl .entryLabels {
 	line-height: 33px;	
 }
 
-.alignRight {
+.align-for-numbers {
 	text-align: right;
 }
 
 
-.entryLabelsAdmin
+.entry-labels-admin
 {
 	margin-top: 10px;
 	line-height: 30px;
@@ -874,7 +869,7 @@ body.rtl .entryLabels {
 }
 
 
-.entryFieldsAdmin
+.data-entry-fields-admin
 {
 	background: #A2BEFF;
 	-moz-border-radius: 2px;
@@ -895,7 +890,7 @@ body.rtl .entryLabels {
 	box-shadow: 0 1px 3px 1px #1C397E;
 }
 
-body.rtl .entryFieldsAdmin {
+body.right-to-left .data-entry-fields-admin {
     float: left;
     margin-right: inherit;
     margin-left: 20px;
@@ -912,9 +907,95 @@ body.rtl .entryFieldsAdmin {
 }
 
 
-input.entryError, span.entryError, div.entryError {
+input.data-entry-error, span.data-entry-error, div.data-entry-error {
     outline: red ridge 4px;   
 }
+
+.item-group-header {
+    font-size: 125%;
+    font-weight: 500;
+}
+
+.action-icon {
+    -webkit-transition: all 0.50s;
+    transition: all 0.50s;
+    border: 1px solid transparent;
+    width: 26px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.action-icon.flag {  /* override because flag dimensions are different */
+    height: 26px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.status-icon {
+    border: 1px solid transparent;
+    width: 26px;
+    height: 20px;
+}
+
+.grid-header-status-icon {
+    position: relative;
+    top: 2px;
+}
+
+.group-status-icon {
+    width: 32px;
+    height: 24px;
+}
+
+.action-icon:hover {
+    border: 1px solid #FFD580;
+    background: #FFEDC8;
+    filter: brightness(105%) contrast(105%);
+    -webkit-filter: brightness(105%) contrast(105%);
+    -moz-filter: brightness(105%) contrast(105%);
+    -o-filter: brightness(105%) contrast(105%);
+    -ms-filter: brightness(105%) contrast(105%);
+    /*-webkit-transition: all 0.50s;
+    transition: all 0.50s;*/
+}
+
+.action-list-item .action-skip-disabled {
+    display: none !important;
+}
+
+.action-list-item-disabled .action-skip, .action-list-item-completed .action-skip {
+    -webkit-transition: all 0.50s;
+    transition: all 0.50s;
+    display: none;
+}
+
+.action-list-item-completed, .action-list-item-denied {
+    -webkit-transition: all 0.50s;
+    transition: all 0.50s;
+    color: #ccc;
+    text-decoration: line-through;
+}
+
+.action-list-item-completed .status-icon, .action-list-item-disabled .status-icon, .action-list-item-approved .status-icon {
+    -webkit-transition: all 0.50s;
+    transition: all 0.50s;
+    opacity: 0.5;
+}
+
+.action-list-item-disabled, .action-list-item-approved {
+    -webkit-transition: all 0.50s;
+    transition: all 0.50s;
+    color: #aaa !important;
+}
+
+.action-icon-disabled {
+    display: none !important;
+}
+
+.datagrid-row-selected, .datagrid-row-over, .datagrid-row-checked {
+    background:transparent !important;
+}
+
 
 /* DISPLAY FIELDS */
 
@@ -1046,7 +1127,7 @@ div#page-icon-encaps
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
 }
 
-body.rtl .sidebar h2 {
+body.right-to-left .sidebar h2 {
     float: right;
 }
 
@@ -1103,7 +1184,7 @@ body.rtl .sidebar h2 {
 	position: absolute;
 }
 
-body.rtl .sidebar h2 span.arrow {
+body.right-to-left .sidebar h2 span.arrow {
     left: inherit;
     right: 10px;
 }
@@ -1136,7 +1217,7 @@ body.rtl .sidebar h2 span.arrow {
 
 .ui-progressbar, .progressbar {
 	height: 13px !important;
-	width: 100% !important;
+	width: 99.5% !important;
 	border: solid 1px #C78B15;
 	border-radius: 3px;
 	box-shadow: inset 0px 1px 10px 0px #C78B15;
@@ -1172,6 +1253,10 @@ div#divMalfunctionsList > ul > li+li {
 
 /* TODO: RTL VERSION AND TODO VERSION */
 
+
+/* IMAGE ZOOM */
+
+.zoomContainer { z-index: 100000; }
 
 /* OTHER ELEMENTS */
 
@@ -1321,7 +1406,7 @@ input.ButtonSwarmopsUpload:active {
     float: left;
 }
 
-body.rtl .buttonUploadFile {
+body.right-to-left .buttonUploadFile {
     float: right;
 }
 
@@ -1341,12 +1426,58 @@ nav.alertify-buttons {
 }
 
 
+/* FANCYBOX */
+
+.fancybox-arrow-previous,
+.fancybox-arrow-next {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    background: #000;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50%;
+    font-size: 36px;
+    top: 50%;
+    margin-top: -22px;
+    -webkit-text-stroke: 1px white;
+    text-stroke: 1px white;
+}
+
+.fancybox-arrow-previous:hover,
+.fancybox-arrow-next:hover {
+    text-decoration: none;
+    background: #111;
+    color: #FFF;
+}
+
+.fancybox-arrow-previous {
+    left: -60px;
+}
+
+.fancybox-arrow-next {
+    right: -60px;
+}      
+        
+.zoomContainer {
+    overflow: hidden;
+}
+
+.fancybox-caption
+{
+    text-align: center;
+    font-weight: 500;
+    font-family: Ubuntu;
+    font-size: 24px !important;
+}
+
 /* VARIOUS ADDITIONS - SORT LATER */
 
 span.spanGrayedOut {
     opacity: .5;
 }
-
 
 
 /* COLOR SCHEME

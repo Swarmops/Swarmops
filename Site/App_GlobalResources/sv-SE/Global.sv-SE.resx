@@ -508,7 +508,7 @@
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
   <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>d MMM yyyy</value>
+    <value>d MMMM yyyy</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
@@ -820,8 +820,15 @@
     <value>Skanna den här koden för att aktivera BitID</value>
   </data>
   <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
-    <value>&lt;h3&gt;Vad är detta?&lt;/h3&gt;&lt;p&gt;BitID är ett sätt att logga in säkert med mindre krångel än att ange ett lösenord. Dess enkelhet kan inte förklaras, bara upplevas, och det är en tvåfaktorsautentisering eftersom den använder din telefon.&lt;/p&gt;&lt;h3&gt;Kräver inte det att min telefon skyddas också?&lt;/h3&gt;&lt;p&gt;Tja, jo. Det är din telefon och din telefons tillgångsskydd. Men din telefon bör alltid ha någon form av skydd.&lt;/p&gt;                 &lt;h3&gt;Behöver jag en app för detta?&lt;/h3&gt;                 &lt;p&gt;Kanske. Vissa mobila bitcoinplånböcker har BitID inbyggt. Det vanligaste man det inte. Om din bitcoinplånbok inte har BitID, så leta efter en app som heter "BitID Authenticator" eller liknande.&lt;/p&gt;                 &lt;h3&gt;Hur aktiverar jag BitID?&lt;/h3&gt;                 &lt;p&gt;Använd appen på din mobil för att skanna den här koden. Efter det, så kan du skanna en liknande kod på inloggningsskärmen för att logga in.&lt;/p&gt;</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
+    <value>&lt;h3&gt;Vad är detta?&lt;/h3&gt;
+&lt;p&gt;BitID är ett sätt att logga in säkert med mindre krångel än att ange ett lösenord. Dess enkelhet kan inte förklaras, bara upplevas, och det är en tvåfaktorsautentisering eftersom den använder din telefon.&lt;/p&gt;
+&lt;h3&gt;Kräver inte det att min telefon skyddas också?&lt;/h3&gt;
+&lt;p&gt;Tja, jo. Det är din telefon och din telefons tillgångsskydd. Men din telefon bör alltid ha någon form av skydd.&lt;/p&gt;
+&lt;h3&gt;Behöver jag en app för detta?&lt;/h3&gt;
+&lt;p&gt;Kanske. Vissa mobila bitcoinplånböcker har BitID inbyggt. Två exempel på plånböcker med stöd för BitID är {0} och {1}. Du kan också leta efter en app som heter "BitID Authenticator" eller liknande.&lt;/p&gt;
+&lt;h3&gt;Hur aktiverar jag BitID?&lt;/h3&gt;
+&lt;p&gt;Använd appen på din mobil för att skanna den här koden. Efter det, så kan du skanna en liknande kod på inloggningsskärmen för att logga in.&lt;/p&gt;</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
   </data>
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>BitID (bitcoinsignatur) tvåfaktorsautentisering</value>
@@ -939,5 +946,156 @@
   </data>
   <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
     <value>Utgående faktura #{0:N0} till {1}</value>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(makulerad, avbruten, nollställd)</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Ladda upp</value>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>Uppladdningsresultat</value>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>Moms</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Mervärdesskatt</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>Datum</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>MMM d, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Skicka</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>Huvudbok</value>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>Du går nu in i &lt;strong&gt;Sandlådan&lt;/strong&gt;.&lt;br/&gt;&lt;br/&gt;Det här är en felsäker miljö där du kan leka med Swarmops funktionalitet utan att riskera att förstöra produktionsdata. Ha så kul det bara går, och återvänd till din organisation när du har experimenterat färdigt.</value>
+  </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>{0} till {1}</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>Skippa inte</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>skippa</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>Skippa</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Financial_Ebitda_Long" xml:space="preserve">
+    <value>Vinst före räntor, skatter, av- &amp; nedskrivningar</value>
+  </data>
+  <data name="Financial_Ebitda_Short" xml:space="preserve">
+    <value>EBITDA</value>
+    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
+  </data>
+  <data name="Financial_AllBalancesSettled" xml:space="preserve">
+    <value>Alla fordringar justerade</value>
+    <comment>Nobody owes anybody anything</comment>
+  </data>
+  <data name="Financial_CurrentBalance" xml:space="preserve">
+    <value>Aktuell fordran</value>
+  </data>
+  <data name="Financial_NoPaymentHistory" xml:space="preserve">
+    <value>Det finns inga betalningar noterade</value>
+  </data>
+  <data name="Financial_Owed" xml:space="preserve">
+    <value>Fordran</value>
+    <comment>As in, "Amount Owed"</comment>
+  </data>
+  <data name="Financial_Paid" xml:space="preserve">
+    <value>Betalt</value>
+    <comment>As in, "Amount Paid To Person"</comment>
+  </data>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>Betalningshistorik</value>
+  </data>
+  <data name="Financial_PaymentSpecification" xml:space="preserve">
+    <value>Inbetalning #{0:N0}</value>
+    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
+  </data>
+  <data name="Financial_PayoutSpecification" xml:space="preserve">
+    <value>Utbetalning #{0:N0}</value>
+    <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
+  <data name="Financial_PersonIsOwed" xml:space="preserve">
+    <value>Personens fordran</value>
+    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
+  </data>
+  <data name="Financial_PersonOwes" xml:space="preserve">
+    <value>Personens skuld</value>
+    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
+  </data>
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>Obekräftad utbetalning</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
+  </data>
+  <data name="Financial_YouAreOwed" xml:space="preserve">
+    <value>{0}s skuld till dig</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Financial_YouOwe" xml:space="preserve">
+    <value>Din skuld</value>
+    <comment>Like Person Owes, but directed at the user at the screen</comment>
+  </data>
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>Noll</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
+  </data>
+  <data name="Global_Closed" xml:space="preserve">
+    <value>Stängd</value>
+    <comment>As in "record or transaction closed"</comment>
+  </data>
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>Här var det tomt!</value>
+    <comment>There are no records of the requested type</comment>
+  </data>
+  <data name="Global_Error_Concurrency" xml:space="preserve">
+    <value>Denna åtgärd är inte längre tillgänglig.</value>
+    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>Händelse</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>Händelser</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
+  <data name="Global_Opened" xml:space="preserve">
+    <value>Öppnad</value>
+    <comment>As in "record or transaction opened"</comment>
+  </data>
+  <data name="IconTooltip_Barcode_Scanning" xml:space="preserve">
+    <value>Denna rad kan skannas automatiskt av en mobilapp.</value>
+    <comment>This is when Swarmops can display an expense-to-be-paid in a format, that a mobile banking app can read directly, such as a QR code or other machine-readable format.</comment>
+  </data>
+  <data name="Financial_DueDateShort" xml:space="preserve">
+    <value>Förfaller</value>
+    <comment>As "due date", as in when a payment is expected, but just the word "due" to be combined with an actual date in the UI. Example: *Due* Jan 21.</comment>
+  </data>
+  <data name="Global_DateFormatLongDateMonth" xml:space="preserve">
+    <value>d MMMM</value>
+    <comment>Format used for just date and month (no year). The formats are MMMM for month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages use different ways to write month and date, for example, German would write "23. Dezember" (note the dot), a format which would be "{0:d}. {0:MMMM}".</comment>
+  </data>
+  <data name="Global_DateFormatShortDateMonth" xml:space="preserve">
+    <value>dd MMM</value>
+    <comment>Format used for just date and month (no year). The formats are MMM for three-letter month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages write month and date in different orders and with different separators. Do keep the month NAME though, rather than using the month number, even if that's common in the target language.</comment>
   </data>
 </root>

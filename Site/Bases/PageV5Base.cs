@@ -204,6 +204,12 @@ namespace Swarmops.Frontend
             get { return JavascriptEscape(Resources.Global.Global_Cancel); }
         }
 
+
+        public string Localized_ConfirmDialog_Submit
+        {
+            get { return JavascriptEscape(Resources.Global.Global_Submit); }
+        }
+
         public bool SuppressStatisticHeaders { get; set; }  // defaults to false
 
     }

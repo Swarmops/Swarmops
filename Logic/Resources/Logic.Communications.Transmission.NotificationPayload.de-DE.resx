@@ -120,6 +120,9 @@
   
   
   
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - AKTIONGEGENSTAND] Falsche Bitcoin-Auszahlungsadresse</value>
+  </data>
   
   
   
@@ -128,6 +131,45 @@
   
   
   
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>Das Bitcoin Hotwallet für [OrganizationName] gerade gemacht [PaymentCount] automatische Zahlung(en) in Höhe von [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin oder "bits").</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Hotwallet Auszahlung: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Guthaben an Sie: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>Wenn Sie eine automatische Zahlung über das Hotwallet versuchen, stimmt der private Schlüssel, der zum Signieren verwendet wird, nicht mit den öffentlichen Schlüsseln überein, die zum Sammeln der erforderlichen Finanzmittel verwendet wurden. Dies ist eine ernste Bedingung.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - DRINGEND] Bitcoin privater Schlüsselfehler; kann nicht bezahlen</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>Ihr Barkredit mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat] über [RequestPurpose] wurde verweigert. Der folgende Text wurde als Grund für die Ablehnung angegeben:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Barvorschuss VERWEIGERT: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>Ihre Anfrage für eine Vorauszahlung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat], übe [RequestPurpose], wurde von den Buchhaltern der Organisation als ausbezahlt markiert.
+
+Das bedeutet, dass Sie den Betrag in Kürze auf Ihrem Konto sehen sollten.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Bar Vorauszahlung: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   
   
   
@@ -136,49 +178,122 @@
   
   
   
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>Ihre Spesenabrechnung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat] über [RequestPurpose] wurde verweigert. Der folgende Text wurde als Grund für die Ablehnung angegeben:
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ausgabenanspruch VERWEIGERT: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>Ihre Spesenabrechnung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat], über [RequestPurpose], wurde von den Buchhaltern der Organisation als ausbezahlt markiert.
+
+Das bedeutet, dass Sie den Betrag in Kürze auf Ihrem Konto sehen sollten.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ausgabenanspruch bezahlt: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>Die Belege für Ihre Spesenabrechnung mit [OrganizationName] für [CurrencyCode] [BudgetAmountFloat], über [RequestPurpose], wurden von Personen validiert, die für die ordnungsgemäße Aufbewahrung der Aufzeichnungen verantwortlich sind.
+
+Die Forderung wird Ihnen ausgezahlt, wenn der Betrag auch vom Eigentümer des Etats bestätigt wurde.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Spesenabrechnungen bestätigt: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   
   
   
   
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>Eine neue [Regular] wurde manuell zu [OrganizationName] in einem Bereich von Ihnen hinzugefügt.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Neue [Regular]: [PersonName], [PersonGeography] [CountryCode] (manuell)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>Eine neue [Regular] hat sich für [OrganizationName] in einem Bereich von dir angemeldet.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Neue [Regular]: [PersonName], [PersonGeography] [CountryCode]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [[Regularship]] erneuert: [PersonName], [PersonGeography] [CountryCode] (manuell)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+Diese Mail wurde an gesendet zu [Addressee] von [OrganizationName]. Wenn Sie diese Benachrichtigungen zukünftig nicht erhalten möchten, bitte melden Sie sich an [InstallationName] beim [ExternalUrl] und Ändere deine Benachrichtigungseinstellungen.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Ihre Nachricht wurde zur Zustellung in die Warteschlange gestellt und die Empfänger wurden aufgelöst. Ihre E-Mail wird gesendet oder versucht, an [RecipientCount] Leute in [GeographyName] in [OrganizationName].</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Kommempfänger bestimmt für [GeographyName]: [RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>Ihre Nachricht an [GeographyName] wurde an alle geplanten Empfänger gesendet. Von den [RecipientCount] geplanten Empfängern ist [RecipientsSuccess], soweit wir das beurteilen können, erfolgreich. Denken Sie daran, dass die E-Mail später aus verschiedenen Gründen nicht zugestellt oder ungelesen werden kann.
+
+Zeitaufwand für die Auflösung: [ResolvingTime].
+Übertragungszeit: [TransmissionTime].
+Gesamtzeit von der Erstellung der Kommunikation bis zur Fertigstellung: [TotalTime].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Übermittelte Kommunikationen: [GeographyName]</value>
+  </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>Eine neue Person hat sich angemeldet als [RegularTitle] in [OrganizationName]! [ConcernedPersonName] basiert in [GeographyName], [CountryCode].</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Jemand (vermutlich Sie) hat versucht das [InstallationName] Kennwort für diese Email Adresse zurück zu setzen. Allerdings ist für dieses Konto die Zwei-Faktor Anmeldung für verbesserte Sicherheit eingeschaltet. Daher KANN dieses Kennwort NICHT einfach zurück gesetzt werden.
+
+Bitte kontaktieren Sie einen Administrator bei [InstallationName] um dieses Problem zu beheben und nach Prüfung Ihrer Identität ein neues Kennwort auszustellen.
+
+Vielen Dank für Ihr Verständnis.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Kennwort kann nicht zurückgesetzt werden</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>Ihr [InstallationName] Kennwort wurde eben auf [ExternalUrl] geändert.
+
+Wenn Sie diese Kennwort Änderung nicht durchgeführt haben, handelt es sich hierbei um eine Sicherheitslücke. Wenn dass der Fall ist, sperren sie bitte Ihr Konto SOFORT indem Sie folgenden Link klicken:
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+Wenn Sie die Sperre im Link oben bestätigen, werden alle aktiven Fenster umgehend gesperrt, Anmeldungen mit dem neuen Passwort werden gesperrt, und die Administratoren werden Sie kontaktieren um festzustellen was passiert ist und um Ihr Konto wieder herzustellen.
+
+Aber, wenn Sie Ihr Kennwort gerade eben selbst geändert haben, und damit diese Benachrichtigung ausgelöst haben, dann ist offensichtlich alles ok, und genauso wie es sein soll. Weitermachen.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Passwort geändert</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>[OrganizationName] hat ein "Kennwort Zurücksetzen Ticket" für Ihr Konto erstellt, vermutlich auf Ihr Ansuchen hin. Dieses Ticket ist gültig für die nächsten 24 Stunden.
+
+Bitte folgen Sie diesem Link um Ihr Passwort zurück zu setzen, und die Zwei-Faktor Anmeldung wieder einzuschalten, wenn diese vorher eingeschaltet war:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Nach 24 Stunden läuft dieses Ticket ab. Wenn Sie bis dahin nicht ihr Kennwort zurücksetzen, werden sie die Administratoren bei [OrganizationName] kontaktieren müssen um ein neues "Kennwort Zurücksetzen Ticket" anzufordern.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Passwort Zurücksetzen Ticket</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Jemand (vermutlich Sie) hat eine Zurücksetzung des Kennworts dies mit dieser Email Adresse verbundenen Kontos bei [InstallationName] angefordert. Wenn Sie das waren, bitte folgen sie dem Link unten innerhalb der nächsten 60 Minuten um die Kennwort Zurücksetzung abzuschließen.
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Wenn sie diese Kennwort Zurücksetzung NICHT angefordert haben, können (und sollten) Sie diese Email ignorieren. Die Kennwort Zurücksetzung läuft in einer Stunde ab. (Wenn Sie viele dieser Kennwort Zurücksetzungs Links erhalten, und diese nicht anfordern, bitte benachrichtigen Sie den Administrator.)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Passwort Zurücksetzen Ticket</value>
+  </data>
   
   
   

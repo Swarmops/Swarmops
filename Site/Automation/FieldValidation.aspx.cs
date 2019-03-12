@@ -41,7 +41,7 @@ namespace Swarmops.Frontend.Automation
 
             try
             {
-                Double.Parse(amount, NumberStyles.Number);
+                Swarmops.Logic.Support.Formatting.ParseDoubleStringAsCents(amount);
                 return true;
             }
             catch (Exception)

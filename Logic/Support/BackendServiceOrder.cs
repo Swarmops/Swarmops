@@ -36,7 +36,7 @@ namespace Swarmops.Logic.Support
             // Instantiate the class
 
             string[] components = BackendServiceClassName.Split(',');
-            string assemblyName = components[0];
+            // string assemblyName = components[0];  // TODO: For plugin use later
             string className = components[1];
 
             Assembly assembly = Assembly.GetExecutingAssembly(); // TODO: Make this actually select the named assembly
@@ -71,11 +71,19 @@ namespace Swarmops.Logic.Support
 
             // Run the Run() function
 
+            bool transientError = false;
+
             try
             {
                 Console.WriteLine(" - Executing BSO: " + className);
 
                 order.Run();
+            }
+            catch (TryAgainException)
+            {
+                transientError = true;
+
+                // Don't close this backend service order - it will retry
             }
             catch (Exception exception)
             {
@@ -88,7 +96,7 @@ namespace Swarmops.Logic.Support
             }
             finally
             {
-                if (!order.HasWorkerThread)
+                if (!order.HasWorkerThread && !transientError)
                 {
                     try
                     {

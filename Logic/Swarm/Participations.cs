@@ -103,9 +103,9 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-        public static Dictionary<int, List<BasicParticipation>> GetParticipationsForPeople (int[] personIds, int gracePeriod)
+        public static Dictionary<int, List<BasicParticipation>> GetParticipationsForPeople (People people, int gracePeriod)
         {
-            return SwarmDb.GetDatabaseForReading().GetParticipationsForPeople (personIds, gracePeriod);
+            return SwarmDb.GetDatabaseForReading().GetParticipationsForPeople (people.Identities, gracePeriod);
         }
     }
 }

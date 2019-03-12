@@ -59,7 +59,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             string description = this.TextPurpose.Text;
 
-            FinancialAccount budget = FinancialAccount.FromIdentity (Int32.Parse (Request.Form["DropBudgets"]));
+            FinancialAccount budget = this.ComboBudgets.SelectedAccount;
 
             // sanity check
 
@@ -77,8 +77,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // Create cash advance
 
             CashAdvance cashAdvance = CashAdvance.Create (CurrentOrganization, CurrentUser, CurrentUser, amountCents,
-                budget,
-                description);
+                budget, description);
 
             // Create success message
 
@@ -97,7 +96,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 successMessage += "<br/><br/>" +
                                   Resources.Pages.Financial.RequestCashAdvance_SuccessMessagePartTwoOwnBudget +
                                   "<br/>";
-                cashAdvance.Attest (CurrentUser);
+                cashAdvance.Approve (CurrentUser);
             }
 
             DashboardMessage.Set (successMessage);

@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.Services;
 using Resources;
+using Swarmops.Common.Exceptions;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
@@ -50,19 +51,19 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 Resources.Pages.Financial.ValidateReceipts_Header_ReceiptsAwaitingValidation;
             this.LabelGridHeaderAction.Text = Global.Global_Action;
             this.LabelGridHeaderBudget.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Budget;
-            // Reuse some strings from Attest Costs
+            // Reuse some strings from Approve Costs
             this.LabelGridHeaderDescription.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Description;
             this.LabelGridHeaderDocs.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Docs;
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
 
             FinancialTransactionTagSets tagSets = FinancialTransactionTagSets.ForOrganization (CurrentOrganization);
 
-            int descriptionWidth = 142 + 180;
-            int tagWidth = 180;
+            int descriptionWidth = 137 + 170;
+            int tagWidth = 170;
 
             if (tagSets.Count > 0)
             {
-                descriptionWidth = 142 - tagSets.Count;
+                descriptionWidth = 137 - tagSets.Count;
                 tagWidth = 360/(tagSets.Count + 1);
 
                 //this.LiteralBudgetNameWidth.Text = tagWidth.ToString(CultureInfo.InvariantCulture);
@@ -87,33 +88,45 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
         [WebMethod]
-        public new static string Validate (string identifier)
+        public new static AjaxCallResult Validate (string identifier)
         {
             identifier = HttpUtility.UrlDecode (identifier);
 
-            string result = HandleValidationDevalidation (identifier, AttestationMode.Attestation);
-
-            return HttpUtility.UrlEncode (result).Replace ("+", "%20");
+            try
+            {
+                string resultMessage = HandleValidationDevalidation(identifier, ApprovalMode.Approval);
+                return new AjaxCallResult { Success = true, DisplayMessage = resultMessage };
+            }
+            catch (ConcurrencyException)
+            {
+                return new AjaxCallResult {Success = false, DisplayMessage = Resources.Global.Error_DatabaseConcurrency};
+            }
         }
 
         [WebMethod]
-        public static string Devalidate (string identifier)
+        public static AjaxCallResult RetractValidation (string identifier)
         {
             identifier = HttpUtility.UrlDecode (identifier);
 
-            string result = HandleValidationDevalidation (identifier, AttestationMode.Deattestation);
-
-            return HttpUtility.UrlEncode (result).Replace ("+", "%20");
+            try
+            {
+                string resultMessage = HandleValidationDevalidation(identifier, ApprovalMode.Retraction);
+                return new AjaxCallResult { Success = true, DisplayMessage = resultMessage };
+            }
+            catch (ConcurrencyException)
+            {
+                return new AjaxCallResult { Success = false, DisplayMessage = Resources.Global.Error_DatabaseConcurrency };
+            }
         }
 
 
-        private static string HandleValidationDevalidation (string identifier, AttestationMode mode)
+        private static string HandleValidationDevalidation (string identifier, ApprovalMode mode)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             IValidatable validatableItem = null;
             string validatedTemplate = string.Empty;
-            string devalidatedTemplate = string.Empty;
+            string retractedTemplate = string.Empty;
 
             char costType = identifier[0];
             int itemId = Int32.Parse (identifier.Substring (1));
@@ -140,7 +153,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                     validatableItem = expense;
                     validatedTemplate = Resources.Pages.Financial.ValidateReceipts_ReceiptsValidated;
-                    devalidatedTemplate = Resources.Pages.Financial.ValidateReceipts_ReceiptsDevalidated;
+                    retractedTemplate = Resources.Pages.Financial.ValidateReceipts_ReceiptsDevalidated;
                     amountCents = expense.AmountCents;
 
                     break;
@@ -151,21 +164,21 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Finally, attest or deattest
 
-            if (mode == AttestationMode.Attestation)
+            if (mode == ApprovalMode.Approval)
             {
                 validatableItem.Validate (authData.CurrentUser);
                 result = string.Format (validatedTemplate, itemId, authData.CurrentOrganization.Currency.Code,
                     amountCents/100.0);
             }
-            else if (mode == AttestationMode.Deattestation)
+            else if (mode == ApprovalMode.Retraction)
             {
-                validatableItem.Devalidate (authData.CurrentUser);
-                result = string.Format (devalidatedTemplate, itemId, authData.CurrentOrganization.Currency.Code,
+                validatableItem.RetractValidation (authData.CurrentUser);
+                result = string.Format (retractedTemplate, itemId, authData.CurrentOrganization.Currency.Code,
                     amountCents/100.0);
             }
             else
             {
-                throw new InvalidOperationException ("Unknown Attestation Mode: " + mode);
+                throw new InvalidOperationException ("Unknown Approval Mode: " + mode);
             }
 
             return result;
@@ -204,11 +217,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
         }
 
-        private enum AttestationMode
+        private enum ApprovalMode
         {
             Unknown = 0,
-            Attestation,
-            Deattestation
+            Approval,
+            Retraction
         };
 
         public class RepeatedDocument

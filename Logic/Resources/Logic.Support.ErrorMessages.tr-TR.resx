@@ -117,16 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AllClear_Text" xml:space="preserve">
+    <value>Operasyonlar nominal duruma döndü.</value>
+  </data>
+  <data name="AllClear_Title" xml:space="preserve">
+    <value>Temiz</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
+    <value>Sunucu, bitcoin blok zinciriyle bağlantıyı kaybetti. Bitcoin işlemleri gerçek zamanlı olarak saptanmayacaktır.</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
+    <value>Blok Zinciriyle Bağlantı Kaybı</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
+    <value>Web tarayıcısı sunucudan heartbeat verisi alamıyor. Gerçek zamanlı güncellemeler mevcut olmayabilir.</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
+    <value>Heartbeat Hatası Seviye 1</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Text" xml:space="preserve">
+    <value>Gerçek zamanlı güncellemeler için sunucuya bağlanılamıyor.</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Title" xml:space="preserve">
+    <value>WebSocket hatası</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Text" xml:space="preserve">
+    <value>Sunucu, arka uç işlemine bağlanamıyor. Gerçek zamanlı güncellemeler büyük ölçüde kullanılamayacaktır.</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Title" xml:space="preserve">
+    <value>Arka uç bağlantı hatası</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Text" xml:space="preserve">
+    <value>Server arka uç işlemlerinden heartbeat verisi alamıyor.</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Title" xml:space="preserve">
+    <value>Heartbeat Hatası Seviye 2</value>
+  </data>
 </root>

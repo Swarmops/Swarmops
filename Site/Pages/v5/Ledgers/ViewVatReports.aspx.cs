@@ -114,14 +114,20 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 FinancialTransaction tx = item.Transaction;
 
-                Documents documents = Documents.ForObject(tx.Dependency);
+                Documents documents = Documents.ForObject(tx.Dependency ?? tx); // tx.Dependency if not null, else tx
+
+                int pageCounter = 0;
+                int pagesTotal = documents.Count;
+
                 foreach (Document doc in documents)
                 {
+                    pageCounter++;
+
                     VatReportDocuments.Add(new RepeatedDocument
                     {
                         BaseId = item.FinancialTransactionId.ToString(CultureInfo.InvariantCulture),
                         DocId = doc.Identity,
-                        Title = tx.Description
+                        Title = tx.Description + " " + Document.GetLocalizedPageCounter(pageCounter, pagesTotal)
                     });
                 }
             }
@@ -132,7 +138,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelContentHeader.Text = Resources.Pages.Ledgers.ViewVatReports_Title_View;
 
             this.LiteralHeaderTransactionId.Text = Resources.Global.Financial_TransactionIdShort;
-            this.LiteralHeaderDateTime.Text = Resources.Pages.Ledgers.ViewVatReports_Header_DateTime;
+            this.LiteralHeaderDateTime.Text = Resources.Global.Global_Date;
             this.LiteralHeaderDescription.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Description;
             this.LiteralHeaderTurnover.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Turnover;
             this.LiteralHeaderVatInbound.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Inbound;

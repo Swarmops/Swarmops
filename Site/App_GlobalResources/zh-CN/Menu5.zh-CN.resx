@@ -117,105 +117,323 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Administration" xml:space="preserve">
+    <value>管理员</value>
+  </data>
+  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
+    <value>访问控制列表</value>
+  </data>
+  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
+    <value>创建新组织</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>组织设置</value>
+  </data>
+  <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
+    <value>地理树</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
+    <value>组织集群</value>
+  </data>
+  <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
+    <value>系统设置</value>
+  </data>
+  <data name="Menu5_Communications" xml:space="preserve">
+    <value>沟通</value>
+  </data>
+  <data name="Menu5_Communications_EditAutomailText" xml:space="preserve">
+    <value>编辑自动邮件文本</value>
+  </data>
+  <data name="Menu5_Communications_MailInbox" xml:space="preserve">
+    <value>管理邮件收件箱</value>
+  </data>
+  <data name="Menu5_Communications_MassMailing" xml:space="preserve">
+    <value>群发邮件</value>
+  </data>
+  <data name="Menu5_Communications_MobilizeActivists" xml:space="preserve">
+    <value>动员积极分子</value>
+  </data>
+  <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
+    <value>管理纸质信件收件箱</value>
+  </data>
+  <data name="Menu5_Communications_ReadPaperInbox" xml:space="preserve">
+    <value>阅读纸质信件收件箱</value>
+  </data>
+  <data name="Menu5_Communications_ReceivedPaperLetter" xml:space="preserve">
+    <value>接收纸质信件</value>
+  </data>
+  <data name="Menu5_Communications_ReporterList" xml:space="preserve">
+    <value>管理记者列表</value>
+  </data>
+  <data name="Menu5_Communications_SendMassMessage" xml:space="preserve">
+    <value>发送群发信息</value>
+  </data>
+  <data name="Menu5_Communications_SendPressRelease" xml:space="preserve">
+    <value>发送新闻稿</value>
+  </data>
+  <data name="Menu5_Communications_TextActivists" xml:space="preserve">
+    <value>发文本给积极分子</value>
+  </data>
+  <data name="Menu5_Communications_TextInbox" xml:space="preserve">
+    <value>管理文本收件箱</value>
+  </data>
+  <data name="Menu5_Financial" xml:space="preserve">
+    <value>财务</value>
+  </data>
+  
+  <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
+    <value>报销费用</value>
+  </data>
+  <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
+    <value>创建购买订单</value>
+  </data>
+  <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
+    <value>演出助理</value>
+  </data>
+  <data name="Menu5_Financial_List" xml:space="preserve">
+    <value>列表...</value>
+  </data>
+  <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
+    <value>现金请求</value>
+  </data>
+  <data name="Menu5_Financial_List_ExpenseClaims" xml:space="preserve">
+    <value>报销请求</value>
+  </data>
+  <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
+    <value>进口发票</value>
+  </data>
+  <data name="Menu5_Financial_List_OutboundInvoices" xml:space="preserve">
+    <value>出口发票</value>
+  </data>
+  <data name="Menu5_Financial_List_OutstandingAdvances" xml:space="preserve">
+    <value>未偿付的现金预支</value>
+  </data>
+  <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
+    <value>工资</value>
+  </data>
+  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
+    <value>管理我的预算</value>
+  </data>
+  <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
+    <value>付钱</value>
+  </data>
+  <data name="Menu5_Financial_Payroll" xml:space="preserve">
+    <value>工资名单</value>
+  </data>
+  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
+    <value>收到新发票</value>
+  </data>
+  <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
+    <value>请求现金预支</value>
+  </data>
+  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
+    <value>发送新发票</value>
+  </data>
+  <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
+    <value>验证小票</value>
+  </data>
+  <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
+    <value>查看预算和实际支出</value>
+  </data>
+  <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
+    <value>查看流动性预测</value>
+  </data>
+  <data name="Menu5_Governance" xml:space="preserve">
+    <value>治理</value>
+  </data>
+  <data name="Menu5_Governance_Candidates" xml:space="preserve">
+    <value>候选人</value>
+  </data>
+  <data name="Menu5_Governance_CreateVotingList" xml:space="preserve">
+    <value>创建投票列表</value>
+  </data>
+  <data name="Menu5_Governance_MeetingAdmin" xml:space="preserve">
+    <value>会议管理</value>
+  </data>
+  <data name="Menu5_Governance_MeetingBoardAdmin" xml:space="preserve">
+    <value>董事会会议管理</value>
+  </data>
+  <data name="Menu5_Governance_Motions" xml:space="preserve">
+    <value>动议</value>
+  </data>
+  <data name="Menu5_Governance_Vote" xml:space="preserve">
+    <value>投票</value>
+  </data>
+  <data name="Menu5_Hacks_TemporaryAccessControl" xml:space="preserve">
+    <value>设置访问管理 (临时页面)</value>
+  </data>
+  <data name="Menu5_Ledgers" xml:space="preserve">
+    <value>分类账</value>
+  </data>
+  
+  <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
+    <value>审计分类账</value>
+  </data>
+  <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
+    <value>资产负债表</value>
+  </data>
+  <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
+    <value>无法结算 {0} 的分类账</value>
+  </data>
+  <data name="Menu5_Ledgers_CashflowAnalysis" xml:space="preserve">
+    <value>现金流分析</value>
+  </data>
+  <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
+    <value>结算 {0} 的分类账</value>
+  </data>
+  <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
+    <value>调试分类账，账户</value>
+  </data>
+  <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
+    <value>导入银行数据</value>
+  </data>
+  <data name="Menu5_Ledgers_InspectLedgers" xml:space="preserve">
+    <value>检测分类账</value>
+  </data>
+  <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
+    <value>流动性预测</value>
+  </data>
+  <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
+    <value>工资名单</value>
+  </data>
+  <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
+    <value>损益表</value>
+  </data>
+  
+  
+  <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
+    <value>上传银行文件</value>
+  </data>
+  <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
+    <value>列出未结算的账户</value>
+  </data>
+  <data name="Menu5_Organization" xml:space="preserve">
+    <value>组织</value>
+  </data>
+  <data name="Menu5_Organization_AvailableResponsibilities" xml:space="preserve">
+    <value>可用的责任</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates" xml:space="preserve">
+    <value>通信模板</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_Invoice" xml:space="preserve">
+    <value>发票</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_MassMailing" xml:space="preserve">
+    <value>群发邮件</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_Newsletter" xml:space="preserve">
+    <value>新闻</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_PressRelease" xml:space="preserve">
+    <value>新闻稿</value>
+  </data>
+  <data name="Menu5_Organization_Feeds" xml:space="preserve">
+    <value>关注</value>
+  </data>
+  <data name="Menu5_Organization_Feeds_Newsletter" xml:space="preserve">
+    <value>推送信息</value>
+  </data>
+  <data name="Menu5_Organization_Feeds_PressReleases" xml:space="preserve">
+    <value>新闻稿</value>
+  </data>
+  <data name="Menu5_Organization_MemberStatistics" xml:space="preserve">
+    <value>会员统计数据</value>
+  </data>
+  <data name="Menu5_Organization_OrganizationChart" xml:space="preserve">
+    <value>组织图表</value>
+  </data>
+  <data name="Menu5_Organization_Responsibilities" xml:space="preserve">
+    <value>组织责任</value>
+  </data>
+  <data name="Menu5_Organization_Settings" xml:space="preserve">
+    <value>组织设置</value>
+  </data>
+  <data name="Menu5_Organization_SuborganizationTree" xml:space="preserve">
+    <value>下级组织树</value>
+  </data>
+  <data name="Menu5_People" xml:space="preserve">
+    <value>人</value>
+  </data>
+  <data name="Menu5_People_AddMember" xml:space="preserve">
+    <value>添加成员</value>
+  </data>
+  <data name="Menu5_People_AddPerson" xml:space="preserve">
+    <value>添加[Regular]</value>
+  </data>
+  <data name="Menu5_People_ListFind" xml:space="preserve">
+    <value>列举/查找人员</value>
+  </data>
+  <data name="Menu5_People_ListMembers" xml:space="preserve">
+    <value>列举成员</value>
+  </data>
+  <data name="Menu5_People_LogActivism" xml:space="preserve">
+    <value>日志活动</value>
+  </data>
+  <data name="Menu5_People_ManageConferences" xml:space="preserve">
+    <value>管理会议</value>
+  </data>
+  <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
+    <value>管理志愿者</value>
+  </data>
+  <data name="Menu5_People_NewConference" xml:space="preserve">
+    <value>新会议</value>
+  </data>
+  <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
+    <value>角色和职责</value>
+  </data>
+  <data name="Menu5_People_SelfSignup" xml:space="preserve">
+    <value>自注册页面</value>
+  </data>
+  
+  
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>税单</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>工资税表单</value>
+  </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>平账和匹配交易</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>组织人员配置</value>
+  </data>
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>我的本地组织</value>
+  </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>捐赠资金</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>预算与实际支出</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>比特币热钱包</value>
+  </data>
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>于 {0:MMM d, yyyy} 建立</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} 行代码</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>(在 Github 上) 报告 Swarmops 的漏洞</value>
+  </data>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>调试</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>假冒用户</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>增值税报告</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>比特币热钱包回复测试</value>
+  </data>
   
   
   

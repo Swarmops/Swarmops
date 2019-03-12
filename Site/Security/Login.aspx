@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Pages.Security.Login" Codebehind="Login.aspx.cs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Pages.Security.Login" CodeFile="Login.aspx.cs" Codebehind="Login.aspx.cs" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -72,7 +72,7 @@
     	        }, 1000);
 
 
-    	        $('.InputManualCredentials').on('input', function() {
+    	        $('.input-manual-credentials').on('input', function() {
     	            onInputCredentials();
     	        });
 
@@ -114,10 +114,10 @@
     	            success: function(msg) {
     	                if (msg.d == "Success") {
     	                    // Good credentials. TODO: Add manual 2FA challenge if applicable.
-    	                    $('#TextLogin, #TextPass').css('background-image', "url('/Security/Images/iconshock-greentick-16px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+    	                    $('#TextLogin, #TextPass').css('background-image', "url('/Images/Icons/iconshock-green-tick-128x96px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat').css('background-size', '16px 12px');
     	                } else if (msg.d == "Fail") {
 	                        // inform user of bad credentials by means of a red cross on _both_ boxes
-	                        $('#TextLogin, #TextPass').css('background-image', "url('/Security/Images/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+    	                    $('#TextLogin, #TextPass').css('background-image', "url('/Images/Icons/iconshock-red-cross-128x96px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat').css('background-size', '16px 12px');
 	                    } else if (msg.d == "BitIdRequired") {
 	                        alertify.alert(SwarmopsJS.unescape('<%=this.Localized_BitIdRequired_Dialog%>'));
 	                    } else {
@@ -194,16 +194,16 @@
 
 	<div class="center980px">
 
-        <div class="login-page-logo"><asp:Image ID="ImageLogo" runat="server" ImageUrl="/Images/Swarmops-logo-256px.png" Width="128"/></div>        
+        <div class="login-page-logo"><asp:Image ID="ImageLogo" runat="server" ImageUrl="/Images/swarmops-logo-256px.png" Width="128"/></div>        
             <div class="box qrlogin">
                 <div class="content">
                     <div align="center" id="divLoginQr"><asp:Image ID="ImageBitIdQr" runat="server"/></div>
                     <div id="divLoginManual" style="display:none">
                         <h2><asp:Label runat="server" ID="LabelManualLoginHeader">Manual Login Header XYZ</asp:Label></h2>
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom:5px">
-                            <tr><td><asp:Literal ID="LiteralCredentialsUser" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextLogin" class="InputManualCredentials" type="text" /></td></tr>
-                            <tr><td><asp:Literal ID="LiteralCredentialsPass" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextPass" class="InputManualCredentials" type="password" /></td></tr>
-                            <tr style="display: none"><td><asp:Literal id="LiteralCredentials2FA" runat="server" />&nbsp;&nbsp;</td><td><input id="Text2FA" class="InputManualCredentials" type="password" /></td></tr>
+                            <tr><td><asp:Literal ID="LiteralCredentialsUser" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextLogin" class="input-manual-credentials" type="text" /></td></tr>
+                            <tr><td><asp:Literal ID="LiteralCredentialsPass" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextPass" class="input-manual-credentials" type="password" /></td></tr>
+                            <tr style="display: none"><td><asp:Literal id="LiteralCredentials2FA" runat="server" />&nbsp;&nbsp;</td><td><input id="Text2FA" class="input-manual-credentials" type="password" /></td></tr>
                         </table>
                         
                         <p align="right"><a href="/Security/RequestPasswordReset"><asp:Label ID="LabelForgotPassword" runat="server">Help, I forgot my password!</asp:Label></a></p>

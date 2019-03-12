@@ -395,7 +395,7 @@
     <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
   </data>
   <data name="Global_Off" xml:space="preserve">
-    <value>Desactivar</value>
+    <value>Desativar</value>
     <comment>Off (as opposed to On)</comment>
   </data>
   <data name="Global_On" xml:space="preserve">
@@ -505,7 +505,7 @@
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
   <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>d MMM yyyy</value>
+    <value>d 'de' MMMM 'de' yyyy</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
@@ -669,7 +669,7 @@
     <value>Pessoa Designada</value>
   </data>
   <data name="Swarm_Position" xml:space="preserve">
-    <value>Posição</value>
+    <value>Cargo</value>
   </data>
   <data name="Error_DatabaseConcurrency" xml:space="preserve">
     <value>Parece que outro utilizador superou-o na realização desta operação; a base de dados mudou entretanto. Por favore examine as alterações e tente repetir o que estava a tentar fazer.</value>
@@ -734,14 +734,19 @@
   <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
     <value>Conta</value>
   </data>
-  
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>Provisão de Segurança</value>
+  </data>
   <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
     <value>Redefinir palavra-passe</value>
   </data>
   <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
     <value>Enviar link de redefinição de palavra-passe</value>
   </data>
-  
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>Isto não parece ser um número de telefone válido, mas iremos guardá-lo tal como foi inserido.</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
   <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
     <value>Recuperar Palavra-Passe?</value>
   </data>
@@ -789,7 +794,9 @@
   <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
     <value>Digite a palavra-passe atual para permitir alterações</value>
   </data>
-  
+  <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
+    <value>A Sua Segurança</value>
+  </data>
   <data name="Master_EditPersonNewPassword1" xml:space="preserve">
     <value>Definir nova palavra-passe</value>
   </data>
@@ -828,6 +835,78 @@
   <data name="Global_Volunteer_Plural" xml:space="preserve">
     <value>Voluntários</value>
   </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>Executar</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>Continuar</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  </data>
+  
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>Lucro/Perda Anual até à data ({0})</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  
+  <data name="Global_Progress" xml:space="preserve">
+    <value>Progresso</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  </data>
+  
+  
+  <data name="Global_Dox" xml:space="preserve">
+    <value>Docs</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>IVA</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Imposto sobre o Valor Acrescentado</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>Data</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>d MMM yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Submeter</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

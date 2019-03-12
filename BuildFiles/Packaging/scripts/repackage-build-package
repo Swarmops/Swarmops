@@ -5,7 +5,7 @@
 # Home folder for script is /home/builder/swarmops/packaging
 
 DEPLOYDIR=usr/share/swarmops
-DISTROS=xenial,stretch,jessie
+DISTROS=xenial,bionic,stretch
 
 # Check parameters
 
@@ -22,6 +22,10 @@ elif [ "$2" == "sprint" ]; then
   CONTROLSUFFIX=-sprint
   DROPFOLDER=sprint
   echo "Packaging END-OF-SPRINT for normal deployments."
+elif [ "$2" == "candidate" ]; then
+  CONTROLSUFFIX=-sprint
+  DROPFOLDER=sprint
+  echo "Packaging RELEASE CANDIDATE."
 else
   CONTROLSUFFIX=-internal
   DROPFOLDER=internal
@@ -54,9 +58,9 @@ elif [ "$1" == "common" ]; then
   PACKAGE=common
 else
   echo "Syntax:"
-  echo "repackage {frontend|backend|extscripts|common} [sprint|release]"
+  echo "repackage {frontend|backend|extscripts|common} [candidate|sprint|release]"
   echo
-  echo "If 'sprint' or 'release' is not given, -internal will be added to the package name."
+  echo "If 'candidate', 'sprint', or 'release' is not given, -internal will be added to the package name."
   exit 1;
 fi
 
@@ -185,7 +189,7 @@ cd ../..
 
 
 
-scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER $DISTROS $PACKAGE $BUILDID
+scripts/repackage-build-package-distro $PACKAGENAME $DROPFOLDER $DISTROS $PACKAGE $BUILDID $2
 
 #read -n1 -r -p "Press any key to continue..."
 

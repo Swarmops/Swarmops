@@ -61,6 +61,8 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="Database-BackendServiceOrders.cs" />
     <Compile Include="Database-ExchangeRates.cs" />
+    <Compile Include="Database-ExpenseGroups.cs" />
+    <Compile Include="Database-FinancialAccountDocuments.cs" />
     <Compile Include="Database-GeographyUpdates.cs" />
     <Compile Include="Database-CashAdvances.cs" />
     <Compile Include="Database-Currencies.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Database-Reporters.cs" />
     <Compile Include="Database-Roles.cs" />
     <Compile Include="Database-OutboundPhoneMessages.cs" />
+    <Compile Include="Database-Applicants.cs" />
     <Compile Include="Database-VatReports.cs" />
     <Compile Include="Database-Salaries.cs" />
     <Compile Include="Database-SwarmopsLog.cs" />
@@ -139,6 +142,7 @@
     <Compile Include="Database-Constructors.cs" />
     <Compile Include="Database-Newsletters.cs" />
     <Compile Include="RecordLimit.cs" />
+    <Compile Include="TableBase.cs" />
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>

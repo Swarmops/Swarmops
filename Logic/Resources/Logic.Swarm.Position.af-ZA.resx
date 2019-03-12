@@ -198,6 +198,14 @@
   <data name="Position_Executive_ChiefTechnologyOfficer" xml:space="preserve">
     <value>crwdns6556185:0crwdne6556185:0</value>
   </data>
+  <data name="Position_Executive_FirstGentleman" xml:space="preserve">
+    <value>crwdns6556802:0crwdne6556802:0</value>
+    <comment>For government-type organizations only, with a female President</comment>
+  </data>
+  <data name="Position_Executive_FirstLady" xml:space="preserve">
+    <value>crwdns6556803:0crwdne6556803:0</value>
+    <comment>For government-type organizations only</comment>
+  </data>
   <data name="Position_Executive_HrAssistant" xml:space="preserve">
     <value>crwdns6556186:0crwdne6556186:0</value>
   </data>

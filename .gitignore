@@ -194,6 +194,9 @@ External Dependencies/*
 #Except the batch file to rebuild them
 !External Dependencies/rebuild-all.cmd
 
+#All the scripts in the Experimental folder
+Site/Scripts/Experimental/*
+
 #The hotwallet keyfiles should obviously never be checked in
 Site5/hotwallet*
 Site/hotwallet*
@@ -204,5 +207,8 @@ Site5/*
 #Ignore user preferences
 *.userprefs
 *.csproj.[Dd]ot[Ss]ettings
+
+#These cultures botch debugging :(
+Site/App_GlobalResources/ha-HG/*
 
 #Packages provided by NuGet

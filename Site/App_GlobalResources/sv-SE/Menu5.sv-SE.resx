@@ -182,6 +182,7 @@
   </data>
   <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
     <value>Attestera kostnader</value>
+    <comment>This approves costs for payout from the organization</comment>
   </data>
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Begär återbetalning för utlägg</value>
@@ -304,10 +305,11 @@
     <value>Resultaträkning</value>
   </data>
   <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
-    <value>Synka om bankkonto</value>
+    <value>Resynkronisera anslutet konto</value>
   </data>
   <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
-    <value>Ange Budgetbelopp</value>
+    <value>Upprätta budgetar</value>
+    <comment>"Budget" as in "Cost allowed for a particular purpose" or "Revenue expected from a source".</comment>
   </data>
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Ladda upp bankfiler</value>
@@ -441,5 +443,42 @@
   </data>
   <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
     <value>Bitcoin arbetsplånbok ekotest</value>
+  </data>
+  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
+    <value>Ställ in anslutna konton</value>
+    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
+    <value>Upprätta kontoplan</value>
+    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
+  </data>
+  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
+    <value>Upprätta lönelista</value>
+  </data>
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>Min lön</value>
+    <comment>This lists salary payments for the logged on individual</comment>
+  </data>
+  <data name="Menu5_Ledgers_DepreciatingAmortizedAssets" xml:space="preserve">
+    <value>Tillgångars av- &amp; nedskrivningar</value>
+  </data>
+  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
+    <value>Av- och nedskrivningar</value>
+  </data>
+  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
+    <value>Lönejusteringar</value>
+    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
+  </data>
+  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
+    <value>Spårade transaktioner</value>
+    <comment>Tracking of special transactions</comment>
+  </data>
+  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
+    <value>Distribuerade tillgångar</value>
+    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
+  </data>
+  <data name="Menu5_Reports" xml:space="preserve">
+    <value>Rapporter</value>
+    <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
   </data>
 </root>

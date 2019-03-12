@@ -43,14 +43,14 @@
 
             if ($('#<%=this.ComboBudgets.ClientID %>_DropBudgets').combotree('tree').tree('getSelected') == null) {
                 isValid = false;
-                $('#<%=this.ComboBudgets.ClientID %>_SpanBudgets').addClass("entryError");
+                $('#<%=this.ComboBudgets.ClientID %>_SpanBudgets').addClass("data-entry-error");
                 alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Budget %>'));
             }
 
             <asp:Repeater ID="RepeaterErrorCheckTags" runat="server"><ItemTemplate>
                 if ($('#DropTags<%# Eval("TagSetId") %>').combotree('tree').tree('getSelected') == null) {
                     isValid = false;
-                    $('#SpanDropTags<%# Eval("TagSetId") %>').addClass("entryError");
+                    $('#SpanDropTags<%# Eval("TagSetId") %>').addClass("data-entry-error");
                     alertify.error(SwarmopsJS.unescape('<%=this.Localized_ValidationError_MissingTag %>'));
                 }
             </ItemTemplate></asp:Repeater>
@@ -70,7 +70,7 @@
                 success: function(msg) {
                     if (msg.d != true) {
                         isValid = false;
-                        $('#<%=CurrencyAmount.ClientID %>_TextInput').addClass("entryError");
+                        $('#<%=CurrencyAmount.ClientID %>_TextInput').addClass("data-entry-error");
                         alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Amount %>'));
                         <%=CurrencyAmount.ClientID %>_focus();
                     }
@@ -88,7 +88,7 @@
                     success: function(msg) {
                         if (msg.d != true) {
                             isValid = false;
-                            $('#<%=CurrencyAmount.ClientID %>_TextInput').addClass("entryError");
+                            $('#<%=CurrencyAmount.ClientID %>_TextInput').addClass("data-entry-error");
                             alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Amount %>'));
                             <%=CurrencyAmount.ClientID %>_focus();
                         }
@@ -106,7 +106,7 @@
                 success: function (msg) {
                     if (msg.d != true) {
                         isValid = false;
-                        $('#TextAmount').addClass("entryError");
+                        $('#TextAmount').addClass("data-entry-error");
                         alertify.error(SwarmopsJS.unescape('<%= this.Localized_ValidationError_Documents %>'));
                     }
                 }
@@ -118,7 +118,7 @@
         function validateTextField (fieldId, message) {
             if ($(fieldId).val().length == 0) {
                 alertify.error(message);
-                $(fieldId).addClass("entryError");
+                $(fieldId).addClass("data-entry-error");
                 $(fieldId).focus();
                 return false;
             }
@@ -144,7 +144,7 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label ID="BoxTitle" runat="server"/></h2>
     <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
-    <div class="entryFields">
+    <div class="data-entry-fields">
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextSupplier" /></div>
         <Swarmops5:CurrencyAmount runat="server" ID="CurrencyAmount" />
         <span class="vatEnabled"><Swarmops5:CurrencyAmount runat="server" ID="CurrencyVat" /></span>
@@ -164,9 +164,9 @@
         <div class="stacked-input-control"></div> <!-- placeholder for label-side H2 -->
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextAccount" /></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextReference" /></div>
-        <asp:Button ID="ButtonCreate" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return validateFields();" OnClick="ButtonCreate_Click" Text="Create"/>
+        <asp:Button ID="ButtonCreate" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick="return validateFields();" OnClick="ButtonCreate_Click" Text="Create"/>
     </div>
-    <div class="entryLabels">
+    <div class="data-entry-labels">
         <asp:Label runat="server" ID="LabelSupplier" /><br/>
         <asp:Label runat="server" ID="LabelAmount" /><br/>
         <span class="vatEnabled"><asp:Label runat="server" ID="LabelVat" /><br/></span>

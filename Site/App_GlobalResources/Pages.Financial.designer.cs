@@ -61,7 +61,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cash Advance #{0:N0} for {1} has been attested for {3:N2}..
+        ///   Looks up a localized string similar to Cash Advance #{0:N0} for {1} has been approved for {3:N2}..
         /// </summary>
         internal static string AttestCosts_AdvanceAttested {
             get {
@@ -70,7 +70,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cash Advance #{0:N0} for {1} was UN-attested.  It will not be paid out unless attested again..
+        ///   Looks up a localized string similar to The approval for Cash Advance #{0:N0} for {1} was RETRACTED.  It will not be paid out unless approved again..
         /// </summary>
         internal static string AttestCosts_AdvanceDeattested {
             get {
@@ -79,7 +79,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You cannot attest this amount. The budget is empty for the year {0}..
+        ///   Looks up a localized string similar to You cannot approve this amount. The budget is empty for the year {0}..
         /// </summary>
         internal static string AttestCosts_BudgetIsEmpty {
             get {
@@ -88,7 +88,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You cannot attest a negative amount..
+        ///   Looks up a localized string similar to You cannot approve a negative amount..
         /// </summary>
         internal static string AttestCosts_CannotAttestNegative {
             get {
@@ -97,7 +97,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You cannot attest a zero amount..
+        ///   Looks up a localized string similar to You cannot approve a zero amount..
         /// </summary>
         internal static string AttestCosts_CannotAttestZero {
             get {
@@ -133,7 +133,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expense Claim #{0:N0} from {1} for {2} {3:N2} has been attested..
+        ///   Looks up a localized string similar to Expense Claim #{0:N0} from {1} for {2} {3:N2} has been approved..
         /// </summary>
         internal static string AttestCosts_ExpenseAttested {
             get {
@@ -142,7 +142,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expense Claim #{0:N0} from {1} was DE-attested. It will not be paid out unless attested again..
+        ///   Looks up a localized string similar to Approval for Expense Claim #{0:N0} from {1} was RETRACTED. It will not be paid unless approved again..
         /// </summary>
         internal static string AttestCosts_ExpenseDeattested {
             get {
@@ -214,7 +214,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Costs waiting for your attestation.
+        ///   Looks up a localized string similar to Costs waiting for your approval.
         /// </summary>
         internal static string AttestCosts_Header_CostsAwaitingAttestation {
             get {
@@ -223,7 +223,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is where you attest costs that other people are requesting from your budgets. Nothing is paid before you have attested it..
+        ///   Looks up a localized string similar to This is where you approve costs that other people are requesting from your budgets. Nothing is paid before you have approved it..
         /// </summary>
         internal static string AttestCosts_Info {
             get {
@@ -232,7 +232,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invoice #{0:N0} from {1} for {2} {3:N2} has been attested..
+        ///   Looks up a localized string similar to Invoice #{0:N0} from {1} for {2} {3:N2} has been approved..
         /// </summary>
         internal static string AttestCosts_InvoiceAttested {
             get {
@@ -241,7 +241,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invoice #{0:N0} from {1} was UN-attested.  It will not be paid unless attested again..
+        ///   Looks up a localized string similar to Approval for Invoice #{0:N0} from {1} was RETRACTED.  It will not be paid unless approved again..
         /// </summary>
         internal static string AttestCosts_InvoiceDeattested {
             get {
@@ -250,7 +250,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attest.
+        ///   Looks up a localized string similar to Approve.
         /// </summary>
         internal static string AttestCosts_Modal_ButtonAmount {
             get {
@@ -259,7 +259,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attest.
+        ///   Looks up a localized string similar to Approve.
         /// </summary>
         internal static string AttestCosts_Modal_ButtonCorrect {
             get {
@@ -291,6 +291,15 @@ namespace Resources.Pages {
         internal static string AttestCosts_Modal_DenyTextPlaceholder {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_DenyTextPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (The amount must exclude any VAT specified!).
+        /// </summary>
+        internal static string AttestCosts_Modal_DescribeCorrectNoVat {
+            get {
+                return ResourceManager.GetString("AttestCosts_Modal_DescribeCorrectNoVat", resourceCulture);
             }
         }
         
@@ -331,7 +340,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fix problems or deny attestation.
+        ///   Looks up a localized string similar to Fix problems or deny approval.
         /// </summary>
         internal static string AttestCosts_Modal_Header {
             get {
@@ -340,7 +349,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I will attest this, but for a different amount..
+        ///   Looks up a localized string similar to I will approve this, but for a different amount..
         /// </summary>
         internal static string AttestCosts_Modal_RadioOptionAmount {
             get {
@@ -349,7 +358,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The amount is wrong. I will attest it with the correct amount..
+        ///   Looks up a localized string similar to The amount is wrong. I will approve it for the correct amount..
         /// </summary>
         internal static string AttestCosts_Modal_RadioOptionCorrect {
             get {
@@ -358,7 +367,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I will not attest this record. It is scratched..
+        ///   Looks up a localized string similar to I will not approve this record. It is scratched..
         /// </summary>
         internal static string AttestCosts_Modal_RadioOptionDeny {
             get {
@@ -385,7 +394,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are not enough funds remaining in the budget to attest this cost..
+        ///   Looks up a localized string similar to There are not enough funds remaining in the budget to approve this cost..
         /// </summary>
         internal static string AttestCosts_OutOfBudget {
             get {
@@ -394,7 +403,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are not enough funds to attest this. You can attest up to {0} {1:N2} more in this budget for the year {2}..
+        ///   Looks up a localized string similar to There are not enough funds to approve this. You can attest up to {0} {1:N2} more in this budget for the year {2}..
         /// </summary>
         internal static string AttestCosts_OutOfBudgetPrecise {
             get {
@@ -403,7 +412,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;strong&gt;OVERDRAFT BUDGET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;There are not enough funds remaining in the budget to attest this expense. Normally, it would be blocked from attestation. However, you may override this limitation and attest anyway, thereby causing the account to overdraft its budget.&lt;br/&gt;&lt;br/&gt;Do you want to attest the expense, thereby forcing an overdraft, or do you want to cancel attestation, staying on budget instead?&lt;br/&gt;&lt;br/&gt;.
+        ///   Looks up a localized string similar to &lt;strong&gt;OVERDRAFT BUDGET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;There are not enough funds remaining in the budget to approve this expense. Normally, it would be blocked from approval. However, you may override this limitation and attest anyway, thereby causing the account to overdraft its budget.&lt;br/&gt;&lt;br/&gt;Do you want to approve the expense, thereby forcing an overdraft, or do you want to cancel, staying on budget instead?&lt;br/&gt;&lt;br/&gt;.
         /// </summary>
         internal static string AttestCosts_OverdraftConfirm {
             get {
@@ -439,7 +448,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attest Costs.
+        ///   Looks up a localized string similar to Approve Costs.
         /// </summary>
         internal static string AttestCosts_PageTitle {
             get {
@@ -448,7 +457,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conference #{0:N0}, arranged by {1}, has been attested for {3:N2}..
+        ///   Looks up a localized string similar to Conference #{0:N0}, arranged by {1}, has been approved for {3:N2}..
         /// </summary>
         internal static string AttestCosts_ParleyAttested {
             get {
@@ -457,7 +466,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conference #{0:N0} by {1} was UN-attested.  It will not be greenlighted unless attested again..
+        ///   Looks up a localized string similar to Approval for Conference #{0:N0} by {1} was RETRACTED.  It will not be greenlighted unless approved again..
         /// </summary>
         internal static string AttestCosts_ParleyDeattested {
             get {
@@ -475,7 +484,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Salary #{0:N0} for {1} was DE-attested. It will not be paid out unless attested again..
+        ///   Looks up a localized string similar to Approval for Salary #{0:N0} for {1} was RETRACTED. It will not be paid out unless approved again..
         /// </summary>
         internal static string AttestCosts_SalaryDeattested {
             get {
@@ -484,7 +493,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;strong&gt;WARNING: UNINITIALIZED BUDGET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The cost you&apos;re approving belongs to an uninitialized budget -- an account in the ledger that lacks owner and doesn&apos;t have a set budget allowance for the year. Consider visiting the Account Plan and allocating budgets for the expected revenue and expenses.&lt;br/&gt;&lt;br/&gt;This message will only display once per visit to Attestations.&lt;br/&gt;.
+        ///   Looks up a localized string similar to &lt;strong&gt;WARNING: BUDGET NOT SET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The cost you&apos;re approving belongs to an account in the ledger that lacks owner and doesn&apos;t have a defined budget allowance for the year. Consider visiting the Chart of Accounts and allocating budgets for the expected revenue and expenses.&lt;br/&gt;&lt;br/&gt;This message will only display once per visit to Cost Approvals.&lt;br/&gt;.
         /// </summary>
         internal static string AttestCosts_Warn_UninitializedBudget {
             get {
@@ -871,6 +880,159 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upload Expensify CSV.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_CsvUploadDescription {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_CsvUploadDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;&lt;strong&gt;ERROR: Unable to parse the Expensify CSV.&lt;/strong&gt; If this is a CSV file from Expensify, then Swarmops needs the columns &quot;Timestamp&quot;, &quot;Amount&quot;, &quot;Merchant&quot;, &quot;Comment&quot;, &quot;Category&quot;, &quot;MCC&quot;, &quot;Original Currency&quot;, and &quot;Original Amount&quot; to be present in the file. If the organization reports VAT, then a further column called &quot;VAT&quot; is required.&lt;/p&gt;&lt;p&gt;Unable to proceed with this file.&lt;/p&gt;.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_Error_BadFile {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_Error_BadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;&lt;strong&gt;ERROR: The Expensify CSV file is missing required data fields.&lt;/strong&gt; The file appears to be missing at least one of the required fields of Expensify&apos;s default CSV profile. Refer to the technical documentation and compare with the file you tried to upload. (It is a more probable cause of error, of course, that you tried to upload the completely wrong file &amp;ndash; maybe a photograph instead of an Expensify CSV &amp;ndash; and that this is the cause for the missing expected data.)&lt;/p&gt;&lt;p&gt;Unable to pro [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_Error_InvalidCsv {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_Error_InvalidCsv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;&lt;strong&gt;ERROR: The Expensify CSV file doesn&apos;t have a VAT field.&lt;/strong&gt; Since this organization reports Value Added Tax (VAT) to authorities, this must be specified on a per-expense basis. Please enable VAT in Expensify and create a new CSV export profile that exports this under the column header &quot;VAT&quot;. If your team has already created such a CSV profile, you may just need to select it when exporting to CSV.&lt;/p&gt;&lt;p&gt;Unable to process this file.&lt;/p&gt;.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_Error_NeedsVat {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_Error_NeedsVat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you have many expense reports, you can gather them with Expensify and upload an Expensify CSV report here (which you obtain from at Expensify under Reports, Export, as CSV). Swarmops will use Expensify to fetch all the individual receipts and log them as separate expense claims for proper accounting..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_InstructionsBasic {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_InstructionsBasic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In order for this to work, since {0} reports VAT to the tax authorities, you&apos;ll need to modify the default Expensify CSV profile to include the VAT, which the default doesn&apos;t. Expensify&apos;s help pages has more on how to do this and if you&apos;re using Expensify on a team basis, your Expensify policy should already have a VAT-enabled CSV export profile..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_InstructionsNeedVat {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_InstructionsNeedVat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Based on the organization&apos;s settings, the &quot;Default CSV&quot; export profile in Expensify should be sufficient for Swarmops..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_InstructionsNothingAdvanced {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_InstructionsNothingAdvanced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All expense claims need a budget before submitting..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_NeedBudgetsForAll {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_NeedBudgetsForAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Expensify records to submit.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_NoRecordsLeft {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_NoRecordsLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expensify report&apos;s currency is.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_ReportCurrency {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_ReportCurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready to submit one claim.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_SubmitRecordSingle {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_SubmitRecordSingle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready to submit {0} claims.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_SubmitRecordsSeveral {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_SubmitRecordsSeveral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Claim successfully filed..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_SuccessOne {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_SuccessOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully filed {0} claims..
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_SuccessSeveral {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_SuccessSeveral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Another Expensify CSV File?.
+        /// </summary>
+        internal static string FileExpenseClaim_Expensify_UploadAnother {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Expensify_UploadAnother", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to myself.
+        /// </summary>
+        internal static string FileExpenseClaim_ForWhom_DefaultMyself {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_ForWhom_DefaultMyself", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is an expense claim from whom?.
+        /// </summary>
+        internal static string FileExpenseClaim_ForWhom_Prompt {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_ForWhom_Prompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Bank Details.
         /// </summary>
         internal static string FileExpenseClaim_HeaderBankDetails {
@@ -930,6 +1092,15 @@ namespace Resources.Pages {
         internal static string FileExpenseClaim_SuccessMessagePartTwoOwnBudget {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_SuccessMessagePartTwoOwnBudget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Expensify Report For Reimbursement.
+        /// </summary>
+        internal static string FileExpenseClaim_Title_Expensify {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_Title_Expensify", resourceCulture);
             }
         }
         
@@ -1087,11 +1258,20 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account (OCR).
+        ///   Looks up a localized string similar to ...and this.
         /// </summary>
-        internal static string PayoutMoney_GridHeader_Account_Ocr {
+        internal static string PayOutMoney_AutomationFieldNext {
             get {
-                return ResourceManager.GetString("PayoutMoney_GridHeader_Account_Ocr", resourceCulture);
+                return ResourceManager.GetString("PayOutMoney_AutomationFieldNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan this.
+        /// </summary>
+        internal static string PayOutMoney_AutomationFieldStart {
+            get {
+                return ResourceManager.GetString("PayOutMoney_AutomationFieldStart", resourceCulture);
             }
         }
         
@@ -1105,38 +1285,11 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Amount (OCR).
+        ///   Looks up a localized string similar to Currency, Method.
         /// </summary>
-        internal static string PayOutMoney_GridHeader_Amount_Ocr {
+        internal static string PayOutMoney_GridHeader_CurrencyMethod {
             get {
-                return ResourceManager.GetString("PayOutMoney_GridHeader_Amount_Ocr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Clearing / Account.
-        /// </summary>
-        internal static string PayOutMoney_GridHeader_BankAccount {
-            get {
-                return ResourceManager.GetString("PayOutMoney_GridHeader_BankAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bank.
-        /// </summary>
-        internal static string PayOutMoney_GridHeader_BankName {
-            get {
-                return ResourceManager.GetString("PayOutMoney_GridHeader_BankName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Due Date.
-        /// </summary>
-        internal static string PayOutMoney_GridHeader_DueDate {
-            get {
-                return ResourceManager.GetString("PayOutMoney_GridHeader_DueDate", resourceCulture);
+                return ResourceManager.GetString("PayOutMoney_GridHeader_CurrencyMethod", resourceCulture);
             }
         }
         
@@ -1146,6 +1299,15 @@ namespace Resources.Pages {
         internal static string PayOutMoney_GridHeader_PaidOut {
             get {
                 return ResourceManager.GetString("PayOutMoney_GridHeader_PaidOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pay.
+        /// </summary>
+        internal static string PayOutMoney_GridHeader_PayThis {
+            get {
+                return ResourceManager.GetString("PayOutMoney_GridHeader_PayThis", resourceCulture);
             }
         }
         
@@ -1168,15 +1330,6 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reference (OCR).
-        /// </summary>
-        internal static string PayOutMoney_GridHeader_Reference_Ocr {
-            get {
-                return ResourceManager.GetString("PayOutMoney_GridHeader_Reference_Ocr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Costs Ready For Payout.
         /// </summary>
         internal static string PayOutMoney_Header {
@@ -1186,20 +1339,65 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Costs for Payout (OCR for mobile apps).
-        /// </summary>
-        internal static string PayoutMoney_Header_Ocr {
-            get {
-                return ResourceManager.GetString("PayoutMoney_Header_Ocr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to These are the various forms of costs to the organization that have passed all the hurdles for payout. They are ready to be paid out to the recipient. Here is where you check them off as being paid out (probably while having your bank open in another window)..
         /// </summary>
         internal static string PayOutMoney_Info {
             get {
                 return ResourceManager.GetString("PayOutMoney_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is Paid.
+        /// </summary>
+        internal static string PayOutMoney_Modal_ConfirmPaid {
+            get {
+                return ResourceManager.GetString("PayOutMoney_Modal_ConfirmPaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currency and Amount.
+        /// </summary>
+        internal static string PayOutMoney_Modal_CurrencyAmount {
+            get {
+                return ResourceManager.GetString("PayOutMoney_Modal_CurrencyAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Execute This Payment Manually Now.
+        /// </summary>
+        internal static string PayOutMoney_Modal_Header {
+            get {
+                return ResourceManager.GetString("PayOutMoney_Modal_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you scanning this payment?.
+        /// </summary>
+        internal static string PayOutMoney_Modal_LabelOcr1 {
+            get {
+                return ResourceManager.GetString("PayOutMoney_Modal_LabelOcr1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show in machine-readable format.
+        /// </summary>
+        internal static string PayOutMoney_Modal_LabelOcr2 {
+            get {
+                return ResourceManager.GetString("PayOutMoney_Modal_LabelOcr2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfer Method.
+        /// </summary>
+        internal static string PayOutMoney_Modal_TransferMethod {
+            get {
+                return ResourceManager.GetString("PayOutMoney_Modal_TransferMethod", resourceCulture);
             }
         }
         
@@ -1227,6 +1425,15 @@ namespace Resources.Pages {
         internal static string PayOutMoney_PageTitle {
             get {
                 return ResourceManager.GetString("PayOutMoney_PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment is late.
+        /// </summary>
+        internal static string PayOutMoney_PaymentLate {
+            get {
+                return ResourceManager.GetString("PayOutMoney_PaymentLate", resourceCulture);
             }
         }
         
@@ -1528,7 +1735,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The receipts for Expense Claim #{0:N0} for {1} {2:N2} have been DE-validated. The expense claim will not proceed to payout unless re-validated..
+        ///   Looks up a localized string similar to Validation for receipts for Expense Claim #{0:N0} for {1} {2:N2} was RETRACTED. The expense claim will not proceed to payout unless re-validated..
         /// </summary>
         internal static string ValidateReceipts_ReceiptsDevalidated {
             get {

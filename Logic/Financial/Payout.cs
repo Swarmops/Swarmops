@@ -25,28 +25,19 @@ namespace Swarmops.Logic.Financial
             LoadDependencies();
         }
 
-        public static void Create()
+        public static Payout FromDependency(IHasIdentity dependency, FinancialDependencyType dependencyType = FinancialDependencyType.Unknown)
         {
-            // is this even needed?
+            int payoutId = 0;
 
-            throw new NotImplementedException();
-        }
+            if (dependencyType == FinancialDependencyType.Unknown)
+            {
+                payoutId = SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency(dependency);
+            }
+            else
+            {
+                payoutId = SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency(dependency, dependencyType);
+            }
 
-        public static Payout Create(Payout payout)
-        {
-            throw new NotImplementedException(); // Seems not to be needed
-
-            // This is quite unique in PW4 -- this is the only class which is pre-constructed and
-            // can take an instance of its own kind as parameter in creation
-
-            // TODO: Create in database
-
-            // return payout;
-        }
-
-        public static Payout FromDependency(IHasIdentity dependency)
-        {
-            int payoutId = SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency(dependency);
             if (payoutId == 0)
             {
                 throw new ArgumentException("Supplied item does not have an associated payout");
@@ -184,6 +175,40 @@ namespace Swarmops.Logic.Financial
             get { return base.AmountCents; }
         }
 
+
+        public PaymentTransferInfo PaymentTransferInfo
+        {
+            get
+            {
+                if (this.DependentExpenseClaims.Count > 0)
+                {
+                    return PaymentTransferInfo.FromObject(this.DependentExpenseClaims[0]);
+                }
+                if (this.DependentCashAdvancesPayout.Count > 0)
+                {
+                    return PaymentTransferInfo.FromObject(this.DependentCashAdvancesPayout[0]);
+                }
+                if (this.DependentCashAdvancesPayback.Count > 0)
+                {
+                    return PaymentTransferInfo.FromObject(this.DependentCashAdvancesPayback[0]);
+                }
+                if (this.DependentSalariesNet.Count > 0)
+                {
+                    return PaymentTransferInfo.FromObject(this.DependentSalariesNet[0]);
+                }
+                if (this.DependentSalariesTax.Count > 0)
+                {
+                    throw new NotImplementedException("Need to implement tax information from PaymentTransferInfo");
+                }
+                if (this.DependentInvoices.Count > 0)
+                {
+                    return PaymentTransferInfo.FromObject(this.DependentInvoices[0]);
+                }
+
+                throw new NotImplementedException("Unknown object or dependency - can't construct PaymentTransferInfo");
+            }
+        }
+
         public bool HasNativeAmount
         {
             get
@@ -215,7 +240,7 @@ namespace Swarmops.Logic.Financial
         
         }
 
-    public new string Reference
+        public new string Reference
         {
             set
             {
@@ -379,7 +404,7 @@ namespace Swarmops.Logic.Financial
 
                         SwarmopsLogEntry.Create (null,
                             new PayoutCreatedLogEntry (null, advance.Person, organization,
-                                organization.Currency, advance.AmountCents/100.0,
+                                organization.Currency, advance.AmountCents,
                                 "Cash Advance Paid Out"),
                             advance.Person, advance);
 
@@ -508,7 +533,7 @@ namespace Swarmops.Logic.Financial
 
                     SwarmopsLogEntry.Create (creator,
                         new PayoutCreatedLogEntry (creator, advance.Person, organization,
-                            organization.Currency, amountCents/100.0,
+                            organization.Currency, amountCents,
                             "Cash Advance Paid Out"),
                         advance.Person, advance);
 
@@ -604,7 +629,7 @@ namespace Swarmops.Logic.Financial
 
                 SwarmopsLogEntry.Create (creator,
                     new PayoutCreatedLogEntry (creator, beneficiaryPerson, organization,
-                        organization.Currency, amountCents/100.0,
+                        organization.Currency, amountCents,
                         referenceString),
                     beneficiaryPerson);
 
@@ -695,18 +720,9 @@ namespace Swarmops.Logic.Financial
                     salary.TaxPaid = true;
                 }
 
-                string referenceString = string.Empty;
-                Organization organization = Organization.FromIdentity (organizationId);
 
-                if (identityList.Count == 1)
-                {
-                    referenceString = "Tax for salary #" + identityList[0];
-                }
-                else
-                {
-                    identityList.Sort();
-                    referenceString = "Tax for salaries " + Formatting.GenerateRangeString (identityList);
-                }
+                Organization organization = Organization.FromIdentity (organizationId);
+                identityList.Sort();
 
                 payoutId = SwarmDb.GetDatabaseForWriting()
                     .CreatePayout (organization.Identity, "The Tax Man", organization.Parameters.TaxAccount,

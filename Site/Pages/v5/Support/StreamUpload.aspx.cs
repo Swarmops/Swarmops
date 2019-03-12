@@ -38,11 +38,29 @@ namespace Swarmops.Pages.v5.Support
             bool hasPermission = false;
             string serverFileName = document.ServerFileName;
 
-            if (CurrentOrganization.HasOpenLedgers)
+            if (document.DocumentType == DocumentType.Logo)
             {
+                // Always allow organization logos to display,
+                // or the "signup" page won't work without
+                // credentials
+
                 hasPermission = true;
             }
             else
+            {
+                if (document.UploadedByPersonId == this.CurrentAuthority.Person.Identity)
+                {
+                    hasPermission = true; // can always view documents you yourself uploaded
+                }
+
+                if (CurrentOrganization.HasOpenLedgers)
+                {
+                    hasPermission = true;
+                }
+            }
+
+
+            if (!hasPermission)
             {
 
 
@@ -174,13 +192,14 @@ namespace Swarmops.Pages.v5.Support
 
             string contentType = string.Empty;
 
-            string fileNameLower = document.ClientFileName.ToLowerInvariant();
+            string clientFileNameLower = document.ClientFileName.ToLowerInvariant().Trim();
+            string serverFileNameLower = document.ServerFileName.ToLowerInvariant().Trim();
 
-            if (fileNameLower.EndsWith (".pdf"))
+            if (clientFileNameLower.EndsWith (".pdf"))
             {
                 contentType = MediaTypeNames.Application.Pdf;
             }
-            else if (fileNameLower.EndsWith (".png"))
+            else if (clientFileNameLower == (".png") || serverFileNameLower.EndsWith (".png"))  // native PNG or converted PDF
             {
                 contentType = "image/png"; // why isn't this in MediaTypeNames?
                 if (Request.QueryString["hq"] == "1")
@@ -192,7 +211,7 @@ namespace Swarmops.Pages.v5.Support
                     }
                 }
             }
-            else if (fileNameLower.EndsWith (".jpg"))
+            else if (clientFileNameLower.EndsWith (".jpg") || clientFileNameLower.EndsWith(".jpeg"))
             {
                 contentType = MediaTypeNames.Image.Jpeg;
             }

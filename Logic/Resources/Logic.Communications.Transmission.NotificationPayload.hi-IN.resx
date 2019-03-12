@@ -133,6 +133,9 @@
   
   
   
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>जब Hotwallet से स्वचालित भुगतान का प्रयास किया जाता है, तब साइन इन करने के लिए उपयोग की गई निजी कुंजी उन सार्वजनिक कुंजी से मेल नहीं खाती जो आवश्यक धनराशि इकट्ठा करती थीं। यह एक गंभीर स्थिति है।</value>
+  </data>
   
   
   
@@ -140,6 +143,14 @@
   
   
   
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>[CurrencyCode] [BudgetAmountFloat] के लिए [RequestPurpose] के लिए [संगठननाम] के साथ आपकी नकद अग्रिम इनकार कर दिया गया है। नीचे दिए गए पाठ को इसे अस्वीकार करने के कारण के रूप में दिया गया था: [एंबेडेडप्रारूप स्वरूपित]
+</value>
+  </data>
+  
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>[CurrencyCode] [BudgetAmountFloat] के लिए [RequestPurpose] के लिए [संगठनात्मक] के साथ नकद अग्रिम के लिए आपका अनुरोध, संगठन के एकाउंटेंट द्वारा भुगतान के रूप में चिह्नित किया गया है इसका मतलब है कि आपको जल्द ही अपने खाते की राशि दिखाई देनी चाहिए।</value>
+  </data>
   
   
   

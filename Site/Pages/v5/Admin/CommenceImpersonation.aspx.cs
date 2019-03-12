@@ -85,6 +85,13 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             get { return JavascriptEscape(Resources.Pages.Admin.CommenceImpersonation_Confirm); }
         }
 
+        public string Localized_Impersonate
+        {
+            get { return JavascriptEscape(Resources.Pages.Admin.CommenceImpersonation_Impersonate); }
+        }
+
+
+
         /*
         public string Localized_ValidationError_BankAccount
         {

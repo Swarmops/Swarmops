@@ -1,0 +1,20 @@
+*CHECKLIST FOR BETA-7 RELEASE TODAY*
+
+☑ Approaching localization deadline (12 noon European time)
+☐ Localization frozen, loc package building
+☐ Loc package integrated with sources
+☐ Release candidate building
+☐ Release candidate packaged
+☐ Xenial, Bionic, and Stretch test machines ready to go
+☐ Xenial install passes
+☐ Bionic install passes
+☐ Stretch install passes
+☐ Xenial configuration passes
+☐ Bionic configuration passes
+☐ Stretch configuration passes
+☐ Xenial bitcoin echo test passes
+☐ Bionic bitcoin echo test passes
+☐ Stretch bitcoin echo test passes
+☐ All tests pass
+☐ Release packaging
+☐ Release packaged as build XXXX and available in repositories

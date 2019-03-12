@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Swarmops.Basic.Types.Common;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
@@ -61,20 +62,141 @@ namespace Swarmops.Logic.Financial
             return FromIdentityAggressive(vatReportId);
         }
 
+        public static void CreateNext(Organization organization)
+        {
+            // Creates all VAT reports that are required up until today.
+            // Normally this is just one, but in the case of a missed report slot, this function will
+            // catch up with all the missed ones, too.
+
+            DateTime nowUtc = DateTime.UtcNow;
+            DateTime nextReportDue = NextReportDue(organization);
+            int reportMonthInterval = organization.VatReportFrequencyMonths;
+
+            if (nextReportDue > nowUtc)
+            {
+                throw new InvalidOperationException("VAT report is not yet due or has already been generated");
+            }
+
+            DateTime thisReport = new DateTime(organization.FirstFiscalYear, 1, 1);  // default to first report
+            VatReports reports = VatReports.ForOrganization(organization, true);
+
+            if (reports.Count > 0)
+            {
+                reports.Sort(VatReports.VatReportSorterByDate);
+
+                DateTime lastReport = new DateTime(reports.Last().YearMonthStart / 100, reports.Last().YearMonthStart % 100,
+                    1);
+
+                thisReport = lastReport.AddMonths(reportMonthInterval);
+            }
+
+            while (thisReport.AddMonths(reportMonthInterval) < nowUtc)
+            {
+                VatReport.Create(organization, thisReport.Year, thisReport.Month, reportMonthInterval);
+                thisReport = thisReport.AddMonths(reportMonthInterval);
+            }
+
+
+        }
+
+        public static ReportRequirement IsRequired(Organization organization)
+        {
+            // If org isn't VAT enabled, the report is never required
+
+            if (!organization.VatEnabled)
+            {
+                return ReportRequirement.NotRequired;
+            }
+
+            DateTime nowUtc = DateTime.UtcNow;
+            int reportMonthInterval = organization.VatReportFrequencyMonths;
+
+            // Check when next report is due
+
+            DateTime nextReportDue = NextReportDue(organization);
+
+            // if the next report is due (reportMonthInterval) months from now,
+            // then the report for this month has already been completed
+
+            DateTime lastReportDate = nextReportDue.AddMonths(-reportMonthInterval);
+            if (lastReportDate.Year == nowUtc.Year && lastReportDate.Month == nowUtc.Month)
+            {
+                // Already completed
+                return ReportRequirement.Completed;
+            }
+
+            // If the next report is due this month, it's required
+
+            if (nextReportDue.Year == nowUtc.Year && nextReportDue.Month == nowUtc.Month)
+            {
+                return ReportRequirement.Required;
+            }
+
+            // If the next report was due earlier this year, it's definitely required
+
+            if (nextReportDue.Year == nowUtc.Year && nextReportDue.Month < nowUtc.Month)
+            {
+                return ReportRequirement.Required; // if there was a "VeryRequired" option it would be appropriate here
+            }
+
+            // If the next report was due last year, it's even more required
+
+            if (nextReportDue.Year < nowUtc.Year)
+            {
+                return ReportRequirement.Required;
+            }
+
+            // Otherwise not required
+
+            return ReportRequirement.NotRequired;
+
+        }
+
+
+        public static DateTime NextReportDue(Organization organization)
+        {
+            int reportMonthInterval = organization.VatReportFrequencyMonths;
+
+            // Get the list of previous VAT reports
+
+            VatReports reports = VatReports.ForOrganization(organization, true);
+
+            if (reports.Count == 0)
+            {
+                DateTime firstReportGenerationTime =
+                    new DateTime(organization.FirstFiscalYear, 1, 1).AddMonths(reportMonthInterval);
+                    // construct VAT report on the first day of the new month
+
+                return firstReportGenerationTime;
+            }
+            else // if reports.Count > 0
+            {
+                reports.Sort(VatReports.VatReportSorterByDate);
+
+                DateTime lastReport = new DateTime(reports.Last().YearMonthStart/100, reports.Last().YearMonthStart%100,
+                    1);
+
+                DateTime nextReport = lastReport.AddMonths(reportMonthInterval);
+                DateTime nextReportGenerationTime = nextReport.AddMonths(reportMonthInterval);
+
+                return nextReportGenerationTime;
+            }
+        }
+
+
         public static VatReport Create(Organization organization, int year, int startMonth, int monthCount)
         {
             VatReport newReport = CreateDbRecord(organization, year, startMonth, monthCount);
-            VatReportItems testItems = newReport.Items;
-            DateTime startDate = new DateTime(year, startMonth, 1).AddYears(-1); // start a year before report starts
             DateTime endDate = new DateTime(year, startMonth, 1).AddMonths(monthCount);
 
             FinancialAccount vatInbound = organization.FinancialAccounts.AssetsVatInboundUnreported;
             FinancialAccount vatOutbound = organization.FinancialAccounts.DebtsVatOutboundUnreported;
             FinancialAccount sales = organization.FinancialAccounts.IncomeSales;
+            FinancialAccounts salesTree = sales.ThisAndBelow();
 
             FinancialAccountRows inboundRows = RowsNotInVatReport(vatInbound, endDate);
             FinancialAccountRows outboundRows = RowsNotInVatReport(vatOutbound, endDate);
-            FinancialAccountRows turnoverRows = RowsNotInVatReport(sales, endDate);
+            FinancialAccountRows turnoverRows = RowsNotInVatReport(salesTree, endDate);
 
             Dictionary<int, bool> transactionsIncludedLookup = new Dictionary<int, bool>();
 
@@ -203,8 +325,7 @@ namespace Swarmops.Logic.Financial
                 throw new InvalidOperationException("Cannot add items once the report is released");
             }
 
-            VatReportItem newItem = VatReportItem.Create(this, transaction, turnoverCents, vatInboundCents,
-                vatOutboundCents);
+            VatReportItem.Create(this, transaction, turnoverCents, vatInboundCents, vatOutboundCents);
         }
 
         public void Release()
@@ -230,6 +351,17 @@ namespace Swarmops.Logic.Financial
         {
             get { return VatReportItems.ForReport(this); }
         }
+
+
+        private static FinancialAccountRows RowsNotInVatReport(FinancialAccounts accounts, DateTime endTime)
+        {
+            FinancialAccountRows result = new FinancialAccountRows();
+
+            result.AddRange(accounts.SelectMany(account => RowsNotInVatReport(account, endTime)));
+
+            return result;
+        }
+
 
         private static FinancialAccountRows RowsNotInVatReport(FinancialAccount account, DateTime endDateTime)
         {
@@ -273,6 +405,64 @@ namespace Swarmops.Logic.Financial
                         DateTime start = new DateTime(YearMonthStart/100, YearMonthStart%100, 2);
 
                         return String.Format(Resources.Logic_Financial_VatReport.Description_Months,
+                            start, start.AddMonths(MonthCount - 1));
+                }
+            }
+        }
+
+
+        public static string NextReportDescription(Organization organization)
+        {
+            DateTime nextReportDue = NextReportDue(organization);
+            int monthInterval = organization.VatReportFrequencyMonths;
+            DateTime nextReportConcerns = nextReportDue.AddMonths(-monthInterval);
+
+            switch (monthInterval)
+            {
+                case 1:
+                    return String.Format(Resources.Logic_Financial_VatReport.Description_SingleMonth,
+                        new DateTime(nextReportConcerns.Year, nextReportConcerns.Month, 2)); // the 2 is to prevent timezone errors
+
+                case 12:
+                    return String.Format(Resources.Logic_Financial_VatReport.Description_FullYear,
+                        nextReportConcerns.Year);
+
+                default:
+                    return String.Format(Resources.Logic_Financial_VatReport.Description_Months,
+                        nextReportConcerns, nextReportConcerns.AddMonths(monthInterval - 1));
+
+            }
+        }
+
+        public static string LastReportDescription(Organization organization)
+        {
+            VatReports reports = VatReports.ForOrganization(organization, true);
+            if (reports.Count == 0)
+            {
+                throw new InvalidOperationException("Cannot look up last description of nonexistent VAT report collection");
+            }
+
+            reports.Sort(VatReports.VatReportSorterByDate);
+            return reports.Last().Description;
+        }
+
+
+        public string DescriptionShort
+        {
+            get
+            {
+                switch (MonthCount)
+                {
+                    case 1:
+                        return String.Format("{0:MMM yyyy}",
+                            new DateTime(YearMonthStart / 100, YearMonthStart % 100, 2));
+                    case 12:
+                        return String.Format("{0}",
+                            YearMonthStart / 100);
+                    default:
+                        DateTime start = new DateTime(YearMonthStart / 100, YearMonthStart % 100, 2);
+
+                        return String.Format("{0:MMM}-{1:MMM yyyy}",
                             start, start.AddMonths(MonthCount - 1));
                 }
             }

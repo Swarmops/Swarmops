@@ -514,7 +514,7 @@
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
   <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>crwdns6555394:0crwdne6555394:0</value>
+    <value>crwdns6556761:0crwdne6556761:0</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
@@ -826,8 +826,8 @@
     <value>crwdns6556513:0crwdne6556513:0</value>
   </data>
   <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
-    <value>crwdns6556514:0crwdne6556514:0</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
+    <value>crwdns6563328:0{0}crwdnd6563328:0{1}crwdne6563328:0</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
   </data>
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>crwdns6556515:0crwdne6556515:0</value>
@@ -945,5 +945,156 @@
   </data>
   <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
     <value>crwdns6556704:0{0:N0}crwdnd6556704:0{1}crwdne6556704:0</value>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>crwdns6556730:0crwdne6556730:0</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>crwdns6556736:0crwdne6556736:0</value>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>crwdns6556755:0crwdne6556755:0</value>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>crwdns6556762:0crwdne6556762:0</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>crwdns6556763:0crwdne6556763:0</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>crwdns6556764:0crwdne6556764:0</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>crwdns6556765:0crwdne6556765:0</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>crwdns6556781:0crwdne6556781:0</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>crwdns6556792:0crwdne6556792:0</value>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>crwdns6556804:0crwdne6556804:0</value>
+  </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>crwdns6563330:0{0}crwdnd6563330:0{1}crwdne6563330:0</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>crwdns6563366:0crwdne6563366:0</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>crwdns6563368:0crwdne6563368:0</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>crwdns6563370:0crwdne6563370:0</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Financial_Ebitda_Long" xml:space="preserve">
+    <value>crwdns6563372:0crwdne6563372:0</value>
+  </data>
+  <data name="Financial_Ebitda_Short" xml:space="preserve">
+    <value>crwdns6563374:0crwdne6563374:0</value>
+    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
+  </data>
+  <data name="Financial_AllBalancesSettled" xml:space="preserve">
+    <value>crwdns6563482:0crwdne6563482:0</value>
+    <comment>Nobody owes anybody anything</comment>
+  </data>
+  <data name="Financial_CurrentBalance" xml:space="preserve">
+    <value>crwdns6563484:0crwdne6563484:0</value>
+  </data>
+  <data name="Financial_NoPaymentHistory" xml:space="preserve">
+    <value>crwdns6563486:0crwdne6563486:0</value>
+  </data>
+  <data name="Financial_Owed" xml:space="preserve">
+    <value>crwdns6563488:0crwdne6563488:0</value>
+    <comment>As in, "Amount Owed"</comment>
+  </data>
+  <data name="Financial_Paid" xml:space="preserve">
+    <value>crwdns6563490:0crwdne6563490:0</value>
+    <comment>As in, "Amount Paid To Person"</comment>
+  </data>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>crwdns6563492:0crwdne6563492:0</value>
+  </data>
+  <data name="Financial_PaymentSpecification" xml:space="preserve">
+    <value>crwdns6563494:0{0:N0}crwdne6563494:0</value>
+    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
+  </data>
+  <data name="Financial_PayoutSpecification" xml:space="preserve">
+    <value>crwdns6563496:0{0:N0}crwdne6563496:0</value>
+    <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
+  <data name="Financial_PersonIsOwed" xml:space="preserve">
+    <value>crwdns6563498:0crwdne6563498:0</value>
+    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
+  </data>
+  <data name="Financial_PersonOwes" xml:space="preserve">
+    <value>crwdns6563500:0crwdne6563500:0</value>
+    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
+  </data>
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>crwdns6563502:0crwdne6563502:0</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
+  </data>
+  <data name="Financial_YouAreOwed" xml:space="preserve">
+    <value>crwdns6563504:0{0}crwdne6563504:0</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Financial_YouOwe" xml:space="preserve">
+    <value>crwdns6563506:0crwdne6563506:0</value>
+    <comment>Like Person Owes, but directed at the user at the screen</comment>
+  </data>
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>crwdns6563508:0crwdne6563508:0</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
+  </data>
+  <data name="Global_Closed" xml:space="preserve">
+    <value>crwdns6563510:0crwdne6563510:0</value>
+    <comment>As in "record or transaction closed"</comment>
+  </data>
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>crwdns6563512:0crwdne6563512:0</value>
+    <comment>There are no records of the requested type</comment>
+  </data>
+  <data name="Global_Error_Concurrency" xml:space="preserve">
+    <value>crwdns6563514:0crwdne6563514:0</value>
+    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>crwdns6563516:0crwdne6563516:0</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>crwdns6563518:0crwdne6563518:0</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
+  <data name="Global_Opened" xml:space="preserve">
+    <value>crwdns6563520:0crwdne6563520:0</value>
+    <comment>As in "record or transaction opened"</comment>
+  </data>
+  <data name="IconTooltip_Barcode_Scanning" xml:space="preserve">
+    <value>crwdns6563590:0crwdne6563590:0</value>
+    <comment>This is when Swarmops can display an expense-to-be-paid in a format, that a mobile banking app can read directly, such as a QR code or other machine-readable format.</comment>
+  </data>
+  <data name="Financial_DueDateShort" xml:space="preserve">
+    <value>crwdns6563592:0crwdne6563592:0</value>
+    <comment>As "due date", as in when a payment is expected, but just the word "due" to be combined with an actual date in the UI. Example: *Due* Jan 21.</comment>
+  </data>
+  <data name="Global_DateFormatLongDateMonth" xml:space="preserve">
+    <value>crwdns6563594:0crwdne6563594:0</value>
+    <comment>Format used for just date and month (no year). The formats are MMMM for month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages use different ways to write month and date, for example, German would write "23. Dezember" (note the dot), a format which would be "{0:d}. {0:MMMM}".</comment>
+  </data>
+  <data name="Global_DateFormatShortDateMonth" xml:space="preserve">
+    <value>crwdns6563596:0crwdne6563596:0</value>
+    <comment>Format used for just date and month (no year). The formats are MMM for three-letter month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages write month and date in different orders and with different separators. Do keep the month NAME though, rather than using the month number, even if that's common in the target language.</comment>
   </data>
 </root>

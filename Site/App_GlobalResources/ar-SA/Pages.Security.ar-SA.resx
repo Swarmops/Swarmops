@@ -126,7 +126,9 @@
   <data name="AccessDenied_PageTitle" xml:space="preserve">
     <value>غير مسموح</value>
   </data>
-  
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>&lt;p&gt; لقد قام الإطار الأمني لسوارموبس بمنعك من الولوج إلى الصفحة التي كنت تريد الدخول إليها. هذا في الغالب راجع إلى أن بعض هذه الوظائف تتعدى التصاريح الممنوحة لك من قبل هته المنظمة (&lt;em&gt;{0}&lt;/em&gt;). هذا الشيء لم يتم تسجيله أو الإبلاغ عنه في أي مكان.&lt;/p&gt;&lt;p&gt;هناك العديد من الأسباب التي يمكن أن تفسر سبب حدوث هذا المشكل:&lt;/p&gt;</value>
+  </data>
   <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
     <value>المنظمة الحالية</value>
   </data>
@@ -154,9 +156,15 @@
   <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
     <value>في انتظار ترقية قاعدة البيانات</value>
   </data>
-  
-  
-  
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;هناك عملية ترقية تجري حاليا لقواعد البيانات، الأمر الذي سيمنعك من الولوج إلى هذه الصفحة.&lt;strong&gt; هذا شرط مؤقت &lt;/strong&gt; كما أن ملقمات Swarmops تكون قد بدأت بالعمليات اللازمة للقيام بعملية الترقية. &lt;/p&gt; &lt;p&gt; قم بإعادة تحديث الصفحة بعد بضعة دقائق، وإذا لا زال نفس الشرط قائما بعد أكثر من خمسة عشرة دقيقة، قم بالتبليغ عن هذه المشكلة للمدير.&lt;/p&gt;</value>
+  </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>إن الحساب &lt;strong&gt; لم يتم قفله&lt;/strong&gt;. لايوجد حساب بهذا الوصف, أو لربما التذكرة خاطئة أو قديمة جدا. إن كنت لا تزال تريد قفل هذا الحساب, قم بالإتصال بمدراء تنصيب سوارموبس.</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>إذا كنت ترى هته الصفحة, فهذا راجع أنك تريد إغلاق أحد الحسابات لأسباب أمنية. إن كان الرابط صالحا و لم تنتهي صلاحيته بعد, فهذا يعني أن الحساب قد تم إغلاقه بالفعل.</value>
+  </data>
   <data name="LockdownAccount_PageTitle" xml:space="preserve">
     <value>تأمين حساب المستخدم</value>
   </data>
@@ -166,42 +174,79 @@
   <data name="LockdownAccount_Ticket" xml:space="preserve">
     <value>تذكرة التأمين</value>
   </data>
-  
-  
-  
-  
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>يقوم &lt;strong&gt;إفتح السجلات&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;{0} يقوم بتشغيل السجل الموزع (Open Ledgers). هذا يعني أنه لا يمكن لأي أحد مراقبة التقارير المالية والدفاتر المحفوظة. لقد تم تسجيل دخولك في عمليات المنظمة فقط لتقوم بهذا.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt; عملية التأكيد ذو العاملين لـ BitId الآن مسموح بها.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; من الآن فصاعدا، يمكنك إستعمال محفظتك للبتكوين من أجل تسجيل الدخول ( ويجب &lt;strong&gt; عليك &lt;/strong&gt; فعل ذلك).
+حسنا فعلت بتعزيزك للأمن.&lt;br/&gt;&lt;br/&gt; ولا تنسى بأن تقوم بتأمين هاتفك بكلمة السر أيضا.</value>
+  </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;تسجيل الدخول بالBITID ضروري&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; تسجيل الدخول يتطلب الإثبات من BitId كما هو محدد من قبل صاحب الحساب. لا يمكنك الدخول فقط باستعمال اسم المستخدم و كلمة السر.</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
   <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
     <value>أدخل الرمز الخاص بك من Google Authenticator</value>
   </data>
-  
+  <data name="Login_Header" xml:space="preserve">
+    <value>قم بتسجيل الدخول بتوقيع البتكوين (BitId)</value>
+  </data>
   <data name="Login_Help" xml:space="preserve">
     <value>المساعده</value>
   </data>
-  
+  <data name="Login_Info" xml:space="preserve">
+    <value>قم بتسجيل الدخول إلى سوارموبس باستعمال الbitid لمحفظة البتكوين. لن تحتاج إلى أي رصيد على هته الأخيرة. إن لم تكن تتوفر على محفظة للبتكوين و تحتوي على bitid, فيمكنك تسجيل الدخول يدويا باستعمال اسم المستخدم و كلمة السر.(اسم المستخدم لديك هو اسمك أو بريدك الإلكتروني.)</value>
+  </data>
   <data name="Login_LoggingIn" xml:space="preserve">
     <value>تسجيل الدخول. الرجاء الانتظار...</value>
   </data>
-  
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>تسجيل الدخول يدويا بكلمة السر</value>
+    <comment>Header to manual username/password form</comment>
+  </data>
   <data name="Login_PageTitle" xml:space="preserve">
     <value>تسجيل دخول</value>
   </data>
   <data name="Login_Password" xml:space="preserve">
     <value>تخطي</value>
   </data>
-  
-  
-  
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>طلب المساعدة, لقد فقدت كلمة السر!</value>
+  </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>قم بفتح حساب لي بـ{0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>هل تريد الإنضمام؟</value>
+  </data>
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
     <value>لا يتعرف نظام سوارموبس على هذا العنوان. الرجاء تسجيل الدخول يدوياً وتفعيل عنوانك قبل استخدامه لتسجيل الدخول.</value>
   </data>
-  
-  
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>إستعمال تأكيد ذو عاملين (2fa) لـ BitID ؟</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>تسجيل الدخول يدويا بكلمة السر ؟</value>
+    <comment>Switches from BitId to Username/Password form</comment>
+  </data>
   <data name="Login_Username" xml:space="preserve">
     <value>مستخدم</value>
   </data>
-  
-  
-  
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>لم يتم العثور على أية تذكرة لتغيير كلمة السر لهذا البريد الإلكتروني, لا وجود لهذا العنوان, أو تذكرة تغيير كلمة السر غير صحيحة, أو قد إنتهت صلاحيتها.&lt;br/&gt;&lt;br/&gt;
+&lt;strong&gt;تعذر تغيير كلمة السر.&lt;/strong&gt;</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>أنت على مشارف تغيير كلمة السر لأحد الحسابات. قم بإدخال كلمة السر الجديدة مرتين وسجل الدخول.(إذا كنت تريد الشروع في إجرائات إعادة ضبط كلمة السر, فأنت بحاجة إلى تذكرة.&lt;a href="/Security/RequestPasswordReset"&gt; قم بإنشاء تذكرة.&lt;/a&gt;)</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>قم بإدخال البريد الإلكتروني الخاص بك من أجل تلقي التعليمات حول كيفية إعادة ضبط كلمة المرور. التعليمات سوف تتضمن كودا ساري المفعول لوقت محدد و الذي سوف تستعمله من أجل الإستمرار.</value>
+  </data>
   <data name="ResetPassword_Mail1" xml:space="preserve">
     <value>أدخل عنوان بريدك الإلكتروني</value>
   </data>
@@ -223,7 +268,9 @@
   <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
     <value>تكرار كلمة المرور الجديدة</value>
   </data>
-  
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>يمكنك تغيير كلمة السر المربوطة بالبريد الإلكتروني. سوف يتم إرسال رابط إلى بريدك الإلكتروني والذي يحتوي على جميع المراحل التي يجب إتباعها من أجل تغيير كلمة السر الخاصة بك.</value>
+  </data>
   <data name="ResetPassword_Reset" xml:space="preserve">
     <value>إعادة ضبط</value>
   </data>
@@ -233,5 +280,7 @@
   <data name="ResetPassword_Ticket" xml:space="preserve">
     <value>تذكرة</value>
   </data>
-  
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>إن كان البريد الإلكتروني مرتبطا بأحد الحسابات على التنصيب الحالي لسوارموبس,&lt;strong&gt;فلقد تم إرسال تذكرة لتغيير كلمة السر.&lt;/strong&gt; قم بفتح تلك المراسلة واضغط على الرابط الذي ستجده من أجل تغيير كلمة السر الخاصة بك.(إن لم تجد أية مراسلة, فهذا يعني أنه لم يرسل أي شيئ.)&lt;br/&gt;&lt;br/&gt; يمكنك الأن إغلاق هذه التبويبة. فأنت لم تعد بحاجة لها.</value>
+  </data>
 </root>

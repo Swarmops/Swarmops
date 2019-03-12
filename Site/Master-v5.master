@@ -13,7 +13,7 @@
 
     <!-- jQuery and plugins -->
 
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.2.0.3.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery-3.3.1.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery-ui.1.11.1.min.js" ></script>
 
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.tmpl.js" ></script>
@@ -26,7 +26,7 @@
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/qrcode.min.js"></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.qrcode.min.js"></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/odometer.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/odometer-patched.js" ></script>
 
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
@@ -73,7 +73,8 @@
         window.odometerOptions = {
             auto: false, // Don't automatically initialize everything with class 'odometer'
             theme: 'car', // Specify the theme (if you have more than one theme css file on the page)
-            duration: 1500 // time to update
+            duration: 1500, // time to update
+            format: '(,ddd).dd'  // two decimal places at most
         };
 
         $(document).ready(function () {
@@ -192,7 +193,14 @@
             $('#<%=this.SearchBox.ClientID%>').blur(function() {
                 $('#<%=this.SearchBox.ClientID%>').animate({ width: "150px" });
             });
+
+            if (globalVatEnabled) {
+                $('.ifVatEnabled').show();
+            }
         });
+
+        var globalVatEnabled = <%= this.CurrentOrganization.VatEnabled? "true" : "false" %>;
+
     </script>
 
 </head>
@@ -213,9 +221,9 @@
 	    </div>-->
         <div class="topmenu">
             <div class="center980px">
-                <a href="/User/SelectLanguage"><div id="DivMasterFlag" class="elementFloatFar"><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div></a>
-                <div class="elementFloatFar" style="padding-top: 5px; padding-left: 3px; padding-right: 3px"><a href="javascript:masterBeginEditPerson(0);"><div id="DivMasterUserIcon" style="background-image:url('/Images/Icons/iconshock-user-<%=CurrentUser.Gender.ToString().ToLower() %>.png')"></div></a></div>
-                <div class="topSearchBox" id="divTopSearchBox"><asp:TextBox ID="SearchBox" runat="server" /></div>
+                <a href="/User/SelectLanguage"><div id="DivMasterFlag" class="float-far"><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div></a>
+                <div class="float-far" style="padding-top: 5px; padding-left: 3px; padding-right: 3px"><a href="javascript:masterBeginEditPerson(0);"><div id="DivMasterUserIcon" style="background-image:url('/Images/Icons/iconshock-user-<%=CurrentUser.Gender.ToString().ToLower() %>.png')"></div></a></div>
+                <div class="top-search-box" id="divTopSearchBox"><asp:TextBox ID="SearchBox" runat="server" /></div>
                 <Swarmops5:MainMenu ID="MainMenu" runat="server" />
             </div>
         </div>
@@ -230,7 +238,7 @@
             <div class="box" style="background-image: url(/Images/Other/coins-background-istockphoto.jpg); background-size: 700px">
                 <div class="content">
                     <div class="odometer-wrapper">
-                        <div class="elementFloatFar odometer odometer-currency" id="odoProfitLossToDate"><%= (CurrentOrganization.GetProfitLossCents()/100.0 + 0.001).ToString(CultureInfo.InvariantCulture) %></div><div class="odometer-label"><asp:Label runat="server" ID="MasterLabelDashboardProfitLoss">Profit To Date XYZ</asp:Label> <span class="currentYear"><%= DateTime.UtcNow.Year %></span></div>
+                        <div class="float-far odometer odometer-currency" id="odoProfitLossToDate"><%= (CurrentOrganization.GetProfitLossCents()/100.0 + 0.001).ToString(CultureInfo.InvariantCulture) %></div><div class="odometer-label"><asp:Label runat="server" ID="MasterLabelDashboardProfitLoss">Profit To Date XYZ</asp:Label> <span class="currentYear"><%= DateTime.UtcNow.Year %></span></div>
                     </div>
                 </div>
             </div>
@@ -324,13 +332,13 @@
             <div id="divTabsEditPerson" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
                 <div title="<img id='imgFirstTabMasterEditPerson' src='/Images/Icons/iconshock-redshirt-128px.png' width='64' height='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label runat="server" ID="MasterLabelEditPersonHeaderAccount"></asp:Label></h2>
-                    <div class="entryFields">
+                    <div class="data-entry-fields">
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonName" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Name" AjaxCallbackUrl="" />
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonMail" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Mail" AjaxCallbackUrl=""  />
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonPhone" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="Phone" AjaxCallbackUrl=""  />
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonTwitterId" runat="server" OnChange="masterPersonEditorOnFieldChange" Cookie="TwitterId" AjaxCallbackUrl=""  />
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         <asp:Label runat="server" ID="MasterLabelEditPersonName" /><br/>
                         <asp:Label runat="server" ID="MasterLabelEditPersonMail" /><br/>
                         <asp:Label runat="server" ID="MasterLabelEditPersonPhone" /><br/>
@@ -339,14 +347,14 @@
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label runat="server" ID="MasterLabelEditPersonHeaderSecurity" Text="#Your Security#"/></h2>
-                    <div class="entryFields">
+                    <div class="data-entry-fields">
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonCurrentPassword" runat="server" Mode="Password" OnKeyDown="masterPersonEditorOnSecurityPasswordKeyDown" OnChanging="masterPersonEditorOnSecurityPasswordChanging" Cookie="CurrentPassword" AjaxCallbackUrl="" />
                         <div class="divMasterPersonEditSecurityRolldown" style="display:none"><Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FA" runat="server" Label="BitID Two-factor auth" OnChange="masterPersonEditor2FAToggle" Cookie="2FA" AjaxCallbackUrl=""  />
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword1" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityNewPasswordChanging" Cookie="Password1" AjaxCallbackUrl=""  />
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonNewPassword2" runat="server" Mode="Password" OnChanging="masterPersonEditorOnSecurityNewPasswordChanging" Cookie="Password2" AjaxCallbackUrl=""  />
                         </div>
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         <asp:Label ID="MasterLabelEditPersonCurrentPassword" runat="server" Text="#Type current password to enable changes#"/><br/>
                         <div class="divMasterPersonEditSecurityRolldown" style="display: none"><asp:Label runat="server" ID="MasterLabelEditPerson2FA" Text="#2FALoc#"/><br/>
                             <asp:Label runat="server" ID="MasterLabelEditPersonNewPassword1"/><br/>
@@ -355,34 +363,34 @@
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-lock-256px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label ID="MasterLabelEditPersonHeaderSecurityProvisioning" runat="server" /></h2>
-                    <div class="entryFields">
+                    <div class="data-entry-fields">
                         <input type="button" id="masterPersonEditButtonResetPassword" onclick="masterPersonEditorConfirmResetPassword(); return false;" value="#SendResetMail#" />&#8203;<br/>
                         <Swarmops5:AjaxToggleSlider ID="MasterEditPerson2FAProvisioning" runat="server" Label="BitID enable" Cookie="2FAProvision" AjaxCallbackUrl="" OnChange="masterPersonEditor2FAProvisionToggle"/>
 
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         <asp:Label runat="server" ID="MasterLabelEditPersonResetPassword" /><br/>
                         <asp:Label runat="server" ID="MasterLabelEditPerson2FAProvisioning" />
                     </div>
                 </div>
                 <div title="<img src='/Images/PageIcons/iconshock-money-calculator-128px.png' height='64' width='64' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment History</h2>
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: <asp:Label ID="MasterLabelEditPersonHeaderPaymentHistory" runat="server" Text="Payment History XYZ"/></h2>
                     <table id="masterPersonEditTablePaymentHistory" title="" class="easyui-treegrid" style="width: 100%; height: 400px"
                                 
                                 rownumbers="false"
                                 animate="true"
                                 fitColumns="true"
                                 idField="id"
-                                footer="true">
+                                showFooter="true">
                                 <thead>  
                                     <tr>  
-                                        <th field="name" width="178"><asp:Literal ID="MasterPersonEditLiteralHeaderItemName" Text="Item Type XYZ" runat="server"/></th>  
-                                        <th field="description" width="180"><asp:Literal ID="MasterPersonEditLiteralHeaderItemDescription" Text="Description XYZ" runat="server"/></th>  
-                                        <th field="opened" width="120"><asp:Literal ID="Literal1" Text="Opened date XYZ" runat="server"/></th>
-                                        <th field="owedorg" width="120" align="right"><asp:Literal ID="Literal2" Text="You owe XYZ" runat="server"/></th>
-                                        <th field="oweduser" width="120" align="right"><asp:Literal ID="Literal3" Text="Owed to you XYZ" runat="server"/></th>  
-                                        <th field="closed" width="120"><asp:Literal ID="Literal4" Text="Closed date XYZ" runat="server"/></th>
-                                        <th field="notes" width="80"><asp:Literal ID="Literal5" Text="Notes XYZ" runat="server"/></th>
+                                        <th field="name" width="138"><asp:Literal ID="MasterPersonEditLiteralHeaderItemName" Text="Item Type XYZ" runat="server"/></th>  
+                                        <th field="description" width="260"><asp:Literal ID="MasterPersonEditLiteralHeaderItemDescription" Text="Description XYZ" runat="server"/></th>  
+                                        <th field="opened" width="100"><asp:Literal ID="MasterPersonEditLiteralHeaderItemOpenedDate" Text="Opened date XYZ" runat="server"/></th>
+                                        <th field="owedToPerson" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountOwed" Text="Owed to you XYZ" runat="server"/></th>
+                                        <th field="paidToPerson" width="120" align="right"><asp:Literal ID="MasterPersonEditLiteralHeaderAmountPaid" Text="Paid to you XYZ" runat="server"/></th>
+                                        <th field="closed" width="100"><asp:Literal ID="MasterPersonEditLiteralHeaderItemClosedDate" Text="Closed date XYZ" runat="server"/></th>
+                                        <th field="notes" width="80"><asp:Literal ID="MasterPersonEditLiteralHeaderItemNotes" Text="Notes XYZ" runat="server"/></th>
                                     </tr>  
                                 </thead>
                             </table> 
@@ -397,7 +405,7 @@
                     <div class="divEntryFields">
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonOrgMail" runat="server" />&#8203;<br/>
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         Organization mail account<br/>
                         Reset mail server password
                     </div>
@@ -405,12 +413,12 @@
 
                 <div title="<img src='/Images/Icons/iconshock-location-256px.png' width='64' height='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Address</h2>
-                    <div class="entryFields">...</div>
+                    <div class="data-entry-fields">...</div>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonCountry" runat="server" />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonStreet1" runat="server" />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonStreet2" runat="server" />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonPostalCodeCity" runat="server" />
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         Country<br/>
                         Street 1<br/>
                         Street 2<br/>
@@ -419,13 +427,13 @@
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Mail Preferences</h2>
-                    <div class="entryFields">
+                    <div class="data-entry-fields">
                         Switch1
                         Switch2
                         Switch3
                         Switch4
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         Recieve mail from local leaders<br/>
                         Receive organization newsletters<br/>
                         Receive membership accounting info<br/>
@@ -434,7 +442,7 @@
                 </div>
                 <div title="<img src='/Images/PageIcons/iconshock-moneybag-128px.png' height='64' width='64' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment Channels</h2>
-                    <div class="entryFields">
+                    <div class="data-entry-fields">
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonLegacyBankClearing" runat="server" />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonLegacyBankAccount" runat="server" />&#8203;<br/>
                         <Swarmops5:AjaxTextBox ID="MasterEditPersonLegacyBankHolder" runat="server" />&#8203;<br/>
@@ -442,7 +450,7 @@
                         Switch1&#8203;<br/>
                         Switch2
                     </div>
-                    <div class="entryLabels">
+                    <div class="data-entry-labels">
                         Legacy bank SWIFT/BIC/clearing<br/>
                         Legacy bank IBAN/account<br/>
                         Account holder name<br/>
@@ -601,6 +609,10 @@
 
             _master_PersonEditLoading = false;
             _master_PersonEditedId = personId;
+
+            $('#masterPersonEditTablePaymentHistory').treegrid({
+                url: '/Automation/Json-MasterPersonEditPaymentHistory.aspx?PersonId=' + personId
+            });
 
             SwarmopsJS.ajaxCall('/Automation/SwarmFunctions.aspx/GetPersonEditorData', personEditorData, function(data) {
                 if (data != null && data.Success) {

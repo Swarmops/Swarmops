@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Position_Executive_CeoAssistant" xml:space="preserve">
+    <value>Oluranlowo CEO</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Government" xml:space="preserve">
+    <value>Amugbalẹgbẹ Aare</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Government_Plural" xml:space="preserve">
+    <value>Awon amugbalẹgbẹ Aare</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Nonprofit" xml:space="preserve">
+    <value>Oluranlowo Akowe Agba</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Awon oluranlọwọ Akowe Agba</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Plural" xml:space="preserve">
+    <value>Awon oluranlọwọ CEO</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant" xml:space="preserve">
+    <value>Oluranlọwọ CFO</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant_Nonprofict" xml:space="preserve">
+    <value>Oluranlọwọ ti Inawo</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Awon oluranlọwọ ti Inawo</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant_Plural" xml:space="preserve">
+    <value>Awon oluranlọwọ CFO</value>
+  </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer" xml:space="preserve">
+    <value>Olori Alaṣẹ</value>
+  </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer_Government" xml:space="preserve">
+    <value>Aarẹ</value>
+  </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer_Nonprofit" xml:space="preserve">
+    <value>Akowe Agba</value>
+  </data>
+  <data name="Position_Executive_ChiefFinancialOfficer" xml:space="preserve">
+    <value>Olori Oludari Owo</value>
+  </data>
+  <data name="Position_Executive_ChiefFinancialOfficer_Government" xml:space="preserve">
+    <value>Minisita fun Isuna</value>
+  </data>
+  <data name="Position_Executive_ChiefFinancialOfficer_Nonprofit" xml:space="preserve">
+    <value>Akapo</value>
+  </data>
+  <data name="Position_Executive_ChiefHrOfficer" xml:space="preserve">
+    <value>Olori Alakoso Eniyan</value>
+  </data>
+  <data name="Position_Executive_ChiefHrOfficer_Nonprofit" xml:space="preserve">
+    <value>Olori Alakoso Awujo</value>
+  </data>
+  <data name="Position_Executive_ChiefInformationOfficer" xml:space="preserve">
+    <value>Olori Alakoso Alaye</value>
+  </data>
+  <data name="Position_Executive_ChiefMarketingOfficer" xml:space="preserve">
+    <value>Olori Alakoso Itaja</value>
+  </data>
+  <data name="Position_Executive_ChiefMarketingOfficer_Government" xml:space="preserve">
+    <value>Minisita fun awọn ọrọ Ilu ajeji</value>
+  </data>
+  <data name="Position_Executive_ChiefMarketingOfficer_Nonprofit" xml:space="preserve">
+    <value>Olori Alakoso Ipolongo</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer" xml:space="preserve">
+    <value>Olori Alakoso Awọn isẹ</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer_Government" xml:space="preserve">
+    <value>Minisita fun oro Abele</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer_Nonprofit" xml:space="preserve">
+    <value>Olori Alakoso Ijafeto</value>
+  </data>
+  <data name="Position_Executive_ChiefStaff" xml:space="preserve">
+    <value>Olori fun Oṣiṣẹ</value>
+  </data>
+  <data name="Position_Executive_ChiefTechnologyOfficer" xml:space="preserve">
+    <value>Olori Alakoso Imo ero</value>
+  </data>
+  <data name="Position_Executive_FirstGentleman" xml:space="preserve">
+    <value>Okunrin akọkọ</value>
+    <comment>For government-type organizations only, with a female President</comment>
+  </data>
+  <data name="Position_Executive_FirstLady" xml:space="preserve">
+    <value>Obinrin akọkọ</value>
+    <comment>For government-type organizations only</comment>
+  </data>
+  <data name="Position_Executive_HrAssistant" xml:space="preserve">
+    <value>Oluranlọwọ Alakoso Eniyan</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Nonprofit" xml:space="preserve">
+    <value>Olùrànlówó Awujo</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Awon olùrànlówó Awujo</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Plural" xml:space="preserve">
+    <value>Awon oluranlọwọ Alakoso Eniyan</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant" xml:space="preserve">
+    <value>Olùrànlówó Itaja</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Government" xml:space="preserve">
+    <value>Amugbalegbe Awọn ọrọ Ilu ajeji</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Government_Plural" xml:space="preserve">
+    <value>Awo amugbalegbe Awọn ọrọ Ilu ajeji</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Nonprofit" xml:space="preserve">
+    <value>Oluranlowo Ipolongo</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Awon oluranlowo Ipolongo</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Plural" xml:space="preserve">
+    <value>Awon olùrànlówó Itaja</value>
+  </data>
+  <data name="Position_Executive_President" xml:space="preserve">
+    <value>Aarẹ</value>
+  </data>
+  <data name="Position_Executive_VicePresident" xml:space="preserve">
+    <value>Igbakeji Aare</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Nonprofit" xml:space="preserve">
+    <value>Igbakeji Akowe Agba</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Nonprofit_Plural" xml:space="preserve">
+    <value>Awon Igbakeji Akowe Agba</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Plural" xml:space="preserve">
+    <value>Awon Igbakeji Aare</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeader" xml:space="preserve">
+    <value>Asiwaju Ijafeto</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant" xml:space="preserve">
+    <value>Oluranlowo Ijafeto</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Commercial" xml:space="preserve">
+    <value>Oluranlowo awon iṣẹ</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Commercial_Plural" xml:space="preserve">
+    <value>Awon oluranlowo awon iṣẹ</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Plural" xml:space="preserve">
+    <value>Awon oluranlowo Ijafeto</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeader_Commercial" xml:space="preserve">
+    <value>Asiwaju awon iṣẹ</value>
+  </data>
+  <data name="Position_Geographic_Assistant" xml:space="preserve">
+    <value>Oluranlowo</value>
+  </data>
+  <data name="Position_Geographic_Assistant_Plural" xml:space="preserve">
+    <value>Awon oluranlọwọ</value>
+  </data>
+  <data name="Position_Geographic_Deputy" xml:space="preserve">
+    <value>Igbakeji</value>
+  </data>
+  <data name="Position_Geographic_Deputy_Plural" xml:space="preserve">
+    <value>Awon igbakeji</value>
+  </data>
+  <data name="Position_Geographic_ExpandingSubleaderNode_UxElement" xml:space="preserve">
+    <value>Awọn igbakeji asiwaju Agbegbe</value>
+    <comment>Leaders for geographies below the one displayed</comment>
+  </data>
+  <data name="Position_Geographic_InfoLeader" xml:space="preserve">
+    <value>Asiwaju Alaye</value>
+  </data>
+  <data name="Position_Geographic_InfoLeaderAssistant" xml:space="preserve">
+    <value>Oluranlowo Alaye</value>
+  </data>
+  <data name="Position_Geographic_InfoLeaderAssistant_Plural" xml:space="preserve">
+    <value>Awon oluranlowo Alaye</value>
+  </data>
+  <data name="Position_Geographic_Leader" xml:space="preserve">
+    <value>Asiwaju</value>
+  </data>
+  <data name="Position_Geographic_OutreachLeader" xml:space="preserve">
+    <value>Asiwaju Ipolongo</value>
+  </data>
+  <data name="Position_Geographic_OutreachLeaderAssistant" xml:space="preserve">
+    <value>Oluranlowo Ipolongo</value>
+  </data>
+  <data name="Position_Geographic_OutreachLeaderAssistant_Plural" xml:space="preserve">
+    <value>Awon oluranlowo Ipolongo</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeader" xml:space="preserve">
+    <value>Asiwaju Swarmcare</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant" xml:space="preserve">
+    <value>Oluranlowo Swarmcare</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Commercial" xml:space="preserve">
+    <value>Olùrànlówó Itoju Awujo</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Commercial_Plural" xml:space="preserve">
+    <value>Awon olùrànlówó Itoju Awujo</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Plural" xml:space="preserve">
+    <value>Awon oluranlowo Swarmcare</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeader_Commercial" xml:space="preserve">
+    <value>Asiwaju Itoju Awujo</value>
+  </data>
+  <data name="Position_Strategic_Auditor" xml:space="preserve">
+    <value>Oluyewe owo wo</value>
+  </data>
+  <data name="Position_Strategic_AuditorAssistant" xml:space="preserve">
+    <value>Oluranlowo Oluyewe owo wo</value>
+  </data>
+  <data name="Position_Strategic_AuditorAssistant_Plural" xml:space="preserve">
+    <value>Awon oluranlowo Oluyewe owo wo</value>
+  </data>
+  <data name="Position_Strategic_AuditorDeputy" xml:space="preserve">
+    <value>Igbakeji Oluyewe owo wo</value>
+  </data>
+  <data name="Position_Strategic_AuditorDeputy_Plural" xml:space="preserve">
+    <value>Awom igbakeji Oluyewe owo wo</value>
+  </data>
+  <data name="Position_Strategic_Auditor_Plural" xml:space="preserve">
+    <value>Awon oluyewe owo wo</value>
+  </data>
+  <data name="Position_Strategic_BoardChairperson" xml:space="preserve">
+    <value>Alaga Igbimọ</value>
+  </data>
+  <data name="Position_Strategic_BoardChairpersonDeputy" xml:space="preserve">
+    <value>Igbakeji Alaga</value>
+  </data>
+  <data name="Position_Strategic_BoardChairpersonDeputy_Plural" xml:space="preserve">
+    <value>Awon igbakeji Alaga</value>
+  </data>
+  <data name="Position_Strategic_BoardChairperson_Plural" xml:space="preserve">
+    <value>Awon Alaga Igbimọ</value>
+  </data>
+  <data name="Position_Strategic_BoardDeputy" xml:space="preserve">
+    <value>Igbakeji Igbimo</value>
+  </data>
+  <data name="Position_Strategic_BoardDeputy_Plural" xml:space="preserve">
+    <value>Awon igbakeji Igbimo</value>
+  </data>
+  <data name="Position_Strategic_BoardMember" xml:space="preserve">
+    <value>Omo egbe Igbimo</value>
+  </data>
+  <data name="Position_Strategic_BoardMember_Plural" xml:space="preserve">
+    <value>Awon omo egbe Igbimo</value>
+  </data>
+  <data name="Position_Strategic_Observer" xml:space="preserve">
+    <value>Oluwoye Igbimo</value>
+  </data>
+  <data name="Position_Strategic_Observer_Plural" xml:space="preserve">
+    <value>Awon oluwoye Igbimo</value>
+  </data>
+  <data name="Position_System_SysadminAssistantReadOnly" xml:space="preserve">
+    <value>Oluranlowo Sysadmin (Ka-nikan)</value>
+  </data>
+  <data name="Position_System_SysadminAssistantReadOnly_Plural" xml:space="preserve">
+    <value>Awon oluranlowo Sysadmin (Ka-nikan)</value>
+  </data>
+  <data name="Position_System_SysadminMain" xml:space="preserve">
+    <value>Sysadmin Akọkọ</value>
+  </data>
+  <data name="Position_System_SysadminReadWrite" xml:space="preserve">
+    <value>Sysadmin (Ka/Ko)</value>
+  </data>
+  <data name="Position_System_SysadminReadWrite_Plural" xml:space="preserve">
+    <value>Awon sysadmin (Ka/Ko)</value>
+  </data>
+</root>

@@ -117,6 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
+  <data name="AspirantAddWelcome_Body" xml:space="preserve">
+    <value>Witamy jako [Aspirant] w [OrganizationName]!
+
+Złożyłeś wniosek o przyznanie [Regularship] w [OrganizationName], a zatem otrzymujesz tego maila jako formalny [Aspirant]. Twoja [Aspirantship] nie wygasa automatycznie, więc nie ma pośpiechu, aby odpowiedzieć na tego maila.
+
+Twoje początkowe i losowo wygenerowane hasło do Swarmops, oprogramowania używanego jako system back-end, jest następujące:
+[RandomPassword]
+
+Powinieneś się zalogować i zmienić to hasło na coś bardziej bezpiecznego z własnego wyboru, tak szybko jak to możliwe. Możesz to zrobić, logując się do [ExternalUrl], a następnie klikając ikonę "Użytkownik" w prawym górnym rogu, wybierając kartę Zabezpieczenia (ta z kłódką), wprowadzając to tymczasowe hasło, a następnie wpisując nowe. Powinieneś także rozważyć włączenie uwierzytelniania dwuskładnikowego, tak jak dobrej praktyki.
+
+Witaj jako [Aspirant] i mamy nadzieję, że wkrótce Cię zobaczymy jako [Regular]!</value>
+  </data>
+  <data name="AspirantAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Wita jako [Aspirant] w [OrganizationName]!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
+    <value>Witamy w [OrganizationName]!
+
+Zostało ci przyznane [Regularship] przez [ActingPerson]. Wygasa ono w [MembershipExpiry], więc jest dużo czasu na zapoznanie się z organizacją.
+
+Powinieneś już skontaktować się z ludźmi z [OrganizationName], aby uzyskać więcej informacji o tym, jak stać się aktywnym. Jeśli nie, wkrótce spodziewaj się korespondencji.
+
+Twoje początkowe i losowo wygenerowane hasło do Swarmops, oprogramowania używanego jako system back-end, jest następujące:
+[RandomPassword]
+
+Powinieneś się zalogować i zmienić to hasło na coś bardziej bezpiecznego z własnego wyboru, tak szybko jak to możliwe. Możesz to zrobić, logując się do [ExternalUrl], a następnie klikając ikonę "Użytkownik" w prawym górnym rogu, wybierając kartę Zabezpieczenia (ta z kłódką), wpisując to hasło tymczasowe, a następnie wpisując nowe. Powinieneś także rozważyć włączenie uwierzytelniania dwuskładnikowego, tylko jako dobrą praktykę.
+
+Witamy na pokładzie!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>Witamy w [OrganizationName]!
+
+Zostało ci przyznane [Regularship] przez [ActingPerson]. Nie wygasa ono automatycznie po upływie określonego czasu lub daty, więc nie ma pośpiechu do podjęcia działania.
+
+Powinieneś już skontaktować się z ludźmi z [OrganizationName], aby uzyskać więcej informacji o tym, jak stać się aktywnym. Jeśli nie, wkrótce spodziewaj się korespondencji.
+
+Twoje początkowe i losowo wygenerowane hasło do Swarmops, oprogramowania używanego jako system back-end, jest następujące:
+[RandomPassword]
+
+Powinieneś się zalogować i zmienić to hasło na coś bardziej bezpiecznego z własnego wyboru, tak szybko jak to możliwe. Możesz to zrobić, logując się do [ExternalUrl], a następnie klikając ikonę "Użytkownik" w prawym górnym rogu, wybierając kartę Zabezpieczenia (ta z kłódką), wpisując to hasło tymczasowe, a następnie wpisując nowe. Powinieneś także rozważyć włączenie uwierzytelniania dwuskładnikowego, tylko jako dobrą praktykę.
+
+Witamy na pokładzie!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Wita w [OrganizationName]!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Wita w [OrganizationName]!</value>
+  </data>
 </root>

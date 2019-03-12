@@ -5,6 +5,7 @@ using System.Data.Common;
 using System.Globalization;
 using System.Xml;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common;
 
 // This is the first part of Database to fully use MySql.
 
@@ -220,7 +221,9 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand (
                         "SELECT " + financialTransactionFieldSequence +  " WHERE OrganizationId=" +
-                        organizationId + " AND ImportHash='" + SqlSanitize(importKey) + "';", connection);
+                        organizationId + " AND ImportHash=@importKey';", connection);
+
+                AddParameterWithName(command, "importKey", importKey);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -234,7 +237,7 @@ namespace Swarmops.Database
             }
         }
 
-        [Obsolete ("This method uses floating point for financials. Deprecated. Do not use.")]
+        [Obsolete ("This method uses floating point for financials. Deprecated. Do not use.", true)]
         public double GetFinancialAccountBalanceTotal (int financialAccountId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -273,10 +276,13 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return reader.GetInt64 (0);
+                        if (!reader.IsDBNull(0))
+                        {
+                            return reader.GetInt64(0);
+                        }
                     }
 
-                    throw new ArgumentException ("Unknown Account Id");
+                    return 0; // Balance appears to be zero
                 }
             }
         }
@@ -382,7 +388,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
+                        "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactionRows.FinancialTransactionRowId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
                         JoinIds (financialAccountIds) + ") AND DateTime " + selectorLower + " '" +
                         startDateTime.ToString ("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) +
                         "' AND DateTime " + selectorUpper + " '" + endDateTime.ToString ("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) +
@@ -417,7 +423,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
+                        "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactionRows.FinancialTransactionRowId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
                         JoinIds (financialAccountIds) +
                         ") ORDER BY DateTime DESC,FinancialTransactions.FinancialTransactionId,FinancialTransactionRows.CreatedDateTime LIMIT " +
                         rowCount + ";",
@@ -915,13 +921,14 @@ namespace Swarmops.Database
         {
             int accountId = reader.GetInt32 (0);
             int transactionId = reader.GetInt32 (1);
-            DateTime transactionDateTime = reader.GetDateTime (2);
-            string comment = reader.GetString (3);
-            Int64 amountCents = reader.GetInt64 (4);
-            DateTime rowDateTime = reader.GetDateTime (5);
-            int rowCreatedByPersonId = reader.GetInt32 (6);
+            int transactionRowId = reader.GetInt32(2);
+            DateTime transactionDateTime = reader.GetDateTime (3);
+            string comment = reader.GetString (4);
+            Int64 amountCents = reader.GetInt64 (5);
+            DateTime rowDateTime = reader.GetDateTime (6);
+            int rowCreatedByPersonId = reader.GetInt32 (7);
 
-            return new BasicFinancialAccountRow (accountId, transactionId, transactionDateTime, comment, amountCents,
+            return new BasicFinancialAccountRow (accountId, transactionId, transactionRowId, transactionDateTime, comment, amountCents,
                 rowDateTime, rowCreatedByPersonId);
         }
 
@@ -961,7 +968,7 @@ namespace Swarmops.Database
         }
 
         public int CreateFinancialTransactionStub (int organizationId, DateTime dateTime, int financialAccountId,
-            Int64 amountCents, string comment, string importHash, int personId)
+            Int64 amountCents, string comment, string importHash, string importSha256, int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -974,8 +981,9 @@ namespace Swarmops.Database
                 AddParameterWithName (command, "organizationId", organizationId);
                 AddParameterWithName (command, "financialAccountId", financialAccountId);
                 AddParameterWithName (command, "comment", comment);
-                AddParameterWithName (command, "importHash", importHash);
-                AddParameterWithName (command, "amountCents", amountCents);
+                AddParameterWithName(command, "importHash", importHash);
+                AddParameterWithName(command, "importSha256", importSha256);
+                AddParameterWithName(command, "amountCents", amountCents);
                 AddParameterWithName (command, "personId", personId);
 
                 return Convert.ToInt32 (command.ExecuteScalar());
@@ -1129,17 +1137,21 @@ namespace Swarmops.Database
 
                 using (DbCommand command =
                     GetDbCommand(
-                        "Select FinancialTransactionId from FinancialTransactionForeignIds WHERE FinancialTransactionForeignIdType=" + (int)foreignIdType +
-                        " AND ForeignId='" + SqlSanitize(foreignId) + "';", connection))
-
-                using (DbDataReader reader = command.ExecuteReader())
+                        "Select FinancialTransactionId from FinancialTransactionForeignIds WHERE FinancialTransactionForeignIdType=" +
+                        (int) foreignIdType + " AND ForeignId=@foreignId;", connection))
                 {
-                    if (reader.Read())
-                    {
-                        return reader.GetInt32(0);
-                    }
 
-                    return 0; // none found. Todo: throw exception instead? This behavior is inconsistent
+                    AddParameterWithName(command, "foreignId", foreignId);
+
+                    using (DbDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return reader.GetInt32(0);
+                        }
+
+                        return 0; // none found. Todo: throw exception instead? This behavior is inconsistent
+                    }
                 }
             }
         }
@@ -1192,10 +1204,13 @@ namespace Swarmops.Database
 
 
 
-        public Int64 GetFinancialAccountForeignCentsBalance (int financialAccountId)
+        public Int64 GetFinancialAccountForeignCentsBalance(int financialAccountId)
         {
-            // This gets the balance across the entire ledger history, so it's only for asset or liability accounts
-            // (not for P&L).
+            // This gets the non-presentation balance across the entire ledger history, so it's only 
+            // for asset or liability accounts (not for P&L).
+
+            // This function joins one less table than the ForeignDeltaCents, so it's kept despite being redundant
+            // because it's far more optimized for this special case.
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -1205,21 +1220,65 @@ namespace Swarmops.Database
                     GetDbCommand(
                         "SELECT SUM(NativeAmountCents) FROM FinancialTransactionRowsNativeCurrency " +
                         "  JOIN FinancialTransactionRows USING (FinancialTransactionRowId) " +
-                        "  WHERE FinancialAccountId =" + financialAccountId + ";", connection))
-
-                using (DbDataReader reader = command.ExecuteReader())
+                        "  WHERE FinancialAccountId=@financialAccountId;", connection))
                 {
-                    if (reader.Read())
-                    {
-                        return reader.GetInt64(0);
-                    }
+                    AddParameterWithName(command, "financialAccountId", financialAccountId);
 
-                    return 0; // zero balance, apparently.
+                    using (DbDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                            {
+                                return reader.GetInt64(0);
+                            }
+                        }
+
+                        return 0; // zero balance, apparently.
+                    }
                 }
             }
-
-
         }
+
+        public Int64 GetFinancialAccountForeignDeltaCents(int financialAccountId, DateTime lowerBoundInclusive, DateTime upperBoundExclusive)
+        {
+            // This gets the balance across the specified part of ledger history for non-presentation currency.
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command =
+                    GetDbCommand(
+                        "SELECT SUM(NativeAmountCents) FROM FinancialTransactionRowsNativeCurrency " +
+                        "  JOIN FinancialTransactionRows USING (FinancialTransactionRowId) " +
+                        "  JOIN FinancialTransactions USING (FinancialTransactionId) " +
+                        "  WHERE FinancialTransactionRows.FinancialAccountId=@financialAccountId " +
+                        "    AND FinancialTransactions.DateTime >= @lowerBoundInclusive " +
+                        "    AND FinancialTransactions.DateTime <  @upperBoundExclusive " +
+                        ";", connection))
+                {
+                    AddParameterWithName(command, "financialAccountId", financialAccountId);
+                    AddParameterWithName(command, "lowerBoundInclusive", lowerBoundInclusive);
+                    AddParameterWithName(command, "upperBoundExclusive", upperBoundExclusive);
+
+                    using (DbDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                            {
+                                return reader.GetInt64(0);
+                            }
+                        }
+
+                        return 0; // zero delta for this time span: no rows returned at all.
+                    }
+                }
+            }
+        }
+
+
 
 
 

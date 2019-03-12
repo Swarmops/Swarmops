@@ -129,8 +129,8 @@
 
 
 	                if (!isValid) {
-	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
-	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-red-cross-128x96px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat').css('background-size', '16px 12px');
+	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-red-cross-128x96px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat').css('background-size', '16px 12px');
 	                } else {
 	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "none");
 	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "none");
@@ -184,7 +184,7 @@
 	                    if (fieldContents && fieldContents.length > 0) {
 	                        $('#' + textBoxes[loop]).css('background-image', "none");
 	                    } else {
-	                        $('#' + textBoxes[loop]).css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                        $('#' + textBoxes[loop]).css('background-image', "url('/Images/Icons/iconshock-red-cross-128x96px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat').css('background-size', '16px 12px');
 	                        isValid = false;
 	                    }
 	                }
@@ -215,7 +215,7 @@
 	                                if (msg.d != true) {
 
 	                                    // Credentials problem.
-	                                    $('#TextMysqlRootPassword, #TextMysqlServerHost').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                                    $('#TextMysqlRootPassword, #TextMysqlServerHost').css('background-image', "url('/Images/Icons/iconshock-red-cross-128x96px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat').css('background-size', '16px 12px');
 	                                    EnableNext();
 	                                    isValid = false;
 	                                } else {
@@ -302,8 +302,8 @@
 
 	                if (isValid) {
 	                    if (fieldContents != $('#<%=this.TextFirstUserPassword1.ClientID %>').val()) {
-	                        $('#<%=this.TextFirstUserPassword1.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
-	                        $('#<%=this.TextFirstUserPassword2.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                        $('#<%=this.TextFirstUserPassword1.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-red-cross-128x96px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat').css('background-size', '16px 12px');
+	                        $('#<%=this.TextFirstUserPassword2.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-red-cross-128x96px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat').css('background-size', '16px 12px');
 	                        isValid = false;
 	                    }
 	                }
@@ -676,14 +676,14 @@
   			                <p>Swarmops is making a few test calls to your server to check its configuration. Please wait a few seconds.</p>
   			            </div>
                         <div id="DivStep1FaultAjax" style="display:none"><h2>Ajax Malfunction</h2>
-                            <p><strong>We can't call our pages using Ajax.</strong> Swarmops depends completely on continuous asynchronous communication with the web server, using JavaScript asynchronous calls and C# WebMethods, and you have some sort of special configuration that aren't letting these through.</p>
-                            <p>Swarmops is built and tested for a stock Apache on a stock Debian/Ubuntu. While many other configurations work, we're sorry to say we cannot possibly support all conceivable alternate server-side configurations but need to focus on the mainline user experience and functionality.</p>
+                            <p><strong>We can't call our pages using Ajax.</strong> Swarmops depends completely on continuous asynchronous communication with the web server, using JavaScript asynchronous calls and C# WebMethods, and you have some sort of special configuration that isn't letting these through.</p>
+                            <p>Swarmops is built and tested for a stock Apache on a stock Debian/Ubuntu. While many other configurations work, we're sorry to say we cannot possibly support all conceivable alternate server-side configurations but need to focus on the mainline experience and functionality.</p>
                             <p>Please retry the installation with a stock Apache.</p>
                         </div>
                         <div id="DivStep1FaultThreading" style="display:none"><h2>Threading Malfunction</h2>
                             <p><strong>We can't run background threads on the server.</strong> Swarmops depends completely on continuous asynchronous communication with the web server, using JavaScript asynchronous calls and C# WebMethods. Sometimes, these calls start server-side asynchronous threads 
                                 to continue processing while the call is technically returned to the client. Your configuration does not allow such server-side threads to be spawned.</p>
-                            <p>Swarmops is built and tested for a stock Apache on a stock Debian/Ubuntu. While many other configurations work, we're sorry to say we cannot possibly support all conceivable alternate server-side configurations but need to focus on the mainline user experience and functionality.</p>
+                            <p>Swarmops is built and tested for a stock Apache on a stock Debian/Ubuntu. While many other configurations work, we're sorry to say we cannot possibly support all conceivable alternate server-side configurations but need to focus on the mainline experience and functionality.</p>
                             <p>Please retry the installation with a stock Apache.</p>
                         </div>
                         <div id="DivStep1TestSuccess" style="display:none"><h2>Welcome to Swarmops</h2>
@@ -691,12 +691,12 @@
 
   			                <p>However, before we proceed, we need to make sure that you are indeed the sysadmin of this server, and not a remote bot who just discovered an unfinished Swarmops installation. To cross that bridge, answer these three simple questions:</p> <asp:Label runat="server" ID="Label1" />
                         
-                            <div class="entryFieldsAdmin">
+                            <div class="data-entry-fields-admin">
                                 <asp:TextBox CssClass="textinput" ID="TextServerName" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextServerAddress" runat="server" />&nbsp;<br />
                                 <asp:DropDownList ID="DropFavoriteColor" runat="server" />&nbsp;<br />
                             </div>
-                            <div class="entryLabelsAdmin" style="width:250px">
+                            <div class="entry-labels-admin" style="width:250px">
                                 What is this server's /etc/hostname?<br />
   			                    What is this server's internal IP?<br />
                                 What is your favorite color?
@@ -743,35 +743,35 @@
                             <h2>Create the database and users</h2>
                             <p>The Swarmops install sequence can set up the database and users for you, if you provide a root password to the MySQL database server.</p>
                             <p>(If you don't trust the Swarmops install to do that, that's fine, go to <a href="javascript:goManualCredentials();">manual account credentials</a>.)</p>
-                            <div class="entryFieldsAdmin"><input type="text" id="TextMysqlServerHost" value="localhost"/>&nbsp;<br/><input type="password" id="TextMysqlRootPassword"/>&nbsp;<br/><asp:TextBox runat="server" MaxLength="5" ID="TextRandomDbLabel" />&nbsp;</div>
-                            <div class="entryLabelsAdmin" style="width:250px">Hostname of MySQL database server<br/>Root password for that MySQL server<br/>Random label (suffixed to db, user names)<br/>&nbsp;</div>
+                            <div class="data-entry-fields-admin"><input type="text" id="TextMysqlServerHost" value="localhost"/>&nbsp;<br/><input type="password" id="TextMysqlRootPassword"/>&nbsp;<br/><asp:TextBox runat="server" MaxLength="5" ID="TextRandomDbLabel" />&nbsp;</div>
+                            <div class="entry-labels-admin" style="width:250px">Hostname of MySQL database server<br/>Root password for that MySQL server<br/>Random label (suffixed to db, user names)<br/>&nbsp;</div>
                         </div>
                         <div id="DivDatabaseManualConfig" style="display:none">
                             <h2>Connect to existing database</h2>
                             <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. For security reasons, we <strong>require</strong> having three separate accounts - one for reading (SELECT permissions only), one for writing (SELECT and EXECUTE), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
 
-                            <div class="entryFieldsAdmin" style="width:80px">
+                            <div class="data-entry-fields-admin" style="width:80px">
                                 <strong>Read access</strong><br/>
                                 <asp:TextBox CssClass="textinput" ID="TextCredentialsReadDatabase" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadServer" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadUser" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadPassword" TextMode="Password" runat="server" />&nbsp;<br />
                             </div>
-                            <div class="entryFieldsAdmin" style="width:80px;margin-left:10px">
+                            <div class="data-entry-fields-admin" style="width:80px;margin-left:10px">
                                 <strong>Write access</strong><br/>
                                 <asp:TextBox CssClass="textinput" ID="TextCredentialsWriteDatabase" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteServer" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteUser" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextCredentialsWritePassword" TextMode="Password" runat="server" />&nbsp;<br />
                             </div>
-                            <div class="entryFieldsAdmin" style="width:80px;margin-left:10px">
+                            <div class="data-entry-fields-admin" style="width:80px;margin-left:10px">
                                 <strong>Admin access</strong><br/>
                                 <asp:TextBox CssClass="textinput" ID="TextCredentialsAdminDatabase" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminServer" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminUser" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" TextMode="Password" runat="server" />&nbsp;<br />
                             </div>
-                            <div class="entryLabelsAdmin" style="width:120px">
+                            <div class="entry-labels-admin" style="width:120px">
                                 &nbsp;<br/>
                                 Database<br />
   			                    Server<br />
@@ -792,13 +792,13 @@
                         
                         <p>(You can add other people to the <em>System Administrator</em> role later.)</p>
 
-                        <div class="entryFieldsAdmin">
+                        <div class="data-entry-fields-admin">
                             <asp:TextBox CssClass="textinput" ID="TextFirstUserName" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextFirstUserMail" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword1" TextMode="Password" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword2" TextMode="Password" runat="server" />&nbsp;<br />
                         </div>
-                        <div class="entryLabelsAdmin" style="width:250px">
+                        <div class="entry-labels-admin" style="width:250px">
                             Your full name<br />
   			                Your email<br />
                             Your password<br/>
@@ -851,7 +851,7 @@
     <div class="box">
         <div class="content">
             <div class="link-row-encaps" onclick="return false;" >
-                <div class="link-row-icon" style="background-image:url('/Images/Icons/iconshock-databaseconnect-16px.png')"></div>
+                <div class="link-row-icon" style="background-image: url('/Images/Icons/iconshock-star-gold-64px.png'); background-size: 16px 16px;"></div>
                 <asp:Label ID="LabelSidebarTodoConnectDatabase" runat="server" />
             </div>
         </div>

@@ -117,16 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AllClear_Text" xml:space="preserve">
+    <value>Les opérations sont redevenues nominales.</value>
+  </data>
+  <data name="AllClear_Title" xml:space="preserve">
+    <value>Vide</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
+    <value>Le serveur a perdu la connexion avec le blockchain du Bitcoin. Les opérations du Bitcoin ne seront pas détectées en temps réel.</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
+    <value>La connexion avec la blockchain a été perdue</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
+    <value>Le navigateur Web ne peut pas entendre les pulsations du serveur. Les mises à jour en temps réel pourront être indisponibles.</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
+    <value>Défaillance de niveau 1 des battements cardiaques</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Text" xml:space="preserve">
+    <value>Impossible de se connecter au serveur pour les mises à jour en temps réel.</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Title" xml:space="preserve">
+    <value>Echec de WebSocket</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Text" xml:space="preserve">
+    <value>Le serveur ne parvient pas à se connecter au processus backend. Les mises à jour en temps réel seront en grande partie indisponibles.</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Title" xml:space="preserve">
+    <value>Échec de la connexion Backend</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Text" xml:space="preserve">
+    <value>Le serveur ne peut pas entendre les vibrations du processus principal.</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Title" xml:space="preserve">
+    <value>Défaillance de niveau 2 des battements cardiaques</value>
+  </data>
 </root>

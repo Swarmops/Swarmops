@@ -117,28 +117,83 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Positions_AssignAnotherPerson" xml:space="preserve">
+    <value>Affecter une autre personne...</value>
+    <comment>To an existing position that accepts multiple people (like "assistants")</comment>
+  </data>
+  <data name="Positions_AssignFifthPerson" xml:space="preserve">
+    <value>Affecter une cinquième personne...</value>
+  </data>
+  <data name="Positions_AssignFirstPerson" xml:space="preserve">
+    <value>Affecter...</value>
+  </data>
+  <data name="Positions_AssignFourthPerson" xml:space="preserve">
+    <value>Affecter une quatrième personne...</value>
+  </data>
+  <data name="Positions_AssignmentDuration" xml:space="preserve">
+    <value>Durée de l'affectation (extensible)</value>
+  </data>
+  <data name="Positions_AssignmentExpires" xml:space="preserve">
+    <value>Expire</value>
+    <comment>The date a position assignment autoterminates</comment>
+  </data>
+  <data name="Positions_AssignPersonToPosition" xml:space="preserve">
+    <value>Affecter cette personne au poste</value>
+  </data>
+  <data name="Positions_AssignSecondPerson" xml:space="preserve">
+    <value>Affecter une deuxième personne...</value>
+  </data>
+  <data name="Positions_AssignSixthPerson" xml:space="preserve">
+    <value>Affecter une sixième personne...</value>
+    <comment>ok, this is not strictly necessary, just a bell &amp; whistle</comment>
+  </data>
+  <data name="Positions_AssignThirdPerson" xml:space="preserve">
+    <value>Affecter une troisième personne...</value>
+  </data>
+  <data name="Positions_ButtonAssign" xml:space="preserve">
+    <value>Affecter</value>
+    <comment>Kind of "hire" but also for volunteers</comment>
+  </data>
+  <data name="Positions_ModalHeader" xml:space="preserve">
+    <value>Affecter la personne comme étant &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt;&lt;span id='{0}_modalGeographyName'&gt;&lt;/span&gt;</value>
+    <comment>Header for new assignment dialog</comment>
+  </data>
+  <data name="Positions_NoMorePeopleOnPosition" xml:space="preserve">
+    <value>Opération échouée: il n'est pas possible d'affecter d'autres personnes à ce poste.</value>
+  </data>
+  <data name="Positions_PleaseSelectPerson" xml:space="preserve">
+    <value>Veuillez sélectionner une personne à affecter.</value>
+  </data>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>(ce poste est vacant)</value>
+    <comment>For unassigned positions</comment>
+  </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;DÉMISSIONNER DE VOTRE POSTE?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Celle ci est &lt;strong&gt;votre&lt;/strong&gt;affectation. La finalisation de votre propre affectation est équivalent au fait de dire "JE DÉMISSIONNE". Ce choix prendra effet immédiatement. Est-ce ce que vous vouliez vraiment faire?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;TERMINER AFFECTATION?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Voulez-vous finir&lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; de l'affectation comme étant &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Ceci est l'équivalent de virer quelqu'un et nécessite généralement d'être en accord avec les processus intérieurs et la loi locale.&lt;br/&gt;&lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_TerminateNo" xml:space="preserve">
+    <value>Ne pas terminer</value>
+  </data>
+  <data name="Positions_TerminateSelfNo" xml:space="preserve">
+    <value>Pardon! non, Revenez!</value>
+  </data>
+  <data name="Positions_TerminateSelfYes" xml:space="preserve">
+    <value>Oui, je démissionne</value>
+  </data>
+  <data name="Positions_TerminateYes" xml:space="preserve">
+    <value>Terminer l'affectation</value>
+  </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>(Affecter sous mon organisation)</value>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>Créer un nouveau poste...</value>
+  </data>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>Leaders des subdivisions</value>
+  </data>
 </root>

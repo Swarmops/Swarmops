@@ -17,19 +17,11 @@
         }
 
         preload([
-            '/Images/Abstract/ajaxloader-medium.gif',
             '/Images/Abstract/ajaxloader-48x36px.gif',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-gold.png',
-            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png',
             '/Images/Icons/iconshock-green-tick-128x96px.png',
             '/Images/Icons/iconshock-red-cross-128x96px.png',
             '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
-            '/Images/Icons/iconshock-balloon-undo-128x96px.png',
-            '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png'
+            '/Images/Icons/iconshock-balloon-undo-128x96px.png'
         ]);
 
         /* -- commented out -- do we need attestation logic for this page?
@@ -41,7 +33,7 @@
             });
 
             if (budgetRemainingLookup.rowsLoaded == true) {
-                setAttestability();
+                setApprovability();
             }
 
             budgetRemainingLookup.budgetsLoaded = true;
@@ -70,7 +62,10 @@
             $('#tableInboundInvoices').datagrid(
                 {
                     onLoadSuccess: function() {
-                        $(".LocalViewDox").click(function() {
+
+                        $(".LocalIconDox").attr('src', '/Images/Icons/iconshock-balloon-examine-128x96px.png');
+
+                        $(".LocalIconDox").click(function() {
 
                             $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
 
@@ -83,7 +78,7 @@
 
 
 
-        function setAttestability() {
+        function setApprovability() {
 
             $('.LocalIconApproval').each(function() {
                 var accountId = $(this).attr('accountid');

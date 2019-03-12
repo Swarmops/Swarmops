@@ -13,7 +13,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
-    public class ExpenseClaim : BasicExpenseClaim, IValidatable, IAttestable, IPayable
+    public class ExpenseClaim : BasicExpenseClaim, IValidatable, IApprovable, IPayable
     {
         #region Construction and Creation
 
@@ -42,63 +42,104 @@ namespace Swarmops.Logic.Financial
         }
 
         public static ExpenseClaim Create (Person claimer, Organization organization, FinancialAccount budget,
-            DateTime expenseDate, string description, Int64 amountCents, Int64 vatCents)
+            DateTime expenseDate, string description, Int64 amountCents, Int64 vatCents, ExpenseClaimGroup group = null)
         {
             ExpenseClaim newClaim =
                 FromIdentityAggressive (SwarmDb.GetDatabaseForWriting()
-                    .CreateExpenseClaim (claimer.Identity, organization.Identity,
-                        budget.Identity, expenseDate, description, amountCents));
+                    .CreateExpenseClaim (claimer.Identity, organization?.Identity ?? 0,
+                        budget?.Identity ?? 0, expenseDate, description, amountCents)); // budget can be 0 initially if created with a group
 
             if (vatCents > 0)
             {
                 newClaim.VatCents = vatCents;
             }
 
-            // Create the financial transaction with rows
-
-            string transactionDescription = "Expense #" + newClaim.Identity + ": " + description; // TODO: Localize
-
-            if (transactionDescription.Length > 64)
+            if (group != null)
             {
-                transactionDescription = transactionDescription.Substring (0, 61) + "...";
+                newClaim.Group = group;
             }
 
-            FinancialTransaction transaction =
-                FinancialTransaction.Create (organization.Identity, DateTime.Now,
-                    transactionDescription);
-
-            transaction.AddRow (organization.FinancialAccounts.DebtsExpenseClaims, -amountCents, claimer);
-            if (vatCents > 0)
+            if (budget != null && organization != null)
             {
-                transaction.AddRow(budget, amountCents - vatCents, claimer);
-                transaction.AddRow(organization.FinancialAccounts.AssetsVatInboundUnreported, vatCents, claimer);
+                // Create the financial transaction with rows
+
+                string transactionDescription = "Expense #" + newClaim.OrganizationSequenceId + ": " + description;
+                    // TODO: Localize
+
+                if (transactionDescription.Length > 64)
+                {
+                    transactionDescription = transactionDescription.Substring(0, 61) + "...";
+                }
+
+
+                DateTime expenseTxDate = expenseDate;
+                int ledgersClosedUntil = organization.Parameters.FiscalBooksClosedUntilYear;
+
+                if (ledgersClosedUntil >= expenseDate.Year)
+                {
+                    expenseTxDate = DateTime.UtcNow; // If ledgers are closed for the actual expense time, account now
+                }
+
+                FinancialTransaction transaction =
+                    FinancialTransaction.Create(organization.Identity, expenseTxDate,
+                        transactionDescription);
+
+                transaction.AddRow(organization.FinancialAccounts.DebtsExpenseClaims, -amountCents, claimer);
+                if (vatCents > 0)
+                {
+                    transaction.AddRow(budget, amountCents - vatCents, claimer);
+                    transaction.AddRow(organization.FinancialAccounts.AssetsVatInboundUnreported, vatCents, claimer);
+                }
+                else
+                {
+                    transaction.AddRow(budget, amountCents, claimer);
+                }
+
+                // Make the transaction dependent on the expense claim
+
+                transaction.Dependency = newClaim;
+
+                // Create notifications
+
+                OutboundComm.CreateNotificationApprovalNeeded(budget, claimer, string.Empty,
+                    newClaim.BudgetAmountCents/100.0,
+                    description, NotificationResource.ExpenseClaim_Created);
+                    // Slightly misplaced logic, but failsafer here
+                OutboundComm.CreateNotificationFinancialValidationNeeded(organization, newClaim.AmountCents/100.0,
+                    NotificationResource.Receipts_Filed);
+                SwarmopsLogEntry.Create(claimer,
+                    new ExpenseClaimFiledLogEntry(claimer /*filing person*/, claimer /*beneficiary*/,
+                        newClaim.BudgetAmountCents/100.0,
+                        vatCents/100.0, budget, description), newClaim);
+
+                // Clear a cache
+                FinancialAccount.ClearApprovalAdjustmentsCache(organization);
             }
-            else
-            {
-                transaction.AddRow(budget, amountCents, claimer);
-            }
-
-            // Make the transaction dependent on the expense claim
-
-            transaction.Dependency = newClaim;
-
-            // Create notifications
-
-            OutboundComm.CreateNotificationAttestationNeeded (budget, claimer, string.Empty, newClaim.BudgetAmountCents/100.0,
-                description, NotificationResource.ExpenseClaim_Created); // Slightly misplaced logic, but failsafer here
-            OutboundComm.CreateNotificationFinancialValidationNeeded (organization, newClaim.AmountCents/100.0,
-                NotificationResource.Receipts_Filed);
-            SwarmopsLogEntry.Create (claimer,
-                new ExpenseClaimFiledLogEntry (claimer /*filing person*/, claimer /*beneficiary*/, newClaim.BudgetAmountCents/100.0,
-                    vatCents / 100.0, budget, description), newClaim);
-
-            // Clear a cache
-            FinancialAccount.ClearAttestationAdjustmentsCache(organization);
 
             return newClaim;
         }
 
         #endregion
+
+
+
+        public new int OrganizationSequenceId
+        {
+            get
+            {
+                if (base.OrganizationSequenceId == 0)
+                {
+                    // This case is for legacy installations before DbVersion 66, when
+                    // OrganizationSequenceId was added for each new expense claim
+
+                    SwarmDb db = SwarmDb.GetDatabaseForWriting();
+                    base.OrganizationSequenceId = db.SetExpenseClaimSequence(this.Identity);
+                    return base.OrganizationSequenceId;
+                }
+
+                return base.OrganizationSequenceId;
+            }
+        }
 
         public Person Claimer
         {
@@ -147,6 +188,28 @@ namespace Swarmops.Logic.Financial
             get { return Organization.FromIdentity (OrganizationId); }
         }
 
+        public ExpenseClaimGroup Group
+        {
+            get
+            {
+                if (this.GroupId == 0)
+                {
+                    return null;
+                }
+
+                return ExpenseClaimGroup.FromIdentity(this.GroupId);
+            }
+            set
+            {
+                int newGroupId = value?.Identity ?? 0;
+
+                if (this.GroupId != newGroupId)
+                {
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimGroup(this.Identity, newGroupId);
+                }
+            }
+        }
+
         public FinancialTransaction FinancialTransaction
         {
             get
@@ -155,7 +218,7 @@ namespace Swarmops.Logic.Financial
 
                 if (transactions.Count == 0)
                 {
-                    return null; // not possible from July 26 onwards, but some grandfather work
+                    return null; // Only for grouped transactions that are still under construction
                 }
 
                 if (transactions.Count == 1)
@@ -332,47 +395,47 @@ namespace Swarmops.Logic.Financial
                 NotificationResource.ExpenseClaim_Validated);
         }
 
-        public void Devalidate (Person devalidator)
+        public void RetractValidation (Person retractor)
         {
             SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated (Identity, false);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Devalidation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.UndoValidation,
                 FinancialDependencyType.ExpenseClaim, Identity,
-                DateTime.UtcNow, devalidator.Identity, (double) Amount);
+                DateTime.UtcNow, retractor.Identity, (double) Amount);
             base.Validated = false;
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
-                NotificationResource.ExpenseClaim_Devalidated);
+                NotificationResource.ExpenseClaim_ValidationRetracted);
         }
 
         #endregion
 
-        #region IAttestable Members
+        #region IApprovable Members
 
-        public void Attest (Person attester)
+        public void Approve (Person approvingPerson)
         {
             Attested = true;
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Approval,
                 FinancialDependencyType.ExpenseClaim, Identity,
-                DateTime.UtcNow, attester.Identity, (double) Amount);
+                DateTime.UtcNow, approvingPerson.Identity, (double) Amount);
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
-                NotificationResource.ExpenseClaim_Attested);
+                NotificationResource.ExpenseClaim_Approved);
 
-            UpdateFinancialTransaction(attester); // will re-enable tx if it was zeroed out earlier
+            UpdateFinancialTransaction(approvingPerson); // will re-enable tx if it was zeroed out earlier
         }
 
-        public void Deattest (Person deattester)
+        public void RetractApproval (Person retractingPerson)
         {
             Attested = false;
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.UndoApproval,
                 FinancialDependencyType.ExpenseClaim, Identity,
-                DateTime.UtcNow, deattester.Identity, (double) Amount);
+                DateTime.UtcNow, retractingPerson.Identity, (double) Amount);
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
-                NotificationResource.ExpenseClaim_Deattested);
+                NotificationResource.ExpenseClaim_ApprovalRetracted);
         }
 
-        public void DenyAttestation (Person denyingPerson, string reason)
+        public void DenyApproval (Person denyingPerson, string reason)
         {
             Attested = false;
             Open = false;
@@ -430,7 +493,7 @@ namespace Swarmops.Logic.Financial
             if (Validated)
             {
                 // Reset validation, since amount was changed
-                Devalidate (settingPerson);
+                RetractValidation (settingPerson);
             }
         }
 

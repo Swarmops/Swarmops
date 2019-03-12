@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using Swarmops.Logic.Financial;
 
 namespace Swarmops.Logic.Support
 {
@@ -101,7 +102,46 @@ namespace Swarmops.Logic.Support
         {
             BlockchainTransactionRow newRow = new BlockchainTransactionRow();
             newRow.Address = (string)json["addr"];
-            newRow.ValueSatoshis = Int64.Parse((string)json["valueSat"]);
+
+            if (string.IsNullOrEmpty(newRow.Address) && !inRow)
+            {
+                newRow.Address = (string) json["scriptPubKey"]["addresses"][0];
+            }
+
+            // Ensure we have a protocol-level address 
+            newRow.Address = BitcoinUtility.EnsureLegacyAddress(newRow.Address);
+
+            string valueSatoshisString = (string) json["valueSat"];
+            if (!string.IsNullOrEmpty(valueSatoshisString))
+            {
+                newRow.ValueSatoshis = Int64.Parse(valueSatoshisString);
+            }
+            else
+            {
+                // no valueSat field; we must parse a double without loss of precision
+
+                string valueDoubleString = (string) json["value"];
+
+                int indexOfDecimalPoint = valueDoubleString.IndexOf('.');
+
+                // The length needs to be eight places past the decimal point, so
+                // zero-pad on the right side until it is
+
+                while (valueDoubleString.Length <= indexOfDecimalPoint + 8) // less-or-equal is correct here: comparing index and length
+                {
+                    valueDoubleString += "0"; // pad to eight decimal places
+                }
+
+                // We've now made sure that we have the full eight decimal places, so
+                // we can safely remove the decimal point and have an integer string
+
+                valueDoubleString = valueDoubleString.Replace(".", "");
+
+                // Finally, parse as integer string
+
+                newRow.ValueSatoshis = Int64.Parse(valueDoubleString);
+            }
+
             newRow.Index = Int32.Parse((string)json["n"]);
             newRow.Spent = inRow && (bool)(json["spentTxId"] == null? false: true);
 

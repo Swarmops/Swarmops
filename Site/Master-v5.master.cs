@@ -27,6 +27,7 @@ namespace Swarmops.Frontend
             try
             {
                 this._authority = CommonV5.GetAuthenticationDataAndCulture(HttpContext.Current).Authority;
+                this._authority.Organization.GetMemberCount(); // will throw if Organization can't be looked up
             }
             catch (Exception)
             {
@@ -43,14 +44,6 @@ namespace Swarmops.Frontend
 
             // END TEST CODE
 
-
-            if (this._authority.Organization.Identity == 3 &&
-                PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE))
-            {
-                this._authority = null;
-                FormsAuthentication.SignOut();
-                Response.Redirect("/", true);
-            }
         }
 
         protected void Page_Load (object sender, EventArgs e)
@@ -158,6 +151,7 @@ namespace Swarmops.Frontend
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
+            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Height] = "25px";
 
             SetupDropboxes();
 
@@ -180,7 +174,7 @@ namespace Swarmops.Frontend
 
             if (Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft)
             {
-                this.LiteralBodyAttributes.Text = @"dir='rtl' class='rtl'";
+                this.LiteralBodyAttributes.Text = @"dir='rtl' class='right-to-left'";
             }
 
             // If we're running as an open-something identity, remove the Preferences div
@@ -217,21 +211,9 @@ namespace Swarmops.Frontend
                 Response.Cookies.Add (cookieCulture);
             }
 
-            string flagName = "uk";
-
-            if (!cultureStringLower.StartsWith ("en") && cultureString.Length > 3)
-            {
-                flagName = cultureStringLower.Substring (3);
-            }
-
-            if (cultureStringLower.StartsWith ("ar"))
-            {
-                flagName = "Arabic";
-            }
 
             if (cultureStringLower == "af-za") // "South African Afrikaans", a special placeholder for localization code
             {
-                flagName = "txl";
                 InitTranslation();
             }
             else
@@ -239,7 +221,7 @@ namespace Swarmops.Frontend
                 this.LiteralCrowdinScript.Text = string.Empty;
             }
 
-            this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + "-24px.png";
+            this.ImageCultureIndicator.ImageUrl = SupportFunctions.FlagFileFromCultureId(cultureString);
 
             this.LinkLogout.Text = Global.CurrentUserInfo_Logout;
             this.LabelPreferences.Text = Global.CurrentUserInfo_Preferences;
@@ -263,6 +245,15 @@ namespace Swarmops.Frontend
             this.MasterEditPerson2FAProvisioning.Label = Resources.Global.Master_EditPerson2FAEnableShort;
             this.MasterLabelEditPersonResetPassword.Text = Resources.Global.Master_EditPersonResetPasswordLabel;
             this.MasterLabelEditPerson2FAProvisioning.Text = Resources.Global.Master_EditPerson2FAEnable;
+
+            this.MasterLabelEditPersonHeaderPaymentHistory.Text = Resources.Global.Financial_PaymentHistory;
+            this.MasterPersonEditLiteralHeaderAmountOwed.Text = Resources.Global.Financial_Owed;
+            this.MasterPersonEditLiteralHeaderAmountPaid.Text = Resources.Global.Financial_Paid;
+            this.MasterPersonEditLiteralHeaderItemOpenedDate.Text = Resources.Global.Global_Opened;
+            this.MasterPersonEditLiteralHeaderItemClosedDate.Text = Resources.Global.Global_Closed;
+            this.MasterPersonEditLiteralHeaderItemNotes.Text = Resources.Global.Global_Notes;
+            this.MasterPersonEditLiteralHeaderItemName.Text = Resources.Global.Global_Item;
+            this.MasterPersonEditLiteralHeaderItemDescription.Text = Resources.Global.Global_Description;
 
 
             this.MasterLabelBitIdRegisterHeader.Text = Resources.Global.Master_BitIdRegister_Header;
@@ -520,7 +511,9 @@ namespace Swarmops.Frontend
 
         public string Localized_BitIdRegister_Sidebar
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_BitIdRegister_Sidebar); }
+            get { return CommonV5.JavascriptEscape(String.Format(Resources.Global.Master_BitIdRegister_Sidebar, "Mycelium", "Ledger")); } 
+            
+            // the parameters are examples of mobile wallets supporting BitId authentication; this was moved out of the resource file because it changes
         }
 
 

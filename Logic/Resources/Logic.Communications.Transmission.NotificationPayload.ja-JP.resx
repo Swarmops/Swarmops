@@ -129,6 +129,34 @@
   
   
   
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>[OrganizationName] のBitcoin Hotwalletは、[CurrencyCode] [AmountFloat]（[BitcoinAmountFloat] マイクロビットコインまたは「ビット」）を合計した[PaymentCount] 自動支払いを行ったばかりです。...</value>
+  </data>
+  
+  
+  
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>ホットウォレットから自動支払いをしようとすると、署名に使用された秘密鍵が、必要な資金を集めるために使用された公開鍵と一致しません。 これは深刻な状態です。</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] での現金前貸しが拒否されました。 以下のテキストは、それを否定する理由として与えられました：
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] での現金進出のリクエストは、組織の会計士によって支払われたものとしてマークされています。
+
+これは、アカウントの金額をすぐに確認することを意味します。</value>
+  </data>
   
   
   
@@ -138,18 +166,13 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>[RequestPurpose] に関する[CurrencyCode] [BudgetAmountFloat] の[OrganizationName] に対する経費請求が拒否されました。 以下のテキストは、それを否定する理由として与えられました：
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
   
   
   

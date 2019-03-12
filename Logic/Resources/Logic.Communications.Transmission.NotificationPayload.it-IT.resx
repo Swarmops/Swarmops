@@ -117,32 +117,103 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>L'anticipo richiesto con [OrganizationName] per [CurrencyCode] [BudgetAmountFloat], riguardante [RequestPurpose], è stato confermato dal responsabile del Bilancio. Ora si potrà procedere al pagamento.</value>
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>Una nuova persona ha fatto richiesta per diventare [RegularTitle] a [OrganizationName]![ConcernedPersonName] al momento risiede in [GeographyName],[CountryCode].</value>
   </data>
-  
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>L'anticipo richiesto con [OrganizationName] per [CurrencyCode] [BudgetAmountFloat], riguardante [RequestPurpose], non è stato confermato dal responsabile del Bilancio. Questo di solito indica che vi sono problemi con la vostra richiesta.
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] Nuovo richiedente: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>Quando si è tentato di effettuare un pagamento al tuo indirizzo di pagamento Bitcoin Cash, l'indirizzo ([BitcoinAddress]) è stato rifiutato dal sistema di pagamento sottostante in quanto non valido. Pertanto è stato cancellato dal tuo profilo.
+Si prega di accedere a [InstallationName] a [ExternalUrl] e impostare un nuovo indirizzo di pagamento Bitcoin.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] - ACTION ITEM] Indirizzo di pagamento bitcoin errato</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>Hai cambiato il tuo indirizzo di pagamento Bitcoin Cash da [BitcoinOldAddress] a [BitcoinAddress]. Come misura di sicurezza, tutti i pagamenti verranno messi in quarantena per le prossime 48 ore.
 
-Rimanete in attesa di ulteriori indicazioni dal responsabile del bilancio.</value>
+Se NON hai cambiato l'indirizzo di pagamento e c'è stata una violazione della sicurezza, clicca immediatamente su questo link per bloccare il tuo account: [LockdownLink]
+
+Se clicchi su questo link, il tuo account verrà bloccato immediatamente senza richieste di conferma. Tuttavia, se hai richiesto la modifica dell'indirizzo di pagamento, va tutto bene, e non devi fare nient'altro.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] l'indirizzo di pagamento Bitcoin Cash è stato cambiato</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>Hai fondi in attesa di pagamento su [OrganizationName], ma non hai impostato un indirizzo di pagamento Bitcoin Cash.
+
+Si prega di accedere a [InstallationName] a [ExternalUrl] e seguire il link per impostare il tuo indirizzo di pagamento - lo troverai nell'elenco degli elementi "da fare".</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Si prega di impostare il proprio indirizzo di pagamento Bicoin Cash</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>Hai impostato un indirizzo di pagamento Bitcoin Cash: [BitcoinAddress]. Indirizzo Bitcoin]. Come precauzione di sicurezza, tutti i pagamenti sono messi in quarantena per le prossime 48 ore, e procederanno poi al pagamento al nuovo indirizzo.
+
+Se non hai impostato questo indirizzo di pagamento (vale la pena, controllare due volte l'indirizzo cui sopra per una maggiore sicurezza), contattare immediatamente [OrganizationName].</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>Un indirizzo di pagamento Bitcoin Cash è stato impostato da [ConcernedPersonName]. I pagamenti inizieranno dopo 48 ore, quando il periodo di quarantena sarà concluso.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] ha impostato un indirizzo di pagamento Bitcoin Cash</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Indirizzo di pagamento Bitcoin Cash impostato</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>Il hotwallet Bitcoin per [OrganizationName] ha appena effettuato [PaymentCount] pagamenti automatici per un totale di [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin o "bits").</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Pagamento dal Hotwallet: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[BitcoinAmountFloat] microbitcoin ("bit") sono appena stati trasferiti all tuo indirizzo Bitcoin Cash ([BitcoinAddress]) da [OrganizationName] per i seguenti:
+
+[EmbeddedPreformattedText]
+
+Dovresti già vedere la transazione nel tuo wallet, i fondi dovrebbero diventare spendibili entro circa un ora (sei conferme normali).</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Fondi che vi sono stati versati: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>Quando si è tentato di effettuare un pagamento automatico dal hotwallet, la chiave privata utilizzata per firmare non corrispondeva alle chiavi pubbliche utilizzate per raccogliere i fondi necessari. Questo è un problema grave.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] - URGENTE] Errore chiave privata Bitcoin; impossibile effettuare il pagamento</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmops sta tentando di effettuare pagamenti di [CurrencyCode] [AmountNeededFloat], ma nel hotwallet di Bitcoin Cash sono disponibili solo [CurrencyCode] [AmountWalletFloat]. Al momento Swarmops non può effettuare ulteriori pagamenti.
+
+Ricaricare IMMEDIATAMENTE il hotwallet almeno per la quantità necessaria - per riprendere le operazioni finanziarie di hotwallet sono necessari almeno altri [AmountMissingMicrocoinsFloat] microbitcoin ("bit").
+
+Swarmops continuerà a provare e continuerà ad inviare queste notifiche fino a quando il pagamento non riuscirà.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] fondi Bitcoin Cash hotwallet insufficienti per effettuare i pagamenti - ricaricare immediatamente</value>
+  </data>
+  
+  
+  
+  
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>Il tuo anticipo di contanti con [OrganizationName] di [CurrencyCode][BudgetAmountFloat] riguardante [RequestPurpose] è stato negato. Il testo sotto è stato fornito come motivo della negazione:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Anticipo contanti NEGATO:[CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>La tua richiesta di anticipo contanti con [OrganizationName] di [CurrencyCode] [BudgetAmountFloat], relativo a [RequestPurpose], è stata contrassegnata come pagata dai contabili dell'organizzazione.
+
+Questo significa che dovresti vedere l'importo sul tuo conto a breve.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Anticipo contanti pagato: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   
   
@@ -152,59 +223,218 @@ Rimanete in attesa di ulteriori indicazioni dal responsabile del bilancio.</valu
   
   
   
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>La richiesta di rimborso spese con [OrganizationName] di [CurrencyCode] [BudgetAmountFloat] relativa a [RequestPurpose] è stata negata. Il testo che segue è stato fornito come motivo della negazione:
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Richiesta di rimborso spese NEGATA: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>La tua richiesta di anticipo contanti con [OrganizationName] di [CurrencyCode] [BudgetAmountFloat], relativa a [RequestPurpose], è stata contrassegnata come pagata dai contabili dell'organizzazione.
+
+Questo significa che, a breve, dovresti vedere l'importo sul tuo conto.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Richiesta di rimborso spese pagata: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>Le ricevute per la vostra richiesta di rimborso spese con [OrganizationName] di [CurrencyCode] [BudgetAmountFloat], relative a [RequestPurpose], sono state convalidate dalle persone responsabili della tenuta in ordine dei registri contabili.
+
+La richiesta verrà pagata quando l'importo sarà stato attestato anche dal proprietario del bilancio.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ricevute per la richiesta di rimborso spese convalidate: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>Un nuovo [Regular] è stato aggiunto manualmente a [OrganizationName] in uno dei vostri settori.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nuovo [Regular]: [PersonName], [PersonGeography] [CountryCode] (manuale)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>Un nuovo [Regular] si è registrato su [OrganizationName] in uno dei vostri settori.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nuovo [Regular]: [PersonName], [PersonGeography] [CountryCode]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [Regularship] rinnovato: [PersonName], [PersonGeography] [CountryCode] (manualmente)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>Questa e-mail è stata inviata a [Addressee] da [OrganizationName]. Se non si desidera ricevere queste notifiche in futuro, accedere a [InstallationName] in [ExternalUrl] e modificare le impostazioni di notifica.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Il messaggio è stato messo in coda per la consegna e i destinatari sono stati risolti. La vostra e-mail verrà inviata a, o si proverà ad inviarla a, [RecipientCount] persone in [GeographyName] in [OrganizationName].</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Destinatari della comunicazione determinati per [GeographyName]: [RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>Il messaggio a [GeographyName] è stato inviato a tutti i destinatari previsti. Su [RecipientCount] destinatari previsti [RecipientsSuccess] sono riusciti da quello che ci risulta -- ricorda che la mail può essere non recapitata o non letta in seguito per una serie di motivi.
+
+Tempo impiegato per la risoluzione: [ResolvingTime].
+Tempo di trasmissione: [TransmissionTime].
+Tempo totale dalla creazione del comando al completamento: [TotalTime].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Comunicazioni trasmesse:[GeographyName]</value>
+  </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>Una nuova persona si è registrata come [RegularTitle] su [OrganizationName]! [ConcernedPersonName] vive in [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nuovo [RegularTitle]: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Qualcuno, molto probabilmente tu, ha richiesto un reset della password associata a questo indirizzo email su [InstallationName]. Tuttavia, per questo account è stata abilitata l'autenticazione a due fattori per una maggiore sicurezza. Pertanto, la password non può essere reimpostata in modo semplice.
+
+Si prega di contattare un amministratore su [InstallationName] per risolvere il problema ed emettere una nuova password seguendo una procedura di identificazione più rigorosa che corrisponda al livello di sicurezza dell'autenticazione a due fattori.
+
+Grazie per la vostra comprensione.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Impossibile resettare la Password</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>La tua password di [InstallationName] è stata appena cambiata su [ExternalUrl].
+
+Se non hai appena modificato la password, ha avuto luogo una violazione della sicurezza. Se questo è il caso, sei pregato di bloccare il tuo account IMMEDIATAMENTE cliccando sul seguente link:
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+Se confermi un blocco dell'account dal link qui sopra, tutte le sessioni esistenti termineranno immediatamente, gli accessi con la nuova password saranno bloccati e gli amministratori ti contatteranno per verificare cosa è successo e lavorare con te per riattivare il tuo account.
+
+Tuttavia, se sei stato tu a cambiare la password poco fa, causando così l'invio di questa notifica, è tutto in regola e come dovrebbe essere. Vai avanti a fare ciò che stavi facendo.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Password cambiata</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>Le persone di [OrganizationName] hanno emesso un ticket di reimpostazione della password per il tuo account, presumibilmente su tua richiesta. Questo ticket sarà valido per le prossime 24 ore.
+
+Si prega di seguire questo link per reimpostare la password e riattivare l'eventuale autenticazione a due fattori, se in precedenza era abilitata:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Questo ticket scadrà entro 24 ore. Se non si reimposta la password in questo intervallo di tempo, sarà necessario contattare gli amministratori di [OrganizationName] per emettere un nuovo ticket per la reimpostazione della password.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ticket per la reimpostazione della password</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Qualcuno, molto probabilmente tu, ha richiesto un reset della password associata a questo indirizzo email da [InstallationName]. Se sei stato tu, sei pregato di seguire il link qui sotto entro i prossimi 60 minuti per completare la procedura di reimpostazione della password:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Se NON hai richiesto il reset della password, puoi (e dovresti) ignorare questa e-mail. La richiesta di reimpostazione della password scade entro un'ora. (Se si riceve un gran numero di questi link di reimpostazione della password che non avete richiesto, avvisare l'amministratore)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Ticket per la reimpostazione della password</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>Sono state archiviate ricevute che devono essere convalidate per poter continuare i loro processi finanziari.
+
+Accedere a [InstallationName] in [ExternalUrl]Finanziario/ValidaRicevute per convalidarle o respingerle.</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]- ACTION ITEM] Ricevute archiviate - convalida necessaria</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>Il pagamento dello stipendio per [RequestPurpose] è stato annullato. Non sarà versato.
+
+Se non ve lo aspettavate, contattate l'organizzazione e/o il vostro supervisore con urgenza. Come motivazione è stato fornito quanto segue:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Pagamento dello stipendio negato: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>Questo è il suo conteggio riassuntivo dello stipendio per [LastYear]. Non si tratta di una dichiarazione di un nuovo stipendio, ma di una dichiarazione dei salari mensili pagati nel corso dell'ultimo anno, e anche di tutte le imposte detratte. La presente dichiarazione ha lo scopo di servire come dati per la vostra contabilità e/o per la dichiarazione fiscale dell'anno scorso.
+
+Stipendio lordo per: [LastYear]:  [CurrencyCode]  [GrossSalaryTotal]
+Imposte dedotte dallo stipendio: [CurrencyCode] [TaxDeductedTotal].	
+Stipendio netto versato: [CurrencyCode]  [NetSalaryTotal]
+
+Mese        Lordo       Dedotto         Netto Pagato utilizzando
+----- ---------- ----------- ---------- -----------
+[EmbeddedPreformattedText]
+
+TOTALE [GrossSalaryTotal] [TaxDeductedTotal] [NetSalaryTotal]
+
+
+Inoltre, [CurrencyCode] [TaxAdditiveTotalUnpadded] sono stati pagati in tasse dall'organizzazione per il vostro lavoro, oltre all'importo detratto sopra. Questa è anche un'imposta sul vostro stipendio, anche se la sua natura in quanto tale è stata burocraticamente occultata.</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Dichiarazione riepilogativa dello stipendio per [LastYear]</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>Il Backend di Swarmops [SwarmopsVersion] sul host [HostName] ha aggiornato con successo lo schema del database di Swarmops alla versione [DbVersion].
+
+Questo è solo a titolo informativo. Non è necessario agire.</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>Database di Swarmops aggiornato</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>Il Backend di Swarmops [SwarmopsVersion] su Host [Hostname] ha FALLITO nell'aggiornare il database di Swarmops. Questo è solitamente dovuto a un errore di rete esterno transitorio, che causa l'errore nel recupero dei file patch.
+
+Attualmente siamo alla versione del database [DbVersion], ma stiamo cercando di eseguire l'aggiornamento a [DbVersionExpected].
+
+SI riproverà a fare l'aggiornamento ogni ora. Alcune funzionalità possono essere disabilitate fino a quando il database non sarà stato aggiornato. Se si desidera risolvere i problemi manualmente, i pacchetti di aggiornamento del database possono essere recuperati da packages.swarmops.com, lo stesso posto in cui l'apt-get recupera i propri pacchetti software.</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>Aggiornamento del database di Swarmops non riuscito</value>
+  </data>
+  <data name="System_Exception_Body" xml:space="preserve">
+    <value>Un'eccezione non gestita è stata lanciata su Swarmops:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="System_Exception_Subject" xml:space="preserve">
+    <value>Eccezione Swarmops!</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>Questa è una mail di prova inviata da Swarmops [SwarmopsVersion] in esecuzione su [HostName]. Sono state appena modificate le impostazioni del server di posta elettronica. Per verificare che le nuove impostazioni siano corrette, Swarmops trasmette questo messaggio di prova che sarà poi inviato dal back-end.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Mail di prova del server Swarmops</value>
+  </data>
+  <data name="System_PublicRootReset_Body" xml:space="preserve">
+    <value>La chiave root pubblica bitcoin nel database MySql non corrispondeva alla chiave root privata bitcoin memorizzata in /etc/swarmops su [HostName]. Questa è una situazione potenzialmente grave, e non dovrebbe mai accadere, quindi la chiave pubblica di root è stata riderivata dalla chiave privata e riscritta nel database sopra quello che c'era prima.</value>
+  </data>
+  <data name="System_PublicRootReset_Subject" xml:space="preserve">
+    <value>Swarmops: reimposta chiave pubblica principale di accesso del Hotwallet</value>
+  </data>
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>La versione di backend di Swarmops [SwarmopsVersion] sul host [HostName] è stata avviata correttamente ed è stata connessa ai framework del database e della notificazione.</value>
+  </data>
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>Backend Swarmops operativo</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>La versione del socket server del frontend di Swarmops [SwarmopsVersion] sul host [HostName] è stata avviata e connessa con successo al database e ai framework di notifica.</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>Frontend di Swarmops operativo</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
+    <value>Il motore di trasmissione Swarmops su [HostName] ha riscontrato un tipo di payload sconosciuto ([UnrecognizedPayloadType]). Questo dovrebbe accadere solo in rare occasioni, in concomitanza con aggiornamenti in cui una versione aggiornata deve prendersi cura di qualcosa che ha cambiato nome durante il processo, un fenomeno raro.
+
+Se l'errore si ripete, è possibile che il plugin sia installato male o qualcosa di simile. In ogni caso, il messaggio non riconosciuto è stato scartato e non sarà trasmesso, poiché Swarmops non sa come.</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
+    <value>Swarmops：Carico utile di comunicazioni non riconosciuto</value>
+  </data>
 </root>

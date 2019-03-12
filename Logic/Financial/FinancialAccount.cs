@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common;
 using Swarmops.Common.Enums;
@@ -126,12 +129,12 @@ namespace Swarmops.Logic.Financial
             }
             set
             {
-                OptionalData.SetOptionalDataInt (ObjectOptionalDataType.FinancialAccountNativeCurrency, value.Identity);
+                OptionalData.SetOptionalDataInt (ObjectOptionalDataType.FinancialAccountNativeCurrency, (value == null? 0: value.Identity));
             }
         }
 
 
-        public Money ForeignBalanceTotalCents
+        public Money ForeignCurrencyBalance
         {
             get
             {
@@ -139,6 +142,19 @@ namespace Swarmops.Logic.Financial
                     SwarmDb.GetDatabaseForReading().GetFinancialAccountForeignCentsBalance (this.Identity);
                 return new Money (foreignCents, ForeignCurrency); // default to now
             }
+        }
+
+
+        public Money GetForeignCurrencyBalanceDeltaCents(DateTime lowerBoundinclusive, DateTime upperBoundExclusive)
+        {
+            if (this.ForeignCurrency == null)
+            {
+                throw new InvalidOperationException("Account does not have a non-presentation currency");
+            }
+
+            Int64 foreignCents =
+                SwarmDb.GetDatabaseForReading().GetFinancialAccountForeignDeltaCents(this.Identity, lowerBoundinclusive, upperBoundExclusive);
+            return new Money(foreignCents, ForeignCurrency); // default to now
         }
 
 
@@ -154,27 +170,49 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public FinancialAccountDocument GetMostRecentDocument(FinancialAccountDocumentType documentType)
+        {
+            FinancialAccountDocuments documents = FinancialAccountDocuments.ForAccount(this, documentType);
+
+            if (documents.Count() > 0)
+            {
+                return documents.Last();
+            }
+
+            return null;
+        }
+
+
 
         public void CheckForexProfitLoss()
         {
             // Compare current balance in native currency with the current balance in foreign currency. If off by more than 100 cents,
             // log a corrective transaction to account for exchange rate fluctuations.
 
-            DateTime compareDateTime = DateTime.UtcNow;
+            if (ForeignCurrency == null)
+            {
+                return; // accounting is in presentation currency only
+            }
 
+            Money foreignCents = new Money(ForeignCurrencyBalance.Cents, ForeignCurrency);
+
+            LogForexProfitLoss(foreignCents);
+        }
+
+
+        public void LogForexProfitLoss(Money accountBalanceInAnyCurrency)
+        {
+            Int64 currentNativeValueOfForeignCents = accountBalanceInAnyCurrency.ToCurrency(Organization.Currency).Cents;
             Int64 nativeCents = BalanceTotalCents;
-            Money foreignCents = new Money(ForeignBalanceTotalCents.Cents, ForeignCurrency, compareDateTime);
-
-            Int64 currentNativeValueOfForeignCents = foreignCents.ToCurrency (Organization.Currency).Cents;
 
             if (nativeCents - 100 > currentNativeValueOfForeignCents)
             {
                 // log a loss
 
                 Int64 lossCents = nativeCents - currentNativeValueOfForeignCents;
-                FinancialTransaction lossTx = FinancialTransaction.Create (Organization, DateTime.UtcNow, "Forex Loss");
-                lossTx.AddRow (this, -lossCents, null);
-                lossTx.AddRow (Organization.FinancialAccounts.CostsCurrencyFluctuations, lossCents, null);
+                FinancialTransaction lossTx = FinancialTransaction.Create(Organization, DateTime.UtcNow, "Forex Loss");
+                lossTx.AddRow(this, -lossCents, null);
+                lossTx.AddRow(Organization.FinancialAccounts.CostsCurrencyFluctuations, lossCents, null);
             }
             else if (nativeCents + 100 < currentNativeValueOfForeignCents)
             {
@@ -188,7 +226,164 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public Money InitialBalance
+        {
+            set
+            {
+                try
+                {
+                    const string initialBalanceTransactionTitle = "Initial Balances";
+
+                    Int64 currentInitialBalanceCents = this.GetDeltaCents(Constants.DateTimeLow,
+                        new DateTime(this.Organization.FirstFiscalYear, 1, 1));
+
+                    // Test: Assert that the currency set equals the currency for the account
+
+                    if (this.ForeignCurrency != null)
+                    {
+                        if (value.Currency.Identity != this.ForeignCurrency.Identity)
+                        {
+                            throw new ArgumentException("Foreign currency mismatch");
+                        }
+                    }
+                    else
+                    {
+                        if (value.Currency.Identity != this.Organization.Currency.Identity)
+                        {
+                            throw new ArgumentException("Presentation currency mismatch");
+                        }
+                    }
+
+                    // Find or create "Initial Balances" transaction
+
+                    FinancialAccountRows testRows = FinancialAccountRows.ForOrganization(this.Organization,
+                        Constants.DateTimeLow, new DateTime(this.Organization.FirstFiscalYear, 1, 1));
+
+                    FinancialTransaction initialBalancesTransaction = null;
+
+                    foreach (FinancialAccountRow row in testRows)
+                    {
+                        if (row.Transaction.Description == initialBalanceTransactionTitle)
+                        {
+                            initialBalancesTransaction = row.Transaction;
+                            break;
+                        }
+                    }
+
+                    if (initialBalancesTransaction == null)
+                    {
+                        // create transaction
+
+                        initialBalancesTransaction = FinancialTransaction.Create(this.Organization,
+                            new DateTime(this.Organization.FirstFiscalYear - 1, 12, 31),
+                            initialBalanceTransactionTitle);
+                    }
+
+                    // reconstructing the R-value now that we have the valuation date, which the setter didn't
+
+                    Money setValue = new Money(value.Cents, value.Currency, initialBalancesTransaction.DateTime);
+                    Int64 deltaCents = setValue.ToCurrency(Organization.Currency).Cents - currentInitialBalanceCents;
+
+                    Dictionary<int, Int64> recalcBase = initialBalancesTransaction.GetRecalculationBase();
+                    int equityAccountId = this.Organization.FinancialAccounts.DebtsEquity.Identity;
+
+                    if (!recalcBase.ContainsKey(this.Identity))
+                    {
+                        recalcBase[this.Identity] = 0;
+                    }
+                    if (!recalcBase.ContainsKey(equityAccountId))
+                    {
+                        recalcBase[equityAccountId] = 0;
+                    }
+
+                    recalcBase[this.Identity] += deltaCents;
+                    recalcBase[equityAccountId] -= deltaCents;
+                    initialBalancesTransaction.RecalculateTransaction(recalcBase, null);
+
+                    if (this.ForeignCurrency != null)
+                    {
+                        // We need to also set the initial balance in foreign currency.
+
+                        // First, get the current initial balance in account nonpresentation currency:
+
+                        Int64 initialBalanceForeignCents = GetForeignCurrencyBalanceDeltaCents(Constants.DateTimeLow,
+                            new DateTime(this.Organization.FirstFiscalYear, 1, 1)).Cents;
+
+                        Int64 desiredInitialBalanceForeignCents = value.Cents;
+
+                        Int64 deltaForeignCents = desiredInitialBalanceForeignCents - initialBalanceForeignCents;
+
+                        // Find the newly added transaction row 
+                        // (WARNING / RACE: This may return an incorrect row, if there's a lag betweeen
+                        // reading and writing of the database instances, such as a replication scenario
+                        // with one write and many read dbs)
+
+                        testRows = FinancialAccountRows.ForOrganization(this.Organization,
+                            Constants.DateTimeLow, new DateTime(this.Organization.FirstFiscalYear, 1, 1));
+                        FinancialTransactionRow lastFoundRow = null;
+
+                        foreach (FinancialAccountRow row in testRows)
+                        {
+                            if (row.Transaction.Description == initialBalanceTransactionTitle && row.FinancialAccountId == this.Identity)
+                            {
+                                lastFoundRow = row.TransactionRow;
+                            }
+                        }
+
+                        if (lastFoundRow == null)
+                        {
+                            throw new InvalidOperationException("Could not find row that was seemingly just created");
+                        }
+
+                        // Amend the last found row, which is assumed to be a result of the RecalculateTx
+                        // call above, to reflect the new initial balance in foreign currency.
+
+                        Money lastRowForeignAmount = lastFoundRow.AmountForeignCents;
+
+                        if (lastRowForeignAmount.Currency.Identity != value.Currency.Identity)
+                        {
+                            throw new ArgumentException("Foreign currency mismatch");
+                        }
+
+                        Int64 lastRowForeignCents = lastFoundRow.AmountForeignCents.Cents;
+
+                        // adjust last row's foreign cents with the delta between the current initial balance
+                        // and the desired initial balance
+
+                        Int64 newLastRowForeignCents = lastRowForeignCents + deltaForeignCents;
+
+                        lastFoundRow.AmountForeignCents = new Money(newLastRowForeignCents, value.Currency, lastFoundRow.Transaction.DateTime);
+
+                    }
+                }
+                catch (Exception weirdException)
+                {
+                    SupportFunctions.LogException("FinancialAccount-SetInitialBalance", weirdException);
+
+                    throw;
+                }
+            }
+        }
+
+
+
         public ExternalBankDataProfile ExternalBankDataProfile
+        {
+            get
+            {
+                ExternalBankDataProfile oldProfile = ExternalBankDataProfileOldHack;
+                ExternalBankDataProfile newProfile = ExternalBankDataProfile.FromIdentity(AutomationProfile.BankDataProfileId);
+
+                if (oldProfile != null && (newProfile.Identity != oldProfile.Identity || newProfile.Name != oldProfile.Name))
+                {
+                    throw new InvalidOperationException("Defensive programming for crucial part");                    
+                }
+
+                return newProfile;
+            }
+        }
+
+        private ExternalBankDataProfile ExternalBankDataProfileOldHack
         {
             get
             {
@@ -518,6 +713,19 @@ namespace Swarmops.Logic.Financial
             return FinancialAccounts.ThisAndBelow (this);
         }
 
+        public Currency Currency
+        {
+            get
+            {
+                if (this.ForeignCurrency != null)
+                {
+                    return this.ForeignCurrency;
+                }
+
+                return this.Organization.Currency;
+            }
+        }
+
 
         static private Dictionary<int, Dictionary<int, Int64>> _organizationBudgetAttestationSpaceLookup =
             new Dictionary<int, Dictionary<int, long>>();
@@ -604,7 +812,7 @@ namespace Swarmops.Logic.Financial
             return result;
         }
 
-        public static void ClearAttestationAdjustmentsCache (Organization organization)
+        public static void ClearApprovalAdjustmentsCache (Organization organization)
         {
             if (_organizationBudgetAttestationSpaceLookup.ContainsKey (organization.Identity))
             {
@@ -645,6 +853,38 @@ namespace Swarmops.Logic.Financial
             }
 
             return result;
+        }
+
+
+        public int AutomationProfileId
+        {
+            get { return ObjectOptionalData.ForObject(this).GetOptionalDataInt(ObjectOptionalDataType.AutomationProfileId); }
+            set { ObjectOptionalData.ForObject(this).SetOptionalDataInt(ObjectOptionalDataType.AutomationProfileId, value); }
+        }
+
+        public FinancialAccountAutomationProfile AutomationProfile
+        {
+            get
+            {
+                return (AutomationProfileId == 0
+                    ? null
+                    : FinancialAccountAutomationProfile.FromIdentity(AutomationProfileId));
+            }
+            set { AutomationProfileId = (value == null ? 0 : value.Identity); }
+        }
+
+        public string AutomationProfileCustomXml
+        {
+            get
+            {
+                return
+                    ObjectOptionalData.ForObject(this)
+                        .GetOptionalDataString(ObjectOptionalDataType.AutomationProfileCustomXml);
+            }
+            set
+            {
+                ObjectOptionalData.ForObject(this).SetOptionalDataString(ObjectOptionalDataType.AutomationProfileCustomXml, value);
+            }
         }
     }
 }

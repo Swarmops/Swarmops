@@ -514,7 +514,7 @@
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
   <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>MMM d, yyyy</value>
+    <value>MMMM d, yyyy</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
@@ -830,11 +830,11 @@
                 &lt;p&gt;BitID is a way to log on securely with less hassle than entering a password. Its simplicitly cannot be explained, only experienced, and it is a two-factor authentication since it uses your phone.&lt;/p&gt;
                 &lt;h3&gt;Doesn't this require my phone to be protected also?&lt;/h3&gt;
                 &lt;p&gt;Well, yes. It's your phone and your phone's access protection. But your phone should always be access protected.&lt;/p&gt;
-                &lt;h3&gt;Do I need an app for this?&lt;/h3&gt;
-                &lt;p&gt;Maybe. Some mobile bitcoin wallets have BitID built in. The most common one hasn't. If yours doesn't, look for an app called "BitID Authenticator" or similar.&lt;/p&gt;
+                &lt;h3&gt;Do I need a mobile app for this?&lt;/h3&gt;
+                &lt;p&gt;Yes, in some form. Some mobile bitcoin wallets have BitID built in. Two examples of mobile wallets that support BitID are {0} and {1}. You can also look for a standalone BitID Authenticator.&lt;/p&gt;
                 &lt;h3&gt;How do I enable BitID?&lt;/h3&gt;
                 &lt;p&gt;Just use the phone app to scan this code. After that, you can scan a similar code to log in to this system.&lt;/p&gt;</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address.</comment>
+    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
   </data>
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>BitID (bitcoin signature) two-factor authentication</value>
@@ -952,5 +952,156 @@
   </data>
   <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
     <value>Outbound Invoice #{0:N0} to {1}</value>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(cancelled, voided, zeroed)</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>File Upload Results</value>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>VAT</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Value Added Tax</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>Date</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>MMM d, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Submit</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>General Ledger</value>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>You are entering the &lt;strong&gt;Sandbox&lt;/strong&gt; organization.&lt;br/&gt;&lt;br/&gt;This is a safe environment where you can play around with Swarmops without risking any damage to production data. Have fun all you want, and return to your production environment when you're done experimenting.</value>
+  </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>{0} to {1}</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>Don't Skip</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>skip this</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>Skip</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Financial_Ebitda_Long" xml:space="preserve">
+    <value>Earnings before Interest, Taxes, Depreciation, and Amortization</value>
+  </data>
+  <data name="Financial_Ebitda_Short" xml:space="preserve">
+    <value>EBITDA</value>
+    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
+  </data>
+  <data name="Financial_AllBalancesSettled" xml:space="preserve">
+    <value>All Balances Are Settled</value>
+    <comment>Nobody owes anybody anything</comment>
+  </data>
+  <data name="Financial_CurrentBalance" xml:space="preserve">
+    <value>Current Balance</value>
+  </data>
+  <data name="Financial_NoPaymentHistory" xml:space="preserve">
+    <value>There are no payments on record</value>
+  </data>
+  <data name="Financial_Owed" xml:space="preserve">
+    <value>Owed</value>
+    <comment>As in, "Amount Owed"</comment>
+  </data>
+  <data name="Financial_Paid" xml:space="preserve">
+    <value>Paid</value>
+    <comment>As in, "Amount Paid To Person"</comment>
+  </data>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>Payment History</value>
+  </data>
+  <data name="Financial_PaymentSpecification" xml:space="preserve">
+    <value>Payment #{0:N0}</value>
+    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
+  </data>
+  <data name="Financial_PayoutSpecification" xml:space="preserve">
+    <value>Payout #{0:N0}</value>
+    <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
+  <data name="Financial_PersonIsOwed" xml:space="preserve">
+    <value>Person Is Owed</value>
+    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
+  </data>
+  <data name="Financial_PersonOwes" xml:space="preserve">
+    <value>Person Owes Amount</value>
+    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
+  </data>
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>Unconfirmed Payout</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
+  </data>
+  <data name="Financial_YouAreOwed" xml:space="preserve">
+    <value>{0} Owes You</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Financial_YouOwe" xml:space="preserve">
+    <value>You Owe This Amount</value>
+    <comment>Like Person Owes, but directed at the user at the screen</comment>
+  </data>
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>Zero</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
+  </data>
+  <data name="Global_Closed" xml:space="preserve">
+    <value>Closed</value>
+    <comment>As in "record or transaction closed"</comment>
+  </data>
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>No records</value>
+    <comment>There are no records of the requested type</comment>
+  </data>
+  <data name="Global_Error_Concurrency" xml:space="preserve">
+    <value>This action is no longer available.</value>
+    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>Item</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>Items</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
+  <data name="Global_Opened" xml:space="preserve">
+    <value>Opened</value>
+    <comment>As in "record or transaction opened"</comment>
+  </data>
+  <data name="IconTooltip_Barcode_Scanning" xml:space="preserve">
+    <value>This line item can be automatically scanned by an app.</value>
+    <comment>This is when Swarmops can display an expense-to-be-paid in a format, that a mobile banking app can read directly, such as a QR code or other machine-readable format.</comment>
+  </data>
+  <data name="Financial_DueDateShort" xml:space="preserve">
+    <value>Due</value>
+    <comment>As "due date", as in when a payment is expected, but just the word "due" to be combined with an actual date in the UI. Example: *Due* Jan 21.</comment>
+  </data>
+  <data name="Global_DateFormatLongDateMonth" xml:space="preserve">
+    <value>MMMM d</value>
+    <comment>Format used for just date and month (no year). The formats are MMMM for month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages use different ways to write month and date, for example, German would write "23. Dezember" (note the dot), a format which would be "{0:d}. {0:MMMM}".</comment>
+  </data>
+  <data name="Global_DateFormatShortDateMonth" xml:space="preserve">
+    <value>MMM dd</value>
+    <comment>Format used for just date and month (no year). The formats are MMM for three-letter month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages write month and date in different orders and with different separators. Do keep the month NAME though, rather than using the month number, even if that's common in the target language.</comment>
   </data>
 </root>

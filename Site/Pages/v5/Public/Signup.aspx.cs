@@ -138,7 +138,6 @@ namespace Swarmops.Frontend.Pages.Public
             this.LabelSidebarActionsHeader.Text = Resources.Global.Sidebar_Actions;
 
             this.LabelWelcomeHeader.Text = String.Format (Resources.Pages.Public.Signup_Welcome, Organization.Name);
-            this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
             this.LabelYourLogon.Text = Resources.Pages.Public.Signup_YourLogon;
             this.LabelYourLogonText.Text = Resources.Pages.Public.Signup_YourLogonText;
 
@@ -180,8 +179,6 @@ namespace Swarmops.Frontend.Pages.Public
 
             this.LabelActivationLevelHeader.Text = Resources.Pages.Public.Signup_ActivationLevel;
             this.LabelActivationLevelIntro.Text = String.Format(Resources.Pages.Public.Signup_ActivationLevelText, this.Organization.Name);
-            this.RadioActivationPassive.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveHeader, Participant.Localized (this.Organization.RegularLabel));
-            this.LabelActivationPassiveText.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassive, Participant.Localized(this.Organization.RegularLabel));
             this.RadioActivationActive.Text = String.Format(Resources.Pages.Public.Signup_ActivationActiveHeader, Participant.Localized (this.Organization.ActivistLabel));
             this.LabelActivationActiveText.Text = Resources.Pages.Public.Signup_ActivationActive;
             this.RadioActivationVolunteer.Text = Resources.Pages.Public.Signup_ActivationVolunteerHeader;
@@ -202,18 +199,63 @@ namespace Swarmops.Frontend.Pages.Public
             }
 
             this.LabelSidebarActionsHeader.Text = Resources.Pages.Public.Signup_FeeHeader;
-            // if (this.Organization.MembershipFee == 0 && this.Organization.MembershipRenewalFee == 0)
-            this.LabelSidebarActionsContent.Text = String.Format (Resources.Pages.Public.Signup_NoFeeText,
-                Participant.Localized (this.Organization.RegularLabel, TitleVariant.Ship), DateTime.Today.AddYears (1).ToShortDateString(), this.Organization.Name);
 
             this.LabelSidebarInfoHeader.Text = Resources.Global.Sidebar_Information;
             this.LabelSidebarTodoHeader.Text = Resources.Global.Sidebar_Todo;
 
             this.LabelSidebarTodo.Text = Resources.Pages.Public.Signup_Todo_Complete;
-            this.LabelSidebarInfoContent.Text =
-                @"This is the organization's Short About text. It is set in Admin / Org Settings.";
+            this.LabelSidebarInfoContent.Text = CustomOrDefault(this.Organization.Parameters.SidebarOrgInfo,
+                Resources.Pages.Public.Signup_DefaultSidebarText);
+
+            this.LiteralFirstPageSignup.Text = CustomOrDefault(this.Organization.Parameters.SignupFirstPage,
+                Resources.Pages.Public.Signup_DefaultFirstPageText);
+            this.LiteralLastPageSignup.Text = CustomOrDefault(this.Organization.Parameters.SignupLastPage,
+                Resources.Pages.Public.Signup_DefaultLastPageText);
+
+            switch (this.Organization.Parameters.ParticipationEntry)
+            {
+                case "": // default
+                case "Application":
+
+                    // if (this.Organization.MembershipFee == 0 && this.Organization.MembershipRenewalFee == 0)
+                    this.LabelSidebarActionsContent.Text = String.Format(Resources.Pages.Public.Signup_NoFeeText,
+                        Participant.Localized(this.Organization.RegularLabel, TitleVariant.Ship), DateTime.Today.AddYears(1).ToShortDateString(), this.Organization.Name);
+                    this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
+                    this.RadioActivationPassive.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveHeader, Participant.Localized(this.Organization.RegularLabel));
+                    this.LabelActivationPassiveText.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassive, Participant.Localized(this.Organization.RegularLabel));
+                    break;
+
+                case "ApplicationApproval":
+                    // Each application must be approved
+                    this.LabelSidebarActionsContent.Text = String.Format(Resources.Pages.Public.Signup_ApplicationApproval,
+                        Participant.Localized(this.Organization.RegularLabel, TitleVariant.Ship), this.Organization.Name);
+                    this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_ApplyingFor, Participant.Localized(this.Organization.RegularLabel, TitleVariant.Ship), Organization.Name).ToUpperInvariant();
+                    this.RadioActivationPassive.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveHeader, Participant.Localized(this.Organization.ApplicantLabel));
+                    this.LabelActivationPassiveText.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveApplication, Participant.Localized(this.Organization.ApplicantLabel), Participant.Localized(this.Organization.RegularLabel, TitleVariant.Ship));
+
+                    break;
+
+                default:
+                    this.LabelSidebarActionsContent.Text = Resources.Pages.Public.Signup_Unsupported;
+                    this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
+                    this.RadioActivationPassive.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveHeader, Participant.Localized(this.Organization.RegularLabel));
+                    this.LabelActivationPassiveText.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassive, Participant.Localized(this.Organization.RegularLabel));
+                    break;
+
+
+            }
         }
 
+
+        private string CustomOrDefault(string customData, string defaultData)
+        {
+            if (!string.IsNullOrEmpty(customData))
+            {
+                return customData;
+            }
+
+            return defaultData;
+        }
 
         protected Organization Organization;
 
@@ -239,18 +281,33 @@ namespace Swarmops.Frontend.Pages.Public
 
             Person newPerson = Person.Create (name, mail, password, phone, street1 + "\n" + street2.Trim(), postalCode,
                 city, countryCode, parsedDateOfBirth, gender);
-            Participation participation = newPerson.AddParticipation (organization, DateTime.UtcNow.AddYears (1));  // TODO: set duration from organization settings of Participantship
+
+
+            if (organization.Parameters.ParticipationEntry == "ApplicationApproval")
+            {
+                Applicant newApplicant = Applicant.Create(newPerson, organization);
+                SwarmopsLog.CreateEntry(newPerson, new ApplicantAddedLogEntry(newApplicant));
+                OutboundComm.CreateParticipantNotification(newPerson, newPerson, organization,
+                    NotificationResource.Applicant_Signup);
+            }
+            else
+            {
+                // "Application" or null, default
+
+                Participation participation = newPerson.AddParticipation(organization, DateTime.UtcNow.AddYears(1));  // TODO: set duration from organization settings of Participantship
+                SwarmopsLog.CreateEntry(newPerson, new PersonAddedLogEntry(participation, newPerson));
+                OutboundComm.CreateParticipantNotification(newPerson, newPerson, organization,
+                    NotificationResource.Participant_Signup);
+
+            }
+
+            // TODO: CREATE APPLICATION INSTEAD DEPENDING ON POLICY
 
             // TODO: SEND NOTIFICATIONS
 
-            // Log the signup
-
-            SwarmopsLog.CreateEntry (newPerson, new PersonAddedLogEntry (participation, newPerson));
 
             // Create notification
 
-            OutboundComm.CreateParticipantNotification (newPerson, newPerson, organization,
-                NotificationResource.Participant_Signup);
 
             // Add the bells and whistles
 
@@ -278,7 +335,7 @@ namespace Swarmops.Frontend.Pages.Public
 
             // Set authentication cookie, which will log the new person in using the credentials just given
 
-            FormsAuthentication.SetAuthCookie (Authority.FromLogin (newPerson).ToEncryptedXml(), true);
+            FormsAuthentication.SetAuthCookie (Authority.FromLogin (newPerson, organization).ToEncryptedXml(), true);
 
             AjaxCallResult result = new AjaxCallResult {Success = true};
             return result;
@@ -315,8 +372,6 @@ namespace Swarmops.Frontend.Pages.Public
                 string ipAddress = Logic.Support.SupportFunctions.GetMostLikelyRemoteIPAddress();
 
                 NGeoIP.RawData rawData = (NGeoIP.RawData) GuidCache.Get(ipAddress);
-
-                Persistence.Key["DebugData"] = HttpContext.Current.Request.ToRaw();
 
                 if (rawData == null)
                 {

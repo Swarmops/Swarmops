@@ -10,8 +10,7 @@
         }
 
         preload([
-            '/Images/Abstract/ajaxloader-48x36px.gif',
-            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png'
+            '/Images/Abstract/ajaxloader-48x36px.gif'
         ]);
         $(document).ready(function() {
 
@@ -50,19 +49,7 @@
 	                    <%= this.DropPerson.ClientID%>_focus();
 	                });
 
-	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').css("cursor", "pointer").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
-
-	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').mouseover(function() {
-	                    if ($(this).attr("rel") != "loading") {
-	                        $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot.png");
-	                    }
-	                });
-
-	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').mouseout(function () {
-	                    if ($(this).attr("rel") != "loading") {
-	                        $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
-	                    }
-	                });
+	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
 
 	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').click(function() {
 	                    if ($(this).attr("rel") != "loading") {
@@ -202,12 +189,12 @@
     <Swarmops5:ModalDialog id="DialogAdd" runat="server">
         <DialogCode>
             <h2><asp:Label runat="server" ID="LabelModalHeader"/></h2>
-            <div class="entryFields">
+            <div class="data-entry-fields">
                 <Swarmops5Workaround:ComboPeople ID="DropPerson" runat="server" />
                 <Swarmops5:DropDown ID="DropDuration" runat="server" />
-                <input type="button" id="<%=this.ClientID %>_buttonAssign" class="buttonAccentColor" value="#Assign#" />
+                <input type="button" id="<%=this.ClientID %>_buttonAssign" class="button-accent-color" value="#Assign#" />
             </div>
-            <div class="entryLabels">
+            <div class="data-entry-labels">
                 <asp:Label ID="LabelAssignPersonTo" runat="server" /><br/>
                 <asp:Label ID="LabelAssignmentDuration" runat="server" />
             </div>

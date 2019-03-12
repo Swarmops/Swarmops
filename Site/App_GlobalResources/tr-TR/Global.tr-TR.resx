@@ -117,244 +117,971 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CurrentUserInfo_Logout" xml:space="preserve">
+    <value>Çıkış yap</value>
+    <comment>Causes signoff and de-authentication</comment>
+  </data>
+  <data name="CurrentUserInfo_Preferences" xml:space="preserve">
+    <value>Tercihler</value>
+    <comment>Tooltip on hover over wrench icon</comment>
+  </data>
+  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
+    <value>Dil Seçin</value>
+    <comment>Shown as header of language list pop-up</comment>
+  </data>
+  
+  
+  <data name="Dashboard_PageTitle" xml:space="preserve">
+    <value>Gösterge paneli</value>
+    <comment>Title of default page</comment>
+  </data>
+  <data name="Financial_Actuals" xml:space="preserve">
+    <value>Aktüeller</value>
+  </data>
+  <data name="Financial_ActualsPreliminary" xml:space="preserve">
+    <value>Aktüeller (prel)</value>
+  </data>
+  <data name="Financial_ActualsToDate" xml:space="preserve">
+    <value>SBB Aktüeller</value>
+  </data>
+  <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
+    <value>Muhasebe Hesabı</value>
+  </data>
+  <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
+    <value>Hesap</value>
+  </data>
+  <data name="Financial_Budget" xml:space="preserve">
+    <value>Bütçe</value>
+  </data>
+  <data name="Financial_CashAdvance" xml:space="preserve">
+    <value>Avans</value>
+  </data>
+  <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
+    <value>Nakit Avans #{0}</value>
+  </data>
+  <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
+    <value>Nakit Avanslar {0}</value>
+  </data>
+  <data name="Financial_ExpenseClaim" xml:space="preserve">
+    <value>Gider</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
+    <value>Gider #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
+    <value>Giderler {0}</value>
+  </data>
+  <data name="Financial_InvoiceInbound" xml:space="preserve">
+    <value>Fatura</value>
+  </data>
+  <data name="Financial_InvoiceOutbound" xml:space="preserve">
+    <value>Fatura</value>
+  </data>
+  <data name="Financial_Parley" xml:space="preserve">
+    <value>Konferans</value>
+  </data>
+  <data name="Financial_Salary" xml:space="preserve">
+    <value>Maaş</value>
+  </data>
+  <data name="Financial_SalarySpecification" xml:space="preserve">
+    <value>{0:yyyy-MMM} için aylık</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_TaxesSpecification" xml:space="preserve">
+    <value>Maaşlar için vergi {0}</value>
+  </data>
+  <data name="Financial_TaxSpecification" xml:space="preserve">
+    <value>Maaş #{0} için vergi</value>
+  </data>
+  <data name="Financial_TheTaxMan" xml:space="preserve">
+    <value>Vergi Alıcı</value>
+    <comment>Used as recipient for taxes.</comment>
+  </data>
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>Yıllık sonuç</value>
+  </data>
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>En kısa sürede</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
+  </data>
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>Iptal</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
+  <data name="Global_Change" xml:space="preserve">
+    <value>Değiştirilsin mi?</value>
+    <comment>Link after describing what the user is looking at, allowing a change.</comment>
+  </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>Resmi büyütmek için tıklayın.</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>Onayla</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>--Bütçe/Hesap seçiniz--</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>--Organizasyon Seç--</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>Oraya git...</value>
+    <comment>Link after describing something.</comment>
+  </data>
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>Hiç kimse</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>Sahibi</value>
+  </data>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>Dosya İşleniyor...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
+  </data>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>Dosya Yükle</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
+  </data>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Swarmops'a Dosya Yükle</value>
+    <comment>Used as header above upload sections.</comment>
+  </data>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>Lütfen yüklemek için dosya seçin.</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
+  </data>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>Şuanda &lt;strong&gt;{0}&lt;/strong&gt; hesabında oturumunuz açık. Başka bir organizasyona geçmek ister misiniz?</value>
+  </data>
+  <data name="Sidebar_Actions" xml:space="preserve">
+    <value>Eylemler</value>
+    <comment>List of shortcuts to likely actions</comment>
+  </data>
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>Bu noktada hiç önerilen eylem bulunmuyor.</value>
+    <comment>No shortcuts from this page right now.</comment>
+  </data>
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>Bilgi</value>
+    <comment>Information about current page</comment>
+  </data>
+  <data name="Sidebar_Todo" xml:space="preserve">
+    <value>Yapılacaklar</value>
+    <comment>List of todo items</comment>
+  </data>
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>&lt;strong&gt;Her Şey Temiz:&lt;/strong&gt;Yapılacak hiçbir acil eylem bulunmuyor. Yaşasın!</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
+  </data>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>Eylem öğeleri buraya gelecek.</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
+  </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>Avanslar</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>Nakit Avanslar</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>Masraflar</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>Masraf Talepleri</value>
+  </data>
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>Faturalar</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>Gelen Faturalar</value>
+  </data>
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>Faturalar</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>Giden Faturalar</value>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>Geçerli Değil</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>Geçerli Değil</value>
+  </data>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>Şu Andan İtibaren</value>
+  </data>
+  <data name="Global_Today" xml:space="preserve">
+    <value>Bugün</value>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
+    <value>Maliyet Türü</value>
+    <comment>Second-dimension bookkeeping</comment>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
+    <value>Proje</value>
+    <comment>Tagging costs/income to projects</comment>
+  </data>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>İlgili</value>
+    <comment>List of shortcuts to related actions to current one</comment>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>Gider #{0:N0} (eksi avans #{1:N0})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>Gider #{0:N0} (eksi avanslar)</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>Giderler {0} (eksi avans #{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>Giderler {0} (eksi avanslar)</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>{1} tarafından yapılan Masraf Talebi #{0:N0}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>{1}'den Gelen Fatura #{0:N0}</value>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>{1}'in Makbuz Resmi {0}</value>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>{1}'in Resmi {0}</value>
+  </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>Son Tarih</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>Tedarikçi</value>
+  </data>
+  <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
+    <value>Türkçe (TR)</value>
+    <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>Hayır</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Evet</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>Varlıklar</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>Masraflar</value>
+  </data>
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>Borçlar</value>
+  </data>
+  <data name="Financial_Income" xml:space="preserve">
+    <value>Gelir</value>
+  </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>-- Birini seçin --</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_Missing" xml:space="preserve">
+    <value>- eksik -</value>
+    <comment>When a record or similar is missing. Used in grids.</comment>
+  </data>
+  <data name="Global_Multiple" xml:space="preserve">
+    <value>- birden fazla -</value>
+    <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
+  <data name="Global_Off" xml:space="preserve">
+    <value>Kapalı</value>
+    <comment>Off (as opposed to On)</comment>
+  </data>
+  <data name="Global_On" xml:space="preserve">
+    <value>Açık</value>
+    <comment>On (as opposed to Off)</comment>
+  </data>
+  <data name="Global_Organization_Commercial" xml:space="preserve">
+    <value>Ticari</value>
+    <comment>A commercial organization (for-profit enterprise)</comment>
+  </data>
+  <data name="Global_Organization_Governmental" xml:space="preserve">
+    <value>Yönetimsel</value>
+    <comment>Organization that's part of government somehow</comment>
+  </data>
+  <data name="Global_Organization_Nonprofit" xml:space="preserve">
+    <value>Kar Amacı Gütmeyen</value>
+    <comment>Non-profit (activist, political parties)</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>Coğrafya</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
+  <data name="Global_Action" xml:space="preserve">
+    <value>Eylem</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>Posta</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>İsim</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>Notlar</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Phone" xml:space="preserve">
+    <value>Telefon</value>
+    <comment>Somebody's telephone number. Mobile assumed.</comment>
+  </data>
+  <data name="Global_Custom" xml:space="preserve">
+    <value>Özel</value>
+    <comment>As in "show me the advanced options"</comment>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>Oluştur</value>
+    <comment>Like "Create Organization"</comment>
+  </data>
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>Tümü</value>
+  </data>
+  <data name="Global_Description" xml:space="preserve">
+    <value>Açıklama</value>
+    <comment>As a general header of any description field</comment>
+  </data>
+  <data name="Global_Q1" xml:space="preserve">
+    <value>1. Çeyrek</value>
+    <comment>First quarter of the year</comment>
+  </data>
+  <data name="Global_Q2" xml:space="preserve">
+    <value>2. Çeyrek</value>
+    <comment>Second quarter of the year</comment>
+  </data>
+  <data name="Global_Q3" xml:space="preserve">
+    <value>3. Çeyrek</value>
+    <comment>Third quarter of the year</comment>
+  </data>
+  <data name="Global_Q4" xml:space="preserve">
+    <value>4. Çeyrek</value>
+    <comment>Fourth quarter of the year</comment>
+  </data>
+  <data name="Global_Timestamp" xml:space="preserve">
+    <value>Zaman damgası</value>
+  </data>
+  <data name="Ledgers_Balance" xml:space="preserve">
+    <value>Bakiye</value>
+    <comment>As in 'account balance', not as in staying upright</comment>
+  </data>
+  <data name="Ledgers_Credit" xml:space="preserve">
+    <value>Kredi</value>
+  </data>
+  <data name="Ledgers_Debit" xml:space="preserve">
+    <value>Borç</value>
+  </data>
+  <data name="Global_Organization" xml:space="preserve">
+    <value>Organizasyon</value>
+  </data>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>Yardım</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>Kadın</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>Erkek</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_UnknownUndisclosed" xml:space="preserve">
+    <value>Bilinmeyen veya Gizli</value>
+    <comment>Used for gender et al</comment>
+  </data>
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>AA/GG/YYYY</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  </data>
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>AAAA g, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>beş yıllık</value>
+  </data>
+  <data name="Timespan_Forever" xml:space="preserve">
+    <value>ömür boyu</value>
+    <comment>Like "a lifetime membership"</comment>
+  </data>
+  <data name="Timespan_OneMonth" xml:space="preserve">
+    <value>bir aylık</value>
+  </data>
+  <data name="Timespan_OneYear" xml:space="preserve">
+    <value>bir yıllık</value>
+  </data>
+  <data name="Timespan_TwoYears" xml:space="preserve">
+    <value>iki yıllık</value>
+    <comment>Like "a two-year membership"</comment>
+  </data>
+  <data name="Global_Address" xml:space="preserve">
+    <value>Adres</value>
+    <comment>As in physical location</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>Şehir</value>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>Ülke</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>Doğum Tarihi</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
+  </data>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>Posta Kodu</value>
+  </data>
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>Swarmops sunucusuna bağlanırken genel, belirlenemeyen bir hata oluştu. Ağ hala operasyonel ve sunucu kullanılabilir mi?</value>
+  </data>
+  <data name="Global_Month" xml:space="preserve">
+    <value>Ay</value>
+  </data>
+  <data name="Global_View" xml:space="preserve">
+    <value>Görüntüle</value>
+    <comment>As in "inspect"</comment>
+  </data>
+  <data name="Global_Year" xml:space="preserve">
+    <value>Yıl</value>
+  </data>
+  <data name="Global_YearMonth" xml:space="preserve">
+    <value>Yıl/Ay</value>
+  </data>
+  <data name="Global_YearX" xml:space="preserve">
+    <value>Yıl {0}</value>
+    <comment>As in "the year X".</comment>
+  </data>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>etkinleştirmek için tanımlayın</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>{1} için Nakit Avans #{0:N0}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>Nakit avans #{0:N0} Geri ödemesi</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>Nakit Avanslar {0} Geri ödemeleri</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>{1} için Nakit Avanslar {0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>Masraf Talebi #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>{1} tarafından oluşturulan Masraf Talepleri {0}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>Gelen Fatura #{0:N0}</value>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>Sistem</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>{1:yyyy-MMM} için Maaşlar {0}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>{0:yyyy-MMM} için Maaş Vergileri</value>
+  </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>{1:yyyy-MMM} için aylık #{0:N0}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>{2} kişisi için {1:yyyy-MMM} deki aylık #{0:N0}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>Aylık #{0:N0}</value>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>{1:yyyy-MMM} deki Aylık #{0:N0} için vergiler</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>Hesap</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>Miktar</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Global_Add" xml:space="preserve">
+    <value>Ekle</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(birkaç)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>--Birkaç - seçiniz--</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>Seçenekler</value>
+    <comment>For various page-specific checkboxes etc</comment>
+  </data>
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...loading...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(eşleşme yok)</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>Çalışılıyor...</value>
+  </data>
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>WebSocket'e bağlanılamıyor. Canlı güncellemeler kullanılamayacak.</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>Swarmops para birimi tutarınızı anlamıyor. ( Bin para ve sıfır sent "{0:N2}" şeklinde yazılır.) Tekrar denemek ister misiniz?</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>Hiçbir neden belirtilmedi.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>Acil eylem öğesi yok. Yaşasın!</value>
+  </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>En Az / En Çok</value>
+    <comment>note the spaces</comment>
+  </data>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>Atanan Kişi</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>Pozisyon</value>
+  </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>Başka bir kullanıcı bu operasyonda sizden önce davranmış gibi gözüküyor; siz bakarken veritabanı değişti. Lütfen değişen koşulları inceleyin ve yapmaya çalıştığınız şeyi tekrar deneyin.</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>Bir isim girin...</value>
+  </data>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>Bir ay</value>
+  </data>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>Bir yıl</value>
+  </data>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>Altı ay</value>
+  </data>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>Üç ay</value>
+  </data>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>İki ay</value>
+  </data>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>İki yıl</value>
+  </data>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>Sonlandırılana kadar</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
+  </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>Bitir</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>Sonraki</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>Önceki</value>
+  </data>
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>Bu Yıl İçinde</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>Bayraklar</value>
+    <comment>As in a table column header</comment>
+  </data>
+  <data name="Global_Total" xml:space="preserve">
+    <value>Toplam</value>
+    <comment>Used as footer in tables, summarizing something</comment>
+  </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>Bu alan boş olamaz.</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>Bu değeri atamaya çalışırken beklenmedik bir hata oluştu.</value>
+  </data>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>Twitter Kimliği</value>
+  </data>
+  <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
+    <value>BitID 2 aşamalı doğrulama (devre dışı bırakmak oturumu karantinaya alır)</value>
+    <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
+  </data>
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>Hesap</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>Güvenliği Sağlama</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>Şifreyi sıfırla</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>Şifre sıfırlama bağlantısı gönder</value>
+  </data>
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>Bu geçerli bir telefon numarası gibi gözükmüyor, ama yine de burada yazıldığı gibi kaydediyoruz.</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>Kullanıcı şiresi sıfırlansın mı?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>Bir kullanıcı şifresini sıfırlıyorsunuz. Bu kullanıcıya e-posta yoluyla bir bağlantı gönderilecek, bağlantıyı takip ederek Swarmops şifrelerini sıfırlayabilecekler.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Bunu, kullanıcı tarafından özellikle bu konuda yardım talep edilmediği sürece asla yapmayınız.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Şifre sıfırlama işlemine devam edilsin mi?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>Şifre Sıfırlama Engellendi</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>Bu kullanıcının e-posta adresi yakın zamanda değiştirildi (bir haftadan daha kısa süre önce). Güvenlik nedeniyle, bu kadar yeni değiştirilmiş bir e-posta adresine şifre sıfırlama bağlantısı gönderilemez ve gönderilmeyecektir.</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>Bu kullanıcıya şifre yenileme bağlantısı gönderildi.</value>
+  </data>
+  <data name="Global_2FA" xml:space="preserve">
+    <value>İki aşamalı doğrulama</value>
+  </data>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>İki aşamalı doğrulama</value>
+  </data>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
+    <value>&lt;strong&gt;2 Aşamalı Doğrulama(2FA) sağlanamıyor&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Başka biri için iki aşamalı doğrulamayı açamazsınız. Bunu kendileri yapmalıdır, böylece gizli anahtarlarını alırken yalnız olurlar.</value>
+    <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedOwn" xml:space="preserve">
+    <value>2 aşamalı doğrulama devre dışı bırakıldı. Artık normal bir şifre ile giriş yapmalısınız.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedProvision" xml:space="preserve">
+    <value>Bu kullanıcı için 2 aşamalı doğrulama kaldırıldı. Artık, normal bir şifre ile giriş yapmaları gerekir.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveOwn" xml:space="preserve">
+    <value>&lt;strong&gt;2 aşamalı doğrulama devre dışı bırakılsın mı?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bu önerilmez. 2 aşamalı doğrulama, BitID kullanarak giriş yapmanızı çok daha kolaylaştırmasının yanı sıra hesabınızın güvenliğini gözle görülebilir düzeyde artırır, &lt;br/&gt;&lt;br/&gt;2FA kaldırılıp sadece şifre ile doğrulamaya geri dönülsün mü?</value>
+    <comment>Displayed when removing 2FA for yourself</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
+    <value>&lt;strong&gt;2 aşamalı doğrulama kaldırılsın mı?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bu işlemi sadece, eğer bu kullanıcı için 2FA'yı kapatmanız, bu kullanıcının kendisi tarafından istenidyse &lt;strong&gt;ve&lt;/strong&gt; bu isteğin güvenliğini devre dışı bırakacağınız kişiden geldiğinden kesinlikle, tamamen eminseniz yapınız(organizasyonun doğrulama politikası doğrultusunda).&lt;br/&gt;&lt;br/&gt;Bu kullancının güvenliğini kaldırma işlemine devam edilsin mi? Sadece şifre güvenliğine geri dönecekler.</value>
+    <comment>Displayed when removing 2FA for someone else</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
+    <value>2 aşamalı doğrulama kaldırılmadı ve hala etkin.</value>
+  </data>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>Bir gün</value>
+  </data>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>Yedi gün</value>
+  </data>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>İki gün</value>
+  </data>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>İki hafta</value>
+  </data>
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>&lt;strong&gt;BITID İKİ AŞAMALI DOĞRULAMA BAŞARIYLA ETKİNLEŞTİRİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Bu sisteme giriş yaparken, şimdiden sonra, biraz önce kodu okutmak için kullandığınız BitID uygulamasını kullanmanız gerekmektedir.</value>
+  </data>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>BitID iki aşamalı doğrulama etkinleştirilmemiş.</value>
+  </data>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>BitID'yi etkinleştirmek için bu kodu okutun</value>
+  </data>
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>&lt;h3&gt;Bu nedir?&lt;/h3&gt;
+                &lt;p&gt;BitID bir parola girmekten daha az zahmetle güvenli bir şekilde oturum açmanın bir yoludur. Basitçe açıklanamaz, yalnızca deneyimlenir ve telefonunuzu kullandığı için bir iki faktörlü kimlik doğrulamadır.&lt;/p&gt;
+                &lt;h3&gt;Bu, telefonumun da korunmasını gerektirmiyor mu?&lt;/h3&gt;
+                &lt;p&gt;Güzel, evet. Bu, telefonunuz ve telefonunuzun erişim korumasıdır. Ancak telefonunuz her zaman erişim korumalı olmalıdır.&lt;/p&gt;
+                &lt;h3&gt;Bunun için bir mobil uygulamaya ihtiyacım var mı?&lt;/h3&gt;
+                &lt;p&gt;Evet, bir şekilde. Bazı mobil bitcoin cüzdanlarında yerleşik BitID bulunur. BitID'yi destekleyen iki mobil cüzdan örneği {0} ve {1}'dir. Ayrıca bağımsız bir BitID Kimlik Doğrulayıcı da arayabilirsiniz.&lt;/p&gt;
+                &lt;h3&gt;BitID'yi nasıl etkinleştiririm?&lt;/h3&gt;
+                &lt;p&gt;Sadece bu kodu taramak için telefon uygulamasını kullanın. Bundan sonra, bu sisteme giriş yapmak için benzer bir kod tarayabilirsiniz.&lt;/p&gt;</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>BitID (bitcoin imzası) iki aşamalı doğrulama</value>
+  </data>
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value>BitID iki aşamalı doğrulama</value>
+  </data>
+  <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
+    <value>Değişiklikleri etkinleştirmek için geçerli şifreyi yazınız</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
+    <value>Güvenliğiniz</value>
+  </data>
+  <data name="Master_EditPersonNewPassword1" xml:space="preserve">
+    <value>Yeni şifre belirle</value>
+  </data>
+  <data name="Master_EditPersonNewPassword2" xml:space="preserve">
+    <value>Yeni şifreyi tekrar yazın</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
+    <value>Yeni şifre ayarlanamıyor. Eski şifre doğru değil.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_TooWeak" xml:space="preserve">
+    <value>Yeni şifre ayarlanamıyor: Yeni şifre çok zayıf. Daha güçlü bir şifre kullanın.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
+    <value>&lt;strong&gt;ŞİFRE DEĞİŞTİRİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Şifrenizi başarıyla değiştirdiniz. Bir güvenlik önlemi olarak, bütün çekim işlemleri önümüzdeki 48 saat boyunca karantina altına alındı.</value>
+  </data>
+  <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
+    <value>Eğer mümkünse, lütfen BitID iki aşamalı doğrulamayı etkinleştiriniz.</value>
+  </data>
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>Memur</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>Memur</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>Memur</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>Memurlar</value>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>Gönüllü</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>Gönüllü</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>Gönüllü</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>Gönüllüler</value>
+  </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>Git</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>Tamam</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>Devam et</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  </data>
+  <data name="Swarm_TypePartialName" xml:space="preserve">
+    <value>Kısmi bir isim yazın...</value>
+  </data>
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>Bugüne Kadarki Yıllık Kar/Zarar ({0})</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>Alıcı / Müşteri</value>
+  </data>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>İlerleme durumu</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  </data>
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>Bunu İndir</value>
+  </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>Belgeler</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>Bunu bana e-postayla gönder</value>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>Nakit</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>Çekirdek</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>Altın</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>Miras</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>Zincir</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>{1}'e Giden Fatura #{0:N0}</value>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(iptal edildi, hükümsüz kılındı, sıfırlandı)</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Yükle</value>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>Dosya Yükleme Sonuçları</value>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>KDV</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Katma Değer Vergisi</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>Tarih</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>AAA g, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Gönder</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>Genel Muhasebe</value>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>&lt;strong&gt;Sandbox&lt;/strong&gt; organizasyonuna &lt;br/&gt;&lt;br/&gt; giriyorsunuz. Bu, üretim verilerine herhangi bir hasar riski olmadan Swarmops ile oynayabileceğiniz güvenli bir ortamdır. İstediğiniz kadar eğlenin ve deneme bittiğinde üretim ortamına geri dönün.</value>
+  </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>{0} ile {1} arası</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>Atlama</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>bunu atla</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>Atla</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Financial_Ebitda_Long" xml:space="preserve">
+    <value>Faiz öncesi kazançlar, Vergiler, Değer Kayıpları ve Amortismanlar</value>
+  </data>
+  <data name="Financial_Ebitda_Short" xml:space="preserve">
+    <value>FAVÖK</value>
+    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
+  </data>
+  <data name="Financial_AllBalancesSettled" xml:space="preserve">
+    <value>Tüm Bakiyeler Düzenlendi</value>
+    <comment>Nobody owes anybody anything</comment>
+  </data>
+  <data name="Financial_CurrentBalance" xml:space="preserve">
+    <value>Mevcut Bakiye</value>
+  </data>
+  <data name="Financial_NoPaymentHistory" xml:space="preserve">
+    <value>Kayıtta ödeme yok</value>
+  </data>
+  <data name="Financial_Owed" xml:space="preserve">
+    <value>Borçlu</value>
+    <comment>As in, "Amount Owed"</comment>
+  </data>
+  <data name="Financial_Paid" xml:space="preserve">
+    <value>Ücretli</value>
+    <comment>As in, "Amount Paid To Person"</comment>
+  </data>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>Ödeme Geçmişi</value>
+  </data>
+  <data name="Financial_PaymentSpecification" xml:space="preserve">
+    <value>Ödeme #{0:N0}</value>
+    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
+  </data>
+  <data name="Financial_PayoutSpecification" xml:space="preserve">
+    <value>Ödeme #{0:N0}</value>
+    <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
+  <data name="Financial_PersonIsOwed" xml:space="preserve">
+    <value>Kişi borçlu</value>
+    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
+  </data>
+  <data name="Financial_PersonOwes" xml:space="preserve">
+    <value>Kişi Borç Tutarı</value>
+    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
+  </data>
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>Onaylanmamış Ödeme</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
+  </data>
+  <data name="Financial_YouAreOwed" xml:space="preserve">
+    <value>{0} Sana borçlu</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Financial_YouOwe" xml:space="preserve">
+    <value>Bu Miktar Borcunuz</value>
+    <comment>Like Person Owes, but directed at the user at the screen</comment>
+  </data>
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>Sıfır</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
+  </data>
+  <data name="Global_Closed" xml:space="preserve">
+    <value>Kapalı</value>
+    <comment>As in "record or transaction closed"</comment>
+  </data>
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>Kayıt yok</value>
+    <comment>There are no records of the requested type</comment>
+  </data>
+  <data name="Global_Error_Concurrency" xml:space="preserve">
+    <value>Bu işlem artık mevcut değil.</value>
+    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>Ürün</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>Ürünler</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
+  <data name="Global_Opened" xml:space="preserve">
+    <value>Açıldı</value>
+    <comment>As in "record or transaction opened"</comment>
+  </data>
   
   
   

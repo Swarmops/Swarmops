@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
 using Swarmops.Common.Interfaces;
@@ -8,7 +9,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Support
 {
-    public class Documents : List<Document>
+    public class Documents : PluralBase<Documents,Document,BasicDocument>
     {
         private IHasIdentity sourceObject;
 
@@ -23,19 +24,6 @@ namespace Swarmops.Logic.Support
 
             return newInstance;
         }
-
-        public static Documents FromArray (BasicDocument[] basicArray)
-        {
-            Documents result = new Documents {Capacity = (basicArray.Length*11/10)};
-
-            foreach (BasicDocument basic in basicArray)
-            {
-                result.Add (Document.FromBasic (basic));
-            }
-
-            return result;
-        }
-
 
         public static Documents GetAll()
         {
@@ -77,6 +65,17 @@ namespace Swarmops.Logic.Support
             foreach (Document doc in this)
             {
                 doc.SetForeignObject (foreignObject);
+            }
+        }
+
+        public Documents WhereNotAssociated
+        {
+            get
+            {
+                Documents result = new Documents();
+                result.AddRange(this.Where(doc => doc.ForeignId == 0));
+
+                return result;
             }
         }
     }

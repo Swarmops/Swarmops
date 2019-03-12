@@ -114,14 +114,14 @@
                 <div class="content">
                     <h2><asp:Label ID="LabelContentTitle" runat="server" /></h2>
                     <div id="DivMailEntry">
-                        <div class="entryFields">
+                        <div class="data-entry-fields">
                             <asp:TextBox runat="server" ID="TextMailAddress" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextTicket" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextPassword1" TextMode="Password" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextPassword2" TextMode="Password" />&#8203;<br/>
-                            <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
+                            <asp:Button ID="ButtonRequest" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
                         </div>
-                        <div class="entryLabels">
+                        <div class="data-entry-labels">
                             <asp:Label ID="LabelMail" runat="server" /><br />
                             <asp:Label ID="LabelTicket" runat="server" /><br />
                             <asp:Label ID="LabelPassword1" runat="server" /><br />

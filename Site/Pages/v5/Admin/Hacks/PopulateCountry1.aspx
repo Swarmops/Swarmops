@@ -84,11 +84,11 @@
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div class="DivEntry">
-        <div class="entryFields">
+        <div class="data-entry-fields">
             <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" ClientUploadCompleteCallback="uploadCompletedCallback" />
         </div>
         
-        <div class="entryLabels">
+        <div class="data-entry-labels">
             Upload <strong>geodata</strong> for processing<br/><br/>
         </div>
     </div>

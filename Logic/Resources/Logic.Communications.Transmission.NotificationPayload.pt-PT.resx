@@ -117,59 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
-    <value>Numa tentativa de pagamento para o seu endereço de pagamento bitcoin, o endereço ([BitcoinAddress]) foi rejeitado pelo sistema de pagamento subjacente por ser inválido. Foi, portanto, apagado do seu perfil.
-
-Por favor entre em [InstallationName] em [ExternalUrl] e defina um novo endereço de pagamento bitcoin.</value>
-  </data>
+  
+  
+  
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ÍTEM DE ACÇÃO] Endereço de pagamento em bitcoins deficiente</value>
   </data>
-  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
-    <value>Alterou o seu endereço de pagamento bitcoin de [BitcoinOldAddress] para [BitcoinAddress]. Como medida de segurança, todos os pagamentos estão de quarentena durante as próximas 48 horas.
-
-Se NÃO alterou o endereço de pagamento e houve uma falha de segurança, por favor carregue neste link imediatamente para bloquear a sua conta: [LockdownLink]
-
-Se clicar nesse link, a sua conta irá ser bloqueada imediatamente sem pedidos de confirmação. Contudo, se pediu a alteração do endereço de pagamento, tudo está bem e não é necessária nenhuma ação adicional da sua parte.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] O endereço de pagamento Bitcoin mudou</value>
-  </data>
-  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
-    <value>Tem fundos à espera de pagamento em [OrganizationName], mas ainda não definiu um endereço de pagamento bitcoin.
-
-Por favor entre em [InstallationName] em [ExternalUrl] e siga o link para definir o seu endereço de pagamento - irá encontrá-lo na lista de tarefas por fazer.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Por favor, defina o seu endereço de pagamento bitcoin</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
-    <value>Definiu um endereço de pagamento bitcoin: [BitcoinAddress]. Como medida de precaução, todos os pagamentos estão de quarentena durante as próximas 48 horas, e depois irão ser pagos no novo endereço.
-
-Caso não tenha definido este endereço de pagamento (vale a pena verificar novamente o endereço acima indicado para maior segurança), contacte [OrganizationName] imediatamente.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
-    <value>Um endereço de pagamento em bitcoins foi definido por [ConcernedPersonName]. Os pagamentos começarão dentro de 48 horas, quando terminado o período de quarentena.</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] [ConcernedPersonName] definiu um endereço de pagamento em bitcoins</value>
-  </data>
-  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Endereço de pagamento Bitcoin definido</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
     <value>A conta corrente bitcoin de [OrganizationName] acabou de fazer [PaymentCount] pagamento(s) automático(s) totalizando [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoins ou "bits").</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Pagamento conta corrente: [CurrencyCode] [AmountFloat]</value>
   </data>
-  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>[BitcoinAmountFloat] microbitcoins ("bits") acabaram de ser transferidos para o endereço da sua conta de bitcoins ([BitcoinAddress]) por [OrganizationName] devido a:
-
-[EmbeddedPreformattedText]
-
-A transação deverá já ser visível na sua conta, e os fundos deverão poder ser gastos dentro de aproximadamente uma hora (seis confirmações normais).</value>
-  </data>
+  
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Montante pago a si: [CurrencyCode] [AmountFloat]</value>
   </data>
@@ -179,30 +147,12 @@ A transação deverá já ser visível na sua conta, e os fundos deverão poder 
   <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
     <value>[[OrganizationName] - URGENTE] Erro na chave privada de Bitcoin; impossível efetuar pagamentos</value>
   </data>
-  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
-    <value>O Swarmops está a tentar efetuar pagamentos de [CurrencyCode] [AmountNeededFloat], mas apenas [CurrencyCode] [AmountWalletFloat] estão disponíveis na conta corrente bitcoin. O Swarmops é incapaz de fazer mais pagamentos neste momento.
-
-Por favor transfira mais fundos para a conta corrente IMEDIATAMENTE pelo menos até atingir a quantia necessária - são necessários [AmountMissingMicrocoinsFloat] microbitcoins ("bits") adicionais para retomar a execução de operações financeiras na conta corrente.
-
-O Swarmops irá continuar a tentar, e continuará a enviar estas notificações enquanto não tenha sucesso.</value>
-  </data>
-  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ITEM DE AÇÃO] Conta corrente bitcoin com saldo insuficiente - encher imediatamente</value>
-  </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>O seu pedido de adiantamento de dinheiro feito a [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], relativo a [RequestPurpose], foi certificado pelo proprietário do orçamento. O pagamento irá ser agora efetuado a si.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Adiantamento de Dinheiro Confirmado: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>O seu adiantamento de dinheiro com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] sobre [RequestPurpose] foi DES-confirmado pelo proprietário do orçamento. Isto geralmente indica a existência de um problema com o seu pedido.
-
-Espere mais comunicação do proprietário do orçamento dando seguimento ao assunto.</value>
-  </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Adiantamento de Dinheiro DES-Confirmado: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>O seu adiantamento de dinheiro com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] sobre [RequestPurpose] foi negado. O texto abaixo foi dado como razão para negá-lo:
 
@@ -220,42 +170,14 @@ Isto significa que em breve deverá ver o montante na sua conta.</value>
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Adiantamento de Dinheiro Pago: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] requisitou um adiantamento de dinheiro de [CurrencyCode] [BudgetAmountFloat] com a finalidade de [RequestPurpose]. Este dinheiro faz parte do seu orçamento, [BudgetName].
-
-Por favor entre em [InstallationName] em [ExternalUrl]Financial/AttestCosts para confirmar ou negar.</value>
-    <comment>This is sent to the budget owner(s) only.</comment>
-  </data>
-  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ITEM DE AÇÃO] Adiantamento de Dinheiro Solicitado: [CurrencyCode] [BudgetAmountFloat] - Confirmação Necessária</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>O seu pedido de reivindicação de despesa com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], relativo a [RequestPurpose], foi confirmado pelo proprietário do orçamento. Irá ser-lhe pago assim que os recibos sejam validados.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Reivindicação de Despesa Confirmada: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] criou um pedido de reivindicação de despesa no orçamento [BudgetName] com o montante de [CurrencyCode] [BudgetAmountFloat]. O pedido diz respeito a [RequestPurpose]. Irá precisar de confirmar este pedido de reivindicação de despesa.
-
-Por favor entre em [InstallationName] em [ExternalUrl]Financial/AttestCosts para confirmar ou negar.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ITEM DE AÇÃO] Reivindicação de Despesa Criada: [CurrencyCode] [BudgetAmountFloat] - Confirmação Necessária</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>O seu pedido de reivindicação de despesa com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], relativo a [RequestPurpose], foi DES-confirmado pelo responsável do orçamento. Isto geralmente indica a existência de um problema com o seu pedido.
-
-Espere mais comunicação do responsável do orçamento dando seguimento ao assunto.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Reivindicação de Despesa DES-confirmada: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>O seu pedido de reivindicação de despesa com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] relativo a [RequestPurpose] foi negado. O texto abaixo foi dado como razão para negá-lo:
 
@@ -265,14 +187,6 @@ Espere mais comunicação do responsável do orçamento dando seguimento ao assu
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Reivindicação de Despesa NEGADA: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>Os recibos da sua reivindicação de despesa com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], relativos a [RequestPurpose], foram INVALIDADOS pelos detentores dos registos financeiros da organização. Isto geralmente indica a existência de um problema com a documentação do seu pedido de reivindicação de despesa.
-
-Espere mais comunicação dando seguimento ao assunto. Caso não tenha notícias dos detentores dos registos financeiros em breve sobre este assunto, fale com eles.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Recibos de Reivindicação de Despesa INVALIDADOS: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>A sua reivindicação de despesa com [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], relativa a [RequestPurpose], foi marcada como paga pelos contabilistas da organização.
@@ -291,15 +205,10 @@ A reivindicação ser-lhe-á paga a si assim que o montante seja também confirm
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Recibos de Reivindicação de Despesa Validados: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>Uma fatura de [Supplier], relativa a [Description], foi apresentada no seu orçamento [BudgetName] com o montante de [CurrencyCode] [BudgetAmountFloat]. Deverá confirmar esta fatura antes de proceder ao seu pagamento.
-
-Por favor entre em [InstallationName] em [ExternalUrl]Financial/AttestCosts para confirmar ou negar.</value>
-  </data>
-  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ITEM DE AÇÃO] Fatura Apresentada: [CurrencyCode] [BudgetAmountFloat] - Confirmação Necessária</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
+  
+  
+  
+  
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Um novo [Regular] foi manualmente adicionado a [OrganizationName] numa das suas áreas.</value>
   </data>
@@ -395,6 +304,8 @@ Por favor entre em [InstallationName] em [ExternalUrl]Financial/ValidateReceipts
     <value>[[OrganizationName] - ITEM DE AÇÃO] Recibos Recebidos - Validação Necessária</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
+  
+  
   <data name="Salary_LastYearSummary_Body" xml:space="preserve">
     <value>Este é o resumo da sua folha de vencimento de [LastYear]. Não é uma declaração do seu novo vencimento, mas uma declaração dos salários pagos a si ao longo do último ano, bem como quaisquer impostos deduzidos. O propósito desta declaração é para servir como informação para os seus registos e/ou para fins de declaração de impostos do ano anterior.
 

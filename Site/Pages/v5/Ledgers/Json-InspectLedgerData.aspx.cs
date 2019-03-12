@@ -46,7 +46,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException ("All the nopes in the world");
             }
 
-            if (!CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
+            if (!CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)) && CurrentOrganization.HasOpenLedgers)
             {
                 throw new UnauthorizedAccessException ("Access denied because security tokens say so");
             }
@@ -56,6 +56,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             bool zeroStart = false;
             bool zeroEnd = false;
             bool displayDescription = CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read));
+
+            // HACK HACK HACK
+            if (CurrentOrganization.Identity == 8 && CurrentOrganization.Name.StartsWith("Rick Falkvinge"))
+            {
+                // TODO
+                displayDescription = true; // FIX THIS WITH A DAMN SETTING, YOU MORON, DON'T HARDCODE IT
+            }
+
             bool canSeeAudit = CurrentAuthority.HasAccess(new Access(CurrentOrganization, AccessAspect.Auditing, AccessType.Read));
 
             if (month > 0 && month <= 12)
@@ -112,7 +120,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new ArgumentException ("Invalid month supplied: " + month.ToString (CultureInfo.InvariantCulture));
             }
 
-
             FinancialAccountRows rows = account.GetRows (periodStart, periodEnd);
 
             StringBuilder result = new StringBuilder (16384);
@@ -137,7 +144,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             result.Append ("{" +
-                           String.Format ("\"description\":\"{0}\",\"balance\":\"{1:N0}\"", JsonSanitize (startString),
+                           String.Format ("\"description\":\"{0}\",\"balance\":\"{1:N2}\"", JsonSanitize (startString),
                                runningBalance/100.0) + "},");
 
             foreach (FinancialAccountRow row in rows)
@@ -153,17 +160,17 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 if (row.AmountCents < 0)
                 {
-                    creditString = String.Format ("{0:N0}", row.AmountCents/100.0);
+                    creditString = String.Format ("{0:N2}", row.AmountCents/100.0);
                 }
                 else if (row.AmountCents > 0)
                 {
-                    debitString = String.Format ("{0:N0}", row.AmountCents/100.0);
+                    debitString = String.Format ("{0:N2}", row.AmountCents/100.0);
                 }
 
                 runningBalance += row.AmountCents;
 
                 string hasDoxString =
-                    "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" txId='{0}' class='LocalIconInspect' style='cursor:pointer' height='20' width='20' />";
+                    "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\" onmouseout=\"this.src='/Images/Icons/iconshock-search-256px.png';\" data-txid='{0}' class='LocalIconInspect' style='cursor:pointer' height='20' width='20' />";
 
                 string actionHtml = String.Format (hasDoxString, row.FinancialTransactionId.ToString (CultureInfo.InvariantCulture));
 
@@ -177,7 +184,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 result.Append ("{" + String.Format (
                     "\"id\":\"{0:N0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
-                    "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N0}\",\"action\":\"{6}\"",
+                    "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N2}\",\"action\":\"{6}\"",
                     row.Transaction.OrganizationSequenceId,
                     row.TransactionDateTime,
                     JsonSanitize (description),
@@ -196,7 +203,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             result.Append ("{" +
-                           String.Format ("\"description\":\"{0}\",\"balance\":\"{1:N0}\"", JsonSanitize (endString),
+                           String.Format ("\"description\":\"{0}\",\"balance\":\"{1:N2}\"", JsonSanitize (endString),
                                runningBalance/100.0) + "},");
 
             Response.Output.WriteLine ("[" + result.ToString().TrimEnd (',') + "]");

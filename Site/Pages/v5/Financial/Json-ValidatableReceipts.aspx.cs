@@ -29,7 +29,7 @@ public partial class Pages_v5_Finance_Json_ValidatableReceipts : DataV5Base
         StringBuilder result = new StringBuilder (16384);
 
         string hasDoxString =
-            "<img src=\\\"/Images/Icons/iconshock-glass-16px.png\\\" onmouseover=\\\"this.src='/Images/Icons/iconshock-glass-16px-hot.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-glass-16px.png';\\\" baseid=\\\"E{5}\\\" class=\\\"LocalViewDox\\\" style=\\\"cursor:pointer\\\" />";
+            "<img baseid='E{5}' class='LocalIconDox action-icon' />";
 
         result.Append ("{\"rows\":[");
         FinancialTransactionTagSets tagSets = FinancialTransactionTagSets.ForOrganization (CurrentOrganization);
@@ -55,11 +55,13 @@ public partial class Pages_v5_Finance_Json_ValidatableReceipts : DataV5Base
             result.AppendFormat (
                 "\"description\":\"{2}\",\"budgetName\":\"{3}\",{6}\"amountRequested\":\"{4:N2}\",\"itemId\":\"E{5}\"," +
                 "\"dox\":\"" + (claim.Documents.Count > 0 ? hasDoxString : "&nbsp;") + "\"," +
-                "\"actions\":\"<span style=\\\"position:relative;top:3px\\\">" +
-                "<img id=\\\"IconApprovalE{5}\\\" class=\\\"LocalIconApproval\\\" baseid=\\\"E{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconApprovedE{5}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"E{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
-                "<img id=\\\"IconDenialE{5}\\\" class=\\\"LocalIconDenial\\\" baseid=\\\"E{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconDeniedE{5}\\\" class=\\\"LocalIconDenied\\\" baseid=\\\"E{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
+                "\"actions\":\"" +
+                "<img id='IconApprovalE{5}' class='LocalIconApproval action-icon' baseid='E{5}' />" +
+                "<img id='IconApprovedE{5}' class='LocalIconApproved status-icon' baseid='E{5}' />" +
+                "<img id='IconWaitE{5}' class='LocalIconWait status-icon' baseid='E{5}' />" +
+                "<img id='IconUndoE{5}' class='LocalIconUndo action-icon' baseid='E{5}' />" +
+                "<img id='IconDenialE{5}' class='LocalIconDenial action-icon' baseid='E{5}' />" +
+                "<img id='IconDeniedE{5}' class='LocalIconDenied status-icon' baseid='E{5}' />\"",
                 "olditem", JsonSanitize (claim.ClaimerCanonical), JsonSanitize (claim.Description),
                 JsonSanitize (claim.Budget.Name),
                 claim.AmountCents/100.0, claim.Identity, extraTags);

@@ -16,8 +16,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "select PaymentCodes.*, PhoneNumbers.PhoneNumber AS IssuedToPhoneNumber FROM PaymentCodes, PhoneNumbers where PaymentCodes.IssuedToPhoneId=PhoneNumbers.PhoneNumberId AND PaymentCodes.PaymentCode='" +
-                        paymentCode.Replace ("'", "''") + "'", connection);
+                        "select PaymentCodes.*, PhoneNumbers.PhoneNumber AS IssuedToPhoneNumber FROM PaymentCodes, PhoneNumbers where PaymentCodes.IssuedToPhoneId=PhoneNumbers.PhoneNumberId AND PaymentCodes.PaymentCode=@paymentCode", connection);
+
+                AddParameterWithName(command, "paymentCode", paymentCode);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

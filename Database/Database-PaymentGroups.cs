@@ -44,9 +44,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand ("SELECT" + paymentGroupFieldSequence +
-                                  "WHERE OrganizationId=" + organizationId + " AND Tag='" + tag.Replace ("'", "''") +
-                                  "'",
+                                  "WHERE OrganizationId=" + organizationId + " AND Tag=@paymentTag",
                         connection);
+
+                AddParameterWithName(command, "paymentTag", tag);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

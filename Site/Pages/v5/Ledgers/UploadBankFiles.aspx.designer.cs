@@ -46,7 +46,7 @@ namespace Swarmops.Site.Pages.Ledgers {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropAccounts;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxDropDown DropAccounts;
         
         /// <summary>
         /// UploadFile control.
@@ -67,13 +67,13 @@ namespace Swarmops.Site.Pages.Ledgers {
         protected global::System.Web.UI.WebControls.Label LabelBankAccount;
         
         /// <summary>
-        /// LabelInstructions control.
+        /// LabelProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelInstructions;
+        protected global::System.Web.UI.WebControls.Label LabelProfile;
         
         /// <summary>
         /// LabelUploadBankFile control.

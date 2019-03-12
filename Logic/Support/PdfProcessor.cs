@@ -8,13 +8,21 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Mono.Unix.Native;
+using Swarmops.Logic.Cache;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.BackendServices;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Support
 {
     public class PdfProcessor
     {
         private static readonly string StorageRoot = Document.StorageRoot;
+
+        public delegate void ProgressEventHandler(object sender, ProgressEventArgs args);
+        public event ProgressEventHandler RasterizationProgress;
 
         [Flags]
         public enum PdfProcessorOptions
@@ -24,6 +32,228 @@ namespace Swarmops.Logic.Support
             ForceOrphans = 0x0002
         };
 
+        public static int GetPageCount(string fullyQualifiedFileName)
+        {
+            if (Debugger.IsAttached)
+            {
+                // This call is intended for live environments only; if a debugger is attached, break because something's wrong
+
+                Debugger.Break();
+            }
+
+            // If we have the page count in cache, use it
+
+            object cachedObject = GuidCache.Get("PdfPageCount-" + fullyQualifiedFileName);
+            if (cachedObject != null)
+            {
+                return (int) cachedObject;
+            }
+
+            // Use qpdf to determine the number of pages in the PDF
+
+            string pageCountFileName = "/tmp/pagecount-" + Guid.NewGuid().ToString() + ".txt";
+
+            Process process = Process.Start("bash",
+                "-c \"qpdf --show-npages " + fullyQualifiedFileName + " > " + pageCountFileName +
+                "\"");
+
+            process.WaitForExit();
+            int pdfPageCount = 0;
+
+            if (process.ExitCode == 2) // error code for qpdf
+            {
+                throw new FormatException("Bad PDF file");
+            }
+
+            // Read the resulting page count from the file we piped
+
+            using (StreamReader pageCountReader = new StreamReader(pageCountFileName))
+            {
+                string line = pageCountReader.ReadLine().Trim();
+                while (line.StartsWith("WARNING") || line.StartsWith("qpdf:"))
+                {
+                    line = pageCountReader.ReadLine().Trim();  // ignore warnings and chatter
+                }
+                pdfPageCount = Int32.Parse(line);
+            }
+
+            File.Delete(pageCountFileName);
+
+            GuidCache.Set("PdfPageCount-" + fullyQualifiedFileName, pdfPageCount);
+
+            return pdfPageCount;
+        }
+
+
+        public Documents RasterizeMany(RasterizationTarget[] targets, string guid, Person uploader,
+            Organization organization)
+        {
+            Documents result = new Documents();
+
+            int pageCountTotal = 0;
+            int pageCountRunning = 0;
+
+
+            foreach (RasterizationTarget target in targets)
+            {
+                pageCountTotal += GetPageCount(target.FullyQualifiedFileName);
+            }
+
+
+            foreach (RasterizationTarget target in targets)
+            {
+                int pdfPageCount = GetPageCount(target.FullyQualifiedFileName); // cached
+
+                // Create progress range
+
+                ProgressRange range = new ProgressRange
+                {
+                    Minimum = pageCountRunning * 100 / pageCountTotal,
+                    Maximum = (pageCountRunning + pdfPageCount) * 100 / pageCountTotal
+                };
+
+                // Request one conversion
+
+                Documents docs = RasterizeOne(target.FullyQualifiedFileName, target.ClientFileName, guid, uploader,
+                    organization, range);
+
+                // Update pages converted
+
+                pageCountRunning += pdfPageCount;
+
+                // Finally, ask the backend to do the high-res conversions, but now we have the basic, fast ones
+
+                if (docs.Count > 0)
+                {
+                    RasterizeDocumentHiresOrder backendOrder = new RasterizeDocumentHiresOrder(docs[0]);
+                    backendOrder.Create();
+                }
+            }
+
+            // Set progress to 100% to avoid rounding errors freezing the UI at 99%
+
+            BroadcastProgress(organization, guid, 100);
+
+            return result;
+        }
+
+        
+
+        public Documents RasterizeOne (string fullyQualifiedFileName, string clientFileName, string guid, Person uploader, Organization organization = null, ProgressRange progressRange = null)
+        {
+            int pdfPageCount = GetPageCount(fullyQualifiedFileName);
+            string relativeFileName = fullyQualifiedFileName.Substring(Document.StorageRoot.Length);
+
+            Process process = Process.Start("bash",
+                "-c \"gs -dNOPAUSE -dBATCH -sDEVICE=png16m -r75 -sOutputFile=" + fullyQualifiedFileName + "-%04d.png "+
+                fullyQualifiedFileName + "\"");
+
+            Documents documents = new Documents();
+
+            if (progressRange == null)
+            {
+                progressRange = new ProgressRange();
+            }
+
+            int pageCounter = 1; // the first produced page will be numbered ONE, not ImageMagick's zero
+            string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+            string lastPageFileName = testPageFileName;
+
+            // Convert works by first calling imagemagick that creates /tmp/magick-* files
+
+            int lastProgress = progressRange.Minimum;
+            int progress = progressRange.Minimum;
+
+            while (pageCounter <= pdfPageCount)
+            {
+                while (!File.Exists(Document.StorageRoot + testPageFileName))
+                {
+                    // Wait for file to appear
+
+                    if (!process.HasExited)
+                    {
+                        process.WaitForExit(250);
+                    }
+
+                    /* -- old ImageMagick-dependent code
+                    if (pageCounter == 0)
+                    {
+                        // If first page hasn't appeared yet, check for the Magick temp files
+
+                        int currentMagickCount = Directory.GetFiles("/tmp", "magick-*").Count();
+                        int currentFilePercentage = currentMagickCount * 50 / pdfPageCount;
+                        if (currentFilePercentage > 50)
+                        {
+                            currentFilePercentage = 50; // we may be not the only one converting right now
+                        }
+
+                        progress = progressRange.Minimum + currentFilePercentage * 100 / progressRange.Range;
+                        if (progress > lastProgress)  // can't use Not-Equal; temp files slowly deleted before next step
+                        {
+                            BroadcastProgress(organization, guid, progress);
+                            lastProgress = progress;
+                        }
+                    }*/
+                }
+
+                progress = progressRange.Minimum + ((pageCounter + 1) * progressRange.Range / pdfPageCount);
+                if (progress > lastProgress)
+                {
+                    BroadcastProgress(organization, guid, progress);
+                    lastProgress = progress;
+                }
+
+                // If the page# file that has appeared is 2+, then the preceding file is ready
+
+                if (pageCounter > 1)
+                {
+                    long fileLength = new FileInfo(Document.StorageRoot + lastPageFileName).Length;
+
+                    documents.Add( Document.Create(lastPageFileName,
+                        clientFileName + " {{LOCPAGE-" + (pageCounter-1).ToString(CultureInfo.InvariantCulture) + "-" + pdfPageCount.ToString(CultureInfo.InvariantCulture) + "}}",
+                        fileLength, guid, null, uploader));
+
+                    // Set to readonly, lock out changes, permit all read
+
+                    Syscall.chmod(Document.StorageRoot + lastPageFileName,
+                        FilePermissions.S_IRUSR | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+
+                    // Prepare to save the next file
+                    lastPageFileName = testPageFileName;
+                }
+
+                // Increase the page counter and the file we're looking for
+
+                pageCounter++;
+                testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+            }
+
+            // We've seen the last page being written -- wait for process to exit to assure it's complete
+
+            if (!process.HasExited)
+            {
+                process.WaitForExit();
+            }
+
+            // Save the last page
+
+            long fileLengthLastPage = new FileInfo(Document.StorageRoot + lastPageFileName).Length;
+
+            documents.Add(Document.Create(lastPageFileName,
+                clientFileName + " {{LOCPAGE-" + pdfPageCount.ToString(CultureInfo.InvariantCulture) + "-" + pdfPageCount.ToString(CultureInfo.InvariantCulture) + "}}",
+                fileLengthLastPage, guid, null, uploader));
+
+            // Set to readonly, lock out changes, permit all read
+
+            Syscall.chmod(Document.StorageRoot + lastPageFileName,
+                FilePermissions.S_IRUSR | FilePermissions.S_IRGRP | FilePermissions.S_IROTH);
+
+            return documents;
+        }
+
+
+/*      -- Commented out: this has not been converted from CONVERT to GS (ghostscript) pdf-to-png conversion, and was used only in one special case anyway
+ *      
         public static void RerasterizeAll()
         {
             // Because of a bug with transparent-background PDFs converting to black-background bitmaps, all PDFs imaged before
@@ -86,9 +316,9 @@ namespace Swarmops.Logic.Support
                     Console.Write(@"Regenerating document #{0}", startId);
 
                     Process process = Process.Start("bash",
-                            "-c \"convert -density 600 -background white -alpha remove " + StorageRoot + firstPart + " " +
+                            "-c \"convert -density 300 -background white -alpha remove " + StorageRoot + firstPart + " " +
                             StorageRoot + firstPart +
-                            "-%04d.png\""); // Density 600 means 600dpi means production-grade conversion
+                            "-%04d-hires.png\""); // Density 300 means 600dpi means production-grade conversion
 
                     process.WaitForExit();
 
@@ -107,72 +337,57 @@ namespace Swarmops.Logic.Support
                     lastId = document.Identity;
                 }
             }
-        }
+        }*/
 
         public static void Rerasterize(Document document, PdfProcessorOptions options = PdfProcessorOptions.None)
         {
-            using (StreamWriter debugWriter = new StreamWriter("/tmp/pdfregen-debug.txt"))
+            if (document.Description.Length < 32)
             {
-                debugWriter.WriteLine("Document description: " + document.Description);
-                debugWriter.Flush();
-
-                if (document.Description.Length < 32)
-                {
-                    throw new InvalidOperationException("Document has no GUID");
-                }
-
-                // a ServerFileName looks like "2015/06/22/29c88f2b-44e6-4a05-a6b0-f9aaec835c5b-00000001-0007-01-0019.png"
-                //                              1234567890123456789012345678901234567890123456789012345678901234
-
-                debugWriter.WriteLine("Document server file name: " + document.ServerFileName);
-                debugWriter.Flush();
-
-                if (document.ServerFileName.Length < 64)
-                {
-                    throw new InvalidOperationException("Server file name has wrong scheme");
-                }
-
-                if (!document.ServerFileName.ToLowerInvariant().EndsWith(".png"))
-                {
-                    throw new InvalidOperationException("Document is not rasterized");
-                }
-                if (document.ForeignId == 0 && ((int) options & (int) PdfProcessorOptions.ForceOrphans) == 0)
-                {
-                    throw new InvalidOperationException("Document is an orphan");
-                }
-
-                int density = 75;
-                string suffix = string.Empty;
-
-                if (((int) options & (int) PdfProcessorOptions.HighQuality) > 0)
-                {
-                    density = 600;
-                    suffix = "-hires"; // hires conversion uses different filename
-                }
-
-
-                string firstPart = document.ServerFileName.Substring(0, 64);
-
-                debugWriter.WriteLine("Regenerating... ");
-                debugWriter.Flush();
-
-                string commandLine = "convert -density " + density.ToString(CultureInfo.InvariantCulture) +
-                                     " -background white -alpha remove " + StorageRoot + firstPart + " " +
-                                     StorageRoot + firstPart +
-                                     "-%04d" + suffix + ".png";
-
-                debugWriter.WriteLine("Running \"" + commandLine + "\"");
-                debugWriter.Flush();
-
-                Process process = Process.Start("bash",
-                    "-c \"" + commandLine + "\"");
-                process.PriorityClass = ProcessPriorityClass.Idle; // play nice - this is a heavy op
-
-                process.WaitForExit();
-
-                debugWriter.WriteLine("Done.");
-                debugWriter.Flush();
+                throw new InvalidOperationException("Document has no GUID");
             }
+
+            // a ServerFileName looks like "2015/06/22/29c88f2b-44e6-4a05-a6b0-f9aaec835c5b-00000001-0007-01-0019.png"
+            //                              1234567890123456789012345678901234567890123456789012345678901234
+
+            if (document.ServerFileName.Length < 64)
+            {
+                throw new InvalidOperationException("Server file name has wrong scheme");
+            }
+
+            if (!document.ServerFileName.ToLowerInvariant().EndsWith(".png"))
+            {
+                throw new InvalidOperationException("Document is not rasterized");
+            }
+            if (document.ForeignId == 0 && ((int) options & (int) PdfProcessorOptions.ForceOrphans) == 0)
+            {
+                throw new InvalidOperationException("Document is an orphan");
+            }
+
+            int density = 75;
+            string suffix = string.Empty;
+
+            if (((int) options & (int) PdfProcessorOptions.HighQuality) > 0)
+            {
+                density = 300;
+                suffix = "-hires"; // hires conversion uses different filename
+            }
+
+
+            string firstPart = document.ServerFileName.Substring(0, 64);
+
+            string commandLine = "gs -dNOPAUSE -dBATCH -sDEVICE=png16m -r" + density.ToString(CultureInfo.InvariantCulture) + " -sOutputFile=" + StorageRoot + firstPart + "-%04d" + suffix + ".png " + StorageRoot + firstPart;
+
+            /*
+            string commandLine = "convert -density " + density.ToString(CultureInfo.InvariantCulture) +
+                                    " -background white -alpha remove " + StorageRoot + firstPart + " " +
+                                    StorageRoot + firstPart +
+                                    "-%04d" + suffix + ".png";*/
+
+            Process process = Process.Start("/bin/bash",
+                "-c \"" + commandLine + "\"");
+            process.PriorityClass = ProcessPriorityClass.BelowNormal; // play nice - this is a heavy op
+
+            process.WaitForExit();
         }
 
         public static string TemplateToPdf(string svgFileName)
@@ -204,5 +419,46 @@ namespace Swarmops.Logic.Support
 
             return tempFileName;
         }
+
+        private void BroadcastProgress(Organization organization, string guid, int progress)
+        {
+            if (RasterizationProgress != null)
+            {
+                RasterizationProgress(this, new ProgressEventArgs
+                {
+                    Guid = guid,
+                    Organization = organization,
+                    Progress = progress
+                });
+            }
+        }
     }
+
+    public class RasterizationTarget
+    {
+        public string FullyQualifiedFileName { get; set; }
+        public string ClientFileName { get; set; }
+    }
+
+    public class ProgressRange
+    {
+        public ProgressRange()  // default values
+        {
+            this.Minimum = 0;
+            this.Maximum = 100;
+        }
+
+        public int Minimum { get; set; }
+        public int Maximum { get; set; }
+
+        public int Range => Maximum - Minimum;
+    }
+
+    public class ProgressEventArgs : EventArgs
+    {
+        public Organization Organization { get; set; }
+        public string Guid { get; set; }
+        public int Progress { get; set; }
+    }
+
 }

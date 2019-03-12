@@ -184,6 +184,8 @@
   <data name="Position_Executive_ChiefTechnologyOfficer" xml:space="preserve">
     <value>Diretor de Tecnologia</value>
   </data>
+  
+  
   <data name="Position_Executive_HrAssistant" xml:space="preserve">
     <value>Assistente de Recursos Humanos</value>
   </data>
@@ -251,7 +253,10 @@
   </data>
   
   
-  
+  <data name="Position_Geographic_ExpandingSubleaderNode_UxElement" xml:space="preserve">
+    <value>Liderança Geográficos</value>
+    <comment>Leaders for geographies below the one displayed</comment>
+  </data>
   <data name="Position_Geographic_InfoLeader" xml:space="preserve">
     <value>Líder de Informação</value>
   </data>

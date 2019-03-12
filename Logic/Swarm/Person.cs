@@ -269,6 +269,16 @@ namespace Swarmops.Logic.Swarm
             set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.BitIdLoginAddress, value); }
         }
 
+        public virtual bool BitIdEnabled
+        {
+            get { return !string.IsNullOrEmpty(BitIdAddress); }
+        }
+
+        public virtual bool TwoFactorEnabled
+        {
+            get { return BitIdEnabled; }
+        }
+
 
         public virtual bool MailUnreachable
         {
@@ -1074,6 +1084,19 @@ namespace Swarmops.Logic.Swarm
         public bool ParticipatesInOrganizationOrParent (Organization org)
         {
             return ParticipatesInOrganizationOrParent (org.Identity);
+        }
+
+
+        public bool ApplicantInOrganization(Organization org)
+        {
+            Applicants applicants = Applicants.FromArray(SwarmDb.GetDatabaseForReading().GetApplicants(this, org, DatabaseCondition.OpenTrue));
+            if (applicants.Count > 0)
+            {
+                // There is at least one open application
+                return true;
+            }
+
+            return false;
         }
 
         /* --- not used, commented out for usage of hardcoded org ids

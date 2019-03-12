@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ComboBudgets.ascx.cs" Inherits="Swarmops.Controls.Financial.ComboBudgets" %>
 <%@ Import Namespace="System.Threading" %>
 <%@ Import Namespace="Swarmops.Common.Enums" %>
+<%@ Import Namespace="Swarmops.Frontend" %>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -14,7 +15,7 @@
                     <% 
                     if (!SuppressPrompt)
                     {
-                        Response.Write ("$('#" + this.ClientID + "_SpanBudgets span.combo input.textbox-text').val(\"" + Resources.Global.Global_DropInits_SelectFinancialAccount + "\");");
+                        Response.Write ("$('#" + this.ClientID + "_SpanBudgets span.combo input.textbox-text').val(comboBudgetsDropInit);");
                     }
                     if (!String.IsNullOrEmpty(this.OnClientLoaded)) 
                     {
@@ -52,20 +53,34 @@
         });
     });
 
+    var comboBudgetsDropInit = comboBudgetsDropInit || SwarmopsJS.unescape('<%=this.Localized_DropInit%>');  // declare or redeclare
+
     function <%=this.ClientID %>_val(newValue) {
-        if (newValue === undefined) {
+        if (newValue === undefined)
+        {
             // getter
             return $('#<%=this.ClientID %>_DropBudgets').combotree('getValue');
-            } else {
-                // setter
+        } else {
+            // setter
+
+            if (newValue > 0) 
+            {
                 $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', newValue);
+            } else {
+                $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', 0);
+                $('#<%=this.ClientID %>_SpanBudgets span.combo input.textbox-text').val(comboBudgetsDropInit);
             }
         }
+
+    }
+
+    
+
 
 
 
  </script>
  
  <% if (this.Layout == LayoutDirection.Vertical) { %><div class="stacked-input-control"><% } %>
-     <span id="<%=this.ClientID %>_SpanBudgets"><select class="easyui-combotree" url="<%=this.DataUrl %>" name="DropBudgets" id="<%=this.ClientID %>_DropBudgets" animate="true" style="width:324px"></select></span>
+     <span id="<%=this.ClientID %>_SpanBudgets"><select class="easyui-combotree" url="<%=this.DataUrl %>" name="<%=this.ClientID %>_DropBudgets" id="<%=this.ClientID %>_DropBudgets" animate="true" style="width:324px"></select></span>
  <% if (this.Layout == LayoutDirection.Vertical) { %></div><% } %>

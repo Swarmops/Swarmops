@@ -187,11 +187,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Balances Are Settled.
+        /// </summary>
+        internal static string Financial_AllBalancesSettled {
+            get {
+                return ResourceManager.GetString("Financial_AllBalancesSettled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         internal static string Financial_Amount {
             get {
                 return ResourceManager.GetString("Financial_Amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT.
+        /// </summary>
+        internal static string Financial_AmountVat {
+            get {
+                return ResourceManager.GetString("Financial_AmountVat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value Added Tax.
+        /// </summary>
+        internal static string Financial_AmountVatFull {
+            get {
+                return ResourceManager.GetString("Financial_AmountVatFull", resourceCulture);
             }
         }
         
@@ -376,6 +403,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current Balance.
+        /// </summary>
+        internal static string Financial_CurrentBalance {
+            get {
+                return ResourceManager.GetString("Financial_CurrentBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Liabilities.
         /// </summary>
         internal static string Financial_Debt {
@@ -390,6 +426,33 @@ namespace Resources {
         internal static string Financial_DueDate {
             get {
                 return ResourceManager.GetString("Financial_DueDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Due.
+        /// </summary>
+        internal static string Financial_DueDateShort {
+            get {
+                return ResourceManager.GetString("Financial_DueDateShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Earnings before Interest, Taxes, Depreciation, and Amortization.
+        /// </summary>
+        internal static string Financial_Ebitda_Long {
+            get {
+                return ResourceManager.GetString("Financial_Ebitda_Long", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EBITDA.
+        /// </summary>
+        internal static string Financial_Ebitda_Short {
+            get {
+                return ResourceManager.GetString("Financial_Ebitda_Short", resourceCulture);
             }
         }
         
@@ -502,6 +565,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Ledger.
+        /// </summary>
+        internal static string Financial_GeneralLedger {
+            get {
+                return ResourceManager.GetString("Financial_GeneralLedger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoices.
         /// </summary>
         internal static string Financial_InboundInvoices {
@@ -565,6 +637,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no payments on record.
+        /// </summary>
+        internal static string Financial_NoPaymentHistory {
+            get {
+                return ResourceManager.GetString("Financial_NoPaymentHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoices.
         /// </summary>
         internal static string Financial_OutboundInvoices {
@@ -592,11 +673,74 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Owed.
+        /// </summary>
+        internal static string Financial_Owed {
+            get {
+                return ResourceManager.GetString("Financial_Owed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paid.
+        /// </summary>
+        internal static string Financial_Paid {
+            get {
+                return ResourceManager.GetString("Financial_Paid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conference.
         /// </summary>
         internal static string Financial_Parley {
             get {
                 return ResourceManager.GetString("Financial_Parley", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment History.
+        /// </summary>
+        internal static string Financial_PaymentHistory {
+            get {
+                return ResourceManager.GetString("Financial_PaymentHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment #{0:N0}.
+        /// </summary>
+        internal static string Financial_PaymentSpecification {
+            get {
+                return ResourceManager.GetString("Financial_PaymentSpecification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payout #{0:N0}.
+        /// </summary>
+        internal static string Financial_PayoutSpecification {
+            get {
+                return ResourceManager.GetString("Financial_PayoutSpecification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Person Is Owed.
+        /// </summary>
+        internal static string Financial_PersonIsOwed {
+            get {
+                return ResourceManager.GetString("Financial_PersonIsOwed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Person Owes Amount.
+        /// </summary>
+        internal static string Financial_PersonOwes {
+            get {
+                return ResourceManager.GetString("Financial_PersonOwes", resourceCulture);
             }
         }
         
@@ -754,6 +898,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unconfirmed Payout.
+        /// </summary>
+        internal static string Financial_UnconfirmedPayout {
+            get {
+                return ResourceManager.GetString("Financial_UnconfirmedPayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yearly result.
         /// </summary>
         internal static string Financial_YearlyResult {
@@ -763,11 +916,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Owes You.
+        /// </summary>
+        internal static string Financial_YouAreOwed {
+            get {
+                return ResourceManager.GetString("Financial_YouAreOwed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You Owe This Amount.
+        /// </summary>
+        internal static string Financial_YouOwe {
+            get {
+                return ResourceManager.GetString("Financial_YouOwe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to YTD.
         /// </summary>
         internal static string Financial_YTD {
             get {
                 return ResourceManager.GetString("Financial_YTD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zero.
+        /// </summary>
+        internal static string Financial_Zero {
+            get {
+                return ResourceManager.GetString("Financial_Zero", resourceCulture);
             }
         }
         
@@ -889,6 +1069,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Closed.
+        /// </summary>
+        internal static string Global_Closed {
+            get {
+                return ResourceManager.GetString("Global_Closed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string Global_Confirm {
@@ -934,11 +1123,38 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MMM d, yyyy.
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string Global_Date {
+            get {
+                return ResourceManager.GetString("Global_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMMM d.
+        /// </summary>
+        internal static string Global_DateFormatLongDateMonth {
+            get {
+                return ResourceManager.GetString("Global_DateFormatLongDateMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMMM d, yyyy.
         /// </summary>
         internal static string Global_DateFormatLongSansWeekday {
             get {
                 return ResourceManager.GetString("Global_DateFormatLongSansWeekday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMM dd.
+        /// </summary>
+        internal static string Global_DateFormatShortDateMonth {
+            get {
+                return ResourceManager.GetString("Global_DateFormatShortDateMonth", resourceCulture);
             }
         }
         
@@ -948,6 +1164,15 @@ namespace Resources {
         internal static string Global_DateFormatShortReadable {
             get {
                 return ResourceManager.GetString("Global_DateFormatShortReadable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MMM d, yyyy.
+        /// </summary>
+        internal static string Global_DateFormatShortSansWeekday {
+            get {
+                return ResourceManager.GetString("Global_DateFormatShortSansWeekday", resourceCulture);
             }
         }
         
@@ -1015,6 +1240,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No records.
+        /// </summary>
+        internal static string Global_EmptySet {
+            get {
+                return ResourceManager.GetString("Global_EmptySet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are entering the &lt;strong&gt;Sandbox&lt;/strong&gt; organization.&lt;br/&gt;&lt;br/&gt;This is a safe environment where you can play around with Swarmops without risking any damage to production data. Have fun all you want, and return to your production environment when you&apos;re done experimenting..
+        /// </summary>
+        internal static string Global_EnteringSandbox {
+            get {
+                return ResourceManager.GetString("Global_EnteringSandbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This action is no longer available..
+        /// </summary>
+        internal static string Global_Error_Concurrency {
+            get {
+                return ResourceManager.GetString("Global_Error_Concurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to connect WebSocket. Live updates will not be available..
         /// </summary>
         internal static string Global_Error_WebsocketFailure {
@@ -1038,6 +1290,15 @@ namespace Resources {
         internal static string Global_FieldCannotBeEmpty {
             get {
                 return ResourceManager.GetString("Global_FieldCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File Upload Results.
+        /// </summary>
+        internal static string Global_FileUploadResults {
+            get {
+                return ResourceManager.GetString("Global_FileUploadResults", resourceCulture);
             }
         }
         
@@ -1083,6 +1344,24 @@ namespace Resources {
         internal static string Global_ImageSpecification {
             get {
                 return ResourceManager.GetString("Global_ImageSpecification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item.
+        /// </summary>
+        internal static string Global_Item {
+            get {
+                return ResourceManager.GetString("Global_Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Items.
+        /// </summary>
+        internal static string Global_Items {
+            get {
+                return ResourceManager.GetString("Global_Items", resourceCulture);
             }
         }
         
@@ -1146,6 +1425,15 @@ namespace Resources {
         internal static string Global_Month {
             get {
                 return ResourceManager.GetString("Global_Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} to {1}.
+        /// </summary>
+        internal static string Global_MonthXtoY {
+            get {
+                return ResourceManager.GetString("Global_MonthXtoY", resourceCulture);
             }
         }
         
@@ -1240,6 +1528,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (cancelled, voided, zeroed).
+        /// </summary>
+        internal static string Global_Nuked {
+            get {
+                return ResourceManager.GetString("Global_Nuked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Off.
         /// </summary>
         internal static string Global_Off {
@@ -1299,6 +1596,15 @@ namespace Resources {
         internal static string Global_On {
             get {
                 return ResourceManager.GetString("Global_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opened.
+        /// </summary>
+        internal static string Global_Opened {
+            get {
+                return ResourceManager.GetString("Global_Opened", resourceCulture);
             }
         }
         
@@ -1465,6 +1771,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t Skip.
+        /// </summary>
+        internal static string Global_SkipNo {
+            get {
+                return ResourceManager.GetString("Global_SkipNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to skip this.
+        /// </summary>
+        internal static string Global_SkipThis {
+            get {
+                return ResourceManager.GetString("Global_SkipThis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip.
+        /// </summary>
+        internal static string Global_SkipYes {
+            get {
+                return ResourceManager.GetString("Global_SkipYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        internal static string Global_Submit {
+            get {
+                return ResourceManager.GetString("Global_Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to System.
         /// </summary>
         internal static string Global_System {
@@ -1515,6 +1857,15 @@ namespace Resources {
         internal static string Global_UnknownUndisclosed {
             get {
                 return ResourceManager.GetString("Global_UnknownUndisclosed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload.
+        /// </summary>
+        internal static string Global_Upload {
+            get {
+                return ResourceManager.GetString("Global_Upload", resourceCulture);
             }
         }
         
@@ -1663,6 +2014,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This line item can be automatically scanned by an app..
+        /// </summary>
+        internal static string IconTooltip_Barcode_Scanning {
+            get {
+                return ResourceManager.GetString("IconTooltip_Barcode_Scanning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Balance.
         /// </summary>
         internal static string Ledgers_Balance {
@@ -1721,8 +2081,7 @@ namespace Resources {
         ///                &lt;p&gt;BitID is a way to log on securely with less hassle than entering a password. Its simplicitly cannot be explained, only experienced, and it is a two-factor authentication since it uses your phone.&lt;/p&gt;
         ///                &lt;h3&gt;Doesn&apos;t this require my phone to be protected also?&lt;/h3&gt;
         ///                &lt;p&gt;Well, yes. It&apos;s your phone and your phone&apos;s access protection. But your phone should always be access protected.&lt;/p&gt;
-        ///                &lt;h3&gt;Do I need an app for this?&lt;/h3&gt;
-        /// [rest of string was truncated]&quot;;.
+        ///                &lt;h3&gt;Do I need a mobile app for this?&lt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Master_BitIdRegister_Sidebar {
             get {

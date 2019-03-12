@@ -2,7 +2,7 @@
 <%@ Import Namespace="Swarmops.Logic.Support" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-    <script src="https://bitcoincash.blockexplorer.com/socket.io/socket.io.js"></script>
+    <script src="https://bch-insight.bitpay.com/socket.io/socket.io.js"></script>
 
     <script type="text/javascript" language="javascript">
         $(document).ready(function() {
@@ -17,7 +17,7 @@
         eventToListenTo = 'tx';
         room = 'inv';
 
-        var socket = io("https://bitcoincash.blockexplorer.com/");
+        var socket = io("https://bch-insight.bitpay.com/");
         socket.on('connect', function() {
             // Join the room.
             socket.emit('subscribe', room);
@@ -25,11 +25,12 @@
 
         socket.on(eventToListenTo, function(data) {
             var utxoCount = data.vout.length;
+
             for (var index = 0; index < utxoCount; index++)
             {
                 for (var outAddress in data.vout[index]) {
 
-                    if (outAddress == addressUsed) {
+                    if (outAddress == addressUsedLegacy || outAddress == addressUsedCash || outAddress == addressUsedCashPrefixed) {
 
                         var donatedSatoshis = data.vout[index][outAddress];
 
@@ -43,7 +44,6 @@
                             var json = {};
                             json.guid = guid;
                             json.txHash = data.txid;
-
 
                             SwarmopsJS.ajaxCall('/Pages/v5/Admin/BitcoinEchoTest.aspx/ProcessTransactionReceived',
                                 json,
@@ -76,11 +76,13 @@
             }
         });
 
-        var sentFunds = 0.001; // the 0.1 cents are necessary for an odometer workaround
-        var minerFees = -0.001; // negative, or the .1 cents will go wrong
-        var returnedFunds = 0.001; // as above
+        var sentFunds = 0; // the 0.1 cents are necessary for an odometer workaround
+        var minerFees = <%=this.MinerFeeDefaultFee%>; // negative, or the .1 cents will go wrong
+        var returnedFunds = 0; // as above
 
-        var addressUsed = SwarmopsJS.unescape('<%=this.BitcoinCashAddressUsed %>');
+        var addressUsedLegacy = SwarmopsJS.unescape('<%=this.BitcoinCashAddressLegacy %>');
+        var addressUsedCash = SwarmopsJS.unescape('<%=this.BitcoinCashAddressCash %>');
+        var addressUsedCashPrefixed = "bitcoincash:" + addressUsedCash;
         var verifyingText = SwarmopsJS.unescape('<%=this.Localized_Verifying%>');
         var guid = SwarmopsJS.unescape('<%=this.TransactionGuid%>');
         var conversionRateSatoshisToCents = <%= this.ConversionRateSatoshisToCents %>;
@@ -96,16 +98,16 @@
      <div class="box" style="background-image: url(/Images/Other/coins-background-istockphoto.jpg); background-size: 700px">
         <div class="content">
             <div class="odometer-wrapper">
-                <div class="elementFloatFar odometer odometer-currency" id="odoSentCents">0.001</div>
+                <div class="float-far odometer odometer-currency" id="odoSentCents">0.001</div>
                 <div class="odometer-label">Received in echo test (<%=CurrentOrganization.Currency.DisplayCode %>)</div>
             </div>
             <div class="odometer-wrapper">
-                <div class="elementFloatFar odometer odometer-currency" id="odoMinerFeeCents">-0.001</div>
+                <div class="float-far odometer odometer-currency" id="odoMinerFeeCents">-0.001</div>
                 <div class="odometer-label">Miner fees paid</div>
             </div>
             <hr/>
             <div class="odometer-wrapper">
-                <div class="elementFloatFar odometer odometer-currency" id="odoReturnedCents">0.001</div>
+                <div class="float-far odometer odometer-currency" id="odoReturnedCents">0.001</div>
                 <div class="odometer-label">Successfully returned</div>
             </div>
         </div>

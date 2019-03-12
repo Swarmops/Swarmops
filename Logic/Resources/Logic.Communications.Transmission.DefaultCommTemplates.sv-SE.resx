@@ -117,18 +117,51 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AspirantAddWelcome_Body" xml:space="preserve">
+    <value>Välkommen som [Aspirant] till [OrganizationName]!
+
+Du har ansökt om ett [Regularship] i [OrganizationName], och får därför detta mail för att bekräfta din roll som [Aspirant]. Ditt [Aspirantship] har ingen tidsbegränsning, så det är inte bråttom att agera på det här mailet.
+
+Ditt första och slumpgenererade lösenord för Swarmops, systemet som används för administration, är detta:
+[RandomPassword]
+
+Vi rekommenderar att du loggar på Swarmops och ändrar detta lösen till något säkrare som du valt själv så snart som möjligt. Du gör det genom att gå till [ExternalUrl] och logga på, och sedan klicka på användarikonen uppe till höger, välja säkerhetsfliken (den med hänglåset), skriva in detta första lösenord, och sedan skriva ditt nya. Du bör också aktivera tvåfaktorsautentisering, som en bra säkerhetsåtgärd i allmänhet.
+
+Välkommen som [Aspirant] och vi hoppas snart få se dig som [Regular]!</value>
+  </data>
+  <data name="AspirantAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Välkommen som [Aspirant] till [OrganizationName]!</value>
+  </data>
   <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
     <value>Välkommen till [OrganizationName]!
 
-Du har fått ett [Regularship] av [ActingPerson]. Det går ut den [MembershipExpiry], så det finns gott om tid att bekanta sig med organisationen.
+[ActingPerson] har skapat ett [Regularship] åt dig. Det går ut [MembershipExpiry], så det finns gott om tid att bekanta sig med organisationen.
 
-Du bör redan ha blivit kontaktad av människor från [OrganizationName] för mer information om hur du aktiverar dig. Om inte, bör det komma någon form av korrespondens inom kort.
+Du har förmodligen redan kontaktats av folk från [OrganizationName] med mer information om hur du kan aktivera dig. Om inte, så får du förmodligen sådan kontakt inom kort.
 
-Ditt första och slumpmässigt genererat lösenord till Swarmops, den programvara som används som en backend-system, är följande:[RandomPassword]
+Ditt första och slumpgenererade lösenord för Swarmops, systemet som används för administration, är detta:
+[RandomPassword]
 
-(tyvärr, du kan inte ändra det ännu. Funktionen väntas tidigt 2015. Swarmops är fortfarande i en tidig alpha; Det är en av nackdelarna med banbrytande ny programvara: saker kan vara lite halvfärdiga som de kommer online.)
+Vi rekommenderar att du loggar på Swarmops och ändrar detta lösen till något säkrare som du valt själv så snart som möjligt. Du gör det genom att gå till [ExternalUrl] och logga på, och sedan klicka på användarikonen uppe till höger, välja säkerhetsfliken (den med hänglåset), skriva in detta första lösenord, och sedan skriva ditt nya. Du bör också aktivera tvåfaktorsautentisering, som en bra säkerhetsåtgärd i allmänhet.
 
 Välkommen ombord!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>Välkommen till [OrganizationName]!
+
+[ActingPerson] har skapat ett [Regularship] åt dig. Det har ingen tidsbegränsning, så det finns gott om tid att bekanta sig med organisationen.
+
+Du har förmodligen redan kontaktats av folk från [OrganizationName] med mer information om hur du kan aktivera dig. Om inte, så får du förmodligen sådan kontakt inom kort.
+
+Ditt första och slumpgenererade lösenord för Swarmops, systemet som används för administration, är detta:
+[RandomPassword]
+
+Vi rekommenderar att du loggar på Swarmops och ändrar detta lösen till något säkrare som du valt själv så snart som möjligt. Du gör det genom att gå till [ExternalUrl] och logga på, och sedan klicka på användarikonen uppe till höger, välja säkerhetsfliken (den med hänglåset), skriva in detta första lösenord, och sedan skriva ditt nya. Du bör också aktivera tvåfaktorsautentisering, som en bra säkerhetsåtgärd i allmänhet.
+
+Välkommen ombord!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Välkommen till [OrganizationName]!</value>
   </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Välkommen till [OrganizationName]!</value>

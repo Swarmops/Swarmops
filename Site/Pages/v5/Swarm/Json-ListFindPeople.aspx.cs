@@ -45,17 +45,40 @@ namespace Swarmops.Frontend.Pages.Swarm
             string editPersonTemplate =
                 "\"actions\":\"<a href='javascript:masterBeginEditPerson({0})'><img src='/Images/Icons/iconshock-wrench-128x96px-centered.png' height='16' width='24' /></a>\"";
 
+            Dictionary<int, Applicant> applicantLookup = new Dictionary<int, Applicant>();
+
+            if (CurrentOrganization.Parameters.ParticipationEntry == "ApplicationApproval")
+            {
+                // There are applications possible for this org; find them and put the Score in the Notes field
+
+                Applicants applicants = Applicants.FromPeopleInOrganization(matches, CurrentOrganization);
+
+                foreach (Applicant applicant in applicants)
+                {
+                    applicantLookup[applicant.PersonId] = applicant;
+                }
+            }
+
             foreach (Person person in matches)
             {
+                string notes = Participant.Localized(CurrentOrganization.RegularLabel, person.Gender);
+
+                if (applicantLookup.ContainsKey(person.Identity))
+                {
+                    // If this is an applicant, use the "Notes" field for score
+                    notes = "<span class='align-for-numbers'>" + applicantLookup[person.Identity].ScoreTotal.ToString("N0") + "</span>";
+                }
+
                 string onePerson = '{' +
                                    String.Format (
-                                       "\"id\":\"{0}\",\"name\":\"<span class='spanUser{0}Name'>{1}</span>\",\"avatar16Url\":\"{2}\",\"geographyName\":\"{3}\",\"mail\":\"<span class='spanUser{0}Mail'>{4}</span>\",\"phone\":\"<span class='spanUser{0}Phone'>{5}</span>\"",
+                                       "\"id\":\"{0}\",\"name\":\"<span class='spanUser{0}Name'>{1}</span>\",\"avatar16Url\":\"{2}\",\"geographyName\":\"{3}\",\"mail\":\"<span class='spanUser{0}Mail'>{4}</span>\",\"notes\":\"{6}\",\"phone\":\"<span class='spanUser{0}Phone'>{5}</span>\"",
                                        person.Identity,
                                        JsonSanitize (person.Canonical),
                                        person.GetSecureAvatarLink (16),
-                                       JsonSanitize (person.Geography.Name),
+                                       JsonSanitize (person.Geography.Localized),
                                        JsonSanitize (person.Mail),
-                                       JsonSanitize (person.Phone)) + "," +
+                                       JsonSanitize (person.Phone),
+                                        JsonSanitize(notes)) + "," +
                                     String.Format(
                                         editPersonTemplate, person.Identity)
                                        + '}';

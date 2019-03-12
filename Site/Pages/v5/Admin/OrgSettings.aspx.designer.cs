@@ -94,13 +94,22 @@ namespace Swarmops.Frontend.Pages.Admin {
         protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider ToggleOpenFinancials;
         
         /// <summary>
-        /// DropMembersWhen control.
+        /// DropParticipationEntry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Base.DropDown DropMembersWhen;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxDropDown DropParticipationEntry;
+        
+        /// <summary>
+        /// TextApplicationScoreQualify control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextApplicationScoreQualify;
         
         /// <summary>
         /// DropMembersWhere control.
@@ -112,13 +121,13 @@ namespace Swarmops.Frontend.Pages.Admin {
         protected global::Swarmops.Frontend.Controls.Base.DropDown DropMembersWhere;
         
         /// <summary>
-        /// DropMembershipDuration control.
+        /// DropParticipationDuration control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.Base.DropDown DropMembershipDuration;
+        protected global::Swarmops.Frontend.Controls.Base.AjaxDropDown DropParticipationDuration;
         
         /// <summary>
         /// DropMembersChurn control.
@@ -182,6 +191,15 @@ namespace Swarmops.Frontend.Pages.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Swarmops.Frontend.Controls.Base.DropDown DropMemberNumber;
+        
+        /// <summary>
+        /// ToggleAskStreet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxToggleSlider ToggleAskStreet;
         
         /// <summary>
         /// LabelParticipationEntry control.
@@ -272,6 +290,51 @@ namespace Swarmops.Frontend.Pages.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelMemberNumber;
+        
+        /// <summary>
+        /// TextShortOrgInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextShortOrgInfo;
+        
+        /// <summary>
+        /// TextSignupFirstPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextSignupFirstPage;
+        
+        /// <summary>
+        /// TextSignupLastPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextSignupLastPage;
+        
+        /// <summary>
+        /// TextApplicationCompleteMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextApplicationCompleteMail;
+        
+        /// <summary>
+        /// TextParticipationAcceptedMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.AjaxTextBox TextParticipationAcceptedMail;
         
         /// <summary>
         /// UploadLogoLandscape control.

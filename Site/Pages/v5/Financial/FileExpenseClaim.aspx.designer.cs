@@ -13,6 +13,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
     public partial class FileExpenseClaim {
         
         /// <summary>
+        /// ScriptFancyBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Meta.ExternalScripts ScriptFancyBox;
+        
+        /// <summary>
         /// BoxTitle control.
         /// </summary>
         /// <remarks>
@@ -218,5 +227,176 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelBankAccount;
+        
+        /// <summary>
+        /// ProgressExpensifyFake control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.v5.Base.ProgressBarFake ProgressExpensifyFake;
+        
+        /// <summary>
+        /// LabelExpensifyProcessingComplete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyProcessingComplete;
+        
+        /// <summary>
+        /// LabelExpensifyHeaderBudget control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderBudget;
+        
+        /// <summary>
+        /// LabelExpensifyHeaderDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderDate;
+        
+        /// <summary>
+        /// LabelExpensifyHeaderDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderDescription;
+        
+        /// <summary>
+        /// LabelExpensifyHeaderVat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderVat;
+        
+        /// <summary>
+        /// LabelExpensifyHeaderAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderAmount;
+        
+        /// <summary>
+        /// LabelExpensifyHeaderDocs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyHeaderDocs;
+        
+        /// <summary>
+        /// LabelExpensifyUploadHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyUploadHeader;
+        
+        /// <summary>
+        /// LabelExpensifyInstructions1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyInstructions1;
+        
+        /// <summary>
+        /// LabelExpensifyInstructions2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyInstructions2;
+        
+        /// <summary>
+        /// LabelExpensifyUploadAnotherHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyUploadAnotherHeader;
+        
+        /// <summary>
+        /// UploadExpensify control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Controls.Base.FileUpload UploadExpensify;
+        
+        /// <summary>
+        /// LabelExpensifyCsv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelExpensifyCsv;
+        
+        /// <summary>
+        /// ProgressExpensify control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.v5.Base.ProgressBar ProgressExpensify;
+        
+        /// <summary>
+        /// DialogEditExpenseClaim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Base.ModalDialog DialogEditExpenseClaim;
+        
+        /// <summary>
+        /// ComboExpensifyBudgets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Controls.Financial.ComboBudgets ComboExpensifyBudgets;
+        
+        /// <summary>
+        /// CurrencyModalExpensifyAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox CurrencyModalExpensifyAmount;
+        
+        /// <summary>
+        /// CurrencyModalExpensifyAmountVat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox CurrencyModalExpensifyAmountVat;
     }
 }

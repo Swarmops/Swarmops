@@ -42,7 +42,7 @@ public partial class Pages_v5_Finance_Json_ListInvoicesOutbound : DataV5Base
         StringBuilder result = new StringBuilder (16384);
 
         string hasDoxString =
-            "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\\\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-search-256px.png';\\\" baseid='O{6}' class='LocalViewDox' style='cursor:pointer' height='20' width='20' />";
+            "<img class='LocalIconDox action-icon' baseid='O{6}' />";
 
         result.Append ("{\"rows\":[");
 

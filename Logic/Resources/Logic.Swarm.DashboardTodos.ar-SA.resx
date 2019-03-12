@@ -121,15 +121,38 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>قم بتعيين عنوان البيتكوين كاش الخاص بالدفع</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>المرجو تعيين عنوان البيتكوين كاش لدفعات من [InstallationName] ( ابدأ بـ"بيتكوين كاش"):</value>
+  </data>
+  <data name="Payout_Many" xml:space="preserve">
+    <value>تسوية {0} دفعات</value>
+    <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
+  </data>
+  <data name="Payout_One" xml:space="preserve">
+    <value>تسوية دفع واحد</value>
+  </data>
+  <data name="Payout_Overdue_Many" xml:space="preserve">
+    <value>تسوية {0} دفعات متأخرة</value>
+  </data>
+  <data name="Payout_Overdue_One" xml:space="preserve">
+    <value>تسوية دفع واحد متأخر</value>
+  </data>
+  <data name="Payout_Urgent_Many" xml:space="preserve">
+    <value>تسوية {0} دفعات عاجلة</value>
+  </data>
+  <data name="Payout_Urgent_One" xml:space="preserve">
+    <value>تسوية دفع واحد عاجل</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>تفعيل المصادقة ذات عاملين</value>
+  </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>التحقق من المطالب {0}</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>التحقق من الطلب #{0}</value>
+  </data>
 </root>

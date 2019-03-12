@@ -241,12 +241,6 @@
     <value>Nedladdningsinstruktioner</value>
     <comment>Header above instructions for generation of the bank file type selected.</comment>
   </data>
-  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
-    <value>Olika banker har olika sätt att få BGMAX-filen. På SEB går du till &lt;strong&gt;betalningar&lt;/strong&gt; och &lt;strong&gt;filkommunikation&lt;/strong&gt; för att se en lista över filer att hämta. Andra banker har andra metoder. I vilket fall, så ladda upp dem här.</value>
-  </data>
-  
-  
-  
   <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
     <value>&lt;p&gt;Filen innehöll {0:N0} transaktioner. &lt;strong&gt;{1:N0} transaktioner&lt;/strong&gt; har importerats till kontot &lt;em&gt;{2}&lt;/em&gt;. ({3:N0} transaktioner var dubbletter.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Men bankens saldo stämmer inte med bokföringen i Swarmops.&lt;/strong&gt; Detta beror oftast på saknade transaktioner. Ladda upp ett kontoutdrag över med ett större tidsintervall så att Swarmops får alla transaktioner.&lt;/p&gt;&lt;p&gt;Swarmops bokföring konto är för närvarande &lt;strong&gt;inte i synk&lt;/strong&gt; med bankens.&lt;/p&gt;</value>
     <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
@@ -407,7 +401,8 @@
     <value>Aktivt</value>
   </data>
   <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Är transaktioner här bortfiltrerade från 2D-rapporter?</value>
+    <value>Är detta ett konto efter raden EBITDA?</value>
+    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
   </data>
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Admin</value>
@@ -423,7 +418,7 @@
     <value>Utlägg</value>
   </data>
   <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
-    <value>Bankprofil</value>
+    <value>Automatiseringsprofil</value>
   </data>
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>Redigerar konto</value>
@@ -638,7 +633,8 @@
     <value>(detaljerad beskrivning visas ej)</value>
   </data>
   <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Obalanserade transaktioner (måste matcha eller fixa)</value>
+    <value>Lösa betalningar (måste balanseras, matchas eller fixas)</value>
+    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
   </data>
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Konto</value>
@@ -655,7 +651,7 @@
     <comment>Keep VERY short.</comment>
   </data>
   <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Några automatimporterade finansiella transaktioner kunde inte matchas automatiskt mot den löpande redovisningen. Det är här som du manuellt matchar transaktionerna att "balansera" (om en transaktion bara har ena sidan redovisad, till exempel utbetalda pengar från organisationen utan motsvarande post vad pengarna gick till, så sägs transaktionen vara "obalanserad").</value>
+    <value>Några automatimporterade finansiella transaktioner kunde inte matchas automatiskt mot den löpande redovisningen. Det är här som du manuellt matchar transaktionerna att "balansera" (om en transaktion bara har ena sidan redovisad, till exempel utbetalda pengar från organisationen utan motsvarande post vad pengarna gick till, så sägs transaktionen vara "obalanserad" och en "lös betalning", det vill säga, den har ingen motpart i bokföringen).</value>
   </data>
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Balanserar/matchar transaktionen # &lt;span id="spanModalTransactionId"&gt;[...]&lt;/span&gt; från &lt;span id="spanModalTransactionDate"&gt;[...laddar...]&lt;/span&gt;</value>
@@ -907,5 +903,141 @@
   <data name="ViewVatReports_ReportTotals" xml:space="preserve">
     <value>Totalt denna rapport</value>
     <comment>Displayed as description of footer</comment>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>Transaktionen behöver en beskrivning.</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>Transaktionen behöver något slags kvitto eller dokumentation.</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>Momsbeloppet verkar inte vara korrekt ifyllt.</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
+    <value>Markera som direktköp från kontot</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>Direktdebiterat kontobelopp ({0})</value>
+    <comment>{0} is the currency</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
+    <value>Belasta denna budget med inköpet</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
+    <value>Ladda upp kvitto eller annan dokumentation</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
+    <value>Uppdatera transaktionsbeskrivning</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
+    <value>Momsdel av totalbeloppet</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>Markera detta som ett direktdebiterat inköp?</value>
+  </data>
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>Beskrivning / Konto</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>Huvudbok för</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>Denna transaktion stänger momsrapporten för {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>Denna transaktion öppnar momsrapporten för {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>Denna transaktion erhöll betalning för utgående faktura #{0:N0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>Denna transaktion betalar {0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>Denna transaktion betalar inkommande faktura #{0:N0} från {1}.</value>
+  </data>
+  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
+    <value>Automatiseringsprofil</value>
+    <comment>This is where the bank name, country, and currency appears.</comment>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>Det finns inga tillgångskonton med automatiseringsprofil, så inga budgetkonton stöder uppladdning just nu. Återvänder till Översikten.</value>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
+    <value>Eftersom detta var den första datauppladdningen till detta automatiserade konto, så har öppningssaldot &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; in i {2} automatiskt ställts in</value>
+    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
+    <value>(som utgörs av &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; i bokföringsvalutan)</value>
+    <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
+  </data>
+  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
+    <value>Stäng bokföringsböckerna för året {0}</value>
+    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
+  </data>
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Upprätta {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
+    <value>Automathämta transaktionsdata för {0}</value>
+    <comment>Parameter zero is the account name as given by the user</comment>
+  </data>
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Bokslutsrapporter</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>Extern transaktionsdata och reskontra</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Löner och skatter</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+    <value>Skicka rapporter till revisorer, aktieägare, etc.</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
+  <data name="EndOfMonth_Info" xml:space="preserve">
+    <value>Det här är en checklista med saker att göra för att stänga föregående månad och börja den nya med avseende på redovisning.</value>
+  </data>
+  <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
+    <value>Matcha alla lösa betalningar</value>
+    <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
+  </data>
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>Slut-på-månaden-rutin: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>Ladda upp kontoutdrag ({1}) för {0} för {2}</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>Ladda upp transaktionsdata ({1}) för {0}</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
+  <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
+    <value>&lt;strong&gt;SKIPPA KONTOUTDRAG?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bankernas kontoutdrag behövs vanligen för revision av bokföringen. Det giltiga skälet att hoppa över en månads kontoutdrag är att kontot är inte öppnat ännu, och då hoppar man över månaderna innan kontot öppnades.&lt;br/&gt;&lt;br/&gt;Om du skippar detta kontoutdrag nu kommer du inte att omfrågas igen senare.</value>
+  </data>
+  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
+    <value>&lt;strong&gt;SKIPPA DOKUMENTET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Detta dokument behövs vanligtvis för kontroll av verksamheten. Ett giltigt skäl att hoppa över ett dokument är att det inte existerar om verksamheten ifråga inte var igång ännu.&lt;br/&gt;&lt;br/&gt;Du kommer inte att få frågan om att ladda upp detta dokument igen om du hoppar över det nu.</value>
+  </data>
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>Lönekörning: Ingen lönelista upprättad</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
+  </data>
+  <data name="EndOfMonth_CheckHotWalletWithBlockchain" xml:space="preserve">
+    <value>Verifiera arbetsplånbokens saldo mot blockkedjan</value>
+    <comment>This verifies the hotwallet data against master blockchain data, as per a blockchain explorer service or local crypto service node.</comment>
+  </data>
+  <data name="EndOfMonth_CheckLedgerAgainstHotWallet" xml:space="preserve">
+    <value>Verifiera bokföringens saldo mot arbetsplånbokens</value>
+    <comment>This is the ledger balance of the hotwallet, which is supposed to say the hotwallet contains as much as it actually does.</comment>
   </data>
 </root>

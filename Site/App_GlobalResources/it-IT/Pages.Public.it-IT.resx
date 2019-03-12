@@ -117,50 +117,173 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Signup_ActivationActive" xml:space="preserve">
+    <value>Se si desidera impegnarsi ulteriormente, è possibile rendersi disponibili per gli inviti ad agire, senza alcun obbligo di presentarsi, partecipare o prendere parte a nessuno di questi.</value>
+  </data>
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>{0} All'opportunità</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationLevel" xml:space="preserve">
+    <value>Quanto desideri interagire?</value>
+  </data>
+  <data name="Signup_ActivationLevelText" xml:space="preserve">
+    <value>Ci sono diversi livelli su cui puoi interagire in {0}. Selezionare il livello desiderato qui sotto (il quale, ovviamente può essere cambiato in seguito, se desideri):</value>
+    <comment>{0} is the org name.</comment>
+  </data>
+  <data name="Signup_ActivationPassive" xml:space="preserve">
+    <value>Questo è il livello predefinito e significa che sarete parte normale dell'organizzazione come {0} di base.</value>
+    <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
+  </data>
+  <data name="Signup_ActivationPassiveApplication" xml:space="preserve">
+    <value>Questo è il livello predefinito, il che significa che, mentre si è in attesa del proprio {1}, è possibile interagire come {0} quanto si desidera (o non).</value>
+  </data>
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>Normale {0}</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationVolunteer" xml:space="preserve">
+    <value>Se desidera proporsi come volontario per assumersi la responsabilità formale di una parte dell'organizzazione, aiutando dove è più necessario, è ovviamente il benvenuto. (Nella pagina seguente troverà una selezione di incarichi per i quali è possibile proporsi come volontario)</value>
+  </data>
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>Ufficiale del reparto volontari</value>
+  </data>
+  <data name="Signup_ApplicationApproval" xml:space="preserve">
+    <value>Stai sottoscrivendo un' applicazione per un {0} con {1}. Non ci sono tasse per la presentazione della domanda per tale ruolo,.</value>
+  </data>
+  <data name="Signup_ApplyingFor" xml:space="preserve">
+    <value>Applicando per un {0} in {1}</value>
+  </data>
+  <data name="Signup_DashboardMessage" xml:space="preserve">
+    <value>Benvenuto! Questo è il &lt;em&gt;Dashboard,&lt;/em&gt; dove è possibile accedere alle funzionalità interne di {0}. A breve riceverete maggiori informazioni via e-mail.&lt;br/&gt;&lt;br/&gt;
+
+Se ti sei offerto di assumerti una responsabilità formale, qualcuno (probabilmente anche un volontario, come te) ti contatterà per discutere di più sulle opportunità disponibili.</value>
+  </data>
+  <data name="Signup_DefaultFirstPageText" xml:space="preserve">
+    <value>Questo è il testo di benvenuto personalizzato dell'organizzazione. Non è ancora stato scritto; questo può essere impostato in Amministrazione / Impostazioni dell'organizzazione.</value>
+  </data>
+  <data name="Signup_DefaultLastPageText" xml:space="preserve">
+    <value>Questo è il testo specifico dell'organizzazione mostrato per la finalizzazione della registrazione. Viene impostato in amministrazione / Impostazioni dell'organizzazione. Quando la nuova persona preme Fine, verrà inserita nell'organizzazione, connessa e inviata al Dashboard come utente principiante.</value>
+  </data>
+  <data name="Signup_DefaultSidebarText" xml:space="preserve">
+    <value>Queste sono le informazioni relative alla barra laterale piccola dell'organizzazione. Possono essere impostate in Amministrazione/Impostazioni dell'organizzazione.</value>
+  </data>
+  <data name="Signup_Error_MailExists" xml:space="preserve">
+    <value>Ti sei già iscritto a questo server di Swarmops. Invece di creare un nuovo account, Si prega di utilizzare la funzione di reimpostazione della password dalla schermata di accesso.</value>
+  </data>
+  <data name="Signup_Error_NeedPassword" xml:space="preserve">
+    <value>Si prega di selezionare una password e di digitarla nuovamente.</value>
+  </data>
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>Le coppie delle due password non coincidono.</value>
+  </data>
+  <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
+    <value>Si prega di selezionare il livello di attività desiderato.</value>
+  </data>
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>Si prega di selezionare almeno un incarico.</value>
+  </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>Tasse e costi</value>
+  </data>
+  <data name="Signup_FeeRenewalText" xml:space="preserve">
+    <value>Non c'è alcun costo per iscriversi ad un {0} {1}. Tuttavia, ci sarà una tassa per rinnovare il vostro {1} quando scadrà il {2}. Tale tassa è attualmente pari a {3} {4:N2}, e non si è obbligati a rinnovarlo.</value>
+    <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
+  </data>
+  <data name="Signup_FeeText" xml:space="preserve">
+    <value>La tassa per {0} è di {1} {2:N2} per {3}. Alla fine di questo processo riceverai una fattura. (È possibile terminare il {0} in qualsiasi momento.) </value>
+    <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>Finalizzare la registrazione</value>
+  </data>
+  <data name="Signup_MailLoginKey" xml:space="preserve">
+    <value>Il tuo accesso (la tua email)</value>
+  </data>
+  <data name="Signup_NoFeeText" xml:space="preserve">
+    <value>Non c'è alcun costo per diventare {0} con {2}, né per rinnovare quando scade il {1}. Inoltre puoi terminare il tuo {0} in qualsiasi momento.</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
+  </data>
+  <data name="Signup_Password1" xml:space="preserve">
+    <value>Scegli una password</value>
+  </data>
+  <data name="Signup_Password2" xml:space="preserve">
+    <value>Ripeti la password</value>
+  </data>
+  <data name="Signup_SigningUp" xml:space="preserve">
+    <value>Registrazione in corso per {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_Step1Header" xml:space="preserve">
+    <value>Welcome!</value>
+  </data>
+  <data name="Signup_Step1Text" xml:space="preserve">
+    <value>Una breve introduzione</value>
+  </data>
+  <data name="Signup_Step2Header" xml:space="preserve">
+    <value>Su di te</value>
+  </data>
+  <data name="Signup_Step2Text" xml:space="preserve">
+    <value>Ci racconti qualcosa su di te?</value>
+  </data>
+  <data name="Signup_Step3Header" xml:space="preserve">
+    <value>Creare un accesso</value>
+  </data>
+  <data name="Signup_Step3Text" xml:space="preserve">
+    <value>Scegli una password</value>
+  </data>
+  <data name="Signup_Step4Header" xml:space="preserve">
+    <value>Attività 1</value>
+  </data>
+  <data name="Signup_Step4Text" xml:space="preserve">
+    <value>Quanto desideri interagire?</value>
+  </data>
+  <data name="Signup_Step5Header" xml:space="preserve">
+    <value>Attività 2</value>
+  </data>
+  <data name="Signup_Step5Text" xml:space="preserve">
+    <value>Con cosa saresti interessato ad interagire?</value>
+  </data>
+  <data name="Signup_Step6Header" xml:space="preserve">
+    <value>Completa</value>
+  </data>
+  <data name="Signup_Step6Header_Payment" xml:space="preserve">
+    <value>Pagamento</value>
+  </data>
+  <data name="Signup_Step6Text" xml:space="preserve">
+    <value>Tutto fatto. Effettuiamo l'accesso!</value>
+  </data>
+  <data name="Signup_Step6Text_Payment" xml:space="preserve">
+    <value>Andiamo a pagare la tassa di {0} e a completare!</value>
+    <comment>The {0} is Membership, Ambassadorship, etc. The Regularship label for this organization.</comment>
+  </data>
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>Completa registrazione.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Signup_VolunteerHeader" xml:space="preserve">
+    <value>A quale funzione sei interessato?</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>Posizione geografica più alta</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
+    <value>Posizione</value>
+  </data>
+  <data name="Signup_VolunteerText" xml:space="preserve">
+    <value>Seleziona l'incarico per cui desideri offrirti come volontario/candidarti. Puoi selezionarne diversi.</value>
+  </data>
+  <data name="Signup_Welcome" xml:space="preserve">
+    <value>Benvenuto a {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_YourLogon" xml:space="preserve">
+    <value>Le tue credenziali di accesso</value>
+  </data>
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>Si prega di selezionare una password per effettuare l'accesso a Swarmops (questo sistema). Per comodità, potrete sostituire questa password con un accesso di Twitter, Facebook, o BitID.</value>
+  </data>
+  <data name="Signup_YourName" xml:space="preserve">
+    <value>Il tuo nome</value>
+  </data>
 </root>

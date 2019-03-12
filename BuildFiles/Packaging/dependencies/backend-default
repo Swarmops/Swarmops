@@ -1,1 +1,56 @@
-libmono-corlib4.5-cil (>= 3.2.8),libmono-posix4.0-cil (>= 3.2.8),libmono-system-data4.0-cil (>= 3.2.8),libmono-system-web-http4.0-cil (>= 3.2.8),libmono-system-numerics4.0-cil,libmono-system-management4.0-cil,libmono-system-runtime4.0-cil,imagemagick,ghostscript,tesseract-ocr,inkscape,mono-devel
+#
+# This file is a template included with dependencies for the swarmops backend.
+# It is included into the control file when packages are built. If there exists
+# a file with the name backend-[distro], it is selected for a distro, otherwise, 
+# backend-default is used.
+#
+
+ libmono-corlib4.5-cil,
+ libmono-posix4.0-cil,
+ libmono-system-data4.0-cil,
+ libmono-system-management4.0-cil, 
+ libmono-system-numerics4.0-cil,
+ libmono-system-web-http4.0-cil,
+
+#
+# Mono-devel is repeated here, it's in common as well. Some day we're going to have
+# to figure out why the backend refuses to run with a System.Runtime assembly missing
+# exception when mono-devel isn't present.
+#
+# For now, I have to admit it's a convenient cop-out to assure that all the common
+# assemblies are in place.
+#
+
+ mono-devel,
+
+#
+# Imagemagick is for backend conversion of PDFs to bitmaps.
+#
+
+ imagemagick,
+
+#
+# Inkscape, deliberately installed on the backend, is for conversion of generated
+# SVG files to PDFs. There are other utilities and libraries that do this but none
+# that do it as well and reliably.
+#
+
+ inkscape,
+
+#
+# Ghostscript for various PDF handling
+#
+
+ ghostscript,
+
+#
+# and Tesseract for a planned-not-yet-implemented OCR reading of inbound invoices
+# and other documents
+#
+
+ tesseract-ocr
+
+# Note that the last line doesn't have a terminating comma, as it ends the list
+# of dependencies that goes into the Control file
+
+

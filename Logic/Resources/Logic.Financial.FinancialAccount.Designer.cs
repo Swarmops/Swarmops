@@ -268,6 +268,15 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Business Services.
+        /// </summary>
+        internal static string Cost_BusinessServices {
+            get {
+                return ResourceManager.GetString("Cost_BusinessServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cent Rounding.
         /// </summary>
         internal static string Cost_CentRounding {
@@ -390,6 +399,15 @@ namespace Swarmops.Logic.Resources {
         internal static string Cost_LodgingThreeStar {
             get {
                 return ResourceManager.GetString("Cost_LodgingThreeStar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maintenance Donations.
+        /// </summary>
+        internal static string Cost_MaintenanceDonations {
+            get {
+                return ResourceManager.GetString("Cost_MaintenanceDonations", resourceCulture);
             }
         }
         

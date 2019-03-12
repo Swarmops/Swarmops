@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Resources;
 using System.Security;
 using System.Web;
 using System.Web.Services;
+using System.Web.UI;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.LogEntries;
 
 namespace Swarmops.Frontend.Pages.Financial
 {
@@ -37,104 +43,246 @@ namespace Swarmops.Frontend.Pages.Financial
             PageTitle = Resources.Pages.Financial.PayOutMoney_PageTitle;
             InfoBoxLiteral = Resources.Pages.Financial.PayOutMoney_Info;
             this.LabelPayOutMoneyHeader.Text = Resources.Pages.Financial.PayOutMoney_Header;
-            this.LabelGridHeaderAccount.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_BankAccount;
             this.LabelGridHeaderAmount.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Amount;
-            this.LabelGridHeaderBank.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_BankName;
-            this.LabelGridHeaderDue.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_DueDate;
-            this.LabelGridHeaderPaid.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_PaidOut;
+            this.LabelGridHeaderDue.Text = Resources.Global.Financial_DueDateShort;
+            this.LabelGridHeaderPay.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_PayThis;
             this.LabelGridHeaderRecipient.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Recipient;
-            this.LabelGridHeaderReference.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Reference;
+            this.LabelGridHeaderCurrencyMethod.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_CurrencyMethod;
 
-            this.LabelPayOutMoneyOcrHeader.Text = Resources.Pages.Financial.PayoutMoney_Header_Ocr;
-            this.LabelGridHeaderAccountOcr.Text = Resources.Pages.Financial.PayoutMoney_GridHeader_Account_Ocr;
-            this.LabelGridHeaderDue2.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_DueDate; // same as above
-            this.LabelGridHeaderReferenceOcr.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Reference_Ocr;
-            this.LabelGridHeaderAmountOcr.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Amount_Ocr;
-            this.LabelGridHeaderPaid2.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_PaidOut;
+            this.LabelModalOcr1.Text = Resources.Pages.Financial.PayOutMoney_Modal_LabelOcr1;
+            this.ToggleModalMachineReadable.Label = Resources.Pages.Financial.PayOutMoney_Modal_LabelOcr2;
+            this.LabelModalRecipient.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Recipient;
+            this.LabelModalReference.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Reference;
+            this.LabelModalHeader.Text = Resources.Pages.Financial.PayOutMoney_Modal_Header;
+            this.LabelModalCurrencyAmount.Text = Resources.Pages.Financial.PayOutMoney_Modal_CurrencyAmount;
+            this.LabelModalTransferMethod.Text = Resources.Pages.Financial.PayOutMoney_Modal_TransferMethod;
+            this.LabelModalHeaderDue.Text = Resources.Global.Financial_DueDateShort;
+
+            this.LabelModalAutomation1.Text = Resources.Pages.Financial.PayOutMoney_AutomationFieldStart;
+            this.LabelModalAutomation2.Text = Resources.Pages.Financial.PayOutMoney_AutomationFieldNext;
+            this.LabelModalAutomation3.Text = Resources.Pages.Financial.PayOutMoney_AutomationFieldNext;
 
             this.LabelSidebarOptions.Text = Resources.Global.Sidebar_Options;
-
-            int previouslyOpenPayouts = GetOpenCount();
-            this.LabelOptionsShowPrevious.Text = String.Format(Resources.Pages.Financial.PayOutMoney_OptionShowOpen, previouslyOpenPayouts);
             this.LabelOptionsShowOcr.Text = Resources.Pages.Financial.PayoutMoney_OptionShowOcr;
         }
 
-        private int GetOpenCount()
-        {
-            return Payouts.ForOrganization (CurrentOrganization).Count;
-        }
 
         [WebMethod]
         public static ConfirmPayoutResult ConfirmPayout (string protoIdentity)
         {
-            protoIdentity = HttpUtility.UrlDecode (protoIdentity);
-
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
                 !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
             {
-                throw new SecurityException ("Insufficient privileges for operation");
+                throw new UnauthorizedAccessException("Insufficient privileges for operation");
             }
 
-            ConfirmPayoutResult result = new ConfirmPayoutResult();
-
-            Payout payout = Payout.CreateFromProtoIdentity (authData.CurrentUser, protoIdentity);
-            PWEvents.CreateEvent (EventSource.PirateWeb, EventType.PayoutCreated,
-                authData.CurrentUser.Identity, 1, 1, 0, payout.Identity,
-                protoIdentity);
+            Payout payout = Payout.CreateFromProtoIdentity (authData.CurrentUser, protoIdentity); // TODO: Catch ConcurrencyException
 
             // Create result and return it
 
-            result.AssignedId = payout.Identity;
-            result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
-                payout.Recipient);
-
-            return result;
+            return new ConfirmPayoutResult
+            {
+                AssignedId = payout.Identity,
+                DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
+                    payout.Recipient),
+                Success = true
+            };
         }
 
         [WebMethod]
-        public static UndoPayoutResult UndoPayout (int databaseId)
+        public static AjaxCallResult UndoPayout (int databaseId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
                 !authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials)))
             {
-                throw new SecurityException("Insufficient privileges for operation");
+                throw new UnauthorizedAccessException("Insufficient privileges for operation");
             }
 
-            UndoPayoutResult result = new UndoPayoutResult();
             Payout payout = Payout.FromIdentity (databaseId);
 
             if (!payout.Open)
             {
-                // this payout has already been settled, or picked up for settling
+                // this payout has already been settled, or picked up for settling. This is a concurrency error, detected before actually trying to change it.
 
-                result.Success = false;
-                result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
-                    databaseId);
-
-                return result;
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
+                        databaseId)
+                };
             }
 
-            payout.UndoPayout();
+            payout.UndoPayout();   // TODO: catch ConcurrencyException
 
-            result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId);
-            result.Success = true;
+            return new AjaxCallResult
+            {
+                DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId),
+                Success = true
+            };
+        }
+
+        [WebMethod]
+        public static PaymentTransferInfoResult GetPaymentTransferInfo(string prototypeId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            // TODO: Authentication check
+
+            string[] payoutComponents = prototypeId.Split('|');
+
+            if (payoutComponents.Length < 1)
+            {
+                throw new InvalidOperationException("Prototype ID can't be empty");
+            }
+
+            PaymentTransferInfo info = new PaymentTransferInfo();
+
+            // Some payouts are composites of multiple objects, but all these will share the same
+            // payout data, so we can safely use just the first object to determine payment
+            // target information
+            //
+            // with one exception -- we need to determine the amount by adding all the objects
+            // together, if applicable
+
+            DateTime paymentDueBy = Constants.DateTimeLow;
+
+            switch (Char.ToUpperInvariant(payoutComponents[0][0]))
+            {
+                case 'C': // expense claim
+                    info =
+                        PaymentTransferInfo.FromObject(
+                            ExpenseClaim.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1))),
+                            new Money(GetSumCentsTotal(prototypeId), authData.CurrentOrganization.Currency));
+                    break;
+                case 'A': // cash advance (payout or payback, same logic either way)
+                    info =
+                        PaymentTransferInfo.FromObject(
+                            CashAdvance.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1))),
+                            new Money(GetSumCentsTotal(prototypeId), authData.CurrentOrganization.Currency));
+                    break;
+                case 'S': // salary
+                    Salary salary = Salary.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1)));
+                    info = PaymentTransferInfo.FromObject(salary);
+                    paymentDueBy = salary.PayoutDate;
+                    break;
+                case 'I': // inbound invoice
+                    InboundInvoice invoice = InboundInvoice.FromIdentity(Int32.Parse(payoutComponents[0].Substring(1)));
+                    info = PaymentTransferInfo.FromObject(invoice);
+                    paymentDueBy = invoice.DueDate;
+                    break;
+                default:
+                    throw new NotImplementedException("Unrecognized payment type");
+            }
+
+            PaymentTransferInfoResult result = new PaymentTransferInfoResult
+            {
+                Success = true,
+                CurrencyAmount = info.CurrencyAmount,
+                DisplayMessage = string.Empty,
+                Recipient = info.Recipient,
+                Reference = info.Reference,
+                TransferMethod = info.LocalizedPaymentMethodName
+            };
+
+            if (paymentDueBy < Constants.DateTimeLowThreshold)
+            {
+                result.DueBy = Resources.Global.Global_ASAP;
+            }
+            else
+            {
+                DateTime nowUtc = DateTime.UtcNow;
+
+                if (paymentDueBy.Year != nowUtc.Year || paymentDueBy < nowUtc.AddMonths(-3))
+                {
+                    result.DueBy = paymentDueBy.ToString(Resources.Global.Global_DateFormatLongSansWeekday);
+                }
+                else
+                {
+                    result.DueBy = paymentDueBy.ToString(Resources.Global.Global_DateFormatLongDateMonth);
+                }
+
+                if (paymentDueBy < nowUtc.AddDays(-1))
+                {
+                    result.DueBy += " - " + Resources.Pages.Financial.PayOutMoney_PaymentLate;
+                }
+            }
+
+            List<string> listTransferMethodLabels = new List<string>();
+            List<string> listTransferMethodData = new List<string>();
+
+            foreach (string label in info.LocalizedPaymentInformation.Keys)
+            {
+                listTransferMethodLabels.Add(HttpUtility.HtmlEncode(label));
+                listTransferMethodData.Add(HttpUtility.HtmlEncode(info.LocalizedPaymentInformation [label]));
+            }
+
+            result.TransferMethodLabels = listTransferMethodLabels.ToArray();
+            result.TransferMethodData = listTransferMethodData.ToArray();
+            result.OcrData = info.OcrData;  // can be null and that's ok
+
             return result;
         }
 
-        public struct ConfirmPayoutResult
+
+        static private Int64 GetSumCentsTotal(string prototypeId)
+        {
+            string[] payoutComponents = prototypeId.Split('|');
+
+            Int64 amountCentsTotal = 0;
+
+            foreach (string payoutComponent in payoutComponents)
+            {
+                switch (payoutComponent[0])
+                {
+                    case 'C':
+                        amountCentsTotal += ExpenseClaim.FromIdentity(Int32.Parse(payoutComponent.Substring(1))).AmountCents;
+                        break;
+                    case 'A':  // Advance pay-OUT
+                        amountCentsTotal += CashAdvance.FromIdentity(Int32.Parse(payoutComponent.Substring(1))).AmountCents;
+                        break;
+                    case 'a':  // Advance pay-BACK
+                        amountCentsTotal -= CashAdvance.FromIdentity(Int32.Parse(payoutComponent.Substring(1))).AmountCents;
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+
+            return amountCentsTotal;
+        }
+
+        public class ConfirmPayoutResult: AjaxCallResult
         {
             public int AssignedId;
-            public string DisplayMessage;
         };
 
-        public struct UndoPayoutResult
+        public class PaymentTransferInfoResult : AjaxCallResult
         {
-            public string DisplayMessage;
-            public bool Success;
+            public string Recipient { get; set; }
+            public string CurrencyAmount { get; set; }
+            public string DueBy { get; set; }
+            public string Reference { get; set; }
+            public string TransferMethod { get; set; }
+            public string[] TransferMethodLabels { get; set; }
+            public string[] TransferMethodData { get; set; }
+            public string[] OcrData { get; set; }
+        }
+
+
+        // --------- Localization strings UX-side ------------
+
+        public string Localized_ConfirmDialog_ConfirmPaid
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.PayOutMoney_Modal_ConfirmPaid); }
+        }
+
+        public string Localized_IconTooltip_Barcode
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Global.IconTooltip_Barcode_Scanning); }
         }
     }
 }

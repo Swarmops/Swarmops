@@ -37,25 +37,54 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 while (year >= firstYear)
                 {
-                    this.DropYears.Items.Add (year.ToString (CultureInfo.InvariantCulture));
+                    this.DropYears.Items.Add(year.ToString(CultureInfo.InvariantCulture));
+                    this.DropGeneralYears.Items.Add(year.ToString(CultureInfo.InvariantCulture));
+                    this.DropHotwalletYears.Items.Add(year.ToString(CultureInfo.InvariantCulture));
                     year--;
                 }
 
                 for (int monthNumber = 1; monthNumber <= 12; monthNumber++)
                 {
-                    this.DropMonths.Items.Add (new ListItem (new DateTime (2014, monthNumber, 1).ToString ("MMM"),
-                        monthNumber.ToString (CultureInfo.InvariantCulture))); // will autolocalize
+                    this.DropMonths.Items.Add(new ListItem(new DateTime(2014, monthNumber, 1).ToString("MMM"),
+                        monthNumber.ToString(CultureInfo.InvariantCulture))); // will autolocalize
+                    this.DropGeneralMonths.Items.Add(new ListItem(new DateTime(2014, monthNumber, 1).ToString("MMM"),
+                        monthNumber.ToString(CultureInfo.InvariantCulture))); // will autolocalize
+                    this.DropHotwalletMonths.Items.Add(new ListItem(new DateTime(2014, monthNumber, 1).ToString("MMM"),
+                        monthNumber.ToString(CultureInfo.InvariantCulture))); // will autolocalize
                 }
 
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q1, "21"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q1, "21"));
                 // quarters and all-year are coded as fake month numbers
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q2, "22"));
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q3, "23"));
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q4, "24"));
-                this.DropMonths.Items.Add (new ListItem (Global.Global_AllYear, "31"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q2, "22"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q3, "23"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q4, "24"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_AllYear, "31"));
 
-                this.DropYears.SelectedIndex = 0;
-                this.DropMonths.SelectedValue = today.Month.ToString (CultureInfo.InvariantCulture);
+                this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_Q1, "21"));
+                // quarters and all-year are coded as fake month numbers
+                this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_Q2, "22"));
+                this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_Q3, "23"));
+                this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_Q4, "24"));
+                this.DropGeneralMonths.Items.Add(new ListItem(Global.Global_AllYear, "31"));
+
+                this.DropHotwalletMonths.Items.Add(new ListItem(Global.Global_Q1, "21"));
+                // quarters and all-year are coded as fake month numbers
+                this.DropHotwalletMonths.Items.Add(new ListItem(Global.Global_Q2, "22"));
+                this.DropHotwalletMonths.Items.Add(new ListItem(Global.Global_Q3, "23"));
+                this.DropHotwalletMonths.Items.Add(new ListItem(Global.Global_Q4, "24"));
+                this.DropHotwalletMonths.Items.Add(new ListItem(Global.Global_AllYear, "31"));
+
+                DateTime lastMonth = today.AddMonths(-1);
+
+                this.DropYears.SelectedValue = 
+                this.DropGeneralYears.SelectedValue =
+                this.DropHotwalletYears.SelectedValue =
+                    lastMonth.Year.ToString(CultureInfo.InvariantCulture);
+
+                this.DropMonths.SelectedValue =
+                this.DropGeneralMonths.SelectedValue =
+                this.DropHotwalletMonths.SelectedValue =
+                    lastMonth.Month.ToString(CultureInfo.InvariantCulture);
             }
 
             RegisterControl (EasyUIControl.DataGrid | EasyUIControl.Tree);
@@ -67,20 +96,31 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             this.LabelHeaderInspect.Text = Resources.Pages.Ledgers.InspectLedgers_Header_Inspect;
             this.LabelHeaderInspectFor.Text = Resources.Pages.Ledgers.InspectLedgers_Header_For;
-            this.LabelGridHeaderAction.Text = Global.Global_Action;
-            this.LabelGridHeaderBalance.Text = Global.Ledgers_Balance;
-            this.LabelGridHeaderDateTime.Text = Global.Global_Timestamp;
-            this.LabelGridHeaderDeltaNegative.Text = Global.Ledgers_Credit;
-            this.LabelGridHeaderDeltaPositive.Text = Global.Ledgers_Debit;
-            this.LabelGridHeaderDescription.Text = Global.Global_Description;
-            this.LabelGridHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
+            this.LabelHeaderGeneral.Text = Resources.Pages.Ledgers.InspectLedgers_GeneralLedger;
+            this.LabelHeaderHotwallet.Text = Resources.Pages.Ledgers.InspectLedgers_Header_Hotwallet;
 
+            this.LabelGridHeaderAction.Text = this.LabelTreeHeaderAction.Text = Global.Global_Action;
+            this.LabelGridHeaderBalance.Text = this.LabelTreeHeaderBalance.Text = Global.Ledgers_Balance;
+            this.LabelGridHeaderDateTime.Text = this.LabelTreeHeaderDateTime.Text = Global.Global_Timestamp;
+            this.LabelGridHeaderDeltaNegative.Text = this.LabelTreeHeaderDeltaNegative.Text = Global.Ledgers_Credit;
+            this.LabelGridHeaderDeltaPositive.Text = this.LabelTreeHeaderDeltaPositive.Text = Global.Ledgers_Debit;
+            this.LabelGridHeaderDescription.Text = Global.Global_Description;
+            this.LabelTreeHeaderDescriptionAccount.Text = Resources.Pages.Ledgers.InspectLedgers_Detail;
+            this.LabelGridHeaderId.Text = this.LabelTreeHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
             
             this.LabelGridHeaderAccountName.Text = Resources.Pages.Ledgers.InspectLedgers_AccountName;
             this.LabelGridHeaderDateTimeEntered.Text = Resources.Pages.Ledgers.InspectLedgers_LoggedDate;
             this.LabelGridHeaderDeltaNegative2.Text = Global.Ledgers_Credit;
             this.LabelGridHeaderDeltaPositive2.Text = Global.Ledgers_Debit;
             this.LabelGridHeaderInitials.Text = Resources.Pages.Ledgers.InspectLedgers_LoggedByInitials;
+
+            this.LabelHotwalletHeaderDateTime.Text = Global.Global_Timestamp;
+            this.LabelHotwalletHeaderDescription.Text = Global.Global_Description;
+            this.LabelHotwalletHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
+            this.LabelHotwalletHeaderPresentationCurrency.Text = CurrentOrganization.Currency.DisplayCode;
+            this.LabelHotwalletHeaderMicrocoin.Text = Currency.BitcoinCash.DisplayCode;
+            this.LabelHotwalletHeaderBalance.Text = Resources.Pages.Ledgers.BitcoinHotwallet_BalanceMicrocoins;
+            this.LabelHotwalletActions.Text = Global.Global_Action;
 
             this.LabelFlagNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_FlaggingNotAvailable;
 
@@ -155,8 +195,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
-            Double amountFloat = Double.Parse (amountString);
-            Int64 amountCents = (Int64) (amountFloat*100.0);
+            Int64 amountCents = Formatting.ParseDoubleStringAsCents(amountString);
 
             if (account.OrganizationId != authData.CurrentOrganization.Identity)
             {
@@ -235,7 +274,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         {
                             subResults.Add ("<strong>" +
                                             String.Format (Global.Financial_ExpenseClaimSpecificationWithClaimer,
-                                                payout.DependentExpenseClaims[0].Identity,
+                                                payout.DependentExpenseClaims[0].OrganizationSequenceId,
                                                 HttpUtility.HtmlEncode (payout.DependentExpenseClaims[0].Claimer.Name)) +
                                             ".</strong>");
                         }
@@ -279,7 +318,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         {
                             subResults.Add ("<strong>" +
                                             String.Format (Global.Financial_CashAdvanceLongSpecificationWithRecipient,
-                                                advance0.Identity, advance0.Person.Name) + ".</strong>");
+                                                advance0.OrganizationSequenceId, advance0.Person.Name) + ".</strong>");
                         }
                         else
                         {
@@ -302,7 +341,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         InboundInvoice invoice = payout.DependentInvoices[0];
 
                         subResults.Add ("<strong>" + String.Format (
-                            Global.Financial_InboundInvoiceSpecificationWithSender, invoice.Identity,
+                            Global.Financial_InboundInvoiceSpecificationWithSender, invoice.OrganizationSequenceId,
                             invoice.Supplier) + "</strong>");
 
                         subValidations.Add (GetObjectDetails (invoice));
@@ -367,7 +406,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (FinancialValidation validation in validations)
             {
-                if (validation.ValidationType == FinancialValidationType.Attestation)
+                if (validation.ValidationType == FinancialValidationType.Approval)
                 {
                     result += String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_AttestedByX + ". ",
                         validation.Person.Canonical,
@@ -473,8 +512,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException();
             }
 
-            double amount = Double.Parse(amountString);
-            Int64 amountCents = (Int64) (amount *100);
+            Int64 amountCents = Formatting.ParseDoubleStringAsCents(amountString);
 
             DateTime txTime = DateTime.Parse(dateTimeString);
 

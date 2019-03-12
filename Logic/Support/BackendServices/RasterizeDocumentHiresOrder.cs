@@ -22,7 +22,6 @@ namespace Swarmops.Logic.Support.BackendServices
 
         public override void Run()
         {
-            Document document = Document.FromIdentity(this.DocumentId);
             HasWorkerThread = true;
             WorkerThread = new Thread(LongRun);
             WorkerThread.Start(this);
@@ -30,24 +29,29 @@ namespace Swarmops.Logic.Support.BackendServices
 
         private static void LongRun(object orderObject)
         {
-            RasterizeDocumentHiresOrder order = (RasterizeDocumentHiresOrder) orderObject;
-            Document document = Document.FromIdentity(order.DocumentId);
+            RasterizeDocumentHiresOrder order = null;
             try
             {
+                order = (RasterizeDocumentHiresOrder)orderObject;
+                Document document = Document.FromIdentity(order.DocumentId);
                 PdfProcessor.Rerasterize((Document)document, PdfProcessor.PdfProcessorOptions.HighQuality | PdfProcessor.PdfProcessorOptions.ForceOrphans);
+                order.Close();
             }
             catch (Exception exception)
             {
-                order.ThrewException(exception);   
+                order?.ThrewException(exception);
             }
-            order.Close();
-            order.HasTerminated = true;
+
+            if (order != null)
+            {
+                order.HasTerminated = true;
+            }
         }
 
         public override void Terminate()
         {
             
         }
-        int DocumentId { get; set; }
+        public int DocumentId { get; set; }
     }
 }

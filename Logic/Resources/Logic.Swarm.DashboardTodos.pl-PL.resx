@@ -121,15 +121,38 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>Ustaw Adres Płatności Gotówkowej Bitcoin</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>Ustaw swój adres Bitcoin Cash do wypłat z [InstallationName] (zaczyna się od "bitcoincash"):</value>
+  </data>
+  <data name="Payout_Many" xml:space="preserve">
+    <value>Ustal {0} wypłaty</value>
+    <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
+  </data>
+  <data name="Payout_One" xml:space="preserve">
+    <value>Ustal jedną wypłatę</value>
+  </data>
+  <data name="Payout_Overdue_Many" xml:space="preserve">
+    <value>Ureguluj {0} zaległe wypłaty</value>
+  </data>
+  <data name="Payout_Overdue_One" xml:space="preserve">
+    <value>Ureguluj jedną zaległą wypłatę</value>
+  </data>
+  <data name="Payout_Urgent_Many" xml:space="preserve">
+    <value>Ustal {0} pilne wypłaty</value>
+  </data>
+  <data name="Payout_Urgent_One" xml:space="preserve">
+    <value>Ustal jedną pilną zapłatę</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>Włącz weryfikację dwuetapową</value>
+  </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>Sprawdź Poprawność Roszczeń {0}</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>Sprawdź Poprawność Roszczenia #{0}</value>
+  </data>
 </root>

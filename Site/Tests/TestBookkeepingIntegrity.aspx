@@ -4,8 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
 <br/>
-<div class="entryLabelsAdmin" style="width:150px">Organization<br/>Year<br/>&nbsp;<br/>EOY Balance<br/>EOLY Owncapital<br/>EOCY Owncapital<br/>Diff<br/>Actual OC Delta<br/>Results-all<br/>Results-noted</div>
-<div class="entryFieldsAdmin">
+<div class="entry-labels-admin" style="width:150px">Organization<br/>Year<br/>&nbsp;<br/>EOY Balance<br/>EOLY Owncapital<br/>EOCY Owncapital<br/>Diff<br/>Actual OC Delta<br/>Results-all<br/>Results-noted</div>
+<div class="data-entry-fields-admin">
     <asp:Label ID="LabelThisOrganization" runat="server" /><br/>
     <asp:DropDownList runat="server" ID="DropYear" AutoPostBack="true" OnSelectedIndexChanged="DropYear_SelectedIndexChanged" />&nbsp;<br/>&nbsp;<br/>
     <asp:Label ID="LabelEoyBalance" runat="server" /><br/>

@@ -5,6 +5,7 @@ using System.Text;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
@@ -54,7 +55,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             List<string> lines = new List<string>();
 
             string hasDoxString =
-                "<img src='/Images/Icons/iconshock-search-256px.png' onmouseover=\\\"this.src='/Images/Icons/iconshock-search-hot-256px.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-search-256px.png';\\\" baseid='{0}' class='LocalViewDox' style='cursor:pointer' height='20' width='20' />";
+                "<img data-txid='{0}' class='LocalViewDox action-icon' />" +
+                "<img data-docid='{1}' data-docname=\\\"{2}\\\" class='LocalDownloadDox action-icon' />";
 
             foreach (VatReportItem item in items)
             {
@@ -88,10 +90,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     include = true;
                 }
 
-                if (transaction.Dependency != null)
-                {
+                Documents documents = Documents.ForObject(transaction.Dependency ?? transaction);
 
-                    element += String.Format(",\"dox\":\"" + hasDoxString + "\"", transaction.Identity);
+                if (documents.Count > 0)
+                {
+                    element += String.Format(",\"dox\":\"" + hasDoxString + "\"", transaction.Identity, documents[0].Identity, CurrentOrganization.Name + " - " + report.Description + " - " + Resources.Global.Financial_TransactionIdShort + transaction.OrganizationSequenceId.ToString("N0"));
                 }
 
                 if (include)

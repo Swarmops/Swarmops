@@ -364,4 +364,12 @@
     <value>Bank Accounts</value>
     <comment>Note the plural form</comment>
   </data>
+  <data name="Cost_BusinessServices" xml:space="preserve">
+    <value>Business Services</value>
+    <comment>Like paperwork services, fruit delivery, travel booking, anything that isn't strictly office maintenance</comment>
+  </data>
+  <data name="Cost_MaintenanceDonations" xml:space="preserve">
+    <value>Maintenance Donations</value>
+    <comment>This is donations toward maintenance of the Swarmops / Backoffice.Cash codebase and data.</comment>
+  </data>
 </root>

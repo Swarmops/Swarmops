@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
 using Swarmops.Common.Enums;
@@ -27,6 +28,29 @@ namespace Swarmops.Logic.Support
             {
                 SwarmDb.GetDatabaseForWriting().SetDocumentServerFileName (Identity, value);
                 base.ServerFileName = value;
+            }
+        }
+
+        public new string ClientFileName
+        {
+            get
+            {
+                string input = base.ClientFileName;
+                Regex regex = new Regex("{{LOCPAGE\\-(?<current>[0-9]+)\\-(?<total>[0-9]+)}}");
+
+                Match match = regex.Match(input);
+                if (match.Success)
+                {
+                    input = input.Substring(0, input.IndexOf("{{LOCPAGE", StringComparison.InvariantCulture));
+                    int currentPage = Int32.Parse(match.Groups["current"].Value);
+                    int totalPages = Int32.Parse(match.Groups["total"].Value);
+
+                    return input + GetLocalizedPageCounter(currentPage, totalPages);
+                }
+
+                // No localization
+
+                return input;
             }
         }
 
@@ -58,6 +82,34 @@ namespace Swarmops.Logic.Support
             }
         }
 
+        public static string GetLocalizedPageCounter(int currentPage, int totalPages)
+        {
+            if (currentPage == 1 && totalPages == 1)
+            {
+                // Single page
+
+                return Resources.Logic_Support_Document.PageSingle;
+            }
+
+            if (currentPage == 1)
+            {
+                // First page of X
+
+                return String.Format(Resources.Logic_Support_Document.PageOneOfX, totalPages);
+            }
+
+            if (currentPage == totalPages)
+            {
+                // Last page of X
+
+                return String.Format(Resources.Logic_Support_Document.LastPageOfX, totalPages);
+            }
+
+            // Page X of Y
+
+            return String.Format(Resources.Logic_Support_Document.PageXofY, currentPage, totalPages);
+        }
+
         public static string StorageRoot
         {
             get
@@ -70,6 +122,47 @@ namespace Swarmops.Logic.Support
                 {
                     return "/var/lib/swarmops/upload/"; // production location on Debian installation
                 }
+            }
+        }
+
+        public static string DailyStorageFolder
+        {
+            get
+            {
+                DateTime utcNow = DateTime.UtcNow;
+
+                string root = Document.StorageRoot;
+
+                string dayFolder = utcNow.Year.ToString("0000") + Path.DirectorySeparatorChar +
+                    utcNow.Month.ToString("00") + Path.DirectorySeparatorChar +
+                    utcNow.Day.ToString("00");
+
+                string wholePath = root + dayFolder;
+
+                if (!Directory.Exists(wholePath))
+                {
+                    Directory.CreateDirectory(wholePath);
+
+                    // Set folder permissions to rwxrwxrwx if live environment
+                    // (backend must be able to create new files)
+
+                    if (!Debugger.IsAttached) // check if live environment
+                    {
+                        Syscall.chmod(wholePath,
+                            FilePermissions.S_IRWXU | FilePermissions.S_IRWXO | FilePermissions.S_IRWXG);
+
+                        // Just to be sure, also set the parent (month) and grandparent (year) permissions
+                        // to rwxr-xr-x (backend must be able to see traverse to here)
+
+                        Syscall.chmod(wholePath.Substring(0, wholePath.Length - 3),  // strip the last "/dd" from the path, leaving "/storageroot/yyyy/mm"
+                            FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IXGRP | FilePermissions.S_IROTH | FilePermissions.S_IXOTH);
+
+                        Syscall.chmod(wholePath.Substring(0, wholePath.Length - 6), // strip the "/mm/dd" from the path, leaving "/storageroot/yyyy"
+                            FilePermissions.S_IRWXU | FilePermissions.S_IRGRP | FilePermissions.S_IXGRP | FilePermissions.S_IROTH | FilePermissions.S_IXOTH);
+                    }
+                }
+
+                return wholePath + Path.DirectorySeparatorChar;
             }
         }
 
@@ -143,6 +236,22 @@ namespace Swarmops.Logic.Support
             else if (foreignObject is ExternalActivity)
             {
                 return DocumentType.ExternalActivityPhoto;
+            }
+            else if (foreignObject is Payout)
+            {
+                return DocumentType.Payout;
+            }
+            else if (foreignObject is PaymentGroup)
+            {
+                return DocumentType.PaymentGroup;
+            }
+            else if (foreignObject is Salary)
+            {
+                return DocumentType.Salary;
+            }
+            else if (foreignObject is FinancialAccountDocument)
+            {
+                return DocumentType.FinancialAccountDocument;
             }
             else
             {

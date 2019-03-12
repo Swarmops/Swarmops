@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SendMassMessage_Error_EmptyBody" xml:space="preserve">
+    <value>O yẹ ki o kọ ara ifiranṣẹ ṣaaju fifi ifiranṣẹ rẹ ranṣẹ.</value>
+  </data>
+  <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
+    <value>O yẹ ki o kọ ori ọrọ ifiranṣẹ lati lọ pẹlu ifiranṣẹ rẹ.</value>
+  </data>
+  <data name="SendMassMessage_Geography" xml:space="preserve">
+    <value>Ti o wa ni</value>
+  </data>
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>Ifiranṣẹ rẹ</value>
+  </data>
+  <data name="SendMassMessage_Info" xml:space="preserve">
+    <value>Fi ifiranṣẹ ransẹ si akojọ awọn eniyan kan ni ajọ naa. O le fi ifiranṣẹ naa ranṣẹ nipasẹ meeli (o dara fun awọn iwe iroyin ati alaye gbogbogbo) tabi si awọn foonu wọn (o ni ijawọ pupọ, atipe o tun gbowolori diẹ).</value>
+  </data>
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>Tẹ ifiranṣẹ rẹ nibi. Awọn aami idaraasi bii *bold*, _italic_, ==headers== ati iru rẹ naa le jẹ lilo. Awọn ila tuntun meji ma n bẹrẹ ìpínrọ tuntun. Meeli naa ma jẹ fifiranṣẹ bi onipo-meji cleartext ati HTML.</value>
+  </data>
+  
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>Kosi Awọn olugba|Olugba kan|{0:N0} Awọn olugba</value>
+    <comment>Vertical bar divides none|one|many</comment>
+  </data>
+  <data name="SendMassMessage_RecipientType" xml:space="preserve">
+    <value>Fi ifiranṣẹ ọlọpọ kan ranṣẹ si ẹni gbogbo</value>
+  </data>
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>O nlo Sandbox naa lọwọlọwọ. Nibo ni o ma fẹ ki ifiranṣẹ idanwo lọ?</value>
+  </data>
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>Firansẹ</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>Ifiranṣẹ rẹ ti jẹ pinpin bayi fun awọn olugba. O ma gba ifitonileti nigbati itan kaakiri ba pari.</value>
+  </data>
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>Ori ọrọ</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
+  </data>
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>Idanwo</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>Ifiranṣẹ naa ti jẹ fifiranṣẹ si ọ, ki o le ri bi o se ri ki o to jade saaye.</value>
+  </data>
+  <data name="SendMassMessage_Title" xml:space="preserve">
+    <value>Fi Ifiranṣẹ ọlọpọ ranṣẹ</value>
+  </data>
+</root>

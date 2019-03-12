@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.IO;
+using System.Linq;
 
 namespace System.Web.ExtensionMethods
 {
@@ -89,6 +90,16 @@ namespace System.Web.ExtensionMethods
             {
                 reader.BaseStream.Position = 0;
             }
+        }
+    }
+
+    public static class StringExtensions
+    {
+        public static string RemoveAllWhitespace(this string input)
+        {
+            return new string(input.ToCharArray()
+                    .Where(c => !Char.IsWhiteSpace(c))
+                    .ToArray());
         }
     }
 }

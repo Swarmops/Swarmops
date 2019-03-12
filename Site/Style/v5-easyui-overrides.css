@@ -13,6 +13,13 @@
     border: 2px inset;
 }
 
+/* ...except when in header dropdown */
+
+h2 .textbox .textbox-text {
+    border: none;
+    background: transparent !important; /* important overrides element-level styling from easyui */
+}
+
 /* combo inner, add some distance to dropdown arrow */
 
 select:not(.comboperson)+span.textbox.combo > .textbox-text {
@@ -167,6 +174,10 @@ div.panel.datagrid > div.datagrid-wrap.panel-body {
 
 .datagrid-row-over, .datagrid-row-selected:hover {
     background-color: #f0f4ff; /* copy from easyui - may want to customize later */
+}
+
+.datagrid-body {
+    width: 100% !important;  /* this is miscalculated in at least Chrome to a bad pixel value */
 }
 
 /* TREE */

@@ -210,9 +210,24 @@ namespace Swarmops.Logic.Structure
         {
             get
             {
+                FinancialAccounts result = new FinancialAccounts();
+
+                FinancialAccounts allAssets = Logic.Financial.FinancialAccounts.ForOrganization(this, FinancialAccountType.Asset);
+
+                foreach (FinancialAccount account in allAssets)
+                {
+                    if (account.AutomationProfileId != 0)
+                    {
+                        result.Add(account);
+                    }
+                }
+
+                return result;
+
                 // HACK: MUST FETCH THIS FROM ACTUAL ACCOUNTS
                 // HACK HACK HACK HACK HACK HACK
 
+                /*
                 if (PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE) && OrganizationId == 1)
                 {
                     FinancialAccounts result = new FinancialAccounts();
@@ -236,7 +251,7 @@ namespace Swarmops.Logic.Structure
                     return result;
                 }
 
-                throw new NotImplementedException();
+                throw new NotImplementedException();*/
             }
         }
 
@@ -495,6 +510,11 @@ namespace Swarmops.Logic.Structure
                 FinancialAccount.Create(this, "[LOC]Asset_TransfersInProgress", FinancialAccountType.Asset,
                     shortTermAssets);
 
+            FinancialAccounts [OrganizationFinancialAccountType.AssetsBitcoinHot] =
+                FinancialAccount.Create(this, "[LOC]Asset_BitcoinHot",
+                FinancialAccountType.Asset, null);
+
+
             FinancialAccounts[OrganizationFinancialAccountType.CostsAllocatedFunds] =
                 FinancialAccount.Create (this, "[LOC]Cost_AllocatedFunds", FinancialAccountType.Cost, null);
             FinancialAccounts[OrganizationFinancialAccountType.CostsInfrastructure] =
@@ -532,6 +552,8 @@ namespace Swarmops.Logic.Structure
             FinancialAccount.Create (this, "[LOC]Cost_OfficeSpace", FinancialAccountType.Cost, officeMaster);
             FinancialAccount.Create(this, "[LOC]Cost_OfficeEquipment", FinancialAccountType.Cost, officeMaster);
             FinancialAccount.Create(this, "[LOC]Cost_OfficeSupplies", FinancialAccountType.Cost, officeMaster);
+
+            FinancialAccount.Create(this, "[LOC]Cost_BusinessServices", FinancialAccountType.Cost, null);
 
             FinancialAccount.Create (this, "[LOC]Cost_Unforeseen", FinancialAccountType.Cost, null);
             FinancialAccount.Create (this, "[LOC]Cost_MarketingCampaigns", FinancialAccountType.Cost, null);
@@ -587,6 +609,15 @@ namespace Swarmops.Logic.Structure
             {
                 FinancialAccounts[OrganizationFinancialAccountType.CostsBitcoinFees] =
                     FinancialAccount.Create(this, "[LOC]Cost_BitcoinFees", FinancialAccountType.Cost, FinancialAccounts.CostsBankFees);
+            }
+        }
+
+        public void EnsureMaintenanceDonationAccountExists()
+        {
+            if (FinancialAccounts[OrganizationFinancialAccountType.CostsBitcoinFees] == null)
+            {
+                FinancialAccounts[OrganizationFinancialAccountType.CostsBitcoinFees] =
+                    FinancialAccount.Create(this, "[LOC]Cost_MaintenanceDonations", FinancialAccountType.Cost, FinancialAccounts.CostsBankFees);
             }
         }
 
@@ -686,6 +717,20 @@ namespace Swarmops.Logic.Structure
         public bool HasOpenLedgers
         {
             get { return !String.IsNullOrEmpty(OpenLedgersDomain); }
+        }
+
+        public Int64 MaintenanceDonationLevelPpm
+        {
+            get
+            {
+                return
+                    ObjectOptionalData.ForObject(this)
+                        .GetOptionalDataInt64(ObjectOptionalDataType.OrgMaintenanceDonationLevel);
+            }
+            set
+            {
+                ObjectOptionalData.ForObject(this).SetOptionalDataInt64(ObjectOptionalDataType.OrgMaintenanceDonationLevel, value);
+            }
         }
 
         #endregion

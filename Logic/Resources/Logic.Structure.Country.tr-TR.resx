@@ -117,36 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Country_AT" xml:space="preserve">
+    <value>Avusturya</value>
+  </data>
+  <data name="Country_BE" xml:space="preserve">
+    <value>Belçika</value>
+  </data>
+  <data name="Country_BG" xml:space="preserve">
+    <value>Bulgaristan</value>
+  </data>
+  <data name="Country_CH" xml:space="preserve">
+    <value>İsviçre</value>
+  </data>
+  <data name="Country_CY" xml:space="preserve">
+    <value>Kıbrıs</value>
+  </data>
+  <data name="Country_CZ" xml:space="preserve">
+    <value>Çek Cumhuriyeti</value>
+  </data>
+  <data name="Country_DE" xml:space="preserve">
+    <value>Almanya</value>
+  </data>
+  <data name="Country_DK" xml:space="preserve">
+    <value>Danimarka</value>
+  </data>
+  <data name="Country_EE" xml:space="preserve">
+    <value>Estonya</value>
+  </data>
+  <data name="Country_ES" xml:space="preserve">
+    <value>İspanya</value>
+  </data>
+  <data name="Country_FI" xml:space="preserve">
+    <value>Finlandiya</value>
+  </data>
+  <data name="Country_FR" xml:space="preserve">
+    <value>Fransa</value>
+  </data>
+  <data name="Country_GH" xml:space="preserve">
+    <value>Gana</value>
+  </data>
+  <data name="Country_GR" xml:space="preserve">
+    <value>Yunanistan</value>
+  </data>
+  <data name="Country_HR" xml:space="preserve">
+    <value>Hırvatistan</value>
+  </data>
+  <data name="Country_HU" xml:space="preserve">
+    <value>Macaristan</value>
+  </data>
+  <data name="Country_IE" xml:space="preserve">
+    <value>İrlanda</value>
+  </data>
+  <data name="Country_IS" xml:space="preserve">
+    <value>İzlanda</value>
+  </data>
+  <data name="Country_IT" xml:space="preserve">
+    <value>İtalya</value>
+  </data>
+  <data name="Country_LT" xml:space="preserve">
+    <value>Litvanya</value>
+  </data>
+  <data name="Country_LU" xml:space="preserve">
+    <value>Lüksemburg</value>
+  </data>
+  <data name="Country_LV" xml:space="preserve">
+    <value>Letonya</value>
+  </data>
+  <data name="Country_MT" xml:space="preserve">
+    <value>Malta</value>
+  </data>
+  <data name="Country_NL" xml:space="preserve">
+    <value>Hollanda</value>
+  </data>
+  <data name="Country_NO" xml:space="preserve">
+    <value>Norveç</value>
+  </data>
+  <data name="Country_PL" xml:space="preserve">
+    <value>Polonya</value>
+  </data>
+  <data name="Country_PT" xml:space="preserve">
+    <value>Portekiz</value>
+  </data>
+  <data name="Country_RO" xml:space="preserve">
+    <value>Romanya</value>
+  </data>
+  <data name="Country_SE" xml:space="preserve">
+    <value>İsveç</value>
+  </data>
+  <data name="Country_SI" xml:space="preserve">
+    <value>Slovenya</value>
+  </data>
+  <data name="Country_SK" xml:space="preserve">
+    <value>Slovakya</value>
+  </data>
+  <data name="Country_UK" xml:space="preserve">
+    <value>Birleşik Krallık</value>
+  </data>
 </root>

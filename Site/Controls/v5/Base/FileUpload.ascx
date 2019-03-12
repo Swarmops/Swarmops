@@ -76,7 +76,21 @@
                 <%= this.ClientUploadStartedCallback %>("<%= GuidString%>", "<%= Cookie%>");
                         
                 <% } %>
+            },
+            send: function(e, data) {
+                // call when upload actually begins -- for notify  
+            },
+            fail: function(e, data) {
+                // called on upload fail or upload abort -- for notify
+
+                <% if (!String.IsNullOrEmpty(this.ClientUploadFailedCallback))
+                    { %>
+                        
+                <%= this.ClientUploadFailedCallback %>("<%= GuidString%>", "<%= Cookie%>");
+                        
+                <% } %>
             }
+
         });
 
 
@@ -102,12 +116,21 @@
 
     }
 
+    function <%=this.ClientID%>_triggerUpload() {
+        $('#<%=this.ClientID %>_ButtonUploadHidden').click();
+    }
+
+    function <%=this.ClientID%>_clear() {
+        // Note that this only clears the UI -- the uploaded docs must be disassociated elsewhere
+        $('#<%=this.ClientID%>_DivUploadCount').empty();
+    }
+
 </script>
 
 <div class="stacked-input-control">
     <div id="<%=this.ClientID %>_DivMainControlArea">
         <div class="buttonUploadFile">
-            <input id="<%=this.ClientID %>_ButtonUploadVisible" class="ButtonSwarmopsUpload NoInputFocus" type="button" <%= this.HideTrigger? "style='display:none'" : string.Empty %> /><input id="<%=this.ClientID %>_ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" />
+            <input id="<%=this.ClientID %>_ButtonUploadVisible" class="ButtonSwarmopsUpload suppress-input-focus" type="button" <%= this.HideTrigger? "style='display:none'" : string.Empty %> /><input id="<%=this.ClientID %>_ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" />
         </div>
         <div style="height:36px;padding-top:4px;width:270px;margin-right:10px;float:right;border:none">
             <div id="<%=this.ClientID %>_DivUploadCount" style='display:none;overflow:hidden;height:'<%=this.DisplayCount < 9? 32: 64%>px'></div>

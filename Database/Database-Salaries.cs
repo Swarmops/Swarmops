@@ -184,17 +184,33 @@ namespace Swarmops.Database
         }
 
 
-        public void SetSalaryAttested (int salaryId, bool attested)
+        public void SetSalaryAttested(int salaryId, bool attested)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("SetSalaryAttested", connection);
+                DbCommand command = GetDbCommand("SetSalaryAttested", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName (command, "salaryId", salaryId);
-                AddParameterWithName (command, "attested", attested);
+                AddParameterWithName(command, "salaryId", salaryId);
+                AddParameterWithName(command, "attested", attested);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void SetSalaryOpen(int salaryId, bool attested)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetSalaryOpen", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "salaryId", salaryId);
+                AddParameterWithName(command, "open", attested);
 
                 command.ExecuteNonQuery();
             }

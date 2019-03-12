@@ -204,10 +204,6 @@
   
   
   
-  
-  
-  
-  
   <data name="UploadBankFiles_FileImportedHeader" xml:space="preserve">
     <value>Bestand succesvol geïmporteerd</value>
     <comment>Displayed as header after successful processing</comment>
@@ -228,6 +224,44 @@
     <value>Upload Bank bestanden</value>
     <comment>Displayed above main content.</comment>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

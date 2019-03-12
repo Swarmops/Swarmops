@@ -135,6 +135,9 @@
     <value>crwdns6556340:0{0}crwdne6556340:0</value>
     <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
   </data>
+  <data name="Signup_ActivationPassiveApplication" xml:space="preserve">
+    <value>crwdns6556793:0{0}crwdnd6556793:0{1}crwdne6556793:0</value>
+  </data>
   <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
     <value>crwdns6556341:0{0}crwdne6556341:0</value>
     <comment>{0} is the Regular Participant label for the org.</comment>
@@ -145,8 +148,23 @@
   <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
     <value>crwdns6556343:0crwdne6556343:0</value>
   </data>
+  <data name="Signup_ApplicationApproval" xml:space="preserve">
+    <value>crwdns6556794:0{0}crwdnd6556794:0{1}crwdne6556794:0</value>
+  </data>
+  <data name="Signup_ApplyingFor" xml:space="preserve">
+    <value>crwdns6556795:0{0}crwdnd6556795:0{1}crwdne6556795:0</value>
+  </data>
   <data name="Signup_DashboardMessage" xml:space="preserve">
     <value>crwdns6556367:0{0}crwdne6556367:0</value>
+  </data>
+  <data name="Signup_DefaultFirstPageText" xml:space="preserve">
+    <value>crwdns6556796:0crwdne6556796:0</value>
+  </data>
+  <data name="Signup_DefaultLastPageText" xml:space="preserve">
+    <value>crwdns6556797:0crwdne6556797:0</value>
+  </data>
+  <data name="Signup_DefaultSidebarText" xml:space="preserve">
+    <value>crwdns6556798:0crwdne6556798:0</value>
   </data>
   <data name="Signup_Error_MailExists" xml:space="preserve">
     <value>crwdns6556345:0crwdne6556345:0</value>
@@ -239,6 +257,9 @@
   </data>
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>crwdns6556359:0crwdne6556359:0</value>
+  </data>
+  <data name="Signup_Unsupported" xml:space="preserve">
+    <value>crwdns6563530:0crwdne6563530:0</value>
   </data>
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>crwdns6556360:0crwdne6556360:0</value>

@@ -4,14 +4,12 @@
 <%@ Register TagPrefix="Swarmops5" TagName="ModalDialog" Src="~/Controls/v5/Base/ModalDialog.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-    
-	<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
-    <script type="text/javascript" src="/Scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-    <script type="text/javascript" src="/Scripts/jquery.snipe.js"></script>
-	<link rel="stylesheet" type="text/css" href="/Scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    <Swarmops5:ExternalScripts Package="FancyBox" ID="ScriptFancyBox" runat="server"/>
+    <Swarmops5:DocumentDownloader ID="Downloader" runat="server"/>
     
     <script type="text/javascript">
         $(document).ready(function() {
+            $('#divTabs').tabs();
 
             $('#divActionAddTransaction').click(function() {
                 if (canWriteRows) {
@@ -55,12 +53,14 @@
                     // Enable various actions on icon
 
                     $('img.LocalIconFlag').click(function() {
-                        inspectingTransactionId = $(this).attr("txId");
+                        inspectingTransactionId = $(this).attr("data-txid");
                         onFlagTransaction("Add Tx Id here");
                     });
+
                     $('img.LocalIconInspect').click(function() {
-                        onInspectTransaction($(this).attr("txId"));
+                        onInspectTransaction($(this).attr("data-txid"));
                     });
+
                 }
             });
 
@@ -71,8 +71,7 @@
 
                     var heightBody = $('div#<%=this.DialogEditTx.ClientID%>_divModalCover table.datagrid-btable').height();
 
-                    if (heightBody != null) 
-                    {
+                    if (heightBody != null) {
                         $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-body').height(heightBody);
 
                         var heightHeaders = $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-header').height();
@@ -84,12 +83,105 @@
                 }
             });
 
+
+            $('#treeGeneralLedger').treegrid(
+                {
+                    onLoadSuccess: function() {
+                        $('div.treegrid').css('opacity', 1);
+
+                        $("td > div > span.tx-description").each(function() {
+                            var parent = $(this).parent();
+                            var grandParent = parent.parent();
+
+                            grandParent.attr("colSpan", 4);
+                            grandParent.next().remove(); // remove the three elements consumed by colspan=4
+                            grandParent.next().remove();
+                            grandParent.next().remove();
+                            parent.css("width", "401px"); // resizing outside of easyUI doesn't resize the encapsulating div
+
+                            grandParent.css("border-top", "1px solid #444");
+                            grandParent.siblings().css("border-top", "1px solid #444");
+                        });
+
+                        SwarmopsJS.fancyBoxInit("a.FancyBox_Gallery");
+
+                        $(".LocalViewDox").click(function() {
+                            $("a.FancyBox_Gallery[data-fancybox='" + $(this).attr("data-txid") + "']").first().click();
+                        });
+
+                        $(".LocalDownloadDox").click(function() {
+                            downloadDocument($(this).attr("data-docid"), $(this).attr("data-docname"));
+                        });
+
+                    }
+                }
+            );
+
+            $('#gridHotwallet').datagrid(
+            {
+                onLoadSuccess: function() {
+                    $('div.datagrid').css('opacity', 1);
+                    $('#imageLoadIndicator').hide();
+                    $('span.loadingHeader').hide();
+
+                    // Merge inbound, outbound balances
+
+                    var rowCount = $('#gridHotwallet').datagrid('getRows').length;
+                    if (rowCount > 0) {
+                        $('#gridHotwallet').datagrid('mergeCells', {
+                            index: 0,
+                            field: 'description',
+                            colspan: 3
+                        });
+                        $('#gridHotwallet').datagrid('mergeCells', {
+                            index: rowCount - 1,
+                            field: 'description',
+                            colspan: 3
+                        });
+
+                    }
+
+                    // Enable various actions on icon
+
+                    $('img.LocalIconFlag').click(function() {
+                        inspectingTransactionId = $(this).attr("data-txid");
+                        onFlagTransaction("Add Tx Id here");
+                    });
+
+                    $('img.LocalIconInspect').click(function() {
+                        onInspectTransaction($(this).attr("data-txid"));
+                    });
+
+                }
+            });
+
+            reloadGeneralData(); // loads first data - URL is null when first entered
+            reloadHotwalletData();
+
             $('#<%= DropYears.ClientID %>').change(function() {
-                reloadData();
+                reloadInspectData();
             });
 
             $('#<%= DropMonths.ClientID %>').change(function() {
-                reloadData();
+                reloadInspectData();
+            });
+
+            $('#<%= DropGeneralYears.ClientID %>').change(function() {
+                reloadGeneralData();
+            });
+
+            $('#<%= DropGeneralMonths.ClientID %>').change(function() {
+                reloadGeneralData();
+            });
+
+            $('#<%=this.DropHotwalletYears.ClientID%>').change(function()
+            {
+                reloadHotwalletData();
+            });
+
+            $('#<%=this.DropHotwalletMonths.ClientID%>').change(function()
+            {
+                reloadHotwalletData();
             });
 
             $('#ButtonAddTransactionRow').click(function() {
@@ -145,7 +237,7 @@
 
         function onAccountSelected(newAccountId) {
             accountId = newAccountId;
-            reloadData();
+            reloadInspectData();
         }
 
         function addTransactionRow() {
@@ -188,7 +280,17 @@
             }
         }
 
-        function reloadData() {
+        function reloadGeneralData() {
+            var selectedYear = $('#<%= DropGeneralYears.ClientID %>').val();
+            var selectedMonth = $('#<%= DropGeneralMonths.ClientID %>').val();
+
+            $('#treeGeneralLedger').treegrid({ url: 'Json-GeneralLedgerData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth });
+
+            //$('#imageLoadIndicator').show();
+            $('div.treegrid').css('opacity', 0.4);
+        }
+
+        function reloadInspectData() {
             var selectedYear = $('#<%= DropYears.ClientID %>').val();
             var selectedMonth = $('#<%= DropMonths.ClientID %>').val();
 
@@ -201,6 +303,16 @@
             $('div.datagrid').css('opacity', 0.4);
 
             // $('#gridOutstandingAccounts').datagrid('reload');
+        }
+
+        function reloadHotwalletData() {
+            var selectedYear = $('#<%= DropHotwalletYears.ClientID %>').val();
+            var selectedMonth = $('#<%= DropHotwalletMonths.ClientID %>').val();
+
+            $('#gridHotwallet').datagrid({ url: 'Json-LedgerNativeData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth });
+
+            $('#imageLoadIndicator').show();
+            $('div.datagrid').css('opacity', 0.4);
         }
 
         function prefillUnbalancedAmount(transactionId) {
@@ -339,24 +451,68 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     
-    <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets Layout="Horizontal" ID="DropBudgets" OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
     
-        <table id="gridLedgers" class="easyui-datagrid" style="width: 680px; height: 500px"
-        data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerData.aspx'"
-        idField="id">
-        <thead>  
-            <tr>  
-                <th data-options="field:'id',width:70,align:'right'"><asp:Label ID="LabelGridHeaderId" runat="server" Text="ID#"/></th>  
-                <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelGridHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
-                <th data-options="field:'description',width:250"><asp:Label ID="LabelGridHeaderDescription" runat="server" Text="XYZ Description" /></th>  
-                <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaPositive" runat="server" Text="XYZ Debit" /></th>
-                <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaNegative" runat="server" Text="XYZ Credit" /></th>
-                <th data-options="field:'balance',width:80,align:'right'"><asp:Label ID="LabelGridHeaderBalance" runat="server" Text="XYZ Balance" /></th>
-                <th data-options="field:'action',width:43,align:'center'"><asp:Label ID="LabelGridHeaderAction" runat="server" Text="XYZAct" /></th>
-            </tr>  
-        </thead>
-    </table>  
+    <div id="divTabs" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
+        <div class="tab" title="<img src='/Images/Icons/iconshock-accounting-512px.png' height='64' width='64' />">
+            <h2><asp:Label ID="LabelHeaderGeneral" runat="server" /> <asp:DropDownList runat="server" ID="DropGeneralYears"/> <asp:DropDownList runat="server" ID="DropGeneralMonths"/></h2>
     
+                <table id="treeGeneralLedger" class="easyui-treegrid" style="width: 680px; height: 500px"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:''"
+                idField="id" treeField="idDisplay">
+                <thead>  
+                    <tr>  
+                        <th data-options="field:'idDisplay',width:110"><asp:Label ID="LabelTreeHeaderId" runat="server" Text="ID#"/></th>  
+                        <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelTreeHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
+                        <th data-options="field:'txDescription',width:200"><asp:Label ID="LabelTreeHeaderDescriptionAccount" runat="server" Text="XYZ Description, Account" /></th>  
+                        <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelTreeHeaderDeltaPositive" runat="server" Text="XYZ Debit" /></th>
+                        <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelTreeHeaderDeltaNegative" runat="server" Text="XYZ Credit" /></th>
+                        <th data-options="field:'balance',width:80,align:'right'"><asp:Label ID="LabelTreeHeaderBalance" runat="server" Text="XYZ Balance" /></th>
+                        <th data-options="field:'action',width:53,align:'center'"><asp:Label ID="LabelTreeHeaderAction" runat="server" Text="XYZAct" /></th>
+                    </tr>  
+                </thead>
+            </table>  
+        </div>
+        <div class="tab" title="<img src='/Images/Icons/iconshock-directory-512px.png' height='64' width='64' />">
+            <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets Layout="Horizontal" ID="DropBudgets" OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
+    
+                <table id="gridLedgers" class="easyui-datagrid" style="width: 680px; height: 500px"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerData.aspx'"
+                idField="id">
+                <thead>  
+                    <tr>  
+                        <th data-options="field:'id',width:70,align:'right'"><asp:Label ID="LabelGridHeaderId" runat="server" Text="ID#"/></th>  
+                        <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelGridHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
+                        <th data-options="field:'description',width:250"><asp:Label ID="LabelGridHeaderDescription" runat="server" Text="XYZ Description" /></th>  
+                        <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaPositive" runat="server" Text="XYZ Debit" /></th>
+                        <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaNegative" runat="server" Text="XYZ Credit" /></th>
+                        <th data-options="field:'balance',width:80,align:'right'"><asp:Label ID="LabelGridHeaderBalance" runat="server" Text="XYZ Balance" /></th>
+                        <th data-options="field:'action',width:43,align:'center'"><asp:Label ID="LabelGridHeaderAction" runat="server" Text="XYZAct" /></th>
+                    </tr>  
+                </thead>
+            </table>  
+        </div>
+        <div class="tab" title="<img src='/Images/Icons/iconshock-cashregister-96px.png' height='64' width='64' />">
+            <h2><asp:Label ID="LabelHeaderHotwallet" runat="server" /> <asp:DropDownList runat="server" ID="DropHotwalletYears"/> <asp:DropDownList runat="server" ID="DropHotwalletMonths"/></h2>
+
+                <table id="gridHotwallet" class="easyui-datagrid" style="width: 680px; height: 500px"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:''"
+                idField="id">
+                <thead>  
+                    <tr>  
+                        <th data-options="field:'id',width:70,align:'right'"><asp:Label ID="LabelHotwalletHeaderId" runat="server" Text="ID#"/></th>  
+                        <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelHotwalletHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
+                        <th data-options="field:'description',width:185"><asp:Label ID="LabelHotwalletHeaderDescription" runat="server" Text="XYZ Description" /></th>  
+                        <th data-options="field:'deltaPresentation',width:70,align:'right'"><asp:Label ID="LabelHotwalletHeaderPresentationCurrency" runat="server" Text="XYZ SEK" /></th>
+                        <th data-options="field:'deltaBitcoin',width:70,align:'right'"><asp:Label ID="LabelHotwalletHeaderMicrocoin" runat="server" Text="XYZ Microcoin" /></th>
+                        <th data-options="field:'balanceBitcoin',width:120,align:'right'"><asp:Label ID="LabelHotwalletHeaderBalance" runat="server" Text="XYZ Coin balance" /></th>
+                        <th data-options="field:'action',width:68,align:'center'"><asp:Label ID="LabelHotwalletActions" runat="server" Text="XYZAct" /></th>
+                    </tr>
+                </thead>
+            </table>  
+
+        </div>
+    </div>
+   
 
     <Swarmops5:ModalDialog ID="DialogEditTx" OnClientClose="onModalClose" runat="server">
         <DialogCode>
@@ -378,8 +534,13 @@
                 
             <div id="divEditTransaction">
                 <h2><asp:Label ID="LabelAddTransactionRowsHeader" runat="server" /></h2>
-                <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" Layout="Horizontal" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" Layout="Horizontal" runat="server" /> <span class="elementFloatFar"><input id="ButtonAddTransactionRow" type="button" value='#AddRow#'/></span></h2></span>
-                    
+                <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" Layout="Horizontal" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" Layout="Horizontal" runat="server" /> <span class="float-far"><input id="ButtonAddTransactionRow" type="button" value='#AddRow#'/></span></h2></span>
+            
+            <div id="divTransactionDocumentation">
+                <h2><asp:Label runat="server" ID="LabelTransactionDocumentation"/></h2>
+                <asp:Label runat="server" ID="LabelTransactionHasDocumentation" Text="This transaction has X pages of documentation: "/>&nbsp;<span id="spanLabelDocumentationPages"></span>
+            </div>
+               
             </div>
             <div id="divTransactionTracking">
                 <h2><asp:Label ID="LabelTrackedTransactionHeader" runat="server" /></h2>
@@ -392,14 +553,14 @@
     <Swarmops5:ModalDialog ID="DialogCreateTx" runat="server">
         <DialogCode>
             <h2><asp:Label runat="server" ID="LabelCreateTxDialogHeader">Creating Transaction XYZ</asp:Label></h2>
-            <div class="entryFields">
+            <div class="data-entry-fields">
                 <Swarmops5:AjaxTextBox ID="TextCreateTxDateTime" runat="server"/>
                 <Swarmops5:AjaxTextBox ID="TextCreateTxDescription" runat="server"/>
                 <Swarmops5:ComboBudgets ID="DropBudgetsCreateTx" ListType="All" runat="server"/>
                 <Swarmops5:CurrencyTextBox ID="TextCreateTxAmount" runat="server"/>
-                <input type="button" id="buttonCreateTransaction" class="NoInputFocus buttonAccentColor" value="<%= this.Localized_CreateTx %>"/>
+                <input type="button" id="buttonCreateTransaction" class="suppress-input-focus button-accent-color" value="<%= this.Localized_CreateTx %>"/>
             </div>
-            <div class="entryLabels">
+            <div class="data-entry-labels">
                 <asp:Label runat="server" ID="LabelAddTxDateTime" Text="DateTime XYZ"/><br/>
                 <asp:Label runat="server" ID="LabelAddTxDescription" Text="Description XYZ"/><br/>
                 <asp:Label runat="server" ID="LabelAddTxFirstRowAccount" Text="Account XYZ"/><br/>

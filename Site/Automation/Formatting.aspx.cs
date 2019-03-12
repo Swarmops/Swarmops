@@ -43,24 +43,19 @@ namespace Swarmops.Frontend.Automation
         [WebMethod]
         public static AjaxInputCallResult FormatCurrencyString(string input)
         {
-            double outParse = 0.0;
             bool success = false;
+            Int64 cents = 0;
 
-            if (Double.TryParse(input, NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out outParse))
+            try
             {
-                success = true;
+                cents = Swarmops.Logic.Support.Formatting.ParseDoubleStringAsCents(input);
             }
-            else if (Double.TryParse(input, NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out outParse))
+            catch (ArgumentException)
             {
-                success = true;
-            }
-
-            if (!success)
-            {
-                return new AjaxInputCallResult {Success = false};
+                return new AjaxInputCallResult { Success = false };
             }
 
-            return new AjaxInputCallResult {Success = true, NewValue = outParse.ToString("N2")};
+            return new AjaxInputCallResult {Success = true, NewValue = (cents / 100.0).ToString("N2")};
         }
     }
 }

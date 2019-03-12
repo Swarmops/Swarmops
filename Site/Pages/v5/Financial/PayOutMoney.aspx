@@ -2,12 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     
-    <!-- Monospace font for OCR view -->
-
-    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
-        
-    <!-- regular JS -->
-
     <script type="text/javascript"> 
     
         function preload(arrayOfImages) {
@@ -17,33 +11,17 @@
         }
 
         preload([
-            '/Images/Abstract/ajaxloader-medium.gif',
             '/Images/Abstract/ajaxloader-48x36px.gif',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-gold.png',
-            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png',
-            '/Images/Icons/iconshock-balloon-no-128x96px-disabled.png',
             '/Images/Icons/iconshock-green-tick-128x96px.png',
             '/Images/Icons/iconshock-red-cross-128x96px.png',
             '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
             '/Images/Icons/iconshock-balloon-undo-128x96px.png',
-            '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png'
+            '/Images/Icons/iconshock-balloon-yes-128x96px.png',
+            '/Images/Icons/iconshock-balloon-no-128x96px-disabled.png',
+            '/Images/Icons/iconshock-barcode-128x96px.png'
         ]);
 
         $(document).ready(function () {
-
-            $('#CheckOptionsShowPrevious').change(function () {
-                var checked = $('#CheckOptionsShowPrevious').prop('checked');
-
-                if (checked) {
-                    $('.rowPrevious').show();
-                } else {
-                    $('.rowPrevious').hide();
-                }
-            });
 
             $('#CheckOptionsShowOcr').change(function () {
                 var checked = $('#CheckOptionsShowOcr').prop('checked');
@@ -61,67 +39,166 @@
                 {
                     rowStyler: function (index, rowData) {
                         if (rowData.databaseId != null) {
-                            return { class: "rowPrevious row" + rowData.itemId.replace(/\|/g, '') };
+                            return { class: "action-list-item-approved row" + rowData.itemId.replace(/\|/g, "") };
                         }
 
                         if (rowData.itemId != null) {
-                            return { class: "row" + rowData.itemId.replace(/\|/g, '') };
+                            return { class: "row" + rowData.itemId.replace(/\|/g, "") };
                         }
 
-                        return '';
+                        return "";
                     },
 
                     onLoadSuccess: function () {
 
                         gridsLoaded++;
 
-                        if (gridsLoaded == 4) {  // onLoadSuccess is triggered _twice_ per grid for some arcane reason
-
-                            $('#divOcrView').hide();
+                        if (gridsLoaded == 2) {  // onLoadSuccess is triggered _twice_ per grid for some arcane reason
 
                             $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                             $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").css("opacity", 0.5);
                             $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
+                            $(".LocalIconWait").attr("src", "/Images/Abstract/ajaxloader-48x36px.gif").hide();
                             $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
-                            $(".LocalIconApproved.LocalPrototype, .LocalIconUndo.LocalPrototype, .LocalIconDenied.LocalPrototype, .LocalIconApproval.LocalPrevious, .LocalIconDenial.LocalPrevious, .LocalIconDenied.LocalPrevious").css("display", "none");
+                            $(".LocalIconOcr").attr("src", "/Images/Icons/iconshock-barcode-128x96px.png").attr("title", SwarmopsJS.unescape('<%=this.Localized_IconTooltip_Barcode%>'));
+
+                            $(".LocalIconApproved.LocalPrototype, .LocalIconUndo.LocalPrototype, .LocalIconDenied.LocalPrototype, .LocalIconApproval.LocalPaid, .LocalIconDenial.LocalPaid, .LocalIconDenied.LocalPaid").hide();
                             $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-disabled.png");
                             $(".LocalIconApproval, .LocalIconUndo, .LocalIconDenial").css("cursor", "pointer");
 
-                            $(".LocalIconApproval").mouseover(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot.png");
+                            $(".LocalIconApproval").click(function () {
+
+                                // TODO: Check UX-level concurrency lock
+
+                                $('#idModalInputRecipient').val(loadingBreadcrumb);
+                                $('#idModalInputCurrencyAmount').val(loadingBreadcrumb);
+                                $('#idModalReference').val(loadingBreadcrumb);
+                                $('#idModalTransferMethod').val(loadingBreadcrumb);
+                                $('#idModalDueDate').text(loadingBreadcrumb);
+
+                                // Show or hide the correct count of extra data fields
+
+                                var fieldsRequiredCount = parseInt($(this).attr("data-fieldcount"));
+
+                                for (var index = 0; index < modalExtraFieldCount; index++) {
+                                    if (index < fieldsRequiredCount) {
+                                        $('#idModalSpanExtraField' + index).show();
+                                        $('#idModalSpanExtraLabel' + index).show();
+                                    } else {
+                                        $('#idModalSpanExtraField' + index).hide();
+                                        $('#idModalSpanExtraLabel' + index).hide();
+                                    }
                                 }
+
+                                // Show or hide the automation toggle
+
+                                var automationAvailable = $(this).attr("data-ocr");
+                                if (automationAvailable == "yes") {
+                                    $(".modal-automation-toggle").show();
+                                    <%=this.ToggleModalMachineReadable.ClientID%>_setValue(false);
+                                } else {
+                                    $(".modal-automation-toggle").hide();
+                                }
+
+                                $(".modal-input-regular").show();
+                                $(".modal-input-automated").hide();
+
+                                $(".input-field-needs-init").each(function() {
+                                    $(this).val(loadingBreadcrumb);
+                                });
+
+
+                                <%=this.ModalConfirmPayment.ClientID%>_open();
+
+                                modalPrototypeId = $(this).attr("protoid");
+                                modalItemId = $(this).attr("baseid");
+
+                                var prototypeId = $(this).attr("protoid");
+
+                                SwarmopsJS.proxiedAjaxCall(
+                                    "/Pages/v5/Financial/PayOutMoney.aspx/GetPaymentTransferInfo",
+                                    { prototypeId: prototypeId },
+                                    this,
+                                    function(result) {
+                                        if (result.Success) {
+                                            modalPrototypeId = $(this).attr("protoid");
+                                            modalItemId = $(this).attr("baseid");
+
+                                            console.log(result);
+
+                                            $('#idModalInputRecipient').val(result.Recipient);
+                                            $('#idModalInputCurrencyAmount').val(result.CurrencyAmount);
+                                            $('#idModalReference').val($(this).attr("data-reference"));  // load reference from JSON data
+                                            $('#idModalTransferMethod').val(result.TransferMethod);
+
+                                            $('#idModalDueDate').text(result.DueBy + ')');
+
+                                            var customFieldCount = parseInt($(this).attr("data-fieldcount"));
+
+                                            for (var index = 0; index < customFieldCount; index++) {
+                                                $('#idModalSpanExtraLabel' + index).html(result.TransferMethodLabels[index] + "<br/>");
+                                                $('#idModalExtraField' + index).val(result.TransferMethodData[index]);
+                                            }
+
+                                            // Add OCR fields if available
+
+                                            if (result.OcrData != null && result.OcrData.length > 0) {
+                                                $('#idModalAutomationField1').val(result.OcrData[0]);
+                                                $('#idModalAutomationField2').val(result.OcrData[1]);
+                                                $('#idModalAutomationField3').val(result.OcrData[2]);
+                                            }
+
+                                        } else {
+                                            // TODO: Handle server-level concurrency lock
+                                        }
+                                    },
+                                    function() {
+                                        // This is the error handler function
+                                        //
+                                        // TODO: Display an error message and close the modal
+                                        //
+                                        alert("Error calling GetPaymentTransferInfo");
+                                    }
+                                );
                             });
 
-                            $(".LocalIconApproval").mouseout(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
-                                }
+
+                            $(".LocalIconUndo").click(function() {
+                                $(this).hide();
+                                var itemId = $(this).attr("baseid");
+                                $("#IconApproved" + itemId).fadeTo(1000, 0.01);
+                                $("#IconWait" + itemId).show();
+
+                                SwarmopsJS.proxiedAjaxCall(
+                                    "/Pages/v5/Financial/PayOutMoney.aspx/UndoPayout",
+                                    { databaseId: $("#IconApproval" + itemId).attr("databaseid") },
+                                    this,
+                                    function(result) {
+                                        if (result.Success) {
+                                            var itemId = $(this).attr("baseid");
+                                            $('.row' + itemId).removeClass("action-list-item-approved");
+                                            $("#IconWait" + itemId).hide();
+                                            $("#IconApproved" + itemId).hide();
+                                            $("#IconApproval" + itemId).fadeTo(200, 1);
+                                            $("#IconDenial" + itemId).fadeTo(200, 1);
+                                            alertify.log(result.DisplayMessage);
+
+                                        } else {
+                                            // There's probably a concurrency error.
+                                            // The socket handler will take care of updating the UI on
+                                            // receiving the cause of the concurrency error.
+
+                                            alertify.log(result.DisplayMessage);
+                                        }
+                                    }
+                                );
                             });
 
-                            $(".LocalIconUndo").mouseover(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px-hot.png");
-                                }
-                            });
 
-                            $(".LocalIconUndo").mouseout(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
-                                }
-                            });
 
-                            $(".LocalIconDenial").mouseover(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot-disabled.png");
-                                }
-                            });
+                            /*
 
-                            $(".LocalIconDenial").mouseout(function() {
-                                if ($(this).attr("rel") != "loading") {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-disabled.png");
-                                }
-                            });
+                            OLD CODE BELOW FROM PREVIOUS TYPE OF ICON LOGIC, KEPT A WHILE FOR REFERENCE --
 
                             $(".LocalIconApproval").click(function() {
                                 if ($(this).attr("rel") != "loading") {
@@ -154,6 +231,9 @@
                                     });
                                 }
                             });
+
+
+
 
                             $(".LocalIconUndo").click(function() {
                                 if ($(this).attr("rel") != "loading") {
@@ -190,41 +270,107 @@
                                     });
 
                                 }
-                            });
+                            });*/
                         }
 
                     }
                 }
             );
 
-            
-        });
+            // Localization
+
+            $('#idModalButtonConfirm').prop("value", SwarmopsJS.unescape('<%=this.Localized_ConfirmDialog_ConfirmPaid%>'));
+
+
+
+        });  // End of document.ready()
+
+        function onConfirmModal()
+        {
+
+            var approvalIcon = $('#IconApproval' + modalItemId);
+            confirmExpenseApproved(approvalIcon);
+            <%=this.ModalConfirmPayment.ClientID%>_close();
+
+            modalItemId = "";
+            modalPrototypeId = "";
+        }
+
+
+        function onModalToggleMachineReadable(newValue) {
+            if (newValue) {
+                $('.modal-input-regular').slideUp();
+                $('.modal-input-automated').slideDown();
+            } else {
+                $('.modal-input-regular').slideDown();
+                $('.modal-input-automated').slideUp();
+            }
+        }
+
+        function confirmExpenseApproved(approvalIcon) {
+
+            var itemId = $(approvalIcon).attr("baseid");
+            var prototypeId = $(approvalIcon).attr("protoid");
+
+            if (prototypeId === undefined || prototypeId === null || prototypeId.Length < 2) {
+                alert("PrototypeId is empty. Aborting operation. This should not happen.");
+                return;
+            }
+
+            $(approvalIcon).hide();
+            $("#IconWait" + itemId).show();
+            $("#IconDenial" + itemId).fadeTo(1000, 0.01);
+
+            SwarmopsJS.proxiedAjaxCall(
+                "/Pages/v5/Financial/PayOutMoney.aspx/ConfirmPayout",
+                { protoIdentity: prototypeId },
+                approvalIcon,
+                function (result) {
+                    if (result.Success) {
+                        var itemId = $(this).attr("baseid");
+                        $('.row' + itemId).addClass("action-list-item-approved");
+                        $("#IconApproval" + itemId).attr("databaseid", result.AssignedId);
+                        $("#IconWait" + itemId).hide();
+                        $("#IconDenial" + itemId).hide();
+                        $("#IconApproved" + itemId).fadeTo(200, 0.5); // half opacity is intentional
+                        $("#IconUndo" + itemId).fadeTo(1000, 1); // the longer delay is intentional
+                        alertify.success(result.DisplayMessage);
+                    } else {
+                        // There's probably a concurrency error.
+                        // The socket handler will take care of updating the UI on
+                        // receiving the cause of the concurrency error.
+
+                        alertify.log(result.DisplayMessage);
+
+                    }
+                }
+            );
+        }
 
         var gridsLoaded = 0;
+        var loadingBreadcrumb = "[...]";
+        var modalPrototypeId = "";
+        var modalItemId = "";
+        var modalExtraFieldCount = 5;  // this is the count of showable/hideable fields
 
     </script>
 
     <style type="text/css">
-        .datagrid-row-selected,.datagrid-row-over{
-            background:transparent;
+
+        /* Include OCR-B font for OCR fields */
+
+        @font-face {
+            font-family: Ocrb;
+            src: url('/Style/Fonts/OCR-B-regular-web.woff');
         }
-        .datagrid-row .ocrFont {  /* this is necessary for OCR to work as expected */
-            font-family: Droid Sans Mono;
-            font-weight: bold;
-            font-size: 120%;
-            letter-spacing: 1px;
+
+        .ocr-font {  /* this is necessary for OCR to work as expected */
+            font-family: Ocrb;
+            font-size: 80% !important;
+            letter-spacing: 1px !important;
+            padding-top: 5px !important;
         }
-        .LocalIconApproval, .LocalIconApproved {
-            padding-right: 3px;
-        }
-        body.rtl .LocalIconApproval, body.rtl .LocalIconApproved {
-            padding-left: 3px;
-            padding-right: initial;
-        }
-        .rowPrevious {
-            color: #AAA;
-            display: none;
-        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
@@ -236,32 +382,66 @@
             <thead>  
                 <tr>  
                     <th data-options="field:'due',width:70"><asp:Label ID="LabelGridHeaderDue" runat="server" Text="XYZ Due"/></th>  
-                    <th data-options="field:'recipient',width:100,sortable:true"><asp:Label ID="LabelGridHeaderRecipient" runat="server" Text="XYZ Beneficiary" /></th>
-                    <th data-options="field:'bank',width:80"><asp:Label ID="LabelGridHeaderBank" runat="server" Text="XYZ Bank" /></th>  
-                    <th data-options="field:'account',width:90,sortable:true"><asp:Label ID="LabelGridHeaderAccount" runat="server" Text="XYZ Account" /></th>
-                    <th data-options="field:'reference',width:160,sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderReference" runat="server" Text="XYZ Reference" /></th>
-                    <th data-options="field:'amount',width:80,align:'right'"><asp:Label ID="LabelGridHeaderAmount" runat="server" Text="XYZ Amount" /></th>
-                    <th data-options="field:'action',width:53,align:'center'"><asp:Label ID="LabelGridHeaderPaid" runat="server" Text="XYZPaid" /></th>
+                    <th data-options="field:'recipient',width:160,sortable:true"><asp:Label ID="LabelGridHeaderRecipient" runat="server" Text="XYZ Beneficiary" /></th>
+                    <th data-options="field:'transferInfo',width:160"><asp:Label ID="LabelGridHeaderCurrencyMethod" runat="server" Text="XYZ Bank" /></th>  
+                    <th data-options="field:'amount',width:85,align:'right'"><asp:Label ID="LabelGridHeaderAmount" runat="server" Text="XYZ Amount" /></th>
+                    <th data-options="field:'ocrAvailable',width:32"><img src="/Images/Icons/iconshock-barcode-128x96px.png" class="status-icon grid-header-status-icon"/></th>  
+                    <th data-options="field:'action',width:68,align:'center'"><asp:Label ID="LabelGridHeaderPay" runat="server" Text="XYZPaid" /></th>
                 </tr>  
             </thead>
         </table>
     </div>  
-    <div id="divOcrView">
-        <h2><asp:Label runat="server" ID="LabelPayOutMoneyOcrHeader" Text="XYZ Costs In Ocr View" /></h2>
-        <table id="TablePayableCostsOcr" class="easyui-datagrid" style="width:680px;height:500px"
-            data-options="rownumbers:false,singleSelect:false,fit:false,fitColumns:true,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-PayableCostsOcr.aspx'"
-            idField="itemId">
-            <thead>  
-                <tr>  
-                    <th data-options="field:'due',width:70"><asp:Label ID="LabelGridHeaderDue2" runat="server" Text="XYZ Due"/></th>  
-                    <th data-options="field:'reference',width:180, align:'right'"><asp:Label ID="LabelGridHeaderReferenceOcr" runat="server" Text="XYZ Reference" /></th>
-                    <th data-options="field:'amount',width:180, align: 'right'"><asp:Label ID="LabelGridHeaderAmountOcr" runat="server" Text="XYZ Amount" /></th>  
-                    <th data-options="field:'account',width:150, align: 'right'"><asp:Label ID="LabelGridHeaderAccountOcr" runat="server" Text="XYZ Account" /></th>
-                    <th data-options="field:'action',width:53,align:'center'"><asp:Label ID="LabelGridHeaderPaid2" runat="server" Text="XYZPaid" /></th>
-                </tr>  
-            </thead>
-        </table>
-    </div>
+    
+    <Swarmops5:ModalDialog ID="ModalConfirmPayment" runat="server" >
+        <DialogCode>
+            <h2><asp:Label ID="LabelModalHeader" runat="server" Text="Execute this payout manually now XYZ"/> (<asp:Label runat="server" ID="LabelModalHeaderDue"/> <span id="idModalDueDate"></span></h2>
+            <div class="data-entry-fields modal wide">
+                <input type="text" id="idModalInputRecipient" class="input-field-needs-init" readonly="readonly" value="Recipient"/>&#8203;<br/>
+                <div class="modal-input-regular">
+                    <input type="text" id="idModalInputCurrencyAmount" readonly="readonly" class="input-field-needs-init align-for-numbers" value="Amount"/>&#8203;<br/>
+                    <input type="text" id="idModalReference" readonly="readonly" class="input-field-needs-init" value="Reference"/>&#8203;<br/>
+                    <input type="text" id="idModalTransferMethod" readonly="readonly" class="input-field-needs-init" value="Transfer Method"/>&#8203;<br/>
+                    <div class="modal-extra-data-fields">
+                        <span id="idModalSpanExtraField0"><input type="text" id="idModalExtraField0" class="input-field-needs-init" readonly="readonly" value="Extra Field 0"/>&#8203;<br/></span>
+                        <span id="idModalSpanExtraField1"><input type="text" id="idModalExtraField1" class="input-field-needs-init" readonly="readonly" value="Extra Field 1"/>&#8203;<br/></span>
+                        <span id="idModalSpanExtraField2"><input type="text" id="idModalExtraField2" class="input-field-needs-init" readonly="readonly" value="Extra Field 2"/>&#8203;<br/></span>
+                        <span id="idModalSpanExtraField3"><input type="text" id="idModalExtraField3" class="input-field-needs-init" readonly="readonly" value="Extra Field 3"/>&#8203;<br/></span>
+                        <span id="idModalSpanExtraField4"><input type="text" id="idModalExtraField4" class="input-field-needs-init" readonly="readonly" value="Extra Field 4"/>&#8203;<br/></span>
+                    </div>
+                </div>
+                <div class="modal-input-automated ocr-font">
+                    <input type="text" id="idModalAutomationField1" class="input-field-needs-init ocr-font" readonly="readonly" value="Field1"/>&#8203;<br/>
+                    <input type="text" id="idModalAutomationField2" class="input-field-needs-init ocr-font" readonly="readonly" value="Field2"/>&#8203;<br/>
+                    <input type="text" id="idModalAutomationField3" class="input-field-needs-init ocr-font" readonly="readonly" value="Field3"/>&#8203;<br/>
+                </div>
+                <span class="modal-automation-toggle"><Swarmops5:AjaxToggleSlider ID="ToggleModalMachineReadable" runat="server" Label="Show in machine-readable format XYZ" Cookie="MachineReadable" AjaxCallbackUrl="" OnChange="onModalToggleMachineReadable"/></span>
+                <input type="button" id="idModalButtonConfirm" value="Confirm XYZ" class="button-accent-color suppress-input-focus action-icon-button icon-yes" onclick="onConfirmModal();"/>
+            </div>
+            <div class="data-entry-labels">
+                <asp:Label ID="LabelModalRecipient" runat="server" Text="Recipient XYZ"/><br/>
+                <div class="modal-input-regular">
+                    <asp:Label ID="LabelModalCurrencyAmount" runat="server" Text="Currency and Amount XYZ"/><br/>
+                    <asp:Label ID="LabelModalReference" runat="server" Text="Reference XYZ"/><br/>
+                    <asp:Label ID="LabelModalTransferMethod" runat="server" Text="Transfer Method XYZ"/><br/>
+                    <div class="modal-extra-data-fields">
+                        <span id="idModalSpanExtraLabel0">Label 0<br/></span>
+                        <span id="idModalSpanExtraLabel1">Label 1<br/></span>
+                        <span id="idModalSpanExtraLabel2">Label 2<br/></span>
+                        <span id="idModalSpanExtraLabel3">Label 3<br/></span>
+                        <span id="idModalSpanExtraLabel4">Label 4<br/></span>
+                    </div>
+                </div>
+                <div class="modal-input-automated">
+                    <asp:Label runat="server" ID="LabelModalAutomation1" /><br/>
+                    <asp:Label runat="server" ID="LabelModalAutomation2" /><br/>
+                    <asp:Label runat="server" ID="LabelModalAutomation3" /><br/>
+                </div>
+                <span class="modal-automation-toggle"><span id="idModalSpanEnableOcrLabel"><asp:Label runat="server" ID="LabelModalOcr1" Text="Are you scanning this payment XYZ?"/></span></span>
+            </div>
+        </DialogCode>
+    </Swarmops5:ModalDialog>
+
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
@@ -270,13 +450,10 @@
     <div class="box">
         <div class="content" style="margin-left:5px">
             <div class="link-row-encaps" style="cursor:default; margin-left:2px">
-               <span style="position:relative;top:2px;left:1px"><input type="checkbox" id="CheckOptionsShowPrevious" /></span>&nbsp;<label for="CheckOptionsShowPrevious"><asp:Label ID="LabelOptionsShowPrevious" runat="server" Text="Show previous payouts XYZ"/></label>
-            </div>
-            <div class="link-row-encaps" style="cursor:default; margin-left:2px">
-               <span style="position:relative;top:2px;left:1px"><input type="checkbox" id="CheckOptionsShowOcr" /></span>&nbsp;<label for="CheckOptionsShowOcr"><asp:Label ID="LabelOptionsShowOcr" runat="server" Text="Show previous payouts XYZ"/></label>
+               <span style="position:relative;top:2px;left:1px"><input type="checkbox" id="CheckOptionsShowOcr" /></span>&nbsp;<label for="CheckOptionsShowOcr"><asp:Label ID="LabelOptionsShowOcr" runat="server" Text="Display OCR ready data XYZ"/></label>
             </div>
         </div>
     </div>
-
+    
 </asp:Content>
 

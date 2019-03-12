@@ -61,6 +61,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A new person has applied to be a [RegularTitle] in [OrganizationName]! [ConcernedPersonName] currently resides in [GeographyName], [CountryCode]..
+        /// </summary>
+        internal static string Applicant_Signup_Body {
+            get {
+                return ResourceManager.GetString("Applicant_Signup_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] New Applicant: [ConcernedPersonName], [GeographyName].
+        /// </summary>
+        internal static string Applicant_Signup_Header {
+            get {
+                return ResourceManager.GetString("Applicant_Signup_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The bitcoin hotwallet for [OrganizationName] just made [PaymentCount] automatic payment(s) totalling [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin or &quot;bits&quot;)..
         /// </summary>
         internal static string Bitcoin_Hotwallet_Outflow_Body {
@@ -79,7 +97,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [BitcoinAmountFloat] microbitcoin (&quot;bits&quot;) was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
+        ///   Looks up a localized string similar to [BitcoinAmountFloat] microbitcoin (&quot;bits&quot;) was just transferred to your Bitcoin Cash address ([BitcoinAddress]) by [OrganizationName] for the following:
         ///
         ///[EmbeddedPreformattedText]
         ///
@@ -119,11 +137,11 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the bitcoin hotwallet. Swarmops is unable to make further payments at this time.
+        ///   Looks up a localized string similar to Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the Bitcoin Cash hotwallet. Swarmops is unable to make further payments at this time.
         ///
         ///Please top up the hotwallet IMMEDIATELY to at least the needed amount - an additional [AmountMissingMicrocoinsFloat] microbitcoin (&quot;bits&quot;) is required to resume financial hotwallet operations.
         ///
-        ///Swarmops will keep trying and will keep sending these notifications as long as it has not succeed [rest of string was truncated]&quot;;.
+        ///Swarmops will keep trying and will keep sending these notifications as long as it has not su [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Bitcoin_Shortage_Critical_Body {
             get {
@@ -132,7 +150,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Bitcoin hotwallet insufficient for payments - top up immediately.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Bitcoin Cash hotwallet insufficient for payments - top up immediately.
         /// </summary>
         internal static string Bitcoin_Shortage_Critical_Subject {
             get {
@@ -141,7 +159,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to On attempting a payout to your bitcoin payout address, the address ([BitcoinAddress]) was rejected by the underlying payout engine as invalid. It has therefore been cleared from your profile.
+        ///   Looks up a localized string similar to On attempting a payout to your Bitcoin Cash payout address, the address ([BitcoinAddress]) was rejected by the underlying payout engine as invalid. It has therefore been cleared from your profile.
         ///
         ///Please log on to [InstallationName] at [ExternalUrl] and set a new bitcoin payout address..
         /// </summary>
@@ -161,11 +179,11 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have changed your bitcoin payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantied for the next 48 hours.
+        ///   Looks up a localized string similar to You have changed your Bitcoin Cash payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours.
         ///
         ///If you did NOT change the payout address and there has been a security breach, please click this link immediately to lock down your account: [LockdownLink]
         ///
-        ///If you click that link, your account will be locked down immediately without confirmation requests. However, if you did request the payout address change, all is fine and no further a [rest of string was truncated]&quot;;.
+        ///If you click that link, your account will be locked down immediately without confirmation requests. However, if you did request the payout address change, all is fine and no fur [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BitcoinPayoutAddress_Changed_Body {
             get {
@@ -174,7 +192,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin payout address changed.
+        ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin Cash payout address changed.
         /// </summary>
         internal static string BitcoinPayoutAddress_Changed_Subject {
             get {
@@ -183,7 +201,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have funds waiting for payout at [OrganizationName], but you have not set a bitcoin payout address.
+        ///   Looks up a localized string similar to You have funds waiting for payout at [OrganizationName], but you have not set a Bitcoin Cash payout address.
         ///
         ///Please log on to [InstallationName] at [ExternalUrl] and follow the link to set your payout address - you will find it in the list of to-do items..
         /// </summary>
@@ -194,7 +212,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Please set your bitcoin payout address.
+        ///   Looks up a localized string similar to [[OrganizationName]] Please set your Bitcoin Cash payout address.
         /// </summary>
         internal static string BitcoinPayoutAddress_PleaseSet_Subject {
             get {
@@ -203,7 +221,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have set a bitcoin payout address: [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours, and will proceed to be paid out to the new address after that.
+        ///   Looks up a localized string similar to You have set a Bitcoin Cash payout address: [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours, and will proceed to be paid out to the new address after that.
         ///
         ///If you did not set this payout address (it may be worth double checking the address above for added security), contact [OrganizationName] immediately..
         /// </summary>
@@ -214,7 +232,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A bitcoin payout address was set by [ConcernedPersonName]. Payouts will begin after 48 hours when the quarantine period has elapsed..
+        ///   Looks up a localized string similar to A Bitcoin Cash payout address was set by [ConcernedPersonName]. Payouts will begin after 48 hours when the quarantine period has elapsed..
         /// </summary>
         internal static string BitcoinPayoutAddress_Set_OfficerNotify_Body {
             get {
@@ -223,7 +241,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] [ConcernedPersonName] has set a bitcoin payout address.
+        ///   Looks up a localized string similar to [[OrganizationName]] [ConcernedPersonName] has set a Bitcoin Cash payout address.
         /// </summary>
         internal static string BitcoinPayoutAddress_Set_OfficerNotify_Subject {
             get {
@@ -232,7 +250,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin payout address set.
+        ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin Cash payout address set.
         /// </summary>
         internal static string BitcoinPayoutAddress_Set_Subject {
             get {
@@ -241,40 +259,40 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you..
-        /// </summary>
-        internal static string CashAdvance_Attested_Body {
-            get {
-                return ResourceManager.GetString("CashAdvance_Attested_Body", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance Attested: [CurrencyCode] [BudgetAmountFloat].
-        /// </summary>
-        internal static string CashAdvance_Attested_Subject {
-            get {
-                return ResourceManager.GetString("CashAdvance_Attested_Subject", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your request.
+        ///   Looks up a localized string similar to Your previously approved cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has had its approval RETRACTED by the budget owner. This cash advance is no longer approved. This usually indicates some sort of problem with your request.
         ///
         ///Expect more communication from the budget owner to follow on the matter..
         /// </summary>
-        internal static string CashAdvance_Deattested_Body {
+        internal static string CashAdvance_ApprovalRetracted_Body {
             get {
-                return ResourceManager.GetString("CashAdvance_Deattested_Body", resourceCulture);
+                return ResourceManager.GetString("CashAdvance_ApprovalRetracted_Body", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance DE-attested: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Approval for Cash Advance RETRACTED: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string CashAdvance_Deattested_Subject {
+        internal static string CashAdvance_ApprovalRetracted_Subject {
             get {
-                return ResourceManager.GetString("CashAdvance_Deattested_Subject", resourceCulture);
+                return ResourceManager.GetString("CashAdvance_ApprovalRetracted_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been approved by the budget owner. It will now proceed to payout to you..
+        /// </summary>
+        internal static string CashAdvance_Approved_Body {
+            get {
+                return ResourceManager.GetString("CashAdvance_Approved_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance Approved: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string CashAdvance_Approved_Subject {
+            get {
+                return ResourceManager.GetString("CashAdvance_Approved_Subject", resourceCulture);
             }
         }
         
@@ -322,7 +340,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
         ///
-        ///Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny..
+        ///Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny..
         /// </summary>
         internal static string CashAdvance_Requested_Body {
             get {
@@ -331,7 +349,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Approval Needed.
         /// </summary>
         internal static string CashAdvance_Requested_Subject {
             get {
@@ -340,27 +358,47 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid..
+        ///   Looks up a localized string similar to Your previously approved expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has had its approval RETRACTED by the budget owner. This expense claim is no longer approved. This usually indicates some sort of problem with your expense claim.
+        ///
+        ///Expect more communication from the budget owner to follow on the matter..
         /// </summary>
-        internal static string ExpenseClaim_Attested_Body {
+        internal static string ExpenseClaim_ApprovalRetracted_Body {
             get {
-                return ResourceManager.GetString("ExpenseClaim_Attested_Body", resourceCulture);
+                return ResourceManager.GetString("ExpenseClaim_ApprovalRetracted_Body", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Attested: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Approval RETRACTED for Expense Claim: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string ExpenseClaim_Attested_Subject {
+        internal static string ExpenseClaim_ApprovalRetracted_Subject {
             get {
-                return ResourceManager.GetString("ExpenseClaim_Attested_Subject", resourceCulture);
+                return ResourceManager.GetString("ExpenseClaim_ApprovalRetracted_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been approved by the budget owner. It will be paid out to you when the receipts are confirmed valid..
+        /// </summary>
+        internal static string ExpenseClaim_Approved_Body {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Approved_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Approved: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string ExpenseClaim_Approved_Subject {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Approved_Subject", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to [ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
         ///
-        ///Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny..
+        ///Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny..
         /// </summary>
         internal static string ExpenseClaim_Created_Body {
             get {
@@ -369,31 +407,11 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Approval Needed.
         /// </summary>
         internal static string ExpenseClaim_Created_Subject {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Created_Subject", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your expense claim.
-        ///
-        ///Expect more communication from the budget owner to follow on the matter..
-        /// </summary>
-        internal static string ExpenseClaim_Deattested_Body {
-            get {
-                return ResourceManager.GetString("ExpenseClaim_Deattested_Body", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat].
-        /// </summary>
-        internal static string ExpenseClaim_Deattested_Subject {
-            get {
-                return ResourceManager.GetString("ExpenseClaim_Deattested_Subject", resourceCulture);
             }
         }
         
@@ -415,26 +433,6 @@ namespace Swarmops.Logic.Resources {
         internal static string ExpenseClaim_Denied_Subject {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Denied_Subject", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been DE-validated by the financial record keepers of the organization. This usually indicates some sort of problem with the documentation of your expense claim.
-        ///
-        ///Expect more communication to follow on the matter. If you don&apos;t hear from record keepers in short time on this matter, do follow up with them..
-        /// </summary>
-        internal static string ExpenseClaim_Devalidated_Body {
-            get {
-                return ResourceManager.GetString("ExpenseClaim_Devalidated_Body", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat].
-        /// </summary>
-        internal static string ExpenseClaim_Devalidated_Subject {
-            get {
-                return ResourceManager.GetString("ExpenseClaim_Devalidated_Subject", resourceCulture);
             }
         }
         
@@ -479,9 +477,29 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
+        ///   Looks up a localized string similar to The validation of receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been RETRACTED by the financial record keepers of the organization. The receipts are no longer considered valid. This usually indicates some sort of problem with the documentation of your expense claim.
         ///
-        ///Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny..
+        ///Expect more communication to follow on the matter. If you don&apos;t hear from record keepers in short time on this matter, do follow up with them..
+        /// </summary>
+        internal static string ExpenseClaim_ValidationRetracted_Body {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_ValidationRetracted_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Validation RETRACTED for Expense Claim Receipts: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string ExpenseClaim_ValidationRetracted_Subject {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_ValidationRetracted_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must approve this invoice before it proceeds to payout.
+        ///
+        ///Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny..
         /// </summary>
         internal static string InboundInvoice_Created_Body {
             get {
@@ -490,7 +508,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Approval Needed.
         /// </summary>
         internal static string InboundInvoice_Created_Subject {
             get {
@@ -720,6 +738,28 @@ namespace Swarmops.Logic.Resources {
         internal static string Receipts_Filed_Subject {
             get {
                 return ResourceManager.GetString("Receipts_Filed_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your salary payout for [RequestPurpose] was cancelled. It will not be paid out.
+        ///
+        ///If this comes as a surprise to you, please contact the organization and/or your supervisor urgently. The following was given as reason:
+        ///
+        ///[EmbeddedPreformattedText].
+        /// </summary>
+        internal static string Salary_Denied_Body {
+            get {
+                return ResourceManager.GetString("Salary_Denied_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Salary payout denied: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string Salary_Denied_Subject {
+            get {
+                return ResourceManager.GetString("Salary_Denied_Subject", resourceCulture);
             }
         }
         

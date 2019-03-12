@@ -14,7 +14,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
-    public class InboundInvoice : BasicInboundInvoice, IAttestable, IPayable
+    public class InboundInvoice : BasicInboundInvoice, IApprovable, IPayable
     {
         private InboundInvoice (BasicInboundInvoice basicInstance) :
             base (basicInstance)
@@ -143,29 +143,29 @@ namespace Swarmops.Logic.Financial
 
         }
 
-        #region IAttestable Members
+        #region IApprovable Members
 
-        public void Attest (Person attester)
+        public void Approve (Person approvingPerson)
         {
             SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAttested (Identity, true);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Approval,
                 FinancialDependencyType.InboundInvoice, Identity,
-                DateTime.UtcNow, attester.Identity, BudgetAmountCents);
+                DateTime.UtcNow, approvingPerson.Identity, BudgetAmountCents);
             base.Attested = true;
 
-            UpdateTransaction(attester); // will re-enable the tx if denied and reopened earlier
+            UpdateTransaction(approvingPerson); // will re-enable the tx if denied and reopened earlier
         }
 
-        public void Deattest (Person deattester)
+        public void RetractApproval (Person retractingPerson)
         {
             SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAttested (Identity, false);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Deattestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.UndoApproval,
                 FinancialDependencyType.InboundInvoice, Identity,
-                DateTime.UtcNow, deattester.Identity, BudgetAmountCents);
+                DateTime.UtcNow, retractingPerson.Identity, BudgetAmountCents);
             base.Attested = false;
         }
 
-        public void DenyAttestation (Person denyingPerson, string reason)
+        public void DenyApproval (Person denyingPerson, string reason)
         {
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Kill,
                 FinancialDependencyType.InboundInvoice, Identity,
@@ -232,7 +232,7 @@ namespace Swarmops.Logic.Financial
 
             // Create notification (slightly misplaced logic, but this is failsafest place)
 
-            OutboundComm.CreateNotificationAttestationNeeded (budget, creatingPerson, supplier, (amountCents-vatCents)/100.0,
+            OutboundComm.CreateNotificationApprovalNeeded (budget, creatingPerson, supplier, (amountCents-vatCents)/100.0,
                 description, NotificationResource.InboundInvoice_Created);
             // Slightly misplaced logic, but failsafer here
             SwarmopsLogEntry.Create (creatingPerson,
@@ -240,7 +240,7 @@ namespace Swarmops.Logic.Financial
                 newInvoice);
 
             // Clear a cache
-            FinancialAccount.ClearAttestationAdjustmentsCache(organization);
+            FinancialAccount.ClearApprovalAdjustmentsCache(organization);
 
             return newInvoice;
         }

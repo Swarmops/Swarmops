@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\DbColumnTypeName.cs" />
     <Compile Include="Attributes\DbEnumField.cs" />
+    <Compile Include="Attributes\DbColumnName.cs" />
+    <Compile Include="Attributes\DbIdentity.cs" />
     <Compile Include="Attributes\DbRecordType.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Enums\AddressValidationResult.cs" />
@@ -49,13 +52,16 @@
     <Compile Include="Enums\CommunicationType.cs" />
     <Compile Include="Enums\DocumentType.cs" />
     <Compile Include="Enums\EventTypeSource.cs" />
+    <Compile Include="Enums\ExpenseClaimGroupType.cs" />
     <Compile Include="Enums\ExpenseEventType.cs" />
     <Compile Include="Enums\ExternalActivityType.cs" />
     <Compile Include="Enums\ExternalIdentityType.cs" />
+    <Compile Include="Enums\FinancialAccountDocumentType.cs" />
     <Compile Include="Enums\FinancialAccountType.cs" />
     <Compile Include="Enums\FinancialDependencyType.cs" />
     <Compile Include="Enums\FinancialForeignIdType.cs" />
     <Compile Include="Enums\FinancialValidationType.cs" />
+    <Compile Include="Enums\ForeignObjectType.cs" />
     <Compile Include="Enums\GeographyLevel.cs" />
     <Compile Include="Enums\InvalidMembershipType.cs" />
     <Compile Include="Enums\LayoutDirection.cs" />
@@ -65,6 +71,8 @@
     <Compile Include="Enums\OrganizationFinancialAccountType.cs" />
     <Compile Include="Enums\OutboundCommPriority.cs" />
     <Compile Include="Enums\PaymentCodeIssueType.cs" />
+    <Compile Include="Enums\PaymentTargetField.cs" />
+    <Compile Include="Enums\PaymentTargetType.cs" />
     <Compile Include="Enums\PermissionEnum.cs" />
     <Compile Include="Enums\PersonGender.cs" />
     <Compile Include="Enums\PersonOptionalDataKey.cs" />
@@ -72,13 +80,17 @@
     <Compile Include="Enums\PositionLevel.cs" />
     <Compile Include="Enums\PositionTitle.cs" />
     <Compile Include="Enums\PositionType.cs" />
+    <Compile Include="Enums\ReportRequirement.cs" />
     <Compile Include="Enums\RoleTypeClass.cs" />
     <Compile Include="Exceptions\ConcurrencyException.cs" />
     <Compile Include="Exceptions\DatabaseConcurrencyException.cs" />
+    <Compile Include="Exceptions\NetworkTimeoutException.cs" />
+    <Compile Include="Exceptions\TryAgainException.cs" />
     <Compile Include="ExtensionMethods\Bitmap.cs" />
     <Compile Include="ExtensionMethods\Color.cs" />
     <Compile Include="ExtensionMethods\DateTime.cs" />
     <Compile Include="Generics\Tree.cs" />
+    <Compile Include="Interfaces\IDatabaseColumnAware.cs" />
     <Compile Include="Interfaces\IEmailPerson.cs" />
     <Compile Include="Interfaces\IHandleProvider.cs" />
     <Compile Include="Interfaces\IHasIdentities.cs" />

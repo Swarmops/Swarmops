@@ -120,19 +120,19 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <div class="entryFields">
+    <div class="data-entry-fields">
         <Swarmops5:DropDown runat="server" ID="DropRecipientClasses" OnClientChange="onRecipientChange"/>
         <Swarmops5:ComboGeographies ID="ComboGeographies" runat="server" OnClientSelect="onGeographyChange" />
         <asp:TextBox ID="TextSubject" runat="server"/>
     </div>
-    <div class="entryLabels">
+    <div class="data-entry-labels">
         <asp:Label ID="LabelRecipientType" runat="server" /><br/>
         <asp:Label ID="LabelGeography" runat="server" /><br/>
         <asp:Label ID="LabelSubject" runat="server"/>
     </div>
     <h2 style="padding-top:15px"><asp:Label ID="LabelHeaderMessage" runat="server" /> (<span id="spanRecipientCount">...</span>)</h2>
     <asp:TextBox runat="server" TextMode="MultiLine" Rows="10" ID="TextMessage" />
-    <asp:Button runat="server" CssClass="buttonAccentColor" Text="Foo" OnClientClick="onClickSend(); return false;" ID="ButtonSend" /><asp:Button runat="server" CssClass="buttonAccentColor" OnClientClick="onClickTest(); return false;" Text="Bar" ID="ButtonTest" />
+    <asp:Button runat="server" CssClass="button-accent-color" Text="Foo" OnClientClick="onClickSend(); return false;" ID="ButtonSend" /><asp:Button runat="server" CssClass="button-accent-color" OnClientClick="onClickTest(); return false;" Text="Bar" ID="ButtonTest" />
     <div style="clear:both"></div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">

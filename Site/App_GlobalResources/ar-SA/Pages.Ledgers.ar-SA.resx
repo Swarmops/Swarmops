@@ -118,14 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccountPlan_CreateRootAccount" xml:space="preserve">
-    <value>إنشاء حساب جذري جديد</value>
+    <value>إنشاء حساب مدير جديد</value>
   </data>
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>هذه نظرة عامة على الحسابات المالية في دفتر الأستاذ الخاص بك. يمكنك القيام ببعض عمليات الصيانة من هنا، ولو أنه يجب تفويض معظم العمليات اليومية إلى الأشخاص المسؤولين عن الميزانيات.</value>
   </data>
-  <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>شجرة الحسابات</value>
-  </data>
+  
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>الحساب</value>
   </data>
@@ -144,7 +142,9 @@
     <value>الانتهاء-XXXX</value>
     <comment>The XXXX is replaced with year number.</comment>
   </data>
-  
+  <data name="BalanceSheet_Info" xml:space="preserve">
+    <value>يقدم بيان الـميزانيَّة لمحة عامة عن الأصول والمديونيات عند نقطة محددة من الزمن، وتستخدم لمعرفة كيفية تأثير النتائج على الحالة المالية العامة للمنظمة. قد ترغب أيضاً في التعرف على &lt;a href="ProfitLossStatement"&gt; بيان الأرباح والخسائر &lt;/a&gt; والذي يعطي نظرة عن المداخيل والنفقات.</value>
+  </data>
   <data name="BalanceSheet_PageTitle" xml:space="preserve">
     <value>الميزانية العمومية</value>
   </data>
@@ -175,7 +175,9 @@
     <value>ارباح/خسائر</value>
     <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
   </data>
-  
+  <data name="ProfitLossStatement_Info" xml:space="preserve">
+    <value>ال P&amp;L هي نظرة عامة للمداخيل والنفقات, اللذان يقسمان حسب الميزانيات أو نوع التكلفة / الدخل. مجموع جميع الإيرادات والنفقات هو النتيجة السنوية. قد ترغب ايضاً في التعرف على &lt;a href="ProfitLossStatement"&gt; بيان الـميزانيَّة &lt;/a&gt; والذي يعطي نظرة عامة عن الأصول والديون.</value>
+  </data>
   <data name="ProfitLossStatement_LastYear" xml:space="preserve">
     <value>العام الماضي</value>
   </data>
@@ -236,19 +238,6 @@
   <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
     <value>تعليمات تحميل بيانات البنك</value>
     <comment>Header above instructions for generation of the bank file type selected.</comment>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
-    <value>لدى البنوك المختلفة وسائل مختلفة للحصول على ملف تنسيق BGMAX. في SEB، تذهب إلى &lt;strong&gt;المدفوعات&lt;/strong&gt; و &lt;strong&gt;اتصالات الملف&lt;/strong&gt; لمشاهدة قائمة ملفات للاسترداد. بنوك أخرى لديها طرق أخرى وعلى أية حال، قم برفعه هنا.</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_PaypalFile" xml:space="preserve">
-    <value>سجل دخولك إلى Paypal. اذهب إلى &lt;strong&gt;الحساب الخاص بك&lt;/strong&gt;، وضمن القائمة "&lt;strong&gt;المحفوظات&lt;/strong&gt;"، حدد &lt;strong&gt;تاريخ التحميل&lt;/strong&gt;. حدد &lt;strong&gt;نطاق تاريخ مخصص&lt;/strong&gt;، قم بإدخال النطاق منذ آخر تحميل (كما ورد) بالإضافة إلى بضعة أيام للتداخل، والأهم من ذلك، حدد &lt;strong&gt;علامة التبويب محدد-كل الأنشطة&lt;/strong&gt;. انقر فوق &lt;strong&gt;تحميل&lt;/strong&gt;-&lt;/p&gt;&lt;p&gt;سيمر بعض الوقت قبل أن تستلم بريداً إلكترونياً من Paypal يخبرك بأن الملف جاهز للتحميل. سوف يكون اسمه &lt;em&gt;download.txt&lt;/em&gt;. قم برفع هذا الملف.</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_PaysonFile" xml:space="preserve">
-    <value>تسجيل الدخول إلى Payson. انتقل إلى علامة التبويب &lt;strong&gt;History&lt;/strong&gt;، وانقر فوق &lt;strong&gt;Export history&lt;/strong&gt;. سيتم تسمية الملف الذي تم تنزيله &lt;em&gt;Payson_Export_[date].xls&lt;/em&gt;. قم برفع هذا الملف.</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_SebAccountFile" xml:space="preserve">
-    <value>إفتح حساب الإنترنت الخاص بك في بنك SEB . اذهب إلى &lt;strong&gt;your account&lt;/strong&gt;، وأدخل النطاق الزمني الذي ترغب في تحميله في مربع البحث. اضغط على &lt;strong&gt;filter&lt;/strong&gt;. وبعد ذلك، انقر فوق الارتباط &lt;strong&gt;save the account history&lt;/strong&gt;. وسوف تظهر قائمة منبثقة. اختر &lt;strong&gt;csv&lt;/strong&gt; و &lt;strong&gt;tab separated&lt;/strong&gt;، ثم &lt;strong&gt;save&lt;/strong&gt;. سيتم تسمية الملف الذي تم تنزيله &lt;em&gt;Kontohändelser.csv&lt;/em&gt;. قم برفع هذا الملف.</value>
-    <comment>Only translate to languages where SEB is active.</comment>
   </data>
   <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
     <value>&lt;p&gt;الملف احتوى على عدد  {0:N0} من العمليات. {1:N0} عملية تم استيرادها بنجاح إلى حساب {2}. (عدد {3:N0} كانت عمليات مكررة).&lt;/p&gt;&lt;p&gt;ومع ذلك فإن الرصيد البنكي لا يتطابق مع السجلات في نظام سوارموبس. وهذا يحدث عادة بسبب بعض المعاملات المفقودة. الرجاء رفع قائمة المعاملات خلال فترة زمنية كبيرة للتأكد من أنه يمكن لنظام سوارموبس أن يرى جميع العمليات.&lt;/p&gt;&lt;pحالياً فإن السجلات المحاسبية لنظام سوارموبس &lt;strong&gt;غير متطابقة&lt;/strong&gt; مع سجلات البنك.</value>
@@ -410,9 +399,7 @@
   <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
     <value>نشط</value>
   </data>
-  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>هل العمليات على هذا الحساب مستبعدة من التقارير ثنائية الأبعاد؟</value>
-  </data>
+  
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>مدير النظام</value>
   </data>
@@ -426,9 +413,7 @@
   <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
     <value>يقبل النفقات</value>
   </data>
-  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
-    <value>بروفايل رفع الملفات</value>
-  </data>
+  
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>تحرير الحساب</value>
   </data>
@@ -646,9 +631,7 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(تم حجب الوصف المفصل)</value>
   </data>
-  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>حركات مختلة (يجب إتمام تطابقها أو إصلاحها)</value>
-  </data>
+  
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>الحساب</value>
     <comment>Usually the account name. Can also be "several".</comment>
@@ -663,10 +646,11 @@
     <value>حركة#</value>
     <comment>Keep VERY short.</comment>
   </data>
-  <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>لا يمكن مطابقة بعض الحركات المالية التي تم استيرادها بشكل تلقائي مع السجلات المحاسبية الحالية. هذا ما يتطلب تدخلك لتقوم بمطابقة هذه الحركات بشكل يدوي لموازنتها (عند اكتمال جزء واحد من الحركة، كأن يتم تسجيل الأموال المرسلة إلى المنظمة ولكن دون تحديد الغرض من هذه الأموال، فعندها يقال بأن الحركة مختلة أو "غير موزونة").</value>
-  </data>
   
+  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
+    <value>موازنة/ مطابقة "المعاملات" #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; من &lt;span id="spanModalTransactionDate"&gt;yyyy mmm dd&lt;/span&gt;</value>
+    <comment>The span text is replaced runtime.</comment>
+  </data>
   <data name="BalanceTransactions_PageTitle" xml:space="preserve">
     <value>موازنة و مطابقة الحركات</value>
   </data>
@@ -674,7 +658,10 @@
     <value>المطابقات التامة لهذا الحساب</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
-  
+  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
+    <value>مطابقة المبلغ ولكن على تاريخ / وقت غير متوقع</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
   <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
     <value>المبلغ خلال فترة التجاوز 5%</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
@@ -719,41 +706,252 @@
     <value>المبلغ خلال فترة التجاوز 10%</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
+  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
+    <value>يتوقع الدفع#{0:N0}{5} في ({1:yyyy-MMM-dd} ل {2}:{3}{4:N2}</value>
+    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
+    <value>تتطابق المعاملة مع دفع هته العملة الأجنبية:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
+    <value>قم بتوجيه المعاملة إلى دفعة بالعملة الأجنبية ({0}٪ مقدار التسامح)؟</value>
+  </data>
+  <data name="BudgetActual_ContentHeader" xml:space="preserve">
+    <value>الميزانية مقابل الوضع الحالي</value>
+  </data>
+  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
+    <value>الـ YTD المتوقع</value>
+    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
+  </data>
+  <data name="BudgetActual_Info" xml:space="preserve">
+    <value>تعرض هذه الصفحة انهيار الميزانية مقارنةً مع انهيار النتائج الفعلية حتى الآن.</value>
+  </data>
+  <data name="BudgetActual_PageTitle" xml:space="preserve">
+    <value>الميزانية مقابل الوضع الحالي</value>
+    <comment>Financial budget vs. Actual financial outcome</comment>
+  </data>
+  <data name="BitcoinHotwallet_Address" xml:space="preserve">
+    <value>عنوان محفظة البيتكوين</value>
+  </data>
+  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
+    <value>رصيد الـ Microcoins</value>
+  </data>
+  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
+    <value>مسار الاشتقاق</value>
+  </data>
+  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
+    <value>القيمة {0}</value>
+    <comment>The {0} is the organization currency.</comment>
+  </data>
+  <data name="BitcoinHotwallet_Header" xml:space="preserve">
+    <value>التدقيق في المحفظة الساخنة</value>
+    <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
+  </data>
+  <data name="BitcoinHotwallet_Info" xml:space="preserve">
+    <value>يبين هذا معلومات دقيقة حول عناوين ورصيد محفظة البيتكوين الساخنة الخاصة بالمنظمة. (لا يتم عرض العناوين الفارغة والمستخدمة سابقًا.)</value>
+  </data>
+  <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
+    <value>المحفظة الساخنة للبيتكوين</value>
+  </data>
+  <data name="BitcoinHotWallet_Empty" xml:space="preserve">
+    <value>لا يوجد رصيد في المحفظة الساخنة.</value>
+  </data>
+  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
+    <value>تجزئة المعاملة</value>
+  </data>
+  <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
+    <value>TxOut غير مصروف</value>
+    <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
+  </data>
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>ممتلكات XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_AssetsDelta" xml:space="preserve">
+    <value>(التغير)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
+    <value>يقدم بيان الـميزانيَّة لمحة عامة عن الأصول والمديونيات في فترة محددة من الزمن، ويستخدم لمعرفة كيفية تأثير النتائج على الحالة المالية العامة للمنظمة. قد ترغب أيضاً في التعرف على &lt;a href="BalanceSheet"&gt;بيان الـميزانيَّة المتقدم&lt;/a&gt; لمزيد من التفاصيل، أو التعرف على&lt;a href="ProfitLossStatement"&gt; بيان الأرباح والخسائر&lt;/a&gt; الذي يعطي نظرة عامة عن المداخيل والنفقات.</value>
+  </data>
+  <data name="BalanceSheet_Liabilities" xml:space="preserve">
+    <value>الخصوم XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_LiabilitiesDelta" xml:space="preserve">
+    <value>(التغير)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_LossToDate" xml:space="preserve">
+    <value>الخسارة حتى الآن ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
+    <value>الربح حتى الآن ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
+    <value>أنشاء معاملة</value>
+    <comment>Text on button for executing create</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDateTime" xml:space="preserve">
+    <value>تاريخ ووقت المعاملة (UTC)</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDescription" xml:space="preserve">
+    <value>وصف المعاملة</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDialogHeader" xml:space="preserve">
+    <value>انشاء معاملة جديدة</value>
+    <comment>Header of dialog</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAccount" xml:space="preserve">
+    <value>الصف الأول مع عارضة التعاملات</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAmount" xml:space="preserve">
+    <value>مبلغ الصف الأول مع عارضة التعاملات</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
+    <value>اضافة معاملة جديدة</value>
+    <comment>Option in sidebar</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
+    <value>مطابقة الفاتورة</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
+    <value>مطابقة المعاملة مع هذه الفاتورة الصادرة:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
+    <value>مطابقة هذا لفاتورة صادرة مفتوحة؟</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
+    <value>قم بمطابقة هذا لفاتورة مفتوحة صادرة بعملة غير قياسية (5% هو هامش صرف العملات المسموح به)؟</value>
+  </data>
+  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
+    <value>المطابقة الأكثر احتمالا</value>
+    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
+  </data>
+  <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
+    <value>الفاتورة الصادرة #{0:N0} ل {1}، المقرر {2:yyyy-MMM-dd}: {3}</value>
+    <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
+  </data>
+  <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
+    <value>تقرير ضريبة القيمة المضافة للفائض لـ {1:yyyy-MMM}</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
+    <value>مطابقة</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonVatReport" xml:space="preserve">
+    <value>أغلق تقرير ضريبة القيمة المضافة</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeVatReport" xml:space="preserve">
+    <value>هذه المعاملة عبارة عن عملية دفع / إرجاع لتقرير ضريبة القيمة المضافة:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
+    <value>أغلق تقرير ضريبة القيمة المضافة باستخدام هذه المعاملة؟</value>
+  </data>
+  <data name="ViewVatReports_Footer_Total" xml:space="preserve">
+    <value>إجماليات التقرير</value>
+  </data>
+  <data name="ViewVatReports_Header_DateTime" xml:space="preserve">
+    <value>التاريخ/الوقت</value>
+    <comment>Timestamp of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Description" xml:space="preserve">
+    <value>الوصف</value>
+    <comment>Description of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Dox" xml:space="preserve">
+    <value>مستندات</value>
+    <comment>This is above the "view documents" icon</comment>
+  </data>
+  <data name="ViewVatReports_Header_Inbound" xml:space="preserve">
+    <value>ضريبة القيمة المضافة الواردة</value>
+  </data>
+  <data name="ViewVatReports_Header_Outbound" xml:space="preserve">
+    <value>ضريبة القيمة المضافة الصادزة</value>
+  </data>
+  <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
+    <value>إعادة التوظيف</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="ViewVatReports_PageTitle" xml:space="preserve">
+    <value>تقرير الضريبة على القيمة المضافة</value>
+    <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
+  </data>
+  <data name="ViewVatReports_Title_View" xml:space="preserve">
+    <value>عرض</value>
+    <comment>This is the word or words before the name of the displayed VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_Header_NoReports" xml:space="preserve">
+    <value>لا تتوفر اي تقارير لضريبة القيمة المضافة لهذه المنظمة</value>
+  </data>
+  <data name="ViewVatReports_NoReports" xml:space="preserve">
+    <value>لا تتوفر اي تقارير لضريبة القيمة المضافة التي يمكن عرضها. ومن الممكن ان يكون هذا راجع إلى عدم إنقضاء الفترة الكاملة لتحرير تقرير ضريبة القيمة المضافة، حيث انه لم يتسن انشاء تقرير حتى الان.</value>
+  </data>
+  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
+    <value>-- لا يوجد شيء للإبلاغ عنه --</value>
+    <comment>This is displayed when there are no items at all in a VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_ReportTotals" xml:space="preserve">
+    <value>إجماليات لهذا التقرير</value>
+    <comment>Displayed as description of footer</comment>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>لا يمكن لوصف هته العملية ان يكون فارغا.</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>تحتاج العملية دليلا على الشراء.</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>يبدو ان مبلغ ضريبة القيمة المضافة لم يتم إدخاله بشكل صحيح.</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
+    <value>ضع علامة على انه بيع مباشر</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>مبلغ الشراء المباشر المخصوم({0})</value>
+    <comment>{0} is the currency</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
+    <value>تكاليف الشراء لهته الميزانية</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
+    <value>تحميل التوصيل او غيرها من الوثائق</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
+    <value>تحديث وصف المعاملة</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
+    <value>جزء ضريبة القيمة المضافة من المبلغ</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>ضع علامة هنا من أجل الشراء المباشر بالحساب؟</value>
+  </data>
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>وصف/حساب</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>دفتر الحسابات العام لـ</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>هذه العملية تغلق تقرير ضريبة القيمة المضافة لـ {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>هذه العملية تفتح تقرير ضريبة القيمة المضافة لـ {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>هذه العملية تستقبل الدفع الخاص بالفواتير الصادرة#{0:N0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>تدفع هذه المعاملة{0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>تدفع هذه المعاملة الفاتورة الواردة#{0:N0} من {1}.</value>
+  </data>
   
   
   

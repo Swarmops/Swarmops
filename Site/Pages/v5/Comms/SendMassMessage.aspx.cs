@@ -41,8 +41,9 @@ namespace Swarmops.Frontend.Pages.Comms
             this.LabelSubject.Text = Resources.Pages.Comms.SendMassMessage_Subject;
 
             this.DropRecipientClasses.Items.Clear();
-            this.DropRecipientClasses.Items.Add (new ListItem (Participant.Localized(CurrentOrganization.RegularLabel, TitleVariant.Plural), "1"));
-            this.DropRecipientClasses.Items.Add (new ListItem (Participant.Localized(CurrentOrganization.ActivistLabel, TitleVariant.Plural), "2"));
+            this.DropRecipientClasses.Items.Add(new ListItem(Participant.Localized(CurrentOrganization.ApplicantLabel, TitleVariant.Plural), "1"));
+            this.DropRecipientClasses.Items.Add(new ListItem(Participant.Localized(CurrentOrganization.RegularLabel, TitleVariant.Plural), "2"));
+            this.DropRecipientClasses.Items.Add (new ListItem (Participant.Localized(CurrentOrganization.ActivistLabel, TitleVariant.Plural), "3"));
             // TODO: Room for dynamic membership types here
             this.DropRecipientClasses.Items.Add (new ListItem (Global.Global_Officer_Plural, "101"));
             this.DropRecipientClasses.Items.Add (new ListItem (Global.Global_Volunteer_Plural, "102"));
@@ -67,10 +68,13 @@ namespace Swarmops.Frontend.Pages.Comms
                 case 0: // "Select one"
                     personCount = 0;
                     break;
-                case 1: // Regulars
+                case 1: // Applicants
+                    personCount = 1; // todo
+                    break;
+                case 2: // Regulars
                     personCount = orgTree.GetMemberCountForGeographies (geoTree);
                     break;
-                case 2: // Agents
+                case 3: // Agents
                     personCount = Activists.GetCountForGeography (geography);
                     break;
 

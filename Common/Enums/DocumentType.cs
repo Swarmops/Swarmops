@@ -62,6 +62,26 @@ namespace Swarmops.Common.Enums
         /// <summary>
         ///     Other artwork (public)
         /// </summary>
-        Artwork
+        Artwork,
+
+        /// <summary>
+        /// There really isn't a standalone doctype for this but still
+        /// </summary>
+        Payout,
+
+        /// <summary>
+        /// Nor for this
+        /// </summary>
+        PaymentGroup,
+
+        /// <summary>
+        /// Nor this
+        /// </summary>
+        Salary,
+
+        /// <summary>
+        /// Documentation related to a financial account, usually an external one
+        /// </summary>
+        FinancialAccountDocument
     }
 }

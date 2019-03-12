@@ -49,114 +49,6 @@ namespace Swarmops.Frontend.Pages.Public {
         protected global::System.Web.UI.ScriptManager ScriptManagerBlahblah;
         
         /// <summary>
-        /// LiteralErrorDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorDate;
-        
-        /// <summary>
-        /// LiteralErrorCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorCity;
-        
-        /// <summary>
-        /// LiteralErrorStreet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorStreet;
-        
-        /// <summary>
-        /// LiteralErrorMail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorMail;
-        
-        /// <summary>
-        /// LiteralErrorName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorName;
-        
-        /// <summary>
-        /// LiteralErrorMailExists control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorMailExists;
-        
-        /// <summary>
-        /// LiteralWizardNextButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralWizardNextButton;
-        
-        /// <summary>
-        /// LiteralWizardFinishButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralWizardFinishButton;
-        
-        /// <summary>
-        /// LiteralErrorNeedPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorNeedPassword;
-        
-        /// <summary>
-        /// LiteralErrorPasswordMismatch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorPasswordMismatch;
-        
-        /// <summary>
-        /// LiteralErrorSelectActivationLevel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorSelectActivationLevel;
-        
-        /// <summary>
-        /// LiteralErrorSelectVolunteerPosition control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralErrorSelectVolunteerPosition;
-        
-        /// <summary>
         /// LabelHeader control.
         /// </summary>
         /// <remarks>
@@ -272,7 +164,7 @@ namespace Swarmops.Frontend.Pages.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelStep5Text;
-
+        
         /// <summary>
         /// LabelStep6Header control.
         /// </summary>
@@ -281,7 +173,7 @@ namespace Swarmops.Frontend.Pages.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelStep6Header;
-
+        
         /// <summary>
         /// LabelStep6Text control.
         /// </summary>
@@ -290,25 +182,7 @@ namespace Swarmops.Frontend.Pages.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelStep6Text;
-
-        /// <summary>
-        /// LabelStep6Header control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelStep7Header;
-
-        /// <summary>
-        /// LabelStep6Text control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelStep7Text;
-
+        
         /// <summary>
         /// LabelWelcomeHeader control.
         /// </summary>
@@ -317,6 +191,105 @@ namespace Swarmops.Frontend.Pages.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelWelcomeHeader;
+        
+        /// <summary>
+        /// LiteralFirstPageSignup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralFirstPageSignup;
+        
+        /// <summary>
+        /// TextName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextName;
+        
+        /// <summary>
+        /// DropCountries control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropCountries;
+        
+        /// <summary>
+        /// TextMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextMail;
+        
+        /// <summary>
+        /// TextPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextPhone;
+        
+        /// <summary>
+        /// TextStreet1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextStreet1;
+        
+        /// <summary>
+        /// TextStreet2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextStreet2;
+        
+        /// <summary>
+        /// TextPostal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextPostal;
+        
+        /// <summary>
+        /// TextCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextCity;
+        
+        /// <summary>
+        /// TextDateOfBirth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextDateOfBirth;
+        
+        /// <summary>
+        /// DropGenders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropGenders;
         
         /// <summary>
         /// LabelName control.
@@ -427,96 +400,6 @@ namespace Swarmops.Frontend.Pages.Public {
         protected global::System.Web.UI.WebControls.Label LabelLegalGender;
         
         /// <summary>
-        /// TextName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextName;
-        
-        /// <summary>
-        /// DropCountries control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropCountries;
-        
-        /// <summary>
-        /// TextMail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextMail;
-        
-        /// <summary>
-        /// TextPhone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextPhone;
-        
-        /// <summary>
-        /// TextStreet1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextStreet1;
-        
-        /// <summary>
-        /// TextStreet2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextStreet2;
-        
-        /// <summary>
-        /// TextPostal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextPostal;
-        
-        /// <summary>
-        /// TextCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextCity;
-        
-        /// <summary>
-        /// TextDateOfBirth control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextDateOfBirth;
-        
-        /// <summary>
-        /// DropGenders control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropGenders;
-        
-        /// <summary>
         /// LabelYourLogon control.
         /// </summary>
         /// <remarks>
@@ -533,6 +416,24 @@ namespace Swarmops.Frontend.Pages.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelYourLogonText;
+        
+        /// <summary>
+        /// TextPassword1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextPassword1;
+        
+        /// <summary>
+        /// TextPassword2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextPassword2;
         
         /// <summary>
         /// LabelLoginKey control.
@@ -560,24 +461,6 @@ namespace Swarmops.Frontend.Pages.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelPassword2;
-        
-        /// <summary>
-        /// TextPassword1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextPassword1;
-        
-        /// <summary>
-        /// TextPassword2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextPassword2;
         
         /// <summary>
         /// LabelActivationLevelHeader control.
@@ -706,6 +589,24 @@ namespace Swarmops.Frontend.Pages.Public {
         protected global::System.Web.UI.WebControls.Label LabelFinalizeSignupHeader;
         
         /// <summary>
+        /// LiteralLastPageSignup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralLastPageSignup;
+        
+        /// <summary>
+        /// ImageLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImageLogo;
+        
+        /// <summary>
         /// LabelSidebarInfoHeader control.
         /// </summary>
         /// <remarks>
@@ -758,15 +659,5 @@ namespace Swarmops.Frontend.Pages.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelSidebarTodo;
-
-
-        /// <summary>
-        /// Manually added control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageLogo;
     }
 }

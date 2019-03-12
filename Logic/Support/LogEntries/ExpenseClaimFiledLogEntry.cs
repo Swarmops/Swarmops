@@ -17,7 +17,7 @@ namespace Swarmops.Logic.Support.LogEntries
         {
             Amount = amount;
             Vat = vat;
-            Currency = budget.Organization.Currency.Code;
+            CurrencyCode = budget.Organization.Currency.Code;
             DateTime = DateTime.UtcNow;
             Description = reason;
             OrganizationId = budget.OrganizationId;

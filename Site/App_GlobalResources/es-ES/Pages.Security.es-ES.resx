@@ -117,57 +117,169 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>El acceso a esta pagina fue denegado</value>
+  </data>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>Intentó acceder a una página para la que no tiene permisos. Consulte el panel principal por algunas razones por las que esto pudo haber sucedido.</value>
+  </data>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>Acceso denegado</value>
+  </data>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>&lt;p&gt;El marco de seguridad de Swarmops le ha denegado el acceso a la página a la que intentaba acceder. Esto generalmente significa que sus funciones estaban por encima de los niveles de acceso otorgados a usted para la organización seleccionada actualmente(&lt;em&gt;{0}&lt;/em&gt;). Esto no se ha registrado ni reportado en ninguna parte. &lt;/p&gt;&lt;p&gt; Hay varias razones por las que esto puede haber sucedido: &lt;/p&gt;</value>
+  </data>
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>Organización actual</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>Puede formar parte de varias organizaciones en esta instalación de Swarmops. Aquí es donde cambias entre ellos.</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>Nueva organización</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>No está participando en ninguna otra organización en esta instalación de Swarmops, por lo que no puede cambiar a otra cosa. Por lo tanto, volveremos a el Tablero guía en su lugar.</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>Cambiar organización</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>Cambiar</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>Actualización de la base de datos pendiente</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>Esta página requiere una base de datos actualizada de Swarmops. </value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>En espera de la actualización de la base de datos</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Hay pendiente una actualización de la base de datos que impide el acceso a esta página. &lt;strong&gt; Esta es una condición temporal &lt;/strong&gt; y los servidores de Swarmops ya deberían estar trabajando para realizar la actualización necesaria. &lt;/p&gt;
+&lt;p&gt;Vuelva a cargar la página en unos minutos. Si la condición persiste durante más de quince minutos, comuníquese con el administrador del sistema. &lt;/p&gt;</value>
+  </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>La cuenta &lt;strong&gt;no estaba bloqueada &lt;/strong&gt;. No hay tal cuenta, o el boleto no era válido o era demasiado viejo. Si aún desea bloquear esta cuenta, póngase en contacto con los administradores de esta instalación de Swarmops.</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>Si está viendo esta página, está intentando bloquear una cuenta de usuario por razones de seguridad. Si el enlace fue válido y no ha expirado, la cuenta ya está bloqueada.</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>Bloqueo de cuenta de usuario</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>La cuenta se ha bloqueado &lt;strong&gt; con éxito &lt;/strong&gt; y todas las sesiones activas ahora están finalizadas.</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>Boleto de bloqueo</value>
+  </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>&lt;strong&gt;LIBRO MAYOR ABIERTO &lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;{0} ejecuta libro mayor abierto. Esto significa que cualquiera puede inspeccionar los informes financieros y la contabilidad. Ha iniciado sesión en las operaciones de la organización para hacer justamente eso.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt; La autenticación de dos factores BitId ahora está habilitada. &lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; A partir de ahora, puedes usar tu billetera de bitcoin para iniciar sesión (y &lt;strong&gt; necesitarás &lt;/strong&gt; para hacerlo asi que). Gracias por permitir una mayor seguridad. &lt;br/&gt;&lt;br/&gt;Recuerde mantener su teléfono seguro con una contraseña, también.</value>
+  </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;INICIO DE SESIÓN BITID REQUERIDO &lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Este inicio de sesión requiere autenticación BitId, tal como lo habilitó el titular de la cuenta. No puede iniciar sesión con una combinación de nombre de usuario / contraseña.</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>Ingrese su código de autenticador Google.</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Iniciar sesión con Bitcoin Signature (BitId)</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>Ayuda</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>Inicie sesión en Swarmops utilizando su billetera Bitcoin habilitada para Bitid. No necesita fondos en eso. Si no tiene una billetera Bitcoin habilitada para Bitid, puede iniciar sesión manualmente usando un nombre de usuario y contraseña heredados. (Su nombre de usuario es su nombre o correo electrónico)</value>
+  </data>
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>Iniciando sesión, espere...</value>
+  </data>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>Inicio de sesión manual con contraseña</value>
+    <comment>Header to manual username/password form</comment>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>Aprobado</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>Ayuda, ¡olvidé mi contraseña!</value>
+  </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>¡Regístrate para {0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>¿Buscando unirse?</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>Swarmops no reconoce esta dirección. Inicie sesión manualmente y active su dirección antes de usarla para iniciar sesión.</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>¿Utilizar la autenticación de dos factores BitID?</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>¿Utilizar el inicio de sesión con contraseña manual?</value>
+    <comment>Switches from BitId to Username/Password form</comment>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>No existe un ticket de restablecimiento de contraseña válido para esta dirección de correo, la dirección no existe, el ticket de restablecimiento de contraseña no es válido o ha expirado. &lt;br/&gt;&lt;br/&gt;&lt;strong&gt; Error al restablecer la contraseña. &lt;/strong&gt;</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>Está restableciendo la contraseña de una cuenta de usuario. Ingrese su nueva contraseña dos veces para configurarla e iniciar sesión. (Si intentas iniciar el procedimiento de restablecimiento de contraseña, necesitas un ticket para hacerlo. &lt;a href="/Security/RequestPasswordReset"&gt; Crea un ticket. &lt;/a&gt;)</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>Ingrese su dirección de correo electrónico para recibir instrucciones de cómo proceder con el procedimiento de restablecimiento de contraseña. Las instrucciones contendrán un código único y que expira que deberá usar para continuar.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>Ingrese su dirección de correo</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>Vuelva a Ingresar su dirección de correo</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>Las dos contraseñas no coinciden. Por favor, intenta de nuevo.</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>La nueva contraseña no puede estar vacía.</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>Restablecer la contraseña</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>Repita la nueva contraseña</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>Puede restablecer la contraseña asociada a una dirección de correo. Se enviará un enlace con un código de ticket a esa dirección de correo electrónico, que debe seguir para restablecer su contraseña.</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>Restablecer</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>Su contraseña ha cambiado y ha iniciado sesión en Swarmops con su nueva contraseña.</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>Ticket</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>Si la dirección de correo estaba asociada con una cuenta en esta instalación de Swarmops, se envió un &lt;strong&gt; ticket de reinicio. &lt;/strong&gt; Abra ese correo y haga clic en el enlace del correo para restablecer su contraseña. (Si el correo electrónico no existió, no se envió nada). &lt;br/&gt;&lt;br/&gt; Puede cerrar esta pestaña del navegador. Ya no es necesario.</value>
+  </data>
 </root>

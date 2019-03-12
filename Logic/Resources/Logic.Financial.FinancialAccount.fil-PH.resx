@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Asset_BankAccount" xml:space="preserve">
+    <value>Bank account</value>
+  </data>
+  <data name="Asset_BitcoinCold" xml:space="preserve">
+    <value>Bitcoin Cold Storage</value>
+  </data>
+  <data name="Asset_BitcoinHot" xml:space="preserve">
+    <value>Bitcoin Hot Wallet</value>
+  </data>
+  <data name="Asset_CashAdvances" xml:space="preserve">
+    <value>Cash Advances</value>
+  </data>
+  <data name="Asset_Hardware" xml:space="preserve">
+    <value>Hardware, Makinarya, atbp.</value>
+  </data>
+  <data name="Asset_InboundVat" xml:space="preserve">
+    <value>Inbound VAT</value>
+    <comment>Value Added Tax</comment>
+  </data>
+  <data name="Asset_OutboundInvoices" xml:space="preserve">
+    <value>Mga Invoice na Papalabas</value>
+  </data>
+  <data name="Asset_Paypal" xml:space="preserve">
+    <value>Paypal Account</value>
+  </data>
+  <data name="Cost_AccountingErrors" xml:space="preserve">
+    <value>Mga Error sa Accounting</value>
+    <comment>Used to compensate for all kinds of random mistakes</comment>
+  </data>
+  <data name="Cost_Airfare" xml:space="preserve">
+    <value>Airfare, Paliparan, at Transit</value>
+    <comment>"Transit" refers to transit to/from airport.</comment>
+  </data>
+  <data name="Cost_AirfareBusiness" xml:space="preserve">
+    <value>Business o First Class</value>
+  </data>
+  <data name="Cost_AirfareCoach" xml:space="preserve">
+    <value>Coach</value>
+  </data>
+  <data name="Cost_AllocatedFunds" xml:space="preserve">
+    <value>Inilaan na Pondo</value>
+  </data>
+  <data name="Cost_AnnualResult" xml:space="preserve">
+    <value>Taunang Profit / Pagkawala</value>
+  </data>
+  <data name="Cost_AssetDepreciation" xml:space="preserve">
+    <value>Depreciation ng Asset</value>
+  </data>
+  <data name="Cost_BankFees" xml:space="preserve">
+    <value>Bayad sa Bangko</value>
+  </data>
+  <data name="Cost_BitcoinFees" xml:space="preserve">
+    <value>Bitcoin Miner Fees</value>
+  </data>
+  <data name="Cost_CentRounding" xml:space="preserve">
+    <value>Cent Rounding</value>
+    <comment>As in rounding to nearest small unit of currency</comment>
+  </data>
+  <data name="Cost_Conferences" xml:space="preserve">
+    <value>Mga kumperensya (ating sariling)</value>
+    <comment>This is for confs that the organization is _hosting_.</comment>
+  </data>
+  <data name="Cost_EventTickets" xml:space="preserve">
+    <value>Mga Tiket sa Kaganapan</value>
+    <comment>Typically _remote_ event tickets, as this accounts sorts under travel.</comment>
+  </data>
+  <data name="Cost_FinancialFees" xml:space="preserve">
+    <value>Mga bayarin sa pananalapi</value>
+    <comment>Master account to bitcoin mining and bank fees</comment>
+  </data>
+  <data name="Cost_ForexLosses" xml:space="preserve">
+    <value>Forex Capital Losses</value>
+    <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
+  </data>
+  <data name="Cost_Hospitality" xml:space="preserve">
+    <value>Mabuting pakikitungo</value>
+  </data>
+  <data name="Cost_IctInfrastructure" xml:space="preserve">
+    <value>ICT at Infrastructure</value>
+  </data>
+  <data name="Cost_InterestLosses" xml:space="preserve">
+    <value>Interest Losses</value>
+  </data>
+  <data name="Cost_LegalFees" xml:space="preserve">
+    <value>Mga legal na bayarin</value>
+  </data>
+  <data name="Cost_LodgingFiveStar" xml:space="preserve">
+    <value>5 Star</value>
+    <comment>Five-star rating</comment>
+  </data>
+  <data name="Cost_LodgingFourStar" xml:space="preserve">
+    <value>4 Star</value>
+    <comment>Four-star rating</comment>
+  </data>
+  <data name="Cost_LodgingHostel" xml:space="preserve">
+    <value>Hostel o katumbas ng badyet</value>
+  </data>
+  <data name="Cost_LodgingShared" xml:space="preserve">
+    <value>Ibinahagi ang tuluyan (AirBnB atbp)</value>
+  </data>
+  <data name="Cost_LodgingThreeStar" xml:space="preserve">
+    <value>3 Star</value>
+    <comment>Three-star rating</comment>
+  </data>
+  <data name="Cost_MarketingCampaigns" xml:space="preserve">
+    <value>Marketing at Mga Kampanya</value>
+  </data>
+  <data name="Cost_OfficeEquipment" xml:space="preserve">
+    <value>Kagamitan sa opisina</value>
+  </data>
+  <data name="Cost_Offices" xml:space="preserve">
+    <value>Mga Opisina</value>
+  </data>
+  <data name="Cost_OfficeSpace" xml:space="preserve">
+    <value>Opisina, Pagpapanatili</value>
+  </data>
+  <data name="Cost_OfficeSupplies" xml:space="preserve">
+    <value>Mga Kagamitan sa Opisina (mga consumable)</value>
+  </data>
+  <data name="Cost_PublicTransit" xml:space="preserve">
+    <value>Pampublikong Transit</value>
+    <comment>The local kind within a city or limited area.</comment>
+  </data>
+  <data name="Cost_ResearchDevelopment" xml:space="preserve">
+    <value>Pananaliksik at Pag-unlad</value>
+  </data>
+  <data name="Cost_Staff" xml:space="preserve">
+    <value>Mga Tauhan</value>
+  </data>
+  <data name="Cost_StaffBenefits" xml:space="preserve">
+    <value>Mga Benepisyo ng Staff</value>
+    <comment>Non-compensation benefits (car, phone, etc). Usually taxable.</comment>
+  </data>
+  <data name="Cost_StaffExpenses" xml:space="preserve">
+    <value>Mga Gastusin ng Staff</value>
+  </data>
+  <data name="Cost_StaffPerDiem" xml:space="preserve">
+    <value>Staff Per-Diem</value>
+    <comment>As in "extra travel compensation"</comment>
+  </data>
+  <data name="Cost_StaffSalaries" xml:space="preserve">
+    <value>Staff Salaries</value>
+  </data>
+  <data name="Cost_Taxes" xml:space="preserve">
+    <value>Mga Buwis</value>
+  </data>
+  <data name="Cost_TaxiTransport" xml:space="preserve">
+    <value>Taxi, Limo, etc</value>
+  </data>
+  <data name="Cost_TrainsFerries" xml:space="preserve">
+    <value>Mga Tren at Ferries</value>
+  </data>
+  <data name="Cost_Transportation" xml:space="preserve">
+    <value>Transportasyon</value>
+  </data>
+  <data name="Cost_Travel" xml:space="preserve">
+    <value>Paglalakbay</value>
+    <comment>Root account for travel related accounts</comment>
+  </data>
+  <data name="Cost_TravelLodging" xml:space="preserve">
+    <value>Tirahan</value>
+  </data>
+  <data name="Cost_TravelPerDiem" xml:space="preserve">
+    <value>Per Diems</value>
+    <comment>This is compensation to people traveling for added everyday costs. Usually follows an official guide.</comment>
+  </data>
+  <data name="Cost_Unforeseen" xml:space="preserve">
+    <value>Hindi kanais-nais</value>
+  </data>
+  <data name="Debt_Equity" xml:space="preserve">
+    <value>Equity</value>
+  </data>
+  <data name="Debt_EquityRestricted" xml:space="preserve">
+    <value>Limitadong Equity</value>
+    <comment>As in "equity sold to shareholders"</comment>
+  </data>
+  <data name="Debt_EquityUnrestricted" xml:space="preserve">
+    <value>Walang ipinagpapahintulot na Equity</value>
+  </data>
+  <data name="Debt_ExpenseClaims" xml:space="preserve">
+    <value>Mga Katangian sa Gastos</value>
+  </data>
+  <data name="Debt_General" xml:space="preserve">
+    <value>Pangkalahatang Utang</value>
+  </data>
+  <data name="Debt_InboundInvoices" xml:space="preserve">
+    <value>Mga Inbound Invoice</value>
+  </data>
+  <data name="Debt_OutboundVat" xml:space="preserve">
+    <value>Papalabas na VAT</value>
+    <comment>Value Added Tax</comment>
+  </data>
+  <data name="Debt_Salaries" xml:space="preserve">
+    <value>Salaries Due</value>
+  </data>
+  <data name="Debt_Taxes" xml:space="preserve">
+    <value>Nakatakdang Buwis</value>
+  </data>
+  <data name="Income_Donations" xml:space="preserve">
+    <value>Mga donasyon</value>
+  </data>
+  <data name="Income_ForexGains" xml:space="preserve">
+    <value>Forex Capital Gains</value>
+    <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
+  </data>
+  <data name="Income_InterestGains" xml:space="preserve">
+    <value>Mga Natamo sa Interes</value>
+  </data>
+  <data name="Income_MembershipDues" xml:space="preserve">
+    <value>Mga Dues ng Pagsapi</value>
+  </data>
+  <data name="Income_Sales" xml:space="preserve">
+    <value>Pagbebenta</value>
+  </data>
+  <data name="Income_SubsidiesGrants" xml:space="preserve">
+    <value>Subsidies at Grants</value>
+  </data>
+  <data name="Asset_ShortTerm" xml:space="preserve">
+    <value>Mga Short Term Asset</value>
+  </data>
+  <data name="Asset_TransfersInProgress" xml:space="preserve">
+    <value>Panloob na Paglilipat sa Isinasagawa</value>
+  </data>
+  <data name="Asset_InboundVatReported" xml:space="preserve">
+    <value>Ang labis na papasok na VAT sa ulat</value>
+    <comment>This is nonzero if the inbound amount (to get back) is higher than the outbound</comment>
+  </data>
+  <data name="Asset_InboundVatUnreported" xml:space="preserve">
+    <value>Ang papasok na VAT na i-uulat</value>
+    <comment>Accumulates to each VAT report, set by VAT report frequency</comment>
+  </data>
+  <data name="Debt_OutboundVatReported" xml:space="preserve">
+    <value>Iniulat na VAT na babayaran</value>
+    <comment>This is nonzero if there's VAT to pay to tax authorities</comment>
+  </data>
+  <data name="Debt_OutboundVatUnreported" xml:space="preserve">
+    <value>Ang palabas na VAT na i-uulat</value>
+    <comment>Accumulates to each VAT report, as set by VAT report frequency</comment>
+  </data>
+  <data name="Asset_TaxAdvances" xml:space="preserve">
+    <value>Prepayment ng Buwis</value>
+    <comment>Most tax authorities require you to pay some part in advance</comment>
+  </data>
+  <data name="Asset_BankAccounts" xml:space="preserve">
+    <value>Mga Bank Account</value>
+    <comment>Note the plural form</comment>
+  </data>
+  
+  
+</root>

@@ -28,7 +28,7 @@ namespace Swarmops.Frontend {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.UI.ExternalScripts ExternalScriptEasyUI;
+        protected global::Swarmops.Frontend.Controls.Meta.ExternalScripts ExternalScriptEasyUI;
         
         /// <summary>
         /// NeededForCacheMarkToParse2 control.
@@ -46,7 +46,7 @@ namespace Swarmops.Frontend {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Swarmops.Frontend.Controls.UI.IncludedScripts IncludedScripts;
+        protected global::Swarmops.Frontend.Controls.Meta.IncludedScripts IncludedScripts;
         
         /// <summary>
         /// PlaceHolderHead control.
@@ -517,6 +517,15 @@ namespace Swarmops.Frontend {
         protected global::System.Web.UI.WebControls.Label MasterLabelEditPerson2FAProvisioning;
         
         /// <summary>
+        /// MasterLabelEditPersonHeaderPaymentHistory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MasterLabelEditPersonHeaderPaymentHistory;
+        
+        /// <summary>
         /// MasterPersonEditLiteralHeaderItemName control.
         /// </summary>
         /// <remarks>
@@ -535,49 +544,49 @@ namespace Swarmops.Frontend {
         protected global::System.Web.UI.WebControls.Literal MasterPersonEditLiteralHeaderItemDescription;
         
         /// <summary>
-        /// Literal1 control.
+        /// MasterPersonEditLiteralHeaderItemOpenedDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal1;
+        protected global::System.Web.UI.WebControls.Literal MasterPersonEditLiteralHeaderItemOpenedDate;
         
         /// <summary>
-        /// Literal2 control.
+        /// MasterPersonEditLiteralHeaderAmountOwed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal2;
+        protected global::System.Web.UI.WebControls.Literal MasterPersonEditLiteralHeaderAmountOwed;
         
         /// <summary>
-        /// Literal3 control.
+        /// MasterPersonEditLiteralHeaderAmountPaid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal3;
+        protected global::System.Web.UI.WebControls.Literal MasterPersonEditLiteralHeaderAmountPaid;
         
         /// <summary>
-        /// Literal4 control.
+        /// MasterPersonEditLiteralHeaderItemClosedDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal4;
+        protected global::System.Web.UI.WebControls.Literal MasterPersonEditLiteralHeaderItemClosedDate;
         
         /// <summary>
-        /// Literal5 control.
+        /// MasterPersonEditLiteralHeaderItemNotes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal5;
+        protected global::System.Web.UI.WebControls.Literal MasterPersonEditLiteralHeaderItemNotes;
         
         /// <summary>
         /// MasterEditPersonOrgMail control.

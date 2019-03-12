@@ -6,6 +6,7 @@ using Swarmops.Common.Interfaces;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.SocketMessages;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
@@ -50,14 +51,14 @@ namespace Swarmops.Logic.Financial
 
 
         public static FinancialTransaction ImportWithStub (int organizationId, DateTime dateTime, int financialAccountId,
-            Int64 amountCents, string description, string importHash, int personId)
+            Int64 amountCents, string description, string importHash, string importSha256, int personId)
         {
             int transactionId = SwarmDb.GetDatabaseForWriting()
                 .CreateFinancialTransactionStub (organizationId, dateTime,
                     financialAccountId, amountCents,
-                    description, importHash, personId);
+                    description, importHash, importSha256, personId);
 
-            if (transactionId == 0)
+            if (transactionId <= 0)
             {
                 return null; // This was a dupe -- already imported, as determined by ImportHash
             }
@@ -254,13 +255,6 @@ namespace Swarmops.Logic.Financial
 
                 throw new NotImplementedException ("Unimplemented dependency type: " + dependencyType);
             }
-        }
-
-        [Obsolete ("Do not use double-precision methods. They leak cents. Use AddRow (FinancialAccount, Int64, Person).",
-            true)]
-        public void AddRow (FinancialAccount account, double amount, Person person)
-        {
-            AddRow (account, (Int64) (amount*100), person);
         }
 
         public FinancialTransactionRow AddRow (FinancialAccount account, Int64 amountCents, Person person)

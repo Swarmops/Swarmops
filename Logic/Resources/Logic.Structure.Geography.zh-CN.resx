@@ -117,26 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CentralEurope" xml:space="preserve">
+    <value>中欧</value>
+  </data>
+  <data name="EasternEurope" xml:space="preserve">
+    <value>东欧</value>
+  </data>
+  <data name="Europe" xml:space="preserve">
+    <value>欧洲</value>
+  </data>
+  <data name="Microstates" xml:space="preserve">
+    <value>小国</value>
+    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
+  </data>
+  <data name="Nordics" xml:space="preserve">
+    <value>北欧五国</value>
+    <comment>(Finland Denmark Norway Sweden Iceland)</comment>
+  </data>
+  <data name="NorthernEurope" xml:space="preserve">
+    <value>北欧</value>
+  </data>
+  <data name="SouthernEurope" xml:space="preserve">
+    <value>南欧</value>
+  </data>
+  <data name="USA_EastNorthCentral" xml:space="preserve">
+    <value>(美国) 中部的东北地区</value>
+  </data>
+  <data name="USA_EastSouthCentral" xml:space="preserve">
+    <value>(美国) 中部的东南地区</value>
+  </data>
+  <data name="USA_MidAtlantic" xml:space="preserve">
+    <value>(美国) 中大西洋地区</value>
+  </data>
+  <data name="USA_Midwest" xml:space="preserve">
+    <value>中西部</value>
+  </data>
+  <data name="USA_Mountain" xml:space="preserve">
+    <value>(美国) 山区</value>
+  </data>
+  <data name="USA_NewEngland" xml:space="preserve">
+    <value>新英格兰</value>
+  </data>
+  <data name="USA_Northeast" xml:space="preserve">
+    <value>东北</value>
+  </data>
+  <data name="USA_Pacific" xml:space="preserve">
+    <value>(美国) 太平洋地区</value>
+  </data>
+  <data name="USA_South" xml:space="preserve">
+    <value>(美国) 南部</value>
+  </data>
+  <data name="USA_SouthAtlantic" xml:space="preserve">
+    <value>(美国) 南大西洋地区</value>
+  </data>
+  <data name="USA_West" xml:space="preserve">
+    <value>(美国) 西部</value>
+  </data>
+  <data name="USA_WestNorthCentral" xml:space="preserve">
+    <value>(美国) 中部的西北地区</value>
+  </data>
+  <data name="USA_WestSouthCentral" xml:space="preserve">
+    <value>(美国) 中部的西南地区</value>
+  </data>
+  <data name="WesternEurope" xml:space="preserve">
+    <value>西欧</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>全球</value>
+    <comment>Root geography</comment>
+  </data>
 </root>

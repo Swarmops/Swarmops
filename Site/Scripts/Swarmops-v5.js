@@ -74,18 +74,24 @@ function _masterInitializeSocket(authenticationTicket) {
 
     _masterSocket.onmessage = function (data) {
         
-        console.log(data.data);
-
         var message = $.parseJSON(data.data);
 
         if (message.MessageType == "Heartbeat") {
             _masterSocketLastHeartbeat = new Date().getTime();
-            console.log("Heartbeat");
-
             if (_masterSocketHeartbeatsLost) {
                 console.log(" - receiving heartbeats again");
                 _masterSocketHeartbeatsLost = false;
                 _master_updateMalfunctions();
+            }
+
+            if (typeof pageOnHeartbeat === "function") { // if it's defined on the page, indicating there's a handler for it
+                pageOnHeartbeat('Frontend', _masterSocketLastHeartbeat);
+            }
+
+        }
+        else if (message.MessageType == "BackendHeartbeat") {
+            if (typeof pageOnHeartbeat === "function") { // if it's defined on the page, indicating there's a handler for it
+                pageOnHeartbeat('Backend', new Date().getTime());
             }
         }
         else if (message.MessageType == "BitcoinReceived") {
@@ -93,8 +99,8 @@ function _masterInitializeSocket(authenticationTicket) {
             // console.log(message);
             var handled = false;
 
-            if (typeof pageBitcoinReceived === "function") { // if it's defined on the page indicating the page handles it
-                handled = pageBitcoinReceived(message.Address, message.Hash, message.Satoshis, message.Cents, message.Currency);
+            if (typeof pageOnBitcoinReceived === "function") { // if it's defined on the page indicating the page handles it
+                handled = pageOnBitcoinReceived(message.Address, message.Hash, message.Satoshis, message.Cents, message.Currency);
             }
 
             if (!handled) {
@@ -164,6 +170,8 @@ function _master_watchHeartbeat() {
         }
     }
 }
+
+
 
 
 function getMasterSocketAddress() {
@@ -438,6 +446,88 @@ var SwarmopsJS = (function () {
             }
         });
     }
+
+
+    // Preserves the "this" object into success and error functions
+    publicSymbols.proxiedAjaxCall = proxiedAjaxCall;
+    function proxiedAjaxCall(url, params, thisObject, successFunction, errorFunction) {
+        ajaxCall(
+            url,
+            params,
+            $.proxy(successFunction, thisObject),
+            errorFunction !== undefined? $.proxy(errorFunction, thisObject) : undefined
+        );
+    }
+
+
+    publicSymbols.fancyBoxInit = fancyBoxInit;
+    function fancyBoxInit(selector) {
+
+        if (typeof selector == 'undefined') {
+            selector = '.FancyBox_Gallery';
+        }
+
+        $(selector).fancybox({
+            toolbar: false,
+            smallBtn: true,
+            arrows: false,
+            infobar: false,
+            title: $(this).title,
+
+            helpers: {
+                title: {
+                    position: 'bottom',
+                    type: 'float'
+                }
+            },
+
+            beforeShow: function (instance, current) {
+                $('.zoomContainer').remove();
+                this.title = $(this.element).data("caption");
+
+                if (instance.group.length > 1) {
+                    if (instance.currIndex > 0) {
+                        $('a.fancybox-arrow-previous').show();
+                    } else {
+                        $('a.fancybox-arrow-previous').hide();
+                    }
+
+                    if (instance.currIndex < instance.group.length - 1) {
+                        $('a.fancybox-arrow-next').show();
+                    } else {
+                        $('a.fancybox-arrow-next').hide();
+                    }
+                }
+            },
+
+            afterShow: function (instance, current) {
+                $('.fancybox-image').elevateZoom({
+                    zoomType: "lens",
+                    cursor: "crosshair",
+                    zoomWindowFadeIn: 200,
+                    zoomWindowFadeOut: 200,
+                    lensShape: "round",
+                    lensSize: 300
+                });
+            },
+
+            afterLoad: function (instance, current) {
+
+                /* TODO: MAKE A RIGHT-TO-LEFT VERSION OF THIS */
+
+                if (instance.group.length > 1 && current.$content) {
+                    current.$content.append('<a data-fancybox-next class="fancybox-arrow-next button-next" href="javascript:;">→</a><a data-fancybox-prev class="fancybox-arrow-previous button-previous" href="javascript:;" style="display:none">←</a>');
+                }
+            },
+
+            afterClose: function () {
+                $('.zoomContainer').remove();
+            }
+        });
+
+    }
+
+
 
     // Below copied from http://stackoverflow.com/questions/4578424/javascript-extend-a-function, assumed to be in public domain
 

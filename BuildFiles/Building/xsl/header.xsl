@@ -35,7 +35,7 @@
             
             <tr>
                 <td class="header-label"><nobr>Built for:</nobr></td>
-                <td class="header-data">xenial stretch</td>
+                <td class="header-data">Ubuntu (xenial bionic), Debian (stretch)</td>
             </tr>
             <tr>
                 <td class="header-label"><nobr>Time of build:</nobr></td>

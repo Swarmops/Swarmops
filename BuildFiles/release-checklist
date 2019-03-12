@@ -1,0 +1,45 @@
+TO TEST AND DO A SPRINT RELEASE
+-------------------------------
+
+git pull
+git checkout sprint
+get merge master
+git push
+
+Wait for completion, then shell to swarmops-build
+sudo ./do-swarmops-candidate
+
+Reset machines swarmops-test-* to last snapshot
+Update machines by distribution
+
+If a while since last snapshot, take new snapshot
+
+
+Actual test procedure
+---------------------
+
+Install mysql-server (this isn't installed already). There is some
+previous data. Root db password on all test machines is "sandbox".
+
+DEBIAN ONLY (which has disabled TCP root access to mariadb by default)
+{
+  mysql -u root -p
+  GRANT ALL PRIVILEGES on *.* to 'root'@'localhost' IDENTIFIED BY 'sandbox';
+  FLUSH PRIVILEGES;
+  exit
+}
+
+Install swarmops-frontend-rc, swarmops-backend-rc  (rc for release candidate)
+Browse to test machines and run installation on each
+
+Test is COMPLETE when dashboard is successfully presented and no UX glitches
+were noticed
+
+
+
+shell to swarmops-build to repackage exact same thing for release
+sudo ./do-swarmops-sprint
+
+Note the build number
+Celebrate
+

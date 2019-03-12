@@ -121,15 +121,38 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>设置比特币现金支付地址</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>请在 [InstallationName] 设置您的比特币现金支付地址(以“比特币现金”开始)：</value>
+  </data>
+  <data name="Payout_Many" xml:space="preserve">
+    <value>结算 {0} 付款</value>
+    <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
+  </data>
+  <data name="Payout_One" xml:space="preserve">
+    <value>结算一笔付款</value>
+  </data>
+  <data name="Payout_Overdue_Many" xml:space="preserve">
+    <value>结算 {0} 过期支付</value>
+  </data>
+  <data name="Payout_Overdue_One" xml:space="preserve">
+    <value>结算一笔过期支付</value>
+  </data>
+  <data name="Payout_Urgent_Many" xml:space="preserve">
+    <value>结算 {0} 紧急支付</value>
+  </data>
+  <data name="Payout_Urgent_One" xml:space="preserve">
+    <value>结算一笔紧急支付</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>启用双因素身份认证</value>
+  </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>验证报销 {0}</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>验证报销 #{0}</value>
+  </data>
 </root>

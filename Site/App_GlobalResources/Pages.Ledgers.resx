@@ -124,7 +124,7 @@
     <value>This is the overview of the financial accounts in your bookkeeping ledger. You can do some maintenance from here, even if most of the daily operations should be delegated to the budget owners.</value>
   </data>
   <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>Account Plan</value>
+    <value>Chart of Accounts</value>
   </data>
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Account</value>
@@ -240,19 +240,6 @@
   <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
     <value>Bank Download Instructions</value>
     <comment>Header above instructions for generation of the bank file type selected.</comment>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
-    <value>Different banks have different means of obtaining the BGMAX format file. On SEB, you go to &lt;strong&gt;Payments&lt;/strong&gt; and &lt;strong&gt;File communications&lt;/strong&gt; to see a list of files to retrieve. Other banks will vary. In any case, upload them here.</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_PaypalFile" xml:space="preserve">
-    <value>Log on to PayPal. Go to &lt;strong&gt;Your Account&lt;/strong&gt;, and under the &lt;strong&gt;History&lt;/strong&gt; menu, select &lt;strong&gt;Download History&lt;/strong&gt;. Select &lt;strong&gt;Custom Date Range&lt;/strong&gt;, enter the range since last download (as indicated) plus some overlap, and most importantly, select &lt;strong&gt;Tab Delimited - All Activity&lt;/strong&gt;. Click &lt;strong&gt;Download&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Some time will pass before you get a mail from PayPal saying that the file is ready for download. It will be named &lt;em&gt;download.txt&lt;/em&gt;. Upload this file.</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_PaysonFile" xml:space="preserve">
-    <value>Log on to Payson. Go to the &lt;strong&gt;History&lt;/strong&gt; tab, and click &lt;strong&gt;Export history&lt;/strong&gt;. The downloaded file will be named &lt;em&gt;Payson_Export_[date].xls&lt;/em&gt;. Upload this file.</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_SebAccountFile" xml:space="preserve">
-    <value>Open SEB's internet bank. Go to &lt;strong&gt;your account&lt;/strong&gt;, and enter the date span you wish to download in the search box. Press &lt;strong&gt;filter&lt;/strong&gt;. After that, click the link to &lt;strong&gt;save the account history&lt;/strong&gt;. A popup will appear. Choose &lt;strong&gt;csv&lt;/strong&gt; and &lt;strong&gt;tab separated&lt;/strong&gt;, then &lt;strong&gt;save&lt;/strong&gt;. The downloaded file will be named &lt;em&gt;Kontohändelser.csv&lt;/em&gt;. Upload this file.</value>
-    <comment>Only translate to languages where SEB is active.</comment>
   </data>
   <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
     <value>&lt;p&gt;The file contained {0:N0} transactions. &lt;strong&gt;{1:N0} transactions&lt;/strong&gt; have been successfully imported into the &lt;em&gt;{2}&lt;/em&gt; bookkeeping account. ({3:N0} transactions were duplicates.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;However, the bank balance does not match the records in Swarmops.&lt;/strong&gt; This is usually due to missing transactions. Please upload a transaction list with a larger time span to make sure that Swarmops sees all transactions.&lt;/p&gt;&lt;p&gt;Swarmops's bookkeeping account is currently &lt;strong&gt;not in sync&lt;/strong&gt; with that of the bank.&lt;/p&gt;</value>
@@ -415,7 +402,8 @@
     <value>Active</value>
   </data>
   <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Are transactions here excluded from 2-D reports?</value>
+    <value>Is this an account after the EBITDA line?</value>
+    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
   </data>
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Admin</value>
@@ -431,7 +419,7 @@
     <value>Expensable</value>
   </data>
   <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
-    <value>File upload profile</value>
+    <value>Automation Profile</value>
   </data>
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>Editing Account</value>
@@ -650,7 +638,8 @@
     <value>(detailed description withheld)</value>
   </data>
   <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Unbalanced Transactions (Must Match Or Fix)</value>
+    <value>Dangling Payments (Must Balance, Match, or Fix)</value>
+    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
   </data>
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Account</value>
@@ -667,7 +656,7 @@
     <comment>Keep VERY short.</comment>
   </data>
   <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Some auto-imported financial transactions can't be automatically matched to the ongoing accounting. This is where you manually match such transactions to "balance" them (if a transaction only has one part completed, like the money sent to the organization with no record of what the money is for, the transaction is said to be "unbalanced").</value>
+    <value>Some auto-imported financial transactions can't be automatically matched to the ongoing accounting. This is where you manually match such transactions to "balance" them (if a transaction only has one part completed, like the money sent to the organization with no record of what the money is for, the transaction is said to be "unbalanced" and a "dangling payment", as in, missing its bookkeeping counterpart).</value>
   </data>
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Balancing/Matching Transaction #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; From &lt;span id="spanModalTransactionDate"&gt;yyyy-mmm-dd&lt;/span&gt;</value>
@@ -896,7 +885,7 @@
     <value>Turnover</value>
   </data>
   <data name="ViewVatReports_Info" xml:space="preserve">
-    <value>You're viewing a filed VAT report. The inbound and outbound VAT, as well as total turnover, has been recorded for the report period. This report is ready to be transmitted to tax authorities.</value>
+    <value>You're viewing a filed VAT report. The inbound and outbound VAT, as well as total turnover, have been recorded for the report period. This report is ready to be transmitted to tax authorities.</value>
   </data>
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>VAT Reports</value>
@@ -919,5 +908,171 @@
   <data name="ViewVatReports_ReportTotals" xml:space="preserve">
     <value>Totals for this report</value>
     <comment>Displayed as description of footer</comment>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>The transaction description cannot be empty.</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>The transaction needs a proof of purchase.</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>The VAT amount doesn't seem to be correctly entered.</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
+    <value>Mark as Direct Purchase</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>Direct-debit purchase amount ({0})</value>
+    <comment>{0} is the currency</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
+    <value>Charge purchase to this budget</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
+    <value>Upload receipt or other documentation</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
+    <value>Update transaction description</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
+    <value>VAT part of the amount</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>Mark this as a direct-from-account purchase?</value>
+  </data>
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>Description / Account</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>General Ledger for</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>This transaction closes the VAT report for {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>This transaction opens the VAT report for {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>This transaction receives payment for Outbound Invoice #{0:N0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>This transaction pays {0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>This transaction pays Inbound Invoice #{0:N0} from {1}.</value>
+  </data>
+  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
+    <value>Automation Profile</value>
+    <comment>This is where the bank name, country, and currency appears.</comment>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>There are no asset accounts set up for automation, so no accounts support data upload at this time. Returning to Dashboard.</value>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
+    <value>As this was the first upload to this automated account, the initial balance of &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; going into the year {2} has been detected and set</value>
+    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
+    <value>(which was accounted for with &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; in the ledger operating currency)</value>
+    <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
+  </data>
+  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
+    <value>Close Financial Ledgers for Year {0}</value>
+    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
+  </data>
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Create {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
+    <value>Autofetch Transaction Data for {0}</value>
+    <comment>Parameter zero is the account name as given by the user</comment>
+  </data>
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Annual Reports</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>External Account Data and Match Accounts</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Payroll And Taxes</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+    <value>Send Reports to Accountants, Shareholders, etc.</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
+  <data name="EndOfMonth_Info" xml:space="preserve">
+    <value>This is a checklist of things to do to close the previous month and begin the new one with respect to accounting.</value>
+  </data>
+  <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
+    <value>Resolve all dangling payments</value>
+    <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
+  </data>
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>End-of-Month Routine: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>Upload Bank Statement ({1}) for {0} for {2}</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>Upload Transaction Data ({1}) for {0}</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
+  <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
+    <value>&lt;strong&gt;SKIP BANK STATEMENT?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bank statements are typically needed for audit verification of the internal records. The only valid reason to skip a month's statement is that the account wasn't opened yet, in which case you skip the months before the account was opened and no statements therefore exist.&lt;br/&gt;&lt;br/&gt;You won't be asked again to upload this particular statement if you skip it now.</value>
+  </data>
+  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
+    <value>&lt;strong&gt;SKIP DOCUMENT UPLOAD?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This document is typically needed for operation records. The only valid reason to skip a document is that it doesn't exist because the operations weren't running yet, like when an operation started in June of a year won't have documents for January of that year.&lt;br/&gt;&lt;br/&gt;You won't be asked again to upload this document if you skip it now.</value>
+  </data>
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>Payroll: No payroll defined</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
+  </data>
+  <data name="EndOfMonth_CheckHotWalletWithBlockchain" xml:space="preserve">
+    <value>Check Hotwallet Bitcoin Balance Against Blockchain</value>
+    <comment>This verifies the hotwallet data against master blockchain data, as per a blockchain explorer service or local crypto service node.</comment>
+  </data>
+  <data name="EndOfMonth_CheckLedgerAgainstHotWallet" xml:space="preserve">
+    <value>Resynchronize Ledger Bitcoin Balance Against Hotwallet</value>
+    <comment>This is the ledger balance of the hotwallet, which is supposed to say the hotwallet contains as much as it actually does.</comment>
+  </data>
+  <data name="EndOfMonth_ConsolidateHotwallet" xml:space="preserve">
+    <value>Consolidate Bitcoin Hotwallet</value>
+    <comment>This rearranges the hotwallet for easy payouts going forward (collects all small amounts into even chunks)</comment>
+  </data>
+  <data name="EndOfMonth_ConvertBitcoinCoreToCash" xml:space="preserve">
+    <value>Convert the Bitcoin Core in Hotwallet to Bitcoin Cash</value>
+    <comment>This places an order on an exchange to convert BTC in the hotwallet to BCH</comment>
+  </data>
+  <data name="EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch" xml:space="preserve">
+    <value>&lt;strong&gt;LEDGER BITCOIN BALANCE MISMATCH&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The hotwallet has a balance of &lt;strong&gt;{0:N2}&lt;/strong&gt; microbitcoin, but the ledger says a different amount should be there: &lt;strong&gt;{1:N2}.&lt;/strong&gt; The hotwallet will always be in the right in a mismatch between these two, so the ledger has been adjusted to match the hotwallet.&lt;br/&gt;&lt;br/&gt;
+This can happen after bitcoin splits (&amp;quot;forks&amp;quot;) or similar events, but if this happens repeatedly, month after month, and especially if money appears to be leaking from the hotwallet, there is cause for further investigation.
+</value>
+    <comment>This is displayed after (!) the ledger bitcoin balance has been updated to match the hotwallet by means of a new transaction.</comment>
+  </data>
+  <data name="EndOfMonth_Header_Cryptocurrency" xml:space="preserve">
+    <value>Cryptocurrency</value>
+    <comment>This is the header for various bitcoin hotwallet / cold storage operations</comment>
+  </data>
+  <data name="EndOfMonth_LedgerBitcoinBalanceTransactionDescription" xml:space="preserve">
+    <value>Ledger correction on hotwallet audit</value>
+    <comment>This is the description of a transaction that corrects the bitcoin balance in the ledger to equal that of the hotwallet.</comment>
+  </data>
+  <data name="EndOfMonth_VerifyColdStorage" xml:space="preserve">
+    <value>Verify Cold Storage</value>
+    <comment>This verifies that the amounts supposed to be in cold storage are indeed in cold storage</comment>
+  </data>
+  <data name="InspectLedgers_Header_Hotwallet" xml:space="preserve">
+    <value>Inspect Bitcoin Cash Hotwallet For</value>
+    <comment>This is followed by a year and month dropdown</comment>
   </data>
 </root>

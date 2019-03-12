@@ -265,6 +265,11 @@ namespace Swarmops.Common.Enums
         OrgVanityDomain,
 
         /// <summary>
+        /// Organization's maintenance donation level, in parts-per-million; typically 1000 or 100
+        /// </summary>
+        OrgMaintenanceDonationLevel,
+
+        /// <summary>
         ///     Free-text description of an inbound invoice (what's it for?)
         /// </summary>
         InboundInvoiceDescription,
@@ -422,6 +427,26 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// Document identity of an organization's square logo - also usable for circle-type avatars
         /// </summary>
-        OrgLogoSquare
+        OrgLogoSquare,
+
+        OrgAskParticipantStreet,
+        OrgParticipationEntry,
+        OrgParticipationDuration,
+        OrgSidebarShortInfo,
+        OrgSignupFirstPage,
+        OrgSignupLastPage,
+        OrgApplicationCompleteMail,
+        OrgParticipationAcceptedMail,
+        OrgApplicationQualifyingScore,
+
+        /// <summary>
+        /// Profile identifier for asset tracking automation
+        /// </summary>
+        AutomationProfileId,
+
+        /// <summary>
+        /// If custom automation, the XML for it, in string format
+        /// </summary>
+        AutomationProfileCustomXml
     }
 }

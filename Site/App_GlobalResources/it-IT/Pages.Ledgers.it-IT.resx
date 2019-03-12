@@ -117,234 +117,899 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AccountPlan_CreateRootAccount" xml:space="preserve">
+    <value>Crea nuovo account di root</value>
+  </data>
+  <data name="AccountPlan_Info" xml:space="preserve">
+    <value>Questo è il riepilogo dei conti finanziari nel vostro registro contabile. È possibile eseguire alcune operazioni di manutenzione da qui, anche se la maggior parte delle operazioni quotidiane dovrebbe essere delegata ai proprietari dei budget.</value>
+  </data>
+  
+  <data name="BalanceSheet_AccountName" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="BalanceSheet_ContentHeader" xml:space="preserve">
+    <value>Bilancio finanziario per {0},</value>
+    <comment>{0} is the organization name. The year follows immediately, so keep ending comma.</comment>
+  </data>
+  <data name="BalanceSheet_Current" xml:space="preserve">
+    <value>Attuale</value>
+  </data>
+  <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
+    <value>Foglio bilancio</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="BalanceSheet_EndYear" xml:space="preserve">
+    <value>Fine-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="BalanceSheet_Info" xml:space="preserve">
+    <value>Il bilancio è una panoramica dei beni e dei debiti in un'istantanea nel tempo, e viene utilizzato per vedere come i risultati influenzano la salute finanziaria complessiva dell'organizzazione. Si consiglia di consultare anche il &lt;a href="ProfitLossStatement"&gt;dichiarazione dei profitti e delle perdite&lt;/a&gt;, che è la panoramica delle entrate e delle uscite.</value>
+  </data>
+  <data name="BalanceSheet_PageTitle" xml:space="preserve">
+    <value>Bilancio</value>
+  </data>
+  <data name="BalanceSheet_Q1" xml:space="preserve">
+    <value>Cambia Q1</value>
+  </data>
+  <data name="BalanceSheet_Q2" xml:space="preserve">
+    <value>Cambia Q2</value>
+  </data>
+  <data name="BalanceSheet_Q3" xml:space="preserve">
+    <value>Cambia Q3</value>
+  </data>
+  <data name="BalanceSheet_Q4" xml:space="preserve">
+    <value>Cambia Q4</value>
+  </data>
+  <data name="BalanceSheet_StartYear" xml:space="preserve">
+    <value>Inizia-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="ProfitLossStatement_AccountName" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="ProfitLossStatement_ContentHeader" xml:space="preserve">
+    <value>Guadagno&amp;Perdita per {0} per</value>
+    <comment>The {0} is the organization name. The year number follows this string.</comment>
+  </data>
+  <data name="ProfitLossStatement_DownloadFileName" xml:space="preserve">
+    <value>Guadagno Perdita</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="ProfitLossStatement_Info" xml:space="preserve">
+    <value>Il P&amp;P è una panoramica delle entrate e delle uscite, che sono raggruppate per budget o per tipo di costi/ricavi. La somma di tutte le entrate e le spese costituisce il risultato annuale. Si consiglia inoltre di guardare il &lt;a href = "BalanceSheet"&gt;bilancio&lt;/a&gt;che è la panoramica deli patrimoni e dei debiti.</value>
+  </data>
+  <data name="ProfitLossStatement_LastYear" xml:space="preserve">
+    <value>Anno scorso</value>
+  </data>
+  <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
+    <value>Dichiarazione dei profitti e delle perdite</value>
+  </data>
+  <data name="ProfitLossStatement_Results" xml:space="preserve">
+    <value>Risultati</value>
+    <comment>Footer on P&amp;L statement</comment>
+  </data>
+  <data name="ProfitLossStatement_Ytd" xml:space="preserve">
+    <value>Da un anno a oggi</value>
+    <comment>Year To Date</comment>
+  </data>
+  <data name="ResyncExternalAccount_Info" xml:space="preserve">
+    <value>Se la tua contabilità in Swarmops non è sincronizzata con i tuoi registri bancari per qualsiasi ragione tecnica o umana, puoi risincronizzarli qui caricando un file master che copra il periodo di tempo necessario per la risincronizzazione.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Attenzione:&lt;/strong&gt; questo è un processo lungo che può effettuare &lt;em&gt;molte&lt;/em&gt; modifiche alla tua contabilità. Non utilizzare a meno che non si sia scoperto un disallineamento tra i propri record e quelli della propria banca.&lt;br/&gt;&lt;br/&gt;(Avrete la possibilità di rivedere le modifiche proposte prima che vengano inserite nei vostri registri finanziari)</value>
+  </data>
+  <data name="ResyncExternalAccount_PageTitle" xml:space="preserve">
+    <value>Resincronizza conto bancario</value>
+  </data>
+  <data name="SetRootBudgets_BudgetOwnerHeader" xml:space="preserve">
+    <value>Budget, proprietario</value>
+    <comment>Displayed above editables</comment>
+  </data>
+  <data name="SetRootBudgets_Info" xml:space="preserve">
+    <value>È qui che vengono stabiliti i bilanci di base per ogni esercizio finanziario. Dopo che questi sono stati impostati, ogni proprietario del budget suddivide i fondi all'interno dei rispettivi alberi del budget.</value>
+  </data>
+  <data name="SetRootBudgets_PageHeader" xml:space="preserve">
+    <value>Bilanci di base per {0}</value>
+    <comment>The {0} is replaced with the organization's name.</comment>
+  </data>
+  <data name="SetRootBudgets_PageTitle" xml:space="preserve">
+    <value>Imposta i budget di livello principale</value>
+    <comment>Displayed above main content</comment>
+  </data>
+  <data name="SetRootBudgets_SetNewBudgets" xml:space="preserve">
+    <value>Imposta nuovi budget</value>
+    <comment>Text on submit button</comment>
+  </data>
+  <data name="UploadBankFiles_AccountStatement" xml:space="preserve">
+    <value>Estratto conto</value>
+  </data>
+  <data name="UploadBankFiles_BankAccount" xml:space="preserve">
+    <value>Conto bancario</value>
+  </data>
+  <data name="UploadBankFiles_BankScreenshot" xml:space="preserve">
+    <value>Screenshot della banca</value>
+    <comment>Displayed as header above modally zoomed screenshot</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince" xml:space="preserve">
+    <value>&lt;/p&gt;&lt;p&gt;(I dati più recenti in Swarmops in &lt;em&gt;{0}&lt;/em&gt; sono da {1:yyyy-MMM-dd}. È necessario scaricare i dati bancari da almeno &lt;strong&gt;{2:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
+    <comment>Displayed to help user determine scope of bank download</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince_Paypal" xml:space="preserve">
+    <value>&lt;/p&gt;&lt;p&gt;(Paypal vi comunicherà il giorno del download dell'ultima transazione. Scarica tutte le transazioni da quel momento in poi, aggiungendo circa tre giorni di sovrapposizione.)</value>
+    <comment>Displayed instead of date of last transaction in the case of Paypal.</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
+    <value>Istruzioni per il download dei file della banca</value>
+    <comment>Header above instructions for generation of the bank file type selected.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
+    <value>&lt;p&gt;Il file conteneva {0:N0} transazioni. &lt;strong&gt;{1:N0} transazioni &lt;/strong&gt; sono state importate con successo nel registro contabile&lt;em&gt;{2}&lt;/em&gt;. ({3:N0} transazioni erano doppie.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Tuttavia, il saldo bancario non corrisponde ai record presenti in Swarmops.&lt;/strong&gt; Questo è di solito causato da transazioni mancanti. Caricare una lista delle transazioni di un periodo di tempo più lungo per assicurarvi che Swarmops visualizzi tutte le transazioni.&lt;/p&gt;&lt;p&gt;Il registro contabile di Swarmops è attualmente &lt;strong&gt;non sincronizzato&lt;/strong&gt; con quello della banca.&lt;/p&gt;</value>
+    <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
+    <value>&lt;h3&gt;Non è stato possibile importare il file bancario.&lt;/h3&gt;&lt;p&gt;Questo è dato da uno di questi tre motivi: ti è sfuggito qualche dettaglio nelle istruzioni di download, la banca ha cambiato il suo formato, oppure hai accidentalmente caricato il file completamente sbagliato (come una foto dall'ultima festa a cui sei stato invece della lista delle transazioni). Non è stata importata alcuna transazione. &lt;strong&gt;Riprovare.&lt;/strong&gt;</value>
+  </data>
+  <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
+    <value>File previsto</value>
+    <comment>The name of the expected file for uploading.</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader" xml:space="preserve">
+    <value>File importato con successo</value>
+    <comment>Displayed as header after successful processing</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader_ErrorBalance" xml:space="preserve">
+    <value>File importato, ma i dati non sono sincronizzati</value>
+    <comment>Displayed as header after a good processing that ended in sync failure</comment>
+  </data>
+  <data name="UploadBankFiles_FileType" xml:space="preserve">
+    <value>Tipo di file</value>
+    <comment>can be Account Statement or Payments File</comment>
+  </data>
+  <data name="UploadBankFiles_ImportError" xml:space="preserve">
+    <value>Errore durante l'importazione del file</value>
+    <comment>Displayed as header on import failure</comment>
+  </data>
+  <data name="UploadBankFiles_ImportResults" xml:space="preserve">
+    <value>&lt;p&gt;Il file conteneva {0:N0} transazioni. &lt;strong&gt;{1:N0} transazioni&lt;/strong&gt; sono state importate con successo nel account di contabilità &lt;em&gt;{2}&lt;/em&gt;. ({3:N0} transazioni erano dei duplicati.)&lt;/p&gt;&lt;p&gt;Dopo l'importazione, il saldo del conto di Swarmops corrisponde a quello della banca.&lt;/p&gt;</value>
+    <comment>Displayed on successful import. Assumes plural among all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles_Info" xml:space="preserve">
+    <value>Qui è possibile caricare i file dalla banca o dal fornitore di servizi di pagamento nella propria contabilità aziendale. Gli esempi includono la cronologia del conto e i pagamenti ricevuti.</value>
+    <comment>Displayed in sidebar on page.</comment>
+  </data>
+  <data name="UploadBankFiles_Instructions" xml:space="preserve">
+    <value>Istruzioni</value>
+  </data>
+  <data name="UploadBankFiles_PageTitle" xml:space="preserve">
+    <value>Carica file bancari</value>
+    <comment>Displayed above main content.</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentAllDuplicates" xml:space="preserve">
+    <value>Comunque, erano tutti duplicati di informazioni sui pagamenti precedentemente caricate. Nessuna nuova informazione di pagamento è stata importata su Swarmops.</value>
+  </data>
+  <data name="UploadBankFiles_PaymentCount" xml:space="preserve">
+    <value>nessun pagamento| un pagamento | {0} pagamenti</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentFileUploadedHeader" xml:space="preserve">
+    <value>File di pagamento caricato</value>
+  </data>
+  <data name="UploadBankFiles_PaymentGroupCount" xml:space="preserve">
+    <value>nessun gruppo di pagamento| un gruppo di pagamento | {0} gruppi di pagamento</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentsFile" xml:space="preserve">
+    <value>File dei pagamenti</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary1" xml:space="preserve">
+    <value>Il file di pagamento conteneva {0}.</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary2" xml:space="preserve">
+    <value>Sono stati importati &lt;strong&gt;{0}{1:N2}&lt;/strong&gt; in pagamenti, distribuiti in {2} su {3}.</value>
+    <comment>like EUR 2,102.00 in 3 payments across 2 groups </comment>
+  </data>
+  <data name="UploadBankFiles_PaymentSummaryDuplicates" xml:space="preserve">
+    <value>C'erano anche alcune informazioni duplicate ({0} su{1}).</value>
+  </data>
+  <data name="UploadBankFiles_Processing" xml:space="preserve">
+    <value>Elaborazione file...</value>
+  </data>
+  <data name="UploadBankFiles_ProcessingComplete" xml:space="preserve">
+    <value>Elaborazione completa</value>
+  </data>
+  <data name="UploadBankFiles_ResultsBad" xml:space="preserve">
+    <value>&lt;p&gt;&lt;br/&gt;&lt;strong&gt; Non è stato possibile leggere il file come un file di input per questa banca.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Ci sono molteplici motivi per cui questo potrebbe accadere: Il file potrebbe essere danneggiato, la banca potrebbe aver cambiato il formato del suo file, oppure hai caricato il file completamente sbagliato. Si prega di riprovare&lt;/p&gt;</value>
+    <comment>Displayed when the input file can't be parsed, before import attempt.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsGood" xml:space="preserve">
+    <value>&lt;p&gt; Il file è stato &lt;strong&gt;importato con successo.&lt;/strong&gt; {0:N0} nuove transazioni importate; {1:N0} transazioni scartate poiché erano delle copie di alcune transazioni già presenti su Swarmops. Il bilancio di Swarmops corrisponde con quello della banca.&lt;/p&gt;&lt;p&gt;Il file conteneva transazioni dal {2:gg-mm-aaaa} al {3:gg-mm-aaaa}.&lt;/p&gt;</value>
+    <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsQuestionable" xml:space="preserve">
+    <value>&lt;p&gt;Il file è stato importato, ma &lt;strong&gt;il saldo del conto non corrisponde.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Dopo l'importazione di {0:N0} transazioni (e lo scarto di {1:N0} duplicati), l'intero file è stato processato. Tuttavia, il saldo del conto risultante in Swarmops non è uguale a quello dell'estratto conto; vi è una differenza di {3} {2:N2}.&lt;/p&gt;
+&lt;p&gt;Provare a caricare un nuovo estratto conto bancario. Se questo continua a produrre una mancata corrispondenza, potrebbe essere necessario provare a &lt;a href="/Pages/v5/Ledgers/ResyncExternalAccount.aspx"&gt;risincronizzare&lt;/a&gt; il conto bancario con un file dell'estratto conto completo.&lt;/p&gt;</value>
+    <comment>Displayed on successful import, but the resulting balance is off compared to the account statement file that was just uploaded. 2 is the diff, 3 is the currency.</comment>
+  </data>
+  <data name="UploadBankFiles_SelectAccount" xml:space="preserve">
+    <value>Selezionare account di contabilità</value>
+    <comment>Select prompt for the financial account in the organization's bookkeeping.</comment>
+  </data>
+  <data name="UploadBankFiles_SelectBankAndAccount" xml:space="preserve">
+    <value>Seleziona il tipo di file e l'account per il caricamento</value>
+  </data>
+  <data name="UploadBankFiles_SelectBankFileType" xml:space="preserve">
+    <value>Seleziona file di tipo banca</value>
+    <comment>Header above several bank logos, prompting a selection of bank.</comment>
+  </data>
+  <data name="UploadBankFiles_UploadAnother" xml:space="preserve">
+    <value>Caricare un altro file banca?</value>
+    <comment>Displayed as header after uploading one file</comment>
+  </data>
+  <data name="UploadBankFiles_UploadBankFile" xml:space="preserve">
+    <value>Carica file bancario</value>
+    <comment>Displayed as header above download instructions / upload form</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterDifference" xml:space="preserve">
+    <value>Differenza</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterLedgerBalance" xml:space="preserve">
+    <value>Saldo del libro mastro</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterTotal" xml:space="preserve">
+    <value>Totale</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAction" xml:space="preserve">
+    <value>Azione</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
+    <value>Importo</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderExpectedCloseDate" xml:space="preserve">
+    <value>Chiusura prevista</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderId" xml:space="preserve">
+    <value>ID#</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderOpenedDate" xml:space="preserve">
+    <value>Data di apertura</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
+    <value>Destinatario</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Header" xml:space="preserve">
+    <value>Lista non inizializzati</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Info" xml:space="preserve">
+    <value>Questa pagina ti permette gli account in attesa e quelli non impostati (spese, fatture, anticipi di contanti, etc.) In questo momento o nel momento della chiusura di un qualsiasi portafoglio.</value>
+  </data>
+  <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
+    <value>Elenca gli account in attesa di pagamento</value>
+  </data>
+  <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
+    <value>Nome dell'account</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveLong" xml:space="preserve">
+    <value>Questo account è aperto alle transazioni?</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
+    <value>Attivo</value>
+  </data>
+  
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="AccountPlan_Edit_BudgetBalance" xml:space="preserve">
+    <value>Budget (il bilancio è&lt;span id="SpanTextCurrency"&gt;foo&lt;/span&gt;&lt;span id="SpanEditBalance"&gt;bar&lt;/span&gt;)</value>
+    <comment>foo, bar replaced on load with actual values</comment>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableLong" xml:space="preserve">
+    <value>Le persone possono utilizzare questo account per le dichiarazioni di spese?</value>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
+    <value>Spese</value>
+  </data>
+  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
+    <value>Profilo di automazione</value>
+  </data>
+  <data name="AccountPlan_Edit_Header" xml:space="preserve">
+    <value>Modificare account</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderAutomation" xml:space="preserve">
+    <value>Automazione</value>
+    <comment>Automatic connections to bank, blockchain etc.</comment>
+  </data>
+  <data name="AccountPlan_Edit_HeaderConfiguration" xml:space="preserve">
+    <value>Configurazione</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
+    <value>Operazioni quotidiane</value>
+  </data>
+  <data name="AccountPlan_Edit_Parent" xml:space="preserve">
+    <value>Account principale o gruppo</value>
+  </data>
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
+    <value>Questo è un account spese. Tali account normalmente hanno un bilancio in negativo, dal momento che prosciugano le risorse dall'organizzazione. Il bilancio proposto è stato modificato in negativo.</value>
+    <comment>Displayed as a message box</comment>
+  </data>
+  <data name="AccountPlan_Header_AccountName" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="AccountPlan_Header_Balance" xml:space="preserve">
+    <value>Bilancio</value>
+  </data>
+  <data name="AccountPlan_Header_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="AccountPlan_Header_Edit" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="AccountPlan_Header_Flags" xml:space="preserve">
+    <value>Contrassegni</value>
+  </data>
+  <data name="InspectLedgers_Header_For" xml:space="preserve">
+    <value>per</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
+    <value>Ispeziona</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_PageTitle" xml:space="preserve">
+    <value>Ispeziona registri</value>
+  </data>
+  
+  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
+    <value>Saldo in entrata</value>
+  </data>
+  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
+    <value>Nessun saldo precedente</value>
+  </data>
+  <data name="InspectLedgers_Info" xml:space="preserve">
+    <value>Questi sono i registri contabili in partita doppia per le finanze dell'organizzazione. È possibile studiarli in dettaglio qui ai fini di verifica. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt;&lt;strong&gt;Si sta attualmente visualizzando un conto P&amp;L, quindi i segni sono invertiti - il reddito è negativo e le spese positive&lt;/strong&gt; poiché è così che funziona la doppia contabilità veneziana.&lt;/span&gt;</value>
+  </data>
+  
+  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
+    <value>Non ci sono transazioni in questo account per il periodo di tempo selezionato.</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
+    <value>Saldo in uscita</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
+    <value>Saldo finale</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>Saldo finale (fino ad oggi)</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
+  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
+    <value>(Si prega di selezionare un account.)</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Il file dei pagamenti è stato &lt;strong&gt;importato correttamente.&lt;/strong&gt; Sono stati importati {1:N0} pagamento(i) in {0:N0} gruppo(i), per un totale di {3} {2:N2}}.&lt;/p&gt;</value>
+    <comment>Arguments 0-3 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPaymentsWithDupes" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Il file dei pagamenti è stato &lt;strong&gt;importato correttamente.&lt;/strong&gt; Sono stati importati {1:N0} pagamento(i) in {0:N0} gruppo(i), per un totale di {3} {2:N2}. &lt;/p&gt;&lt;p&gt;(C'erano anche {5:N0} pagamento (i) doppio (i) in {4:N0} gruppo (i).)&lt;/p&gt;</value>
+    <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
+  </data>
+  <data name="AccountPlan_AddAccount" xml:space="preserve">
+    <value>aggiungi account</value>
+    <comment>Displayed as link in parens after account group name</comment>
+  </data>
+  <data name="AccountPlan_NewAccount" xml:space="preserve">
+    <value>Nuovo account</value>
+    <comment>the name of newly-created accounts, before rename</comment>
+  </data>
+  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
+    <value>Questo è un account di debito. Tali account normalmente hanno un saldo negativo, in quanto rappresentano un patrimonio negativo per l'organizzazione. Il saldo iniziale che hai inserito è stato cambiato in negativo.</value>
+  </data>
+  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
+    <value>Saldo iniziale (in entrata nel {0}), {1}</value>
+    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
+  </data>
+  <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
+    <value>Mostra account inattivi (&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
+    <comment>The {0} is the number of inactive accounts.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedLoss" xml:space="preserve">
+    <value>Perdita prevista {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedProfit" xml:space="preserve">
+    <value>Profitto previsto {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="TaxForms_Payroll_AdditiveTax" xml:space="preserve">
+    <value>Aliquota ad valorem</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_DeductedTax" xml:space="preserve">
+    <value>Detrazioni fiscali</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
+    <value>Stipendio lordo</value>
+  </data>
+  <data name="TaxForms_Payroll_Info" xml:space="preserve">
+    <value>Visualizza i bollettini fiscali (moduli fiscali compilati) per i dipendenti dell'organizzazione, che sono facili da copiare nei moduli fiscali effettivi, o anche da stampare così come sono. Le prestazioni e i moduli effettivi variano da paese a paese e a volte dipendono da codici e plugin di terze parti.</value>
+  </data>
+  <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
+    <value>Moduli fiscali per gli stipendi</value>
+  </data>
+  <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
+    <value>Moduli fiscali mensili per</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="TaxForms_Payroll_TotalCost" xml:space="preserve">
+    <value>Costo totale</value>
+  </data>
+  <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
+    <value>Totale tasse</value>
+  </data>
+  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
+    <value>Visualizzando/Modificando transazione #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
+    <value>Ispezionando transazione #&lt;span id="spanModalTransactionId"&gt;12345&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_AccountName" xml:space="preserve">
+    <value>Nome account</value>
+  </data>
+  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
+    <value>Il bilancio è corretto:</value>
+  </data>
+  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
+    <value>(Nessun dato della transazione)</value>
+  </data>
+  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
+    <value>Iniziali</value>
+  </data>
+  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
+    <value>Accesso effettuato</value>
+  </data>
+  <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
+    <value>La transazione &lt;span class="spanAnnoyingBlink"&gt; NON È BILANCIATA:&lt;/span&gt; quantità mancante</value>
+  </data>
+  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
+    <value>Aggiungi un altra colonna alla transazione</value>
+    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
+  </data>
+  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
+    <value>Dettagli del tracking della transazione automatica</value>
+    <comment>(this means the transaction is locked from editing)</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
+    <value>Attestato da {0} il {1:yyyy-MMM-dd}</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
+    <value>combinato con</value>
+    <comment>Inserted between transaction causes.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_InvoiceX" xml:space="preserve">
+    <value>&lt;strong&gt; Fattura in entrata {0:N0}&lt;/strong&gt; da {1}:</value>
+    <comment>the {1} is the supplier name</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
+    <value>Questo è il &lt;strong&gt; pagamento #{0:N0}.&lt;/strong&gt; È un pagamento per</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
+    <value>Documento validato da {0} il {1:yyyy-MMM-dd}</value>
+    <comment>"Document" refers to receipts, invoices, etc.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
+    <value>Eseguito da {0}.</value>
+    <comment>As in "payout executed by": who actually paid the money?</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
+    <value>Stipendio di base {0}{1:N2}, regolazioni lordo {2:+N2;-N2;none}, stipendio lordo{3:N2}, ritenute fiscali {4:N2}, regolazioni netto {5:+N2;-N2;none}, pagamento {6:N2}.</value>
+    <comment>The "none"s in the format strings need to be translated.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
+    <value>Si prega di selezionare un account per aggiungere una colonna a questa transazione.</value>
+  </data>
+  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
+    <value>Perdita annua</value>
+  </data>
+  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
+    <value>Profitto annuo</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
+    <value>(descrizione dettagliata omessa)</value>
+  </data>
+  
+  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
+    <value>Account</value>
+    <comment>Usually the account name. Can also be "several".</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
+    <value>Importo</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  
+  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
+    <value>Bilanciando/Combaciando transazione $&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; del &lt;span id="spanModalTransactionDate"&gt;aaaa-mm-gg&lt;/span&gt;</value>
+    <comment>The span text is replaced runtime.</comment>
+  </data>
+  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
+    <value>Bilancia &amp; Abbina transazioni</value>
+  </data>
+  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
+    <value>Corrispondenze esatte per questo importo</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
+    <value>Importo corrispondente ma in data/ora inaspettata</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
+    <value>Importo con tolleranza massima del 5%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
+    <value>Bilancia</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
+    <value>Abbina</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
+    <value>Bilancia la differenza contro questo account:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
+    <value>La transazione coincide a questo pagamento:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
+    <value>La transazione è sbilanciata da &lt;span id="spanTransactionUnbalancedBy"&gt;+FOO,BAR.QX&lt;/span&gt; Desideri...</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
+    <value>Bilanciare manualmente questa transazione contro un account?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayout" xml:space="preserve">
+    <value>Corrispondere la differenza della transazione a un pagamento aperto non corrispondente?</value>
+  </data>
+  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
+    <value>(Nessun pagamento in corso)</value>
+  </data>
+  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
+    <value>(Nessun pagamento adatto da corrispondere)</value>
+  </data>
+  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
+    <value>Importo con tolleranza massima del 1%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
+    <value>-- Seleziona un pagamento --</value>
+  </data>
+  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
+    <value>Importo con tolleranza massima del 10%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
+    <value>Pagamento #{0:N0}, {5} previsto {1:aaaa-mm-gg} per {2}: {3} {4:N2}</value>
+    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
+    <value>La transazione corrisponde a questo pagamento in valuta estera:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
+    <value>Mappare la transazione a un pagamento in valuta estera ({0}% tolleranza di importo)?</value>
+  </data>
+  <data name="BudgetActual_ContentHeader" xml:space="preserve">
+    <value>Bilancio vs attuale</value>
+  </data>
+  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
+    <value>Previsto da un anno a oggi</value>
+    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
+  </data>
+  <data name="BudgetActual_Info" xml:space="preserve">
+    <value>In questa pagina viene visualizzata l'analisi del bilancio confrontata con un analisi del risultato effettivo finora ottenuto.</value>
+  </data>
+  <data name="BudgetActual_PageTitle" xml:space="preserve">
+    <value>Budget vs Attuale</value>
+    <comment>Financial budget vs. Actual financial outcome</comment>
+  </data>
+  <data name="BitcoinHotwallet_Address" xml:space="preserve">
+    <value>Indirizzo Bitcoin</value>
+  </data>
+  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
+    <value>Saldo microcoins</value>
+  </data>
+  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
+    <value>Percorso di derivazione</value>
+  </data>
+  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
+    <value>Valore {0}</value>
+    <comment>The {0} is the organization currency.</comment>
+  </data>
+  <data name="BitcoinHotwallet_Header" xml:space="preserve">
+    <value>Analisi dettagliata del Hotwallet</value>
+    <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
+  </data>
+  <data name="BitcoinHotwallet_Info" xml:space="preserve">
+    <value>Questo mostra un'analisi degli indirizzi e del saldo del Hotwallet di bitcoin dell'organizzazione. (Gli indirizzi vuoti e quelli utilizzati in precedenza non vengono visualizzati)</value>
+  </data>
+  <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
+    <value>Bitcoin Hotwallet</value>
+  </data>
+  <data name="BitcoinHotWallet_Empty" xml:space="preserve">
+    <value>Non ci sono fondi nel hotwallet.</value>
+  </data>
+  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
+    <value>Hash transazione</value>
+  </data>
+  <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
+    <value>Transazione in uscita non spesa</value>
+    <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
+  </data>
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>Beni XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_AssetsDelta" xml:space="preserve">
+    <value>(cambio)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
+    <value>Il rendiconto è una panoramica dei beni e dei debiti in un momento preciso nel tempo e viene utilizzato per vedere come i risultati influenzano la salute finanziaria complessiva dell'organizzazione. Per maggiori dettagli si rimanda al &lt;a href="BalanceSheet"&gt; rendiconto avanzato&lt;/a&gt;, oppure al &lt;a href="ProfitLossStatement"&gt;Conto economico&lt;/a&gt;, che rappresenta la panoramica delle entrate e delle uscite.</value>
+  </data>
+  <data name="BalanceSheet_Liabilities" xml:space="preserve">
+    <value>Debiti XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_LiabilitiesDelta" xml:space="preserve">
+    <value>(cambio)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_LossToDate" xml:space="preserve">
+    <value>Perdita fino ad oggi ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
+    <value>Profitto fino ad oggi ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
+    <value>Crea transazione</value>
+    <comment>Text on button for executing create</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDateTime" xml:space="preserve">
+    <value>Data e ora della transazione (UTC)</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDescription" xml:space="preserve">
+    <value>Descrizione della transazione</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDialogHeader" xml:space="preserve">
+    <value>Creando nuova transazione</value>
+    <comment>Header of dialog</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAccount" xml:space="preserve">
+    <value>Account della prima colonna della transazione</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAmount" xml:space="preserve">
+    <value>Importo della prima colonna della transazione</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
+    <value>Aggiungi nuova transazione</value>
+    <comment>Option in sidebar</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
+    <value>Abbina fattura</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
+    <value>Abbina la transazione a questa fattura in uscita:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
+    <value>Abbinare a una fattura aperta in uscita?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
+    <value>Abbinare questo a una fattura aperta in uscita in una valuta non standard (5% tolleranza del tasso di cambio)?</value>
+  </data>
+  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
+    <value>Corrispondenza più probabile</value>
+    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
+  </data>
+  <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
+    <value>Fattura in uscita #{0:N0} per {1}, scadenza {2:yyyy-MMM-dd}: {3}</value>
+    <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
+  </data>
+  <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
+    <value>Report Iva per l'eccedenza dell'anno {1:aaaa-mm}</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
+    <value>Abbina</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonVatReport" xml:space="preserve">
+    <value>Chiudi dichiarazione Iva</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeVatReport" xml:space="preserve">
+    <value>Questa transazione è il pagamento/il rimborso per questo report dell'Iva:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
+    <value>Chiudere un report dell'Iva con questa transazione?</value>
+  </data>
+  <data name="ViewVatReports_Footer_Total" xml:space="preserve">
+    <value>Totale report</value>
+  </data>
+  <data name="ViewVatReports_Header_DateTime" xml:space="preserve">
+    <value>Data/Ora</value>
+    <comment>Timestamp of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Description" xml:space="preserve">
+    <value>Descrizione</value>
+    <comment>Description of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Dox" xml:space="preserve">
+    <value>Documenti</value>
+    <comment>This is above the "view documents" icon</comment>
+  </data>
+  <data name="ViewVatReports_Header_Inbound" xml:space="preserve">
+    <value>Iva in entrata</value>
+  </data>
+  <data name="ViewVatReports_Header_Outbound" xml:space="preserve">
+    <value>Iva in uscita</value>
+  </data>
+  <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
+    <value>Fatturato</value>
+  </data>
+  <data name="ViewVatReports_Info" xml:space="preserve">
+    <value>Stai visualizzando un rapporto IVA archiviato. L'IVA in entrata e in uscita, così come il fatturato totale, sono stati registrati per il periodo del rapporto. Questo rapporto è pronto per essere trasmesso alle autorità fiscali.</value>
+  </data>
+  <data name="ViewVatReports_PageTitle" xml:space="preserve">
+    <value>Report Iva</value>
+    <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
+  </data>
+  <data name="ViewVatReports_Title_View" xml:space="preserve">
+    <value>Visualizza</value>
+    <comment>This is the word or words before the name of the displayed VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_Header_NoReports" xml:space="preserve">
+    <value>Nessun report Iva presente per questa organizzazione</value>
+  </data>
+  <data name="ViewVatReports_NoReports" xml:space="preserve">
+    <value>Non ci sono report dell'Iva da mostrare. Questo è probabilmente dovuto al fatto che ancora non è passato un periodo completo di report dell'Iva, quindi non è ancora stato possibile creare un report dell'iva.</value>
+  </data>
+  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
+    <value>-- niente da segnalare --</value>
+    <comment>This is displayed when there are no items at all in a VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_ReportTotals" xml:space="preserve">
+    <value>Totali per questo report</value>
+    <comment>Displayed as description of footer</comment>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>Il campo descrizione della transazione non può essere vuoto.</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>La transazione necessita una prova di acquisto.</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>L'importo dell'IVA sembra essere immesso in maniera errata.</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
+    <value>Contrassegnare come acquisto diretto</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>Importo dell'acquisto con addebito diretto ({0})</value>
+    <comment>{0} is the currency</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
+    <value>Addebita l'acquisto a questo budget</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
+    <value>Carica ricevuta o altra documentazione</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
+    <value>Aggiorna descrizione della transazione</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
+    <value>Iva per parte dell'importo</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>Segnare questo come un acquisto effettuato direttamente dall'account?</value>
+  </data>
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>Descrizione / Account</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>Contabilità generale per</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>Questa transazione chiude il report dell'Iva per {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>Questa transazione apre il report dell'iva per {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>Questa transazione riceve il pagamento per la fattura in uscita #{0:N0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>Questa transazione paga {0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>Questa transazione paga fattura in entrata #{0:N0} da {1}.</value>
+  </data>
+  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
+    <value>Profilo di automazione</value>
+    <comment>This is where the bank name, country, and currency appears.</comment>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>Non ci sono account di merito impostati per l'automazione, quindi nessun account supporta il caricamento dei dati in questo momento. Ritorno al cruscotto.</value>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
+    <value>Poiché questo è stato il primo caricamento su questo account automatizzato, il saldo iniziale di &lt;strong&gt; {0} {1:N2}&lt;/strong&gt; relativo all'anno {2} è stato rilevato e impostato</value>
+    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
+    <value>(che era stato conteggiato con &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; nella valuta operativa del libro contabili)</value>
+    <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
+  </data>
+  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
+    <value>Chiudi libri contabili finanziari per l'anno {0}</value>
+    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
+  </data>
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Crea {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
+    <value>Recupero automatico dei dati di transazione per {0}</value>
+    <comment>Parameter zero is the account name as given by the user</comment>
+  </data>
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Resoconti annuali</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>Account di Dati Esterni e Account di Corrispondenza</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Libro paga e Tasse</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+    <value>Invia rapporti a contabili, azionisti, ecc.</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
+  <data name="EndOfMonth_Info" xml:space="preserve">
+    <value>Questa è una lista di cose da fare per chiudere il mese precedente e iniziare quello nuovo per quanto riguarda la contabilità.</value>
+  </data>
+  
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>Routine-di-fine-mese: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>Carica estratto conto ({1}) per {0} per {2}</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>Carica i dati di transazione ({1}) per {0}</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
   
   
   

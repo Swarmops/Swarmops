@@ -122,27 +122,107 @@
   
   
   
+  <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
+    <value>Entschuldigung, Sie können eine Gehaltsauszahlung nicht zurückerstatten.</value>
+  </data>
+  <data name="AttestCosts_Error_InvalidAmountRetry" xml:space="preserve">
+    <value>Das scheint kein gültiger Betrag zu sein. Bitte versuchen Sie es nochmal?</value>
+  </data>
+  <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
+    <value>Bitte wählen Sie ein Budget aus um die Gebühr neu auszurichten.</value>
+  </data>
   
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>Aktion</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>Begünstigter</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>Dokumente</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>Artikel</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>Angefordert</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
   
   
   
   
   
   
+  <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
+    <value>Ablehnen</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonRebudget" xml:space="preserve">
+    <value>Wiedereinstellen</value>
+    <comment>keep short</comment>
+  </data>
   
+  <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
+    <value>Welchen Betrag bestätigen Sie stattdessen (in {0})?</value>
+    <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionCorrect" xml:space="preserve">
+    <value>Wechseln Sie diesen Item zu diesen Betrag (in {0}), dann bestätigen Sie es so wie das:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionDeny" xml:space="preserve">
+    <value>Optionaler Grund für die Ablehnung des Übermittlers:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
+    <value>Verschieben Sie die Gebühr zu diesen Budget anstatt:</value>
+  </data>
   
   
   
   
+  <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
+    <value>Diese Aufnahme soll einen anderen Budget berechnen. Verschieben Sie es hier.</value>
+  </data>
+  <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
+    <value>Was scheint das Problem mit dieser Aufnahme zu sein?</value>
+  </data>
   
   
   
+  <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
+    <value>Bleiben Sie auf Budget</value>
+  </data>
   
+  <data name="AttestCosts_Overdrafted" xml:space="preserve">
+    <value>BUDGET WURDE ÜBERGEZOGEN.</value>
+    <comment>The UPPERCASE is intentional.</comment>
+  </data>
   
   
   
+  <data name="AttestCosts_SalaryAttested" xml:space="preserve">
+    <value>Gehalt #{0:N0} für {1} wurde bestätigt für {3:N2}.</value>
+  </data>
   
   
+  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
+    <value>Rechnungsbetrag Gesamt (in {0})</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>Beschreibung</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
   
   
   
@@ -184,27 +264,167 @@
   
   
   
+  <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
+    <value>Empfänger</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_Header" xml:space="preserve">
+    <value>Kosten bereit für Auszahlung</value>
+  </data>
   
+  <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
+    <value>OCR für Mobile Apps anzeigen</value>
+  </data>
+  <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
+    <value>Zeige offene Auszahlungen ({0:N0})</value>
+    <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>Geld auszahlen</value>
+  </data>
+  <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
+    <value>Die Auszahlung #{0} kann nicht rückgängig gemacht werden: es ist bereits erledigt oder geschlossen.</value>
+  </data>
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>Auszahlung #{0:N0} zu {1} wurde erstellt.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>Auszahlung #{0:N0} wurde rückgängig gemacht und alles restauriert.</value>
+  </data>
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>Zusatzsteuer</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Abzugsteuer</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Brutto-Zahlungsscheck</value>
+  </data>
   
+  <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
+    <value>Lohnsteuerformulare</value>
+  </data>
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>Monatliche Steuerformulare für {0} für</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Gesamtkosten</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Gesamtsteuer</value>
+  </data>
+  <data name="RequestCashAdvance_Amount" xml:space="preserve">
+    <value>Vorausbetrag (in {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_BankAccount" xml:space="preserve">
+    <value>Kontonummer</value>
+  </data>
+  <data name="RequestCashAdvance_BankClearing" xml:space="preserve">
+    <value>Ausgleichsnummer</value>
+  </data>
+  <data name="RequestCashAdvance_BankName" xml:space="preserve">
+    <value>Bankname</value>
+  </data>
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
+    <value>Ihre Bankdetails</value>
+  </data>
   
+  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
+    <value>Vorauszahlung anfordern</value>
+  </data>
+  <data name="RequestCashAdvance_Purpose" xml:space="preserve">
+    <value>Grund</value>
+  </data>
   
   
   
   
+  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
+    <value>Bitte geben Sie Ihre Bank Kontonummer ein.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankClearing" xml:space="preserve">
+    <value>Bitte geben Sie Ihre Bank Ausgleichsnummer ein.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
+    <value>Bitte geben Sie Ihren Banknamen ein.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
+    <value>Bitte wählen Sie ein Budget aus um zu berechnen.</value>
+  </data>
   
   
   
   
   
   
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Erstellen</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Bitte geben Sie den Betrag vom Geld (in {0}) der Rechnungsanforderungen.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Bitte bestimmen Sie ein Budget um zu berechnen.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Bitte laden Sie ein oder mehrere Dokumente von der originalen Rechnung hoch.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Bitte wählen Sie eine Option aus.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Bitte beschreiben Sie was dieser Eikauf war.</value>
+  </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Anforderung</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Anforderung</value>
+  </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>VAT teil vom Gesamten ({0})</value>
+  </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>VAT vom Gesamten ({0})</value>
+  </data>
   
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Rechnungsender</value>
+  </data>
   
   
   
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Erstellen</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
   
   
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Erhaltene Finanzmitteln ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Gesendet</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Kunde</value>
+  </data>
   
   
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Gesamter Betrag</value>
+  </data>
   
   
   
@@ -237,49 +457,9 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referenz</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
   
 </root>

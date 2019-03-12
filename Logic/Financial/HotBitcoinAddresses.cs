@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NBitcoin;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -18,6 +19,21 @@ namespace Swarmops.Logic.Financial
         public static HotBitcoinAddresses ForOrganization (Organization organization)
         {
             return FromArray (SwarmDb.GetDatabaseForReading().GetHotBitcoinAddresses (organization));
+        }
+
+        public static HotBitcoinAddresses ForOrganization(Organization organization, BitcoinChain chain)
+        {
+            return FromArray(SwarmDb.GetDatabaseForReading().GetHotBitcoinAddresses(chain, organization));
+        }
+
+        public static Dictionary<BitcoinChain, Int64> GetSatoshisInHotwallet(Organization organization)
+        {
+            Dictionary<BitcoinChain, Int64> result = new Dictionary<BitcoinChain, long>();
+
+            result[BitcoinChain.Cash] = ForOrganization(organization, BitcoinChain.Cash).Unspents.AmountSatoshisTotal;
+            result[BitcoinChain.Core] = ForOrganization(organization, BitcoinChain.Core).Unspents.AmountSatoshisTotal;
+
+            return result;
         }
 
         public HotBitcoinAddresses InMainWallet
@@ -67,13 +83,33 @@ namespace Swarmops.Logic.Financial
 
             throw new NotEnoughFundsException("Insufficient funds", "Group argument", new Satoshis (satoshisRequired)); // Serving as a placeholder for now, also testing the notification
 
-            throw new NotImplementedException("This fundfinding path is not completed"); // TODO
+            // throw new NotImplementedException("This fundfinding path is not completed"); // TODO
         }
 
         public Int64 BalanceSatoshisTotal
         {
-            get { return this.Sum (item => item.BalanceSatoshis); }
+            // the BalanceSatoshis field doesn't update properly, so we need to collect
+            // this over all Unspents
+
+            get { return Unspents.AmountSatoshisTotal; }
         }
+
+        /*
+        public Int64 BalanceSatoshisTotalByUnspents
+        {
+            get
+            {
+                Int64 satoshis = 0;
+
+                foreach (HotBitcoinAddress address in this)
+                {
+                    foreach (HotBitcoinAddressUnspent unspent in address.Unspents)
+                    {
+                        
+                    }
+                }
+            }
+        }*/
 
         public HotBitcoinAddressUnspents Unspents
         {

@@ -117,88 +117,331 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>لقد قام شخص جديد بتقديم طلب ليصبح [RegularTitle] في [OrganizationName]!
+[ConcernedPersonName] وهو يقطن حاليا في [GeographyName] ، [CountryCode].</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] طالب جديد لوظيفة: [ConcernedPersonName]،[GeographyName]</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>في محاولة للدفع إلى عنوانك للبتكوين كاش، قد تم رفض العنوان ([BitcoinAddress]) من طرف المحرك المسؤول عن التعويضات لكونه غير صالح. ولهذا فقد تم مسحه من على بروفايلك.
+من فضلك قم بتسجيل الدخول لـ [InstallationName] على [ExternalUrl] وقم بإنشاء عنوان جديد للبتكوين لتلقي التعويضات.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - بند العمل] عنوان سحب البيتكوين خاطئ</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>لقد قمت بتغيير عنوان البتكوين كاش الخاص بك لتلقي التعويضات من [BitcoinOldAddress] إلى [BitcoinAddress]. لتدابير أمنية، جميع المدفوعات سيتم إيقافها خلال الـ48 ساعة القادمة.
+
+إن لم تكن قد قمت بتغيير عنوان الدفع لديك وكان هنالك إختراق أمني، فمن فضلك قم بالضغط على هذا الرابط فورا من أجل غلق حسابك: [LockdownLink]
+
+إن قمت بالضغط على هذا الرابط، فحسابك سيتم تعطيله على الفور من دون أي طلب للتأكيد. لكن، إن كنت بالفعل قد طلبت تغيير عنوان الدفع، فكل شيئ على ما يرام ولست مطالبا بعمل أي شيئ أخر.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] عنوان الدفع للبتكوين كاش قد تم تغييره</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>لديك رصيد ينتظر السحب في [OrganizationName], ولكنك لم تقوم بوضع محفظة لسحب بيتكوين كاش.
+
+فضلا سجل الدخول ل [InstallationName] في [ExternalUrl] وإتبع الرابط من أجل تعين محفظة السحب الخاصة بك - ستجيدها في في قائمة عناصر المهام.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] من فضلك قم بتعيين عنوان الدفع للبتكوين كاش الخاص بك</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>لقد قمت بتعيين عنوان دفع بيتكوين كاش: [BitcoinAddress]. كإجراء احتياطي أمني, تم إيقاف جميع السحوبات خلال الـ 48 ساعة القادمة ، وسيتم دفعها إلى العنوان الجديد بعد ذلك.
+
+إذا لم تقم بتعيين عنوان الدفع هذا (قد يكون من المفيد التحقق من العنوان أعلاه للحصول على أمان إضافي), اتصل [OrganizationName] فورا.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>تم تعيين عنوان دفع السحوبات لبيتكوين كاش [ConcernedPersonName]. السحوبات ستبدأ بعد 48 ساعة عند انقضاء فترة الحجز.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] قام بتعيين عنوان السحوبات بيتكوين كاش</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] عنوان الدفع للبتكوين كاش قد ثم تعيينه</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>المحفظة الساخنة للبتكوين ل [OrganizationName] قامت بي [PaymentCount] سحب ألي لما مجموعه [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] ميكروبيتكوين أو "بيت").</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] سحوبات المحفظة الساخنة: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[BitcoinAmountFloat] ميكروبيتكوين ("بت") قامت بإرسال بيتكوين كاش لمحفظتك ([BitcoinAddress]) من طرف [OrganizationName] للأتي:
+
+[EmbeddedPreformattedText]
+
+يجب أن تكون قد لحظت بالفعل عملية تجارية في محفظتك، وينبغي أن تتمكن من إنفاقها خلال ساعة (ستة تأكيدات عادية).</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] الأموال المدفوعة لك: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>عند محاولة دفع الآلي من المحفظة الساخنة، لا يتطابق المفتاح الخاص المستخدم مع المفاتيح العامة لتأكيد عملية جمع الأموال اللازمة, هذه الحالة خطيرة.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName] -عاجل] المفتاح الخاص بالبيتكوين خطأ ؛ لا يمكن دفع</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmops تحاول دفع ممقداره [CurrencyCode] [AmountNeededFloat], ولكن [CurrencyCode] [AmountWalletFloat] هذا المقدار المتوفر في المحفظة الساخنة لبيتكوين كاش. Swarmops غير قلدر على إجراء دفعات إضافية في هذا الوقت.
+
+الرجاء شاحن الكمية اللازمة للمحفظة الساخنة حالا - بالإضافة إلى [AmountMissingMicrocoinsFloat] ميكروبيتكوين ("بيت") لازمة لمتابعة العمليات المالية للمحفظة الساخنة.
+
+Swarmops ستواصل المحاولة وإرسال الإشعرات إلى حين نجاح العملية.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] -عنصر العمل] نفاذ كمية بيتكوين كاش للمحفظة الساخنة للمدفوعات - إشحن فورا</value>
+  </data>
+  
+  
+  
+  
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>الدفع المسبق مع [OrganizationName] من أجل [CurrencyCode] [BudgetAmountFloat] بخصوص [RequestPurpose] ثم رفضه. النص أسفله يشرح سبب الرفض:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] الدفع المسبق ثم رفضه: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>إن الطلب الذي قمت بتقديمه للإستفادة من سلفة نقدية مع [OrganizationName] من أجل [BudgetAmountFloat] [CurrencyCode] ، بخصوص [RequestPurpose] ، قد تم تصنيفه على أنه قد دُفع من قِبل محاسبي المنظمة.
+
+وهذا يعني بأنك سوف ترى المبلغ قريبا على حسابك.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] تسديد السلفة النقدية: [BudgetAmountFloat][CurrencyCode]</value>
+  </data>
+  
+  
   
   
   
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>إن طلبك للنفقة مع [OrganizationName] من أجل [BudgetAmountFloat][CurrencyCode] بخصوص [RequestPurpose] قد تم رفضه. النص التالي يفسر سبب رفض طلبك:
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] لقد تم رفض طلب النفقة:[BudgetAmountFloat][CurrencyCode]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>إن طلب النفقة الذي قمت بتقديمه مع [OrganizationName] من أجل [BudgetAmountFloat][CurrencyCode]، بخصوص [RequestPurpose]، قد تم تصنيفه على أنه قد دُفع من قِبل محاسبي المنظمة.
+
+وهذا يعني بأنك سوف ترى المبلغ قريبا على حسابك.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] تمت المصادقة على طلب النفقات: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>إن فاتورة طلب النفقة الخاص بك مع [OrganizationName] من أجل [CurrencyCode]
+[BudgetAmountFloat]، بخصوص [RequestPurpose]، قد تم المصادقة عليها من طرف الأشخاص المسؤولين عن السجلات.
+
+الطلب سوف يتم دفعه لك عندما سوف تتم المصادقة عليه من طرف المسؤول عن الميزانية.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] تمت المصادقة على إيصالات المطالبة بالنفقات: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  
+  
+  
+  
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>أضيف [Regular] جديد بطريقة يدوية الى [OrganizationName] في مجال يخصك.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] جديد [Regular]: [PersonName]، [PersonGeography][CountryCode] (يدوي)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>اشتراك جديد [Regular] لـ [OrganizationName] في أحد مجالاتك.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] جديد [Regular]: [PersonName]، [PersonGeography][CountryCode]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [Regularship] جدد:[PersonName]، [PersonGeography][CountryCode] (يدوي)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+تم ارسال هذا البريد الى [Addressee] من [OrganizationName]. اذا كنت لا ترغب في استقبال الإشعارات في المستقبل، فيرجى تسجيل الدخول الى [InstallationName] في [ExternalUrl] وتعديل اعدادات الاشعارات الخاصة بك.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>لقد تم إضافة رسالتك إلى قائمة الإنتضار من أجل إرسالها ولائحة المستلمين قد تم إنشائها.
+مراسلتك سوف يتم إرسالها إلى، أو سنحاول إرسالها إلى، [RecipientCount] أشخاص قاطنين بـ
+[GeographyName] في [OrganizationName].</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] تم تحديد مستلمي الاتصالات لـ [GeographyName]: [RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>إن رسالتك إلى [GeographyName] قد تم إرسالها إلى جميع المستلمين المقررين. من أصل [RecipientCount] مستلمين مقررين، [RecipientsSuccess] قد توصلوا بمراسلتك على ما يبدو -- فقط لا تنسى أن المراسلة يمكن أن لا تصل أو لا تفتح فيما بعد لعدد من الأسباب.
+
+الوقت الذي تطلبه الإنجاز: [ResolvingTime].
+الوقت الذي تطلبه الإرسال: [TransmissionTime].
+الوقت الذي مضى منذ الإنشاء حتى الوصول:[TotalTime].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] لقد تم نقل الاتصالات: [GeographyName]</value>
+  </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>لقد قام شخص جديد بتسجيل الدخول ك [RegularTitle] في [OrganizationName]!
+[ConcernedPersonName] وهو يقطن حاليا في [CountryCode] ،[GeographyName].</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] جديد [RegularTitle]: [ConcernedPersonName]، [GeographyName]</value>
+  </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>شخص ما،أنت في الغالب،قام بتقديم طلب لتغيير كلمة السر المرتبطة بهذا البريد الإلكتروني على [InstallationName]. لكن،المصادقة ذات عاملين كانت قد فعّلَت بالنسبة لهذا الحساب من قبل من أجل الرفع من مستوى الأمن. و لهذا،فكلمة السر لايمكن أن يعاد تعيينها بالطريقة العادية.
+
+المرجو التواصل مع المسؤول عن الموظفين على [InstallationName] لحل هذا المشكل و تعيين كلمة مرور جديدة عن طريق إتباع إجراءات لتحديد الهوية أكثر صرامة و ملائمة لهذا المستوى الأمني
+الثنائي العوامل.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] لقد تعذرت إعادة تعيين كلمة السر</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>تم تغيير كلمة مرور [InstallationName] الخاصة بك في [ExternalUrl].
+
+إذا لم تقم بأي إجراء لتغيير كلمة المرور هذه فقط، فقد حدث خرق في الحماية. إذا كانت هذه هي الحالة، يرجى إغلاق حسابك فورا عن طريق النقر على الرابط التالي:
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+اذا قمت بالنقر على رابط الاغلاق اعلاه، فسيتم اغلاق اي حساب مفتوح على الفور، سيتم قفل تسجيلات الدخول باستخدام كلمة المرور المحددة حديثًا، وسيتصل المشرفون بك للتحقق من ما حدث والعمل معكم لإسترجاع حسابك.
+
+ومع ذلك، إذا كنت أنت الذي غيرت كلمة المرور الآن، وبالتالي تسبب هذا في إرسال هذا الإشعار، فمن الواضح أن كل شيء جيد ومثلما ينبغي أن يكون. يمكنك الإستمرار.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] تم تغيير كلمة المرور</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>أصدر الأشخاص في [OrganizationName] بطاقة لإعادة تعيين كلمة المرور إلى حسابك، ويفترض أن يكون ذلك بناءً على طلبك. هذه التذكرة صالحة لمدة 24 ساعة.
+
+يرجى اتباع هذا الرابط لإعادة تعيين كلمة المرور الخاصة بك وإعادة تشغيل المصادقة ذات عاملين، إذا كانت مشغلة في السابق:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+ستنتهي صلاحية هذه البطاقة في 24 ساعة. اذا لم تقم باعادة تعيين كلمة المرور الخاصة بك في هذه المدة، فسيتوجب عليك الاتصال بالمسؤولين في [OrganizationName] لإصدار بطاقة جديدة لإعادة تعيين كلمة المرور.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] تذكرة إعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>شخص ما، على الأرجح انت، طالب بإعادة تعيين كلمة المرور المقترنة بعنوان البريد الإلكتروني هذا على [InstallationName]. إن كنت أنت صاحب الطلب، فالرجاء الضغط على الرابط أدناه في غضون ستين دقيقة لإكمال إجراء إعادة تعيين كلمة المرور:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+إن لم تكن قد طلبت إعادة تعيين كلمة المرور، فيمكنك (ويجب عليك) تجاهل هذا البريد. ستنتهي صلاحية طلب إعادة تعيين كلمة المرور خلال ساعة واحدة. (إذا كنت تحصل على عدد كبير من روابط إعادة تعيين كلمة المرور التي لم تطلبها، فيرجى إبلاغ المسؤول.)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] تذكرة اعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>تكمن حاجة التحقق من الايصالات في غرض مواصلة عملياتها المالية.
+
+المرجو تسجيل الدخول الى [InstallationName] في [ExternalUrl] مالية / ايصالات متحقق منها من أجل التحقق من صحتها أو رفضها.</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>[[OrganizationName] -إجراء] إيصالات مقدمة -يجب التحقق من صحتها</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>تم إلغاء دفع راتبك [RequestPurpose]. لن يتم دفعه.
+
+إذا كان ذلك بمثابة مفاجأة لك، يرجى الاتصال بالمنظمة و / أو بمشرفك على وجه السرعة. تم إعطاء ما يلي كسبب:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] تم رفض دفع الراتب: [CurrencyCode][BudgetAmountFloat]</value>
+  </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>هذا هو الوضع الملخص للرواتب الخاصة بك لـ [LastYear]. إنها ليست عبارة عن راتب جديد، بل هي عبارة عن رواتب شهرية دفعت لك على مدار العام الماضي بالإضافة إلى أي ضرائب تم خصمها. الغرض من هذا البيان هو بمثابة بيانات للسجلات الخاصة بك و / أو لاغراض تخص الإعلان الضريبي للسنة الماضية.
+
+الراتب الإجمالي لـ [LastYear]: [CurrencyCode] [GrossSalaryTotal]
+الضريبة المقتطعة منه: [CurrencyCode][TaxDeductedTotal]
+صافي الراتب المدفوع: [CurrencyCode] [NetSalaryTotal]
+
+
+الشهر       الإجمالي     المخصوم          الصافي       الدفع باستعمال
+-----  ----------  -----------  ----------  -----------
+[EmbeddedPreformattedText]
+
+المجموع [GrossSalaryTotal] [TaxDeductedTotal] [NetSalaryTotal] 
+
+
+
+بالإضافة إلى ذلك، تم تسديد [CurrencyCode] [TaxAdditiveTotalUnpadded] في الضرائب من قِبل المنظمة مقابل عملك، بالإضافة إلى المبلغ الذي تم خصمه أعلاه. هذه أيضاً ضريبة على راتبك، حتى لو كانت طبيعتها مخفية بيروقراطياً.</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] بيان ملخص الراتب ل [LastYear]</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>قامت خلفية Swarmops [SwarmopsVersion] في المضيف [HostName] بترقية شكل قاعدة البيانات لــ Swarmops من أجل المراجعة [DbVersion].
+
+هذا فقط للمعلومة، لست مطالبا بأخد أي اجراء.</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>تمت ترقية قاعدة بيانات Swarmops</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>إن خلفية الـ Swarmops [SwarmopsVersion] على المضيف [Hostname] لم تتمكن من تحديث قاعدة البيانات لـ Swarmops. هذا في الغالب راجع إلى خطأ مؤقت في الشبكة الخارجية، الشيئ الذي أدى إلى عدم التمكن من إسترجاع ملف الباتش.
+
+نحن الأن بصدد الإطلاع على مخطط قاعدة البيانات [DbVersion]، لكننا نحاول التحديث إلى [DbVersionExpected].
+
+هذا التحديث سوف يعاد على رأس كل ساعة. بعض الوظائف سوف يتم تعطيلها حتى إنتهاء التحديث. و إذا أردت البحث عن الأخطاء و إصلاحها ،فإن حزمة تحديث قاعدة البيانات سوف تجدها على packages.swarmops.com، من نفس المكان الذي تقوم منه apt-get بجلب حُزَم البرمجيات.</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>لم تتم ترقية قاعدة بيانات Swarmops</value>
+  </data>
+  <data name="System_Exception_Body" xml:space="preserve">
+    <value>تم طرح استثناء غير معالج في Swarmops
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="System_Exception_Subject" xml:space="preserve">
+    <value>اسثناء Swarmops!</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>هذا بريد اختباري أُرسل من طرف Swarmops [SwarmopsVersion] التي تعمل حاليا على [HostName]. لقد قمت بالتو بتغيير إعدادات خادم البريد. للتحقق من أن الإعدادت الجديدة هي على ما يرام، Swarmops يقوم بإرسال هذه الرسالة التجريبية من النظام الخلفي.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>اختبار خادم البريد لــ Swarmops</value>
+  </data>
+  <data name="System_PublicRootReset_Body" xml:space="preserve">
+    <value>لم يكن المفتاح الأصلي العام للبتكوين في قاعدة بيانات MySql مطابقًا للمفتاح الأصلي الخاص للبتكوين المخزن في /etc/swarmops على [HostName]. و من المُحْتَمل أن تمثل خطرا ، ويجب ألا تحدث أبداً ، لذلك تمت إعادة إنشاء مفتاح أصلي عام من المفتاح الخاص وإعادة تخزينه في قاعدة البيانات حاذفا بذلك المفتاح الذي كان موجودا من قبل.</value>
+  </data>
+  <data name="System_PublicRootReset_Subject" xml:space="preserve">
+    <value>Swarmops: تمت اعادة تعيين المفتاح الأصلي العام للبتكوين للمحفظة الساخنة</value>
+  </data>
+  <data name="System_Startup_Backend_Body" xml:space="preserve">
+    <value>النسخة الخلفية لـ Swarmops [SwarmopsVersion] على المضيف [HostName] قد أطلقت بنجاح وقامت بربط الإتصال مع قاعدة البيانات وإطار الإشعارات.</value>
+  </data>
+  <data name="System_Startup_Backend_Subject" xml:space="preserve">
+    <value>خلفية نظام الـ Swarmops جاهزة للعمل</value>
+  </data>
+  <data name="System_Startup_Frontend_Body" xml:space="preserve">
+    <value>تم تشغيل نسخة واجهة خادم المقبس لـ Swarmops [SwarmopsVersion] على المضيف [HostName] بنجاح وتم ربط اتصالها بقاعدة البيانات واشعارات إطارات العمل.</value>
+  </data>
+  <data name="System_Startup_Frontend_Subject" xml:space="preserve">
+    <value>واجهة النظام لـ Swarmops جاهزة للعمل</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
+    <value>واجه محرك الإرسال لــSwarmops على [HostName] نوعًا غير معروف من الحمولة ([UnrecognizedPayloadType]). يجب أن يحدث هذا فقط في حالات نادرة جدًا بالتزامن مع الترقيات حيث تقوم النسخة الجديدة بالتعامل مع شيئ قام بتغيير الأسماء أثناء هذا الإجراء، الشيئ الذي يُصَنّف على أنه نادر الحدوث.
+
+إن تكرر هذا الخطأ، فقد يكون لديك برنامج مساعد مثبت بشكل سيء أو شيء من هذا القبيل. في جميع الحالات، فقد تم تجاهل الرسالة التي لم يتم التعرف عليها ولن يتم إرسالها، طالما Swarmops لم يعرف كيفية التعامل معها.</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
+    <value>Swarmops: حمولة اتصالات غير معروفة</value>
+  </data>
 </root>

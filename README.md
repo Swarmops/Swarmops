@@ -21,7 +21,7 @@ Goal #3, _functional software to assist civil liberties resistances in repressiv
 Release schedule
 ----------------
 
-Stable releases are built every six months, at the end of every calendar half-year. Sprints (currently "betas") are built every month. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
+Stable releases are built every six months, at the end of every calendar half-year. Sprints (currently "betas") are built on the 5th of every month, sometimes skipping a month when bigger features are being written. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
 
 This is the plan, at least. "Stable" is a somewhat wide definition at the moment. Rather, Swarmops has a few functions to go to enter Open Beta stage.
 
@@ -29,23 +29,42 @@ This is the plan, at least. "Stable" is a somewhat wide definition at the moment
 Installation
 ------------
 
-Minimum requirements are Debian Stretch or Ubuntu Xenial (due to systemd requirements; upstart is deprecated). As Debian Stretch hasn't been released at time of writing, Ubuntu Xenial is the only platform Swarmops is currently built for.
+Minimum requirements are a 2016+ Debian or Ubuntu LTS. At present (December 2018), this means that the Stretch, Xenial, and Bionic distributions are supported. Further, due to the insane lag of Mono distributions to make it into the official repositories, the most recent Mono is also required. Swarmops will install this for you if you just enable it as detailed below.
 
-If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! Run these commands _as root_ - first, fetch the signing key for the repository:
+If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! It requires Run these commands _as root_ - first, fetch the signing keys for the repositories:
 
-> `wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -`
+```
+sudo su
+wget -qO- https://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+```
 
-Then, add the Swarmops repository to your list of software sources, where [your_distribution] below is xenial (Ubuntu) or stretch (Debian):
-> `echo deb http://packages.swarmops.com/ [your_distribution] contrib > /etc/apt/sources.list.d/swarmops.list`
+Then, add the Swarmops and Mono repositories to your list of software sources, where [your_distro] is `debian` or `ubuntu`, and [your_distro_version] below is `xenial` or `bionic` (Ubuntu) or `stretch` (Debian):
+
+```
+echo "deb https://packages.swarmops.com/ [your_distro_version] contrib" > /etc/apt/sources.list.d/swarmops.list
+echo "deb https://download.mono-project.com/repo/[your_distro] stable-[your-distro-version] main" > /etc/apt/sources.list.d/mono-official-stable.list
+```
+
+Make sure you can retrieve packages over secure connections:
+
+```
+apt install apt-transport-https
+```
 
 Then, run this to install the Swarmops frontend:
-> `apt update; apt install swarmops-frontend`
+
+```
+apt update; apt install swarmops-frontend
+```
 
 If you installed onto a clean server, Swarmops will offer to configure Apache to use Swarmops as the default site. If you decline this offer, you can still enable the site by an `a2ensite swarmops` as a suggested configuration is provided. If you prefer to configure this entirely manually, install a new Virtual Host in Apache, a Mono host, pointing at /usr/share/swarmops/frontend as its directory. We're using /usr/bin/mod-mono-server4 as our server. Note the 4 at the end; many configurators are old and will set a 2 there. See /etc/apache2/sites-available/swarmops.conf for a template file.
 
 Navigate to the new site and continue installation from the running site. To complete the install, you will also need to install a backend process, which can (but shouldn't) run on the same machine; the frontend communicates with the backend through the database and through TCP port 10944:
 
-> `apt install swarmops-backend`
+```
+apt install swarmops-backend
+```
 
 At one point in the installation process, you will be prompted to copy the file `/etc/swarmops/database.config` from the server running swarmops-*frontend* to the server running swarmops-*backend*. This allows the backend to connect to the database as configured by the installation process. Once you do this, the installation process will detect the running backend and the installation will continue.
 
@@ -59,7 +78,15 @@ No permission necessary, really. Just check in code. The backend is ASP.Net/C# a
 
 Let's take that again, because it's important: **about 90% of development happens in JavaScript and jQuery**, so don't shy away because it looks like a C# backend.
 
-There's also a Facebook group named [Swarmops Developers](https://www.facebook.com/groups/swarmops.developers/) which you may want to join. Yes, Facebook is evil, so give me a better alternative. Until there is one, that's where discussions happen. There's also a little-used [Slack](https://swarmops.slack.com).
+There's also a [Slack workspace](https://swarmops.slack.com) ([public invite here](https://join.slack.com/t/swarmops/shared_invite/enQtMzI1MTMwMTkyNjI4LWUwMjQxY2I3MWVkMTFjNzE5MWU5ZjEzYjZlY2UwYjk2YmNiOGQ4OWQ3NmZkMjA0NGIxY2ZlMWVlNzRjNjE4MmE)) and a Facebook group named [Swarmops Developers](https://www.facebook.com/groups/swarmops.developers/) which you may want to join. Yes, Facebook and Slack are both private, and that is bad, but until there's a better alternative, that's where discussions happen.
+
+
+
+Translating
+-----------
+
+Use [this link](http://translate.swarmops.com/project/activizr/invite?d=65j615l6862727v4e373) to join the Swarmops project on Crowdin at the Proofreader level. There are [many languages](https://crowdin.com/project/activizr) that still need translation; any one that reaches 50% or more translated with the Menu and Global sections at 100% will be enabled from the Language Selection page.
+
 
 
 License
@@ -70,106 +97,96 @@ No, there isn't a "license". This code is completely in the public domain, with 
 That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.
 
 
+Beta-7 progress
+---------------
 
-Beta-3 features progress
+Beta-7 will be released on March 5, with string freeze three days earlier. It contains overhauls to outbound payments and significant UX improvements in this area.
+
+
+
+Beta-8 features progress
 ------------------------
 
-Beta-3 will be released on January 5, 2018, with string freeze on January 2. Its focus will be on Shapeshift integration and ability to receive and send payments in all different cryptocurrencies, but will also include some further Bitcoin Cash features that weren't included in Beta-2.
+Beta-8 will be released on April 5, with string freeze three days earlier. Its focus is to increase multicurrency functionality for payouts and bank imports.
 
-- [x] Import all crypto pairs from Shapeshift and track exchange rates
-- [x] Rewrite the Bitcoin Hotwallet page to display Bitcoin Cash balances (part 2, including conversion to fiat)
+- [x] Parameterize the bank file import procedure (big feature!)
+- [x] Make it possible to import bank files in non-presentation currency
+- [ ] Rewrite payment addresses (a new name for this? Account vs. designator?)
+- [ ] Complete rewrite of the bank import procedure, account matching UX
+- [ ] End-of-month wizard to guide user through accounting steps
+
+
+Beta-9 features progress
+------------------------
+
+Beta-9 will be released on June 5, 2019, with string freeze three days earlier. Its tentative focus will be Fairshift integration and possibly an open API exposure.
+
+- [ ] Enable payment destinations, with currency
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
 - [ ] Write a Pay Invoice page for Bitcoin Cash
-- [x] Enable cryptocurrency as any other currency on entry
-- [ ] Enable payment identifiers, with currency
 - [ ] Tie payment identifiers to people and suppliers
-- [ ] String Freeze (January 2, 2018)
-- [ ] Release (January 5, 2018)
 
 
-Beta-4 features progress
-------------------------
-
-Beta-4 will be released on February 5, 2018, with string freeze on February 2. Its tentative focus will be Bitwala integration and possibly an open API exposure.
-
-
-
-Overall Beta features checklist
------------------------
-
-Here are the features still required to exit beta and declare release:
-
-- [x] enter ledger transactions manually
-- [ ] send invoices (and receive payment in bitcoin)
-- [ ] delegate budgets
-- [ ] self-signup mails
-- [ ] ledger-close screen
-
-There will also be many other small improvements added along with these features, for no better reason than their absence being pain points, since the last alpha:
-
-- [x] Proper org settings 
-- [ ] HTML/Markdown mail
-- [x] Mail Resolver
-- [ ] Expensify integration?
-- [X] PDF asynchronous interpreter (websocket?)
-- [ ] Recurring expenses
-- [x] Char encode HTML doc
-- [ ] Org descriptions (long, short) on self-signup page
-- [ ] Hotwallet payments
-- [x] Tech problem box
-- [x] Donate sockify
-- [x] Live financial numbers
-- [ ] Todo box to JSON
-- [x] Proper menu highlight
-- [X] Basic search
-- [x] Account edit spacing
-- [ ] Alert to load hotwallet from cold
-- [ ] Bitcoin Echo test page (probably needs to be Bitcoin Cash b/c fees)
-- [ ] Icons for Validation page
-- [x] Favicon New
-- [x] Fix Inspect Ledger header (looks bad)
-- [x] Clean Login page
-- [x] OOBE: Wait for daemons to start
-- [x] Impersonation mode for testing
-- [x] Expense access
-- [ ] Assign role geolock
-- [x] Advance line spacing
-- [x] Upload Org 16x9 logo
-- [ ] Submit invoice anon interface
-- [ ] Control messages for invoice progress
-- [ ] Pay invoice
-- [ ] Controlify financialtransaction to show on balancetx page
-- [ ] Close ledger year
-- [x] Internal TX account type
-- [x] Create TX
-- [ ] Download main Ledger
-- [X] Fix password reset after refactor
 
 
 
 Detailed install instructions
 -----------------------------
 
-This is the exact install procedure for a two-server setup -- you could also install on one and the same server:
+This is the exact install procedure for a two-server setup. Two separate servers are strongly recommended for production use; for testing and evaluation, they can be one and the same machine.
 
-1. Create two clean Ubuntu Xenial VMs. Call them backend and frontend. They can be in different firewall zones. Install mysql-server on the backend (or on a third server).
+1. Create two clean Ubuntu Xenial/Bionic or Debian Stretch machines. Call them _backend_ and _frontend._ They can be in different firewall zones. Install mysql-server on the backend (or on a third server).
 
-2. Install the repository key as described above and run `apt update`.
+2. Install the repository and its key on both machines. In the commands below, replace the "[xenial/bionic/stretch]" with just _xenial_, _bionic_, or _stretch,_ as per your distribution. Same for "[ubuntu/debian]".
+
+```
+sudo su
+wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo deb http://packages.swarmops.com/ [xenial/stretch] contrib > /etc/apt/sources.list.d/swarmops.list
+echo "deb https://download.mono-project.com/repo/[ubuntu/debian] stable-[xenial/bionic/stretch] main" > /etc/apt/sources.list.d/mono-official-stable.list
+apt update
+```
 
 3. Install the packages "swarmops-frontend" and "swarmops-backend", respectively, on the frontend and backend machine. Make use of as much automation on installing swarmops-frontend as you like, up to and including the autoconfiguration of Apache.
 
-4. Open a browser and navigate to the swarmops-frontend machine, pass the first no-bot check in the install wizards, and enter database server root credentials. This will create a database and provision it with initial data, which takes a couple of minutes. (You can create all of this manually if you're not comfortable with entering root credentials.)
+```
+apt install swarmops-frontend
+```
 
-5. The installation will pause here and wait for the backend to come online. This is done by manually copying the now-created `/etc/swarmops/database.config` file from the frontend to the backend machine.
+4. Open a browser and navigate to the swarmops-frontend machine, pass the first no-bot check in the install wizards, and enter database server root credentials. This will create a database and provision it with initial data, which takes a couple of minutes.
 
-6. As the backend daemon detects the presence of a valid `/etc/swarmops/database.config` file, it will open the database (using the credentials of the file - make sure they're also valid for the backend machine, if you're using machine-level permissions!) and write its presence into the database.
+5. If you're not comfortable entering the root credentials into a random app, (optional step) run these commands as root instead at the MySQL/MariaDB prompt to create the database users with the right permissions. Replace the passwords with something of your own choosing:
 
-7. The installing frontend process will detect this new entry in the database and proceed to a prompt to create the first user. On entering the credentials, it will login as that user into the Sandbox organization, and the Swarmops instance is operational.
+```
+CREATE DATABASE `Swarmops`;
+CREATE USER `Swarmops-R` IDENTIFIED BY 'readpassword';
+CREATE USER `Swarmops-W` IDENTIFIED BY 'writepassword';
+CREATE USER `Swarmops-A` IDENTIFIED BY 'adminpassword';
+GRANT SELECT ON mysql.proc TO `Swarmops-W`;
+GRANT SELECT ON mysql.proc TO `Swarmops-A`;
+USE `Swarmops`;
+GRANT ALL ON `Swarmops`.* TO `Swarmops-A`;
+GRANT SELECT ON `Swarmops`.* TO `Swarmops-W`;
+GRANT EXECUTE ON `Swarmops`.* TO `Swarmops-W`;
+GRANT SELECT ON `Swarmops`.* TO `Swarmops-R`;
+FLUSH PRIVILEGES;
+```
 
-8. From the Dashboard, the Apache will open a websocket to a daemon running on its own machine on port 12172, and that daemon will in turn open a websocket to the backend daemon on port 10944 (configurable in Admin / System-Wide Settings).
+We're using three different users with different privilege sets (read, write, admin) for security purposes; most operations are made using the read-only user, and only database maintenance is done using the account with all privileges. Do note the granting of `select` privileges on `mysql.proc` for the write and admin user accounts; this is necessary to execute stored procedures because of a design decision way back in MySQL's history.
 
-9. From there, one can play around with the Sandbox organization, or create one or more live organizations.
+This will allow you to use the manual account settings in the setup, which is more complicated as you need to fill in twelve fields instead of two, but also doesn't require you to give the webpage the database root password.
+
+6. The installation will pause here and wait for the backend to come online. This is done by manually copying the now-created `/etc/swarmops/database.config` file from the frontend to the same location on the backend machine.
+
+7. As the backend daemon detects the presence of a valid `/etc/swarmops/database.config` file, it will open the database (using the credentials of the file - make sure they're also valid for the backend machine, if you're using machine-level permissions!) and write its presence into the database.
+
+8. The installing frontend process will detect this new entry in the database and proceed to a prompt to create the first user. On entering the credentials, it will login as that user into the Sandbox organization, and the Swarmops instance is operational.
+
+9. From the Dashboard, the Apache will open a websocket to a daemon running on its own machine on port 12172, and that daemon will in turn open a websocket to the backend daemon on port 10944 (configurable in Admin / System-Wide Settings).
+
+10. From there, one can play around with the Sandbox organization, or create one or more live organizations.
 
 
 If one of these steps fails, in particular if the frontend doesn't get to provision the entire database and bring the first user logged in to the Swarmops Desktop, it is currently recommended to restart from two blank servers. Future code will handle more failure scenarios.

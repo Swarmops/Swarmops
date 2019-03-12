@@ -36,7 +36,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 if (salary.PayrollItem.Person.BitcoinPayoutAddress.Length > 0 && salary.Attested == false)
                 {
-                    salary.Attest (salary.PayrollItem.Person); // null for system apparently isn't allowed here
+                    salary.Approve (salary.PayrollItem.Person); // null for system apparently isn't allowed here
                 }
             }*/
             
@@ -54,9 +54,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             HotBitcoinAddress address = HotBitcoinAddress.Create (this.CurrentOrganization, BitcoinChain.Cash,
                 BitcoinUtility.BitcoinDonationsIndex, this.CurrentUser.Identity);
 
-            this.BitcoinCashAddressUsed = address.Address;
+            this.BitcoinCashAddressUsed = address.ProtocolLevelAddress;
             string guid = Guid.NewGuid().ToString ("N");
-            GuidCache.Set (guid, address.Address);
+            GuidCache.Set (guid, address.ProtocolLevelAddress);
             this.TransactionGuid = guid;
 
             // Calculate conversion rate (satoshi-cents to unit-cents, so we're good, even if the conversion rate
@@ -75,7 +75,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 JObject data = new JObject();
                 data ["ServerRequest"] = "AddBitcoinAddress";
-                data["Address"] = address.Address;
+                data["Address"] = address.ProtocolLevelAddress;
                 socket.Send(data.ToString());
                 socket.Ping(); // wait a little little while for send to work
                 socket.Close();
@@ -83,13 +83,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             this.BoxTitle.Text = Resources.Pages.Financial.Donate_PageTitle;
             this.LabelExplainBitcoinDonation.Text = String.Format (Resources.Pages.Financial.Donate_Explain,
-                CurrentOrganization.Name, address.Address);
+                CurrentOrganization.Name, address.HumanAddress);
             this.LabelReceivedFunds.Text = String.Format(Resources.Pages.Financial.Donate_FundsReceivedLabel,
                 CurrentOrganization.Currency.DisplayCode);
 
             this.ImageBitcoinQr.ImageUrl =
-                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=bitcoincash:" +
-                HttpUtility.UrlEncode (address.Address + "?label=" +
+                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" +
+                HttpUtility.UrlEncode (address.HumanAddress + "?label=" +
                                        Uri.EscapeDataString (String.Format (Resources.Pages.Financial.Donate_TxLabel,
                                            CurrentOrganization.Name))); // URI scheme doesn't like &, =
         }

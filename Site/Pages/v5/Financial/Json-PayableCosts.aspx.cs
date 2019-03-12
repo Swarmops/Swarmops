@@ -59,32 +59,37 @@ namespace Swarmops.Frontend.Pages.Financial
                     continue;
                 }
 
+                PaymentTransferInfo transferInfo = payout.PaymentTransferInfo;
+
                 result.Append ("{");
                 result.AppendFormat (
-                    "\"itemId\":\"{0}\"," +
+                    "\"itemId\":\"{7}\"," +
                     "\"due\":\"{1}\"," +
                     "\"recipient\":\"{2}\"," +
-                    "\"bank\":\"{3}\"," +
-                    "\"account\":\"{4}\"," +
-                    "\"reference\":\"{5}\"," +
+                    "\"transferInfo\":\"{3}\"," +
                     "\"amount\":\"{6}\"," +
+                    "\"ocrAvailable\":\"{4}\"," +
                     "\"action\":\"" +
-                    "<img id=\\\"IconApproval{7}\\\" class=\\\"IconApproval{7} LocalIconApproval LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconApproved{7} LocalIconApproved LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconDenial{7} LocalIconDenial LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconDenied{7} LocalIconDenied LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconUndo{7} LocalIconUndo LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPrototype action-icon' baseid='{7}' protoid='{0}' data-ocr='{10}' data-fieldcount='{9}' data-reference='{5}' />" +
+                    "<img id='IconApproved{7}' class='LocalIconApproved LocalPrototype status-icon' baseid='{7}' />" +
+                    "<img id='IconWait{7}' class='LocalIconWait LocalPrototype status-icon' baseid='{7}' />" +
+                    "<img id='IconUndo{7}' class='LocalIconUndo LocalPrototype action-icon' baseid='{7}' />" +
+                    "<img id='IconDenial{7}' class='LocalIconDenial LocalPrototype action-icon' baseid='{7}' />" +
+                    "<img id='IconDenied{7}' class='LocalIconDenied LocalPrototype status-icon' baseid='{7}' />" +
                     "\"",
                     payout.ProtoIdentity,
                     (payout.ExpectedTransactionDate <= today
                         ? Global.Global_ASAP
                         : payout.ExpectedTransactionDate.ToShortDateString()),
-                    JsonSanitize (TryLocalize (payout.Recipient)),
-                    JsonSanitize (TryLocalize (payout.Bank)),
-                    JsonSanitize (payout.Account),
+                    JsonSanitize (TryLocalize (transferInfo.Recipient)),
+                    transferInfo.Currency.Code + ", " + JsonSanitize (transferInfo.LocalizedPaymentMethodName),
+                    transferInfo.OcrAvailable? "<img class='LocalIconOcr status-icon' />": string.Empty,
                     JsonSanitize (TryLocalize (payout.Reference)),
                     payout.HasNativeAmount? payout.NativeAmountString : (payout.AmountCents/100.0).ToString("N2"),
-                    payout.ProtoIdentity.Replace ("|", ""));
+                    payout.ProtoIdentity.Replace ("|", ""),
+                    string.Empty, // this is here to match the databaseid field below
+                    transferInfo.LocalizedPaymentInformation.Count,
+                    transferInfo.OcrAvailable? "yes": "no");
                 result.Append ("},");
             }
 
@@ -100,36 +105,39 @@ namespace Swarmops.Frontend.Pages.Financial
         {
             StringBuilder result = new StringBuilder(16384);
 
-            DateTime today = DateTime.Today;
-
             foreach (Payout payout in payouts)
             {
+                PaymentTransferInfo transferInfo = payout.PaymentTransferInfo;
+
                 result.Append("{");
                 result.AppendFormat(
-                    "\"itemId\":\"{0}\"," +
+                    "\"itemId\":\"{7}\"," +
+                    "\"paid\":\"yes\"," +
                     "\"databaseId\":\"{8}\"," +
                     "\"due\":\"{1}\"," +
                     "\"recipient\":\"{2}\"," +
-                    "\"bank\":\"{3}\"," +
-                    "\"account\":\"{4}\"," +
-                    "\"reference\":\"{5}\"," +
-                    "\"amount\":\"{6:N2}\"," +
+                    "\"transferInfo\":\"{3}\"," +
+                    "\"amount\":\"{6}\"," +
+                    "\"ocrAvailable\":\"{4}\"," +
                     "\"action\":\"" +
-                    "<img id=\\\"IconApproval{7}\\\" class=\\\"IconApproval{7} LocalIconApproval LocalPrevious\\\" databaseid=\\\"{8}\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconApproved{7} LocalIconApproved LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconDenial{7} LocalIconDenial LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconDenied{7} LocalIconDenied LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img class=\\\"IconUndo{7} LocalIconUndo LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img id='IconApproval{7}' class='IconApproval{7} LocalIconApproval LocalPaid action-icon' baseid='{7}' protoid='{0}' databaseid='{8}' data-ocr='{10}' data-fieldcount='{9}' data-reference='{5}' />" +
+                    "<img class='IconApproved{7} LocalIconApproved LocalPaid status-icon' baseid='{7}' />" +
+                    "<img class='IconWait{7} LocalIconWait LocalPaid status-icon' baseid='{7}' />" +
+                    "<img class='IconUndo{7} LocalIconUndo LocalPaid action-icon' baseid='{7}' />" +
+                    "<img class='IconDenial{7} LocalIconDenial LocalPaid action-icon' baseid='{7}' />" +
+                    "<img class='IconDenied{7} LocalIconDenied LocalPaid status-icon' baseid='{7}' />" +
                     "\"",
                     payout.ProtoIdentity,
                     payout.ExpectedTransactionDate.ToShortDateString(),
-                    JsonSanitize(TryLocalize(payout.Recipient)),
-                    JsonSanitize(payout.Bank),
-                    JsonSanitize(payout.Account),
+                    JsonSanitize(TryLocalize(transferInfo.Recipient)),
+                    transferInfo.Currency.Code + ", " + JsonSanitize(transferInfo.LocalizedPaymentMethodName),
+                    transferInfo.OcrAvailable ? "<img class='LocalIconOcr status-icon' />" : string.Empty,
                     JsonSanitize(TryLocalize(payout.Reference)),
                     payout.AmountCents / 100.0,
                     payout.ProtoIdentity.Replace("|", ""),
-                    payout.Identity);
+                    payout.Identity,
+                    transferInfo.LocalizedPaymentInformation.Count,
+                    transferInfo.OcrAvailable ? "yes" : "no");
                 result.Append("},");
             }
 

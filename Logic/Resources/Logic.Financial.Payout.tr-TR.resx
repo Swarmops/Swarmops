@@ -117,29 +117,81 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Payout_CashAdvanceIdentities" xml:space="preserve">
+    <value>Nakit Avanslar {0}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentitiesRecipient" xml:space="preserve">
+    <value>{1} için Nakit Avanslar {0}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentity" xml:space="preserve">
+    <value>Nakit Avans #{0:N0}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentityRecipient" xml:space="preserve">
+    <value>{1} için Nakit Avans #{0:N0}</value>
+  </data>
+  <data name="Payout_CashAdvancePaybackIdentities" xml:space="preserve">
+    <value>Nakit Avanslar {0} Geri ödemeleri</value>
+  </data>
+  <data name="Payout_CashAdvancePaybackIdentity" xml:space="preserve">
+    <value>Nakit avans #{0:N0} Geri ödemesi</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentities" xml:space="preserve">
+    <value>Giderler {0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentities" xml:space="preserve">
+    <value>Giderle {0} (eksi avans {1})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentity" xml:space="preserve">
+    <value>Giderler {0} (eksi avans #{1:N0})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesRecipient" xml:space="preserve">
+    <value>{1} tarafından Masraf Talepleri {0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentity" xml:space="preserve">
+    <value>Gider #{0:N0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentities" xml:space="preserve">
+    <value>Gider #{0:N0} (eksi avanslar {1})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentity" xml:space="preserve">
+    <value>Gider #{0:N0} (eksi avans #{1:N0})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityRecipient" xml:space="preserve">
+    <value>{1} tarafından Gider Talebi #{0:N0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimLongIdentity" xml:space="preserve">
+    <value>Gider Talebi #{0:N0}</value>
+  </data>
+  <data name="Payout_InboundInvoiceIdentity" xml:space="preserve">
+    <value>Gelen Fatura #{0:N0}</value>
+  </data>
+  <data name="Payout_InboundInvoiceIdentitySender" xml:space="preserve">
+    <value>{1} 'den Gelen Fatura #{0:N0}</value>
+  </data>
+  <data name="Payout_SalariesTaxMonth" xml:space="preserve">
+    <value>{0:yyyy-MMM} için Maaş Vergileri</value>
+  </data>
+  <data name="Payout_SalaryIdentitiesMonth" xml:space="preserve">
+    <value>{1:yyyy-MMM} için Maaşlar {0}</value>
+  </data>
+  <data name="Payout_SalaryIdentity" xml:space="preserve">
+    <value>Maaş #{0:N0}</value>
+  </data>
+  <data name="Payout_SalaryIdentityMonth" xml:space="preserve">
+    <value>{1:yyyy-MMM} için Maaş #{0:N0}</value>
+  </data>
+  <data name="Payout_SalaryIdentityMonthRecipient" xml:space="preserve">
+    <value>{2}'nin {1:yyyy-MMM} için maaşı #{0:N0}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Payout_SalaryMonth" xml:space="preserve">
+    <value>{0:yyyy-MMM} için Maaş</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Payout_SalaryTaxIdentitiesMonth" xml:space="preserve">
+    <value>{1:yyyy-MMM} için maaş vergileri {0}</value>
+  </data>
+  <data name="Payout_SalaryTaxIdentityMonth" xml:space="preserve">
+    <value>{1:yyyy-MMM} için maaş vergisi #{0:N0}</value>
+  </data>
 </root>

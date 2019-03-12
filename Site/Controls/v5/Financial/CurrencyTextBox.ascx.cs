@@ -3,6 +3,7 @@ using System.Globalization;
 using Swarmops.Common.Enums;
 using System.Web.UI;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Controls.Financial
 {
@@ -29,8 +30,10 @@ namespace Swarmops.Frontend.Controls.Financial
         public Int64 Cents
         {
             get 
-            { 
-                return (Int64) (InternalValue * 100.0 + 0.5); // the +0.5 is to compensate for floating point errors. And yes, THEY HAPPEN. 
+            {
+                string contents = this.TextInput.Text;
+                return Formatting.ParseDoubleStringAsCents(contents);
+
             }
             set
             {
@@ -48,7 +51,8 @@ namespace Swarmops.Frontend.Controls.Financial
         {
             get
             {
-                return (Int64)(InternalValue * 10000.0 + 0.5); // the +0.5 is to compensate for floating point errors. And yes, THEY HAPPEN. 
+                string contents = this.TextInput.Text;
+                return Formatting.ParseDoubleStringAsCents(contents, null, Formatting.ParsingScale.Metacents);
             }
             set { this.TextInput.Text = (value / 10000.0).ToString("N4", CultureInfo.CurrentCulture); }
         }
@@ -57,31 +61,6 @@ namespace Swarmops.Frontend.Controls.Financial
         public double Value
         {
             get { throw new NotImplementedException(); }
-        }
-
-        internal double InternalValue
-        {
-            get
-            {
-                // Try to parse the Double in two steps: first as a Culture.CurrentCulture, and if that doesn't work out, as a Culture.InvariantCulture.
-
-                double outParse = 0.0;
-                string contents = this.TextInput.Text;
-
-                if (Double.TryParse (contents, NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out outParse))
-                {
-                    return outParse;
-                }
-                if (Double.TryParse(contents, NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out outParse))
-                {
-                    return outParse;
-                }
-
-                // Unparsable. Sorry.
-
-                throw new InvalidCastException("The text field cannot be parsed to a Double: \"" + contents + "\"");
-
-            }
         }
 
         // TODO: Add other-currency parsing
@@ -102,7 +81,7 @@ namespace Swarmops.Frontend.Controls.Financial
         {
             get
             {
-                return new Money((long) (Double.Parse(this.EnteredAmount.Value, NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture) * 100.0 + 0.5), Currency.FromCode(this.EnteredCurrency.Value));
+                return new Money(Swarmops.Logic.Support.Formatting.ParseDoubleStringAsCents (this.EnteredAmount.Value), Currency.FromCode(this.EnteredCurrency.Value));
             }
         }
     }

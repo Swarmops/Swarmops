@@ -118,49 +118,148 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>{0} då tillfälle ges</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationLevel" xml:space="preserve">
+    <value>Hur mycket vill du engagera dig?</value>
+  </data>
   
   
+  <data name="Signup_ActivationPassiveApplication" xml:space="preserve">
+    <value>Detta är grundnivån, vilket betyder att du kan delta så mycket du vill (eller inte) som {0} i väntan på {1}.</value>
+  </data>
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>Helt vanlig {0}</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
+  
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>Funktionärsfrivillig</value>
+  </data>
+  <data name="Signup_ApplicationApproval" xml:space="preserve">
+    <value>Du skickar in en ansökan om {0} hos {1}. Det finns inga avgifter för ansökan som sådan.</value>
+  </data>
+  <data name="Signup_ApplyingFor" xml:space="preserve">
+    <value>Ansöker om {0} i {1}</value>
+  </data>
+  
+  <data name="Signup_DefaultFirstPageText" xml:space="preserve">
+    <value>Detta är organisationens anpassade välkomsttext. Den har ännu inte skrivits; det gör man under Admin / Orginställningar.</value>
+  </data>
+  <data name="Signup_DefaultLastPageText" xml:space="preserve">
+    <value>Detta är organisationens text som visas när en registrering slutförs. Textwn har ännu inte skrivits; det gör man under Admin / Orginställningar. När den nya personen trycker Slutför, så skrivs de in i databasen, loggas på, och skickas till Skrivbordet som en Nybörjare.</value>
+  </data>
+  <data name="Signup_DefaultSidebarText" xml:space="preserve">
+    <value>Detta är organisationens korta sidofältsinfo. Det skrivs i Administration / Orginställningar.</value>
+  </data>
   
   
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>De två lösenorden stämmer inte överens.</value>
+  </data>
+  <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
+    <value>Välj hur mycket du vill engagera dig.</value>
+  </data>
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>Välj minst en befattning.</value>
+  </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>Avgifter och kostnader</value>
+  </data>
+  <data name="Signup_FeeRenewalText" xml:space="preserve">
+    <value>Det kostar inget över huvud taget att teckna ett {0} {1} idag. Däremot kostar det {3} {4:N2} att förnya {1} när det går ut {2}, men du förbinder dig absolut inte att förnya.</value>
+    <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
+  </data>
+  <data name="Signup_FeeText" xml:space="preserve">
+    <value>Avgiften för {0} är {1} {2:N2} för {3}. Du får en räkning på beloppet i slutet av ansökningsprocessen. (Du kan säga upp ditt {0} när som helst.) </value>
+    <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>Slutför ansökan</value>
+  </data>
+  <data name="Signup_MailLoginKey" xml:space="preserve">
+    <value>Ditt login (din mail)</value>
+  </data>
+  <data name="Signup_NoFeeText" xml:space="preserve">
+    <value>Det kostar inget att teckna ett {0} hos {2}, och inte heller något att förnya när det går ut den {1}. Dessutom kan du säga upp ditt {0} när som helst.</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
+  </data>
+  <data name="Signup_Password1" xml:space="preserve">
+    <value>Välj ett lösenord</value>
+  </data>
+  <data name="Signup_Password2" xml:space="preserve">
+    <value>Upprepa lösenordet</value>
+  </data>
   
+  <data name="Signup_Step1Header" xml:space="preserve">
+    <value>Välkommen!</value>
+  </data>
+  <data name="Signup_Step1Text" xml:space="preserve">
+    <value>En kort introduktion</value>
+  </data>
+  <data name="Signup_Step2Header" xml:space="preserve">
+    <value>Om dig</value>
+  </data>
+  <data name="Signup_Step2Text" xml:space="preserve">
+    <value>Berätta lite om dig själv?</value>
+  </data>
+  <data name="Signup_Step3Header" xml:space="preserve">
+    <value>Skapa inlogg</value>
+  </data>
+  <data name="Signup_Step3Text" xml:space="preserve">
+    <value>Välj lösen</value>
+  </data>
+  <data name="Signup_Step4Header" xml:space="preserve">
+    <value>Aktivitet 1</value>
+  </data>
+  <data name="Signup_Step4Text" xml:space="preserve">
+    <value>Hur mycket vill du engagera dig?</value>
+  </data>
+  <data name="Signup_Step5Header" xml:space="preserve">
+    <value>Aktivitet 2</value>
+  </data>
+  <data name="Signup_Step5Text" xml:space="preserve">
+    <value>Vad vill du göra?</value>
+  </data>
+  <data name="Signup_Step6Header" xml:space="preserve">
+    <value>Klart</value>
+  </data>
+  <data name="Signup_Step6Header_Payment" xml:space="preserve">
+    <value>Betalning</value>
+  </data>
+  <data name="Signup_Step6Text" xml:space="preserve">
+    <value>Klart. Nu loggar vi på!</value>
+  </data>
   
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>Slutför ansökan.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Signup_VolunteerHeader" xml:space="preserve">
+    <value>Vilken befattning är du intresserad av?</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>Största tillgängliga område</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
+    <value>Befattning</value>
+  </data>
+  <data name="Signup_VolunteerText" xml:space="preserve">
+    <value>Välj befattningen eller befattningarna du är intresserad av.</value>
+  </data>
+  <data name="Signup_Welcome" xml:space="preserve">
+    <value>Välkommen till {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_YourLogon" xml:space="preserve">
+    <value>Din inloggning</value>
+  </data>
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>Välj ett lösenord för att logga på Swarmops (detta system). Du kan ersätta det med en Twitter-, Facebook- eller BitID-inloggning senare.</value>
+  </data>
+  <data name="Signup_YourName" xml:space="preserve">
+    <value>Ditt namn</value>
+  </data>
 </root>

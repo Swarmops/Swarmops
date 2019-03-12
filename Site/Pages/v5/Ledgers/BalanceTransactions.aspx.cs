@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Versioning;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
@@ -48,6 +51,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribeOutboundInvoice;
             this.LabelDescribeVatReport.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribeVatReport;
 
+            this.LabelDescribePurchaseBudget.Text =
+                Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseBudget;
+            this.LabelDescribePurchaseDescriptionUpdate.Text =
+                Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseTransaction;
+            this.LabelDescribePurchaseVatAmount.Text =
+                Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseVat;
+            this.LabelDescribePurchaseUploadReceipt.Text =
+                Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseDocUpload;
+            this.LabelDescribePurchaseAmount.Text =
+                String.Format(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePurchaseAmount,
+                    CurrentOrganization.Currency.DisplayCode);
+
             this.LabelRadioPayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayout;
             this.LabelRadioPayoutForeign.Text =
                 String.Format(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayoutForeign, 5);
@@ -55,6 +70,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioOutboundInvoice;
             this.LabelRadioVatReport.Text =
                 Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioVatReport;
+            this.LabelRadioPurchase.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPurchase;
 
         }
 
@@ -64,16 +80,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             public string TransactionDate { get; set; }
             public string DifferingAmount { get; set; }
-            public DropdownOptions OpenPayoutData { get; set; }
-            public DropdownOptions OpenOutboundInvoiceData { get; set; }
+            public string AmountAsPurchase { get; set; }
+            public int AmountSign { get; set; }
+            public string TransactionDescription { get; set; }
+            public DropdownOption[] OpenPayoutData { get; set; }
+            public DropdownOption[] OpenOutboundInvoiceData { get; set; }
             public DropdownOption[] OpenVatReportData { get; set; }
         }
 
         [Serializable]
         public class DropdownOptions
         {
-            public DropdownOption[] ExactMatches { get; set; }
-            public DropdownOption[] TolerantMatches { get; set; }
+            public DropdownOption[] Matches { get; set; }
         }
 
         [Serializable]
@@ -108,19 +126,25 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             TransactionMatchabilityData result = new TransactionMatchabilityData();
 
+            Int64 transactionCents = transaction.Rows.AmountCentsTotal;
+
             result.TransactionDate = transaction.DateTime.ToString ("yyyy-MMM-dd HH:mm");
+            result.TransactionDescription = transaction.Description;
+            result.AmountAsPurchase = ((-transactionCents)/100.0).ToString("N2");
             result.DifferingAmount = String.Format ("{0} {1:+#,#.00;−#,#.00;0}",
                 // this is a UNICODE MINUS (U+2212), not the hyphen on the keyboard
-                authData.CurrentOrganization.Currency.DisplayCode, transaction.Rows.AmountCentsTotal/100.0);
+                authData.CurrentOrganization.Currency.DisplayCode, transactionCents/100.0);
 
             if (transaction.Rows.AmountCentsTotal > 0)
             {
                 result.OpenOutboundInvoiceData = GetOpenOutboundInvoiceData(transaction);
+                result.AmountSign = 1;
             }
             else
             {
                 // Negative difference
 
+                result.AmountSign = -1;
                 result.OpenPayoutData = GetOpenPayoutData(transaction);
             }
 
@@ -129,7 +153,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             return result;
         }
 
-        private static DropdownOptions GetOpenPayoutData(FinancialTransaction transaction)
+        private static DropdownOption[] GetOpenPayoutData(FinancialTransaction transaction)
         {
             DateTime transactionDateTime = transaction.DateTime;
             Int64 matchAmount = transaction.Rows.AmountCentsTotal;
@@ -171,14 +195,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 }
             }
 
-            result.ExactMatches = listExact.ToArray();
-            result.TolerantMatches = listTolerant.ToArray();
+            List<DropdownOption> listCombined = new List<DropdownOption>();
+            listCombined.AddRange(listExact);
+            listCombined.AddRange(listTolerant);
 
-            return result;
+            return listCombined.ToArray();
         }
 
 
-        private static DropdownOptions GetOpenOutboundInvoiceData(FinancialTransaction transaction)
+        private static DropdownOption[] GetOpenOutboundInvoiceData(FinancialTransaction transaction)
         {
             DateTime txDateTime = transaction.DateTime;
             Int64 matchAmount = transaction.Rows.AmountCentsTotal;
@@ -187,6 +212,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             List<DropdownOption> listExact = new List<DropdownOption>();
             List<DropdownOption> listTolerant = new List<DropdownOption>();
+            List<DropdownOption> listRefMatch = new List<DropdownOption>();
 
             OutboundInvoices invoices = OutboundInvoices.ForOrganization(transaction.Organization);
 
@@ -195,7 +221,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 if (invoice.AmountCents > matchAmount * 95 / 100 &&
                          invoice.AmountCents < matchAmount * 105 / 100)
                 {
-                    string description = String.Format(Resources.Pages.Ledgers.BalanceTransactions_OutboundInvoiceMatch, invoice.Identity,
+                    string description = String.Format(Resources.Pages.Ledgers.BalanceTransactions_OutboundInvoiceMatch, invoice.OrganizationSequenceId,
                         invoice.CustomerName, invoice.DueDate, invoice.DisplayNativeAmount);
 
                     if (invoice.HasNativeCurrency)
@@ -206,13 +232,21 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                     bool invoiceIdMatch = DescriptionContainsInvoiceReference(invoice.Reference, invoice.TheirReference, transaction.Description);
 
-
+                    if (invoiceIdMatch)
+                    {
+                        listRefMatch.Add(new DropdownOption
+                        {
+                            id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
+                            @group = Resources.Pages.Ledgers.BalanceTransactions_MostProbableMatch,
+                            text = description
+                        });
+                    }
                     if (invoice.AmountCents == matchAmount)
                     {
                         listExact.Add(new DropdownOption
                         {
                             id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
-                            @group = invoiceIdMatch? Resources.Pages.Ledgers.BalanceTransactions_MostProbableMatch : Resources.Pages.Ledgers.BalanceTransactions_ExactMatches,
+                            @group = Resources.Pages.Ledgers.BalanceTransactions_ExactMatches,
                             text = description
                         });
                     }
@@ -221,17 +255,19 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         listTolerant.Add(new DropdownOption
                         {
                             id = invoice.Identity.ToString(CultureInfo.InvariantCulture),
-                            @group = invoiceIdMatch ? Resources.Pages.Ledgers.BalanceTransactions_MostProbableMatch : Resources.Pages.Ledgers.BalanceTransactions_FivePercentMatches,
+                            @group = Resources.Pages.Ledgers.BalanceTransactions_FivePercentMatches,
                             text = description
                         });
                     }
                 }
             }
 
-            result.ExactMatches = listExact.ToArray();
-            result.TolerantMatches = listTolerant.ToArray();
+            List<DropdownOption> listCombined = new List<DropdownOption>();
+            listCombined.AddRange(listRefMatch);
+            listCombined.AddRange(listExact);
+            listCombined.AddRange(listTolerant);
 
-            return result;
+            return listCombined.ToArray();
         }
 
         private static bool DescriptionContainsInvoiceReference(string ourReference, string theirReference, string description)
@@ -342,10 +378,38 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException();
             }
 
+            Int64 transactionCents = transaction.Rows.AmountCentsTotal;
+            Int64 payoutCents = payout.AmountCents;
+
+            FinancialAccount forexSpillAccount =
+                authData.CurrentOrganization.FinancialAccounts.IncomeCurrencyFluctuations;
+
+            if (forexSpillAccount == null && payoutCents != -transactionCents) // the tx-negative is because it's a payout
+            {
+                throw new InvalidOperationException("Need forex gain/loss accounts for this operation");  // TODO: Autocreate?
+            }
+
+            if ((-transactionCents) > payoutCents)  // the tx-negative is because it's a payout
+            {
+                // This is a forex loss, not a gain which is the default
+                forexSpillAccount = authData.CurrentOrganization.FinancialAccounts.CostsCurrencyFluctuations;
+            }
+
+            if (-transactionCents != payoutCents)
+            {
+                // Forex adjust
+                transaction.AddRow(forexSpillAccount, -(payoutCents + transactionCents),
+                    // plus because transactionCents is negative
+                    authData.CurrentUser); // Adds the forex adjustment so we can bind payout to tx and close
+            }
+
+            // The amounts should match now
+
             if (transaction.Rows.AmountCentsTotal != -payout.AmountCents)
             {
                 throw new InvalidOperationException();
             }
+
 
             payout.BindToTransactionAndClose(transaction, authData.CurrentUser);
 
@@ -377,9 +441,23 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException();
             }
 
-            if (transaction.Rows.AmountCentsTotal != outboundInvoice.AmountCents)
+            Int64 transactionCents = transaction.Rows.AmountCentsTotal;
+            Int64 invoiceCents = outboundInvoice.AmountCents;
+
+
+
+            FinancialAccount forexSpillAccount =
+                authData.CurrentOrganization.FinancialAccounts.IncomeCurrencyFluctuations;
+
+            if (forexSpillAccount == null && invoiceCents != transactionCents)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Need forex gain/loss accounts for this operation");  // TODO: Autocreate?
+            }
+
+            if (transaction.Rows.AmountCentsTotal < outboundInvoice.AmountCents)
+            {
+                // This is a forex loss, not a gain which is the default
+                forexSpillAccount = authData.CurrentOrganization.FinancialAccounts.CostsCurrencyFluctuations;
             }
 
             // Close invoice
@@ -393,6 +471,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             // TODO: Log?
 
             // Close transaction
+
+            if (transactionCents != invoiceCents)
+            {
+                transaction.AddRow(forexSpillAccount, invoiceCents - transactionCents,
+                    authData.CurrentUser); // Adds the forex adjustment so we can bind payout to tx and close
+            }
 
             transaction.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsOutboundInvoices,
                 -outboundInvoice.AmountCents, authData.CurrentUser);
@@ -509,6 +593,94 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
         [WebMethod]
+        public static AjaxCallResult MarkDirectPurchase(int transactionId, int budgetId, string vatAmountString,
+            string newDescription, string guid)
+        {
+            if (transactionId == 0 | budgetId == 0)
+            {
+                return new AjaxCallResult {Success = false};
+            }
+
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (
+                !authData.Authority.HasAccess(new Access(authData.CurrentOrganization,
+                    AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            FinancialAccount budget = FinancialAccount.FromIdentity(budgetId);
+
+            if (authData.CurrentOrganization.Identity != budget.Organization.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            newDescription = newDescription.Trim();
+            if (newDescription.Length < 1)
+            {
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = Resources.Pages.Ledgers.BalanceTransactions_Error_NeedDescription
+                };
+            }
+
+            Documents docs = Documents.RecentFromDescription(guid).WhereNotAssociated;
+            if (docs.Count < 1)
+            {
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = Resources.Pages.Ledgers.BalanceTransactions_Error_NeedDocumentation
+                };
+            }
+
+            Int64 vatCents = 0;
+            bool vatEnabled = authData.CurrentOrganization.VatEnabled;
+
+            if (vatEnabled)
+            {
+                try
+                {
+                    vatCents = Swarmops.Logic.Support.Formatting.ParseDoubleStringAsCents(vatAmountString);
+                }
+                catch (ArgumentException)
+                {
+                    return new AjaxCallResult
+                    {
+                        Success = false,
+                        DisplayMessage = Resources.Pages.Ledgers.BalanceTransactions_Error_VatAmountParseError
+                    };
+
+                    throw;
+                }
+            }
+
+            // We're FINALLY ready to update the transaction
+
+            FinancialTransaction tx = FinancialTransaction.FromIdentity(transactionId);
+            tx.Description = newDescription;
+            docs.SetForeignObjectForAll(tx);
+
+            Int64 centsDiff = tx.Rows.AmountCentsTotal;
+
+            if (vatEnabled)
+            {
+                tx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsVatInboundUnreported, vatCents, authData.CurrentUser);
+                tx.AddRow(budget, (-centsDiff) - vatCents, authData.CurrentUser);
+            }
+            else
+            {
+                tx.AddRow(budget, -centsDiff, authData.CurrentUser);
+            }
+
+            return new AjaxCallResult {Success = true};
+        }
+
+
+        [WebMethod]
         public static string GetTransactionDisplayIdentity(int transactionId)
         {
             GetAuthenticationDataAndCulture(); // Sets culture
@@ -561,6 +733,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             get
             {
                 return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonVatReport);
+            }
+        }
+
+        public string Localized_ButtonPurchase
+        {
+            get
+            {
+                return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPurchase);
             }
         }
     }

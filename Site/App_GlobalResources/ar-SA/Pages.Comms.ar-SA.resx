@@ -117,8 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
+  <data name="SendMassMessage_Error_EmptyBody" xml:space="preserve">
+    <value>يجب عليك كتابة نص الرسالة قبل إرسالها.</value>
+  </data>
+  <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
+    <value>يجب أن تكتب موضوع الرسالة لكي ترسل مع رسالتك.</value>
+  </data>
   <data name="SendMassMessage_Geography" xml:space="preserve">
     <value>المتواجدين في</value>
   </data>
@@ -128,7 +132,9 @@
   <data name="SendMassMessage_Info" xml:space="preserve">
     <value>أرسل رسالة إلى مجموعة من الناس في المنظمة. يمكنك إرسال الرسالة عن طريق البريد (جيدة للنشرات الإخبارية والمعلومات العامة) أو إلى هواتفهم الخاصة (أسلوب متطفل جداً وتكلفته أعلى قليلاً).</value>
   </data>
-  
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>أكتب رسالتك هنا. يمكن استخدام العلامات القياسية مثل * bold * و _italic_ و == headers == وما شابه. سطران جديدان يبدان فقرة جديدة. سيتم إرسال البريد الإلكتروني في صيغة مزدوجة، نص واضح و HTML.</value>
+  </data>
   
   <data name="SendMassMessage_RecipientCount" xml:space="preserve">
     <value>لا يوجد مستلمون | مستلم واحد | عدد {0:N0} مستلم</value>
@@ -137,7 +143,9 @@
   <data name="SendMassMessage_RecipientType" xml:space="preserve">
     <value>أرسل رسالة جماعية للكل</value>
   </data>
-  
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>أنت تستخدم حاليًا Sandbox. إلى أين تريد إرسال رسالة الاختبار؟</value>
+  </data>
   <data name="SendMassMessage_SendMessage" xml:space="preserve">
     <value>ارسال</value>
     <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
@@ -145,7 +153,10 @@
   <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
     <value>يجري الآن نشر رسالتك على المستلمين. سيتم إبلاغك عندما يتم الانتهاء من الإرسال.</value>
   </data>
-  
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>الموضوع</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
+  </data>
   <data name="SendMassMessage_TestMessage" xml:space="preserve">
     <value>اختبار</value>
     <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>

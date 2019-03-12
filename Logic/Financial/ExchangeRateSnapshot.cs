@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -39,57 +40,21 @@ namespace Swarmops.Logic.Financial
 
         public static void Create()
         {
-            int exchangeRateSnapshotId = 0;
-
             // We're getting rates against the fiat currencies from BitPay and crypto-to-crypto from Shapeshift.
 
             using (WebClient client = new WebClient())
             {
                 client.Encoding = Encoding.UTF8;
-                string fiatRateDataRaw = client.DownloadString("https://bitpay.com/api/rates");
-
-                // BitPay doesn't provide valid JSON - the rate field isn't enclosed in quotes - so we can't use JSON Deserialization; we'll
-                // have to use Regex matching instead.
-
-                string regexPattern = @"\{\""code\"":\""([A-Z]+)\"",\""name\"":\""([^\""]+)\"",\""rate\"":([0-9\.]+)\}";
-                Regex regex = new Regex (regexPattern);
-                Match match = regex.Match (fiatRateDataRaw);
-
-                int bitcoinId = GetOrCreateCryptocurrency("BTC");
-
-                if (match.Success)
-                {
-                    // We have at least one match, so prepare a new ExchangeRate snapshot
-
-                    exchangeRateSnapshotId = SwarmDb.GetDatabaseForWriting().CreateExchangeRateSnapshot();
-                }
-
-                while (match.Success)
-                {
-                    string currencyCode = match.Groups[1].Value;
-                    string currencyName = match.Groups[2].Value;
-                    double btcRate = Double.Parse (match.Groups[3].Value, NumberStyles.AllowDecimalPoint,
-                        CultureInfo.InvariantCulture);
-
-                    btcRate /= 1000000.0; // We're operating in microbitcoin, so adjust the stored exchange rate accordingly (right-shift six decimal places)
-
-                    int currencyId = GetOrCreateFiatCurrency (currencyCode, currencyName);
-
-                    SwarmDb.GetDatabaseForWriting()
-                        .CreateExchangeRateDatapoint (exchangeRateSnapshotId, currencyId, bitcoinId, btcRate);
-
-                    match = match.NextMatch();
-                }
-
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
-                BitpayRateDatapoint[] fiatRates = (BitpayRateDatapoint[]) serializer.Deserialize<BitpayRateDatapoint[]> (fiatRateDataRaw);
+                int bitcoinId = GetOrCreateCryptocurrency("BTC");
+                int exchangeRateSnapshotId = SwarmDb.GetDatabaseForWriting().CreateExchangeRateSnapshot();
 
                 // Download Shapeshift data
 
                 string cryptoRateDataRaw = client.DownloadString("https://shapeshift.io/marketinfo");
 
                 ShapeshiftRateDatapoint[] cryptoRates =
-                    (ShapeshiftRateDatapoint[]) serializer.Deserialize<ShapeshiftRateDatapoint[]>(cryptoRateDataRaw);
+                    (ShapeshiftRateDatapoint[])serializer.Deserialize<ShapeshiftRateDatapoint[]>(cryptoRateDataRaw);
 
                 if (exchangeRateSnapshotId > 0) // test that we're making a snapshot first
                 {
@@ -103,18 +68,54 @@ namespace Swarmops.Logic.Financial
                             if (coinCode != "BCH")
                             {
                                 btcRate /= 1000000.0;
-                                    // We're operating in microbitcoin, so adjust the stored exchange rate right six decimal places
-                                    // EXCEPT for Bitcoin Cash which ALSO operates in microbitcoin
+                                // We're operating in microbitcoin, so adjust the stored exchange rate right six decimal places
+                                // EXCEPT for Bitcoin Cash which ALSO operates in microbitcoin
                             }
 
                             int coinId = GetOrCreateCryptocurrency(coinCode);
+
                             SwarmDb.GetDatabaseForWriting().
                                 CreateExchangeRateDatapoint(exchangeRateSnapshotId, coinId, bitcoinId, btcRate);
                         }
                     }
                 }
 
-                Console.WriteLine(cryptoRateDataRaw);
+                // Download BitPay data
+
+                string fiatRateDataRaw = client.DownloadString("https://bitpay.com/api/rates");
+
+                // BitPay doesn't provide valid JSON - the rate field isn't enclosed in quotes - so we can't use JSON Deserialization; we'll
+                // have to use Regex matching instead.
+
+                string regexPattern = @"\{\""code\"":\""([A-Z]+)\"",\""name\"":\""([^\""]+)\"",\""rate\"":([0-9\.]+)\}";
+                Regex regex = new Regex (regexPattern);
+                Match match = regex.Match (fiatRateDataRaw);
+
+                while (match.Success)
+                {
+                    string currencyCode = match.Groups[1].Value;
+                    string currencyName = match.Groups[2].Value;
+                    double btcRate = Double.Parse (match.Groups[3].Value, NumberStyles.AllowDecimalPoint,
+                        CultureInfo.InvariantCulture); // rounding errors and loss of precision ok, don't use Formatting fn
+
+                    btcRate /= 1000000.0; // We're operating in microbitcoin, so adjust the stored exchange rate accordingly (right-shift six decimal places)
+
+                    int currencyId = GetOrCreateFiatCurrency (currencyCode, currencyName);
+                    Currency currency = Currency.FromIdentityAggressive(currencyId);
+
+                    // Only store if it's not a cryptocurrency provided by Shapeshift
+
+                    if (!currency.IsCrypto)
+                    {
+                        SwarmDb.GetDatabaseForWriting()
+                            .CreateExchangeRateDatapoint(exchangeRateSnapshotId, currencyId, bitcoinId, btcRate);
+                    }
+
+                    match = match.NextMatch();
+                }
+
+                // BitpayRateDatapoint[] fiatRates = (BitpayRateDatapoint[]) serializer.Deserialize<BitpayRateDatapoint[]> (fiatRateDataRaw);
+                // Console.WriteLine(cryptoRateDataRaw);
             }
         }
 

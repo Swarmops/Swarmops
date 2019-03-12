@@ -124,7 +124,7 @@
     <value>crwdns6555065:0crwdne6555065:0</value>
   </data>
   <data name="AccountPlan_PageTitle" xml:space="preserve">
-    <value>crwdns6555066:0crwdne6555066:0</value>
+    <value>crwdns6563416:0crwdne6563416:0</value>
   </data>
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>crwdns6555067:0crwdne6555067:0</value>
@@ -240,19 +240,6 @@
   <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
     <value>crwdns6555107:0crwdne6555107:0</value>
     <comment>Header above instructions for generation of the bank file type selected.</comment>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
-    <value>crwdns6555108:0crwdne6555108:0</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_PaypalFile" xml:space="preserve">
-    <value>crwdns6555109:0crwdne6555109:0</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_PaysonFile" xml:space="preserve">
-    <value>crwdns6555110:0[date]crwdne6555110:0</value>
-  </data>
-  <data name="UploadBankFiles_DownloadInstructions_SebAccountFile" xml:space="preserve">
-    <value>crwdns6555111:0crwdne6555111:0</value>
-    <comment>Only translate to languages where SEB is active.</comment>
   </data>
   <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
     <value>crwdns6555112:0{0:N0}crwdnd6555112:0{1:N0}crwdnd6555112:0{2}crwdnd6555112:0{3:N0}crwdne6555112:0</value>
@@ -414,7 +401,8 @@
     <value>crwdns6555156:0crwdne6555156:0</value>
   </data>
   <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>crwdns6555157:0crwdne6555157:0</value>
+    <value>crwdns6563332:0crwdne6563332:0</value>
+    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
   </data>
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>crwdns6555158:0crwdne6555158:0</value>
@@ -430,7 +418,7 @@
     <value>crwdns6555161:0crwdne6555161:0</value>
   </data>
   <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
-    <value>crwdns6555162:0crwdne6555162:0</value>
+    <value>crwdns6563292:0crwdne6563292:0</value>
   </data>
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>crwdns6555163:0crwdne6555163:0</value>
@@ -649,7 +637,8 @@
     <value>crwdns6555816:0crwdne6555816:0</value>
   </data>
   <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>crwdns6555826:0crwdne6555826:0</value>
+    <value>crwdns6563418:0crwdne6563418:0</value>
+    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
   </data>
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>crwdns6555827:0crwdne6555827:0</value>
@@ -666,7 +655,7 @@
     <comment>Keep VERY short.</comment>
   </data>
   <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>crwdns6555831:0crwdne6555831:0</value>
+    <value>crwdns6563420:0crwdne6563420:0</value>
   </data>
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>crwdns6556050:0crwdne6556050:0</value>
@@ -895,7 +884,7 @@
     <value>crwdns6556678:0crwdne6556678:0</value>
   </data>
   <data name="ViewVatReports_Info" xml:space="preserve">
-    <value>crwdns6556630:0crwdne6556630:0</value>
+    <value>crwdns6563294:0crwdne6563294:0</value>
   </data>
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>crwdns6556631:0crwdne6556631:0</value>
@@ -918,5 +907,141 @@
   <data name="ViewVatReports_ReportTotals" xml:space="preserve">
     <value>crwdns6556683:0crwdne6556683:0</value>
     <comment>Displayed as description of footer</comment>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>crwdns6556723:0crwdne6556723:0</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>crwdns6556724:0crwdne6556724:0</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>crwdns6556725:0crwdne6556725:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
+    <value>crwdns6556726:0crwdne6556726:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>crwdns6556727:0{0}crwdne6556727:0</value>
+    <comment>{0} is the currency</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
+    <value>crwdns6556718:0crwdne6556718:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
+    <value>crwdns6556719:0crwdne6556719:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
+    <value>crwdns6556720:0crwdne6556720:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
+    <value>crwdns6556721:0crwdne6556721:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>crwdns6556722:0crwdne6556722:0</value>
+  </data>
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>crwdns6556728:0crwdne6556728:0</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>crwdns6556729:0crwdne6556729:0</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>crwdns6556743:0{0}crwdne6556743:0</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>crwdns6556744:0{0}crwdne6556744:0</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>crwdns6556745:0{0:N0}crwdne6556745:0</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>crwdns6556746:0{0}crwdne6556746:0</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>crwdns6556747:0{0:N0}crwdnd6556747:0{1}crwdne6556747:0</value>
+  </data>
+  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
+    <value>crwdns6563296:0crwdne6563296:0</value>
+    <comment>This is where the bank name, country, and currency appears.</comment>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>crwdns6563298:0crwdne6563298:0</value>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
+    <value>crwdns6563300:0{0}crwdnd6563300:0{1:N2}crwdnd6563300:0{2}crwdne6563300:0</value>
+    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
+    <value>crwdns6563302:0{0}crwdnd6563302:0{1:N2}crwdne6563302:0</value>
+    <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
+  </data>
+  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
+    <value>crwdns6563304:0{0}crwdne6563304:0</value>
+    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
+  </data>
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>crwdns6563306:0{0}crwdne6563306:0</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
+    <value>crwdns6563308:0{0}crwdne6563308:0</value>
+    <comment>Parameter zero is the account name as given by the user</comment>
+  </data>
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>crwdns6563310:0crwdne6563310:0</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>crwdns6563312:0crwdne6563312:0</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>crwdns6563314:0crwdne6563314:0</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+    <value>crwdns6563316:0crwdne6563316:0</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
+  <data name="EndOfMonth_Info" xml:space="preserve">
+    <value>crwdns6563318:0crwdne6563318:0</value>
+  </data>
+  <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
+    <value>crwdns6563422:0crwdne6563422:0</value>
+    <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
+  </data>
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>crwdns6563322:0{0:MMMM yyyy}crwdne6563322:0</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>crwdns6563324:0{1}crwdnd6563324:0{0}crwdnd6563324:0{2}crwdne6563324:0</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>crwdns6563326:0{1}crwdnd6563326:0{0}crwdne6563326:0</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
+  <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
+    <value>crwdns6563336:0crwdne6563336:0</value>
+  </data>
+  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
+    <value>crwdns6563338:0crwdne6563338:0</value>
+  </data>
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>crwdns6563340:0crwdne6563340:0</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
+  </data>
+  <data name="EndOfMonth_CheckHotWalletWithBlockchain" xml:space="preserve">
+    <value>crwdns6563564:0crwdne6563564:0</value>
+    <comment>This verifies the hotwallet data against master blockchain data, as per a blockchain explorer service or local crypto service node.</comment>
+  </data>
+  <data name="EndOfMonth_CheckLedgerAgainstHotWallet" xml:space="preserve">
+    <value>crwdns6563566:0crwdne6563566:0</value>
+    <comment>This is the ledger balance of the hotwallet, which is supposed to say the hotwallet contains as much as it actually does.</comment>
   </data>
 </root>

@@ -166,10 +166,6 @@
   
   
   
-  
-  
-  
-  
   <data name="UploadBankFiles_ImportError" xml:space="preserve">
     <value>Feil ved import av fil</value>
     <comment>Displayed as header on import failure</comment>
@@ -224,6 +220,44 @@
   <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
     <value>Mottaker</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

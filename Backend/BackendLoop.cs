@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Net;
@@ -17,6 +18,7 @@ using Swarmops.Logic.Communications.Resolution;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.SocketMessages;
 using Swarmops.Utility;
 using Swarmops.Utility.BotCode;
 using Swarmops.Utility.Communications;
@@ -78,13 +80,11 @@ namespace Swarmops.Backend
             {
                 if (args[0].ToLower() == "test")
                 {
-/*
+
                     BotLog.Write(0, "MainCycle", "Running self-tests");
-                    HeartBeater.Instance.Beat(heartbeatFile);  // Otherwise Heartbeater.Beat() will fail in various places
 
                     testMode = true;
                     Console.WriteLine("Testing All Maintenance Processes (except membership-changing ones).");
-                    PWLog.Write(PWLogItem.None, 0, PWLogAction.SystemTest, string.Empty, string.Empty);
 
                     Console.WriteLine("\r\n10-second intervals:");
                     OnEveryTenSeconds();
@@ -98,9 +98,10 @@ namespace Swarmops.Backend
                     OnNoon();
                     Console.WriteLine("\r\nMidnight:");
                     OnMidnight();
-                    */
+                    Console.WriteLine("\r\nMonday Morning:");
+                    OnMondayMorning();
 
-                    Console.WriteLine ("Testing database access...");
+                    Console.WriteLine ("\r\nTesting database access...");
 
                     Console.WriteLine (SwarmDb.GetDatabaseForReading().GetPerson (1).Name);
                     Console.WriteLine (SwarmDb.GetDatabaseForReading().GetPerson (1).PasswordHash);
@@ -178,7 +179,7 @@ namespace Swarmops.Backend
                     else
                     {
                         Console.WriteLine("Regenerating all bitmaps from PDF uploads.");
-                        PdfProcessor.RerasterizeAll();
+                        //PdfProcessor.RerasterizeAll();
                         Console.WriteLine("Done.");
                     }
 
@@ -189,6 +190,14 @@ namespace Swarmops.Backend
                 if (args[0].ToLower() == "rsm")
                 {
                     Console.WriteLine ("Testing character encoding: räksmörgås RÄKSMÖRGÅS");
+                    return;
+                }
+
+                if (args[0].ToLower() == "update-currencies")
+                {
+                    Console.WriteLine("Updating currencies and exiting");
+                    ExchangeRateSnapshot.Create();
+
                     return;
                 }
             }
@@ -240,7 +249,7 @@ namespace Swarmops.Backend
 
             using (
                 _blockChainInfoSocket =
-                    new WebSocket("wss://ws.blockchain.info/inv?api_code=" + SystemSettings.BlockchainSwarmopsApiKey))
+                    new WebSocket("ws://ws.blockchain.info/inv?api_code=" + SystemSettings.BlockchainSwarmopsApiKey))
             {
 
                 // Begin maintenance loop
@@ -473,7 +482,7 @@ namespace Swarmops.Backend
                 try
                 {
                     // BotLog.Write(1, "FiveMinute", "Starting automated payout processing");
-                    // Payouts.PerformAutomated(); // TODO: Re-enable with Bitcoin Cash
+                    Payouts.PerformAutomated(BitcoinChain.Cash);
                 }
                 catch (Exception e)
                 {
@@ -827,19 +836,38 @@ namespace Swarmops.Backend
         {
             try
             {
+                Dictionary<int, bool> accountTested = new Dictionary<int, bool>();
+
+                // Check the bitcoin hotwallets for forex profit/loss.
+
+                Organizations allOrganizations = Organizations.GetAll();
+
+                foreach (Organization organization in allOrganizations)
+                {
+                    FinancialAccount hotWalletAccount = organization.FinancialAccounts.AssetsBitcoinHot;
+
+                    if (hotWalletAccount != null)
+                    {
+                        BitcoinUtility.CheckHotwalletForexProfitLoss(hotWalletAccount);
+                        accountTested[hotWalletAccount.Identity] = true;
+                    }
+                }
+
                 // Detect and log any forex difference exceeding 100 cents.
 
                 FinancialAccounts allAccounts = FinancialAccounts.GetAll(); // across ALL ORGS!
 
                 foreach (FinancialAccount account in allAccounts)
                 {
-                    // For every account, if it's based on foreign currency, check for forex gains/losses
+                    // For every account, if it's based on foreign currency, and not already checked, 
+                    // then check for forex gains/losses
 
-                    if (account.ForeignCurrency != null)
+                    if (account.ForeignCurrency != null && !accountTested.ContainsKey(account.Identity))
                     {
                         account.CheckForexProfitLoss();
                     }
                 }
+
             }
             catch (Exception e)
             {
@@ -887,7 +915,7 @@ namespace Swarmops.Backend
         private static void InternalHeartbeat()
         {
             JObject json = new JObject();
-            json["MessageType"] = "InternalHeartbeat";
+            json["MessageType"] = "BackendHeartbeat";
             json["Timestamp"] = DateTime.UtcNow.ToUnix();
 
             _socketServer.WebSocketServices.Broadcast(json.ToString());

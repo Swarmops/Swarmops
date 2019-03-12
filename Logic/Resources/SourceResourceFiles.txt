@@ -4,9 +4,13 @@ Logic.Communications.Transmission.NotificationPayload.resx
 Logic.Financial.FinancialAccount.resx
 Logic.Financial.FinancialTransactionTagSetTypesStock.resx
 Logic.Financial.Payout.resx
+Logic.Financial.PaymentTransferInfo.resx
+Logic.Financial.VatReport.resx
 Logic.Structure.Country.resx
 Logic.Structure.Geography.resx
 Logic.Swarm.DashboardTodos.resx
 Logic.Swarm.ParticipantTitle.resx
 Logic.Swarm.Position.resx
 Logic.Support.ErrorMessages.resx
+Logic.Support.Document.resx
+

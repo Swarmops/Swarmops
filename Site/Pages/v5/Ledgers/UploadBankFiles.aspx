@@ -20,28 +20,26 @@
     <script type="text/javascript">
 
         $(document).ready(function() {
-            $('#<%=DropAccounts.ClientID %>').change(function() {
-                var selectedAccountId = $('#<%=DropAccounts.ClientID %>').val();
-
-                if (selectedAccountId != 0) {
-                    $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeIn();
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/Pages/v5/Ledgers/UploadBankFiles.aspx/GetAccountUploadInstructions",
-                        data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function (msg) {
-                            $('#SpanInstructions').text(msg.d);
-                        }
-                    });
-                } else {
-                    $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeOut();
-                }
-            });
 
         });
+
+        function onAccountChange(oldAccountId, newAccountId) {
+            if (newAccountId != 0) {
+                $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeIn();
+
+                SwarmopsJS.ajaxCall(
+                    "/Pages/v5/Ledgers/UploadBankFiles.aspx/GetAutomationProfileName",
+                    {
+                        guid: guid, accountId: newAccountId
+                    },
+                    function(result) {
+                        $('#SpanInstructions').text(result.DisplayMessage);
+                    });
+            } else {
+                $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeOut();
+                $('#SpanInstructions').text("");
+            }
+        }
 
         function uploadCompletedCallback() {
             $('#DivProcessing').fadeIn();
@@ -51,17 +49,25 @@
             $('#DivProcessingFake').slideUp(); // in case second, third... file
             halfway = false;
 
-            $.ajax({
-                type: "POST",
-                url: "/Pages/v5/Ledgers/UploadBankFiles.aspx/InitializeProcessing",
-                data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
-	            contentType: "application/json; charset=utf-8",
-	            dataType: "json",
-	            success: function (msg) {
-	                setTimeout('updateProgressProcessing();', 1000);
-	            }
-	        });
+            var selectedAccountId = <%=this.DropAccounts.ClientID%>_val();
+
+            SwarmopsJS.ajaxCall (
+                "/Pages/v5/Ledgers/UploadBankFiles.aspx/InitializeProcessing",
+                { guid: guid, accountId: selectedAccountId },
+                function (result) {
+                    if (result.Success)
+                    {
+	                    setTimeout('updateProgressProcessing();', 1000);
+	                }
+                }
+            );
         }
+
+
+        function confirmFirstUpload() {
+            
+        }
+
 
         function updateProgressProcessing() {
 
@@ -100,7 +106,8 @@
 
                                     $('#SpanUploadMore').show();
                                     $('#SpanUploadFirst').hide();
-                                    $('#<%=DropAccounts.ClientID %>').val('0');
+                                    <%=this.DropAccounts.ClientID %>_val('0');
+                                    <%=this.UploadFile.ClientID%>_clear();
                                     $('#SpanInstructions').text('');
                                     setTimeout("$('#DivProgressFake').slideUp().fadeOut();", 1000);
                                     setTimeout("$('#DivUploadBankFile').slideDown();", 1000);
@@ -144,6 +151,8 @@
 
         var progressReceived = false;
 
+        var guid = '<%=this.UploadFile.GuidString%>';
+
         var halfway = false;
 
         var currentYear = <%=DateTime.Today.Year %>;
@@ -162,7 +171,7 @@
         </div>
         
         <div id="DivUploadResultsQuestionable" style="display:none">
-            <div style="float:left;margin-right:10px"><img src="/Images/Icons/iconshock-warning-96px.png" /></div><div id="DivUploadResultsQuestionableText"></div>
+            <div style="float:left; margin-right: 10px; padding-top: 10px;padding-bottom:20px"><img src="/Images/Icons/iconshock-warning-96px.png" /></div><div id="DivUploadResultsQuestionableText"></div>
         </div>
         
         <div id="DivUploadResultsPayments" style="display:none">
@@ -176,14 +185,15 @@
         <h2><span id="SpanUploadFirst"><asp:Label runat="server" ID="LabelUploadBankFileHeader" /></span><span id="SpanUploadMore" style="display:none"><asp:Label runat="server" ID="LabelUploadMore" /></span></h2>
         <div id="DivPrepData">
         
-            <div class="entryFields">
-                <asp:DropDownList runat="server" ID="DropAccounts"/>
-                <span id="SpanInstructions"></span>&thinsp;<br/>
-                <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
+            <div class="data-entry-fields">
+                <Swarmops5:AjaxDropDown OnClientChange="onAccountChange" runat="server" ID="DropAccounts"/>
+                <div class="stacked-input-control"><span id="SpanInstructions"></span></div>
+                <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" />
+            </div>
         
-            <div class="entryLabels">
+            <div class="data-entry-labels">
                 <asp:Label runat="server" ID="LabelBankAccount" /><br/>
-                <asp:Label runat="server" ID="LabelInstructions" /><br/>
+                <asp:Label runat="server" ID="LabelProfile" /><br/>
                 <asp:Label runat="server" ID="LabelUploadBankFile" />
             </div>
         </div>
@@ -201,4 +211,3 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
 </asp:Content>
-

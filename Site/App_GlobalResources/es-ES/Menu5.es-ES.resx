@@ -180,9 +180,7 @@
   <data name="Menu5_Financial" xml:space="preserve">
     <value>Finanzas</value>
   </data>
-  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>Dar fe de los costos</value>
-  </data>
+  
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Reclamar reembolso de los gastos</value>
   </data>
@@ -192,7 +190,9 @@
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Asistente de eventos</value>
   </data>
-  
+  <data name="Menu5_Financial_List" xml:space="preserve">
+    <value>Lista...</value>
+  </data>
   <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
     <value>Solicitud de efectivo</value>
   </data>
@@ -211,18 +211,24 @@
   <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>Salarios</value>
   </data>
-  
+  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
+    <value>Administrar mis presupuestos</value>
+  </data>
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>Pagar dinero</value>
   </data>
   <data name="Menu5_Financial_Payroll" xml:space="preserve">
     <value>Nómina</value>
   </data>
-  
+  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
+    <value>Nueva factura recibida</value>
+  </data>
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Solicitar adelanto de efectivo</value>
   </data>
-  
+  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
+    <value>Enviar Nueva Factura</value>
+  </data>
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>Validar recibos</value>
   </data>
@@ -259,9 +265,7 @@
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Libros de contabilidad</value>
   </data>
-  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
-    <value>Plan de cuentas</value>
-  </data>
+  
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Auditar libros de auditoría</value>
   </data>
@@ -295,12 +299,8 @@
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Declaración de ganancias y pérdidas</value>
   </data>
-  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
-    <value>Resincronizar cuentas bancarias</value>
-  </data>
-  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
-    <value>Definir cantidad presupuesto</value>
-  </data>
+  
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Cargar archivos de banca</value>
   </data>
@@ -402,14 +402,52 @@
   <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
     <value>Mi organización local</value>
   </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>Donar fondos</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Presupuesto vs Actual</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Cartera caliente Bitcoin</value>
+  </data>
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>Construido en {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} lineas de código</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Informar un error a Swarmops (en Github)</value>
+  </data>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Depurar</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Personificar</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>Informes de VAT</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Prueba Eco de la cartera caliente Bitcoin</value>
+  </data>
+  
+  
+  
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>Mi salario</value>
+    <comment>This lists salary payments for the logged on individual</comment>
+  </data>
   
   
   
   
   
-  
-  
-  
-  
-  
+  <data name="Menu5_Reports" xml:space="preserve">
+    <value>Informes</value>
+    <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
+  </data>
 </root>

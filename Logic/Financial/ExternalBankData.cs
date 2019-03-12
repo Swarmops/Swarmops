@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Security.Cryptography;
+using System.Web.ExtensionMethods;
 using Swarmops.Common;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -15,46 +16,46 @@ namespace Swarmops.Logic.Financial
         public ExternalBankDataProfile Profile { get; set; }
         public ExternalBankDataRecord[] Records { get; private set; }
 
-        public void LoadData (Stream dataStream, Organization organization)
-        {
-            using (TextReader reader = new StreamReader (dataStream)) // TODO: Is encoding necessary?
-            {
-                LoadData (reader, organization);
-            }
-        }
-
-        public void LoadData (TextReader reader, Organization organization)
+        public void LoadData(TextReader reader, Organization organization, Currency expectedCurrency)
         {
             string data = reader.ReadToEnd();
-            LoadData (data, organization);
+            LoadData(data, organization, expectedCurrency);
         }
 
-        public void LoadData (string data, Organization organization)
+        public void LoadData(string data, Organization organization, Currency accountCurrency)
         {
             List<ExternalBankDataRecord> recordList = new List<ExternalBankDataRecord>();
 
             if (Profile == null)
             {
-                throw new InvalidOperationException ("Cannot call LoadData before a profile has been set");
+                throw new InvalidOperationException("Cannot call LoadData before a profile has been set");
             }
 
-            if (Profile.BankDataAccountReader != StockBankDataReaders.TabSeparatedValuesAccountReader)
+            if (Profile.BankDataAccountReader != StockBankDataReaders.CommaSeparatedValuesAccountReader)
             {
-                throw new NotImplementedException ("Only tab separated values are supported at this point");
+                throw new NotImplementedException("Only tab separated values are supported at this point");
             }
 
             // TODO: Implement bank data reader factory here
 
-            string organizationCurrencyCode = organization.Currency.Code;
+            string expectedCurrencyCode = organization.Currency.Code;
+            if (accountCurrency != null)
+            {
+                expectedCurrencyCode = accountCurrency.Code;
+            }
 
+            // TODO: This function must be made aware of the expected currency code
 
             // Replace any strings initially to force the bank data into readability (per profile)
 
-            string[] replacements = Profile.InitialReplacements.Split('|');
-
-            for (int loop = 0; loop < replacements.Length/2; loop++)
+            if (!String.IsNullOrEmpty(Profile.InitialReplacements))
             {
-                data = data.Replace(replacements[loop*2], replacements[loop*2 + 1]);
+                string[] replacements = Profile.InitialReplacements.Split('|');
+
+                for (int loop = 0; loop < replacements.Length / 2; loop++)
+                {
+                    data = data.Replace(replacements[loop * 2], replacements[loop * 2 + 1]);
+                }
             }
 
             int crlfIndex;
@@ -72,11 +73,11 @@ namespace Swarmops.Logic.Financial
                 }
             }
 
-            crlfIndex = data.IndexOfAny (new[] {'\n', '\r'});
+            crlfIndex = data.IndexOfAny(new[] { '\n', '\r' });
 
-            string fieldKeyLine = data.Substring (0, crlfIndex);
+            string fieldKeyLine = data.Substring(0, crlfIndex);
 
-            string[] dataKeyFields = fieldKeyLine.Split ('\t');
+            string[] dataKeyFields = fieldKeyLine.Split('\t');
 
             Dictionary<ExternalBankDataFieldName, int> fieldNameLookup =
                 new Dictionary<ExternalBankDataFieldName, int>();
@@ -87,24 +88,24 @@ namespace Swarmops.Logic.Financial
             {
                 for (int index = 0; index < dataKeyFields.Length; index++)
                 {
-                    if (StripQuotes(dataKeyFields[index]).Trim() == Profile.FieldNames[fieldName])
+                    if (StripQuotes(dataKeyFields[index]).Trim().ToLowerInvariant() == Profile.FieldNames[fieldName].ToLowerInvariant())
                     {
                         fieldNameLookup[fieldName] = index;
                         break;
                     }
                 }
 
-                if (!fieldNameLookup.ContainsKey (fieldName)) // wasn't found
+                if (!fieldNameLookup.ContainsKey(fieldName)) // wasn't found
                 {
-                    throw new InvalidOperationException ("Field key \"" + fieldName +
+                    throw new InvalidOperationException("Field key \"" + fieldName +
                                                          "\" was not supplied or found in data file");
                 }
             }
 
 
-            data = data.Substring (crlfIndex).Trim();
+            data = data.Substring(crlfIndex).Trim();
 
-            string[] lines = data.Split (new[] {'\r', '\n'});
+            string[] lines = data.Split(new[] { '\r', '\n' });
 
             foreach (string lineData in lines)
             {
@@ -115,15 +116,15 @@ namespace Swarmops.Logic.Financial
                     continue; // empty lines may exist due to split on either CR or LF
                 }
 
-                string[] lineFields = line.Split ('\t');
+                string[] lineFields = line.Split('\t');
 
                 // If wrong currency, ignore
 
-                if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.Currency))
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Currency))
                 {
-                    string currency = StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.Currency]]);
+                    string currency = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.Currency]]);
 
-                    if (currency != organizationCurrencyCode)
+                    if (currency != expectedCurrencyCode)
                     {
                         continue; // ignore this record
                     }
@@ -131,10 +132,10 @@ namespace Swarmops.Logic.Financial
 
                 ExternalBankDataRecord newRecord = new ExternalBankDataRecord();
 
-                if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.DescriptionPrimary))
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.DescriptionPrimary))
                 {
                     newRecord.Description =
-                        StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.DescriptionPrimary]]);
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.DescriptionPrimary]]);
                 }
 
                 // If primary description is empty, try to apply a secondary description
@@ -148,41 +149,91 @@ namespace Swarmops.Logic.Financial
                     }
                 }
 
-                if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.AccountBalance))
+                // Check if there's counterparty information
+
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.CounterpartyName))
+                {
+                    string counterpartyName =
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.CounterpartyName]]);
+
+                    if (newRecord.Description != counterpartyName)
+                    {
+                        newRecord.CounterpartyName = counterpartyName;
+                    }
+                }
+
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.CounterpartyBank))
+                {
+                    string counterpartyBank =
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.CounterpartyBank]]);
+
+                    if (!string.IsNullOrEmpty(counterpartyBank))
+                    {
+                        newRecord.CounterpartyBankAccount = counterpartyBank;
+                    }
+                }
+
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.CounterpartyAccount))
+                {
+                    string counterpartyAccount =
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.CounterpartyAccount]]);
+
+                    if (!string.IsNullOrEmpty(counterpartyAccount))
+                    {
+                        if (!string.IsNullOrEmpty(newRecord.CounterpartyBankAccount))
+                        {
+                            newRecord.CounterpartyBankAccount += "|";
+                        }
+
+                        newRecord.CounterpartyBankAccount += counterpartyAccount;
+                    }
+                }
+
+
+
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.AccountBalance))
                 {
                     // Dividing up to step-by-step statements instead of one long statement assists debugging
                     // of culture and other error sources
 
                     string balanceString =
-                        StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.AccountBalance]]);
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.AccountBalance]]);
                     try
                     {
-                        newRecord.AccountBalanceCents = ParseAmountString (balanceString);
+                        newRecord.AccountBalanceCents = ParseAmountString(balanceString);
                     }
                     catch (Exception innerException)
                     {
-                        throw new FormatException ("Couldn't parse account balance string - \"" + balanceString + "\"",
+                        throw new FormatException("Couldn't parse account balance string - \"" + balanceString + "\"",
                             innerException);
                     }
                 }
 
-                if (!fieldNameLookup.ContainsKey (ExternalBankDataFieldName.Date) &&
-                    !fieldNameLookup.ContainsKey (ExternalBankDataFieldName.DateTime))
+                if (!fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Date) &&
+                    !fieldNameLookup.ContainsKey(ExternalBankDataFieldName.DateTime))
                 {
-                    throw new InvalidOperationException ("Cannot parse transactions file without at least a date field");
+                    throw new InvalidOperationException("Cannot parse transactions file without at least a date field");
                 }
 
                 DateTime dateTime = Constants.DateTimeLow;
 
-                if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.Date))
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Date))
                 {
-                    string dateString = StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.Date]]);
-                    dateTime = DateTime.Parse (dateString, new CultureInfo (Profile.Culture));
+                    string dateString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.Date]]);
 
-                    if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.Time))
+                    if (!String.IsNullOrEmpty(Profile.DateTimeCustomFormatString))
                     {
-                        string timeString = StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.Time]]);
-                        TimeSpan timeOfDay = TimeSpan.Parse (timeString);
+                        dateTime = DateTime.ParseExact(dateString, Profile.DateTimeCustomFormatString, new CultureInfo(Profile.Culture));
+                    }
+                    else
+                    {
+                        dateTime = DateTime.Parse(dateString, new CultureInfo(Profile.Culture));
+                    }
+
+                    if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Time))
+                    {
+                        string timeString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.Time]]);
+                        TimeSpan timeOfDay = TimeSpan.Parse(timeString);
 
                         dateTime += timeOfDay;
                     }
@@ -191,25 +242,25 @@ namespace Swarmops.Logic.Financial
                         // move transaction to like mid-day of the organization's time zone. For now, all orgs are in Europe, so add 12 hours
                         // this is a HACK HACK HACK
 
-                        dateTime = dateTime.AddHours (12);
+                        dateTime = dateTime.AddHours(12);
                     }
                 }
                 else // no Date field, so by earlier logic, must have a DateTime field
                 {
                     dateTime =
-                        DateTime.Parse (StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.DateTime]]),
-                            new CultureInfo (Profile.Culture));
+                        DateTime.Parse(StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.DateTime]]),
+                            new CultureInfo(Profile.Culture));
                 }
 
-                if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.TimeZone))
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.TimeZone))
                 {
                     // Valid time zone formats are "XXX+hh:mm". The XXX are ignored.
 
                     // Throws exception if this doesn't parse, which is what we want
 
-                    string timeZoneString = StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.TimeZone]]);
-                    timeZoneString = timeZoneString.Substring (timeZoneString.Length - 6);
-                    TimeSpan timeZone = TimeSpan.Parse (timeZoneString);
+                    string timeZoneString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.TimeZone]]);
+                    timeZoneString = timeZoneString.Substring(timeZoneString.Length - 6);
+                    TimeSpan timeZone = TimeSpan.Parse(timeZoneString);
 
                     dateTime -= timeZone;
                     // minus, to bring the time to UTC. If time 13:00 is in tz +01:00, the UTC time is 12:00
@@ -222,35 +273,35 @@ namespace Swarmops.Logic.Financial
                 // PILOT SPECIAL CASE: if Paypal and PPSE Pilot program, ignore everything before 2014
 
                 if (dateTime.Year < 2014 && organization.Identity == 1 &&
-                    fieldNameLookup.ContainsKey (ExternalBankDataFieldName.UniqueId) &&
-                    PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE))
+                    fieldNameLookup.ContainsKey(ExternalBankDataFieldName.UniqueId) &&
+                    PilotInstallationIds.IsPilot(PilotInstallationIds.PiratePartySE))
                 {
                     continue; // Do not import PayPal records from before 2013
                 }
 
                 newRecord.DateTime = dateTime;
 
-                if (!fieldNameLookup.ContainsKey (ExternalBankDataFieldName.TransactionNet))
+                if (!fieldNameLookup.ContainsKey(ExternalBankDataFieldName.TransactionNet))
                 {
-                    throw new ArgumentException ("There must be a transaction amount field in the bank data profile");
+                    throw new ArgumentException("There must be a transaction amount field in the bank data profile");
                 }
 
                 string amountNetString =
-                    StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionNet]]);
+                    StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionNet]]);
 
-                newRecord.TransactionNetCents = ParseAmountString (amountNetString);
+                newRecord.TransactionNetCents = ParseAmountString(amountNetString);
 
-                if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.TransactionGross))
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.TransactionGross))
                 {
                     string amountGrossString =
-                        StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionGross]]);
-                    newRecord.TransactionGrossCents = ParseAmountString (amountGrossString);
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionGross]]);
+                    newRecord.TransactionGrossCents = ParseAmountString(amountGrossString);
 
-                    if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.TransactionFee))
+                    if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.TransactionFee))
                     {
                         string amountFeeString =
-                            StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionFee]]);
-                        newRecord.FeeCents = ParseAmountString (amountFeeString);
+                            StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionFee]]);
+                        newRecord.FeeCents = ParseAmountString(amountFeeString);
 
                         if (Profile.FeeSignage == FeeSignage.Positive)
                         {
@@ -268,21 +319,21 @@ namespace Swarmops.Logic.Financial
 
                 if (newRecord.TransactionNetCents != newRecord.TransactionGrossCents + newRecord.FeeCents)
                 {
-                    throw new InvalidDataException (
+                    throw new InvalidDataException(
                         "For a record, the net transaction amount does not match the gross less the fee.");
                 }
 
-                if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.UniqueId))
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.UniqueId))
                 {
-                    newRecord.UniqueId = StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.UniqueId]]);
+                    newRecord.UniqueId = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.UniqueId]]);
                 }
-                else if (fieldNameLookup.ContainsKey (ExternalBankDataFieldName.NotUniqueId))
+                else if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.NotUniqueId))
                 {
                     newRecord.NotUniqueId =
-                        StripQuotes (lineFields[fieldNameLookup[ExternalBankDataFieldName.NotUniqueId]]);
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.NotUniqueId]]);
                 }
 
-                recordList.Add (newRecord);
+                recordList.Add(newRecord);
             }
 
             if (Profile.LatestTransactionLocation == LatestTransactionLocation.Top)
@@ -295,16 +346,16 @@ namespace Swarmops.Logic.Financial
             }
             else
             {
-                throw new ArgumentException ("LatestTransactionLocation is undefined");
+                throw new ArgumentException("LatestTransactionLocation is undefined");
             }
 
-            recordList.Sort (new ExternalBankDataRecord());
+            recordList.Sort(new ExternalBankDataRecord());
 
             Records = recordList.ToArray();
         }
 
 
-        private Int64 ParseAmountString (string input)
+        private Int64 ParseAmountString(string input)
         {
             // This parser deals with a number of different cases and cultures.
             // It returns cents.
@@ -357,16 +408,17 @@ namespace Swarmops.Logic.Financial
             }
 
 
-            // remove all known noise from the digit sequence: spaces, thousands accents, commas, periods
+            // remove all known noise from the digit sequence: all whitespace, thousands accents, commas, periods
 
-            input = input.Replace (" ", "").Replace ("'", "").Replace (",", "").Replace (".", "");
+            input = input.RemoveAllWhitespace();
+            input = input.Replace("'", "").Replace(",", "").Replace(".", "");
 
             // parse what's remaining as cents in Int64
 
-            return Int64.Parse (input);
+            return Int64.Parse(input);
         }
 
-        private string StripQuotes (string input)
+        private string StripQuotes(string input)
         {
             input = input.Trim();
 
@@ -374,9 +426,9 @@ namespace Swarmops.Logic.Financial
             {
                 if (input[0] == '\"')
                 {
-                    if (input.EndsWith ("\""))
+                    if (input.EndsWith("\""))
                     {
-                        return input.Trim ('\"', ' ');
+                        return input.Trim('\"', ' ');
                     }
                 }
             }

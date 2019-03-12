@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AspirantAddWelcome_Body" xml:space="preserve">
+    <value>crwdns6556731:0[Aspirant]crwdnd6556731:0[OrganizationName]crwdnd6556731:0[Regularship]crwdnd6556731:0[OrganizationName]crwdnd6556731:0[Aspirant]crwdnd6556731:0[Aspirantship]crwdnd6556731:0[RandomPassword]crwdnd6556731:0[ExternalUrl]crwdnd6556731:0[Aspirant]crwdnd6556731:0[Regular]crwdne6556731:0</value>
+  </data>
+  <data name="AspirantAddWelcome_Subject" xml:space="preserve">
+    <value>crwdns6556732:0[OrganizationName]crwdnd6556732:0[Aspirant]crwdnd6556732:0[OrganizationName]crwdne6556732:0</value>
+  </data>
   <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
-    <value>crwdns6555537:0[OrganizationName]crwdnd6555537:0[Regularship]crwdnd6555537:0[ActingPerson]crwdnd6555537:0[MembershipExpiry]crwdnd6555537:0[OrganizationName]crwdnd6555537:0[RandomPassword]crwdne6555537:0</value>
+    <value>crwdns6556735:0[OrganizationName]crwdnd6556735:0[Regularship]crwdnd6556735:0[ActingPerson]crwdnd6556735:0[MembershipExpiry]crwdnd6556735:0[OrganizationName]crwdnd6556735:0[RandomPassword]crwdnd6556735:0[ExternalUrl]crwdne6556735:0</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>crwdns6556800:0[OrganizationName]crwdnd6556800:0[Regularship]crwdnd6556800:0[ActingPerson]crwdnd6556800:0[OrganizationName]crwdnd6556800:0[RandomPassword]crwdnd6556800:0[ExternalUrl]crwdne6556800:0</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>crwdns6556801:0[OrganizationName]crwdnd6556801:0[OrganizationName]crwdne6556801:0</value>
   </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>crwdns6555538:0[OrganizationName]crwdnd6555538:0[OrganizationName]crwdne6555538:0</value>

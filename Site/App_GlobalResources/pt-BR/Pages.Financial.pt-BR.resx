@@ -121,9 +121,6 @@
   
   
   
-  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
-    <value>Não pode atestar uma quantidade nula.</value>
-  </data>
   
   
   
@@ -155,21 +152,12 @@
     <value>Pedido</value>
     <comment>Header for the requested amount.</comment>
   </data>
-  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
-    <value>Custos à espera da sua atestação</value>
-  </data>
-  <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Aqui é onde atesta os custos que as outras pessoas estão a pedir para retirar dos seus orçamentos. Nada é pago antes de ser atestado por si.</value>
-  </data>
   
   
-  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>Atestar</value>
-    <comment>keep short</comment>
-  </data>
-  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Atestar</value>
-  </data>
+  
+  
+  
+  
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Recusar</value>
     <comment>keep short</comment>
@@ -309,18 +297,9 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Por favor descreva o que foi esta compra.</value>
   </data>
-  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Quantia</value>
     <comment>Amount to be paid out</comment>
-  </data>
-  
-  
-  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
-    <value>Banco</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
-    <value>Data de Vencimento</value>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Pago</value>
@@ -330,15 +309,9 @@
     <value>Destinatário</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referência</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Custos Prontos Para Pagamento</value>
   </data>
-  
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Estes são os diversos custos para a organização que passaram todos os obstáculos para pagamento. Estão prontos a serem pagos ao destinatário. Aqui é onde pode verificá-los manualmente à medida que são pagos (provavelmente enquanto tem a página do banco aberta numa outra janela).</value>
   </data>
@@ -427,9 +400,7 @@
   <data name="ValidateReceipts_PageTitle" xml:space="preserve">
     <value>Validar Recibos</value>
   </data>
-  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>Os recibos da Reivindicação de Despesa #{0:N0} para {1} {2:N2} foram INVALIDADOS. A reivindicação não irá prosseguir a menos que seja re-validada.</value>
-  </data>
+  
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Os recibos da Reivindicação de Despesa #{0:N0} para {1} {2:N2} foram validados.</value>
   </data>
@@ -458,5 +429,40 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referência</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
   
 </root>

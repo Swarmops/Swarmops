@@ -117,11 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
+  <data name="AddPerson_ErrorCity" xml:space="preserve">
+    <value>المرجو إدخال إسم المدينة الأصلي.</value>
+  </data>
+  <data name="AddPerson_ErrorDate" xml:space="preserve">
+    <value>قم بإعطاء تاريخ أصلي أو دع هذا النطاق فارغا.</value>
+  </data>
+  <data name="AddPerson_ErrorMail" xml:space="preserve">
+    <value>المرجو إدخال بريد إلكتروني صحيح.</value>
+  </data>
+  <data name="AddPerson_ErrorName" xml:space="preserve">
+    <value>المرجو إدخال الإسم.</value>
+  </data>
+  <data name="AddPerson_ErrorStreet" xml:space="preserve">
+    <value>المرجو إدخال اسم الشارع أو رقم صندوق البريد الأصلي.</value>
+  </data>
   <data name="AddPerson_GeographyDetected" xml:space="preserve">
     <value>المنطقة الجغرافية</value>
   </data>
@@ -133,7 +143,9 @@
     <value>النوع القانوني للجنس</value>
     <comment>"Legal" to cut short discussions on 50 different genders for the time being</comment>
   </data>
-  
+  <data name="AddPerson_PersonSuccessfullyRegistered" xml:space="preserve">
+    <value>لقد تم إضافة هذا الشخص إلى المنظمة. و قد تم إرسال رسالة ترحيب إلى البريد الإلكتروني للمعني بالأمر.</value>
+  </data>
   <data name="AddPerson_StatisticalData" xml:space="preserve">
     <value>البيانات الإحصائية</value>
     <comment>Header for gender, date of birth</comment>
@@ -158,12 +170,29 @@
   <data name="ListFindPeople_NamePattern" xml:space="preserve">
     <value>نمط الاسم</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="ListFindPeople_Title" xml:space="preserve">
+    <value>قم بالبحث وإضافة الأشخاص</value>
+  </data>
+  <data name="ListFindPeople_TooManyHits" xml:space="preserve">
+    <value>النتائج المحصل عليها تتضمن أكثر من ألف شخص(يتم عرض ألف شخص كحد أقصى). القيام ببحث مرشح أكثر؟</value>
+  </data>
+  <data name="LocalOrganization_Header" xml:space="preserve">
+    <value>المنظمة المحلية ({0})</value>
+  </data>
+  <data name="LocalOrganization_HeaderGlobal" xml:space="preserve">
+    <value>المنظمة الشاملة</value>
+  </data>
+  <data name="LocalOrganization_Info" xml:space="preserve">
+    <value>هذه هي جهات الاتصال المحلية الخاصة بك. (إذا كان لديك امتيازات إدارية ، فيمكنك أيضًا تعيين أشخاص لهذه المناصب)</value>
+  </data>
+  <data name="LocalOrganization_PageTitle" xml:space="preserve">
+    <value>منظمتي المحلية</value>
+    <comment>The {0} is the geography name.</comment>
+  </data>
+  <data name="Positions_AssignPerson" xml:space="preserve">
+    <value>تعيين الشخص...</value>
+  </data>
+  <data name="Positions_CreateNewPosition" xml:space="preserve">
+    <value>إنشاء منصب جديد...</value>
+  </data>
 </root>

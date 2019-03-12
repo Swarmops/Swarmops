@@ -146,10 +146,10 @@
         <Children>
           
             <MainMenuItem>
-                <ResourceKey>Financial_ClaimExpense</ResourceKey>
+                <ResourceKey>Financial_RequestReimbursement</ResourceKey>
                 <UserLevel>1</UserLevel>
                 <Permissions />
-                <ImageUrl>iconshock-moneyback</ImageUrl>
+                <ImageUrl>iconshock-visa</ImageUrl>
                 <NavigateUrl>/Pages/v5/Financial/FileExpenseClaim.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
@@ -159,7 +159,7 @@
               <ResourceKey>Financial_RequestCashAdvance</ResourceKey>
               <UserLevel>1</UserLevel>
               <Permissions />
-              <ImageUrl>iconshock-cashinhand</ImageUrl>
+              <ImageUrl>iconshock-money</ImageUrl>
               <NavigateUrl>/Pages/v5/Financial/RequestCashAdvance.aspx</NavigateUrl>
               <Type>Link</Type>
               <Children />
@@ -201,7 +201,7 @@
                 <UserLevel>2</UserLevel>
                 <Permissions />
                 <ImageUrl>iconshock-stamped-paper</ImageUrl>
-                <NavigateUrl>/Pages/v5/Financial/AttestCosts.aspx</NavigateUrl>
+                <NavigateUrl>/Pages/v5/Financial/ApproveCosts.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>
@@ -380,7 +380,7 @@
                 <UserLevel>3</UserLevel>
                 <Permissions />
                 <ImageUrl>iconshock-openbook</ImageUrl>
-                <NavigateUrl>/Pages/v5/Ledgers/AccountPlan.aspx</NavigateUrl>
+                <NavigateUrl>/Pages/v5/Ledgers/ChartOfAccounts.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>

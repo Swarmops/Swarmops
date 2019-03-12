@@ -1,0 +1,3 @@
+#!/bin/bash
+
+scripts/repackage-build candidate

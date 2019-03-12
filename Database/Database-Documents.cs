@@ -101,10 +101,11 @@ namespace Swarmops.Database
                 string sqlQuery =
                     "SELECT Documents.DocumentId,Documents.ServerFileName,Documents.ClientFileName,Documents.Description,DocumentTypes.Name AS DocumentType,Documents.ForeignId,Documents.FileSize,Documents.UploadedByPersonId,Documents.UploadedDateTime From Documents,DocumentTypes " +
                     "WHERE Documents.DocumentTypeId=DocumentTypes.DocumentTypeId AND " +
-                    "Documents.Description = '" + description.Replace ("'", "''") + "' AND " +
+                    "Documents.Description = @description AND " +
                     "Documents.UploadedDateTime > '" + DateTime.UtcNow.AddDays (-1).ToString ("yyyy-MM-dd HH:mm") + "'";
 
                 DbCommand command = GetDbCommand (sqlQuery, connection);
+                AddParameterWithName(command, "description", description);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

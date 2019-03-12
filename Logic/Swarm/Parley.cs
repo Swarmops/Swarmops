@@ -9,7 +9,7 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Swarm
 {
-    public class Parley : BasicParley, IAttestable
+    public class Parley : BasicParley, IApprovable
     {
         private Parley (BasicParley basic) : base (basic)
         {
@@ -87,7 +87,7 @@ namespace Swarmops.Logic.Swarm
 
                 foreach (BasicFinancialValidation validation in validations)
                 {
-                    if (validation.ValidationType == FinancialValidationType.Attestation)
+                    if (validation.ValidationType == FinancialValidationType.Approval)
                     {
                         return true;
                     }
@@ -97,7 +97,7 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        #region Implementation of IAttestable
+        #region Implementation of IApprovable
 
         public FinancialAccount ParentBudget
         {
@@ -113,7 +113,7 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        public void Attest (Person attester)
+        public void Approve (Person approvingPerson)
         {
             if (Attested)
             {
@@ -163,37 +163,37 @@ namespace Swarmops.Logic.Swarm
             FinancialTransaction guaranteeFundsTx = FinancialTransaction.Create (OrganizationId, DateTime.Now,
                 "Conference #" +
                 Identity + " Guarantee");
-            guaranteeFundsTx.AddRow (Budget, -GuaranteeCents, attester);
-            guaranteeFundsTx.AddRow (Budget.Parent, GuaranteeCents, attester);
+            guaranteeFundsTx.AddRow (Budget, -GuaranteeCents, approvingPerson);
+            guaranteeFundsTx.AddRow (Budget.Parent, GuaranteeCents, approvingPerson);
 
             // Finally, set as attested
 
             PWEvents.CreateEvent (
-                EventSource.PirateWeb, EventType.ParleyAttested, attester.Identity,
+                EventSource.PirateWeb, EventType.ParleyAttested, approvingPerson.Identity,
                 OrganizationId, 0, 0, Identity, string.Empty);
 
             base.Attested = true;
             SwarmDb.GetDatabaseForWriting().SetParleyAttested (Identity, true);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Approval,
                 FinancialDependencyType.Parley, Identity,
-                DateTime.Now, attester.Identity, (double) (GuaranteeDecimal));
+                DateTime.Now, approvingPerson.Identity, (double) (GuaranteeDecimal));
         }
 
-        public void Deattest (Person deattester)
+        public void RetractApproval (Person retractingPerson)
         {
             throw new NotImplementedException();
             /*
             base.Attested = false;
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.RetractApproval,
                                                              FinancialDependencyType.Parley, this.Identity,
-                                                             DateTime.Now, deattester.Identity, (double)(this.GuaranteeDecimal+this.BudgetDecimal));*/
+                                                             DateTime.Now, retractingPerson.Identity, (double)(this.GuaranteeDecimal+this.BudgetDecimal));*/
 
             // TODO: Remove budget, remove financial account, set unattested
 
             // this.BudgetId = this.Budget.ParentIdentity;
         }
 
-        public void DenyAttestation (Person denyingPerson, string denyReason)
+        public void DenyApproval (Person denyingPerson, string denyReason)
         {
             // Re-implement if and when parleys are resurrected
 

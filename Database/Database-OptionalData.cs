@@ -30,7 +30,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT" + objectOptionalDataFieldSequence + "WHERE ObjectTypes.Name='" + objectType + "' " +
+                        "SELECT" + objectOptionalDataFieldSequence + "WHERE ObjectTypes.Name='" + objectType + "' " +  // objectType is an enum
                         "AND ObjectOptionalData.ObjectId=" + objectId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -70,9 +70,11 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT" + objectOptionalDataFieldSequence + "WHERE ObjectTypes.Name='" + objectType + "' " +
-                        "AND ObjectOptionalDataTypes.Name='" + dataType + "' " +
-                        "AND ObjectOptionalData.Data='" + data.Replace ("'", "''") + "';", connection);
+                        "SELECT" + objectOptionalDataFieldSequence + "WHERE ObjectTypes.Name='" + objectType + "' " + // objectType is an enum
+                        "AND ObjectOptionalDataTypes.Name='" + dataType + "' " +  // dataType is an enum; not user input
+                        "AND ObjectOptionalData.Data=@dataString", connection);
+
+                AddParameterWithName(command, "dataString", data);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

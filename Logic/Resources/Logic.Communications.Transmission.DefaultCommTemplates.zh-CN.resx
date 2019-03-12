@@ -117,6 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
+  <data name="AspirantAddWelcome_Body" xml:space="preserve">
+    <value>欢迎您以[Aspirant]的身份加入到[OrganizationName]！
+
+由于您在[OrganizationName]申请了[Regularship]身份，因此您作为一名正式的[Aspirant]收到此封邮件。您的[Aspirantship]资格并不会自动过期，所以您不必急于回复此封邮件。
+
+您在后台系统Swarmops上随机生成的初始密码如下所示：
+[RandomPassword]
+
+出于安全考虑，如果可能，请您尽快登录您的账户并设置属于您自己的密码。您可以用通过此链接[ExternalUrl]登录您的账户，然后点击位于屏幕右上方的”用户”图标，选择旁边有一个挂锁标识的“安全”标签，输入此临时密码。最后，设置属于您的新密码。您还可以考虑启用二元认证，以增强您的账户安全性。
+
+欢迎作为[Aspirant]的你加入，我们期望尽快与成为[Regular]的你再次相见！</value>
+  </data>
+  <data name="AspirantAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 欢迎您以[Aspirant]的身份加入到[OrganizationName]！</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
+    <value>欢迎来到[OrganizationName]！
+
+[ActingPerson]赋予了您[Regularship]身份。此身份将在[MembershipExpiry]过期，在此之前您将有充足的时间了解该组织。
+
+来自[OrganizationName]的人应该就关于如何激活的详细信息已经联系过您。如果没有，请静候联系。 
+
+您在后台系统Swarmops上随机生成的初始密码如下所示：
+[RandomPassword]
+
+出于安全考虑，如果可能，请您尽快登录您的账户并设置属于您自己的密码。您可以用通过此链接[ExternalUrl]登录您的账户，然后点击位于屏幕右上方的”用户”图标，选择旁边有一个挂锁标识的“安全”标签，输入此临时密码。最后，设置属于您的新密码。您还可以考虑启用二元认证，以增强您的账户安全性。
+
+欢迎加入！</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>欢迎来到[OrganizationName]！
+
+[ActingPerson]赋予了您[Regularship]身份。该资格并不会自动过期，所以您不必急于行动。
+
+来自[OrganizationName]的人应该就关于如何激活的详细信息已经联系过您。如果没有，请静候联系。 
+
+您在后台系统Swarmops上随机生成的初始密码如下所示：
+[RandomPassword]
+
+出于安全考虑，如果可能，请您尽快登录您的账户并设置属于您自己的密码。您可以用通过此链接[ExternalUrl]登录您的账户，然后点击位于屏幕右上方的”用户”图标，选择旁边有一个挂锁标识的“安全”标签，输入此临时密码。最后，设置属于您的新密码。您还可以考虑启用二元认证，以增强您的账户安全性。
+
+欢迎加入！</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 欢迎来到[OrganizationName]！</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] 欢迎来到[OrganizationName]！</value>
+  </data>
 </root>

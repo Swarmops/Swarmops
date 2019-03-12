@@ -41,9 +41,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + countryFieldSequence + " WHERE Code='" +
-                        countryCode.ToUpperInvariant().Replace ("'", "''") + "'",
+                        "SELECT " + countryFieldSequence + " WHERE Code=@countryCode",
                         connection);
+
+                AddParameterWithName(command, "countryCode", countryCode);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -73,7 +74,7 @@ namespace Swarmops.Database
                         return ReadCountryFromDataReader (reader);
                     }
 
-                    throw new ArgumentException ("Unknown CountryId");
+                    throw new ArgumentException ("Unknown CountryId: " + countryId);
                 }
             }
         }

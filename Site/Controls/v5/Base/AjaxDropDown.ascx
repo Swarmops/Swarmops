@@ -29,8 +29,7 @@
                 @"jsonData.newValue = " + this.ClientID + "_val(); " +
                 @"jsonData.cookie = '" + this.Cookie + "';" +
 
-                @"SwarmopsJS.ajaxCall(" +
-                   this.AjaxCallbackUrl + "," +
+                @"SwarmopsJS.ajaxCall('" + this.AjaxCallbackUrl + "'," +
                     @"jsonData," +
                     @"$.proxy(function(msg) { " +
                     @"  if (msg.Success == false) { " +

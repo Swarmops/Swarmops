@@ -75,7 +75,7 @@ namespace Swarmops.Logic.DashboardTasks
             lookupNavigateUrl[TaskGroupType.AttestationWarning] = "/Pages/v4/Financial/ViewInboundInvoices.aspx";
             lookupIconUrl[TaskGroupType.AttestationWarning] =
                 "/Images/Public/Fugue/icons-shadowless/receipt-invoice.png";
-            lookupDescriptionSingle[TaskGroupType.AttestationWarning] = "Attestation for invoice {0} is running late";
+            lookupDescriptionSingle[TaskGroupType.AttestationWarning] = "Approval for invoice {0} is running late";
             lookupDescriptionMany[TaskGroupType.AttestationWarning] = "Attestations for invoices {0} are running late";
         }
 

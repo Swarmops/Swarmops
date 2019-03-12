@@ -1,11 +1,41 @@
-Package: swarmops-common
+#
+# This is the template that is used to create the debian package control file for the
+# package swarmops-common, in the "sprint" (default) flavor.
+#
+# The ++PackageSuffix++ is expanded to be empty (for release) or "-rc" (for release candidate).
+# (In this file, macros are written with pluses in the comments to avoid macro expansion in
+# the comments. The actual macros use two minuses.)
+#
+
+Package: swarmops-common--PackageSuffix--
+
+#
+# The ++BuildNumber++ is replaced with the build number on the format A.B.C-betaXX+buildseqnumber-githubcommit.
+# An example might read 5.1.0-beta07+5120-41c03fa.
+#
+
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
-Depends: dialog (>= 1.1), --Dependencies--
-Conflicts: swarmops-common-internal,swarmops-common-stable
+
+#
+# ++Dependencies++ are inserted from the Dependencies folder, note that the file starts with
+# a space on each line, and so becomes a folding field in this control file.
+# Dialog is required for the Apache autoconfiguration and possibly other things in the future.
+# Mono-runtime >=5 makes sure user has added the mono sources. This version will update
+# to stay ahead of the Ubuntu/Debian LTS inclusions of Mono, for this reason.
+#
+
+Depends: dialog (>=1.2), mono-runtime (>=5), --Dependencies--
+
+#
+# The Conflicts field prevents installation of other flavors of Swarmops on the same server.
+# The ++ReversePackageSuffix++ is the other flavor from ++PackageSuffix++ above.
+#
+
+Conflicts: swarmops-common-internal,swarmops-common-stable,swarmops-common--ReversePackageSuffix--
 Homepage: http://swarmops.com/
 Description: Swarmops Common
  Swarmops is a swarm activist administration system.
- This package contains the common components between
- frontend and backend.
+ This package contains the common components and
+ dependencies between frontend and backend.

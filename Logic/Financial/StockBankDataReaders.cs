@@ -3,9 +3,9 @@
     // ReSharper disable InconsistentNaming
     internal class StockBankDataReaders
     {
-        public static string TabSeparatedValuesAccountReader
+        public static string CommaSeparatedValuesAccountReader
         {
-            get { return "TabSeparatedValuesReader"; }
+            get { return "CommaSeparatedValuesReader"; }
         }
 
         public static string SemicolonSeparatedValuesAccountReader

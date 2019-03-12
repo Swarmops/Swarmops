@@ -117,20 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SendMassMessage_Error_EmptyBody" xml:space="preserve">
+    <value>Mesajınızı göndermeden önce bir mesaj gövdesi oluşturmalısınız.</value>
+  </data>
+  <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
+    <value>Mesajınızla göndermek için bir mesaj konusu yazmalısınız.</value>
+  </data>
+  <data name="SendMassMessage_Geography" xml:space="preserve">
+    <value>Kimler şurada yaşıyor</value>
+  </data>
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>Mesajınız</value>
+  </data>
+  <data name="SendMassMessage_Info" xml:space="preserve">
+    <value>Organizsayondaki bir grup insana mesaj gönderin. Mesajı posta ile (haber bültenleri ve genel bilgi için faydalı) ya da telefonlarına gönderebilirsiniz(oldukça davetsiz ve maliyetli).</value>
+  </data>
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>Mesajınızı buraya yazın. * kalın *, _italic_, == başlıklar == ve benzeri gibi standart işaretleme kullanılabilir. İki yeni satır yeni bir paragrafa başlar. Postalar, çift modlu metin arşivi ve HTML olarak gönderilecektir.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>Alıcı Yok | Bir Alıcı | {0:N0} Alıcı</value>
+    <comment>Vertical bar divides none|one|many</comment>
+  </data>
+  <data name="SendMassMessage_RecipientType" xml:space="preserve">
+    <value>Herkese toplu bir mesaj gönder</value>
+  </data>
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>Şu anda Sandbox kullanıyorsunuz. Deneme mesajının nereye gönderilmesini istersiniz?</value>
+  </data>
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>Gönder</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>Mesajınız şimdi alıcılara dağıltılmaktadır. Dağıtım tamamlandığında bilgilendirileceksiniz.</value>
+  </data>
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>Konu</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
+  </data>
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>Deneme</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>Mesaj size gönderildi, böylece nasıl göründüğünü görebileceksiniz.</value>
+  </data>
+  <data name="SendMassMessage_Title" xml:space="preserve">
+    <value>Toplu Mesaj Gönder</value>
+  </data>
 </root>

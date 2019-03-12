@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>A new person has applied to be a [RegularTitle] in [OrganizationName]! [ConcernedPersonName] currently resides in [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] New Applicant: [ConcernedPersonName], [GeographyName]</value>
+  </data>
   <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
-    <value>On attempting a payout to your bitcoin payout address, the address ([BitcoinAddress]) was rejected by the underlying payout engine as invalid. It has therefore been cleared from your profile.
+    <value>On attempting a payout to your Bitcoin Cash payout address, the address ([BitcoinAddress]) was rejected by the underlying payout engine as invalid. It has therefore been cleared from your profile.
 
 Please log on to [InstallationName] at [ExternalUrl] and set a new bitcoin payout address.</value>
   </data>
@@ -126,36 +132,36 @@ Please log on to [InstallationName] at [ExternalUrl] and set a new bitcoin payou
     <value>[[OrganizationName] - ACTION ITEM] Bad bitcoin payout address</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
-    <value>You have changed your bitcoin payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantied for the next 48 hours.
+    <value>You have changed your Bitcoin Cash payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours.
 
 If you did NOT change the payout address and there has been a security breach, please click this link immediately to lock down your account: [LockdownLink]
 
 If you click that link, your account will be locked down immediately without confirmation requests. However, if you did request the payout address change, all is fine and no further action is required on your part.</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Bitcoin payout address changed</value>
+    <value>[[OrganizationName]] Bitcoin Cash payout address changed</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
-    <value>You have funds waiting for payout at [OrganizationName], but you have not set a bitcoin payout address.
+    <value>You have funds waiting for payout at [OrganizationName], but you have not set a Bitcoin Cash payout address.
 
 Please log on to [InstallationName] at [ExternalUrl] and follow the link to set your payout address - you will find it in the list of to-do items.</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Please set your bitcoin payout address</value>
+    <value>[[OrganizationName]] Please set your Bitcoin Cash payout address</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
-    <value>You have set a bitcoin payout address: [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours, and will proceed to be paid out to the new address after that.
+    <value>You have set a Bitcoin Cash payout address: [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours, and will proceed to be paid out to the new address after that.
 
 If you did not set this payout address (it may be worth double checking the address above for added security), contact [OrganizationName] immediately.</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
-    <value>A bitcoin payout address was set by [ConcernedPersonName]. Payouts will begin after 48 hours when the quarantine period has elapsed.</value>
+    <value>A Bitcoin Cash payout address was set by [ConcernedPersonName]. Payouts will begin after 48 hours when the quarantine period has elapsed.</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] [ConcernedPersonName] has set a bitcoin payout address</value>
+    <value>[[OrganizationName]] [ConcernedPersonName] has set a Bitcoin Cash payout address</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Bitcoin payout address set</value>
+    <value>[[OrganizationName]] Bitcoin Cash payout address set</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
     <value>The bitcoin hotwallet for [OrganizationName] just made [PaymentCount] automatic payment(s) totalling [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin or "bits").</value>
@@ -164,7 +170,7 @@ If you did not set this payout address (it may be worth double checking the addr
     <value>[[OrganizationName]] Hotwallet Payout: [CurrencyCode] [AmountFloat]</value>
   </data>
   <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>[BitcoinAmountFloat] microbitcoin ("bits") was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
+    <value>[BitcoinAmountFloat] microbitcoin ("bits") was just transferred to your Bitcoin Cash address ([BitcoinAddress]) by [OrganizationName] for the following:
 
 [EmbeddedPreformattedText]
 
@@ -180,28 +186,28 @@ You should already see the transaction in your wallet and it should achieve spen
     <value>[[OrganizationName] - URGENT] Bitcoin private key error; can't pay</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
-    <value>Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the bitcoin hotwallet. Swarmops is unable to make further payments at this time.
+    <value>Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the Bitcoin Cash hotwallet. Swarmops is unable to make further payments at this time.
 
 Please top up the hotwallet IMMEDIATELY to at least the needed amount - an additional [AmountMissingMicrocoinsFloat] microbitcoin ("bits") is required to resume financial hotwallet operations.
 
 Swarmops will keep trying and will keep sending these notifications as long as it has not succeeded.</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Bitcoin hotwallet insufficient for payments - top up immediately</value>
+    <value>[[OrganizationName] - ACTION ITEM] Bitcoin Cash hotwallet insufficient for payments - top up immediately</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you.</value>
-  </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance Attested: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your request.
+  <data name="CashAdvance_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Your previously approved cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has had its approval RETRACTED by the budget owner. This cash advance is no longer approved. This usually indicates some sort of problem with your request.
 
 Expect more communication from the budget owner to follow on the matter.</value>
   </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cash Advance DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
+  <data name="CashAdvance_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Approval for Cash Advance RETRACTED: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Approved_Body" xml:space="preserve">
+    <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been approved by the budget owner. It will now proceed to payout to you.</value>
+  </data>
+  <data name="CashAdvance_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cash Advance Approved: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Your cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. The text below was given as reason for denying it:
@@ -223,38 +229,38 @@ This means you should see the amount on your account shortly.</value>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
     <value>[ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
 
-Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny.</value>
+Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <value>[[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Approval Needed</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Expense Claim Attested: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
-
-Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny.</value>
-    <comment>This is sent to the budget owner(s)only.</comment>
-  </data>
-  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
-    <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your expense claim.
+  <data name="ExpenseClaim_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Your previously approved expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has had its approval RETRACTED by the budget owner. This expense claim is no longer approved. This usually indicates some sort of problem with your expense claim.
 
 Expect more communication from the budget owner to follow on the matter.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
+  <data name="ExpenseClaim_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Approval RETRACTED for Expense Claim: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
+    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been approved by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Expense Claim Approved: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
+
+Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Approval Needed</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. The text below was given as reason for denying it:
@@ -265,14 +271,6 @@ Expect more communication from the budget owner to follow on the matter.</value>
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat]</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been DE-validated by the financial record keepers of the organization. This usually indicates some sort of problem with the documentation of your expense claim.
-
-Expect more communication to follow on the matter. If you don't hear from record keepers in short time on this matter, do follow up with them.</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been marked as paid out by the organization's accountants.
@@ -291,13 +289,21 @@ The claim will be paid out to you when the amount has also been attested by the 
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Expense Claim Receipts Validated: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
+  <data name="ExpenseClaim_ValidationRetracted_Body" xml:space="preserve">
+    <value>The validation of receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been RETRACTED by the financial record keepers of the organization. The receipts are no longer considered valid. This usually indicates some sort of problem with the documentation of your expense claim.
 
-Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny.</value>
+Expect more communication to follow on the matter. If you don't hear from record keepers in short time on this matter, do follow up with them.</value>
+  </data>
+  <data name="ExpenseClaim_ValidationRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Validation RETRACTED for Expense Claim Receipts: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must approve this invoice before it proceeds to payout.
+
+Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny.</value>
   </data>
   <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <value>[[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Approval Needed</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">
@@ -395,6 +401,16 @@ Please log on to [InstallationName] at [ExternalUrl]Financial/ValidateReceipts t
   <data name="Receipts_Filed_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] Receipts Filed - Validation Needed</value>
     <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>Your salary payout for [RequestPurpose] was cancelled. It will not be paid out.
+
+If this comes as a surprise to you, please contact the organization and/or your supervisor urgently. The following was given as reason:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Salary payout denied: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="Salary_LastYearSummary_Body" xml:space="preserve">
     <value>This is your summary salary statement for [LastYear]. It is not a statement of a new salary, but a statement of the monthly salaries paid to you over the course of the last year as well as any taxes deducted. The purpose of this statement is to serve as data for your records and/or for tax declaration purposes for last year.

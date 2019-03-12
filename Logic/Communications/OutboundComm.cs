@@ -280,7 +280,7 @@ namespace Swarmops.Logic.Communications
 
 
 
-        public static OutboundComm CreateNotificationAttestationNeeded (FinancialAccount budget, Person concernedPerson,
+        public static OutboundComm CreateNotificationApprovalNeeded (FinancialAccount budget, Person concernedPerson,
             string supplier, double amountRequested, string purpose, NotificationResource notification)
         {
             NotificationPayload payload = new NotificationPayload (notification.ToString());
@@ -391,6 +391,8 @@ namespace Swarmops.Logic.Communications
             payload.Strings[NotificationString.GeographyName] = concernedPerson.Geography.Name;
             payload.Strings[NotificationString.RegularTitle] = organization.RegularLabel.ToString();  // may need fudging later because localization
             payload.Strings[NotificationString.ActivistTitle] = organization.ActivistLabel.ToString(); // as above
+
+            // TODO: Change the below to resolve to at least the global officers
 
             return CreateSingleRecipientNotification (payload, organization, Person.FromIdentity (1));
         }

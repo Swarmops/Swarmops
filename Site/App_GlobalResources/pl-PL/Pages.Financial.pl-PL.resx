@@ -122,164 +122,539 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
+    <value>Niestety, nie można ponownie zaplanować wypłaty wynagrodzenia.</value>
+  </data>
+  <data name="AttestCosts_Error_InvalidAmountRetry" xml:space="preserve">
+    <value>To nie wydaje się być prawidłową kwotą. Ponowić próbę?</value>
+  </data>
+  <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
+    <value>Wybierz budżet, aby przekierować opłatę.</value>
+  </data>
+  
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>Działanie</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>Beneficjant</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Budżet</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>Dokumenty</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>Element</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>Żądana</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
+    <value>Odmów</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonRebudget" xml:space="preserve">
+    <value>Ponownie ujmowane w budżecie</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
+    <value>"Odmawiam twojej prośby o fundusze, ponieważ..."</value>
+    <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
+    <value>Jaką kwotę potwierdzasz (w {0})?</value>
+    <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionCorrect" xml:space="preserve">
+    <value>Zmień ten element na tę kwotę (w {0}), a następnie potwierdź w ten sposób:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionDeny" xml:space="preserve">
+    <value>Opcjonalny powód odmowy przekazania wnioskodawcy:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
+    <value>Przenieś opłatę do tego budżetu zamiast:</value>
+  </data>
+  
+  
+  
+  
+  <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
+    <value>Ten rejestr powinien pobierać inny budżet. Przenieś go tam.</value>
+  </data>
+  <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
+    <value>Co wydaje się być nie tak z tym zapisem?</value>
+  </data>
+  
+  
+  
+  <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
+    <value>Pozostań przy Budżecie</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmYes" xml:space="preserve">
+    <value>Wymuś Kredyt</value>
+  </data>
+  <data name="AttestCosts_Overdrafted" xml:space="preserve">
+    <value>BUDŻET ZOSTAŁ PRZEKROCZONY.</value>
+    <comment>The UPPERCASE is intentional.</comment>
+  </data>
+  
+  
+  
+  <data name="AttestCosts_SalaryAttested" xml:space="preserve">
+    <value>Wynagrodzenie #{0:N0} za {1} zostało potwierdzona dla {3:N2}.</value>
+  </data>
+  
+  
+  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
+    <value>Łączna kwota faktury (w {0})</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>Opis</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
+  <data name="CreateInboundInvoice_HeaderInvoiceImage" xml:space="preserve">
+    <value>Zdjęcie Faktury</value>
+  </data>
+  <data name="CreateInboundInvoice_HeaderPaymentDetails" xml:space="preserve">
+    <value>Szczegóły Płatności</value>
+    <comment>Displayed as header over supplier's account details</comment>
+  </data>
+  <data name="CreateInboundInvoice_Info" xml:space="preserve">
+    <value>W tym miejscu można składać faktury otrzymane w organizacji ("Należne Rachunki"). Wprowadź nazwę dostawcy, kwotę, termin płatności, numer referencyjny faktury i prześlij zdjęcie otrzymanej faktury. Wybierz także budżet. Właściciel budżetu musi jak zwykle potwierdzić. (Przyszłe rozciągnięcia harmonogramu działania tego mechanizmu obejmują zamówienia zakupu i listy dostawców)</value>
+  </data>
+  <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
+    <value>Otrzymano Przychodzące Faktury</value>
+  </data>
+  <data name="CreateInboundInvoice_Reference" xml:space="preserve">
+    <value>Indeks Faktury</value>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceAutomaticOcr" xml:space="preserve">
+    <value>OCR / Automatyczne</value>
+    <comment>Some invoices come with OCR numbers printed on them for automatic processing.</comment>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceManual" xml:space="preserve">
+    <value>Ręcznie</value>
+    <comment>Other invoices come without automated processing and a manual </comment>
+  </data>
+  <data name="CreateInboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Przychodząca Faktura #{0:N0} zgłoszona.</value>
+    <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
+  </data>
+  <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
+    <value>Konto</value>
+    <comment>Free text input, intended to convey everything needed to get the money right</comment>
+  </data>
+  <data name="CreateInboundInvoice_UploadInvoiceImage" xml:space="preserve">
+    <value>Prześlij obraz</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
+    <value>Wprowadź konto bankowe dostawcy lub odpowiednika.</value>
+  </data>
+  <data name="Donate_Explain" xml:space="preserve">
+    <value>To jest kod QR dla dotacji na rzecz {0}. Przeczytaj go z portfela bitcoin w telefonie, aby przekazać dotację, lub przekaż dotację ze swojego komputera bezpośrednio na [{1}] (to jest adres Bitcoin Cash).</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="Donate_FundsReceived" xml:space="preserve">
+    <value>Otrzymano {0} {1:N2} ({2:N0} mikro-monety lub "bity"). Dziękujęmy!</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedNative" xml:space="preserve">
+    <value>Otrzymano {0} mikro-monet("bitów"). Dziękujemy!</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="Donate_Info" xml:space="preserve">
+    <value>Jeśli chcesz przekazać dotację na rzecz organizacji, możesz to zrobić tutaj.</value>
+  </data>
+  <data name="Donate_PageTitle" xml:space="preserve">
+    <value>Podaruj</value>
+  </data>
+  <data name="Donate_StatusInitial" xml:space="preserve">
+    <value>Czekanie na transakcję...</value>
+  </data>
+  <data name="Donate_TransactionDetected" xml:space="preserve">
+    <value>Wykryto transakcję, weryfikowanie...</value>
+  </data>
+  <data name="Donate_TxLabel" xml:space="preserve">
+    <value>Donacja dla {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Donate_TxLabel_Loan" xml:space="preserve">
+    <value>Pożyczka dla {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="FileExpenseClaim_Amount" xml:space="preserve">
+    <value>Kwota zwrotu do wydania (w {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
+    <value>Numer konta</value>
+  </data>
+  <data name="FileExpenseClaim_BankClearing" xml:space="preserve">
+    <value>Numer rozliczeniowy</value>
+  </data>
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>Nazwa banku</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Budżet</value>
+  </data>
+  <data name="FileExpenseClaim_CostType" xml:space="preserve">
+    <value>Rodzaj Kosztu</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
+  <data name="FileExpenseClaim_Description" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>Twoje Dane Bankowe</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderReceiptImages" xml:space="preserve">
+    <value>Zdjęcia Pokwitowań</value>
+  </data>
+  <data name="FileExpenseClaim_Info" xml:space="preserve">
+    <value>Jeśli dokonałeś zakupu w imieniu organizacji, korzystając z twoich prywatnych środków, najprawdopodobniej będziesz chciał tego dokonać, składając wniosek&lt;em&gt;o zwrot kosztów&lt;/em&gt;. Dokonujesz tego tutaj, przesyłając pokwitowania i wybierając budżet, które ma być zasilone. Jeśli poprzednio otrzymałeś zaliczkę gotówkową za ten zakup, możesz w ten sposób spłacić pożyczkę organizacji, przesyłając pokwitowania.</value>
+  </data>
+  <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
+    <value>Zażądaj o Zwrot Pieniędzy za Wydatki</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartOne" xml:space="preserve">
+    <value>Roszczenie dotyczące wydatków zostało pomyślnie zgłoszone do {0} {1:N2} wobec budżetu {2}. Pokwitowania będą musiały zostać zatwierdzone, a wniosek musi zostać potwierdzony przez właściciela budżetu.</value>
+    <comment>{0} is the currency, {1} is the amount, and {2} is the budget name.</comment>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Jak tylko to się stanie, środki zostaną przeznaczone do wypłaty na wskazane konto.</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Ponieważ jest to twój własny budżet, poświadczenie jest już kompletne. Konieczna jest tylko potwierdzenie.</value>
+  </data>
+  <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
+    <value>Prześlij Zdjęcia Pokwitowania</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
+    <value>Podaj kwotę pieniędzy (w {0}), o którą się ubiegasz.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Documents" xml:space="preserve">
+    <value>Prześlij jeden lub więcej zdjęć podpierające wniosek o zwrot wydatków.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>Wybierz oznaczoną opcję.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
+    <value>Opisz wykonany zakup.</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
+    <value>Kwota</value>
+    <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
+    <value>Zapłacono</value>
+    <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
+    <value>Odbiorca</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_Header" xml:space="preserve">
+    <value>Koszty Gotowe Do Wypłaty</value>
+  </data>
+  <data name="PayOutMoney_Info" xml:space="preserve">
+    <value>Są różne formy kosztów ponoszone przez organizację, które przeszły wszystkie przeszkody w wypłacie. Są gotowe do wypłaty na rzecz odbiorcy. Tutaj możesz sprawdzić je jako wypłacone (prawdopodobnie podczas otwierania twojego banku w innym oknie).</value>
+  </data>
+  <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
+    <value>Pokaż OCR dla Aplikacji Mobilnych</value>
+  </data>
+  <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
+    <value>Pokaż Otwarte Wypłaty ({0:N0})</value>
+    <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>Wypłać Pieniądze</value>
+  </data>
+  <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
+    <value>Nie można cofnąć wypłaty #{0}: została już rozliczona lub zamknięta.</value>
+  </data>
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>Wypłata #{0:N0} dla {1} została utworzona.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>Wypłata #{0:N0} została cofnięta i wszystko zostało przywrócone.</value>
+  </data>
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>Podatek Dodatni</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Odliczony Podatek</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Wynagrodzenie Brutto</value>
+  </data>
+  <data name="PayrollTaxForms_Info" xml:space="preserve">
+    <value>Zobacz listy oszustów (wypełnione formularze podatkowe) dla list płac organizacji, które możesz łatwo skopiować do aktualnych formularzy podatkowych, a nawet wydrukować tak, jak jest. Wyniki i rzeczywiste formularze różnią się w zależności od kraju i czasami zależą od kodu i wtyczek firm zewnętrznych.</value>
+  </data>
+  <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
+    <value>Formularze Podatkowe Dla Płac</value>
+  </data>
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>Miesięczne formularze podatkowe za {0} Dla</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Całkowity Koszt</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Całkowity Podatek</value>
+  </data>
+  <data name="RequestCashAdvance_Amount" xml:space="preserve">
+    <value>Kwota Zaliczki (w {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_BankAccount" xml:space="preserve">
+    <value>Numer Konta</value>
+  </data>
+  <data name="RequestCashAdvance_BankClearing" xml:space="preserve">
+    <value>Numer Rozliczeniowy</value>
+  </data>
+  <data name="RequestCashAdvance_BankName" xml:space="preserve">
+    <value>Nazwa Banku</value>
+  </data>
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>Budżet</value>
+  </data>
+  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
+    <value>Twoje Dane Bankowe</value>
+  </data>
+  <data name="RequestCashAdvance_Info" xml:space="preserve">
+    <value>Jeśli chcesz dokonać zakupu w imieniu organizacji, ale potrzebujesz pieniędzy z wyprzedzeniem, a nie później, możesz poprosić o wypłatę gotówki w określonym celu.</value>
+  </data>
+  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
+    <value>Żądanie Zaliczki Gotówkowej</value>
+  </data>
+  <data name="RequestCashAdvance_Purpose" xml:space="preserve">
+    <value>Cel</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartOne" xml:space="preserve">
+    <value>Wnioskowano o zaliczkę gotówkową dla &lt;strong&gt;{0}&lt;/strong&gt;. Żądana kwota to {2}{3:N2}. Zauważ, że jest to &lt;strong&gt;pożyczka&lt;/strong&gt; od organizacji do przedstawienia pokwitowań.</value>
+    <comment>{0} is the person receiving the advance, {1} is the entered description. {2} is the currency (in caps) and {3:N2} is the amount, with two decimals, displayed in culture.</comment>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwo" xml:space="preserve">
+    <value>To musi zostać potwierdzone przez właściciela budżetu, a następnie przystąpić do wypłaty.</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Ponieważ jest to twój własny budżet, został on automatycznie poświadczony i rozpoczął wypłatę.</value>
+    <comment>This is displayed if either the person creating the cash advance OR the person receiving it is the budget owner.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Amount" xml:space="preserve">
+    <value>Podaj kwotę pieniędzy (w {0}), o którą się ubiegasz.</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
+    <value>Proszę wprowadzić swój numer konta.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankClearing" xml:space="preserve">
+    <value>Wprowadź numer rozliczeniowy swojego banku.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
+    <value>Podaj nazwę banku.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
+    <value>Proszę określić budżet do zasilenia.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
+    <value>Proszę podać cel wypłaty gotówki.</value>
+  </data>
+  <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
+    <value>Poświadczenia oczekujące na zatwierdzenie</value>
+  </data>
+  <data name="ValidateReceipts_Info" xml:space="preserve">
+    <value>Tutaj możesz sprawdzić i potwierdzić ważność pokwitowań, które towarzyszą rozliczeniom wydatków. Sprawdź, czy kwota jest prawidłowa i czy paragon wydaje się być zgodny z tym, za co jest uważany.</value>
+  </data>
+  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
+    <value>Sprawdź Poprawność Poświadczeń</value>
+  </data>
+  
+  <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
+    <value>Potwierdzono Pokwitowanie na Roszczenie o Zwrot Kosztów #{0:N0} za {1} {2:N2}.</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Utwórz</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Wprowadź kwotę pieniędzy (w {0}) na żądanie faktury.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Proszę określić budżet do zasilenia.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Prześlij jeden lub więcej dokumentów z oryginalnej faktury.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Wybierz opcję.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Opisz wykonany zakup.</value>
+  </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Żądanie</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Żądanie</value>
+  </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>Część całości VAT ({0})</value>
+  </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>Część całości podatku VAT ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Wystawianie Przychodzących faktur</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Nadawca faktury</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Zawiera listę ostatnich 100 faktur, posortowanych według ich daty od najnowszej.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Faktury Przychodzące</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Tworzenie faktury Wychodzącej</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Stwórz</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Tworzenie faktury Przychodzącej</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Wychodząca Faktura #{0:N0} zgłoszona.</value>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Otrzymane środki ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Wysłane</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Klient</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Wystawianie faktur Wychodzących</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Zawiera listę 100 ostatnich faktur wychodzących, posortowanych według czasu utworzenia, od najnowszej.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Cała Kwota</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Termin Realizacji</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Wystawianie Faktur Wychodzących</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Prześlij Expensify CSV</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Jeśli masz wiele raportów o wydatkach, możesz je zebrać za pomocą Expensify i przesłać tutaj raport Expensify CSV (który otrzymasz od: Expensify w Raportach, Eksportowanych, jako CSV). Swarmops użyje funkcji Expensify, aby pobrać wszystkie indywidualne pokwitowania i zarejestrować je jako oddzielne oświadczenia o wydatkach dla prawidłowego rozliczenia.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>Aby to zadziałało, ponieważ {0} raportuje VAT do organów podatkowych, musisz zmodyfikować domyślny profil CSV Expensify, aby uwzględnić podatek VAT, którego domyślnie nie ma. Strony pomocy programu Expensify mają więcej wskazówek, jak to zrobić, a jeśli korzystasz z funkcji Expensify w oparciu o zespół, Twoja polityka Expensify powinna już mieć profil eksportu CSV z obsługą podatku VAT.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Na podstawie ustawień organizacji, profil eksportu "Domyślny CSV" w Expensify powinien być wystarczający dla Swarmops.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Walutą raportu Expensify jest</value>
+  </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Prześlij Raport Expensify o Refundację</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;BŁĄD: Nie można przeanalizować pliku CSV Expensify.&lt;/strong&gt; Jeśli jest to plik CSV z Expensify, to Swarmops potrzebuje kolumn "Znacznik Czasu", "Kwota", "Handlowa", "Komentarz", "Kategoria", "MCC", "Oryginalna Waluta" i "Oryginalna Kwota" obecnych w pliku. Jeśli organizacja zgłasza podatek VAT, wymagana jest dodatkowa kolumna o nazwie "VAT".&lt;/p&gt;&lt;p&gt;Nie można kontynuować z tym plikiem.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;BŁĄD: plik CSV Expensify nie ma pola VAT.&lt;/strong&gt; Ponieważ ta organizacja raportuje podatek od Wartości Dodanej (VAT) do władz, musi to być określone na podstawie kosztu. Włącz podatek VAT w polu Expensify i utwórz nowy profil eksportu CSV, który eksportuje go pod nagłówkiem kolumny "VAT". Jeśli Twój zespół utworzył już taki profil CSV, możesz po prostu wybrać go podczas eksportowania do pliku CSV.&lt;/p&gt;&lt;p&gt;Nie można przetworzyć tego pliku.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Przesłać inny plik CSV o zwiększonej wartości?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>mnie</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Od kogo jest to roszczenie o zwrot kosztów?</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;BŁĄD: w pliku CSV Expensify brakuje wymaganych pól danych.&lt;/strong&gt; Wygląda na to, że brakuje co najmniej jednego z wymaganych pól domyślnego profilu CSV w Expensify. Zapoznaj się z dokumentacją techniczną i porównaj z plikiem, który próbowałeś przesłać. (Oczywiście bardziej prawdopodobną przyczyną błędu jest to, że próbujesz przesłać całkowicie niewłaściwy plik &amp;ndash; może zdjęcie zamiast Expensify CSV &amp;ndash; i że jest to przyczyna braku oczekiwanych danych.)&lt;/p&gt;&lt;p&gt;Nie można przetworzyć tego pliku.&lt;/p&gt;</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(Kwota ta nie może zawierać podatku VAT!)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>Wszystkie roszczenia dotyczące wydatków wymagają budżetu przed złożeniem.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>Brak Rekordów Expensify do przesłania</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>Gotowy do złożenia jednego roszczenia</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>Gotowy do przesłania {0} roszczeń</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>Roszczenie zostało pomyślnie złożone.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>Pomyślnie złożono {0} roszczenia.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Odniesienie</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
   
 </root>

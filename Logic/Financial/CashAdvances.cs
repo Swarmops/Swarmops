@@ -4,6 +4,7 @@ using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
@@ -66,6 +67,12 @@ namespace Swarmops.Logic.Financial
         public static CashAdvances ForOrganization (Organization organization, bool includeClosed)
         {
             return FromArray (SwarmDb.GetDatabaseForReading().GetCashAdvances (organization,
+                includeClosed ? DatabaseCondition.None : DatabaseCondition.OpenTrue));
+        }
+
+        public static CashAdvances ForPersonAndOrganization(Person person, Organization organization, bool includeClosed)
+        {
+            return FromArray(SwarmDb.GetDatabaseForReading().GetCashAdvances(person, organization,
                 includeClosed ? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
     }

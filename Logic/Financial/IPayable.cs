@@ -8,7 +8,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
-    public interface IPayable: IAttestable, IHasIdentity
+    public interface IPayable: IApprovable, IHasIdentity
     {
         new FinancialAccount Budget { get; }
         void SetBudget (FinancialAccount newBudget, Person settingPerson);

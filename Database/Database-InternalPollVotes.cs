@@ -74,8 +74,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT" + internalPollVoteFieldSequence + "WHERE VerificationCode='" +
-                        verificationCode.Replace ("'", "''") + "';", connection);
+                        "SELECT" + internalPollVoteFieldSequence + "WHERE VerificationCode=@verificationCode", connection);
+
+                AddParameterWithName(command, "verificationCode", verificationCode);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

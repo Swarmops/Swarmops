@@ -119,6 +119,91 @@
   </resheader>
   
   
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>При попытке выплат на ваш Биткойн Cash payout адрес, адрес ([BitcoinAddress]) был отклонен базовым механизмом выплат как недействительный. Поэтому он был очищен от вашего профиля.
+
+Пожалуйста, войдите в систему [InstallationName] в [ExternalUrl] и установить новый адрес выплаты биткойнов.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ДЕЙСТВИЕ ДЕЙСТВИЯ] Бад-биткойн</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>Вы изменили свой адрес выплаты Биткойнских денег [BitcoinOldAddress] к [BitcoinAddress]. В качестве меры предосторожности все выплаты будут помещены в карантин в течение следующих 48 часов.
+
+Если вы не изменили адрес выплат и не было нарушения безопасности, нажмите эту ссылку, чтобы заблокировать свою учетную запись: [LockdownLink] 
+
+Если вы нажмете эту ссылку, ваша учетная запись будет немедленно заблокирована без запросов на подтверждение. Однако, если вы запросили изменение адреса выплаты, все будет в порядке, и с вашей стороны никаких дальнейших действий не потребуется.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Биткоин-адрес денежных выплат изменился</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>У вас есть средства, ожидающие выплаты по [OrganizationName], но вы не установили адрес выплаты биткойнских денег.
+
+Войдите в систему [InstallationName] в [ExternalUrl] и следуйте по ссылке, чтобы установить свой адрес выплат - вы найдете его в списке дел.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Укажите адрес выплат Биткойн наличными</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>Вы установили адрес выплаты биткойнских денег: [BitcoinAddress] В качестве меры предосторожности все выплаты будут помещены в карантин в течение следующих 48 часов и после этого будут возвращены на новый адрес.
+
+Если вы не установили этот адрес выплат (возможно, стоит дважды проверить адрес выше для дополнительной безопасности), свяжитесь с нами [OrganizationName] немедленно.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>Биткойн Наличный адрес выплат был установлен [ConcernedPersonName], Выплаты начнутся через 48 часов после истечения срока карантина.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] установил адрес выплаты Bitcoin Cash</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Набор битковских денежных выплат</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>Биткойн-хот-котель для [OrganizationName] только что сделал [PaymentCount] автоматический платеж (ы) [CurrencyCode] [AmountFloat] [BitcoinAmountFloat] микробикой или "битами").</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Выплата выигрыша: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Средства, выплаченные вам: [CurrencyCode] [AmountFloat]</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>При попытке автоматизированного платежа из горячего листа закрытый ключ, используемый для подписи, не соответствует открытым ключам, используемым для сбора необходимых средств. Это серьезное условие.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - СРОЧНО] Биткойн с закрытым ключом; не может заплатить</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmops пытается произвести платежи [CurrencyCode] [AmountNeededFloat], но доступен только [CurrencyCode] [AmountWalletFloat] в режиме горячего кота Биткойна. В настоящее время Swarmops не может производить дополнительные платежи.
+
+Пожалуйста, долейте hotwallet НЕМЕДЛЕННО, по крайней мере, до необходимой суммы - для возобновления финансовых операций в горячем циферблате требуется дополнительный микробионцин [AmountMissingMicrocoinsFloat] («бит»).
+
+Swarmops будут продолжать пытаться и будут отправлять эти уведомления, пока это не удалось.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ДЕЙСТВИТЕЛЬНЫЙ ДЕТАЛЬ] Биткойн Наличный ваниль, недостаточный для платежей - немедленно долейте</value>
+  </data>
+  
+  
+  
+  
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>Ваш денежный аванс с [OrganizationName] для [CurrencyCode] [BudgetAmountFloat] относительно [RequestPurpose] как было отказано. Приведенный ниже текст был приведен в качестве основания для отказа в этом:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] ДЕНЕЖНЫЕ СРЕДСТВА: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>Ваш запрос на получение наличных [OrganizationName] для [CurrencyCode] [BudgetAmountFloat], относительно [RequestPurpose], был отмечен как оплаченный бухгалтерами организации.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Оплата наличными: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   
   
   
@@ -127,48 +212,72 @@
   
   
   
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>Ваше требование расходов с [OrganizationName] для [CurrencyCode] [BudgetAmountFloat] относительно [RequestPurpose] было отказано. Приведенный ниже текст был приведен в качестве основания для отказа в этом:
+
+[EmbeddedPreformattedText]
+</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Затраты на выплату: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>Ваше требование расходов с [OrganizationName] для [CurrencyCode] [BudgetAmountFloat], относительно [RequestPurpose], был отмечен как оплаченный бухгалтерами организации.
+
+Это означает, что вы должны увидеть сумму на своем счете в ближайшее время.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Плата за оплату: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>Квитанции за ваш счет требуют [OrganizationName] для [CurrencyCode] [BudgetAmountFloat], относительно [RequestPurpose], были проверены людьми, ответственными за ведение записей в порядке.
+
+Требование будет выплачено вам, когда сумма также будет подтверждена владельцем бюджета.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Подтвержденные поступления к расходам: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>Новый [Regular] был добавлен вручную [OrganizationName] в пределах вашей территории.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] новый [Regular]: [PersonName], [PersonGeography] [CountryCode] (руководство)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>Новый [Regular] подписал [OrganizationName] в пределах вашей территории.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] новый [Regular]: [PersonName], [PersonGeography] [CountryCode]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [Regularship] обновлен: [PersonName], [PersonGeography] [CountryCode] (руководство)</value>
+  </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+Это письмо было отправлено [Addressee] из [OrganizationName]. Если вы не хотите получать эти уведомления в будущем, войдите в систему [InstallationName] в [ExternalUrl] и измените настройки уведомлений.</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Ваше сообщение поставлено в очередь для доставки, и получатели были решены. Ваша почта будет отправлена или будет отправлена, [RecipientCount] люди в [GeographyName] в [OrganizationName].</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Получатели сообщения определены для [GeographyName]: [RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>Ваше сообщение [GeographyName] был отправлен всем запланированным получателям. Вне [RecipientCount] планируемых получателей, [RecipientsSuccess] удалось, насколько мы можем судить, помнить, что почта может быть отправлена или непрочитана позже по ряду причин.
+
+Рассмотренное время: [ResolvingTime].
+Время передачи: [TransmissionTime].
+Общее время от создания компиляции до завершения: [TotalTime].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Переданные сообщения: [GeographyName]</value>
+  </data>
   
   
   

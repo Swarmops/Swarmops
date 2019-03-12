@@ -117,29 +117,81 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Payout_CashAdvanceIdentities" xml:space="preserve">
+    <value>Avances monétaires {0}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentitiesRecipient" xml:space="preserve">
+    <value>Avances monétaires {0} pour {1}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentity" xml:space="preserve">
+    <value>Avance monétaire #{0:N0}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentityRecipient" xml:space="preserve">
+    <value>Avance monétaire #{0:N0} pour {1}</value>
+  </data>
+  <data name="Payout_CashAdvancePaybackIdentities" xml:space="preserve">
+    <value>Avances monétaires {0} Remboursement</value>
+  </data>
+  <data name="Payout_CashAdvancePaybackIdentity" xml:space="preserve">
+    <value>Avance en cash #{0:N0} de remboursement</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentities" xml:space="preserve">
+    <value>Dépenses {0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentities" xml:space="preserve">
+    <value>Dépenses {0} ( sous-tractant avances {1})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentity" xml:space="preserve">
+    <value>Dépenses {0} ( sous-tractant avances #{1:N0})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesRecipient" xml:space="preserve">
+    <value>Demandes de remboursement {0} par {1}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentity" xml:space="preserve">
+    <value>Dépenses #{0:N0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentities" xml:space="preserve">
+    <value>Dépense #{0:N0} ( sous-tractant avances {1})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentity" xml:space="preserve">
+    <value>Dépense #{0:N0} ( sous-tractant avances #{1:N0})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityRecipient" xml:space="preserve">
+    <value>Demande de remboursement #{0:N0} par {1}</value>
+  </data>
+  <data name="Payout_ExpenseClaimLongIdentity" xml:space="preserve">
+    <value>Demande de remboursement #{0:N0}</value>
+  </data>
+  <data name="Payout_InboundInvoiceIdentity" xml:space="preserve">
+    <value>Facture entrante #{0:N0}</value>
+  </data>
+  <data name="Payout_InboundInvoiceIdentitySender" xml:space="preserve">
+    <value>Facture entrante #{0:N0} de {1}</value>
+  </data>
+  <data name="Payout_SalariesTaxMonth" xml:space="preserve">
+    <value>Taxes salariales pour {0:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentitiesMonth" xml:space="preserve">
+    <value>Salaires {0} pour {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentity" xml:space="preserve">
+    <value>Salaire #{0:N0}</value>
+  </data>
+  <data name="Payout_SalaryIdentityMonth" xml:space="preserve">
+    <value>Salaire #{0:N0} pour {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentityMonthRecipient" xml:space="preserve">
+    <value>Salaire #{0:N0} pour {1:yyyy-MMM} pour {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Payout_SalaryMonth" xml:space="preserve">
+    <value>Salaire pour {0:yyyy-MMM}</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Payout_SalaryTaxIdentitiesMonth" xml:space="preserve">
+    <value>Taxes pour saliares {0} pour {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryTaxIdentityMonth" xml:space="preserve">
+    <value>Taxes pour saliares #{0:N0} pour {1:yyyy-MMM}</value>
+  </data>
 </root>

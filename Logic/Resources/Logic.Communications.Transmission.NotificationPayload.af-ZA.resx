@@ -117,35 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>crwdns6556790:0[RegularTitle]crwdnd6556790:0[OrganizationName]crwdnd6556790:0[ConcernedPersonName]crwdnd6556790:0[GeographyName]crwdnd6556790:0[CountryCode]crwdne6556790:0</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>crwdns6556791:0[OrganizationName]crwdnd6556791:0[ConcernedPersonName]crwdnd6556791:0[GeographyName]crwdne6556791:0</value>
+  </data>
   <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
-    <value>crwdns6556368:0[BitcoinAddress]crwdnd6556368:0[InstallationName]crwdnd6556368:0[ExternalUrl]crwdne6556368:0</value>
+    <value>crwdns6556768:0[BitcoinAddress]crwdnd6556768:0[InstallationName]crwdnd6556768:0[ExternalUrl]crwdne6556768:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
     <value>crwdns6556369:0[OrganizationName]crwdne6556369:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
-    <value>crwdns6556370:0[BitcoinOldAddress]crwdnd6556370:0[BitcoinAddress]crwdnd6556370:0[LockdownLink]crwdne6556370:0</value>
+    <value>crwdns6556769:0[BitcoinOldAddress]crwdnd6556769:0[BitcoinAddress]crwdnd6556769:0[LockdownLink]crwdne6556769:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
-    <value>crwdns6556371:0[OrganizationName]crwdne6556371:0</value>
+    <value>crwdns6556770:0[OrganizationName]crwdne6556770:0</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
-    <value>crwdns6556372:0[OrganizationName]crwdnd6556372:0[InstallationName]crwdnd6556372:0[ExternalUrl]crwdne6556372:0</value>
+    <value>crwdns6556771:0[OrganizationName]crwdnd6556771:0[InstallationName]crwdnd6556771:0[ExternalUrl]crwdne6556771:0</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
-    <value>crwdns6556373:0[OrganizationName]crwdne6556373:0</value>
+    <value>crwdns6556772:0[OrganizationName]crwdne6556772:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
-    <value>crwdns6556374:0[BitcoinAddress]crwdnd6556374:0[OrganizationName]crwdne6556374:0</value>
+    <value>crwdns6556773:0[BitcoinAddress]crwdnd6556773:0[OrganizationName]crwdne6556773:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
-    <value>crwdns6556375:0[ConcernedPersonName]crwdne6556375:0</value>
+    <value>crwdns6556774:0[ConcernedPersonName]crwdne6556774:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
-    <value>crwdns6556376:0[OrganizationName]crwdnd6556376:0[ConcernedPersonName]crwdne6556376:0</value>
+    <value>crwdns6556775:0[OrganizationName]crwdnd6556775:0[ConcernedPersonName]crwdne6556775:0</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
-    <value>crwdns6556377:0[OrganizationName]crwdne6556377:0</value>
+    <value>crwdns6556776:0[OrganizationName]crwdne6556776:0</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
     <value>crwdns6556378:0[OrganizationName]crwdnd6556378:0[PaymentCount]crwdnd6556378:0[CurrencyCode]crwdnd6556378:0[AmountFloat]crwdnd6556378:0[BitcoinAmountFloat]crwdne6556378:0</value>
@@ -154,7 +160,7 @@
     <value>crwdns6556379:0[OrganizationName]crwdnd6556379:0[CurrencyCode]crwdnd6556379:0[AmountFloat]crwdne6556379:0</value>
   </data>
   <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>crwdns6556380:0[BitcoinAmountFloat]crwdnd6556380:0[BitcoinAddress]crwdnd6556380:0[OrganizationName]crwdnd6556380:0[EmbeddedPreformattedText]crwdne6556380:0</value>
+    <value>crwdns6556777:0[BitcoinAmountFloat]crwdnd6556777:0[BitcoinAddress]crwdnd6556777:0[OrganizationName]crwdnd6556777:0[EmbeddedPreformattedText]crwdne6556777:0</value>
   </data>
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
     <value>crwdns6556381:0[OrganizationName]crwdnd6556381:0[CurrencyCode]crwdnd6556381:0[AmountFloat]crwdne6556381:0</value>
@@ -166,22 +172,22 @@
     <value>crwdns6556383:0[OrganizationName]crwdne6556383:0</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
-    <value>crwdns6556384:0[CurrencyCode]crwdnd6556384:0[AmountNeededFloat]crwdnd6556384:0[CurrencyCode]crwdnd6556384:0[AmountWalletFloat]crwdnd6556384:0[AmountMissingMicrocoinsFloat]crwdne6556384:0</value>
+    <value>crwdns6556778:0[CurrencyCode]crwdnd6556778:0[AmountNeededFloat]crwdnd6556778:0[CurrencyCode]crwdnd6556778:0[AmountWalletFloat]crwdnd6556778:0[AmountMissingMicrocoinsFloat]crwdne6556778:0</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
-    <value>crwdns6556385:0[OrganizationName]crwdne6556385:0</value>
+    <value>crwdns6556779:0[OrganizationName]crwdne6556779:0</value>
   </data>
-  <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>crwdns6553646:0[OrganizationName]crwdnd6553646:0[CurrencyCode]crwdnd6553646:0[BudgetAmountFloat]crwdnd6553646:0[RequestPurpose]crwdne6553646:0</value>
+  <data name="CashAdvance_ApprovalRetracted_Body" xml:space="preserve">
+    <value>crwdns6563384:0[OrganizationName]crwdnd6563384:0[CurrencyCode]crwdnd6563384:0[BudgetAmountFloat]crwdnd6563384:0[RequestPurpose]crwdne6563384:0</value>
   </data>
-  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>crwdns6556105:0[OrganizationName]crwdnd6556105:0[CurrencyCode]crwdnd6556105:0[BudgetAmountFloat]crwdne6556105:0</value>
+  <data name="CashAdvance_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>crwdns6563386:0[OrganizationName]crwdnd6563386:0[CurrencyCode]crwdnd6563386:0[BudgetAmountFloat]crwdne6563386:0</value>
   </data>
-  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>crwdns6553648:0[OrganizationName]crwdnd6553648:0[CurrencyCode]crwdnd6553648:0[BudgetAmountFloat]crwdnd6553648:0[RequestPurpose]crwdne6553648:0</value>
+  <data name="CashAdvance_Approved_Body" xml:space="preserve">
+    <value>crwdns6563388:0[OrganizationName]crwdnd6563388:0[CurrencyCode]crwdnd6563388:0[BudgetAmountFloat]crwdnd6563388:0[RequestPurpose]crwdne6563388:0</value>
   </data>
-  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>crwdns6556106:0[OrganizationName]crwdnd6556106:0[CurrencyCode]crwdnd6556106:0[BudgetAmountFloat]crwdne6556106:0</value>
+  <data name="CashAdvance_Approved_Subject" xml:space="preserve">
+    <value>crwdns6563390:0[OrganizationName]crwdnd6563390:0[CurrencyCode]crwdnd6563390:0[BudgetAmountFloat]crwdne6563390:0</value>
   </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>crwdns6556123:0[OrganizationName]crwdnd6556123:0[CurrencyCode]crwdnd6556123:0[BudgetAmountFloat]crwdnd6556123:0[RequestPurpose]crwdnd6556123:0[EmbeddedPreformattedText]crwdne6556123:0</value>
@@ -196,34 +202,34 @@
     <value>crwdns6555541:0[OrganizationName]crwdnd6555541:0[CurrencyCode]crwdnd6555541:0[BudgetAmountFloat]crwdne6555541:0</value>
   </data>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>crwdns6555620:0[ConcernedPersonName]crwdnd6555620:0[CurrencyCode]crwdnd6555620:0[BudgetAmountFloat]crwdnd6555620:0[RequestPurpose]crwdnd6555620:0[BudgetName]crwdnd6555620:0[InstallationName]crwdnd6555620:0[ExternalUrl]crwdne6555620:0</value>
+    <value>crwdns6563392:0[ConcernedPersonName]crwdnd6563392:0[CurrencyCode]crwdnd6563392:0[BudgetAmountFloat]crwdnd6563392:0[RequestPurpose]crwdnd6563392:0[BudgetName]crwdnd6563392:0[InstallationName]crwdnd6563392:0[ExternalUrl]crwdne6563392:0</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>crwdns6555542:0[OrganizationName]crwdnd6555542:0[CurrencyCode]crwdnd6555542:0[BudgetAmountFloat]crwdne6555542:0</value>
+    <value>crwdns6563522:0[OrganizationName]crwdnd6563522:0[CurrencyCode]crwdnd6563522:0[BudgetAmountFloat]crwdne6563522:0</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
-  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>crwdns6553652:0[OrganizationName]crwdnd6553652:0[CurrencyCode]crwdnd6553652:0[BudgetAmountFloat]crwdnd6553652:0[RequestPurpose]crwdne6553652:0</value>
+  <data name="ExpenseClaim_ApprovalRetracted_Body" xml:space="preserve">
+    <value>crwdns6563396:0[OrganizationName]crwdnd6563396:0[CurrencyCode]crwdnd6563396:0[BudgetAmountFloat]crwdnd6563396:0[RequestPurpose]crwdne6563396:0</value>
     <comment>This is sent to the claimer.</comment>
   </data>
-  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>crwdns6555543:0[OrganizationName]crwdnd6555543:0[CurrencyCode]crwdnd6555543:0[BudgetAmountFloat]crwdne6555543:0</value>
+  <data name="ExpenseClaim_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>crwdns6563398:0[OrganizationName]crwdnd6563398:0[CurrencyCode]crwdnd6563398:0[BudgetAmountFloat]crwdne6563398:0</value>
+  </data>
+  <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
+    <value>crwdns6563400:0[OrganizationName]crwdnd6563400:0[CurrencyCode]crwdnd6563400:0[BudgetAmountFloat]crwdnd6563400:0[RequestPurpose]crwdne6563400:0</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Approved_Subject" xml:space="preserve">
+    <value>crwdns6563402:0[OrganizationName]crwdnd6563402:0[CurrencyCode]crwdnd6563402:0[BudgetAmountFloat]crwdne6563402:0</value>
   </data>
   <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>crwdns6555621:0[ConcernedPersonName]crwdnd6555621:0[BudgetName]crwdnd6555621:0[CurrencyCode]crwdnd6555621:0[BudgetAmountFloat]crwdnd6555621:0[RequestPurpose]crwdnd6555621:0[InstallationName]crwdnd6555621:0[ExternalUrl]crwdne6555621:0</value>
+    <value>crwdns6563404:0[ConcernedPersonName]crwdnd6563404:0[BudgetName]crwdnd6563404:0[CurrencyCode]crwdnd6563404:0[BudgetAmountFloat]crwdnd6563404:0[RequestPurpose]crwdnd6563404:0[InstallationName]crwdnd6563404:0[ExternalUrl]crwdne6563404:0</value>
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>crwdns6555544:0[OrganizationName]crwdnd6555544:0[CurrencyCode]crwdnd6555544:0[BudgetAmountFloat]crwdne6555544:0</value>
+    <value>crwdns6563524:0[OrganizationName]crwdnd6563524:0[CurrencyCode]crwdnd6563524:0[BudgetAmountFloat]crwdne6563524:0</value>
     <comment>ACTION ITEM should be translated.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>crwdns6553656:0[OrganizationName]crwdnd6553656:0[CurrencyCode]crwdnd6553656:0[BudgetAmountFloat]crwdnd6553656:0[RequestPurpose]crwdne6553656:0</value>
-    <comment>This is sent to the claimer.</comment>
-  </data>
-  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>crwdns6555545:0[OrganizationName]crwdnd6555545:0[CurrencyCode]crwdnd6555545:0[BudgetAmountFloat]crwdne6555545:0</value>
   </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>crwdns6556109:0[OrganizationName]crwdnd6556109:0[CurrencyCode]crwdnd6556109:0[BudgetAmountFloat]crwdnd6556109:0[RequestPurpose]crwdnd6556109:0[EmbeddedPreformattedText]crwdne6556109:0</value>
@@ -231,12 +237,6 @@
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
     <value>crwdns6555546:0[OrganizationName]crwdnd6555546:0[CurrencyCode]crwdnd6555546:0[BudgetAmountFloat]crwdne6555546:0</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>crwdns6553660:0[OrganizationName]crwdnd6553660:0[CurrencyCode]crwdnd6553660:0[BudgetAmountFloat]crwdnd6553660:0[RequestPurpose]crwdne6553660:0</value>
-  </data>
-  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>crwdns6555547:0[OrganizationName]crwdnd6555547:0[CurrencyCode]crwdnd6555547:0[BudgetAmountFloat]crwdne6555547:0</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>crwdns6553818:0[OrganizationName]crwdnd6553818:0[CurrencyCode]crwdnd6553818:0[BudgetAmountFloat]crwdnd6553818:0[RequestPurpose]crwdne6553818:0</value>
@@ -251,11 +251,17 @@
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>crwdns6555549:0[OrganizationName]crwdnd6555549:0[CurrencyCode]crwdnd6555549:0[BudgetAmountFloat]crwdne6555549:0</value>
   </data>
+  <data name="ExpenseClaim_ValidationRetracted_Body" xml:space="preserve">
+    <value>crwdns6563408:0[OrganizationName]crwdnd6563408:0[CurrencyCode]crwdnd6563408:0[BudgetAmountFloat]crwdnd6563408:0[RequestPurpose]crwdne6563408:0</value>
+  </data>
+  <data name="ExpenseClaim_ValidationRetracted_Subject" xml:space="preserve">
+    <value>crwdns6563410:0[OrganizationName]crwdnd6563410:0[CurrencyCode]crwdnd6563410:0[BudgetAmountFloat]crwdne6563410:0</value>
+  </data>
   <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>crwdns6555622:0[Supplier]crwdnd6555622:0[Description]crwdnd6555622:0[BudgetName]crwdnd6555622:0[CurrencyCode]crwdnd6555622:0[BudgetAmountFloat]crwdnd6555622:0[InstallationName]crwdnd6555622:0[ExternalUrl]crwdne6555622:0</value>
+    <value>crwdns6563528:0[Supplier]crwdnd6563528:0[Description]crwdnd6563528:0[BudgetName]crwdnd6563528:0[CurrencyCode]crwdnd6563528:0[BudgetAmountFloat]crwdnd6563528:0[InstallationName]crwdnd6563528:0[ExternalUrl]crwdne6563528:0</value>
   </data>
   <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>crwdns6555550:0[OrganizationName]crwdnd6555550:0[CurrencyCode]crwdnd6555550:0[BudgetAmountFloat]crwdne6555550:0</value>
+    <value>crwdns6563526:0[OrganizationName]crwdnd6563526:0[CurrencyCode]crwdnd6563526:0[BudgetAmountFloat]crwdne6563526:0</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">
@@ -324,6 +330,12 @@
   <data name="Receipts_Filed_Subject" xml:space="preserve">
     <value>crwdns6555560:0[OrganizationName]crwdne6555560:0</value>
     <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>crwdns6556715:0[RequestPurpose]crwdnd6556715:0[EmbeddedPreformattedText]crwdne6556715:0</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>crwdns6556716:0[OrganizationName]crwdnd6556716:0[CurrencyCode]crwdnd6556716:0[BudgetAmountFloat]crwdne6556716:0</value>
   </data>
   <data name="Salary_LastYearSummary_Body" xml:space="preserve">
     <value>crwdns6556387:0[LastYear]crwdnd6556387:0[LastYear]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[GrossSalaryTotal]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[TaxDeductedTotal]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[NetSalaryTotal]crwdnd6556387:0[EmbeddedPreformattedText]crwdnd6556387:0[GrossSalaryTotal]crwdnd6556387:0[TaxDeductedTotal]crwdnd6556387:0[NetSalaryTotal]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[TaxAdditiveTotalUnpadded]crwdne6556387:0</value>

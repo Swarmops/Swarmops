@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NBitcoin;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Exceptions;
 using Swarmops.Logic.Financial;
 using Satoshis = NBitcoin.Money;
 
@@ -66,7 +67,16 @@ namespace Swarmops.Logic.Support.BackendServices
 
             Transaction tx = txBuilder.BuildTransaction(true, SigHash.ForkId | SigHash.All);
 
-            BitcoinUtility.BroadcastTransaction(tx, BitcoinChain.Cash);
+            try
+            {
+                BitcoinUtility.BroadcastTransaction(tx, BitcoinChain.Cash);
+            }
+            catch (NetworkTimeoutException)
+            {
+                // This is a transient error, so retry
+
+                throw new TryAgainException();
+            }
             utxoToReturn.Delete();
             utxoAddress.UpdateTotal();
 
@@ -75,8 +85,19 @@ namespace Swarmops.Logic.Support.BackendServices
             string tx2Description = "Bitcoin echo test repayment";
             FinancialTransaction ledgerTx2 = FinancialTransaction.Create(this.Organization,
                 DateTime.UtcNow, tx2Description);
-            ledgerTx2.AddRow(this.Organization.FinancialAccounts.DebtsOther, satoshisToReturn, this.Person);
-            ledgerTx2.AddRow(this.Organization.FinancialAccounts.AssetsBitcoinHot, -satoshisToReturn, this.Person);
+
+            if (this.Organization.Currency.IsBitcoinCash)
+            {
+                ledgerTx2.AddRow(this.Organization.FinancialAccounts.DebtsOther, satoshisToReturn, this.Person);
+                ledgerTx2.AddRow(this.Organization.FinancialAccounts.AssetsBitcoinHot, -satoshisToReturn, this.Person);
+            }
+            else
+            {
+                Int64 centsPresentation =
+                    new Swarmops.Logic.Financial.Money(satoshisToReturn, Currency.BitcoinCash).ToCurrency(this.Organization.Currency).Cents;
+                ledgerTx2.AddRow(this.Organization.FinancialAccounts.DebtsOther, centsPresentation, this.Person);
+                ledgerTx2.AddRow(this.Organization.FinancialAccounts.AssetsBitcoinHot, -centsPresentation, this.Person).AmountForeignCents = new Swarmops.Logic.Financial.Money(-satoshisToReturn, Currency.BitcoinCash); ;
+            }
             ledgerTx2.BlockchainHash = tx.GetHash().ToString();
         }
 

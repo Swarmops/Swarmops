@@ -16,108 +16,103 @@
 
         preload([
             '/Images/Abstract/ajaxloader-medium.gif',
-            '/Images/Icons/iconshock-balloon-yes-16px-hot.png',
-            '/Images/Icons/iconshock-balloon-no-16px-hot.png',
-            '/Images/Icons/iconshock-greentick-16px.png',
-            '/Images/Icons/iconshock-redcross-16px.png',
-            '/Images/Icons/undo-16px.png'
+            '/Images/Abstract/ajaxloader-48x36px.gif',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png',
+            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png',
+            '/Images/Icons/iconshock-green-tick-128x96px.png',
+            '/Images/Icons/iconshock-red-cross-128x96px.png',
+            '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
+            '/Images/Icons/iconshock-balloon-undo-128x96px.png',
+            '/Images/Icons/iconshock-search-256px.png'
         ]);
 
         $(document).ready(function () {
             $('#TableAttestableCosts').datagrid(
                 {
+                    rowStyler: function (index, rowData) {
+                        if (rowData.approved != null) {
+                            return { class: "action-list-item-approved row" + rowData.itemId };
+                        }
+
+                        if (rowData.itemId != null) {
+                            return { class: "row" + rowData.itemId.replace(/\|/g, '') };
+                        }
+
+                        return '';
+                    },
+
                     onLoadSuccess: function () {
-                        $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
-                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-greentick-16px.png");
-                        $(".LocalIconApproved, .LocalIconDenied").css("display", "none");
-                        $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-16px.png");
-                        $(".LocalIconApproval, .LocalIconApproved, .LocalIconDenial").css("cursor", "pointer");
 
-                        $(".LocalIconApproval").mouseover(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-hot.png");
-                            }
-                        });
-
-                        $(".LocalIconApproval").mouseout(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
-                            }
-                        });
-
-                        $(".LocalIconApproved").mouseover(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/undo-16px.png");
-                            }
-                        });
-
-                        $(".LocalIconApproved").mouseout(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
-                            }
-                        });
+                        $(".LocalIconDox").attr('src', '/Images/Icons/iconshock-balloon-examine-128x96px.png');
+                        $(".LocalIconApproval").attr('src', '/Images/Icons/iconshock-balloon-yes-128x96px.png');
+                        $(".LocalIconApproved").attr('src', '/Images/Icons/iconshock-green-tick-128x96px.png').hide();
+                        $(".LocalIconDenial").attr('src', '/Images/Icons/iconshock-balloon-no-128x96px.png');
+                        $(".LocalIconDenied").attr('src', '/Images/Icons/iconshock-red-cross-128x96px.png').hide();
+                        $(".LocalIconUndo").attr('src', '/Images/Icons/iconshock-balloon-undo-128x96px.png').hide();
+                        $(".LocalIconWait").attr('src', '/Images/Abstract/ajaxloader-48x36px.gif').hide();
 
                         $(".LocalIconApproval").click(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("rel", "loading");
-                                $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
-                                $("#IconDenial" + $(this).attr("baseid")).fadeTo(1000, 0.01).css("cursor", "default");
-                                var thisIcon = this;
-                                $.ajax({
-                                    type: "POST",
-                                    url: "/Pages/v5/Financial/ValidateReceipts.aspx/Validate",
-                                    data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    success: function (msg) {
-                                        $(thisIcon).css("display", "none");
-                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
-                                        $(thisIcon).attr("rel", "active");
-                                        $("#IconApproved" + $(thisIcon).attr("baseid")).fadeIn(100);
-                                        alertify.success(unescape(msg.d));
+                            var itemId = $(this).attr("baseid");
+                            $(this).hide();
+                            $("#IconWait" + itemId).show();
+                            $("#IconDenial" + itemId).fadeTo(1000, 0.01);
+
+                            SwarmopsJS.proxiedAjaxCall(
+                                "/Pages/v5/Financial/ValidateReceipts.aspx/Validate",
+                                { identifier: itemId },
+                                this,
+                                function (result) {
+                                    if (result.Success) {
+                                        var itemId = $(this).attr("baseid");
+                                        $('.row' + itemId).addClass("action-list-item-approved");
+                                        $("#IconWait" + itemId).hide();
+                                        $("#IconDenial" + itemId).hide();
+                                        $("#IconApproved" + itemId).fadeTo(200, 0.5); // half opacity is intentional
+                                        $("#IconUndo" + itemId).fadeTo(1000, 1); // the longer delay is intentional
+                                        alertify.success(result.DisplayMessage);
+                                    } else {
+                                        // There's probably a concurrency error.
+                                        // The socket handler will take care of updating the UI on
+                                        // receiving the cause of the concurrency error.
+
+                                        alertify.log(result.DisplayMessage);
+                                       
                                     }
-                                });
-                            }
+                                }
+                            );
                         });
 
-                        $(".LocalIconApproved").click(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("rel", "loading");
-                                $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
-                                var thisIcon = this;
-                                $.ajax({
-                                    type: "POST",
-                                    url: "/Pages/v5/Financial/ValidateReceipts.aspx/Devalidate",
-                                    data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    success: function (msg) {
-                                        $(thisIcon).css("display", "none");
-                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
-                                        $(thisIcon).attr("rel", "");
-                                        $("#IconApproval" + $(thisIcon).attr("baseid")).fadeIn(100);
-                                        $("#" + $(thisIcon).attr("rel"), "");
-                                        alertify.log(unescape(msg.d).replace('+', ' '));
-                                        $("#IconDenial" + $(thisIcon).attr("baseid")).fadeTo(100, 1).css("cursor", "pointer");
+                        $(".LocalIconUndo").click(function () {
+                            $(this).hide();
+                            var itemId = $(this).attr("baseid");
+                            $("#IconApproved" + itemId).fadeTo(1000, 0.01);
+                            $("#IconWait" + itemId).show();
+
+                            SwarmopsJS.proxiedAjaxCall(
+                                "/Pages/v5/Financial/ValidateReceipts.aspx/RetractValidation",
+                                { identifier: $(this).attr("baseid") },
+                                this,
+                                function(result) {
+                                    if (result.Success) {
+                                        var itemId = $(this).attr("baseid");
+                                        $('.row' + itemId).removeClass("action-list-item-approved");
+                                        $("#IconWait" + itemId).hide();
+                                        $("#IconApproved" + itemId).hide();
+                                        $("#IconApproval" + itemId).fadeTo(200, 1);
+                                        $("#IconDenial" + itemId).fadeTo(200, 1);
+                                        alertify.log(result.DisplayMessage);
+
+                                    } else {
+                                        // There's probably a concurrency error.
+                                        // The socket handler will take care of updating the UI on
+                                        // receiving the cause of the concurrency error.
+
+                                        alertify.log(result.DisplayMessage);
                                     }
-                                });
+                                }
+                            );
 
-                            }
-                        });
-
-
-
-
-                        $(".LocalIconDenial").mouseover(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-16px-hot.png");
-                            }
-                        });
-
-                        $(".LocalIconDenial").mouseout(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-16px.png");
-                            }
                         });
 
 
@@ -125,7 +120,7 @@
                             alert('Denying validation is not yet implemented, but you can just leave the unwanted cost here until it is.');
                         });
 
-                        $(".LocalViewDox").click(function () {
+                        $(".LocalIconDox").click(function () {
                             $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
                         });
 
@@ -143,14 +138,14 @@
 
     </script>
     
-     <style type="text/css">
-        .datagrid-row-selected,.datagrid-row-over{
-            background:transparent;
-        }
+    <style type="text/css">
+        /* any extra style goes here */
     </style>
+    
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2><asp:Label runat="server" ID="LabelAttestCostsHeader" Text="XYZ Costs Awaiting Your Attestation" /></h2>
+    <h2><asp:Label runat="server" ID="LabelAttestCostsHeader" Text="XYZ Costs Awaiting Your Approval" /></h2>
     <table id="TableAttestableCosts" class="easyui-datagrid" style="width:680px;height:400px"
         data-options="rownumbers:false,singleSelect:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-ValidatableReceipts.aspx'"
         idField="itemId">
@@ -159,9 +154,9 @@
                 <asp:Literal runat="server" ID="LiteralDescriptionThStart" /><asp:Label ID="LabelGridHeaderDescription" runat="server" Text="XYZ Description" /><asp:Literal runat="server" ID="LiteralDescriptionThClose" Text="</th>" />  
                 <asp:Literal runat="server" ID="LiteralBudgetThStart" /><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Budget" /><asp:Literal runat="server" ID="LiteralBudgetThClose" Text="</th>" />
                 <asp:Literal runat="server" ID="LiteralExtraTags" />
-                <th data-options="field:'amountRequested',width:80,align:'right',sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderRequested" runat="server" Text="XYZ Requested" /></th>
+                <th data-options="field:'amountRequested',width:90,align:'right',sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderRequested" runat="server" Text="XYZ Requested" /></th>
                 <th data-options="field:'dox',width:40,align:'center'"><asp:Label ID="LabelGridHeaderDocs" runat="server" Text="Doxyz" /></th>
-                <th data-options="field:'actions',width:53,align:'center'"><asp:Label ID="LabelGridHeaderAction" runat="server" Text="Axyztion" /></th>
+                <th data-options="field:'actions',width:68,align:'center'"><asp:Label ID="LabelGridHeaderAction" runat="server" Text="Axyztion" /></th>
             </tr>  
         </thead>
     </table>

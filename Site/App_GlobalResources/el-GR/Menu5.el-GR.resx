@@ -117,105 +117,323 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Administration" xml:space="preserve">
+    <value>Διαχειριστής</value>
+  </data>
+  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
+    <value>Λίστες Ελέγχου Πρόσβασης</value>
+  </data>
+  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
+    <value>Δημιουργία Νέου Οργανισμού</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Ρυθμίσεις Οργανισμού</value>
+  </data>
+  <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
+    <value>Γεωγραφικό Δέντρο</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
+    <value>Συμπλέγματα Οργανισμού</value>
+  </data>
+  <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
+    <value>Ρυθμίσεις Συστήματος</value>
+  </data>
+  <data name="Menu5_Communications" xml:space="preserve">
+    <value>Επικοινωνίες</value>
+  </data>
+  <data name="Menu5_Communications_EditAutomailText" xml:space="preserve">
+    <value>Επεξεργασία Κειμένου Automail</value>
+  </data>
+  <data name="Menu5_Communications_MailInbox" xml:space="preserve">
+    <value>Διαχείριση Εισερχομένων Mail</value>
+  </data>
+  <data name="Menu5_Communications_MassMailing" xml:space="preserve">
+    <value>Μαζική Αποστολή Αλληλογραφίας</value>
+  </data>
+  <data name="Menu5_Communications_MobilizeActivists" xml:space="preserve">
+    <value>Κινητοποίηση Ακτιβιστών</value>
+  </data>
+  <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
+    <value>Διαχείριση Εισερχομένων Εγγράφων</value>
+  </data>
+  <data name="Menu5_Communications_ReadPaperInbox" xml:space="preserve">
+    <value>Άνοιγμα Εισερχομένων Εγγράφων</value>
+  </data>
+  <data name="Menu5_Communications_ReceivedPaperLetter" xml:space="preserve">
+    <value>Παραλειφθέντα Έγγραφα</value>
+  </data>
+  <data name="Menu5_Communications_ReporterList" xml:space="preserve">
+    <value>Διαχείριση Λίστας Δημοσιογράφων</value>
+  </data>
+  <data name="Menu5_Communications_SendMassMessage" xml:space="preserve">
+    <value>Αποστολή Μαζικού Μηνύματος</value>
+  </data>
+  <data name="Menu5_Communications_SendPressRelease" xml:space="preserve">
+    <value>Αποστολή Δελτίου Τύπου</value>
+  </data>
+  <data name="Menu5_Communications_TextActivists" xml:space="preserve">
+    <value>Αποστολή Μηνύματος Κειμένου στους Ακτιβιστές</value>
+  </data>
+  <data name="Menu5_Communications_TextInbox" xml:space="preserve">
+    <value>Διαχείριση Κειμένου στα Εισερχόμενα</value>
+  </data>
+  <data name="Menu5_Financial" xml:space="preserve">
+    <value>Οικονομικό</value>
+  </data>
+  
+  <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
+    <value>Διεκδίκηση Επιστροφής Δαπάνης</value>
+  </data>
+  <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
+    <value>Δημιουργία Παραγγελίας Αγοράς</value>
+  </data>
+  <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
+    <value>Βοηθός Gigs</value>
+  </data>
+  <data name="Menu5_Financial_List" xml:space="preserve">
+    <value>Λίστα...</value>
+  </data>
+  <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
+    <value>Αιτήματα Μετρητών</value>
+  </data>
+  <data name="Menu5_Financial_List_ExpenseClaims" xml:space="preserve">
+    <value>Διεκδικήσεις Δαπανών</value>
+  </data>
+  <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
+    <value>Εισερχόμενα Τιμολόγια</value>
+  </data>
+  <data name="Menu5_Financial_List_OutboundInvoices" xml:space="preserve">
+    <value>Εξερχόμενα Τιμολόγια</value>
+  </data>
+  <data name="Menu5_Financial_List_OutstandingAdvances" xml:space="preserve">
+    <value>Εκκρεμείς Προκαταβολές Μετρητών</value>
+  </data>
+  <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
+    <value>Μισθοί</value>
+  </data>
+  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
+    <value>Διαχείριση των Προϋπολογισμών μου</value>
+  </data>
+  <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
+    <value>Πληρωμή Χρημάτων</value>
+  </data>
+  <data name="Menu5_Financial_Payroll" xml:space="preserve">
+    <value>Μισθοδοσία</value>
+  </data>
+  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
+    <value>Παραλαβή Νέου Τιμολογίου</value>
+  </data>
+  <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
+    <value>Αίτημα Προκαταβολής Μετρητών</value>
+  </data>
+  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
+    <value>Αποστολή Νέου Τιμολογίου</value>
+  </data>
+  <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
+    <value>Επικύρωση Αποδείξεων</value>
+  </data>
+  <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
+    <value>Προβολή Προϋπολογισμού και Πραγματικών Στοιχείων</value>
+  </data>
+  <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
+    <value>Προβολή Πρόγνωσης Ρευστότητας</value>
+  </data>
+  <data name="Menu5_Governance" xml:space="preserve">
+    <value>Διακυβέρνηση</value>
+  </data>
+  <data name="Menu5_Governance_Candidates" xml:space="preserve">
+    <value>Υποψήφιοι</value>
+  </data>
+  <data name="Menu5_Governance_CreateVotingList" xml:space="preserve">
+    <value>Δημιουργία Λίστας Ψηφοφορίας</value>
+  </data>
+  <data name="Menu5_Governance_MeetingAdmin" xml:space="preserve">
+    <value>Συνάντηση Διοίκησης</value>
+  </data>
+  <data name="Menu5_Governance_MeetingBoardAdmin" xml:space="preserve">
+    <value>Συνάντηση Διαχειριστή για Συμβούλιο</value>
+  </data>
+  <data name="Menu5_Governance_Motions" xml:space="preserve">
+    <value>Προτάσεις</value>
+  </data>
+  <data name="Menu5_Governance_Vote" xml:space="preserve">
+    <value>Ψήφος</value>
+  </data>
+  <data name="Menu5_Hacks_TemporaryAccessControl" xml:space="preserve">
+    <value>Ορισμός Πρόσβασης Διαχειριστή (Προσωρινή Σελίδα)</value>
+  </data>
+  <data name="Menu5_Ledgers" xml:space="preserve">
+    <value>Λογιστικά Βιβλία</value>
+  </data>
+  
+  <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
+    <value>Έλεγχος Λογιστικών Βιβλίων</value>
+  </data>
+  <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
+    <value>Ισολογισμός</value>
+  </data>
+  <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
+    <value>Αποτυχία κλεισίματος Βιβλίων για {0}</value>
+  </data>
+  <data name="Menu5_Ledgers_CashflowAnalysis" xml:space="preserve">
+    <value>Ανάλυση Ταμειακών Ροών</value>
+  </data>
+  <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
+    <value>Κλείσιμο Λογιστικών Βιβλίων για {0}</value>
+  </data>
+  <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
+    <value>Αποσφαλμάτωση Λογιστικών Βιβλίων, Λογαριασμών</value>
+  </data>
+  <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
+    <value>Εισαγωγή Τραπεζικών Δεδομένων</value>
+  </data>
+  <data name="Menu5_Ledgers_InspectLedgers" xml:space="preserve">
+    <value>Επιθεώρηση Λογιστικών Βιβλίων</value>
+  </data>
+  <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
+    <value>Πρόγνωση Ρευστότητας</value>
+  </data>
+  <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
+    <value>Μισθοδοσία</value>
+  </data>
+  <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
+    <value>Δήλωση Κέρδους &amp; Ζημίας</value>
+  </data>
+  
+  
+  <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
+    <value>Μεταφόρτωση Τραπεζικών Αρχείων</value>
+  </data>
+  <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
+    <value>Λίστα Εκκρεμών Λογαριασμών</value>
+  </data>
+  <data name="Menu5_Organization" xml:space="preserve">
+    <value>Οργανισμός</value>
+  </data>
+  <data name="Menu5_Organization_AvailableResponsibilities" xml:space="preserve">
+    <value>Διαθέσιμες Αρμοδιότητες</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates" xml:space="preserve">
+    <value>Πρότυπα Επικοινωνίας</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_Invoice" xml:space="preserve">
+    <value>Τιμολόγια</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_MassMailing" xml:space="preserve">
+    <value>Μαζική Αλληλογραφία</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_Newsletter" xml:space="preserve">
+    <value>Ενημερωτικά Δελτία</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_PressRelease" xml:space="preserve">
+    <value>Δελτία Τύπου</value>
+  </data>
+  <data name="Menu5_Organization_Feeds" xml:space="preserve">
+    <value>Ροές</value>
+  </data>
+  <data name="Menu5_Organization_Feeds_Newsletter" xml:space="preserve">
+    <value>Ενημερωτικά Δελτία</value>
+  </data>
+  <data name="Menu5_Organization_Feeds_PressReleases" xml:space="preserve">
+    <value>Δελτία Τύπου</value>
+  </data>
+  <data name="Menu5_Organization_MemberStatistics" xml:space="preserve">
+    <value>Στατιστικά Μελών</value>
+  </data>
+  <data name="Menu5_Organization_OrganizationChart" xml:space="preserve">
+    <value>Οργανόγραμμα</value>
+  </data>
+  <data name="Menu5_Organization_Responsibilities" xml:space="preserve">
+    <value>Αρμοδιότητες του Οργανισμού</value>
+  </data>
+  <data name="Menu5_Organization_Settings" xml:space="preserve">
+    <value>Ρυθμίσεις Οργανισμού</value>
+  </data>
+  <data name="Menu5_Organization_SuborganizationTree" xml:space="preserve">
+    <value>Διάγραμμα Υπο-οργανισμού</value>
+  </data>
+  <data name="Menu5_People" xml:space="preserve">
+    <value>Άτομα</value>
+  </data>
+  <data name="Menu5_People_AddMember" xml:space="preserve">
+    <value>Προσθήκη Μέλους</value>
+  </data>
+  <data name="Menu5_People_AddPerson" xml:space="preserve">
+    <value>Προσθήκη [Regular]</value>
+  </data>
+  <data name="Menu5_People_ListFind" xml:space="preserve">
+    <value>Λίστα / Εύρεση Ατόμων</value>
+  </data>
+  <data name="Menu5_People_ListMembers" xml:space="preserve">
+    <value>Λίστα Μελών</value>
+  </data>
+  <data name="Menu5_People_LogActivism" xml:space="preserve">
+    <value>Αρχείο Καταγραφής Ακτιβισμού</value>
+  </data>
+  <data name="Menu5_People_ManageConferences" xml:space="preserve">
+    <value>Διαχείριση Συνεδριάσεων</value>
+  </data>
+  <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
+    <value>Διαχείριση Εθελοντών</value>
+  </data>
+  <data name="Menu5_People_NewConference" xml:space="preserve">
+    <value>Νέο Συνέδριο</value>
+  </data>
+  <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
+    <value>Ρόλοι και Ευθύνες</value>
+  </data>
+  <data name="Menu5_People_SelfSignup" xml:space="preserve">
+    <value>Σελίδα αυτο-εγγραφής</value>
+  </data>
+  
+  
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>Φορολογικά έντυπα</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>Φορολογικά Έντυπα Μισθοδοσίας</value>
+  </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>Υπόλοιπα &amp; Αντιστοίχιση Συναλλαγών</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>Στελέχωση Οργανισμού</value>
+  </data>
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>Ο τοπικός μου Οργανισμός</value>
+  </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>Δωρεά κεφαλαίων</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Προϋπολογισμός Vs Πραγματικών Ποσών</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Hotwallet Bitcoin</value>
+  </data>
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>Δημιουργήθηκε στις {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} γραμμές κώδικα</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Αναφορά Σφάλματος Swarmops (στο Github)</value>
+  </data>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Αποσφαλμάτωση</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Προσωποποίηση</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>Αναφορές ΦΠΑ</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Δοκιμή Echo Bitcoin Hotwallet</value>
+  </data>
   
   
   

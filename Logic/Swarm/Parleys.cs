@@ -8,7 +8,7 @@ namespace Swarmops.Logic.Swarm
 {
     public class Parleys : PluralBase<Parleys, Parley, BasicParley>
     {
-        public Parleys WhereUnattested
+        public Parleys WhereNotApproved
         {
             get
             {

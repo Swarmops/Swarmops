@@ -42,13 +42,15 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             }
 
             DateTime utcNow = DateTime.UtcNow;
+            this._currency = CurrentOrganization.Currency;
 
             HotBitcoinAddress address = HotBitcoinAddress.CreateUnique(this.CurrentOrganization, BitcoinChain.Cash,
                 BitcoinUtility.BitcoinEchoTestIndex, this.CurrentUser.Identity, utcNow.Year, utcNow.Month, utcNow.Day);
 
-            this.BitcoinCashAddressUsed = address.Address;
+            this.BitcoinCashAddressLegacy = address.ProtocolLevelAddress;
+            this.BitcoinCashAddressCash = address.HumanAddress.Substring("bitcoincash:".Length);
             string guid = Guid.NewGuid().ToString("N");
-            GuidCache.Set(guid, address.Address);
+            GuidCache.Set(guid, address.ProtocolLevelAddress);
             this.TransactionGuid = guid;
 
             // Calculate conversion rate (satoshi-cents to unit-cents, so we're good, even if the conversion rate
@@ -62,12 +64,12 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             this.BoxTitle.Text = Resources.Pages.Admin.BitcoinEchoTest_PageTitle;
             this.LabelExplainBitcoinEchoTest.Text = String.Format (Resources.Pages.Admin.BitcoinEchoTest_Explain,
-                CurrentOrganization.Name, address.Address, BitcoinUtility.EchoFeeSatoshis / 100.0);
+                CurrentOrganization.Name, address.HumanAddress, BitcoinUtility.EchoFeeSatoshis / 100.0);
 
             this.ImageBitcoinQr.ImageUrl =
-                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=bitcoincash:" +
-                HttpUtility.UrlEncode (address.Address + "?label=" +
-                                       Uri.EscapeDataString ("Swarmops Bitcoin Echo Test")); // URI scheme doesn't like &, =
+                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" +
+                HttpUtility.UrlEncode (address.HumanAddress + "?label=" +
+                                       Uri.EscapeDataString ("Bitcoin Echo Test")); // URI scheme doesn't like &, =
         }
 
 
@@ -76,7 +78,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             get { return BitcoinUtility.EchoFeeSatoshis; }
         }
 
-        public string BitcoinCashAddressUsed { get; private set; }
+        public string BitcoinCashAddressLegacy { get; private set; }
+        public string BitcoinCashAddressCash { get; private set; }
         public string TransactionGuid { get; private set; }
         public double ConversionRateSatoshisToCents { get; private set; }
 
@@ -102,10 +105,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                 Swarmops.Logic.Financial.Money moneyReceived = new Swarmops.Logic.Financial.Money(satoshisReceived,
                     Currency.BitcoinCash);
-
-                // Make sure that the hotwallet native currency is bitcoin
-                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.ForeignCurrency = Currency.BitcoinCash;
-
+                
                 // Create success message and ledger transaction
                 string successMessage = string.Empty;
 
@@ -185,5 +185,17 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             }
         }
 
+
+        private Currency _currency;
+
+        public double MinerFeeDefaultFee
+        {
+            get
+            {
+                Int64 satoshisFee = BitcoinUtility.EchoFeeSatoshis;
+                Logic.Financial.Money presentationCurrencyFee = new Logic.Financial.Money(satoshisFee, Currency.BitcoinCash).ToCurrency(_currency);
+                return presentationCurrencyFee.Cents / -100.0;
+            }
+        }
     }
-}
+};

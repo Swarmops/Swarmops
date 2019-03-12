@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Runtime.Versioning;
 using System.Text.RegularExpressions;
 using System.Web.Services;
@@ -65,14 +66,14 @@ namespace Swarmops.Frontend.Pages.Admin
             this.TextVanityDomain.Placeholder = Resources.Global.Global_DefineToEnable;
             this.TextOpenLedgersDomain.Placeholder = Resources.Global.Global_DefineToEnable;
 
-            this.DropMembersWhen.Items.Clear();
-            this.DropMembersWhen.Items.Add (new ListItem ("Application submitted", "Application"));
-            this.DropMembersWhen.Items.Add (new ListItem ("Application approved", "ApplicationApproval"));
-            this.DropMembersWhen.Items.Add (new ListItem ("Application submitted + paid", "ApplicationPayment"));
-            this.DropMembersWhen.Items.Add (new ListItem ("Application paid + approved", "ApplicationPaymentApproval"));
-            this.DropMembersWhen.Items.Add (new ListItem ("Invited and accepted", "InvitationAcceptance"));
-            this.DropMembersWhen.Items.Add (new ListItem ("Invited and paid", "InvitationPayment"));
-            this.DropMembersWhen.Items.Add (new ListItem ("Manual add only", "Manual"));
+            this.DropParticipationEntry.Items.Clear();
+            this.DropParticipationEntry.Items.Add (new ListItem ("Application submitted", "Application"));
+            this.DropParticipationEntry.Items.Add (new ListItem ("Application approved", "ApplicationApproval"));
+            /*this.DropParticipationEntry.Items.Add (new ListItem ("Application submitted + paid", "ApplicationPayment"));    --- ALL THESE ARE TODO
+            this.DropParticipationEntry.Items.Add (new ListItem ("Application paid + approved", "ApplicationPaymentApproval"));
+            this.DropParticipationEntry.Items.Add (new ListItem ("Invited and accepted", "InvitationAcceptance"));
+            this.DropParticipationEntry.Items.Add (new ListItem ("Invited and paid", "InvitationPayment"));
+            this.DropParticipationEntry.Items.Add (new ListItem ("Manual add only", "Manual"));  */
 
             this.DropMembersWhere.Items.Clear();
             this.DropMembersWhere.Items.Add (new ListItem ("Root organization only", "Root"));
@@ -80,13 +81,12 @@ namespace Swarmops.Frontend.Pages.Admin
             this.DropMembersWhere.Items.Add (new ListItem ("Root and most local org", "RootLocal"));
             this.DropMembersWhere.Items.Add (new ListItem ("All applicable organizations", "All"));
 
-            this.DropMembershipDuration.Items.Clear();
-            this.DropMembershipDuration.Items.Add (new ListItem ("One month", "OneMonth"));
-            this.DropMembershipDuration.Items.Add (new ListItem ("One year", "OneYear"));
-            this.DropMembershipDuration.Items.Add (new ListItem ("Two years", "TwoYears"));
-            this.DropMembershipDuration.Items.Add (new ListItem ("Five years", "FiveYears"));
-            this.DropMembershipDuration.Items.Add (new ListItem ("Forever", "Forever"));
-            this.DropMembershipDuration.SelectedValue = "Year";
+            this.DropParticipationDuration.Items.Clear();
+            this.DropParticipationDuration.Items.Add (new ListItem ("One month", "1"));
+            this.DropParticipationDuration.Items.Add (new ListItem ("One year", "12"));
+            this.DropParticipationDuration.Items.Add (new ListItem ("Two years", "24"));
+            this.DropParticipationDuration.Items.Add (new ListItem ("Five years", "60"));
+            this.DropParticipationDuration.Items.Add (new ListItem ("Forever", "1440"));
 
             this.DropMembersChurn.Items.Clear();
             this.DropMembersChurn.Items.Add (new ListItem ("Expiry date reached", "Expiry"));
@@ -107,7 +107,7 @@ namespace Swarmops.Frontend.Pages.Admin
 
             this.DropMemberNumber.Items.Clear();
             this.DropMemberNumber.Items.Add (new ListItem ("Global for installation", "Global"));
-            this.DropMemberNumber.Items.Add (new ListItem ("Local for each organzation", "Local"));
+            this.DropMemberNumber.Items.Add (new ListItem ("Local for each organization", "Local"));
 
             this.DropTaxAuthority.Items.Clear();
             this.DropTaxAuthority.Items.Add(new ListItem("[DE] Germany", "DE"));
@@ -123,6 +123,9 @@ namespace Swarmops.Frontend.Pages.Admin
         public static InitialOrgData GetInitialData()
         {
             InitialOrgData result = new InitialOrgData();
+            InitialDataSwitches switches = new InitialDataSwitches();
+            InitialMessages messages = new InitialMessages();
+            InitialParticipationData participation = new InitialParticipationData();
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             Organization org = authData.CurrentOrganization;
 
@@ -131,19 +134,31 @@ namespace Swarmops.Frontend.Pages.Admin
                 return result; // just... don't
             }
 
-            result.AccountBitcoinCold = (org.FinancialAccounts.AssetsBitcoinCold != null &&
+            switches.AccountBitcoinCold = (org.FinancialAccounts.AssetsBitcoinCold != null &&
                                          org.FinancialAccounts.AssetsBitcoinCold.Active);
-            result.AccountBitcoinHot = (org.FinancialAccounts.AssetsBitcoinHot != null &&
+            switches.AccountBitcoinHot = (org.FinancialAccounts.AssetsBitcoinHot != null &&
                                         org.FinancialAccounts.AssetsBitcoinHot.Active);
-            result.AccountPaypal = (org.FinancialAccounts.AssetsPaypal != null &&
+            switches.AccountPaypal = (org.FinancialAccounts.AssetsPaypal != null &&
                                     org.FinancialAccounts.AssetsPaypal.Active);
-            result.AccountsForex = (org.FinancialAccounts.IncomeCurrencyFluctuations != null &&
+            switches.AccountsForex = (org.FinancialAccounts.IncomeCurrencyFluctuations != null &&
                                     org.FinancialAccounts.IncomeCurrencyFluctuations.Active);
-            result.AccountsVat = (org.FinancialAccounts.AssetsVatInbound != null &&
+            switches.AccountsVat = (org.FinancialAccounts.AssetsVatInbound != null &&
                                   org.FinancialAccounts.AssetsVatInbound.Active);
-            result.VatReportFrequency = org.VatReportFrequencyMonths;
-            result.ParticipantFinancials = org.ParticipantFinancialsEnabled;
-            result.PaypalAccountAddress = org.PaypalAccountMailAddress;
+            switches.VatReportFrequency = org.VatReportFrequencyMonths;
+            switches.ParticipantFinancials = org.ParticipantFinancialsEnabled;
+            switches.PaypalAccountAddress = org.PaypalAccountMailAddress;
+
+            participation.ApplicationQualifyingScore = org.Parameters.ApplicationQualifyingScore.ToString("N0");
+            participation.AskParticipantStreet = org.Parameters.AskParticipantStreet;
+            participation.Duration = org.Parameters.ParticipationDuration;
+            participation.Entry = org.Parameters.ParticipationEntry;
+
+            messages.ApplicationCompleteMail = org.Parameters.ApplicationCompleteMail;
+            messages.ParticipationAcceptedMail = org.Parameters.ParticipationAcceptedMail;
+            messages.SidebarOrgInfo = org.Parameters.SidebarOrgInfo;
+            messages.SignupFirstPage = org.Parameters.SignupFirstPage;
+            messages.SignupLastPage = org.Parameters.SignupLastPage;
+
 
             result.GovernmentRegistrationId = org.GovernmentRegistrationId;
             result.TaxAuthority = org.TaxAuthority;
@@ -154,8 +169,13 @@ namespace Swarmops.Frontend.Pages.Admin
 
             // TODO: Add all the other fields
 
+            result.Switches = switches;
+            result.Messages = messages;
+            result.Participation = participation;
+
             return result;
         }
+
 
 
         [WebMethod]
@@ -195,7 +215,7 @@ namespace Swarmops.Frontend.Pages.Admin
                         authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold = coldAccount;
 
                         result.DisplayMessage =
-                            "Bitcoin cold accounts were created. Edit names and addresses in Account Plan."; // LOC
+                            "Bitcoin cold accounts were created. Edit names and addresses in Connected Accounts."; // LOC
                     }
                     else
                     {
@@ -349,6 +369,9 @@ namespace Swarmops.Frontend.Pages.Admin
                 case "ParticipantFinancials":
                     authData.CurrentOrganization.ParticipantFinancialsEnabled = newValue;
                     break;
+                case "AskPartipantStreet":
+                    authData.CurrentOrganization.Parameters.AskParticipantStreet = newValue;
+                    break;
                 default:
                     throw new NotImplementedException();
             }
@@ -486,6 +509,50 @@ namespace Swarmops.Frontend.Pages.Admin
                     authenticationData.CurrentOrganization.VatReportFrequencyMonths = Int32.Parse(newValue);
                     break;
 
+                case "ParticipationEntry":
+                    result.Success = true;
+                    result.NewValue = newValue;
+                    authenticationData.CurrentOrganization.Parameters.ParticipationEntry = newValue;
+                    break;
+
+                case "ParticipationDuration":
+                    result.Success = true;
+                    result.NewValue = newValue;
+                    authenticationData.CurrentOrganization.Parameters.ParticipationDuration = newValue;
+                    break;
+
+                case "SidebarOrgInfo":
+                    result.Success = true;
+                    authenticationData.CurrentOrganization.Parameters.SidebarOrgInfo = newValue;
+                    break;
+
+                case "SignupFirstPage":
+                    result.Success = true;
+                    authenticationData.CurrentOrganization.Parameters.SignupFirstPage = newValue;
+                    break;
+
+                case "SignupLastPage":
+                    result.Success = true;
+                    authenticationData.CurrentOrganization.Parameters.SignupLastPage = newValue;
+                    break;
+
+                case "ApplicationCompleteMail":
+                    result.Success = true;
+                    authenticationData.CurrentOrganization.Parameters.ApplicationCompleteMail = newValue;
+                    break;
+
+                case "ParticipationAcceptedMail":
+                    result.Success = true;
+                    authenticationData.CurrentOrganization.Parameters.ParticipationAcceptedMail = newValue;
+                    break;
+
+                case "ApplicationQualifyingScore":
+                    int qualifyingScore = Int32.Parse(newValue, NumberStyles.Number);
+                    authenticationData.CurrentOrganization.Parameters.ApplicationQualifyingScore = qualifyingScore;
+                    result.NewValue = qualifyingScore.ToString("N0");
+                    result.Success = true; // this comes last in this section, because parsing int may fail
+                    break;
+
                 default:
                     throw new NotImplementedException("Unknown cookie in StoreCallback");
             }
@@ -505,14 +572,11 @@ namespace Swarmops.Frontend.Pages.Admin
 
         public class InitialOrgData
         {
-            public bool AccountBitcoinCold;
-            public bool AccountBitcoinHot;
-            public bool AccountPaypal;
-            public bool AccountsForex;
-            public bool AccountsVat;
-            public int VatReportFrequency;
-            public bool ParticipantFinancials;
-            public string PaypalAccountAddress;
+            public InitialDataSwitches Switches { get; set; }
+            public InitialMessages Messages { get; set; }
+            public InitialParticipationData Participation { get; set; }
+
+            // TODO: Move these lower ones to classes of their own, too
 
             public string GovernmentRegistrationId;
             public string TaxAuthority;
@@ -520,6 +584,35 @@ namespace Swarmops.Frontend.Pages.Admin
 
             public string OpenLedgersDomain;
             public string VanityDomain;
+        }
+
+        public class InitialDataSwitches
+        {
+            public bool AccountBitcoinCold { get; set; }
+            public bool AccountBitcoinHot { get; set; }
+            public bool AccountPaypal { get; set; }
+            public bool AccountsForex { get; set; }
+            public bool AccountsVat { get; set; }
+            public int VatReportFrequency { get; set; }
+            public bool ParticipantFinancials { get; set; }
+            public string PaypalAccountAddress { get; set; }
+        }
+
+        public class InitialParticipationData
+        {
+            public string Entry { get; set; }
+            public string Duration { get; set; }
+            public string ApplicationQualifyingScore { get; set; }
+            public bool AskParticipantStreet { get; set; }
+        }
+
+        public class InitialMessages
+        {
+            public string SidebarOrgInfo { get; set; }
+            public string SignupFirstPage { get; set; }
+            public string SignupLastPage { get; set; }
+            public string ApplicationCompleteMail { get; set; }
+            public string ParticipationAcceptedMail { get; set; }
         }
     }
 }

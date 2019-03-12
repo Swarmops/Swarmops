@@ -122,8 +122,8 @@
     <comment>Status message.</comment>
   </data>
   <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>Kontantförskott #{0:N0} till {1} har AV-attesterats. Det kommer inte att betalas ut om det inte attesteras igen.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>Godkännandet av kontantförskott #{0:N0} för {1} har DRAGITS TILLBAKA. Det kommer inte att betalas ut förrän det godkänts på nytt.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
     <value>Du kan inte attestera detta belopp. Budgeten är tom eller slut för år {0}.</value>
@@ -146,10 +146,6 @@
   <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
     <value>Utläggsanspråk #{0:N0} från {1} för {2} {3:N2} har attesterats.</value>
     <comment>{2} is the currency.</comment>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Utläggsanspråk #{0:N0} från {1} har AV-attesterats. Det kommer inte att betalas ut förrän det attesterats igen.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Attest</value>
@@ -181,22 +177,22 @@
     <value>Kostnader som väntar på attest</value>
   </data>
   <data name="AttestCosts_Info" xml:space="preserve">
-    <value>Här attesterar du belopp som andra personer vill ha från dina budgetar. Inget betalas ut före det attesterats.</value>
+    <value>Här attesterar (godkänner) du belopp som andra personer vill ha från dina budgetar. Inget betalas ut före det har attesterats.</value>
   </data>
   <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
     <value>Faktura #{0:N0} från {1} på {2} {3:N2} attesterades.</value>
     <comment>{2} is the currency.</comment>
   </data>
   <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>Faktura #{0:N0} från {1} har AV-attesterats. Den kommer inte att betalas förrän den attesterats igen.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>Attesten av faktura #{0:N0} för {1} har DRAGITS TILLBAKA. Fakturan kommer inte att betalas förrän den attesterats på nytt.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
-    <value>Attestera</value>
+    <value>Godkänn</value>
     <comment>keep short</comment>
   </data>
   <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
-    <value>Attestera</value>
+    <value>Godkänn</value>
   </data>
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Neka</value>
@@ -224,7 +220,7 @@
     <value>Flytta kostnaden till denna budget i stället:</value>
   </data>
   <data name="AttestCosts_Modal_Header" xml:space="preserve">
-    <value>Åtgärda problem eller neka attestation</value>
+    <value>Åtgärda problem eller neka beloppet</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
     <value>Jag attesterar kostnaden, men till ett annat belopp.</value>
@@ -269,18 +265,18 @@
     <value>Konferens #{0:N0} som arrangeras av {1} har attesterats för {3:N2}.</value>
   </data>
   <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>Konferens #{0:N0} av {1} har AV-attesterats. Den kommer inte att få garantimedel förrän den attesteras igen.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>Attesten av konferens #{0:N0} för {1} har DRAGITS TILLBAKA. Den kommer inte att få garantimedel förrän den attesterats på nytt.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>Löneutbetalning #{0:N0} till {1} attesterades till en totalkostnad av {3:N2}.</value>
   </data>
   <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Löneutbetalning #{0:N0} till {1} har AV-attesterats. Lönen kommer inte att betalas ut om den inte attesteras igen.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
+    <value>Attesten av lön #{0:N0} för {1} har DRAGITS TILLBAKA. Lönen kommer inte att betalas ut förrän den attesterats på nytt.</value>
+    <comment>When somebody undoes a previous approval.</comment>
   </data>
   <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
-    <value>&lt;strong&gt;Varning: ODEFINIERAD BUDGET&lt;/strong&gt; &lt;br/&gt; &lt;br/&gt; Kostnaden du godkänner tillhör en odefinierad budget -- ett konto i redovisningen som saknar ägare och inte har en budget definierad för året. Överväga att gå till Kontoplanen och sätt budgetar för förväntade inkomster och utgifter. &lt;br/&gt; &lt;br/&gt; Detta meddelande visas endast en gång per besök till Attesteringar. &lt;br/&gt;</value>
+    <value>&lt;strong&gt;Varning: BUDGET ÄR INTE SATT&lt;/strong&gt; &lt;br/&gt; &lt;br/&gt; Kostnaden du godkänner tillhör en ett konto i redovisningen som saknar ägare och inte har någon budget satt för året. Överväg att gå till Kontoplanen och sätt budgetramar för förväntade inkomster och utgifter. &lt;br/&gt; &lt;br/&gt; Detta meddelande visas endast en gång per besök till Attesteringar. &lt;br/&gt;</value>
   </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Fakturabelopp totalt (i {0})</value>
@@ -421,25 +417,9 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Beskriv vad detta inköp var.</value>
   </data>
-  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
-    <value>Konto (OCR)</value>
-  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Belopp</value>
     <comment>Amount to be paid out</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
-    <value>Belopp (OCR)</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
-    <value>Clearing / Konto</value>
-    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
-    <value>Bank</value>
-  </data>
-  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
-    <value>Förfallodatum</value>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Betald</value>
@@ -449,18 +429,8 @@
     <value>Mottagare</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referens</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
-    <value>Referens (OCR)</value>
-  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Kostnader redo för utbetalning</value>
-  </data>
-  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
-    <value>Kostnader för utbetalning (OCR för mobilappar)</value>
   </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Dessa är de kostnader organisationen har och som har godkänts i alla steg för utbetalning. Här bockar du av dem som utbetalda (förmodligen medan du har din bank öppen i ett fönster bredvid och betalar dem).</value>
@@ -580,7 +550,7 @@
     <value>Godkänn kvitton</value>
   </data>
   <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>Kvittona för utläggsanspråk #{0:N0} på {1} {2:N2} har AV-godkänts. Utläggsanspråket kommer inte att gå till utbetalning om de inte granskas och godkänns på nytt.</value>
+    <value>Godkännandet av kvittona för utläggsanspråk #{0:N0} på {1} {2:N2} har DRAGITS TILLBAKA. Utläggsanspråket kommer inte att gå till utbetalning om de inte granskas och godkänns på nytt.</value>
   </data>
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Kvittona för utläggsanspråk #{0:N0} på {1} {2:N2} har godkänts.</value>
@@ -666,5 +636,121 @@
   </data>
   <data name="ListOutboundInvoices_Title" xml:space="preserve">
     <value>Listar utgående fakturor</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Ladda upp Expensify-CSV-fil</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Om du har många ersättningsanspråk, så kan du samla dem med Expensify och ladda upp en Expensify-rapportfil i CSV-format här (som du kan skapa hos Expensify under Rapporter, Export, som CSV). Swarmops kommer att använda Expensify till hämta alla kvitton och lägga dem som separata ersättningsanspråk för god redovisningssed.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>För att detta ska fungera, eftersom {0} är momsrapporteringspliktigt, så behöver du skapa en ny CSV-profil hos Expensify som att inkluderar moms (vilket standardprofilen inte gör). Expensifys hjälpsidor har mer om hur du gör detta. Om du använder Expensify på teamnivå, så har ditt teams Expensifypolicy förmodligen redan en momsaktiverad CSV-profil klar för export.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Baserat på din organisations inställningar, så bör ”standard CSV”-profilen i Expensifys exportfunktion räcka för Swarmops.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Expensifys rapportvaluta är</value>
+  </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Ladda upp Expensify-rapport för återbetalning</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;FEL: Det gick inte att tolka Expensifys CSV-fil.&lt;/strong&gt; Om detta är en CSV-fil från Expensify, så behöver Swarmops kolumnerna ”Timestamp”, ”Amount”, ”Merchant”, ”Comment”, ”Category”, ”MCC”, ”Original Currency” och ”Original Amount” i filen. Om organisationen rapporterar moms, krävs en ytterligare kolumn som heter ”VAT”.&lt;/p&gt;&lt;p&gt;Kan inte behandla denna fil.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;FEL: Expensify-CSV-filen saknar momskolumn.&lt;/strong&gt; Eftersom denna organisation är momspliktig, så måste momsvärdet anges för varje ersättningsanspråk. Aktivera moms i Expensify och skapa en ny CSV-exportprofil som exporterar detta under rubriken ”VAT”. Om ditt team har redan skapat sådan CSV-profil, kan du bara behöver välja den när du exporterar till CSV.&lt;/p&gt;&lt;p&gt;Det gick inte att bearbeta filen.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Ladda upp en Expensify-CSV-fil till?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>jag själv</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Vem gör detta utläggsanspråk?</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;fel: Expensify CSV-filen saknar nödvändiga datafält.&lt;/strong&gt; Filen verkar sakna minst ett av fälten som krävs hos Expensifys standard-CSV-profil. Kontrollera den tekniska dokumentationen och jämför med den filen du försökte ladda upp. (Troligtvis försökte du ladda upp helt fel fil &amp;ndash; kanske ett fotografi istället för en Expensify CSV &amp;ndash; och att detta är orsaken till de förväntade datafält som saknas.)&lt;/p&gt;&lt;p&gt;Det gick inte att bearbeta filen.&lt;/p&gt;</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(Beloppet måste vara exklusive eventuell moms!)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>Alla utläggsanspråk måste ha en budget innan du skickar in dem.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>Inga Expensify-anspråk att skicka in</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>Redo att skicka in ett anspråk</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>Redo att skicka in {0} anspråk</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>Anspråk inskickat.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>{0} anspråk inskickade.</value>
+  </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Attesten av utläggsanspråk #{0:N0} för {1} har DRAGITS TILLBAKA. Anspråket kommer inte att betalas ut förrän det attesterats på nytt.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_CurrencyMethod" xml:space="preserve">
+    <value>Valuta och betalningssätt</value>
+    <comment>"Method" refers to the method of payout -- wire transfer, direct deposit, giro service, etc.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_PayThis" xml:space="preserve">
+    <value>Betala</value>
+    <comment>Like the "Actions" column in other grids, but just with one option, "Pay this expenditure"</comment>
+  </data>
+  <data name="PayOutMoney_Modal_ConfirmPaid" xml:space="preserve">
+    <value>Betald och Klar</value>
+    <comment>As in "Confirm The Currently Displayed Payout Has Been Manually Executed" -- try to keep short, "This is Paid" length is ideal</comment>
+  </data>
+  <data name="PayOutMoney_Modal_CurrencyAmount" xml:space="preserve">
+    <value>Valuta och belopp</value>
+    <comment>Will be a label for something like "USD 10,000.00"</comment>
+  </data>
+  <data name="PayOutMoney_Modal_Header" xml:space="preserve">
+    <value>Utför denna betalning manuellt</value>
+    <comment>Displayed as header over the details of a payment to be made manually (as opposed to with bitcoin/crypto)</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr1" xml:space="preserve">
+    <value>Skannar du denna betalning?</value>
+    <comment>In longer form, the question would be "Are you using a mobile phone or other device to capture this payment data automatically?". Some banking apps can scan QR codes or specially formatted number sequences.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr2" xml:space="preserve">
+    <value>Visa som maskinläsbar text</value>
+    <comment>Don't make this string much longer than it is.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_TransferMethod" xml:space="preserve">
+    <value>Betalningssätt</value>
+    <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
+  </data>
+  <data name="PayOutMoney_AutomationFieldNext" xml:space="preserve">
+    <value>...och detta</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
+  <data name="PayOutMoney_AutomationFieldStart" xml:space="preserve">
+    <value>Skanna detta</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referens</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  <data name="PayOutMoney_PaymentLate" xml:space="preserve">
+    <value>Betalningen är Försenad</value>
+    <comment>"Late" in this context means "after its due date".</comment>
   </data>
 </root>

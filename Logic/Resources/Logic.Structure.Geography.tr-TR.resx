@@ -117,26 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CentralEurope" xml:space="preserve">
+    <value>Orta Avrupa</value>
+  </data>
+  <data name="EasternEurope" xml:space="preserve">
+    <value>Doğu Avrupa</value>
+  </data>
+  <data name="Europe" xml:space="preserve">
+    <value>Avrupa</value>
+  </data>
+  <data name="Microstates" xml:space="preserve">
+    <value>Mikrodevletler</value>
+    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
+  </data>
+  <data name="Nordics" xml:space="preserve">
+    <value>İskandinavya</value>
+    <comment>(Finland Denmark Norway Sweden Iceland)</comment>
+  </data>
+  <data name="NorthernEurope" xml:space="preserve">
+    <value>Kuzey Avrupa</value>
+  </data>
+  <data name="SouthernEurope" xml:space="preserve">
+    <value>Güney Avrupa</value>
+  </data>
+  <data name="USA_EastNorthCentral" xml:space="preserve">
+    <value>Doğu Kuzey Orta</value>
+  </data>
+  <data name="USA_EastSouthCentral" xml:space="preserve">
+    <value>Doğu Güney Orta</value>
+  </data>
+  <data name="USA_MidAtlantic" xml:space="preserve">
+    <value>Orta Atlantik</value>
+  </data>
+  <data name="USA_Midwest" xml:space="preserve">
+    <value>Ortabatı</value>
+  </data>
+  <data name="USA_Mountain" xml:space="preserve">
+    <value>Dağ</value>
+  </data>
+  <data name="USA_NewEngland" xml:space="preserve">
+    <value>Yeni İngiltere</value>
+  </data>
+  <data name="USA_Northeast" xml:space="preserve">
+    <value>Kuzeydoğu</value>
+  </data>
+  <data name="USA_Pacific" xml:space="preserve">
+    <value>Pasifik</value>
+  </data>
+  <data name="USA_South" xml:space="preserve">
+    <value>Güney</value>
+  </data>
+  <data name="USA_SouthAtlantic" xml:space="preserve">
+    <value>Güney Atlantik</value>
+  </data>
+  <data name="USA_West" xml:space="preserve">
+    <value>Batı</value>
+  </data>
+  <data name="USA_WestNorthCentral" xml:space="preserve">
+    <value>Batı Kuzey Orta</value>
+  </data>
+  <data name="USA_WestSouthCentral" xml:space="preserve">
+    <value>Batı Güney Orta</value>
+  </data>
+  <data name="WesternEurope" xml:space="preserve">
+    <value>Batı Avrupa</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>Küresel</value>
+    <comment>Root geography</comment>
+  </data>
 </root>

@@ -82,16 +82,13 @@ namespace Swarmops.Logic.Communications
 
                 case "SwedishKannel":
                 {
-                    String username = Credential.Login;
-                    String password = Credential.Password;
                     Encoding enc = Credential.Encoding;
                     String url = "https://nurse.sanitarium.se/kannel/status";
-                    String result;
 
                     HttpWebResponse responseOut = null;
                     try
                     {
-                        result = HTTPSender.Send (url, enc, 1500, out responseOut);
+                        HTTPSender.Send (url, enc, 1500, out responseOut);
                         if (((int) responseOut.StatusCode).ToString().StartsWith ("2"))
                             return true;
                         return false;

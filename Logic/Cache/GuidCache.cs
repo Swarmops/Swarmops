@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Swarmops.Common;
 
@@ -48,7 +49,7 @@ namespace Swarmops.Logic.Cache
                 _cache.Remove (guidString);
             }
         }
-        
+
 
         private static void ConditionalGarbageCollect()
         {

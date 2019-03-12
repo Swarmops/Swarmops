@@ -1,3 +1,4 @@
+using System;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Support;
 
@@ -134,5 +135,66 @@ namespace Swarmops.Logic.Structure
             }
             set { this.data.SetOptionalDataString (ObjectOptionalDataType.OrgTemporaryAccessListWrite, value); }
         }
+
+        public bool AskParticipantStreet
+        {
+            get { return this.data.GetOptionalDataBool(ObjectOptionalDataType.OrgAskParticipantStreet); }
+            set { this.data.SetOptionalDataBool(ObjectOptionalDataType.OrgAskParticipantStreet, value); }
+        }
+
+        public string ParticipationEntry
+        {
+            get { return this.data.GetOptionalDataString(ObjectOptionalDataType.OrgParticipationEntry); }
+            set { this.data.SetOptionalDataString(ObjectOptionalDataType.OrgParticipationEntry, value); }
+        }
+
+        public string ParticipationDuration
+        {
+            get { return CustomOrDefault(this.data.GetOptionalDataString(ObjectOptionalDataType.OrgParticipationDuration), "12"); }
+            set { this.data.SetOptionalDataString(ObjectOptionalDataType.OrgParticipationDuration, value); }
+        }
+        public string ParticipationAcceptedMail
+        {
+            get { return this.data.GetOptionalDataString(ObjectOptionalDataType.OrgParticipationAcceptedMail); }
+            set { this.data.SetOptionalDataString(ObjectOptionalDataType.OrgParticipationAcceptedMail, value); }
+        }
+        public string SidebarOrgInfo
+        {
+            get { return this.data.GetOptionalDataString(ObjectOptionalDataType.OrgSidebarShortInfo); }
+            set { this.data.SetOptionalDataString(ObjectOptionalDataType.OrgSidebarShortInfo, value); }
+        }
+        public string SignupFirstPage
+        {
+            get { return this.data.GetOptionalDataString(ObjectOptionalDataType.OrgSignupFirstPage); }
+            set { this.data.SetOptionalDataString(ObjectOptionalDataType.OrgSignupFirstPage, value); }
+        }
+        public string SignupLastPage
+        {
+            get { return this.data.GetOptionalDataString(ObjectOptionalDataType.OrgSignupLastPage); }
+            set { this.data.SetOptionalDataString(ObjectOptionalDataType.OrgSignupLastPage, value); }
+        }
+        public string ApplicationCompleteMail
+        {
+            get { return this.data.GetOptionalDataString(ObjectOptionalDataType.OrgApplicationCompleteMail); }
+            set { this.data.SetOptionalDataString(ObjectOptionalDataType.OrgApplicationCompleteMail, value); }
+        }
+        public int ApplicationQualifyingScore
+        {
+            get { return this.data.GetOptionalDataInt(ObjectOptionalDataType.OrgApplicationQualifyingScore); }
+            set { this.data.SetOptionalDataInt(ObjectOptionalDataType.OrgApplicationQualifyingScore, value); }
+        }
+
+
+        private string CustomOrDefault(string customString, string defaultString)
+        {
+            if (String.IsNullOrEmpty(customString.Trim()))
+            {
+                return defaultString;
+            }
+
+            return customString;  // not trimmed, on purpose
+        }
+
+
     }
 }

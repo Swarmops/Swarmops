@@ -81,7 +81,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 // If the transaction is unbalanced, make a huge deal about it
 
-                result.Append ("{\"accountName\":\"<img src='/Images/Icons/iconshock-warning-24px.png' height='16px' width='16px' class='elementFloatFar' />" +
+                result.Append ("{\"accountName\":\"<img src='/Images/Icons/iconshock-warning-24px.png' height='16px' width='16px' class='float-far' />" +
                                JsonSanitize (Resources.Pages.Ledgers.InspectLedgers_UnbalancedTransaction) + "\",");
 
                 if (amountCentsTotal < 0)

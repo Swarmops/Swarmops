@@ -2,7 +2,7 @@
 <%@ Import Namespace="Swarmops.Logic.Support" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-    <script src="https://bitcoincash.blockexplorer.com/socket.io/socket.io.js"></script>
+    <script src="https://bch-insight.bitpay.com/socket.io/socket.io.js"></script>
 
     <script type="text/javascript" language="javascript">
         $(document).ready(function() {
@@ -14,7 +14,7 @@
         eventToListenTo = 'tx';
         room = 'inv';
 
-        var socket = io("https://bitcoincash.blockexplorer.com/");
+        var socket = io("https://bch-insight.bitpay.com/");
         socket.on('connect', function() {
             // Join the room.
             socket.emit('subscribe', room);
@@ -54,7 +54,7 @@
         });
 
 
-        function pageBitcoinReceived(address, hash, satoshis, cents, currencyCode) {
+        function pageOnBitcoinReceived(address, hash, satoshis, cents, currencyCode) {
 
             // This function is detected called by the Master Page; it is not
             // called from this page or anything visible here
@@ -107,7 +107,7 @@
      <div class="box" style="background-image: url(/Images/Other/coins-background-istockphoto.jpg); background-size: 700px">
         <div class="content">
             <div class="odometer-wrapper">
-                <div class="elementFloatFar odometer odometer-currency" id="odoDonatedCents">0.001</div>
+                <div class="float-far odometer odometer-currency" id="odoDonatedCents">0.001</div>
                 <div class="odometer-label"><asp:Label runat="server" ID="LabelReceivedFunds"/></div>
             </div>
         </div>

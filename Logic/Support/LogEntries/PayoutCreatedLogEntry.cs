@@ -14,10 +14,10 @@ namespace Swarmops.Logic.Support.LogEntries
         }
 
         public PayoutCreatedLogEntry (Person payingPerson, Person beneficiaryPerson, Organization organization,
-            Currency currency, double amount, string reason)
+            Currency currency, Int64 amountCents, string reason)
         {
-            Amount = amount;
-            Currency = currency.Code;
+            AmountCents = amountCents;
+            CurrencyCode = currency.Code;
             OrganizationId = organization.Identity;
             DateTime = DateTime.UtcNow;
             Description = reason;

@@ -5,15 +5,12 @@ namespace Swarmops.Basic.Types.Financial
 {
     public class BasicExpenseClaim : IHasIdentity
     {
-        public readonly int GeographyId;
-        public readonly int OrganizationId;
-
         /// <summary>
         ///     Normal constructor
         /// </summary>
-        public BasicExpenseClaim (int expenseClaimId, int claimingPersonId, DateTime createdDateTime,
+        public BasicExpenseClaim (int expenseClaimId, int claimingPersonId, DateTime createdDateTime, int expenseClaimGroupId,
             bool open, bool attested, bool documented, bool claimed, int organizationId,
-            int geographyId, int budgetId, DateTime expenseDate,
+            int organizationSequenceId, int geographyId, int budgetId, DateTime expenseDate,
             string description, double preApprovedAmount, Int64 amountCents, Int64 vatCents, bool repaid, bool keepSeparate)
         {
             this.ExpenseClaimId = expenseClaimId;
@@ -24,6 +21,7 @@ namespace Swarmops.Basic.Types.Financial
             this.Validated = documented;
             this.Claimed = claimed;
             this.OrganizationId = organizationId;
+            this.OrganizationSequenceId = organizationSequenceId;
             this.GeographyId = geographyId;
             this.BudgetId = budgetId;
             this.ExpenseDate = expenseDate;
@@ -33,21 +31,26 @@ namespace Swarmops.Basic.Types.Financial
             this.VatCents = vatCents;
             this.Repaid = repaid;
             this.KeepSeparate = keepSeparate;
+            this.GroupId = expenseClaimGroupId;
         }
 
         /// <summary>
         ///     Copy constructor
         /// </summary>
         public BasicExpenseClaim (BasicExpenseClaim original)
-            : this (original.Identity, original.ClaimingPersonId, original.CreatedDateTime,
+            : this (original.Identity, original.ClaimingPersonId, original.CreatedDateTime, original.GroupId,
                 original.Open, original.Attested, original.Validated, original.Claimed,
-                original.OrganizationId, original.GeographyId, original.BudgetId,
-                original.ExpenseDate, original.Description,
+                original.OrganizationId, original.OrganizationSequenceId, 
+                original.GeographyId, original.BudgetId, original.ExpenseDate, original.Description,
                 original.PreApprovedAmount, original.AmountCents, original.VatCents, original.Repaid, original.KeepSeparate)
         {
         }
 
 
+        public int GeographyId { get; private set; }
+
+        public int OrganizationId { get; private set; }
+        public int OrganizationSequenceId { get; protected set; }
         public int ExpenseClaimId { get; private set; }
         public DateTime ExpenseDate { get; protected set; }
         public string Description { get; protected set; }
@@ -63,6 +66,7 @@ namespace Swarmops.Basic.Types.Financial
         public bool Repaid { get; protected set; }
         public bool KeepSeparate { get; protected set; }
         public bool Claimed { get; protected set; }
+        public int GroupId { get; protected set; }
 
 
         // The fields below are not just encapsulated yet

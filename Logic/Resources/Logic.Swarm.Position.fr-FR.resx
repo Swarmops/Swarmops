@@ -117,91 +117,274 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Position_Executive_CeoAssistant" xml:space="preserve">
+    <value>Assistant PDG</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Government" xml:space="preserve">
+    <value>Aide Présidentielle</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Government_Plural" xml:space="preserve">
+    <value>Aides Présidentielles</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Nonprofit" xml:space="preserve">
+    <value>Secrétaire général adjoint</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Les Assistants du Secrétaire général</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Plural" xml:space="preserve">
+    <value>Assistants du PDG</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant" xml:space="preserve">
+    <value>Assistant du directeur financier</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant_Nonprofict" xml:space="preserve">
+    <value>Assistant financier</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Assistants financiers</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant_Plural" xml:space="preserve">
+    <value>Assistants du directeur financier</value>
+  </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer" xml:space="preserve">
+    <value>Directeur exécutif</value>
+  </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer_Government" xml:space="preserve">
+    <value>Président</value>
+  </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer_Nonprofit" xml:space="preserve">
+    <value>Secrétaire général</value>
+  </data>
+  <data name="Position_Executive_ChiefFinancialOfficer" xml:space="preserve">
+    <value>Chef du bureau des Finances</value>
+  </data>
+  <data name="Position_Executive_ChiefFinancialOfficer_Government" xml:space="preserve">
+    <value>Ministre de finance</value>
+  </data>
+  <data name="Position_Executive_ChiefFinancialOfficer_Nonprofit" xml:space="preserve">
+    <value>Trésorier</value>
+  </data>
+  <data name="Position_Executive_ChiefHrOfficer" xml:space="preserve">
+    <value>Responsable des ressources humaines</value>
+  </data>
+  <data name="Position_Executive_ChiefHrOfficer_Nonprofit" xml:space="preserve">
+    <value>Responsable de la communauté</value>
+  </data>
+  <data name="Position_Executive_ChiefInformationOfficer" xml:space="preserve">
+    <value>Responsable de l'information</value>
+  </data>
+  <data name="Position_Executive_ChiefMarketingOfficer" xml:space="preserve">
+    <value>Directeur du Marketing</value>
+  </data>
+  <data name="Position_Executive_ChiefMarketingOfficer_Government" xml:space="preserve">
+    <value>Ministre des Affaires étrangères</value>
+  </data>
+  <data name="Position_Executive_ChiefMarketingOfficer_Nonprofit" xml:space="preserve">
+    <value>Responsable de la communication</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer" xml:space="preserve">
+    <value>Directeur des Opérations</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer_Government" xml:space="preserve">
+    <value>Ministre de l'intérieur</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer_Nonprofit" xml:space="preserve">
+    <value>Directeur de l'activisme</value>
+  </data>
+  <data name="Position_Executive_ChiefStaff" xml:space="preserve">
+    <value>Chef de personnel</value>
+  </data>
+  <data name="Position_Executive_ChiefTechnologyOfficer" xml:space="preserve">
+    <value>Chef du Bureau de la Technologie</value>
+  </data>
+  <data name="Position_Executive_FirstGentleman" xml:space="preserve">
+    <value>Premier Gentleman</value>
+    <comment>For government-type organizations only, with a female President</comment>
+  </data>
+  <data name="Position_Executive_FirstLady" xml:space="preserve">
+    <value>Première dame</value>
+    <comment>For government-type organizations only</comment>
+  </data>
+  <data name="Position_Executive_HrAssistant" xml:space="preserve">
+    <value>Assistant des ressources humaines</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Nonprofit" xml:space="preserve">
+    <value>Assistant de la communauté</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Assistants de la communauté</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Plural" xml:space="preserve">
+    <value>Assistants des ressources humaines</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant" xml:space="preserve">
+    <value>Assistant Marketing</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Government" xml:space="preserve">
+    <value>Aide des affaires étrangères</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Government_Plural" xml:space="preserve">
+    <value>Aides des affaires étrangères</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Nonprofit" xml:space="preserve">
+    <value>Assistant social</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Assistants sociaux</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Plural" xml:space="preserve">
+    <value>Assistants Marketing</value>
+  </data>
+  <data name="Position_Executive_President" xml:space="preserve">
+    <value>Président</value>
+  </data>
+  <data name="Position_Executive_VicePresident" xml:space="preserve">
+    <value>Vice président</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Nonprofit" xml:space="preserve">
+    <value>Vice secrétaire général</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Nonprofit_Plural" xml:space="preserve">
+    <value>Vice-secrétaires généraux</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Plural" xml:space="preserve">
+    <value>Vice-présidents</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeader" xml:space="preserve">
+    <value>Leader de l'activisme</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant" xml:space="preserve">
+    <value>Assistant de l'activisme</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Commercial" xml:space="preserve">
+    <value>Assistant des opérations</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Commercial_Plural" xml:space="preserve">
+    <value>Assistants des opérations</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Plural" xml:space="preserve">
+    <value>Assistants de l'activisme</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeader_Commercial" xml:space="preserve">
+    <value>Leader des opérations</value>
+  </data>
+  <data name="Position_Geographic_Assistant" xml:space="preserve">
+    <value>Assistant</value>
+  </data>
+  <data name="Position_Geographic_Assistant_Plural" xml:space="preserve">
+    <value>Assistants</value>
+  </data>
+  <data name="Position_Geographic_Deputy" xml:space="preserve">
+    <value>Vice</value>
+  </data>
+  <data name="Position_Geographic_Deputy_Plural" xml:space="preserve">
+    <value>Vice</value>
+  </data>
+  <data name="Position_Geographic_ExpandingSubleaderNode_UxElement" xml:space="preserve">
+    <value>Vice-leaders des régions géographiques</value>
+    <comment>Leaders for geographies below the one displayed</comment>
+  </data>
+  <data name="Position_Geographic_InfoLeader" xml:space="preserve">
+    <value>Chef du secteur de l'information</value>
+  </data>
+  <data name="Position_Geographic_InfoLeaderAssistant" xml:space="preserve">
+    <value>Assistant d'Information</value>
+  </data>
+  <data name="Position_Geographic_InfoLeaderAssistant_Plural" xml:space="preserve">
+    <value>Assistants d'Information</value>
+  </data>
+  <data name="Position_Geographic_Leader" xml:space="preserve">
+    <value>Leader</value>
+  </data>
+  <data name="Position_Geographic_OutreachLeader" xml:space="preserve">
+    <value>Leader de la sensibilisation</value>
+  </data>
+  <data name="Position_Geographic_OutreachLeaderAssistant" xml:space="preserve">
+    <value>Assistant de la sensibilisation</value>
+  </data>
+  <data name="Position_Geographic_OutreachLeaderAssistant_Plural" xml:space="preserve">
+    <value>Assistants de la sensibilisation</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeader" xml:space="preserve">
+    <value>Leader du Swarmcare</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant" xml:space="preserve">
+    <value>Assistant du Swarmcare</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Commercial" xml:space="preserve">
+    <value>Assistant communautaire</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Commercial_Plural" xml:space="preserve">
+    <value>Assistants communautaires</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Plural" xml:space="preserve">
+    <value>Assistants Swarmcare</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeader_Commercial" xml:space="preserve">
+    <value>Leader de l'assistance communautaire</value>
+  </data>
+  <data name="Position_Strategic_Auditor" xml:space="preserve">
+    <value>Auditeur</value>
+  </data>
+  <data name="Position_Strategic_AuditorAssistant" xml:space="preserve">
+    <value>Auditeur assistant</value>
+  </data>
+  <data name="Position_Strategic_AuditorAssistant_Plural" xml:space="preserve">
+    <value>Auditeurs assistants</value>
+  </data>
+  <data name="Position_Strategic_AuditorDeputy" xml:space="preserve">
+    <value>Vice-auditeur</value>
+  </data>
+  <data name="Position_Strategic_AuditorDeputy_Plural" xml:space="preserve">
+    <value>Vice-auditeurs</value>
+  </data>
+  <data name="Position_Strategic_Auditor_Plural" xml:space="preserve">
+    <value>Auditeurs</value>
+  </data>
+  <data name="Position_Strategic_BoardChairperson" xml:space="preserve">
+    <value>Président du Conseil</value>
+  </data>
+  <data name="Position_Strategic_BoardChairpersonDeputy" xml:space="preserve">
+    <value>Vice-président du conseil</value>
+  </data>
+  <data name="Position_Strategic_BoardChairpersonDeputy_Plural" xml:space="preserve">
+    <value>Vice-présidents du conseil</value>
+  </data>
+  <data name="Position_Strategic_BoardChairperson_Plural" xml:space="preserve">
+    <value>Présidents du conseil</value>
+  </data>
+  <data name="Position_Strategic_BoardDeputy" xml:space="preserve">
+    <value>Vice-président du conseil</value>
+  </data>
+  <data name="Position_Strategic_BoardDeputy_Plural" xml:space="preserve">
+    <value>Vice-présidents du conseil</value>
+  </data>
+  <data name="Position_Strategic_BoardMember" xml:space="preserve">
+    <value>Membre du conseil</value>
+  </data>
+  <data name="Position_Strategic_BoardMember_Plural" xml:space="preserve">
+    <value>Membres du conseil</value>
+  </data>
+  <data name="Position_Strategic_Observer" xml:space="preserve">
+    <value>Observateur du conseil</value>
+  </data>
+  <data name="Position_Strategic_Observer_Plural" xml:space="preserve">
+    <value>Observateurs du Conseil</value>
+  </data>
+  <data name="Position_System_SysadminAssistantReadOnly" xml:space="preserve">
+    <value>Assistant de l'administrateur système (Lecture-seule)</value>
+  </data>
+  <data name="Position_System_SysadminAssistantReadOnly_Plural" xml:space="preserve">
+    <value>Assistants de l'administrateur système (Lecture-seule)</value>
+  </data>
+  <data name="Position_System_SysadminMain" xml:space="preserve">
+    <value>Administrateur système Principal</value>
+  </data>
+  <data name="Position_System_SysadminReadWrite" xml:space="preserve">
+    <value>Administrateur système (Lecture/Ecriture)</value>
+  </data>
+  <data name="Position_System_SysadminReadWrite_Plural" xml:space="preserve">
+    <value>Administrateurs système (Lecture/Ecriture)</value>
+  </data>
 </root>

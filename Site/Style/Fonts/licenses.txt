@@ -1,0 +1,5 @@
+OCR-B-regular-web.woff:
+  CC-BY 4.0, Matthew Anderson
+  https://wehtt.am/ocr-b/ retrieved on 2019-Mar-01
+
+

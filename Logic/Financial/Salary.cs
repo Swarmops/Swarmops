@@ -1,15 +1,18 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
-    public class Salary : BasicSalary, IAttestable
+    public class Salary : BasicSalary, IApprovable
     {
         internal Salary (BasicSalary basic) : base (basic)
         {
@@ -122,33 +125,70 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        #region IAttestable Members
 
-        public void Attest (Person attester)
+        public new bool Open
         {
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
-                FinancialDependencyType.Salary, Identity, DateTime.Now, attester.Identity, NetSalaryCents/100.0);
-            SwarmDb.GetDatabaseForWriting().SetSalaryAttested (Identity, true);
+            get { return base.Open; }
+            set
+            {
+                if (base.Open != value)
+                {
+                    SwarmDb.GetDatabaseForWriting().SetSalaryOpen(Identity, value);
+                    base.Open = value;
+                }
+            }
         }
 
-        public void Deattest (Person deattester)
+
+        public new bool Attested 
         {
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
-                FinancialDependencyType.Salary, Identity, DateTime.Now, deattester.Identity, NetSalaryCents/100.0);
-            SwarmDb.GetDatabaseForWriting().SetSalaryAttested (Identity, false);
+            get { return base.Attested; }
+            set
+            {
+                if (base.Attested != value)
+                {
+                    SwarmDb.GetDatabaseForWriting().SetSalaryAttested(Identity, value);
+                    base.Attested = value;
+                }
+            }
         }
 
-        public void DenyAttestation (Person denyingPerson, string reason)
-        {
-            // Denying a salary payout is not to be taken lightly. This needs to be a larger feature. Until
-            // then, it's not implemented at all.
 
-            throw new NotImplementedException();
+        #region IApprovable Members
+
+        public void Approve (Person approvingPerson)
+        {
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Approval,
+                FinancialDependencyType.Salary, Identity, DateTime.Now, approvingPerson.Identity, CostTotalCents/100.0);
+            this.Attested = true;
+        }
+
+        public void RetractApproval (Person retractingPerson)
+        {
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.UndoApproval,
+                FinancialDependencyType.Salary, Identity, DateTime.Now, retractingPerson.Identity, CostTotalCents/100.0);
+            this.Attested = false;
+        }
+
+        public void DenyApproval (Person denyingPerson, string reason)
+        {
+            this.Attested = false;
+            this.Open = false;
+
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Kill,
+                FinancialDependencyType.ExpenseClaim, Identity,
+                DateTime.UtcNow, denyingPerson.Identity, this.CostTotalCents);
+
+            OutboundComm.CreateNotificationOfFinancialValidation(Budget, this.PayrollItem.Person, NetSalaryCents / 100.0, this.PayoutDate.ToString("MMMM yyyy"),
+                NotificationResource.Salary_Denied, reason);
+
+            FinancialTransaction transaction = FinancialTransaction.FromDependency(this);
+            transaction.RecalculateTransaction(new Dictionary<int, long>(), denyingPerson); // zeroes out the tx
         }
 
         #endregion
 
-        public FinancialAccount Budget // needed for IAttestable
+        public FinancialAccount Budget // needed for IApprovable
         {
             get { return PayrollItem.Budget; }
         }
@@ -263,7 +303,7 @@ namespace Swarmops.Logic.Financial
             // Add the financial transaction
 
             FinancialTransaction transaction =
-                FinancialTransaction.Create (payrollItem.OrganizationId, DateTime.Now,
+                FinancialTransaction.Create (payrollItem.OrganizationId, DateTime.UtcNow,
                     "Salary #" + salary.Identity + ": " + payrollItem.PersonCanonical +
                     " " +
                     salary.PayoutDate.ToString ("yyyy-MMM", CultureInfo.InvariantCulture));
@@ -288,7 +328,7 @@ namespace Swarmops.Logic.Financial
             }
 
             // Clear a cache
-            FinancialAccount.ClearAttestationAdjustmentsCache(payrollItem.Organization);
+            FinancialAccount.ClearApprovalAdjustmentsCache(payrollItem.Organization);
 
 
 

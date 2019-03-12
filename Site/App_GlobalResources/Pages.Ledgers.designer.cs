@@ -115,7 +115,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are transactions here excluded from 2-D reports?.
+        ///   Looks up a localized string similar to Is this an account after the EBITDA line?.
         /// </summary>
         internal static string AccountPlan_Edit_AdministrativeLong {
             get {
@@ -160,7 +160,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File upload profile.
+        ///   Looks up a localized string similar to Automation Profile.
         /// </summary>
         internal static string AccountPlan_Edit_FileUploadProfile {
             get {
@@ -304,7 +304,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account Plan.
+        ///   Looks up a localized string similar to Chart of Accounts.
         /// </summary>
         internal static string AccountPlan_PageTitle {
             get {
@@ -502,6 +502,33 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The transaction description cannot be empty..
+        /// </summary>
+        internal static string BalanceTransactions_Error_NeedDescription {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_Error_NeedDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The transaction needs a proof of purchase..
+        /// </summary>
+        internal static string BalanceTransactions_Error_NeedDocumentation {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_Error_NeedDocumentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The VAT amount doesn&apos;t seem to be correctly entered..
+        /// </summary>
+        internal static string BalanceTransactions_Error_VatAmountParseError {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_Error_VatAmountParseError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exact Matches For This Amount.
         /// </summary>
         internal static string BalanceTransactions_ExactMatches {
@@ -565,7 +592,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unbalanced Transactions (Must Match Or Fix).
+        ///   Looks up a localized string similar to Dangling Payments (Must Balance, Match, or Fix).
         /// </summary>
         internal static string BalanceTransactions_HeaderUnbalancedTransactions {
             get {
@@ -574,7 +601,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Some auto-imported financial transactions can&apos;t be automatically matched to the ongoing accounting. This is where you manually match such transactions to &quot;balance&quot; them (if a transaction only has one part completed, like the money sent to the organization with no record of what the money is for, the transaction is said to be &quot;unbalanced&quot;)..
+        ///   Looks up a localized string similar to Some auto-imported financial transactions can&apos;t be automatically matched to the ongoing accounting. This is where you manually match such transactions to &quot;balance&quot; them (if a transaction only has one part completed, like the money sent to the organization with no record of what the money is for, the transaction is said to be &quot;unbalanced&quot; and a &quot;dangling payment&quot;, as in, missing its bookkeeping counterpart)..
         /// </summary>
         internal static string BalanceTransactions_Info {
             get {
@@ -615,6 +642,15 @@ namespace Resources.Pages {
         internal static string BalanceTransactions_ModalDialog_ButtonPayoutForeign {
             get {
                 return ResourceManager.GetString("BalanceTransactions_ModalDialog_ButtonPayoutForeign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark as Direct Purchase.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_ButtonPurchase {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_ButtonPurchase", resourceCulture);
             }
         }
         
@@ -660,6 +696,51 @@ namespace Resources.Pages {
         internal static string BalanceTransactions_ModalDialog_DescribePayoutForeign {
             get {
                 return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePayoutForeign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Direct-debit purchase amount ({0}).
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribePurchaseAmount {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePurchaseAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge purchase to this budget.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribePurchaseBudget {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePurchaseBudget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload receipt or other documentation.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribePurchaseDocUpload {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePurchaseDocUpload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update transaction description.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribePurchaseTransaction {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePurchaseTransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT part of the amount.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_DescribePurchaseVat {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_DescribePurchaseVat", resourceCulture);
             }
         }
         
@@ -723,6 +804,15 @@ namespace Resources.Pages {
         internal static string BalanceTransactions_ModalDialog_RadioPayoutForeign {
             get {
                 return ResourceManager.GetString("BalanceTransactions_ModalDialog_RadioPayoutForeign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark this as a direct-from-account purchase?.
+        /// </summary>
+        internal static string BalanceTransactions_ModalDialog_RadioPurchase {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_ModalDialog_RadioPurchase", resourceCulture);
             }
         }
         
@@ -979,6 +1069,214 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check Hotwallet Bitcoin Balance Against Blockchain.
+        /// </summary>
+        internal static string EndOfMonth_CheckHotWalletWithBlockchain {
+            get {
+                return ResourceManager.GetString("EndOfMonth_CheckHotWalletWithBlockchain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resynchronize Ledger Bitcoin Balance Against Hotwallet.
+        /// </summary>
+        internal static string EndOfMonth_CheckLedgerAgainstHotWallet {
+            get {
+                return ResourceManager.GetString("EndOfMonth_CheckLedgerAgainstHotWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close Financial Ledgers for Year {0}.
+        /// </summary>
+        internal static string EndOfMonth_CloseLedgersFor {
+            get {
+                return ResourceManager.GetString("EndOfMonth_CloseLedgersFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consolidate Bitcoin Hotwallet.
+        /// </summary>
+        internal static string EndOfMonth_ConsolidateHotwallet {
+            get {
+                return ResourceManager.GetString("EndOfMonth_ConsolidateHotwallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert the Bitcoin Core in Hotwallet to Bitcoin Cash.
+        /// </summary>
+        internal static string EndOfMonth_ConvertBitcoinCoreToCash {
+            get {
+                return ResourceManager.GetString("EndOfMonth_ConvertBitcoinCoreToCash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create {0}.
+        /// </summary>
+        internal static string EndOfMonth_CreateVatReport {
+            get {
+                return ResourceManager.GetString("EndOfMonth_CreateVatReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;LEDGER BITCOIN BALANCE MISMATCH&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The hotwallet has a balance of &lt;strong&gt;{0:N2}&lt;/strong&gt; microbitcoin, but the ledger says a different amount should be there: &lt;strong&gt;{1:N2}.&lt;/strong&gt; The hotwallet will always be in the right in a mismatch between these two, so the ledger has been adjusted to match the hotwallet.&lt;br/&gt;&lt;br/&gt;
+        ///This can happen after bitcoin splits (&amp;quot;forks&amp;quot;) or similar events, but if this happens repeatedly, month after month, and especially if money appears to  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autofetch Transaction Data for {0}.
+        /// </summary>
+        internal static string EndOfMonth_FetchTransactionDataFor {
+            get {
+                return ResourceManager.GetString("EndOfMonth_FetchTransactionDataFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annual Reports.
+        /// </summary>
+        internal static string EndOfMonth_Header_AnnualReports {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Header_AnnualReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cryptocurrency.
+        /// </summary>
+        internal static string EndOfMonth_Header_Cryptocurrency {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Header_Cryptocurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to External Account Data and Match Accounts.
+        /// </summary>
+        internal static string EndOfMonth_Header_ExternalData {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Header_ExternalData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payroll And Taxes.
+        /// </summary>
+        internal static string EndOfMonth_Header_PayrollTaxes {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Header_PayrollTaxes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Reports to Accountants, Shareholders, etc..
+        /// </summary>
+        internal static string EndOfMonth_Header_SendReports {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Header_SendReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is a checklist of things to do to close the previous month and begin the new one with respect to accounting..
+        /// </summary>
+        internal static string EndOfMonth_Info {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ledger correction on hotwallet audit.
+        /// </summary>
+        internal static string EndOfMonth_LedgerBitcoinBalanceTransactionDescription {
+            get {
+                return ResourceManager.GetString("EndOfMonth_LedgerBitcoinBalanceTransactionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resolve all dangling payments.
+        /// </summary>
+        internal static string EndOfMonth_MatchAccounts {
+            get {
+                return ResourceManager.GetString("EndOfMonth_MatchAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payroll: No payroll defined.
+        /// </summary>
+        internal static string EndOfMonth_PayrollInactive {
+            get {
+                return ResourceManager.GetString("EndOfMonth_PayrollInactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;SKIP BANK STATEMENT?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bank statements are typically needed for audit verification of the internal records. The only valid reason to skip a month&apos;s statement is that the account wasn&apos;t opened yet, in which case you skip the months before the account was opened and no statements therefore exist.&lt;br/&gt;&lt;br/&gt;You won&apos;t be asked again to upload this particular statement if you skip it now..
+        /// </summary>
+        internal static string EndOfMonth_SkipBankStatementDialog {
+            get {
+                return ResourceManager.GetString("EndOfMonth_SkipBankStatementDialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;strong&gt;SKIP DOCUMENT UPLOAD?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This document is typically needed for operation records. The only valid reason to skip a document is that it doesn&apos;t exist because the operations weren&apos;t running yet, like when an operation started in June of a year won&apos;t have documents for January of that year.&lt;br/&gt;&lt;br/&gt;You won&apos;t be asked again to upload this document if you skip it now..
+        /// </summary>
+        internal static string EndOfMonth_SkipDocumentDialogGeneric {
+            get {
+                return ResourceManager.GetString("EndOfMonth_SkipDocumentDialogGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End-of-Month Routine: {0:MMMM yyyy}.
+        /// </summary>
+        internal static string EndOfMonth_Title {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Bank Statement ({1}) for {0} for {2}.
+        /// </summary>
+        internal static string EndOfMonth_UploadBankStatementFor {
+            get {
+                return ResourceManager.GetString("EndOfMonth_UploadBankStatementFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Transaction Data ({1}) for {0}.
+        /// </summary>
+        internal static string EndOfMonth_UploadTransactionDataFor {
+            get {
+                return ResourceManager.GetString("EndOfMonth_UploadTransactionDataFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verify Cold Storage.
+        /// </summary>
+        internal static string EndOfMonth_VerifyColdStorage {
+            get {
+                return ResourceManager.GetString("EndOfMonth_VerifyColdStorage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account name.
         /// </summary>
         internal static string InspectLedgers_AccountName {
@@ -1060,6 +1358,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description / Account.
+        /// </summary>
+        internal static string InspectLedgers_Detail {
+            get {
+                return ResourceManager.GetString("InspectLedgers_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Viewing/Editing Transaction #&lt;span id=&quot;spanModalTransactionId&quot;&gt;67890&lt;/span&gt;.
         /// </summary>
         internal static string InspectLedgers_EditingTransactionX {
@@ -1087,6 +1394,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Ledger for.
+        /// </summary>
+        internal static string InspectLedgers_GeneralLedger {
+            get {
+                return ResourceManager.GetString("InspectLedgers_GeneralLedger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add rows to transaction.
         /// </summary>
         internal static string InspectLedgers_HeaderAddTransactionRow {
@@ -1110,6 +1426,15 @@ namespace Resources.Pages {
         internal static string InspectLedgers_Header_For {
             get {
                 return ResourceManager.GetString("InspectLedgers_Header_For", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inspect Bitcoin Cash Hotwallet For.
+        /// </summary>
+        internal static string InspectLedgers_Header_Hotwallet {
+            get {
+                return ResourceManager.GetString("InspectLedgers_Header_Hotwallet", resourceCulture);
             }
         }
         
@@ -1330,6 +1655,51 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This transaction closes the VAT report for {0}..
+        /// </summary>
+        internal static string InspectLedgers_TxInfo_CloseVatReport {
+            get {
+                return ResourceManager.GetString("InspectLedgers_TxInfo_CloseVatReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This transaction opens the VAT report for {0}..
+        /// </summary>
+        internal static string InspectLedgers_TxInfo_OpenVatReport {
+            get {
+                return ResourceManager.GetString("InspectLedgers_TxInfo_OpenVatReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This transaction receives payment for Outbound Invoice #{0:N0}..
+        /// </summary>
+        internal static string InspectLedgers_TxInfo_PaymentInvoice {
+            get {
+                return ResourceManager.GetString("InspectLedgers_TxInfo_PaymentInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This transaction pays {0}..
+        /// </summary>
+        internal static string InspectLedgers_TxInfo_PayoutGeneric {
+            get {
+                return ResourceManager.GetString("InspectLedgers_TxInfo_PayoutGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This transaction pays Inbound Invoice #{0:N0} from {1}..
+        /// </summary>
+        internal static string InspectLedgers_TxInfo_PayoutInvoice {
+            get {
+                return ResourceManager.GetString("InspectLedgers_TxInfo_PayoutInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Transaction is &lt;span class=&quot;spanAnnoyingBlink&quot;&gt;UNBALANCED:&lt;/span&gt; missing amount.
         /// </summary>
         internal static string InspectLedgers_UnbalancedTransaction {
@@ -1546,6 +1916,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automation Profile.
+        /// </summary>
+        internal static string UploadBankFiles_AccountAutomationProfile {
+            get {
+                return ResourceManager.GetString("UploadBankFiles_AccountAutomationProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account Statement.
         /// </summary>
         internal static string UploadBankFiles_AccountStatement {
@@ -1600,42 +1979,6 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Different banks have different means of obtaining the BGMAX format file. On SEB, you go to &lt;strong&gt;Payments&lt;/strong&gt; and &lt;strong&gt;File communications&lt;/strong&gt; to see a list of files to retrieve. Other banks will vary. In any case, upload them here..
-        /// </summary>
-        internal static string UploadBankFiles_DownloadInstructions_BankgiroSEFile {
-            get {
-                return ResourceManager.GetString("UploadBankFiles_DownloadInstructions_BankgiroSEFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Log on to PayPal. Go to &lt;strong&gt;Your Account&lt;/strong&gt;, and under the &lt;strong&gt;History&lt;/strong&gt; menu, select &lt;strong&gt;Download History&lt;/strong&gt;. Select &lt;strong&gt;Custom Date Range&lt;/strong&gt;, enter the range since last download (as indicated) plus some overlap, and most importantly, select &lt;strong&gt;Tab Delimited - All Activity&lt;/strong&gt;. Click &lt;strong&gt;Download&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Some time will pass before you get a mail from PayPal saying that the file is ready for download. It will be named &lt;em&gt;download.txt&lt;/em&gt;. Uplo [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string UploadBankFiles_DownloadInstructions_PaypalFile {
-            get {
-                return ResourceManager.GetString("UploadBankFiles_DownloadInstructions_PaypalFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Log on to Payson. Go to the &lt;strong&gt;History&lt;/strong&gt; tab, and click &lt;strong&gt;Export history&lt;/strong&gt;. The downloaded file will be named &lt;em&gt;Payson_Export_[date].xls&lt;/em&gt;. Upload this file..
-        /// </summary>
-        internal static string UploadBankFiles_DownloadInstructions_PaysonFile {
-            get {
-                return ResourceManager.GetString("UploadBankFiles_DownloadInstructions_PaysonFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Open SEB&apos;s internet bank. Go to &lt;strong&gt;your account&lt;/strong&gt;, and enter the date span you wish to download in the search box. Press &lt;strong&gt;filter&lt;/strong&gt;. After that, click the link to &lt;strong&gt;save the account history&lt;/strong&gt;. A popup will appear. Choose &lt;strong&gt;csv&lt;/strong&gt; and &lt;strong&gt;tab separated&lt;/strong&gt;, then &lt;strong&gt;save&lt;/strong&gt;. The downloaded file will be named &lt;em&gt;Kontohändelser.csv&lt;/em&gt;. Upload this file..
-        /// </summary>
-        internal static string UploadBankFiles_DownloadInstructions_SebAccountFile {
-            get {
-                return ResourceManager.GetString("UploadBankFiles_DownloadInstructions_SebAccountFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;The file contained {0:N0} transactions. &lt;strong&gt;{1:N0} transactions&lt;/strong&gt; have been successfully imported into the &lt;em&gt;{2}&lt;/em&gt; bookkeeping account. ({3:N0} transactions were duplicates.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;However, the bank balance does not match the records in Swarmops.&lt;/strong&gt; This is usually due to missing transactions. Please upload a transaction list with a larger time span to make sure that Swarmops sees all transactions.&lt;/p&gt;&lt;p&gt;Swarmops&apos;s bookkeeping account is currently &lt;strong&gt;not in sync&lt;/strong [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string UploadBankFiles_ErrorBalance {
@@ -1650,6 +1993,15 @@ namespace Resources.Pages {
         internal static string UploadBankFiles_ErrorInterpretation {
             get {
                 return ResourceManager.GetString("UploadBankFiles_ErrorInterpretation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no asset accounts set up for automation, so no accounts support data upload at this time. Returning to Dashboard..
+        /// </summary>
+        internal static string UploadBankFiles_Error_NoAutomationProfiles {
+            get {
+                return ResourceManager.GetString("UploadBankFiles_Error_NoAutomationProfiles", resourceCulture);
             }
         }
         
@@ -1839,6 +2191,24 @@ namespace Resources.Pages {
         internal static string UploadBankFiles_ResultsGood {
             get {
                 return ResourceManager.GetString("UploadBankFiles_ResultsGood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As this was the first upload to this automated account, the initial balance of &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; going into the year {2} has been detected and set.
+        /// </summary>
+        internal static string UploadBankFiles_ResultsInitialBalanceSet {
+            get {
+                return ResourceManager.GetString("UploadBankFiles_ResultsInitialBalanceSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (which was accounted for with &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; in the ledger operating currency).
+        /// </summary>
+        internal static string UploadBankFiles_ResultsInitialBalanceSetForeignCurrency {
+            get {
+                return ResourceManager.GetString("UploadBankFiles_ResultsInitialBalanceSetForeignCurrency", resourceCulture);
             }
         }
         
@@ -2114,7 +2484,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You&apos;re viewing a filed VAT report. The inbound and outbound VAT, as well as total turnover, has been recorded for the report period. This report is ready to be transmitted to tax authorities..
+        ///   Looks up a localized string similar to You&apos;re viewing a filed VAT report. The inbound and outbound VAT, as well as total turnover, have been recorded for the report period. This report is ready to be transmitted to tax authorities..
         /// </summary>
         internal static string ViewVatReports_Info {
             get {

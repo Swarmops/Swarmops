@@ -117,82 +117,258 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
+    <value>Αυτός είναι ένας κωδικός QR για δοκιμή bitcoin echo που αφορά όλη την εγκατάσταση Swarmops, και όχι μόνο τον οργανισμό {0}. Σκανάρετέ τον με το πορτοφόλι bitcoin του κινητού σας για να πραγματοποιήσετε τη δοκιμή echo, ή στείλτε από τον υπολογιστή σας άμεσα στη διεύθυνση [{1}] (που είναι μία διεύθυνση Bitcoin Cash). Το ποσό (αφαιρώντας τα έξοδα συναλλαγής των {2:N2} microcoins) θα σας επιστραφεί μέσα στα επόμενα δευτερόλεπτα.</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
+    <value>Παραλήφθηκαν {2:N2} microcoins ({0} {1:N2}). Γίνεται επιστροφή.</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
+    <value>Παραλήφθηκαν {0} microcoins ("bits"). Γίνεται επιστροφή.</value>
+    <comment>Used if Bitcoin Cash is the org native currency.</comment>
+  </data>
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>Αυτή είναι μία δοκιμή bitcoin echo. Πραγματοποιείται έλεγχος στο hotwallet. Εάν στείλετε ένα μικροποσό εδώ, θα σας επιστραφεί αφαιρώντας τα έξοδα συναλλαγής (αυτή τη στιγμή {0:N2} microcoins).</value>
+  </data>
+  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
+    <value>Δοκιμή Echo για το Bitcoin Cash Hotwallet</value>
+  </data>
+  <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
+    <value>Σε αναμονή για συναλλαγή...</value>
+  </data>
+  <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
+    <value>Εντοπίστηκε συναλλαγή, πραγματοποιείται επιβεβαίωση...</value>
+  </data>
+  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
+    <value>Δοκιμή Echo για το Bitcoin στο Swarmops</value>
+  </data>
+  <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
+    <value>Οι ακτιβιστές θα ονομάζονται</value>
+  </data>
+  <data name="CreateOrganization_AsRoot" xml:space="preserve">
+    <value>Γονικός Οργανισμός</value>
+  </data>
+  <data name="CreateOrganization_ChildOfX" xml:space="preserve">
+    <value>Θυγατρικός του οργανισμού {0}</value>
+    <comment>"Create org as..."</comment>
+  </data>
+  <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
+    <value>Δημιουργία νέου οργανισμού ως...</value>
+  </data>
+  <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
+    <value>Το όνομα του οργανισμού δεν μπορεί να είναι κενό. (Πρέπει να δώσετε στον νέο οργανισμό ένα όνομα!)</value>
+  </data>
+  <data name="CreateOrganization_Info" xml:space="preserve">
+    <value>Μπορείτε να δημιουργήσετε έναν νέο οργανισμό είτε σαν αυτόνομο οργανισμό, ή σαν θυγατρικό οργανισμό του παρόντος. (Όσοι έχουν ευθύνες σε έναν γονικό οργανισμό, θα έχουν αυτομάτως αντίστοιχα δικαιώματα και προνόμια σε όλους τους θυγατρικούς του.)</value>
+  </data>
+  <data name="CreateOrganization_NewOrganizationName" xml:space="preserve">
+    <value>Όνομα Νέου Οργανισμού</value>
+  </data>
+  <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
+    <value>Λειτουργικό νόμισμα</value>
+  </data>
+  <data name="CreateOrganization_NewOrgName" xml:space="preserve">
+    <value>Το όνομα του νέου οργανισμού</value>
+  </data>
+  <data name="CreateOrganization_PageTitle" xml:space="preserve">
+    <value>Δημιουργία Νέου Οργανισμού</value>
+  </data>
+  <data name="CreateOrganization_RegularTitle" xml:space="preserve">
+    <value>Οι απλοί χρήστες θα ονομάζονται</value>
+    <comment>This can be "members", etc.</comment>
+  </data>
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>Ο νέος οργανισμός δημιουργήθηκε. Σας έχει εκχωρηθεί μία μόνιμη {0} στον οργανισμό, και έχετε τοποθετηθεί ως το πιο υψηλόβαθμο εκτελεστικό στέλεχος, οπότε και μπορείτε να ρυθμίσετε κατάλληλα τον οργανισμό. Για τις ρυθμίσεις του νέου οργανισμού, χρησιμοποιήστε αυτόν τον πίνακα ελέγχου (θα τον βρείτε αργότερα στη Διαχείριση / Ρυθμίσεις Οργανισμού).</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
+  <data name="CreateOrganization_Titles" xml:space="preserve">
+    <value>Προεπιλεγμένοι τίτλοι θέσεων κατά τη δημιουργία του οργανισμού</value>
+  </data>
+  <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
+    <value>Εμπορικός</value>
+  </data>
+  <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
+    <value>Μη κερδοσκοπικός</value>
+  </data>
+  
+  <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
+    <value>Αρίθμηση {0}</value>
+    <comment>The {0} is the membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_OpenLedgersDomain" xml:space="preserve">
+    <value>Domain Ανοικτών Λογιστικών Βιβλίων</value>
+  </data>
+  <data name="EditOrganization_PageTitle" xml:space="preserve">
+    <value>Επεξεργασία Οργανισμού</value>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsOrg" xml:space="preserve">
+    <value>Τα άτομα γίνονται {0} του οργανισμού</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsWhen" xml:space="preserve">
+    <value>Τα άτομα γίνονται {0} όταν</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationChurn" xml:space="preserve">
+    <value>Η {0} λήγει όταν</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationCost" xml:space="preserve">
+    <value>Κόστος αρχικής {0} (σε {1})</value>
+    <comment>The {0} is membership, etc. The {1} is the operating currency.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationDuration" xml:space="preserve">
+    <value>Μία {0} διαρκεί</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_RenewalDateEffect" xml:space="preserve">
+    <value>Η ανανεωμένη περίοδος ξεκινάει από</value>
+  </data>
+  <data name="EditOrganization_RenewalReminders" xml:space="preserve">
+    <value>Υπενθύμιση ανανέωσης</value>
+  </data>
+  <data name="EditOrganization_RenewalsAffect" xml:space="preserve">
+    <value>Η ανανέωση αφορά</value>
+    <comment>(options: all organizations, one org at a time)</comment>
+  </data>
+  <data name="EditOrganization_RenewalsCost" xml:space="preserve">
+    <value>Κόστος ανανέωσης (σε {0})</value>
+    <comment>The {0} is the operating currency (USD etc).</comment>
+  </data>
+  <data name="EditOrganization_VanityDomain" xml:space="preserve">
+    <value>Vanity Domain του οργανισμού</value>
+  </data>
+  <data name="OrgStaffing_Header_ExecutivePositions" xml:space="preserve">
+    <value>Εκτελεστικές Θέσεις για τον Οργανισμό {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>Τοπικές Θέσεις (για κάθε Γεωγραφικό Σημείο)</value>
+  </data>
+  <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
+    <value>Μισθοδοσία Προσωπικού</value>
+  </data>
+  <data name="OrgStaffing_Header_StrategicPositions" xml:space="preserve">
+    <value>Στρατηγικές Θέσεις για τον Οργανισμό {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
+    <value>Εθελοντές σε Αναμονή Απάντησης</value>
+  </data>
+  <data name="OrgStaffing_Info" xml:space="preserve">
+    <value>Ορισμός της δομής προσωπικού για αυτόν τον οργανισμό, καθώς και του προσωπικού στο στρατηγικό (συμβούλιο) και εκτελεστικό επίπεδο (C-επίπεδο ή παρόμοιο). Επιπλέον, από αυτό το σημείο μπορείτε να διαχειριστείτε τους εθελοντές σε αναμονή και τη μισθοδοσία.</value>
+  </data>
+  <data name="OrgStaffing_PageTitle" xml:space="preserve">
+    <value>Στελέχωση Οργανισμού</value>
+  </data>
+  <data name="SystemSettings_AdminAddress" xml:space="preserve">
+    <value>Διεύθυνση Ειδοποιήσεων Διαχειριστή</value>
+  </data>
+  <data name="SystemSettings_AdminSender" xml:space="preserve">
+    <value>Όνομα Ειδοποιήσεων Διαχειριστή</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
+    <value>Η θύρα SMTP πρέπει να είναι αριθμός. Αδυναμία ανάλυσης "διακομιστή:θύρα".</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
+    <value>Αδυναμία ανάλυσης ονόματος χρήστη, κωδικού, εξυπηρετητή και/ή θύρας. (Μόνο ο εξυπηρετητής είναι υποχρεωτικός.)</value>
+  </data>
+  <data name="SystemSettings_ExternalUrl" xml:space="preserve">
+    <value>Εξωτερικά Προσβάσιμη Διεύθυνση</value>
+  </data>
+  <data name="SystemSettings_Header_CorrespondenceTxSettings" xml:space="preserve">
+    <value>Ρυθμίσεις Μετάδοσης Δεδομένων Αλληλογραφίας</value>
+  </data>
+  <data name="SystemSettings_Header_SystemAdministrators" xml:space="preserve">
+    <value>Διαχειριστές Συστήματος</value>
+  </data>
+  <data name="SystemSettings_Info" xml:space="preserve">
+    <value>Διάφορες τεχνικές ρυθμίσεις για αυτήν την εγκατάσταση του Swarmops. Δεν είναι συγκεκριμένες για έναν οργανισμό ή άτομο, αλλά αφορούν την εγκατάσταση.</value>
+  </data>
+  <data name="SystemSettings_InstallationName" xml:space="preserve">
+    <value>Όνομα Εγκατάστασης</value>
+  </data>
+  <data name="SystemSettings_PageTitle" xml:space="preserve">
+    <value>Ρυθμίσεις Συστήματος</value>
+  </data>
+  <data name="SystemSettings_SmtpServer" xml:space="preserve">
+    <value>Διακομιστής SMTP (χρήστης:κωδικός@εξυπηρετητής:θύρα)</value>
+  </data>
+  <data name="SystemSettings_TestMailSent" xml:space="preserve">
+    <value>Το Swarmops σας έστειλε ένα δοκιμαστικό email για να επαληθεύσει τις νέες ρυθμίσεις του διακομιστή SMTP.</value>
+  </data>
+  <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
+    <value>Θα πρέπει, πρέπει, ΠΡΕΠΕΙ στα αλήθεια να χρησιμοποιήσετε HTTPS για μία τέτοια ιστοσελίδα. Αλλά σίγουρα ήδη το γνωρίζατε, σωστά;</value>
+  </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Παράκαμψη Ονόματος Εξυπηρετητή Παρασκηνίου</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>Θύρα WebSocket (Διεπαφή)</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
+    <value>Θύρα WebSocket (Παρασκήνιο)</value>
+  </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Ενεργή Προσωποποίηση</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>Υπάρχει μία ενεργή συνεδρία προσωποποίησης του λογαριασμού {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Τερματισμός προσωποποίησης.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;ΠΡΟΣΩΠΟΠΟΙΗΣΗ ΑΤΟΜΟΥ;&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Η συγκεκριμένη ενέργεια θα πρέπει να πραγματοποιείται με πλήρη γνώση και συνέπεια, και αν δεν το κάνετε για τεχνικούς λόγους, πιθανόν να είναι παράνομο σύμφωνα με τους τοπικούς νόμους.&lt;br/&gt;&lt;br/&gt;Σκοπός αυτού του εργαλείου είναι να επιδιορθώσει τεχνικές δυσλειτουργίες. Τα πάντα καταγράφονται.&lt;br/&gt;&lt;br/&gt;Συνέχεια;</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;ΤΕΡΜΑΤΙΣΜΟΣ ΠΡΟΣΩΠΟΠΟΙΗΣΗΣ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Τερματισμός προσωποποίησης στις {0:HH:mm} UTC. Πλέον ενεργείτε με τα προσωπικά σας στοιχεία.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;ΜΗ ΕΠΙΤΡΕΠΤΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Δεν μπορείτε να πραγματοποιήσετε προσωποποίηση σε κάποιον που είναι διευθυντής σας.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;ΜΗ ΕΠΙΤΡΕΠΤΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Δεν μπορείτε να πραγματοποιήσετε προσωποποίηση σε χρήστη που έχει πρόσβαση σε επίπεδο συστήματος.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Επιλέξτε ένα άτομο για να πραγματοποιήσετε προσωποποίηση.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Εάν επιθυμείτε να πραγματοποιήσετε προσωποποίηση του εαυτού σας, σας συστήνουμε να αποσυνδεθείτε από το Swarmops και να αναζητήσετε άλλου είδους βοήθεια.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;ΜΗ ΕΠΙΤΡΕΠΤΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Τα δικαιώματα χρήστη που έχετε δεν επαρκούν για να πραγματοποιήσετε προσωποποίηση άλλου χρήστη.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Προσωποποίηση άλλου χρήστη</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Προσωποποίηση</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Χρήστης προς προσωποποίηση</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;ΕΝΕΡΓΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Έναρξη προσωποποίησης στις {0:HH:mm} UTC. Αυτός είναι ο πίνακας ελέγχου όπως τον βλέπει ο χρήστης που προσωποποιείτε. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Αυτό το εργαλείο αποσφαλμάτωσης σας επιτρέπει να προσωποποιήσετε έναν άλλο χρήση ώστε να δείτε το Swarmops με τον τρόπο που το βλέπει όταν συνδέεται.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ΠΡΟΣΟΧΗ:&lt;/strong&gt; Αυτό είναι ένα αρκετά παρεμβατικό εργαλείο που θα πρέπει να χρησιμοποιείται μόνο για λόγους τεχνικής ανάπτυξης και για υποστήριξη. Πρέπει να χρησιμοποιείται με απόλυτη επίγνωση αυτών των πληροφοριών.&lt;/p&gt;
+&lt;p&gt;Όλες οι προσωποποιήσεις καταγράφονται, κάθε ενέργεια κατά τη διάρκειά της προσωποποίησης είναι ανιχνεύσιμη, και ο χρήστης που έχει προσωποποιηθεί, θα ενημερωθεί για την παρέμβαση.&lt;/p&gt;</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Ονομασία μη επιβεβαιωμένων μελών</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(μη εφαρμόσιμο)</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Κυβερνητικό</value>
+  </data>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;ΣΥΛΟΛΙΚΟ ΠΟΣΟ ΣΚΟΝΗΣ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;To ποσό που αποστέλλεται είναι μικρότερο από το ποσό εξόδων συναλλαγής που απαιτείται για να σας το επιστρέψουμε, που είναι {0:N2} microcoins. Τα χρήματα που στείλατε αποκαλούνται «σκόνη» στο δίκτυο του bitcoin, και δε θα μετακινηθούν ξανά.&lt;br/&gt;&lt;br/&gt;Στείλτε ένα μεγαλύτερο ποσό για να εκτελέσετε μια δοκιμή echo.</value>
+  </data>
 </root>

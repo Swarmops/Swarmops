@@ -35,8 +35,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT CityId FROM PostalCodes WHERE PostalCode='" + postalCode.Replace ("'", "''") +
-                        "' AND CountryId=" + countryId, connection);
+                        "SELECT CityId FROM PostalCodes WHERE PostalCode=@postalCode AND CountryId=" + countryId, connection);
+                AddParameterWithName(command, "postalCode", postalCode);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -148,9 +148,11 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + cityFieldSequence + " WHERE CityName='" + cityName.Replace ("'", "''") +
-                        "' AND CountryId=" + countryId,
+                        "SELECT " + cityFieldSequence + " WHERE CityName=@cityName " + 
+                        "AND CountryId=" + countryId,
                         connection);
+
+                AddParameterWithName(command, "cityName", cityName);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -172,9 +174,12 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + cityFieldSequence + " WHERE CityName='" + cityName.Replace ("'", "''") +
-                        "' AND CountryCode='" + countryCode.ToUpperInvariant().Replace ("'", "''") + "'",
+                        "SELECT " + cityFieldSequence + " WHERE CityName=@cityName " +
+                        " AND CountryCode=@countryCode",
                         connection);
+
+                AddParameterWithName(command, "cityName", cityName);
+                AddParameterWithName(command, "countryCode", countryCode);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -196,9 +201,12 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + cityFieldSequence + " WHERE CityName='" + cityName.Replace ("'", "''") +
-                        "' AND CountryId=" + countryId,
+                        "SELECT " + cityFieldSequence + " WHERE CityName=@cityName " +
+                        " AND CountryId=" + countryId,
                         connection);
+
+                AddParameterWithName(command, "cityName", cityName);
+
                 List<BasicCity> resList = new List<BasicCity>();
                 using (DbDataReader reader = command.ExecuteReader())
                 {

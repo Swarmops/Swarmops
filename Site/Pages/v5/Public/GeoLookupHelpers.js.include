@@ -147,7 +147,7 @@
                     success: function (msg) {
                         if (msg.d != true) {
                             isValid = false;
-                            $('#<%= TextDateOfBirth.ClientID %>').addClass("entryError");
+                            $('#<%= TextDateOfBirth.ClientID %>').addClass("data-entry-error");
                             alertify.error("<asp:Literal runat="server" ID="LiteralErrorDate" />");
                             $('#<%=this.TextDateOfBirth.ClientID %>').focus();
                         }
@@ -164,10 +164,10 @@
         }
 
         function ValidateTextField(fieldId, message) {
-            $(fieldId).removeClass("entryError");
+            $(fieldId).removeClass("data-entry-error");
             if ($(fieldId).val().length == 0) {
                 alertify.error(message);
-                $(fieldId).addClass("entryError");
+                $(fieldId).addClass("data-entry-error");
                 $(fieldId).focus();
                 return false;
             }

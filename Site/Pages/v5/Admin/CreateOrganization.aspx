@@ -23,7 +23,7 @@
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label ID="BoxTitle" runat="server" /></h2>
-    <div class="entryFields">
+    <div class="data-entry-fields">
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextOrganizationName" /></div>
         <Swarmops5:DropDown runat="server" ID="DropCreateChild" />
         <Swarmops5:DropDown runat="server" ID="DropCurrencies"/>
@@ -31,9 +31,9 @@
         <Swarmops5:DropDown runat="server" ID="DropPersonLabel" />
         <Swarmops5:DropDown runat="server" ID="DropActivistLabel" />
         <Swarmops5:DropDown runat="server" ID="DropPositionLabel" />
-        <asp:Button ID="ButtonCreate" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick=" return validateFields(); " OnClick="ButtonCreate_Click" Text="CreateXYZ"/>
+        <asp:Button ID="ButtonCreate" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick=" return validateFields(); " OnClick="ButtonCreate_Click" Text="CreateXYZ"/>
     </div>
-    <div class="entryLabels">
+    <div class="data-entry-labels">
         <asp:Label runat="server" ID="LabelOrganizationName" /><br/>
         <asp:Label runat="server" ID="LabelCreateAs" /><br/>
         <asp:Label runat="server" ID="LabelNativeCurrency" /><br/>

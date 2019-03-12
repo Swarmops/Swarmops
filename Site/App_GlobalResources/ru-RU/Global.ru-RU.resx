@@ -455,15 +455,15 @@
     <value>Муж.</value>
     <comment>Legal gender</comment>
   </data>
-  
+  <data name="Global_UnknownUndisclosed" xml:space="preserve">
+    <value>Неизвестных или нераскрытых</value>
+    <comment>Used for gender et al</comment>
+  </data>
   <data name="Global_DateFormatShortReadable" xml:space="preserve">
     <value>ММ/ДД/ГГГГ</value>
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>МММ д, ГГГГ</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
-  </data>
+  
   <data name="Timespan_FiveYears" xml:space="preserve">
     <value>пятилетка</value>
   </data>
@@ -489,6 +489,9 @@
   <data name="Global_PostalCode" xml:space="preserve">
     <value>Почтовый индекс</value>
   </data>
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>Произошла общая неопределенная ошибка при обращении к серверу Swarmops. Сеть все еще работает и сервер доступен?</value>
+  </data>
   
   
   
@@ -519,12 +522,62 @@
   
   
   
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>Не удается подключить WebSocket. Текущие обновления будут недоступны.</value>
+  </data>
   
   
   
   
   
   
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>Кажется, другой пользователь избил вас до этой операции; база данных изменилась, пока вы искали. Пожалуйста, изучите измененные условия и повторите то, что вы пытались сделать.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>Была неопределенная ошибка, пытающаяся установить это значение.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>Это не похоже на действительный номер телефона, но мы храним его, как написано здесь, тем не менее.</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
+    <value>Двухфакторная аутентификация не была удалена и по-прежнему активна.</value>
+  </data>
   
   
   

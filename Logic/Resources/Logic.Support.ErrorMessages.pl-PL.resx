@@ -117,16 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AllClear_Text" xml:space="preserve">
+    <value>Operacje powróciły do nominalnych.</value>
+  </data>
+  <data name="AllClear_Title" xml:space="preserve">
+    <value>Wszystko jasne</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Text" xml:space="preserve">
+    <value>Serwer stracił swoje połączenie z Blockchainem Bitcoina. Transakcje Bitcoin nie będą wykrywane w czasie rzeczywistym.</value>
+  </data>
+  <data name="Backend_BlockchainSocketLost_Title" xml:space="preserve">
+    <value>Połączenie z Blockchain Utracone</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Text" xml:space="preserve">
+    <value>Przeglądarka internetowa nie może usłyszeć pulsu serwera. Aktualizacje w czasie rzeczywistym mogą być niedostępne.</value>
+  </data>
+  <data name="Client_ServerHeartbeatLost_Title" xml:space="preserve">
+    <value>Błąd Niewydolności Serwera Poziomu 1</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Text" xml:space="preserve">
+    <value>Nie można połączyć się z serwerem w celu aktualizacji w czasie rzeczywistym.</value>
+  </data>
+  <data name="Client_SocketConnectionFault_Title" xml:space="preserve">
+    <value>Błąd WebSocket</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Text" xml:space="preserve">
+    <value>Serwer nie może połączyć się z procesem back-endu. Aktualizacje w czasie rzeczywistym będą w dużej mierze niedostępne.</value>
+  </data>
+  <data name="Frontend_BackendConnectionFault_Title" xml:space="preserve">
+    <value>Niepowodzenie Połączenia Back-end</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Text" xml:space="preserve">
+    <value>Serwer nie słyszy pulsu z procesu back-end.</value>
+  </data>
+  <data name="Frontend_BackendHeartbeatLost_Title" xml:space="preserve">
+    <value>Błąd Niewydolności Serwera Poziomu 2</value>
+  </data>
 </root>

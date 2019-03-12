@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Financial
 {
-    public class ExternalBankDataProfile
+    public class ExternalBankDataProfile: IHasIdentity
     {
         public FeeSignage FeeSignage;
         public LatestTransactionLocation LatestTransactionLocation;
@@ -13,6 +15,7 @@ namespace Swarmops.Logic.Financial
         private ExternalBankDataProfile()
         {
             FieldNames = new Dictionary<ExternalBankDataFieldName, string>();
+            FieldDelimiter = ',';
         }
 
         public string DateTimeFormatString
@@ -50,20 +53,52 @@ namespace Swarmops.Logic.Financial
             get { return 3; }
         }
 
+        public static int CZFioId
+        {
+            get { return 4; }
+        }
+
         public string Name { get; set; }
-        public Country Country { get; set; }
+
+        [XmlIgnore]
+        public Country Country
+        {
+            get
+            {
+                if (CountryCode == string.Empty) return null;
+                return Country.FromCode(CountryCode);
+            }
+            set
+            {
+                if (value == null)
+                {
+                    CountryCode = string.Empty;
+                }
+                else
+                {
+                    CountryCode = value.Code;
+                }
+            }
+        }
+        public string CountryCode { get; set; }
         public string Culture { get; set; }
+        public string Encoding { get; set; }
         public string Currency { get; set; }
         public string BankDataAccountReader { get; set; }
         public string BankDataPaymentsReader { get; set; }
         public int IgnoreInitialLines { get; set; }
         public string InitialReplacements { get; set; }
+        public int ExternalBankDataProfileId { get; set; }
+        public char FieldDelimiter { get; set; }
+        public string DateTimeCustomFormatString { get; set; }
+        public int Identity { get { return ExternalBankDataProfileId; } }
 
         public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
 
         public static ExternalBankDataProfile FromIdentity (int externalBankDataProfileId)
         {
             ExternalBankDataProfile result = new ExternalBankDataProfile();
+            result.ExternalBankDataProfileId = externalBankDataProfileId;
 
             // Ugly hack for now
 
@@ -83,7 +118,7 @@ namespace Swarmops.Logic.Financial
                 result.FeeSignage = FeeSignage.Unknown; // no inline fees
                 result.Precision = ExternalBankDateTimePrecision.Day;
 
-                result.BankDataAccountReader = StockBankDataReaders.TabSeparatedValuesAccountReader;
+                result.BankDataAccountReader = StockBankDataReaders.CommaSeparatedValuesAccountReader;
                 result.BankDataPaymentsReader = StockBankDataReaders.SEPaymentsBankgiroReader;
 
                 return result;
@@ -110,7 +145,7 @@ namespace Swarmops.Logic.Financial
                 result.FeeSignage = FeeSignage.Negative;
                 result.Precision = ExternalBankDateTimePrecision.Second;
 
-                result.BankDataAccountReader = StockBankDataReaders.TabSeparatedValuesAccountReader;
+                result.BankDataAccountReader = StockBankDataReaders.CommaSeparatedValuesAccountReader;
                 result.BankDataPaymentsReader = null; // No aggregated payments with Paypal
 
                 return result;
@@ -122,7 +157,7 @@ namespace Swarmops.Logic.Financial
                 result.Country = Country.FromCode("DE");
                 result.Culture = "de-DE";
                 result.IgnoreInitialLines = 7;
-                result.InitialReplacements = ";|\t| €|";
+                result.InitialReplacements = ";|\t| €||Referenz NOTPROVIDED Verwendungszweck|";
 
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Buchungstag";
                 result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Buchungsdetails";
@@ -134,8 +169,44 @@ namespace Swarmops.Logic.Financial
                 result.FeeSignage = FeeSignage.Unknown; // no inline fees
                 result.Precision = ExternalBankDateTimePrecision.Day;
 
-                result.BankDataAccountReader = StockBankDataReaders.TabSeparatedValuesAccountReader;
-                result.BankDataPaymentsReader = null; // No aggregated payments with Paypal
+                result.BankDataAccountReader = StockBankDataReaders.CommaSeparatedValuesAccountReader;
+                result.BankDataPaymentsReader = null; // No aggregated payments with Postbank
+
+                result.FieldDelimiter = ';'; // DE Postbank uses semicolon as delimiter for no reason in particular
+
+                return result;
+            }
+
+            if (externalBankDataProfileId == CZFioId)
+            {
+                // Czech Fio Bank
+
+                result.Name = "CZ Fio";
+                result.Country = Country.FromCode("CZ");
+                result.Culture = "cs-CZ";
+                result.Encoding = "UTF-8";
+
+                result.InitialReplacements = ";|\t|Kč|";  // before CSV helper is implemented, replace field separators with tabs; remove currency symbols
+
+                result.FieldNames[ExternalBankDataFieldName.Date] = "Datum";  // in dd.mm.yyyy format
+                result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Zpráva pro příjemce";
+                result.FieldNames[ExternalBankDataFieldName.CounterpartyName] = "Název protiúčtu";
+                //result.FieldNames[ExternalBankDataFieldName.CounterpartyAccount] = "Protiúčet";
+                //result.FieldNames[ExternalBankDataFieldName.CounterpartyBank] = "Kód banky";
+                result.FieldNames[ExternalBankDataFieldName.DescriptionSecondary] = "Typ";
+                result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Objem";   // has comma as radix
+                result.FieldNames[ExternalBankDataFieldName.Currency] = "Měna";          // must be czk
+                result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Balance"; // not originally in file, must be manually added
+
+                result.LatestTransactionLocation = LatestTransactionLocation.Bottom;
+                result.FeeSignage = FeeSignage.Unknown; // no inline fees
+                result.Precision = ExternalBankDateTimePrecision.Day;
+                result.DateTimeCustomFormatString = "dd.MM.yyyy";
+
+                result.BankDataAccountReader = StockBankDataReaders.CommaSeparatedValuesAccountReader;
+                result.BankDataPaymentsReader = null; // No aggregated payments with Postbank
+
+                result.FieldDelimiter = ';'; // CZ Fio uses semicolon as delimiter for no reason in particular
 
                 return result;
             }
@@ -153,6 +224,9 @@ namespace Swarmops.Logic.Financial
         TransactionNet,
         DescriptionPrimary,
         DescriptionSecondary,
+        CounterpartyAccount,
+        CounterpartyBank,
+        CounterpartyName,
         UniqueId,
         NotUniqueId,
         Date,

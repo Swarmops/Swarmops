@@ -25,7 +25,7 @@
             alertify.confirm("Thank you for helping translate Swarmops.<br/><br/>As the dashboard reloads into on-site translation mode, you will be asked to sign into Crowdin, the swarm-powered translation tool. If you don't have an account at Crowdin, you can create one. Once logged in, you can translate Swarmops on-site into your language.<br/><br/>Do you want to continue logging into Crowdin or creating an account there?<br/><br/>", function(response) {
                 if (response) {
                     // ok
-                    document.location = "/Pages/v5/User/SetCulture.aspx?CultureId=af-ZA";
+                    document.location = "/Pages/v5/User/SetCulture.aspx?CultureId=lol-US";
                 } else {
                     // cancel - do nothing
                 }
@@ -92,6 +92,10 @@
     <div class="divLanguageEncapsulation" onclick="document.location='/Pages/v5/User/SetCulture.aspx?CultureId=en-US';">
         <div class="divLanguageFlag" style="background-image:url('/Images/Flags/uk-64px.png')" ></div>
         <div class="spanLanguageNativeName">English (United States / International English)</div>
+    </div>
+    <div class="divLanguageEncapsulation" onclick="document.location='/Pages/v5/User/SetCulture.aspx?CultureId=zh-CN';">
+        <div class="divLanguageFlag" style="background-image:url('/Images/Flags/cn-64px.png')" ></div>
+        <div class="spanLanguageNativeName">简体中文</div>
     </div>
     <hr/>
     <asp:Repeater runat="server" ID="RepeaterLanguages">

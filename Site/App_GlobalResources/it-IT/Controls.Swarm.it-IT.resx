@@ -117,28 +117,83 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Positions_AssignAnotherPerson" xml:space="preserve">
+    <value>Incaricare un altra persona...</value>
+    <comment>To an existing position that accepts multiple people (like "assistants")</comment>
+  </data>
+  <data name="Positions_AssignFifthPerson" xml:space="preserve">
+    <value>Incaricare una quinta persona...</value>
+  </data>
+  <data name="Positions_AssignFirstPerson" xml:space="preserve">
+    <value>Incarica...</value>
+  </data>
+  <data name="Positions_AssignFourthPerson" xml:space="preserve">
+    <value>Incaricare una quarta persona...</value>
+  </data>
+  <data name="Positions_AssignmentDuration" xml:space="preserve">
+    <value>Durata dell'incarico (espandibile)</value>
+  </data>
+  <data name="Positions_AssignmentExpires" xml:space="preserve">
+    <value>Scade</value>
+    <comment>The date a position assignment autoterminates</comment>
+  </data>
+  <data name="Positions_AssignPersonToPosition" xml:space="preserve">
+    <value>Assegnare questa persona al ruolo</value>
+  </data>
+  <data name="Positions_AssignSecondPerson" xml:space="preserve">
+    <value>Incaricare una seconda persona...</value>
+  </data>
+  <data name="Positions_AssignSixthPerson" xml:space="preserve">
+    <value>Incaricare una sesta persona...</value>
+    <comment>ok, this is not strictly necessary, just a bell &amp; whistle</comment>
+  </data>
+  <data name="Positions_AssignThirdPerson" xml:space="preserve">
+    <value>Incaricare una terza persona...</value>
+  </data>
+  <data name="Positions_ButtonAssign" xml:space="preserve">
+    <value>Incaricare</value>
+    <comment>Kind of "hire" but also for volunteers</comment>
+  </data>
+  <data name="Positions_ModalHeader" xml:space="preserve">
+    <value>Incarica persona come &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt;&lt;span id='{0}_modalGeographyName'&gt;&lt;/span&gt;</value>
+    <comment>Header for new assignment dialog</comment>
+  </data>
+  <data name="Positions_NoMorePeopleOnPosition" xml:space="preserve">
+    <value>Errore: Non è possibile incaricare altre persone per questo ruolo.</value>
+  </data>
+  <data name="Positions_PleaseSelectPerson" xml:space="preserve">
+    <value>Si prega di selezionare una persona da incaricare.</value>
+  </data>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>(Il ruolo è vacante)</value>
+    <comment>For unassigned positions</comment>
+  </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;ABBANDONARE QUESTO INCARICO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; questo è il &lt;strong&gt;vostro&lt;/strong&gt; incarica. Abbandonare il proprio incarico è l'equivalente di dire: "MI DIMETTO". Quest'azione avrà effetto immediato. Questo è ciò che desideri fare?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;REVOCARE INCARICO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Desideri rimuovere &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; dall'incarico di &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Questo è l'equivalente di licenziare qualcuno e di solito deve rispettare le leggi locali e i processi interni.&lt;br/&gt;&lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_TerminateNo" xml:space="preserve">
+    <value>Non terminare</value>
+  </data>
+  <data name="Positions_TerminateSelfNo" xml:space="preserve">
+    <value>Oops! No, torna indietro!</value>
+  </data>
+  <data name="Positions_TerminateSelfYes" xml:space="preserve">
+    <value>Si, mi dimetto</value>
+  </data>
+  <data name="Positions_TerminateYes" xml:space="preserve">
+    <value>Revoca incarico</value>
+  </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>(Incarica nella mia organizzazione)</value>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>Creare un nuovo incarico...</value>
+  </data>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>Leader dei compartimenti</value>
+  </data>
 </root>

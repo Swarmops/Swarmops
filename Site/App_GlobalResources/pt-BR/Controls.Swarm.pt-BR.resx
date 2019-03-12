@@ -165,7 +165,7 @@
     <value>Por favor selecione uma pessoa para nomear.</value>
   </data>
   <data name="Positions_Vacant" xml:space="preserve">
-    <value>(posição aberta)</value>
+    <value>(posição vaga)</value>
     <comment>For unassigned positions</comment>
   </data>
   <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">

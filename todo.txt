@@ -1,77 +1,57 @@
-SWARMOPS I
-----------
+FEB2019
+=======
 
-[X] Org settings 
-[X] Admin field (self-signup)
-[X] Test box Sandbox
-[ ] HTML/Markdown mail
-[X] Resolver
-[ ] Org texts self-signup
+OVERALL: 
+[ ] Fix basic flows
+[ ] Focus on new SKU op.Cash
+[x] Make work on Bionic and Stretch
 
 
-SWARMOPS II
------------
+PRIO 1
+------
 
-[ ] Expensify?
-[X] PDF asynchronous
-[ ] Recurring expenses
-[X] Why salary fails?
-[X] Char encode HTML doc
-[ ] Hotwallet
-[X] Tech problem box
+[x] Fix self-signup
+[x] Investigate weird accounting of echo test
+[x] Fix crypto funds mismatch resulting from echo test
+[ ] Fix "connected accounts" concept
+[ ] - with interface to Github repo of XML definitions
+[ ] Fix & redo bank file upload completely
+[x] Fix Bionic build
+[ ] End-of-month routine
+[ ] - incl EOY
+[ ] - with todo field
 
 
-SWARMOPS III
-------------
+PRIO 2
+------
 
-[X] Assign malfunction
-[X] Advance malfunction
-[X] Donate sockify
-[X] Live numbers
 [ ] Todo box JSON
-[ ] Expense reject malfunction
-[X] Menu highlight
-[X] Basic search
-[X] Account edit spacing
-
-
-
-SWARMOPS IV
------------
-
-[ ] Load hotwallet from cold
-[ ] Database discrepancy
-[ ] Bitcoin Echo
-[ ] Icons for Validation
-[X] Favicon New
-[X] Inspect Ledger header bad
-[X] Clean Login
-
-
-
-SWARMOPS V
-----------
-
-[X] OOBE! Wait for services
-[X] Basic security
-[X] Impersonation for testing
-[X] Expense access
-[ ] Assign role geolock
-[X] Advance line spacing
-
-
-SWARMOPS VI
------------
-
-[X] Org 16x9 logo
+[ ] Fix generic block explorer interfaces
+[ ] Expense reject malfunction (what's this? -RF)
+[ ] Redo Match Accounts completely, put under EOM
+[ ] op.Cash SKU
 [ ] Submit invoice
 [ ] Control messages for invoice progress
 [ ] Pay invoice
-[ ] Controlify financialtransaction
-    to show on balancetx page
-[ ] Close ledger year
-[X] Internal TX account type
-[X] Create TX
-[ ] Main Ledger
-[X] Fix password reset after refactor
+[ ] Payment points for invoices, expense reports
+[x] Upload bank statements
+[ ] External people notifications
+[ ] Currency inventory tracking
+[ ] Cost centers and 2-D reports
+[ ] Monthly reports (not just quarterly)
+[x] Manual payout dialog, with lock/confirm/undo step to Payouts
+[ ] Live tracking of currency inventory value
+
+
+PRIO 3
+------
+
+[ ] Recurring expenses
+[ ] HTML/Markdown mail
+[ ] Org texts self-signup
+[ ] Load hotwallet from cold
+[ ] Database discrepancy
+[x] Icons for Validation
+[ ] op.Cash OOBE
+[ ] Assign role geolock
 

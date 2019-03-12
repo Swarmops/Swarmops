@@ -8,14 +8,14 @@ namespace Swarmops.Common.Enums
         Unknown = 0,
 
         /// <summary>
-        ///     An attestation of an expenditure from a budget.
+        ///     An approval of an expenditure from a budget.
         /// </summary>
-        Attestation,
+        Approval,
 
         /// <summary>
-        ///     Removal of attested status.
+        ///     Removal of approved status.
         /// </summary>
-        Deattestation,
+        UndoApproval,
 
         /// <summary>
         ///     Validation of expenditure documents.
@@ -23,9 +23,9 @@ namespace Swarmops.Common.Enums
         Validation,
 
         /// <summary>
-        ///     Devalidation - removal of validated status.
+        ///     Removal of validated status.
         /// </summary>
-        Devalidation,
+        UndoValidation,
 
         /// <summary>
         ///     Kill: close this financial doc as not valid.

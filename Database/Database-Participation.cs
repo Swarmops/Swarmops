@@ -306,7 +306,7 @@ namespace Swarmops.Database
                             result[personId] = new List<BasicParticipation>();
                         }
 
-                        result[personId].Add (ReadMembershipFromDataReader (reader));
+                        result[personId].Add (participation);
                         // Add to this person's list of memberships
                     }
                 }

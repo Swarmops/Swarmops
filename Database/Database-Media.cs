@@ -212,8 +212,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT MediaKeywordId From MediaKeywords WHERE MediaKeyword='" + keyword.Replace ("'", "''") +
-                        "'", connection);
+                        "SELECT MediaKeywordId From MediaKeywords WHERE MediaKeyword=@keyword", connection);
+                AddParameterWithName(command, "keyword", keyword);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -281,8 +281,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT MediaCategoryId, Name FROM MediaCategories WHERE Name='" +
-                        mediaCategoryName.Replace ("'", "''") + "'", connection);
+                        "SELECT MediaCategoryId, Name FROM MediaCategories WHERE Name=@mediaCategoryName", connection);
+                AddParameterWithName(command, "mediaCategoryName", mediaCategoryName);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

@@ -168,6 +168,11 @@
         CostsLocalDonationTransfers,
 
         /// <summary>
+        /// Voluntary donations toward maintenance of this very code base
+        /// </summary>
+        CostsMaintenanceDonations,
+
+        /// <summary>
         ///     No description
         /// </summary>
         CostsAllocatedFunds,

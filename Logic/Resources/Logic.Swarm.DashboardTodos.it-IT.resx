@@ -121,15 +121,38 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>Imposta indirizzo di pagamento Bitcoin Cash</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>Si prega di impostare il proprio indirizzo Bitcoin Cash per i pagamenti andando su [InstallationName] (inizia con "bitcoincash"):</value>
+  </data>
+  <data name="Payout_Many" xml:space="preserve">
+    <value>Salda {0} pagamenti</value>
+    <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
+  </data>
+  <data name="Payout_One" xml:space="preserve">
+    <value>Salda un pagamento</value>
+  </data>
+  <data name="Payout_Overdue_Many" xml:space="preserve">
+    <value>Salda {0} pagamenti arretrati</value>
+  </data>
+  <data name="Payout_Overdue_One" xml:space="preserve">
+    <value>Salda un pagamento arretrato</value>
+  </data>
+  <data name="Payout_Urgent_Many" xml:space="preserve">
+    <value>Salda {0} pagamenti urgenti</value>
+  </data>
+  <data name="Payout_Urgent_One" xml:space="preserve">
+    <value>Salda un pagamento urgente</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>Abilita l'autenticazione in due passaggi</value>
+  </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>Valida {0} richieste</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>Valida richiesta #{0}</value>
+  </data>
 </root>

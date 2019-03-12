@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Public.Signup" CodeFile="Signup.aspx.cs" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.Public.Signup" CodeFile="Signup.aspx.cs" CodeBehind="Signup.aspx.cs" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -30,15 +29,16 @@
     <link href="/Style/alertify.default.css" rel="stylesheet" type="text/css" />
     <link href="WizardStyle.css" rel="stylesheet" type="text/css" />
     
-    <!-- external packages that are commonly used (on practically all pages) -->
-    
-    <!-- UGLY HACK: Control ExternalScripts requires authentication for some reason. This is a bug. But to get alpha-09 out on time, we're
-        circumventing the bug by hardcoding the hosted scripts - this needs fixing. -->
+    <!-- BUG: the external scripts and styles should normally be provided by the ExternalScripts control
+         BUG: ...that determines an available URL for the external scripts, but including the component
+         BUG: ...on the page forces an authentication, thereby disabling the key function of the page.
+         BUG: ...I've spent hours trying to find why adding the ExternalScripts control to the page
+         BUG: ...triggers authentication, including adding web.configs everywhere, without results. -->
 
-    <script src="//hostedscripts.falkvinge.net/staging/easyui/jquery.easyui.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/icon.css" />
-    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/default/easyui.css" />
-    <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />
+    <!-- external packages that are commonly used (on practically all pages) -->
+    <script src="/Scripts/ExternalScripts/easyui/jquery.easyui.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/Scripts/ExternalScripts/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/Scripts/ExternalScripts/easyui/themes/default/easyui.css">
     
     <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
     <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js" ></script>
@@ -110,12 +110,16 @@
         }
 
 
-        .entryFieldsAdmin, .entryLabelsAdmin {
+        .data-entry-fields-admin, .entry-labels-admin {
             font-size: 16px;
         }
 
+        .enableAskParticipantStreet {
+            display: none;
+        }
 
-        .entryLabelsAdmin {
+
+        .entry-labels-admin {
             font-weight: 300;
         }
 
@@ -300,7 +304,7 @@
     	                success: function (msg) {
     	                    if (msg.d != true) {
     	                        isValid = false;
-    	                        $('#<%= TextDateOfBirth.ClientID %>').addClass("entryError");
+    	                        $('#<%= TextDateOfBirth.ClientID %>').addClass("data-entry-error");
     	                        alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorDate%>"));
     	                        $('#<%=this.TextDateOfBirth.ClientID %>').focus();
     	                    }
@@ -309,9 +313,12 @@
     	        }
 
     	        isValid = ValidateTextField('#<%= TextCity.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorCity%>")) && isValid;
-    	        isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorStreet%>")) && isValid;
-    	        isValid = ValidateTextField('#<%= TextMail.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorMail%>")) && isValid;
+	            isValid = ValidateTextField('#<%= TextMail.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorMail%>")) && isValid;
     	        isValid = ValidateTextField('#<%= TextName.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorName%>")) && isValid; // TODO: Actually validate geography?
+
+	            if (askParticipantStreet) {
+	                isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', SwarmopsJS.unescape("<%=Localize_ErrorStreet%>")) && isValid;
+	            }
 
     	        if (isValid) {
 
@@ -328,7 +335,7 @@
 	                    success: function(msg) {
 	                        if (msg.d.Success != true) {
 	                            isValid = false;
-	                            $('#<%= this.TextMail.ClientID %>').addClass("entryError");
+	                            $('#<%= this.TextMail.ClientID %>').addClass("data-entry-error");
 	                            alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorMailExists%>"));
 	                            $('#<%=this.TextMail.ClientID %>').focus();
 	                        }
@@ -340,10 +347,10 @@
     	    }
 
     	    function ValidateTextField(fieldId, message) {
-    	        $(fieldId).removeClass("entryError");
+    	        $(fieldId).removeClass("data-entry-error");
     	        if ($(fieldId).val().length == 0) {
     	            alertify.error(message);
-    	            $(fieldId).addClass("entryError");
+    	            $(fieldId).addClass("data-entry-error");
     	            $(fieldId).focus();
     	            return false;
     	        }
@@ -373,6 +380,9 @@
     	        // above code some day to a common file between this file
     	        // and Swarm / Add.  (TODO.)
 
+    	        if (askParticipantStreet) {
+	                $('.enableAskParticipantStreet').show();
+	            }
 
     	        $('#wizard').smartWizard({
     	            transitionEffect: 'fade',
@@ -453,7 +463,7 @@
 	                        if ($('#<%=TextPassword1.ClientID%>').val() != $('#<%=TextPassword2.ClientID%>').val()) {
 	                            isValid = false;
 	                            alertify.error(SwarmopsJS.unescape("<%=Localize_ErrorPasswordMismatch%>"));
-	                            $('#<%=TextPassword1.ClientID%>,#<%=TextPassword2.ClientID%>').addClass("entryError");
+	                            $('#<%=TextPassword1.ClientID%>,#<%=TextPassword2.ClientID%>').addClass("data-entry-error");
 	                            $('#<%=TextPassword1.ClientID%>').focus();
 	                        }
 	                    }
@@ -565,6 +575,7 @@
 
     	    var suppressChecks = false;
     	    var selectedPositions = {};
+	        var askParticipantStreet = <%=this.Organization.Parameters.AskParticipantStreet? "true": "false"%>;
 
     	</script>
 	
@@ -632,28 +643,28 @@
   			        </ul>
   			        <div id="step-1">	
                         <h2><asp:Label ID="LabelWelcomeHeader" runat="server" /></h2>
-                        <p>This is the organization's custom welcome text. It has not yet been written; it is set in Admin / Org Settings.</p><br/><br/>
+			              <p><asp:Literal ID="LiteralFirstPageSignup" runat="server"/></p><br/><br/>
                     </div>
   			        <div id="step-2">
-  			            <div class="entryFieldsAdmin">
+  			            <div class="data-entry-fields-admin">
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextName" /></div>
                             <div class="stacked-input-control"><asp:DropDownList runat="server" ID="DropCountries"/></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextMail" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPhone" /></div>
-                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
-                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div>
-                            <div class="stacked-input-control"><div class="elementFloatFar"><asp:TextBox runat="server" ID="TextPostal" />&thinsp;<asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-text" style="width: 22px; overflow-x: hidden"><span id="spanCountryPrefix">XX</span>--</div></div>
+                            <div class="enableAskParticipantStreet"><div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet1" /></div>
+                            <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextStreet2" /></div></div>
+                            <div class="stacked-input-control"><div class="float-far"><asp:TextBox runat="server" ID="TextPostal" />&thinsp;<asp:TextBox runat="server" ID="TextCity" /></div><div class="stacked-text" style="width: 22px; overflow-x: hidden"><span id="spanCountryPrefix">XX</span>--</div></div>
                             <div class="stacked-input-control"><span class="stacked-text" id="spanDetectedGeo">...</span></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDateOfBirth" /></div>
                             <div class="stacked-input-control"><asp:DropDownList runat="server" ID="DropGenders" /></div>
                         </div>
-                        <div class="entryLabelsAdmin">
+                        <div class="entry-labels-admin">
                             <asp:Label ID="LabelName" runat="server" /><br />
                             <asp:Label ID="LabelCountry" runat="server" /><br />
                             <asp:Label ID="LabelMail" runat="server" /><br />
                             <asp:Label ID="LabelPhone" runat="server" /><br />
-                            <asp:Label ID="LabelStreet1" runat="server" /><br />
-                            <asp:Label ID="LabelStreet2" runat="server" /><br />
+                            <div class="enableAskParticipantStreet"><asp:Label ID="LabelStreet1" runat="server" /><br />
+                            <asp:Label ID="LabelStreet2" runat="server" /><br /></div>
                             <span id="spanLabelPostal"><asp:Label ID="LabelPostalCode" runat="server" />,&nbsp;</span><asp:Label runat="server" ID="LabelCity" /><br />
                             <span id="SpanGeoDetected"><asp:Label ID="LabelGeographyDetected" runat="server" /></span><span id="SpanGeoSelect" style="display: none"><asp:Label ID="LabelSelectGeography" runat="server" Text="XYZ Select Geography" /></span><br />
                             <asp:Label ID="LabelDateOfBirth" runat="server" /><br />
@@ -663,12 +674,12 @@
   			        <div id="step-3">
   			            <h2><asp:Label runat="server" ID="LabelYourLogon" /></h2>
                         <p><asp:Label ID="LabelYourLogonText" runat="server" /></p>
-  			            <div class="entryFieldsAdmin" style="width:204px;overflow:hidden">
+  			            <div class="data-entry-fields-admin" style="width:204px;overflow:hidden">
   			                <div class="stacked-input-control"><span id="spanMailLoginKey" style="white-space:nowrap">...</span></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPassword1" TextMode="Password" /></div>
                             <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPassword2" TextMode="Password" /></div>
                         </div>
-                        <div class="entryLabelsAdmin">
+                        <div class="entry-labels-admin">
                             <asp:Label ID="LabelLoginKey" runat="server" /><br />
                             <asp:Label ID="LabelPassword1" runat="server" /><br />
                             <asp:Label ID="LabelPassword2" runat="server" /><br />
@@ -703,7 +714,7 @@
   			        <div id="step-6">
   			            <div id="divStep6NoPayment">
                           <h2><asp:Label ID="LabelFinalizeSignupHeader" runat="server" /></h2>
-                          <p>This is the organization-specific text shown for Signup Finalization. It is set in Admin / Org Settings. When the new person presses Finish, they will be entered into the organization, logged on, and sent to the Dashboard as a Beginner user.</p>
+			                  <p><asp:Literal ID="LiteralLastPageSignup" runat="server"/></p>
   			            </div>
                           <div id="divStep6Payment" style="display:none"><!-- todo --></div>
                     </div>
@@ -726,22 +737,26 @@
     <h2 class="blue">Language<span class="arrow"></span></h2>
     <div class="box">
         <div class="content">
-            &nbsp;<a href="javascript:setLanguage('ar-SA')"><img src="/Images/Flags/Arabic-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('pt-BR')"><img src="/Images/Flags/br-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('zh-CHS')"><img src="/Images/Flags/cn-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('de-DE')"><img src="/Images/Flags/de-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('da-DK')"><img src="/Images/Flags/dk-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('es-ES')"><img src="/Images/Flags/es-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('fi-FI')"><img src="/Images/Flags/fi-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('fr-FR')"><img src="/Images/Flags/fr-24px.png"/></a><br/>
-            &nbsp;<a href="javascript:setLanguage('el-GR')"><img src="/Images/Flags/gr-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('hi-IN')"><img src="/Images/Flags/in-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('is-IS')"><img src="/Images/Flags/is-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('nl-NL')"><img src="/Images/Flags/nl-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('nb-NO')"><img src="/Images/Flags/no-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('ru-RU')"><img src="/Images/Flags/ru-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('sv-SE')"><img src="/Images/Flags/se-24px.png"/></a>&#8203;
-            <a href="javascript:setLanguage('en-US')"><img src="/Images/Flags/uk-24px.png"/></a>&#8203;
+            &nbsp;<a href="javascript:setLanguage('ar-SA')"><img class="action-icon flag" src="/Images/Flags/Arabic-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('pt-BR')"><img class="action-icon flag" src="/Images/Flags/br-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('zh-CHS')"><img class="action-icon flag" src="/Images/Flags/cn-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('de-DE')"><img class="action-icon flag"  src="/Images/Flags/de-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('yo-NG')"><img class="action-icon flag"  src="/Images/Flags/ng-64px.png"/></a><br />
+            &nbsp;<a href="javascript:setLanguage('el-GR')"><img class="action-icon flag"  src="/Images/Flags/gr-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('es-ES')"><img class="action-icon flag"  src="/Images/Flags/es-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('es-VE')"><img class="action-icon flag"  src="/Images/Flags/ve-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('fr-FR')"><img class="action-icon flag" src="/Images/Flags/fr-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('fil-PH')"><img class="action-icon flag" src="/Images/Flags/ph-64px.png"/></a><br />
+            &nbsp;<a href="javascript:setLanguage('it-IT')"><img class="action-icon flag" src="/Images/Flags/it-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('nl-NL')"><img class="action-icon flag" src="/Images/Flags/nl-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('pl-PL')"><img class="action-icon flag" src="/Images/Flags/pl-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('pt-PT')"><img class="action-icon flag" src="/Images/Flags/pt-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('ru-RU')"><img class="action-icon flag" src="/Images/Flags/ru-64px.png"/></a><br/>
+            &nbsp;<a href="javascript:setLanguage('sr-Cyrl-RS')"><img class="action-icon flag" src="/Images/Flags/rs-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('sr-Latn-RS')"><img class="action-icon flag" src="/Images/Flags/rs-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('sv-SE')"><img class="action-icon flag" src="/Images/Flags/se-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('tr-TR')"><img class="action-icon flag" src="/Images/Flags/tr-64px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('en-US')"><img class="action-icon flag" src="/Images/Flags/uk-64px.png"/></a>
         </div>
     </div>
 
@@ -754,16 +769,17 @@
         <asp:Label ID="LabelSidebarInfoContent" runat="server" />
         </div>
     </div>
-    
-    <h2 class="blue"><asp:Label ID="LabelSidebarActionsHeader" runat="server" /><span class="arrow"></span></h2>
-    
-    <div class="box">
-        <div class="content">
-            <asp:Label ID="LabelSidebarActionsContent" runat="server" />
-        </div>
-    </div>
-    
+
     <div id="divTodoDerpage" style="display:none">
+    
+        <h2 class="blue"><asp:Label ID="LabelSidebarActionsHeader" runat="server" /><span class="arrow"></span></h2>
+    
+        <div class="box">
+            <div class="content">
+                <asp:Label ID="LabelSidebarActionsContent" runat="server" />
+            </div>
+        </div>
+   
 
         <h2 class="orange"><asp:Label ID="LabelSidebarTodoHeader" runat="server" /><span class="arrow"></span></h2>
     
