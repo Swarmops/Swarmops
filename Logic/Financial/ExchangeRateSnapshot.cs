@@ -66,7 +66,12 @@ namespace Swarmops.Logic.Financial
                             try
                             {
                                 string coinCode = shapeshiftRate.pair.Substring(4);
-                                double btcRate = Double.Parse(shapeshiftRate.rate);
+                                double btcRate = shapeshiftRate.rate;
+
+                                if (Double.IsNaN(btcRate) || Double.IsInfinity(btcRate))
+                                {
+                                    continue;
+                                }
 
                                 if (coinCode != "BCH")
                                 {
@@ -195,7 +200,7 @@ namespace Swarmops.Logic.Financial
     [Serializable]
     public class ShapeshiftRateDatapoint
     {
-        public string rate { get; set; }  // changed to string to be able to decentralize "NaN" rates from Shapeshift
+        public double rate { get; set; }  // changed to string to be able to decentralize "NaN" rates from Shapeshift
         public double limit { get; set; }
         public string pair { get; set; }
         public double maxLimit { get; set; }
