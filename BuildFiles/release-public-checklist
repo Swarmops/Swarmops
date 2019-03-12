@@ -6,9 +6,11 @@
 ☐ Release candidate building
 ☐ Release candidate packaged
 ☐ Xenial, Bionic, and Stretch test machines ready to go
+☐ All installation tests are in progress (take about 15 min)
 ☐ Xenial install passes
 ☐ Bionic install passes
 ☐ Stretch install passes
+☐ Self-configurations are in progress
 ☐ Xenial configuration passes
 ☐ Bionic configuration passes
 ☐ Stretch configuration passes
