@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -62,20 +63,34 @@ namespace Swarmops.Logic.Financial
                     {
                         if (shapeshiftRate.pair.StartsWith("BTC_"))
                         {
-                            string coinCode = shapeshiftRate.pair.Substring(4);
-                            double btcRate = shapeshiftRate.rate;
-
-                            if (coinCode != "BCH")
+                            try
                             {
-                                btcRate /= 1000000.0;
-                                // We're operating in microbitcoin, so adjust the stored exchange rate right six decimal places
-                                // EXCEPT for Bitcoin Cash which ALSO operates in microbitcoin
+                                string coinCode = shapeshiftRate.pair.Substring(4);
+                                double btcRate = Double.Parse(shapeshiftRate.rate);
+
+                                if (coinCode != "BCH")
+                                {
+                                    btcRate /= 1000000.0;
+                                    // We're operating in microbitcoin, so adjust the stored exchange rate right six decimal places
+                                    // EXCEPT for Bitcoin Cash which ALSO operates in microbitcoin
+                                }
+
+                                int coinId = GetOrCreateCryptocurrency(coinCode);
+
+                                SwarmDb.GetDatabaseForWriting().
+                                    CreateExchangeRateDatapoint(exchangeRateSnapshotId, coinId, bitcoinId, btcRate);
                             }
+                            catch (Exception exception)
+                            {
+                                if (exception is FormatException || exception is ArgumentNullException ||
+                                    exception is OverflowException)
+                                {
+                                    // Double parse error, we don't care
+                                    continue;
+                                }
 
-                            int coinId = GetOrCreateCryptocurrency(coinCode);
-
-                            SwarmDb.GetDatabaseForWriting().
-                                CreateExchangeRateDatapoint(exchangeRateSnapshotId, coinId, bitcoinId, btcRate);
+                                throw;
+                            }
                         }
                     }
                 }
@@ -180,7 +195,7 @@ namespace Swarmops.Logic.Financial
     [Serializable]
     public class ShapeshiftRateDatapoint
     {
-        public double rate { get; set; }
+        public string rate { get; set; }  // changed to string to be able to decentralize "NaN" rates from Shapeshift
         public double limit { get; set; }
         public string pair { get; set; }
         public double maxLimit { get; set; }
