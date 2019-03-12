@@ -1,0 +1,1 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BitcoinPaymentTemplate.ascx.cs" CodeFile="BitcoinPaymentTemplate.ascx.cs" Inherits="Swarmops.Frontend.Controls.Financial.BitcoinPaymentTemplate" %>
