@@ -108,9 +108,31 @@ namespace Swarmops.Logic.Structure
 
             GeographyDataLoader geoDataLoader = new GeographyDataLoader();
 
-            MasterGeography geography = geoDataLoader.GetGeographyForCountry(countryCode);
-            MasterCity[] cities = geoDataLoader.GetCitiesForCountry(countryCode);
-            MasterPostalCode[] postalCodes = geoDataLoader.GetPostalCodesForCountry(countryCode);
+            // This next part has been hardened against transient network failures, up to 10 retries
+
+            int retries = 0;
+            bool networkSuccess = false;
+
+            while (!networkSuccess)
+            {
+                try
+                {
+                    MasterGeography geography = geoDataLoader.GetGeographyForCountry(countryCode);
+                    MasterCity[] cities = geoDataLoader.GetCitiesForCountry(countryCode);
+                    MasterPostalCode[] postalCodes = geoDataLoader.GetPostalCodesForCountry(countryCode);
+                    networkSuccess = true;
+                }
+                catch (Exception)
+                {
+                    if (retries >= 10)
+                    {
+                        throw;
+                    }
+
+                    retries++;
+                    Thread.Sleep(5000); // wait five seconds for network conditions to clear
+                }
+            }
 
             // ID Translation lists
 

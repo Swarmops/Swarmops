@@ -485,10 +485,9 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 // Fetch the first set of exchange rates, completing the currency collection
 
-                SupportFunctions.DisableSslCertificateChecks(); // needed bc SSL root store on Mono hosed
                 ExchangeRateSnapshot.Create();
 
-                // Disable SSL required - turn this on manually
+                // Disable SSL required - the user must turn this on manually
 
                 SystemSettings.RequireSsl = false;
 
@@ -518,13 +517,50 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 GetGeographyData geoDataFetcher = new GetGeographyData();
 
-                Country[] countries = geoDataFetcher.GetCountries();
+                Country[] countries = null;
 
                 _initProgress = 7;
                 _initMessage = "Creating all countries on local server...";
                 Thread.Sleep (100);
                 int count = 0;
+                int countryRetries = 0;
+
+                try
+                {
+                    countries = geoDataFetcher.GetCountries();
+                }
+                catch (Exception)
+                {
+                    // ignore for now, retrying below                
+                }
+
+                while (++countryRetries < 10 && (countries == null || countries.Length < 20))
+                {
+                    _initMessage = "Network problem, retrying... ";
+                    if (countryRetries > 1)
+                    {
+                        _initMessage += String.Format("({0})", countryRetries);
+                    }
+                    Thread.Sleep(500);
+
+                    try
+                    {
+                        countries = geoDataFetcher.GetCountries();
+                    }
+                    catch (Exception)
+                    {
+                        if (countryRetries > 8)
+                        {
+                            throw;
+                        }
+
+                        // otherwise ignore for now                    
+                    }
+                }
+
                 int total = countries.Length;
+
+
 
                 // Create all countries in our own database
 
