@@ -113,13 +113,17 @@ namespace Swarmops.Logic.Structure
             int retries = 0;
             bool networkSuccess = false;
 
+            MasterGeography geography = null;
+            MasterCity[] cities = null;
+            MasterPostalCode[] postalCodes = null;
+
             while (!networkSuccess)
             {
                 try
                 {
-                    MasterGeography geography = geoDataLoader.GetGeographyForCountry(countryCode);
-                    MasterCity[] cities = geoDataLoader.GetCitiesForCountry(countryCode);
-                    MasterPostalCode[] postalCodes = geoDataLoader.GetPostalCodesForCountry(countryCode);
+                    geography = geoDataLoader.GetGeographyForCountry(countryCode);
+                    cities = geoDataLoader.GetCitiesForCountry(countryCode);
+                    postalCodes = geoDataLoader.GetPostalCodesForCountry(countryCode);
                     networkSuccess = true;
                 }
                 catch (Exception)
