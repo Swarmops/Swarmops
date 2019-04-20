@@ -77,7 +77,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 // If we're running on Localhost, disable the "is this your server?" question
 
-                if (IsLocalhost())
+                if (OnLoopbackInterface())
                 {
                     this.TextServerName.Text = @"(localhost)";
                     if (HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"] == "::1")
@@ -657,7 +657,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 return true; // Cannot read "/etc/hostname" in Windows environment
             }
 
-            if (IsLocalhost())
+            if (OnLoopbackInterface())
             {
                 return true; // Do not validate hostname when localhost
             }
@@ -708,7 +708,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
             return result;
         }
 
-        public static bool IsLocalhost()
+        public static bool OnLoopbackInterface()
         {
             string localAddress = HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
 
@@ -723,7 +723,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
         [WebMethod (true)]
         public static bool VerifyHostAddress (string input)
         {
-            if (IsLocalhost())
+            if (OnLoopbackInterface())
             {
                 return true;
             }
