@@ -15,6 +15,7 @@ using NBitcoin.Protocol;
 using Resources;
 using Swarmops.Common;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Exceptions;
 using Swarmops.Common.ExtensionMethods;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
@@ -142,7 +143,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
 
         [WebMethod]
-        public static bool CreateDatabaseFromRoot (string mysqlHostName, string rootPassword, string serverName,
+        public static AjaxCallResult CreateDatabaseFromRoot (string mysqlHostName, string rootPassword, string serverName,
             string ipAddress, string random)
         {
             if (!(VerifyHostName (serverName) && VerifyHostAddress (ipAddress)))
@@ -180,7 +181,19 @@ namespace Swarmops.Frontend.Pages.v5.Public
                         .Replace ("[writepass]", writePass)
                         .Replace ("[adminpass]", adminPass).Split ('#');
 
-                SwarmDb.GetTestDatabase (rootCredentials).ExecuteAdminCommands (initInstructions);
+                // TODO: Make this function throw a better exception, and catch it
+                try
+                {
+                    SwarmDb.GetTestDatabase(rootCredentials).ExecuteAdminCommands(initInstructions);
+                }
+                catch (DatabaseExecuteException sqlException)
+                {
+                    return new AjaxCallResult
+                    {
+                        Success = false,
+                        DisplayMessage = sqlException.AttemptedCommand
+                    };
+                }
 
                 PermissionsAnalysis permissionsResult = FirstCredentialsTest (
                     "Swarmops-" + random, mysqlHostName, "Swarmops-R-" + random, readPass,
@@ -190,14 +203,16 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 if (!permissionsResult.AllPermissionsOk)
                 {
-                    throw new InvalidOperationException ("waaaaaah");
+                    // TODO: Return a better exccption detailing exactly what permission isn't set as required
+
+                    return new AjaxCallResult {Success = false};
                 }
 
-                return true;
+                return new AjaxCallResult {Success = true};
             }
             catch (Exception)
             {
-                return false;
+                return new AjaxCallResult { Success = false };
             }
         }
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
+using MySql.Data.MySqlClient;
+using Swarmops.Common.Exceptions;
 
 namespace Swarmops.Database
 {
@@ -35,7 +37,15 @@ namespace Swarmops.Database
                 {
                     DbCommand command = GetDbCommand (sql, connection);
                     command.CommandType = CommandType.Text;
-                    command.ExecuteNonQuery();
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (MySqlException innerException)
+                    {
+                        throw new DatabaseExecuteException(sql, innerException);
+                    }
                 }
             }
         }
