@@ -7,8 +7,8 @@ Swarmops is an admin system for swarm-type organizations. It's a bureaucracy sys
 
 The goals of _Swarmops_ are three:
 
-* Become the #1 software for organizing swarm activism to effectively change policy,
 * Become the #1 software to manage native-bitcoin startups' cashflow and accounting,
+* Become the #1 software for organizing swarm activism to effectively change policy,
 * Become the #1 software to run civil liberties resistances in repressive regimes.
 
 Goal #1, _organizing swarm activism:_ the Swedish Pirate Party used a predecessor to Swarmops in its effort to put two representatives in the European Parliament, and could literally not have succeeded without the ability to decentralize authority that Swarmops provided, pushing all the crucial decision-making out to the edges of the organization where the most information was available. It's an administration tool for people who hate paperwork, so it's built to optimize the time available to activism.
@@ -21,7 +21,7 @@ Goal #3, _functional software to assist civil liberties resistances in repressiv
 Release schedule
 ----------------
 
-Stable releases are built every six months, at the end of every calendar half-year. Sprints (currently "betas") are built on the 5th of every month, sometimes skipping a month when bigger features are being written. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
+Stable releases are built every six months, in March and September. These are called YEAR.MONTH, like 2019.9, along with a release name. Sprints toward these releases are built on the 5th of every month, sometimes skipping a month when bigger features are being written. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
 
 This is the plan, at least. "Stable" is a somewhat wide definition at the moment. Rather, Swarmops has a few functions to go to enter Open Beta stage.
 
@@ -97,38 +97,19 @@ No, there isn't a "license". This code is completely in the public domain, with 
 That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.
 
 
-Beta-7 progress
----------------
-
-Beta-7 will be released on March 5, with string freeze three days earlier. It contains overhauls to outbound payments and significant UX improvements in this area.
-
-
-
-Beta-8 features progress
-------------------------
-
-Beta-8 will be released on April 5, with string freeze three days earlier. Its focus is to increase multicurrency functionality for payouts and bank imports.
+2019.9 "Ankara" features progress
+---------------------------------
 
 - [x] Parameterize the bank file import procedure (big feature!)
 - [x] Make it possible to import bank files in non-presentation currency
 - [ ] Rewrite payment addresses (a new name for this? Account vs. designator?)
 - [ ] Complete rewrite of the bank import procedure, account matching UX
 - [ ] End-of-month wizard to guide user through accounting steps
-
-
-Beta-9 features progress
-------------------------
-
-Beta-9 will be released on June 5, 2019, with string freeze three days earlier. Its tentative focus will be Fairshift integration and possibly an open API exposure.
-
 - [ ] Enable payment destinations, with currency
 - [ ] Rewrite Bitcoin Cold Storage detection to handle forks, current and future
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
 - [ ] Write a Pay Invoice page for Bitcoin Cash
 - [ ] Tie payment identifiers to people and suppliers
-
-
-
 
 
 Detailed install instructions
