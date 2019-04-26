@@ -212,7 +212,7 @@
 	                            dataType: "json",
 	                            async: false, // blocks until function returns - race conditions otherwise
 	                            success: function (msg) {
-	                                if (msg.d != true) {
+	                                if (msg.d.Success != true) {
 
 	                                    // Credentials problem.
 	                                    $('#TextMysqlRootPassword, #TextMysqlServerHost').css('background-image', "url('/Images/Icons/iconshock-red-cross-128x96px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat').css('background-size', '16px 12px');

@@ -150,7 +150,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
             {
                 if (!Debugger.IsAttached)
                 {
-                    return true; // Probable hack attempt - fail silently
+                    return new AjaxCallResult {Success = true}; // Probable hack attempt - fail silently
                 }
             }
 
