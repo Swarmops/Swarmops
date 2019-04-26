@@ -181,7 +181,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
                         .Replace ("[writepass]", writePass)
                         .Replace ("[adminpass]", adminPass).Split ('#');
 
-                // TODO: Make this function throw a better exception, and catch it
                 try
                 {
                     SwarmDb.GetTestDatabase(rootCredentials).ExecuteAdminCommands(initInstructions);
