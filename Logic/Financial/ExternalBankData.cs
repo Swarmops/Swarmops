@@ -131,6 +131,7 @@ namespace Swarmops.Logic.Financial
                 }
 
                 ExternalBankDataRecord newRecord = new ExternalBankDataRecord();
+                newRecord.RawData = lineData;
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.DescriptionPrimary))
                 {

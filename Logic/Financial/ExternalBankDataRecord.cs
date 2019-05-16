@@ -21,6 +21,8 @@ namespace Swarmops.Logic.Financial
         public long TransactionNetCents;
         public string UniqueId;
 
+        public string RawData; // Used for further discrimination among ambiguous records - may contain more uniqueness
+
         #region Implementation of IComparer<ExternalBankDataRecord>
 
         public int Compare (ExternalBankDataRecord x, ExternalBankDataRecord y)

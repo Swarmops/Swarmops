@@ -707,7 +707,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 FinancialTransaction transaction = FinancialTransaction.ImportWithStub(args.Organization.Identity,
                     row.DateTime,
                     assetAccount.Identity, amountCents,
-                    row.Description, importKey, "" /* new SHA256 field */,
+                    row.Description, importKey, Sha256.Compute (row.RawData),
                     args.CurrentUser.Identity);
 
                 if (transaction != null)

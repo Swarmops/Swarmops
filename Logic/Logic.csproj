@@ -232,6 +232,7 @@
     <Compile Include="Communications\Payload\PayloadEnvelope.cs" />
     <Compile Include="Communications\Payload\NotificationPayload.cs" />
     <Compile Include="Security\Impersonation.cs" />
+    <Compile Include="Security\Sha256.cs" />
     <Compile Include="Support\LogEntries\ApplicantAddedLogEntry.cs" />
     <Compile Include="Support\SharpCashAddr.cs" />
     <Compile Include="Support\SocketMessages\SocketMessageBase.cs" />

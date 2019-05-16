@@ -1,3 +1,4 @@
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -8,6 +9,7 @@ namespace Swarmops.Logic.Security
     /// </summary>
     public class SHA1
     {
+        [Obsolete("Warning: SHA1 is considered insecure. Do not use for anything authentication or security related. Consider migrating to Sha256.")]
         public static string Hash (string input)
         {
             byte[] data = Encoding.GetEncoding (1252).GetBytes (input);

@@ -20,6 +20,6 @@ namespace Swarmops.Common.Exceptions
         }
 
         public string AttemptedCommand { get; }
-        public Exception InnerException { get; }
+        public new Exception InnerException { get; }
     }
 }
