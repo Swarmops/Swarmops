@@ -208,7 +208,10 @@ Site5/*
 *.userprefs
 *.csproj.[Dd]ot[Ss]ettings
 
-#These cultures botch debugging :(
-Site/App_GlobalResources/ha-HG/*
+#Lots of cultures botch debugging :( We keep a few known good to test RTL and different scripts.
+#Site/App_GlobalResources/??-??/*
+#Site/App_GlobalResources/??-????-??/*
+#
+# These cultures were simply moved off of Master, to be included in Sprint and Release builds only
 
 #Packages provided by NuGet
