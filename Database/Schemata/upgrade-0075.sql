@@ -29,14 +29,14 @@ CREATE TABLE `FinancialAccountDocumentTypes` (
 
 
 
-CREATE TABLE `FinancialTransactionImportHashes` (
-  `FinancialTransactionImportHashId` INT NOT NULL AUTO_INCREMENT,
-  `FinancialTransactionId` INT NOT NULL,
+CREATE TABLE `FinancialTransactionRowImportHashes` (
+  `FinancialTransactionRowImportHashId` INT NOT NULL AUTO_INCREMENT,
+  `FinancialTransactionRowId` INT NOT NULL,
   `FinancialAccountDocumentId` INT NOT NULL,
   `Sha256` VARCHAR(128) NOT NULL DEFAULT '',
   `ProvidedUniqueId` VARCHAR(512) NOT NULL DEFAULT '',
-  PRIMARY KEY (`FinancialTransactionImportHashId`),
-  INDEX `ixTransaction` (`FinancialTransactionId` ASC),
+  PRIMARY KEY (`FinancialTransactionRowImportHashId`),
+  INDEX `ixTransactionRow` (`FinancialTransactionRowId` ASC),
   INDEX `ixDocument` (`FinancialAccountDocumentId` ASC),
   INDEX `ixSha256` (`Sha256` ASC),
   INDEX `ixUniqueId` (`ProvidedUniqueId` ASC))
@@ -51,13 +51,13 @@ DROP PROCEDURE IF EXISTS `CreateFinancialAccountDocument`
 #
 
 
-DROP PROCEDURE IF EXISTS `SetFinancialTransactionProvidedUniqueId`
+DROP PROCEDURE IF EXISTS `SetFinancialTransactionRowProvidedUniqueId`
 
 
 #
 
 
-DROP PROCEDURE IF EXISTS `SetFinancialTransactionImportSha256`
+DROP PROCEDURE IF EXISTS `SetFinancialTransactionRowImportSha256`
 
 
 #
@@ -99,8 +99,8 @@ END
 #
 
 
-CREATE PROCEDURE `SetFinancialTransactionProvidedUniqueId`(
-  IN financialTransactionId INT,
+CREATE PROCEDURE `SetFinancialTransactionRowProvidedUniqueId`(
+  IN financialTransactionRowId INT,
   IN financialAccountDocumentId INT,
   IN providedUniqueId VARCHAR(512)
 )
@@ -108,25 +108,25 @@ BEGIN
 
   DECLARE recordId INT;
 
-  IF ((SELECT COUNT(*) FROM FinancialTransactionImportHashes 
-     WHERE FinancialTransactionImportHashes.FinancialTransactionId=financialTransactionId
-       AND FinancialTransactionImportHashes.FinancialAccountDocumentId=financialAccountDocumentId) = 0)
+  IF ((SELECT COUNT(*) FROM FinancialTransactionRowImportHashes 
+     WHERE FinancialTransactionRowImportHashes.FinancialTransactionRowId=financialTransactionRowId
+       AND FinancialTransactionRowImportHashes.FinancialAccountDocumentId=financialAccountDocumentId) = 0)
   THEN
 
-    SELECT FinancialTransactionImportHashes.FinancialTransactionImportHashId 
+    SELECT FinancialTransactionRowImportHashes.FinancialTransactionRowImportHashId 
       INTO recordId
-      FROM FinancialTransactionImportHashes
-      WHERE FinancialTransactionImportHashes.FinancialTransactionId=financialTransactionId
-        AND FinancialTransactionImportHashes.FinancialAccountDocumentId=financialAccountDocumentId;
+      FROM FinancialTransactionRowImportHashes
+      WHERE FinancialTransactionRowImportHashes.FinancialTransactionRowId=financialTransactionRowId
+        AND FinancialTransactionRowImportHashes.FinancialAccountDocumentId=financialAccountDocumentId;
 
-    UPDATE FinancialTransactionImportHashes
-      SET FinancialTransactionImportHashes.ProvidedUniqueId=providedUniqueId
-      WHERE FinancialTransactionImportHashes.FinancialTransactionImportHashId=recordId;
+    UPDATE FinancialTransactionRowImportHashes
+      SET FinancialTransactionRowImportHashes.ProvidedUniqueId=providedUniqueId
+      WHERE FinancialTransactionRowImportHashes.FinancialTransactionRowImportHashId=recordId;
 
   ELSE
 
-    INSERT INTO FinancialTransactionImportHashes (FinancialTransactionId,FinancialAccountDocumentId,ProvidedUniqueId)
-      VALUES (financialTransactionId,financialAccountDocumentId,providedUniqueId);
+    INSERT INTO FinancialTransactionRowImportHashes (FinancialTransactionRowId,FinancialAccountDocumentId,ProvidedUniqueId)
+      VALUES (financialTransactionRowId,financialAccountDocumentId,providedUniqueId);
     SELECT LAST_INSERT_ID() INTO recordId;
 
   END IF;
@@ -137,8 +137,8 @@ END
 
 #
 
-CREATE PROCEDURE `SetFinancialTransactionImportSha256`(
-  IN financialTransactionId INT,
+CREATE PROCEDURE `SetFinancialTransactionRowImportSha256`(
+  IN financialTransactionRowId INT,
   IN financialAccountDocumentId INT,
   IN sha256 VARCHAR(128)
 )
@@ -146,24 +146,24 @@ BEGIN
 
   DECLARE recordId INT;
 
-  IF ((SELECT COUNT(*) FROM FinancialTransactionImportHashes
-     WHERE FinancialTransactionImportHashes.FinancialTransactionId=financialTransactionId
-       AND FinancialTransactionImportHashes.FinancialAccountDocumentId=financialAccountDocumentId) = 0)
+  IF ((SELECT COUNT(*) FROM FinancialTransactionRowImportHashes
+     WHERE FinancialTransactionRowImportHashes.FinancialTransactionRowId=financialTransactionRowId
+       AND FinancialTransactionRowImportHashes.FinancialAccountDocumentId=financialAccountDocumentId) = 0)
   THEN
 
-    SELECT FinancialTransactionImportHashes.FinancialTransactionImportHashId
+    SELECT FinancialTransactionRowImportHashes.FinancialTransactionRowImportHashId
       INTO recordId
-      FROM FinancialTransactionImportHashes
-      WHERE FinancialTransactionImportHashes.FinancialTransactionId=financialTransactionId
-        AND FinancialTransactionImportHashes.FinancialAccountDocumentId=financialAccountDocumentId;
+      FROM FinancialTransactionRowImportHashes
+      WHERE FinancialTransactionRowImportHashes.FinancialTransactionId=financialTransactionId
+        AND FinancialTransactionRowImportHashes.FinancialAccountDocumentId=financialAccountDocumentId;
 
-    UPDATE FinancialTransactionImportHashes
-      SET FinancialTransactionImportHashes.Sha256=sha256
-      WHERE FinancialTransactionImportHashes.FinancialTransactionImportHashId=recordId;
+    UPDATE FinancialTransactionRowImportHashes
+      SET FinancialTransactionRowImportHashes.Sha256=sha256
+      WHERE FinancialTransactionRowImportHashes.FinancialTransactionImportHashId=recordId;
 
   ELSE
 
-    INSERT INTO FinancialTransactionImportHashes (FinancialTransactionId,FinancialAccountDocumentId,Sha256)
+    INSERT INTO FinancialTransactionRowImportHashes (FinancialTransactionId,FinancialAccountDocumentId,Sha256)
       VALUES (financialTransactionId,financialAccountDocumentId,sha256);
     SELECT LAST_INSERT_ID() INTO recordId;
 
