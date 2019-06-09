@@ -115,25 +115,28 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
                     // Check if we need to add a resync of the hotwallet's native ledger
 
-                    Int64 cashSatoshisInLedger =
-                        CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.GetForeignCurrencyBalanceDeltaCents(
-                            Constants.DateTimeLow, Constants.DateTimeHigh).Cents;
-
-                    Int64 cashSatoshisInHotwallet =
-                        HotBitcoinAddresses.GetSatoshisInHotwallet(CurrentOrganization)[BitcoinChain.Cash];
-
-                    if (cashSatoshisInHotwallet != cashSatoshisInLedger)
+                    if (CurrentOrganization.FinancialAccounts.AssetsBitcoinHot != null) // has hotwallet
                     {
-                        // Resync required
+                        Int64 cashSatoshisInLedger =
+                            CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.GetForeignCurrencyBalanceDeltaCents(
+                                Constants.DateTimeLow, Constants.DateTimeHigh).Cents;
 
-                        EomItem resyncSatoshiCountItem = new EomItem();
-                        resyncSatoshiCountItem.Id = "ResyncSatoshisInLedger";
-                        resyncSatoshiCountItem.Icon = "approve";
-                        resyncSatoshiCountItem.Completed = false;
-                        resyncSatoshiCountItem.Skippable = false;
-                        resyncSatoshiCountItem.Callback = "ResyncSatoshisInLedger";
-                        resyncSatoshiCountItem.Name = Resources.Pages.Ledgers.EndOfMonth_CheckLedgerAgainstHotWallet;
-                        group1.Items.Add(resyncSatoshiCountItem);
+                        Int64 cashSatoshisInHotwallet =
+                            HotBitcoinAddresses.GetSatoshisInHotwallet(CurrentOrganization)[BitcoinChain.Cash];
+
+                        if (cashSatoshisInHotwallet != cashSatoshisInLedger)
+                        {
+                            // Resync required
+
+                            EomItem resyncSatoshiCountItem = new EomItem();
+                            resyncSatoshiCountItem.Id = "ResyncSatoshisInLedger";
+                            resyncSatoshiCountItem.Icon = "approve";
+                            resyncSatoshiCountItem.Completed = false;
+                            resyncSatoshiCountItem.Skippable = false;
+                            resyncSatoshiCountItem.Callback = "ResyncSatoshisInLedger";
+                            resyncSatoshiCountItem.Name = Resources.Pages.Ledgers.EndOfMonth_CheckLedgerAgainstHotWallet;
+                            group1.Items.Add(resyncSatoshiCountItem);
+                        }
                     }
                 }
             }
