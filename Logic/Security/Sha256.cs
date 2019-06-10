@@ -22,7 +22,7 @@ namespace Swarmops.Logic.Security
 
             foreach (byte oneByte in hash)
             {
-                result.Append(oneByte.ToString("X02") + " ");
+                result.Append(oneByte.ToString("X02"));
             }
 
             return result.ToString().TrimEnd();
