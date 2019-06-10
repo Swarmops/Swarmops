@@ -159,7 +159,7 @@ namespace Swarmops.Logic.Financial
                 result.IgnoreInitialLines = 8;  // increased by one in Postbank-DE "new" interface 2019
                 result.InitialReplacements = ";|\t| €||Referenz NOTPROVIDED Verwendungszweck|";
 
-                result.FieldNames[ExternalBankDataFieldName.Date] = "Buchungstag";
+                result.FieldNames[ExternalBankDataFieldName.Date] = "Buchungsdatum";
                 result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Buchungsdetails";
                 result.FieldNames[ExternalBankDataFieldName.DescriptionSecondary] = "Umsatzart";
                 result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Betrag (€)";
