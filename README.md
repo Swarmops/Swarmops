@@ -21,7 +21,7 @@ Goal #3, _functional software to assist civil liberties resistances in repressiv
 Release schedule
 ----------------
 
-Stable releases are built every six months, in March and September. These are called YEAR.MONTH, like 2019.9, along with a release name. Sprints toward these releases are built on the 5th of every month, sometimes skipping a month when bigger features are being written. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
+Stable releases are built every six months, in March and September. These are called YEAR.MONTH, like 2021.3, along with a release name. Sprints toward these releases are built on the 5th of every month, sometimes skipping a month when bigger features are being written. Internal builds are built all the time and can be tested at http://sandbox.swarmops.com/ which doesn't require a login.
 
 This is the plan, at least. "Stable" is a somewhat wide definition at the moment. Rather, Swarmops has a few functions to go to enter Open Beta stage.
 
@@ -97,7 +97,7 @@ No, there isn't a "license". This code is completely in the public domain, with 
 That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably committed to the public domain.
 
 
-2019.9 "Ankara" release features progress
+2021.3 "Ankara" release features progress
 -----------------------------------------
 
 - [x] Parameterize the bank file import procedure (big feature!)
