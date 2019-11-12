@@ -273,6 +273,17 @@
             $('img.status-icon-pleasewait[data-item="' + activeUpload + '"]').hide();
             $('img.action-icon[data-item="' + activeUpload + '"]').show();
 
+            // If upload is bank statement, show an error dialog
+
+            var itemType = activeUpload.substring(0, activeUpload.indexOf('-'));
+
+            if (itemType == "BankTransactionData") {
+                // Show a pretty dialog telling the user that things went to unpretty shit
+
+                alert("Checkpoint hit");
+
+            }
+
             activeUpload = null;
         }
 
