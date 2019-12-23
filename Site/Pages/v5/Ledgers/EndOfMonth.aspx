@@ -323,6 +323,7 @@
                         activeUpload = null;
 
                     } else {
+                        alert(result.DisplayMessage); // temporary debug function
                         // Todo: add more error handling later, maybe
                         clientFailedUpload();
                     }

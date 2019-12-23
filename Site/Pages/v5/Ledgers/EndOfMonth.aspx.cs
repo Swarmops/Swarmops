@@ -390,9 +390,38 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
             Documents documents = Documents.RecentFromDescription(guid);
 
-            // Continue here
+            // Safeguard 2019-Dec-23: Abort if more than one document (code below needs hardening against concurrent-threads race conditions)
 
-            throw new NotImplementedException();
+            if (documents.Count != 1)
+            {
+                throw new NotImplementedException();
+            }
+
+            // Load documents and process them as loaded strings, one by one
+
+            foreach (Document document in documents)
+            {
+                string documentData = document.GetReader().ReadToEnd();
+                ExternalBankDataProfile profile = account.ExternalBankDataProfile;
+                ExternalBankData loadedData = new ExternalBankData();
+                loadedData.Profile = profile;
+
+                try
+                {
+                    loadedData.LoadData(documentData, authData.CurrentOrganization, account.Currency);
+                }
+                catch (Exception)
+                {
+                    return new AjaxCallResult {Success = false, DisplayMessage = "ERROR_FILEDATAFORMAT"};
+                }
+
+                // Start async thread to import the data to the SQL database; the caller must
+                // check the status of the import
+
+                // Continue here
+            }
+
+            return new AjaxCallResult {Success = true, DisplayMessage = "SUCCESS_UPLOAD_PROCESSING"};
         }
 
         [WebMethod]
