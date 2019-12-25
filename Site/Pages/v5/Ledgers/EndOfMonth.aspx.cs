@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -343,7 +344,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
 
         [WebMethod]
-        public static AjaxCallResult UploadBankStatement(string guid, string itemId)
+        public static AjaxUploadCallResult UploadBankStatement(string guid, string itemId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             if (!authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails)))
@@ -368,11 +369,11 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
             documents.SetForeignObjectForAll(accountDoc);
 
-            return new AjaxCallResult {Success = true};
+            return new AjaxUploadCallResult {Success = true, StillProcessing = false};
         }
 
         [WebMethod]
-        public static AjaxCallResult UploadTransactionData(string guid, string itemId)
+        public static AjaxUploadCallResult UploadTransactionData(string guid, string itemId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             if (!authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails)))
@@ -412,17 +413,34 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 }
                 catch (Exception)
                 {
-                    return new AjaxCallResult {Success = false, DisplayMessage = "ERROR_FILEDATAFORMAT"};
+                    return new AjaxUploadCallResult {Success = false, DisplayMessage = "ERROR_FILEDATAFORMAT"};
                 }
 
                 // Start async thread to import the data to the SQL database; the caller must
                 // check the status of the import
 
-                // Continue here
+                string identifier = guid + "-" + itemId + "-" + Guid.NewGuid().ToString();
+
+                Thread processThread = new Thread((ThreadStart) AsyncProcesses.ImportExternalTransactionDataThreadStart);
+                processThread.Start(new AsyncProcesses.ImportExternalTransactionDataArgs {});
+
+                return new AjaxUploadCallResult
+                {
+                    Success = true,
+                    StillProcessing = true,
+                    Identifier = identifier
+                };
             }
 
-            return new AjaxCallResult {Success = true, DisplayMessage = "SUCCESS_UPLOAD_PROCESSING"};
+            return new AjaxUploadCallResult {Success = true, StillProcessing = true};
         }
+
+        private static void ProcessUploadTransactionDataThread(object args)
+        {
+            
+        }
+
+
 
         [WebMethod]
         public static AjaxCallResult ResyncSatoshisInLedger(string itemId)
@@ -480,6 +498,12 @@ namespace Swarmops.Frontend.Pages.Ledgers
         }
 
         private List<EomItemGroup> ItemGroups { get; set; }
+
+        public class AjaxUploadCallResult: AjaxCallResult
+        {
+            public bool StillProcessing { get; set; }
+            public string Identifier { get; set; }
+        }
 
 
         public string Localized_SkipPrompt_BankStatement

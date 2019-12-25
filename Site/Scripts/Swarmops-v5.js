@@ -137,6 +137,11 @@ function _masterInitializeSocket(authenticationTicket) {
             if (updateFunction != undefined) {
                 updateFunction(message.Progress);
             }
+
+            else if (typeof progressUpdateCallback === "function") // if a function for catchall progress has been defined
+            {
+                progressUpdateCallback(message);
+            }
         }
     };
 }
