@@ -294,8 +294,7 @@
             if (itemType == "BankTransactionData") {
                 // Show a pretty dialog telling the user that things went to unpretty shit
 
-                alert("Checkpoint hit");
-
+                alertify.alert("<strong>THIS FILE CANNOT BE PROCESSED</strong><br/><br/>There was an error trying to read the file. Is it really a file of the right type, for the right bank?<br/><br/>Please try again. If the error persists, try getting a fresh transaction file.");  // TODO: Localize
             }
 
             activeUpload = null;
@@ -323,9 +322,7 @@
                         activeUpload = null;
 
                     } else {
-                        if (result.DisplayMessage == "ERROR_FILEDATAFORMAT") {
-                            alertify.alert("<strong>THIS FILE CANNOT BE PROCESSED</strong><br/><br/>There was an error trying to read the file. Is it really a file of the right type, for the right bank?");  // TODO: Localize
-                        } else {
+                        if (result.DisplayMessage != "ERROR_FILEDATAFORMAT") {
                             alert(result.DisplayMessage); // temporary debug function
                         }
                         // Todo: add more error handling later, maybe
