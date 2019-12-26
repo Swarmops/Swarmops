@@ -421,8 +421,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
                 string identifier = guid + "-" + itemId + "-" + Guid.NewGuid().ToString();
 
-                /*Thread processThread = new Thread((ThreadStart) AsyncProcesses.ImportExternalTransactionDataThreadStart);
-                processThread.Start(new AsyncProcesses.ImportExternalTransactionDataArgs {});*/
+                /* Thread processThread = new Thread((ThreadStart) AsyncProcesses.ImportExternalTransactionDataThreadStart);
+                processThread.Start(new AsyncProcesses.ImportExternalTransactionDataArgs {}); */
 
                 return new AjaxUploadCallResult
                 {
