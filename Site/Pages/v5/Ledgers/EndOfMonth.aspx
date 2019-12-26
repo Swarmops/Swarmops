@@ -324,7 +324,7 @@
 
                     } else {
                         if (result.DisplayMessage == "ERROR_FILEDATAFORMAT") {
-                            alertify.dialog("<strong>THIS FILE CANNOT BE PROCESSED</strong><br/><br/>There was an error trying to read the file. Is it really a file of the right type, for the right bank?");  // TODO: Localize
+                            alertify.alert("<strong>THIS FILE CANNOT BE PROCESSED</strong><br/><br/>There was an error trying to read the file. Is it really a file of the right type, for the right bank?");  // TODO: Localize
                         } else {
                             alert(result.DisplayMessage); // temporary debug function
                         }
