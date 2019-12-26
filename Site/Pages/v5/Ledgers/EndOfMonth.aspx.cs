@@ -373,7 +373,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
         }
 
         [WebMethod]
-        public static AjaxUploadCallResult UploadTransactionData(string guid, string itemId)
+        public static AjaxUploadCallResult UploadBankTransactionData(string guid, string itemId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             if (!authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails)))
