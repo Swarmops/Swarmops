@@ -525,5 +525,15 @@ namespace Swarmops.Frontend.Pages.Ledgers
         {
             get { return CommonV5.JavascriptEscape(Resources.Global.Global_SkipNo); }
         }
+
+        public string Localized_Error_Header_BankTransactionFile
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.EndOfMonth_Error_Header_BankTransactionFile); }
+        }
+
+        public string Localized_Error_Body_BankTransactionFileFormat
+        {
+            get { return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.EndOfMonth_Error_Body_BankTransactionFileFormat); }
+        }
     }
 }

@@ -1075,4 +1075,13 @@ This can happen after bitcoin splits (&amp;quot;forks&amp;quot;) or similar even
     <value>Inspect Bitcoin Cash Hotwallet For</value>
     <comment>This is followed by a year and month dropdown</comment>
   </data>
+  <data name="EndOfMonth_Error_Body_BankTransactionFileFormat" xml:space="preserve">
+    <value>The transaction file could not be processed. Is it the right file? For the right bank? Please try again.&lt;br/&gt;&lt;br/&gt;If the error persists, try getting a fresh transaction file.</value>
+  </data>
+  <data name="EndOfMonth_Error_Header_BankTransactionFile" xml:space="preserve">
+    <value>FILE COULD NOT BE IMPORTED</value>
+  </data>
+  <data name="EndOfMonth_Warning_Header_BankTransactionFile" xml:space="preserve">
+    <value>PROBLEM WITH TRANSACTION FILE</value>
+  </data>
 </root>

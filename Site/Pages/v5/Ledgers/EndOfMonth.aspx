@@ -267,6 +267,7 @@
             }
             activeUpload = triggeredUpload;
             triggeredUpload = null;
+            activeUploadId = null; // Supplied from server side on delayed processing
 
             // switch action icon upload to status icon waiting
             $('img.action-icon[data-item="' + activeUpload + '"]').hide();
@@ -294,10 +295,11 @@
             if (itemType == "BankTransactionData") {
                 // Show a pretty dialog telling the user that things went to unpretty shit
 
-                alertify.alert("<strong>THIS FILE CANNOT BE PROCESSED</strong><br/><br/>There was an error trying to read the file. Is it really a file of the right type, for the right bank?<br/><br/>Please try again. If the error persists, try getting a fresh transaction file.");  // TODO: Localize
+                alertify.alert("<strong>" + localized_errorHeader_transactionFile + "</strong><br/><br/>" + localized_errorBody_transactionFileFormat);
             }
 
             activeUpload = null;
+            activeUploadId = null;
         }
 
         function clientFinishedUpload() {
@@ -317,10 +319,24 @@
                 function(result) {
                     if (result.Success) {
 
-                        markItemCompleted(activeUpload);
+                        if (result.StillProcessing) {
 
-                        activeUpload = null;
+                            activeUploadId = result.Identity;
 
+                            // CONTINUE HERE
+
+                            // Fade out original text, create a progress bar and the word "Processing"
+
+                            // Add a processing message updater, check against identity (see Swarmops5.JS)
+
+                            // Create a regular callback for progress in case websocket messages fail
+
+                        } else {
+                            // If we're not still processing, we're done
+
+                            markItemCompleted(activeUpload);
+                            activeUpload = null;
+                        }
                     } else {
                         if (result.DisplayMessage != "ERROR_FILEDATAFORMAT") {
                             alert(result.DisplayMessage); // temporary debug function
@@ -339,11 +355,14 @@
 
         var triggeredUpload = null;
         var activeUpload = null;
+        var activeUploadId = null;
 
         var localized_skipNoResponse = SwarmopsJS.unescape('<%=this.Localized_SkipNo%>');
         var localized_skipYesResponse = SwarmopsJS.unescape('<%=this.Localized_SkipYes%>');
         var localized_skipPromptBankStatement = SwarmopsJS.unescape('<%=this.Localized_SkipPrompt_BankStatement%>');
         var localized_skipPromptGeneric = SwarmopsJS.unescape('<%=this.Localized_SkipPrompt_Generic%>');
+        var localized_errorHeader_transactionFile = SwarmopsJS.unescape('<%=this.Localized_Error_Header_TransactionFile%>');
+        var localized_errorBody_transactionFileFormat = SwarmopsJS.unescape('<%=this.Localized_Error_Body_TransactionFileFormat%>');
 
         var uploadGuid = '<%=this.UploadControl.GuidString%>';
 

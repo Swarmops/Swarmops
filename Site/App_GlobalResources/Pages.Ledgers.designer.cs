@@ -1133,6 +1133,24 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The transaction file could not be processed. Is it the right file? For the right bank? Please try again.&lt;br/&gt;&lt;br/&gt;If the error persists, try getting a fresh transaction file..
+        /// </summary>
+        internal static string EndOfMonth_Error_Body_BankTransactionFileFormat {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Error_Body_BankTransactionFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FILE COULD NOT BE IMPORTED.
+        /// </summary>
+        internal static string EndOfMonth_Error_Header_BankTransactionFile {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Error_Header_BankTransactionFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Autofetch Transaction Data for {0}.
         /// </summary>
         internal static string EndOfMonth_FetchTransactionDataFor {
@@ -1273,6 +1291,15 @@ namespace Resources.Pages {
         internal static string EndOfMonth_VerifyColdStorage {
             get {
                 return ResourceManager.GetString("EndOfMonth_VerifyColdStorage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PROBLEM WITH TRANSACTION FILE.
+        /// </summary>
+        internal static string EndOfMonth_Warning_Header_BankTransactionFile {
+            get {
+                return ResourceManager.GetString("EndOfMonth_Warning_Header_BankTransactionFile", resourceCulture);
             }
         }
         
