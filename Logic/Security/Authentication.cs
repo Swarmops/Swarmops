@@ -603,7 +603,7 @@ namespace Swarmops.Logic.Security
 
             if (File.Exists ("/etc/swarmops/symmetricKey.config"))
             {
-                if (!File.ReadAllText ("/etc/swarmops/symmetricKey.config").StartsWith ("UNINIT"))
+                if (!File.ReadAllText ("/etc/swarmops/symmetricKey.config").StartsWith ("UNINIT"))  // the word "Uninitialized" in caps
                 {
                     throw new InvalidOperationException ("Can't overwrite encryption key - BAD BAD BAD code!");
                 }
