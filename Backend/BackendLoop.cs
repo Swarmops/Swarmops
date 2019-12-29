@@ -57,6 +57,9 @@ namespace Swarmops.Backend
 
             SystemSettings.BackendHostname = Dns.GetHostName();
 
+            // Force TLS 1.2 (why do I need to do this? The framework should enforce this)
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             // Other one-time initializations
 

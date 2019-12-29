@@ -1,6 +1,7 @@
 <%@ Application Language="C#" %>
 <%@ Import Namespace="System.IO" %>
 <%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="System.Net" %>
 <%@ Import Namespace="System.Web.ExtensionMethods" %>
 <%@ Import Namespace="Swarmops.Database" %>
 <%@ Import Namespace="Swarmops.Logic.Support" %>
@@ -11,11 +12,14 @@
     private void Application_Start(object sender, EventArgs e)
     {
         // Code that runs on application startup
+        SupportFunctions.OperatingTopology = OperatingTopology.FrontendWeb;
+
+        // Force TLS 1.2
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
         // Set supported cultures
         HttpContext.Current.Application["Cultures"] = Formatting.SupportedCultures;
         HttpContext.Current.Application["UserRoleCache"] = new Dictionary<int, string[]>();
-        SupportFunctions.OperatingTopology = OperatingTopology.FrontendWeb;
     }
 
     private void Application_End(object sender, EventArgs e)
