@@ -786,7 +786,7 @@ namespace Swarmops.Logic.Financial
             Dictionary<string, int> addressAccountLookup)
         {
             JObject addressData = JObject.Parse(
-                new WebClient().DownloadString("https://blockchain.info/address/" + bitcoinMachineAddress +
+                new WebClient().DownloadString("https://blockchain.info/rawaddr/" + bitcoinMachineAddress +
                                                "?format=json&api_key=" +
                                                SystemSettings.BlockchainSwarmopsApiKey));
             //int transactionCount = (int) (addressData["n_tx"]);

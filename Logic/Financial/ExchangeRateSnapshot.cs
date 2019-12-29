@@ -120,6 +120,13 @@ namespace Swarmops.Logic.Financial
                 {
                     string currencyCode = match.Groups[1].Value;
                     string currencyName = match.Groups[2].Value;
+
+                    if (currencyCode == "BTC")
+                    {
+                        match = match.NextMatch();
+                        continue; // we don't need to know that BTC has rate 1:1 against itself
+                    }
+
                     double btcRate = Double.Parse (match.Groups[3].Value, NumberStyles.AllowDecimalPoint,
                         CultureInfo.InvariantCulture); // rounding errors and loss of precision ok, don't use Formatting fn
 

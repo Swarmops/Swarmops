@@ -153,8 +153,6 @@ namespace Swarmops.Backend
                     // -------------------------------------------------------------------------------------
                     // -------------------------------------------------------------------------------------
 
-                    ExchangeRateSnapshot.Create();
-
                     Organizations allOrganizations = Organizations.GetAll();
                     foreach (Organization organization in allOrganizations)
                     {
