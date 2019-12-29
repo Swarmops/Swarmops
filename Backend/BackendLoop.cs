@@ -148,13 +148,24 @@ namespace Swarmops.Backend
 
                 if (args[0].ToLower() == "console")
                 {
-                    Console.WriteLine ("\r\nRunning Swarmops-Backend in CONSOLE mode.\r\n");
+                    Console.WriteLine ("\r\nRunning Swarmops-Backend in ONE OFF CONSOLE mode.\r\n");
 
                     // -------------------------------------------------------------------------------------
                     // -------------------------------------------------------------------------------------
-                    // -------------------------------------------------------------------------------------
 
+                    ExchangeRateSnapshot.Create();
+
+                    Organizations allOrganizations = Organizations.GetAll();
+                    foreach (Organization organization in allOrganizations)
+                    {
+                        // this actually checks hot storage too, but that's supposed
+                        // to be up to date since we're the ones handling it
+                        BitcoinUtility.CheckColdStorageForOrganization(organization);
+                    }
+
+                    // -------------------------------------------------------------------------------------
                     // -----------------------    INSERT ANY ONE-OFF ACTIONS HERE  -------------------------
+                    // -------------------------------------------------------------------------------------
 
 
                     Console.Write ("\r\nWaiting for mail queue to flush... ");

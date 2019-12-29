@@ -48,9 +48,14 @@ namespace Swarmops.Logic.Financial
                 client.Encoding = Encoding.UTF8;
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 int bitcoinId = GetOrCreateCryptocurrency("BTC");
+                GetOrCreateCryptocurrency("BCH"); // ensure exists
+                GetOrCreateCryptocurrency("ETH"); // ensure exists
+
                 int exchangeRateSnapshotId = SwarmDb.GetDatabaseForWriting().CreateExchangeRateSnapshot();
 
                 // Download Shapeshift data
+
+                /* This entire section is disabled -- ShapeShift disabled their rate API in August 2019. Bitpay still provides theirs, below. 
 
                 string cryptoRateDataRaw = client.DownloadString("https://shapeshift.io/marketinfo");
 
@@ -98,7 +103,7 @@ namespace Swarmops.Logic.Financial
                             }
                         }
                     }
-                }
+                }  */
 
                 // Download BitPay data
 
@@ -118,18 +123,29 @@ namespace Swarmops.Logic.Financial
                     double btcRate = Double.Parse (match.Groups[3].Value, NumberStyles.AllowDecimalPoint,
                         CultureInfo.InvariantCulture); // rounding errors and loss of precision ok, don't use Formatting fn
 
-                    btcRate /= 1000000.0; // We're operating in microbitcoin, so adjust the stored exchange rate accordingly (right-shift six decimal places)
+                    if (currencyCode != "BCH")
+                    {
+                        btcRate /= 1000000.0;
+                        // We're operating in microbitcoin, so adjust the stored exchange rate right six decimal places
+                        // EXCEPT for Bitcoin Cash which ALSO operates in microbitcoin
+                    }
 
-                    int currencyId = GetOrCreateFiatCurrency (currencyCode, currencyName);
+                    int currencyId = GetOrCreateFiatCurrency (currencyCode, currencyName);  // ETH, BTC, and BCH aren't fiat currencies, but still provided by BitPay
                     Currency currency = Currency.FromIdentityAggressive(currencyId);
 
                     // Only store if it's not a cryptocurrency provided by Shapeshift
-
+                    /*
+                     *  CONDITION DISABLED since Shapeshift doesn't provide anything anymore
+                     * 
                     if (!currency.IsCrypto)
-                    {
+                    {*/  
+
+
                         SwarmDb.GetDatabaseForWriting()
                             .CreateExchangeRateDatapoint(exchangeRateSnapshotId, currencyId, bitcoinId, btcRate);
-                    }
+
+                    /*
+                    }*/
 
                     match = match.NextMatch();
                 }
