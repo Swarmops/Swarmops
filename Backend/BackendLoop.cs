@@ -156,13 +156,18 @@ namespace Swarmops.Backend
                     // -------------------------------------------------------------------------------------
                     // -------------------------------------------------------------------------------------
 
+                    /*
                     Organizations allOrganizations = Organizations.GetAll();
                     foreach (Organization organization in allOrganizations)
                     {
                         // this actually checks hot storage too, but that's supposed
                         // to be up to date since we're the ones handling it
                         BitcoinUtility.CheckColdStorageForOrganization(organization);
-                    }
+                    }*/
+
+                    // Detect and log any forex difference exceeding 100 cents.
+
+                    OnMondayMorning();
 
                     // -------------------------------------------------------------------------------------
                     // -----------------------    INSERT ANY ONE-OFF ACTIONS HERE  -------------------------
