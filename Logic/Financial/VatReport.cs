@@ -77,23 +77,24 @@ namespace Swarmops.Logic.Financial
                 throw new InvalidOperationException("VAT report is not yet due or has already been generated");
             }
 
-            DateTime thisReport = new DateTime(organization.FirstFiscalYear, 1, 1);  // default to first report
+            DateTime thisReportDate = new DateTime(organization.FirstFiscalYear, 1, 1);  // default to first report
             VatReports reports = VatReports.ForOrganization(organization, true);
 
             if (reports.Count > 0)
             {
                 reports.Sort(VatReports.VatReportSorterByDate);
 
-                DateTime lastReport = new DateTime(reports.Last().YearMonthStart / 100, reports.Last().YearMonthStart % 100,
+                VatReport lastReport = reports.Last();
+                DateTime lastReportDate = new DateTime(lastReport.YearMonthStart / 100, reports.Last().YearMonthStart % 100,
                     1);
 
-                thisReport = lastReport.AddMonths(reportMonthInterval);
+                thisReportDate = lastReportDate.AddMonths(lastReport.MonthCount);
             }
 
-            while (thisReport.AddMonths(reportMonthInterval) < nowUtc)
+            while (thisReportDate.AddMonths(reportMonthInterval) < nowUtc)
             {
-                VatReport.Create(organization, thisReport.Year, thisReport.Month, reportMonthInterval);
-                thisReport = thisReport.AddMonths(reportMonthInterval);
+                VatReport.Create(organization, thisReportDate.Year, thisReportDate.Month, reportMonthInterval);
+                thisReportDate = thisReportDate.AddMonths(reportMonthInterval);
             }
 
 
@@ -173,11 +174,12 @@ namespace Swarmops.Logic.Financial
             {
                 reports.Sort(VatReports.VatReportSorterByDate);
 
-                DateTime lastReport = new DateTime(reports.Last().YearMonthStart/100, reports.Last().YearMonthStart%100,
+                VatReport lastReport = reports.Last();
+                DateTime lastReportDate = new DateTime(lastReport.YearMonthStart/100, reports.Last().YearMonthStart%100,
                     1);
 
-                DateTime nextReport = lastReport.AddMonths(reportMonthInterval);
-                DateTime nextReportGenerationTime = nextReport.AddMonths(reportMonthInterval);
+                DateTime nextReportDate = lastReportDate.AddMonths(lastReport.MonthCount);
+                DateTime nextReportGenerationTime = nextReportDate.AddMonths(reportMonthInterval);
 
                 return nextReportGenerationTime;
             }
