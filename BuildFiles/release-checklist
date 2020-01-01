@@ -1,9 +1,14 @@
 TO TEST AND DO A SPRINT RELEASE
 -------------------------------
 
+
+Sprint build procedure
+----------------------
+
 git pull
 git checkout sprint
-get merge master
+git merge master
+./prepare-sprint
 git push
 
 Wait for completion, then shell to swarmops-build
@@ -13,6 +18,7 @@ Reset machines swarmops-test-* to last snapshot
 Update machines by distribution
 
 If a while since last snapshot, take new snapshot
+
 
 
 Actual test procedure
