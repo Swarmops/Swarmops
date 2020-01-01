@@ -295,7 +295,7 @@
             if (itemType == "BankTransactionData") {
                 // Show a pretty dialog telling the user that things went to unpretty shit
 
-                alertify.alert("<strong>" + localized_errorHeader_transactionFile + "</strong><br/><br/>" + localized_errorBody_transactionFileFormat);
+                alertify.alert("<strong>" + localized_errorHeader_bankTransactionFile + "</strong><br/><br/>" + localized_errorBody_bankTransactionFileFormat);
             }
 
             activeUpload = null;
@@ -361,8 +361,8 @@
         var localized_skipYesResponse = SwarmopsJS.unescape('<%=this.Localized_SkipYes%>');
         var localized_skipPromptBankStatement = SwarmopsJS.unescape('<%=this.Localized_SkipPrompt_BankStatement%>');
         var localized_skipPromptGeneric = SwarmopsJS.unescape('<%=this.Localized_SkipPrompt_Generic%>');
-        var localized_errorHeader_transactionFile = SwarmopsJS.unescape('<%=this.Localized_Error_Header_TransactionFile%>');
-        var localized_errorBody_transactionFileFormat = SwarmopsJS.unescape('<%=this.Localized_Error_Body_TransactionFileFormat%>');
+        var localized_errorHeader_bankTransactionFile = SwarmopsJS.unescape('<%=this.Localized_Error_Header_BankTransactionFile%>');
+        var localized_errorBody_bankTransactionFileFormat = SwarmopsJS.unescape('<%=this.Localized_Error_Body_BankTransactionFileFormat%>');
 
         var uploadGuid = '<%=this.UploadControl.GuidString%>';
 
