@@ -241,6 +241,7 @@
             {
                 // mark the group as completed
                 $(".group-status-icon[data-group='" + groupId + "']").fadeIn();
+                $(".item-group-header[data-group='" + groupId + "']").addClass('item-group-completed');
             }
 
             // If there are items that depend on this one,
