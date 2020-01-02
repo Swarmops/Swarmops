@@ -997,14 +997,14 @@
     <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
   </data>
   <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
-    <value>External Account Data and Match Accounts</value>
+    <value>External Account Data and Account Matching</value>
     <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
   </data>
   <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
     <value>Payroll And Taxes</value>
     <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
   </data>
-  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+  <data name="EndOfMonth_SendReports" xml:space="preserve">
     <value>Send Reports to Accountants, Shareholders, etc.</value>
     <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
   </data>
@@ -1075,11 +1075,18 @@ This can happen after bitcoin splits (&amp;quot;forks&amp;quot;) or similar even
     <value>Inspect Bitcoin Cash Hotwallet For</value>
     <comment>This is followed by a year and month dropdown</comment>
   </data>
+  <data name="BalanceTransactions_NoUnbalancedTransactions" xml:space="preserve">
+    <value>There are no unbalanced transactions. Yay!</value>
+  </data>
   <data name="EndOfMonth_Error_Body_BankTransactionFileFormat" xml:space="preserve">
     <value>The transaction file could not be processed. Is it the right file? For the right bank? Please try again.&lt;br/&gt;&lt;br/&gt;If the error persists, try getting a fresh transaction file.</value>
   </data>
   <data name="EndOfMonth_Error_Header_BankTransactionFile" xml:space="preserve">
     <value>FILE COULD NOT BE IMPORTED</value>
+  </data>
+  <data name="EndOfMonth_Header_QuarterlyReports" xml:space="preserve">
+    <value>Quarterly Reports</value>
+    <comment>Presented in April, July, and October. Not in January (those are annual reports).</comment>
   </data>
   <data name="EndOfMonth_Warning_Header_BankTransactionFile" xml:space="preserve">
     <value>PROBLEM WITH TRANSACTION FILE</value>

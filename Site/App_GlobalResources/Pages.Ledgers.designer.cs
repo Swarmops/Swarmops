@@ -862,6 +862,15 @@ namespace Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no unbalanced transactions. Yay!.
+        /// </summary>
+        internal static string BalanceTransactions_NoUnbalancedTransactions {
+            get {
+                return ResourceManager.GetString("BalanceTransactions_NoUnbalancedTransactions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount Within 1% Tolerance.
         /// </summary>
         internal static string BalanceTransactions_OnePercentMatches {
@@ -1178,7 +1187,7 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to External Account Data and Match Accounts.
+        ///   Looks up a localized string similar to External Account Data and Account Matching.
         /// </summary>
         internal static string EndOfMonth_Header_ExternalData {
             get {
@@ -1196,11 +1205,11 @@ namespace Resources.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Send Reports to Accountants, Shareholders, etc..
+        ///   Looks up a localized string similar to Quarterly Reports.
         /// </summary>
-        internal static string EndOfMonth_Header_SendReports {
+        internal static string EndOfMonth_Header_QuarterlyReports {
             get {
-                return ResourceManager.GetString("EndOfMonth_Header_SendReports", resourceCulture);
+                return ResourceManager.GetString("EndOfMonth_Header_QuarterlyReports", resourceCulture);
             }
         }
         
@@ -1237,6 +1246,15 @@ namespace Resources.Pages {
         internal static string EndOfMonth_PayrollInactive {
             get {
                 return ResourceManager.GetString("EndOfMonth_PayrollInactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Reports to Accountants, Shareholders, etc..
+        /// </summary>
+        internal static string EndOfMonth_SendReports {
+            get {
+                return ResourceManager.GetString("EndOfMonth_SendReports", resourceCulture);
             }
         }
         

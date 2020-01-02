@@ -17,6 +17,19 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             if (
                 CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read)))
             {
+                if (unbalancedTransactions.Count == 0)
+                {
+                    if (rows.Count == 0)
+                    {
+                        // If there are no transactions in this time period, say so
+
+                        Response.Output.WriteLine("[{\"description\":\"" +
+                                       JsonSanitize(Resources.Pages.Ledgers.BalanceTransactions_NoUnbalancedTransactions) + "\"}]");
+                        Response.End();
+                        return;
+                    }
+                }
+
                 foreach (FinancialTransaction transaction in unbalancedTransactions)
                 {
                     string accountName = string.Empty;
