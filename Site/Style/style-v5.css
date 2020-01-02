@@ -916,6 +916,13 @@ input.data-entry-error, span.data-entry-error, div.data-entry-error {
     font-weight: 500;
 }
 
+.item-group-completed, .item-group-denied {
+    -webkit-transition: all 0.50s;
+    transition: all 0.50s;
+    color: #aaa;
+    text-decoration: line-through;
+}
+
 .action-icon {
     -webkit-transition: all 0.50s;
     transition: all 0.50s;

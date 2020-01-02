@@ -227,11 +227,13 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         }
 
                         bool groupReady = true;
+                        string groupReadyClass = " item-group-completed";
                         foreach (EomItem item in group.Items)
                         {
                             if (!item.Completed)
                             {
                                 groupReady = false;
+                                groupReadyClass = string.Empty;
                             }
                         }
 
@@ -240,7 +242,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         builder.Append(@"
 
                             $('#TableEomItems').datagrid('appendRow', {
-                                itemGroupName: ""<span class='item-group-header'" + previousGroupIdData + @">" +
+                                itemGroupName: ""<span class='item-group-header" + groupReadyClass + "'" + previousGroupIdData + @">" +
                                        group.Header.Replace(" ", "&nbsp;") + @"</span>"",
                                 action: ""<img src='/Images/Icons/iconshock-green-tick-128x96px.png' data-group='" +
                                        group.Id + "'" + previousGroupIdData +
