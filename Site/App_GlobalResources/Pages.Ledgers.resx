@@ -1077,6 +1077,7 @@ This can happen after bitcoin splits (&amp;quot;forks&amp;quot;) or similar even
   </data>
   <data name="BalanceTransactions_NoUnbalancedTransactions" xml:space="preserve">
     <value>There are no unbalanced transactions. Yay!</value>
+    <comment>Could also be translated to "everything is balanced" or similar. Try to not make it longer than the English text.</comment>
   </data>
   <data name="EndOfMonth_Error_Body_BankTransactionFileFormat" xml:space="preserve">
     <value>The transaction file could not be processed. Is it the right file? For the right bank? Please try again.&lt;br/&gt;&lt;br/&gt;If the error persists, try getting a fresh transaction file.</value>
