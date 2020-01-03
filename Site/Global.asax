@@ -75,6 +75,7 @@
             "/Pages/v5/Public{0}.aspx",  // for dev.swarmops.com/Signup (and others under Public)
             "/Pages/v5/Public{0}",       // for dev.swarmops.com/WizardStyle.css (linked from pages in Public)
             "/Pages/v5/{0}SheetSimplified.aspx", // for dev.swarmops.com/Ledgers/Balance -- one-page substitution
+            "/Pages/v5{0}View.aspx",     // for dev.swarmops.com/Ledgers/Accountant[View] and other pages that end in View
             "/Pages/v5{0}.aspx",         // for dev.swarmops.com/User/SelectLanguage
             "/Pages/v5{0}"               // for dev.swarmops.com/Ledgers/Json-SomethingData.aspx
         };
