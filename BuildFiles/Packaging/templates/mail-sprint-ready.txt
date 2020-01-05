@@ -1,3 +1,7 @@
 A sprint build has been deployed to staging area. It is ready for packaging and deployment.
 
-Shell to swarmops-build, sudo su, and run the 'do-swarmops-sprint' script in /home/rick to deploy the sprint.
+Shell to swarmops-build, sudo su, and run these scripts:
+
+First, './do-swarmops-candidate' scripts to deploy as Release Candidate to run RC tests.
+
+Second, './do-swarmops-sprint' script if all RC tests pass, to deploy the sprint from the same build live.
