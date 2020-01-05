@@ -61,7 +61,7 @@ namespace Swarmops.Controls.Base
             output.Write(
                 "<li class='Disabled' dir='ltr'><a href='#builddata'><img src='/Images/PageIcons/transparency-16px.png' height='20' width='20' />" +
                 String.Format(Resources.Menu5.Menu5_Beta_BuildTime, Formatting.SwarmopsBuildTime) + "</a></li>");
-            output.Write("<li class='Disabled' dir='ltr'><a href='#builddata'><img src='/Images/PageIcons/transparency-16px.png' height='20' width='20' />" + String.Format(Resources.Menu5.Menu5_Beta_LinesOfCode, @"<!--KaylockCount-->169,031<!--EndKaylock-->") + "</a></li>");
+            output.Write("<li class='Disabled' dir='ltr'><a href='#builddata'><img src='/Images/PageIcons/transparency-16px.png' height='20' width='20' />" + String.Format(Resources.Menu5.Menu5_Beta_LinesOfCode, @"<!--KaylockCount-->169.532<!--EndKaylock-->") + "</a></li>");
             output.Write("<li class='Separator'>&nbsp;<hr/></li>");
             output.Write("<li class='Link'><a target='_blank' href='https://github.com/Swarmops/Swarmops/issues/new'><img src='/Images/Icons/iconshock-warning-24px.png' height='20' width='20' />" + Resources.Menu5.Menu5_Beta_ReportBug + "</a></li>");
             output.Write("</ul></li>"); // End of beta menu

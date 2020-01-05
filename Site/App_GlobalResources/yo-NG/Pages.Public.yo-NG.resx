@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Signup_ActivationActive" xml:space="preserve">
+    <value>Ti o ba fẹ lati kopa siwaju si, o le pese ara rẹ fun awọn ipe-si-iṣẹ, ni aisi ọranyan kankan lati han, lọ, tabi kopa ninu pato eyikeyi ninu wọn.</value>
+  </data>
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>{0} Ni anfaani</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationLevel" xml:space="preserve">
+    <value>Bawo ni o se nifẹ lati kopa to?</value>
+  </data>
+  <data name="Signup_ActivationLevelText" xml:space="preserve">
+    <value>Ọpọlọpọ oriṣiriṣi ipele wa ti o le gba kopa ni {0}. Yan ipele ipinnu rẹ ni isalẹ (eyi ti o le yipada bi o ba se wu ọ ti o ba ya, dajudaju):</value>
+    <comment>{0} is the org name.</comment>
+  </data>
+  <data name="Signup_ActivationPassive" xml:space="preserve">
+    <value>Eyi ni ipele atilẹba, o tumọ si pe o ma kopa deede ninu ajọ naa bi ti awọn ẹsẹkuku {0}.</value>
+    <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
+  </data>
+  <data name="Signup_ActivationPassiveApplication" xml:space="preserve">
+    <value>Eyi ni ipele atilẹba, eyi ti o tumọ si pe o le ṣe ikopa bi o ṣe fẹ (tabi rara) bi {0} lakoko ti o nduro de {1} rẹ.</value>
+  </data>
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>Rẹgula {0}</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationVolunteer" xml:space="preserve">
+    <value>Ti o ba fẹ lati jọwọ ara rẹ fun iṣẹ ṣiṣe aigbafẹ fun abala kan ti ajọ naa, sise iranwọ nibi ti o ti jẹ ninilo julọ, o jẹ titẹwọ julọ. (O ma gba asayan awọn ipo ti o le jọwọ ara rẹ fun ni ojuewe ti o tẹle eyi.)</value>
+  </data>
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>Ofisa Olujọwọ ara ẹni</value>
+  </data>
+  <data name="Signup_ApplicationApproval" xml:space="preserve">
+    <value>O n fi ibẹwẹ kan silẹ fun {0} pẹlu {1}. Ko si owo ti o nii ṣe fifi iru ibẹwẹ bẹ silẹ.</value>
+  </data>
+  <data name="Signup_ApplyingFor" xml:space="preserve">
+    <value>Nbeere fun {0} ni {1}</value>
+  </data>
+  <data name="Signup_DashboardMessage" xml:space="preserve">
+    <value>Kaabọ! Eyi ni &lt;em&gt;Dasibọdu,&lt;/em&gt; nibi ti o ti le wọle si awọn iṣiṣẹ inu ti {0}. O ma gba alaye diẹ sii ni meeli ni aipẹ.&lt;br/&gt;&lt;br/&gt;
+
+Ti o ba ti jọwọ ara rẹ fun iṣẹ ṣiṣe aigbafẹ, ẹnikan (boya olujọwọ ara ẹni kan naa, bi ara rẹ) ma kan si ọ lati jiroro diẹ sii nipa awọn aaye ti o wa.</value>
+  </data>
+  <data name="Signup_DefaultFirstPageText" xml:space="preserve">
+    <value>Eyi ni akanṣe ọrọ ikini ku aabọ ajọ naa. Ko ti jẹ kikọ; o ma n jẹ ṣiṣeto ni Iseto Abojuto / Ajọ.</value>
+  </data>
+  <data name="Signup_DefaultLastPageText" xml:space="preserve">
+    <value>Eyi ni pato ọrọ ajọ naa ti o ma n jẹ fifihan fun Amudopin Iforukosilẹ. O ma n jẹ ṣiṣeto ni Iseto Abojuto / Ajọ. Nigba ti eniyan tuntun naa ba tẹ Pari, wọn ma jẹ gbigba sinu ajọ naa, wọle si, ati jẹ fifiranṣẹ si Dasibodu naa gẹgẹbi olumulo Alakọbẹrẹ.</value>
+  </data>
+  <data name="Signup_DefaultSidebarText" xml:space="preserve">
+    <value>Eyi ni alaye nipa ila ẹgbẹ kekere ti ajọ naa. O ma n jẹ ṣiṣeto ni Iseto Abojuto / Ajọ.</value>
+  </data>
+  <data name="Signup_Error_MailExists" xml:space="preserve">
+    <value>O ti forukọsilẹ tẹlẹ si iṣakoso Swarmops yii. Jọwọ lo iṣẹ Atunto Ọrọ igbaniwọle lati oju ewe iwọle dipo ṣiṣẹda akọọlẹ tuntun kan.</value>
+  </data>
+  <data name="Signup_Error_NeedPassword" xml:space="preserve">
+    <value>Jọwọ yan ati ki o tun ọrọigbaniwọle kan tẹ.</value>
+  </data>
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>Awọn ẹda ọrọ igbaniwọle mejeji ko baramu.</value>
+  </data>
+  <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
+    <value>Jọwọ yan ipele iṣẹ ṣiṣe ti o fẹ.</value>
+  </data>
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>Jọwọ yan o kere ju ipo kan.</value>
+  </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>Awọn owo ati Awọn iye owo</value>
+  </data>
+  <data name="Signup_FeeRenewalText" xml:space="preserve">
+    <value>Ko si iye owo kankan lati forukọsilẹ fun {0} {1}. Sibẹsibẹ, owo wa ma wa lati se isọdọtun {1} 
+nigbati o ba dopin ni {2}. Iye naa jẹ {3} lọwọlọwọ {4:N2}, ati pe o ko si labẹ ọranyan lati se isọdọtun.</value>
+    <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
+  </data>
+  <data name="Signup_FeeText" xml:space="preserve">
+    <value>Owo {0} naa jẹ {1} {2:N2} fun {3}. O ma gba iwe iye-owo oja ni opin ilana yii. (O le fi opin si {0} rẹ ni eyikeyi akoko.) </value>
+    <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>Se imudopin Iforukọsilẹ</value>
+  </data>
+  <data name="Signup_MailLoginKey" xml:space="preserve">
+    <value>Iwọle rẹ (meeli rẹ)</value>
+  </data>
+  <data name="Signup_NoFeeText" xml:space="preserve">
+    <value>Ko si iye owo kankan ninu fiforukọsilẹ fun {0} pẹlu {2}, tabi eyikeyi iye owo lati ṣe isọdọtun nigbati o ba dopin ni {1}. Ni afikun, o le fopin si {0} rẹ ni eyikeyi akoko.</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
+  </data>
+  <data name="Signup_Password1" xml:space="preserve">
+    <value>Yan ọrọ igbaniwọle kan</value>
+  </data>
+  <data name="Signup_Password2" xml:space="preserve">
+    <value>Tun ọrọ igbaniwọle naa tẹ</value>
+  </data>
+  <data name="Signup_SigningUp" xml:space="preserve">
+    <value>Nforukọsilẹ fun {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_Step1Header" xml:space="preserve">
+    <value>Kaabọ!</value>
+  </data>
+  <data name="Signup_Step1Text" xml:space="preserve">
+    <value>Afihan kukuru kan</value>
+  </data>
+  <data name="Signup_Step2Header" xml:space="preserve">
+    <value>Nipa rẹ</value>
+  </data>
+  <data name="Signup_Step2Text" xml:space="preserve">
+    <value>Sọ nkan diẹ nipa ara rẹ fun wa?</value>
+  </data>
+  <data name="Signup_Step3Header" xml:space="preserve">
+    <value>Ṣẹda Iwọle</value>
+  </data>
+  <data name="Signup_Step3Text" xml:space="preserve">
+    <value>Mu ọrọ igbaniwọle kan</value>
+  </data>
+  <data name="Signup_Step4Header" xml:space="preserve">
+    <value>Iṣẹ 1</value>
+  </data>
+  <data name="Signup_Step4Text" xml:space="preserve">
+    <value>Bawo ni o se nifẹ lati kopa to?</value>
+  </data>
+  <data name="Signup_Step5Header" xml:space="preserve">
+    <value>Iṣẹ 2</value>
+  </data>
+  <data name="Signup_Step5Text" xml:space="preserve">
+    <value>Kini o nifẹ lati kopa ninu?</value>
+  </data>
+  <data name="Signup_Step6Header" xml:space="preserve">
+    <value>Pari</value>
+  </data>
+  <data name="Signup_Step6Header_Payment" xml:space="preserve">
+    <value>Isanwo</value>
+  </data>
+  <data name="Signup_Step6Text" xml:space="preserve">
+    <value>Gbogbo ẹ ti pari. Jẹ ki a wọle!</value>
+  </data>
+  <data name="Signup_Step6Text_Payment" xml:space="preserve">
+    <value>Jẹ ki a san owo {0} ki a si pari!</value>
+    <comment>The {0} is Membership, Ambassadorship, etc. The Regularship label for this organization.</comment>
+  </data>
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>Pari Iforukọsilẹ.</value>
+  </data>
+  
+  <data name="Signup_VolunteerHeader" xml:space="preserve">
+    <value>Ipo wo ni o nifẹsi?</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>Agbegbe To ga julọ To wa</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
+    <value>Ipo</value>
+  </data>
+  <data name="Signup_VolunteerText" xml:space="preserve">
+    <value>Ṣayẹwo ipo ti o fẹ lati jọwọ ara rẹ / beere fun. O le ṣayẹwo ọpọlọpọ.</value>
+  </data>
+  <data name="Signup_Welcome" xml:space="preserve">
+    <value>Kaabọ si {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_YourLogon" xml:space="preserve">
+    <value>Iwọle rẹ</value>
+  </data>
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>Jọwọ yan ọrọ igbaniwọle lati wọle si Swarmops (eto yii). O ma ni anfaani lati rọpo eyi pẹlu iwọle Twitter, Facebook, tabi BitID fun irọrun ti o ba ya.</value>
+  </data>
+  <data name="Signup_YourName" xml:space="preserve">
+    <value>Orukọ rẹ</value>
+  </data>
+</root>

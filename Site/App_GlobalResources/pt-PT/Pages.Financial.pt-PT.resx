@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>Ação</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>Beneficiário</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Orçamento</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>Docs</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>Artigo</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>Pedido</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
+    <value>Recusar</value>
+    <comment>keep short</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>Descrição</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
+  <data name="CreateInboundInvoice_HeaderInvoiceImage" xml:space="preserve">
+    <value>Imagem de Factura</value>
+  </data>
+  <data name="CreateInboundInvoice_HeaderPaymentDetails" xml:space="preserve">
+    <value>Detalhes de Pagamento</value>
+    <comment>Displayed as header over supplier's account details</comment>
+  </data>
+  <data name="CreateInboundInvoice_Info" xml:space="preserve">
+    <value>Aqui é onde arquiva as faturas recebidas pela sua organização ("Contas a Pagar"). Insira o nome do fornecedor, a quantia, a data de vencimento, a referência da fatura e faça o upload de uma imagem da fatura recebida. Além disso, seleccione um orçamento. O responsável pelo orçamento precisa de atestá-las, como é habitual. (Expansões futuras planeadas a este mecanismo incluem órdens de compra e listas de fornecedores.)</value>
+  </data>
+  <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
+    <value>Receção de Fatura</value>
+  </data>
+  <data name="CreateInboundInvoice_Reference" xml:space="preserve">
+    <value>Referência da factura</value>
+  </data>
+  
+  
+  
+  <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
+    <value>Conta</value>
+    <comment>Free text input, intended to convey everything needed to get the money right</comment>
+  </data>
+  <data name="CreateInboundInvoice_UploadInvoiceImage" xml:space="preserve">
+    <value>Upload de imagem</value>
+  </data>
+  
+  
+  <data name="Donate_FundsReceived" xml:space="preserve">
+    <value>Recebidos {0} {1:N2} ({2:N0} microcoins ou "bits"). Obrigado!</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedNative" xml:space="preserve">
+    <value>Recebidas {0} microcoins ("bits"). Obrigado!</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="Donate_Info" xml:space="preserve">
+    <value>Se quiser fazer doações à organização, pode fazê-lo aqui.</value>
+  </data>
+  <data name="Donate_PageTitle" xml:space="preserve">
+    <value>Fazer um donativo</value>
+  </data>
+  <data name="Donate_StatusInitial" xml:space="preserve">
+    <value>Esperando pela transação...</value>
+  </data>
+  <data name="Donate_TransactionDetected" xml:space="preserve">
+    <value>Transação detectada, a verificar...</value>
+  </data>
+  <data name="Donate_TxLabel" xml:space="preserve">
+    <value>Doação a {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Donate_TxLabel_Loan" xml:space="preserve">
+    <value>Empréstimo a {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="FileExpenseClaim_Amount" xml:space="preserve">
+    <value>Valor da despesa (em {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
+    <value>Número de Conta</value>
+  </data>
+  
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>Nome do Banco</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Orçamento</value>
+  </data>
+  <data name="FileExpenseClaim_CostType" xml:space="preserve">
+    <value>Tipo de Despesa</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
+  <data name="FileExpenseClaim_Description" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>Os Seus Dados Bancários</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderReceiptImages" xml:space="preserve">
+    <value>Imagens do Recibo</value>
+  </data>
+  <data name="FileExpenseClaim_Info" xml:space="preserve">
+    <value>Se efetuou uma compra em nome da organização utilizando os seus próprios fundos pessoais, pode optar por pedir um reembolso através do preenchimento do formulário de &lt;em&gt;reembolso de despesas&lt;/em&gt;. Pode fazê-lo aqui, enviando os recibos e seleccionando o orçamento onde deve ser cobrado. Se tiver recebido anteriormente um avanço em dinheiro para esta compra, aqui é onde pode justificar o empréstimo da organização, através da apresentação de recibos.</value>
+  </data>
+  <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
+    <value>Pedido de Restituição de Despesa</value>
+  </data>
+  
+  
+  
+  <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
+    <value>Upload de Imagens do Recibo</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
+    <value>Por favor, indique o montante (em {0}) que está reivindicando.</value>
+  </data>
+  
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>Por favor selecione uma opção como indicado.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
+    <value>Por favor descreva o que foi esta compra.</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
+    <value>Quantia</value>
+    <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
+    <value>Pago</value>
+    <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
+    <value>Destinatário</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_Header" xml:space="preserve">
+    <value>Custos Prontos Para Pagamento</value>
+  </data>
+  <data name="PayOutMoney_Info" xml:space="preserve">
+    <value>Estes são os diversos custos para a organização que passaram todos os obstáculos para pagamento. Estão prontos a serem pagos ao destinatário. Aqui é onde pode verificá-los manualmente à medida que são pagos (provavelmente enquanto tem a página do banco aberta numa outra janela).</value>
+  </data>
+  
+  <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
+    <value>Mostrar pagamentos em aberto ({0:N0})</value>
+    <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>Pagamento de Dinheiro</value>
+  </data>
+  
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>Pagamento #{0:N0} para {1} criado.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>Pagamento #{0:N0} foi anulado e tudo revertido.</value>
+  </data>
+  
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Imposto Deduzido</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Salário Bruto</value>
+  </data>
+  
+  
+  
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Custo Total</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Imposto Total</value>
+  </data>
+  <data name="RequestCashAdvance_Amount" xml:space="preserve">
+    <value>Valor do adiantamento (em {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_BankAccount" xml:space="preserve">
+    <value>Número de conta</value>
+  </data>
+  
+  <data name="RequestCashAdvance_BankName" xml:space="preserve">
+    <value>Nome do Banco</value>
+  </data>
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>Orçamento</value>
+  </data>
+  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
+    <value>Os Seus Dados Bancários</value>
+  </data>
+  <data name="RequestCashAdvance_Info" xml:space="preserve">
+    <value>Se está prestes a fazer uma compra em nome da organização, mas necessita do dinheiro antecipadamente, ao invés de o reivindicar mais tarde, aqui pode pedir um adiantamento de dinheiro para uma certa finalidade.</value>
+  </data>
+  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
+    <value>Pedido de Adiantamento de Dinheiro</value>
+  </data>
+  <data name="RequestCashAdvance_Purpose" xml:space="preserve">
+    <value>Propósito</value>
+  </data>
+  
+  
+  
+  
+  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
+    <value>Por favor insira o seu número de conta bancária.</value>
+  </data>
+  
+  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
+    <value>Por favor insira o nome do seu banco.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
+    <value>Por favor selecione o orçamento onde cobrar.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
+    <value>Por favor indique a finalidade do adiantamento de dinheiro.</value>
+  </data>
+  <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
+    <value>Recibos aguardando a sua validação</value>
+  </data>
+  <data name="ValidateReceipts_Info" xml:space="preserve">
+    <value>Aqui é onde inspeciona e confirma a validade dos recibos que acompanham as declarações de despesas. Verifique que o valor está correto e que o recibo aparenta ser do que é realmente reivindicado.</value>
+  </data>
+  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
+    <value>Validar Recibos</value>
+  </data>
+  
+  <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
+    <value>Os recibos da Reivindicação de Despesa #{0:N0} para {1} {2:N2} foram validados.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referência</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  
+</root>

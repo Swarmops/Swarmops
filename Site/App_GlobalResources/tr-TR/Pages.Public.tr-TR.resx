@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Signup_ActivationActive" xml:space="preserve">
+    <value>Eğer daha fazla etkileşime girmek isterseniz, herhangi birine katılma, kendinizi göterme, veya görev almaya hiçbir şekilde yükümlülüğünüz olmaksızın kendinizi eylem çağrılarına uygun hale getirebilirsiniz.</value>
+  </data>
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>{0} Fırsatta</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationLevel" xml:space="preserve">
+    <value>Ne kadar etkileşim kurmak istiyorsunuz?</value>
+  </data>
+  <data name="Signup_ActivationLevelText" xml:space="preserve">
+    <value>{0}'da meşgul olabileceğiniz bir sürü seviye vardır. Aşağıda hedeflenen seviyenizi seçin (tabi ki sonra değiştirebilirsiniz):</value>
+    <comment>{0} is the org name.</comment>
+  </data>
+  <data name="Signup_ActivationPassive" xml:space="preserve">
+    <value>Bu varsayılan düzeydir ve organizasyonda taban seviye {0} olarak normal bir yer alacaksınız.</value>
+    <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
+  </data>
+  <data name="Signup_ActivationPassiveApplication" xml:space="preserve">
+    <value>Bu varsayılan seviyedir, yani {1}'inizi beklerken {0} olarak istediğiniz kadar meşgul olabilirsiniz (ya da olmayabilirsiniz).</value>
+  </data>
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>Düzenli {0}</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationVolunteer" xml:space="preserve">
+    <value>Eğer organizasyonun bir bölümü için resmi yükümlülük almak için gönüllü olmak, yardıma en çok ihtiyaç olan yerde yardım etmek isterseniz tabii ki çok hoş karşılanacaktır. (Sonraki sayfada gönüllü olabileceğiniz pozisyon seçenekleriyle karşılaşacaksınız.)</value>
+  </data>
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>Gönüllü Memur</value>
+  </data>
+  <data name="Signup_ApplicationApproval" xml:space="preserve">
+    <value>{1} ile bir {0} başvurusunda bulunuyorsunuz. Başvuru gönderme ile ilgili herhangi bir ücretlendirme bulunmamaktadır.</value>
+  </data>
+  <data name="Signup_ApplyingFor" xml:space="preserve">
+    <value>{1}'de {0} için bir başvuru</value>
+  </data>
+  <data name="Signup_DashboardMessage" xml:space="preserve">
+    <value>Hoş geldiniz! Bu &lt;em&gt;Gösterge Tablosu,&lt;/em&gt; {0} dahili işlevine erişebileceğiniz yer. Posta ile kısa süre içinde daha fazla bilgi alacaksınız.&lt;br/&gt;&lt;br/&gt;
+
+Resmi bir sorumluluk almak için gönüllü olduysanız, biri (muhtemelen kendiniz gibi bir gönüllü de olabilir) mevcut fırsatlar hakkında daha fazla bilgi almak için sizinle irtibata geçecektir.</value>
+  </data>
+  <data name="Signup_DefaultFirstPageText" xml:space="preserve">
+    <value>Bu organizasyon'un özel karşılama metnidir. Henüz yazılı değil; Yönetici / Kuruluş ayarlarında ayarlanır.</value>
+  </data>
+  <data name="Signup_DefaultLastPageText" xml:space="preserve">
+    <value>Bu Kayıt Sonlandırma için gösterilen organizasyona özel metindir. Yönetici / Kuruluş ayaları bölümünde ayarlanır. Yeni kişi Bitir tuşuna bastığında, kuruluşa girecek, oturum açacak ve Başlangıç kullanıcı olarak Gösterge Tablosuna gönderilecektir.</value>
+  </data>
+  <data name="Signup_DefaultSidebarText" xml:space="preserve">
+    <value>Bu, organizasyonun kısa kenar bilgi çubuğudur. Yönetim/Org. ayarlarında ayarlanır.</value>
+  </data>
+  <data name="Signup_Error_MailExists" xml:space="preserve">
+    <value>Bu Swarmops sunucusuna zaten kayıtlısınız. Lütfen yeni bir hesap oluşturmak yerine giriş ekranından Parolayı Sıfırlama işlevini kullanın.</value>
+  </data>
+  <data name="Signup_Error_NeedPassword" xml:space="preserve">
+    <value>Lütfen bir parola seçin ve yeniden girin.</value>
+  </data>
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>İki parola kopyası uyuşmuyor.</value>
+  </data>
+  <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
+    <value>Lütfen istediğiniz aktivite seviyesini seçiniz.</value>
+  </data>
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>Lütfen en az bir konum seçin.</value>
+  </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>Ücretler ve Maliyetler</value>
+  </data>
+  <data name="Signup_FeeRenewalText" xml:space="preserve">
+    <value>{0}{1}'e kayıt olmak için hiç bir ücret bulunumamaktadır. Ancak, {1}'inizi {2}'de sona erdiğinde yenilemek için bir ücret olacaktır. Şuan için bu ücret {3}{4:N2}dir ve yenilemeniz için hiçbir yükümlülüğünüz bulunmaz.</value>
+    <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
+  </data>
+  <data name="Signup_FeeText" xml:space="preserve">
+    <value>{0} ücreti {3} için {1} {2:N2}'dir. Bu işlemin sonunda bir fatura alacaksınız. ({0}'ınızı istediğiniz zaman sonlandırabilirsiniz.) </value>
+    <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>Kaydolmayı Sonlandır</value>
+  </data>
+  <data name="Signup_MailLoginKey" xml:space="preserve">
+    <value>Oturumunuz (mail adresiniz)</value>
+  </data>
+  <data name="Signup_NoFeeText" xml:space="preserve">
+    <value>{2} ile bir {0} için kayıt olmanın hiçbir maliyeti yoktur, ne de {1} zaman aşımına uğradığında yenileme için hiçbir bir maliyet yoktur. Ayrıca, {0}'ı istediğiniz zaman sonlandırabilirsiniz.</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
+  </data>
+  <data name="Signup_Password1" xml:space="preserve">
+    <value>Bir parola seç</value>
+  </data>
+  <data name="Signup_Password2" xml:space="preserve">
+    <value>Parolayı tekrarla</value>
+  </data>
+  <data name="Signup_SigningUp" xml:space="preserve">
+    <value>{0} için kayıt ol</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_Step1Header" xml:space="preserve">
+    <value>Hoşgeldiniz!</value>
+  </data>
+  <data name="Signup_Step1Text" xml:space="preserve">
+    <value>Kısa bir giriş</value>
+  </data>
+  <data name="Signup_Step2Header" xml:space="preserve">
+    <value>Hakkınızda</value>
+  </data>
+  <data name="Signup_Step2Text" xml:space="preserve">
+    <value>Bize biraz kendinizden bahseder misiniz?</value>
+  </data>
+  <data name="Signup_Step3Header" xml:space="preserve">
+    <value>Oturum oluştur</value>
+  </data>
+  <data name="Signup_Step3Text" xml:space="preserve">
+    <value>Bir parola seç</value>
+  </data>
+  <data name="Signup_Step4Header" xml:space="preserve">
+    <value>Faaliyet 1</value>
+  </data>
+  <data name="Signup_Step4Text" xml:space="preserve">
+    <value>Ne kadar meşgul olmak istersin?</value>
+  </data>
+  <data name="Signup_Step5Header" xml:space="preserve">
+    <value>Faaliyet 2</value>
+  </data>
+  <data name="Signup_Step5Text" xml:space="preserve">
+    <value>Ne ile meşgul olmak isterdiniz?</value>
+  </data>
+  <data name="Signup_Step6Header" xml:space="preserve">
+    <value>Tamamlandı</value>
+  </data>
+  <data name="Signup_Step6Header_Payment" xml:space="preserve">
+    <value>Ödeme</value>
+  </data>
+  <data name="Signup_Step6Text" xml:space="preserve">
+    <value>Hepsi tamam. Giriş yapalım!</value>
+  </data>
+  <data name="Signup_Step6Text_Payment" xml:space="preserve">
+    <value>{0} ücretini ödeyelim ve tamamlayalım!</value>
+    <comment>The {0} is Membership, Ambassadorship, etc. The Regularship label for this organization.</comment>
+  </data>
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>Kayıt olma tamamlandı.</value>
+  </data>
+  <data name="Signup_Unsupported" xml:space="preserve">
+    <value>Swarmops bu ücret yapısına henüz destek sağlamamıştır.</value>
+  </data>
+  <data name="Signup_VolunteerHeader" xml:space="preserve">
+    <value>Hangi pozisyon ile ilgileniyorsunuz?</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>Mevcut Olan En Yüksek Coğrafya</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
+    <value>Pozisyon</value>
+  </data>
+  <data name="Signup_VolunteerText" xml:space="preserve">
+    <value>Gönüllü olmak/başvurmak istediğiniz pozisyonu kontrol edin. Birkaçını kontrol edebilirsiniz.</value>
+  </data>
+  <data name="Signup_Welcome" xml:space="preserve">
+    <value>{0}'ya hoşgeldiniz</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_YourLogon" xml:space="preserve">
+    <value>Oturumunuz</value>
+  </data>
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>Lütfen Swarmops'a (bu sistem) giriş yapmak için bir parola seçin. Daha sonra kolaylık sağlamak için bunu bir Twitter, Facebook veya BitID girişiyle değiştirebileceksiniz.</value>
+  </data>
+  <data name="Signup_YourName" xml:space="preserve">
+    <value>Adınız</value>
+  </data>
+</root>

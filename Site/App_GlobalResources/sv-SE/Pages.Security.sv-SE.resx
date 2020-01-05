@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>Åtkomst till den här sidan nekades</value>
+  </data>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>Du försökte komma åt en sida som du inte har behörighet för. Se huvudpanelen till vänster för några skäl till varför detta kan ha hänt.</value>
+  </data>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>Åtkomst nekad</value>
+  </data>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Swarmops säkerhetsramverk har nekat dig åtkomst till sidan du försökte gå till. Detta innebär vanligtvis att dess funktioner var högre än åtkomstnivåerna som beviljats till dig för den valda organisationen (&lt;em&gt;{0}&lt;/em&gt;). Detta har inte loggats eller inrapporterats någonstans.&lt;/p&gt;&lt;p&gt;Det finns flera skäl varför detta kan ha hänt:&lt;/p&gt;</value>
+  </data>
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>Nuvarande organisation</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>Du kan delta i flera organisationer på den här Swarmops-installationen. Här kan du växla mellan dem.</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>Ny organisation</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>Du deltar inte i några andra organisationer på denna Swarmops-installation, så du inte kan byta till något annat. Därför går vi tillbaka till Översikten istället.</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>Byt organisation</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>Byt</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>Inväntar Databasuppgradering</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>Denna sida kräver en uppgraderad Swarmops-databas.</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>Väntar på databasuppgradering</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;En omedelbart förestående databasuppgradering hindrar din tillgång till denna sida. &lt;strong&gt;Detta är ett tillfälligt fel&lt;/strong&gt; och Swarmops servrar borde redan arbeta på uppgraderingen ifråga.&lt;/p&gt; &lt;p&gt;Försök ladda om sidan om några minuter. Om det här felet kvarstår i mer än femton minuter, så kontakta din systemadministratör.&lt;/p&gt;</value>
+  </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>Kontot &lt;strong&gt;har inte låsts&lt;/strong&gt; utan är fortfarande öppet för användning. Det finns inget sådant konto, låskoden var felaktig, eller låskoden var för gammal. Om du fortfarande vill låsa detta konto, kontakta administratörerna för denna Swarmopsinstallation.</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>Om du ser denna sida, försöker du låsa ett användarkonto av säkerhetsskäl. Om länken var giltig och inte har förfallit, har kontot redan låsts.</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>Nedlåsning av användarkonto</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>Kontot &lt;strong&gt;är nu låst&lt;/strong&gt; och nu avslutas alla aktiva sessioner.</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>Låsningskod</value>
+  </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>&lt;strong&gt;ÖPPNA RÄKENSKAPER&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;{0} har Öppna Räkenskaper. Detta innebär att vem som helst kan läsa och granska organisationens finansiella rapporter och bokföring. Du har loggats på med behörighet att göra just detta.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt;Tvåfaktorslogin med BitId är nu påslaget.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Från och med nu kan du använda din bitcoinplånbok för att logga in (och &lt;strong&gt;behöver&lt;/strong&gt; göra det). Tack för att du ökar säkerheten.&lt;br/&gt;&lt;br/&gt;Kom ihåg att lösenordsskydda din telefon också om du inte redan gjort det.</value>
+  </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;BITID-INLOGGNING KRÄVS&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Denna inloggning kräver tvåfaktorsautentisering med BitID. Du kan inte logga in med användarnamn och lösenord.</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>Ange din kod från Google Authenticator.</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Logga in med Bitcoin-signatur (BitId)</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>Hjälp</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>Logga in till Swarmops med en bitcoinplånbok som stöder BitID. Du behöver inte ha några pengar i den. Om du inte har en BitID-kapabel bitcoinplånbok, så kan du logga in manuellt med ett klassiskt användarnamn och lösenord. (Ditt användarnamn är ditt namn eller e-post.)</value>
+  </data>
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>Loggar in, vänta...</value>
+  </data>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>Manuell lösenordsinloggning</value>
+    <comment>Header to manual username/password form</comment>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>Inloggning</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>Lösen</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>Jag har supit bort mitt lösenord</value>
+  </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>Jag vill med i {0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>Vill du vara med?</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>Swarmops känner inte igen den här bitcoinadressen. Logga in manuellt och aktivera din bitcoinplånbok innan du använder den för att logga in.</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>Använd BitID tvåfaktorsautentisering?</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>Använd manuellt lösenord?</value>
+    <comment>Switches from BitId to Username/Password form</comment>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>Det finns ingen giltig lösenordsåterställningskod för denna mailadress, adressen finns inte, återställningskoden är ogiltig, eller så har den har gått ut.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Det gick inte att återställa lösenordet.&lt;/strong&gt;</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>Du sätter ett nytt lösenord för ett användarkonto. Ange det nya lösenordet två gånger för att lagra det och logga in. (Om du försöker påbörja processen med återställning av lösenord, så behöver du en återställningskod först. &lt;a href="/Security/RequestPasswordReset"&gt;Skapa en återställningskod.&lt;/a&gt;)</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>Ange din mailadress för att få instruktioner för hur du går vidare med lösenordåterställning. Instruktionerna innehåller en unik återställningsbiljett som du behöver.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>Din mailadress</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>Ange din mailadress igen</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>De två lösenorden matchar inte. Försök igen.</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>Det nya lösenordet får inte vara tomt.</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>Återställ lösenord</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>Nytt lösenord</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>Upprepa nytt lösenord</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>Du kan återställa lösenordet som är kopplat till en viss mailadress. En länk med en återställningskod kommer att skickas till den adressen, som du sedan måste följa för att återställa ditt lösenord.</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>Återställ</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>Ditt lösenord har ändrats och du har loggats in på Swarmops med ditt nya lösenord.</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>Återställningskod</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>Om mailadressen var kopplad till ett konto på denna Swarmopsinstallation, så &lt;strong&gt;har en återställningskod skickats dit.&lt;/strong&gt; Öppna det mailet och klicka på länken för att återställa ditt lösenord. (Om mailadressen inte fanns, så skickades ingenting.)&lt;br/&gt;&lt;br/&gt;Du kan stänga detta browserfönster. Det behövs inte längre.</value>
+  </data>
+</root>

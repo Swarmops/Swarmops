@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>Приступ овој страници је одбијен</value>
+  </data>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>Покушали сте да приступите страници за коју немате овлашћења. Погледајте основни панел и разлоге због којих се ово могло догодити.</value>
+  </data>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>Приступ одбијен</value>
+  </data>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Swarmops security framework Вам је ускратио приступ страници на коју сте се упутили. То обично значи да сте хтели да приступите страници која је намењена члановима вишег нивоа организације (&lt;em&gt;{0}&lt;/em&gt;). Овај догађај није нигде уснимљен.&lt;/p&gt;&lt;p&gt;Ево још неколико разлога због којих се ово могло догодити:&lt;/p&gt;</value>
+  </data>
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>Тренутна организација</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>Можете узети учешћа у неколико организација у оквиру ове Swarmops инсталације. Ево где се можете пребацивати између њих.</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>Нова организација</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>Не учествујете ни у једној другој организацији у оквиру Swarmops инсталације, те стога не можете прећи никуд. Уместо тога, враћамо се на Контролну таблу.</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>Промени организације</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>Пребаци на</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>Надоградња базе података на чекању</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>Ова страница захтева надограђену Swarmops базу података. </value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>Чека се надоградња базе података</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Надоградња базе података је на чекању. &lt;strong&gt;Такво стање је само привремено&lt;/strong&gt; и Swarmops сервери би требало да већ раде на потребној надоградњи.&lt;/p&gt;
+&lt;p&gt;Покушајте за неколико минута да поново учитате страницу. Ако ситуација потраје дуже од петнаест минута, контактирајте свог систем администратора.&lt;/p&gt;</value>
+  </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>Налог &lt;strong&gt;није закључан&lt;/strong&gt;. Такав налог не постоји, или је ticket неважећи, или је истекао. Ако и даље желите да закључате овај налог, контактирајте администраторе за ову Swarmops инсталацију.</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>Ако видите ову страну, то значи да покушавате да закључате кориснички налог из безбедносних разлога. Ако линк није истекао, налог је већ закључан.</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>Закључавање корисничког налога</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>Налог је &lt;strong&gt;успешно закључан&lt;/strong&gt; и све активне сесије су сада угашене.</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>Ticket о закључавању</value>
+  </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>&lt;strong&gt;ОТВОРЕНЕ ПОСЛОВНЕ КЊИГЕ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;{0} су отворене. То значи да свако има увид у рачуноводствене записе и финансијске књиге. Пријављени сте у мени Операције унутар организације како бисте управо то урадили.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt;BitId дво-факторска аутентификација је сада активна.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Од сада можете користити свој bitcoin новчаник како бисте се пријавили (и &lt;strong&gt;мораћете&lt;/strong&gt; тако). Хвала Вам што сте активирали додатну сигурност.&lt;br/&gt;&lt;br/&gt;Не заборавите да и свој телефон обезбедите лозинком.</value>
+  </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;BITID ПРИЈАВЉИВАЊЕ, НЕОПХОДНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Пријављивање захтева BitId аутентификацију, а њу одобрава власник налога. Не можете се пријавити само са корисничким именом и лозинком.</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>Унесите кôд из Google Authenticator-а.</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Пријављивање путем Bitcoin Signature (BitId)</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>Помоћ</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>Пријавите се на Swarmops коришћењем bitcoin новчаника који подржава bitid. На њему не морате имати средстава. Ако немате bitcoin новчаник који подржава bitid можете се пријавити преко старе комбинације корисничког имена и лозинке. (Ваше корисничко име је Ваше име или email.)</value>
+  </data>
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>Пријављивање, молим сачекајте...</value>
+  </data>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>Ручно пријављивање, путем лозинке</value>
+    <comment>Header to manual username/password form</comment>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>Пријави се</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>Пролаз</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>Упомоћ, заборавио сам лозинку!</value>
+  </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>Пријави ме за {0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>Тражите како да се прикључите?</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>Swarmops не препознаје ову адресу. Молимо Вас, пријавите се ручно и активирајте адресу.</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>Желите да користите BitID дво-факторску аутентификацију?</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>Желите да се пријављујете путем лозинке?</value>
+    <comment>Switches from BitId to Username/Password form</comment>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>Корисник</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>Нема валидног ticket-а за ресетовање лозинке, који се односи на дату mail адресу. Адреса је непостојећа, ticket није валидан, или је истекао.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Ресетовање лозинке није успело.&lt;/strong&gt;</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>Ресетујете лозинку за кориснички налог. Унесите нову лозинку два пута како бисте је задали и пријавили се. (ако покушавате да покренете процедуру за ресетовање лозинке, за то Вам је наопходан ticket. &lt;a href="/Security/RequestPasswordReset"&gt;Креирај ticket.&lt;/a&gt;)</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>Унесите своју mail адресу како бисте примили упутства како да наставите са процедуром за ресетовање лозинке. Инструкције ће садржати јединствени код ограниченог времена трајања, који ћете морати да искористите како бисте наставили.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>Унесите своју mail адресу</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>Поново унесите своју mail адресу</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>Две лозинке се не поклапају. Поновите.</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>Нова лозинка не може бити празна.</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>Ресетуј Лозинку</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>Нова лозинка</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>Поновите нову лозинку</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>Можда ћете ресетовати лозинку која је повезана са mail адресом. Линк са ticket-кодом ће бити послат на ту mail адресу. Линку морате приступити да бисте пратили даља упутства за ресет лозинке.</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>Ресетуј</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>Ваша лозинка је промењена и Ви сте пријављени на Swarmops са новом лозинком.</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>Ticket</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>Ако је mail адреса повезана са налогом за ову Swarmops инсталацију, &lt;strong&gt;ticket за ресет је послат.&lt;/strong&gt; Отворите добијени mail и кликните на линк у поруци како бисте извршили ресет лозинке. (Ако email-а нема, ништа није послато.)&lt;br/&gt;&lt;br/&gt;Можете затворити овај tab. Неће Вам бити потребан.</value>
+  </data>
+</root>
