@@ -163,6 +163,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 ItemGroups.Add(group1);
             }
 
+            // Group: Payroll and Taxes
+            
             EomItemGroup group2 = new EomItemGroup();
             group2.Header = Resources.Pages.Ledgers.EndOfMonth_Header_PayrollTaxes;
             group2.Id = "PayrollTaxes";
@@ -201,10 +203,28 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 group2.Items.Add(payrollInactive);
             }
 
-
             if (group2.Items.Count > 0)
             {
                 ItemGroups.Add(group2);
+            }
+
+            // Group: Closure of Ledgers and Annual Reports
+
+            int lastClosedYear = CurrentOrganization.Parameters.FiscalBooksClosedUntilYear;
+            if (lastClosedYear - 1 < DateTime.UtcNow.Year)
+            {
+                EomItemGroup groupReports = new EomItemGroup();
+
+                groupReports.Header = Resources.Pages.Ledgers.EndOfMonth_Header_AnnualReports;
+                EomItem itemCloseYear = new EomItem();
+                itemCloseYear.Id = "CloseLedgers";
+                itemCloseYear.Callback = "CloseLedgers";
+                itemCloseYear.Icon = "document";
+                itemCloseYear.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_CloseLedgersFor,
+                    lastClosedYear + 1);
+
+                groupReports.Items.Add(itemCloseYear);
+                ItemGroups.Add(groupReports);
             }
         }
 
