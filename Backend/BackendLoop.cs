@@ -223,10 +223,6 @@ namespace Swarmops.Backend
 
             BotLog.Write(0, "MainCycle", "Backend STARTING");
 
-            // Disable certificate checking due to Mono not installing with a certificate repository - this is UTTERLY broken
-
-            SupportFunctions.DisableSslCertificateChecks(); // MONO BUG/MISFEATURE: Mono has no root certificates, so can't verify cert
-
             // Tell sysop we're starting
 
             OutboundComm.CreateNotification (null, NotificationResource.System_Startup_Backend);
