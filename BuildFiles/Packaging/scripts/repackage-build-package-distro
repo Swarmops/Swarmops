@@ -22,7 +22,7 @@ if [[ $2 == "internal" ]]; then
   echo "Overriding default packaging config; using internal/experimental configuration"
 fi
 
-if [ $RELEASETYPE == "candidate" ]; then
+if [[ $RELEASETYPE == "candidate" ]]; then
   PACKAGESUFFIX="-rc"
   REVERSEPACKAGESUFFIX=""
 fi
