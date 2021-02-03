@@ -78,6 +78,8 @@ namespace Swarmops.Database
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
+                Console.WriteLine("DEBUG: " + connection.ConnectionString);  // TODO/HACK: Temporary debug code
+
                 connection.Open();
 
                 string sql = "SELECT " + backendServiceOrderFieldSequence +
