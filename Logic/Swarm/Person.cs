@@ -622,6 +622,12 @@ namespace Swarmops.Logic.Swarm
                     FromBasic (new BasicPerson (personId, string.Empty, "Open Ledgers", string.Empty, string.Empty,
                         string.Empty, string.Empty, 0, string.Empty, 0, Constants.DateTimeLow, PersonGender.Unknown, ""));
             }
+            else if (personId == Person.UnnamedAccountantIdentity)
+            {
+                return FromBasic(new BasicPerson(personId, string.Empty, "Accountant", string.Empty, string.Empty,
+                    string.Empty, string.Empty, 0, string.Empty, 0, Constants.DateTimeLow, PersonGender.Unknown,
+                    string.Empty));
+            }
 
             throw new ArgumentException("No such PersonId: " + personId);
         }
@@ -1218,6 +1224,7 @@ namespace Swarmops.Logic.Swarm
         // A couple of special cases
 
         public const int OpenLedgersIdentity = -1;
+        public const int UnnamedAccountantIdentity = -2;
 
 
         public Participation ParticipationOf (Organization organization)

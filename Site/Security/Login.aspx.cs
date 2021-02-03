@@ -18,6 +18,7 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
+using WebSocketSharp;
 
 namespace Swarmops.Pages.Security
 {
@@ -102,6 +103,32 @@ namespace Swarmops.Pages.Security
                     Response.Redirect(HttpContext.Current.Request["ReturnUrl"]);  // Returns to the requested URL with auth cookie set
                 }
             }
+
+            // If this is an Accountant Inspection link, autologin as Accountant
+
+            string accountantInspection = Request.QueryString["Accountant"];
+            if (!accountantInspection.IsNullOrEmpty())
+            {
+                /*
+                 * 
+                 * TODO TODO TODO
+                 * 
+
+                DashboardMessage.Set(String.Format(Resources.Pages.Security.Login_AsUnnamedAccountant, organizationOpenLedgers.Name));
+                FormsAuthentication.SetAuthCookie(Authority.FromLogin(Person.FromIdentity(Person.OpenLedgersIdentity), organizationOpenLedgers).ToEncryptedXml(), true);
+                if (HttpContext.Current.Request["ReturnUrl"] == "/")
+                {
+                    Response.Redirect(@"/Ledgers/Balance");
+                }
+                else
+                {
+                    Response.Redirect(HttpContext.Current.Request["ReturnUrl"]);  // Returns to the requested URL with auth cookie set
+                }
+
+
+                */
+            }
+
 
             // Check for SSL and force it
 

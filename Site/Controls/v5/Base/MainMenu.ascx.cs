@@ -43,6 +43,10 @@ namespace Swarmops.Controls.Base
             {
                 mainMenuFile = "~/MainMenu-v5-OpenLedgers.xml";
             }
+            else if (CurrentUser.Identity == Person.UnnamedAccountantIdentity)
+            {
+                mainMenuFile = "~/MainMenu-v5-Accountant.xml";
+            }
 
             using (TextReader reader = new StreamReader (Server.MapPath (mainMenuFile)))
             {

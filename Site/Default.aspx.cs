@@ -35,6 +35,13 @@ namespace Swarmops.Frontend
             {
                 Response.Redirect ("/Ledgers/Balance");
             }
+
+            // If Accountant, redirect to Accountant View
+
+            if (CurrentUser.Identity == Person.UnnamedAccountantIdentity)
+            {
+                Response.Redirect("/Ledgers/Accountant");
+            }
         }
 
         internal void InitializePositionPanel()

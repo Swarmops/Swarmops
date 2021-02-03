@@ -211,19 +211,29 @@ namespace Swarmops.Frontend.Pages.Ledgers
             // Group: Closure of Ledgers and Annual Reports
 
             int lastClosedYear = CurrentOrganization.Parameters.FiscalBooksClosedUntilYear;
-            if (lastClosedYear - 1 < DateTime.UtcNow.Year)
+            int currentYear = DateTime.UtcNow.Year;
+            string dependsOn = string.Empty;
+
+            if (lastClosedYear - 1 < currentYear)
             {
                 EomItemGroup groupReports = new EomItemGroup();
-
                 groupReports.Header = Resources.Pages.Ledgers.EndOfMonth_Header_AnnualReports;
-                EomItem itemCloseYear = new EomItem();
-                itemCloseYear.Id = "CloseLedgers";
-                itemCloseYear.Callback = "CloseLedgers";
-                itemCloseYear.Icon = "document";
-                itemCloseYear.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_CloseLedgersFor,
-                    lastClosedYear + 1);
 
-                groupReports.Items.Add(itemCloseYear);
+                while (lastClosedYear - 1 < currentYear)
+                {
+                    lastClosedYear++; // we're using this as iterator, the year doesn't actually close on this command
+
+                    EomItem itemCloseYear = new EomItem();
+                    itemCloseYear.DependsOn = dependsOn;
+                    itemCloseYear.Id = "CloseLedgers-" + (lastClosedYear).ToString(CultureInfo.InvariantCulture);
+                    itemCloseYear.Callback = "PrepareCloseLedgers";
+                    itemCloseYear.Icon = "document";
+                    itemCloseYear.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_CloseLedgersFor,
+                        lastClosedYear);
+
+                    groupReports.Items.Add(itemCloseYear);
+                    dependsOn = itemCloseYear.Id; // Makes next year's close depend on this one being done
+                }
                 ItemGroups.Add(groupReports);
             }
         }
@@ -349,6 +359,32 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 return builder.ToString();
 
             }
+        }
+
+        [WebMethod]
+        public static AjaxCallResult PrepareCloseLedgers(string itemId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            if (!authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            int year = Int32.Parse(itemId.Substring("CloseLedgers-".Length));
+            int ledgersClosedUntil = authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear;
+
+            if (year != ledgersClosedUntil + 1)
+            {
+                throw new InvalidOperationException("Can't close this year");
+            }
+
+            throw new NotImplementedException();
+        }
+
+        [WebMethod]
+        public static AjaxCallResult ActuallyCloseLedgers(string itemId)
+        {
+            throw new NotImplementedException();
         }
 
         [WebMethod]
