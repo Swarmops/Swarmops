@@ -145,7 +145,7 @@ namespace Swarmops.Backend
 
             if (resolverEnvelope.ResolverDataXml.Trim().Length < 1)
             {
-                throw new InvalidOperationException("resolverEnvelope.ResolverDataXml is empty");
+                throw new InvalidOperationException("resolverEnvelope.ResolverDataXml is empty with envelope type " + resolverEnvelope.GetType().ToString() + " and envelope XML " + comm.ResolverDataXml);
             }
 
             // Create the resolver via reflection of the static FromXml method
