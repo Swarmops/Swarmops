@@ -25,7 +25,7 @@ namespace Swarmops.Backend
                     BotLog.Write(2, "CommsTx", "--resolving");
                     ICommsResolver resolver = null;
 
-                    if (comm.ResolverDataXml.Trim().Length > 0)
+                    if (!String.IsNullOrWhiteSpace(comm.ResolverDataXml)
                     {
                         resolver = FindResolver(comm);
                         resolver.Resolve(comm);
