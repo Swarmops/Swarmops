@@ -78,9 +78,12 @@ namespace Swarmops.Database
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
+                Console.WriteLine("--------------------------------------------------------");
                 Console.WriteLine("DEBUG: " + connection.ConnectionString);  // TODO/HACK: Temporary debug code
-
+                Console.WriteLine("--------------------------------------------------------");
+                Console.WriteLine("Before Open");
                 connection.Open();
+                Console.WriteLine("Between Open and GetDbCommand");
 
                 string sql = "SELECT " + backendServiceOrderFieldSequence +
                              ConstructWhereClause("BackendServiceOrders", conditions) +
@@ -90,9 +93,11 @@ namespace Swarmops.Database
                 // this ORDERBY + LIMIT gets the oldest first in a FIFO queue
 
                 DbCommand command = GetDbCommand(sql, connection);
+                Console.WriteLine("Between GetDbCommand and ExecuteReader");
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
+                    Console.WriteLine("Between ExecuteReader and reader.Read");
                     while (reader.Read())
                     {
                         result.Add(ReadBackendServiceOrderFromDataReader(reader));
