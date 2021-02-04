@@ -23,10 +23,11 @@ namespace Swarmops.Backend
                 if (!comm.Resolved)
                 {
                     BotLog.Write(2, "CommsTx", "--resolving");
+                    ICommsResolver resolver = null;
 
                     if (comm.ResolverDataXml.Trim().Length > 0)
                     {
-                        ICommsResolver resolver = FindResolver(comm);
+                        resolver = FindResolver(comm);
                         resolver.Resolve(comm);
                     }
                     comm.Resolved = true;
