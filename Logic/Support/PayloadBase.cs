@@ -37,12 +37,9 @@ namespace Swarmops.Logic.Support
             xml = xml.Replace ("&#x0;", "");
             xml = xml.Replace ("\x00", "");
 
-            Console.WriteLine("XML: " + xml);
-            Console.WriteLine("FromXml before new XmlSerializer()");
-
-            if (xml.Trim().Length < 1)
+            if (String.IsNullOrWhiteSpace(xml))
             {
-                throw new InvalidOperationException("xml is empty"); // Catch a weird empty-XML error and try to get a stack trace
+                throw new ArgumentException("xml is empty"); // Catch a weird empty-XML error and try to get a stack trace
             }
 
             XmlSerializer serializer = new XmlSerializer (typeof (T));
@@ -51,13 +48,9 @@ namespace Swarmops.Logic.Support
             byte[] xmlBytes = Encoding.UTF8.GetBytes (xml);
             stream.Write (xmlBytes, 0, xmlBytes.Length);
 
-            Console.WriteLine("Before Deserialize()");
-
             stream.Position = 0;
             T result = (T) serializer.Deserialize (stream);
             stream.Close();
-
-            Console.WriteLine("Before Returning");
 
             return result;
         }
