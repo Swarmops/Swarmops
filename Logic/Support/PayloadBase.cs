@@ -40,6 +40,11 @@ namespace Swarmops.Logic.Support
             Console.WriteLine("XML: " + xml);
             Console.WriteLine("FromXml before new XmlSerializer()");
 
+            if (xml.Trim().Length < 1)
+            {
+                throw new InvalidOperationException("xml is empty"); // Catch a weird empty-XML error and try to get a stack trace
+            }
+
             XmlSerializer serializer = new XmlSerializer (typeof (T));
 
             MemoryStream stream = new MemoryStream();
