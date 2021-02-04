@@ -24,8 +24,11 @@ namespace Swarmops.Backend
                 {
                     BotLog.Write(2, "CommsTx", "--resolving");
 
-                    ICommsResolver resolver = FindResolver(comm);
-                    resolver.Resolve(comm);
+                    if (comm.ResolverDataXml.Trim().Length > 0)
+                    {
+                        ICommsResolver resolver = FindResolver(comm);
+                        resolver.Resolve(comm);
+                    }
                     comm.Resolved = true;
 
                     int recipientCount = comm.Recipients.Count;
