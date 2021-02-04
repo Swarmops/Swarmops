@@ -15,7 +15,6 @@ namespace Swarmops.Database
         {
             DbConnection connection = this.ProviderFactory.CreateConnection();
             connection.ConnectionString = this.ConnectionString;
-            Console.WriteLine("DEBUG: " + this.ConnectionString); // debug
             return connection;
         }
 
