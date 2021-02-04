@@ -103,6 +103,7 @@ namespace Swarmops.Database
                         result.Add(ReadBackendServiceOrderFromDataReader(reader));
                     }
 
+                    Console.WriteLine("Returning {0} records", result.Count);
                     return result.ToArray();
                 }
             }
