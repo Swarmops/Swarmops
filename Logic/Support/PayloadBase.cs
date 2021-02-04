@@ -37,15 +37,22 @@ namespace Swarmops.Logic.Support
             xml = xml.Replace ("&#x0;", "");
             xml = xml.Replace ("\x00", "");
 
+            Console.WriteLine("XML: " + xml);
+            Console.WriteLine("FromXml before new XmlSerializer()");
+
             XmlSerializer serializer = new XmlSerializer (typeof (T));
 
             MemoryStream stream = new MemoryStream();
             byte[] xmlBytes = Encoding.UTF8.GetBytes (xml);
             stream.Write (xmlBytes, 0, xmlBytes.Length);
 
+            Console.WriteLine("Before Deserialize()");
+
             stream.Position = 0;
             T result = (T) serializer.Deserialize (stream);
             stream.Close();
+
+            Console.WriteLine("Before Returning");
 
             return result;
         }
