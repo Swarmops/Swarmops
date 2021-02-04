@@ -332,11 +332,13 @@ namespace Swarmops.Backend
 
                     // Wait for a maximum of ten seconds (the difference between cycleStartTime and cycleEndTime)
 
+                    const int cycleTimeMilliseconds = 500;
+
                     int iterationCount = 0;
                     DateTime utcNow = DateTime.UtcNow;
                     while (utcNow < cycleEndTime && !exitFlag)
                     {
-                        int signalIndex = 250;
+                        int signalIndex = cycleTimeMilliseconds;
 
                         // Handle important service orders (those that can't be lost in a random loss
                         // of connection of a socket):
@@ -344,14 +346,14 @@ namespace Swarmops.Backend
                         BackendServiceOrders backendOrders = BackendServiceOrders.GetNextBatch(5);
                         backendOrders.Execute(); // takes at most 250ms per BSO reqs
 
-                        // Block until a SIGINT or SIGTERM signal is generated, or 1/4 second has passed.
+                        // Block until a SIGINT or SIGTERM signal is generated, or 1/2 second has passed.
                         // However, we can't do that in a development environment - it won't have the
                         // Mono.Posix assembly, and won't understand UnixSignals. So people running this in
                         // a dev environment will need to stop it manually.
 
                         if (!Debugger.IsAttached)
                         {
-                            signalIndex = UnixSignal.WaitAny(killSignals, 250);
+                            signalIndex = UnixSignal.WaitAny(killSignals, cycleTimeMilliseconds);
                         }
                         else
                         {
@@ -361,10 +363,10 @@ namespace Swarmops.Backend
                                 string.Format(CultureInfo.InvariantCulture,
                                     "Waiting for {0:F2} more seconds for cycle end",
                                     timeLeft.TotalMilliseconds/1000.0));
-                            Thread.Sleep(250);
+                            Thread.Sleep(cycleTimeMilliseconds);
                         }
 
-                        if (signalIndex < 250)
+                        if (signalIndex < cycleTimeMilliseconds)
                         {
                             exitFlag = true;
                             Console.WriteLine("Caught signal " + killSignals[signalIndex].Signum + ", exiting");
@@ -374,7 +376,7 @@ namespace Swarmops.Backend
 
                         utcNow = DateTime.UtcNow;
 
-                        // Every second, send an internal heartbeat
+                        // Every four loops, send an internal heartbeat
 
                         if (iterationCount++%4 == 0)
                         {
