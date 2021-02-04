@@ -87,7 +87,7 @@ namespace Swarmops.Database
         {
             return "server=" + credentials.ServerSet.ServerPriorities[0].Split (';')[0] + ";database=" +
                    credentials.Database +
-                   ";user=" + credentials.Username + ";password=" + credentials.Password;
+                   ";uid=" + credentials.Username + ";pwd=" + credentials.Password + ";SslMode=Preferred;";
         }
 
 
