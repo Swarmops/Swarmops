@@ -72,7 +72,7 @@ namespace Swarmops.Backend
 
             if (!Debugger.IsAttached)
             {
-                killSignals = new UnixSignal[] {new UnixSignal (Signum.SIGINT), new UnixSignal (Signum.SIGTERM), new UnixSignal(Signum.SIGKILL), new UnixSignal(Signum.SIGABRT), new UnixSignal(Signum.SIGQUIT), new UnixSignal(Signum.SIGSTOP), new UnixSignal(Signum.SIGPWR) };
+                killSignals = new UnixSignal[] {new UnixSignal (Signum.SIGINT), new UnixSignal (Signum.SIGTERM), new UnixSignal(Signum.SIGKILL), new UnixSignal(Signum.SIGABRT), new UnixSignal(Signum.SIGQUIT), new UnixSignal(Signum.SIGSTOP), new UnixSignal(Signum.SIGPWR), new UnixSignal(Signum.SIGHUP)  };
             }
 
             BotLog.Write (0, "MainCycle", string.Empty);
