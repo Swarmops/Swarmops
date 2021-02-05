@@ -60,7 +60,7 @@ namespace Swarmops.Frontend.Socket
 
             if (!Debugger.IsAttached)
             {
-                killSignals = new UnixSignal[] {new UnixSignal(Signum.SIGINT), new UnixSignal(Signum.SIGTERM)};
+                killSignals = new UnixSignal[] { new UnixSignal(Signum.SIGINT), new UnixSignal(Signum.SIGTERM), new UnixSignal(Signum.SIGABRT), new UnixSignal(Signum.SIGQUIT), new UnixSignal(Signum.SIGPWR), new UnixSignal(Signum.SIGHUP) };
             }
 
             Console.WriteLine(" * Swarmops Frontend Socket Server starting up.");
@@ -162,13 +162,14 @@ namespace Swarmops.Frontend.Socket
                     lastSecond = cycleStartTime.Second;
                     lastMinute = cycleStartTime.Minute;
                     lastHour = cycleStartTime.Hour;
+                    const int cycleIntervalMilliseconds = 500;
 
                     // Wait for a maximum of ten seconds (the difference between cycleStartTime and cycleEndTime)
 
                     DateTime utcNow = DateTime.UtcNow;
                     while (utcNow < cycleEndTime && !exitFlag)
                     {
-                        int signalIndex = 250;
+                        int signalIndex = cycleIntervalMilliseconds;
 
                         // Block until a SIGINT or SIGTERM signal is generated, or 1/4 second has passed.
                         // However, we can't do that in a development environment - it won't have the
@@ -177,14 +178,14 @@ namespace Swarmops.Frontend.Socket
 
                         if (!Debugger.IsAttached)
                         {
-                            signalIndex = UnixSignal.WaitAny(killSignals, 250);
+                            signalIndex = UnixSignal.WaitAny(killSignals, cycleIntervalMilliseconds);
                         }
                         else
                         {
-                            Thread.Sleep(250);
+                            Thread.Sleep(cycleIntervalMilliseconds);
                         }
 
-                        if (signalIndex < 250)
+                        if (signalIndex < cycleIntervalMilliseconds)
                         {
                             exitFlag = true;
                             Console.WriteLine(" * Swarmops Frontend Socket Server caught signal " +
