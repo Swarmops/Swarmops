@@ -3,6 +3,14 @@
 # This file is to be run in the build directory, after publication of the finished build there.
 
 # ===================================================
+#              COMPILE LOCALIZATION FILES
+# ===================================================
+
+./compile-site-resources
+
+
+
+# ===================================================
 #                   FRONTEND FIXES
 # ===================================================
 

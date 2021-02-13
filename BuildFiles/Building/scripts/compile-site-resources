@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# This script compiles all localization resources to binary satellite assemblies,
+# to avoid sharing violations when just-in-time-compiling under Mono
+
+cd frontend/App_GlobalResources
+
+# Compile .resx to .resources
+
+find . -iname '*.resx' -exec resgen -compile {} \;
+find . -iname '*.resx' -delete
+
+# Compile .resources to .resources.dll
+
+for F in *; do
+    if [ -d "$F" ]; then
+        # $F is a directory
+	cd $F
+	find . -iname '*.resources' -exec al -target:lib -culture:$F -embed:{} -out:{}.dll \;
+	cd ..
+    elif [[ $F == *.resources ]]; then
+        al -target:lib -culture:en-US -embed:$F -out:$F.dll
+    fi
+done
+
+find . -iname '*.resources' -delete
+
+# Return to build location and copy results to bin folder
+
+cd ..
+rsync -av --remove-source-files App_GlobalResources/ bin/
+rm -r App_GlobalResources/
+cd ..
+
+

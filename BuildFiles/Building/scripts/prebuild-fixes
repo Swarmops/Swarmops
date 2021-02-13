@@ -2,6 +2,9 @@
 
 # Rename resources, but only for the non-compiled web version
 
+# Comment 2021-Feb-13: Does this do anything at all? It operates in Boneyard? Should that even be there?
+
+
 cd Boneyard/Site5
 
 find . -iname 'Pages*.resx' -exec rename 's/Pages\.([A-Za-z_\.\-]+)\.resx/Pages_$1\.resx/' {} \;
