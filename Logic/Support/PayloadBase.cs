@@ -37,6 +37,11 @@ namespace Swarmops.Logic.Support
             xml = xml.Replace ("&#x0;", "");
             xml = xml.Replace ("\x00", "");
 
+            if (String.IsNullOrWhiteSpace(xml))
+            {
+                throw new ArgumentException("xml is empty"); // Catch a weird empty-XML error and try to get a stack trace
+            }
+
             XmlSerializer serializer = new XmlSerializer (typeof (T));
 
             MemoryStream stream = new MemoryStream();

@@ -1,8 +1,11 @@
-﻿Swarmops
+SOFTWARE BEING REVISED
+======================
+
+**This repo is undergoing changes to resume development.** The information below is legacy and subject to change as this software clarifies its direction.
+
+
+Swarmops
 ========
-
-**This repo is undergoing changes to resume development.**
-
 
 **Swarmops is a necessary tool to enable any bitcoin-native or decentralized gamechanger.**
 

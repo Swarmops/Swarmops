@@ -23,9 +23,13 @@ namespace Swarmops.Backend
                 if (!comm.Resolved)
                 {
                     BotLog.Write(2, "CommsTx", "--resolving");
+                    ICommsResolver resolver = null;
 
-                    ICommsResolver resolver = FindResolver(comm);
-                    resolver.Resolve(comm);
+                    if (!String.IsNullOrWhiteSpace(comm.ResolverDataXml))
+                    {
+                        resolver = FindResolver(comm);
+                        resolver.Resolve(comm);
+                    }
                     comm.Resolved = true;
 
                     int recipientCount = comm.Recipients.Count;
@@ -136,7 +140,17 @@ namespace Swarmops.Backend
         {
             // Resolve recipients
 
+            if (comm.ResolverDataXml.Trim().Length < 1)
+            {
+                throw new InvalidOperationException("comm.ResolverDataXml is empty");
+            }
+
             ResolverEnvelope resolverEnvelope = ResolverEnvelope.FromXml(comm.ResolverDataXml);
+
+            if (resolverEnvelope.ResolverDataXml.Trim().Length < 1)
+            {
+                throw new InvalidOperationException("resolverEnvelope.ResolverDataXml is empty with envelope type " + resolverEnvelope.GetType().ToString() + " and envelope XML " + comm.ResolverDataXml);
+            }
 
             // Create the resolver via reflection of the static FromXml method
 

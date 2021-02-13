@@ -87,7 +87,7 @@ namespace Swarmops.Database
         {
             return "server=" + credentials.ServerSet.ServerPriorities[0].Split (';')[0] + ";database=" +
                    credentials.Database +
-                   ";user=" + credentials.Username + ";password=" + credentials.Password;
+                   ";uid=" + credentials.Username + ";pwd=" + credentials.Password + ";SslMode=Preferred;";
         }
 
 
@@ -100,89 +100,7 @@ namespace Swarmops.Database
         [Obsolete ("Do not use. Use GetDatabaseForAdmin().", true)]
         public static SwarmDb GetDatabaseAsAdmin()
         {
-            string connectionString = string.Empty;
-
-            try
-            {
-                if (Path.DirectorySeparatorChar == '/' && HttpContext.Current == null)
-                {
-                    // We are running under mono in a backend environment
-
-                    using (StreamReader reader = new StreamReader (MonoConfigFile.Replace (".config", "-admin.config")))
-                    {
-                        connectionString = reader.ReadLine();
-
-                        Logging.LogInformation (LogSource.PirateDb,
-                            "SwarmDb initialized for Linux Backend: [" + connectionString + "]");
-                    }
-                }
-                else if (HttpContext.Current != null)
-                {
-                    // We are running a web application, under Mono (production) or Windows (development)
-                    using (
-                        StreamReader reader =
-                            new StreamReader (
-                                HttpContext.Current.Server.MapPath (WebConfigFile.Replace (".config", "-admin.config")))
-                        )
-                    {
-                        connectionString = reader.ReadLine();
-
-                        Logging.LogInformation (LogSource.PirateDb,
-                            "SwarmDb initialized for web: [" + connectionString + "]");
-                    }
-                }
-                else
-                {
-                    // We are running an application, presumably directly from Visual Studio.
-                    // If so, the current working directory is "PirateWeb/30/Console/bin".
-                    using (StreamReader reader = new StreamReader (AppConfigFile.Replace (".config", "-admin.config")))
-                    {
-                        connectionString = reader.ReadLine();
-
-                        Logging.LogInformation (LogSource.PirateDb,
-                            "SwarmDb initialized for application: [" + connectionString +
-                            "]");
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                Logging.LogWarning (LogSource.PirateDb, "Unable to read Database.Config - defaulting");
-                // Ignore if we can't read the Database.config
-            }
-
-            // To simplify future checks
-            if (connectionString != null && connectionString.Length == 0)
-            {
-                connectionString = null;
-            }
-
-            // If we still have nothing, and we're running from web, then assume we have a dev environment and use the hostname as db, user, and pass.
-            if (String.IsNullOrEmpty (connectionString))
-            {
-                if (HttpContext.Current != null) // dummy comment to force build, remove on sight
-                {
-                    string hostName = HttpContext.Current.Request.Url.Host;
-
-                    connectionString = "server=peregrine;database=" + hostName + ";user=" + hostName +
-                                       "-admin;password=" + hostName + "-admin";
-                    // TODO: Replace "peregrine" with "localhost"
-                }
-                else
-                {
-                    throw new InvalidOperationException (
-                        "No database-as-admin connection string found -- write a connect string into the \"ActivizrAdminConnect\" environment var, or on one line into a file named database-admin.config; see connectionstrings.com for examples");
-                    // TODO: Replace with custom exception to present config screen
-                }
-            }
-
-            // Now write the correct data to the cache, for faster lookup next time
-            if (_cachedConnectionString == null)
-            {
-                _cachedConnectionString = connectionString;
-            }
-
-            return new SwarmDb (DbProviderFactories.GetFactory (DefaultProviderName), connectionString);
+            throw new InvalidOperationException();
         }
     }
 }
