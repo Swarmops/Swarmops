@@ -6,7 +6,7 @@
 #              COMPILE LOCALIZATION FILES
 # ===================================================
 
-./compile-site-resources
+/usr/share/ccnet/bin/scripts/compile-site-resources
 
 
 
