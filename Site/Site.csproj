@@ -193,6 +193,13 @@
     <Compile Include="Pages\v5\Admin\CommenceImpersonation.aspx.designer.cs">
       <DependentUpon>CommenceImpersonation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\EmptyPage.aspx.cs">
+      <DependentUpon>EmptyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Admin\Hacks\EmptyPage.aspx.designer.cs">
+      <DependentUpon>EmptyPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Admin\SupportedCultures.aspx.cs">
       <DependentUpon>SupportedCultures.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1165,6 +1172,7 @@
     <Content Include="Pages\v5\Admin\BitcoinEchoTest.aspx" />
     <Content Include="Pages\v5\Admin\CreateOrganization.aspx" />
     <Content Include="Pages\v5\Admin\CommenceImpersonation.aspx" />
+    <Content Include="Pages\v5\Admin\Hacks\EmptyPage.aspx" />
     <Content Include="Pages\v5\Admin\SupportedCultures.aspx" />
     <Content Include="Pages\v5\Admin\Diagnostics.aspx" />
     <Content Include="Pages\v5\Admin\Hacks\PopulateCountry1.aspx" />
