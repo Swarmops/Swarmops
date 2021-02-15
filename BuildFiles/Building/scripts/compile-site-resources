@@ -13,6 +13,8 @@ find . -iname '*.designer.cs' -delete
 
 # Compile .resources to .resources.dll
 
+# Edit: Let's try disabling everything past this point
+
 for F in *; do
     if [ -d "$F" ]; then
         # $F is a directory
