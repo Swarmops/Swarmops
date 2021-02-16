@@ -538,7 +538,7 @@ namespace Swarmops.Pages.Security
         {
             get
             {
-                return new ResourceManager("Swarmops.Frontend.Pages.Security", Assembly.LoadFrom("/usr/share/swarmops/frontend/bin/Swarmops.Frontend.Pages.Security.resources.dll"));
+                return new ResourceManager("Pages.Security", Assembly.LoadFrom("Pages.Security.resources.dll"));
             }
         }
 
