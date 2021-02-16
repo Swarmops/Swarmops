@@ -17,10 +17,10 @@ for F in *; do
     if [ -d "$F" ]; then
         # $F is a directory
 	cd $F
-	find . -iname '*.resources' -exec al /target:lib /culture:$F /version:1.0.0.0 /embed:{} /out:{}.dll \;
+	find . -iname '*.resources' -exec al /target:lib /culture:$F /version:1.0.0.0 /embed:{} /out:Swarmops.Frontend.{}.dll \;
 	cd ..
     elif [[ $F == *.resources ]]; then
-        al /target:lib /embed:$F /version:1.0.0.0 /out:$F.dll
+        al /target:lib /embed:$F /version:1.0.0.0 /out:Swarmops.Frontend.$F.dll
     fi
 done
 

@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
+using System.Resources;
 using System.Runtime.Versioning;
 using System.Web;
 using System.Web.ExtensionMethods;
@@ -529,8 +531,15 @@ namespace Swarmops.Pages.Security
 
         public string Localized_BitIdRequired_Dialog
         {
-            get { return @"Being Localized"; } /* --- TODO: Commented out 
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Security.Login_BitIdRequired_Dialog); } --- */
+            get { return CommonV5.JavascriptEscape(Localization.GetString("Login_BitIdRequired_Dialog")); }
+        }
+
+        protected ResourceManager Localization
+        {
+            get
+            {
+                return new ResourceManager("Swarmops.Frontend.Pages.Security", Assembly.GetAssembly(this.GetType()));
+            }
         }
 
         // ReSharper restore InconsistentNaming
