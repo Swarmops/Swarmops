@@ -432,13 +432,15 @@ namespace Swarmops.Pages.Security
             this.LabelSidebarManualLoginHeader.Text = Resources.Pages.Security.Login_ManualLogin;
             this.LabelHeader.Text = Resources.Pages.Security.Login_Header;
             this.LabelSidebarResetPassword.Text = Resources.Pages.Security.Login_ResetPassword; */
+
+            /* -- commenting this out to see if we can get to a known good state: 2021-Feb-16
             this.LabelManualLoginHeader.Text = Resources.Pages.Security.Login_ManualLoginHeader;
             this.LabelUseManualLogin.Text = Resources.Pages.Security.Login_UseManualLogin;
             this.LabelUseBitIdLogin.Text = Resources.Pages.Security.Login_UseBitIdLogin;
             this.LabelForgotPassword.Text = Resources.Pages.Security.Login_ResetPassword;
             this.LiteralCredentialsUser.Text = Resources.Pages.Security.Login_Username;
             this.LiteralCredentialsPass.Text = Resources.Pages.Security.Login_Password;
-            this.LiteralCredentials2FA.Text = Resources.Pages.Security.Login_GoogleAuthenticatorCode;
+            this.LiteralCredentials2FA.Text = Resources.Pages.Security.Login_GoogleAuthenticatorCode;*/
         }
 
 
