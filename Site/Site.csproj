@@ -2291,50 +2291,50 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="App_GlobalResources\Controls.Swarm.resx">
+    <Content Include="App_GlobalResources\Controls.Swarm.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Controls.Swarm.designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Global.resx">
+    </Content>
+    <Content Include="App_GlobalResources\Global.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Global.designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Menu5.resx">
+    </Content>
+    <Content Include="App_GlobalResources\Menu5.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Menu5.designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Pages.Admin.resx">
+    </Content>
+    <Content Include="App_GlobalResources\Pages.Admin.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Admin.designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Pages.Comms.resx">
+    </Content>
+    <Content Include="App_GlobalResources\Pages.Comms.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Comms.designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Pages.Financial.resx">
+    </Content>
+    <Content Include="App_GlobalResources\Pages.Financial.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Financial.designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Pages.Governance.resx">
+    </Content>
+    <Content Include="App_GlobalResources\Pages.Governance.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Governance.designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Pages.Ledgers.resx">
+    </Content>
+    <Content Include="App_GlobalResources\Pages.Ledgers.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Ledgers.designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Pages.Public.resx">
+    </Content>
+    <Content Include="App_GlobalResources\Pages.Public.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Public.designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Pages.Security.resx">
+    </Content>
+    <Content Include="App_GlobalResources\Pages.Security.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Security.designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\Pages.Swarm.resx">
+    </Content>
+    <Content Include="App_GlobalResources\Pages.Swarm.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Swarm.designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Basic\Basic.csproj">
@@ -2366,10 +2366,10 @@
     <Folder Include="Frames\v5\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="App_GlobalResources\Controls.Financial.resx">
+    <Content Include="App_GlobalResources\Controls.Financial.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Controls.Financial.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
