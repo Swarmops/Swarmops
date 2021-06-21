@@ -20,7 +20,7 @@ for F in *; do
 	find . -iname '*.resources' -exec al /target:lib /culture:$F /version:1.0.0.0 /embed:{} /out:{}.dll \;
 	cd ..
     elif [[ $F == *.resources ]]; then
-        al /target:lib /embed:$F /version:1.0.0.0 /culture:en-US /out:$F.dll
+        al /target:lib /embed:$F /version:1.0.0.0 /out:$F.dll
     fi
 done
 
