@@ -531,16 +531,21 @@ namespace Swarmops.Pages.Security
 
         public string Localized_BitIdRequired_Dialog
         {
-            get { return CommonV5.JavascriptEscape(Localization.GetString("Login_BitIdRequired_Dialog")); }
+            get
+            {
+                return CommonV5.JavascriptEscape(Resources.Pages.Security.Login_BitIdRequired_Dialog);
+                
+            }
         }
 
+        /*
         protected ResourceManager Localization
         {
             get
             {
                 return new ResourceManager("Pages.Security", Assembly.LoadFrom("Pages.Security.resources.dll"));
             }
-        }
+        }*/
 
         // ReSharper restore InconsistentNaming
     }
