@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
+using System.Resources;
 using System.Runtime.Versioning;
 using System.Web;
 using System.Web.ExtensionMethods;
@@ -432,13 +434,15 @@ namespace Swarmops.Pages.Security
             this.LabelSidebarManualLoginHeader.Text = Resources.Pages.Security.Login_ManualLogin;
             this.LabelHeader.Text = Resources.Pages.Security.Login_Header;
             this.LabelSidebarResetPassword.Text = Resources.Pages.Security.Login_ResetPassword; */
+
+            /* -- commenting this out to see if we can get to a known good state: 2021-Feb-16
             this.LabelManualLoginHeader.Text = Resources.Pages.Security.Login_ManualLoginHeader;
             this.LabelUseManualLogin.Text = Resources.Pages.Security.Login_UseManualLogin;
             this.LabelUseBitIdLogin.Text = Resources.Pages.Security.Login_UseBitIdLogin;
             this.LabelForgotPassword.Text = Resources.Pages.Security.Login_ResetPassword;
             this.LiteralCredentialsUser.Text = Resources.Pages.Security.Login_Username;
             this.LiteralCredentialsPass.Text = Resources.Pages.Security.Login_Password;
-            this.LiteralCredentials2FA.Text = Resources.Pages.Security.Login_GoogleAuthenticatorCode;
+            this.LiteralCredentials2FA.Text = Resources.Pages.Security.Login_GoogleAuthenticatorCode;*/
         }
 
 
@@ -527,8 +531,21 @@ namespace Swarmops.Pages.Security
 
         public string Localized_BitIdRequired_Dialog
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Security.Login_BitIdRequired_Dialog); }
+            get
+            {
+                return CommonV5.JavascriptEscape(Resources.Pages.Security.Login_BitIdRequired_Dialog);
+                
+            }
         }
+
+        /*
+        protected ResourceManager Localization
+        {
+            get
+            {
+                return new ResourceManager("Pages.Security", Assembly.LoadFrom("Pages.Security.resources.dll"));
+            }
+        }*/
 
         // ReSharper restore InconsistentNaming
     }

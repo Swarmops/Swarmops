@@ -2242,7 +2242,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\deploy-mono-folderfix" />
     <Content Include="Automation\UploadFileHandler.ashx" />
     <Content Include="Automation\web.config" />
     <Content Include="Controls\v5\Meta\web.config" />
