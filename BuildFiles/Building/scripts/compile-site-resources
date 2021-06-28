@@ -33,4 +33,3 @@ rsync -av --remove-source-files --recursive App_GlobalResources/ bin/
 rm -r App_GlobalResources/
 cd ..
 
-
