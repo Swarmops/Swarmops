@@ -1935,6 +1935,8 @@
     <Content Include="Scripts\jquery.fileupload\vendor\jquery.ui.widget.js" />
     <Content Include="Scripts\jquery.json.min.js" />
     <Content Include="Scripts\jquery.leanModal.min.js" />
+    <Content Include="Scripts\jquery.qrcode.js" />
+    <Content Include="Scripts\jquery.qrcode.min.js" />
     <Content Include="Scripts\jquery.qtip.js" />
     <Content Include="Scripts\jquery.qtip.min.js" />
     <Content Include="Scripts\jquery.smartWizard-2.0.js" />
@@ -1950,6 +1952,8 @@
     <Content Include="Scripts\odometer-patched.js" />
     <Content Include="Scripts\odometer.js" />
     <Content Include="Scripts\odometer.min.js" />
+    <Content Include="Scripts\qrcode.js" />
+    <Content Include="Scripts\qrcode.min.js" />
     <Content Include="Scripts\ScriptLicenses.txt" />
     <Content Include="Scripts\superfish.js" />
     <Content Include="Scripts\Swarmops-v5.js" />
@@ -2217,6 +2221,7 @@
     <Content Include="Pages\v5\Public\GeoLookupHelpers.js.include" />
     <Content Include="Pages\v5\Public\web.config" />
     <Content Include="Pages\v5\Support\web.config" />
+    <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Autobuild.pubxml" />
     <Content Include="Scripts\Experimental\easyui\demo\accordion\datagrid_data1.json" />
     <Content Include="Scripts\Experimental\easyui\demo\combobox\combobox_data1.json" />
@@ -2246,6 +2251,8 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Style\Fonts\OCR-B-regular-web.woff" />
+    <Content Include="Scripts\qrcode.min.js.map" />
+    <Content Include="Scripts\jquery.qrcode.min.js.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
