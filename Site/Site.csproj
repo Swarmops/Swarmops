@@ -671,6 +671,13 @@
     <Compile Include="Pages\v5\Ledgers\ViewOutstandingAccounts.aspx.designer.cs">
       <DependentUpon>ViewOutstandingAccounts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\v5\Public\EmptyDummyPage.aspx.cs">
+      <DependentUpon>EmptyDummyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\v5\Public\EmptyDummyPage.aspx.designer.cs">
+      <DependentUpon>EmptyDummyPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\v5\Public\Initialize.aspx.cs">
       <DependentUpon>Initialize.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1260,6 +1267,7 @@
     <Content Include="Pages\v5\Ledgers\UploadBankFiles.aspx" />
     <Content Include="Pages\v5\Ledgers\ViewVatReports.aspx" />
     <Content Include="Pages\v5\Ledgers\ViewOutstandingAccounts.aspx" />
+    <Content Include="Pages\v5\Public\EmptyDummyPage.aspx" />
     <Content Include="Pages\v5\Public\Initialize.aspx" />
     <Content Include="Pages\v5\Public\Json-SignupVolunteerPositions.aspx" />
     <Content Include="Pages\v5\Public\Signup.aspx" />
