@@ -18,7 +18,6 @@ using Swarmops.Logic.Communications;
 using Swarmops.Logic.DashboardTasks;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Special.Mail;
-using Swarmops.Logic.Special.Sweden;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
@@ -37,7 +36,7 @@ namespace Swarmops.Logic.Swarm
         {
             // Today, we set the Swedish handle provider. This can be changed as desired.
 
-            this.handleProvider = new SwedishForumHandleProvider();
+            // killed 2021-Jun-21 this.handleProvider = new SwedishForumHandleProvider();
         }
 
         private ObjectOptionalData OptionalData

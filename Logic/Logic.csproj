@@ -409,10 +409,10 @@
     <Compile Include="Security\PgpKey.cs" />
     <Compile Include="Special\DummyBitcoin.cs" />
     <Compile Include="Special\DummyGeoLookup.cs" />
-    <Compile Include="Special\Sweden\SupportCase.cs" />
-    <Compile Include="Special\Sweden\SupportCaseDelta.cs" />
+    <None Include="Special\Sweden\SupportCase.cs" />
+    <None Include="Special\Sweden\SupportCaseDelta.cs" />
     <None Include="Special\Sweden\SupportDatabase.cs" />
-    <Compile Include="Special\Sweden\SupportEmail.cs" />
+    <None Include="Special\Sweden\SupportEmail.cs" />
     <Compile Include="Governance\Meeting.cs" />
     <Compile Include="Governance\Motion.cs" />
     <Compile Include="Governance\MotionAmendment.cs" />
@@ -458,7 +458,7 @@
     <Compile Include="Security\SHA1.cs" />
     <Compile Include="Special\Mail\MailServerDatabase.cs" />
     <None Include="Special\Sweden\SwedishForumDatabase.cs" />
-    <Compile Include="Special\Sweden\SwedishForumHandleProvider.cs" />
+    <None Include="Special\Sweden\SwedishForumHandleProvider.cs" />
     <Compile Include="Structure\Cities.cs" />
     <Compile Include="Structure\City.cs" />
     <Compile Include="Structure\GeographyWithPeople.cs" />
