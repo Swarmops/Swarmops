@@ -132,8 +132,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\ActiveDirectoryCode.cs" />
     <Compile Include="Server\ExchangeCode.cs" />
-    <Compile Include="Special\Sweden\SupportMailReview.cs" />
-    <Compile Include="Special\Sweden\SwedishForumMemberCheck.cs" />
+    <None Include="Special\Sweden\SupportMailReview.cs" />
+    <None Include="Special\Sweden\SwedishForumMemberCheck.cs" />
     <Compile Include="Special\UrlTranslator.cs" />
   </ItemGroup>
   <ItemGroup>
