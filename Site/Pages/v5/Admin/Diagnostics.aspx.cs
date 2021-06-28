@@ -53,6 +53,13 @@ namespace Swarmops.Frontend.Pages.Admin
 
             /* no localization for debug pages */
         }
-        
+
+
+ 
+
+        public string JavascriptDocReady { get; set; }
+
+        public string PageGuid { get; set; }
+
     }
 }
