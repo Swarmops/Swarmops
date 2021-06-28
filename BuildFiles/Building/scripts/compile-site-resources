@@ -8,7 +8,7 @@ cd frontend/App_GlobalResources
 # Compile .resx to .resources
 
 find . -iname '*.resx' -exec resgen -compile {} \;
-find . -iname '*.resx' -delete
+#find . -iname '*.resx' -delete
 find . -iname '*.designer.cs' -delete
 
 # Compile .resources to .resources.dll
@@ -29,8 +29,8 @@ find . -iname '*.resources' -delete
 # Return to build location and copy results to bin folder
 
 cd ..
-rsync -av --remove-source-files App_GlobalResources/ bin/
-rm -r App_GlobalResources/
+rsync -av App_GlobalResources/ bin/
+# rm -r App_GlobalResources/
 cd ..
 
 
