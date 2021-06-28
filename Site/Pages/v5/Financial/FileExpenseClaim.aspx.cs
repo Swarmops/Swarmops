@@ -373,7 +373,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 List<ExpensifyRecord> recordList = new List<ExpensifyRecord>();
 
-                CsvHelper.Configuration.Configuration config = new CsvHelper.Configuration.Configuration();
+                CsvHelper.Configuration.CsvConfiguration config = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture);
                 config.HasHeaderRecord = true;
 
                 using (TextReader textReader = new StringReader(csvEntire))
