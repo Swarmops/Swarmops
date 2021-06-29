@@ -2335,50 +2335,50 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\Controls.Swarm.resx">
+    <EmbeddedResource Include="App_GlobalResources\Controls.Swarm.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Controls.Swarm.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Global.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Global.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Global.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Menu5.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Menu5.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Menu5.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Pages.Admin.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Pages.Admin.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Admin.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Pages.Comms.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Pages.Comms.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Comms.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Pages.Financial.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Pages.Financial.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Financial.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Pages.Governance.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Pages.Governance.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Governance.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Pages.Ledgers.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Pages.Ledgers.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Ledgers.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Pages.Public.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Pages.Public.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Public.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Pages.Security.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Pages.Security.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Security.designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Pages.Swarm.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Pages.Swarm.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Pages.Swarm.designer.cs</LastGenOutput>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Basic\Basic.csproj">
@@ -2410,16 +2410,16 @@
     <Folder Include="Frames\v5\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\Controls.Financial.resx">
+    <EmbeddedResource Include="App_GlobalResources\Controls.Financial.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Controls.Financial.Designer.cs</LastGenOutput>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\DebugResx.resx">
+    <EmbeddedResource Include="App_GlobalResources\DebugResx.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>DebugResx.Designer.cs</LastGenOutput>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
