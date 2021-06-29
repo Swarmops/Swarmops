@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Public.DummyPageWithResources" CodeFile="DummyPageWithResources.aspx.cs"  %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Swarmops.Frontend.Pages.v5.Public.DummyPageWithResources" Codebehind="DummyPageWithResources.aspx.cs" %>
 
 <!DOCTYPE html>
 

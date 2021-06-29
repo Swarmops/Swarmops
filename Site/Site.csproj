@@ -125,6 +125,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Controls.Financial.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\DebugResx.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DebugResx.resx</DependentUpon>
+    </Compile>
     <Compile Include="Automation\Json-MasterPersonEditPaymentHistory.aspx.cs">
       <DependentUpon>Json-MasterPersonEditPaymentHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2408,6 +2413,12 @@
     <Content Include="App_GlobalResources\Controls.Financial.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Controls.Financial.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\DebugResx.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>DebugResx.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>

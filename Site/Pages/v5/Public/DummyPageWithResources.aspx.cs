@@ -12,7 +12,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.LabelTest.Text = Resources.Global.Dashboard_Main_Temporary;
+            this.LabelTest.Text = this.ResourceManager.GetString("Global.Dashboard_Main_Temporary");
+
         }
     }
 }
