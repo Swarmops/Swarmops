@@ -29,7 +29,7 @@ find . -iname '*.resources' -delete
 # Return to build location and copy results to bin folder
 
 cd ..
-#rsync -av --remove-source-files --recursive App_GlobalResources/ bin/
-#rm -r App_GlobalResources/
+rsync -av --remove-source-files --recursive App_GlobalResources/ bin/
+rm -r App_GlobalResources/
 cd ..
 
