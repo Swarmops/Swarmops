@@ -39,7 +39,7 @@ namespace Resources.Controls {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Controls.Swarm", global::System.Reflection.Assembly.Load("App_GlobalResources"));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Controls.Swarm", global::System.Reflection.Assembly.Load("Control.Swarm.resources"));
                     resourceMan = temp;
                 }
                 return resourceMan;
