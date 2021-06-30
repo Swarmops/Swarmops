@@ -39,7 +39,7 @@ namespace Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Menu5", global::System.Reflection.Assembly.Load("Menu5.resources"));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Menu5", global::System.Reflection.Assembly.Load("Menu5"));
                     resourceMan = temp;
                 }
                 return resourceMan;
