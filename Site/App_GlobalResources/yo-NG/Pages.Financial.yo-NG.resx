@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  
+  
+  
+  
+  <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
+    <value>Ma binu, o ko le ṣe atunṣe isuna owo ise sisanjade.</value>
+  </data>
+  <data name="AttestCosts_Error_InvalidAmountRetry" xml:space="preserve">
+    <value>Eyi ko dabi pe o jẹ iye ti o fẹsẹmulẹ. Jọwọ tun gbiyanju?</value>
+  </data>
+  <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
+    <value>Jowo mu isuna kan lati ṣe atunṣe afojusun idiyele naa fun.</value>
+  </data>
+  
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>Igbese</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>Olujanfani</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Isuna</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>Apejuwe</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>Awon iwe</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>Nkan</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>Di bibeere</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
+    <value>Kọ</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonRebudget" xml:space="preserve">
+    <value>Atunse isuna</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
+    <value>Mo kọ aṣẹ rẹ fun owo nitori...</value>
+    <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
+    <value>Kini iye ti o n jẹrisi dipo (in {0})?</value>
+    <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionCorrect" xml:space="preserve">
+    <value>Yi nkan yii pada si iye yii (in {0}), lẹhinna jẹrisi bẹ yẹn:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionDeny" xml:space="preserve">
+    <value>Idi ti o yan fun ẹkọ si olufisilẹ naa:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
+    <value>Gbe idiyele naa lo si iṣuna yi dipo:</value>
+  </data>
+  
+  
+  
+  
+  <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
+    <value>Akọsilẹ yii yẹ ki o se idiyele isuna ti o yatọ. Gbe lo sibẹ.</value>
+  </data>
+  <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
+    <value>Kini o dabi iṣoro pẹlu akosilẹ yii?</value>
+  </data>
+  
+  
+  
+  <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
+    <value>Duro lori Isuna</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmYes" xml:space="preserve">
+    <value>Fipa Se itayo</value>
+  </data>
+  <data name="AttestCosts_Overdrafted" xml:space="preserve">
+    <value>ISUNA JE TITAYO.</value>
+    <comment>The UPPERCASE is intentional.</comment>
+  </data>
+  
+  
+  
+  <data name="AttestCosts_SalaryAttested" xml:space="preserve">
+    <value>Owo ise #{0:N0} fun {1} ti je jijeri fun {3:N2}.</value>
+  </data>
+  
+  
+  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
+    <value>Apapọ Iye iwe iye-owo oja (ni {0})</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>Apejuwe</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
+  <data name="CreateInboundInvoice_HeaderInvoiceImage" xml:space="preserve">
+    <value>Aworan Iwe iye-owo oja</value>
+  </data>
+  <data name="CreateInboundInvoice_HeaderPaymentDetails" xml:space="preserve">
+    <value>Awọn alaye Isanwo</value>
+    <comment>Displayed as header over supplier's account details</comment>
+  </data>
+  <data name="CreateInboundInvoice_Info" xml:space="preserve">
+    <value>Eyi ni ibi ti o ti n se apamo awọn iwe iye-owo oja ti o gba ni ajo rẹ ("Awon akọọlẹ tole sanwo"). Tẹ orukọ olupinfunni, iye, ojo tito, itọkasi iwe iye-owo oja naa, ati gbe aworan iwe iye-owo oja si. Bakannaa, mu isuna kan. Eni ti o ni isuna nilo lati jẹri, bi tele. (Awọn amugbooro ojo iwaju ti a ma sẹ si eto yii yoo ni awọn ibeere rira ati awọn akojo olupinfunni.)</value>
+  </data>
+  <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
+    <value>Iwe iye-owo oja ti nwọle ti o gba</value>
+  </data>
+  <data name="CreateInboundInvoice_Reference" xml:space="preserve">
+    <value>Itọkasi Iwe iye-owo oja</value>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceAutomaticOcr" xml:space="preserve">
+    <value>OCR / Alaifọwọyi</value>
+    <comment>Some invoices come with OCR numbers printed on them for automatic processing.</comment>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceManual" xml:space="preserve">
+    <value>Afowoyi</value>
+    <comment>Other invoices come without automated processing and a manual </comment>
+  </data>
+  <data name="CreateInboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Iwe iye-owo oja ti nwọle #{0:N0} je gbigbe dide.</value>
+    <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
+  </data>
+  <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
+    <value>Akoole</value>
+    <comment>Free text input, intended to convey everything needed to get the money right</comment>
+  </data>
+  <data name="CreateInboundInvoice_UploadInvoiceImage" xml:space="preserve">
+    <value>Gbe faili aworan ga</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
+    <value>Jowo tẹ akoole banki ti olupinfunni tabi deede.</value>
+  </data>
+  <data name="Donate_Explain" xml:space="preserve">
+    <value>Eyi jẹ koodu QR fun awọn itọrẹ si {0}. Ka lati inu apo owo bitcoin foonu rẹ lati ṣe itọrẹ, tabi ṣe itọrẹ lati ori kọmputa rẹ taara si [{1}] (eyi ni adirẹẹsi Bitcoin Cash).</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="Donate_FundsReceived" xml:space="preserve">
+    <value>Gba {0} {1:N2} ({2:N0} microcoins tabi "bits"). O Se!</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedNative" xml:space="preserve">
+    <value>Gba {0} microcoins ("bits"). O se!</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="Donate_Info" xml:space="preserve">
+    <value>Ti o ba fẹ lati ṣe itọrẹ si ajo naa, o le ṣe bẹ nibi.</value>
+  </data>
+  <data name="Donate_PageTitle" xml:space="preserve">
+    <value>Se itọrẹ</value>
+  </data>
+  <data name="Donate_StatusInitial" xml:space="preserve">
+    <value>Nduro fun idunadura...</value>
+  </data>
+  <data name="Donate_TransactionDetected" xml:space="preserve">
+    <value>Ti ri idunadura, n se idaniloju...</value>
+  </data>
+  <data name="Donate_TxLabel" xml:space="preserve">
+    <value>Itọrẹ si {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Donate_TxLabel_Loan" xml:space="preserve">
+    <value>Eyawo si {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="FileExpenseClaim_Amount" xml:space="preserve">
+    <value>Iye ibeere owo agbapada (ni {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
+    <value>Nọmba Akọọlẹ</value>
+  </data>
+  <data name="FileExpenseClaim_BankClearing" xml:space="preserve">
+    <value>Nọmba Imukuro</value>
+  </data>
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>Oruko Banki</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Isuna</value>
+  </data>
+  <data name="FileExpenseClaim_CostType" xml:space="preserve">
+    <value>Iru iye</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
+  <data name="FileExpenseClaim_Description" xml:space="preserve">
+    <value>Apejuwe</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>Awọn alaye Banki Rẹ</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderReceiptImages" xml:space="preserve">
+    <value>Aworan Iwe oja</value>
+  </data>
+  <data name="FileExpenseClaim_Info" xml:space="preserve">
+    <value>Ti o ba ti ṣe rira ni ipo ajo naa nipa lilo awọn owo ti ikọkọ re, iwo yoo fẹ idapada owo fun eyi nipa sisagbe dide &lt;em&gt;ibéèrè owo agbapada&lt;/em&gt;. O ma ṣe eyi nipase gbigbe awọn iwe oja ga ati mimu isuna ti o yẹ ki idiyele na lo. Ti o ba ti gba owo agbaalẹ tẹlẹ fun rira yii, eyi ni ibiti o ti yọ gbese ajo naa si ọ kuro nipa fifi awon iwe oja silẹ.</value>
+  </data>
+  <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
+    <value>Beere Owo Pada Fun Inawo</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartOne" xml:space="preserve">
+    <value>Ibéèrè owo agbapada kan ti di gbigbe dide pelu aseyori fun {0} {1:N2} ni ilodi si isuna ti{2}. 
+Awọn iwe oja naa yoo nilo lati di jijẹri ati pe ibeere naa yoo nilo lati di jijẹri nipasẹ ẹniti o ni isuna naa.</value>
+    <comment>{0} is the currency, {1} is the amount, and {2} is the budget name.</comment>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Ni kete bi eyi ba ti ṣẹlẹ, awọn owo naa yoo tẹsiwaju si sisanjade si akoole rẹ ti o tokasi.</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Bi o ti se jepe isuna ara re ni, ijẹrisi ti pari tẹlẹ. Ifọwọsi nikan lo jẹ pataki.</value>
+  </data>
+  <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
+    <value>Gbe Awon aworan Iwe oja ga</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
+    <value>Jowo tẹ iye owo naa (ni {0}) ti o n beere fun.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Documents" xml:space="preserve">
+    <value>Jọwọ sagbega ọkan tabi jubẹlo awọn aworan iwe oja ti o n se atilẹyin ibéèrè owo agbapada.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>Jowo mu aṣayan kan bi a ṣe tọkasi.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
+    <value>Jọwọ ṣe apejuwe ohun ti rira yii je.</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
+    <value>Iye</value>
+    <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
+    <value>Ti san</value>
+    <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
+    <value>Olugba</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_Header" xml:space="preserve">
+    <value>Awọn owo Ṣetan Fun Sisanjade</value>
+  </data>
+  <data name="PayOutMoney_Info" xml:space="preserve">
+    <value>Awọn wọnyi ni awọn ọna pupọ ti awọn owo si ajo ti o ti kọja gbogbo awọn idiwo fun sisanjade. Wọn ti ṣetan lati je sisan jade fun olugba naa. Eyi ni ibi ti o ti samisi wọn gegebi pe o ti je sisan jade (boya nigbati o ba jẹki banki rẹ jẹ sisi ni akoko miran).</value>
+  </data>
+  <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
+    <value>Safihan OCR fun awọn ohun elo alagbeka</value>
+  </data>
+  <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
+    <value>Safihan awon isanwojade ti o sii sile ({0:N0})</value>
+    <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>San Owo Jade</value>
+  </data>
+  <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
+    <value>Ko le fagile isanjade #{0}: o ti yanju tẹlẹ tabi je pipade.</value>
+  </data>
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>Isanjade #{0:N0} si {1} jẹ siṣẹda.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>Isanjade #{0:N0} je fifagile ati pe ohun gbogbo je didapada.</value>
+  </data>
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>Owo ori Afikun</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Owo ori Iyokuro</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Apapọ Owo oya</value>
+  </data>
+  <data name="PayrollTaxForms_Info" xml:space="preserve">
+    <value>Wo awọn iwe owo ori (awọn fọọmu owo ori ti o ti pari) fun iwe isanwo ajo naa, eyi ti o rọrun fun ọ lati daakọ si awọn fọọmu owo ori rẹ gangan, tabi boya tẹjade paapaa bi o ṣe wa. 
+Iṣẹ-ṣiṣe ati awọn fọọmu gangan yatọ nipasẹ orilẹ-ede ati nigbamiiranma da lori koodu third-party ati awon plugin.</value>
+  </data>
+  <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
+    <value>Awọn fọọmu Owo ori Iwe isanwo</value>
+  </data>
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>Awọn fọọmu Owo ori Oṣooṣu Fun {0} Fun</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Apapo Iye</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Apapo Owo ori</value>
+  </data>
+  <data name="RequestCashAdvance_Amount" xml:space="preserve">
+    <value>Iye agbaalẹ (ni {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_BankAccount" xml:space="preserve">
+    <value>Nọmba Akọọlẹ</value>
+  </data>
+  <data name="RequestCashAdvance_BankClearing" xml:space="preserve">
+    <value>Nọmba Imukuro</value>
+  </data>
+  <data name="RequestCashAdvance_BankName" xml:space="preserve">
+    <value>Oruko Banki</value>
+  </data>
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>Isuna</value>
+  </data>
+  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
+    <value>Awọn alaye Banki Rẹ</value>
+  </data>
+  <data name="RequestCashAdvance_Info" xml:space="preserve">
+    <value>Ti o ba jẹpe o ti fẹ ṣe rira ni ipo ajo naa, ṣugbọn nilo owo ni agbaalẹ dipo ki o beere rẹ pada lẹhinwa, o le beere owo agbaalẹ fun idi pataki kan.</value>
+  </data>
+  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
+    <value>Beere Owo Agbaalẹ</value>
+  </data>
+  <data name="RequestCashAdvance_Purpose" xml:space="preserve">
+    <value>Idi</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartOne" xml:space="preserve">
+    <value>Ibeere owo agbaalẹ kan ti jẹ bibere fun &lt;strong&gt;{0}&lt;/strong&gt;. Iye ti o jẹ bibere fun ni {2} {3:N2}. Kiyesi pe eyi jẹ &lt;strong&gt;eyawo&lt;/strong&gt; lati ajo naa titi ti awọn iwe oja a fi jẹ gbigbekalẹ.</value>
+    <comment>{0} is the person receiving the advance, {1} is the entered description. {2} is the currency (in caps) and {3:N2} is the amount, with two decimals, displayed in culture.</comment>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Eyi nilo lati jẹ fifọwọsi nipasẹ ẹniti o ni isuna naa lẹhinna o ma tẹsiwaju lati sanwojade.</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Bi o ti se jepe isuna ara re ni, eyi ti jẹ fifọwọsi alaifowoyi ati pe o ti tẹsiwaju si isanwojade.</value>
+    <comment>This is displayed if either the person creating the cash advance OR the person receiving it is the budget owner.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Amount" xml:space="preserve">
+    <value>Jowo tẹ iye owo naa (ni {0}) ti o nifẹ lati gbaalẹ.</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
+    <value>Jowo tẹ nọmba akoole banki re.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankClearing" xml:space="preserve">
+    <value>Jowo tẹ nọmba imukuro banki re.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
+    <value>Jowo tẹ orukọ banki re.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
+    <value>Jowo mu isuna kan ti o ma gba idiyele.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
+    <value>Jọwọ sọ idi owo agbaalẹ naa.</value>
+  </data>
+  <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
+    <value>Awon iwe oja ti o n duro de ijerisi re</value>
+  </data>
+  <data name="ValidateReceipts_Info" xml:space="preserve">
+    <value>Eyi ni ibi ti o ti ma n ṣayẹwo ati jẹrisi ifẹsẹmulẹ awon iwe oja ti o tẹle awọn ibéèrè owo agbapada. Ṣayẹwo pe iye naa tọ ati pe awon iwe oja naa wa fun ohun ti o sọ pe o wa fun.</value>
+  </data>
+  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
+    <value>Se ijẹri awon iwe oja</value>
+  </data>
+  
+  <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
+    <value>Awon iwe oja fun Ibéèrè Owo agbapada #{0:N0} fun {1} {2:N2} ti je jijerisi.</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Ṣẹda</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Jowo tẹ iye owo naa (ninu {0}) ibeere iwe iye-owo oja naa.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Jowo mu pato isuna kan ti o ma gba idiyele.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Jọwọ sagbega ọkan tabi jubẹlo awọn iwe ti ojulowo iwe iye-owo oja.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Jowo mu aṣayan kan.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Jọwọ ṣe apejuwe ohun ti rira yii je.</value>
+  </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Béèrè</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Béèrè</value>
+  </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>Ara VAT ti apapọ ({0})</value>
+  </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>VAT ti apapọ ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Kikojọ awọn iwe iye-owo oja ti nwọle</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Olufiranse iwe iye-owo oja</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Eyi se akojọ 100 awọn iwe iye-owo oja ti o tuntun julọ, ti a to lẹsẹsẹ nipasẹ ọjọ titọ pẹlu tuntun julọ lakọkọ.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Awọn iwe iye-owo oja ti nwọle</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Ṣiṣẹda Iwe iye-owo oja ti o njade</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Ṣẹda</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Ṣiṣẹda Iwe iye-owo oja ti o njade</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Iwe iye-owo oja ti njade #{0:N0} je gbigbe dide.</value>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Awon owo je gbigba ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Ti firanse</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Onibara</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Kikojọ awọn Iwe iye-owo oja ti njade</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Eyi se akojọ 100 awọn iwe iye-owo oja ti aipẹ julọ, ti a to lẹsẹsẹ nipasẹ igbati wọn je siseda, tuntun julọ lakọkọ.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Gbogbo Iye</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Ojo titọ</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Sakojọ Awọn Iwe iye-owo oja ti njade</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Gbe Expensify CSV ga</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Ti o ba ni awọn ijabọ inawo pupọ, o le kó wọn jọ pelu Expensify ati ki o sagbega ijabọ Expensify CSV kan nibi (ti o gba lati Expensify labe Awọn ijabọ, Firanṣẹ, bi CSV). Swarmops ma lo Expensify lati gba gbogbo ọkọọkan awon iwe oja ati kiiko won sile lọtọ bi awon ibéèrè owo agbapada fun iṣiro pipe.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>Fun eyi lati ṣiṣẹ, niwonti {0} njabo VAT si awọn alaṣẹ owo ori, o ma nilo lati sayipada profaili atilẹba Expensify CSV lati fi VAT kun, eyi ti atilẹba ko ṣe. Awọn oju ewe iranlọwọ Expensify ni diẹ sii lori bi eyi ṣe le je ṣiṣe ati pe ti o ba n lo Expensify NI ilana ẹlẹgbẹ, eto imulo Expensify yin gbọdọ ti ni profaili ifiranṣẹ CSV ti oni imusise VAT tẹlẹ.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Dida lori awọn eto ajo naa, profaili ifiranṣẹ "CSV Atilẹba" naa ni Expensify yẹ ki o to fun Swarmops.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Owo ijabo Expensify jẹ</value>
+  </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Gbe Ijabo Expensify ga Fun Idapada owo</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ASISE: Ko le yanju Expensify CSV.&lt;/strong&gt; Ti eyi ba jẹ faili CSV lati Expensify, nigbanaa Swarmops nilo awọn ipin "Akoko", "Iye", "Oniṣòwo", "Asọye", "Ẹka", "MCC", "Ojulowo Owo", ati "Ojulowo Iye" to ma wa ninu faili naa. Ti ajo naa ba ma n se ijabọ VAT, ajewipe a nilo ipin kan si ti a npe ni "VAT".&lt;/p&gt;&lt;p&gt;Ko le tẹsiwaju pẹlu faili yii.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ASISE: Faili CSV Expensify ko ni aaye VAT.&lt;/strong&gt; Niwon ti ajọ yii ma n jabọ owo ori alafikun iwulo (VAT) si awọn alase, eyi gbọdọ da lori inawo ọkọọkan. Jowo mu ki VAT sise ni Expensify ki o si ṣẹda profaili ifiranṣẹ CSV tuntun kan ti o n fi eyi ranse labẹ ipin akọle "VAT". Ti ẹgbẹ rẹ bati ṣẹda irufẹ profaili CSV yii, o kan le nilo lati yan nigba ti o ba n firanṣẹ si CSV.&lt;/p&gt;&lt;p&gt;Ko le saayan faili yii.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Gbe Faili CSV Expensify Miiran ga?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>ara mi</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Eyi jẹ ibéèrè owo agbapada lati ọdọ tani?</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ASISE: Faili CSV Expensify ko ni awon aaye data ti a nilo.&lt;/strong&gt; Faili naa han lati ma ni o kere ju ọkan ninu awọn aaye profaili atilẹba CSV Expensify ti a nilo. Kansi awọn akọsilẹ iwe imọ ẹrọ ati ki o ṣe afiwe rẹ pẹlu faili ti o gbiyanju lati gbe ga. (O jẹ idi ti o sunmọ julọ lati fa aṣiṣe, dajudaju, pe o gbiyanju lati gbe faili ti ko tọ rara si &amp;ndash; boya aworan kan dipo Expensify CSV &amp;ndash; ati pe eyi ni idi fun awọn data ti a n reti ti kosi nibe.)&lt;/p&gt;&lt;p&gt;Ko le saayan faili yii.&lt;/p&gt;</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(Iye naa ko gbọdọ ni eyikeyi VAT ti a ti da sọ!)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>Gbogbo awọn ibéèrè owo agbapada nilo isuna ṣaaju fifiṣilẹ.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>Ko si awon itan akọọlẹ Expensify lati fisilẹ</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>Ṣetan lati fi ibeere kan sile</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>Ṣetan lati fi ibeere {0} sile</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>Ibeere gbigbe dide ni aseyori.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>Aseyori awon ibeere {0} gbigbe dide.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Itọkasi</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  
+</root>
