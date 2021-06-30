@@ -22,7 +22,7 @@ namespace Resources.Controls {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Swarm {
+    public class Swarm {
         
         private static global::System.Resources.ResourceManager resourceMan;
         

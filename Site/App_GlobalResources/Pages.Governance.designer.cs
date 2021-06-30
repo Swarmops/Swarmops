@@ -22,7 +22,7 @@ namespace Resources.Pages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Governance {
+    public class Governance {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -39,7 +39,7 @@ namespace Resources.Pages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Pages.Governance", global::System.Reflection.Assembly.Load("App_GlobalResources"));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Pages.Governance", global::System.Reflection.Assembly.Load("Pages.Governance.resources"));
                     resourceMan = temp;
                 }
                 return resourceMan;
