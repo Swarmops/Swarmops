@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to CEO Assistant.
         /// </summary>
-        internal static string Position_Executive_CeoAssistant {
+        public static string Position_Executive_CeoAssistant {
             get {
                 return ResourceManager.GetString("Position_Executive_CeoAssistant", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Presidential Aide.
         /// </summary>
-        internal static string Position_Executive_CeoAssistant_Government {
+        public static string Position_Executive_CeoAssistant_Government {
             get {
                 return ResourceManager.GetString("Position_Executive_CeoAssistant_Government", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Presidential Aides.
         /// </summary>
-        internal static string Position_Executive_CeoAssistant_Government_Plural {
+        public static string Position_Executive_CeoAssistant_Government_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_CeoAssistant_Government_Plural", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Secretary General Assistant.
         /// </summary>
-        internal static string Position_Executive_CeoAssistant_Nonprofit {
+        public static string Position_Executive_CeoAssistant_Nonprofit {
             get {
                 return ResourceManager.GetString("Position_Executive_CeoAssistant_Nonprofit", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Secretary General Assistants.
         /// </summary>
-        internal static string Position_Executive_CeoAssistant_Nonprofit_Plural {
+        public static string Position_Executive_CeoAssistant_Nonprofit_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_CeoAssistant_Nonprofit_Plural", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to CEO Assistants.
         /// </summary>
-        internal static string Position_Executive_CeoAssistant_Plural {
+        public static string Position_Executive_CeoAssistant_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_CeoAssistant_Plural", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to CFO Assistant.
         /// </summary>
-        internal static string Position_Executive_CfoAssistant {
+        public static string Position_Executive_CfoAssistant {
             get {
                 return ResourceManager.GetString("Position_Executive_CfoAssistant", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Financial Assistant.
         /// </summary>
-        internal static string Position_Executive_CfoAssistant_Nonprofict {
+        public static string Position_Executive_CfoAssistant_Nonprofict {
             get {
                 return ResourceManager.GetString("Position_Executive_CfoAssistant_Nonprofict", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Financial Assistants.
         /// </summary>
-        internal static string Position_Executive_CfoAssistant_Nonprofit_Plural {
+        public static string Position_Executive_CfoAssistant_Nonprofit_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_CfoAssistant_Nonprofit_Plural", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to CFO Assistants.
         /// </summary>
-        internal static string Position_Executive_CfoAssistant_Plural {
+        public static string Position_Executive_CfoAssistant_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_CfoAssistant_Plural", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chief Executive Officer.
         /// </summary>
-        internal static string Position_Executive_ChiefExecutiveOfficer {
+        public static string Position_Executive_ChiefExecutiveOfficer {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefExecutiveOfficer", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to President.
         /// </summary>
-        internal static string Position_Executive_ChiefExecutiveOfficer_Government {
+        public static string Position_Executive_ChiefExecutiveOfficer_Government {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefExecutiveOfficer_Government", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Secretary General.
         /// </summary>
-        internal static string Position_Executive_ChiefExecutiveOfficer_Nonprofit {
+        public static string Position_Executive_ChiefExecutiveOfficer_Nonprofit {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefExecutiveOfficer_Nonprofit", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chief Financial Officer.
         /// </summary>
-        internal static string Position_Executive_ChiefFinancialOfficer {
+        public static string Position_Executive_ChiefFinancialOfficer {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefFinancialOfficer", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Minister of Finance.
         /// </summary>
-        internal static string Position_Executive_ChiefFinancialOfficer_Government {
+        public static string Position_Executive_ChiefFinancialOfficer_Government {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefFinancialOfficer_Government", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Treasurer.
         /// </summary>
-        internal static string Position_Executive_ChiefFinancialOfficer_Nonprofit {
+        public static string Position_Executive_ChiefFinancialOfficer_Nonprofit {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefFinancialOfficer_Nonprofit", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chief Human Resources Officer.
         /// </summary>
-        internal static string Position_Executive_ChiefHrOfficer {
+        public static string Position_Executive_ChiefHrOfficer {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefHrOfficer", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chief Community Officer.
         /// </summary>
-        internal static string Position_Executive_ChiefHrOfficer_Nonprofit {
+        public static string Position_Executive_ChiefHrOfficer_Nonprofit {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefHrOfficer_Nonprofit", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chief Information Officer.
         /// </summary>
-        internal static string Position_Executive_ChiefInformationOfficer {
+        public static string Position_Executive_ChiefInformationOfficer {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefInformationOfficer", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chief Marketing Officer.
         /// </summary>
-        internal static string Position_Executive_ChiefMarketingOfficer {
+        public static string Position_Executive_ChiefMarketingOfficer {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefMarketingOfficer", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Minister of Foreign Affairs.
         /// </summary>
-        internal static string Position_Executive_ChiefMarketingOfficer_Government {
+        public static string Position_Executive_ChiefMarketingOfficer_Government {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefMarketingOfficer_Government", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chief Outreach Officer.
         /// </summary>
-        internal static string Position_Executive_ChiefMarketingOfficer_Nonprofit {
+        public static string Position_Executive_ChiefMarketingOfficer_Nonprofit {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefMarketingOfficer_Nonprofit", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chief Operations Officer.
         /// </summary>
-        internal static string Position_Executive_ChiefOperationsOfficer {
+        public static string Position_Executive_ChiefOperationsOfficer {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefOperationsOfficer", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Minister of the Interior.
         /// </summary>
-        internal static string Position_Executive_ChiefOperationsOfficer_Government {
+        public static string Position_Executive_ChiefOperationsOfficer_Government {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefOperationsOfficer_Government", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chief Activism Officer.
         /// </summary>
-        internal static string Position_Executive_ChiefOperationsOfficer_Nonprofit {
+        public static string Position_Executive_ChiefOperationsOfficer_Nonprofit {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefOperationsOfficer_Nonprofit", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chief of Staff.
         /// </summary>
-        internal static string Position_Executive_ChiefStaff {
+        public static string Position_Executive_ChiefStaff {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefStaff", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chief Technology Officer.
         /// </summary>
-        internal static string Position_Executive_ChiefTechnologyOfficer {
+        public static string Position_Executive_ChiefTechnologyOfficer {
             get {
                 return ResourceManager.GetString("Position_Executive_ChiefTechnologyOfficer", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to First Gentleman.
         /// </summary>
-        internal static string Position_Executive_FirstGentleman {
+        public static string Position_Executive_FirstGentleman {
             get {
                 return ResourceManager.GetString("Position_Executive_FirstGentleman", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to First Lady.
         /// </summary>
-        internal static string Position_Executive_FirstLady {
+        public static string Position_Executive_FirstLady {
             get {
                 return ResourceManager.GetString("Position_Executive_FirstLady", resourceCulture);
             }
@@ -324,7 +324,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Human Resources Assistant.
         /// </summary>
-        internal static string Position_Executive_HrAssistant {
+        public static string Position_Executive_HrAssistant {
             get {
                 return ResourceManager.GetString("Position_Executive_HrAssistant", resourceCulture);
             }
@@ -333,7 +333,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Community Assistant.
         /// </summary>
-        internal static string Position_Executive_HrAssistant_Nonprofit {
+        public static string Position_Executive_HrAssistant_Nonprofit {
             get {
                 return ResourceManager.GetString("Position_Executive_HrAssistant_Nonprofit", resourceCulture);
             }
@@ -342,7 +342,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Community Assistants.
         /// </summary>
-        internal static string Position_Executive_HrAssistant_Nonprofit_Plural {
+        public static string Position_Executive_HrAssistant_Nonprofit_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_HrAssistant_Nonprofit_Plural", resourceCulture);
             }
@@ -351,7 +351,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Human Resources Assistants.
         /// </summary>
-        internal static string Position_Executive_HrAssistant_Plural {
+        public static string Position_Executive_HrAssistant_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_HrAssistant_Plural", resourceCulture);
             }
@@ -360,7 +360,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Marketing Assistant.
         /// </summary>
-        internal static string Position_Executive_MarketingAssistant {
+        public static string Position_Executive_MarketingAssistant {
             get {
                 return ResourceManager.GetString("Position_Executive_MarketingAssistant", resourceCulture);
             }
@@ -369,7 +369,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Foreign Affairs Aide.
         /// </summary>
-        internal static string Position_Executive_MarketingAssistant_Government {
+        public static string Position_Executive_MarketingAssistant_Government {
             get {
                 return ResourceManager.GetString("Position_Executive_MarketingAssistant_Government", resourceCulture);
             }
@@ -378,7 +378,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Foreign Affairs Aides.
         /// </summary>
-        internal static string Position_Executive_MarketingAssistant_Government_Plural {
+        public static string Position_Executive_MarketingAssistant_Government_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_MarketingAssistant_Government_Plural", resourceCulture);
             }
@@ -387,7 +387,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Outreach Assistant.
         /// </summary>
-        internal static string Position_Executive_MarketingAssistant_Nonprofit {
+        public static string Position_Executive_MarketingAssistant_Nonprofit {
             get {
                 return ResourceManager.GetString("Position_Executive_MarketingAssistant_Nonprofit", resourceCulture);
             }
@@ -396,7 +396,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Outreach Assistants.
         /// </summary>
-        internal static string Position_Executive_MarketingAssistant_Nonprofit_Plural {
+        public static string Position_Executive_MarketingAssistant_Nonprofit_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_MarketingAssistant_Nonprofit_Plural", resourceCulture);
             }
@@ -405,7 +405,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Marketing Assistants.
         /// </summary>
-        internal static string Position_Executive_MarketingAssistant_Plural {
+        public static string Position_Executive_MarketingAssistant_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_MarketingAssistant_Plural", resourceCulture);
             }
@@ -414,7 +414,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to President.
         /// </summary>
-        internal static string Position_Executive_President {
+        public static string Position_Executive_President {
             get {
                 return ResourceManager.GetString("Position_Executive_President", resourceCulture);
             }
@@ -423,7 +423,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Vice President.
         /// </summary>
-        internal static string Position_Executive_VicePresident {
+        public static string Position_Executive_VicePresident {
             get {
                 return ResourceManager.GetString("Position_Executive_VicePresident", resourceCulture);
             }
@@ -432,7 +432,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Deputy Secretary General.
         /// </summary>
-        internal static string Position_Executive_VicePresident_Nonprofit {
+        public static string Position_Executive_VicePresident_Nonprofit {
             get {
                 return ResourceManager.GetString("Position_Executive_VicePresident_Nonprofit", resourceCulture);
             }
@@ -441,7 +441,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Deputies Secretary General.
         /// </summary>
-        internal static string Position_Executive_VicePresident_Nonprofit_Plural {
+        public static string Position_Executive_VicePresident_Nonprofit_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_VicePresident_Nonprofit_Plural", resourceCulture);
             }
@@ -450,7 +450,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Vice Presidents.
         /// </summary>
-        internal static string Position_Executive_VicePresident_Plural {
+        public static string Position_Executive_VicePresident_Plural {
             get {
                 return ResourceManager.GetString("Position_Executive_VicePresident_Plural", resourceCulture);
             }
@@ -459,7 +459,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Activism Leader.
         /// </summary>
-        internal static string Position_Geographic_ActivismLeader {
+        public static string Position_Geographic_ActivismLeader {
             get {
                 return ResourceManager.GetString("Position_Geographic_ActivismLeader", resourceCulture);
             }
@@ -468,7 +468,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Operations Leader.
         /// </summary>
-        internal static string Position_Geographic_ActivismLeader_Commercial {
+        public static string Position_Geographic_ActivismLeader_Commercial {
             get {
                 return ResourceManager.GetString("Position_Geographic_ActivismLeader_Commercial", resourceCulture);
             }
@@ -477,7 +477,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Activism Assistant.
         /// </summary>
-        internal static string Position_Geographic_ActivismLeaderAssistant {
+        public static string Position_Geographic_ActivismLeaderAssistant {
             get {
                 return ResourceManager.GetString("Position_Geographic_ActivismLeaderAssistant", resourceCulture);
             }
@@ -486,7 +486,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Operations Assistant.
         /// </summary>
-        internal static string Position_Geographic_ActivismLeaderAssistant_Commercial {
+        public static string Position_Geographic_ActivismLeaderAssistant_Commercial {
             get {
                 return ResourceManager.GetString("Position_Geographic_ActivismLeaderAssistant_Commercial", resourceCulture);
             }
@@ -495,7 +495,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Operations Assistants.
         /// </summary>
-        internal static string Position_Geographic_ActivismLeaderAssistant_Commercial_Plural {
+        public static string Position_Geographic_ActivismLeaderAssistant_Commercial_Plural {
             get {
                 return ResourceManager.GetString("Position_Geographic_ActivismLeaderAssistant_Commercial_Plural", resourceCulture);
             }
@@ -504,7 +504,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Activism Assistants.
         /// </summary>
-        internal static string Position_Geographic_ActivismLeaderAssistant_Plural {
+        public static string Position_Geographic_ActivismLeaderAssistant_Plural {
             get {
                 return ResourceManager.GetString("Position_Geographic_ActivismLeaderAssistant_Plural", resourceCulture);
             }
@@ -513,7 +513,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Assistant.
         /// </summary>
-        internal static string Position_Geographic_Assistant {
+        public static string Position_Geographic_Assistant {
             get {
                 return ResourceManager.GetString("Position_Geographic_Assistant", resourceCulture);
             }
@@ -522,7 +522,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Assistants.
         /// </summary>
-        internal static string Position_Geographic_Assistant_Plural {
+        public static string Position_Geographic_Assistant_Plural {
             get {
                 return ResourceManager.GetString("Position_Geographic_Assistant_Plural", resourceCulture);
             }
@@ -531,7 +531,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Deputy.
         /// </summary>
-        internal static string Position_Geographic_Deputy {
+        public static string Position_Geographic_Deputy {
             get {
                 return ResourceManager.GetString("Position_Geographic_Deputy", resourceCulture);
             }
@@ -540,7 +540,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Deputies.
         /// </summary>
-        internal static string Position_Geographic_Deputy_Plural {
+        public static string Position_Geographic_Deputy_Plural {
             get {
                 return ResourceManager.GetString("Position_Geographic_Deputy_Plural", resourceCulture);
             }
@@ -549,7 +549,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Geographic Subleaders.
         /// </summary>
-        internal static string Position_Geographic_ExpandingSubleaderNode_UxElement {
+        public static string Position_Geographic_ExpandingSubleaderNode_UxElement {
             get {
                 return ResourceManager.GetString("Position_Geographic_ExpandingSubleaderNode_UxElement", resourceCulture);
             }
@@ -558,7 +558,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Information Leader.
         /// </summary>
-        internal static string Position_Geographic_InfoLeader {
+        public static string Position_Geographic_InfoLeader {
             get {
                 return ResourceManager.GetString("Position_Geographic_InfoLeader", resourceCulture);
             }
@@ -567,7 +567,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Information Assistant.
         /// </summary>
-        internal static string Position_Geographic_InfoLeaderAssistant {
+        public static string Position_Geographic_InfoLeaderAssistant {
             get {
                 return ResourceManager.GetString("Position_Geographic_InfoLeaderAssistant", resourceCulture);
             }
@@ -576,7 +576,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Information Assistants.
         /// </summary>
-        internal static string Position_Geographic_InfoLeaderAssistant_Plural {
+        public static string Position_Geographic_InfoLeaderAssistant_Plural {
             get {
                 return ResourceManager.GetString("Position_Geographic_InfoLeaderAssistant_Plural", resourceCulture);
             }
@@ -585,7 +585,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Leader.
         /// </summary>
-        internal static string Position_Geographic_Leader {
+        public static string Position_Geographic_Leader {
             get {
                 return ResourceManager.GetString("Position_Geographic_Leader", resourceCulture);
             }
@@ -594,7 +594,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Outreach Leader.
         /// </summary>
-        internal static string Position_Geographic_OutreachLeader {
+        public static string Position_Geographic_OutreachLeader {
             get {
                 return ResourceManager.GetString("Position_Geographic_OutreachLeader", resourceCulture);
             }
@@ -603,7 +603,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Outreach Assistant.
         /// </summary>
-        internal static string Position_Geographic_OutreachLeaderAssistant {
+        public static string Position_Geographic_OutreachLeaderAssistant {
             get {
                 return ResourceManager.GetString("Position_Geographic_OutreachLeaderAssistant", resourceCulture);
             }
@@ -612,7 +612,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Outreach Assistants.
         /// </summary>
-        internal static string Position_Geographic_OutreachLeaderAssistant_Plural {
+        public static string Position_Geographic_OutreachLeaderAssistant_Plural {
             get {
                 return ResourceManager.GetString("Position_Geographic_OutreachLeaderAssistant_Plural", resourceCulture);
             }
@@ -621,7 +621,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmcare Leader.
         /// </summary>
-        internal static string Position_Geographic_SwarmLeader {
+        public static string Position_Geographic_SwarmLeader {
             get {
                 return ResourceManager.GetString("Position_Geographic_SwarmLeader", resourceCulture);
             }
@@ -630,7 +630,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Community Care Leader.
         /// </summary>
-        internal static string Position_Geographic_SwarmLeader_Commercial {
+        public static string Position_Geographic_SwarmLeader_Commercial {
             get {
                 return ResourceManager.GetString("Position_Geographic_SwarmLeader_Commercial", resourceCulture);
             }
@@ -639,7 +639,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmcare Assistant.
         /// </summary>
-        internal static string Position_Geographic_SwarmLeaderAssistant {
+        public static string Position_Geographic_SwarmLeaderAssistant {
             get {
                 return ResourceManager.GetString("Position_Geographic_SwarmLeaderAssistant", resourceCulture);
             }
@@ -648,7 +648,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Community Care Assistant.
         /// </summary>
-        internal static string Position_Geographic_SwarmLeaderAssistant_Commercial {
+        public static string Position_Geographic_SwarmLeaderAssistant_Commercial {
             get {
                 return ResourceManager.GetString("Position_Geographic_SwarmLeaderAssistant_Commercial", resourceCulture);
             }
@@ -657,7 +657,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Community Care Assistants.
         /// </summary>
-        internal static string Position_Geographic_SwarmLeaderAssistant_Commercial_Plural {
+        public static string Position_Geographic_SwarmLeaderAssistant_Commercial_Plural {
             get {
                 return ResourceManager.GetString("Position_Geographic_SwarmLeaderAssistant_Commercial_Plural", resourceCulture);
             }
@@ -666,7 +666,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmcare Assistants.
         /// </summary>
-        internal static string Position_Geographic_SwarmLeaderAssistant_Plural {
+        public static string Position_Geographic_SwarmLeaderAssistant_Plural {
             get {
                 return ResourceManager.GetString("Position_Geographic_SwarmLeaderAssistant_Plural", resourceCulture);
             }
@@ -675,7 +675,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Auditor.
         /// </summary>
-        internal static string Position_Strategic_Auditor {
+        public static string Position_Strategic_Auditor {
             get {
                 return ResourceManager.GetString("Position_Strategic_Auditor", resourceCulture);
             }
@@ -684,7 +684,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Auditors.
         /// </summary>
-        internal static string Position_Strategic_Auditor_Plural {
+        public static string Position_Strategic_Auditor_Plural {
             get {
                 return ResourceManager.GetString("Position_Strategic_Auditor_Plural", resourceCulture);
             }
@@ -693,7 +693,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Auditor Assistant.
         /// </summary>
-        internal static string Position_Strategic_AuditorAssistant {
+        public static string Position_Strategic_AuditorAssistant {
             get {
                 return ResourceManager.GetString("Position_Strategic_AuditorAssistant", resourceCulture);
             }
@@ -702,7 +702,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Auditor Assistants.
         /// </summary>
-        internal static string Position_Strategic_AuditorAssistant_Plural {
+        public static string Position_Strategic_AuditorAssistant_Plural {
             get {
                 return ResourceManager.GetString("Position_Strategic_AuditorAssistant_Plural", resourceCulture);
             }
@@ -711,7 +711,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Auditor Deputy.
         /// </summary>
-        internal static string Position_Strategic_AuditorDeputy {
+        public static string Position_Strategic_AuditorDeputy {
             get {
                 return ResourceManager.GetString("Position_Strategic_AuditorDeputy", resourceCulture);
             }
@@ -720,7 +720,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Auditor Deputies.
         /// </summary>
-        internal static string Position_Strategic_AuditorDeputy_Plural {
+        public static string Position_Strategic_AuditorDeputy_Plural {
             get {
                 return ResourceManager.GetString("Position_Strategic_AuditorDeputy_Plural", resourceCulture);
             }
@@ -729,7 +729,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chairperson of the Board.
         /// </summary>
-        internal static string Position_Strategic_BoardChairperson {
+        public static string Position_Strategic_BoardChairperson {
             get {
                 return ResourceManager.GetString("Position_Strategic_BoardChairperson", resourceCulture);
             }
@@ -738,7 +738,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chairpeople of the Board.
         /// </summary>
-        internal static string Position_Strategic_BoardChairperson_Plural {
+        public static string Position_Strategic_BoardChairperson_Plural {
             get {
                 return ResourceManager.GetString("Position_Strategic_BoardChairperson_Plural", resourceCulture);
             }
@@ -747,7 +747,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chairperson Deputy.
         /// </summary>
-        internal static string Position_Strategic_BoardChairpersonDeputy {
+        public static string Position_Strategic_BoardChairpersonDeputy {
             get {
                 return ResourceManager.GetString("Position_Strategic_BoardChairpersonDeputy", resourceCulture);
             }
@@ -756,7 +756,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chairperson Deputies.
         /// </summary>
-        internal static string Position_Strategic_BoardChairpersonDeputy_Plural {
+        public static string Position_Strategic_BoardChairpersonDeputy_Plural {
             get {
                 return ResourceManager.GetString("Position_Strategic_BoardChairpersonDeputy_Plural", resourceCulture);
             }
@@ -765,7 +765,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Board Deputy.
         /// </summary>
-        internal static string Position_Strategic_BoardDeputy {
+        public static string Position_Strategic_BoardDeputy {
             get {
                 return ResourceManager.GetString("Position_Strategic_BoardDeputy", resourceCulture);
             }
@@ -774,7 +774,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Board Deputies.
         /// </summary>
-        internal static string Position_Strategic_BoardDeputy_Plural {
+        public static string Position_Strategic_BoardDeputy_Plural {
             get {
                 return ResourceManager.GetString("Position_Strategic_BoardDeputy_Plural", resourceCulture);
             }
@@ -783,7 +783,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Board Member.
         /// </summary>
-        internal static string Position_Strategic_BoardMember {
+        public static string Position_Strategic_BoardMember {
             get {
                 return ResourceManager.GetString("Position_Strategic_BoardMember", resourceCulture);
             }
@@ -792,7 +792,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Board Members.
         /// </summary>
-        internal static string Position_Strategic_BoardMember_Plural {
+        public static string Position_Strategic_BoardMember_Plural {
             get {
                 return ResourceManager.GetString("Position_Strategic_BoardMember_Plural", resourceCulture);
             }
@@ -801,7 +801,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Board Observer.
         /// </summary>
-        internal static string Position_Strategic_Observer {
+        public static string Position_Strategic_Observer {
             get {
                 return ResourceManager.GetString("Position_Strategic_Observer", resourceCulture);
             }
@@ -810,7 +810,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Board Observers.
         /// </summary>
-        internal static string Position_Strategic_Observer_Plural {
+        public static string Position_Strategic_Observer_Plural {
             get {
                 return ResourceManager.GetString("Position_Strategic_Observer_Plural", resourceCulture);
             }
@@ -819,7 +819,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Sysadmin Assistant (Read-only).
         /// </summary>
-        internal static string Position_System_SysadminAssistantReadOnly {
+        public static string Position_System_SysadminAssistantReadOnly {
             get {
                 return ResourceManager.GetString("Position_System_SysadminAssistantReadOnly", resourceCulture);
             }
@@ -828,7 +828,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Sysadmin Assistants (Read-only).
         /// </summary>
-        internal static string Position_System_SysadminAssistantReadOnly_Plural {
+        public static string Position_System_SysadminAssistantReadOnly_Plural {
             get {
                 return ResourceManager.GetString("Position_System_SysadminAssistantReadOnly_Plural", resourceCulture);
             }
@@ -837,7 +837,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Principal Sysadmin.
         /// </summary>
-        internal static string Position_System_SysadminMain {
+        public static string Position_System_SysadminMain {
             get {
                 return ResourceManager.GetString("Position_System_SysadminMain", resourceCulture);
             }
@@ -846,7 +846,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Sysadmin (Read/Write).
         /// </summary>
-        internal static string Position_System_SysadminReadWrite {
+        public static string Position_System_SysadminReadWrite {
             get {
                 return ResourceManager.GetString("Position_System_SysadminReadWrite", resourceCulture);
             }
@@ -855,7 +855,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Sysadmins (Read/Write).
         /// </summary>
-        internal static string Position_System_SysadminReadWrite_Plural {
+        public static string Position_System_SysadminReadWrite_Plural {
             get {
                 return ResourceManager.GetString("Position_System_SysadminReadWrite_Plural", resourceCulture);
             }

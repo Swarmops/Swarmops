@@ -63,7 +63,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;DUST COLLECTED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The amount sent is smaller than the expected fee for returning it to you, which is {0:N2} microcoins. The money you sent is now so-called &quot;dust&quot; on the bitcoin network, and won&apos;t be moved again.&lt;br/&gt;&lt;br/&gt;Send a higher amount to perform an echo test..
         /// </summary>
-        internal static string BitcoinEchoTest_DustCollected {
+        public static string BitcoinEchoTest_DustCollected {
             get {
                 return ResourceManager.GetString("BitcoinEchoTest_DustCollected", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This is a QR code for bitcoin echo testing for this entire Swarmops installation, not just for {0}. Read it from your phone&apos;s bitcoin wallet to perform the echo test, or send from your computer directly to [{1}] (that&apos;s a Bitcoin Cash address). The amount (less miner fees of {2:N2} microcoins) will be sent back to you in the next few seconds..
         /// </summary>
-        internal static string BitcoinEchoTest_Explain {
+        public static string BitcoinEchoTest_Explain {
             get {
                 return ResourceManager.GetString("BitcoinEchoTest_Explain", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Received {2:N2} microcoins ({0} {1:N2}). Returning..
         /// </summary>
-        internal static string BitcoinEchoTest_FundsReceived {
+        public static string BitcoinEchoTest_FundsReceived {
             get {
                 return ResourceManager.GetString("BitcoinEchoTest_FundsReceived", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Received {0} microcoins (&quot;bits&quot;). Returning..
         /// </summary>
-        internal static string BitcoinEchoTest_FundsReceivedNative {
+        public static string BitcoinEchoTest_FundsReceivedNative {
             get {
                 return ResourceManager.GetString("BitcoinEchoTest_FundsReceivedNative", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This is a bitcoin echo test. It tests the hotwallet. If you send a small amount here, it will be sent back to you, minus the sendback transaction fee (currently {0:N2} microcoins)..
         /// </summary>
-        internal static string BitcoinEchoTest_Info {
+        public static string BitcoinEchoTest_Info {
             get {
                 return ResourceManager.GetString("BitcoinEchoTest_Info", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Bitcoin Cash Hotwallet Echo Test.
         /// </summary>
-        internal static string BitcoinEchoTest_PageTitle {
+        public static string BitcoinEchoTest_PageTitle {
             get {
                 return ResourceManager.GetString("BitcoinEchoTest_PageTitle", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Waiting for transaction....
         /// </summary>
-        internal static string BitcoinEchoTest_StatusInitial {
+        public static string BitcoinEchoTest_StatusInitial {
             get {
                 return ResourceManager.GetString("BitcoinEchoTest_StatusInitial", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Transaction detected, verifying....
         /// </summary>
-        internal static string BitcoinEchoTest_TransactionDetected {
+        public static string BitcoinEchoTest_TransactionDetected {
             get {
                 return ResourceManager.GetString("BitcoinEchoTest_TransactionDetected", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops Bitcoin Echo Test.
         /// </summary>
-        internal static string BitcoinEchoTest_TxLabel {
+        public static string BitcoinEchoTest_TxLabel {
             get {
                 return ResourceManager.GetString("BitcoinEchoTest_TxLabel", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Impersonation Active.
         /// </summary>
-        internal static string CommenceImpersonation_Active_Header {
+        public static string CommenceImpersonation_Active_Header {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Active_Header", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to You have an active impersonation session as {0}. &lt;a href=&quot;javascript:terminateImpersonation();&quot;&gt;End impersonation.&lt;/a&gt;.
         /// </summary>
-        internal static string CommenceImpersonation_Active_Text {
+        public static string CommenceImpersonation_Active_Text {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Active_Text", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATE PERSON?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is not to be taken lightly, and if you&apos;re not doing this for technical reasons, it may even be illegal depending on local laws.&lt;br/&gt;&lt;br/&gt;The purpose of this tool is to fix technical malfunctions. Everything is logged.&lt;br/&gt;&lt;br/&gt;Proceed?.
         /// </summary>
-        internal static string CommenceImpersonation_Confirm {
+        public static string CommenceImpersonation_Confirm {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Confirm", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATION TERMINATED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonation terminated at {0:HH:mm} UTC. You are acting as yourself again..
         /// </summary>
-        internal static string CommenceImpersonation_Ended {
+        public static string CommenceImpersonation_Ended {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Ended", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATION DENIED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You may not impersonate somebody who is your direct manager..
         /// </summary>
-        internal static string CommenceImpersonation_Error_Authority_Report {
+        public static string CommenceImpersonation_Error_Authority_Report {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Error_Authority_Report", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATION DENIED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You may not impersonate somebody else with system level access..
         /// </summary>
-        internal static string CommenceImpersonation_Error_Authority_System {
+        public static string CommenceImpersonation_Error_Authority_System {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Error_Authority_System", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to You need to select a person to impersonate..
         /// </summary>
-        internal static string CommenceImpersonation_Error_SelectPerson {
+        public static string CommenceImpersonation_Error_SelectPerson {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Error_SelectPerson", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to If you need to impersonate yourself, we suggest you log off Swarmops and seek other kind of assistance..
         /// </summary>
-        internal static string CommenceImpersonation_Error_Self {
+        public static string CommenceImpersonation_Error_Self {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Error_Self", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATION DENIED&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;You do not seem to have sufficient privileges to impersonate somebody else..
         /// </summary>
-        internal static string CommenceImpersonation_Failed {
+        public static string CommenceImpersonation_Failed {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Failed", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Impersonate another user.
         /// </summary>
-        internal static string CommenceImpersonation_Header {
+        public static string CommenceImpersonation_Header {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Header", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Impersonate.
         /// </summary>
-        internal static string CommenceImpersonation_Impersonate {
+        public static string CommenceImpersonation_Impersonate {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Impersonate", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Person to impersonate.
         /// </summary>
-        internal static string CommenceImpersonation_Person {
+        public static string CommenceImpersonation_Person {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Person", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;IMPERSONATION ACTIVE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonation started at {0:HH:mm} UTC. This is the Dashboard as the impersonated person sees it. .
         /// </summary>
-        internal static string CommenceImpersonation_Success {
+        public static string CommenceImpersonation_Success {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Success", resourceCulture);
             }
@@ -263,7 +263,7 @@ namespace Resources.Pages {
         ///&lt;p&gt;&lt;strong&gt;WARNING:&lt;/strong&gt; This is a highly intrusive tool that should only be used for technical development and for requested support. Using this should not be taken lightly.&lt;/p&gt;
         ///&lt;p&gt;All impersonations are permanently logged, all and any actions taken while impersonated are traceable as such, and the impersonated user will be informed of the intrusion.&lt;/p&gt;.
         /// </summary>
-        internal static string CommenceImpersonation_Warning {
+        public static string CommenceImpersonation_Warning {
             get {
                 return ResourceManager.GetString("CommenceImpersonation_Warning", resourceCulture);
             }
@@ -272,7 +272,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Activists will be called.
         /// </summary>
-        internal static string CreateOrganization_ActivistTitle {
+        public static string CreateOrganization_ActivistTitle {
             get {
                 return ResourceManager.GetString("CreateOrganization_ActivistTitle", resourceCulture);
             }
@@ -281,7 +281,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to (not applicable).
         /// </summary>
-        internal static string CreateOrganization_Applicants_None {
+        public static string CreateOrganization_Applicants_None {
             get {
                 return ResourceManager.GetString("CreateOrganization_Applicants_None", resourceCulture);
             }
@@ -290,7 +290,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Not-yet-members are called.
         /// </summary>
-        internal static string CreateOrganization_ApplicantTitle {
+        public static string CreateOrganization_ApplicantTitle {
             get {
                 return ResourceManager.GetString("CreateOrganization_ApplicantTitle", resourceCulture);
             }
@@ -299,7 +299,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Root-level organization.
         /// </summary>
-        internal static string CreateOrganization_AsRoot {
+        public static string CreateOrganization_AsRoot {
             get {
                 return ResourceManager.GetString("CreateOrganization_AsRoot", resourceCulture);
             }
@@ -308,7 +308,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Child of {0}.
         /// </summary>
-        internal static string CreateOrganization_ChildOfX {
+        public static string CreateOrganization_ChildOfX {
             get {
                 return ResourceManager.GetString("CreateOrganization_ChildOfX", resourceCulture);
             }
@@ -317,7 +317,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Create new organization as....
         /// </summary>
-        internal static string CreateOrganization_CreateNewOrgAs {
+        public static string CreateOrganization_CreateNewOrgAs {
             get {
                 return ResourceManager.GetString("CreateOrganization_CreateNewOrgAs", resourceCulture);
             }
@@ -326,7 +326,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Organization name cannot be empty. (You need to give the new organization a name!).
         /// </summary>
-        internal static string CreateOrganization_Error_OrganizationNameCannotBeEmpty {
+        public static string CreateOrganization_Error_OrganizationNameCannotBeEmpty {
             get {
                 return ResourceManager.GetString("CreateOrganization_Error_OrganizationNameCannotBeEmpty", resourceCulture);
             }
@@ -335,7 +335,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to You can create a new organization either as a new standalone organization, or as a child organization of the current one. (Everybody with responsibilities in a parent organization automatically has corresponding rights and privileges in all its children.).
         /// </summary>
-        internal static string CreateOrganization_Info {
+        public static string CreateOrganization_Info {
             get {
                 return ResourceManager.GetString("CreateOrganization_Info", resourceCulture);
             }
@@ -344,7 +344,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to New Organization Name.
         /// </summary>
-        internal static string CreateOrganization_NewOrganizationName {
+        public static string CreateOrganization_NewOrganizationName {
             get {
                 return ResourceManager.GetString("CreateOrganization_NewOrganizationName", resourceCulture);
             }
@@ -353,7 +353,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Operating currency.
         /// </summary>
-        internal static string CreateOrganization_NewOrgCurrency {
+        public static string CreateOrganization_NewOrgCurrency {
             get {
                 return ResourceManager.GetString("CreateOrganization_NewOrgCurrency", resourceCulture);
             }
@@ -362,7 +362,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to The new organization&apos;s name.
         /// </summary>
-        internal static string CreateOrganization_NewOrgName {
+        public static string CreateOrganization_NewOrgName {
             get {
                 return ResourceManager.GetString("CreateOrganization_NewOrgName", resourceCulture);
             }
@@ -371,7 +371,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Create New Organization.
         /// </summary>
-        internal static string CreateOrganization_PageTitle {
+        public static string CreateOrganization_PageTitle {
             get {
                 return ResourceManager.GetString("CreateOrganization_PageTitle", resourceCulture);
             }
@@ -380,7 +380,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Regular people will be called.
         /// </summary>
-        internal static string CreateOrganization_RegularTitle {
+        public static string CreateOrganization_RegularTitle {
             get {
                 return ResourceManager.GetString("CreateOrganization_RegularTitle", resourceCulture);
             }
@@ -389,7 +389,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to The new organization has been created. You have been given an non-expiring {0} in the organization, and been placed as its highest executive for the time being, so you can work with it and set it up properly. To configure the new organization, use this control panel (available later under Admin / Organization Settings)..
         /// </summary>
-        internal static string CreateOrganization_Success {
+        public static string CreateOrganization_Success {
             get {
                 return ResourceManager.GetString("CreateOrganization_Success", resourceCulture);
             }
@@ -398,7 +398,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Default position titles at start.
         /// </summary>
-        internal static string CreateOrganization_Titles {
+        public static string CreateOrganization_Titles {
             get {
                 return ResourceManager.GetString("CreateOrganization_Titles", resourceCulture);
             }
@@ -407,7 +407,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Commercial.
         /// </summary>
-        internal static string CreateOrganization_Titles_Commercial {
+        public static string CreateOrganization_Titles_Commercial {
             get {
                 return ResourceManager.GetString("CreateOrganization_Titles_Commercial", resourceCulture);
             }
@@ -416,7 +416,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Government.
         /// </summary>
-        internal static string CreateOrganization_Titles_Government {
+        public static string CreateOrganization_Titles_Government {
             get {
                 return ResourceManager.GetString("CreateOrganization_Titles_Government", resourceCulture);
             }
@@ -425,7 +425,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Nonprofit.
         /// </summary>
-        internal static string CreateOrganization_Titles_Nonprofit {
+        public static string CreateOrganization_Titles_Nonprofit {
             get {
                 return ResourceManager.GetString("CreateOrganization_Titles_Nonprofit", resourceCulture);
             }
@@ -434,7 +434,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;WORK IN PROGRESS.&lt;/strong&gt; Most of these options don&apos;t save yet..
         /// </summary>
-        internal static string EditOrganization_Info {
+        public static string EditOrganization_Info {
             get {
                 return ResourceManager.GetString("EditOrganization_Info", resourceCulture);
             }
@@ -443,7 +443,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to {0} numbering.
         /// </summary>
-        internal static string EditOrganization_MemberNumberStyle {
+        public static string EditOrganization_MemberNumberStyle {
             get {
                 return ResourceManager.GetString("EditOrganization_MemberNumberStyle", resourceCulture);
             }
@@ -452,7 +452,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Open Ledgers Domain.
         /// </summary>
-        internal static string EditOrganization_OpenLedgersDomain {
+        public static string EditOrganization_OpenLedgersDomain {
             get {
                 return ResourceManager.GetString("EditOrganization_OpenLedgersDomain", resourceCulture);
             }
@@ -461,7 +461,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Edit Organization.
         /// </summary>
-        internal static string EditOrganization_PageTitle {
+        public static string EditOrganization_PageTitle {
             get {
                 return ResourceManager.GetString("EditOrganization_PageTitle", resourceCulture);
             }
@@ -470,7 +470,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to People become {0} of.
         /// </summary>
-        internal static string EditOrganization_ParticipationBeginsOrg {
+        public static string EditOrganization_ParticipationBeginsOrg {
             get {
                 return ResourceManager.GetString("EditOrganization_ParticipationBeginsOrg", resourceCulture);
             }
@@ -479,7 +479,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to People become {0} when.
         /// </summary>
-        internal static string EditOrganization_ParticipationBeginsWhen {
+        public static string EditOrganization_ParticipationBeginsWhen {
             get {
                 return ResourceManager.GetString("EditOrganization_ParticipationBeginsWhen", resourceCulture);
             }
@@ -488,7 +488,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to {0} ends when.
         /// </summary>
-        internal static string EditOrganization_ParticipationChurn {
+        public static string EditOrganization_ParticipationChurn {
             get {
                 return ResourceManager.GetString("EditOrganization_ParticipationChurn", resourceCulture);
             }
@@ -497,7 +497,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Initial {0} cost (in {1}).
         /// </summary>
-        internal static string EditOrganization_ParticipationCost {
+        public static string EditOrganization_ParticipationCost {
             get {
                 return ResourceManager.GetString("EditOrganization_ParticipationCost", resourceCulture);
             }
@@ -506,7 +506,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to One {0} lasts.
         /// </summary>
-        internal static string EditOrganization_ParticipationDuration {
+        public static string EditOrganization_ParticipationDuration {
             get {
                 return ResourceManager.GetString("EditOrganization_ParticipationDuration", resourceCulture);
             }
@@ -515,7 +515,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Renewed period counts from.
         /// </summary>
-        internal static string EditOrganization_RenewalDateEffect {
+        public static string EditOrganization_RenewalDateEffect {
             get {
                 return ResourceManager.GetString("EditOrganization_RenewalDateEffect", resourceCulture);
             }
@@ -524,7 +524,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Remind to renew.
         /// </summary>
-        internal static string EditOrganization_RenewalReminders {
+        public static string EditOrganization_RenewalReminders {
             get {
                 return ResourceManager.GetString("EditOrganization_RenewalReminders", resourceCulture);
             }
@@ -533,7 +533,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Renewals affect.
         /// </summary>
-        internal static string EditOrganization_RenewalsAffect {
+        public static string EditOrganization_RenewalsAffect {
             get {
                 return ResourceManager.GetString("EditOrganization_RenewalsAffect", resourceCulture);
             }
@@ -542,7 +542,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Renewal cost (in {0}).
         /// </summary>
-        internal static string EditOrganization_RenewalsCost {
+        public static string EditOrganization_RenewalsCost {
             get {
                 return ResourceManager.GetString("EditOrganization_RenewalsCost", resourceCulture);
             }
@@ -551,7 +551,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Organization Vanity Domain.
         /// </summary>
-        internal static string EditOrganization_VanityDomain {
+        public static string EditOrganization_VanityDomain {
             get {
                 return ResourceManager.GetString("EditOrganization_VanityDomain", resourceCulture);
             }
@@ -560,7 +560,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Executive Positions For {0}.
         /// </summary>
-        internal static string OrgStaffing_Header_ExecutivePositions {
+        public static string OrgStaffing_Header_ExecutivePositions {
             get {
                 return ResourceManager.GetString("OrgStaffing_Header_ExecutivePositions", resourceCulture);
             }
@@ -569,7 +569,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Local Positions (At Every Geography).
         /// </summary>
-        internal static string OrgStaffing_Header_LocalDefaultPositions {
+        public static string OrgStaffing_Header_LocalDefaultPositions {
             get {
                 return ResourceManager.GetString("OrgStaffing_Header_LocalDefaultPositions", resourceCulture);
             }
@@ -578,7 +578,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Staff Payroll.
         /// </summary>
-        internal static string OrgStaffing_Header_Payroll {
+        public static string OrgStaffing_Header_Payroll {
             get {
                 return ResourceManager.GetString("OrgStaffing_Header_Payroll", resourceCulture);
             }
@@ -587,7 +587,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Strategic Positions For {0}.
         /// </summary>
-        internal static string OrgStaffing_Header_StrategicPositions {
+        public static string OrgStaffing_Header_StrategicPositions {
             get {
                 return ResourceManager.GetString("OrgStaffing_Header_StrategicPositions", resourceCulture);
             }
@@ -596,7 +596,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Volunteers Awaiting Response.
         /// </summary>
-        internal static string OrgStaffing_Header_WaitingVolunteers {
+        public static string OrgStaffing_Header_WaitingVolunteers {
             get {
                 return ResourceManager.GetString("OrgStaffing_Header_WaitingVolunteers", resourceCulture);
             }
@@ -605,7 +605,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Set the staffing structure for this organization, as well as its staffing at the strategic (board) and executive (C-level or equivalent) levels. You can also manage waiting volunteers and the payroll from here..
         /// </summary>
-        internal static string OrgStaffing_Info {
+        public static string OrgStaffing_Info {
             get {
                 return ResourceManager.GetString("OrgStaffing_Info", resourceCulture);
             }
@@ -614,7 +614,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Organization Staffing.
         /// </summary>
-        internal static string OrgStaffing_PageTitle {
+        public static string OrgStaffing_PageTitle {
             get {
                 return ResourceManager.GetString("OrgStaffing_PageTitle", resourceCulture);
             }
@@ -623,7 +623,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Admin Notifications From Address.
         /// </summary>
-        internal static string SystemSettings_AdminAddress {
+        public static string SystemSettings_AdminAddress {
             get {
                 return ResourceManager.GetString("SystemSettings_AdminAddress", resourceCulture);
             }
@@ -632,7 +632,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Admin Notifications From Name.
         /// </summary>
-        internal static string SystemSettings_AdminSender {
+        public static string SystemSettings_AdminSender {
             get {
                 return ResourceManager.GetString("SystemSettings_AdminSender", resourceCulture);
             }
@@ -641,7 +641,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Backend Hostname Override.
         /// </summary>
-        internal static string SystemSettings_BackendHostnameOverride {
+        public static string SystemSettings_BackendHostnameOverride {
             get {
                 return ResourceManager.GetString("SystemSettings_BackendHostnameOverride", resourceCulture);
             }
@@ -650,7 +650,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to SMTP Port must be numeric. Unable to parse host:port..
         /// </summary>
-        internal static string SystemSettings_Error_SmtpHostPort {
+        public static string SystemSettings_Error_SmtpHostPort {
             get {
                 return ResourceManager.GetString("SystemSettings_Error_SmtpHostPort", resourceCulture);
             }
@@ -659,7 +659,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Unable to parse user, pass, host, and/or port. (Only host is required.).
         /// </summary>
-        internal static string SystemSettings_Error_SmtpSyntax {
+        public static string SystemSettings_Error_SmtpSyntax {
             get {
                 return ResourceManager.GetString("SystemSettings_Error_SmtpSyntax", resourceCulture);
             }
@@ -668,7 +668,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Externally Accessible URL.
         /// </summary>
-        internal static string SystemSettings_ExternalUrl {
+        public static string SystemSettings_ExternalUrl {
             get {
                 return ResourceManager.GetString("SystemSettings_ExternalUrl", resourceCulture);
             }
@@ -677,7 +677,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Correspondence Transmission Settings.
         /// </summary>
-        internal static string SystemSettings_Header_CorrespondenceTxSettings {
+        public static string SystemSettings_Header_CorrespondenceTxSettings {
             get {
                 return ResourceManager.GetString("SystemSettings_Header_CorrespondenceTxSettings", resourceCulture);
             }
@@ -686,7 +686,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to System Administrators.
         /// </summary>
-        internal static string SystemSettings_Header_SystemAdministrators {
+        public static string SystemSettings_Header_SystemAdministrators {
             get {
                 return ResourceManager.GetString("SystemSettings_Header_SystemAdministrators", resourceCulture);
             }
@@ -695,7 +695,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Various technical settings for this Swarmops installation. Not specific to any organization or person, but installation-wide..
         /// </summary>
-        internal static string SystemSettings_Info {
+        public static string SystemSettings_Info {
             get {
                 return ResourceManager.GetString("SystemSettings_Info", resourceCulture);
             }
@@ -704,7 +704,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Installation Name.
         /// </summary>
-        internal static string SystemSettings_InstallationName {
+        public static string SystemSettings_InstallationName {
             get {
                 return ResourceManager.GetString("SystemSettings_InstallationName", resourceCulture);
             }
@@ -713,7 +713,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to System Settings.
         /// </summary>
-        internal static string SystemSettings_PageTitle {
+        public static string SystemSettings_PageTitle {
             get {
                 return ResourceManager.GetString("SystemSettings_PageTitle", resourceCulture);
             }
@@ -722,7 +722,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to SMTP Server (user:pass@host:port).
         /// </summary>
-        internal static string SystemSettings_SmtpServer {
+        public static string SystemSettings_SmtpServer {
             get {
                 return ResourceManager.GetString("SystemSettings_SmtpServer", resourceCulture);
             }
@@ -731,7 +731,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops has sent you a test mail to verify your new SMTP server settings..
         /// </summary>
-        internal static string SystemSettings_TestMailSent {
+        public static string SystemSettings_TestMailSent {
             get {
                 return ResourceManager.GetString("SystemSettings_TestMailSent", resourceCulture);
             }
@@ -740,7 +740,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to You really, really, REALLY should use HTTPS for a website like this. But you knew that already, didn&apos;t you?.
         /// </summary>
-        internal static string SystemSettings_Warning_Insecure {
+        public static string SystemSettings_Warning_Insecure {
             get {
                 return ResourceManager.GetString("SystemSettings_Warning_Insecure", resourceCulture);
             }
@@ -749,7 +749,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to WebSocket Port (Backend).
         /// </summary>
-        internal static string SystemSettings_WebsocketPortBackend {
+        public static string SystemSettings_WebsocketPortBackend {
             get {
                 return ResourceManager.GetString("SystemSettings_WebsocketPortBackend", resourceCulture);
             }
@@ -758,7 +758,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to WebSocket Port (Frontend).
         /// </summary>
-        internal static string SystemSettings_WebsocketPortFrontend {
+        public static string SystemSettings_WebsocketPortFrontend {
             get {
                 return ResourceManager.GetString("SystemSettings_WebsocketPortFrontend", resourceCulture);
             }

@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Approve cash advances {0}.
         /// </summary>
-        internal static string Attest_CashAdvance_Many {
+        public static string Attest_CashAdvance_Many {
             get {
                 return ResourceManager.GetString("Attest_CashAdvance_Many", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Approve cash advance #{0}.
         /// </summary>
-        internal static string Attest_CashAdvance_One {
+        public static string Attest_CashAdvance_One {
             get {
                 return ResourceManager.GetString("Attest_CashAdvance_One", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Approve expense claims {0}.
         /// </summary>
-        internal static string Attest_ExpenseClaim_Many {
+        public static string Attest_ExpenseClaim_Many {
             get {
                 return ResourceManager.GetString("Attest_ExpenseClaim_Many", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Approve expense claim #{0}.
         /// </summary>
-        internal static string Attest_ExpenseClaim_One {
+        public static string Attest_ExpenseClaim_One {
             get {
                 return ResourceManager.GetString("Attest_ExpenseClaim_One", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Set Bitcoin Cash payout address.
         /// </summary>
-        internal static string Bitcoin_SetPayoutAddress {
+        public static string Bitcoin_SetPayoutAddress {
             get {
                 return ResourceManager.GetString("Bitcoin_SetPayoutAddress", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Please set your Bitcoin Cash address for payouts from [InstallationName] (starts with &quot;bitcoincash&quot;):.
         /// </summary>
-        internal static string Bitcoin_SetPayoutAddress_Prompt {
+        public static string Bitcoin_SetPayoutAddress_Prompt {
             get {
                 return ResourceManager.GetString("Bitcoin_SetPayoutAddress_Prompt", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Settle {0} payouts.
         /// </summary>
-        internal static string Payout_Many {
+        public static string Payout_Many {
             get {
                 return ResourceManager.GetString("Payout_Many", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Settle one payout.
         /// </summary>
-        internal static string Payout_One {
+        public static string Payout_One {
             get {
                 return ResourceManager.GetString("Payout_One", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Settle {0} overdue payouts.
         /// </summary>
-        internal static string Payout_Overdue_Many {
+        public static string Payout_Overdue_Many {
             get {
                 return ResourceManager.GetString("Payout_Overdue_Many", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Settle one overdue payout.
         /// </summary>
-        internal static string Payout_Overdue_One {
+        public static string Payout_Overdue_One {
             get {
                 return ResourceManager.GetString("Payout_Overdue_One", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Settle {0} urgent payouts.
         /// </summary>
-        internal static string Payout_Urgent_Many {
+        public static string Payout_Urgent_Many {
             get {
                 return ResourceManager.GetString("Payout_Urgent_Many", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Settle one urgent payout.
         /// </summary>
-        internal static string Payout_Urgent_One {
+        public static string Payout_Urgent_One {
             get {
                 return ResourceManager.GetString("Payout_Urgent_One", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Enable two-factor authentication.
         /// </summary>
-        internal static string Security_Set2FA {
+        public static string Security_Set2FA {
             get {
                 return ResourceManager.GetString("Security_Set2FA", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Validate claims {0}.
         /// </summary>
-        internal static string Validate_Receipts_Many {
+        public static string Validate_Receipts_Many {
             get {
                 return ResourceManager.GetString("Validate_Receipts_Many", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Validate claim #{0}.
         /// </summary>
-        internal static string Validate_Receipts_One {
+        public static string Validate_Receipts_One {
             get {
                 return ResourceManager.GetString("Validate_Receipts_One", resourceCulture);
             }

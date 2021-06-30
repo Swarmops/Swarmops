@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string DefaultWelcomeMailRegistered {
+        public static string DefaultWelcomeMailRegistered {
             get {
                 return ResourceManager.GetString("DefaultWelcomeMailRegistered", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string DefaultWelcomeMailSignedUp {
+        public static string DefaultWelcomeMailSignedUp {
             get {
                 return ResourceManager.GetString("DefaultWelcomeMailSignedUp", resourceCulture);
             }

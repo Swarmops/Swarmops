@@ -63,7 +63,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Admin.
         /// </summary>
-        internal static string Menu5_Administration {
+        public static string Menu5_Administration {
             get {
                 return ResourceManager.GetString("Menu5_Administration", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Access Control Lists.
         /// </summary>
-        internal static string Menu5_Administration_AccessControlLists {
+        public static string Menu5_Administration_AccessControlLists {
             get {
                 return ResourceManager.GetString("Menu5_Administration_AccessControlLists", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Create New Organization.
         /// </summary>
-        internal static string Menu5_Administration_CreateOrganization {
+        public static string Menu5_Administration_CreateOrganization {
             get {
                 return ResourceManager.GetString("Menu5_Administration_CreateOrganization", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Debug.
         /// </summary>
-        internal static string Menu5_Administration_Debug {
+        public static string Menu5_Administration_Debug {
             get {
                 return ResourceManager.GetString("Menu5_Administration_Debug", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bitcoin Hotwallet Echo Test.
         /// </summary>
-        internal static string Menu5_Administration_Debug_BitcoinEchoTest {
+        public static string Menu5_Administration_Debug_BitcoinEchoTest {
             get {
                 return ResourceManager.GetString("Menu5_Administration_Debug_BitcoinEchoTest", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Impersonate.
         /// </summary>
-        internal static string Menu5_Administration_Debug_Impersonate {
+        public static string Menu5_Administration_Debug_Impersonate {
             get {
                 return ResourceManager.GetString("Menu5_Administration_Debug_Impersonate", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Geography Tree.
         /// </summary>
-        internal static string Menu5_Administration_GeographyTree {
+        public static string Menu5_Administration_GeographyTree {
             get {
                 return ResourceManager.GetString("Menu5_Administration_GeographyTree", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Organization Clusters.
         /// </summary>
-        internal static string Menu5_Administration_OrganizationClusters {
+        public static string Menu5_Administration_OrganizationClusters {
             get {
                 return ResourceManager.GetString("Menu5_Administration_OrganizationClusters", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Organization Settings.
         /// </summary>
-        internal static string Menu5_Administration_OrganizationSettings {
+        public static string Menu5_Administration_OrganizationSettings {
             get {
                 return ResourceManager.GetString("Menu5_Administration_OrganizationSettings", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Organization Staffing.
         /// </summary>
-        internal static string Menu5_Administration_OrganizationStaffing {
+        public static string Menu5_Administration_OrganizationStaffing {
             get {
                 return ResourceManager.GetString("Menu5_Administration_OrganizationStaffing", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to System-Wide Settings.
         /// </summary>
-        internal static string Menu5_Administration_SystemSettings {
+        public static string Menu5_Administration_SystemSettings {
             get {
                 return ResourceManager.GetString("Menu5_Administration_SystemSettings", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Set up Connected Accounts.
         /// </summary>
-        internal static string Menu5_Admin_SetupConnectedAccounts {
+        public static string Menu5_Admin_SetupConnectedAccounts {
             get {
                 return ResourceManager.GetString("Menu5_Admin_SetupConnectedAccounts", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Set up Chart of Accounts.
         /// </summary>
-        internal static string Menu5_Admin_SetupLedgerAccountStructure {
+        public static string Menu5_Admin_SetupLedgerAccountStructure {
             get {
                 return ResourceManager.GetString("Menu5_Admin_SetupLedgerAccountStructure", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Set up Payroll.
         /// </summary>
-        internal static string Menu5_Admin_SetupPayroll {
+        public static string Menu5_Admin_SetupPayroll {
             get {
                 return ResourceManager.GetString("Menu5_Admin_SetupPayroll", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Built on {0:MMM d, yyyy}.
         /// </summary>
-        internal static string Menu5_Beta_BuildTime {
+        public static string Menu5_Beta_BuildTime {
             get {
                 return ResourceManager.GetString("Menu5_Beta_BuildTime", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0:N0} lines of code.
         /// </summary>
-        internal static string Menu5_Beta_LinesOfCode {
+        public static string Menu5_Beta_LinesOfCode {
             get {
                 return ResourceManager.GetString("Menu5_Beta_LinesOfCode", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Report a Swarmops Bug (on Github).
         /// </summary>
-        internal static string Menu5_Beta_ReportBug {
+        public static string Menu5_Beta_ReportBug {
             get {
                 return ResourceManager.GetString("Menu5_Beta_ReportBug", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Communications.
         /// </summary>
-        internal static string Menu5_Communications {
+        public static string Menu5_Communications {
             get {
                 return ResourceManager.GetString("Menu5_Communications", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Edit Automail Text.
         /// </summary>
-        internal static string Menu5_Communications_EditAutomailText {
+        public static string Menu5_Communications_EditAutomailText {
             get {
                 return ResourceManager.GetString("Menu5_Communications_EditAutomailText", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Manage Mail Inbox.
         /// </summary>
-        internal static string Menu5_Communications_MailInbox {
+        public static string Menu5_Communications_MailInbox {
             get {
                 return ResourceManager.GetString("Menu5_Communications_MailInbox", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Mass Mailing.
         /// </summary>
-        internal static string Menu5_Communications_MassMailing {
+        public static string Menu5_Communications_MassMailing {
             get {
                 return ResourceManager.GetString("Menu5_Communications_MassMailing", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Mobilize Activists.
         /// </summary>
-        internal static string Menu5_Communications_MobilizeActivists {
+        public static string Menu5_Communications_MobilizeActivists {
             get {
                 return ResourceManager.GetString("Menu5_Communications_MobilizeActivists", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Manage Paper Inbox.
         /// </summary>
-        internal static string Menu5_Communications_PaperInbox {
+        public static string Menu5_Communications_PaperInbox {
             get {
                 return ResourceManager.GetString("Menu5_Communications_PaperInbox", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Read Paper Inbox.
         /// </summary>
-        internal static string Menu5_Communications_ReadPaperInbox {
+        public static string Menu5_Communications_ReadPaperInbox {
             get {
                 return ResourceManager.GetString("Menu5_Communications_ReadPaperInbox", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Received Paper Letter.
         /// </summary>
-        internal static string Menu5_Communications_ReceivedPaperLetter {
+        public static string Menu5_Communications_ReceivedPaperLetter {
             get {
                 return ResourceManager.GetString("Menu5_Communications_ReceivedPaperLetter", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Manage Reporter List.
         /// </summary>
-        internal static string Menu5_Communications_ReporterList {
+        public static string Menu5_Communications_ReporterList {
             get {
                 return ResourceManager.GetString("Menu5_Communications_ReporterList", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Send Mass Message.
         /// </summary>
-        internal static string Menu5_Communications_SendMassMessage {
+        public static string Menu5_Communications_SendMassMessage {
             get {
                 return ResourceManager.GetString("Menu5_Communications_SendMassMessage", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Send Press Release.
         /// </summary>
-        internal static string Menu5_Communications_SendPressRelease {
+        public static string Menu5_Communications_SendPressRelease {
             get {
                 return ResourceManager.GetString("Menu5_Communications_SendPressRelease", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Text Activists.
         /// </summary>
-        internal static string Menu5_Communications_TextActivists {
+        public static string Menu5_Communications_TextActivists {
             get {
                 return ResourceManager.GetString("Menu5_Communications_TextActivists", resourceCulture);
             }
@@ -324,7 +324,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Manage Text Inbox.
         /// </summary>
-        internal static string Menu5_Communications_TextInbox {
+        public static string Menu5_Communications_TextInbox {
             get {
                 return ResourceManager.GetString("Menu5_Communications_TextInbox", resourceCulture);
             }
@@ -333,7 +333,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Financial.
         /// </summary>
-        internal static string Menu5_Financial {
+        public static string Menu5_Financial {
             get {
                 return ResourceManager.GetString("Menu5_Financial", resourceCulture);
             }
@@ -342,7 +342,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Approve Costs.
         /// </summary>
-        internal static string Menu5_Financial_AttestCosts {
+        public static string Menu5_Financial_AttestCosts {
             get {
                 return ResourceManager.GetString("Menu5_Financial_AttestCosts", resourceCulture);
             }
@@ -351,7 +351,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Claim Refund for Expense.
         /// </summary>
-        internal static string Menu5_Financial_ClaimExpense {
+        public static string Menu5_Financial_ClaimExpense {
             get {
                 return ResourceManager.GetString("Menu5_Financial_ClaimExpense", resourceCulture);
             }
@@ -360,7 +360,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Create Purchase Order.
         /// </summary>
-        internal static string Menu5_Financial_CreatePurchaseOrder {
+        public static string Menu5_Financial_CreatePurchaseOrder {
             get {
                 return ResourceManager.GetString("Menu5_Financial_CreatePurchaseOrder", resourceCulture);
             }
@@ -369,7 +369,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Donate Funds.
         /// </summary>
-        internal static string Menu5_Financial_DonateFunds {
+        public static string Menu5_Financial_DonateFunds {
             get {
                 return ResourceManager.GetString("Menu5_Financial_DonateFunds", resourceCulture);
             }
@@ -378,7 +378,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Gigs Assistant.
         /// </summary>
-        internal static string Menu5_Financial_GigsAssistant {
+        public static string Menu5_Financial_GigsAssistant {
             get {
                 return ResourceManager.GetString("Menu5_Financial_GigsAssistant", resourceCulture);
             }
@@ -387,7 +387,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to List....
         /// </summary>
-        internal static string Menu5_Financial_List {
+        public static string Menu5_Financial_List {
             get {
                 return ResourceManager.GetString("Menu5_Financial_List", resourceCulture);
             }
@@ -396,7 +396,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cash Requests.
         /// </summary>
-        internal static string Menu5_Financial_List_CashRequests {
+        public static string Menu5_Financial_List_CashRequests {
             get {
                 return ResourceManager.GetString("Menu5_Financial_List_CashRequests", resourceCulture);
             }
@@ -405,7 +405,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expense Claims.
         /// </summary>
-        internal static string Menu5_Financial_List_ExpenseClaims {
+        public static string Menu5_Financial_List_ExpenseClaims {
             get {
                 return ResourceManager.GetString("Menu5_Financial_List_ExpenseClaims", resourceCulture);
             }
@@ -414,7 +414,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Inbound Invoices.
         /// </summary>
-        internal static string Menu5_Financial_List_InboundInvoices {
+        public static string Menu5_Financial_List_InboundInvoices {
             get {
                 return ResourceManager.GetString("Menu5_Financial_List_InboundInvoices", resourceCulture);
             }
@@ -423,7 +423,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Outbound Invoices.
         /// </summary>
-        internal static string Menu5_Financial_List_OutboundInvoices {
+        public static string Menu5_Financial_List_OutboundInvoices {
             get {
                 return ResourceManager.GetString("Menu5_Financial_List_OutboundInvoices", resourceCulture);
             }
@@ -432,7 +432,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Outstanding Cash Advances.
         /// </summary>
-        internal static string Menu5_Financial_List_OutstandingAdvances {
+        public static string Menu5_Financial_List_OutstandingAdvances {
             get {
                 return ResourceManager.GetString("Menu5_Financial_List_OutstandingAdvances", resourceCulture);
             }
@@ -441,7 +441,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Salaries.
         /// </summary>
-        internal static string Menu5_Financial_List_Salaries {
+        public static string Menu5_Financial_List_Salaries {
             get {
                 return ResourceManager.GetString("Menu5_Financial_List_Salaries", resourceCulture);
             }
@@ -450,7 +450,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Manage My Budgets.
         /// </summary>
-        internal static string Menu5_Financial_ManageBudgets {
+        public static string Menu5_Financial_ManageBudgets {
             get {
                 return ResourceManager.GetString("Menu5_Financial_ManageBudgets", resourceCulture);
             }
@@ -459,7 +459,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Pay Out Money.
         /// </summary>
-        internal static string Menu5_Financial_PayOutMoney {
+        public static string Menu5_Financial_PayOutMoney {
             get {
                 return ResourceManager.GetString("Menu5_Financial_PayOutMoney", resourceCulture);
             }
@@ -468,7 +468,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Payroll.
         /// </summary>
-        internal static string Menu5_Financial_Payroll {
+        public static string Menu5_Financial_Payroll {
             get {
                 return ResourceManager.GetString("Menu5_Financial_Payroll", resourceCulture);
             }
@@ -477,7 +477,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Received New Invoice.
         /// </summary>
-        internal static string Menu5_Financial_ReceivedInvoice {
+        public static string Menu5_Financial_ReceivedInvoice {
             get {
                 return ResourceManager.GetString("Menu5_Financial_ReceivedInvoice", resourceCulture);
             }
@@ -486,7 +486,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Request Cash Advance.
         /// </summary>
-        internal static string Menu5_Financial_RequestCashAdvance {
+        public static string Menu5_Financial_RequestCashAdvance {
             get {
                 return ResourceManager.GetString("Menu5_Financial_RequestCashAdvance", resourceCulture);
             }
@@ -495,7 +495,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Request Reimbursement.
         /// </summary>
-        internal static string Menu5_Financial_RequestReimbursement {
+        public static string Menu5_Financial_RequestReimbursement {
             get {
                 return ResourceManager.GetString("Menu5_Financial_RequestReimbursement", resourceCulture);
             }
@@ -504,7 +504,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to My Salary.
         /// </summary>
-        internal static string Menu5_Financial_Salary {
+        public static string Menu5_Financial_Salary {
             get {
                 return ResourceManager.GetString("Menu5_Financial_Salary", resourceCulture);
             }
@@ -513,7 +513,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Send New Invoice.
         /// </summary>
-        internal static string Menu5_Financial_SendInvoice {
+        public static string Menu5_Financial_SendInvoice {
             get {
                 return ResourceManager.GetString("Menu5_Financial_SendInvoice", resourceCulture);
             }
@@ -522,7 +522,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Validate Receipts.
         /// </summary>
-        internal static string Menu5_Financial_ValidateReceipts {
+        public static string Menu5_Financial_ValidateReceipts {
             get {
                 return ResourceManager.GetString("Menu5_Financial_ValidateReceipts", resourceCulture);
             }
@@ -531,7 +531,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to View Budget and Actuals.
         /// </summary>
-        internal static string Menu5_Financial_ViewBudgetActuals {
+        public static string Menu5_Financial_ViewBudgetActuals {
             get {
                 return ResourceManager.GetString("Menu5_Financial_ViewBudgetActuals", resourceCulture);
             }
@@ -540,7 +540,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to View Liquidity Forecast.
         /// </summary>
-        internal static string Menu5_Financial_ViewLiquidityForecast {
+        public static string Menu5_Financial_ViewLiquidityForecast {
             get {
                 return ResourceManager.GetString("Menu5_Financial_ViewLiquidityForecast", resourceCulture);
             }
@@ -549,7 +549,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Governance.
         /// </summary>
-        internal static string Menu5_Governance {
+        public static string Menu5_Governance {
             get {
                 return ResourceManager.GetString("Menu5_Governance", resourceCulture);
             }
@@ -558,7 +558,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Candidates.
         /// </summary>
-        internal static string Menu5_Governance_Candidates {
+        public static string Menu5_Governance_Candidates {
             get {
                 return ResourceManager.GetString("Menu5_Governance_Candidates", resourceCulture);
             }
@@ -567,7 +567,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Create Voting List.
         /// </summary>
-        internal static string Menu5_Governance_CreateVotingList {
+        public static string Menu5_Governance_CreateVotingList {
             get {
                 return ResourceManager.GetString("Menu5_Governance_CreateVotingList", resourceCulture);
             }
@@ -576,7 +576,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Meeting Administration.
         /// </summary>
-        internal static string Menu5_Governance_MeetingAdmin {
+        public static string Menu5_Governance_MeetingAdmin {
             get {
                 return ResourceManager.GetString("Menu5_Governance_MeetingAdmin", resourceCulture);
             }
@@ -585,7 +585,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Meeting Admin for Board.
         /// </summary>
-        internal static string Menu5_Governance_MeetingBoardAdmin {
+        public static string Menu5_Governance_MeetingBoardAdmin {
             get {
                 return ResourceManager.GetString("Menu5_Governance_MeetingBoardAdmin", resourceCulture);
             }
@@ -594,7 +594,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Motions.
         /// </summary>
-        internal static string Menu5_Governance_Motions {
+        public static string Menu5_Governance_Motions {
             get {
                 return ResourceManager.GetString("Menu5_Governance_Motions", resourceCulture);
             }
@@ -603,7 +603,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Vote.
         /// </summary>
-        internal static string Menu5_Governance_Vote {
+        public static string Menu5_Governance_Vote {
             get {
                 return ResourceManager.GetString("Menu5_Governance_Vote", resourceCulture);
             }
@@ -612,7 +612,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Set Admin Access (Temporary Page).
         /// </summary>
-        internal static string Menu5_Hacks_TemporaryAccessControl {
+        public static string Menu5_Hacks_TemporaryAccessControl {
             get {
                 return ResourceManager.GetString("Menu5_Hacks_TemporaryAccessControl", resourceCulture);
             }
@@ -621,7 +621,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Ledgers.
         /// </summary>
-        internal static string Menu5_Ledgers {
+        public static string Menu5_Ledgers {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers", resourceCulture);
             }
@@ -630,7 +630,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chart of Accounts.
         /// </summary>
-        internal static string Menu5_Ledgers_AccountPlan {
+        public static string Menu5_Ledgers_AccountPlan {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_AccountPlan", resourceCulture);
             }
@@ -639,7 +639,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Audit Ledgers.
         /// </summary>
-        internal static string Menu5_Ledgers_AuditLedgers {
+        public static string Menu5_Ledgers_AuditLedgers {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_AuditLedgers", resourceCulture);
             }
@@ -648,7 +648,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Balance Sheet.
         /// </summary>
-        internal static string Menu5_Ledgers_BalanceSheet {
+        public static string Menu5_Ledgers_BalanceSheet {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_BalanceSheet", resourceCulture);
             }
@@ -657,7 +657,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Balance &amp; Match Transactions.
         /// </summary>
-        internal static string Menu5_Ledgers_BalanceTransactions {
+        public static string Menu5_Ledgers_BalanceTransactions {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_BalanceTransactions", resourceCulture);
             }
@@ -666,7 +666,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bitcoin Hotwallet.
         /// </summary>
-        internal static string Menu5_Ledgers_BitcoinHotwallet {
+        public static string Menu5_Ledgers_BitcoinHotwallet {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_BitcoinHotwallet", resourceCulture);
             }
@@ -675,7 +675,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Budget vs Actual.
         /// </summary>
-        internal static string Menu5_Ledgers_BudgetVsActual {
+        public static string Menu5_Ledgers_BudgetVsActual {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_BudgetVsActual", resourceCulture);
             }
@@ -684,7 +684,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Can&apos;t Close Ledgers For {0}.
         /// </summary>
-        internal static string Menu5_Ledgers_CannotCloseBooks {
+        public static string Menu5_Ledgers_CannotCloseBooks {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_CannotCloseBooks", resourceCulture);
             }
@@ -693,7 +693,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cashflow Analysis.
         /// </summary>
-        internal static string Menu5_Ledgers_CashflowAnalysis {
+        public static string Menu5_Ledgers_CashflowAnalysis {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_CashflowAnalysis", resourceCulture);
             }
@@ -702,7 +702,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Close Ledgers For {0}.
         /// </summary>
-        internal static string Menu5_Ledgers_CloseBooks {
+        public static string Menu5_Ledgers_CloseBooks {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_CloseBooks", resourceCulture);
             }
@@ -711,7 +711,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Debug Ledger, Accounts.
         /// </summary>
-        internal static string Menu5_Ledgers_DebugLedgers {
+        public static string Menu5_Ledgers_DebugLedgers {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_DebugLedgers", resourceCulture);
             }
@@ -720,7 +720,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Depreciating &amp; Amortized Assets.
         /// </summary>
-        internal static string Menu5_Ledgers_DepreciatingAmortizedAssets {
+        public static string Menu5_Ledgers_DepreciatingAmortizedAssets {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_DepreciatingAmortizedAssets", resourceCulture);
             }
@@ -729,7 +729,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Depreciations and Amortizations.
         /// </summary>
-        internal static string Menu5_Ledgers_DepreciationsAmortizations {
+        public static string Menu5_Ledgers_DepreciationsAmortizations {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_DepreciationsAmortizations", resourceCulture);
             }
@@ -738,7 +738,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Import Bank Data.
         /// </summary>
-        internal static string Menu5_Ledgers_ImportBankData {
+        public static string Menu5_Ledgers_ImportBankData {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_ImportBankData", resourceCulture);
             }
@@ -747,7 +747,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Inspect Ledgers.
         /// </summary>
-        internal static string Menu5_Ledgers_InspectLedgers {
+        public static string Menu5_Ledgers_InspectLedgers {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_InspectLedgers", resourceCulture);
             }
@@ -756,7 +756,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Liquidity Forecast.
         /// </summary>
-        internal static string Menu5_Ledgers_LiquidityForecast {
+        public static string Menu5_Ledgers_LiquidityForecast {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_LiquidityForecast", resourceCulture);
             }
@@ -765,7 +765,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Payroll.
         /// </summary>
-        internal static string Menu5_Ledgers_Payroll {
+        public static string Menu5_Ledgers_Payroll {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_Payroll", resourceCulture);
             }
@@ -774,7 +774,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Make Payroll Adjustments.
         /// </summary>
-        internal static string Menu5_Ledgers_PayrollAdjustments {
+        public static string Menu5_Ledgers_PayrollAdjustments {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_PayrollAdjustments", resourceCulture);
             }
@@ -783,7 +783,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Profit &amp; Loss Statement.
         /// </summary>
-        internal static string Menu5_Ledgers_ProfitLossStatement {
+        public static string Menu5_Ledgers_ProfitLossStatement {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_ProfitLossStatement", resourceCulture);
             }
@@ -792,7 +792,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Resync Connected Account.
         /// </summary>
-        internal static string Menu5_Ledgers_ResyncExternalAccount {
+        public static string Menu5_Ledgers_ResyncExternalAccount {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_ResyncExternalAccount", resourceCulture);
             }
@@ -801,7 +801,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Set up Budgets.
         /// </summary>
-        internal static string Menu5_Ledgers_SetBudgets {
+        public static string Menu5_Ledgers_SetBudgets {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_SetBudgets", resourceCulture);
             }
@@ -810,7 +810,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Tax Forms.
         /// </summary>
-        internal static string Menu5_Ledgers_TaxForms {
+        public static string Menu5_Ledgers_TaxForms {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_TaxForms", resourceCulture);
             }
@@ -819,7 +819,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Payroll Tax Forms.
         /// </summary>
-        internal static string Menu5_Ledgers_TaxForms_Payroll {
+        public static string Menu5_Ledgers_TaxForms_Payroll {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_TaxForms_Payroll", resourceCulture);
             }
@@ -828,7 +828,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Tracked Transactions.
         /// </summary>
-        internal static string Menu5_Ledgers_TrackedTransactions {
+        public static string Menu5_Ledgers_TrackedTransactions {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_TrackedTransactions", resourceCulture);
             }
@@ -837,7 +837,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Upload Bank Files.
         /// </summary>
-        internal static string Menu5_Ledgers_UploadBankFiles {
+        public static string Menu5_Ledgers_UploadBankFiles {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_UploadBankFiles", resourceCulture);
             }
@@ -846,7 +846,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to VAT Reports.
         /// </summary>
-        internal static string Menu5_Ledgers_VatReports {
+        public static string Menu5_Ledgers_VatReports {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_VatReports", resourceCulture);
             }
@@ -855,7 +855,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to List Unsettled Accounts.
         /// </summary>
-        internal static string Menu5_Ledgers_ViewOutstandingAccounts {
+        public static string Menu5_Ledgers_ViewOutstandingAccounts {
             get {
                 return ResourceManager.GetString("Menu5_Ledgers_ViewOutstandingAccounts", resourceCulture);
             }
@@ -864,7 +864,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Organization.
         /// </summary>
-        internal static string Menu5_Organization {
+        public static string Menu5_Organization {
             get {
                 return ResourceManager.GetString("Menu5_Organization", resourceCulture);
             }
@@ -873,7 +873,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Available Responsibilites.
         /// </summary>
-        internal static string Menu5_Organization_AvailableResponsibilities {
+        public static string Menu5_Organization_AvailableResponsibilities {
             get {
                 return ResourceManager.GetString("Menu5_Organization_AvailableResponsibilities", resourceCulture);
             }
@@ -882,7 +882,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Communication Templates.
         /// </summary>
-        internal static string Menu5_Organization_CommunicationTemplates {
+        public static string Menu5_Organization_CommunicationTemplates {
             get {
                 return ResourceManager.GetString("Menu5_Organization_CommunicationTemplates", resourceCulture);
             }
@@ -891,7 +891,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Invoices.
         /// </summary>
-        internal static string Menu5_Organization_CommunicationTemplates_Invoice {
+        public static string Menu5_Organization_CommunicationTemplates_Invoice {
             get {
                 return ResourceManager.GetString("Menu5_Organization_CommunicationTemplates_Invoice", resourceCulture);
             }
@@ -900,7 +900,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Mass Mailings.
         /// </summary>
-        internal static string Menu5_Organization_CommunicationTemplates_MassMailing {
+        public static string Menu5_Organization_CommunicationTemplates_MassMailing {
             get {
                 return ResourceManager.GetString("Menu5_Organization_CommunicationTemplates_MassMailing", resourceCulture);
             }
@@ -909,7 +909,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Newsletters.
         /// </summary>
-        internal static string Menu5_Organization_CommunicationTemplates_Newsletter {
+        public static string Menu5_Organization_CommunicationTemplates_Newsletter {
             get {
                 return ResourceManager.GetString("Menu5_Organization_CommunicationTemplates_Newsletter", resourceCulture);
             }
@@ -918,7 +918,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Press Releases.
         /// </summary>
-        internal static string Menu5_Organization_CommunicationTemplates_PressRelease {
+        public static string Menu5_Organization_CommunicationTemplates_PressRelease {
             get {
                 return ResourceManager.GetString("Menu5_Organization_CommunicationTemplates_PressRelease", resourceCulture);
             }
@@ -927,7 +927,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Feeds.
         /// </summary>
-        internal static string Menu5_Organization_Feeds {
+        public static string Menu5_Organization_Feeds {
             get {
                 return ResourceManager.GetString("Menu5_Organization_Feeds", resourceCulture);
             }
@@ -936,7 +936,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Newsletters.
         /// </summary>
-        internal static string Menu5_Organization_Feeds_Newsletter {
+        public static string Menu5_Organization_Feeds_Newsletter {
             get {
                 return ResourceManager.GetString("Menu5_Organization_Feeds_Newsletter", resourceCulture);
             }
@@ -945,7 +945,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Press Releases.
         /// </summary>
-        internal static string Menu5_Organization_Feeds_PressReleases {
+        public static string Menu5_Organization_Feeds_PressReleases {
             get {
                 return ResourceManager.GetString("Menu5_Organization_Feeds_PressReleases", resourceCulture);
             }
@@ -954,7 +954,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Member Statistics.
         /// </summary>
-        internal static string Menu5_Organization_MemberStatistics {
+        public static string Menu5_Organization_MemberStatistics {
             get {
                 return ResourceManager.GetString("Menu5_Organization_MemberStatistics", resourceCulture);
             }
@@ -963,7 +963,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Organization Chart.
         /// </summary>
-        internal static string Menu5_Organization_OrganizationChart {
+        public static string Menu5_Organization_OrganizationChart {
             get {
                 return ResourceManager.GetString("Menu5_Organization_OrganizationChart", resourceCulture);
             }
@@ -972,7 +972,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Organization Responsibilities.
         /// </summary>
-        internal static string Menu5_Organization_Responsibilities {
+        public static string Menu5_Organization_Responsibilities {
             get {
                 return ResourceManager.GetString("Menu5_Organization_Responsibilities", resourceCulture);
             }
@@ -981,7 +981,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Organization Settings.
         /// </summary>
-        internal static string Menu5_Organization_Settings {
+        public static string Menu5_Organization_Settings {
             get {
                 return ResourceManager.GetString("Menu5_Organization_Settings", resourceCulture);
             }
@@ -990,7 +990,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Suborganization Tree.
         /// </summary>
-        internal static string Menu5_Organization_SuborganizationTree {
+        public static string Menu5_Organization_SuborganizationTree {
             get {
                 return ResourceManager.GetString("Menu5_Organization_SuborganizationTree", resourceCulture);
             }
@@ -999,7 +999,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to People.
         /// </summary>
-        internal static string Menu5_People {
+        public static string Menu5_People {
             get {
                 return ResourceManager.GetString("Menu5_People", resourceCulture);
             }
@@ -1008,7 +1008,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Add Member.
         /// </summary>
-        internal static string Menu5_People_AddMember {
+        public static string Menu5_People_AddMember {
             get {
                 return ResourceManager.GetString("Menu5_People_AddMember", resourceCulture);
             }
@@ -1017,7 +1017,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Add [Regular].
         /// </summary>
-        internal static string Menu5_People_AddPerson {
+        public static string Menu5_People_AddPerson {
             get {
                 return ResourceManager.GetString("Menu5_People_AddPerson", resourceCulture);
             }
@@ -1026,7 +1026,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Distributed Assets.
         /// </summary>
-        internal static string Menu5_People_DistributedAssets {
+        public static string Menu5_People_DistributedAssets {
             get {
                 return ResourceManager.GetString("Menu5_People_DistributedAssets", resourceCulture);
             }
@@ -1035,7 +1035,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to List/Find People.
         /// </summary>
-        internal static string Menu5_People_ListFind {
+        public static string Menu5_People_ListFind {
             get {
                 return ResourceManager.GetString("Menu5_People_ListFind", resourceCulture);
             }
@@ -1044,7 +1044,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to List Members.
         /// </summary>
-        internal static string Menu5_People_ListMembers {
+        public static string Menu5_People_ListMembers {
             get {
                 return ResourceManager.GetString("Menu5_People_ListMembers", resourceCulture);
             }
@@ -1053,7 +1053,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Log Activism.
         /// </summary>
-        internal static string Menu5_People_LogActivism {
+        public static string Menu5_People_LogActivism {
             get {
                 return ResourceManager.GetString("Menu5_People_LogActivism", resourceCulture);
             }
@@ -1062,7 +1062,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Manage Conferences.
         /// </summary>
-        internal static string Menu5_People_ManageConferences {
+        public static string Menu5_People_ManageConferences {
             get {
                 return ResourceManager.GetString("Menu5_People_ManageConferences", resourceCulture);
             }
@@ -1071,7 +1071,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Manage Volunteers.
         /// </summary>
-        internal static string Menu5_People_ManageVolunteers {
+        public static string Menu5_People_ManageVolunteers {
             get {
                 return ResourceManager.GetString("Menu5_People_ManageVolunteers", resourceCulture);
             }
@@ -1080,7 +1080,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to My Local Organization.
         /// </summary>
-        internal static string Menu5_People_MyLocalOrganization {
+        public static string Menu5_People_MyLocalOrganization {
             get {
                 return ResourceManager.GetString("Menu5_People_MyLocalOrganization", resourceCulture);
             }
@@ -1089,7 +1089,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to New Conference.
         /// </summary>
-        internal static string Menu5_People_NewConference {
+        public static string Menu5_People_NewConference {
             get {
                 return ResourceManager.GetString("Menu5_People_NewConference", resourceCulture);
             }
@@ -1098,7 +1098,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Roles and Responsibilities.
         /// </summary>
-        internal static string Menu5_People_RolesResponsibilities {
+        public static string Menu5_People_RolesResponsibilities {
             get {
                 return ResourceManager.GetString("Menu5_People_RolesResponsibilities", resourceCulture);
             }
@@ -1107,7 +1107,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Self-Signup Page.
         /// </summary>
-        internal static string Menu5_People_SelfSignup {
+        public static string Menu5_People_SelfSignup {
             get {
                 return ResourceManager.GetString("Menu5_People_SelfSignup", resourceCulture);
             }
@@ -1116,7 +1116,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Placeholder (Todo).
         /// </summary>
-        internal static string Menu5_Placeholder_Todo {
+        public static string Menu5_Placeholder_Todo {
             get {
                 return ResourceManager.GetString("Menu5_Placeholder_Todo", resourceCulture);
             }
@@ -1125,7 +1125,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
-        internal static string Menu5_Reports {
+        public static string Menu5_Reports {
             get {
                 return ResourceManager.GetString("Menu5_Reports", resourceCulture);
             }
@@ -1134,7 +1134,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to This is a temporary menu. Yes it&apos;s ugly now..
         /// </summary>
-        internal static string Menu5_Ugly_Todo {
+        public static string Menu5_Ugly_Todo {
             get {
                 return ResourceManager.GetString("Menu5_Ugly_Todo", resourceCulture);
             }

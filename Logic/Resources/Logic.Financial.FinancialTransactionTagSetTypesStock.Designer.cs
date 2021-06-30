@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cost Type.
         /// </summary>
-        internal static string CostType {
+        public static string CostType {
             get {
                 return ResourceManager.GetString("CostType", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Income Type.
         /// </summary>
-        internal static string IncomeType {
+        public static string IncomeType {
             get {
                 return ResourceManager.GetString("IncomeType", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Project.
         /// </summary>
-        internal static string ProjectName {
+        public static string ProjectName {
             get {
                 return ResourceManager.GetString("ProjectName", resourceCulture);
             }

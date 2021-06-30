@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Austria.
         /// </summary>
-        internal static string Country_AT {
+        public static string Country_AT {
             get {
                 return ResourceManager.GetString("Country_AT", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Belgium.
         /// </summary>
-        internal static string Country_BE {
+        public static string Country_BE {
             get {
                 return ResourceManager.GetString("Country_BE", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bulgaria.
         /// </summary>
-        internal static string Country_BG {
+        public static string Country_BG {
             get {
                 return ResourceManager.GetString("Country_BG", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Switzerland.
         /// </summary>
-        internal static string Country_CH {
+        public static string Country_CH {
             get {
                 return ResourceManager.GetString("Country_CH", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cyprus.
         /// </summary>
-        internal static string Country_CY {
+        public static string Country_CY {
             get {
                 return ResourceManager.GetString("Country_CY", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Czech Republic.
         /// </summary>
-        internal static string Country_CZ {
+        public static string Country_CZ {
             get {
                 return ResourceManager.GetString("Country_CZ", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Germany.
         /// </summary>
-        internal static string Country_DE {
+        public static string Country_DE {
             get {
                 return ResourceManager.GetString("Country_DE", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Denmark.
         /// </summary>
-        internal static string Country_DK {
+        public static string Country_DK {
             get {
                 return ResourceManager.GetString("Country_DK", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Estonia.
         /// </summary>
-        internal static string Country_EE {
+        public static string Country_EE {
             get {
                 return ResourceManager.GetString("Country_EE", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Spain.
         /// </summary>
-        internal static string Country_ES {
+        public static string Country_ES {
             get {
                 return ResourceManager.GetString("Country_ES", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Finland.
         /// </summary>
-        internal static string Country_FI {
+        public static string Country_FI {
             get {
                 return ResourceManager.GetString("Country_FI", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to France.
         /// </summary>
-        internal static string Country_FR {
+        public static string Country_FR {
             get {
                 return ResourceManager.GetString("Country_FR", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Ghana.
         /// </summary>
-        internal static string Country_GH {
+        public static string Country_GH {
             get {
                 return ResourceManager.GetString("Country_GH", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Greece.
         /// </summary>
-        internal static string Country_GR {
+        public static string Country_GR {
             get {
                 return ResourceManager.GetString("Country_GR", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Croatia.
         /// </summary>
-        internal static string Country_HR {
+        public static string Country_HR {
             get {
                 return ResourceManager.GetString("Country_HR", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hungary.
         /// </summary>
-        internal static string Country_HU {
+        public static string Country_HU {
             get {
                 return ResourceManager.GetString("Country_HU", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Ireland.
         /// </summary>
-        internal static string Country_IE {
+        public static string Country_IE {
             get {
                 return ResourceManager.GetString("Country_IE", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Iceland.
         /// </summary>
-        internal static string Country_IS {
+        public static string Country_IS {
             get {
                 return ResourceManager.GetString("Country_IS", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Italy.
         /// </summary>
-        internal static string Country_IT {
+        public static string Country_IT {
             get {
                 return ResourceManager.GetString("Country_IT", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Lithuania.
         /// </summary>
-        internal static string Country_LT {
+        public static string Country_LT {
             get {
                 return ResourceManager.GetString("Country_LT", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Luxembourg.
         /// </summary>
-        internal static string Country_LU {
+        public static string Country_LU {
             get {
                 return ResourceManager.GetString("Country_LU", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Latvia.
         /// </summary>
-        internal static string Country_LV {
+        public static string Country_LV {
             get {
                 return ResourceManager.GetString("Country_LV", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Malta.
         /// </summary>
-        internal static string Country_MT {
+        public static string Country_MT {
             get {
                 return ResourceManager.GetString("Country_MT", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Netherlands.
         /// </summary>
-        internal static string Country_NL {
+        public static string Country_NL {
             get {
                 return ResourceManager.GetString("Country_NL", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Norway.
         /// </summary>
-        internal static string Country_NO {
+        public static string Country_NO {
             get {
                 return ResourceManager.GetString("Country_NO", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Poland.
         /// </summary>
-        internal static string Country_PL {
+        public static string Country_PL {
             get {
                 return ResourceManager.GetString("Country_PL", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Portugal.
         /// </summary>
-        internal static string Country_PT {
+        public static string Country_PT {
             get {
                 return ResourceManager.GetString("Country_PT", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Romania.
         /// </summary>
-        internal static string Country_RO {
+        public static string Country_RO {
             get {
                 return ResourceManager.GetString("Country_RO", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Sweden.
         /// </summary>
-        internal static string Country_SE {
+        public static string Country_SE {
             get {
                 return ResourceManager.GetString("Country_SE", resourceCulture);
             }
@@ -324,7 +324,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Slovenia.
         /// </summary>
-        internal static string Country_SI {
+        public static string Country_SI {
             get {
                 return ResourceManager.GetString("Country_SI", resourceCulture);
             }
@@ -333,7 +333,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Slovakia.
         /// </summary>
-        internal static string Country_SK {
+        public static string Country_SK {
             get {
                 return ResourceManager.GetString("Country_SK", resourceCulture);
             }
@@ -342,7 +342,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to United Kingdom.
         /// </summary>
-        internal static string Country_UK {
+        public static string Country_UK {
             get {
                 return ResourceManager.GetString("Country_UK", resourceCulture);
             }

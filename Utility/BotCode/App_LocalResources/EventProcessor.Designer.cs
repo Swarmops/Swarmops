@@ -63,7 +63,7 @@ namespace Swarmops.Utility.BotCode.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to (Du får detta mail eftersom du skrivit upp dig som aktivist i någon av piratorganisationerna. Ingen av våra funktionärer kan se vem du är. Om du inte längre vill ha aktivistmail och -SMS, så gå till https://pirateweb.net/Pages/Public/SE/People/ActivistSignoff.aspx för att avregistrera din mailadress.).
         /// </summary>
-        internal static string ActivistMail_Ending {
+        public static string ActivistMail_Ending {
             get {
                 return ResourceManager.GetString("ActivistMail_Ending", resourceCulture);
             }
@@ -76,7 +76,7 @@ namespace Swarmops.Utility.BotCode.App_LocalResources {
         ///https://pirateweb.net/Pages/Public/SE/People/ActivistSignup.aspx
         ///.
         /// </summary>
-        internal static string LostActivistAck_Mail_Body {
+        public static string LostActivistAck_Mail_Body {
             get {
                 return ResourceManager.GetString("LostActivistAck_Mail_Body", resourceCulture);
             }
@@ -85,7 +85,7 @@ namespace Swarmops.Utility.BotCode.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Piratpartiet: Avregistrerad som Aktivist.
         /// </summary>
-        internal static string LostActivistAck_Mail_Subject {
+        public static string LostActivistAck_Mail_Subject {
             get {
                 return ResourceManager.GetString("LostActivistAck_Mail_Subject", resourceCulture);
             }
@@ -98,7 +98,7 @@ namespace Swarmops.Utility.BotCode.App_LocalResources {
         ///
         ///.
         /// </summary>
-        internal static string NewActivistWelcome_Mail_Body {
+        public static string NewActivistWelcome_Mail_Body {
             get {
                 return ResourceManager.GetString("NewActivistWelcome_Mail_Body", resourceCulture);
             }
@@ -107,7 +107,7 @@ namespace Swarmops.Utility.BotCode.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Piratpartiet: Välkommen som aktivist.
         /// </summary>
-        internal static string NewActivistWelcome_Mail_Subject {
+        public static string NewActivistWelcome_Mail_Subject {
             get {
                 return ResourceManager.GetString("NewActivistWelcome_Mail_Subject", resourceCulture);
             }
@@ -124,7 +124,7 @@ namespace Swarmops.Utility.BotCode.App_LocalResources {
         ///
         ///.
         /// </summary>
-        internal static string RenewalAck_Mail {
+        public static string RenewalAck_Mail {
             get {
                 return ResourceManager.GetString("RenewalAck_Mail", resourceCulture);
             }
@@ -133,7 +133,7 @@ namespace Swarmops.Utility.BotCode.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to {0}: Ditt medlemskap är förnyat.
         /// </summary>
-        internal static string RenewalAck_Mail_Subject {
+        public static string RenewalAck_Mail_Subject {
             get {
                 return ResourceManager.GetString("RenewalAck_Mail_Subject", resourceCulture);
             }

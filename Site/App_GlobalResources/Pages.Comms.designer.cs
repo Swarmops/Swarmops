@@ -63,7 +63,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to You should write a message body before sending your message..
         /// </summary>
-        internal static string SendMassMessage_Error_EmptyBody {
+        public static string SendMassMessage_Error_EmptyBody {
             get {
                 return ResourceManager.GetString("SendMassMessage_Error_EmptyBody", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to You should write a message subject to go with your message..
         /// </summary>
-        internal static string SendMassMessage_Error_EmptySubject {
+        public static string SendMassMessage_Error_EmptySubject {
             get {
                 return ResourceManager.GetString("SendMassMessage_Error_EmptySubject", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Who are located in.
         /// </summary>
-        internal static string SendMassMessage_Geography {
+        public static string SendMassMessage_Geography {
             get {
                 return ResourceManager.GetString("SendMassMessage_Geography", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Your Message.
         /// </summary>
-        internal static string SendMassMessage_HeaderMessage {
+        public static string SendMassMessage_HeaderMessage {
             get {
                 return ResourceManager.GetString("SendMassMessage_HeaderMessage", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Send a message to a group of people in the organization. You can send the message by mail (good for newsletters and general information) or to their phones (very intrusive, and also costs a bit)..
         /// </summary>
-        internal static string SendMassMessage_Info {
+        public static string SendMassMessage_Info {
             get {
                 return ResourceManager.GetString("SendMassMessage_Info", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Type your message here. Standard markup like *bold*, _italic_, ==headers== and similar can be used. Two newlines begin a new paragraph. The mail will be sent as dual-mode cleartext and HTML..
         /// </summary>
-        internal static string SendMassMessage_MessageHint {
+        public static string SendMassMessage_MessageHint {
             get {
                 return ResourceManager.GetString("SendMassMessage_MessageHint", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This message would have been sent to the recipients. For the time being, this is a mock-up interface..
         /// </summary>
-        internal static string SendMassMessage_MockMessageResult {
+        public static string SendMassMessage_MockMessageResult {
             get {
                 return ResourceManager.GetString("SendMassMessage_MockMessageResult", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to No Recipients|One Recipient|{0:N0} Recipients.
         /// </summary>
-        internal static string SendMassMessage_RecipientCount {
+        public static string SendMassMessage_RecipientCount {
             get {
                 return ResourceManager.GetString("SendMassMessage_RecipientCount", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Send a mass message to all.
         /// </summary>
-        internal static string SendMassMessage_RecipientType {
+        public static string SendMassMessage_RecipientType {
             get {
                 return ResourceManager.GetString("SendMassMessage_RecipientType", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to You&apos;re currently using the Sandbox. Where would you like a test message sent?.
         /// </summary>
-        internal static string SendMassMessage_Sandbox_EnterAddress {
+        public static string SendMassMessage_Sandbox_EnterAddress {
             get {
                 return ResourceManager.GetString("SendMassMessage_Sandbox_EnterAddress", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Send.
         /// </summary>
-        internal static string SendMassMessage_SendMessage {
+        public static string SendMassMessage_SendMessage {
             get {
                 return ResourceManager.GetString("SendMassMessage_SendMessage", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Your message is now being distributed to recipients. You will be notified when transmission is complete..
         /// </summary>
-        internal static string SendMassMessage_SendMessageResult {
+        public static string SendMassMessage_SendMessageResult {
             get {
                 return ResourceManager.GetString("SendMassMessage_SendMessageResult", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Subject.
         /// </summary>
-        internal static string SendMassMessage_Subject {
+        public static string SendMassMessage_Subject {
             get {
                 return ResourceManager.GetString("SendMassMessage_Subject", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Test.
         /// </summary>
-        internal static string SendMassMessage_TestMessage {
+        public static string SendMassMessage_TestMessage {
             get {
                 return ResourceManager.GetString("SendMassMessage_TestMessage", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to The message has been sent to you, so you can see what it looks like before going live..
         /// </summary>
-        internal static string SendMassMessage_TestMessageResult {
+        public static string SendMassMessage_TestMessageResult {
             get {
                 return ResourceManager.GetString("SendMassMessage_TestMessageResult", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Send Mass Message.
         /// </summary>
-        internal static string SendMassMessage_Title {
+        public static string SendMassMessage_Title {
             get {
                 return ResourceManager.GetString("SendMassMessage_Title", resourceCulture);
             }

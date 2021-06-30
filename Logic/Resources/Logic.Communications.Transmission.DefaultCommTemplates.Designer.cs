@@ -70,7 +70,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///You should log on and change this password to something more secure of your own choosing as soon as possible.  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string AspirantAddWelcome_Body {
+        public static string AspirantAddWelcome_Body {
             get {
                 return ResourceManager.GetString("AspirantAddWelcome_Body", resourceCulture);
             }
@@ -79,7 +79,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Welcome as [Aspirant] to [OrganizationName]!.
         /// </summary>
-        internal static string AspirantAddWelcome_Subject {
+        public static string AspirantAddWelcome_Subject {
             get {
                 return ResourceManager.GetString("AspirantAddWelcome_Subject", resourceCulture);
             }
@@ -97,7 +97,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///You should log on and  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string ParticipantManualAddWelcome_Body {
+        public static string ParticipantManualAddWelcome_Body {
             get {
                 return ResourceManager.GetString("ParticipantManualAddWelcome_Body", resourceCulture);
             }
@@ -115,7 +115,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///You should log on and c [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string ParticipantManualAddWelcome_NoExpiry_Body {
+        public static string ParticipantManualAddWelcome_NoExpiry_Body {
             get {
                 return ResourceManager.GetString("ParticipantManualAddWelcome_NoExpiry_Body", resourceCulture);
             }
@@ -124,7 +124,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Welcome to [OrganizationName]!.
         /// </summary>
-        internal static string ParticipantManualAddWelcome_NoExpiry_Subject {
+        public static string ParticipantManualAddWelcome_NoExpiry_Subject {
             get {
                 return ResourceManager.GetString("ParticipantManualAddWelcome_NoExpiry_Subject", resourceCulture);
             }
@@ -133,7 +133,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Welcome to [OrganizationName]!.
         /// </summary>
-        internal static string ParticipantManualAddWelcome_Subject {
+        public static string ParticipantManualAddWelcome_Subject {
             get {
                 return ResourceManager.GetString("ParticipantManualAddWelcome_Subject", resourceCulture);
             }

@@ -174,7 +174,7 @@ namespace Swarmops.Logic.Communications
         // A phone number should be in the format: 
         //   +<countrycode><phoneNumber without leading 0>
         // Also URL encode as the + is treated as a space if not encoded
-        internal static string NormalizePhoneNumber (string phoneNumber, Encoding enc)
+        public static string NormalizePhoneNumber (string phoneNumber, Encoding enc)
         {
             phoneNumber = phoneNumber.Trim();
             if (phoneNumber.Length > 4 && !phoneNumber.StartsWith ("+"))

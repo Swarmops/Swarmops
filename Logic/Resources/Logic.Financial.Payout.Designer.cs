@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cash Advances {0}.
         /// </summary>
-        internal static string Payout_CashAdvanceIdentities {
+        public static string Payout_CashAdvanceIdentities {
             get {
                 return ResourceManager.GetString("Payout_CashAdvanceIdentities", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cash Advances {0} for {1}.
         /// </summary>
-        internal static string Payout_CashAdvanceIdentitiesRecipient {
+        public static string Payout_CashAdvanceIdentitiesRecipient {
             get {
                 return ResourceManager.GetString("Payout_CashAdvanceIdentitiesRecipient", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cash Advance #{0:N0}.
         /// </summary>
-        internal static string Payout_CashAdvanceIdentity {
+        public static string Payout_CashAdvanceIdentity {
             get {
                 return ResourceManager.GetString("Payout_CashAdvanceIdentity", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cash Advance #{0:N0} for {1}.
         /// </summary>
-        internal static string Payout_CashAdvanceIdentityRecipient {
+        public static string Payout_CashAdvanceIdentityRecipient {
             get {
                 return ResourceManager.GetString("Payout_CashAdvanceIdentityRecipient", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cash Advances {0} Payback.
         /// </summary>
-        internal static string Payout_CashAdvancePaybackIdentities {
+        public static string Payout_CashAdvancePaybackIdentities {
             get {
                 return ResourceManager.GetString("Payout_CashAdvancePaybackIdentities", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cash Advance #{0:N0} Payback.
         /// </summary>
-        internal static string Payout_CashAdvancePaybackIdentity {
+        public static string Payout_CashAdvancePaybackIdentity {
             get {
                 return ResourceManager.GetString("Payout_CashAdvancePaybackIdentity", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expenses {0}.
         /// </summary>
-        internal static string Payout_ExpenseClaimIdentities {
+        public static string Payout_ExpenseClaimIdentities {
             get {
                 return ResourceManager.GetString("Payout_ExpenseClaimIdentities", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expenses {0} (minus advances {1}).
         /// </summary>
-        internal static string Payout_ExpenseClaimIdentitiesLessAdvanceIdentities {
+        public static string Payout_ExpenseClaimIdentitiesLessAdvanceIdentities {
             get {
                 return ResourceManager.GetString("Payout_ExpenseClaimIdentitiesLessAdvanceIdentities", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expenses {0} (minus advance #{1:N0}).
         /// </summary>
-        internal static string Payout_ExpenseClaimIdentitiesLessAdvanceIdentity {
+        public static string Payout_ExpenseClaimIdentitiesLessAdvanceIdentity {
             get {
                 return ResourceManager.GetString("Payout_ExpenseClaimIdentitiesLessAdvanceIdentity", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expense Claims {0} by {1}.
         /// </summary>
-        internal static string Payout_ExpenseClaimIdentitiesRecipient {
+        public static string Payout_ExpenseClaimIdentitiesRecipient {
             get {
                 return ResourceManager.GetString("Payout_ExpenseClaimIdentitiesRecipient", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expense #{0:N0}.
         /// </summary>
-        internal static string Payout_ExpenseClaimIdentity {
+        public static string Payout_ExpenseClaimIdentity {
             get {
                 return ResourceManager.GetString("Payout_ExpenseClaimIdentity", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expense #{0:N0} (minus advances {1}).
         /// </summary>
-        internal static string Payout_ExpenseClaimIdentityLessAdvanceIdentities {
+        public static string Payout_ExpenseClaimIdentityLessAdvanceIdentities {
             get {
                 return ResourceManager.GetString("Payout_ExpenseClaimIdentityLessAdvanceIdentities", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expense #{0:N0} (minus advance #{1:N0}).
         /// </summary>
-        internal static string Payout_ExpenseClaimIdentityLessAdvanceIdentity {
+        public static string Payout_ExpenseClaimIdentityLessAdvanceIdentity {
             get {
                 return ResourceManager.GetString("Payout_ExpenseClaimIdentityLessAdvanceIdentity", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expense Claim #{0:N0} by {1}.
         /// </summary>
-        internal static string Payout_ExpenseClaimIdentityRecipient {
+        public static string Payout_ExpenseClaimIdentityRecipient {
             get {
                 return ResourceManager.GetString("Payout_ExpenseClaimIdentityRecipient", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expense Claim #{0:N0}.
         /// </summary>
-        internal static string Payout_ExpenseClaimLongIdentity {
+        public static string Payout_ExpenseClaimLongIdentity {
             get {
                 return ResourceManager.GetString("Payout_ExpenseClaimLongIdentity", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Inbound Invoice #{0:N0}.
         /// </summary>
-        internal static string Payout_InboundInvoiceIdentity {
+        public static string Payout_InboundInvoiceIdentity {
             get {
                 return ResourceManager.GetString("Payout_InboundInvoiceIdentity", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Inbound Invoice #{0:N0} from {1}.
         /// </summary>
-        internal static string Payout_InboundInvoiceIdentitySender {
+        public static string Payout_InboundInvoiceIdentitySender {
             get {
                 return ResourceManager.GetString("Payout_InboundInvoiceIdentitySender", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Salary Taxes for {0:yyyy-MMM}.
         /// </summary>
-        internal static string Payout_SalariesTaxMonth {
+        public static string Payout_SalariesTaxMonth {
             get {
                 return ResourceManager.GetString("Payout_SalariesTaxMonth", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Salaries {0} for {1:yyyy-MMM}.
         /// </summary>
-        internal static string Payout_SalaryIdentitiesMonth {
+        public static string Payout_SalaryIdentitiesMonth {
             get {
                 return ResourceManager.GetString("Payout_SalaryIdentitiesMonth", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Salary #{0:N0}.
         /// </summary>
-        internal static string Payout_SalaryIdentity {
+        public static string Payout_SalaryIdentity {
             get {
                 return ResourceManager.GetString("Payout_SalaryIdentity", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Salary #{0:N0} for {1:yyyy-MMM}.
         /// </summary>
-        internal static string Payout_SalaryIdentityMonth {
+        public static string Payout_SalaryIdentityMonth {
             get {
                 return ResourceManager.GetString("Payout_SalaryIdentityMonth", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Salary #{0:N0} for {1:yyyy-MMM} for {2}.
         /// </summary>
-        internal static string Payout_SalaryIdentityMonthRecipient {
+        public static string Payout_SalaryIdentityMonthRecipient {
             get {
                 return ResourceManager.GetString("Payout_SalaryIdentityMonthRecipient", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Salary for {0:yyyy-MMM}.
         /// </summary>
-        internal static string Payout_SalaryMonth {
+        public static string Payout_SalaryMonth {
             get {
                 return ResourceManager.GetString("Payout_SalaryMonth", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Taxes for Salaries {0} for {1:yyyy-MMM}.
         /// </summary>
-        internal static string Payout_SalaryTaxIdentitiesMonth {
+        public static string Payout_SalaryTaxIdentitiesMonth {
             get {
                 return ResourceManager.GetString("Payout_SalaryTaxIdentitiesMonth", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Taxes for Salary #{0:N0} for {1:yyyy-MMM}.
         /// </summary>
-        internal static string Payout_SalaryTaxIdentityMonth {
+        public static string Payout_SalaryTaxIdentityMonth {
             get {
                 return ResourceManager.GetString("Payout_SalaryTaxIdentityMonth", resourceCulture);
             }

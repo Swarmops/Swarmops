@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Operations have returned to nominal..
         /// </summary>
-        internal static string AllClear_Text {
+        public static string AllClear_Text {
             get {
                 return ResourceManager.GetString("AllClear_Text", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to All Clear.
         /// </summary>
-        internal static string AllClear_Title {
+        public static string AllClear_Title {
             get {
                 return ResourceManager.GetString("AllClear_Title", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The server has lost the connection to the bitcoin blockchain. Bitcoin transactions won&apos;t be detected in real time..
         /// </summary>
-        internal static string Backend_BlockchainSocketLost_Text {
+        public static string Backend_BlockchainSocketLost_Text {
             get {
                 return ResourceManager.GetString("Backend_BlockchainSocketLost_Text", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Blockchain Connection Lost.
         /// </summary>
-        internal static string Backend_BlockchainSocketLost_Title {
+        public static string Backend_BlockchainSocketLost_Title {
             get {
                 return ResourceManager.GetString("Backend_BlockchainSocketLost_Title", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The web browser is unable to hear the server&apos;s heartbeat. Real-time updates may not be available..
         /// </summary>
-        internal static string Client_ServerHeartbeatLost_Text {
+        public static string Client_ServerHeartbeatLost_Text {
             get {
                 return ResourceManager.GetString("Client_ServerHeartbeatLost_Text", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Heartbeat Failure Level 1.
         /// </summary>
-        internal static string Client_ServerHeartbeatLost_Title {
+        public static string Client_ServerHeartbeatLost_Title {
             get {
                 return ResourceManager.GetString("Client_ServerHeartbeatLost_Title", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Unable to connect to the server for real-time updates..
         /// </summary>
-        internal static string Client_SocketConnectionFault_Text {
+        public static string Client_SocketConnectionFault_Text {
             get {
                 return ResourceManager.GetString("Client_SocketConnectionFault_Text", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to WebSocket Failure.
         /// </summary>
-        internal static string Client_SocketConnectionFault_Title {
+        public static string Client_SocketConnectionFault_Title {
             get {
                 return ResourceManager.GetString("Client_SocketConnectionFault_Title", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The server is unable to connect to the backend process. Real-time updates will be largely unavailable..
         /// </summary>
-        internal static string Frontend_BackendConnectionFault_Text {
+        public static string Frontend_BackendConnectionFault_Text {
             get {
                 return ResourceManager.GetString("Frontend_BackendConnectionFault_Text", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Backend Connection Failure.
         /// </summary>
-        internal static string Frontend_BackendConnectionFault_Title {
+        public static string Frontend_BackendConnectionFault_Title {
             get {
                 return ResourceManager.GetString("Frontend_BackendConnectionFault_Title", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The server cannot hear the heartbeat from the backend process..
         /// </summary>
-        internal static string Frontend_BackendHeartbeatLost_Text {
+        public static string Frontend_BackendHeartbeatLost_Text {
             get {
                 return ResourceManager.GetString("Frontend_BackendHeartbeatLost_Text", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Heartbeat Failure Level 2.
         /// </summary>
-        internal static string Frontend_BackendHeartbeatLost_Title {
+        public static string Frontend_BackendHeartbeatLost_Title {
             get {
                 return ResourceManager.GetString("Frontend_BackendHeartbeatLost_Title", resourceCulture);
             }

@@ -31,7 +31,7 @@ namespace Swarmops.Logic.Support
         /// <param name="input">The string to clean.</param>
         /// <returns>The sanitized result.</returns>
         /// <remarks>This means that an input string of "abc153ûû" would come back as "153".</remarks>
-        internal static string CleanNumber (string input)
+        public static string CleanNumber (string input)
         {
             if (input == null)
             {

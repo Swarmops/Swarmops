@@ -71,7 +71,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         ///
         ///the Pirate Party.
         /// </summary>
-        internal static string MembershipConf_Mail_Ending {
+        public static string MembershipConf_Mail_Ending {
             get {
                 return ResourceManager.GetString("MembershipConf_Mail_Ending", resourceCulture);
             }
@@ -84,7 +84,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         ///
         ///Please confirm that this is correct by clicking the link below:.
         /// </summary>
-        internal static string MembershipConf_Mail_Preamble {
+        public static string MembershipConf_Mail_Preamble {
             get {
                 return ResourceManager.GetString("MembershipConf_Mail_Preamble", resourceCulture);
             }
@@ -93,7 +93,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Pirate party: Confirm membership..
         /// </summary>
-        internal static string MembershipConf_Mail_Subject {
+        public static string MembershipConf_Mail_Subject {
             get {
                 return ResourceManager.GetString("MembershipConf_Mail_Subject", resourceCulture);
             }
@@ -103,7 +103,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         ///   Looks up a localized string similar to 
         ///To do that, plaese click on this link:.
         /// </summary>
-        internal static string RequestActivistSignoff_Mail_ClickOneLink {
+        public static string RequestActivistSignoff_Mail_ClickOneLink {
             get {
                 return ResourceManager.GetString("RequestActivistSignoff_Mail_ClickOneLink", resourceCulture);
             }
@@ -112,7 +112,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Click on the link for the account you want to stop activist messages for:.
         /// </summary>
-        internal static string RequestActivistSignoff_Mail_ClickOneOfLinks {
+        public static string RequestActivistSignoff_Mail_ClickOneOfLinks {
             get {
                 return ResourceManager.GetString("RequestActivistSignoff_Mail_ClickOneOfLinks", resourceCulture);
             }
@@ -130,7 +130,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         ///
         ///the Pirate Party.
         /// </summary>
-        internal static string RequestActivistSignoff_Mail_Ending {
+        public static string RequestActivistSignoff_Mail_Ending {
             get {
                 return ResourceManager.GetString("RequestActivistSignoff_Mail_Ending", resourceCulture);
             }
@@ -141,7 +141,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         ///
         ///This automatic mail was sent because you requsted to end your activist status within the Pirate Party..
         /// </summary>
-        internal static string RequestActivistSignoff_Mail_Preamble {
+        public static string RequestActivistSignoff_Mail_Preamble {
             get {
                 return ResourceManager.GetString("RequestActivistSignoff_Mail_Preamble", resourceCulture);
             }
@@ -150,7 +150,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Request for confirmation: End activist status.
         /// </summary>
-        internal static string RequestActivistSignoff_Mail_Subject {
+        public static string RequestActivistSignoff_Mail_Subject {
             get {
                 return ResourceManager.GetString("RequestActivistSignoff_Mail_Subject", resourceCulture);
             }
@@ -160,7 +160,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         ///   Looks up a localized string similar to 
         ///To do so, please click this link::.
         /// </summary>
-        internal static string RequestNewPassword_Mail_ClickOneLink {
+        public static string RequestNewPassword_Mail_ClickOneLink {
             get {
                 return ResourceManager.GetString("RequestNewPassword_Mail_ClickOneLink", resourceCulture);
             }
@@ -172,7 +172,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         ///
         ///Please select the link corresponding to the account for wich you want to reset the password:.
         /// </summary>
-        internal static string RequestNewPassword_Mail_ClickOneOfLinks {
+        public static string RequestNewPassword_Mail_ClickOneOfLinks {
             get {
                 return ResourceManager.GetString("RequestNewPassword_Mail_ClickOneOfLinks", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         ///
         ///the Pirate Party.
         /// </summary>
-        internal static string RequestNewPassword_Mail_Ending {
+        public static string RequestNewPassword_Mail_Ending {
             get {
                 return ResourceManager.GetString("RequestNewPassword_Mail_Ending", resourceCulture);
             }
@@ -203,7 +203,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         ///the member administration system for the Pirate Party.
         ///.
         /// </summary>
-        internal static string RequestNewPassword_Mail_Preamble {
+        public static string RequestNewPassword_Mail_Preamble {
             get {
                 return ResourceManager.GetString("RequestNewPassword_Mail_Preamble", resourceCulture);
             }
@@ -212,7 +212,7 @@ namespace Swarmops.Logic.Security.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Request for confirmation: Password reset..
         /// </summary>
-        internal static string RequestNewPassword_Mail_Subject {
+        public static string RequestNewPassword_Mail_Subject {
             get {
                 return ResourceManager.GetString("RequestNewPassword_Mail_Subject", resourceCulture);
             }

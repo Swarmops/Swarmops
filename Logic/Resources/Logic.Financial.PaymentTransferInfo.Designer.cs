@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Account Holder Name.
         /// </summary>
-        internal static string PaymentTargetField_AccountHolderName {
+        public static string PaymentTargetField_AccountHolderName {
             get {
                 return ResourceManager.GetString("PaymentTargetField_AccountHolderName", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Account Number.
         /// </summary>
-        internal static string PaymentTargetField_AccountNumber {
+        public static string PaymentTargetField_AccountNumber {
             get {
                 return ResourceManager.GetString("PaymentTargetField_AccountNumber", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bank Address.
         /// </summary>
-        internal static string PaymentTargetField_BankAddress {
+        public static string PaymentTargetField_BankAddress {
             get {
                 return ResourceManager.GetString("PaymentTargetField_BankAddress", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bank Name.
         /// </summary>
-        internal static string PaymentTargetField_BankName {
+        public static string PaymentTargetField_BankName {
             get {
                 return ResourceManager.GetString("PaymentTargetField_BankName", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to BBAN.
         /// </summary>
-        internal static string PaymentTargetField_Bban {
+        public static string PaymentTargetField_Bban {
             get {
                 return ResourceManager.GetString("PaymentTargetField_Bban", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to BIC/Swift Code.
         /// </summary>
-        internal static string PaymentTargetField_BicSwift {
+        public static string PaymentTargetField_BicSwift {
             get {
                 return ResourceManager.GetString("PaymentTargetField_BicSwift", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bitcoin Cash Account.
         /// </summary>
-        internal static string PaymentTargetField_CashAccount {
+        public static string PaymentTargetField_CashAccount {
             get {
                 return ResourceManager.GetString("PaymentTargetField_CashAccount", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Clearing Code.
         /// </summary>
-        internal static string PaymentTargetField_ClearingCode {
+        public static string PaymentTargetField_ClearingCode {
             get {
                 return ResourceManager.GetString("PaymentTargetField_ClearingCode", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cryptocurrency Address.
         /// </summary>
-        internal static string PaymentTargetField_CryptoAddress {
+        public static string PaymentTargetField_CryptoAddress {
             get {
                 return ResourceManager.GetString("PaymentTargetField_CryptoAddress", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Giro Number.
         /// </summary>
-        internal static string PaymentTargetField_GiroNumber {
+        public static string PaymentTargetField_GiroNumber {
             get {
                 return ResourceManager.GetString("PaymentTargetField_GiroNumber", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Giro Service.
         /// </summary>
-        internal static string PaymentTargetField_GiroService {
+        public static string PaymentTargetField_GiroService {
             get {
                 return ResourceManager.GetString("PaymentTargetField_GiroService", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to IBAN.
         /// </summary>
-        internal static string PaymentTargetField_Iban {
+        public static string PaymentTargetField_Iban {
             get {
                 return ResourceManager.GetString("PaymentTargetField_Iban", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bitcoin Cash Account.
         /// </summary>
-        internal static string PaymentTargetType_BitcoinCashAccount {
+        public static string PaymentTargetType_BitcoinCashAccount {
             get {
                 return ResourceManager.GetString("PaymentTargetType_BitcoinCashAccount", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Domestic Giro.
         /// </summary>
-        internal static string PaymentTargetType_DomesticBankGiro {
+        public static string PaymentTargetType_DomesticBankGiro {
             get {
                 return ResourceManager.GetString("PaymentTargetType_DomesticBankGiro", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Domestic Bank Transfer.
         /// </summary>
-        internal static string PaymentTargetType_DomesticBankTransfer {
+        public static string PaymentTargetType_DomesticBankTransfer {
             get {
                 return ResourceManager.GetString("PaymentTargetType_DomesticBankTransfer", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to International Bank Transfer.
         /// </summary>
-        internal static string PaymentTargetType_InternationalBankTransfer {
+        public static string PaymentTargetType_InternationalBankTransfer {
             get {
                 return ResourceManager.GetString("PaymentTargetType_InternationalBankTransfer", resourceCulture);
             }

@@ -137,7 +137,7 @@ namespace Swarmops.Logic.Security
         /// <param name="person">The person to generate the hash for.</param>
         /// <param name="password">The password to hash.</param>
         /// <returns>A hash on the format "C8 5B A2 19 B5..." (29 characters).</returns>
-        internal static string GenerateNewPasswordHash (Person person, string password)
+        public static string GenerateNewPasswordHash (Person person, string password)
         {
             if (person == null)
             {
@@ -152,7 +152,7 @@ namespace Swarmops.Logic.Security
             return GenerateNewPasswordHash (person.PersonId, password);
         }
 
-        internal static string GenerateNewPasswordHash (int personId, string password)
+        public static string GenerateNewPasswordHash (int personId, string password)
         {
             string salt = BCrypt.GenerateSalt (12);
             // Longer than standard (10) on purpose. Should be good through 2020 or so.

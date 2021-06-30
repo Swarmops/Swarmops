@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Central Europe.
         /// </summary>
-        internal static string CentralEurope {
+        public static string CentralEurope {
             get {
                 return ResourceManager.GetString("CentralEurope", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Eastern Europe.
         /// </summary>
-        internal static string EasternEurope {
+        public static string EasternEurope {
             get {
                 return ResourceManager.GetString("EasternEurope", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Europe.
         /// </summary>
-        internal static string Europe {
+        public static string Europe {
             get {
                 return ResourceManager.GetString("Europe", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Microstates.
         /// </summary>
-        internal static string Microstates {
+        public static string Microstates {
             get {
                 return ResourceManager.GetString("Microstates", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Nordics.
         /// </summary>
-        internal static string Nordics {
+        public static string Nordics {
             get {
                 return ResourceManager.GetString("Nordics", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Nothern Europe.
         /// </summary>
-        internal static string NorthernEurope {
+        public static string NorthernEurope {
             get {
                 return ResourceManager.GetString("NorthernEurope", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Southern Europe.
         /// </summary>
-        internal static string SouthernEurope {
+        public static string SouthernEurope {
             get {
                 return ResourceManager.GetString("SouthernEurope", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to East North Central.
         /// </summary>
-        internal static string USA_EastNorthCentral {
+        public static string USA_EastNorthCentral {
             get {
                 return ResourceManager.GetString("USA_EastNorthCentral", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to East South Central.
         /// </summary>
-        internal static string USA_EastSouthCentral {
+        public static string USA_EastSouthCentral {
             get {
                 return ResourceManager.GetString("USA_EastSouthCentral", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Mid-Atlantic.
         /// </summary>
-        internal static string USA_MidAtlantic {
+        public static string USA_MidAtlantic {
             get {
                 return ResourceManager.GetString("USA_MidAtlantic", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Midwest.
         /// </summary>
-        internal static string USA_Midwest {
+        public static string USA_Midwest {
             get {
                 return ResourceManager.GetString("USA_Midwest", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Mountain.
         /// </summary>
-        internal static string USA_Mountain {
+        public static string USA_Mountain {
             get {
                 return ResourceManager.GetString("USA_Mountain", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to New England.
         /// </summary>
-        internal static string USA_NewEngland {
+        public static string USA_NewEngland {
             get {
                 return ResourceManager.GetString("USA_NewEngland", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Northeast.
         /// </summary>
-        internal static string USA_Northeast {
+        public static string USA_Northeast {
             get {
                 return ResourceManager.GetString("USA_Northeast", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Pacific.
         /// </summary>
-        internal static string USA_Pacific {
+        public static string USA_Pacific {
             get {
                 return ResourceManager.GetString("USA_Pacific", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to South.
         /// </summary>
-        internal static string USA_South {
+        public static string USA_South {
             get {
                 return ResourceManager.GetString("USA_South", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to South Atlantic.
         /// </summary>
-        internal static string USA_SouthAtlantic {
+        public static string USA_SouthAtlantic {
             get {
                 return ResourceManager.GetString("USA_SouthAtlantic", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to West.
         /// </summary>
-        internal static string USA_West {
+        public static string USA_West {
             get {
                 return ResourceManager.GetString("USA_West", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to West North Central.
         /// </summary>
-        internal static string USA_WestNorthCentral {
+        public static string USA_WestNorthCentral {
             get {
                 return ResourceManager.GetString("USA_WestNorthCentral", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to West South Central.
         /// </summary>
-        internal static string USA_WestSouthCentral {
+        public static string USA_WestSouthCentral {
             get {
                 return ResourceManager.GetString("USA_WestSouthCentral", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Western Europe.
         /// </summary>
-        internal static string WesternEurope {
+        public static string WesternEurope {
             get {
                 return ResourceManager.GetString("WesternEurope", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Global.
         /// </summary>
-        internal static string World {
+        public static string World {
             get {
                 return ResourceManager.GetString("World", resourceCulture);
             }

@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to VAT report {0}.
         /// </summary>
-        internal static string Description_FullYear {
+        public static string Description_FullYear {
             get {
                 return ResourceManager.GetString("Description_FullYear", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to VAT report for {0:yyyy} {0:MMM}-{1:MMM}.
         /// </summary>
-        internal static string Description_Months {
+        public static string Description_Months {
             get {
                 return ResourceManager.GetString("Description_Months", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to VAT report for {0:MMMM} {0:yyyy}.
         /// </summary>
-        internal static string Description_SingleMonth {
+        public static string Description_SingleMonth {
             get {
                 return ResourceManager.GetString("Description_SingleMonth", resourceCulture);
             }

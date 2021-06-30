@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to A new person has applied to be a [RegularTitle] in [OrganizationName]! [ConcernedPersonName] currently resides in [GeographyName], [CountryCode]..
         /// </summary>
-        internal static string Applicant_Signup_Body {
+        public static string Applicant_Signup_Body {
             get {
                 return ResourceManager.GetString("Applicant_Signup_Body", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] New Applicant: [ConcernedPersonName], [GeographyName].
         /// </summary>
-        internal static string Applicant_Signup_Header {
+        public static string Applicant_Signup_Header {
             get {
                 return ResourceManager.GetString("Applicant_Signup_Header", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The bitcoin hotwallet for [OrganizationName] just made [PaymentCount] automatic payment(s) totalling [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin or &quot;bits&quot;)..
         /// </summary>
-        internal static string Bitcoin_Hotwallet_Outflow_Body {
+        public static string Bitcoin_Hotwallet_Outflow_Body {
             get {
                 return ResourceManager.GetString("Bitcoin_Hotwallet_Outflow_Body", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Hotwallet Payout: [CurrencyCode] [AmountFloat].
         /// </summary>
-        internal static string Bitcoin_Hotwallet_Outflow_Subject {
+        public static string Bitcoin_Hotwallet_Outflow_Subject {
             get {
                 return ResourceManager.GetString("Bitcoin_Hotwallet_Outflow_Subject", resourceCulture);
             }
@@ -103,7 +103,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///You should already see the transaction in your wallet and it should achieve spendability within about an hour (six normal confirmations)..
         /// </summary>
-        internal static string Bitcoin_PaidOut_Body {
+        public static string Bitcoin_PaidOut_Body {
             get {
                 return ResourceManager.GetString("Bitcoin_PaidOut_Body", resourceCulture);
             }
@@ -112,7 +112,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Funds paid to you: [CurrencyCode] [AmountFloat].
         /// </summary>
-        internal static string Bitcoin_PaidOut_Subject {
+        public static string Bitcoin_PaidOut_Subject {
             get {
                 return ResourceManager.GetString("Bitcoin_PaidOut_Subject", resourceCulture);
             }
@@ -121,7 +121,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to When attempting an automated payment from the hotwallet, the private key used to sign does not match the public keys used to gather the funds necessary. This is a serious condition..
         /// </summary>
-        internal static string Bitcoin_PrivateKeyError_Body {
+        public static string Bitcoin_PrivateKeyError_Body {
             get {
                 return ResourceManager.GetString("Bitcoin_PrivateKeyError_Body", resourceCulture);
             }
@@ -130,7 +130,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName] - URGENT] Bitcoin private key error; can&apos;t pay.
         /// </summary>
-        internal static string Bitcoin_PrivateKeyError_Subject {
+        public static string Bitcoin_PrivateKeyError_Subject {
             get {
                 return ResourceManager.GetString("Bitcoin_PrivateKeyError_Subject", resourceCulture);
             }
@@ -143,7 +143,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///Swarmops will keep trying and will keep sending these notifications as long as it has not su [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Bitcoin_Shortage_Critical_Body {
+        public static string Bitcoin_Shortage_Critical_Body {
             get {
                 return ResourceManager.GetString("Bitcoin_Shortage_Critical_Body", resourceCulture);
             }
@@ -152,7 +152,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Bitcoin Cash hotwallet insufficient for payments - top up immediately.
         /// </summary>
-        internal static string Bitcoin_Shortage_Critical_Subject {
+        public static string Bitcoin_Shortage_Critical_Subject {
             get {
                 return ResourceManager.GetString("Bitcoin_Shortage_Critical_Subject", resourceCulture);
             }
@@ -163,7 +163,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///Please log on to [InstallationName] at [ExternalUrl] and set a new bitcoin payout address..
         /// </summary>
-        internal static string BitcoinPayoutAddress_Bad_Body {
+        public static string BitcoinPayoutAddress_Bad_Body {
             get {
                 return ResourceManager.GetString("BitcoinPayoutAddress_Bad_Body", resourceCulture);
             }
@@ -172,7 +172,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Bad bitcoin payout address.
         /// </summary>
-        internal static string BitcoinPayoutAddress_Bad_Subject {
+        public static string BitcoinPayoutAddress_Bad_Subject {
             get {
                 return ResourceManager.GetString("BitcoinPayoutAddress_Bad_Subject", resourceCulture);
             }
@@ -185,7 +185,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///If you click that link, your account will be locked down immediately without confirmation requests. However, if you did request the payout address change, all is fine and no fur [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string BitcoinPayoutAddress_Changed_Body {
+        public static string BitcoinPayoutAddress_Changed_Body {
             get {
                 return ResourceManager.GetString("BitcoinPayoutAddress_Changed_Body", resourceCulture);
             }
@@ -194,7 +194,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin Cash payout address changed.
         /// </summary>
-        internal static string BitcoinPayoutAddress_Changed_Subject {
+        public static string BitcoinPayoutAddress_Changed_Subject {
             get {
                 return ResourceManager.GetString("BitcoinPayoutAddress_Changed_Subject", resourceCulture);
             }
@@ -205,7 +205,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///Please log on to [InstallationName] at [ExternalUrl] and follow the link to set your payout address - you will find it in the list of to-do items..
         /// </summary>
-        internal static string BitcoinPayoutAddress_PleaseSet_Body {
+        public static string BitcoinPayoutAddress_PleaseSet_Body {
             get {
                 return ResourceManager.GetString("BitcoinPayoutAddress_PleaseSet_Body", resourceCulture);
             }
@@ -214,7 +214,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Please set your Bitcoin Cash payout address.
         /// </summary>
-        internal static string BitcoinPayoutAddress_PleaseSet_Subject {
+        public static string BitcoinPayoutAddress_PleaseSet_Subject {
             get {
                 return ResourceManager.GetString("BitcoinPayoutAddress_PleaseSet_Subject", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///If you did not set this payout address (it may be worth double checking the address above for added security), contact [OrganizationName] immediately..
         /// </summary>
-        internal static string BitcoinPayoutAddress_Set_Body {
+        public static string BitcoinPayoutAddress_Set_Body {
             get {
                 return ResourceManager.GetString("BitcoinPayoutAddress_Set_Body", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to A Bitcoin Cash payout address was set by [ConcernedPersonName]. Payouts will begin after 48 hours when the quarantine period has elapsed..
         /// </summary>
-        internal static string BitcoinPayoutAddress_Set_OfficerNotify_Body {
+        public static string BitcoinPayoutAddress_Set_OfficerNotify_Body {
             get {
                 return ResourceManager.GetString("BitcoinPayoutAddress_Set_OfficerNotify_Body", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] [ConcernedPersonName] has set a Bitcoin Cash payout address.
         /// </summary>
-        internal static string BitcoinPayoutAddress_Set_OfficerNotify_Subject {
+        public static string BitcoinPayoutAddress_Set_OfficerNotify_Subject {
             get {
                 return ResourceManager.GetString("BitcoinPayoutAddress_Set_OfficerNotify_Subject", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin Cash payout address set.
         /// </summary>
-        internal static string BitcoinPayoutAddress_Set_Subject {
+        public static string BitcoinPayoutAddress_Set_Subject {
             get {
                 return ResourceManager.GetString("BitcoinPayoutAddress_Set_Subject", resourceCulture);
             }
@@ -263,7 +263,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///Expect more communication from the budget owner to follow on the matter..
         /// </summary>
-        internal static string CashAdvance_ApprovalRetracted_Body {
+        public static string CashAdvance_ApprovalRetracted_Body {
             get {
                 return ResourceManager.GetString("CashAdvance_ApprovalRetracted_Body", resourceCulture);
             }
@@ -272,7 +272,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Approval for Cash Advance RETRACTED: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string CashAdvance_ApprovalRetracted_Subject {
+        public static string CashAdvance_ApprovalRetracted_Subject {
             get {
                 return ResourceManager.GetString("CashAdvance_ApprovalRetracted_Subject", resourceCulture);
             }
@@ -281,7 +281,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been approved by the budget owner. It will now proceed to payout to you..
         /// </summary>
-        internal static string CashAdvance_Approved_Body {
+        public static string CashAdvance_Approved_Body {
             get {
                 return ResourceManager.GetString("CashAdvance_Approved_Body", resourceCulture);
             }
@@ -290,7 +290,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance Approved: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string CashAdvance_Approved_Subject {
+        public static string CashAdvance_Approved_Subject {
             get {
                 return ResourceManager.GetString("CashAdvance_Approved_Subject", resourceCulture);
             }
@@ -302,7 +302,7 @@ namespace Swarmops.Logic.Resources {
         ///[EmbeddedPreformattedText]
         ///.
         /// </summary>
-        internal static string CashAdvance_Denied_Body {
+        public static string CashAdvance_Denied_Body {
             get {
                 return ResourceManager.GetString("CashAdvance_Denied_Body", resourceCulture);
             }
@@ -311,7 +311,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance DENIED: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string CashAdvance_Denied_Subject {
+        public static string CashAdvance_Denied_Subject {
             get {
                 return ResourceManager.GetString("CashAdvance_Denied_Subject", resourceCulture);
             }
@@ -322,7 +322,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///This means you should see the amount on your account shortly..
         /// </summary>
-        internal static string CashAdvance_PaidOut_Body {
+        public static string CashAdvance_PaidOut_Body {
             get {
                 return ResourceManager.GetString("CashAdvance_PaidOut_Body", resourceCulture);
             }
@@ -331,7 +331,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance Paid: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string CashAdvance_PaidOut_Subject {
+        public static string CashAdvance_PaidOut_Subject {
             get {
                 return ResourceManager.GetString("CashAdvance_PaidOut_Subject", resourceCulture);
             }
@@ -342,7 +342,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny..
         /// </summary>
-        internal static string CashAdvance_Requested_Body {
+        public static string CashAdvance_Requested_Body {
             get {
                 return ResourceManager.GetString("CashAdvance_Requested_Body", resourceCulture);
             }
@@ -351,7 +351,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Approval Needed.
         /// </summary>
-        internal static string CashAdvance_Requested_Subject {
+        public static string CashAdvance_Requested_Subject {
             get {
                 return ResourceManager.GetString("CashAdvance_Requested_Subject", resourceCulture);
             }
@@ -362,7 +362,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///Expect more communication from the budget owner to follow on the matter..
         /// </summary>
-        internal static string ExpenseClaim_ApprovalRetracted_Body {
+        public static string ExpenseClaim_ApprovalRetracted_Body {
             get {
                 return ResourceManager.GetString("ExpenseClaim_ApprovalRetracted_Body", resourceCulture);
             }
@@ -371,7 +371,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Approval RETRACTED for Expense Claim: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string ExpenseClaim_ApprovalRetracted_Subject {
+        public static string ExpenseClaim_ApprovalRetracted_Subject {
             get {
                 return ResourceManager.GetString("ExpenseClaim_ApprovalRetracted_Subject", resourceCulture);
             }
@@ -380,7 +380,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been approved by the budget owner. It will be paid out to you when the receipts are confirmed valid..
         /// </summary>
-        internal static string ExpenseClaim_Approved_Body {
+        public static string ExpenseClaim_Approved_Body {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Approved_Body", resourceCulture);
             }
@@ -389,7 +389,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Approved: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string ExpenseClaim_Approved_Subject {
+        public static string ExpenseClaim_Approved_Subject {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Approved_Subject", resourceCulture);
             }
@@ -400,7 +400,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny..
         /// </summary>
-        internal static string ExpenseClaim_Created_Body {
+        public static string ExpenseClaim_Created_Body {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Created_Body", resourceCulture);
             }
@@ -409,7 +409,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Approval Needed.
         /// </summary>
-        internal static string ExpenseClaim_Created_Subject {
+        public static string ExpenseClaim_Created_Subject {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Created_Subject", resourceCulture);
             }
@@ -421,7 +421,7 @@ namespace Swarmops.Logic.Resources {
         ///[EmbeddedPreformattedText]
         ///.
         /// </summary>
-        internal static string ExpenseClaim_Denied_Body {
+        public static string ExpenseClaim_Denied_Body {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Denied_Body", resourceCulture);
             }
@@ -430,7 +430,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string ExpenseClaim_Denied_Subject {
+        public static string ExpenseClaim_Denied_Subject {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Denied_Subject", resourceCulture);
             }
@@ -441,7 +441,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///This means you should see the amount on your account shortly..
         /// </summary>
-        internal static string ExpenseClaim_PaidOut_Body {
+        public static string ExpenseClaim_PaidOut_Body {
             get {
                 return ResourceManager.GetString("ExpenseClaim_PaidOut_Body", resourceCulture);
             }
@@ -450,7 +450,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Paid: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string ExpenseClaim_PaidOut_Subject {
+        public static string ExpenseClaim_PaidOut_Subject {
             get {
                 return ResourceManager.GetString("ExpenseClaim_PaidOut_Subject", resourceCulture);
             }
@@ -461,7 +461,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///The claim will be paid out to you when the amount has also been attested by the budget owner..
         /// </summary>
-        internal static string ExpenseClaim_Validated_Body {
+        public static string ExpenseClaim_Validated_Body {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Validated_Body", resourceCulture);
             }
@@ -470,7 +470,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Receipts Validated: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string ExpenseClaim_Validated_Subject {
+        public static string ExpenseClaim_Validated_Subject {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Validated_Subject", resourceCulture);
             }
@@ -481,7 +481,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///Expect more communication to follow on the matter. If you don&apos;t hear from record keepers in short time on this matter, do follow up with them..
         /// </summary>
-        internal static string ExpenseClaim_ValidationRetracted_Body {
+        public static string ExpenseClaim_ValidationRetracted_Body {
             get {
                 return ResourceManager.GetString("ExpenseClaim_ValidationRetracted_Body", resourceCulture);
             }
@@ -490,7 +490,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Validation RETRACTED for Expense Claim Receipts: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string ExpenseClaim_ValidationRetracted_Subject {
+        public static string ExpenseClaim_ValidationRetracted_Subject {
             get {
                 return ResourceManager.GetString("ExpenseClaim_ValidationRetracted_Subject", resourceCulture);
             }
@@ -501,7 +501,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///Please log on to [InstallationName] at [ExternalUrl]Financial/ApproveCosts to attest or deny..
         /// </summary>
-        internal static string InboundInvoice_Created_Body {
+        public static string InboundInvoice_Created_Body {
             get {
                 return ResourceManager.GetString("InboundInvoice_Created_Body", resourceCulture);
             }
@@ -510,7 +510,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Approval Needed.
         /// </summary>
-        internal static string InboundInvoice_Created_Subject {
+        public static string InboundInvoice_Created_Subject {
             get {
                 return ResourceManager.GetString("InboundInvoice_Created_Subject", resourceCulture);
             }
@@ -519,7 +519,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to A new [Regular] was manually added to [OrganizationName] within an area of yours..
         /// </summary>
-        internal static string Membership_New_Added_Body {
+        public static string Membership_New_Added_Body {
             get {
                 return ResourceManager.GetString("Membership_New_Added_Body", resourceCulture);
             }
@@ -528,7 +528,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] New [Regular]: [PersonName], [PersonGeography] [CountryCode] (manual).
         /// </summary>
-        internal static string Membership_New_Added_Subject {
+        public static string Membership_New_Added_Subject {
             get {
                 return ResourceManager.GetString("Membership_New_Added_Subject", resourceCulture);
             }
@@ -537,7 +537,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to A new [Regular] has signed up for [OrganizationName] within an area of yours..
         /// </summary>
-        internal static string Membership_New_Selfsignup_Body {
+        public static string Membership_New_Selfsignup_Body {
             get {
                 return ResourceManager.GetString("Membership_New_Selfsignup_Body", resourceCulture);
             }
@@ -546,7 +546,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] New [Regular]: [PersonName], [PersonGeography] [CountryCode].
         /// </summary>
-        internal static string Membership_New_Selfsignup_Subject {
+        public static string Membership_New_Selfsignup_Subject {
             get {
                 return ResourceManager.GetString("Membership_New_Selfsignup_Subject", resourceCulture);
             }
@@ -555,7 +555,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] [Regularship] renewed: [PersonName], [PersonGeography] [CountryCode] (manual).
         /// </summary>
-        internal static string Membership_Renewed_Manual_Subject {
+        public static string Membership_Renewed_Manual_Subject {
             get {
                 return ResourceManager.GetString("Membership_Renewed_Manual_Subject", resourceCulture);
             }
@@ -565,7 +565,7 @@ namespace Swarmops.Logic.Resources {
         ///   Looks up a localized string similar to --
         ///This mail was sent to [Addressee] from [OrganizationName]. If you do not desire to receive these notifications in the future, please log on to [InstallationName] at [ExternalUrl] and modify your notification settings..
         /// </summary>
-        internal static string NotificationFooter_Generic {
+        public static string NotificationFooter_Generic {
             get {
                 return ResourceManager.GetString("NotificationFooter_Generic", resourceCulture);
             }
@@ -574,7 +574,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Your message has been queued for delivery and the recipients have been resolved. Your mail will be sent to, or be attempted to sent to, [RecipientCount] people in [GeographyName] in [OrganizationName]..
         /// </summary>
-        internal static string OutboundComm_Resolved_Body {
+        public static string OutboundComm_Resolved_Body {
             get {
                 return ResourceManager.GetString("OutboundComm_Resolved_Body", resourceCulture);
             }
@@ -583,7 +583,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Comm recipients determined for [GeographyName]: [RecipientCount].
         /// </summary>
-        internal static string OutboundComm_Resolved_Subject {
+        public static string OutboundComm_Resolved_Subject {
             get {
                 return ResourceManager.GetString("OutboundComm_Resolved_Subject", resourceCulture);
             }
@@ -596,7 +596,7 @@ namespace Swarmops.Logic.Resources {
         ///Time spent transmitting: [TransmissionTime].
         ///Total time from comm creation to completion: [TotalTime]..
         /// </summary>
-        internal static string OutboundComm_Sent_Body {
+        public static string OutboundComm_Sent_Body {
             get {
                 return ResourceManager.GetString("OutboundComm_Sent_Body", resourceCulture);
             }
@@ -605,7 +605,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Comms transmitted: [GeographyName].
         /// </summary>
-        internal static string OutboundComm_Sent_Subject {
+        public static string OutboundComm_Sent_Subject {
             get {
                 return ResourceManager.GetString("OutboundComm_Sent_Subject", resourceCulture);
             }
@@ -614,7 +614,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to A new person has signed up as [RegularTitle] in [OrganizationName]! [ConcernedPersonName] is based in [GeographyName], [CountryCode]..
         /// </summary>
-        internal static string Participant_Signup_Body {
+        public static string Participant_Signup_Body {
             get {
                 return ResourceManager.GetString("Participant_Signup_Body", resourceCulture);
             }
@@ -623,7 +623,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] New [RegularTitle]: [ConcernedPersonName], [GeographyName].
         /// </summary>
-        internal static string Participant_Signup_Subject {
+        public static string Participant_Signup_Subject {
             get {
                 return ResourceManager.GetString("Participant_Signup_Subject", resourceCulture);
             }
@@ -636,7 +636,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///Thank you for your understanding..
         /// </summary>
-        internal static string Password_CannotReset2FA_Body {
+        public static string Password_CannotReset2FA_Body {
             get {
                 return ResourceManager.GetString("Password_CannotReset2FA_Body", resourceCulture);
             }
@@ -645,7 +645,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[InstallationName]] Cannot Reset Password.
         /// </summary>
-        internal static string Password_CannotReset2FA_Subject {
+        public static string Password_CannotReset2FA_Subject {
             get {
                 return ResourceManager.GetString("Password_CannotReset2FA_Subject", resourceCulture);
             }
@@ -660,7 +660,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///If you confirm a lockdown on the link above, any existing sessions will terminate immediately, logons with the newly-set password will be locked out, and administrators will conta [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Password_Changed_Body {
+        public static string Password_Changed_Body {
             get {
                 return ResourceManager.GetString("Password_Changed_Body", resourceCulture);
             }
@@ -669,7 +669,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[InstallationName]] Password Changed.
         /// </summary>
-        internal static string Password_Changed_Subject {
+        public static string Password_Changed_Subject {
             get {
                 return ResourceManager.GetString("Password_Changed_Subject", resourceCulture);
             }
@@ -684,7 +684,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///This ticket will expire in 24 hours. If you do not reset your password in this time frame, you will need to contact the administrators at [OrganizationName] to issue a new [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Password_ResetByCrew_Body {
+        public static string Password_ResetByCrew_Body {
             get {
                 return ResourceManager.GetString("Password_ResetByCrew_Body", resourceCulture);
             }
@@ -693,7 +693,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Password Reset Ticket.
         /// </summary>
-        internal static string Password_ResetByCrew_Subject {
+        public static string Password_ResetByCrew_Subject {
             get {
                 return ResourceManager.GetString("Password_ResetByCrew_Subject", resourceCulture);
             }
@@ -706,7 +706,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///If you did NOT request a password reset, you can (and should) ignore this mail. The password reset request will expire in one hour. (If you are getting a large number of these password reset links that you did not reques [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Password_ResetOnRequest_Body {
+        public static string Password_ResetOnRequest_Body {
             get {
                 return ResourceManager.GetString("Password_ResetOnRequest_Body", resourceCulture);
             }
@@ -715,7 +715,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[InstallationName]] Password Reset Ticket.
         /// </summary>
-        internal static string Password_ResetOnRequest_Subject {
+        public static string Password_ResetOnRequest_Subject {
             get {
                 return ResourceManager.GetString("Password_ResetOnRequest_Subject", resourceCulture);
             }
@@ -726,7 +726,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///Please log on to [InstallationName] at [ExternalUrl]Financial/ValidateReceipts to validate or reject them..
         /// </summary>
-        internal static string Receipts_Filed_Body {
+        public static string Receipts_Filed_Body {
             get {
                 return ResourceManager.GetString("Receipts_Filed_Body", resourceCulture);
             }
@@ -735,7 +735,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Receipts Filed - Validation Needed.
         /// </summary>
-        internal static string Receipts_Filed_Subject {
+        public static string Receipts_Filed_Subject {
             get {
                 return ResourceManager.GetString("Receipts_Filed_Subject", resourceCulture);
             }
@@ -748,7 +748,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///[EmbeddedPreformattedText].
         /// </summary>
-        internal static string Salary_Denied_Body {
+        public static string Salary_Denied_Body {
             get {
                 return ResourceManager.GetString("Salary_Denied_Body", resourceCulture);
             }
@@ -757,7 +757,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Salary payout denied: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
-        internal static string Salary_Denied_Subject {
+        public static string Salary_Denied_Subject {
             get {
                 return ResourceManager.GetString("Salary_Denied_Subject", resourceCulture);
             }
@@ -770,7 +770,7 @@ namespace Swarmops.Logic.Resources {
         ///Tax deducted therefrom: [CurrencyCode] [TaxDeductedTotal]	
         ///Net salary paid out:    [CurrencyCode]  [NetSalaryTotal] [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Salary_LastYearSummary_Body {
+        public static string Salary_LastYearSummary_Body {
             get {
                 return ResourceManager.GetString("Salary_LastYearSummary_Body", resourceCulture);
             }
@@ -779,7 +779,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to [[OrganizationName]] Salary summary statement for [LastYear].
         /// </summary>
-        internal static string Salary_LastYearSummary_Subject {
+        public static string Salary_LastYearSummary_Subject {
             get {
                 return ResourceManager.GetString("Salary_LastYearSummary_Subject", resourceCulture);
             }
@@ -790,7 +790,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///This is for information only. You do not need to take action..
         /// </summary>
-        internal static string System_DatabaseSchemaUpgraded_Body {
+        public static string System_DatabaseSchemaUpgraded_Body {
             get {
                 return ResourceManager.GetString("System_DatabaseSchemaUpgraded_Body", resourceCulture);
             }
@@ -799,7 +799,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops database upgraded.
         /// </summary>
-        internal static string System_DatabaseSchemaUpgraded_Subject {
+        public static string System_DatabaseSchemaUpgraded_Subject {
             get {
                 return ResourceManager.GetString("System_DatabaseSchemaUpgraded_Subject", resourceCulture);
             }
@@ -812,7 +812,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///The upgrade will be retried every hour. Some functionality may be disabled until the database has been upgraded. If you want to troubleshoot manually, the database upgrade packages are retrieved f [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string System_DatabaseUpgradeFailed_Body {
+        public static string System_DatabaseUpgradeFailed_Body {
             get {
                 return ResourceManager.GetString("System_DatabaseUpgradeFailed_Body", resourceCulture);
             }
@@ -821,7 +821,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops database upgrade FAILED.
         /// </summary>
-        internal static string System_DatabaseUpgradeFailed_Subject {
+        public static string System_DatabaseUpgradeFailed_Subject {
             get {
                 return ResourceManager.GetString("System_DatabaseUpgradeFailed_Subject", resourceCulture);
             }
@@ -832,7 +832,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///[EmbeddedPreformattedText].
         /// </summary>
-        internal static string System_Exception_Body {
+        public static string System_Exception_Body {
             get {
                 return ResourceManager.GetString("System_Exception_Body", resourceCulture);
             }
@@ -841,7 +841,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops EXCEPTION!.
         /// </summary>
-        internal static string System_Exception_Subject {
+        public static string System_Exception_Subject {
             get {
                 return ResourceManager.GetString("System_Exception_Subject", resourceCulture);
             }
@@ -850,7 +850,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to This is a test mail sent by Swarmops [SwarmopsVersion] running on [HostName]. You just changed the mail server settings. To verify that the new settings are correct, Swarmops dispatches this test message to be sent from the back end..
         /// </summary>
-        internal static string System_MailServerTest_Body {
+        public static string System_MailServerTest_Body {
             get {
                 return ResourceManager.GetString("System_MailServerTest_Body", resourceCulture);
             }
@@ -859,7 +859,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops Mail Server Test.
         /// </summary>
-        internal static string System_MailServerTest_Subject {
+        public static string System_MailServerTest_Subject {
             get {
                 return ResourceManager.GetString("System_MailServerTest_Subject", resourceCulture);
             }
@@ -868,7 +868,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The bitcoin public root key in the MySql database was not a match for the bitcoin private root key stored in /etc/swarmops on [HostName]. This is a potentially serious condition, and should never ever happen, so the public root key was rederived from the private key and re-written to the database over what was there before..
         /// </summary>
-        internal static string System_PublicRootReset_Body {
+        public static string System_PublicRootReset_Body {
             get {
                 return ResourceManager.GetString("System_PublicRootReset_Body", resourceCulture);
             }
@@ -877,7 +877,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops: Hotwallet public root key reset.
         /// </summary>
-        internal static string System_PublicRootReset_Subject {
+        public static string System_PublicRootReset_Subject {
             get {
                 return ResourceManager.GetString("System_PublicRootReset_Subject", resourceCulture);
             }
@@ -886,7 +886,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops Backend version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks..
         /// </summary>
-        internal static string System_Startup_Backend_Body {
+        public static string System_Startup_Backend_Body {
             get {
                 return ResourceManager.GetString("System_Startup_Backend_Body", resourceCulture);
             }
@@ -895,7 +895,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops Backend operational.
         /// </summary>
-        internal static string System_Startup_Backend_Subject {
+        public static string System_Startup_Backend_Subject {
             get {
                 return ResourceManager.GetString("System_Startup_Backend_Subject", resourceCulture);
             }
@@ -904,7 +904,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops Frontend socket server version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks..
         /// </summary>
-        internal static string System_Startup_Frontend_Body {
+        public static string System_Startup_Frontend_Body {
             get {
                 return ResourceManager.GetString("System_Startup_Frontend_Body", resourceCulture);
             }
@@ -913,7 +913,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops Frontend operational.
         /// </summary>
-        internal static string System_Startup_Frontend_Subject {
+        public static string System_Startup_Frontend_Subject {
             get {
                 return ResourceManager.GetString("System_Startup_Frontend_Subject", resourceCulture);
             }
@@ -924,7 +924,7 @@ namespace Swarmops.Logic.Resources {
         ///
         ///If this error is recurring, you may have a badly installed plugin or something similar. In any case, the unrecognized message has been discarded and won&apos;t be transmitted, since Swarmops doesn&apos;t know h [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string System_UnrecognizedPayload_Body {
+        public static string System_UnrecognizedPayload_Body {
             get {
                 return ResourceManager.GetString("System_UnrecognizedPayload_Body", resourceCulture);
             }
@@ -933,7 +933,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops: Unrecognized comms payload.
         /// </summary>
-        internal static string System_UnrecognizedPayload_Subject {
+        public static string System_UnrecognizedPayload_Subject {
             get {
                 return ResourceManager.GetString("System_UnrecognizedPayload_Subject", resourceCulture);
             }

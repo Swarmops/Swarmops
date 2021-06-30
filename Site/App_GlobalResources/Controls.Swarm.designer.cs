@@ -63,7 +63,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Assign another person....
         /// </summary>
-        internal static string Positions_AssignAnotherPerson {
+        public static string Positions_AssignAnotherPerson {
             get {
                 return ResourceManager.GetString("Positions_AssignAnotherPerson", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to (assign under My Organization).
         /// </summary>
-        internal static string Positions_AssignElsewhere {
+        public static string Positions_AssignElsewhere {
             get {
                 return ResourceManager.GetString("Positions_AssignElsewhere", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Assign a fifth person....
         /// </summary>
-        internal static string Positions_AssignFifthPerson {
+        public static string Positions_AssignFifthPerson {
             get {
                 return ResourceManager.GetString("Positions_AssignFifthPerson", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Assign....
         /// </summary>
-        internal static string Positions_AssignFirstPerson {
+        public static string Positions_AssignFirstPerson {
             get {
                 return ResourceManager.GetString("Positions_AssignFirstPerson", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Assign a fourth person....
         /// </summary>
-        internal static string Positions_AssignFourthPerson {
+        public static string Positions_AssignFourthPerson {
             get {
                 return ResourceManager.GetString("Positions_AssignFourthPerson", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Assignment duration (extendable).
         /// </summary>
-        internal static string Positions_AssignmentDuration {
+        public static string Positions_AssignmentDuration {
             get {
                 return ResourceManager.GetString("Positions_AssignmentDuration", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Expires.
         /// </summary>
-        internal static string Positions_AssignmentExpires {
+        public static string Positions_AssignmentExpires {
             get {
                 return ResourceManager.GetString("Positions_AssignmentExpires", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Assign this person to position.
         /// </summary>
-        internal static string Positions_AssignPersonToPosition {
+        public static string Positions_AssignPersonToPosition {
             get {
                 return ResourceManager.GetString("Positions_AssignPersonToPosition", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Assign a second person....
         /// </summary>
-        internal static string Positions_AssignSecondPerson {
+        public static string Positions_AssignSecondPerson {
             get {
                 return ResourceManager.GetString("Positions_AssignSecondPerson", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Assign a sixth person....
         /// </summary>
-        internal static string Positions_AssignSixthPerson {
+        public static string Positions_AssignSixthPerson {
             get {
                 return ResourceManager.GetString("Positions_AssignSixthPerson", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Assign a third person....
         /// </summary>
-        internal static string Positions_AssignThirdPerson {
+        public static string Positions_AssignThirdPerson {
             get {
                 return ResourceManager.GetString("Positions_AssignThirdPerson", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Assign.
         /// </summary>
-        internal static string Positions_ButtonAssign {
+        public static string Positions_ButtonAssign {
             get {
                 return ResourceManager.GetString("Positions_ButtonAssign", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;QUIT YOUR POSITION?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is &lt;strong&gt;your&lt;/strong&gt; assignment. Terminating your own assignment is the equivalent of saying &quot;I QUIT&quot;. Doing so will take effect immediately. Is this what you wanted to do?&lt;br/&gt;&lt;br/&gt;.
         /// </summary>
-        internal static string Positions_ConfirmSelfTerminate {
+        public static string Positions_ConfirmSelfTerminate {
             get {
                 return ResourceManager.GetString("Positions_ConfirmSelfTerminate", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;TERMINATE ASSIGNMENT?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Do you want to terminate &lt;span id=&quot;spanTerminatePersonName&quot;&gt;[PERSONNAME]&lt;/span&gt; from the assignment as &lt;span id=&quot;spanTerminatePositionName&quot;&gt;[POSITIONNAME]&lt;/span&gt;? This is the equivalent of firing somebody and usually needs to be in accordance with internal processes and local law.&lt;br/&gt;&lt;br/&gt;.
         /// </summary>
-        internal static string Positions_ConfirmTerminate {
+        public static string Positions_ConfirmTerminate {
             get {
                 return ResourceManager.GetString("Positions_ConfirmTerminate", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Create new position....
         /// </summary>
-        internal static string Positions_CreatePosition {
+        public static string Positions_CreatePosition {
             get {
                 return ResourceManager.GetString("Positions_CreatePosition", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Assign person as &lt;span id=&apos;{0}_modalPositionName&apos;&gt;...&lt;/span&gt; &lt;span id=&apos;{0}_modalGeographyName&apos;&gt; &lt;/span&gt;.
         /// </summary>
-        internal static string Positions_ModalHeader {
+        public static string Positions_ModalHeader {
             get {
                 return ResourceManager.GetString("Positions_ModalHeader", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Failed: Can&apos;t assign any more people to this position..
         /// </summary>
-        internal static string Positions_NoMorePeopleOnPosition {
+        public static string Positions_NoMorePeopleOnPosition {
             get {
                 return ResourceManager.GetString("Positions_NoMorePeopleOnPosition", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Please select a person to assign..
         /// </summary>
-        internal static string Positions_PleaseSelectPerson {
+        public static string Positions_PleaseSelectPerson {
             get {
                 return ResourceManager.GetString("Positions_PleaseSelectPerson", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Leaders of subdivisions.
         /// </summary>
-        internal static string Positions_Subleaders {
+        public static string Positions_Subleaders {
             get {
                 return ResourceManager.GetString("Positions_Subleaders", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Do Not Terminate.
         /// </summary>
-        internal static string Positions_TerminateNo {
+        public static string Positions_TerminateNo {
             get {
                 return ResourceManager.GetString("Positions_TerminateNo", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Oops! No, go back!.
         /// </summary>
-        internal static string Positions_TerminateSelfNo {
+        public static string Positions_TerminateSelfNo {
             get {
                 return ResourceManager.GetString("Positions_TerminateSelfNo", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Yes, I Resign.
         /// </summary>
-        internal static string Positions_TerminateSelfYes {
+        public static string Positions_TerminateSelfYes {
             get {
                 return ResourceManager.GetString("Positions_TerminateSelfYes", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to Terminate Assignment.
         /// </summary>
-        internal static string Positions_TerminateYes {
+        public static string Positions_TerminateYes {
             get {
                 return ResourceManager.GetString("Positions_TerminateYes", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace Resources.Controls {
         /// <summary>
         ///   Looks up a localized string similar to (position is vacant).
         /// </summary>
-        internal static string Positions_Vacant {
+        public static string Positions_Vacant {
             get {
                 return ResourceManager.GetString("Positions_Vacant", resourceCulture);
             }

@@ -63,7 +63,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to A valid city is required..
         /// </summary>
-        internal static string AddPerson_ErrorCity {
+        public static string AddPerson_ErrorCity {
             get {
                 return ResourceManager.GetString("AddPerson_ErrorCity", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Provide a valid date or leave this field empty..
         /// </summary>
-        internal static string AddPerson_ErrorDate {
+        public static string AddPerson_ErrorDate {
             get {
                 return ResourceManager.GetString("AddPerson_ErrorDate", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to A valid email is required..
         /// </summary>
-        internal static string AddPerson_ErrorMail {
+        public static string AddPerson_ErrorMail {
             get {
                 return ResourceManager.GetString("AddPerson_ErrorMail", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to A name is required..
         /// </summary>
-        internal static string AddPerson_ErrorName {
+        public static string AddPerson_ErrorName {
             get {
                 return ResourceManager.GetString("AddPerson_ErrorName", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to A valid street or P.O. box is required..
         /// </summary>
-        internal static string AddPerson_ErrorStreet {
+        public static string AddPerson_ErrorStreet {
             get {
                 return ResourceManager.GetString("AddPerson_ErrorStreet", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Geography detected.
         /// </summary>
-        internal static string AddPerson_GeographyDetected {
+        public static string AddPerson_GeographyDetected {
             get {
                 return ResourceManager.GetString("AddPerson_GeographyDetected", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This is where you enter new people into the organization. As you register them for a &lt;strong&gt;{0} {1}&lt;/strong&gt; lasting until &lt;strong&gt;{2}&lt;/strong&gt;, they will receive a welcome message with a randomized login password in mail. The local officers will also be notified of the new person, for an opportunity to send them a welcome message..
         /// </summary>
-        internal static string AddPerson_Info {
+        public static string AddPerson_Info {
             get {
                 return ResourceManager.GetString("AddPerson_Info", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Legal Gender.
         /// </summary>
-        internal static string AddPerson_LegalGender {
+        public static string AddPerson_LegalGender {
             get {
                 return ResourceManager.GetString("AddPerson_LegalGender", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to The person was successfully added to the organization. A welcome mail has been sent..
         /// </summary>
-        internal static string AddPerson_PersonSuccessfullyRegistered {
+        public static string AddPerson_PersonSuccessfullyRegistered {
             get {
                 return ResourceManager.GetString("AddPerson_PersonSuccessfullyRegistered", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Statistical Data.
         /// </summary>
-        internal static string AddPerson_StatisticalData {
+        public static string AddPerson_StatisticalData {
             get {
                 return ResourceManager.GetString("AddPerson_StatisticalData", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Street 1 (or P.O. Box).
         /// </summary>
-        internal static string AddPerson_Street1PO {
+        public static string AddPerson_Street1PO {
             get {
                 return ResourceManager.GetString("AddPerson_Street1PO", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Street 2 - if applicable.
         /// </summary>
-        internal static string AddPerson_Street2 {
+        public static string AddPerson_Street2 {
             get {
                 return ResourceManager.GetString("AddPerson_Street2", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Add {0}.
         /// </summary>
-        internal static string AddPerson_Title {
+        public static string AddPerson_Title {
             get {
                 return ResourceManager.GetString("AddPerson_Title", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Use this to find people in the organization. You can search by geography and by name pattern (&quot;Jo S&quot; will match Joel Sander)..
         /// </summary>
-        internal static string ListFindPeople_Info {
+        public static string ListFindPeople_Info {
             get {
                 return ResourceManager.GetString("ListFindPeople_Info", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Matching People in {0}.
         /// </summary>
-        internal static string ListFindPeople_MatchingPeopleInX {
+        public static string ListFindPeople_MatchingPeopleInX {
             get {
                 return ResourceManager.GetString("ListFindPeople_MatchingPeopleInX", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Name Pattern.
         /// </summary>
-        internal static string ListFindPeople_NamePattern {
+        public static string ListFindPeople_NamePattern {
             get {
                 return ResourceManager.GetString("ListFindPeople_NamePattern", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to List and Find People.
         /// </summary>
-        internal static string ListFindPeople_Title {
+        public static string ListFindPeople_Title {
             get {
                 return ResourceManager.GetString("ListFindPeople_Title", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to The result set contains over a thousand people (display limited to a thousand). Please refine your search?.
         /// </summary>
-        internal static string ListFindPeople_TooManyHits {
+        public static string ListFindPeople_TooManyHits {
             get {
                 return ResourceManager.GetString("ListFindPeople_TooManyHits", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Local Organization ({0}).
         /// </summary>
-        internal static string LocalOrganization_Header {
+        public static string LocalOrganization_Header {
             get {
                 return ResourceManager.GetString("LocalOrganization_Header", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to The Global Organization.
         /// </summary>
-        internal static string LocalOrganization_HeaderGlobal {
+        public static string LocalOrganization_HeaderGlobal {
             get {
                 return ResourceManager.GetString("LocalOrganization_HeaderGlobal", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to These are your local contacts. (If you have administrative privileges, you may also assign people to these positions.).
         /// </summary>
-        internal static string LocalOrganization_Info {
+        public static string LocalOrganization_Info {
             get {
                 return ResourceManager.GetString("LocalOrganization_Info", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to My Local Organization.
         /// </summary>
-        internal static string LocalOrganization_PageTitle {
+        public static string LocalOrganization_PageTitle {
             get {
                 return ResourceManager.GetString("LocalOrganization_PageTitle", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Assign person....
         /// </summary>
-        internal static string Positions_AssignPerson {
+        public static string Positions_AssignPerson {
             get {
                 return ResourceManager.GetString("Positions_AssignPerson", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Create new position....
         /// </summary>
-        internal static string Positions_CreateNewPosition {
+        public static string Positions_CreateNewPosition {
             get {
                 return ResourceManager.GetString("Positions_CreateNewPosition", resourceCulture);
             }

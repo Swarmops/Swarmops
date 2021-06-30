@@ -131,7 +131,7 @@ namespace Swarmops.Backend
             }
         }
 
-        internal static string FormatTimespan(TimeSpan span)
+        public static string FormatTimespan(TimeSpan span)
         {
             return String.Format("{0} min {1:D2}.{2:D3} sec", Math.Floor(span.TotalMinutes), Math.Floor((double) span.Seconds), span.Milliseconds);
         }
