@@ -223,6 +223,7 @@
     <Compile Include="Communications\Payload\ParticipantMailPayload.cs" />
     <Compile Include="Communications\Payload\PayloadEnvelope.cs" />
     <Compile Include="Communications\Payload\NotificationPayload.cs" />
+    <Compile Include="Resources\MonoResourceManager.cs" />
     <Compile Include="Security\Impersonation.cs" />
     <Compile Include="Security\Sha256.cs" />
     <Compile Include="Support\AsyncProcesses.cs" />
