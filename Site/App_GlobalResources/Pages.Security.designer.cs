@@ -39,7 +39,7 @@ namespace Resources.Pages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Pages.Security", global::System.Reflection.Assembly.Load("App_GlobalResources"));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Pages.Security", global::System.Reflection.Assembly.Load("Pages.Security.resources"));
                     resourceMan = temp;
                 }
                 return resourceMan;
