@@ -10,6 +10,7 @@
 
 using System.Globalization;
 using System.IO;
+using Swarmops.Logic.Resources;
 
 namespace Resources {
     using System;
@@ -41,8 +42,9 @@ namespace Resources {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Menu5", GetCurrentCultureAssembly("Menu5"));
+                if (object.ReferenceEquals(resourceMan, null))
+                {
+                    global::System.Resources.ResourceManager temp = new MonoResourceManager("Menu5");
                     resourceMan = temp;
                 }
                 return resourceMan;

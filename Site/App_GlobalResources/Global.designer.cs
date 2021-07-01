@@ -10,6 +10,7 @@
 
 using System.Globalization;
 using System.IO;
+using Swarmops.Logic.Resources;
 
 namespace Resources {
     using System;
@@ -42,7 +43,7 @@ namespace Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Global", GetCurrentCultureAssembly("Global"));
+                    global::System.Resources.ResourceManager temp = new MonoResourceManager("Global");
                     resourceMan = temp;
                 }
                 return resourceMan;
