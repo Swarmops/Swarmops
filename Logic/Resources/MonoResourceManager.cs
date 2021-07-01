@@ -13,7 +13,7 @@ namespace Swarmops.Logic.Resources
     public class MonoResourceManager: System.Resources.ResourceManager
     {
         public MonoResourceManager(string baseName)
-            : base (baseName, Assembly.Load("Swarmops.Frontend." + baseName + ".resources.dll"))
+            : base (baseName, Assembly.Load("Swarmops.Frontend." + baseName + ".resources"))
         {
             
         }
@@ -31,7 +31,7 @@ namespace Swarmops.Logic.Resources
                 return path + "Swarmops.Frontend." + this.BaseName + ".resources.dll";
             }
 
-            return path + "Swarmops.Frontend." + this.BaseName + "." + culture.Name + ".resources.dll";
+            return path + "Swarmops.Frontend." + this.BaseName + "." + culture.Name + ".resources";
         }
     }
 }
