@@ -80,7 +80,7 @@ namespace Resources {
                 }
             }
 
-            return System.Reflection.Assembly.Load("Swarmops.Resources." + baseAssemblyName + suffix);
+            return System.Reflection.Assembly.Load("Swarmops.Frontend." + baseAssemblyName + suffix);
         }
 
         /// <summary>
