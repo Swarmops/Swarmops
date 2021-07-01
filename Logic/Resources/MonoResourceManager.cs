@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Swarmops.Logic.Resources
 {
@@ -19,12 +20,18 @@ namespace Swarmops.Logic.Resources
 
         protected override string GetResourceFileName(CultureInfo culture)
         {
-            if (culture.IsNeutralCulture || culture.Name == "en-US")
+            string path = "bin/";
+            if (HttpContext.Current != null)
             {
-                return "Swarmops.Frontend." + this.BaseName + ".resources.dll";
+                path = HttpContext.Current.Server.MapPath("/bin/");
             }
 
-            return "Swarmops.Frontend." + this.BaseName + "." + culture.Name + ".resources.dll";
+            if (culture.IsNeutralCulture || culture.Name == "en-US")
+            {
+                return path + "Swarmops.Frontend." + this.BaseName + ".resources.dll";
+            }
+
+            return path + "Swarmops.Frontend." + this.BaseName + "." + culture.Name + ".resources.dll";
         }
     }
 }
