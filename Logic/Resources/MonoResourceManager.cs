@@ -26,9 +26,9 @@ namespace Swarmops.Logic.Resources
                 path = HttpContext.Current.Server.MapPath("/bin/");
             }
 
-            if (culture.IsNeutralCulture || culture.Name == "en-US")
+            if (culture.IsNeutralCulture || culture.Name == "en-US" || string.IsNullOrWhiteSpace(culture.Name))
             {
-                return path + "Swarmops.Frontend." + this.BaseName + ".resources.dll";
+                return path + "Swarmops.Frontend." + this.BaseName + ".resources";
             }
 
             return path + "Swarmops.Frontend." + this.BaseName + "." + culture.Name + ".resources";
