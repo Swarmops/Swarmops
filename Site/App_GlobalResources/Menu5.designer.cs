@@ -55,15 +55,6 @@ namespace Resources {
             string infix = string.Empty;
             string suffix = ".resources";
 
-            string resourceAssemblyPath = "/usr/share/swarmops/frontend/bin/";
-
-            if (Path.DirectorySeparatorChar != '/')
-            {
-                // If we're not running on Linux, this is a development environment,
-                // so use the HttpContext for the running folder
-                resourceAssemblyPath = "~/";
-            }
-
             CultureInfo currentCulture = CultureInfo.CurrentUICulture;
             if (currentCulture != null /* && currentCulture.Name != "neutral" */)
             {
@@ -71,16 +62,9 @@ namespace Resources {
 
                 infix = "." + cultureName;
                 prefix = cultureName + "/";
-
-                // If specific culture exists, return it, otherwise return neutral culture
-
-                if (File.Exists(resourceAssemblyPath + prefix + baseAssemblyName + infix + suffix))
-                {
-                    return System.Reflection.Assembly.Load(resourceAssemblyPath + prefix + baseAssemblyName + suffix + ".dll");
-                }
             }
 
-            return System.Reflection.Assembly.Load(baseAssemblyName + suffix);
+            return System.Reflection.Assembly.Load("Swarmops.Resources." + baseAssemblyName + suffix);
         }
 
         /// <summary>
