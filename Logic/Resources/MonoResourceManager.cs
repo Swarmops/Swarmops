@@ -28,10 +28,10 @@ namespace Swarmops.Logic.Resources
 
             if (culture.IsNeutralCulture || culture.Name == "en-US" || string.IsNullOrWhiteSpace(culture.Name))
             {
-                return path + "Swarmops.Frontend." + this.BaseName + ".resources.dll";
+                return this.BaseName + ".resources";
             }
 
-            return path + "Swarmops.Frontend." + this.BaseName + "." + culture.Name + ".resources.dll";
+            return  this.BaseName + "." + culture.Name + ".resources";
         }
     }
 }
