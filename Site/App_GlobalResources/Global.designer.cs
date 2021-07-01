@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Globalization;
+
 namespace Resources {
     using System;
     
@@ -39,13 +41,34 @@ namespace Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Global", global::System.Reflection.Assembly.Load("Global"));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Global", GetCurrentCultureAssembly("Global"));
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
+
+        internal static System.Reflection.Assembly GetCurrentCultureAssembly(string baseAssemblyName)
+        {
+            string prefix = string.Empty;
+            string infix = string.Empty;
+            string suffix = ".resources";
+
+            CultureInfo currentCulture = CultureInfo.CurrentUICulture;
+            if (currentCulture != null /* && currentCulture.Name != "neutral" */)
+            {
+                string cultureName = currentCulture.Name;
+
+                infix = "." + cultureName;
+                prefix = cultureName + "/";
+
+                return System.Reflection.Assembly.Load(prefix + baseAssemblyName + infix + suffix);
+            }
+
+            return System.Reflection.Assembly.Load(baseAssemblyName + suffix);
+        }
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
