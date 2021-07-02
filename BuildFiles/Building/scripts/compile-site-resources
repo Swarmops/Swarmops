@@ -7,9 +7,9 @@ cd frontend/App_GlobalResources
 
 # Compile .resx to .resources
 
-#find . -iname '*.resx' -exec resgen -compile {} \;
-#find . -iname '*.resx' -delete
-#find . -iname '*.designer.cs' -delete
+find . -iname '*.resx' -exec resgen -compile {} \;
+find . -iname '*.resx' -delete
+find . -iname '*.designer.cs' -delete
 
 # Compile .resources to .resources.dll; embed all cultures in one assembly
 
