@@ -850,6 +850,7 @@
     </Compile>
     <Content Include=".gitignore" />
     <Content Include="apache-default-config.txt" />
+    <Content Include="App_GlobalResources\SourceResourceFiles.txt" />
     <Content Include="Automation\FieldValidation.aspx" />
     <Content Include="Automation\FinancialFunctions.aspx" />
     <Content Include="Automation\Formatting.aspx" />
