@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Swarmops.Logic.Resources;
+
 namespace Resources.Controls {
     using System;
     
@@ -39,7 +41,7 @@ namespace Resources.Controls {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Controls.Financial", global::System.Reflection.Assembly.Load("Controls.Financial.resources"));
+                    global::System.Resources.ResourceManager temp = new MonoResourceManager("Controls.Financial");
                     resourceMan = temp;
                 }
                 return resourceMan;
