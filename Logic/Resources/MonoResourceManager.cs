@@ -31,7 +31,7 @@ namespace Swarmops.Logic.Resources
                 return this.BaseName + ".resources";
             }
 
-            return  this.BaseName + "." + culture.Name + ".resources";
+            return culture.Name + "/" + this.BaseName + "." + culture.Name + ".resources";
         }
     }
 }
