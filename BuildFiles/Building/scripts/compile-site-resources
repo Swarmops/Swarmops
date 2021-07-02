@@ -13,7 +13,7 @@ find . -iname '*.designer.cs' -delete
 
 # Compile .resources to .resources.dll; embed all cultures in one assembly
 
-for SOURCEFILE in $(cat SourceResourcesFiles.txt); do
+for SOURCEFILE in $(cat SourceResourceFiles.txt); do
   EMBEDTARGETS= 
   for EMBEDTARGET in $(find -iname "$SOURCEFILE*" -print); do
     EMBEDTARGETS="$EMBEDTARGETS /embed:${EMBEDTARGET:2}"
