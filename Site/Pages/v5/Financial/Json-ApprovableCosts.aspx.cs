@@ -60,7 +60,7 @@ public partial class Pages_v5_Finance_Json_ApprovableCosts : DataV5Base
                 "<img id='IconDenial{5}' class='LocalIconDenial LocalNew action-icon' baseid='{5}' />" +
                 "<img id='IconDenied{5}' class='LocalIconDenied LocalNew status-icon' baseid='{5}' />" +
                 "</span>\"",
-                JsonSanitize(GetGlobalResourceObject("Global", cost.IdentityDisplay).ToString()),
+                JsonSanitize(cost.IdentityDisplay.ToString()),
                 JsonSanitize(cost.Beneficiary), JsonSanitize(TryLocalize(cost.Description)),
                 JsonSanitize(cost.BudgetName),
                 cost.AmountRequestedCents / 100.0, cost.Identity, cost.Budget.Identity);
