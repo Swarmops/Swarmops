@@ -37,6 +37,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{39D954
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site", "Site\Site.csproj", "{A36F6B67-4B17-419A-9200-C247EA6B88A2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{04028270-5FF8-4AA6-8ED8-9B1AA0D4B99A} = {04028270-5FF8-4AA6-8ED8-9B1AA0D4B99A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{BA24FAF7-D518-49E8-952A-45595682877E}"
 EndProject
@@ -45,6 +48,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugConsole", "DebugConsole\DebugConsole.csproj", "{22ABE11A-416C-4859-83A1-B3E32B4725C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localization", "Localization\Localization.csproj", "{04028270-5FF8-4AA6-8ED8-9B1AA0D4B99A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBF83512-8486-469E-9D7B-C3C1B78C3F4D} = {BBF83512-8486-469E-9D7B-C3C1B78C3F4D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

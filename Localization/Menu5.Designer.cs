@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Localization {
+namespace Swarmops.Localization {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Localization {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Localization.Menu5", typeof(Menu5).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Swarmops.Localization.Menu5", typeof(Menu5).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
