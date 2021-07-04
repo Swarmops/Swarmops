@@ -1,0 +1,13 @@
+﻿
+Controls.Financial.resx
+Controls.Swarm.resx
+Global.resx
+Menu5.resx
+Pages.Admin.resx
+Pages.Comms.resx
+Pages.Financial.resx
+Pages.Governance.resx
+Pages.Ledgers.resx
+Pages.Public.resx
+Pages.Security.resx
+Pages.Swarm.resx

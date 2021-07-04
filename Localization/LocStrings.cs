@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Localization
+namespace Swarmops.Localization
 {
-    public class Class1
+    class LocStrings
     {
     }
 }
