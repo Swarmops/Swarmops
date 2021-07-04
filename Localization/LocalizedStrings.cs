@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Swarmops.Localization
 {
-    public static class LocStrings
+    public static class LocalizedStrings
     {
-        public static string GetString(LocDomain domain, string stringResource)
+        public static string Get (LocDomain domain, string stringResource)
         {
             switch (domain)
             {
@@ -21,7 +21,7 @@ namespace Swarmops.Localization
         }
     }
 
-    public enum LocString
+    public enum LocalizedString
     {
         Unknown = 0
     };

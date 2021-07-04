@@ -105,7 +105,7 @@ namespace Swarmops.Controls.Base
 
             if (!String.IsNullOrEmpty (menuItem.ResourceKey))
             {
-                object resourceObject = LocStrings.GetString(LocDomain.Menu5, "Menu5_" + menuItem.ResourceKey);
+                object resourceObject = LocalizedStrings.Get(LocDomain.Menu5, "Menu5_" + menuItem.ResourceKey);
                 if (resourceObject != null)
                 {
                     localizedText = resourceObject.ToString();

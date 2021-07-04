@@ -56,7 +56,7 @@
       <DependentUpon>Global.resx</DependentUpon>
     </Compile>
     <Compile Include="LocDomain.cs" />
-    <Compile Include="LocStrings.cs" />
+    <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Menu5.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

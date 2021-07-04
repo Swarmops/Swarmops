@@ -14,7 +14,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
         {
             //System.Resources.ResourceManager manager = new System.Resources.ResourceManager("Global", System.Reflection.Assembly.Load("Global.resources"));
 
-            this.LabelTest.Text = Resources.Global.Dashboard_Main_Temporary; // manager.GetString("Dashboard_Main_Temporary");
+            this.LabelTest.Text = Resources.Global.Dashboard_Main_Temporary; // manager.Get("Dashboard_Main_Temporary");
         }
     }
 }
