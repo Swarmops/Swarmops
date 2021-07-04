@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Xml.Serialization;
 using Swarmops.Frontend;
 using Swarmops.Interface.Objects;
+using Swarmops.Localization;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
@@ -104,7 +105,7 @@ namespace Swarmops.Controls.Base
 
             if (!String.IsNullOrEmpty (menuItem.ResourceKey))
             {
-                object resourceObject = Resources.Menu5.ResourceManager.GetString("Menu5_" + menuItem.ResourceKey);
+                object resourceObject = LocStrings.GetString(LocDomain.Menu5, "Menu5_" + menuItem.ResourceKey);
                 if (resourceObject != null)
                 {
                     localizedText = resourceObject.ToString();
