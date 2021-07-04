@@ -2391,6 +2391,10 @@
       <Project>{ba24faf7-d518-49e8-952a-45595682877e}</Project>
       <Name>Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{04028270-5ff8-4aa6-8ed8-9b1aa0d4b99a}</Project>
+      <Name>Localization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{13e59551-34ac-43dc-9a03-ef5e4721dc61}</Project>
       <Name>Logic</Name>
