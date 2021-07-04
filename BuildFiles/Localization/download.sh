@@ -25,6 +25,6 @@ mv Site/sr-CS Site/sr-Latn-RS
 
 cp -r Logic/* ../../Logic/Resources/
 cp -r Site/* ../../Site/App_GlobalResources/
-rm -rf Logic
-rm -rf Site
-rm activizr.zip
+#rm -rf Logic
+#rm -rf Site
+#rm activizr.zip

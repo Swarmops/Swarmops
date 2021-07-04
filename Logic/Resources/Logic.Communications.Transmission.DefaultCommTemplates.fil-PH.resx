@@ -146,8 +146,23 @@ Dapat kang mag-log on at baguhin ang password na ito sa isang bagay na mas ligta
 
 Maligayang Pagdating!</value>
   </data>
-  
-  
+  <data name="ParticipantManualAddWelcome_NoExpiry_Body" xml:space="preserve">
+    <value>Maligayang pagdating [OrganizationName]!
+
+Ikaw ay nagawaran ng [Regularship] ni [ActingPerson]. Ito ay hindi awtomatikong nawawalan ng bisa sa anumang partikular na panahon o petsa, kaya hindi kailangang madaliin ang pag-aksyon.
+
+Ikaw ay nararapat na nakontak na ng mga tao mula sa [OrganizationName] para sa higit pang impormasyon kung paano maging aktibo. Kung hindi, umasa ng pakikipag-usap sa lalong madaling panahon. 
+
+Ang iyong inisyal at sapalarang binigay na password sa Swarmops, ang software na ginagamit bilang isang back-end na sistema, ay ang mga sumusunod:
+[RandomPassword]
+
+Ikaw ay nararapat na mag-log on at baguhin ang password na ito sa isang mas ligtas na sarili mong pinili sa lalong madaling panahon. Magagawa mo sa pamamagitan ng pag-log on sa [ExternalUrl] , at pagkatapos i-klik ang tatak ng “Gumagamit” na nasa kanang sulok sa itaas, pagpili sa tab ng Seguridad (ang isang nagkakaroon ng padlock), ang pagpasok sa pansamantalang password na ito, at pagkatapos ang pagsulat sa bagong password. Kailangan mo ring konsiderahin ang pagpapagana ng two-factor na pagpapatunay, bilang isang magandang kasanayan.
+
+Maligayang Pagdating!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_NoExpiry_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Maligayang Pagdating sa [OrganizationName]!</value>
+  </data>
   <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Maligayang Pagdating sa [OrganizationName]!</value>
   </data>

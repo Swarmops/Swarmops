@@ -1033,6 +1033,42 @@
     <value>Platni spisak: ne postoji definisani platni spisak</value>
     <comment>This is shown as a disabled action item when there's no active payroll</comment>
   </data>
-  
-  
+  <data name="EndOfMonth_CheckHotWalletWithBlockchain" xml:space="preserve">
+    <value>Sravni Hotwallet Bitcoin Balance sa Blockchain-om</value>
+    <comment>This verifies the hotwallet data against master blockchain data, as per a blockchain explorer service or local crypto service node.</comment>
+  </data>
+  <data name="EndOfMonth_CheckLedgerAgainstHotWallet" xml:space="preserve">
+    <value>Resinhronizuj Ledger Bitcoin Balance sa Hotwallet-om</value>
+    <comment>This is the ledger balance of the hotwallet, which is supposed to say the hotwallet contains as much as it actually does.</comment>
+  </data>
+  <data name="EndOfMonth_ConsolidateHotwallet" xml:space="preserve">
+    <value>Konsolidiraj Bitcoin Hotwallet</value>
+    <comment>This rearranges the hotwallet for easy payouts going forward (collects all small amounts into even chunks)</comment>
+  </data>
+  <data name="EndOfMonth_ConvertBitcoinCoreToCash" xml:space="preserve">
+    <value>Pretvori Bitcoin Core u Hotwallet-u, u Bitcoin Cash</value>
+    <comment>This places an order on an exchange to convert BTC in the hotwallet to BCH</comment>
+  </data>
+  <data name="EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch" xml:space="preserve">
+    <value>&lt;strong&gt;STANJE BITCOIN-a SE NE POKLAPA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Hotwallet prikazuje bilans u iznosu od &lt;strong&gt;{0:N2}&lt;/strong&gt; microbitcoin-a, ali knjige (ledger) navode da bi trebalo da stoji drugačiji iznos: &lt;strong&gt;{1:N2}.&lt;/strong&gt; U slučaju neslaganja, poverenje uvek treba dati hotwallet-u, tako da je potrebno da izmenite ledger, kako bi se iznos uskladio sa hotwallet-om.&lt;br/&gt;&lt;br/&gt;
+Ovo se može dogoditi prilikom deljenja bitcoin-a (&quot;forks&quot;) ili slični događaji. Ako se navedena situacija ponavlja redovno, mesec za mesec, a naročito ako se uoči da novac curi iz hotwallet-a, trebalo bi pokrenuti temeljnu istragu.
+</value>
+    <comment>This is displayed after (!) the ledger bitcoin balance has been updated to match the hotwallet by means of a new transaction.</comment>
+  </data>
+  <data name="EndOfMonth_Header_Cryptocurrency" xml:space="preserve">
+    <value>Kriptovaluta</value>
+    <comment>This is the header for various bitcoin hotwallet / cold storage operations</comment>
+  </data>
+  <data name="EndOfMonth_LedgerBitcoinBalanceTransactionDescription" xml:space="preserve">
+    <value>Korekcija knjiga na osnovu hotwallet-a</value>
+    <comment>This is the description of a transaction that corrects the bitcoin balance in the ledger to equal that of the hotwallet.</comment>
+  </data>
+  <data name="EndOfMonth_VerifyColdStorage" xml:space="preserve">
+    <value>Potvrdi Cold Storage</value>
+    <comment>This verifies that the amounts supposed to be in cold storage are indeed in cold storage</comment>
+  </data>
+  <data name="InspectLedgers_Header_Hotwallet" xml:space="preserve">
+    <value>Proveri Bitcoin Cash Hotwallet za</value>
+    <comment>This is followed by a year and month dropdown</comment>
+  </data>
 </root>

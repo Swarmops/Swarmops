@@ -117,20 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SendMassMessage_Error_EmptyBody" xml:space="preserve">
+    <value>Dapat imong isulat ang nilalaman ng mensahe bago magpadala sa iyong mensahe.</value>
+  </data>
+  <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
+    <value>Dapat mong isulat ang paksa ng mensahe upang magpatuloy sa iyong mensahe.</value>
+  </data>
+  <data name="SendMassMessage_Geography" xml:space="preserve">
+    <value>Na matatagpuan sa</value>
+  </data>
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>Iyong Mensahe</value>
+  </data>
+  <data name="SendMassMessage_Info" xml:space="preserve">
+    <value>Magpadala ng mensahe sa isang grupo ng mga tao sa organisasyon. Ikaw ay maaaring magpadala ng mensahe sa pamamagitan ng mail (maganda para sa mga pahayagang palihan at pangkalahatang impormasyon) o para sa kanilang mga telepono (nakaka-abala, at tsaka nagkakahalaga ng higit pa).</value>
+  </data>
+  <data name="SendMassMessage_MessageHint" xml:space="preserve">
+    <value>I-type ang iyong mensahe dito. Pamantayang markup kagaya ng *bold*, _italiko_, ==mga header== at kaparehas na maaaring gamitin. Mga dalawang bagong linya ay nagsisimula ng bagong talata. Ang mail ay maipapadala bilang dual-mode na cleartext at HTML.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>Walang mga Tagatanggap|Isang Tagatanggap|{0:N0} Mga Tagatanggap</value>
+    <comment>Vertical bar divides none|one|many</comment>
+  </data>
+  <data name="SendMassMessage_RecipientType" xml:space="preserve">
+    <value>Magpadala ng maramihang mensahe sa lahat</value>
+  </data>
+  <data name="SendMassMessage_Sandbox_EnterAddress" xml:space="preserve">
+    <value>Ikaw ay kasalukuyang gumagamit ng Sandbox. Saan mo gustong maipadala ang pangsuring mensahe?</value>
+  </data>
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>Magpadala</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>Ang iyong mensahe ay sa ngayon ipinapamahagi na sa mga tagatanggap. Ikaw ay maaabisuhan kapag ang nakumpleto na ang transmisyon.</value>
+  </data>
+  <data name="SendMassMessage_Subject" xml:space="preserve">
+    <value>Paksa</value>
+    <comment>Subject of message (if applicable; depends on transmission mode)</comment>
+  </data>
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>Pagsusuri</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>Ang mensahe ay naipadala na sa iyo, kaya ikaw ay makakita kung ano ang hitsura nito bago magpatuloy.</value>
+  </data>
+  <data name="SendMassMessage_Title" xml:space="preserve">
+    <value>Magpadala ng Maramihang Mensahe</value>
+  </data>
 </root>

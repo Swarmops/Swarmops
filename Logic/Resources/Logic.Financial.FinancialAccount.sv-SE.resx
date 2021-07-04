@@ -124,7 +124,7 @@
     <value>Bitcoin kylförvaring</value>
   </data>
   <data name="Asset_BitcoinHot" xml:space="preserve">
-    <value>Bitcoin hetplånbok</value>
+    <value>Bitcoin handkassa</value>
   </data>
   <data name="Asset_CashAdvances" xml:space="preserve">
     <value>Kontantförskott</value>
@@ -188,7 +188,7 @@
     <comment>Master account to bitcoin mining and bank fees</comment>
   </data>
   <data name="Cost_ForexLosses" xml:space="preserve">
-    <value>Valutaförluster</value>
+    <value>Valutakursförluster</value>
     <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
   </data>
   <data name="Cost_Hospitality" xml:space="preserve">
@@ -319,7 +319,7 @@
     <value>Donationer</value>
   </data>
   <data name="Income_ForexGains" xml:space="preserve">
-    <value>Valutavinster</value>
+    <value>Valutakursvinster</value>
     <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
   </data>
   <data name="Income_InterestGains" xml:space="preserve">

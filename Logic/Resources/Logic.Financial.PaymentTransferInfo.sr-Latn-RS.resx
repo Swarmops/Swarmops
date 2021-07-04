@@ -117,20 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="PaymentTargetField_AccountHolderName" xml:space="preserve">
+    <value>Ime nosioca računa</value>
+    <comment>This is the name of the person that a (bank) account is assigned to</comment>
+  </data>
+  <data name="PaymentTargetField_AccountNumber" xml:space="preserve">
+    <value>Broj računa</value>
+  </data>
+  <data name="PaymentTargetField_BankAddress" xml:space="preserve">
+    <value>Adresa banke</value>
+  </data>
+  <data name="PaymentTargetField_BankName" xml:space="preserve">
+    <value>Naziv banke</value>
+  </data>
+  <data name="PaymentTargetField_Bban" xml:space="preserve">
+    <value>BBAN</value>
+    <comment>A Basic Bank Account Number (BBAN), a part of the IBAN code</comment>
+  </data>
+  <data name="PaymentTargetField_BicSwift" xml:space="preserve">
+    <value>BIC/Swift kod</value>
+    <comment>This code uniquely identifies a bank (the Bank Identifier Code, BIC).</comment>
+  </data>
+  <data name="PaymentTargetField_CashAccount" xml:space="preserve">
+    <value>Bitcoin Cash nalog</value>
+    <comment>This is a special way of denoting a Bitcoin Cash address; search for "CashAccount" or look at cashaccount.info</comment>
+  </data>
+  <data name="PaymentTargetField_ClearingCode" xml:space="preserve">
+    <value>Clearing kod</value>
+    <comment>This is sometimes necessary for domestic bank transfers</comment>
+  </data>
+  <data name="PaymentTargetField_CryptoAddress" xml:space="preserve">
+    <value>Adresa kripto valute</value>
+  </data>
+  <data name="PaymentTargetField_GiroNumber" xml:space="preserve">
+    <value>Br. za dir. depozit</value>
+    <comment>This is like an account number, but abstracted one level.</comment>
+  </data>
+  <data name="PaymentTargetField_GiroService" xml:space="preserve">
+    <value>Servis za dir. depozit</value>
+  </data>
+  <data name="PaymentTargetField_Iban" xml:space="preserve">
+    <value>IBAN</value>
+    <comment>The International Bank Account Number (IBAN)</comment>
+  </data>
+  <data name="PaymentTargetType_BitcoinCashAccount" xml:space="preserve">
+    <value>Bitcoin Cash nalog</value>
+    <comment>This is a special way of denoting a Bitcoin Cash address; search for "CashAccount" or look at cashaccount.info</comment>
+  </data>
+  <data name="PaymentTargetType_DomesticBankGiro" xml:space="preserve">
+    <value>Domaći direktni depozit</value>
+    <comment>Some countries have meta-accounts called "giro" accounts, that map to bank accounts.</comment>
+  </data>
+  <data name="PaymentTargetType_DomesticBankTransfer" xml:space="preserve">
+    <value>Domaći bankovni transfer</value>
+  </data>
+  <data name="PaymentTargetType_InternationalBankTransfer" xml:space="preserve">
+    <value>Međunarodni bankovni transfer</value>
+  </data>
 </root>

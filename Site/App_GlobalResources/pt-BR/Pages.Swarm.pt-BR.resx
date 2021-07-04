@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddPerson_ErrorCity" xml:space="preserve">
-    <value>É necessária uma cidade válida.</value>
+    <value>Uma cidade válida é necessária.</value>
   </data>
   <data name="AddPerson_ErrorDate" xml:space="preserve">
-    <value>Indique uma data válida ou deixe este campo em branco.</value>
+    <value>Forneça uma data válida ou deixe este campo vazio.</value>
   </data>
   <data name="AddPerson_ErrorMail" xml:space="preserve">
     <value>É necessário um email válido.</value>
@@ -130,13 +130,13 @@
     <value>É necessário um nome.</value>
   </data>
   <data name="AddPerson_ErrorStreet" xml:space="preserve">
-    <value>É necessária uma rua ou caixa postal válida.</value>
+    <value>É necessário uma rua ou caixa postal válida.</value>
   </data>
   <data name="AddPerson_GeographyDetected" xml:space="preserve">
     <value>Geografia Detectada</value>
   </data>
   <data name="AddPerson_Info" xml:space="preserve">
-    <value>Aqui é onde insere novas pessoas na organização. À medida que as regista para uma &lt;strong&gt; {1} {0}&lt;/strong&gt; durando até &lt;strong&gt;{2}&lt;/strong&gt;, eles irão receber uma mensagem de boas-vindas no seu email com uma palavra-passe gerada aleatoriamente. Os oficiais locais serão também notificados da nova pessoa, para que tenham a oportunidade de lhes enviar uma mensagem de boas-vindas.</value>
+    <value>Aqui é onde você insere novas pessoas na organização. À medida que as regista para uma &lt;strong&gt; {1} {0}&lt;/strong&gt; durando até &lt;strong&gt;{2}&lt;/strong&gt;, eles irão receber uma mensagem de boas-vindas por email com uma palavra-passe gerada aleatoriamente. Os oficiais locais serão também notificados sobre a nova pessoa, para que tenham a oportunidade de lhes enviar uma mensagem de boas-vindas.</value>
     <comment>{0} and {1} can be "one-year" and "Membership", for example. {2} is LongDateString.</comment>
   </data>
   <data name="AddPerson_LegalGender" xml:space="preserve">
@@ -161,7 +161,7 @@
     <comment>The {0} is replaced in code. Singular form gender neutral of Participant.</comment>
   </data>
   <data name="ListFindPeople_Info" xml:space="preserve">
-    <value>Utilize esta página para encontrar pessoas na organização. Pode seleccionar por área geográfica e por formato do nome (por exemplo, a "Jo S" irá corresponder João Santos).</value>
+    <value>Utilize esta página para encontrar pessoas na organização. Você pode seleccionar por área geográfica e por formato do nome (por exemplo, a "Jo S" irá corresponder João Santos).</value>
   </data>
   <data name="ListFindPeople_MatchingPeopleInX" xml:space="preserve">
     <value>Pessoas Correspondentes em {0}</value>
@@ -174,7 +174,7 @@
     <value>Listar e Encontrar Pessoas</value>
   </data>
   <data name="ListFindPeople_TooManyHits" xml:space="preserve">
-    <value>O espaço de resultados contém mais de mil pessoas (amostra limitada a mil). Por favor seja mais específico na sua pesquisa?</value>
+    <value>O resultado definido contém mais de mil pessoas (limitado a mil). Por favor, refinar sua pesquisa?</value>
   </data>
   <data name="LocalOrganization_Header" xml:space="preserve">
     <value>Organização Local ({0})</value>
@@ -186,11 +186,11 @@
     <value>Estes são os seus contatos locais. (Se tem privilégios administrativos, pode também designar pessoas para estas posições.)</value>
   </data>
   <data name="LocalOrganization_PageTitle" xml:space="preserve">
-    <value>Minha Organização Local</value>
+    <value>A Minha Organização Local</value>
     <comment>The {0} is the geography name.</comment>
   </data>
   <data name="Positions_AssignPerson" xml:space="preserve">
-    <value>Atribuír pessoa...</value>
+    <value>Atribuir pessoa...</value>
   </data>
   <data name="Positions_CreateNewPosition" xml:space="preserve">
     <value>Criar nova posição...</value>

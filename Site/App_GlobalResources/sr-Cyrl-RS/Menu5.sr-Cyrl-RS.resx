@@ -459,7 +459,9 @@
     <value>Моја плата</value>
     <comment>This lists salary payments for the logged on individual</comment>
   </data>
-  
+  <data name="Menu5_Ledgers_DepreciatingAmortizedAssets" xml:space="preserve">
+    <value>Амортизована средства и добра</value>
+  </data>
   <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
     <value>Губитак вредности и амортизација</value>
   </data>
@@ -478,5 +480,9 @@
   <data name="Menu5_Reports" xml:space="preserve">
     <value>Извештаји</value>
     <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
+  </data>
+  <data name="Menu5_Financial_RequestReimbursement" xml:space="preserve">
+    <value>Захтевај повраћај</value>
+    <comment>This is the same as "file an expense claim", but "requesting reimbursement" is better English</comment>
   </data>
 </root>

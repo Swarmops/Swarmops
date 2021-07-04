@@ -147,13 +147,13 @@
     <value>Sudeste Central</value>
   </data>
   <data name="USA_MidAtlantic" xml:space="preserve">
-    <value>Atlântico Intermédio</value>
+    <value>Atlântico Central</value>
   </data>
   <data name="USA_Midwest" xml:space="preserve">
     <value>Centro-Oeste</value>
   </data>
   <data name="USA_Mountain" xml:space="preserve">
-    <value>Montanhas</value>
+    <value>Montanha</value>
   </data>
   <data name="USA_NewEngland" xml:space="preserve">
     <value>Nova Inglaterra</value>

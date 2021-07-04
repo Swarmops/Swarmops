@@ -139,7 +139,7 @@
     <value>Despesas {0}</value>
   </data>
   <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentities" xml:space="preserve">
-    <value>Despesas {0} (menos adiantamentos {1})</value>
+    <value>Despesas {0} (menos adiantamento {1})</value>
   </data>
   <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentity" xml:space="preserve">
     <value>Despesas {0} (menos adiantamento #{1:N0})</value>
@@ -154,7 +154,7 @@
     <value>Despesa #{0:N0} (menos adiantamentos {1})</value>
   </data>
   <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentity" xml:space="preserve">
-    <value>Despesa #{0:N0} (menos adiantamento #{1:N0})</value>
+    <value>Despesa #{0:N0} (menos adiantamentos {1:N0})</value>
   </data>
   <data name="Payout_ExpenseClaimIdentityRecipient" xml:space="preserve">
     <value>Reivindicação de Despesa #{0:N0} por {1}</value>
@@ -169,7 +169,7 @@
     <value>Fatura de Entrada #{0:N0} de {1}</value>
   </data>
   <data name="Payout_SalariesTaxMonth" xml:space="preserve">
-    <value>Impostos sobre Salários em {0:yyyy-MMM}</value>
+    <value>Salário de impostos para {0:yyyy-MMM}</value>
   </data>
   <data name="Payout_SalaryIdentitiesMonth" xml:space="preserve">
     <value>Salários {0} para {1:yyyy-MMM}</value>
@@ -192,6 +192,6 @@
     <value>Impostos sobre Salários {0} para {1:yyyy-MMM}</value>
   </data>
   <data name="Payout_SalaryTaxIdentityMonth" xml:space="preserve">
-    <value>Impostos sobre Salário #{0:N0} para {1:yyyy-MMM}</value>
+    <value>Impostos sobre Salário #{0:N0} em {1:yyyy-MMM}</value>
   </data>
 </root>

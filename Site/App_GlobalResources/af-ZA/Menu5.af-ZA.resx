@@ -485,4 +485,8 @@
     <value>crwdns6563364:0crwdne6563364:0</value>
     <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
   </data>
+  <data name="Menu5_Financial_RequestReimbursement" xml:space="preserve">
+    <value>crwdns6563626:0crwdne6563626:0</value>
+    <comment>This is the same as "file an expense claim", but "requesting reimbursement" is better English</comment>
+  </data>
 </root>

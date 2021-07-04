@@ -123,7 +123,9 @@
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Ito ang pangkalahatang-ideya ng mga accounts na pinansyal sa iyong ledger ng bookkeeping. Maaari kang gumawa ng ilang mga pagpapanatili mula dito, kahit na karamihan sa mga pangaraw-araw na operasyon ay dapat na naka-atas sa mga may-ari ng badyet.</value>
   </data>
-  
+  <data name="AccountPlan_PageTitle" xml:space="preserve">
+    <value>Tsart ng mga Akawnt</value>
+  </data>
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Akawnt</value>
   </data>
@@ -192,7 +194,9 @@
     <value>YTD</value>
     <comment>Year To Date</comment>
   </data>
-  
+  <data name="ResyncExternalAccount_Info" xml:space="preserve">
+    <value>Kung ikaw ay nagbo-bookkeep sa Swarmops na hindi na naka-sync sa iyong mga rekord sa bangko dahil sa anumang teknikal o sariling dahilan, maaari mong ma-synchronize muli sila dito sa pamamagitan ng pag-upload sa payl na master na sumasaklaw sa taas ng oras na kailangan mo sa pag-sync muli.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Babala:&lt;/strong&gt; ito ay isang proseso na gumugugol ng oras na kinakailangan mong gumawa ng &lt;em&gt;maraming&lt;/em&gt; pagbabago patungo sa iyong pagbo-bookkeep. Huwag gamitin maliban kung nakadiskubre ka ng hindi sa mga rekord laban sa iyong bangko.&lt;br/&gt;&lt;br/&gt;(Makakakuha ka ng pagkakataon na masuri ang mga pinanukalang pagbabago bago ito i-commit patungo sa iyong mga rekord na pangpinansyal.)</value>
+  </data>
   <data name="ResyncExternalAccount_PageTitle" xml:space="preserve">
     <value>I-resynchronize ang Account sa Banko</value>
   </data>
@@ -200,9 +204,17 @@
     <value>Badyet, May-ari</value>
     <comment>Displayed above editables</comment>
   </data>
-  
-  
-  
+  <data name="SetRootBudgets_Info" xml:space="preserve">
+    <value>Dito kung saan ang mga pinag-uugatang badyet ay itinatakda para sa bawat badyet ng taon. Pagkatapos na maitakda, ang bawat may-ari ng badyet ay maglalaan ng mga pondo sa loob ng kanya-kanyang mga sangay.</value>
+  </data>
+  <data name="SetRootBudgets_PageHeader" xml:space="preserve">
+    <value>Mga Pinag-uugatang Badyet Para sa {0}</value>
+    <comment>The {0} is replaced with the organization's name.</comment>
+  </data>
+  <data name="SetRootBudgets_PageTitle" xml:space="preserve">
+    <value>Itakda ang Antas ng mga Pinag-uugatang Badyet</value>
+    <comment>Displayed above main content</comment>
+  </data>
   <data name="SetRootBudgets_SetNewBudgets" xml:space="preserve">
     <value>Magtakda ng Bagong mga Badyet</value>
     <comment>Text on submit button</comment>
@@ -225,8 +237,14 @@
     <value>&lt;/p&gt;&lt;p&gt;(Ang Paypal ay sasabihin sayo ang oras ng huling pag-download ng transaksyon. I-download lahat ng mga transaksyon galing sa puntong iyon ng oras, magdagdag ng tatlong araw na patong.)</value>
     <comment>Displayed instead of date of last transaction in the case of Paypal.</comment>
   </data>
-  
-  
+  <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
+    <value>Mga Instruksyon sa Pag-download ng Bangko</value>
+    <comment>Header above instructions for generation of the bank file type selected.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
+    <value>&lt;p&gt;Ang payl ay naglalaman ng {0:N0} mga transaksyon. &lt;strong&gt;{1:N0} na mga transaksyon&lt;/strong&gt; ay matagumpay na nai-angkat papunta sa &lt;em&gt;{2}&lt;/em&gt; na akawnt sa pagbo-bookkeep. ({3:N0} na mga transaksyon na mga doble.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Subalit, ang balanse sa bangko ay hindi tumutugma sa mga rekord sa Swarmops.&lt;/strong&gt; Ito ay kalimitang sanhi sa nawawalang mga transaksyon. Mangyaring mag-upload ng listahan ng transaksyon na nagkakaroon ng mas malawig na agwat ng panahon upang masiguro na ang Swarmops ay makakakita sa lahat ng mga transaksyon.&lt;/p&gt;&lt;p&gt;Ang akawnt ng pagbo-bookkeep sa Swarmops ay kasalukuyang &lt;strong&gt;hindi naka-sync&lt;/strong&gt; sa bangkong iyan.&lt;/p&gt;</value>
+    <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
+  </data>
   <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
     <value>&lt;h3&gt;Ang file ng bangko ay hindi ma-import.&lt;/h3&gt;&lt;p&gt;Ito ay may isa sa tatlong mga rason: nalaktawan mo ang ibang detalye sa mga instruksyon ng pag-download, ang bangko ay nagbago ng pormat, o aksidente mong na-upload ang maling file ng buo (kagaya ng larawan sa huli mong pagdiriwang kaysa sa listahan ng transaksyon). Walang transaksyon ang na-import. &lt;strong&gt;Mangyaring subukan muli.&lt;/strong&gt;</value>
   </data>
@@ -250,7 +268,10 @@
     <value>Error sa pag-import ng file</value>
     <comment>Displayed as header on import failure</comment>
   </data>
-  
+  <data name="UploadBankFiles_ImportResults" xml:space="preserve">
+    <value>&lt;p&gt;Ang payl ay naglalaman ng {0:N0} na mga transaksyon. &lt;strong&gt; Ang {1:N0} na mga transaksyon&lt;/strong&gt; ay matagumpay na nai-angkat patungo sa &lt;em&gt;{2}&lt;/em&gt; akawnt ng pagbo-bookkeep. (Ang {3:N0} na mga transaksyon ay doble.)&lt;/p&gt;&lt;p&gt;Pagkatapos ng pag-angkat, ang balanse ng akawnt sa Swarmops ay tutugma sa nandun sa bangko.&lt;/p&gt;</value>
+    <comment>Displayed on successful import. Assumes plural among all pasted numbers.</comment>
+  </data>
   <data name="UploadBankFiles_Info" xml:space="preserve">
     <value>Dito, maaari kang mag-upload ng mga files galing sa iyong bangko o tagapag-bigay ng kabayaran sa bookkeeping ng iyong organisasyon. Ang mga halimbawa ay kasama ang kasaysayan ng akawnt at mga kabayaran na natanggap.</value>
     <comment>Displayed in sidebar on page.</comment>
@@ -299,8 +320,14 @@
     <value>&lt;p&gt;&lt;br/&gt;&lt;strong&gt;Ang file ay hindi pwedeng mabasa bilang input na file sa bangkong ito.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Mayroong ilang mga rason kung bakit ito nangyari: ang file ay maaaring sira, ang bangko ay maaaring tahimik na binago ang pormat ng file nito, o nag-upload ka ng buong maling file. Mangyaring subukan muli.&lt;/p&gt;</value>
     <comment>Displayed when the input file can't be parsed, before import attempt.</comment>
   </data>
-  
-  
+  <data name="UploadBankFiles_ResultsGood" xml:space="preserve">
+    <value>&lt;p&gt;Ang payl ay&lt;strong&gt;matagumpay na nai-angkat.&lt;/strong&gt; Ang {0:N0} na mga bagong transaksyon ay nai-angkat; ang {1:N0} ay tinanggal dahil ito ay kopya na nandun na sa Swarmops. Ang balanse ng akawnt sa Swarmops ay tumutugma dun sa bangko.&lt;/p&gt;&lt;p&gt;Ang payl ay naglalaman ng mga transaksyon mula sa {2:yyyy-MMM-dd} hanggang sa {3:yyyy-MMM-dd}.&lt;/p&gt;</value>
+    <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsQuestionable" xml:space="preserve">
+    <value>&lt;p&gt;Ang payl ay nai-angkat, pero ang &lt;strong&gt;nagreresultang balanse ng akawnt ay hindi tumutugma.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Pagkatapos i-angkat ang {0:N0} na mga transaksyon (at pagtatanggal ng {1:N0} na mga kopya), ang buong payl ay nai-proseso na. Subalit, ang nagreresultang balanse ng akawnt sa Swarmops ay hindi kapareho sa nandun sa pahayag ng bangko; mayroong pagkakaiba ng {3} na {2:N2}. &lt;/p&gt;&lt;p&gt;Mangyaring subukang mag-upload ng bagong pahayag ng akawnt. Kung hindi pa rin ito nagtutugma, pwede mong subukan ang &lt;a href="/Pages/v5/Ledgers/ResyncExternalAccount.aspx"&gt;pagsi-synchronize muli&lt;/a&gt;ng akawnt sa bangko na may kasamang komprehensibong payl sa pahayag ng akawnt.&lt;/p&gt;</value>
+    <comment>Displayed on successful import, but the resulting balance is off compared to the account statement file that was just uploaded. 2 is the diff, 3 is the currency.</comment>
+  </data>
   <data name="UploadBankFiles_SelectAccount" xml:space="preserve">
     <value>Piliin ang Bookkeeping Akawnt</value>
     <comment>Select prompt for the financial account in the organization's bookkeeping.</comment>
@@ -355,9 +382,15 @@
   <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
     <value>Tagatanggap</value>
   </data>
-  
-  
-  
+  <data name="ViewOutstandingAccounts_Header" xml:space="preserve">
+    <value>Listahan ng Hindi Pa Naayos</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Info" xml:space="preserve">
+    <value>Ang pahinang ito ay nagpapatunay sa kasalukuyan at hindi pa naaayos na mga akawnt (mga gastos, mga talaan, mga paunang bayad, atbp.) sa kasalukuyang punto ng oras o sa oras ng pagsasara ng kahit anumang nakaraang ledger.</value>
+  </data>
+  <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
+    <value>Listahan ng mga Akawnt na Hindi pa Naaayos</value>
+  </data>
   <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
     <value>Pangalan ng akawnt</value>
   </data>
@@ -367,7 +400,10 @@
   <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
     <value>Aktibo</value>
   </data>
-  
+  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
+    <value>Isa ba itong akawnt pagkatapos ng linyang EBITDA?</value>
+    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
+  </data>
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Admin</value>
   </data>
@@ -378,8 +414,12 @@
   <data name="AccountPlan_Edit_ExpensableLong" xml:space="preserve">
     <value>Maaari bang gamitin ng mga tao ang akawnt na ito para sa mga ulat ng gastos?</value>
   </data>
-  
-  
+  <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
+    <value>Maaaring Bayaran</value>
+  </data>
+  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
+    <value>Propayl sa Awtomasyon</value>
+  </data>
   <data name="AccountPlan_Edit_Header" xml:space="preserve">
     <value>Pag-edit ng Akawnt</value>
   </data>
@@ -396,7 +436,10 @@
   <data name="AccountPlan_Edit_Parent" xml:space="preserve">
     <value>Magulang na akawnt o grupo</value>
   </data>
-  
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
+    <value>Ito ay isang akawnt sa mga Gastusin. Ang mga akawnt na iyan ay kalimitang nagkakaroon ng badyet na negatibo, dahil nauubos sila sa mga ari-arian mula sa organisasyon. Ang iyong ipinanukala badyet ay binago sa negatibo.</value>
+    <comment>Displayed as a message box</comment>
+  </data>
   <data name="AccountPlan_Header_AccountName" xml:space="preserve">
     <value>Akawnt</value>
   </data>
@@ -430,7 +473,9 @@
   <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
     <value>Walang Nakaraang Balanse</value>
   </data>
-  
+  <data name="InspectLedgers_Info" xml:space="preserve">
+    <value>Ito ang sariwang pinagbabatayang mga ledger sa pagbo-bookkeep na Venetian para sa mga pananalapi ng organisasyon. Maaralan mo sila nang detalyado dito para sa mga layuning pag-awdit.&lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt;&lt;strong&gt;Ikaw ay kasalukuyang nanunood ng akawnt na P&amp;L, kaya ang mga sinyales ay nabaligtad - ang kita ay negatibo at ang mga gastusin ay positibo&lt;/strong&gt; dahil sa kung paano gumagana ang dobleng pagbo-bookkeep na Venetian.&lt;/span&gt;</value>
+  </data>
   
   <data name="InspectLedgers_NoTransactions" xml:space="preserve">
     <value>Walang mga transaksyon sa akawnt na ito para sa napiling panahon.</value>
@@ -499,7 +544,9 @@
   <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
     <value>Kabuuang Sweldo</value>
   </data>
-  
+  <data name="TaxForms_Payroll_Info" xml:space="preserve">
+    <value>Tingnan ang mga cheat sheet (mga kumpletong porma para sa buwis) para sa sahod ng organisasyon, na kung saan ay madali lang sa iyo na kopyahin patungo sa iyong akwtal na mga porma ng buwis, o posible kahit i-print mo. Ang mga porma sa pagganap at aktwal ay pwedeng magbago sa bawat bansa at minsan nakadepende sa kodigong pang-ikatlong partido at mga plugin.</value>
+  </data>
   <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
     <value>Mga Forms sa Pagbabayad ng Buwis</value>
   </data>
@@ -569,7 +616,10 @@
     <value>Isinagawa ni {0}.</value>
     <comment>As in "payout executed by": who actually paid the money?</comment>
   </data>
-  
+  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
+    <value>Binabatayang sahod {0} {1:N2}, kabuuang pag-aayos {2:+N2;-N2;none}, kabuuang sahod {3:N2}, ikinaltas na buwis {4:N2}, kabuuang pag-aayos {5:+N2;-N2;none}, payout {6:N2}.</value>
+    <comment>The "none"s in the format strings need to be translated.</comment>
+  </data>
   <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
     <value>Mangyaring pumili ng isang akawnt upang magdagdag ng isang hilera sa transaksyong ito.</value>
   </data>
@@ -582,7 +632,10 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(detalyadong paglalarawan na ipinagkait)</value>
   </data>
-  
+  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
+    <value>Nakabiting mga Pagbayad (Kailangang Balanse, Tugma o Naayos)</value>
+    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
+  </data>
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Akawnt</value>
     <comment>Usually the account name. Can also be "several".</comment>
@@ -597,7 +650,9 @@
     <value>Tx#</value>
     <comment>Keep VERY short.</comment>
   </data>
-  
+  <data name="BalanceTransactions_Info" xml:space="preserve">
+    <value>Iilang awotmatikong nai-angkat na mga transaksyong pinansyal ay hindi awtomatikong matutugma sa kasalukuyang pagbibigay-sulit. Ito ay kung saan mo manu-manong tinutugma ang kagaya niyan na transaksyon upang “mai-balanse” sila (kung isang bahagi lang ang nakumpleto ng organisasyon, kagaya ng pera na naipadala tungog sa organisasyon na walang rekord sa kung para saan ang pera, ang transaksyon ay tinatawag na “hindi naka-balanse” at ang “nakabiting pagbayad”, kagaya ng sa, nawawalan ng katapat sa pagbo-bookkeep).</value>
+  </data>
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Pagbalanse/Pagtutugma ng Transaksyon #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; Mula sa &lt;span id="spanModalTransactionDate"&gt;yyyy-mmm-dd&lt;/span&gt;</value>
     <comment>The span text is replaced runtime.</comment>
@@ -657,11 +712,16 @@
     <value>Halaga Sa loob ng 10% Tolerance</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
-  
+  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
+    <value>Payout #{0:N0}, {5} (inaasahan sa {1:yyyy-MMM-dd}) para sa {2}: {3} {4:N2}</value>
+    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
+  </data>
   <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
     <value>Ang transaksyon ay tumutugma sa payout ng pera banyaga:</value>
   </data>
-  
+  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
+    <value>I-map ang transaksyon patungo sa payout na salaping pandayuhan ({0}% halaga ng pagpapahintulot)?</value>
+  </data>
   <data name="BudgetActual_ContentHeader" xml:space="preserve">
     <value>Badyet vs Aktwal</value>
   </data>
@@ -669,7 +729,9 @@
     <value>Inaasahang YTD</value>
     <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
   </data>
-  
+  <data name="BudgetActual_Info" xml:space="preserve">
+    <value>Ang pahina na ito ay nagpapakita sa nakabadyet na paghati kompara sa paghati ng aktwal na kahihinatnan sa ngayon.</value>
+  </data>
   <data name="BudgetActual_PageTitle" xml:space="preserve">
     <value>Badyet vs Aktwal</value>
     <comment>Financial budget vs. Actual financial outcome</comment>
@@ -680,7 +742,9 @@
   <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
     <value>I-balanse ang microcoins</value>
   </data>
-  
+  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
+    <value>Path ng Pinagmumulan</value>
+  </data>
   <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
     <value>Halagang {0}</value>
     <comment>The {0} is the organization currency.</comment>
@@ -689,7 +753,9 @@
     <value>Breakdown ng Hotwallet</value>
     <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
   </data>
-  
+  <data name="BitcoinHotwallet_Info" xml:space="preserve">
+    <value>Ito ay nagpapakita sa paghahati sa mga bitcoin hot wallet address at balanse ng organisasyon. (Walang laman at ang mga nagamit sa nakaraan ay hindi ipinakita.)</value>
+  </data>
   <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
     <value>Bitcoin Hotwallet</value>
   </data>
@@ -703,12 +769,17 @@
     <value>Hindi nagastos na TxOut</value>
     <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
   </data>
-  
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>Mga Ari-arian XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
   <data name="BalanceSheet_AssetsDelta" xml:space="preserve">
     <value>(baguhin)</value>
     <comment>Change from previous year's close, which is same as from start of this year</comment>
   </data>
-  
+  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
+    <value>Ang Balance Sheet ay isang pangkalahatang-ideya ng mga ari-arian at mga utang sa isang retrato ng oras, at ginagamit upang matignan kung paano nakakaapekto ang mga resulta sa kabuuang kalagayang pinansyal ng organisasyon. Maaari mo ring tignan ang &lt;a href="BalanceSheet"&gt;napapanohang balance sheet&lt;/a&gt; para sa higit pang detalye, o wa &lt;a href="ProfitLossStatement"&gt;kita-at-lugi na pahayag&lt;/a&gt; na pangkalahatang-ideya sa kita at pag-gastos.</value>
+  </data>
   <data name="BalanceSheet_Liabilities" xml:space="preserve">
     <value>Mga pananagutan XXXX</value>
     <comment>For the simplified view - XXXX is replaced with year</comment>
@@ -717,8 +788,14 @@
     <value>(baguhin)</value>
     <comment>Change from previous year's close, which is same as from start of this year</comment>
   </data>
-  
-  
+  <data name="BalanceSheet_LossToDate" xml:space="preserve">
+    <value>Lugi sa ngayon ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
+    <value>Kita sa ngayon ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
   <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
     <value>Lumikha ng Transaksyon</value>
     <comment>Text on button for executing create</comment>
@@ -743,15 +820,22 @@
     <value>Magdagdag ng bagong transaksyon</value>
     <comment>Option in sidebar</comment>
   </data>
-  
+  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
+    <value>Itugma ang talaan</value>
+  </data>
   <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
     <value>Itugma ang transaksyon sa papalabas na invoice na ito:</value>
   </data>
   <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
     <value>Itugma ito sa isang bukas na papalabas na invoice?</value>
   </data>
-  
-  
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
+    <value>Itugma ito sa isang bukas na papalabas na talaan tungo sa hindi pamantayang salapi (5% forex na pagpapahintulot)?</value>
+  </data>
+  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
+    <value>Katugmang Pinakaposible</value>
+    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
+  </data>
   <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
     <value>Papalabas na Invoice #{0:N0} para sa{1}, nakatakda {2:yyyy-MMM-dd}: {3}</value>
     <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
@@ -795,7 +879,9 @@
   <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
     <value>Pagbabayad ng puhunan</value>
   </data>
-  
+  <data name="ViewVatReports_Info" xml:space="preserve">
+    <value>Ikaw ay tumatanaw sa naikasang ulat sa VAT. Ang papapasok at papalabas na VAT, at tsaka ang kabuuang paglilipat ng tungkulin, ay nai-rekord para sa panahon ng ulat. Ang ulat na ito ay handa nang ipasa papunta sa mga awtoridad sa buwis.</value>
+  </data>
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>Mga Ulat ng VAT</value>
     <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
@@ -830,7 +916,10 @@
   <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
     <value>Markahan bilang Direktang Pagbili</value>
   </data>
-  
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>Direkta sa debit na halaga ng pagbili ({0})</value>
+    <comment>{0} is the currency</comment>
+  </data>
   <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
     <value>Singilin ang pagbili sa badyet na ito</value>
   </data>
@@ -843,7 +932,9 @@
   <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
     <value>VAT na bahagi ng halaga</value>
   </data>
-  
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>Markahan ito bilang isang direkta-mula sa-akawnt na pagbili?</value>
+  </data>
   <data name="InspectLedgers_Detail" xml:space="preserve">
     <value>Paglalarawan / Akawnt</value>
     <comment>As in, description of a transaction OR the full name of an account</comment>
@@ -869,25 +960,114 @@
   <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
     <value>Binabayaran ng transaksyong ito ang Inbound Invoice #{0:N0} from {1}.</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
+    <value>Propayl sa Awtomasyon</value>
+    <comment>This is where the bank name, country, and currency appears.</comment>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>Hindi naitakda para sa awtomasyon ang mga akawnt sa ari-arian, kaya walang mga akawnt ang makakasuporta sa pag-upload ng datos sa oras na ito. Magbabalik sa Dashboard.</value>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
+    <value>Dahil ito ang unang pag-upload sa naka-awtomatiko nga akawnt na ito, ang inisyal na balanse na &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; patungo sa taong {2} ay nadiskubre at itinakda</value>
+    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
+    <value>(nabigyang-sulot para sa &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; sa gumaganang salapi ng ledger)</value>
+    <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
+  </data>
+  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
+    <value>Isara ang mga Ledger sa Pinansyal para sa Taong {0}</value>
+    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
+  </data>
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Ilikha ang {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
+    <value>Awtomatikong Kunin ang Data sa Transaksyon para sa {0}</value>
+    <comment>Parameter zero is the account name as given by the user</comment>
+  </data>
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Mga Taunang Ulat</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>Panlabas na Datos ng Akawnt at Itugma ang mga Akawnt</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Pasahod At Mga Buwis</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+    <value>Magpadala ng mga Ulat sa Mga Tenedor de Libro, Mga Shareholder, atbp.</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
+  <data name="EndOfMonth_Info" xml:space="preserve">
+    <value>Ito ay isang checklist sa mga bagay na gagawin upang maisara ang nakaraang buwan at magsimula ng isang bago na may kinalaman sa pagbibigay-sulit.</value>
+  </data>
+  <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
+    <value>Resolbahin ang lahat ng mga pagbayad na nakabitin</value>
+    <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
+  </data>
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>Katapusan-ng-Buwan na Karaniwang Gawain: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>Mag-upload ng Pahayag sa Bangko ({1}) para sa {0} para {2}</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>Mag-upload ng Datos sa Transaksyong ({1}) para sa {0}</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
+  <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
+    <value>&lt;strong&gt;LAKTAWAN ANG PAHAYAG NG BANGKO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ang mga pahayag ng bangko ay kalimitang kinakailangan para sa pagpapatunay ng awdit sa mga panloob na rekord. Ang balidong dahilan sa paglaktaw ng pahayag ng buwan ay ang akawnt ay hindi pa nabubuksan, na kung saan nalaktawan ang mga buwan bago ang akawnt ay nabuksan at walang umiiral na mga pahayag.&lt;br/&gt;&lt;br/&gt;Hindi ka na muling tatanungin na mag-upload sa partikular na pahayag na ito kung lalaktawan mo na ito ngayon.</value>
+  </data>
+  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
+    <value>&lt;strong&gt;LAKTAWAN ANG PAG-UPLOAD NG DOKUMENTO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ang dokumentong ito ay kalimitang kinakailangan para sa operasyonal na mga rekord. Ang tanging balidong dahilan upang laktawan ang dokumento ay kung ito ay hindi umiiral dahil ang mga operasyon ay hindi pa pinapatakbo, kagaya ng ang operasyon ay nagsimula sa Hunyo ng isang taon ay hindi magkakaroon ng mga dokumento para sa Enero ng taon na iyon.&lt;br/&gt;&lt;br/&gt;Hindi ka na muling tatanungin na mag-upload sa dokumentong ito kung lalaktawan mo na ito ngayon.</value>
+  </data>
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>Pasahod: Walang natukoy na pasahod</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
+  </data>
+  <data name="EndOfMonth_CheckHotWalletWithBlockchain" xml:space="preserve">
+    <value>I-tsek ang Balanse ng Hotwallet ng Bitcoin Laban sa Blockchain</value>
+    <comment>This verifies the hotwallet data against master blockchain data, as per a blockchain explorer service or local crypto service node.</comment>
+  </data>
+  <data name="EndOfMonth_CheckLedgerAgainstHotWallet" xml:space="preserve">
+    <value>I-synchronize muli ang Balanse ng Ledger ng Bitcoin Laban sa Hotwallet</value>
+    <comment>This is the ledger balance of the hotwallet, which is supposed to say the hotwallet contains as much as it actually does.</comment>
+  </data>
+  <data name="EndOfMonth_ConsolidateHotwallet" xml:space="preserve">
+    <value>Pagsamahin ang Bitcoin Hotwallet</value>
+    <comment>This rearranges the hotwallet for easy payouts going forward (collects all small amounts into even chunks)</comment>
+  </data>
+  <data name="EndOfMonth_ConvertBitcoinCoreToCash" xml:space="preserve">
+    <value>Palitan ang Bitcoin Core sa Hotwallet tungo sa Bitcoin Cash</value>
+    <comment>This places an order on an exchange to convert BTC in the hotwallet to BCH</comment>
+  </data>
+  <data name="EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch" xml:space="preserve">
+    <value>&lt;strong&gt;HINDI TUGMA ANG BALANSE SA LEDGER NG BITCOIN&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ang hotwallet ay nagkakaroon ng balanseng &lt;strong&gt;{0:N2}&lt;/strong&gt; na microbitcoin, pero ang ledger ay nagsasabi na dapat ibang halaga ang nandun: &lt;strong&gt;{1:N2}.&lt;/strong&gt; Ang hotwallet ay ang laging nasa tama sa hindi pagkatugma sa pagitan nitong dalawa, kaya ang ledger ay inaayos upang magtugma ang hotwallet.&lt;br/&gt;&lt;br/&gt;
+Ito ay mangyayari pagkatapos ang bitcoin ay mahahati (&quot;;mga form&quot;) o mga katulad na pangyayari, pero kung ito ay patuloy na nangyayari, buwan pagkatapos ng buwan, at lalung-lalo na kung ang pera ay tila nagsisilabasan mula sa hotwallet, mayroong dahilan para sa higit pang imbistigasyon.
+</value>
+    <comment>This is displayed after (!) the ledger bitcoin balance has been updated to match the hotwallet by means of a new transaction.</comment>
+  </data>
+  <data name="EndOfMonth_Header_Cryptocurrency" xml:space="preserve">
+    <value>Cryptocurrency</value>
+    <comment>This is the header for various bitcoin hotwallet / cold storage operations</comment>
+  </data>
+  <data name="EndOfMonth_LedgerBitcoinBalanceTransactionDescription" xml:space="preserve">
+    <value>Koreksyon sa ledger sa awdit ng hotwallet</value>
+    <comment>This is the description of a transaction that corrects the bitcoin balance in the ledger to equal that of the hotwallet.</comment>
+  </data>
+  <data name="EndOfMonth_VerifyColdStorage" xml:space="preserve">
+    <value>Patunay ang Cold Storage</value>
+    <comment>This verifies that the amounts supposed to be in cold storage are indeed in cold storage</comment>
+  </data>
+  <data name="InspectLedgers_Header_Hotwallet" xml:space="preserve">
+    <value>Siyasatin ang Bitcoin Cash Hotwallet Para sa</value>
+    <comment>This is followed by a year and month dropdown</comment>
+  </data>
 </root>

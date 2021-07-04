@@ -123,7 +123,9 @@
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Eyi ni àpapọ alaye awọn iroyin iṣowo ti inu iwe leja iṣowo rẹ. O le ṣe itọju diẹ lati ibi, ti o ba tun je pe ọpọlọpọ awọn iṣẹ ojoojumọ jẹ pinpin si awọn eniti o ni isuna.</value>
   </data>
-  
+  <data name="AccountPlan_PageTitle" xml:space="preserve">
+    <value>Atẹ ti Awọn Akọọlẹ</value>
+  </data>
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Akoole</value>
   </data>
@@ -643,7 +645,9 @@ Lẹhin ti o gbe wọle, iṣiro akọọlẹ ni Swarmops ba ti banki mu.&lt;/p&
     <value>Tx#</value>
     <comment>Keep VERY short.</comment>
   </data>
-  
+  <data name="BalanceTransactions_Info" xml:space="preserve">
+    <value>Diẹ ninu awọn iṣowo owo ti a gbe wọle ko le ṣe sopọ pẹlu isiro alaifọwọyi ti n lọ lọwọ. Eyi ni ibiti o ti ma se asopọ alafọwọyi iru awọn isowo bẹ lati mu wọn "peye" (ti isowo kan ba ni apakan pere ti o ti pari, bi owo ti a fi ranṣẹ si ajọ ti ko ni akọsile ohun ti owo naa wa fun, a ma sọ pe isowo naa "ko peye" ati "isanwo to wa ni asorọ", ani wipe, ko si ninu akọọlẹ iwe iṣowo ikeji rẹ).</value>
+  </data>
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
     <value>Mimu peye/Minu baramu Isowo #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; Lati &lt;span id="spanModalTransactionDate"&gt;yyyy-mmm-dd&lt;/span&gt;</value>
     <comment>The span text is replaced runtime.</comment>
@@ -867,8 +871,12 @@ Lẹhin ti o gbe wọle, iṣiro akọọlẹ ni Swarmops ba ti banki mu.&lt;/p&
   <data name="ViewVatReports_Header_Outbound" xml:space="preserve">
     <value>VAT ti njade</value>
   </data>
-  
-  
+  <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
+    <value>Owo isowo</value>
+  </data>
+  <data name="ViewVatReports_Info" xml:space="preserve">
+    <value>O n wo ijabọ VAT ti a fi se eto. Awọn VAT ti nwọle ati ti o njade jade, ati ti apapọ owo isowo, ti jẹ kikọ silẹ fun akoko ijabọ naa. Ijabọ yii ṣetan lati jẹ fifiransẹ si awọn alaṣẹ owo-ori.</value>
+  </data>
   <data name="ViewVatReports_PageTitle" xml:space="preserve">
     <value>Awọn ijabọ VAT</value>
     <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
@@ -948,23 +956,49 @@ Lẹhin ti o gbe wọle, iṣiro akọọlẹ ni Swarmops ba ti banki mu.&lt;/p&
     <value>Isowo yii san iwe iye-owo oja ti nwọle #{0:N0} lati {1}.</value>
   </data>
   
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>Ko si awọn akọọlẹ dukia ti a ṣeto fun adaṣiṣẹ, nitorina ko si awọn akọọlẹ kankan to satilẹyin gbigbe data ga ni akoko yii. Pada si Dasibọdu.</value>
+  </data>
+  
+  
+  
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Ṣẹda {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Awọn ijabọ ọdọọdun</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  
+  
+  
+  
+  
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>Ilana-iṣe-ti-Ipari-Osu: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>Sagbega Ikede Banki ({1}) for {0} for {2}</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  
+  
+  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
+    <value>&lt;strong&gt;FO IGBEGA IWE?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Iwe yii ni a nilo fun akọsilẹ iṣẹ. Idi kan soso ti o yẹ lati fo iwe ni wipe ko wa laaye nitori pe awọn iṣẹ naa ko ti bẹrẹ iṣẹ, bii nigbati isẹ kan ba bẹrẹ ni Oṣu Keje ninu ọdun kan kii yoo ni awọn iwe fun Osu kini ti ọdun naa&lt;br/&gt;&lt;br/&gt;A ko ni beere lọwọ rẹ lẹẹkansi lati gbe iwe yii ga ti o ba fo ni bayii.</value>
+  </data>
   
   
   
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="EndOfMonth_Header_Cryptocurrency" xml:space="preserve">
+    <value>Owo kiripito</value>
+    <comment>This is the header for various bitcoin hotwallet / cold storage operations</comment>
+  </data>
   
   
   

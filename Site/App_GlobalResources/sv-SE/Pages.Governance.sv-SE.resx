@@ -271,12 +271,27 @@
   </data>
   
   
+  <data name="VoteAmendments_Grid_No" xml:space="preserve">
+    <value>Nej</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
+    <value>Motivering</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Recommend" xml:space="preserve">
+    <value>Rek.</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Text" xml:space="preserve">
+    <value>Text</value>
+    <comment>Row header</comment>
+  </data>
   
-  
-  
-  
-  
-  
+  <data name="VoteAmendments_Grid_Yes" xml:space="preserve">
+    <value>Ja</value>
+    <comment>Column header</comment>
+  </data>
   <data name="VoteAmendments_Header" xml:space="preserve">
     <value>Ändringar till {0}</value>
     <comment>In content box header. The meeting name goes in {0}.</comment>
@@ -305,8 +320,12 @@
   
   
   
-  
-  
+  <data name="Vote_PointsOfOrder" xml:space="preserve">
+    <value>Ordningsfrågor</value>
+  </data>
+  <data name="Vote_PointsOfOrderTemp" xml:space="preserve">
+    <value>Inga ordningsfrågor just nu.</value>
+  </data>
   <data name="Vote_VoteHere" xml:space="preserve">
     <value>Rösta här</value>
     <comment>Link to voting page</comment>

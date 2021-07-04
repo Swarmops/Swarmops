@@ -481,4 +481,8 @@
     <value>Rapporter</value>
     <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
   </data>
+  <data name="Menu5_Financial_RequestReimbursement" xml:space="preserve">
+    <value>Begär utläggsersättning</value>
+    <comment>This is the same as "file an expense claim", but "requesting reimbursement" is better English</comment>
+  </data>
 </root>

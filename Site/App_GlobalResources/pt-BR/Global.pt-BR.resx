@@ -132,17 +132,17 @@
   
   
   <data name="Dashboard_PageTitle" xml:space="preserve">
-    <value>Painel de Controlo</value>
+    <value>Painel de Controle</value>
     <comment>Title of default page</comment>
   </data>
   <data name="Financial_Actuals" xml:space="preserve">
-    <value>Real</value>
+    <value>Balanço</value>
   </data>
   <data name="Financial_ActualsPreliminary" xml:space="preserve">
-    <value>Reais (prel)</value>
+    <value>Balanço (preliminar)</value>
   </data>
   <data name="Financial_ActualsToDate" xml:space="preserve">
-    <value>YTD Reais</value>
+    <value>Balanços até a data atual</value>
   </data>
   <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
     <value>Conta de Contabilidade</value>
@@ -157,7 +157,7 @@
     <value>Adiantamento</value>
   </data>
   <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
-    <value>Adiantamento de Dinheiro {0}</value>
+    <value>Adiantamento de Dinheiro #{0}</value>
   </data>
   <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
     <value>Adiantamentos de Dinheiro {0}</value>
@@ -194,14 +194,14 @@
     <value>Imposto de salário #{0}</value>
   </data>
   <data name="Financial_TheTaxMan" xml:space="preserve">
-    <value>O Homem dos Impostos</value>
+    <value>O homem do imposto</value>
     <comment>Used as recipient for taxes.</comment>
   </data>
   <data name="Financial_YearlyResult" xml:space="preserve">
     <value>Resultado anual</value>
   </data>
   <data name="Global_ASAP" xml:space="preserve">
-    <value>ASAP</value>
+    <value>O MAIS RÁPIDO POSSÍVEL</value>
     <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
   </data>
   <data name="Global_Cancel" xml:space="preserve">
@@ -209,7 +209,7 @@
     <comment>Displayed as cancellation link on changing something</comment>
   </data>
   <data name="Global_Change" xml:space="preserve">
-    <value>Modificar?</value>
+    <value>Alterar?</value>
     <comment>Link after describing what the user is looking at, allowing a change.</comment>
   </data>
   <data name="Global_ClickImageToEnlarge" xml:space="preserve">
@@ -240,19 +240,19 @@
     <value>Proprietário</value>
   </data>
   <data name="Global_ProcessingFile" xml:space="preserve">
-    <value>A Processar Ficheiro...</value>
+    <value>Processando Arquivo...</value>
     <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
   <data name="Global_UploadFile" xml:space="preserve">
-    <value>Enviar Ficheiro</value>
+    <value>Enviar Arquivo</value>
     <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
   <data name="Global_UploadFileToSwarmops" xml:space="preserve">
-    <value>Envio de Ficheiro para o Swarmops</value>
+    <value>Enviar Arquivo para Swarmops</value>
     <comment>Used as header above upload sections.</comment>
   </data>
   <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
-    <value>Por favor seleccione o ficheiro a enviar.</value>
+    <value>Selecione arquivo para enviar.</value>
     <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
   </data>
   <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
@@ -271,10 +271,13 @@
     <comment>Information about current page</comment>
   </data>
   <data name="Sidebar_Todo" xml:space="preserve">
-    <value>Por fazer</value>
+    <value>A executar</value>
     <comment>List of todo items</comment>
   </data>
-  
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>&lt;strong&gt;Tudo Limpo:&lt;/strong&gt;não há itens de ação urgente. Yay!</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
+  </data>
   <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
     <value>Ítens de ação aparecerão aqui.</value>
     <comment>Placeholder for future action items. Temporary.</comment>
@@ -310,13 +313,13 @@
     <value>Não Aplicável</value>
   </data>
   <data name="Global_AsOfNow" xml:space="preserve">
-    <value>Neste Momento</value>
+    <value>A partir de agora</value>
   </data>
   <data name="Global_Today" xml:space="preserve">
     <value>Hoje</value>
   </data>
   <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
-    <value>Tipo de Despesa</value>
+    <value>Tipo de custo</value>
     <comment>Second-dimension bookkeeping</comment>
   </data>
   <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
@@ -324,17 +327,17 @@
     <comment>Tagging costs/income to projects</comment>
   </data>
   <data name="Sidebar_Related" xml:space="preserve">
-    <value>Relacionados</value>
+    <value>Relacionado</value>
     <comment>List of shortcuts to related actions to current one</comment>
   </data>
   <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>Despesa nº{0:N0} (menos adiantamento nº{1:N0})</value>
+    <value>Despesa #{0:N0} (menos adiantamento #{1:N0})</value>
   </data>
   <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>Despesa nº{0:N0} (menos adiantamentos)</value>
+    <value>Despesa #{0:N0} (menos adiantamentos)</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
-    <value>Despesas {0} (menos adiantamento nº{1})</value>
+    <value>Despesas {0} (menos adiantamento #{1})</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
     <value>Despesas {0} (menos adiantamentos)</value>
@@ -380,14 +383,14 @@
     <value>Passivos</value>
   </data>
   <data name="Financial_Income" xml:space="preserve">
-    <value>Receitas</value>
+    <value>Receita</value>
   </data>
   <data name="Global_SelectOne" xml:space="preserve">
     <value>-- Seleccionar um --</value>
     <comment>Shown in dropdowns when selection required</comment>
   </data>
   <data name="Global_Missing" xml:space="preserve">
-    <value>- em falta -</value>
+    <value>- faltando -</value>
     <comment>When a record or similar is missing. Used in grids.</comment>
   </data>
   <data name="Global_Multiple" xml:space="preserve">
@@ -395,11 +398,11 @@
     <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
   </data>
   <data name="Global_Off" xml:space="preserve">
-    <value>Desativar</value>
+    <value>Desligar</value>
     <comment>Off (as opposed to On)</comment>
   </data>
   <data name="Global_On" xml:space="preserve">
-    <value>Ativar</value>
+    <value>Ligar</value>
     <comment>On (as opposed to Off)</comment>
   </data>
   <data name="Global_Organization_Commercial" xml:space="preserve">
@@ -439,7 +442,7 @@
     <comment>Somebody's telephone number. Mobile assumed.</comment>
   </data>
   <data name="Global_Custom" xml:space="preserve">
-    <value>Personalizar</value>
+    <value>Personalizado</value>
     <comment>As in "show me the advanced options"</comment>
   </data>
   <data name="Global_Create" xml:space="preserve">
@@ -447,30 +450,30 @@
     <comment>Like "Create Organization"</comment>
   </data>
   <data name="Global_AllYear" xml:space="preserve">
-    <value>Todos</value>
+    <value>Tudo</value>
   </data>
   <data name="Global_Description" xml:space="preserve">
     <value>Descrição</value>
     <comment>As a general header of any description field</comment>
   </data>
   <data name="Global_Q1" xml:space="preserve">
-    <value>1ºT</value>
+    <value>Q1</value>
     <comment>First quarter of the year</comment>
   </data>
   <data name="Global_Q2" xml:space="preserve">
-    <value>2ºT</value>
+    <value>Q2</value>
     <comment>Second quarter of the year</comment>
   </data>
   <data name="Global_Q3" xml:space="preserve">
-    <value>3ºT</value>
+    <value>Q3</value>
     <comment>Third quarter of the year</comment>
   </data>
   <data name="Global_Q4" xml:space="preserve">
-    <value>4ºT</value>
+    <value>Q4</value>
     <comment>Fourth quarter of the year</comment>
   </data>
   <data name="Global_Timestamp" xml:space="preserve">
-    <value>Data e Hora</value>
+    <value>Marcação de data/hora</value>
   </data>
   <data name="Ledgers_Balance" xml:space="preserve">
     <value>Saldo</value>
@@ -505,7 +508,7 @@
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
   <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>d 'de' MMMM 'de' yyyy</value>
+    <value>MMMM d, yyyy</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
@@ -519,7 +522,7 @@
     <value>um mês</value>
   </data>
   <data name="Timespan_OneYear" xml:space="preserve">
-    <value>de um ano</value>
+    <value>um ano</value>
   </data>
   <data name="Timespan_TwoYears" xml:space="preserve">
     <value>dois anos</value>
@@ -550,7 +553,7 @@
     <value>Mês</value>
   </data>
   <data name="Global_View" xml:space="preserve">
-    <value>Ver</value>
+    <value>Visualizar</value>
     <comment>As in "inspect"</comment>
   </data>
   <data name="Global_Year" xml:space="preserve">
@@ -577,7 +580,7 @@
     <value>Restituição de Adiantamentos de Dinheiro {0}</value>
   </data>
   <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
-    <value>Adiantamentos de Dinheiro {0} para {1}</value>
+    <value>Adiantamento de Dinheiro {0} para {1}</value>
   </data>
   <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
     <value>Reivindicação de Despesa #{0:N0}</value>
@@ -609,7 +612,7 @@
     <value>Salário #{0:N0}</value>
   </data>
   <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
-    <value>Impostos sobre Salário #{0:N0} em {1:yyyy-MMM}</value>
+    <value>Impostos sobre Salário #{0:N0} para {1:yyyy-MMM}</value>
   </data>
   <data name="Financial_Account" xml:space="preserve">
     <value>Conta</value>
@@ -645,13 +648,13 @@
     <value>(sem correspondência)</value>
   </data>
   <data name="Global_Working" xml:space="preserve">
-    <value>A processar...</value>
+    <value>Processando...</value>
   </data>
   <data name="Global_Error_WebsocketFailure" xml:space="preserve">
     <value>Não foi possível conectar o WebSocket. Atualizações ao vivo não estarão disponíveis.</value>
   </data>
   <data name="Error_CurrencyParsing" xml:space="preserve">
-    <value>O Swarmops não entende a quantia de dinheiro. (Mil de dinheiro e zero cêntimos são escritos como "{0:N2}".) Tente novamente?</value>
+    <value>O Swarmops não entende a quantia de dinheiro. (Mil de dinheiro e zero centavos são escritos como "{0:N2}".) Tentar novamente?</value>
     <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
   </data>
   <data name="Global_NoReasonGiven" xml:space="preserve">
@@ -672,10 +675,10 @@
     <value>Cargo</value>
   </data>
   <data name="Error_DatabaseConcurrency" xml:space="preserve">
-    <value>Parece que outro utilizador superou-o na realização desta operação; a base de dados mudou entretanto. Por favore examine as alterações e tente repetir o que estava a tentar fazer.</value>
+    <value>Parece que outro utilizador superou-o na realização desta operação; a base de dados mudou entretanto. Por favor examine as alterações e tente repetir o que estava a tentar fazer.</value>
   </data>
   <data name="Swarm_TypeName" xml:space="preserve">
-    <value>Insira um nome...</value>
+    <value>Digite um nome...</value>
   </data>
   <data name="Timespan_Selection_OneMonth" xml:space="preserve">
     <value>Um mês</value>
@@ -703,17 +706,17 @@
     <value>Finalizar</value>
   </data>
   <data name="Global_WizardNext" xml:space="preserve">
-    <value>Continuar</value>
+    <value>Próximo</value>
   </data>
   <data name="Global_WizardPrevious" xml:space="preserve">
-    <value>Retroceder</value>
+    <value>Anterior</value>
   </data>
   <data name="Financial_YTD" xml:space="preserve">
-    <value>YTD</value>
+    <value>Acumulado no ano</value>
     <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
   </data>
   <data name="Global_Flags" xml:space="preserve">
-    <value>Flags</value>
+    <value>Bandeiras</value>
     <comment>As in a table column header</comment>
   </data>
   <data name="Global_Total" xml:space="preserve">
@@ -725,12 +728,15 @@
     <comment>Displayed as error when emptying fields like your name</comment>
   </data>
   <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
-    <value>Houve um erro não especificado durante a tentativa de definir este valor.</value>
+    <value>Houve um erro não especificado ao tentar definir este valor.</value>
   </data>
   <data name="Global_TwitterId" xml:space="preserve">
     <value>Twitter ID</value>
   </data>
-  
+  <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
+    <value>Autenticação de dois fatores de BitID (desabilitando quarentena de login)</value>
+    <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
+  </data>
   <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
     <value>Conta</value>
   </data>
@@ -738,41 +744,60 @@
     <value>Provisão de Segurança</value>
   </data>
   <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
-    <value>Redefinir palavra-passe</value>
+    <value>Redefinir senha</value>
   </data>
   <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
-    <value>Enviar link de redefinição de palavra-passe</value>
+    <value>Enviar um link de redefinição de senha</value>
   </data>
   <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
-    <value>Isto não parece ser um número de telefone válido, mas iremos guardá-lo tal como foi inserido.</value>
+    <value>Isto não parece ser um número de telefone válido, mas iremos guardá-lo tal como foi inserido mesmo assim.</value>
     <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
   </data>
   <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
-    <value>Recuperar Palavra-Passe?</value>
+    <value>Redefinir a senha do usuário?</value>
   </data>
-  
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>Você está redefinindo uma senha de usuário. Este usuário receberá um link de redefinição por e-mail, no qual eles podem seguir para redefinir sua senha Swarmops.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Nunca faça isso a menos que tenha sido solicitado ajuda especificamente deste usuário.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Proceder ao procedimento de redefinição de senha?</value>
+  </data>
   <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
-    <value>Proíbido Recuperar Palavra-Passe</value>
+    <value>Redefinição de senha Proibida</value>
   </data>
-  
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>O endereço de e-mail deste usuário foi recentemente alterado (menos de uma semana atrás). Por razões de segurança, um link de redefinição de senha não pode e não será enviado para um endereço de e-mail recém-alterado.</value>
+  </data>
   <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
-    <value>Um link para redefinir a palavra-passe foi enviado para este utilizador.</value>
+    <value>Um link de redefinição de senha foi enviado para este usuário.</value>
   </data>
   <data name="Global_2FA" xml:space="preserve">
-    <value>Autenticação dois fatores</value>
+    <value>Autenticação de dois fatores</value>
   </data>
   <data name="Global_2FA_Short" xml:space="preserve">
-    <value>Aut. 2 Fatores</value>
+    <value>Autenticação de dois fatores</value>
   </data>
   <data name="Global_2FA_Shorter" xml:space="preserve">
-    <value>A2F</value>
+    <value>2FA</value>
   </data>
-  
-  
-  
-  
-  
-  
+  <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
+    <value>&lt;strong&gt;NÃO FOI POSSÍVEL PROVER A 2FA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Você não pode ativar a autenticação de dois fatores para outra pessoa. Eles devem fazer isso por si mesmas, assim apenas eles terão suas chaves secretas.</value>
+    <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedOwn" xml:space="preserve">
+    <value>A autenticação de dois fatores foi desativada. Agora você deve entrar com uma senha regular.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedProvision" xml:space="preserve">
+    <value>Autenticação de dois fatores foi removida para este usuário. Eles agora devem fazer login com uma senha regular.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveOwn" xml:space="preserve">
+    <value>&lt;strong&gt;DESATIVAR AUTENTICAÇÃO DE DOIS FATORES?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Isso não é recomendado. A autenticação de dois fatores aumenta significativamente a segurança da sua conta, além de facilitar muito o login se você estiver usando o BitID.&lt;br/&gt;&lt;br/&gt;Remover 2FA e voltar para autenticação somente senha?</value>
+    <comment>Displayed when removing 2FA for yourself</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
+    <value>&lt;strong&gt;DESATIVAR AUTENTICAÇÃO DE DOIS FATORES?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;apenas faça isso se foi solicitado para desligar a 2FA para esse usuário, por ele mesmo, &lt;strong&gt;e&lt;/strong&gt; você está absolutamente certo de que esse pedido vem da pessoa no qual a segurança você está desabilitando (Pela prática de verificação da organização).&lt;br/&gt;&lt;br/&gt;Continuar com a retirada de segurança desse usuário? Eles voltaram a segurança de senha apenas.</value>
+    <comment>Displayed when removing 2FA for someone else</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
+    <value>Autenticação de dois fatores não foi removida e ainda está ativa.</value>
+  </data>
   <data name="Timespan_Selection_OneDay" xml:space="preserve">
     <value>Um dia</value>
   </data>
@@ -785,32 +810,56 @@
   <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
     <value>Duas semanas</value>
   </data>
-  
-  
-  
-  
-  
-  
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>&lt;strong&gt;BITID AUTENTICAÇÃO DE DOIS FATORES HABILITADA COM SUCESSO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Quando fizer login no sistema daqui por diante, você precisará usar o aplicativo BitId que você acabou de usar para escanear o código.</value>
+  </data>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>Autenticação de dois fatores do BitID não foi ativada.</value>
+  </data>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>Escanear este código para ativar o BitID</value>
+  </data>
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>&lt;h3&gt;O que é isso?&lt;/h3&gt;
+                &lt;p&gt;O BitID é uma maneira de fazer login com menos problemas do que digitar uma senha. Sua simplicidade não pode ser explicada, apenas experimentada, é uma autenticação de dois fatores, já que usa seu telefone.&lt;/p&gt;
+                &lt;h3&gt;Isso não exige que meu telefone seja protegido também?&lt;/h3&gt;
+                &lt;p&gt;Bem, sim. É o seu telefone e a proteção de acesso do seu telefone. Mas o seu telefone deve estar sempre protegido de acesso.&lt;/p&gt;
+                &lt;h3&gt;Preciso de um aplicativo para celular para isso?&lt;/h3&gt;
+                &lt;p&gt;Sim, de alguma forma. Algumas carteiras de bitcoin móveis possuem BitID integrado. Dois exemplos de carteiras móveis que suportam BitID são {0} e {1}. Você também pode procurar um Autenticador de BitID independente.&lt;/p&gt;
+                &lt;h3&gt;Como eu habilito o BitID?&lt;/h3&gt;
+                &lt;p&gt;Use o aplicativo do telefone para verificar esse código. Depois disso, você pode digitalizar um código semelhante para fazer login neste sistema.&lt;/p&gt;</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>Autenticação de dois fatores BitID (assinatura de bitcoin)</value>
+  </data>
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value>Autenticação de dois fatores BitID</value>
+  </data>
   <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
-    <value>Digite a palavra-passe atual para permitir alterações</value>
+    <value>Digite a senha atual para habilitar as alterações</value>
   </data>
   <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
-    <value>A Sua Segurança</value>
+    <value>Sua Segurança</value>
   </data>
   <data name="Master_EditPersonNewPassword1" xml:space="preserve">
-    <value>Definir nova palavra-passe</value>
+    <value>Defina uma nova senha</value>
   </data>
   <data name="Master_EditPersonNewPassword2" xml:space="preserve">
-    <value>Insira novamente a palavra-passe</value>
+    <value>Redigite a nova senha</value>
   </data>
   <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
-    <value>Não é possível definir a nova palavra-passe: A palavra-passe antiga está incorreta.</value>
+    <value>Não foi possível definir nova senha: a senha antiga está incorreta.</value>
   </data>
   <data name="Master_EditPersonNewPassword_CannotChange_TooWeak" xml:space="preserve">
-    <value>Impossível definir nova palavra-passe: A nova palavra-passe é demasiado fraca. Utilize uma palavra-passe mais segura.</value>
+    <value>Não foi possível definir a nova senha: a nova senha é muito fraca. Use uma senha mais forte.</value>
   </data>
-  
-  
+  <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
+    <value>&lt;strong&gt;SENHA ALTERADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Você alterou sua senha com sucesso. Como medida de segurança, todos os saques estão agora em quarentena durante as próximas 48 horas.</value>
+  </data>
+  <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
+    <value>Se você pode, por favor ative a autenticação de dois fatores do BitID.</value>
+  </data>
   <data name="Global_Officer_Female" xml:space="preserve">
     <value>Oficial</value>
   </data>
@@ -824,7 +873,7 @@
     <value>Oficiais</value>
   </data>
   <data name="Global_Volunteer_Female" xml:space="preserve">
-    <value>Voluntária</value>
+    <value>Voluntário</value>
   </data>
   <data name="Global_Volunteer_Male" xml:space="preserve">
     <value>Voluntário</value>
@@ -836,7 +885,7 @@
     <value>Voluntários</value>
   </data>
   <data name="Global_Go" xml:space="preserve">
-    <value>Executar</value>
+    <value>Ir</value>
     <comment>As in "execute", "run requested procedure"</comment>
   </data>
   <data name="Global_Ok" xml:space="preserve">
@@ -847,34 +896,69 @@
     <value>Continuar</value>
     <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
   </data>
-  
+  <data name="Swarm_TypePartialName" xml:space="preserve">
+    <value>Digite um nome parcial...</value>
+  </data>
   <data name="Financial_ProfitToDate" xml:space="preserve">
     <value>Lucro/Perda Anual até à data ({0})</value>
     <comment>{0} is the currency code</comment>
   </data>
-  
+  <data name="Financial_Client" xml:space="preserve">
+    <value>Cliente / Consumidor</value>
+  </data>
   <data name="Global_Progress" xml:space="preserve">
     <value>Progresso</value>
     <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
   </data>
-  
-  
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>Baixar isto</value>
+  </data>
   <data name="Global_Dox" xml:space="preserve">
     <value>Docs</value>
     <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>Enviar isto para mim no e-mail</value>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>Dinheiro</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>Core</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>Ouro</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>Legacy</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>Chain</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>Fatura de saída #{0:N0} para {1}</value>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(cancelado, anulado, zerado)</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>Resultados do Upload de Arquivo</value>
+  </data>
   <data name="Financial_AmountVat" xml:space="preserve">
-    <value>IVA</value>
+    <value>VAT - taxas</value>
     <comment>The short form of Value Added Tax.</comment>
   </data>
   <data name="Financial_AmountVatFull" xml:space="preserve">
@@ -885,43 +969,133 @@
     <comment>As in calendar date, for example January 21</comment>
   </data>
   <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
-    <value>d MMM yyyy</value>
+    <value>MMM d, yyyy</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
   </data>
   <data name="Global_Submit" xml:space="preserve">
-    <value>Submeter</value>
+    <value>Enviar</value>
     <comment>As in "Submit this data for processing"</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>Ledger Geral</value>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>Você está entrando na organização &lt;strong&gt;Sandbox&lt;/strong&gt;.&lt;br/&gt;&lt;br/&gt;Este é um ambiente seguro onde você pode mexer com Swarmops sem arriscar qualquer dano para a produção de dados. Divirta-se com tudo e volte ao seu ambiente de produção quando você terminar a experimentação.</value>
+  </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>{0} até {1}</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>Não avançar</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>pular isso</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>Pular</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Financial_Ebitda_Long" xml:space="preserve">
+    <value>Ganhos antes de Juros, Impostos, Depreciação e Amortização</value>
+  </data>
+  <data name="Financial_Ebitda_Short" xml:space="preserve">
+    <value>EBITDA</value>
+    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
+  </data>
+  <data name="Financial_AllBalancesSettled" xml:space="preserve">
+    <value>Todos os Saldos foram liquidados</value>
+    <comment>Nobody owes anybody anything</comment>
+  </data>
+  <data name="Financial_CurrentBalance" xml:space="preserve">
+    <value>Saldo atual</value>
+  </data>
+  <data name="Financial_NoPaymentHistory" xml:space="preserve">
+    <value>Não há pagamentos no registro</value>
+  </data>
+  <data name="Financial_Owed" xml:space="preserve">
+    <value>Ganhos</value>
+    <comment>As in, "Amount Owed"</comment>
+  </data>
+  <data name="Financial_Paid" xml:space="preserve">
+    <value>Pago</value>
+    <comment>As in, "Amount Paid To Person"</comment>
+  </data>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>Histórico de Pagamentos</value>
+  </data>
+  <data name="Financial_PaymentSpecification" xml:space="preserve">
+    <value>Pagamento #{0:N0}</value>
+    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
+  </data>
+  <data name="Financial_PayoutSpecification" xml:space="preserve">
+    <value>Pagamento #{0:N0}</value>
+    <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
+  <data name="Financial_PersonIsOwed" xml:space="preserve">
+    <value>Devido a pessoa</value>
+    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
+  </data>
+  <data name="Financial_PersonOwes" xml:space="preserve">
+    <value>Pessoa deve o valor</value>
+    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
+  </data>
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>Pagamento não confirmado</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
+  </data>
+  <data name="Financial_YouAreOwed" xml:space="preserve">
+    <value>{0} Deve à Você</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Financial_YouOwe" xml:space="preserve">
+    <value>Você Deve Este Valor</value>
+    <comment>Like Person Owes, but directed at the user at the screen</comment>
+  </data>
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>Zero</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
+  </data>
+  <data name="Global_Closed" xml:space="preserve">
+    <value>Fechado</value>
+    <comment>As in "record or transaction closed"</comment>
+  </data>
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>Nenhum Registro</value>
+    <comment>There are no records of the requested type</comment>
+  </data>
+  <data name="Global_Error_Concurrency" xml:space="preserve">
+    <value>Esta ação não está mais disponível.</value>
+    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>Item</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>Itens</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
+  <data name="Global_Opened" xml:space="preserve">
+    <value>Aberto</value>
+    <comment>As in "record or transaction opened"</comment>
+  </data>
+  <data name="IconTooltip_Barcode_Scanning" xml:space="preserve">
+    <value>Este código deste item pode ser automaticamente verificado por um app.</value>
+    <comment>This is when Swarmops can display an expense-to-be-paid in a format, that a mobile banking app can read directly, such as a QR code or other machine-readable format.</comment>
+  </data>
+  <data name="Financial_DueDateShort" xml:space="preserve">
+    <value>Vencimento</value>
+    <comment>As "due date", as in when a payment is expected, but just the word "due" to be combined with an actual date in the UI. Example: *Due* Jan 21.</comment>
+  </data>
+  <data name="Global_DateFormatLongDateMonth" xml:space="preserve">
+    <value>MMMM d</value>
+    <comment>Format used for just date and month (no year). The formats are MMMM for month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages use different ways to write month and date, for example, German would write "23. Dezember" (note the dot), a format which would be "{0:d}. {0:MMMM}".</comment>
+  </data>
+  <data name="Global_DateFormatShortDateMonth" xml:space="preserve">
+    <value>MMM dd</value>
+    <comment>Format used for just date and month (no year). The formats are MMM for three-letter month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages write month and date in different orders and with different separators. Do keep the month NAME though, rather than using the month number, even if that's common in the target language.</comment>
+  </data>
 </root>

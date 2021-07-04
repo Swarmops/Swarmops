@@ -125,16 +125,16 @@
     <value>Nomeie uma quinta pessoa...</value>
   </data>
   <data name="Positions_AssignFirstPerson" xml:space="preserve">
-    <value>Atribuir...</value>
+    <value>Atribua...</value>
   </data>
   <data name="Positions_AssignFourthPerson" xml:space="preserve">
     <value>Nomeie uma quarta pessoa...</value>
   </data>
   <data name="Positions_AssignmentDuration" xml:space="preserve">
-    <value>Duração da nomeação (extensível)</value>
+    <value>Duração da atividade (extensível)</value>
   </data>
   <data name="Positions_AssignmentExpires" xml:space="preserve">
-    <value>Caduca</value>
+    <value>Expira</value>
     <comment>The date a position assignment autoterminates</comment>
   </data>
   <data name="Positions_AssignPersonToPosition" xml:space="preserve">
@@ -151,7 +151,7 @@
     <value>Nomeie uma terceira pessoa...</value>
   </data>
   <data name="Positions_ButtonAssign" xml:space="preserve">
-    <value>Atribuír</value>
+    <value>Atribua</value>
     <comment>Kind of "hire" but also for volunteers</comment>
   </data>
   <data name="Positions_ModalHeader" xml:space="preserve">
@@ -159,7 +159,7 @@
     <comment>Header for new assignment dialog</comment>
   </data>
   <data name="Positions_NoMorePeopleOnPosition" xml:space="preserve">
-    <value>Falhou: Não é possível nomear mais pessoas para esta posição.</value>
+    <value>Falha: Não é possível atribuir mais pessoas a esta posição.</value>
   </data>
   <data name="Positions_PleaseSelectPerson" xml:space="preserve">
     <value>Por favor selecione uma pessoa para nomear.</value>
@@ -179,7 +179,7 @@
     <value>Não Terminar</value>
   </data>
   <data name="Positions_TerminateSelfNo" xml:space="preserve">
-    <value>Ups! Não, voltar atrás!</value>
+    <value>Opa! Não, volte!</value>
   </data>
   <data name="Positions_TerminateSelfYes" xml:space="preserve">
     <value>Sim, Eu Me Demito</value>

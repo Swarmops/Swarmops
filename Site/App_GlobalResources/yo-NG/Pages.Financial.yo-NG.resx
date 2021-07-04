@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
+  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
+    <value>Owo Agbaalẹ #{0:N0} fun {1} ti jẹ fifọwọsi fun {3:N2}.</value>
+    <comment>Status message.</comment>
+  </data>
+  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
+    <value>Ifọwọsi fun Owo Agbaalẹ #{0:N0} fun {1} jẹ FIFAGILE. Ko ni jẹ sisanjade ayafi ti o ba di fifọwọsi lẹẹkansi.</value>
+    <comment>When somebody undoes a previous approval.</comment>
+  </data>
+  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
+    <value>O ko le fọwọsi iye yii. Isuna naa jẹ ofifo fun ọdun {0}.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
+    <value>O ko le fọwọsi iye odi.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
+    <value>O ko le fọwọsi iye odo.</value>
+  </data>
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>Ma binu, o ko le ṣe atunṣe isuna owo ise sisanjade.</value>
   </data>
@@ -131,7 +143,10 @@
   <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
     <value>Jowo mu isuna kan lati ṣe atunṣe afojusun idiyele naa fun.</value>
   </data>
-  
+  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
+    <value>Ibéèrè owo agbapada #{0:N0} lati {1} fun {2} {3:N2} ti jẹ fifọwọsi.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Igbese</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -158,12 +173,27 @@
     <value>Di bibeere</value>
     <comment>Header for the requested amount.</comment>
   </data>
-  
-  
-  
-  
-  
-  
+  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
+    <value>Awọn owo ti o nduro fun ifọwọsi rẹ</value>
+  </data>
+  <data name="AttestCosts_Info" xml:space="preserve">
+    <value>Eyi ni ibi ti o ti ṣe ifọwọsi awọn owo ti awọn eniyan miiran n beere lati inu awọn isuna rẹ. Ohun kankan koni jẹ sisan ṣaaju ki o to fọwọsi.</value>
+  </data>
+  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
+    <value>Iwe iye-owo ọja #{0:N0} lati {1} fun {2} {3:N2} ti jẹ fifọwọsi.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
+    <value>Ifọwọsi fun Iwe iye-owo ọja #{0:N0} lati {1} jẹ FIFAGILE. Ko ni jẹ sisanjade ayafi ti o ba di fifọwọsi lẹẹkansi.</value>
+    <comment>When somebody undoes a previous approval.</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
+    <value>Fọwọsi</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
+    <value>Fọwọsi</value>
+  </data>
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Kọ</value>
     <comment>keep short</comment>
@@ -189,19 +219,35 @@
   <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
     <value>Gbe idiyele naa lo si iṣuna yi dipo:</value>
   </data>
-  
-  
-  
-  
+  <data name="AttestCosts_Modal_Header" xml:space="preserve">
+    <value>Satunṣe awọn isoro tabi kọ ifọwọsi</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
+    <value>Mo ma fọwọsi eyi, ṣugbọn fun iye ti o yatọ.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
+    <value>Iye naa ko tọ. Mo ma fọwọsi fun iye ti o tọ.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
+    <value>Mi koni fọwọsi akọsilẹ yii. O ti bajẹ.</value>
+    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
+  </data>
   <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
     <value>Akọsilẹ yii yẹ ki o se idiyele isuna ti o yatọ. Gbe lo sibẹ.</value>
   </data>
   <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
     <value>Kini o dabi iṣoro pẹlu akosilẹ yii?</value>
   </data>
-  
-  
-  
+  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
+    <value>Ko si awọn owo ti o to to ṣẹku ninu isuna naa lati fọwọsi iye owo yi.</value>
+  </data>
+  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
+    <value>Ko si awọn owo ti o to lati fọwọsi eyi. O le jẹri to {0} {1:N2} diẹ sii ninu isuna yii fun ọdun naa {2}.</value>
+    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
+  </data>
+  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
+    <value>&lt;strong&gt;ITAYỌ ISUNA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ko si awọn owo ti o to to ṣẹku ninu isuna naa lati fọwọsi inawo yi. Ni deede, yoo jẹ didena lati ni ifọwọsi. Sibẹsibẹ, o le bori idaduro yii ati ki o ni ijẹri sibẹsibẹ, nitorina o jẹ ki akọọlẹ naa tayọ isuna rẹ.&lt;br/&gt;&lt;br/&gt;Ṣe o fẹ lati fọwọsi inawo naa, nitorina fi ipa se itayọ, tabi ṣe o fẹ fagilee, duro lori isuna dipo?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
   <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
     <value>Duro lori Isuna</value>
   </data>
@@ -212,14 +258,26 @@
     <value>ISUNA JE TITAYO.</value>
     <comment>The UPPERCASE is intentional.</comment>
   </data>
-  
-  
-  
+  <data name="AttestCosts_PageTitle" xml:space="preserve">
+    <value>Fọwọsi Awọn iye owo</value>
+  </data>
+  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
+    <value>Apero #{0:N0}, je tito nipasẹ {1}, ti jẹ fifọwọsi fun {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
+    <value>Ifọwọsi funApero #{0:N0} nipasẹ {1} jẹ FIFAGILE.  Ko ni jẹ sisaami isanjade si ayafi ti o ba di fifọwọsi lẹẹkansi.</value>
+    <comment>When somebody undoes a previous approval.</comment>
+  </data>
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
     <value>Owo ise #{0:N0} fun {1} ti je jijeri fun {3:N2}.</value>
   </data>
-  
-  
+  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
+    <value>Ifọwọsi fun Owo isẹ #{0:N0} fun {1} jẹ FIFAGILE. Ko ni jẹ sisaami isanjade si ayafi ti o ba di fifọwọsi lẹẹkansi.</value>
+    <comment>When somebody undoes a previous approval.</comment>
+  </data>
+  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
+    <value>&lt;strong&gt;IKILỌ: ISUNA TI KO LETO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Iye owo ti o n fọwọsi jẹ ti akọọlẹ kan ninu lẹja ti ko ni eni ti o ni ati pe ko ni eto owo isuna ti a ṣeto fun ọdun naa. Ro sisàbẹwò si Atẹ ti Awọn Akọọlẹ naa ati yiyan awọn isuna fun awọn ohun ti nwọle ati awon inawo ti a n reti.&lt;br/&gt;&lt;br/&gt;Ifiranṣẹ yii yoo ma han ni ẹẹkan fun ibẹwo si Awọn ifọwọsi Iye owo.&lt;br/&gt;</value>
+  </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Apapọ Iye iwe iye-owo oja (ni {0})</value>
     <comment>{0} is the organization's main currency.</comment>
@@ -493,7 +551,9 @@ Iṣẹ-ṣiṣe ati awọn fọọmu gangan yatọ nipasẹ orilẹ-ede ati nig
   <data name="ValidateReceipts_PageTitle" xml:space="preserve">
     <value>Se ijẹri awon iwe oja</value>
   </data>
-  
+  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
+    <value>Ijẹrisi awọn iwe ọja fun Ibéèrè Owo agbapada #{0:N0} fun {1} {2:N2} ti jẹ FIFAGILE. Ibéèrè owo agbapada naa koni tẹsiwaju si isanjade ayafi ti o ba jẹ atunjẹri.</value>
+  </data>
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Awon iwe oja fun Ibéèrè Owo agbapada #{0:N0} fun {1} {2:N2} ti je jijerisi.</value>
   </data>
@@ -643,20 +703,56 @@ Iṣẹ-ṣiṣe ati awọn fọọmu gangan yatọ nipasẹ orilẹ-ede ati nig
   <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
     <value>Aseyori awon ibeere {0} gbigbe dide.</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Ifọwọsi fun Ibeere Owo Agbapada #{0:N0} lati {1} jẹ FIFAGILE. Ko ni jẹ sisanjade ayafi ti o ba di fifọwọsi lẹẹkansi.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_CurrencyMethod" xml:space="preserve">
+    <value>Owo, Ọna</value>
+    <comment>"Method" refers to the method of payout -- wire transfer, direct deposit, giro service, etc.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_PayThis" xml:space="preserve">
+    <value>Sanwo</value>
+    <comment>Like the "Actions" column in other grids, but just with one option, "Pay this expenditure"</comment>
+  </data>
+  <data name="PayOutMoney_Modal_ConfirmPaid" xml:space="preserve">
+    <value>Eyi ti jẹ Sisan</value>
+    <comment>As in "Confirm The Currently Displayed Payout Has Been Manually Executed" -- try to keep short, "This is Paid" length is ideal</comment>
+  </data>
+  <data name="PayOutMoney_Modal_CurrencyAmount" xml:space="preserve">
+    <value>Owo ati Iye</value>
+    <comment>Will be a label for something like "USD 10,000.00"</comment>
+  </data>
+  <data name="PayOutMoney_Modal_Header" xml:space="preserve">
+    <value>Yanju Isanwo Yii ni Atọwọda Nisinyii</value>
+    <comment>Displayed as header over the details of a payment to be made manually (as opposed to with bitcoin/crypto)</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr1" xml:space="preserve">
+    <value>Ṣe o ma yaworan isanwo yii?</value>
+    <comment>In longer form, the question would be "Are you using a mobile phone or other device to capture this payment data automatically?". Some banking apps can scan QR codes or specially formatted number sequences.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr2" xml:space="preserve">
+    <value>Fihan ni ọna ti o se ka fun ẹrọ</value>
+    <comment>Don't make this string much longer than it is.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_TransferMethod" xml:space="preserve">
+    <value>Ọna Gbigbe kiri</value>
+    <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
+  </data>
+  <data name="PayOutMoney_AutomationFieldNext" xml:space="preserve">
+    <value>...ati eyi</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
+  <data name="PayOutMoney_AutomationFieldStart" xml:space="preserve">
+    <value>Yaworan eyi</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
   <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
     <value>Itọkasi</value>
     <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
-  
+  <data name="PayOutMoney_PaymentLate" xml:space="preserve">
+    <value>Isanwo ti pẹ</value>
+    <comment>"Late" in this context means "after its due date".</comment>
+  </data>
 </root>

@@ -265,7 +265,9 @@
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Awọn lẹja</value>
   </data>
-  
+  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
+    <value>Atẹ ti Awọn akọọlẹ</value>
+  </data>
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Sayẹwo Awọn lẹja</value>
   </data>
@@ -300,7 +302,10 @@
     <value>Ikede Ere ati Adanu</value>
   </data>
   
-  
+  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
+    <value>Seto Awọn isuna</value>
+    <comment>"Budget" as in "Cost allowed for a particular purpose" or "Revenue expected from a source".</comment>
+  </data>
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Gbe Awọn faili Banki ga</value>
   </data>
@@ -434,14 +439,35 @@
   <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
     <value>Idanwo Echo Hotwallet ti Bitcoin</value>
   </data>
+  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
+    <value>Seto Awọn akọọlẹ ti o Sopọ mọ</value>
+    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
+    <value>Seto Atẹ ti Awọn akọọlẹ</value>
+    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
+  </data>
+  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
+    <value>Seto Iwe isanwo</value>
+  </data>
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>Owo isẹ Mi</value>
+    <comment>This lists salary payments for the logged on individual</comment>
+  </data>
   
   
+  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
+    <value>Satunto Si Iwe isanwo</value>
+    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
+  </data>
+  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
+    <value>Awọn Iṣowo ti a tẹle</value>
+    <comment>Tracking of special transactions</comment>
+  </data>
   
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Reports" xml:space="preserve">
+    <value>Awọn ijabọ</value>
+    <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
+  </data>
   
 </root>

@@ -117,12 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
+  <data name="Attest_CashAdvance_Many" xml:space="preserve">
+    <value>Aprovar adiantamentos em dinheiro {0}</value>
+  </data>
+  <data name="Attest_CashAdvance_One" xml:space="preserve">
+    <value>Aprovar adiantamento em dinheiro #{0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
+    <value>Aprovar reivindicações de despesa {0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_One" xml:space="preserve">
+    <value>Aprovar reivindicação de despesa #{0}</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>Defina o endereço de pagamento Bitcoin Cash</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>Por favor, defina seu endereço Bitcoin Cash para reembolso de [InstallationName] (começa com "bitcoincash"):</value>
+  </data>
   <data name="Payout_Many" xml:space="preserve">
     <value>Liquidar {0} pagamentos</value>
     <comment>Instead of "Pay out payout". That sounds too repetitititive.</comment>
@@ -149,6 +161,6 @@
     <value>Validar reivindicações {0}</value>
   </data>
   <data name="Validate_Receipts_One" xml:space="preserve">
-    <value>Validar reivindicação nº{0}</value>
+    <value>Validar reivindicação #{0}</value>
   </data>
 </root>

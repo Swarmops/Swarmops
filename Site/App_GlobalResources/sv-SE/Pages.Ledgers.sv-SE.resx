@@ -1037,7 +1037,37 @@
     <comment>This verifies the hotwallet data against master blockchain data, as per a blockchain explorer service or local crypto service node.</comment>
   </data>
   <data name="EndOfMonth_CheckLedgerAgainstHotWallet" xml:space="preserve">
-    <value>Verifiera bokföringens saldo mot arbetsplånbokens</value>
+    <value>Synkronisera bokföringens bitcoinsaldo med arbetsplånbokens</value>
     <comment>This is the ledger balance of the hotwallet, which is supposed to say the hotwallet contains as much as it actually does.</comment>
+  </data>
+  <data name="EndOfMonth_ConsolidateHotwallet" xml:space="preserve">
+    <value>Konsolidera bitcoinarbetsplånbok</value>
+    <comment>This rearranges the hotwallet for easy payouts going forward (collects all small amounts into even chunks)</comment>
+  </data>
+  <data name="EndOfMonth_ConvertBitcoinCoreToCash" xml:space="preserve">
+    <value>Konvertera Bitcoin Core i arbetsplånboken till Bitcoin Cash</value>
+    <comment>This places an order on an exchange to convert BTC in the hotwallet to BCH</comment>
+  </data>
+  <data name="EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch" xml:space="preserve">
+    <value>&lt;strong&gt;BOKFÖRINGENS BITCOINSALDO STÄMDE INTE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Arbetsplånboken har ett saldo på &lt;strong&gt;{0:N2}&lt;/strong&gt; mikrobitcoin, men bokföringen säger att det borde finnas &lt;strong&gt;{1:N2}&lt;/strong&gt; där. Plånboken har alltid rätt när bokföringen och plånboken är oense, så bokföringen har justerats.&lt;br/&gt;&lt;br/&gt;
+Detta kan inträffa efter bitcoinsplits (s.k. forks) eller liknande händelser, men om detta händer upprepat, månad på månad, och särskilt om pengar verkar läcka från plånboken, så finns skäl att undersöka det här närmare.
+</value>
+    <comment>This is displayed after (!) the ledger bitcoin balance has been updated to match the hotwallet by means of a new transaction.</comment>
+  </data>
+  <data name="EndOfMonth_Header_Cryptocurrency" xml:space="preserve">
+    <value>Kryptovalutor</value>
+    <comment>This is the header for various bitcoin hotwallet / cold storage operations</comment>
+  </data>
+  <data name="EndOfMonth_LedgerBitcoinBalanceTransactionDescription" xml:space="preserve">
+    <value>Bokföringskorrigering efter revision av arbetsplånbok</value>
+    <comment>This is the description of a transaction that corrects the bitcoin balance in the ledger to equal that of the hotwallet.</comment>
+  </data>
+  <data name="EndOfMonth_VerifyColdStorage" xml:space="preserve">
+    <value>Verifiera kylförvarad bitcoin</value>
+    <comment>This verifies that the amounts supposed to be in cold storage are indeed in cold storage</comment>
+  </data>
+  <data name="InspectLedgers_Header_Hotwallet" xml:space="preserve">
+    <value>Granska bitcoinarbetsplånboken för</value>
+    <comment>This is followed by a year and month dropdown</comment>
   </data>
 </root>

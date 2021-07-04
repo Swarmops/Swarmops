@@ -117,20 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
+  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
+    <value>Este é um código QR para testes de eco bitcoin para toda esta instalação do Swarmops, não apenas para {0}. Leia-o na carteira bitcoin do seu telefone para realizar o teste de eco ou envie do seu computador diretamente para [{1}] (esse é um endereço Bitcoin Cash). O valor (menos taxas de mineração de {2:N2} microcoins) será enviado de volta para você nos próximos segundos.</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
+    <value>Recebeu {2:N2} microcoins ({0} {1:N2}). Retornando.</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
+    <value>Recebeu {0} microcoins ("bits"). Retornando.</value>
+    <comment>Used if Bitcoin Cash is the org native currency.</comment>
+  </data>
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>Este é um teste de eco bitcoin. Ele testa o hotwallet. Se você enviar uma pequena quantia aqui, ela será enviada de volta para você, menos a taxa de transação de envio (atualmente {0:N2} microcoins).</value>
+  </data>
+  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
+    <value>Teste da Hotwallet do Bitcoin Cash Echo</value>
+  </data>
   <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
-    <value>À espera de transação...</value>
+    <value>Aguardando transação...</value>
   </data>
   <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
-    <value>Transação detectada, a verificar...</value>
+    <value>Transação detectada, verificando...</value>
   </data>
-  
+  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
+    <value>Test Swarmops Bitcoin Echo</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
-    <value>Ativistas serão chamados de</value>
+    <value>Os activistas serão chamados</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Organização base</value>
@@ -143,7 +158,7 @@
     <value>Criar nova organização como...</value>
   </data>
   <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
-    <value>O nome da organização não pode estar vazio. (Necessita dar um nome à nova organização!)</value>
+    <value>Nome da organização não pode estar vazio. (Você precisa dar um nome à nova organização!)</value>
   </data>
   <data name="CreateOrganization_Info" xml:space="preserve">
     <value>Pode criar uma nova organização como uma nova organização independente ou como uma sub-organização dentro da actual. (Todas as pessoas com responsabilidades numa dada organização têm automaticamente os direitos e privilégios correspondentes em todas as sub-organizações.)</value>
@@ -152,7 +167,7 @@
     <value>Nome da nova Organização</value>
   </data>
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
-    <value>Moeda de funcionamento</value>
+    <value>Moeda operacional</value>
   </data>
   <data name="CreateOrganization_NewOrgName" xml:space="preserve">
     <value>Nome da nova organização</value>
@@ -164,9 +179,12 @@
     <value>Pessoas regulares serão chamadas de</value>
     <comment>This can be "members", etc.</comment>
   </data>
-  
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>A nova organização foi criada. Foi-lhe concedido um {0} sem tempo de expiração na organização, para que possa trabalhar nela e configurá-la corretamente. Para configurar a nova organização, utilize este painel de controle (disponível em Administração / Definições de Organização).</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
   <data name="CreateOrganization_Titles" xml:space="preserve">
-    <value>Títulos iniciais da posição, por omissão</value>
+    <value>Títulos de posição padrão no início</value>
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Comercial</value>
@@ -176,11 +194,11 @@
   </data>
   
   <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
-    <value>Numeração de {0}</value>
+    <value>{0} numeração</value>
     <comment>The {0} is the membership, ambassadorship, etc.</comment>
   </data>
   <data name="EditOrganization_OpenLedgersDomain" xml:space="preserve">
-    <value>Domínio de Livros Abertos</value>
+    <value>Abrir Domínio de Ledgers</value>
   </data>
   <data name="EditOrganization_PageTitle" xml:space="preserve">
     <value>Editar Organização</value>
@@ -252,10 +270,10 @@
     <value>Notificações de Admin do Nome</value>
   </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
-    <value>O porto SMTP deve ser numérico. Não foi possível compreender o host:port.</value>
+    <value>A porta SMTP deve ser numérica. Não foi possível analisar o host:porta.</value>
   </data>
   <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
-    <value>Impossível processar user, pass, host e/ou port. (Apenas é necessário host.)</value>
+    <value>Não é possível analisar o usuário, passe, host e/ou porta. (Apenas o host é necessário.)</value>
   </data>
   <data name="SystemSettings_ExternalUrl" xml:space="preserve">
     <value>URL Acessível Externamente</value>
@@ -273,7 +291,7 @@
     <value>Nome da Instalação</value>
   </data>
   <data name="SystemSettings_PageTitle" xml:space="preserve">
-    <value>Definições do Sistema</value>
+    <value>Configurações do Sistema</value>
   </data>
   <data name="SystemSettings_SmtpServer" xml:space="preserve">
     <value>Servidor SMTP (user:pass@host:port)</value>
@@ -282,29 +300,75 @@
     <value>O Swarmops enviou-lhe um email de teste para verificar as suas novas definições do servidor SMTP.</value>
   </data>
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
-    <value>Deveria realmente, realmente, REALMENTE utilizar HTTPS para um website como este. Mas já sabia disso, não é verdade?</value>
+    <value>Você realmente, realmente, REALMENTE deveria utilizar HTTPS para um website como este. Mas já sabia disso, não é verdade?</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Substituir Nome de Host de Backend</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>Porta do Websocket (Frontend)</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
+    <value>Porta do WebSocket (Backend)</value>
+  </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Personificação Ativa</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>Você tem uma sessão de personificação ativa como {0}. &lt;a href="javascript:terminateImpersonation();"&gt;personificação final.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;PERSONIFICAR PESSOA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Isso é para tratar levianamente e se você não está fazendo isso por razões técnicas, pode até ser ilegal dependendo das leis locais.&lt;br/&gt;&lt;br/&gt;O propósito desta ferramenta é corrigir as problemas técnicos. Tudo será registrado.&lt;br/&gt;&lt;br/&gt;Procede?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;FINALIZAÇÃO DA TERMINAÇÃO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;A representação terminou em {0:HH:mm} UTC. Você está agindo como você mesmo de novo.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;PERSONIFICAÇÃO NEGADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Você não pode se passar por alguém que seja seu gerente direto.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;PERSONIFICAÇÃO NEGADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Você não pode se passar por outra pessoa com acesso ao nível do sistema.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Você precisa selecionar uma pessoa para personificar.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Se você precisa se personificar, sugerimos que você saia dos Swarmops e procure outro tipo de assistência.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;PERSONIFICAÇÃO NEGADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Você não parece ter privilégios suficientes para se personificar a outra pessoa.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Personificar outro usuário</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Personificar</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Pessoa para personificar</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;PERSONIFICAÇÃO ATIVA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Personificação iniciada em {0:HH:mm} UTC. Este é o painel de controle, como a pessoa representada vê. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Esta ferramenta de depuração permite que você personifique outro usuário para ver e experimentar o Swarmops como eles fazem quando estão logados.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AVISO:&lt;/strong&gt; Essa é uma ferramenta altamente invasiva que deve ser usada apenas para desenvolvimento técnico e suporte solicitado. Ao usar isso não deverá tratar levianamente.&lt;/p&gt;
+&lt;p&gt;Todas as personificações são registradas permanentemente, todas as ações tomadas enquanto personificada são rastreadas como tal e o usuário personificado será informado da intrusão.&lt;/p&gt;</value>
+  </data>
   <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Ainda-não-membros são chamados</value>
+    <value>Não-membros são chamados</value>
   </data>
-  
-  
-  
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(não aplicável)</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Governo</value>
+  </data>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt; Poeira Coletada &lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;O valor enviado é menor do que a taxa esperada para devolvê-lo a você, que é de {0:N2} microcoins. O dinheiro que você enviou agora é chamado de "poeira" na rede bitcoin e não será movido novamente.&lt;br/&gt;&lt;br/&gt; Envie uma quantia maior para realizar um teste de eco.</value>
+  </data>
 </root>

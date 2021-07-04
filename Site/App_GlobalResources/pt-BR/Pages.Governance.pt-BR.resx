@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddMotionAmendment_AmendmentSubmittedAs" xml:space="preserve">
-    <value>Guardada como #{0}-{1}.</value>
+    <value>Salvo como #{0}-{1}.</value>
     <comment>Keep very short</comment>
   </data>
   <data name="AddMotionAmendment_Decision" xml:space="preserve">
@@ -130,28 +130,28 @@
     <comment>Used as header and page title</comment>
   </data>
   <data name="AddMotionAmendment_SubmitAmendment" xml:space="preserve">
-    <value>Apresentar Alteração</value>
+    <value>Submeter Emenda</value>
   </data>
   <data name="AddMotionAmendment_Submitter" xml:space="preserve">
     <value>Autor</value>
   </data>
   <data name="AddMotionAmendment_SubmittingAmendmentInfo" xml:space="preserve">
-    <value>Está a apresentar uma alteração à proposta</value>
+    <value>Você está submetendo uma emenda ao pedido</value>
     <comment>In sidebar info box. Motion title follows in bold.</comment>
   </data>
   <data name="AddMotionAmendment_Text" xml:space="preserve">
-    <value>Justificação</value>
+    <value>Justificativa</value>
     <comment>Text of motion amendment (justification and rationale)</comment>
   </data>
   <data name="AddMotionAmendment_Title" xml:space="preserve">
-    <value>Título da alteração</value>
+    <value>Título da Emenda</value>
   </data>
   <data name="AddMotion_Decisions" xml:space="preserve">
     <value>Decisões (uma por linha)</value>
     <comment>Proposed decisions, one per line</comment>
   </data>
   <data name="AddMotion_MotionSubmittedAs" xml:space="preserve">
-    <value>Proposta guardada como #{0}.</value>
+    <value>Proposta salva como #{0}.</value>
     <comment>Keep short</comment>
   </data>
   <data name="AddMotion_PageTitle" xml:space="preserve">
@@ -182,16 +182,16 @@
     <comment>Link to change meetings</comment>
   </data>
   <data name="ListMotions_Grid_Amended" xml:space="preserve">
-    <value>Alterada</value>
+    <value>Emendas Alteradas</value>
   </data>
   <data name="ListMotions_Grid_Amendments" xml:space="preserve">
-    <value>Alterações</value>
+    <value>Emendas</value>
   </data>
   <data name="ListMotions_Grid_Carried" xml:space="preserve">
     <value>Realizada</value>
   </data>
   <data name="ListMotions_Grid_Designation" xml:space="preserve">
-    <value>Nº</value>
+    <value>#</value>
   </data>
   <data name="ListMotions_Grid_Title" xml:space="preserve">
     <value>Título</value>
@@ -211,22 +211,22 @@
     <value>Propor nova alteração à proposta</value>
   </data>
   <data name="ViewMotion_Amendment" xml:space="preserve">
-    <value>Alteração</value>
+    <value>Emendas</value>
   </data>
   <data name="ViewMotion_AmendmentCountOne" xml:space="preserve">
-    <value>Uma alteração</value>
+    <value>Uma Emenda</value>
   </data>
   <data name="ViewMotion_AmendmentCountTwoPlus" xml:space="preserve">
-    <value>{0} alterações</value>
+    <value>{0} emendas</value>
   </data>
   <data name="ViewMotion_AmendmentCountZero" xml:space="preserve">
-    <value>Sem alterações</value>
+    <value>Sem emendas</value>
   </data>
   <data name="ViewMotion_AmendmentProposedChange" xml:space="preserve">
     <value>Alteração Proposta</value>
   </data>
   <data name="ViewMotion_AmendmentText" xml:space="preserve">
-    <value>Justificação</value>
+    <value>Justificativa</value>
   </data>
   <data name="ViewMotion_DecisionPoints" xml:space="preserve">
     <value>Decisões propostas</value>
@@ -258,7 +258,7 @@
     <comment>First item in dropdown box</comment>
   </data>
   <data name="VoteAmendments_Grid_Abstain" xml:space="preserve">
-    <value>Abst.</value>
+    <value>Abster-se.</value>
     <comment>Column header</comment>
   </data>
   <data name="VoteAmendments_Grid_Board" xml:space="preserve">
@@ -274,7 +274,7 @@
     <comment>Row header</comment>
   </data>
   <data name="VoteAmendments_Grid_Designation" xml:space="preserve">
-    <value>Nº</value>
+    <value>#</value>
     <comment>Column header</comment>
   </data>
   <data name="VoteAmendments_Grid_No" xml:space="preserve">
@@ -282,7 +282,7 @@
     <comment>Column header</comment>
   </data>
   <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
-    <value>Razão</value>
+    <value>Justificativa</value>
     <comment>Row header</comment>
   </data>
   <data name="VoteAmendments_Grid_Recommend" xml:space="preserve">
@@ -306,10 +306,10 @@
     <comment>In content box header. The meeting name goes in {0}.</comment>
   </data>
   <data name="VoteAmendments_Info" xml:space="preserve">
-    <value>Vote em alterações sugeridas (erratas) às propostas. Caso passem, elas alteram a proposta. Na próxima ronda, iremos votar nas propostas resultantes. As alterações individuais são listadas sob cada proposta, e há detalhes adicionais sob cada proposta e alteração. Seleccione uma recomendação de voto se assim desejar.</value>
+    <value>Vote nas alterações sugeridas (emendas) às propostas. Caso passem, elas alteram a proposta. Na próxima rodada, iremos votar nas propostas resultantes. As alterações individuais são listadas sob cada proposta, e há detalhes adicionais sob cada proposta e emenda. Seleccione uma recomendação de voto se assim desejar.</value>
   </data>
   <data name="VoteAmendments_PageTitle" xml:space="preserve">
-    <value>Votar em Alterações</value>
+    <value>Votar nas emendas</value>
     <comment>In page title and header</comment>
   </data>
   <data name="VoteAmendments_Recommend_Abstain" xml:space="preserve">
@@ -330,7 +330,7 @@
     <comment>This becomes a link which folds out to a popup asking "for motions or amendments".</comment>
   </data>
   <data name="Vote_CreateVotingList_Amendments" xml:space="preserve">
-    <value>Criar lista de votação para alterações</value>
+    <value>Criar lista de votação para emendas</value>
     <comment>In pop-up after clicking "create voting list"</comment>
   </data>
   <data name="Vote_CreateVotingList_Elections" xml:space="preserve">
@@ -342,7 +342,7 @@
     <comment>In pop-up after clicking "create voting list"</comment>
   </data>
   <data name="Vote_Info" xml:space="preserve">
-    <value>Por vezes {0} realiza reuniões. Durante estas reuniões, os membros podem votar. Esta é uma lista do que pode votar. Pode também criar uma lista de votação que serve como recomendação para outros.</value>
+    <value>Por vezes {0} realiza reuniões. Durante estas reuniões, os membros podem votar. Esta é uma lista do que você pode votar. Você pode também criar uma lista de votação que serve como recomendação para outros.</value>
     <comment>The {0} is the organization name.</comment>
   </data>
   <data name="Vote_MeetingElections" xml:space="preserve">
@@ -362,11 +362,11 @@
     <comment>Keep very short.</comment>
   </data>
   <data name="Vote_OpensOnDate" xml:space="preserve">
-    <value>Abre {0:yyyy-MMM-dd}.</value>
+    <value>Abre às {0:yyyy-MMM-dd}.</value>
     <comment>Note the embedded date format. Localize to national standard.</comment>
   </data>
   <data name="Vote_PageTitle" xml:space="preserve">
-    <value>Votação</value>
+    <value>Votar</value>
   </data>
   <data name="Vote_PointsOfOrder" xml:space="preserve">
     <value>Pontos de Ordem</value>
@@ -379,7 +379,7 @@
     <comment>Link to voting page</comment>
   </data>
   <data name="Vote_VoteOnAmendments" xml:space="preserve">
-    <value>Vote em {0:N0} alterações:</value>
+    <value>Vote em {0:N0} emendas:</value>
     <comment>The {0} is the amendment count.</comment>
   </data>
   <data name="Vote_VoteOnMotions" xml:space="preserve">

@@ -117,27 +117,65 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
+  <data name="Applicant_Signup_Body" xml:space="preserve">
+    <value>Ang bagong tao ay nag-aplay na maging isang [RegularTitle] sa [OrganizationName]! [ConcernedPersonName] ay kasalukuyang nakatira sa [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Applicant_Signup_Header" xml:space="preserve">
+    <value>[[OrganizationName]] Bagong Aplikante: [ConcernedPersonName], [GeographyName]</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>Sa pagtangkang magkuha ng bayad patungo sa iyong address ng bayad sa Bitcoin Cash, ang address ([BitcoinAddress]) ay hindi tinanggap sa pinagbabatayang engine sa pagkuha ng bayad bilang isang imbalido. Kaya ito ay nawala mula sa iyong propayl.
+
+Mangyaring mag log on sa [InstallationName] ng [ExternalUrl] at magtakda ng isang bagong bitcoin address sa pagkuha ng bayad.</value>
+  </data>
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] Masamang bitcoin payout address</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>Binago mo ang iyong Bitcoin Cash payout address mula [BitcoinOldAddress] patungo sa [BitcoinAddress]. Bilang pag-iingat sa seguridad, ang lahat ng mga payout sa susunod na 48 na mga oras ay makukuwarentenas.
+
+Kung HINDI mo binago ang payout address at nagkaroon ng paglabag sa seguridad, mangyaring pindutin ang link na ito upang agad-agad mong mapatigil ang iyong akawnt: [LockdownLink]
+
+Kung iyong napindut ang link, ang iyong akawnt ay mapapahinto agad-agad na walang mga kahilingan sa kumpirmasyon. Subalit, kung ikaw ay humiling sa pagbago ng payout address, maayos ang lahat at walang karagdagang aksyon ang kinakailangan sa iyong panig.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Nagbago ang Bitcoin Cash payout address</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>Mayroon kang mga pondo na naghihintay para sa payout sa [OrganizationName], ngunit hindi ka pa nakapagtakda ng isang Bitcoin Cash payout address. 
+
+Mangyaring mag-log on sa [InstallationName] sa [ExternalUrl] at sundin ang link upang itakda ang iyong payout address - mahahanap mo ito sa listahan ng mga aytem ng gawain.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Mangyaring itakda ang iyong Bitcoin Cash payout address</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>Ikaw ay nakapagtakda ng isang Bitcoin Cash payout address: [BitcoinAddress]. Bilang pag-iingat sa seguridad, ang lahat ng mga payout para sa susunod na 48 na mga oras ay makukuwarentenas, at pagkatapos ay magpapatuloy na mababayad patungo sa bagong address.
+
+Kung hindi mo itinakda ang payout address na ito (sulit na suriing makalawa ang address na ito na nasa itaas para sa dagdag seguridad), kontakin agad-agad ang [OrganizationName].</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>Ang Bitcoin Cash payout address ay itinakda ni [ConcernedPersonName]. Ang mga payout ay magsisimula pagkatapos ng 48 na mga oras kapag ang panahon sa kuwarentenas ay nagtapos na.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] ay nakapagtakda ng Bitcoin Cash payout address</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Naitakda na Bitcoin Cash payout address</value>
+  </data>
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
     <value>Ang bitcoin hotwallet para sa [OrganizationName] ay nagawa lamang ang [PaymentCount] ng awtomatikong (mga) pagbabayad na kabuuan ng [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin o "bits").</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Hotwallet Payout: [CurrencyCode] [AmountFloat]</value>
   </data>
-  
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>[[BitcoinAmountFloat] microbitcoin (“bits”) ay nailipat patungo sa iyong Bitcoin Cash address ([BitcoinAddress]) ni [OrganizationName] para sa mga sumusunod:
+
+[EmbeddedPreformattedText]
+
+Ikaw ay dapat makakakita ng transaksyon sa iyong pitaka at ito ay nararapat na makakamit ang pagkakagastos sa loob ng isang oras (anim na mga normal na kumpirmasyon).</value>
+  </data>
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Ang mga pondong ibinayad sa iyo:[CurrencyCode] [AmountFloat]</value>
   </data>
@@ -147,12 +185,30 @@
   <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
     <value>[[OrganizationName] - URGENT] Bitcoin private key error; hindi maaaring magbayad</value>
   </data>
-  
-  
-  
-  
-  
-  
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Sinusubukan ng Swarmops na makapagsagawa ng pagbayad ng [CurrencyCode] [AmountNeededFloat], ngunit ang [CurrencyCode] [AmountWalletFloat] lamang ang magagamit sa Bitcoin Cash hotwallet. Ang Swarmops ay nabigo sa paggawa ng karagdagang pagbayad sa oras na ito. 
+
+Mangyaring i-top up AGAD-AGAD ang hotwallet sa pinakamababang kinakailangang halaga - isang karagdagang [AmountMissingMicrocoinsFloat] microbitcoin (“bits”) ang kinakailangan upang makapagpatuloy sa mga operasyong pinansyal ng hotwallet.
+
+Ang Swarmops ay patuloy na susubok at patuloy na magpapadala ng mga notipikasyon habang ito ay hindi pa nalalagpasan.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - AYTEM NG AKSYON] Hindi sapat para sa pagbabayad ang Bitcoin Cash hotwallet - mag-top up agad-agad</value>
+  </data>
+  <data name="CashAdvance_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Ang iyong nakaraang aprubadong paunang bayad sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], hinggil sa [RequestPurpose], ang pag-apruba nito ay BINAWI ng may-ari ng badyet. Ang paunang bayad na ito ay hindi na aprubado. Ito ay nagpapahiwatig ng isang uri ng problema sa iyong kahilingan.
+
+Umasa ng higit pang komunikasyon mula sa may-ari ng badyet na susunod sa bagay na ito.</value>
+  </data>
+  <data name="CashAdvance_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Pag-apruba para sa Paunang Bayad BINAWI: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Approved_Body" xml:space="preserve">
+    <value>Ang iyong hiniling na paunang bayad kay [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], hinggil sa [RequestPurpose], ay inaprubahan ng may-ari ng badyet. Ito ay magpapatuloy na sa payout patungo sa iyo.</value>
+  </data>
+  <data name="CashAdvance_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Paunang Bayad Aprubado: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Ang iyong cash advance sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat] tungkol sa [RequestPurpose] ay tinanggihan. Ang teksto sa ibaba ay ibinigay bilang dahilan para sa pagtangging ito:
 
@@ -170,14 +226,42 @@ Nangangahulugan ito na dapat mong makita ang halaga sa iyong account sa ilang sa
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Cash Advance Paid: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] ay humiling ng isang paunang bayad ng [CurrencyCode] [BudgetAmountFloat] para sa layunin na [RequestPurpose]. Ang perang ito parte ng iyong badyet, [BudgetName].
+
+Mangyaring mag-log on sa [InstallationName] sa [ExternalUrl]Financial/ApproveCosts upang patunayan o tanggihan.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - AYTEM NG AKSYON] Paunang Bayad Hiniling: [CurrencyCode] [BudgetAmountFloat] - Kinakailangan ang Pag-apruba</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Ang iyong nakaraang aprubadong pag-angkin ng gastos kay [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], hinggil sa [RequestPurpose], ang pag-apruba nito ay BINAWI ng may-ari ng badyet. Ito ay nagpapahiwatig ng isang uri ng problema sa iyong pag-angkin ng gastos. 
+
+Umasa ng higit pang komunikasyon mula sa may-ari ng badyet na susunod sa bagay na ito.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] BINAWI ang Pag-Apruba para Pag-angkin ng Gastos: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
+    <value>Ang iyong pag-angkin ng gastos kay [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat], hinggil sa [RequestPurpose], ay inaprubahan ng may-ari ng badyet. Ito ay ibabayad sa iyo kapag ang mga resibo ay nakumpirmang balido.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Aprubado ang Pag-angkin ng Gasto: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] ay nakalikha ng isang pag-angkin ng gastos laban badyet ng [BudgetName] para sa halaga na [CurrencyCode] [BudgetAmountFloat]. Ang pag-angkin ay hinggil sa [RequestPurpose]. Mangangailangan kang magpatunay sa pag-angkin ng gastos na ito.
+
+Mangyaringmag-log in sa [InstallationName] sa [ExternalUrl]Financial/ApproveCosts upang magpatunay o tanggihan.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] - AYTEM NG AKSYON] Gastos sa Pag-angkin ay Nalikha: [CurrencyCode] [BudgetAmountFloat] - Kinakailangan ang Pag-apruba</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Ang claim sa gastos sa [OrganizationName] para sa [CurrencyCode] [BudgetAmountFloat] tungkol sa [RequestPurpose] ay tinanggihan. Ang teksto sa ibaba ay ibinigay bilang dahilan para sa pagtangging ito:
 
@@ -205,10 +289,23 @@ Ang paghahabol ay babayaran sa iyo kapag ang halaga ay napatunayan din ng may-ar
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Mga Resibo ng Mga Kinakailangan sa Claim na Napatunayan: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  
-  
-  
-  
+  <data name="ExpenseClaim_ValidationRetracted_Body" xml:space="preserve">
+    <value>Ang pagpapatunay ng mga resibo para sa iyong pag-angkin ng gastos sa [OrganizationName] para sa [CurrencyCode][BudgetAmountFloat], hinggil sa [RequestPurpose], ay BINAWI ng mga tagatago ng mga rekord na pangpinansyal ng organisasyon. Ang mga resibo ay hindi na tinuturing na balido. Ito ay kalimitang nagpapahiwatig ng isang uri ng problema sa dokumentasyon ng iyong pag-angkin ng gastos.
+
+Umasa ng higit pang komunikasyon na susunod sa bagay na ito. Kung ikaw ay hindi nakarinig mula sa mga tagatago ng rekord sa maikling panahon tungkol sa bagay na ito, mangyaring kausapin mo sila.</value>
+  </data>
+  <data name="ExpenseClaim_ValidationRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] BINAWI ang pagpapatunay para sa mga Resibo ng Pag-angkin ng Gastos: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Isang talaan mula kay [Supplier], hinggil sa [Description], ay naikasa laban sa iyong badyet na [BudgetName] para sa halagang [CurrencyCode][BudgetAmountFloat]. Kinakailangan mong aprubahan ang talaan na ito bago magpatuloy sa payout.
+
+Mangyaring mag-log on sa [InstallationName] sa [ExternalUrl]Financial/ApproveCosts upang magpatotoo o tanggihan.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] AYTEM NG AKSYON] Naikasang Talaan: [CurrencyCode] [BudgetAmountFloat] - Kinakailangan ng Pag-apruba</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Ang isang bagong [Regular] ay idinagdag nang manu-mano sa [OrganizationName] sa loob ng iyong lugar.</value>
   </data>

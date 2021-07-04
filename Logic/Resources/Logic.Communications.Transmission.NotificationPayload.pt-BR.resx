@@ -194,10 +194,19 @@ O Swarmops continuará tentando e continuará enviando essas notificações, des
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ITEM DE AÇÃO] Bitcoin Cash hotwallet insuficiente para pagamentos - deposite imediatamente</value>
   </data>
-  
-  
-  
-  
+  <data name="CashAdvance_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Seu adiantamento em dinheiro previamente aprovado com [OrganizationName] para [CurrencyCode] [BudgetAmountFloat], referente a [RequestPurpose], teve sua aprovação RETRAÍDA pelo proprietário do orçamento. Este adiantamento em dinheiro não é mais aprovado. Isso geralmente indica algum tipo de problema com sua solicitação.
+Espere mais comunicação do proprietário do orçamento para acompanhar o assunto.</value>
+  </data>
+  <data name="CashAdvance_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Aprovação para adiantamento em dinheiro RETRAÍDA: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Approved_Body" xml:space="preserve">
+    <value>Seu adiantamento em dinheiro solicitado com [OrganizationName] para [CurrencyCode] [BudgetAmountFloat], referente a [RequestPurpose], foi aprovado pelo proprietário do orçamento. Agora irá proceder para receber seu pagamento.</value>
+  </data>
+  <data name="CashAdvance_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Adiantamento em Dinheiro Aprovado: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Seu adiantamento em dinheiro com [OrganizationName] para [CurrencyCode] [BudgetAmountFloat] referente a [RequestPurpose] foi negado. O texto abaixo foi dado como motivo para negá-lo:
 [EmbeddedPreformattedText]
@@ -214,14 +223,41 @@ Isso significa que você deve ver o valor em sua conta em breve.</value>
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Adiantamento em Dinheiro pago: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] solicitou um adiantamento em dinheiro de [CurrencyCode] [BudgetAmountFloat] para o objetivo de [RequestPurpose]. Esse dinheiro faz parte do seu orçamento [BudgetName].
+Por favor, faça login no [InstallationName] em [ExternalUrl]Financial/ApproveCosts para confirmar ou negar.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ITEM DE AÇÃO] Solicitação de adiantamento em dinheiro: [CurrencyCode] [BudgetAmountFloat] - Confirmação necessária</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Seu adiantamento em dinheiro previamente aprovado com [OrganizationName] para [CurrencyCode] [BudgetAmountFloat], referente a [RequestPurpose], teve sua aprovação RETRAÍDA pelo proprietário do orçamento. Este adiantamento em dinheiro não é mais aprovado. Isso geralmente indica algum tipo de problema com sua solicitação.
+
+Espere mais comunicação do proprietário do orçamento para acompanhar o assunto.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Aprovação RETRAÍDA para reivindicação de despesa: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
+    <value>Sua reivindicação de despesas com [OrganizationName] para [CurrencyCode] [BudgetAmountFloat], referente a [RequestPurpose], foi aprovada pelo proprietário do orçamento. Será pago a você quando os recibos forem confirmados válidos.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Reivindicação de Despesa Aprovada: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] criou uma reivindicação de despesas em relação ao seu orçamento de [BudgetName] para o valor de [CurrencyCode] [BudgetAmountFloat]. A reivindicação diz respeito a [RequestPurpose]. Você precisará atestar essa reivindicação de despesas.
+
+Por favor, faça o login no [InstallationName] em [ExternalUrl] Financial/ApproveCosts para atestar ou negar.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ITEM DE AÇÃO] Reivindicação de Despesa Criada: [CurrencyCode] [BudgetAmountFloat] - Aprovação necessária</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Sua reivindicação de despesas com [OrganizationName] para [CurrencyCode] [BudgetAmountFloat] referente a [RequestPurpose] foi negada. O texto abaixo foi dado como motivo para negá-lo:
 
@@ -249,10 +285,23 @@ A reivindicação será paga quando o valor também tiver sido atestado pelo pro
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Recibos de Reivindicação de Despesa Validados: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  
-  
-  
-  
+  <data name="ExpenseClaim_ValidationRetracted_Body" xml:space="preserve">
+    <value>A validação de recibos para sua solicitação de despesa com [OrganizationName] para [CurrencyCode] [BudgetAmountFloat], referente a [RequestPurpose], foi RETRAÍDA pelos detentores de registros financeiros da organização. Os recibos não são mais considerados válidos. Isso geralmente indica algum tipo de problema com a documentação da sua declaração de despesas.
+
+Espere mais comunicação para acompanhar o assunto. Se você não ouvir os detentores de registros em pouco tempo sobre este assunto, faça o acompanhamento deles.</value>
+  </data>
+  <data name="ExpenseClaim_ValidationRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Aprovação RETRAÍDA para Reivindicação de Despesa dos Recibos: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Uma fatura de [Supplier], referente a [Description], foi arquivada em relação ao seu orçamento de [BudgetName] para o valor de [CurrencyCode] [BudgetAmountFloat]. Você deve aprovar essa fatura antes de prosseguir para o pagamento.
+
+Por favor, faça o login no [InstallationName] em [ExternalUrl] Financial/ApproveCosts para atestar ou negar.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ITEM DE AÇÃO] Fatura apresentada: [CurrencyCode] [BudgetAmountFloat] - Aprovação necessária</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Um novo [Regular] foi adicionado manualmente a [OrganizationName] em uma área sua.</value>
   </data>
@@ -266,24 +315,24 @@ A reivindicação será paga quando o valor também tiver sido atestado pelo pro
     <value>[[OrganizationName]] Novo [Regular]: [PersonName], [PersonGeography] [CountryCode]</value>
   </data>
   <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] [Regularship] renovada: [PersonName], [PersonGeography] [CountryCode] (manual)</value>
+    <value>[[OrganizationName]] [Regularship] renovado: [PersonName], [PersonGeography] [CountryCode] (manual)</value>
   </data>
   <data name="NotificationFooter_Generic" xml:space="preserve">
     <value>--
-Este email foi enviado a [Addressee] de [OrganizationName]. Caso no futuro deseje deixar de receber estas notificações, por favor entre em [InstallationName] em [ExternalUrl] e modifique as suas definições de notificação.</value>
+Este e-mail foi enviado para [Addressee] de [OrganizationName]. Se você não deseja receber essas notificações no futuro, faça login no [InstallationName] em [ExternalUrl] e modifique suas configurações de notificação.</value>
   </data>
   <data name="OutboundComm_Resolved_Body" xml:space="preserve">
-    <value>A sua mensagem foi agendada para entrega e os destinatários foram resolvidos. O seu correio irá ser enviado, ou tentativamente enviado, a [RecipientCount] pessoas em [GeographyName] em [OrganizationName].</value>
+    <value>A sua mensagem está em espera para ser entregue e os destinatários foram definidos. Seu e-mail será enviado, ou tentará ser enviado para, [RecipientCount] pessoas em [GeographyName] em [OrganizationName].</value>
   </data>
   <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Destinatários de Comunicado determinados para [GeographyName]: [RecipientCount]</value>
+    <value>[[OrganizationName]] Destinatários de comunicação determinados para [GeographyName]: [RecipientCount]</value>
   </data>
   <data name="OutboundComm_Sent_Body" xml:space="preserve">
     <value>A sua mensagem para [GeographyName] foi enviada a todos os destinatários agendados. Dos [RecipientCount] destinatários agendados, até agora [RecipientsSuccess] foram contactados com sucesso -- recorde que o correio pode não ser entregue ou lido mais tarde por várias razões.
 
 Tempo gasto na resolução: [ResolvingTime].
 Tempo gasto na transmissão: [TransmissionTime].
-Tempo total desde criação até conclussão: [TotalTime].</value>
+Tempo total desde criação até conclusão: [TotalTime].</value>
   </data>
   <data name="OutboundComm_Sent_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Comunicado transmitido: [GeographyName]</value>
@@ -295,49 +344,49 @@ Tempo total desde criação até conclussão: [TotalTime].</value>
     <value>[[OrganizationName]] Novo [RegularTitle]: [ConcernedPersonName], [GeographyName]</value>
   </data>
   <data name="Password_CannotReset2FA_Body" xml:space="preserve">
-    <value>Alguém, muito provavelmente você, pediu uma recuperação da palavra-passe associada com este endereço de email em [InstallationName]. Contudo, a autenticação de dois fatores está ativa nesta conta para maior segurança. Como tal, a palavra-passe NÃO PODE ser recuperada por meios simples.
+    <value>Alguém, muito provavelmente você, pediu uma recuperação da senha associada com este endereço de e-mail em [InstallationName]. Contudo, a autenticação de dois fatores está ativa nesta conta para maior segurança. Como tal, a senha NÃO PODE ser recuperada por meios simples.
 
-Por favor contacte o pessoal administrativo em [InstallationName] para resolver o seu problema e emitir uma nova palavra-passe seguindo um procedimento de identificação mais rigoroso de acordo com o nível de segurança de dois fatores.
+Por favor contacte o pessoal administrativo em [InstallationName] para resolver o seu problema e emitir uma nova senha seguindo um procedimento de identificação mais rigoroso de acordo com o nível de segurança de dois fatores.
 
 Obrigado pela sua compreensão.</value>
   </data>
   <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
-    <value>[[InstallationName]] Impossível Recuperar Password</value>
+    <value>[[InstallationName]] Impossível Recuperar Senha</value>
   </data>
   <data name="Password_Changed_Body" xml:space="preserve">
-    <value>A sua palavra-passe de [InstallationName] acbou de ser alterada em [ExternalUrl].
+    <value>A sua [InstallationName] senha acabou de ser alterada em [ExternalUrl].
 
-Se não realizou esta alteração de palavra-passe, houve uma violação de segurança. Caso seja este o caso, por favor bloqueie a sua conta IMEDIATAMENTE através do link seguinte:
+Se você não realizou esta alteração da senha, houve uma violação de segurança. Caso seja este o caso, por favor bloqueie a sua conta IMEDIATAMENTE através do seguinte link:
 [ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
 
-Caso confirme o bloqueio na ligação mencionada acima, quaisquer sessões abertas irão terminar imediatamente, autenticações com a nova palavra-passe irão ser bloqueadas e os administradores irão contactá-lo para verificar o que sucedeu e ajudá-lo a reactivar a sua conta.
+Caso você confirme o bloqueio no link mencionado acima, quaisquer sessões abertas irão terminar imediatamente, autenticações com a nova senha irão ser bloqueadas e os administradores irão contactá-lo para verificar o que sucedeu e ajudá-lo a reactivar a sua conta.
 
-Contudo, caso tenha sido você mesmo a alterar a palavra-passe agora mesmo, e como tal desencadeado o envio desta notificação, então tudo está obviamente bem e como deveria ser. Continue.</value>
+Contudo, caso tenha sido você mesmo a alterar a senha agora mesmo, e como tal desencadeado o envio desta notificação, então tudo está obviamente bem como deveria ser. Continue.</value>
   </data>
   <data name="Password_Changed_Subject" xml:space="preserve">
-    <value>[[InstallationName]] Palavra-passe Alterada</value>
+    <value>[[InstallationName]] Senha Alterada</value>
   </data>
   <data name="Password_ResetByCrew_Body" xml:space="preserve">
-    <value>Pessoas em [OrganizationName] emitiram um ticket para recuperação da palavra-passe da sua conta, presumivelmente a seu pedido. Este ticket é válido para as próximas 24 horas.
+    <value>Pessoas em [OrganizationName] emitiram um ticket para recuperação da senha da sua conta, presumivelmente a seu pedido. Este ticket é válido para as próximas 24 horas.
 
-Por favor siga esta ligação para redefinir a sua palavra-passe e reativar a autenticação de dois fatores, caso tenha sido ativada anteriormente:
+Por favor siga este link para redefinir a sua senha e reativar a autenticação de dois fatores, caso tenha sido ativada anteriormente:
 
 [ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
 
-Este ticket irá expirar dentro de 24 horas. Caso não redefina a sua senha neste período de tempo, precisará de entrar em contato com os administradores de [OrganizationName] para emitir um novo ticket de recuperação de palavra-passe.</value>
+Este ticket irá expirar dentro de 24 horas. Caso não redefina a sua senha neste período de tempo, precisará de entrar em contato com os administradores de [OrganizationName] para emitir um novo ticket de recuperação de senha.</value>
   </data>
   <data name="Password_ResetByCrew_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Ticket de Recuperação de Password</value>
+    <value>[[OrganizationName]] Ticket de Recuperação de Senha</value>
   </data>
   <data name="Password_ResetOnRequest_Body" xml:space="preserve">
-    <value>Alguém, muito provavelmente você, pediu para recuperar a palavra-passe associada com este endereço de email em [InstallationName]. Caso tenha sido você, por favor siga a ligação abaixo durante os próximos 60 minutos para completar o procedimento de recuperação de palavra-passe:
+    <value>Alguém, muito provavelmente você, pediu para recuperar a senha associada com este endereço de e-mail em [InstallationName]. Caso tenha sido você, por favor siga o link abaixo durante os próximos 60 minutos para completar o procedimento de recuperação de senha:
 
 [ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
 
-Caso NÃO tenha pedido para recuperar a palavra-passe, pode (e deve) ignorar este email. O pedido de recuperação de palavra-passe irá expirar dentro de uma hora. (Caso esteja a receber uma grande quantidade destes links de recuperação de palavra-passe, por favor notifique o administrador.)</value>
+Caso NÃO tenha pedido para recuperar a senha, pode (e deve) ignorar este e-mail. O pedido de recuperação de senha irá expirar dentro de uma hora. (Caso esteja a receber uma grande quantidade destes links de recuperação de senha, por favor notifique o administrador.)</value>
   </data>
   <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
-    <value>[[InstallationName]] Ticket de Recuperação de Palavra-Passe</value>
+    <value>[[InstallationName]] Ticket de Recuperação de Senha</value>
   </data>
   <data name="Receipts_Filed_Body" xml:space="preserve">
     <value>Foram recebidos recibos que necessitam de validação para os seus processos financeiros prosseguirem.
@@ -345,16 +394,24 @@ Caso NÃO tenha pedido para recuperar a palavra-passe, pode (e deve) ignorar est
 Por favor entre em [InstallationName] em [ExternalUrl]Financial/ValidateReceipts para validá-los ou rejeitá-los.</value>
   </data>
   <data name="Receipts_Filed_Subject" xml:space="preserve">
-    <value>[[OrganizationName] - ITEM DE AÇÃO] Recibos Recebidos - Validação Necessária</value>
+    <value>[[OrganizationName] - ITEM DE AÇÃO] Recibos Arquivados - Validação Necessária</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
-  
-  
+  <data name="Salary_Denied_Body" xml:space="preserve">
+    <value>Seu pagamento de salário para [RequestPurpose] foi cancelado. Não será pago.
+
+Se isso for uma surpresa para você, entre em contato com a organização e/ou seu supervisor urgentemente. O seguinte foi dado como motivo:
+
+[EmbeddedPreformattedText]</value>
+  </data>
+  <data name="Salary_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Pagamento de salário negado: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   <data name="Salary_LastYearSummary_Body" xml:space="preserve">
-    <value>Este é o resumo da sua folha de vencimento de [LastYear]. Não é uma declaração do seu novo vencimento, mas uma declaração dos salários pagos a si ao longo do último ano, bem como quaisquer impostos deduzidos. O propósito desta declaração é para servir como informação para os seus registos e/ou para fins de declaração de impostos do ano anterior.
+    <value>Este é o resumo do seu salário do [LastYear]. Não é uma declaração do seu novo salário, mas uma declaração dos salários pagos a você ao longo do último ano, bem como quaisquer impostos deduzidos. O propósito desta declaração é para servir como informação para os seus registos e/ou para fins de declaração de impostos do ano anterior.
 
 Salário bruto de [LastYear]:  [CurrencyCode] [GrossSalaryTotal]
-Impostos deduzidos daí: [CurrencyCode] [TaxDeductedTotal]
+Impostos deduzidos de: [CurrencyCode] [TaxDeductedTotal]
 Salário líquido pago:    [CurrencyCode] [NetSalaryTotal]
 
 
@@ -368,7 +425,7 @@ Além disso, [CurrencyCode] [TaxAdditiveTotalUnpadded] foram pagos em impostos p
     <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
   </data>
   <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Resumo da Folha de Vencimento de [LastYear]</value>
+    <value>[[OrganizationName]] Resumo do seu salário de [LastYear]</value>
   </data>
   <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
     <value>O Backend do Swarmops [SwarmopsVersion] em [HostName] atualizou com sucesso o esquema da base de dados do Swarmops para a versão [DbVersion].
@@ -379,17 +436,17 @@ Esta mensagem é apenas informativa. Não é necessária qualquer ação.</value
     <value>Base de dados do Swarmops actualizada</value>
   </data>
   <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
-    <value>O Backend do Swarmops [SwarmopsVersion] em [Hostname] FALHOU a atualização à base de dados do Swarmops. Isto é geralmente causado por um erro externo temporário na ligação, causando um erro na aquisição no patch.
+    <value>O Backend do Swarmops [SwarmopsVersion] em [Hostname] FALHOU em atualizar à base de dados do Swarmops. Isto é geralmente causado por um erro externo temporário na rede, causando um erro na aquisição do patch.
 
-Estamos atualmente na versão do esquema da base de dados [DbVersion], mas estamos a tentar atualizar para a versão [DbVersionExpected].
+Estamos atualmente na versão do schema da base de dados [DbVersion], mas estamos a tentar atualizar para a versão [DbVersionExpected].
 
-A tentativa de atualização será tentada a cada hora. Alguma funcionalidade poderá estar desativada até que a base de dados seja atualizada. Caso queira tentar solucionar o problema manualmente, os pacotes de atualização da base de dados podem ser obtidos em packages.swarmops.com, no mesmo local onde o apt-get obtém os seus pacotes de software.</value>
+A atualização será tentada a cada hora. Alguma funcionalidade poderá ser desativada até que a base de dados seja atualizada. Caso queira tentar solucionar o problema manualmente, os pacotes de atualização da base de dados podem ser obtidos em packages.swarmops.com, no mesmo local onde o apt-get obtém os seus pacotes de software.</value>
   </data>
   <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
-    <value>A Actualização da base de dados do Swarmops FALHOU</value>
+    <value>A actualização da base de dados do Swarmops FALHOU</value>
   </data>
   <data name="System_Exception_Body" xml:space="preserve">
-    <value>Uma exceção não tratada foi lançada no Swarmops:
+    <value>Uma exceção não resolvida foi lançada no Swarmops:
 
 [EmbeddedPreformattedText]</value>
   </data>
@@ -397,16 +454,16 @@ A tentativa de atualização será tentada a cada hora. Alguma funcionalidade po
     <value>EXCEÇÃO no Swarmops!</value>
   </data>
   <data name="System_MailServerTest_Body" xml:space="preserve">
-    <value>Este é um email de teste enviado pelo Swarmops [SwarmopsVersion] operacional em [HostName]. Acabou de mudar as definições do servidor de email. Para verificar que as novas definições estão corretas, o Swarmops envia esta mensagem de teste a partir do seu backend.</value>
+    <value>Este é um email de teste enviado pelo Swarmops [SwarmopsVersion] operacional em [HostName]. Você acabou de mudar as definições do servidor de email. Para verificar que as novas definições estão corretas, o Swarmops envia esta mensagem de teste a partir do seu backend.</value>
   </data>
   <data name="System_MailServerTest_Subject" xml:space="preserve">
     <value>Teste do Servidor de Email do Swarmops</value>
   </data>
   <data name="System_PublicRootReset_Body" xml:space="preserve">
-    <value>A chave pública raiz de bitcoin na base de dados MySql não correspondeu à chave privada raiz de bitcoin guardada em /etc/swarmops em [HostName]. Isto é uma situação potencialmente grave, e não deverá nunca acontecer, e assim a chave pública raiz foi derivada novamente da chave privada e escrita novamente na base de dados sobre o que estava lá anteriormente.</value>
+    <value>A public root key do bitcoin no banco de dados MySql não corresponde com a public root key do bitcoin armazenada em /etc/swarmops no [HostName]. Esta é uma condição potencialmente grave, e nunca deveria acontecer, então a public root key foi resgatada da private key e reescrita para o banco de dados sobre a que havia antes.</value>
   </data>
   <data name="System_PublicRootReset_Subject" xml:space="preserve">
-    <value>Swarmops: Recuperação da chave pública raiz da conta corrente</value>
+    <value>Swarmops: Redefinição da public root key da Hotwallet</value>
   </data>
   <data name="System_Startup_Backend_Body" xml:space="preserve">
     <value>O Backend do Swarmops versão [SwarmopsVersion] em [HostName] foi iniciado com sucesso e está ligado à base de dados e às frameworks de notificação.</value>
@@ -415,13 +472,13 @@ A tentativa de atualização será tentada a cada hora. Alguma funcionalidade po
     <value>O Backend do Swarmops está operacional</value>
   </data>
   <data name="System_Startup_Frontend_Body" xml:space="preserve">
-    <value>O servidor de sockets do Frontend fo Swarmops versão [SwarmopsVersion] em [HostName] foi iniciado com sucesso e está ligado à base de dados e frameworks de notificação.</value>
+    <value>A versão do servidor do socket Swarmops front-end [SwarmopsVersion] no servidor [HostName] iniciou e se conectou com sucesso aos quadros de banco de dados e de notificação.</value>
   </data>
   <data name="System_Startup_Frontend_Subject" xml:space="preserve">
     <value>O Frontend do Swarmops está operacional</value>
   </data>
   <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
-    <value>O mecanismo de transmissão do Swarmops em [HostName] encontrou um tipo de comunicação desconhecido ([UnrecognizedPayloadType]). Isto deverá acontecer apenas em ocasiões extremamente raras, em conjunto com actualizações onde uma versão actualizada tem que tomar conta de algo que mudou de nome a meio do processo, um fenómeno raro.
+    <value>O mecanismo de transmissão do Swarmops em [HostName] encontrou um tipo de comunicação desconhecido ([UnrecognizedPayloadType]). Isto deverá acontecer apenas em ocasiões extremamente raras, em conjunto com actualizações onde uma versão actualizada tem que tomar conta de algo que mudou de nome no meio do processo, um fenómeno raro.
 
 Se este erro é recorrente, poderá ter um plugin mal instalado ou algo semelhante. Em qualquer dos casos, a mensagem não reconhecida foi ignorada e não será transmitida, pois o Swarmops não sabe como o fazer.</value>
   </data>

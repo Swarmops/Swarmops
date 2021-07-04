@@ -260,7 +260,9 @@ Ako volontirate sa formalnom odgovornošću, neko (verovatno volonter), će Vas 
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Registracija je obavljena.</value>
   </data>
-  
+  <data name="Signup_Unsupported" xml:space="preserve">
+    <value>Swarmops još nije implementirao podršku za ovaj tip naknade.</value>
+  </data>
   <data name="Signup_VolunteerHeader" xml:space="preserve">
     <value>Za koju poziciju ste zainteresovani?</value>
   </data>

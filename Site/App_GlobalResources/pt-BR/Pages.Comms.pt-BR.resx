@@ -121,13 +121,13 @@
     <value>Deve escrever o corpo da mensagem antes de enviar a sua mensagem.</value>
   </data>
   <data name="SendMassMessage_Error_EmptySubject" xml:space="preserve">
-    <value>Deve escrever o assunto da mensagem.</value>
+    <value>Deve escrever o corpo da mensagem antes de enviar a sua mensagem.</value>
   </data>
   <data name="SendMassMessage_Geography" xml:space="preserve">
-    <value>Que se encontram em</value>
+    <value>Quem está localizado em</value>
   </data>
   <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
-    <value>A Sua Mensagem</value>
+    <value>Sua mensagem</value>
   </data>
   <data name="SendMassMessage_Info" xml:space="preserve">
     <value>Enviar uma mensagem a um grupo de pessoas na organização. Pode enviar uma mensagem por email (ideal para boletins informativos e informação geral) ou para os seus telemóveis (bastante intrusivo, e também com alguns custos).</value>
@@ -158,11 +158,11 @@
     <comment>Subject of message (if applicable; depends on transmission mode)</comment>
   </data>
   <data name="SendMassMessage_TestMessage" xml:space="preserve">
-    <value>Testar</value>
+    <value>Teste</value>
     <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
   </data>
   <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
-    <value>A mensagem foi enviada para si, para que possa ver como fica antes de ser enviada aos destinatários.</value>
+    <value>A mensagem foi enviada para você, então você pode ver o que parece antes de ir ao vivo.</value>
   </data>
   <data name="SendMassMessage_Title" xml:space="preserve">
     <value>Enviar Mensagem em Massa</value>

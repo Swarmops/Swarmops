@@ -196,10 +196,20 @@ Swarmops a tun bo ma gbiyanju ati pe a si ma si fi awon iwifuni won yii ranse ni
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] Bitcoin Cash hotwallet ko to fun awon owo sisan - se afikun lẹsẹkẹsẹ</value>
   </data>
-  
-  
-  
-  
+  <data name="CashAdvance_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Owo agbaalẹ rẹ ti o jẹ fifọwọsi tẹlẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti jẹ AIFỌWỌSI nipasẹ ẹniti o ni isuna naa. Owo agbaalẹ yii koni ifọwọsi mọ. Eyi maa n tọka si awọn irufẹ iṣoro diẹ pẹlu ìbéèrè rẹ.
+
+Ma reti ibaraẹnisọrọ diẹ si lati ọdọ ẹniti o ni isuna naa lati tẹle ọrọ naa.</value>
+  </data>
+  <data name="CashAdvance_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ifọwọsi fun Owo Agbaalẹ di FIFAGILE: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Approved_Body" xml:space="preserve">
+    <value>Owo agbaalẹ ti o beere fun pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti jẹ fifọwọsi nipasẹ ẹniti o ni isuna naa. Yoo wa tẹsiwaju bayi lati sanwo jade fun ọ.</value>
+  </data>
+  <data name="CashAdvance_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Owo Agbaalẹ di Fifọwọsi: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Owo agbaalẹ rẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat] nipa [RequestPurpose] ti jẹ kikọ. Awọn ọrọ ti isalẹ yi ni a pese gẹgẹbi idi fun kikọ rẹ:
 
@@ -217,14 +227,43 @@ Eyi tumọ si pe o yẹ ki o ri iye re lori akọọlẹ rẹ laipe.</value>
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Owo agbaalẹ di sisan: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] ti beere fun owo agbaalẹ ti [CurrencyCode] [BudgetAmountFloat] fun idi ti [RequestPurpose]. Owo yi jẹ ara ti isuna rẹ, [BudgetName].
+
+Jowo wọle si [InstallationName] ni [ExternalUrl]Financial/AttestCosts lati jẹri tabi kọ.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Owo Agbaalẹ di bibeere: [CurrencyCode] [BudgetAmountFloat] - Nilo Ifọwọsi</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Ibéèrè owo agbapada rẹ ti o jẹ fifọwọsi tẹlẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti jẹ AIFỌWỌSI nipasẹ ẹniti o ni isuna naa. Ibéèrè owo agbapada yii koni ifọwọsi mọ. Eyi maa n tọka si awọn irufẹ iṣoro diẹ pẹlu ibéèrè owo agbapada rẹ.
+
+Ma reti ibaraẹnisọrọ diẹ si lati ọdọ ẹniti o ni isuna naa lati tẹle ọrọ naa.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_ApprovalRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ifọwọsi fun Ibéèrè owo agbapada di FIFAGILE: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
+    <value>Ibéèrè owo agbapada rẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti jẹ fifọwọsi nipasẹ ẹniti o ni isuna naa. Yoo jẹ sisan jade fun ọ nigbati awọn iwe ọja naa ba jẹ otito ti o fẹsẹmulẹ.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Approved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ibéèrè Owo Agbapada di Fifọwọsi: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] ti ṣẹda ibeere owo agbapada ti o lodi si isuna [BudgetName] 
+fun iye ti o jẹ [CurrencyCode] [BudgetAmountFloat]. Ibeere naa kan [RequestPurpose]. Iwọ yoo nilo lati jẹrisi ibeere agbapada yii.
+
+Jọwọ wọle si [InstallationName] ni [ExternalUrl]Financial/ApproveCosts lati jẹri tabi kọ.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Ibeere Owo Agbapada di Siṣẹda: [CurrencyCode] [BudgetAmountFloat] - Nilo Ifọwọsi</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Ibeere owo agbapada rẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat] nipa [RequestPurpose] ti jẹ kikọ. Awọn ọrọ ti isalẹ yi ni a pese gẹgẹbi idi fun kikọ rẹ:
 
@@ -252,10 +291,23 @@ A yoo san owo naa jade fun ọ nigbati iye naa ba ti je jijẹri si nipasẹ eni
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Iwe oja Ibéèrè Owo Agbapada di Jijẹri: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
-  
-  
-  
-  
+  <data name="ExpenseClaim_ValidationRetracted_Body" xml:space="preserve">
+    <value>Ijẹrisi awọn iwe ọja fun ibeere owo agbapada rẹ pẹlu [OrganizationName] fun [CurrencyCode] [BudgetAmountFloat], nipa [RequestPurpose], ti jẹ AIFỌWỌSI nipasẹ awọn oluṣọ akọsilẹ owo ti ajọ naa. Awọn iwe ọja naa jẹ eyi ti ko ni ifẹsẹmulẹ mọ. Eyi maa n tọka si awọn irufẹ iṣoro diẹ pẹlu awọn akọsilẹ ìbéèrè owo agbapada rẹ.
+
+Ma reti ibaraẹnisọrọ diẹ si lati tẹle ọrọ naa. Ti o ko ba gbọ lati odo awọn oluṣọ akosilẹ ni igba diẹ lori ọrọ yii, ma ṣe atẹle pẹlu wọn.</value>
+  </data>
+  <data name="ExpenseClaim_ValidationRetracted_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ifọwọsi di FIFAGILE fun Awọn iwe ọja Ibéèrè Owo Agbapada: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Iwe iye-owo ọja lati [Supplier], nipa [Description], ti di gbigbe dide ni ilodi si isuna rẹ ti [BudgetName] fun iye ti [CurrencyCode] [BudgetAmountFloat]. O gbọdọ fọwọsi Iwe iye-owo ọja yii ṣaaju ki o to lọ si owo sisan jade.
+
+ Jọwọ wọle si [InstallationName] ni [ExternalUrl]Financial/ApproveCosts lati jẹri tabi kọ.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Iwe iye-owo ọja di gbigbe dide: [CurrencyCode] [BudgetAmountFloat] - Nilo Ifọwọsi</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>[Regular] tuntun kan je fi fikun pẹlu afọwọyi [OrganizationName] laarin agbegbe rẹ kan.</value>
   </data>
