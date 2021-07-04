@@ -3,8 +3,8 @@
 
 files:
   -
+    source: 'Localization/*.resx'
+    translation: '/Localization/%file_name%.%locale%.resx'
+  -
     source: 'Logic/*.resx'
     translation: '/Logic/%file_name%.%locale%.resx'
-  -
-    source: 'Site/*.resx'
-    translation: '/Site/%locale%/%file_name%.%locale%.resx'

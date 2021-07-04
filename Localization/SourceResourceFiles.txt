@@ -1,4 +1,3 @@
-﻿
 Controls.Financial.resx
 Controls.Swarm.resx
 Global.resx

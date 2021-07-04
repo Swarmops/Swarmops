@@ -23,8 +23,9 @@ mv Site/sr-CS Site/sr-Latn-RS
 
 #echo "Deploying..."
 
-cp -r Logic/* ../../Logic/Resources/
+cp -r Localization/* ../../Localization/
 cp -r Site/* ../../Site/App_GlobalResources/
-#rm -rf Logic
-#rm -rf Site
-#rm activizr.zip
+rm -rf Logic
+rm -rf Localization
+rm -rf Site
+rm activizr.zip
