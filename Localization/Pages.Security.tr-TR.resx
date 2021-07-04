@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>Bu sayfaya erişim reddedildi</value>
+  </data>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>Yetkiniz olmayan bir sayfaya erişmeye çalıştınız. Bunun hangi sebeplerden olmuş olabileceği için ana panele bakınız.</value>
+  </data>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>Erişim Reddedildi</value>
+  </data>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Swarmops güvenlik sistemi gitmeye çalıştığınız sayfaya erişiminizi engelledi. Bu genellikle onun fonksiyonlarının, şu anki seçili kuruluş (&lt;em&gt;{0}&lt;/em&gt;) için size verilmiş erişim seviyelerinin üzerinde olduğu anlamına gelir. Bu ne kayıt edildi ne de herhangi bir yere raporlandı.&lt;/p&gt;&lt;p&gt;Bu duruma yol açabilecek çeşitli nedenler vardır:&lt;/p&gt;</value>
+  </data>
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>Geçerli kuruluş</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>Bu Swarmops kurulumu ile çeşitli kuruluşlarda yer alabilirsiniz. İşte aralarında geçiş yaptığınız yer.</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>Yeni Organizasyon</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>Bu Swarmops kurulumunda başka bir kuruluşta yer almıyorsunuz, bu yüzden başka bir şeye geçiş yapamazsınız. Bu nedenle, bunun yerine Kontrol Paneli'ne geri gidiyoruz.</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>Organizsayonları Değiştir</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>Değiştirme</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>Veritabanı Yükseltme Bekliyor</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>Bu sayfa yükseltilmiş bir Swarmops veritabanı gerektirir. </value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>Veritabanı Yükseltmesi Bekleniyor</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Bu sayfaya erişmenize engel olan bekleyen bir veritabanı yükseltmesi var. &lt;strong&gt;Bu geçici bir durumdur&lt;/strong&gt; ve Swarmops sunucuları gerekli yükseltmeyi gerçekleştirmek için zaten çalışıyor olmalılar.&lt;/p&gt;
+&lt;p&gt;Bir kaç dakika içinde sayfayı yeniden yüklemeyi deneyin. Eğer durum on beş dakikadan daha fazla sürerse, sistem yöneticinize başvurun.&lt;/p&gt;</value>
+  </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>Hesap &lt;strong&gt;kilitlenmedi&lt;/strong&gt;. Böyle bir hesap yok, veya bilet geçersiz ya da çok eski. Hala bu hesabı kilitlemek istiyorsanız, bu Swarmops kurulumunun yöneticilerine başvurun.</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>Eğer bu sayfayı görüyorsanız, güvenlik nedenleriyle bir kullanıcı hesabını kilitlemeye çalışıyorsunuz. Eğer bağlantı geçerli ve süresi dolmadıysa, hesap zaten kilitlidir.</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>Kullanıcı Hesabı Kilitleme</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>Hesap &lt;strong&gt;başarıyla kilitlendi&lt;/strong&gt; ve tüm etkin oturumlar sona erdirildi.</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>Kilitleme İsteği</value>
+  </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>&lt;strong&gt;AÇIK DEFTERLER&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;{0} Açık Defterleri çalıştırıyor. Bu, herkesin finansal raporları ve defter tutma işlemlerini denetleyebileceği anlamına gelir. Bunu yapmak için kuruluşun İşlemler'ine giriş yaptınız.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt;Bitld iki-faktör kimlik doğrulama şu an etkin.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Şu andan itibaren, giriş yapmak için bitcoin cüzdanınızı kullanabilirsiniz (ve öyle yapmanız &lt;strong&gt;gerekecek&lt;/strong&gt;). Ek güvenlikleri etkinleştirdiğiniz için teşekkür ederiz.&lt;br/&gt;&lt;br/&gt;Lütfen telefonunuzu da bir şifre ile güvende tutmayı unutmayın.</value>
+  </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;BITID GİRİŞİ GEREKLİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Hesap sahibi tarafından etkinleştirildiğinden, bu giriş BitId kimlik doğrulaması gerektiriyor. Bir kullanıcı adı/şifre kombinasyonuyla giriş yapamazsınız.</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>Google Authenticator kodunuzu girin.</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Bitcoin İmzası (BitId) ile giriş</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>Yardım</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>bitid-etkinleştirilmiş bitcoin cüzdanınızla Swarmops'a giriş yapın. İçerisinde para olmasına gerek yoktur. Eğer bitid-etkinleştirilmiş bir bitcoin cüzdanınız yoksa, eski bir kullanıcı adı ve şifre ile manüel şekilde oturum açabilirsiniz. (Kullanıcı adınız, adınız ya da e-posta adresinizdir.)</value>
+  </data>
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>Giriş yapılıyor, lütfen bekleyin...</value>
+  </data>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>Manuel Parola Girişi</value>
+    <comment>Header to manual username/password form</comment>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>Oturum Aç</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>Geçiş</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>Yardım, Parolamı unuttum!</value>
+  </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>{0} için beni kaydet!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>Katılmak mı istiyorsunuz?</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>Swarmops bu adresi tanımıyor. Lütfen manüel olarak giriş yapın ve giriş yaparken kullanmadan önce adresinizi etkinleştirin.</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>BitID iki-faktör kimik doğrulamasını kullan?</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>Manüel şifre girişini kullan?</value>
+    <comment>Switches from BitId to Username/Password form</comment>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>Kullanıcı</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>Bu e-posta adresi için geçerli bir şifre sıfırlama isteği yok, adres mevcut değil, şifre sıfırlama isteği geçersiz veya süresi dolmuş.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Şifre sıfırlama başarısız oldu.&lt;/strong&gt;</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>Bir kullanıcı hesabı için şifre sıfırlama yapıyorsunuz. Yeni şifrenizi ayarlayıp giriş yapmak için iki kez girin. (Eğer bir şifre-sıfırlama prosedürü başlatmaya çalışıyorsanız, bunu yapmak için bir istek oluşturmanız gerekiyor.&lt;a href="/Security/RequestPasswordReset"&gt;Bir istek oluştur.&lt;/a&gt;)</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>Şifre sıfırlama prosedürünün nasıl kullanılacağına ilişkin talimatları almak için e-posta adresinizi girin. Talimatlar, prosedürü kullanmak için ihtiyacınız olacak olan eşsiz ve süresi dolacak bir kod içerecektir.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>Eposta adresinizi giriniz</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>Eposta adresinizi tekrar giriniz</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>İki parola eşleşmiyor. Lütfen yeniden deneyiniz.</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>Yeni parola boş olamaz.</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>Parolayı Sıfırla</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>Yeni Parola</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>Yeni Parolayı Tekrarla</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>Bir e-posta adresiyle ilişkilendirilmiş şifreyi sıfırlayabilirsiniz. Şifrenizi sıfırlamak için izlemeniz gereken, bir çağrı kodu içeren bir bağlantı bu e-posta adresine gönderilecektir.</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>Sıfırla</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>Şifreniz değiştirildi ve Swarmops'a yeni şifrenizi kullanarak giriş yaptınız.</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>İstek</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>Eğer e-posta adresi bu Swarmops kurulumundaki bir hesap ile ilişkiliydiyse, bir &lt;strong&gt;sıfırlama talebi gönderildi.&lt;/strong&gt; Şifrenizi değiştirmek için o e-postayı açın ve e-postadaki bağlantıya tıklayın. (Eğer e-posta adresi mevcut değildiyse hiçbir şey gönderilmedi.) &lt;br/&gt;&lt;br/&gt;Bu tarayıcı sekmesini kapatabilirsiniz. Artık ihtiyacınız yok.</value>
+  </data>
+</root>

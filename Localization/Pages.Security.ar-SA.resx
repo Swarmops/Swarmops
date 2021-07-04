@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>تم رفض الوصول إلى هذه الصفحة</value>
+  </data>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>لقد حاولت الدخول إلى صفحة ليس لديك إذن للوصول إليها. انظر إلى اللوحة الرئيسية لمعرفة بعض الأسباب التي قد تكون أدت إلى ذلك.</value>
+  </data>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>غير مسموح</value>
+  </data>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>&lt;p&gt; لقد قام الإطار الأمني لسوارموبس بمنعك من الولوج إلى الصفحة التي كنت تريد الدخول إليها. هذا في الغالب راجع إلى أن بعض هذه الوظائف تتعدى التصاريح الممنوحة لك من قبل هته المنظمة (&lt;em&gt;{0}&lt;/em&gt;). هذا الشيء لم يتم تسجيله أو الإبلاغ عنه في أي مكان.&lt;/p&gt;&lt;p&gt;هناك العديد من الأسباب التي يمكن أن تفسر سبب حدوث هذا المشكل:&lt;/p&gt;</value>
+  </data>
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>المنظمة الحالية</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>يمكنك أن تكون عضواً في أكثر من منظمة في هذا التثبيت لنظام سوارموبس. إليك أين يمكنك التبديل بين هذه المنظمات.</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>منظمة جديدة</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>أنت لست مشاركاً في أي منظمة أخرى في تثبيت نظام سوارموبس هذا، ولهذا فإنه لا يمكنك التبديل إلى مكان آخر. ولذلك فإننا سنعود بك إلى اللوحة الرئيسية عوضاً عن ذلك.</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>تغيير المنظمات</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>التبديل</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>ترقية قاعدة البيانات معلق</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>هذه الصفحة تتطلب ترقية قاعدة بيانات سوارموبس.</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>في انتظار ترقية قاعدة البيانات</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;هناك عملية ترقية تجري حاليا لقواعد البيانات، الأمر الذي سيمنعك من الولوج إلى هذه الصفحة.&lt;strong&gt; هذا شرط مؤقت &lt;/strong&gt; كما أن ملقمات Swarmops تكون قد بدأت بالعمليات اللازمة للقيام بعملية الترقية. &lt;/p&gt; &lt;p&gt; قم بإعادة تحديث الصفحة بعد بضعة دقائق، وإذا لا زال نفس الشرط قائما بعد أكثر من خمسة عشرة دقيقة، قم بالتبليغ عن هذه المشكلة للمدير.&lt;/p&gt;</value>
+  </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>إن الحساب &lt;strong&gt; لم يتم قفله&lt;/strong&gt;. لايوجد حساب بهذا الوصف, أو لربما التذكرة خاطئة أو قديمة جدا. إن كنت لا تزال تريد قفل هذا الحساب, قم بالإتصال بمدراء تنصيب سوارموبس.</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>إذا كنت ترى هته الصفحة, فهذا راجع أنك تريد إغلاق أحد الحسابات لأسباب أمنية. إن كان الرابط صالحا و لم تنتهي صلاحيته بعد, فهذا يعني أن الحساب قد تم إغلاقه بالفعل.</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>تأمين حساب المستخدم</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>لقد تم &lt;strong&gt; قفل الحساب بنجاح &lt;/strong&gt; ويتم الآن إنهاء أي جلسات عمل نشطة.</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>تذكرة التأمين</value>
+  </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>يقوم &lt;strong&gt;إفتح السجلات&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;{0} يقوم بتشغيل السجل الموزع (Open Ledgers). هذا يعني أنه لا يمكن لأي أحد مراقبة التقارير المالية والدفاتر المحفوظة. لقد تم تسجيل دخولك في عمليات المنظمة فقط لتقوم بهذا.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt; عملية التأكيد ذو العاملين لـ BitId الآن مسموح بها.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; من الآن فصاعدا، يمكنك إستعمال محفظتك للبتكوين من أجل تسجيل الدخول ( ويجب &lt;strong&gt; عليك &lt;/strong&gt; فعل ذلك).
+حسنا فعلت بتعزيزك للأمن.&lt;br/&gt;&lt;br/&gt; ولا تنسى بأن تقوم بتأمين هاتفك بكلمة السر أيضا.</value>
+  </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;تسجيل الدخول بالBITID ضروري&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; تسجيل الدخول يتطلب الإثبات من BitId كما هو محدد من قبل صاحب الحساب. لا يمكنك الدخول فقط باستعمال اسم المستخدم و كلمة السر.</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>أدخل الرمز الخاص بك من Google Authenticator</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>قم بتسجيل الدخول بتوقيع البتكوين (BitId)</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>المساعده</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>قم بتسجيل الدخول إلى سوارموبس باستعمال الbitid لمحفظة البتكوين. لن تحتاج إلى أي رصيد على هته الأخيرة. إن لم تكن تتوفر على محفظة للبتكوين و تحتوي على bitid, فيمكنك تسجيل الدخول يدويا باستعمال اسم المستخدم و كلمة السر.(اسم المستخدم لديك هو اسمك أو بريدك الإلكتروني.)</value>
+  </data>
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>تسجيل الدخول. الرجاء الانتظار...</value>
+  </data>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>تسجيل الدخول يدويا بكلمة السر</value>
+    <comment>Header to manual username/password form</comment>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>تسجيل دخول</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>تخطي</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>طلب المساعدة, لقد فقدت كلمة السر!</value>
+  </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>قم بفتح حساب لي بـ{0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>هل تريد الإنضمام؟</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>لا يتعرف نظام سوارموبس على هذا العنوان. الرجاء تسجيل الدخول يدوياً وتفعيل عنوانك قبل استخدامه لتسجيل الدخول.</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>إستعمال تأكيد ذو عاملين (2fa) لـ BitID ؟</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>تسجيل الدخول يدويا بكلمة السر ؟</value>
+    <comment>Switches from BitId to Username/Password form</comment>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>مستخدم</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>لم يتم العثور على أية تذكرة لتغيير كلمة السر لهذا البريد الإلكتروني, لا وجود لهذا العنوان, أو تذكرة تغيير كلمة السر غير صحيحة, أو قد إنتهت صلاحيتها.&lt;br/&gt;&lt;br/&gt;
+&lt;strong&gt;تعذر تغيير كلمة السر.&lt;/strong&gt;</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>أنت على مشارف تغيير كلمة السر لأحد الحسابات. قم بإدخال كلمة السر الجديدة مرتين وسجل الدخول.(إذا كنت تريد الشروع في إجرائات إعادة ضبط كلمة السر, فأنت بحاجة إلى تذكرة.&lt;a href="/Security/RequestPasswordReset"&gt; قم بإنشاء تذكرة.&lt;/a&gt;)</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>قم بإدخال البريد الإلكتروني الخاص بك من أجل تلقي التعليمات حول كيفية إعادة ضبط كلمة المرور. التعليمات سوف تتضمن كودا ساري المفعول لوقت محدد و الذي سوف تستعمله من أجل الإستمرار.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>أدخل عنوان بريدك الإلكتروني</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>إعادة إدخال عنوان البريد الخاص بك</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>لا يوجد تتطابق بين كلمتي المرور. الرجاء إعادة المحاولة.</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>لا يمكن أن تكون كلمة المرور الجديدة فارغة.</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>إعادة ضبط كلمة المرور</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>تكرار كلمة المرور الجديدة</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>يمكنك تغيير كلمة السر المربوطة بالبريد الإلكتروني. سوف يتم إرسال رابط إلى بريدك الإلكتروني والذي يحتوي على جميع المراحل التي يجب إتباعها من أجل تغيير كلمة السر الخاصة بك.</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>إعادة ضبط</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>تم تغيير كلمة المرور الخاصة بك، وتم تسجيل الدخول إلى نظام سوارموبس باستخدام كلمة المرور الجديدة.</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>تذكرة</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>إن كان البريد الإلكتروني مرتبطا بأحد الحسابات على التنصيب الحالي لسوارموبس,&lt;strong&gt;فلقد تم إرسال تذكرة لتغيير كلمة السر.&lt;/strong&gt; قم بفتح تلك المراسلة واضغط على الرابط الذي ستجده من أجل تغيير كلمة السر الخاصة بك.(إن لم تجد أية مراسلة, فهذا يعني أنه لم يرسل أي شيئ.)&lt;br/&gt;&lt;br/&gt; يمكنك الأن إغلاق هذه التبويبة. فأنت لم تعد بحاجة لها.</value>
+  </data>
+</root>

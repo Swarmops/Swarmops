@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Signup_ActivationActive" xml:space="preserve">
+    <value>Kung nais mo pang sumali, maaari mong gawin ang iyong sarili na available para sa calls-to action, na walang kahit ano pa mang obligasyon ang magpakita, dumalo, o maging parte ng alinmang partikular na isa sa kanila.</value>
+  </data>
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>{0} Sa Oportunidad</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationLevel" xml:space="preserve">
+    <value>Magkano ang gusto mong isali?</value>
+  </data>
+  <data name="Signup_ActivationLevelText" xml:space="preserve">
+    <value>Mayroong maraming iba't ibang antas na pwede mong salihan {0}. Piliin ang iyong nilalayong antas sa ibaba (na maaari mong baguhin sa iyong kagustuhan kalaunan, siyempre):</value>
+    <comment>{0} is the org name.</comment>
+  </data>
+  <data name="Signup_ActivationPassive" xml:space="preserve">
+    <value>Ito ang default na antas, at ibig sabihin na kukunin mo ang normal na parte sa organisasyon bilang grassroots {0}.</value>
+    <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
+  </data>
+  <data name="Signup_ActivationPassiveApplication" xml:space="preserve">
+    <value>Ito ang naka-default na antas, na nangangahulugan na makakapagsalamuha hanggang sa gudto mo (o hindi) kagaya ng {0} habang naghihintay sa iyong {1}.</value>
+  </data>
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>Regular {0}</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationVolunteer" xml:space="preserve">
+    <value>Kung nais mong magboluntaryo para sa pagkuha ng pormal na responsibilidad para sa ibang bahagi ng organisasyon, pagtulong kung saan ito ay pinaka-kailangan, ito ay maliwanag na katanggap-tanggap. (Ikaw ay makakakuha ng pagpipilian ng mga posisyon na pwede kang mag-boluntaryo sa susunod na pahina.)</value>
+  </data>
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>Opisyal na Boluntaryo</value>
+  </data>
+  <data name="Signup_ApplicationApproval" xml:space="preserve">
+    <value>Ikaw ay nagpapasa ng isang Aplikasyon para sa {0} na mayroong {1}. Walang mga babayarin ukol sa pagpapasa ng Aplikasyong tulad nito.</value>
+  </data>
+  <data name="Signup_ApplyingFor" xml:space="preserve">
+    <value>Nag-aaplay para sa {0} sa {1}</value>
+  </data>
+  <data name="Signup_DashboardMessage" xml:space="preserve">
+    <value>Maligayang pagdating! Ito ang &lt;em&gt;Dashboard,&lt;/em&gt; na kung saan maa-aacess mo ang ang internal na kapakinabangan ng {0}. Ikaw ay makakakuha ng maraming impormasyon sa mail ilang sandali lamang.&lt;br/&gt;&lt;br/&gt;
+
+Kung ikaw ay nagboluntaryo sa pagkuha ng pormal na responsibilidad, isang tao (malamang isa ring boluntaryo, katulad mo) ang kokontak sayo para pag-usapan ang tungkol sa marami pang mga oportunidad na mayroon.</value>
+  </data>
+  <data name="Signup_DefaultFirstPageText" xml:space="preserve">
+    <value>Ito ang kustom na teksto sa pagbati ng organisasyon. Hindi pa ito nasusulat; ito ay tinatakda sa mga Setting ng Admin / Org.</value>
+  </data>
+  <data name="Signup_DefaultLastPageText" xml:space="preserve">
+    <value>Ito ang tekstong espisipiko sa organisasyon na pinapakita para sa Pinalisasyon ng Pag-Signup. Ito ay natatakda sa mga Setting ng Admin / Org. Kapag ang bagong tago ay pipindut sa “Tapusin”, sila ay mapapasok patungo sa organisayon, naka-log on, at ipapadala sa Dashboard bilang isang Bagohang gumagamit.</value>
+  </data>
+  <data name="Signup_DefaultSidebarText" xml:space="preserve">
+    <value>Ito ang maikling sidebar na impormasyon ng organisasyon. Ito ay natatakda sa mga Setting ng Administrasyon / Org.</value>
+  </data>
+  <data name="Signup_Error_MailExists" xml:space="preserve">
+    <value>Ikaw ay nakapag-sign up na sa Swarmops server na ito. Mangyaring gamitin ang function na Reset Password galing sa screen ng login imbis na gumawa ng bagong account.</value>
+  </data>
+  <data name="Signup_Error_NeedPassword" xml:space="preserve">
+    <value>Mangyaring pumili at i-type muli ang password.</value>
+  </data>
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>Ang dalawang kopya ng password ay hindi nagtugma.</value>
+  </data>
+  <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
+    <value>Mangyaring pumili ng iyong nais na antas ng aktibidad.</value>
+  </data>
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>Mangyaring pumili ng kahit isang posisyon.</value>
+  </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>Mga Bayarin at Gastusin</value>
+  </data>
+  <data name="Signup_FeeRenewalText" xml:space="preserve">
+    <value>Walang anumang gastos para makapag-sign up para sa isang {0}{1}. Gayunman, magkakaroon ng bayad para ma-renew ang iyong {1} kapag ito ay nawalang bisa sa {2}. Ang bayad na iyon ay kasalukuyang {3}{4:N2}, at ikaw ay walang obligasyon para mag-renew.</value>
+    <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
+  </data>
+  <data name="Signup_FeeText" xml:space="preserve">
+    <value>Ang {0} na bayad ay {1}{2:N2} para sa {3}. Ikaw ay makakakuha ng isang invoice sa pagtatapos ng prosesong ito. (Maaari mong wakasan ang iyong {0} anumang oras.) </value>
+    <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>Tapusin ang Pag-signup</value>
+  </data>
+  <data name="Signup_MailLoginKey" xml:space="preserve">
+    <value>Ang iyong logon (ang iyong mail)</value>
+  </data>
+  <data name="Signup_NoFeeText" xml:space="preserve">
+    <value>Walang anumang gastos ang pag-signup para sa isang {0} sa {2}, o kahit anong gastos para ma-renew kapag ito ay nawalang bisa sa {1}. Sa karagdagan, pwede mong wakasan ang iyong {0} ano mang oras.</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
+  </data>
+  <data name="Signup_Password1" xml:space="preserve">
+    <value>Pumili ng isang password</value>
+  </data>
+  <data name="Signup_Password2" xml:space="preserve">
+    <value>Ulitin ang password</value>
+  </data>
+  <data name="Signup_SigningUp" xml:space="preserve">
+    <value>Mag-sign up para sa {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_Step1Header" xml:space="preserve">
+    <value>Maligayang pagdating!</value>
+  </data>
+  <data name="Signup_Step1Text" xml:space="preserve">
+    <value>Isang maikling introduksyon</value>
+  </data>
+  <data name="Signup_Step2Header" xml:space="preserve">
+    <value>Tungkol sa iyo</value>
+  </data>
+  <data name="Signup_Step2Text" xml:space="preserve">
+    <value>Magsabi sa amin ng kaunting tungkol sa iyong sarili?</value>
+  </data>
+  <data name="Signup_Step3Header" xml:space="preserve">
+    <value>Lumikha ng logon</value>
+  </data>
+  <data name="Signup_Step3Text" xml:space="preserve">
+    <value>Pumili ng password</value>
+  </data>
+  <data name="Signup_Step4Header" xml:space="preserve">
+    <value>Aktibidad 1</value>
+  </data>
+  <data name="Signup_Step4Text" xml:space="preserve">
+    <value>Magkano ang nais mong isali?</value>
+  </data>
+  <data name="Signup_Step5Header" xml:space="preserve">
+    <value>Aktibidad 2</value>
+  </data>
+  <data name="Signup_Step5Text" xml:space="preserve">
+    <value>Ano ang gusto mong salihan?</value>
+  </data>
+  <data name="Signup_Step6Header" xml:space="preserve">
+    <value>Kumpleto</value>
+  </data>
+  <data name="Signup_Step6Header_Payment" xml:space="preserve">
+    <value>Kabayaran</value>
+  </data>
+  <data name="Signup_Step6Text" xml:space="preserve">
+    <value>Lahat ay tapos na. Tayo'y mag-login!</value>
+  </data>
+  <data name="Signup_Step6Text_Payment" xml:space="preserve">
+    <value>Bayaran natin ang {0} na bayarin at kumpleto na!</value>
+    <comment>The {0} is Membership, Ambassadorship, etc. The Regularship label for this organization.</comment>
+  </data>
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>Kumpletuhin ang pag-signup.</value>
+  </data>
+  <data name="Signup_Unsupported" xml:space="preserve">
+    <value>Hindi pa naisasakatuparan ng Swarmops ang suporta para sa istruktura ng bayad na ito.</value>
+  </data>
+  <data name="Signup_VolunteerHeader" xml:space="preserve">
+    <value>Sa anong posisyon ka interesado?</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>Pinakamataas na Heograpiya na Mayroon</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
+    <value>Posisyon</value>
+  </data>
+  <data name="Signup_VolunteerText" xml:space="preserve">
+    <value>Lagyan ng tsek ang posisyon na gusto mong mag-boluntaryo/mag-apply. Maaari mong lagyan ng tsek ang ilan.</value>
+  </data>
+  <data name="Signup_Welcome" xml:space="preserve">
+    <value>Maligayang pagdating sa {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_YourLogon" xml:space="preserve">
+    <value>Iyong Logon</value>
+  </data>
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>Mangyaring pumili ng password para makapag-log on sa Swarmops (ang sistemang ito). Maaari mo itong palitan ng Twitter, Facebook, o BitID na login para sa iyong kaginhawaan kalaunan.</value>
+  </data>
+  <data name="Signup_YourName" xml:space="preserve">
+    <value>Ang iyong pangalan</value>
+  </data>
+</root>

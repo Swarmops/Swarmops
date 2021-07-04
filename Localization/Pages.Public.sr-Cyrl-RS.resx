@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Signup_ActivationActive" xml:space="preserve">
+    <value>Ако желите да се ангажујете више, можете се пријавити за позивање на акције, без обавезе да се појавите на њима.</value>
+  </data>
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>{0} за могућност</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationLevel" xml:space="preserve">
+    <value>Колико активни желите да будете?</value>
+  </data>
+  <data name="Signup_ActivationLevelText" xml:space="preserve">
+    <value>Постоји пуно нивоа на којима се можете ангажовати у {0}. Селектујте жељени ниво (наравно, касније можете променити свој избор):</value>
+    <comment>{0} is the org name.</comment>
+  </data>
+  <data name="Signup_ActivationPassive" xml:space="preserve">
+    <value>Ово је подразумевани ниво, што значи да ћете узети учешће у раду организације као {0}.</value>
+    <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
+  </data>
+  <data name="Signup_ActivationPassiveApplication" xml:space="preserve">
+    <value>Ово је основни ниво, што значи да се можете ангажовати колико желите (или не желите) као {0} док чекате своју {1}.</value>
+  </data>
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>Обичан {0}</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationVolunteer" xml:space="preserve">
+    <value>Ако желите да волонтирате и формално преузмете неке одговорности унутар организације, Ваша жеља је више него добродошла. (На следећој страници ћете наћи позиције на којима бисте могли да волонтирате.)</value>
+  </data>
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>Вођа волонтера</value>
+  </data>
+  <data name="Signup_ApplicationApproval" xml:space="preserve">
+    <value>Подносите апликацију за {0} са {1}. Не постоје никакве накнаде за подношење апликације.</value>
+  </data>
+  <data name="Signup_ApplyingFor" xml:space="preserve">
+    <value>Аплицира за {0} у {1}</value>
+  </data>
+  <data name="Signup_DashboardMessage" xml:space="preserve">
+    <value>Добродошли! Ово је &lt;em&gt;Контролна табла,&lt;/em&gt; место на коме приступате интерним функцијама {0}. Ускоро ћете добити више информација путем mail-а.&lt;br/&gt;&lt;br/&gt;
+
+Ако волонтирате са формалном одговорношћу, неко (вероватно волонтер), ће Вас контактирати и објаснити које опције постоје.</value>
+  </data>
+  <data name="Signup_DefaultFirstPageText" xml:space="preserve">
+    <value>Ово је прилагодљиви текст добродошлице у организацију. Још није написан, а задаје се у оквиру Админ / Орг. Подешавања.</value>
+  </data>
+  <data name="Signup_DefaultLastPageText" xml:space="preserve">
+    <value>Ово је текст за довршетак пријављивања. Задаје се под Админ / Орг. Подешавања. Након што нови члан кликне на "Крај", биће примљен у организацију, пријављен и послат на Контролну таблу са позицијом "корисник-почетник".</value>
+  </data>
+  <data name="Signup_DefaultSidebarText" xml:space="preserve">
+    <value>Ово је кратки sidebar са информацијама. И он се подешава под менијем Администрација / Орг. Подешавања.</value>
+  </data>
+  <data name="Signup_Error_MailExists" xml:space="preserve">
+    <value>Већ сте се пријавили на овај Swarmops сервер. Молимо Вас, користите функцију Ресетовање Лозинке, која је доступна на екрану за пријављивање, уместо да креирате нови налог.</value>
+  </data>
+  <data name="Signup_Error_NeedPassword" xml:space="preserve">
+    <value>Молимо Вас, селектујте и поново откуцајте лозинку.</value>
+  </data>
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>Лозинке се не подударају.</value>
+  </data>
+  <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
+    <value>Изаберите жељени ниво активности.</value>
+  </data>
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>Молимо, изаберите макар једну позицију.</value>
+  </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>Накнаде и трошкови</value>
+  </data>
+  <data name="Signup_FeeRenewalText" xml:space="preserve">
+    <value>Нема трошкова накнаде за пријављивање за {0} {1}. Ипак, плаћа се надокнада за продужење {1} након што истекне {2}. Накнада тренутно износи {3} {4:N2}, а немате обавезу да продужавате.</value>
+    <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
+  </data>
+  <data name="Signup_FeeText" xml:space="preserve">
+    <value>{0} накнада износи {1} {2:N2} за {3}. На крају процеса, добићете фактуру. (Можете прекинути своју {0} у било ком моменту.) </value>
+    <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>Финализација пријављивања</value>
+  </data>
+  <data name="Signup_MailLoginKey" xml:space="preserve">
+    <value>Ваша пријава (Ваш mail)</value>
+  </data>
+  <data name="Signup_NoFeeText" xml:space="preserve">
+    <value>Нема трошкова накнаде за пријављивање за {0} са {2} нити било каквих трошкова након истека {1}. Осим тога, можете прекинути {0} у било ком моменту.</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
+  </data>
+  <data name="Signup_Password1" xml:space="preserve">
+    <value>Одаберите лозинку</value>
+  </data>
+  <data name="Signup_Password2" xml:space="preserve">
+    <value>Поновите лозинку</value>
+  </data>
+  <data name="Signup_SigningUp" xml:space="preserve">
+    <value>Пријављивање за {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_Step1Header" xml:space="preserve">
+    <value>Добродошли!</value>
+  </data>
+  <data name="Signup_Step1Text" xml:space="preserve">
+    <value>Кратак увод</value>
+  </data>
+  <data name="Signup_Step2Header" xml:space="preserve">
+    <value>О Вама</value>
+  </data>
+  <data name="Signup_Step2Text" xml:space="preserve">
+    <value>Реците нам нешто више о себи?</value>
+  </data>
+  <data name="Signup_Step3Header" xml:space="preserve">
+    <value>Направите пријаву</value>
+  </data>
+  <data name="Signup_Step3Text" xml:space="preserve">
+    <value>Изаберите лозинку</value>
+  </data>
+  <data name="Signup_Step4Header" xml:space="preserve">
+    <value>Активност 1</value>
+  </data>
+  <data name="Signup_Step4Text" xml:space="preserve">
+    <value>Колико активни желите да будете?</value>
+  </data>
+  <data name="Signup_Step5Header" xml:space="preserve">
+    <value>Активност 2</value>
+  </data>
+  <data name="Signup_Step5Text" xml:space="preserve">
+    <value>Шта бисте желели да радите?</value>
+  </data>
+  <data name="Signup_Step6Header" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="Signup_Step6Header_Payment" xml:space="preserve">
+    <value>Плаћање</value>
+  </data>
+  <data name="Signup_Step6Text" xml:space="preserve">
+    <value>То је све. Пријављени сте!</value>
+  </data>
+  <data name="Signup_Step6Text_Payment" xml:space="preserve">
+    <value>Хајде да платимо {0} као накнаду и да довршимо процес!</value>
+    <comment>The {0} is Membership, Ambassadorship, etc. The Regularship label for this organization.</comment>
+  </data>
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>Регистрација је обављена.</value>
+  </data>
+  <data name="Signup_Unsupported" xml:space="preserve">
+    <value>Swarmops још није имплементирао подршку за овај тип накнаде.</value>
+  </data>
+  <data name="Signup_VolunteerHeader" xml:space="preserve">
+    <value>За коју позицију сте заинтересовани?</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>Најдаља позиција</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
+    <value>Позиција</value>
+  </data>
+  <data name="Signup_VolunteerText" xml:space="preserve">
+    <value>Погледајте позицију за коју бисте желели да аплицирате/волонтирате. Можете селектовати више опција.</value>
+  </data>
+  <data name="Signup_Welcome" xml:space="preserve">
+    <value>Добродошли у {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_YourLogon" xml:space="preserve">
+    <value>Ваша пријава</value>
+  </data>
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>Молимо Вас, изаберите лозинку са којом ћете се пријављивати на Swarmops. Касније можете изабрати и пријаву преко Тwitter-а, Facebook-а, или BitID и тиме олакшати процес.</value>
+  </data>
+  <data name="Signup_YourName" xml:space="preserve">
+    <value>Ваше име</value>
+  </data>
+</root>

@@ -16,10 +16,8 @@ echo "Renaming Serbian (Latin, Cyrillic) to .Net standard..."
 rename 's/\.sr\-SP\./\.sr\-Cyrl\-RS\./' Logic/*
 rename 's/\.sr\-CS\./\.sr\-Latn\-RS\./' Logic/*
 
-rename 's/\.sr\-SP\./\.sr\-Cyrl\-RS\./' Site/sr-SP/*
-rename 's/\.sr\-CS\./\.sr\-Latn\-RS\./' Site/sr-CS/*
-mv Site/sr-SP Site/sr-Cyrl-RS
-mv Site/sr-CS Site/sr-Latn-RS
+rename 's/\.sr\-SP\./\.sr\-Cyrl\-RS\./' Localization/*
+rename 's/\.sr\-CS\./\.sr\-Latn\-RS\./' Localization/*
 
 #echo "Deploying..."
 

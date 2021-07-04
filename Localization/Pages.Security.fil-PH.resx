@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>Ang akses sa pahinang ito ay hindi pinayagan</value>
+  </data>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>Sinubukan mong i-akses ang isang pahina na wala kang mga permiso. Tingnan ang pangunahing lupon para sa ilang mga rason na maaaring nangyari ito.</value>
+  </data>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>Ang Pag-akses ay Hindi Pinayagan</value>
+  </data>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Ang balangkas ng seguridad ng Swarmops ay pinagkaila sayo ang akses sa pahina na sinusubukan mong puntahan. Ito ay karaniwang nangangahulugan na ang mga tungkulin nito ay mas mataas sa antas ng akses na ipinagkaloob sayo para sa kasalukuyang napiling organisasyon (&lt;em&gt;{0}&lt;/em&gt;). Ito ay hindi pa naitala ni iniulat kahit saan. &lt;/p&gt;&lt;p&gt;Mayroong ilang mga kadahilanan kung bakit ito ay nangyari:&lt;/p&gt;</value>
+  </data>
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>Kasalukuyang organisasyon</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>Ikaw ay maaaring kumuha ng parte sa ilang mga organisasyon sa instalasyon ng Swarmops na ito. Dito ay kung saan ikaw ay lumipat sa pagitan nila.</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>Bagong organisasyon</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>Ikaw ay hindi nakikilahok sa iba pang organisasyon sa instalasyon ng Swarmops na ito, kaya hindi ka pwedeng magpalit sa ibang bagay. Samakatuwid, tayo ay babalik sa Dashboard sa halip.</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>Magpalit ng mga Organisasyon</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>Lumipat</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>Pending ang Pag-upgrade sa Database</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>Ang pahinang ito ay nangangailangan ng isang na-upgrade na database ng Swarmops. </value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>Naghihintay ng Pag-upgrade ng Database</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Mayroong isang nakabinbin na upgrade ng database na pumipigil sa iyong akses sa pahinang ito. &lt;strong&gt;Ito ay pansamantalang kondisyon&lt;/strong&gt; at ang mga servers ng Swarmops ay dapat na nagtatrabaho sa pagsasagawa ng kinakailangang pag-upgrade.&lt;/p&gt;
+&lt;p&gt;Subukan muli ang pagkarga sa pahina sa loob ng ilang minuto. Kung ang kondisyon ay magpumilit sa mahigit na labinlimang minuto, kontakin ang iyong administrador ng sistema.&lt;/p&gt;</value>
+  </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>Ang account &lt;strong&gt;ay hindi naka-lock down&lt;/strong&gt;. Walang ganitong account, o ang tiket ay imbalido o sobrang luma na. Kung gusto mo pa rin i-lock down ang account na ito, kontakin ang mga administrador ng instalasyon ng Swarmops na ito.</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>Kung nakikita mo ang pahinang ito, sinusubukan mong i-lock down ang isang account ng gumagamit para sa mga rason ng seguridad. Kung ang link ay balido at hindi pa nawalan ng bisa, ang account ay naka-lock down na.</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>Lockdown ng Account ng Gumagamit</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>Ang account na ito ay &lt;strong&gt;tagumpay na na-lock down&lt;/strong&gt; at ang kahit anong aktibong mga sesyon ay tinapos na ngayon.</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>I-lockdown ang Tiket</value>
+  </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>&lt;strong&gt;BUKAS NA MGA LEDGERS&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;{0} ay pinapatakbo ang mga Bukas na mga Ledgers. Ibig sabihin nito na kahit sino ay pwedeng inspeksyunin ang mga ulat na pinansyal at bookkeeping. Ikaw ay naka-log on sa mga Operasyon ng organisasyon para gawin iyon.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt;Ang two-factor na pagpapatunay ng BitId ay pinagana na ngayon.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Simula ngayon, maaari mo nang gamitin ang iyong pitaka ng bitcoin para maka-log in (at &lt;strong&gt;kailangan talaga&lt;/strong&gt; na gawin). Maraming salamat para sa pagpapagana ng karagdagang seguridad.&lt;br/&gt;&lt;br/&gt;Mangyaring tandaan na panatilihin ang iyong telepono na protektado rin ng password.</value>
+  </data>
+  <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
+    <value>&lt;strong&gt;ANG LOGIN NG BITID AY KINAKAILANGAN&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ang login na ito ay nangangailangan ng pagpapatunay ng BitId, na pinagana ng tagahawak ng account. Hindi ka pwedeng mag-log on gamit ang kombinasyon ng username/password.</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>Ilagay ang iyong code galing sa Google Authenticator.</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Mag-login gamit ang Lagda ng Bitcoin (BitId)</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>Tulong</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>Mag-log in sa Swarmops gamit ang iyong bitid-enabled na pitaka ng bitcoin. Hindi mo kailangan ng kahit anong pondo rito. Kung wala kang isang bitid-enabled na pitaka ng bitcoin, ikaw ay pwedeng mag-log in ng manu-mano gamit ang isang pamanang username at password. (Ang iyong username ay ang iyong pangalan o email.)</value>
+  </data>
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>Nagla-log in, mangyaring maghintay...</value>
+  </data>
+  <data name="Login_ManualLoginHeader" xml:space="preserve">
+    <value>Login ng Manu-manong Password</value>
+    <comment>Header to manual username/password form</comment>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>Mag-Login</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>Pass</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>Tulong, nakalimutan ko ang aking password!</value>
+  </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>I-sign up mo ako para sa {0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>Gustong sumali?</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>Hindi makilala ng Swarmops ang address na ito. Mangyaring mag-log in ng manu-mano at i-activate ang iyong address bago gamitin ito sa pag-log in.</value>
+  </data>
+  <data name="Login_UseBitIdLogin" xml:space="preserve">
+    <value>Gamitin ang two-factor na BitID na pagpapatunay?</value>
+    <comment>Switches from manual to BitID</comment>
+  </data>
+  <data name="Login_UseManualLogin" xml:space="preserve">
+    <value>Gamitin ang manu-manong pag-log in ng password?</value>
+    <comment>Switches from BitId to Username/Password form</comment>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>Gumagamit</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>Walang balidong tiket ng password reset para sa mail address na ito, ang address ay hindi umiiral, ang tiket ng password reset ay imbalido, o ito ay nawalan na ng bisa.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Nabigo ang pag-reset ng password.&lt;/strong&gt;</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>Ikaw ay nag-rereset ng password para sa isang account ng gumagamit. Ilagay ang bagong password ng dalawang beses para ma-set ito at mag-log in. (Kung sinusubukan mong simulan ang pamamaraan ng password-reset, kailangan mo ng isang tiket para magawa ito. &lt;a href="/Security/RequestPasswordReset"&gt;Gumawa ng tiket.&lt;/a&gt;)</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>Ilagay ang iyong mail address para maka-receive ng mga tagubilin kung paano magpatuloy sa pamamaraan ng pag-reset ng password. Ang mga tagubilin ay maglalaman ng isang natatangi at mawawalan ng bisa na code na kailangan mong gamitin para magpatuloy.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>Ilagay ang iyong mail address</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>Ilagay muli ang iyong mail address</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>Ang dalawang passwords ay hindi nagtugma. Pakisubukang muli.</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>Ang bagong password ay hindi pwedeng walang laman.</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>I-reset ang Password</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>Bagong Password</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>Ulitin ang Bagong Password</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>Maaari mong i-reset ang password na kaugnay ng isang mail address. Isang link na may tiket code ang ipapadala sa maill address na iyon, na kailangan mong sundin para i-reset ang iyong password.</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>I-reset</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>Ang iyong password ay nabago at ikaw naka-log on sa Swarmops gamit ang iyong bagong password.</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>Tiket</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>Kung ang mail address ay kaugnay ng isang account sa instalasyon ng Swarmops na ito, isang &lt;strong&gt;tiket ng pag-reset ang naipadala.&lt;/strong&gt; Buksan ang mail na iyon at pindutin ang link sa mail para ma-reset ang iyong password. (Kung ang email ay hindi umiiral, walang napadala)&lt;br/&gt;&lt;br/&gt;Maaari mong isara ang browser tab na ito. Hindi na iyon kailangan pa.</value>
+  </data>
+</root>

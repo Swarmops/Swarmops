@@ -1,0 +1,699 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
+    <value>Paunang Bayad #{0:N0} para sa {1} ay inaprubahan para sa {3:N2}.</value>
+    <comment>Status message.</comment>
+  </data>
+  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
+    <value>Ang pag-apruba para sa Paunang Bayad #{0:N0} para sa {1} ay BINAWI. Ito ay hindi ibabayad maliban kung ito ay aaprubahan muli.</value>
+    <comment>When somebody undoes a previous approval.</comment>
+  </data>
+  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
+    <value>Hindi ka maaaring makapag-apruba sa halagang ito. Walang laman ang badyet para sa taong {0}.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
+    <value>Hindi ka maaaring mag-apruba ng isang negatibong halaga.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
+    <value>Hindi ka maaaring mag-apruba ng isang sero na halaga.</value>
+  </data>
+  <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
+    <value>Paumanhin, Hindi mo maaaring i-rebudget ang isang suweldo na payout.</value>
+  </data>
+  <data name="AttestCosts_Error_InvalidAmountRetry" xml:space="preserve">
+    <value>Hindi ito mukhang isang wastong halaga. Mangyaring muling subukan?</value>
+  </data>
+  <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
+    <value>Mangyaring pumili sa budget para i-retarget ang bayad para sa.</value>
+  </data>
+  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
+    <value>Pag-angkin ng Halaga #{0:N0} mula {1} para sa {2} {3:N2} ay inaprubahan.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>Aksyon</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>Benepisyaryo</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Badyet</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>Paglalarawan</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>Docs</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>Aytem</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>Hiniling</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
+    <value>Mga gastusin na naghihintay para sa iyong pag-apruba</value>
+  </data>
+  <data name="AttestCosts_Info" xml:space="preserve">
+    <value>Ito ay kung saan inaaprubahan mo ang mga halaga na ang ibang tao ay humihiling mula sa iyong mga badyet. Walang ibabayad bago mo aprubahan ito.</value>
+  </data>
+  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
+    <value>Ang talaan #{0:N0} mula {1} para sa {2} {3:N2} ay inaprubahan.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
+    <value>Pag-apruba para sa Talaan #{0:N0} mula {1} ay BINAWI. Ito ay hindi ibabayad maliban kung ito ay aprubahan muli.</value>
+    <comment>When somebody undoes a previous approval.</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
+    <value>Aprubahan</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
+    <value>Aprubahan</value>
+  </data>
+  <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
+    <value>Tanggihan</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonRebudget" xml:space="preserve">
+    <value>Rebudget</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
+    <value>Ang hovercraft ko ay puno ng eels</value>
+    <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
+    <value>Anong halaga ang iyong sinusubok sa halip (sa {0})?</value>
+    <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionCorrect" xml:space="preserve">
+    <value>Baguhin ang item na ito sa halagang ito (sa {0}), pagkatapos ay patunayan ito tulad nito:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionDeny" xml:space="preserve">
+    <value>Opsyonal na dahilan para sa pagtanggi sa nagsumite:</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
+    <value>Ilipat ang singil sa badyet na ito sa halip:</value>
+  </data>
+  <data name="AttestCosts_Modal_Header" xml:space="preserve">
+    <value>Ayusin ang mga problema o tanggihan ang pag-apruba</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
+    <value>Aaprubahan ko ito, pero sa ibang halaga.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
+    <value>Ang halaga ay mali. Aaprubahan ko ito para sa wastong halaga.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
+    <value>Hindi ko aaprubahan ang rekord na ito. Ito ay ibabasura.</value>
+    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
+    <value>Ang rekord na ito ay dapat na singilin sa ibang badyet. Ilipat ito doon.</value>
+  </data>
+  <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
+    <value>Ano ang tila problema sa rekord na ito?</value>
+  </data>
+  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
+    <value>Hindi sapat ang mga pondong natitira sa badyet upang maaprubahan ang halagang ito.</value>
+  </data>
+  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
+    <value>Hindi sapat ang mga pondo para maaprubahan ito. Mapapatunayan mo ito hanggang {0} {1:N2} na higit pa sa badyet para sa taong {2}.</value>
+    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
+  </data>
+  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
+    <value>&lt;strong&gt;BADYET NA UTANG SA BANGKO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Hindi sapat ang mga natitirang pondo sa badyet para makapag-apruba sa gastusing ito. Kadalasan, ito ay hinaharangan sa pag-apruba. Gayunpaman, maaari mo itong pawalaan ng halaga ang limitasyon na ito at magpatotoo pa rin, sa gayon nagiging sanhi sa akawnt na maging may utang sa bangko ang badyet na ito.&lt;br/&gt;&lt;br/&gt;Gusto mo bang aprubahan ang gastusin, sa gayon pwersahang nagkakaroon ng utang, o gusto mong kanselahin, o sa halip mamalagi sa badyet?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
+    <value>Manatili sa Badyet</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmYes" xml:space="preserve">
+    <value>Force Overdraft</value>
+  </data>
+  <data name="AttestCosts_Overdrafted" xml:space="preserve">
+    <value>ANG BUDGET AY OVERDRAFTED.</value>
+    <comment>The UPPERCASE is intentional.</comment>
+  </data>
+  <data name="AttestCosts_PageTitle" xml:space="preserve">
+    <value>Aprubahan Ang Mga Gastusin</value>
+  </data>
+  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
+    <value>Pagpupulong #{0:N0}, isinaayos ni {1}, ay inaprubahan na para sa {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
+    <value>Pag-apruba para sa Pagpupulong #{0:N0} ni {1} ay BINAWI. Ito ay hindi maipagpapatuloy maliban kung ito ay aprubahan muli.</value>
+    <comment>When somebody undoes a previous approval.</comment>
+  </data>
+  <data name="AttestCosts_SalaryAttested" xml:space="preserve">
+    <value>Sweldo #{0:N0} para sa {1} ay pinatunayan para sa {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
+    <value>Pag-apruba para sa Sahod #{0:N0} para sa {1} ay BINAWI. Ito ay hindi ibabayad maliban kung ito ay aprubahan muli.</value>
+    <comment>When somebody undoes a previous approval.</comment>
+  </data>
+  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
+    <value>&lt;strong&gt;BABALA: HINDI NAITAKDA ANG BADYET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ang gastos na iyong inaaprubahan ay pag-aari ng isang akawnt sa ledger na walang may-ari at walang tiyak na rasyon sa badyet para sa taon nato. Konsiderahing bisitahin ang Tsart ng mga Akawnt at paglalaan ng mga badyet para inaasahang kia at mga gastusin.&lt;br/&gt;&lt;br/&gt;Ang mensaheng ito ay ipapakita lamang isang beses bawat pagbisita sa Mga Pag-apruba ng Gastos.&lt;br/&gt;</value>
+  </data>
+  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
+    <value>Kabuuang halang ng invoice (sa {0})</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>Paglalarawan</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
+  <data name="CreateInboundInvoice_HeaderInvoiceImage" xml:space="preserve">
+    <value>Imahe ng Talaan</value>
+  </data>
+  <data name="CreateInboundInvoice_HeaderPaymentDetails" xml:space="preserve">
+    <value>Mga Detalye ng Pagbabayad</value>
+    <comment>Displayed as header over supplier's account details</comment>
+  </data>
+  <data name="CreateInboundInvoice_Info" xml:space="preserve">
+    <value>Ito ay kung saan ka maghahain ng mga talaan na natanggap sa iyong organisasyon ("Mga Akawnt na Babayaran"). Ipasok ang pangalan ng tagapagtustos, halaga, takdang petsa, ang reperensiya ng talaan, at mag-upload ng imahe sa natanggap na talaan. Tsaka, pumili ng badyet. Ang may-ari ng badyet ay kailangang magpatotoo, gaya ng dati. (Ang mga naka-roadmap na mga pagpapalawak sa hinaharap sa mekanismo na ito ay sumasaklaw sa mga order ng pagbili at mga listahan ng mga tagapagtustos.)</value>
+  </data>
+  <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
+    <value>Natanggap na Paparating na Talaan</value>
+  </data>
+  <data name="CreateInboundInvoice_Reference" xml:space="preserve">
+    <value>Reperensiya ng talaan</value>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceAutomaticOcr" xml:space="preserve">
+    <value>OCR / Awtomatiko</value>
+    <comment>Some invoices come with OCR numbers printed on them for automatic processing.</comment>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceManual" xml:space="preserve">
+    <value>Manu-mano</value>
+    <comment>Other invoices come without automated processing and a manual </comment>
+  </data>
+  <data name="CreateInboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Paparating na Talaan #{0:N0} ay nai-payl na.</value>
+    <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
+  </data>
+  <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
+    <value>Akawnt</value>
+    <comment>Free text input, intended to convey everything needed to get the money right</comment>
+  </data>
+  <data name="CreateInboundInvoice_UploadInvoiceImage" xml:space="preserve">
+    <value>Mag-upload ng payl ng imahe</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
+    <value>Mangyaring ipasok ang akawnt sa bangko ng tagapagtustos o katumbas.</value>
+  </data>
+  <data name="Donate_Explain" xml:space="preserve">
+    <value>Ang kodigong QR na ito ay para sa mga donasyon sa {0}. Basahin ito mula sa bitcoin wallet ng iyong telepono upang makasagawa ng isang donasyon, o mag-abuloy mula sa iyong kompyuter diretso sa [{1}] (iyan ay isang Bitcoin Cash address).</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="Donate_FundsReceived" xml:space="preserve">
+    <value>Nakatanggap ng {0} {1:N2} ({2:N0} microcoins o "bits"). Salamat!</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedNative" xml:space="preserve">
+    <value>Nakatanggap ng {0} na mga microcoin ("bits"). Salamat!</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="Donate_Info" xml:space="preserve">
+    <value>Kung gusto mong mag-abuloy sa organisasyon, magagawa mo yan dito.</value>
+  </data>
+  <data name="Donate_PageTitle" xml:space="preserve">
+    <value>Mag-abuloy</value>
+  </data>
+  <data name="Donate_StatusInitial" xml:space="preserve">
+    <value>Naghihintay sa transaksyon...</value>
+  </data>
+  <data name="Donate_TransactionDetected" xml:space="preserve">
+    <value>Natuklasan ang transaksyon, pinapapatunayan...</value>
+  </data>
+  <data name="Donate_TxLabel" xml:space="preserve">
+    <value>Donasyon sa {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Donate_TxLabel_Loan" xml:space="preserve">
+    <value>Mag-utang sa {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="FileExpenseClaim_Amount" xml:space="preserve">
+    <value>Halaga ng pag-angkin ng gastos (sa {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
+    <value>Numero ng Akawnt</value>
+  </data>
+  <data name="FileExpenseClaim_BankClearing" xml:space="preserve">
+    <value>Numero sa Pag-clear</value>
+  </data>
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>Pangalan ng Bangko</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Badyet</value>
+  </data>
+  <data name="FileExpenseClaim_CostType" xml:space="preserve">
+    <value>Klase ng Gastos</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
+  <data name="FileExpenseClaim_Description" xml:space="preserve">
+    <value>Paglalarawan</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>Mga Detalye ng Iyong Bangko</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderReceiptImages" xml:space="preserve">
+    <value>Mga Imahe ng Resibo</value>
+  </data>
+  <data name="FileExpenseClaim_Info" xml:space="preserve">
+    <value>Kung ikaw ay nakasagawa ng pagbili para sa organisasyon gamit ang iyong mga pondong pribado, malamang gusto mo ng pagsasauli ng nagugol para doon sa pamamagitan ng pag-payl ng &lt;em&gt;pag-angkin ng gastos&lt;/em&gt;. Gagawin mo yan dito sa pamamagitan ng pag-upload ng mga resibo at pagpili sa badyet na sisingilin nito. Kung ikaw ay dati nang nakatanggap ng paunang bayad para sa pagbili na ito, ito ay kung saan malilinaw mo ang utang mo sa organisasyon sa pamamagitan ng pagsumite ng mga resibo.</value>
+  </data>
+  <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
+    <value>Humiling ng Pagsauli ng Pera Para sa Gastos</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartOne" xml:space="preserve">
+    <value>Matagumpay na nai-payl ang pag-angkin ng gastos para sa {0} {1:N2} laban sa badyet ng {2}. Ang mga resibo ay kinakailangan na mapatunayan at ang pag-angkin ay nangangailangan na mapatotoo ng may-ari ng badyet.</value>
+    <comment>{0} is the currency, {1} is the amount, and {2} is the budget name.</comment>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Sa sandaling ito ay mangyayari, ang mga pondo ay magpapatuloy sa pagbayad patungo sa iyong itinurong akawnt.</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Dahil ito ang iyong sariling badyet, ang pagpapatunay ay kumpleto na. Ang pagpapatunay lamang ang kinakailangan.</value>
+  </data>
+  <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
+    <value>Mag-upload ng mga Imahe ng Resibo</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
+    <value>Mangyaring ipasok ang halaga ng pera (sa {0}) na iyong nililikom.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Documents" xml:space="preserve">
+    <value>Mangyaring mag-upload ng isa or higit pang mga imahe ng resibo na nagsusuporta sa iyong pag-angkin ng gastos.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>Mangyaring pumili ng opsyon tulad ng ipinahihiwatig.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
+    <value>Mangyaring ilarawan kung sa ano ang pagbili na ito.</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
+    <value>Halaga</value>
+    <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
+    <value>Binayaran</value>
+    <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
+    <value>Tatanggap</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_Header" xml:space="preserve">
+    <value>Mga Gastos na Handa na Para Payout</value>
+  </data>
+  <data name="PayOutMoney_Info" xml:space="preserve">
+    <value>Ang mga ito ay ang iba't ibang uri ng mga gastos sa organisasyon na nakapasa sa lahat ng mga hadlang para sa payout. Sila ay handa na mabayaran sa tatanggap. Narito kung saan mo tinitingnan ang mga ito bilang bayad (marahil habang nakabukas ang iyong bangko sa isa pang window).</value>
+  </data>
+  <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
+    <value>Ipakita ang OCR para sa mga mobile app</value>
+  </data>
+  <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
+    <value>Ipakita ang mga bukas na pagbabayad ({0:N0})</value>
+    <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>Magbayad ng Pera</value>
+  </data>
+  <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
+    <value>Hindi ma-undo ang payout #{0}: ito ay naisaayos o isinara na.</value>
+  </data>
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>Ang Payout #{0:N0} sa {1} ay nilikha.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>Ang Payout #{0:N0} ay nababawi at lahat ay naibalik.</value>
+  </data>
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>Pagbubuklod ng Buwis</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Nabawas na Buwis</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Kabuuang Sweldo</value>
+  </data>
+  <data name="PayrollTaxForms_Info" xml:space="preserve">
+    <value>Tingnan ang mga chear sheet (nakumpleto na mga form ng buwis) para sa payroll ng organisasyon, na madalai mong kopyahin sa iyong aktwal na mga form ng buwis, o posibleng i-pring pa rin. Ang pagganap at aktwal na mga form ay nag-iiba ayon sa bansa at kung minsan ay depende sa code ng third-party at mga plugin.</value>
+  </data>
+  <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
+    <value>Mga Form sa Pagbabayad sa Payroll</value>
+  </data>
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>Buwanang Buwis Forms Para sa {0} Para</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Kabuuang Gastos</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Kabuuang Buwis</value>
+  </data>
+  <data name="RequestCashAdvance_Amount" xml:space="preserve">
+    <value>Halaga ng pag-advance (sa {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_BankAccount" xml:space="preserve">
+    <value>Numero ng Account</value>
+  </data>
+  <data name="RequestCashAdvance_BankClearing" xml:space="preserve">
+    <value>Pag-clear ng Numero</value>
+  </data>
+  <data name="RequestCashAdvance_BankName" xml:space="preserve">
+    <value>Pangalan ng Bangko</value>
+  </data>
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>Badyet</value>
+  </data>
+  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
+    <value>Mga detalye ng iyong Bangko</value>
+  </data>
+  <data name="RequestCashAdvance_Info" xml:space="preserve">
+    <value>Kung malapit ka nang bumili sa ngalan ng samahan, ngunit kailangan mo ng pera nang maaga sa halip na kunin ito pabalik pagkatapos, maaari kang humiling ng cash advance para sa isang partikular na layunin.</value>
+  </data>
+  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
+    <value>Humiling ng Cash Advance</value>
+  </data>
+  <data name="RequestCashAdvance_Purpose" xml:space="preserve">
+    <value>Layunin</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartOne" xml:space="preserve">
+    <value>Ang isang cash advance ay hiniling para sa &lt;strong&gt; {0} &lt;/strong&gt;. Ang hiniling na halaga ay {2} {3:N2}. Tandaan na ito ay isang &lt;strong&gt;pautang&lt;/strong&gt; mula sa samahan hanggang sa ipinakita ang mga resibo.</value>
+    <comment>{0} is the person receiving the advance, {1} is the entered description. {2} is the currency (in caps) and {3:N2} is the amount, with two decimals, displayed in culture.</comment>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Kinakailangan ito na pinatunayan ng may-ari ng badyet at pagkatapos ay magpapatuloy sa pagbayad.</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Tulad ng iyong sariling badyet, ito ay awtomatikong napatunayan at nagpatuloy sa pagbabayad.</value>
+    <comment>This is displayed if either the person creating the cash advance OR the person receiving it is the budget owner.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Amount" xml:space="preserve">
+    <value>Mangyaring ipasok ang halaga ng pera (sa {0}) na nais mong isulong.</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
+    <value>Mangyaring ipasok ang iyong numero ng bank account.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankClearing" xml:space="preserve">
+    <value>Mangyaring ipasok ang clearing number ng iyong bangko.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
+    <value>Mangyaring ipasok ang pangalan ng iyong bangko.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
+    <value>Mangyaring pumili ng badyet upang singilin.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
+    <value>Mangyaring ipahayag ang layunin ng cash advance.</value>
+  </data>
+  <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
+    <value>Mga resibo na naghihintay sa iyong pagpapatunay</value>
+  </data>
+  <data name="ValidateReceipts_Info" xml:space="preserve">
+    <value>Ito ay kung saan mo sinuri at kumpirmahin ang bisa ng mga resibo na kasama ang mga claim sa gastos. Tiyakin na ang halaga ay tama at ang resibo ay lumilitaw na para sa kung ano ang inaangkin nito para sa.</value>
+  </data>
+  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
+    <value>Patunayan ang mga Resibo</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
+    <value>Pagpapatunay para sa mga resibo para sa Pag-angkin ng Gastos #{0:N0} para sa {1} {2:N2} ay BINAWI. Ang pag-angkin ng gastos ay hindi maipapatuloy ang payout malibang kung ito ay papatunayan muli.</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
+    <value>Ang mga resibo para sa Claim ng Gastusin #{0:N0} para sa {1} {2:N2} ay napatunayan na.</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Lumikha</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Mangyaring ipasok ang halaga ng pera (sa {0}) ang mga kahilingan ng invoice.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Mangyaring tukuyin ang isang badyet upang singilin.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Mangyaring mag-upload ng isa o higit pang mga dokumento ng orihinal na invoice.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Mangyaring pumili ng opsyon.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Mangyaring ilarawan kung ano ang pagbili na ito.</value>
+  </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Kahilingan</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Hiling</value>
+  </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>Kabuuang bahagi ng VAT ({0})</value>
+  </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>VAT ng kabuuang ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Listahan ng mga Inbound Invoice</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Nagpadala ng invoice</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Inililista nito ang pinakabagong 100 na mga invoice, pinagsunod-sunod ng kanilang takdang petsa simula sa pinakabago muna.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Mga Inbound Invoice</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Paglikha ng Outbound Invoice</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Lumikha</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Paglikha ng Outbound Invoice</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Papalabas ng Invoice #{0:N0} filed.</value>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Natanggap ang mga Pondo ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Naipadala</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Kustomer</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Listahan ng mga Invoice na Papalabas</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Inililista nito ang 100 pinaka-kamailang mga invoice na papalabas, pinagsunod-sunod kapag sila ay nilikha, pinakabago muna.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Kabuuang Halaga</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Takdang Petsa</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Ilista ang mga Invoice na Papalabas</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Mag-upload ng Expensify CSV</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Kung mayroon kang maraming mga ulat sa gastos, maaari mong tipunin ang mga ito sa Expensify at mag-upload ng isang ulat ng Expensify CSV dito (na nakuha mo mula sa Expensify sa ilalim ng mga Ulat, I-export, bilang CSV.) Ang Swarmops ay gagamit ng Expensify upang kunin ang lahat ng mga indibidwal na resibo at mag-log ang mga ito bilang hiwalay na claim sa gastos para sa tamang accounting.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>Upang gumana ito, dahil ang {0} mga ulat ng VAT sa mga awtoridad sa buwis, kinakailangan mong baguhin ang default na profile ng Expensify CSV upang isama ang VAT, kung saan ang default ay hindi. May higit pa ang mga pahina ng tulong sa Expensify kung paano ito gagawin at kung gumagamit ka ng Expensifyy sa isang batayan ng koponan, ang iyong patakaran sa Expensify ay dapat na magkaroon ng isang profile ng export na CSV na pinagana ng VAT.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Batay sa mga setting ng samahan, ang profile ng export na "Default CSV" sa Expensify ay dapat sapat para sa Swarmops.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Ang salapi sa talaan ng Expensify ay</value>
+  </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Mag-upload ng Expensify Report Para sa Pagbabayad</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;MALI: Hindi makakapagsuri sa Expensify CSV.&lt;/strong&gt; Kung ang CSV payl na ito mula sa Extensify, pagkatapos ang Swarmops ay nangangailangan sa mga hanay na "Timestamp", "Halaga", "Mangangalakal", "Komento", "Kategoriya", "MCC", "Orihinal na Salapi", at "Orihinal na Halaga" na naroroon sa payl. Kung ang organisasyon mag-uulat ng VAT, pagkatapos ang isang karagdagang hanay na tinatawag na "VAT" ay kinakailangan. &lt;/p&gt;&lt;p&gt;Hindi nakapagpatuloy sa payl na ito.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;MALI: Ang payl na Expensify CSV ay hindi nagkakaroon ng patlang para sa VAT.&lt;/strong&gt; Dahil ang organisasyon na ito ay nag-uulat ng Value Added Tax (VAT) sa mga awtoridad, ito ay kinakailangan na tukuyin sa bawat paggastos na basehan. Mangyaring paganahin ang VAT sa Expensify at lumikha ng isang bagong pang-luwas na propayl ng CSV na nagluluwas sa ilalim ng header ng hanay na "VAT". Kung ang iyong pangkat ay nakalikha na nitong propayl ng CSV, pwede mo nang piliin ito kapag nag-e-eksport sa CSV.&lt;/p&gt;&lt;p&gt;Hindi nakapagproseso sa payl na ito.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Mag-upload ng Iba Pang CSV Payl ng Expensify?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>aking sarili</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Ito ay isang pag-angkin ng gasto mula kay?</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;MALI: Ang payl na CSV ng Expensify ay nawawalan ng kinakailangan na mga patlang sa datos.&lt;/strong&gt; Ang payl ay napapakita na ito ay nawawalan ng hindi bababa sa isa na mga patlang na kinakailangan ng naka-default na CSV propayl ng Expensify. Sumangguni sa teknikal na dokumentasyon at ihambing sa payl na sinubukan mong i-upload. (Ito ay isang posibleng dahilan ng kamalian, syempre, na sinubukan mong i-upload ang isang ganap na maling payl &amp;ndash; baka isang larawan sa halip na isang CSV ng Expensify &amp;ndash; at iyon ang dahilan para sa nawawala na inaasahang datos.)&lt;/p&gt;&lt;p&gt;Hindi nakapagproseso sa payl na ito.&lt;/p&gt;</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</root>

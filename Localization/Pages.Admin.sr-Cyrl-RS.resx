@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
+    <value>Ово је QR код за bitcoin echo testing који важи за читаву Swarmops инсталацију, а не само за {0}. Учитајте га из свог bitcoin новчаника на телефону како бисте урадили echo test, или га пошаљите са свог компјутера, директно на [{1}] (ово је Bitcoin Cash адреса). Износ (умањен за трошкове рударења од {2:N2} microcoin-а) ће Вам бити послат натраг за неколико тренутака.</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
+    <value>Примљено {2:N2} microcoin-а ({0} {1:N2}). Враћа.</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
+    <value>Примљено {0} microcoin-а ("bits"). Враћа.</value>
+    <comment>Used if Bitcoin Cash is the org native currency.</comment>
+  </data>
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>Ово је bitcoin echo test. Њиме се тестира hotwallet. Ако овде пошаљете мали износ, тај износ ће Вам бити враћен, умањен за трошкове обраде трансакције (тренутно, {0:N2} microcoin-а).</value>
+  </data>
+  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
+    <value>Bitcoin Cash Hotwallet Echo Test</value>
+  </data>
+  <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
+    <value>Чека трансакцију...</value>
+  </data>
+  <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
+    <value>Детектована је трансакција, верификација...</value>
+  </data>
+  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
+    <value>Swarmops Bitcoin Echo Test</value>
+  </data>
+  <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
+    <value>Активисти ће бити позвани</value>
+  </data>
+  <data name="CreateOrganization_AsRoot" xml:space="preserve">
+    <value>Организација основног нивоа</value>
+  </data>
+  <data name="CreateOrganization_ChildOfX" xml:space="preserve">
+    <value>Кћерка од {0}</value>
+    <comment>"Create org as..."</comment>
+  </data>
+  <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
+    <value>Креирај Нову Организацију као...</value>
+  </data>
+  <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
+    <value>Име организације не може остати празно. (Морате дати име новој организацији!)</value>
+  </data>
+  <data name="CreateOrganization_Info" xml:space="preserve">
+    <value>Можете направити нову организацију, било као самосталну или као кћерку постојеће организације. (Свако ко има одговорности у главној организацији ће аутоматски имати иста права и у кћеркама.)</value>
+  </data>
+  <data name="CreateOrganization_NewOrganizationName" xml:space="preserve">
+    <value>Име нове организције</value>
+  </data>
+  <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
+    <value>Званична валута</value>
+  </data>
+  <data name="CreateOrganization_NewOrgName" xml:space="preserve">
+    <value>Назив нове организације</value>
+  </data>
+  <data name="CreateOrganization_PageTitle" xml:space="preserve">
+    <value>Креирај Нову Организацију</value>
+  </data>
+  <data name="CreateOrganization_RegularTitle" xml:space="preserve">
+    <value>Обични људи ће бити позвани</value>
+    <comment>This can be "members", etc.</comment>
+  </data>
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>Креирана је нова организација. Постављени сте на највишу руководећу позицију {0}, за стално, тако да све можете уредити. Како бисте подесили нову организацију, користите контролни панел (који ће касније бити доступан под Админ / Подешавања организације).</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
+  <data name="CreateOrganization_Titles" xml:space="preserve">
+    <value>Подразумевани положај на почетку</value>
+  </data>
+  <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
+    <value>Комерцијална</value>
+  </data>
+  <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
+    <value>Непрофитна</value>
+  </data>
+  
+  <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
+    <value>{0} нумеризација</value>
+    <comment>The {0} is the membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_OpenLedgersDomain" xml:space="preserve">
+    <value>Отвори домен пословних књига</value>
+  </data>
+  <data name="EditOrganization_PageTitle" xml:space="preserve">
+    <value>Уреди Организацију</value>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsOrg" xml:space="preserve">
+    <value>Људи постају {0}</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsWhen" xml:space="preserve">
+    <value>Људи постају {0} када</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationChurn" xml:space="preserve">
+    <value>{0} се завршава онда када</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationCost" xml:space="preserve">
+    <value>Иницијално, {0} кошта (у {1})</value>
+    <comment>The {0} is membership, etc. The {1} is the operating currency.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationDuration" xml:space="preserve">
+    <value>Траје {0}</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_RenewalDateEffect" xml:space="preserve">
+    <value>Обновљени период се рачуна од</value>
+  </data>
+  <data name="EditOrganization_RenewalReminders" xml:space="preserve">
+    <value>Подсетник за обнављање</value>
+  </data>
+  <data name="EditOrganization_RenewalsAffect" xml:space="preserve">
+    <value>Обнављање обухвата</value>
+    <comment>(options: all organizations, one org at a time)</comment>
+  </data>
+  <data name="EditOrganization_RenewalsCost" xml:space="preserve">
+    <value>Обнављање кошта (у {0})</value>
+    <comment>The {0} is the operating currency (USD etc).</comment>
+  </data>
+  <data name="EditOrganization_VanityDomain" xml:space="preserve">
+    <value>Организација, vanity домен</value>
+  </data>
+  <data name="OrgStaffing_Header_ExecutivePositions" xml:space="preserve">
+    <value>Извршне позиције за {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>Локалне позиције (у сваком региону)</value>
+  </data>
+  <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
+    <value>Платни списак запослених</value>
+  </data>
+  <data name="OrgStaffing_Header_StrategicPositions" xml:space="preserve">
+    <value>Стратешке позиције за {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
+    <value>Волонтери чекају одговор</value>
+  </data>
+  <data name="OrgStaffing_Info" xml:space="preserve">
+    <value>Подесите стратегију запошљавања у организацији, као и стратегију за запошљавање на нивоу Одбора или Директора (C-level или еквивалент). Одавде такође можете организовати платне листе и волонтере који чекају.</value>
+  </data>
+  <data name="OrgStaffing_PageTitle" xml:space="preserve">
+    <value>Запошљавање у Организацији</value>
+  </data>
+  <data name="SystemSettings_AdminAddress" xml:space="preserve">
+    <value>Администрација обавештења, са адресе</value>
+  </data>
+  <data name="SystemSettings_AdminSender" xml:space="preserve">
+    <value>Администрација обавештења, по именима</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
+    <value>SMTP Port мора бити нумерички. Unable to parse (програм не може да растумачи) host:port.</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
+    <value>Unable to parse user, pass, host, и/или port. (Тражи се host.)</value>
+  </data>
+  <data name="SystemSettings_ExternalUrl" xml:space="preserve">
+    <value>Екстерно доступне URL адресе</value>
+  </data>
+  <data name="SystemSettings_Header_CorrespondenceTxSettings" xml:space="preserve">
+    <value>Подешавања кореспондентне трансмисије</value>
+  </data>
+  <data name="SystemSettings_Header_SystemAdministrators" xml:space="preserve">
+    <value>Систем администратори</value>
+  </data>
+  <data name="SystemSettings_Info" xml:space="preserve">
+    <value>Разна техничка подешавања за Swarmops инсталацију. Не односе се на неку особу или организацију, већ су на нивоу инсталације.</value>
+  </data>
+  <data name="SystemSettings_InstallationName" xml:space="preserve">
+    <value>Назив инсталације</value>
+  </data>
+  <data name="SystemSettings_PageTitle" xml:space="preserve">
+    <value>Системска подешавања</value>
+  </data>
+  <data name="SystemSettings_SmtpServer" xml:space="preserve">
+    <value>SMTP Сервер (user:pass@host:port)</value>
+  </data>
+  <data name="SystemSettings_TestMailSent" xml:space="preserve">
+    <value>Swarmops Вам је послао тест mail како би верификовао нова подешавања SMTP сервера.</value>
+  </data>
+  <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
+    <value>Заиста, ЗАИСТА, би требало да користите HTTPS за веб-сајтове попут овог. Али, то већ знате, зар не?</value>
+  </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Backend Hostname Override</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>WebSocket Порт (Frontend)</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
+    <value>WebSocket Порт (Backend)</value>
+  </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Представљање особе је активно</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>Активирали сте секцију представљања у име {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Заврши представљање.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАТЕ ДРУГУ ОСОБУ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ако ово не радите из техничких разлога, онда је то озбиљно дело, које можда подлеже локалним законима.&lt;br/&gt;&lt;br/&gt;Сврха овог алата је да реши техничке проблеме. Све се уписује у регистар.&lt;br/&gt;&lt;br/&gt;Настављате?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ИМЕ ДРУГЕ ОСОБЕ ЈЕ ЗАВРШЕНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Представљање у име друге особе је завршено у {0:HH:mm} UTC. Сада поново представљате себе.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ТУЂЕ ИМЕ ЈЕ БЛОКИРАНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Не можете да представљате свог директно надређеног.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ТУЂЕ ИМЕ ЈЕ БЛОКИРАНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Не можете да представљате некога са приступом системском нивоу.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Морате да селектујете особу коју ћете да представљате.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Ако имате потребу да из неких разлога представљате себе, уместо себе, молимо Вас, одјавите се са Swarmops-а и потражите стручну помоћ.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ТУЂЕ ИМЕ ЈЕ ОНЕМОГУЋЕНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Изгледа да немате одговарајуће привилегије које би Вам то дозволиле.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Представљај другог корисника</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Представљање у туђе име</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Особа у чије се име представљате</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ИМЕ ДРУГЕ ОСОБЕ ЈЕ АКТИВИРАНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Представљање је отпочело у {0:HH:mm} UTC. Ово је контролна табла коју види особа у чије име радите. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Овај алат за уклањање грешака Вам омогућава да преузмете туђи идентитет и искусите Swarmops као да сте пријављени са туђим подацима.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;УПОЗОРЕЊЕ:&lt;/strong&gt; Ово је озбиљан алат и може се користити само у случајевима када се решава технички проблем или када се тражи подршка.&lt;/p&gt;
+&lt;p&gt;Све замене идентитета се трајно снимају и сваку извршену радњу је могуће пратити. Такође, лице у чије име се ради, биће обавештено о томе.&lt;/p&gt;</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Позвани су људи који још нису чланови</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(није применљиво)</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Влада</value>
+  </data>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;САКУПЉАЊЕ ПРАШИНЕ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Износ који сте послали је мањи од износа трошкова слања и враћања средстава Вама, а он износи {0:N2} microcoin-а. Износ који сте послали се у жаргону bitcoin мреже зове "прашина" и неће бити послат.&lt;br/&gt;&lt;br/&gt;Како бисте спровели echo test, пошаљите виши износ.</value>
+  </data>
+</root>

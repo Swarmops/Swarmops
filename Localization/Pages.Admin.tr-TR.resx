@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
+    <value>Bu, sadece {0} için değil, Swarmops kurulumunun tamamı için bitcoin eko testi için QR koddur. Eko testini gerçekleştirmek için telefonunuzun bitcoin cüzdanından okuyun ya da bilgisayarınızdan direkt olarak [{1}](bu bir Bitcoin Cash adresidir) adresine gönderin. Sonraki bir kaç saniye içinde miktar ({2:N2} mikrokoin olan daha az madenci ücreti) size geri gönderilecektir.</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
+    <value>{2:N2} mikrokoin alındı ({0}{1:N2}). Geri dönülüyor.</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
+    <value>{0} mikrokoin alındı ("bit"). Geri dönülüyor.</value>
+    <comment>Used if Bitcoin Cash is the org native currency.</comment>
+  </data>
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>Bu bir bitcoin eko testidir. Bu, hotwallet'i test edecektir. Buraya küçük bir miktar gönderirseniz, bu miktar size geri gönderilecektir, geri gönderme işlem ücreti çıkarılmış olarak (şuan için {0:N2} mikrokoin).</value>
+  </data>
+  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
+    <value>Bitcoin Cash Hotwallet'ı Eko Testi</value>
+  </data>
+  <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
+    <value>İşlem için bekleniyor...</value>
+  </data>
+  <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
+    <value>İşlem tespit edildi, onaylanıyor...</value>
+  </data>
+  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
+    <value>Swarmops Bitcoin Eko Testi</value>
+  </data>
+  <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
+    <value>Aktivistler aranacaktır</value>
+  </data>
+  <data name="CreateOrganization_AsRoot" xml:space="preserve">
+    <value>Kök-düzeyi organizasyon</value>
+  </data>
+  <data name="CreateOrganization_ChildOfX" xml:space="preserve">
+    <value>{0} ın alt dizini</value>
+    <comment>"Create org as..."</comment>
+  </data>
+  <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
+    <value>Yeni organizasyonu şu şekilde oluştur...</value>
+  </data>
+  <data name="CreateOrganization_Error_OrganizationNameCannotBeEmpty" xml:space="preserve">
+    <value>Organizasyon adı boş olamaz. (Yeni organizasyona bir isim vermeniz gerek!)</value>
+  </data>
+  <data name="CreateOrganization_Info" xml:space="preserve">
+    <value>Yeni bir organizasyonu bağımsız yeni bir organizasyon olarak veya mevcut olanın bir alt organizasyonu olarak oluşturabilirsiniz. ( Ana organizasyonda yetkileri olan herkes bütün alt organizasyonlarda karşılık gelen hak ve ayrıcalıklara otomatik olarak sahiptir.)</value>
+  </data>
+  <data name="CreateOrganization_NewOrganizationName" xml:space="preserve">
+    <value>Yeni organizasyon adı</value>
+  </data>
+  <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
+    <value>İşletme para birimi</value>
+  </data>
+  <data name="CreateOrganization_NewOrgName" xml:space="preserve">
+    <value>Yeni organizasyonun adı</value>
+  </data>
+  <data name="CreateOrganization_PageTitle" xml:space="preserve">
+    <value>Yeni organizasyon oluştur</value>
+  </data>
+  <data name="CreateOrganization_RegularTitle" xml:space="preserve">
+    <value>Normal insanlar aranacak</value>
+    <comment>This can be "members", etc.</comment>
+  </data>
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>Yeni organizasyon oluşturuldu. Size, organizasyonda zaman aşımına uğramayan {0} yetkisi verildi, ve üzerinde çalışabilmeniz ve uygun şekilde kurabilmeniz için şuan için en yüksek yöneticisi olarak atandınız. Yeni organizasyonu yapılandırmak için, bu kontrol panelini kullanınız ( Bir süre sonra Admin / Organizasyon ayarları kısmında bulunacaktır).</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
+  <data name="CreateOrganization_Titles" xml:space="preserve">
+    <value>Başlangıçtaki varsayılan konum başlıkları</value>
+  </data>
+  <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
+    <value>Ticari</value>
+  </data>
+  <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
+    <value>Kar amacı gütmeyen</value>
+  </data>
+  
+  <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
+    <value>{0} numaralandırması</value>
+    <comment>The {0} is the membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_OpenLedgersDomain" xml:space="preserve">
+    <value>Açık Defterler Alanı</value>
+  </data>
+  <data name="EditOrganization_PageTitle" xml:space="preserve">
+    <value>Organizasyon düzenle</value>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsOrg" xml:space="preserve">
+    <value>İnsanlar şunun {0} oldu</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationBeginsWhen" xml:space="preserve">
+    <value>Insanlar şu zamanda {0} oldu</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationChurn" xml:space="preserve">
+    <value>{0} şu tarihte bitecek</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationCost" xml:space="preserve">
+    <value>İlk {0} ücreti ({1} olarak)</value>
+    <comment>The {0} is membership, etc. The {1} is the operating currency.</comment>
+  </data>
+  <data name="EditOrganization_ParticipationDuration" xml:space="preserve">
+    <value>Bir {0} şu kadar sürer</value>
+    <comment>The {0} is membership, ambassadorship, etc.</comment>
+  </data>
+  <data name="EditOrganization_RenewalDateEffect" xml:space="preserve">
+    <value>Yenilenen dönem şu tarihten itibaren sayar</value>
+  </data>
+  <data name="EditOrganization_RenewalReminders" xml:space="preserve">
+    <value>Yenilemeyi hatırlat</value>
+  </data>
+  <data name="EditOrganization_RenewalsAffect" xml:space="preserve">
+    <value>Yenilemeler şunları etkilesin</value>
+    <comment>(options: all organizations, one org at a time)</comment>
+  </data>
+  <data name="EditOrganization_RenewalsCost" xml:space="preserve">
+    <value>Yenileme ücreti ({0} olarak)</value>
+    <comment>The {0} is the operating currency (USD etc).</comment>
+  </data>
+  <data name="EditOrganization_VanityDomain" xml:space="preserve">
+    <value>Organizasyon Gösterim Alanı</value>
+  </data>
+  <data name="OrgStaffing_Header_ExecutivePositions" xml:space="preserve">
+    <value>{0} İçin Yönetici Pozisyonları</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>Yerel Pozisyonlar (Bütün Coğrafyalarda)</value>
+  </data>
+  <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
+    <value>Personel Bordrosu</value>
+  </data>
+  <data name="OrgStaffing_Header_StrategicPositions" xml:space="preserve">
+    <value>{0} İçin Stratejik Pozisyon</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
+    <value>Yanıt Bekleyen Gönüllüler</value>
+  </data>
+  <data name="OrgStaffing_Info" xml:space="preserve">
+    <value>Bu organizasyon için kadro yapısını belirleyin, stratejik (kurul) ve yönetimsel (c-seviyesi veya dengi) seviyelerdeki kadrolar da dahil olmak üzere. Buradan, bekleyen gönüllüleri ve bordroları da yönetebilirsiniz.</value>
+  </data>
+  <data name="OrgStaffing_PageTitle" xml:space="preserve">
+    <value>Organizasyon Personeli</value>
+  </data>
+  <data name="SystemSettings_AdminAddress" xml:space="preserve">
+    <value>Adresten Admin Bildirimleri</value>
+  </data>
+  <data name="SystemSettings_AdminSender" xml:space="preserve">
+    <value>İsimden Admin Bildirimleri</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
+    <value>SMTP portu sayısal olmalıdır. Ana makine: port ayrıştırılamıyor.</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
+    <value>Kullanıcı, şifre, sunucu ve/veya port ayrıştırılamıyor. (Yalnızca sunucu gereklidir.)</value>
+  </data>
+  <data name="SystemSettings_ExternalUrl" xml:space="preserve">
+    <value>Harici Erişilebilir URL</value>
+  </data>
+  <data name="SystemSettings_Header_CorrespondenceTxSettings" xml:space="preserve">
+    <value>Haberleşme İletişim Ayarları</value>
+  </data>
+  <data name="SystemSettings_Header_SystemAdministrators" xml:space="preserve">
+    <value>Sistem Yöneticileri</value>
+  </data>
+  <data name="SystemSettings_Info" xml:space="preserve">
+    <value>Bu Swarmops kurulumu için çeşitli teknik ayarlar. Herhangi bir organizasyon veya kişiye özel değil, yükleme çapında.</value>
+  </data>
+  <data name="SystemSettings_InstallationName" xml:space="preserve">
+    <value>Kurulum İsmi</value>
+  </data>
+  <data name="SystemSettings_PageTitle" xml:space="preserve">
+    <value>Sistem Ayarları</value>
+  </data>
+  <data name="SystemSettings_SmtpServer" xml:space="preserve">
+    <value>SMTP sunucusu (kullanıcı:şifre@sunucu:port)</value>
+  </data>
+  <data name="SystemSettings_TestMailSent" xml:space="preserve">
+    <value>Swarmops, size SMTP sunucu ayarlarınızı onaylamak için bir test e-postası gönderdi.</value>
+  </data>
+  <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
+    <value>Bu tür bir web sitesi için mutlaka, mutlaka, MUTLAKA HTTPS kullanmalısınız. Ama bunu zaten biliyordunuz, değil mi?</value>
+  </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Arka Plan Sunucu Adı Geçersiz Kılma</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>WebSoket Portu (Ön Plan)</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
+    <value>WebSoket Portu (Arka Plan)</value>
+  </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Kişileştirme Aktif</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>{0} olarak aktif bir kişileştirme oturumunuz bulunuyor. &lt;a href="javascript:terminateImpersonation();"&gt;Kişileştirmeyi Sonlandır.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;ŞAHIS KİŞİLEŞTİRİLSİN Mİ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bu hafife alınmamalıdır, ve bunu teknik sebeplerden dolayı yapmıyorsanız yerel kanunlarınıza bağlı olarak illegal dahi olabilir. &lt;br/&gt;&lt;br/&gt;Bu aracın amacı teknik arızaları gidermektir. Her şey kayıt altına alınır.&lt;br/&gt;&lt;br/&gt;Devam edilsin mi?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;KİŞİLEŞTİRME İPTAL EDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Kişileştirme {0:HH:mm} UTC
+'de iptal edildi. Yeniden kendiniz olarak davranıyorsunuz.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;KİŞİLEŞTİRME REDDEDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Direkt olarak manejeriniz olan birisini kişileştiremezsiniz.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;KİŞİLEŞTİRME REDDEDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Sistem çapında erişimi olan başka birisini kişileştiremezsiniz.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Kişileştirmek için bir kişi seçmelisiniz.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Eğer kendinizi kişileştirmeniz gerekiyorsa Swarmops'dan çıkış yaparak farklı bir yardım aramanızı öneririz.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;KİŞİLEŞTİRME REDDEDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Başka birini kişileştirmek için yeterli yetkiye sahip değilsiniz gibi gözüküyor.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Başka bir kullanıcıyı kişileştir</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Kişileştir</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Kişileştirilecek şahıs</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;KİŞİLEŞTİRME AKTİF&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Kişileştirme {0:HH:mm} UTC'de başladı. Bu, kontrol panelinin kişileştirilen şahsın göreceği şeklidir. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Bu hata ayıklama aracı, sizin başka bir kullancıyı kişileştirerek Swarmops'u onların giriş yaptığında gördüğü şekilde görmenize olanak sağlar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;UYARI:&lt;/strong&gt;Bu, teknik geliştirme ve talep edilen destek için, kullanılması son derece önerilmeyen bir araçtır. Bunun kullanılması hafife alınmamalıdır.&lt;/p&gt;
+&lt;p&gt;Bütün kişileştirmeler kalıcı olarak kayıt altına alınır, kişileştirilmiş durumdayken yapılan bütün ve herbir eylem olduğu gibi izlenebilirdir, ve kişileştirilen kullanıcı bu durumdan haberdar edilecektir.&lt;/p&gt;</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Henüz üye olmayanlar şu şekilde anılır</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(uygulanamaz)</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Hükümet</value>
+  </data>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;TOZ TOPLANDI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Gönderilen miktar size geri gönderilmesi için öngörülen ücret olan {0:N2} mikrokoinden daha düşük. Gönderdiğiniz para artık bitcoin ağında "toz" olarak geçmekte, ve tekrar taşınmayacak.&lt;br/&gt;&lt;br/&gt;Eko testi yapmak için daha yüksek bir miktar gönderiniz.</value>
+  </data>
+</root>

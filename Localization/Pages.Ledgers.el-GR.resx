@@ -1,0 +1,1027 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountPlan_CreateRootAccount" xml:space="preserve">
+    <value>Δημιουργήστε νέο λογαριασμό διαχειριστή</value>
+  </data>
+  <data name="AccountPlan_Info" xml:space="preserve">
+    <value>Αυτή είναι η γενική επισκόπηση των χρηματοοικονομικών λογαριασμών στο καθολικό σας. Μπορείτε να κάνετε κάποια συντήρηση από εδώ, ακόμα και αν οι περισσότερες καθημερινές εργασίες πρέπει να μεταβιβαστούν στους ιδιοκτήτες προϋπολογισμών.</value>
+  </data>
+  
+  <data name="BalanceSheet_AccountName" xml:space="preserve">
+    <value>Λογαριασμός</value>
+  </data>
+  <data name="BalanceSheet_ContentHeader" xml:space="preserve">
+    <value>Ισολογισμός για τον οργανισμό {0},</value>
+    <comment>{0} is the organization name. The year follows immediately, so keep ending comma.</comment>
+  </data>
+  <data name="BalanceSheet_Current" xml:space="preserve">
+    <value>Τρέχων</value>
+  </data>
+  <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
+    <value>Ισολογισμός</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="BalanceSheet_EndYear" xml:space="preserve">
+    <value>Τέλος-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="BalanceSheet_Info" xml:space="preserve">
+    <value>Ο ισολογισμός είναι μια γενική επισκόπηση των περιουσιακών στοιχείων και των χρεών σε μια δεδομένη χρονική στιγμή, και χρησιμοποιείται για την εκτίμηση της επιρροής των αποτελεσμάτων στην συνολική οικονομική υγεία του οργανισμού. Ενδεχομένως να θέλετε να ρίξετε μια ματιά στην &lt;a href="ProfitLossStatement"&gt;δήλωση κερδών και ζημιών&lt;/a&gt; που αποτελεί μια γενική επισκόπηση των εσόδων και εξόδων.</value>
+  </data>
+  <data name="BalanceSheet_PageTitle" xml:space="preserve">
+    <value>Ισολογισμός</value>
+  </data>
+  <data name="BalanceSheet_Q1" xml:space="preserve">
+    <value>Αλλαγή Q1</value>
+  </data>
+  <data name="BalanceSheet_Q2" xml:space="preserve">
+    <value>Αλλαγή Q2</value>
+  </data>
+  <data name="BalanceSheet_Q3" xml:space="preserve">
+    <value>Αλλαγή Q3</value>
+  </data>
+  <data name="BalanceSheet_Q4" xml:space="preserve">
+    <value>Αλλαγή Q4</value>
+  </data>
+  <data name="BalanceSheet_StartYear" xml:space="preserve">
+    <value>Έναρξη-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="ProfitLossStatement_AccountName" xml:space="preserve">
+    <value>Λογαριασμός</value>
+  </data>
+  <data name="ProfitLossStatement_ContentHeader" xml:space="preserve">
+    <value>P&amp;L του οργανισμού {0} για το έτος</value>
+    <comment>The {0} is the organization name. The year number follows this string.</comment>
+  </data>
+  <data name="ProfitLossStatement_DownloadFileName" xml:space="preserve">
+    <value>ΚερδηΖημιες</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="ProfitLossStatement_Info" xml:space="preserve">
+    <value>Το P&amp;L είναι μια γενική επισκόπηση των εσόδων και των εξόδων, που ομαδοποιούνται βάσει προϋπολογισμών ή βάσει του τύπου δαπάνης/εισοδήματος. Το άθροισμα όλων των εσόδων και εξόδων είναι το ετήσιο αποτέλεσμα. Μπορείτε να ανατρέξετε στον &lt;a href="BalanceSheet"&gt;ισολογισμό&lt;/a&gt; που είναι η γενική επισκόπηση των περιουσιακών στοιχείων και των χρεών.</value>
+  </data>
+  <data name="ProfitLossStatement_LastYear" xml:space="preserve">
+    <value>Προηγούμενο Έτος</value>
+  </data>
+  <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
+    <value>Δήλωση Κερδών &amp; Ζημιών</value>
+  </data>
+  <data name="ProfitLossStatement_Results" xml:space="preserve">
+    <value>Αποτελέσματα</value>
+    <comment>Footer on P&amp;L statement</comment>
+  </data>
+  <data name="ProfitLossStatement_Ytd" xml:space="preserve">
+    <value>YTD</value>
+    <comment>Year To Date</comment>
+  </data>
+  <data name="ResyncExternalAccount_Info" xml:space="preserve">
+    <value>Αν η λογιστική σας στο Swarmops είναι εκτός συγχρονισμού με τα τραπεζικά σας αρχεία για τον οποιονδήποτε τεχνικό ή ανθρώπινο λόγο, μπορείτε να πραγματοποιήσετε επανασυγχρονισμό εδώ, ανεβάζοντας ένα κύριο αρχείο που καλύπτει την χρονική περίοδο επανασυγχρονισμού.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Προειδοποίηση:&lt;/strong&gt; Αυτή είναι μια χρονοβόρα διαδικασία που ενδέχεται να επιφέρει &lt;em&gt;πολλές&lt;/em&gt; αλλαγές στην λογιστική σας. Μην την χρησιμοποιείτε αν δεν έχετε ανακαλύψει κάποια ασυμφωνία μεταξύ των αρχείων και της τράπεζάς σας.&lt;br/&gt;&lt;br/&gt;(Θα σας δοθεί η ευκαιρία να ελέγξετε προτεινόμενες αλλαγές προτού συμπεριληφθούν στα χρηματοοικονομικά σας αρχεία.)</value>
+  </data>
+  <data name="ResyncExternalAccount_PageTitle" xml:space="preserve">
+    <value>Επανασυγχρονισμός Τραπεζικού Λογαριασμού</value>
+  </data>
+  <data name="SetRootBudgets_BudgetOwnerHeader" xml:space="preserve">
+    <value>Προϋπολογισμός, Ιδιοκτήτης</value>
+    <comment>Displayed above editables</comment>
+  </data>
+  <data name="SetRootBudgets_Info" xml:space="preserve">
+    <value>Εδώ καθορίζονται οι αρχικοί προϋπολογισμοί για κάθε έτος. Αφότου καθοριστούν, ο κάθε ιδιοκτήτης προϋπολογισμού κατανέμει κονδύλια στο αντίστοιχο δενδροδιάγραμμα προϋπολογισμού.</value>
+  </data>
+  <data name="SetRootBudgets_PageHeader" xml:space="preserve">
+    <value>Αρχικοί Προϋπολογισμοί Για Τον Οργανισμό {0}</value>
+    <comment>The {0} is replaced with the organization's name.</comment>
+  </data>
+  <data name="SetRootBudgets_PageTitle" xml:space="preserve">
+    <value>Ορισμός Προϋπολογισμών Αρχικού Επιπέδου</value>
+    <comment>Displayed above main content</comment>
+  </data>
+  <data name="SetRootBudgets_SetNewBudgets" xml:space="preserve">
+    <value>Ορίστε Νέους Προϋπολογισμούς</value>
+    <comment>Text on submit button</comment>
+  </data>
+  <data name="UploadBankFiles_AccountStatement" xml:space="preserve">
+    <value>Κατάσταση Λογαριασμού</value>
+  </data>
+  <data name="UploadBankFiles_BankAccount" xml:space="preserve">
+    <value>Τραπεζικός Λογαριασμός</value>
+  </data>
+  <data name="UploadBankFiles_BankScreenshot" xml:space="preserve">
+    <value>Στιγμιότυπο Τραπεζικού Λογαριασμού</value>
+    <comment>Displayed as header above modally zoomed screenshot</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince" xml:space="preserve">
+    <value>&lt;/p&gt;&lt;p&gt;(Τα πιο πρόσφατα δεδομένα στο Swarmops του &lt;em&gt;{0}&lt;/em&gt; είναι από τις {1:yyyy-MMM-dd}. Θα πρέπει να κατεβάσετε τραπεζικά δεδομένα τουλάχιστον από τις &lt;strong&gt;{2:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
+    <comment>Displayed to help user determine scope of bank download</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince_Paypal" xml:space="preserve">
+    <value>&lt;/p&gt;&lt;p&gt;(Το Paypal θα σας ενημερώσει για τη χρονική στιγμή που έγινε η τελευταία λήψη συναλλαγών. Πραγματοποιήστε λήψη όλων των συναλλαγών που έγιναν από τότε και έπειτα, προσθέτοντας περίπου τρεις ημέρες επικάλυψης.)</value>
+    <comment>Displayed instead of date of last transaction in the case of Paypal.</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
+    <value>Οδηγίες Λήψης Τραπεζικού Αρχείου</value>
+    <comment>Header above instructions for generation of the bank file type selected.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
+    <value>&lt;p&gt;Το αρχείο περιείχε {0:N0} συναλλαγές. &lt;strong&gt;{1:N0} συναλλαγές&lt;/strong&gt; έχουν εισαχθεί επιτυχώς στον &lt;em&gt;{2}&lt;/em&gt; λογαριασμό λογιστικής. ({3:N0} συναλλαγές ήταν διπλές.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Ωστόσο, το τραπεζικό υπόλοιπο δεν ταιριάζει με τα αρχεία στο Swarmops.&lt;/strong&gt; Αυτό συνήθως συμβαίνει λόγω ελλείψεων συναλλαγών. Παρακαλώ ανεβάστε μια λίστα συναλλαγών που αφορά μεγαλύτερη χρονική περίοδο για να βεβαιωθείτε ότι το Swarmops βλέπει όλες τις συναλλαγές.&lt;/p&gt;&lt;p&gt; Ο λογαριασμός λογιστικής του Swarmops δεν είναι επί του παρόντος &lt;strong&gt;σε συγχρονισμό&lt;/strong&gt; με αυτόν της τράπεζας.&lt;/p&gt;</value>
+    <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
+    <value>&lt;h3&gt;Το τραπεζικό αρχείο δεν ήταν εφικτό να εισαχθεί.&lt;/h3&gt;&lt;p&gt;Αυτό οφείλεται σε έναν από τους εξής τρεις λόγους: σας διέφυγε κάποια λεπτομέρεια στις οδηγίες λήψης, η τράπεζα έχει αλλάξει την υποστηριζόμενη μορφή αρχείου της, ή ανεβάσατε άθελά σας λάθος αρχείο (όπως μια φωτογραφία από την τελευταία γιορτή στην οποία συμμετείχατε, αντί της λίστας συναλλαγών). Δεν εισήχθη καμία συναλλαγή. &lt;strong&gt;Παρακαλώ προσπαθήστε ξανά.&lt;/strong&gt;</value>
+  </data>
+  <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
+    <value>Αναμενόμενο Αρχείο</value>
+    <comment>The name of the expected file for uploading.</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader" xml:space="preserve">
+    <value>Το Αρχείο Εισήχθη Επιτυχώς</value>
+    <comment>Displayed as header after successful processing</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader_ErrorBalance" xml:space="preserve">
+    <value>Το Αρχείο Εισήχθη, Αλλά Τα Δεδομένα Είναι Εκτός Συγχρονισμού</value>
+    <comment>Displayed as header after a good processing that ended in sync failure</comment>
+  </data>
+  <data name="UploadBankFiles_FileType" xml:space="preserve">
+    <value>Τύπος Αρχείου</value>
+    <comment>can be Account Statement or Payments File</comment>
+  </data>
+  <data name="UploadBankFiles_ImportError" xml:space="preserve">
+    <value>Σφάλμα κατά την εισαγωγή του αρχείου</value>
+    <comment>Displayed as header on import failure</comment>
+  </data>
+  <data name="UploadBankFiles_ImportResults" xml:space="preserve">
+    <value>&lt;p&gt;Το αρχείο περιείχε {0:N0} συναλλαγές. &lt;strong&gt;{1:N0} συναλλαγές&lt;/strong&gt; έχουν εισαχθεί με επιτυχία στον &lt;em&gt;{2}&lt;/em&gt; λογαριασμό λογιστικής.
+({3:N0} συναλλαγές ήταν διπλές.)&lt;/p&gt;&lt;p&gt;Μετά την εισαγωγή, το υπόλοιπο λογαριασμού στο Swarmops ταιριάζει με αυτό της τράπεζας.&lt;/p&gt;</value>
+    <comment>Displayed on successful import. Assumes plural among all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles_Info" xml:space="preserve">
+    <value>Εδώ μπορείτε να ανεβάσετε αρχεία από την τράπεζά σας ή από τον πάροχο πληρωμών σας, στο μητρώο λογιστικής του οργανισμού σας. Το ιστορικό λογαριασμού και οι ληφθείσες πληρωμές είναι παραδείγματα τέτοιων αρχείων.</value>
+    <comment>Displayed in sidebar on page.</comment>
+  </data>
+  <data name="UploadBankFiles_Instructions" xml:space="preserve">
+    <value>Οδηγίες</value>
+  </data>
+  <data name="UploadBankFiles_PageTitle" xml:space="preserve">
+    <value>Ανεβάστε Τραπεζικά Αρχεία</value>
+    <comment>Displayed above main content.</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentAllDuplicates" xml:space="preserve">
+    <value>Ωστόσο, ήταν όλα αντίγραφα πληροφοριών πληρωμών που είχαν προηγουμένως φορτωθεί. Δεν εισήχθη καμία νέα πληροφορία πληρωμής στο Swarmops.</value>
+  </data>
+  <data name="UploadBankFiles_PaymentCount" xml:space="preserve">
+    <value>καμία πληρωμή|μια πληρωμή|{0} πληρωμές</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentFileUploadedHeader" xml:space="preserve">
+    <value>Το Αρχείο Πληρωμής Φορτώθηκε</value>
+  </data>
+  <data name="UploadBankFiles_PaymentGroupCount" xml:space="preserve">
+    <value>καμία ομάδα πληρωμών|μια ομάδα πληρωμών|{0} ομάδες πληρωμών</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentsFile" xml:space="preserve">
+    <value>Αρχείο Πληρωμών</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary1" xml:space="preserve">
+    <value>Το αρχείο πληρωμής περιείχε {0}.</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary2" xml:space="preserve">
+    <value>&lt;strong&gt;{0} {1:N2}&lt;/strong&gt; σε πληρωμές εισήχθησαν, και διανεμήθηκαν σε {2} σε {3}.</value>
+    <comment>like EUR 2,102.00 in 3 payments across 2 groups </comment>
+  </data>
+  <data name="UploadBankFiles_PaymentSummaryDuplicates" xml:space="preserve">
+    <value>Υπήρχαν επίσης κάποιες διπλές πληροφορίες ({0} έως {1}).</value>
+  </data>
+  <data name="UploadBankFiles_Processing" xml:space="preserve">
+    <value>Πραγματοποιείται Επεξεργασία Αρχείου...</value>
+  </data>
+  <data name="UploadBankFiles_ProcessingComplete" xml:space="preserve">
+    <value>Η Επεξεργασία Ολοκληρώθηκε</value>
+  </data>
+  <data name="UploadBankFiles_ResultsBad" xml:space="preserve">
+    <value>&lt;p&gt;&lt;br/&gt;&lt;strong&gt;Το αρχείο δεν ήταν εφικτό να διαβαστεί ως αρχείο εισόδου για αυτήν την τράπεζα.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Υπάρχουν διάφοροι λόγοι για τους οποίους μπορεί να συμβεί αυτό: μπορεί να είναι κατεστραμμένο το αρχείο, να έχει αλλάξει 
+ η τράπεζα την υποστηριζόμενη μορφή αρχείου της χωρίς ενημέρωση, ή να ανεβάσατε λάθος αρχείο. Παρακαλώ προσπαθήστε ξανά.&lt;/p&gt;</value>
+    <comment>Displayed when the input file can't be parsed, before import attempt.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsGood" xml:space="preserve">
+    <value>&lt;p&gt;Το αρχείο έχει &lt;strong&gt;εισαχθεί επιτυχώς.&lt;/strong&gt; {0:N0} εισήχθησαν νέες συναλλαγές· {1:N0} διαγράφηκαν ως αντίγραφα αυτών που υπήρχαν ήδη στο Swarmops. Το υπόλοιπο λογαριασμού στο Swarmops ταιριάζει με αυτό της τράπεζας.&lt;/p&gt;&lt;p&gt;Το αρχείο περιείχε συναλλαγές από τις {2:yyyy-MMM-dd} έως τις {3:yyyy-MMM-dd}.&lt;/p&gt;</value>
+    <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsQuestionable" xml:space="preserve">
+    <value>&lt;p&gt;Το αρχείο εισήχθη, αλλά το &lt;strong&gt;υπόλοιπο λογαριασμού που προκύπτει δεν ταιριάζει.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Αφότου εισήχθησαν {0:N0} συναλλαγές (και διαγράφηκαν {1:N0} διπλές), έγινε επεξεργασία ολόκληρου του αρχείου. Ωστόσο, το υπόλοιπο λογαριασμού που προέκυψε στο Swarmops δεν είναι ίδιο με αυτό της κατάστασης λογαριασμού τραπέζης· υπάρχει μια διαφορά της τάξης των {3} {2:N2}.&lt;/p&gt;
+&lt;p&gt;Παρακαλώ δοκιμάστε να ανεβάσετε μια καινούρια κατάσταση λογαριασμού. Αν προκύπτει και πάλι αναντιστοιχία, ίσως χρειαστεί να προσπαθήσετε&lt;a href="/Pages/v5/Ledgers/ResyncExternalAccount.aspx"&gt;να πραγματοποιήσετε επανασυγχρονισμό&lt;/a&gt; του τραπεζικού λογαριασμού με ένα εκτενές αρχείο κατάστασης λογαριασμού.&lt;/p&gt;</value>
+    <comment>Displayed on successful import, but the resulting balance is off compared to the account statement file that was just uploaded. 2 is the diff, 3 is the currency.</comment>
+  </data>
+  <data name="UploadBankFiles_SelectAccount" xml:space="preserve">
+    <value>Επιλέξτε Λογαριασμό Λογιστικής</value>
+    <comment>Select prompt for the financial account in the organization's bookkeeping.</comment>
+  </data>
+  <data name="UploadBankFiles_SelectBankAndAccount" xml:space="preserve">
+    <value>Επιλέξτε Τύπο Αρχείου Και Λογαριασμό Για Φόρτωση</value>
+  </data>
+  <data name="UploadBankFiles_SelectBankFileType" xml:space="preserve">
+    <value>Επιλέξτε Τύπο Τραπεζικού Αρχείου</value>
+    <comment>Header above several bank logos, prompting a selection of bank.</comment>
+  </data>
+  <data name="UploadBankFiles_UploadAnother" xml:space="preserve">
+    <value>Θέλετε να ανεβάσετε κάποιο άλλο τραπεζικό αρχείο;</value>
+    <comment>Displayed as header after uploading one file</comment>
+  </data>
+  <data name="UploadBankFiles_UploadBankFile" xml:space="preserve">
+    <value>Ανεβάστε τραπεζικό αρχείο</value>
+    <comment>Displayed as header above download instructions / upload form</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterDifference" xml:space="preserve">
+    <value>Διαφορά</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterLedgerBalance" xml:space="preserve">
+    <value>Υπόλοιπο Καθολικού</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterTotal" xml:space="preserve">
+    <value>Σύνολο</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAction" xml:space="preserve">
+    <value>Ενέργεια</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
+    <value>Ποσό</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
+    <value>Περιγραφή</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderExpectedCloseDate" xml:space="preserve">
+    <value>Αναμενόμενη Ημερομηνία Κλεισίματος</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderId" xml:space="preserve">
+    <value>ID#</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderOpenedDate" xml:space="preserve">
+    <value>Ημερομηνία Ανοίγματος</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
+    <value>Παραλήπτης</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Header" xml:space="preserve">
+    <value>Παράθεση Αδιευθέτητων Λογαριασμών</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Info" xml:space="preserve">
+    <value>Αυτή η σελίδα σας επιτρέπει να επιβεβαιώσετε τους εκκρεμείς και αδιευθέτητους λογαριασμούς (έξοδα, τιμολόγια, προκαταβολές μετρητών κλπ.) αυτήν την χρονική στιγμή ή την στιγμή κλεισίματος οποιουδήποτε προηγουμένου καθολικού.</value>
+  </data>
+  <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
+    <value>Παράθεση Αδιευθέτητων Λογαριασμών</value>
+  </data>
+  <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
+    <value>Όνομα λογαριασμού</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveLong" xml:space="preserve">
+    <value>Είναι αυτός ο λογαριασμός ανοικτός για συναλλαγές;</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
+    <value>Ενεργός</value>
+  </data>
+  
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>Διαχειριστής</value>
+  </data>
+  <data name="AccountPlan_Edit_BudgetBalance" xml:space="preserve">
+    <value>Προϋπολογισμός (το υπόλοιπο είναι &lt;span id="SpanTextCurrency"&gt;foo&lt;/span&gt; &lt;span id="SpanEditBalance"&gt;bar&lt;/span&gt;)</value>
+    <comment>foo, bar replaced on load with actual values</comment>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableLong" xml:space="preserve">
+    <value>Μπορεί να χρησιμοποιηθεί αυτός ο λογαριασμός για αναφορές εξόδων;</value>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
+    <value>Δαπανηρό</value>
+  </data>
+  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
+    <value>Προφίλ Αυτοματοποίησης</value>
+  </data>
+  <data name="AccountPlan_Edit_Header" xml:space="preserve">
+    <value>Πραγματοποιείται Επεξεργασία Λογαριασμού</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderAutomation" xml:space="preserve">
+    <value>Αυτοματοποίηση</value>
+    <comment>Automatic connections to bank, blockchain etc.</comment>
+  </data>
+  <data name="AccountPlan_Edit_HeaderConfiguration" xml:space="preserve">
+    <value>Ρύθμιση Παραμέτρων</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
+    <value>Ημερήσιες Λειτουργίες</value>
+  </data>
+  <data name="AccountPlan_Edit_Parent" xml:space="preserve">
+    <value>Γονικός λογαριασμός ή ομάδα</value>
+  </data>
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
+    <value>Αυτός είναι ένας λογαριασμός Εξόδων. Τέτοιοι λογαριασμοί συνήθως έχουν έναν αρνητικό προϋπολογισμό, δεδομένου ότι απομυζούν περιουσιακά στοιχεία από τον οργανισμό. Ο προτεινόμενος προϋπολογισμός σας μετατράπηκε σε αρνητικό.</value>
+    <comment>Displayed as a message box</comment>
+  </data>
+  <data name="AccountPlan_Header_AccountName" xml:space="preserve">
+    <value>Λογαριασμός</value>
+  </data>
+  <data name="AccountPlan_Header_Balance" xml:space="preserve">
+    <value>Υπόλοιπο</value>
+  </data>
+  <data name="AccountPlan_Header_Budget" xml:space="preserve">
+    <value>Προϋπολογισμός</value>
+  </data>
+  <data name="AccountPlan_Header_Edit" xml:space="preserve">
+    <value>Επεξεργασία</value>
+  </data>
+  <data name="AccountPlan_Header_Flags" xml:space="preserve">
+    <value>Δείκτες</value>
+  </data>
+  <data name="InspectLedgers_Header_For" xml:space="preserve">
+    <value>για</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
+    <value>Επιθεώρηση</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_PageTitle" xml:space="preserve">
+    <value>Επιθεώρηση Καθολικών</value>
+  </data>
+  
+  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
+    <value>Εισερχόμενο Υπόλοιπο</value>
+  </data>
+  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
+    <value>Δεν Υπάρχει Προηγούμενο Υπόλοιπο</value>
+  </data>
+  <data name="InspectLedgers_Info" xml:space="preserve">
+    <value>Αυτά είναι τα ακατέργαστα βασικά καθολικά Βενετικής μεθόδου για τα οικονομικά του οργανισμού. Μπορείτε να τα μελετήσετε εδώ λεπτομερώς για λόγους λογιστικού ελέγχου. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt;&lt;strong&gt;Αυτήν την στιγμή βλέπετε έναν λογαριασμό P&amp;L, οπότε οι δείκτες έχουν αναστραφεί - το εισόδημα είναι αρνητικό και τα έξοδα θετικά&lt;/strong&gt; λόγω του τρόπου λειτουργίας της Βενετικής μεθόδου διπλής λογιστικής.&lt;/span&gt;</value>
+  </data>
+  
+  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
+    <value>Δεν υπάρχουν συναλλαγές σε αυτόν τον λογαριασμό για την επιλεγμένη χρονική περίοδο.</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
+    <value>Εξερχόμενο Υπόλοιπο</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
+    <value>Τελικό Υπόλοιπο</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>Τελικό Υπόλοιπο (μέχρι τώρα)</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
+  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
+    <value>(Παρακαλώ επιλέξτε έναν λογαριασμό.)</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Το αρχείο πληρωμών &lt;strong&gt;εισήχθη επιτυχώς.&lt;/strong&gt; Έγινε εισαγωγή {1:N0} πληρωμής(ων) σε {0:N0} ομάδα(ες), συνολικού ύψους {3} {2:N2}.&lt;/p&gt;</value>
+    <comment>Arguments 0-3 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPaymentsWithDupes" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Το αρχείο πληρωμών &lt;strong&gt;εισήχθη επιτυχώς.&lt;/strong&gt; Έγινε εισαγωγή {1:N0} πληρωμής(ων) σε {0:N0} ομάδα(ες), συνολικού ύψους {3} {2:N2}.&lt;/p&gt;&lt;p&gt;(Υπήρχαν επίσης {5:N0} διπλή(ες) πληρωμή(ες) σε {4:N0} ομάδα(ες).)&lt;/p&gt;</value>
+    <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
+  </data>
+  <data name="AccountPlan_AddAccount" xml:space="preserve">
+    <value>προσθήκη λογαριασμού</value>
+    <comment>Displayed as link in parens after account group name</comment>
+  </data>
+  <data name="AccountPlan_NewAccount" xml:space="preserve">
+    <value>Νέος Λογαριασμός</value>
+    <comment>the name of newly-created accounts, before rename</comment>
+  </data>
+  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
+    <value>Αυτός είναι ένας λογαριασμός Υποχρεώσεων. Τέτοιοι λογαριασμοί συνήθως έχουν ένα αρνητικό υπόλοιπο, δεδομένου ότι αντιπροσωπεύουν αρνητικά περιουσιακά στοιχεία του οργανισμού. Το αρχικό σας υπόλοιπο μετατράπηκε σε αρνητικό.</value>
+  </data>
+  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
+    <value>Αρχικό Υπόλοιπο (εισερχόμενο στο {0}), {1}</value>
+    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
+  </data>
+  <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
+    <value>Εμφάνιση Ανενεργών Λογαριασμών (&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
+    <comment>The {0} is the number of inactive accounts.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedLoss" xml:space="preserve">
+    <value>Αναμενόμενες Ζημίες {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedProfit" xml:space="preserve">
+    <value>Αναμενόμενα Κέρδη {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="TaxForms_Payroll_AdditiveTax" xml:space="preserve">
+    <value>Πρόσθετος Φόρος</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_DeductedTax" xml:space="preserve">
+    <value>Φόρος Που Εκπίπτει</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
+    <value>Εκκαθαριστικό Σημείωμα Μικτών Αποδοχών</value>
+  </data>
+  <data name="TaxForms_Payroll_Info" xml:space="preserve">
+    <value>Εμφάνιση φύλλων σημειώσεων (συμπληρωμένων φορολογικών εντύπων) για την κατάσταση μισθοδοσίας του οργανισμού, που είναι εύκολο να αντιγραφούν στα πραγματικά φορολογικά έντυπα, ή ακόμα και να εκτυπωθούν όπως είναι. Η απόδοση του συστήματος και τα πραγματικά έντυπα διαφέρουν από χώρα σε χώρα και μερικές φορές εξαρτώνται από τον κώδικα και τις προσθήκες που παρέχονται από τρίτους.</value>
+  </data>
+  <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
+    <value>Φορολογικά Έντυπα Κατάστασης Μισθοδοσίας</value>
+  </data>
+  <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
+    <value>Μηνιαία Φορολογικά Έντυπα Για</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="TaxForms_Payroll_TotalCost" xml:space="preserve">
+    <value>Συνολική Χρέωση</value>
+  </data>
+  <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
+    <value>Συνολικός Φόρος</value>
+  </data>
+  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
+    <value>Πραγματοποιείται Προβολή/Επεξεργασία Της Συναλλαγής #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
+    <value>Πραγματοποιείται Επιθεώρηση Της Συναλλαγής #&lt;span id="spanModalTransactionId"&gt;12345&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_AccountName" xml:space="preserve">
+    <value>Όνομα λογαριασμού</value>
+  </data>
+  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
+    <value>Το υπόλοιπο είναι σωστό:</value>
+  </data>
+  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
+    <value>(Δεν υπάρχουν δεδομένα συναλλαγών)</value>
+  </data>
+  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
+    <value>Αρχικά</value>
+  </data>
+  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
+    <value>Καταγεγραμμένη</value>
+  </data>
+  <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
+    <value>Η συναλλαγή είναι &lt;span class="spanAnnoyingBlink"&gt;ΜΗ ΙΣΟΡΡΟΠΗΜΕΝΗ:&lt;/span&gt; δεν υπάρχει ποσό</value>
+  </data>
+  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
+    <value>Προσθέτει σειρές στη συναλλαγή</value>
+    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
+  </data>
+  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
+    <value>Λεπτομέρειες ανίχνευσης αυτόματης συναλλαγής</value>
+    <comment>(this means the transaction is locked from editing)</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
+    <value>Επιβεβαιώθηκε από {0} στις {1:yyyy-MMM-dd}</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
+    <value>σε συνδυασμό με</value>
+    <comment>Inserted between transaction causes.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_InvoiceX" xml:space="preserve">
+    <value>&lt;strong&gt;Εισερχόμενο Τιμολόγιο #{0:N0}&lt;/strong&gt; από {1}:</value>
+    <comment>the {1} is the supplier name</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
+    <value>Αυτή είναι η &lt;strong&gt;Πληρωμή #{0:N0}.&lt;/strong&gt; Είναι μια πληρωμή για</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
+    <value>Επικύρωση εγγράφου από {0} στις {1:yyyy-MMM-dd}</value>
+    <comment>"Document" refers to receipts, invoices, etc.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
+    <value>Εκτελέστηκε από {0}.</value>
+    <comment>As in "payout executed by": who actually paid the money?</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
+    <value>Βασικός μισθός {0} {1:N2}, μικτές προσαρμογές {2:+N2;-N2;καμία}, μικτός μισθός {3:N2}, φόρος που εκπίπτει {4:N2}, καθαρές προσαρμογές {5:+N2;-N2;καμία}, πληρωμή {6:N2}.</value>
+    <comment>The "none"s in the format strings need to be translated.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
+    <value>Παρακαλώ επιλέξτε ένα ποσό προκειμένου να προσθέσετε μια σειρά σε αυτήν την συναλλαγή.</value>
+  </data>
+  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
+    <value>Ετήσιες Ζημίες</value>
+  </data>
+  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
+    <value>Ετήσιο Κέρδος</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
+    <value>(παρακρατήθηκε η λεπτομερής περιγραφή)</value>
+  </data>
+  
+  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
+    <value>Λογαριασμός</value>
+    <comment>Usually the account name. Can also be "several".</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
+    <value>Ποσό</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
+    <value>Περιγραφή</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  
+  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
+    <value>Πραγματοποιείται Εξισορρόπηση/Αντιστοίχιση Της Συναλλαγής #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; Από &lt;span id="spanModalTransactionDate"&gt;εεεε-μμμ-ηη&lt;/span&gt;</value>
+    <comment>The span text is replaced runtime.</comment>
+  </data>
+  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
+    <value>Εξισορρόπηση &amp; Αντιστοίχιση Συναλλαγών</value>
+  </data>
+  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
+    <value>Ακριβείς Αντιστοιχίσεις Για Αυτό Το Ποσό</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
+    <value>Αντιστοίχιση Ποσού Αλλά Σε Μη Αναμενόμενη Ημερομηνία/Ώρα</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
+    <value>Ποσό Εντός Ανοχής 5%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
+    <value>Εξισορρόπηση</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
+    <value>Αντιστοίχιση</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
+    <value>Εξισορρόπηση της διαφοράς σε βάρος αυτού του λογαριασμού:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
+    <value>Η συναλλαγή αντιστοιχεί σε αυτήν την πληρωμή:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
+    <value>Η συναλλαγή είναι μη ισορροπημένη από &lt;span id="spanTransactionUnbalancedBy"&gt;+FOO,BAR.QX&lt;/span&gt;. Θέλετε να...</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
+    <value>Θέλετε να κάνετε χειροκίνητη εξισορρόπηση αυτής της συναλλαγής σε βάρος κάποιου λογαριασμού;</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayout" xml:space="preserve">
+    <value>Θέλετε να αντιστοιχίσετε την διαφορά της συναλλαγής σε μια ανοικτή, μη αντιστοιχισμένη πληρωμή;</value>
+  </data>
+  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
+    <value>(Καμία ανοικτή πληρωμή)</value>
+  </data>
+  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
+    <value>(Δεν υπάρχουν κατάλληλες πληρωμές για αντιστοίχιση)</value>
+  </data>
+  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
+    <value>Ποσό Εντός Ανοχής 1%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
+    <value>-- Επιλέξτε μια Πληρωμή --</value>
+  </data>
+  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
+    <value>Ποσό Εντός Ανοχής 10%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
+    <value>Πληρωμή #{0:N0}, {5} (αναμένεται στις {1:yyyy-MMM-dd}) για {2}: {3} {4:N2}</value>
+    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
+    <value>Η συναλλαγή αντιστοιχεί σε αυτήν την πληρωμή ξένου νομίσματος:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
+    <value>Ταξινόμηση της συναλλαγής σε μια πληρωμή ξένου νομίσματος ({0}% ανοχή ποσού);</value>
+  </data>
+  <data name="BudgetActual_ContentHeader" xml:space="preserve">
+    <value>Προϋπολογισμός έναντι Πραγματικού</value>
+  </data>
+  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
+    <value>Αναμενόμενο YTD</value>
+    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
+  </data>
+  <data name="BudgetActual_Info" xml:space="preserve">
+    <value>Αυτή η σελίδα εμφανίζει την προϋπολογισμένη ανάλυση σε σύγκριση με μια ανάλυση του πραγματικού αποτελέσματος ως τώρα.</value>
+  </data>
+  <data name="BudgetActual_PageTitle" xml:space="preserve">
+    <value>Προϋπολογισμός έναντι Πραγματικού</value>
+    <comment>Financial budget vs. Actual financial outcome</comment>
+  </data>
+  <data name="BitcoinHotwallet_Address" xml:space="preserve">
+    <value>Διεύθυνση Bitcoin</value>
+  </data>
+  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
+    <value>Εξισορρόπηση microcoins</value>
+  </data>
+  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
+    <value>Διαδρομή Προέλευσης</value>
+  </data>
+  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
+    <value>Αξία {0}</value>
+    <comment>The {0} is the organization currency.</comment>
+  </data>
+  <data name="BitcoinHotwallet_Header" xml:space="preserve">
+    <value>Ανάλυση Hotwallet</value>
+    <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
+  </data>
+  <data name="BitcoinHotwallet_Info" xml:space="preserve">
+    <value>Αυτό εμφανίζει μια ανάλυση των διευθύνσεων και του υπολοίπου του bitcoin hotwallet. (Οι κενές διευθύνσεις και οι διευθύνσεις που έχουν χρησιμοποιηθεί στο παρελθόν δεν εμφανίζονται.)</value>
+  </data>
+  <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
+    <value>Bitcoin Hotwallet</value>
+  </data>
+  <data name="BitcoinHotWallet_Empty" xml:space="preserve">
+    <value>Δεν υπάρχουν κεφάλαια στο hotwallet.</value>
+  </data>
+  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
+    <value>Hash Συναλλαγής</value>
+  </data>
+  <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
+    <value>Μη Δαπανηθείσα Έξοδος Συναλλαγής</value>
+    <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
+  </data>
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>Περιουσιακά στοιχεία XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_AssetsDelta" xml:space="preserve">
+    <value>(αλλαγή)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
+    <value>Ο ισολογισμός είναι μια γενική επισκόπηση των περιουσιακών στοιχείων και των χρεών σε μια δεδομένη χρονική στιγμή, και χρησιμοποιείται για την εκτίμηση της επιρροής των αποτελεσμάτων στην συνολική οικονομική υγεία του οργανισμού. Ενδεχομένως να θέλετε να ρίξετε μια ματιά στον &lt;a href="BalanceSheet"&gt;ισολογισμό για προχωρημένους&lt;/a&gt; για περισσότερες λεπτομέρειες, ή στην &lt;a href="ProfitLossStatement"&gt;δήλωση κερδών και ζημιών&lt;/a&gt; που είναι η γενική επισκόπηση των εσόδων και των εξόδων.</value>
+  </data>
+  <data name="BalanceSheet_Liabilities" xml:space="preserve">
+    <value>Υποχρεώσεις XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_LiabilitiesDelta" xml:space="preserve">
+    <value>(αλλαγή)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_LossToDate" xml:space="preserve">
+    <value>Ζημίες μέχρι τώρα ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
+    <value>Κέρδος μέχρι τώρα ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
+    <value>Δημιουργία Συναλλαγής</value>
+    <comment>Text on button for executing create</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDateTime" xml:space="preserve">
+    <value>Ημερομηνία και ώρα συναλλαγής (UTC)</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDescription" xml:space="preserve">
+    <value>Περιγραφή Συναλλαγής</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDialogHeader" xml:space="preserve">
+    <value>Πραγματοποιείται Δημιουργία Νέας Συναλλαγής</value>
+    <comment>Header of dialog</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAccount" xml:space="preserve">
+    <value>Λογαριασμός της πρώτης σειράς συναλλαγών</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAmount" xml:space="preserve">
+    <value>Ποσό της πρώτης σειράς συναλλαγών</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
+    <value>Προσθήκη νέας συναλλαγής</value>
+    <comment>Option in sidebar</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
+    <value>Αντιστοίχιση τιμολογίου</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
+    <value>Αντιστοίχιση της συναλλαγής σε αυτό το εξερχόμενο τιμολόγιο:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
+    <value>Αντιστοίχιση αυτού σε ένα ανοικτό εξερχόμενο τιμολόγιο;</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
+    <value>Αντιστοίχιση αυτού σε ένα ανοικτό εξερχόμενο τιμολόγιο σε μη καθορισμένο νόμισμα (5% ανοχή forex);</value>
+  </data>
+  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
+    <value>Πιο Πιθανή Αντιστοίχιση</value>
+    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
+  </data>
+  <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
+    <value>Εξερχόμενο Τιμολόγιο #{0:N0} για {1}, που λήγει στις {2:yyyy-MMM-dd}: {3}</value>
+    <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
+  </data>
+  <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
+    <value>Δήλωση πλεονάσματος ΦΠΑ για {1:yyyy-MMM}</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
+    <value>Αντιστοίχιση</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonVatReport" xml:space="preserve">
+    <value>Κλείσιμο δήλωσης ΦΠΑ</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeVatReport" xml:space="preserve">
+    <value>Αυτή η συναλλαγή είναι πληρωμή/επιστροφή για αυτήν την δήλωση ΦΠΑ:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
+    <value>Θέλετε να κλείσετε μια δήλωση ΦΠΑ με αυτήν την συναλλαγή;</value>
+  </data>
+  <data name="ViewVatReports_Footer_Total" xml:space="preserve">
+    <value>Σύνολα Δήλωσης</value>
+  </data>
+  <data name="ViewVatReports_Header_DateTime" xml:space="preserve">
+    <value>Ημερομηνία/Ώρα</value>
+    <comment>Timestamp of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Description" xml:space="preserve">
+    <value>Περιγραφή</value>
+    <comment>Description of transaction</comment>
+  </data>
+  <data name="ViewVatReports_Header_Dox" xml:space="preserve">
+    <value>Έγγραφα</value>
+    <comment>This is above the "view documents" icon</comment>
+  </data>
+  <data name="ViewVatReports_Header_Inbound" xml:space="preserve">
+    <value>ΦΠΑ Εισερχομένων</value>
+  </data>
+  <data name="ViewVatReports_Header_Outbound" xml:space="preserve">
+    <value>ΦΠΑ Εξερχομένων</value>
+  </data>
+  <data name="ViewVatReports_Header_Turnover" xml:space="preserve">
+    <value>Τζίρος</value>
+  </data>
+  <data name="ViewVatReports_Info" xml:space="preserve">
+    <value>Βλέπετε μια δήλωση ΦΠΑ που έχει υποβληθεί. Ο ΦΠΑ εισερχομένων και εξερχομένων συναλλαγών, όπως και ο συνολικός τζίρος, έχουν καταγραφεί για την περίοδο δήλωσης. Αυτή η δήλωση είναι έτοιμη να διαβιβαστεί στις φορολογικές αρχές.</value>
+  </data>
+  <data name="ViewVatReports_PageTitle" xml:space="preserve">
+    <value>Δηλώσεις ΦΠΑ</value>
+    <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
+  </data>
+  <data name="ViewVatReports_Title_View" xml:space="preserve">
+    <value>Εμφάνιση</value>
+    <comment>This is the word or words before the name of the displayed VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_Header_NoReports" xml:space="preserve">
+    <value>Καμία δήλωση ΦΠΑ για αυτόν τον οργανισμό</value>
+  </data>
+  <data name="ViewVatReports_NoReports" xml:space="preserve">
+    <value>Δεν υπάρχουν δηλώσεις ΦΠΑ προς εμφάνιση. Αυτό μάλλον οφείλεται στο γεγονός ότι δεν έχει ακόμη παρέλθει μια πλήρης περίοδος υποβολής δηλώσεων ΦΠΑ, και κατά συνέπεια δεν είναι εφικτή η δημιουργία δήλωσης μέχρι στιγμής.</value>
+  </data>
+  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
+    <value>-- δεν υπάρχει τίποτα για δήλωση --</value>
+    <comment>This is displayed when there are no items at all in a VAT report.</comment>
+  </data>
+  <data name="ViewVatReports_ReportTotals" xml:space="preserve">
+    <value>Σύνολο για αυτήν την δήλωση</value>
+    <comment>Displayed as description of footer</comment>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>Η περιγραφή συναλλαγής δεν δύναται να είναι κενή.</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>Η συναλλαγή χρειάζεται μια απόδειξη αγοράς.</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>Το ποσό ΦΠΑ φαίνεται να μην έχει εισαχθεί σωστά.</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
+    <value>Επισήμανση ως Άμεση Αγορά</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>Ποσό αγοράς απευθείας χρέωσης ({0})</value>
+    <comment>{0} is the currency</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
+    <value>Χρέωση της αγοράς σε αυτόν τον προϋπολογισμό</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
+    <value>Ανεβάστε απόδειξη ή άλλο είδος τεκμηρίωσης</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
+    <value>Ενημέρωση περιγραφής συναλλαγής</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
+    <value>Μέρος ΦΠΑ του ποσού</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>Θέλετε να σημειώσετε αυτήν την αγορά ως αγορά που πραγματοποιείται απευθείας από λογαριασμό;</value>
+  </data>
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>Περιγραφή / Λογαριασμός</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>Γενικό Καθολικό για</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>Αυτή η συναλλαγή κλείνει την δήλωση ΦΠΑ για {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>Αυτή η συναλλαγή ανοίγει την δήλωση ΦΠΑ για {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>Αυτή η συναλλαγή λαμβάνει πληρωμή για το Εξερχόμενο Τιμολόγιο #{0:N0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>Αυτή η συναλλαγή πληρώνει {0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>Αυτή η συναλλαγή πληρώνει το Εισερχόμενο Τιμολόγιο #{0:N0} από {1}.</value>
+  </data>
+  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
+    <value>Προφίλ Αυτοματοποίησης</value>
+    <comment>This is where the bank name, country, and currency appears.</comment>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>Δεν υπάρχουν λογαριασμοί περιουσιακών στοιχείων που να έχουν οριστεί για αυτοματοποίηση, οπότε κανένας λογαριασμός δεν υποστηρίζει την φόρτωση δεδομένων επί του παρόντος. Πραγματοποιείται επιστροφή στο ταμπλό.</value>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
+    <value>Εφόσον αυτή ήταν η πρώτη μεταφόρτωση σε αυτόν τον αυτοματοποιημένο λογαριασμό, το αρχικό υπόλοιπο του &lt;strong&gt;{0} &lt;/strong&gt;{1:N2} οδεύοντας προς το έτος {2} έχει εντοπιστεί και οριστεί</value>
+    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
+    <value>(που αντιστοιχήθηκε με &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; στο νόμισμα λειτουργίας του καθολικού)</value>
+    <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
+  </data>
+  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
+    <value>Κλείσιμο Οικονομικών Μητρώων για το Έτος {0}</value>
+    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
+  </data>
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Δημιουργία {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
+    <value>Αυτόματη Ανάγνωση Δεδομένων Συναλλαγών για τον λογαριασμό {0}</value>
+    <comment>Parameter zero is the account name as given by the user</comment>
+  </data>
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Ετήσιες Δηλώσεις</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>Εξωτερικά Δεδομένα Λογαριασμού και Αντιστοίχιση Λογαριασμών</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Μισθοδοσία Και Φόροι</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
+    <value>Αποστολή Δηλώσεων σε Λογιστές, Μετόχους κτλ.</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
+  <data name="EndOfMonth_Info" xml:space="preserve">
+    <value>Αυτή είναι μια λίστα με ενέργειες που πρέπει να γίνουν ώστε να κλείσει ο προηγούμενος μήνας και να ξεκινήσει ο καινούριος σε σχέση με την τήρηση λογιστικών βιβλίων.</value>
+  </data>
+  
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>Τακτική Ρουτίνα Τέλους του Μήνα: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>Ανεβάστε Κατάσταση Τραπεζικού Λογαριασμού ({1}) για τον λογαριασμό {0} για τον μήνα {2}</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>Ανεβάστε Δεδομένα Συναλλαγών (μορφής {1}) για τον λογαριασμό {0}</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</root>
