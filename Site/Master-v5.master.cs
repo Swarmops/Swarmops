@@ -9,8 +9,8 @@ using System.Threading;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
-using Resources;
 using Swarmops.Interface.Support;
+using Swarmops.Localization;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -129,7 +129,7 @@ namespace Swarmops.Frontend
 
             this.LabelActionPlaceholder1.Text = "Action shortcut 1 (TODO)";
             this.LabelActionPlaceholder2.Text = "Action shortcut 2 (TODO)";
-            this.LabelNoTodoItems.Text = Resources.Global.Global_NoActionItems;
+            this.LabelNoTodoItems.Text = LocalizedStrings.Get(LocDomain.Global, "Global_NoActionItems");
 
             // Set up todo items
 
@@ -192,9 +192,9 @@ namespace Swarmops.Frontend
 
         private void Localize()
         {
-            this.LabelSidebarInfo.Text = Global.Sidebar_Information;
-            this.LabelSidebarActions.Text = Global.Sidebar_Actions;
-            this.LabelSidebarTodo.Text = Global.Sidebar_Todo;
+            this.LabelSidebarInfo.Text = LocalizedStrings.Get(LocDomain.Global, "Sidebar_Information");
+            this.LabelSidebarActions.Text = LocalizedStrings.Get(LocDomain.Global, "Sidebar_Actions");
+            this.LabelSidebarTodo.Text = LocalizedStrings.Get(LocDomain.Global, "Sidebar_Todo");
 
             string cultureString = Thread.CurrentThread.CurrentCulture.ToString();
             string cultureStringLower = cultureString.ToLowerInvariant();
@@ -223,42 +223,42 @@ namespace Swarmops.Frontend
 
             this.ImageCultureIndicator.ImageUrl = SupportFunctions.FlagFileFromCultureId(cultureString);
 
-            this.LinkLogout.Text = Global.CurrentUserInfo_Logout;
-            this.LabelPreferences.Text = Global.CurrentUserInfo_Preferences;
-            // this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(Resources.Global.Master_SwitchOrganizationDialog, _currentOrganization.Name);
+            this.LinkLogout.Text = LocalizedStrings.Get(LocDomain.Global, "CurrentUserInfo_Logout");
+            this.LabelPreferences.Text = LocalizedStrings.Get(LocDomain.Global, "CurrentUserInfo_Preferences");
+            // this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(LocalizedStrings.Get(LocDomain.Global, "Master_SwitchOrganizationDialog, _currentOrganization.Name);
 
-            this.MasterLabelEditPersonHeaderAccount.Text = Resources.Global.Master_EditPersonHeaderAccount;
-            this.MasterLabelEditPersonMail.Text = Resources.Global.Global_Mail;
-            this.MasterLabelEditPersonName.Text = Resources.Global.Global_Name;
-            this.MasterLabelEditPersonPhone.Text = Resources.Global.Global_Phone;
-            this.MasterLabelEditPersonTwitter.Text = Resources.Global.Global_TwitterId;
+            this.MasterLabelEditPersonHeaderAccount.Text = LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonHeaderAccount");
+            this.MasterLabelEditPersonMail.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Mail");
+            this.MasterLabelEditPersonName.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Name");
+            this.MasterLabelEditPersonPhone.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Phone");
+            this.MasterLabelEditPersonTwitter.Text = LocalizedStrings.Get(LocDomain.Global, "Global_TwitterId");
 
-            this.MasterLabelEditPersonHeaderSecurity.Text = Resources.Global.Master_EditPersonHeaderSecurity;
-            this.MasterLabelEditPerson2FA.Text = Resources.Global.Master_EditPerson2FAEnable;
-            this.MasterLabelEditPersonCurrentPassword.Text = Resources.Global.Master_EditPersonCurrentPassword;
-            this.MasterLabelEditPersonNewPassword1.Text = Resources.Global.Master_EditPersonNewPassword1;
-            this.MasterLabelEditPersonNewPassword2.Text = Resources.Global.Master_EditPersonNewPassword2;
-            this.MasterEditPerson2FA.Label = Resources.Global.Master_EditPerson2FAEnableShort;
+            this.MasterLabelEditPersonHeaderSecurity.Text = LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonHeaderSecurity");
+            this.MasterLabelEditPerson2FA.Text = LocalizedStrings.Get(LocDomain.Global, "Master_EditPerson2FAEnable");
+            this.MasterLabelEditPersonCurrentPassword.Text = LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonCurrentPassword");
+            this.MasterLabelEditPersonNewPassword1.Text = LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonNewPassword1");
+            this.MasterLabelEditPersonNewPassword2.Text = LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonNewPassword2");
+            this.MasterEditPerson2FA.Label = LocalizedStrings.Get(LocDomain.Global, "Master_EditPerson2FAEnableShort");
 
             this.MasterLabelEditPersonHeaderSecurityProvisioning.Text =
-                Resources.Global.Master_EditPersonHeaderSecurityProvisioning;
-            this.MasterEditPerson2FAProvisioning.Label = Resources.Global.Master_EditPerson2FAEnableShort;
-            this.MasterLabelEditPersonResetPassword.Text = Resources.Global.Master_EditPersonResetPasswordLabel;
-            this.MasterLabelEditPerson2FAProvisioning.Text = Resources.Global.Master_EditPerson2FAEnable;
+                LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonHeaderSecurityProvisioning");
+            this.MasterEditPerson2FAProvisioning.Label = LocalizedStrings.Get(LocDomain.Global, "Master_EditPerson2FAEnableShort");
+            this.MasterLabelEditPersonResetPassword.Text = LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonResetPasswordLabel");
+            this.MasterLabelEditPerson2FAProvisioning.Text = LocalizedStrings.Get(LocDomain.Global, "Master_EditPerson2FAEnable");
 
-            this.MasterLabelEditPersonHeaderPaymentHistory.Text = Resources.Global.Financial_PaymentHistory;
-            this.MasterPersonEditLiteralHeaderAmountOwed.Text = Resources.Global.Financial_Owed;
-            this.MasterPersonEditLiteralHeaderAmountPaid.Text = Resources.Global.Financial_Paid;
-            this.MasterPersonEditLiteralHeaderItemOpenedDate.Text = Resources.Global.Global_Opened;
-            this.MasterPersonEditLiteralHeaderItemClosedDate.Text = Resources.Global.Global_Closed;
-            this.MasterPersonEditLiteralHeaderItemNotes.Text = Resources.Global.Global_Notes;
-            this.MasterPersonEditLiteralHeaderItemName.Text = Resources.Global.Global_Item;
-            this.MasterPersonEditLiteralHeaderItemDescription.Text = Resources.Global.Global_Description;
+            this.MasterLabelEditPersonHeaderPaymentHistory.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_PaymentHistory");
+            this.MasterPersonEditLiteralHeaderAmountOwed.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_Owed");
+            this.MasterPersonEditLiteralHeaderAmountPaid.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_Paid");
+            this.MasterPersonEditLiteralHeaderItemOpenedDate.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Opened");
+            this.MasterPersonEditLiteralHeaderItemClosedDate.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Closed");
+            this.MasterPersonEditLiteralHeaderItemNotes.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Notes");
+            this.MasterPersonEditLiteralHeaderItemName.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Item");
+            this.MasterPersonEditLiteralHeaderItemDescription.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Description");
 
 
-            this.MasterLabelBitIdRegisterHeader.Text = Resources.Global.Master_BitIdRegister_Header;
+            this.MasterLabelBitIdRegisterHeader.Text = LocalizedStrings.Get(LocDomain.Global, "Master_BitIdRegister_Header");
 
-            this.MasterLabelDashboardProfitLoss.Text = String.Format(Resources.Global.Financial_ProfitToDate,
+            this.MasterLabelDashboardProfitLoss.Text = String.Format(LocalizedStrings.Get(LocDomain.Global, "Financial_ProfitToDate"),
                 CurrentOrganization.Currency.DisplayCode);
         }
 
@@ -443,75 +443,75 @@ namespace Swarmops.Frontend
         // ReSharper disable InconsistentNaming    <-- because the Localized_ prefix isn't appreciated
         public string Localized_LoadingPlaceholderShort
         {
-            get { return CommonV5.JavascriptEscape (Resources.Global.Global_LoadingPlaceholderShort); }
+            get { return CommonV5.JavascriptEscape (LocalizedStrings.Get(LocDomain.Global, "Global_LoadingPlaceholderShort")); }
         }
 
         public string Localized_MasterPersonEditResetPasswordButton
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordButton); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonResetPasswordButton")); }
         }
 
         public string Localized_MasterPersonEditResetPasswordConfirm_Header
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordConfirm_Header.ToUpperInvariant()); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonResetPasswordConfirm_Header").ToUpperInvariant()); }
         }
 
         public string Localized_MasterPersonEditResetPasswordConfirm_Text
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordConfirm_Text); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonResetPasswordConfirm_Text")); }
         }
 
         public string Localized_MasterPersonEditResetPasswordProhibited_Header
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordProhibited_Header.ToUpperInvariant()); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonResetPasswordProhibited_Header").ToUpperInvariant()); }
         }
 
         public string Localized_MasterPersonEditResetPasswordProhibited_Text
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPersonResetPasswordProhibited_Text); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Master_EditPersonResetPasswordProhibited_Text")); }
         }
 
         public string Localized_Cancel
         {
-            get { return CommonV5.JavascriptEscape (Resources.Global.Global_Cancel); }
+            get { return CommonV5.JavascriptEscape (LocalizedStrings.Get(LocDomain.Global, "Global_Cancel")); }
         }
 
         public string Localized_Confirm
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Global_Confirm); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Global_Confirm")); }
         }
 
         public string Localized_MasterPersonEdit_CannotProvision2FA
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPerson2FAEnable_CannotProvision); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Master_EditPerson2FAEnable_CannotProvision")); }
         }
 
         public string Localized_MasterPersonEdit_ConfirmRemove2FAProvision
         {
             get
             {
-                return CommonV5.JavascriptEscape(Resources.Global.Master_EditPerson2FAEnable_ConfirmRemoveProvision);
+                return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Master_EditPerson2FAEnable_ConfirmRemoveProvision"));
             }
         }
 
         public string Localized_MasterPersonEdit_ConfirmRemove2FAOwn
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPerson2FAEnable_ConfirmRemoveOwn); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Master_EditPerson2FAEnable_ConfirmRemoveOwn")); }
         }
 
         public string Localized_MasterPersonEdit_Cancelled2FARemoval
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_EditPerson2FAEnable_NotRemoved); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Master_EditPerson2FAEnable_NotRemoved")); }
         }
 
         public string Localized_BitIdRegister_Fail
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Master_BitIdRegister_Fail); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Master_BitIdRegister_Fail")); }
         }
 
         public string Localized_BitIdRegister_Sidebar
         {
-            get { return CommonV5.JavascriptEscape(String.Format(Resources.Global.Master_BitIdRegister_Sidebar, "Mycelium", "Ledger")); } 
+            get { return CommonV5.JavascriptEscape(String.Format(LocalizedStrings.Get(LocDomain.Global, "Master_BitIdRegister_Sidebar"), "Mycelium", "Ledger")); } 
             
             // the parameters are examples of mobile wallets supporting BitId authentication; this was moved out of the resource file because it changes
         }
@@ -519,7 +519,7 @@ namespace Swarmops.Frontend
 
         public string Localized_GenericAjaxError
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Error_AjaxCallException); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Error_AjaxCallException")); }
         }
 
 
@@ -545,7 +545,7 @@ namespace Swarmops.Frontend
 
         public string Localized_AllTodosClear
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Sidebar_Todo_None); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Sidebar_Todo_None")); }
         }
 
         public string GenerateBitIdToken
