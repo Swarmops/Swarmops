@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Swarmops.Localization;
 using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Pages.Ledgers
@@ -50,14 +51,19 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
         private void Localize()
         {
-            this.LabelContentHeader.Text = string.Format (Resources.Pages.Ledgers.BalanceSheet_ContentHeader,
+            this.LabelContentHeader.Text = string.Format(LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_ContentHeader"),
                 CurrentOrganization.Name);
-            this.LiteralHeaderQ1.Text = Resources.Pages.Ledgers.BalanceSheet_Q1;
-            this.LiteralHeaderQ2.Text = Resources.Pages.Ledgers.BalanceSheet_Q2;
-            this.LiteralHeaderQ3.Text = Resources.Pages.Ledgers.BalanceSheet_Q3;
-            this.LiteralHeaderQ4.Text = Resources.Pages.Ledgers.BalanceSheet_Q4;
-            this.LiteralHeaderYtd.Text = Resources.Pages.Ledgers.BalanceSheet_Current;
-            this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.BalanceSheet_AccountName;
+            this.LabelSidebarDownload.Text = LocalizedStrings.Get(LocDomain.Global, "Global_DownloadThis");
+
+            this.LiteralHeaderQ1.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Q1");
+            this.LiteralHeaderQ2.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Q2");
+            this.LiteralHeaderQ3.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Q3");
+            this.LiteralHeaderQ4.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Q4");
+            this.LiteralHeaderYtd.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_Ytd");
+            this.LiteralHeaderAccountName.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_AccountName");
+
+            this.LiteralHeaderYtd.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_Current");
+            this.LiteralHeaderAccountName.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "Ledgers.BalanceSheet_AccountName");
         }
 
         // Localized strings for direct access from ASPX
@@ -65,17 +71,17 @@ namespace Swarmops.Frontend.Pages.Ledgers
         // ReSharper disable InconsistentNaming
         public string Localized_StartYear
         {
-            get { return JavascriptEscape(Resources.Pages.Ledgers.BalanceSheet_StartYear); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_StartYear")); }
         }
 
         public string Localized_EndYear
         {
-            get { return JavascriptEscape(Resources.Pages.Ledgers.BalanceSheet_EndYear); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_EndYear")); }
         }
 
         public string Localized_DownloadFileName
         {
-            get { return JavascriptEscape(Resources.Pages.Ledgers.BalanceSheet_DownloadFileName); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_DownloadFileName")); }
         }
 
     }

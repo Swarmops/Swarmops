@@ -137,6 +137,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         private void Localize()
         {
             this.LabelContentHeader.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_Title_View");
+            this.LabelSidebarDownload.Text = LocalizedStrings.Get(LocDomain.Global, "Global_DownloadThis");
 
             this.LiteralHeaderTransactionId.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_TransactionIdShort");
             this.LiteralHeaderDateTime.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Date");

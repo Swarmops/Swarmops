@@ -54,6 +54,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
         {
             this.LabelContentHeader.Text = string.Format (LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_ContentHeader"),
                 CurrentOrganization.Name);
+            this.LabelSidebarDownload.Text = LocalizedStrings.Get(LocDomain.Global, "Global_DownloadThis");
+
             this.LiteralHeaderLastYear.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_LastYear");
             this.LiteralHeaderQ1.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Q1");
             this.LiteralHeaderQ2.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Q2");

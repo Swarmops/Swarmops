@@ -56,6 +56,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
         {
             this.LabelContentHeader.Text = string.Format (LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_ContentHeader"),
                 CurrentOrganization.Name);
+            this.LabelSidebarDownload.Text = LocalizedStrings.Get(LocDomain.Global, "Global_DownloadThis");
 
             this.LiteralAssetsDelta.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_AssetsDelta");
             this.LiteralLiabilitiesDelta.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_LiabilitiesDelta");
