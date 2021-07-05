@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Web.UI.WebControls;
 using Swarmops.Common.Enums;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
@@ -56,7 +57,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
         private string WriteFooter()
         {
-            string line1 = string.Format("\"name\":\"{0}\"", Resources.Global.Global_Total);
+            string line1 = string.Format("\"name\":\"{0}\"", LocalizedStrings.Get(LocDomain.Global, "Global_Total"));
 
             line1 += string.Format(CultureInfo.CurrentCulture, ",\"assets\":\"{0:N0}\"",
                 _totals.AssetsCents / 100.0);
@@ -69,7 +70,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
             else if (_totals.AssetsCents > -_totals.LiabilitiesCents) // Predicted profit
             {
-                string line2 = string.Format("\"name\":\"{0}\"", string.Format(Resources.Pages.Ledgers.BalanceSheet_ProfitToDate, _year));
+                string line2 = string.Format("\"name\":\"{0}\"", string.Format(LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_ProfitToDate"), _year));
 
                 line2 += string.Format(CultureInfo.CurrentCulture, ",\"liabilities\":\"{0:N0}\"",
                     (_totals.AssetsCents + _totals.LiabilitiesCents) / 100.0);
@@ -78,7 +79,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
             else
             {
-                string line2 = string.Format("\"name\":\"{0}\"", string.Format(Resources.Pages.Ledgers.BalanceSheet_LossToDate, _year));
+                string line2 = string.Format("\"name\":\"{0}\"", string.Format(LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_LossToDate"), _year));
 
                 line2 += string.Format(CultureInfo.CurrentCulture, ",\"assets\":\"{0:N0}\"",
                     (_totals.LiabilitiesCents + _totals.AssetsCents) / -100.0);
@@ -92,10 +93,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             Dictionary<string, string> localizeMap = new Dictionary<string, string>();
 
-            localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Global.Financial_Asset;
-            localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Global.Financial_Debt;
-            localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Global.Financial_Income;
-            localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Global.Financial_Cost;
+            localizeMap["%ASSET_ACCOUNTGROUP%"] = LocalizedStrings.Get(LocDomain.Global, "Financial_Asset");
+            localizeMap["%DEBT_ACCOUNTGROUP%"] = LocalizedStrings.Get(LocDomain.Global, "Financial_Debt");
+            localizeMap["%INCOME_ACCOUNTGROUP%"] = LocalizedStrings.Get (LocDomain.Global, "Financial_Income");
+            localizeMap["%COST_ACCOUNTGROUP%"] = LocalizedStrings.Get(LocDomain.Global, "Financial_Cost");
 
             foreach (AnnualReportLine line in lines)
             {

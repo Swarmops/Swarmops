@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using Resources.Pages;
 using Swarmops.Common.Enums;
 using Swarmops.Frontend;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 
 public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
@@ -44,10 +44,10 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
     {
         Dictionary<string, string> localizeMap = new Dictionary<string, string>();
 
-        localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Global.Financial_Asset;
-        localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Global.Financial_Debt;
-        localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Global.Financial_Income;
-        localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Global.Financial_Cost;
+        localizeMap["%ASSET_ACCOUNTGROUP%"] = LocalizedStrings.Get(LocDomain.Global, "Financial_Asset");
+        localizeMap["%DEBT_ACCOUNTGROUP%"] = LocalizedStrings.Get(LocDomain.Global, "Financial_Debt");
+        localizeMap["%INCOME_ACCOUNTGROUP%"] = LocalizedStrings.Get(LocDomain.Global, "Financial_Income");
+        localizeMap["%COST_ACCOUNTGROUP%"] = LocalizedStrings.Get(LocDomain.Global, "Financial_Cost");
 
         foreach (AnnualReportLine line in lines)
         {
@@ -62,7 +62,7 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
 
     private string WriteFooter (AnnualReportNode totals)
     {
-        string result = string.Format ("\"name\":\"{0}\"", Ledgers.ProfitLossStatement_Results);
+        string result = string.Format ("\"name\":\"{0}\"", LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_Results"));
 
         result += string.Format (CultureInfo.CurrentCulture, ",\"lastYear\":\"{0:N0}\"",
             (double) totals.PreviousYear/-100.0);

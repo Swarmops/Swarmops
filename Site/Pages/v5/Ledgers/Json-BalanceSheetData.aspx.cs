@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using Swarmops.Common.Enums;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
@@ -45,10 +46,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             Dictionary<string, string> localizeMap = new Dictionary<string, string>();
 
-            localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Global.Financial_Asset;
-            localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Global.Financial_Debt;
-            localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Global.Financial_Income;
-            localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Global.Financial_Cost;
+            localizeMap["%ASSET_ACCOUNTGROUP%"] = LocalizedStrings.Get(LocDomain.Global, "Financial_Asset");
+            localizeMap["%DEBT_ACCOUNTGROUP%"] = LocalizedStrings.Get(LocDomain.Global, "Financial_Debt");
+            localizeMap["%INCOME_ACCOUNTGROUP%"] = LocalizedStrings.Get(LocDomain.Global, "Financial_Income");
+            localizeMap["%COST_ACCOUNTGROUP%"] = LocalizedStrings.Get(LocDomain.Global, "Financial_Cost");
 
             foreach (AnnualReportLine line in lines)
             {
