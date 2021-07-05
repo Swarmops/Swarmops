@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
-using Resources;
 using Swarmops.Frontend;
+using Swarmops.Localization;
 using Swarmops.Logic.Security;
 
 
@@ -18,8 +18,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
             }
 
             PageIcon = "iconshock-abacus";
-            PageTitle = Resources.Pages.Ledgers.ProfitLossStatement_PageTitle;
-            InfoBoxLiteral = Resources.Pages.Ledgers.ProfitLossStatement_Info;
+            PageTitle = LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_PageTitle");
+            InfoBoxLiteral = LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_Info");
 
             // Security: If the org has open ledgers, then anyone may read. Otherwise, Financials.Read.
 
@@ -52,20 +52,20 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
         private void Localize()
         {
-            this.LabelContentHeader.Text = string.Format (Resources.Pages.Ledgers.ProfitLossStatement_ContentHeader,
+            this.LabelContentHeader.Text = string.Format (LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_ContentHeader"),
                 CurrentOrganization.Name);
-            this.LiteralHeaderLastYear.Text = Resources.Pages.Ledgers.ProfitLossStatement_LastYear;
-            this.LiteralHeaderQ1.Text = Global.Global_Q1;
-            this.LiteralHeaderQ2.Text = Global.Global_Q2;
-            this.LiteralHeaderQ3.Text = Global.Global_Q3;
-            this.LiteralHeaderQ4.Text = Global.Global_Q4;
-            this.LiteralHeaderYtd.Text = Resources.Pages.Ledgers.ProfitLossStatement_Ytd;
-            this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.ProfitLossStatement_AccountName;
+            this.LiteralHeaderLastYear.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_LastYear");
+            this.LiteralHeaderQ1.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Q1");
+            this.LiteralHeaderQ2.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Q2");
+            this.LiteralHeaderQ3.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Q3");
+            this.LiteralHeaderQ4.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Q4");
+            this.LiteralHeaderYtd.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_Ytd");
+            this.LiteralHeaderAccountName.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_AccountName");
         }
 
         public string Localized_DownloadFileName
         {
-            get { return JavascriptEscape (Resources.Pages.Ledgers.ProfitLossStatement_DownloadFileName); }
+            get { return JavascriptEscape (LocalizedStrings.Get(LocDomain.PagesLedgers, "ProfitLossStatement_DownloadFileName")); }
         }
     }
 
