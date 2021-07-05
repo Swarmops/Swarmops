@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Text;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Support;
 
@@ -94,7 +95,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 if (documents.Count > 0)
                 {
-                    element += String.Format(",\"dox\":\"" + hasDoxString + "\"", transaction.Identity, documents[0].Identity, CurrentOrganization.Name + " - " + report.Description + " - " + Resources.Global.Financial_TransactionIdShort + transaction.OrganizationSequenceId.ToString("N0"));
+                    element += String.Format(",\"dox\":\"" + hasDoxString + "\"", transaction.Identity, documents[0].Identity, CurrentOrganization.Name + " - " + report.Description + " - " + LocalizedStrings.Get(LocDomain.Global, "Financial_TransactionIdShort") + transaction.OrganizationSequenceId.ToString("N0"));
                 }
 
                 if (include)
@@ -106,7 +107,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             if (lines.Count == 0) // add empty report line 
             {
                 lines.Add("{" + String.Format("\"id\":\"0\",\"description\":\"{0}\"",
-                    JsonSanitize(Resources.Pages.Ledgers.ViewVatReports_EmptyReport)) + "}");
+                    JsonSanitize(LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_EmptyReport"))) + "}");
             }
 
             Response.Write("{\"rows\":[" + String.Join(",", lines.ToArray()) + "]");
@@ -114,7 +115,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             Response.Write(",\"footer\":[{"); // needs to be on separate line to not trigger a String.Format warning
 
             Response.Write(String.Format("\"id\":\"0\",\"description\":\"{0}\",\"turnover\":\"{1:N2}\",\"inbound\":\"{2:N2}\",\"outbound\":\"{3:N2}\"",
-                JsonSanitize(Resources.Pages.Ledgers.ViewVatReports_Footer_Total.ToUpperInvariant()), turnoverCentsTotal / 100.0, inboundCentsTotal / 100.0, outboundCentsTotal / 100.0));
+                JsonSanitize(LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_Footer_Total").ToUpperInvariant()), turnoverCentsTotal / 100.0, inboundCentsTotal / 100.0, outboundCentsTotal / 100.0));
 
             Response.Write("}]}"); // needs to be separate to not trigger String.Format warning
 

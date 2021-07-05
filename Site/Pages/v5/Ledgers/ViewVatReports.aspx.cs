@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
@@ -22,8 +23,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return;
             }
 
-            PageTitle = Resources.Pages.Ledgers.ViewVatReports_PageTitle;
-            InfoBoxLiteral = Resources.Pages.Ledgers.ViewVatReports_Info;
+            PageTitle = LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_PageTitle");
+            InfoBoxLiteral = LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_Info");
 
             VatReportDocuments = new List<RepeatedDocument>();
 
@@ -135,18 +136,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
         private void Localize()
         {
-            this.LabelContentHeader.Text = Resources.Pages.Ledgers.ViewVatReports_Title_View;
+            this.LabelContentHeader.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_Title_View");
 
-            this.LiteralHeaderTransactionId.Text = Resources.Global.Financial_TransactionIdShort;
-            this.LiteralHeaderDateTime.Text = Resources.Global.Global_Date;
-            this.LiteralHeaderDescription.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Description;
-            this.LiteralHeaderTurnover.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Turnover;
-            this.LiteralHeaderVatInbound.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Inbound;
-            this.LiteralHeaderVatOutbound.Text = Resources.Pages.Ledgers.ViewVatReports_Header_Outbound;
-            this.LiteralHeaderDox.Text = Resources.Global.Global_Dox;
+            this.LiteralHeaderTransactionId.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_TransactionIdShort");
+            this.LiteralHeaderDateTime.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Date");
+            this.LiteralHeaderDescription.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_Header_Description");
+            this.LiteralHeaderTurnover.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_Header_Turnover");
+            this.LiteralHeaderVatInbound.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_Header_Inbound");
+            this.LiteralHeaderVatOutbound.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_Header_Outbound");
+            this.LiteralHeaderDox.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Dox");
 
-            this.LabelHeaderNoVatReportsToDisplay.Text = Resources.Pages.Ledgers.ViewVatReports_Header_NoReports;
-            this.LabelNoVatReportsToDisplay.Text = Resources.Pages.Ledgers.ViewVatReports_NoReports;
+            this.LabelHeaderNoVatReportsToDisplay.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_Header_NoReports");
+            this.LabelNoVatReportsToDisplay.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "ViewVatReports_NoReports");
         }
 
         public int InitialReportId { get; private set; }
