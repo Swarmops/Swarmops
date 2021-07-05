@@ -12,8 +12,20 @@ namespace Swarmops.Localization
         {
             switch (domain)
             {
+                case LocDomain.Global:
+                    return Global.ResourceManager.GetString(stringResource);
+
                 case LocDomain.Menu5:
                     return Menu5.ResourceManager.GetString(stringResource);
+
+                case LocDomain.PagesFinancial:
+                    return Pages_Financial.ResourceManager.GetString(stringResource);
+
+                case LocDomain.PagesLedgers:
+                    return Pages_Ledgers.ResourceManager.GetString(stringResource);
+
+                case LocDomain.ControlsFinancial:
+                    return Controls_Financial.ResourceManager.GetString(stringResource);
 
                 default:
                     throw new NotImplementedException("Unimplemented localization domain: " + domain.ToString());

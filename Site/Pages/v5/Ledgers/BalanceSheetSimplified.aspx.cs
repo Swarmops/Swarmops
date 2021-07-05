@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using Swarmops.Logic.Security;
+using Swarmops.Localization;
 
 namespace Swarmops.Frontend.Pages.Ledgers
 {
@@ -18,8 +19,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
             }
 
             PageIcon = "iconshock-treasure";
-            PageTitle = Resources.Pages.Ledgers.BalanceSheet_PageTitle;
-            InfoBoxLiteral = Resources.Pages.Ledgers.BalanceSheet_Info_Simplified;
+            PageTitle = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_PageTitle");
+            InfoBoxLiteral = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_Info_Simplified");
 
             // Security: If the org has open ledgers, then anyone may read. Otherwise, Financials.Read.
 
@@ -53,15 +54,15 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
         private void Localize()
         {
-            this.LabelContentHeader.Text = string.Format (Resources.Pages.Ledgers.BalanceSheet_ContentHeader,
+            this.LabelContentHeader.Text = string.Format (LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_ContentHeader"),
                 CurrentOrganization.Name);
 
-            this.LiteralAssetsDelta.Text = Resources.Pages.Ledgers.BalanceSheet_AssetsDelta;
-            this.LiteralLiabilitiesDelta.Text = Resources.Pages.Ledgers.BalanceSheet_LiabilitiesDelta;
-            this.LiteralAssets.Text = Resources.Pages.Ledgers.BalanceSheet_Assets;
-            this.LiteralLiabilities.Text = Resources.Pages.Ledgers.BalanceSheet_Liabilities;
+            this.LiteralAssetsDelta.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_AssetsDelta");
+            this.LiteralLiabilitiesDelta.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_LiabilitiesDelta");
+            this.LiteralAssets.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_Assets");
+            this.LiteralLiabilities.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_Liabilities");
 
-            this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.BalanceSheet_AccountName;
+            this.LiteralHeaderAccountName.Text = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_AccountName");
         }
 
         // Localized strings for direct access from ASPX
@@ -69,17 +70,17 @@ namespace Swarmops.Frontend.Pages.Ledgers
         // ReSharper disable InconsistentNaming
         public string Localized_Assets
         {
-            get { return JavascriptEscape(Resources.Pages.Ledgers.BalanceSheet_Assets); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_Assets")); }
         }
 
         public string Localized_Liabilities
         {
-            get { return JavascriptEscape(Resources.Pages.Ledgers.BalanceSheet_Liabilities); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_Liabilities")); }
         }
 
         public string Localized_DownloadFileName
         {
-            get { return JavascriptEscape(Resources.Pages.Ledgers.BalanceSheet_DownloadFileName); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_DownloadFileName")); }
         }
 
     }
