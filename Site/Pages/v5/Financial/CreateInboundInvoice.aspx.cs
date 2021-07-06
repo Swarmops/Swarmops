@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Web;
-using Resources;
 using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
