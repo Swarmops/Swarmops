@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Web;
 using Resources;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
@@ -112,21 +113,23 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            this.LabelSupplier.Text = Global.Financial_Supplier;
-            this.LabelDueDate.Text = Global.Financial_DueDate;
-            this.LabelAmount.Text = string.Format (Resources.Pages.Financial.CreateInboundInvoice_Amount,
+            this.LabelInvoiceDate.Text = LocalizedStrings.Get(LocDomain.PagesFinancial,
+                "CreateInboundInvoice_InvoiceDate");
+            this.LabelSupplier.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_Supplier");
+            this.LabelDueDate.Text = this.LabelInvoiceDate.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_DueDate");
+            this.LabelAmount.Text = string.Format (LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_Amount"),
                 CurrentOrganization.Currency.Code);
-            this.LabelVat.Text = string.Format(Resources.Pages.Financial.CreateInboundInvoice_AmountVat,
+            this.LabelVat.Text = string.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_AmountVat"),
                 CurrentOrganization.Currency.Code);
-            this.LabelPurpose.Text = Resources.Pages.Financial.CreateInboundInvoice_Description;
-            this.LabelBudget.Text = Global.Financial_Budget;
-            this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.CreateInboundInvoice_HeaderPaymentDetails;
-            this.LabelHeaderImageFiles.Text = Resources.Pages.Financial.CreateInboundInvoice_HeaderInvoiceImage;
-            this.LabelImageFiles.Text = Resources.Pages.Financial.CreateInboundInvoice_UploadInvoiceImage;
-            this.LabelReference.Text = Resources.Pages.Financial.CreateInboundInvoice_Reference;
-            this.LabelAccount.Text = Resources.Pages.Financial.CreateInboundInvoice_SupplierAccount;
+            this.LabelPurpose.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_Description");
+            this.LabelBudget.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_Budget");
+            this.LabelHeaderBankDetails.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_HeaderPaymentDetails");
+            this.LabelHeaderImageFiles.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "Financial.CreateInboundInvoice_HeaderInvoiceImage");
+            this.LabelImageFiles.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_UploadInvoiceImage");
+            this.LabelReference.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_Reference");
+            this.LabelAccount.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_SupplierAccount");
 
-            this.ButtonCreate.Text = Resources.Pages.Financial.CreateInboundInvoice_ButtonCreate;
+            this.ButtonCreate.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_ButtonCreate");
         }
 
 
@@ -233,39 +236,39 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 }
 
                 return
-                    JavascriptEscape (String.Format (Resources.Pages.Financial.CreateInboundInvoice_SuccessMessage,
+                    JavascriptEscape (String.Format (LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_SuccessMessage"),
                         this._invoiceId));
             }
         }
 
         public string Localized_ValidationError_MissingTag
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_MissingTag); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_ValidationError_MissingTag")); }
         }
 
         public string Localized_ValidationError_Account
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Account); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_ValidationError_Account")); }
         }
 
         public string Localized_ValidationError_Purpose
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Purpose); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_ValidationError_Purpose")); }
         }
 
         public string Localized_ValidationError_Budget
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Budget); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_ValidationError_Budget")); }
         }
 
         public string Localized_ValidationError_Amount
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Amount); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_ValidationError_Amount")); }
         }
 
         public string Localized_ValidationError_Documents
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Documents); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_ValidationError_Documents")); }
         }
 
     }

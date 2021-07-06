@@ -311,6 +311,10 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>This is where you file invoices received at your organization ("Accounts Payable"). Enter the supplier name, amount, due date, the invoice reference, and upload an image of the received invoice. Also, select a budget. The budget owner needs to attest, as usual. (Future roadmapped expansions to this mechanism include purchase orders and supplier lists.)</value>
   </data>
+  <data name="CreateInboundInvoice_InvoiceDate" xml:space="preserve">
+    <value>Invoice Date</value>
+    <comment>This refers to the date as written on the invoice. (It defaults to the date when the invoice is entered, which is usually later.)</comment>
+  </data>
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>Received Inbound Invoice</value>
   </data>

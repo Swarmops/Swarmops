@@ -565,6 +565,15 @@ namespace Swarmops.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoice Date.
+        /// </summary>
+        internal static string CreateInboundInvoice_InvoiceDate {
+            get {
+                return ResourceManager.GetString("CreateInboundInvoice_InvoiceDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Received Inbound Invoice.
         /// </summary>
         internal static string CreateInboundInvoice_PageTitle {

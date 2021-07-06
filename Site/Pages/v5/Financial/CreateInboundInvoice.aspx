@@ -145,6 +145,7 @@
     <h2><asp:Label ID="BoxTitle" runat="server"/></h2>
     <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
     <div class="data-entry-fields">
+        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextInvoiceDate"/></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextSupplier" /></div>
         <Swarmops5:CurrencyAmount runat="server" ID="CurrencyAmount" />
         <span class="vatEnabled"><Swarmops5:CurrencyAmount runat="server" ID="CurrencyVat" /></span>
@@ -167,6 +168,7 @@
         <asp:Button ID="ButtonCreate" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick="return validateFields();" OnClick="ButtonCreate_Click" Text="Create"/>
     </div>
     <div class="data-entry-labels">
+        <asp:Label runat="server" ID="LabelInvoiceDate"/><br/>
         <asp:Label runat="server" ID="LabelSupplier" /><br/>
         <asp:Label runat="server" ID="LabelAmount" /><br/>
         <span class="vatEnabled"><asp:Label runat="server" ID="LabelVat" /><br/></span>
