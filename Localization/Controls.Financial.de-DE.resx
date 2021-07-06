@@ -117,8 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
+  <data name="Bitcoin_ClientRefusesTracking_Header" xml:space="preserve">
+    <value>Ihr Browser funktioniert nicht ordnungsgemäß</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para1" xml:space="preserve">
+    <value>Ihr Browser verweigert das Laden von Bitcoin-Transaktions-Trackern. Diese Tracker sind notwendig, um festzustellen, wann Sie eine Bitcoin-Transaktion durchführen, um Ihre Zahlung zu erhalten.</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para2" xml:space="preserve">
+    <value>Einige Browser-Erweiterungen, wie z.B. der „Privacy Badger“ der EFF, verhindern fälschlicherweise das Laden von Bitcoin-Tracking, da sie es für Werbung halten.</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para3" xml:space="preserve">
+    <value>Bitte überprüfen Sie Ihre Browser-Erweiterungen und/oder deaktivieren Sie für diese Seite z. B. Privacy Badger oder Adblock.</value>
+  </data>
 </root>
