@@ -90,9 +90,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return;
             }
 
-            this.BoxTitle.Text = PageTitle = Resources.Pages.Financial.CreateInboundInvoice_PageTitle;
+            this.BoxTitle.Text = PageTitle = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_PageTitle");
             PageIcon = "iconshock-invoice";
-            InfoBoxLiteral = Resources.Pages.Financial.CreateInboundInvoice_Info;
+            InfoBoxLiteral = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_Info");
 
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Secretarial, AccessType.Write);
 
@@ -104,6 +104,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 this.CurrencyVat.Cents = 0;
                 this.TextSupplier.Focus();
                 this.TextDueDate.Text = DateTime.Today.AddDays (30).ToShortDateString(); // Use current culture
+                this.TextInvoiceDate.Text = DateTime.Today.ToShortDateString();
 
                 Localize();
             }
