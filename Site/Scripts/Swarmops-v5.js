@@ -441,11 +441,10 @@ var SwarmopsJS = (function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (msg) {
-                console.log(msg);
                 successFunction(msg.d);
             },
             error: function (data) {
-                console.log(data);
+                console.log("Error in Ajax call: " + data);
                 if (errorFunction !== undefined) {
                     errorFunction();
                 } else {

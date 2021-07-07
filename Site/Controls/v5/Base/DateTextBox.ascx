@@ -40,7 +40,6 @@
             SwarmopsJS.ajaxCall('/Automation/Formatting.aspx/InterpretDateString',
                 jsonData,
                 function (data) {
-                    console.log(data);
                     if (data.Success) {
                         $('#<%=this.ClientID%>_TextInput').val(data.PresentedDate);
                         $('#<%=this.ClientID%>_InterpretedDate').val(data.InterpretedDate);
@@ -49,10 +48,6 @@
                         $('#<%=this.ClientID%>_InterpretedDate').val('');
                         $('#<%=this.TextInput.ClientID%>').focus();
                     }
-                },
-                function(data) {
-                    console.log('ERROR');
-                    console.log(data);
                 });
             
         });
