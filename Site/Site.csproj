@@ -152,6 +152,13 @@
     <Compile Include="Controls\v5\Base\AjaxDropDown.ascx.designer.cs">
       <DependentUpon>AjaxDropDown.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\v5\Base\DateTextBox.ascx.cs">
+      <DependentUpon>DateTextBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\v5\Base\DateTextBox.ascx.designer.cs">
+      <DependentUpon>DateTextBox.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\v5\Base\DocumentDownloader.ascx.cs">
       <DependentUpon>DocumentDownloader.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -864,6 +871,7 @@
     <Content Include="Controls\v5\Base\AjaxToggleSlider.ascx" />
     <Content Include="Controls\v5\Base\ComboGeographies.ascx" />
     <Content Include="Controls\v5\Base\AjaxDropDown.ascx" />
+    <Content Include="Controls\v5\Base\DateTextBox.ascx" />
     <Content Include="Controls\v5\Base\DocumentDownloader.ascx" />
     <Content Include="Controls\v5\Base\DropDown.ascx" />
     <Content Include="Controls\v5\Base\FileUpload.ascx" />

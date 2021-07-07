@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -40,6 +41,7 @@ namespace Swarmops.Frontend.Automation
             return input.ToString("N2");
         }
 
+
         [WebMethod]
         public static AjaxInputCallResult FormatCurrencyString(string input)
         {
@@ -56,6 +58,34 @@ namespace Swarmops.Frontend.Automation
             }
 
             return new AjaxInputCallResult {Success = true, NewValue = (cents / 100.0).ToString("N2")};
+        }
+
+
+        public class AjaxDateValidationResult: AjaxInputCallResult 
+        {
+            public string InterpretedDate { get; set; }
+            public string PresentedDate { get; set; }
+        }
+
+        [WebMethod]
+        public static AjaxDateValidationResult InterpretDateString(string input)
+        {
+            GetAuthenticationDataAndCulture();
+
+            DateTime interpretedDate = DateTime.MinValue;
+            bool success = DateTime.TryParse(input, out interpretedDate);
+
+            if (!success)
+            {
+                return new AjaxDateValidationResult() {Success = false};
+            }
+
+            return new AjaxDateValidationResult()
+            {
+                Success = true,
+                InterpretedDate = interpretedDate.ToString(CultureInfo.InvariantCulture),
+                PresentedDate = interpretedDate.ToString("yyyy MMM dd")
+            };
         }
     }
 }

@@ -103,8 +103,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 this.CurrencyAmount.Cents = 0;
                 this.CurrencyVat.Cents = 0;
                 this.TextSupplier.Focus();
-                this.TextDueDate.Text = DateTime.Today.AddDays (30).ToShortDateString(); // Use current culture
-                this.TextInvoiceDate.Text = DateTime.Today.ToShortDateString();
+                this.DateInvoiceIssued.Value = DateTime.Today;
+                this.DateInvoiceDue.Value = DateTime.Today.AddDays(30);
 
                 Localize();
             }

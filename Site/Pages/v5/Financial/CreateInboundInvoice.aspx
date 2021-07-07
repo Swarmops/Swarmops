@@ -2,6 +2,7 @@
 <%@ Register src="~/Controls/v5/Base/FileUpload.ascx" tagname="FileUpload" tagprefix="Swarmops5" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="CurrencyAmount" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="DateTextBox" Src="~/Controls/v5/Financial/DateTextBox.ascx" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
@@ -145,12 +146,13 @@
     <h2><asp:Label ID="BoxTitle" runat="server"/></h2>
     <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
     <div class="data-entry-fields">
+        <Swarmops5:DateTextBox runat="server" ID="DateInvoiceIssued"/>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextInvoiceDate"/></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextSupplier" /></div>
         <Swarmops5:CurrencyAmount runat="server" ID="CurrencyAmount" />
         <span class="vatEnabled"><Swarmops5:CurrencyAmount runat="server" ID="CurrencyVat" /></span>
+        <Swarmops5:DateTextBox runat="server" ID="DateInvoiceDue"/>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPurpose" /></div>
-        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextDueDate" /></div>
         <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" ListType="InvoiceableIn" />
         <asp:Repeater ID="RepeaterTagDrop" runat="server"><ItemTemplate><span id="SpanDropTags<%# Eval("TagSetId") %>"><select class="easyui-combotree" url="/Automation/Json-TransactionTagsTree.aspx?TagSetId=<%# Eval("TagSetId") %>" name="DropTags<%# Eval("TagSetId") %>" id="DropTags<%# Eval("TagSetId") %>" animate="true" style="width:300px"></select></span>&nbsp;<br/></ItemTemplate></asp:Repeater>
 
@@ -172,8 +174,8 @@
         <asp:Label runat="server" ID="LabelSupplier" /><br/>
         <asp:Label runat="server" ID="LabelAmount" /><br/>
         <span class="vatEnabled"><asp:Label runat="server" ID="LabelVat" /><br/></span>
-        <asp:Label runat="server" ID="LabelPurpose" /><br/>
         <asp:Label runat="server" ID="LabelDueDate" /><br/>
+        <asp:Label runat="server" ID="LabelPurpose" /><br/>
         <asp:Label runat="server" ID="LabelBudget" /><br/>
         <asp:Repeater ID="RepeaterTagLabels" runat="server"><ItemTemplate><%# Eval("TagSetLocalizedName") %><br/></ItemTemplate></asp:Repeater>
         <h2><asp:Label runat="server" ID="LabelHeaderImageFiles" /></h2>

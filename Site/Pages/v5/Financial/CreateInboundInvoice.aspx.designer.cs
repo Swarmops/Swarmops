@@ -49,6 +49,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.HiddenField HiddenTagSetIdentifiers;
         
         /// <summary>
+        /// DateInvoiceIssued control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl DateInvoiceIssued;
+        
+        /// <summary>
         /// TextInvoiceDate control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::Swarmops.Frontend.Controls.Financial.CurrencyTextBox CurrencyVat;
         
         /// <summary>
+        /// DateInvoiceDue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl DateInvoiceDue;
+        
+        /// <summary>
         /// TextPurpose control.
         /// </summary>
         /// <remarks>
@@ -92,15 +110,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextPurpose;
-        
-        /// <summary>
-        /// TextDueDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextDueDate;
         
         /// <summary>
         /// ComboBudgets control.
@@ -193,15 +202,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelVat;
         
         /// <summary>
-        /// LabelPurpose control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPurpose;
-        
-        /// <summary>
         /// LabelDueDate control.
         /// </summary>
         /// <remarks>
@@ -209,6 +209,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelDueDate;
+        
+        /// <summary>
+        /// LabelPurpose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelPurpose;
         
         /// <summary>
         /// LabelBudget control.
