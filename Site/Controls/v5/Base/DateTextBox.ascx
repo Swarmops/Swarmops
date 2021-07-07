@@ -39,7 +39,8 @@
 
             SwarmopsJS.ajaxCall('/Automation/Formatting.aspx/InterpretDateString',
                 jsonData,
-                function(data) {
+                function (data) {
+                    console.log(data);
                     if (data.Success) {
                         $('#<%=this.ClientID%>_TextInput').val(data.PresentedValue);
                         $('#<%=this.ClientID%>_InterpretedDate').val(data.InterpretedValue);
