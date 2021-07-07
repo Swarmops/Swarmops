@@ -2,6 +2,7 @@
 <%@ Register src="~/Controls/v5/Base/FileUpload.ascx" tagname="FileUpload" tagprefix="Swarmops5" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="Currency" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="DateTextBox" Src="~/Controls/v5/Base/DateTextBox.ascx" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <Swarmops5:ExternalScripts ID="ScriptFancyBox" Package="FancyBox" runat="server"/>
@@ -423,6 +424,7 @@
             <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
             <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
             <div class="data-entry-fields">
+                <Swarmops5:DateTextBox runat="server" ID="DateExpenseIncurred"/>
                 <Swarmops5:Currency runat="server" ID="CurrencyAmount" />
                 <span class="ifVatEnabled"><Swarmops5:Currency runat="server" ID="CurrencyVat" /></span>
                 <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextPurpose" /></div>
@@ -444,6 +446,7 @@
                 <asp:Button ID="ButtonRequest" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
             </div>
             <div class="data-entry-labels">
+                <asp:Label runat="server" ID="LabelExpenseDate" /><br/>
                 <asp:Label runat="server" ID="LabelAmount" /><br/>
                 <span class="ifVatEnabled"><asp:Label runat="server" ID="LabelVat"/><br/></span>
                 <asp:Label runat="server" ID="LabelPurpose" /><br/>

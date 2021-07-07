@@ -14,6 +14,7 @@ using System.Web;
 using System.Web.Services;
 using Newtonsoft.Json.Linq;
 using Swarmops.Interface.Support;
+using Swarmops.Localization;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -119,9 +120,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return;
             }
 
-            this.BoxTitle.Text = PageTitle = Resources.Pages.Financial.FileExpenseClaim_PageTitle;
+            this.BoxTitle.Text = PageTitle = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_PageTitle");
             PageIcon = "iconshock-moneyback";
-            InfoBoxLiteral = Resources.Pages.Financial.FileExpenseClaim_Info;
+            InfoBoxLiteral = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Info");
 
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Participant, AccessType.Write);
 
@@ -145,20 +146,21 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             /* Main tab */
 
-            this.LabelAmount.Text = string.Format (Resources.Pages.Financial.FileExpenseClaim_Amount,
+            this.LabelExpenseDate.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_DateIncurred");
+            this.LabelAmount.Text = string.Format (LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Amount"),
                 CurrentOrganization.Currency.DisplayCode);
-            this.LabelPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_Description;
-            this.LabelBudget.Text = Resources.Pages.Financial.FileExpenseClaim_Budget;
-            this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderBankDetails;
-            this.LabelBankName.Text = Resources.Pages.Financial.FileExpenseClaim_BankName;
-            this.LabelBankClearing.Text = Resources.Pages.Financial.FileExpenseClaim_BankClearing;
-            this.LabelBankAccount.Text = Resources.Pages.Financial.FileExpenseClaim_BankAccount;
-            this.LabelHeaderImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderReceiptImages;
-            this.LabelImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_UploadRecieptImages;
-            this.LabelVat.Text = string.Format(Resources.Pages.Financial.FileExpenseClaim_Vat,
+            this.LabelPurpose.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Description");
+            this.LabelBudget.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Budget");
+            this.LabelHeaderBankDetails.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_HeaderBankDetails");
+            this.LabelBankName.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_BankName");
+            this.LabelBankClearing.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_BankClearing");
+            this.LabelBankAccount.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_BankAccount");
+            this.LabelHeaderImageFiles.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_HeaderReceiptImages");
+            this.LabelImageFiles.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_UploadRecieptImages");
+            this.LabelVat.Text = string.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Vat"),
                 CurrentOrganization.Currency.DisplayCode);
 
-            this.ButtonRequest.Text = Resources.Pages.Financial.FileExpenseClaim_ButtonRequest;
+            this.ButtonRequest.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_ButtonRequest");
 
             /* Expensify tab */
 
@@ -954,6 +956,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // The data has been validated client-side already. We'll throw unfriendly exceptions if invalid data is passed here.
             // People who choose to disable JavaScript and then submit bad input almost deserve to be hurt.
 
+            DateTime expenseDate = this.DateExpenseIncurred.Value;
             Int64 amountCents = this.CurrencyAmount.Cents;
             Int64 vatCents = this.CurrencyVat.Cents;
 
@@ -983,7 +986,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new InvalidOperationException ("No documents uploaded");
             }
 
-            ExpenseClaim claim = ExpenseClaim.Create (CurrentUser, CurrentOrganization, budget, DateTime.UtcNow,
+            ExpenseClaim claim = ExpenseClaim.Create (CurrentUser, CurrentOrganization, budget, expenseDate,
                 description, amountCents, vatCents);
 
             foreach (int tagSetId in this._tagSetIds)

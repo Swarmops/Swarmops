@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Swarmops.Logic.Resources;
-
 namespace Resources.Pages {
     using System;
     
@@ -24,7 +22,7 @@ namespace Resources.Pages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Financial {
+    internal class Financial {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -41,7 +39,7 @@ namespace Resources.Pages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new MonoResourceManager("Pages.Financial");
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Pages.Financial", global::System.Reflection.Assembly.Load("App_GlobalResources"));
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -65,7 +63,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Cash Advance #{0:N0} for {1} has been approved for {3:N2}..
         /// </summary>
-        public static string AttestCosts_AdvanceAttested {
+        internal static string AttestCosts_AdvanceAttested {
             get {
                 return ResourceManager.GetString("AttestCosts_AdvanceAttested", resourceCulture);
             }
@@ -74,7 +72,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to The approval for Cash Advance #{0:N0} for {1} was RETRACTED.  It will not be paid out unless approved again..
         /// </summary>
-        public static string AttestCosts_AdvanceDeattested {
+        internal static string AttestCosts_AdvanceDeattested {
             get {
                 return ResourceManager.GetString("AttestCosts_AdvanceDeattested", resourceCulture);
             }
@@ -83,7 +81,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to You cannot approve this amount. The budget is empty for the year {0}..
         /// </summary>
-        public static string AttestCosts_BudgetIsEmpty {
+        internal static string AttestCosts_BudgetIsEmpty {
             get {
                 return ResourceManager.GetString("AttestCosts_BudgetIsEmpty", resourceCulture);
             }
@@ -92,7 +90,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to You cannot approve a negative amount..
         /// </summary>
-        public static string AttestCosts_CannotAttestNegative {
+        internal static string AttestCosts_CannotAttestNegative {
             get {
                 return ResourceManager.GetString("AttestCosts_CannotAttestNegative", resourceCulture);
             }
@@ -101,7 +99,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to You cannot approve a zero amount..
         /// </summary>
-        public static string AttestCosts_CannotAttestZero {
+        internal static string AttestCosts_CannotAttestZero {
             get {
                 return ResourceManager.GetString("AttestCosts_CannotAttestZero", resourceCulture);
             }
@@ -110,7 +108,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Sorry, you cannot rebudget a salary payout..
         /// </summary>
-        public static string AttestCosts_Error_CantRebudgetSalary {
+        internal static string AttestCosts_Error_CantRebudgetSalary {
             get {
                 return ResourceManager.GetString("AttestCosts_Error_CantRebudgetSalary", resourceCulture);
             }
@@ -119,7 +117,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to That doesn&apos;t seem to be a valid amount. Please retry?.
         /// </summary>
-        public static string AttestCosts_Error_InvalidAmountRetry {
+        internal static string AttestCosts_Error_InvalidAmountRetry {
             get {
                 return ResourceManager.GetString("AttestCosts_Error_InvalidAmountRetry", resourceCulture);
             }
@@ -128,7 +126,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please select a budget to retarget the charge for..
         /// </summary>
-        public static string AttestCosts_Error_PleaseSelectBudget {
+        internal static string AttestCosts_Error_PleaseSelectBudget {
             get {
                 return ResourceManager.GetString("AttestCosts_Error_PleaseSelectBudget", resourceCulture);
             }
@@ -137,7 +135,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Expense Claim #{0:N0} from {1} for {2} {3:N2} has been approved..
         /// </summary>
-        public static string AttestCosts_ExpenseAttested {
+        internal static string AttestCosts_ExpenseAttested {
             get {
                 return ResourceManager.GetString("AttestCosts_ExpenseAttested", resourceCulture);
             }
@@ -146,7 +144,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Approval for Expense Claim #{0:N0} from {1} was RETRACTED. It will not be paid unless approved again..
         /// </summary>
-        public static string AttestCosts_ExpenseDeattested {
+        internal static string AttestCosts_ExpenseDeattested {
             get {
                 return ResourceManager.GetString("AttestCosts_ExpenseDeattested", resourceCulture);
             }
@@ -155,7 +153,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Action.
         /// </summary>
-        public static string AttestCosts_GridHeader_Action {
+        internal static string AttestCosts_GridHeader_Action {
             get {
                 return ResourceManager.GetString("AttestCosts_GridHeader_Action", resourceCulture);
             }
@@ -164,7 +162,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Beneficiary.
         /// </summary>
-        public static string AttestCosts_GridHeader_Beneficiary {
+        internal static string AttestCosts_GridHeader_Beneficiary {
             get {
                 return ResourceManager.GetString("AttestCosts_GridHeader_Beneficiary", resourceCulture);
             }
@@ -173,7 +171,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Budget.
         /// </summary>
-        public static string AttestCosts_GridHeader_Budget {
+        internal static string AttestCosts_GridHeader_Budget {
             get {
                 return ResourceManager.GetString("AttestCosts_GridHeader_Budget", resourceCulture);
             }
@@ -182,7 +180,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
-        public static string AttestCosts_GridHeader_Description {
+        internal static string AttestCosts_GridHeader_Description {
             get {
                 return ResourceManager.GetString("AttestCosts_GridHeader_Description", resourceCulture);
             }
@@ -191,7 +189,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Docs.
         /// </summary>
-        public static string AttestCosts_GridHeader_Docs {
+        internal static string AttestCosts_GridHeader_Docs {
             get {
                 return ResourceManager.GetString("AttestCosts_GridHeader_Docs", resourceCulture);
             }
@@ -200,7 +198,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Item.
         /// </summary>
-        public static string AttestCosts_GridHeader_Item {
+        internal static string AttestCosts_GridHeader_Item {
             get {
                 return ResourceManager.GetString("AttestCosts_GridHeader_Item", resourceCulture);
             }
@@ -209,7 +207,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Requested.
         /// </summary>
-        public static string AttestCosts_GridHeader_Requested {
+        internal static string AttestCosts_GridHeader_Requested {
             get {
                 return ResourceManager.GetString("AttestCosts_GridHeader_Requested", resourceCulture);
             }
@@ -218,7 +216,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Costs waiting for your approval.
         /// </summary>
-        public static string AttestCosts_Header_CostsAwaitingAttestation {
+        internal static string AttestCosts_Header_CostsAwaitingAttestation {
             get {
                 return ResourceManager.GetString("AttestCosts_Header_CostsAwaitingAttestation", resourceCulture);
             }
@@ -227,7 +225,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This is where you approve costs that other people are requesting from your budgets. Nothing is paid before you have approved it..
         /// </summary>
-        public static string AttestCosts_Info {
+        internal static string AttestCosts_Info {
             get {
                 return ResourceManager.GetString("AttestCosts_Info", resourceCulture);
             }
@@ -236,7 +234,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Invoice #{0:N0} from {1} for {2} {3:N2} has been approved..
         /// </summary>
-        public static string AttestCosts_InvoiceAttested {
+        internal static string AttestCosts_InvoiceAttested {
             get {
                 return ResourceManager.GetString("AttestCosts_InvoiceAttested", resourceCulture);
             }
@@ -245,7 +243,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Approval for Invoice #{0:N0} from {1} was RETRACTED.  It will not be paid unless approved again..
         /// </summary>
-        public static string AttestCosts_InvoiceDeattested {
+        internal static string AttestCosts_InvoiceDeattested {
             get {
                 return ResourceManager.GetString("AttestCosts_InvoiceDeattested", resourceCulture);
             }
@@ -254,7 +252,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Approve.
         /// </summary>
-        public static string AttestCosts_Modal_ButtonAmount {
+        internal static string AttestCosts_Modal_ButtonAmount {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_ButtonAmount", resourceCulture);
             }
@@ -263,7 +261,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Approve.
         /// </summary>
-        public static string AttestCosts_Modal_ButtonCorrect {
+        internal static string AttestCosts_Modal_ButtonCorrect {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_ButtonCorrect", resourceCulture);
             }
@@ -272,7 +270,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Deny.
         /// </summary>
-        public static string AttestCosts_Modal_ButtonDeny {
+        internal static string AttestCosts_Modal_ButtonDeny {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_ButtonDeny", resourceCulture);
             }
@@ -281,7 +279,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Rebudget.
         /// </summary>
-        public static string AttestCosts_Modal_ButtonRebudget {
+        internal static string AttestCosts_Modal_ButtonRebudget {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_ButtonRebudget", resourceCulture);
             }
@@ -290,7 +288,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to My hovercraft is full of eels.
         /// </summary>
-        public static string AttestCosts_Modal_DenyTextPlaceholder {
+        internal static string AttestCosts_Modal_DenyTextPlaceholder {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_DenyTextPlaceholder", resourceCulture);
             }
@@ -299,7 +297,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to (The amount must exclude any VAT specified!).
         /// </summary>
-        public static string AttestCosts_Modal_DescribeCorrectNoVat {
+        internal static string AttestCosts_Modal_DescribeCorrectNoVat {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_DescribeCorrectNoVat", resourceCulture);
             }
@@ -308,7 +306,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to What amount are you attesting instead (in {0})?.
         /// </summary>
-        public static string AttestCosts_Modal_DescribeOptionAmount {
+        internal static string AttestCosts_Modal_DescribeOptionAmount {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_DescribeOptionAmount", resourceCulture);
             }
@@ -317,7 +315,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Change this item to this amount (in {0}), then attest it like that:.
         /// </summary>
-        public static string AttestCosts_Modal_DescribeOptionCorrect {
+        internal static string AttestCosts_Modal_DescribeOptionCorrect {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_DescribeOptionCorrect", resourceCulture);
             }
@@ -326,7 +324,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Optional reason for denial to the submitter:.
         /// </summary>
-        public static string AttestCosts_Modal_DescribeOptionDeny {
+        internal static string AttestCosts_Modal_DescribeOptionDeny {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_DescribeOptionDeny", resourceCulture);
             }
@@ -335,7 +333,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Move the charge to this budget instead:.
         /// </summary>
-        public static string AttestCosts_Modal_DescribeOptionRebudget {
+        internal static string AttestCosts_Modal_DescribeOptionRebudget {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_DescribeOptionRebudget", resourceCulture);
             }
@@ -344,7 +342,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Fix problems or deny approval.
         /// </summary>
-        public static string AttestCosts_Modal_Header {
+        internal static string AttestCosts_Modal_Header {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_Header", resourceCulture);
             }
@@ -353,7 +351,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to I will approve this, but for a different amount..
         /// </summary>
-        public static string AttestCosts_Modal_RadioOptionAmount {
+        internal static string AttestCosts_Modal_RadioOptionAmount {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_RadioOptionAmount", resourceCulture);
             }
@@ -362,7 +360,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to The amount is wrong. I will approve it for the correct amount..
         /// </summary>
-        public static string AttestCosts_Modal_RadioOptionCorrect {
+        internal static string AttestCosts_Modal_RadioOptionCorrect {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_RadioOptionCorrect", resourceCulture);
             }
@@ -371,7 +369,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to I will not approve this record. It is scratched..
         /// </summary>
-        public static string AttestCosts_Modal_RadioOptionDeny {
+        internal static string AttestCosts_Modal_RadioOptionDeny {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_RadioOptionDeny", resourceCulture);
             }
@@ -380,7 +378,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This record should charge a different budget. Move it there..
         /// </summary>
-        public static string AttestCosts_Modal_RadioOptionRebudget {
+        internal static string AttestCosts_Modal_RadioOptionRebudget {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_RadioOptionRebudget", resourceCulture);
             }
@@ -389,7 +387,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to What seems to be the problem with this record?.
         /// </summary>
-        public static string AttestCosts_Modal_WhatIsProblem {
+        internal static string AttestCosts_Modal_WhatIsProblem {
             get {
                 return ResourceManager.GetString("AttestCosts_Modal_WhatIsProblem", resourceCulture);
             }
@@ -398,7 +396,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to There are not enough funds remaining in the budget to approve this cost..
         /// </summary>
-        public static string AttestCosts_OutOfBudget {
+        internal static string AttestCosts_OutOfBudget {
             get {
                 return ResourceManager.GetString("AttestCosts_OutOfBudget", resourceCulture);
             }
@@ -407,7 +405,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to There are not enough funds to approve this. You can attest up to {0} {1:N2} more in this budget for the year {2}..
         /// </summary>
-        public static string AttestCosts_OutOfBudgetPrecise {
+        internal static string AttestCosts_OutOfBudgetPrecise {
             get {
                 return ResourceManager.GetString("AttestCosts_OutOfBudgetPrecise", resourceCulture);
             }
@@ -416,7 +414,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;OVERDRAFT BUDGET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;There are not enough funds remaining in the budget to approve this expense. Normally, it would be blocked from approval. However, you may override this limitation and attest anyway, thereby causing the account to overdraft its budget.&lt;br/&gt;&lt;br/&gt;Do you want to approve the expense, thereby forcing an overdraft, or do you want to cancel, staying on budget instead?&lt;br/&gt;&lt;br/&gt;.
         /// </summary>
-        public static string AttestCosts_OverdraftConfirm {
+        internal static string AttestCosts_OverdraftConfirm {
             get {
                 return ResourceManager.GetString("AttestCosts_OverdraftConfirm", resourceCulture);
             }
@@ -425,7 +423,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Stay on Budget.
         /// </summary>
-        public static string AttestCosts_OverdraftConfirmNo {
+        internal static string AttestCosts_OverdraftConfirmNo {
             get {
                 return ResourceManager.GetString("AttestCosts_OverdraftConfirmNo", resourceCulture);
             }
@@ -434,7 +432,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Force Overdraft.
         /// </summary>
-        public static string AttestCosts_OverdraftConfirmYes {
+        internal static string AttestCosts_OverdraftConfirmYes {
             get {
                 return ResourceManager.GetString("AttestCosts_OverdraftConfirmYes", resourceCulture);
             }
@@ -443,7 +441,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to BUDGET WAS OVERDRAFTED..
         /// </summary>
-        public static string AttestCosts_Overdrafted {
+        internal static string AttestCosts_Overdrafted {
             get {
                 return ResourceManager.GetString("AttestCosts_Overdrafted", resourceCulture);
             }
@@ -452,7 +450,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Approve Costs.
         /// </summary>
-        public static string AttestCosts_PageTitle {
+        internal static string AttestCosts_PageTitle {
             get {
                 return ResourceManager.GetString("AttestCosts_PageTitle", resourceCulture);
             }
@@ -461,7 +459,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Conference #{0:N0}, arranged by {1}, has been approved for {3:N2}..
         /// </summary>
-        public static string AttestCosts_ParleyAttested {
+        internal static string AttestCosts_ParleyAttested {
             get {
                 return ResourceManager.GetString("AttestCosts_ParleyAttested", resourceCulture);
             }
@@ -470,7 +468,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Approval for Conference #{0:N0} by {1} was RETRACTED.  It will not be greenlighted unless approved again..
         /// </summary>
-        public static string AttestCosts_ParleyDeattested {
+        internal static string AttestCosts_ParleyDeattested {
             get {
                 return ResourceManager.GetString("AttestCosts_ParleyDeattested", resourceCulture);
             }
@@ -479,7 +477,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Salary #{0:N0} for {1} was attested for {3:N2}..
         /// </summary>
-        public static string AttestCosts_SalaryAttested {
+        internal static string AttestCosts_SalaryAttested {
             get {
                 return ResourceManager.GetString("AttestCosts_SalaryAttested", resourceCulture);
             }
@@ -488,7 +486,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Approval for Salary #{0:N0} for {1} was RETRACTED. It will not be paid out unless approved again..
         /// </summary>
-        public static string AttestCosts_SalaryDeattested {
+        internal static string AttestCosts_SalaryDeattested {
             get {
                 return ResourceManager.GetString("AttestCosts_SalaryDeattested", resourceCulture);
             }
@@ -497,7 +495,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;strong&gt;WARNING: BUDGET NOT SET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The cost you&apos;re approving belongs to an account in the ledger that lacks owner and doesn&apos;t have a defined budget allowance for the year. Consider visiting the Chart of Accounts and allocating budgets for the expected revenue and expenses.&lt;br/&gt;&lt;br/&gt;This message will only display once per visit to Cost Approvals.&lt;br/&gt;.
         /// </summary>
-        public static string AttestCosts_Warn_UninitializedBudget {
+        internal static string AttestCosts_Warn_UninitializedBudget {
             get {
                 return ResourceManager.GetString("AttestCosts_Warn_UninitializedBudget", resourceCulture);
             }
@@ -506,7 +504,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Invoice amount total (in {0}).
         /// </summary>
-        public static string CreateInboundInvoice_Amount {
+        internal static string CreateInboundInvoice_Amount {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_Amount", resourceCulture);
             }
@@ -515,7 +513,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to VAT part of total ({0}).
         /// </summary>
-        public static string CreateInboundInvoice_AmountVat {
+        internal static string CreateInboundInvoice_AmountVat {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_AmountVat", resourceCulture);
             }
@@ -524,7 +522,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
-        public static string CreateInboundInvoice_ButtonCreate {
+        internal static string CreateInboundInvoice_ButtonCreate {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_ButtonCreate", resourceCulture);
             }
@@ -533,7 +531,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
-        public static string CreateInboundInvoice_Description {
+        internal static string CreateInboundInvoice_Description {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_Description", resourceCulture);
             }
@@ -542,7 +540,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Invoice Image.
         /// </summary>
-        public static string CreateInboundInvoice_HeaderInvoiceImage {
+        internal static string CreateInboundInvoice_HeaderInvoiceImage {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_HeaderInvoiceImage", resourceCulture);
             }
@@ -551,7 +549,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Payment Details.
         /// </summary>
-        public static string CreateInboundInvoice_HeaderPaymentDetails {
+        internal static string CreateInboundInvoice_HeaderPaymentDetails {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_HeaderPaymentDetails", resourceCulture);
             }
@@ -560,7 +558,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This is where you file invoices received at your organization (&quot;Accounts Payable&quot;). Enter the supplier name, amount, due date, the invoice reference, and upload an image of the received invoice. Also, select a budget. The budget owner needs to attest, as usual. (Future roadmapped expansions to this mechanism include purchase orders and supplier lists.).
         /// </summary>
-        public static string CreateInboundInvoice_Info {
+        internal static string CreateInboundInvoice_Info {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_Info", resourceCulture);
             }
@@ -569,7 +567,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Received Inbound Invoice.
         /// </summary>
-        public static string CreateInboundInvoice_PageTitle {
+        internal static string CreateInboundInvoice_PageTitle {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_PageTitle", resourceCulture);
             }
@@ -578,7 +576,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Invoice reference.
         /// </summary>
-        public static string CreateInboundInvoice_Reference {
+        internal static string CreateInboundInvoice_Reference {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_Reference", resourceCulture);
             }
@@ -587,7 +585,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to OCR / Automatic.
         /// </summary>
-        public static string CreateInboundInvoice_ReferenceAutomaticOcr {
+        internal static string CreateInboundInvoice_ReferenceAutomaticOcr {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_ReferenceAutomaticOcr", resourceCulture);
             }
@@ -596,7 +594,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Manual.
         /// </summary>
-        public static string CreateInboundInvoice_ReferenceManual {
+        internal static string CreateInboundInvoice_ReferenceManual {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_ReferenceManual", resourceCulture);
             }
@@ -605,7 +603,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Inbound Invoice #{0:N0} filed..
         /// </summary>
-        public static string CreateInboundInvoice_SuccessMessage {
+        internal static string CreateInboundInvoice_SuccessMessage {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_SuccessMessage", resourceCulture);
             }
@@ -614,7 +612,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Account.
         /// </summary>
-        public static string CreateInboundInvoice_SupplierAccount {
+        internal static string CreateInboundInvoice_SupplierAccount {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_SupplierAccount", resourceCulture);
             }
@@ -623,7 +621,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Upload image file.
         /// </summary>
-        public static string CreateInboundInvoice_UploadInvoiceImage {
+        internal static string CreateInboundInvoice_UploadInvoiceImage {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_UploadInvoiceImage", resourceCulture);
             }
@@ -632,7 +630,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please enter the supplier&apos;s bank account or equivalent..
         /// </summary>
-        public static string CreateInboundInvoice_ValidationError_Account {
+        internal static string CreateInboundInvoice_ValidationError_Account {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_ValidationError_Account", resourceCulture);
             }
@@ -641,7 +639,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please enter the amount of money (in {0}) the invoice requests..
         /// </summary>
-        public static string CreateInboundInvoice_ValidationError_Amount {
+        internal static string CreateInboundInvoice_ValidationError_Amount {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_ValidationError_Amount", resourceCulture);
             }
@@ -650,7 +648,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please specify a budget to charge..
         /// </summary>
-        public static string CreateInboundInvoice_ValidationError_Budget {
+        internal static string CreateInboundInvoice_ValidationError_Budget {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_ValidationError_Budget", resourceCulture);
             }
@@ -659,7 +657,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please upload one or more documents of the original invoice..
         /// </summary>
-        public static string CreateInboundInvoice_ValidationError_Documents {
+        internal static string CreateInboundInvoice_ValidationError_Documents {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_ValidationError_Documents", resourceCulture);
             }
@@ -668,7 +666,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please select an option..
         /// </summary>
-        public static string CreateInboundInvoice_ValidationError_MissingTag {
+        internal static string CreateInboundInvoice_ValidationError_MissingTag {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_ValidationError_MissingTag", resourceCulture);
             }
@@ -677,7 +675,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please describe what this purchase was..
         /// </summary>
-        public static string CreateInboundInvoice_ValidationError_Purpose {
+        internal static string CreateInboundInvoice_ValidationError_Purpose {
             get {
                 return ResourceManager.GetString("CreateInboundInvoice_ValidationError_Purpose", resourceCulture);
             }
@@ -686,7 +684,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Creating Outbound Invoice.
         /// </summary>
-        public static string CreateOutboundInvoice_BoxTitle {
+        internal static string CreateOutboundInvoice_BoxTitle {
             get {
                 return ResourceManager.GetString("CreateOutboundInvoice_BoxTitle", resourceCulture);
             }
@@ -695,7 +693,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
-        public static string CreateOutboundInvoice_ButtonCreate {
+        internal static string CreateOutboundInvoice_ButtonCreate {
             get {
                 return ResourceManager.GetString("CreateOutboundInvoice_ButtonCreate", resourceCulture);
             }
@@ -704,7 +702,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Creating Outbound Invoice.
         /// </summary>
-        public static string CreateOutboundInvoice_PageTitle {
+        internal static string CreateOutboundInvoice_PageTitle {
             get {
                 return ResourceManager.GetString("CreateOutboundInvoice_PageTitle", resourceCulture);
             }
@@ -713,7 +711,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Outbound Invoice #{0:N0} filed..
         /// </summary>
-        public static string CreateOutboundInvoice_SuccessMessage {
+        internal static string CreateOutboundInvoice_SuccessMessage {
             get {
                 return ResourceManager.GetString("CreateOutboundInvoice_SuccessMessage", resourceCulture);
             }
@@ -722,7 +720,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This is a QR code for donations to {0}. Read it from your phone&apos;s bitcoin wallet to make a donation, or donate from your computer directly to [{1}] (that&apos;s a Bitcoin Cash address)..
         /// </summary>
-        public static string Donate_Explain {
+        internal static string Donate_Explain {
             get {
                 return ResourceManager.GetString("Donate_Explain", resourceCulture);
             }
@@ -731,7 +729,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Received {0} {1:N2} ({2:N0} microcoins or &quot;bits&quot;). Thank you!.
         /// </summary>
-        public static string Donate_FundsReceived {
+        internal static string Donate_FundsReceived {
             get {
                 return ResourceManager.GetString("Donate_FundsReceived", resourceCulture);
             }
@@ -740,7 +738,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Funds Received ({0}).
         /// </summary>
-        public static string Donate_FundsReceivedLabel {
+        internal static string Donate_FundsReceivedLabel {
             get {
                 return ResourceManager.GetString("Donate_FundsReceivedLabel", resourceCulture);
             }
@@ -749,7 +747,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Received {0} microcoins (&quot;bits&quot;). Thank you!.
         /// </summary>
-        public static string Donate_FundsReceivedNative {
+        internal static string Donate_FundsReceivedNative {
             get {
                 return ResourceManager.GetString("Donate_FundsReceivedNative", resourceCulture);
             }
@@ -758,7 +756,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to If you want to donate to the organization, your can do so here..
         /// </summary>
-        public static string Donate_Info {
+        internal static string Donate_Info {
             get {
                 return ResourceManager.GetString("Donate_Info", resourceCulture);
             }
@@ -767,7 +765,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Donate.
         /// </summary>
-        public static string Donate_PageTitle {
+        internal static string Donate_PageTitle {
             get {
                 return ResourceManager.GetString("Donate_PageTitle", resourceCulture);
             }
@@ -776,7 +774,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Waiting for transaction....
         /// </summary>
-        public static string Donate_StatusInitial {
+        internal static string Donate_StatusInitial {
             get {
                 return ResourceManager.GetString("Donate_StatusInitial", resourceCulture);
             }
@@ -785,7 +783,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Transaction detected, verifying....
         /// </summary>
-        public static string Donate_TransactionDetected {
+        internal static string Donate_TransactionDetected {
             get {
                 return ResourceManager.GetString("Donate_TransactionDetected", resourceCulture);
             }
@@ -794,7 +792,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Donation to {0}.
         /// </summary>
-        public static string Donate_TxLabel {
+        internal static string Donate_TxLabel {
             get {
                 return ResourceManager.GetString("Donate_TxLabel", resourceCulture);
             }
@@ -803,7 +801,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Loan to {0}.
         /// </summary>
-        public static string Donate_TxLabel_Loan {
+        internal static string Donate_TxLabel_Loan {
             get {
                 return ResourceManager.GetString("Donate_TxLabel_Loan", resourceCulture);
             }
@@ -812,7 +810,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Expense claim amount (in {0}).
         /// </summary>
-        public static string FileExpenseClaim_Amount {
+        internal static string FileExpenseClaim_Amount {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Amount", resourceCulture);
             }
@@ -821,7 +819,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Account Number.
         /// </summary>
-        public static string FileExpenseClaim_BankAccount {
+        internal static string FileExpenseClaim_BankAccount {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_BankAccount", resourceCulture);
             }
@@ -830,7 +828,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Clearing Number.
         /// </summary>
-        public static string FileExpenseClaim_BankClearing {
+        internal static string FileExpenseClaim_BankClearing {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_BankClearing", resourceCulture);
             }
@@ -839,7 +837,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Bank Name.
         /// </summary>
-        public static string FileExpenseClaim_BankName {
+        internal static string FileExpenseClaim_BankName {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_BankName", resourceCulture);
             }
@@ -848,7 +846,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Budget.
         /// </summary>
-        public static string FileExpenseClaim_Budget {
+        internal static string FileExpenseClaim_Budget {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Budget", resourceCulture);
             }
@@ -857,7 +855,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Request.
         /// </summary>
-        public static string FileExpenseClaim_ButtonRequest {
+        internal static string FileExpenseClaim_ButtonRequest {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_ButtonRequest", resourceCulture);
             }
@@ -866,16 +864,25 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Cost Type.
         /// </summary>
-        public static string FileExpenseClaim_CostType {
+        internal static string FileExpenseClaim_CostType {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_CostType", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date of Expense.
+        /// </summary>
+        internal static string FileExpenseClaim_DateIncurred {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_DateIncurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
-        public static string FileExpenseClaim_Description {
+        internal static string FileExpenseClaim_Description {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Description", resourceCulture);
             }
@@ -884,7 +891,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Upload Expensify CSV.
         /// </summary>
-        public static string FileExpenseClaim_Expensify_CsvUploadDescription {
+        internal static string FileExpenseClaim_Expensify_CsvUploadDescription {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_CsvUploadDescription", resourceCulture);
             }
@@ -893,7 +900,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;&lt;strong&gt;ERROR: Unable to parse the Expensify CSV.&lt;/strong&gt; If this is a CSV file from Expensify, then Swarmops needs the columns &quot;Timestamp&quot;, &quot;Amount&quot;, &quot;Merchant&quot;, &quot;Comment&quot;, &quot;Category&quot;, &quot;MCC&quot;, &quot;Original Currency&quot;, and &quot;Original Amount&quot; to be present in the file. If the organization reports VAT, then a further column called &quot;VAT&quot; is required.&lt;/p&gt;&lt;p&gt;Unable to proceed with this file.&lt;/p&gt;.
         /// </summary>
-        public static string FileExpenseClaim_Expensify_Error_BadFile {
+        internal static string FileExpenseClaim_Expensify_Error_BadFile {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_Error_BadFile", resourceCulture);
             }
@@ -902,7 +909,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;&lt;strong&gt;ERROR: The Expensify CSV file is missing required data fields.&lt;/strong&gt; The file appears to be missing at least one of the required fields of Expensify&apos;s default CSV profile. Refer to the technical documentation and compare with the file you tried to upload. (It is a more probable cause of error, of course, that you tried to upload the completely wrong file &amp;ndash; maybe a photograph instead of an Expensify CSV &amp;ndash; and that this is the cause for the missing expected data.)&lt;/p&gt;&lt;p&gt;Unable to pro [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string FileExpenseClaim_Expensify_Error_InvalidCsv {
+        internal static string FileExpenseClaim_Expensify_Error_InvalidCsv {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_Error_InvalidCsv", resourceCulture);
             }
@@ -911,7 +918,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;&lt;strong&gt;ERROR: The Expensify CSV file doesn&apos;t have a VAT field.&lt;/strong&gt; Since this organization reports Value Added Tax (VAT) to authorities, this must be specified on a per-expense basis. Please enable VAT in Expensify and create a new CSV export profile that exports this under the column header &quot;VAT&quot;. If your team has already created such a CSV profile, you may just need to select it when exporting to CSV.&lt;/p&gt;&lt;p&gt;Unable to process this file.&lt;/p&gt;.
         /// </summary>
-        public static string FileExpenseClaim_Expensify_Error_NeedsVat {
+        internal static string FileExpenseClaim_Expensify_Error_NeedsVat {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_Error_NeedsVat", resourceCulture);
             }
@@ -920,7 +927,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to If you have many expense reports, you can gather them with Expensify and upload an Expensify CSV report here (which you obtain from at Expensify under Reports, Export, as CSV). Swarmops will use Expensify to fetch all the individual receipts and log them as separate expense claims for proper accounting..
         /// </summary>
-        public static string FileExpenseClaim_Expensify_InstructionsBasic {
+        internal static string FileExpenseClaim_Expensify_InstructionsBasic {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_InstructionsBasic", resourceCulture);
             }
@@ -929,7 +936,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to In order for this to work, since {0} reports VAT to the tax authorities, you&apos;ll need to modify the default Expensify CSV profile to include the VAT, which the default doesn&apos;t. Expensify&apos;s help pages has more on how to do this and if you&apos;re using Expensify on a team basis, your Expensify policy should already have a VAT-enabled CSV export profile..
         /// </summary>
-        public static string FileExpenseClaim_Expensify_InstructionsNeedVat {
+        internal static string FileExpenseClaim_Expensify_InstructionsNeedVat {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_InstructionsNeedVat", resourceCulture);
             }
@@ -938,7 +945,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Based on the organization&apos;s settings, the &quot;Default CSV&quot; export profile in Expensify should be sufficient for Swarmops..
         /// </summary>
-        public static string FileExpenseClaim_Expensify_InstructionsNothingAdvanced {
+        internal static string FileExpenseClaim_Expensify_InstructionsNothingAdvanced {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_InstructionsNothingAdvanced", resourceCulture);
             }
@@ -947,7 +954,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to All expense claims need a budget before submitting..
         /// </summary>
-        public static string FileExpenseClaim_Expensify_NeedBudgetsForAll {
+        internal static string FileExpenseClaim_Expensify_NeedBudgetsForAll {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_NeedBudgetsForAll", resourceCulture);
             }
@@ -956,7 +963,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to No Expensify records to submit.
         /// </summary>
-        public static string FileExpenseClaim_Expensify_NoRecordsLeft {
+        internal static string FileExpenseClaim_Expensify_NoRecordsLeft {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_NoRecordsLeft", resourceCulture);
             }
@@ -965,7 +972,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Expensify report&apos;s currency is.
         /// </summary>
-        public static string FileExpenseClaim_Expensify_ReportCurrency {
+        internal static string FileExpenseClaim_Expensify_ReportCurrency {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_ReportCurrency", resourceCulture);
             }
@@ -974,7 +981,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Ready to submit one claim.
         /// </summary>
-        public static string FileExpenseClaim_Expensify_SubmitRecordSingle {
+        internal static string FileExpenseClaim_Expensify_SubmitRecordSingle {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_SubmitRecordSingle", resourceCulture);
             }
@@ -983,7 +990,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Ready to submit {0} claims.
         /// </summary>
-        public static string FileExpenseClaim_Expensify_SubmitRecordsSeveral {
+        internal static string FileExpenseClaim_Expensify_SubmitRecordsSeveral {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_SubmitRecordsSeveral", resourceCulture);
             }
@@ -992,7 +999,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Claim successfully filed..
         /// </summary>
-        public static string FileExpenseClaim_Expensify_SuccessOne {
+        internal static string FileExpenseClaim_Expensify_SuccessOne {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_SuccessOne", resourceCulture);
             }
@@ -1001,7 +1008,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Successfully filed {0} claims..
         /// </summary>
-        public static string FileExpenseClaim_Expensify_SuccessSeveral {
+        internal static string FileExpenseClaim_Expensify_SuccessSeveral {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_SuccessSeveral", resourceCulture);
             }
@@ -1010,7 +1017,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Upload Another Expensify CSV File?.
         /// </summary>
-        public static string FileExpenseClaim_Expensify_UploadAnother {
+        internal static string FileExpenseClaim_Expensify_UploadAnother {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Expensify_UploadAnother", resourceCulture);
             }
@@ -1019,7 +1026,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to myself.
         /// </summary>
-        public static string FileExpenseClaim_ForWhom_DefaultMyself {
+        internal static string FileExpenseClaim_ForWhom_DefaultMyself {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_ForWhom_DefaultMyself", resourceCulture);
             }
@@ -1028,7 +1035,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This is an expense claim from whom?.
         /// </summary>
-        public static string FileExpenseClaim_ForWhom_Prompt {
+        internal static string FileExpenseClaim_ForWhom_Prompt {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_ForWhom_Prompt", resourceCulture);
             }
@@ -1037,7 +1044,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Your Bank Details.
         /// </summary>
-        public static string FileExpenseClaim_HeaderBankDetails {
+        internal static string FileExpenseClaim_HeaderBankDetails {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_HeaderBankDetails", resourceCulture);
             }
@@ -1046,7 +1053,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Receipt Images.
         /// </summary>
-        public static string FileExpenseClaim_HeaderReceiptImages {
+        internal static string FileExpenseClaim_HeaderReceiptImages {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_HeaderReceiptImages", resourceCulture);
             }
@@ -1055,7 +1062,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to If you have made a purchase on behalf of the organization using your private funds, you will likely want reimbursement for that by filing an &lt;em&gt;expense claim&lt;/em&gt;. You do that here by uploading the receipts and selecting the budget they should be charged to. If you have previously received a cash advance for this purchase, this is where you clear the organization&apos;s loan to you by submitting receipts..
         /// </summary>
-        public static string FileExpenseClaim_Info {
+        internal static string FileExpenseClaim_Info {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Info", resourceCulture);
             }
@@ -1064,7 +1071,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Request Money Back For Expense.
         /// </summary>
-        public static string FileExpenseClaim_PageTitle {
+        internal static string FileExpenseClaim_PageTitle {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_PageTitle", resourceCulture);
             }
@@ -1073,7 +1080,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to An expense claim has been successfully filed for {0} {1:N2} against the budget of {2}. The receipts will need to be validated and the claim will need to be attested by the budget owner..
         /// </summary>
-        public static string FileExpenseClaim_SuccessMessagePartOne {
+        internal static string FileExpenseClaim_SuccessMessagePartOne {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_SuccessMessagePartOne", resourceCulture);
             }
@@ -1082,7 +1089,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to As soon as this has happened, the funds will proceed to payout to your indicated account..
         /// </summary>
-        public static string FileExpenseClaim_SuccessMessagePartTwo {
+        internal static string FileExpenseClaim_SuccessMessagePartTwo {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_SuccessMessagePartTwo", resourceCulture);
             }
@@ -1091,7 +1098,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to As this is your own budget, attestation is already complete. Only validation is necessary..
         /// </summary>
-        public static string FileExpenseClaim_SuccessMessagePartTwoOwnBudget {
+        internal static string FileExpenseClaim_SuccessMessagePartTwoOwnBudget {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_SuccessMessagePartTwoOwnBudget", resourceCulture);
             }
@@ -1100,7 +1107,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Upload Expensify Report For Reimbursement.
         /// </summary>
-        public static string FileExpenseClaim_Title_Expensify {
+        internal static string FileExpenseClaim_Title_Expensify {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Title_Expensify", resourceCulture);
             }
@@ -1109,7 +1116,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Upload Receipt Images.
         /// </summary>
-        public static string FileExpenseClaim_UploadRecieptImages {
+        internal static string FileExpenseClaim_UploadRecieptImages {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_UploadRecieptImages", resourceCulture);
             }
@@ -1118,7 +1125,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please enter the amount of money (in {0}) that you are claiming..
         /// </summary>
-        public static string FileExpenseClaim_ValidationError_Amount {
+        internal static string FileExpenseClaim_ValidationError_Amount {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_ValidationError_Amount", resourceCulture);
             }
@@ -1127,7 +1134,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please upload one or more receipt images supporting the expense claim..
         /// </summary>
-        public static string FileExpenseClaim_ValidationError_Documents {
+        internal static string FileExpenseClaim_ValidationError_Documents {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_ValidationError_Documents", resourceCulture);
             }
@@ -1136,7 +1143,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please select an option as indicated..
         /// </summary>
-        public static string FileExpenseClaim_ValidationError_MissingTag {
+        internal static string FileExpenseClaim_ValidationError_MissingTag {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_ValidationError_MissingTag", resourceCulture);
             }
@@ -1145,7 +1152,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please describe what this purchase was..
         /// </summary>
-        public static string FileExpenseClaim_ValidationError_Purpose {
+        internal static string FileExpenseClaim_ValidationError_Purpose {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_ValidationError_Purpose", resourceCulture);
             }
@@ -1154,7 +1161,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to VAT of the total ({0}).
         /// </summary>
-        public static string FileExpenseClaim_Vat {
+        internal static string FileExpenseClaim_Vat {
             get {
                 return ResourceManager.GetString("FileExpenseClaim_Vat", resourceCulture);
             }
@@ -1163,7 +1170,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Listing Inbound Invoices.
         /// </summary>
-        public static string ListInboundInvoices_Header {
+        internal static string ListInboundInvoices_Header {
             get {
                 return ResourceManager.GetString("ListInboundInvoices_Header", resourceCulture);
             }
@@ -1172,7 +1179,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Invoice sender.
         /// </summary>
-        public static string ListInboundInvoices_Header_Sender {
+        internal static string ListInboundInvoices_Header_Sender {
             get {
                 return ResourceManager.GetString("ListInboundInvoices_Header_Sender", resourceCulture);
             }
@@ -1181,7 +1188,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This lists the latest 100 invoices, sorted by their due date with newest first..
         /// </summary>
-        public static string ListInboundInvoices_Info {
+        internal static string ListInboundInvoices_Info {
             get {
                 return ResourceManager.GetString("ListInboundInvoices_Info", resourceCulture);
             }
@@ -1190,7 +1197,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Inbound Invoices.
         /// </summary>
-        public static string ListInboundInvoices_Title {
+        internal static string ListInboundInvoices_Title {
             get {
                 return ResourceManager.GetString("ListInboundInvoices_Title", resourceCulture);
             }
@@ -1199,7 +1206,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Sent.
         /// </summary>
-        public static string ListOutboundInvoices_CreatedDateTime {
+        internal static string ListOutboundInvoices_CreatedDateTime {
             get {
                 return ResourceManager.GetString("ListOutboundInvoices_CreatedDateTime", resourceCulture);
             }
@@ -1208,7 +1215,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Customer.
         /// </summary>
-        public static string ListOutboundInvoices_CustomerReceivingInvoice {
+        internal static string ListOutboundInvoices_CustomerReceivingInvoice {
             get {
                 return ResourceManager.GetString("ListOutboundInvoices_CustomerReceivingInvoice", resourceCulture);
             }
@@ -1217,7 +1224,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Listing Outbound Invoices.
         /// </summary>
-        public static string ListOutboundInvoices_Header {
+        internal static string ListOutboundInvoices_Header {
             get {
                 return ResourceManager.GetString("ListOutboundInvoices_Header", resourceCulture);
             }
@@ -1226,7 +1233,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This lists the 100 most recent outbound invoices, sorted by when they were created, newest first..
         /// </summary>
-        public static string ListOutboundInvoices_Info {
+        internal static string ListOutboundInvoices_Info {
             get {
                 return ResourceManager.GetString("ListOutboundInvoices_Info", resourceCulture);
             }
@@ -1235,7 +1242,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Amount Total.
         /// </summary>
-        public static string ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes {
+        internal static string ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes {
             get {
                 return ResourceManager.GetString("ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes", resourceCulture);
             }
@@ -1244,7 +1251,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Due Date.
         /// </summary>
-        public static string ListOutboundInvoices_PaymentExpectedByDate {
+        internal static string ListOutboundInvoices_PaymentExpectedByDate {
             get {
                 return ResourceManager.GetString("ListOutboundInvoices_PaymentExpectedByDate", resourceCulture);
             }
@@ -1253,7 +1260,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to List Outbound Invoices.
         /// </summary>
-        public static string ListOutboundInvoices_Title {
+        internal static string ListOutboundInvoices_Title {
             get {
                 return ResourceManager.GetString("ListOutboundInvoices_Title", resourceCulture);
             }
@@ -1262,7 +1269,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to ...and this.
         /// </summary>
-        public static string PayOutMoney_AutomationFieldNext {
+        internal static string PayOutMoney_AutomationFieldNext {
             get {
                 return ResourceManager.GetString("PayOutMoney_AutomationFieldNext", resourceCulture);
             }
@@ -1271,7 +1278,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Scan this.
         /// </summary>
-        public static string PayOutMoney_AutomationFieldStart {
+        internal static string PayOutMoney_AutomationFieldStart {
             get {
                 return ResourceManager.GetString("PayOutMoney_AutomationFieldStart", resourceCulture);
             }
@@ -1280,7 +1287,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
-        public static string PayOutMoney_GridHeader_Amount {
+        internal static string PayOutMoney_GridHeader_Amount {
             get {
                 return ResourceManager.GetString("PayOutMoney_GridHeader_Amount", resourceCulture);
             }
@@ -1289,7 +1296,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Currency, Method.
         /// </summary>
-        public static string PayOutMoney_GridHeader_CurrencyMethod {
+        internal static string PayOutMoney_GridHeader_CurrencyMethod {
             get {
                 return ResourceManager.GetString("PayOutMoney_GridHeader_CurrencyMethod", resourceCulture);
             }
@@ -1298,7 +1305,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Paid.
         /// </summary>
-        public static string PayOutMoney_GridHeader_PaidOut {
+        internal static string PayOutMoney_GridHeader_PaidOut {
             get {
                 return ResourceManager.GetString("PayOutMoney_GridHeader_PaidOut", resourceCulture);
             }
@@ -1307,7 +1314,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Pay.
         /// </summary>
-        public static string PayOutMoney_GridHeader_PayThis {
+        internal static string PayOutMoney_GridHeader_PayThis {
             get {
                 return ResourceManager.GetString("PayOutMoney_GridHeader_PayThis", resourceCulture);
             }
@@ -1316,7 +1323,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Recipient.
         /// </summary>
-        public static string PayOutMoney_GridHeader_Recipient {
+        internal static string PayOutMoney_GridHeader_Recipient {
             get {
                 return ResourceManager.GetString("PayOutMoney_GridHeader_Recipient", resourceCulture);
             }
@@ -1325,7 +1332,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Reference.
         /// </summary>
-        public static string PayOutMoney_GridHeader_Reference {
+        internal static string PayOutMoney_GridHeader_Reference {
             get {
                 return ResourceManager.GetString("PayOutMoney_GridHeader_Reference", resourceCulture);
             }
@@ -1334,7 +1341,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Costs Ready For Payout.
         /// </summary>
-        public static string PayOutMoney_Header {
+        internal static string PayOutMoney_Header {
             get {
                 return ResourceManager.GetString("PayOutMoney_Header", resourceCulture);
             }
@@ -1343,7 +1350,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to These are the various forms of costs to the organization that have passed all the hurdles for payout. They are ready to be paid out to the recipient. Here is where you check them off as being paid out (probably while having your bank open in another window)..
         /// </summary>
-        public static string PayOutMoney_Info {
+        internal static string PayOutMoney_Info {
             get {
                 return ResourceManager.GetString("PayOutMoney_Info", resourceCulture);
             }
@@ -1352,7 +1359,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This is Paid.
         /// </summary>
-        public static string PayOutMoney_Modal_ConfirmPaid {
+        internal static string PayOutMoney_Modal_ConfirmPaid {
             get {
                 return ResourceManager.GetString("PayOutMoney_Modal_ConfirmPaid", resourceCulture);
             }
@@ -1361,7 +1368,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Currency and Amount.
         /// </summary>
-        public static string PayOutMoney_Modal_CurrencyAmount {
+        internal static string PayOutMoney_Modal_CurrencyAmount {
             get {
                 return ResourceManager.GetString("PayOutMoney_Modal_CurrencyAmount", resourceCulture);
             }
@@ -1370,7 +1377,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Execute This Payment Manually Now.
         /// </summary>
-        public static string PayOutMoney_Modal_Header {
+        internal static string PayOutMoney_Modal_Header {
             get {
                 return ResourceManager.GetString("PayOutMoney_Modal_Header", resourceCulture);
             }
@@ -1379,7 +1386,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Are you scanning this payment?.
         /// </summary>
-        public static string PayOutMoney_Modal_LabelOcr1 {
+        internal static string PayOutMoney_Modal_LabelOcr1 {
             get {
                 return ResourceManager.GetString("PayOutMoney_Modal_LabelOcr1", resourceCulture);
             }
@@ -1388,7 +1395,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Show in machine-readable format.
         /// </summary>
-        public static string PayOutMoney_Modal_LabelOcr2 {
+        internal static string PayOutMoney_Modal_LabelOcr2 {
             get {
                 return ResourceManager.GetString("PayOutMoney_Modal_LabelOcr2", resourceCulture);
             }
@@ -1397,7 +1404,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Transfer Method.
         /// </summary>
-        public static string PayOutMoney_Modal_TransferMethod {
+        internal static string PayOutMoney_Modal_TransferMethod {
             get {
                 return ResourceManager.GetString("PayOutMoney_Modal_TransferMethod", resourceCulture);
             }
@@ -1406,7 +1413,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Show OCR for mobile apps.
         /// </summary>
-        public static string PayoutMoney_OptionShowOcr {
+        internal static string PayoutMoney_OptionShowOcr {
             get {
                 return ResourceManager.GetString("PayoutMoney_OptionShowOcr", resourceCulture);
             }
@@ -1415,7 +1422,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Show open payouts ({0:N0}).
         /// </summary>
-        public static string PayOutMoney_OptionShowOpen {
+        internal static string PayOutMoney_OptionShowOpen {
             get {
                 return ResourceManager.GetString("PayOutMoney_OptionShowOpen", resourceCulture);
             }
@@ -1424,7 +1431,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Pay Out Money.
         /// </summary>
-        public static string PayOutMoney_PageTitle {
+        internal static string PayOutMoney_PageTitle {
             get {
                 return ResourceManager.GetString("PayOutMoney_PageTitle", resourceCulture);
             }
@@ -1433,7 +1440,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Payment is late.
         /// </summary>
-        public static string PayOutMoney_PaymentLate {
+        internal static string PayOutMoney_PaymentLate {
             get {
                 return ResourceManager.GetString("PayOutMoney_PaymentLate", resourceCulture);
             }
@@ -1442,7 +1449,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Cannot undo payout #{0}: it has already settled or closed..
         /// </summary>
-        public static string PayOutMoney_PayoutCannotUndo {
+        internal static string PayOutMoney_PayoutCannotUndo {
             get {
                 return ResourceManager.GetString("PayOutMoney_PayoutCannotUndo", resourceCulture);
             }
@@ -1451,7 +1458,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Payout #{0:N0} to {1} was created..
         /// </summary>
-        public static string PayOutMoney_PayoutCreated {
+        internal static string PayOutMoney_PayoutCreated {
             get {
                 return ResourceManager.GetString("PayOutMoney_PayoutCreated", resourceCulture);
             }
@@ -1460,7 +1467,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Payout #{0:N0} was undone and everything restored..
         /// </summary>
-        public static string PayOutMoney_PayoutUndone {
+        internal static string PayOutMoney_PayoutUndone {
             get {
                 return ResourceManager.GetString("PayOutMoney_PayoutUndone", resourceCulture);
             }
@@ -1469,7 +1476,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Additive Tax.
         /// </summary>
-        public static string PayrollTaxForms_AdditiveTax {
+        internal static string PayrollTaxForms_AdditiveTax {
             get {
                 return ResourceManager.GetString("PayrollTaxForms_AdditiveTax", resourceCulture);
             }
@@ -1478,7 +1485,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Deducted Tax.
         /// </summary>
-        public static string PayrollTaxForms_DeductedTax {
+        internal static string PayrollTaxForms_DeductedTax {
             get {
                 return ResourceManager.GetString("PayrollTaxForms_DeductedTax", resourceCulture);
             }
@@ -1487,7 +1494,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Gross Paycheck.
         /// </summary>
-        public static string PayrollTaxForms_GrossPay {
+        internal static string PayrollTaxForms_GrossPay {
             get {
                 return ResourceManager.GetString("PayrollTaxForms_GrossPay", resourceCulture);
             }
@@ -1496,7 +1503,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to View cheat sheets (completed tax forms) for the organization payroll, which are easy for you to copy to your actual tax forms, or possibly even print as is. Performance and actual forms vary by country and sometimes depend on third-party code and plugins..
         /// </summary>
-        public static string PayrollTaxForms_Info {
+        internal static string PayrollTaxForms_Info {
             get {
                 return ResourceManager.GetString("PayrollTaxForms_Info", resourceCulture);
             }
@@ -1505,7 +1512,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Payroll Tax Forms.
         /// </summary>
-        public static string PayrollTaxForms_PageTitle {
+        internal static string PayrollTaxForms_PageTitle {
             get {
                 return ResourceManager.GetString("PayrollTaxForms_PageTitle", resourceCulture);
             }
@@ -1514,7 +1521,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Monthly Tax Forms For {0} For.
         /// </summary>
-        public static string PayrollTaxForms_TaxFormsHeader {
+        internal static string PayrollTaxForms_TaxFormsHeader {
             get {
                 return ResourceManager.GetString("PayrollTaxForms_TaxFormsHeader", resourceCulture);
             }
@@ -1523,7 +1530,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Total Cost.
         /// </summary>
-        public static string PayrollTaxForms_TotalCost {
+        internal static string PayrollTaxForms_TotalCost {
             get {
                 return ResourceManager.GetString("PayrollTaxForms_TotalCost", resourceCulture);
             }
@@ -1532,7 +1539,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Total Tax.
         /// </summary>
-        public static string PayrollTaxForms_TotalTax {
+        internal static string PayrollTaxForms_TotalTax {
             get {
                 return ResourceManager.GetString("PayrollTaxForms_TotalTax", resourceCulture);
             }
@@ -1541,7 +1548,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Advance amount (in {0}).
         /// </summary>
-        public static string RequestCashAdvance_Amount {
+        internal static string RequestCashAdvance_Amount {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_Amount", resourceCulture);
             }
@@ -1550,7 +1557,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Account Number.
         /// </summary>
-        public static string RequestCashAdvance_BankAccount {
+        internal static string RequestCashAdvance_BankAccount {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_BankAccount", resourceCulture);
             }
@@ -1559,7 +1566,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Clearing Number.
         /// </summary>
-        public static string RequestCashAdvance_BankClearing {
+        internal static string RequestCashAdvance_BankClearing {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_BankClearing", resourceCulture);
             }
@@ -1568,7 +1575,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Bank Name.
         /// </summary>
-        public static string RequestCashAdvance_BankName {
+        internal static string RequestCashAdvance_BankName {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_BankName", resourceCulture);
             }
@@ -1577,7 +1584,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Budget.
         /// </summary>
-        public static string RequestCashAdvance_Budget {
+        internal static string RequestCashAdvance_Budget {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_Budget", resourceCulture);
             }
@@ -1586,7 +1593,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Request.
         /// </summary>
-        public static string RequestCashAdvance_ButtonRequest {
+        internal static string RequestCashAdvance_ButtonRequest {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_ButtonRequest", resourceCulture);
             }
@@ -1595,7 +1602,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Your Bank Details.
         /// </summary>
-        public static string RequestCashAdvance_HeaderBankDetails {
+        internal static string RequestCashAdvance_HeaderBankDetails {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_HeaderBankDetails", resourceCulture);
             }
@@ -1604,7 +1611,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to If you are about to make a purchase on behalf of the organization, but need the money in advance rather than claiming it back afterwards, you can request a cash advance for a specific purpose..
         /// </summary>
-        public static string RequestCashAdvance_Info {
+        internal static string RequestCashAdvance_Info {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_Info", resourceCulture);
             }
@@ -1613,7 +1620,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Request Cash Advance.
         /// </summary>
-        public static string RequestCashAdvance_PageTitle {
+        internal static string RequestCashAdvance_PageTitle {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_PageTitle", resourceCulture);
             }
@@ -1622,7 +1629,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Purpose.
         /// </summary>
-        public static string RequestCashAdvance_Purpose {
+        internal static string RequestCashAdvance_Purpose {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_Purpose", resourceCulture);
             }
@@ -1631,7 +1638,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to A cash advance has been requested for &lt;strong&gt;{0}&lt;/strong&gt;. The requested amount is {2} {3:N2}. Note that this is a &lt;strong&gt;loan&lt;/strong&gt; from the organization until receipts have been presented..
         /// </summary>
-        public static string RequestCashAdvance_SuccessMessagePartOne {
+        internal static string RequestCashAdvance_SuccessMessagePartOne {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_SuccessMessagePartOne", resourceCulture);
             }
@@ -1640,7 +1647,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This needs to be attested by the budget owner and will then proceed to payout..
         /// </summary>
-        public static string RequestCashAdvance_SuccessMessagePartTwo {
+        internal static string RequestCashAdvance_SuccessMessagePartTwo {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_SuccessMessagePartTwo", resourceCulture);
             }
@@ -1649,7 +1656,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to As this is your own budget, this has been automatically attested and has proceeded to payout..
         /// </summary>
-        public static string RequestCashAdvance_SuccessMessagePartTwoOwnBudget {
+        internal static string RequestCashAdvance_SuccessMessagePartTwoOwnBudget {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_SuccessMessagePartTwoOwnBudget", resourceCulture);
             }
@@ -1658,7 +1665,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please enter the amount of money (in {0}) that you&apos;d like to advance..
         /// </summary>
-        public static string RequestCashAdvance_ValidationError_Amount {
+        internal static string RequestCashAdvance_ValidationError_Amount {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_ValidationError_Amount", resourceCulture);
             }
@@ -1667,7 +1674,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please enter your bank account number..
         /// </summary>
-        public static string RequestCashAdvance_ValidationError_BankAccount {
+        internal static string RequestCashAdvance_ValidationError_BankAccount {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_ValidationError_BankAccount", resourceCulture);
             }
@@ -1676,7 +1683,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please enter your bank&apos;s clearing number..
         /// </summary>
-        public static string RequestCashAdvance_ValidationError_BankClearing {
+        internal static string RequestCashAdvance_ValidationError_BankClearing {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_ValidationError_BankClearing", resourceCulture);
             }
@@ -1685,7 +1692,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please enter your bank&apos;s name..
         /// </summary>
-        public static string RequestCashAdvance_ValidationError_BankName {
+        internal static string RequestCashAdvance_ValidationError_BankName {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_ValidationError_BankName", resourceCulture);
             }
@@ -1694,7 +1701,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please select a budget to charge..
         /// </summary>
-        public static string RequestCashAdvance_ValidationError_Budget {
+        internal static string RequestCashAdvance_ValidationError_Budget {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_ValidationError_Budget", resourceCulture);
             }
@@ -1703,7 +1710,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Please state the purpose of the cash advance..
         /// </summary>
-        public static string RequestCashAdvance_ValidationError_Purpose {
+        internal static string RequestCashAdvance_ValidationError_Purpose {
             get {
                 return ResourceManager.GetString("RequestCashAdvance_ValidationError_Purpose", resourceCulture);
             }
@@ -1712,7 +1719,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Receipts awaiting your validation.
         /// </summary>
-        public static string ValidateReceipts_Header_ReceiptsAwaitingValidation {
+        internal static string ValidateReceipts_Header_ReceiptsAwaitingValidation {
             get {
                 return ResourceManager.GetString("ValidateReceipts_Header_ReceiptsAwaitingValidation", resourceCulture);
             }
@@ -1721,7 +1728,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to This is where you inspect and confirm the validity of receipts that accompany expense claims. Check that the amount is correct and that the receipt appears to be for what it is claimed to be for..
         /// </summary>
-        public static string ValidateReceipts_Info {
+        internal static string ValidateReceipts_Info {
             get {
                 return ResourceManager.GetString("ValidateReceipts_Info", resourceCulture);
             }
@@ -1730,7 +1737,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Validate Receipts.
         /// </summary>
-        public static string ValidateReceipts_PageTitle {
+        internal static string ValidateReceipts_PageTitle {
             get {
                 return ResourceManager.GetString("ValidateReceipts_PageTitle", resourceCulture);
             }
@@ -1739,7 +1746,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to Validation for receipts for Expense Claim #{0:N0} for {1} {2:N2} was RETRACTED. The expense claim will not proceed to payout unless re-validated..
         /// </summary>
-        public static string ValidateReceipts_ReceiptsDevalidated {
+        internal static string ValidateReceipts_ReceiptsDevalidated {
             get {
                 return ResourceManager.GetString("ValidateReceipts_ReceiptsDevalidated", resourceCulture);
             }
@@ -1748,7 +1755,7 @@ namespace Resources.Pages {
         /// <summary>
         ///   Looks up a localized string similar to The receipts for Expense Claim #{0:N0} for {1} {2:N2} have been validated..
         /// </summary>
-        public static string ValidateReceipts_ReceiptsValidated {
+        internal static string ValidateReceipts_ReceiptsValidated {
             get {
                 return ResourceManager.GetString("ValidateReceipts_ReceiptsValidated", resourceCulture);
             }
