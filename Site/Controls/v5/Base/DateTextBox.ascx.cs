@@ -2,6 +2,7 @@
 using System.Globalization;
 using Swarmops.Common.Enums;
 using System.Web.UI;
+using Swarmops.Common;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Support;
 
@@ -26,7 +27,18 @@ namespace Swarmops.Frontend.Controls.Base
 
         public DateTime Value
         {
-            get { return DateTime.Parse(this.InterpretedDate.Value, CultureInfo.InvariantCulture); }
+            get
+            {
+                DateTime result;
+                bool success = DateTime.TryParse(this.InterpretedDate.Value, CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeLocal, out result);
+
+                if (success)
+                {
+                    return DateTime.Parse(this.InterpretedDate.Value, CultureInfo.InvariantCulture);
+                }
+
+                return Constants.DateTimeLow;
+            }
             set
             {
                 this.InterpretedDate.Value = Value.ToString(CultureInfo.InvariantCulture);
