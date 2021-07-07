@@ -42,8 +42,8 @@
                 function (data) {
                     console.log(data);
                     if (data.Success) {
-                        $('#<%=this.ClientID%>_TextInput').val(data.PresentedValue);
-                        $('#<%=this.ClientID%>_InterpretedDate').val(data.InterpretedValue);
+                        $('#<%=this.ClientID%>_TextInput').val(data.PresentedDate);
+                        $('#<%=this.ClientID%>_InterpretedDate').val(data.InterpretedDate);
                     } else {
                         $('#<%=this.ClientID%>_TextInput').val('');
                         $('#<%=this.ClientID%>_InterpretedDate').val('');
