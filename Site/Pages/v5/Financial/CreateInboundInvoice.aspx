@@ -147,7 +147,6 @@
     <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
     <div class="data-entry-fields">
         <Swarmops5:DateTextBox runat="server" ID="DateInvoiceIssued"/>
-        <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextInvoiceDate"/></div>
         <div class="stacked-input-control"><asp:TextBox runat="server" ID="TextSupplier" /></div>
         <Swarmops5:CurrencyAmount runat="server" ID="CurrencyAmount" />
         <span class="vatEnabled"><Swarmops5:CurrencyAmount runat="server" ID="CurrencyVat" /></span>
@@ -170,11 +169,11 @@
         <asp:Button ID="ButtonCreate" runat="server" CssClass="button-accent-color suppress-input-focus" OnClientClick="return validateFields();" OnClick="ButtonCreate_Click" Text="Create"/>
     </div>
     <div class="data-entry-labels">
-        <asp:Label runat="server" ID="LabelInvoiceDate"/><br/>
+        <asp:Label runat="server" ID="LabelDateInvoiceIssued"/><br/>
         <asp:Label runat="server" ID="LabelSupplier" /><br/>
         <asp:Label runat="server" ID="LabelAmount" /><br/>
         <span class="vatEnabled"><asp:Label runat="server" ID="LabelVat" /><br/></span>
-        <asp:Label runat="server" ID="LabelDueDate" /><br/>
+        <asp:Label runat="server" ID="LabelDateInvoiceDue" /><br/>
         <asp:Label runat="server" ID="LabelPurpose" /><br/>
         <asp:Label runat="server" ID="LabelBudget" /><br/>
         <asp:Repeater ID="RepeaterTagLabels" runat="server"><ItemTemplate><%# Eval("TagSetLocalizedName") %><br/></ItemTemplate></asp:Repeater>

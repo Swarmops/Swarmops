@@ -58,15 +58,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::Swarmops.Frontend.Controls.Base.DateTextBox DateInvoiceIssued;
         
         /// <summary>
-        /// TextInvoiceDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextInvoiceDate;
-        
-        /// <summary>
         /// TextSupplier control.
         /// </summary>
         /// <remarks>
@@ -166,13 +157,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Button ButtonCreate;
         
         /// <summary>
-        /// LabelInvoiceDate control.
+        /// LabelDateInvoiceIssued control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelInvoiceDate;
+        protected global::System.Web.UI.WebControls.Label LabelDateInvoiceIssued;
         
         /// <summary>
         /// LabelSupplier control.
@@ -202,13 +193,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         protected global::System.Web.UI.WebControls.Label LabelVat;
         
         /// <summary>
-        /// LabelDueDate control.
+        /// LabelDateInvoiceDue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelDueDate;
+        protected global::System.Web.UI.WebControls.Label LabelDateInvoiceDue;
         
         /// <summary>
         /// LabelPurpose control.

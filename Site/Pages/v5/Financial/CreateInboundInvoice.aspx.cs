@@ -113,10 +113,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            this.LabelInvoiceDate.Text = LocalizedStrings.Get(LocDomain.PagesFinancial,
+            this.LabelDateInvoiceIssued.Text = LocalizedStrings.Get(LocDomain.PagesFinancial,
                 "CreateInboundInvoice_InvoiceDate");
             this.LabelSupplier.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_Supplier");
-            this.LabelDueDate.Text = this.LabelInvoiceDate.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_DueDate");
+            this.LabelDateInvoiceDue.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_DueDate");
             this.LabelAmount.Text = string.Format (LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_Amount"),
                 CurrentOrganization.Currency.Code);
             this.LabelVat.Text = string.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_AmountVat"),
@@ -143,8 +143,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             string description = this.TextPurpose.Text;
 
+            DateTime issuedDate = this.DateInvoiceIssued.Value;
             DateTime dueDate = this.DateInvoiceDue.Value;
-
 
             FinancialAccount budget = this.ComboBudgets.SelectedAccount;
 
@@ -165,7 +165,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new InvalidOperationException ("No documents uploaded");
             }
 
-            InboundInvoice invoice = InboundInvoice.Create (CurrentOrganization, dueDate, amountCents, amountVatCents, budget,
+            InboundInvoice invoice = InboundInvoice.Create (CurrentOrganization, issuedDate, dueDate, amountCents, amountVatCents, budget,
                 this.TextSupplier.Text, this.TextPurpose.Text, this.TextAccount.Text, string.Empty,
                 this.TextReference.Text, CurrentUser);
 

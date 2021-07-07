@@ -191,7 +191,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public static InboundInvoice Create (Organization organization, DateTime dueDate, Int64 amountCents,
+        public static InboundInvoice Create (Organization organization, DateTime issuedDate, DateTime dueDate, Int64 amountCents,
             Int64 vatCents, FinancialAccount budget, string supplier, string description, string payToAccount, string ocr,
             string invoiceReference, Person creatingPerson)
         {
@@ -210,7 +210,7 @@ namespace Swarmops.Logic.Financial
             // Create a corresponding financial transaction with rows
 
             FinancialTransaction transaction =
-                FinancialTransaction.Create (organization.Identity, DateTime.UtcNow,
+                FinancialTransaction.Create (organization.Identity, issuedDate == DateTime.Today? DateTime.UtcNow: issuedDate.AddHours(12),
                     "Invoice #" + newInvoice.OrganizationSequenceId + " from " + supplier);
 
             transaction.AddRow (organization.FinancialAccounts.DebtsInboundInvoices, -amountCents, creatingPerson);
