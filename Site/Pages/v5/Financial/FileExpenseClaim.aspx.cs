@@ -164,31 +164,28 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             /* Expensify tab */
 
-            this.LabelExpensifyUploadHeader.Text = Resources.Pages.Financial.FileExpenseClaim_Title_Expensify;
-            this.LabelExpensifyCsv.Text = Resources.Pages.Financial.FileExpenseClaim_Expensify_CsvUploadDescription;
-            this.LabelExpensifyInstructions1.Text =
-                Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsBasic;
-            this.LabelExpensifyProcessingComplete.Text = Resources.Global.Global_FileUploadResults;
-            this.LabelExpensifyUploadAnotherHeader.Text =
-                Resources.Pages.Financial.FileExpenseClaim_Expensify_UploadAnother;
+            this.LabelExpensifyUploadHeader.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Title_Expensify");
+            this.LabelExpensifyCsv.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_CsvUploadDescription");
+            this.LabelExpensifyInstructions1.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_InstructionsBasic");
+            this.LabelExpensifyProcessingComplete.Text = LocalizedStrings.Get(LocDomain.Global, "Global_FileUploadResults");
+            this.LabelExpensifyUploadAnotherHeader.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_UploadAnother");
 
             if (CurrentOrganization.VatEnabled)
             {
                 this.LabelExpensifyInstructions2.Text =
-                    String.Format(Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsNeedVat, CurrentOrganization.Name);
+                    String.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_InstructionsNeedVat"), CurrentOrganization.Name);
             }
             else
             {
-                this.LabelExpensifyInstructions2.Text =
-                    Resources.Pages.Financial.FileExpenseClaim_Expensify_InstructionsNothingAdvanced;
+                this.LabelExpensifyInstructions2.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_InstructionsNothingAdvanced");
             }
 
-            this.LabelExpensifyHeaderAmount.Text = Resources.Global.Financial_Amount;
-            this.LabelExpensifyHeaderVat.Text = Resources.Global.Financial_AmountVat;
-            this.LabelExpensifyHeaderDocs.Text = Resources.Global.Global_Action;
-            this.LabelExpensifyHeaderDescription.Text = Resources.Global.Global_Description;
-            this.LabelExpensifyHeaderBudget.Text = Resources.Global.Financial_Budget;
-            this.LabelExpensifyHeaderDate.Text = Resources.Global.Global_Date;
+            this.LabelExpensifyHeaderAmount.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_Amount");
+            this.LabelExpensifyHeaderVat.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_AmountVat");
+            this.LabelExpensifyHeaderDocs.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Action");
+            this.LabelExpensifyHeaderDescription.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Description");
+            this.LabelExpensifyHeaderBudget.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_Budget");
+            this.LabelExpensifyHeaderDate.Text = LocalizedStrings.Get(LocDomain.Global, "Global_Date");
         }
 
 
@@ -340,7 +337,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         {
                             Success = false,
                             ErrorType = "ERR_INVALIDCSV",
-                            DisplayMessage = Resources.Pages.Financial.FileExpenseClaim_Expensify_Error_InvalidCsv
+                            DisplayMessage = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_Error_InvalidCsv")
                         });
 
                         progress.Set(100); // terminate progress bar, causes retrieval of result
@@ -363,7 +360,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     {
                         Success = false,
                         ErrorType = "ERR_NEEDSVAT",
-                        DisplayMessage = Resources.Pages.Financial.FileExpenseClaim_Expensify_Error_NeedsVat
+                        DisplayMessage = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_Error_NeedsVat")
                     });
 
                     progress.Set(100); // terminate progress bar, causes retrieval of result
@@ -635,7 +632,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 {
                     newRecord.BudgetText =
                         "<span class='LocalEditExpenseClaim' data-guid='" + record.Guid + "'>" +
-                        Resources.Global.Global_DropInits_SelectFinancialAccount + "</span>";
+                        LocalizedStrings.Get(LocDomain.Global, "Global_DropInits_SelectFinancialAccount") + "</span>";
                 }
 
                 outputRecords.Add(newRecord);
@@ -660,7 +657,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 Amount = "<span class='weight-more-emphasis'>" + (amountCentsTotal / 100.0).ToString("N2") + "</span>",
                 AmountVat = "<span class='weight-more-emphasis'>" + (vatCentsTotal / 100.0).ToString("N2") + "</span>",
-                BudgetText = "<span class='weight-more-emphasis'>" + Resources.Global.Global_Total.ToUpperInvariant() + "</span>"
+                BudgetText = "<span class='weight-more-emphasis'>" + LocalizedStrings.Get(LocDomain.Global, "Global_Total").ToUpperInvariant() + "</span>"
             };
 
             List<ExpensifyOutputRecord> listResult = new List<ExpensifyOutputRecord>();
@@ -682,10 +679,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             if (recordList.Count == 1)
             {
-                return Resources.Pages.Financial.FileExpenseClaim_Expensify_SubmitRecordSingle;
+                return LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_SubmitRecordSingle");
             }
 
-            return String.Format(Resources.Pages.Financial.FileExpenseClaim_Expensify_SubmitRecordsSeveral,
+            return String.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_SubmitRecordsSeveral"),
                 recordList.Count);
         }
 
@@ -833,7 +830,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     {
                         Success = true,
                         DisplayMessage =
-                            String.Format(Resources.Pages.Financial.FileExpenseClaim_Expensify_SuccessSeveral,
+                            String.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_SuccessSeveral"),
                                 recordList.Count)
                     };
                 }
@@ -841,7 +838,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return new AjaxCallResult
                 {
                     Success = true,
-                    DisplayMessage = Resources.Pages.Financial.FileExpenseClaim_Expensify_SuccessOne
+                    DisplayMessage = LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_SuccessOne")
                 };
             }
             catch (Exception exc)
@@ -1008,20 +1005,20 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             documents.SetForeignObjectForAll (claim);
 
-            string successMessage = string.Format (Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartOne,
+            string successMessage = string.Format (LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_SuccessMessagePartOne"),
                 CurrentOrganization.Currency.Code,
                 amountCents/100.0,
                 budget.Name);
 
             if (budget.OwnerPersonId != CurrentUser.Identity)
             {
-                successMessage += "<br/><br/>" + Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartTwo +
+                successMessage += "<br/><br/>" + LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_SuccessMessagePartTwo") +
                                   "<br/>";
             }
             else
             {
                 successMessage += "<br/><br/>" +
-                                  Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartTwoOwnBudget +
+                                  LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_SuccessMessagePartTwoOwnBudget") +
                                   "<br/>";
                 claim.Approve (CurrentUser);
             }
