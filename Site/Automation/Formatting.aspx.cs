@@ -84,7 +84,7 @@ namespace Swarmops.Frontend.Automation
             {
                 Success = true,
                 InterpretedDate = interpretedDate.ToString(CultureInfo.InvariantCulture),
-                PresentedDate = interpretedDate.ToString("yyyy MMM dd")
+                PresentedDate = interpretedDate.ToString("yyyy MMMM dd")
             };
         }
     }

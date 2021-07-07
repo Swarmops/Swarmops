@@ -42,7 +42,7 @@ namespace Swarmops.Frontend.Controls.Base
             set
             {
                 this.InterpretedDate.Value = value.ToString(CultureInfo.InvariantCulture);
-                this.TextInput.Text = value.ToString("yyyy MMM dd");
+                this.TextInput.Text = value.ToString("yyyy MMMM dd");
             }
         }
 
