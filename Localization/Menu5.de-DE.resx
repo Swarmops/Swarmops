@@ -120,147 +120,369 @@
   <data name="Menu5_Administration" xml:space="preserve">
     <value>Administration</value>
   </data>
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
+    <value>Zugriffssteuerungslisten</value>
+  </data>
+  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
+    <value>Neue Organisation erstellen</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Organisationseinstellungen</value>
+  </data>
+  <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
+    <value>Geographischer Baum</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
+    <value>Organisations-Cluster</value>
+  </data>
+  <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
+    <value>Systemweite Einstellungen</value>
+  </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>Kommunikation</value>
   </data>
-  
-  
+  <data name="Menu5_Communications_EditAutomailText" xml:space="preserve">
+    <value>Automail-Text bearbeiten</value>
+  </data>
+  <data name="Menu5_Communications_MailInbox" xml:space="preserve">
+    <value>E-Mail-Posteingang verwalten</value>
+  </data>
   <data name="Menu5_Communications_MassMailing" xml:space="preserve">
     <value>Rundbrief</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Communications_MobilizeActivists" xml:space="preserve">
+    <value>Aktivisten mobilisieren</value>
+  </data>
+  <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
+    <value>Papiereingang verwalten</value>
+  </data>
+  <data name="Menu5_Communications_ReadPaperInbox" xml:space="preserve">
+    <value>Papiereingang lesen</value>
+  </data>
+  <data name="Menu5_Communications_ReceivedPaperLetter" xml:space="preserve">
+    <value>Papierbrief erhalten</value>
+  </data>
+  <data name="Menu5_Communications_ReporterList" xml:space="preserve">
+    <value>Reporterliste verwalten</value>
+  </data>
+  <data name="Menu5_Communications_SendMassMessage" xml:space="preserve">
+    <value>Massennachricht senden</value>
+  </data>
+  <data name="Menu5_Communications_SendPressRelease" xml:space="preserve">
+    <value>Pressemitteilung senden</value>
+  </data>
+  <data name="Menu5_Communications_TextActivists" xml:space="preserve">
+    <value>Text-Aktivisten</value>
+  </data>
+  <data name="Menu5_Communications_TextInbox" xml:space="preserve">
+    <value>Texteingang verwalten</value>
+  </data>
   <data name="Menu5_Financial" xml:space="preserve">
     <value>Finanzen</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
+    <value>Kosten genehmigen</value>
+    <comment>This approves costs for payout from the organization</comment>
+  </data>
+  <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
+    <value>Rückerstattung von Ausgaben beantragen</value>
+  </data>
+  <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
+    <value>Bestellung erstellen</value>
+  </data>
+  <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
+    <value>Gigs-Assistent</value>
+  </data>
+  <data name="Menu5_Financial_List" xml:space="preserve">
+    <value>Liste ...</value>
+  </data>
+  <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
+    <value>Bargeldanfragen</value>
+  </data>
+  <data name="Menu5_Financial_List_ExpenseClaims" xml:space="preserve">
+    <value>Ausgabenansprüche</value>
+  </data>
+  <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
+    <value>Eingehende Rechnungen</value>
+  </data>
+  <data name="Menu5_Financial_List_OutboundInvoices" xml:space="preserve">
+    <value>Ausgehende Rechnungen</value>
+  </data>
+  <data name="Menu5_Financial_List_OutstandingAdvances" xml:space="preserve">
+    <value>Ausstehende Barvorschüsse</value>
+  </data>
   <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>Gehälter</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
+    <value>Meine Budgets verwalten</value>
+  </data>
+  <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
+    <value>Geld auszahlen</value>
+  </data>
+  <data name="Menu5_Financial_Payroll" xml:space="preserve">
+    <value>Lohnabrechnung</value>
+  </data>
+  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
+    <value>Neue Rechnung erhalten</value>
+  </data>
+  <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
+    <value>Barvorschuss anfordern</value>
+  </data>
+  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
+    <value>Neue Rechnung senden</value>
+  </data>
+  <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
+    <value>Quittungen validieren</value>
+  </data>
+  <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
+    <value>Budget und Istwerte anzeigen</value>
+  </data>
+  <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
+    <value>Liquiditätsprognose anzeigen</value>
+  </data>
+  <data name="Menu5_Governance" xml:space="preserve">
+    <value>Verwaltung</value>
+  </data>
   <data name="Menu5_Governance_Candidates" xml:space="preserve">
     <value>Kandidaten</value>
   </data>
-  
-  
-  
-  
+  <data name="Menu5_Governance_CreateVotingList" xml:space="preserve">
+    <value>Abstimmungsliste erstellen</value>
+  </data>
+  <data name="Menu5_Governance_MeetingAdmin" xml:space="preserve">
+    <value>Meeting-Administration</value>
+  </data>
+  <data name="Menu5_Governance_MeetingBoardAdmin" xml:space="preserve">
+    <value>Meeting-Admin für den Vorstand</value>
+  </data>
+  <data name="Menu5_Governance_Motions" xml:space="preserve">
+    <value>Bewegungen</value>
+  </data>
   <data name="Menu5_Governance_Vote" xml:space="preserve">
     <value>Abstimmen</value>
   </data>
-  
+  <data name="Menu5_Hacks_TemporaryAccessControl" xml:space="preserve">
+    <value>Admin-Zugriff festlegen (Temporäre Seite)</value>
+  </data>
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Bestandsbuch</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
+    <value>Kontenplan</value>
+  </data>
+  <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
+    <value>Audit-Ledger</value>
+  </data>
+  <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
+    <value>Bilanzen</value>
+  </data>
+  <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
+    <value>Kann Ledger für {0} nicht schließen</value>
+  </data>
+  <data name="Menu5_Ledgers_CashflowAnalysis" xml:space="preserve">
+    <value>Cashflow-Analyse</value>
+  </data>
+  <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
+    <value>Ledger schließen für {0}</value>
+  </data>
+  <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
+    <value>Debug-Ledger, Konten</value>
+  </data>
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Bankdaten importieren</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Ledgers_InspectLedgers" xml:space="preserve">
+    <value>Ledger untersuchen</value>
+  </data>
+  <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
+    <value>Liquiditätsprognose</value>
+  </data>
+  <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
+    <value>Lohnabrechnung</value>
+  </data>
+  <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
+    <value>Gewinn-und Verlustrechnung</value>
+  </data>
+  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
+    <value>Verbundenes Konto erneut synchronisieren</value>
+  </data>
+  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
+    <value>Budgets einrichten</value>
+    <comment>"Budget" as in "Cost allowed for a particular purpose" or "Revenue expected from a source".</comment>
+  </data>
+  <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
+    <value>Bankdateien hochladen</value>
+  </data>
+  <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
+    <value>Unbeglichene Konten auflisten</value>
+  </data>
   <data name="Menu5_Organization" xml:space="preserve">
     <value>Organisation</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Organization_AvailableResponsibilities" xml:space="preserve">
+    <value>Verfügbare Verantwortlichkeiten</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates" xml:space="preserve">
+    <value>Kommunikationsvorlagen</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_Invoice" xml:space="preserve">
+    <value>Rechnungen</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_MassMailing" xml:space="preserve">
+    <value>Massenversand</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_Newsletter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="Menu5_Organization_CommunicationTemplates_PressRelease" xml:space="preserve">
+    <value>Pressemitteilungen</value>
+  </data>
+  <data name="Menu5_Organization_Feeds" xml:space="preserve">
+    <value>Feeds</value>
+  </data>
+  <data name="Menu5_Organization_Feeds_Newsletter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
   <data name="Menu5_Organization_Feeds_PressReleases" xml:space="preserve">
     <value>Pressemitteilungen</value>
   </data>
   <data name="Menu5_Organization_MemberStatistics" xml:space="preserve">
     <value>Mitglieder-Statistiken</value>
   </data>
-  
-  
-  
-  
+  <data name="Menu5_Organization_OrganizationChart" xml:space="preserve">
+    <value>Organisationsdiagramm</value>
+  </data>
+  <data name="Menu5_Organization_Responsibilities" xml:space="preserve">
+    <value>Verantwortlichkeiten der Organisation</value>
+  </data>
+  <data name="Menu5_Organization_Settings" xml:space="preserve">
+    <value>Organisationseinstellungen</value>
+  </data>
+  <data name="Menu5_Organization_SuborganizationTree" xml:space="preserve">
+    <value>Unterorganisationsbaum</value>
+  </data>
   <data name="Menu5_People" xml:space="preserve">
     <value>Kontakte</value>
   </data>
+  <data name="Menu5_People_AddMember" xml:space="preserve">
+    <value>Mitglied hinzufügen</value>
+  </data>
+  <data name="Menu5_People_AddPerson" xml:space="preserve">
+    <value>[Regular] hinzufügen</value>
+  </data>
+  <data name="Menu5_People_ListFind" xml:space="preserve">
+    <value>Personen auflisten/finden</value>
+  </data>
+  <data name="Menu5_People_ListMembers" xml:space="preserve">
+    <value>Mitglieder auflisten</value>
+  </data>
+  <data name="Menu5_People_LogActivism" xml:space="preserve">
+    <value>Log-Aktivismus</value>
+  </data>
+  <data name="Menu5_People_ManageConferences" xml:space="preserve">
+    <value>Konferenzen verwalten</value>
+  </data>
+  <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
+    <value>Ehrenamtliche Mitarbeiter verwalten</value>
+  </data>
+  <data name="Menu5_People_NewConference" xml:space="preserve">
+    <value>Neue Konferenz</value>
+  </data>
+  <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
+    <value>Aufgaben und Verantwortlichkeiten</value>
+  </data>
+  <data name="Menu5_People_SelfSignup" xml:space="preserve">
+    <value>Seite zur Selbstanmeldung</value>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>Steuerformulare</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>Lohnsteuerformulare</value>
+  </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>Transaktionen ausgleichen und abgleichen</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>Personalausstattung der Organisation</value>
+  </data>
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>Meine lokale Organisation</value>
+  </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>Geldmittel spenden</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Budget vs. Istwert</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Bitcoin-Hotwallet</value>
+  </data>
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>Errichtet am {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} Codezeilen</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Einen Swarmops-Fehler melden (auf Github)</value>
+  </data>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Darstellen</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>MwSt.-Berichte</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Bitcoin-Hotwallet-Echotest</value>
+  </data>
+  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
+    <value>Verbundene Konten einrichten</value>
+    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
+    <value>Kontenplan einrichten</value>
+    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
+  </data>
+  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
+    <value>Lohnabrechnung einrichten</value>
+  </data>
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>Mein Gehalt</value>
+    <comment>This lists salary payments for the logged on individual</comment>
+  </data>
+  <data name="Menu5_Ledgers_DepreciatingAmortizedAssets" xml:space="preserve">
+    <value>Abschreibung und Amortisierung von Vermögenswerten</value>
+  </data>
+  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
+    <value>Abschreibungen und Amortisationen</value>
+  </data>
+  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
+    <value>Anpassungen der Lohnabrechnung vornehmen</value>
+    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
+  </data>
+  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
+    <value>Verfolgte Transaktionen</value>
+    <comment>Tracking of special transactions</comment>
+  </data>
+  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
+    <value>Verteilte Vermögenswerte</value>
+    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
+  </data>
+  <data name="Menu5_Reports" xml:space="preserve">
+    <value>Berichte</value>
+    <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
+  </data>
+  <data name="Menu5_Financial_RequestReimbursement" xml:space="preserve">
+    <value>Erstattung anfordern</value>
+    <comment>This is the same as "file an expense claim", but "requesting reimbursement" is better English</comment>
+  </data>
 </root>
