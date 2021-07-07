@@ -431,8 +431,9 @@ var SwarmopsJS = (function () {
     }
 
 
-    publicSymbols.ajaxCall = ajaxCall;
     function ajaxCall(url, params, successFunction, errorFunction) {
+        console.log("making Ajax call");
+        console.log(params);
         $.ajax({
             type: "POST",
             url: url,
@@ -440,9 +441,11 @@ var SwarmopsJS = (function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (msg) {
+                console.log(msg);
                 successFunction(msg.d);
             },
-            error: function () {
+            error: function (data) {
+                console.log(data);
                 if (errorFunction !== undefined) {
                     errorFunction();
                 } else {
@@ -451,6 +454,7 @@ var SwarmopsJS = (function () {
             }
         });
     }
+    publicSymbols.ajaxCall = ajaxCall;
 
 
     // Preserves the "this" object into success and error functions

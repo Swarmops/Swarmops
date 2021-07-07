@@ -49,6 +49,10 @@
                         $('#<%=this.ClientID%>_InterpretedDate').val('');
                         $('#<%=this.TextInput.ClientID%>').focus();
                     }
+                },
+                function(data) {
+                    console.log('ERROR');
+                    console.log(data);
                 });
             
         });
