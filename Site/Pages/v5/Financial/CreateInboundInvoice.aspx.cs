@@ -124,7 +124,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelPurpose.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_Description");
             this.LabelBudget.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_Budget");
             this.LabelHeaderBankDetails.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_HeaderPaymentDetails");
-            this.LabelHeaderImageFiles.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "Financial.CreateInboundInvoice_HeaderInvoiceImage");
+            this.LabelHeaderImageFiles.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_HeaderInvoiceImage");
             this.LabelImageFiles.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_UploadInvoiceImage");
             this.LabelReference.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_Reference");
             this.LabelAccount.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "CreateInboundInvoice_SupplierAccount");

@@ -35,22 +35,21 @@
             var dateText = $('#<%=this.ClientID%>_TextInput').val();
 
             var jsonData = {};
-            jsonData.input = dataText;
+            jsonData.input = dateText;
 
-            if (currencyText.trim().indexOf(' ') >= 0) {
-                SwarmopsJS.ajaxCall('/Automation/Formatting.aspx/InterpretDateString',
-                    jsonData,
-                    function(data) {
-                        if (data.Success) {
-                            $('#<%=this.ClientID%>_TextInput').val(data.PresentedValue);
-                            $('#<%=this.ClientID%>_InterpretedDate').val(data.InterpretedValue);
-                        } else {
-                            $('#<%=this.ClientID%>_TextInput').val('');
-                            $('#<%=this.ClientID%>_InterpretedDate').val('');
-                            $('#<%=this.TextInput.ClientID%>').focus();
-                        }
-                    });
-            }
+            SwarmopsJS.ajaxCall('/Automation/Formatting.aspx/InterpretDateString',
+                jsonData,
+                function(data) {
+                    if (data.Success) {
+                        $('#<%=this.ClientID%>_TextInput').val(data.PresentedValue);
+                        $('#<%=this.ClientID%>_InterpretedDate').val(data.InterpretedValue);
+                    } else {
+                        $('#<%=this.ClientID%>_TextInput').val('');
+                        $('#<%=this.ClientID%>_InterpretedDate').val('');
+                        $('#<%=this.TextInput.ClientID%>').focus();
+                    }
+                });
+            
         });
 
 
