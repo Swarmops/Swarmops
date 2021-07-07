@@ -2,7 +2,7 @@
 <%@ Register src="~/Controls/v5/Base/FileUpload.ascx" tagname="FileUpload" tagprefix="Swarmops5" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="CurrencyAmount" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
-<%@ Register TagPrefix="Swarmops5" TagName="DateTextBox" Src="~/Controls/v5/Financial/DateTextBox.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="DateTextBox" Src="~/Controls/v5/Base/DateTextBox.ascx" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->

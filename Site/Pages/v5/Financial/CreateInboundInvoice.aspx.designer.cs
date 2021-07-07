@@ -55,7 +55,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl DateInvoiceIssued;
+        protected global::Swarmops.Frontend.Controls.Base.DateTextBox DateInvoiceIssued;
         
         /// <summary>
         /// TextInvoiceDate control.
@@ -100,7 +100,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl DateInvoiceDue;
+        protected global::Swarmops.Frontend.Controls.Base.DateTextBox DateInvoiceDue;
         
         /// <summary>
         /// TextPurpose control.

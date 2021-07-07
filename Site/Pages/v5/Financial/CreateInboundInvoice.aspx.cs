@@ -143,7 +143,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             string description = this.TextPurpose.Text;
 
-            DateTime dueDate = DateTime.Parse (this.TextDueDate.Text);
+            DateTime dueDate = this.DateInvoiceDue.Value;
 
 
             FinancialAccount budget = this.ComboBudgets.SelectedAccount;
