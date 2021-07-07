@@ -34,7 +34,7 @@ namespace Swarmops.Frontend.Controls.Base
 
                 if (success)
                 {
-                    return DateTime.Parse(this.InterpretedDate.Value, CultureInfo.InvariantCulture);
+                    return result;
                 }
 
                 return Constants.DateTimeLow;
