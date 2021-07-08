@@ -17,11 +17,16 @@ namespace Swarmops.Frontend.Controls.Base
         protected void Page_Load (object sender, EventArgs e)
         {
             this.TextInput.Attributes["role"] = "note"; // disable Lastpass trying to autofill
-            this.InterpretedDate.Value = DateTime.Today.ToString(CultureInfo.InvariantCulture); // initialize to valid value
 
             if (this.Layout == LayoutDirection.Unknown)
             {
                 this.Layout = LayoutDirection.Vertical;
+            }
+
+            if (!Page.IsPostBack)
+            {
+                this.InterpretedDate.Value = DateTime.Today.ToString(CultureInfo.InvariantCulture);
+                // initialize to valid value
             }
         }
 
