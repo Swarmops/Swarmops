@@ -1044,52 +1044,52 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         // ReSharper disable InconsistentNaming
         public string Localized_ValidationError_MissingTag
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_MissingTag); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_ValidationError_MissingTag")); }
         }
 
         public string Localized_ValidationError_BankAccount
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "RequestCashAdvance_ValidationError_BankAccount")); }
         }
 
         public string Localized_ValidationError_BankClearing
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "RequestCashAdvance_ValidationError_BankClearing")); }
         }
 
         public string Localized_ValidationError_BankName
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "RequestCashAdvance_ValidationError_BankName")); }
         }
 
         public string Localized_ValidationError_Purpose
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_Purpose); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_ValidationError_Purpose")); }
         }
 
         public string Localized_ValidationError_Budget
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "RequestCashAdvance_ValidationError_Budget")); }
         }
 
         public string Localized_ValidationError_Amount
         {
-            get { return JavascriptEscape(String.Format(Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount, CurrentOrganization.Currency.DisplayCode)); }
+            get { return JavascriptEscape(String.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_ValidationError_Amount"), CurrentOrganization.Currency.DisplayCode)); }
         }
 
         public string Localized_ValidationError_Documents
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_ValidationError_Documents")); }
         }
 
         public string Localized_Expensify_NeedBudgetsForAll
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_Expensify_NeedBudgetsForAll); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_NeedBudgetsForAll")); }
         }
 
         public string Localized_Expensify_NoRecords
         {
-            get { return JavascriptEscape(Resources.Pages.Financial.FileExpenseClaim_Expensify_NoRecordsLeft); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "FileExpenseClaim_Expensify_NoRecordsLeft")); }
         }
     }
 
