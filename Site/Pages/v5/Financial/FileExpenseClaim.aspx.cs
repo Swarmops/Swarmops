@@ -135,6 +135,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 this.TextAccount.Text = CurrentUser.BankAccount;
                 this.CurrencyAmount.Cents = 0;
                 this.CurrencyVat.Cents = 0;
+                this.DateExpenseIncurred.Value = DateTime.Today;
                 this.CurrencyAmount.Focus();
 
                 Localize();

@@ -431,6 +431,9 @@
     <value>Cost Type</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
+  <data name="FileExpenseClaim_DateIncurred" xml:space="preserve">
+    <value>Date of Expense</value>
+  </data>
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>Description</value>
   </data>

@@ -880,6 +880,15 @@ namespace Swarmops.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date of Expense.
+        /// </summary>
+        internal static string FileExpenseClaim_DateIncurred {
+            get {
+                return ResourceManager.GetString("FileExpenseClaim_DateIncurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string FileExpenseClaim_Description {
