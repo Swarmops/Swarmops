@@ -962,6 +962,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             FinancialAccount budget = this.ComboBudgets.SelectedAccount;
 
+            // If the expense happened now, get the timestamp of today as well
+
+            if (expenseDate.Date == DateTime.Today)
+            {
+                expenseDate = DateTime.UtcNow;
+            }
+
             // sanity check
 
             if (budget.Organization.Identity != CurrentOrganization.Identity)
