@@ -432,8 +432,6 @@ var SwarmopsJS = (function () {
 
 
     function ajaxCall(url, params, successFunction, errorFunction) {
-        console.log("making Ajax call");
-        console.log(params);
         $.ajax({
             type: "POST",
             url: url,
