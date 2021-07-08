@@ -508,7 +508,7 @@
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
   <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>t, MMMM, JJJJ</value>
+    <value>d. MMMM yyyy</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
@@ -968,7 +968,7 @@
     <comment>As in calendar date, for example January 21</comment>
   </data>
   <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
-    <value>t, MMMM, jjjj</value>
+    <value>d. MMM. yyyy</value>
     <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
   </data>
   <data name="Global_Submit" xml:space="preserve">
@@ -990,7 +990,7 @@
     <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
   </data>
   <data name="Global_SkipThis" xml:space="preserve">
-    <value>Überspringen</value>
+    <value>überspringen</value>
     <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
   </data>
   <data name="Global_SkipYes" xml:space="preserve">
