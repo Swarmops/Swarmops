@@ -117,29 +117,81 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Payout_CashAdvanceIdentities" xml:space="preserve">
+    <value>Barvorschüsse {0}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentitiesRecipient" xml:space="preserve">
+    <value>Barvorschüsse {0} für {1}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentity" xml:space="preserve">
+    <value>Barvorschuss Nr. {0:N0}</value>
+  </data>
+  <data name="Payout_CashAdvanceIdentityRecipient" xml:space="preserve">
+    <value>Barvorschuss Nr. {0:N0} für {1}</value>
+  </data>
+  <data name="Payout_CashAdvancePaybackIdentities" xml:space="preserve">
+    <value>Rückzahlung Barvorschüsse {0}</value>
+  </data>
+  <data name="Payout_CashAdvancePaybackIdentity" xml:space="preserve">
+    <value>Barvorschuss Nr. {0:N0} Rückzahlung</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentities" xml:space="preserve">
+    <value>Ausgaben {0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentities" xml:space="preserve">
+    <value>Ausgaben {0} (abzüglich Vorschüsse {1})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentity" xml:space="preserve">
+    <value>Ausgaben {0} (abzüglich Vorschuss Nr. {1:N0})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentitiesRecipient" xml:space="preserve">
+    <value>Ausgabenforderungen {0} von {1}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentity" xml:space="preserve">
+    <value>Ausgabe Nr. #{0:N0}</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentities" xml:space="preserve">
+    <value>Ausgabe Nr. {0:N0} (abzüglich Vorschüsse {1})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentity" xml:space="preserve">
+    <value>Ausgabe Nr. {0:N0} (abzüglich Vorschuss Nr. {1:N0})</value>
+  </data>
+  <data name="Payout_ExpenseClaimIdentityRecipient" xml:space="preserve">
+    <value>Ausgabenforderung Nr. {0:N0} von {1}</value>
+  </data>
+  <data name="Payout_ExpenseClaimLongIdentity" xml:space="preserve">
+    <value>Ausgabenforderung Nr. {0:N0}</value>
+  </data>
+  <data name="Payout_InboundInvoiceIdentity" xml:space="preserve">
+    <value>Eingangsrechnung Nr. {0:N0}</value>
+  </data>
+  <data name="Payout_InboundInvoiceIdentitySender" xml:space="preserve">
+    <value>Eingangsrechnung Nr. {0:N0} von {1}</value>
+  </data>
+  <data name="Payout_SalariesTaxMonth" xml:space="preserve">
+    <value>Gehaltssteuern für {0:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentitiesMonth" xml:space="preserve">
+    <value>Gehälter {0} für {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentity" xml:space="preserve">
+    <value>Gehalt Nr. {0:N0}</value>
+  </data>
+  <data name="Payout_SalaryIdentityMonth" xml:space="preserve">
+    <value>Gehalt Nr. {0:N0} für {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryIdentityMonthRecipient" xml:space="preserve">
+    <value>Gehalt Nr. {0:N0} für {1:yyyy-MMM} für {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Payout_SalaryMonth" xml:space="preserve">
+    <value>Gehalt für {0:yyyy-MMM}</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Payout_SalaryTaxIdentitiesMonth" xml:space="preserve">
+    <value>Steuern für Gehälter {0} für {1:yyyy-MMM}</value>
+  </data>
+  <data name="Payout_SalaryTaxIdentityMonth" xml:space="preserve">
+    <value>Steuern für Gehalt Nr. {0:N0} für {1:yyyy-MMM}</value>
+  </data>
 </root>

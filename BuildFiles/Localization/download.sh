@@ -22,8 +22,7 @@ rename 's/\.sr\-CS\./\.sr\-Latn\-RS\./' Localization/*
 #echo "Deploying..."
 
 cp -r Localization/* ../../Localization/
-cp -r Site/* ../../Site/App_GlobalResources/
+cp -r Logic/* ../../Logic/Resources/
 rm -rf Logic
 rm -rf Localization
-rm -rf Site
 rm activizr.zip
