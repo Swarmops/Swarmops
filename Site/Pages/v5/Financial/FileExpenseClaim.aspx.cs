@@ -139,6 +139,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 this.CurrencyAmount.Focus();
 
                 Localize();
+
+                this.CurrencyAmount.Focus();
             }
         }
 
