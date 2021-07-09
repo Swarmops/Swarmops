@@ -734,7 +734,7 @@
     <value>Twitter-ID</value>
   </data>
   <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
-    <value>BitID Zwei-Faktor-Authentisierung (Deaktivierung der Quarantäne-Anmeldung)</value>
+    <value>BitID Zwei-Faktor-Authentisierung (Deaktivierung werden Anmeldung in Quarantäne setzen)</value>
     <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
   </data>
   <data name="Master_EditPersonHeaderAccount" xml:space="preserve">

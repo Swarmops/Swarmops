@@ -293,7 +293,7 @@
     <value>Bankdaten importieren</value>
   </data>
   <data name="Menu5_Ledgers_InspectLedgers" xml:space="preserve">
-    <value>Ledger untersuchen</value>
+    <value>Hauptbücher prüfen</value>
   </data>
   <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
     <value>Liquiditätsprognose</value>
@@ -302,7 +302,7 @@
     <value>Lohnabrechnung</value>
   </data>
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
-    <value>Gewinn-und Verlustrechnung</value>
+    <value>Gewinn- und Verlustrechnung</value>
   </data>
   <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
     <value>Verbundenes Konto erneut synchronisieren</value>

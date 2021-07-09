@@ -145,7 +145,7 @@
     <comment>The XXXX is replaced with year number.</comment>
   </data>
   <data name="BalanceSheet_Info" xml:space="preserve">
-    <value>Die Bilanz ist eine Momentaufnahme einer Übersicht über Vermögenswerte und Schulden und wird verwendet, um zu sehen, wie Ergebnisse die allgemeine finanzielle Gesundheit der Organisation beeinflussen. Sie können sich auch die &lt;a href="ProfitLossStatement"&gt;-Gewinn- und Verlustrechnung&lt;/a&gt; anschauen, die die Übersicht über Einnahmen und Ausgaben ist.</value>
+    <value>Die Bilanz ist eine Momentaufnahme einer Übersicht über Vermögenswerte und Schulden und wird verwendet, um zu sehen, wie Ergebnisse die allgemeine finanzielle Gesundheit der Organisation beeinflussen. Sie können sich auch die &lt;a href="ProfitLossStatement"&gt;Gewinn- und Verlustrechnung&lt;/a&gt; anschauen, die die Übersicht über Einnahmen und Ausgaben ist.</value>
   </data>
   <data name="BalanceSheet_PageTitle" xml:space="preserve">
     <value>Bilanz</value>
@@ -178,7 +178,7 @@
     <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
   </data>
   <data name="ProfitLossStatement_Info" xml:space="preserve">
-    <value>Das P&amp;L ist eine Übersicht über Einnahmen und Ausgaben, die nach Budgets oder Art der Kosten/der Einnahme gruppiert sind. Die Summe aller Einnahmen und Ausgaben ist das jährliche Ergebnis. Sie möchten sich vielleicht auch die &lt;a href="BalanceSheet"&gt;Bilanz&lt;/a&gt; ansehen, die die Übersicht der Vermögenswerte und Schulden ist.</value>
+    <value>Die Gewinn- und Verlustrechnung ist eine Übersicht über Einnahmen und Ausgaben, die nach Budgets oder Art der Kosten/der Einnahme gruppiert sind. Die Summe aller Einnahmen und Ausgaben ist das jährliche Ergebnis. Sie möchten sich vielleicht auch die &lt;a href="BalanceSheet"&gt;Bilanz&lt;/a&gt; ansehen, die die Übersicht der Vermögenswerte und Schulden ist.</value>
   </data>
   <data name="ProfitLossStatement_LastYear" xml:space="preserve">
     <value>Letztes Jahr</value>
@@ -688,7 +688,7 @@
     <value>Die Transaktion entspricht dieser Auszahlung:</value>
   </data>
   <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
-    <value>Transaktion wird von &lt;span id="spanTransactionUnbalancedBy"&gt;+FOO,BAR.QX&lt;/span&gt;nicht ausgeglichen. Möchten Sie ...</value>
+    <value>Transaktion wird von &lt;span id="spanTransactionUnbalancedBy"&gt;+FOO,BAR.QX&lt;/span&gt; nicht ausgeglichen. Möchten Sie ...</value>
   </data>
   <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
     <value>Diese Transaktion manuell gegen ein Konto ausgleichen?</value>

@@ -419,7 +419,7 @@
     <value>Budget / Utfall</value>
   </data>
   <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
-    <value>Bitcoin arbetsplånbok</value>
+    <value>Bitcoin handkassa</value>
   </data>
   <data name="Menu5_Beta_BuildTime" xml:space="preserve">
     <value>Byggd {0:MMM d, yyyy}</value>
@@ -442,7 +442,7 @@
     <comment>This is a European thing (Value Added Tax).</comment>
   </data>
   <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
-    <value>Bitcoin arbetsplånbok ekotest</value>
+    <value>Bitcoin handkassa ekotest</value>
   </data>
   <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
     <value>Ställ in anslutna konton</value>
@@ -482,7 +482,7 @@
     <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
   </data>
   <data name="Menu5_Financial_RequestReimbursement" xml:space="preserve">
-    <value>Begär utläggsersättning</value>
+    <value>Begär ersättning för utlägg</value>
     <comment>This is the same as "file an expense claim", but "requesting reimbursement" is better English</comment>
   </data>
 </root>
