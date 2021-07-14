@@ -161,7 +161,8 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
             }
             if (privateDeposits != 0)
             {
-                resultTransaction.AddRow(CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits, -privateDeposits, CurrentUser)
+                resultTransaction.AddRow(CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits, -privateDeposits,
+                    CurrentUser);
             }
 
             // Ledgers are now at zero-sum for the year's result accounts and from the start up until end-of-closing-year for the balance accounts.
